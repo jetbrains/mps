@@ -21,6 +21,10 @@ import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateMappingPriorityRule;
 import jetbrains.mps.smodel.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefAllGlobal;
+import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
+import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
+import jetbrains.mps.util.Pair;
 
 import java.util.*;
 
@@ -117,6 +121,8 @@ public class PartitioningSolver {
       }
     }
 
+    resolveConflicts();
+
     // create mappings partitioning
     List<List<TemplateMappingConfiguration>> mappingSets = createMappingSets();
     // if the priority map is still not empty, then there are some conflicting rules
@@ -182,5 +188,48 @@ public class PartitioningSolver {
       myPriorityMap.remove(mapping);
     }
     return mappingSet;
+  }
+
+  /**
+   * If in a priority rule a mapping is generated strictly before all others ( xyz < *:* ), then there is no way to
+   * extend the language, because every mapping that tries to generate before causes a conflict.
+   * If mapping A definies a rule ( A < *:* ) and mapping B defines a rule ( B < A ), then B should generate before A.
+   * For this example, this method will remove the priority ( A < B ) introduced by the first rule.
+   * If there are multiple rules with a 'before all others' priority, then this conflict is also solved so that these
+   * mappings are generated together.
+   */
+  private void resolveConflicts() {
+    List<Pair<TemplateMappingConfiguration, TemplateMappingConfiguration>> globalPriorities = new ArrayList<Pair<TemplateMappingConfiguration, TemplateMappingConfiguration>>();
+    // Collect all priorities created by a 'before all others' rule
+    for (Map.Entry<TemplateMappingConfiguration, Map<TemplateMappingConfiguration, PriorityData>> entry : myPriorityMap.entrySet()) {
+      TemplateMappingConfiguration loPrio = entry.getKey();
+      for (Map.Entry<TemplateMappingConfiguration, PriorityData> entry2 : entry.getValue().entrySet()) {
+        TemplateMappingConfiguration hiPrio = entry2.getKey();
+        PriorityData data = entry2.getValue();
+        for (MappingPriorityRule causeRule : data.myCauseRules) {
+          if (causeRule.getRight() instanceof MappingConfig_RefAllGlobal && causeRule.getType() == RuleType.STRICTLY_BEFORE) {
+            globalPriorities.add(new Pair<TemplateMappingConfiguration, TemplateMappingConfiguration>(hiPrio, loPrio));
+          }
+        }
+      }
+    }
+    // Find priorities producing a conflict
+    List<Pair<TemplateMappingConfiguration, TemplateMappingConfiguration>> toRemove = new ArrayList<Pair<TemplateMappingConfiguration, TemplateMappingConfiguration>>();
+    for (Map.Entry<TemplateMappingConfiguration, Map<TemplateMappingConfiguration, PriorityData>> entry : myPriorityMap.entrySet()) {
+      TemplateMappingConfiguration loPrio = entry.getKey();
+      for (Map.Entry<TemplateMappingConfiguration, PriorityData> entry2 : entry.getValue().entrySet()) {
+        TemplateMappingConfiguration hiPrio = entry2.getKey();
+        PriorityData data = entry2.getValue();
+        for (MappingPriorityRule causeRule : data.myCauseRules) {
+          if (globalPriorities.contains(new Pair<TemplateMappingConfiguration, TemplateMappingConfiguration>(loPrio, hiPrio))) {
+            toRemove.add(new Pair<TemplateMappingConfiguration, TemplateMappingConfiguration>(loPrio, hiPrio));
+          }
+        }
+      }
+    }
+    // Remove conflicting priorities
+    for (Pair<TemplateMappingConfiguration, TemplateMappingConfiguration> prio : toRemove) {
+      myPriorityMap.get(prio.o2).remove(prio.o1);
+    }
   }
 }
