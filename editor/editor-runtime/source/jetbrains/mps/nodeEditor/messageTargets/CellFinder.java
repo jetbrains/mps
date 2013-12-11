@@ -63,11 +63,7 @@ public class CellFinder {
     EditorCell child = CellFinderUtil.findChildByCondition(rawCell, new Condition<EditorCell>() {
       @Override
       public boolean met(EditorCell cell) {
-        if (!(cell instanceof EditorCell_Property)) return false;
-        EditorCell_Property propertyCell = (EditorCell_Property) cell;
-        ModelAccessor modelAccessor = propertyCell.getModelAccessor();
-        return modelAccessor instanceof PropertyAccessor && node == propertyCell.getSNode()
-            && name.equals(((PropertyAccessor) modelAccessor).getPropertyName());
+        return  node == cell.getSNode() && name.equals(cell.getPropertyName());
       }
     }, true, true);
     if (child != null) {
