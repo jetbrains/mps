@@ -42,6 +42,7 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SelectionListener;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.util.ArrayWrapper;
+import jetbrains.mps.util.CachedIndexList;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -72,7 +73,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   private static final EditorCell[] EMPTY_ARRAY = new EditorCell[0];
 
   private EditorCell[] myEditorCells = EditorCell_Collection.EMPTY_ARRAY;
-  private List<EditorCell> myEditorCellsWrapper = new ArrayWrapper<EditorCell>() {
+  private List<EditorCell> myEditorCellsWrapper = new CachedIndexList<EditorCell>(new ArrayWrapper<EditorCell>() {
     @Override
     protected EditorCell[] getArray() {
       return myEditorCells;
@@ -87,7 +88,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     protected EditorCell[] newArray(int size) {
       return new EditorCell[size];
     }
-  };
+  });
 
   private List<EditorCell> myFoldedCellCollection;
   private EditorCell myFoldedCell;

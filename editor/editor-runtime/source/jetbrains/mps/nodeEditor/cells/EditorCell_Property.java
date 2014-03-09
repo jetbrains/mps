@@ -23,6 +23,7 @@ import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.NodeReadAccessInEditorListener;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -66,6 +67,12 @@ public class EditorCell_Property extends EditorCell_Label {
     String text = myModelAccessor.getText();
     setErrorState(!isValidText(text));
     setText(text);
+  }
+
+  @Nullable
+  @Override
+  public String getPropertyName() {
+    return myModelAccessor instanceof PropertyAccessor ? ((PropertyAccessor)myModelAccessor).getPropertyName() : null;
   }
 
   @Override

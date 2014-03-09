@@ -20,6 +20,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.style.Style;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
@@ -90,6 +91,9 @@ public interface EditorCell {
   void setRole(String role);
 
   String getRole();
+
+  @Nullable
+  String getPropertyName();
 
   boolean isErrorState();
 

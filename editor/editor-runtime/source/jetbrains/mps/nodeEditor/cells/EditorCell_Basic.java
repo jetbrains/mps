@@ -51,6 +51,7 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.ListMap;
 import jetbrains.mps.util.NameUtil;
 import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
@@ -369,6 +370,12 @@ public abstract class EditorCell_Basic implements EditorCell {
       return role;
     }
     return myRole;
+  }
+
+  @Nullable
+  @Override
+  public String getPropertyName() {
+    return null;
   }
 
   @Override
