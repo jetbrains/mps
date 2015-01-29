@@ -22,6 +22,7 @@ import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.LinkDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
@@ -119,6 +120,9 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept {
     if (cd == null) return null;
 
     PropertyDescriptor d = cd.getPropertyDescriptor(name);
+    if (d == null) {
+      return MetaAdapterFactoryByName.getProperty(myFqName, name);
+    }
     SPropertyId pid = d.getId();
     return MetaAdapterFactory.getProperty(pid, name);
   }
@@ -130,7 +134,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept {
 
     ArrayList<SProperty> result = new ArrayList<SProperty>();
     for (SPropertyId pid : d.getPropertyIds()) {
-      result.add(MetaAdapterFactory.getProperty(pid,d.getPropertyDescriptor(pid).getName()));
+      result.add(MetaAdapterFactory.getProperty(pid, d.getPropertyDescriptor(pid).getName()));
     }
     return result;
   }
@@ -196,6 +200,11 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept {
     ConceptDescriptor d = getConceptDescriptor();
     if (d == null) return "";
     return d.getHelpUrl();
+  }
+
+  @Override
+  public boolean isValid() {
+    return getConceptDescriptor() != null;
   }
 
   @Override

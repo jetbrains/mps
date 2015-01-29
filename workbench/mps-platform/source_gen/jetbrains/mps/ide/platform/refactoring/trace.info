@@ -419,10 +419,10 @@
       <node id="2183214647889840029" at="289,45,290,48" concept="5" />
       <node id="2183214647889840037" at="292,54,293,31" concept="5" />
       <node id="8325325470383904267" at="295,5,296,0" concept="13" />
-      <node id="2183214647889840044" at="296,0,297,105" concept="10" />
-      <node id="2183214647889840078" at="301,13,302,63" concept="10" />
-      <node id="2183214647889840090" at="303,65,304,147" concept="10" />
-      <node id="2183214647889840105" at="304,147,305,25" concept="5" />
+      <node id="8928799375495592574" at="300,13,301,57" concept="10" />
+      <node id="2183214647889840078" at="301,57,302,101" concept="10" />
+      <node id="2183214647889840090" at="303,65,304,129" concept="10" />
+      <node id="2183214647889840105" at="304,129,305,25" concept="5" />
       <node id="2183214647889840109" at="305,25,306,70" concept="12" />
       <node id="2183214647889840068" at="310,40,311,30" concept="5" />
       <node id="2183214647889840075" at="312,19,313,33" concept="5" />
@@ -460,7 +460,7 @@
       <node id="2183214647889839822" at="239,132,244,8" concept="5" />
       <node id="2183214647889839901" at="264,56,269,5" concept="17" />
       <node id="2183214647889840032" at="290,48,295,5" concept="7" />
-      <node id="2183214647889840084" at="302,63,307,11" concept="8" />
+      <node id="2183214647889840084" at="302,101,307,11" concept="8" />
       <node id="2034046503373011801" at="68,40,74,11" concept="8" />
       <node id="2482360940803572992" at="124,0,130,0" concept="9" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <node id="2183214647889839862" at="253,108,259,7" concept="7" />
@@ -490,18 +490,18 @@
       <node id="2183214647889839749" at="222,0,235,0" concept="9" trace="updateModels#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
       <node id="4127448145133343691" at="95,95,109,7" concept="5" />
       <node id="8325325470383876055" at="119,78,133,7" concept="5" />
-      <node id="2183214647889840061" at="300,25,314,9" concept="18" />
       <node id="2034046503373011768" at="64,78,79,7" concept="5" />
       <node id="2034046503361628038" at="137,83,152,7" concept="5" />
       <node id="6271353859742102993" at="155,0,170,0" concept="9" trace="showConfirmDialogAndExecuteInUI#(Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
       <node id="2183214647889839841" at="245,0,260,5" concept="7" />
+      <node id="2183214647889840061" at="299,25,314,9" concept="18" />
       <node id="2482360940803572449" at="183,0,199,0" concept="9" trace="showRefactoring#(Ljetbrains/mps/refactoring/framework/RefactoringContext;Ljetbrains/mps/ide/findusages/model/SearchResults;)V" />
       <node id="2482360940803572465" at="119,0,136,0" concept="9" trace="findUsagesAndRun#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
       <node id="2183214647889839887" at="263,0,280,0" concept="9" trace="updateModel#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
-      <node id="2183214647889840057" at="299,0,316,0" concept="9" trace="run#()V" />
+      <node id="2183214647889840057" at="298,0,316,0" concept="9" trace="run#()V" />
       <node id="6271353859742102845" at="136,0,155,0" concept="9" trace="findUsagesSimple#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
-      <node id="2183214647889840052" at="297,105,316,14" concept="5" />
       <node id="2482360940803572418" at="91,0,111,0" concept="9" trace="doExecuteWithDialog#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
+      <node id="2183214647889840052" at="296,0,316,14" concept="5" />
       <node id="2183214647889839794" at="235,0,263,0" concept="9" trace="loadedModelsForUpdate#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)Ljava/util/Set;" />
       <node id="2183214647889839547" at="61,0,91,0" concept="9" trace="executeSimple#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
       <node id="2183214647889839973" at="280,0,319,0" concept="9" trace="generateModels#(Ljava/util/List;Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
@@ -619,9 +619,6 @@
       <scope id="2183214647889839862" at="253,108,259,7">
         <var name="elem" id="2183214647889839863" />
       </scope>
-      <scope id="2183214647889840077" at="301,13,307,11">
-        <var name="sess" id="2183214647889840079" />
-      </scope>
       <scope id="2034046503373011794" at="67,13,74,11" />
       <scope id="2034046503361628055" at="140,13,147,11">
         <var name="project" id="2034046503361628057" />
@@ -631,6 +628,10 @@
       <scope id="2482360940803572957" at="186,80,193,11" />
       <scope id="2183214647889839667" at="204,0,211,0">
         <var name="context" id="2183214647889839668" />
+      </scope>
+      <scope id="2183214647889840077" at="300,13,307,11">
+        <var name="project" id="8928799375495592575" />
+        <var name="sess" id="2183214647889840079" />
       </scope>
       <scope id="2482360940803572348" at="111,0,119,0">
         <var name="refactoringContext" id="2482360940803572353" />
@@ -672,7 +673,6 @@
         <var name="modelsToGenerate" id="2482360940803572938" />
         <var name="okAction" id="2482360940803572927" />
       </scope>
-      <scope id="2183214647889840060" at="300,25,314,9" />
       <scope id="2482360940803572470" at="119,78,134,0" />
       <scope id="6271353859742102993" at="155,0,170,0">
         <var name="refactoringContext" id="6271353859742102992" />
@@ -684,6 +684,7 @@
       <scope id="2183214647889839894" at="263,70,278,5">
         <var name="refactoring" id="2183214647889839896" />
       </scope>
+      <scope id="2183214647889840060" at="299,25,314,9" />
       <scope id="2482360940803572449" at="183,0,199,0">
         <var name="refactoringContext" id="2482360940803572452" />
         <var name="searchResults" id="2482360940803572454" />
@@ -698,13 +699,13 @@
         <var name="context" id="2183214647889839890" />
         <var name="model" id="2183214647889839888" />
       </scope>
-      <scope id="2183214647889840057" at="299,0,316,0" />
       <scope id="2482360940803572423" at="91,81,109,7">
         <var name="ideaProject" id="2482360940803572853" />
         <var name="modelsToGenerate" id="2482360940803572862" />
         <var name="project" id="5996241366559286452" />
         <var name="refactoring" id="2482360940803572847" />
       </scope>
+      <scope id="2183214647889840057" at="298,0,316,0" />
       <scope id="6271353859742102845" at="136,0,155,0">
         <var name="refactoringContext" id="6271353859742102844" />
       </scope>
@@ -729,7 +730,6 @@
       <scope id="2183214647889839983" at="280,116,317,166">
         <var name="descriptors" id="2183214647889839996" />
         <var name="modifier" id="2183214647889839991" />
-        <var name="operationContext" id="2183214647889840045" />
       </scope>
       <scope id="2183214647889839973" at="280,0,319,0">
         <var name="context" id="2183214647889839978" />
@@ -747,7 +747,7 @@
       <unit id="8325325470383876754" at="120,35,133,5" name="jetbrains.mps.ide.platform.refactoring.RefactoringFacadeImpl$3" />
       <unit id="2034046503373011772" at="65,69,79,5" name="jetbrains.mps.ide.platform.refactoring.RefactoringFacadeImpl$1" />
       <unit id="2034046503361628042" at="138,79,152,5" name="jetbrains.mps.ide.platform.refactoring.RefactoringFacadeImpl$4" />
-      <unit id="2183214647889840056" at="298,8,316,5" name="jetbrains.mps.ide.platform.refactoring.RefactoringFacadeImpl$10" />
+      <unit id="2183214647889840056" at="297,8,316,5" name="jetbrains.mps.ide.platform.refactoring.RefactoringFacadeImpl$10" />
       <unit id="2183214647889839513" at="57,0,323,0" name="jetbrains.mps.ide.platform.refactoring.RefactoringFacadeImpl" />
     </file>
   </root>

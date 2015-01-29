@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.ide.mpsmigration.migration32.migrations.CleanObsoletePropertiesMigration" file="CleanObsoletePropertiesMigration.java">
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ITranslator2" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
+    <classNode dependClassName="jetbrains.mps.project.Project" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
+    <classNode extendsClassName="jetbrains.mps.migration.global.BaseProjectMigration" />
+    <classNode extendsClassName="jetbrains.mps.migration.global.CleanupProjectMigration" />
+  </dependency>
   <dependency className="jetbrains.mps.ide.mpsmigration.migration32.migrations.CleanSourcesMigration" file="CleanSourcesMigration.java">
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="com.intellij.openapi.vfs.newvfs.persistent.FSRecords" />
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -23,9 +39,22 @@
     <classNode dependClassName="jetbrains.mps.project.facets.TestsFacet" />
     <classNode dependClassName="jetbrains.mps.smodel.ModelAccess" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
+    <classNode dependClassName="jetbrains.mps.vfs.ex.IFileEx" />
     <classNode extendsClassName="jetbrains.mps.migration.global.BaseProjectMigration" />
     <classNode extendsClassName="jetbrains.mps.migration.global.CleanupProjectMigration" />
     <classNode extendsClassName="jetbrains.mps.migration.global.ProjectMigrationWithOptions" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.mpsmigration.migration32.migrations.Migrations32" file="Migrations32.java">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.ide.mpsmigration.migration32.migrations.CleanObsoletePropertiesMigration" />
+    <classNode dependClassName="jetbrains.mps.ide.mpsmigration.migration32.migrations.CleanSourcesMigration" />
+    <classNode dependClassName="jetbrains.mps.ide.mpsmigration.migration32.migrations.Name2IdMigration" />
+    <classNode dependClassName="jetbrains.mps.ide.mpsmigration.migration32.migrations.ReSaveModulesMigration" />
+    <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
+    <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigrationsRegistry" />
+    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
   </dependency>
   <dependency className="jetbrains.mps.ide.mpsmigration.migration32.migrations.ModelRefMigration" file="ModelRefMigration.java">
     <classNode dependClassName="java.lang.Exception" />
@@ -59,6 +88,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="jetbrains.mps.persistence.FilePerRootModelPersistence" />
+    <classNode dependClassName="jetbrains.mps.persistence.PersistenceRegistry" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceVersionAware" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
@@ -69,16 +100,19 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.migration.global.BaseProjectMigration" />
   </dependency>
-  <dependency className="jetbrains.mps.ide.mpsmigration.migration32.migrations.PersistenceMigrations" file="PersistenceMigrations.java">
+  <dependency className="jetbrains.mps.ide.mpsmigration.migration32.migrations.ProjectJavaVersionMigration" file="ProjectJavaVersionMigration.java">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.ide.mpsmigration.migration32.migrations.CleanSourcesMigration" />
-    <classNode dependClassName="jetbrains.mps.ide.mpsmigration.migration32.migrations.Name2IdMigration" />
-    <classNode dependClassName="jetbrains.mps.ide.mpsmigration.migration32.migrations.ReSaveModulesMigration" />
-    <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
+    <classNode dependClassName="jetbrains.mps.compiler.JavaCompilerOptionsComponent" />
+    <classNode dependClassName="jetbrains.mps.ide.compiler.CompilerSettingsComponent" />
+    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigrationsRegistry" />
+    <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
+    <classNode extendsClassName="jetbrains.mps.migration.global.BaseProjectMigration" />
   </dependency>
   <dependency className="jetbrains.mps.ide.mpsmigration.migration32.migrations.ReSaveModulesMigration" file="ReSaveModulesMigration.java">
     <classNode dependClassName="java.lang.Iterable" />

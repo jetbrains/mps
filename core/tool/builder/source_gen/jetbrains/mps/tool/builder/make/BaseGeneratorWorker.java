@@ -10,7 +10,6 @@ import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.project.ProjectOperationContext;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.ModelAccess;
@@ -19,8 +18,6 @@ import jetbrains.mps.make.service.AbstractMakeService;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
-import jetbrains.mps.compiler.JavaCompilerOptions;
-import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -43,7 +40,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.smodel.resources.ModelsToResources;
@@ -115,16 +111,14 @@ public class BaseGeneratorWorker extends MpsWorker {
       s.append(m);
     }
     info(s.toString());
-    ProjectOperationContext ctx = new ProjectOperationContext(project);
-
-    Iterable<MResource> resources = Sequence.fromIterable(collectResources(ctx, go)).toListSequence();
+    Iterable<MResource> resources = Sequence.fromIterable(collectResources(project, go)).toListSequence();
     ModelAccess.instance().flushEventQueue();
-    MakeSession session = new MakeSession(ctx, myMessageHandler, true);
+    MakeSession session = new MakeSession(project, myMessageHandler, true);
     AbstractMakeService.DefaultMonitor defaultMonitor = new AbstractMakeService.DefaultMonitor(session);
     IScriptController.Stub controller = new IScriptController.Stub(defaultMonitor, defaultMonitor) {
       @Override
       public void setup(IPropertiesPool ppool) {
-        new JavaCompileFacetInitializer().setJavaCompileOptions(new JavaCompilerOptions(JavaCompilerOptionsComponent.JavaVersion.parse(myJavaProperties.getTargetJavaVersion()))).populate(ppool);
+        new JavaCompileFacetInitializer().setJavaCompileOptions(myJavaCompilerOptions).populate(ppool);
       }
     };
     Future<IResult> res = new BuildMakeService().make(session, resources, null, controller, new EmptyProgressMonitor());
@@ -181,7 +175,7 @@ public class BaseGeneratorWorker extends MpsWorker {
   protected void makeProject() {
     final MPSCompilationResult mpsCompilationResult = ModelAccess.instance().runReadAction(new Computable<MPSCompilationResult>() {
       public MPSCompilationResult compute() {
-        return new ModuleMaker().make(IterableUtil.asCollection(MPSModuleRepository.getInstance().getModules()), new EmptyProgressMonitor(), new JavaCompilerOptions(JavaCompilerOptionsComponent.JavaVersion.parse(myJavaProperties.getTargetJavaVersion())));
+        return new ModuleMaker().make(IterableUtil.asCollection(MPSModuleRepository.getInstance().getModules()), new EmptyProgressMonitor(), myJavaCompilerOptions);
       }
     });
     if (mpsCompilationResult.isReloadingNeeded()) {
@@ -214,9 +208,9 @@ public class BaseGeneratorWorker extends MpsWorker {
       }
     });
   }
-  protected Iterable<MResource> collectResources(IOperationContext context, final MpsWorker.ObjectsToProcess go) {
+  protected Iterable<MResource> collectResources(Project project, final MpsWorker.ObjectsToProcess go) {
     final Wrappers._T<Iterable<SModel>> models = new Wrappers._T<Iterable<SModel>>(null);
-    ModelAccess.instance().runReadAction(new Runnable() {
+    project.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         for (Project p : go.getProjects()) {
           for (SModule mod : withGenerators((Iterable<SModule>) p.getModules())) {
@@ -232,7 +226,7 @@ public class BaseGeneratorWorker extends MpsWorker {
         }
       }
     });
-    return Sequence.fromIterable(new ModelsToResources(context, Sequence.fromIterable(models.value).where(new IWhereFilter<SModel>() {
+    return Sequence.fromIterable(new ModelsToResources(Sequence.fromIterable(models.value).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel smd) {
         return GenerationFacade.canGenerate(smd);
       }

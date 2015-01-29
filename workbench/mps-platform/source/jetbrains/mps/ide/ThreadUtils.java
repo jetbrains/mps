@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.ide;
 
+import com.intellij.openapi.application.ApplicationManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.SwingUtilities;
 
@@ -26,7 +28,7 @@ public class ThreadUtils {
   public static boolean runInUIThreadAndWait(Runnable r) {
     if (SwingUtilities.isEventDispatchThread()) {
       try {
-          r.run();
+        r.run();
       } catch (Exception e) {
         LOG.error(null, e);
         return false;
@@ -55,16 +57,41 @@ public class ThreadUtils {
   }
 
   /**
-   * use ModelAccess.instance().isInEDT()
+   * Handy wrap for {@link #runInUIThreadAndWait(Runnable)} and {@link #runInUIThreadNoWait(Runnable)} as a Runnable
+   * one could pass to a facility that accepts Runnable
+   */
+  public static class RunInUIRunnable implements Runnable {
+    private final Runnable myDelegate;
+    private final boolean myWaitDelegateToComplete;
+
+    public RunInUIRunnable(@NotNull Runnable delegate, boolean wait) {
+      myDelegate = delegate;
+      myWaitDelegateToComplete = wait;
+    }
+
+    @Override
+    public void run() {
+      if (myWaitDelegateToComplete) {
+        runInUIThreadAndWait(myDelegate);
+      } else {
+        runInUIThreadNoWait(myDelegate);
+      }
+    }
+  }
+
+  /**
+   * use {@link #isInEDT()}
    */
   @Deprecated
   public static boolean isEventDispatchThread() {
-    return SwingUtilities.isEventDispatchThread();
+    return isInEDT();
+  }
+
+  public static boolean isInEDT() {
+    return ApplicationManager.getApplication().isDispatchThread();
   }
 
   public static void assertEDT() {
-    if(!isEventDispatchThread()) {
-      LOG.error(new IllegalStateException("must be called from EDT"));
-    }
+    ApplicationManager.getApplication().assertIsDispatchThread();
   }
 }

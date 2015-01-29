@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,13 +41,6 @@ public class ClassLoadersHolder {
 
   private final ModulesWatcher myModulesWatcher;
   private MPSClassLoadersRegistry myMPSClassLoadersRegistry = new MPSClassLoadersRegistry();
-
-  public void init() {
-  }
-
-  public void dispose() {
-    // NOP
-  }
 
   public ClassLoadersHolder(ModulesWatcher modulesWatcher) {
     myModulesWatcher = modulesWatcher;
@@ -96,7 +89,7 @@ public class ClassLoadersHolder {
    */
   @NotNull
   public ClassLoadingProgress getClassLoadingProgress(ReloadableModule module) {
-    SModuleReference mRef = ((ReloadableModuleBase) module).getModuleReference();
+    SModuleReference mRef = module.getModuleReference();
     return getClassLoadingProgress(mRef);
   }
 
@@ -119,7 +112,7 @@ public class ClassLoadersHolder {
    *                   No actual loading is performed for these modules.
    * @return modules which changed their ClassLoadingProgress from UNLOADED to LAZY_LOADED.
    */
-  public Collection<? extends ReloadableModule> onLazyLoaded(Set<? extends ReloadableModule> toLoadLazy) {
+  public Collection<ReloadableModule> onLazyLoaded(Set<? extends ReloadableModule> toLoadLazy) {
     return myMPSClassLoadersRegistry.onLazyLoaded(toLoadLazy);
   }
 
@@ -152,7 +145,7 @@ public class ClassLoadersHolder {
       return myMPSLoadableModules.get(mRef);
     }
 
-    public synchronized Collection<? extends SModuleReference> doUnloadModules(Collection<? extends SModuleReference> toUnload) {
+    public synchronized Collection<SModuleReference> doUnloadModules(Collection<? extends SModuleReference> toUnload) {
       Collection<SModuleReference> unloaded = new LinkedHashSet<SModuleReference>();
       for (SModuleReference mRef : toUnload) {
         if (!myMPSLoadableModules.containsKey(mRef)) {
@@ -166,10 +159,10 @@ public class ClassLoadersHolder {
       return unloaded;
     }
 
-    public synchronized Collection<? extends ReloadableModule> onLazyLoaded(Collection<? extends ReloadableModule> toLoadLazy) {
+    public synchronized Collection<ReloadableModule> onLazyLoaded(Collection<? extends ReloadableModule> toLoadLazy) {
       Collection<ReloadableModule> lazyLoaded = new LinkedHashSet<ReloadableModule>();
       for (ReloadableModule module : toLoadLazy) {
-        SModuleReference mRef = ((ReloadableModuleBase) module).getModuleReference();
+        SModuleReference mRef = module.getModuleReference();
         ClassLoadingProgress classLoadingProgress = myMPSLoadableModules.get(mRef);
         if (classLoadingProgress != null) {
           LOG.error("Illegal state: module is already loaded " + module, new Throwable());
@@ -185,7 +178,7 @@ public class ClassLoadersHolder {
       try {
         monitor.start("Loading modules...", toLoad.size());
         for (ReloadableModule module : toLoad) {
-          SModuleReference moduleReference = ((ReloadableModuleBase) module).getModuleReference();
+          SModuleReference moduleReference = module.getModuleReference();
           if (getClassLoadingProgress(moduleReference) == ClassLoadingProgress.UNLOADED) throw new IllegalStateException("Module " + moduleReference + " is in UNLOADED state, i.e. no listeners know about this module");
           if (getClassLoadingProgress(moduleReference) == ClassLoadingProgress.LOADED) continue;
           ModuleClassLoader classLoader = createModuleClassLoader(module);
