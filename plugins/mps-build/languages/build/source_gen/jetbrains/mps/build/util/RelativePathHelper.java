@@ -16,7 +16,7 @@ public class RelativePathHelper {
     }
     String normalized = FileUtil.getAbsolutePath(fullPath).replace("\\", "/");
     try {
-      return FileUtil.getRelativePath(normalized, (myBasePath.endsWith("/") ? myBasePath : myBasePath + "/"), "/");
+      return FileUtil.getRelativePath(normalized, myBasePath, "/");
     } catch (Exception ex) {
       throw new RelativePathHelper.PathException(ex, ex.getMessage());
     }
