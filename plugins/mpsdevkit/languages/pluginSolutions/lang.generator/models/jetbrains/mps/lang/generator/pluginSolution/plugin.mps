@@ -1237,65 +1237,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="nMe5u0DxeT" role="3cqZAp">
-          <node concept="2OqwBi" id="nMe5u0DxeU" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTsSH" role="2Oq$k0">
-              <ref role="3cqZAo" node="7n$nUH0IZwq" resolve="myNameCombo" />
-            </node>
-            <node concept="liA8E" id="nMe5u0DxeW" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JComboBox.addActionListener(java.awt.event.ActionListener):void" resolve="addActionListener" />
-              <node concept="2ShNRf" id="nMe5u0DxeX" role="37wK5m">
-                <node concept="YeOm9" id="nMe5u0DxeY" role="2ShVmc">
-                  <node concept="1Y3b0j" id="nMe5u0DxeZ" role="YeSDq">
-                    <ref role="1Y3XeK" to="hyam:~ActionListener" resolve="ActionListener" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="3Tm1VV" id="nMe5u0Dxf0" role="1B3o_S" />
-                    <node concept="3clFb_" id="nMe5u0Dxf1" role="jymVt">
-                      <property role="1EzhhJ" value="false" />
-                      <property role="TrG5h" value="actionPerformed" />
-                      <node concept="3Tm1VV" id="nMe5u0Dxf2" role="1B3o_S" />
-                      <node concept="3cqZAl" id="nMe5u0Dxf3" role="3clF45" />
-                      <node concept="37vLTG" id="nMe5u0Dxf4" role="3clF46">
-                        <property role="TrG5h" value="p0" />
-                        <node concept="3uibUv" id="nMe5u0Dxf5" role="1tU5fm">
-                          <ref role="3uigEE" to="hyam:~ActionEvent" resolve="ActionEvent" />
-                        </node>
-                      </node>
-                      <node concept="3clFbS" id="nMe5u0Dxf6" role="3clF47">
-                        <node concept="3clFbF" id="nMe5u0Dxf7" role="3cqZAp">
-                          <node concept="37vLTI" id="nMe5u0Dxf8" role="3clFbG">
-                            <node concept="2OqwBi" id="nMe5u0Dxf9" role="37vLTJ">
-                              <node concept="Xjq3P" id="nMe5u0Dxfa" role="2Oq$k0">
-                                <ref role="1HBi2w" node="nMe5u0DxdI" resolve="AttachMappingLabelDialog" />
-                              </node>
-                              <node concept="2OwXpG" id="nMe5u0Dxfb" role="2OqNvi">
-                                <ref role="2Oxat5" node="nMe5u0Dxh4" resolve="myResultLabelName" />
-                              </node>
-                            </node>
-                            <node concept="10QFUN" id="nMe5u0Dxfc" role="37vLTx">
-                              <node concept="2OqwBi" id="nMe5u0Dxfd" role="10QFUP">
-                                <node concept="37vLTw" id="3GM_nagTwsn" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="7n$nUH0IZwq" resolve="myNameCombo" />
-                                </node>
-                                <node concept="liA8E" id="nMe5u0Dxff" role="2OqNvi">
-                                  <ref role="37wK5l" to="dxuu:~JComboBox.getSelectedItem():java.lang.Object" resolve="getSelectedItem" />
-                                </node>
-                              </node>
-                              <node concept="17QB3L" id="nMe5u0Dxfg" role="10QFUM" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="2AHcQZ" id="3tYsUK_sYB_" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="nMe5u0Dxfh" role="3cqZAp">
           <node concept="3clFbS" id="nMe5u0Dxfi" role="3clFbx">
             <node concept="3clFbF" id="nMe5u0Dxfj" role="3cqZAp">
@@ -1391,6 +1332,75 @@
               <node concept="Xjq3P" id="nMe5u0DxfU" role="2Oq$k0" />
             </node>
             <node concept="3GX2aA" id="nMe5u0DxfV" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="nMe5u0DxeT" role="3cqZAp">
+          <node concept="2OqwBi" id="nMe5u0DxeU" role="3clFbG">
+            <node concept="37vLTw" id="3GM_nagTsSH" role="2Oq$k0">
+              <ref role="3cqZAo" node="7n$nUH0IZwq" resolve="myNameCombo" />
+            </node>
+            <node concept="liA8E" id="nMe5u0DxeW" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComboBox.addActionListener(java.awt.event.ActionListener):void" resolve="addActionListener" />
+              <node concept="2ShNRf" id="nMe5u0DxeX" role="37wK5m">
+                <node concept="YeOm9" id="nMe5u0DxeY" role="2ShVmc">
+                  <node concept="1Y3b0j" id="nMe5u0DxeZ" role="YeSDq">
+                    <ref role="1Y3XeK" to="hyam:~ActionListener" resolve="ActionListener" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                    <node concept="3Tm1VV" id="nMe5u0Dxf0" role="1B3o_S" />
+                    <node concept="3clFb_" id="nMe5u0Dxf1" role="jymVt">
+                      <property role="1EzhhJ" value="false" />
+                      <property role="TrG5h" value="actionPerformed" />
+                      <node concept="3Tm1VV" id="nMe5u0Dxf2" role="1B3o_S" />
+                      <node concept="3cqZAl" id="nMe5u0Dxf3" role="3clF45" />
+                      <node concept="37vLTG" id="nMe5u0Dxf4" role="3clF46">
+                        <property role="TrG5h" value="p0" />
+                        <node concept="3uibUv" id="nMe5u0Dxf5" role="1tU5fm">
+                          <ref role="3uigEE" to="hyam:~ActionEvent" resolve="ActionEvent" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="nMe5u0Dxf6" role="3clF47">
+                        <node concept="3clFbF" id="nMe5u0Dxf7" role="3cqZAp">
+                          <node concept="37vLTI" id="nMe5u0Dxf8" role="3clFbG">
+                            <node concept="2OqwBi" id="nMe5u0Dxf9" role="37vLTJ">
+                              <node concept="Xjq3P" id="nMe5u0Dxfa" role="2Oq$k0">
+                                <ref role="1HBi2w" node="nMe5u0DxdI" resolve="AttachMappingLabelDialog" />
+                              </node>
+                              <node concept="2OwXpG" id="nMe5u0Dxfb" role="2OqNvi">
+                                <ref role="2Oxat5" node="nMe5u0Dxh4" resolve="myResultLabelName" />
+                              </node>
+                            </node>
+                            <node concept="10QFUN" id="nMe5u0Dxfc" role="37vLTx">
+                              <node concept="2OqwBi" id="nMe5u0Dxfd" role="10QFUP">
+                                <node concept="37vLTw" id="3GM_nagTwsn" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="7n$nUH0IZwq" resolve="myNameCombo" />
+                                </node>
+                                <node concept="liA8E" id="nMe5u0Dxff" role="2OqNvi">
+                                  <ref role="37wK5l" to="dxuu:~JComboBox.getSelectedItem():java.lang.Object" resolve="getSelectedItem" />
+                                </node>
+                              </node>
+                              <node concept="17QB3L" id="nMe5u0Dxfg" role="10QFUM" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="1Q6fdFzjKwT" role="3cqZAp">
+                          <node concept="2OqwBi" id="1Q6fdFzjKzS" role="3clFbG">
+                            <node concept="Xjq3P" id="1Q6fdFzjKwS" role="2Oq$k0">
+                              <ref role="1HBi2w" node="nMe5u0DxdI" resolve="AttachMappingLabelDialog" />
+                            </node>
+                            <node concept="liA8E" id="1Q6fdFzjSh2" role="2OqNvi">
+                              <ref role="37wK5l" node="6Tprc1FNCBq" resolve="doOKAction" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2AHcQZ" id="3tYsUK_sYB_" role="2AJF6D">
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="nMe5u0DxfW" role="3cqZAp">
