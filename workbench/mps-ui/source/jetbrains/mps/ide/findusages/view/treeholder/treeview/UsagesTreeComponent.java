@@ -142,14 +142,19 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     myViewToolbar.setViewOptions(myViewOptions);
   }
 
-  public void setComponentsViewOptions(ViewOptions options) {
+  private void setComponentsViewOptions(ViewOptions options) {
     myViewToolbar.setViewOptions(options);
     myTree.setShowPopupMenu(options.myShowPopupMenu);
   }
 
-  public void getComponentsViewOptions(ViewOptions options) {
-    myViewToolbar.getViewOptions(options);
-    options.myShowPopupMenu = myTree.isShowPopupMenu();
+  /**
+   * @return actual state of view options
+   */
+  public ViewOptions getComponentsViewOptions() {
+    myViewToolbar.fillViewOptions(myViewOptions);
+    myViewOptions.myShowPopupMenu = myTree.isShowPopupMenu();
+    myViewOptions.myAutoscrolls = myTree.isAutoscroll();
+    return myViewOptions;
   }
 
   public void read(Element element, Project project) throws CantLoadSomethingException {
@@ -190,8 +195,8 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     element.addContent(nodeRepresentatorXML);
 
     Element viewOptionsXML = new Element(VIEW_OPTIONS);
-    getComponentsViewOptions(myViewOptions);
-    myViewOptions.write(viewOptionsXML, project);
+    ViewOptions op = getComponentsViewOptions();
+    op.write(viewOptionsXML, project);
     element.addContent(viewOptionsXML);
 
     Element contentsXML = new Element(CONTENTS);
@@ -255,7 +260,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       recreateToolbar();
     }
 
-    public void getViewOptions(ViewOptions options) {
+    public void fillViewOptions(ViewOptions options) {
       myPathOptionsToolbar.getViewOptions(options);
       myViewOptionsToolbar.getViewOptions(options);
     }
@@ -501,8 +506,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     @Override
     public final void setSelected(AnActionEvent e, boolean state) {
       doSetSelected(e, state);
-      getComponentsViewOptions(myViewOptions);
-      myDefaultOptions.setValues(myViewOptions);
+      myDefaultOptions.setValues(getComponentsViewOptions());
     }
 
     public abstract void doSetSelected(AnActionEvent e, boolean state);
