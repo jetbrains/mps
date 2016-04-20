@@ -22,9 +22,6 @@ import com.intellij.ide.OccurenceNavigator;
 import com.intellij.ide.OccurenceNavigatorSupport;
 import com.intellij.ide.TreeExpander;
 import com.intellij.openapi.actionSystem.ActionGroup;
-import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
@@ -59,7 +56,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -141,7 +137,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     myPathProvider.add(PathItemRole.ROLE_MAIN_RESULTS);
     myPathProvider.add(PathItemRole.ROLE_TARGET_NODE);
 
-    myViewToolbar = new ViewToolbar(myTree);
+    myViewToolbar = new ViewToolbar();
     myActionsToolbar = new ActionsToolbar();
 
     myDefaultOptions = defaultOptions;
@@ -270,8 +266,8 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     return myActionsToolbar.getActions();
   }
 
-  public JComponent getViewToolbar() {
-    return myViewToolbar;
+  public ActionGroup getViewToolbar() {
+    return myViewToolbar.getActions();
   }
 
   public UsagesTree getTree() {
@@ -306,40 +302,35 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     };
   }
 
-  class ViewToolbar extends JPanel {
-    private final JComponent myTargetComponent;
+  class ViewToolbar {
     private PathOptionsToolbar myPathOptionsToolbar;
     private ViewOptionsToolbar myViewOptionsToolbar;
-    private JComponent myToolbar = null;
 
-    public ViewToolbar(JComponent targetComponent) {
-      myTargetComponent = targetComponent;
+    public ViewToolbar() {
       myPathOptionsToolbar = new PathOptionsToolbar();
       myViewOptionsToolbar = new ViewOptionsToolbar();
 
       recreateToolbar();
     }
 
-    private void recreateToolbar() {
-      if (myToolbar != null) {
-        remove(myToolbar);
-      }
 
+    ActionGroup getActions() {
       DefaultActionGroup actionGroup = new DefaultActionGroup();
-      myPathOptionsToolbar.recreateActions();
       actionGroup.addAll(myPathOptionsToolbar.getActions());
       actionGroup.addSeparator();
       actionGroup.addAll(myViewOptionsToolbar.getActions());
-      ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, actionGroup, false);
-      actionToolbar.setTargetComponent(myTargetComponent);
-      myToolbar = actionToolbar.getComponent();
-      add(myToolbar);
+      return actionGroup;
+    }
+
+    void recreateToolbar() {
+      myPathOptionsToolbar.recreateActions();
     }
 
     public void setViewOptions(ViewOptions options) {
+      myTree.startAdjusting();
       myPathOptionsToolbar.setViewOptions(options);
       myViewOptionsToolbar.setViewOptions(options);
-
+      myTree.finishAdjusting();
       recreateToolbar();
     }
 
@@ -348,6 +339,9 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       myViewOptionsToolbar.getViewOptions(options);
     }
 
+    /**
+     * actions to control visibility/grouping of nodes one have searched for.
+     */
     class ViewOptionsToolbar {
       private MyBaseToggleAction myAdditionalInfoNeededButton;
       private MyBaseToggleAction myShowSearchedNodesButton;
@@ -410,8 +404,6 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       }
 
       public void setViewOptions(ViewOptions options) {
-        myTree.startAdjusting();
-
         myAdditionalInfoNeededButton.doSetSelected(null, options.myInfo);
         myShowSearchedNodesButton.doSetSelected(null, options.myShowSearchedNodes);
         myGroupSearchedNodesButton.doSetSelected(null, options.myGroupSearchedNodes);
@@ -425,7 +417,6 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
         if (!myAdditionalInfoButtonVisible) {
           myActions.remove(myAdditionalInfoNeededButton);
         }
-        myTree.finishAdjusting();
       }
 
       public void getViewOptions(ViewOptions options) {
@@ -439,6 +430,9 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       }
     }
 
+    /**
+     * actions to control grouping of usage results
+     */
     class PathOptionsToolbar {
       private List<MyBaseToggleAction> myCategoryPathButtons = new ArrayList<>();
       private MyBaseToggleAction myModulePathButton;
@@ -448,10 +442,9 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       private DefaultActionGroup myActions;
 
       public PathOptionsToolbar() {
-        recreateActions();
       }
 
-      private void recreateActions() {
+      void recreateActions() {
         List<CategoryKind> categoryKinds = Collections.singletonList(
             new CategoryKind(CategoryKind.DEFAULT_CATEGORY_KIND.getName(), General.Filter, CategoryKind.DEFAULT_CATEGORY_KIND.getTooltip())
         );
@@ -524,8 +517,6 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       }
 
       public void setViewOptions(ViewOptions options) {
-        myTree.startAdjusting();
-
         int size = Math.min(myCategoryPathButtons.size(), options.myCategories.length);
         for (int i = 0; i < size; i++) {
           myCategoryPathButtons.get(i).doSetSelected(null, options.myCategories[i]);
@@ -535,8 +526,6 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
         myModelPathButton.doSetSelected(null, options.myModel);
         myRootPathButton.doSetSelected(null, options.myRoot);
         myNamedConceptPathButton.doSetSelected(null, options.myNamedPath);
-
-        myTree.finishAdjusting();
       }
 
       public void getViewOptions(ViewOptions options) {
@@ -583,6 +572,9 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     }
   }
 
+  /**
+   * generic tree actions like expand/collapse and occurrence navigation
+   */
   class ActionsToolbar {
     private DefaultActionGroup myActions;
     private MyBaseToggleAction myAutoscrollButton;

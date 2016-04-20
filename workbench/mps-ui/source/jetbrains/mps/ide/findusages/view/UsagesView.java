@@ -77,6 +77,13 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class UsagesView implements IExternalizeable {
+  /**
+   * Action place for toolbar of the view. Added just because it's right to have one.
+   * Package-local unless anyone needs it.
+   *
+   */
+  /*package*/ static final String TOOLBAR_PLACE = "mps.UsagesViewToolbar";
+
   //read/write constants
   private static final String QUERY = "query";
   private static final String RESULT_PROVIDER = "result_provider";
@@ -114,12 +121,7 @@ public class UsagesView implements IExternalizeable {
     myTreeComponent = new UsagesTreeComponent(defaultOptions, myProject, changeTracker);
     myPanel = new RootPanel(myTreeComponent.getOccurenceNavigator());
 
-    JPanel treeWrapperPanel = new JPanel(new BorderLayout());
-    JPanel treeToolbarPanel = new JPanel(new BorderLayout());
-    treeToolbarPanel.add(myTreeComponent.getViewToolbar(), BorderLayout.NORTH);
-    treeWrapperPanel.add(treeToolbarPanel, BorderLayout.WEST);
-    treeWrapperPanel.add(myTreeComponent, BorderLayout.CENTER);
-    myPanel.add(treeWrapperPanel, BorderLayout.CENTER);
+    myPanel.add(myTreeComponent, BorderLayout.CENTER);
 
     myPanel.setMinimumSize(new Dimension());
     myChangeTracker = changeTracker;
@@ -167,10 +169,17 @@ public class UsagesView implements IExternalizeable {
   }
 
   public void setActions(AnAction... actions) {
+    // view has composite toolbar that consists of two independent toolbars:
+    // first is populated with externally supplied actions plus generic actions (like expand/collapse, occurrence navigation) coming from UsageTreeComponent
+    // second holds grouping actions (categories and whether to show/group nodes we've searched for).
+    // Indeed, this distinction looks superficial.
     DefaultActionGroup ag = new DefaultActionGroup();
     ag.addAll(actions);
     ag.addAll(myTreeComponent.getActionsToolbar());
-    myPanel.add(createActionsToolbar(ag, myTreeComponent), BorderLayout.WEST);
+    JPanel toolbarPanel = new JPanel(new BorderLayout(), false);
+    toolbarPanel.add(createActionsToolbar(ag, myTreeComponent), BorderLayout.WEST);
+    toolbarPanel.add(createActionsToolbar(myTreeComponent.getViewToolbar(), myTreeComponent.getTree()), BorderLayout.EAST);
+    myPanel.add(toolbarPanel, BorderLayout.WEST);
   }
 
   public void setActions(Collection<? extends AnAction> actions) {
@@ -270,13 +279,14 @@ public class UsagesView implements IExternalizeable {
     }
   }
 
-  private JPanel createActionsToolbar(ActionGroup ag, JComponent targetComponent) {
+  private JComponent createActionsToolbar(ActionGroup ag, JComponent targetComponent) {
+    // FIXME do I need this JPanel here?
     JPanel rv = new JPanel();
     rv.setBorder(BorderFactory.createEmptyBorder(2, 1, 2, 1));
     ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.USAGE_VIEW_TOOLBAR, ag, false);
     actionToolbar.setTargetComponent(targetComponent);
-    actionToolbar.setOrientation(SwingConstants.VERTICAL);
-    rv.add(actionToolbar.getComponent());
+    JComponent rv = actionToolbar.getComponent();
+    rv.setBorder(BorderFactory.createEmptyBorder(2, 1, 2, 1));
     return rv;
   }
 
