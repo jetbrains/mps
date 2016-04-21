@@ -69,21 +69,12 @@ public abstract class BaseNodeData implements IExternalizeable {
     myIsExcluded = isExcluded;
   }
 
-  //must be used only via DataTree
-  public void setExpanded(boolean isExpanded) {
-    myIsExpanded = isExpanded;
-  }
-
   public boolean isResultsSection() {
     return myResultsSection;
   }
 
   public boolean isExcluded() {
     return myIsExcluded;
-  }
-
-  public boolean isExpanded() {
-    return myIsExpanded;
   }
 
   public PathItemRole getRole() {

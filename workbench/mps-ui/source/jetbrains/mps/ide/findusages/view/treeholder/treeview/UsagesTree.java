@@ -50,8 +50,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.KeyStroke;
-import javax.swing.event.TreeExpansionEvent;
-import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
@@ -108,20 +106,6 @@ public class UsagesTree extends MPSTree {
       KeyStroke insertKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_INSERT, 0);
       getInputMap().put(insertKeyStroke, COMMAND_INCLUDE);
     }
-
-    addTreeExpansionListener(new TreeExpansionListener() {
-      @Override
-      public void treeExpanded(TreeExpansionEvent event) {
-        BaseNodeData data = ((UsagesTreeNode) event.getPath().getLastPathComponent()).getUserObject().getData();
-        data.setExpanded(true);
-      }
-
-      @Override
-      public void treeCollapsed(TreeExpansionEvent event) {
-        BaseNodeData data = ((UsagesTreeNode) event.getPath().getLastPathComponent()).getUserObject().getData();
-        data.setExpanded(false);
-      }
-    });
 
     getActionMap().put(COMMAND_OPEN_NODE_IN_PROJECT, new AbstractAction() {
       @Override
