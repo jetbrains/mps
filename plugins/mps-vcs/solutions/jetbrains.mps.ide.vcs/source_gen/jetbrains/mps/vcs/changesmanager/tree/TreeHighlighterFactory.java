@@ -10,7 +10,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree;
+import jetbrains.mps.ide.findusages.view.UsagesTree;
 import jetbrains.mps.ide.hierarchy.AbstractHierarchyTree;
 
 public class TreeHighlighterFactory implements ProjectComponent {

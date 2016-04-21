@@ -53,8 +53,6 @@ import jetbrains.mps.ide.findusages.model.holders.VoidHolder;
 import jetbrains.mps.ide.findusages.view.icons.Icons;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTreeComponent;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
 import jetbrains.mps.ide.project.ProjectHelper;

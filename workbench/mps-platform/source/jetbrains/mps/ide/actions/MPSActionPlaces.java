@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,4 +23,8 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 public abstract class MPSActionPlaces extends ActionPlaces {
 
   public static final String MPS_MESSAGES_POPUP = "MPSMessagesPopup";
+  /**
+   * Action place for Usages view (both for toolbar and popup actions).
+   */
+  public static final String USAGES_VIEW = "mps.UsagesView";
 }

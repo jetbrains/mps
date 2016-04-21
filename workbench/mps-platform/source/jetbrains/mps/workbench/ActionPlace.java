@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.workbench;
 
+// XXX there's also MPSActionPlaces with strings, which one needs update, both?
 public enum ActionPlace {
   EDITOR(),
 
@@ -34,6 +35,7 @@ public enum ActionPlace {
   PROJECT_PANE_FILE(),
   PROJECT_PANE_FOLDER(),
   PROJECT_PANE(),
+  USAGES_VIEW(),
 
   MODULE_DEPENDENCIES();
 }

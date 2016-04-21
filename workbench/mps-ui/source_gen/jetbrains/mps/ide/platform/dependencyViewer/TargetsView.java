@@ -5,7 +5,7 @@ package jetbrains.mps.ide.platform.dependencyViewer;
 import jetbrains.mps.ide.findusages.view.UsagesView;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree;
+import jetbrains.mps.ide.findusages.view.UsagesTree;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;

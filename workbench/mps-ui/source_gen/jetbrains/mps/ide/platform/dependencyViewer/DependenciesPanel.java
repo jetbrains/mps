@@ -74,6 +74,7 @@ public class DependenciesPanel extends JPanel {
     setVisible(true);
     myInitTree.setContent(scope);
     myInitialScope = scope;
+    myTargetsView.limitTo(limitTargets);
     updateTargetsView(scope);
     revalidate();
   }

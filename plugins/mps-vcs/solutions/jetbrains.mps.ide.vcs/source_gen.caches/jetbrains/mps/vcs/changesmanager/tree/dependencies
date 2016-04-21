@@ -178,7 +178,7 @@
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="com.intellij.util.ui.update.MergingUpdateQueue" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.UsagesTree" />
     <classNode dependClassName="jetbrains.mps.ide.hierarchy.AbstractHierarchyTree" />
     <classNode dependClassName="jetbrains.mps.ide.projectPane.logicalview.ProjectTree" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTree" />
@@ -200,11 +200,11 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.tree.UsagesTreeFeatureExtractor">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.ide.findusages.view.UsagesTree" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.view.treeholder.tree.DataNode" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTreeNode" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.features.Feature" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.features.ModelFeature" />

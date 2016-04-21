@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.ide.findusages.view.treeholder.treeview;
+package jetbrains.mps.ide.findusages.view;
 
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -31,12 +31,8 @@ import jetbrains.mps.ide.findusages.view.icons.Icons;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTree;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.IChangeListener;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.AbstractResultNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree.UsagesTreeNode;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
@@ -56,6 +52,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// could be package local, except for the fact it's exposed from UsagesView.getTreeComponent()
 public class UsagesTreeComponent extends JPanel implements IChangeListener {
   private static final String CONTENTS = "contents";
   private static final String VIEW_OPTIONS = "view_options";

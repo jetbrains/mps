@@ -213,12 +213,16 @@ public abstract class BaseAction extends AnAction {
   }
 
   public void addPlace(ActionPlace place) {
-    if (myPlaces == null) myPlaces = new HashSet<>();
+    if (myPlaces == null) {
+      myPlaces = new HashSet<>(8);
+    }
     myPlaces.add(place);
   }
 
   public Set<ActionPlace> getPlaces() {
-    if (myPlaces != null) return myPlaces;
+    if (myPlaces != null) {
+      return myPlaces;
+    }
     Set<ActionPlace> result = new HashSet<>();
     result.add(null);
     return result;

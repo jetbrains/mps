@@ -28,7 +28,6 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="7e8u" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree(MPS.Platform/)" />
     <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
-    <import index="dsdj" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view.treeholder.treeview(MPS.Platform/)" />
     <import index="paf" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.projectPane.logicalview(MPS.Workbench/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="qoip" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes(MPS.Platform/)" />
@@ -47,6 +46,7 @@
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="j936" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.ui(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="ngmm" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view(MPS.Platform/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
   </imports>
@@ -7203,8 +7203,8 @@
           </node>
           <node concept="3eNFk2" id="fQV$h4hdhf" role="3eNLev">
             <node concept="2ZW3vV" id="fQV$h4hdhj" role="3eO9$A">
-              <node concept="3uibUv" id="fQV$h4hdtk" role="2ZW6by">
-                <ref role="3uigEE" to="dsdj:~UsagesTree" resolve="UsagesTree" />
+              <node concept="3uibUv" id="KfaXMvXsdO" role="2ZW6by">
+                <ref role="3uigEE" to="ngmm:~UsagesTree" resolve="UsagesTree" />
               </node>
               <node concept="37vLTw" id="2BHiRxgmaeN" role="2ZW6bz">
                 <ref role="3cqZAo" node="lHz8tP4LUe" resolve="tree" />
@@ -7454,8 +7454,8 @@
       <node concept="3clFbS" id="fQV$h4hdh8" role="3clF47">
         <node concept="3clFbJ" id="fQV$h4hdhb" role="3cqZAp">
           <node concept="2ZW3vV" id="fQV$h4hdtw" role="3clFbw">
-            <node concept="3uibUv" id="fQV$h4hohT" role="2ZW6by">
-              <ref role="3uigEE" to="dsdj:~UsagesTree$UsagesTreeNode" resolve="UsagesTree.UsagesTreeNode" />
+            <node concept="3uibUv" id="KfaXMvXsRx" role="2ZW6by">
+              <ref role="3uigEE" to="ngmm:~UsagesTree$UsagesTreeNode" resolve="UsagesTree.UsagesTreeNode" />
             </node>
             <node concept="37vLTw" id="2BHiRxgma0i" role="2ZW6bz">
               <ref role="3cqZAo" node="fQV$h4hdh2" resolve="treeNode" />
@@ -7476,12 +7476,12 @@
                           <ref role="3cqZAo" node="fQV$h4hdh2" resolve="treeNode" />
                         </node>
                         <node concept="3uibUv" id="fQV$h4hpeA" role="10QFUM">
-                          <ref role="3uigEE" to="dsdj:~UsagesTree$UsagesTreeNode" resolve="UsagesTree.UsagesTreeNode" />
+                          <ref role="3uigEE" to="ngmm:~UsagesTree$UsagesTreeNode" resolve="UsagesTree.UsagesTreeNode" />
                         </node>
                       </node>
                     </node>
                     <node concept="liA8E" id="fQV$h4hpeB" role="2OqNvi">
-                      <ref role="37wK5l" to="dsdj:~UsagesTree$UsagesTreeNode.getUserObject()" resolve="getUserObject" />
+                      <ref role="37wK5l" to="ngmm:~UsagesTree$UsagesTreeNode.getUserObject()" resolve="getUserObject" />
                     </node>
                   </node>
                   <node concept="liA8E" id="fQV$h4hpeC" role="2OqNvi">
