@@ -156,9 +156,20 @@ public class LanguageScopeFactory {
   private static class LanguagesHolder extends IdentityWrapper<Iterable<SLanguage>> {
 
     private LanguageScope myLangScope = null;
+    private final int myHash;
 
     public LanguagesHolder(Iterable<SLanguage> langs)  {
       super(langs);
+      int tempHash = 0;
+      for (SLanguage lang : langs) {
+        tempHash ^= lang.getSourceModule().getModuleId().hashCode();
+      }
+      myHash = tempHash;
+    }
+
+    @Override
+    public int hashCode() {
+      return myHash;
     }
 
     public boolean hasScope () {
