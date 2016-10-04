@@ -97,7 +97,7 @@ public final class NewTemplateInRootMappingRule_Intention extends IntentionDescr
           if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, "jetbrains.mps.lang.generator.structure.MappingScript"))) {
             return false;
           }
-          return true;
+          return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(c), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"));
         }
       });
     }
