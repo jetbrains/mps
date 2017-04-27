@@ -246,7 +246,7 @@ public class FilePerRootFormatUtil {
         case '>':
         case '|':
         case '#':
-          sb.append("_");
+          sb.append('_');
           continue;
       }
       sb.append((char) c);

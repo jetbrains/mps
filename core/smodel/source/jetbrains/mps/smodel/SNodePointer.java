@@ -117,7 +117,7 @@ public class SNodePointer implements SNodeReference {
   }
 
   public static SNodeReference deserialize(String from) {
-    int delimiterIndex = from.lastIndexOf("/");
+    int delimiterIndex = from.lastIndexOf('/');
     String nodeId = StringUtil.unescapeRefChars(from.substring(delimiterIndex + 1));
     String modelReference = from.substring(0, delimiterIndex);
 

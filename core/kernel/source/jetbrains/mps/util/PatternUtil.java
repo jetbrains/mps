@@ -80,7 +80,7 @@ public class PatternUtil {
       return State.NO_QUOTING;
     } else if (c == '?') {
       if (useStarAndQuestionMark) {
-        b.append(".");
+        b.append('.');
       } else {
         b.append("\\?");
       }

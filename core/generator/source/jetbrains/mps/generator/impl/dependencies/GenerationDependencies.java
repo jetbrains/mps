@@ -134,12 +134,12 @@ public class GenerationDependencies {
     Arrays.sort(keys);
     for (String key : keys) {
       sb.append("-------------------------\n");
-      sb.append(key).append("\n");
+      sb.append(key).append('\n');
       String val = myDependenciesTraces.get(key);
       for (String s : val.split("\n")) {
-        sb.append("\t\t").append(s).append("\n");
+        sb.append("\t\t").append(s).append('\n');
       }
-      sb.append("\n");
+      sb.append('\n');
     }
     myDependenciesTraces = null;
     return sb.toString();

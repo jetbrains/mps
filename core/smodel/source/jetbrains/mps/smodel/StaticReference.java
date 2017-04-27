@@ -128,7 +128,7 @@ public final class StaticReference extends SReferenceBase {
       sb.append("\nstack trace of model disposing is: ");
       for (StackTraceElement ste : ((ModelWithDisposeInfo) targetModel).getDisposedStacktrace()) {
         sb.append(ste);
-        sb.append("\n");
+        sb.append('\n');
       }
       log.error(sb.toString());
       log.errorWithTrace("=============current trace:=============");

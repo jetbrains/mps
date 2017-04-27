@@ -171,11 +171,11 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
 
     for (IClassPathItem child : myChildren) {
       for (String s : child.toString().split("/[\n]/")) {
-        result.append('\t').append(s).append("\n");
+        result.append('\t').append(s).append('\n');
       }
     }
 
-    result.append("}");
+    result.append('}');
     return result.toString();
   }
 }

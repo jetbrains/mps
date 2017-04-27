@@ -54,9 +54,9 @@ public class AnalysisResult<E> {
     StringBuilder r = new StringBuilder();
     for (int i = 0; i < myProgram.size(); i++) {
       Instruction instruction = myProgram.get(i);
-      r.append(instruction).append(" ");
+      r.append(instruction).append(' ');
       r.append(toString(myInstructionsResult.get(instruction)));
-      r.append("\n");
+      r.append('\n');
     }
     return r.toString();
   }

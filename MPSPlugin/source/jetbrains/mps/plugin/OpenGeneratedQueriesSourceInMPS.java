@@ -68,7 +68,7 @@ public class OpenGeneratedQueriesSourceInMPS extends AnAction {
   private void openSource(Project project, String namespace, String name) {
     ProjectHandler projectHandler = project.getComponent(ProjectHandler.class);
 
-    int lastUnderscore = name.lastIndexOf("_");
+    int lastUnderscore = name.lastIndexOf('_');
 
     if (lastUnderscore == -1 || lastUnderscore > name.length() - 1) return;
     String id = name.substring(lastUnderscore + 1);

@@ -104,13 +104,13 @@ public class PerformanceTracer implements IPerformanceTracer {
       myStack[0].task.tasks.addAll(myStack[0].children.values());
       myStack[0].task.merge(new HashSet<>(Arrays.asList(separate)));
       StringBuilder sb = new StringBuilder();
-      sb.append("[");
+      sb.append('[');
       sb.append(traceName);
       sb.append("]\n");
       myStack[0].task.toString(sb, 0);
       for (String s : externalText) {
         sb.append(s);
-        sb.append("\n");
+        sb.append('\n');
       }
       return sb.toString();
     } else {
@@ -201,7 +201,7 @@ public class PerformanceTracer implements IPerformanceTracer {
           sb.append((executionTime - correction) / 1000000.);
           sb.append(" ms)");
         }
-        sb.append("\n");
+        sb.append('\n');
       }
       Collections.sort(tasks);
       for (Task t : tasks) {

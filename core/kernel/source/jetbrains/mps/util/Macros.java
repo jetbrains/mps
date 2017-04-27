@@ -44,7 +44,7 @@ class Macros {
     if (!MacrosFactory.containsMacro(path)) {
       return path;
     }
-    String macro = path.substring(2, path.indexOf("}"));
+    String macro = path.substring(2, path.indexOf('}'));
     String relativePath = removePrefix(path);
     String macroValue = PATH_MACROS.getValue(macro);
     if (macroValue != null) {
@@ -89,7 +89,7 @@ class Macros {
   }
 
   String removePrefix(String path) {
-    String result = path.substring(path.indexOf("}") + 1);
+    String result = path.substring(path.indexOf('}') + 1);
     if (result.startsWith(File.separator)) {
       result = result.substring(1);
     }

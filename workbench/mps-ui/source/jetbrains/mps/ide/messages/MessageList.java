@@ -490,7 +490,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
       final StringBuilder sb = new StringBuilder();
       for (IMessage message : selectedValues) {
         sb.append(message.getText());
-        sb.append("\n");
+        sb.append('\n');
 
         if (message.getException() != null) {
           sb.append(ExceptionUtil.getThrowableText(message.getException()));

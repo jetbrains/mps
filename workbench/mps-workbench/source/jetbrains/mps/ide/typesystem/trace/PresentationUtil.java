@@ -47,7 +47,7 @@ public class PresentationUtil {
         sb.append(var);
         sb.append(" is a type of ");
         sb.append(getNodePresentation(editorComponent, node));
-        sb.append("\n");
+        sb.append('\n');
       }
     }
     return sb.toString();

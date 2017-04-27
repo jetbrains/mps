@@ -110,6 +110,6 @@ public class ModuleNameFixer {
     }
 
     content = content.substring(content.indexOf(prefix) + prefix.length());
-    return content.substring(0, content.indexOf("\""));
+    return content.substring(0, content.indexOf('\"'));
   }
 }

@@ -52,7 +52,7 @@ class AbstractJarFileData {
   }
 
   String getParentDirectory(String dir) {
-    int lastSlash = dir.lastIndexOf("/");
+    int lastSlash = dir.lastIndexOf('/');
     if (lastSlash == -1) return "";
     return dir.substring(0, lastSlash);
   }

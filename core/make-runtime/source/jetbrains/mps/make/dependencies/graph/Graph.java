@@ -73,7 +73,7 @@ public class Graph<V extends IVertex> {
         }
         j++;
       }
-      sb.append("\n");
+      sb.append('\n');
     }
 
     return sb.toString();

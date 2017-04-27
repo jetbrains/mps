@@ -210,7 +210,7 @@ public class Utils {
     }
 
     private String removePrefix(String path) {
-      String result = path.substring(path.indexOf("}") + 1);
+      String result = path.substring(path.indexOf('}') + 1);
       if (result.startsWith(File.separator)) result = result.substring(1);
       return result;
     }

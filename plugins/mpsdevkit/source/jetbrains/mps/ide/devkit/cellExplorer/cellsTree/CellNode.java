@@ -79,7 +79,7 @@ class CellNode extends MPSTreeNode {
 
     String text = getCellText();
     if (text != null) {
-      result.append(" \"").append(text).append("\"");
+      result.append(" \"").append(text).append('\"');
     }
     return result.toString();
   }

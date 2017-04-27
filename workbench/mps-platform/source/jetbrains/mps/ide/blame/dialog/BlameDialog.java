@@ -268,7 +268,7 @@ public class BlameDialog extends DialogWrapper {
     builder.append("Build number: ''").append(ai.getBuild().asString()).append("''\n");
     builder.append("Version: ''").append(ai.getFullVersion()).append("''\n");
     if (myPluginDescriptor != null) {
-      builder.append("*[Plugin info]*").append("\n");
+      builder.append("*[Plugin info]*").append('\n');
       builder.append("Plugin id: ''").append(myPluginDescriptor.getPluginId()).append("''\n");
       if (myPluginDescriptor instanceof IdeaPluginDescriptor) {
         final IdeaPluginDescriptor pluginDescriptor = (IdeaPluginDescriptor) myPluginDescriptor;
@@ -310,12 +310,12 @@ public class BlameDialog extends DialogWrapper {
     }
 
     description.append(getAdditionalInfo());
-    description.append("\n");
+    description.append('\n');
 
     if (!myThrowableList.isEmpty()) {
       description.append("{code}");
       for (Throwable ex : myThrowableList) {
-        description.append(ex2str(ex)).append("\n");
+        description.append(ex2str(ex)).append('\n');
       }
       description.append("{code}");
     }

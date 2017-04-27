@@ -147,7 +147,7 @@ public class CollectJUnitTestsFromPatternsAction extends AnAction {
         StringBuilder sb = new StringBuilder("@SuiteClassSymbols({");
         String sep = "";
         for (String sc : suiteClasses) {
-          sb.append(sep).append("\"").append(sc).append("\"");
+          sb.append(sep).append('\"').append(sc).append('\"');
           sep = ",\n";
         }
         sb.append("})");
@@ -265,7 +265,7 @@ public class CollectJUnitTestsFromPatternsAction extends AnAction {
       }
 
       String modulePtn = "";
-      int si = ptn.indexOf(":");
+      int si = ptn.indexOf(':');
       if (si >= 0) {
         modulePtn = ptn.substring(0, si);
         ptn = ptn.substring(si + 1);

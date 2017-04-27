@@ -46,7 +46,7 @@ public class ZipFoldersReporter {
     }
 
     private static String parentFolder(String name) {
-        int i = name.lastIndexOf("/");
+        int i = name.lastIndexOf('/');
         if (i >= 0) {
             return name.substring(0, i);
         }
