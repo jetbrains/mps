@@ -1,5 +1,6 @@
 JetBrains MPS
 =============
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/JetBrains/MPS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Learn Meta Programming with Us](http://www.jetbrains.com/mps/)
 
