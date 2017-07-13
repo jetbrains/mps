@@ -69,7 +69,7 @@ public class URLUtil {
     assert file.indexOf(JAR_SEPARATOR) > 0;
 
     String resource = file.substring(file.indexOf(JAR_SEPARATOR) + 2);
-    file = file.substring(0, file.indexOf("!"));
+    file = file.substring(0, file.indexOf('!'));
     final ZipFile zipFile = new ZipFile(FileUtil.unquote(file));
     final ZipEntry zipEntry = zipFile.getEntry(resource);
     if (zipEntry == null) throw new FileNotFoundException("Entry " + resource + " not found in " + file);

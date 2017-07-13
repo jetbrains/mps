@@ -48,7 +48,7 @@ public class CompareStatus {
     }
 
     public PrintWriter stream(String streamId, String path) {
-        int slash = path.indexOf("/");
+        int slash = path.indexOf('/');
         if(slash == -1) {
             return stream(streamId);
         }

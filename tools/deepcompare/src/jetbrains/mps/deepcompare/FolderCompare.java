@@ -88,7 +88,7 @@ public class FolderCompare {
     }
 
     private boolean isTextFile(String fileName) {
-        String extension = fileName.contains(".") ? fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase() : "";
+        String extension = fileName.contains(".") ? fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase() : "";
         return extension.equals("xml") || extension.equals("msd") || extension.equals("mpl") || extension.equals("mps")
                 || extension.equals("number") || extension.equals("java") || extension.equals("bat")
                 || extension.equals("sh") || fileName.equals("trace.info") || extension.equals("history")
@@ -288,7 +288,7 @@ public class FolderCompare {
 
             String line;
             while ((line = r.readLine()) != null) {
-                result.append(line).append("\n");
+                result.append(line).append('\n');
             }
 
             return result.toString();

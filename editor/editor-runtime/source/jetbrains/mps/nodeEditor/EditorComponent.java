@@ -1044,7 +1044,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     for (ListIterator<HighlighterMessage> it = messages.listIterator(messages.size()); it.hasPrevious(); ) {
       SimpleEditorMessage message = it.previous();
       if (result.length() != 0) {
-        result.append("\n");
+        result.append('\n');
       }
       result.append(message.getMessage());
     }
@@ -1565,10 +1565,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       sb.append("\nat ");
       sb.append(element);
     }
-    sb.append("\n");
+    sb.append('\n');
     sb.append("EditorComponent.myDisposed == ");
     sb.append(isDisposed());
-    sb.append("\n");
+    sb.append('\n');
     return sb.toString();
   }
 

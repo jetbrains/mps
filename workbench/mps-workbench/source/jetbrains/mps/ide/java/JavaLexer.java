@@ -453,7 +453,7 @@ public class JavaLexer extends LexerBase {
       String s;
       StringBuffer buf = new StringBuffer();
       while ((s = reader.readLine()) != null) {
-        buf.append(s).append("\n");
+        buf.append(s).append('\n');
       }
 
       JavaLexer lexer = new JavaLexer(true, true);

@@ -190,7 +190,7 @@ public class ModuleSources {
       if (childName.endsWith(MPSExtentions.DOT_CLASSFILE)) {
         boolean isInnerClass = false;
         String containerName = childName.substring(0, childName.length() - MPSExtentions.DOT_CLASSFILE.length());
-        int indexOfDollar = containerName.indexOf("$");
+        int indexOfDollar = containerName.indexOf('$');
         if (indexOfDollar > 0) {
           containerName = containerName.substring(0, indexOfDollar);
           isInnerClass = true;

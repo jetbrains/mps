@@ -102,7 +102,7 @@ public class TextBuilderImpl implements TextBuilder {
     while (builderIterator.hasNext()) {
       StringBuilder nextLine = new StringBuilder(newWidth);
       for (int i = 0; i < myWidth + delimWidth; i++) {
-        nextLine.append(" ");
+        nextLine.append(' ');
       }
       nextLine.append(builderIterator.next());
       myLines.add(nextLine);

@@ -154,9 +154,9 @@ public class ConnectedComponentPartitioner {
     StringBuffer sb = new StringBuffer();
     sb.append(myRoots.length).append(" roots, ").append(partitions.length).append(" components\n");
     for (int i = 0; i < partitions.length; i++) {
-      sb.append("#").append(i).append("(").append(partitions[i].length).append("): ");
+      sb.append('#').append(i).append('(').append(partitions[i].length).append("): ");
       for (int e = 0; e < partitions[i].length; e++) {
-        sb.append(" ").append(myRoots[partitions[i][e]]);
+        sb.append(' ').append(myRoots[partitions[i][e]]);
       }
       sb.append('\n');
     }

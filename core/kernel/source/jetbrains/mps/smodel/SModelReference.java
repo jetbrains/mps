@@ -344,7 +344,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
 
     if (getModuleReference() != null && getModuleReference().getModuleId() != null) {
       sb.append(StringUtil.escapeRefChars(getModuleReference().getModuleId().toString()));
-      sb.append("/");
+      sb.append('/');
     }
 
     String modelId = myModelId instanceof ModelNameSModelId ? myModelId.getModelName() : myModelId.toString();
@@ -354,16 +354,16 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
       return sb.toString();
     }
 
-    sb.append("(");
+    sb.append('(');
     if (getModuleReference() != null && getModuleReference().getModuleName() != null) {
       sb.append(StringUtil.escapeRefChars(getModuleReference().getModuleName()));
-      sb.append("/");
+      sb.append('/');
     }
     if (!myModelName.getValue().equals(myModelId.getModelName())) {
       // no reason to write down model name if it's part of module id
       sb.append(StringUtil.escapeRefChars(myModelName.getValue()));
     }
-    sb.append(")");
+    sb.append(')');
     return sb.toString();
   }
 

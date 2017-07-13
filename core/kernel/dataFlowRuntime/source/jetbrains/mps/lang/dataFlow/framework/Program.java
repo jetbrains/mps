@@ -325,9 +325,9 @@ public class Program {
     for (Instruction instruction : myInstructions) {
       result.append(instruction);
       if (instruction.getSource() != null && showSource) {
-        result.append(" ").append(instruction.getSource());
+        result.append(' ').append(instruction.getSource());
       }
-      result.append("\n");
+      result.append('\n');
     }
     return result.toString();
   }

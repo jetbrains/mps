@@ -146,7 +146,7 @@ public class ModuleGenerationHolder {
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
       return FileSystem.getInstance().getFileByPath(MapSequence.fromMap(path2tmp).get(path));
     }
-    int idx = path.indexOf("/");
+    int idx = path.indexOf('/');
     idx = (idx < 0 ? path.indexOf(File.separator) : idx);
     String tmp = tmpPath + "/" + ((idx < 0 ? path.replace(':', '_') : path.substring(idx + 1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);

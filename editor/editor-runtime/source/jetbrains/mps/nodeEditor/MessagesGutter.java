@@ -358,7 +358,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       StringBuilder text = new StringBuilder();
       for (GutterMark mark : gutterMarks) {
         if (text.length() > 0) {
-          text.append("\n");
+          text.append('\n');
         }
         text.append(mark.getEditorMessage().getMessage());
       }

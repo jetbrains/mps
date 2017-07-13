@@ -44,7 +44,7 @@ public class IoFileSystem implements FileSystem {
     // fix for MPS-10350; todo move
     path = FileUtil.getCanonicalPath(path);
     if (path.contains("!")) {
-      int index = path.indexOf("!");
+      int index = path.indexOf('!');
       String jarPath = path.substring(0, index);
       String entryPath = FileUtil.getUnixPath(path.substring(index + 1));
 

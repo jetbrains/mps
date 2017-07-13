@@ -57,7 +57,7 @@ public abstract class Block {
       sb.append(var);
       sb.append(" is a type of ");
       sb.append(nodeMaps.getNode(var));
-      sb.append("\n");
+      sb.append('\n');
     }
     return sb.toString();
   }

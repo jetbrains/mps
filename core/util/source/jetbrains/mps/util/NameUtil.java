@@ -136,10 +136,10 @@ public class NameUtil {
     StringBuilder result = new StringBuilder(s.length());
     StringTokenizer st = new StringTokenizer(s);
 
-    if (s.startsWith(" ")) result.append(" ");
+    if (s.startsWith(" ")) result.append(' ');
 
     while (st.hasMoreTokens()) {
-      result.append(wordWithNamingPolicy(st.nextToken())).append(" ");
+      result.append(wordWithNamingPolicy(st.nextToken())).append(' ');
     }
 
     if (!s.endsWith(" ")) {
@@ -225,7 +225,7 @@ public class NameUtil {
     StringBuilder result = new StringBuilder(s.length());
     StringTokenizer st = new StringTokenizer(s);
     while (st.hasMoreTokens()) {
-      result.append(decapitalize(st.nextToken())).append(" ");
+      result.append(decapitalize(st.nextToken())).append(' ');
     }
     return result.substring(0, result.length() - 1);
   }

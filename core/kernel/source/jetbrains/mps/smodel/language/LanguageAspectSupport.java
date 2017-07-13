@@ -105,7 +105,7 @@ public class LanguageAspectSupport {
   }
 
   public static boolean isLanguageModelNameForbidden(String modelName) {
-    String shortName = modelName.substring(modelName.lastIndexOf(".") + 1);
+    String shortName = modelName.substring(modelName.lastIndexOf('.') + 1);
     for (LanguageAspect aspect : LanguageAspect.values()) {
       if (shortName.equals(aspect.getName())) {
         return true;

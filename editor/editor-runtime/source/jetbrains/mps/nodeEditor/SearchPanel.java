@@ -87,7 +87,7 @@ public class SearchPanel extends AbstractSearchPanel {
       List<EditorCell_Label> editorCell_labelList = CollectionUtil.filter(EditorCell_Label.class, collection.dfsCells());
       for (EditorCell_Label label : editorCell_labelList) {
         if (PunctuationUtil.hasLeftGap(label)) {
-          sb.append(" ");
+          sb.append(' ');
         }
         sb.append(label.getRenderedText());
       }

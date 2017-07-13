@@ -129,7 +129,7 @@ public class IFileUtils {
       while (br.ready()) {
         sb.append( br.readLine() );
         // FIXME preserve original line ednings
-        sb.append("\n");
+        sb.append('\n');
       }
       return sb.toString();
 

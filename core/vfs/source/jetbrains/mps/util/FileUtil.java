@@ -385,7 +385,7 @@ public class FileUtil {
 
       String line;
       while ((line = r.readLine()) != null) {
-        result.append(line).append("\n");
+        result.append(line).append('\n');
       }
 
       return result.toString();

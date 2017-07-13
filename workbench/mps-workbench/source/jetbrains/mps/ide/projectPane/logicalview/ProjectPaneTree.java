@@ -336,7 +336,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
                 }
                 basePack.append(firstPart);
                 if (!firstPart.isEmpty() && !secondPart.isEmpty()) {
-                  basePack.append(".");
+                  basePack.append('.');
                 }
                 basePack.append(secondPart);
                 result.add(new Pair<>(new jetbrains.mps.smodel.SNodePointer(node), basePack.toString()));
