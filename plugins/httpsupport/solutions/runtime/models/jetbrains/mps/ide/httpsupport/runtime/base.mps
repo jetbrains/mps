@@ -14,6 +14,7 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="9xw8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:io.netty.handler.codec.http(MPS.IDEA/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -146,6 +147,7 @@
       <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
@@ -366,8 +368,21 @@
           </node>
         </node>
         <node concept="3cpWs6" id="1VRn4nQF80q" role="3cqZAp">
-          <node concept="3clFbT" id="1VRn4nQF80r" role="3cqZAk">
-            <property role="3clFbU" value="true" />
+          <node concept="2OqwBi" id="un7N2ZXzDh" role="3cqZAk">
+            <node concept="1rXfSq" id="un7N2ZXzmv" role="2Oq$k0">
+              <ref role="37wK5l" node="un7N2ZXxRf" resolve="getValidMethodsFilter" />
+            </node>
+            <node concept="liA8E" id="un7N2ZXzWk" role="2OqNvi">
+              <ref role="37wK5l" to="82uw:~Predicate.test(java.lang.Object):boolean" resolve="test" />
+              <node concept="2OqwBi" id="un7N2ZX$uP" role="37wK5m">
+                <node concept="37vLTw" id="un7N2ZX$cX" role="2Oq$k0">
+                  <ref role="3cqZAo" node="21vgRr5_VfW" resolve="request" />
+                </node>
+                <node concept="liA8E" id="un7N2ZX$OT" role="2OqNvi">
+                  <ref role="37wK5l" to="4h87:2a7iB5lGF_1" resolve="getMethod" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -387,6 +402,21 @@
       <node concept="_YKpA" id="5fiBL1fFUV4" role="3clF45">
         <node concept="3uibUv" id="5fiBL1fGR5h" role="_ZDj9">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="un7N2ZXxRf" role="jymVt">
+      <property role="1EzhhJ" value="true" />
+      <property role="TrG5h" value="getValidMethodsFilter" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="un7N2ZXxRi" role="3clF47" />
+      <node concept="3Tmbuc" id="un7N2ZXxrZ" role="1B3o_S" />
+      <node concept="3uibUv" id="un7N2ZXxPN" role="3clF45">
+        <ref role="3uigEE" to="82uw:~Predicate" resolve="Predicate" />
+        <node concept="3uibUv" id="un7N2ZXxQU" role="11_B2D">
+          <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
         </node>
       </node>
     </node>

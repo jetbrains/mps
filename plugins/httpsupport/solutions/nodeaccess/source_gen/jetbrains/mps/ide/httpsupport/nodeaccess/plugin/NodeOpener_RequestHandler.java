@@ -11,6 +11,8 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.httpsupport.runtime.base.HttpSupportUtil;
+import java.util.function.Predicate;
+import io.netty.handler.codec.http.HttpMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import io.netty.handler.codec.http.HttpResponseStatus;
@@ -54,6 +56,14 @@ public class NodeOpener_RequestHandler extends HttpRequestHandlerBase {
     return QUERY_PREFIX;
   }
 
+  @Override
+  protected Predicate<HttpMethod> getValidMethodsFilter() {
+    return new Predicate<HttpMethod>() {
+      public boolean test(HttpMethod p0) {
+        return true;
+      }
+    };
+  }
 
   @Override
   public boolean canHandle() {

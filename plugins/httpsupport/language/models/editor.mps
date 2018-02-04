@@ -10,6 +10,7 @@
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="ndib" ref="r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="wr1s" ref="r:0f9ddbb6-f761-4bd7-8dde-1e5300bd28c2(jetbrains.mps.lang.project.editor)" implicit="true" />
     <import index="zfj2" ref="r:ebfb0797-fa90-42cb-9f6b-3e661ce06d64(jetbrains.mps.ide.httpsupport.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -21,6 +22,7 @@
       <concept id="1597643335227097138" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_node" flags="ng" index="7Obwk" />
       <concept id="6516520003787916624" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Condition" flags="ig" index="27VH4U" />
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
+        <property id="1140524450557" name="separatorText" index="2czwfO" />
         <property id="1156252885376" name="separatorLayoutConstraint" index="Q2I2d" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="1140524464359" name="emptyCellModel" index="2czzBI" />
@@ -266,6 +268,16 @@
         <node concept="ljvvj" id="5fiBL1fEh2S" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
+      </node>
+      <node concept="3F0ifn" id="un7N2ZW9Do" role="3EZMnx">
+        <property role="3F0ifm" value="methods:" />
+        <ref role="1k5W1q" to="wr1s:eY0iPzB7gM" resolve="KeyWord" />
+        <node concept="lj46D" id="un7N2ZWdJX" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="un7N2ZW9Eu" role="3EZMnx">
+        <ref role="1NtTu8" to="ndib:un7N2ZVygz" resolve="validMethods" />
       </node>
       <node concept="3F0ifn" id="5fiBL1fEh4t" role="3EZMnx">
         <property role="3F0ifm" value="" />
@@ -929,6 +941,33 @@
     <node concept="3F0A7n" id="6WBmrsjB3WC" role="2wV5jI">
       <property role="39s7Ar" value="true" />
       <ref role="1NtTu8" to="ndib:6WBmrsjB3b3" resolve="portNumber" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="un7N2ZVBiL">
+    <property role="3GE5qa" value="method" />
+    <ref role="1XX52x" to="ndib:un7N2ZVygG" resolve="AnyHttpMethod" />
+    <node concept="PMmxH" id="un7N2ZVBiQ" role="2wV5jI">
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="un7N2ZWDFT">
+    <property role="3GE5qa" value="method" />
+    <ref role="1XX52x" to="ndib:un7N2ZWioe" resolve="SpecificMethodsFilter" />
+    <node concept="3EZMnI" id="un7N2ZWDFY" role="2wV5jI">
+      <node concept="l2Vlx" id="un7N2ZWDFZ" role="2iSdaV" />
+      <node concept="3F0ifn" id="un7N2ZWDFV" role="3EZMnx">
+        <property role="3F0ifm" value="[" />
+        <ref role="1k5W1q" to="tpen:hXb$RYA" resolve="LeftBracket" />
+      </node>
+      <node concept="3F2HdR" id="un7N2ZWDG7" role="3EZMnx">
+        <property role="2czwfO" value="," />
+        <ref role="1NtTu8" to="ndib:un7N2ZWiof" resolve="methods" />
+        <node concept="l2Vlx" id="un7N2ZWDG9" role="2czzBx" />
+      </node>
+      <node concept="3F0ifn" id="un7N2ZWDGi" role="3EZMnx">
+        <property role="3F0ifm" value="]" />
+        <ref role="1k5W1q" to="tpen:hXb$V4T" resolve="RightBracket" />
+      </node>
     </node>
   </node>
 </model>

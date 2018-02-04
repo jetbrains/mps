@@ -9,11 +9,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_AnyHttpMethod;
   private ConceptPresentation props_CanHandleRequestFunction;
   private ConceptPresentation props_DefaultParameterConverter;
   private ConceptPresentation props_DefaultValueFunction;
   private ConceptPresentation props_DeserializeFunction;
   private ConceptPresentation props_HandleRequestFunction;
+  private ConceptPresentation props_HttpMethodFilter;
   private ConceptPresentation props_HttpRequestOperation;
   private ConceptPresentation props_HttpRequestParameter;
   private ConceptPresentation props_IDEAPlatformPortProvider;
@@ -36,6 +38,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ResponseSendOperation;
   private ConceptPresentation props_SerializeFunction;
   private ConceptPresentation props_SerializedValueParameter;
+  private ConceptPresentation props_SpecificMethodsFilter;
   private ConceptPresentation props_ValueToSerializeParameter;
 
   @Override
@@ -43,6 +46,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.AnyHttpMethod:
+        if (props_AnyHttpMethod == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("any http method is valid");
+          cpb.rawPresentation("any");
+          props_AnyHttpMethod = cpb.create();
+        }
+        return props_AnyHttpMethod;
       case LanguageConceptSwitch.CanHandleRequestFunction:
         if (props_CanHandleRequestFunction == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -81,6 +92,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_HandleRequestFunction = cpb.create();
         }
         return props_HandleRequestFunction;
+      case LanguageConceptSwitch.HttpMethodFilter:
+        if (props_HttpMethodFilter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_HttpMethodFilter = cpb.create();
+        }
+        return props_HttpMethodFilter;
       case LanguageConceptSwitch.HttpRequestOperation:
         if (props_HttpRequestOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -243,6 +260,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_SerializedValueParameter = cpb.create();
         }
         return props_SerializedValueParameter;
+      case LanguageConceptSwitch.SpecificMethodsFilter:
+        if (props_SpecificMethodsFilter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("a list of valid http methods");
+          cpb.rawPresentation("[");
+          props_SpecificMethodsFilter = cpb.create();
+        }
+        return props_SpecificMethodsFilter;
       case LanguageConceptSwitch.ValueToSerializeParameter:
         if (props_ValueToSerializeParameter == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

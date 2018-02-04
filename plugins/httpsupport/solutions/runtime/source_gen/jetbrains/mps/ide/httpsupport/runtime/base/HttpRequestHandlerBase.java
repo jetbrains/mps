@@ -7,6 +7,8 @@ import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
+import java.util.function.Predicate;
+import io.netty.handler.codec.http.HttpMethod;
 
 public abstract class HttpRequestHandlerBase implements IHttpRequestHandler {
 
@@ -28,8 +30,9 @@ public abstract class HttpRequestHandlerBase implements IHttpRequestHandler {
         return false;
       }
     }
-    return true;
+    return getValidMethodsFilter().test(request.getMethod());
   }
 
   protected abstract List<String> getQueryPrefix();
+  protected abstract Predicate<HttpMethod> getValidMethodsFilter();
 }

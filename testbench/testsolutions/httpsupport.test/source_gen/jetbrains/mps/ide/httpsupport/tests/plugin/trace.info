@@ -44,35 +44,46 @@
       <unit id="529363524336334065" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_simple_Extension" />
     </file>
     <file name="RH_simple_RequestHandler.java">
-      <node id="529363524336334065" at="16,0,17,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="529363524336334065" at="18,0,19,0" concept="4" trace="myCorrectRequest" />
-      <node id="529363524336334065" at="20,56,21,19" concept="12" />
-      <node id="529363524336334065" at="21,19,22,34" concept="7" />
-      <node id="529363524336334065" at="22,34,23,38" concept="3" />
-      <node id="529363524336334065" at="28,43,29,24" concept="8" />
-      <node id="529363524336334065" at="35,54,36,19" concept="8" />
-      <node id="529363524336334065" at="37,5,38,0" concept="9" />
-      <node id="529363524336334065" at="38,0,39,16" concept="8" />
-      <node id="529363524336334169" at="43,41,44,120" concept="3" />
-      <node id="529363524336334065" at="34,30,37,5" concept="5" />
-      <node id="529363524336334065" at="27,0,31,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="529363524336334065" at="42,0,46,0" concept="6" trace="handle#()V" />
-      <node id="529363524336334065" at="20,0,25,0" concept="2" trace="RH_simple_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <node id="529363524336334065" at="33,0,41,0" concept="6" trace="canHandle#()Z" />
-      <scope id="529363524336334065" at="28,43,29,24" />
-      <scope id="529363524336334065" at="35,54,36,19" />
-      <scope id="529363524336334065" at="43,41,44,120" />
-      <scope id="529363524336334065" at="20,56,23,38">
+      <node id="529363524336334065" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="529363524336334065" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="529363524336334065" at="22,56,23,19" concept="12" />
+      <node id="529363524336334065" at="23,19,24,34" concept="7" />
+      <node id="529363524336334065" at="24,34,25,38" concept="3" />
+      <node id="529363524336334065" at="30,43,31,24" concept="8" />
+      <node id="529363524336334065" at="37,42,38,20" concept="8" />
+      <node id="529363524336334065" at="45,54,46,19" concept="8" />
+      <node id="529363524336334065" at="47,5,48,0" concept="9" />
+      <node id="529363524336334065" at="48,0,49,16" concept="8" />
+      <node id="529363524336334169" at="53,41,54,120" concept="3" />
+      <node id="529363524336334065" at="37,0,40,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="529363524336334065" at="44,30,47,5" concept="5" />
+      <node id="529363524336334065" at="29,0,33,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="529363524336334065" at="52,0,56,0" concept="6" trace="handle#()V" />
+      <node id="529363524336334065" at="22,0,27,0" concept="2" trace="RH_simple_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <node id="529363524336334065" at="35,59,40,6" concept="8" />
+      <node id="529363524336334065" at="34,0,42,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="529363524336334065" at="43,0,51,0" concept="6" trace="canHandle#()Z" />
+      <scope id="529363524336334065" at="30,43,31,24" />
+      <scope id="529363524336334065" at="37,42,38,20" />
+      <scope id="529363524336334065" at="45,54,46,19" />
+      <scope id="529363524336334065" at="53,41,54,120" />
+      <scope id="529363524336334065" at="22,56,25,38">
         <var name="correctRequest" id="529363524336334065" />
       </scope>
-      <scope id="529363524336334065" at="27,0,31,0" />
-      <scope id="529363524336334065" at="42,0,46,0" />
-      <scope id="529363524336334065" at="20,0,25,0">
+      <scope id="529363524336334065" at="37,0,40,0">
+        <var name="p0" id="529363524336334065" />
+      </scope>
+      <scope id="529363524336334065" at="29,0,33,0" />
+      <scope id="529363524336334065" at="52,0,56,0" />
+      <scope id="529363524336334065" at="22,0,27,0">
         <var name="request" id="529363524336334065" />
       </scope>
-      <scope id="529363524336334065" at="34,30,39,16" />
-      <scope id="529363524336334065" at="33,0,41,0" />
-      <unit id="529363524336334065" at="14,0,47,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_simple_RequestHandler" />
+      <scope id="529363524336334065" at="35,59,40,6" />
+      <scope id="529363524336334065" at="44,30,49,16" />
+      <scope id="529363524336334065" at="34,0,42,0" />
+      <scope id="529363524336334065" at="43,0,51,0" />
+      <unit id="529363524336334065" at="36,15,40,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_simple_RequestHandler$1" />
+      <unit id="529363524336334065" at="16,0,57,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_simple_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/529363524336336243">
@@ -100,48 +111,59 @@
       <unit id="529363524336336243" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_requiredParams_Extension" />
     </file>
     <file name="RH_requiredParams_RequestHandler.java">
-      <node id="529363524336336243" at="16,0,17,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="529363524336336243" at="18,0,19,0" concept="4" trace="myCorrectRequest" />
-      <node id="529363524336336243" at="19,0,20,0" concept="4" trace="param" />
-      <node id="529363524336336243" at="21,64,22,19" concept="12" />
-      <node id="529363524336336243" at="22,19,23,34" concept="7" />
-      <node id="529363524336336243" at="24,5,25,109" concept="7" />
-      <node id="529363524336336243" at="26,37,27,38" concept="3" />
-      <node id="529363524336336243" at="28,14,29,31" concept="3" />
-      <node id="529363524336336243" at="29,31,30,26" concept="3" />
-      <node id="529363524336336243" at="32,5,33,38" concept="3" />
-      <node id="529363524336336243" at="38,43,39,24" concept="8" />
-      <node id="529363524336336243" at="45,54,46,19" concept="8" />
-      <node id="529363524336336243" at="47,5,48,0" concept="9" />
-      <node id="529363524336336243" at="48,0,49,16" concept="8" />
-      <node id="529363524336337326" at="53,41,54,120" concept="3" />
-      <node id="529363524336336243" at="28,12,31,7" concept="1" />
-      <node id="529363524336336243" at="44,30,47,5" concept="5" />
-      <node id="529363524336336243" at="37,0,41,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="529363524336336243" at="52,0,56,0" concept="6" trace="handle#()V" />
-      <node id="529363524336336243" at="25,109,31,7" concept="5" />
-      <node id="529363524336336243" at="43,0,51,0" concept="6" trace="canHandle#()Z" />
-      <node id="529363524336336243" at="23,34,32,5" concept="1" />
-      <node id="529363524336336243" at="21,0,35,0" concept="2" trace="RH_requiredParams_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <scope id="529363524336336243" at="26,37,27,38" />
-      <scope id="529363524336336243" at="38,43,39,24" />
-      <scope id="529363524336336243" at="45,54,46,19" />
-      <scope id="529363524336336243" at="53,41,54,120" />
-      <scope id="529363524336336243" at="28,14,30,26" />
-      <scope id="529363524336336243" at="37,0,41,0" />
-      <scope id="529363524336336243" at="52,0,56,0" />
-      <scope id="529363524336336243" at="44,30,49,16" />
-      <scope id="529363524336336243" at="24,5,31,7">
+      <node id="529363524336336243" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="529363524336336243" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="529363524336336243" at="21,0,22,0" concept="4" trace="param" />
+      <node id="529363524336336243" at="23,64,24,19" concept="12" />
+      <node id="529363524336336243" at="24,19,25,34" concept="7" />
+      <node id="529363524336336243" at="26,5,27,109" concept="7" />
+      <node id="529363524336336243" at="28,37,29,38" concept="3" />
+      <node id="529363524336336243" at="30,14,31,31" concept="3" />
+      <node id="529363524336336243" at="31,31,32,26" concept="3" />
+      <node id="529363524336336243" at="34,5,35,38" concept="3" />
+      <node id="529363524336336243" at="40,43,41,24" concept="8" />
+      <node id="529363524336336243" at="47,42,48,20" concept="8" />
+      <node id="529363524336336243" at="55,54,56,19" concept="8" />
+      <node id="529363524336336243" at="57,5,58,0" concept="9" />
+      <node id="529363524336336243" at="58,0,59,16" concept="8" />
+      <node id="529363524336337326" at="63,41,64,120" concept="3" />
+      <node id="529363524336336243" at="30,12,33,7" concept="1" />
+      <node id="529363524336336243" at="47,0,50,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="529363524336336243" at="54,30,57,5" concept="5" />
+      <node id="529363524336336243" at="39,0,43,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="529363524336336243" at="62,0,66,0" concept="6" trace="handle#()V" />
+      <node id="529363524336336243" at="45,59,50,6" concept="8" />
+      <node id="529363524336336243" at="27,109,33,7" concept="5" />
+      <node id="529363524336336243" at="44,0,52,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="529363524336336243" at="53,0,61,0" concept="6" trace="canHandle#()Z" />
+      <node id="529363524336336243" at="25,34,34,5" concept="1" />
+      <node id="529363524336336243" at="23,0,37,0" concept="2" trace="RH_requiredParams_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <scope id="529363524336336243" at="28,37,29,38" />
+      <scope id="529363524336336243" at="40,43,41,24" />
+      <scope id="529363524336336243" at="47,42,48,20" />
+      <scope id="529363524336336243" at="55,54,56,19" />
+      <scope id="529363524336336243" at="63,41,64,120" />
+      <scope id="529363524336336243" at="30,14,32,26" />
+      <scope id="529363524336336243" at="47,0,50,0">
+        <var name="p0" id="529363524336336243" />
+      </scope>
+      <scope id="529363524336336243" at="39,0,43,0" />
+      <scope id="529363524336336243" at="62,0,66,0" />
+      <scope id="529363524336336243" at="45,59,50,6" />
+      <scope id="529363524336336243" at="54,30,59,16" />
+      <scope id="529363524336336243" at="26,5,33,7">
         <var name="param_serialized" id="529363524336336243" />
       </scope>
-      <scope id="529363524336336243" at="43,0,51,0" />
-      <scope id="529363524336336243" at="21,64,33,38">
+      <scope id="529363524336336243" at="44,0,52,0" />
+      <scope id="529363524336336243" at="53,0,61,0" />
+      <scope id="529363524336336243" at="23,64,35,38">
         <var name="correctRequest" id="529363524336336243" />
       </scope>
-      <scope id="529363524336336243" at="21,0,35,0">
+      <scope id="529363524336336243" at="23,0,37,0">
         <var name="request" id="529363524336336243" />
       </scope>
-      <unit id="529363524336336243" at="14,0,57,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_requiredParams_RequestHandler" />
+      <unit id="529363524336336243" at="46,15,50,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_requiredParams_RequestHandler$1" />
+      <unit id="529363524336336243" at="16,0,67,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_requiredParams_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/529363524336339059">
@@ -169,47 +191,58 @@
       <unit id="529363524336339059" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conditional_Extension" />
     </file>
     <file name="RH_conditional_RequestHandler.java">
-      <node id="529363524336339059" at="16,0,17,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="529363524336339059" at="18,0,19,0" concept="4" trace="myCorrectRequest" />
-      <node id="529363524336339059" at="19,0,20,0" concept="4" trace="param" />
-      <node id="529363524336339059" at="21,61,22,19" concept="12" />
-      <node id="529363524336339059" at="22,19,23,34" concept="7" />
-      <node id="529363524336339059" at="24,5,25,109" concept="7" />
-      <node id="529363524336339059" at="26,37,27,38" concept="3" />
-      <node id="529363524336339059" at="28,14,29,26" concept="3" />
-      <node id="529363524336339059" at="31,5,32,38" concept="3" />
-      <node id="529363524336339059" at="37,43,38,24" concept="8" />
-      <node id="529363524336339059" at="44,54,45,19" concept="8" />
-      <node id="529363524336339059" at="46,5,47,0" concept="9" />
-      <node id="529363524336340976" at="47,0,48,38" concept="8" />
-      <node id="529363524336351080" at="52,41,53,120" concept="3" />
-      <node id="529363524336339059" at="28,12,30,7" concept="1" />
-      <node id="529363524336339059" at="43,30,46,5" concept="5" />
-      <node id="529363524336339059" at="36,0,40,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="529363524336339059" at="51,0,55,0" concept="6" trace="handle#()V" />
-      <node id="529363524336339059" at="25,109,30,7" concept="5" />
-      <node id="529363524336339059" at="23,34,31,5" concept="1" />
-      <node id="529363524336339059" at="42,0,50,0" concept="6" trace="canHandle#()Z" />
-      <node id="529363524336339059" at="21,0,34,0" concept="2" trace="RH_conditional_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <scope id="529363524336339059" at="26,37,27,38" />
-      <scope id="529363524336339059" at="28,14,29,26" />
-      <scope id="529363524336339059" at="37,43,38,24" />
-      <scope id="529363524336339059" at="44,54,45,19" />
-      <scope id="529363524336339059" at="52,41,53,120" />
-      <scope id="529363524336339059" at="36,0,40,0" />
-      <scope id="529363524336339059" at="51,0,55,0" />
-      <scope id="529363524336339059" at="43,30,48,38" />
-      <scope id="529363524336339059" at="24,5,30,7">
+      <node id="529363524336339059" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="529363524336339059" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="529363524336339059" at="21,0,22,0" concept="4" trace="param" />
+      <node id="529363524336339059" at="23,61,24,19" concept="12" />
+      <node id="529363524336339059" at="24,19,25,34" concept="7" />
+      <node id="529363524336339059" at="26,5,27,109" concept="7" />
+      <node id="529363524336339059" at="28,37,29,38" concept="3" />
+      <node id="529363524336339059" at="30,14,31,26" concept="3" />
+      <node id="529363524336339059" at="33,5,34,38" concept="3" />
+      <node id="529363524336339059" at="39,43,40,24" concept="8" />
+      <node id="529363524336339059" at="46,42,47,20" concept="8" />
+      <node id="529363524336339059" at="54,54,55,19" concept="8" />
+      <node id="529363524336339059" at="56,5,57,0" concept="9" />
+      <node id="529363524336340976" at="57,0,58,38" concept="8" />
+      <node id="529363524336351080" at="62,41,63,120" concept="3" />
+      <node id="529363524336339059" at="30,12,32,7" concept="1" />
+      <node id="529363524336339059" at="46,0,49,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="529363524336339059" at="53,30,56,5" concept="5" />
+      <node id="529363524336339059" at="38,0,42,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="529363524336339059" at="61,0,65,0" concept="6" trace="handle#()V" />
+      <node id="529363524336339059" at="27,109,32,7" concept="5" />
+      <node id="529363524336339059" at="44,59,49,6" concept="8" />
+      <node id="529363524336339059" at="25,34,33,5" concept="1" />
+      <node id="529363524336339059" at="43,0,51,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="529363524336339059" at="52,0,60,0" concept="6" trace="canHandle#()Z" />
+      <node id="529363524336339059" at="23,0,36,0" concept="2" trace="RH_conditional_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <scope id="529363524336339059" at="28,37,29,38" />
+      <scope id="529363524336339059" at="30,14,31,26" />
+      <scope id="529363524336339059" at="39,43,40,24" />
+      <scope id="529363524336339059" at="46,42,47,20" />
+      <scope id="529363524336339059" at="54,54,55,19" />
+      <scope id="529363524336339059" at="62,41,63,120" />
+      <scope id="529363524336339059" at="46,0,49,0">
+        <var name="p0" id="529363524336339059" />
+      </scope>
+      <scope id="529363524336339059" at="38,0,42,0" />
+      <scope id="529363524336339059" at="61,0,65,0" />
+      <scope id="529363524336339059" at="44,59,49,6" />
+      <scope id="529363524336339059" at="53,30,58,38" />
+      <scope id="529363524336339059" at="26,5,32,7">
         <var name="param_serialized" id="529363524336339059" />
       </scope>
-      <scope id="529363524336339059" at="42,0,50,0" />
-      <scope id="529363524336339059" at="21,61,32,38">
+      <scope id="529363524336339059" at="43,0,51,0" />
+      <scope id="529363524336339059" at="52,0,60,0" />
+      <scope id="529363524336339059" at="23,61,34,38">
         <var name="correctRequest" id="529363524336339059" />
       </scope>
-      <scope id="529363524336339059" at="21,0,34,0">
+      <scope id="529363524336339059" at="23,0,36,0">
         <var name="request" id="529363524336339059" />
       </scope>
-      <unit id="529363524336339059" at="14,0,56,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conditional_RequestHandler" />
+      <unit id="529363524336339059" at="45,15,49,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conditional_RequestHandler$1" />
+      <unit id="529363524336339059" at="16,0,66,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conditional_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/529363524336351272">
@@ -237,35 +270,46 @@
       <unit id="529363524336351272" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_exception_Extension" />
     </file>
     <file name="RH_exception_RequestHandler.java">
-      <node id="529363524336351272" at="13,0,14,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="529363524336351272" at="15,0,16,0" concept="4" trace="myCorrectRequest" />
-      <node id="529363524336351272" at="17,59,18,19" concept="12" />
-      <node id="529363524336351272" at="18,19,19,34" concept="7" />
-      <node id="529363524336351272" at="19,34,20,38" concept="3" />
-      <node id="529363524336351272" at="25,43,26,24" concept="8" />
-      <node id="529363524336351272" at="32,54,33,19" concept="8" />
-      <node id="529363524336351272" at="34,5,35,0" concept="9" />
-      <node id="529363524336351272" at="35,0,36,16" concept="8" />
-      <node id="529363524336351296" at="40,41,41,35" concept="13" />
-      <node id="529363524336351272" at="31,30,34,5" concept="5" />
-      <node id="529363524336351272" at="24,0,28,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="529363524336351272" at="39,0,43,0" concept="6" trace="handle#()V" />
-      <node id="529363524336351272" at="17,0,22,0" concept="2" trace="RH_exception_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <node id="529363524336351272" at="30,0,38,0" concept="6" trace="canHandle#()Z" />
-      <scope id="529363524336351272" at="25,43,26,24" />
-      <scope id="529363524336351272" at="32,54,33,19" />
-      <scope id="529363524336351272" at="40,41,41,35" />
-      <scope id="529363524336351272" at="17,59,20,38">
+      <node id="529363524336351272" at="15,0,16,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="529363524336351272" at="17,0,18,0" concept="4" trace="myCorrectRequest" />
+      <node id="529363524336351272" at="19,59,20,19" concept="12" />
+      <node id="529363524336351272" at="20,19,21,34" concept="7" />
+      <node id="529363524336351272" at="21,34,22,38" concept="3" />
+      <node id="529363524336351272" at="27,43,28,24" concept="8" />
+      <node id="529363524336351272" at="34,42,35,20" concept="8" />
+      <node id="529363524336351272" at="42,54,43,19" concept="8" />
+      <node id="529363524336351272" at="44,5,45,0" concept="9" />
+      <node id="529363524336351272" at="45,0,46,16" concept="8" />
+      <node id="529363524336351296" at="50,41,51,35" concept="13" />
+      <node id="529363524336351272" at="34,0,37,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="529363524336351272" at="41,30,44,5" concept="5" />
+      <node id="529363524336351272" at="26,0,30,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="529363524336351272" at="49,0,53,0" concept="6" trace="handle#()V" />
+      <node id="529363524336351272" at="19,0,24,0" concept="2" trace="RH_exception_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <node id="529363524336351272" at="32,59,37,6" concept="8" />
+      <node id="529363524336351272" at="31,0,39,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="529363524336351272" at="40,0,48,0" concept="6" trace="canHandle#()Z" />
+      <scope id="529363524336351272" at="27,43,28,24" />
+      <scope id="529363524336351272" at="34,42,35,20" />
+      <scope id="529363524336351272" at="42,54,43,19" />
+      <scope id="529363524336351272" at="50,41,51,35" />
+      <scope id="529363524336351272" at="19,59,22,38">
         <var name="correctRequest" id="529363524336351272" />
       </scope>
-      <scope id="529363524336351272" at="24,0,28,0" />
-      <scope id="529363524336351272" at="39,0,43,0" />
-      <scope id="529363524336351272" at="17,0,22,0">
+      <scope id="529363524336351272" at="34,0,37,0">
+        <var name="p0" id="529363524336351272" />
+      </scope>
+      <scope id="529363524336351272" at="26,0,30,0" />
+      <scope id="529363524336351272" at="49,0,53,0" />
+      <scope id="529363524336351272" at="19,0,24,0">
         <var name="request" id="529363524336351272" />
       </scope>
-      <scope id="529363524336351272" at="31,30,36,16" />
-      <scope id="529363524336351272" at="30,0,38,0" />
-      <unit id="529363524336351272" at="11,0,44,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_exception_RequestHandler" />
+      <scope id="529363524336351272" at="32,59,37,6" />
+      <scope id="529363524336351272" at="41,30,46,16" />
+      <scope id="529363524336351272" at="31,0,39,0" />
+      <scope id="529363524336351272" at="40,0,48,0" />
+      <unit id="529363524336351272" at="33,15,37,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_exception_RequestHandler$1" />
+      <unit id="529363524336351272" at="13,0,54,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_exception_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/529363524336352253">
@@ -293,47 +337,58 @@
       <unit id="529363524336352253" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack1_Extension" />
     </file>
     <file name="RH_turnBack1_RequestHandler.java">
-      <node id="529363524336352253" at="16,0,17,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="529363524336352253" at="18,0,19,0" concept="4" trace="myCorrectRequest" />
-      <node id="529363524336352253" at="19,0,20,0" concept="4" trace="param" />
-      <node id="529363524336352253" at="21,59,22,19" concept="12" />
-      <node id="529363524336352253" at="22,19,23,34" concept="7" />
-      <node id="529363524336352253" at="24,5,25,109" concept="7" />
-      <node id="529363524336352253" at="26,37,27,38" concept="3" />
-      <node id="529363524336352253" at="28,14,29,26" concept="3" />
-      <node id="529363524336352253" at="31,5,32,38" concept="3" />
-      <node id="529363524336352253" at="37,43,38,24" concept="8" />
-      <node id="529363524336352253" at="44,54,45,19" concept="8" />
-      <node id="529363524336352253" at="46,5,47,0" concept="9" />
-      <node id="529363524336352253" at="47,0,48,16" concept="8" />
-      <node id="529363524336353694" at="52,41,53,121" concept="3" />
-      <node id="529363524336352253" at="28,12,30,7" concept="1" />
-      <node id="529363524336352253" at="43,30,46,5" concept="5" />
-      <node id="529363524336352253" at="36,0,40,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="529363524336352253" at="51,0,55,0" concept="6" trace="handle#()V" />
-      <node id="529363524336352253" at="25,109,30,7" concept="5" />
-      <node id="529363524336352253" at="23,34,31,5" concept="1" />
-      <node id="529363524336352253" at="42,0,50,0" concept="6" trace="canHandle#()Z" />
-      <node id="529363524336352253" at="21,0,34,0" concept="2" trace="RH_turnBack1_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <scope id="529363524336352253" at="26,37,27,38" />
-      <scope id="529363524336352253" at="28,14,29,26" />
-      <scope id="529363524336352253" at="37,43,38,24" />
-      <scope id="529363524336352253" at="44,54,45,19" />
-      <scope id="529363524336352253" at="52,41,53,121" />
-      <scope id="529363524336352253" at="36,0,40,0" />
-      <scope id="529363524336352253" at="51,0,55,0" />
-      <scope id="529363524336352253" at="43,30,48,16" />
-      <scope id="529363524336352253" at="24,5,30,7">
+      <node id="529363524336352253" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="529363524336352253" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="529363524336352253" at="21,0,22,0" concept="4" trace="param" />
+      <node id="529363524336352253" at="23,59,24,19" concept="12" />
+      <node id="529363524336352253" at="24,19,25,34" concept="7" />
+      <node id="529363524336352253" at="26,5,27,109" concept="7" />
+      <node id="529363524336352253" at="28,37,29,38" concept="3" />
+      <node id="529363524336352253" at="30,14,31,26" concept="3" />
+      <node id="529363524336352253" at="33,5,34,38" concept="3" />
+      <node id="529363524336352253" at="39,43,40,24" concept="8" />
+      <node id="529363524336352253" at="46,42,47,20" concept="8" />
+      <node id="529363524336352253" at="54,54,55,19" concept="8" />
+      <node id="529363524336352253" at="56,5,57,0" concept="9" />
+      <node id="529363524336352253" at="57,0,58,16" concept="8" />
+      <node id="529363524336353694" at="62,41,63,121" concept="3" />
+      <node id="529363524336352253" at="30,12,32,7" concept="1" />
+      <node id="529363524336352253" at="46,0,49,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="529363524336352253" at="53,30,56,5" concept="5" />
+      <node id="529363524336352253" at="38,0,42,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="529363524336352253" at="61,0,65,0" concept="6" trace="handle#()V" />
+      <node id="529363524336352253" at="27,109,32,7" concept="5" />
+      <node id="529363524336352253" at="44,59,49,6" concept="8" />
+      <node id="529363524336352253" at="25,34,33,5" concept="1" />
+      <node id="529363524336352253" at="43,0,51,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="529363524336352253" at="52,0,60,0" concept="6" trace="canHandle#()Z" />
+      <node id="529363524336352253" at="23,0,36,0" concept="2" trace="RH_turnBack1_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <scope id="529363524336352253" at="28,37,29,38" />
+      <scope id="529363524336352253" at="30,14,31,26" />
+      <scope id="529363524336352253" at="39,43,40,24" />
+      <scope id="529363524336352253" at="46,42,47,20" />
+      <scope id="529363524336352253" at="54,54,55,19" />
+      <scope id="529363524336352253" at="62,41,63,121" />
+      <scope id="529363524336352253" at="46,0,49,0">
+        <var name="p0" id="529363524336352253" />
+      </scope>
+      <scope id="529363524336352253" at="38,0,42,0" />
+      <scope id="529363524336352253" at="61,0,65,0" />
+      <scope id="529363524336352253" at="44,59,49,6" />
+      <scope id="529363524336352253" at="53,30,58,16" />
+      <scope id="529363524336352253" at="26,5,32,7">
         <var name="param_serialized" id="529363524336352253" />
       </scope>
-      <scope id="529363524336352253" at="42,0,50,0" />
-      <scope id="529363524336352253" at="21,59,32,38">
+      <scope id="529363524336352253" at="43,0,51,0" />
+      <scope id="529363524336352253" at="52,0,60,0" />
+      <scope id="529363524336352253" at="23,59,34,38">
         <var name="correctRequest" id="529363524336352253" />
       </scope>
-      <scope id="529363524336352253" at="21,0,34,0">
+      <scope id="529363524336352253" at="23,0,36,0">
         <var name="request" id="529363524336352253" />
       </scope>
-      <unit id="529363524336352253" at="14,0,56,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack1_RequestHandler" />
+      <unit id="529363524336352253" at="45,15,49,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack1_RequestHandler$1" />
+      <unit id="529363524336352253" at="16,0,66,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack1_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/529363524336355515">
@@ -361,47 +416,58 @@
       <unit id="529363524336355515" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack2_Extension" />
     </file>
     <file name="RH_turnBack2_RequestHandler.java">
-      <node id="529363524336355515" at="16,0,17,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="529363524336355515" at="18,0,19,0" concept="4" trace="myCorrectRequest" />
-      <node id="529363524336355515" at="19,0,20,0" concept="4" trace="param" />
-      <node id="529363524336355515" at="21,59,22,19" concept="12" />
-      <node id="529363524336355515" at="22,19,23,34" concept="7" />
-      <node id="529363524336355515" at="24,5,25,109" concept="7" />
-      <node id="529363524336355515" at="26,37,27,75" concept="3" />
-      <node id="529363524336355515" at="28,14,29,60" concept="3" />
-      <node id="529363524336355515" at="31,5,32,38" concept="3" />
-      <node id="529363524336355515" at="37,43,38,24" concept="8" />
-      <node id="529363524336355515" at="44,54,45,19" concept="8" />
-      <node id="529363524336355515" at="46,5,47,0" concept="9" />
-      <node id="529363524336355515" at="47,0,48,16" concept="8" />
-      <node id="529363524336373501" at="52,41,53,121" concept="3" />
-      <node id="529363524336355515" at="28,12,30,7" concept="1" />
-      <node id="529363524336355515" at="43,30,46,5" concept="5" />
-      <node id="529363524336355515" at="36,0,40,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="529363524336355515" at="51,0,55,0" concept="6" trace="handle#()V" />
-      <node id="529363524336355515" at="25,109,30,7" concept="5" />
-      <node id="529363524336355515" at="23,34,31,5" concept="1" />
-      <node id="529363524336355515" at="42,0,50,0" concept="6" trace="canHandle#()Z" />
-      <node id="529363524336355515" at="21,0,34,0" concept="2" trace="RH_turnBack2_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <scope id="529363524336355515" at="26,37,27,75" />
-      <scope id="529363524336355515" at="28,14,29,60" />
-      <scope id="529363524336355515" at="37,43,38,24" />
-      <scope id="529363524336355515" at="44,54,45,19" />
-      <scope id="529363524336355515" at="52,41,53,121" />
-      <scope id="529363524336355515" at="36,0,40,0" />
-      <scope id="529363524336355515" at="51,0,55,0" />
-      <scope id="529363524336355515" at="43,30,48,16" />
-      <scope id="529363524336355515" at="24,5,30,7">
+      <node id="529363524336355515" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="529363524336355515" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="529363524336355515" at="21,0,22,0" concept="4" trace="param" />
+      <node id="529363524336355515" at="23,59,24,19" concept="12" />
+      <node id="529363524336355515" at="24,19,25,34" concept="7" />
+      <node id="529363524336355515" at="26,5,27,109" concept="7" />
+      <node id="529363524336355515" at="28,37,29,75" concept="3" />
+      <node id="529363524336355515" at="30,14,31,60" concept="3" />
+      <node id="529363524336355515" at="33,5,34,38" concept="3" />
+      <node id="529363524336355515" at="39,43,40,24" concept="8" />
+      <node id="529363524336355515" at="46,42,47,20" concept="8" />
+      <node id="529363524336355515" at="54,54,55,19" concept="8" />
+      <node id="529363524336355515" at="56,5,57,0" concept="9" />
+      <node id="529363524336355515" at="57,0,58,16" concept="8" />
+      <node id="529363524336373501" at="62,41,63,121" concept="3" />
+      <node id="529363524336355515" at="30,12,32,7" concept="1" />
+      <node id="529363524336355515" at="46,0,49,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="529363524336355515" at="53,30,56,5" concept="5" />
+      <node id="529363524336355515" at="38,0,42,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="529363524336355515" at="61,0,65,0" concept="6" trace="handle#()V" />
+      <node id="529363524336355515" at="27,109,32,7" concept="5" />
+      <node id="529363524336355515" at="44,59,49,6" concept="8" />
+      <node id="529363524336355515" at="25,34,33,5" concept="1" />
+      <node id="529363524336355515" at="43,0,51,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="529363524336355515" at="52,0,60,0" concept="6" trace="canHandle#()Z" />
+      <node id="529363524336355515" at="23,0,36,0" concept="2" trace="RH_turnBack2_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <scope id="529363524336355515" at="28,37,29,75" />
+      <scope id="529363524336355515" at="30,14,31,60" />
+      <scope id="529363524336355515" at="39,43,40,24" />
+      <scope id="529363524336355515" at="46,42,47,20" />
+      <scope id="529363524336355515" at="54,54,55,19" />
+      <scope id="529363524336355515" at="62,41,63,121" />
+      <scope id="529363524336355515" at="46,0,49,0">
+        <var name="p0" id="529363524336355515" />
+      </scope>
+      <scope id="529363524336355515" at="38,0,42,0" />
+      <scope id="529363524336355515" at="61,0,65,0" />
+      <scope id="529363524336355515" at="44,59,49,6" />
+      <scope id="529363524336355515" at="53,30,58,16" />
+      <scope id="529363524336355515" at="26,5,32,7">
         <var name="param_serialized" id="529363524336355515" />
       </scope>
-      <scope id="529363524336355515" at="42,0,50,0" />
-      <scope id="529363524336355515" at="21,59,32,38">
+      <scope id="529363524336355515" at="43,0,51,0" />
+      <scope id="529363524336355515" at="52,0,60,0" />
+      <scope id="529363524336355515" at="23,59,34,38">
         <var name="correctRequest" id="529363524336355515" />
       </scope>
-      <scope id="529363524336355515" at="21,0,34,0">
+      <scope id="529363524336355515" at="23,0,36,0">
         <var name="request" id="529363524336355515" />
       </scope>
-      <unit id="529363524336355515" at="14,0,56,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack2_RequestHandler" />
+      <unit id="529363524336355515" at="45,15,49,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack2_RequestHandler$1" />
+      <unit id="529363524336355515" at="16,0,66,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack2_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/529363524336355560">
@@ -423,6 +489,73 @@
       </scope>
       <scope id="529363524336355560" at="16,0,19,0" />
       <unit id="529363524336355560" at="6,0,20,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.testConverter_Converter" />
+    </file>
+  </root>
+  <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/546940173989016548">
+    <file name="RH_methodFilter_Extension.java">
+      <node id="546940173989016548" at="12,38,13,64" concept="12" />
+      <node id="546940173989016548" at="18,36,19,31" concept="8" />
+      <node id="546940173989016548" at="22,69,23,57" concept="8" />
+      <node id="546940173989016548" at="28,43,29,19" concept="8" />
+      <node id="546940173989016548" at="12,0,15,0" concept="2" trace="RH_methodFilter_Extension#()V" />
+      <node id="546940173989016548" at="28,0,31,0" concept="0" trace="get#()Ljetbrains/mps/ide/httpsupport/manager/plugin/IHttpRequestHandlerFactory;" />
+      <node id="546940173989016548" at="17,0,21,0" concept="6" trace="getHandlerName#()Ljava/lang/String;" />
+      <node id="546940173989016548" at="21,0,25,0" concept="6" trace="create#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)Ljetbrains/mps/ide/httpsupport/manager/plugin/IHttpRequestHandler;" />
+      <node id="546940173989016548" at="16,0,26,0" concept="4" trace="factory" />
+      <scope id="546940173989016548" at="12,38,13,64" />
+      <scope id="546940173989016548" at="18,36,19,31" />
+      <scope id="546940173989016548" at="22,69,23,57" />
+      <scope id="546940173989016548" at="28,43,29,19" />
+      <scope id="546940173989016548" at="12,0,15,0" />
+      <scope id="546940173989016548" at="28,0,31,0" />
+      <scope id="546940173989016548" at="17,0,21,0" />
+      <scope id="546940173989016548" at="21,0,25,0">
+        <var name="request" id="546940173989016548" />
+      </scope>
+      <unit id="546940173989016548" at="16,50,25,3" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_Extension$1" />
+      <unit id="546940173989016548" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_Extension" />
+    </file>
+    <file name="RH_methodFilter_RequestHandler.java">
+      <node id="546940173989016548" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="546940173989016548" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="546940173989016548" at="22,62,23,19" concept="12" />
+      <node id="546940173989016548" at="23,19,24,34" concept="7" />
+      <node id="546940173989016548" at="24,34,25,38" concept="3" />
+      <node id="546940173989016548" at="30,43,31,24" concept="8" />
+      <node id="546940173989016548" at="37,46,38,130" concept="8" />
+      <node id="546940173989016548" at="45,54,46,19" concept="8" />
+      <node id="546940173989016548" at="47,5,48,0" concept="9" />
+      <node id="546940173989016548" at="48,0,49,16" concept="8" />
+      <node id="546940173989024054" at="53,41,54,120" concept="3" />
+      <node id="546940173989016548" at="37,0,40,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="546940173989016548" at="44,30,47,5" concept="5" />
+      <node id="546940173989016548" at="29,0,33,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="546940173989016548" at="52,0,56,0" concept="6" trace="handle#()V" />
+      <node id="546940173989016548" at="22,0,27,0" concept="2" trace="RH_methodFilter_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <node id="546940173989016548" at="35,59,40,6" concept="8" />
+      <node id="546940173989016548" at="34,0,42,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="546940173989016548" at="43,0,51,0" concept="6" trace="canHandle#()Z" />
+      <scope id="546940173989016548" at="30,43,31,24" />
+      <scope id="546940173989016548" at="37,46,38,130" />
+      <scope id="546940173989016548" at="45,54,46,19" />
+      <scope id="546940173989016548" at="53,41,54,120" />
+      <scope id="546940173989016548" at="22,62,25,38">
+        <var name="correctRequest" id="546940173989016548" />
+      </scope>
+      <scope id="546940173989016548" at="37,0,40,0">
+        <var name="method" id="546940173989016548" />
+      </scope>
+      <scope id="546940173989016548" at="29,0,33,0" />
+      <scope id="546940173989016548" at="52,0,56,0" />
+      <scope id="546940173989016548" at="22,0,27,0">
+        <var name="request" id="546940173989016548" />
+      </scope>
+      <scope id="546940173989016548" at="35,59,40,6" />
+      <scope id="546940173989016548" at="44,30,49,16" />
+      <scope id="546940173989016548" at="34,0,42,0" />
+      <scope id="546940173989016548" at="43,0,51,0" />
+      <unit id="546940173989016548" at="36,15,40,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_RequestHandler$1" />
+      <unit id="546940173989016548" at="16,0,57,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/8009469105145348209">
@@ -468,36 +601,47 @@
       <unit id="8009469105145355130" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting2_Extension" />
     </file>
     <file name="RH_conflicting2_RequestHandler.java">
-      <node id="8009469105145355130" at="16,0,17,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="8009469105145355130" at="18,0,19,0" concept="4" trace="myCorrectRequest" />
-      <node id="8009469105145355130" at="20,62,21,19" concept="12" />
-      <node id="8009469105145355130" at="21,19,22,34" concept="7" />
-      <node id="8009469105145355130" at="22,34,23,38" concept="3" />
-      <node id="8009469105145355130" at="28,43,29,24" concept="8" />
-      <node id="8009469105145355130" at="35,54,36,19" concept="8" />
-      <node id="8009469105145355130" at="37,5,38,0" concept="9" />
-      <node id="8009469105145355130" at="38,0,39,16" concept="8" />
-      <node id="8009469105145357187" at="43,41,44,23" concept="3" />
-      <node id="8009469105145357379" at="44,23,45,120" concept="3" />
-      <node id="8009469105145355130" at="34,30,37,5" concept="5" />
-      <node id="8009469105145355130" at="27,0,31,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="8009469105145355130" at="20,0,25,0" concept="2" trace="RH_conflicting2_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <node id="8009469105145355130" at="42,0,47,0" concept="6" trace="handle#()V" />
-      <node id="8009469105145355130" at="33,0,41,0" concept="6" trace="canHandle#()Z" />
-      <scope id="8009469105145355130" at="28,43,29,24" />
-      <scope id="8009469105145355130" at="35,54,36,19" />
-      <scope id="8009469105145355130" at="43,41,45,120" />
-      <scope id="8009469105145355130" at="20,62,23,38">
+      <node id="8009469105145355130" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="8009469105145355130" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="8009469105145355130" at="22,62,23,19" concept="12" />
+      <node id="8009469105145355130" at="23,19,24,34" concept="7" />
+      <node id="8009469105145355130" at="24,34,25,38" concept="3" />
+      <node id="8009469105145355130" at="30,43,31,24" concept="8" />
+      <node id="8009469105145355130" at="37,42,38,20" concept="8" />
+      <node id="8009469105145355130" at="45,54,46,19" concept="8" />
+      <node id="8009469105145355130" at="47,5,48,0" concept="9" />
+      <node id="8009469105145355130" at="48,0,49,16" concept="8" />
+      <node id="8009469105145357187" at="53,41,54,23" concept="3" />
+      <node id="8009469105145357379" at="54,23,55,120" concept="3" />
+      <node id="8009469105145355130" at="37,0,40,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="8009469105145355130" at="44,30,47,5" concept="5" />
+      <node id="8009469105145355130" at="29,0,33,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="8009469105145355130" at="22,0,27,0" concept="2" trace="RH_conflicting2_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <node id="8009469105145355130" at="35,59,40,6" concept="8" />
+      <node id="8009469105145355130" at="52,0,57,0" concept="6" trace="handle#()V" />
+      <node id="8009469105145355130" at="34,0,42,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="8009469105145355130" at="43,0,51,0" concept="6" trace="canHandle#()Z" />
+      <scope id="8009469105145355130" at="30,43,31,24" />
+      <scope id="8009469105145355130" at="37,42,38,20" />
+      <scope id="8009469105145355130" at="45,54,46,19" />
+      <scope id="8009469105145355130" at="53,41,55,120" />
+      <scope id="8009469105145355130" at="22,62,25,38">
         <var name="correctRequest" id="8009469105145355130" />
       </scope>
-      <scope id="8009469105145355130" at="27,0,31,0" />
-      <scope id="8009469105145355130" at="20,0,25,0">
+      <scope id="8009469105145355130" at="37,0,40,0">
+        <var name="p0" id="8009469105145355130" />
+      </scope>
+      <scope id="8009469105145355130" at="29,0,33,0" />
+      <scope id="8009469105145355130" at="22,0,27,0">
         <var name="request" id="8009469105145355130" />
       </scope>
-      <scope id="8009469105145355130" at="34,30,39,16" />
-      <scope id="8009469105145355130" at="42,0,47,0" />
-      <scope id="8009469105145355130" at="33,0,41,0" />
-      <unit id="8009469105145355130" at="14,0,48,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting2_RequestHandler" />
+      <scope id="8009469105145355130" at="35,59,40,6" />
+      <scope id="8009469105145355130" at="44,30,49,16" />
+      <scope id="8009469105145355130" at="52,0,57,0" />
+      <scope id="8009469105145355130" at="34,0,42,0" />
+      <scope id="8009469105145355130" at="43,0,51,0" />
+      <unit id="8009469105145355130" at="36,15,40,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting2_RequestHandler$1" />
+      <unit id="8009469105145355130" at="16,0,58,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting2_RequestHandler" />
     </file>
   </root>
   <root nodeRef="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)/8009469105145358787">
@@ -525,36 +669,47 @@
       <unit id="8009469105145358787" at="11,0,32,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting1_Extension" />
     </file>
     <file name="RH_conflicting1_RequestHandler.java">
-      <node id="8009469105145358787" at="16,0,17,0" concept="10" trace="QUERY_PREFIX" />
-      <node id="8009469105145358787" at="18,0,19,0" concept="4" trace="myCorrectRequest" />
-      <node id="8009469105145358787" at="20,62,21,19" concept="12" />
-      <node id="8009469105145358787" at="21,19,22,34" concept="7" />
-      <node id="8009469105145358787" at="22,34,23,38" concept="3" />
-      <node id="8009469105145358787" at="28,43,29,24" concept="8" />
-      <node id="8009469105145358787" at="35,54,36,19" concept="8" />
-      <node id="8009469105145358787" at="37,5,38,0" concept="9" />
-      <node id="8009469105145358787" at="38,0,39,16" concept="8" />
-      <node id="8009469105145358793" at="43,41,44,23" concept="3" />
-      <node id="8009469105145358795" at="44,23,45,120" concept="3" />
-      <node id="8009469105145358787" at="34,30,37,5" concept="5" />
-      <node id="8009469105145358787" at="27,0,31,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
-      <node id="8009469105145358787" at="20,0,25,0" concept="2" trace="RH_conflicting1_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <node id="8009469105145358787" at="42,0,47,0" concept="6" trace="handle#()V" />
-      <node id="8009469105145358787" at="33,0,41,0" concept="6" trace="canHandle#()Z" />
-      <scope id="8009469105145358787" at="28,43,29,24" />
-      <scope id="8009469105145358787" at="35,54,36,19" />
-      <scope id="8009469105145358787" at="43,41,45,120" />
-      <scope id="8009469105145358787" at="20,62,23,38">
+      <node id="8009469105145358787" at="18,0,19,0" concept="10" trace="QUERY_PREFIX" />
+      <node id="8009469105145358787" at="20,0,21,0" concept="4" trace="myCorrectRequest" />
+      <node id="8009469105145358787" at="22,62,23,19" concept="12" />
+      <node id="8009469105145358787" at="23,19,24,34" concept="7" />
+      <node id="8009469105145358787" at="24,34,25,38" concept="3" />
+      <node id="8009469105145358787" at="30,43,31,24" concept="8" />
+      <node id="8009469105145358787" at="37,42,38,20" concept="8" />
+      <node id="8009469105145358787" at="45,54,46,19" concept="8" />
+      <node id="8009469105145358787" at="47,5,48,0" concept="9" />
+      <node id="8009469105145358787" at="48,0,49,16" concept="8" />
+      <node id="8009469105145358793" at="53,41,54,23" concept="3" />
+      <node id="8009469105145358795" at="54,23,55,120" concept="3" />
+      <node id="8009469105145358787" at="37,0,40,0" concept="6" trace="test#(Lio/netty/handler/codec/http/HttpMethod;)Z" />
+      <node id="8009469105145358787" at="44,30,47,5" concept="5" />
+      <node id="8009469105145358787" at="29,0,33,0" concept="6" trace="getQueryPrefix#()Ljava/util/List;" />
+      <node id="8009469105145358787" at="22,0,27,0" concept="2" trace="RH_conflicting1_RequestHandler#(Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <node id="8009469105145358787" at="35,59,40,6" concept="8" />
+      <node id="8009469105145358787" at="52,0,57,0" concept="6" trace="handle#()V" />
+      <node id="8009469105145358787" at="34,0,42,0" concept="6" trace="getValidMethodsFilter#()Ljava/util/function/Predicate;" />
+      <node id="8009469105145358787" at="43,0,51,0" concept="6" trace="canHandle#()Z" />
+      <scope id="8009469105145358787" at="30,43,31,24" />
+      <scope id="8009469105145358787" at="37,42,38,20" />
+      <scope id="8009469105145358787" at="45,54,46,19" />
+      <scope id="8009469105145358787" at="53,41,55,120" />
+      <scope id="8009469105145358787" at="22,62,25,38">
         <var name="correctRequest" id="8009469105145358787" />
       </scope>
-      <scope id="8009469105145358787" at="27,0,31,0" />
-      <scope id="8009469105145358787" at="20,0,25,0">
+      <scope id="8009469105145358787" at="37,0,40,0">
+        <var name="p0" id="8009469105145358787" />
+      </scope>
+      <scope id="8009469105145358787" at="29,0,33,0" />
+      <scope id="8009469105145358787" at="22,0,27,0">
         <var name="request" id="8009469105145358787" />
       </scope>
-      <scope id="8009469105145358787" at="34,30,39,16" />
-      <scope id="8009469105145358787" at="42,0,47,0" />
-      <scope id="8009469105145358787" at="33,0,41,0" />
-      <unit id="8009469105145358787" at="14,0,48,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting1_RequestHandler" />
+      <scope id="8009469105145358787" at="35,59,40,6" />
+      <scope id="8009469105145358787" at="44,30,49,16" />
+      <scope id="8009469105145358787" at="52,0,57,0" />
+      <scope id="8009469105145358787" at="34,0,42,0" />
+      <scope id="8009469105145358787" at="43,0,51,0" />
+      <unit id="8009469105145358787" at="36,15,40,5" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting1_RequestHandler$1" />
+      <unit id="8009469105145358787" at="16,0,58,0" name="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting1_RequestHandler" />
     </file>
   </root>
 </debug-info>

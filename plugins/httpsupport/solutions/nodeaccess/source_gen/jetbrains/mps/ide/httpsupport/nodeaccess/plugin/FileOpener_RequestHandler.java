@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
 import jetbrains.mps.ide.httpsupport.runtime.base.HttpSupportUtil;
+import java.util.function.Predicate;
+import io.netty.handler.codec.http.HttpMethod;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.common.FileOpenUtil;
@@ -52,6 +54,14 @@ public class FileOpener_RequestHandler extends HttpRequestHandlerBase {
     return QUERY_PREFIX;
   }
 
+  @Override
+  protected Predicate<HttpMethod> getValidMethodsFilter() {
+    return new Predicate<HttpMethod>() {
+      public boolean test(HttpMethod p0) {
+        return true;
+      }
+    };
+  }
 
   @Override
   public boolean canHandle() {
@@ -65,7 +75,7 @@ public class FileOpener_RequestHandler extends HttpRequestHandlerBase {
   @Override
   public void handle() throws Exception {
     if (this.project instanceof MPSProject) {
-      final com.intellij.openapi.project.Project ideaProject = as_tdoo4z_a0a0a0a0p(this.project, MPSProject.class).getProject();
+      final com.intellij.openapi.project.Project ideaProject = as_tdoo4z_a0a0a0a0q(this.project, MPSProject.class).getProject();
       VirtualFile projectFile = ideaProject.getBaseDir();
       if (projectFile != null) {
         final VirtualFile virtualFile = projectFile.findFileByRelativePath(this.file);
@@ -86,7 +96,7 @@ public class FileOpener_RequestHandler extends HttpRequestHandlerBase {
 
     this.request.sendResponse(HttpResponseStatus.OK, "image/gif", Unpooled.copiedBuffer(HandlerUtil.FAILURE_STREAM));
   }
-  private static <T> T as_tdoo4z_a0a0a0a0p(Object o, Class<T> type) {
+  private static <T> T as_tdoo4z_a0a0a0a0q(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

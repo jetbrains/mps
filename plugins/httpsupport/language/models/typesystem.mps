@@ -11,6 +11,7 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
+    <import index="9xw8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:io.netty.handler.codec.http(MPS.IDEA/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="zfj2" ref="r:ebfb0797-fa90-42cb-9f6b-3e661ce06d64(jetbrains.mps.ide.httpsupport.behavior)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -119,6 +120,11 @@
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="1176543928247" name="jetbrains.mps.lang.typesystem.structure.IsSubtypeExpression" flags="nn" index="3JuTUA">
+        <child id="1176543945045" name="subtypeExpression" index="3JuY14" />
+        <child id="1176543950311" name="supertypeExpression" index="3JuZjQ" />
+      </concept>
+      <concept id="1176544042499" name="jetbrains.mps.lang.typesystem.structure.Node_TypeOperation" flags="nn" index="3JvlWi" />
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
@@ -170,6 +176,9 @@
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
       </concept>
+      <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
+        <reference id="1138056546658" name="link" index="3TtcxE" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -186,6 +195,7 @@
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
+      <concept id="1204980550705" name="jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation" flags="nn" index="2es0OD" />
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
@@ -857,6 +867,59 @@
     <node concept="1YaCAy" id="3wy6fduD_mL" role="1YuTPh">
       <property role="TrG5h" value="node" />
       <ref role="1YaFvo" to="ndib:1_yOWEXej4M" resolve="Node_getURLOperation" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="un7N2ZX7ha">
+    <property role="TrG5h" value="check_SpecificMethodsFilter" />
+    <property role="3GE5qa" value="method" />
+    <node concept="3clFbS" id="un7N2ZX7hb" role="18ibNy">
+      <node concept="3clFbF" id="un7N2ZX7F6" role="3cqZAp">
+        <node concept="2OqwBi" id="un7N2ZX9I7" role="3clFbG">
+          <node concept="2OqwBi" id="un7N2ZX7MH" role="2Oq$k0">
+            <node concept="1YBJjd" id="un7N2ZX7F5" role="2Oq$k0">
+              <ref role="1YBMHb" node="un7N2ZX7hd" resolve="filter" />
+            </node>
+            <node concept="3Tsc0h" id="un7N2ZX8b5" role="2OqNvi">
+              <ref role="3TtcxE" to="ndib:un7N2ZWiof" resolve="methods" />
+            </node>
+          </node>
+          <node concept="2es0OD" id="un7N2ZXc0k" role="2OqNvi">
+            <node concept="1bVj0M" id="un7N2ZXc0m" role="23t8la">
+              <node concept="3clFbS" id="un7N2ZXc0n" role="1bW5cS">
+                <node concept="2Mj0R9" id="un7N2ZXc3K" role="3cqZAp">
+                  <node concept="Xl_RD" id="un7N2ZXdGC" role="2MkJ7o">
+                    <property role="Xl_RC" value="Only HttpMethods from Jetty are allowed" />
+                  </node>
+                  <node concept="37vLTw" id="un7N2ZXeGm" role="2OEOjV">
+                    <ref role="3cqZAo" node="un7N2ZXc0o" resolve="it" />
+                  </node>
+                  <node concept="3JuTUA" id="un7N2ZXcCW" role="2MkoU_">
+                    <node concept="2OqwBi" id="un7N2ZXcPS" role="3JuY14">
+                      <node concept="37vLTw" id="un7N2ZXcHc" role="2Oq$k0">
+                        <ref role="3cqZAo" node="un7N2ZXc0o" resolve="it" />
+                      </node>
+                      <node concept="3JvlWi" id="un7N2ZXd0M" role="2OqNvi" />
+                    </node>
+                    <node concept="2c44tf" id="un7N2ZXdv4" role="3JuZjQ">
+                      <node concept="3uibUv" id="un7N2ZXdC6" role="2c44tc">
+                        <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="Rh6nW" id="un7N2ZXc0o" role="1bW2Oz">
+                <property role="TrG5h" value="it" />
+                <node concept="2jxLKc" id="un7N2ZXc0p" role="1tU5fm" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="un7N2ZX7hd" role="1YuTPh">
+      <property role="TrG5h" value="filter" />
+      <ref role="1YaFvo" to="ndib:un7N2ZWioe" resolve="SpecificMethodsFilter" />
     </node>
   </node>
 </model>

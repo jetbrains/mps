@@ -14,11 +14,13 @@ import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptAnyHttpMethod = createDescriptorForAnyHttpMethod();
   /*package*/ final ConceptDescriptor myConceptCanHandleRequestFunction = createDescriptorForCanHandleRequestFunction();
   /*package*/ final ConceptDescriptor myConceptDefaultParameterConverter = createDescriptorForDefaultParameterConverter();
   /*package*/ final ConceptDescriptor myConceptDefaultValueFunction = createDescriptorForDefaultValueFunction();
   /*package*/ final ConceptDescriptor myConceptDeserializeFunction = createDescriptorForDeserializeFunction();
   /*package*/ final ConceptDescriptor myConceptHandleRequestFunction = createDescriptorForHandleRequestFunction();
+  /*package*/ final ConceptDescriptor myConceptHttpMethodFilter = createDescriptorForHttpMethodFilter();
   /*package*/ final ConceptDescriptor myConceptHttpRequestOperation = createDescriptorForHttpRequestOperation();
   /*package*/ final ConceptDescriptor myConceptHttpRequestParameter = createDescriptorForHttpRequestParameter();
   /*package*/ final ConceptDescriptor myConceptIDEAPlatformPortProvider = createDescriptorForIDEAPlatformPortProvider();
@@ -41,6 +43,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptResponseSendOperation = createDescriptorForResponseSendOperation();
   /*package*/ final ConceptDescriptor myConceptSerializeFunction = createDescriptorForSerializeFunction();
   /*package*/ final ConceptDescriptor myConceptSerializedValueParameter = createDescriptorForSerializedValueParameter();
+  /*package*/ final ConceptDescriptor myConceptSpecificMethodsFilter = createDescriptorForSpecificMethodsFilter();
   /*package*/ final ConceptDescriptor myConceptValueToSerializeParameter = createDescriptorForValueToSerializeParameter();
   private final LanguageConceptSwitch myConceptIndex;
 
@@ -50,13 +53,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptCanHandleRequestFunction, myConceptDefaultParameterConverter, myConceptDefaultValueFunction, myConceptDeserializeFunction, myConceptHandleRequestFunction, myConceptHttpRequestOperation, myConceptHttpRequestParameter, myConceptIDEAPlatformPortProvider, myConceptIParameterConverter, myConceptMPSIntegrationPortProvider, myConceptMPSInternalPortProvider, myConceptNode_getURLOperation, myConceptParameterConverterDeclaration, myConceptParameterConverterReference, myConceptParameterInitializer, myConceptPort, myConceptPortProvider, myConceptQueryParameter, myConceptQueryParameterReference, myConceptQueryPath, myConceptQuerySegment, myConceptRequestHandler, myConceptRequestType, myConceptRequestURLBuilderExpression, myConceptResponseSendOperation, myConceptSerializeFunction, myConceptSerializedValueParameter, myConceptValueToSerializeParameter);
+    return Arrays.asList(myConceptAnyHttpMethod, myConceptCanHandleRequestFunction, myConceptDefaultParameterConverter, myConceptDefaultValueFunction, myConceptDeserializeFunction, myConceptHandleRequestFunction, myConceptHttpMethodFilter, myConceptHttpRequestOperation, myConceptHttpRequestParameter, myConceptIDEAPlatformPortProvider, myConceptIParameterConverter, myConceptMPSIntegrationPortProvider, myConceptMPSInternalPortProvider, myConceptNode_getURLOperation, myConceptParameterConverterDeclaration, myConceptParameterConverterReference, myConceptParameterInitializer, myConceptPort, myConceptPortProvider, myConceptQueryParameter, myConceptQueryParameterReference, myConceptQueryPath, myConceptQuerySegment, myConceptRequestHandler, myConceptRequestType, myConceptRequestURLBuilderExpression, myConceptResponseSendOperation, myConceptSerializeFunction, myConceptSerializedValueParameter, myConceptSpecificMethodsFilter, myConceptValueToSerializeParameter);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myConceptIndex.index(id)) {
+      case LanguageConceptSwitch.AnyHttpMethod:
+        return myConceptAnyHttpMethod;
       case LanguageConceptSwitch.CanHandleRequestFunction:
         return myConceptCanHandleRequestFunction;
       case LanguageConceptSwitch.DefaultParameterConverter:
@@ -67,6 +72,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDeserializeFunction;
       case LanguageConceptSwitch.HandleRequestFunction:
         return myConceptHandleRequestFunction;
+      case LanguageConceptSwitch.HttpMethodFilter:
+        return myConceptHttpMethodFilter;
       case LanguageConceptSwitch.HttpRequestOperation:
         return myConceptHttpRequestOperation;
       case LanguageConceptSwitch.HttpRequestParameter:
@@ -111,6 +118,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptSerializeFunction;
       case LanguageConceptSwitch.SerializedValueParameter:
         return myConceptSerializedValueParameter;
+      case LanguageConceptSwitch.SpecificMethodsFilter:
+        return myConceptSpecificMethodsFilter;
       case LanguageConceptSwitch.ValueToSerializeParameter:
         return myConceptValueToSerializeParameter;
       default:
@@ -122,6 +131,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myConceptIndex.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForAnyHttpMethod() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "AnyHttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x7971f30bfee242cL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethodFilter", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x7971f30bfee2429L);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/546940173987750956");
+    b.alias("any");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForCanHandleRequestFunction() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "CanHandleRequestFunction", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5354a94149f37316L);
     b.class_(false, false, false);
@@ -165,6 +182,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/5573986434797682998");
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("handle");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethodFilter() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethodFilter", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x7971f30bfee2429L);
+    b.class_(false, true, false);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/546940173987750953");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHttpRequestOperation() {
@@ -305,6 +328,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.parent(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L);
     b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/5573986434797590400");
+    b.aggregate("validMethods", 0x7971f30bfee2423L).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x7971f30bfee2429L).optional(false).ordered(true).multiple(false).origin("546940173987750947").done();
     b.aggregate("queryPrefix", 0x53d29f104fa64ef9L).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed7L).optional(false).ordered(true).multiple(false).origin("6040064942661848825").done();
     b.aggregate("queryParameters", 0x205f4376c585d782L).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L).optional(true).ordered(true).multiple(true).origin("2332657309400291202").done();
     b.aggregate("canHandleFunction", 0x5354a94149f3cfcaL).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5354a94149f37316L).optional(true).ordered(true).multiple(false).origin("6004610301070397386").done();
@@ -357,6 +381,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL);
     b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/4403308017441359332");
     b.alias("string");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSpecificMethodsFilter() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "SpecificMethodsFilter", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x7971f30bff1260eL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethodFilter", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x7971f30bfee2429L);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/546940173987948046");
+    b.aggregate("methods", 0x7971f30bff1260fL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(true).origin("546940173987948047").done();
+    b.alias("[");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForValueToSerializeParameter() {

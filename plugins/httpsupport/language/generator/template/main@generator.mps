@@ -4,7 +4,7 @@
   <languages>
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="0" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="0" />
-    <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="-1" />
+    <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="1" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="1" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="2" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
@@ -30,6 +30,7 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="e5vs" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:org.jetbrains.ide(MPS.IDEA/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="zfj2" ref="r:ebfb0797-fa90-42cb-9f6b-3e661ce06d64(jetbrains.mps.ide.httpsupport.behavior)" implicit="true" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
@@ -177,6 +178,7 @@
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
@@ -191,6 +193,7 @@
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
+        <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
       </concept>
     </language>
     <language id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension">
@@ -216,6 +219,9 @@
         <child id="1177093586806" name="templateNode" index="gfFT$" />
       </concept>
       <concept id="1168559333462" name="jetbrains.mps.lang.generator.structure.TemplateDeclarationReference" flags="ln" index="j$656" />
+      <concept id="1168559512253" name="jetbrains.mps.lang.generator.structure.DismissTopMappingRule" flags="lg" index="j$LIH">
+        <child id="1169669152123" name="generatorMessage" index="1lHHLF" />
+      </concept>
       <concept id="1112730859144" name="jetbrains.mps.lang.generator.structure.TemplateSwitch" flags="ig" index="jVnub">
         <child id="1168558750579" name="defaultConsequence" index="jxRDz" />
         <child id="1167340453568" name="reductionMappingRule" index="3aUrZf" />
@@ -267,6 +273,10 @@
       </concept>
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
         <reference id="1167514355421" name="template" index="3lhOvi" />
+      </concept>
+      <concept id="1169670156577" name="jetbrains.mps.lang.generator.structure.GeneratorMessage" flags="lg" index="1lLz0L">
+        <property id="1169670173015" name="messageText" index="1lLB17" />
+        <property id="1169670356567" name="messageType" index="1lMjX7" />
       </concept>
       <concept id="982871510064032177" name="jetbrains.mps.lang.generator.structure.IParameterizedTemplate" flags="ng" index="1s_3nv">
         <child id="982871510064032342" name="parameter" index="1s_3oS" />
@@ -434,6 +444,7 @@
       <concept id="1162934736510" name="jetbrains.mps.baseLanguage.collections.structure.GetElementOperation" flags="nn" index="34jXtK" />
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
+      <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
     </language>
   </registry>
   <node concept="1lYeZD" id="2VC4eVXUJvI">
@@ -1655,6 +1666,43 @@
       </node>
     </node>
     <node concept="2tJIrI" id="21vgRr5yF5y" role="jymVt" />
+    <node concept="3clFb_" id="un7N2ZX_wJ" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="getValidMethodsFilter" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3Tmbuc" id="un7N2ZX_wL" role="1B3o_S" />
+      <node concept="3uibUv" id="un7N2ZX_wM" role="3clF45">
+        <ref role="3uigEE" to="82uw:~Predicate" resolve="Predicate" />
+        <node concept="3uibUv" id="un7N2ZX_wN" role="11_B2D">
+          <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="un7N2ZX_wO" role="3clF47">
+        <node concept="3cpWs6" id="un7N2ZYACf" role="3cqZAp">
+          <node concept="10Nm6u" id="un7N2ZYDSm" role="3cqZAk" />
+          <node concept="1sPUBX" id="un7N2ZYH8t" role="lGtFl">
+            <ref role="v9R2y" node="un7N2ZYsX5" resolve="switch_HttpMethodFilter" />
+            <node concept="3NFfHV" id="un7N2ZZsrn" role="1sPUBK">
+              <node concept="3clFbS" id="un7N2ZZsro" role="2VODD2">
+                <node concept="3clFbF" id="un7N2ZZu42" role="3cqZAp">
+                  <node concept="2OqwBi" id="un7N2ZZufC" role="3clFbG">
+                    <node concept="30H73N" id="un7N2ZZu41" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="un7N2ZZvN3" role="2OqNvi">
+                      <ref role="3Tt5mk" to="ndib:un7N2ZVygz" resolve="validMethods" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="un7N2ZX_wP" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="5dkEk59WUGS" role="jymVt" />
     <node concept="3clFb_" id="5dkEk59WV7M" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -4886,6 +4934,129 @@
             <node concept="3GX2aA" id="1_yOWEYQa8q" role="2OqNvi" />
           </node>
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="jVnub" id="un7N2ZYsX5">
+    <property role="3GE5qa" value="handler" />
+    <property role="TrG5h" value="switch_HttpMethodFilter" />
+    <node concept="3aamgX" id="un7N2ZYsX6" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="ndib:un7N2ZVygG" resolve="AnyHttpMethod" />
+      <node concept="gft3U" id="un7N2ZYwZP" role="1lVwrX">
+        <node concept="3cpWs6" id="un7N2ZXDYT" role="gfFT$">
+          <node concept="2ShNRf" id="un7N2ZXD3Q" role="3cqZAk">
+            <node concept="YeOm9" id="un7N2ZXDlR" role="2ShVmc">
+              <node concept="1Y3b0j" id="un7N2ZXDlU" role="YeSDq">
+                <property role="2bfB8j" value="true" />
+                <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                <ref role="1Y3XeK" to="82uw:~Predicate" resolve="Predicate" />
+                <node concept="3Tm1VV" id="un7N2ZXDlV" role="1B3o_S" />
+                <node concept="3clFb_" id="un7N2ZXDlW" role="jymVt">
+                  <property role="1EzhhJ" value="false" />
+                  <property role="TrG5h" value="test" />
+                  <property role="DiZV1" value="false" />
+                  <property role="od$2w" value="false" />
+                  <node concept="3Tm1VV" id="un7N2ZXDlX" role="1B3o_S" />
+                  <node concept="10P_77" id="un7N2ZXDlZ" role="3clF45" />
+                  <node concept="37vLTG" id="un7N2ZXDm0" role="3clF46">
+                    <property role="TrG5h" value="p0" />
+                    <node concept="3uibUv" id="un7N2ZXKWi" role="1tU5fm">
+                      <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+                    </node>
+                  </node>
+                  <node concept="3clFbS" id="un7N2ZXDm2" role="3clF47">
+                    <node concept="3cpWs6" id="un7N2ZXDT9" role="3cqZAp">
+                      <node concept="3clFbT" id="un7N2ZXDU3" role="3cqZAk">
+                        <property role="3clFbU" value="true" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3uibUv" id="un7N2ZXJa1" role="2Ghqu4">
+                  <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="un7N2ZYt4H" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="ndib:un7N2ZWioe" resolve="SpecificMethodsFilter" />
+      <node concept="gft3U" id="un7N2ZYx32" role="1lVwrX">
+        <node concept="3cpWs6" id="un7N2ZXUS1" role="gfFT$">
+          <node concept="2ShNRf" id="un7N2ZXYnY" role="3cqZAk">
+            <node concept="YeOm9" id="un7N2ZY0wC" role="2ShVmc">
+              <node concept="1Y3b0j" id="un7N2ZY0wF" role="YeSDq">
+                <property role="2bfB8j" value="true" />
+                <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                <ref role="1Y3XeK" to="82uw:~Predicate" resolve="Predicate" />
+                <node concept="3Tm1VV" id="un7N2ZY0wG" role="1B3o_S" />
+                <node concept="3clFb_" id="un7N2ZY0wH" role="jymVt">
+                  <property role="1EzhhJ" value="false" />
+                  <property role="TrG5h" value="test" />
+                  <property role="DiZV1" value="false" />
+                  <property role="od$2w" value="false" />
+                  <node concept="3Tm1VV" id="un7N2ZY0wI" role="1B3o_S" />
+                  <node concept="10P_77" id="un7N2ZY0wK" role="3clF45" />
+                  <node concept="37vLTG" id="un7N2ZY0wL" role="3clF46">
+                    <property role="TrG5h" value="method" />
+                    <node concept="3uibUv" id="un7N2ZY0xl" role="1tU5fm">
+                      <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+                    </node>
+                  </node>
+                  <node concept="3clFbS" id="un7N2ZY0wN" role="3clF47">
+                    <node concept="3cpWs6" id="un7N2ZYerh" role="3cqZAp">
+                      <node concept="2OqwBi" id="un7N2ZYerj" role="3cqZAk">
+                        <node concept="2ShNRf" id="un7N2ZYerk" role="2Oq$k0">
+                          <node concept="Tc6Ow" id="un7N2ZYerl" role="2ShVmc">
+                            <node concept="3uibUv" id="un7N2ZYerm" role="HW$YZ">
+                              <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+                            </node>
+                            <node concept="10M0yZ" id="un7N2ZYern" role="HW$Y0">
+                              <ref role="3cqZAo" to="9xw8:~HttpMethod.GET" resolve="GET" />
+                              <ref role="1PxDUh" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+                              <node concept="2b32R4" id="un7N2ZYg_p" role="lGtFl">
+                                <node concept="3JmXsc" id="un7N2ZYg_r" role="2P8S$">
+                                  <node concept="3clFbS" id="un7N2ZYg_t" role="2VODD2">
+                                    <node concept="3clFbF" id="un7N2ZY_Rf" role="3cqZAp">
+                                      <node concept="2OqwBi" id="un7N2ZYA3c" role="3clFbG">
+                                        <node concept="30H73N" id="un7N2ZY_Re" role="2Oq$k0" />
+                                        <node concept="3Tsc0h" id="un7N2ZYAlH" role="2OqNvi">
+                                          <ref role="3TtcxE" to="ndib:un7N2ZWiof" resolve="methods" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3JPx81" id="un7N2ZYero" role="2OqNvi">
+                          <node concept="37vLTw" id="un7N2ZYerp" role="25WWJ7">
+                            <ref role="3cqZAo" node="un7N2ZY0wL" resolve="method" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3uibUv" id="un7N2ZY0xk" role="2Ghqu4">
+                  <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="j$LIH" id="un7N2ZZl0Y" role="jxRDz">
+      <node concept="1lLz0L" id="un7N2ZZlcT" role="1lHHLF">
+        <property role="1lMjX7" value="error" />
+        <property role="1lLB17" value="http method filter unknown" />
       </node>
     </node>
   </node>

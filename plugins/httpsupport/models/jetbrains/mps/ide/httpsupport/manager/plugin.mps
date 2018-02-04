@@ -1107,6 +1107,33 @@
       <node concept="3Tm1VV" id="6GArDv5InM6" role="1B3o_S" />
       <node concept="17QB3L" id="6GArDv5InWd" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="2a7iB5lGDiJ" role="jymVt" />
+    <node concept="3clFb_" id="2a7iB5lGF_1" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="getMethod" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="2a7iB5lGF_4" role="3clF47">
+        <node concept="3cpWs6" id="2a7iB5lGGc1" role="3cqZAp">
+          <node concept="2OqwBi" id="2a7iB5lGI3g" role="3cqZAk">
+            <node concept="2OqwBi" id="2a7iB5lGGKj" role="2Oq$k0">
+              <node concept="Xjq3P" id="2a7iB5lGGcM" role="2Oq$k0" />
+              <node concept="2OwXpG" id="2a7iB5lGHn5" role="2OqNvi">
+                <ref role="2Oxat5" node="6GArDv5I22B" resolve="request" />
+              </node>
+            </node>
+            <node concept="liA8E" id="2a7iB5lGIQH" role="2OqNvi">
+              <ref role="37wK5l" to="9xw8:~HttpRequest.method():io.netty.handler.codec.http.HttpMethod" resolve="method" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2a7iB5lGEYt" role="1B3o_S" />
+      <node concept="3uibUv" id="2a7iB5lGF$Q" role="3clF45">
+        <ref role="3uigEE" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="5FAyHK_BVR6" role="jymVt" />
     <node concept="3clFb_" id="5FAyHK_BXzF" role="jymVt">
       <property role="1EzhhJ" value="false" />

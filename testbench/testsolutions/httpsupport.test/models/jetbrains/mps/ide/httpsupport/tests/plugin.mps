@@ -2,11 +2,12 @@
 <model ref="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)">
   <persistence version="9" />
   <languages>
-    <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="0" />
+    <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="6" />
   </languages>
   <imports>
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
+    <import index="9xw8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:io.netty.handler.codec.http(MPS.IDEA/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -36,6 +37,9 @@
       </concept>
       <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
         <child id="1164991057263" name="throwable" index="YScLw" />
+      </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
@@ -103,6 +107,7 @@
         <child id="5573986434797811183" name="handleFunction" index="pCJbe" />
         <child id="6004610301070397386" name="canHandleFunction" index="qDQqb" />
         <child id="6040064942661848825" name="queryPrefix" index="std7D" />
+        <child id="546940173987750947" name="validMethods" index="2SujGj" />
         <child id="2332657309400291202" name="queryParameters" index="3_QDjO" />
       </concept>
       <concept id="6004610301070373654" name="jetbrains.mps.ide.httpsupport.structure.CanHandleRequestFunction" flags="ig" index="qDXDn" />
@@ -112,6 +117,10 @@
       <concept id="6040064942661848792" name="jetbrains.mps.ide.httpsupport.structure.QuerySegment" flags="ng" index="std78">
         <property id="6040064942662280271" name="segment" index="svBHv" />
       </concept>
+      <concept id="546940173987948046" name="jetbrains.mps.ide.httpsupport.structure.SpecificMethodsFilter" flags="ng" index="2Spz$Y">
+        <child id="546940173987948047" name="methods" index="2Spz$Z" />
+      </concept>
+      <concept id="546940173987750956" name="jetbrains.mps.ide.httpsupport.structure.AnyHttpMethod" flags="ng" index="2SujGs" />
       <concept id="4403308017441446661" name="jetbrains.mps.ide.httpsupport.structure.DeserializeFunction" flags="ig" index="3l8qDa" />
       <concept id="4403308017441390372" name="jetbrains.mps.ide.httpsupport.structure.ValueToSerializeParameter" flags="ng" index="3l8CTF" />
       <concept id="4403308017441350905" name="jetbrains.mps.ide.httpsupport.structure.SerializeFunction" flags="ig" index="3l8LmQ" />
@@ -167,6 +176,7 @@
         </node>
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iRp" role="2SujGj" />
   </node>
   <node concept="pFx2x" id="toFl8p7rPN">
     <property role="TrG5h" value="RH_requiredParams" />
@@ -202,6 +212,7 @@
         </node>
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iRq" role="2SujGj" />
   </node>
   <node concept="pFx2x" id="toFl8p7sxN">
     <property role="TrG5h" value="RH_conditional" />
@@ -251,6 +262,7 @@
         </node>
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iRr" role="2SujGj" />
   </node>
   <node concept="pFx2x" id="toFl8p7vwC">
     <property role="TrG5h" value="RH_exception" />
@@ -276,6 +288,7 @@
         </node>
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iRs" role="2SujGj" />
   </node>
   <node concept="pFx2x" id="toFl8p7vJX">
     <property role="TrG5h" value="RH_turnBack1" />
@@ -308,6 +321,7 @@
         </node>
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iRt" role="2SujGj" />
   </node>
   <node concept="pFx2x" id="toFl8p7wyV">
     <property role="TrG5h" value="RH_turnBack2" />
@@ -340,6 +354,7 @@
         </node>
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iRu" role="2SujGj" />
   </node>
   <node concept="3l8Y49" id="toFl8p7wzC">
     <property role="TrG5h" value="testConverter" />
@@ -498,6 +513,7 @@
         </node>
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iRv" role="2SujGj" />
   </node>
   <node concept="pFx2x" id="6WBmrsjDUB3">
     <property role="TrG5h" value="RH_conflicting1" />
@@ -523,6 +539,36 @@
             <node concept="1W9Qq2" id="6WBmrsjDUBe" role="2OqNvi">
               <property role="1W9R_Y" value="text/plain" />
               <node concept="Xl_RD" id="6WBmrsjDUBf" role="1W9R_W">
+                <property role="Xl_RC" value="handled" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2SujGs" id="un7N300iRw" role="2SujGj" />
+  </node>
+  <node concept="pFx2x" id="un7N300nf$">
+    <property role="TrG5h" value="RH_methodFilter" />
+    <node concept="2Spz$Y" id="un7N300nfT" role="2SujGj">
+      <node concept="10M0yZ" id="un7N300p1P" role="2Spz$Z">
+        <ref role="3cqZAo" to="9xw8:~HttpMethod.GET" resolve="GET" />
+        <ref role="1PxDUh" to="9xw8:~HttpMethod" resolve="HttpMethod" />
+      </node>
+    </node>
+    <node concept="std77" id="un7N300nfA" role="std7D">
+      <node concept="std78" id="un7N300nfR" role="std7y">
+        <property role="svBHv" value="methodfilter" />
+      </node>
+    </node>
+    <node concept="pF8on" id="un7N300nfB" role="pCJbe">
+      <node concept="3clFbS" id="un7N300nfC" role="2VODD2">
+        <node concept="3clFbF" id="un7N300p4Q" role="3cqZAp">
+          <node concept="2OqwBi" id="un7N300p4R" role="3clFbG">
+            <node concept="pFkrN" id="un7N300p4S" role="2Oq$k0" />
+            <node concept="1W9Qq2" id="un7N300p4T" role="2OqNvi">
+              <property role="1W9R_Y" value="text/plain" />
+              <node concept="Xl_RD" id="un7N300p4U" role="1W9R_W">
                 <property role="Xl_RC" value="handled" />
               </node>
             </node>

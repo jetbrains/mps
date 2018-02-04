@@ -7,6 +7,7 @@ import io.netty.channel.Channel;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import java.net.URISyntaxException;
+import io.netty.handler.codec.http.HttpMethod;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.http.FullHttpResponse;
@@ -49,6 +50,10 @@ public class HttpRequest {
 
   public String getReferrerHost() {
     return referrerHost;
+  }
+
+  public HttpMethod getMethod() {
+    return this.request.method();
   }
 
   public void sendResponse(HttpResponseStatus status, String contentType, ByteBuf buffer) {

@@ -13,13 +13,13 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 
-public class RH_simple_RequestHandler extends HttpRequestHandlerBase {
+public class RH_methodFilter_RequestHandler extends HttpRequestHandlerBase {
 
-  private static final List<String> QUERY_PREFIX = ListSequence.fromListAndArray(new ArrayList<String>(), "handlerTest", "simple");
+  private static final List<String> QUERY_PREFIX = ListSequence.fromListAndArray(new ArrayList<String>(), "methodfilter");
 
   private final boolean myCorrectRequest;
 
-  public RH_simple_RequestHandler(HttpRequest request) {
+  public RH_methodFilter_RequestHandler(HttpRequest request) {
     super(request);
     boolean correctRequest = true;
     myCorrectRequest = correctRequest;
@@ -34,8 +34,8 @@ public class RH_simple_RequestHandler extends HttpRequestHandlerBase {
   @Override
   protected Predicate<HttpMethod> getValidMethodsFilter() {
     return new Predicate<HttpMethod>() {
-      public boolean test(HttpMethod p0) {
-        return true;
+      public boolean test(HttpMethod method) {
+        return ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<HttpMethod>(), HttpMethod.GET)).contains(method);
       }
     };
   }

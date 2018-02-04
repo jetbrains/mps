@@ -8,6 +8,7 @@
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting1_Extension" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting2_Extension" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_exception_Extension" />
+    <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_Extension" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_requiredParams_Extension" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_simple_Extension" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack1_Extension" />
@@ -29,6 +30,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conditional_RequestHandler" file="RH_conditional_RequestHandler.java">
     <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.util.CharsetUtil" />
     <classNode dependClassName="java.lang.Exception" />
@@ -36,6 +38,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.ide.httpsupport.runtime.base.HttpRequestHandlerBase" />
@@ -51,6 +54,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting1_RequestHandler" file="RH_conflicting1_RequestHandler.java">
     <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.util.CharsetUtil" />
     <classNode dependClassName="java.lang.Exception" />
@@ -58,6 +62,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.PingStorage" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
@@ -74,6 +79,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_conflicting2_RequestHandler" file="RH_conflicting2_RequestHandler.java">
     <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.util.CharsetUtil" />
     <classNode dependClassName="java.lang.Exception" />
@@ -81,6 +87,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.PingStorage" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
@@ -96,11 +103,37 @@
     <classNode extendsClassName="jetbrains.mps.smodel.structure.Extension" />
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_exception_RequestHandler" file="RH_exception_RequestHandler.java">
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
+    <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode extendsClassName="jetbrains.mps.ide.httpsupport.runtime.base.HttpRequestHandlerBase" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_Extension" file="RH_methodFilter_Extension.java">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
+    <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.IHttpRequestHandler" />
+    <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.IHttpRequestHandlerFactory" />
+    <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_RequestHandler" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="jetbrains.mps.smodel.structure.Extension" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_methodFilter_RequestHandler" file="RH_methodFilter_RequestHandler.java">
+    <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
+    <classNode dependClassName="io.netty.util.CharsetUtil" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.ide.httpsupport.runtime.base.HttpRequestHandlerBase" />
@@ -116,6 +149,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_requiredParams_RequestHandler" file="RH_requiredParams_RequestHandler.java">
     <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.util.CharsetUtil" />
     <classNode dependClassName="java.lang.Exception" />
@@ -123,6 +157,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.ide.httpsupport.runtime.base.HttpRequestHandlerBase" />
@@ -138,6 +173,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_simple_RequestHandler" file="RH_simple_RequestHandler.java">
     <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.util.CharsetUtil" />
     <classNode dependClassName="java.lang.Exception" />
@@ -145,6 +181,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.ide.httpsupport.runtime.base.HttpRequestHandlerBase" />
@@ -160,6 +197,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack1_RequestHandler" file="RH_turnBack1_RequestHandler.java">
     <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.util.CharsetUtil" />
     <classNode dependClassName="java.lang.Exception" />
@@ -167,6 +205,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.ide.httpsupport.runtime.base.HttpRequestHandlerBase" />
@@ -182,6 +221,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.plugin.RH_turnBack2_RequestHandler" file="RH_turnBack2_RequestHandler.java">
     <classNode dependClassName="io.netty.buffer.Unpooled" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.util.CharsetUtil" />
     <classNode dependClassName="java.lang.Exception" />
@@ -189,6 +229,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     <classNode dependClassName="jetbrains.mps.ide.httpsupport.tests.plugin.testConverter_Converter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />

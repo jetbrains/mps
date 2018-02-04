@@ -8,6 +8,7 @@
     <classNode dependClassName="io.netty.buffer.Unpooled" />
     <classNode dependClassName="io.netty.channel.Channel" />
     <classNode dependClassName="io.netty.handler.codec.http.FullHttpResponse" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpRequest" />
     <classNode dependClassName="io.netty.handler.codec.http.HttpResponseStatus" />
     <classNode dependClassName="io.netty.handler.codec.http.QueryStringDecoder" />

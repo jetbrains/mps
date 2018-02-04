@@ -11,7 +11,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TypesystemDescriptor.java">
-      <unit at="10,0,70,0" name="jetbrains.mps.ide.httpsupport.typesystem.TypesystemDescriptor" />
+      <unit at="10,0,74,0" name="jetbrains.mps.ide.httpsupport.typesystem.TypesystemDescriptor" />
     </file>
   </root>
   <root nodeRef="r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)/2332657309400598048">
@@ -428,6 +428,60 @@
       </scope>
       <scope id="5111696079053648329" at="40,0,98,0" />
       <unit id="5111696079053647588" at="18,0,99,0" name="jetbrains.mps.ide.httpsupport.typesystem.typeof_DefaultParameterConverter_InferenceRule" />
+    </file>
+  </root>
+  <root nodeRef="r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)/546940173988164682">
+    <file name="check_SpecificMethodsFilter_NonTypesystemRule.java">
+      <node id="546940173988184304" at="29,161,30,62" concept="5" />
+      <node id="546940173988184304" at="30,62,31,256" concept="5" />
+      <node id="546940173988164682" at="36,50,37,168" concept="6" />
+      <node id="546940173988164682" at="39,68,40,102" concept="6" />
+      <node id="546940173988164682" at="42,30,43,17" concept="6" />
+      <node id="546940173988190148" at="45,68,46,63" concept="5" />
+      <node id="546940173988190148" at="46,63,47,30" concept="5" />
+      <node id="546940173988190148" at="47,30,48,252" concept="2" />
+      <node id="546940173988190148" at="48,252,49,462" concept="2" />
+      <node id="546940173988190148" at="49,462,50,24" concept="6" />
+      <node id="546940173988164682" at="24,0,26,0" concept="1" trace="check_SpecificMethodsFilter_NonTypesystemRule#()V" />
+      <node id="546940173988164682" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="546940173988164682" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="546940173988164682" at="42,0,45,0" concept="4" trace="overrides#()Z" />
+      <node id="546940173988184304" at="28,35,32,9" concept="3" />
+      <node id="546940173988184086" at="28,0,34,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="546940173988190148" at="45,0,52,0" concept="8" trace="_quotation_createNode_jnfgl6_b0a0a0a0a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="546940173988166342" at="26,119,34,7" concept="2" />
+      <node id="546940173988164682" at="26,0,36,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="546940173988164682" at="24,58,24,58" />
+      <scope id="546940173988164682" at="36,50,37,168" />
+      <scope id="546940173988164682" at="39,68,40,102" />
+      <scope id="546940173988164682" at="42,30,43,17" />
+      <scope id="546940173988164682" at="24,0,26,0" />
+      <scope id="546940173988184304" at="29,161,31,256">
+        <var name="_reporter_2309309498" id="546940173988184304" />
+        <var name="errorTarget" id="546940173988184304" />
+      </scope>
+      <scope id="546940173988164682" at="36,0,39,0" />
+      <scope id="546940173988164682" at="39,0,42,0">
+        <var name="argument" id="546940173988164682" />
+      </scope>
+      <scope id="546940173988164682" at="42,0,45,0" />
+      <scope id="546940173988184087" at="28,35,32,9" />
+      <scope id="546940173988190148" at="45,68,50,24">
+        <var name="facade" id="546940173988190148" />
+        <var name="quotedNode_1" id="546940173988190148" />
+      </scope>
+      <scope id="546940173988184086" at="28,0,34,0">
+        <var name="it" id="546940173988184086" />
+      </scope>
+      <scope id="546940173988190148" at="45,0,52,0" />
+      <scope id="546940173988164683" at="26,119,34,7" />
+      <scope id="546940173988164682" at="26,0,36,0">
+        <var name="filter" id="546940173988164682" />
+        <var name="status" id="546940173988164682" />
+        <var name="typeCheckingContext" id="546940173988164682" />
+      </scope>
+      <unit id="546940173988184086" at="27,208,34,5" name="jetbrains.mps.ide.httpsupport.typesystem.check_SpecificMethodsFilter_NonTypesystemRule$1" />
+      <unit id="546940173988164682" at="23,0,53,0" name="jetbrains.mps.ide.httpsupport.typesystem.check_SpecificMethodsFilter_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)/5573986434797767153">

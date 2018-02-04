@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <root>
+    <file name="MigrationDescriptor.java">
+      <unit at="11,0,17,0" name="jetbrains.mps.ide.httpsupport.migration.MigrationDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:7570112a-a831-4ace-86bf-987f02f6619c(jetbrains.mps.ide.httpsupport.migration)/546940173988850671">
+    <file name="HttpMethodFilter.java">
+      <node id="546940173988850671" at="17,30,18,56" concept="3" />
+      <node id="546940173988850671" at="21,33,22,17" concept="3" />
+      <node id="546940173988850671" at="24,41,25,17" concept="0" />
+      <node id="546940173988850671" at="25,17,26,16" concept="3" />
+      <node id="546940173988903472" at="30,232,31,365" concept="0" />
+      <node id="546940173988850671" at="35,51,36,150" concept="3" />
+      <node id="546940173988850671" at="17,0,20,0" concept="2" trace="getCaption#()Ljava/lang/String;" />
+      <node id="546940173988898802" at="29,38,32,7" concept="1" />
+      <node id="546940173988850671" at="35,0,38,0" concept="2" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="546940173988850671" at="20,0,24,0" concept="2" trace="isRerunnable#()Z" />
+      <node id="546940173988850671" at="24,0,28,0" concept="2" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="546940173988852545" at="28,42,33,5" concept="1" />
+      <node id="546940173988850671" at="28,0,35,0" concept="2" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="546940173988850671" at="17,30,18,56" />
+      <scope id="546940173988850671" at="21,33,22,17" />
+      <scope id="546940173988898808" at="30,232,31,365" />
+      <scope id="546940173988850671" at="35,51,36,150" />
+      <scope id="546940173988850671" at="24,41,26,16" />
+      <scope id="546940173988850671" at="17,0,20,0" />
+      <scope id="546940173988852547" at="29,38,32,7" />
+      <scope id="546940173988898802" at="29,38,32,7">
+        <var name="handler" id="546940173988898804" />
+      </scope>
+      <scope id="546940173988850671" at="35,0,38,0" />
+      <scope id="546940173988850671" at="20,0,24,0" />
+      <scope id="546940173988850671" at="24,0,28,0">
+        <var name="m" id="546940173988850671" />
+      </scope>
+      <scope id="546940173988850671" at="28,42,33,5" />
+      <scope id="546940173988852545" at="28,42,33,5">
+        <var name="mdl" id="546940173988852548" />
+      </scope>
+      <scope id="546940173988850671" at="28,0,35,0">
+        <var name="m" id="546940173988850671" />
+      </scope>
+      <unit id="546940173988850671" at="16,0,40,0" name="jetbrains.mps.ide.httpsupport.migration.HttpMethodFilter" />
+    </file>
+  </root>
+</debug-info>
+

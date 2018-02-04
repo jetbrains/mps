@@ -30,6 +30,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.tests.lang.TestRHBehavior_Test" file="TestRHBehavior_Test.java">
     <classNode dependClassName="com.intellij.util.ExceptionUtil" />
+    <classNode dependClassName="io.netty.handler.codec.http.HttpMethod" />
     <classNode dependClassName="io.netty.handler.codec.http.QueryStringEncoder" />
     <classNode dependClassName="java.io.BufferedReader" />
     <classNode dependClassName="java.io.IOException" />

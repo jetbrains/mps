@@ -77,6 +77,13 @@
     <property role="3GE5qa" value="handler" />
     <property role="34LRSv" value="Request Handler" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="un7N2ZVygz" role="1TKVEi">
+      <property role="IQ2ns" value="546940173987750947" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="validMethods" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="un7N2ZVygD" resolve="HttpMethodFilter" />
+    </node>
     <node concept="1TJgyj" id="5fiBL1fD$VT" role="1TKVEi">
       <property role="IQ2ns" value="6040064942661848825" />
       <property role="20lmBu" value="aggregation" />
@@ -446,6 +453,37 @@
     <property role="34LRSv" value="getURL" />
     <property role="R4oN_" value="provides URL to this node" />
     <ref role="1TJDcQ" to="tp25:g$eCIIG" resolve="SNodeOperation" />
+  </node>
+  <node concept="1TIwiD" id="un7N2ZVygD">
+    <property role="EcuMT" value="546940173987750953" />
+    <property role="TrG5h" value="HttpMethodFilter" />
+    <property role="R5$K7" value="true" />
+    <property role="R5$K2" value="false" />
+    <property role="3GE5qa" value="method" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="un7N2ZVygG">
+    <property role="EcuMT" value="546940173987750956" />
+    <property role="TrG5h" value="AnyHttpMethod" />
+    <property role="34LRSv" value="any" />
+    <property role="R4oN_" value="any http method is valid" />
+    <property role="3GE5qa" value="method" />
+    <ref role="1TJDcQ" node="un7N2ZVygD" resolve="HttpMethodFilter" />
+  </node>
+  <node concept="1TIwiD" id="un7N2ZWioe">
+    <property role="EcuMT" value="546940173987948046" />
+    <property role="TrG5h" value="SpecificMethodsFilter" />
+    <property role="34LRSv" value="[" />
+    <property role="R4oN_" value="a list of valid http methods" />
+    <property role="3GE5qa" value="method" />
+    <ref role="1TJDcQ" node="un7N2ZVygD" resolve="HttpMethodFilter" />
+    <node concept="1TJgyj" id="un7N2ZWiof" role="1TKVEi">
+      <property role="IQ2ns" value="546940173987948047" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="methods" />
+      <property role="20lbJX" value="1..n" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
   </node>
 </model>
 

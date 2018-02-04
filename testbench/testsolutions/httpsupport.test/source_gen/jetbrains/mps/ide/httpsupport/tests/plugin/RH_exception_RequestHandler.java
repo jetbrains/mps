@@ -7,6 +7,8 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
+import java.util.function.Predicate;
+import io.netty.handler.codec.http.HttpMethod;
 
 public class RH_exception_RequestHandler extends HttpRequestHandlerBase {
 
@@ -26,6 +28,14 @@ public class RH_exception_RequestHandler extends HttpRequestHandlerBase {
     return QUERY_PREFIX;
   }
 
+  @Override
+  protected Predicate<HttpMethod> getValidMethodsFilter() {
+    return new Predicate<HttpMethod>() {
+      public boolean test(HttpMethod p0) {
+        return true;
+      }
+    };
+  }
 
   @Override
   public boolean canHandle() {

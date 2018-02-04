@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="6" />
-    <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="-1" />
+    <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
@@ -38,6 +38,7 @@
     <import index="vmdq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.awt(MPS.IDEA/)" />
     <import index="tqvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.tempmodel(MPS.Core/)" />
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
+    <import index="9xw8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:io.netty.handler.codec.http(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -282,6 +283,7 @@
         <child id="5573986434797811183" name="handleFunction" index="pCJbe" />
         <child id="6004610301070397386" name="canHandleFunction" index="qDQqb" />
         <child id="6040064942661848825" name="queryPrefix" index="std7D" />
+        <child id="546940173987750947" name="validMethods" index="2SujGj" />
         <child id="2332657309400291202" name="queryParameters" index="3_QDjO" />
       </concept>
       <concept id="6004610301070373654" name="jetbrains.mps.ide.httpsupport.structure.CanHandleRequestFunction" flags="ig" index="qDXDn" />
@@ -291,6 +293,7 @@
       <concept id="6040064942661848792" name="jetbrains.mps.ide.httpsupport.structure.QuerySegment" flags="ng" index="std78">
         <property id="6040064942662280271" name="segment" index="svBHv" />
       </concept>
+      <concept id="546940173987750956" name="jetbrains.mps.ide.httpsupport.structure.AnyHttpMethod" flags="ng" index="2SujGs" />
       <concept id="2332657309400452757" name="jetbrains.mps.ide.httpsupport.structure.QueryParameterReference" flags="ng" index="3_PKRz">
         <reference id="2332657309400452758" name="queryParameter" index="3_PKRw" />
       </concept>
@@ -958,6 +961,7 @@
         <property role="svBHv" value="file" />
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iR7" role="2SujGj" />
   </node>
   <node concept="pFx2x" id="2lt1tUBuq2$">
     <property role="TrG5h" value="NodeOpener" />
@@ -1225,6 +1229,7 @@
         <property role="svBHv" value="node" />
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iR8" role="2SujGj" />
   </node>
   <node concept="312cEu" id="2lt1tUBuCdK">
     <property role="TrG5h" value="HandlerUtil" />
@@ -2587,6 +2592,7 @@
         <property role="svBHv" value="file" />
       </node>
     </node>
+    <node concept="2SujGs" id="un7N300iR9" role="2SujGj" />
   </node>
 </model>
 
