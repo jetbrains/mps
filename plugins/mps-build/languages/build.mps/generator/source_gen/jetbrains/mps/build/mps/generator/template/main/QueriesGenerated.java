@@ -1395,9 +1395,10 @@ public class QueriesGenerated extends QueryProviderBase {
         }
       });
       ml.checkAllModules(ModuleChecker.CheckType.LOAD_ALL);
+      ml.checkAllPlugins();
 
       // move generators outside language, respect languages under Group project parts (hence, descendants), and  
-      // do not touch Generators that are not child of a generator (i.e. standalone generator modules, once we have them) 
+      // do not touch Generators that are not child of a language (i.e. standalone generator modules, once we have them) 
 
       for (SNode generator : SLinkOperations.collect(ListSequence.fromList(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"))).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode it) {

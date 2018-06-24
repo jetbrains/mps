@@ -71,6 +71,15 @@ public final class ModuleLoader {
     });
   }
 
+  public void checkAllPlugins() {
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myBuildProject, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin"))).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        IdeaPluginDependenciesHelper helper = new IdeaPluginDependenciesHelper(it);
+        helper.reportAllUnsatisfiedDependencies(myMsgHandler);
+      }
+    });
+  }
+
   public ModuleChecker createModuleChecker(SNode module) {
     assert SNodeOperations.getNodeAncestor(module, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false) == myBuildProject;
     String moduleFilePath = BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(module, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path")), myBuildContext);

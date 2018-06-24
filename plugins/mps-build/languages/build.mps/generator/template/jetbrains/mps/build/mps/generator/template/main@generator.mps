@@ -3564,6 +3564,16 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbF" id="6qqPOyjpOWk" role="3cqZAp">
+              <node concept="2OqwBi" id="6qqPOyjpP7C" role="3clFbG">
+                <node concept="37vLTw" id="6qqPOyjpOWi" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6cqWk79_Xjh" resolve="ml" />
+                </node>
+                <node concept="liA8E" id="6qqPOyjpPiP" role="2OqNvi">
+                  <ref role="37wK5l" to="tken:6qqPOyjo3dt" resolve="checkAllPlugins" />
+                </node>
+              </node>
+            </node>
             <node concept="3clFbH" id="7YI57w6S3Uh" role="3cqZAp" />
             <node concept="3SKdUt" id="7YI57w6S5tu" role="3cqZAp">
               <node concept="3SKdUq" id="7YI57w6S5vE" role="3SKWNk">
@@ -3572,7 +3582,7 @@
             </node>
             <node concept="3SKdUt" id="6cqWk79ARJi" role="3cqZAp">
               <node concept="3SKdUq" id="6cqWk79ARJj" role="3SKWNk">
-                <property role="3SKdUp" value="do not touch Generators that are not child of a generator (i.e. standalone generator modules, once we have them)" />
+                <property role="3SKdUp" value="do not touch Generators that are not child of a language (i.e. standalone generator modules, once we have them)" />
               </node>
             </node>
             <node concept="3clFbH" id="6cqWk79AG3V" role="3cqZAp" />
