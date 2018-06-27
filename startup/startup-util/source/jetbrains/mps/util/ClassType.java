@@ -33,7 +33,6 @@ public enum ClassType {
   PLATFORM("platform"),
   IDEA("idea"),
   WORKBENCH("workbench"),
-  PLUGINS("plugins"),
   TEST("test"),
   TOOL_COMMON("tool-common");
 

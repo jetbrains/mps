@@ -58,24 +58,20 @@ public class Solution extends ReloadableModuleBase {
 
   private static Map<SModuleReference, ClassType> initBootstrapSolutions() {
     Map<SModuleReference, ClassType> result = new HashMap<>();
-    result.put(BootstrapLanguages.jdkRef(), ClassType.JDK);
-    result.put(BootstrapLanguages.jdkToolsRef(), ClassType.JDK_TOOLS);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("Annotations",
-        ModuleId.fromString("3f233e7f-b8a6-46d2-a57f-795d56775243")), ClassType.ANNOTATIONS);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("MPS.OpenAPI",
-        ModuleId.fromString("8865b7a8-5271-43d3-884c-6fd1d9cfdd34")), ClassType.OPENAPI);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("MPS.Core",
-        ModuleId.fromString("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea")), ClassType.CORE);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("MPS.Editor",
-        ModuleId.fromString("1ed103c3-3aa6-49b7-9c21-6765ee11f224")), ClassType.EDITOR);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("MPS.Platform",
-        ModuleId.fromString("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61")), ClassType.PLATFORM);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("MPS.IDEA",
-        ModuleId.fromString("498d89d2-c2e9-11e2-ad49-6cf049e62fe5")), ClassType.IDEA);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("MPS.Workbench",
-        ModuleId.fromString("86441d7a-e194-42da-81a5-2161ec62a379")), ClassType.WORKBENCH);
-    result.put(new jetbrains.mps.project.structure.modules.ModuleReference("Testbench",
-        ModuleId.fromString("920eaa0e-ecca-46bc-bee7-4e5c59213dd6")), ClassType.TEST);
+    List<ClassType> classTypes = new ArrayList<>();
+    classTypes.add(ClassType.JDK);
+    classTypes.add(ClassType.JDK_TOOLS);
+    classTypes.add(ClassType.ANNOTATIONS);
+    classTypes.add(ClassType.OPENAPI);
+    classTypes.add(ClassType.CORE);
+    classTypes.add(ClassType.EDITOR);
+    classTypes.add(ClassType.PLATFORM);
+    classTypes.add(ClassType.IDEA);
+    classTypes.add(ClassType.WORKBENCH);
+    classTypes.add(ClassType.TEST);
+    for (ClassType classType : classTypes) {
+      result.put(BootstrapLanguages.bootstrapSolutionRef(classType), classType);
+    }
     return result;
   }
 

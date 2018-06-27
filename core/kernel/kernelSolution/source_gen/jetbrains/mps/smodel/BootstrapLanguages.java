@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.util.ClassType;
 
 @Deprecated
 @ToRemove(version = 3.3)
@@ -130,5 +131,30 @@ public class BootstrapLanguages {
   public static SModuleReference jdkToolsRef() {
     return PersistenceFacade.getInstance().createModuleReference("b387285c-3448-452c-b3bb-a3f8de8eaf08(JDK-tools)");
   }
-
+  public static SModuleReference bootstrapSolutionRef(ClassType classType) {
+    switch (classType) {
+      case JDK:
+        return PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)");
+      case JDK_TOOLS:
+        return PersistenceFacade.getInstance().createModuleReference("b387285c-3448-452c-b3bb-a3f8de8eaf08(JDK-tools)");
+      case ANNOTATIONS:
+        return PersistenceFacade.getInstance().createModuleReference("3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)");
+      case OPENAPI:
+        return PersistenceFacade.getInstance().createModuleReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)");
+      case CORE:
+        return PersistenceFacade.getInstance().createModuleReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)");
+      case EDITOR:
+        return PersistenceFacade.getInstance().createModuleReference("1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)");
+      case PLATFORM:
+        return PersistenceFacade.getInstance().createModuleReference("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)");
+      case IDEA:
+        return PersistenceFacade.getInstance().createModuleReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)");
+      case WORKBENCH:
+        return PersistenceFacade.getInstance().createModuleReference("86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)");
+      case TEST:
+        return PersistenceFacade.getInstance().createModuleReference("920eaa0e-ecca-46bc-bee7-4e5c59213dd6(Testbench)");
+      default:
+        return null;
+    }
+  }
 }
