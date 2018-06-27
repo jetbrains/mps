@@ -14,5 +14,6 @@
     <orderEntry type="library" name="Ant" level="project" />
     <orderEntry type="library" name="Log4j" level="project" />
     <orderEntry type="module" module-name="ant-mps-common" exported="" />
+    <orderEntry type="module" module-name="openapi" />
   </component>
 </module>
