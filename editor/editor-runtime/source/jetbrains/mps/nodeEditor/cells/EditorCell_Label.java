@@ -61,6 +61,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   protected TextLine myTextLine;
   protected TextLine myNullTextLine;
   protected CaretState myCaretState = new CaretState();
+  private int prevLenght = 0;
 
   protected EditorCell_Label(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text) {
     super(editorContext, node);
@@ -479,18 +480,29 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   @Override
   public boolean processTextChanged(InputMethodEvent e) {
     String text = InputMethodListenerImpl.getText(e);
+	if (text == null) { 
+		this.prevLenght = 0; 
+	} 
     if (!isEditable() || text == null) {
       return false;
     }
+
     ModelAccess modelAccess = getContext().getRepository().getModelAccess();
 
     if (!myTextLine.hasNonTrivialSelection()) {
       // selecting last symbol entered by user in order to replace if with the result fo input method processing
       int caretPosition = getCaretPosition();
-      if (isCaretPositionAllowed(caretPosition - 1)) {
-        setCaretPosition(caretPosition - 1, true);
-      }
-    }
+      if (isCaretPositionAllowed(caretPosition - this.prevLenght)) { 
+		setSelectionStart(caretPosition - this.prevLenght); 
+		setCaretPosition(caretPosition - this.prevLenght, true); 
+      } else { 
+		setCaretPosition(0, true); 
+		setSelectionStart(0); 
+      } 
+      setSelectionEnd(caretPosition);
+	}
+	this.prevLenght = text.length();
+	
     ModifyTextCommand keyTypedCommand = new ModifyTextCommand(text, true, null, getContext());
     modelAccess.executeCommand(keyTypedCommand);
     if (keyTypedCommand.getResult()) {
