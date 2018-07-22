@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.language.SDataType;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
 import jetbrains.mps.references.Reference;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SPropertyOperations {
   public static String assign(SNode node, SProperty property, String propertyValue) {
@@ -244,7 +245,26 @@ public class SPropertyOperations {
     set(node, property, propertyValue);
     return propertyValue;
   }
+
+  public static String serializeEnummember(SEnumerationLiteral member) {
+    if (member == null) {
+      return null;
+    }
+    SEnumerationAdapter enumeration = as_sbyy7e_a0a1a04(member.getEnumeration(), SEnumerationAdapter.class);
+    return enumeration.serialize(member);
+  }
+
+  public static SEnumerationLiteral deserializeEnummember(long uuidHigh, long uuidLow, long enumId, String fqEnumNameHint, String value) {
+    SEnumerationAdapter enumeration = as_sbyy7e_a0a0a24(MetaAdapterFactory.getEnumeration(uuidHigh, uuidLow, enumId, fqEnumNameHint), SEnumerationAdapter.class);
+    return enumeration.deserialize(value);
+  }
   private static <T> T as_sbyy7e_a0a0a0a9(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_sbyy7e_a0a1a04(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_sbyy7e_a0a0a24(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -165,10 +165,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_OperationParm_StopConceptList;
   private ConceptPresentation props_PoundExpression;
   private ConceptPresentation props_PropertyAttributeQualifier;
+  private ConceptPresentation props_PropertyDeserializeExpression;
   private ConceptPresentation props_PropertyId;
   private ConceptPresentation props_PropertyIdRefExpression;
   private ConceptPresentation props_PropertyIdentity;
   private ConceptPresentation props_PropertyQualifier;
+  private ConceptPresentation props_PropertySerializeExpression;
   private ConceptPresentation props_Property_HasValue_Enum;
   private ConceptPresentation props_Property_HasValue_Simple;
   private ConceptPresentation props_Property_RemoveOperation;
@@ -1357,6 +1359,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_PropertyAttributeQualifier = cpb.create();
         }
         return props_PropertyAttributeQualifier;
+      case LanguageConceptSwitch.PropertyDeserializeExpression:
+        if (props_PropertyDeserializeExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("convert string to smodel value");
+          cpb.rawPresentation("deserialize");
+          props_PropertyDeserializeExpression = cpb.create();
+        }
+        return props_PropertyDeserializeExpression;
       case LanguageConceptSwitch.PropertyId:
         if (props_PropertyId == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1385,6 +1395,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_PropertyQualifier = cpb.create();
         }
         return props_PropertyQualifier;
+      case LanguageConceptSwitch.PropertySerializeExpression:
+        if (props_PropertySerializeExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("convert smodel value to string");
+          cpb.rawPresentation("serialize");
+          props_PropertySerializeExpression = cpb.create();
+        }
+        return props_PropertySerializeExpression;
       case LanguageConceptSwitch.Property_HasValue_Enum:
         if (props_Property_HasValue_Enum == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

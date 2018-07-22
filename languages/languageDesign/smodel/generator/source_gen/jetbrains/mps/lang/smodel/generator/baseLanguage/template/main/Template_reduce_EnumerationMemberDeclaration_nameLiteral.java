@@ -39,10 +39,10 @@ public class Template_reduce_EnumerationMemberDeclaration_nameLiteral extends Te
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    if (QueriesGenerated.ifMacro_Condition_124_0(new IfMacroContext(context, ifMacroRef_jdvjnt_b0a0c0g))) {
+    if (QueriesGenerated.ifMacro_Condition_125_0(new IfMacroContext(context, ifMacroRef_jdvjnt_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       try {
-        SNodeAccessUtil.setProperty(tnode2, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_124_0(new PropertyMacroContext(context, null, propertyMacro_jdvjnt_c0a0c0a0b0c0g))));
+        SNodeAccessUtil.setProperty(tnode2, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_125_0(new PropertyMacroContext(context, null, propertyMacro_jdvjnt_c0a0c0a0b0c0g))));
       } finally {
       }
       tlist1 = TemplateUtil.singletonList(tnode2);

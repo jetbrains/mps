@@ -162,6 +162,22 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     return null;
   }
 
+  public SEnumerationLiteral deserialize(String string) {
+    try {
+      return getLiteralById(deserializeId(string));
+    } catch (IllegalArgumentException e) {
+      return null;
+    }
+  }
+
+  public String serialize(SEnumerationLiteral literal) {
+    if (literal instanceof SEnumLiteralAdapter && literal.getEnumeration() == this) {
+      SEnumLiteralAdapter adapter = (SEnumLiteralAdapter) literal;
+      return serializeId(adapter.myId);
+    }
+    return null;
+  }
+
   private long deserializeId(String string) throws IllegalArgumentException {
     return new JavaFriendlyBase64().parseLong(string);
   }

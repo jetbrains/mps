@@ -46,8 +46,8 @@ public class Template_reduce_ModuleReferenceFromString extends TemplateDeclarati
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         try {
-          tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade.getInstance()")));
-          tnode2.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode2, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade")));
+          tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade")));
+          tnode2.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode2, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade.getInstance()")));
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
@@ -56,7 +56,7 @@ public class Template_reduce_ModuleReferenceFromString extends TemplateDeclarati
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
         try {
-          tnode3.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode3, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade.createModuleReference(java.lang.String)")));
+          tnode3.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode3, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade.createModuleReference(java.lang.String)")));
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -108,8 +108,8 @@ public class Template_reduce_ModuleReferenceFromString extends TemplateDeclarati
   @Override
   protected SReferenceLink[] initAssociationLinks() {
     SReferenceLink[] rv = new SReferenceLink[2];
-    rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     return rv;
   }
   @Override

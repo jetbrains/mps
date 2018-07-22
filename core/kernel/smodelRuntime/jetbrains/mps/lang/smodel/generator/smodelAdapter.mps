@@ -14015,6 +14015,143 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5xOmJgD8GJS" role="jymVt" />
+    <node concept="2YIFZL" id="7DKVVH$LEUq" role="jymVt">
+      <property role="TrG5h" value="serializeEnummember" />
+      <node concept="3clFbS" id="7DKVVH$LEUt" role="3clF47">
+        <node concept="3clFbJ" id="7DKVVH$LLBs" role="3cqZAp">
+          <node concept="3clFbC" id="7DKVVH$LQec" role="3clFbw">
+            <node concept="10Nm6u" id="7DKVVH$LQez" role="3uHU7w" />
+            <node concept="37vLTw" id="7DKVVH$LNr4" role="3uHU7B">
+              <ref role="3cqZAo" node="7DKVVH$LGUX" resolve="member" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="7DKVVH$LLBu" role="3clFbx">
+            <node concept="3cpWs6" id="7DKVVH$LS1Z" role="3cqZAp">
+              <node concept="10Nm6u" id="7DKVVH$LSWN" role="3cqZAk" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7DKVVH$LYqc" role="3cqZAp">
+          <node concept="3cpWsn" id="7DKVVH$LYqd" role="3cpWs9">
+            <property role="TrG5h" value="enumeration" />
+            <node concept="3uibUv" id="7DKVVH$LYqe" role="1tU5fm">
+              <ref role="3uigEE" to="xx25:~SEnumerationAdapter" resolve="SEnumerationAdapter" />
+            </node>
+            <node concept="0kSF2" id="5ypiCWbwpDL" role="33vP2m">
+              <node concept="3uibUv" id="5ypiCWbwpDO" role="0kSFW">
+                <ref role="3uigEE" to="xx25:~SEnumerationAdapter" resolve="SEnumerationAdapter" />
+              </node>
+              <node concept="2OqwBi" id="7DKVVH$M6WO" role="0kSFX">
+                <node concept="37vLTw" id="7DKVVH$M6RS" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7DKVVH$LGUX" resolve="member" />
+                </node>
+                <node concept="liA8E" id="7DKVVH$M8UY" role="2OqNvi">
+                  <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getEnumeration()" resolve="getEnumeration" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5ypiCWbw$GX" role="3cqZAp">
+          <node concept="2OqwBi" id="5ypiCWbwDmY" role="3cqZAk">
+            <node concept="37vLTw" id="5ypiCWbwBpc" role="2Oq$k0">
+              <ref role="3cqZAo" node="7DKVVH$LYqd" resolve="enumeration" />
+            </node>
+            <node concept="liA8E" id="5xOmJgD7pXS" role="2OqNvi">
+              <ref role="37wK5l" to="xx25:~SEnumerationAdapter.serialize(org.jetbrains.mps.openapi.language.SEnumerationLiteral)" resolve="serialize" />
+              <node concept="37vLTw" id="5xOmJgD7yYL" role="37wK5m">
+                <ref role="3cqZAo" node="7DKVVH$LGUX" resolve="member" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7DKVVH$L_fG" role="1B3o_S" />
+      <node concept="3uibUv" id="7DKVVH$LD2s" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="37vLTG" id="7DKVVH$LGUX" role="3clF46">
+        <property role="TrG5h" value="member" />
+        <node concept="3uibUv" id="7DKVVH$LGUW" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5xOmJgD8EvJ" role="jymVt" />
+    <node concept="2YIFZL" id="5xOmJgD7$SW" role="jymVt">
+      <property role="TrG5h" value="deserializeEnummember" />
+      <node concept="3clFbS" id="5xOmJgD7$SX" role="3clF47">
+        <node concept="3cpWs8" id="5xOmJgD8o$4" role="3cqZAp">
+          <node concept="3cpWsn" id="5xOmJgD8o$5" role="3cpWs9">
+            <property role="TrG5h" value="enumeration" />
+            <node concept="3uibUv" id="5xOmJgD8qzo" role="1tU5fm">
+              <ref role="3uigEE" to="xx25:~SEnumerationAdapter" resolve="SEnumerationAdapter" />
+            </node>
+            <node concept="0kSF2" id="5xOmJgD8sSh" role="33vP2m">
+              <node concept="3uibUv" id="5xOmJgD8sSk" role="0kSFW">
+                <ref role="3uigEE" to="xx25:~SEnumerationAdapter" resolve="SEnumerationAdapter" />
+              </node>
+              <node concept="2YIFZM" id="5xOmJgD8o$6" role="0kSFX">
+                <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getEnumeration(long,long,long,java.lang.String)" resolve="getEnumeration" />
+                <node concept="37vLTw" id="5xOmJgD8o$7" role="37wK5m">
+                  <ref role="3cqZAo" node="5xOmJgD7QRv" resolve="uuidHigh" />
+                </node>
+                <node concept="37vLTw" id="5xOmJgD8o$8" role="37wK5m">
+                  <ref role="3cqZAo" node="5xOmJgD7QRx" resolve="uuidLow" />
+                </node>
+                <node concept="37vLTw" id="5xOmJgD8o$9" role="37wK5m">
+                  <ref role="3cqZAo" node="5xOmJgD7QR_" resolve="enumId" />
+                </node>
+                <node concept="37vLTw" id="5xOmJgD8o$a" role="37wK5m">
+                  <ref role="3cqZAo" node="5xOmJgD7QRB" resolve="fqEnumNameHint" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5xOmJgD7$Td" role="3cqZAp">
+          <node concept="2OqwBi" id="5xOmJgD7$Te" role="3cqZAk">
+            <node concept="37vLTw" id="5xOmJgD8$Dc" role="2Oq$k0">
+              <ref role="3cqZAo" node="5xOmJgD8o$5" resolve="enumeration" />
+            </node>
+            <node concept="liA8E" id="5xOmJgD7$Tg" role="2OqNvi">
+              <ref role="37wK5l" to="xx25:~SEnumerationAdapter.deserialize(java.lang.String)" resolve="deserialize" />
+              <node concept="37vLTw" id="5xOmJgD8AzV" role="37wK5m">
+                <ref role="3cqZAo" node="5xOmJgD7Gwy" resolve="value" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5xOmJgD7$Ti" role="1B3o_S" />
+      <node concept="3uibUv" id="5xOmJgD7CXZ" role="3clF45">
+        <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+      </node>
+      <node concept="37vLTG" id="5xOmJgD7QRv" role="3clF46">
+        <property role="TrG5h" value="uuidHigh" />
+        <node concept="3cpWsb" id="5xOmJgD7QRw" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="5xOmJgD7QRx" role="3clF46">
+        <property role="TrG5h" value="uuidLow" />
+        <node concept="3cpWsb" id="5xOmJgD7QRy" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="5xOmJgD7QR_" role="3clF46">
+        <property role="TrG5h" value="enumId" />
+        <node concept="3cpWsb" id="5xOmJgD7QRA" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="5xOmJgD7QRB" role="3clF46">
+        <property role="TrG5h" value="fqEnumNameHint" />
+        <node concept="17QB3L" id="5xOmJgD7QRC" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="5xOmJgD7Gwy" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="3uibUv" id="5xOmJgD7Gwx" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="5zEkxuKh8vS">
     <property role="TrG5h" value="AttributeOperations" />

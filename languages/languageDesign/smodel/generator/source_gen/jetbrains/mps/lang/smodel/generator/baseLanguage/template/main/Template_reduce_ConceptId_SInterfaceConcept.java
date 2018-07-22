@@ -45,8 +45,8 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      tnode1.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode1, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory.getInterfaceConcept(org.jetbrains.mps.openapi.language.SLanguage,long,java.lang.String)")));
-      tnode1.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode1, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory")));
+      tnode1.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode1, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory")));
+      tnode1.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode1, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory.getInterfaceConcept(org.jetbrains.mps.openapi.language.SLanguage,long,java.lang.String)")));
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
@@ -135,8 +135,8 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
   @Override
   protected SReferenceLink[] initAssociationLinks() {
     SReferenceLink[] rv = new SReferenceLink[2];
-    rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     return rv;
   }
   @Override
