@@ -14,6 +14,7 @@ Useful links
 - [JetBrains MPS wiki space](http://confluence.jetbrains.com/display/MPS/Welcome+to+JetBrains+MPS+Space)
 - [Issue tracker](http://www.jetbrains.net/tracker/issues/MPS)
 - [Forum](https://mps-support.jetbrains.com/hc/en-us/community/topics)
+- [Community Discord](https://discord.gg/jWY9QTP)
 
 
 Building MPS from sources
