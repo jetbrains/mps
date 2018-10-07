@@ -1,5 +1,6 @@
 [![official JetBrains project](http://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![JetBrains community Discord](https://goo.gl/xe5fjk)](https://discord.gg/jWY9QTP)
+
 JetBrains MPS
 =============
 
