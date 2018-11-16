@@ -10,11 +10,14 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_ArgumentReference;
+  private ConceptPresentation props_CustomAssertionBlock;
   private ConceptPresentation props_GeneratorTest;
   private ConceptPresentation props_ModelArgument;
+  private ConceptPresentation props_Model_ConceptFunctionParameter;
   private ConceptPresentation props_TestArgument;
   private ConceptPresentation props_TestAssertion;
   private ConceptPresentation props_TransformationMatchAssertion;
+  private ConceptPresentation props_TransformationMatchCustomConditions;
   private ConceptPresentation props_TransformationMatchManyAssertion;
 
   @Override
@@ -29,6 +32,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ArgumentReference = cpb.create();
         }
         return props_ArgumentReference;
+      case LanguageConceptSwitch.CustomAssertionBlock:
+        if (props_CustomAssertionBlock == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CustomAssertionBlock");
+          props_CustomAssertionBlock = cpb.create();
+        }
+        return props_CustomAssertionBlock;
       case LanguageConceptSwitch.GeneratorTest:
         if (props_GeneratorTest == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -44,6 +54,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ModelArgument = cpb.create();
         }
         return props_ModelArgument;
+      case LanguageConceptSwitch.Model_ConceptFunctionParameter:
+        if (props_Model_ConceptFunctionParameter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("model");
+          props_Model_ConceptFunctionParameter = cpb.create();
+        }
+        return props_Model_ConceptFunctionParameter;
       case LanguageConceptSwitch.TestArgument:
         if (props_TestArgument == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -64,6 +81,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TransformationMatchAssertion = cpb.create();
         }
         return props_TransformationMatchAssertion;
+      case LanguageConceptSwitch.TransformationMatchCustomConditions:
+        if (props_TransformationMatchCustomConditions == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("transform and match custom conditions");
+          cpb.rawPresentation("TransformationMatchCustomConditions");
+          props_TransformationMatchCustomConditions = cpb.create();
+        }
+        return props_TransformationMatchCustomConditions;
       case LanguageConceptSwitch.TransformationMatchManyAssertion:
         if (props_TransformationMatchManyAssertion == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -257,5 +257,29 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="6LH9MCjOQVB">
+    <ref role="1XX52x" to="lur:6LH9MCjOOqD" resolve="TransformationMatchCustomConditions" />
+    <node concept="3EZMnI" id="6LH9MCjOQVD" role="2wV5jI">
+      <node concept="3F0ifn" id="6LH9MCjOQVE" role="3EZMnx">
+        <property role="3F0ifm" value="transform model " />
+      </node>
+      <node concept="3F1sOY" id="6LH9MCjOQVF" role="3EZMnx">
+        <ref role="1NtTu8" to="lur:6LH9MCjOOqG" resolve="inputModel" />
+      </node>
+      <node concept="2iRfu4" id="6LH9MCjOQVG" role="2iSdaV" />
+      <node concept="3F0ifn" id="6LH9MCjOQVH" role="3EZMnx">
+        <property role="3F0ifm" value=" with plan " />
+      </node>
+      <node concept="3F1sOY" id="6LH9MCjOQVI" role="3EZMnx">
+        <ref role="1NtTu8" to="lur:6LH9MCjOOqI" resolve="transformationPlan" />
+      </node>
+      <node concept="3F0ifn" id="6LH9MCjOQVJ" role="3EZMnx">
+        <property role="3F0ifm" value="and match " />
+      </node>
+      <node concept="3F1sOY" id="6LH9MCjORDA" role="3EZMnx">
+        <ref role="1NtTu8" to="lur:6LH9MCjOQVT" resolve="assertions" />
+      </node>
+    </node>
+  </node>
 </model>
 

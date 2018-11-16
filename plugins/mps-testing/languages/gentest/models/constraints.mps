@@ -349,5 +349,114 @@
       </node>
     </node>
   </node>
+  <node concept="1M2fIO" id="6LH9MCjOOJv">
+    <ref role="1M2myG" to="lur:6LH9MCjOOqD" resolve="TransformationMatchCustomConditions" />
+    <node concept="9SLcT" id="6LH9MCjOOJU" role="9SGkU">
+      <node concept="3clFbS" id="6LH9MCjOOJV" role="2VODD2">
+        <node concept="3SKdUt" id="6LH9MCjOORd" role="3cqZAp">
+          <node concept="3SKdUq" id="6LH9MCjOORe" role="3SKWNk">
+            <property role="3SKdUp" value="this assertion is allowed to reference arguments that point to model only." />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6LH9MCjOORf" role="3cqZAp">
+          <node concept="3clFbS" id="6LH9MCjOORg" role="3clFbx">
+            <node concept="3clFbJ" id="6LH9MCjOORh" role="3cqZAp">
+              <node concept="3clFbS" id="6LH9MCjOORi" role="3clFbx">
+                <node concept="3cpWs8" id="6LH9MCjOORj" role="3cqZAp">
+                  <node concept="3cpWsn" id="6LH9MCjOORk" role="3cpWs9">
+                    <property role="TrG5h" value="arg" />
+                    <node concept="3Tqbb2" id="6LH9MCjOORl" role="1tU5fm">
+                      <ref role="ehGHo" to="lur:uLQNrGW9LE" resolve="TestArgument" />
+                    </node>
+                    <node concept="2OqwBi" id="6LH9MCjOORm" role="33vP2m">
+                      <node concept="1PxgMI" id="6LH9MCjOORn" role="2Oq$k0">
+                        <property role="1BlNFB" value="true" />
+                        <node concept="chp4Y" id="6LH9MCjOORo" role="3oSUPX">
+                          <ref role="cht4Q" to="lur:uLQNrGWd1r" resolve="ArgumentReference" />
+                        </node>
+                        <node concept="2H4GUG" id="6LH9MCjOORp" role="1m5AlR" />
+                      </node>
+                      <node concept="3TrEf2" id="6LH9MCjOORq" role="2OqNvi">
+                        <ref role="3Tt5mk" to="lur:uLQNrGWd1s" resolve="arg" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs6" id="6LH9MCjOORr" role="3cqZAp">
+                  <node concept="22lmx$" id="6LH9MCjOORs" role="3cqZAk">
+                    <node concept="2OqwBi" id="6LH9MCjOORt" role="3uHU7B">
+                      <node concept="37vLTw" id="6LH9MCjOORu" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6LH9MCjOORk" resolve="arg" />
+                      </node>
+                      <node concept="3w_OXm" id="6LH9MCjOORv" role="2OqNvi" />
+                    </node>
+                    <node concept="2OqwBi" id="6LH9MCjOORw" role="3uHU7w">
+                      <node concept="2OqwBi" id="6LH9MCjOORx" role="2Oq$k0">
+                        <node concept="37vLTw" id="6LH9MCjOORy" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6LH9MCjOORk" resolve="arg" />
+                        </node>
+                        <node concept="2yIwOk" id="6LH9MCjOORz" role="2OqNvi" />
+                      </node>
+                      <node concept="3O6GUB" id="6LH9MCjOOR$" role="2OqNvi">
+                        <node concept="chp4Y" id="6LH9MCjOOR_" role="3QVz_e">
+                          <ref role="cht4Q" to="lur:uLQNrGW9LI" resolve="ModelArgument" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="22lmx$" id="6LH9MCjOORA" role="3clFbw">
+                <node concept="2OqwBi" id="6LH9MCjOORB" role="3uHU7w">
+                  <node concept="2DA6wF" id="6LH9MCjOORC" role="2Oq$k0" />
+                  <node concept="liA8E" id="6LH9MCjOORD" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                    <node concept="359W_D" id="6LH9MCjOORE" role="37wK5m">
+                      <ref role="359W_E" to="lur:6LH9MCjOOqD" resolve="TransformationMatchCustomConditions" />
+                      <ref role="359W_F" to="lur:6LH9MCjOOqI" resolve="transformationPlan" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="6LH9MCjOORK" role="3uHU7B">
+                  <node concept="2DA6wF" id="6LH9MCjOORL" role="2Oq$k0" />
+                  <node concept="liA8E" id="6LH9MCjOORM" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                    <node concept="359W_D" id="6LH9MCjOORN" role="37wK5m">
+                      <ref role="359W_E" to="lur:6LH9MCjOOqD" resolve="TransformationMatchCustomConditions" />
+                      <ref role="359W_F" to="lur:6LH9MCjOOqG" resolve="inputModel" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="6LH9MCjOORO" role="3cqZAp">
+              <node concept="3SKdUq" id="6LH9MCjOORP" role="3SKWNk">
+                <property role="3SKdUp" value="fall through" />
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="6LH9MCjOORQ" role="3clFbw">
+            <node concept="3y3z36" id="6LH9MCjOORR" role="3uHU7B">
+              <node concept="10Nm6u" id="6LH9MCjOORS" role="3uHU7w" />
+              <node concept="2H4GUG" id="6LH9MCjOORT" role="3uHU7B" />
+            </node>
+            <node concept="2OqwBi" id="6LH9MCjOORU" role="3uHU7w">
+              <node concept="2DD5aU" id="6LH9MCjOORV" role="2Oq$k0" />
+              <node concept="3O6GUB" id="6LH9MCjOORW" role="2OqNvi">
+                <node concept="chp4Y" id="6LH9MCjOORX" role="3QVz_e">
+                  <ref role="cht4Q" to="lur:uLQNrGWd1r" resolve="ArgumentReference" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6LH9MCjOORY" role="3cqZAp">
+          <node concept="3clFbT" id="6LH9MCjOORZ" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

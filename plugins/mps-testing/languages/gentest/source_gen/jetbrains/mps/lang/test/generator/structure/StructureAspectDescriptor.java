@@ -10,14 +10,19 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.runtime.ConceptKind;
+import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptArgumentReference = createDescriptorForArgumentReference();
+  /*package*/ final ConceptDescriptor myConceptCustomAssertionBlock = createDescriptorForCustomAssertionBlock();
   /*package*/ final ConceptDescriptor myConceptGeneratorTest = createDescriptorForGeneratorTest();
   /*package*/ final ConceptDescriptor myConceptModelArgument = createDescriptorForModelArgument();
+  /*package*/ final ConceptDescriptor myConceptModel_ConceptFunctionParameter = createDescriptorForModel_ConceptFunctionParameter();
   /*package*/ final ConceptDescriptor myConceptTestArgument = createDescriptorForTestArgument();
   /*package*/ final ConceptDescriptor myConceptTestAssertion = createDescriptorForTestAssertion();
   /*package*/ final ConceptDescriptor myConceptTransformationMatchAssertion = createDescriptorForTransformationMatchAssertion();
+  /*package*/ final ConceptDescriptor myConceptTransformationMatchCustomConditions = createDescriptorForTransformationMatchCustomConditions();
   /*package*/ final ConceptDescriptor myConceptTransformationMatchManyAssertion = createDescriptorForTransformationMatchManyAssertion();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -27,7 +32,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptArgumentReference, myConceptGeneratorTest, myConceptModelArgument, myConceptTestArgument, myConceptTestAssertion, myConceptTransformationMatchAssertion, myConceptTransformationMatchManyAssertion);
+    return Arrays.asList(myConceptArgumentReference, myConceptCustomAssertionBlock, myConceptGeneratorTest, myConceptModelArgument, myConceptModel_ConceptFunctionParameter, myConceptTestArgument, myConceptTestAssertion, myConceptTransformationMatchAssertion, myConceptTransformationMatchCustomConditions, myConceptTransformationMatchManyAssertion);
   }
 
   @Override
@@ -36,16 +41,22 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.ArgumentReference:
         return myConceptArgumentReference;
+      case LanguageConceptSwitch.CustomAssertionBlock:
+        return myConceptCustomAssertionBlock;
       case LanguageConceptSwitch.GeneratorTest:
         return myConceptGeneratorTest;
       case LanguageConceptSwitch.ModelArgument:
         return myConceptModelArgument;
+      case LanguageConceptSwitch.Model_ConceptFunctionParameter:
+        return myConceptModel_ConceptFunctionParameter;
       case LanguageConceptSwitch.TestArgument:
         return myConceptTestArgument;
       case LanguageConceptSwitch.TestAssertion:
         return myConceptTestAssertion;
       case LanguageConceptSwitch.TransformationMatchAssertion:
         return myConceptTransformationMatchAssertion;
+      case LanguageConceptSwitch.TransformationMatchCustomConditions:
+        return myConceptTransformationMatchCustomConditions;
       case LanguageConceptSwitch.TransformationMatchManyAssertion:
         return myConceptTransformationMatchManyAssertion;
       default:
@@ -63,6 +74,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:fc8379f0-84d2-4927-817e-ae0057474174(jetbrains.mps.lang.test.generator.structure)/554465258093203547");
     b.version(2);
     b.associate("arg", 0x7b1db36ecf0d05cL).target(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf09c6aL).optional(false).origin("554465258093203548").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForCustomAssertionBlock() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test.generator", "CustomAssertionBlock", 0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d37a56L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.ConceptFunction", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L);
+    b.origin("r:fc8379f0-84d2-4927-817e-ae0057474174(jetbrains.mps.lang.test.generator.structure)/7812943990232414806");
+    b.version(2);
+    b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForGeneratorTest() {
@@ -83,6 +103,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:fc8379f0-84d2-4927-817e-ae0057474174(jetbrains.mps.lang.test.generator.structure)/554465258093190254");
     b.version(2);
     b.aggregate("param", 0x7b1db36ecf09c72L).target(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x7d58bd9fd9c8b6d3L).optional(false).ordered(true).multiple(false).origin("554465258093190258").done();
+    b.alias("model");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForModel_ConceptFunctionParameter() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test.generator", "Model_ConceptFunctionParameter", 0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d3b3b1L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL);
+    b.origin("r:fc8379f0-84d2-4927-817e-ae0057474174(jetbrains.mps.lang.test.generator.structure)/7812943990232429489");
+    b.version(2);
     b.alias("model");
     return b.create();
   }
@@ -110,6 +139,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("inputModel", 0x7b1db36ecf0d05eL).target(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL).optional(false).ordered(true).multiple(false).origin("554465258093203550").done();
     b.aggregate("referenceModel", 0x7b1db36ecf0d060L).target(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL).optional(false).ordered(true).multiple(false).origin("554465258093203552").done();
     b.aggregate("transformationPlan", 0x7b1db36ecf0d063L).target(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL).optional(true).ordered(true).multiple(false).origin("554465258093203555").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTransformationMatchCustomConditions() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test.generator", "TransformationMatchCustomConditions", 0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d346a9L);
+    b.class_(false, false, false);
+    b.parent(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d058L);
+    b.origin("r:fc8379f0-84d2-4927-817e-ae0057474174(jetbrains.mps.lang.test.generator.structure)/7812943990232401577");
+    b.version(2);
+    b.aggregate("inputModel", 0x6c6d272a13d346acL).target(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL).optional(false).ordered(true).multiple(false).origin("7812943990232401580").done();
+    b.aggregate("transformationPlan", 0x6c6d272a13d346aeL).target(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL).optional(true).ordered(true).multiple(false).origin("7812943990232401582").done();
+    b.aggregate("assertions", 0x6c6d272a13d36ef9L).target(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d37a56L).optional(false).ordered(true).multiple(false).origin("7812943990232411897").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTransformationMatchManyAssertion() {

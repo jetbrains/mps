@@ -7,6 +7,9 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.junit.Before;
 import org.junit.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import junit.framework.Assert;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 public class BasicTest1 extends BaseGeneratorTest {
   private SModel myArg_A;
@@ -40,6 +43,19 @@ public class BasicTest1 extends BaseGeneratorTest {
     t.transform();
     SModel rm = myArg_NoClosures;
     assertMatch(t.getOutputModel(), rm);
+  }
+  @Test
+  public void testTransformAndMatch2() {
+    TransformHelper t = newTransformer();
+    SModel i = myArg_A;
+    t.setInput(i);
+    t.transform();
+    final SModel outputModel = t.getOutputModel();
+    outputModel.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        Assert.assertEquals(1, ListSequence.fromList(SModelOperations.roots(outputModel, null)).count());
+      }
+    });
   }
 
 }

@@ -36,20 +36,28 @@ public class QueriesGenerated extends QueryProviderBase {
   public QueriesGenerated() {
     super(1);
   }
-  public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     // XXX would prefer template.input to reference GeneratorTest instead of node.parent 
     return _context.createIndexedName(_context.getTemplateValue(), SNodeOperations.getParent(_context.getNode()), false);
   }
-  public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_1(final PropertyMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d060L, "referenceModels"))).count();
   }
-  public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
     // XXX would prefer template.input to reference GeneratorTest instead of node.parent 
     // XXX don't use templateValue as I'd like the name of the method to be the same for both single and multiple match 
     //     Just to avoid complicated hack with method name in GneratorTestWrapper 
     return _context.createIndexedName("testTransformAndMatch", SNodeOperations.getParent(_context.getNode()), false);
   }
-  public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_3(final PropertyMacroContext _context) {
+    // XXX would prefer template.input to reference GeneratorTest instead of node.parent 
+    return _context.createIndexedName(_context.getTemplateValue(), SNodeOperations.getParent(_context.getNode()), false);
+  }
+  public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
+    // XXX would prefer template.input to reference GeneratorTest instead of node.parent 
+    return _context.createIndexedName(_context.getTemplateValue(), SNodeOperations.getParent(_context.getNode()), false);
+  }
+  public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
@@ -59,34 +67,50 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
     return PersistenceFacade.getInstance().asString(ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf09c6eL, 0x7b1db36ecf09c72L, "param"))));
   }
-  public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d05eL, "inputModel")), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
   }
-  public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_1(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d063L, "transformationPlan")), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
 
   }
-  public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_2(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d060L, "referenceModel")), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
   }
-  public static Object referenceMacro_GetReferent_1_3(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_3(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d05eL, "inputModel")), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
   }
-  public static Object referenceMacro_GetReferent_1_4(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_4(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d063L, "transformationPlan")), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
 
   }
-  public static Object referenceMacro_GetReferent_1_5(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_5(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
+  }
+  public static Object referenceMacro_GetReferent_0_6(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d346a9L, 0x6c6d272a13d346acL, "inputModel")), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
+  }
+  public static Object referenceMacro_GetReferent_0_7(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d346a9L, 0x6c6d272a13d346aeL, "transformationPlan")), MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg")), "TestArg2Field");
+
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "TestArg2Field");
   }
-  public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d063L, "transformationPlan")) != null);
   }
-  public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d063L, "transformationPlan")) != null);
+  }
+  public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d346a9L, 0x6c6d272a13d346aeL, "transformationPlan")) != null);
+  }
+  public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
+    return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d060L, "referenceModels"));
+  }
+  public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
+    return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x6c6d272a13d346a9L, 0x6c6d272a13d36ef9L, "assertions")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf09c67L, "arguments"));
@@ -95,22 +119,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf09c67L, "arguments"));
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests")), MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, "jetbrains.mps.lang.test.generator.structure.TransformationMatchAssertion"));
-  }
-  public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d060L, "referenceModels"));
-  }
-  public static Iterable<SNode> sourceNodesQuery_1_4(final SourceSubstituteMacroNodesContext _context) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests")), MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, "jetbrains.mps.lang.test.generator.structure.TransformationMatchManyAssertion"));
+    return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests"));
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
     int i = 0;
+    snsqMethods.put("6346338635721396810", new QueriesGenerated.SNsQ(i++));
+    snsqMethods.put("7812943990232824646", new QueriesGenerated.SNsQ(i++));
     snsqMethods.put("7985317431307037803", new QueriesGenerated.SNsQ(i++));
     snsqMethods.put("7985317431307068138", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("7985317431306988014", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("6346338635721396810", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("6346338635721222539", new QueriesGenerated.SNsQ(i++));
+    snsqMethods.put("7812943990232109188", new QueriesGenerated.SNsQ(i++));
   }
   @NotNull
   @Override
@@ -130,15 +148,15 @@ public class QueriesGenerated extends QueryProviderBase {
     public Collection<SNode> evaluate(@NotNull SourceSubstituteMacroNodesContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_0(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_0(ctx));
         case 1:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_1(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_1(ctx));
         case 2:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_2(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_0(ctx));
         case 3:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_3(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_1(ctx));
         case 4:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_4(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_2(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -147,9 +165,11 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("7985317431306989793", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatch"));
+    pvqMethods.put("7812943990232128388", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatch"));
     pvqMethods.put("6346338635721331627", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "3"));
     pvqMethods.put("6346338635721222548", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatchMany"));
+    pvqMethods.put("7812943990232644236", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatch"));
+    pvqMethods.put("7812943990232097779", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatch"));
     pvqMethods.put("2681075272524333361", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "GeneratorTestClass"));
     pvqMethods.put("7985317431307070194", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "myArg"));
     pvqMethods.put("7985317431307775128", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
@@ -173,16 +193,20 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull PropertyMacroContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.propertyMacro_GetValue_1_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_0(ctx);
         case 1:
-          return QueriesGenerated.propertyMacro_GetValue_1_1(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_1(ctx);
         case 2:
-          return QueriesGenerated.propertyMacro_GetValue_1_2(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_2(ctx);
         case 3:
-          return QueriesGenerated.propertyMacro_GetValue_1_3(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_3(ctx);
         case 4:
-          return QueriesGenerated.propertyMacro_GetValue_2_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_1_0(ctx);
         case 5:
+          return QueriesGenerated.propertyMacro_GetValue_1_1(ctx);
+        case 6:
+          return QueriesGenerated.propertyMacro_GetValue_2_0(ctx);
+        case 7:
           return QueriesGenerated.propertyMacro_GetValue_3_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -192,8 +216,9 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("7985317431307213918", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("7812943990232128342", new QueriesGenerated.IfMC(i++));
     imcMethods.put("6346338635721222502", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("7812943990232644200", new QueriesGenerated.IfMC(i++));
   }
   @NotNull
   @Override
@@ -213,9 +238,11 @@ public class QueriesGenerated extends QueryProviderBase {
     public boolean check(@NotNull IfMacroContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.ifMacro_Condition_1_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_0_0(ctx);
         case 1:
-          return QueriesGenerated.ifMacro_Condition_1_1(ctx);
+          return QueriesGenerated.ifMacro_Condition_0_1(ctx);
+        case 2:
+          return QueriesGenerated.ifMacro_Condition_0_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -223,13 +250,15 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("7985317431307113950", new QueriesGenerated.RTQ(0, "f"));
-    rtqMethods.put("7985317431307194769", new QueriesGenerated.RTQ(1, "f"));
-    rtqMethods.put("7985317431307179476", new QueriesGenerated.RTQ(2, "f"));
-    rtqMethods.put("6346338635721222466", new QueriesGenerated.RTQ(3, "f"));
+    rtqMethods.put("7812943990232128306", new QueriesGenerated.RTQ(0, "mdl"));
+    rtqMethods.put("7812943990232128329", new QueriesGenerated.RTQ(1, "f"));
+    rtqMethods.put("7812943990232128359", new QueriesGenerated.RTQ(2, "mdl"));
+    rtqMethods.put("6346338635721222466", new QueriesGenerated.RTQ(3, "mdl"));
     rtqMethods.put("6346338635721222489", new QueriesGenerated.RTQ(4, "f"));
     rtqMethods.put("6346338635721388511", new QueriesGenerated.RTQ(5, "f"));
-    rtqMethods.put("7985317431307754088", new QueriesGenerated.RTQ(6, "f"));
+    rtqMethods.put("7812943990232644164", new QueriesGenerated.RTQ(6, "mdl"));
+    rtqMethods.put("7812943990232644187", new QueriesGenerated.RTQ(7, "f"));
+    rtqMethods.put("7985317431307754088", new QueriesGenerated.RTQ(8, "f"));
   }
   @NotNull
   @Override
@@ -250,18 +279,22 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull ReferenceMacroContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.referenceMacro_GetReferent_1_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_0_0(ctx);
         case 1:
-          return QueriesGenerated.referenceMacro_GetReferent_1_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_0_1(ctx);
         case 2:
-          return QueriesGenerated.referenceMacro_GetReferent_1_2(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_0_2(ctx);
         case 3:
-          return QueriesGenerated.referenceMacro_GetReferent_1_3(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_0_3(ctx);
         case 4:
-          return QueriesGenerated.referenceMacro_GetReferent_1_4(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_0_4(ctx);
         case 5:
-          return QueriesGenerated.referenceMacro_GetReferent_1_5(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_0_5(ctx);
         case 6:
+          return QueriesGenerated.referenceMacro_GetReferent_0_6(ctx);
+        case 7:
+          return QueriesGenerated.referenceMacro_GetReferent_0_7(ctx);
+        case 8:
           return QueriesGenerated.referenceMacro_GetReferent_3_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

@@ -10,21 +10,27 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int ArgumentReference = 0;
-  public static final int GeneratorTest = 1;
-  public static final int ModelArgument = 2;
-  public static final int TestArgument = 3;
-  public static final int TestAssertion = 4;
-  public static final int TransformationMatchAssertion = 5;
-  public static final int TransformationMatchManyAssertion = 6;
+  public static final int CustomAssertionBlock = 1;
+  public static final int GeneratorTest = 2;
+  public static final int ModelArgument = 3;
+  public static final int Model_ConceptFunctionParameter = 4;
+  public static final int TestArgument = 5;
+  public static final int TestAssertion = 6;
+  public static final int TransformationMatchAssertion = 7;
+  public static final int TransformationMatchCustomConditions = 8;
+  public static final int TransformationMatchManyAssertion = 9;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x68015e26cc4d49dbL, 0x8715b643faea1769L);
     builder.put(0x7b1db36ecf0d05bL, ArgumentReference);
+    builder.put(0x6c6d272a13d37a56L, CustomAssertionBlock);
     builder.put(0x7b1db36ecf092beL, GeneratorTest);
     builder.put(0x7b1db36ecf09c6eL, ModelArgument);
+    builder.put(0x6c6d272a13d3b3b1L, Model_ConceptFunctionParameter);
     builder.put(0x7b1db36ecf09c6aL, TestArgument);
     builder.put(0x7b1db36ecf0d058L, TestAssertion);
     builder.put(0x7b1db36ecf0d057L, TransformationMatchAssertion);
+    builder.put(0x6c6d272a13d346a9L, TransformationMatchCustomConditions);
     builder.put(0x5812b95d667f29d9L, TransformationMatchManyAssertion);
     myIndex = builder.seal();
   }

@@ -8,6 +8,7 @@
   <imports>
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -42,6 +43,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -172,6 +176,48 @@
       <property role="20kJfa" value="transformationPlan" />
       <ref role="20lvS9" node="uLQNrGWd1r" resolve="ArgumentReference" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="6LH9MCjOOqD">
+    <property role="EcuMT" value="7812943990232401577" />
+    <property role="TrG5h" value="TransformationMatchCustomConditions" />
+    <property role="R4oN_" value="transform and match custom conditions" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6LH9MCjOOqG" role="1TKVEi">
+      <property role="IQ2ns" value="7812943990232401580" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="inputModel" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="uLQNrGWd1r" resolve="ArgumentReference" />
+    </node>
+    <node concept="1TJgyj" id="6LH9MCjOOqI" role="1TKVEi">
+      <property role="IQ2ns" value="7812943990232401582" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="transformationPlan" />
+      <ref role="20lvS9" node="uLQNrGWd1r" resolve="ArgumentReference" />
+    </node>
+    <node concept="1TJgyj" id="6LH9MCjOQVT" role="1TKVEi">
+      <property role="IQ2ns" value="7812943990232411897" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="assertions" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="6LH9MCjORDm" resolve="CustomAssertionBlock" />
+    </node>
+    <node concept="PrWs8" id="6LH9MCjOOqE" role="PzmwI">
+      <ref role="PrY4T" node="uLQNrGWd1o" resolve="TestAssertion" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6LH9MCjORDm">
+    <property role="EcuMT" value="7812943990232414806" />
+    <property role="TrG5h" value="CustomAssertionBlock" />
+    <property role="3GE5qa" value="custom" />
+    <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+  </node>
+  <node concept="1TIwiD" id="6LH9MCjOVeL">
+    <property role="EcuMT" value="7812943990232429489" />
+    <property role="TrG5h" value="Model_ConceptFunctionParameter" />
+    <property role="34LRSv" value="model" />
+    <property role="3GE5qa" value="custom" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
   </node>
 </model>
 
