@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
  * @author Radimir.Sorokin
  * @since 2018.3
  */
-public /*final*/ class SEnumerationAdapter extends SNamedElementAdapter implements SEnumeration {
+public final class SEnumerationAdapter extends SNamedElementAdapter implements SEnumeration {
 
   private final SDataTypeId myId;
 

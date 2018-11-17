@@ -15,14 +15,9 @@
  */
 package jetbrains.mps.smodel.adapter.structure.property;
 
-import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.STypeId;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
-import jetbrains.mps.smodel.adapter.structure.SEnumAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.InvalidDataType;
-import jetbrains.mps.smodel.adapter.structure.types.SInterpretedConstrainedStringDataTypeAdapter;
-import jetbrains.mps.smodel.adapter.structure.types.SInterpretedEnumerationAdapter;
-import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
 import jetbrains.mps.smodel.adapter.structure.types.TypeRegistry;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import org.jetbrains.annotations.NotNull;
@@ -31,8 +26,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SType;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public abstract class SPropertyAdapter implements SProperty {
   public static final String ID_DELIM = ":";
@@ -76,36 +69,6 @@ public abstract class SPropertyAdapter implements SProperty {
       return new InvalidDataType(type.toString() + " (not a data type)");
     }
 
-    // datatype hasn't found in generated classes, trying to find it in sources.
-    // TODO code below is only for compatibility issues with legacy interpreted datatypes. Shall be removed after 2018.3.
-
-    SNode propertyNode = getDeclarationNode();
-    if (propertyNode == null) {
-      return new InvalidDataType("??? (no property declaration)");
-    }
-
-    SNode dataTypeNode = SNodeUtil.getPropertyDeclaration_DataType(propertyNode);
-    if (dataTypeNode == null) {
-      return new InvalidDataType("??? (no datatype declaration)");
-    }
-    if (SNodeUtil.isInstanceOfPrimitiveDataTypeDeclaration(dataTypeNode)) {
-      String name = dataTypeNode.getProperty(SNodeUtil.property_INamedConcept_name);
-      if ("string".equals(name)) {
-        return SPrimitiveTypes.STRING;
-      }
-      if ("boolean".equals(name)) {
-        return SPrimitiveTypes.BOOLEAN;
-      }
-      if ("integer".equals(name)) {
-        return SPrimitiveTypes.INTEGER;
-      }
-    }
-    if (SNodeUtil.isInstanceOfEnumerationDataTypeDeclaration(dataTypeNode)) {
-      return new SInterpretedEnumerationAdapter(dataTypeNode);
-    }
-    if (SNodeUtil.isInstanceOfConstrainedStringDataTypeDeclaration(dataTypeNode)) {
-      return new SInterpretedConstrainedStringDataTypeAdapter(dataTypeNode);
-    }
     return new InvalidDataType("??? (type id not specified)");
   }
 

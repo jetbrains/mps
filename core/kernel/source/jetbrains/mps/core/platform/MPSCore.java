@@ -43,7 +43,6 @@ import jetbrains.mps.smodel.Language.LanguageModelsAutoImports;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModuleFileTracker;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.smodel.PropertySupport.PropertySupportCache;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SModelRepository;
 import jetbrains.mps.smodel.SNodeAccessUtilImpl;
@@ -153,7 +152,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     init(new ResolverComponent());
     init(new ValidationSettings());
 
-    init(new PropertySupportCache(myClassLoaderManager));
     myAutoImportsManager = init(new ModelsAutoImportsManager());
     myAutoImportsManager.register(new LanguageModelsAutoImports());
     myAutoImportsManager.register(new GeneratorModelsAutoImports());
