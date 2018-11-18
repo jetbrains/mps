@@ -33,6 +33,7 @@ import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import java.util.AbstractList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -98,7 +99,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     if (descriptor == null) {
       return Collections.emptyList();
     }
-    return descriptor.getMembers().stream().map(SEnumLiteralAdapter::new).collect(Collectors.toList());
+    return new EnumerationLiteralsList((List<MemberDescriptor>) descriptor.getMembers());
   }
 
   @Override
@@ -137,9 +138,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     }
     if (value instanceof SEnumerationLiteral) {
       SEnumerationLiteral literal = (SEnumerationLiteral) value;
-      if (equals(literal.getEnumeration())) {
-        return getLiterals().contains(literal);
-      }
+      return getLiterals().contains(literal);
     }
     return false;
   }
@@ -261,5 +260,37 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     }
     SDataType rawMemberType = getRawMemberType();
     return rawMemberType.fromString(literal.getName());
+  }
+
+  private class EnumerationLiteralsList extends AbstractList<SEnumerationLiteral> {
+
+    private final List<MemberDescriptor> myMembers;
+
+    private EnumerationLiteralsList(List<MemberDescriptor> members) {
+      myMembers = members;
+    }
+
+    @Override
+    public SEnumerationLiteral get(int index) {
+      EnumerationDescriptor descriptor = getDescriptor();
+      if (descriptor == null) {
+        return null;
+      }
+      return new SEnumLiteralAdapter(myMembers.get(index));
+    }
+
+    @Override
+    public int size() {
+      return myMembers.size();
+    }
+
+    @Override
+    public boolean contains(Object o) {
+      if (!(o instanceof SEnumLiteralAdapter)) {
+        return false;
+      }
+      SEnumLiteralAdapter lit = (SEnumLiteralAdapter) o;
+      return myMembers.contains(lit.myDescriptor);
+    }
   }
 }
