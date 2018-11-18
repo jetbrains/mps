@@ -73,6 +73,13 @@ public class MetaIdByDeclaration {
     );
   }
 
+  public static SEnumerationLiteralId getEnumLiteralId(@NotNull SNode enumLiteral) {
+    return new SEnumerationLiteralId(
+        getDatatypeId(enumLiteral.getContainingRoot()),
+        getID(null, enumLiteral)
+    );
+  }
+
   private static Long getID(String explicitlySerializedId, SNode declaration) {
     Long id = null;
 

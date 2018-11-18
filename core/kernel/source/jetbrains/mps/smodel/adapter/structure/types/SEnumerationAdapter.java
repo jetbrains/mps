@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.adapter.structure.types;
 
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
+import jetbrains.mps.smodel.adapter.ids.SEnumerationLiteralId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.SNamedElementAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
@@ -143,13 +144,17 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     return false;
   }
 
+  public SDataTypeId getId() {
+    return myId;
+  }
+
   @NotNull
   @Override
   public SLanguage getLanguage() {
     return MetaAdapterFactory.getLanguage(myId.getLanguageId(), NameUtil.namespaceFromConceptFQName(myFqName));
   }
 
-  private class SEnumLiteralAdapter implements SEnumerationLiteral {
+  public class SEnumLiteralAdapter implements SEnumerationLiteral {
     private final MemberDescriptor myDescriptor;
 
     private SEnumLiteralAdapter(@NotNull MemberDescriptor descriptor) {
@@ -183,6 +188,10 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     @Nullable
     public String getIdentifier() {
       return myDescriptor.getIdentifier();
+    }
+
+    public SEnumerationLiteralId getId() {
+      return new SEnumerationLiteralId(SEnumerationAdapter.this.getId(), myDescriptor.getIdValue());
     }
 
     @Override

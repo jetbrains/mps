@@ -27,6 +27,8 @@ public abstract class MetaIdFactory {
   public static final SPropertyId INVALID_PROP_ID = new SPropertyId(INVALID_CONCEPT_ID, 0);
   public static final SReferenceLinkId INVALID_REF_ID = new SReferenceLinkId(INVALID_CONCEPT_ID, 0);
   public static final SContainmentLinkId INVALID_LINK_ID = new SContainmentLinkId(INVALID_CONCEPT_ID, 0);
+  public static final SDataTypeId INVALID_DATATYPE_ID = new SDataTypeId(INVALID_LANGUAGE_ID, 0);
+  public static final SEnumerationLiteralId INVALID_ENUM_LITERAL_ID = new SEnumerationLiteralId(INVALID_DATATYPE_ID, 0);
   public static final String INVALID_CONCEPT_NAME = "$UnknownConceptName$";
 
   @Deprecated
@@ -96,5 +98,13 @@ public abstract class MetaIdFactory {
 
   public static SContainmentLinkId linkId(SConceptId concept, long link) {
     return new SContainmentLinkId(concept, link);
+  }
+
+  public static SEnumerationLiteralId enumLiteralId(long uuidHigh, long uuidLow, long concept, long enumLiteral) {
+    return new SEnumerationLiteralId(dataTypeId(uuidHigh, uuidLow, concept), enumLiteral);
+  }
+
+  public static SEnumerationLiteralId enumLiteralId(SDataTypeId dataTypeId, long enumLiteral) {
+    return new SEnumerationLiteralId(dataTypeId, enumLiteral);
   }
 }

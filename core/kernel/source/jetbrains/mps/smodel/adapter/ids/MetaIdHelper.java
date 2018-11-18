@@ -21,9 +21,11 @@ import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapterById;
 import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
 import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapterById;
 import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -84,5 +86,14 @@ public final class MetaIdHelper {
       return MetaIdFactory.INVALID_LINK_ID;
     }
     return ((SContainmentLinkAdapterById) l).getId();
+  }
+
+  @NotNull
+  public static SEnumerationLiteralId getEnumerationLiteral(SEnumerationLiteral l) {
+    //todo make serialization via serialize method
+    if (!(l.getEnumeration() instanceof SEnumerationAdapter.SEnumLiteralAdapter)) {
+      return MetaIdFactory.INVALID_ENUM_LITERAL_ID;
+    }
+    return ((SEnumerationAdapter.SEnumLiteralAdapter) l).getId();
   }
 }

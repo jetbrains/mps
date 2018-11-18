@@ -15,13 +15,16 @@
  */
 package jetbrains.mps.smodel.runtime;
 
+import jetbrains.mps.smodel.SNodeId.Regular;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * Descriptor of `enumeration` entity.
@@ -59,11 +62,20 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
     @Nullable
     private final SNodeReference mySourceNode;
 
+    private final long myIdValue;
+
     public MemberDescriptor(@Nullable String name, @NotNull String presentation, @Nullable String sourceNode, @Nullable String identifier) {
       myName = name;
       myPresentation = presentation;
       mySourceNode = sourceNode == null ? null : PersistenceFacade.getInstance().createNodeReference(sourceNode);
       myIdentifier = identifier;
+      if (mySourceNode != null) {
+        SNodeId nodeId = mySourceNode.getNodeId();
+        assert nodeId instanceof Regular;
+        myIdValue = ((Regular) nodeId).getId();
+      } else {
+        myIdValue = Objects.hashCode(name);
+      }
     }
 
     public MemberDescriptor(@Nullable String name, @NotNull String presentation, @Nullable String sourceNode) {
@@ -71,7 +83,19 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
     }
 
     public MemberDescriptor(@Nullable String name, @NotNull String presentation) {
-      this(name, presentation, null, null);
+      this(name, presentation, null);
+    }
+
+    public MemberDescriptor(@NotNull String name, @NotNull String presentation, long idValue, @Nullable String sourceNode) {
+      myName = name;
+      myPresentation = presentation;
+      mySourceNode = sourceNode == null ? null : PersistenceFacade.getInstance().createNodeReference(sourceNode);
+      myIdentifier = null;
+      myIdValue = idValue;
+    }
+
+    public MemberDescriptor(@NotNull String name, @NotNull String presentation, long idValue) {
+      this(name, presentation, idValue, null);
     }
 
     @Nullable
@@ -92,6 +116,10 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
     @Nullable
     public String getIdentifier() {
       return myIdentifier;
+    }
+
+    public long getIdValue() {
+      return myIdValue;
     }
   }
 }
