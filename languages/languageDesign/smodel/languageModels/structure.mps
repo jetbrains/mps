@@ -185,7 +185,7 @@
       <property role="20kJfa" value="enumMember" />
       <property role="20lbJX" value="1" />
       <property role="IQ2ns" value="1138676095763" />
-      <ref role="20lvS9" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration" />
+      <ref role="20lvS9" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration_Old" />
     </node>
     <node concept="RPilO" id="47y0FrqaLh4" role="lGtFl">
       <ref role="RPilL" node="g$uo_Gj" resolve="enumMember" />
@@ -1379,11 +1379,11 @@
   <node concept="1TIwiD" id="i2ZThgx">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
-    <property role="R4oN_" value="enum member type" />
-    <property role="TrG5h" value="SEnumMemberType" />
+    <property role="R4oN_" value="enumeration member type" />
+    <property role="TrG5h" value="SEnumerationMemberType" />
     <property role="2_RsDV" value="none" />
     <property role="3GE5qa" value="type" />
-    <property role="34LRSv" value="enummember&lt; &gt;" />
+    <property role="34LRSv" value="enummember&lt;&gt;" />
     <property role="EcuMT" value="1240170042401" />
     <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
     <node concept="1TJgyj" id="i2ZWj0V" role="1TKVEi">
@@ -1391,33 +1391,41 @@
       <property role="20kJfa" value="enum" />
       <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="1240170836027" />
-      <ref role="20lvS9" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration" />
+      <ref role="20lvS9" to="tpce:VFd4X$DyB_" resolve="IEnumeration" />
     </node>
   </node>
   <node concept="1TIwiD" id="i2ZYiQY">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="enum member value" />
-    <property role="TrG5h" value="EnumMember_ValueOperation" />
+    <property role="TrG5h" value="EnumMember_ValueOperation_Old" />
     <property role="2_RsDV" value="none" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="34LRSv" value="value" />
     <property role="EcuMT" value="1240171359678" />
     <node concept="PrWs8" id="i3MhpQu" role="PzmwI">
-      <ref role="PrY4T" node="i3MheXj" resolve="SEnumMemberOperation" />
+      <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
+    </node>
+    <node concept="asaX9" id="50Pb80HCIHJ" role="lGtFl">
+      <property role="YLQ7P" value="Use EnumMember_NameOperation instead" />
+      <property role="YLPcu" value="19.1" />
     </node>
   </node>
   <node concept="1TIwiD" id="i305Nnj">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="enum member name" />
-    <property role="TrG5h" value="EnumMember_NameOperation" />
+    <property role="TrG5h" value="EnumMember_NameOperation_Old" />
     <property role="2_RsDV" value="none" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="34LRSv" value="name" />
     <property role="EcuMT" value="1240173327827" />
     <node concept="PrWs8" id="i3Mhrwe" role="PzmwI">
-      <ref role="PrY4T" node="i3MheXj" resolve="SEnumMemberOperation" />
+      <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
+    </node>
+    <node concept="asaX9" id="50Pb80HC$1a" role="lGtFl">
+      <property role="YLQ7P" value="Use EnumMember_NameOperation or EnumMember_PresentationOperation instead" />
+      <property role="YLPcu" value="19.1" />
     </node>
   </node>
   <node concept="1TIwiD" id="i3HcIAb">
@@ -1435,25 +1443,33 @@
       <property role="20kJfa" value="operation" />
       <property role="20lbJX" value="1" />
       <property role="IQ2ns" value="1240930317927" />
-      <ref role="20lvS9" node="i3HdMsX" resolve="SEnumOperation" />
+      <ref role="20lvS9" node="i3HdMsX" resolve="SEnumOperation_Old" />
     </node>
     <node concept="1TJgyj" id="i3HcIAc" role="1TKVEi">
       <property role="20kJfa" value="enumDeclaration" />
       <property role="20lbJX" value="1" />
       <property role="IQ2ns" value="1240930118028" />
-      <ref role="20lvS9" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration" />
+      <ref role="20lvS9" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
+    </node>
+    <node concept="asaX9" id="50Pb80H_Bcy" role="lGtFl">
+      <property role="YLQ7P" value="Use DotExpression and EnumIdRefExpression as operand" />
+      <property role="YLPcu" value="19.1" />
     </node>
   </node>
   <node concept="PlHQZ" id="i3HdMsX">
-    <property role="TrG5h" value="SEnumOperation" />
+    <property role="TrG5h" value="SEnumOperation_Old" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="EcuMT" value="1240930395965" />
+    <node concept="asaX9" id="50Pb80HCIJw" role="lGtFl">
+      <property role="YLPcu" value="19.1" />
+      <property role="YLQ7P" value="Use EnumOperation instead" />
+    </node>
   </node>
   <node concept="1TIwiD" id="i3HdYoc">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="parse enum name" />
-    <property role="TrG5h" value="SEnum_MemberForNameOperation" />
+    <property role="TrG5h" value="SEnum_MemberForNameOperation_Old" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="34LRSv" value="memberForName()" />
     <property role="EcuMT" value="1240930444812" />
@@ -1466,14 +1482,18 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
     <node concept="PrWs8" id="i3Hei87" role="PzmwI">
-      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation" />
+      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation_Old" />
+    </node>
+    <node concept="asaX9" id="50Pb80HCIvL" role="lGtFl">
+      <property role="YLQ7P" value="Use Enum_FromNameOperation or Enum_FromPresentationOperation instead" />
+      <property role="YLPcu" value="19.1" />
     </node>
   </node>
   <node concept="1TIwiD" id="i3HdYpe">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="parse enum value" />
-    <property role="TrG5h" value="SEnum_MemberForValueOperation" />
+    <property role="TrG5h" value="SEnum_MemberForValueOperation_Old" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="34LRSv" value="memberForValue()" />
     <property role="EcuMT" value="1240930444878" />
@@ -1486,14 +1506,18 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
     <node concept="PrWs8" id="i3Heku2" role="PzmwI">
-      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation" />
+      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation_Old" />
+    </node>
+    <node concept="asaX9" id="50Pb80HCzDJ" role="lGtFl">
+      <property role="YLQ7P" value="Use Enum_FromNameOperation instead" />
+      <property role="YLPcu" value="19.1" />
     </node>
   </node>
   <node concept="1TIwiD" id="i3HdYqh">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="enum member access" />
-    <property role="TrG5h" value="SEnum_MemberOperation" />
+    <property role="TrG5h" value="SEnum_MemberOperation_Old" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="EcuMT" value="1240930444945" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
@@ -1502,28 +1526,36 @@
       <property role="20kJfa" value="member" />
       <property role="20lbJX" value="1" />
       <property role="IQ2ns" value="1240930444946" />
-      <ref role="20lvS9" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration" />
+      <ref role="20lvS9" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration_Old" />
     </node>
     <node concept="PrWs8" id="i3Hemwb" role="PzmwI">
-      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation" />
+      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation_Old" />
+    </node>
+    <node concept="asaX9" id="50Pb80HCIAD" role="lGtFl">
+      <property role="YLQ7P" value="Use Enum_MemberLiteral instead" />
+      <property role="YLPcu" value="19.1" />
     </node>
   </node>
   <node concept="1TIwiD" id="i3HdYqO">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="members list" />
-    <property role="TrG5h" value="SEnum_MembersOperation" />
+    <property role="TrG5h" value="SEnum_MembersOperation_Old" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="34LRSv" value="members" />
     <property role="EcuMT" value="1240930444980" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="i3HenwT" role="PzmwI">
-      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation" />
+      <ref role="PrY4T" node="i3HdMsX" resolve="SEnumOperation_Old" />
+    </node>
+    <node concept="asaX9" id="50Pb80HCIJz" role="lGtFl">
+      <property role="YLQ7P" value="Use Enum_MembersOperation" />
+      <property role="YLPcu" value="19.1" />
     </node>
   </node>
   <node concept="PlHQZ" id="i3MheXj">
-    <property role="TrG5h" value="SEnumMemberOperation" />
-    <property role="3GE5qa" value="enum.enumoperation" />
+    <property role="TrG5h" value="EnumMemberOperation" />
+    <property role="3GE5qa" value="enumerations" />
     <property role="EcuMT" value="1241015185235" />
     <node concept="PrWs8" id="i3Mhhsg" role="PrDN$">
       <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
@@ -2199,14 +2231,14 @@
       <property role="20kJfa" value="enum" />
       <property role="20lbJX" value="1" />
       <property role="IQ2ns" value="6973815483243564601" />
-      <ref role="20lvS9" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration" />
+      <ref role="20lvS9" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
     </node>
     <node concept="1TJgyj" id="637Y3IJQx5C" role="1TKVEi">
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="member" />
       <property role="20lbJX" value="1" />
       <property role="IQ2ns" value="6973815483243565416" />
-      <ref role="20lvS9" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration" />
+      <ref role="20lvS9" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration_Old" />
     </node>
   </node>
   <node concept="1TIwiD" id="36vPRrqnoSW">
@@ -3009,6 +3041,125 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="5kLyeZleWQE" role="PzmwI">
       <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1HbIxIvFJBi">
+    <property role="EcuMT" value="1966870290083281362" />
+    <property role="TrG5h" value="EnumMember_NameOperation" />
+    <property role="34LRSv" value="name" />
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="50Pb80HCIIB" role="PzmwI">
+      <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1HbIxIw0iNP">
+    <property role="EcuMT" value="1966870290088668405" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="EnumOperation" />
+    <node concept="PrWs8" id="50Pb80HCzRH" role="PrDN$">
+      <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1HbIxIw0iPw">
+    <property role="EcuMT" value="1966870290088668512" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="Enum_MemberLiteral" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1HbIxIw0iP$" role="1TKVEi">
+      <property role="IQ2ns" value="1966870290088668516" />
+      <property role="20kJfa" value="memberDeclaration" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpce:2TR3acGo7Lw" resolve="EnumerationMemberDeclaration" />
+    </node>
+    <node concept="PrWs8" id="1HbIxIw0iPx" role="PzmwI">
+      <ref role="PrY4T" node="1HbIxIw0iNP" resolve="EnumOperation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1HbIxIw0iPB">
+    <property role="EcuMT" value="1966870290088668519" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="Enum_FromNameOperation" />
+    <property role="34LRSv" value="from name" />
+    <property role="R4oN_" value="get a member by its name" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1HbIxIw0kf8" role="1TKVEi">
+      <property role="IQ2ns" value="1966870290088674248" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="nameExpression" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="1HbIxIw0iPG" role="PzmwI">
+      <ref role="PrY4T" node="1HbIxIw0iNP" resolve="EnumOperation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1HbIxIw0iPC">
+    <property role="EcuMT" value="1966870290088668520" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="Enum_MembersOperation" />
+    <property role="34LRSv" value="members" />
+    <property role="R4oN_" value="list of enumeration members" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="1HbIxIw0iPD" role="PzmwI">
+      <ref role="PrY4T" node="1HbIxIw0iNP" resolve="EnumOperation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="50Pb80HwrVk">
+    <property role="EcuMT" value="5779574625830813396" />
+    <property role="3GE5qa" value="reference" />
+    <property role="TrG5h" value="EnumerationIdRefExpression" />
+    <property role="34LRSv" value="enum/&lt;name&gt;/" />
+    <property role="R4oN_" value="access to enumeration" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="50Pb80HwrVl" role="1TKVEi">
+      <property role="IQ2ns" value="5779574625830813397" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="enumDeclaration" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="50Pb80Hwsgz">
+    <property role="EcuMT" value="5779574625830814755" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="SEnumerationType" />
+    <property role="34LRSv" value="enum&lt;&gt;" />
+    <property role="R4oN_" value="enumeration type" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+    <node concept="1TJgyj" id="50Pb80Hwsg$" role="1TKVEi">
+      <property role="IQ2ns" value="5779574625830814756" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="enumDeclaration" />
+      <ref role="20lvS9" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="50Pb80H_WZh">
+    <property role="EcuMT" value="5779574625832259537" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="EnumMember_PresentationOperation" />
+    <property role="34LRSv" value="presentation" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="50Pb80HCIIF" role="PzmwI">
+      <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="50Pb80HCzDI">
+    <property role="EcuMT" value="5779574625832942190" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="Enum_FromPresentationOperation" />
+    <property role="34LRSv" value="from presentation" />
+    <property role="R4oN_" value="get a member by its presentation" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6lzoLEP$8yc" role="1TKVEi">
+      <property role="IQ2ns" value="7305791986891524236" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="presentationExpression" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="50Pb80HC$1d" role="PzmwI">
+      <ref role="PrY4T" node="1HbIxIw0iNP" resolve="EnumOperation" />
     </node>
   </node>
 </model>

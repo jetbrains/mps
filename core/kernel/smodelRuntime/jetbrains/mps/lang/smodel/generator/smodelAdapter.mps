@@ -1215,6 +1215,18 @@
           <node concept="10Nm6u" id="2nIYwg$4ZnY" role="3cqZAk" />
         </node>
       </node>
+      <node concept="P$JXv" id="7Dhah7Zcw$6" role="lGtFl">
+        <node concept="TZ5HI" id="7Dhah7ZcwSc" role="3nqlJM">
+          <node concept="TZ5HA" id="7Dhah7ZcwSd" role="3HnX3l">
+            <node concept="1dT_AC" id="7Dhah7ZcwV8" role="1dT_Ay">
+              <property role="1dT_AB" value="used for deperecated `enum.memberForName` operation" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="RUp6jEzwmr" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
     </node>
     <node concept="2YIFZL" id="2nIYwg$4Yan" role="jymVt">
       <property role="TrG5h" value="getMemberForValue" />
@@ -1333,7 +1345,189 @@
           </node>
         </node>
       </node>
+      <node concept="P$JXv" id="7Dhah7ZcDjF" role="lGtFl">
+        <node concept="TZ5HI" id="7Dhah7ZcDzT" role="3nqlJM">
+          <node concept="TZ5HA" id="7Dhah7ZcDzU" role="3HnX3l">
+            <node concept="1dT_AC" id="7Dhah7ZcDAT" role="1dT_Ay">
+              <property role="1dT_AB" value="used only for deprecated `enum.memberForValue` operation" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="RUp6jEzw7V" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="RUp6jEz_gG" role="jymVt" />
+    <node concept="2YIFZL" id="RUp6jEz_XD" role="jymVt">
+      <property role="TrG5h" value="getMemberForName" />
+      <node concept="3clFbS" id="RUp6jEz_XG" role="3clF47">
+        <node concept="3cpWs6" id="3cOWKdeC_VP" role="3cqZAp">
+          <node concept="3K4zz7" id="3cOWKdeCAtW" role="3cqZAk">
+            <node concept="10Nm6u" id="3cOWKdeCBe0" role="3K4E3e" />
+            <node concept="2OqwBi" id="3cOWKdeCBWw" role="3K4GZi">
+              <node concept="37vLTw" id="3cOWKdeCBoV" role="2Oq$k0">
+                <ref role="3cqZAo" node="3cOWKdeCy1W" resolve="enumeration" />
+              </node>
+              <node concept="liA8E" id="3cOWKdeCCGn" role="2OqNvi">
+                <ref role="37wK5l" to="c17a:~SEnumeration.getLiteral(java.lang.String):org.jetbrains.mps.openapi.language.SEnumerationLiteral" resolve="getLiteral" />
+                <node concept="37vLTw" id="3cOWKdeCCQU" role="37wK5m">
+                  <ref role="3cqZAo" node="3cOWKdeC_jh" resolve="name" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbC" id="3cOWKdeCARp" role="3K4Cdx">
+              <node concept="10Nm6u" id="3cOWKdeCB4F" role="3uHU7w" />
+              <node concept="37vLTw" id="3cOWKdeCA6y" role="3uHU7B">
+                <ref role="3cqZAo" node="3cOWKdeCy1W" resolve="enumeration" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="RUp6jEz__c" role="1B3o_S" />
+      <node concept="3uibUv" id="RUp6jEz_Sl" role="3clF45">
+        <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+      </node>
+      <node concept="37vLTG" id="3cOWKdeCy1W" role="3clF46">
+        <property role="TrG5h" value="enumeration" />
+        <node concept="3uibUv" id="3cOWKdeC$MA" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SEnumeration" resolve="SEnumeration" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3cOWKdeC_jh" role="3clF46">
+        <property role="TrG5h" value="name" />
+        <node concept="17QB3L" id="3cOWKdeC_si" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2YIFZL" id="RUp6jEzCRE" role="jymVt">
+      <property role="TrG5h" value="getMemberForPresentation" />
+      <node concept="37vLTG" id="3cOWKdeCDl2" role="3clF46">
+        <property role="TrG5h" value="enumeration" />
+        <node concept="3uibUv" id="3cOWKdeCDEL" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SEnumeration" resolve="SEnumeration" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="RUp6jEzD7J" role="3clF46">
+        <property role="TrG5h" value="presentation" />
+        <node concept="17QB3L" id="RUp6jEzD7K" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="RUp6jEzCRH" role="3clF47">
+        <node concept="3clFbJ" id="3cOWKdeCEmM" role="3cqZAp">
+          <node concept="3clFbS" id="3cOWKdeCEmO" role="3clFbx">
+            <node concept="3cpWs6" id="3cOWKdeCFKX" role="3cqZAp">
+              <node concept="10Nm6u" id="3cOWKdeCFMN" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="3cOWKdeCFoF" role="3clFbw">
+            <node concept="10Nm6u" id="3cOWKdeCFqg" role="3uHU7w" />
+            <node concept="37vLTw" id="3cOWKdeCEJV" role="3uHU7B">
+              <ref role="3cqZAo" node="3cOWKdeCDl2" resolve="enumeration" />
+            </node>
+          </node>
+        </node>
+        <node concept="1DcWWT" id="RUp6jEzDuv" role="3cqZAp">
+          <node concept="3clFbS" id="RUp6jEzDuw" role="2LFqv$">
+            <node concept="3clFbJ" id="RUp6jEzDux" role="3cqZAp">
+              <node concept="2YIFZM" id="RUp6jEzDuy" role="3clFbw">
+                <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+                <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object):boolean" resolve="equals" />
+                <node concept="2OqwBi" id="RUp6jEzEfq" role="37wK5m">
+                  <node concept="37vLTw" id="RUp6jEzE9y" role="2Oq$k0">
+                    <ref role="3cqZAo" node="RUp6jEzDuD" resolve="l" />
+                  </node>
+                  <node concept="liA8E" id="RUp6jEzEA8" role="2OqNvi">
+                    <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getPresentation():java.lang.String" resolve="getPresentation" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="RUp6jEzDWy" role="37wK5m">
+                  <ref role="3cqZAo" node="RUp6jEzD7J" resolve="presentation" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="RUp6jEzDuA" role="3clFbx">
+                <node concept="3cpWs6" id="RUp6jEzDuB" role="3cqZAp">
+                  <node concept="37vLTw" id="RUp6jEzDuC" role="3cqZAk">
+                    <ref role="3cqZAo" node="RUp6jEzDuD" resolve="l" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWsn" id="RUp6jEzDuD" role="1Duv9x">
+            <property role="TrG5h" value="l" />
+            <node concept="3uibUv" id="RUp6jEzDuE" role="1tU5fm">
+              <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="RUp6jEzDuF" role="1DdaDG">
+            <node concept="37vLTw" id="3cOWKdeCGyz" role="2Oq$k0">
+              <ref role="3cqZAo" node="3cOWKdeCDl2" resolve="enumeration" />
+            </node>
+            <node concept="liA8E" id="RUp6jEzDuH" role="2OqNvi">
+              <ref role="37wK5l" to="c17a:~SEnumeration.getLiterals():java.util.Collection" resolve="getLiterals" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="RUp6jEzDuI" role="3cqZAp">
+          <node concept="10Nm6u" id="RUp6jEzDuJ" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="RUp6jEzCwJ" role="1B3o_S" />
+      <node concept="3uibUv" id="RUp6jEzCKP" role="3clF45">
+        <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+      </node>
+    </node>
+    <node concept="2YIFZL" id="3cOWKdeDGAj" role="jymVt">
+      <property role="TrG5h" value="getMembers" />
+      <node concept="3clFbS" id="3cOWKdeDGAm" role="3clF47">
+        <node concept="3clFbJ" id="3cOWKdeDHTU" role="3cqZAp">
+          <node concept="3clFbC" id="3cOWKdeDIlr" role="3clFbw">
+            <node concept="10Nm6u" id="3cOWKdeDIn0" role="3uHU7w" />
+            <node concept="37vLTw" id="3cOWKdeDHVG" role="3uHU7B">
+              <ref role="3cqZAo" node="3cOWKdeDGQi" resolve="enumeration" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3cOWKdeDHTW" role="3clFbx">
+            <node concept="3cpWs6" id="3cOWKdeDIuG" role="3cqZAp">
+              <node concept="10Nm6u" id="3cOWKdeDIwf" role="3cqZAk" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3cOWKdeDICk" role="3cqZAp">
+          <node concept="10QFUN" id="3cOWKdeDJWc" role="3cqZAk">
+            <node concept="3uibUv" id="3cOWKdeDKa2" role="10QFUM">
+              <ref role="3uigEE" to="33ny:~List" resolve="List" />
+              <node concept="3uibUv" id="3cOWKdeDKiR" role="11_B2D">
+                <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="3cOWKdeDJ8K" role="10QFUP">
+              <node concept="37vLTw" id="3cOWKdeDIKP" role="2Oq$k0">
+                <ref role="3cqZAo" node="3cOWKdeDGQi" resolve="enumeration" />
+              </node>
+              <node concept="liA8E" id="3cOWKdeDJuK" role="2OqNvi">
+                <ref role="37wK5l" to="c17a:~SEnumeration.getLiterals():java.util.Collection" resolve="getLiterals" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3cOWKdeDGaG" role="1B3o_S" />
+      <node concept="3uibUv" id="3cOWKdeDJG2" role="3clF45">
+        <ref role="3uigEE" to="33ny:~List" resolve="List" />
+        <node concept="3uibUv" id="3cOWKdeDJNe" role="11_B2D">
+          <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3cOWKdeDGQi" role="3clF46">
+        <property role="TrG5h" value="enumeration" />
+        <node concept="3uibUv" id="3cOWKdeDGWH" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SEnumeration" resolve="SEnumeration" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3cOWKdeDHoP" role="jymVt" />
+    <node concept="2tJIrI" id="RUp6jEzx13" role="jymVt" />
     <node concept="2YIFZL" id="2nIYwg$4ZtA" role="jymVt">
       <property role="TrG5h" value="getMemberName" />
       <node concept="3clFbS" id="2nIYwg$4ZtD" role="3clF47">
@@ -1363,6 +1557,18 @@
         <node concept="3uibUv" id="2nIYwg$5hw4" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
         </node>
+      </node>
+      <node concept="P$JXv" id="RUp6jEzxej" role="lGtFl">
+        <node concept="TZ5HI" id="RUp6jEzxek" role="3nqlJM">
+          <node concept="TZ5HA" id="RUp6jEzxel" role="3HnX3l">
+            <node concept="1dT_AC" id="RUp6jEzxmx" role="1dT_Ay">
+              <property role="1dT_AB" value="used only for deprecated `enumMember.name` operation" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="RUp6jEzxem" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2YIFZL" id="2nIYwg$4ZtN" role="jymVt">
@@ -1396,6 +1602,83 @@
       </node>
       <node concept="3Tm1VV" id="2nIYwg$4ZtY" role="1B3o_S" />
       <node concept="17QB3L" id="2nIYwg$4ZtZ" role="3clF45" />
+      <node concept="P$JXv" id="7Dhah7ZcC0y" role="lGtFl">
+        <node concept="TZ5HI" id="7Dhah7ZcC0z" role="3nqlJM">
+          <node concept="TZ5HA" id="7Dhah7ZcC0$" role="3HnX3l">
+            <node concept="1dT_AC" id="7Dhah7ZcCbU" role="1dT_Ay">
+              <property role="1dT_AB" value="used only for deprecated `enum.value` operation" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7Dhah7ZcC0_" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="RUp6jEzzTv" role="jymVt" />
+    <node concept="2YIFZL" id="RUp6jEzzqf" role="jymVt">
+      <property role="TrG5h" value="getMemberName0" />
+      <node concept="3clFbS" id="RUp6jEzzqg" role="3clF47">
+        <node concept="3cpWs6" id="RUp6jEzzqh" role="3cqZAp">
+          <node concept="3K4zz7" id="RUp6jEzzqi" role="3cqZAk">
+            <node concept="10Nm6u" id="RUp6jEzzqj" role="3K4E3e" />
+            <node concept="3clFbC" id="RUp6jEzzqk" role="3K4Cdx">
+              <node concept="10Nm6u" id="RUp6jEzzql" role="3uHU7w" />
+              <node concept="37vLTw" id="RUp6jEzzqm" role="3uHU7B">
+                <ref role="3cqZAo" node="RUp6jEzzqr" resolve="enumMember" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="RUp6jEz$Kr" role="3K4GZi">
+              <node concept="37vLTw" id="RUp6jEz$zT" role="2Oq$k0">
+                <ref role="3cqZAo" node="RUp6jEzzqr" resolve="enumMember" />
+              </node>
+              <node concept="liA8E" id="RUp6jEz_9w" role="2OqNvi">
+                <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getName():java.lang.String" resolve="getName" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="17QB3L" id="RUp6jEzzqp" role="3clF45" />
+      <node concept="3Tm1VV" id="RUp6jEzzqq" role="1B3o_S" />
+      <node concept="37vLTG" id="RUp6jEzzqr" role="3clF46">
+        <property role="TrG5h" value="enumMember" />
+        <node concept="3uibUv" id="RUp6jEzzqs" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="7Dhah7Zc_tN" role="jymVt">
+      <property role="TrG5h" value="getMemberPresentation" />
+      <node concept="3clFbS" id="7Dhah7Zc_tQ" role="3clF47">
+        <node concept="3cpWs6" id="7Dhah7ZcA15" role="3cqZAp">
+          <node concept="3K4zz7" id="7Dhah7ZcAB2" role="3cqZAk">
+            <node concept="10Nm6u" id="7Dhah7ZcAI9" role="3K4E3e" />
+            <node concept="2OqwBi" id="7Dhah7ZcB31" role="3K4GZi">
+              <node concept="37vLTw" id="7Dhah7ZcAQw" role="2Oq$k0">
+                <ref role="3cqZAo" node="7Dhah7Zc_EF" resolve="enumMember" />
+              </node>
+              <node concept="liA8E" id="7Dhah7ZcBs6" role="2OqNvi">
+                <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getPresentation():java.lang.String" resolve="getPresentation" />
+              </node>
+            </node>
+            <node concept="3clFbC" id="7Dhah7ZcAgU" role="3K4Cdx">
+              <node concept="10Nm6u" id="7Dhah7ZcAs_" role="3uHU7w" />
+              <node concept="37vLTw" id="7Dhah7ZcA2K" role="3uHU7B">
+                <ref role="3cqZAo" node="7Dhah7Zc_EF" resolve="enumMember" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7Dhah7Zc_6R" role="1B3o_S" />
+      <node concept="17QB3L" id="7Dhah7Zc_oG" role="3clF45" />
+      <node concept="37vLTG" id="7Dhah7Zc_EF" role="3clF46">
+        <property role="TrG5h" value="enumMember" />
+        <node concept="3uibUv" id="7Dhah7Zc_EE" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+        </node>
+      </node>
     </node>
     <node concept="3Tm1VV" id="X9k2kW5hNF" role="1B3o_S" />
   </node>

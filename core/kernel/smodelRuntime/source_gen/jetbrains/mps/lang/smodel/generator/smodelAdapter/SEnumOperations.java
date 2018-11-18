@@ -88,6 +88,11 @@ public class SEnumOperations {
     return e.getLiteral(memberValueHint);
   }
 
+  /**
+   * 
+   * @deprecated used for deperecated `enum.memberForName` operation
+   */
+  @Deprecated
   public static SEnumerationLiteral getMemberForName(String name, long uuidHigh, long uuidLow, String languageNameHint, long enumId, String enumNameHint) {
     SEnumeration e = getEnum(uuidHigh, uuidLow, languageNameHint, enumId, enumNameHint);
     for (SEnumerationLiteral l : e.getLiterals()) {
@@ -97,6 +102,11 @@ public class SEnumOperations {
     }
     return null;
   }
+  /**
+   * 
+   * @deprecated used only for deprecated `enum.memberForValue` operation
+   */
+  @Deprecated
   public static SEnumerationLiteral getMemberForValue(String value, long uuidHigh, long uuidLow, String languageNameHint, long enumId, String enumNameHint) {
     SEnumeration e = getEnum(uuidHigh, uuidLow, languageNameHint, enumId, enumNameHint);
     SEnumerationLiteral literal = e.getLiteral(value);
@@ -105,10 +115,50 @@ public class SEnumOperations {
     // RS `memberFromValue("not-a-value")` returns null, and `memberForName(null)` also returns null. See `EnumerationDatatypes` nullsafety tests 
     return (literal == null && value == null ? e.getDefault() : literal);
   }
+
+  public static SEnumerationLiteral getMemberForName(SEnumeration enumeration, String name) {
+    return (enumeration == null ? null : enumeration.getLiteral(name));
+  }
+  public static SEnumerationLiteral getMemberForPresentation(SEnumeration enumeration, String presentation) {
+    if (enumeration == null) {
+      return null;
+    }
+    for (SEnumerationLiteral l : enumeration.getLiterals()) {
+      if (Objects.equals(l.getPresentation(), presentation)) {
+        return l;
+      }
+    }
+    return null;
+  }
+  public static List<SEnumerationLiteral> getMembers(SEnumeration enumeration) {
+    if (enumeration == null) {
+      return null;
+    }
+    return (List<SEnumerationLiteral>) enumeration.getLiterals();
+  }
+
+
+  /**
+   * 
+   * @deprecated used only for deprecated `enumMember.name` operation
+   */
+  @Deprecated
   public static String getMemberName(SEnumerationLiteral enumMember) {
     return (enumMember == null ? null : SEnumerationAdapter.getEnumMemberIdentifier(enumMember));
   }
+  /**
+   * 
+   * @deprecated used only for deprecated `enum.value` operation
+   */
+  @Deprecated
   public static String getMemberValue(SEnumerationLiteral enumMember) {
     return (enumMember == null ? null : enumMember.getName());
+  }
+
+  public static String getMemberName0(SEnumerationLiteral enumMember) {
+    return (enumMember == null ? null : enumMember.getName());
+  }
+  public static String getMemberPresentation(SEnumerationLiteral enumMember) {
+    return (enumMember == null ? null : enumMember.getPresentation());
   }
 }

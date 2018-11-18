@@ -5,6 +5,7 @@
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="4" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -242,6 +243,7 @@
         <child id="1178870894644" name="pattern" index="1Ub_4A" />
         <child id="1178870894645" name="nodeToCoerce" index="1Ub_4B" />
       </concept>
+      <concept id="1178871491133" name="jetbrains.mps.lang.typesystem.structure.CoerceStrongExpression" flags="nn" index="1UdQGJ" />
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
@@ -2905,7 +2907,7 @@
   </node>
   <node concept="13h7C7" id="i39F6xf">
     <property role="3GE5qa" value="type" />
-    <ref role="13h7C2" to="tp25:i2ZThgx" resolve="SEnumMemberType" />
+    <ref role="13h7C2" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
     <node concept="13i0hz" id="i39Fa0v" role="13h7CS">
       <property role="TrG5h" value="getPresentation" />
       <ref role="13i0hy" to="tpcu:hEwIMiw" resolve="getPresentation" />
@@ -2914,7 +2916,7 @@
           <node concept="3cpWsn" id="i39Fa0y" role="3cpWs9">
             <property role="TrG5h" value="enumNode" />
             <node concept="3Tqbb2" id="i39Fa0z" role="1tU5fm">
-              <ref role="ehGHo" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration" />
+              <ref role="ehGHo" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
             </node>
             <node concept="2OqwBi" id="i39Fa0$" role="33vP2m">
               <node concept="13iPFW" id="i39Fa0_" role="2Oq$k0" />
@@ -3050,7 +3052,7 @@
   </node>
   <node concept="13h7C7" id="i3HhiYi">
     <property role="3GE5qa" value="enum.enumoperation" />
-    <ref role="13h7C2" to="tp25:i3HdMsX" resolve="SEnumOperation" />
+    <ref role="13h7C2" to="tp25:i3HdMsX" resolve="SEnumOperation_Old" />
     <node concept="13hLZK" id="i3HhiYj" role="13h7CW">
       <node concept="3clFbS" id="i3HhiYk" role="2VODD2" />
     </node>
@@ -3058,7 +3060,7 @@
       <property role="TrG5h" value="getEnum" />
       <node concept="3Tm1VV" id="i3HhkyW" role="1B3o_S" />
       <node concept="3Tqbb2" id="i3Hhn20" role="3clF45">
-        <ref role="ehGHo" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration" />
+        <ref role="ehGHo" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
       </node>
       <node concept="3clFbS" id="i3HhkyY" role="3clF47">
         <node concept="3cpWs6" id="i3HhpRb" role="3cqZAp">
@@ -9128,6 +9130,50 @@
     </node>
     <node concept="13hLZK" id="5dMpO2vVMXP" role="13h7CW">
       <node concept="3clFbS" id="5dMpO2vVMXQ" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="66cvXGSmQfY">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="13h7C2" to="tp25:1HbIxIw0iNP" resolve="EnumOperation" />
+    <node concept="13i0hz" id="66cvXGSmQgk" role="13h7CS">
+      <property role="TrG5h" value="getEnumDecl" />
+      <node concept="3Tm1VV" id="66cvXGSmQgl" role="1B3o_S" />
+      <node concept="3Tqbb2" id="66cvXGSmQgs" role="3clF45">
+        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      </node>
+      <node concept="3clFbS" id="66cvXGSmQgn" role="3clF47">
+        <node concept="3clFbF" id="66cvXGSmQxt" role="3cqZAp">
+          <node concept="2OqwBi" id="66cvXGSmQNm" role="3clFbG">
+            <node concept="1UdQGJ" id="50Pb80HCEd_" role="2Oq$k0">
+              <node concept="1YaCAy" id="50Pb80HCExk" role="1Ub_4A">
+                <property role="TrG5h" value="e" />
+                <ref role="1YaFvo" to="tp25:50Pb80Hwsgz" resolve="SEnumerationType" />
+              </node>
+              <node concept="2OqwBi" id="50Pb80HC$kL" role="1Ub_4B">
+                <node concept="1PxgMI" id="50Pb80HC_17" role="2Oq$k0">
+                  <property role="1BlNFB" value="true" />
+                  <node concept="chp4Y" id="50Pb80HC_8T" role="3oSUPX">
+                    <ref role="cht4Q" to="tpee:hqOqwz4" resolve="DotExpression" />
+                  </node>
+                  <node concept="2OqwBi" id="66cvXGSmRvy" role="1m5AlR">
+                    <node concept="13iPFW" id="66cvXGSmR9j" role="2Oq$k0" />
+                    <node concept="1mfA1w" id="66cvXGSmRLp" role="2OqNvi" />
+                  </node>
+                </node>
+                <node concept="2qgKlT" id="50Pb80HCDoJ" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:7GulAc9z0dN" resolve="getOperandType" />
+                </node>
+              </node>
+            </node>
+            <node concept="3TrEf2" id="66cvXGSmR0H" role="2OqNvi">
+              <ref role="3Tt5mk" to="tp25:50Pb80Hwsg$" resolve="enumDeclaration" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="13hLZK" id="66cvXGSmQfZ" role="13h7CW">
+      <node concept="3clFbS" id="66cvXGSmQg0" role="2VODD2" />
     </node>
   </node>
 </model>

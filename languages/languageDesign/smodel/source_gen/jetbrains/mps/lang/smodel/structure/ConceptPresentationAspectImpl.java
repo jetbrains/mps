@@ -45,10 +45,19 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ContainmentLinkId;
   private ConceptPresentation props_DevkitIdentity;
   private ConceptPresentation props_DevkitPointer;
+  private ConceptPresentation props_EnumMemberOperation;
   private ConceptPresentation props_EnumMemberReference;
   private ConceptPresentation props_EnumMemberValueRefExpression;
   private ConceptPresentation props_EnumMember_NameOperation;
-  private ConceptPresentation props_EnumMember_ValueOperation;
+  private ConceptPresentation props_EnumMember_NameOperation_Old;
+  private ConceptPresentation props_EnumMember_PresentationOperation;
+  private ConceptPresentation props_EnumMember_ValueOperation_Old;
+  private ConceptPresentation props_EnumOperation;
+  private ConceptPresentation props_Enum_FromNameOperation;
+  private ConceptPresentation props_Enum_FromPresentationOperation;
+  private ConceptPresentation props_Enum_MemberLiteral;
+  private ConceptPresentation props_Enum_MembersOperation;
+  private ConceptPresentation props_EnumerationIdRefExpression;
   private ConceptPresentation props_EqualsStructurallyExpression;
   private ConceptPresentation props_ExactConceptCase;
   private ConceptPresentation props_GeneratorIdentity;
@@ -173,14 +182,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_SConceptType;
   private ConceptPresentation props_SConceptTypeCastExpression;
   private ConceptPresentation props_SConceptTypeLiteral;
-  private ConceptPresentation props_SEnumMemberOperation;
-  private ConceptPresentation props_SEnumMemberType;
-  private ConceptPresentation props_SEnumOperation;
   private ConceptPresentation props_SEnumOperationInvocation;
-  private ConceptPresentation props_SEnum_MemberForNameOperation;
-  private ConceptPresentation props_SEnum_MemberForValueOperation;
-  private ConceptPresentation props_SEnum_MemberOperation;
-  private ConceptPresentation props_SEnum_MembersOperation;
+  private ConceptPresentation props_SEnumOperation_Old;
+  private ConceptPresentation props_SEnum_MemberForNameOperation_Old;
+  private ConceptPresentation props_SEnum_MemberForValueOperation_Old;
+  private ConceptPresentation props_SEnum_MemberOperation_Old;
+  private ConceptPresentation props_SEnum_MembersOperation_Old;
+  private ConceptPresentation props_SEnumerationMemberType;
+  private ConceptPresentation props_SEnumerationType;
   private ConceptPresentation props_SLinkAccess;
   private ConceptPresentation props_SLinkImplicitSelect;
   private ConceptPresentation props_SLinkListAccess;
@@ -459,6 +468,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_DevkitPointer = cpb.create();
         }
         return props_DevkitPointer;
+      case LanguageConceptSwitch.EnumMemberOperation:
+        if (props_EnumMemberOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_EnumMemberOperation = cpb.create();
+        }
+        return props_EnumMemberOperation;
       case LanguageConceptSwitch.EnumMemberReference:
         if (props_EnumMemberReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -477,19 +492,80 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.EnumMember_NameOperation:
         if (props_EnumMember_NameOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("enum member name");
           cpb.rawPresentation("name");
           props_EnumMember_NameOperation = cpb.create();
         }
         return props_EnumMember_NameOperation;
-      case LanguageConceptSwitch.EnumMember_ValueOperation:
-        if (props_EnumMember_ValueOperation == null) {
+      case LanguageConceptSwitch.EnumMember_NameOperation_Old:
+        if (props_EnumMember_NameOperation_Old == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          cpb.shortDesc("enum member name");
+          cpb.rawPresentation("name");
+          props_EnumMember_NameOperation_Old = cpb.create();
+        }
+        return props_EnumMember_NameOperation_Old;
+      case LanguageConceptSwitch.EnumMember_PresentationOperation:
+        if (props_EnumMember_PresentationOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("presentation");
+          props_EnumMember_PresentationOperation = cpb.create();
+        }
+        return props_EnumMember_PresentationOperation;
+      case LanguageConceptSwitch.EnumMember_ValueOperation_Old:
+        if (props_EnumMember_ValueOperation_Old == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("enum member value");
           cpb.rawPresentation("value");
-          props_EnumMember_ValueOperation = cpb.create();
+          props_EnumMember_ValueOperation_Old = cpb.create();
         }
-        return props_EnumMember_ValueOperation;
+        return props_EnumMember_ValueOperation_Old;
+      case LanguageConceptSwitch.EnumOperation:
+        if (props_EnumOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_EnumOperation = cpb.create();
+        }
+        return props_EnumOperation;
+      case LanguageConceptSwitch.Enum_FromNameOperation:
+        if (props_Enum_FromNameOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("get a member by its name");
+          cpb.rawPresentation("from name");
+          props_Enum_FromNameOperation = cpb.create();
+        }
+        return props_Enum_FromNameOperation;
+      case LanguageConceptSwitch.Enum_FromPresentationOperation:
+        if (props_Enum_FromPresentationOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("get a member by its presentation");
+          cpb.rawPresentation("from presentation");
+          props_Enum_FromPresentationOperation = cpb.create();
+        }
+        return props_Enum_FromPresentationOperation;
+      case LanguageConceptSwitch.Enum_MemberLiteral:
+        if (props_Enum_MemberLiteral == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, 0x1b4bba1ba0012d64L, "memberDeclaration", "", "");
+          props_Enum_MemberLiteral = cpb.create();
+        }
+        return props_Enum_MemberLiteral;
+      case LanguageConceptSwitch.Enum_MembersOperation:
+        if (props_Enum_MembersOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("list of enumeration members");
+          cpb.rawPresentation("members");
+          props_Enum_MembersOperation = cpb.create();
+        }
+        return props_Enum_MembersOperation;
+      case LanguageConceptSwitch.EnumerationIdRefExpression:
+        if (props_EnumerationIdRefExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("access to enumeration");
+          cpb.rawPresentation("enum/<name>/");
+          props_EnumerationIdRefExpression = cpb.create();
+        }
+        return props_EnumerationIdRefExpression;
       case LanguageConceptSwitch.EqualsStructurallyExpression:
         if (props_EqualsStructurallyExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1411,66 +1487,74 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_SConceptTypeLiteral = cpb.create();
         }
         return props_SConceptTypeLiteral;
-      case LanguageConceptSwitch.SEnumMemberOperation:
-        if (props_SEnumMemberOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_SEnumMemberOperation = cpb.create();
-        }
-        return props_SEnumMemberOperation;
-      case LanguageConceptSwitch.SEnumMemberType:
-        if (props_SEnumMemberType == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("enum member type");
-          cpb.rawPresentation("enummember< >");
-          props_SEnumMemberType = cpb.create();
-        }
-        return props_SEnumMemberType;
-      case LanguageConceptSwitch.SEnumOperation:
-        if (props_SEnumOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_SEnumOperation = cpb.create();
-        }
-        return props_SEnumOperation;
       case LanguageConceptSwitch.SEnumOperationInvocation:
         if (props_SEnumOperationInvocation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("enum operation");
           cpb.rawPresentation("enum/<name>/.operation");
           props_SEnumOperationInvocation = cpb.create();
         }
         return props_SEnumOperationInvocation;
-      case LanguageConceptSwitch.SEnum_MemberForNameOperation:
-        if (props_SEnum_MemberForNameOperation == null) {
+      case LanguageConceptSwitch.SEnumOperation_Old:
+        if (props_SEnumOperation_Old == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          props_SEnumOperation_Old = cpb.create();
+        }
+        return props_SEnumOperation_Old;
+      case LanguageConceptSwitch.SEnum_MemberForNameOperation_Old:
+        if (props_SEnum_MemberForNameOperation_Old == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("parse enum name");
           cpb.rawPresentation("memberForName()");
-          props_SEnum_MemberForNameOperation = cpb.create();
+          props_SEnum_MemberForNameOperation_Old = cpb.create();
         }
-        return props_SEnum_MemberForNameOperation;
-      case LanguageConceptSwitch.SEnum_MemberForValueOperation:
-        if (props_SEnum_MemberForValueOperation == null) {
+        return props_SEnum_MemberForNameOperation_Old;
+      case LanguageConceptSwitch.SEnum_MemberForValueOperation_Old:
+        if (props_SEnum_MemberForValueOperation_Old == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("parse enum value");
           cpb.rawPresentation("memberForValue()");
-          props_SEnum_MemberForValueOperation = cpb.create();
+          props_SEnum_MemberForValueOperation_Old = cpb.create();
         }
-        return props_SEnum_MemberForValueOperation;
-      case LanguageConceptSwitch.SEnum_MemberOperation:
-        if (props_SEnum_MemberOperation == null) {
+        return props_SEnum_MemberForValueOperation_Old;
+      case LanguageConceptSwitch.SEnum_MemberOperation_Old:
+        if (props_SEnum_MemberOperation_Old == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("enum member access");
           cpb.presentationByReference(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e691L, 0x120ed37e692L, "member", "", "");
-          props_SEnum_MemberOperation = cpb.create();
+          props_SEnum_MemberOperation_Old = cpb.create();
         }
-        return props_SEnum_MemberOperation;
-      case LanguageConceptSwitch.SEnum_MembersOperation:
-        if (props_SEnum_MembersOperation == null) {
+        return props_SEnum_MemberOperation_Old;
+      case LanguageConceptSwitch.SEnum_MembersOperation_Old:
+        if (props_SEnum_MembersOperation_Old == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("members list");
           cpb.rawPresentation("members");
-          props_SEnum_MembersOperation = cpb.create();
+          props_SEnum_MembersOperation_Old = cpb.create();
         }
-        return props_SEnum_MembersOperation;
+        return props_SEnum_MembersOperation_Old;
+      case LanguageConceptSwitch.SEnumerationMemberType:
+        if (props_SEnumerationMemberType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("enumeration member type");
+          cpb.rawPresentation("enummember<>");
+          props_SEnumerationMemberType = cpb.create();
+        }
+        return props_SEnumerationMemberType;
+      case LanguageConceptSwitch.SEnumerationType:
+        if (props_SEnumerationType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("enumeration type");
+          cpb.rawPresentation("enum<>");
+          props_SEnumerationType = cpb.create();
+        }
+        return props_SEnumerationType;
       case LanguageConceptSwitch.SLinkAccess:
         if (props_SLinkAccess == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

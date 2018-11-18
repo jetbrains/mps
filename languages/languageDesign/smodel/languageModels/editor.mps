@@ -37,6 +37,7 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" />
     <import index="25zl" ref="r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)" />
+    <import index="wr1s" ref="r:0f9ddbb6-f761-4bd7-8dde-1e5300bd28c2(jetbrains.mps.lang.project.editor)" implicit="true" />
     <import index="tpch" ref="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)" implicit="true" />
     <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
@@ -953,20 +954,7 @@
       <node concept="1iCGBv" id="gFsmLAy" role="3EZMnx">
         <ref role="1NtTu8" to="tp25:g$uo_Gj" resolve="enumMember" />
         <node concept="1sVBvm" id="gFsmLAz" role="1sWHZn">
-          <node concept="3F0A7n" id="gFsmLA$" role="2wV5jI">
-            <property role="1Intyy" value="true" />
-            <property role="1$x2rV" value="&lt;no ext value&gt;" />
-            <ref role="1NtTu8" to="tpce:fLuS6p$" resolve="externalValue" />
-            <node concept="Vb9p2" id="hEUNR2l" role="3F10Kt">
-              <property role="Vbekb" value="BOLD" />
-            </node>
-            <node concept="3$7jql" id="hGKbDBu" role="3F10Kt">
-              <property role="3$6WeP" value="0.0" />
-            </node>
-            <node concept="VechU" id="hEZR8_y" role="3F10Kt">
-              <property role="Vb096" value="DARK_MAGENTA" />
-            </node>
-          </node>
+          <node concept="3SHvHV" id="VFd4X$$BQr" role="2wV5jI" />
         </node>
         <node concept="34QqEe" id="wcCOXqJM1D" role="3F10Kt">
           <property role="VOm3f" value="true" />
@@ -3303,11 +3291,11 @@
   </node>
   <node concept="24kQdi" id="i2ZTsCA">
     <property role="3GE5qa" value="type" />
-    <ref role="1XX52x" to="tp25:i2ZThgx" resolve="SEnumMemberType" />
+    <ref role="1XX52x" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
     <node concept="3EZMnI" id="i2ZWqxq" role="2wV5jI">
       <node concept="3F0ifn" id="i2ZWqxr" role="3EZMnx">
         <property role="3F0ifm" value="enummember" />
-        <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+        <ref role="1k5W1q" to="wr1s:eY0iPzB7gM" resolve="KeyWord" />
         <node concept="3$7jql" id="i2ZWqxs" role="3F10Kt">
           <property role="3$6WeP" value="0.0" />
         </node>
@@ -3344,14 +3332,14 @@
   </node>
   <node concept="24kQdi" id="i2ZYpJV">
     <property role="3GE5qa" value="enum.enumoperation" />
-    <ref role="1XX52x" to="tp25:i2ZYiQY" resolve="EnumMember_ValueOperation" />
+    <ref role="1XX52x" to="tp25:i2ZYiQY" resolve="EnumMember_ValueOperation_Old" />
     <node concept="3F0ifn" id="i2ZYqAa" role="2wV5jI">
       <property role="3F0ifm" value="value" />
     </node>
   </node>
   <node concept="24kQdi" id="i3061iM">
     <property role="3GE5qa" value="enum.enumoperation" />
-    <ref role="1XX52x" to="tp25:i305Nnj" resolve="EnumMember_NameOperation" />
+    <ref role="1XX52x" to="tp25:i305Nnj" resolve="EnumMember_NameOperation_Old" />
     <node concept="3F0ifn" id="i3062bt" role="2wV5jI">
       <property role="3F0ifm" value="name" />
     </node>
@@ -3403,7 +3391,7 @@
   </node>
   <node concept="24kQdi" id="i3HeTbu">
     <property role="3GE5qa" value="enum.enumoperation" />
-    <ref role="1XX52x" to="tp25:i3HdYoc" resolve="SEnum_MemberForNameOperation" />
+    <ref role="1XX52x" to="tp25:i3HdYoc" resolve="SEnum_MemberForNameOperation_Old" />
     <node concept="3EZMnI" id="i3HeTCN" role="2wV5jI">
       <node concept="3F0ifn" id="i3HeTCO" role="3EZMnx">
         <property role="3F0ifm" value="memberForName" />
@@ -3426,7 +3414,7 @@
   </node>
   <node concept="24kQdi" id="i3HfmNS">
     <property role="3GE5qa" value="enum.enumoperation" />
-    <ref role="1XX52x" to="tp25:i3HdYpe" resolve="SEnum_MemberForValueOperation" />
+    <ref role="1XX52x" to="tp25:i3HdYpe" resolve="SEnum_MemberForValueOperation_Old" />
     <node concept="3EZMnI" id="i3HfniU" role="2wV5jI">
       <node concept="3F0ifn" id="i3HfniV" role="3EZMnx">
         <property role="3F0ifm" value="memberForValue" />
@@ -3449,7 +3437,7 @@
   </node>
   <node concept="24kQdi" id="i3HgBwg">
     <property role="3GE5qa" value="enum.enumoperation" />
-    <ref role="1XX52x" to="tp25:i3HdYqh" resolve="SEnum_MemberOperation" />
+    <ref role="1XX52x" to="tp25:i3HdYqh" resolve="SEnum_MemberOperation_Old" />
     <node concept="3EZMnI" id="i3HgCi5" role="2wV5jI">
       <node concept="2iRfu4" id="i3HgCi6" role="2iSdaV" />
       <node concept="3F0ifn" id="i3HgCi7" role="3EZMnx">
@@ -3475,7 +3463,7 @@
   </node>
   <node concept="24kQdi" id="i3HgQyN">
     <property role="3GE5qa" value="enum.enumoperation" />
-    <ref role="1XX52x" to="tp25:i3HdYqO" resolve="SEnum_MembersOperation" />
+    <ref role="1XX52x" to="tp25:i3HdYqO" resolve="SEnum_MembersOperation_Old" />
     <node concept="3F0ifn" id="i3HgTjC" role="2wV5jI">
       <property role="3F0ifm" value="members" />
       <ref role="1k5W1q" to="tpen:hshUnm6" resolve="StaticMethod" />
@@ -6135,7 +6123,7 @@
   </node>
   <node concept="IW6AY" id="1wEcoXjJgmQ">
     <property role="3GE5qa" value="rightTransform" />
-    <ref role="aqKnT" to="tp25:i3HdMsX" resolve="SEnumOperation" />
+    <ref role="aqKnT" to="tp25:i3HdMsX" resolve="SEnumOperation_Old" />
     <node concept="1Qtc8_" id="1wEcoXjJgmR" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjJgmS" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjJgmT" role="CtIbM">
@@ -6748,7 +6736,7 @@
                         </node>
                         <node concept="1mIQ4w" id="hwTcSny" role="2OqNvi">
                           <node concept="chp4Y" id="hwTcSnz" role="cj9EA">
-                            <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration" />
+                            <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
                           </node>
                         </node>
                       </node>
@@ -7885,7 +7873,7 @@
                 </node>
                 <node concept="1mIQ4w" id="1wEcoXjJN1l" role="2OqNvi">
                   <node concept="chp4Y" id="1wEcoXjJN1m" role="cj9EA">
-                    <ref role="cht4Q" to="tp25:i2ZThgx" resolve="SEnumMemberType" />
+                    <ref role="cht4Q" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
                   </node>
                 </node>
               </node>
@@ -10536,6 +10524,145 @@
       <node concept="VPxyj" id="7QspFwTqR4z" role="3F10Kt">
         <property role="VOm3f" value="false" />
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1HbIxIvFSt4">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:1HbIxIvFJBi" resolve="EnumMember_NameOperation" />
+    <node concept="PMmxH" id="1HbIxIvFSt6" role="2wV5jI">
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1HbIxIw0ke6">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:1HbIxIw0iPB" resolve="Enum_FromNameOperation" />
+    <node concept="3EZMnI" id="1HbIxIw0kec" role="2wV5jI">
+      <node concept="l2Vlx" id="1HbIxIw0ked" role="2iSdaV" />
+      <node concept="PMmxH" id="50Pb80HCzRL" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      </node>
+      <node concept="3F0ifn" id="1HbIxIw0ker" role="3EZMnx">
+        <property role="3F0ifm" value="(" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="3F1sOY" id="1HbIxIw0kfl" role="3EZMnx">
+        <ref role="1NtTu8" to="tp25:1HbIxIw0kf8" resolve="nameExpression" />
+      </node>
+      <node concept="3F0ifn" id="1HbIxIw0keC" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1HbIxIw0qBW">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:1HbIxIw0iPC" resolve="Enum_MembersOperation" />
+    <node concept="PMmxH" id="1HbIxIw2eSg" role="2wV5jI">
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1HbIxIw0qCr">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:1HbIxIw0iPw" resolve="Enum_MemberLiteral" />
+    <node concept="1iCGBv" id="1HbIxIw8I2y" role="2wV5jI">
+      <ref role="1NtTu8" to="tp25:1HbIxIw0iP$" resolve="memberDeclaration" />
+      <node concept="1sVBvm" id="1HbIxIw8I2z" role="1sWHZn">
+        <node concept="3SHvHV" id="50Pb80HCzRX" role="2wV5jI">
+          <ref role="1k5W1q" to="tpd3:hLjqlx3" resolve="ReferenceOnConceptualFeature" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="50Pb80HwrVL">
+    <property role="3GE5qa" value="reference" />
+    <ref role="1XX52x" to="tp25:50Pb80HwrVk" resolve="EnumerationIdRefExpression" />
+    <node concept="3EZMnI" id="50Pb80HwrWd" role="2wV5jI">
+      <node concept="3F0ifn" id="50Pb80HwrWn" role="3EZMnx">
+        <property role="3F0ifm" value="enum" />
+        <ref role="1k5W1q" to="wr1s:eY0iPzB7gM" resolve="KeyWord" />
+      </node>
+      <node concept="3F0ifn" id="50Pb80HwrWw" role="3EZMnx">
+        <property role="3F0ifm" value="/" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+        <node concept="34QqEe" id="50Pb80Hws71" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="1iCGBv" id="50Pb80HwrWH" role="3EZMnx">
+        <ref role="1NtTu8" to="tp25:50Pb80HwrVl" resolve="enumDeclaration" />
+        <node concept="34QqEe" id="50Pb80Hws6Y" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="1sVBvm" id="50Pb80HwrWJ" role="1sWHZn">
+          <node concept="3SHvHV" id="50Pb80HwrWX" role="2wV5jI">
+            <ref role="1k5W1q" to="tpd3:hwSE21y" resolve="ReferenceOnConcept" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="50Pb80HwrXe" role="3EZMnx">
+        <property role="3F0ifm" value="/" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+        <node concept="34QqEe" id="50Pb80Hws6V" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="50Pb80HwrWg" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="50Pb80Hwsh0">
+    <property role="3GE5qa" value="type" />
+    <ref role="1XX52x" to="tp25:50Pb80Hwsgz" resolve="SEnumerationType" />
+    <node concept="3EZMnI" id="50Pb80Hwshj" role="2wV5jI">
+      <node concept="l2Vlx" id="50Pb80Hwshm" role="2iSdaV" />
+      <node concept="3F0ifn" id="50Pb80HwsiR" role="3EZMnx">
+        <property role="3F0ifm" value="enum" />
+        <ref role="1k5W1q" to="wr1s:eY0iPzB7gM" resolve="KeyWord" />
+      </node>
+      <node concept="3F0ifn" id="50Pb80Hwsiu" role="3EZMnx">
+        <property role="3F0ifm" value="&lt;" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="1iCGBv" id="50Pb80HwshG" role="3EZMnx">
+        <property role="39s7Ar" value="true" />
+        <ref role="1NtTu8" to="tp25:50Pb80Hwsg$" resolve="enumDeclaration" />
+        <node concept="1sVBvm" id="50Pb80HwshH" role="1sWHZn">
+          <node concept="3SHvHV" id="50Pb80HwshW" role="2wV5jI">
+            <ref role="1k5W1q" to="tpd3:hwSE21y" resolve="ReferenceOnConcept" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="50Pb80Hwsi9" role="3EZMnx">
+        <property role="3F0ifm" value="&gt;" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="50Pb80H_WZI">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:50Pb80H_WZh" resolve="EnumMember_PresentationOperation" />
+    <node concept="PMmxH" id="50Pb80H_X01" role="2wV5jI">
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="6lzoLEP$8xQ">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:50Pb80HCzDI" resolve="Enum_FromPresentationOperation" />
+    <node concept="3EZMnI" id="6lzoLEP$8xS" role="2wV5jI">
+      <node concept="PMmxH" id="6lzoLEP$8xZ" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      </node>
+      <node concept="3F0ifn" id="6lzoLEP$8y4" role="3EZMnx">
+        <property role="3F0ifm" value="(" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="3F1sOY" id="6lzoLEP$8ye" role="3EZMnx">
+        <ref role="1NtTu8" to="tp25:6lzoLEP$8yc" resolve="presentationExpression" />
+      </node>
+      <node concept="3F0ifn" id="6lzoLEP$8yo" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+      </node>
+      <node concept="l2Vlx" id="6lzoLEP$8xV" role="2iSdaV" />
     </node>
   </node>
 </model>

@@ -137,7 +137,35 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_EnumMember_ValueOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_EnumMember_NameOperation_Old_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_EnumMember_PresentationOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_EnumMember_ValueOperation_Old_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Enum_FromNameOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Enum_FromPresentationOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Enum_MemberLiteral_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Enum_MembersOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_EnumerationIdRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -465,27 +493,27 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForNameOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForNameOperation_Old_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForNameOperation_checkArg_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForNameOperation_Old_checkArg_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForValueOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForValueOperation_Old_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForValueOperation_checkArg_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberForValueOperation_Old_checkArg_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MemberOperation_Old_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MembersOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SEnum_MembersOperation_Old_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -618,6 +646,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_SEnumMemberType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_SEnumerationType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {
