@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.java.ui;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.mock.MockVirtualFile;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
@@ -37,7 +38,6 @@ import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
-import jetbrains.mps.ide.ui.dialogs.properties.creators.StubRootChooser;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.Solution;
@@ -45,7 +45,7 @@ import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
-import jetbrains.mps.smodel.Language;
+import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
@@ -60,6 +60,8 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -74,7 +76,8 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private boolean myLibrariesChanged = false;
   private JBCheckBox myCheckBox;
   private JBCheckBox myExternalIdeaCompile;
-  private ComboBox myComboBox;
+  private ComboBox<SolutionKind> myComboBox;
+  private JBLabel myUpdateModelRoots;
 
   private final JavaModuleFacetImpl myJavaModuleFacet;
 
@@ -86,7 +89,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   @Override
   public void init() {
     JPanel advancedTab = new JPanel();
-    advancedTab.setLayout(new GridLayoutManager((myJavaModuleFacet.getModule() instanceof Solution ? 5 : 3), 2, MPSPropertiesConfigurable.INSETS, -1, -1));
+    advancedTab.setLayout(new GridLayoutManager((myJavaModuleFacet.getModule() instanceof Solution ? 6 : 4), 2, MPSPropertiesConfigurable.INSETS, -1, -1));
 
     int row = 0;
 
@@ -95,7 +98,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       assert descriptor != null;
 
       JBLabel solutionKindLabel = new JBLabel(PropertiesBundle.message("facet.java.solutionkind"));
-      myComboBox = new ComboBox(new DefaultComboBoxModel<>(SolutionKind.values()));
+      myComboBox = new ComboBox<>(new DefaultComboBoxModel<>(SolutionKind.values()));
       myComboBox.setSelectedItem(descriptor.getKind());
 
       advancedTab.add(solutionKindLabel,
@@ -109,7 +112,9 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       Component compileFlags = null;
       if (RuntimeFlags.isInternalMode()) {
         myExternalIdeaCompile = new JBCheckBox(PropertiesBundle.message("facet.java.compileinidea"), descriptor.needsExternalIdeaCompile());
-        myCheckBox.addChangeListener(e -> {myExternalIdeaCompile.setEnabled(!myCheckBox.isSelected());});
+        myCheckBox.addChangeListener(e -> {
+          myExternalIdeaCompile.setEnabled(!myCheckBox.isSelected());
+        });
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT), false);
         p.add(myCheckBox);
         p.add(myExternalIdeaCompile);
@@ -126,10 +131,16 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0,
                                                                false));
-    advancedTab.add(getLibrariesTable(), new GridConstraints(row, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+    advancedTab.add(getLibrariesTable(), new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0,
                                                              false));
+
+    myUpdateModelRoots = new JBLabel(PropertiesBundle.message("facet.java.update.roots"), AllIcons.General.Information, JBLabel.LEFT);
+    advancedTab.add(myUpdateModelRoots, new GridConstraints(row, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
+                                                            GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED,
+                                                            null, null, null, 0,
+                                                            false));
 
     setTabComponent(advancedTab);
   }
@@ -145,11 +156,18 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     sourcePathTable.setShowVerticalLines(false);
     sourcePathTable.setAutoCreateRowSorter(false);
     sourcePathTable.setAutoscrolls(true);
+    sourcePathTable.addFocusListener(new FocusAdapter() {
+      @Override
+      public void focusLost(FocusEvent focusEvent) {
+        sourcePathTable.clearSelection();
+        super.focusLost(focusEvent);
+      }
+    });
 
     ToolbarDecorator decorator = ToolbarDecorator.createDecorator(sourcePathTable);
     decorator.setAddAction(anActionButton -> {
       FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFoldersDescriptor();
-      descriptor.setTitle("Choose Source Paths");
+      descriptor.setTitle("Choose Folders with Java Sources");
       final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getModule().getModuleSourceDir());
 
       final VirtualFile[] files = FileChooser.chooseFiles(descriptor, getTabComponent(), null, moduleDir);
@@ -178,12 +196,21 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     librariesTable.setShowVerticalLines(false);
     librariesTable.setAutoCreateRowSorter(false);
     librariesTable.setAutoscrolls(true);
+    librariesTable.addFocusListener(new FocusAdapter() {
+      @Override
+      public void focusLost(FocusEvent focusEvent) {
+        librariesTable.clearSelection();
+        super.focusLost(focusEvent);
+      }
+    });
 
     ToolbarDecorator decorator = ToolbarDecorator.createDecorator(librariesTable);
     decorator.setAddAction(anActionButton -> {
-      List<ModelRootDescriptor> modelRoots = new ArrayList<>(myJavaModuleFacet.getModule().getModuleDescriptor().getModelRootDescriptors());
-      StubRootChooser stubRootChooser = new StubRootChooser(getTabComponent(), modelRoots, myJavaModuleFacet.getModule() instanceof Language);
-      myLibrariesTableModel.addAll(convertStringPaths2VirtualFile(stubRootChooser.compute()));
+      FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createAllButJarContentsDescriptor();
+      descriptor.setTitle("Choose Java Library File or Folder");
+      final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getModule().getModuleSourceDir());
+      final VirtualFile[] files = FileChooser.chooseFiles(descriptor, getTabComponent(), null, moduleDir);
+      myLibrariesTableModel.addAll(Arrays.asList(files));
     }).setRemoveAction(anActionButton -> {
       TableUtil.removeSelectedItems(librariesTable);
       myLibrariesTableModel.fireTableDataChanged();
@@ -226,21 +253,38 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
     // TODO: Move save of sources and libraries to JavaModuleFacetImpl#save(), when settings will be moved from ModuleDescriptor to memento
 
-    final Collection<String> sourcePaths = myJavaModuleFacet.getModule().getModuleDescriptor().getSourcePaths();
-    sourcePaths.clear();
-    final Collection<String> sourcePathsTable = convertVirtualFile2StringPaths(mySourcePathsTableModel.getFiles());
-    if (!sourcePathsTable.isEmpty()) {
-      sourcePaths.addAll(sourcePathsTable);
+    if (mySourcePathsChanged) {
+      final Collection<String> sourcePaths = myJavaModuleFacet.getModule().getModuleDescriptor().getSourcePaths();
+      sourcePaths.clear();
+      final Collection<String> sourcePathsTable = convertVirtualFile2StringPaths(mySourcePathsTableModel.getFiles());
+      if (!sourcePathsTable.isEmpty()) {
+        sourcePaths.addAll(sourcePathsTable);
+      }
+      mySourcePathsChanged = false;
     }
-    mySourcePathsChanged = false;
 
-    final Collection<String> libraryPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getJavaLibs();
-    libraryPaths.clear();
-    final Collection<String> libraryPathsTable = convertVirtualFile2StringPaths(myLibrariesTableModel.getFiles());
-    if (!libraryPathsTable.isEmpty()) {
-      libraryPaths.addAll(libraryPathsTable);
+    if (myLibrariesChanged) {
+      final Collection<String> libraryPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getJavaLibs();
+      // Remember list of libraries before update
+      final Collection<String> oldLibraries = new ArrayList<>(libraryPaths);
+      libraryPaths.clear();
+      final Collection<String> libraryPathsTable = convertVirtualFile2StringPaths(myLibrariesTableModel.getFiles());
+      if (!libraryPathsTable.isEmpty()) {
+        libraryPaths.addAll(libraryPathsTable);
+      }
+      myLibrariesChanged = false;
+
+      // Try to create java_classes model roots for added libraries
+      final Collection<ModelRootDescriptor> modelRoots = myJavaModuleFacet.getModule().getModuleDescriptor().getModelRootDescriptors();
+      // Need to handle only newly added libraries
+      libraryPathsTable.removeAll(oldLibraries);
+      for (String file : libraryPathsTable) {
+        final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addSourceRoot(LocalIoFileSystem.getInstance().getFile(file), modelRoots);
+        if (javaStubsModelRoot != null && !modelRoots.contains(javaStubsModelRoot)) {
+          modelRoots.add(javaStubsModelRoot);
+        }
+      }
     }
-    myLibrariesChanged = false;
   }
 
   @Override
@@ -248,7 +292,6 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     return myJavaModuleFacet;
   }
 
-  // TODO: extract as common class to use in other places, like Project Modules list.
   private static class FilesTableModel extends AbstractTableModel implements ItemRemovable {
     private final List<VirtualFile> myFiles = new ArrayList<>();
 
