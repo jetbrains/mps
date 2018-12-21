@@ -35,9 +35,7 @@ import java.util.List;
  * Is it a final breakdown of shall I treat list of TMC as a raw input and re-order them as appropriate?
  * evgeny, 1/12/12
  */
-public interface ModelGenerationPlan {
-
-  List<Step> getSteps();
+public interface ModelGenerationPlan extends ICompositeGenerationElement {
 
   Collection<TemplateModule> getGenerators();
 
@@ -152,17 +150,17 @@ public interface ModelGenerationPlan {
     }
   }
 
-  final class Fork implements Step {
+  final class Fork implements Step, ICompositeGenerationElement {
     private final List<Step> myBranch;
 
     public Fork(List<Step> branch) {
       myBranch = branch;
     }
 
-    public List<Step> getBranch() {
+    @Override
+    public List<Step> getSteps() {
       return myBranch;
     }
-
   }
 
   /**

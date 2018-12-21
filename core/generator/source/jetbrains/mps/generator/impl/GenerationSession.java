@@ -352,7 +352,7 @@ class GenerationSession {
         // pair cloneTransient/changeModelReference deserves a dedicated utility
         bi.inputModel = cloneTransientModel(currInputModel);
         changeModelReference(bi.inputModel, createTransientModelReference(myMajorStep, myMinorStep + 100));
-        bi.branch = forkStep.getBranch();
+        bi.branch = forkStep.getSteps();
         bi.majorStepAtFork = myMajorStep;
         bi.minorStepAtFork = myMinorStep + 100;
         bi.actualStateCopyOfLastBitTransformStepMappings = new ArrayList<>(lastBigTransformStepMappings);

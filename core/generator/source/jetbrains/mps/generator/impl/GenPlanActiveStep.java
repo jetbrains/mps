@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.impl;
 
+import jetbrains.mps.generator.ICompositeGenerationElement;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.generator.ModelGenerationPlan.Checkpoint;
 import jetbrains.mps.generator.ModelGenerationPlan.Step;
@@ -85,7 +86,7 @@ final class GenPlanActiveStep {
    * 'Unexpected' means the plan doesn't account for nodes of that language. This doesn't make sense with custom generation plans
    * where we expect incomplete set of languages. However, in the future we may get smart enough to respect order and to complain about
    * scenarios when a language has been processed already (so that we introduce a loop into plan, A->B->C->A)
-   *
+   * <p>
    * XXX refactor this cumbersome and misguiding check (with hand-crafted GPs in mind)
    */
   Collection<SNode> selectUnexpectedNodes(Iterable<SNode> nodes) {
@@ -112,8 +113,9 @@ final class GenPlanActiveStep {
 
   @Nullable
   public Checkpoint getLastCheckpoint() {
+    final ICompositeGenerationElement container = getContainer(myStep, myPlan);
     Checkpoint lastSeen = null;
-    for (Step p : myPlan.getSteps()) {
+    for (Step p : container.getSteps()) {
       if (myStep.equals(p)) {
         break;
       }
@@ -126,7 +128,8 @@ final class GenPlanActiveStep {
 
   @Nullable
   public Checkpoint getNextCheckpoint() {
-    Iterator<Step> it = myPlan.getSteps().iterator();
+    final ICompositeGenerationElement container = getContainer(myStep, myPlan);
+    Iterator<Step> it = container.getSteps().iterator();
     while (it.hasNext()) {
       if (myStep.equals(it.next())) {
         break;
@@ -140,4 +143,19 @@ final class GenPlanActiveStep {
     }
     return null;
   }
+
+  private ICompositeGenerationElement getContainer(final Step sought, final ICompositeGenerationElement current) {
+    for (Step step : current.getSteps()) {
+      if (step.equals(sought)) {
+        return current;
+      } else if (step instanceof ICompositeGenerationElement) {
+        final ICompositeGenerationElement result = getContainer(sought, (ICompositeGenerationElement) step);
+        if (result != null) {
+          return result;
+        }
+      }
+    }
+    return null;
+  }
+
 }

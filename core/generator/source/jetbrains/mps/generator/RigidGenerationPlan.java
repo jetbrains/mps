@@ -67,7 +67,7 @@ public class RigidGenerationPlan implements ModelGenerationPlan {
           }
         }
       } else if (p instanceof Fork) {
-        queue.addAll(((Fork) p).getBranch());
+        queue.addAll(((Fork) p).getSteps());
       }
     }
     return rv;
