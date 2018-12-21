@@ -113,7 +113,13 @@ final class GenPlanActiveStep {
 
   @Nullable
   public Checkpoint getLastCheckpoint() {
-    final ICompositeGenerationElement container = getContainer(myStep, myPlan);
+    ICompositeGenerationElement container = getContainer(myStep, myPlan);
+    // the assumption would be that getContainer would never return null
+    // guard against the case if this would ever be violated
+    if (container == null) {
+      container = this.myPlan;
+    }
+
     Checkpoint lastSeen = null;
     for (Step p : container.getSteps()) {
       if (myStep.equals(p)) {
@@ -128,7 +134,13 @@ final class GenPlanActiveStep {
 
   @Nullable
   public Checkpoint getNextCheckpoint() {
-    final ICompositeGenerationElement container = getContainer(myStep, myPlan);
+    ICompositeGenerationElement container = getContainer(myStep, myPlan);
+    // the assumption would be that getContainer would never return null
+    // guard against the case if this would ever be violated
+    if (container == null) {
+      container = this.myPlan;
+    }
+    
     Iterator<Step> it = container.getSteps().iterator();
     while (it.hasNext()) {
       if (myStep.equals(it.next())) {
