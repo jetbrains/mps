@@ -4,13 +4,13 @@
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages" version="-1" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
   </languages>
   <imports>
@@ -12964,8 +12964,8 @@
             <property role="TrG5h" value="manager" />
             <node concept="2OqwBi" id="7nrhK3uHdKa" role="33vP2m">
               <node concept="2YIFZM" id="7nrhK3uHdKb" role="2Oq$k0">
-                <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
                 <ref role="1Pybhc" to="u78q:~TypeChecker" resolve="TypeChecker" />
+                <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="7nrhK3uHdKc" role="2OqNvi">
                 <ref role="37wK5l" to="u78q:~TypeChecker.getSubtypingManager()" resolve="getSubtypingManager" />
@@ -15304,8 +15304,8 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="7nrhK3uHeRd" role="2Oq$k0">
-                <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
                 <ref role="1Pybhc" to="u78q:~TypeChecker" resolve="TypeChecker" />
+                <ref role="37wK5l" to="u78q:~TypeChecker.getInstance()" resolve="getInstance" />
               </node>
             </node>
           </node>
@@ -22419,8 +22419,8 @@
                               <property role="Xl_RC" value="my" />
                             </node>
                             <node concept="2YIFZM" id="15Lkpa5yh9X" role="3uHU7w">
-                              <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String)" resolve="capitalize" />
                               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+                              <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String)" resolve="capitalize" />
                               <node concept="2OqwBi" id="15Lkpa5yh9Y" role="37wK5m">
                                 <node concept="37vLTw" id="3GM_nagTByW" role="2Oq$k0">
                                   <ref role="3cqZAo" node="76kz0BTmfGC" resolve="varDeclaration" />
@@ -26486,8 +26486,8 @@
               <node concept="2OqwBi" id="1S4GctIi4tD" role="2Oq$k0">
                 <node concept="2Xjw5R" id="1S4GctIi4tH" role="2OqNvi">
                   <node concept="1xMEDy" id="1S4GctIi4tI" role="1xVPHs">
-                    <node concept="chp4Y" id="1S4GctIi4tL" role="ri$Ld">
-                      <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                    <node concept="chp4Y" id="7NUT5Fm92WD" role="ri$Ld">
+                      <ref role="cht4Q" to="tpee:g7pOWCK" resolve="Classifier" />
                     </node>
                   </node>
                 </node>
