@@ -583,7 +583,7 @@
       <node id="3855110916779806178" at="46,0,49,0" concept="8" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3855110916779806178" at="49,0,52,0" concept="8" trace="overrides#()Z" />
       <node id="3855110916780273893" at="35,346,39,9" concept="0" />
-      <node id="3855110916780273812" at="31,606,40,7" concept="0" />
+      <node id="3855110916780273812" at="31,555,40,7" concept="0" />
       <node id="3855110916780272755" at="30,0,41,5" concept="7" />
       <node id="3855110916779806178" at="26,0,43,0" concept="8" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="3855110916779806178" at="24,54,24,54" />
@@ -604,7 +604,7 @@
         <var name="_reporter_2309309498" id="3855110916780273812" />
         <var name="errorTarget" id="3855110916780273812" />
       </scope>
-      <scope id="3855110916780272758" at="31,606,40,7" />
+      <scope id="3855110916780272758" at="31,555,40,7" />
       <scope id="3855110916779806179" at="26,121,41,5" />
       <scope id="3855110916779806178" at="26,0,43,0">
         <var name="property" id="3855110916779806178" />

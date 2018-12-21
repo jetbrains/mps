@@ -44,6 +44,7 @@
     <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
+    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -20972,8 +20973,10 @@
           <node concept="3NFfHV" id="53TsANmkd2v" role="3NFExx">
             <node concept="3clFbS" id="53TsANmkd2w" role="2VODD2">
               <node concept="3clFbF" id="53TsANmkd2B" role="3cqZAp">
-                <node concept="2OqwBi" id="53TsANmkfNY" role="3clFbG">
-                  <node concept="2OqwBi" id="53TsANmkeek" role="2Oq$k0">
+                <node concept="2YIFZM" id="4uA70LEiXR2" role="3clFbG">
+                  <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                  <ref role="37wK5l" to="tpeq:4uA70LEglme" resolve="datatypeBLType" />
+                  <node concept="2OqwBi" id="53TsANmkeek" role="37wK5m">
                     <node concept="2OqwBi" id="53TsANmkdeB" role="2Oq$k0">
                       <node concept="30H73N" id="53TsANmkd2A" role="2Oq$k0" />
                       <node concept="3TrEf2" id="53TsANmkdzL" role="2OqNvi">
@@ -20983,9 +20986,6 @@
                     <node concept="3TrEf2" id="53TsANmkfj_" role="2OqNvi">
                       <ref role="3Tt5mk" to="tpce:fKAX2Z_" resolve="dataType" />
                     </node>
-                  </node>
-                  <node concept="2qgKlT" id="53TsANmkgZk" role="2OqNvi">
-                    <ref role="37wK5l" to="tpcn:hEwI9ym" resolve="toBaseLanguageType" />
                   </node>
                 </node>
               </node>

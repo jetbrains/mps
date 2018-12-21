@@ -14,6 +14,7 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="tpd5" ref="r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)" />
     <import index="n1o" ref="r:74b3d011-b0fb-4dc0-ae17-fdfbde0e6086(jetbrains.mps.baseLanguage.lightweightdsl.util)" />
+    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -1065,8 +1066,10 @@
                   <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
                 </node>
               </node>
-              <node concept="2OqwBi" id="3m06JgspuWV" role="3uHU7w">
-                <node concept="2OqwBi" id="3m06Jgsp0Uc" role="2Oq$k0">
+              <node concept="2YIFZM" id="4uA70LEiXQL" role="3uHU7w">
+                <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                <ref role="37wK5l" to="tpeq:4uA70LEglme" resolve="datatypeBLType" />
+                <node concept="2OqwBi" id="3m06Jgsp0Uc" role="37wK5m">
                   <node concept="2OqwBi" id="3m06Jgsp0Ud" role="2Oq$k0">
                     <node concept="1YBJjd" id="3m06Jgsp0Ue" role="2Oq$k0">
                       <ref role="1YBMHb" node="3m06Jgsp0Uy" resolve="property" />
@@ -1078,9 +1081,6 @@
                   <node concept="3TrEf2" id="3m06JgsptYt" role="2OqNvi">
                     <ref role="3Tt5mk" to="oubp:4ubqdNOGnoZ" resolve="type" />
                   </node>
-                </node>
-                <node concept="2qgKlT" id="3m06JgspvON" role="2OqNvi">
-                  <ref role="37wK5l" to="tpcn:hEwI9ym" resolve="toBaseLanguageType" />
                 </node>
               </node>
             </node>

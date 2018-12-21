@@ -36,6 +36,7 @@
     <import index="inbo" ref="r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
     <import index="csvn" ref="r:a91e42c5-728b-4866-86c4-d97454f4aee4(jetbrains.mps.lang.behavior.behavior)" implicit="true" />
+    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -4470,12 +4471,11 @@
           </node>
         </node>
         <node concept="3cpWs6" id="hEwIM$k" role="3cqZAp">
-          <node concept="2OqwBi" id="hEwIM$l" role="3cqZAk">
-            <node concept="37vLTw" id="3GM_nagTAIZ" role="2Oq$k0">
+          <node concept="2YIFZM" id="4uA70LEiXQM" role="3cqZAk">
+            <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+            <ref role="37wK5l" to="tpeq:4uA70LEglme" resolve="datatypeBLType" />
+            <node concept="37vLTw" id="3GM_nagTAIZ" role="37wK5m">
               <ref role="3cqZAo" node="hEwIM$f" resolve="memberDataType" />
-            </node>
-            <node concept="2qgKlT" id="hEwIM$n" role="2OqNvi">
-              <ref role="37wK5l" node="hEwI9ym" resolve="toBaseLanguageType" />
             </node>
           </node>
         </node>

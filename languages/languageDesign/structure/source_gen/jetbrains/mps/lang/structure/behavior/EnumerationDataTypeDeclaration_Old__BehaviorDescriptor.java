@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -39,7 +40,7 @@ public final class EnumerationDataTypeDeclaration_Old__BehaviorDescriptor extend
 
   /*package*/ static SNode toBaseLanguageType_idhEwI9ym(@NotNull SNode __thisNode__) {
     SNode memberDataType = SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType"));
-    return DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(memberDataType);
+    return RulesUtil.datatypeBLType(memberDataType);
   }
   /*package*/ static SNode getDefaultMember_idhEwIM$p(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember"))) {

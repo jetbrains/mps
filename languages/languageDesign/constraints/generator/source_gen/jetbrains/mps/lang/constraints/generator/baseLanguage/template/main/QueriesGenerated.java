@@ -19,7 +19,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
@@ -125,7 +125,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (dataType == null) {
       return null;
     }
-    SNode bltype = DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(dataType);
+    SNode bltype = RulesUtil.datatypeBLType(dataType);
     if (SNodeOperations.isInstanceOf(bltype, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType"))) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298626");
     }

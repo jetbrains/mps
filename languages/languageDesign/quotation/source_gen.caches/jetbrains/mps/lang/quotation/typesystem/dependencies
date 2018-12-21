@@ -138,7 +138,7 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.quotation.typesystem.typeof_LightQuotationPropertyValue_InferenceRule">
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.typesystem.RulesUtil" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.EquationInfo" />

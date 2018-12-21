@@ -34,6 +34,7 @@
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
     <import index="inbo" ref="r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" />
+    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" implicit="true" />
     <import index="tp3r" ref="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" implicit="true" />
   </imports>
   <registry>
@@ -2476,12 +2477,11 @@
         <node concept="3clFbJ" id="hEwJ4Wq" role="3cqZAp">
           <node concept="3clFbS" id="hEwJ4Wr" role="3clFbx">
             <node concept="3cpWs6" id="hEwJ4Ws" role="3cqZAp">
-              <node concept="2OqwBi" id="hEwJ4Wt" role="3cqZAk">
-                <node concept="37vLTw" id="3GM_nagTBwd" role="2Oq$k0">
+              <node concept="2YIFZM" id="4uA70LEiXQW" role="3cqZAk">
+                <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                <ref role="37wK5l" to="tpeq:4uA70LEglme" resolve="datatypeBLType" />
+                <node concept="37vLTw" id="3GM_nagTBwd" role="37wK5m">
                   <ref role="3cqZAo" node="hEwJ4Wl" resolve="dataType" />
-                </node>
-                <node concept="2qgKlT" id="hEwJ4Wv" role="2OqNvi">
-                  <ref role="37wK5l" to="tpcn:hEwI9ym" resolve="toBaseLanguageType" />
                 </node>
               </node>
             </node>

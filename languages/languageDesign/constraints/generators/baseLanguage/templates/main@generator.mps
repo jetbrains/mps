@@ -40,6 +40,7 @@
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" />
     <import index="ucur" ref="r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
+    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -365,7 +366,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7400021826774799413" name="jetbrains.mps.lang.smodel.structure.NodePointerExpression" flags="ng" index="2tJFMh">
         <child id="7400021826774799510" name="ref" index="2tJFKM" />
       </concept>
@@ -775,12 +775,11 @@
                           <node concept="3cpWsn" id="hshjRcN" role="3cpWs9">
                             <property role="TrG5h" value="bltype" />
                             <node concept="3Tqbb2" id="hshjVsN" role="1tU5fm" />
-                            <node concept="2OqwBi" id="hxx$OO_" role="33vP2m">
-                              <node concept="37vLTw" id="3GM_nagTxpX" role="2Oq$k0">
+                            <node concept="2YIFZM" id="4uA70LEiXR0" role="33vP2m">
+                              <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                              <ref role="37wK5l" to="tpeq:4uA70LEglme" resolve="datatypeBLType" />
+                              <node concept="37vLTw" id="3GM_nagTxpX" role="37wK5m">
                                 <ref role="3cqZAo" node="hshj$pe" resolve="dataType" />
-                              </node>
-                              <node concept="2qgKlT" id="hshjOA1" role="2OqNvi">
-                                <ref role="37wK5l" to="tpcn:hEwI9ym" resolve="toBaseLanguageType" />
                               </node>
                             </node>
                           </node>

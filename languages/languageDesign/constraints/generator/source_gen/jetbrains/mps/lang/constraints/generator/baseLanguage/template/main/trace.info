@@ -58,14 +58,14 @@
       <node id="1198586218055" at="122,253,123,200" concept="3" />
       <node id="1198586218061" at="123,200,124,178" concept="3" />
       <node id="1198586249611" at="125,27,126,18" concept="4" />
-      <node id="1198586295090" at="127,5,128,105" concept="3" />
+      <node id="1198586295090" at="127,5,128,54" concept="3" />
       <node id="6506750610319560837" at="129,187,130,146" concept="4" />
       <node id="6506750610319542349" at="132,187,133,146" concept="4" />
       <node id="6506750610319523832" at="134,5,135,144" concept="4" />
       <node id="1198586190308" at="690,83,691,78" concept="0" />
       <node id="1198586190308" at="718,15,719,70" concept="4" />
       <node id="1198586243398" at="124,178,127,5" concept="1" />
-      <node id="1198586321002" at="128,105,131,5" concept="1" />
+      <node id="1198586321002" at="128,54,131,5" concept="1" />
       <node id="1198586454080" at="131,5,134,5" concept="1" />
       <node id="1198586190309" at="121,0,137,0" concept="6" trace="referenceMacro_GetReferent_1_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <scope id="1198586243399" at="125,27,126,18" />

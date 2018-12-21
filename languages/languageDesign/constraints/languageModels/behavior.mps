@@ -25,6 +25,7 @@
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -62,6 +63,9 @@
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
+      </concept>
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
@@ -701,12 +705,11 @@
         <node concept="3clFbJ" id="hEwJiZ2" role="3cqZAp">
           <node concept="3clFbS" id="hEwJiZ3" role="3clFbx">
             <node concept="3cpWs6" id="hEwJiZ4" role="3cqZAp">
-              <node concept="2OqwBi" id="hEwJiZ5" role="3cqZAk">
-                <node concept="37vLTw" id="3GM_nagT$Uk" role="2Oq$k0">
+              <node concept="2YIFZM" id="4uA70LEiXQX" role="3cqZAk">
+                <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                <ref role="37wK5l" to="tpeq:4uA70LEglme" resolve="datatypeBLType" />
+                <node concept="37vLTw" id="3GM_nagT$Uk" role="37wK5m">
                   <ref role="3cqZAo" node="hEwJiYX" resolve="dataType" />
-                </node>
-                <node concept="2qgKlT" id="hEwJiZ7" role="2OqNvi">
-                  <ref role="37wK5l" to="tpcn:hEwI9ym" resolve="toBaseLanguageType" />
                 </node>
               </node>
             </node>
