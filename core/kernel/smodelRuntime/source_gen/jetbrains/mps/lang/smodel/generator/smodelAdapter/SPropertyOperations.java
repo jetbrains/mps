@@ -4,11 +4,12 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SType;
 import jetbrains.mps.util.InternUtil;
+import org.jetbrains.mps.openapi.language.SEnumeration;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.EqualUtil;
 import org.jetbrains.mps.openapi.language.SDataType;
@@ -29,6 +30,10 @@ public class SPropertyOperations {
     set(node, property, propertyValue);
     return propertyValue;
   }
+  public static SEnumerationLiteral assignEnum(SNode node, SProperty property, SEnumerationLiteral propertyValue) {
+    setEnum(node, property, propertyValue);
+    return propertyValue;
+  }
 
   public static void set(SNode node, SProperty property, String propertyValue) {
     if (node != null) {
@@ -45,6 +50,12 @@ public class SPropertyOperations {
       SNodeAccessUtil.setPropertyValue(node, property, upgradeToEnumMember(property, propertyValue));
     }
   }
+  public static void setEnum(SNode node, SProperty property, SEnumerationLiteral propertyValue) {
+    if (node != null) {
+      SNodeAccessUtil.setPropertyValue(node, property, propertyValue);
+    }
+  }
+
   public static void remove(SNode node, SProperty property) {
     if (node != null) {
       SNodeAccessUtil.setPropertyValue(node, property, null);
@@ -94,6 +105,16 @@ public class SPropertyOperations {
   }
   public static boolean getBoolean(String value) {
     return "true".equals(value);
+  }
+
+  public static SEnumerationLiteral getEnum(SNode node, SProperty property) {
+    if (node != null) {
+      Object value = SNodeAccessUtil.getPropertyValue(node, property);
+      if (value != SType.NOT_A_VALUE) {
+        return (SEnumerationLiteral) value;
+      }
+    }
+    return ((SEnumeration) property.getType()).getDefault();
   }
 
   public static boolean hasValue(SNode node, SProperty property, String value) {
@@ -247,6 +268,18 @@ public class SPropertyOperations {
       @Override
       public void set(Boolean propertyValue) {
         SPropertyOperations.set(node, property, propertyValue);
+      }
+    };
+  }
+  public static Reference<SEnumerationLiteral> enumPropRef(final SNode node, final SProperty property) {
+    return new Reference<SEnumerationLiteral>() {
+      @Override
+      public SEnumerationLiteral get() {
+        return SPropertyOperations.getEnum(node, property);
+      }
+      @Override
+      public void set(SEnumerationLiteral propertyValue) {
+        SPropertyOperations.setEnum(node, property, propertyValue);
       }
     };
   }
