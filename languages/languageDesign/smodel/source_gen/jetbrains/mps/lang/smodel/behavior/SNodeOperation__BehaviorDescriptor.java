@@ -45,6 +45,7 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> applicableToModel_id1653mnvAf1y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToModel").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAf1y").registry(REGISTRY).build();
   public static final SMethod<Boolean> applicableToConceptProperty_id1653mnvAgpp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToConceptProperty").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgpp").registry(REGISTRY).build();
   public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToNode").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgrs").registry(REGISTRY).build();
+  public static final SMethod<Boolean> applicableToProperty_id45eRmv019Ae = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToProperty").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("45eRmv019Ae").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> applicableToSimpleProperty_id1653mnvAgrO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToSimpleProperty").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgrO").registry(REGISTRY).build();
   public static final SMethod<Boolean> applicableToEnumProperty_id1653mnvAguj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToEnumProperty").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAguj").registry(REGISTRY).build();
   public static final SMethod<Boolean> applicableToLink_id1653mnvAgvK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToLink").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvK").registry(REGISTRY).build();
@@ -55,7 +56,7 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<List<SConcept>> getParameterConcepts_id6ALWH9fQysn = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6ALWH9fQysn").registry(REGISTRY).build();
   public static final SMethod<SNode> getLeftNodeConcept_idhEwJdFJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLeftNodeConcept").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJdFJ").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeftExpression_idhEwJdGu, getLeftExpressionLeftExpression_idhEwJdGS, getLeftExpressionOperation_idhEwJdHi, getParameter_idhEwJdHG, operandCanBeNull_idhWYZ0eEN6z, getVariableExpectedName_idhEwIP$B, applicableToModel_id1653mnvAf1y, applicableToConceptProperty_id1653mnvAgpp, applicableToNode_id1653mnvAgrs, applicableToSimpleProperty_id1653mnvAgrO, applicableToEnumProperty_id1653mnvAguj, applicableToLink_id1653mnvAgvK, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ, applicableToLinkList_id1653mnvAgwe, getApplicableParameter_id2D1PBM_bxI0, getParameterConcepts_id6ALWH9fQysn, getLeftNodeConcept_idhEwJdFJ);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeftExpression_idhEwJdGu, getLeftExpressionLeftExpression_idhEwJdGS, getLeftExpressionOperation_idhEwJdHi, getParameter_idhEwJdHG, operandCanBeNull_idhWYZ0eEN6z, getVariableExpectedName_idhEwIP$B, applicableToModel_id1653mnvAf1y, applicableToConceptProperty_id1653mnvAgpp, applicableToNode_id1653mnvAgrs, applicableToProperty_id45eRmv019Ae, applicableToSimpleProperty_id1653mnvAgrO, applicableToEnumProperty_id1653mnvAguj, applicableToLink_id1653mnvAgvK, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ, applicableToLinkList_id1653mnvAgwe, getApplicableParameter_id2D1PBM_bxI0, getParameterConcepts_id6ALWH9fQysn, getLeftNodeConcept_idhEwJdFJ);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -101,9 +102,16 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean applicableToNode_id1653mnvAgrs(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
+  /*package*/ static boolean applicableToProperty_id45eRmv019Ae(@NotNull SAbstractConcept __thisConcept__, SNode datatype) {
+    return false;
+  }
+  @Deprecated
+  @ToRemove(version = 2019.1)
   /*package*/ static boolean applicableToSimpleProperty_id1653mnvAgrO(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
+  @Deprecated
+  @ToRemove(version = 2019.1)
   /*package*/ static boolean applicableToEnumProperty_id1653mnvAguj(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
@@ -192,22 +200,24 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
       case 8:
         return (T) ((Boolean) applicableToNode_id1653mnvAgrs(concept));
       case 9:
-        return (T) ((Boolean) applicableToSimpleProperty_id1653mnvAgrO(concept));
+        return (T) ((Boolean) applicableToProperty_id45eRmv019Ae(concept, (SNode) parameters[0]));
       case 10:
-        return (T) ((Boolean) applicableToEnumProperty_id1653mnvAguj(concept));
+        return (T) ((Boolean) applicableToSimpleProperty_id1653mnvAgrO(concept));
       case 11:
-        return (T) ((Boolean) applicableToLink_id1653mnvAgvK(concept));
+        return (T) ((Boolean) applicableToEnumProperty_id1653mnvAguj(concept));
       case 12:
-        return (T) ((Boolean) applicableToConcept_id1653mnvAgvQ(concept));
+        return (T) ((Boolean) applicableToLink_id1653mnvAgvK(concept));
       case 13:
-        return (T) ((Boolean) applicableToSConcept_id7E3Sw0HhwkZ(concept));
+        return (T) ((Boolean) applicableToConcept_id1653mnvAgvQ(concept));
       case 14:
-        return (T) ((Boolean) applicableToLinkList_id1653mnvAgwe(concept));
+        return (T) ((Boolean) applicableToSConcept_id7E3Sw0HhwkZ(concept));
       case 15:
-        return (T) ((List<SNode>) getApplicableParameter_id2D1PBM_bxI0(concept));
+        return (T) ((Boolean) applicableToLinkList_id1653mnvAgwe(concept));
       case 16:
-        return (T) ((List<SConcept>) getParameterConcepts_id6ALWH9fQysn(concept));
+        return (T) ((List<SNode>) getApplicableParameter_id2D1PBM_bxI0(concept));
       case 17:
+        return (T) ((List<SConcept>) getParameterConcepts_id6ALWH9fQysn(concept));
+      case 18:
         return (T) ((SNode) getLeftNodeConcept_idhEwJdFJ(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
