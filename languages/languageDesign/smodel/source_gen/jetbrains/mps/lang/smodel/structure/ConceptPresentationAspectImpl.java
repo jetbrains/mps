@@ -47,7 +47,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DevkitPointer;
   private ConceptPresentation props_EnumMemberOperation;
   private ConceptPresentation props_EnumMemberReference;
+  private ConceptPresentation props_EnumMemberReference_Old;
   private ConceptPresentation props_EnumMemberValueRefExpression;
+  private ConceptPresentation props_EnumMember_IsOperation;
   private ConceptPresentation props_EnumMember_NameOperation;
   private ConceptPresentation props_EnumMember_NameOperation_Old;
   private ConceptPresentation props_EnumMember_PresentationOperation;
@@ -477,10 +479,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.EnumMemberReference:
         if (props_EnumMemberReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember", "<", ">");
+          cpb.shortDesc("enum member");
+          cpb.presentationByReference(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl", "", "");
           props_EnumMemberReference = cpb.create();
         }
         return props_EnumMemberReference;
+      case LanguageConceptSwitch.EnumMemberReference_Old:
+        if (props_EnumMemberReference_Old == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember", "<", ">");
+          props_EnumMemberReference_Old = cpb.create();
+        }
+        return props_EnumMemberReference_Old;
       case LanguageConceptSwitch.EnumMemberValueRefExpression:
         if (props_EnumMemberValueRefExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -489,6 +499,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EnumMemberValueRefExpression = cpb.create();
         }
         return props_EnumMemberValueRefExpression;
+      case LanguageConceptSwitch.EnumMember_IsOperation:
+        if (props_EnumMember_IsOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("check for specific member");
+          cpb.rawPresentation("is");
+          props_EnumMember_IsOperation = cpb.create();
+        }
+        return props_EnumMember_IsOperation;
       case LanguageConceptSwitch.EnumMember_NameOperation:
         if (props_EnumMember_NameOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -546,6 +564,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Enum_MemberLiteral:
         if (props_Enum_MemberLiteral == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("enum member");
           cpb.presentationByReference(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, 0x1b4bba1ba0012d64L, "memberDeclaration", "", "");
           props_Enum_MemberLiteral = cpb.create();
         }

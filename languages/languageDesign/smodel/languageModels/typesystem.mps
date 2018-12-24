@@ -5154,7 +5154,7 @@
     </node>
     <node concept="1YaCAy" id="h9nq4kf" role="1YuTPh">
       <property role="TrG5h" value="node" />
-      <ref role="1YaFvo" to="tp25:g$uoxbX" resolve="EnumMemberReference" />
+      <ref role="1YaFvo" to="tp25:g$uoxbX" resolve="EnumMemberReference_Old" />
     </node>
   </node>
   <node concept="1YbPZF" id="h9nq4HS">
@@ -14457,6 +14457,30 @@
     <node concept="1YaCAy" id="66cvXGSmX$k" role="1YuTPh">
       <property role="TrG5h" value="operation" />
       <ref role="1YaFvo" to="tp25:1HbIxIw0iPC" resolve="Enum_MembersOperation" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="45eRmv04Psj">
+    <property role="TrG5h" value="typeof_EnumMember_IsOperation" />
+    <property role="3GE5qa" value="enumerations" />
+    <node concept="3clFbS" id="45eRmv04Psk" role="18ibNy">
+      <node concept="1Z5TYs" id="45eRmv04Qv9" role="3cqZAp">
+        <node concept="mw_s8" id="45eRmv04Qv_" role="1ZfhKB">
+          <node concept="2c44tf" id="45eRmv04Qvx" role="mwGJk">
+            <node concept="10P_77" id="45eRmv04QwC" role="2c44tc" />
+          </node>
+        </node>
+        <node concept="mw_s8" id="45eRmv04Qvc" role="1ZfhK$">
+          <node concept="1Z2H0r" id="45eRmv04Pst" role="mwGJk">
+            <node concept="1YBJjd" id="45eRmv04Pui" role="1Z2MuG">
+              <ref role="1YBMHb" node="45eRmv04Psm" resolve="operation" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="45eRmv04Psm" role="1YuTPh">
+      <property role="TrG5h" value="operation" />
+      <ref role="1YaFvo" to="tp25:45eRmv04Pqk" resolve="EnumMember_IsOperation" />
     </node>
   </node>
   <node concept="2sgARr" id="2cnZ9tLqegb">

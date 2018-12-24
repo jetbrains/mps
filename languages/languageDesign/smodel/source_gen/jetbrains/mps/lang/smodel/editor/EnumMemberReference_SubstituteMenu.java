@@ -14,12 +14,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
@@ -32,7 +26,7 @@ public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EnumMemberReference_SubstituteMenu.SMP_ReferenceScope_pzcnlg_a(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, "jetbrains.mps.lang.smodel.structure.EnumMemberReference")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EnumMemberReference_SubstituteMenu.SMP_ReferenceScope_pzcnlg_a(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference")));
     result.add(new EnumMemberReference_SubstituteMenu.SMP_Subconcepts_pzcnlg_b());
     return result;
   }
@@ -41,7 +35,7 @@ public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for EnumMemberReference. Generated from the smart reference attribute.", new SNodePointer("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)", "4747359941569483844")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for EnumMemberReference. Generated from implicit smart reference attribute.", new SNodePointer("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)", "4705942098322467729")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -53,7 +47,7 @@ public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_pzcnlg_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_pzcnlg_a() {
-      super(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, "jetbrains.mps.lang.smodel.structure.EnumMemberReference"), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember"));
+      super(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference"), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl"));
     }
     @NotNull
     @Override
@@ -67,40 +61,10 @@ public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
       }
     }
 
-    @Override
-    @NotNull
-    protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new EnumMemberReference_SubstituteMenu.SMP_ReferenceScope_pzcnlg_a.Item(context, referencedNode, getConcept(), getReferenceLink());
-    }
-    private class Item extends ReferenceScopeSubstituteMenuItem {
-      private final SubstituteMenuContext _context;
-      private final SNode referencedNode;
-      private EditorMenuTraceInfo myTraceInfo;
-
-      private Item(SubstituteMenuContext context, SNode refNode, SConcept concept, SReferenceLink referenceLink) {
-        super(concept, context.getParentNode(), context.getCurrentTargetNode(), refNode, referenceLink, context.getEditorContext());
-        _context = context;
-        referencedNode = refNode;
-        myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
-      }
-      @Override
-      public String getMatchingText(String pattern) {
-        return "<" + NodePresentationUtil.matchingText(getReferent(), getParentNode(), false) + ">";
-      }
-      @Override
-      public String getVisibleMatchingText(String pattern) {
-        return getMatchingText(pattern);
-      }
-
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myTraceInfo;
-      }
-    }
   }
   public class SMP_Subconcepts_pzcnlg_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, "jetbrains.mps.lang.smodel.structure.EnumMemberReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference"));
     }
     @NotNull
     @Override

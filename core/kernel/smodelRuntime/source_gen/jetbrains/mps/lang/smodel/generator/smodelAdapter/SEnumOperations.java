@@ -161,4 +161,7 @@ public class SEnumOperations {
   public static String getMemberPresentation(SEnumerationLiteral enumMember) {
     return (enumMember == null ? null : enumMember.getPresentation());
   }
+  public static boolean isMember(SEnumerationLiteral enumMember, String name) {
+    return enumMember != null && Objects.equals(enumMember.getName(), name);
+  }
 }

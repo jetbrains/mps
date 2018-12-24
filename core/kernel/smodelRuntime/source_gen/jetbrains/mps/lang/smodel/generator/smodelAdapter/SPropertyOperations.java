@@ -6,9 +6,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SEnumeration;
 import org.jetbrains.mps.openapi.language.SType;
 import jetbrains.mps.util.InternUtil;
-import org.jetbrains.mps.openapi.language.SEnumeration;
 import java.util.Objects;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.EqualUtil;
@@ -55,6 +55,12 @@ public class SPropertyOperations {
       SNodeAccessUtil.setPropertyValue(node, property, propertyValue);
     }
   }
+  public static void setEnum(SNode node, SProperty property, String enumMemberName) {
+    if (node != null) {
+      SNodeAccessUtil.setPropertyValue(node, property, as_sbyy7e_a0c0a0a0j(property.getType(), SEnumeration.class).getLiteral(enumMemberName));
+    }
+  }
+
 
   public static void remove(SNode node, SProperty property) {
     if (node != null) {
@@ -291,5 +297,8 @@ public class SPropertyOperations {
     propertyValue += value;
     set(node, property, propertyValue);
     return propertyValue;
+  }
+  private static <T> T as_sbyy7e_a0c0a0a0j(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

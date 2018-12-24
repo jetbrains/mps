@@ -935,7 +935,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="g$upJtq">
-    <ref role="1XX52x" to="tp25:g$uoxbX" resolve="EnumMemberReference" />
+    <ref role="1XX52x" to="tp25:g$uoxbX" resolve="EnumMemberReference_Old" />
     <node concept="3EZMnI" id="gFsmL0i" role="2wV5jI">
       <node concept="3F0ifn" id="gFsmOxW" role="3EZMnx">
         <property role="3F0ifm" value="&lt;" />
@@ -10688,6 +10688,38 @@
         <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
       </node>
       <node concept="l2Vlx" id="6lzoLEP$8xV" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="45eRmv04iJD">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:45eRmv04iIh" resolve="EnumMemberReference" />
+    <node concept="1iCGBv" id="45eRmv04iJP" role="2wV5jI">
+      <ref role="1NtTu8" to="tp25:45eRmv04iIo" resolve="decl" />
+      <ref role="1k5W1q" to="tpd3:hLjqlx3" resolve="ReferenceOnConceptualFeature" />
+      <node concept="1sVBvm" id="45eRmv04iJR" role="1sWHZn">
+        <node concept="3SHvHV" id="45eRmv04iK1" role="2wV5jI" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="45eRmv04PqL">
+    <property role="3GE5qa" value="enumerations" />
+    <ref role="1XX52x" to="tp25:45eRmv04Pqk" resolve="EnumMember_IsOperation" />
+    <node concept="3EZMnI" id="45eRmv04PqN" role="2wV5jI">
+      <node concept="PMmxH" id="45eRmv04Pra" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      </node>
+      <node concept="3F0ifn" id="45eRmv04Pri" role="3EZMnx">
+        <property role="3F0ifm" value="(" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="3F1sOY" id="45eRmv04Prv" role="3EZMnx">
+        <ref role="1NtTu8" to="tp25:45eRmv04Pql" resolve="member" />
+      </node>
+      <node concept="3F0ifn" id="45eRmv04PrK" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+      </node>
+      <node concept="l2Vlx" id="45eRmv04PqQ" role="2iSdaV" />
     </node>
   </node>
 </model>

@@ -176,7 +176,7 @@
   <node concept="1TIwiD" id="g$uoxbX">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="EnumMemberReference" />
+    <property role="TrG5h" value="EnumMemberReference_Old" />
     <property role="2_RsDV" value="none" />
     <property role="3GE5qa" value="operation.property" />
     <property role="EcuMT" value="1138676077309" />
@@ -673,7 +673,7 @@
       <property role="20kJfa" value="value" />
       <property role="20lbJX" value="1" />
       <property role="IQ2ns" value="1146171026732" />
-      <ref role="20lvS9" node="g$uoxbX" resolve="EnumMemberReference" />
+      <ref role="20lvS9" node="g$uoxbX" resolve="EnumMemberReference_Old" />
     </node>
   </node>
   <node concept="1TIwiD" id="gFy1jak">
@@ -3065,6 +3065,7 @@
     <property role="EcuMT" value="1966870290088668512" />
     <property role="3GE5qa" value="enumerations" />
     <property role="TrG5h" value="Enum_MemberLiteral" />
+    <property role="R4oN_" value="enum member" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="1HbIxIw0iP$" role="1TKVEi">
       <property role="IQ2ns" value="1966870290088668516" />
@@ -3160,6 +3161,38 @@
     </node>
     <node concept="PrWs8" id="50Pb80HC$1d" role="PzmwI">
       <ref role="PrY4T" node="1HbIxIw0iNP" resolve="EnumOperation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="45eRmv04iIh">
+    <property role="EcuMT" value="4705942098322467729" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="EnumMemberReference" />
+    <property role="R4oN_" value="enum member" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="45eRmv04iIo" role="1TKVEi">
+      <property role="IQ2ns" value="4705942098322467736" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="decl" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpce:2TR3acGo7Lw" resolve="EnumerationMemberDeclaration" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="45eRmv04Pqk">
+    <property role="EcuMT" value="4705942098322609812" />
+    <property role="3GE5qa" value="enumerations" />
+    <property role="TrG5h" value="EnumMember_IsOperation" />
+    <property role="34LRSv" value="is" />
+    <property role="R4oN_" value="check for specific member" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="45eRmv04Pql" role="1TKVEi">
+      <property role="IQ2ns" value="4705942098322609813" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="member" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="45eRmv04iIh" resolve="EnumMemberReference" />
+    </node>
+    <node concept="PrWs8" id="45eRmv04PqX" role="PzmwI">
+      <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
     </node>
   </node>
 </model>
