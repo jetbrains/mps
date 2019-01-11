@@ -458,7 +458,7 @@
       <concept id="7400021826774799413" name="jetbrains.mps.lang.smodel.structure.NodePointerExpression" flags="ng" index="2tJFMh">
         <child id="7400021826774799510" name="ref" index="2tJFKM" />
       </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="nn" index="uoxfO">
+      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
         <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
@@ -18237,18 +18237,46 @@
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="tp25:i3HdYqO" resolve="SEnum_MembersOperation_Old" />
       <node concept="gft3U" id="2nIYwg$6sF9" role="1lVwrX">
-        <node concept="2YIFZM" id="3iWdTCn7GHe" role="gfFT$">
+        <node concept="2YIFZM" id="4v3mCjJQ$m9" role="gfFT$">
           <ref role="1Pybhc" to="i8bi:X9k2kW5hL5" resolve="SEnumOperations" />
           <ref role="37wK5l" to="i8bi:3cOWKdeDGAj" resolve="getMembers" />
-          <node concept="3cmrfG" id="3iWdTCn7GHf" role="37wK5m">
+          <node concept="3cmrfG" id="4v3mCjJQ$ma" role="37wK5m">
             <property role="3cmrfH" value="1" />
-            <node concept="5jKBG" id="3iWdTCn7GHg" role="lGtFl">
+            <node concept="5jKBG" id="4v3mCjJQ$mb" role="lGtFl">
               <ref role="v9R2y" node="2nIYwg$6DcQ" resolve="reduce_EnumDeclaration_indentityValueSequence" />
-              <node concept="3NFfHV" id="3iWdTCn7GHh" role="5jGum">
-                <node concept="3clFbS" id="3iWdTCn7GHi" role="2VODD2">
-                  <node concept="3clFbF" id="3iWdTCn7GHj" role="3cqZAp">
-                    <node concept="v3LJS" id="3iWdTCn7GHk" role="3clFbG">
+              <node concept="3NFfHV" id="4v3mCjJQ$mc" role="5jGum">
+                <node concept="3clFbS" id="4v3mCjJQ$md" role="2VODD2">
+                  <node concept="3clFbF" id="4v3mCjJQ$me" role="3cqZAp">
+                    <node concept="v3LJS" id="4v3mCjJQ$mf" role="3clFbG">
                       <ref role="v3LJV" node="2nIYwg$6rFh" resolve="enumDecl" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1ZhdrF" id="4v3mCjJQ_lX" role="lGtFl">
+            <property role="2qtEX8" value="baseMethodDeclaration" />
+            <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
+            <node concept="3$xsQk" id="4v3mCjJQ_lY" role="3$ytzL">
+              <node concept="3clFbS" id="4v3mCjJQ_lZ" role="2VODD2">
+                <node concept="3SKdUt" id="4v3mCjJQ_Kj" role="3cqZAp">
+                  <node concept="3SKdUq" id="4v3mCjJQ_Kl" role="3SKWNk">
+                    <property role="3SKdUp" value="hacking Bl method overloading resolution" />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="4v3mCjJQA0t" role="3cqZAp">
+                  <node concept="3SKdUq" id="4v3mCjJQA0v" role="3SKWNk">
+                    <property role="3SKdUp" value="we have to generate valid method call here to make generation of collections langauge consise" />
+                  </node>
+                </node>
+                <node concept="3clFbF" id="4v3mCjJQ_$V" role="3cqZAp">
+                  <node concept="2tJFMh" id="4v3mCjJQ_$T" role="3clFbG">
+                    <node concept="ZC_QK" id="4v3mCjJQBk2" role="2tJFKM">
+                      <ref role="2aWVGs" to="i8bi:X9k2kW5hL5" resolve="SEnumOperations" />
+                      <node concept="ZC_QK" id="4v3mCjJQBGR" role="2aWVGa">
+                        <ref role="2aWVGs" to="i8bi:2nIYwg$4REO" resolve="getMembers" />
+                      </node>
                     </node>
                   </node>
                 </node>

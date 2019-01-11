@@ -365,7 +365,7 @@
       <concept id="7400021826771268254" name="jetbrains.mps.lang.smodel.structure.SNodePointerType" flags="ig" index="2sp9CU">
         <reference id="7400021826771268269" name="concept" index="2sp9C9" />
       </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="nn" index="uoxfO">
+      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
         <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
@@ -5146,8 +5146,26 @@
           </node>
         </node>
         <node concept="mw_s8" id="hx2ODN3" role="1ZfhKB">
-          <node concept="2c44tf" id="hqIMTIT" role="mwGJk">
-            <node concept="17QB3L" id="hP3d0Ze" role="2c44tc" />
+          <node concept="2YIFZM" id="4b5B0qPdaWU" role="mwGJk">
+            <ref role="37wK5l" node="4uA70LEglme" resolve="datatypeBLType" />
+            <ref role="1Pybhc" node="h9nq4jh" resolve="RulesUtil" />
+            <node concept="1PxgMI" id="4b5B0qPddu8" role="37wK5m">
+              <property role="1BlNFB" value="true" />
+              <node concept="chp4Y" id="4b5B0qPddyL" role="3oSUPX">
+                <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
+              </node>
+              <node concept="2OqwBi" id="4b5B0qPdbSa" role="1m5AlR">
+                <node concept="2OqwBi" id="4b5B0qPdb8G" role="2Oq$k0">
+                  <node concept="1YBJjd" id="4b5B0qPdaY5" role="2Oq$k0">
+                    <ref role="1YBMHb" node="h9nq4kf" resolve="node" />
+                  </node>
+                  <node concept="3TrEf2" id="4b5B0qPdbjc" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tp25:g$uo_Gj" resolve="enumMember" />
+                  </node>
+                </node>
+                <node concept="1mfA1w" id="4b5B0qPdcHy" role="2OqNvi" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
