@@ -60,9 +60,6 @@
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
-      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
-        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
-      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -718,6 +715,10 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2203,8 +2204,8 @@
                             <ref role="37wK5l" to="tken:1jjYQYSjidB" resolve="MPSModulesClosure" />
                             <node concept="30H73N" id="4egE2DStpdn" role="37wK5m" />
                             <node concept="2ShNRf" id="7QNcMbqvrOY" role="37wK5m">
-                              <node concept="HV5vD" id="7QNcMbqvs31" role="2ShVmc">
-                                <ref role="HV5vE" to="tken:ECLZhkrFpC" resolve="MPSModulesClosure.ModuleDependenciesOptions" />
+                              <node concept="1pGfFk" id="1bDPmBfbpst" role="2ShVmc">
+                                <ref role="37wK5l" to="tken:1BCLQMpCXII" resolve="MPSModulesClosure.ModuleDependenciesOptions" />
                               </node>
                             </node>
                           </node>
@@ -2611,8 +2612,8 @@
                                         </node>
                                       </node>
                                       <node concept="2ShNRf" id="7QNcMbqvmYp" role="37wK5m">
-                                        <node concept="HV5vD" id="7QNcMbqvnkQ" role="2ShVmc">
-                                          <ref role="HV5vE" to="tken:ECLZhkrFpC" resolve="MPSModulesClosure.ModuleDependenciesOptions" />
+                                        <node concept="1pGfFk" id="1bDPmBfbpsv" role="2ShVmc">
+                                          <ref role="37wK5l" to="tken:1BCLQMpCXII" resolve="MPSModulesClosure.ModuleDependenciesOptions" />
                                         </node>
                                       </node>
                                     </node>
@@ -6350,6 +6351,10 @@
                 <node concept="raruj" id="14LJu4Zggo3" role="lGtFl" />
               </node>
             </node>
+            <node concept="15s5l7" id="7iyvL_jf8kd" role="lGtFl">
+              <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;reference aaa (module) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;module&quot;;FLAVOUR_RULE_ID=&quot;[r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)/1224588814561913827]&quot;;" />
+              <property role="huDt6" value="reference aaa (module) is out of search scope" />
+            </node>
           </node>
         </node>
         <node concept="14ZrTv" id="5kC7eCQMmsf" role="14ZwWg">
@@ -6612,6 +6617,10 @@
                   <property role="3MwjfP" value="root" />
                 </node>
               </node>
+            </node>
+            <node concept="15s5l7" id="7iyvL_jf92h" role="lGtFl">
+              <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;reference aaa (module) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;module&quot;;FLAVOUR_RULE_ID=&quot;[r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)/1224588814561913827]&quot;;" />
+              <property role="huDt6" value="reference aaa (module) is out of search scope" />
             </node>
           </node>
         </node>

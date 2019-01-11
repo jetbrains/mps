@@ -43,11 +43,6 @@ import com.intellij.ui.ColoredListCellRenderer;
 import javax.swing.JList;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
-import jetbrains.mps.ide.ui.dialogs.properties.ModelPropertiesConfigurable;
-import com.intellij.openapi.options.ex.SingleConfigurableEditor;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -227,37 +222,21 @@ public class NewModelDialog extends DialogWrapper {
       return;
     }
 
-    super.doOKAction();
-
     try {
       myResult = createModel((ModelFactoryType) myModelStorageFormat.getSelectedItem(), (ModelRoot) myModelRoots.getSelectedItem());
     } catch (ModelCannotBeCreatedException ex) {
       Messages.showErrorDialog(myProject.getProject(), "Could not create a new model because '" + ex.getMessage() + "'", "Error");
     }
-    if (myResult != null) {
-      MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurable(myResult, myProject);
-      final SingleConfigurableEditor configurableEditor = new SingleConfigurableEditor(ProjectHelper.toIdeaProject(myProject), configurable, "#MPSPropertiesConfigurable");
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          configurableEditor.show();
-        }
-      }, ModalityState.current());
-    }
 
-
-
+    super.doOKAction();
   }
 
   private EditableSModel createModel(final ModelFactoryType storageFormat, final ModelRoot selectedModelRoot) throws ModelCannotBeCreatedException {
     final String fqName = getFqName();
 
     final Reference<SourceRoot> sourceRootOpt = new Reference<SourceRoot>(null);
-    // next constant is purely for documentation purposes, just to indicate what's the intention of getOrCreateAccessortySourceRoot method 
-    final boolean distinctSrcRoot4Accessory = false;
     if (myModule instanceof Language && selectedModelRoot instanceof DefaultModelRoot) {
-      if (distinctSrcRoot4Accessory || !(selectedModelRoot.canCreateModel(fqName))) {
-        sourceRootOpt.set(getOrCreateAccessorySourceRoot(((DefaultModelRoot) selectedModelRoot)));
-      }
+      sourceRootOpt.set(prepareAccessorySourceRootIfNeeded(((DefaultModelRoot) selectedModelRoot), fqName));
     }
 
     final Reference<ModelCannotBeCreatedException> refException = new Reference<ModelCannotBeCreatedException>();
@@ -286,7 +265,15 @@ public class NewModelDialog extends DialogWrapper {
           return null;
         }
         final EditableSModel rv = ((EditableSModel) result);
+        // newly created model is not marked as changed, won't get saved unless we tell it is. 
+        rv.setChanged(true);
         if (myClone == null) {
+          // due to threading issues and invokeLater processing, we have to do save here, in this platform write action 
+          // so that dumb mode triggered from ProjectRootManagerComponent (wicked processing of a new model file created event) 
+          // has a chance to get queued in EDT (see DumbServiceImpl.queueTaskOnEdt, invokeLater call) prior to our invokeLater in doOkAction(), above. 
+          // DumbServiceImpl then clears dumb flag prior to model configurable dialog show up and eventually model imports popup has chances to get populated. 
+          // see https://youtrack.jetbrains.com/issue/MPS-28999 
+          rv.save();
           return rv;
         }
         ModelImports imports = new ModelImports(result);
@@ -303,7 +290,6 @@ public class NewModelDialog extends DialogWrapper {
           ((GeneratableSModel) result).setDoNotGenerate(((GeneratableSModel) myClone).isDoNotGenerate());
           ((GeneratableSModel) result).setGenerateIntoModelFolder(((GeneratableSModel) myClone).isGenerateIntoModelFolder());
         }
-        rv.setChanged(true);
         rv.save();
         return rv;
       }
@@ -316,19 +302,27 @@ public class NewModelDialog extends DialogWrapper {
     return res;
   }
 
-  private SourceRoot getOrCreateAccessorySourceRoot(final FileBasedModelRoot selectedModelRoot) {
+  private SourceRoot prepareAccessorySourceRootIfNeeded(final FileBasedModelRoot selectedModelRoot, final String fqName) {
+    // next constant is purely for documentation purposes, just to indicate what's the intention of getOrCreateAccessortySourceRoot method 
+    final boolean distinctSrcRoot4Accessory = false;
+
+    // FIXME distinct write with subsequent command. Is it the way we would like to go? 
     return new ModelAccessHelper(myProject.getModelAccess()).runWriteAction(new Computable<SourceRoot>() {
       public SourceRoot compute() {
-        final String dedicatedSourceRootName = "languageAccessories";
-        for (SourceRoot sr : selectedModelRoot.getSourceRoots(SourceRootKinds.SOURCES)) {
-          if (sr.getPath().endsWith(dedicatedSourceRootName)) {
-            return sr;
+        if (distinctSrcRoot4Accessory || !(selectedModelRoot.canCreateModel(fqName))) {
+          final String dedicatedSourceRootName = "languageAccessories";
+          for (SourceRoot sr : selectedModelRoot.getSourceRoots(SourceRootKinds.SOURCES)) {
+            if (sr.getPath().endsWith(dedicatedSourceRootName)) {
+              return sr;
+            }
           }
+          DefaultSourceRoot rv = new DefaultSourceRoot(dedicatedSourceRootName, selectedModelRoot.getContentDirectory());
+          selectedModelRoot.addSourceRoot(SourceRootKinds.SOURCES, rv);
+          // it's up to model root impl to ensure module is marked changed on source root addition 
+          return rv;
+        } else {
+          return null;
         }
-        DefaultSourceRoot rv = new DefaultSourceRoot(dedicatedSourceRootName, selectedModelRoot.getContentDirectory());
-        selectedModelRoot.addSourceRoot(SourceRootKinds.SOURCES, rv);
-        // it's up to model root impl to ensure module is marked changed on source root addition 
-        return rv;
       }
     });
   }

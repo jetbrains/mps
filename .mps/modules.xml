@@ -28,6 +28,7 @@
       <modulePath path="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make/jetbrains.mps.make.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/core/migration-runtime/jetbrains.mps.lang.migration.runtime.msd" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/core/persistence/jetbrains.mps.persistence.msd" folder="core.kernel" />
+      <modulePath path="$PROJECT_DIR$/core/project/jetbrains.mps.project.msd" folder="core.kernel" />
       <modulePath path="$PROJECT_DIR$/core/refactoring-runtime/jetbrains.mps.refactoring.runtime.msd" folder="core.aspects.refactoring" />
       <modulePath path="$PROJECT_DIR$/core/refactoring/jetbrains.mps.refactoring.msd" folder="core.aspects.refactoring" />
       <modulePath path="$PROJECT_DIR$/core/resources/jetbrains.mps.smodel.resources.msd" folder="core.make" />
@@ -391,6 +392,7 @@
       <modulePath path="$PROJECT_DIR$/samples/migrations/languages/ref/ref.mpl" folder="samples.migrations.example1" />
       <modulePath path="$PROJECT_DIR$/samples/migrations/languages/references/references.mpl" folder="samples.migrations.example2" />
       <modulePath path="$PROJECT_DIR$/samples/migrations/solutions/migartions.test/migrations.test.msd" folder="samples.migrations.example2" />
+      <modulePath path="$PROJECT_DIR$/samples/migrations/solutions/migr.test/migr.test.msd" folder="samples.migrations.example1" />
       <modulePath path="$PROJECT_DIR$/samples/mindmaps/jetbrains.mps.samples.mindmaps.sandbox/jetbrains.mps.samples.mindmaps.sandbox.msd" folder="samples.mindmaps" />
       <modulePath path="$PROJECT_DIR$/samples/mindmaps/jetbrains.mps.samples.mindmaps/jetbrains.mps.samples.mindmaps.mpl" folder="samples.mindmaps" />
       <modulePath path="$PROJECT_DIR$/samples/money/jetbrains.mps.baseLanguage.money.mpl" folder="samples.money" />
