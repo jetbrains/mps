@@ -440,8 +440,8 @@
     </node>
   </node>
   <node concept="312cEu" id="1o">
-    <property role="TrG5h" value="EnumerationDescriptor_Kind" />
     <property role="3GE5qa" value="" />
+    <property role="TrG5h" value="EnumerationDescriptor_Kind" />
     <node concept="2tJIrI" id="1p" role="jymVt">
       <node concept="cd27G" id="1B" role="lGtFl">
         <node concept="3u3nmq" id="1C" role="cd27D">
@@ -1105,7 +1105,7 @@
           <node concept="2$VJBW" id="5y" role="385v07">
             <property role="2$VJBR" value="4355167635271953286" />
             <node concept="2x4n5u" id="5z" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDataTypeDeclaration" />
+              <property role="2x4mPI" value="EnumerationDataTypeDeclaration_Old" />
               <property role="2x4n5l" value="dtih8jjv" />
               <node concept="2V$Bhx" id="5$" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -1128,7 +1128,7 @@
           <node concept="2$VJBW" id="5D" role="385v07">
             <property role="2$VJBR" value="4355167635271953287" />
             <node concept="2x4n5u" id="5E" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="5F" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -1148,7 +1148,7 @@
           <node concept="2$VJBW" id="5I" role="385v07">
             <property role="2$VJBR" value="4355167635271953288" />
             <node concept="2x4n5u" id="5J" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="5K" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />

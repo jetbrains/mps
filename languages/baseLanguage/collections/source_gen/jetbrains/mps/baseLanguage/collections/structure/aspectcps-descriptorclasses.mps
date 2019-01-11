@@ -15405,8 +15405,8 @@
     </node>
   </node>
   <node concept="312cEu" id="1sY">
-    <property role="TrG5h" value="EnumerationDescriptor_LinkedHashMapOrder" />
     <property role="3GE5qa" value="mapType" />
+    <property role="TrG5h" value="EnumerationDescriptor_LinkedHashMapOrder" />
     <node concept="2tJIrI" id="1sZ" role="jymVt">
       <node concept="cd27G" id="1td" role="lGtFl">
         <node concept="3u3nmq" id="1te" role="cd27D">
@@ -16070,7 +16070,7 @@
           <node concept="2$VJBW" id="1x8" role="385v07">
             <property role="2$VJBR" value="1240219850850" />
             <node concept="2x4n5u" id="1x9" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDataTypeDeclaration" />
+              <property role="2x4mPI" value="EnumerationDataTypeDeclaration_Old" />
               <property role="2x4n5l" value="dtih8jjv" />
               <node concept="2V$Bhx" id="1xa" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -16093,7 +16093,7 @@
           <node concept="2$VJBW" id="1xf" role="385v07">
             <property role="2$VJBR" value="1240219896671" />
             <node concept="2x4n5u" id="1xg" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="1xh" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -16113,7 +16113,7 @@
           <node concept="2$VJBW" id="1xk" role="385v07">
             <property role="2$VJBR" value="1240219850851" />
             <node concept="2x4n5u" id="1xl" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="1xm" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />

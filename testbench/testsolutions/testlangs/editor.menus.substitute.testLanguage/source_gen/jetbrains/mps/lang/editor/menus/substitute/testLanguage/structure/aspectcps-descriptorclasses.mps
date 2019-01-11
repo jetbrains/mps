@@ -6510,8 +6510,8 @@
     </node>
   </node>
   <node concept="312cEu" id="Ay">
-    <property role="TrG5h" value="EnumerationDescriptor_TestSubstituteEnumDataType" />
     <property role="3GE5qa" value="propertyAndReference" />
+    <property role="TrG5h" value="EnumerationDescriptor_TestSubstituteEnumDataType" />
     <node concept="2tJIrI" id="Az" role="jymVt">
       <node concept="cd27G" id="AL" role="lGtFl">
         <node concept="3u3nmq" id="AM" role="cd27D">
@@ -7174,7 +7174,7 @@
           <node concept="2$VJBW" id="EG" role="385v07">
             <property role="2$VJBR" value="476103360378640391" />
             <node concept="2x4n5u" id="EH" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDataTypeDeclaration" />
+              <property role="2x4mPI" value="EnumerationDataTypeDeclaration_Old" />
               <property role="2x4n5l" value="dtih8jjv" />
               <node concept="2V$Bhx" id="EI" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -7197,7 +7197,7 @@
           <node concept="2$VJBW" id="EN" role="385v07">
             <property role="2$VJBR" value="476103360378640392" />
             <node concept="2x4n5u" id="EO" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="EP" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -7217,7 +7217,7 @@
           <node concept="2$VJBW" id="ES" role="385v07">
             <property role="2$VJBR" value="476103360378640393" />
             <node concept="2x4n5u" id="ET" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="EU" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />

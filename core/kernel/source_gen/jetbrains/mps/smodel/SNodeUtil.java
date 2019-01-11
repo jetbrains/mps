@@ -221,7 +221,7 @@ public final class SNodeUtil {
     if (node == null) {
       return false;
     }
-    return SNodeOperations.getConcept(node).equals(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration"));
+    return SNodeOperations.getConcept(node).equals(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old"));
   }
   public static boolean isInstanceOfConstrainedStringDataTypeDeclaration(SNode node) {
     if (node == null) {

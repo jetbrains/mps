@@ -4311,8 +4311,8 @@
     </node>
   </node>
   <node concept="312cEu" id="p4">
-    <property role="TrG5h" value="EnumerationDescriptor_RefactoringTargetKind_Enum" />
     <property role="3GE5qa" value="Deprecated" />
+    <property role="TrG5h" value="EnumerationDescriptor_RefactoringTargetKind_Enum" />
     <node concept="2tJIrI" id="p5" role="jymVt">
       <node concept="cd27G" id="pm" role="lGtFl">
         <node concept="3u3nmq" id="pn" role="cd27D">
@@ -5287,7 +5287,7 @@
           <node concept="2$VJBW" id="v6" role="385v07">
             <property role="2$VJBR" value="1209559274358" />
             <node concept="2x4n5u" id="v7" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDataTypeDeclaration" />
+              <property role="2x4mPI" value="EnumerationDataTypeDeclaration_Old" />
               <property role="2x4n5l" value="dtih8jjv" />
               <node concept="2V$Bhx" id="v8" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -5310,7 +5310,7 @@
           <node concept="2$VJBW" id="vg" role="385v07">
             <property role="2$VJBR" value="1210084445238" />
             <node concept="2x4n5u" id="vh" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="vi" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -5330,7 +5330,7 @@
           <node concept="2$VJBW" id="vl" role="385v07">
             <property role="2$VJBR" value="1210084441783" />
             <node concept="2x4n5u" id="vm" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="vn" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -5350,7 +5350,7 @@
           <node concept="2$VJBW" id="vq" role="385v07">
             <property role="2$VJBR" value="1209559325846" />
             <node concept="2x4n5u" id="vr" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="vs" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -5370,7 +5370,7 @@
           <node concept="2$VJBW" id="vv" role="385v07">
             <property role="2$VJBR" value="1209559274359" />
             <node concept="2x4n5u" id="vw" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="vx" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -5390,7 +5390,7 @@
           <node concept="2$VJBW" id="v$" role="385v07">
             <property role="2$VJBR" value="1210084444144" />
             <node concept="2x4n5u" id="v_" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationMemberDeclaration" />
+              <property role="2x4mPI" value="EnumerationMemberDeclaration_Old" />
               <property role="2x4n5l" value="dtlokhiq" />
               <node concept="2V$Bhx" id="vA" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
