@@ -19,6 +19,8 @@ import jetbrains.mps.project.Project;
 import java.awt.HeadlessException;
 import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.mps.openapi.model.SModelName;
+import jetbrains.mps.persistence.ModelCannotBeCreatedException;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import java.awt.Dimension;
 import com.intellij.uiDesigner.core.GridConstraints;
@@ -41,8 +43,6 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import com.intellij.ui.ColoredListCellRenderer;
 import javax.swing.JList;
-import jetbrains.mps.persistence.ModelCannotBeCreatedException;
-import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
@@ -64,7 +64,8 @@ public class NewModelDialog extends DialogWrapper {
   private final JComboBox<ModelRoot> myModelRoots = new JComboBox<ModelRoot>();
   private final JComboBox<ModelFactoryType> myModelStorageFormat = new JComboBox<ModelFactoryType>();
 
-  private EditableSModel myResult;
+  private ModelCreateHelper myResultHelper;
+  private EditableSModel myResultModel;
 
   public NewModelDialog(Project project, AbstractModule module, String namespace, String stereotype, boolean strict) throws HeadlessException {
     this(project, module, namespace, stereotype, strict, null, false);
@@ -108,7 +109,17 @@ public class NewModelDialog extends DialogWrapper {
   }
 
   public EditableSModel getResult() {
-    return myResult;
+    if (myResultModel == null) {
+      try {
+        myResultModel = myResultHelper.createModel(myClone, myPreserveIds);
+      } catch (ModelCannotBeCreatedException ex) {
+        Messages.showErrorDialog(myProject.getProject(), "Could not create a new model because '" + ex.getMessage() + "'", "Error");
+      }
+    }
+    return myResultModel;
+  }
+  public ModelCreateHelper getResultHelper() {
+    return myResultHelper;
   }
 
   private void initContentPane(String namespace) {
@@ -213,11 +224,7 @@ public class NewModelDialog extends DialogWrapper {
       return;
     }
 
-    try {
-      myResult = makeHelper().createModel(myClone, myPreserveIds);
-    } catch (ModelCannotBeCreatedException ex) {
-      Messages.showErrorDialog(myProject.getProject(), "Could not create a new model because '" + ex.getMessage() + "'", "Error");
-    }
+    myResultHelper = makeHelper();
 
     super.doOKAction();
   }
