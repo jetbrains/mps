@@ -66,8 +66,11 @@ public class GoToEditorDeclaration_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.editorDeclaration");
     final SNode editorNode = GoToEditorDeclaration_Action.this.findNodeEditorDeclaration(((SNode) MapSequence.fromMap(_params).get("node")), _params);
-    NavigationSupport.getInstance().openNode(((MPSProject) MapSequence.fromMap(_params).get("project")), editorNode, true, false);
-    NavigationSupport.getInstance().selectInTree(((MPSProject) MapSequence.fromMap(_params).get("project")), editorNode, false);
+    if (editorNode == null) {
+      return;
+    }
+    boolean select = editorNode.getParent() != null;
+    NavigationSupport.getInstance().openNode(((MPSProject) MapSequence.fromMap(_params).get("project")), editorNode, true, select);
   }
   /*package*/ SNode findNodeEditorDeclaration(SNode forNode, final Map<String, Object> _params) {
     SNodeReference sn = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("node"))).getSourceNode();

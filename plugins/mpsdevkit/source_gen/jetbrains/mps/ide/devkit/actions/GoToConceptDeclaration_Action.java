@@ -67,6 +67,7 @@ public class GoToConceptDeclaration_Action extends BaseAction {
     if (resolve == null) {
       return;
     }
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), resolve, true, false);
+    boolean select = resolve.getParent() != null;
+    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), resolve, true, select);
   }
 }
