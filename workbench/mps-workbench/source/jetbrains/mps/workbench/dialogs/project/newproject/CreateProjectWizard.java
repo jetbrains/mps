@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
-import com.intellij.ide.IdeBundle;
+import com.intellij.ide.GeneralSettings;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -481,10 +481,8 @@ public class CreateProjectWizard extends DialogWrapper {
     super.doOKAction();
 
     if (myCurrentProject != null) {
-      int exitCode = Messages.showDialog(IdeBundle.message("prompt.open.project.in.new.frame"), IdeBundle.message("title.open.project"),
-                                         new String[]{IdeBundle.message("button.new.frame"), IdeBundle.message("button.existing.frame")}, 1,
-                                         Messages.getQuestionIcon());
-      if (exitCode == 1) {
+      int exitCode = ProjectUtil.confirmOpenNewProject(true);
+      if (exitCode == GeneralSettings.OPEN_PROJECT_SAME_WINDOW) {
         ProjectUtil.closeAndDispose(myCurrentProject);
       }
     }
