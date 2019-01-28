@@ -21,11 +21,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 
-import java.lang.reflect.Method;
-
 /**
- * Represents a module which can be associated with some class loader.
+ * Represents a module which can be associated with some class loader, it is a unit in the MPS class loading subsystem.
  * The naming is poor: the better choice would be "DeployedModule".
+ * Only some of ReloadableModule can be really reloaded at runtime.
+ * (to be precise the modules which have CustomClassLoadingFacet could not be reloaded)
  *
  * For example suppose there is a language module L in MPS.
  * Also let there be a solution S which uses the language L. Imagine that at some point you decide to
@@ -37,7 +37,7 @@ import java.lang.reflect.Method;
  * Also it brings in a notion of reloadable modules such modules which can be redeployed during design-time in MPS (the idea plugin modules are the exception)
  * So the language L in the given example is clearly a reloadable module.
  *
- * As for 191 the common workflow must look like this
+ * As for 191 the common workflow must look like this:
  *
  * <code>
  * default void invokeMethodFoo(@NotNull ReloadableModule module) {
@@ -60,6 +60,7 @@ import java.lang.reflect.Method;
  * }
  * </code>
  *
+ * @see ClassLoaderManager -- the central place for class managing in the MPS, however that class should not be accessed by anyone anymore.
  * @author apyshkin
  */
 public interface ReloadableModule extends SModule {
