@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.classloading.ReloadableModuleBase;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.SModelOperations;

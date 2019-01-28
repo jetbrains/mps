@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.module.ReloadableModuleBase;
-import jetbrains.mps.module.ReloadableModuleBase.SModuleDependenciesListener;
+import jetbrains.mps.classloading.ReloadableModuleBase.SModuleDependenciesListener;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;

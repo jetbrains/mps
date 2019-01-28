@@ -17,7 +17,7 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.classloading.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.DescriptorTargetFileAlreadyExistsException;
 import jetbrains.mps.project.facets.TestsFacet;

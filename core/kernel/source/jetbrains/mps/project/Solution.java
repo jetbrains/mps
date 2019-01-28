@@ -17,7 +17,7 @@ package jetbrains.mps.project;
 
 import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.java.stub.PackageScopeControl;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.classloading.ReloadableModuleBase;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -228,6 +228,10 @@ public class Solution extends ReloadableModuleBase {
 
   @Override
   public boolean willLoad() {
+    return providesClasses();
+  }
+
+  private boolean providesClasses() {
     // TODO mps facet from this [like IDEA plugin facet]
     return getKind() != SolutionKind.NONE || getFacet(CustomClassLoadingFacet.class) != null;
   }

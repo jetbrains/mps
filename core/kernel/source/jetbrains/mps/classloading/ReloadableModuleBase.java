@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.module;
+package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.ModuleClassLoader;
+import jetbrains.mps.module.LoadedClassIsNullException;
+import jetbrains.mps.module.ModuleClassLoaderIsNullException;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.vfs.FileSystem;
@@ -48,13 +49,13 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
 
   @NotNull
   @Override
-  public Class<?> getClass(String classFqName) throws ClassNotFoundException {
+  public Class<?> getClass(@NotNull String classFqName) throws ClassNotFoundException {
     return getClass(classFqName, false);
   }
 
   @NotNull
   @Override
-  public Class<?> getOwnClass(String classFqName) throws ClassNotFoundException {
+  public Class<?> getOwnClass(@NotNull String classFqName) throws ClassNotFoundException {
     return getClass(classFqName, true);
   }
 
@@ -83,14 +84,18 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
 
   @Override
   public void reload() {
-    if (!willLoad()) return;
+    if (!getStatus().canLoadClasses()) {
+      LOG.warn("The deployment status is " + getStatus() + "; impossible to reload the module");
+      return;
+    }
     LOG.info("Reloading module " + this);
     myManager.reloadModule(this);
   }
 
+  @NotNull
   @Override
-  public boolean willLoad() {
-    return true;
+  public DeploymentStatus getStatus() {
+    return myManager.getStatus(this);
   }
 
   @Override

@@ -16,8 +16,6 @@
 package jetbrains.mps.module;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.ModuleClassNotFoundException;
-import jetbrains.mps.classloading.ModuleIsNotLoadableException;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,6 +23,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 /**
  * Represents a module which can be associated with some class loader.
+ * The naming is poor: the better choice would be "DeployedModule".
  *
  * For example suppose there is a language module L in MPS.
  * Also let there be a solution S which uses the language L. Imagine that at some point you decide to
@@ -49,7 +48,7 @@ public interface ReloadableModule extends SModule {
    * warning: this method is lazy implemented!
    */
   @NotNull
-  Class<?> getClass(String classFqName) throws ClassNotFoundException;
+  Class<?> getClass(@NotNull String classFqName) throws ClassNotFoundException;
 
   /**
    * @return a class which can be obtained by calling #getClass from
@@ -63,7 +62,7 @@ public interface ReloadableModule extends SModule {
    * warning: this method is lazy implemented!
    */
   @NotNull
-  Class<?> getOwnClass(String classFqName) throws ClassNotFoundException;
+  Class<?> getOwnClass(@NotNull String classFqName) throws ClassNotFoundException;
 
   /**
    * @return the class loader associated with the module.
@@ -79,7 +78,7 @@ public interface ReloadableModule extends SModule {
   /**
    * Call it to replace the old class loader of this module with a new one.
    * To reload more than one module all together
-   * check out {@link ClassLoaderManager#reloadModules(Iterable)} method.
+   * check out {@link ClassLoaderManager#reloadModules(Iterable, org.jetbrains.mps.openapi.util.ProgressMonitor)} method.
    */
   void reload();
 
@@ -88,6 +87,21 @@ public interface ReloadableModule extends SModule {
    * For some subclasses it is possible to disable class loading for <code>ReloadableModule</code>.
    * E.g. solution without idea/mps facet cannot load classes
    * @see jetbrains.mps.project.Solution
+   * @deprecated no real contract, use getStatus#isDeployed or getStatus#canLoadClasses
    */
-  boolean willLoad();
+  @Deprecated
+  @ToRemove(version = 191)
+  default boolean willLoad() {
+    return true;
+  }
+
+  @NotNull
+  DeploymentStatus getStatus();
+
+  interface DeploymentStatus {
+    @NotNull String getStatusMessage();
+    boolean canLoadClasses();
+    boolean isDeployed();
+  }
+
 }

@@ -27,7 +27,7 @@ import jetbrains.mps.classloading.MPSClassesListener;
 import jetbrains.mps.classloading.MPSClassesListenerAdapter;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.tools.BaseProjectTool;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.classloading.ReloadableModuleBase;
 
 import javax.swing.Icon;
 import java.util.Set;

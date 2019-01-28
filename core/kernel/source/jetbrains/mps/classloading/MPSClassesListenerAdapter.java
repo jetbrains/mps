@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.module.ReloadableModuleBase;
-
 import java.util.Set;
 
 public class MPSClassesListenerAdapter implements MPSClassesListener {

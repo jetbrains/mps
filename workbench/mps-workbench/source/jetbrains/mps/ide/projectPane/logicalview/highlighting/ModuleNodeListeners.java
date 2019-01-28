@@ -18,7 +18,7 @@ package jetbrains.mps.ide.projectPane.logicalview.highlighting;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.MPSClassesListenerAdapter;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.classloading.ReloadableModuleBase;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

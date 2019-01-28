@@ -54,13 +54,13 @@ public class FakeReloadableModule implements ReloadableModule {
 
   @NotNull
   @Override
-  public Class<?> getClass(String classFqName) throws ClassNotFoundException, ModuleClassNotFoundException, ModuleIsNotLoadableException {
+  public Class<?> getClass(@NotNull String classFqName) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
   @NotNull
   @Override
-  public Class<?> getOwnClass(String classFqName) throws ClassNotFoundException, ModuleClassNotFoundException, ModuleIsNotLoadableException {
+  public Class<?> getOwnClass(@NotNull String classFqName) {
     throw new UnsupportedOperationException("Not implemented");
   }
 
@@ -74,9 +74,10 @@ public class FakeReloadableModule implements ReloadableModule {
   public void reload() {
   }
 
+  @NotNull
   @Override
-  public boolean willLoad() {
-    return true;
+  public DeploymentStatus getStatus() {
+    return DeploymentStatuses.DEPLOYED;
   }
 
   @Override
