@@ -75,7 +75,7 @@ public abstract class ProjectStrategyBase implements ProjectStrategy {
     return project;
   }
 
-  protected static void reloadAllAfterMake(@NotNull Project project, final Set<SModule> changed) throws InterruptedException, InvocationTargetException {
+  protected void reloadAllAfterMake(@NotNull Project project, final Set<SModule> changed) throws InterruptedException, InvocationTargetException {
     if (LOG.isInfoEnabled()) {
       LOG.info("Reloading built modules");
     }

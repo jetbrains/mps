@@ -24,6 +24,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * awful place, it is a shame
+ * @author apyshkin
+ */
 public class ReferenceStorage<M extends SModule> {
   private final Map<SModuleReference, M> myRefToModuleMap = new LinkedHashMap<>();
 

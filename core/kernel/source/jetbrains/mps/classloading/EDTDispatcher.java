@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * Abstraction over the edt asynchronous task dispatching
  *
  * FIXME temporary thing; will be removed after 3.4 is released
+ * presumably right away
  */
 @ToRemove(version = 3.4)
 public interface EDTDispatcher {

@@ -38,7 +38,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class StructureChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
-
   private boolean myCheckMissingRuntimeLanguage = true;
   private boolean myCheckCardinalities = true;
   private boolean myCheckBrokenReferences = true;
@@ -67,7 +66,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
   //this won't show "concept missing" error
   public void checkNodeInEditor(SNode node, final LanguageErrorsCollector errorsCollector, SRepository repository) {
     if (myCheckMissingRuntimeLanguage) {
-      if (!checkMissingRuntimeLanguages(node, errorsCollector)) {
+      if (!checkMissingRuntimeLanguages(repository, node, errorsCollector)) {
         return;
       }
     }
@@ -104,13 +103,13 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
     }
   }
 
-  private boolean checkMissingRuntimeLanguages(SNode node, LanguageErrorsCollector errorsCollector) {
+  private boolean checkMissingRuntimeLanguages(SRepository repository, SNode node, LanguageErrorsCollector errorsCollector) {
     SLanguage lang = node.getConcept().getLanguage();
     if (!lang.isValid()) {
       if (lang.getSourceModule() == null) {
         errorsCollector.addError(new LanguageAbsentInRepoProblem(lang, node));
       } else {
-        errorsCollector.addError(new LanguageNotLoadedProblem(lang, node));
+        errorsCollector.addError(new LanguageNotLoadedProblem(repository, lang, node));
       }
       return false;
     }

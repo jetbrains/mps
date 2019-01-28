@@ -19,6 +19,7 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentMultipleNodesAction;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -32,6 +33,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -289,8 +291,16 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     if (module == null) {
       throw new SelectionStoreException("Can't find module: " + moduleRefString + " in the repository");
     }
+    if (!(module instanceof ReloadableModule)) {
+      throw new IllegalStateException("Cannot load classes from the module " + module);
+    }
     //noinspection unchecked
-    return (Class<? extends RangeSelectionFilter>) ClassLoaderManager.getInstance().getOwnClass(module, className);
+    try {
+      return (Class<? extends RangeSelectionFilter>) ((ReloadableModule) module).getOwnClass(className);
+    } catch (ClassNotFoundException e) {
+      LogManager.getLogger(NodeRangeSelection.class).debug("Class not found:" + className + " from " + module, e);
+      return null;
+    }
   }
 
   @NotNull

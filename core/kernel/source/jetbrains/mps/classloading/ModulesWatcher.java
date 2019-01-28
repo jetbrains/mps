@@ -18,6 +18,7 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.classloading.ModuleUpdater.SearchError;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.annotation.Hack;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -38,8 +39,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static jetbrains.mps.classloading.ModulesWatcher.ClassLoadingStatus.INVALID;
-import static jetbrains.mps.classloading.ModulesWatcher.ClassLoadingStatus.VALID;
+import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NOT_LOADABLE;
+import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NO_RECORD;
+import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.SIMPLY_INVALID;
+import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.VALID;
 
 /**
  * This class watches all the reloadable modules, which satisfy #myWatchableCondition in the repository and dependencies between them.
@@ -93,15 +96,15 @@ public class ModulesWatcher {
   @NotNull
   public ClassLoadingStatus getStatus(@NotNull SModuleReference mRef) {
     if (isChanged()) {
-      LOG.warn("The class loading status info might be outdated");
+      LOG.debug("The class loading status info might be outdated");
     }
     if (!myModuleUpdater.contains(mRef)) {
-      return INVALID;
+      return INVALID_NOT_LOADABLE;
     } else {
       synchronized (myStatusMapLock) {
         if (!myStatusMap.containsKey(mRef)) {
-          LOG.warn("No status for the module " + mRef);
-          return INVALID;
+          LOG.warn("No classloading status is found for the module " + mRef);
+          return INVALID_NO_RECORD;
         } else {
           return myStatusMap.get(mRef);
         }
@@ -134,7 +137,6 @@ public class ModulesWatcher {
   private void recountStatus() {
     LOG.debug("Recount status map for modules");
     myModuleUpdater.refreshGraph();
-    findInvalidModules();
     refillStatusMap(findInvalidModules());
     LOG.debug("Finished recounting");
   }
@@ -150,7 +152,7 @@ public class ModulesWatcher {
       }
       Collection<? extends SModuleReference> allInvalidModules = getBackDependencies(invalidModules);
       for (SModuleReference mRef : allInvalidModules) {
-        myStatusMap.put(mRef, INVALID);
+        myStatusMap.put(mRef, SIMPLY_INVALID);
         if (LOG.isTraceEnabled()) {
           Collection<SModuleReference> dependencies = getDependencies(Collections.singleton(mRef));
           for (SModuleReference depRef : dependencies) {
@@ -220,9 +222,6 @@ public class ModulesWatcher {
     return mRefToProblem;
   }
 
-  // FIXME rewrite!! need to extract some common API class for validity checking
-  // FIXME currently Migration also wants to know which languages are invalid for loading and why
-  // FIXME probably makes sense to transfer part of this functionality to the project.dependency package
   /**
    * @return message with the problem description or null if the module is valid
    */
@@ -258,7 +257,10 @@ public class ModulesWatcher {
     for (SModuleReference mRef : getAllModules()) {
       ClassLoadingStatus status = VALID;
       for (SModuleReference mRef1 : getDependencies(Collections.singleton(mRef))) {
-        if (!getStatus(mRef1).isValid()) status = INVALID;
+        ClassLoadingStatus status1 = getStatus(mRef1);
+        if (!status1.isValid()) {
+          status = status1;
+        }
       }
       if (status != getStatus(mRef)) {
         throw new IllegalStateException("Status is wrong for the module " + mRef);
@@ -329,20 +331,59 @@ public class ModulesWatcher {
     return myModuleUpdater.isDirty();
   }
 
-  public enum ClassLoadingStatus {
+  enum DefaultStatuses implements ClassLoadingStatus {
     /**
-     * module is not loadable OR
-     * module is loadable and disposed from the repository OR
-     * module is loadable and it has some loadable dependency (transitively) which does not belong to the repository
+     * tmp invalid status.
+     * the module might be disposed itself or depend on some disposed module ref
      */
-    INVALID,
+    @ToRemove(version = 0)
+    SIMPLY_INVALID,
+    /**
+     * not tracked by ModulesWatcher
+     */
+    INVALID_NOT_LOADABLE,
+
+    /**
+     * no record in the map (kind of strange case)
+     */
+    INVALID_NO_RECORD,
+
     /**
      * module is loadable and has all its loadable deps are in the repository too
      */
     VALID;
 
+    @Override
     public boolean isValid() {
-      return (this == VALID);
+      return this == VALID;
     }
+  }
+
+  static final class DepedencyIsDisposedStatus implements ClassLoadingStatus {
+    private List<SModuleReference> myDirectProblemDeps;
+    private List<SModuleReference> myDisposedRoots;
+
+    DepedencyIsDisposedStatus(@NotNull List<SModuleReference> directProblemDeps, @NotNull List<SModuleReference> disposedRoots) {
+      myDirectProblemDeps = directProblemDeps;
+      myDisposedRoots = disposedRoots;
+    }
+
+    @Override
+    public boolean isValid() {
+      return false;
+    }
+
+    @NotNull
+    public List<SModuleReference> getDisposedDependencyRoots() {
+      return myDisposedRoots;
+    }
+
+    public List<SModuleReference> getProblematicDirectDependencies() {
+      return myDirectProblemDeps;
+    }
+  }
+
+  public interface ClassLoadingStatus {
+    boolean isValid();
   }
 }

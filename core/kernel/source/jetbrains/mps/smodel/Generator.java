@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.classloading.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
 import jetbrains.mps.project.ModuleId;

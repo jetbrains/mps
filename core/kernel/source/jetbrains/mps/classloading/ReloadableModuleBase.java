@@ -30,6 +30,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * ReloadableModule which delegates to ClassLoaderManager
+ * @author apyshkin
+ */
 public class ReloadableModuleBase extends AbstractModule implements ReloadableModule {
   private final static Logger LOG = LogManager.getLogger(ReloadableModuleBase.class);
   private final ClassLoaderManager myManager = ClassLoaderManager.getInstance();
@@ -78,12 +82,12 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
 
   @Nullable
   @Override
-  public ClassLoader getClassLoader() {
+  public final ClassLoader getClassLoader() {
     return myManager.getClassLoader(this);
   }
 
   @Override
-  public void reload() {
+  public final void reload() {
     if (!getStatus().canLoadClasses()) {
       LOG.warn("The deployment status is " + getStatus() + "; impossible to reload the module");
       return;
@@ -94,7 +98,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
 
   @NotNull
   @Override
-  public DeploymentStatus getStatus() {
+  public final DeploymentStatus getStatus() {
     return myManager.getStatus(this);
   }
 

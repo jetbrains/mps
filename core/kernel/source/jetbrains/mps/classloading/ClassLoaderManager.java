@@ -18,6 +18,7 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.tempmodel.TempModule;
@@ -53,7 +54,6 @@ import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress
  * Using the methods of this class is not recommended.
  *
  * In order to get Class from a module call {@link #getClass} method.
- * [Note: the module needs to be loadable. {@link #canLoad} must return true]
  * @see #myLoadableCondition
  *
  * General information:
@@ -66,12 +66,12 @@ import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress
  * ClassLoaderManager stores a map of this ClassLoader instances, reloads them if needed, delegates class requests to them.
  * 2. <it>Non-reloadable</it> modules are not reloadable modules.
  * Currently such modules are bundled with Idea plugin, the associated ClassLoader for these modules is the result
- * of the method {@link com.intellij.openapi.extensions.PluginDescriptor#getPluginClassLoader()} call.
+ * of the method {@code com.intellij.openapi.extensions.PluginDescriptor#getPluginClassLoader()} call.
  * CLManager delegates Class/ClassLoader requests to Idea plugin [for these modules].
  *
  * Common part
  * CLManager listens to newly added <it>loadable</it> modules (into the repository) and to modules' removal.
- * When module is added, CLManager marks it as ({@link LAZY_LOADED}) and broadcasts the event to
+ * When module is added, CLManager marks it as ({@code LAZY_LOADED}) and broadcasts the event to
  * {@link jetbrains.mps.classloading.MPSClassesListener} clients.
  * When module's classes (or ClassLoader) are requested, the actual module load happens.
  * When module is removed from the repository, CLManager unloaded module's data from its' storage.
@@ -118,6 +118,8 @@ import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress
  * FIXME the module dependecy tracking must be isolated from the class loading logic
  *
  * TODO the workflow between ModuleEventsHandler, ClassLoaderManager and ModulesWatcher is too complicated and impossible to perceive, it needs to be done over again
+ * TODO As for 23.01.19 the refactoring is planned for the 192 version, where the reloadable modules will be equipped with persisted cp.
+ * TODO Effectively it will remove all the repository locks from cl and will simplify it a lot since there wil be no performance problem anymore
  */
 @SuppressWarnings("unchecked")
 public class ClassLoaderManager implements CoreComponent {
@@ -135,11 +137,6 @@ public class ClassLoaderManager implements CoreComponent {
     return INSTANCE;
   }
 
-  /**
-   * SRepository must possess an instance of CLManager. No singletons!
-   * CLManager will listen for SRepository events.
-   */
-  @ToRemove(version = 3.2)
   private final SRepository myRepository;
 
   private final ClassLoadersHolder myClassLoadersHolder;
@@ -194,39 +191,16 @@ public class ClassLoaderManager implements CoreComponent {
     return myModulesWatcher;
   }
 
-  /**
-   * please do not use : it breaks the internal {@link ModulesWatcher} consistency (such request triggers unexpected refresh which is not right)
-   * TODO the dependency tracking logic will be extracted into the independent subsystem
-   */
-  @ToRemove(version = 3.3)
-  @Deprecated
-  public boolean isValidForClassloading(SModuleReference m){
-    return myModulesWatcher.getStatus(m).isValid();
-  }
-
-  /**
-   * Please ensure this method returns true before calling {@link #getClass} or {@link #getClassLoader} methods
-   * @return true whenever module can be associated with some class loader.
-   * [Currently it can be either MPS ModuleClassLoader or Idea PluginClassLoader]
-   *
-   * @deprecated it is better to check whether the module is an instance of ReloadableModule and use {@link jetbrains.mps.module.ReloadableModule} interface API
-   */
-  @Deprecated
-  @ToRemove(version = 3.2)
-  public boolean canLoad(@NotNull SModule module) {
-    return module instanceof ReloadableModule;
-  }
-
   private void assertCanLoad(@NotNull SModule module) {
-    if (!canLoad(module)) {
-      throw new IllegalArgumentException("Classes of the module " + module.getModuleName() + " are unavailable within the MPS class loading system");
+    if (!(module instanceof ReloadableModule)) {
+      throw new IllegalArgumentException("The module " + module.getModuleName() + " does not comply with the MPS class loading system restrictions");
     }
   }
 
   /**
    * TODO refactor all usages of getClass()
    * Contract: @param module must be loadable ({@link #myLoadableCondition}
-   * So if {@link #canLoad} method returns true you will get your class
+   * So if {@link } method returns true and the class file is in place you will get the class
    *
    * @deprecated use module-specific methods which throw different ClassNotFoundExceptions,
    * you need to process it on your own (probably show some user notification)
@@ -290,14 +264,14 @@ public class ClassLoaderManager implements CoreComponent {
    * @see ModuleIsNotLoadableException
    * @see jetbrains.mps.module.ReloadableModule
    */
-  @Deprecated
   @Nullable
-  public ClassLoader getClassLoader(final SModule module) {
+  ClassLoader getClassLoader(final SModule module) {
     if (!myLoadableCondition.met(module)) {
       return null;
     }
 
     if (myRepository.getModelAccess().canWrite()) {
+      // fixme awful solution
       refresh();
     }
     ReloadableModule reloadableModule = (ReloadableModule) module;
@@ -333,8 +307,7 @@ public class ClassLoaderManager implements CoreComponent {
    * The actual load happens in {@link #doLoadModules} on a method call of {@link #getClassLoader}.
    *
    * Note: currently we need to broadcast load/unload events because there are clients of {@link MPSClassesListener}
-   * These clients need to be rewritten in a lazy way, i.e. using only #getClass [#getClassLoader] method.
-   * @deprecated there is an intention to get rid of {@link MPSClassesListener} clients. When it's done we are able to remove this method.
+   * These clients need to be rewritten in a lazy way, i.e. using only #getClass [#getClassLoader] method. (do they?)
    */
   Collection<ReloadableModule> preLoadModules(Iterable<? extends ReloadableModule> modules, ProgressMonitor monitor) {
     checkWriteAccess();
@@ -484,6 +457,7 @@ public class ClassLoaderManager implements CoreComponent {
   public void removeReloadListener(ModuleReloadListener listener) {
     myBroadCaster.removeReloadListener(listener);
   }
+
   /**
    * Use this method to invalidate modules (namely, recreate their class loaders)
    * There are also useful {@link #reloadModules(Iterable)} and {@link #reloadModule(SModule)}.
@@ -545,21 +519,17 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   /**
-   * @deprecated
    * @see #reloadModules(Iterable, org.jetbrains.mps.openapi.util.ProgressMonitor)
    */
-  @Deprecated
   public void reloadModules(Iterable<? extends SModule> modules) {
     reloadModules(modules, new EmptyProgressMonitor());
   }
 
   /**
-   * @deprecated use module-specific method {@link jetbrains.mps.module.ReloadableModule#reload()}
+   * @internal use module-specific method {@link jetbrains.mps.module.ReloadableModule#reload()}
    * @see jetbrains.mps.module.ReloadableModule
    */
-  @Deprecated
-  @ToRemove(version = 3.2)
-  public void reloadModule(SModule module) {
+  void reloadModule(SModule module) {
     reloadModules(Collections.singleton(module), new EmptyProgressMonitor());
   }
 
@@ -575,6 +545,52 @@ public class ClassLoaderManager implements CoreComponent {
 
   private void checkWriteAccess() {
     myRepository.getModelAccess().checkWriteAccess();
+  }
+
+  @NotNull
+  public DeploymentStatus getStatus(@NotNull ReloadableModule module) {
+    SModuleReference moduleReference = module.getModuleReference();
+    if (myClassLoadersHolder.getClassLoadingProgress(moduleReference) != UNLOADED) {
+      return DeploymentStatuses.DEPLOYED;
+    }
+    if (myModulesWatcher.getStatus(moduleReference).isValid()) {
+      return DeploymentStatuses.NOT_DEPLOYED;
+    } else {
+      return DeploymentStatuses.NOT_IN_REPO;
+      //fixme return dependency problem sometimes
+    }
+  }
+
+  enum DeploymentStatuses implements DeploymentStatus {
+    NOT_IN_REPO("The module does not belong to any repository", false, false),
+//    DEPENDENCY_IS_NOT_IN_REPO("The module has a dependency which is not in the repository", false, false),
+    NOT_DEPLOYED("The module is not deployed but it can be", true, false),
+    DEPLOYED("The module is deployed and is ready to load classes", true, true);
+
+    private final String myMessage;
+    private boolean myCanLoadClasses;
+    private boolean myIsDeployed;
+
+    DeploymentStatuses(@NotNull String message, boolean canLoadClasses, boolean isDeployed) {
+      myMessage = message;
+      myCanLoadClasses = canLoadClasses;
+      myIsDeployed = isDeployed;
+    }
+
+    @NotNull
+    public String getStatusMessage() {
+      return myMessage;
+    }
+
+    @Override
+    public boolean canLoadClasses() {
+      return myCanLoadClasses;
+    }
+
+    @Override
+    public boolean isDeployed() {
+      return myIsDeployed;
+    }
   }
 
   // conditions part
@@ -597,7 +613,7 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * it is possible to associate a ClassLoader with such module
    */
-  private final Condition<SModule> myLoadableCondition = module -> canLoad(module);
+  private final Condition<SModule> myLoadableCondition = module -> module instanceof ReloadableModule;
 
   /**
    * the modules which we want to watch (and trace the dependencies between them)
@@ -611,7 +627,7 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * it is possible to create ModuleClassLoader for such module
    */
-  private final Condition<ReloadableModule> myMPSLoadableCondition = module -> canCreate(module);
+  private final Condition<ReloadableModule> myMPSLoadableCondition = this::canCreate;
 
   /**
    * status of this module is valid in the dependencies graph

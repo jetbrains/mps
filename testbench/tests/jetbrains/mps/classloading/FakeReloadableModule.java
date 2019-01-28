@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.classloading.ClassLoaderManager.DeploymentStatuses;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;

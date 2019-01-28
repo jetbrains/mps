@@ -52,14 +52,12 @@ import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.MPSClassesListener;
-import jetbrains.mps.classloading.MPSClassesListenerAdapter;
+import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
@@ -71,7 +69,7 @@ import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodeEditor.actions.ActionHandlerImpl;
 import jetbrains.mps.nodeEditor.assist.DefaultContextAssistantManager;
 import jetbrains.mps.nodeEditor.assist.DisabledContextAssistantManager;
@@ -147,6 +145,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.AbstractAction;
@@ -217,7 +216,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public static final String EDITOR_POPUP_MENU_ACTIONS = MPSActions.EDITOR_POPUP_GROUP;
 
   private static final int SCROLL_GAP = 15;
-  private final ClassLoaderManager myClassLoaderManager;
+  private ClassLoaderManager myClassLoaderManager = null;
 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
@@ -271,9 +270,14 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
     rebuildEditorContent();
   });
-  private MPSClassesListener myClassesListener = new MPSClassesListenerAdapter() {
+
+  private final DeployListener myClassesListener = new DeployListener() {
     @Override
-    public void afterClassesLoaded(Set<? extends ReloadableModuleBase> modules) {
+    public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
+    }
+
+    @Override
+    public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
       getModelAccess().runReadInEDT(() -> {
         if (isDisposed() || isModuleDisposed() || isProjectDisposed() || isNodeDisposed()) {
           return;
@@ -368,7 +372,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (ApplicationManager.getApplication() != null && ApplicationManager.getApplication().getComponent(MPSCoreComponents.class) != null) {
       myClassLoaderManager = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager();
     } else {
-      myClassLoaderManager = ClassLoaderManager.getInstance();
+      LOG.warning("ClassloaderManager is not found, the reload will be switched off");
     }
 
     setLayout(new EditorComponentLayoutManager(this));
@@ -680,7 +684,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   protected void attachListeners() {
     EditorSettings.getInstance().addEditorSettingsListener(mySettingsListener);
-    myClassLoaderManager.addClassesHandler(myClassesListener);
+    if (myClassLoaderManager != null) {
+      myClassLoaderManager.addListener(myClassesListener);
+    }
   }
 
   protected void notifyCreation() {
@@ -1387,7 +1393,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   protected void detachListeners() {
     EditorSettings.getInstance().removeEditorSettingsListener(mySettingsListener);
-    myClassLoaderManager.removeClassesHandler(myClassesListener);
+    myClassLoaderManager.removeListener(myClassesListener);
   }
 
   public boolean hasValidSelectedNode() {

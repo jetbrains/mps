@@ -96,7 +96,7 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
   private boolean checkModule(SModule module) {
     if (isIgnored(module.toString())) return true;
     ClassLoaderManager classLoaderManager = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
-    if (classLoaderManager.canLoad(module)) {
+    if (module instanceof ReloadableModule) {
       ReloadableModule reloadableModule = (ReloadableModule) module;
       if (reloadableModule.willLoad() && reloadableModule.getClassLoader() == null) {
         myModuleNamesToErrors.put(module.toString(), "No class loader for the module");
