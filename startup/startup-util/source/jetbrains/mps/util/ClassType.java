@@ -45,13 +45,4 @@ public enum ClassType {
   public String getTypeString() {
     return myTypeString;
   }
-
-  public boolean hasOwnJavaStubs() {
-    return this != JDK_TOOLS || isJDK_ToolsInSeparateJar();
-  }
-
-  public static boolean isJDK_ToolsInSeparateJar() {
-    // on Mac & jdkVersion < 7 classes from `tools.jar' are located inside classes.jar
-    return !SystemInfo.isMac || SystemInfo.isJavaVersionAtLeast("1.7");
-  }
 }

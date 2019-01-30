@@ -205,9 +205,7 @@ public class Solution extends ReloadableModuleBase {
           modelRootDescriptors.add(javaStubsModelRoot);
           populateModelRoot(classType, javaStubsModelRoot);
         }
-        if (classType.hasOwnJavaStubs()) {
-          descriptor.getAdditionalJavaStubPaths().add(path);
-        }
+        descriptor.getAdditionalJavaStubPaths().add(path);
       }
     }
   }
