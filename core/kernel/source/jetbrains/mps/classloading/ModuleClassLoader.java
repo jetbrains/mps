@@ -101,7 +101,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     }
   }
 
-  public ModuleClassLoader(ModuleClassLoaderSupport support) {
+  public ModuleClassLoader(@NotNull ModuleClassLoaderSupport support) {
     super(support.getRootClassLoader());
     mySupport = support;
   }

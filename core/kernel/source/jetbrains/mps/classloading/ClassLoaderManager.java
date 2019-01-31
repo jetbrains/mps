@@ -264,15 +264,11 @@ public class ClassLoaderManager implements CoreComponent {
    * @see jetbrains.mps.module.ReloadableModule
    */
   @Nullable
-  ClassLoader getClassLoader(final SModule module) {
+  MPSModuleClassLoader getClassLoader(final SModule module) {
     if (!myLoadableCondition.met(module)) {
       return null;
     }
 
-    if (myRepository.getModelAccess().canWrite()) {
-      // fixme awful solution
-      refresh();
-    }
     ReloadableModule reloadableModule = (ReloadableModule) module;
     if (!myValidCondition.met(reloadableModule)) {
       return null;
@@ -282,7 +278,7 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   @Nullable
-  private ClassLoader doGetClassLoader(@NotNull ReloadableModule module) {
+  private MPSModuleClassLoader doGetClassLoader(@NotNull ReloadableModule module) {
     return myClassLoadersHolder.getClassLoader(module);
   }
 
@@ -608,7 +604,7 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * it is possible to associate a ClassLoader with such module
    */
-  private final Condition<SModule> myLoadableCondition = module -> (module instanceof ReloadableModule) && ((ReloadableModule) module).canLoadClasses();
+  private final Condition<SModule> myLoadableCondition = module -> module instanceof ReloadableModule;
 
   /**
    * the modules which we want to watch (and trace the dependencies between them)

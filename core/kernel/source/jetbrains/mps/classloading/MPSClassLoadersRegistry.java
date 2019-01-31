@@ -44,7 +44,8 @@ import java.util.stream.Collectors;
 class MPSClassLoadersRegistry {
   private static final Logger LOG = LogManager.getLogger(ClassLoadersHolder.class);
 
-  private final Map<SModuleReference, ModuleClassLoader> myClassLoaders = new HashMap<>();
+  private final Map<SModuleReference, ModuleClassLoader> myMPSClassLoaders = new HashMap<>();
+  private final Map<SModuleReference, IDEADelegatingModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
   private final Map<SModuleReference, ClassLoadingProgress> myMPSLoadableModules = new HashMap<>();
   private final Queue<ModuleClassLoader> myDisposeQueue = new LinkedBlockingQueue<>();
   private final ClassLoadersHolder myClHolder;
@@ -58,13 +59,28 @@ class MPSClassLoadersRegistry {
   }
 
   @Nullable
-  public ClassLoader getModuleClassLoader(@NotNull ReloadableModule module) throws ClassLoaderNotFoundException {
+  public MPSModuleClassLoader getModuleClassLoader(@NotNull ReloadableModule module) throws ClassLoaderNotFoundException {
     SModuleReference mRef = module.getModuleReference();
-    if (!myClassLoaders.containsKey(mRef)) {
+    if (!myMPSClassLoaders.containsKey(mRef)) {
       throw new ClassLoaderNotFoundException();
     }
-    return myClassLoaders.get(mRef);
+    return myMPSClassLoaders.get(mRef);
   }
+
+  /**
+   * @return null if classloader is not found
+   */
+  @Nullable
+  public MPSModuleClassLoader getNonReloadableClassLoader(@NotNull ReloadableModule module) {
+    SModuleReference mRef = module.getModuleReference();
+    if (myIDEAClassLoaders.containsKey(mRef)) {
+      return myIDEAClassLoaders.get(mRef);
+    }
+    IDEADelegatingModuleClassLoader delegate = createIDEADelegateClassLoader(module);
+    myIDEAClassLoaders.put(mRef, delegate);
+    return delegate;
+  }
+
 
   @NotNull
   public ClassLoadingProgress getClassLoadingProgress(SModuleReference mRef) {
@@ -87,18 +103,18 @@ class MPSClassLoadersRegistry {
           LOG.error("", new IllegalStateException("Module " + mRef + " must not be unloaded -- cannot unload it twice"));
         } else {
           if (progress == ClassLoadingProgress.LOADED) {
-            if (myClassLoaders.containsKey(mRef)) {
-              toDispose.add(myClassLoaders.get(mRef));
+            if (myMPSClassLoaders.containsKey(mRef)) {
+              toDispose.add(myMPSClassLoaders.get(mRef));
             } else {
               LOG.error("", new IllegalStateException("Module " + mRef + " is loaded but has no registered ModuleClassLoader"));
             }
           } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
-            if (myClassLoaders.containsKey(mRef)) {
+            if (myMPSClassLoaders.containsKey(mRef)) {
               LOG.error("", new IllegalStateException("Module " + mRef + " is lazy loaded but already has a registered ModuleClassLoader"));
-              toDispose.add(myClassLoaders.get(mRef));
+              toDispose.add(myMPSClassLoaders.get(mRef));
             }
           }
-          myClassLoaders.remove(mRef);
+          myMPSClassLoaders.remove(mRef);
           unloaded.add(mRef);
         }
       }
@@ -156,8 +172,20 @@ class MPSClassLoadersRegistry {
     return new ModuleClassLoader(support);
   }
 
+  @Nullable
+  private IDEADelegatingModuleClassLoader createIDEADelegateClassLoader(@NotNull ReloadableModule module) {
+    LOG.debug("Creating IDEADelegateClassLoader for " + module);
+    CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
+    if (customClassLoadingFacet != null) {
+      if (customClassLoadingFacet.isValid()) {
+        return new IDEADelegatingModuleClassLoader(customClassLoadingFacet.getClassLoader());
+      }
+    }
+    return null;
+  }
+
   private void onLoaded(SModuleReference module) {
-    assert myClassLoaders.containsKey(module);
+    assert myMPSClassLoaders.containsKey(module);
     ClassLoadingProgress classLoadingProgress = myMPSLoadableModules.get(module);
     if (classLoadingProgress != ClassLoadingProgress.LAZY_LOADED) {
       LOG.error("Illegal state: module has not been lazy loaded " + module, new Throwable());
@@ -166,7 +194,7 @@ class MPSClassLoadersRegistry {
   }
 
   private void putClassLoader(SModuleReference module, ModuleClassLoader classLoader) {
-    myClassLoaders.put(module, classLoader);
+    myMPSClassLoaders.put(module, classLoader);
   }
 
   /**

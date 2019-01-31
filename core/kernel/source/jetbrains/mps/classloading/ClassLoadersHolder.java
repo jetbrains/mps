@@ -77,37 +77,18 @@ public class ClassLoadersHolder {
   }
 
   @Nullable
-  public ClassLoader getClassLoader(ReloadableModule module) {
+  public MPSModuleClassLoader getClassLoader(@NotNull ReloadableModule module) {
     try {
       return getModuleClassLoader(module);
     } catch (ClassLoaderNotFoundException ignored) {
       // do nothing, there is no MPS ModuleClassLoader for this module
     }
 
-    try {
-      return getNonReloadableClassLoader(module);
-    } catch (ClassLoaderNotFoundException ignored) {
-      // do nothing, there is no IDEA ClassLoader for this module
-    }
-
-    return null;
+    return myCLRegistry.getNonReloadableClassLoader(module);
   }
 
   @Nullable
-  private ClassLoader getNonReloadableClassLoader(SModule module) throws ClassLoaderNotFoundException {
-    CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
-    if (customClassLoadingFacet != null) {
-      if (customClassLoadingFacet.isValid()) {
-        return customClassLoadingFacet.getClassLoader();
-      } else {
-        return null;
-      }
-    }
-    throw new ClassLoaderNotFoundException();
-  }
-
-  @Nullable
-  private ClassLoader getModuleClassLoader(ReloadableModule module) throws ClassLoaderNotFoundException {
+  private MPSModuleClassLoader getModuleClassLoader(ReloadableModule module) throws ClassLoaderNotFoundException {
     return myCLRegistry.getModuleClassLoader(module);
   }
 

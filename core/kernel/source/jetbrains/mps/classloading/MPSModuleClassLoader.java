@@ -16,14 +16,9 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.module.ReloadableModule;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
-// * This base class allows clients to retain the instance of class loader preventing
-// * ClassLoader from disposing.
  *
  * @see ReloadableModule#getClassLoader()
  *

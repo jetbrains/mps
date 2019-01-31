@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * The classloader-wrapper around the IDEA or system classloaders.
  * Corresponds to the module which is NOT managed by MPS classloading subsystem
@@ -24,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * @author apyshkin
  */
 public final class IDEADelegatingModuleClassLoader extends MPSModuleClassLoader {
-  public IDEADelegatingModuleClassLoader(@NotNull ClassLoader delegate) {
+  public IDEADelegatingModuleClassLoader(ClassLoader delegate) {
     super(delegate);
   }
 
