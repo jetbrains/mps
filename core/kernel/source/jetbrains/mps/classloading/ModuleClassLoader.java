@@ -38,6 +38,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * MPS implementation of <code>java.lang.ClassLoader</code> which uses non-standard way of class loading delegation.
@@ -47,21 +48,25 @@ import java.util.concurrent.ConcurrentMap;
  * Note that these methods yield additional error information in the case of failure.
  * Users of class loading API are supposed to process it on their own behalf.
  *
+ * This classloader implementation supports a redeploy of the module classes on the fly
+ * For example, all language modules possess an instance of such classloader.
+ *
  * @see jetbrains.mps.classloading.ModuleIsNotLoadableException
  * @see jetbrains.mps.classloading.ModuleClassNotFoundException
  *
  * @author apyshkin
  */
-public final class ModuleClassLoader extends ClassLoader {
+public final class ModuleClassLoader extends MPSModuleClassLoader {
   private static final Logger LOG = LogManager.getLogger(ModuleClassLoader.class);
   private static final ClassLoader BOOTSTRAP_CLASSLOADER = Object.class.getClassLoader();
+
 
   private final ModuleClassLoaderSupport mySupport;
   // null values are not allowed => using <code>Optional</code>
   private final ConcurrentMap<String, Optional<Class<?>>> myClasses = new ConcurrentHashMap<>();
 
   private volatile Collection<ClassLoader> myDependenciesClassLoaders;
-  private boolean myDisposed;
+  private volatile boolean myDisposed;
   private final Object myPackageLock = new Object();
 
   static {
@@ -322,6 +327,11 @@ public final class ModuleClassLoader extends ClassLoader {
 
   public String toString() {
     return String.format("%s ModuleClassLoader %s", mySupport.getModule(), myDisposed ? "[DISPOSED]" : "");
+  }
+
+  @Override
+  public boolean isReloadableClassLoader() {
+    return true;
   }
 
   public static class ModuleClassLoaderIsDisposedException extends IllegalStateException {

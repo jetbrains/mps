@@ -16,6 +16,7 @@
 package jetbrains.mps.module;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -101,7 +102,7 @@ public interface ReloadableModule extends SModule {
    * if getStatus().isDeployed() || getStatus().canBeDeployed() is true then the return value is guaranteed to be not null
    */
   @Nullable
-  ClassLoader getClassLoader();
+  MPSModuleClassLoader getClassLoader();
 
   /**
    * Call it to replace the old class loader of this module with a new one.

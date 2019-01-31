@@ -38,7 +38,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.mps.util.Condition;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -461,24 +460,21 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * Use this method to invalidate modules (namely, recreate their class loaders)
    * There are also useful {@link #reloadModules(Iterable)} and {@link #reloadModule(SModule)}.
-   * @deprecated the module is reloaded automatically on events like moduleChanged, dependenciesChanged, etc.
-   * [!] no need to call this method directly anymore
    *
    * TODO: add listening to class files updating and remove explicit call from ModuleMaker and the others
    * FIXME: remove TempModule: it should not be processed by CLManager. It maintains only repository modules!
    */
-  @Deprecated
   public void reloadModules(Iterable<? extends SModule> modules, @NotNull ProgressMonitor monitor) {
     checkWriteAccess();
     refresh();
     doReloadModules(modules, monitor);
   }
 
-  Collection<ReloadableModule> doReloadModules(Iterable<? extends SModule> modules, @NotNull ProgressMonitor monitor) {
+  void doReloadModules(Iterable<? extends SModule> modules, @NotNull ProgressMonitor monitor) {
     checkWriteAccess();
     if (IterableUtils.isEmpty(modules)) {
       LOG.info("Reloaded 0 modules");
-      return new ArrayList();
+      return;
     }
     try {
       long beginTime = System.nanoTime();
@@ -499,7 +495,7 @@ public class ClassLoaderManager implements CoreComponent {
           modulesToReload.add((ReloadableModule) module);
         }
       }
-      if (modulesToReload.isEmpty()) return Collections.emptySet();
+      if (modulesToReload.isEmpty()) return;
 
       myModulesWatcher.updateModules(modulesToReload);
       Collection<? extends ReloadableModule> unloadedModules = unloadModules(myModulesWatcher.getModuleRefs(modulesToReload), monitor.subTask(1));
@@ -510,8 +506,6 @@ public class ClassLoaderManager implements CoreComponent {
       if (!silentMode) {
         LOG.info(String.format("Reloaded %d module(s) in %.3f s", loadedModules.size(), (System.nanoTime() - beginTime) / 1e9));
       }
-
-      return new LinkedHashSet<>(loadedModules);
     } finally {
       myClassLoadersHolder.scheduleClassLoaderDisposeInEDT();
       monitor.done();
