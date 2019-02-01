@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
+import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer;
+import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer.DisposeSession;
 import jetbrains.mps.module.ReloadableModule;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -36,16 +39,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class ClassLoadingBroadCaster {
   private static final Logger LOG = LogManager.getLogger(ClassLoadingBroadCaster.class);
+
   private final LinkedHashSet<ReloadableModule> myLoadedModules = new LinkedHashSet<>();
   private final ModelAccess myModelAccess;
+  private final ModuleClassLoaderDisposer myDisposer;
 
   // reload handlers
   private final List<MPSClassesListener> myClassesHandlers = new CopyOnWriteArrayList<>();
   private final List<ModuleReloadListener> myReloadListeners = new CopyOnWriteArrayList<>();
   private final List<DeployListener> myDeployListeners = new CopyOnWriteArrayList<>();
 
-  public ClassLoadingBroadCaster(ModelAccess modelAccess) {
+  public ClassLoadingBroadCaster(@NotNull ModelAccess modelAccess, @NotNull ModuleClassLoaderDisposer disposer) {
     myModelAccess = modelAccess;
+    myDisposer = disposer;
   }
 
   public void addClassesHandler(MPSClassesListener handler) {
@@ -83,6 +89,8 @@ public class ClassLoadingBroadCaster {
 
     try {
       monitor.start("Broadcasting Events", myClassesHandlers.size() + myDeployListeners.size());
+      DisposeSession session = myDisposer.createSession(modulesToUnload);
+      ResourceTrackerCallback trackerCallback = session.getTrackerCallback();
       for (MPSClassesListener listener : myClassesHandlers) {
         try {
           listener.onUnloaded(modulesToUnload, monitor.subTask(1));
@@ -95,19 +103,19 @@ public class ClassLoadingBroadCaster {
       for (DeployListener listener : myDeployListeners) {
         try {
           listener.onUnloaded(modulesToUnload, monitor.subTask(1));
+          listener.onUnloaded(trackerCallback, monitor.subTask(1));
         } catch (VirtualMachineError e) {
           throw e;
         } catch (Throwable e) {
           LOG.error(String.format("Caught exception from the listener %s. Will continue.", listener), e);
         }
       }
+      session.disposeNowOrLater();
     } finally {
       monitor.done();
     }
 
-    final Set<ReloadableModule> resultingUnload = new LinkedHashSet<>();
-    resultingUnload.addAll(modulesToUnload);
-    return resultingUnload;
+    return new LinkedHashSet<>(modulesToUnload);
   }
 
   public void onLoad(Set<ReloadableModule> toLoad, @NotNull ProgressMonitor monitor) {

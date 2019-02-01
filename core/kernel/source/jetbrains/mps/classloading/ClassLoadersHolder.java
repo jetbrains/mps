@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer;
 import jetbrains.mps.module.ReloadableModule;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -62,9 +63,9 @@ public class ClassLoadersHolder {
   };
   private final SRepository myRepository;
 
-  public ClassLoadersHolder(SRepository repository, ModulesWatcher modulesWatcher, EDTDispatcher dispatcher) {
+  public ClassLoadersHolder(SRepository repository, ModulesWatcher modulesWatcher) {
     myRepository = repository;
-    myCLRegistry = new MPSClassLoadersRegistry(this, modulesWatcher, dispatcher);
+    myCLRegistry = new MPSClassLoadersRegistry(this, modulesWatcher);
   }
 
   public void init() {
@@ -101,11 +102,6 @@ public class ClassLoadersHolder {
     return myCLRegistry.getClassLoadingProgress(mRef);
   }
 
-  public void scheduleClassLoaderDisposeInEDT() {
-    LOG.debug("Scheduling ModuleClassLoader disposal");
-    myCLRegistry.flushDisposeQueue();
-  }
-
   /**
    * @param toUnload for these modules ModuleClassLoaders were disposed
    * @return modules which changed their ClassLoadingProgress from LAZY_LOADED or LOADED to UNLOADED.
@@ -131,8 +127,8 @@ public class ClassLoadersHolder {
     myCLRegistry.doLoadModules(toLoad);
   }
 
-  public void setDispatcher(@NotNull EDTDispatcher dispatcher) {
-    myCLRegistry.setDispatcher(dispatcher);
+  public ModuleClassLoaderDisposer getModuleClassLoaderDisposer() {
+    return myCLRegistry.getDisposer();
   }
 
   /**
@@ -172,4 +168,5 @@ public class ClassLoadersHolder {
   }
 
   static class ClassLoaderNotFoundException extends Exception {}
+
 }

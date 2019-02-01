@@ -32,6 +32,7 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.plugins.PluginLoaderRegistry.EventAccumulation.Snapshot;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
@@ -57,7 +58,9 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -327,15 +330,12 @@ public class PluginLoaderRegistry implements ApplicationComponent {
     }
     LOG.debug("Updating");
     Delta<PluginLoader> loadersDelta;
-    Delta<ReloadableModule> moduleDelta;
     synchronized (myLoadersDeltaLock) {
       loadersDelta = new Delta<>(myLoaderDelta);
       myLoaderDelta.clear();
     }
-    synchronized (myDeltaLock) {
-      moduleDelta = new Delta<>(myDelta);
-      myDelta.clear();
-    }
+    Snapshot snapshot = myAccumulation.reset();
+    Delta<ReloadableModule> moduleDelta = snapshot.getDelta();
     myDirtyFlag.set(false);
 
     if (loadersDelta.isEmpty() && moduleDelta.isEmpty()) {
@@ -350,7 +350,7 @@ public class PluginLoaderRegistry implements ApplicationComponent {
     Delta<PluginContributor> contributorDelta = new Delta<>(toLoadContributors, toUnloadContributors);
 
     assert !myTaskInProgress;
-    UpdatingTask task = new UpdatingTask(null, loadersDelta, contributorDelta);
+    UpdatingTask task = new UpdatingTask(null, loadersDelta, contributorDelta, snapshot::invokePostRunnables);
     runTask(task);
   }
 
@@ -374,11 +374,14 @@ public class PluginLoaderRegistry implements ApplicationComponent {
     private final Delta<PluginLoader> loadersDelta;
     @NotNull
     private final Delta<PluginContributor> contributorsDelta;
+    @NotNull
+    private final Runnable myPostRunnable;
 
-    UpdatingTask(Project project, @NotNull Delta<PluginLoader> loadersDelta, @NotNull Delta<PluginContributor> contributorsDelta) {
+    UpdatingTask(Project project, @NotNull Delta<PluginLoader> loadersDelta, @NotNull Delta<PluginContributor> contributorsDelta, @NotNull Runnable postRunnable) {
       super(project, "Reloading MPS Plugins", false);
       this.loadersDelta = loadersDelta;
       this.contributorsDelta = contributorsDelta;
+      myPostRunnable = postRunnable;
     }
 
     @Override
@@ -411,6 +414,7 @@ public class PluginLoaderRegistry implements ApplicationComponent {
         addContributors(monitor);
       } finally {
         myTaskInProgress = false;
+        myPostRunnable.run();
       }
     }
 
@@ -458,7 +462,7 @@ public class PluginLoaderRegistry implements ApplicationComponent {
   /**
    * NOTE:
    * not unloading plugins on application dispose (since we are inside the dispose Application.isDisposed == true;
-   * it is not tolerated by ActionGroup#getChildren which is called in some of the plugins #dispose method.
+   * it is not tolerated by ActionGroup#getChildren which is called in some of the plugins #dispose method)
    */
   private void scheduleUpdate() {
     if (myDirtyFlag.compareAndSet(false, true)) {
@@ -496,28 +500,82 @@ public class PluginLoaderRegistry implements ApplicationComponent {
 
   private class SchedulingUpdateListener implements DeployListener {
     @Override
-    public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
-      synchronized (myDeltaLock) {
-        myDelta.unload(unloadedModules);
-      }
+    public void onUnloaded(@NotNull ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
+      Set<ReloadableModule> unloadedModules = callback.acquire(PluginLoaderRegistry.this);
+      myAccumulation.onUnload(unloadedModules);
+      myAccumulation.schedulePostRunnable(() -> callback.release(PluginLoaderRegistry.this));
     }
 
     @Override
-    public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
-      synchronized (myDeltaLock) {
-        myDelta.load(loadedModules);
-        scheduleUpdate();
-      }
+    public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
+      myAccumulation.onLoad(loadedModules);
+      scheduleUpdate();
     }
   }
 
   private volatile boolean myTaskInProgress = false;
-  private final Object myDeltaLock = new Object();
   private final Object myLoadersDeltaLock = new Object();
-  private final Delta<ReloadableModule> myDelta = new Delta<>();
+  private final EventAccumulation myAccumulation = new EventAccumulation();
   private final Delta<PluginLoader> myLoaderDelta = new Delta<>();
 
-  private static class Delta<T> {
+  static class EventAccumulation {
+    final Delta<ReloadableModule> myDelta = new Delta<>();
+    final Queue<Runnable> myPostRunnableQueue = new ConcurrentLinkedQueue<>();
+
+
+    public void onUnload(Set<ReloadableModule> unloadedModules) {
+      myDelta.unload(unloadedModules);
+    }
+
+    public void onLoad(Set<ReloadableModule> loadedModules) {
+      myDelta.load(loadedModules);
+    }
+
+    public void schedulePostRunnable(@NotNull Runnable r) {
+      myPostRunnableQueue.add(r);
+    }
+
+    public EventAccumulation.Snapshot reset() {
+      List<Runnable> postRunnablesToRun = shapshotPostRunnables();
+      Delta<ReloadableModule> delta0 = shapshotDelta();
+      return new Snapshot() {
+        @NotNull
+        @Override
+        public Delta<ReloadableModule> getDelta() {
+          return delta0;
+        }
+
+        @Override
+        public void invokePostRunnables() {
+          for (Runnable r : postRunnablesToRun) {
+            r.run();
+          }
+        }
+      };
+    }
+
+    @NotNull
+    private Delta<ReloadableModule> shapshotDelta() {
+      return myDelta.reset();
+    }
+
+    @NotNull
+    private List<Runnable> shapshotPostRunnables() {
+      List<Runnable> postRunnablesToRun = new ArrayList<>();
+      Runnable first;
+      while ((first = myPostRunnableQueue.poll()) != null) {
+        postRunnablesToRun.add(first);
+      }
+      return postRunnablesToRun;
+    }
+
+    interface Snapshot {
+      @NotNull Delta<ReloadableModule> getDelta();
+      void invokePostRunnables();
+    }
+  }
+
+  private static final class Delta<T> {
     private final Set<T> toUnload;
     private final Set<T> toLoad;
 
@@ -530,37 +588,45 @@ public class PluginLoaderRegistry implements ApplicationComponent {
       this(delta.toLoad, delta.toUnload);
     }
 
-    public Delta(@NotNull Set<T> loaded, @NotNull Set<T> unloaded) {
-      toLoad = new LinkedHashSet<>(loaded);
-      toUnload = new LinkedHashSet<>(unloaded);
+    public Delta(@NotNull Set<T> toLoad, @NotNull Set<T> toUnload) {
+      this.toLoad = new LinkedHashSet<>(toLoad);
+      this.toUnload = new LinkedHashSet<>(toUnload);
     }
 
-    public final void clear() {
+    public synchronized void clear() {
       toUnload.clear();
       toLoad.clear();
     }
 
-    public void load(Set<T> ts) {
+    public synchronized void load(Set<T> ts) {
       toLoad.addAll(ts);
     }
 
-    public void unload(Set<T> ts) {
+    public synchronized void unload(Set<T> ts) {
       toUnload.addAll(ts);
       toLoad.removeAll(ts);
     }
 
-    public void apply(Set<T> tsToChange) {
+    public synchronized void apply(Set<T> tsToChange) {
       tsToChange.addAll(toLoad);
       tsToChange.removeAll(toUnload);
     }
 
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
       return toLoad.isEmpty() && toUnload.isEmpty();
     }
 
     @Override
     public String toString() {
       return "[toLoad: " + toLoad.size() + "; toUnload:" + toUnload.size() + "]";
+    }
+
+    @NotNull
+    public synchronized Delta<T> reset() {
+      Delta<T> tDelta = new Delta<>(toLoad, toUnload);
+      toLoad.clear();
+      toUnload.clear();
+      return tDelta;
     }
   }
 }

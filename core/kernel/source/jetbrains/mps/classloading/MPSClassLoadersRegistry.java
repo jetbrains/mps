@@ -17,6 +17,7 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.ClassLoadersHolder.ClassLoaderNotFoundException;
 import jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress;
+import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.module.ReloadableModule;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -24,16 +25,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
+import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 /**
@@ -47,24 +52,25 @@ class MPSClassLoadersRegistry {
   private final Map<SModuleReference, ModuleClassLoader> myMPSClassLoaders = new HashMap<>();
   private final Map<SModuleReference, IDEADelegatingModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
   private final Map<SModuleReference, ClassLoadingProgress> myMPSLoadableModules = new HashMap<>();
-  private final Queue<ModuleClassLoader> myDisposeQueue = new LinkedBlockingQueue<>();
   private final ClassLoadersHolder myClHolder;
   private final ModulesWatcher myModulesWatcher;
-  private volatile EDTDispatcher myDispatcher;
+  private final ModuleClassLoaderDisposer myModuleClassLoaderDisposer = new ModuleClassLoaderDisposer(this);
 
-  public MPSClassLoadersRegistry(ClassLoadersHolder clHolder, ModulesWatcher modulesWatcher, EDTDispatcher dispatcher) {
+  public MPSClassLoadersRegistry(ClassLoadersHolder clHolder, ModulesWatcher modulesWatcher) {
     myClHolder = clHolder;
     myModulesWatcher = modulesWatcher;
-    myDispatcher = dispatcher;
   }
 
   @Nullable
   public MPSModuleClassLoader getModuleClassLoader(@NotNull ReloadableModule module) throws ClassLoaderNotFoundException {
-    SModuleReference mRef = module.getModuleReference();
-    if (!myMPSClassLoaders.containsKey(mRef)) {
+    if (!myMPSClassLoaders.containsKey(module.getModuleReference())) {
       throw new ClassLoaderNotFoundException();
     }
-    return myMPSClassLoaders.get(mRef);
+    return doGetModuleClassLoader(module);
+  }
+
+  private ModuleClassLoader doGetModuleClassLoader(@NotNull ReloadableModule module) {
+    return myMPSClassLoaders.get(module.getModuleReference());
   }
 
   /**
@@ -92,7 +98,6 @@ class MPSClassLoadersRegistry {
 
   public Set<SModuleReference> doUnloadModules(Collection<SModuleReference> toUnload) {
     Set<SModuleReference> unloaded = new LinkedHashSet<>();
-    Collection<ModuleClassLoader> toDispose = new LinkedHashSet<>();
     for (SModuleReference mRef : toUnload) {
       if (!myMPSLoadableModules.containsKey(mRef)) {
         LOG.error("", new IllegalStateException("Module " + mRef + " is not loaded -- cannot unload"));
@@ -103,15 +108,12 @@ class MPSClassLoadersRegistry {
           LOG.error("", new IllegalStateException("Module " + mRef + " must not be unloaded -- cannot unload it twice"));
         } else {
           if (progress == ClassLoadingProgress.LOADED) {
-            if (myMPSClassLoaders.containsKey(mRef)) {
-              toDispose.add(myMPSClassLoaders.get(mRef));
-            } else {
+            if (!myMPSClassLoaders.containsKey(mRef)) {
               LOG.error("", new IllegalStateException("Module " + mRef + " is loaded but has no registered ModuleClassLoader"));
             }
           } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
             if (myMPSClassLoaders.containsKey(mRef)) {
               LOG.error("", new IllegalStateException("Module " + mRef + " is lazy loaded but already has a registered ModuleClassLoader"));
-              toDispose.add(myMPSClassLoaders.get(mRef));
             }
           }
           myMPSClassLoaders.remove(mRef);
@@ -119,7 +121,6 @@ class MPSClassLoadersRegistry {
         }
       }
     }
-    myDisposeQueue.addAll(toDispose);
     return unloaded;
   }
 
@@ -197,32 +198,108 @@ class MPSClassLoadersRegistry {
     myMPSClassLoaders.put(module, classLoader);
   }
 
-  /**
-   * Very quick action.
-   * We do it in EDT asynchronously, because there are some class loading clients which eager to dispose asynchronously
-   * Double invokeAndLater because we need to allow EDT activities under progress [AP]
-   */
-  public void flushDisposeQueue() {
-    if (myDisposeQueue.isEmpty()) {
-      return;
-    }
-    final List<ModuleClassLoader> toDispose = new ArrayList<>(myDisposeQueue);
-    myDispatcher.invokeInEDT(() -> {
-      LOG.debug("Disposing " + toDispose.size() + " class loaders");
-      for (ModuleClassLoader classLoader : toDispose) {
-        classLoader.dispose();
-      }
-    });
-    myDisposeQueue.clear();
-  }
-
   public void dispose() {
-    if (!myDisposeQueue.isEmpty()) {
-      flushDisposeQueue();
-    }
+    myModuleClassLoaderDisposer.destroy();
   }
 
-  public void setDispatcher(@NotNull EDTDispatcher dispatcher) {
-    myDispatcher = dispatcher;
+  public ModuleClassLoaderDisposer getDisposer() {
+    return myModuleClassLoaderDisposer;
+  }
+
+  static final class ModuleClassLoaderDisposer {
+    @NotNull
+    private final MPSClassLoadersRegistry myRegistry;
+    List<DisposeSession> mySessions = new LinkedList<>();
+
+    public ModuleClassLoaderDisposer(@NotNull MPSClassLoadersRegistry registry) {
+      myRegistry = registry;
+    }
+
+    DisposeSession createSession(@NotNull Set<ReloadableModule> modulesToUnload) {
+      List<ModuleClassLoader> classLoaders =
+          modulesToUnload.stream().map(myRegistry::doGetModuleClassLoader).filter(Objects::nonNull).collect(Collectors.toList());
+      return new DisposeSession(modulesToUnload, classLoaders);
+    }
+
+    public void destroy() {
+      for (DisposeSession session : mySessions) {
+        session.destroy();
+      }
+    }
+
+    static final class DisposeSession {
+      private static final int MAX_MINUTES_FOR_STALE_CLASSLOADERS = 5;
+      private final Set<ReloadableModule> myModulesToUnload;
+      private final List<ModuleClassLoader> myModuleClassloaders2Dispose;
+      private final ConcurrentMap<Object, Boolean> myBlockingRequestors = new ConcurrentHashMap<>();
+      private final Instant myCreationTime;
+      private boolean myDisposeHappened = false;
+      private volatile Instant myPlanningDisposalTime;
+
+      private final ResourceTrackerCallback myTrackerCallback = new ResourceTrackerCallback() {
+        @NotNull
+        @Override
+        public Set<ReloadableModule> acquire(@NotNull Object requestor) {
+          if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
+            throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
+          }
+          return myModulesToUnload;
+        }
+
+        @Override
+        public void release(@NotNull Object requestor) {
+          myBlockingRequestors.remove(requestor);
+          if (myBlockingRequestors.isEmpty()) {
+            doDispose();
+          }
+        }
+      };
+
+      public DisposeSession(@NotNull Set<ReloadableModule> modulesToUnload, @NotNull List<ModuleClassLoader> theirClassloaders) {
+        myCreationTime = Instant.now();
+        myModulesToUnload = Collections.unmodifiableSet(modulesToUnload);
+        myModuleClassloaders2Dispose = theirClassloaders;
+      }
+
+      public synchronized void disposeNowOrLater() {
+        assert myCreationTime != null;
+        assert myPlanningDisposalTime == null;
+        myPlanningDisposalTime = Instant.now();
+        if (isNotBlocked()) {
+          doDispose();
+        } // else we wait for the last #release
+      }
+
+      private boolean isNotBlocked() {
+        return myBlockingRequestors.isEmpty();
+      }
+
+      public synchronized void destroy() {
+        Instant now = Instant.now();
+        if (!myDisposeHappened && Duration.between(myPlanningDisposalTime, now).toMinutes() > MAX_MINUTES_FOR_STALE_CLASSLOADERS) {
+          Set<Object> blockers = myBlockingRequestors.keySet();
+          LOG.error(String.format("The following requestors have not invoked #release and probably are leaking ModuleClassLoaders: %s", blockers));
+        }
+        if (!myDisposeHappened) {
+          doDispose();
+        }
+      }
+
+      private synchronized void doDispose() {
+        assert myCreationTime != null;
+        assert myPlanningDisposalTime != null;
+        assert !myDisposeHappened : "Dispose has already been done.";
+        LOG.debug("Disposing " + myModuleClassloaders2Dispose.size() + " class loaders");
+        for (ModuleClassLoader classLoader : myModuleClassloaders2Dispose) {
+          classLoader.dispose();
+        }
+        myModuleClassloaders2Dispose.clear();
+      }
+
+      @NotNull
+      ResourceTrackerCallback getTrackerCallback() {
+        return myTrackerCallback;
+      }
+    }
   }
 }

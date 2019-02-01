@@ -147,21 +147,11 @@ public class ClassLoaderManager implements CoreComponent {
   private final ModuleEventsHandler myRepositoryListener;
 
   public ClassLoaderManager(@NotNull SRepository repository) {
-    this(repository, new DefaultEDTDispatcher());
-  }
-
-  ClassLoaderManager(@NotNull SRepository repository, @NotNull EDTDispatcher dispatcher) {
     myRepository = repository;
     myModulesWatcher = new ModulesWatcher(myRepository, myWatchableCondition);
-    myClassLoadersHolder = new ClassLoadersHolder(myRepository, myModulesWatcher, dispatcher);
+    myClassLoadersHolder = new ClassLoadersHolder(myRepository, myModulesWatcher);
     myRepositoryListener = new ModuleEventsHandler(repository, myModulesWatcher);
-    myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess());
-  }
-
-  @Deprecated
-  @ToRemove(version = 3.4)
-  public void setDispatcher(@NotNull EDTDispatcher dispatcher) {
-    myClassLoadersHolder.setDispatcher(dispatcher);
+    myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getModuleClassLoaderDisposer());
   }
 
   @Override
@@ -503,7 +493,6 @@ public class ClassLoaderManager implements CoreComponent {
         LOG.info(String.format("Reloaded %d module(s) in %.3f s", loadedModules.size(), (System.nanoTime() - beginTime) / 1e9));
       }
     } finally {
-      myClassLoadersHolder.scheduleClassLoaderDisposeInEDT();
       monitor.done();
     }
   }
