@@ -79,17 +79,16 @@ public class ClassLoadersHolder {
 
   @Nullable
   public MPSModuleClassLoader getClassLoader(@NotNull ReloadableModule module) {
-    try {
-      return getModuleClassLoader(module);
-    } catch (ClassLoaderNotFoundException ignored) {
-      // do nothing, there is no MPS ModuleClassLoader for this module
+    MPSModuleClassLoader moduleClassLoader = getModuleClassLoader(module);
+    if (moduleClassLoader != null) {
+      return moduleClassLoader;
     }
 
     return myCLRegistry.getNonReloadableClassLoader(module);
   }
 
   @Nullable
-  private MPSModuleClassLoader getModuleClassLoader(ReloadableModule module) throws ClassLoaderNotFoundException {
+  private MPSModuleClassLoader getModuleClassLoader(ReloadableModule module) {
     return myCLRegistry.getModuleClassLoader(module);
   }
 

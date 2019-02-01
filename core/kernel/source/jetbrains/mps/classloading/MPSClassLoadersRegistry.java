@@ -62,9 +62,9 @@ class MPSClassLoadersRegistry {
   }
 
   @Nullable
-  public MPSModuleClassLoader getModuleClassLoader(@NotNull ReloadableModule module) throws ClassLoaderNotFoundException {
+  public MPSModuleClassLoader getModuleClassLoader(@NotNull ReloadableModule module) {
     if (!myMPSClassLoaders.containsKey(module.getModuleReference())) {
-      throw new ClassLoaderNotFoundException();
+      return null;
     }
     return doGetModuleClassLoader(module);
   }
@@ -78,13 +78,7 @@ class MPSClassLoadersRegistry {
    */
   @Nullable
   public MPSModuleClassLoader getNonReloadableClassLoader(@NotNull ReloadableModule module) {
-    SModuleReference mRef = module.getModuleReference();
-    if (myIDEAClassLoaders.containsKey(mRef)) {
-      return myIDEAClassLoaders.get(mRef);
-    }
-    IDEADelegatingModuleClassLoader delegate = createIDEADelegateClassLoader(module);
-    myIDEAClassLoaders.put(mRef, delegate);
-    return delegate;
+    return myIDEAClassLoaders.computeIfAbsent(module.getModuleReference(), (ref) -> createIDEADelegateClassLoader(module));
   }
 
 
