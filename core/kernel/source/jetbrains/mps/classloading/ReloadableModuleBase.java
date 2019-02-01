@@ -69,7 +69,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
     if (classLoader == null) {
       throw new ModuleClassLoaderIsNullException(this);
     }
-    String internClassName = InternUtil.intern(classFqName);
+    String internClassName = /*InternUtil.intern*/(classFqName);
     if (ownClassOnly && classLoader instanceof ModuleClassLoader) {
       return ((ModuleClassLoader) classLoader).loadOwnClass(internClassName);
     }
