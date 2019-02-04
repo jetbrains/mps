@@ -77,27 +77,26 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
   }
 
   private void addModules(List<? extends ReloadableModuleBase> modules) {
-    Collections.sort(modules, MODULE_COMPARATOR);
+    modules.sort(MODULE_COMPARATOR);
     myModulesWatcher.addModules(modules);
     myManager.preLoadModules(modules, new EmptyProgressMonitor());
   }
 
   private void updateModules(List<? extends ReloadableModuleBase> modules) {
-    List<SModule> modulesToReload = new ArrayList<>();
-    modulesToReload.addAll(modules);
-    Collections.sort(modulesToReload, MODULE_COMPARATOR);
+    List<SModule> modulesToReload = new ArrayList<>(modules);
+    modulesToReload.sort(MODULE_COMPARATOR);
     myManager.doReloadModules(modulesToReload, new EmptyProgressMonitor());
   }
 
   private void removeModules(List<SModuleReference> modules) {
-    Collections.sort(modules, MODULE_COMPARATOR);
+    modules.sort(MODULE_COMPARATOR);
     myManager.unloadModules(modules, new EmptyProgressMonitor());
     myModulesWatcher.removeModules(modules);
   }
 
   @Override
   public void eventsHappened(List<SRepositoryEvent> events) {
-    if (events.size() == 0) return;
+    if (events.isEmpty()) return;
     MyModuleEventVisitor visitor = new MyModuleEventVisitor();
     for (SRepositoryEvent event : events) {
       event.accept(visitor);

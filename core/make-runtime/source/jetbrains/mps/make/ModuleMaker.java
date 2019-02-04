@@ -61,7 +61,7 @@ import java.util.TreeSet;
  * fixme check multiple computations of the same modules' dependencies (time wasting)
  */
 public final class ModuleMaker {
-  public final static Comparator<SModule> MODULE_BY_NAME_COMPARATOR = (module1, module2) -> module1.getModuleName().compareTo(module2.getModuleName());
+  public final static Comparator<SModule> MODULE_BY_NAME_COMPARATOR = Comparator.comparing(SModule::getModuleName);
 
   private final static String BUILDING_MODULES_MSG = "Building %d Modules";
   private final static String CYCLE_FORMAT_MSG = "Cycle #%d: [%s]";

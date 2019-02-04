@@ -259,6 +259,11 @@ public class ClassLoaderManager implements CoreComponent {
       return null;
     }
 
+    if (myRepository.getModelAccess().canWrite()) {
+      // fixme awful solution
+      refresh();
+    }
+
     ReloadableModule reloadableModule = (ReloadableModule) module;
     if (!myValidCondition.met(reloadableModule)) {
       return null;

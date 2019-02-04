@@ -88,8 +88,8 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
 
   @Override
   public final void reload() {
-    if (!getStatus().canBeDeployed()) {
-      LOG.warn("The deployment status is " + getStatus() + "; impossible to reload the module");
+    if (!canLoadClasses()) {
+      LOG.warn(String.format("The module %s can not load classes -- impossible to reload the module", this));
       return;
     }
     LOG.info("Reloading module " + this);

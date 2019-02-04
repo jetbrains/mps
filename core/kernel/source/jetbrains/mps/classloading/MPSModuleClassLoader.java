@@ -16,6 +16,9 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.util.SystemInfo;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
@@ -25,6 +28,8 @@ import jetbrains.mps.module.ReloadableModule;
  * @author apyshkin
  */
 public abstract class MPSModuleClassLoader extends ClassLoader {
+  private static final Logger LOG = LogManager.getLogger(ModuleClassLoader.class);
+
   public MPSModuleClassLoader(ClassLoader parent) {
     super(parent);
   }
@@ -35,4 +40,26 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
    * which delegates directly to IDEA class loading subsystem (which is non-reloadable)
    */
   public abstract boolean isReloadableClassLoader();
+
+  static {
+    registerAsParallelCapable0();
+  }
+
+  /**
+   * MPS has a cyclic delegation classloading model (module A.a1 triggers class B.b which in turn triggers the loading of
+   * the class A.a2 in the case when A depends on B and vice versa; the implicit class loading is triggered in the #defineClass invocation
+   * in the {@link ModuleClassLoader#loadFromSelf(String)} method).
+   *
+   * Thus according to jls we declare ModuleClassLoader and all its ancestors as a parallel capable.
+   * Without this registration the threading model of the MPS classloading is flawed.
+   * @since 3.4
+   */
+  static void registerAsParallelCapable0() {
+    if (!SystemInfo.isJavaVersionAtLeast("1.7")) {
+      LOG.error("Java version is less than 1.7, it is impossible to register MPS class loader as parallel capable: one might encounter a deadlock");
+    }
+    if (!registerAsParallelCapable()) {
+      LOG.error("MPS was not able to register the MPS class loader as parallel capable: one might encounter a deadlock", new Throwable());
+    }
+  }
 }

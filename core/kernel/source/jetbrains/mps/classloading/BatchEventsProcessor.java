@@ -82,7 +82,9 @@ public class BatchEventsProcessor {
   }
 
   public void finishBatching() {
-    if (!myBatchStarted) throw new IllegalStateException("Batching has not been even started");
+    if (!myBatchStarted) {
+      LOG.error("Batching has not even been started; Ignoring...", new IllegalStateException());
+    }
     myBatchStarted = false;
   }
 

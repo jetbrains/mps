@@ -19,7 +19,6 @@ import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ProtectionDomainUtil;
-import jetbrains.mps.util.SystemInfo;
 import jetbrains.mps.util.iterable.IterableEnumeration;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -38,7 +37,6 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * MPS implementation of <code>java.lang.ClassLoader</code> which uses non-standard way of class loading delegation.
@@ -70,25 +68,16 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   private final Object myPackageLock = new Object();
 
   static {
-    registerParallelCapable();
-  }
+  /*
+    MPS has a cyclic delegation classloading model (module A.a1 triggers class B.b which in turn triggers the loading of
+    the class A.a2 in the case when A depends on B and vice versa; the implicit class loading is triggered in the #defineClass invocation
+    in the {@link ModuleClassLoader#loadFromSelf(String)} method).
 
-  /**
-   * MPS has a cyclic delegation classloading model (module A.a1 triggers class B.b which in turn triggers the loading of
-   * the class A.a2 in the case when A depends on B and vice versa; the implicit class loading is triggered in the #defineClass invocation
-   * in the {@link #loadFromSelf(String)} method).
-   *
-   * Thus according to jls we declare it as a parallel capable.
-   * Without this registration the threading model of the MPS classloading is flawed.
-   * @since 3.4
+    Thus according to jls we declare ModuleClassLoader and all its ancestors as a parallel capable.
+    Without this registration the threading model of the MPS classloading is flawed.
+    @since 3.4
    */
-  private static void registerParallelCapable() {
-    if (!SystemInfo.isJavaVersionAtLeast("1.7")) {
-      LOG.error("Java version is less than 1.7, it is impossible to register MPS class loader as parallel capable: one might encounter a deadlock");
-      if (!registerAsParallelCapable()) {
-        LOG.error("MPS was not able to register the MPS class loader as parallel capable: one might encounter a deadlock", new Throwable());
-      }
-    }
+    registerAsParallelCapable();
   }
 
   public boolean isDisposed() {
@@ -181,6 +170,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
    */
   private Class<?> getClassFromCache(String name) throws ClassNotFoundException {
     Optional<Class<?>> optionalClass = myClasses.get(name);
+    //noinspection OptionalAssignedToNull
     if (optionalClass == null) {
       return null;
     }
