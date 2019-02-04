@@ -202,6 +202,9 @@
         <child id="1153944424730" name="inputSequence" index="2GsD0m" />
       </concept>
       <concept id="1153944193378" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariable" flags="nr" index="2GrKxI" />
+      <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
+        <reference id="1153944258490" name="variable" index="2Gs0qQ" />
+      </concept>
     </language>
   </registry>
   <node concept="312cEu" id="KL8Aqll4mG">
@@ -939,8 +942,8 @@
                               <node concept="liA8E" id="3x_lgCAkydd" role="2OqNvi">
                                 <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
                                 <node concept="2OqwBi" id="3x_lgCAkyde" role="37wK5m">
-                                  <node concept="37vLTw" id="3x_lgCAkydf" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="3x_lgCAkycb" resolve="plugin" />
+                                  <node concept="2GrUjf" id="sjigSAwIxS" role="2Oq$k0">
+                                    <ref role="2Gs0qQ" node="3x_lgCAkycW" resolve="libJar" />
                                   </node>
                                   <node concept="liA8E" id="3x_lgCAkydg" role="2OqNvi">
                                     <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />

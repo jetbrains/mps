@@ -104,7 +104,7 @@ public class MigrationWorker extends MpsWorker {
             if (cp.length() > 0) {
               cp.append(File.pathSeparator);
             }
-            cp.append(plugin.getAbsolutePath());
+            cp.append(libJar.getAbsolutePath());
           }
         }
       }
