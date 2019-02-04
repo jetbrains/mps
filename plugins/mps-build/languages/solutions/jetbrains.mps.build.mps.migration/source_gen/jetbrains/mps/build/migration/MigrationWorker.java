@@ -23,7 +23,6 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.tool.common.ScriptProperties;
 
 public class MigrationWorker extends MpsWorker {
   private static final String MIGRATION_PLUGIN = "jetbrains.mps.ide.migration.workbench";
@@ -35,10 +34,9 @@ public class MigrationWorker extends MpsWorker {
 
   @Override
   protected Environment createEnvironment() {
-    addPluginsToClassPath();
-
     EnvironmentConfig cfg = createEnvironmentConfig(myWhatToDo);
     cfg.addPlugin("migration", MigrationWorker.MIGRATION_PLUGIN);
+    addPluginsToClassPath(cfg);
 
     IdeaEnvironment environment = new IdeaEnvironment(cfg);
     environment.init();
@@ -88,36 +86,24 @@ public class MigrationWorker extends MpsWorker {
     }
   }
 
-  private void addPluginsToClassPath() {
-    StringBuilder cp = new StringBuilder();
+  private void addPluginsToClassPath(EnvironmentConfig cfg) {
     File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
     for (File plugin : pluginDir.listFiles()) {
       if (plugin.isFile()) {
-        if (cp.length() > 0) {
-          cp.append(File.pathSeparator);
-        }
-        cp.append(plugin.getAbsolutePath());
+        cfg.addPluginClassPath(plugin.getAbsolutePath());
       } else {
         File lib = new File(plugin + File.separator + "lib");
         if (lib.exists() && lib.isDirectory()) {
           for (File libJar : lib.listFiles(PathManager.JAR_FILE_FILTER)) {
-            if (cp.length() > 0) {
-              cp.append(File.pathSeparator);
-            }
-            cp.append(libJar.getAbsolutePath());
+            cfg.addPluginClassPath(libJar.getAbsolutePath());
           }
         }
       }
     }
-
-    myWhatToDo.putProperty(ScriptProperties.PLUGIN_PATHS, cp.toString());
   }
 
   public static void main(String[] args) {
     MigrationWorker mpsWorker = new MigrationWorker(Script.fromDumpInFile(new File(args[0])), new MpsWorker.SystemOutLogger());
     mpsWorker.workFromMain();
-  }
-
-  protected void executeTask(Project project, MpsWorker.ObjectsToProcess go) {
   }
 }
