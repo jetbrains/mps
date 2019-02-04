@@ -29,7 +29,6 @@ import org.apache.log4j.Level;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.core.tool.environment.classloading.UrlClassLoader;
 import jetbrains.mps.project.Project;
-import java.util.Set;
 
 /**
  * Base class for all environments, represents a caching environment.
@@ -40,7 +39,6 @@ import java.util.Set;
  */
 public abstract class EnvironmentBase implements Environment {
   private static final Logger LOG = LogManager.getLogger(EnvironmentBase.class);
-  private static final String PLUGINS_PATH = "plugin.path";
 
   protected final EnvironmentConfig myConfig;
   private boolean myInitialized;
@@ -214,7 +212,6 @@ public abstract class EnvironmentBase implements Environment {
     }
   }
 
-
   @Override
   public void closeProject(@NotNull Project project) {
     checkInitialized();
@@ -240,48 +237,6 @@ public abstract class EnvironmentBase implements Environment {
     }
   }
 
-  protected static void setIdeaPluginsToLoad(EnvironmentConfig config) {
-    // [MM]: looks like a hack, should we regenerate it to a regular plugin specification?  
-    // Probably, with plugin-set-ref to ensure the same plugin set is used 
-
-    // typically, this property is set by generated ant scripts before running tests 
-    if (isNotEmptyString(System.getProperty(PLUGINS_PATH))) {
-      return;
-    }
-
-    // otherwise, we set it from config 
-    setPluginPathProperty();
-    setPluginIdsPropertyFromConfig(config);
-  }
-
-  private static void setPluginIdsPropertyFromConfig(EnvironmentConfig config) {
-    StringBuilder result = new StringBuilder();
-    Set<PluginDescriptor> plugins = config.getPlugins();
-    if (plugins == null) {
-      return;
-    }
-    for (PluginDescriptor plugin : SetSequence.fromSet(plugins)) {
-      result.append(plugin.getId());
-      result.append(",");
-    }
-    System.setProperty("idea.load.plugins.id", result.toString());
-  }
-
-  protected static void setPluginPathProperty() {
-    // [MM]: why do we set ids from config, while path is not config-related? 
-
-    StringBuilder pluginPath = new StringBuilder();
-    File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
-    if (pluginDir.exists()) {
-      for (File pluginFolder : pluginDir.listFiles()) {
-        if (pluginPath.length() > 0) {
-          pluginPath.append(File.pathSeparator);
-        }
-        pluginPath.append(pluginFolder.getPath());
-      }
-      System.setProperty(PLUGINS_PATH, pluginPath.toString());
-    }
-  }
 
   protected final void checkInitialized() {
     if (!(myInitialized)) {
@@ -299,8 +254,5 @@ public abstract class EnvironmentBase implements Environment {
     public EnvironmentInitializedTwiceException() {
       super("Double initialization");
     }
-  }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
   }
 }
