@@ -172,6 +172,7 @@
       </concept>
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
+        <child id="1160998916832" name="message" index="1gVpfI" />
       </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
@@ -884,6 +885,32 @@
             <ref role="3cqZAo" node="sjigSAxCYQ" resolve="plugins" />
           </node>
           <node concept="3clFbS" id="sjigSAxCZ5" role="2LFqv$">
+            <node concept="1gVbGN" id="r$A3E5xWEJ" role="3cqZAp">
+              <node concept="3y3z36" id="r$A3E5xZQ2" role="1gVkn0">
+                <node concept="10Nm6u" id="r$A3E5y04p" role="3uHU7w" />
+                <node concept="2OqwBi" id="r$A3E5xWSb" role="3uHU7B">
+                  <node concept="2GrUjf" id="r$A3E5xWPh" role="2Oq$k0">
+                    <ref role="2Gs0qQ" node="sjigSAxCZ3" resolve="plugin" />
+                  </node>
+                  <node concept="liA8E" id="r$A3E5xZyu" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:3FVfMMI0xPY" resolve="getId" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs3" id="r$A3E5y0TP" role="1gVpfI">
+                <node concept="2OqwBi" id="r$A3E5y1m2" role="3uHU7w">
+                  <node concept="2GrUjf" id="r$A3E5y177" role="2Oq$k0">
+                    <ref role="2Gs0qQ" node="sjigSAxCZ3" resolve="plugin" />
+                  </node>
+                  <node concept="liA8E" id="r$A3E5y1CP" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="r$A3E5y0kA" role="3uHU7B">
+                  <property role="Xl_RC" value="id should be specified for plugin " />
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="sjigSAxCZ6" role="3cqZAp">
               <node concept="2OqwBi" id="sjigSAxCZ7" role="3clFbG">
                 <node concept="37vLTw" id="sjigSAxCZ8" role="2Oq$k0">

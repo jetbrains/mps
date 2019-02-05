@@ -23,6 +23,8 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.util.PathManager;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class MigrationWorker extends MpsWorker {
   private static final String MIGRATION_PLUGIN = "jetbrains.mps.ide.migration.workbench";
@@ -36,7 +38,9 @@ public class MigrationWorker extends MpsWorker {
   protected Environment createEnvironment() {
     EnvironmentConfig cfg = createEnvironmentConfig(myWhatToDo);
     cfg.addPlugin("migration", MigrationWorker.MIGRATION_PLUGIN);
+    // todo: be more precise with the classpath 
     addPluginsToClassPath(cfg);
+    addCustomPluginsToLoad(cfg);
 
     IdeaEnvironment environment = new IdeaEnvironment(cfg);
     environment.init();
@@ -99,6 +103,13 @@ public class MigrationWorker extends MpsWorker {
           }
         }
       }
+    }
+  }
+
+  private void addCustomPluginsToLoad(EnvironmentConfig cfg) {
+    // todo: this functionality should be moved to some MpsWithPlatformLoadTask 
+    for (PluginData pd : ListSequence.fromList(myWhatToDo.getPlugins())) {
+      cfg.addPlugin(pd.path, pd.id);
     }
   }
 

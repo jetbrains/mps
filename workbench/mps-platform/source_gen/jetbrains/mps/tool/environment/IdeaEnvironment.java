@@ -133,6 +133,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
       return;
     }
     for (PluginDescriptor plugin : SetSequence.fromSet(plugins)) {
+      assert plugin.getId() != null : "id should be specified for plugin " + plugin.getPath();
       result.append(plugin.getId());
       result.append(",");
     }

@@ -4,11 +4,7 @@ package jetbrains.mps.tool.common;
 
 
 public class ScriptProperties {
-
-  public static final String PLUGIN_PATHS = "plugin.path";
-
   public static final String SHOW_DIFF = "SHOW_DIFF";
-
   public static final String GENERATE_PERFORMANCE_REPORT = "GENERATE_PERFORMANCE_REPORT";
 
   private ScriptProperties() {

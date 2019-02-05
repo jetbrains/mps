@@ -1785,6 +1785,38 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="r$A3E5p1nH" role="jymVt" />
+    <node concept="3clFb_" id="QkG2t1byP_" role="jymVt">
+      <property role="TrG5h" value="addConfiguredPlugin" />
+      <node concept="37vLTG" id="QkG2t1byPP" role="3clF46">
+        <property role="TrG5h" value="plugin" />
+        <node concept="3uibUv" id="r$A3E5oOCb" role="1tU5fm">
+          <ref role="3uigEE" node="QkG2t1bwWL" resolve="Plugin" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="QkG2t1byPA" role="3clF45" />
+      <node concept="3Tm1VV" id="QkG2t1byPB" role="1B3o_S" />
+      <node concept="3clFbS" id="QkG2t1byPC" role="3clF47">
+        <node concept="3clFbF" id="r$A3E5uv$b" role="3cqZAp">
+          <node concept="2OqwBi" id="r$A3E5uw$l" role="3clFbG">
+            <node concept="37vLTw" id="r$A3E5uv$9" role="2Oq$k0">
+              <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+            </node>
+            <node concept="liA8E" id="r$A3E5uxyP" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:r$A3E5tFQu" resolve="addPlugin" />
+              <node concept="2OqwBi" id="r$A3E5xTV4" role="37wK5m">
+                <node concept="37vLTw" id="r$A3E5uxDO" role="2Oq$k0">
+                  <ref role="3cqZAo" node="QkG2t1byPP" resolve="plugin" />
+                </node>
+                <node concept="liA8E" id="r$A3E5xUkg" role="2OqNvi">
+                  <ref role="37wK5l" node="r$A3E5vYGp" resolve="getDescriptor" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="1_4F7FNq2WB" role="jymVt" />
     <node concept="3clFb_" id="3ufQioQQtnL" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -3102,6 +3134,9 @@
           <node concept="2YIFZM" id="7oFdQJwImRM" role="3clFbG">
             <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+            <node concept="3uibUv" id="r$A3E5vkpv" role="3PaCim">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
           </node>
         </node>
       </node>
@@ -8820,6 +8855,106 @@
     <node concept="3Tm1VV" id="7oFdQJwEW3O" role="1B3o_S" />
     <node concept="3uibUv" id="7oFdQJwGxm$" role="1zkMxy">
       <ref role="3uigEE" node="3ufQioQQti6" resolve="MpsLoadTask" />
+    </node>
+  </node>
+  <node concept="312cEu" id="QkG2t1bwWL">
+    <property role="TrG5h" value="Plugin" />
+    <node concept="312cEg" id="r$A3E5vVXh" role="jymVt">
+      <property role="TrG5h" value="myDescriptor" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="r$A3E5vVS7" role="1B3o_S" />
+      <node concept="3uibUv" id="r$A3E5vVX9" role="1tU5fm">
+        <ref role="3uigEE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
+      </node>
+      <node concept="2ShNRf" id="r$A3E5vW2p" role="33vP2m">
+        <node concept="HV5vD" id="r$A3E5vWik" role="2ShVmc">
+          <ref role="HV5vE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbW" id="QkG2t1bxb6" role="jymVt">
+      <node concept="3cqZAl" id="QkG2t1bxb7" role="3clF45" />
+      <node concept="3Tm1VV" id="QkG2t1bxb8" role="1B3o_S" />
+      <node concept="3clFbS" id="QkG2t1bxb9" role="3clF47" />
+    </node>
+    <node concept="3clFb_" id="QkG2t1bxba" role="jymVt">
+      <property role="TrG5h" value="setPath" />
+      <node concept="3cqZAl" id="QkG2t1bxbb" role="3clF45" />
+      <node concept="3Tm1VV" id="QkG2t1bxbc" role="1B3o_S" />
+      <node concept="3clFbS" id="QkG2t1bxbd" role="3clF47">
+        <node concept="3clFbF" id="r$A3E5vX5o" role="3cqZAp">
+          <node concept="37vLTI" id="r$A3E5vXrM" role="3clFbG">
+            <node concept="2OqwBi" id="r$A3E5vX_J" role="37vLTx">
+              <node concept="37vLTw" id="r$A3E5vXtV" role="2Oq$k0">
+                <ref role="3cqZAo" node="QkG2t1byP5" resolve="dir" />
+              </node>
+              <node concept="liA8E" id="r$A3E5vXOz" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="r$A3E5vX8e" role="37vLTJ">
+              <node concept="37vLTw" id="r$A3E5vX5m" role="2Oq$k0">
+                <ref role="3cqZAo" node="r$A3E5vVXh" resolve="myDescriptor" />
+              </node>
+              <node concept="2OwXpG" id="r$A3E5vXbe" role="2OqNvi">
+                <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="QkG2t1byP5" role="3clF46">
+        <property role="TrG5h" value="dir" />
+        <node concept="3uibUv" id="QkG2t1byP6" role="1tU5fm">
+          <ref role="3uigEE" to="guwi:~File" resolve="File" />
+        </node>
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="QkG2t1bwWM" role="1B3o_S" />
+    <node concept="3uibUv" id="QkG2t1bwWN" role="1zkMxy">
+      <ref role="3uigEE" to="rg95:~DataType" resolve="DataType" />
+    </node>
+    <node concept="3clFb_" id="r$A3E5qP5D" role="jymVt">
+      <property role="TrG5h" value="setId" />
+      <node concept="3cqZAl" id="r$A3E5qP5E" role="3clF45" />
+      <node concept="3Tm1VV" id="r$A3E5qP5F" role="1B3o_S" />
+      <node concept="3clFbS" id="r$A3E5qP5G" role="3clF47">
+        <node concept="3clFbF" id="r$A3E5qP5H" role="3cqZAp">
+          <node concept="37vLTI" id="r$A3E5qP5I" role="3clFbG">
+            <node concept="37vLTw" id="r$A3E5qP5J" role="37vLTx">
+              <ref role="3cqZAo" node="r$A3E5qP5K" resolve="id" />
+            </node>
+            <node concept="2OqwBi" id="r$A3E5vYyp" role="37vLTJ">
+              <node concept="37vLTw" id="r$A3E5vYu5" role="2Oq$k0">
+                <ref role="3cqZAo" node="r$A3E5vVXh" resolve="myDescriptor" />
+              </node>
+              <node concept="2OwXpG" id="r$A3E5vY_B" role="2OqNvi">
+                <ref role="2Oxat5" to="asz6:r$A3E5qOHV" resolve="id" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="r$A3E5qP5K" role="3clF46">
+        <property role="TrG5h" value="id" />
+        <node concept="3uibUv" id="r$A3E5qP5L" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="r$A3E5vYGp" role="jymVt">
+      <property role="TrG5h" value="getDescriptor" />
+      <node concept="3uibUv" id="r$A3E5vYGq" role="3clF45">
+        <ref role="3uigEE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
+      </node>
+      <node concept="3Tm1VV" id="r$A3E5vYGr" role="1B3o_S" />
+      <node concept="3clFbS" id="r$A3E5vYGs" role="3clF47">
+        <node concept="3clFbF" id="r$A3E5vYGt" role="3cqZAp">
+          <node concept="37vLTw" id="r$A3E5vYGo" role="3clFbG">
+            <ref role="3cqZAo" node="r$A3E5vVXh" resolve="myDescriptor" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

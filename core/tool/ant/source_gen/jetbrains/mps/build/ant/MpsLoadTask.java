@@ -101,6 +101,10 @@ public abstract class MpsLoadTask extends Task {
     myJvmArgs.addAll(jvmArg.getArgs());
   }
 
+  public void addConfiguredPlugin(Plugin plugin) {
+    myWhatToDo.addPlugin(plugin.getDescriptor());
+  }
+
   @Override
   public void execute() throws BuildException {
     // XXX classpath contains MPS jars, which is odd in 'fork' scenario where AntBootstrap class adds 
@@ -217,7 +221,7 @@ public abstract class MpsLoadTask extends Task {
 
   @NotNull
   protected List<String> getAdditionalArgs() {
-    return Collections.emptyList();
+    return Collections.<String>emptyList();
   }
 
   private void outputBuildNumber() {

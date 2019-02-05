@@ -1015,73 +1015,40 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="3x_lgCAjjym" role="3cqZAp" />
-        <node concept="3SKdUt" id="3x_lgCAjkZE" role="3cqZAp">
-          <node concept="3SKdUq" id="3x_lgCAjkZG" role="3SKWNk">
-            <property role="3SKdUp" value="todo make it a leagl part of the whatToDo if possible" />
+        <node concept="2Gpval" id="r$A3E5wBtN" role="3cqZAp">
+          <node concept="2GrKxI" id="r$A3E5wBtP" role="2Gsz3X">
+            <property role="TrG5h" value="pd" />
           </node>
-        </node>
-        <node concept="3cpWs8" id="3x_lgCAfj4e" role="3cqZAp">
-          <node concept="3cpWsn" id="3x_lgCAfj4f" role="3cpWs9">
-            <property role="TrG5h" value="pluginsPath" />
-            <node concept="17QB3L" id="3x_lgCAfj49" role="1tU5fm" />
-            <node concept="2OqwBi" id="3x_lgCAfj4g" role="33vP2m">
-              <node concept="37vLTw" id="3x_lgCAjjrL" role="2Oq$k0">
-                <ref role="3cqZAo" node="63P3E8$mb5C" resolve="whatToDo" />
-              </node>
-              <node concept="liA8E" id="3x_lgCAfj4i" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:KL8Aql8eBs" resolve="getProperty" />
-                <node concept="10M0yZ" id="3x_lgCAfj4j" role="37wK5m">
-                  <ref role="3cqZAo" to="asz6:QkG2t1bArt" resolve="PLUGIN_PATHS" />
-                  <ref role="1PxDUh" to="asz6:6R7vamtty$v" resolve="ScriptProperties" />
+          <node concept="3clFbS" id="r$A3E5wBtT" role="2LFqv$">
+            <node concept="3clFbF" id="r$A3E5wGfI" role="3cqZAp">
+              <node concept="2OqwBi" id="3x_lgCAjngU" role="3clFbG">
+                <node concept="37vLTw" id="3x_lgCAjmtF" role="2Oq$k0">
+                  <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
                 </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3x_lgCAjsBI" role="3cqZAp">
-          <node concept="3clFbS" id="3x_lgCAjsBK" role="3clFbx">
-            <node concept="2Gpval" id="3x_lgCAjr8F" role="3cqZAp">
-              <node concept="2GrKxI" id="3x_lgCAjr8H" role="2Gsz3X">
-                <property role="TrG5h" value="cp" />
-              </node>
-              <node concept="3clFbS" id="3x_lgCAjr8L" role="2LFqv$">
-                <node concept="3clFbF" id="3x_lgCAjmtH" role="3cqZAp">
-                  <node concept="2OqwBi" id="3x_lgCAjngU" role="3clFbG">
-                    <node concept="37vLTw" id="3x_lgCAjmtF" role="2Oq$k0">
-                      <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
+                <node concept="liA8E" id="3x_lgCAjo0H" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:3x_lgCAhs48" resolve="addPluginClassPath" />
+                  <node concept="2OqwBi" id="r$A3E5wJr5" role="37wK5m">
+                    <node concept="2GrUjf" id="r$A3E5wJnz" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="r$A3E5wBtP" resolve="pd" />
                     </node>
-                    <node concept="liA8E" id="3x_lgCAjo0H" role="2OqNvi">
-                      <ref role="37wK5l" to="79ha:3x_lgCAhs48" resolve="addPluginClassPath" />
-                      <node concept="2GrUjf" id="3x_lgCAjxUe" role="37wK5m">
-                        <ref role="2Gs0qQ" node="3x_lgCAjr8H" resolve="cp" />
-                      </node>
+                    <node concept="2OwXpG" id="r$A3E5wKw9" role="2OqNvi">
+                      <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="3x_lgCAik$L" role="2GsD0m">
-                <node concept="37vLTw" id="3x_lgCAik$M" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3x_lgCAfj4f" resolve="pluginsPath" />
-                </node>
-                <node concept="liA8E" id="3x_lgCAik$N" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.split(java.lang.String):java.lang.String[]" resolve="split" />
-                  <node concept="10M0yZ" id="3x_lgCAik$O" role="37wK5m">
-                    <ref role="3cqZAo" to="guwi:~File.pathSeparator" resolve="pathSeparator" />
-                    <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                  </node>
-                </node>
-              </node>
             </node>
           </node>
-          <node concept="3y3z36" id="3x_lgCAjujO" role="3clFbw">
-            <node concept="10Nm6u" id="3x_lgCAjuZ3" role="3uHU7w" />
-            <node concept="37vLTw" id="3x_lgCAjtnU" role="3uHU7B">
-              <ref role="3cqZAo" node="3x_lgCAfj4f" resolve="pluginsPath" />
+          <node concept="2OqwBi" id="3x_lgCAfj4g" role="2GsD0m">
+            <node concept="37vLTw" id="3x_lgCAjjrL" role="2Oq$k0">
+              <ref role="3cqZAo" node="63P3E8$mb5C" resolve="whatToDo" />
+            </node>
+            <node concept="liA8E" id="3x_lgCAfj4i" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:r$A3E5tFQj" resolve="getPlugins" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="63P3E8$mb5_" role="3cqZAp" />
+        <node concept="3clFbH" id="r$A3E5wHr4" role="3cqZAp" />
         <node concept="3clFbF" id="63P3E8$mb5A" role="3cqZAp">
           <node concept="37vLTw" id="63P3E8$mb5B" role="3clFbG">
             <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
