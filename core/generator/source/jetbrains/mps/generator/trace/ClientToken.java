@@ -15,7 +15,10 @@
  */
 package jetbrains.mps.generator.trace;
 
-import java.io.InputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.ReadableByteChannel;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Identifies subscribed {@linkplain TraceClient client}.
@@ -24,6 +27,9 @@ import java.io.InputStream;
  * @since 2017.3
  */
 public final class ClientToken {
+  private final ArrayBlockingQueue<byte[]> myDatagrams = new ArrayBlockingQueue<>(50);
+  private DtgChannel myChannel = new DtgChannel();
+
   /**
    * Clients express their interest in specific trace location
    * @param tracePoint identifies location of interest, like reduction rule.
@@ -38,15 +44,64 @@ public final class ClientToken {
   /**
    * Clients use the stream to receive trace information
    */
-  public InputStream getMessageStream() {
-    throw new UnsupportedOperationException();
+  public ReadableByteChannel getMessageStream() {
+    // I don't want to deal with synch issues accessing data, therefore no shared objects except primitives
+    // These primitives shall not be modifiable by different clients (can't just share same byte[] between multiple clients)
+    // Pause/improper behavior of a single client shall not affect others
+    return myChannel;
   }
 
   /*package*/ void sendToClient(byte[] message) {
-    throw new UnsupportedOperationException();
+    if (!myChannel.isOpen()) {
+      return;
+    }
+    while (!myDatagrams.offer(message)) {
+      // discard the oldest
+      myDatagrams.poll();
+    }
   }
 
   /*package*/ void deactivate() {
+    // I don't expect multiple threads competing to deactivate this token
+    if (myChannel != null) {
+      myChannel.closeRequestFromOwner();
+      myChannel = null;
+    }
+  }
 
+  private class DtgChannel implements ReadableByteChannel {
+    private boolean myIsOpen = true;
+
+    @Override
+    public int read(ByteBuffer dst) throws IOException {
+      if (!isOpen()) {
+        return -1;
+      }
+      final byte[] dtg = myDatagrams.poll();
+      if (dtg == null) {
+        return 0;
+      }
+      if (dst.remaining() < dtg.length) {
+        // we have to establish max datagram size so that clients can allocate buffer once and use it again and again without need to re-allocate.
+        throw new IOException(String .format("Expected at least %d, remaining %d", dtg.length, dst.remaining()));
+      }
+      dst.put(dtg);
+      return dtg.length;
+    }
+
+    @Override
+    public boolean isOpen() {
+      return myIsOpen;
+    }
+
+    @Override
+    public void close() {
+      myIsOpen = false;
+    }
+
+    /*package*/ void closeRequestFromOwner() {
+      // unlike API #close(), this method is intended for use from the channel origin/owner (even if it does the same)
+      close();
+    }
   }
 }

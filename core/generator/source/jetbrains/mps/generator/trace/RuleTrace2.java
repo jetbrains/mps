@@ -37,27 +37,32 @@ public final class RuleTrace2 {
 
   public boolean isActive() {
     // alternative to nullable RuleTrace and != null checks
-    return false;
+    return true;
   }
 
   public void reached() {
-
+    notify("[reached]".getBytes());
   }
 
   public void blocked(boolean blocked) {
-
+    notify(String.format("[blocked:%b]", blocked).getBytes());
   }
 
   public void condition(boolean conditionMet) {
-
+    notify(String.format("[condition met:%b]", conditionMet).getBytes());
   }
 
   public void dismissed() {
-
+    notify("[dismissed]".getBytes());
   }
 
   public void completed(Collection<SNode> outputNodes) {
-
+    notify(String.format("[completed:%d]", outputNodes == null ? 0 : outputNodes.size()).getBytes());
   }
 
+  private void notify(byte[] message) {
+    for (ClientToken client : myClients) {
+      client.sendToClient(message);
+    }
+  }
 }

@@ -27,9 +27,11 @@ import java.util.List;
  * @author Artem Tikhomirov
  */
 public final class TraceFacility {
+  private final List<ClientToken> myActiveClients;
+
   // Keep 'final' to have full control over communication process
   /*package*/ TraceFacility(List<ClientToken> activeClients) {
-
+    myActiveClients = activeClients;
   }
 
   // not null param, nullable return value so that caller doesn't bother to build an information
@@ -47,6 +49,6 @@ public final class TraceFacility {
 
   public RuleTrace2 reductionRule(TemplateReductionRule reductionRule) {
     // may want to cache RT2 instances per RR if single thread or RT2 made thread-aware
-    return new RuleTrace2(Collections.emptyList(), reductionRule);
+    return new RuleTrace2(myActiveClients, reductionRule);
   }
 }
