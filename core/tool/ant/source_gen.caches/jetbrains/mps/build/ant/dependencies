@@ -134,6 +134,7 @@
     <classNode dependClassName="jetbrains.mps.build.ant.MyExecuteStreamHandler" />
     <classNode dependClassName="jetbrains.mps.build.ant.Plugin" />
     <classNode dependClassName="jetbrains.mps.build.ant.RepositoryDataType" />
+    <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.tools.ant.BuildException" />

@@ -1853,6 +1853,46 @@
             </node>
           </node>
         </node>
+        <node concept="1DcWWT" id="5YX6lGsJdKO" role="3cqZAp">
+          <node concept="3clFbS" id="5YX6lGsJdKQ" role="2LFqv$">
+            <node concept="3clFbF" id="5YX6lGsJs14" role="3cqZAp">
+              <node concept="2YIFZM" id="5YX6lGsJs15" role="3clFbG">
+                <ref role="1Pybhc" node="3t7WP23N$8C" resolve="MPSClasspathUtil" />
+                <ref role="37wK5l" node="vAjk0V2aML" resolve="gatherAllClassesAndJarsUnder" />
+                <node concept="2ShNRf" id="5YX6lGsJu1q" role="37wK5m">
+                  <node concept="1pGfFk" id="5YX6lGsJuE2" role="2ShVmc">
+                    <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                    <node concept="2OqwBi" id="5YX6lGsJuWZ" role="37wK5m">
+                      <node concept="37vLTw" id="5YX6lGsJuSm" role="2Oq$k0">
+                        <ref role="3cqZAo" node="5YX6lGsJdKR" resolve="pd" />
+                      </node>
+                      <node concept="2OwXpG" id="5YX6lGsJvam" role="2OqNvi">
+                        <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="37vLTw" id="5YX6lGsJtPd" role="37wK5m">
+                  <ref role="3cqZAo" node="3ufQioQQtnS" resolve="classPaths" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWsn" id="5YX6lGsJdKR" role="1Duv9x">
+            <property role="TrG5h" value="pd" />
+            <node concept="3uibUv" id="5YX6lGsJhvc" role="1tU5fm">
+              <ref role="3uigEE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="5YX6lGsJkZH" role="1DdaDG">
+            <node concept="37vLTw" id="5YX6lGsJi0X" role="2Oq$k0">
+              <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+            </node>
+            <node concept="liA8E" id="5YX6lGsJo4E" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:r$A3E5tFQj" resolve="getPlugins" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="3ufQioQQtnW" role="3cqZAp">
           <node concept="37vLTw" id="2BHiRxeuxRw" role="3clFbw">
             <ref role="3cqZAo" node="3ufQioQQtjj" resolve="myUsePropertiesAsMacro" />

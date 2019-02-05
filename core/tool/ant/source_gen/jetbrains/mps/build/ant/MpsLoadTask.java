@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import java.util.Set;
+import jetbrains.mps.tool.common.PluginData;
 import java.util.Hashtable;
 import org.apache.tools.ant.util.JavaEnvUtils;
 import java.util.HashSet;
@@ -110,6 +111,9 @@ public abstract class MpsLoadTask extends Task {
     // XXX classpath contains MPS jars, which is odd in 'fork' scenario where AntBootstrap class adds 
     // relevant MPS jars again (it also re-uses urls of the calculated classpath). Is there's any reason to do that? 
     Set<File> classPaths = calculateClassPath(myFork);
+    for (PluginData pd : myWhatToDo.getPlugins()) {
+      MPSClasspathUtil.gatherAllClassesAndJarsUnder(new File(pd.path), classPaths);
+    }
     if (myUsePropertiesAsMacro) {
       Hashtable properties = getProject().getProperties();
       for (Object name : properties.keySet()) {
