@@ -51,17 +51,6 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L), this) {
-      @Override
-      public boolean hasOwnValidator() {
-        return true;
-      }
-      @Override
-      public boolean validateValue(SNode node, Object $propertyValue) {
-        String propertyValue = (String) ($propertyValue);
-        return propertyValue.matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
-      }
-    });
     properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L), this) {
       @Override
       public boolean hasOwnValidator() {

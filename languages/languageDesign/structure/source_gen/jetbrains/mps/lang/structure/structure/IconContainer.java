@@ -5,12 +5,12 @@ package jetbrains.mps.lang.structure.structure;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a3a0a5b0db = new IconResource("structure.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a6b0db = new IconResource("constrainedTD.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a21b0db = new IconResource("enum.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a31b0db = new IconResource("enum.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a02b0db = new IconResource("interfaceStructure.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a22b0db = new IconResource("link.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a32b0db = new IconResource("primitiveTD.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a42b0db = new IconResource("property.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a5b0fb = new IconResource("structure.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a6b0fb = new IconResource("constrainedTD.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a21b0fb = new IconResource("enum.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a31b0fb = new IconResource("enum.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a22b0fb = new IconResource("interfaceStructure.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a42b0fb = new IconResource("link.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a52b0fb = new IconResource("primitiveTD.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a62b0fb = new IconResource("property.png", IconContainer.class);
 }

@@ -138,8 +138,8 @@
     <node concept="PrWs8" id="hRkpyE_" role="PzmwI">
       <ref role="PrY4T" node="hOIDzy1" resolve="IStructureDeprecatable" />
     </node>
-    <node concept="PrWs8" id="3pPFrMaA2Yn" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="1ob16QT5sy7" role="PzmwI">
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
     </node>
     <node concept="PrWs8" id="6OtXG9KbAAy" role="PzmwI">
       <ref role="PrY4T" node="6OtXG9K2KUI" resolve="DocumentationObjective" />
@@ -162,8 +162,8 @@
     <node concept="PrWs8" id="50$LP2ztBgn" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
-    <node concept="PrWs8" id="h0TBbGY" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="1ob16QT4XKh" role="PzmwI">
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
     </node>
     <node concept="PrWs8" id="hOIDY1x" role="PzmwI">
       <ref role="PrY4T" node="hOIDzy1" resolve="IStructureDeprecatable" />
@@ -184,8 +184,9 @@
   <node concept="1TIwiD" id="fKAxPRU">
     <property role="TrG5h" value="DataTypeDeclaration" />
     <property role="EcuMT" value="1082978164218" />
-    <node concept="PrWs8" id="4kEAgZCmU$P" role="PzmwI">
-      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
+    <property role="R5$K7" value="true" />
+    <node concept="PrWs8" id="1ob16QT37Kd" role="PzmwI">
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
     </node>
     <node concept="PrWs8" id="5GuVNMLxi4Q" role="PzmwI">
       <ref role="PrY4T" node="hOIDzy1" resolve="IStructureDeprecatable" />
@@ -342,8 +343,8 @@
       <property role="TrG5h" value="languageId" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node concept="PrWs8" id="h0TBFkr" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="1ob16QT3ibT" role="PzmwI">
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
     </node>
     <node concept="PrWs8" id="50$LP2ztBbO" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
@@ -829,8 +830,8 @@
     <property role="TrG5h" value="EnumerationMemberDeclaration" />
     <property role="34LRSv" value="member" />
     <property role="R5$K2" value="true" />
-    <node concept="PrWs8" id="2TR3acGo7Ne" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="1ob16QT3iN4" role="PzmwI">
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
     </node>
     <node concept="PrWs8" id="VFd4X$DABJ" role="PzmwI">
       <ref role="PrY4T" node="VFd4X$DyC0" resolve="IEnumerationMember" />
@@ -853,6 +854,20 @@
     <property role="EcuMT" value="1075010451653667328" />
     <property role="3GE5qa" value="enums" />
     <property role="TrG5h" value="IEnumerationMember" />
+  </node>
+  <node concept="PlHQZ" id="1ob16QT2yIl">
+    <property role="EcuMT" value="1588368162880629653" />
+    <property role="TrG5h" value="INamedLanguageElement" />
+    <node concept="PrWs8" id="1ob16QT2yIm" role="PrDN$">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="PrWs8" id="1ob16QT2Prz" role="PrDN$">
+      <ref role="PrY4T" node="1ob16QT2Pru" resolve="ILanguageElement" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1ob16QT2Pru">
+    <property role="EcuMT" value="1588368162880706270" />
+    <property role="TrG5h" value="ILanguageElement" />
   </node>
 </model>
 

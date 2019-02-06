@@ -51,17 +51,6 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
         return SPropertyOperations.hasEnumValue(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation") || SEnumOperations.getMemberValue(SEnumOperations.getMember(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure", 0xfc6f3944c2L, "Cardinality", 0xfc6f3944c4L, "1")).equals(propertyValue) || SEnumOperations.getMemberValue(SEnumOperations.getMember(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure", 0xfc6f3944c2L, "Cardinality", 0xfc6f3944c3L, "0..1")).equals(propertyValue);
       }
     });
-    properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L), this) {
-      @Override
-      public boolean hasOwnValidator() {
-        return true;
-      }
-      @Override
-      public boolean validateValue(SNode node, Object $propertyValue) {
-        String propertyValue = (String) ($propertyValue);
-        return propertyValue.matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
-      }
-    });
     properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L), this) {
       @Override
       public boolean hasOwnValidator() {

@@ -28,15 +28,17 @@ public final class LanguageConceptSwitch {
   public static final int IConceptAspect = 16;
   public static final int IEnumeration = 17;
   public static final int IEnumerationMember = 18;
-  public static final int IStructureDeprecatable = 19;
-  public static final int InterfaceConceptDeclaration = 20;
-  public static final int InterfaceConceptReference = 21;
-  public static final int LinkDeclaration = 22;
-  public static final int PrimitiveDataTypeDeclaration = 23;
-  public static final int PropertyDeclaration = 24;
-  public static final int RefPresentationTemplate = 25;
-  public static final int ReferenceLinkDeclartionScopeKind = 26;
-  public static final int SmartReferenceAttribute = 27;
+  public static final int ILanguageElement = 19;
+  public static final int INamedLanguageElement = 20;
+  public static final int IStructureDeprecatable = 21;
+  public static final int InterfaceConceptDeclaration = 22;
+  public static final int InterfaceConceptReference = 23;
+  public static final int LinkDeclaration = 24;
+  public static final int PrimitiveDataTypeDeclaration = 25;
+  public static final int PropertyDeclaration = 26;
+  public static final int RefPresentationTemplate = 27;
+  public static final int ReferenceLinkDeclartionScopeKind = 28;
+  public static final int SmartReferenceAttribute = 29;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc72da2b97cce4447L, 0x8389f407dc1158b7L);
@@ -59,6 +61,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x24614259e94f0c84L, IConceptAspect);
     builder.put(0xeeb344f64a629e5L, IEnumeration);
     builder.put(0xeeb344f64a62a00L, IEnumerationMember);
+    builder.put(0x160b046db90b56deL, ILanguageElement);
+    builder.put(0x160b046db90a2b95L, INamedLanguageElement);
     builder.put(0x11d2ea63881L, IStructureDeprecatable);
     builder.put(0x1103556dcafL, InterfaceConceptDeclaration);
     builder.put(0x110356fc618L, InterfaceConceptReference);

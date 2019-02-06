@@ -270,7 +270,7 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="nn" index="uoxfO">
+      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
         <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
@@ -290,7 +290,7 @@
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
-      <concept id="1240171359678" name="jetbrains.mps.lang.smodel.structure.EnumMember_ValueOperation" flags="nn" index="2ZYiMu" />
+      <concept id="1240171359678" name="jetbrains.mps.lang.smodel.structure.EnumMember_ValueOperation_Old" flags="nn" index="2ZYiMu" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
@@ -312,7 +312,7 @@
         <reference id="1240930118028" name="enumDeclaration" index="3HcIyG" />
         <child id="1240930317927" name="operation" index="3Hdvt7" />
       </concept>
-      <concept id="1240930444945" name="jetbrains.mps.lang.smodel.structure.SEnum_MemberOperation" flags="ng" index="3HdYuL">
+      <concept id="1240930444945" name="jetbrains.mps.lang.smodel.structure.SEnum_MemberOperation_Old" flags="ng" index="3HdYuL">
         <reference id="1240930444946" name="member" index="3HdYuM" />
       </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
@@ -521,24 +521,6 @@
                     <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
                     <node concept="1Wqviy" id="wJ65cZ4zmU" role="37wK5m" />
                   </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="EnEH3" id="3wMIbANihDO" role="1MhHOB">
-      <ref role="EomxK" to="tpce:fA0kJcN" resolve="role" />
-      <node concept="QB0g5" id="3wMIbANihDP" role="QCWH9">
-        <node concept="3clFbS" id="3wMIbANihDQ" role="2VODD2">
-          <node concept="3clFbF" id="3wMIbANij9A" role="3cqZAp">
-            <node concept="2OqwBi" id="4rXzdWLTH24" role="3clFbG">
-              <node concept="1Wqviy" id="4rXzdWLTH25" role="2Oq$k0" />
-              <node concept="liA8E" id="4rXzdWLTH26" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String):boolean" resolve="matches" />
-                <node concept="Xl_RD" id="4rXzdWLTH27" role="37wK5m">
-                  <property role="Xl_RC" value="[a-zA-Z[_]][a-zA-Z0-9$[_]]*" />
                 </node>
               </node>
             </node>
@@ -968,24 +950,6 @@
   </node>
   <node concept="1M2fIO" id="4rXzdWLTGLv">
     <ref role="1M2myG" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-    <node concept="EnEH3" id="4rXzdWLTH1J" role="1MhHOB">
-      <ref role="EomxK" to="tpck:h0TrG11" resolve="name" />
-      <node concept="QB0g5" id="4rXzdWLTH1K" role="QCWH9">
-        <node concept="3clFbS" id="4rXzdWLTH1L" role="2VODD2">
-          <node concept="3clFbF" id="4rXzdWLTH1M" role="3cqZAp">
-            <node concept="2OqwBi" id="4rXzdWLTH1N" role="3clFbG">
-              <node concept="1Wqviy" id="4rXzdWLTH1O" role="2Oq$k0" />
-              <node concept="liA8E" id="4rXzdWLTH1P" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String):boolean" resolve="matches" />
-                <node concept="Xl_RD" id="4rXzdWLTH1Q" role="37wK5m">
-                  <property role="Xl_RC" value="[a-zA-Z[_]][a-zA-Z0-9$[_]]*" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="EnEH3" id="5w5a4OfWTDI" role="1MhHOB">
       <ref role="EomxK" to="tpce:5OIo7_R7SN0" resolve="conceptId" />
       <node concept="QB0g5" id="5w5a4OfWTOH" role="QCWH9">
@@ -1107,24 +1071,6 @@
   </node>
   <node concept="1M2fIO" id="4rXzdWLTH1T">
     <ref role="1M2myG" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
-    <node concept="EnEH3" id="4rXzdWLTH1U" role="1MhHOB">
-      <ref role="EomxK" to="tpck:h0TrG11" resolve="name" />
-      <node concept="QB0g5" id="4rXzdWLTH1V" role="QCWH9">
-        <node concept="3clFbS" id="4rXzdWLTH1W" role="2VODD2">
-          <node concept="3clFbF" id="4rXzdWLTH1X" role="3cqZAp">
-            <node concept="2OqwBi" id="4rXzdWLTH1Y" role="3clFbG">
-              <node concept="1Wqviy" id="4rXzdWLTH1Z" role="2Oq$k0" />
-              <node concept="liA8E" id="4rXzdWLTH20" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String):boolean" resolve="matches" />
-                <node concept="Xl_RD" id="4rXzdWLTH21" role="37wK5m">
-                  <property role="Xl_RC" value="[a-zA-Z[_]][a-zA-Z0-9$[_]]*" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="EnEH3" id="dqwjwHwLI9" role="1MhHOB">
       <ref role="EomxK" to="tpce:dqwjwHwEjp" resolve="propertyId" />
       <node concept="QB0g5" id="dqwjwHwLIa" role="QCWH9">
@@ -2448,6 +2394,27 @@
               <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
               <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
               <node concept="1Q6Npb" id="VFd4X$D$ho" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="1ob16QT2zdm">
+    <ref role="1M2myG" to="tpce:1ob16QT2yIl" resolve="INamedLanguageElement" />
+    <node concept="EnEH3" id="1ob16QT2zdn" role="1MhHOB">
+      <ref role="EomxK" to="tpck:h0TrG11" resolve="name" />
+      <node concept="QB0g5" id="1ob16QT2BfW" role="QCWH9">
+        <node concept="3clFbS" id="1ob16QT2BfX" role="2VODD2">
+          <node concept="3clFbF" id="1ob16QT2Bg3" role="3cqZAp">
+            <node concept="2OqwBi" id="1ob16QT2$SK" role="3clFbG">
+              <node concept="1Wqviy" id="1ob16QT2CwW" role="2Oq$k0" />
+              <node concept="liA8E" id="1ob16QT2_$j" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String):boolean" resolve="matches" />
+                <node concept="Xl_RD" id="1ob16QT2ASC" role="37wK5m">
+                  <property role="Xl_RC" value="[a-zA-Z$[_]][a-zA-Z0-9$[_]]*" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

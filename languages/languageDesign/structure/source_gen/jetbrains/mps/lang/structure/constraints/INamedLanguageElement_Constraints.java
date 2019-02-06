@@ -12,15 +12,15 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
-  public PropertyDeclaration_Constraints() {
-    super(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration"));
+public class INamedLanguageElement_Constraints extends BaseConstraintsDescriptor {
+  public INamedLanguageElement_Constraints() {
+    super(MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90a2b95L, "jetbrains.mps.lang.structure.structure.INamedLanguageElement"));
   }
 
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L), this) {
+    properties.put(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L), this) {
       @Override
       public boolean hasOwnValidator() {
         return true;
@@ -28,15 +28,7 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
       @Override
       public boolean validateValue(SNode node, Object $propertyValue) {
         String propertyValue = (String) ($propertyValue);
-        if ((propertyValue == null || propertyValue.length() == 0)) {
-          return true;
-        }
-        try {
-          Long.parseLong(propertyValue);
-          return true;
-        } catch (NumberFormatException e) {
-          return false;
-        }
+        return propertyValue.matches("[a-zA-Z$[_]][a-zA-Z0-9$[_]]*");
       }
     });
     return properties;
