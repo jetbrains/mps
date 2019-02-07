@@ -233,12 +233,9 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
-      <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
-        <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
-      </concept>
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
-      <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
-        <child id="1145567471833" name="createdType" index="2T96Bj" />
+      <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
+        <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
@@ -279,6 +276,7 @@
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
+      <concept id="1151702311717" name="jetbrains.mps.baseLanguage.collections.structure.ToListOperation" flags="nn" index="ANE8D" />
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1240325842691" name="jetbrains.mps.baseLanguage.collections.structure.AsSequenceOperation" flags="nn" index="39bAoz" />
       <concept id="1201792049884" name="jetbrains.mps.baseLanguage.collections.structure.TranslateOperation" flags="nn" index="3goQfb" />
@@ -1707,12 +1705,24 @@
                           <ref role="37wK5l" to="tken:2pk5iwY3SS_" resolve="getAllModules" />
                         </node>
                       </node>
-                      <node concept="2ShNRf" id="3x_dLGIBSlh" role="37wK5m">
-                        <node concept="2T8Vx0" id="3x_dLGIBSlf" role="2ShVmc">
-                          <node concept="2I9FWS" id="3x_dLGIBSlg" role="2T96Bj">
-                            <ref role="2I9WkF" to="kdzh:5HVSRHdUrHO" resolve="BuildMps_IdeaPlugin" />
+                      <node concept="2OqwBi" id="3a3EL8ROqNK" role="37wK5m">
+                        <node concept="2OqwBi" id="3a3EL8ROi7i" role="2Oq$k0">
+                          <node concept="2OqwBi" id="3a3EL8RO91e" role="2Oq$k0">
+                            <node concept="2OqwBi" id="3a3EL8RO3O3" role="2Oq$k0">
+                              <node concept="30H73N" id="3a3EL8RO2MC" role="2Oq$k0" />
+                              <node concept="3TrEf2" id="3a3EL8RO6Y6" role="2OqNvi">
+                                <ref role="3Tt5mk" to="5tjl:5I1s5NvGLlK" resolve="options" />
+                              </node>
+                            </node>
+                            <node concept="3Tsc0h" id="3a3EL8ROchH" role="2OqNvi">
+                              <ref role="3TtcxE" to="5tjl:5I1s5NvuWcr" resolve="requiredPlugins" />
+                            </node>
+                          </node>
+                          <node concept="13MTOL" id="3a3EL8ROnTw" role="2OqNvi">
+                            <ref role="13MTZf" to="5tjl:5I1s5NvuWcp" resolve="plugin" />
                           </node>
                         </node>
+                        <node concept="ANE8D" id="3a3EL8ROv1n" role="2OqNvi" />
                       </node>
                     </node>
                   </node>
