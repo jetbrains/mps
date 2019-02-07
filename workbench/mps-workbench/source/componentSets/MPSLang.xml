@@ -80,7 +80,8 @@
 
     <component>
       <interface-class>com.intellij.openapi.fileEditor.FileEditorManager</interface-class>
-      <implementation-class>com.intellij.openapi.fileEditor.impl.PsiAwareFileEditorManagerImpl</implementation-class>
+      <!-- MPS Patch: we don't need PsiAware manager -->
+      <implementation-class>com.intellij.openapi.fileEditor.impl.FileEditorManagerImpl</implementation-class>
       <headless-implementation-class>com.intellij.openapi.fileEditor.impl.TestEditorManagerImpl</headless-implementation-class>
       <option name="workspace" value="true"/>
     </component>

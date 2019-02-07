@@ -220,6 +220,8 @@
     <action id="CollapseTreeNode" class="com.intellij.ide.actions.tree.CollapseTreeNodeAction"/>
     <action id="FullyExpandTreeNode" class="com.intellij.ide.actions.tree.FullyExpandTreeNodeAction"/>
 
+    <action id="SelectNextOccurrence" class="com.intellij.openapi.editor.actions.SelectNextOccurrenceAction"/>
+
     <action id="Refresh" class="com.intellij.ide.actions.RefreshAction"/>
 
     <group id="Diff.KeymapGroup" text="Diff \&amp;\&amp; Merge">
@@ -363,30 +365,34 @@
         <group id="EditCreateDeleteGroup">
           <action id="$Delete" class="com.intellij.ide.actions.DeleteAction"/>
         </group>
-        <!-- MPS Patch
         <separator/>
         <group id="FindMenuGroup" popup="true">
-          <action id="Find" class="com.intellij.openapi.editor.actions.IncrementalFindAction" icon="AllIcons.Actions.Find"/>
-          <action id="Replace" class="com.intellij.openapi.editor.actions.ReplaceAction" icon="AllIcons.Actions.Replace"/>
-          <action id="FindNext" class="com.intellij.ide.actions.SearchAgainAction"/>
-          <action id="FindPrevious" class="com.intellij.ide.actions.SearchBackAction"/>
-          <action id="FindWordAtCaret" class="com.intellij.openapi.editor.actions.FindWordAtCaretAction"/>
-          <action id="SelectAllOccurrences" class="com.intellij.openapi.editor.actions.SelectAllOccurrencesAction"/>
-          <action id="SelectNextOccurrence" class="com.intellij.openapi.editor.actions.SelectNextOccurrenceAction"/>
-          <action id="UnselectPreviousOccurrence" class="com.intellij.openapi.editor.actions.UnselectPreviousOccurrenceAction"/>
-          <action id="GotoNextElementUnderCaretUsage" class="com.intellij.codeInsight.daemon.impl.actions.GotoNextElementUnderCaretUsageAction"/>
-          <action id="GotoPrevElementUnderCaretUsage" class="com.intellij.codeInsight.daemon.impl.actions.GotoPrevElementUnderCaretUsageAction"/>
-          <separator/>
-          <action id="FindInPath" class="com.intellij.find.actions.FindInPathAction"/>
-          <action id="ReplaceInPath" class="com.intellij.find.actions.ReplaceInPathAction"/>
-          <separator/>
-          <action id="FindUsages" class="com.intellij.find.actions.FindUsagesAction"/>
-          <action id="ShowSettingsAndFindUsages" class="com.intellij.find.actions.FindUsagesAction$ShowSettingsAndFindUsages"/>
-          <action id="ShowUsages" class="com.intellij.find.actions.ShowUsagesAction"/>
-          <action id="FindUsagesInFile" class="com.intellij.find.actions.FindUsagesInFileAction"/>
-          <action id="HighlightUsagesInFile" class="com.intellij.codeInsight.highlighting.actions.HighlightUsagesAction"/>
-          <group id="ShowRecentFindUsagesGroup" class="com.intellij.find.impl.ShowRecentFindUsagesGroup" popup="true"/>
-        </group>
+            <!--
+            <action id="Find" class="com.intellij.openapi.editor.actions.IncrementalFindAction" icon="AllIcons.Actions.Find"/>
+            <action id="Replace" class="com.intellij.openapi.editor.actions.ReplaceAction" icon="AllIcons.Actions.Replace"/>
+            <action id="FindNext" class="com.intellij.ide.actions.SearchAgainAction"/>
+            <action id="FindPrevious" class="com.intellij.ide.actions.SearchBackAction"/>
+            <action id="FindWordAtCaret" class="com.intellij.openapi.editor.actions.FindWordAtCaretAction"/>
+            -->
+            <action id="SelectAllOccurrences" class="com.intellij.openapi.editor.actions.SelectAllOccurrencesAction"/>
+            <reference ref="SelectNextOccurrence"/>
+            <action id="UnselectPreviousOccurrence" class="com.intellij.openapi.editor.actions.UnselectPreviousOccurrenceAction"/>
+            <!--
+            <action id="GotoNextElementUnderCaretUsage" class="com.intellij.codeInsight.daemon.impl.actions.GotoNextElementUnderCaretUsageAction"/>
+            <action id="GotoPrevElementUnderCaretUsage" class="com.intellij.codeInsight.daemon.impl.actions.GotoPrevElementUnderCaretUsageAction"/>
+            <separator/>
+            <action id="FindInPath" class="com.intellij.find.actions.FindInPathAction"/>
+            <action id="ReplaceInPath" class="com.intellij.find.actions.ReplaceInPathAction"/>
+            <separator/>
+            <action id="FindUsages" class="com.intellij.find.actions.FindUsagesAction"/>
+            <action id="ShowSettingsAndFindUsages" class="com.intellij.find.actions.FindUsagesAction$ShowSettingsAndFindUsages"/>
+            <action id="ShowUsages" class="com.intellij.find.actions.ShowUsagesAction"/>
+            <action id="FindUsagesInFile" class="com.intellij.find.actions.FindUsagesInFileAction"/>
+            <action id="HighlightUsagesInFile" class="com.intellij.codeInsight.highlighting.actions.HighlightUsagesAction"/>
+            <group id="ShowRecentFindUsagesGroup" class="com.intellij.find.impl.ShowRecentFindUsagesGroup" popup="true"/>
+            -->
+          </group>
+        <!-- MPS Patch
         <group id="Macros" popup="true">
           <group id="StandardMacroActions">
             <action id="PlaybackLastMacro" class="com.intellij.ide.actionMacro.actions.PlaybackLastMacroAction"/>
@@ -397,8 +403,8 @@
           <separator/>
           <group id="MacrosGroup" class="com.intellij.ide.actionMacro.actions.MacrosGroup"/>
         </group>
-        <reference ref="EditorToggleColumnMode"/>
         -->
+        <reference ref="EditorToggleColumnMode"/>
         <group id="EditSelectGroup">
           <action id="$SelectAll" class="com.intellij.ide.actions.SelectAllAction"/>
         </group>
@@ -432,6 +438,7 @@
         <group id="ViewRecentActions">
           <action id="RecentFiles" class="com.intellij.ide.actions.ShowRecentFilesAction"/>
           <action id="RecentChangedFiles" class="com.intellij.ide.actions.ShowRecentlyEditedFilesAction"/>
+          <action id="RecentLocations" class="com.intellij.ide.actions.RecentLocationsAction"/>
         </group>
         <separator/>
         <group id="CompareActions">
@@ -453,11 +460,12 @@
         </group>
 
         <group id="EditorToggleActions" popup="true">
+          <action id="EditorToggleUseSoftWraps" class="com.intellij.openapi.editor.actions.ToggleUseSoftWrapsMenuAction" icon="AllIcons.Actions.ToggleSoftWrap"/>
+          <separator/>
           <action id="EditorToggleShowWhitespaces" class="com.intellij.openapi.editor.actions.ToggleShowWhitespacesAction"/>
           <action id="EditorToggleShowLineNumbers" class="com.intellij.openapi.editor.actions.ToggleShowLineNumbersAction"/>
           <action id="EditorToggleShowGutterIcons" class="com.intellij.openapi.editor.actions.ToggleShowGutterIconsAction"/>
           <action id="EditorToggleShowIndentLines" class="com.intellij.openapi.editor.actions.ToggleShowIndentLinesAction"/>
-          <action id="EditorToggleUseSoftWraps" class="com.intellij.openapi.editor.actions.ToggleUseSoftWrapsMenuAction" icon="AllIcons.Actions.ToggleSoftWrap"/>
         </group>
 
         <!-- MPS disable
@@ -625,6 +633,13 @@
       <group id="OtherMenu" class="com.intellij.ide.actions.NonEmptyActionGroup"/>
     </group>
 
+    <!-- MPS patch: This action extracted from Main menu, because they are required, but should not be visible there-->
+    <action id="Find" class="com.intellij.openapi.editor.actions.IncrementalFindAction" icon="AllIcons.Actions.Find"/>
+    <action id="Replace" class="com.intellij.openapi.editor.actions.ReplaceAction" icon="AllIcons.Actions.Replace"/>
+    <action id="FindNext" class="com.intellij.ide.actions.SearchAgainAction"/>
+    <action id="FindPrevious" class="com.intellij.ide.actions.SearchBackAction"/>
+    <action id="FindWordAtCaret" class="com.intellij.openapi.editor.actions.FindWordAtCaretAction"/>
+
     <group id="MainToolBar">
       <reference ref="OpenFile"/>
       <reference ref="SaveAll"/>
@@ -749,8 +764,8 @@
     </group>
 
     <group id="EditorGutterPopupMenu">
-      <action id="EditorGutterToggleGlobalSoftWraps" class="com.intellij.openapi.editor.actions.ToggleSoftWrapsGloballyAction"/>
       <reference ref="EditorToggleUseSoftWraps"/>
+      <action id="ConfigureSoftWraps" class="com.intellij.openapi.editor.actions.ConfigureSoftWrapsAction"/>
       <separator/>
       <action id="EditorGutterToggleGlobalLineNumbers" class="com.intellij.openapi.editor.actions.ToggleShowLineNumbersGloballyAction"/>
       <action id="EditorGutterToggleGlobalIndentLines" class="com.intellij.openapi.editor.actions.ToggleShowIndentLinesGloballyAction"/>
@@ -762,7 +777,7 @@
       <action id="FileChooser.GotoDesktop" class="com.intellij.openapi.fileChooser.actions.GotoDesktopDirAction"
         icon="AllIcons.Nodes.Desktop"/>
       <action id="FileChooser.GotoProject" class="com.intellij.openapi.fileChooser.actions.GotoProjectDirectory"
-        icon="AllIcons.Nodes.IdeaProject"/>
+        icon="AllIcons.Actions.ProjectDirectory"/>
       <!-- MPS Patch Start-->
       <action id="FileChooser.GotoMPSModule"
               class="jetbrains.mps.ide.ui.filechoosers.treefilechooser.GotoModuleDirectory"
@@ -895,6 +910,7 @@
 
       <group id="FeatureUsage.Internal" popup="true" compact="true" text="Feature Usages Statistics">
       <action internal="true" id="SendEventLogStatistics" class="com.intellij.internal.statistic.actions.SendEventLogAction" text="Send Feature Usage Event Log"/>
+        <action internal="true" id="CleanupEventLogStatistics" class="com.intellij.internal.statistic.actions.CleanupEventLogAction" text="Clean Up Event Log"/>
       <action internal="true" id="RecordStateCollectors" class="com.intellij.internal.statistic.actions.RecordStateStatisticsEventLogAction" text="Record State Collectors to Event Log"/>
       </group>
 
@@ -942,6 +958,19 @@
               text="Cancel Comparing New Files with Each Other" icon="AllIcons.Vcs.Remove"/>
       <add-to-group group-id="Diff.KeymapGroup" anchor="last"/>
     </group>
+
+    <action id="OpenBlankEditorInBlankDiffWindow" class="com.intellij.diff.actions.SwitchToBlankEditorAction" text="Switch to Blank Editor">
+      <add-to-group group-id="Diff.EditorPopupMenu" anchor="last"/>
+      <add-to-group group-id="Diff.KeymapGroup" relative-to-action="ShowBlankDiffWindow" anchor="after"/>
+    </action>
+    <action id="OpenFileEditorInBlankDiffWindow" class="com.intellij.diff.actions.SwitchToFileEditorAction" text="Switch to a File...">
+      <add-to-group group-id="Diff.EditorPopupMenu" relative-to-action="OpenBlankEditorInBlankDiffWindow" anchor="after"/>
+      <add-to-group group-id="Diff.KeymapGroup" relative-to-action="OpenBlankEditorInBlankDiffWindow" anchor="after"/>
+    </action>
+    <action id="SwapSidesInDiffWindow" class="com.intellij.diff.actions.impl.SwapDiffSidesAction" text="Swap Sides" icon="AllIcons.Actions.SwapPanels">
+      <add-to-group group-id="Diff.ViewerToolbar"/>
+      <add-to-group group-id="Diff.KeymapGroup" relative-to-action="OpenFileEditorInBlankDiffWindow" anchor="after"/>
+    </action>
 
     <action id="Rerun" class="com.intellij.execution.runners.FakeRerunAction" text="Rerun"/>
     <action id="RerunTests" class="com.intellij.execution.runners.RerunTestsAction" text="Rerun Tests"/>

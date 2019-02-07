@@ -17,19 +17,5 @@
               description="You can open existing project with this action"/>
       <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
     </group>
-
-    <group id="FindMenuGroup" popup="true">
-      <add-to-group group-id="EditCreateDeleteGroup" anchor="before" relative-to-action="EditSelectGroup"/>
-      <action id="SelectNextOccurrence" class="com.intellij.openapi.editor.actions.SelectNextOccurrenceAction"/>
-      <action id="UnselectPreviousOccurrence" class="com.intellij.openapi.editor.actions.UnselectPreviousOccurrenceAction"/>
-      <action id="SelectAllOccurrences" class="com.intellij.openapi.editor.actions.SelectAllOccurrencesAction"/>
-    </group>
-
-    <action id="Find" class="com.intellij.openapi.editor.actions.IncrementalFindAction" icon="/actions/menu-find.png"/>
-    <action id="Replace" class="com.intellij.openapi.editor.actions.ReplaceAction" icon="/actions/menu-replace.png"/>
-    <action id="FindNext" class="com.intellij.ide.actions.SearchAgainAction"/>
-    <action id="FindPrevious" class="com.intellij.ide.actions.SearchBackAction"/>
-    <action id="FindWordAtCaret" class="com.intellij.openapi.editor.actions.FindWordAtCaretAction"/>
-    <action id="FindUsages" class="com.intellij.find.actions.FindUsagesAction"/>
   </actions>
 </component>
