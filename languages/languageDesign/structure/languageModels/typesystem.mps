@@ -80,6 +80,7 @@
       <concept id="1225271221393" name="jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression" flags="nn" index="17QLQc" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
+      <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -257,7 +258,7 @@
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="nn" index="uoxfO">
+      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
         <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="1166648550386" name="jetbrains.mps.lang.smodel.structure.Model_CreateNewRootNodeOperation" flags="nn" index="2xF2bX" />
@@ -4719,12 +4720,40 @@
           </node>
           <node concept="3clFbJ" id="VFd4X$zuYX" role="3cqZAp">
             <node concept="3clFbS" id="VFd4X$zuYZ" role="3clFbx">
-              <node concept="2MkqsV" id="VFd4X$$crR" role="3cqZAp">
-                <node concept="Xl_RD" id="VFd4X$$crS" role="2MkJ7o">
-                  <property role="Xl_RC" value="Empty member presentation" />
+              <node concept="3clFbJ" id="1ob16QTnEJJ" role="3cqZAp">
+                <node concept="3clFbS" id="1ob16QTnEJL" role="3clFbx">
+                  <node concept="3clFbF" id="1ob16QTmXBZ" role="3cqZAp">
+                    <node concept="2OqwBi" id="1ob16QTmXC0" role="3clFbG">
+                      <node concept="37vLTw" id="1ob16QTmXC1" role="2Oq$k0">
+                        <ref role="3cqZAo" node="VFd4X$txUZ" resolve="prensetations" />
+                      </node>
+                      <node concept="liA8E" id="1ob16QTmXC2" role="2OqNvi">
+                        <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                        <node concept="2OqwBi" id="1ob16QTmXC3" role="37wK5m">
+                          <node concept="2GrUjf" id="1ob16QTmXC4" role="2Oq$k0">
+                            <ref role="2Gs0qQ" node="VFd4X$twLe" resolve="member" />
+                          </node>
+                          <node concept="3TrcHB" id="1ob16QTncE0" role="2OqNvi">
+                            <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                          </node>
+                        </node>
+                        <node concept="2GrUjf" id="1ob16QTmXC6" role="37wK5m">
+                          <ref role="2Gs0qQ" node="VFd4X$twLe" resolve="member" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
-                <node concept="2GrUjf" id="VFd4X$$crT" role="2OEOjV">
-                  <ref role="2Gs0qQ" node="VFd4X$twLe" resolve="member" />
+                <node concept="2OqwBi" id="1ob16QToEUf" role="3clFbw">
+                  <node concept="2OqwBi" id="1ob16QTnF6q" role="2Oq$k0">
+                    <node concept="2GrUjf" id="1ob16QTnEUz" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="VFd4X$twLe" resolve="member" />
+                    </node>
+                    <node concept="3TrcHB" id="1ob16QTnUgx" role="2OqNvi">
+                      <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                    </node>
+                  </node>
+                  <node concept="17RvpY" id="1ob16QToU4n" role="2OqNvi" />
                 </node>
               </node>
             </node>

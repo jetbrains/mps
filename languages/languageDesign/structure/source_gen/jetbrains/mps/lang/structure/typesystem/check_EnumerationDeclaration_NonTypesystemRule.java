@@ -38,9 +38,8 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
         names.putValue(SPropertyOperations.getString(member, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), member);
       }
       if (isEmptyString(SPropertyOperations.getString(member, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation")))) {
-        {
-          MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Empty member presentation", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1075010451652265719", null, errorTarget);
+        if (isNotEmptyString(SPropertyOperations.getString(member, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
+          prensetations.putValue(SPropertyOperations.getString(member, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), member);
         }
       } else {
         prensetations.putValue(SPropertyOperations.getString(member, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation")), member);
@@ -81,5 +80,8 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 }

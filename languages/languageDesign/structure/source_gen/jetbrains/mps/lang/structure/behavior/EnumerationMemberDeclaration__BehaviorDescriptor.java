@@ -41,7 +41,8 @@ public final class EnumerationMemberDeclaration__BehaviorDescriptor extends Base
     return SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   /*package*/ static String getMemberPresentation_idVFd4X$DBBV(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation"));
+    String presentation = SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation"));
+    return ((presentation == null || presentation.length() == 0) ? SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : presentation);
   }
 
   /*package*/ EnumerationMemberDeclaration__BehaviorDescriptor() {
