@@ -72,6 +72,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BuildMps_TipsSolution;
   private ConceptPresentation props_GeneratorInternal_BuildMps_Module;
   private ConceptPresentation props_GeneratorInternal_BuildSourcePath;
+  private ConceptPresentation props_GeneratorInternal_PluginExpanded;
   private ConceptPresentation props_GeneratorInternal_String;
 
   @Override
@@ -308,7 +309,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_IdeaPlugin == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a13b0nc);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a13b0oc);
           props_BuildMps_IdeaPlugin = cpb.create();
         }
         return props_BuildMps_IdeaPlugin;
@@ -531,6 +532,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GeneratorInternal_BuildSourcePath = cpb.create();
         }
         return props_GeneratorInternal_BuildSourcePath;
+      case LanguageConceptSwitch.GeneratorInternal_PluginExpanded:
+        if (props_GeneratorInternal_PluginExpanded == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("GeneratorInternal_PluginExpanded");
+          props_GeneratorInternal_PluginExpanded = cpb.create();
+        }
+        return props_GeneratorInternal_PluginExpanded;
       case LanguageConceptSwitch.GeneratorInternal_String:
         if (props_GeneratorInternal_String == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

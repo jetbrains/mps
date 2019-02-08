@@ -72,7 +72,8 @@ public final class LanguageConceptSwitch {
   public static final int BuildMps_TipsSolution = 60;
   public static final int GeneratorInternal_BuildMps_Module = 61;
   public static final int GeneratorInternal_BuildSourcePath = 62;
-  public static final int GeneratorInternal_String = 63;
+  public static final int GeneratorInternal_PluginExpanded = 63;
+  public static final int GeneratorInternal_String = 64;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xcf935df46994e9cL, 0xa132fa109541cba3L);
@@ -139,6 +140,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x71731b16a233b3c4L, BuildMps_TipsSolution);
     builder.put(0x44e5dd192e7771cfL, GeneratorInternal_BuildMps_Module);
     builder.put(0x44e5dd192e77725eL, GeneratorInternal_BuildSourcePath);
+    builder.put(0x3283ab1237f81c49L, GeneratorInternal_PluginExpanded);
     builder.put(0xd94b027412f0824L, GeneratorInternal_String);
     myIndex = builder.seal();
   }

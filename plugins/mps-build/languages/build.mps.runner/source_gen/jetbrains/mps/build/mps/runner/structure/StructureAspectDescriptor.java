@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBuildSolutionRunnerAspect = createDescriptorForBuildSolutionRunnerAspect();
   /*package*/ final ConceptDescriptor myConceptBuildSolutionRunnerPlugin = createDescriptorForBuildSolutionRunnerPlugin();
+  /*package*/ final ConceptDescriptor myConceptRequiredPlugin = createDescriptorForRequiredPlugin();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -23,7 +24,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBuildSolutionRunnerAspect, myConceptBuildSolutionRunnerPlugin);
+    return Arrays.asList(myConceptBuildSolutionRunnerAspect, myConceptBuildSolutionRunnerPlugin, myConceptRequiredPlugin);
   }
 
   @Override
@@ -34,6 +35,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBuildSolutionRunnerAspect;
       case LanguageConceptSwitch.BuildSolutionRunnerPlugin:
         return myConceptBuildSolutionRunnerPlugin;
+      case LanguageConceptSwitch.RequiredPlugin:
+        return myConceptRequiredPlugin;
       default:
         return null;
     }
@@ -57,6 +60,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)/4173297143638950526");
     b.version(2);
     b.associate("solution", 0x54b085b5945c6691L).target(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L).optional(false).origin("6102524510011680401").done();
+    b.aggregate("requiredPlugin", 0x3283ab1237cb7bddL).target(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L).optional(true).ordered(true).multiple(true).origin("3639941018579336157").done();
     b.alias("run code");
     return b.create();
   }
@@ -67,6 +71,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)/4173297143638832582");
     b.version(2);
     b.alias("mps-runner");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForRequiredPlugin() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.mps.runner", "RequiredPlugin", 0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L);
+    b.class_(false, false, false);
+    b.origin("r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)/6593674873635848984");
+    b.version(2);
+    b.associate("plugin", 0x5b81705cdf7bc319L).target(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L).optional(false).origin("6593674873635848985").done();
     return b.create();
   }
 }
