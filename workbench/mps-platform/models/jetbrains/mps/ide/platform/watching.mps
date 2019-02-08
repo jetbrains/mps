@@ -8846,16 +8846,26 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbF" id="501K0YLMPXm" role="3cqZAp">
-                <node concept="2OqwBi" id="501K0YLMPXn" role="3clFbG">
-                  <node concept="37vLTw" id="501K0YLMPXo" role="2Oq$k0">
-                    <ref role="3cqZAo" node="501K0YLMPSM" resolve="myLocalFileSystem" />
-                  </node>
-                  <node concept="liA8E" id="501K0YLMPXp" role="2OqNvi">
-                    <ref role="37wK5l" to="jlff:~LocalFileSystem.removeWatchedRoot(com.intellij.openapi.vfs.LocalFileSystem$WatchRequest):void" resolve="removeWatchedRoot" />
-                    <node concept="37vLTw" id="501K0YLMPXq" role="37wK5m">
-                      <ref role="3cqZAo" node="501K0YLMPXe" resolve="req" />
+              <node concept="3clFbJ" id="6EtKqJ$bm0I" role="3cqZAp">
+                <node concept="3clFbS" id="6EtKqJ$bm0K" role="3clFbx">
+                  <node concept="3clFbF" id="501K0YLMPXm" role="3cqZAp">
+                    <node concept="2OqwBi" id="501K0YLMPXn" role="3clFbG">
+                      <node concept="37vLTw" id="501K0YLMPXo" role="2Oq$k0">
+                        <ref role="3cqZAo" node="501K0YLMPSM" resolve="myLocalFileSystem" />
+                      </node>
+                      <node concept="liA8E" id="501K0YLMPXp" role="2OqNvi">
+                        <ref role="37wK5l" to="jlff:~LocalFileSystem.removeWatchedRoot(com.intellij.openapi.vfs.LocalFileSystem$WatchRequest):void" resolve="removeWatchedRoot" />
+                        <node concept="37vLTw" id="501K0YLMPXq" role="37wK5m">
+                          <ref role="3cqZAo" node="501K0YLMPXe" resolve="req" />
+                        </node>
+                      </node>
                     </node>
+                  </node>
+                </node>
+                <node concept="3y3z36" id="6EtKqJ$bmkb" role="3clFbw">
+                  <node concept="10Nm6u" id="6EtKqJ$bmmI" role="3uHU7w" />
+                  <node concept="37vLTw" id="6EtKqJ$bmeX" role="3uHU7B">
+                    <ref role="3cqZAo" node="501K0YLMPXe" resolve="req" />
                   </node>
                 </node>
               </node>
