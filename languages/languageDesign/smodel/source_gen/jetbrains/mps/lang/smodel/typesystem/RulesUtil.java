@@ -28,6 +28,10 @@ import jetbrains.mps.lang.pattern.IMatchingPattern;
 import java.util.ArrayList;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
 import jetbrains.mps.newTypesystem.SubtypingUtil;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -331,6 +335,32 @@ public class RulesUtil {
       return SLinkOperations.getTarget(_quotation_createNode_yxkngc_a0a0e0m(), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"));
     }
     return SLinkOperations.getTarget(SNodeOperations.cast(leastCommonSupertypes.iterator().next(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"));
+  }
+  public static SNode conceptSourceNode(SAbstractConcept concept) {
+    SModule sourceModule = concept.getLanguage().getSourceModule();
+    SNodeReference sourceNode = concept.getSourceNode();
+    if (sourceModule != null && sourceNode != null) {
+      return sourceNode.resolve(sourceModule.getRepository());
+    } else {
+      return null;
+    }
+  }
+  public static SNode closestConceptNode(SAbstractConcept concept) {
+    if (concept == null) {
+      return null;
+    }
+    SNode sourceNode = conceptSourceNode(concept);
+    if (concept instanceof SInterfaceConcept && sourceNode != null && SNodeOperations.as(sourceNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")) != null) {
+      return SNodeOperations.cast(sourceNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    }
+    while (concept instanceof SConcept) {
+      SNode currentSourceNode = conceptSourceNode(concept);
+      if (currentSourceNode != null && SNodeOperations.as(currentSourceNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")) != null) {
+        return SNodeOperations.as(currentSourceNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+      }
+      concept = ((SConcept) concept).getSuperConcept();
+    }
+    return null;
   }
   private static SNode _quotation_createNode_yxkngc_b0a0a5a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

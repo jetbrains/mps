@@ -65,7 +65,7 @@ public class NewModelDialog extends DialogWrapper {
   private final JComboBox<ModelFactoryType> myModelStorageFormat = new JComboBox<ModelFactoryType>();
 
   private ModelCreateHelper myResultHelper;
-  private EditableSModel myResultModel;
+  private EditableSModel myResult;
 
   public NewModelDialog(Project project, AbstractModule module, String namespace, String stereotype, boolean strict) throws HeadlessException {
     this(project, module, namespace, stereotype, strict, null, false);
@@ -109,14 +109,14 @@ public class NewModelDialog extends DialogWrapper {
   }
 
   public EditableSModel getResult() {
-    if (myResultModel == null) {
+    if (myResult == null) {
       try {
-        myResultModel = myResultHelper.createModel(myClone, myPreserveIds);
+        myResult = myResultHelper.createModel(myClone, myPreserveIds);
       } catch (ModelCannotBeCreatedException ex) {
         Messages.showErrorDialog(myProject.getProject(), "Could not create a new model because '" + ex.getMessage() + "'", "Error");
       }
     }
-    return myResultModel;
+    return myResult;
   }
   public ModelCreateHelper getResultHelper() {
     return myResultHelper;
