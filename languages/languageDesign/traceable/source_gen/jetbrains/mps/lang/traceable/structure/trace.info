@@ -15,7 +15,7 @@
       <unit at="10,0,32,0" name="jetbrains.mps.lang.traceable.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,76,0" name="jetbrains.mps.lang.traceable.structure.StructureAspectDescriptor" />
+      <unit at="15,0,81,0" name="jetbrains.mps.lang.traceable.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)/5067982036267369890">
@@ -36,18 +36,18 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5067982036267369890" at="16,0,17,0" concept="1" trace="myConceptScopeConcept" />
-      <node id="5067982036267369890" at="34,46,35,37" concept="4" />
-      <node id="5067982036267369890" at="54,70,55,175" concept="3" />
-      <node id="5067982036267369890" at="55,175,56,19" concept="0" />
-      <node id="5067982036267369890" at="56,19,57,115" concept="0" />
-      <node id="5067982036267369890" at="57,115,58,17" concept="0" />
-      <node id="5067982036267369890" at="58,17,59,22" concept="4" />
-      <node id="5067982036267369890" at="54,0,61,0" concept="6" trace="createDescriptorForScopeConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="5067982036267369890" at="34,46,35,37" />
-      <scope id="5067982036267369890" at="54,70,59,22">
+      <node id="5067982036267369890" at="39,46,40,37" concept="4" />
+      <node id="5067982036267369890" at="59,70,60,175" concept="3" />
+      <node id="5067982036267369890" at="60,175,61,19" concept="0" />
+      <node id="5067982036267369890" at="61,19,62,115" concept="0" />
+      <node id="5067982036267369890" at="62,115,63,17" concept="0" />
+      <node id="5067982036267369890" at="63,17,64,22" concept="4" />
+      <node id="5067982036267369890" at="59,0,66,0" concept="6" trace="createDescriptorForScopeConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5067982036267369890" at="39,46,40,37" />
+      <scope id="5067982036267369890" at="59,70,64,22">
         <var name="b" id="5067982036267369890" />
       </scope>
-      <scope id="5067982036267369890" at="54,0,61,0" />
+      <scope id="5067982036267369890" at="59,0,66,0" />
     </file>
   </root>
   <root nodeRef="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)/5067982036267369891">
@@ -68,18 +68,18 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5067982036267369891" at="17,0,18,0" concept="1" trace="myConceptTraceableConcept" />
-      <node id="5067982036267369891" at="36,50,37,41" concept="4" />
-      <node id="5067982036267369891" at="61,74,62,179" concept="3" />
-      <node id="5067982036267369891" at="62,179,63,19" concept="0" />
-      <node id="5067982036267369891" at="63,19,64,115" concept="0" />
-      <node id="5067982036267369891" at="64,115,65,17" concept="0" />
-      <node id="5067982036267369891" at="65,17,66,22" concept="4" />
-      <node id="5067982036267369891" at="61,0,68,0" concept="6" trace="createDescriptorForTraceableConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="5067982036267369891" at="36,50,37,41" />
-      <scope id="5067982036267369891" at="61,74,66,22">
+      <node id="5067982036267369891" at="41,50,42,41" concept="4" />
+      <node id="5067982036267369891" at="66,74,67,179" concept="3" />
+      <node id="5067982036267369891" at="67,179,68,19" concept="0" />
+      <node id="5067982036267369891" at="68,19,69,115" concept="0" />
+      <node id="5067982036267369891" at="69,115,70,17" concept="0" />
+      <node id="5067982036267369891" at="70,17,71,22" concept="4" />
+      <node id="5067982036267369891" at="66,0,73,0" concept="6" trace="createDescriptorForTraceableConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5067982036267369891" at="41,50,42,41" />
+      <scope id="5067982036267369891" at="66,74,71,22">
         <var name="b" id="5067982036267369891" />
       </scope>
-      <scope id="5067982036267369891" at="61,0,68,0" />
+      <scope id="5067982036267369891" at="66,0,73,0" />
     </file>
   </root>
   <root nodeRef="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)/5067982036267369892">
@@ -100,18 +100,18 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5067982036267369892" at="18,0,19,0" concept="1" trace="myConceptUnitConcept" />
-      <node id="5067982036267369892" at="38,45,39,36" concept="4" />
-      <node id="5067982036267369892" at="68,69,69,174" concept="3" />
-      <node id="5067982036267369892" at="69,174,70,19" concept="0" />
-      <node id="5067982036267369892" at="70,19,71,115" concept="0" />
-      <node id="5067982036267369892" at="71,115,72,17" concept="0" />
-      <node id="5067982036267369892" at="72,17,73,22" concept="4" />
-      <node id="5067982036267369892" at="68,0,75,0" concept="6" trace="createDescriptorForUnitConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="5067982036267369892" at="38,45,39,36" />
-      <scope id="5067982036267369892" at="68,69,73,22">
+      <node id="5067982036267369892" at="43,45,44,36" concept="4" />
+      <node id="5067982036267369892" at="73,69,74,174" concept="3" />
+      <node id="5067982036267369892" at="74,174,75,19" concept="0" />
+      <node id="5067982036267369892" at="75,19,76,115" concept="0" />
+      <node id="5067982036267369892" at="76,115,77,17" concept="0" />
+      <node id="5067982036267369892" at="77,17,78,22" concept="4" />
+      <node id="5067982036267369892" at="73,0,80,0" concept="6" trace="createDescriptorForUnitConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5067982036267369892" at="43,45,44,36" />
+      <scope id="5067982036267369892" at="73,69,78,22">
         <var name="b" id="5067982036267369892" />
       </scope>
-      <scope id="5067982036267369892" at="68,0,75,0" />
+      <scope id="5067982036267369892" at="73,0,80,0" />
     </file>
   </root>
 </debug-info>

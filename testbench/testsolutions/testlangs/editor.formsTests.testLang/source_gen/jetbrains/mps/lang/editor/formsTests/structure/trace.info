@@ -15,7 +15,7 @@
       <unit at="10,0,32,0" name="jetbrains.mps.lang.editor.formsTests.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="16,0,81,0" name="jetbrains.mps.lang.editor.formsTests.structure.StructureAspectDescriptor" />
+      <unit at="16,0,87,0" name="jetbrains.mps.lang.editor.formsTests.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:c520bb92-9267-4de8-9256-ed6ee26701fa(jetbrains.mps.lang.editor.formsTests.structure)/312429380032619373">
@@ -37,20 +37,20 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="312429380032619373" at="19,0,20,0" concept="1" trace="myConceptVariousCheckboxes" />
-      <node id="312429380032619373" at="39,51,40,42" concept="4" />
-      <node id="312429380032619373" at="71,75,72,187" concept="3" />
-      <node id="312429380032619373" at="72,187,73,33" concept="0" />
-      <node id="312429380032619373" at="73,33,74,122" concept="0" />
-      <node id="312429380032619373" at="74,122,75,17" concept="0" />
-      <node id="312429380032619374" at="75,17,76,121" concept="0" />
-      <node id="4319657350470028071" at="76,121,77,123" concept="0" />
-      <node id="312429380032619373" at="77,123,78,22" concept="4" />
-      <node id="312429380032619373" at="71,0,80,0" concept="6" trace="createDescriptorForVariousCheckboxes#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="312429380032619373" at="39,51,40,42" />
-      <scope id="312429380032619373" at="71,75,78,22">
+      <node id="312429380032619373" at="45,51,46,42" concept="4" />
+      <node id="312429380032619373" at="77,75,78,187" concept="3" />
+      <node id="312429380032619373" at="78,187,79,33" concept="0" />
+      <node id="312429380032619373" at="79,33,80,122" concept="0" />
+      <node id="312429380032619373" at="80,122,81,17" concept="0" />
+      <node id="312429380032619374" at="81,17,82,121" concept="0" />
+      <node id="4319657350470028071" at="82,121,83,123" concept="0" />
+      <node id="312429380032619373" at="83,123,84,22" concept="4" />
+      <node id="312429380032619373" at="77,0,86,0" concept="6" trace="createDescriptorForVariousCheckboxes#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="312429380032619373" at="45,51,46,42" />
+      <scope id="312429380032619373" at="77,75,84,22">
         <var name="b" id="312429380032619373" />
       </scope>
-      <scope id="312429380032619373" at="71,0,80,0" />
+      <scope id="312429380032619373" at="77,0,86,0" />
     </file>
   </root>
   <root nodeRef="r:c520bb92-9267-4de8-9256-ed6ee26701fa(jetbrains.mps.lang.editor.formsTests.structure)/5347446703374102164">
@@ -72,19 +72,19 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5347446703374102164" at="18,0,19,0" concept="1" trace="myConceptUsesTextCheckbox" />
-      <node id="5347446703374102164" at="37,50,38,41" concept="4" />
-      <node id="5347446703374102164" at="63,74,64,187" concept="3" />
-      <node id="5347446703374102164" at="64,187,65,33" concept="0" />
-      <node id="5347446703374102164" at="65,33,66,123" concept="0" />
-      <node id="5347446703374102164" at="66,123,67,17" concept="0" />
-      <node id="5347446703374102165" at="67,17,68,115" concept="0" />
-      <node id="5347446703374102164" at="68,115,69,22" concept="4" />
-      <node id="5347446703374102164" at="63,0,71,0" concept="6" trace="createDescriptorForUsesTextCheckbox#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="5347446703374102164" at="37,50,38,41" />
-      <scope id="5347446703374102164" at="63,74,69,22">
+      <node id="5347446703374102164" at="43,50,44,41" concept="4" />
+      <node id="5347446703374102164" at="69,74,70,187" concept="3" />
+      <node id="5347446703374102164" at="70,187,71,33" concept="0" />
+      <node id="5347446703374102164" at="71,33,72,123" concept="0" />
+      <node id="5347446703374102164" at="72,123,73,17" concept="0" />
+      <node id="5347446703374102165" at="73,17,74,115" concept="0" />
+      <node id="5347446703374102164" at="74,115,75,22" concept="4" />
+      <node id="5347446703374102164" at="69,0,77,0" concept="6" trace="createDescriptorForUsesTextCheckbox#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5347446703374102164" at="43,50,44,41" />
+      <scope id="5347446703374102164" at="69,74,75,22">
         <var name="b" id="5347446703374102164" />
       </scope>
-      <scope id="5347446703374102164" at="63,0,71,0" />
+      <scope id="5347446703374102164" at="69,0,77,0" />
     </file>
   </root>
   <root nodeRef="r:c520bb92-9267-4de8-9256-ed6ee26701fa(jetbrains.mps.lang.editor.formsTests.structure)/7013563450911355561">
@@ -106,19 +106,19 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7013563450911355561" at="17,0,18,0" concept="1" trace="myConceptUsesPlatformCheckbox" />
-      <node id="7013563450911355561" at="35,54,36,45" concept="4" />
-      <node id="7013563450911355561" at="55,78,56,191" concept="3" />
-      <node id="7013563450911355561" at="56,191,57,33" concept="0" />
-      <node id="7013563450911355561" at="57,33,58,123" concept="0" />
-      <node id="7013563450911355561" at="58,123,59,17" concept="0" />
-      <node id="7013563450911355562" at="59,17,60,115" concept="0" />
-      <node id="7013563450911355561" at="60,115,61,22" concept="4" />
-      <node id="7013563450911355561" at="55,0,63,0" concept="6" trace="createDescriptorForUsesPlatformCheckbox#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="7013563450911355561" at="35,54,36,45" />
-      <scope id="7013563450911355561" at="55,78,61,22">
+      <node id="7013563450911355561" at="41,54,42,45" concept="4" />
+      <node id="7013563450911355561" at="61,78,62,191" concept="3" />
+      <node id="7013563450911355561" at="62,191,63,33" concept="0" />
+      <node id="7013563450911355561" at="63,33,64,123" concept="0" />
+      <node id="7013563450911355561" at="64,123,65,17" concept="0" />
+      <node id="7013563450911355562" at="65,17,66,115" concept="0" />
+      <node id="7013563450911355561" at="66,115,67,22" concept="4" />
+      <node id="7013563450911355561" at="61,0,69,0" concept="6" trace="createDescriptorForUsesPlatformCheckbox#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7013563450911355561" at="41,54,42,45" />
+      <scope id="7013563450911355561" at="61,78,67,22">
         <var name="b" id="7013563450911355561" />
       </scope>
-      <scope id="7013563450911355561" at="55,0,63,0" />
+      <scope id="7013563450911355561" at="61,0,69,0" />
     </file>
   </root>
 </debug-info>

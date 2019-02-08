@@ -64,6 +64,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
+    deps.aggregatedLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation");
+    deps.aggregatedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.aggregatedLanguage(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, "jetbrains.mps.lang.pattern");
+    deps.aggregatedLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptAbstractNodeReference, myConceptAnnotationDataDependency, myConceptClassifierMemberData, myConceptConceptMigrationReference, myConceptConsequenceFunction, myConceptDataDependency, myConceptDataDependencyReference, myConceptDirectNodeReference, myConceptExecuteAfterDeclaration, myConceptGetDataExpression, myConceptIMigrationUnit, myConceptIncludeMigrationPart, myConceptLinkPatternVariableReference, myConceptListPatternVariableReference, myConceptMigrationScript, myConceptMigrationScriptReference, myConceptMoveConcept, myConceptMoveConceptMember, myConceptMoveContainmentLink, myConceptMoveNodeMigrationPart, myConceptMoveNodeSpecialization, myConceptMoveProperty, myConceptMoveReferenceLink, myConceptNodePatternVariableReference, myConceptOrderDependency, myConceptProducedAnnotationDataDeclaration, myConceptProducedDataDeclaration, myConceptPropertyPatternVariableReference, myConceptPureMigrationPart, myConceptPureMigrationScript, myConceptPutDataExpression, myConceptQuotationConsequence, myConceptRefactoringLog, myConceptRefactoringOption, myConceptRefactoringOptions, myConceptRefactoringOrderDependency, myConceptRefactoringPart, myConceptReflectionNodeReference, myConceptRequiredAnnotationDataDeclaration, myConceptRequiredDataDeclaration, myConceptTransformConsequence, myConceptTransformStatement);

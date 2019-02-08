@@ -49,6 +49,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptConstantValue, myConceptExtractStatementListExpression, myConceptExtractStatementListInnerExpression, myConceptExtractStaticInnerClassConcept, myConceptExtractStaticInnerClassCreator, myConceptExtractStaticInnerClassExpression, myConceptExtractStaticMethodExpression, myConceptExtractStaticMethod_CallExpression, myConceptExtractToConstantExpression, myConceptExtractToConstantRefExpression, myConceptInternalAnonymousClass, myConceptInternalAnonymousClassCreator, myConceptInternalClassCreator, myConceptInternalClassExpression, myConceptInternalClassifierType, myConceptInternalNewExpression, myConceptInternalPartialFieldReference, myConceptInternalPartialInstanceMethodCall, myConceptInternalStaticFieldReference, myConceptInternalStaticMethodCall, myConceptInternalSuperMethodCallOperation, myConceptInternalThisExpression, myConceptInternalTypedStaticFieldReference, myConceptInternalVariableReference, myConceptTypeHintExpression, myConceptWeakClassReference);

@@ -46,6 +46,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0xa247e09e243545baL, 0xb8d207e93feba96aL, "jetbrains.mps.baseLanguage.tuples");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, "jetbrains.mps.make.script");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptExtendsFacetReference, myConceptFacetDeclaration, myConceptFacetJavaClassExpression, myConceptFacetReference, myConceptFacetReferenceExpression, myConceptForeignParametersComponentExpression, myConceptForeignParametersExpression, myConceptIFacet, myConceptIPropertyExpression, myConceptLocalParametersComponentExpression, myConceptLocalParametersExpression, myConceptNamedFacetReference, myConceptParametersDeclaration, myConceptRelatedFacetReference, myConceptResourceClassifierType, myConceptResourceSpecificPropertiesExpression, myConceptResourceTypeDeclaration, myConceptTargetDeclaration, myConceptTargetDependency, myConceptTargetReferenceExpression);

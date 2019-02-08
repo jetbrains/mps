@@ -19,7 +19,7 @@
       <unit at="10,0,30,0" name="jetbrains.mps.samples.multipleProjections.requestTracking.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="17,0,74,0" name="jetbrains.mps.samples.multipleProjections.requestTracking.structure.StructureAspectDescriptor" />
+      <unit at="17,0,81,0" name="jetbrains.mps.samples.multipleProjections.requestTracking.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420733795">
@@ -41,20 +41,20 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3675491646420733795" at="19,0,20,0" concept="2" trace="myConceptWorkflowContainer" />
-      <node id="3675491646420733795" at="38,51,39,42" concept="6" />
-      <node id="3675491646420733795" at="64,75,65,209" concept="5" />
-      <node id="3675491646420733795" at="65,209,66,33" concept="1" />
-      <node id="3675491646420733795" at="66,33,67,71" concept="1" />
-      <node id="3675491646420733795" at="67,71,68,144" concept="1" />
-      <node id="3675491646420733795" at="68,144,69,17" concept="1" />
-      <node id="3675491646420738766" at="69,17,70,201" concept="1" />
-      <node id="3675491646420733795" at="70,201,71,22" concept="6" />
-      <node id="3675491646420733795" at="64,0,73,0" concept="8" trace="createDescriptorForWorkflowContainer#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3675491646420733795" at="38,51,39,42" />
-      <scope id="3675491646420733795" at="64,75,71,22">
+      <node id="3675491646420733795" at="45,51,46,42" concept="6" />
+      <node id="3675491646420733795" at="71,75,72,209" concept="5" />
+      <node id="3675491646420733795" at="72,209,73,33" concept="1" />
+      <node id="3675491646420733795" at="73,33,74,71" concept="1" />
+      <node id="3675491646420733795" at="74,71,75,144" concept="1" />
+      <node id="3675491646420733795" at="75,144,76,17" concept="1" />
+      <node id="3675491646420738766" at="76,17,77,201" concept="1" />
+      <node id="3675491646420733795" at="77,201,78,22" concept="6" />
+      <node id="3675491646420733795" at="71,0,80,0" concept="8" trace="createDescriptorForWorkflowContainer#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3675491646420733795" at="45,51,46,42" />
+      <scope id="3675491646420733795" at="71,75,78,22">
         <var name="b" id="3675491646420733795" />
       </scope>
-      <scope id="3675491646420733795" at="64,0,73,0" />
+      <scope id="3675491646420733795" at="71,0,80,0" />
     </file>
   </root>
   <root nodeRef="r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420739318">
@@ -76,21 +76,21 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3675491646420739318" at="18,0,19,0" concept="2" trace="myConceptWorkflow" />
-      <node id="3675491646420739318" at="36,42,37,33" concept="6" />
-      <node id="3675491646420739318" at="54,66,55,200" concept="5" />
-      <node id="3675491646420739318" at="55,200,56,34" concept="1" />
-      <node id="3675491646420739318" at="56,34,57,71" concept="1" />
-      <node id="3675491646420739318" at="57,71,58,144" concept="1" />
-      <node id="3675491646420739318" at="58,144,59,17" concept="1" />
-      <node id="3675491646420872268" at="59,17,60,183" concept="1" />
-      <node id="3675491646420739343" at="60,183,61,205" concept="1" />
-      <node id="3675491646420739318" at="61,205,62,22" concept="6" />
-      <node id="3675491646420739318" at="54,0,64,0" concept="8" trace="createDescriptorForWorkflow#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3675491646420739318" at="36,42,37,33" />
-      <scope id="3675491646420739318" at="54,66,62,22">
+      <node id="3675491646420739318" at="43,42,44,33" concept="6" />
+      <node id="3675491646420739318" at="61,66,62,200" concept="5" />
+      <node id="3675491646420739318" at="62,200,63,34" concept="1" />
+      <node id="3675491646420739318" at="63,34,64,71" concept="1" />
+      <node id="3675491646420739318" at="64,71,65,144" concept="1" />
+      <node id="3675491646420739318" at="65,144,66,17" concept="1" />
+      <node id="3675491646420872268" at="66,17,67,183" concept="1" />
+      <node id="3675491646420739343" at="67,183,68,205" concept="1" />
+      <node id="3675491646420739318" at="68,205,69,22" concept="6" />
+      <node id="3675491646420739318" at="61,0,71,0" concept="8" trace="createDescriptorForWorkflow#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3675491646420739318" at="43,42,44,33" />
+      <scope id="3675491646420739318" at="61,66,69,22">
         <var name="b" id="3675491646420739318" />
       </scope>
-      <scope id="3675491646420739318" at="54,0,64,0" />
+      <scope id="3675491646420739318" at="61,0,71,0" />
     </file>
   </root>
   <root nodeRef="r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867317">

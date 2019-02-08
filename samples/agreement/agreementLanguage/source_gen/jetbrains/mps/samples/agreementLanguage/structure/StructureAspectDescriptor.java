@@ -42,6 +42,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xb1a9bc478a264792L, 0x8b684660c531090aL, "jetbrains.mps.samples.formulaLanguage");
+    deps.aggregatedLanguage(0xb1a9bc478a264792L, 0x8b684660c531090aL, "jetbrains.mps.samples.formulaLanguage");
+    deps.aggregatedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptAccountType, myConceptAgreementDeclarations, myConceptDate, myConceptDate_Future, myConceptDate_Past, myConceptEvent, myConceptEventType, myConceptEventVariable, myConceptEventVariableReference, myConceptPlan, myConceptPostingRule, myConceptPostingRuleTemporalProperty, myConceptQuantity, myConceptQuantityTemporalProperty, myConceptTemporalProperty, myConceptValue, myConceptValueReference);
