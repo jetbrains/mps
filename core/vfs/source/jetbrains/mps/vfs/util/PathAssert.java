@@ -52,7 +52,7 @@ public final class PathAssert {
 
   public PathAssert noDots() {
     for (String part : myPath.split(IFileSystem.SEPARATOR)) {
-      assert !part.equals(".") && !part.equals("..") : "Path should not contain \".\" and \"..\"";
+      assert !part.equals(".") && !part.equals("..") : "Path should not contain \".\" and \"..\": " + myPath;
     }
     return this;
   }
