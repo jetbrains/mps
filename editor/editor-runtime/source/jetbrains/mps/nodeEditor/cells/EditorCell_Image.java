@@ -21,6 +21,8 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -236,14 +238,14 @@ public class EditorCell_Image extends EditorCell_Basic {
       jetbrains.mps.nodeEditor.EditorContext ec = (jetbrains.mps.nodeEditor.EditorContext) context;
       Map<String, Icon> iconCache = ec.getIconCache();
       if (!iconCache.containsKey(fullPath)) {
-        File iconFile = new File(fullPath);
+        IFile iconFile = FileSystem.getInstance().getFile(fullPath);
         if (!iconFile.exists()) {
           LOG.error("image file not found: " + fullPath);
           return null;
         }
 
         try {
-          URL iconUrl = iconFile.toURI().toURL();
+          URL iconUrl = iconFile.getUrl();
           iconCache.put(fullPath, IconLoader.findIcon(iconUrl, false));
         } catch (MalformedURLException e) {
           LOG.error("can't convert icon path to url: " + fullPath, e);
