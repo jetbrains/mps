@@ -15,10 +15,7 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.SystemInfo;
-import jetbrains.mps.util.URLUtil;
 import jetbrains.mps.vfs.Files;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
@@ -37,8 +34,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
@@ -66,6 +61,7 @@ public class SDKDiscovery {
     try {
       Class cls = Class.forName(toolsJarClass);
       String url = cls.getResource(cls.getSimpleName() + ".class").toString();
+      url = URLDecoder.decode(url, Charset.defaultCharset().name()).replace('/', File.separatorChar);
       String prefix = "jar:";
       assert url.startsWith(prefix) : url;
 
@@ -73,6 +69,9 @@ public class SDKDiscovery {
       return new QualifiedPath(VFSManager.FILE_FS, Files.fromURL(new URL(jarPath)).getPath());
     } catch (ClassNotFoundException | MalformedURLException e) {
       LOG.warn("jar file for class " + toolsJarClass + " could not be found");
+      return null;
+    } catch (UnsupportedEncodingException e) {
+      LOG.error("Exception when trying to find tools.jar: ",e);
       return null;
     }
   }
