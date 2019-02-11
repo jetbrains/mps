@@ -124,6 +124,9 @@ public final class IdeaEnvironment extends EnvironmentBase {
       }
     }
     for (PluginDescriptor pd : myConfig.getPlugins()) {
+      if (pd.getPath().startsWith(PathManager.getPreInstalledPluginsPath())) {
+        continue;
+      }
       if (pluginPath.length() > 0) {
         pluginPath.append(File.pathSeparator);
       }

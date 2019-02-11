@@ -209,6 +209,7 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
+      <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
         <child id="1221737317278" name="statementList" index="1Pe0a2" />
       </concept>
@@ -827,6 +828,28 @@
             </node>
           </node>
           <node concept="3clFbS" id="3a3EL8RMyN6" role="2LFqv$">
+            <node concept="3clFbJ" id="1fH6pN1fTQH" role="3cqZAp">
+              <node concept="3clFbS" id="1fH6pN1fTQJ" role="3clFbx">
+                <node concept="3N13vt" id="1fH6pN1fYQO" role="3cqZAp" />
+              </node>
+              <node concept="2OqwBi" id="1fH6pN1fY_N" role="3clFbw">
+                <node concept="2OqwBi" id="1fH6pN1fY8i" role="2Oq$k0">
+                  <node concept="37vLTw" id="1fH6pN1fY50" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3a3EL8RMyNj" resolve="pd" />
+                  </node>
+                  <node concept="liA8E" id="1fH6pN1fYlj" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1fH6pN1fYMf" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                  <node concept="2YIFZM" id="1fH6pN1fYOx" role="37wK5m">
+                    <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
+                    <ref role="37wK5l" to="18ew:~PathManager.getPreInstalledPluginsPath():java.lang.String" resolve="getPreInstalledPluginsPath" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbJ" id="3a3EL8RMyN7" role="3cqZAp">
               <node concept="3eOSWO" id="3a3EL8RMyN8" role="3clFbw">
                 <node concept="2OqwBi" id="3a3EL8RMzN_" role="3uHU7B">
