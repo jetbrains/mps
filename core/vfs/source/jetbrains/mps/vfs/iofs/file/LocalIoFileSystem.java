@@ -36,7 +36,7 @@ public class LocalIoFileSystem implements IFileSystem {
   @NotNull
   @Override
   public IFile getFile(@NotNull String path) {
-    new PathAssert(path).absolute().noEndSlash().noDots().osIndependentPath();
+    new PathAssert(path).absolute().noOddEndSlash().noDots().osIndependentPath();
     return new LocalFile(path, this);
   }
 
