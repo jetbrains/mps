@@ -13,8 +13,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.HashSet;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import java.util.Collection;
+import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.SModelOperations;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.item.LanguageNotImportedReportItem;
@@ -39,16 +41,24 @@ public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements
     }
 
     final Set<SLanguage> importedLanguages = new HashSet<SLanguage>();
-    importedLanguages.addAll(new SLanguageHierarchy(SModelOperations.getAllLanguageImports(SNodeOperations.getModel(node))).getExtended());
+    // FIXME pass LR/ComponentHost at checker construction time! 
+    LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repository);
+    Collection<SLanguage> modelUsedLanguages = new ModelDependencyResolver(languageRegistry, repository).usedLanguages(SNodeOperations.getModel(node));
+    SLanguageHierarchy hierarchy = new SLanguageHierarchy(languageRegistry, modelUsedLanguages);
+    importedLanguages.addAll(hierarchy.getExtended());
+    // Here we address MPS-28205 scenario, when a model with import of Lang1 has instance of a concept with child from an aggregated Lang2. 
+    // XXX I see two possible approaches here: either assume model imports shall explicitly reflect aggregated languages as well 
+    // e.g. by adding them automatically when an appropriate child is created, and 'implicit' import of aggregated languages, when we keep 
+    // model imports to user to control, and 'guess' (deduce) the rest based on available metainfo. I feel former would get model imports  
+    // way too cluttered, and lean towards the latter approach, hence treat aggergated languages as imported here. 
+    importedLanguages.addAll(hierarchy.getAggregated());
 
-    // need to recurse the tree, to report missing language once per sub-tree  
-    // (starting from the first node with missing language encountered) 
-    // Iterative alternative would be more complicated, and there are no utility  
-    // methods in the rules nor we support inner classes, hence the trick with Runnable 
+    // need to recurse the tree, to report missing language once per sub-tree (starting from the first node with missing language encountered) 
+    // Iterative alternative would be more complicated, hence inglorious recursion 
     findMissing(errorsCollector, Collections.singleton(node), Collections.<SLanguage>emptySet(), importedLanguages);
   }
 
-  public void findMissing(LanguageErrorsCollector component, Iterable<? extends SNode> level, Set<SLanguage> parentReported, Set<SLanguage> imported) {
+  private void findMissing(LanguageErrorsCollector component, Iterable<? extends SNode> level, Set<SLanguage> parentReported, Set<SLanguage> imported) {
     boolean parentReportedSetChanged = false;
     for (SNode node : Sequence.fromIterable(level)) {
       HashSet<SLanguage> reported = new HashSet<SLanguage>(parentReported);

@@ -15,25 +15,34 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Build a closure of extended or extending languages for a given set of language.
  * Likely, shall be part of openapi/smodel, but as long as it needs LanguageRegistry to access runtimes, lives in kernel.
  * XXX Though might be reasonable to introduce interface for LanguageRegistry and LanguageRuntime?
+ * IMPORTANT: This class is intended for code that cares about actual runtime state. Generally, a language module may declare a dependency
+ * which is not satisfied and therefore runtime counterpart for the module will miss this dependency. This is unlikely to happen now as classloading
+ * is quite strict about module dependencies, and we still use source module (with all the source-level dependencies), so that Lang1 that aggregates Lang2
+ * would require Lang2 to be present at classloading time and therefore RT information would be complete. Nevertheless, it's wise to keep the possible
+ * distinction between declared and runtime dependencies in mind.
+ *
  * @author Artem Tikhomirov
  */
 public class SLanguageHierarchy {
@@ -59,8 +68,11 @@ public class SLanguageHierarchy {
   }
 
   /**
-   * @return Inclusive set of languages extended by those from initial set
-   * If some language is not present just a warning is posted
+   * Closure of extended languages according to runtime state. If some language is not present just a warning is posted.
+   * Note, we don't look into dependencies recorded along with module, here, we stick to runtime state (which may be missing some languages specified
+   * in dependencies).
+   *
+   * @return Inclusive set of languages extended by those from initial set.
    */
   @NotNull
   public Set<SLanguage> getExtended() {
@@ -69,45 +81,73 @@ public class SLanguageHierarchy {
 
   @NotNull
   public Set<SLanguage> getExtendedLangs(@NotNull ErrorHandler handler) {
-    Set<SLanguage> result = new LinkedHashSet<>();
-    ArrayDeque<SLanguage> queue = new ArrayDeque<>(myLanguages);
-    while (!queue.isEmpty()) {
-      @NotNull SLanguage l = queue.removeFirst();
-      if (result.add(l)) {
-        final LanguageRuntime rt = myRegistry.getLanguage(l);
-        if (rt == null) {
-          handler.handleLanguageIsNotDeployed(l);
-        } else {
-          queue.addAll(fromRuntime(rt.getExtendedLanguages()));
-        }
+    Set<LanguageRuntime> result = new LinkedHashSet<>();
+    for (SLanguage l : myLanguages) {
+      final LanguageRuntime rt = myRegistry.getLanguage(l);
+      if (rt == null) {
+        handler.handleLanguageIsNotDeployed(l);
+      } else {
+        result.add(rt);
+        result.addAll(rt.getExtendedLanguages());
       }
     }
-    return result;
+    // no reason I'm aware of to keep it ordered, just used to be some order here, and it's handy to have it in the same order during debug
+    return result.stream().map(LanguageRuntime::getIdentity).collect(Collectors.toCollection(LinkedHashSet::new));
   }
 
   /**
    * @return Inclusive set of languages that extend those from initial set
    */
   public Set<SLanguage> getExtending() {
-    ArrayDeque<SLanguage> queue = new ArrayDeque<>(myLanguages);
-    HashSet<SLanguage> rv = new HashSet<>();
-    while (!queue.isEmpty()) {
-      SLanguage l = queue.removeFirst();
-      if (rv.add(l)) {
-        final LanguageRuntime rt = myRegistry.getLanguage(l);
-        if (rt == null) {
-          continue;
-        }
-        queue.addAll(fromRuntime(rt.getExtendingLanguages()));
+    Set<LanguageRuntime> result = new HashSet<>();
+    for (SLanguage l : myLanguages) {
+      final LanguageRuntime rt = myRegistry.getLanguage(l);
+      if (rt == null) {
+        continue;
       }
+      result.add(rt);
+      result.addAll(IterableUtil.asCollection(rt.getExtendingLanguages()));
     }
-    return rv;
+    return result.stream().map(LanguageRuntime::getIdentity).collect(Collectors.toSet());
   }
 
-  private static Collection<SLanguage> fromRuntime(Iterable<LanguageRuntime> runtimes) {
-    ArrayList<SLanguage> rv = new ArrayList<>();
-    for (LanguageRuntime rt : runtimes) {
-      rv.add(rt.getIdentity());
+  /**
+   * Language could re-use concepts of another language either by reference or by aggregation, with special meaning for 'extends' reference.
+   * 'Extends' has a long history and is even projected into module dependencies, however, we shall not forget about re-use by aggregation, which
+   * has not been exposed in module dependencies and therefore required various tricks in user scenarios to ensure aggregated languages are visible
+   * (most prominent is use of devkits).
+   * <p>
+   * Aggregation means concept has aggregation link with target from another language. Here, we collect direct, one-level dependencies only,
+   * i.e. we don't look into languages extended/aggregated by those we collect here. There's no solid reason not to collect aggregated with
+   * extended, just need a justification to do this extra effort. At the moment, it seems that it's sufficient to use directly mentioned
+   * language only, although this way intentions and editor transformation menus, declared in in base language, might be missing (LangA aggregates concept B
+   * from LangB that extends concept C of LangC; LangC declares transform menu and intentions for C). It looks like the decision whether to respect extended
+   * languages of those aggregated has to be made by calling code.
+   *
+   * @return Inclusive set of languages that are aggregated by languages from initial set.
+   */
+  public Set<SLanguage> getAggregated() {
+    final Set<SLanguage> rv = new HashSet<>();
+    for (SLanguage l : myLanguages) {
+      final LanguageRuntime rt = myRegistry.getLanguage(l);
+      if (rt == null) {
+        continue;
+      }
+      final StructureAspectDescriptor sad = rt.getAspect(StructureAspectDescriptor.class);
+      if (sad == null) {
+        continue;
+      }
+      sad.reportDependencies(new Dependencies() {
+        @Override
+        public void extendedLanguage(long hiBits, long lowBits, String name) {
+
+        }
+
+        @Override
+        public void aggregatedLanguage(long hiBits, long lowBits, String name) {
+          rv.add(MetaAdapterFactory.getLanguage(hiBits, lowBits, name));
+        }
+      });
     }
     return rv;
   }
