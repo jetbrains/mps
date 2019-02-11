@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.tool.builder.AntBootstrap">
+    <classNode dependClassName="java.io.BufferedReader" />
+    <classNode dependClassName="java.io.FileReader" />
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Object" />

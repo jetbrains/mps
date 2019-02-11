@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import java.util.Set;
-import jetbrains.mps.tool.common.PluginData;
 import java.util.Hashtable;
-import org.apache.tools.ant.util.JavaEnvUtils;
 import java.util.HashSet;
+import jetbrains.mps.tool.common.PluginData;
+import org.apache.tools.ant.util.JavaEnvUtils;
 import java.io.IOException;
 import org.apache.tools.ant.taskdefs.Execute;
 import java.net.URL;
@@ -21,6 +21,8 @@ import java.net.MalformedURLException;
 import java.net.URLClassLoader;
 import java.lang.reflect.Method;
 import org.jetbrains.annotations.NotNull;
+import java.nio.file.Files;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Constructor;
 import org.apache.tools.ant.ProjectComponent;
@@ -111,15 +113,16 @@ public abstract class MpsLoadTask extends Task {
     // XXX classpath contains MPS jars, which is odd in 'fork' scenario where AntBootstrap class adds 
     // relevant MPS jars again (it also re-uses urls of the calculated classpath). Is there's any reason to do that? 
     Set<File> classPaths = calculateClassPath(myFork);
-    for (PluginData pd : myWhatToDo.getPlugins()) {
-      MPSClasspathUtil.gatherAllClassesAndJarsUnder(new File(pd.path), classPaths);
-    }
     if (myUsePropertiesAsMacro) {
       Hashtable properties = getProject().getProperties();
       for (Object name : properties.keySet()) {
         Object value = properties.get(name);
         myWhatToDo.addMacro((String) name, (String) value);
       }
+    }
+    Set<File> pluginsClassPath = new HashSet<File>();
+    for (PluginData pd : myWhatToDo.getPlugins()) {
+      MPSClasspathUtil.gatherAllClassesAndJarsUnder(new File(pd.path), pluginsClassPath);
     }
     if (myFork) {
       String currentClassPathString = System.getProperty("java.class.path");
@@ -154,6 +157,7 @@ public abstract class MpsLoadTask extends Task {
       commandLine.add("-classpath");
       commandLine.add(sb.toString());
       commandLine.add("jetbrains.mps.tool.builder.AntBootstrap");
+      commandLine.add(formatClassPath(pluginsClassPath));
       commandLine.add(getWorkerClass());
       dumpPropertiesToWhatToDo();
       try {
@@ -180,7 +184,14 @@ public abstract class MpsLoadTask extends Task {
       List<URL> classPathUrls = new ArrayList<URL>();
       for (File path : classPaths) {
         try {
-          classPathUrls.add(new URL("file:///" + path + ((path.isDirectory() ? "/" : ""))));
+          classPathUrls.add(fileToUrl(path));
+        } catch (MalformedURLException e) {
+          throw new BuildException(e);
+        }
+      }
+      for (File path : pluginsClassPath) {
+        try {
+          classPathUrls.add(fileToUrl(path));
         } catch (MalformedURLException e) {
           throw new BuildException(e);
         }
@@ -195,6 +206,33 @@ public abstract class MpsLoadTask extends Task {
       } catch (Throwable t) {
         throw new BuildException(t.getMessage() + "\n" + "Used class path: " + classPathUrls.toString());
       }
+    }
+  }
+
+  private URL fileToUrl(File file) throws MalformedURLException {
+    return file.toURI().toURL();
+  }
+
+  @NotNull
+  private String formatClassPath(Set<File> classPaths) {
+    try {
+      File optionsFile = Files.createTempFile("mpstemp_ant", null).toFile();
+      optionsFile.deleteOnExit();
+
+      PrintWriter out = null;
+      try {
+        out = new PrintWriter(optionsFile);
+        for (File cpEntry : classPaths) {
+          out.println(fileToUrl(cpEntry).toString());
+        }
+      } finally {
+        if (out != null) {
+          out.close();
+        }
+      }
+      return optionsFile.getAbsolutePath();
+    } catch (IOException e) {
+      throw new BuildException("Exception on launching the worker", e);
     }
   }
 

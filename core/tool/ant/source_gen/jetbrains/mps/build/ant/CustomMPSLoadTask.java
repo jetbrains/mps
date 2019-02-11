@@ -21,7 +21,6 @@ public class CustomMPSLoadTask extends MpsLoadTask {
 
   public void setArgs(String args) {
     myArgs = Arrays.asList(args.split(" "));
-
   }
 
   protected String getWorkerClass() {
