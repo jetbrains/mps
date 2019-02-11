@@ -58,17 +58,19 @@ public final class PathAssert {
   }
 
   public PathAssert nonEmpty() {
-    assert !myPath.trim().isEmpty() : "Empty suffix not allowed";
+    assert !myPath.trim().isEmpty() : "Empty suffix not allowed: " + myPath;
     return this;
   }
 
   public PathAssert noSeparators() {
-    assert !myPath.contains(IFileSystem.SEPARATOR) : "Separators are not allowed";
+    assert !myPath.contains(IFileSystem.SEPARATOR) : "Separators are not allowed: " + myPath;
     return this;
   }
 
   public PathAssert noEndSlashOrArchive() {
-    assert !myPath.endsWith(IFileSystem.SEPARATOR) || myPath.endsWith("!" + IFileSystem.SEPARATOR) : "Only archive paths can end with " + IFileSystem.SEPARATOR;
+    assert
+        !myPath.endsWith(IFileSystem.SEPARATOR) || myPath.endsWith("!" + IFileSystem.SEPARATOR) :
+        "Only archive paths can end with " + IFileSystem.SEPARATOR + ": " + myPath;
     return this;
   }
 }
