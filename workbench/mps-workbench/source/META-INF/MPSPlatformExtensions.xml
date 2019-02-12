@@ -14,6 +14,12 @@
   <appStarter implementation="com.intellij.ide.plugins.BundledPluginsLister"/>
 
   <applicationService serviceImplementation="com.intellij.execution.wsl.WSLDistributionService"/>
+  <experimentalFeature id="wsl.close.process.input" percentOfUsers="0">
+    <description>Forces closing of WSL process input stream to prevent process zombification. See
+      https://github.com/Microsoft/WSL/issues/2592
+      Required for Windows 10 version prior 1803
+    </description>
+  </experimentalFeature>
 
   <applicationService serviceInterface="com.intellij.openapi.components.impl.stores.IComponentStore"
                       serviceImplementation="com.intellij.configurationStore.ApplicationStoreImpl"/>
@@ -345,6 +351,11 @@
   <welcomeFrameProvider implementation="com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider"/>
   <themeProvider id="JetBrainsHighContrastTheme" path="/themes/HighContrast.theme.json"/>
 
+  <!-- MPS Patch: need to add this files to platform first
+  <themeMetadataProvider path="/themes/metadata/IntelliJPlatform.themeMetadata.json"/>
+  <themeMetadataProvider path="/themes/metadata/JDK.themeMetadata.json"/>
+  -->
+
   <postStartupActivity implementation="com.intellij.internal.IconsLoadTime$StartupLoadTime"/>
 
   <applicationService serviceImplementation="com.intellij.ui.IdeUICustomization"/>
@@ -382,7 +393,9 @@
   <customFileDropHandler implementation="com.intellij.ide.plugins.InstalledPluginsManagerMain$PluginDropHandler"/>
   <applicationConfigurable parentId="preferences.general" instance="com.intellij.util.net.HttpProxyConfigurable" id="http.proxy" displayName="HTTP Proxy"/>
   <applicationConfigurable parentId="preferences.general" instance="com.intellij.ide.gdpr.ConsentConfigurable" id="consents" displayName="Data Sharing"/>
-    <applicationConfigurable groupId="tools" displayName="Server Certificates" id="http.certificates" instance="com.intellij.util.net.ssl.CertificateConfigurable"/>
+  <applicationConfigurable groupId="tools" displayName="Server Certificates" id="http.certificates" instance="com.intellij.util.net.ssl.CertificateConfigurable"/>
+  <applicationService serviceInterface="com.intellij.diagnostic.PluginProblemReporter"
+                        serviceImplementation="com.intellij.diagnostic.PluginProblemReporterImpl"/>
 
   <fileTypeFactory implementation="com.intellij.openapi.fileTypes.impl.PlatformFileTypeFactory"/>
   <fileTypeFactory implementation="com.intellij.openapi.fileTypes.impl.InternalFileTypeFactory"/>
@@ -492,7 +505,7 @@
   <statistic.eventLog.fusStateEventTracker implementation="com.intellij.internal.statistic.eventLog.SystemStateMonitor"/>
   <statistic.eventLog.fusStateEventTracker implementation="com.intellij.configurationStore.statistic.eventLog.FeatureUsageSettingsEventScheduler"/>
 
-    <vfs.local.pluggableFileWatcher implementation="com.intellij.openapi.vfs.impl.local.NativeFileWatcherImpl" />
+  <vfs.local.pluggableFileWatcher implementation="com.intellij.openapi.vfs.impl.local.NativeFileWatcherImpl" />
 
   <virtualFileSystem key="dummy" implementationClass="com.intellij.openapi.vfs.ex.dummy.DummyFileSystem"/>
   <virtualFileSystem key="http" implementationClass="com.intellij.openapi.vfs.impl.http.HttpFileSystemImpl"/>
@@ -634,8 +647,8 @@
     <description>Makes legacy Ubuntu distribution (bash.exe) available</description>
   </experimentalFeature>
 
-  <experimentalFeature id="linux.native.menu" requireRestart="true">
-    <description>Intergation with global menu in Linux</description>
+  <experimentalFeature id="linux.native.menu" percentOfUsers="100" requireRestart="true">
+  <description>Intergation with global menu in Linux</description>
   </experimentalFeature>
 
   <!-- TODO: Uncomment in workbench/mps-workbench/source/META-INF/MPSLangExtensions.xml after fix java.lang.RuntimeException: Service: com.intellij.codeInsight.actions.FormatChangedTextUtil doesn't override anything-->
