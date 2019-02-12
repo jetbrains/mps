@@ -2,8 +2,8 @@
 <model ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -9259,7 +9259,6 @@
       <property role="TrG5h" value="getHomePath" />
       <property role="DiZV1" value="false" />
       <node concept="17QB3L" id="57xhZj4x9AL" role="3clF45" />
-      <node concept="3Tm6S6" id="1mVhhl9mvbu" role="1B3o_S" />
       <node concept="3clFbS" id="4937uxYQn9f" role="3clF47">
         <node concept="3clFbJ" id="4937uxYQn9g" role="3cqZAp">
           <node concept="3y3z36" id="4937uxYQn9h" role="3clFbw">
@@ -9629,6 +9628,7 @@
           </node>
         </node>
       </node>
+      <node concept="3Tm1VV" id="1uEgd4O_2Mj" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="5vooY9ziShd" role="jymVt" />
     <node concept="2YIFZL" id="4937uxYQnbN" role="jymVt">
@@ -11222,18 +11222,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="stxyIU1Hf3" role="jymVt" />
-    <node concept="3UR2Jj" id="3uHpWKwuCBX" role="lGtFl">
-      <node concept="TZ5HI" id="3uHpWKwuDGh" role="3nqlJM">
-        <node concept="TZ5HA" id="3uHpWKwuDGi" role="3HnX3l">
-          <node concept="1dT_AC" id="3uHpWKwuETX" role="1dT_Ay">
-            <property role="1dT_AB" value="Likely, shall cease to exist. No reason to duplicate IDEA startup code. IdeaEnvironment starts IDEA app, and Ant has to ensure classpath only" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2AHcQZ" id="3uHpWKwuDGj" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
   </node>
 </model>
 
