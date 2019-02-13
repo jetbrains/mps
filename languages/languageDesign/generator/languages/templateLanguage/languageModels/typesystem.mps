@@ -2,11 +2,11 @@
 <model ref="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -5961,6 +5961,75 @@
     <node concept="1YaCAy" id="5C_m7JvWfDC" role="1YuTPh">
       <property role="TrG5h" value="expression" />
       <ref role="1YaFvo" to="tpee:f$Xjq0c" resolve="ThisExpression" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="UesZ_opi$6">
+    <property role="TrG5h" value="typeof_VarDeclaration" />
+    <property role="3GE5qa" value="macro" />
+    <node concept="3clFbS" id="UesZ_opi$7" role="18ibNy">
+      <node concept="3clFbJ" id="UesZ_oplTZ" role="3cqZAp">
+        <node concept="3clFbS" id="UesZ_oplU1" role="3clFbx">
+          <node concept="1Z5TYs" id="UesZ_opiOF" role="3cqZAp">
+            <node concept="mw_s8" id="UesZ_opjAB" role="1ZfhKB">
+              <node concept="1Z2H0r" id="UesZ_opjAz" role="mwGJk">
+                <node concept="2OqwBi" id="UesZ_opmd8" role="1Z2MuG">
+                  <node concept="1YBJjd" id="UesZ_opm4U" role="2Oq$k0">
+                    <ref role="1YBMHb" node="UesZ_opi$9" resolve="varDecl" />
+                  </node>
+                  <node concept="3TrEf2" id="UesZ_opmqP" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpf8:UesZ_nZ2Ia" resolve="value" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="mw_s8" id="UesZ_opiOI" role="1ZfhK$">
+              <node concept="1Z2H0r" id="UesZ_opi$g" role="mwGJk">
+                <node concept="1YBJjd" id="UesZ_opiA2" role="1Z2MuG">
+                  <ref role="1YBMHb" node="UesZ_opi$9" resolve="varDecl" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2OqwBi" id="UesZ_opkFh" role="3clFbw">
+          <node concept="2OqwBi" id="UesZ_opjSw" role="2Oq$k0">
+            <node concept="1YBJjd" id="UesZ_opjAS" role="2Oq$k0">
+              <ref role="1YBMHb" node="UesZ_opi$9" resolve="varDecl" />
+            </node>
+            <node concept="3TrEf2" id="UesZ_opkdl" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpf8:UesZ_nZ2I9" resolve="type" />
+            </node>
+          </node>
+          <node concept="3w_OXm" id="UesZ_opkTW" role="2OqNvi" />
+        </node>
+        <node concept="9aQIb" id="UesZ_opmwn" role="9aQIa">
+          <node concept="3clFbS" id="UesZ_opmwo" role="9aQI4">
+            <node concept="1Z5TYs" id="UesZ_opmyH" role="3cqZAp">
+              <node concept="mw_s8" id="UesZ_opmMc" role="1ZfhKB">
+                <node concept="2OqwBi" id="UesZ_opmUl" role="mwGJk">
+                  <node concept="1YBJjd" id="UesZ_opmM8" role="2Oq$k0">
+                    <ref role="1YBMHb" node="UesZ_opi$9" resolve="varDecl" />
+                  </node>
+                  <node concept="3TrEf2" id="UesZ_opnj9" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpf8:UesZ_nZ2I9" resolve="type" />
+                  </node>
+                </node>
+              </node>
+              <node concept="mw_s8" id="UesZ_opmyN" role="1ZfhK$">
+                <node concept="1Z2H0r" id="UesZ_opmyO" role="mwGJk">
+                  <node concept="1YBJjd" id="UesZ_opmyP" role="1Z2MuG">
+                    <ref role="1YBMHb" node="UesZ_opi$9" resolve="varDecl" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="UesZ_opi$9" role="1YuTPh">
+      <property role="TrG5h" value="varDecl" />
+      <ref role="1YaFvo" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
     </node>
   </node>
 </model>
