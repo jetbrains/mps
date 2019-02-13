@@ -2417,12 +2417,11 @@
                 <node concept="3uibUv" id="xSXmQZzmGr" role="1tU5fm">
                   <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
                 </node>
-                <node concept="2OqwBi" id="xSXmQZzmGz" role="33vP2m">
-                  <node concept="37vLTw" id="xSXmQZzmG$" role="2Oq$k0">
+                <node concept="2YIFZM" id="3FLm4EWu7ng" role="33vP2m">
+                  <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                  <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
+                  <node concept="37vLTw" id="3FLm4EWu7yn" role="37wK5m">
                     <ref role="3cqZAo" node="xSXmQZyGEb" resolve="ideaProject" />
-                  </node>
-                  <node concept="liA8E" id="xSXmQZzmG_" role="2OqNvi">
-                    <ref role="37wK5l" to="4nm9:~Project.getBaseDir():com.intellij.openapi.vfs.VirtualFile" resolve="getBaseDir" />
                   </node>
                 </node>
               </node>

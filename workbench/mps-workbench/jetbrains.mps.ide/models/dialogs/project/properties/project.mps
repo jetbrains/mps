@@ -1533,17 +1533,16 @@
                                         <ref role="37wK5l" to="z1c4:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
                                       </node>
                                     </node>
-                                    <node concept="2OqwBi" id="303gJKc4E45" role="37wK5m">
-                                      <node concept="2OqwBi" id="303gJKc4E46" role="2Oq$k0">
+                                    <node concept="2YIFZM" id="3FLm4EWv4_N" role="37wK5m">
+                                      <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                                      <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
+                                      <node concept="2OqwBi" id="303gJKc4E46" role="37wK5m">
                                         <node concept="37vLTw" id="303gJKc4E47" role="2Oq$k0">
                                           <ref role="3cqZAo" node="2LIxlaqyCkA" resolve="myProject" />
                                         </node>
                                         <node concept="liA8E" id="303gJKc4E48" role="2OqNvi">
                                           <ref role="37wK5l" to="z1c4:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
                                         </node>
-                                      </node>
-                                      <node concept="liA8E" id="303gJKc4E49" role="2OqNvi">
-                                        <ref role="37wK5l" to="4nm9:~Project.getBaseDir():com.intellij.openapi.vfs.VirtualFile" resolve="getBaseDir" />
                                       </node>
                                     </node>
                                   </node>

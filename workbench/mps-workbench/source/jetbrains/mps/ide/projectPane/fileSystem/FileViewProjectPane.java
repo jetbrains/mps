@@ -31,6 +31,7 @@ import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.fileEditor.ex.IdeDocumentHistory;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
@@ -190,7 +191,7 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
       @Override
       protected MPSTreeNode rebuild() {
         MPSTreeNode node;
-        if (!myProject.isDisposed() && myProject.getBaseDir() != null && ProjectHelper.fromIdeaProject(myProject) != null) {
+        if (!myProject.isDisposed() && ProjectUtil.guessProjectDir(myProject) != null && ProjectHelper.fromIdeaProject(myProject) != null) {
           node = new ProjectTreeNode(ProjectHelper.fromIdeaProject(myProject));
         } else {
           node = new TextTreeNode("No Project");

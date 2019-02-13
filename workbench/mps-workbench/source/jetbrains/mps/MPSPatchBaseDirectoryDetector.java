@@ -21,7 +21,6 @@ import com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetector;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 
@@ -31,31 +30,6 @@ public class MPSPatchBaseDirectoryDetector extends PatchBaseDirectoryDetector {
 
   public MPSPatchBaseDirectoryDetector(final Project project) {
     myProject = project;
-  }
-
-  @Override
-  @Nullable
-  public Result detectBaseDirectory(final String patchFileName) {
-    String[] nameComponents = patchFileName.split("/");
-    String patchName = nameComponents[nameComponents.length - 1];
-    if (patchName.length() == 0) {
-      return null;
-    }
-    // MPS Patch Start
-    final Collection<VirtualFile> vfiles = FilenameIndex.getVirtualFilesByName(myProject, patchName, GlobalSearchScope.allScope(myProject));
-    // MPS Patch End
-    if (vfiles.size() == 1) {
-      VirtualFile parent = vfiles.iterator().next().getParent();
-      for (int i = nameComponents.length - 2; i >= 0; i--) {
-        if (!parent.getName().equals(nameComponents[i]) || parent == myProject.getBaseDir()) {
-          return new Result(parent.getPresentableUrl(), i + 1);
-        }
-        parent = parent.getParent();
-      }
-      if (parent == null) return null;
-      return new Result(parent.getPresentableUrl(), 0);
-    }
-    return null;
   }
 
   @Override

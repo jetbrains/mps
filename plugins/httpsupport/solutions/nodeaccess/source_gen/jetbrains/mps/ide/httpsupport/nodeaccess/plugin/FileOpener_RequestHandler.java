@@ -11,6 +11,7 @@ import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
 import jetbrains.mps.ide.httpsupport.runtime.base.HttpSupportUtil;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.project.ProjectUtil;
 import jetbrains.mps.ide.common.FileOpenUtil;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.buffer.Unpooled;
@@ -66,7 +67,7 @@ public class FileOpener_RequestHandler extends HttpRequestHandlerBase {
   public void handle() throws Exception {
     if (this.project instanceof MPSProject) {
       final com.intellij.openapi.project.Project ideaProject = as_tdoo4z_a0a0a0a0p(this.project, MPSProject.class).getProject();
-      VirtualFile projectFile = ideaProject.getBaseDir();
+      VirtualFile projectFile = ProjectUtil.guessProjectDir(ideaProject);
       if (projectFile != null) {
         final VirtualFile virtualFile = projectFile.findFileByRelativePath(this.file);
         if (virtualFile != null) {

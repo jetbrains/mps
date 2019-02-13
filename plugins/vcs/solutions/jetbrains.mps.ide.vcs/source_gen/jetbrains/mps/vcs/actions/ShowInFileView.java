@@ -8,6 +8,7 @@ import com.intellij.ide.projectView.ProjectView;
 import java.util.List;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.actions.VcsContext;
+import com.intellij.openapi.project.ProjectUtil;
 import java.util.Collections;
 
 public class ShowInFileView extends AbstractShowInFileView {
@@ -19,6 +20,9 @@ public class ShowInFileView extends AbstractShowInFileView {
   }
   @Override
   protected List<VirtualFile> getRoots(VcsContext vcsContext) {
-    return Collections.singletonList(vcsContext.getProject().getBaseDir());
+    if (vcsContext.getProject() != null && ProjectUtil.guessProjectDir(vcsContext.getProject()) != null) {
+      return Collections.singletonList(ProjectUtil.guessProjectDir(vcsContext.getProject()));
+    }
+    return Collections.emptyList();
   }
 }

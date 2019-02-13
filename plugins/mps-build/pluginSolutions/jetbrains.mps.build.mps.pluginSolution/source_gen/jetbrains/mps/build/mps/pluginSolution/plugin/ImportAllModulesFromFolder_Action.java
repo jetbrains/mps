@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
+import com.intellij.openapi.project.ProjectUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -71,7 +72,7 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    VirtualFile chosenDir = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), ((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), ((MPSProject) MapSequence.fromMap(_params).get("project")).getProject().getBaseDir());
+    VirtualFile chosenDir = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), ((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), ProjectUtil.guessProjectDir(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()));
     if (chosenDir == null) {
       return;
     }

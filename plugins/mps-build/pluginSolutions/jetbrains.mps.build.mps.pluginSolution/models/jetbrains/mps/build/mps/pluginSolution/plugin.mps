@@ -822,8 +822,10 @@
                   <ref role="37wK5l" to="z1c5:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
                 </node>
               </node>
-              <node concept="2OqwBi" id="4zGYUkQ43xS" role="37wK5m">
-                <node concept="2OqwBi" id="4zGYUkQ43xT" role="2Oq$k0">
+              <node concept="2YIFZM" id="3FLm4EWukWs" role="37wK5m">
+                <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
+                <node concept="2OqwBi" id="4zGYUkQ43xT" role="37wK5m">
                   <node concept="2OqwBi" id="4zGYUkQ43xU" role="2Oq$k0">
                     <node concept="2WthIp" id="4zGYUkQ43xV" role="2Oq$k0" />
                     <node concept="1DTwFV" id="4zGYUkQ43xW" role="2OqNvi">
@@ -833,9 +835,6 @@
                   <node concept="liA8E" id="4zGYUkQ43xX" role="2OqNvi">
                     <ref role="37wK5l" to="z1c5:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
                   </node>
-                </node>
-                <node concept="liA8E" id="4zGYUkQ43xY" role="2OqNvi">
-                  <ref role="37wK5l" to="4nm9:~Project.getBaseDir():com.intellij.openapi.vfs.VirtualFile" resolve="getBaseDir" />
                 </node>
               </node>
             </node>
