@@ -36,7 +36,7 @@ public class check_StaticInterfaceMethodDeclarationV8_NonTypesystemRule extends 
       if (sourceJavaVersion.compareTo(JavaCompilerOptionsComponent.JavaVersion.VERSION_1_8) < 0) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(intfc, "Static interface method declarations are supported in Java 1.8 or higher. Current java language level:" + sourceJavaVersion.getCompilerVersion(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7197377355157103256", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(intfc, "Static interface method declarations are allowed only at source level 1.8 or above. Current java language level:" + sourceJavaVersion.getCompilerVersion(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7197377355157103256", null, errorTarget);
         }
       }
     }
