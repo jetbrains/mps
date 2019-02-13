@@ -1672,5 +1672,35 @@
       <ref role="1YaFvo" to="tpf3:11UMvNigQBr" resolve="GenerationContextOp_CreateIndexedName" />
     </node>
   </node>
+  <node concept="1YbPZF" id="UesZ_oj7J2">
+    <property role="TrG5h" value="typeof_GenerationContextOp_VarRef2" />
+    <node concept="3clFbS" id="UesZ_oj7J3" role="18ibNy">
+      <node concept="1Z5TYs" id="UesZ_oj7YQ" role="3cqZAp">
+        <node concept="mw_s8" id="UesZ_oj7Za" role="1ZfhKB">
+          <node concept="1Z2H0r" id="UesZ_oj7Z6" role="mwGJk">
+            <node concept="2OqwBi" id="UesZ_oj88Y" role="1Z2MuG">
+              <node concept="1YBJjd" id="UesZ_oj7Zr" role="2Oq$k0">
+                <ref role="1YBMHb" node="UesZ_oj7J5" resolve="varRef" />
+              </node>
+              <node concept="3TrEf2" id="UesZ_oj8k_" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpf3:UesZ_nZl97" resolve="vardecl" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="UesZ_oj7YT" role="1ZfhK$">
+          <node concept="1Z2H0r" id="UesZ_oj7Ji" role="mwGJk">
+            <node concept="1YBJjd" id="UesZ_oj7L4" role="1Z2MuG">
+              <ref role="1YBMHb" node="UesZ_oj7J5" resolve="varRef" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="UesZ_oj7J5" role="1YuTPh">
+      <property role="TrG5h" value="varRef" />
+      <ref role="1YaFvo" to="tpf3:UesZ_nZl96" resolve="GenerationContextOp_VarRef2" />
+    </node>
+  </node>
 </model>
 

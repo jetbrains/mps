@@ -1811,6 +1811,17 @@
         <ref role="35c_gD" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
       </node>
     </node>
+    <node concept="Wx3nA" id="UesZ_o2Dkz" role="jymVt">
+      <property role="TrG5h" value="concept_VarMacro2" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="UesZ_o2Dk$" role="1B3o_S" />
+      <node concept="3uibUv" id="UesZ_o2Dk_" role="1tU5fm">
+        <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
+      </node>
+      <node concept="35c_gC" id="UesZ_o2DkA" role="33vP2m">
+        <ref role="35c_gD" to="tpf8:UesZ_nZ2HY" resolve="VarMacro2" />
+      </node>
+    </node>
     <node concept="Wx3nA" id="18LSMZRFvcz" role="jymVt">
       <property role="TrG5h" value="concept_InsertMacro" />
       <property role="3TUv4t" value="true" />
@@ -2510,6 +2521,19 @@
               <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
               <node concept="37vLTw" id="64UEbXFVmKP" role="37wK5m">
                 <ref role="3cqZAo" node="4mp7qFmE6Ap" resolve="concept_VarMacro" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4AYHTJVO9bB" role="3cqZAp">
+          <node concept="2OqwBi" id="4AYHTJVO9bC" role="3clFbG">
+            <node concept="37vLTw" id="4AYHTJVO9bD" role="2Oq$k0">
+              <ref role="3cqZAo" node="63JL00BB6qa" resolve="NodeMacroConcepts" />
+            </node>
+            <node concept="liA8E" id="4AYHTJVO9bE" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+              <node concept="37vLTw" id="4AYHTJVOfKd" role="37wK5m">
+                <ref role="3cqZAo" node="UesZ_o2Dkz" resolve="concept_VarMacro2" />
               </node>
             </node>
           </node>
@@ -5374,6 +5398,82 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="UesZ_o00wd" role="jymVt" />
+    <node concept="2YIFZL" id="UesZ_o01IU" role="jymVt">
+      <property role="TrG5h" value="getVarMacro2_Variables" />
+      <node concept="2I9FWS" id="UesZ_o0hjx" role="3clF45">
+        <ref role="2I9WkF" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
+      </node>
+      <node concept="3Tm1VV" id="UesZ_o01IW" role="1B3o_S" />
+      <node concept="3clFbS" id="UesZ_o01IX" role="3clF47">
+        <node concept="3clFbF" id="UesZ_o01IY" role="3cqZAp">
+          <node concept="2OqwBi" id="UesZ_o01IZ" role="3clFbG">
+            <node concept="37vLTw" id="UesZ_o01J0" role="2Oq$k0">
+              <ref role="3cqZAo" node="UesZ_o01J2" resolve="macro" />
+            </node>
+            <node concept="3Tsc0h" id="UesZ_o0dXD" role="2OqNvi">
+              <ref role="3TtcxE" to="tpf8:UesZ_nZ2Id" resolve="variables" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="UesZ_o01J2" role="3clF46">
+        <property role="TrG5h" value="macro" />
+        <node concept="3Tqbb2" id="UesZ_o01J3" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:UesZ_nZ2HY" resolve="VarMacro2" />
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="UesZ_o01J4" role="jymVt">
+      <property role="TrG5h" value="getVarDecl_Name" />
+      <node concept="17QB3L" id="UesZ_o0qJZ" role="3clF45" />
+      <node concept="3Tm1VV" id="UesZ_o01J6" role="1B3o_S" />
+      <node concept="3clFbS" id="UesZ_o01J7" role="3clF47">
+        <node concept="3clFbF" id="UesZ_o01J8" role="3cqZAp">
+          <node concept="2OqwBi" id="UesZ_o01J9" role="3clFbG">
+            <node concept="37vLTw" id="UesZ_o01Ja" role="2Oq$k0">
+              <ref role="3cqZAo" node="UesZ_o01Jc" resolve="varDecl" />
+            </node>
+            <node concept="2qgKlT" id="UesZ_o0umB" role="2OqNvi">
+              <ref role="37wK5l" to="tpfh:UesZ_nZXee" resolve="getImplName" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="UesZ_o01Jc" role="3clF46">
+        <property role="TrG5h" value="varDecl" />
+        <node concept="3Tqbb2" id="UesZ_o01Jd" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="UesZ_o0o3x" role="jymVt">
+      <property role="TrG5h" value="getVarDecl_Query" />
+      <node concept="3Tqbb2" id="UesZ_o0o3y" role="3clF45">
+        <ref role="ehGHo" to="tpf8:4mp7qFmDssq" resolve="VarMacro_ValueQuery" />
+      </node>
+      <node concept="3Tm1VV" id="UesZ_o0o3z" role="1B3o_S" />
+      <node concept="3clFbS" id="UesZ_o0o3$" role="3clF47">
+        <node concept="3clFbF" id="UesZ_o0o3_" role="3cqZAp">
+          <node concept="2OqwBi" id="UesZ_o0o3A" role="3clFbG">
+            <node concept="37vLTw" id="UesZ_o0o3B" role="2Oq$k0">
+              <ref role="3cqZAo" node="UesZ_o0o3D" resolve="varDecl" />
+            </node>
+            <node concept="3TrEf2" id="UesZ_o0uAc" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpf8:UesZ_nZ2Ia" resolve="value" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="UesZ_o0o3D" role="3clF46">
+        <property role="TrG5h" value="varDecl" />
+        <node concept="3Tqbb2" id="UesZ_o0o3E" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="UesZ_o04sf" role="jymVt" />
+    <node concept="2tJIrI" id="UesZ_o00RX" role="jymVt" />
     <node concept="2YIFZL" id="7MOJ0cN$oB7" role="jymVt">
       <property role="TrG5h" value="getDismissTopRule_message" />
       <node concept="3Tqbb2" id="7MOJ0cN$pBN" role="3clF45">

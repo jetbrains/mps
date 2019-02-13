@@ -612,5 +612,23 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
+  <node concept="1TIwiD" id="UesZ_nZl96">
+    <property role="TrG5h" value="GenerationContextOp_VarRef2" />
+    <property role="2_RsDV" value="none" />
+    <property role="EcuMT" value="1048903277984174662" />
+    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
+    <node concept="1TJgyj" id="UesZ_nZl97" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="vardecl" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="1048903277984174663" />
+      <ref role="20lvS9" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
+    </node>
+    <node concept="1TJgyi" id="UesZ_nZl98" role="1TKVEl">
+      <property role="TrG5h" value="name_intern" />
+      <property role="IQ2nx" value="1048903277984174664" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
 </model>
 

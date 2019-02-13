@@ -41,6 +41,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GenerationContextOp_TransientObjectAccess;
   private ConceptPresentation props_GenerationContextOp_UserObjectAccessBase;
   private ConceptPresentation props_GenerationContextOp_VarRef;
+  private ConceptPresentation props_GenerationContextOp_VarRef2;
   private ConceptPresentation props_GenerationContextType;
   private ConceptPresentation props_TemplateFunctionParameter_generationContext;
 
@@ -291,6 +292,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GenerationContextOp_VarRef = cpb.create();
         }
         return props_GenerationContextOp_VarRef;
+      case LanguageConceptSwitch.GenerationContextOp_VarRef2:
+        if (props_GenerationContextOp_VarRef2 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl", "", "");
+          props_GenerationContextOp_VarRef2 = cpb.create();
+        }
+        return props_GenerationContextOp_VarRef2;
       case LanguageConceptSwitch.GenerationContextType:
         if (props_GenerationContextType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

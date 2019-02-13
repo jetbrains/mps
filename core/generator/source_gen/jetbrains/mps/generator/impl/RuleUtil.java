@@ -31,6 +31,7 @@ public final class RuleUtil {
   public static final SConcept concept_LoopMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, "jetbrains.mps.lang.generator.structure.LoopMacro");
   public static final SConcept concept_LabelMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x473cc5baf8a1e7a4L, "jetbrains.mps.lang.generator.structure.LabelMacro");
   public static final SConcept concept_VarMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro");
+  public static final SConcept concept_VarMacro2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2");
   public static final SConcept concept_InsertMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1231e32ff7a958ceL, "jetbrains.mps.lang.generator.structure.InsertMacro");
   public static final SConcept concept_WeaveMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, "jetbrains.mps.lang.generator.structure.WeaveMacro");
   public static final SConcept concept_MapSrcNodeMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, "jetbrains.mps.lang.generator.structure.MapSrcNodeMacro");
@@ -102,6 +103,7 @@ public final class RuleUtil {
     NodeMacroConcepts.add(concept_TemplateSwitchMacro);
     NodeMacroConcepts.add(concept_TraceMacro);
     NodeMacroConcepts.add(concept_VarMacro);
+    NodeMacroConcepts.add(concept_VarMacro2);
     NodeMacroConcepts.add(concept_WeaveMacro);
     NodeMacroConcepts.add(concept_NodeMacro);
   }
@@ -448,6 +450,18 @@ public final class RuleUtil {
   public static SNode getVarMacro_Query(SNode macro) {
     return SLinkOperations.getTarget(macro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644d4L, "value"));
   }
+
+  public static List<SNode> getVarMacro2_Variables(SNode macro) {
+    return SLinkOperations.getChildren(macro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables"));
+  }
+  public static String getVarDecl_Name(SNode varDecl) {
+    return ((String) (String) BHReflection.invoke0(varDecl, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration"), SMethodTrimmedId.create("getImplName", MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration"), "UesZ_nZXee")));
+  }
+  public static SNode getVarDecl_Query(SNode varDecl) {
+    return SLinkOperations.getTarget(varDecl, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value"));
+  }
+
+
   public static SNode getDismissTopRule_message(SNode dismissTopRuleConsequence) {
     return SLinkOperations.getTarget(dismissTopRuleConsequence, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013931abdL, 0x11055b6dd7bL, "generatorMessage"));
   }

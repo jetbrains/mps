@@ -6032,5 +6032,36 @@
       <ref role="1YaFvo" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
     </node>
   </node>
+  <node concept="1YbPZF" id="UesZ_oj2aM">
+    <property role="TrG5h" value="typeof_TemplateArgumentVarRefExpression2" />
+    <property role="3GE5qa" value="rule.argument" />
+    <node concept="3clFbS" id="UesZ_oj2aN" role="18ibNy">
+      <node concept="1Z5TYs" id="UesZ_oj2yS" role="3cqZAp">
+        <node concept="mw_s8" id="UesZ_oj2zc" role="1ZfhKB">
+          <node concept="1Z2H0r" id="UesZ_oj2z8" role="mwGJk">
+            <node concept="2OqwBi" id="UesZ_oj2Gl" role="1Z2MuG">
+              <node concept="1YBJjd" id="UesZ_oj2zt" role="2Oq$k0">
+                <ref role="1YBMHb" node="UesZ_oj2aP" resolve="arg" />
+              </node>
+              <node concept="3TrEf2" id="UesZ_oj2Qm" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpf8:UesZ_oiISg" resolve="vardecl" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="UesZ_oj2yV" role="1ZfhK$">
+          <node concept="1Z2H0r" id="UesZ_oj2hN" role="mwGJk">
+            <node concept="1YBJjd" id="UesZ_oj2j_" role="1Z2MuG">
+              <ref role="1YBMHb" node="UesZ_oj2aP" resolve="arg" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="UesZ_oj2aP" role="1YuTPh">
+      <property role="TrG5h" value="arg" />
+      <ref role="1YaFvo" to="tpf8:UesZ_oiISf" resolve="TemplateArgumentVarRefExpression2" />
+    </node>
+  </node>
 </model>
 
