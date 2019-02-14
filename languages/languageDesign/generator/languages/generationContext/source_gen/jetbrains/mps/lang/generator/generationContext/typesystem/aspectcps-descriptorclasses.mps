@@ -8,7 +8,7 @@
     <import index="tpf1" ref="r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)" />
     <import index="tpfh" ref="r:00000000-0000-4000-0000-011c895902e1(jetbrains.mps.lang.generator.behavior)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
-    <import index="tpf6" ref="r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)" />
+    <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tpf8" ref="r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)" />
@@ -5647,8 +5647,8 @@
             <node concept="3clFbF" id="tQ" role="3cqZAp">
               <node concept="37vLTI" id="ve" role="3clFbG">
                 <node concept="2YIFZM" id="vg" role="37vLTx">
-                  <ref role="37wK5l" to="tpf6:5ed9yo03G1i" resolve="parent" />
-                  <ref role="1Pybhc" to="tpf6:5ed9yo03G1c" resolve="TraverseUtil" />
+                  <ref role="1Pybhc" to="o8zo:3fifI_xCtN$" resolve="Scope" />
+                  <ref role="37wK5l" to="o8zo:3fifI_xCtPZ" resolve="parent" />
                   <node concept="37vLTw" id="vj" role="37wK5m">
                     <ref role="3cqZAo" node="ts" resolve="n" />
                     <node concept="cd27G" id="vl" role="lGtFl">

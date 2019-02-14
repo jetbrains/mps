@@ -248,6 +248,9 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
+        <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
+      </concept>
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -906,7 +909,7 @@
             <property role="TrG5h" value="lastAttr" />
             <node concept="3Tqbb2" id="3fifI_xCJNv" role="1tU5fm" />
             <node concept="2OqwBi" id="3fifI_xCJNX" role="33vP2m">
-              <node concept="2OqwBi" id="3fifI_xCJND" role="2Oq$k0">
+              <node concept="2OqwBi" id="4si$02aVP2Q" role="2Oq$k0">
                 <node concept="2OqwBi" id="3fifI_xCJN$" role="2Oq$k0">
                   <node concept="1PxgMI" id="3fifI_xCJNy" role="2Oq$k0">
                     <node concept="chp4Y" id="714IaVdGZlk" role="3oSUPX">
@@ -920,26 +923,9 @@
                     <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
                   </node>
                 </node>
-                <node concept="3zZkjj" id="3fifI_xCJNH" role="2OqNvi">
-                  <node concept="1bVj0M" id="3fifI_xCJNI" role="23t8la">
-                    <node concept="3clFbS" id="3fifI_xCJNJ" role="1bW5cS">
-                      <node concept="3clFbF" id="3fifI_xCJNM" role="3cqZAp">
-                        <node concept="2OqwBi" id="3fifI_xCJNO" role="3clFbG">
-                          <node concept="37vLTw" id="2BHiRxgmpNj" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3fifI_xCJNK" resolve="it" />
-                          </node>
-                          <node concept="1mIQ4w" id="3fifI_xCJNT" role="2OqNvi">
-                            <node concept="chp4Y" id="3fifI_xCJNV" role="cj9EA">
-                              <ref role="cht4Q" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="Rh6nW" id="3fifI_xCJNK" role="1bW2Oz">
-                      <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="3fifI_xCJNL" role="1tU5fm" />
-                    </node>
+                <node concept="v3k3i" id="4si$02aVTi5" role="2OqNvi">
+                  <node concept="chp4Y" id="4si$02aVTsO" role="v3oSu">
+                    <ref role="cht4Q" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
                   </node>
                 </node>
               </node>
@@ -975,6 +961,13 @@
       <node concept="37vLTG" id="3fifI_xCtQ4" role="3clF46">
         <property role="TrG5h" value="n" />
         <node concept="3Tqbb2" id="3fifI_xCtQ5" role="1tU5fm" />
+      </node>
+      <node concept="P$JXv" id="4si$02aVUjF" role="lGtFl">
+        <node concept="TZ5HA" id="4si$02aVUjG" role="TZ5H$">
+          <node concept="1dT_AC" id="4si$02aVUjH" role="1dT_Ay">
+            <property role="1dT_AB" value="Scope-friendly traversal of an ancestor hierarchy with respect to attribute nodes" />
+          </node>
+        </node>
       </node>
     </node>
   </node>

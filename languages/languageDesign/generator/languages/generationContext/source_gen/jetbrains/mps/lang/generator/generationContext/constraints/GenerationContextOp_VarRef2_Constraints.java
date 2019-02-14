@@ -17,7 +17,13 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.scope.EmptyScope;
+import org.jetbrains.mps.openapi.model.SNode;
+import java.util.List;
+import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDescriptor {
@@ -43,13 +49,21 @@ public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration"));
-            return (scope == null ? new EmptyScope() : scope);
+            // inherited doesn't work as we can't pass TemplateQueryBase boundary (it's a scope provider with empty scope due to MPS-16711, 67f60e4712c88) 
+            SNode contextNode = _context.getContextNode();
+            List<SNode> vars = new ArrayList<SNode>();
+            while ((contextNode != null)) {
+              if (SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2"))) {
+                ListSequence.fromList(vars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables"))));
+              }
+              contextNode = Scope.parent(contextNode);
+            }
+            return ListScope.forResolvableElements(vars);
           }
         };
       }
     });
     return references;
   }
-  private static SNodePointer breakingNode_uv4m3v_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)", "1048903277991450423");
+  private static SNodePointer breakingNode_uv4m3v_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)", "5121314058278954391");
 }

@@ -13,10 +13,10 @@
     <import index="tp2g" ref="r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)" />
     <import index="q1l7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.template(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="tpf6" ref="r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)" />
     <import index="tpfh" ref="r:00000000-0000-4000-0000-011c895902e1(jetbrains.mps.lang.generator.behavior)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
+    <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1316,8 +1316,8 @@
           <node concept="3clFbF" id="6suuiWXKu9i" role="3cqZAp">
             <node concept="37vLTI" id="6suuiWXKuaa" role="3clFbG">
               <node concept="2YIFZM" id="6suuiWXKuh3" role="37vLTx">
-                <ref role="37wK5l" to="tpf6:5ed9yo03G1i" resolve="parent" />
-                <ref role="1Pybhc" to="tpf6:5ed9yo03G1c" resolve="TraverseUtil" />
+                <ref role="1Pybhc" to="o8zo:3fifI_xCtN$" resolve="Scope" />
+                <ref role="37wK5l" to="o8zo:3fifI_xCtPZ" resolve="parent" />
                 <node concept="37vLTw" id="6suuiWXKuhY" role="37wK5m">
                   <ref role="3cqZAo" node="6suuiWXKu5J" resolve="n" />
                 </node>
