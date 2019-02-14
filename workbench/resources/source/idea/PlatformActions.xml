@@ -485,8 +485,8 @@
         <action id="JumpToLastChange" class="com.intellij.ide.actions.JumpToLastEditAction"/>
         <action id="JumpToNextChange" class="com.intellij.ide.actions.JumpToNextEditAction"/>
         <separator/>
-        <action id="PreviousOccurence" class="com.intellij.ide.actions.PreviousOccurenceAction" icon="AllIcons.Actions.PreviousOccurence"/>
-        <action id="NextOccurence" class="com.intellij.ide.actions.NextOccurenceAction" icon="AllIcons.Actions.NextOccurence"/>
+        <action id="PreviousOccurence" class="jetbrains.mps.ide.findusages.view.InspectorRespectingPreviousOccurrenceAction" icon="AllIcons.Actions.PreviousOccurence"/>
+        <action id="NextOccurence" class="jetbrains.mps.ide.findusages.view.InspectorRespectingNextOccurrenceAction" icon="AllIcons.Actions.NextOccurence"/>
         <separator/>
       </group>
 

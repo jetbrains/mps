@@ -285,11 +285,8 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
     return new Navigatable() {
       @Override
       public void navigate(boolean requestFocus) {
+        // Show nodes directly in editor instead of project pane
         boolean useProjectTree = !(data instanceof NodeNodeData);
-        if(data instanceof NodeNodeData) {
-          // Show nodes directly in editor instead of project pane
-          useProjectTree = false;
-        }
         if(data instanceof ModelNodeData || data instanceof ModuleNodeData) {
           // Leave focus in UsagesView or it became unusable
           requestFocus = false;
