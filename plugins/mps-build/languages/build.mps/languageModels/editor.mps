@@ -3991,30 +3991,6 @@
         </node>
         <node concept="l2Vlx" id="6V3S4ekwvbG" role="2iSdaV" />
       </node>
-      <node concept="3EZMnI" id="jC3lHUHwJV" role="3EZMnx">
-        <node concept="VPM3Z" id="jC3lHUHwJW" role="3F10Kt">
-          <property role="VOm3f" value="false" />
-        </node>
-        <node concept="lj46D" id="jC3lHUHwJX" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="ljvvj" id="jC3lHUHwJY" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="3F0ifn" id="jC3lHUHwJZ" role="3EZMnx">
-          <property role="3F0ifm" value="generation max perm size in mb" />
-          <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
-          <node concept="3nxI2P" id="7OnehgFA3CE" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-        </node>
-        <node concept="3F0A7n" id="jC3lHUHwK0" role="3EZMnx">
-          <property role="1O74Pk" value="true" />
-          <property role="1$x2rV" value="default" />
-          <ref role="1NtTu8" to="kdzh:jC3lHUHnEE" resolve="generationMaxPermSizeInMb" />
-        </node>
-        <node concept="l2Vlx" id="jC3lHUHwK1" role="2iSdaV" />
-      </node>
       <node concept="3F0ifn" id="5D0zVz80T9L" role="3EZMnx">
         <property role="3F0ifm" value="" />
         <node concept="lj46D" id="5D0zVz80T9P" role="3F10Kt">
