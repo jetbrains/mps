@@ -1529,8 +1529,8 @@
       <node id="6592112598314498926" at="375,110,376,17" concept="1" />
       <node id="3389822811991596365" at="376,17,377,126" concept="1" />
       <node id="6592112598314801433" at="377,126,378,169" concept="1" />
-      <node id="3570488090019868128" at="378,169,379,205" concept="1" />
-      <node id="6592112598314498926" at="379,205,380,22" concept="1" />
+      <node id="3570488090019868128" at="378,169,379,206" concept="1" />
+      <node id="6592112598314498926" at="379,206,380,22" concept="1" />
       <node id="6592112598314498926" at="380,22,381,22" concept="6" />
       <node id="6592112598314498926" at="369,0,383,0" concept="8" trace="createDescriptorForBuildMpsLayout_Plugin#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="6592112598314498926" at="127,55,128,46" />

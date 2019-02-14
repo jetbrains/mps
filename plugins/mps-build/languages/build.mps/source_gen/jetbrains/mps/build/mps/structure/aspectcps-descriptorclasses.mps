@@ -14634,9 +14634,7 @@
                     </node>
                     <node concept="liA8E" id="1lJ" role="2OqNvi">
                       <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.optional(boolean):jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2$AggregationLinkBuilder" resolve="optional" />
-                      <node concept="3clFbT" id="1lT" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
+                      <node concept="3clFbT" id="1lT" role="37wK5m" />
                     </node>
                   </node>
                   <node concept="liA8E" id="1lH" role="2OqNvi">
