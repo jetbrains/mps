@@ -85,6 +85,7 @@ public final class ReplaceWithNewVarMacro_Intention extends AbstractIntentionDes
         SNode refNew = SNodeOperations.replaceWithNewChild(vref, MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2"));
         SLinkOperations.setTarget(refNew, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl"), vd);
       }
+      editorContext.selectWRTFocusPolicy(vmNew);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
