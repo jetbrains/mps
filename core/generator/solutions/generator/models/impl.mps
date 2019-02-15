@@ -957,6 +957,23 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="ut$TDL35dX" role="3cqZAp">
+          <node concept="3vZ8r8" id="ut$TDL36Dd" role="3clFbG">
+            <node concept="37vLTw" id="ut$TDL36Df" role="37vLTJ">
+              <ref role="3cqZAo" node="4_2twMIWQh_" resolve="customProcessing" />
+            </node>
+            <node concept="2OqwBi" id="ut$TDL36Dg" role="37vLTx">
+              <node concept="37vLTw" id="ut$TDL36Dh" role="2Oq$k0">
+                <ref role="3cqZAo" node="4_2twMIW7es" resolve="expr" />
+              </node>
+              <node concept="1mIQ4w" id="ut$TDL36Di" role="2OqNvi">
+                <node concept="chp4Y" id="ut$TDL36Dj" role="cj9EA">
+                  <ref role="cht4Q" to="tpf8:UesZ_oiISf" resolve="TemplateArgumentVarRefExpression2" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="26PfAtHKSo6" role="3cqZAp">
           <node concept="3SKdUq" id="26PfAtHKSo8" role="3SKWNk">
             <property role="3SKdUp" value="XXX generated templates are fine with genContext operations, however, there's no support for these in TemplateCall#toExpressionRuntime() yet." />
@@ -2118,6 +2135,17 @@
       </node>
       <node concept="35c_gC" id="6RlRW_SRYZF" role="33vP2m">
         <ref role="35c_gD" to="tpf8:3PJ9groyE0C" resolve="TemplateArgumentVariableRefExpression" />
+      </node>
+    </node>
+    <node concept="Wx3nA" id="79XVXw$rq3P" role="jymVt">
+      <property role="TrG5h" value="concept_TemplateArgumentVarRefExpression2" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="79XVXw$rq3Q" role="1B3o_S" />
+      <node concept="3uibUv" id="79XVXw$rq3R" role="1tU5fm">
+        <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
+      </node>
+      <node concept="35c_gC" id="79XVXw$rq3S" role="33vP2m">
+        <ref role="35c_gD" to="tpf8:UesZ_oiISf" resolve="TemplateArgumentVarRefExpression2" />
       </node>
     </node>
     <node concept="Wx3nA" id="15H8LO1FPHA" role="jymVt">
@@ -5219,6 +5247,31 @@
         <property role="TrG5h" value="expr" />
         <node concept="3Tqbb2" id="4ijrH0B_xc0" role="1tU5fm">
           <ref role="ehGHo" to="tpf8:3PJ9groyE0C" resolve="TemplateArgumentVariableRefExpression" />
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="3nRidJ2fe6R" role="jymVt">
+      <property role="TrG5h" value="getTemplateArgumentVarRef2_VarDeclaration" />
+      <node concept="3Tqbb2" id="3nRidJ2fe6S" role="3clF45">
+        <ref role="ehGHo" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
+      </node>
+      <node concept="3Tm1VV" id="3nRidJ2fe6T" role="1B3o_S" />
+      <node concept="3clFbS" id="3nRidJ2fe6U" role="3clF47">
+        <node concept="3cpWs6" id="3nRidJ2fe6V" role="3cqZAp">
+          <node concept="2OqwBi" id="3nRidJ2fe6W" role="3cqZAk">
+            <node concept="37vLTw" id="3nRidJ2fe6X" role="2Oq$k0">
+              <ref role="3cqZAo" node="3nRidJ2fe6Z" resolve="expr" />
+            </node>
+            <node concept="3TrEf2" id="3nRidJ2fzoD" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpf8:UesZ_oiISg" resolve="vardecl" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3nRidJ2fe6Z" role="3clF46">
+        <property role="TrG5h" value="expr" />
+        <node concept="3Tqbb2" id="3nRidJ2fe70" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:UesZ_oiISf" resolve="TemplateArgumentVarRefExpression2" />
         </node>
       </node>
     </node>
