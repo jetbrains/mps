@@ -508,9 +508,9 @@
       <node id="1066600152715835976" at="661,11,662,58" concept="3" />
       <node id="1066600152715835976" at="662,58,663,33" concept="10" />
       <node id="1066600152716010741" at="665,9,666,43" concept="8" />
-      <node id="1066600152716010741" at="666,43,667,142" concept="8" />
-      <node id="1066600152716010741" at="667,142,668,95" concept="8" />
-      <node id="1066600152716010741" at="668,95,669,77" concept="8" />
+      <node id="1066600152716010741" at="666,43,667,47" concept="8" />
+      <node id="2409421742521902666" at="667,47,668,287" concept="3" />
+      <node id="1066600152716010741" at="668,287,669,77" concept="8" />
       <node id="1066600152716010741" at="670,15,671,75" concept="3" />
       <node id="1066600152716010741" at="671,75,672,88" concept="3" />
       <node id="1066600152716010741" at="672,88,673,75" concept="3" />
@@ -970,9 +970,9 @@
       <node id="1066600152715835976" at="1664,11,1665,58" concept="3" />
       <node id="1066600152715835976" at="1665,58,1666,33" concept="10" />
       <node id="1066600152716010741" at="1668,9,1669,43" concept="8" />
-      <node id="1066600152716010741" at="1669,43,1670,142" concept="8" />
-      <node id="1066600152716010741" at="1670,142,1671,95" concept="8" />
-      <node id="1066600152716010741" at="1671,95,1672,77" concept="8" />
+      <node id="1066600152716010741" at="1669,43,1670,47" concept="8" />
+      <node id="2409421742521902666" at="1670,47,1671,287" concept="3" />
+      <node id="1066600152716010741" at="1671,287,1672,77" concept="8" />
       <node id="1066600152716010741" at="1673,15,1674,75" concept="3" />
       <node id="1066600152716010741" at="1674,75,1675,88" concept="3" />
       <node id="1066600152716010741" at="1675,88,1676,75" concept="3" />
@@ -1244,41 +1244,39 @@
       <node id="1066600152715734036" at="2161,0,2162,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a1a1a1a3a2a2a1a8a1a1a01a1a4a4" />
       <node id="1066600152715734036" at="2162,0,2163,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0c0b0i0b0b0k0b0e0e" />
       <node id="1066600152715734036" at="2163,0,2164,0" concept="12" trace="ifMacroRef_mgoy7h_b0a0b0k0b0e0e" />
-      <node id="1066600152715734036" at="2164,0,2165,0" concept="12" trace="varMacroRef_mgoy7h_b0a0a1a21a1a4a4" />
-      <node id="1066600152715734036" at="2165,0,2166,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0m0b0e0e" />
-      <node id="1066600152715734036" at="2166,0,2167,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a2a1a7a4a21a1a4a4" />
-      <node id="1066600152715734036" at="2167,0,2168,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0m0b0e0e" />
-      <node id="1066600152715734036" at="2168,0,2169,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a2a1a1a1a1a4a3a2a1a7a4a21a1a4a4" />
-      <node id="1066600152715734036" at="2169,0,2170,0" concept="12" trace="insertMacro_mgoy7h_b0a0a1a1a1a2a1a1a4a3a2a1a7a4a21a1a4a4" />
-      <node id="1066600152715734036" at="2170,0,2171,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a3a1a1a1a3a1a7a4a21a1a4a4" />
-      <node id="1066600152715734036" at="2171,0,2172,0" concept="12" trace="copySrcListMacro_mgoy7h_b0a0a1a3a1a1a1a1a1a7a1a1a41a1a4a4" />
-      <node id="1066600152715734036" at="2172,0,2173,0" concept="12" trace="ifMacroRef_mgoy7h_b0a0b0o0b0e0e" />
-      <node id="1066600152715734036" at="2173,0,2174,0" concept="12" trace="mapsrcMacroRef_mgoy7h_b0a0a1a5" />
-      <node id="1066600152715734036" at="2174,0,2175,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0b0b0d0f" />
-      <node id="1066600152715734036" at="2175,0,2176,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a2a1a1a1a6a1a4a1a3a5" />
-      <node id="1066600152715734036" at="2176,0,2177,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a3a1a1a1a6a1a4a1a3a5" />
-      <node id="1066600152715734036" at="2177,0,2178,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a4a1a1a1a6a1a4a1a3a5" />
-      <node id="1066600152715734036" at="2178,0,2179,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0b0b0b0i0b0g0b0d0f" />
-      <node id="1066600152715734036" at="2179,0,2180,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a1a1a8a1a8a1a3a5" />
-      <node id="1066600152715734036" at="2180,0,2181,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a1a1a1a3a2a1a1a8a1a8a1a3a5" />
-      <node id="1066600152715734036" at="2181,0,2182,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0b0b0i0b0i0b0d0f" />
-      <node id="1066600152715734036" at="2182,0,2183,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0d0b0c0b0b0d0c0b0b0i0b0i0b0d0f" />
-      <node id="1066600152715734036" at="2183,0,2184,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a1a1a8a1a1a01a1a3a5" />
-      <node id="1066600152715734036" at="2184,0,2185,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a1a1a1a3a2a1a1a8a1a1a01a1a3a5" />
-      <node id="1066600152715734036" at="2185,0,2186,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0b0b0i0b0b0k0b0d0f" />
-      <node id="1066600152715734036" at="2186,0,2187,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a2a1a8a1a1a01a1a3a5" />
-      <node id="1066600152715734036" at="2187,0,2188,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a1a1a1a3a2a2a1a8a1a1a01a1a3a5" />
-      <node id="1066600152715734036" at="2188,0,2189,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0c0b0i0b0b0k0b0d0f" />
-      <node id="1066600152715734036" at="2189,0,2190,0" concept="12" trace="ifMacroRef_mgoy7h_b0a0b0k0b0d0f" />
-      <node id="1066600152715734036" at="2190,0,2191,0" concept="12" trace="varMacroRef_mgoy7h_b0a0a1a21a1a3a5" />
-      <node id="1066600152715734036" at="2191,0,2192,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0m0b0d0f" />
-      <node id="1066600152715734036" at="2192,0,2193,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a2a1a7a4a21a1a3a5" />
-      <node id="1066600152715734036" at="2193,0,2194,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0m0b0d0f" />
-      <node id="1066600152715734036" at="2194,0,2195,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a2a1a1a1a1a4a3a2a1a7a4a21a1a3a5" />
-      <node id="1066600152715734036" at="2195,0,2196,0" concept="12" trace="insertMacro_mgoy7h_b0a0a1a1a1a2a1a1a4a3a2a1a7a4a21a1a3a5" />
-      <node id="1066600152715734036" at="2196,0,2197,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a3a1a1a1a3a1a7a4a21a1a3a5" />
-      <node id="1066600152715734036" at="2197,0,2198,0" concept="12" trace="copySrcListMacro_mgoy7h_b0a0a1a3a1a1a1a1a1a7a1a1a41a1a3a5" />
-      <node id="1066600152715734036" at="2198,0,2199,0" concept="12" trace="ifMacroRef_mgoy7h_b0a0b0o0b0d0f" />
+      <node id="1066600152715734036" at="2164,0,2165,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0m0b0e0e" />
+      <node id="1066600152715734036" at="2165,0,2166,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a2a1a7a4a21a1a4a4" />
+      <node id="1066600152715734036" at="2166,0,2167,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0m0b0e0e" />
+      <node id="1066600152715734036" at="2167,0,2168,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a2a1a1a1a1a4a3a2a1a7a4a21a1a4a4" />
+      <node id="1066600152715734036" at="2168,0,2169,0" concept="12" trace="insertMacro_mgoy7h_b0a0a1a1a1a2a1a1a4a3a2a1a7a4a21a1a4a4" />
+      <node id="1066600152715734036" at="2169,0,2170,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a3a1a1a1a3a1a7a4a21a1a4a4" />
+      <node id="1066600152715734036" at="2170,0,2171,0" concept="12" trace="copySrcListMacro_mgoy7h_b0a0a1a3a1a1a1a1a1a7a1a1a41a1a4a4" />
+      <node id="1066600152715734036" at="2171,0,2172,0" concept="12" trace="ifMacroRef_mgoy7h_b0a0b0o0b0e0e" />
+      <node id="1066600152715734036" at="2172,0,2173,0" concept="12" trace="mapsrcMacroRef_mgoy7h_b0a0a1a5" />
+      <node id="1066600152715734036" at="2173,0,2174,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0b0b0d0f" />
+      <node id="1066600152715734036" at="2174,0,2175,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a2a1a1a1a6a1a4a1a3a5" />
+      <node id="1066600152715734036" at="2175,0,2176,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a3a1a1a1a6a1a4a1a3a5" />
+      <node id="1066600152715734036" at="2176,0,2177,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a4a1a1a1a6a1a4a1a3a5" />
+      <node id="1066600152715734036" at="2177,0,2178,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0b0b0b0i0b0g0b0d0f" />
+      <node id="1066600152715734036" at="2178,0,2179,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a1a1a8a1a8a1a3a5" />
+      <node id="1066600152715734036" at="2179,0,2180,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a1a1a1a3a2a1a1a8a1a8a1a3a5" />
+      <node id="1066600152715734036" at="2180,0,2181,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0b0b0i0b0i0b0d0f" />
+      <node id="1066600152715734036" at="2181,0,2182,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0d0b0c0b0b0d0c0b0b0i0b0i0b0d0f" />
+      <node id="1066600152715734036" at="2182,0,2183,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a1a1a8a1a1a01a1a3a5" />
+      <node id="1066600152715734036" at="2183,0,2184,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a1a1a1a3a2a1a1a8a1a1a01a1a3a5" />
+      <node id="1066600152715734036" at="2184,0,2185,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0b0b0i0b0b0k0b0d0f" />
+      <node id="1066600152715734036" at="2185,0,2186,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a2a1a8a1a1a01a1a3a5" />
+      <node id="1066600152715734036" at="2186,0,2187,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a1a1a1a3a2a2a1a8a1a1a01a1a3a5" />
+      <node id="1066600152715734036" at="2187,0,2188,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0c0b0i0b0b0k0b0d0f" />
+      <node id="1066600152715734036" at="2188,0,2189,0" concept="12" trace="ifMacroRef_mgoy7h_b0a0b0k0b0d0f" />
+      <node id="1066600152715734036" at="2189,0,2190,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0m0b0d0f" />
+      <node id="1066600152715734036" at="2190,0,2191,0" concept="12" trace="loopMacroRef_mgoy7h_b0a0a1a2a1a7a4a21a1a3a5" />
+      <node id="1066600152715734036" at="2191,0,2192,0" concept="12" trace="propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0m0b0d0f" />
+      <node id="1066600152715734036" at="2192,0,2193,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a2a1a1a1a1a4a3a2a1a7a4a21a1a3a5" />
+      <node id="1066600152715734036" at="2193,0,2194,0" concept="12" trace="insertMacro_mgoy7h_b0a0a1a1a1a2a1a1a4a3a2a1a7a4a21a1a3a5" />
+      <node id="1066600152715734036" at="2194,0,2195,0" concept="12" trace="templateNode_mgoy7h_c0a0a1a3a1a1a1a3a1a7a4a21a1a3a5" />
+      <node id="1066600152715734036" at="2195,0,2196,0" concept="12" trace="copySrcListMacro_mgoy7h_b0a0a1a3a1a1a1a1a1a7a1a1a41a1a3a5" />
+      <node id="1066600152715734036" at="2196,0,2197,0" concept="12" trace="ifMacroRef_mgoy7h_b0a0b0o0b0d0f" />
       <node id="1066600152715734036" at="37,0,39,0" concept="1" trace="Template_InterpretedGeneratorRuntimeDescriptor#()V" />
       <node id="1066600152715734036" at="40,0,43,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1066600152715911277" at="55,75,58,11" concept="15" />
@@ -3082,13 +3080,11 @@
         <var name="context33" id="1066600152716010741" />
         <var name="tlist72" id="1066600152716010741" />
         <var name="tnode73" id="1066600152716010741" />
-        <var name="varValue72" id="1066600152716010741" />
       </scope>
       <scope id="1066600152716010741" at="1668,9,1922,33">
         <var name="context33" id="1066600152716010741" />
         <var name="tlist72" id="1066600152716010741" />
         <var name="tnode73" id="1066600152716010741" />
-        <var name="varValue72" id="1066600152716010741" />
       </scope>
       <scope id="1066600152715734036" at="50,11,1038,9">
         <var name="context2" id="1066600152715734036" />
@@ -3120,7 +3116,7 @@
       <scope id="1066600152715734036" at="43,0,1047,0">
         <var name="context" id="1066600152715734036" />
       </scope>
-      <unit id="1066600152715734036" at="34,0,2200,0" name="jetbrains.mps.lang.descriptor.generator.template.main.Template_InterpretedGeneratorRuntimeDescriptor" />
+      <unit id="1066600152715734036" at="34,0,2198,0" name="jetbrains.mps.lang.descriptor.generator.template.main.Template_InterpretedGeneratorRuntimeDescriptor" />
     </file>
   </root>
   <root nodeRef="r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)/1698302279987411125">
@@ -3786,9 +3782,9 @@
       <node id="263208052639706700" at="422,11,423,78" concept="8" />
       <node id="263208052639706700" at="424,17,425,65" concept="8" />
       <node id="263208052639706701" at="426,15,427,49" concept="8" />
-      <node id="263208052639706701" at="427,49,428,155" concept="8" />
-      <node id="263208052639706701" at="428,155,429,105" concept="8" />
-      <node id="263208052639706701" at="429,105,430,83" concept="8" />
+      <node id="263208052639706701" at="427,49,428,54" concept="8" />
+      <node id="2409421742521900528" at="428,54,429,297" concept="3" />
+      <node id="263208052639706701" at="429,297,430,83" concept="8" />
       <node id="263208052639706701" at="431,21,432,69" concept="8" />
       <node id="263208052639706702" at="433,19,434,86" concept="8" />
       <node id="263208052639706702" at="435,25,436,73" concept="8" />
@@ -3997,9 +3993,9 @@
       <node id="263208052639706814" at="888,9,889,56" concept="3" />
       <node id="263208052639706814" at="889,56,890,31" concept="10" />
       <node id="263208052639706815" at="892,7,893,42" concept="8" />
-      <node id="263208052639706815" at="893,42,894,139" concept="8" />
-      <node id="263208052639706815" at="894,139,895,94" concept="8" />
-      <node id="263208052639706815" at="895,94,896,76" concept="8" />
+      <node id="263208052639706815" at="893,42,894,45" concept="8" />
+      <node id="2409421742521900532" at="894,45,895,285" concept="3" />
+      <node id="263208052639706815" at="895,285,896,76" concept="8" />
       <node id="263208052639706815" at="897,13,898,74" concept="3" />
       <node id="263208052639706815" at="898,74,899,87" concept="3" />
       <node id="263208052639706815" at="899,87,900,74" concept="3" />
@@ -4313,32 +4309,30 @@
       <node id="263208052639697475" at="1474,0,1475,0" concept="12" trace="copySrcListMacro_zfkl79_b0a0a1a3a1a2a1a1a1a1a2a1a3a1a7a3a6" />
       <node id="263208052639697475" at="1475,0,1476,0" concept="12" trace="ifMacroRef_zfkl79_b0a0b0c0b0d0b0h0d0g" />
       <node id="263208052639697475" at="1476,0,1477,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0g0b0i0d0g" />
-      <node id="263208052639697475" at="1477,0,1478,0" concept="12" trace="varMacroRef_zfkl79_b0a0a1a1a1a6a1a01a3a6" />
-      <node id="263208052639697475" at="1478,0,1479,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0b0b0b0b0b0b0b0b0e0b0b0g0b0k0d0g" />
-      <node id="263208052639697475" at="1479,0,1480,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a1a1a1a1a1a4a1a1a6a1a01a3a6" />
-      <node id="263208052639697475" at="1480,0,1481,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a2a1a1a4a1a1a6a1a01a3a6" />
-      <node id="263208052639697475" at="1481,0,1482,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0e0d0c0b0b0e0b0b0g0b0k0d0g" />
-      <node id="263208052639697475" at="1482,0,1483,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0c0b0b0e0d0c0b0b0e0b0b0g0b0k0d0g" />
-      <node id="263208052639697475" at="1483,0,1484,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a2a1a1a4a3a2a1a1a4a1a1a6a1a01a3a6" />
-      <node id="263208052639697475" at="1484,0,1485,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a2a4a1a1a6a1a01a3a6" />
-      <node id="263208052639697475" at="1485,0,1486,0" concept="12" trace="templateNode_zfkl79_c0a0a1a3a1a1a1a2a1a6a1a01a3a6" />
-      <node id="263208052639697475" at="1486,0,1487,0" concept="12" trace="templateNode_zfkl79_c0a0a1a1a1a1a1a6a1a1a21a3a6" />
-      <node id="263208052639697475" at="1487,0,1488,0" concept="12" trace="ifMacroRef_zfkl79_b0a0b0m0d0g" />
-      <node id="263208052639697475" at="1488,0,1489,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0c0b0c0b0b0b0b0b0i0b0o0d0g" />
-      <node id="263208052639697475" at="1489,0,1490,0" concept="12" trace="varMacroRef_zfkl79_b0a0a1a61a3a6" />
-      <node id="263208052639697475" at="1490,0,1491,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0q0d0g" />
-      <node id="263208052639697475" at="1491,0,1492,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a2a1a7a4a61a3a6" />
-      <node id="263208052639697475" at="1492,0,1493,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0q0d0g" />
-      <node id="263208052639697475" at="1493,0,1494,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a1a1a1a4a3a2a1a7a4a61a3a6" />
-      <node id="263208052639697475" at="1494,0,1495,0" concept="12" trace="insertMacro_zfkl79_b0a0a1a1a1a2a1a1a4a3a2a1a7a4a61a3a6" />
-      <node id="263208052639697475" at="1495,0,1496,0" concept="12" trace="templateNode_zfkl79_c0a0a1a3a1a1a1a3a1a7a4a61a3a6" />
-      <node id="263208052639697475" at="1496,0,1497,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a1a1a8a1a1a81a3a6" />
-      <node id="263208052639697475" at="1497,0,1498,0" concept="12" trace="templateNode_zfkl79_c0a0a1a1a1a1a3a2a1a1a8a1a1a81a3a6" />
-      <node id="263208052639697475" at="1498,0,1499,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0c0b0c0b0b0d0c0b0b0i0b0b0s0d0g" />
-      <node id="263208052639697475" at="1499,0,1500,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a2a1a8a1a1a81a3a6" />
-      <node id="263208052639697475" at="1500,0,1501,0" concept="12" trace="templateNode_zfkl79_c0a0a1a1a1a1a3a2a2a1a8a1a1a81a3a6" />
-      <node id="263208052639697475" at="1501,0,1502,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0c0b0c0b0b0d0c0c0b0i0b0b0s0d0g" />
-      <node id="263208052639697475" at="1502,0,1503,0" concept="12" trace="ifMacroRef_zfkl79_b0a0b0s0d0g" />
+      <node id="263208052639697475" at="1477,0,1478,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0b0b0b0b0b0b0b0b0e0b0b0g0b0k0d0g" />
+      <node id="263208052639697475" at="1478,0,1479,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a1a1a1a1a1a4a1a1a6a1a01a3a6" />
+      <node id="263208052639697475" at="1479,0,1480,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a2a1a1a4a1a1a6a1a01a3a6" />
+      <node id="263208052639697475" at="1480,0,1481,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0e0d0c0b0b0e0b0b0g0b0k0d0g" />
+      <node id="263208052639697475" at="1481,0,1482,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0c0b0b0e0d0c0b0b0e0b0b0g0b0k0d0g" />
+      <node id="263208052639697475" at="1482,0,1483,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a2a1a1a4a3a2a1a1a4a1a1a6a1a01a3a6" />
+      <node id="263208052639697475" at="1483,0,1484,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a2a4a1a1a6a1a01a3a6" />
+      <node id="263208052639697475" at="1484,0,1485,0" concept="12" trace="templateNode_zfkl79_c0a0a1a3a1a1a1a2a1a6a1a01a3a6" />
+      <node id="263208052639697475" at="1485,0,1486,0" concept="12" trace="templateNode_zfkl79_c0a0a1a1a1a1a1a6a1a1a21a3a6" />
+      <node id="263208052639697475" at="1486,0,1487,0" concept="12" trace="ifMacroRef_zfkl79_b0a0b0m0d0g" />
+      <node id="263208052639697475" at="1487,0,1488,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0c0b0c0b0b0b0b0b0i0b0o0d0g" />
+      <node id="263208052639697475" at="1488,0,1489,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0q0d0g" />
+      <node id="263208052639697475" at="1489,0,1490,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a2a1a7a4a61a3a6" />
+      <node id="263208052639697475" at="1490,0,1491,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0q0d0g" />
+      <node id="263208052639697475" at="1491,0,1492,0" concept="12" trace="templateNode_zfkl79_c0a0a1a2a1a1a1a1a4a3a2a1a7a4a61a3a6" />
+      <node id="263208052639697475" at="1492,0,1493,0" concept="12" trace="insertMacro_zfkl79_b0a0a1a1a1a2a1a1a4a3a2a1a7a4a61a3a6" />
+      <node id="263208052639697475" at="1493,0,1494,0" concept="12" trace="templateNode_zfkl79_c0a0a1a3a1a1a1a3a1a7a4a61a3a6" />
+      <node id="263208052639697475" at="1494,0,1495,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a1a1a8a1a1a81a3a6" />
+      <node id="263208052639697475" at="1495,0,1496,0" concept="12" trace="templateNode_zfkl79_c0a0a1a1a1a1a3a2a1a1a8a1a1a81a3a6" />
+      <node id="263208052639697475" at="1496,0,1497,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0c0b0c0b0b0d0c0b0b0i0b0b0s0d0g" />
+      <node id="263208052639697475" at="1497,0,1498,0" concept="12" trace="loopMacroRef_zfkl79_b0a0a1a2a1a8a1a1a81a3a6" />
+      <node id="263208052639697475" at="1498,0,1499,0" concept="12" trace="templateNode_zfkl79_c0a0a1a1a1a1a3a2a2a1a8a1a1a81a3a6" />
+      <node id="263208052639697475" at="1499,0,1500,0" concept="12" trace="propertyMacro_zfkl79_c0a0c0a0b0c0b0c0b0b0d0c0c0b0i0b0b0s0d0g" />
+      <node id="263208052639697475" at="1500,0,1501,0" concept="12" trace="ifMacroRef_zfkl79_b0a0b0s0d0g" />
       <node id="263208052639697475" at="38,0,40,0" concept="1" trace="Template_GeneratorRuntime#()V" />
       <node id="263208052639697475" at="41,0,44,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="263208052639706469" at="63,73,66,9" concept="15" />
@@ -5532,7 +5526,6 @@
         <var name="context20" id="263208052639706701" />
         <var name="tlist47" id="263208052639706701" />
         <var name="tnode48" id="263208052639706701" />
-        <var name="varValue47" id="263208052639706701" />
       </scope>
       <scope id="263208052639706700" at="424,17,663,15">
         <var name="context19" id="263208052639706700" />
@@ -5547,7 +5540,6 @@
         <var name="context45" id="263208052639706815" />
         <var name="tlist100" id="263208052639706815" />
         <var name="tnode101" id="263208052639706815" />
-        <var name="varValue100" id="263208052639706815" />
       </scope>
       <scope id="263208052639706696" at="390,13,677,11">
         <var name="context17" id="263208052639706696" />
@@ -5567,7 +5559,7 @@
       <scope id="263208052639720703" at="46,0,1353,0">
         <var name="contextNoLabel" id="263208052639720703" />
       </scope>
-      <unit id="263208052639697475" at="35,0,1504,0" name="jetbrains.mps.lang.descriptor.generator.template.main.Template_GeneratorRuntime" />
+      <unit id="263208052639697475" at="35,0,1502,0" name="jetbrains.mps.lang.descriptor.generator.template.main.Template_GeneratorRuntime" />
     </file>
   </root>
   <root nodeRef="r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)/3919235298192647143">
@@ -6402,9 +6394,9 @@
     <file name="Template_Language.java">
       <node id="9020561928507177266" at="40,43,41,32" concept="9" />
       <node id="9020561928507177266" at="43,158,44,36" concept="8" />
-      <node id="9020561928507177266" at="44,36,45,127" concept="8" />
-      <node id="9020561928507177266" at="45,127,46,81" concept="8" />
-      <node id="9020561928507177266" at="46,81,47,69" concept="8" />
+      <node id="9020561928507177266" at="44,36,45,39" concept="8" />
+      <node id="2409421742521900524" at="45,39,46,273" concept="3" />
+      <node id="9020561928507177266" at="46,273,47,69" concept="8" />
       <node id="9020561928507177266" at="48,9,49,113" concept="3" />
       <node id="9020561928507177266" at="49,113,50,71" concept="3" />
       <node id="9020561928507177266" at="50,71,51,55" concept="8" />
@@ -6699,9 +6691,9 @@
       <node id="2030416617761783824" at="673,49,674,37" concept="2" />
       <node id="2030416617761783824" at="675,27,676,85" concept="8" />
       <node id="2030416617761783824" at="676,85,677,59" concept="8" />
-      <node id="2030416617761783824" at="677,59,678,175" concept="8" />
-      <node id="2030416617761783824" at="678,175,679,102" concept="8" />
-      <node id="2030416617761783824" at="679,102,680,59" concept="8" />
+      <node id="2030416617761783824" at="677,59,678,64" concept="8" />
+      <node id="2409421742521900521" at="678,64,679,294" concept="3" />
+      <node id="2030416617761783824" at="679,294,680,59" concept="8" />
       <node id="2030416617761783824" at="681,31,682,60" concept="8" />
       <node id="2030416617761783824" at="683,29,684,95" concept="8" />
       <node id="2030416617761783824" at="685,97,686,77" concept="3" />
@@ -6823,21 +6815,19 @@
       <node id="9020561928507177266" at="874,136,875,137" concept="3" />
       <node id="9020561928507177266" at="875,137,876,14" concept="9" />
       <node id="9020561928507177266" at="878,0,879,0" concept="12" trace="template_ko6gu6_a0a3" />
-      <node id="9020561928507177266" at="879,0,880,0" concept="12" trace="varMacroRef_ko6gu6_b0a0a1a4" />
-      <node id="9020561928507177266" at="880,0,881,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a1a1a1a1a1a1a3a1a7a4a4" />
-      <node id="9020561928507177266" at="881,0,882,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0d0b0c0b0b0b0b0b0d0b0h0e0e" />
-      <node id="9020561928507177266" at="882,0,883,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0f0b0j0e0e" />
-      <node id="9020561928507177266" at="883,0,884,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0g0b0l0e0e" />
-      <node id="9020561928507177266" at="884,0,885,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a1a1a1a1a6a1a31a4a4" />
-      <node id="9020561928507177266" at="885,0,886,0" concept="12" trace="loopMacroRef_ko6gu6_b0a0a1a1a1a8a1a51a4a4" />
-      <node id="9020561928507177266" at="886,0,887,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a1a1a1a3a2a1a1a8a1a51a4a4" />
-      <node id="9020561928507177266" at="887,0,888,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0d0b0d0b0c0b0c0b0b0d0c0b0b0i0b0p0e0e" />
-      <node id="9020561928507177266" at="888,0,889,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0e0b0c0b0c0b0b0d0c0b0b0i0b0p0e0e" />
-      <node id="9020561928507177266" at="889,0,890,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a6a1a71a4a4" />
-      <node id="9020561928507177266" at="890,0,891,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a2a1a2a1a7a1a71a4a4" />
-      <node id="9020561928507177266" at="891,0,892,0" concept="12" trace="loopMacroRef_ko6gu6_b0a0a1a1a1a1a3a1a1a8a1a71a4a4" />
-      <node id="9020561928507177266" at="892,0,893,0" concept="12" trace="varMacroRef_ko6gu6_b0a0a3a2a1a1a1a3a1a1a8a1a71a4a4" />
-      <node id="9020561928507177266" at="893,0,894,0" concept="12" trace="templateSwitchNodeNoInput_ko6gu6_a0a0c0g0c0b0b0b0d0b0b0i0b0r0e0e" />
+      <node id="9020561928507177266" at="879,0,880,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a1a1a1a1a1a1a3a1a7a4a4" />
+      <node id="9020561928507177266" at="880,0,881,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0d0b0c0b0b0b0b0b0d0b0h0e0e" />
+      <node id="9020561928507177266" at="881,0,882,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0f0b0j0e0e" />
+      <node id="9020561928507177266" at="882,0,883,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0g0b0l0e0e" />
+      <node id="9020561928507177266" at="883,0,884,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a1a1a1a1a6a1a31a4a4" />
+      <node id="9020561928507177266" at="884,0,885,0" concept="12" trace="loopMacroRef_ko6gu6_b0a0a1a1a1a8a1a51a4a4" />
+      <node id="9020561928507177266" at="885,0,886,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a1a1a1a3a2a1a1a8a1a51a4a4" />
+      <node id="9020561928507177266" at="886,0,887,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0d0b0d0b0c0b0c0b0b0d0c0b0b0i0b0p0e0e" />
+      <node id="9020561928507177266" at="887,0,888,0" concept="12" trace="propertyMacro_ko6gu6_c0a0c0a0b0e0b0c0b0c0b0b0d0c0b0b0i0b0p0e0e" />
+      <node id="9020561928507177266" at="888,0,889,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a6a1a71a4a4" />
+      <node id="9020561928507177266" at="889,0,890,0" concept="12" trace="templateNode_ko6gu6_c0a0a1a2a1a2a1a7a1a71a4a4" />
+      <node id="9020561928507177266" at="890,0,891,0" concept="12" trace="loopMacroRef_ko6gu6_b0a0a1a1a1a1a3a1a1a8a1a71a4a4" />
+      <node id="9020561928507177266" at="891,0,892,0" concept="12" trace="templateSwitchNodeNoInput_ko6gu6_a0a0c0g0c0b0b0b0d0b0b0i0b0r0e0e" />
       <node id="9020561928507177266" at="37,0,39,0" concept="1" trace="Template_Language#()V" />
       <node id="9020561928507177266" at="40,0,43,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="9020561928507177267" at="53,73,56,9" concept="15" />
@@ -7419,7 +7409,6 @@
         <var name="context37" id="2030416617761783824" />
         <var name="tlist74" id="2030416617761783824" />
         <var name="tlist75" id="2030416617761783824" />
-        <var name="varValue74" id="2030416617761783824" />
       </scope>
       <scope id="2030416617761783824" at="671,198,723,25">
         <var name="itnode73" id="2030416617761783824" />
@@ -7517,13 +7506,12 @@
         <var name="context1" id="9020561928507177266" />
         <var name="tlist1" id="9020561928507177266" />
         <var name="tnode2" id="9020561928507177266" />
-        <var name="varValue1" id="9020561928507177266" />
       </scope>
       <scope id="9020561928507177266" at="43,0,784,0">
         <var name="context" id="9020561928507177266" />
         <var name="environment" id="9020561928507177266" />
       </scope>
-      <unit id="9020561928507177266" at="34,0,895,0" name="jetbrains.mps.lang.descriptor.generator.template.main.Template_Language" />
+      <unit id="9020561928507177266" at="34,0,893,0" name="jetbrains.mps.lang.descriptor.generator.template.main.Template_Language" />
     </file>
   </root>
 </debug-info>

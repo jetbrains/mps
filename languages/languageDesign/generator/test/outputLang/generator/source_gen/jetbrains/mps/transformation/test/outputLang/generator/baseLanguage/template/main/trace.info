@@ -2423,9 +2423,9 @@
       <node id="5015072279636761102" at="101,15,102,82" concept="8" />
       <node id="5015072279636761102" at="103,21,104,67" concept="8" />
       <node id="5015072279636761103" at="105,19,106,53" concept="8" />
-      <node id="5015072279636761103" at="106,53,107,161" concept="8" />
-      <node id="5015072279636761103" at="107,161,108,93" concept="8" />
-      <node id="5015072279636761103" at="108,93,109,86" concept="8" />
+      <node id="5015072279636761103" at="106,53,107,56" concept="8" />
+      <node id="2409421742521903844" at="107,56,108,312" concept="3" />
+      <node id="5015072279636761103" at="108,312,109,86" concept="8" />
       <node id="5015072279636761103" at="110,25,111,130" concept="3" />
       <node id="5015072279636761103" at="111,130,112,81" concept="3" />
       <node id="5015072279636761103" at="112,81,113,71" concept="8" />
@@ -2517,11 +2517,10 @@
       <node id="4146564171992412775" at="279,136,280,131" concept="3" />
       <node id="4146564171992412775" at="280,131,281,14" concept="9" />
       <node id="4146564171992412775" at="283,0,284,0" concept="12" trace="template_xizpik_a0a3" />
-      <node id="4146564171992412775" at="284,0,285,0" concept="12" trace="varMacroRef_xizpik_b0a0a1a1a1a1a1a3a1a5a1a4" />
-      <node id="4146564171992412775" at="285,0,286,0" concept="12" trace="propertyMacro_xizpik_c0a0c0a0b0e0e0b0b0b0b0d0b0f0b0e" />
-      <node id="4146564171992412775" at="286,0,287,0" concept="12" trace="templateNode_xizpik_c0a0a1a1a1a1a1a2a1a3a1a5a1a4" />
-      <node id="4146564171992412775" at="287,0,288,0" concept="12" trace="templateNode_xizpik_c0a0a1a2a1a1a1a2a1a3a1a5a1a4" />
-      <node id="4146564171992412775" at="288,0,289,0" concept="12" trace="copySrcMacro_xizpik_b0a0c0e0b0g0b0e" />
+      <node id="4146564171992412775" at="284,0,285,0" concept="12" trace="propertyMacro_xizpik_c0a0c0a0b0e0e0b0b0b0b0d0b0f0b0e" />
+      <node id="4146564171992412775" at="285,0,286,0" concept="12" trace="templateNode_xizpik_c0a0a1a1a1a1a1a2a1a3a1a5a1a4" />
+      <node id="4146564171992412775" at="286,0,287,0" concept="12" trace="templateNode_xizpik_c0a0a1a2a1a1a1a2a1a3a1a5a1a4" />
+      <node id="4146564171992412775" at="287,0,288,0" concept="12" trace="copySrcMacro_xizpik_b0a0c0e0b0g0b0e" />
       <node id="4146564171992412775" at="30,0,32,0" concept="1" trace="Template_RootCustom#()V" />
       <node id="4146564171992412775" at="33,0,36,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="4146564171992412776" at="43,73,46,9" concept="15" />
@@ -2697,7 +2696,6 @@
         <var name="context6" id="5015072279636761103" />
         <var name="tlist11" id="5015072279636761103" />
         <var name="tnode12" id="5015072279636761103" />
-        <var name="varValue11" id="5015072279636761103" />
       </scope>
       <scope id="4146564171992412782" at="190,7,223,31">
         <var name="tnode20" id="4146564171992412782" />
@@ -2733,7 +2731,7 @@
         <var name="context" id="4146564171992412775" />
         <var name="environment" id="4146564171992412775" />
       </scope>
-      <unit id="4146564171992412775" at="27,0,290,0" name="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_RootCustom" />
+      <unit id="4146564171992412775" at="27,0,289,0" name="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_RootCustom" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)/4146564171992617065">

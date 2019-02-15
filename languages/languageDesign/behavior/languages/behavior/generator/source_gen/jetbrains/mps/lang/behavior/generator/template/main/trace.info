@@ -653,9 +653,9 @@
     <file name="Template_BehaviorAspectDescriptor.java">
       <node id="2056529430201890935" at="38,43,39,32" concept="9" />
       <node id="2056529430201890935" at="41,158,42,36" concept="8" />
-      <node id="2056529430201890935" at="42,36,43,127" concept="8" />
-      <node id="2056529430201890935" at="43,127,44,87" concept="8" />
-      <node id="2056529430201890935" at="44,87,45,69" concept="8" />
+      <node id="2056529430201890935" at="42,36,43,39" concept="8" />
+      <node id="2409421742521899080" at="43,39,44,277" concept="3" />
+      <node id="2056529430201890935" at="44,277,45,69" concept="8" />
       <node id="2056529430201890935" at="46,9,47,113" concept="3" />
       <node id="2056529430201890935" at="47,113,48,87" concept="3" />
       <node id="2056529430201890935" at="48,87,49,67" concept="3" />
@@ -859,11 +859,10 @@
       <node id="2056529430201890935" at="450,143,451,151" concept="3" />
       <node id="2056529430201890935" at="451,151,452,14" concept="9" />
       <node id="2056529430201890935" at="454,0,455,0" concept="11" trace="template_v965vj_a0a3" />
-      <node id="2056529430201890935" at="455,0,456,0" concept="11" trace="varMacroRef_v965vj_b0a0a1a4" />
-      <node id="2056529430201890935" at="456,0,457,0" concept="11" trace="loopMacroRef_v965vj_b0a0a1a4a4a4" />
-      <node id="2056529430201890935" at="457,0,458,0" concept="11" trace="propertyMacro_v965vj_c0a0c0e0e0d0e0e0e" />
-      <node id="2056529430201890935" at="458,0,459,0" concept="11" trace="templateNode_v965vj_c0a0a1a1a1a1a1a8a1a9a4a4" />
-      <node id="2056529430201890935" at="459,0,460,0" concept="11" trace="loopMacroRef_v965vj_b0a0a1a2a1a1a1a8a1a9a4a4" />
+      <node id="2056529430201890935" at="455,0,456,0" concept="11" trace="loopMacroRef_v965vj_b0a0a1a4a4a4" />
+      <node id="2056529430201890935" at="456,0,457,0" concept="11" trace="propertyMacro_v965vj_c0a0c0e0e0d0e0e0e" />
+      <node id="2056529430201890935" at="457,0,458,0" concept="11" trace="templateNode_v965vj_c0a0a1a1a1a1a1a8a1a9a4a4" />
+      <node id="2056529430201890935" at="458,0,459,0" concept="11" trace="loopMacroRef_v965vj_b0a0a1a2a1a1a1a8a1a9a4a4" />
       <node id="2056529430201890935" at="35,0,37,0" concept="1" trace="Template_BehaviorAspectDescriptor#()V" />
       <node id="2056529430201890935" at="38,0,41,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="5630687994792687375" at="55,41,58,11" concept="6" />
@@ -1193,7 +1192,6 @@
         <var name="context1" id="2056529430201890935" />
         <var name="tlist1" id="2056529430201890935" />
         <var name="tnode2" id="2056529430201890935" />
-        <var name="varValue1" id="2056529430201890935" />
       </scope>
       <scope id="2056529430201890935" at="41,0,379,0">
         <var name="context" id="2056529430201890935" />
@@ -1202,7 +1200,7 @@
       <unit id="8560627202334867185" at="93,44,98,21" name="jetbrains.mps.lang.behavior.generator.template.main.Template_BehaviorAspectDescriptor$1" />
       <unit id="7600007869448722163" at="280,60,285,37" name="jetbrains.mps.lang.behavior.generator.template.main.Template_BehaviorAspectDescriptor$2" />
       <unit id="6551427688186219814" at="304,52,309,29" name="jetbrains.mps.lang.behavior.generator.template.main.Template_BehaviorAspectDescriptor$3" />
-      <unit id="2056529430201890935" at="32,0,461,0" name="jetbrains.mps.lang.behavior.generator.template.main.Template_BehaviorAspectDescriptor" />
+      <unit id="2056529430201890935" at="32,0,460,0" name="jetbrains.mps.lang.behavior.generator.template.main.Template_BehaviorAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)/2356949341616134045">
@@ -2643,9 +2641,9 @@
       <node id="4731970554580093575" at="42,43,43,156" concept="9" />
       <node id="2391302010127257399" at="47,106,48,78" concept="8" />
       <node id="2391302010127257399" at="48,78,49,36" concept="8" />
-      <node id="2391302010127257399" at="49,36,50,127" concept="8" />
-      <node id="2391302010127257399" at="50,127,51,88" concept="8" />
-      <node id="2391302010127257399" at="51,88,52,69" concept="8" />
+      <node id="2391302010127257399" at="49,36,50,39" concept="8" />
+      <node id="2409421742521899084" at="50,39,51,278" concept="3" />
+      <node id="2391302010127257399" at="51,278,52,69" concept="8" />
       <node id="2391302010127257399" at="53,9,54,55" concept="8" />
       <node id="428195797529584407" at="55,7,56,73" concept="8" />
       <node id="428195797529584407" at="57,13,58,418" concept="3" />
@@ -2759,17 +2757,16 @@
       <node id="4731970554580093575" at="276,137,277,148" concept="3" />
       <node id="4731970554580093575" at="277,148,278,136" concept="3" />
       <node id="4731970554580093575" at="278,136,279,14" concept="9" />
-      <node id="4731970554580093575" at="281,0,282,0" concept="11" trace="varMacroRef_p4fqpg_b0a0a2a6" />
-      <node id="4731970554580093575" at="282,0,283,0" concept="11" trace="ifMacroRef_p4fqpg_b0a0b0c0b0b0f0g" />
-      <node id="4731970554580093575" at="283,0,284,0" concept="11" trace="ifMacroRef_p4fqpg_b0a0b0a1a2a1a1a5a6" />
-      <node id="4731970554580093575" at="284,0,285,0" concept="11" trace="loopMacroRef_p4fqpg_b0a0a1a3a1a1a5a6" />
-      <node id="4731970554580093575" at="285,0,286,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0e0d0d0b0b0f0g" />
-      <node id="4731970554580093575" at="286,0,287,0" concept="11" trace="ifMacroRef_p4fqpg_b0a0e0d0d0b0b0f0g" />
-      <node id="4731970554580093575" at="287,0,288,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a4a3a3a1a1a5a6" />
-      <node id="4731970554580093575" at="288,0,289,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a4a3a3a1a1a5a6" />
-      <node id="4731970554580093575" at="289,0,290,0" concept="11" trace="propertyMacro_p4fqpg_c0a0c0a0b0c0f0g" />
-      <node id="4731970554580093575" at="290,0,291,0" concept="11" trace="propertyMacro_p4fqpg_c0a0c0b0b0c0f0g" />
-      <node id="4731970554580093575" at="291,0,292,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0c0b0d0b0c0f0g" />
+      <node id="4731970554580093575" at="281,0,282,0" concept="11" trace="ifMacroRef_p4fqpg_b0a0b0c0b0b0f0g" />
+      <node id="4731970554580093575" at="282,0,283,0" concept="11" trace="ifMacroRef_p4fqpg_b0a0b0a1a2a1a1a5a6" />
+      <node id="4731970554580093575" at="283,0,284,0" concept="11" trace="loopMacroRef_p4fqpg_b0a0a1a3a1a1a5a6" />
+      <node id="4731970554580093575" at="284,0,285,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0e0d0d0b0b0f0g" />
+      <node id="4731970554580093575" at="285,0,286,0" concept="11" trace="ifMacroRef_p4fqpg_b0a0e0d0d0b0b0f0g" />
+      <node id="4731970554580093575" at="286,0,287,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a4a3a3a1a1a5a6" />
+      <node id="4731970554580093575" at="287,0,288,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a4a3a3a1a1a5a6" />
+      <node id="4731970554580093575" at="288,0,289,0" concept="11" trace="propertyMacro_p4fqpg_c0a0c0a0b0c0f0g" />
+      <node id="4731970554580093575" at="289,0,290,0" concept="11" trace="propertyMacro_p4fqpg_c0a0c0b0b0c0f0g" />
+      <node id="4731970554580093575" at="290,0,291,0" concept="11" trace="copySrcMacro_p4fqpg_b0a0c0c0b0d0b0c0f0g" />
       <node id="4731970554580093575" at="39,0,41,0" concept="1" trace="Template_reduce_LocalBehaviorMethodCall#()V" />
       <node id="4731970554580093575" at="42,0,45,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="8228699960984012817" at="120,13,123,13" concept="5" />
@@ -2989,7 +2986,6 @@
         <var name="rv" id="2391302010127257399" />
         <var name="tlist1" id="2391302010127257399" />
         <var name="tnode2" id="2391302010127257399" />
-        <var name="varValue1" id="2391302010127257399" />
       </scope>
       <scope id="2391302010127257399" at="47,0,227,0">
         <var name="context" id="2391302010127257399" />
@@ -2997,7 +2993,7 @@
       <unit id="8228699960984014811" at="65,40,70,17" name="jetbrains.mps.lang.behavior.generator.template.main.Template_reduce_LocalBehaviorMethodCall$1" />
       <unit id="6862765979525357275" at="79,42,84,19" name="jetbrains.mps.lang.behavior.generator.template.main.Template_reduce_LocalBehaviorMethodCall$2" />
       <unit id="7043879193973092537" at="95,46,100,23" name="jetbrains.mps.lang.behavior.generator.template.main.Template_reduce_LocalBehaviorMethodCall$3" />
-      <unit id="4731970554580093575" at="36,0,293,0" name="jetbrains.mps.lang.behavior.generator.template.main.Template_reduce_LocalBehaviorMethodCall" />
+      <unit id="4731970554580093575" at="36,0,292,0" name="jetbrains.mps.lang.behavior.generator.template.main.Template_reduce_LocalBehaviorMethodCall" />
     </file>
   </root>
   <root nodeRef="r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)/7385785963572922999">

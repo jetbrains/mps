@@ -4,7 +4,7 @@
   <languages>
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="0" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="1" />
     <use id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -162,10 +162,6 @@
       <concept id="4665309944889425032" name="jetbrains.mps.lang.generator.structure.TemplateArgumentPatternVarRefExpression" flags="nn" index="gxrS_">
         <reference id="4665309944889425604" name="patternVarDecl" index="gxrLD" />
       </concept>
-      <concept id="5015072279636464462" name="jetbrains.mps.lang.generator.structure.VarMacro" flags="lg" index="2jeGV$">
-        <child id="5015072279636624635" name="type" index="2jfP_h" />
-        <child id="5015072279636624596" name="value" index="2jfP_Y" />
-      </concept>
       <concept id="5015072279636592410" name="jetbrains.mps.lang.generator.structure.VarMacro_ValueQuery" flags="in" index="2jfdEK" />
       <concept id="1168559333462" name="jetbrains.mps.lang.generator.structure.TemplateDeclarationReference" flags="ln" index="j$656" />
       <concept id="1112730859144" name="jetbrains.mps.lang.generator.structure.TemplateSwitch" flags="ig" index="jVnub">
@@ -226,6 +222,13 @@
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
         <reference id="1167514355421" name="template" index="3lhOvi" />
       </concept>
+      <concept id="1048903277984099206" name="jetbrains.mps.lang.generator.structure.VarDeclaration" flags="ng" index="1ps_xZ">
+        <child id="1048903277984099209" name="type" index="1ps_xK" />
+        <child id="1048903277984099210" name="value" index="1ps_xN" />
+      </concept>
+      <concept id="1048903277984099198" name="jetbrains.mps.lang.generator.structure.VarMacro2" flags="lg" index="1ps_y7">
+        <child id="1048903277984099213" name="variables" index="1ps_xO" />
+      </concept>
       <concept id="982871510064032177" name="jetbrains.mps.lang.generator.structure.IParameterizedTemplate" flags="ng" index="1s_3nv">
         <child id="982871510064032342" name="parameter" index="1s_3oS" />
       </concept>
@@ -257,9 +260,6 @@
       <concept id="1758784108619220823" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_LinkPatternRef" flags="nn" index="mGre3">
         <reference id="1758784108619220827" name="linkPatternVar" index="mGref" />
       </concept>
-      <concept id="2721957369897614808" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef" flags="nn" index="1bhEwm">
-        <reference id="2721957369897614810" name="varmacro" index="1bhEwk" />
-      </concept>
       <concept id="5190093307972723402" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ParameterRef" flags="nn" index="3cR$yn">
         <reference id="5190093307972736266" name="parameter" index="3cRzXn" />
       </concept>
@@ -271,6 +271,9 @@
         <reference id="1216860049623" name="label" index="1iwH7c" />
       </concept>
       <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
+      <concept id="1048903277984174662" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2" flags="nn" index="1psM6Z">
+        <reference id="1048903277984174663" name="vardecl" index="1psM6Y" />
+      </concept>
       <concept id="4589968773278056990" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_NodePatternRef" flags="nn" index="3EVhDp">
         <reference id="4589968773278063829" name="patternVarDecl" index="3EVgii" />
       </concept>
@@ -345,11 +348,11 @@
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049750" name="jetbrains.mps.lang.core.structure.PropertyAttribute" flags="ng" index="A9Btg">
-        <property id="1757699476691236117" name="propertyName" index="2qtEX9" />
+        <property id="1757699476691236117" name="name_DebugInfo" index="2qtEX9" />
         <property id="1341860900487648621" name="propertyId" index="P4ACc" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
-        <property id="1757699476691236116" name="linkRole" index="2qtEX8" />
+        <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -1160,8 +1163,8 @@
                     <node concept="3clFbF" id="2n6lsTIwXbL" role="3cqZAp">
                       <node concept="2OqwBi" id="2n6lsTIwXbN" role="3clFbG">
                         <node concept="1iwH7S" id="2n6lsTIwXbM" role="2Oq$k0" />
-                        <node concept="1bhEwm" id="2n6lsTIwXbR" role="2OqNvi">
-                          <ref role="1bhEwk" node="4mp7qFmE5Ck" resolve="var1" />
+                        <node concept="1psM6Z" id="25JZ4W_7IFA" role="2OqNvi">
+                          <ref role="1psM6Y" node="25JZ4W_7IF$" resolve="var1" />
                         </node>
                       </node>
                     </node>
@@ -1169,18 +1172,20 @@
                 </node>
               </node>
             </node>
-            <node concept="2jeGV$" id="4mp7qFmE5Ck" role="lGtFl">
-              <property role="TrG5h" value="var1" />
-              <node concept="2jfdEK" id="4mp7qFmE5Cl" role="2jfP_Y">
-                <node concept="3clFbS" id="4mp7qFmE5Cm" role="2VODD2">
-                  <node concept="3cpWs6" id="4mp7qFmE5Cq" role="3cqZAp">
-                    <node concept="3cmrfG" id="4mp7qFmE5Cy" role="3cqZAk">
-                      <property role="3cmrfH" value="42" />
+            <node concept="1ps_y7" id="25JZ4W_7IF_" role="lGtFl">
+              <node concept="1ps_xZ" id="25JZ4W_7IF$" role="1ps_xO">
+                <property role="TrG5h" value="var1" />
+                <node concept="10Oyi0" id="4mp7qFmE5Cp" role="1ps_xK" />
+                <node concept="2jfdEK" id="4mp7qFmE5Cl" role="1ps_xN">
+                  <node concept="3clFbS" id="4mp7qFmE5Cm" role="2VODD2">
+                    <node concept="3cpWs6" id="4mp7qFmE5Cq" role="3cqZAp">
+                      <node concept="3cmrfG" id="4mp7qFmE5Cy" role="3cqZAk">
+                        <property role="3cmrfH" value="42" />
+                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="10Oyi0" id="4mp7qFmE5Cp" role="2jfP_h" />
             </node>
           </node>
         </node>

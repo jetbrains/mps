@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="0" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -78,10 +78,6 @@
       <concept id="1177093525992" name="jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence" flags="lg" index="gft3U">
         <child id="1177093586806" name="templateNode" index="gfFT$" />
       </concept>
-      <concept id="5015072279636464462" name="jetbrains.mps.lang.generator.structure.VarMacro" flags="lg" index="2jeGV$">
-        <child id="5015072279636624635" name="type" index="2jfP_h" />
-        <child id="5015072279636624596" name="value" index="2jfP_Y" />
-      </concept>
       <concept id="5015072279636592410" name="jetbrains.mps.lang.generator.structure.VarMacro_ValueQuery" flags="in" index="2jfdEK" />
       <concept id="1168559333462" name="jetbrains.mps.lang.generator.structure.TemplateDeclarationReference" flags="ln" index="j$656" />
       <concept id="1112730859144" name="jetbrains.mps.lang.generator.structure.TemplateSwitch" flags="ig" index="jVnub">
@@ -117,14 +113,21 @@
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
         <reference id="1167514355421" name="template" index="3lhOvi" />
       </concept>
+      <concept id="1048903277989260815" name="jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2" flags="ng" index="1mL9RQ">
+        <reference id="1048903277989260816" name="vardecl" index="1mL9RD" />
+      </concept>
+      <concept id="1048903277984099206" name="jetbrains.mps.lang.generator.structure.VarDeclaration" flags="ng" index="1ps_xZ">
+        <child id="1048903277984099209" name="type" index="1ps_xK" />
+        <child id="1048903277984099210" name="value" index="1ps_xN" />
+      </concept>
+      <concept id="1048903277984099198" name="jetbrains.mps.lang.generator.structure.VarMacro2" flags="lg" index="1ps_y7">
+        <child id="1048903277984099213" name="variables" index="1ps_xO" />
+      </concept>
       <concept id="982871510064032177" name="jetbrains.mps.lang.generator.structure.IParameterizedTemplate" flags="ng" index="1s_3nv">
         <child id="982871510064032342" name="parameter" index="1s_3oS" />
       </concept>
       <concept id="982871510068000147" name="jetbrains.mps.lang.generator.structure.TemplateSwitchMacro" flags="lg" index="1sPUBX" />
       <concept id="1167756080639" name="jetbrains.mps.lang.generator.structure.PropertyMacro_GetPropertyValue" flags="in" index="3zFVjK" />
-      <concept id="4426797670061482024" name="jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression" flags="ng" index="3_TokI">
-        <reference id="2721957369897614810" name="varmacro" index="1bhEwk" />
-      </concept>
       <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
       <concept id="1805153994415891174" name="jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration" flags="ng" index="1N15co">
         <child id="1805153994415893199" name="type" index="1N15GL" />
@@ -372,33 +375,35 @@
       <ref role="30HIoZ" to="tpm0:hzABbma" resolve="InputNode_B" />
       <node concept="gft3U" id="5PVjbugr_5L" role="1lVwrX">
         <node concept="2VYdi" id="5PVjbugr_5N" role="gfFT$">
-          <node concept="2jeGV$" id="5PVjbugr_65" role="lGtFl">
-            <property role="TrG5h" value="xxx" />
-            <node concept="2jfdEK" id="5PVjbugr_67" role="2jfP_Y">
-              <node concept="3clFbS" id="5PVjbugr_69" role="2VODD2">
-                <node concept="3clFbF" id="5PVjbugrArG" role="3cqZAp">
-                  <node concept="3cpWs3" id="5PVjbugrAQ1" role="3clFbG">
-                    <node concept="2OqwBi" id="5PVjbugrAxA" role="3uHU7B">
-                      <node concept="v3LJS" id="5PVjbugrArF" role="2Oq$k0">
-                        <ref role="v3LJV" node="5PVjbugrmzI" resolve="element" />
+          <node concept="1ps_y7" id="25JZ4W_7IFa" role="lGtFl">
+            <node concept="1ps_xZ" id="25JZ4W_7IF9" role="1ps_xO">
+              <property role="TrG5h" value="xxx" />
+              <node concept="17QB3L" id="5PVjbugrAmM" role="1ps_xK" />
+              <node concept="2jfdEK" id="5PVjbugr_67" role="1ps_xN">
+                <node concept="3clFbS" id="5PVjbugr_69" role="2VODD2">
+                  <node concept="3clFbF" id="5PVjbugrArG" role="3cqZAp">
+                    <node concept="3cpWs3" id="5PVjbugrAQ1" role="3clFbG">
+                      <node concept="2OqwBi" id="5PVjbugrAxA" role="3uHU7B">
+                        <node concept="v3LJS" id="5PVjbugrArF" role="2Oq$k0">
+                          <ref role="v3LJV" node="5PVjbugrmzI" resolve="element" />
+                        </node>
+                        <node concept="2qgKlT" id="5PVjbugrAEV" role="2OqNvi">
+                          <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
+                        </node>
                       </node>
-                      <node concept="2qgKlT" id="5PVjbugrAEV" role="2OqNvi">
-                        <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
+                      <node concept="Xl_RD" id="5PVjbugrB6a" role="3uHU7w">
+                        <property role="Xl_RC" value="- as VarMacro" />
                       </node>
-                    </node>
-                    <node concept="Xl_RD" id="5PVjbugrB6a" role="3uHU7w">
-                      <property role="Xl_RC" value="- as VarMacro" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="17QB3L" id="5PVjbugrAmM" role="2jfP_h" />
           </node>
           <node concept="5jKBG" id="5PVjbugr_61" role="lGtFl">
             <ref role="v9R2y" node="5PVjbugrzR2" resolve="produce_OutputNode" />
-            <node concept="3_TokI" id="5PVjbugrCiS" role="v9R3O">
-              <ref role="1bhEwk" node="5PVjbugr_65" resolve="xxx" />
+            <node concept="1mL9RQ" id="25JZ4W_7IFb" role="v9R3O">
+              <ref role="1mL9RD" node="25JZ4W_7IF9" resolve="xxx" />
             </node>
           </node>
         </node>

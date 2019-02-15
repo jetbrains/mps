@@ -46,8 +46,8 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase imp
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    final Object varValue1 = QueriesGenerated.varMacro_Value_113_0(new TemplateVarContext(context, varMacroRef_6fy3ro_b0a0a2a6));
-    TemplateContext context1 = context.withVariable("var:invocationTarget", varValue1);
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:invocationTarget", QueriesGenerated.varMacro_Value_113_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904811"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       TemplateContext context2 = context1.subContext();
@@ -194,7 +194,6 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase imp
     rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer varMacroRef_6fy3ro_b0a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2668211767470798860");
   private static SNodePointer callMacro_6fy3ro_b0a0a1a2a1a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892189215");
   private static SNodePointer ifMacroRef_6fy3ro_b0a0b0d0b0b0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7804432302138745741");
   private static SNodePointer propertyMacro_6fy3ro_c0a0c0a0b0c0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892189268");

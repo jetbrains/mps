@@ -7141,17 +7141,17 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("4575047236824077491", new QueriesGenerated.VVQ(0));
-    vvqMethods.put("6202495481981707119", new QueriesGenerated.VVQ(1));
-    vvqMethods.put("2409643250538060678", new QueriesGenerated.VVQ(2));
-    vvqMethods.put("8382384506219666048", new QueriesGenerated.VVQ(3));
-    vvqMethods.put("8382384506219693824", new QueriesGenerated.VVQ(4));
-    vvqMethods.put("8382384506219694192", new QueriesGenerated.VVQ(5));
-    vvqMethods.put("3495720260243953964", new QueriesGenerated.VVQ(6));
-    vvqMethods.put("5624877018229882333", new QueriesGenerated.VVQ(7));
-    vvqMethods.put("3308396621974429321", new QueriesGenerated.VVQ(8));
-    vvqMethods.put("3308396621974429171", new QueriesGenerated.VVQ(9));
-    vvqMethods.put("7487379546344348695", new QueriesGenerated.VVQ(10));
+    vvqMethods.put("2409421742521899414", new QueriesGenerated.VVQ(0));
+    vvqMethods.put("2409421742521899418", new QueriesGenerated.VVQ(1));
+    vvqMethods.put("2409421742521899424", new QueriesGenerated.VVQ(2));
+    vvqMethods.put("2409421742521899427", new QueriesGenerated.VVQ(3));
+    vvqMethods.put("2409421742521899432", new QueriesGenerated.VVQ(4));
+    vvqMethods.put("2409421742521899437", new QueriesGenerated.VVQ(5));
+    vvqMethods.put("2409421742521899443", new QueriesGenerated.VVQ(6));
+    vvqMethods.put("2409421742521899448", new QueriesGenerated.VVQ(7));
+    vvqMethods.put("2409421742521899452", new QueriesGenerated.VVQ(8));
+    vvqMethods.put("2409421742521899457", new QueriesGenerated.VVQ(9));
+    vvqMethods.put("2409421742521899461", new QueriesGenerated.VVQ(10));
   }
   @NotNull
   @Override

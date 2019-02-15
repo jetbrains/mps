@@ -42,8 +42,8 @@ public class Template_reduce_NodeIdentity_SNodeReference extends TemplateDeclara
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    final Object varValue1 = QueriesGenerated.varMacro_Value_125_0(new TemplateVarContext(context, varMacroRef_6cbgkw_b0a0a2a6));
-    TemplateContext context1 = context.withVariable("var:targetRef", varValue1);
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:targetRef", QueriesGenerated.varMacro_Value_125_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904827"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       TemplateContext context2 = context1.subContext();
@@ -122,7 +122,6 @@ public class Template_reduce_NodeIdentity_SNodeReference extends TemplateDeclara
     rv[2] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static SNodePointer varMacroRef_6cbgkw_b0a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222286701");
   private static SNodePointer propertyMacro_6cbgkw_c0a0c0a0b0c0b0b0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222286709");
   private static SNodePointer propertyMacro_6cbgkw_c0a0c0a0b0d0b0b0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222286767");
 }

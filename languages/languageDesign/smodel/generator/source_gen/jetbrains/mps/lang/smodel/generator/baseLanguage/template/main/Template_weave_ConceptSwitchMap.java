@@ -99,8 +99,8 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase imp
                       }
                       TemplateContext context6 = context5.subContext(itnode8);
                       Collection<SNode> tlist9 = null;
-                      final Object varValue9 = QueriesGenerated.varMacro_Value_98_0(new TemplateVarContext(context6, varMacroRef_d69nxd_b0a0a3a2a2a1a2a1a1a1a6a3a6));
-                      TemplateContext context7 = context6.withVariable("var:cid", varValue9);
+                      TemplateContext context7 = context6;
+                      context7 = context7.withVariable("var:cid", QueriesGenerated.varMacro_Value_98_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904796"))));
                       final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
                       try {
                         tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaIdFactory.conceptId(long,long,long):jetbrains.mps.smodel.adapter.ids.SConceptId")));
@@ -244,7 +244,6 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase imp
   }
   private static SNodePointer propertyMacro_d69nxd_c0a0c0d0d0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5809217371282715401");
   private static SNodePointer loopMacroRef_d69nxd_b0a0a1a2a1a2a1a1a1a6a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5809217371282874071");
-  private static SNodePointer varMacroRef_d69nxd_b0a0a3a2a2a1a2a1a1a1a6a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5809217371283001292");
   private static SNodePointer propertyMacro_d69nxd_c0a0c0a0b0d0g0c0c0b0c0b0b0b0g0d0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5809217371283040584");
   private static SNodePointer propertyMacro_d69nxd_c0a0c0a0b0e0g0c0c0b0c0b0b0b0g0d0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5809217371283045387");
   private static SNodePointer propertyMacro_d69nxd_c0a0c0a0b0f0g0c0c0b0c0b0b0b0g0d0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5809217371283104711");

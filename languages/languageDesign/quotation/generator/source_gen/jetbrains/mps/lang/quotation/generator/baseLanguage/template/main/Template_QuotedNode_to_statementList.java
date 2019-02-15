@@ -90,8 +90,8 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
         Collection<SNode> tlist7 = null;
         if (QueriesGenerated.ifMacro_Condition_0_4(new IfMacroContext(context1, ifMacroRef_mmylek_b0a0b0c0c0g))) {
           Collection<SNode> tlist8 = null;
-          final Object varValue8 = QueriesGenerated.varMacro_Value_0_0(new TemplateVarContext(context1, varMacroRef_mmylek_b0a0a1a1a2a2a6));
-          TemplateContext context4 = context1.withVariable("var:quotedNode", varValue8);
+          TemplateContext context4 = context1;
+          context4 = context4.withVariable("var:quotedNode", QueriesGenerated.varMacro_Value_0_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2409421742521904562"))));
           final SNode tnode9 = environment.createOutputNode(myConcepts[4]);
           try {
             TemplateContext context5 = context4.subContext();
@@ -1386,7 +1386,6 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
     return rv;
   }
   private static SNodePointer ifMacroRef_mmylek_b0a0b0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1196351886744");
-  private static SNodePointer varMacroRef_mmylek_b0a0a1a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5625022412249398385");
   private static SNodePointer switchMacroRef_mmylek_b0a0a0a1a3a1a1a1a1a1a1a1a1a4a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5495892681291847857");
   private static SNodePointer templateSwitchNode_mmylek_a0a0c0a1a1a3a1a1a1a1a1a1a1a1a4a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349543308");
   private static SNodePointer ifMacroRef_mmylek_b0a0b0e0b0b0b0b0b0b0b0b0e0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "4273238084345062264");

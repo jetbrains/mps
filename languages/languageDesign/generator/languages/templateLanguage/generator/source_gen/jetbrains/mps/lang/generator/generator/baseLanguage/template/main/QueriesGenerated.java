@@ -3860,11 +3860,20 @@ public class QueriesGenerated extends QueryProviderBase {
     _context.showWarningMessage(null, String.format("Generator language is applied to a model %s not from generator module (actual module is %s), aborted.", SModelOperations.getModelName(_context.getOriginalInputModel()), SPropertyOperations.getString(ownerModule, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace"))));
     return false;
   }
+  public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
+    SNode generator = SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
+    // XXX At the moment, we don't utilize non-reflective queries in generated templates (static methods 
+    // get invoked directly) 
+    return (generator != null) && !(SPropertyOperations.getBoolean(generator, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates")));
+  }
   public static Object varMacro_Value_8_0(final TemplateVarContext _context) {
     return GenUtil.createMetaObjectHelper(_context, _context.getNode());
   }
   public static Object varMacro_Value_10_0(final TemplateVarContext _context) {
     return _context.getNode();
+  }
+  public static Object varMacro_Value_13_0(final TemplateVarContext _context) {
+    return GenUtil.createMetaObjectHelper(_context, _context.getNode());
   }
   public static Object varMacro_Value_18_0(final TemplateVarContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"));
@@ -3886,27 +3895,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_55_1(final TemplateVarContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"))).iterator();
-  }
-  public static Object varMacro_Value_87_0(final TemplateVarContext _context) {
-    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getConcepts();
-  }
-  public static Object varMacro_Value_87_1(final TemplateVarContext _context) {
-    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getProperties();
-  }
-  public static Object varMacro_Value_87_2(final TemplateVarContext _context) {
-    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getAssociationLinks();
-  }
-  public static Object varMacro_Value_87_3(final TemplateVarContext _context) {
-    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getAggregationLinks();
-  }
-  public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
-    SNode generator = SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
-    // XXX At the moment, we don't utilize non-reflective queries in generated templates (static methods 
-    // get invoked directly) 
-    return (generator != null) && !(SPropertyOperations.getBoolean(generator, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates")));
-  }
-  public static Object varMacro_Value_13_0(final TemplateVarContext _context) {
-    return GenUtil.createMetaObjectHelper(_context, _context.getNode());
   }
   public static Object varMacro_Value_58_0(final TemplateVarContext _context) {
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule"))).where(new IWhereFilter<SNode>() {
@@ -4081,6 +4069,18 @@ public class QueriesGenerated extends QueryProviderBase {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
       }
     }).toListSequence();
+  }
+  public static Object varMacro_Value_87_0(final TemplateVarContext _context) {
+    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getConcepts();
+  }
+  public static Object varMacro_Value_87_1(final TemplateVarContext _context) {
+    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getProperties();
+  }
+  public static Object varMacro_Value_87_2(final TemplateVarContext _context) {
+    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getAssociationLinks();
+  }
+  public static Object varMacro_Value_87_3(final TemplateVarContext _context) {
+    return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).getAggregationLinks();
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -7197,75 +7197,52 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("3257252407656969168", new QueriesGenerated.VVQ(0));
-    vvqMethods.put("1749921652113152173", new QueriesGenerated.VVQ(1));
-    vvqMethods.put("149803287607542749", new QueriesGenerated.VVQ(2));
-    vvqMethods.put("4909718038862488367", new QueriesGenerated.VVQ(3));
-    vvqMethods.put("6425491855177432494", new QueriesGenerated.VVQ(4));
-    vvqMethods.put("7251679561376394716", new QueriesGenerated.VVQ(5));
-    vvqMethods.put("7251679561376036991", new QueriesGenerated.VVQ(6));
-    vvqMethods.put("238835255331450995", new QueriesGenerated.VVQ(7));
-    vvqMethods.put("238835255332430270", new QueriesGenerated.VVQ(8));
-    vvqMethods.put("3257252407656719952", new QueriesGenerated.VVQ(9));
-    vvqMethods.put("3257252407656720055", new QueriesGenerated.VVQ(10));
-    vvqMethods.put("3257252407656720158", new QueriesGenerated.VVQ(11));
-    vvqMethods.put("3257252407656720261", new QueriesGenerated.VVQ(12));
-    vvqMethods.put("3257252407656969170", new QueriesGenerated.VVQ(0));
-    vvqMethods.put("1749921652113179200", new QueriesGenerated.VVQ(1));
-    vvqMethods.put("149803287607542750", new QueriesGenerated.VVQ(2));
-    vvqMethods.put("4909718038862488368", new QueriesGenerated.VVQ(3));
-    vvqMethods.put("6425491855177432495", new QueriesGenerated.VVQ(4));
-    vvqMethods.put("7251679561376394717", new QueriesGenerated.VVQ(5));
-    vvqMethods.put("7251679561376036992", new QueriesGenerated.VVQ(6));
-    vvqMethods.put("238835255331450998", new QueriesGenerated.VVQ(7));
-    vvqMethods.put("238835255332430271", new QueriesGenerated.VVQ(8));
-    vvqMethods.put("3257252407656719953", new QueriesGenerated.VVQ(9));
-    vvqMethods.put("3257252407656720056", new QueriesGenerated.VVQ(10));
-    vvqMethods.put("3257252407656720159", new QueriesGenerated.VVQ(11));
-    vvqMethods.put("3257252407656720262", new QueriesGenerated.VVQ(12));
-    vvqMethods.put("3890784291936787214", new QueriesGenerated.VVQ(13));
-    vvqMethods.put("3890784291937083403", new QueriesGenerated.VVQ(14));
-    vvqMethods.put("3890784291938560624", new QueriesGenerated.VVQ(15));
-    vvqMethods.put("3890784291938578692", new QueriesGenerated.VVQ(16));
-    vvqMethods.put("3890784291938569605", new QueriesGenerated.VVQ(17));
-    vvqMethods.put("3890784291938574335", new QueriesGenerated.VVQ(18));
-    vvqMethods.put("3890784291938632648", new QueriesGenerated.VVQ(19));
-    vvqMethods.put("3890784291938637005", new QueriesGenerated.VVQ(20));
-    vvqMethods.put("3890784291938641362", new QueriesGenerated.VVQ(21));
-    vvqMethods.put("3890784291938645756", new QueriesGenerated.VVQ(22));
-    vvqMethods.put("3890784291938664312", new QueriesGenerated.VVQ(23));
-    vvqMethods.put("3890784291938655062", new QueriesGenerated.VVQ(24));
-    vvqMethods.put("3890784291938659501", new QueriesGenerated.VVQ(25));
-    vvqMethods.put("3890784291938673628", new QueriesGenerated.VVQ(26));
-    vvqMethods.put("3890784291938679546", new QueriesGenerated.VVQ(27));
-    vvqMethods.put("3890784291938685760", new QueriesGenerated.VVQ(28));
-    vvqMethods.put("3890784291938755893", new QueriesGenerated.VVQ(29));
-    vvqMethods.put("3890784291938753113", new QueriesGenerated.VVQ(30));
-    vvqMethods.put("3890784291938736144", new QueriesGenerated.VVQ(31));
-    vvqMethods.put("3890784291938744638", new QueriesGenerated.VVQ(32));
-    vvqMethods.put("3890784291938727574", new QueriesGenerated.VVQ(33));
-    vvqMethods.put("3890784291938718843", new QueriesGenerated.VVQ(34));
-    vvqMethods.put("3890784291938707624", new QueriesGenerated.VVQ(35));
-    vvqMethods.put("3890784291938712749", new QueriesGenerated.VVQ(36));
-    vvqMethods.put("3890784291938702437", new QueriesGenerated.VVQ(37));
-    vvqMethods.put("3890784291938696519", new QueriesGenerated.VVQ(38));
-    vvqMethods.put("3890784291938690601", new QueriesGenerated.VVQ(39));
+    vvqMethods.put("3890784291936787214", new QueriesGenerated.VVQ(0));
+    vvqMethods.put("2409421742521903314", new QueriesGenerated.VVQ(1));
+    vvqMethods.put("2409421742521903318", new QueriesGenerated.VVQ(2));
+    vvqMethods.put("3890784291937083403", new QueriesGenerated.VVQ(3));
+    vvqMethods.put("2409421742521903321", new QueriesGenerated.VVQ(4));
+    vvqMethods.put("2409421742521903324", new QueriesGenerated.VVQ(5));
+    vvqMethods.put("2409421742521903327", new QueriesGenerated.VVQ(6));
+    vvqMethods.put("2409421742521903330", new QueriesGenerated.VVQ(7));
+    vvqMethods.put("2409421742521903333", new QueriesGenerated.VVQ(8));
+    vvqMethods.put("2409421742521903336", new QueriesGenerated.VVQ(9));
+    vvqMethods.put("2409421742521903339", new QueriesGenerated.VVQ(10));
+    vvqMethods.put("3890784291938560624", new QueriesGenerated.VVQ(11));
+    vvqMethods.put("3890784291938578692", new QueriesGenerated.VVQ(12));
+    vvqMethods.put("3890784291938569605", new QueriesGenerated.VVQ(13));
+    vvqMethods.put("3890784291938574335", new QueriesGenerated.VVQ(14));
+    vvqMethods.put("3890784291938632648", new QueriesGenerated.VVQ(15));
+    vvqMethods.put("3890784291938637005", new QueriesGenerated.VVQ(16));
+    vvqMethods.put("3890784291938641362", new QueriesGenerated.VVQ(17));
+    vvqMethods.put("3890784291938645756", new QueriesGenerated.VVQ(18));
+    vvqMethods.put("3890784291938664312", new QueriesGenerated.VVQ(19));
+    vvqMethods.put("3890784291938655062", new QueriesGenerated.VVQ(20));
+    vvqMethods.put("3890784291938659501", new QueriesGenerated.VVQ(21));
+    vvqMethods.put("3890784291938673628", new QueriesGenerated.VVQ(22));
+    vvqMethods.put("3890784291938679546", new QueriesGenerated.VVQ(23));
+    vvqMethods.put("3890784291938685760", new QueriesGenerated.VVQ(24));
+    vvqMethods.put("3890784291938755893", new QueriesGenerated.VVQ(25));
+    vvqMethods.put("3890784291938753113", new QueriesGenerated.VVQ(26));
+    vvqMethods.put("3890784291938736144", new QueriesGenerated.VVQ(27));
+    vvqMethods.put("3890784291938744638", new QueriesGenerated.VVQ(28));
+    vvqMethods.put("3890784291938727574", new QueriesGenerated.VVQ(29));
+    vvqMethods.put("3890784291938718843", new QueriesGenerated.VVQ(30));
+    vvqMethods.put("3890784291938707624", new QueriesGenerated.VVQ(31));
+    vvqMethods.put("3890784291938712749", new QueriesGenerated.VVQ(32));
+    vvqMethods.put("3890784291938702437", new QueriesGenerated.VVQ(33));
+    vvqMethods.put("3890784291938696519", new QueriesGenerated.VVQ(34));
+    vvqMethods.put("3890784291938690601", new QueriesGenerated.VVQ(35));
+    vvqMethods.put("2409421742521903342", new QueriesGenerated.VVQ(36));
+    vvqMethods.put("2409421742521903347", new QueriesGenerated.VVQ(37));
+    vvqMethods.put("2409421742521903352", new QueriesGenerated.VVQ(38));
+    vvqMethods.put("2409421742521903357", new QueriesGenerated.VVQ(39));
   }
   @NotNull
   @Override
   public VariableValueQuery getVariableValueQuery(@NotNull QueryKey queryKey) {
     final String id = queryKey.getTemplateNode().getNodeId().toString();
     if (!(vvqMethods.containsKey(id))) {
-      {
-        // fallback for VarMacro_ValueQuery with same id but coming from VarMacro2 
-        // to support VarMacro->VarMacro2 migration of bootstrapped interpreted generators 
-        // (those with template model changed but QueriesGenerated not yet reflecting actual var value queries) 
-        // XXX remove this code once 2019.1 is out 
-        String id2 = ((QueryKeyImpl) queryKey).getQueryNodeId().toString();
-        if (vvqMethods.containsKey(id2)) {
-          return vvqMethods.get(id2);
-        }
-      }
       return super.getVariableValueQuery(queryKey);
     }
     return vvqMethods.get(id);
@@ -7279,85 +7256,85 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull TemplateVarContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.varMacro_Value_8_0(ctx);
-        case 1:
-          return QueriesGenerated.varMacro_Value_10_0(ctx);
-        case 2:
-          return QueriesGenerated.varMacro_Value_18_0(ctx);
-        case 3:
-          return QueriesGenerated.varMacro_Value_27_0(ctx);
-        case 4:
-          return QueriesGenerated.varMacro_Value_28_0(ctx);
-        case 5:
-          return QueriesGenerated.varMacro_Value_43_0(ctx);
-        case 6:
-          return QueriesGenerated.varMacro_Value_51_0(ctx);
-        case 7:
-          return QueriesGenerated.varMacro_Value_55_0(ctx);
-        case 8:
-          return QueriesGenerated.varMacro_Value_55_1(ctx);
-        case 9:
-          return QueriesGenerated.varMacro_Value_87_0(ctx);
-        case 10:
-          return QueriesGenerated.varMacro_Value_87_1(ctx);
-        case 11:
-          return QueriesGenerated.varMacro_Value_87_2(ctx);
-        case 12:
-          return QueriesGenerated.varMacro_Value_87_3(ctx);
-        case 13:
           return QueriesGenerated.varMacro_Value_0_0(ctx);
-        case 14:
+        case 1:
+          return QueriesGenerated.varMacro_Value_8_0(ctx);
+        case 2:
+          return QueriesGenerated.varMacro_Value_10_0(ctx);
+        case 3:
           return QueriesGenerated.varMacro_Value_13_0(ctx);
-        case 15:
+        case 4:
+          return QueriesGenerated.varMacro_Value_18_0(ctx);
+        case 5:
+          return QueriesGenerated.varMacro_Value_27_0(ctx);
+        case 6:
+          return QueriesGenerated.varMacro_Value_28_0(ctx);
+        case 7:
+          return QueriesGenerated.varMacro_Value_43_0(ctx);
+        case 8:
+          return QueriesGenerated.varMacro_Value_51_0(ctx);
+        case 9:
+          return QueriesGenerated.varMacro_Value_55_0(ctx);
+        case 10:
+          return QueriesGenerated.varMacro_Value_55_1(ctx);
+        case 11:
           return QueriesGenerated.varMacro_Value_58_0(ctx);
-        case 16:
+        case 12:
           return QueriesGenerated.varMacro_Value_58_1(ctx);
-        case 17:
+        case 13:
           return QueriesGenerated.varMacro_Value_58_2(ctx);
-        case 18:
+        case 14:
           return QueriesGenerated.varMacro_Value_58_3(ctx);
-        case 19:
+        case 15:
           return QueriesGenerated.varMacro_Value_58_4(ctx);
-        case 20:
+        case 16:
           return QueriesGenerated.varMacro_Value_58_5(ctx);
-        case 21:
+        case 17:
           return QueriesGenerated.varMacro_Value_58_6(ctx);
-        case 22:
+        case 18:
           return QueriesGenerated.varMacro_Value_58_7(ctx);
-        case 23:
+        case 19:
           return QueriesGenerated.varMacro_Value_58_8(ctx);
-        case 24:
+        case 20:
           return QueriesGenerated.varMacro_Value_58_9(ctx);
-        case 25:
+        case 21:
           return QueriesGenerated.varMacro_Value_58_10(ctx);
-        case 26:
+        case 22:
           return QueriesGenerated.varMacro_Value_58_11(ctx);
-        case 27:
+        case 23:
           return QueriesGenerated.varMacro_Value_58_12(ctx);
-        case 28:
+        case 24:
           return QueriesGenerated.varMacro_Value_58_13(ctx);
-        case 29:
+        case 25:
           return QueriesGenerated.varMacro_Value_58_14(ctx);
-        case 30:
+        case 26:
           return QueriesGenerated.varMacro_Value_58_15(ctx);
-        case 31:
+        case 27:
           return QueriesGenerated.varMacro_Value_58_16(ctx);
-        case 32:
+        case 28:
           return QueriesGenerated.varMacro_Value_58_17(ctx);
-        case 33:
+        case 29:
           return QueriesGenerated.varMacro_Value_58_18(ctx);
-        case 34:
+        case 30:
           return QueriesGenerated.varMacro_Value_58_19(ctx);
-        case 35:
+        case 31:
           return QueriesGenerated.varMacro_Value_58_20(ctx);
-        case 36:
+        case 32:
           return QueriesGenerated.varMacro_Value_58_21(ctx);
-        case 37:
+        case 33:
           return QueriesGenerated.varMacro_Value_58_22(ctx);
-        case 38:
+        case 34:
           return QueriesGenerated.varMacro_Value_58_23(ctx);
-        case 39:
+        case 35:
           return QueriesGenerated.varMacro_Value_58_24(ctx);
+        case 36:
+          return QueriesGenerated.varMacro_Value_87_0(ctx);
+        case 37:
+          return QueriesGenerated.varMacro_Value_87_1(ctx);
+        case 38:
+          return QueriesGenerated.varMacro_Value_87_2(ctx);
+        case 39:
+          return QueriesGenerated.varMacro_Value_87_3(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
