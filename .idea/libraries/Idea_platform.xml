@@ -56,7 +56,6 @@
       <root url="jar://$PROJECT_DIR$/lib/jbcrypt-1.0.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jediterm-pty-2.14.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jing-20030619.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jsch-0.1.55.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jshell-frontend.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/xmlbeans-2.6.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/stax-api-1.0.1.jar!/" />
