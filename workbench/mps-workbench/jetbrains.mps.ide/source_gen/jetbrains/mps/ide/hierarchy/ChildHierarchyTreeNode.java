@@ -5,41 +5,45 @@ package jetbrains.mps.ide.hierarchy;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashSet;
-import java.awt.Color;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.function.Function;
 import jetbrains.mps.ide.messages.Icons;
+import com.intellij.ui.JBColor;
+import com.intellij.ui.LayeredIcon;
+import jetbrains.mps.ide.icons.GlobalIconManager;
+import com.intellij.icons.AllIcons;
 
 public class ChildHierarchyTreeNode extends HierarchyTreeNode {
   private final AbstractHierarchyTree myHierarchyTree;
   private boolean myInitialized = false;
-  private Set<SNode> myVisited;
+  private final Set<SNode> myVisited;
 
   public ChildHierarchyTreeNode(SNode declaration, AbstractHierarchyTree tree, Set<SNode> visited) {
     super(declaration);
     myHierarchyTree = tree;
     myVisited = new HashSet<SNode>(visited);
-    setColor(new Color(64, 0, 144));
+    updateIcon(declaration);
   }
 
   @Override
   public boolean isInitialized() {
     return myInitialized;
   }
+
   @Override
   protected void doInit() {
     try {
       //  FIXME we still use cached SNode instance here, as tree node's user object 
       SNode node = (SNode) getUserObject();
+      updateIcon(node);
       List<SNode> descendants = new ArrayList<SNode>(myHierarchyTree.getAbstractChildren(node, myVisited));
-      Collections.sort(descendants, new Comparator<SNode>() {
-        @Override
-        public int compare(SNode o1, SNode o2) {
-          return ("" + o1.getPresentation()).compareTo(o2.getPresentation());
+      descendants.sort(Comparator.comparing(new Function<SNode, String>() {
+        public String apply(SNode node) {
+          return node.getPresentation();
         }
-      });
+      }, Comparator.nullsFirst(Comparator.naturalOrder())));
       Set<SNode> visited = new HashSet<SNode>(myVisited);
       visited.add(node);
       for (SNode descendant : descendants) {
@@ -53,19 +57,29 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
       HierarchyTreeNode errorTreeNode = new HierarchyTreeNode(errorNode);
       errorTreeNode.setText(myHierarchyTree.nodePresentation(errorNode));
       errorTreeNode.setIcon(Icons.ERROR_ICON);
-      errorTreeNode.setColor(Color.RED);
+      errorTreeNode.setColor(JBColor.RED);
       errorTreeNode.setAdditionalText(message);
       add(errorTreeNode);
     }
     myInitialized = true;
   }
+
+  private void updateIcon(SNode node) {
+    if (this.myHierarchyTree.getActiveTreeNode() != null && node.getReference().equals(this.myHierarchyTree.getActiveTreeNode().getNodeReference())) {
+      // Use same approach as in platform for indicate searched node 
+      // see com.intellij.ide.hierarchy.HierarchyNodeDescriptor#installIcon(javax.swing.Icon, boolean) 
+      LayeredIcon icon = new LayeredIcon(2);
+      icon.setIcon(GlobalIconManager.getInstance().getIconFor(node), 0);
+      icon.setIcon(AllIcons.Actions.Forward, 1, -AllIcons.Actions.Forward.getIconWidth() / 2, 0);
+      setIcon(icon);
+    }
+  }
+
   @Override
   public boolean isLeaf() {
-    if (!(isInitialized())) {
-      return false;
-    }
-    return getChildCount() == 0;
+    return isInitialized() && getChildCount() == 0;
   }
+
   @Override
   protected void doUpdate() {
     this.removeAllChildren();

@@ -15,9 +15,11 @@
  */
 package jetbrains.mps.ide.ui.tree;
 
+import com.intellij.openapi.editor.colors.CodeInsightColors;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.ui.JBColor;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
-import jetbrains.mps.openapi.editor.ColorConstants;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -26,15 +28,14 @@ import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.tree.TreeCellRenderer;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 
 
 public class NewMPSTreeCellRenderer extends JPanel implements TreeCellRenderer {
-  private JLabel myMainTextLabel = new JLabel();
-  private JLabel myAdditionalTextLabel = new JLabel();
+  private final JLabel myMainTextLabel = new JLabel();
+  private final JLabel myAdditionalTextLabel = new JLabel();
   private MPSTreeNode myNode;
 
   public NewMPSTreeCellRenderer() {
@@ -46,18 +47,10 @@ public class NewMPSTreeCellRenderer extends JPanel implements TreeCellRenderer {
 
   @Override
   public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
-    Color foreground;
-    Color additionalForeground;
     setOpaque(false);
-    if (selected) {
-      foreground = tree.hasFocus() && !UIUtil.isUnderDarcula() ? UIUtil.getTreeSelectionForeground() : UIUtil.getTreeForeground();
-      additionalForeground = foreground;
-    } else {
-      foreground = UIUtil.getTreeForeground();
-      additionalForeground = Color.GRAY;
-    }
-    myMainTextLabel.setForeground(foreground);
-    myAdditionalTextLabel.setForeground(additionalForeground);
+
+    myMainTextLabel.setForeground(selected ? UIUtil.getTreeSelectionForeground(tree.hasFocus()) : UIUtil.getTreeForeground());
+    myAdditionalTextLabel.setForeground(selected ? myMainTextLabel.getForeground() : JBColor.GRAY);
 
     Icon icon = null;
     String text = value.toString();
@@ -118,9 +111,9 @@ public class NewMPSTreeCellRenderer extends JPanel implements TreeCellRenderer {
 
     if (myNode != null && myNode.getAggregatedErrorState() != ErrorState.NONE) {
       if (myNode.getAggregatedErrorState() == ErrorState.ERROR) {
-        g.setColor(new Color(ColorConstants.ERROR));
+        g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(CodeInsightColors.ERRORS_ATTRIBUTES).getErrorStripeColor());
       } else {
-        g.setColor(new Color(ColorConstants.WARNING));
+        g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(CodeInsightColors.WARNINGS_ATTRIBUTES).getErrorStripeColor());
       }
       ColorAndGraphicsUtil.drawWave(g, imageOffset, getWidth(), getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT - 1);
     }

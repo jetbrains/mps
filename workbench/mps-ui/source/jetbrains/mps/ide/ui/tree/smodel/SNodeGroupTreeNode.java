@@ -17,17 +17,15 @@ package jetbrains.mps.ide.ui.tree.smodel;
 
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-import java.awt.Color;
-
 public class SNodeGroupTreeNode extends TextTreeNode {
 
-  private boolean myAutoDelete;
-
-  private SModelReference myModelReference;
+  private final boolean myAutoDelete;
+  private final SModelReference myModelReference;
 
   public SNodeGroupTreeNode(SModelTreeNode model, String text, boolean autoDelete) {
     super(text);
@@ -46,12 +44,12 @@ public class SNodeGroupTreeNode extends TextTreeNode {
   @Override
   protected void doUpdatePresentation() {
     if (hasErrors()) {
-      setColor(Color.RED);
+      setColor(JBColor.RED);
     }
     setColor(EditorColorsManager.getInstance().getGlobalScheme().getColor(ColorKey.createColorKey("FILESTATUS_NOT_CHANGED")));
   }
 
-  public boolean hasErrors() {
+  private boolean hasErrors() {
     for (int i = 0; i < getChildCount(); i++) {
       MPSTreeNode node = (MPSTreeNode) getChildAt(i);
       if (node instanceof SNodeTreeNode) {
