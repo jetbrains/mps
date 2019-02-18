@@ -238,6 +238,11 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
       return descriptor.getName();
     }
 
+    @Override
+    public int getOrdinal() {
+      return getLiterals().indexOf(this);
+    }
+
     @Nullable
     public String getIdentifier() {
       MemberDescriptor descriptor = getDescriptor();
@@ -343,11 +348,27 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
 
     @Override
     public boolean contains(Object o) {
-      if (!(o instanceof SEnumLiteralAdapter)) {
-        return false;
-      }
-      SEnumLiteralAdapter lit = (SEnumLiteralAdapter) o;
-      return getMembersList().contains(lit.getDescriptor());
+      MemberDescriptor descriptor = getMemberDescriptor(o);
+      return getMembersList().contains(descriptor);
     }
+
+    @Override
+    public int indexOf(Object o) {
+      MemberDescriptor descriptor = getMemberDescriptor(o);
+      return getMembersList().indexOf(descriptor);
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+      MemberDescriptor descriptor = getMemberDescriptor(o);
+      return getMembersList().lastIndexOf(descriptor);
+    }
+  }
+
+  private static MemberDescriptor getMemberDescriptor(Object o) {
+    if (o instanceof SEnumLiteralAdapter) {
+      return ((SEnumLiteralAdapter) o).getDescriptor();
+    }
+    return null;
   }
 }

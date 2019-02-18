@@ -14903,5 +14903,29 @@
       <ref role="1YaFvo" to="tp25:28aPEVv7nnv" resolve="EnumSwitchExpression" />
     </node>
   </node>
+  <node concept="1YbPZF" id="3LOrS8zEfph">
+    <property role="TrG5h" value="typeof_EnumMember_OrdinalOperation" />
+    <property role="3GE5qa" value="enumerations" />
+    <node concept="3clFbS" id="3LOrS8zEfpi" role="18ibNy">
+      <node concept="1Z5TYs" id="3LOrS8zEj2B" role="3cqZAp">
+        <node concept="mw_s8" id="3LOrS8zEj2V" role="1ZfhKB">
+          <node concept="2c44tf" id="3LOrS8zEj2R" role="mwGJk">
+            <node concept="10Oyi0" id="3LOrS8zEj3h" role="2c44tc" />
+          </node>
+        </node>
+        <node concept="mw_s8" id="3LOrS8zEj2E" role="1ZfhK$">
+          <node concept="1Z2H0r" id="3LOrS8zEiSq" role="mwGJk">
+            <node concept="1YBJjd" id="3LOrS8zEiUc" role="1Z2MuG">
+              <ref role="1YBMHb" node="3LOrS8zEfpk" resolve="op" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3LOrS8zEfpk" role="1YuTPh">
+      <property role="TrG5h" value="op" />
+      <ref role="1YaFvo" to="tp25:3LOrS8zEfol" resolve="EnumMember_OrdinalOperation" />
+    </node>
+  </node>
 </model>
 

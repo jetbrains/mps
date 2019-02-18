@@ -69,13 +69,22 @@ public abstract class EnumerationDescriptorBase extends NamedElementDescriptorBa
 
     @Override
     public boolean contains(Object o) {
+      return indexOf(o) != -1;
+    }
+
+    @Override
+    public int indexOf(Object o) {
       if (!(o instanceof MemberDescriptor)) {
-        return false;
+        return -1;
       }
       MemberDescriptor md = (MemberDescriptor) o;
       int index = myIndex.index(md.getIdValue());
-      return myDescriptors[index] == md;
+      return myDescriptors[index] == md ? index : -1;
     }
 
+    @Override
+    public int lastIndexOf(Object o) {
+      return indexOf(o);
+    }
   }
 }

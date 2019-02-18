@@ -73,6 +73,11 @@ public class InvalidEnumerationLiteral implements SEnumerationLiteral {
     return rawMemberType.toString(myRawValue);
   }
 
+  @Override
+  public int getOrdinal() {
+    return -1;
+  }
+
   @Nullable
   @Override
   public SNodeReference getSourceNode() {

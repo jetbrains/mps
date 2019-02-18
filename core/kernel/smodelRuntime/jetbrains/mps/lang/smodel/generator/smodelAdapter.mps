@@ -1726,6 +1726,40 @@
         </node>
       </node>
     </node>
+    <node concept="2YIFZL" id="3LOrS8zEudJ" role="jymVt">
+      <property role="TrG5h" value="getMemberOrdinal" />
+      <node concept="3clFbS" id="3LOrS8zEudM" role="3clF47">
+        <node concept="3cpWs6" id="3LOrS8zEvdv" role="3cqZAp">
+          <node concept="3K4zz7" id="3LOrS8zEAqk" role="3cqZAk">
+            <node concept="3clFbC" id="3LOrS8zEAKg" role="3K4Cdx">
+              <node concept="37vLTw" id="3LOrS8zEvgR" role="3uHU7B">
+                <ref role="3cqZAo" node="3LOrS8zEuuK" resolve="enumMember" />
+              </node>
+              <node concept="10Nm6u" id="3LOrS8zEvDj" role="3uHU7w" />
+            </node>
+            <node concept="3cmrfG" id="3LOrS8zEAKm" role="3K4E3e">
+              <property role="3cmrfH" value="-1" />
+            </node>
+            <node concept="2OqwBi" id="3LOrS8zEAKj" role="3K4GZi">
+              <node concept="37vLTw" id="3LOrS8zEAKk" role="2Oq$k0">
+                <ref role="3cqZAo" node="3LOrS8zEuuK" resolve="enumMember" />
+              </node>
+              <node concept="liA8E" id="3LOrS8zEAKl" role="2OqNvi">
+                <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getOrdinal():int" resolve="getOrdinal" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3LOrS8zEtL6" role="1B3o_S" />
+      <node concept="10Oyi0" id="3LOrS8zEu7O" role="3clF45" />
+      <node concept="37vLTG" id="3LOrS8zEuuK" role="3clF46">
+        <property role="TrG5h" value="enumMember" />
+        <node concept="3uibUv" id="3LOrS8zEuuJ" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SEnumerationLiteral" resolve="SEnumerationLiteral" />
+        </node>
+      </node>
+    </node>
     <node concept="3Tm1VV" id="X9k2kW5hNF" role="1B3o_S" />
   </node>
   <node concept="312cEu" id="5IkW5anEKrY">

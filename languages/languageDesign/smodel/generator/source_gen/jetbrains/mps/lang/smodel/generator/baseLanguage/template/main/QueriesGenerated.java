@@ -2130,6 +2130,9 @@ public class QueriesGenerated {
   public static SNode sourceNodeQuery_118_6(final SourceSubstituteMacroNodeContext _context) {
     return ((SNode) _context.getVariable("operand"));
   }
+  public static SNode sourceNodeQuery_118_7(final SourceSubstituteMacroNodeContext _context) {
+    return ((SNode) _context.getVariable("operand"));
+  }
   public static SNode sourceNodeQuery_121_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(((SNode) _context.getVariable("dotExpr")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
   }

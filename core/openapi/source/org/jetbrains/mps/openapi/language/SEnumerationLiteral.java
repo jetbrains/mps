@@ -32,8 +32,16 @@ public interface SEnumerationLiteral {
    */
   String getPresentation();
 
+  /**
+   * The name of the option, must be unique within the enumeration.
+   */
   @Nullable
   String getName();
+
+  /**
+   * The ordinal number, position in the owning enumeration
+   */
+  int getOrdinal();
 
   /**
    * Returns reference to the node, which declares this literal.
