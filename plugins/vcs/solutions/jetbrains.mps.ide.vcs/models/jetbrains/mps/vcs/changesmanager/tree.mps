@@ -2,13 +2,13 @@
 <model ref="r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)">
   <persistence version="9" />
   <languages>
-    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="bfxj" ref="r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)" />
@@ -46,6 +46,7 @@
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
+    <import index="j936" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.ui(MPS.IDEA/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
   </imports>
@@ -388,6 +389,7 @@
         <child id="1225711182005" name="list" index="1y566C" />
         <child id="1225711191269" name="index" index="1y58nS" />
       </concept>
+      <concept id="1208542034276" name="jetbrains.mps.baseLanguage.collections.structure.MapClearOperation" flags="nn" index="1yHZxX" />
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
       <concept id="1184963466173" name="jetbrains.mps.baseLanguage.collections.structure.ToArrayOperation" flags="nn" index="3_kTaI" />
       <concept id="1197932370469" name="jetbrains.mps.baseLanguage.collections.structure.MapElement" flags="nn" index="3EllGN">
@@ -2321,6 +2323,7 @@
     <node concept="3Tm1VV" id="7YINie3rdNQ" role="1B3o_S" />
     <node concept="312cEg" id="42ljTcHmku9" role="jymVt">
       <property role="TrG5h" value="myTreeMessages" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="42ljTcHmkua" role="1B3o_S" />
       <node concept="3rvAFt" id="42ljTcHmkut" role="1tU5fm">
         <node concept="3uibUv" id="4mJiGY0KgMX" role="3rvSg0">
@@ -2351,6 +2354,7 @@
     </node>
     <node concept="312cEg" id="42ljTcHmz5M" role="jymVt">
       <property role="TrG5h" value="myCommandQueue" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="42ljTcHmz5N" role="1B3o_S" />
       <node concept="3uibUv" id="42ljTcHmz5P" role="1tU5fm">
         <ref role="3uigEE" to="lcr:3eE6dTgTyYL" resolve="SimpleCommandQueue" />
@@ -2358,6 +2362,7 @@
     </node>
     <node concept="312cEg" id="7YINie3rsq6" role="jymVt">
       <property role="TrG5h" value="myMap" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7YINie3rsq7" role="1B3o_S" />
       <node concept="3uibUv" id="7YINie3rsqB" role="1tU5fm">
         <ref role="3uigEE" node="3ghtVL8Tof7" resolve="FeatureForestMap" />
@@ -2376,6 +2381,7 @@
     </node>
     <node concept="312cEg" id="7YINie3rdNZ" role="jymVt">
       <property role="TrG5h" value="myFeatureExtractor" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7YINie3rdO0" role="1B3o_S" />
       <node concept="3uibUv" id="7YINie3rdO5" role="1tU5fm">
         <ref role="3uigEE" node="61iyVk1mWmq" resolve="TreeNodeFeatureExtractor" />
@@ -2388,6 +2394,7 @@
     </node>
     <node concept="312cEg" id="7YINie3rltu" role="jymVt">
       <property role="TrG5h" value="myTreeNodeListener" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7YINie3rltv" role="1B3o_S" />
       <node concept="3uibUv" id="7YINie3rluc" role="1tU5fm">
         <ref role="3uigEE" node="7YINie3rlt$" resolve="TreeHighlighter.MyTreeNodeListener" />
@@ -2400,6 +2407,7 @@
     </node>
     <node concept="312cEg" id="7YINie3rlvq" role="jymVt">
       <property role="TrG5h" value="myFeatureListener" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7YINie3rlvr" role="1B3o_S" />
       <node concept="3uibUv" id="7YINie3rlvv" role="1tU5fm">
         <ref role="3uigEE" node="7YINie3rlui" resolve="TreeHighlighter.MyFeatureForestMapListener" />
@@ -2412,6 +2420,7 @@
     </node>
     <node concept="312cEg" id="woeFKtNTpz" role="jymVt">
       <property role="TrG5h" value="myFileStatusListener" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="woeFKtNTp$" role="1B3o_S" />
       <node concept="3uibUv" id="woeFKtNTSl" role="1tU5fm">
         <ref role="3uigEE" node="X3XwAyv_R" resolve="TreeHighlighter.MyFileStatusListener" />
@@ -5673,6 +5682,36 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="3clFb_" id="3YqghldBoSH" role="jymVt">
+      <property role="TrG5h" value="lookAndFeelChanged" />
+      <node concept="3Tm1VV" id="3YqghldBoSI" role="1B3o_S" />
+      <node concept="3cqZAl" id="3YqghldBoSK" role="3clF45" />
+      <node concept="37vLTG" id="3YqghldBoSL" role="3clF46">
+        <property role="TrG5h" value="manager" />
+        <node concept="3uibUv" id="3YqghldBoSM" role="1tU5fm">
+          <ref role="3uigEE" to="j936:~LafManager" resolve="LafManager" />
+        </node>
+        <node concept="2AHcQZ" id="3YqghldBoSN" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="3YqghldBoSO" role="3clF47">
+        <node concept="3clFbF" id="3YqghldBtgr" role="3cqZAp">
+          <node concept="2OqwBi" id="3YqghldBtz0" role="3clFbG">
+            <node concept="37vLTw" id="3YqghldBtgq" role="2Oq$k0">
+              <ref role="3cqZAo" node="42ljTcHmku9" resolve="myTreeMessages" />
+            </node>
+            <node concept="1yHZxX" id="3YqghldBtZE" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3YqghldBoSP" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3uibUv" id="3YqghldBkCd" role="EKbjA">
+      <ref role="3uigEE" to="j936:~LafManagerListener" resolve="LafManagerListener" />
     </node>
   </node>
   <node concept="312cEu" id="3zYHoP1jLL6">
