@@ -625,6 +625,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.mySubtypingRules.add(subtypingRule);
     }
     {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSEnumeration_SEnumerationType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSModelReference_SModelPointerType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
@@ -673,7 +677,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.mySubtypingRules.add(subtypingRule);
     }
     {
-      SubtypingRule_Runtime subtypingRule = new supertypesOf_SEnumerationType_SubtypingRule();
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_SEnumerationType_ClassifierTypeSEnumeration_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {

@@ -10656,29 +10656,9 @@
   <node concept="24kQdi" id="50Pb80Hwsh0">
     <property role="3GE5qa" value="type" />
     <ref role="1XX52x" to="tp25:50Pb80Hwsgz" resolve="SEnumerationType" />
-    <node concept="3EZMnI" id="50Pb80Hwshj" role="2wV5jI">
-      <node concept="l2Vlx" id="50Pb80Hwshm" role="2iSdaV" />
-      <node concept="3F0ifn" id="50Pb80HwsiR" role="3EZMnx">
-        <property role="3F0ifm" value="enum" />
-        <ref role="1k5W1q" to="wr1s:eY0iPzB7gM" resolve="KeyWord" />
-      </node>
-      <node concept="3F0ifn" id="50Pb80Hwsiu" role="3EZMnx">
-        <property role="3F0ifm" value="&lt;" />
-        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
-      </node>
-      <node concept="1iCGBv" id="50Pb80HwshG" role="3EZMnx">
-        <property role="39s7Ar" value="true" />
-        <ref role="1NtTu8" to="tp25:50Pb80Hwsg$" resolve="enumDeclaration" />
-        <node concept="1sVBvm" id="50Pb80HwshH" role="1sWHZn">
-          <node concept="3SHvHV" id="50Pb80HwshW" role="2wV5jI">
-            <ref role="1k5W1q" to="tpd3:hwSE21y" resolve="ReferenceOnConcept" />
-          </node>
-        </node>
-      </node>
-      <node concept="3F0ifn" id="50Pb80Hwsi9" role="3EZMnx">
-        <property role="3F0ifm" value="&gt;" />
-        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
-      </node>
+    <node concept="3F0ifn" id="50Pb80HwsiR" role="2wV5jI">
+      <property role="3F0ifm" value="enum" />
+      <ref role="1k5W1q" to="wr1s:eY0iPzB7gM" resolve="KeyWord" />
     </node>
   </node>
   <node concept="24kQdi" id="50Pb80H_WZI">

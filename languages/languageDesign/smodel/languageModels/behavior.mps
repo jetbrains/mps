@@ -9238,31 +9238,22 @@
         <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
       </node>
       <node concept="3clFbS" id="66cvXGSmQgn" role="3clF47">
-        <node concept="3clFbF" id="66cvXGSmQxt" role="3cqZAp">
-          <node concept="2OqwBi" id="66cvXGSmQNm" role="3clFbG">
-            <node concept="1UdQGJ" id="50Pb80HCEd_" role="2Oq$k0">
-              <node concept="1YaCAy" id="50Pb80HCExk" role="1Ub_4A">
-                <property role="TrG5h" value="e" />
-                <ref role="1YaFvo" to="tp25:50Pb80Hwsgz" resolve="SEnumerationType" />
+        <node concept="3clFbF" id="25DDrfqfF6g" role="3cqZAp">
+          <node concept="2OqwBi" id="25DDrfqfGti" role="3clFbG">
+            <node concept="1PxgMI" id="25DDrfqfGc3" role="2Oq$k0">
+              <property role="1BlNFB" value="true" />
+              <node concept="chp4Y" id="25DDrfqfGhg" role="3oSUPX">
+                <ref role="cht4Q" to="tp25:50Pb80HwrVk" resolve="EnumerationIdRefExpression" />
               </node>
-              <node concept="2OqwBi" id="50Pb80HC$kL" role="1Ub_4B">
-                <node concept="1PxgMI" id="50Pb80HC_17" role="2Oq$k0">
-                  <property role="1BlNFB" value="true" />
-                  <node concept="chp4Y" id="50Pb80HC_8T" role="3oSUPX">
-                    <ref role="cht4Q" to="tpee:hqOqwz4" resolve="DotExpression" />
-                  </node>
-                  <node concept="2OqwBi" id="66cvXGSmRvy" role="1m5AlR">
-                    <node concept="13iPFW" id="66cvXGSmR9j" role="2Oq$k0" />
-                    <node concept="1mfA1w" id="66cvXGSmRLp" role="2OqNvi" />
-                  </node>
-                </node>
-                <node concept="2qgKlT" id="50Pb80HCDoJ" role="2OqNvi">
-                  <ref role="37wK5l" to="tpek:7GulAc9z0dN" resolve="getOperandType" />
+              <node concept="2OqwBi" id="25DDrfqfFzB" role="1m5AlR">
+                <node concept="13iPFW" id="25DDrfqfFrL" role="2Oq$k0" />
+                <node concept="2qgKlT" id="25DDrfqfFGn" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
                 </node>
               </node>
             </node>
-            <node concept="3TrEf2" id="66cvXGSmR0H" role="2OqNvi">
-              <ref role="3Tt5mk" to="tp25:50Pb80Hwsg$" resolve="enumDeclaration" />
+            <node concept="3TrEf2" id="25DDrfqfGGp" role="2OqNvi">
+              <ref role="3Tt5mk" to="tp25:50Pb80HwrVl" resolve="enumDeclaration" />
             </node>
           </node>
         </node>

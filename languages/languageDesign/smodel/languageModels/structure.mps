@@ -3125,15 +3125,9 @@
     <property role="EcuMT" value="5779574625830814755" />
     <property role="3GE5qa" value="type" />
     <property role="TrG5h" value="SEnumerationType" />
-    <property role="34LRSv" value="enum&lt;&gt;" />
+    <property role="34LRSv" value="enum" />
     <property role="R4oN_" value="enumeration type" />
     <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
-    <node concept="1TJgyj" id="50Pb80Hwsg$" role="1TKVEi">
-      <property role="IQ2ns" value="5779574625830814756" />
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="enumDeclaration" />
-      <ref role="20lvS9" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
-    </node>
   </node>
   <node concept="1TIwiD" id="50Pb80H_WZh">
     <property role="EcuMT" value="5779574625832259537" />

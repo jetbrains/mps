@@ -2533,9 +2533,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.origin("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)/5779574625830814755");
     b.version(2);
-    b.associate("enumDeclaration", 0x50352c802d81c424L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL).optional(true).origin("5779574625830814756").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
-    b.alias("enum<>");
+    b.alias("enum");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSLinkAccess() {
