@@ -2,7 +2,6 @@
 -Xss1024k
 -ea
 -Xmx2048m
--XX:MaxPermSize=350m
 -XX:NewSize=256m
 -XX:+HeapDumpOnOutOfMemoryError
 -Xverify:none
