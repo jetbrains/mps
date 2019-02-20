@@ -11,6 +11,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.tools.BaseTool;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
@@ -33,14 +34,19 @@ public class TraceTool_Tool extends GeneratedTool {
   public void init(Project project) {
     super.init(project);
     TraceTool_Tool.this.myPanel = new TypeSystemTracePanel(TraceTool_Tool.this);
-    ((ToolWindowImpl) TraceTool_Tool.this.getToolWindow()).addPropertyChangeListener(new PropertyChangeListener() {
-      @Override
-      public void propertyChange(PropertyChangeEvent event) {
-        if (ToolWindowEx.PROP_AVAILABLE.equals(event.getPropertyName()) && Boolean.FALSE.equals(event.getNewValue())) {
-          TraceTool_Tool.this.myPanel.cleanUp();
+
+    ToolWindow toolWindow = TraceTool_Tool.this.getToolWindow();
+    if (toolWindow instanceof ToolWindowImpl) {
+      ((ToolWindowImpl) toolWindow).addPropertyChangeListener(new PropertyChangeListener() {
+        @Override
+        public void propertyChange(PropertyChangeEvent event) {
+          if (ToolWindowEx.PROP_AVAILABLE.equals(event.getPropertyName()) && Boolean.FALSE.equals(event.getNewValue())) {
+            TraceTool_Tool.this.myPanel.cleanUp();
+          }
         }
-      }
-    });
+      });
+    }
+
     TraceTool_Tool.this.myBusConnection = project.getMessageBus().connect();
     TraceTool_Tool.this.myBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new EditorComponentCreateListener() {
       public void editorComponentCreated(@NotNull EditorComponent ecomp) {

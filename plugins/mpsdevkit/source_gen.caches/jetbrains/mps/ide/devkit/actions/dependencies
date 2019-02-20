@@ -1332,6 +1332,7 @@
   <dependency className="jetbrains.mps.ide.devkit.actions.TraceTool_Tool">
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
+    <classNode dependClassName="com.intellij.openapi.wm.ToolWindow" />
     <classNode dependClassName="com.intellij.openapi.wm.ToolWindowAnchor" />
     <classNode dependClassName="com.intellij.openapi.wm.ex.ToolWindowEx" />
     <classNode dependClassName="com.intellij.openapi.wm.impl.ToolWindowImpl" />
