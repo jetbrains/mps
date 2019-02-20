@@ -3168,7 +3168,8 @@
                     </node>
                     <node concept="2OqwBi" id="28aPEVv7PfI" role="37vLTx">
                       <node concept="1PxgMI" id="28aPEVvn7Ln" role="2Oq$k0">
-                        <node concept="chp4Y" id="28aPEVvn8id" role="3oSUPX">
+                        <property role="1BlNFB" value="true" />
+                        <node concept="chp4Y" id="2UidVq8Uf69" role="3oSUPX">
                           <ref role="cht4Q" to="tp25:28aPEVv7nnv" resolve="EnumSwitchExpression" />
                         </node>
                         <node concept="2OqwBi" id="28aPEVvn2wm" role="1m5AlR">

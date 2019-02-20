@@ -23,6 +23,7 @@ import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
 import jetbrains.mps.smodel.adapter.ids.SEnumerationLiteralId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor.MemberDescriptor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 
 /**
@@ -43,6 +44,13 @@ public final class EnumerationLiteralsIndex {
       return -1;
     }
     return myIndex.get(literalId.getIdValue());
+  }
+
+  public int indexNullable(@Nullable SEnumerationLiteral literal) {
+    if (literal == null) {
+      return -1;
+    }
+    return index(literal);
   }
 
   // Note that check for containment of given member to an appropriate enumeration should be done on call-site

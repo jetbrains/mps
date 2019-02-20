@@ -352,9 +352,6 @@ public class TemplateModelImpl extends TemplateModelBase implements TemplateMode
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630217996"))) {
       return new Template_reduce_EnumSwitchExpression();
     }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630561693"))) {
-      return new Template_reduce_EnumSwitchCase();
-    }
     return null;
   }
 }

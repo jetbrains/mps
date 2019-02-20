@@ -164,7 +164,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
           {
             final SNode tnode18 = environment.createOutputNode(myConcepts[8]);
             try {
-              tnode18.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode18, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~EnumerationLiteralsIndex.index(org.jetbrains.mps.openapi.language.SEnumerationLiteral):int")));
+              tnode18.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode18, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~EnumerationLiteralsIndex.indexNullable(org.jetbrains.mps.openapi.language.SEnumerationLiteral):int")));
               TemplateContext context9 = context4.subContext();
               {
                 Collection<SNode> tlist19 = null;
