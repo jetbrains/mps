@@ -307,16 +307,6 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
       return (StreamDataSource) super.getSource();
     }
 
-    @Override
-    public Map<String, String> getGenerationHashes() {
-      Map<String, String> generationHashes = ModelDigestHelper.getInstance().getGenerationHashes(getSource0());
-      if (generationHashes != null) {
-        return generationHashes;
-      }
-
-      return DefaultModelPersistence.getDigestMap(getSource0());
-    }
-
     @NotNull
     @Override
     public SModelHeader readHeader() throws ModelReadException {

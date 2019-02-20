@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * Internal facility around ModelFactory which is aware of partial loading approach.
@@ -73,8 +72,6 @@ public abstract class LazyLoadFacility {
     // AP why the flag, what do we gain?
     return ModelDigestUtil.hash((StreamDataSource) getSource(), myPersistenceIsTextBased);
   }
-
-  public abstract Map<String, String> getGenerationHashes();
 
   @NotNull
   public abstract SModelHeader readHeader() throws ModelReadException;

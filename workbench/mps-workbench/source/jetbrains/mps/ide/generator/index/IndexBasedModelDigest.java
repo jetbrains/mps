@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
+/**
+ * Index-backed DigestProvider to answer model's hash value quickly.
+ * The only drawback (as with other indexed model data) is that connection between model and its files is implicit
+ * Besides, the logic to build hash/digest value is duplicated (in the *ModelDigestIndex class and in model impl, see respective
+ * PersistenceFacility/LazyLoadFacility.getModelHash) and could easily drift away.
+ * Again, here would be great to have indexing built on top of model layer, rather then vfs layer
+ */
 public class IndexBasedModelDigest implements ApplicationComponent {
   private static final Logger LOG = LogManager.getLogger(IndexBasedModelDigest.class);
 
@@ -49,6 +56,7 @@ public class IndexBasedModelDigest implements ApplicationComponent {
     // binary model persistence (.mpb files)
     ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(BinaryModelDigestIndex.NAME));
     // language module files (.mpl files)
+    // XXX I don't see uses of ModelDigestHelper that could pass .mpl file
     ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(LanguageModelDigestIndex.NAME));
   }
 
