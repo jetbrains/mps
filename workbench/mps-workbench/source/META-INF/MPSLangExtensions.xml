@@ -16,6 +16,7 @@
     <applicationService serviceInterface="com.intellij.codeInspection.actions.CleanupInspectionUtil"
                         serviceImplementation="com.intellij.codeInspection.actions.CleanupInspectionUtilImpl"/>
     -->
+
     <applicationService serviceInterface="com.intellij.lang.cacheBuilder.CacheBuilderRegistry"
                         serviceImplementation="com.intellij.lang.cacheBuilder.CacheBuilderRegistryImpl"/>
 
@@ -67,6 +68,7 @@
 
     <applicationService serviceImplementation="com.intellij.navigation.ChooseByNameRegistry"/>
 
+
     <!--
     <applicationService serviceInterface="com.intellij.ide.PsiActionSupportFactory"
                         serviceImplementation="com.intellij.ide.PsiActionSupportFactoryImpl"/>
@@ -97,6 +99,7 @@
 
     <projectService serviceInterface="com.intellij.util.indexing.FileBasedIndexScanRunnableCollector"
                     serviceImplementation="com.intellij.util.indexing.FileBasedIndexScanRunnableCollectorImpl"/>
+
     <!--
     <projectService serviceInterface="com.intellij.pom.references.PomService"
                     serviceImplementation="com.intellij.pom.references.PomServiceImpl"/>
@@ -229,6 +232,7 @@
 
     <applicationService serviceInterface="com.intellij.lang.IdeLanguageCustomization"
                         serviceImplementation="com.intellij.lang.IdeLanguageCustomization"/>
+
     <!--
     <rearranger.ui implementation="com.intellij.application.options.codeStyle.arrangement.component.DefaultArrangementUiComponentFactory"/>
     -->
@@ -238,6 +242,7 @@
                     serviceImplementation="jetbrains.mps.EditorTextFieldProviderImpl"/>
 
     <applicationService serviceInterface="com.intellij.formatting.Formatter" serviceImplementation="com.intellij.formatting.FormatterImpl"/>
+
     <!--
     <applicationService serviceInterface="com.intellij.codeInsight.editorActions.TabOutScopesTracker"
                     serviceImplementation="com.intellij.codeInsight.editorActions.TabOutScopesTrackerImpl"/>
@@ -260,7 +265,6 @@
     -->
     <projectService serviceInterface="com.intellij.codeHighlighting.TextEditorHighlightingPassRegistrar"
                     serviceImplementation="com.intellij.codeInsight.daemon.impl.TextEditorHighlightingPassRegistrarImpl"/>
-
     <!-- MPS Patch-->
     <projectService serviceInterface="com.intellij.psi.PsiFileFactory"
                     serviceImplementation="jetbrains.mps.EmptyPsiFileFactory"/>
@@ -440,7 +444,6 @@
     <moduleService serviceInterface="com.intellij.openapi.components.PathMacroManager" serviceImplementation="com.intellij.openapi.components.impl.ModulePathMacroManager"/>
     -->
 
-    <projectViewPane implementation="com.intellij.ide.scratch.ScratchProjectViewPane"/>
     <applicationService serviceInterface="com.intellij.ide.scratch.ScratchFileService"
                         serviceImplementation="com.intellij.ide.scratch.ScratchFileServiceImpl"/>
     <projectViewPane implementation="com.intellij.ide.scratch.ScratchProjectViewPane"/>
@@ -535,7 +538,7 @@
                     serviceImplementation="com.intellij.codeInsight.template.impl.TemplateManagerImpl"/>
 
     &lt;!&ndash; File Templates&ndash;&gt;
-    <projectConfigurable groupId="editor" groupWeight="150" instance="com.intellij.ide.fileTemplates.impl.AllFileTemplatesConfigurable" id="fileTemplates"
+    <projectConfigurable groupId="editor" groupWeight="150" provider="com.intellij.ide.fileTemplates.impl.AllFileTemplatesConfigurable$Provider" id="fileTemplates"
                              key="title.file.templates" bundle="messages.IdeBundle"/>
 
     &lt;!&ndash; T.O.D.O &ndash;&gt;
@@ -1085,6 +1088,7 @@
     <statistics.counterUsagesCollector groupId="actions.runAnything" version="1"/>
 
     <applicationService serviceImplementation="com.intellij.internal.statistic.persistence.ApprovedGroupsCacheConfigurable" />
+
     <!--
     <renamePsiElementProcessor implementation="com.intellij.refactoring.rename.RenamePsiFileProcessor" order="last" id="renamePsiFile"/>
     <renameInputValidator implementation="com.intellij.refactoring.rename.RenameToIgnoredDirectoryFileInputValidator" order="last"/>
@@ -1104,7 +1108,7 @@
 
     <defaultHighlightingSettingProvider id="GeneratedSourcesHighlightingSettingProvider"
                                         implementation="com.intellij.codeInsight.daemon.impl.analysis.GeneratedSourcesHighlightingSettingProvider"/>
-    <editorNotificationProvider implementation="com.intellij.ide.GeneratedFileEditingNotificationProvider"/>
+    <editorNotificationProviderApp implementation="com.intellij.ide.GeneratedFileEditingNotificationProvider"/>
 
     <editorTabTitleProvider implementation="com.intellij.openapi.fileEditor.impl.UniqueNameEditorTabTitleProvider" order="last"/>
     -->
@@ -1275,6 +1279,7 @@
                              order="before moveFileOrDir"/>
     -->
 
+    <gotoDeclaration implementation="com.intellij.codeInsight.navigation.actions.DefaultGotoDeclarationProvider" order="last"/>
     <!-- Search everywhere services/objects -->
     <projectService serviceInterface="com.intellij.ide.actions.searcheverywhere.SearchEverywhereManager"
                     serviceImplementation="com.intellij.ide.actions.searcheverywhere.SearchEverywhereManagerImpl"/>
@@ -1336,7 +1341,7 @@
 
     <printHandler implementation="com.intellij.codeEditor.printing.TextPrintHandler"/>
 
-    <editorNotificationProvider implementation="com.intellij.internal.retype.RetypeEditorNotificationProvider"/>
+    <editorNotificationProviderApp implementation="com.intellij.internal.retype.RetypeEditorNotificationProvider"/>
 
     <fileBreadcrumbsCollector implementation="com.intellij.xml.breadcrumbs.PsiFileBreadcrumbsCollector" order="last"/>
 
