@@ -24797,7 +24797,7 @@
       <node id="7340437691571580596" at="45,0,48,0" concept="11" trace="overrides#()Z" />
       <node id="7340437691573975743" at="30,275,34,11" concept="1" />
       <node id="7340437691571939069" at="27,446,35,9" concept="1" />
-      <node id="7340437691571824061" at="26,742,36,7" concept="10" />
+      <node id="7340437691571824061" at="26,932,36,7" concept="10" />
       <node id="7340437691571704936" at="25,127,37,5" concept="10" />
       <node id="7340437691571580596" at="25,0,39,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="7340437691571580596" at="23,94,23,94" />
@@ -24818,7 +24818,7 @@
         <var name="errorTarget" id="7340437691571939069" />
       </scope>
       <scope id="7340437691571824062" at="27,446,35,9" />
-      <scope id="7340437691571704939" at="26,742,36,7" />
+      <scope id="7340437691571704939" at="26,932,36,7" />
       <scope id="7340437691571580597" at="25,127,37,5" />
       <scope id="7340437691571580596" at="25,0,39,0">
         <var name="anonymousClass" id="7340437691571580596" />
