@@ -61332,8 +61332,8 @@
             </node>
             <node concept="3clFbF" id="1wEcoXjIEC7" role="3cqZAp">
               <node concept="2YIFZM" id="1wEcoXjIEC8" role="3clFbG">
-                <ref role="37wK5l" node="5d7cDYKUJMp" />
-                <ref role="1Pybhc" node="5d7cDYKUJE_" />
+                <ref role="37wK5l" node="5d7cDYKUJMp" resolve="rewireMethodReferences" />
+                <ref role="1Pybhc" node="5d7cDYKUJE_" resolve="MemberDeclarationRefactoringUtil" />
                 <node concept="7Obwk" id="1wEcoXjIECm" role="37wK5m" />
                 <node concept="37vLTw" id="1wEcoXjIECa" role="37wK5m">
                   <ref role="3cqZAo" node="1wEcoXjIEC2" resolve="staticMethod" />
@@ -61349,7 +61349,7 @@
                     <property role="3cmrfH" value="-1" />
                   </node>
                   <node concept="2TlHUq" id="1wEcoXjIECh" role="lGT1i">
-                    <ref role="2TlMyj" node="5kmCgHXRVxR" />
+                    <ref role="2TlMyj" node="5kmCgHXRVxR" resolve="staticModifier" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="1wEcoXjIECi" role="2Oq$k0">

@@ -5,8 +5,9 @@ package jetbrains.mps.baseLanguage.behavior;
 import java.util.Map;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
+import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
@@ -14,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Set;
@@ -22,11 +22,11 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.scopes.GenericTypesUtil;
 
-public final class MethodOverrideHelper {
-  private Map<String, List<SNode>> myMethodsByName;
-  private Map<SNode, List<SNode>> myOverriddenMethods;
+public final class MethodsToImplementCalculator {
+  private final Map<String, List<SNode>> myMethodsByName = MapSequence.fromMap(new HashMap<String, List<SNode>>());
+  private final Map<SNode, List<SNode>> myOverriddenMethods = MapSequence.fromMap(new HashMap<SNode, List<SNode>>());
 
-  public MethodOverrideHelper(SNode classifier) {
+  public MethodsToImplementCalculator(SNode classifier) {
     init(classifier);
   }
 
@@ -63,9 +63,6 @@ public final class MethodOverrideHelper {
       ListSequence.fromList(allMethods).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(currentClassifier)));
     }
 
-    myMethodsByName = MapSequence.fromMap(new HashMap<String, List<SNode>>());
-    myOverriddenMethods = MapSequence.fromMap(new HashMap<SNode, List<SNode>>());
-
 forEachInAllMethods:
     for (SNode currMethod : allMethods) {
       String name = SPropertyOperations.getString(currMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
@@ -78,24 +75,24 @@ forEachInAllMethods:
         MapSequence.fromMap(myMethodsByName).put(name, methods);
         MapSequence.fromMap(myOverriddenMethods).put(currMethod, new ArrayList<SNode>());
       } else {
-        int currMethodParmCount = ListSequence.fromList(SLinkOperations.getChildren(currMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count();
-        List<SNode> equalParmCountMethods = new ArrayList<SNode>();
+        int currMethodParamCount = ListSequence.fromList(SLinkOperations.getChildren(currMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count();
+        List<SNode> equalParamCountMethods = new ArrayList<SNode>();
         List<SNode> methods = MapSequence.fromMap(this.myMethodsByName).get(name);
         for (SNode method : methods) {
-          if ((SNodeOperations.getParent(currMethod) != SNodeOperations.getParent(method)) && ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == currMethodParmCount) {
-            equalParmCountMethods.add(method);
+          if ((SNodeOperations.getParent(currMethod) != SNodeOperations.getParent(method)) && ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == currMethodParamCount) {
+            equalParamCountMethods.add(method);
           }
         }
-        if (equalParmCountMethods.size() > 0) {
-          if (currMethodParmCount == 0) {
-            ListSequence.fromList(MapSequence.fromMap(myOverriddenMethods).get(ListSequence.fromList(equalParmCountMethods).first())).addElement(currMethod);
+        if (ListSequence.fromList(equalParamCountMethods).isNotEmpty()) {
+          if (currMethodParamCount == 0) {
+            ListSequence.fromList(MapSequence.fromMap(myOverriddenMethods).get(ListSequence.fromList(equalParamCountMethods).first())).addElement(currMethod);
             continue forEachInAllMethods;
           }
 
           Map<SNode, SNode> typeByTypeVar = ClassifierScopeUtils.resolveClassifierTypeVars(classifier);
 
           String currentParms = createMethodParameterTypesString(currMethod, typeByTypeVar);
-          for (SNode otherMethod : equalParmCountMethods) {
+          for (SNode otherMethod : equalParamCountMethods) {
             String otherParms = createMethodParameterTypesString(otherMethod, typeByTypeVar);
             if (otherParms.equals(currentParms)) {
               MapSequence.fromMap(myOverriddenMethods).get(otherMethod).add(currMethod);

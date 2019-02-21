@@ -6739,7 +6739,7 @@
       </node>
     </node>
     <node concept="13i0hz" id="7$vLFyJKYZY" role="13h7CS">
-      <property role="TrG5h" value="getMethodsToImplement" />
+      <property role="TrG5h" value="getMethodsToImplemenet" />
       <ref role="13i0hy" node="4GM03FJm5q2" resolve="getMethodsToImplement" />
       <node concept="3clFbS" id="7$vLFyJKYZZ" role="3clF47">
         <node concept="3cpWs8" id="7$vLFyJKZ00" role="3cqZAp">
@@ -6762,11 +6762,11 @@
           <node concept="3cpWsn" id="7$vLFyJKZ08" role="3cpWs9">
             <property role="TrG5h" value="helper" />
             <node concept="3uibUv" id="7$vLFyJKZ09" role="1tU5fm">
-              <ref role="3uigEE" node="xXZ8Xm0s7D" resolve="MethodOverrideHelper" />
+              <ref role="3uigEE" node="xXZ8Xm0s7D" resolve="MethodsToImplementCalculator" />
             </node>
             <node concept="2ShNRf" id="7$vLFyJKZ0a" role="33vP2m">
               <node concept="1pGfFk" id="7$vLFyJKZ0b" role="2ShVmc">
-                <ref role="37wK5l" node="xXZ8Xm3cHx" resolve="MethodOverrideHelper" />
+                <ref role="37wK5l" node="xXZ8Xm3cHx" resolve="MethodsToImplementCalculator" />
                 <node concept="13iPFW" id="7$vLFyJKZ0c" role="37wK5m" />
               </node>
             </node>
@@ -37888,7 +37888,7 @@
       </node>
       <node concept="P$JXv" id="FTxloE3t7H" role="lGtFl">
         <node concept="x79VA" id="FTxloE3t7K" role="3nqlJM">
-          <property role="x79VB" value="methods which this member container is able to override" />
+          <property role="x79VB" value="methods of ancestors which this member container is able to override" />
         </node>
       </node>
     </node>
@@ -37913,7 +37913,7 @@
       </node>
       <node concept="P$JXv" id="FTxloE3t7f" role="lGtFl">
         <node concept="x79VA" id="FTxloE3t7i" role="3nqlJM">
-          <property role="x79VB" value="methods which this member container is able to implement" />
+          <property role="x79VB" value="methods of ancestors which this member container is able to implement" />
         </node>
       </node>
     </node>
@@ -68158,10 +68158,11 @@
     </node>
   </node>
   <node concept="312cEu" id="xXZ8Xm0s7D">
-    <property role="TrG5h" value="MethodOverrideHelper" />
+    <property role="TrG5h" value="MethodsToImplementCalculator" />
     <property role="1EXbeo" value="true" />
     <node concept="312cEg" id="2Jvt1sWfuzI" role="jymVt">
       <property role="TrG5h" value="myMethodsByName" />
+      <property role="3TUv4t" value="true" />
       <node concept="3rvAFt" id="5xPXeFAaEAG" role="1tU5fm">
         <node concept="2I9FWS" id="5xPXeFAaEAK" role="3rvSg0">
           <ref role="2I9WkF" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
@@ -68169,9 +68170,18 @@
         <node concept="17QB3L" id="5xPXeFAaEAJ" role="3rvQeY" />
       </node>
       <node concept="3Tm6S6" id="2Jvt1sWfuzN" role="1B3o_S" />
+      <node concept="2ShNRf" id="5xPXeFAaF6Q" role="33vP2m">
+        <node concept="3rGOSV" id="5xPXeFAaF6S" role="2ShVmc">
+          <node concept="17QB3L" id="5xPXeFAaF6V" role="3rHrn6" />
+          <node concept="2I9FWS" id="5xPXeFAaF6W" role="3rHtpV">
+            <ref role="2I9WkF" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="312cEg" id="2Jvt1sWfuzO" role="jymVt">
       <property role="TrG5h" value="myOverriddenMethods" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="2Jvt1sWfuzT" role="1B3o_S" />
       <node concept="3rvAFt" id="5xPXeFAaEAA" role="1tU5fm">
         <node concept="3Tqbb2" id="5xPXeFAaEAD" role="3rvQeY">
@@ -68179,6 +68189,16 @@
         </node>
         <node concept="2I9FWS" id="5xPXeFAaEAE" role="3rvSg0">
           <ref role="2I9WkF" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="2Jvt1sWfuPD" role="33vP2m">
+        <node concept="3rGOSV" id="5xPXeFAaF6Y" role="2ShVmc">
+          <node concept="3Tqbb2" id="5xPXeFAaF71" role="3rHrn6">
+            <ref role="ehGHo" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
+          </node>
+          <node concept="2I9FWS" id="5xPXeFAaF72" role="3rHtpV">
+            <ref role="2I9WkF" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
+          </node>
         </node>
       </node>
     </node>
@@ -68500,39 +68520,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="51M3Vy$qdNE" role="3cqZAp" />
-        <node concept="3clFbF" id="2Jvt1sWfuPq" role="3cqZAp">
-          <node concept="37vLTI" id="2Jvt1sWfuPr" role="3clFbG">
-            <node concept="37vLTw" id="7$vLFyJQvmv" role="37vLTJ">
-              <ref role="3cqZAo" node="2Jvt1sWfuzI" resolve="myMethodsByName" />
-            </node>
-            <node concept="2ShNRf" id="5xPXeFAaF6Q" role="37vLTx">
-              <node concept="3rGOSV" id="5xPXeFAaF6S" role="2ShVmc">
-                <node concept="17QB3L" id="5xPXeFAaF6V" role="3rHrn6" />
-                <node concept="2I9FWS" id="5xPXeFAaF6W" role="3rHtpV">
-                  <ref role="2I9WkF" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2Jvt1sWfuP$" role="3cqZAp">
-          <node concept="37vLTI" id="2Jvt1sWfuP_" role="3clFbG">
-            <node concept="37vLTw" id="7$vLFyJQGX8" role="37vLTJ">
-              <ref role="3cqZAo" node="2Jvt1sWfuzO" resolve="myOverriddenMethods" />
-            </node>
-            <node concept="2ShNRf" id="2Jvt1sWfuPD" role="37vLTx">
-              <node concept="3rGOSV" id="5xPXeFAaF6Y" role="2ShVmc">
-                <node concept="3Tqbb2" id="5xPXeFAaF71" role="3rHrn6">
-                  <ref role="ehGHo" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
-                </node>
-                <node concept="2I9FWS" id="5xPXeFAaF72" role="3rHtpV">
-                  <ref role="2I9WkF" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbH" id="7$vLFyJQvq5" role="3cqZAp" />
         <node concept="1DcWWT" id="2Jvt1sWfuPI" role="3cqZAp">
           <property role="15Hjoa" value="forEachInAllMethods" />
@@ -68597,7 +68584,7 @@
                 <node concept="3clFbS" id="2Jvt1sWfuQh" role="9aQI4">
                   <node concept="3cpWs8" id="2Jvt1sWfuQi" role="3cqZAp">
                     <node concept="3cpWsn" id="2Jvt1sWfuQj" role="3cpWs9">
-                      <property role="TrG5h" value="currMethodParmCount" />
+                      <property role="TrG5h" value="currMethodParamCount" />
                       <node concept="10Oyi0" id="2Jvt1sWfuQk" role="1tU5fm" />
                       <node concept="2OqwBi" id="5xPXeFAaF8L" role="33vP2m">
                         <node concept="2OqwBi" id="2Jvt1sWfuQl" role="2Oq$k0">
@@ -68614,7 +68601,7 @@
                   </node>
                   <node concept="3cpWs8" id="2Jvt1sWfuQo" role="3cqZAp">
                     <node concept="3cpWsn" id="2Jvt1sWfuQp" role="3cpWs9">
-                      <property role="TrG5h" value="equalParmCountMethods" />
+                      <property role="TrG5h" value="equalParamCountMethods" />
                       <node concept="2I9FWS" id="5xPXeFAaF8R" role="1tU5fm">
                         <ref role="2I9WkF" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
                       </node>
@@ -68688,7 +68675,7 @@
                               <node concept="34oBXx" id="5xPXeFAaF9d" role="2OqNvi" />
                             </node>
                             <node concept="37vLTw" id="3GM_nagTw$7" role="3uHU7w">
-                              <ref role="3cqZAo" node="2Jvt1sWfuQj" resolve="currMethodParmCount" />
+                              <ref role="3cqZAo" node="2Jvt1sWfuQj" resolve="currMethodParamCount" />
                             </node>
                           </node>
                         </node>
@@ -68696,7 +68683,7 @@
                           <node concept="3clFbF" id="2Jvt1sWfuR3" role="3cqZAp">
                             <node concept="2OqwBi" id="2Jvt1sWfuR4" role="3clFbG">
                               <node concept="37vLTw" id="3GM_nagTw0M" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParmCountMethods" />
+                                <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParamCountMethods" />
                               </node>
                               <node concept="liA8E" id="2Jvt1sWfuR6" role="2OqNvi">
                                 <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
@@ -68711,24 +68698,17 @@
                     </node>
                   </node>
                   <node concept="3clFbJ" id="2Jvt1sWfuR8" role="3cqZAp">
-                    <node concept="3eOSWO" id="2Jvt1sWfuR9" role="3clFbw">
-                      <node concept="2OqwBi" id="2Jvt1sWfuRa" role="3uHU7B">
-                        <node concept="37vLTw" id="3GM_nagTBi3" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParmCountMethods" />
-                        </node>
-                        <node concept="liA8E" id="2Jvt1sWfuRc" role="2OqNvi">
-                          <ref role="37wK5l" to="33ny:~List.size():int" resolve="size" />
-                        </node>
+                    <node concept="2OqwBi" id="2Jvt1sWfuRa" role="3clFbw">
+                      <node concept="37vLTw" id="3GM_nagTBi3" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParamCountMethods" />
                       </node>
-                      <node concept="3cmrfG" id="2Jvt1sWfuRd" role="3uHU7w">
-                        <property role="3cmrfH" value="0" />
-                      </node>
+                      <node concept="3GX2aA" id="7zlhroNGCj$" role="2OqNvi" />
                     </node>
                     <node concept="3clFbS" id="2Jvt1sWfuRe" role="3clFbx">
                       <node concept="3clFbJ" id="2Jvt1sWfuRf" role="3cqZAp">
                         <node concept="3clFbC" id="2Jvt1sWfuRg" role="3clFbw">
                           <node concept="37vLTw" id="3GM_nagTzuv" role="3uHU7B">
-                            <ref role="3cqZAo" node="2Jvt1sWfuQj" resolve="currMethodParmCount" />
+                            <ref role="3cqZAo" node="2Jvt1sWfuQj" resolve="currMethodParamCount" />
                           </node>
                           <node concept="3cmrfG" id="2Jvt1sWfuRi" role="3uHU7w">
                             <property role="3cmrfH" value="0" />
@@ -68743,7 +68723,7 @@
                                 </node>
                                 <node concept="2OqwBi" id="5xPXeFAaF9D" role="3ElVtu">
                                   <node concept="37vLTw" id="3GM_nagTAPw" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParmCountMethods" />
+                                    <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParamCountMethods" />
                                   </node>
                                   <node concept="1uHKPH" id="5xPXeFAaF9H" role="2OqNvi" />
                                 </node>
@@ -68799,7 +68779,7 @@
                       </node>
                       <node concept="1DcWWT" id="2Jvt1sWfuRR" role="3cqZAp">
                         <node concept="37vLTw" id="3GM_nagTAeZ" role="1DdaDG">
-                          <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParmCountMethods" />
+                          <ref role="3cqZAo" node="2Jvt1sWfuQp" resolve="equalParamCountMethods" />
                         </node>
                         <node concept="3cpWsn" id="2Jvt1sWfuRT" role="1Duv9x">
                           <property role="TrG5h" value="otherMethod" />
@@ -68973,15 +68953,11 @@
             <property role="TrG5h" value="dependsOnNodes" />
             <property role="3TUv4t" value="false" />
             <node concept="2hMVRd" id="5xPXeFAaEAM" role="1tU5fm">
-              <node concept="3uibUv" id="67DLXKCe1$e" role="2hN53Y">
-                <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-              </node>
+              <node concept="3Tqbb2" id="7zlhroNHfZv" role="2hN53Y" />
             </node>
             <node concept="2ShNRf" id="2Jvt1sWfuTg" role="33vP2m">
               <node concept="2i4dXS" id="5xPXeFAaFai" role="2ShVmc">
-                <node concept="3uibUv" id="67DLXKCe1$A" role="HW$YZ">
-                  <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                </node>
+                <node concept="3Tqbb2" id="7zlhroNHi7w" role="HW$YZ" />
               </node>
             </node>
           </node>
