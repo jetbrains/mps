@@ -19,6 +19,7 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.model.SModelDescriptorStub;
 import jetbrains.mps.project.structure.modules.ModuleReference;
+import jetbrains.mps.project.structure.modules.RefUpdateUtil;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
@@ -31,6 +32,7 @@ import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.loading.UpdateModeSupport;
 import jetbrains.mps.smodel.nodeidmap.INodeIdToNodeMap;
 import jetbrains.mps.smodel.nodeidmap.UniversalOptimizedNodeIdMap;
+import jetbrains.mps.util.StatefulUpdate;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -827,28 +829,27 @@ public class SModel implements SModelData, UpdateModeSupport {
     enforceFullLoad();
 
     boolean changed = false;
+    // XXX RefUpdateUtil uses MR.differs() which, unlike MR.equals(), compares names and ignores global uniqueness fact. Is that what we
+    //     want for references inside nodes? Perhaps, makes sense to use differs for imports only?
+    final StatefulUpdate<SModelReference> modelRefUpdate = new RefUpdateUtil(repository).withState();
     for (org.jetbrains.mps.openapi.model.SNode node : myIdToNodeMap.values()) {
       for (SReference reference : node.getReferences()) {
         SModelReference oldReference = reference.getTargetSModelReference();
-        if (oldReference == null || !(reference instanceof SReferenceBase)) {
+        if (oldReference == null || !(reference instanceof StaticReference)) {
           continue;
         }
-        // there's RefUpdateUtil.updateModelRef() that could have been used here, it it was in [smodel].
-        // But it's in [project] now, and needs refactoring to relocate.
-        // Besides, there's also similar code in vcs.DiffModelUtil
-        final org.jetbrains.mps.openapi.model.SModel resolved = oldReference.resolve(repository);
-        if (resolved != null && jetbrains.mps.smodel.SModelReference.differs(resolved.getReference(), oldReference)) {
+        // FWIW there's similar code in vcs.DiffModelUtil
+        if (modelRefUpdate.isChanged(oldReference)) {
           changed = true;
-          ((SReferenceBase) reference).setTargetSModelReference(resolved.getReference());
+          ((StaticReference) reference).setTargetSModelReference(modelRefUpdate.newValue(oldReference));
         }
       }
     }
 
     for (ImportElement e : myImports) {
-      final org.jetbrains.mps.openapi.model.SModel resolved = e.getModelReference().resolve(repository);
-      if (resolved != null && jetbrains.mps.smodel.SModelReference.differs(resolved.getReference(), e.getModelReference())) {
+      if (modelRefUpdate.isChanged(e.getModelReference())) {
         changed = true;
-        e.myModelReference = resolved.getReference();
+        e.myModelReference = modelRefUpdate.newValue(e.getModelReference());
       }
     }
 
@@ -871,8 +872,9 @@ public class SModel implements SModelData, UpdateModeSupport {
     myReference = newModelReference;
     for (org.jetbrains.mps.openapi.model.SNode node : myIdToNodeMap.values()) {
       for (SReference reference : node.getReferences()) {
-        if (reference instanceof SReferenceBase && oldReference.equals(reference.getTargetSModelReference())) {
-          ((SReferenceBase) reference).setTargetSModelReference(newModelReference);
+        // XXX here, equals would not notice change in model name, is it what we want? In fact, I would rather not keep model reference to self at all
+        if (reference instanceof StaticReference && oldReference.equals(reference.getTargetSModelReference())) {
+          ((StaticReference) reference).setTargetSModelReference(newModelReference);
         }
       }
     }
