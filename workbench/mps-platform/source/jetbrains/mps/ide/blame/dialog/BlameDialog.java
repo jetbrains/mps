@@ -176,7 +176,7 @@ public class BlameDialog extends DialogWrapper {
 
     final JPanel appInfoPanel = new JPanel(new GridLayoutManager(2, 1));
     appInfoPanel.setBorder(IdeBorderFactory.createEmptyBorder(JBUI.emptyInsets()));
-    final JBLabel appInfo = new JBLabel(getAdditionalInfo(true));
+    final JBLabel appInfo = new JBLabel(AppInfo.getApplicationInfo(AppInfo.Format.HTML, myPluginDescriptor));
     appInfoPanel.add(appInfo, getConstraints(appInfoPanel.getComponentCount()));
     myDoNotIncludeAppInfo = new JBCheckBox("Do not include application info to issue description", false);
     myDoNotIncludeAppInfo.addChangeListener(changeEvent -> appInfo.setEnabled(!myDoNotIncludeAppInfo.isSelected()));
@@ -243,7 +243,7 @@ public class BlameDialog extends DialogWrapper {
     constraints = getConstraints(0);
     constraints.setColumn(2);
     constraints.setHSizePolicy(GridConstraints.SIZEPOLICY_CAN_GROW);
-    agreementPanel.add(new Spacer(),constraints);
+    agreementPanel.add(new Spacer(), constraints);
 
     myPanel.add(agreementPanel, getConstraints(myPanel.getComponentCount()));
 
@@ -343,30 +343,106 @@ public class BlameDialog extends DialogWrapper {
     return (e.getMessage() == null ? "" : e.getMessage() + "\n") + sw.toString();
   }
 
-  private String getAdditionalInfo(boolean html) {
-    ApplicationInfo ai = ApplicationInfo.getInstance();
+  private void addInfoLine(StringBuilder builder, Object text, String formatStart, String formatEnd, String endLine) {
+    addInfoLine(builder, null, text, formatStart, formatEnd, endLine);
+  }
 
-    StringBuilder builder = new StringBuilder(html ? "<html><body><strong>[Build info]</strong><br>" : "{cut [Build info]}*[Build info]*\n");
-    if (ai instanceof ApplicationInfoEx) {
-      builder.append("Application name: ''").append(((ApplicationInfoEx) ai).getFullApplicationName()).append("''\n");
+  private void addInfoLine(StringBuilder builder, @Nullable String name, Object text, String formatStart, String formatEnd, String endLine) {
+    if (name != null) {
+      builder.append(name).append(": ");
     }
-    builder.append("Build number: ''").append(ai.getBuild().asString()).append("''\n");
-    builder.append("Version: ''").append(ai.getFullVersion()).append("''\n");
-    if (myPluginDescriptor != null) {
-      builder.append(html ? "<strong>" : "*").append("[Plugin info]").append(html ? "</strong>" : "*").append('\n');
-      builder.append("Plugin id: ''").append(myPluginDescriptor.getPluginId()).append("''\n");
-      if (myPluginDescriptor instanceof IdeaPluginDescriptor) {
-        final IdeaPluginDescriptor pluginDescriptor = (IdeaPluginDescriptor) myPluginDescriptor;
-        builder.append("Name: ''").append(pluginDescriptor.getName()).append("''\n");
-        builder.append("Version: ''").append(pluginDescriptor.getVersion()).append("''\n");
-        builder.append("Vendor: ''").append(pluginDescriptor.getVendor()).append("''\n");
-        builder.append("Category: ''").append(pluginDescriptor.getCategory()).append("''\n");
-        builder.append("Is bundled: ''").append(pluginDescriptor.isBundled()).append("''\n");
-        builder.append("Is enabled: ''").append(pluginDescriptor.isEnabled()).append("''\n");
+    builder.append(formatStart).append(text).append(formatEnd).append(endLine);
+  }
+
+  private static class AppInfo {
+    private final StringBuilder myBuilder = new StringBuilder(1000);
+    private final ApplicationInfo myApplicationInfo = ApplicationInfo.getInstance();
+    private final PluginDescriptor myPluginDescriptor;
+    private final Format myFormat;
+
+    private AppInfo(Format format, PluginDescriptor pluginDescriptor) {
+      myFormat = format;
+      myPluginDescriptor = pluginDescriptor;
+    }
+
+    static String getApplicationInfo(Format format, PluginDescriptor pluginDescriptor) {
+      return new AppInfo(format, pluginDescriptor).getInfo();
+    }
+
+    private String getInfo() {
+      if (myFormat == Format.HTML) {
+        myBuilder.append("<html><body>");
+      }
+
+      addHeaderLine("Build info");
+      if (myApplicationInfo instanceof ApplicationInfoEx) {
+        addInfoLine("Application name", ((ApplicationInfoEx) myApplicationInfo).getFullApplicationName());
+      }
+      addInfoLine("Build number", myApplicationInfo.getBuild().asString());
+      addInfoLine("Version", myApplicationInfo.getFullVersion());
+      myBuilder.append(myFormat.myEndLine);
+
+      if (myPluginDescriptor != null) {
+        addHeaderLine("Plugin info");
+        addInfoLine("Plugin id", myPluginDescriptor.getPluginId());
+        if (myPluginDescriptor instanceof IdeaPluginDescriptor) {
+          final IdeaPluginDescriptor pluginDescriptor = (IdeaPluginDescriptor) myPluginDescriptor;
+          addInfoLine("Name", pluginDescriptor.getName());
+          addInfoLine("Version", pluginDescriptor.getVersion());
+          addInfoLine("Vendor", pluginDescriptor.getVendor());
+          addInfoLine("Category", pluginDescriptor.getCategory());
+          addInfoLine("Is bundled", pluginDescriptor.isBundled());
+          addInfoLine("Is enabled", pluginDescriptor.isEnabled());
+        }
+      }
+
+      if (myFormat == Format.HTML) {
+        myBuilder.append("</body></html>");
+      }
+
+      return myBuilder.toString();
+    }
+
+    private void addHeaderLine(String text) {
+      myBuilder.append(myFormat.myBoldStart).append(text).append(myFormat.myBoldEnd).append(myFormat.myEndLine);
+    }
+
+    private void addInfoLine(String name, Object text) {
+      myBuilder.append(name).append(": ").append(myFormat.myItalicStart).append(text).append(myFormat.myItalicEnd).append(myFormat.myEndLine);
+    }
+
+    private static final String END_LINE_HTML = "<br>";
+    private static final String END_LINE_MARKDOWN = "\n";
+
+    private static final String ITALIC_START_HTML = "<em>";
+    private static final String ITALIC_END_HTML = "</em>";
+    private static final String ITALIC_MARKDOWN = "*";
+    private static final String ITALIC_YOUTRACK_WIKI = "''";
+
+    private static final String BOLD_START_HTML = "<strong>";
+    private static final String BOLD_END_HTML = "</strong>";
+    private static final String BOLD_MARKDOWN = "**";
+    private static final String BOLD_YOUTRACK_WIKI = "'''";
+
+    private enum Format {
+      HTML(END_LINE_HTML, BOLD_START_HTML, BOLD_END_HTML, ITALIC_START_HTML, ITALIC_END_HTML),
+      MARK_DOWN(END_LINE_MARKDOWN, BOLD_MARKDOWN, BOLD_MARKDOWN, ITALIC_MARKDOWN, ITALIC_MARKDOWN),
+      YOUTRACK_WIKI(END_LINE_MARKDOWN, BOLD_YOUTRACK_WIKI, BOLD_YOUTRACK_WIKI, ITALIC_YOUTRACK_WIKI, ITALIC_YOUTRACK_WIKI);
+
+      final String myEndLine;
+      final String myBoldStart;
+      final String myBoldEnd;
+      final String myItalicStart;
+      final String myItalicEnd;
+
+      Format(String endLine, String boldStart, String boldEnd, String italicStart, String italicEnd) {
+        myEndLine = endLine;
+        myBoldStart = boldStart;
+        myBoldEnd = boldEnd;
+        myItalicStart = italicStart;
+        myItalicEnd = italicEnd;
       }
     }
-    builder.append(html ? "</body></html>" : "{cut}");
-    return html ? builder.toString().replaceAll("\n", "<br>").replaceAll("''", ""): builder.toString();
   }
 
   protected JComponent getMainComponent() {
@@ -383,11 +459,10 @@ public class BlameDialog extends DialogWrapper {
 
   @Override
   protected void doOKAction() {
-    StringBuilder description = new StringBuilder(myTitleField.getText().length() + myDescriptionField.getText().length() + 1000);
-    if (myTitleField.getText().trim().length() != 0) {
-      description.append(myTitleField.getText());
-      description.append("\n\n");
-    }
+    StringBuilder description = new StringBuilder(myDescriptionField.getText().length()
+                                                  + (myDoNotIncludeAppInfo.isSelected() ? 0 : 1000) // approximate application info length
+                                                  + (mySkipTrace.isSelected() ? 50 : 5000 * myThrowableList.size())  // approximate stacktrace info length
+    );
 
     if (myDescriptionField.getText().trim().length() != 0) {
       description.append(myDescriptionField.getText());
@@ -395,14 +470,23 @@ public class BlameDialog extends DialogWrapper {
     }
 
     if (!myDoNotIncludeAppInfo.isSelected()) {
-      description.append(getAdditionalInfo(false));
-      description.append('\n');
+      // YouTrack wiki format required for hidden issues for now
+      description.append(AppInfo.getApplicationInfo(
+          myHiddenCheckBox.isSelected() ? AppInfo.Format.YOUTRACK_WIKI : AppInfo.Format.MARK_DOWN,
+          myPluginDescriptor));
     }
 
     if (!myThrowableList.isEmpty()) {
       if (!mySkipTrace.isSelected()) {
         for (Throwable ex : myThrowableList) {
-          description.append(ex2str(ex)).append("\n\n");
+          description.append("\n\n");
+          if(!myHiddenCheckBox.isSelected()) { // YouTrack wiki supports stacktrace without text markup
+            description.append("```stacktrace\n");
+          }
+          description.append(ex2str(ex));
+          if(!myHiddenCheckBox.isSelected()) {
+            description.append("\n```");
+          }
         }
       } else {
         description.append("Exception trace was hidden by submitter\n");

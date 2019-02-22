@@ -17,6 +17,7 @@ package jetbrains.mps.ide.ui.tree.smodel;
 
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.MPSTree;
@@ -35,16 +36,17 @@ import org.jetbrains.mps.util.Condition;
 import javax.swing.Icon;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
-import java.awt.Color;
 import java.awt.font.TextAttribute;
 import java.util.stream.StreamSupport;
 
 public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
   private static final Logger LOG = LogManager.getLogger(SNodeTreeNode.class);
 
+
+  // Must stay protected - used in com.mbeddr.mpsutil.targetchooser.TargetChooser
   protected boolean myInitialized = false;
-  private SNode myNode;
-  private String myRole;
+  private final SNode myNode;
+  private final String myRole;
   private final Condition<SNode> myCondition;
 
   public SNodeTreeNode(SNode node) {
@@ -91,7 +93,7 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
       return;
     }
     if (hasErrors()) {
-      setColor(Color.RED);
+      setColor(JBColor.RED);
     } else {
       setColor(EditorColorsManager.getInstance().getGlobalScheme().getColor(ColorKey.createColorKey("FILESTATUS_NOT_CHANGED")));
     }
@@ -175,8 +177,8 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
 
   private boolean isShowStructure() {
     MPSTree tree = getTree();
-    if (!(tree instanceof TreeNodeParamProvider)) return true; //not to affect usages other than those we want to
-    return ((TreeNodeParamProvider) tree).isShowStructure();
+    //Check for instance of TreeNodeParamProvider to not affect usages other than those we want to
+    return !(tree instanceof TreeNodeParamProvider) || ((TreeNodeParamProvider) tree).isShowStructure();
   }
 
   protected SNodeTreeNode createChildTreeNode(SNode childNode) {
