@@ -17,7 +17,6 @@ package jetbrains.mps.reloading;
 
 import jetbrains.mps.util.ClassPathReader;
 import jetbrains.mps.util.ClassType;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.util.SystemInfo;
@@ -37,7 +36,6 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -194,7 +192,7 @@ public final class CommonPaths {
     addIfExists(result, "lib/log4j.jar");
     addIfExists(result, "lib/trove4j.jar");
     addIfExists(result, "lib/jdom.jar");
-    addIfExists(result, "lib/ecj-4.7.2.jar");
+    addIfExists(result, "lib/ecj-4.10.jar");
     addIfExists(result, "lib/guava-25.1-jre.jar");
     addIfExists(result, "lib/xstream-1.4.8.jar");
     addIfExists(result, "lib/asm-all-7.0.jar");
