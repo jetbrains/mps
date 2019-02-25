@@ -31,6 +31,7 @@ public class SEnumerationLiteralId {
     myLiteralId = literalId;
   }
 
+  @NotNull
   public SDataTypeId getEnumerationId() {
     return myEnumId;
   }

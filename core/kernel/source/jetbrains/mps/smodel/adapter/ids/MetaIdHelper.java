@@ -91,7 +91,7 @@ public final class MetaIdHelper {
   @NotNull
   public static SEnumerationLiteralId getEnumerationLiteral(SEnumerationLiteral l) {
     //todo make serialization via serialize method
-    if (!(l.getEnumeration() instanceof SEnumerationAdapter.SEnumLiteralAdapter)) {
+    if (!(l instanceof SEnumerationAdapter.SEnumLiteralAdapter)) {
       return MetaIdFactory.INVALID_ENUM_LITERAL_ID;
     }
     return ((SEnumerationAdapter.SEnumLiteralAdapter) l).getId();
