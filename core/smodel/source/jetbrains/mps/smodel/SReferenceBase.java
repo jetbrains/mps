@@ -74,9 +74,11 @@ public abstract class SReferenceBase extends SReference {
       return false /*myImmatureTargetNode == null*/;
     }
 
-    if (sourceNode.getModel() != null && myImmatureTargetNode.getModel() != null) {
+    if (myImmatureTargetNode.getModel() != null) {
+      // assert sourceModel != null;
       // convert 'young' reference to 'mature'
       makeMature();
+      // FWIW, myImmatureTargetNode == null here
     }
     if (force && myImmatureTargetNode != null) {
       // assert sourceModel != null;
@@ -88,6 +90,7 @@ public abstract class SReferenceBase extends SReference {
     return myImmatureTargetNode == null;
   }
 
+  // XXX note, StaticReference.setTargetSModelReference invokes this method, myImmatureTargetNode == null guard is vital
   protected synchronized void makeMature() {
     if (myImmatureTargetNode == null) {
       return;

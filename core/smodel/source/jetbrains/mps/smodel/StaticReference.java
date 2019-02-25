@@ -82,6 +82,9 @@ public final class StaticReference extends SReferenceBase {
   @Override
   public SModelReference getTargetSModelReference() {
     SNode immatureNode = myImmatureTargetNode;
+    // FIXME what's the reason to invoke makeIndirect here? If immatureNode is not inside a model yet (or already),
+    //       makeIndirect won't give anything meaningful. If it's in the model, then immatureNode.getModel.getReference is the same
+    //       The only reason is to have makeDirect early/for references not covered by ImmatureReferences.cleanup(), but is it worth it?
     if (immatureNode == null || makeIndirect()) {
       return myTargetModelReference;
     }
