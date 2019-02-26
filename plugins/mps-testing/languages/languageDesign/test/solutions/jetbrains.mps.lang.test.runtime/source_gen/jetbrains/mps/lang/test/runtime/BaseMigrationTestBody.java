@@ -17,8 +17,6 @@ import jetbrains.mps.lang.test.matcher.NodeDifference;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.references.ImmatureReferences;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import java.util.Collection;
 
 public abstract class BaseMigrationTestBody extends BaseTestBody {
@@ -36,7 +34,7 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
     return CopyUtil.copy(SModelOperations.roots(tempModel, null));
   }
   public void testMethod() {
-    SModel model = TemporaryModels.getInstance().create(false, false, TempModuleOptions.forDefaultModule());
+    SModel model = TemporaryModels.getInstance().create(false, false, TempModuleOptions.nonReloadableModule());
     MigrationScript[] scripts = getMigrationScript();
     List<SNode> roots = runMigration(CollectionSequence.fromCollection(getInputNodes()).toListSequence(), model, scripts);
     List<SNode> outputNodes = CollectionSequence.fromCollection(getOutputNodes()).toListSequence();
@@ -52,9 +50,6 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
         org.junit.Assert.fail("Post-migration check for script '" + script + "' failed with problem: " + problem.toString());
       }
     }
-    // we cannot dispose temporary model in the same command to avoid resolving immature references into detached nodes 
-    ImmatureReferences.getInstance().cleanup();
-    UnregisteredNodes.instance().clear();
     TemporaryModels.getInstance().dispose(model);
   }
   public abstract Collection<SNode> getInputNodes();

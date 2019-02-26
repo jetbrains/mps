@@ -77,7 +77,6 @@
     <import index="7cms" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.runners.model(JUnit/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
-    <import index="4szu" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.references(MPS.Core/)" />
     <import index="a19p" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.rules(JUnit/)" />
     <import index="cvlm" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.runner(JUnit/)" />
     <import index="ubtp" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor.impl(MPS.IDEA/)" />
@@ -11835,8 +11834,8 @@
                 <node concept="3clFbT" id="4K12N3pL6PS" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>
-                <node concept="2YIFZM" id="4K12N3pL6PT" role="37wK5m">
-                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.forDefaultModule():jetbrains.mps.smodel.tempmodel.TempModuleOptions" resolve="forDefaultModule" />
+                <node concept="2YIFZM" id="6oGy5BbQmCB" role="37wK5m">
+                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule():jetbrains.mps.smodel.tempmodel.TempModuleOptions" resolve="nonReloadableModule" />
                   <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
                 </node>
               </node>
@@ -12039,33 +12038,6 @@
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="6dZNzDpMQHq" role="3cqZAp">
-          <node concept="3SKdUq" id="6dZNzDpMQHs" role="3SKWNk">
-            <property role="3SKdUp" value="we cannot dispose temporary model in the same command to avoid resolving immature references into detached nodes" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="3eDPCSVtdch" role="3cqZAp">
-          <node concept="2OqwBi" id="3eDPCSVtes5" role="3clFbG">
-            <node concept="2YIFZM" id="3eDPCSVte0y" role="2Oq$k0">
-              <ref role="37wK5l" to="4szu:~ImmatureReferences.getInstance():jetbrains.mps.smodel.references.ImmatureReferences" resolve="getInstance" />
-              <ref role="1Pybhc" to="4szu:~ImmatureReferences" resolve="ImmatureReferences" />
-            </node>
-            <node concept="liA8E" id="3eDPCSVtf$J" role="2OqNvi">
-              <ref role="37wK5l" to="4szu:~ImmatureReferences.cleanup():void" resolve="cleanup" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3eDPCSVtjy0" role="3cqZAp">
-          <node concept="2OqwBi" id="3eDPCSVtktD" role="3clFbG">
-            <node concept="2YIFZM" id="3eDPCSVtjUN" role="2Oq$k0">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.instance():jetbrains.mps.smodel.references.UnregisteredNodes" resolve="instance" />
-              <ref role="1Pybhc" to="4szu:~UnregisteredNodes" resolve="UnregisteredNodes" />
-            </node>
-            <node concept="liA8E" id="3eDPCSVtl$7" role="2OqNvi">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.clear():void" resolve="clear" />
             </node>
           </node>
         </node>
