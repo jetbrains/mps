@@ -90,16 +90,7 @@ public abstract class SReferenceBase extends SReference {
     return myImmatureTargetNode == null;
   }
 
-  // XXX note, StaticReference.setTargetSModelReference invokes this method, myImmatureTargetNode == null guard is vital
-  protected synchronized void makeMature() {
-    if (myImmatureTargetNode == null) {
-      return;
-    }
-    final SNode immatureNode = myImmatureTargetNode;
-    myImmatureTargetNode = null;
-    adjustMature(immatureNode);
-    setTargetSModelReference(immatureNode.getModel().getReference());
-    setResolveInfo(getResolveInfo(immatureNode));
+  protected void makeMature() {
   }
 
   @Nullable
@@ -111,9 +102,6 @@ public abstract class SReferenceBase extends SReference {
       return value;
     }
     return immatureNode.getName();
-  }
-
-  protected void adjustMature(SNode immatureTarget) {
   }
 }
              

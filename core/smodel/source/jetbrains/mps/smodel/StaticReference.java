@@ -82,21 +82,39 @@ public final class StaticReference extends SReferenceBase {
   @Override
   public SModelReference getTargetSModelReference() {
     SNode immatureNode = myImmatureTargetNode;
-    // FIXME what's the reason to invoke makeIndirect here? If immatureNode is not inside a model yet (or already),
-    //       makeIndirect won't give anything meaningful. If it's in the model, then immatureNode.getModel.getReference is the same
-    //       The only reason is to have makeDirect early/for references not covered by ImmatureReferences.cleanup(), but is it worth it?
-    if (immatureNode == null || makeIndirect()) {
+    // Here, we expect 3 major cases: one when reference is 'mature' and got model ref+node id already (I), and
+    // two cases when reference has not been 'matured' yet, i.e. we have direct link to a target node. This happens when a reference
+    // is created and nobody requested 'become mature' yet (usually MA.commandFinished() together with ImmatureReferences, II), or when
+    // a reference's source node has been detached from a model and references became direct (smodel.SNode#makeReferencesDirect(), III)
+    // For (I), there's no special treatment. For (II) and (III), we are fine as long as 'immature'/young target node is in a model
+    // (node.getModel().getReference() is meaningful). If not, we can do nothing in (II), but may try to resort to last known model
+    // reference, if any, in case of detached nodes, (III).
+    // Note, earlier code used to make an attempt to make 'young' reference mature on any access, which seems excessive at least (or even wrong)
+    // as the outcome is essentially the same as with immatureNode.getModel(), except for the moment reference become 'mature' (end of command or first access)
+    // I don't see any strong reason to be in a hurry with that. The change dates back to commit 5ac3704, with a comment that doesn't indicate any
+    // specific issue being addressed.
+    if (immatureNode == null) {
       return myTargetModelReference;
     }
     SModel model = immatureNode.getModel();
-    return model == null ? null : model.getReference();
+    // node.getModel() contract is still imperfect, for a node removed from a model it's generally null,
+    // nevertheless, for a node from disposed model it's still an original model (model disposal doesn't change AttachedNodeOwner->DetachedNodeOwner)
+    return model != null ? model.getReference() : myTargetModelReference; // resort to earlier value, if any
   }
 
   @Override
   @Nullable
   public SNodeId getTargetNodeId() {
     SNode immatureNode = myImmatureTargetNode;
-    if (immatureNode == null || makeIndirect()) return myTargetNodeId;
+    // see #getTargetSModelReference(), above for detailed description of expected scenarios here.
+    // As long as there's 'young' node, use it. If it's already in a model (makeIndirect() that used to be here succeeds), node.getNodeId() would
+    // give proper value (well, theoretically, if we 'adopt' node instances the moment they are attached to a model with another SNode impl, they
+    // could be different, but this scenario is not supported now as well); if not in a model, makeIndirect() won't help us a bit.
+    if (immatureNode == null) {
+      return myTargetNodeId;
+    }
+    // unlike #getTargetSModelReference(), III, node id unlikely to change for a detached node, hence we don't check for nodeId == null here, neither
+    // resort to myTargetNodeId value.
     return immatureNode.getNodeId();
   }
 
@@ -133,12 +151,9 @@ public final class StaticReference extends SReferenceBase {
       NodeReadAccessCasterInEditor.fireReferenceTargetReadAccessed(getSourceNode(), mr, getTargetNodeId());
     }
 
-    if (myImmatureTargetNode != null) {
-      synchronized (this) {
-        if (!makeIndirect()) {
-          return myImmatureTargetNode;
-        }
-      }
+    final SNode immatureTargetNode = myImmatureTargetNode;
+    if (immatureTargetNode != null) {
+      return immatureTargetNode;
     }
 
     SNodeId targetNodeId = getTargetNodeId();
@@ -248,6 +263,9 @@ public final class StaticReference extends SReferenceBase {
     final SModelReference targetModelReference = getTargetSModelReference();
     // 'unresolved' actually.
     // It can be tmp reference created while copy/pasting a node
+    // XXX why don't we assume 'source' model in case 'target' has not been specified? What's the benefit of
+    //     (a) keeping and updating model reference information for same-model refs
+    //     (b) treating this as error
     if (targetModelReference == null) {
       return null;
     }
@@ -294,10 +312,22 @@ public final class StaticReference extends SReferenceBase {
     if (myImmatureTargetNode != null) {
       ImmatureReferences.getInstance().add(this);
     }
+    // we intentionally leave old value in myTargetModelReference (and myTargetNodeId, too, although it's not in use at the moment) to address
+    // scenario (III) outlined in #getTargetSModelReference(), above.
   }
 
+  // in fact, counterpart to #makeDirect(), above, to be named makeIndirect() then.
+  // FIXME ImmatureReferences management! Unlike makeDirect, above, it's makeIndirect(boolean) that does IR.remove(this)
   @Override
-  protected void adjustMature(SNode immatureTarget) {
-    myTargetNodeId = immatureTarget.getNodeId();
+  protected synchronized void makeMature() {
+    if (myImmatureTargetNode == null) {
+      return;
+    }
+    final SNode immatureNode = myImmatureTargetNode;
+    myImmatureTargetNode = null;
+    myTargetNodeId = immatureNode.getNodeId();
+    final SModel targetModel = immatureNode.getModel();
+    myTargetModelReference = targetModel == null ? null : targetModel.getReference();
+    setResolveInfo(getResolveInfo(immatureNode));
   }
 }
