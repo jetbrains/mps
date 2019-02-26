@@ -81,7 +81,6 @@ public final class AddOverrideAnnotation_Intention extends AbstractIntentionDesc
       for (SNode meth : SetSequence.fromSet(finder.getOverridingMethods())) {
         ListSequence.fromList(SLinkOperations.getChildren(meth, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).addElement(createAnnotationInstance_4i19oe_a0a0a2a0());
       }
-
     }
     @Override
     public IntentionDescriptor getDescriptor() {

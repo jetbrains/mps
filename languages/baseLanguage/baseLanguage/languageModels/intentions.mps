@@ -17206,7 +17206,7 @@
             <property role="TrG5h" value="finder" />
             <node concept="2ShNRf" id="1rmSTqnE15d" role="33vP2m">
               <node concept="1pGfFk" id="1rmSTqnE15e" role="2ShVmc">
-                <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsFinder" />
+                <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
                 <node concept="37vLTw" id="1rmSTqnE2O2" role="37wK5m">
                   <ref role="3cqZAo" node="1rmSTqnE1An" resolve="classConcept" />
                 </node>
@@ -17221,7 +17221,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="1rmSTqnE15k" role="1tU5fm">
-              <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+              <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
             </node>
           </node>
         </node>
@@ -17265,7 +17265,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="1rmSTqnE7H$" role="3cqZAp" />
       </node>
     </node>
     <node concept="2SaL7w" id="1rmSTqnCJQi" role="2ZfVeh">
@@ -17308,7 +17307,7 @@
             <node concept="3fqX7Q" id="1rmSTqnDk9t" role="3uHU7B">
               <node concept="2YIFZM" id="1rmSTqnDk_R" role="3fr31v">
                 <ref role="37wK5l" to="pz2c:7k6J8c3tHXh" resolve="canOverride" />
-                <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+                <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                 <node concept="2Sf5sV" id="1rmSTqnDlAI" role="37wK5m" />
               </node>
             </node>
@@ -17367,7 +17366,7 @@
             <property role="TrG5h" value="finder" />
             <node concept="2ShNRf" id="1rmSTqnvhT3" role="33vP2m">
               <node concept="1pGfFk" id="1rmSTqnvkgu" role="2ShVmc">
-                <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsFinder" />
+                <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
                 <node concept="37vLTw" id="1rmSTqnDX6Q" role="37wK5m">
                   <ref role="3cqZAo" node="1rmSTqnD2ev" resolve="classConcept" />
                 </node>
@@ -17382,7 +17381,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="1rmSTqnvh73" role="1tU5fm">
-              <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+              <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
             </node>
           </node>
         </node>

@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.scopes;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
 import java.util.Objects;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -15,12 +14,14 @@ public class MethodSignature implements Signature {
   private final String singature;
 
   public MethodSignature(SNode method, Map<SNode, SNode> typeByTypeVariable) {
-    this.singature = getStringSignature(method, typeByTypeVariable, null);
+    this.singature = getStringSignature(method, typeByTypeVariable);
   }
+
   @Override
   public int hashCode() {
     return MethodSignature.class.hashCode() ^ singature.hashCode();
   }
+
   @Override
   public boolean equals(Object object) {
     if (!(object instanceof MethodSignature)) {
@@ -29,7 +30,8 @@ public class MethodSignature implements Signature {
     MethodSignature arg = (MethodSignature) object;
     return Objects.equals(this.singature, arg.singature);
   }
-  public static String getStringSignature(SNode method, Map<SNode, SNode> typeByTypeVariable, @Nullable MembersPopulatingContext context) {
+
+  public static String getStringSignature(SNode method, Map<SNode, SNode> typeByTypeVariable) {
     StringBuilder result = new StringBuilder();
     result.append(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     result.append('(');

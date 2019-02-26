@@ -5,10 +5,10 @@ package jetbrains.mps.baseLanguage.behavior;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.references.Reference;
-import java.util.List;
 
 public interface ClassifierTraversalCallback {
-  void onVisited(@NotNull ClassifierTraversalCallback.TraversalInfo info);
+  void onEntered(@NotNull ClassifierTraversalCallback.TraversalInfo info);
+  void onExited(@NotNull ClassifierTraversalCallback.TraversalInfo info);
 
   class TraversalInfo {
     private SNode myCurrentClassifier;
@@ -29,27 +29,6 @@ public interface ClassifierTraversalCallback {
         }
         public void set(SNode value) {
           _setCurrentClassifier(value);
-        }
-      };
-    }
-    private List<SNode> myPathFromBaseToCurrentClassifier;
-    public List<SNode> getPathFromBaseToCurrentClassifier() {
-      return this.myPathFromBaseToCurrentClassifier;
-    }
-    private void _setPathFromBaseToCurrentClassifier(List<SNode> value) {
-      this.myPathFromBaseToCurrentClassifier = value;
-    }
-    private List<SNode> setPathFromBaseToCurrentClassifier(List<SNode> value) {
-      _setPathFromBaseToCurrentClassifier(value);
-      return value;
-    }
-    private void refToPathFromBaseToCurrentClassifier() {
-      new Reference<List<SNode>>() {
-        public List<SNode> get() {
-          return getPathFromBaseToCurrentClassifier();
-        }
-        public void set(List<SNode> value) {
-          _setPathFromBaseToCurrentClassifier(value);
         }
       };
     }
@@ -78,16 +57,11 @@ public interface ClassifierTraversalCallback {
     private TraversalInfo() {
     }
 
-    /**
-     * 
-     * @param path includes base and current classifier
-     */
-    /*package*/ static ClassifierTraversalCallback.TraversalInfo create(SNode classifier, List<SNode> path, ClassifierTraversalCallback.TraversalController controller) {
+    /*package*/ static ClassifierTraversalCallback.TraversalInfo create(SNode classifier, ClassifierTraversalCallback.TraversalController controller) {
       // no copy (sic) 
       ClassifierTraversalCallback.TraversalInfo info = new ClassifierTraversalCallback.TraversalInfo();
       info.setCurrentClassifier(classifier);
       info.setController(controller);
-      info.setPathFromBaseToCurrentClassifier(path);
       return info;
     }
   }
