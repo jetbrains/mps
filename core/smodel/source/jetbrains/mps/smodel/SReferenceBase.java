@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.references.ImmatureReferences;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -67,7 +66,6 @@ public abstract class SReferenceBase extends SReference {
       return true;
     }
 
-    ImmatureReferences.getInstance().remove(this);
     SNode sourceNode = getSourceNode();
     SModel sourceModel = sourceNode.getModel();
     if (sourceModel == null) {

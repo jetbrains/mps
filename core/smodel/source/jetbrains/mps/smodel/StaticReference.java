@@ -131,16 +131,12 @@ public final class StaticReference extends SReferenceBase {
   }
 
   public synchronized void setTargetSModelReference(@NotNull SModelReference modelReference) {
-    if (!makeIndirect()) {
-      makeMature(); // hack: make mature anyway: only can store ref to target model in 'mature' ref.
-    }
+    makeMature(); // preserve node id and resolve info value of 'young' target, if any
     myTargetModelReference = modelReference;
   }
 
   public synchronized void setTargetNodeId(SNodeId nodeId) {
-    if (!makeIndirect()) {
-      makeMature();
-    }
+    makeMature(); // preserve model reference and resolve info value of 'young' target, if any
     myTargetNodeId = nodeId;
   }
 
@@ -317,12 +313,12 @@ public final class StaticReference extends SReferenceBase {
   }
 
   // in fact, counterpart to #makeDirect(), above, to be named makeIndirect() then.
-  // FIXME ImmatureReferences management! Unlike makeDirect, above, it's makeIndirect(boolean) that does IR.remove(this)
   @Override
   protected synchronized void makeMature() {
     if (myImmatureTargetNode == null) {
       return;
     }
+    ImmatureReferences.getInstance().remove(this);
     final SNode immatureNode = myImmatureTargetNode;
     myImmatureTargetNode = null;
     myTargetNodeId = immatureNode.getNodeId();
