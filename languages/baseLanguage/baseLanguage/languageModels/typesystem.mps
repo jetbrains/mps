@@ -22937,7 +22937,7 @@
               <node concept="3clFbS" id="6nuuj1IdSCn" role="9aQI4">
                 <node concept="3SKdUt" id="6_k0AGsCU1_" role="3cqZAp">
                   <node concept="3SKdUq" id="6_k0AGsCU1A" role="3SKWNk">
-                    <property role="3SKdUp" value="MethodCallsFixer_Rule does everything" />
+                    <property role="3SKdUp" value="MethodCallsFixer_Rule resolves the correct constructor" />
                   </node>
                 </node>
               </node>
@@ -50895,6 +50895,16 @@
               </node>
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="3SKdUt" id="2J4NKRZN6dL" role="3cqZAp">
+        <node concept="3SKdUq" id="2J4NKRZN6dM" role="3SKWNk">
+          <property role="3SKdUp" value="MethodCallsFixer_Rule and check_AnonymousClassHasConstructorDeclaration " />
+        </node>
+      </node>
+      <node concept="3SKdUt" id="2J4NKRZN9eP" role="3cqZAp">
+        <node concept="3SKdUq" id="2J4NKRZN9eQ" role="3SKWNk">
+          <property role="3SKdUp" value="take care of null in constructorDeclaration" />
         </node>
       </node>
     </node>
