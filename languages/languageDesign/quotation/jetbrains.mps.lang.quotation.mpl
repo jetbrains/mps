@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language namespace="jetbrains.mps.lang.quotation" uuid="3a13115c-633c-4c5c-bbcc-75c4219e9555" languageVersion="1" moduleVersion="0">
+<language namespace="jetbrains.mps.lang.quotation" uuid="3a13115c-633c-4c5c-bbcc-75c4219e9555" languageVersion="2" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="languageModels" />

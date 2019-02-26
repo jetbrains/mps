@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language namespace="jetbrains.mps.vcs.mergehints" uuid="37e03aa1-7289-49bc-8269-30de5eceec76" languageVersion="1" moduleVersion="0">
+<language namespace="jetbrains.mps.vcs.mergehints" uuid="37e03aa1-7289-49bc-8269-30de5eceec76" languageVersion="2" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="languageModels" />

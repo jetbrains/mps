@@ -16,6 +16,12 @@
       </concept>
     </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="672037151186491528" name="presentation" index="1L1pqM" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
@@ -212,7 +218,7 @@
   <node concept="1TIwiD" id="fKM4N6M">
     <property role="TrG5h" value="EnumerationMemberDeclaration_Old" />
     <property role="EcuMT" value="1083171877298" />
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <node concept="1TJgyi" id="fLuS6pz" role="1TKVEl">
       <property role="TrG5h" value="internalValue" />
       <property role="IQ2nx" value="1083923523171" />
@@ -690,7 +696,7 @@
     <property role="TrG5h" value="EnumerationDataTypeDeclaration_Old" />
     <property role="34LRSv" value="Enum Data Type" />
     <property role="EcuMT" value="1082978164219" />
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <ref role="1TJDcQ" node="fKAxPRU" resolve="DataTypeDeclaration" />
     <node concept="1TJgyi" id="hrlZH32" role="1TKVEl">
       <property role="TrG5h" value="memberIdentifierPolicy" />
@@ -811,9 +817,6 @@
       <property role="20kJfa" value="defaultMember" />
       <ref role="20lvS9" node="2TR3acGo7Lw" resolve="EnumerationMemberDeclaration" />
     </node>
-    <node concept="PrWs8" id="VFd4X$DB9R" role="PzmwI">
-      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
-    </node>
     <node concept="PrWs8" id="VFd4X$DyUD" role="PzmwI">
       <ref role="PrY4T" node="VFd4X$DyB_" resolve="IEnumeration" />
     </node>
@@ -834,6 +837,16 @@
       <property role="IQ2nx" value="672037151186491528" />
       <property role="TrG5h" value="presentation" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="LU8F6G7H5v" role="1TKVEi">
+      <property role="IQ2ns" value="899069222106091871" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="oldMember" />
+      <ref role="20lvS9" node="fKM4N6M" resolve="EnumerationMemberDeclaration_Old" />
+      <node concept="asaX9" id="LU8F6G7H6r" role="lGtFl">
+        <property role="YLQ7P" value="For internal usage only" />
+        <property role="YLPcu" value="19.1" />
+      </node>
     </node>
   </node>
   <node concept="PlHQZ" id="VFd4X$DyB_">
@@ -861,6 +874,141 @@
   <node concept="PlHQZ" id="1ob16QT2Pru">
     <property role="EcuMT" value="1588368162880706270" />
     <property role="TrG5h" value="ILanguageElement" />
+  </node>
+  <node concept="1TIwiD" id="1ob16QTis9A">
+    <property role="EcuMT" value="1588368162884797030" />
+    <property role="3GE5qa" value="enums.migration" />
+    <property role="TrG5h" value="EnumMigrationInfo" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="1TJgyj" id="5CkWgdpgBAs" role="1TKVEi">
+      <property role="IQ2ns" value="6491077959632451996" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="oldEnum" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
+    </node>
+    <node concept="1TJgyi" id="5CkWgdpp0oI" role="1TKVEl">
+      <property role="IQ2nx" value="6491077959634650670" />
+      <property role="TrG5h" value="nameOpMigration" />
+      <ref role="AX2Wp" node="5CkWgdpp0p0" resolve="NameOperationMigrationStrategy" />
+    </node>
+    <node concept="1TJgyi" id="5CkWgdpp3f$" role="1TKVEl">
+      <property role="IQ2nx" value="6491077959634662372" />
+      <property role="TrG5h" value="valueOpMigration" />
+      <ref role="AX2Wp" node="5CkWgdpp3eX" resolve="ValueOperationMigrationStrategy" />
+    </node>
+    <node concept="M6xJ_" id="1ob16QTis9B" role="lGtFl">
+      <property role="Hh88m" value="enumMigration" />
+      <node concept="trNpa" id="1ob16QTis9F" role="EQaZv">
+        <ref role="trN6q" node="2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      </node>
+      <node concept="tn0Fv" id="1ob16QTis9I" role="HhnKV" />
+    </node>
+    <node concept="PrWs8" id="5CkWgdpQ2KU" role="PzmwI">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX3" resolve="ISuppressErrors" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5CkWgdpgEmF">
+    <property role="EcuMT" value="6491077959632463275" />
+    <property role="3GE5qa" value="enums.migration" />
+    <property role="TrG5h" value="EnumPropertyMigrationInfo" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="1TJgyj" id="5CkWgdpgEmQ" role="1TKVEi">
+      <property role="IQ2ns" value="6491077959632463286" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="oldProperty" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="f_TJgxF" resolve="PropertyDeclaration" />
+    </node>
+    <node concept="M6xJ_" id="5CkWgdpgEmG" role="lGtFl">
+      <property role="Hh88m" value="enumPropertyMigration" />
+      <node concept="tn0Fv" id="5CkWgdpgEmI" role="HhnKV" />
+      <node concept="trNpa" id="5CkWgdpgEmM" role="EQaZv">
+        <ref role="trN6q" node="f_TJgxF" resolve="PropertyDeclaration" />
+      </node>
+    </node>
+    <node concept="PrWs8" id="LU8F6Gpbee" role="PzmwI">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX3" resolve="ISuppressErrors" />
+    </node>
+  </node>
+  <node concept="25R3W" id="5CkWgdpp0p0">
+    <property role="3GE5qa" value="enums.migration" />
+    <property role="TrG5h" value="NameOperationMigrationStrategy" />
+    <node concept="25R33" id="5CkWgdpp0p1" role="25R1y">
+      <property role="TrG5h" value="by_name" />
+    </node>
+    <node concept="25R33" id="5CkWgdpp0p2" role="25R1y">
+      <property role="TrG5h" value="by_presentation" />
+    </node>
+    <node concept="25R33" id="5CkWgdpp0p5" role="25R1y">
+      <property role="TrG5h" value="by_custom_methods" />
+    </node>
+  </node>
+  <node concept="25R3W" id="5CkWgdpp3eX">
+    <property role="3GE5qa" value="enums.migration" />
+    <property role="TrG5h" value="ValueOperationMigrationStrategy" />
+    <node concept="25R33" id="5CkWgdpp3eY" role="25R1y">
+      <property role="TrG5h" value="string_name" />
+    </node>
+    <node concept="25R33" id="5CkWgdpp3eZ" role="25R1y">
+      <property role="TrG5h" value="string_presentation" />
+    </node>
+    <node concept="25R33" id="5CkWgdpp3f6" role="25R1y">
+      <property role="TrG5h" value="boolean" />
+    </node>
+    <node concept="25R33" id="5CkWgdpp3fb" role="25R1y">
+      <property role="TrG5h" value="int_ordinal" />
+    </node>
+    <node concept="25R33" id="5CkWgdpp3fh" role="25R1y">
+      <property role="TrG5h" value="int_ordinal_plus_one" />
+    </node>
+    <node concept="25R33" id="5CkWgdpp3fo" role="25R1y">
+      <property role="TrG5h" value="by_custom_methods" />
+    </node>
+  </node>
+  <node concept="25R3W" id="2UidVq6Wu$P">
+    <property role="3GE5qa" value="enums.migration" />
+    <property role="TrG5h" value="EnumCustomMethodReplacementKind" />
+    <node concept="25R33" id="2UidVq6Wu$Q" role="25R1y">
+      <property role="TrG5h" value="memberToValue" />
+      <property role="1L1pqM" value="member -&gt; value" />
+    </node>
+    <node concept="25R33" id="2UidVq6Wu$R" role="25R1y">
+      <property role="TrG5h" value="valueToMember" />
+      <property role="1L1pqM" value="value -&gt; member" />
+    </node>
+    <node concept="25R33" id="2UidVq6Wu$U" role="25R1y">
+      <property role="TrG5h" value="memberToName" />
+      <property role="1L1pqM" value="name -&gt; member" />
+    </node>
+    <node concept="25R33" id="2UidVq6Wu$Y" role="25R1y">
+      <property role="TrG5h" value="nameToMember" />
+      <property role="1L1pqM" value="member -&gt; name" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2UidVq6Wu_3">
+    <property role="EcuMT" value="3355805929432017219" />
+    <property role="3GE5qa" value="enums.migration" />
+    <property role="TrG5h" value="EnumCustomMethodReplacementInfo" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="1TJgyj" id="2UidVq6Wu_8" role="1TKVEi">
+      <property role="IQ2ns" value="3355805929432017224" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="enum" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+    </node>
+    <node concept="M6xJ_" id="2UidVq6Wu_4" role="lGtFl">
+      <property role="Hh88m" value="enumCustomMethodReplacement" />
+      <node concept="trNpa" id="2UidVq6ZVx6" role="EQaZv">
+        <ref role="trN6q" to="tpck:gw2VY9q" resolve="BaseConcept" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="2UidVq6Wu_6" role="1TKVEl">
+      <property role="IQ2nx" value="3355805929432017222" />
+      <property role="TrG5h" value="kind" />
+      <ref role="AX2Wp" node="2UidVq6Wu$P" resolve="EnumCustomMethodReplacementKind" />
+    </node>
   </node>
 </model>
 

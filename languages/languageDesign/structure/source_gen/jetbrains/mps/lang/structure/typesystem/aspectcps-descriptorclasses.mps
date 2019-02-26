@@ -14414,7 +14414,7 @@
     </node>
   </node>
   <node concept="312cEu" id="1lW">
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <property role="TrG5h" value="check_EnumerationDataTypeDeclaration_NonTypesystemRule" />
     <node concept="3clFbW" id="1lX" role="jymVt">
       <node concept="3clFbS" id="1m6" role="3clF47">

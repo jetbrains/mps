@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="dag84snq6m4z9myceqhbd41h72lxio0">
-  <files names="MigrationDescriptor.java:UseDevkit.java" />
+<product version="3" modelHash="-531m54re61ddvzfgi6i95i7hyxfalnd">
+  <files names="MigrateEnumPropertyUsages.java:MigrationDescriptor.java:UseDevkit.java" />
 </product>
 

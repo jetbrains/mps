@@ -11,6 +11,7 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.regex.Pattern;
 
 public class INamedLanguageElement_Constraints extends BaseConstraintsDescriptor {
   public INamedLanguageElement_Constraints() {
@@ -28,9 +29,10 @@ public class INamedLanguageElement_Constraints extends BaseConstraintsDescriptor
       @Override
       public boolean validateValue(SNode node, Object $propertyValue) {
         String propertyValue = (String) ($propertyValue);
-        return propertyValue.matches("[a-zA-Z$[_]][a-zA-Z0-9$[_]]*");
+        return REGEXP_v7wrhh_a0a1a1a0b0a1a2.matcher(propertyValue).matches();
       }
     });
     return properties;
   }
+  private static Pattern REGEXP_v7wrhh_a0a1a1a0b0a1a2 = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 }

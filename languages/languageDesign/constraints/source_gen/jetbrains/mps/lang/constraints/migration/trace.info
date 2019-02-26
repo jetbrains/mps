@@ -97,6 +97,71 @@
       <unit id="1957603573854871165" at="22,0,63,0" name="jetbrains.mps.lang.constraints.migration.ConstraintCanBeFunctions_NodeToConcept" />
     </file>
   </root>
+  <root nodeRef="r:749f16ef-f594-4d61-8683-63fbf8fdef8a(jetbrains.mps.lang.constraints.migration)/2309416876630286921">
+    <file name="MigrateEnumPropConstraints.java">
+      <node id="2309416876630286921" at="23,30,24,53" concept="9" />
+      <node id="2309416876630286921" at="27,33,28,16" concept="9" />
+      <node id="2309416876630286921" at="30,41,31,17" concept="3" />
+      <node id="2309416876630286921" at="31,17,32,16" concept="9" />
+      <node id="2309416876630300527" at="35,5,36,64" concept="8" />
+      <node id="2309416876630300527" at="36,64,37,90" concept="8" />
+      <node id="2309416876630300527" at="39,52,40,36" concept="9" />
+      <node id="2309416876630311218" at="43,300,44,226" concept="8" />
+      <node id="2309416876630327763" at="45,34,46,365" concept="8" />
+      <node id="2309416876630553992" at="46,365,47,0" concept="11" />
+      <node id="2309416876630559431" at="47,0,48,252" concept="3" />
+      <node id="2309416876630583642" at="49,326,50,85" concept="3" />
+      <node id="10950666310622308" at="54,5,55,41" concept="3" />
+      <node id="2309416876630286921" at="57,51,58,151" concept="9" />
+      <node id="2309416876630286921" at="23,0,26,0" concept="7" trace="getCaption#()Ljava/lang/String;" />
+      <node id="2309416876630300527" at="39,0,42,0" concept="7" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="10950666310512459" at="48,252,51,11" concept="5" />
+      <node id="2309416876630286921" at="57,0,60,0" concept="7" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="2309416876630286921" at="26,0,30,0" concept="7" trace="isRerunnable#()Z" />
+      <node id="2309416876630286921" at="30,0,34,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2309416876630300527" at="37,90,42,8" concept="8" />
+      <node id="2309416876630312484" at="44,226,52,9" concept="6" />
+      <node id="2309416876630301843" at="42,8,53,7" concept="5" />
+      <node id="2309416876630300527" at="34,42,54,5" concept="0" />
+      <node id="2309416876630286921" at="34,0,57,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="2309416876630286921" at="23,30,24,53" />
+      <scope id="2309416876630286921" at="27,33,28,16" />
+      <scope id="2309416876630300527" at="39,52,40,36" />
+      <scope id="10950666310512465" at="49,326,50,85" />
+      <scope id="2309416876630286921" at="57,51,58,151" />
+      <scope id="2309416876630286921" at="30,41,32,16" />
+      <scope id="2309416876630286921" at="23,0,26,0" />
+      <scope id="2309416876630300527" at="39,0,42,0" />
+      <scope id="10950666310512459" at="48,252,51,11">
+        <var name="propertyValue" id="10950666310512461" />
+      </scope>
+      <scope id="2309416876630286921" at="57,0,60,0" />
+      <scope id="2309416876630286921" at="26,0,30,0" />
+      <scope id="2309416876630286921" at="30,0,34,0">
+        <var name="m" id="2309416876630286921" />
+      </scope>
+      <scope id="2309416876630312486" at="45,34,51,11">
+        <var name="newEnum" id="2309416876630327766" />
+      </scope>
+      <scope id="2309416876630301849" at="43,300,52,9">
+        <var name="newProperty" id="2309416876630311219" />
+      </scope>
+      <scope id="2309416876630301843" at="42,8,53,7">
+        <var name="propertyConstraint" id="2309416876630301845" />
+      </scope>
+      <scope id="2309416876630300527" at="35,5,53,7">
+        <var name="context" id="2309416876630300527" />
+        <var name="scope_j34npf_a0d" id="2309416876630300527" />
+        <var name="scope_j34npf_a0d_0" id="2309416876630300527" />
+      </scope>
+      <scope id="2309416876630286921" at="34,42,55,41" />
+      <scope id="2309416876630286921" at="34,0,57,0">
+        <var name="m" id="2309416876630286921" />
+      </scope>
+      <unit id="2309416876630300527" at="38,42,42,7" name="jetbrains.mps.lang.constraints.migration.MigrateEnumPropConstraints$1" />
+      <unit id="2309416876630286921" at="22,0,62,0" name="jetbrains.mps.lang.constraints.migration.MigrateEnumPropConstraints" />
+    </file>
+  </root>
   <root nodeRef="r:749f16ef-f594-4d61-8683-63fbf8fdef8a(jetbrains.mps.lang.constraints.migration)/6358186717179175665">
     <file name="AnnotateRefPresentationQueriesAsMigrated.java">
       <node id="6358186717179175665" at="46,30,47,60" concept="9" />

@@ -6,6 +6,7 @@
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
+    <use id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp" version="0" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -85,9 +86,6 @@
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -336,6 +334,35 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp">
+      <concept id="1222260469397" name="jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpOperation" flags="nn" index="2kpEY9" />
+      <concept id="1174482808826" name="jetbrains.mps.baseLanguage.regexp.structure.StarRegexp" flags="ng" index="1OCmVF" />
+      <concept id="1174484562151" name="jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp" flags="ng" index="1OJ37Q" />
+      <concept id="1174485167097" name="jetbrains.mps.baseLanguage.regexp.structure.BinaryRegexp" flags="ng" index="1OLmFC">
+        <child id="1174485176897" name="left" index="1OLpdg" />
+        <child id="1174485181039" name="right" index="1OLqdY" />
+      </concept>
+      <concept id="1174485235885" name="jetbrains.mps.baseLanguage.regexp.structure.UnaryRegexp" flags="ng" index="1OLBAW">
+        <child id="1174485243418" name="regexp" index="1OLDsb" />
+      </concept>
+      <concept id="1174510540317" name="jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression" flags="nn" index="1Qi9sc">
+        <child id="1174510571016" name="regexp" index="1QigWp" />
+      </concept>
+      <concept id="1174554186090" name="jetbrains.mps.baseLanguage.regexp.structure.SymbolClassRegexp" flags="ng" index="1SSD1V">
+        <child id="1174557628217" name="part" index="1T5LoC" />
+      </concept>
+      <concept id="1174554211468" name="jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp" flags="ng" index="1SSJmt" />
+      <concept id="1174557878319" name="jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart" flags="ng" index="1T6I$Y">
+        <property id="1174557887320" name="character" index="1T6KD9" />
+      </concept>
+      <concept id="1174558301835" name="jetbrains.mps.baseLanguage.regexp.structure.IntervalSymbolClassPart" flags="ng" index="1T8lYq">
+        <property id="1174558315290" name="start" index="1T8p8b" />
+        <property id="1174558317822" name="end" index="1T8pRJ" />
+      </concept>
+      <concept id="1174653354106" name="jetbrains.mps.baseLanguage.regexp.structure.RegexpUsingConstruction" flags="ng" index="1YMW5F">
+        <child id="1174653387388" name="regexp" index="1YN4dH" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -805,7 +832,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="hDMFJ$N">
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <ref role="1M2myG" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
     <node concept="EnEH3" id="hDMFJ$O" role="1MhHOB">
       <ref role="EomxK" to="tpce:hCPDuZq" resolve="hasNoDefaultMember" />
@@ -2406,13 +2433,51 @@
       <ref role="EomxK" to="tpck:h0TrG11" resolve="name" />
       <node concept="QB0g5" id="1ob16QT2BfW" role="QCWH9">
         <node concept="3clFbS" id="1ob16QT2BfX" role="2VODD2">
-          <node concept="3clFbF" id="1ob16QT2Bg3" role="3cqZAp">
-            <node concept="2OqwBi" id="1ob16QT2$SK" role="3clFbG">
-              <node concept="1Wqviy" id="1ob16QT2CwW" role="2Oq$k0" />
-              <node concept="liA8E" id="1ob16QT2_$j" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String):boolean" resolve="matches" />
-                <node concept="Xl_RD" id="1ob16QT2ASC" role="37wK5m">
-                  <property role="Xl_RC" value="[a-zA-Z$[_]][a-zA-Z0-9$[_]]*" />
+          <node concept="3clFbF" id="1ob16QTyQaL" role="3cqZAp">
+            <node concept="2OqwBi" id="1ob16QTyQ$9" role="3clFbG">
+              <node concept="1Wqviy" id="1ob16QTyQaJ" role="2Oq$k0" />
+              <node concept="2kpEY9" id="1ob16QTyRgS" role="2OqNvi">
+                <node concept="1Qi9sc" id="1ob16QTyRgU" role="1YN4dH">
+                  <node concept="1OJ37Q" id="1ob16QTyTfW" role="1QigWp">
+                    <node concept="1SSJmt" id="1ob16QTyRsu" role="1OLpdg">
+                      <node concept="1T8lYq" id="1ob16QTyRC7" role="1T5LoC">
+                        <property role="1T8p8b" value="a" />
+                        <property role="1T8pRJ" value="z" />
+                      </node>
+                      <node concept="1T8lYq" id="1ob16QTySbj" role="1T5LoC">
+                        <property role="1T8p8b" value="A" />
+                        <property role="1T8pRJ" value="Z" />
+                      </node>
+                      <node concept="1T6I$Y" id="1ob16QTyVjD" role="1T5LoC">
+                        <property role="1T6KD9" value="$" />
+                      </node>
+                      <node concept="1T6I$Y" id="1ob16QTySXs" role="1T5LoC">
+                        <property role="1T6KD9" value="_" />
+                      </node>
+                    </node>
+                    <node concept="1OCmVF" id="1ob16QTyU2K" role="1OLqdY">
+                      <node concept="1SSJmt" id="1ob16QTyTrB" role="1OLDsb">
+                        <node concept="1T8lYq" id="1ob16QTyTrC" role="1T5LoC">
+                          <property role="1T8p8b" value="a" />
+                          <property role="1T8pRJ" value="z" />
+                        </node>
+                        <node concept="1T8lYq" id="1ob16QTyTrD" role="1T5LoC">
+                          <property role="1T8p8b" value="A" />
+                          <property role="1T8pRJ" value="Z" />
+                        </node>
+                        <node concept="1T8lYq" id="1ob16QTyTMR" role="1T5LoC">
+                          <property role="1T8p8b" value="0" />
+                          <property role="1T8pRJ" value="9" />
+                        </node>
+                        <node concept="1T6I$Y" id="1ob16QTyTrE" role="1T5LoC">
+                          <property role="1T6KD9" value="$" />
+                        </node>
+                        <node concept="1T6I$Y" id="1ob16QTyTrF" role="1T5LoC">
+                          <property role="1T6KD9" value="_" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

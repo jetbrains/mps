@@ -10,6 +10,8 @@
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
+    <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="1" />
   </languages>
   <imports>
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
@@ -25,6 +27,10 @@
     <import index="6f4m" ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="yf86" ref="r:33eabb60-7192-4d12-ba46-11dacf966b3e(jetbrains.mps.lang.structure.migration)" />
+    <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" />
+    <import index="qzpj" ref="r:6a119c87-1a06-4cee-bbe1-d45beb403975(jetbrains.mps.lang.typesystem.migration)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -66,6 +72,9 @@
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
         <child id="1070534934092" name="expression" index="10QFUP" />
+      </concept>
+      <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
+        <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
@@ -216,7 +225,7 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="nn" index="uoxfO">
+      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old" flags="nn" index="uoxfO">
         <reference id="1138676095763" name="enumMember" index="uo_Cq" />
       </concept>
       <concept id="1166648550386" name="jetbrains.mps.lang.smodel.structure.Model_CreateNewRootNodeOperation" flags="nn" index="2xF2bX" />
@@ -227,6 +236,10 @@
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
         <reference id="1171315804605" name="concept" index="2RRcyH" />
+      </concept>
+      <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
+        <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
+        <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
       </concept>
       <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
         <child id="1146171026732" name="value" index="3t7uKA" />
@@ -259,6 +272,12 @@
       </concept>
     </language>
     <language id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration">
+      <concept id="4144229974054253572" name="jetbrains.mps.lang.migration.structure.ExecuteAfterDeclaration" flags="ng" index="1QxfsK">
+        <child id="4144229974054377645" name="dependencies" index="1QyHIp" />
+      </concept>
+      <concept id="4144229974054378362" name="jetbrains.mps.lang.migration.structure.OrderDependency" flags="ng" index="1QyHxe">
+        <reference id="4144229974054378363" name="script" index="1QyHxf" />
+      </concept>
       <concept id="8352104482584315555" name="jetbrains.mps.lang.migration.structure.MigrationScript" flags="ig" index="3SyAh_">
         <property id="5820409521797704727" name="fromVersion" index="qMTe8" />
       </concept>
@@ -1127,6 +1146,100 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="3SyAh_" id="7lDe6cU8kWw">
+    <property role="qMTe8" value="1" />
+    <property role="TrG5h" value="MigrateEnumPropertyUsages" />
+    <node concept="3Tm1VV" id="7lDe6cU8kWx" role="1B3o_S" />
+    <node concept="1QxfsK" id="7lDe6cU8knm" role="jymVt">
+      <node concept="1QyHxe" id="7lDe6cU8kok" role="1QyHIp">
+        <ref role="1QyHxf" to="yf86:5CkWgdpyhAg" resolve="MigrateEnumProperties" />
+      </node>
+    </node>
+    <node concept="3tTeZs" id="7lDe6cU8kWy" role="jymVt">
+      <property role="3tTeZt" value="&lt;no execute after&gt;" />
+      <ref role="3tTeZr" to="slm6:7ay_HjIMt1a" resolve="execute after" />
+    </node>
+    <node concept="3tTeZs" id="7lDe6cU8kWz" role="jymVt">
+      <property role="3tTeZt" value="&lt;no required data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2FPTh" resolve="requires annotation data" />
+    </node>
+    <node concept="3tTeZs" id="7lDe6cU8kW$" role="jymVt">
+      <property role="3tTeZt" value="&lt;no produced data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2C271" resolve="produces annotation data" />
+    </node>
+    <node concept="2tJIrI" id="7lDe6cU8kW_" role="jymVt" />
+    <node concept="3tYpMH" id="7lDe6cU8hR_" role="jymVt">
+      <property role="TrG5h" value="isRerunnable" />
+      <property role="3tYpME" value="true" />
+      <ref role="25KYV2" to="slm6:1JWcQ2VeWIs" resolve="isRerunnable" />
+      <node concept="3Tm1VV" id="7lDe6cU8hRA" role="1B3o_S" />
+      <node concept="10P_77" id="7lDe6cU8hRB" role="1tU5fm" />
+    </node>
+    <node concept="3tYpXE" id="7lDe6cU8ijV" role="jymVt">
+      <property role="TrG5h" value="description" />
+      <property role="3tYpXF" value="Migrate Enum Property Usages" />
+      <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
+      <node concept="3Tm1VV" id="7lDe6cU8ijX" role="1B3o_S" />
+      <node concept="17QB3L" id="7lDe6cU8ijY" role="1tU5fm" />
+    </node>
+    <node concept="q3mfD" id="7lDe6cU8kWE" role="jymVt">
+      <property role="TrG5h" value="execute" />
+      <ref role="2VtyIY" to="slm6:4ubqdNOF9cA" resolve="execute" />
+      <node concept="3Tm1VV" id="7lDe6cU8kWG" role="1B3o_S" />
+      <node concept="3clFbS" id="7lDe6cU8kWI" role="3clF47">
+        <node concept="L3pyB" id="7lDe6cU2Vvx" role="3cqZAp">
+          <node concept="3clFbS" id="7lDe6cU2Vvy" role="L3pyw">
+            <node concept="2Gpval" id="7lDe6cU2W1Y" role="3cqZAp">
+              <node concept="2GrKxI" id="7lDe6cU2W20" role="2Gsz3X">
+                <property role="TrG5h" value="propMessageTarget" />
+              </node>
+              <node concept="qVDSY" id="7lDe6cU2W4a" role="2GsD0m">
+                <node concept="chp4Y" id="7lDe6cU8lt6" role="qVDSX">
+                  <ref role="cht4Q" to="6p:4WGKd_KDfBg" resolve="PropertyVCSDescriptor" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7lDe6cU2W24" role="2LFqv$">
+                <node concept="3clFbF" id="7lDe6cU2VSY" role="3cqZAp">
+                  <node concept="2YIFZM" id="7lDe6cU2VUk" role="3clFbG">
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigrationHelper" />
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <node concept="2GrUjf" id="7lDe6cU2Wc2" role="37wK5m">
+                      <ref role="2Gs0qQ" node="7lDe6cU2W20" resolve="propMessageTarget" />
+                    </node>
+                    <node concept="359W_D" id="7lDe6cU2WjA" role="37wK5m">
+                      <ref role="359W_E" to="6p:4WGKd_KDfBg" resolve="PropertyVCSDescriptor" />
+                      <ref role="359W_F" to="6p:4WGKd_KDfBh" resolve="prop" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="7lDe6cU2Vwh" role="L3pyr">
+            <ref role="3cqZAo" node="7lDe6cU8kWK" resolve="m" />
+          </node>
+        </node>
+      </node>
+      <node concept="ffn8J" id="7lDe6cU8kWK" role="3clF46">
+        <property role="TrG5h" value="m" />
+        <ref role="ffrpq" to="slm6:7fCCGqboj9J" resolve="m" />
+        <node concept="3uibUv" id="7lDe6cU8kWJ" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+        </node>
+      </node>
+      <node concept="q3mfm" id="7lDe6cU8kWL" role="3clF45">
+        <ref role="q3mfh" to="slm6:4F5w8gPXEEe" />
+        <ref role="1QQUv3" node="7lDe6cU8kWE" resolve="execute" />
+      </node>
+    </node>
+    <node concept="3tTeZs" id="7lDe6cU8kWM" role="jymVt">
+      <property role="3tTeZt" value="&lt;no result checking&gt;" />
+      <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
+    </node>
+    <node concept="3uibUv" id="7lDe6cU8kWN" role="1zkMxy">
+      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
     </node>
   </node>
 </model>

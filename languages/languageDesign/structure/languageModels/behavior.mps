@@ -2,11 +2,11 @@
 <model ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -1552,7 +1552,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="hEwIu2T">
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <ref role="13h7C2" to="tpce:fKM4N6M" resolve="EnumerationMemberDeclaration_Old" />
     <node concept="13i0hz" id="hEwIu2U" role="13h7CS">
       <property role="TrG5h" value="getPresentation" />
@@ -1796,6 +1796,68 @@
     </node>
     <node concept="13hLZK" id="hEwIu3a" role="13h7CW">
       <node concept="3clFbS" id="hEwIu3b" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="54m$yuDZW0l" role="13h7CS">
+      <property role="TrG5h" value="findReplacement" />
+      <node concept="3Tm1VV" id="54m$yuDZW0m" role="1B3o_S" />
+      <node concept="3Tqbb2" id="54m$yuDZWW1" role="3clF45">
+        <ref role="ehGHo" to="tpce:2TR3acGo7Lw" resolve="EnumerationMemberDeclaration" />
+      </node>
+      <node concept="3clFbS" id="54m$yuDZW0o" role="3clF47">
+        <node concept="3SKdUt" id="54m$yuE00UY" role="3cqZAp">
+          <node concept="3SKdUq" id="54m$yuE00V0" role="3SKWNk">
+            <property role="3SKdUp" value="old-enum-member | old-enum | enum-migration-info | new-enum" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="54m$yuDZWWl" role="3cqZAp">
+          <node concept="2OqwBi" id="54m$yuE06gR" role="3clFbG">
+            <node concept="2OqwBi" id="54m$yuE01lT" role="2Oq$k0">
+              <node concept="1PxgMI" id="54m$yuE00N1" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="54m$yuE00Ob" role="3oSUPX">
+                  <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                </node>
+                <node concept="2OqwBi" id="54m$yuDZZiH" role="1m5AlR">
+                  <node concept="2OqwBi" id="54m$yuDZYwA" role="2Oq$k0">
+                    <node concept="2OqwBi" id="54m$yuDZXa0" role="2Oq$k0">
+                      <node concept="13iPFW" id="54m$yuDZWWk" role="2Oq$k0" />
+                      <node concept="1mfA1w" id="54m$yuDZXsX" role="2OqNvi" />
+                    </node>
+                    <node concept="1mfA1w" id="54m$yuDZYSr" role="2OqNvi" />
+                  </node>
+                  <node concept="1mfA1w" id="54m$yuDZZKK" role="2OqNvi" />
+                </node>
+              </node>
+              <node concept="3Tsc0h" id="54m$yuE01ES" role="2OqNvi">
+                <ref role="3TtcxE" to="tpce:2TR3acGo7N1" resolve="members" />
+              </node>
+            </node>
+            <node concept="1z4cxt" id="54m$yuE0cOG" role="2OqNvi">
+              <node concept="1bVj0M" id="54m$yuE0cOI" role="23t8la">
+                <node concept="3clFbS" id="54m$yuE0cOJ" role="1bW5cS">
+                  <node concept="3clFbF" id="54m$yuE0cY1" role="3cqZAp">
+                    <node concept="3clFbC" id="54m$yuE0kJG" role="3clFbG">
+                      <node concept="13iPFW" id="54m$yuE0l31" role="3uHU7w" />
+                      <node concept="2OqwBi" id="54m$yuE0he0" role="3uHU7B">
+                        <node concept="37vLTw" id="54m$yuE0cY0" role="2Oq$k0">
+                          <ref role="3cqZAo" node="54m$yuE0cOK" resolve="it" />
+                        </node>
+                        <node concept="3TrEf2" id="LU8F6G7RZx" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpce:LU8F6G7H5v" resolve="oldMember" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="Rh6nW" id="54m$yuE0cOK" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="54m$yuE0cOL" role="1tU5fm" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="hEwIwxE">
@@ -4416,7 +4478,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="hEwIM$b">
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <ref role="13h7C2" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
     <node concept="13i0hz" id="hEwIM$c" role="13h7CS">
       <property role="TrG5h" value="toBaseLanguageType" />

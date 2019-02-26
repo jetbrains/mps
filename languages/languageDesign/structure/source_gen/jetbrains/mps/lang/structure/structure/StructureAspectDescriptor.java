@@ -32,6 +32,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptDocumentationObjective = createDescriptorForDocumentationObjective();
   /*package*/ final ConceptDescriptor myConceptDocumentationObjectiveRef = createDescriptorForDocumentationObjectiveRef();
   /*package*/ final ConceptDescriptor myConceptDocumentedNodeAnnotation = createDescriptorForDocumentedNodeAnnotation();
+  /*package*/ final ConceptDescriptor myConceptEnumCustomMethodReplacementInfo = createDescriptorForEnumCustomMethodReplacementInfo();
+  /*package*/ final ConceptDescriptor myConceptEnumMigrationInfo = createDescriptorForEnumMigrationInfo();
+  /*package*/ final ConceptDescriptor myConceptEnumPropertyMigrationInfo = createDescriptorForEnumPropertyMigrationInfo();
   /*package*/ final ConceptDescriptor myConceptEnumerationDataTypeDeclaration_Old = createDescriptorForEnumerationDataTypeDeclaration_Old();
   /*package*/ final ConceptDescriptor myConceptEnumerationDeclartaion = createDescriptorForEnumerationDeclartaion();
   /*package*/ final ConceptDescriptor myConceptEnumerationMemberDeclaration = createDescriptorForEnumerationMemberDeclaration();
@@ -51,10 +54,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptSmartReferenceAttribute = createDescriptorForSmartReferenceAttribute();
   /*package*/ final EnumerationDescriptor myEnumerationCardinality = new EnumerationDescriptor_Cardinality();
   /*package*/ final EnumerationDescriptor myEnumerationChildrenIncomingReferencesPolicy = new EnumerationDescriptor_ChildrenIncomingReferencesPolicy();
+  /*package*/ final EnumerationDescriptor myEnumerationEnumCustomMethodReplacementKind = new EnumerationDescriptor_EnumCustomMethodReplacementKind();
   /*package*/ final EnumerationDescriptor myEnumerationEnumerationMemberIdentifierPolicy = new EnumerationDescriptor_EnumerationMemberIdentifierPolicy();
   /*package*/ final EnumerationDescriptor myEnumerationInstanceIncomingReferencesPolicy = new EnumerationDescriptor_InstanceIncomingReferencesPolicy();
   /*package*/ final EnumerationDescriptor myEnumerationLinkMetaclass = new EnumerationDescriptor_LinkMetaclass();
+  /*package*/ final EnumerationDescriptor myEnumerationNameOperationMigrationStrategy = new EnumerationDescriptor_NameOperationMigrationStrategy();
   /*package*/ final EnumerationDescriptor myEnumerationStaticScope = new EnumerationDescriptor_StaticScope();
+  /*package*/ final EnumerationDescriptor myEnumerationValueOperationMigrationStrategy = new EnumerationDescriptor_ValueOperationMigrationStrategy();
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeIDNumber = new ConstrainedStringDatatypeDescriptorImpl(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x3b4187227177134aL, "IDNumber", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4269842503726207818", "-?[0-9]+");
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -64,7 +70,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclartaion, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
+    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclartaion, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
   }
 
   @Override
@@ -95,6 +101,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDocumentationObjectiveRef;
       case LanguageConceptSwitch.DocumentedNodeAnnotation:
         return myConceptDocumentedNodeAnnotation;
+      case LanguageConceptSwitch.EnumCustomMethodReplacementInfo:
+        return myConceptEnumCustomMethodReplacementInfo;
+      case LanguageConceptSwitch.EnumMigrationInfo:
+        return myConceptEnumMigrationInfo;
+      case LanguageConceptSwitch.EnumPropertyMigrationInfo:
+        return myConceptEnumPropertyMigrationInfo;
       case LanguageConceptSwitch.EnumerationDataTypeDeclaration_Old:
         return myConceptEnumerationDataTypeDeclaration_Old;
       case LanguageConceptSwitch.EnumerationDeclartaion:
@@ -136,7 +148,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationCardinality, myEnumerationChildrenIncomingReferencesPolicy, myEnumerationEnumerationMemberIdentifierPolicy, myEnumerationInstanceIncomingReferencesPolicy, myEnumerationLinkMetaclass, myEnumerationStaticScope, myCSDatatypeIDNumber);
+    return Arrays.asList(myEnumerationCardinality, myEnumerationChildrenIncomingReferencesPolicy, myEnumerationEnumCustomMethodReplacementKind, myEnumerationEnumerationMemberIdentifierPolicy, myEnumerationInstanceIncomingReferencesPolicy, myEnumerationLinkMetaclass, myEnumerationNameOperationMigrationStrategy, myEnumerationStaticScope, myEnumerationValueOperationMigrationStrategy, myCSDatatypeIDNumber);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -276,6 +288,38 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("seeAlso", 0x6d1df6c2700b0eb8L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0eb5L).optional(true).ordered(true).multiple(true).origin("7862711839422615224").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForEnumCustomMethodReplacementInfo() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumCustomMethodReplacementInfo", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/3355805929432017219");
+    b.version(2);
+    b.property("kind", 0x2e9237b686f1e946L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L)).origin("3355805929432017222").done();
+    b.associate("enum", 0x2e9237b686f1e948L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL).optional(false).origin("3355805929432017224").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForEnumMigrationInfo() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumMigrationInfo", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L);
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1588368162884797030");
+    b.version(2);
+    b.property("nameOpMigration", 0x5a14f1035964062eL).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f10359640640L)).origin("6491077959634650670").done();
+    b.property("valueOpMigration", 0x5a14f103596433e4L).type(MetaIdFactory.dataTypeId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f103596433bdL)).origin("6491077959634662372").done();
+    b.aggregate("oldEnum", 0x5a14f1035942799cL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL).optional(false).ordered(true).multiple(false).origin("6491077959632451996").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForEnumPropertyMigrationInfo() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumPropertyMigrationInfo", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L);
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/6491077959632463275");
+    b.version(2);
+    b.aggregate("oldProperty", 0x5a14f1035942a5b6L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL).optional(false).ordered(true).multiple(false).origin("6491077959632463286").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForEnumerationDataTypeDeclaration_Old() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumerationDataTypeDeclaration_Old", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL);
     b.class_(false, false, true);
@@ -297,7 +341,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumerationDeclartaion", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL);
     b.class_(true, false, true);
     b.super_("jetbrains.mps.lang.structure.structure.DataTypeDeclaration", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a3afa8c0dL);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L);
     b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/3348158742936976479");
     b.version(2);
@@ -313,6 +356,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/3348158742936976480");
     b.version(2);
     b.property("presentation", 0x9538e3a78561888L).type(PrimitiveTypeId.STRING).origin("672037151186491528").done();
+    b.associate("oldMember", 0xc7a22b1ac1ed15fL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L).optional(true).origin("899069222106091871").done();
     b.alias("member");
     return b.create();
   }

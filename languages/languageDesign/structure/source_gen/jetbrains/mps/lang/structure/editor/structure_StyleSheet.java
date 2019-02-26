@@ -13,6 +13,8 @@ import jetbrains.mps.editor.runtime.style.Measure;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class structure_StyleSheet {
   /**
@@ -34,6 +36,36 @@ public class structure_StyleSheet {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
     new structure_StyleSheet.KeywordStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_GrayOut(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new structure_StyleSheet.GrayOutStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_EnumMemberMigrated(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new structure_StyleSheet.EnumMemberMigratedStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_EnumMigrated(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new structure_StyleSheet.EnumMigratedStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class AnnotationNodeStyleClass extends AbstractStyleClass {
@@ -59,5 +91,49 @@ public class structure_StyleSheet {
       new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     }
 
+  }
+  public static class GrayOutStyleClass extends AbstractStyleClass {
+    public GrayOutStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+    }
+
+  }
+  public static class EnumMemberMigratedStyleClass extends AbstractStyleClass {
+    public EnumMemberMigratedStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      if (_StyleParameter_QueryFunction_170rll_a0d()) {
+        new GrayOutStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      }
+    }
+
+    private boolean _StyleParameter_QueryFunction_170rll_a0d() {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(getNode())), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo"));
+    }
+  }
+  public static class EnumMigratedStyleClass extends AbstractStyleClass {
+    public EnumMigratedStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      if (_StyleParameter_QueryFunction_170rll_a0e()) {
+        new GrayOutStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      }
+    }
+
+    private boolean _StyleParameter_QueryFunction_170rll_a0e() {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(getNode()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo"));
+    }
   }
 }

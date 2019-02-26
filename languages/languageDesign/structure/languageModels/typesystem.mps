@@ -3004,7 +3004,7 @@
   </node>
   <node concept="18kY7G" id="6LkeDcbPyMM">
     <property role="TrG5h" value="check_EnumerationDataTypeDeclaration" />
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <node concept="3clFbS" id="6LkeDcbPyMN" role="18ibNy">
       <node concept="3cpWs8" id="3KCTwZFhPAw" role="3cqZAp">
         <node concept="3cpWsn" id="3KCTwZFhPAx" role="3cpWs9">

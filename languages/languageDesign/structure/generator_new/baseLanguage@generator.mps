@@ -581,6 +581,12 @@
     <node concept="CY16f" id="29NQ6AG$dT3" role="CYSdJ">
       <ref role="CY16a" to="tpce:7ERGDLdoDvC" resolve="SmartReferenceAttribute" />
     </node>
+    <node concept="CY16f" id="LU8F6GiZhb" role="CYSdJ">
+      <ref role="CY16a" to="tpce:1ob16QTis9A" resolve="EnumMigrationInfo" />
+    </node>
+    <node concept="CY16f" id="LU8F6GiZhj" role="CYSdJ">
+      <ref role="CY16a" to="tpce:5CkWgdpgEmF" resolve="EnumPropertyMigrationInfo" />
+    </node>
     <node concept="2rT7sh" id="3AguOYZ63Kg" role="2rTMjI">
       <property role="TrG5h" value="StructureAspectDescriptorCons" />
       <ref role="2rZz_L" to="tpee:fzclF84" resolve="ConstructorDeclaration" />
@@ -1146,10 +1152,8 @@
                   <node concept="1iwH7S" id="1ZmaNfj8Rrw" role="2Oq$k0" />
                   <node concept="1r8y6K" id="1ZmaNfj8Rrx" role="2OqNvi" />
                 </node>
-                <node concept="2SmgA7" id="1ZmaNfj8Rry" role="2OqNvi">
-                  <node concept="chp4Y" id="4kEAgZCn8z3" role="1dBWTz">
-                    <ref role="cht4Q" to="tpce:VFd4X$DyB_" resolve="IEnumeration" />
-                  </node>
+                <node concept="2RRcyG" id="LU8F6Gjumf" role="2OqNvi">
+                  <ref role="2RRcyH" to="tpce:VFd4X$DyB_" resolve="IEnumeration" />
                 </node>
               </node>
               <node concept="2S7cBI" id="1ZmaNfj8Rr$" role="2OqNvi">
@@ -3579,10 +3583,8 @@
                   <node concept="1iwH7S" id="744pC72LaCv" role="2Oq$k0" />
                   <node concept="1r8y6K" id="744pC72LaCw" role="2OqNvi" />
                 </node>
-                <node concept="2SmgA7" id="744pC72LaCx" role="2OqNvi">
-                  <node concept="chp4Y" id="744pC72Lff2" role="1dBWTz">
-                    <ref role="cht4Q" to="tpce:fKAz7CR" resolve="ConstrainedDataTypeDeclaration" />
-                  </node>
+                <node concept="2RRcyG" id="LU8F6Gjvdg" role="2OqNvi">
+                  <ref role="2RRcyH" to="tpce:fKAz7CR" resolve="ConstrainedDataTypeDeclaration" />
                 </node>
               </node>
               <node concept="2S7cBI" id="744pC72LaCz" role="2OqNvi">
@@ -6191,7 +6193,7 @@
   </node>
   <node concept="312cEu" id="3_pL3o4g_lP">
     <property role="TrG5h" value="EnumerationDescriptor_Old" />
-    <property role="3GE5qa" value="enums" />
+    <property role="3GE5qa" value="enums.old" />
     <node concept="2tJIrI" id="3_pL3o4g_mz" role="jymVt" />
     <node concept="3clFbW" id="3_pL3o4g_CV" role="jymVt">
       <node concept="3cqZAl" id="3_pL3o4g_CX" role="3clF45" />

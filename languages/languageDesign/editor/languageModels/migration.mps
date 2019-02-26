@@ -43,6 +43,7 @@
     <import index="twe9" ref="r:28e6d713-c3c3-493e-8d97-e9a2c49f28ce(jetbrains.mps.lang.structure.util)" />
     <import index="mte5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)" />
     <import index="slm6" ref="90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)" />
+    <import index="oie" ref="r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)" />
     <import index="tp1t" ref="r:00000000-0000-4000-0000-011c8959030d(jetbrains.mps.lang.constraints.structure)" implicit="true" />
     <import index="tpcb" ref="r:00000000-0000-4000-0000-011c89590297(jetbrains.mps.lang.editor.behavior)" implicit="true" />
     <import index="tpcw" ref="r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)" implicit="true" />
@@ -343,6 +344,10 @@
         <reference id="1171315804605" name="concept" index="2RRcyH" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
+      <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
+        <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
+        <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
+      </concept>
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
@@ -371,7 +376,9 @@
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
-      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
+      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
+        <property id="1238684351431" name="asCast" index="1BlNFB" />
+      </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -5931,6 +5938,334 @@
       <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
     </node>
     <node concept="3uibUv" id="683qm1GgxnQ" role="1zkMxy">
+      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
+    </node>
+  </node>
+  <node concept="3SyAh_" id="7aX5bqW$9Hj">
+    <property role="qMTe8" value="12" />
+    <property role="TrG5h" value="MigrateEnumPropertyUsages" />
+    <node concept="3Tm1VV" id="7aX5bqW$9Hk" role="1B3o_S" />
+    <node concept="1QxfsK" id="7aX5bqW$clX" role="jymVt">
+      <node concept="1QyHxe" id="7aX5bqW$cEX" role="1QyHIp">
+        <ref role="1QyHxf" to="yf86:5CkWgdpyhAg" resolve="MigrateEnumProperties" />
+      </node>
+      <node concept="1QyHxe" id="7aX5bqW$cFm" role="1QyHIp">
+        <ref role="1QyHxf" to="oie:5CkWgdpSCGf" resolve="MigrateEnumPropertyAccess" />
+      </node>
+    </node>
+    <node concept="3tTeZs" id="7aX5bqW$9Hm" role="jymVt">
+      <property role="3tTeZt" value="&lt;no required data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2FPTh" resolve="requires annotation data" />
+    </node>
+    <node concept="3tTeZs" id="7aX5bqW$9Hn" role="jymVt">
+      <property role="3tTeZt" value="&lt;no produced data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2C271" resolve="produces annotation data" />
+    </node>
+    <node concept="2tJIrI" id="7aX5bqW$9Ho" role="jymVt" />
+    <node concept="3tYpMH" id="7aX5bqW$9Hp" role="jymVt">
+      <property role="TrG5h" value="isRerunnable" />
+      <property role="3tYpME" value="true" />
+      <ref role="25KYV2" to="slm6:1JWcQ2VeWIs" resolve="isRerunnable" />
+      <node concept="3Tm1VV" id="7aX5bqW$9Hq" role="1B3o_S" />
+      <node concept="10P_77" id="7aX5bqW$9Hr" role="1tU5fm" />
+    </node>
+    <node concept="3tYpXE" id="7aX5bqW$ckt" role="jymVt">
+      <property role="TrG5h" value="description" />
+      <property role="3tYpXF" value="Migrate enum property usages" />
+      <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
+      <node concept="3Tm1VV" id="7aX5bqW$ckv" role="1B3o_S" />
+      <node concept="17QB3L" id="7aX5bqW$ckw" role="1tU5fm" />
+    </node>
+    <node concept="q3mfD" id="7aX5bqW$9Ht" role="jymVt">
+      <property role="TrG5h" value="execute" />
+      <ref role="2VtyIY" to="slm6:4ubqdNOF9cA" resolve="execute" />
+      <node concept="3Tm1VV" id="7aX5bqW$9Hv" role="1B3o_S" />
+      <node concept="3clFbS" id="7aX5bqW$9Hx" role="3clF47">
+        <node concept="L3pyB" id="7aX5bqW$cJ0" role="3cqZAp">
+          <node concept="3clFbS" id="7aX5bqW$cJ1" role="L3pyw">
+            <node concept="2Gpval" id="7aX5bqW$cW5" role="3cqZAp">
+              <node concept="2GrKxI" id="7aX5bqW$cW6" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="7aX5bqW$cXl" role="2GsD0m">
+                <node concept="chp4Y" id="7aX5bqW$dMk" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:gXXwhgC" resolve="CellMenuComponentFeature_Property" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7aX5bqW$cW8" role="2LFqv$">
+                <node concept="3clFbF" id="7aX5bqW$dzm" role="3cqZAp">
+                  <node concept="2YIFZM" id="7aX5bqW$dzU" role="3clFbG">
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                    <node concept="2GrUjf" id="7aX5bqW$d$Q" role="37wK5m">
+                      <ref role="2Gs0qQ" node="7aX5bqW$cW6" resolve="node" />
+                    </node>
+                    <node concept="359W_D" id="7aX5bqW$dHq" role="37wK5m">
+                      <ref role="359W_E" to="tpc2:gXXwhgC" resolve="CellMenuComponentFeature_Property" />
+                      <ref role="359W_F" to="tpc2:gXXwMpJ" resolve="propertyDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2Gpval" id="7aX5bqW$e4b" role="3cqZAp">
+              <node concept="2GrKxI" id="7aX5bqW$e4c" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="7aX5bqW$e4d" role="2GsD0m">
+                <node concept="chp4Y" id="7aX5bqW$e9s" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:fBF0A4I" resolve="CellModel_Property" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7aX5bqW$e4f" role="2LFqv$">
+                <node concept="3clFbF" id="7aX5bqW$e4g" role="3cqZAp">
+                  <node concept="2YIFZM" id="7aX5bqW$e4h" role="3clFbG">
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                    <node concept="2GrUjf" id="7aX5bqW$e4i" role="37wK5m">
+                      <ref role="2Gs0qQ" node="7aX5bqW$e4c" resolve="node" />
+                    </node>
+                    <node concept="359W_D" id="7aX5bqW$e4j" role="37wK5m">
+                      <ref role="359W_E" to="tpc2:fBF0A4I" resolve="CellModel_Property" />
+                      <ref role="359W_F" to="tpc2:fBF1KQc" resolve="propertyDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2Gpval" id="7aX5bqW$eqF" role="3cqZAp">
+              <node concept="2GrKxI" id="7aX5bqW$eqG" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="7aX5bqW$eqH" role="2GsD0m">
+                <node concept="chp4Y" id="7aX5bqW$in1" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:3daRSMLnNZu" resolve="CellModel_URL" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7aX5bqW$eqJ" role="2LFqv$">
+                <node concept="3clFbF" id="7aX5bqW$eqK" role="3cqZAp">
+                  <node concept="2YIFZM" id="7aX5bqW$eqL" role="3clFbG">
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                    <node concept="2GrUjf" id="7aX5bqW$eqM" role="37wK5m">
+                      <ref role="2Gs0qQ" node="7aX5bqW$eqG" resolve="node" />
+                    </node>
+                    <node concept="359W_D" id="7aX5bqW$eqN" role="37wK5m">
+                      <ref role="359W_E" to="tpc2:3daRSMLnNZu" resolve="CellModel_URL" />
+                      <ref role="359W_F" to="tpc2:3daRSMLnNZv" resolve="propertyDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2Gpval" id="7aX5bqW$iBJ" role="3cqZAp">
+              <node concept="2GrKxI" id="7aX5bqW$iBK" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="7aX5bqW$iBL" role="2GsD0m">
+                <node concept="chp4Y" id="7aX5bqW$kgB" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:3Un2VKK2uez" resolve="PropertyDeclarationCellSelector" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7aX5bqW$iBN" role="2LFqv$">
+                <node concept="3clFbF" id="7aX5bqW$iBO" role="3cqZAp">
+                  <node concept="2YIFZM" id="7aX5bqW$iBP" role="3clFbG">
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                    <node concept="2GrUjf" id="7aX5bqW$iBQ" role="37wK5m">
+                      <ref role="2Gs0qQ" node="7aX5bqW$iBK" resolve="node" />
+                    </node>
+                    <node concept="359W_D" id="7aX5bqW$iBR" role="37wK5m">
+                      <ref role="359W_E" to="tpc2:3Un2VKK2uez" resolve="PropertyDeclarationCellSelector" />
+                      <ref role="359W_F" to="tpc2:3Un2VKL7rkv" resolve="propertyDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2Gpval" id="7aX5bqW$kjn" role="3cqZAp">
+              <node concept="2GrKxI" id="7aX5bqW$kjo" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="7aX5bqW$kjp" role="2GsD0m">
+                <node concept="chp4Y" id="7aX5bqW$kjq" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:3Un2VKK2uez" resolve="PropertyDeclarationCellSelector" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7aX5bqW$kjr" role="2LFqv$">
+                <node concept="3clFbF" id="7aX5bqW$kjs" role="3cqZAp">
+                  <node concept="2YIFZM" id="7aX5bqW$kjt" role="3clFbG">
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                    <node concept="2GrUjf" id="7aX5bqW$kju" role="37wK5m">
+                      <ref role="2Gs0qQ" node="7aX5bqW$kjo" resolve="node" />
+                    </node>
+                    <node concept="359W_D" id="7aX5bqW$kjv" role="37wK5m">
+                      <ref role="359W_E" to="tpc2:3Un2VKK2uez" resolve="PropertyDeclarationCellSelector" />
+                      <ref role="359W_F" to="tpc2:3Un2VKL7rkv" resolve="propertyDeclaration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2Gpval" id="7aX5bqW$kYJ" role="3cqZAp">
+              <node concept="2GrKxI" id="7aX5bqW$kYK" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="7aX5bqW$kYL" role="2GsD0m">
+                <node concept="chp4Y" id="7aX5bqW$leS" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7aX5bqW$kYN" role="2LFqv$">
+                <node concept="3cpWs8" id="1tjPKfRhdbS" role="3cqZAp">
+                  <node concept="3cpWsn" id="1tjPKfRhdbT" role="3cpWs9">
+                    <property role="TrG5h" value="prop" />
+                    <node concept="3Tqbb2" id="1tjPKfRhdbG" role="1tU5fm">
+                      <ref role="ehGHo" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+                    </node>
+                    <node concept="2YIFZM" id="1tjPKfRhdbU" role="33vP2m">
+                      <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                      <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                      <node concept="2GrUjf" id="1tjPKfRhdbV" role="37wK5m">
+                        <ref role="2Gs0qQ" node="7aX5bqW$kYK" resolve="node" />
+                      </node>
+                      <node concept="359W_D" id="1tjPKfRhdbW" role="37wK5m">
+                        <ref role="359W_E" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
+                        <ref role="359W_F" to="tpc2:hGPY767" resolve="property" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbH" id="1tjPKfR5xmD" role="3cqZAp" />
+                <node concept="3cpWs8" id="ATTaJvLDF" role="3cqZAp">
+                  <node concept="3cpWsn" id="ATTaJvLDG" role="3cpWs9">
+                    <property role="TrG5h" value="enumm" />
+                    <node concept="3Tqbb2" id="ATTaJvLDe" role="1tU5fm">
+                      <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                    </node>
+                    <node concept="1PxgMI" id="ATTaJvLDH" role="33vP2m">
+                      <property role="1BlNFB" value="true" />
+                      <node concept="chp4Y" id="ATTaJvLDI" role="3oSUPX">
+                        <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                      </node>
+                      <node concept="2OqwBi" id="ATTaJvLDJ" role="1m5AlR">
+                        <node concept="37vLTw" id="ATTaJvLDK" role="2Oq$k0">
+                          <ref role="3cqZAo" node="1tjPKfRhdbT" resolve="prop" />
+                        </node>
+                        <node concept="3TrEf2" id="ATTaJvLDL" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpce:fKAX2Z_" resolve="dataType" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="2Gpval" id="ATTaJv_N$" role="3cqZAp">
+                  <node concept="2GrKxI" id="ATTaJv_NA" role="2Gsz3X">
+                    <property role="TrG5h" value="newValue" />
+                  </node>
+                  <node concept="3clFbS" id="ATTaJv_NE" role="2LFqv$">
+                    <node concept="3clFbF" id="ATTaJvHTl" role="3cqZAp">
+                      <node concept="2YIFZM" id="ATTaJvHW9" role="3clFbG">
+                        <ref role="37wK5l" to="oie:ATTaJuVqA" resolve="downgradeExpressionType" />
+                        <ref role="1Pybhc" to="oie:20cGABpF85i" resolve="EnumExpressionsMigration" />
+                        <node concept="37vLTw" id="ATTaJvSfN" role="37wK5m">
+                          <ref role="3cqZAo" node="ATTaJvLDG" resolve="enumm" />
+                        </node>
+                        <node concept="2GrUjf" id="ATTaJvHYt" role="37wK5m">
+                          <ref role="2Gs0qQ" node="ATTaJv_NA" resolve="newValue" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="1tjPKfR5ex7" role="2GsD0m">
+                    <node concept="2OqwBi" id="1tjPKfR5ex8" role="2Oq$k0">
+                      <node concept="2GrUjf" id="1tjPKfR5ex9" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="7aX5bqW$kYK" resolve="node" />
+                      </node>
+                      <node concept="3TrEf2" id="1tjPKfR5exa" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tpc2:hGPY5io" resolve="handlerBlock" />
+                      </node>
+                    </node>
+                    <node concept="2Rf3mk" id="1tjPKfR5exb" role="2OqNvi">
+                      <node concept="1xMEDy" id="1tjPKfR5exc" role="1xVPHs">
+                        <node concept="chp4Y" id="1tjPKfR5exd" role="ri$Ld">
+                          <ref role="cht4Q" to="tpc2:hGPXPHH" resolve="TransactionPropertyHandler_newValue" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="2Gpval" id="ATTaJvRsL" role="3cqZAp">
+                  <node concept="2GrKxI" id="ATTaJvRsM" role="2Gsz3X">
+                    <property role="TrG5h" value="newValue" />
+                  </node>
+                  <node concept="3clFbS" id="ATTaJvRsN" role="2LFqv$">
+                    <node concept="3clFbF" id="ATTaJvRsO" role="3cqZAp">
+                      <node concept="2YIFZM" id="ATTaJvRsP" role="3clFbG">
+                        <ref role="37wK5l" to="oie:ATTaJuVqA" resolve="downgradeExpressionType" />
+                        <ref role="1Pybhc" to="oie:20cGABpF85i" resolve="EnumExpressionsMigration" />
+                        <node concept="37vLTw" id="ATTaJvSnU" role="37wK5m">
+                          <ref role="3cqZAo" node="ATTaJvLDG" resolve="enumm" />
+                        </node>
+                        <node concept="2GrUjf" id="ATTaJvRsQ" role="37wK5m">
+                          <ref role="2Gs0qQ" node="ATTaJvRsM" resolve="newValue" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="1tjPKfR5nBZ" role="2GsD0m">
+                    <node concept="2OqwBi" id="1tjPKfR5nC0" role="2Oq$k0">
+                      <node concept="2GrUjf" id="1tjPKfR5nC1" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="7aX5bqW$kYK" resolve="node" />
+                      </node>
+                      <node concept="3TrEf2" id="1tjPKfR5nC2" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tpc2:hGPY5io" resolve="handlerBlock" />
+                      </node>
+                    </node>
+                    <node concept="2Rf3mk" id="1tjPKfR5nC3" role="2OqNvi">
+                      <node concept="1xMEDy" id="1tjPKfR5nC4" role="1xVPHs">
+                        <node concept="chp4Y" id="1tjPKfR5sVT" role="ri$Ld">
+                          <ref role="cht4Q" to="tpc2:hGPXIaG" resolve="TransactionPropertyHandler_oldValue" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="7aX5bqW$cJK" role="L3pyr">
+            <ref role="3cqZAo" node="7aX5bqW$9Hz" resolve="m" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="ATTaJvTL$" role="3cqZAp">
+          <node concept="2YIFZM" id="ATTaJvU5n" role="3clFbG">
+            <ref role="1Pybhc" to="oie:20cGABpF85i" resolve="EnumExpressionsMigration" />
+            <ref role="37wK5l" to="oie:7uRH7BX0j27" resolve="optimize" />
+            <node concept="37vLTw" id="ATTaJvUej" role="37wK5m">
+              <ref role="3cqZAo" node="7aX5bqW$9Hz" resolve="m" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="ffn8J" id="7aX5bqW$9Hz" role="3clF46">
+        <property role="TrG5h" value="m" />
+        <ref role="ffrpq" to="slm6:7fCCGqboj9J" resolve="m" />
+        <node concept="3uibUv" id="7aX5bqW$9Hy" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+        </node>
+      </node>
+      <node concept="q3mfm" id="7aX5bqW$9H$" role="3clF45">
+        <ref role="q3mfh" to="slm6:4F5w8gPXEEe" />
+        <ref role="1QQUv3" node="7aX5bqW$9Ht" resolve="execute" />
+      </node>
+    </node>
+    <node concept="3tTeZs" id="7aX5bqW$9H_" role="jymVt">
+      <property role="3tTeZt" value="&lt;no result checking&gt;" />
+      <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
+    </node>
+    <node concept="3uibUv" id="7aX5bqW$9HA" role="1zkMxy">
       <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
     </node>
   </node>

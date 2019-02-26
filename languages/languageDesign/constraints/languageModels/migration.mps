@@ -5,6 +5,10 @@
     <use id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration" version="1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="3" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
+    <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
+    <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="1" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
   </languages>
   <imports>
@@ -24,9 +28,11 @@
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
     <import index="mte5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
-    <import index="slm6" ref="90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)" implicit="true" />
+    <import index="slm6" ref="90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)" />
+    <import index="yf86" ref="r:33eabb60-7192-4d12-ba46-11dacf966b3e(jetbrains.mps.lang.structure.migration)" />
+    <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
+    <import index="oie" ref="r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" implicit="true" />
-    <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
     <import index="tpcb" ref="r:00000000-0000-4000-0000-011c89590297(jetbrains.mps.lang.editor.behavior)" implicit="true" />
@@ -157,6 +163,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -283,6 +290,10 @@
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
+      </concept>
+      <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
+        <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
+        <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
       </concept>
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
@@ -3310,6 +3321,191 @@
     <node concept="3tTeZs" id="5BFePKcyI0b" role="jymVt">
       <property role="3tTeZt" value="&lt;no result checking&gt;" />
       <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
+    </node>
+  </node>
+  <node concept="3SyAh_" id="20cGABpPM99">
+    <property role="qMTe8" value="4" />
+    <property role="TrG5h" value="MigrateEnumPropConstraints" />
+    <node concept="3Tm1VV" id="20cGABpPM9a" role="1B3o_S" />
+    <node concept="3tTeZs" id="20cGABpPM9b" role="jymVt">
+      <property role="3tTeZt" value="&lt;no execute after&gt;" />
+      <ref role="3tTeZr" to="slm6:7ay_HjIMt1a" resolve="execute after" />
+    </node>
+    <node concept="3tTeZs" id="20cGABpPM9c" role="jymVt">
+      <property role="3tTeZt" value="&lt;no required data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2FPTh" resolve="requires annotation data" />
+    </node>
+    <node concept="3tTeZs" id="20cGABpPM9d" role="jymVt">
+      <property role="3tTeZt" value="&lt;no produced data&gt;" />
+      <ref role="3tTeZr" to="slm6:5TUCQr2C271" resolve="produces annotation data" />
+    </node>
+    <node concept="2tJIrI" id="20cGABpPM9e" role="jymVt" />
+    <node concept="3tYpMH" id="20cGABpPM9f" role="jymVt">
+      <property role="TrG5h" value="isRerunnable" />
+      <property role="3tYpME" value="true" />
+      <ref role="25KYV2" to="slm6:1JWcQ2VeWIs" resolve="isRerunnable" />
+      <node concept="3Tm1VV" id="20cGABpPM9g" role="1B3o_S" />
+      <node concept="10P_77" id="20cGABpPM9h" role="1tU5fm" />
+    </node>
+    <node concept="3tYpXE" id="20cGABpPMbl" role="jymVt">
+      <property role="TrG5h" value="description" />
+      <property role="3tYpXF" value="Migrate constraints for enum properties" />
+      <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
+      <node concept="3Tm1VV" id="20cGABpPMbn" role="1B3o_S" />
+      <node concept="17QB3L" id="20cGABpPMbo" role="1tU5fm" />
+    </node>
+    <node concept="q3mfD" id="20cGABpPM9j" role="jymVt">
+      <property role="TrG5h" value="execute" />
+      <ref role="2VtyIY" to="slm6:4ubqdNOF9cA" resolve="execute" />
+      <node concept="3Tm1VV" id="20cGABpPM9l" role="1B3o_S" />
+      <node concept="3clFbS" id="20cGABpPM9n" role="3clF47">
+        <node concept="L3pyB" id="20cGABpPPtJ" role="3cqZAp">
+          <node concept="3clFbS" id="20cGABpPPtK" role="L3pyw">
+            <node concept="2Gpval" id="20cGABpPPMj" role="3cqZAp">
+              <node concept="2GrKxI" id="20cGABpPPMl" role="2Gsz3X">
+                <property role="TrG5h" value="propertyConstraint" />
+              </node>
+              <node concept="qVDSY" id="20cGABpPPOw" role="2GsD0m">
+                <node concept="chp4Y" id="20cGABpPQ6r" role="qVDSX">
+                  <ref role="cht4Q" to="tp1t:gGEnED8" resolve="NodePropertyConstraint" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="20cGABpPPMp" role="2LFqv$">
+                <node concept="3cpWs8" id="20cGABpPS4M" role="3cqZAp">
+                  <node concept="3cpWsn" id="20cGABpPS4N" role="3cpWs9">
+                    <property role="TrG5h" value="newProperty" />
+                    <node concept="3Tqbb2" id="20cGABpPS4_" role="1tU5fm">
+                      <ref role="ehGHo" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+                    </node>
+                    <node concept="2YIFZM" id="20cGABpPS4O" role="33vP2m">
+                      <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                      <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                      <node concept="2GrUjf" id="20cGABpPS4P" role="37wK5m">
+                        <ref role="2Gs0qQ" node="20cGABpPPMl" resolve="propertyConstraint" />
+                      </node>
+                      <node concept="359W_D" id="20cGABpPS4Q" role="37wK5m">
+                        <ref role="359W_E" to="tp1t:gGEnED8" resolve="NodePropertyConstraint" />
+                        <ref role="359W_F" to="tp1t:gGEom_V" resolve="applicableProperty" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbJ" id="20cGABpPSo$" role="3cqZAp">
+                  <node concept="3clFbS" id="20cGABpPSoA" role="3clFbx">
+                    <node concept="3cpWs8" id="20cGABpPW7j" role="3cqZAp">
+                      <node concept="3cpWsn" id="20cGABpPW7m" role="3cpWs9">
+                        <property role="TrG5h" value="newEnum" />
+                        <node concept="3Tqbb2" id="20cGABpPW7g" role="1tU5fm">
+                          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                        </node>
+                        <node concept="1PxgMI" id="20cGABpQtLO" role="33vP2m">
+                          <property role="1BlNFB" value="true" />
+                          <node concept="chp4Y" id="20cGABpQtPR" role="3oSUPX">
+                            <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                          </node>
+                          <node concept="2OqwBi" id="20cGABpQ1M8" role="1m5AlR">
+                            <node concept="37vLTw" id="20cGABpPWoV" role="2Oq$k0">
+                              <ref role="3cqZAo" node="20cGABpPS4N" resolve="newProperty" />
+                            </node>
+                            <node concept="3TrEf2" id="20cGABpQ2dC" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tpce:fKAX2Z_" resolve="dataType" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbH" id="20cGABpQNm8" role="3cqZAp" />
+                    <node concept="3clFbF" id="20cGABpQOF7" role="3cqZAp">
+                      <node concept="2YIFZM" id="ATTaJvsNn" role="3clFbG">
+                        <ref role="37wK5l" to="oie:20cGABpFGbk" resolve="upgradeQueryReturnExpressions" />
+                        <ref role="1Pybhc" to="oie:20cGABpF85i" resolve="EnumExpressionsMigration" />
+                        <node concept="37vLTw" id="ATTaJvsNo" role="37wK5m">
+                          <ref role="3cqZAo" node="20cGABpPW7m" resolve="newEnum" />
+                        </node>
+                        <node concept="2OqwBi" id="ATTaJvsNp" role="37wK5m">
+                          <node concept="2GrUjf" id="ATTaJvsNq" role="2Oq$k0">
+                            <ref role="2Gs0qQ" node="20cGABpPPMl" resolve="propertyConstraint" />
+                          </node>
+                          <node concept="3TrEf2" id="ATTaJvsNr" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tp1t:gGEtszc" resolve="propertyGetter" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2Gpval" id="ATTaJvuXb" role="3cqZAp">
+                      <node concept="2GrKxI" id="ATTaJvuXd" role="2Gsz3X">
+                        <property role="TrG5h" value="propertyValue" />
+                      </node>
+                      <node concept="3clFbS" id="ATTaJvuXh" role="2LFqv$">
+                        <node concept="3clFbF" id="20cGABpQU_q" role="3cqZAp">
+                          <node concept="2YIFZM" id="ATTaJvvtp" role="3clFbG">
+                            <ref role="37wK5l" to="oie:ATTaJuVqA" resolve="downgradeExpressionType" />
+                            <ref role="1Pybhc" to="oie:20cGABpF85i" resolve="EnumExpressionsMigration" />
+                            <node concept="37vLTw" id="ATTaJvvtq" role="37wK5m">
+                              <ref role="3cqZAo" node="20cGABpPW7m" resolve="newEnum" />
+                            </node>
+                            <node concept="2GrUjf" id="ATTaJvvGT" role="37wK5m">
+                              <ref role="2Gs0qQ" node="ATTaJvuXd" resolve="propertyValue" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="20cGABpQVFN" role="2GsD0m">
+                        <node concept="2GrUjf" id="20cGABpQVx2" role="2Oq$k0">
+                          <ref role="2Gs0qQ" node="20cGABpPPMl" resolve="propertyConstraint" />
+                        </node>
+                        <node concept="2Rf3mk" id="20cGABpQWdi" role="2OqNvi">
+                          <node concept="1xMEDy" id="20cGABpQWdk" role="1xVPHs">
+                            <node concept="chp4Y" id="20cGABpQWHm" role="ri$Ld">
+                              <ref role="cht4Q" to="tp1t:gLWqvmI" resolve="ConstraintsFunctionParameter_propertyValue" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3y3z36" id="20cGABpPVZv" role="3clFbw">
+                    <node concept="10Nm6u" id="20cGABpPVZT" role="3uHU7w" />
+                    <node concept="37vLTw" id="20cGABpPSx4" role="3uHU7B">
+                      <ref role="3cqZAo" node="20cGABpPS4N" resolve="newProperty" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="20cGABpPPuv" role="L3pyr">
+            <ref role="3cqZAo" node="20cGABpPM9p" resolve="m" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="ATTaJvTL$" role="3cqZAp">
+          <node concept="2YIFZM" id="ATTaJvU5n" role="3clFbG">
+            <ref role="37wK5l" to="oie:7uRH7BX0j27" resolve="optimize" />
+            <ref role="1Pybhc" to="oie:20cGABpF85i" resolve="EnumExpressionsMigration" />
+            <node concept="37vLTw" id="ATTaJvUej" role="37wK5m">
+              <ref role="3cqZAo" node="20cGABpPM9p" resolve="m" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="ffn8J" id="20cGABpPM9p" role="3clF46">
+        <property role="TrG5h" value="m" />
+        <ref role="ffrpq" to="slm6:7fCCGqboj9J" resolve="m" />
+        <node concept="3uibUv" id="20cGABpPM9o" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+        </node>
+      </node>
+      <node concept="q3mfm" id="20cGABpPM9q" role="3clF45">
+        <ref role="q3mfh" to="slm6:4F5w8gPXEEe" />
+        <ref role="1QQUv3" node="20cGABpPM9j" resolve="execute" />
+      </node>
+    </node>
+    <node concept="3tTeZs" id="20cGABpPM9r" role="jymVt">
+      <property role="3tTeZt" value="&lt;no result checking&gt;" />
+      <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
+    </node>
+    <node concept="3uibUv" id="20cGABpPM9s" role="1zkMxy">
+      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
     </node>
   </node>
 </model>
