@@ -24785,7 +24785,7 @@
     </file>
     <file name="check_AnonymousClassWithNoConstructorInheritsDefaultConstructor_NonTypesystemRule.java">
       <node id="7340437691571939069" at="28,9,29,62" concept="12" />
-      <node id="7340437691571939069" at="29,62,30,275" concept="12" />
+      <node id="7340437691571939069" at="29,62,30,273" concept="12" />
       <node id="7340437691573975743" at="31,11,32,178" concept="12" />
       <node id="7340437691573975743" at="32,178,33,73" concept="6" />
       <node id="7340437691571580596" at="39,50,40,154" concept="13" />
@@ -24795,7 +24795,7 @@
       <node id="7340437691571580596" at="39,0,42,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7340437691571580596" at="42,0,45,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="7340437691571580596" at="45,0,48,0" concept="11" trace="overrides#()Z" />
-      <node id="7340437691573975743" at="30,275,34,11" concept="1" />
+      <node id="7340437691573975743" at="30,273,34,11" concept="1" />
       <node id="7340437691571939069" at="27,446,35,9" concept="1" />
       <node id="7340437691571824061" at="26,932,36,7" concept="10" />
       <node id="7340437691571704936" at="25,127,37,5" concept="10" />

@@ -50815,7 +50815,7 @@
                   <ref role="QpYPw" node="6nuuj1I9GPR" resolve="RemoveImplicitConstructorFromAnonymousClass" />
                 </node>
                 <node concept="Xl_RD" id="6nuuj1I2aQp" role="2MkJ7o">
-                  <property role="Xl_RC" value="An explicit constructor available in super class" />
+                  <property role="Xl_RC" value="An explicit constructor available in the class" />
                 </node>
                 <node concept="1YBJjd" id="6nuuj1I2b4a" role="2OEOjV">
                   <ref role="1YBMHb" node="6nuuj1I0RvJ" resolve="anonymousClass" />
