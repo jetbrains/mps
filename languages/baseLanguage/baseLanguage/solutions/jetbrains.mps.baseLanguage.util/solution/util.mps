@@ -1348,7 +1348,7 @@
                 <node concept="3clFbS" id="7k6J8c3tHWk" role="1bW5cS">
                   <node concept="3SKdUt" id="ZR$QSfEZ4v" role="3cqZAp">
                     <node concept="3SKdUq" id="ZR$QSfEZ4x" role="3SKWNk">
-                      <property role="3SKdUp" value="not very comprehensible condition AP" />
+                      <property role="3SKdUp" value="not very comprehensible condition (it is a dummy anonymous stub for enum constant) AP" />
                     </node>
                   </node>
                   <node concept="3cpWs8" id="ZR$QSfEVYy" role="3cqZAp">
