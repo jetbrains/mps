@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -127,7 +127,8 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       if (props.contains(p)) {
         continue;
       }
-      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), p, String.format("Missing property: %s", p.getName())));
+      final String msg = String.format("Property %s.%s doesn't belong to concept %s", p.getOwner().getName(), p.getName(), concept.getName());
+      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), p, msg));
     }
 
     List<SContainmentLink> links = IterableUtil.asList(concept.getContainmentLinks());
@@ -136,7 +137,9 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       if (links.contains(l)) {
         continue;
       }
-      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), l, String.format("Missing link: %s", l.getName())));
+      assert l != null : "non-root node is supposed to have proper aggregation";
+      final String msg = String.format("Child in role %s.%s doesn't belong to concept %s", l.getOwner().getName(), l.getName(), concept.getName());
+      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), l, msg));
     }
 
     List<SReferenceLink> refs = IterableUtil.asList(concept.getReferenceLinks());
@@ -145,7 +148,8 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       if (refs.contains(l)) {
         continue;
       }
-      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), l, String.format("Missing reference: %s", l.getName())));
+      final String msg = String.format("Reference with role %s.%s doesn't belong to concept %s", l.getOwner().getName(), l.getName(), concept.getName());
+      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), l, msg));
     }
     return true;
   }
