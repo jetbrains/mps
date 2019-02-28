@@ -36,8 +36,8 @@ public class WildCardsInAnonymousClassCreators_Test extends BaseTransformationTe
     new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624928216045();
   }
   @Test
-  public void test_NodeMethodsReturnTypeIsIncompatibleCheck5450156852673963011() throws Throwable {
-    new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_NodeMethodsReturnTypeIsIncompatibleCheck5450156852673963011();
+  public void test_NodeTheMethodsReturnTypeIsCheck5450156852673963011() throws Throwable {
+    new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_NodeTheMethodsReturnTypeIsCheck5450156852673963011();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170694475514() throws Throwable {
@@ -63,7 +63,7 @@ public class WildCardsInAnonymousClassCreators_Test extends BaseTransformationTe
       SNode operation = SNodeOperations.cast(getRealNodeById("6923385624928216045"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451228371"));
     }
-    public void test_NodeMethodsReturnTypeIsIncompatibleCheck5450156852673963011() throws Exception {
+    public void test_NodeTheMethodsReturnTypeIsCheck5450156852673963011() throws Exception {
       SNode operation = SNodeOperations.cast(getRealNodeById("5450156852673963011"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("8187342170694477581"));
     }
