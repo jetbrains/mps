@@ -109,8 +109,8 @@ public final class OverridingMethodsCalculator {
     for (final SNode superClassifierMethod : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superClassifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), SMethodTrimmedId.create("methods", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         // not very comprehensible condition (it is a dummy anonymous stub for enum constant) AP 
-        boolean condition = SNodeOperations.isInstanceOf(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")) && SNodeOperations.getModel(classifier) == null;
-        return canBeOverridden(it) && ((SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) != null) || condition || packagesAreTheSame(superClassifier, classifier));
+        boolean enumConstant = SNodeOperations.isInstanceOf(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")) && SNodeOperations.getModel(classifier) == null;
+        return canBeOverridden(it) && ((SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) != null) || enumConstant || packagesAreTheSame(superClassifier, classifier));
       }
     })) {
       Set<SNode> methodsWithNameOfSuperMethod = MapSequence.fromMap(methodNameToMethodMapCopy).get(SPropertyOperations.getString(superClassifierMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));

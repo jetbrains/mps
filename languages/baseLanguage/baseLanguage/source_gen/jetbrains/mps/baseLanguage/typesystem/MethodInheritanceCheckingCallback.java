@@ -9,6 +9,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import java.util.Set;
+import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -26,6 +27,8 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.scopes.GenericTypesUtil;
+import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 
@@ -58,6 +61,7 @@ public class MethodInheritanceCheckingCallback implements ClassifierTraversalCal
 
   private final Map<SNode, MethodInheritanceCheckingCallback.SignatureRecord> myClassifier2Signatures = MapSequence.fromMap(new HashMap<SNode, MethodInheritanceCheckingCallback.SignatureRecord>());
   private MethodInheritanceCheckingCallback.SignatureRecord myClassifierRecordNoOwnMethods;
+  private final Map<SNode, SNode> myTypeByTypeVar;
 
   private final MessageStorage myErrors = new MessageStorage();
   private final SNode myClassifier;
@@ -69,6 +73,7 @@ public class MethodInheritanceCheckingCallback implements ClassifierTraversalCal
   public MethodInheritanceCheckingCallback(SNode classifier, SNode nodeToReport) {
     myClassifier = classifier;
     myNodeToReport = nodeToReport;
+    myTypeByTypeVar = ClassifierScopeUtils.resolveClassifierTypeVars(classifier);
   }
 
   public MessageStorage getTraversalErrors() {
@@ -164,9 +169,25 @@ public class MethodInheritanceCheckingCallback implements ClassifierTraversalCal
     return oldMethod;
   }
 
-  private static Signature createSignature(SNode method) {
-    String erasureSignature = BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(method);
-    return Signature.create(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count(), erasureSignature);
+  private Signature createSignature(SNode method) {
+    return Signature.create(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count(), createParamErasedSignature(method));
+  }
+
+  private String createParamErasedSignature(SNode method) {
+    StringBuilder result = new StringBuilder();
+    for (SNode param : SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))) {
+      SNode type = SLinkOperations.getTarget(param, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"));
+      type = GenericTypesUtil.getTypeWithResolvedTypeVars(type, myTypeByTypeVar);
+      if (result.length() > 0) {
+        result.append(',');
+      }
+      if (type != null) {
+        result.append(Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(type));
+      } else {
+        result.append("");
+      }
+    }
+    return result.toString();
   }
 
   /**
@@ -195,9 +216,13 @@ public class MethodInheritanceCheckingCallback implements ClassifierTraversalCal
    */
   public List<SNode> getBaseMethods(SNode method) {
     final Signature signature = createSignature(method);
-    return Sequence.fromIterable(MapSequence.fromMap(myClassifier2Signatures).values()).select(new ISelector<MethodInheritanceCheckingCallback.SignatureRecord, SNode>() {
-      public SNode select(MethodInheritanceCheckingCallback.SignatureRecord it) {
-        return it.getTopMostImplementation(signature);
+    return MapSequence.fromMap(myClassifier2Signatures).where(new IWhereFilter<IMapping<SNode, MethodInheritanceCheckingCallback.SignatureRecord>>() {
+      public boolean accept(IMapping<SNode, MethodInheritanceCheckingCallback.SignatureRecord> it) {
+        return it.key() != myClassifier;
+      }
+    }).select(new ISelector<IMapping<SNode, MethodInheritanceCheckingCallback.SignatureRecord>, SNode>() {
+      public SNode select(IMapping<SNode, MethodInheritanceCheckingCallback.SignatureRecord> it) {
+        return it.value().getTopMostImplementation(signature);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
