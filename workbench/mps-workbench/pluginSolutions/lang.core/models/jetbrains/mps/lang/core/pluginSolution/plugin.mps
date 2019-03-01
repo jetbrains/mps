@@ -3263,8 +3263,8 @@
           </node>
           <node concept="3fqX7Q" id="5z_gLGengEI" role="3clFbw">
             <node concept="2ZW3vV" id="5z_gLGengEJ" role="3fr31v">
-              <node concept="3uibUv" id="7Sw_42U49WT" role="2ZW6by">
-                <ref role="3uigEE" to="j8aq:~ReloadableModuleBase" resolve="ReloadableModuleBase" />
+              <node concept="3uibUv" id="5iafRE1LGYI" role="2ZW6by">
+                <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
               </node>
               <node concept="2OqwBi" id="5z_gLGenhd1" role="2ZW6bz">
                 <node concept="37vLTw" id="5z_gLGenhaD" role="2Oq$k0">
@@ -3327,8 +3327,8 @@
               <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
             </node>
             <node concept="10QFUN" id="5z_gLGemZs_" role="33vP2m">
-              <node concept="3uibUv" id="7Sw_42U4afB" role="10QFUM">
-                <ref role="3uigEE" to="j8aq:~ReloadableModuleBase" resolve="ReloadableModuleBase" />
+              <node concept="3uibUv" id="5iafRE1LLTD" role="10QFUM">
+                <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
               </node>
               <node concept="2OqwBi" id="5z_gLGemZsB" role="10QFUP">
                 <node concept="37vLTw" id="5z_gLGemZsC" role="2Oq$k0">

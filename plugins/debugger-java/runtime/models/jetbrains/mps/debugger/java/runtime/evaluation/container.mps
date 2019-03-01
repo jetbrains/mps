@@ -931,7 +931,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="7ryvvKokesL" role="2OqNvi">
-                          <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader():java.lang.ClassLoader" resolve="getClassLoader" />
+                          <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader():jetbrains.mps.classloading.MPSModuleClassLoader" resolve="getClassLoader" />
                         </node>
                       </node>
                     </node>

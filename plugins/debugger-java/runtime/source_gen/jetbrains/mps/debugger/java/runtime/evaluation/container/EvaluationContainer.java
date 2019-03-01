@@ -21,6 +21,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
@@ -83,8 +84,8 @@ public class EvaluationContainer implements IEvaluationContainer {
     //       Then, classpath built for EvaluationModule would include everything we try to push here with an extra CL. However, 
     //       don't want to dive too deep into this mess now, shall refactor make facet to get rid of CResource use anyway, and  
     //       refresh the whole idea of EvaluationModule and its temp models, and how are they handled/processed. Then, this code is likely to fade away. 
-    ClassLoader extraCL = new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<ClassLoader>() {
-      public ClassLoader compute() {
+    ClassLoader extraCL = new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<MPSModuleClassLoader>() {
+      public MPSModuleClassLoader compute() {
         SModule extraClasspath = PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)").resolve(myDebuggerRepository);
         assert extraClasspath instanceof ReloadableModule;
 
