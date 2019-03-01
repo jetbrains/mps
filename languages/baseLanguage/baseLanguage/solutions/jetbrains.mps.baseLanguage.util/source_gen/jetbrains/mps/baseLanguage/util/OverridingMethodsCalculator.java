@@ -23,6 +23,9 @@ import jetbrains.mps.baseLanguage.search.VisibilityUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedHashSet;
 
+/**
+ * use the ClassifierMethodsHierarchyChecker idea instead of this class
+ */
 public final class OverridingMethodsCalculator {
   private final Map<SNode, Set<SNode>> myOverriding2BaseMethodsMap = MapSequence.fromMap(new HashMap<SNode, Set<SNode>>());
 

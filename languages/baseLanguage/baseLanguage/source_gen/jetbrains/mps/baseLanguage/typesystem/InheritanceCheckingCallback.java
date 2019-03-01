@@ -73,6 +73,10 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
    */
   private final SNode myNodeToReport;
 
+  /**
+   * classifier is the classifier you want to check, nodeToReport ought to differ from classifier only when classifier
+   * is an instance of EnumConstantDeclaration
+   */
   public InheritanceCheckingCallback(SNode classifier, SNode nodeToReport) {
     myClassifier = classifier;
     myNodeToReport = nodeToReport;

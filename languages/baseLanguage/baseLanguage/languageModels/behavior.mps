@@ -7021,6 +7021,25 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="4TgpkoyEpoM" role="3cqZAp">
+          <node concept="3cpWsn" id="4TgpkoyEpoP" role="3cpWs9">
+            <property role="TrG5h" value="typeByTypeVar" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3rvAFt" id="5t$dIPMkdoQ" role="1tU5fm">
+              <node concept="3Tqbb2" id="5t$dIPMkdoR" role="3rvSg0">
+                <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+              </node>
+              <node concept="3Tqbb2" id="5t$dIPMkdoS" role="3rvQeY">
+                <ref role="ehGHo" to="tpee:g96euPO" resolve="TypeVariableDeclaration" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="5t$dIPMkhi3" role="33vP2m">
+              <ref role="1Pybhc" to="fnmy:3IVP2zisgL0" resolve="ClassifierScopeUtils" />
+              <ref role="37wK5l" to="fnmy:3IVP2zisjqc" resolve="resolveClassifierTypeVars" />
+              <node concept="13iPFW" id="4TgpkoyEpMQ" role="37wK5m" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="3rj45ZUzgZy" role="3cqZAp">
           <node concept="BsUDl" id="3rj45ZUzgZx" role="3clFbG">
             <ref role="37wK5l" node="3rj45ZUtGbP" resolve="traverseClassifierHierarchy" />
@@ -7053,6 +7072,169 @@
                     </node>
                     <node concept="2AHcQZ" id="3rj45ZVzkKI" role="2AJF6D">
                       <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                    </node>
+                  </node>
+                  <node concept="2tJIrI" id="4TgpkoyEyDk" role="jymVt" />
+                  <node concept="3clFb_" id="2Jvt1sWfu$p" role="jymVt">
+                    <property role="TrG5h" value="createParamErasedSignature" />
+                    <node concept="3Tm6S6" id="2Jvt1sWfu$q" role="1B3o_S" />
+                    <node concept="17QB3L" id="5xPXeFAaFbd" role="3clF45" />
+                    <node concept="37vLTG" id="2Jvt1sWfu$s" role="3clF46">
+                      <property role="TrG5h" value="method" />
+                      <node concept="3Tqbb2" id="7TyZGXa9V0l" role="1tU5fm">
+                        <ref role="ehGHo" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="2Jvt1sWfuUm" role="3clF47">
+                      <node concept="3cpWs8" id="2Jvt1sWfuUn" role="3cqZAp">
+                        <node concept="3cpWsn" id="2Jvt1sWfuUo" role="3cpWs9">
+                          <property role="TrG5h" value="result" />
+                          <node concept="3uibUv" id="2Jvt1sWfuUp" role="1tU5fm">
+                            <ref role="3uigEE" to="wyt6:~StringBuilder" resolve="StringBuilder" />
+                          </node>
+                          <node concept="2ShNRf" id="2Jvt1sWfuUq" role="33vP2m">
+                            <node concept="1pGfFk" id="2Jvt1sWfuUr" role="2ShVmc">
+                              <ref role="37wK5l" to="wyt6:~StringBuilder.&lt;init&gt;()" resolve="StringBuilder" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="1DcWWT" id="2Jvt1sWfuUs" role="3cqZAp">
+                        <node concept="2OqwBi" id="2Jvt1sWfuUt" role="1DdaDG">
+                          <node concept="37vLTw" id="2BHiRxgl_jJ" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2Jvt1sWfu$s" resolve="method" />
+                          </node>
+                          <node concept="3Tsc0h" id="7TyZGXa9V0n" role="2OqNvi">
+                            <ref role="3TtcxE" to="tpee:fzclF7Y" resolve="parameter" />
+                          </node>
+                        </node>
+                        <node concept="3cpWsn" id="2Jvt1sWfuUw" role="1Duv9x">
+                          <property role="TrG5h" value="param" />
+                          <node concept="3Tqbb2" id="7TyZGXa9V0o" role="1tU5fm">
+                            <ref role="ehGHo" to="tpee:fz7vLUk" resolve="ParameterDeclaration" />
+                          </node>
+                        </node>
+                        <node concept="3clFbS" id="2Jvt1sWfuUy" role="2LFqv$">
+                          <node concept="3cpWs8" id="2Jvt1sWfuUz" role="3cqZAp">
+                            <node concept="3cpWsn" id="2Jvt1sWfuU$" role="3cpWs9">
+                              <property role="TrG5h" value="type" />
+                              <node concept="3Tqbb2" id="7TyZGXa9V0r" role="1tU5fm">
+                                <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+                              </node>
+                              <node concept="2OqwBi" id="2Jvt1sWfuUA" role="33vP2m">
+                                <node concept="37vLTw" id="3GM_nagTyzs" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="2Jvt1sWfuUw" resolve="param" />
+                                </node>
+                                <node concept="3TrEf2" id="7TyZGXa9V0q" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbF" id="5t$dIPMkko7" role="3cqZAp">
+                            <node concept="37vLTI" id="5t$dIPMkko8" role="3clFbG">
+                              <node concept="37vLTw" id="5t$dIPMkko9" role="37vLTJ">
+                                <ref role="3cqZAo" node="2Jvt1sWfuU$" resolve="type" />
+                              </node>
+                              <node concept="2YIFZM" id="5t$dIPMkKJ$" role="37vLTx">
+                                <ref role="37wK5l" to="fnmy:5bfB9BPAzOb" resolve="getTypeWithResolvedTypeVars" />
+                                <ref role="1Pybhc" to="fnmy:2Jvt1sWfv6t" resolve="GenericTypesUtil" />
+                                <node concept="37vLTw" id="5t$dIPMkKPV" role="37wK5m">
+                                  <ref role="3cqZAo" node="2Jvt1sWfuU$" resolve="type" />
+                                </node>
+                                <node concept="37vLTw" id="4TgpkoyEzMb" role="37wK5m">
+                                  <ref role="3cqZAo" node="4TgpkoyEpoP" resolve="typeByTypeVar" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbJ" id="2Jvt1sWfuUJ" role="3cqZAp">
+                            <node concept="3eOSWO" id="2Jvt1sWfuUK" role="3clFbw">
+                              <node concept="2OqwBi" id="2Jvt1sWfuUL" role="3uHU7B">
+                                <node concept="37vLTw" id="3GM_nagTrLD" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="2Jvt1sWfuUo" resolve="result" />
+                                </node>
+                                <node concept="liA8E" id="2Jvt1sWfuUN" role="2OqNvi">
+                                  <ref role="37wK5l" to="wyt6:~AbstractStringBuilder.length():int" resolve="length" />
+                                </node>
+                              </node>
+                              <node concept="3cmrfG" id="2Jvt1sWfuUO" role="3uHU7w">
+                                <property role="3cmrfH" value="0" />
+                              </node>
+                            </node>
+                            <node concept="3clFbS" id="2Jvt1sWfuUP" role="3clFbx">
+                              <node concept="3clFbF" id="2Jvt1sWfuUQ" role="3cqZAp">
+                                <node concept="2OqwBi" id="2Jvt1sWfuUR" role="3clFbG">
+                                  <node concept="37vLTw" id="3GM_nagTvjt" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2Jvt1sWfuUo" resolve="result" />
+                                  </node>
+                                  <node concept="liA8E" id="2Jvt1sWfuUT" role="2OqNvi">
+                                    <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                                    <node concept="1Xhbcc" id="2Jvt1sWfuUU" role="37wK5m">
+                                      <property role="1XhdNS" value="," />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbJ" id="2Jvt1sWfuUV" role="3cqZAp">
+                            <node concept="3y3z36" id="2Jvt1sWfuUW" role="3clFbw">
+                              <node concept="37vLTw" id="3GM_nagTyOP" role="3uHU7B">
+                                <ref role="3cqZAo" node="2Jvt1sWfuU$" resolve="type" />
+                              </node>
+                              <node concept="10Nm6u" id="2Jvt1sWfuUY" role="3uHU7w" />
+                            </node>
+                            <node concept="9aQIb" id="2Jvt1sWfuUZ" role="9aQIa">
+                              <node concept="3clFbS" id="2Jvt1sWfuV0" role="9aQI4">
+                                <node concept="3clFbF" id="2Jvt1sWfuV1" role="3cqZAp">
+                                  <node concept="2OqwBi" id="2Jvt1sWfuV2" role="3clFbG">
+                                    <node concept="37vLTw" id="3GM_nagT_7I" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="2Jvt1sWfuUo" resolve="result" />
+                                    </node>
+                                    <node concept="liA8E" id="2Jvt1sWfuV4" role="2OqNvi">
+                                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                                      <node concept="Xl_RD" id="2Jvt1sWfuV5" role="37wK5m">
+                                        <property role="Xl_RC" value="" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="3clFbS" id="2Jvt1sWfuV6" role="3clFbx">
+                              <node concept="3clFbF" id="7TyZGXa9V0y" role="3cqZAp">
+                                <node concept="2OqwBi" id="7TyZGXa9V0$" role="3clFbG">
+                                  <node concept="37vLTw" id="3GM_nagTAv0" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2Jvt1sWfuUo" resolve="result" />
+                                  </node>
+                                  <node concept="liA8E" id="7TyZGXa9V0C" role="2OqNvi">
+                                    <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                                    <node concept="2OqwBi" id="7TyZGXa9V0E" role="37wK5m">
+                                      <node concept="37vLTw" id="3GM_nagT$mS" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="2Jvt1sWfuU$" resolve="type" />
+                                      </node>
+                                      <node concept="2qgKlT" id="7TyZGXa9V0I" role="2OqNvi">
+                                        <ref role="37wK5l" node="hEwIzNx" resolve="getErasureSignature" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3cpWs6" id="2Jvt1sWfuVf" role="3cqZAp">
+                        <node concept="2OqwBi" id="2Jvt1sWfuVg" role="3cqZAk">
+                          <node concept="37vLTw" id="3GM_nagTtik" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2Jvt1sWfuUo" resolve="result" />
+                          </node>
+                          <node concept="liA8E" id="2Jvt1sWfuVi" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~StringBuilder.toString():java.lang.String" resolve="toString" />
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
                   <node concept="2tJIrI" id="3rj45ZVzlpb" role="jymVt" />
@@ -7125,12 +7307,10 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="2OqwBi" id="3rj45ZVziuY" role="3uHU7w">
-                                  <node concept="2GrUjf" id="3rj45ZVziuZ" role="2Oq$k0">
+                                <node concept="1rXfSq" id="4TgpkoyE$vU" role="3uHU7w">
+                                  <ref role="37wK5l" node="2Jvt1sWfu$p" resolve="createParamErasedSignature" />
+                                  <node concept="2GrUjf" id="4TgpkoyEAnZ" role="37wK5m">
                                     <ref role="2Gs0qQ" node="3rj45ZVziuF" resolve="clMethod" />
-                                  </node>
-                                  <node concept="2qgKlT" id="3rj45ZVziv0" role="2OqNvi">
-                                    <ref role="37wK5l" node="2t8d$bukubq" resolve="getErasureSignature" />
                                   </node>
                                 </node>
                               </node>
@@ -7295,6 +7475,16 @@
         <node concept="TZ5HA" id="3rj45ZUEqyt" role="TZ5H$">
           <node concept="1dT_AC" id="3rj45ZUEqyu" role="1dT_Ay">
             <property role="1dT_AB" value="if at least one implementation is found for the signature S then S is not included into result." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4TgpkoyEjI_" role="TZ5H$">
+          <node concept="1dT_AC" id="4TgpkoyEjIA" role="1dT_Ay">
+            <property role="1dT_AB" value="I would like to replace this method with the logic in ClassifierHierarchyChecker" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4TgpkoyFy65" role="TZ5H$">
+          <node concept="1dT_AC" id="4TgpkoyFy66" role="1dT_Ay">
+            <property role="1dT_AB" value="//deprecated" />
           </node>
         </node>
         <node concept="x79VA" id="3rj45ZUEqhd" role="3nqlJM">

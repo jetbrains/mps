@@ -63748,6 +63748,18 @@
         <property role="TrG5h" value="nodeToReport" />
         <node concept="3Tqbb2" id="3rj45ZXL1$j" role="1tU5fm" />
       </node>
+      <node concept="P$JXv" id="4TgpkoyD$XL" role="lGtFl">
+        <node concept="TZ5HA" id="4TgpkoyD_mi" role="TZ5H$">
+          <node concept="1dT_AC" id="4TgpkoyD_mj" role="1dT_Ay">
+            <property role="1dT_AB" value="classifier is the classifier you want to check, nodeToReport ought to differ from classifier only when classifier" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4TgpkoyD_mn" role="TZ5H$">
+          <node concept="1dT_AC" id="4TgpkoyD_mo" role="1dT_Ay">
+            <property role="1dT_AB" value="is an instance of EnumConstantDeclaration" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="3rj45ZVjBfP" role="jymVt" />
     <node concept="3clFb_" id="3rj45ZVjDIq" role="jymVt">

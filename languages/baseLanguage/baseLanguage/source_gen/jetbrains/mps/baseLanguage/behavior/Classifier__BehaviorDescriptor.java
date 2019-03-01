@@ -33,6 +33,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
+import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
+import jetbrains.mps.baseLanguage.scopes.GenericTypesUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -169,10 +171,28 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull SNode __thisNode__) {
     final Map<String, SNode> signatureToDecl = MapSequence.fromMap(new LinkedHashMap<String, SNode>(16, (float) 0.75, false));
+    final Map<SNode, SNode> typeByTypeVar = ClassifierScopeUtils.resolveClassifierTypeVars(__thisNode__);
     Classifier__BehaviorDescriptor.traverseClassifierHierarchy_id3rj45ZUtGbP.invoke(__thisNode__, new ClassifierTraversalCallback() {
       @Override
       public void onEntered(@NotNull ClassifierTraversalCallback.TraversalInfo info) {
         // nop 
+      }
+
+      private String createParamErasedSignature(SNode method) {
+        StringBuilder result = new StringBuilder();
+        for (SNode param : SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))) {
+          SNode type = SLinkOperations.getTarget(param, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"));
+          type = GenericTypesUtil.getTypeWithResolvedTypeVars(type, typeByTypeVar);
+          if (result.length() > 0) {
+            result.append(',');
+          }
+          if (type != null) {
+            result.append(Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(type));
+          } else {
+            result.append("");
+          }
+        }
+        return result.toString();
       }
 
       @Override
@@ -181,7 +201,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
           if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(clMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
             continue;
           }
-          String erasureSignature = SPropertyOperations.getString(clMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ListSequence.fromList(SLinkOperations.getChildren(clMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() + BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(clMethod);
+          String erasureSignature = SPropertyOperations.getString(clMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ListSequence.fromList(SLinkOperations.getChildren(clMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() + createParamErasedSignature(clMethod);
           SNode currentMapping = MapSequence.fromMap(signatureToDecl).get(erasureSignature);
           boolean firstTimeMet = (currentMapping == null);
           if (firstTimeMet) {
