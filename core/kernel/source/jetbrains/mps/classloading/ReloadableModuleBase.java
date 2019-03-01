@@ -80,7 +80,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
     return aClass;
   }
 
-  @Nullable
+  @NotNull
   @Override
   public final MPSModuleClassLoader getClassLoader() {
     return myManager.getClassLoader(this);

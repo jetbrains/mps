@@ -126,6 +126,13 @@ public class ClassLoaderManager implements CoreComponent {
 
   private static ClassLoaderManager INSTANCE;
 
+  private static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader(ClassLoaderManager.class.getClassLoader()) {
+    @Override
+    public boolean isReloadableClassLoader() {
+      return false;
+    }
+  };
+
   private final Object myLoadingModulesLock = new Object();
 
   /**
@@ -247,16 +254,17 @@ public class ClassLoaderManager implements CoreComponent {
    * This method can return the class loader of the IDEA plugin which manages the module's classes.
    * Use it if you want to get a class from the module with IdeaPluginFacet.
    *
-   * @deprecated use module-specific methods which throw ClassNotFoundException,
+   * INTERNAL USE ONLY: use module-specific methods which throw ClassNotFoundException,
    * you need to process it by yourself (probably show some user notification)
    *
    * @see ModuleIsNotLoadableException
    * @see jetbrains.mps.module.ReloadableModule
    */
-  @Nullable
+  @Internal
+  @NotNull
   MPSModuleClassLoader getClassLoader(final SModule module) {
     if (!myLoadableCondition.met(module)) {
-      return null;
+      return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
 
     if (myRepository.getModelAccess().canWrite()) {
@@ -266,15 +274,19 @@ public class ClassLoaderManager implements CoreComponent {
 
     ReloadableModule reloadableModule = (ReloadableModule) module;
     if (!myValidCondition.met(reloadableModule)) {
-      return null;
+      return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
     doLoadModules(Collections.singleton(reloadableModule), new EmptyProgressMonitor());
     return doGetClassLoader(reloadableModule);
   }
 
-  @Nullable
+  @NotNull
   private MPSModuleClassLoader doGetClassLoader(@NotNull ReloadableModule module) {
-    return myClassLoadersHolder.getClassLoader(module);
+    MPSModuleClassLoader classLoader = myClassLoadersHolder.getClassLoader(module);
+    if (classLoader != null) {
+      return classLoader;
+    }
+    return DEFAULT_DELEGATING_TO_SYSTEM_CL;
   }
 
   private boolean canCreate(@NotNull ReloadableModule module) {
