@@ -6,4 +6,12 @@ package jetbrains.mps.tool.common;
 public class PluginData {
   public String path;
   public String id;
+
+  public PluginData() {
+  }
+
+  public PluginData(String p, String id) {
+    this.path = p;
+    this.id = id;
+  }
 }

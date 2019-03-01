@@ -75,6 +75,7 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.Properties" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.RepositoryDescriptor" />
     <classNode dependClassName="org.apache.tools.ant.BuildException" />
     <classNode extendsClassName="jetbrains.mps.build.ant.MpsLoadTask" />
@@ -147,6 +148,7 @@
     <classNode dependClassName="org.apache.tools.ant.types.EnumeratedAttribute" />
     <classNode dependClassName="org.apache.tools.ant.util.JavaEnvUtils" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="org.apache.tools.ant.Task" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.MyExecuteStreamHandler">

@@ -540,7 +540,18 @@
     <file name="PluginData.java">
       <node id="978600701689991886" at="7,0,8,0" concept="5" trace="path" />
       <node id="496689236031523707" at="8,0,9,0" concept="5" trace="id" />
-      <unit id="496689236032862552" at="6,0,10,0" name="jetbrains.mps.tool.common.PluginData" />
+      <node id="5563580687573645576" at="13,42,14,18" concept="4" />
+      <node id="5563580687573647983" at="14,18,15,17" concept="4" />
+      <node id="5563580687573640671" at="10,0,12,0" concept="2" trace="PluginData#()V" />
+      <node id="5563580687573642852" at="13,0,17,0" concept="2" trace="PluginData#(Ljava/lang/String;Ljava/lang/String;)V" />
+      <scope id="5563580687573640675" at="10,23,10,23" />
+      <scope id="5563580687573640671" at="10,0,12,0" />
+      <scope id="5563580687573642857" at="13,42,15,17" />
+      <scope id="5563580687573642852" at="13,0,17,0">
+        <var name="id" id="5563580687573644363" />
+        <var name="p" id="5563580687573643180" />
+      </scope>
+      <unit id="496689236032862552" at="6,0,18,0" name="jetbrains.mps.tool.common.PluginData" />
     </file>
   </root>
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/7110336455353370861">

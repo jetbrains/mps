@@ -28,6 +28,7 @@ import org.apache.tools.ant.ProjectComponent;
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.io.FileInputStream;
+import org.jetbrains.annotations.Nullable;
 import java.util.LinkedHashSet;
 import java.io.InputStream;
 import java.io.BufferedReader;
@@ -321,7 +322,7 @@ public class MpsLoadTask extends Task {
     return Collections.<String>emptyList();
   }
 
-  private void outputBuildNumber() {
+  private void outputBuildNumber(File mpsHome) {
     String antTaskBuildNumber;
     URL resource = getClass().getResource("/build.number");
     if (resource == null) {
@@ -340,7 +341,7 @@ public class MpsLoadTask extends Task {
     }
     String mpsBuildNumber;
     try {
-      mpsBuildNumber = MpsLoadTask.readBuildNumber(new FileInputStream(new File(myMpsHome.getAbsolutePath() + File.separator + "build.number")));
+      mpsBuildNumber = MpsLoadTask.readBuildNumber(new FileInputStream(new File(mpsHome.getAbsolutePath() + File.separator + "build.number")));
       if (mpsBuildNumber == null || mpsBuildNumber.isEmpty()) {
         log("Can't determine version of MPS.", Project.MSG_DEBUG);
         return;
@@ -367,17 +368,23 @@ public class MpsLoadTask extends Task {
     }
   }
 
-  protected void checkMpsHome() {
-    if (myMpsHome == null) {
-      // FIXME myMpsHome shall serve as an indicator whether user set its location explicitly (hence, with desire to force its own and ignore default home lookup logic 
-      //       presently in MPSClasspathUtil, see #calculateClassPath(boolean)). Either use separate fields for user-supplied home and deduced one, or drop assignment altogether 
-      myMpsHome = MPSClasspathUtil.resolveMPSHome(getProject(), true);
+  @Nullable
+  protected final File getMpsHome_Checked() {
+    File mpsHome = myMpsHome;
+    if (mpsHome == null) {
+      // myMpsHome serves as an indicator whether user set its location explicitly (hence, with desire to force its own and ignore default home lookup logic 
+      // presently in MPSClasspathUtil, see #calculateClassPath(boolean)). This method shall not assign myMpsHome value. 
     }
+    mpsHome = MPSClasspathUtil.resolveMPSHome(getProject(), true);
+    checkMpsHome(mpsHome);
+    return mpsHome;
+  }
 
+  private void checkMpsHome(File mpsHome) {
     // the following code checks mps home is specified correctly 
-    assert myMpsHome != null : "MPS home folder must be specified. Use either mpshome task attribute or mps_home or mps.home Ant property to specify home folder.";
+    assert mpsHome != null : "MPS home folder must be specified. Use either mpshome task attribute or mps_home or mps.home Ant property to specify home folder.";
     boolean containsBuildTxt = false;
-    for (File child : myMpsHome.listFiles()) {
+    for (File child : mpsHome.listFiles()) {
       if (child.getPath().equals("build.txt")) {
         containsBuildTxt = true;
         break;
@@ -385,7 +392,7 @@ public class MpsLoadTask extends Task {
     }
     assert containsBuildTxt : "MPS home folder is the folder where build.txt file is located. Please correct mpshome attribute, mps_home/mps.home property, depending on which was set";
 
-    outputBuildNumber();
+    outputBuildNumber(mpsHome);
   }
 
   private boolean startsWith(String path, String prefix) {
