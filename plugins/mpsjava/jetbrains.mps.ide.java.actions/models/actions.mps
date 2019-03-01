@@ -47,6 +47,9 @@
       <node concept="2zDL_x" id="2rUHgdX2Vo$" role="2zDL_s">
         <ref role="2zDL_u" to="xq5q:2rUHgdX2ELT" resolve="EditorPopup" />
       </node>
+      <node concept="2zDL_x" id="5iafRE2b0rY" role="2zDL_s">
+        <ref role="2zDL_u" to="xq5q:7ixvpurf9zZ" resolve="ShowMembersInMenu" />
+      </node>
       <node concept="2zDL_x" id="3CM_lYH0fmD" role="2zDL_s">
         <ref role="2zDL_u" to="xq5q:2vs9_ygEfaN" resolve="EditorPopup_paste" />
       </node>

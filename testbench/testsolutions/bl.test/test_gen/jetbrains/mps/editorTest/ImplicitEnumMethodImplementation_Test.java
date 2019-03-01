@@ -36,20 +36,20 @@ public class ImplicitEnumMethodImplementation_Test extends BaseTransformationTes
     new ImplicitEnumMethodImplementation_Test.TestBody(this).test_ErrorMessagesCheck8841676161362742874();
   }
   @Test
-  public void test_NodeEnumHasUnimplementedMethodsCheck8841676161362904735() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeEnumHasUnimplementedMethodsCheck8841676161362904735();
+  public void test_NodeUnnamedErrorCheck6091751241367772282() throws Throwable {
+    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeUnnamedErrorCheck6091751241367772282();
   }
   @Test
   public void test_ErrorMessagesCheck8841676161362737481() throws Throwable {
     new ImplicitEnumMethodImplementation_Test.TestBody(this).test_ErrorMessagesCheck8841676161362737481();
   }
   @Test
-  public void test_NodeEnumConstantHasUnimplementedCheck8841676161362737703() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeEnumConstantHasUnimplementedCheck8841676161362737703();
+  public void test_NodeUnnamedErrorCheck6091751241367773947() throws Throwable {
+    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeUnnamedErrorCheck6091751241367773947();
   }
   @Test
-  public void test_NodeEnumConstantHasUnimplementedCheck8841676161362737723() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeEnumConstantHasUnimplementedCheck8841676161362737723();
+  public void test_NodeUnnamedErrorCheck6091751241367775548() throws Throwable {
+    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeUnnamedErrorCheck6091751241367775548();
   }
   @Test
   public void test_ErrorMessagesCheck8841676161362737639() throws Throwable {
@@ -75,20 +75,20 @@ public class ImplicitEnumMethodImplementation_Test extends BaseTransformationTes
       SNode operation = SNodeOperations.cast(getRealNodeById("8841676161362742874"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("8841676161362742601"));
     }
-    public void test_NodeEnumHasUnimplementedMethodsCheck8841676161362904735() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("8841676161362904735"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeUnnamedErrorCheck6091751241367772282() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("6091751241367772282"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("8841676161362736760"));
     }
     public void test_ErrorMessagesCheck8841676161362737481() throws Exception {
       SNode operation = SNodeOperations.cast(getRealNodeById("8841676161362737481"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("8841676161362736758"));
     }
-    public void test_NodeEnumConstantHasUnimplementedCheck8841676161362737703() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("8841676161362737703"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeUnnamedErrorCheck6091751241367773947() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("6091751241367773947"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("8841676161362737582"));
     }
-    public void test_NodeEnumConstantHasUnimplementedCheck8841676161362737723() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("8841676161362737723"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeUnnamedErrorCheck6091751241367775548() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("6091751241367775548"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("8841676161362737645"));
     }
     public void test_ErrorMessagesCheck8841676161362737639() throws Exception {

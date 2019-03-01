@@ -503,7 +503,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="5JmWGdvpxx$" role="2OqNvi">
-                      <ref role="37wK5l" to="j8aq:~ReloadableModule.willLoad():boolean" resolve="willLoad" />
+                      <ref role="37wK5l" to="j8aq:~ReloadableModule.canLoadClasses():boolean" resolve="canLoadClasses" />
                     </node>
                   </node>
                 </node>

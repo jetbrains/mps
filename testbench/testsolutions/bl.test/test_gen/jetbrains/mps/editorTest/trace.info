@@ -24211,10 +24211,10 @@
       <node id="8841676161362720717" at="26,50,27,25" concept="11" />
       <node id="8841676161362742012" at="31,77,32,106" concept="2" />
       <node id="8841676161362742874" at="35,77,36,106" concept="2" />
-      <node id="8841676161362904735" at="39,95,40,124" concept="2" />
+      <node id="6091751241367772282" at="39,80,40,109" concept="2" />
       <node id="8841676161362737481" at="43,77,44,106" concept="2" />
-      <node id="8841676161362737703" at="47,96,48,125" concept="2" />
-      <node id="8841676161362737723" at="51,96,52,125" concept="2" />
+      <node id="6091751241367773947" at="47,80,48,109" concept="2" />
+      <node id="6091751241367775548" at="51,80,52,109" concept="2" />
       <node id="8841676161362737639" at="55,77,56,106" concept="2" />
       <node id="8841676161362738093" at="59,77,60,106" concept="2" />
       <node id="8841676161362720717" at="65,52,66,19" concept="11" />
@@ -24222,14 +24222,14 @@
       <node id="8841676161362742012" at="71,242,72,123" concept="2" />
       <node id="8841676161362742874" at="74,79,75,242" concept="6" />
       <node id="8841676161362742874" at="75,242,76,123" concept="2" />
-      <node id="8841676161362904735" at="78,97,79,242" concept="6" />
-      <node id="8841676161362904735" at="79,242,80,123" concept="2" />
+      <node id="6091751241367772282" at="78,82,79,242" concept="6" />
+      <node id="6091751241367772282" at="79,242,80,123" concept="2" />
       <node id="8841676161362737481" at="82,79,83,242" concept="6" />
       <node id="8841676161362737481" at="83,242,84,123" concept="2" />
-      <node id="8841676161362737703" at="86,98,87,242" concept="6" />
-      <node id="8841676161362737703" at="87,242,88,123" concept="2" />
-      <node id="8841676161362737723" at="90,98,91,242" concept="6" />
-      <node id="8841676161362737723" at="91,242,92,123" concept="2" />
+      <node id="6091751241367773947" at="86,82,87,242" concept="6" />
+      <node id="6091751241367773947" at="87,242,88,123" concept="2" />
+      <node id="6091751241367775548" at="90,82,91,242" concept="6" />
+      <node id="6091751241367775548" at="91,242,92,123" concept="2" />
       <node id="8841676161362737639" at="94,79,95,242" concept="6" />
       <node id="8841676161362737639" at="95,242,96,123" concept="2" />
       <node id="8841676161362738093" at="98,79,99,242" concept="6" />
@@ -24240,27 +24240,27 @@
       <node id="8841676161362720717" at="65,0,68,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8841676161362742012" at="30,0,34,0" concept="5" trace="test_ErrorMessagesCheck8841676161362742012#()V" />
       <node id="8841676161362742874" at="34,0,38,0" concept="5" trace="test_ErrorMessagesCheck8841676161362742874#()V" />
-      <node id="8841676161362904735" at="38,0,42,0" concept="5" trace="test_NodeEnumHasUnimplementedMethodsCheck8841676161362904735#()V" />
+      <node id="6091751241367772282" at="38,0,42,0" concept="5" trace="test_NodeUnnamedErrorCheck6091751241367772282#()V" />
       <node id="8841676161362737481" at="42,0,46,0" concept="5" trace="test_ErrorMessagesCheck8841676161362737481#()V" />
-      <node id="8841676161362737703" at="46,0,50,0" concept="5" trace="test_NodeEnumConstantHasUnimplementedCheck8841676161362737703#()V" />
-      <node id="8841676161362737723" at="50,0,54,0" concept="5" trace="test_NodeEnumConstantHasUnimplementedCheck8841676161362737723#()V" />
+      <node id="6091751241367773947" at="46,0,50,0" concept="5" trace="test_NodeUnnamedErrorCheck6091751241367773947#()V" />
+      <node id="6091751241367775548" at="50,0,54,0" concept="5" trace="test_NodeUnnamedErrorCheck6091751241367775548#()V" />
       <node id="8841676161362737639" at="54,0,58,0" concept="5" trace="test_ErrorMessagesCheck8841676161362737639#()V" />
       <node id="8841676161362738093" at="58,0,62,0" concept="5" trace="test_ErrorMessagesCheck8841676161362738093#()V" />
       <node id="8841676161362742012" at="70,0,74,0" concept="5" trace="test_ErrorMessagesCheck8841676161362742012#()V" />
       <node id="8841676161362742874" at="74,0,78,0" concept="5" trace="test_ErrorMessagesCheck8841676161362742874#()V" />
-      <node id="8841676161362904735" at="78,0,82,0" concept="5" trace="test_NodeEnumHasUnimplementedMethodsCheck8841676161362904735#()V" />
+      <node id="6091751241367772282" at="78,0,82,0" concept="5" trace="test_NodeUnnamedErrorCheck6091751241367772282#()V" />
       <node id="8841676161362737481" at="82,0,86,0" concept="5" trace="test_ErrorMessagesCheck8841676161362737481#()V" />
-      <node id="8841676161362737703" at="86,0,90,0" concept="5" trace="test_NodeEnumConstantHasUnimplementedCheck8841676161362737703#()V" />
-      <node id="8841676161362737723" at="90,0,94,0" concept="5" trace="test_NodeEnumConstantHasUnimplementedCheck8841676161362737723#()V" />
+      <node id="6091751241367773947" at="86,0,90,0" concept="5" trace="test_NodeUnnamedErrorCheck6091751241367773947#()V" />
+      <node id="6091751241367775548" at="90,0,94,0" concept="5" trace="test_NodeUnnamedErrorCheck6091751241367775548#()V" />
       <node id="8841676161362737639" at="94,0,98,0" concept="5" trace="test_ErrorMessagesCheck8841676161362737639#()V" />
       <node id="8841676161362738093" at="98,0,102,0" concept="5" trace="test_ErrorMessagesCheck8841676161362738093#()V" />
       <scope id="8841676161362720717" at="26,50,27,25" />
       <scope id="8841676161362742012" at="31,77,32,106" />
       <scope id="8841676161362742874" at="35,77,36,106" />
-      <scope id="8841676161362904735" at="39,95,40,124" />
+      <scope id="6091751241367772282" at="39,80,40,109" />
       <scope id="8841676161362737481" at="43,77,44,106" />
-      <scope id="8841676161362737703" at="47,96,48,125" />
-      <scope id="8841676161362737723" at="51,96,52,125" />
+      <scope id="6091751241367773947" at="47,80,48,109" />
+      <scope id="6091751241367775548" at="51,80,52,109" />
       <scope id="8841676161362737639" at="55,77,56,106" />
       <scope id="8841676161362738093" at="59,77,60,106" />
       <scope id="8841676161362720717" at="65,52,66,19" />
@@ -24270,17 +24270,17 @@
       <scope id="8841676161362742874" at="74,79,76,123">
         <var name="operation" id="8841676161362742874" />
       </scope>
-      <scope id="8841676161362904735" at="78,97,80,123">
-        <var name="operation" id="8841676161362904735" />
+      <scope id="6091751241367772282" at="78,82,80,123">
+        <var name="operation" id="6091751241367772282" />
       </scope>
       <scope id="8841676161362737481" at="82,79,84,123">
         <var name="operation" id="8841676161362737481" />
       </scope>
-      <scope id="8841676161362737703" at="86,98,88,123">
-        <var name="operation" id="8841676161362737703" />
+      <scope id="6091751241367773947" at="86,82,88,123">
+        <var name="operation" id="6091751241367773947" />
       </scope>
-      <scope id="8841676161362737723" at="90,98,92,123">
-        <var name="operation" id="8841676161362737723" />
+      <scope id="6091751241367775548" at="90,82,92,123">
+        <var name="operation" id="6091751241367775548" />
       </scope>
       <scope id="8841676161362737639" at="94,79,96,123">
         <var name="operation" id="8841676161362737639" />
@@ -24294,18 +24294,18 @@
       </scope>
       <scope id="8841676161362742012" at="30,0,34,0" />
       <scope id="8841676161362742874" at="34,0,38,0" />
-      <scope id="8841676161362904735" at="38,0,42,0" />
+      <scope id="6091751241367772282" at="38,0,42,0" />
       <scope id="8841676161362737481" at="42,0,46,0" />
-      <scope id="8841676161362737703" at="46,0,50,0" />
-      <scope id="8841676161362737723" at="50,0,54,0" />
+      <scope id="6091751241367773947" at="46,0,50,0" />
+      <scope id="6091751241367775548" at="50,0,54,0" />
       <scope id="8841676161362737639" at="54,0,58,0" />
       <scope id="8841676161362738093" at="58,0,62,0" />
       <scope id="8841676161362742012" at="70,0,74,0" />
       <scope id="8841676161362742874" at="74,0,78,0" />
-      <scope id="8841676161362904735" at="78,0,82,0" />
+      <scope id="6091751241367772282" at="78,0,82,0" />
       <scope id="8841676161362737481" at="82,0,86,0" />
-      <scope id="8841676161362737703" at="86,0,90,0" />
-      <scope id="8841676161362737723" at="90,0,94,0" />
+      <scope id="6091751241367773947" at="86,0,90,0" />
+      <scope id="6091751241367775548" at="90,0,94,0" />
       <scope id="8841676161362737639" at="94,0,98,0" />
       <scope id="8841676161362738093" at="98,0,102,0" />
       <unit id="8841676161362720717" at="63,0,104,0" name="jetbrains.mps.editorTest.ImplicitEnumMethodImplementation_Test$TestBody" />
