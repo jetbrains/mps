@@ -7,7 +7,6 @@
   <jvmargs id="mps.args">
     <arg value="-Xss1024k"/>
     <arg value="-Xmx1000m"/>
-    <arg value="-XX:MaxPermSize=92m"/>
     <arg value="-XX:+HeapDumpOnOutOfMemoryError"/>
   </jvmargs>
 

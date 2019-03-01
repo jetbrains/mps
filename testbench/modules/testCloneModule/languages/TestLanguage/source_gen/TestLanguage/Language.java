@@ -9,13 +9,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
-import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
-import TestLanguage.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import TestLanguage.structure.ConceptPresentationAspectImpl;
-import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import TestLanguage.typesystem.TypesystemDescriptor;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -50,17 +46,11 @@ public class Language extends LanguageRuntime {
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new TestLanguage.constraints.ConstraintsAspectDescriptor());
     }
-    if (aspectClass == EditorAspectDescriptor.class) {
-      return aspectClass.cast(new EditorAspectDescriptorImpl());
-    }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new TestLanguage.structure.StructureAspectDescriptor());
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
-    }
-    if (aspectClass == IHelginsDescriptor.class) {
-      return aspectClass.cast(new TypesystemDescriptor());
     }
     return null;
   }

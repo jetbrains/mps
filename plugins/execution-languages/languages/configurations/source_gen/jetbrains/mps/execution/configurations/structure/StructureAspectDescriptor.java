@@ -58,6 +58,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, "jetbrains.mps.execution.settings");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, "jetbrains.mps.execution.settings");
+    deps.aggregatedLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources");
+    deps.aggregatedLanguage(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, "jetbrains.mps.debugger.api.lang");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptAbstractRunConfigurationExecutor, myConceptBeforeTask, myConceptBeforeTaskCall, myConceptBeforeTaskParameter, myConceptBeforeTaskParameterReference, myConceptConfigurationFromExecutorReference, myConceptConfiguration_Parameter, myConceptConsoleCreator, myConceptConsoleType, myConceptContextConfiguration_Parameter, myConceptContextExpression, myConceptCreate_ConceptFunction, myConceptDebuggerSettings_Parameter, myConceptEnvironmentExpression, myConceptExecuteBeforeTask_ConceptFunction, myConceptExecuteConfiguration_Function, myConceptExecutor_Parameter, myConceptGetProjectOperation, myConceptIsConfigurationFromContext_ConceptFunction, myConceptModelSource, myConceptModuleSource, myConceptNodeListSource, myConceptNodeSource, myConceptProjectSource, myConceptProject_Parameter, myConceptRunConfiguration, myConceptRunConfigurationCreator, myConceptRunConfigurationExecutor, myConceptRunConfigurationKind, myConceptRunConfigurationProducer, myConceptRunConfigurationProducerPart, myConceptRunConfigurationSource, myConceptSModelSource, myConceptSModuleSource, myConceptSource_ConceptFunctionParameter, myConceptStartProcessHandlerStatement);

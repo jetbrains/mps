@@ -17,6 +17,7 @@ package jetbrains.mps.util;
 
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -180,11 +181,39 @@ public class FileUtil {
   /**
    * @return unix-style path without last slashes with some version of normalization
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
   @NotNull
+  //this should be replaced with FS-dependent normalisation (e.g. JarFS.normalise(path))
   public static String normalize(@NotNull String path) {
     return stripLastSlashes(normalize0(getUnixPath(path), Path.UNIX_SEPARATOR));
+  }
+
+  @Deprecated
+  //replaces /xx/.. with /. Use with already-normalized paths
+  public static String resolveParentDirs(@NotNull String path) {
+    String currentPath = path;
+    if (currentPath.endsWith("/..")) {
+      currentPath += "/";
+    }
+    if (!currentPath.contains("/../")) {
+      return currentPath;
+    }
+
+    int index;
+    next_occ:
+    while ((index = currentPath.indexOf("/../")) > 0) {
+      for (int i = index - 1; i > 0; i--) {
+        if (currentPath.charAt(i) == '/') {
+          currentPath = currentPath.substring(0, i) + currentPath.substring(index + 3); //we leave the last slash in "/../"
+          continue next_occ;
+        }
+      }
+      assert false : "Unexpected path: can't get parent: " + path;
+    }
+
+    if (currentPath.endsWith("/")) {
+      currentPath = currentPath.substring(0, currentPath.length() - 1);
+    }
+    return currentPath;
   }
 
   // poor version of normalization
@@ -216,6 +245,7 @@ public class FileUtil {
 
   /**
    * deletes the file and all its parents above which happen to be empty after this file's removal
+   *
    * @return true iff the file has been removed
    */
   public static boolean deleteWithAllEmptyDirs(@NotNull IFile file) {
@@ -428,7 +458,7 @@ public class FileUtil {
     StringBuilder common = new StringBuilder();
     int commonIndex = 0;
     while (commonIndex < target.length && commonIndex < base.length
-        && target[commonIndex].equals(base[commonIndex])) {
+           && target[commonIndex].equals(base[commonIndex])) {
       common.append(target[commonIndex]).append(pathSeparator);
       commonIndex++;
     }
@@ -559,7 +589,7 @@ public class FileUtil {
   private abstract static class Packer {
     public void pack(File dir, File to) {
       try (FileOutputStream fos = new FileOutputStream(to);
-           ZipOutputStream out = createDeflaterStream(fos)){
+           ZipOutputStream out = createDeflaterStream(fos)) {
         _zip(dir, "", out);
       } catch (Exception e) {
         LOG.error(e);
@@ -567,8 +597,8 @@ public class FileUtil {
     }
 
     public void pack(Map<String, File> entries, File to) {
-      try(FileOutputStream fos = new FileOutputStream(to);
-          ZipOutputStream out = createDeflaterStream(fos)) {
+      try (FileOutputStream fos = new FileOutputStream(to);
+           ZipOutputStream out = createDeflaterStream(fos)) {
         for (String key : entries.keySet()) {
           addZipEntry(out, key, entries.get(key));
         }

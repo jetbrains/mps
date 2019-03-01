@@ -169,7 +169,6 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.descriptor.generator.template.main.Template_GeneratorRuntime">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -204,7 +203,6 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.descriptor.generator.template.main.Template_InterpretedGeneratorRuntimeDescriptor">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />

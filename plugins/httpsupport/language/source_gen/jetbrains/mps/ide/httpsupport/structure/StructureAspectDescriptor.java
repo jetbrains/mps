@@ -54,6 +54,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptCanHandleRequestFunction, myConceptDefaultParameterConverter, myConceptDefaultValueFunction, myConceptDeserializeFunction, myConceptHandleRequestFunction, myConceptHttpRequestOperation, myConceptHttpRequestParameter, myConceptIDEAPlatformPortProvider, myConceptIParameterConverter, myConceptMPSIntegrationPortProvider, myConceptMPSInternalPortProvider, myConceptNode_getURLOperation, myConceptParameterConverterDeclaration, myConceptParameterConverterReference, myConceptParameterInitializer, myConceptPort, myConceptPortProvider, myConceptQueryParameter, myConceptQueryParameterReference, myConceptQueryPath, myConceptQuerySegment, myConceptRequestHandler, myConceptRequestType, myConceptRequestURLBuilderExpression, myConceptResponseSendOperation, myConceptSerializeFunction, myConceptSerializedValueParameter, myConceptValueToSerializeParameter);

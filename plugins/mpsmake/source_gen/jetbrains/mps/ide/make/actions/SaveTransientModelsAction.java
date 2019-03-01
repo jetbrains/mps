@@ -16,8 +16,7 @@ public class SaveTransientModelsAction extends ToggleAction {
   @Override
   public boolean isSelected(AnActionEvent e) {
     MPSProject mpsProject = e.getData(MPSCommonDataKeys.MPS_PROJECT);
-    GenerationSettingsProvider sp = mpsProject.getComponent(GenerationSettingsProvider.class);
-    return sp.getGenerationSettings().isSaveTransientModels();
+    return mpsProject != null && mpsProject.getComponent(GenerationSettingsProvider.class).getGenerationSettings().isSaveTransientModels();
   }
   @Override
   public void update(AnActionEvent e) {
@@ -33,6 +32,7 @@ public class SaveTransientModelsAction extends ToggleAction {
   @Override
   public void setSelected(AnActionEvent e, boolean state) {
     MPSProject mpsProject = e.getData(MPSCommonDataKeys.MPS_PROJECT);
+    assert mpsProject != null;
     GenerationSettingsProvider sp = mpsProject.getComponent(GenerationSettingsProvider.class);
     sp.getGenerationSettings().setSaveTransientModels(state);
   }

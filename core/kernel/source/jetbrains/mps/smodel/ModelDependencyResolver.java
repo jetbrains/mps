@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,6 +50,8 @@ public final class ModelDependencyResolver {
   private final SRepository myRepository;
 
   /**
+   * FIXME split MDR into two, usedLanguages has to depend from LanguageRegistry only (resolve devkits through LR, not repo)
+   *
    * @param languageRegistry registry to resolve {@link org.jetbrains.mps.openapi.language.SLanguage used languages} in
    * @param repository where to look imported models up. Generally, just a {@code model.getRepository()} and could have been
    *                   omitted, MPS now asks for *resolved* imports of a detached model (e.g. during m2m phase

@@ -1119,5 +1119,15 @@
       </node>
     </node>
   </node>
+  <node concept="1M2fIO" id="UesZ_or5ti">
+    <property role="3GE5qa" value="rule.argument" />
+    <ref role="1M2myG" to="tpf8:UesZ_oiISf" resolve="TemplateArgumentVarRefExpression2" />
+    <node concept="1N5Pfh" id="UesZ_or5tj" role="1Mr941">
+      <ref role="1N5Vy1" to="tpf8:UesZ_oiISg" resolve="vardecl" />
+      <node concept="1dDu$B" id="UesZ_or5tl" role="1N6uqs">
+        <ref role="1dDu$A" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
+      </node>
+    </node>
+  </node>
 </model>
 

@@ -25,8 +25,8 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.mps.util.ModulePlugins;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
-import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
-import java.util.LinkedList;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -65,7 +65,12 @@ public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHD
     Iterable<SNode> originalModules = Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution")));
     ModulePlugins plugins = new ModulePlugins(project, genContext);
     MPSModulesClosure runtimeClosure = new MPSModulesClosure(originalModules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).runtimeClosure();
-    plugins.collect(runtimeClosure.getAllModules(), LinkedListSequence.fromLinkedListNew(new LinkedList<SNode>()));
+    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x3283ab1237cb7bddL, "requiredPlugin"))).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin"));
+      }
+    }).toListSequence();
+    plugins.collect(runtimeClosure.getAllModules(), additionalPlugins);
     for (SNode plugin : Sequence.fromIterable(plugins.getDependency())) {
       SNode pluginArtifact = SNodeOperations.as(artifacts.findArtifact(plugin), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
       if (pluginArtifact != null) {

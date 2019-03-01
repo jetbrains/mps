@@ -15,7 +15,7 @@
       <unit at="10,0,36,0" name="jetbrains.mps.samples.KajaSceneConstruction.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="16,0,108,0" name="jetbrains.mps.samples.KajaSceneConstruction.structure.StructureAspectDescriptor" />
+      <unit at="16,0,114,0" name="jetbrains.mps.samples.KajaSceneConstruction.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273550864">
@@ -37,20 +37,20 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3210697320273550864" at="18,0,19,0" concept="1" trace="myConceptBuildWall" />
-      <node id="3210697320273550864" at="39,43,40,34" concept="4" />
-      <node id="3210697320273550864" at="71,67,72,187" concept="3" />
-      <node id="3210697320273550864" at="72,187,73,34" concept="0" />
-      <node id="3210697320273550864" at="73,34,74,156" concept="0" />
-      <node id="3210697320273550864" at="74,156,75,130" concept="0" />
-      <node id="3210697320273550864" at="75,130,76,17" concept="0" />
-      <node id="3210697320273550864" at="76,17,77,26" concept="0" />
-      <node id="3210697320273550864" at="77,26,78,22" concept="4" />
-      <node id="3210697320273550864" at="71,0,80,0" concept="6" trace="createDescriptorForBuildWall#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3210697320273550864" at="39,43,40,34" />
-      <scope id="3210697320273550864" at="71,67,78,22">
+      <node id="3210697320273550864" at="45,43,46,34" concept="4" />
+      <node id="3210697320273550864" at="77,67,78,187" concept="3" />
+      <node id="3210697320273550864" at="78,187,79,34" concept="0" />
+      <node id="3210697320273550864" at="79,34,80,156" concept="0" />
+      <node id="3210697320273550864" at="80,156,81,130" concept="0" />
+      <node id="3210697320273550864" at="81,130,82,17" concept="0" />
+      <node id="3210697320273550864" at="82,17,83,26" concept="0" />
+      <node id="3210697320273550864" at="83,26,84,22" concept="4" />
+      <node id="3210697320273550864" at="77,0,86,0" concept="6" trace="createDescriptorForBuildWall#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3210697320273550864" at="45,43,46,34" />
+      <scope id="3210697320273550864" at="77,67,84,22">
         <var name="b" id="3210697320273550864" />
       </scope>
-      <scope id="3210697320273550864" at="71,0,80,0" />
+      <scope id="3210697320273550864" at="77,0,86,0" />
     </file>
   </root>
   <root nodeRef="r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273607253">
@@ -72,20 +72,20 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3210697320273607253" at="19,0,20,0" concept="1" trace="myConceptDestroyWall" />
-      <node id="3210697320273607253" at="41,45,42,36" concept="4" />
-      <node id="3210697320273607253" at="80,69,81,189" concept="3" />
-      <node id="3210697320273607253" at="81,189,82,34" concept="0" />
-      <node id="3210697320273607253" at="82,34,83,156" concept="0" />
-      <node id="3210697320273607253" at="83,156,84,130" concept="0" />
-      <node id="3210697320273607253" at="84,130,85,17" concept="0" />
-      <node id="3210697320273607253" at="85,17,86,28" concept="0" />
-      <node id="3210697320273607253" at="86,28,87,22" concept="4" />
-      <node id="3210697320273607253" at="80,0,89,0" concept="6" trace="createDescriptorForDestroyWall#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3210697320273607253" at="41,45,42,36" />
-      <scope id="3210697320273607253" at="80,69,87,22">
+      <node id="3210697320273607253" at="47,45,48,36" concept="4" />
+      <node id="3210697320273607253" at="86,69,87,189" concept="3" />
+      <node id="3210697320273607253" at="87,189,88,34" concept="0" />
+      <node id="3210697320273607253" at="88,34,89,156" concept="0" />
+      <node id="3210697320273607253" at="89,156,90,130" concept="0" />
+      <node id="3210697320273607253" at="90,130,91,17" concept="0" />
+      <node id="3210697320273607253" at="91,17,92,28" concept="0" />
+      <node id="3210697320273607253" at="92,28,93,22" concept="4" />
+      <node id="3210697320273607253" at="86,0,95,0" concept="6" trace="createDescriptorForDestroyWall#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3210697320273607253" at="47,45,48,36" />
+      <scope id="3210697320273607253" at="86,69,93,22">
         <var name="b" id="3210697320273607253" />
       </scope>
-      <scope id="3210697320273607253" at="80,0,89,0" />
+      <scope id="3210697320273607253" at="86,0,95,0" />
     </file>
   </root>
   <root nodeRef="r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273608254">
@@ -107,20 +107,20 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3210697320273608254" at="20,0,21,0" concept="1" trace="myConceptDropMark" />
-      <node id="3210697320273608254" at="43,42,44,33" concept="4" />
-      <node id="3210697320273608254" at="89,66,90,186" concept="3" />
-      <node id="3210697320273608254" at="90,186,91,34" concept="0" />
-      <node id="3210697320273608254" at="91,34,92,156" concept="0" />
-      <node id="3210697320273608254" at="92,156,93,130" concept="0" />
-      <node id="3210697320273608254" at="93,130,94,17" concept="0" />
-      <node id="3210697320273608254" at="94,17,95,25" concept="0" />
-      <node id="3210697320273608254" at="95,25,96,22" concept="4" />
-      <node id="3210697320273608254" at="89,0,98,0" concept="6" trace="createDescriptorForDropMark#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3210697320273608254" at="43,42,44,33" />
-      <scope id="3210697320273608254" at="89,66,96,22">
+      <node id="3210697320273608254" at="49,42,50,33" concept="4" />
+      <node id="3210697320273608254" at="95,66,96,186" concept="3" />
+      <node id="3210697320273608254" at="96,186,97,34" concept="0" />
+      <node id="3210697320273608254" at="97,34,98,156" concept="0" />
+      <node id="3210697320273608254" at="98,156,99,130" concept="0" />
+      <node id="3210697320273608254" at="99,130,100,17" concept="0" />
+      <node id="3210697320273608254" at="100,17,101,25" concept="0" />
+      <node id="3210697320273608254" at="101,25,102,22" concept="4" />
+      <node id="3210697320273608254" at="95,0,104,0" concept="6" trace="createDescriptorForDropMark#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3210697320273608254" at="49,42,50,33" />
+      <scope id="3210697320273608254" at="95,66,102,22">
         <var name="b" id="3210697320273608254" />
       </scope>
-      <scope id="3210697320273608254" at="89,0,98,0" />
+      <scope id="3210697320273608254" at="95,0,104,0" />
     </file>
   </root>
   <root nodeRef="r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273608255">
@@ -141,21 +141,21 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3210697320273608255" at="17,0,18,0" concept="1" trace="myConceptAbstractBuilderCommand" />
-      <node id="3210697320273608255" at="37,56,38,47" concept="4" />
-      <node id="3210697320273608255" at="61,80,62,200" concept="3" />
-      <node id="3210697320273608255" at="62,200,63,33" concept="0" />
-      <node id="3210697320273608255" at="63,33,64,131" concept="0" />
-      <node id="3210697320273608255" at="64,131,65,130" concept="0" />
-      <node id="3210697320273608255" at="65,130,66,17" concept="0" />
-      <node id="3210697320273608256" at="66,17,67,110" concept="0" />
-      <node id="3210697320273608257" at="67,110,68,110" concept="0" />
-      <node id="3210697320273608255" at="68,110,69,22" concept="4" />
-      <node id="3210697320273608255" at="61,0,71,0" concept="6" trace="createDescriptorForAbstractBuilderCommand#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3210697320273608255" at="37,56,38,47" />
-      <scope id="3210697320273608255" at="61,80,69,22">
+      <node id="3210697320273608255" at="43,56,44,47" concept="4" />
+      <node id="3210697320273608255" at="67,80,68,200" concept="3" />
+      <node id="3210697320273608255" at="68,200,69,33" concept="0" />
+      <node id="3210697320273608255" at="69,33,70,131" concept="0" />
+      <node id="3210697320273608255" at="70,131,71,130" concept="0" />
+      <node id="3210697320273608255" at="71,130,72,17" concept="0" />
+      <node id="3210697320273608256" at="72,17,73,110" concept="0" />
+      <node id="3210697320273608257" at="73,110,74,110" concept="0" />
+      <node id="3210697320273608255" at="74,110,75,22" concept="4" />
+      <node id="3210697320273608255" at="67,0,77,0" concept="6" trace="createDescriptorForAbstractBuilderCommand#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3210697320273608255" at="43,56,44,47" />
+      <scope id="3210697320273608255" at="67,80,75,22">
         <var name="b" id="3210697320273608255" />
       </scope>
-      <scope id="3210697320273608255" at="61,0,71,0" />
+      <scope id="3210697320273608255" at="67,0,77,0" />
     </file>
   </root>
   <root nodeRef="r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273614431">
@@ -177,20 +177,20 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3210697320273614431" at="21,0,22,0" concept="1" trace="myConceptPickMark" />
-      <node id="3210697320273614431" at="45,42,46,33" concept="4" />
-      <node id="3210697320273614431" at="98,66,99,186" concept="3" />
-      <node id="3210697320273614431" at="99,186,100,34" concept="0" />
-      <node id="3210697320273614431" at="100,34,101,156" concept="0" />
-      <node id="3210697320273614431" at="101,156,102,130" concept="0" />
-      <node id="3210697320273614431" at="102,130,103,17" concept="0" />
-      <node id="3210697320273614431" at="103,17,104,25" concept="0" />
-      <node id="3210697320273614431" at="104,25,105,22" concept="4" />
-      <node id="3210697320273614431" at="98,0,107,0" concept="6" trace="createDescriptorForPickMark#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3210697320273614431" at="45,42,46,33" />
-      <scope id="3210697320273614431" at="98,66,105,22">
+      <node id="3210697320273614431" at="51,42,52,33" concept="4" />
+      <node id="3210697320273614431" at="104,66,105,186" concept="3" />
+      <node id="3210697320273614431" at="105,186,106,34" concept="0" />
+      <node id="3210697320273614431" at="106,34,107,156" concept="0" />
+      <node id="3210697320273614431" at="107,156,108,130" concept="0" />
+      <node id="3210697320273614431" at="108,130,109,17" concept="0" />
+      <node id="3210697320273614431" at="109,17,110,25" concept="0" />
+      <node id="3210697320273614431" at="110,25,111,22" concept="4" />
+      <node id="3210697320273614431" at="104,0,113,0" concept="6" trace="createDescriptorForPickMark#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3210697320273614431" at="51,42,52,33" />
+      <scope id="3210697320273614431" at="104,66,111,22">
         <var name="b" id="3210697320273614431" />
       </scope>
-      <scope id="3210697320273614431" at="98,0,107,0" />
+      <scope id="3210697320273614431" at="104,0,113,0" />
     </file>
   </root>
 </debug-info>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -179,6 +179,16 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     children_remove(wasChild);
     wasChild.myRoleInParent = null;
     SModel model = myOwner.getModel();
+    if (model != null && !model.isUpdateMode()) {
+      // XXX no idea what this isUpdateMode() check is about, used to be in SNode.detach()
+      //     it dates back to e64402e1, I suspect it might be a performance optimization
+      //     (nobody gonna access references of a node that has been removed during internal update process)
+      //
+      // makeDirect has been separated from detach() code to give better control over reference resolution time.
+      // indeed, in a perfect world we would know all nodes to be deleted during a command beforehand, and could process their references at once.
+      // as it's not possible (node.sibling.detach could come right after node.detach) we at least go easy path for references within a detached subtree
+      wasChild.makeReferencesDirect();
+    }
     // FIXME what if myOwner is DetachedNodeOwner - shall we make node free-floating or leave it as detached?
     wasChild.detach(model == null ? myOwner : new DetachedNodeOwner(model));
 
@@ -433,14 +443,22 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     }
   }
 
+  /**
+   * for a subtree starting at this node, ask all references to point to an actual target node object instead of by-name/by-id value.
+   * This operation usually precedes detachment of a node/subtree. Direct object pointer then facilitates reference access operations from
+   * the detached nodes just in case there's need.
+   */
+  final void makeReferencesDirect() {
+    for (SReference ref : myReferences) {
+      ref.makeDirect();
+    }
+    for (SNode child = firstChild(); child != null; child = child.treeNext()) {
+      child.makeReferencesDirect();
+    }
+  }
+
   void detach(@NotNull SNodeOwner detachedOwner) {
     myOwner.unregisterNode(this);
-
-    if (myOwner.getModel() != null && !myOwner.getModel().isUpdateMode()) { // FIXME refactor this code
-      for (SReference ref : myReferences) {
-        ref.makeDirect();
-      }
-    }
 
     for (SNode child = firstChild(); child != null; child = child.treeNext()) {
       child.detach(detachedOwner);
@@ -730,6 +748,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
     if (toAdd != null) {
       assert toAdd.getSourceNode() == this;
+      assert role.equals(toAdd.getLink());
       addReferenceInternal((SReference) toAdd);
     }
 

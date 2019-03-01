@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.SModelId.ForeignSModelId;
 import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.annotation.Hack;
@@ -382,6 +381,6 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
     if (ModuleReference.differs(ref1.getModuleReference(), ref2.getModuleReference())) {
       return true;
     }
-    return !(EqualUtil.equals(ref1.getModelId(), ref2.getModelId()) && EqualUtil.equals(ref1.getModelName(), ref2.getModelName()));
+    return !(Objects.equals(ref1.getModelId(), ref2.getModelId()) && Objects.equals(ref1.getModelName(), ref2.getModelName()));
   }
 }

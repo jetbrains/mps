@@ -21,8 +21,8 @@ import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerAdapter;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.roots.ContentIterator;
-import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.roots.ex.ProjectRootManagerEx;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.vfs.VfsUtil;
@@ -30,13 +30,9 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.IndexableFileSet;
 import jetbrains.mps.ide.make.StartupModuleMaker;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.library.contributor.LibDescriptor;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ProjectLibraryManager;
-import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -139,8 +135,8 @@ public class MPSIndexableFileSet extends AbstractProjectComponent implements Ind
   }
 
   private boolean isInProject(VirtualFile file) {
-    VirtualFile baseDir = myProject.getBaseDir();
-    return VfsUtil.isAncestor(baseDir, file, false);
+    VirtualFile baseDir = ProjectUtil.guessProjectDir(myProject);;
+    return baseDir != null && VfsUtil.isAncestor(baseDir, file, false);
   }
 
   @Override

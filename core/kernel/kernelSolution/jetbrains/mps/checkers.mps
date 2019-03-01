@@ -5507,6 +5507,78 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="7snBIRAyQFE" role="3cqZAp">
+          <node concept="3SKdUq" id="7snBIRAyQFG" role="3SKWNk">
+            <property role="3SKdUp" value="FIXME pass LR/ComponentHost at checker construction time!" />
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7snBIRAyPJB" role="3cqZAp">
+          <node concept="3cpWsn" id="7snBIRAyPJC" role="3cpWs9">
+            <property role="TrG5h" value="languageRegistry" />
+            <node concept="3uibUv" id="7snBIRAyPJD" role="1tU5fm">
+              <ref role="3uigEE" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
+            </node>
+            <node concept="2YIFZM" id="7snBIRAyQaz" role="33vP2m">
+              <ref role="1Pybhc" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
+              <ref role="37wK5l" to="vndm:~LanguageRegistry.getInstance(org.jetbrains.mps.openapi.module.SRepository):jetbrains.mps.smodel.language.LanguageRegistry" resolve="getInstance" />
+              <node concept="37vLTw" id="7snBIRAyQdm" role="37wK5m">
+                <ref role="3cqZAo" node="3TJpIwQlqFT" resolve="repository" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7snBIRAyUdd" role="3cqZAp">
+          <node concept="3cpWsn" id="7snBIRAyUde" role="3cpWs9">
+            <property role="TrG5h" value="modelUsedLanguages" />
+            <node concept="3uibUv" id="7snBIRAyUd2" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
+              <node concept="3uibUv" id="7snBIRAyUd5" role="11_B2D">
+                <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="7snBIRAyUdf" role="33vP2m">
+              <node concept="2ShNRf" id="7snBIRAyUdg" role="2Oq$k0">
+                <node concept="1pGfFk" id="7snBIRAyUdh" role="2ShVmc">
+                  <ref role="37wK5l" to="w1kc:~ModelDependencyResolver.&lt;init&gt;(jetbrains.mps.smodel.language.LanguageRegistry,org.jetbrains.mps.openapi.module.SRepository)" resolve="ModelDependencyResolver" />
+                  <node concept="37vLTw" id="7snBIRAyUdi" role="37wK5m">
+                    <ref role="3cqZAo" node="7snBIRAyPJC" resolve="languageRegistry" />
+                  </node>
+                  <node concept="37vLTw" id="7snBIRAyUdj" role="37wK5m">
+                    <ref role="3cqZAo" node="3TJpIwQlqFT" resolve="repository" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="7snBIRAyUdk" role="2OqNvi">
+                <ref role="37wK5l" to="w1kc:~ModelDependencyResolver.usedLanguages(org.jetbrains.mps.openapi.model.SModel):java.util.Collection" resolve="usedLanguages" />
+                <node concept="2OqwBi" id="7snBIRAyUdl" role="37wK5m">
+                  <node concept="37vLTw" id="7snBIRAyUdm" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3TJpIwQlqFP" resolve="node" />
+                  </node>
+                  <node concept="I4A8Y" id="7snBIRAyUdn" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7snBIRAyK2u" role="3cqZAp">
+          <node concept="3cpWsn" id="7snBIRAyK2v" role="3cpWs9">
+            <property role="TrG5h" value="hierarchy" />
+            <node concept="3uibUv" id="7snBIRAyK2k" role="1tU5fm">
+              <ref role="3uigEE" to="w1kc:~SLanguageHierarchy" resolve="SLanguageHierarchy" />
+            </node>
+            <node concept="2ShNRf" id="7snBIRAyK2w" role="33vP2m">
+              <node concept="1pGfFk" id="7snBIRAyK2x" role="2ShVmc">
+                <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.&lt;init&gt;(jetbrains.mps.smodel.language.LanguageRegistry,java.util.Collection)" resolve="SLanguageHierarchy" />
+                <node concept="37vLTw" id="7snBIRAyU48" role="37wK5m">
+                  <ref role="3cqZAo" node="7snBIRAyPJC" resolve="languageRegistry" />
+                </node>
+                <node concept="37vLTw" id="7snBIRAyVio" role="37wK5m">
+                  <ref role="3cqZAo" node="7snBIRAyUde" resolve="modelUsedLanguages" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="3TJpIwQlqGc" role="3cqZAp">
           <node concept="2OqwBi" id="3TJpIwQlqGd" role="3clFbG">
             <node concept="37vLTw" id="3TJpIwQlqGe" role="2Oq$k0">
@@ -5515,20 +5587,8 @@
             <node concept="liA8E" id="3TJpIwQlqGf" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Set.addAll(java.util.Collection):boolean" resolve="addAll" />
               <node concept="2OqwBi" id="3TJpIwQlqGg" role="37wK5m">
-                <node concept="2ShNRf" id="3TJpIwQlqGh" role="2Oq$k0">
-                  <node concept="1pGfFk" id="3TJpIwQlqGi" role="2ShVmc">
-                    <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.&lt;init&gt;(java.util.Collection)" resolve="SLanguageHierarchy" />
-                    <node concept="2YIFZM" id="3TJpIwQlqGj" role="37wK5m">
-                      <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
-                      <ref role="37wK5l" to="w1kc:~SModelOperations.getAllLanguageImports(org.jetbrains.mps.openapi.model.SModel):java.util.Set" resolve="getAllLanguageImports" />
-                      <node concept="2OqwBi" id="3TJpIwQlqGk" role="37wK5m">
-                        <node concept="37vLTw" id="3TJpIwQlqGl" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3TJpIwQlqFP" resolve="node" />
-                        </node>
-                        <node concept="I4A8Y" id="3TJpIwQlqGm" role="2OqNvi" />
-                      </node>
-                    </node>
-                  </node>
+                <node concept="37vLTw" id="7snBIRAyK2A" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7snBIRAyK2v" resolve="hierarchy" />
                 </node>
                 <node concept="liA8E" id="3TJpIwQlqGn" role="2OqNvi">
                   <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.getExtended():java.util.Set" resolve="getExtended" />
@@ -5537,25 +5597,58 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="7snBIRAzygS" role="3cqZAp">
+          <node concept="3SKdUq" id="7snBIRAzygU" role="3SKWNk">
+            <property role="3SKdUp" value="Here we address MPS-28205 scenario, when a model with import of Lang1 has instance of a concept with child from an aggregated Lang2." />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7snBIRAzvmE" role="3cqZAp">
+          <node concept="3SKdUq" id="7snBIRAzvmG" role="3SKWNk">
+            <property role="3SKdUp" value="XXX I see two possible approaches here: either assume model imports shall explicitly reflect aggregated languages as well" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7snBIRAzwwx" role="3cqZAp">
+          <node concept="3SKdUq" id="7snBIRAzxch" role="3SKWNk">
+            <property role="3SKdUp" value="e.g. by adding them automatically when an appropriate child is created, and 'implicit' import of aggregated languages, when we keep" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7snBIRAzyF2" role="3cqZAp">
+          <node concept="3SKdUq" id="7snBIRAzyF4" role="3SKWNk">
+            <property role="3SKdUp" value="model imports to user to control, and 'guess' (deduce) the rest based on available metainfo. I feel former would get model imports " />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7snBIRAzz3g" role="3cqZAp">
+          <node concept="3SKdUq" id="7snBIRAzz3h" role="3SKWNk">
+            <property role="3SKdUp" value="way too cluttered, and lean towards the latter approach, hence treat aggergated languages as imported here." />
+          </node>
+        </node>
+        <node concept="3clFbF" id="7snBIRAyVJG" role="3cqZAp">
+          <node concept="2OqwBi" id="7snBIRAyWu7" role="3clFbG">
+            <node concept="37vLTw" id="7snBIRAyVJE" role="2Oq$k0">
+              <ref role="3cqZAo" node="3TJpIwQlqG6" resolve="importedLanguages" />
+            </node>
+            <node concept="liA8E" id="7snBIRAz7IR" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.addAll(java.util.Collection):boolean" resolve="addAll" />
+              <node concept="2OqwBi" id="7snBIRAz86Z" role="37wK5m">
+                <node concept="37vLTw" id="7snBIRAz7Pu" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7snBIRAyK2v" resolve="hierarchy" />
+                </node>
+                <node concept="liA8E" id="7snBIRAz8iN" role="2OqNvi">
+                  <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.getAggregated():java.util.Set" resolve="getAggregated" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="3TJpIwQlqGo" role="3cqZAp" />
         <node concept="3SKdUt" id="3TJpIwQlqGp" role="3cqZAp">
           <node concept="3SKdUq" id="3TJpIwQlqGq" role="3SKWNk">
-            <property role="3SKdUp" value="need to recurse the tree, to report missing language once per sub-tree " />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="3TJpIwQlqGr" role="3cqZAp">
-          <node concept="3SKdUq" id="3TJpIwQlqGs" role="3SKWNk">
-            <property role="3SKdUp" value="(starting from the first node with missing language encountered)" />
+            <property role="3SKdUp" value="need to recurse the tree, to report missing language once per sub-tree (starting from the first node with missing language encountered)" />
           </node>
         </node>
         <node concept="3SKdUt" id="3TJpIwQlqGt" role="3cqZAp">
           <node concept="3SKdUq" id="3TJpIwQlqGu" role="3SKWNk">
-            <property role="3SKdUp" value="Iterative alternative would be more complicated, and there are no utility " />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="3TJpIwQlqGv" role="3cqZAp">
-          <node concept="3SKdUq" id="3TJpIwQlqGw" role="3SKWNk">
-            <property role="3SKdUp" value="methods in the rules nor we support inner classes, hence the trick with Runnable" />
+            <property role="3SKdUp" value="Iterative alternative would be more complicated, hence inglorious recursion" />
           </node>
         </node>
         <node concept="3clFbF" id="3TJpIwQlqGx" role="3cqZAp">
@@ -5589,7 +5682,6 @@
     <node concept="3clFb_" id="3TJpIwQlqGE" role="jymVt">
       <property role="TrG5h" value="findMissing" />
       <node concept="3cqZAl" id="3TJpIwQlqGF" role="3clF45" />
-      <node concept="3Tm1VV" id="3TJpIwQlqGG" role="1B3o_S" />
       <node concept="3clFbS" id="3TJpIwQlqGH" role="3clF47">
         <node concept="3cpWs8" id="3TJpIwQlqGI" role="3cqZAp">
           <node concept="3cpWsn" id="3TJpIwQlqGJ" role="3cpWs9">
@@ -5849,6 +5941,7 @@
           </node>
         </node>
       </node>
+      <node concept="3Tm6S6" id="7snBIRAzaw9" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="3TJpIwQlqIl" role="jymVt" />
     <node concept="3uibUv" id="3TJpIwQlqIm" role="1zkMxy">

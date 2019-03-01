@@ -38501,7 +38501,7 @@
                         <ref role="3cqZAo" node="3ypfuX5NTZe" resolve="sr" />
                       </node>
                       <node concept="liA8E" id="3ypfuX5NXN2" role="2OqNvi">
-                        <ref role="37wK5l" to="w1kc:~SReferenceBase.getTargetSModelReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getTargetSModelReference" />
+                        <ref role="37wK5l" to="w1kc:~StaticReference.getTargetSModelReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getTargetSModelReference" />
                       </node>
                     </node>
                   </node>

@@ -57,6 +57,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
+    deps.extendedLanguage(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, "jetbrains.mps.lang.smodel.query");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptAbstractPrintExpression, myConceptBLCommand, myConceptBLExpression, myConceptCommand, myConceptCommandHolder, myConceptCommandHolderRef, myConceptConsoleRoot, myConceptExceptionHolder, myConceptGeneratedCommand, myConceptHelpCommand, myConceptHelpConceptReference, myConceptHistory, myConceptHistoryItem, myConceptIActionHolder, myConceptIClickable, myConceptINodeWithReference, myConceptInterpretedCommand, myConceptModifiedCommandHistoryItem, myConceptNewLineResponseItem, myConceptNodeReferencePresentation, myConceptNodeReferenceString, myConceptNodeResponseItem, myConceptNodeWithClosure, myConceptOutputConsoleRoot, myConceptPastedNodeReference, myConceptPrintExpression, myConceptPrintNodeExpression, myConceptPrintNodeReferenceExpression, myConceptPrintSequenceExpression, myConceptPrintTextExpression, myConceptProjectEditableScope, myConceptProjectExpression, myConceptProjectScope, myConceptProjectScope_old, myConceptResponse, myConceptResponseItem, myConceptTextResponseItem);

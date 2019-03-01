@@ -28,8 +28,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.ArrayList;
 import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.smodel.references.ImmatureReferences;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import java.util.Collection;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
@@ -95,12 +93,10 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
 
 
     public List<NodeReportItem> runChecker(IChecker.AbstractRootChecker<? extends NodeReportItem> checker, SNode root) {
-      SModel model = TemporaryModels.getInstance().create(false, false, TempModuleOptions.forDefaultModule());
+      SModel model = TemporaryModels.getInstance().create(false, false, TempModuleOptions.nonReloadableModule());
       SModelOperations.addRootNode(model, SNodeOperations.copyNode(root));
       List<NodeReportItem> result = ListSequence.fromList(new ArrayList<NodeReportItem>());
       checker.check(root, model.getRepository(), new CollectConsumer<NodeReportItem>(result), new EmptyProgressMonitor());
-      ImmatureReferences.getInstance().cleanup();
-      UnregisteredNodes.instance().clear();
       TemporaryModels.getInstance().dispose(model);
       return result;
     }

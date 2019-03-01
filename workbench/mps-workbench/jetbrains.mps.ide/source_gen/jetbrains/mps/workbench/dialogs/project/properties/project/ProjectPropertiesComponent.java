@@ -24,6 +24,7 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.fileChooser.FileChooser;
+import com.intellij.openapi.project.ProjectUtil;
 import jetbrains.mps.project.structure.project.ModulePath;
 import java.awt.Dimension;
 import javax.swing.JPanel;
@@ -75,7 +76,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
             });
           }
         });
-        VirtualFile file = FileChooser.chooseFile(descriptor, list, myProject.getProject(), myProject.getProject().getBaseDir());
+        VirtualFile file = FileChooser.chooseFile(descriptor, list, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));
 
         if (file == null) {
           return;

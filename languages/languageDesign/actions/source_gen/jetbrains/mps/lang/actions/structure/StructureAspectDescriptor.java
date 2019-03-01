@@ -54,6 +54,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptConceptFunctionParameter_nodeToCopyPreProcess, myConceptConceptFunctionParameter_nodeToCopyPreProcessOriginal, myConceptConceptFunctionParameter_nodeToPastePostProcess, myConceptConceptFunctionParameter_nodeToPasteWrap, myConceptCopyPasteHandlers, myConceptCopyPreProcessFunction, myConceptCopyPreProcessor, myConceptICouldBeAnnotatedWithMigrateManually, myConceptMigrateManuallyAnnotation, myConceptMigratedToAnnotation, myConceptNF_Concept_NewInstance, myConceptNF_LinkList_AddNewChildOperation, myConceptNF_Link_SetNewChildOperation, myConceptNF_Model_CreateNewNodeOperation, myConceptNF_Model_CreateNewRootNodeOperation, myConceptNF_Node_InsertNewNextSiblingOperation, myConceptNF_Node_InsertNewPrevSiblingOperation, myConceptNF_Node_ReplaceWithNewOperation, myConceptNodeFactories, myConceptNodeFactory, myConceptNodeSetupFunction, myConceptNodeSetupFunction_EnclosingNode, myConceptNodeSetupFunction_NewNode, myConceptNodeSetupFunction_SampleNode, myConceptPastePostProcessFunction, myConceptPastePostProcessor, myConceptPasteWrapper, myConceptPasteWrappers, myConceptQueryFunction_PasteWrapper, myConceptSNodeCreatorAndInitializer);

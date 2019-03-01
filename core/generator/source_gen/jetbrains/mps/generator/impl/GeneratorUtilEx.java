@@ -84,6 +84,7 @@ public final class GeneratorUtilEx {
     boolean customProcessing = SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, "jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression"));
     customProcessing |= SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a07e5L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPatternRef"));
     customProcessing |= SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression"));
+    customProcessing |= SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2"));
     // XXX generated templates are fine with genContext operations, however, there's no support for these in TemplateCall#toExpressionRuntime() yet. 
     // I'd need a switch by GenerationContextOp_Base subconcepts that get translated into respective TemplateContext call. 
     if (customProcessing) {

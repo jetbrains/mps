@@ -213,18 +213,18 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
-        <property id="6489343236075007666" name="label" index="3hQQBS" />
-        <child id="1196350785111" name="expression" index="2c44t1" />
+      <concept id="5455284157993911077" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty" flags="ng" index="2pJxcG">
+        <reference id="5455284157993911078" name="property" index="2pJxcJ" />
       </concept>
-      <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
-        <child id="1196350785114" name="quotedNode" index="2c44tc" />
+      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
+        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
       </concept>
-      <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
-    </language>
-    <language id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build">
-      <concept id="4903714810883702019" name="jetbrains.mps.build.structure.BuildTextStringPart" flags="ng" index="3Mxwew">
-        <property id="4903714810883755350" name="text" index="3MwjfP" />
+      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
+        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
+      </concept>
+      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
+        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
+        <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
@@ -309,10 +309,6 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
-      <concept id="3364660638048049750" name="jetbrains.mps.lang.core.structure.PropertyAttribute" flags="ng" index="A9Btg">
-        <property id="1757699476691236117" name="name_DebugInfo" index="2qtEX9" />
-        <property id="1341860900487648621" name="propertyId" index="P4ACc" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -10596,14 +10592,12 @@
                     </node>
                   </node>
                   <node concept="TSZUe" id="Ze" role="2OqNvi">
-                    <node concept="2c44tf" id="Zo" role="25WWJ7">
-                      <node concept="3Mxwew" id="Zq" role="2c44tc">
-                        <property role="3MwjfP" value="" />
-                        <node concept="2EMmih" id="Zs" role="lGtFl">
-                          <property role="2qtEX9" value="text" />
-                          <property role="3hQQBS" value="BuildTextStringPart" />
-                          <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/4903714810883702019/4903714810883755350" />
-                          <node concept="1eOMI4" id="Zu" role="2c44t1">
+                    <node concept="2pJPEk" id="Zo" role="25WWJ7">
+                      <node concept="2pJPED" id="Zq" role="2pJPEn">
+                        <ref role="2pJxaS" to="3ior:4gdvEeQyRO3" resolve="BuildTextStringPart" />
+                        <node concept="2pJxcG" id="Zs" role="2pJxcM">
+                          <ref role="2pJxcJ" to="3ior:4gdvEeQz4Pm" resolve="text" />
+                          <node concept="1eOMI4" id="Zu" role="2pJxcZ">
                             <node concept="10QFUN" id="Zw" role="1eOMHV">
                               <node concept="17QB3L" id="Zy" role="10QFUM">
                                 <node concept="cd27G" id="Z$" role="lGtFl">
@@ -10640,19 +10634,19 @@
                           </node>
                           <node concept="cd27G" id="Zv" role="lGtFl">
                             <node concept="3u3nmq" id="ZH" role="cd27D">
-                              <property role="3u3nmv" value="1979010778009330362" />
+                              <property role="3u3nmv" value="8652531395018063618" />
                             </node>
                           </node>
                         </node>
                         <node concept="cd27G" id="Zt" role="lGtFl">
                           <node concept="3u3nmq" id="ZI" role="cd27D">
-                            <property role="3u3nmv" value="1979010778009330359" />
+                            <property role="3u3nmv" value="8652531395018063617" />
                           </node>
                         </node>
                       </node>
                       <node concept="cd27G" id="Zr" role="lGtFl">
                         <node concept="3u3nmq" id="ZJ" role="cd27D">
-                          <property role="3u3nmv" value="1979010778009330356" />
+                          <property role="3u3nmv" value="8652531395018063620" />
                         </node>
                       </node>
                     </node>

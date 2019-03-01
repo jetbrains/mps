@@ -225,23 +225,60 @@
         </node>
       </node>
       <node concept="3clFbS" id="6FKiTwA0IZZ" role="3clF47">
-        <node concept="3cpWs6" id="6FKiTwA0J00" role="3cqZAp">
-          <node concept="2YIFZM" id="6FKiTwA0J01" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-            <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
-            <node concept="2OqwBi" id="6FKiTwA0J02" role="37wK5m">
-              <node concept="2OqwBi" id="6FKiTwA0J03" role="2Oq$k0">
-                <node concept="37vLTw" id="2BHiRxgkZZr" role="2Oq$k0">
+        <node concept="3clFbJ" id="3FLm4EWtLt4" role="3cqZAp">
+          <node concept="3clFbS" id="3FLm4EWtLt6" role="3clFbx">
+            <node concept="3cpWs6" id="3FLm4EWtXQC" role="3cqZAp">
+              <node concept="2YIFZM" id="3FLm4EWtCCl" role="3cqZAk">
+                <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                <node concept="2YIFZM" id="3FLm4EWtCCm" role="37wK5m">
+                  <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
+                  <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                  <node concept="2OqwBi" id="3FLm4EWtCCn" role="37wK5m">
+                    <node concept="37vLTw" id="3FLm4EWtCCo" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6FKiTwA0IZX" resolve="vcsContext" />
+                    </node>
+                    <node concept="liA8E" id="3FLm4EWtCCp" role="2OqNvi">
+                      <ref role="37wK5l" to="de5p:~VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="3FLm4EWtCC9" role="3clFbw">
+            <node concept="3y3z36" id="3FLm4EWtCCa" role="3uHU7w">
+              <node concept="10Nm6u" id="3FLm4EWtCCb" role="3uHU7w" />
+              <node concept="2YIFZM" id="3FLm4EWtCCc" role="3uHU7B">
+                <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
+                <node concept="2OqwBi" id="3FLm4EWtCCd" role="37wK5m">
+                  <node concept="37vLTw" id="3FLm4EWtCCe" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6FKiTwA0IZX" resolve="vcsContext" />
+                  </node>
+                  <node concept="liA8E" id="3FLm4EWtCCf" role="2OqNvi">
+                    <ref role="37wK5l" to="de5p:~VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3y3z36" id="3FLm4EWtCCg" role="3uHU7B">
+              <node concept="2OqwBi" id="3FLm4EWtCCh" role="3uHU7B">
+                <node concept="37vLTw" id="3FLm4EWtCCi" role="2Oq$k0">
                   <ref role="3cqZAo" node="6FKiTwA0IZX" resolve="vcsContext" />
                 </node>
-                <node concept="liA8E" id="6FKiTwA0J05" role="2OqNvi">
+                <node concept="liA8E" id="3FLm4EWtCCj" role="2OqNvi">
                   <ref role="37wK5l" to="de5p:~VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
                 </node>
               </node>
-              <node concept="liA8E" id="6FKiTwA0J06" role="2OqNvi">
-                <ref role="37wK5l" to="4nm9:~Project.getBaseDir():com.intellij.openapi.vfs.VirtualFile" resolve="getBaseDir" />
-              </node>
+              <node concept="10Nm6u" id="3FLm4EWtCCk" role="3uHU7w" />
             </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3FLm4EWtWZU" role="3cqZAp">
+          <node concept="2YIFZM" id="3FLm4EWtXim" role="3cqZAk">
+            <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
           </node>
         </node>
       </node>

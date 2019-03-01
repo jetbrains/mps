@@ -9,8 +9,6 @@ import jetbrains.mps.vcs.diff.StructChangeSet;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import com.intellij.openapi.diff.ex.DiffStatusBar;
-import com.intellij.openapi.diff.impl.util.TextDiffType;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.vcs.diff.StructChangeSetBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +37,6 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
 
   private JPanel myComponent = new JPanel(new BorderLayout());
   private StructDifferencePane myNodeDifferencePane = null;
-  private DiffStatusBar myStatusBar = new DiffStatusBar(TextDiffType.DIFF_TYPES);
 
   private String[] myContentTitles;
 
@@ -72,7 +69,7 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
         update();
       }
       private void update() {
-        check_rohu9p_a0a4a0a0k0k(myNodeDifferencePane);
+        check_rohu9p_a0a4a0a0k0j(myNodeDifferencePane);
       }
     };
     SNodeOperations.getModel(oldNode).addChangeListener(myChangeListener);
@@ -86,14 +83,13 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    myNodeDifferencePane = new StructDifferencePane(myProject, myChangeSet, myContentTitles, myStatusBar);
+    myNodeDifferencePane = new StructDifferencePane(myProject, myChangeSet, myContentTitles);
     DefaultActionGroup actionGroup = new DefaultActionGroup();
     actionGroup.addAll(myNodeDifferencePane.getActions());
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, actionGroup, true);
     myNodeDifferencePane.registerShortcuts(myComponent);
     myComponent.add(toolbar.getComponent(), BorderLayout.NORTH);
     myComponent.add(myNodeDifferencePane.getPanel(), BorderLayout.CENTER);
-    myComponent.add(myStatusBar, BorderLayout.SOUTH);
 
     myNodeDifferencePane.navigateInitial(null);
 
@@ -149,7 +145,7 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
   }
 
 
-  private static void check_rohu9p_a0a4a0a0k0k(StructDifferencePane checkedDotOperand) {
+  private static void check_rohu9p_a0a4a0a0k0j(StructDifferencePane checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.rehighlight();
     }

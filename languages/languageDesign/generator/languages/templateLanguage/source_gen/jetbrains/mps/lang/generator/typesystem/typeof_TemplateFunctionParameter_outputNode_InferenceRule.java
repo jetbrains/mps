@@ -12,6 +12,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -47,7 +48,7 @@ public class typeof_TemplateFunctionParameter_outputNode_InferenceRule extends A
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1225234961708", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1225234961710", true), (SNode) _quotation_createNode_fai2pj_a1a2a1a0f0b(SNodeOperations.asNode(SNodeOperations.getConcept(SNodeOperations.getParent(parentMacro)))), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1225234961710", true), (SNode) _quotation_createNode_fai2pj_a1a2a1a0f0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(SNodeOperations.getParent(parentMacro)))), _info_12389875345);
       }
     }
   }

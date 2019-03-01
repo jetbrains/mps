@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,7 +91,7 @@ public class DynamicReference extends SReferenceBase {
   }
 
   private DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelName modelName, String resolveInfo) {
-    super(role, sourceNode, null, null);
+    super(role, sourceNode, null);
     if (modelName != null && !resolveInfo.startsWith(modelName.getLongName()) && isTargetClassifier(role)) {
       // hack for classifiers resolving with specified targetModelReference. For now (18/04/2012) targetModelReference used only for Classifiers (in stubs and [model]node construction).
       setResolveInfo(modelName.getLongName() + '.' + resolveInfo);
@@ -108,7 +108,8 @@ public class DynamicReference extends SReferenceBase {
   @Override
   public SModelReference getTargetSModelReference() {
     // don't be shy, tell there's no target model reference right away, rather than let superclass to try to make it indirect
-    // with no-op #makeMature().
+    // with no-op #makeMature(). Now, with targetModelReference field moved to StaticReference, the only reason to have method
+    // implementation here is abstract method placeholder in SReferenceBase. Perhaps, this implementation (== null) shall be there.
     //
     // FWIW, I don't quite get the idea of null target model of DynamicReferences, however, it's the way it was.
     //       Besides, one of the uses of the method is to refresh node's references the moment model reference changes,
@@ -117,11 +118,6 @@ public class DynamicReference extends SReferenceBase {
     //
 
     return null;
-  }
-
-  @Override
-  public void setTargetSModelReference(@NotNull SModelReference modelReference) {
-    // no-op, synchronized of super has been removed intentionally
   }
 
   @Override
@@ -219,11 +215,6 @@ public class DynamicReference extends SReferenceBase {
     } finally {
       refs.remove(this);
     }
-  }
-
-  @Override
-  protected synchronized void makeMature() {
-
   }
 
   @Nullable

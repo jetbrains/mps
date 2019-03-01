@@ -100,6 +100,7 @@
     <classNode dependClassName="java.io.IOException" />
     <classNode dependClassName="java.io.InputStream" />
     <classNode dependClassName="java.io.InputStreamReader" />
+    <classNode dependClassName="java.io.PrintWriter" />
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.ClassLoader" />
     <classNode dependClassName="java.lang.Deprecated" />
@@ -119,6 +120,7 @@
     <classNode dependClassName="java.net.MalformedURLException" />
     <classNode dependClassName="java.net.URL" />
     <classNode dependClassName="java.net.URLClassLoader" />
+    <classNode dependClassName="java.nio.file.Files" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.HashSet" />
@@ -133,7 +135,9 @@
     <classNode dependClassName="jetbrains.mps.build.ant.MPSClasspathUtil" />
     <classNode dependClassName="jetbrains.mps.build.ant.Macro" />
     <classNode dependClassName="jetbrains.mps.build.ant.MyExecuteStreamHandler" />
+    <classNode dependClassName="jetbrains.mps.build.ant.Plugin" />
     <classNode dependClassName="jetbrains.mps.build.ant.RepositoryDataType" />
+    <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.tools.ant.BuildException" />
@@ -158,6 +162,12 @@
     <classNode dependClassName="org.apache.tools.ant.Project" />
     <classNode dependClassName="org.apache.tools.ant.Task" />
     <classNode extendsClassName="org.apache.tools.ant.taskdefs.ExecuteStreamHandler" />
+  </dependency>
+  <dependency className="jetbrains.mps.build.ant.Plugin">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
+    <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.RepositoryDataType">
     <classNode dependClassName="java.lang.Deprecated" />

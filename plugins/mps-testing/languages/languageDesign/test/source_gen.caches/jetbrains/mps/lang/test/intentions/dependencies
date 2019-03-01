@@ -216,7 +216,7 @@
     <classNode extendsClassName="jetbrains.mps.intentions.AbstractIntentionDescriptor" />
     <classNode extendsClassName="jetbrains.mps.openapi.intentions.IntentionFactory" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.test.intentions.GenerateOuput_Intention">
+  <dependency className="jetbrains.mps.lang.test.intentions.GenerateOutput_Intention">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
@@ -244,8 +244,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistry" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
-    <classNode dependClassName="jetbrains.mps.smodel.references.ImmatureReferences" />
-    <classNode dependClassName="jetbrains.mps.smodel.references.UnregisteredNodes" />
     <classNode dependClassName="jetbrains.mps.smodel.tempmodel.TempModuleOptions" />
     <classNode dependClassName="jetbrains.mps.smodel.tempmodel.TemporaryModels" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
@@ -271,7 +269,7 @@
     <classNode dependClassName="jetbrains.mps.lang.test.intentions.AddScopeExpectedNodes_Intention" />
     <classNode dependClassName="jetbrains.mps.lang.test.intentions.AddScopeTestAnnotation_Intention" />
     <classNode dependClassName="jetbrains.mps.lang.test.intentions.AddTestAnnotation_Intention" />
-    <classNode dependClassName="jetbrains.mps.lang.test.intentions.GenerateOuput_Intention" />
+    <classNode dependClassName="jetbrains.mps.lang.test.intentions.GenerateOutput_Intention" />
     <classNode dependClassName="jetbrains.mps.lang.test.intentions.SpecifyRuleReferences_Intention" />
     <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />

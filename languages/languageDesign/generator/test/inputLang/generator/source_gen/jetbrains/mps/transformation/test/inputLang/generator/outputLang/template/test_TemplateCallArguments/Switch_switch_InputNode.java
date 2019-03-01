@@ -60,8 +60,8 @@ public class Switch_switch_InputNode extends TemplateSwitchBase implements Templ
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final Object varValue1 = QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context, varMacroRef_tlt8xy_b0a0a2a1i));
-      TemplateContext context1 = context.withVariable("var:xxx", varValue1);
+      TemplateContext context1 = context;
+      context1 = context1.withVariable("var:xxx", QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "2409421742521903817"))));
       Collection<SNode> tlist2 = null;
       TemplateContext context2;
       context2 = context1.withVariable("text", ((String) context1.getVariable("var:xxx")));
@@ -84,5 +84,4 @@ public class Switch_switch_InputNode extends TemplateSwitchBase implements Templ
       return tlist1;
     }
   }
-  private static SNodePointer varMacroRef_tlt8xy_b0a0a2a1i = new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948583813");
 }

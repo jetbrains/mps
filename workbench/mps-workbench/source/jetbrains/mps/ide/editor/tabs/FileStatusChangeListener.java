@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.editor.tabs;
 
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VfsUtilCore;
@@ -94,8 +95,9 @@ class FileStatusChangeListener implements FileStatusListener, ProjectComponent {
   @Override
   public void fileStatusChanged(@NotNull VirtualFile virtualFile) {
     // Needed for quick update of one tab
-    if (virtualFile instanceof MPSNodeVirtualFile &&
-        VfsUtilCore.isAncestor(myIdeaProject.getBaseDir(), virtualFile.getParent(), false) &&
+    final VirtualFile projectDir = ProjectUtil.guessProjectDir(myIdeaProject);
+    if (virtualFile instanceof MPSNodeVirtualFile && projectDir != null &&
+        VfsUtilCore.isAncestor(projectDir, virtualFile.getParent(), false) &&
         myNodeRef2TabsComponents.containsKey(((MPSNodeVirtualFile) virtualFile).getSNodePointer())) {
       updateTabColorsLater(((MPSNodeVirtualFile) virtualFile).getSNodePointer());
     }

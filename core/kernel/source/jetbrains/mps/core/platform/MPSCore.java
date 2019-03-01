@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -136,7 +136,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myPathMacros = init(new PathMacros());
     myLibraryInitializer = init(new LibraryInitializer(myModuleRepository));
     init(new GlobalScope(myModuleRepository));
-    init(new ImmatureReferences(myModuleRepository, myPersistenceFacade));
+    init(new ImmatureReferences(myModuleRepository));
 
     // XXX. Sort of hack. There are LanguageRegistry listeners that expect extensions loaded (LDMP accesses LanguageAspectEP).
     //      Therefore, it's necessary for ExtensionRegistry to get notified by CLM about loaded classes prior to LanguageRegistry,

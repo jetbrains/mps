@@ -122,6 +122,7 @@ public class MergeDriverMain {
       case PROJECT:
         return new CompositeMerger(new TextMerger(), new SimpleMerger());
       case TRACE_CACHE:
+      case GENERATOR_DEPENDENCIES_V3:
       case GENERATOR_DEPENDENCIES:
         return new EmptyMerger();
       case JAVA_DEPENDENCIES:

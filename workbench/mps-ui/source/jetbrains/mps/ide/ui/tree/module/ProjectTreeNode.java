@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.ui.tree.module;
 
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.project.ex.ProjectEx.ProjectSaved;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.icons.IdeIcons;
@@ -48,9 +49,9 @@ public class ProjectTreeNode extends TextTreeNode implements TreeElement {
     if (myProject instanceof MPSProject) {
       com.intellij.openapi.project.Project ideaProject = ((MPSProject) myProject).getProject();
 
-      if (ideaProject.getBaseDir() != null) {
+      if (ProjectUtil.guessProjectDir(ideaProject) != null) {
         //noinspection ConstantConditions
-        setAdditionalText(ideaProject.getBaseDir().getPresentableUrl());
+        setAdditionalText(ProjectUtil.guessProjectDir(ideaProject).getPresentableUrl());
       }
     }
   }
@@ -69,7 +70,12 @@ public class ProjectTreeNode extends TextTreeNode implements TreeElement {
     super.onAdd();
 
     myConnect = ApplicationManager.getApplication().getMessageBus().connect(this.getTree());
-    myConnect.subscribe(ProjectSaved.TOPIC, project -> ProjectTreeNode.this.doUpdatePresentation());
+    myConnect.subscribe(ProjectSaved.TOPIC, new ProjectSaved() {
+      @Override
+      public void duringSave(@NotNull com.intellij.openapi.project.Project project) {
+        ProjectTreeNode.this.doUpdatePresentation();
+      }
+    });
   }
 
   @Override

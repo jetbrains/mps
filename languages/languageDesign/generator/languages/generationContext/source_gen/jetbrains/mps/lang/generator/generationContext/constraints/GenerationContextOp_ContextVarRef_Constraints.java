@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.scope.Scope;
 
 public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstraintsDescriptor {
   public GenerationContextOp_ContextVarRef_Constraints() {
@@ -45,7 +46,7 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
                 return true;
               }
             }
-            n = TraverseUtil.parent(n);
+            n = Scope.parent(n);
           }
           return false;
         }

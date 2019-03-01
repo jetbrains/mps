@@ -25,7 +25,7 @@ public class MPSVcsHelper extends AbstractVcsHelperImpl {
 
   @NotNull
   @Override
-  public List<VirtualFile> showMergeDialog(List<VirtualFile> files, MergeProvider provider, @NotNull MergeDialogCustomizer customizer) {
+  public List<VirtualFile> showMergeDialog(List<? extends VirtualFile> files, MergeProvider provider, @NotNull MergeDialogCustomizer customizer) {
 
     if (ConflictingModelsUtil.hasResolvableConflicts(myProject, provider, ListSequence.fromList(((List<VirtualFile>) files)).where(new IWhereFilter<VirtualFile>() {
       public boolean accept(VirtualFile f) {
@@ -38,7 +38,7 @@ public class MPSVcsHelper extends AbstractVcsHelperImpl {
         return Collections.<VirtualFile>emptyList();
       }
       if (answer == Messages.YES) {
-        MergeSession session = (provider instanceof MergeProvider2 ? ((MergeProvider2) provider).createMergeSession(files) : null);
+        MergeSession session = (provider instanceof MergeProvider2 ? ((MergeProvider2) provider).createMergeSession((List<VirtualFile>) files) : null);
         ConflictingModelsUtil.ModelConflictResolver modelConflictResolverTask = ConflictingModelsUtil.getModelConflictResolverTask(myProject, provider, session, files);
         ProgressManager.getInstance().run(modelConflictResolverTask);
         // update list of files 

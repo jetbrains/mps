@@ -55,6 +55,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptXmlAttribute, myConceptXmlBaseAttribute, myConceptXmlBaseElement, myConceptXmlBasePrologElement, myConceptXmlCDATA, myConceptXmlCharRef, myConceptXmlCharRefValue, myConceptXmlComment, myConceptXmlCommentLine, myConceptXmlContent, myConceptXmlDeclaration, myConceptXmlDoctypeDeclaration, myConceptXmlDocument, myConceptXmlElement, myConceptXmlEntityRef, myConceptXmlEntityRefValue, myConceptXmlExternalId, myConceptXmlFile, myConceptXmlNoSpaceValue, myConceptXmlPart, myConceptXmlProcessingInstruction, myConceptXmlProlog, myConceptXmlPrologElement, myConceptXmlText, myConceptXmlTextValue, myConceptXmlValuePart, myConceptXmlWhitespace);

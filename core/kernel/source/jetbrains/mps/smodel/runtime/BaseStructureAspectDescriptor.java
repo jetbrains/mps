@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,5 +33,10 @@ public abstract class BaseStructureAspectDescriptor implements StructureAspectDe
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
     return Collections.emptyList();
+  }
+
+  @Override
+  public void reportDependencies(Dependencies deps) {
+    // no-op, subclasses shall override if they got any dependency, and are not obliged to invoke super.
   }
 }

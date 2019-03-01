@@ -46,8 +46,8 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    final Object varValue1 = QueriesGenerated.varMacro_Value_116_0(new TemplateVarContext(context, varMacroRef_3yq9wq_b0a0a2a6));
-    TemplateContext context1 = context.withVariable("var:invocationTarget", varValue1);
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:invocationTarget", QueriesGenerated.varMacro_Value_116_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904818"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~BHReflection")));
@@ -199,7 +199,6 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
     rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer varMacroRef_3yq9wq_b0a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7804432302139143248");
   private static SNodePointer callMacro_3yq9wq_b0a0a1a3a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892235962");
   private static SNodePointer propertyMacro_3yq9wq_c0a0c0a0b0d0b0f0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236007");
   private static SNodePointer ifMacroRef_3yq9wq_b0a0b0e0b0f0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236038");

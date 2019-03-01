@@ -182,7 +182,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateModelBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_RootCustom">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.Generated" />

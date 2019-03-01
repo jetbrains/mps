@@ -30,6 +30,7 @@ public enum FileType {
   PROJECT(MPSExtentions.IDEA_PROJECT, "project"),
   TRACE_CACHE("trace.info", "debug-info"),
   GENERATOR_DEPENDENCIES("generated", "dependencies"),
+  GENERATOR_DEPENDENCIES_V3("generated", "product"),
   JAVA_DEPENDENCIES("dependencies", "dependenciesRoot");
 
 
@@ -49,18 +50,18 @@ public enum FileType {
   }
 
   @Nullable
-  public static FileType get(@NotNull ModelFactoryService service, @Nullable final String fileExt, File file) {
+  public static FileType get(@NotNull ModelFactoryService service, @Nullable final String filetype, File file) {
     // try to recognize by filetype 
-    if (fileExt != null) {
+    if (filetype != null) {
       FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst(new IWhereFilter<FileType>() {
         public boolean accept(FileType t) {
-          return fileExt.equals(t.mySuffix);
+          return filetype.equals(t.mySuffix);
         }
       });
       if (type != null) {
         return type;
       }
-      if (service.getDefaultModelFactory(FileExtensionDataSourceType.of(fileExt)) != null) {
+      if (service.getDefaultModelFactory(FileExtensionDataSourceType.of(filetype)) != null) {
         return FileType.MODEL;
       }
     }

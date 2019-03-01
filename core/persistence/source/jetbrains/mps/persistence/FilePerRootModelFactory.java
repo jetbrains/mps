@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -252,18 +252,13 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
     @Override
     public String getModelHash() {
-      Map<String, String> genHashes = getGenerationHashes();
+      Map<String, String> genHashes = FilePerRootModelFactory.getModelHashes(getSource0());
       if (genHashes == null) {
         // I/O problem, hash is not available
         return null;
       }
 
       return genHashes.get(GeneratableSModel.FILE);
-    }
-
-    @Override
-    public Map<String, String> getGenerationHashes() {
-      return FilePerRootModelFactory.getModelHashes(getSource0());
     }
 
     @NotNull

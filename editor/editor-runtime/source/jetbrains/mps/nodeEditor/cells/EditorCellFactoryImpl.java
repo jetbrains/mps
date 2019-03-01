@@ -51,7 +51,7 @@ import java.util.stream.Stream;
 public class EditorCellFactoryImpl implements EditorCellFactory {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorCellFactoryImpl.class));
 
-  private static final EditorCellContext DEFAULT_CELL_CONTEXT = () -> Collections.emptySet();
+  private static final EditorCellContext DEFAULT_CELL_CONTEXT = Collections::emptySet;
   public static final String BASE_COMMENT_HINT = "jetbrains.mps.lang.core.editor.BaseEditorContextHints.comment";
 
   private final EditorContext myEditorContext;
@@ -98,7 +98,7 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
       try {
         result = createCell(node, isInspector, editor);
         assert result.isBig() : "Non-big " + (isInspector ? "inspector " : "") + "cell was created by " + editor.getClass().getName() + " ConceptEditor.";
-      } catch (RuntimeException | AssertionError | NoClassDefFoundError e) {
+      } catch (RuntimeException | AssertionError | LinkageError e) {
         LOG.warning("Failed to create cell for node: " + SNodeOperations.getDebugText(node) + " using default editor", e, node);
       }
     }

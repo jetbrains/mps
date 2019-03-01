@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,6 +102,7 @@ final class AttachedNodeOwner extends SNodeOwner {
   public void unregisterNode(SNode node) {
     myModel.unregisterNode(node);
     if (!myModel.isUpdateMode()) {
+      // XXX perhaps, SModel shall tell myOwner.enterUpdate()/myOwner.leaveUpdate() instead of isUpdateMode checks?
       UnregisteredNodes.instance().put(node);
     }
   }

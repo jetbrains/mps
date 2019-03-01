@@ -5,7 +5,7 @@ package jetbrains.mps.build.ant.generation;
 import jetbrains.mps.tool.common.MpsRunnerProperties;
 
 public class MpsRunnerTask extends GenerateTask {
-  private final MpsRunnerProperties myProperties;
+  private MpsRunnerProperties myProperties;
 
   public MpsRunnerTask() {
     // FIXME Please, oh PLEASE, stop extending GenerateTask!!!! 

@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Computable;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VfsUtil;
 import java.io.File;
 import com.intellij.openapi.vcs.VcsRoot;
@@ -31,7 +32,7 @@ public class ModuleVcsPathPresenter extends VcsPathPresenter {
     return ApplicationManager.getApplication().runReadAction(new Computable<String>() {
       @Override
       public String compute() {
-        VirtualFile baseDir = myProject.getBaseDir();
+        VirtualFile baseDir = ProjectUtil.guessProjectDir(myProject);
         if (baseDir != null) {
           if (VfsUtil.isAncestor(baseDir, file, true)) {
             return "[" + myProject.getName() + "]" + File.separator + file.getPath();

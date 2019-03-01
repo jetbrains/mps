@@ -622,9 +622,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("1949222934982329654", new QueriesGenerated.VVQ(0));
-    vvqMethods.put("1949222934982522342", new QueriesGenerated.VVQ(1));
-    vvqMethods.put("1949222934982630095", new QueriesGenerated.VVQ(2));
+    vvqMethods.put("2409421742521904393", new QueriesGenerated.VVQ(0));
+    vvqMethods.put("2409421742521904398", new QueriesGenerated.VVQ(1));
+    vvqMethods.put("2409421742521904402", new QueriesGenerated.VVQ(2));
   }
   @NotNull
   @Override

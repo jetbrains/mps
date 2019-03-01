@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.generator.test.xmodel.lang1.Language" file="Language.java">
+  <dependency className="jetbrains.mps.generator.test.xmodel.lang1.Language">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.generator.test.xmodel.lang1.behavior.BehaviorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.generator.test.xmodel.lang1.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.generator.test.xmodel.lang1.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.generator.test.xmodel.lang1.structure.StructureAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspect" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />

@@ -50,7 +50,6 @@
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments.Switch_switch_InputNode">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />

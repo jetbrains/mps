@@ -46,8 +46,8 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    final Object varValue1 = QueriesGenerated.varMacro_Value_2_0(new TemplateVarContext(context, varMacroRef_6fpfng_b0a0a2a6));
-    TemplateContext context1 = context.withVariable("var:inputNode", varValue1);
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:inputNode", QueriesGenerated.varMacro_Value_2_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2409421742521904571"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       TemplateContext context2 = context1.subContext();
@@ -439,7 +439,6 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
     rv[16] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static SNodePointer varMacroRef_6fpfng_b0a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "6911370362348301906");
   private static SNodePointer templateNode_6fpfng_c0a0a1a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396668027");
   private static SNodePointer copySrcListMacro_6fpfng_b0a0a1a2a1a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8438065045296712359");
   private static SNodePointer propertyMacro_6fpfng_c0a0c0b0b0c0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056397541504");

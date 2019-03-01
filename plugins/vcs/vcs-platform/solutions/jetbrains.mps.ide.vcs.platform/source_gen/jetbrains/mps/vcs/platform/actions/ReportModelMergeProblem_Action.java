@@ -6,19 +6,16 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import java.util.List;
-import com.intellij.openapi.vcs.VcsDirectoryMapping;
-import com.intellij.openapi.vcs.ProjectLevelVcsManager;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import java.awt.Frame;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.blame.dialog.BlameDialog;
 import jetbrains.mps.ide.blame.dialog.BlameDialogComponent;
+import java.util.List;
 import java.io.File;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -43,12 +40,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    List<VcsDirectoryMapping> mappings = ProjectLevelVcsManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getDirectoryMappings();
-    return ListSequence.fromList(mappings).any(new IWhereFilter<VcsDirectoryMapping>() {
-      public boolean accept(VcsDirectoryMapping m) {
-        return isNotEmptyString(m.getVcs());
-      }
-    });
+    return false;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -76,6 +68,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final BlameDialog blameDialog = BlameDialogComponent.getInstance().createDialog(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.FRAME));
+    blameDialog.initDialog();
     blameDialog.setIssueHidden(true);
     blameDialog.setSubsystem("Version Control");
     blameDialog.setIssueTitle("Model merge problem");
@@ -121,15 +114,11 @@ public class ReportModelMergeProblem_Action extends BaseAction {
           return;
         }
         blameDialog.addFile(new File(backupDir, zipNames[selectedIndex]));
-        blameDialog.initDialog();
         blameDialog.show();
       }
     }
   }
   private void showNoBackupsAvailable(final AnActionEvent event) {
     Messages.showInfoMessage(event.getData(CommonDataKeys.PROJECT), "No merge backups available, that is MPS merge was not invoked.", "Model Merge Problem");
-  }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
   }
 }

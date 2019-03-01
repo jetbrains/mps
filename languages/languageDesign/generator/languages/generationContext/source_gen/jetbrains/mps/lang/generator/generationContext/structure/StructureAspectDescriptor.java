@@ -48,6 +48,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptGenerationContextOp_TransientObjectAccess = createDescriptorForGenerationContextOp_TransientObjectAccess();
   /*package*/ final ConceptDescriptor myConceptGenerationContextOp_UserObjectAccessBase = createDescriptorForGenerationContextOp_UserObjectAccessBase();
   /*package*/ final ConceptDescriptor myConceptGenerationContextOp_VarRef = createDescriptorForGenerationContextOp_VarRef();
+  /*package*/ final ConceptDescriptor myConceptGenerationContextOp_VarRef2 = createDescriptorForGenerationContextOp_VarRef2();
   /*package*/ final ConceptDescriptor myConceptGenerationContextType = createDescriptorForGenerationContextType();
   /*package*/ final ConceptDescriptor myConceptTemplateFunctionParameter_generationContext = createDescriptorForTemplateFunctionParameter_generationContext();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -56,9 +57,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptGenerationContextOp_Base, myConceptGenerationContextOp_ContextVarRef, myConceptGenerationContextOp_CopyWithTrace, myConceptGenerationContextOp_CreateIndexedName, myConceptGenerationContextOp_CreateUniqueName, myConceptGenerationContextOp_DirtyNode, myConceptGenerationContextOp_GenParameterRef, myConceptGenerationContextOp_GetCopiedOutputByInput, myConceptGenerationContextOp_GetInputModel, myConceptGenerationContextOp_GetOriginalCopiedInputByOutput, myConceptGenerationContextOp_GetOriginalInputModel, myConceptGenerationContextOp_GetOutputByLabel, myConceptGenerationContextOp_GetOutputByLabelAndInput, myConceptGenerationContextOp_GetOutputByLabelAndInputAndReferenceScope, myConceptGenerationContextOp_GetOutputListByLabelAndInput, myConceptGenerationContextOp_GetOutputModel, myConceptGenerationContextOp_GetPrevInputByLabel, myConceptGenerationContextOp_LinkPatternRef, myConceptGenerationContextOp_NodePatternRef, myConceptGenerationContextOp_ParameterRef, myConceptGenerationContextOp_PatternRef, myConceptGenerationContextOp_PropertyPatternRef, myConceptGenerationContextOp_RegisterLabel, myConceptGenerationContextOp_SessionObjectAccess, myConceptGenerationContextOp_ShowErrorMessage, myConceptGenerationContextOp_ShowInfoMessage, myConceptGenerationContextOp_ShowMessageBase, myConceptGenerationContextOp_ShowWarningMessage, myConceptGenerationContextOp_StepObjectAccess, myConceptGenerationContextOp_TransientObjectAccess, myConceptGenerationContextOp_UserObjectAccessBase, myConceptGenerationContextOp_VarRef, myConceptGenerationContextType, myConceptTemplateFunctionParameter_generationContext);
+    return Arrays.asList(myConceptGenerationContextOp_Base, myConceptGenerationContextOp_ContextVarRef, myConceptGenerationContextOp_CopyWithTrace, myConceptGenerationContextOp_CreateIndexedName, myConceptGenerationContextOp_CreateUniqueName, myConceptGenerationContextOp_DirtyNode, myConceptGenerationContextOp_GenParameterRef, myConceptGenerationContextOp_GetCopiedOutputByInput, myConceptGenerationContextOp_GetInputModel, myConceptGenerationContextOp_GetOriginalCopiedInputByOutput, myConceptGenerationContextOp_GetOriginalInputModel, myConceptGenerationContextOp_GetOutputByLabel, myConceptGenerationContextOp_GetOutputByLabelAndInput, myConceptGenerationContextOp_GetOutputByLabelAndInputAndReferenceScope, myConceptGenerationContextOp_GetOutputListByLabelAndInput, myConceptGenerationContextOp_GetOutputModel, myConceptGenerationContextOp_GetPrevInputByLabel, myConceptGenerationContextOp_LinkPatternRef, myConceptGenerationContextOp_NodePatternRef, myConceptGenerationContextOp_ParameterRef, myConceptGenerationContextOp_PatternRef, myConceptGenerationContextOp_PropertyPatternRef, myConceptGenerationContextOp_RegisterLabel, myConceptGenerationContextOp_SessionObjectAccess, myConceptGenerationContextOp_ShowErrorMessage, myConceptGenerationContextOp_ShowInfoMessage, myConceptGenerationContextOp_ShowMessageBase, myConceptGenerationContextOp_ShowWarningMessage, myConceptGenerationContextOp_StepObjectAccess, myConceptGenerationContextOp_TransientObjectAccess, myConceptGenerationContextOp_UserObjectAccessBase, myConceptGenerationContextOp_VarRef, myConceptGenerationContextOp_VarRef2, myConceptGenerationContextType, myConceptTemplateFunctionParameter_generationContext);
   }
 
   @Override
@@ -129,6 +138,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptGenerationContextOp_UserObjectAccessBase;
       case LanguageConceptSwitch.GenerationContextOp_VarRef:
         return myConceptGenerationContextOp_VarRef;
+      case LanguageConceptSwitch.GenerationContextOp_VarRef2:
+        return myConceptGenerationContextOp_VarRef2;
       case LanguageConceptSwitch.GenerationContextType:
         return myConceptGenerationContextType;
       case LanguageConceptSwitch.TemplateFunctionParameter_generationContext:
@@ -492,6 +503,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("name_intern", 0x25c655ce6e80fdd9L).type(PrimitiveTypeId.STRING).origin("2721957369897614809").done();
     b.associate("varmacro", 0x25c655ce6e80fddaL).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL).optional(false).origin("2721957369897614810").done();
+    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForGenerationContextOp_VarRef2() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.generator.generationContext", "GenerationContextOp_VarRef2", 0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_Base", 0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d3L);
+    b.origin("r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)/1048903277984174662");
+    b.version(2);
+    b.property("name_intern", 0xe8e73f957fd5248L).type(PrimitiveTypeId.STRING).origin("1048903277984174664").done();
+    b.associate("vardecl", 0xe8e73f957fd5247L).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L).optional(false).origin("1048903277984174663").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }

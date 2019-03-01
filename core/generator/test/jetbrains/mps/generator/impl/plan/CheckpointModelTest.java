@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -314,6 +314,10 @@ public class CheckpointModelTest implements EnvironmentAware {
       @Override
       public ModelGenerationPlan compute() {
         Generator closuresGeneratorInstance = (Generator) closuresGenerator.resolve(mpsProject.getRepository());
+        // collections generator used to extend one from closures, now they are independent.
+        // would like to see if we unexpectedly get any generator down here (as a guard for undesired 'extends' dependency b/w generators)
+        // However, in present state the test doesn't check 'applyWithExtended' works (we got rid of most 'extends' deps), and perhaps
+        // shall get changed to use generators that still 'extend' some other (e.g. one from lang.descriptor?)
         Generator collectionsGeneratorInstance = (Generator) collectionsGenerator.resolve(mpsProject.getRepository());
         Generator blInternalGeneratorInstance = (Generator) blInternalGenerator.resolve(mpsProject.getRepository());
         Generator baselangGeneratorInstance = (Generator) baselangGenerator.resolve(mpsProject.getRepository());
@@ -347,9 +351,9 @@ public class CheckpointModelTest implements EnvironmentAware {
     Transform t1 = (Transform) plan.getSteps().get(1); // closures + extensions
     Transform t2 = (Transform) plan.getSteps().get(3); // blInternal + extensions
     Transform t3 = (Transform) plan.getSteps().get(4); // bl + extensions
-    myErrors.checkThat(t1.getTransformations().size(), CoreMatchers.equalTo(7)); // 2 from closures + 5 from collections
+    myErrors.checkThat(t1.getTransformations().size(), CoreMatchers.equalTo(2)); // 2 from closures, there are no extensions for closure.generator
     myErrors.checkThat(t2.getTransformations().size(), CoreMatchers.equalTo(1)); // 1 MC in blInternal.
-    myErrors.checkThat(t3.getTransformations().size(), CoreMatchers.equalTo(11)); // 5 from BL + 5 from collections
+    myErrors.checkThat(t3.getTransformations().size(), CoreMatchers.equalTo(6)); // 6 from BL
   }
 
   @Test

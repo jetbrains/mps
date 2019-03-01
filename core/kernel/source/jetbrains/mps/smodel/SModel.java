@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.model.SModelDescriptorStub;
-import jetbrains.mps.project.dependency.ModelDependenciesManager;
 import jetbrains.mps.project.structure.modules.ModuleReference;
+import jetbrains.mps.project.structure.modules.RefUpdateUtil;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
@@ -32,6 +32,7 @@ import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.loading.UpdateModeSupport;
 import jetbrains.mps.smodel.nodeidmap.INodeIdToNodeMap;
 import jetbrains.mps.smodel.nodeidmap.UniversalOptimizedNodeIdMap;
+import jetbrains.mps.util.StatefulUpdate;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -100,7 +101,6 @@ public class SModel implements SModelData, UpdateModeSupport {
   private List<ImportElement> myImports = new ArrayList<>();
   private INodeIdToNodeMap myIdToNodeMap;
   private StackTraceElement[] myDisposedStacktrace = null;
-  private ModelDependenciesManager myModelDependenciesManager;
   private ImplicitImportsLegacyHolder myLegacyImplicitImports;
   /**
    * update mode, aka full load mode, is the state we are attaching newly loaded children to a model loaded partially
@@ -222,6 +222,10 @@ public class SModel implements SModelData, UpdateModeSupport {
       myNodeOwner.performUndoableAction(node, new RemoveRootUndoableAction(node, myModelDescriptor));
       myRoots.remove(node);
       SNode sn = (SNode) node;
+      if (!isUpdateMode()) {
+        // see SNode.removeChild for rant about isUpdateMode()
+        sn.makeReferencesDirect();
+      }
       sn.detach(new DetachedNodeOwner(this));
       myNodeOwner.fireNodeRemove(null, null, sn, null);
     }
@@ -353,10 +357,6 @@ public class SModel implements SModelData, UpdateModeSupport {
     myDisposedStacktrace = new Throwable().getStackTrace();
     myIdToNodeMap = null;
     myRoots.clear();
-    if (myModelDependenciesManager != null) {
-      myModelDependenciesManager.dispose();
-      myModelDependenciesManager = null;
-    }
   }
 
   private void checkNotDisposed() {
@@ -628,35 +628,12 @@ public class SModel implements SModelData, UpdateModeSupport {
     myIdToNodeMap.put(id, node);
   }
 
-  //---------imports manipulation--------
-
   void unregisterNode(@NotNull SNode node) {
-    checkNotDisposed();
-
-    enforceFullLoad(); // FIXME see registerNode. What's the purpose?
     org.jetbrains.mps.openapi.model.SNodeId id = node.getNodeId();
     if (myDisposed || id == null) {
       return;
     }
     myIdToNodeMap.remove(id);
-  }
-
-  public ModelDependenciesManager getModelDepsManager() {
-    if (myModelDependenciesManager == null) {
-      myModelDependenciesManager = new ModelDependenciesManager(getModelDescriptor());
-      // we do not need to track model changes as we are invalidating dep manager right away on any change
-      SRepository repo = getRepository();
-      if (repo != null) {
-        myModelDependenciesManager.trackRepositoryChanges(repo);
-      }
-    }
-    return myModelDependenciesManager;
-  }
-
-  private void invalidateModelDepsManager() {
-    if (myModelDependenciesManager != null) {
-      myModelDependenciesManager.invalidate();
-    }
   }
 
   //language
@@ -677,7 +654,6 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   public void deleteLanguage(@NotNull SLanguage id) {
     if (myLanguagesIds.remove(id) != null) {
-      invalidateModelDepsManager();
       fireLanguageRemovedEvent(id);
       markChanged();
     }
@@ -710,7 +686,6 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   private void setLanguageVersionInternal(SLanguage language, int version) {
     myLanguagesIds.put(language, version);
-    invalidateModelDepsManager();
     fireLanguageAddedEvent(language);
     markChanged();
   }
@@ -723,7 +698,6 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   public void addDevKit(SModuleReference ref) {
     if (!myDevKits.contains(ref) && myDevKits.add(ref)) {
-      invalidateModelDepsManager();
       fireDevKitAddedEvent(ref);
       markChanged();
     }
@@ -731,7 +705,6 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   public void deleteDevKit(@NotNull SModuleReference ref) {
     if (myDevKits.remove(ref)) {
-      invalidateModelDepsManager();
       fireDevKitRemovedEvent(ref);
       markChanged();
     }
@@ -855,28 +828,27 @@ public class SModel implements SModelData, UpdateModeSupport {
     enforceFullLoad();
 
     boolean changed = false;
+    // XXX RefUpdateUtil uses MR.differs() which, unlike MR.equals(), compares names and ignores global uniqueness fact. Is that what we
+    //     want for references inside nodes? Perhaps, makes sense to use differs for imports only?
+    final StatefulUpdate<SModelReference> modelRefUpdate = new RefUpdateUtil(repository).withState();
     for (org.jetbrains.mps.openapi.model.SNode node : myIdToNodeMap.values()) {
       for (SReference reference : node.getReferences()) {
         SModelReference oldReference = reference.getTargetSModelReference();
-        if (oldReference == null || !(reference instanceof SReferenceBase)) {
+        if (oldReference == null || !(reference instanceof StaticReference)) {
           continue;
         }
-        // there's RefUpdateUtil.updateModelRef() that could have been used here, it it was in [smodel].
-        // But it's in [project] now, and needs refactoring to relocate.
-        // Besides, there's also similar code in vcs.DiffModelUtil
-        final org.jetbrains.mps.openapi.model.SModel resolved = oldReference.resolve(repository);
-        if (resolved != null && jetbrains.mps.smodel.SModelReference.differs(resolved.getReference(), oldReference)) {
+        // FWIW there's similar code in vcs.DiffModelUtil
+        if (modelRefUpdate.isChanged(oldReference)) {
           changed = true;
-          ((SReferenceBase) reference).setTargetSModelReference(resolved.getReference());
+          ((StaticReference) reference).setTargetSModelReference(modelRefUpdate.newValue(oldReference));
         }
       }
     }
 
     for (ImportElement e : myImports) {
-      final org.jetbrains.mps.openapi.model.SModel resolved = e.getModelReference().resolve(repository);
-      if (resolved != null && jetbrains.mps.smodel.SModelReference.differs(resolved.getReference(), e.getModelReference())) {
+      if (modelRefUpdate.isChanged(e.getModelReference())) {
         changed = true;
-        e.myModelReference = resolved.getReference();
+        e.myModelReference = modelRefUpdate.newValue(e.getModelReference());
       }
     }
 
@@ -899,8 +871,9 @@ public class SModel implements SModelData, UpdateModeSupport {
     myReference = newModelReference;
     for (org.jetbrains.mps.openapi.model.SNode node : myIdToNodeMap.values()) {
       for (SReference reference : node.getReferences()) {
-        if (reference instanceof SReferenceBase && oldReference.equals(reference.getTargetSModelReference())) {
-          ((SReferenceBase) reference).setTargetSModelReference(newModelReference);
+        // XXX here, equals would not notice change in model name, is it what we want? In fact, I would rather not keep model reference to self at all
+        if (reference instanceof StaticReference && oldReference.equals(reference.getTargetSModelReference())) {
+          ((StaticReference) reference).setTargetSModelReference(newModelReference);
         }
       }
     }

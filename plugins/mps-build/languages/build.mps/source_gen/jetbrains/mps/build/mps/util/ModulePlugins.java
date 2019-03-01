@@ -18,10 +18,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.mps.behavior.BuildMps_IdeaPluginContent__BehaviorDescriptor;
-import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 public class ModulePlugins {
   private final TemplateQueryContext myContext;
@@ -63,9 +66,17 @@ public class ModulePlugins {
   }
 
   public String[] getPluginPaths() {
+    return ListSequence.fromList(getPlugins()).select(new ISelector<Tuples._2<String, String>, String>() {
+      public String select(Tuples._2<String, String> it) {
+        return it._0();
+      }
+    }).toGenericArray(String.class);
+  }
+
+  public List<Tuples._2<String, String>> getPlugins() {
     final DependenciesHelper helper = new DependenciesHelper(myContext, myInitialProject);
-    return Sequence.fromIterable(this.getDependency()).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
+    return Sequence.fromIterable(this.getDependency()).select(new ISelector<SNode, Tuples._2<String, String>>() {
+      public Tuples._2<String, String> select(SNode it) {
         SNode layoutNode = helper.getArtifact(it);
         if ((layoutNode == null)) {
           myContext.showWarningMessage(myInitialProject, "The plugin '" + SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "' was not found in the layout of `" + SPropertyOperations.getString(myInitialProject, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'");
@@ -76,16 +87,12 @@ public class ModulePlugins {
           myContext.showWarningMessage(myInitialProject, "Found no location for plugin '" + SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'");
           return null;
         }
-        return val;
+        return MultiTuple.<String,String>from(val, SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id")));
       }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return (it != null && it.length() > 0);
+    }).where(new NotNullWhereFilter<Tuples._2<String, String>>()).sort(new ISelector<Tuples._2<String, String>, String>() {
+      public String select(Tuples._2<String, String> it) {
+        return it._0();
       }
-    }).sort(new ISelector<String, String>() {
-      public String select(String it) {
-        return it;
-      }
-    }, true).toGenericArray(String.class);
+    }, true).toListSequence();
   }
 }

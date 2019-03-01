@@ -63,6 +63,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptAbstractArgument, myConceptAbstractDiagramCreation, myConceptAbstractFigureReference, myConceptActionGroup, myConceptActionReference, myConceptAttributedFigureReference, myConceptBLQueryArgument, myConceptCellModel_Diagram, myConceptCellModel_DiagramConnector, myConceptCellModel_DiagramNode, myConceptCellModel_DiagramPort, myConceptConnectionEnd, myConceptConnectionEndBLQuery, myConceptCreationActionReference, myConceptCustomElementReference, myConceptDiagramConnectorCanCreateHandler, myConceptDiagramConnectorCreation, myConceptDiagramConnectorCreationHandler, myConceptDiagramElement, myConceptDiagramElementBLQuery, myConceptDiagramElementCreationHandler, myConceptDiagramElementsCreation, myConceptExternalFigureReference, myConceptFigureParameterMapping, myConceptFromIdFunctionParameter, myConceptFromNodeFunctionParameter, myConceptLinkArgument, myConceptNodeFunctionParameter, myConceptPalette, myConceptPaletteElement, myConceptPropertyArgument, myConceptSeparator, myConceptStubCellModel_Diagram, myConceptStubCellModel_DiagramConnector, myConceptStubCellModel_DiagramNode, myConceptStubCellModel_DiagramPort, myConceptThisEditorNodeExpression, myConceptToIdFunctionParameter, myConceptToNodeFunctionParameter, myConceptXFunctionParameter, myConceptYFunctionParameter);

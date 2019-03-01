@@ -16,6 +16,7 @@
     <applicationService serviceInterface="com.intellij.codeInspection.actions.CleanupInspectionUtil"
                         serviceImplementation="com.intellij.codeInspection.actions.CleanupInspectionUtilImpl"/>
     -->
+
     <applicationService serviceInterface="com.intellij.lang.cacheBuilder.CacheBuilderRegistry"
                         serviceImplementation="com.intellij.lang.cacheBuilder.CacheBuilderRegistryImpl"/>
 
@@ -67,6 +68,7 @@
 
     <applicationService serviceImplementation="com.intellij.navigation.ChooseByNameRegistry"/>
 
+
     <!--
     <applicationService serviceInterface="com.intellij.ide.PsiActionSupportFactory"
                         serviceImplementation="com.intellij.ide.PsiActionSupportFactoryImpl"/>
@@ -97,6 +99,7 @@
 
     <projectService serviceInterface="com.intellij.util.indexing.FileBasedIndexScanRunnableCollector"
                     serviceImplementation="com.intellij.util.indexing.FileBasedIndexScanRunnableCollectorImpl"/>
+
     <!--
     <projectService serviceInterface="com.intellij.pom.references.PomService"
                     serviceImplementation="com.intellij.pom.references.PomServiceImpl"/>
@@ -229,6 +232,7 @@
 
     <applicationService serviceInterface="com.intellij.lang.IdeLanguageCustomization"
                         serviceImplementation="com.intellij.lang.IdeLanguageCustomization"/>
+
     <!--
     <rearranger.ui implementation="com.intellij.application.options.codeStyle.arrangement.component.DefaultArrangementUiComponentFactory"/>
     -->
@@ -236,6 +240,8 @@
     <!-- MPS Patch-->
     <applicationService serviceInterface="com.intellij.ui.EditorTextFieldProvider"
                     serviceImplementation="jetbrains.mps.EditorTextFieldProviderImpl"/>
+
+    <applicationService serviceInterface="com.intellij.formatting.Formatter" serviceImplementation="com.intellij.formatting.FormatterImpl"/>
 
     <!--
     <applicationService serviceInterface="com.intellij.codeInsight.editorActions.TabOutScopesTracker"
@@ -259,7 +265,6 @@
     -->
     <projectService serviceInterface="com.intellij.codeHighlighting.TextEditorHighlightingPassRegistrar"
                     serviceImplementation="com.intellij.codeInsight.daemon.impl.TextEditorHighlightingPassRegistrarImpl"/>
-
     <!-- MPS Patch-->
     <projectService serviceInterface="com.intellij.psi.PsiFileFactory"
                     serviceImplementation="jetbrains.mps.EmptyPsiFileFactory"/>
@@ -439,7 +444,6 @@
     <moduleService serviceInterface="com.intellij.openapi.components.PathMacroManager" serviceImplementation="com.intellij.openapi.components.impl.ModulePathMacroManager"/>
     -->
 
-    <projectViewPane implementation="com.intellij.ide.scratch.ScratchProjectViewPane"/>
     <applicationService serviceInterface="com.intellij.ide.scratch.ScratchFileService"
                         serviceImplementation="com.intellij.ide.scratch.ScratchFileServiceImpl"/>
     <projectViewPane implementation="com.intellij.ide.scratch.ScratchProjectViewPane"/>
@@ -534,7 +538,7 @@
                     serviceImplementation="com.intellij.codeInsight.template.impl.TemplateManagerImpl"/>
 
     &lt;!&ndash; File Templates&ndash;&gt;
-    <projectConfigurable groupId="editor" groupWeight="150" instance="com.intellij.ide.fileTemplates.impl.AllFileTemplatesConfigurable" id="fileTemplates"
+    <projectConfigurable groupId="editor" groupWeight="150" provider="com.intellij.ide.fileTemplates.impl.AllFileTemplatesConfigurable$Provider" id="fileTemplates"
                              key="title.file.templates" bundle="messages.IdeBundle"/>
 
     &lt;!&ndash; T.O.D.O &ndash;&gt;
@@ -805,6 +809,7 @@
 
     <enterHandlerDelegate implementation="com.intellij.codeInsight.editorActions.enter.EnterInStringLiteralHandler"/>
     <enterHandlerDelegate implementation="com.intellij.codeInsight.editorActions.enter.EnterInLineCommentHandler"/>
+    <enterHandlerDelegate implementation="com.intellij.codeInsight.editorActions.enter.EnterInBlockCommentHandler" id="blockComment" order="last"/>
     <enterHandlerDelegate implementation="com.intellij.codeInsight.editorActions.enter.EnterAfterUnmatchedBraceHandler" id="afterUnmatchedBrace"/>
     <enterHandlerDelegate implementation="com.intellij.codeInsight.editorActions.enter.EnterBetweenBracesFinalHandler"
                           id="EnterBetweenBracesHandler"/>
@@ -951,8 +956,10 @@
                     serviceImplementation="com.intellij.codeInspection.ex.InspectionManagerEx"/>
     <documentationProvider implementation="com.intellij.codeInspection.actions.InspectionDescriptionDocumentationProvider"/>
 
+    <projectService serviceInterface="com.intellij.usageView.UsageViewContentManager"
+                    serviceImplementation="com.intellij.usageView.impl.UsageViewContentManagerImpl"/>
     <projectService serviceInterface="com.intellij.usageView.UsageViewManager"
-                    serviceImplementation="com.intellij.usageView.impl.UsageViewManagerImpl"/>
+                    serviceImplementation="com.intellij.usageView.UsageViewManager"/>
     <applicationService serviceInterface="com.intellij.ide.projectView.impl.ProjectViewSharedSettings"
                     serviceImplementation="com.intellij.ide.projectView.impl.ProjectViewSharedSettings"/>
     <!-- MPS Patch-->
@@ -985,6 +992,7 @@
     <psi.referenceContributor implementation="com.intellij.psi.impl.source.resolve.reference.CommentsReferenceContributor"/>
     <referenceProviderType key="commentsReferenceProvider"
                            implementationClass="com.intellij.psi.impl.source.resolve.reference.ArbitraryPlaceUrlReferenceProvider"/>
+    <psi.referenceContributor implementation="com.intellij.psi.impl.source.resolve.reference.UrlReferenceContributor"/>
 
     <projectConfigurable groupId="editor"
                          groupWeight="140"
@@ -1027,6 +1035,7 @@
                       implementationClass="com.intellij.codeInspection.RedundantSuppressInspection"/>
 
     <annotator language="TEXT" implementationClass="com.intellij.codeInsight.highlighting.LargeFilesAnnotator"/>
+    <annotator language="" implementationClass="com.intellij.codeInsight.highlighting.HyperlinkAnnotator"/>
 
     <applicationService serviceInterface="com.intellij.codeInsight.template.TemplateBuilderFactory"
                         serviceImplementation="com.intellij.codeInsight.template.TemplateBuilderFactoryImpl"/>
@@ -1061,14 +1070,11 @@
     -->
 
     <statistics.projectUsagesCollector implementation="com.intellij.internal.statistic.collectors.fus.fileTypes.FileTypeUsagesCollector"/>
-    <statistics.projectUsagesCollector implementation="com.intellij.internal.statistic.collectors.fus.fileTypes.FileTypeOpenUsageTriggerCollector"/>
-    <statistics.projectUsagesCollector implementation="com.intellij.internal.statistic.collectors.fus.fileTypes.FileTypeEditUsageTriggerCollector"/>
     <statistics.projectUsagesCollector implementation="com.intellij.codeInsight.daemon.impl.tooltips.TooltipActionUsagesCollector"/>
     <postStartupActivity implementation="com.intellij.internal.statistic.collectors.fus.fileTypes.FileTypeExtensionUsagesCollectorStartupActivity"/>
 
     <statistics.projectUsagesCollector implementation="com.intellij.execution.impl.statistics.RunConfigurationTypeUsagesCollector"/>
     <statistics.projectUsagesCollector implementation="com.intellij.execution.impl.statistics.TemporaryRunConfigurationTypeUsagesCollector"/>
-    <statistics.projectUsagesCollector implementation="com.intellij.execution.impl.statistics.RunConfigurationUsageTriggerCollector"/>
     <statistics.applicationUsagesCollector implementation="com.intellij.internal.statistic.editor.EditorSettingsStatisticsCollector"/>
     <statistics.projectUsagesCollector implementation="com.intellij.internal.statistic.editor.EditorSettingsStatisticsCollector$ProjectUsages"/>
     <statistics.projectUsagesCollector implementation="com.intellij.internal.statistic.tools.AbstractToolsUsagesCollector$EnabledBundledToolsUsagesCollector"/>
@@ -1077,8 +1083,11 @@
     <statistics.projectUsagesCollector implementation="com.intellij.internal.statistic.tools.AbstractToolsUsagesCollector$DisabledListedToolsUsagesCollector"/>
     <statistics.applicationUsagesCollector implementation="com.intellij.internal.statistic.service.fus.collectors.KeymapUsageCollector" />
     <statistics.projectUsagesCollector implementation="com.intellij.execution.dashboard.RunDashboardUsagesCollector"/>
-    <statistics.projectUsagesCollector implementation="com.intellij.ide.actions.runAnything.RunAnythingUsageCollector"/>
-    <statistics.projectUsagesCollector implementation="com.intellij.ide.actions.searcheverywhere.statistics.SearchEverywhereUsageTriggerCollector"/>
+
+    <statistics.counterUsagesCollector groupId="searchEverywhere" version="1"/>
+    <statistics.counterUsagesCollector groupId="actions.runAnything" version="1"/>
+
+    <applicationService serviceImplementation="com.intellij.internal.statistic.persistence.ApprovedGroupsCacheConfigurable" />
 
     <!--
     <renamePsiElementProcessor implementation="com.intellij.refactoring.rename.RenamePsiFileProcessor" order="last" id="renamePsiFile"/>
@@ -1099,7 +1108,7 @@
 
     <defaultHighlightingSettingProvider id="GeneratedSourcesHighlightingSettingProvider"
                                         implementation="com.intellij.codeInsight.daemon.impl.analysis.GeneratedSourcesHighlightingSettingProvider"/>
-    <editorNotificationProvider implementation="com.intellij.ide.GeneratedFileEditingNotificationProvider"/>
+    <editorNotificationProviderApp implementation="com.intellij.ide.GeneratedFileEditingNotificationProvider"/>
 
     <editorTabTitleProvider implementation="com.intellij.openapi.fileEditor.impl.UniqueNameEditorTabTitleProvider" order="last"/>
     -->
@@ -1220,25 +1229,29 @@
     <daemon.tooltipActionProvider order="last" id="defaultProvider" implementation="com.intellij.codeInsight.daemon.impl.DaemonTooltipActionProvider" />
 
     <schemeExporter
-      name="Intellij IDEA code style XML"
+      name="IntelliJ IDEA code style XML"
       schemeClass="com.intellij.psi.codeStyle.CodeStyleScheme"
       implementationClass="com.intellij.application.options.schemes.SerializableSchemeExporter"/>
     <schemeExporter
-      name="Intellij IDEA color scheme (.icls)"
+      name="IntelliJ IDEA color scheme (.icls)"
       schemeClass="com.intellij.openapi.editor.colors.EditorColorsScheme"
       implementationClass="com.intellij.application.options.colors.ColorSchemeExporter"/>
     <schemeExporter
-        name="Color scheme plug-in .jar"
+        name="Color scheme plugin .jar"
         schemeClass="com.intellij.openapi.editor.colors.EditorColorsScheme"
         implementationClass="com.intellij.application.options.colors.pluginExport.ColorSchemePluginExporter"/>
     <schemeImporter
-      name="Intellij IDEA code style XML"
+      name="IntelliJ IDEA code style XML"
       schemeClass="com.intellij.psi.codeStyle.CodeStyleScheme"
       implementationClass="com.intellij.psi.impl.source.codeStyle.CodeStyleSchemeXmlImporter"/>
     <schemeImporter
-      name="Intellij IDEA color scheme (.icls) or settings (.jar)"
+      name="IntelliJ IDEA color scheme (.icls) or settings (.jar)"
       schemeClass="com.intellij.openapi.editor.colors.EditorColorsScheme"
       implementationClass="com.intellij.application.options.colors.ColorSchemeImporter"/>
+    <schemeExporter
+      name="IntelliJ IDEA code style JSON"
+      schemeClass="com.intellij.psi.codeStyle.CodeStyleScheme"
+      implementationClass="com.intellij.psi.impl.source.codeStyle.json.CodeStyleSchemeJsonExporter"/>
 
     <schemeExporter
       name="Intellij IDEA inspection profile XML"
@@ -1266,6 +1279,7 @@
                              order="before moveFileOrDir"/>
     -->
 
+    <gotoDeclaration implementation="com.intellij.codeInsight.navigation.actions.DefaultGotoDeclarationProvider" order="last"/>
     <!-- Search everywhere services/objects -->
     <projectService serviceInterface="com.intellij.ide.actions.searcheverywhere.SearchEverywhereManager"
                     serviceImplementation="com.intellij.ide.actions.searcheverywhere.SearchEverywhereManagerImpl"/>
@@ -1283,6 +1297,7 @@
     <!--
     <searchEverywhereResultsEqualityProvider implementation="com.intellij.ide.actions.searcheverywhere.TrivialElementsEqualityProvider"/>
     <searchEverywhereResultsEqualityProvider implementation="com.intellij.ide.actions.searcheverywhere.PsiElementsEqualityProvider"/>
+    <searchEverywhereResultsEqualityProvider implementation="com.intellij.ide.actions.searcheverywhere.ClassAndFileEqualityProvider"/>
 
     <projectService serviceImplementation="com.intellij.ide.actions.runAnything.RunAnythingCache"/>
 
@@ -1319,7 +1334,22 @@
     <projectService serviceInterface="com.intellij.build.DebugTasksViewManager"
                     serviceImplementation="com.intellij.build.DebugTasksViewManager"
                     testServiceImplementation="com.intellij.build.internal.DummyTasksViewManager"/>
+
+                        <moveLeftRightHandler language=""
+                          implementationClass="com.intellij.codeInsight.editorActions.moveLeftRight.DefaultMoveElementLeftRightHandler"
+                          order="last"/>
+
+    <printHandler implementation="com.intellij.codeEditor.printing.TextPrintHandler"/>
+
+    <editorNotificationProviderApp implementation="com.intellij.internal.retype.RetypeEditorNotificationProvider"/>
+
+    <fileBreadcrumbsCollector implementation="com.intellij.xml.breadcrumbs.PsiFileBreadcrumbsCollector" order="last"/>
+
+    <implementationViewSessionFactory implementation="com.intellij.codeInsight.hint.PsiImplementationSessionViewFactory"/>
+
     -->
+    <!-- must be first because TextEditorProvider.getInstance search by instance of -->
+    <fileEditorProvider implementation="com.intellij.openapi.fileEditor.impl.text.PsiAwareTextEditorProvider" order="first"/>
   </extensions>
 </idea-plugin>
 

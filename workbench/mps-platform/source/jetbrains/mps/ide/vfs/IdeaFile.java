@@ -92,7 +92,7 @@ public class IdeaFile implements IFile, CachingFile {
     myFS = fileSystem;
     myVirtualFilePtr = virtualFile;
     String path = virtualFile.getPath();
-    new PathAssert(path).absolute().noDots().osIndependentPath().noEndSlashOrArchive();
+    new PathAssert(path).absolute().noDots().osIndependentPath().noOddEndSlash();
     myPath = path;
   }
 

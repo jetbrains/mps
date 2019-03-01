@@ -23,13 +23,13 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.InsertMacroContext;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.SNodePointer;
 
 @Generated
 public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDeclarationBase implements TemplateDeclaration {
@@ -664,8 +664,8 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
         }
         {
           Collection<SNode> tlist72 = null;
-          final Object varValue72 = QueriesGenerated.varMacro_Value_8_0(new TemplateVarContext(context2, varMacroRef_mgoy7h_b0a0a1a21a1a4a4));
-          TemplateContext context33 = context2.withVariable("var:targetLanguages", varValue72);
+          TemplateContext context33 = context2;
+          context33 = context33.withVariable("var:targetLanguages", QueriesGenerated.varMacro_Value_8_0(new TemplateVarContext(context2, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521902666"))));
           final SNode tnode73 = environment.createOutputNode(myConcepts[10]);
           try {
             SNodeAccessUtil.setProperty(tnode73, myProperties[1], "false");
@@ -1667,8 +1667,8 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
         }
         {
           Collection<SNode> tlist72 = null;
-          final Object varValue72 = QueriesGenerated.varMacro_Value_8_0(new TemplateVarContext(context2, varMacroRef_mgoy7h_b0a0a1a21a1a3a5));
-          TemplateContext context33 = context2.withVariable("var:targetLanguages", varValue72);
+          TemplateContext context33 = context2;
+          context33 = context33.withVariable("var:targetLanguages", QueriesGenerated.varMacro_Value_8_0(new TemplateVarContext(context2, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521902666"))));
           final SNode tnode73 = environment.createOutputNode(myConcepts[10]);
           try {
             SNodeAccessUtil.setProperty(tnode73, myProperties[1], "false");
@@ -2161,7 +2161,6 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
   private static SNodePointer templateNode_mgoy7h_c0a0a1a1a1a1a3a2a2a1a8a1a1a01a1a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716048468");
   private static SNodePointer propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0c0b0i0b0b0k0b0e0e = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716048471");
   private static SNodePointer ifMacroRef_mgoy7h_b0a0b0k0b0e0e = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716048505");
-  private static SNodePointer varMacroRef_mgoy7h_b0a0a1a21a1a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010794");
   private static SNodePointer propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0m0b0e0e = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010754");
   private static SNodePointer loopMacroRef_mgoy7h_b0a0a1a2a1a7a4a21a1a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010783");
   private static SNodePointer propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0m0b0e0e = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010768");
@@ -2187,7 +2186,6 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
   private static SNodePointer templateNode_mgoy7h_c0a0a1a1a1a1a3a2a2a1a8a1a1a01a1a3a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716048468");
   private static SNodePointer propertyMacro_mgoy7h_c0a0c0a0b0c0b0c0b0b0d0c0c0b0i0b0b0k0b0d0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716048471");
   private static SNodePointer ifMacroRef_mgoy7h_b0a0b0k0b0d0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716048505");
-  private static SNodePointer varMacroRef_mgoy7h_b0a0a1a21a1a3a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010794");
   private static SNodePointer propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0m0b0d0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010754");
   private static SNodePointer loopMacroRef_mgoy7h_b0a0a1a2a1a7a4a21a1a3a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010783");
   private static SNodePointer propertyMacro_mgoy7h_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0m0b0d0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152716010768");

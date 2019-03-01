@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.generator.generationContext.constraints.TraverseUtil;
+import jetbrains.mps.scope.Scope;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -88,7 +88,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
             }
           }));
         }
-        n = TraverseUtil.parent(n);
+        n = Scope.parent(n);
       }
       return rv;
     }

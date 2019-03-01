@@ -43,6 +43,10 @@ public class IoFileSystem implements FileSystem {
   public IFile getFile(@NotNull String path) {
     path = FileUtil.getCanonicalPath(path);
     path = FileUtil.normalize(path);
+    path = FileUtil.resolveParentDirs(path);
+    if (path.endsWith("!")) {
+      path += "/";
+    }
     if (path.contains("!")) {
       return JarIoFileSystem.getInstance().getFile(path);
     } else {

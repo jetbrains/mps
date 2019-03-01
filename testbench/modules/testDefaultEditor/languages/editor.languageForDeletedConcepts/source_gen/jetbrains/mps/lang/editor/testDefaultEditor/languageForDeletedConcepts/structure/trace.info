@@ -15,7 +15,7 @@
       <unit at="10,0,34,0" name="jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="16,0,92,0" name="jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure.StructureAspectDescriptor" />
+      <unit at="16,0,98,0" name="jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:f7ab8cfc-135f-4339-bd76-ff57cf78dd74(jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure)/1840120233258891919">
@@ -36,18 +36,18 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1840120233258891919" at="17,0,18,0" concept="1" trace="myConceptDeletedAbstractChild" />
-      <node id="1840120233258891919" at="36,54,37,45" concept="4" />
-      <node id="1840120233258891919" at="58,78,59,225" concept="3" />
-      <node id="1840120233258891919" at="59,225,60,33" concept="0" />
-      <node id="1840120233258891919" at="60,33,61,157" concept="0" />
-      <node id="1840120233258891919" at="61,157,62,17" concept="0" />
-      <node id="1840120233258891919" at="62,17,63,22" concept="4" />
-      <node id="1840120233258891919" at="58,0,65,0" concept="6" trace="createDescriptorForDeletedAbstractChild#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="1840120233258891919" at="36,54,37,45" />
-      <scope id="1840120233258891919" at="58,78,63,22">
+      <node id="1840120233258891919" at="42,54,43,45" concept="4" />
+      <node id="1840120233258891919" at="64,78,65,225" concept="3" />
+      <node id="1840120233258891919" at="65,225,66,33" concept="0" />
+      <node id="1840120233258891919" at="66,33,67,157" concept="0" />
+      <node id="1840120233258891919" at="67,157,68,17" concept="0" />
+      <node id="1840120233258891919" at="68,17,69,22" concept="4" />
+      <node id="1840120233258891919" at="64,0,71,0" concept="6" trace="createDescriptorForDeletedAbstractChild#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1840120233258891919" at="42,54,43,45" />
+      <scope id="1840120233258891919" at="64,78,69,22">
         <var name="b" id="1840120233258891919" />
       </scope>
-      <scope id="1840120233258891919" at="58,0,65,0" />
+      <scope id="1840120233258891919" at="64,0,71,0" />
     </file>
   </root>
   <root nodeRef="r:f7ab8cfc-135f-4339-bd76-ff57cf78dd74(jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure)/3900306178895370238">
@@ -69,22 +69,22 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3900306178895370238" at="19,0,20,0" concept="1" trace="myConceptDeletedParent" />
-      <node id="3900306178895370238" at="40,47,41,38" concept="4" />
-      <node id="3900306178895370238" at="72,71,73,218" concept="3" />
-      <node id="3900306178895370238" at="73,218,74,34" concept="0" />
-      <node id="3900306178895370238" at="74,34,75,157" concept="0" />
-      <node id="3900306178895370238" at="75,157,76,17" concept="0" />
-      <node id="3900306178895424082" at="76,17,77,110" concept="0" />
-      <node id="3900306178895424084" at="77,110,78,185" concept="0" />
-      <node id="3900306178895424080" at="78,185,79,206" concept="0" />
-      <node id="3370372833110542122" at="79,206,80,214" concept="0" />
-      <node id="3900306178895370238" at="80,214,81,22" concept="4" />
-      <node id="3900306178895370238" at="72,0,83,0" concept="6" trace="createDescriptorForDeletedParent#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3900306178895370238" at="40,47,41,38" />
-      <scope id="3900306178895370238" at="72,71,81,22">
+      <node id="3900306178895370238" at="46,47,47,38" concept="4" />
+      <node id="3900306178895370238" at="78,71,79,218" concept="3" />
+      <node id="3900306178895370238" at="79,218,80,34" concept="0" />
+      <node id="3900306178895370238" at="80,34,81,157" concept="0" />
+      <node id="3900306178895370238" at="81,157,82,17" concept="0" />
+      <node id="3900306178895424082" at="82,17,83,110" concept="0" />
+      <node id="3900306178895424084" at="83,110,84,185" concept="0" />
+      <node id="3900306178895424080" at="84,185,85,206" concept="0" />
+      <node id="3370372833110542122" at="85,206,86,214" concept="0" />
+      <node id="3900306178895370238" at="86,214,87,22" concept="4" />
+      <node id="3900306178895370238" at="78,0,89,0" concept="6" trace="createDescriptorForDeletedParent#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3900306178895370238" at="46,47,47,38" />
+      <scope id="3900306178895370238" at="78,71,87,22">
         <var name="b" id="3900306178895370238" />
       </scope>
-      <scope id="3900306178895370238" at="72,0,83,0" />
+      <scope id="3900306178895370238" at="78,0,89,0" />
     </file>
   </root>
   <root nodeRef="r:f7ab8cfc-135f-4339-bd76-ff57cf78dd74(jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure)/3900306178895424076">
@@ -106,19 +106,19 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3900306178895424076" at="20,0,21,0" concept="1" trace="myConceptDeletedParentContainer" />
-      <node id="3900306178895424076" at="42,56,43,47" concept="4" />
-      <node id="3900306178895424076" at="83,80,84,227" concept="3" />
-      <node id="3900306178895424076" at="84,227,85,34" concept="0" />
-      <node id="3900306178895424076" at="85,34,86,157" concept="0" />
-      <node id="3900306178895424076" at="86,157,87,17" concept="0" />
-      <node id="3900306178895424077" at="87,17,88,206" concept="0" />
-      <node id="3900306178895424076" at="88,206,89,22" concept="4" />
-      <node id="3900306178895424076" at="83,0,91,0" concept="6" trace="createDescriptorForDeletedParentContainer#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3900306178895424076" at="42,56,43,47" />
-      <scope id="3900306178895424076" at="83,80,89,22">
+      <node id="3900306178895424076" at="48,56,49,47" concept="4" />
+      <node id="3900306178895424076" at="89,80,90,227" concept="3" />
+      <node id="3900306178895424076" at="90,227,91,34" concept="0" />
+      <node id="3900306178895424076" at="91,34,92,157" concept="0" />
+      <node id="3900306178895424076" at="92,157,93,17" concept="0" />
+      <node id="3900306178895424077" at="93,17,94,206" concept="0" />
+      <node id="3900306178895424076" at="94,206,95,22" concept="4" />
+      <node id="3900306178895424076" at="89,0,97,0" concept="6" trace="createDescriptorForDeletedParentContainer#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3900306178895424076" at="48,56,49,47" />
+      <scope id="3900306178895424076" at="89,80,95,22">
         <var name="b" id="3900306178895424076" />
       </scope>
-      <scope id="3900306178895424076" at="83,0,91,0" />
+      <scope id="3900306178895424076" at="89,0,97,0" />
     </file>
   </root>
   <root nodeRef="r:f7ab8cfc-135f-4339-bd76-ff57cf78dd74(jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure)/3900306178895424079">
@@ -140,18 +140,18 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3900306178895424079" at="18,0,19,0" concept="1" trace="myConceptDeletedChild" />
-      <node id="3900306178895424079" at="38,46,39,37" concept="4" />
-      <node id="3900306178895424079" at="65,70,66,217" concept="3" />
-      <node id="3900306178895424079" at="66,217,67,34" concept="0" />
-      <node id="3900306178895424079" at="67,34,68,157" concept="0" />
-      <node id="3900306178895424079" at="68,157,69,17" concept="0" />
-      <node id="3900306178895424079" at="69,17,70,22" concept="4" />
-      <node id="3900306178895424079" at="65,0,72,0" concept="6" trace="createDescriptorForDeletedChild#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="3900306178895424079" at="38,46,39,37" />
-      <scope id="3900306178895424079" at="65,70,70,22">
+      <node id="3900306178895424079" at="44,46,45,37" concept="4" />
+      <node id="3900306178895424079" at="71,70,72,217" concept="3" />
+      <node id="3900306178895424079" at="72,217,73,34" concept="0" />
+      <node id="3900306178895424079" at="73,34,74,157" concept="0" />
+      <node id="3900306178895424079" at="74,157,75,17" concept="0" />
+      <node id="3900306178895424079" at="75,17,76,22" concept="4" />
+      <node id="3900306178895424079" at="71,0,78,0" concept="6" trace="createDescriptorForDeletedChild#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="3900306178895424079" at="44,46,45,37" />
+      <scope id="3900306178895424079" at="71,70,76,22">
         <var name="b" id="3900306178895424079" />
       </scope>
-      <scope id="3900306178895424079" at="65,0,72,0" />
+      <scope id="3900306178895424079" at="71,0,78,0" />
     </file>
   </root>
 </debug-info>

@@ -2,12 +2,12 @@
 <model ref="r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
-    <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
+    <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="vmu8" ref="r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)" />
@@ -1429,6 +1429,13 @@
               <ref role="1Px2BO" node="2TzypFyLPSe" resolve="FileType" />
             </node>
             <node concept="3clFbS" id="2TzypFyLI9z" role="3Kbo56" />
+          </node>
+          <node concept="3KbdKl" id="6UaGVe534RI" role="3KbHQx">
+            <node concept="Rm8GO" id="6UaGVe535lG" role="3Kbmr1">
+              <ref role="Rm8GQ" node="6UaGVe52VpF" resolve="GENERATOR_DEPENDENCIES_V3" />
+              <ref role="1Px2BO" node="2TzypFyLPSe" resolve="FileType" />
+            </node>
+            <node concept="3clFbS" id="6UaGVe534RK" role="3Kbo56" />
           </node>
           <node concept="3KbdKl" id="2TzypFyLI9$" role="3KbHQx">
             <node concept="Rm8GO" id="2TzypFyLI9_" role="3Kbmr1">
@@ -5176,6 +5183,16 @@
         <property role="Xl_RC" value="dependencies" />
       </node>
     </node>
+    <node concept="QsSxf" id="6UaGVe52VpF" role="Qtgdg">
+      <property role="TrG5h" value="GENERATOR_DEPENDENCIES_V3" />
+      <ref role="37wK5l" node="2TzypFyLPV1" resolve="FileType" />
+      <node concept="Xl_RD" id="6UaGVe52Xgv" role="37wK5m">
+        <property role="Xl_RC" value="generated" />
+      </node>
+      <node concept="Xl_RD" id="6UaGVe52Xnk" role="37wK5m">
+        <property role="Xl_RC" value="product" />
+      </node>
+    </node>
     <node concept="QsSxf" id="2TzypFyLPUX" role="Qtgdg">
       <property role="TrG5h" value="JAVA_DEPENDENCIES" />
       <ref role="37wK5l" node="2TzypFyLPV1" resolve="FileType" />
@@ -5618,7 +5635,7 @@
         </node>
       </node>
       <node concept="37vLTG" id="7zbsrrw72vN" role="3clF46">
-        <property role="TrG5h" value="fileExt" />
+        <property role="TrG5h" value="filetype" />
         <node concept="17QB3L" id="7zbsrrw75UT" role="1tU5fm" />
         <node concept="2AHcQZ" id="7zbsrrwcceD" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />

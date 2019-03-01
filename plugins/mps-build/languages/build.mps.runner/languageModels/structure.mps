@@ -33,6 +33,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -50,6 +53,13 @@
     <property role="34LRSv" value="run code" />
     <property role="EcuMT" value="4173297143638950526" />
     <ref role="1TJDcQ" to="3ior:34DbxDwRlgt" resolve="BuildAspect" />
+    <node concept="1TJgyj" id="3a3EL8RMRJt" role="1TKVEi">
+      <property role="IQ2ns" value="3639941018579336157" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="requiredPlugin" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="5I1s5NvuWco" resolve="RequiredPlugin" />
+    </node>
     <node concept="1TJgyj" id="5iKxrmkn6qh" role="1TKVEi">
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="solution" />
@@ -62,6 +72,19 @@
     </node>
     <node concept="PrWs8" id="1aYLt$9de$A" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5I1s5NvuWco">
+    <property role="EcuMT" value="6593674873635848984" />
+    <property role="3GE5qa" value="" />
+    <property role="TrG5h" value="RequiredPlugin" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5I1s5NvuWcp" role="1TKVEi">
+      <property role="IQ2ns" value="6593674873635848985" />
+      <property role="20lmBu" value="reference" />
+      <property role="20lbJX" value="1" />
+      <property role="20kJfa" value="plugin" />
+      <ref role="20lvS9" to="kdzh:5HVSRHdUrHO" resolve="BuildMps_IdeaPlugin" />
     </node>
   </node>
 </model>

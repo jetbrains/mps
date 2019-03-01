@@ -47,8 +47,8 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    final Object varValue1 = QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context, varMacroRef_p4fqpg_b0a0a2a6));
-    TemplateContext context1 = context.withVariable("var:methodDeclaration", varValue1);
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:methodDeclaration", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2409421742521899084"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       TemplateContext context2 = context1.subContext();
@@ -278,7 +278,6 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
     rv[8] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer varMacroRef_p4fqpg_b0a0a2a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603465624");
   private static SNodePointer ifMacroRef_p4fqpg_b0a0b0c0b0b0f0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6133874814783379356");
   private static SNodePointer ifMacroRef_p4fqpg_b0a0b0a1a2a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7977232384686803989");
   private static SNodePointer loopMacroRef_p4fqpg_b0a0a1a3a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427126");

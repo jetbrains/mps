@@ -7,7 +7,6 @@ import jetbrains.mps.tool.common.GeneratorProperties;
 import jetbrains.mps.tool.common.JavaCompilerProperties;
 import jetbrains.mps.build.ant.ModuleJarDataType;
 import java.io.File;
-import jetbrains.mps.tool.common.ScriptProperties;
 
 public class GenerateTask extends MpsLoadTask {
   private final GeneratorProperties myGenProps;
@@ -40,6 +39,7 @@ public class GenerateTask extends MpsLoadTask {
       if (generatorJar.isFile()) {
         myWhatToDo.addLibraryJar(generatorJar.getAbsolutePath());
       }
+      // FIXME there's similar code in MpsTestSuite, but not in jUnit launcher 
       // FIXME if I don't fix build language templates to list generator.jar explicitly, shall account for lang-N-generator.jar here to support multiple generators per language case. 
     }
   }
@@ -63,15 +63,6 @@ public class GenerateTask extends MpsLoadTask {
   }
   public void setSkipUnmodifiedModels(boolean skipUnmodifiedModels) {
     myGenProps.setSkipUnmodifiedModels(skipUnmodifiedModels);
-  }
-  public void addConfiguredPlugin(Plugin plugin) {
-    String property = myWhatToDo.getProperty(ScriptProperties.PLUGIN_PATHS);
-    if ((property == null || property.length() == 0)) {
-      property = plugin.getPath().getAbsolutePath();
-    } else {
-      property += File.pathSeparator + plugin.getPath().getAbsolutePath();
-    }
-    myWhatToDo.putProperty(ScriptProperties.PLUGIN_PATHS, property);
   }
   public void setTargetJavaVersion(String targetJavaVersion) {
     myJavaCompilerProperties.setTargetJavaVersion(targetJavaVersion);

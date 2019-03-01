@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,7 +60,8 @@ public final class MPSConfigurationBean {
 
   /*package*/ MPSConfigurationBean(SolutionDescriptor sd, MPSConfigurationBean other) {
     myDescriptor = sd;
-    myState = other.toState(sd);
+    myState = new State();
+    loadFrom(other.myState);
   }
 
   /*package*/ MPSConfigurationBean(MPSConfigurationBean other) {

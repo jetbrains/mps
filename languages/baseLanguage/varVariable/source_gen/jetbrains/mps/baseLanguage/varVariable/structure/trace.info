@@ -15,7 +15,7 @@
       <unit at="10,0,28,0" name="jetbrains.mps.baseLanguage.varVariable.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,59,0" name="jetbrains.mps.baseLanguage.varVariable.structure.StructureAspectDescriptor" />
+      <unit at="15,0,65,0" name="jetbrains.mps.baseLanguage.varVariable.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:931e38db-856b-4b95-8ae0-a7cd13da6d32(jetbrains.mps.baseLanguage.varVariable.structure)/1236693300889">
@@ -38,21 +38,21 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1236693300889" at="16,0,17,0" concept="1" trace="myConceptVarVariableDeclaration" />
-      <node id="1236693300889" at="32,56,33,47" concept="4" />
-      <node id="1236693300889" at="48,80,49,190" concept="3" />
-      <node id="1236693300889" at="49,190,50,34" concept="0" />
-      <node id="1236693300889" at="50,34,51,135" concept="0" />
-      <node id="1236693300889" at="51,135,52,71" concept="0" />
-      <node id="1236693300889" at="52,71,53,119" concept="0" />
-      <node id="1236693300889" at="53,119,54,17" concept="0" />
-      <node id="1236693300889" at="54,17,55,19" concept="0" />
-      <node id="1236693300889" at="55,19,56,22" concept="4" />
-      <node id="1236693300889" at="48,0,58,0" concept="6" trace="createDescriptorForVarVariableDeclaration#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="1236693300889" at="32,56,33,47" />
-      <scope id="1236693300889" at="48,80,56,22">
+      <node id="1236693300889" at="38,56,39,47" concept="4" />
+      <node id="1236693300889" at="54,80,55,190" concept="3" />
+      <node id="1236693300889" at="55,190,56,34" concept="0" />
+      <node id="1236693300889" at="56,34,57,135" concept="0" />
+      <node id="1236693300889" at="57,135,58,71" concept="0" />
+      <node id="1236693300889" at="58,71,59,119" concept="0" />
+      <node id="1236693300889" at="59,119,60,17" concept="0" />
+      <node id="1236693300889" at="60,17,61,19" concept="0" />
+      <node id="1236693300889" at="61,19,62,22" concept="4" />
+      <node id="1236693300889" at="54,0,64,0" concept="6" trace="createDescriptorForVarVariableDeclaration#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1236693300889" at="38,56,39,47" />
+      <scope id="1236693300889" at="54,80,62,22">
         <var name="b" id="1236693300889" />
       </scope>
-      <scope id="1236693300889" at="48,0,58,0" />
+      <scope id="1236693300889" at="54,0,64,0" />
     </file>
   </root>
 </debug-info>

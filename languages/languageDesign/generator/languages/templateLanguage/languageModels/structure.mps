@@ -1650,6 +1650,10 @@
     <node concept="PrWs8" id="79OxvCzeQYT" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
+    <node concept="asaX9" id="UesZ_nZ2I1" role="lGtFl">
+      <property role="YLPcu" value="2019.1" />
+      <property role="YLQ7P" value="Replaced with a new macro that can declare few variables at once" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4mp7qFmDssq">
     <property role="R5$K7" value="false" />
@@ -2112,6 +2116,63 @@
     </node>
     <node concept="t5JxF" id="6JoULz$jqnv" role="lGtFl">
       <property role="t5JxN" value="A reference to template declaration along with actual arguments, not bound to RuleConsequence hierarchy unlike TemplateDeclarationReference." />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="UesZ_nZ2HY">
+    <property role="EcuMT" value="1048903277984099198" />
+    <property role="TrG5h" value="VarMacro2" />
+    <property role="R4oN_" value="compute and store value in variable" />
+    <property role="34LRSv" value="$VAR$" />
+    <property role="3GE5qa" value="macro" />
+    <ref role="1TJDcQ" node="fP7Vmt2" resolve="NodeMacro" />
+    <node concept="PrWs8" id="UesZ_nZ2HZ" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+    <node concept="M6xJ_" id="UesZ_nZ2I4" role="lGtFl" />
+    <node concept="1TJgyj" id="UesZ_nZ2Id" role="1TKVEi">
+      <property role="IQ2ns" value="1048903277984099213" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="variables" />
+      <property role="20lbJX" value="1..n" />
+      <ref role="20lvS9" node="UesZ_nZ2I6" resolve="VarDeclaration" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="UesZ_nZ2I6">
+    <property role="EcuMT" value="1048903277984099206" />
+    <property role="3GE5qa" value="macro" />
+    <property role="TrG5h" value="VarDeclaration" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="UesZ_nZ2I9" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="type" />
+      <property role="IQ2ns" value="1048903277984099209" />
+      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
+    </node>
+    <node concept="1TJgyj" id="UesZ_nZ2Ia" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="1048903277984099210" />
+      <ref role="20lvS9" node="4mp7qFmDssq" resolve="VarMacro_ValueQuery" />
+    </node>
+    <node concept="PrWs8" id="UesZ_nZ2I7" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="UesZ_oiISf">
+    <property role="3GE5qa" value="rule.argument" />
+    <property role="TrG5h" value="TemplateArgumentVarRefExpression2" />
+    <property role="EcuMT" value="1048903277989260815" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="UesZ_oiISg" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="vardecl" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="1048903277989260816" />
+      <ref role="20lvS9" node="UesZ_nZ2I6" resolve="VarDeclaration" />
+    </node>
+    <node concept="t5JxF" id="UesZ_oj04B" role="lGtFl">
+      <property role="t5JxN" value="despite TemplateArgument in the name, it's just an expression we can use instead of genContext.varName" />
     </node>
   </node>
 </model>

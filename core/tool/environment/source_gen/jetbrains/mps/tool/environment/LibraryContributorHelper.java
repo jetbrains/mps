@@ -7,9 +7,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Set;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import java.util.LinkedHashSet;
-import java.util.Arrays;
-import jetbrains.mps.tool.common.PathManager;
 import java.io.File;
+import jetbrains.mps.tool.common.PathManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
 import java.util.Collections;
 import java.util.List;
@@ -43,27 +42,38 @@ import java.util.LinkedHashMap;
 
     for (PluginDescriptor descriptor : myConfig.getPlugins()) {
       String pluginFolder = descriptor.getPath();
-      // FIXME PathManager.getPluginsPath is a dependency to j.m.tool.common I'd like to get rid of (this class has access to MPS kernel classes 
-      //       and doesn't need to depend from tool.common at all), but I didn't find a proper alternative. Alex P., could you please help me here? 
-      for (String pluginsPath : Arrays.asList(PathManager.getPluginsPath(), jetbrains.mps.util.PathManager.getPreInstalledPluginsPath())) {
-        File pluginDirectory = new File(pluginsPath, pluginFolder);
-        File libFolder = new File(pluginDirectory, "lib");
-        ClassLoader pluginCL = null;
-        if (libFolder.exists() && libFolder.isDirectory()) {
-          pluginCL = createPluginClassLoader(libFolder);
-          for (File jar : libFolder.listFiles(jetbrains.mps.util.PathManager.JAR_FILE_FILTER)) {
-            paths.add(new LibDescriptor(IoFileSystem.INSTANCE.getFile(jar.getAbsolutePath() + MODULES_PREFIX), pluginCL));
-          }
-        }
-        File languagesFolder = new File(pluginDirectory, "languages");
-        if (languagesFolder.exists() && languagesFolder.isDirectory()) {
-          paths.add(new LibDescriptor(IoFileSystem.INSTANCE.getFile(languagesFolder.getAbsolutePath()), pluginCL));
-        }
-        File classesFolder = new File(pluginDirectory, "classes");
-        if (classesFolder.exists() && classesFolder.isDirectory()) {
-          paths.add(new LibDescriptor(IoFileSystem.INSTANCE.getFile(classesFolder.getAbsolutePath()), pluginCL));
+      if (!(new File(pluginFolder).exists())) {
+        // FIXME PathManager.getPluginsPath is a dependency to j.m.tool.common I'd like to get rid of (this class has access to MPS kernel classes 
+        //       and doesn't need to depend from tool.common at all), but I didn't find a proper alternative. Alex P., could you please help me here? 
+        File tryPluginFolder = new File(PathManager.getPluginsPath(), pluginFolder);
+        File tryPreinstalledPluginFolder = new File(jetbrains.mps.util.PathManager.getPreInstalledPluginsPath(), pluginFolder);
+        if (tryPluginFolder.exists()) {
+          pluginFolder = tryPluginFolder.getAbsolutePath();
+        } else if (tryPreinstalledPluginFolder.exists()) {
+          pluginFolder = tryPreinstalledPluginFolder.getAbsolutePath();
+        } else {
+          continue;
         }
       }
+
+      File pluginDirectory = new File(pluginFolder);
+      File libFolder = new File(pluginDirectory, "lib");
+      ClassLoader pluginCL = null;
+      if (libFolder.exists() && libFolder.isDirectory()) {
+        pluginCL = createPluginClassLoader(libFolder);
+        for (File jar : libFolder.listFiles(jetbrains.mps.util.PathManager.JAR_FILE_FILTER)) {
+          paths.add(new LibDescriptor(IoFileSystem.INSTANCE.getFile(jar.getAbsolutePath() + MODULES_PREFIX), pluginCL));
+        }
+      }
+      File languagesFolder = new File(pluginDirectory, "languages");
+      if (languagesFolder.exists() && languagesFolder.isDirectory()) {
+        paths.add(new LibDescriptor(IoFileSystem.INSTANCE.getFile(languagesFolder.getAbsolutePath()), pluginCL));
+      }
+      File classesFolder = new File(pluginDirectory, "classes");
+      if (classesFolder.exists() && classesFolder.isDirectory()) {
+        paths.add(new LibDescriptor(IoFileSystem.INSTANCE.getFile(classesFolder.getAbsolutePath()), pluginCL));
+      }
+
     }
     return Collections.unmodifiableSet(paths);
   }

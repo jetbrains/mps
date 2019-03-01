@@ -34,6 +34,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
+    deps.extendedLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin");
+    deps.aggregatedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptApplicationPluginDeclaration, myConceptApplicationPluginDisposeBlock, myConceptApplicationPluginInitBlock, myConceptApplicationPluginType, myConceptGetPreferencesComponentInProjectOperation, myConceptGetToolInProjectOperation, myConceptPlatformAccessExpression, myConceptProjectPluginDeclaration, myConceptProjectPluginDisposeBlock, myConceptProjectPluginInitBlock, myConceptProjectPluginType, myConceptStandalonePluginDescriptor);

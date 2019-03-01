@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,7 @@ import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.InsertMacroContext;
+import jetbrains.mps.generator.template.QueryExecutionContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
@@ -191,6 +192,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       macroImplMap.put(RuleUtil.concept_IncludeMacro, 13);
       macroImplMap.put(RuleUtil.concept_TemplateCallMacro, 14);
       macroImplMap.put(RuleUtil.concept_TraceMacro, 15);
+      macroImplMap.put(RuleUtil.concept_VarMacro2, 16);
     }
 
     @Override
@@ -215,6 +217,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
         case 13 : return new IncludeMacro(macro, templateNode, next, myTemplateProcessor);
         case 14 : return new CallMacro(macro, templateNode, next, myTemplateProcessor);
         case 15 : return new TraceMacro(macro, templateNode, next, myTemplateProcessor);
+        case 16 : return new VarMacro2(macro, templateNode, next, myTemplateProcessor);
         default: return new NoMacro(macro, templateNode, next, myTemplateProcessor);
       }
     }
@@ -572,6 +575,47 @@ public final class TemplateProcessor implements ITemplateProcessor {
       // establish mapping aaa:templateNode. However, instead of passing ML here once again, shall consider updating subContext(Map)
       // contract to preserve mapping label. Can't do it without thorough check of the method usage in generated templates
       return nextMacro(newContext.subContext(templateContext.getInputName()));
+    }
+  }
+
+  private static class VarMacro2 extends MacroImpl {
+    private final String[] myVarName;
+    private final VariableValueQuery[] myValueQuery;
+
+    protected VarMacro2(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
+      super(macro, templateNode, next, templateProcessor);
+      // nlist<VarDeclaration>
+      final List<SNode> varDeclarations = RuleUtil.getVarMacro2_Variables(macro);
+      myValueQuery = new VariableValueQuery[varDeclarations.size()];
+      myVarName = new String[myValueQuery.length];
+      int i = 0;
+      final GeneratorQueryProvider queryProvider = templateProcessor.getQueryProvider(getMacroNodeRef());
+      for (SNode vd : varDeclarations) {
+        // Generated VVQ class uses QueryKey.getTemplateNode().getNodeId (shared logic with VarMacro), hence vd.pointer as cons arg
+        QueryKeyImpl qk = new QueryKeyImpl(vd.getReference(), RuleUtil.getVarDecl_Query(vd).getNodeId());
+        myValueQuery[i] = queryProvider.getVariableValueQuery(qk);
+        myVarName[i] = RuleUtil.getVarDecl_Name(vd);
+        i++;
+      }
+    }
+
+    @NotNull
+    @Override
+    public List<SNode> apply(@NotNull final TemplateContext templateContext) throws DismissTopMappingRuleException, GenerationFailureException,
+                                                                              GenerationCanceledException {
+      final QueryExecutionContext queryExecutor = templateContext.getEnvironment().getQueryExecutor();
+      TemplateContext newContext = templateContext;
+      // prefer withVariable even though it stacks TemplateContext when there are more than 1 variable. First, I don't expect a lot of >1 VarDecl uses
+      // Second, new HashMap<> is likely to consume more memory than couple of TC instances anyway. Last but not least, with this approach I can keep
+      // generated and interpreted code the same, with variables declared first visible to those declared next (though need to make sure VarMacro2, as
+      // ScopeProvider for VarDeclaration, allows that)
+      for (int i = 0; i < myVarName.length; i++) {
+        // in generated code, each next variable get a context with values of previous, stick to identical approach
+        Object varValue = queryExecutor.evaluate(myValueQuery[i], new TemplateVarContext(newContext, getMacroNodeRef()));
+        newContext = newContext.withVariable(myVarName[i], varValue);
+      }
+      // tc.withVariable() keeps mapping label
+      return nextMacro(newContext);
     }
   }
 

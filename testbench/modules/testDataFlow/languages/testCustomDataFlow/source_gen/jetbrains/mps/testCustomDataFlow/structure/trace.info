@@ -15,7 +15,7 @@
       <unit at="10,0,28,0" name="jetbrains.mps.testCustomDataFlow.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,58,0" name="jetbrains.mps.testCustomDataFlow.structure.StructureAspectDescriptor" />
+      <unit at="15,0,64,0" name="jetbrains.mps.testCustomDataFlow.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:1663047b-d6b3-4d14-9e65-e64dc6f64cac(jetbrains.mps.testCustomDataFlow.structure)/7078910619969045598">
@@ -37,20 +37,20 @@
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7078910619969045598" at="16,0,17,0" concept="1" trace="myConceptIntraProceduralSpecific_BuilderMode" />
-      <node id="7078910619969045598" at="32,69,33,60" concept="4" />
-      <node id="7078910619969045598" at="48,93,49,202" concept="3" />
-      <node id="7078910619969045598" at="49,202,50,34" concept="0" />
-      <node id="7078910619969045598" at="50,34,51,145" concept="0" />
-      <node id="7078910619969045598" at="51,145,52,119" concept="0" />
-      <node id="7078910619969045598" at="52,119,53,17" concept="0" />
-      <node id="7078910619969045598" at="53,17,54,41" concept="0" />
-      <node id="7078910619969045598" at="54,41,55,22" concept="4" />
-      <node id="7078910619969045598" at="48,0,57,0" concept="6" trace="createDescriptorForIntraProceduralSpecific_BuilderMode#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="7078910619969045598" at="32,69,33,60" />
-      <scope id="7078910619969045598" at="48,93,55,22">
+      <node id="7078910619969045598" at="38,69,39,60" concept="4" />
+      <node id="7078910619969045598" at="54,93,55,202" concept="3" />
+      <node id="7078910619969045598" at="55,202,56,34" concept="0" />
+      <node id="7078910619969045598" at="56,34,57,145" concept="0" />
+      <node id="7078910619969045598" at="57,145,58,119" concept="0" />
+      <node id="7078910619969045598" at="58,119,59,17" concept="0" />
+      <node id="7078910619969045598" at="59,17,60,41" concept="0" />
+      <node id="7078910619969045598" at="60,41,61,22" concept="4" />
+      <node id="7078910619969045598" at="54,0,63,0" concept="6" trace="createDescriptorForIntraProceduralSpecific_BuilderMode#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7078910619969045598" at="38,69,39,60" />
+      <scope id="7078910619969045598" at="54,93,61,22">
         <var name="b" id="7078910619969045598" />
       </scope>
-      <scope id="7078910619969045598" at="48,0,57,0" />
+      <scope id="7078910619969045598" at="54,0,63,0" />
     </file>
   </root>
 </debug-info>

@@ -16,7 +16,6 @@ import com.intellij.ui.JBSplitter;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.diff.ex.DiffStatusBar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import com.intellij.openapi.actionSystem.ToggleAction;
@@ -36,7 +35,6 @@ import java.awt.Insets;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 
 public class RootDifferencePane implements IHighlighter {
@@ -58,16 +56,13 @@ public class RootDifferencePane implements IHighlighter {
   private JPanel myBottomPanel = new JPanel(new GridBagLayout());
   private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);
 
-  private DiffStatusBar myStatusBar;
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
 
-  public RootDifferencePane(MPSProject project, ModelChangeSet changeSet, SNodeId rootId, String rootName, String[] titles, boolean isEditable, DiffStatusBar statusBar) {
+  public RootDifferencePane(MPSProject project, ModelChangeSet changeSet, SNodeId rootId, String rootName, String[] titles, boolean isEditable) {
     myChangeSet = changeSet;
     myRootId = rootId;
     myProject = project;
-
-    myStatusBar = statusBar;
 
     myOldEditor = addEditor(0, myChangeSet.getOldModel(), titles[0]);
     myNewEditor = addEditor(1, myChangeSet.getNewModel(), titles[1]);
@@ -212,9 +207,6 @@ public class RootDifferencePane implements IHighlighter {
 
     myOldEditor.repaintAndRebuildEditorMessages();
     myNewEditor.repaintAndRebuildEditorMessages();
-
-    int count = Sequence.fromIterable(myChangeSet.getChangesForRoot(myRootId)).count();
-    myStatusBar.setText((count == 0 ? "no differences" : NameUtil.formatNumericalString(count, "difference")));
   }
   private void higlightChange(DiffEditor diffEditor, SModel model, boolean isOldEditor, ModelChange change) {
     diffEditor.highlightChange(model, change, isOldEditor, null);

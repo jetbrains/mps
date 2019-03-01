@@ -81,12 +81,14 @@ import java.util.function.Consumer;
         // I want trace to report actionLevel consistently (for multi-threaded run, myActionLevel.get() gives actual value, not the stable one)
         LOG.trace(String.format("Action started (level:%d)", actionLevel));
       }
-      r.run();
-    } catch (Exception ex) {
-      // we need this catch not to obscure errors during run with errors from finally block (e.g. if both onActionStarted and onActionFinished fail with
-      // exception, we would observe only the last one from onActionFinished)
-      // FWIW, there's no scenario behind actionLevel printout here, just in case it yields anything interesting.
-      LOG.error(String.format("Action dispatch failed (level:%d)", actionLevel), ex);
+      try {
+        r.run();
+      } catch (RuntimeException ex) {
+        // re-throw an exception, if any, just to let user code to use exceptions to control code flow (alas, we can't prevent this unfortunate practice)
+        // but at least mention it in the log in case it's not a control flow and there are chances for the exception to get obscured by a subsequent one.
+        logUnexpectedRuntimeException(ex);
+        throw ex;
+      }
     } finally {
       if (traceEnabled) {
         LOG.trace(String.format("Action finished (level:%d)", actionLevel));
@@ -105,14 +107,31 @@ import java.util.function.Consumer;
     return () -> dispatch(r);
   }
 
+  private void logUnexpectedRuntimeException(RuntimeException ex) {
+    // we need this catch not to obscure errors during run with errors from finally block (e.g. if both onActionStarted and onActionFinished fail with
+    // exception, we would observe only the last one from onActionFinished)
+    // FWIW, there's no scenario behind actionLevel printout here, just in case it yields anything interesting.
+    LOG.error(String.format("Action dispatch failed (level:%d)", myActionLevel.get()), ex);
+  }
+
   private void onActionStarted() {
-    myDispatchController.onActionStart();
-    myListeners.forEach(myOnActionStart);
+    try {
+      myDispatchController.onActionStart();
+      myListeners.forEach(myOnActionStart);
+    } catch (RuntimeException ex) {
+      logUnexpectedRuntimeException(ex);
+      throw ex;
+    }
   }
 
   private void onActionFinished() {
-    myListeners.forEach(myOnActionFinish);
-    myDispatchController.onActionFinish();
+    try {
+      myListeners.forEach(myOnActionFinish);
+      myDispatchController.onActionFinish();
+    } catch (RuntimeException ex) {
+      logUnexpectedRuntimeException(ex);
+      throw ex;
+    }
   }
 
   public boolean isInsideAction() {

@@ -9,8 +9,8 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -24,19 +24,37 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
   }
   public void applyRule(final SNode enumConstant, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode enumClass = SNodeOperations.getNodeAncestor(enumConstant, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"), false, false);
-    if ((enumClass == null) || Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(enumConstant, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"))), enumClass)) {
+    if ((enumClass == null)) {
       return;
     }
+    SNode constructorDeclaration = SLinkOperations.getTarget(enumConstant, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
 
-    if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isNotEmpty()) {
-      {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "explicit constructor should be used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1962660292843681575", null, errorTarget);
+    if ((constructorDeclaration != null)) {
+      if (Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(enumConstant, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"))), enumClass)) {
+        return;
+      }
+      if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isNotEmpty()) {
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveDefaultEnumConstructor_QuickFix", true);
-          _reporter_2309309498.addIntentionProvider(intentionProvider);
+          MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "explicit constructor should be used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1994695549479969067", null, errorTarget);
+          {
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveDefaultEnumConstructor_QuickFix", true);
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
         }
       }
+    } else {
+      if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isEmpty()) {
+        {
+          MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "no constructor is declared", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4909195013914035846", null, errorTarget);
+          {
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetDefaultEnumConstructurToEnumConstant_QuickFix", true);
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
+        }
+      }
+      // MethodCallsFixer_Rule takes care of the missing reference, if the constructor reference is null 
     }
   }
   public SAbstractConcept getApplicableConcept() {

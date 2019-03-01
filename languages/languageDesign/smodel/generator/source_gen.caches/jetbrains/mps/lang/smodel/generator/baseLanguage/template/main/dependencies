@@ -1791,7 +1791,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_reduce_ContainmentLinkId_SContainmentLink">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -2740,7 +2739,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_reduce_LanguageId_SLanguage">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -3230,7 +3228,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_reduce_ModuleIdentity_SLanguage">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -3366,7 +3363,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_reduce_NodeIdentity_SNodeReference">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -3396,7 +3392,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_reduce_OperationParamConcept">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -3535,7 +3530,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_reduce_PropertyId_SProperty">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -3673,7 +3667,6 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_reduce_ReferenceLinkId_SReferenceLink">
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
@@ -3992,7 +3985,6 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Template_weave_ConceptSwitchMap">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />

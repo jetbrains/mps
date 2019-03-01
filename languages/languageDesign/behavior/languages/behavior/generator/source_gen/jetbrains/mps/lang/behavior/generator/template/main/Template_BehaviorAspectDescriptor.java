@@ -13,6 +13,7 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.TemplateVarContext;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.List;
 import java.util.ArrayList;
@@ -22,7 +23,6 @@ import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.impl.reference.RefResolver;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -40,8 +40,8 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase i
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     Collection<SNode> tlist1 = null;
-    final Object varValue1 = QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context, varMacroRef_v965vj_b0a0a1a4));
-    TemplateContext context1 = context.withVariable("var:ConceptBehaviors", varValue1);
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:ConceptBehaviors", QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2409421742521899080"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context1, tnode2, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/2056529430201890935");
@@ -452,7 +452,6 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase i
     return rv;
   }
   private static SNodePointer template_v965vj_a0a3 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2056529430201890935");
-  private static SNodePointer varMacroRef_v965vj_b0a0a1a4 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7385785963572954182");
   private static SNodePointer loopMacroRef_v965vj_b0a0a1a4a4a4 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5630687994792687399");
   private static SNodePointer propertyMacro_v965vj_c0a0c0e0e0d0e0e0e = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5630687994792687406");
   private static SNodePointer templateNode_v965vj_c0a0a1a1a1a1a1a8a1a9a4a4 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1889794043260113000");

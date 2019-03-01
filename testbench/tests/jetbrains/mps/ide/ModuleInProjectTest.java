@@ -19,6 +19,7 @@ import com.intellij.configurationStore.StoreAwareProjectManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.PlatformTestUtil;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
@@ -74,7 +75,7 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
 
   @After
   public void after() {
-    final VirtualFile projectDir = myProject.getProject().getBaseDir();
+    final VirtualFile projectDir = ProjectUtil.guessProjectDir(myProject.getProject());
     myEnv.closeProject(myProject);
     if (!SAVE_PROJECT) {
       ApplicationManager.getApplication().invokeLater(() -> ApplicationManager.getApplication().runWriteAction(() -> {

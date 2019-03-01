@@ -45,6 +45,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_TemplateArgumentVarRefExpression2_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_TemplateArgumentVariableRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -62,6 +66,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_TemplateParameterDeclaration_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_VarDeclaration_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel.references;
 
-import jetbrains.mps.smodel.SReferenceBase;
+import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
@@ -32,7 +32,7 @@ import java.util.Set;
 public class ImmatureReferencesTracker {
   private SModel myModel = null;
   private SNodeChangeListenerAdapter myNodeListener = new MySNodeChangeListenerAdapter();
-  private Set<SReferenceBase> myImmatureRefs = new HashSet<>();
+  private Set<StaticReference> myImmatureRefs = new HashSet<>();
   private SModelListenerBase myModelListener = new MySModelListenerBase();
 
   public void attach(SModel model, boolean doCheckImmediately) {
@@ -53,7 +53,7 @@ public class ImmatureReferencesTracker {
   }
 
   public void makeMature() {
-    for (SReferenceBase r : myImmatureRefs) {
+    for (StaticReference r : myImmatureRefs) {
       if (!r.isDirect()) {
         continue;
       }
@@ -63,10 +63,10 @@ public class ImmatureReferencesTracker {
   }
 
   private void checkAndAddNewRef(org.jetbrains.mps.openapi.model.SReference newRef) {
-    if (!(newRef instanceof SReferenceBase)) {
+    if (!(newRef instanceof StaticReference)) {
       return;
     }
-    SReferenceBase newRefBase = (SReferenceBase) newRef;
+    StaticReference newRefBase = (StaticReference) newRef;
     if (!newRefBase.isDirect()) {
       return;
     }
@@ -109,7 +109,7 @@ public class ImmatureReferencesTracker {
     public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
       for (SNode n: SNodeUtil.getDescendants(event.getChild())){
         for (org.jetbrains.mps.openapi.model.SReference r : n.getReferences()) {
-          if (!(r instanceof SReferenceBase)) {
+          if (!(r instanceof StaticReference)) {
             continue;
           }
 

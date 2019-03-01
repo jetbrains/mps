@@ -171,14 +171,6 @@ if [ "$IS_EAP" = "true" ]; then
   fi
 fi
 
-IDE_JVM_ARGS=""
-# 32 bit
-# ADDITIONAL_JVM_ARGS="-XX:ReservedCodeCacheSize=240m"
-# ADDITIONAL_JVM_ARGS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071"
-# 64 bit
-# ADDITIONAL_JVM_ARGS="-XX:ReservedCodeCacheSize=240m"
-# ADDITIONAL_JVM_ARGS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071"
-
 CLASSPATH="$IDE_HOME/lib/branding.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-boot.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-boot-util.jar"
@@ -212,7 +204,6 @@ LD_LIBRARY_PATH="$IDE_BIN_HOME:$LD_LIBRARY_PATH" "$JAVA_BIN" \
   "-Djb.vmOptionsFile=$VM_OPTIONS_FILE" \
   ${IDE_PROPERTIES_PROPERTY} \
   ${IDE_JVM_ARGS} \
-  ${ADDITIONAL_JVM_ARGS} \
   -Didea.jre.check=true \
   ${MAIN_CLASS} \
   "$@"

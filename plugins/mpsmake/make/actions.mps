@@ -363,6 +363,9 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
+      <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
+        <child id="1160998896846" name="condition" index="1gVkn0" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -8329,36 +8332,33 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="3l7XKooG7DY" role="3cqZAp">
-          <node concept="3cpWsn" id="3l7XKooG7DZ" role="3cpWs9">
-            <property role="TrG5h" value="sp" />
-            <node concept="3uibUv" id="3l7XKooG7DR" role="1tU5fm">
-              <ref role="3uigEE" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-            </node>
-            <node concept="2OqwBi" id="3l7XKooG7E0" role="33vP2m">
-              <node concept="37vLTw" id="3l7XKooG7E1" role="2Oq$k0">
+        <node concept="3cpWs6" id="6c0Tqkz8V7z" role="3cqZAp">
+          <node concept="1Wc70l" id="3FLm4EWsBCF" role="3cqZAk">
+            <node concept="3y3z36" id="6c0Tqkz8XH9" role="3uHU7B">
+              <node concept="37vLTw" id="6c0Tqkz8VLA" role="3uHU7B">
                 <ref role="3cqZAo" node="3l7XKooG4Z_" resolve="mpsProject" />
               </node>
-              <node concept="liA8E" id="3l7XKooG7E2" role="2OqNvi">
-                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
-                <node concept="3VsKOn" id="3l7XKooG7E3" role="37wK5m">
-                  <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+              <node concept="10Nm6u" id="6c0Tqkz8XeT" role="3uHU7w" />
+            </node>
+            <node concept="2OqwBi" id="6c0Tqkz8YNA" role="3uHU7w">
+              <node concept="2OqwBi" id="6c0Tqkz8Y8G" role="2Oq$k0">
+                <node concept="2OqwBi" id="6c0Tqkz8XQ9" role="2Oq$k0">
+                  <node concept="37vLTw" id="6c0Tqkz8XQa" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3l7XKooG4Z_" resolve="mpsProject" />
+                  </node>
+                  <node concept="liA8E" id="6c0Tqkz8XQb" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                    <node concept="3VsKOn" id="6c0Tqkz8XQc" role="37wK5m">
+                      <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="6c0Tqkz8YDn" role="2OqNvi">
+                  <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings():jetbrains.mps.generator.IModifiableGenerationSettings" resolve="getGenerationSettings" />
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="4_qBpm$bmFy" role="3cqZAp">
-          <node concept="2OqwBi" id="4_qBpm$bmFz" role="3cqZAk">
-            <node concept="liA8E" id="4_qBpm$bmF_" role="2OqNvi">
-              <ref role="37wK5l" to="ap4t:~IGenerationSettings.isSaveTransientModels():boolean" resolve="isSaveTransientModels" />
-            </node>
-            <node concept="2OqwBi" id="3mq37CcYkQx" role="2Oq$k0">
-              <node concept="37vLTw" id="3l7XKooG8aa" role="2Oq$k0">
-                <ref role="3cqZAo" node="3l7XKooG7DZ" resolve="sp" />
-              </node>
-              <node concept="liA8E" id="3mq37CcYkQz" role="2OqNvi">
-                <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings():jetbrains.mps.generator.IModifiableGenerationSettings" resolve="getGenerationSettings" />
+              <node concept="liA8E" id="6c0Tqkz8YZo" role="2OqNvi">
+                <ref role="37wK5l" to="ap4t:~IGenerationSettings.isSaveTransientModels():boolean" resolve="isSaveTransientModels" />
               </node>
             </node>
           </node>
@@ -8524,6 +8524,14 @@
               <node concept="37vLTw" id="3l7XKooG9bE" role="2Oq$k0">
                 <ref role="3cqZAo" node="4_qBpm$bmGm" resolve="e" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1gVbGN" id="6c0Tqkz91L7" role="3cqZAp">
+          <node concept="3y3z36" id="6c0Tqkz92YQ" role="1gVkn0">
+            <node concept="10Nm6u" id="6c0Tqkz93c4" role="3uHU7w" />
+            <node concept="37vLTw" id="6c0Tqkz92c_" role="3uHU7B">
+              <ref role="3cqZAo" node="3l7XKooG9b_" resolve="mpsProject" />
             </node>
           </node>
         </node>

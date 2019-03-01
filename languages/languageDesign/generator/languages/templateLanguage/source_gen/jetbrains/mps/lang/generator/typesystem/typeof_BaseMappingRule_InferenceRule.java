@@ -14,7 +14,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.lang.generator.behavior.BaseMappingRule__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -35,7 +35,7 @@ public class typeof_BaseMappingRule_InferenceRule extends AbstractInferenceRule_
       {
         SNode _nodeToCheck_1029348928467 = nodeToCheck;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1200922039515", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_dxi99s_a0a2a1a0a1(SNodeOperations.asNode(BaseMappingRule__BehaviorDescriptor.getTemplateType_idhEwJbaf.invoke(nodeToCheck))), (SNode) _quotation_createNode_dxi99s_a1a2a1a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x1179c430cc8L, "labelDeclaration")), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept"))), false, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_dxi99s_a0a2a1a0a1(RulesUtil.closestConceptNode(BaseMappingRule__BehaviorDescriptor.getTemplateType_idhEwJbaf.invoke(nodeToCheck))), (SNode) _quotation_createNode_dxi99s_a1a2a1a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x1179c430cc8L, "labelDeclaration")), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept"))), false, false, _info_12389875345);
       }
     }
   }

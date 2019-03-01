@@ -539,12 +539,11 @@
                             <node concept="3uibUv" id="33vUo2uvKcM" role="1tU5fm">
                               <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
                             </node>
-                            <node concept="2OqwBi" id="33vUo2uvKcN" role="33vP2m">
-                              <node concept="37vLTw" id="2BHiRxeuk1P" role="2Oq$k0">
+                            <node concept="2YIFZM" id="3FLm4EWth5L" role="33vP2m">
+                              <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                              <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
+                              <node concept="37vLTw" id="3FLm4EWthbb" role="37wK5m">
                                 <ref role="3cqZAo" node="33vUo2uvKc1" resolve="myProject" />
-                              </node>
-                              <node concept="liA8E" id="33vUo2uvKcP" role="2OqNvi">
-                                <ref role="37wK5l" to="4nm9:~Project.getBaseDir():com.intellij.openapi.vfs.VirtualFile" resolve="getBaseDir" />
                               </node>
                             </node>
                           </node>

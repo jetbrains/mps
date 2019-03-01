@@ -335,9 +335,17 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1985,6 +1993,16 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="1Y4IFFLHfds" role="3cqZAp">
+          <node concept="2OqwBi" id="1Y4IFFLHfrn" role="3clFbG">
+            <node concept="37vLTw" id="1Y4IFFLHfdq" role="2Oq$k0">
+              <ref role="3cqZAo" node="341WClvYTWy" resolve="blameDialog" />
+            </node>
+            <node concept="liA8E" id="1Y4IFFLHfx2" role="2OqNvi">
+              <ref role="37wK5l" to="qy69:~BlameDialog.initDialog():void" resolve="initDialog" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="341WClvYTWH" role="3cqZAp">
           <node concept="2OqwBi" id="341WClvYTWI" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagTwG0" role="2Oq$k0">
@@ -2450,16 +2468,6 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbF" id="1Y4IFFLHfds" role="3cqZAp">
-                      <node concept="2OqwBi" id="1Y4IFFLHfrn" role="3clFbG">
-                        <node concept="37vLTw" id="1Y4IFFLHfdq" role="2Oq$k0">
-                          <ref role="3cqZAo" node="341WClvYTWy" resolve="blameDialog" />
-                        </node>
-                        <node concept="liA8E" id="1Y4IFFLHfx2" role="2OqNvi">
-                          <ref role="37wK5l" to="qy69:~BlameDialog.initDialog():void" resolve="initDialog" />
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3clFbF" id="341WClvYTZE" role="3cqZAp">
                       <node concept="2OqwBi" id="341WClvYTZF" role="3clFbG">
                         <node concept="37vLTw" id="3GM_nagTrRU" role="2Oq$k0">
@@ -2480,60 +2488,71 @@
     </node>
     <node concept="2ScWuX" id="341WClvYTZI" role="tmbBb">
       <node concept="3clFbS" id="341WClvYTZJ" role="2VODD2">
-        <node concept="3cpWs8" id="341WClvYTZK" role="3cqZAp">
-          <node concept="3cpWsn" id="341WClvYTZL" role="3cpWs9">
-            <property role="TrG5h" value="mappings" />
-            <node concept="_YKpA" id="341WClvYTZM" role="1tU5fm">
-              <node concept="3uibUv" id="341WClvYTZN" role="_ZDj9">
-                <ref role="3uigEE" to="jlcu:~VcsDirectoryMapping" resolve="VcsDirectoryMapping" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="341WClvYTZO" role="33vP2m">
-              <node concept="2YIFZM" id="341WClvYTZP" role="2Oq$k0">
-                <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-                <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project):com.intellij.openapi.vcs.ProjectLevelVcsManager" resolve="getInstance" />
-                <node concept="2OqwBi" id="341WClvYTZQ" role="37wK5m">
-                  <node concept="2WthIp" id="341WClvYTZR" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="341WClvYTZS" role="2OqNvi">
-                    <ref role="2WH_rO" node="341WClvYTWt" resolve="project" />
-                  </node>
+        <node concept="1X3_iC" id="6zZtkNLgkOi" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3cpWs8" id="341WClvYTZK" role="8Wnug">
+            <node concept="3cpWsn" id="341WClvYTZL" role="3cpWs9">
+              <property role="TrG5h" value="mappings" />
+              <node concept="_YKpA" id="341WClvYTZM" role="1tU5fm">
+                <node concept="3uibUv" id="341WClvYTZN" role="_ZDj9">
+                  <ref role="3uigEE" to="jlcu:~VcsDirectoryMapping" resolve="VcsDirectoryMapping" />
                 </node>
               </node>
-              <node concept="liA8E" id="341WClvYTZT" role="2OqNvi">
-                <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getDirectoryMappings():java.util.List" resolve="getDirectoryMappings" />
+              <node concept="2OqwBi" id="341WClvYTZO" role="33vP2m">
+                <node concept="2YIFZM" id="341WClvYTZP" role="2Oq$k0">
+                  <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project):com.intellij.openapi.vcs.ProjectLevelVcsManager" resolve="getInstance" />
+                  <node concept="2OqwBi" id="341WClvYTZQ" role="37wK5m">
+                    <node concept="2WthIp" id="341WClvYTZR" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="341WClvYTZS" role="2OqNvi">
+                      <ref role="2WH_rO" node="341WClvYTWt" resolve="project" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="341WClvYTZT" role="2OqNvi">
+                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getDirectoryMappings():java.util.List" resolve="getDirectoryMappings" />
+                </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="341WClvYTZU" role="3cqZAp">
-          <node concept="2OqwBi" id="341WClvYTZV" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagT$9Z" role="2Oq$k0">
-              <ref role="3cqZAo" node="341WClvYTZL" resolve="mappings" />
-            </node>
-            <node concept="2HwmR7" id="341WClvYTZX" role="2OqNvi">
-              <node concept="1bVj0M" id="341WClvYTZY" role="23t8la">
-                <node concept="3clFbS" id="341WClvYTZZ" role="1bW5cS">
-                  <node concept="3clFbF" id="341WClvYU00" role="3cqZAp">
-                    <node concept="2OqwBi" id="341WClvYU01" role="3clFbG">
-                      <node concept="2OqwBi" id="341WClvYU02" role="2Oq$k0">
-                        <node concept="37vLTw" id="2BHiRxgm7lu" role="2Oq$k0">
-                          <ref role="3cqZAo" node="341WClvYU06" resolve="m" />
+        <node concept="1X3_iC" id="6zZtkNLgkOj" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="341WClvYTZU" role="8Wnug">
+            <node concept="2OqwBi" id="341WClvYTZV" role="3clFbG">
+              <node concept="37vLTw" id="3GM_nagT$9Z" role="2Oq$k0">
+                <ref role="3cqZAo" node="341WClvYTZL" resolve="mappings" />
+              </node>
+              <node concept="2HwmR7" id="341WClvYTZX" role="2OqNvi">
+                <node concept="1bVj0M" id="341WClvYTZY" role="23t8la">
+                  <node concept="3clFbS" id="341WClvYTZZ" role="1bW5cS">
+                    <node concept="3clFbF" id="341WClvYU00" role="3cqZAp">
+                      <node concept="2OqwBi" id="341WClvYU01" role="3clFbG">
+                        <node concept="2OqwBi" id="341WClvYU02" role="2Oq$k0">
+                          <node concept="37vLTw" id="2BHiRxgm7lu" role="2Oq$k0">
+                            <ref role="3cqZAo" node="341WClvYU06" resolve="m" />
+                          </node>
+                          <node concept="liA8E" id="341WClvYU04" role="2OqNvi">
+                            <ref role="37wK5l" to="jlcu:~VcsDirectoryMapping.getVcs():java.lang.String" resolve="getVcs" />
+                          </node>
                         </node>
-                        <node concept="liA8E" id="341WClvYU04" role="2OqNvi">
-                          <ref role="37wK5l" to="jlcu:~VcsDirectoryMapping.getVcs():java.lang.String" resolve="getVcs" />
-                        </node>
+                        <node concept="17RvpY" id="341WClvYU05" role="2OqNvi" />
                       </node>
-                      <node concept="17RvpY" id="341WClvYU05" role="2OqNvi" />
                     </node>
                   </node>
-                </node>
-                <node concept="Rh6nW" id="341WClvYU06" role="1bW2Oz">
-                  <property role="TrG5h" value="m" />
-                  <node concept="2jxLKc" id="341WClvYU07" role="1tU5fm" />
+                  <node concept="Rh6nW" id="341WClvYU06" role="1bW2Oz">
+                    <property role="TrG5h" value="m" />
+                    <node concept="2jxLKc" id="341WClvYU07" role="1tU5fm" />
+                  </node>
                 </node>
               </node>
             </node>
           </node>
+        </node>
+        <node concept="3clFbF" id="6zZtkNLgw3E" role="3cqZAp">
+          <node concept="3clFbT" id="6zZtkNLgw3D" role="3clFbG" />
         </node>
       </node>
     </node>

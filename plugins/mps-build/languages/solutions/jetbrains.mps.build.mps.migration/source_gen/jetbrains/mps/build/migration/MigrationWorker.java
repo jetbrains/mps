@@ -23,7 +23,8 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.tool.common.ScriptProperties;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class MigrationWorker extends MpsWorker {
   private static final String MIGRATION_PLUGIN = "jetbrains.mps.ide.migration.workbench";
@@ -35,10 +36,11 @@ public class MigrationWorker extends MpsWorker {
 
   @Override
   protected Environment createEnvironment() {
-    addPluginsToClassPath();
-
     EnvironmentConfig cfg = createEnvironmentConfig(myWhatToDo);
     cfg.addPlugin("migration", MigrationWorker.MIGRATION_PLUGIN);
+    // todo: be more precise with the classpath 
+    addPluginsToClassPath(cfg);
+    addCustomPluginsToLoad(cfg);
 
     IdeaEnvironment environment = new IdeaEnvironment(cfg);
     environment.init();
@@ -88,36 +90,31 @@ public class MigrationWorker extends MpsWorker {
     }
   }
 
-  private void addPluginsToClassPath() {
-    StringBuilder cp = new StringBuilder();
+  private void addPluginsToClassPath(EnvironmentConfig cfg) {
     File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
     for (File plugin : pluginDir.listFiles()) {
       if (plugin.isFile()) {
-        if (cp.length() > 0) {
-          cp.append(File.pathSeparator);
-        }
-        cp.append(plugin.getAbsolutePath());
+        cfg.addPluginClassPath(plugin.getAbsolutePath());
       } else {
         File lib = new File(plugin + File.separator + "lib");
         if (lib.exists() && lib.isDirectory()) {
           for (File libJar : lib.listFiles(PathManager.JAR_FILE_FILTER)) {
-            if (cp.length() > 0) {
-              cp.append(File.pathSeparator);
-            }
-            cp.append(plugin.getAbsolutePath());
+            cfg.addPluginClassPath(libJar.getAbsolutePath());
           }
         }
       }
     }
+  }
 
-    myWhatToDo.putProperty(ScriptProperties.PLUGIN_PATHS, cp.toString());
+  private void addCustomPluginsToLoad(EnvironmentConfig cfg) {
+    // todo: this functionality should be moved to some MpsWithPlatformLoadTask 
+    for (PluginData pd : ListSequence.fromList(myWhatToDo.getPlugins())) {
+      cfg.addPlugin(pd.path, pd.id);
+    }
   }
 
   public static void main(String[] args) {
     MigrationWorker mpsWorker = new MigrationWorker(Script.fromDumpInFile(new File(args[0])), new MpsWorker.SystemOutLogger());
     mpsWorker.workFromMain();
-  }
-
-  protected void executeTask(Project project, MpsWorker.ObjectsToProcess go) {
   }
 }

@@ -9,13 +9,16 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
+import java.io.File;
+import jetbrains.mps.util.PathManager;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerAdapter;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
 import com.intellij.openapi.application.ApplicationManager;
-import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.project.MPSProject;
@@ -39,6 +42,7 @@ import com.intellij.openapi.project.DumbService;
  */
 public final class IdeaEnvironment extends EnvironmentBase {
   private static final Logger LOG = LogManager.getLogger(IdeaEnvironment.class);
+  private static final String PLUGINS_PATH = "plugin.path";
 
   private IdeaTestApplication myIdeaApplication;
 
@@ -84,13 +88,65 @@ public final class IdeaEnvironment extends EnvironmentBase {
     System.setProperty("idea.no.jre.check", "true");
     System.setProperty("idea.load.plugins", "true");
 
-    EnvironmentBase.setIdeaPluginsToLoad(myConfig);
+    addRequiredPlugins(myConfig);
 
     myIdeaApplication = createIdeaTestApp();
     disallowAccessToClosedProjectsDir();
 
     MPSCoreComponents coreComponents = getMPSCoreComponents();
     super.init(coreComponents.getPlatform());
+  }
+
+  private void addRequiredPlugins(EnvironmentConfig config) {
+    // [MM]: looks like a hack, should we regenerate it to a regular plugin specification?  
+    // Probably, with plugin-set-ref to ensure the same plugin set is used 
+
+    // typically, this property is set by generated ant scripts before running tests 
+    if (isNotEmptyString(System.getProperty(PLUGINS_PATH))) {
+      return;
+    }
+
+    // otherwise, we set it from config 
+    setPluginPathProperty();
+    setPluginIdsPropertyFromConfig(config);
+  }
+
+  private void setPluginPathProperty() {
+    // [MM]: why do we set ids from config, while path is not config-related? 
+    StringBuilder pluginPath = new StringBuilder();
+    File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
+    if (pluginDir.exists()) {
+      for (File pluginFolder : pluginDir.listFiles()) {
+        if (pluginPath.length() > 0) {
+          pluginPath.append(File.pathSeparator);
+        }
+        pluginPath.append(pluginFolder.getPath());
+      }
+    }
+    for (PluginDescriptor pd : myConfig.getPlugins()) {
+      if (pd.getPath().startsWith(PathManager.getPreInstalledPluginsPath())) {
+        continue;
+      }
+      if (pluginPath.length() > 0) {
+        pluginPath.append(File.pathSeparator);
+      }
+      pluginPath.append(pd.getPath());
+    }
+    System.setProperty(PLUGINS_PATH, pluginPath.toString());
+  }
+
+  private void setPluginIdsPropertyFromConfig(EnvironmentConfig config) {
+    StringBuilder result = new StringBuilder();
+    Set<PluginDescriptor> plugins = config.getPlugins();
+    if (plugins == null) {
+      return;
+    }
+    for (PluginDescriptor plugin : SetSequence.fromSet(plugins)) {
+      assert plugin.getId() != null : "id should be specified for plugin " + plugin.getPath();
+      result.append(plugin.getId());
+      result.append(",");
+    }
+    System.setProperty("idea.load.plugins.id", result.toString());
   }
 
   private void disallowAccessToClosedProjectsDir() {
@@ -334,5 +390,8 @@ public final class IdeaEnvironment extends EnvironmentBase {
     public ProjectDirectoryDoesNotExistException(String projectPath) {
       super("Cannot find the project at '" + projectPath + "'");
     }
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -143,7 +143,7 @@ public class IFileUtil {
     if (index == -1) {
       return FileUtil.getCanonicalPath(absolutePath);
     } else {
-      return FileUtil.getCanonicalPath(absolutePath.substring(0, index)) + Path.ARCHIVE_SEPARATOR + absolutePath.substring(index + 2);
+      return FileUtil.getCanonicalPath(absolutePath.substring(0, index)) + absolutePath.substring(index);
     }
   }
 

@@ -34,8 +34,9 @@ public final class MigrationTestCase__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<SNode> getTestCase_idhGBgWVd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTestCase").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGBgWVd").registry(REGISTRY).build();
   public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGBohAB").registry(REGISTRY).build();
   public static final SMethod<String> getSimpleClassName_idhSQIE8p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleClassName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hSQIE8p").registry(REGISTRY).build();
+  public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2RMg39tmiFh").registry(REGISTRY).build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getSimpleClassName_idhSQIE8p);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getSimpleClassName_idhSQIE8p, isMpsStartRequired_id2RMg39tmiFh);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -54,6 +55,9 @@ public final class MigrationTestCase__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static String getSimpleClassName_idhSQIE8p(@NotNull SNode __thisNode__) {
     return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+  }
+  /*package*/ static boolean isMpsStartRequired_id2RMg39tmiFh(@NotNull SNode __thisNode__) {
+    return true;
   }
 
   /*package*/ MigrationTestCase__BehaviorDescriptor() {
@@ -82,6 +86,8 @@ public final class MigrationTestCase__BehaviorDescriptor extends BaseBHDescripto
         return (T) ((String) getTestName_idhGBohAB(node));
       case 4:
         return (T) ((String) getSimpleClassName_idhSQIE8p(node));
+      case 5:
+        return (T) ((Boolean) isMpsStartRequired_id2RMg39tmiFh(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

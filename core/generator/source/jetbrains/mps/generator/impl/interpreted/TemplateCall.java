@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,6 +110,8 @@ public class TemplateCall {
         ae.add(new QueryExpr(argExpr));
       } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentVarRefExpression)) {
         ae.add(new VarRefExpr(argExpr));
+      } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentVarRefExpression2)) {
+        ae.add(new VarRefExpr2(argExpr));
       } else if(GeneratorUtilEx.shallGenerateFunctionToEvaluate(argExpr)) {
         ae.add(new GeneratedExpr(argExpr));
       } else {
@@ -206,6 +208,20 @@ public class TemplateCall {
     public VarRefExpr(SNode varRefExpression) {
       SNode varmacro = RuleUtil.getTemplateArgumentVarRef_VarMacro(varRefExpression);
       myMacroVarName = RuleUtil.getVarMacro_Name(varmacro);
+    }
+    @Override
+    public Object evaluate(TemplateContext context) throws GenerationFailureException {
+      return context.getVariable(myMacroVarName);
+    }
+  }
+
+  // TemplateArgumentVarRefExpression2
+  private static class VarRefExpr2 implements ArgumentExpression {
+    private final String myMacroVarName;
+    public VarRefExpr2(SNode varRefExpression) {
+      // node<VarDeclaration>
+      SNode vardecl = RuleUtil.getTemplateArgumentVarRef2_VarDeclaration(varRefExpression);
+      myMacroVarName = RuleUtil.getVarDecl_Name(vardecl);
     }
     @Override
     public Object evaluate(TemplateContext context) throws GenerationFailureException {

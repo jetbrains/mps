@@ -103,7 +103,9 @@ public class WatchedRoots implements ApplicationComponent {
     } else {
       myRequestedPaths.remove(path);
       LocalFileSystem.WatchRequest req = myRequests.get(path);
-      myLocalFileSystem.removeWatchedRoot(req);
+      if (req != null) {
+        myLocalFileSystem.removeWatchedRoot(req);
+      }
       myRequests.remove(path);
     }
   }

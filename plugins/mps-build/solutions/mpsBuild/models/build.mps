@@ -4628,11 +4628,6 @@
             <ref role="3bR37D" node="3zjMY$95UAa" resolve="jetbrains.mps.core.tool.environment" />
           </node>
         </node>
-        <node concept="1SiIV0" id="1hpOr59hMq_" role="3bR37C">
-          <node concept="3bR9La" id="1hpOr59hMqA" role="1SiIV1">
-            <ref role="3bR37D" node="1xb0AuwN7WS" resolve="JUnit" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="6QvBpqzsKeB" role="3bR37C">
           <node concept="3bR9La" id="6QvBpqzsKeC" role="1SiIV1">
             <ref role="3bR37D" node="4NXyWdSDd9c" resolve="jetbrains.mps.project" />
@@ -7395,11 +7390,6 @@
           <node concept="1SiIV0" id="gH4gyhIBoq" role="3bR37C">
             <node concept="3bR9La" id="gH4gyhIBor" role="1SiIV1">
               <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
-            </node>
-          </node>
-          <node concept="1SiIV0" id="41_NtKZM3fW" role="3bR37C">
-            <node concept="3bR9La" id="41_NtKZM3fV" role="1SiIV1">
-              <ref role="3bR37D" node="7YI57w6K08j" resolve="jetbrains.mps.baseLanguage#1129914002933" />
             </node>
           </node>
           <node concept="1SiIV0" id="41_NtKZM3fY" role="3bR37C">
@@ -11054,6 +11044,21 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="25JZ4W_1d33" role="3bR37C">
+          <node concept="3bR9La" id="25JZ4W_1d34" role="1SiIV1">
+            <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="25JZ4W_1d35" role="3bR37C">
+          <node concept="3bR9La" id="25JZ4W_1d36" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="25JZ4W_1d37" role="3bR37C">
+          <node concept="3bR9La" id="25JZ4W_1d38" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbIZ" resolve="MPS.Editor" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="7Kfy9QB6L6w" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -13418,6 +13423,11 @@
               <ref role="3bR37D" node="7Kfy9QB6L8Y" resolve="jetbrains.mps.lang.project" />
             </node>
           </node>
+          <node concept="1SiIV0" id="3ongXc$C3dr" role="3bR37C">
+            <node concept="3bR9La" id="3ongXc$C3ds" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgru_Z" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgru_Y" role="1SiIV1">
@@ -13919,6 +13929,11 @@
         <node concept="1SiIV0" id="1R7DRqX9td$" role="3bR37C">
           <node concept="3bR9La" id="1R7DRqX9td_" role="1SiIV1">
             <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="EDoXYs5QQF" role="3bR37C">
+          <node concept="3bR9La" id="EDoXYs5QQG" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
           </node>
         </node>
       </node>
@@ -17102,7 +17117,7 @@
       <node concept="13uQ2_" id="5w9VucA$Mg7" role="39821P">
         <node concept="3_J27D" id="5w9VucA$Mg9" role="13uQ07">
           <node concept="3Mxwew" id="4vNfevbfZxr" role="3MwsjC">
-            <property role="3MwjfP" value="ecj-4.7.2.jar" />
+            <property role="3MwjfP" value="ecj-4.10.jar" />
           </node>
         </node>
       </node>
@@ -26914,7 +26929,7 @@
     <property role="26EafI" value="bin" />
     <ref role="1_kbm$" node="6Iq8148fw_a" resolve="JetBrains MPS 2019.1" />
     <node concept="26Ea6D" id="2lwFGYOW7EY" role="2hID6k">
-      <property role="26Ea6C" value="-client -Xss1024k -ea -Xmx2048m -XX:MaxPermSize=350m -XX:NewSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xverify:none" />
+      <property role="26Ea6C" value="-client -Xss1024k -ea -Xmx2048m -XX:NewSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xverify:none" />
     </node>
     <node concept="26Ea6D" id="41$40Av8yBG" role="2hID6k">
       <property role="26Ea6C" value="-Dfile.encoding=UTF-8" />
@@ -26945,7 +26960,6 @@
     </node>
     <node concept="26Ea6D" id="4A8SxGHvPcJ" role="2hID6k">
       <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
-      <property role="2eq24a" value="true" />
     </node>
     <node concept="26Ea6D" id="2lwFGYOW7EZ" role="2hID6k">
       <property role="2eq24a" value="true" />
@@ -26982,7 +26996,7 @@
       <property role="26EafJ" value="lib/jna.jar" />
     </node>
     <node concept="26Ea6D" id="BJYGrH08XF" role="26FZ21">
-      <property role="26Ea6C" value="-client -Xss1024k -ea -Xmx950m -XX:MaxPermSize=256m -XX:NewSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xverify:none" />
+      <property role="26Ea6C" value="-client -Xss1024k -ea -Xmx950m -XX:NewSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xverify:none" />
     </node>
     <node concept="26Ea6D" id="41$40Av8yCc" role="26FZ21">
       <property role="26Ea6C" value="-Dfile.encoding=UTF-8" />
@@ -27013,7 +27027,6 @@
     </node>
     <node concept="26Ea6D" id="4A8SxGHvPdc" role="26FZ21">
       <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
-      <property role="2eq24a" value="true" />
     </node>
     <node concept="26Ea6D" id="BJYGrH08XG" role="26FZ21">
       <property role="2eq24a" value="true" />

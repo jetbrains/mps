@@ -425,8 +425,8 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
               TemplateContext context19 = context17.subContext();
               {
                 Collection<SNode> tlist47 = null;
-                final Object varValue47 = QueriesGenerated.varMacro_Value_7_0(new TemplateVarContext(context19, varMacroRef_zfkl79_b0a0a1a1a1a6a1a01a3a6));
-                TemplateContext context20 = context19.withVariable("var:templateModelNames", varValue47);
+                TemplateContext context20 = context19;
+                context20 = context20.withVariable("var:templateModelNames", QueriesGenerated.varMacro_Value_7_0(new TemplateVarContext(context19, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900528"))));
                 final SNode tnode48 = environment.createOutputNode(myConcepts[20]);
                 try {
                   TemplateContext context21 = context20.subContext();
@@ -891,8 +891,8 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
       }
       {
         Collection<SNode> tlist100 = null;
-        final Object varValue100 = QueriesGenerated.varMacro_Value_7_1(new TemplateVarContext(context1, varMacroRef_zfkl79_b0a0a1a61a3a6));
-        TemplateContext context45 = context1.withVariable("var:targetLanguages", varValue100);
+        TemplateContext context45 = context1;
+        context45 = context45.withVariable("var:targetLanguages", QueriesGenerated.varMacro_Value_7_1(new TemplateVarContext(context1, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900532"))));
         final SNode tnode101 = environment.createOutputNode(myConcepts[16]);
         try {
           SNodeAccessUtil.setProperty(tnode101, myProperties[2], "false");
@@ -1474,7 +1474,6 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
   private static SNodePointer copySrcListMacro_zfkl79_b0a0a1a3a1a2a1a1a1a1a2a1a3a1a7a3a6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706570");
   private static SNodePointer ifMacroRef_zfkl79_b0a0b0c0b0d0b0h0d0g = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706577");
   private static SNodePointer propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0g0b0i0d0g = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706666");
-  private static SNodePointer varMacroRef_zfkl79_b0a0a1a1a1a6a1a01a3a6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706737");
   private static SNodePointer propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0b0b0b0b0b0b0b0b0e0b0b0g0b0k0d0g = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "947973959896225459");
   private static SNodePointer templateNode_zfkl79_c0a0a1a2a1a1a1a1a1a1a4a1a1a6a1a01a3a6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "947973959896116569");
   private static SNodePointer loopMacroRef_zfkl79_b0a0a1a2a1a1a4a1a1a6a1a01a3a6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "947973959896254220");
@@ -1486,7 +1485,6 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
   private static SNodePointer templateNode_zfkl79_c0a0a1a1a1a1a1a6a1a1a21a3a6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "947973959896040113");
   private static SNodePointer ifMacroRef_zfkl79_b0a0b0m0d0g = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "947973959896030233");
   private static SNodePointer propertyMacro_zfkl79_c0a0c0a0b0c0b0c0b0b0b0b0b0i0b0o0d0g = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706503");
-  private static SNodePointer varMacroRef_zfkl79_b0a0a1a61a3a6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706868");
   private static SNodePointer propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0b0e0b0b0b0b0b0h0e0q0d0g = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706828");
   private static SNodePointer loopMacroRef_zfkl79_b0a0a1a2a1a7a4a61a3a6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706857");
   private static SNodePointer propertyMacro_zfkl79_c0a0c0a0b0b0b0b0b0b0e0d0c0b0h0e0q0d0g = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639706842");

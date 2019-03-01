@@ -13,7 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.generator.generationContext.constraints.TraverseUtil;
+import jetbrains.mps.scope.Scope;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -38,7 +38,7 @@ public class typeof_GenerationContextOp_ContextVarRef_InferenceRule extends Abst
           }
         });
       }
-      n = TraverseUtil.parent(n);
+      n = Scope.parent(n);
     }
     {
       SNode _nodeToCheck_1029348928467 = cvRef;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,35 @@
  */
 package jetbrains.mps.smodel.references;
 
+import gnu.trove.THashSet;
+import gnu.trove.TObjectIdentityHashingStrategy;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.SReferenceBase;
+import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import java.util.Map.Entry;
-import java.util.NoSuchElementException;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Iterator;
+import java.util.Set;
 
 
+// Given the fact it's MA with its command start/finish events to turn this ImmatureReferences collector on/off,
+// and there's only 1 command thread, we resort to thread-local non-synchronized collection of references that need to be
+// processed once command is over. Besides, as we invoke instance methods on these references, we can use 'identity' to match them (no need to bother with
+// hashCode/equals).
+// With present approach, nodes created in threads other than command one won't get their references recorded here. Though it's slightly different from the
+// earlier approach (where any thread producing a node b/w enable/disable got it recorded), it's still valid, as there never was a guarantee than the parallel
+// thread producing nodes would get exactly b/w enable/disable calls. If, however, there's explicit synchronization b/w threads to accomplish that, I'd better
+// figure it out. This mechanism is internal implementation detail, and there should be no code to rely/utilize it
+//
+// FIXME FWIW, this is unlikely a CoreComponent, rather an implementation friend of MA class.
 public class ImmatureReferences implements CoreComponent {
-  // How many threads _simultaneously_ accessing the pool are allowed to succeed without congestion
-  private static final int POOL_SIZE = 4;
-
-  private static final Object PRESENT = new Object();
 
   private static ImmatureReferences INSTANCE;
-  private final SModelReference myVirtualRef;
 
   // FIXME shall retrieve instance per SRepository
   public static ImmatureReferences getInstance() {
@@ -54,23 +55,24 @@ public class ImmatureReferences implements CoreComponent {
   private final SRepository myRepository;
   private final SRepositoryContentAdapter myReposListener = new MyRepositoryAdapter();
 
-  private final ConcurrentMap<SModelReference, ConcurrentMap<SReferenceBase, Object>> myReferences =
-      new ConcurrentHashMap<>();
-
-  private ConcurrentLinkedQueue<ConcurrentMap<SReferenceBase, Object>> myReferencesSetPool = new ConcurrentLinkedQueue<>();
+  private final ThreadLocal<Set<StaticReference>> myReferences = new ThreadLocal<>();
+  private final TObjectIdentityHashingStrategy<StaticReference> myHashStrategy = new TObjectIdentityHashingStrategy<>();
 
   private boolean myDisabled = true;
 
-  public ImmatureReferences(SRepository repository, PersistenceFacade persistenceFacade) {
+  public ImmatureReferences(SRepository repository) {
     myRepository = repository;
-    for (int i = 0; i < POOL_SIZE; i++) {
-      myReferencesSetPool.add(new ConcurrentHashMap<>());
-    }
-    myVirtualRef = persistenceFacade.createModelReference(new ModuleReference("$ImmatureRefsModuleRef$", ModuleId.regular()), SModelId.generate(), "$ImmatureRefsModelRef$");
   }
 
   public void enable() {
     myDisabled = false;
+    Set<StaticReference> existing = myReferences.get();
+    if (existing == null) {
+      existing = new THashSet<>(myHashStrategy);
+      myReferences.set(existing);
+    } else {
+      existing.clear();
+    }
   }
 
   public void disable() {
@@ -95,58 +97,74 @@ public class ImmatureReferences implements CoreComponent {
   }
 
   public void cleanup() {
-    for (Entry<SModelReference, ConcurrentMap<SReferenceBase, Object>> entry : myReferences.entrySet()) {
-      for (SReferenceBase r : entry.getValue().keySet()) {
-        r.makeIndirect(true);
-      }
+    final Set<StaticReference> existing = myReferences.get();
+    if (existing == null || existing.isEmpty()) {
+      // odd, why would anyone call cleanup from a thread that didn't enable collection?
+      return;
     }
-    myReferences.clear();
+    final StaticReference[] copy = existing.toArray(new StaticReference[existing.size()]);
+    // I don't bother with set(null) intentionally as I expect this thread to live on and the set to be reused
+    existing.clear(); // clear right away, don't waste time in remove()
+    // makeIndirect might end up with remove() and modification of the set
+    for (StaticReference r : copy) {
+      r.makeIndirect(true);
+    }
   }
 
-  public void add(SReferenceBase ref) {
-    if (myDisabled) return;
-    SModel model = ref.getSourceNode().getModel();
-    SModelReference modelRef = model == null ? myVirtualRef : model.getReference();
-    ConcurrentMap<SReferenceBase, Object> refSet = getOrCreateRefSet(modelRef);
-    refSet.put(ref, PRESENT);
+  /**
+   * @param ref non-null
+   */
+  public void add(StaticReference ref) {
+    if (myDisabled) {
+      return;
+    }
+    final Set<StaticReference> existing = myReferences.get();
+    if (existing == null) {
+      // XXX log, perhaps? A node/reference created during command but from a thread that didn't initiate it.
+      return;
+    }
+    existing.add(ref);
   }
 
+  /**
+   * @param ref non-null (not that we use that, but earlier code did assume that)
+   */
   public void remove(SReferenceBase ref) {
-    if (myDisabled) return;
-
-    SModel model = ref.getSourceNode().getModel();
-
-    SModelReference modelRef = model == null ? myVirtualRef : model.getReference();
-    ConcurrentMap<SReferenceBase, Object> refSet = myReferences.get(modelRef);
-    if (refSet != null) {
-      refSet.remove(ref);
+    if (myDisabled) {
+      return;
     }
+
+    final Set<StaticReference> existing = myReferences.get();
+    if (existing == null) {
+      // XXX log, perhaps? A node/reference created during command but from a thread that didn't initiate it.
+      return;
+    }
+    existing.remove(ref);
   }
 
-  private ConcurrentMap<SReferenceBase, Object> getOrCreateRefSet(SModelReference modelRef) {
-    ConcurrentMap<SReferenceBase, Object> pooledSet;
-    try {
-      pooledSet = myReferencesSetPool.remove();
-    } catch (NoSuchElementException e) {
-      pooledSet = new ConcurrentHashMap<>();
-    }
-    ConcurrentMap<SReferenceBase, Object> usedSet = myReferences.putIfAbsent(modelRef, pooledSet);
-    if (usedSet == null) {
-      usedSet = pooledSet;
-      pooledSet = new ConcurrentHashMap<>();
-    }
-    myReferencesSetPool.add(pooledSet);
-    return usedSet;
-  }
 
+  // FIXME I'm puzzled why do we use listener mechanism to find out about model removal, while for the rest of functionality
+  //       we rely on explicit IR.getInstance() calls. Why not accomplish the same with yet another explicit call?
   private class MyRepositoryAdapter extends SRepositoryContentAdapter {
     @Override
     public void beforeModelRemoved(SModule module, SModel model) {
       super.beforeModelRemoved(module, model);
-      ConcurrentMap<SReferenceBase, Object> refSet = myReferences.remove(model.getReference());
-      if (refSet != null) {
-        refSet.clear();
+      if (myDisabled) {
+        return;
       }
+      final Set<StaticReference> existing = myReferences.get();
+      if (existing == null || existing.isEmpty()) {
+        return;
+      }
+      final SModelReference toRemove = model.getReference();
+      // Due to nice design, SR.getTargetSModelReference() may lead to change in 'existing' set (SR.makeIndirect->IR.remove),
+      // therefore, can't iterate over existing and at the same time ask for getTargetSModelReference.
+      // FIXME If I don't get rid of this code any time soon, perhaps, shall try to make getTargetSModelReference() side-effect free,
+      // i.e. to rely on external code (e.g. commandFinished()) to fix references as appropriate, and use whatever is available
+      // the moment getTargetSModelReference() is invoked (e.g. myImmatureTargetNode.getModel().getReference instead of makeIndirect)
+      THashSet<StaticReference> matching = new THashSet<>(existing, myHashStrategy);
+      matching.removeIf(sr -> !toRemove.equals(sr.getTargetSModelReference()));
+      myReferences.get().removeAll(matching);
     }
   }
 }

@@ -2,7 +2,6 @@
 <model ref="r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="0" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -136,18 +135,18 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
-        <property id="6489343236075007666" name="label" index="3hQQBS" />
-        <child id="1196350785111" name="expression" index="2c44t1" />
+      <concept id="5455284157993911077" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty" flags="ng" index="2pJxcG">
+        <reference id="5455284157993911078" name="property" index="2pJxcJ" />
       </concept>
-      <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
-        <child id="1196350785114" name="quotedNode" index="2c44tc" />
+      <concept id="5455284157993911097" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitPart" flags="ng" index="2pJxcK">
+        <child id="5455284157993911094" name="expression" index="2pJxcZ" />
       </concept>
-      <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
-    </language>
-    <language id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build">
-      <concept id="4903714810883702019" name="jetbrains.mps.build.structure.BuildTextStringPart" flags="ng" index="3Mxwew">
-        <property id="4903714810883755350" name="text" index="3MwjfP" />
+      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
+        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
+      </concept>
+      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
+        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
+        <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
@@ -251,11 +250,6 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
-      <concept id="3364660638048049750" name="jetbrains.mps.lang.core.structure.PropertyAttribute" flags="ng" index="A9Btg">
-        <property id="1757699476691236117" name="name_DebugInfo" index="2qtEX9" />
-        <property id="1341860900487648621" name="propertyId" index="P4ACc" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -1154,14 +1148,12 @@
                     </node>
                   </node>
                   <node concept="TSZUe" id="1HQQX4XUAaM" role="2OqNvi">
-                    <node concept="2c44tf" id="1HQQX4XUAaO" role="25WWJ7">
-                      <node concept="3Mxwew" id="1HQQX4XUAaR" role="2c44tc">
-                        <property role="3MwjfP" value="" />
-                        <node concept="2EMmih" id="1HQQX4XUAaU" role="lGtFl">
-                          <property role="2qtEX9" value="text" />
-                          <property role="3hQQBS" value="BuildTextStringPart" />
-                          <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/4903714810883702019/4903714810883755350" />
-                          <node concept="QwW4i" id="1HQQX4XUAaW" role="2c44t1">
+                    <node concept="2pJPEk" id="7wjXRnJXRW4" role="25WWJ7">
+                      <node concept="2pJPED" id="7wjXRnJXRW1" role="2pJPEn">
+                        <ref role="2pJxaS" to="3ior:4gdvEeQyRO3" resolve="BuildTextStringPart" />
+                        <node concept="2pJxcG" id="7wjXRnJXRW2" role="2pJxcM">
+                          <ref role="2pJxcJ" to="3ior:4gdvEeQz4Pm" resolve="text" />
+                          <node concept="QwW4i" id="1HQQX4XUAaW" role="2pJxcZ">
                             <ref role="QwW4h" node="1HQQX4XU_TO" resolve="newExtension" />
                           </node>
                         </node>

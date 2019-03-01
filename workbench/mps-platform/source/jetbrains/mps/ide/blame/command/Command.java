@@ -69,6 +69,7 @@ public class Command {
   private static final String TYPE_PARAM_NAME = "type";
   // Disable notifications parameter can be removed after fix will be available in Youtrack
   private static final String DISABLE_NOTIFICATIONS_PARAM_NAME = "disableNotifications";
+  private static final String MARKDOWN = "markdown";
   private static final String PERMITTED_GROUP_PARAM_NAME = "permittedGroup";
   private static final String MPS_GROUP_NAME = "MPS Team";
   private static final String COMMAND_PARAM_NAME = "command";
@@ -145,6 +146,7 @@ public class Command {
     postMethod.addParameter(DESCRIPTION_PARAM_NAME, description);
     postMethod.addParameter(TYPE_PARAM_NAME, EXCEPTION);
     postMethod.addParameter(DISABLE_NOTIFICATIONS_PARAM_NAME, String.valueOf(false));
+    postMethod.addParameter(MARKDOWN, String.valueOf(true));
     if (hidden) {
       postMethod.addParameter(PERMITTED_GROUP_PARAM_NAME, MPS_GROUP_NAME);
     }

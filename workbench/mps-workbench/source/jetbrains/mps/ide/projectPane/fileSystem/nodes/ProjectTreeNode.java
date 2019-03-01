@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.projectPane.fileSystem.nodes;
 
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.module.DefaultNamespaceTreeBuilder;
@@ -34,7 +35,7 @@ import java.util.List;
 public class ProjectTreeNode extends AbstractFileTreeNode {
 
   public ProjectTreeNode(MPSProject project) {
-    super(project, project.getProject().getBaseDir());
+    super(project, ProjectUtil.guessProjectDir(project.getProject()));
     setText(project.getName());
 
     List<ModuleTreeNode> moduleNodes = new LinkedList<>();

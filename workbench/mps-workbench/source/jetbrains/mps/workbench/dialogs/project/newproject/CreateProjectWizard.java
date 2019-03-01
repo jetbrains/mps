@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
+import com.intellij.ide.GeneralSettings;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -26,6 +27,7 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.popup.ListItemDescriptor;
 import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.ui.CollectionListModel;
 import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.HideableDecorator;
@@ -41,10 +43,12 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.containers.SortedList;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.JBUI.Borders;
 import jetbrains.mps.ide.ui.util.UIUtil;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory.ProjectNotCreatedException;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Box;
@@ -67,40 +71,38 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class CreateProjectWizard extends DialogWrapper {
+public final class CreateProjectWizard extends DialogWrapper {
 
   private static final String PROJECTS_DIR = System.getProperty("user.home") + File.separator + "MPSProjects";
-  private Project myCurrentProject;
+  private static final String PROJECT_NAME_PREFIX = "Project";
+  private final Project myCurrentProject;
 
   private JPanel myPanel;
-  private JBSplitter mySplitter;
 
   private JPanel myLeftPanel;
   private SearchTextField mySearchField;
-  private JBList myList;
+  private JBList<TemplateItem> myList;
   private FilteringListModel<TemplateItem> myFilteringListModel;
 
   private JPanel myRightPanel;
-  private JPanel myProjectPanel;
   private JTextField myProjectName;
   private PathField myProjectPath;
   private JPanel myDescriptionPanel;
   private JTextPane myDescriptionPane;
   private JPanel myTemplateSettingsHolder;
-  private HideableDecorator myHideableDecorator;
   private JPanel myTemplateSettings;
 
   private TemplateItem myCurrentTemplateItem = null;
-  private MPSProjectTemplate.MPSProjectTemplateListener myTemplateListener = () -> checkSettings();
+  private final MPSProjectTemplate.MPSProjectTemplateListener myTemplateListener = this::checkSettings;
 
-  private ProjectFormatPanel myProjectFormatPanel = new ProjectFormatPanel();
+  private final ProjectFormatPanel myProjectFormatPanel = new ProjectFormatPanel();
 
   public CreateProjectWizard(@Nullable Project project) {
     super(project);
     myCurrentProject = project;
     setTitle("New Project");
-    setOKButtonText("&OK");
-    setCancelButtonText("Ca&ncel");
+    setOKButtonText(IdeBundle.message("button.ok"));
+    setCancelButtonText(RefactoringBundle.message("cancel.button"));
 
     init();
   }
@@ -115,11 +117,11 @@ public class CreateProjectWizard extends DialogWrapper {
 
       initRightPanel();
 
-      mySplitter = new JBSplitter(false, 0.3f, 0.3f, 0.6f);
-      mySplitter.setSplitterProportionKey("select.template.proportion");
-      mySplitter.setFirstComponent(myLeftPanel);
-      mySplitter.setSecondComponent(myRightPanel);
-      myPanel.add(mySplitter,
+      JBSplitter splitter = new JBSplitter(false, 0.3f, 0.3f, 0.6f);
+      splitter.setSplitterProportionKey("select.template.proportion");
+      splitter.setFirstComponent(myLeftPanel);
+      splitter.setSecondComponent(myRightPanel);
+      myPanel.add(splitter,
                   new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
                                       GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_CAN_SHRINK,
                                       GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_CAN_SHRINK, null, null, null));
@@ -137,7 +139,7 @@ public class CreateProjectWizard extends DialogWrapper {
     mySearchField = new SearchTextField(false);
     mySearchField.addDocumentListener(new DocumentAdapter() {
       @Override
-      protected void textChanged(DocumentEvent e) {
+      protected void textChanged(@NotNull DocumentEvent e) {
         TemplateItem tmp = myCurrentTemplateItem;
         myFilteringListModel.refilter();
         int idx = myFilteringListModel.getElementIndex(tmp);
@@ -147,7 +149,7 @@ public class CreateProjectWizard extends DialogWrapper {
 
     new AnAction() {
       @Override
-      public void actionPerformed(AnActionEvent e) {
+      public void actionPerformed(@NotNull AnActionEvent e) {
         InputEvent event = e.getInputEvent();
         if (event instanceof KeyEvent) {
           int row = myList.getSelectedIndex();
@@ -173,26 +175,26 @@ public class CreateProjectWizard extends DialogWrapper {
                                         GridConstraints.SIZEPOLICY_FIXED, null, null, null));
 
 
-    myList = new JBList();
+    myList = new JBList<>();
 
     List<ProjectTemplatesGroup> templatesGroups = new SortedList<>((o1, o2) -> {
       //Put DSL/Development groups on top & Other group to the last place
-      if (o1.getName().equals("DSL")) {
+      if ("DSL".equals(o1.getName())) {
         return -1;
       }
-      if (o2.getName().equals("DSL")) {
+      if ("DSL".equals(o2.getName())) {
         return 1;
       }
-      if (o1.getName().equals("Development")) {
+      if ("Development".equals(o1.getName())) {
         return -1;
       }
-      if (o2.getName().equals("Development")) {
+      if ("Development".equals(o2.getName())) {
         return 1;
       }
-      if (o1.getName().equals("Other")) {
+      if ("Other".equals(o1.getName())) {
         return 1;
       }
-      if (o2.getName().equals("Other")) {
+      if ("Other".equals(o2.getName())) {
         return -1;
       }
       return o1.getName().compareToIgnoreCase(o2.getName());
@@ -212,36 +214,35 @@ public class CreateProjectWizard extends DialogWrapper {
     myFilteringListModel.setFilter(templateItem -> templateItem.getName().toLowerCase().contains(mySearchField.getText().trim().toLowerCase()));
     myList.setModel(myFilteringListModel);
 
-    myList.setCellRenderer(new GroupedItemsListRenderer(new ListItemDescriptor() {
+    myList.setCellRenderer(new GroupedItemsListRenderer<>(new ListItemDescriptor<TemplateItem>() {
       @Nullable
       @Override
-      public String getTextFor(Object value) {
-        return ((TemplateItem) value).getName();
+      public String getTextFor(TemplateItem item) {
+        return item.getName();
       }
 
       @Nullable
       @Override
-      public String getTooltipFor(Object value) {
+      public String getTooltipFor(TemplateItem item) {
         return null;
       }
 
       @Nullable
       @Override
-      public Icon getIconFor(Object value) {
-        return ((TemplateItem) value).getIcon();
+      public Icon getIconFor(TemplateItem item) {
+        return item.getIcon();
       }
 
       @Override
-      public boolean hasSeparatorAboveOf(Object value) {
-        TemplateItem item = (TemplateItem) value;
+      public boolean hasSeparatorAboveOf(TemplateItem item) {
         int index = myFilteringListModel.getElementIndex(item);
         return index == 0 || !myFilteringListModel.getElementAt(index - 1).getGroupName().equals(item.getGroupName());
       }
 
       @Nullable
       @Override
-      public String getCaptionAboveOf(Object value) {
-        return ((TemplateItem) value).getGroupName();
+      public String getCaptionAboveOf(TemplateItem item) {
+        return item.getGroupName();
       }
     }));
 
@@ -255,7 +256,7 @@ public class CreateProjectWizard extends DialogWrapper {
         myCurrentTemplateItem.myTemplate.removeListener(myTemplateListener);
       }
 
-      myCurrentTemplateItem = (TemplateItem) myList.getSelectedValue();
+      myCurrentTemplateItem = myList.getSelectedValue();
 
       if (myCurrentTemplateItem != null) {
         myCurrentTemplateItem.myTemplate.addListener(myTemplateListener);
@@ -275,20 +276,20 @@ public class CreateProjectWizard extends DialogWrapper {
 
     //-----Project panel-----
 
-    myProjectPanel = new JPanel(new GridLayoutManager(2, 2, new JBInsets(0, 0, 5, 0), -1, -1));
+    JPanel projectPanel = new JPanel(new GridLayoutManager(2, 2, new JBInsets(0, 0, 5, 0), -1, -1));
 
-    myProjectPanel.add(new JLabel("Project name:"),
-                       new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
+    projectPanel.add(new JLabel("Project name:"),
+                     new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
                                            GridConstraints.SIZEPOLICY_FIXED, null, null, null));
 
     myProjectName = new JTextField(getDefaultProjectName());
-    myProjectPanel.add(myProjectName,
-                       new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
+    projectPanel.add(myProjectName,
+                     new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
                                            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null,
                                            null, null));
 
-    myProjectPanel.add(new JLabel("Project location:"),
-                       new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
+    projectPanel.add(new JLabel("Project location:"),
+                     new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
                                            GridConstraints.SIZEPOLICY_FIXED, null, null, null));
 
     myProjectPath = new PathField();
@@ -312,12 +313,12 @@ public class CreateProjectWizard extends DialogWrapper {
     });
 
     updateProjectPath();
-    myProjectPanel.add(myProjectPath,
-                       new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
+    projectPanel.add(myProjectPath,
+                     new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
                                            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null,
                                            null, null));
 
-    myRightPanel.add(myProjectPanel,
+    myRightPanel.add(projectPanel,
                      new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
                                          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null,
                                          null, null));
@@ -348,10 +349,10 @@ public class CreateProjectWizard extends DialogWrapper {
 
     myTemplateSettingsHolder = new JPanel(new BorderLayout());
     myTemplateSettings = new JPanel(new GridLayoutManager(2, 1, JBUI.emptyInsets(), -1, -1));
-    myTemplateSettings.setBorder(IdeBorderFactory.createEmptyBorder(0, IdeBorderFactory.TITLED_BORDER_INDENT, 5, 0));
-    myHideableDecorator = new HideableDecorator(myTemplateSettingsHolder, "More Settings", false);
-    myHideableDecorator.setContentComponent(myTemplateSettings);
-    myHideableDecorator.setOn(true);
+    myTemplateSettings.setBorder(Borders.empty(0, IdeBorderFactory.TITLED_BORDER_INDENT, 5, 0));
+    HideableDecorator hideableDecorator = new HideableDecorator(myTemplateSettingsHolder, "More Settings", false);
+    hideableDecorator.setContentComponent(myTemplateSettings);
+    hideableDecorator.setOn(true);
 
     myRightPanel.add(myTemplateSettingsHolder,
                      new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_SOUTHWEST, GridConstraints.FILL_HORIZONTAL,
@@ -384,8 +385,9 @@ public class CreateProjectWizard extends DialogWrapper {
     // Check that there is no other project at this project path
     File file = new File(myProjectPath.getPath());
     if (file.exists() && file.getParent() != null && file.isDirectory()) {
-      boolean isProjectPath = file.listFiles(
-            (dir, name) -> Project.DIRECTORY_STORE_FOLDER.equals(name) || name.toLowerCase().endsWith(MPSExtentions.DOT_MPS_PROJECT)).length == 1;
+      final File[] files = file.listFiles(
+          (dir, name) -> Project.DIRECTORY_STORE_FOLDER.equals(name) || name.toLowerCase().endsWith(MPSExtentions.DOT_MPS_PROJECT));
+      boolean isProjectPath = files != null && files.length == 1;
 
       if (isProjectPath) {
         //show error and disable apply
@@ -411,14 +413,15 @@ public class CreateProjectWizard extends DialogWrapper {
   }
 
   private String getDefaultProjectName() {
-    int n = 1;
-    while (true) {
-      String projectName = "Project" + n;
+    // It's better to have almost unreachable limit then stuck in infinite loop
+    for (int i = 0; i < 1 << 10 ; i++) {
+      final String projectName = i > 0 ? PROJECT_NAME_PREFIX + i : PROJECT_NAME_PREFIX;
       if (!(new File(PROJECTS_DIR, projectName).exists())) {
         return projectName;
       }
-      n = n + 1;
     }
+    // For a very persistent person
+    return PROJECT_NAME_PREFIX + "_too_many_test_projects";
   }
 
   private void updateProjectPath() {
@@ -464,7 +467,6 @@ public class CreateProjectWizard extends DialogWrapper {
     myTemplateSettingsHolder.setVisible(component != null);
   }
 
-  @Nullable
   @Override
   protected String getHelpId() {
     return "create_new_project_dialog";
@@ -481,10 +483,8 @@ public class CreateProjectWizard extends DialogWrapper {
     super.doOKAction();
 
     if (myCurrentProject != null) {
-      int exitCode = Messages.showDialog(IdeBundle.message("prompt.open.project.in.new.frame"), IdeBundle.message("title.open.project"),
-                                         new String[]{IdeBundle.message("button.new.frame"), IdeBundle.message("button.existing.frame")}, 1,
-                                         Messages.getQuestionIcon());
-      if (exitCode == 1) {
+      int exitCode = ProjectUtil.confirmOpenNewProject(true);
+      if (exitCode == GeneralSettings.OPEN_PROJECT_SAME_WINDOW) {
         ProjectUtil.closeAndDispose(myCurrentProject);
       }
     }
@@ -509,7 +509,7 @@ public class CreateProjectWizard extends DialogWrapper {
     });
   }
 
-  class TemplateItem {
+  private final class TemplateItem {
 
     private final MPSProjectTemplate myTemplate;
     private final ProjectTemplatesGroup myGroup;

@@ -25,9 +25,12 @@ import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.refactoring.participant.MoveModelRefactoringParticipant;
 import jetbrains.mps.ide.platform.actions.core.RefactoringProcessor;
+import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.persistence.ModelCannotBeCreatedException;
+import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
 import jetbrains.mps.ide.platform.actions.core.DefaultRefactoringUI;
@@ -125,6 +128,7 @@ public class MoveModel_Action extends BaseAction {
         return ListSequence.fromListAndArray(new ArrayList<SModel>(), ((SModel) MapSequence.fromMap(_params).get("model")));
       }
       private EditableSModel newModel = null;
+      private ModelCreateHelper modelCreateHelper = null;
       public void prepareRefactoring() {
         final Wrappers._T<NewModelDialog> dialog = new Wrappers._T<NewModelDialog>();
         ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -133,7 +137,13 @@ public class MoveModel_Action extends BaseAction {
           }
         });
         dialog.value.show();
-        newModel = dialog.value.getResult();
+        modelCreateHelper = dialog.value.getResultHelper();
+        try {
+          newModel = modelCreateHelper.createModel(((SModel) MapSequence.fromMap(_params).get("model")), true);
+        } catch (ModelCannotBeCreatedException e) {
+          Messages.showErrorDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject(), "Could not create a new model because '" + e.getMessage() + "'", "Error");
+          return;
+        }
       }
       public void doRefactor(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SModel, SModel, SModel, SModel>> participantStates, RefactoringSession refactoringSession) {
         if (newModel == null) {

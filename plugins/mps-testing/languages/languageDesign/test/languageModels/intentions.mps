@@ -156,12 +156,6 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
-      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
-      </concept>
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
@@ -1645,7 +1639,7 @@
     </node>
   </node>
   <node concept="2S6QgY" id="7KUdrkE_$Zn">
-    <property role="TrG5h" value="GenerateOuput" />
+    <property role="TrG5h" value="GenerateOutput" />
     <property role="2ZfUl0" value="true" />
     <property role="3GE5qa" value="migration" />
     <ref role="2ZfgGC" to="tp5g:4K12N3pJ$JB" resolve="MigrationTestCase" />
@@ -1675,9 +1669,9 @@
                 <node concept="3clFbT" id="7KUdrkEIHbv" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>
-                <node concept="2YIFZM" id="7KUdrkECSWh" role="37wK5m">
+                <node concept="2YIFZM" id="6oGy5BbRaro" role="37wK5m">
+                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule():jetbrains.mps.smodel.tempmodel.TempModuleOptions" resolve="nonReloadableModule" />
                   <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
-                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.forDefaultModule():jetbrains.mps.smodel.tempmodel.TempModuleOptions" resolve="forDefaultModule" />
                 </node>
               </node>
             </node>
@@ -1849,33 +1843,6 @@
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="6dZNzDpMQHq" role="3cqZAp">
-          <node concept="3SKdUq" id="6dZNzDpMQHs" role="3SKWNk">
-            <property role="3SKdUp" value="we cannot dispose temporary model in the same command to avoid resolving immature references into detached nodes" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="3eDPCSVtdch" role="3cqZAp">
-          <node concept="2OqwBi" id="3eDPCSVtes5" role="3clFbG">
-            <node concept="2YIFZM" id="3eDPCSVte0y" role="2Oq$k0">
-              <ref role="1Pybhc" to="4szu:~ImmatureReferences" resolve="ImmatureReferences" />
-              <ref role="37wK5l" to="4szu:~ImmatureReferences.getInstance():jetbrains.mps.smodel.references.ImmatureReferences" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="3eDPCSVtf$J" role="2OqNvi">
-              <ref role="37wK5l" to="4szu:~ImmatureReferences.cleanup():void" resolve="cleanup" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3eDPCSVtjy0" role="3cqZAp">
-          <node concept="2OqwBi" id="3eDPCSVtktD" role="3clFbG">
-            <node concept="2YIFZM" id="3eDPCSVtjUN" role="2Oq$k0">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.instance():jetbrains.mps.smodel.references.UnregisteredNodes" resolve="instance" />
-              <ref role="1Pybhc" to="4szu:~UnregisteredNodes" resolve="UnregisteredNodes" />
-            </node>
-            <node concept="liA8E" id="3eDPCSVtl$7" role="2OqNvi">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.clear():void" resolve="clear" />
             </node>
           </node>
         </node>

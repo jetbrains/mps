@@ -50,6 +50,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers");
+    deps.aggregatedLanguage(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, "jetbrains.mps.debugger.api.lang");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptBuilderBlockStatement, myConceptBuilderParameter, myConceptCommandBuilderExpression, myConceptCommandDebuggerOperation, myConceptCommandDeclaration, myConceptCommandMethod, myConceptCommandParameterAssignment, myConceptCommandParameterDeclaration, myConceptCommandParameterReference, myConceptCommandPartLengthOperation, myConceptCommandPartToListOperation, myConceptCommandProcessType, myConceptCommandReferenceExpression, myConceptCommandType, myConceptDebuggerSettingsCommandParameterDeclaration, myConceptExecuteCommandPart, myConceptExplicitCommandParameterDeclaration, myConceptKeyValueCommandPart, myConceptListCommandPart, myConceptNewProcessBuilderExpression, myConceptProcessBuilderCommandPart, myConceptProcessBuilderCommandPartType, myConceptProcessType, myConceptPropertyCommandPart, myConceptRedirectOutputExpression, myConceptReportErrorStatement, myConceptReportExecutionError, myConceptStartAndWaitOperation);

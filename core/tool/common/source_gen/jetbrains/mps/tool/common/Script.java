@@ -133,6 +133,12 @@ public class Script {
   public Map<String, String> getMacro() {
     return Collections.unmodifiableMap(myStartupData.getMacros());
   }
+  public void addPlugin(PluginData p) {
+    myStartupData.addPlugin(p);
+  }
+  public List<PluginData> getPlugins() {
+    return Collections.unmodifiableList(myStartupData.getPlugins());
+  }
   public void updateMacro(Map<String, String> macro) {
     myStartupData.getMacros().putAll(macro);
   }

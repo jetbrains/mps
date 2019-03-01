@@ -18,8 +18,10 @@ import jetbrains.mps.tool.common.RepositoryDescriptor;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.tool.common.ScriptProperties;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -124,13 +126,8 @@ public abstract class MpsWorker {
       }
       config = config.addLib(jar);
     }
-
-    // todo make it a leagl part of the whatToDo if possible 
-    String pluginsPath = whatToDo.getProperty(ScriptProperties.PLUGIN_PATHS);
-    if (pluginsPath != null) {
-      for (String cp : pluginsPath.split(File.pathSeparator)) {
-        config.addPluginClassPath(cp);
-      }
+    for (PluginData pd : ListSequence.fromList(whatToDo.getPlugins())) {
+      config.addPluginClassPath(pd.path);
     }
 
     return config;
@@ -162,6 +159,10 @@ public abstract class MpsWorker {
       myEnvironment.dispose();
       myEnvironment = null;
     }
+  }
+
+  protected final ComponentHost getPlatform() {
+    return myEnvironment.getPlatform();
   }
 
   protected void make() {

@@ -9,7 +9,6 @@
   <jvmargs id="mps.args">
     <arg value="-Xss1024k"/>
     <arg value="-Xmx1000m"/>
-    <arg value="-XX:MaxPermSize=92m"/>
     <arg value="-XX:+HeapDumpOnOutOfMemoryError"/>
   </jvmargs>
 
@@ -36,7 +35,6 @@
     <junit fork="true" forkmode="once" haltonerror="false" haltonfailure="false">
       <jvmarg value="-ea"/>
       <jvmarg value="-Xmx1024m"/>
-      <jvmarg value="-XX:MaxPermSize=192m"/>
       <jvmarg value="-XX:+HeapDumpOnOutOfMemoryError"/>
       <jvmarg value="-client"/>
       <classpath refid="module.AllTests.classpath"/>

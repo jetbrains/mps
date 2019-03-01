@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.util.indexing.FileBasedIndex;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
@@ -50,15 +45,14 @@ public class MPSGoToFileContributor implements ChooseByNameContributor, DumbAwar
   @NotNull
   @Override
   public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project, boolean includeNonProjectItems) {
+    // XXX why not GlobalSearchScope.allScope(project)?
     final GlobalSearchScope scope = new AllScope();
 
     Collection<VirtualFile> files;
+    // it's an extension contributed to a point, it's caller responsibility to ensure proper platform read lock, don't grab
     try {
-      MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-      assert mpsProject != null;
-      files = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(
-          () -> FileBasedIndex.getInstance().getContainingFiles(FilenameIndex.NAME, name, scope));
-    } catch (ProcessCanceledException ce){
+      files = FilenameIndex.getVirtualFilesByName(project, name, scope);
+    } catch (ProcessCanceledException ex) {
       files = Collections.emptyList();
     }
 

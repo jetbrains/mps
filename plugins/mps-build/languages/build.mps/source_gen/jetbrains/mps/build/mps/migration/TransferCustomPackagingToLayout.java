@@ -94,7 +94,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
       })) {
         return;
       }
-      ListSequence.fromList(children).addElement(_quotation_createNode_2skbva_a0a2a0a0(moduleSource));
+      ListSequence.fromList(children).addElement(createBuildMpsLayout_ModuleJars_2skbva_a0a2a0a0(moduleSource));
     }
   }
   private void createManualPackaging(SNode ideaPlugin, List<SNode> modulesToPackage, List<SNode> groupsToPackage) {
@@ -148,12 +148,11 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
     return folder;
   }
 
-  private static SNode _quotation_createNode_2skbva_a0a2a0a0(Object parameter_1) {
+  private static SNode createBuildMpsLayout_ModuleJars_2skbva_a0a2a0a0(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x11918e0f209b83e7L, "BuildMpsLayout_ModuleJars"), null, null, false);
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module"), (SNode) parameter_1);
-    return quotedNode_2;
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars"), null, null, false);
+    n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module"), node0);
+    return n1;
   }
   private static SNode _quotation_createNode_2skbva_a0a0b0f(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

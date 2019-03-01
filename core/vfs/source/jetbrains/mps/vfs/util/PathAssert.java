@@ -40,11 +40,6 @@ public final class PathAssert {
     return this;
   }
 
-  public PathAssert noEndSlash() {
-    assert !myPath.endsWith(IFileSystem.SEPARATOR) : "This path must not end with slash: " + myPath;
-    return this;
-  }
-
   public PathAssert absolute() {
     assert myPath.startsWith(IFileSystem.SEPARATOR) || myPath.contains(":/") : "Path should be absolute: " + myPath;
     return this;
@@ -52,23 +47,29 @@ public final class PathAssert {
 
   public PathAssert noDots() {
     for (String part : myPath.split(IFileSystem.SEPARATOR)) {
-      assert !part.equals(".") && !part.equals("..") : "Path should not contain \".\" and \"..\"";
+      assert !part.equals(".") && !part.equals("..") : "Path should not contain \".\" and \"..\": " + myPath;
     }
     return this;
   }
 
   public PathAssert nonEmpty() {
-    assert !myPath.trim().isEmpty() : "Empty suffix not allowed";
+    assert !myPath.trim().isEmpty() : "Empty suffix not allowed: " + myPath;
     return this;
   }
 
   public PathAssert noSeparators() {
-    assert !myPath.contains(IFileSystem.SEPARATOR) : "Separators are not allowed";
+    assert !myPath.contains(IFileSystem.SEPARATOR) : "Separators are not allowed: " + myPath;
     return this;
   }
 
-  public PathAssert noEndSlashOrArchive() {
-    assert !myPath.endsWith(IFileSystem.SEPARATOR) || myPath.endsWith("!" + IFileSystem.SEPARATOR) : "Only archive paths can end with " + IFileSystem.SEPARATOR;
+  //Checks that no slash is after file name. E.g. /a/b/ is error, while c:/, /a.jar!/ and / are not
+  public PathAssert noOddEndSlash() {
+    assert
+        myPath.length() == 1 ||
+        myPath.endsWith(":/") ||
+        !myPath.endsWith(IFileSystem.SEPARATOR) ||
+        myPath.endsWith("!" + IFileSystem.SEPARATOR) :
+        "Only archive paths can end with " + IFileSystem.SEPARATOR + ": " + myPath;
     return this;
   }
 }

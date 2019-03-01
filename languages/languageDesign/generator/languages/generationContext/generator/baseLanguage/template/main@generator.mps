@@ -1207,6 +1207,7 @@
                         <ref role="1Pybhc" to="tp2g:hv18zCR" resolve="ClassifierTypeUtil" />
                         <node concept="2OqwBi" id="2n6lsTIwoj9" role="37wK5m">
                           <node concept="2OqwBi" id="2n6lsTIwoja" role="2Oq$k0">
+                            <node concept="3JvlWi" id="2n6lsTIwojg" role="2OqNvi" />
                             <node concept="2OqwBi" id="2n6lsTIwojb" role="2Oq$k0">
                               <node concept="2OqwBi" id="2n6lsTIwojc" role="2Oq$k0">
                                 <node concept="30H73N" id="2n6lsTIwojd" role="2Oq$k0" />
@@ -1216,9 +1217,103 @@
                               </node>
                               <node concept="1mfA1w" id="2n6lsTIwojf" role="2OqNvi" />
                             </node>
-                            <node concept="3JvlWi" id="2n6lsTIwojg" role="2OqNvi" />
                           </node>
                           <node concept="1$rogu" id="2n6lsTIwojh" role="2OqNvi" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="UesZ_o1S$s" role="3acgRq">
+      <ref role="30HIoZ" to="tpf3:UesZ_nZl96" resolve="GenerationContextOp_VarRef2" />
+      <node concept="gft3U" id="UesZ_o1S$t" role="1lVwrX">
+        <node concept="1eOMI4" id="UesZ_o1S$u" role="gfFT$">
+          <node concept="10QFUN" id="UesZ_o1S$v" role="1eOMHV">
+            <node concept="2OqwBi" id="UesZ_o1S$w" role="10QFUP">
+              <node concept="1eOMI4" id="UesZ_o1S$x" role="2Oq$k0">
+                <node concept="10QFUN" id="UesZ_o1S$y" role="1eOMHV">
+                  <node concept="10Nm6u" id="UesZ_o1S$z" role="10QFUP" />
+                  <node concept="3uibUv" id="UesZ_o1S$$" role="10QFUM">
+                    <ref role="3uigEE" to="q1l7:~TemplateQueryContext" resolve="TemplateQueryContext" />
+                  </node>
+                </node>
+                <node concept="29HgVG" id="UesZ_o1S$_" role="lGtFl">
+                  <node concept="3NFfHV" id="UesZ_o1S$A" role="3NFExx">
+                    <node concept="3clFbS" id="UesZ_o1S$B" role="2VODD2">
+                      <node concept="3clFbF" id="UesZ_o1S$C" role="3cqZAp">
+                        <node concept="2OqwBi" id="UesZ_o1S$D" role="3clFbG">
+                          <node concept="2OqwBi" id="UesZ_o25S7" role="2Oq$k0">
+                            <node concept="30H73N" id="UesZ_o25Jv" role="2Oq$k0" />
+                            <node concept="2qgKlT" id="UesZ_o26nC" role="2OqNvi">
+                              <ref role="37wK5l" to="tpek:hO_4GYO" resolve="getDotExpression" />
+                            </node>
+                          </node>
+                          <node concept="3TrEf2" id="UesZ_o1S$J" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpee:hqOq$gm" resolve="operand" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="UesZ_o1S$K" role="2OqNvi">
+                <ref role="37wK5l" to="q1l7:~TemplateQueryContext.getVariable(java.lang.String):java.lang.Object" resolve="getVariable" />
+                <node concept="Xl_RD" id="UesZ_o1S$L" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                  <node concept="17Uvod" id="UesZ_o1S$M" role="lGtFl">
+                    <property role="2qtEX9" value="value" />
+                    <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                    <node concept="3zFVjK" id="UesZ_o1S$N" role="3zH0cK">
+                      <node concept="3clFbS" id="UesZ_o1S$O" role="2VODD2">
+                        <node concept="3clFbF" id="UesZ_o1S$P" role="3cqZAp">
+                          <node concept="2OqwBi" id="UesZ_o1S$Q" role="3clFbG">
+                            <node concept="30H73N" id="UesZ_o1S$R" role="2Oq$k0" />
+                            <node concept="3TrcHB" id="UesZ_o20LB" role="2OqNvi">
+                              <ref role="3TsBF5" to="tpf3:UesZ_nZl98" resolve="name_intern" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3uibUv" id="UesZ_o1S$T" role="10QFUM">
+              <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+              <node concept="29HgVG" id="UesZ_o1S$U" role="lGtFl">
+                <node concept="3NFfHV" id="UesZ_o1S$V" role="3NFExx">
+                  <node concept="3clFbS" id="UesZ_o1S$W" role="2VODD2">
+                    <node concept="3SKdUt" id="4si$02b0cU5" role="3cqZAp">
+                      <node concept="3SKdUq" id="4si$02b0cUa" role="3SKWNk">
+                        <property role="3SKdUp" value="there's TypeHitExpression container node that wraps original DotExpression, hence de.parent.type" />
+                      </node>
+                    </node>
+                    <node concept="3clFbF" id="UesZ_o1S$X" role="3cqZAp">
+                      <node concept="2YIFZM" id="UesZ_o1S$Y" role="3clFbG">
+                        <ref role="37wK5l" to="tp2g:hv18AMC" resolve="getTypeCoercedToClassifierType" />
+                        <ref role="1Pybhc" to="tp2g:hv18zCR" resolve="ClassifierTypeUtil" />
+                        <node concept="2OqwBi" id="UesZ_o1S$Z" role="37wK5m">
+                          <node concept="2OqwBi" id="UesZ_o1S_0" role="2Oq$k0">
+                            <node concept="3JvlWi" id="UesZ_o1S_6" role="2OqNvi" />
+                            <node concept="2OqwBi" id="UesZ_o1S_1" role="2Oq$k0">
+                              <node concept="2OqwBi" id="UesZ_o1S_2" role="2Oq$k0">
+                                <node concept="30H73N" id="UesZ_o1S_3" role="2Oq$k0" />
+                                <node concept="2qgKlT" id="UesZ_o1S_4" role="2OqNvi">
+                                  <ref role="37wK5l" to="tpek:hO_4GYO" resolve="getDotExpression" />
+                                </node>
+                              </node>
+                              <node concept="1mfA1w" id="UesZ_o1S_5" role="2OqNvi" />
+                            </node>
+                          </node>
+                          <node concept="1$rogu" id="UesZ_o1S_7" role="2OqNvi" />
                         </node>
                       </node>
                     </node>

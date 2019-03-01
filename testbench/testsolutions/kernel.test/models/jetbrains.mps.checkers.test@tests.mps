@@ -249,8 +249,8 @@
                 <node concept="3clFbT" id="4K12N3pL6PS" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>
-                <node concept="2YIFZM" id="4K12N3pL6PT" role="37wK5m">
-                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.forDefaultModule():jetbrains.mps.smodel.tempmodel.TempModuleOptions" resolve="forDefaultModule" />
+                <node concept="2YIFZM" id="6oGy5BbQW42" role="37wK5m">
+                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule():jetbrains.mps.smodel.tempmodel.TempModuleOptions" resolve="nonReloadableModule" />
                   <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
                 </node>
               </node>
@@ -325,28 +325,6 @@
                   <ref role="37wK5l" to="mk8z:~EmptyProgressMonitor.&lt;init&gt;()" resolve="EmptyProgressMonitor" />
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3eDPCSVtdch" role="3cqZAp">
-          <node concept="2OqwBi" id="3eDPCSVtes5" role="3clFbG">
-            <node concept="2YIFZM" id="3eDPCSVte0y" role="2Oq$k0">
-              <ref role="1Pybhc" to="4szu:~ImmatureReferences" resolve="ImmatureReferences" />
-              <ref role="37wK5l" to="4szu:~ImmatureReferences.getInstance():jetbrains.mps.smodel.references.ImmatureReferences" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="3eDPCSVtf$J" role="2OqNvi">
-              <ref role="37wK5l" to="4szu:~ImmatureReferences.cleanup():void" resolve="cleanup" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3eDPCSVtjy0" role="3cqZAp">
-          <node concept="2OqwBi" id="3eDPCSVtktD" role="3clFbG">
-            <node concept="2YIFZM" id="3eDPCSVtjUN" role="2Oq$k0">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.instance():jetbrains.mps.smodel.references.UnregisteredNodes" resolve="instance" />
-              <ref role="1Pybhc" to="4szu:~UnregisteredNodes" resolve="UnregisteredNodes" />
-            </node>
-            <node concept="liA8E" id="3eDPCSVtl$7" role="2OqNvi">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.clear():void" resolve="clear" />
             </node>
           </node>
         </node>

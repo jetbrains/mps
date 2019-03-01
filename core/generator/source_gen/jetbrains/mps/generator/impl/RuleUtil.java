@@ -31,6 +31,7 @@ public final class RuleUtil {
   public static final SConcept concept_LoopMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, "jetbrains.mps.lang.generator.structure.LoopMacro");
   public static final SConcept concept_LabelMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x473cc5baf8a1e7a4L, "jetbrains.mps.lang.generator.structure.LabelMacro");
   public static final SConcept concept_VarMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro");
+  public static final SConcept concept_VarMacro2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2");
   public static final SConcept concept_InsertMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1231e32ff7a958ceL, "jetbrains.mps.lang.generator.structure.InsertMacro");
   public static final SConcept concept_WeaveMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, "jetbrains.mps.lang.generator.structure.WeaveMacro");
   public static final SConcept concept_MapSrcNodeMacro = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, "jetbrains.mps.lang.generator.structure.MapSrcNodeMacro");
@@ -59,6 +60,7 @@ public final class RuleUtil {
   public static final SConcept concept_TemplateArgumentQueryExpression = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L, "jetbrains.mps.lang.generator.structure.TemplateArgumentQueryExpression");
   public static final SConcept concept_TemplateArgumentParameterExpression = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression");
   public static final SConcept concept_TemplateArgumentVarRefExpression = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, "jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression");
+  public static final SConcept concept_TemplateArgumentVarRefExpression2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2");
   public static final SConcept concept_TemplateQueryBase = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11b4d0ca830L, "jetbrains.mps.lang.generator.structure.TemplateQueryBase");
   public static final SConcept concept_TemplateFragment = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
   public static final SConcept concept_RootTemplateAnnotation = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
@@ -102,6 +104,7 @@ public final class RuleUtil {
     NodeMacroConcepts.add(concept_TemplateSwitchMacro);
     NodeMacroConcepts.add(concept_TraceMacro);
     NodeMacroConcepts.add(concept_VarMacro);
+    NodeMacroConcepts.add(concept_VarMacro2);
     NodeMacroConcepts.add(concept_WeaveMacro);
     NodeMacroConcepts.add(concept_NodeMacro);
   }
@@ -427,6 +430,9 @@ public final class RuleUtil {
   public static SNode getTemplateArgumentVarRef_VarMacro(SNode expr) {
     return SLinkOperations.getTarget(expr, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro"));
   }
+  public static SNode getTemplateArgumentVarRef2_VarDeclaration(SNode expr) {
+    return SLinkOperations.getTarget(expr, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl"));
+  }
   public static boolean getMappingScript_IsPreProcess(SNode script) {
     return SPropertyOperations.hasEnumValue(script, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind"), "pre_processing");
   }
@@ -448,6 +454,18 @@ public final class RuleUtil {
   public static SNode getVarMacro_Query(SNode macro) {
     return SLinkOperations.getTarget(macro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644d4L, "value"));
   }
+
+  public static List<SNode> getVarMacro2_Variables(SNode macro) {
+    return SLinkOperations.getChildren(macro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables"));
+  }
+  public static String getVarDecl_Name(SNode varDecl) {
+    return ((String) (String) BHReflection.invoke0(varDecl, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration"), SMethodTrimmedId.create("getImplName", MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration"), "UesZ_nZXee")));
+  }
+  public static SNode getVarDecl_Query(SNode varDecl) {
+    return SLinkOperations.getTarget(varDecl, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value"));
+  }
+
+
   public static SNode getDismissTopRule_message(SNode dismissTopRuleConsequence) {
     return SLinkOperations.getTarget(dismissTopRuleConsequence, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013931abdL, 0x11055b6dd7bL, "generatorMessage"));
   }

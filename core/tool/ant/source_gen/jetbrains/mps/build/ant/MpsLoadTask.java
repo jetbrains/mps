@@ -11,8 +11,9 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import java.util.Set;
 import java.util.Hashtable;
-import org.apache.tools.ant.util.JavaEnvUtils;
 import java.util.HashSet;
+import jetbrains.mps.tool.common.PluginData;
+import org.apache.tools.ant.util.JavaEnvUtils;
 import java.io.IOException;
 import org.apache.tools.ant.taskdefs.Execute;
 import java.net.URL;
@@ -20,6 +21,8 @@ import java.net.MalformedURLException;
 import java.net.URLClassLoader;
 import java.lang.reflect.InvocationTargetException;
 import org.jetbrains.annotations.NotNull;
+import java.nio.file.Files;
+import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import org.apache.tools.ant.ProjectComponent;
 import java.lang.reflect.Method;
@@ -114,6 +117,10 @@ public class MpsLoadTask extends Task {
     myJvmArgs.addAll(jvmArg.getArgs());
   }
 
+  public void addConfiguredPlugin(Plugin plugin) {
+    myWhatToDo.addPlugin(plugin.getDescriptor());
+  }
+
   public final void setWorker(String workerClass) {
     myWorkerClass = workerClass;
   }
@@ -134,6 +141,10 @@ public class MpsLoadTask extends Task {
         Object value = properties.get(name);
         myWhatToDo.addMacro((String) name, (String) value);
       }
+    }
+    Set<File> pluginsClassPath = new HashSet<File>();
+    for (PluginData pd : myWhatToDo.getPlugins()) {
+      MPSClasspathUtil.gatherAllClassesAndJarsUnder(new File(pd.path), pluginsClassPath);
     }
     if (myFork) {
       String currentClassPathString = System.getProperty("java.class.path");
@@ -167,6 +178,9 @@ public class MpsLoadTask extends Task {
       }
       commandLine.add("-classpath");
       commandLine.add(sb.toString());
+      // AntBootstrap comes from this module, and this module is part of currentClassPathString, hence AntBootstrap would be available 
+      commandLine.add("jetbrains.mps.tool.builder.AntBootstrap");
+      commandLine.add(formatClassPath(pluginsClassPath));
       commandLine.add(getWorkerClass());
       dumpPropertiesToWhatToDo();
       try {
@@ -193,7 +207,14 @@ public class MpsLoadTask extends Task {
       List<URL> classPathUrls = new ArrayList<URL>();
       for (File path : classPaths) {
         try {
-          classPathUrls.add(new URL("file:///" + path + ((path.isDirectory() ? "/" : ""))));
+          classPathUrls.add(fileToUrl(path));
+        } catch (MalformedURLException e) {
+          throw new BuildException(e);
+        }
+      }
+      for (File path : pluginsClassPath) {
+        try {
+          classPathUrls.add(fileToUrl(path));
         } catch (MalformedURLException e) {
           throw new BuildException(e);
         }
@@ -221,6 +242,10 @@ public class MpsLoadTask extends Task {
     }
   }
 
+  private URL fileToUrl(File file) throws MalformedURLException {
+    return file.toURI().toURL();
+  }
+
   /**
    * Receives properly loaded worker class and may start worker as appropriate.
    * By default, instantiates an object and fires its no-arg "work" method, see {@link jetbrains.mps.build.ant.MpsLoadTask#instantiateInProcessWorker(Class<?>) } and {@link jetbrains.mps.build.ant.MpsLoadTask#invokeInProcessMain(Class<?>, Object) }
@@ -228,6 +253,29 @@ public class MpsLoadTask extends Task {
   protected void doInProcessWork(@NotNull Class<?> workerClass) throws Exception {
     Object worker = instantiateInProcessWorker(workerClass);
     invokeInProcessMain(workerClass, worker);
+  }
+
+  @NotNull
+  private String formatClassPath(Set<File> classPaths) {
+    try {
+      File optionsFile = Files.createTempFile("mpstemp_ant", null).toFile();
+      optionsFile.deleteOnExit();
+
+      PrintWriter out = null;
+      try {
+        out = new PrintWriter(optionsFile);
+        for (File cpEntry : classPaths) {
+          out.println(fileToUrl(cpEntry).toString());
+        }
+      } finally {
+        if (out != null) {
+          out.close();
+        }
+      }
+      return optionsFile.getAbsolutePath();
+    } catch (IOException e) {
+      throw new BuildException("Exception on launching the worker", e);
+    }
   }
 
   /**
@@ -270,7 +318,7 @@ public class MpsLoadTask extends Task {
 
   @NotNull
   protected List<String> getAdditionalArgs() {
-    return Collections.emptyList();
+    return Collections.<String>emptyList();
   }
 
   private void outputBuildNumber() {

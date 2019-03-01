@@ -13,6 +13,7 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.TemplateVarContext;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -29,7 +30,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.SNodePointer;
 
 @Generated
 public class Template_Language extends TemplateDeclarationBase implements TemplateDeclaration {
@@ -42,8 +42,8 @@ public class Template_Language extends TemplateDeclarationBase implements Templa
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     Collection<SNode> tlist1 = null;
-    final Object varValue1 = QueriesGenerated.varMacro_Value_0_1(new TemplateVarContext(context, varMacroRef_ko6gu6_b0a0a1a4));
-    TemplateContext context1 = context.withVariable("var:langModule", varValue1);
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:langModule", QueriesGenerated.varMacro_Value_0_1(new TemplateVarContext(context, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900524"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context1, tnode2, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/9020561928507177266");
@@ -675,8 +675,8 @@ public class Template_Language extends TemplateDeclarationBase implements Templa
                           }
                           TemplateContext context36 = context35.subContext(itnode73);
                           Collection<SNode> tlist74 = null;
-                          final Object varValue74 = QueriesGenerated.varMacro_Value_0_0(new TemplateVarContext(context36, varMacroRef_ko6gu6_b0a0a3a2a1a1a1a3a1a1a8a1a71a4a4));
-                          TemplateContext context37 = context36.withVariable("var:model", varValue74);
+                          TemplateContext context37 = context36;
+                          context37 = context37.withVariable("var:model", QueriesGenerated.varMacro_Value_0_0(new TemplateVarContext(context36, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900521"))));
                           Collection<SNode> tlist75 = null;
                           try {
                             TemplateContext switchContext75;
@@ -876,7 +876,6 @@ public class Template_Language extends TemplateDeclarationBase implements Templa
     return rv;
   }
   private static SNodePointer template_ko6gu6_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "9020561928507177266");
-  private static SNodePointer varMacroRef_ko6gu6_b0a0a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2509399947043525754");
   private static SNodePointer templateNode_ko6gu6_c0a0a1a1a1a1a1a1a1a3a1a7a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479146334");
   private static SNodePointer propertyMacro_ko6gu6_c0a0c0a0b0d0b0c0b0b0b0b0b0d0b0h0e0e = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "6768722890464026760");
   private static SNodePointer propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0f0b0j0e0e = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "5102832340571708654");
@@ -889,6 +888,5 @@ public class Template_Language extends TemplateDeclarationBase implements Templa
   private static SNodePointer templateNode_ko6gu6_c0a0a1a6a1a71a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "931939946132740133");
   private static SNodePointer templateNode_ko6gu6_c0a0a1a2a1a2a1a7a1a71a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "931939946132745292");
   private static SNodePointer loopMacroRef_ko6gu6_b0a0a1a1a1a1a3a1a1a8a1a71a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2030416617761783825");
-  private static SNodePointer varMacroRef_ko6gu6_b0a0a3a2a1a1a1a3a1a1a8a1a71a4a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2030416617761783845");
   private static SNodePointer templateSwitchNodeNoInput_ko6gu6_a0a0c0g0c0b0b0b0d0b0b0i0b0r0e0e = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2030416617761786951");
 }

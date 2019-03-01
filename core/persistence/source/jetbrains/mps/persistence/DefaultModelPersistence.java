@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -128,7 +128,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     LOG.debug("Getting model " + header.getModelReference() + " from " + dataSource.getLocation());
 
     if (Arrays.asList(options).contains(MetaInfoLoadingOption.KEEP_READ)) {
-      header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo(header.getModelReference())));
+      header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
 
     // If there are any load options, process them and fill the model with desired model data, otherwise return a lightweight descriptor.
@@ -305,16 +305,6 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     @NotNull
     private StreamDataSource getSource0() {
       return (StreamDataSource) super.getSource();
-    }
-
-    @Override
-    public Map<String, String> getGenerationHashes() {
-      Map<String, String> generationHashes = ModelDigestHelper.getInstance().getGenerationHashes(getSource0());
-      if (generationHashes != null) {
-        return generationHashes;
-      }
-
-      return DefaultModelPersistence.getDigestMap(getSource0());
     }
 
     @NotNull

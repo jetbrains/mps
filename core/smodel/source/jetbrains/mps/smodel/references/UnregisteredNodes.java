@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,6 +78,10 @@ public class UnregisteredNodes {
     }
   }
 
+  // XXX Does it really pay off to put/remove nodes in UN one by one? E.g. when a huge root is removed, we get a lot of nodes recorded this way
+  //     while it looks plausible to register a subtree at once. Indeed, extra care would be needed with 'remove' (node structure might get changed
+  //     between put and remove, e.g. children removed A->B->C, A.detach, subtree of A put here, then C detached and not recoded anywhere, then A with its B
+  //     child attached elsewhere and hence removed from this registry, and then request to resolve C as ref target comes in). Need to think it over.
   public void put(SNode node) {
     if (myDisabled) return;
     if (node.getNodeId() == null || node.getModel() == null) {

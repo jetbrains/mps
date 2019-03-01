@@ -21,7 +21,6 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.CommonShortcuts;
 import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.options.Configurable;
-import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.ui.ComboBoxTableRenderer;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.util.Disposer;
@@ -47,7 +46,6 @@ import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
-import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.ide.ui.dialogs.properties.renders.DependencyCellState;
@@ -88,15 +86,15 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Configuration page consisting of {@link Tab tabs}.
  */
-public abstract class MPSPropertiesConfigurable implements Configurable, Disposable {
-  private TabbedPaneWrapper myTabbedPaneWrapper = new TabbedPaneWrapper(this);
+public abstract class MPSPropertiesConfigurable implements Configurable {
+  private final Disposable myDisposable = Disposer.newDisposable(MPSPropertiesConfigurable.class.getName());
+  private final TabbedPaneWrapper myTabbedPaneWrapper = new TabbedPaneWrapper(myDisposable);
   private List<Tab> myTabs = new ArrayList<>();
   protected final Project myProject;
   private DialogWrapper myParentForCallBack = null;
@@ -119,10 +117,6 @@ public abstract class MPSPropertiesConfigurable implements Configurable, Disposa
   @Override
   public String getHelpTopic() {
     return null;
-  }
-
-  @Override
-  public void dispose() {
   }
 
   /**
@@ -228,9 +222,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable, Disposa
   }
 
   public final void addChangeListener(final ChangeListener listener) {
-    if (myTabbedPaneWrapper != null) {
-      myTabbedPaneWrapper.addChangeListener(listener);
-    }
+    myTabbedPaneWrapper.addChangeListener(listener);
   }
 
   @Override
@@ -261,9 +253,13 @@ public abstract class MPSPropertiesConfigurable implements Configurable, Disposa
   public void reset() {
   }
 
+  public final Disposable getDisposable() {
+    return myDisposable;
+  }
+
   @Override
   public void disposeUIResources() {
-    Disposer.dispose(this);
+    Disposer.dispose(myDisposable);
   }
 
   /**

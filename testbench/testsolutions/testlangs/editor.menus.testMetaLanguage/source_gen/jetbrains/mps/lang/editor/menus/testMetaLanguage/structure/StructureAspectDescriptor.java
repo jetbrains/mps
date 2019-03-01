@@ -26,6 +26,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     myIndexSwitch = new LanguageConceptSwitch();
   }
 
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor");
+  }
+
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
     return Arrays.asList(myConceptTransformationFeature_Optional, myConceptTransformationFeature_Required, myConceptTransformationFeature_Unavailable, myConceptTransformationLocation_Test, myConceptTransformationLocation_WithFeatures, myConceptTransformationLocation_WithoutFeatures, myConceptTransformationMenu_Test);

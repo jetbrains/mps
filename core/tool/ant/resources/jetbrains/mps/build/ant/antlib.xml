@@ -19,5 +19,5 @@
 
   <typedef name="chunk" classname="jetbrains.mps.build.ant.generation.Chunk" />
   <typedef name="module" classname="jetbrains.mps.build.ant.generation.ModuleChunkPart" />
-  <typedef name="plugin" classname="jetbrains.mps.build.ant.generation.Plugin" />
+  <typedef name="plugin" classname="jetbrains.mps.build.ant.Plugin" />
 </antlib>
