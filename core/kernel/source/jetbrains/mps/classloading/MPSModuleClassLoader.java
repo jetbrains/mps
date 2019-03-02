@@ -20,6 +20,8 @@ import jetbrains.mps.util.SystemInfo;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.util.Locale;
+
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
  *
@@ -54,10 +56,7 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
    * Without this registration the threading model of the MPS classloading is flawed.
    * @since 3.4
    */
-  static void registerAsParallelCapable0() {
-    if (!SystemInfo.isJavaVersionAtLeast("1.7")) {
-      LOG.error("Java version is less than 1.7, it is impossible to register MPS class loader as parallel capable: one might encounter a deadlock");
-    }
+  private static void registerAsParallelCapable0() {
     if (!registerAsParallelCapable()) {
       LOG.error("MPS was not able to register the MPS class loader as parallel capable: one might encounter a deadlock", new Throwable());
     }

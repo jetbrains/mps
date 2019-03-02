@@ -36,7 +36,7 @@ public class VersionComparatorUtil {
   private static final Pattern WORDS_SPLITTER = Pattern.compile("\\d+|[^\\d]+");
   private static final VersionTokenType[] VALUES = VersionTokenType.values();
 
-  public static final Comparator<String> COMPARATOR = (s1, s2) -> compare(s1, s2);
+  public static final Comparator<String> COMPARATOR = VersionComparatorUtil::compare;
 
   private VersionComparatorUtil() {
   }
@@ -150,7 +150,7 @@ public class VersionComparatorUtil {
       final VersionTokenType t1 = VersionTokenType.lookup(e1);
       final VersionTokenType t2 = VersionTokenType.lookup(e2);
 
-      if (!t1.equals(t2)) {
+      if (t1 != t2) {
         res = comparePriorities(t1, t2);
       } else if (t1 == VersionTokenType._WORD) {
         res = e1.compareTo(e2);

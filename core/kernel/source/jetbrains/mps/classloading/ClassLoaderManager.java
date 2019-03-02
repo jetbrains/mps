@@ -126,7 +126,8 @@ public class ClassLoaderManager implements CoreComponent {
 
   private static ClassLoaderManager INSTANCE;
 
-  private static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader(ClassLoaderManager.class.getClassLoader()) {
+  @TestOnly
+  static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader(ClassLoaderManager.class.getClassLoader()) {
     @Override
     public boolean isReloadableClassLoader() {
       return false;
