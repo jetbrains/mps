@@ -129,9 +129,9 @@ public class IdPrefixReference implements PsiReference {
 
     // replacing all proper occurences
     String what = oldNode.getNodeId().toString();
-    what = what.startsWith("~") ? what.substring(1) : what;
+    what = what.startsWith(Foreign.ID_PREFIX) ? what.substring(1) : what;
     String replacement = newNode.getNodeId().toString();
-    replacement = replacement.startsWith("~") ? replacement.substring(1) : replacement;
+    replacement = replacement.startsWith(Foreign.ID_PREFIX) ? replacement.substring(1) : replacement;
 
     String newId = carefullyReplace(oldId, what, replacement);
 
