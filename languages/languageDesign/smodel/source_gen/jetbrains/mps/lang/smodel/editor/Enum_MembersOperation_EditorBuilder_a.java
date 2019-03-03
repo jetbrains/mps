@@ -29,7 +29,7 @@ import jetbrains.mps.editor.runtime.cells.BigCellUtil;
   }
 
   private EditorCell createComponent_0() {
-    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.smodel.editor.EnumOperation_Alias");
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
     if (bigCell != null) {
       bigCell.setBig(true);

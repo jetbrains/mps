@@ -23,9 +23,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
+import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 
 public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
@@ -55,7 +56,7 @@ public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "named substitute menu " + "EnumMemberReference_SM", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "2453008993616544083")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "EnumMemberReference", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "2453008993616544083")));
       try {
         return super.createItems(context);
       } finally {
@@ -79,7 +80,6 @@ public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          myCreatedNode = nodeToWrap;
           SNode switchCase = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase"));
           ListSequence.fromList(SLinkOperations.getChildren(switchCase, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1d75e4L, "members"))).addElement(nodeToWrap);
           SNodeFactoryOperations.setNewChild(switchCase, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body"), null);
@@ -87,7 +87,7 @@ public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          super.select(myCreatedNode, pattern);
+          SelectionUtil.selectNode(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body")));
         }
       };
     }
@@ -96,7 +96,7 @@ public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
     protected SubstituteMenuLookup getLookup(SubstituteMenuContext _context) {
       final EditorContext editorContext = _context.getEditorContext();
       SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
-      return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.EnumMemberReference_SM");
+      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
       return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference");

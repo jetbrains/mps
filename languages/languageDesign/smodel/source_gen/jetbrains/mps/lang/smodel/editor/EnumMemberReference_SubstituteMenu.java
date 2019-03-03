@@ -9,14 +9,25 @@ import jetbrains.mps.lang.editor.menus.MenuPart;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
+import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
+import java.util.Collection;
+import jetbrains.mps.smodel.ConceptDescendantsCache;
+import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 
 public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EnumMemberReference_SubstituteMenu.SMP_ReferenceScope_pzcnlg_a(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference")));
+    result.add(new EnumMemberReference_SubstituteMenu.SMP_Subconcepts_pzcnlg_b());
     return result;
   }
 
@@ -24,7 +35,7 @@ public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for " + "EnumMemberReference", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "2453008993618086185")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for EnumMemberReference. Generated from implicit smart reference attribute.", new SNodePointer("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)", "4705942098322467729")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -33,4 +44,44 @@ public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
+  public class SMP_ReferenceScope_pzcnlg_a extends ReferenceScopeSubstituteMenuPart {
+
+    public SMP_ReferenceScope_pzcnlg_a() {
+      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference"), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl"));
+    }
+    @NotNull
+    @Override
+    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("reference scope substitute menu part", null));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+  }
+  public class SMP_Subconcepts_pzcnlg_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+    protected Collection getConcepts(final SubstituteMenuContext _context) {
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference"));
+    }
+    @NotNull
+    @Override
+    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "EnumMemberReference", null));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Override
+    protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
+      return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
+    }
+  }
 }
