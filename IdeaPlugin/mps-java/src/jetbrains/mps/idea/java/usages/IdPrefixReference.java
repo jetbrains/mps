@@ -87,7 +87,7 @@ public class IdPrefixReference implements PsiReference {
 
   @Override
   public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException {
-    SNodeId targetNodeId = ((SNodePointer) myTarget).getNodeId();
+    SNodeId targetNodeId = myTarget.getNodeId();
     String str = targetNodeId.toString();
     String newStr;
     int lastDot = str.lastIndexOf(".");
@@ -96,7 +96,7 @@ public class IdPrefixReference implements PsiReference {
     } else {
       newStr = str.substring(0, lastDot + 1) + newElementName;
     }
-    final NodePtr newTarget = new NodePtr(((SNodePointer) myTarget).getModelReference(), new Foreign(newStr));
+    final NodePtr newTarget = new NodePtr(myTarget.getModelReference(), new Foreign(newStr));
 
     SNodeReference source = ((MPSPsiNode) myParent).getSNodeReference();
 
