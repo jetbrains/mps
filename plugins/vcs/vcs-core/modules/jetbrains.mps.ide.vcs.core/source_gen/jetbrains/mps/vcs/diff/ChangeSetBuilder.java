@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SDataType;
+import org.jetbrains.mps.openapi.language.SType;
 import java.util.Objects;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -76,11 +77,18 @@ public class ChangeSetBuilder {
   }
 
   public void buildForProperty(SNode oldNode, SNode newNode, SProperty property) {
+    String oldPropValue = oldNode.getProperty(property);
+    String newPropValue = newNode.getProperty(property);
     SDataType type = property.getType();
-    Object oldValue = type.fromString(oldNode.getProperty(property));
-    Object newValue = type.fromString(newNode.getProperty(property));
+    Object oldValue = type.fromString(oldPropValue);
+    Object newValue = type.fromString(newPropValue);
+    if (oldValue == SType.NOT_A_VALUE || newValue == SType.NOT_A_VALUE) {
+      // If there is no language available (e.g. in merge driver) then we compare raw property values 
+      oldValue = oldPropValue;
+      newValue = newPropValue;
+    }
     if (!(Objects.equals(oldValue, newValue))) {
-      ListSequence.fromList(myNewChanges).addElement(new SetPropertyChange(myChangeSet, oldNode.getNodeId(), property, newNode.getProperty(property)));
+      ListSequence.fromList(myNewChanges).addElement(new SetPropertyChange(myChangeSet, oldNode.getNodeId(), property, newPropValue));
     }
   }
 

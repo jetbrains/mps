@@ -34,6 +34,7 @@ import java.util.Iterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.language.SDataType;
+import org.jetbrains.mps.openapi.language.SType;
 
 public class StructChangeSetBuilder {
   private StructChangeSetImpl myChangeSet;
@@ -237,9 +238,17 @@ outer:
   }
 
   private static boolean equalsProperty(SNode n1, SNode n2, SProperty property) {
+    String propValue1 = n1.getProperty(property);
+    String propValue2 = n2.getProperty(property);
     SDataType type = property.getType();
-    Object value1 = type.fromString(n1.getProperty(property));
-    Object value2 = type.fromString(n2.getProperty(property));
+    Object value1 = type.fromString(propValue1);
+    Object value2 = type.fromString(propValue2);
+    if (value1 == SType.NOT_A_VALUE || value2 == SType.NOT_A_VALUE) {
+      // NOT_A_VALUE can be when raw string property value is invalid, this doesn't mean that both values are equal 
+      //  so we use raw values to compare 
+      value1 = propValue1;
+      value2 = propValue2;
+    }
     return Objects.equals(value1, value2);
   }
 
