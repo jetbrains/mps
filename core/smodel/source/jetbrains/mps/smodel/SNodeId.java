@@ -53,23 +53,17 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
   }
 
   @Override
-  public int compareTo(@NotNull SNodeId id) {
-    if (id instanceof Regular && this instanceof Regular) {
-      Regular r1 = (Regular) this;
-      Regular r2 = (Regular) id;
-      long delta = r1.myId - r2.myId;
-      if (delta == 0) return 0;
-      if (delta > 0) return 1;
-      return -1;
+  public int compareTo(@NotNull SNodeId other) {
+    if (other instanceof Regular && this instanceof Regular) {
+      return Long.compare(((Regular) this).getId(), ((Regular) other).getId());
     }
 
-    if (id instanceof StringBasedId && this instanceof StringBasedId) {
-      StringBasedId f1 = (StringBasedId) this;
-      StringBasedId f2 = (StringBasedId) this;
-      return f1.getId().compareTo(f2.getId());
+    if (other instanceof StringBasedId && this instanceof StringBasedId) {
+      return 0;
+//      return toString().compareTo(other.toString());
     }
 
-    if (id instanceof StringBasedId && this instanceof Regular) {
+    if (other instanceof StringBasedId && this instanceof Regular) {
       return 1;
     }
 
