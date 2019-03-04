@@ -36,6 +36,8 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
   public static SNodeId fromString(@NotNull String idString) {
     if (idString.startsWith(Foreign.ID_PREFIX)) {
       return new Foreign(idString);
+    } else if (idString.startsWith(StringBasedIdForJavaStubMethods.ID_PREFIX)) {
+      return new StringBasedIdForJavaStubMethods(idString);
     }
     try {
       long id = Long.valueOf(idString);
@@ -61,13 +63,13 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
       return -1;
     }
 
-    if (id instanceof Foreign && this instanceof Foreign) {
-      Foreign f1 = (Foreign) this;
-      Foreign f2 = (Foreign) this;
-      return f1.myId.compareTo(f2.myId);
+    if (id instanceof StringBasedId && this instanceof StringBasedId) {
+      StringBasedId f1 = (StringBasedId) this;
+      StringBasedId f2 = (StringBasedId) this;
+      return f1.getId().compareTo(f2.getId());
     }
 
-    if (id instanceof Foreign && this instanceof Regular) {
+    if (id instanceof StringBasedId && this instanceof Regular) {
       return 1;
     }
 
@@ -89,6 +91,7 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
       return myId;
     }
 
+    @Override
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
@@ -96,49 +99,72 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
       return myId == otherId.myId;
     }
 
+    @Override
     public int hashCode() {
       return (int) (myId ^ (myId >>> 32));
     }
 
-
+    @Override
     public String toString() {
       return "" + myId;
     }
-  } // class Regular
+  }
+
+  public interface StringBasedId {
+    @NotNull String getId();
+  }
 
   /**
    * foreign id
    */
   @Immutable
-  public static class Foreign extends SNodeId {
+  public static class Foreign extends SNodeId implements StringBasedId {
     public static final String ID_PREFIX = "~";
 
     private final String myId;
+    private final String myIdNoPrefix;
 
     public Foreign(@NotNull String id) {
       if (!id.startsWith(ID_PREFIX)) {
         throw new IncorrectNodeIdFormatException(String.format("A foreign node id must begin with '%s'", ID_PREFIX), null);
       }
       myId = InternUtil.intern(id);
+      myIdNoPrefix = id.substring(1);
     }
 
+    @NotNull
     public String getId() {
-      return myId;
+      return myIdNoPrefix;
     }
 
+    @Override
     public boolean equals(Object o) {
       if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
+      else if (o == null) return false;
+      else if (o instanceof StringBasedIdForJavaStubMethods) {
+        StringBasedIdForJavaStubMethods otherId = (StringBasedIdForJavaStubMethods) o;
+        String idNoPrefix = getIdNoPrefix();
+        return idNoPrefix.equals(otherId.getIdWithReturnTypeNoPrefix());
+      }
+      if (getClass() != o.getClass()) return false;
+
       Foreign otherId = (Foreign) o;
       return myId.equals(otherId.myId);
     }
 
-    public int hashCode() {
-      return myId.hashCode();
+    @NotNull
+    String getIdNoPrefix() {
+      return myIdNoPrefix;
     }
 
+    @Override
+    public int hashCode() {
+      return myIdNoPrefix.hashCode();
+    }
+
+    @Override
     public String toString() {
       return myId;
     }
-  } // class Foreign
+  }
 }

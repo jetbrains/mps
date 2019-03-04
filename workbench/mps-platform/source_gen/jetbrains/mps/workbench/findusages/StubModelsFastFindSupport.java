@@ -81,7 +81,7 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
     }
     nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it.getNodeId() instanceof SNodeId.Foreign;
+        return it.getNodeId() instanceof SNodeId.StubNodeId;
       }
     }));
     MultiMap<SModel, SNode> candidates = findCandidates(models, nodes, processedConsumer, new Function<SNode, String>() {

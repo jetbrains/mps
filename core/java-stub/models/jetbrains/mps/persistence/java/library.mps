@@ -688,8 +688,8 @@
                           <ref role="37wK5l" to="g3l6:~SModelBase.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
                         </node>
                         <node concept="2ShNRf" id="1$0KT$2MbxQ" role="37wK5m">
-                          <node concept="1pGfFk" id="1$0KT$2MbxR" role="2ShVmc">
-                            <ref role="37wK5l" to="tzbx:~ForeignNodeIdMap.&lt;init&gt;()" resolve="ForeignNodeIdMap" />
+                          <node concept="1pGfFk" id="1bLNqh3MkkO" role="2ShVmc">
+                            <ref role="37wK5l" to="tzbx:~StringBasedNodeIdMap.&lt;init&gt;()" resolve="StringBasedNodeIdMap" />
                           </node>
                         </node>
                       </node>
@@ -884,9 +884,9 @@
                 <node concept="1rXfSq" id="5JsnGMj1qeq" role="37wK5m">
                   <ref role="37wK5l" to="g3l6:~SModelBase.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
                 </node>
-                <node concept="2ShNRf" id="5JsnGMj1qer" role="37wK5m">
-                  <node concept="1pGfFk" id="5JsnGMj1qes" role="2ShVmc">
-                    <ref role="37wK5l" to="tzbx:~ForeignNodeIdMap.&lt;init&gt;()" resolve="ForeignNodeIdMap" />
+                <node concept="2ShNRf" id="1bLNqh3MkFC" role="37wK5m">
+                  <node concept="1pGfFk" id="1bLNqh3MkFD" role="2ShVmc">
+                    <ref role="37wK5l" to="tzbx:~StringBasedNodeIdMap.&lt;init&gt;()" resolve="StringBasedNodeIdMap" />
                   </node>
                 </node>
               </node>

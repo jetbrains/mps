@@ -1877,9 +1877,9 @@
                   <node concept="1rXfSq" id="4fSpAVAUjrW" role="37wK5m">
                     <ref role="37wK5l" to="g3l6:~SModelBase.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
                   </node>
-                  <node concept="2ShNRf" id="3$eHQlfCtdg" role="37wK5m">
-                    <node concept="1pGfFk" id="3$eHQlfCtdh" role="2ShVmc">
-                      <ref role="37wK5l" to="tzbx:~ForeignNodeIdMap.&lt;init&gt;()" resolve="ForeignNodeIdMap" />
+                  <node concept="2ShNRf" id="1$0KT$2MbxQ" role="37wK5m">
+                    <node concept="1pGfFk" id="1bLNqh3MkkO" role="2ShVmc">
+                      <ref role="37wK5l" to="tzbx:~StringBasedNodeIdMap.&lt;init&gt;()" resolve="StringBasedNodeIdMap" />
                     </node>
                   </node>
                 </node>

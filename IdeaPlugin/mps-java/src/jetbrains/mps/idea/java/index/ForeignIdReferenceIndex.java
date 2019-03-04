@@ -97,11 +97,7 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
       protected String[] getKeys(SModelData model, SReference sref) {
         SNodeId targetNodeId = sref.getTargetNodeId();
         if (targetNodeId instanceof Foreign) {
-
-          ArrayList<String> result = new ArrayList<String>();
-
-          String id = targetNodeId.toString();
-          id = id.substring(Foreign.ID_PREFIX.length());
+          String id = targetNodeId.toString().substring(Foreign.ID_PREFIX.length());
           int paren = id.indexOf("(");
           String firstPart = paren >= 0 ? id.substring(0, paren) : id;
           ArrayList<String> result = new ArrayList<String>(getKeys(firstPart));
