@@ -26,22 +26,7 @@ public class GenerateTask extends MpsLoadTask {
     if (file == null) {
       return;
     }
-    myWhatToDo.addLibraryJar(file.getAbsolutePath());
-    String fname = file.getName();
-    if (file.isFile() && fname.endsWith(".jar")) {
-      // perhaps, it's a language.jar, register corresponding generator.jar, if any. 
-      // FIXME note, this is a hack as build language doesn't record generators among MPSModulesClosure.generationDependenciesClosure() 
-      //       (check MPSModulesPartitioner.buildExternalDependencies() and <generate> task template. 
-      //       MPS used to guess (aka 'derive') generator module from language's module (ProjectPathUtil gave file with "-generator.jar" suffix 
-      //       as classpath for packaged Generator module), in 2017.1 we try to switch to 'honest' modules, gradually moving towards generators listed 
-      //       inside <generate> task. For the transition period, however, the code below mimics what we would have explicitly specified in <generate>. 
-      File generatorJar = new File(file.getParent(), fname.substring(0, fname.length() - 4) + "-generator.jar");
-      if (generatorJar.isFile()) {
-        myWhatToDo.addLibraryJar(generatorJar.getAbsolutePath());
-      }
-      // FIXME there's similar code in MpsTestSuite, but not in jUnit launcher 
-      // FIXME if I don't fix build language templates to list generator.jar explicitly, shall account for lang-N-generator.jar here to support multiple generators per language case. 
-    }
+    addLibraryJar(file);
   }
   public void setStrictMode(boolean strictMode) {
     myGenProps.setStrictMode(strictMode);
