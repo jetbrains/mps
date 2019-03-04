@@ -379,20 +379,11 @@
   </root>
   <root nodeRef="r:73c9a355-2bf0-4466-8a7d-8b8d8a945cd4(jetbrains.mps.lang.dataFlow.analyzers.constraints)/8350235189170168165">
     <file name="CustomInstructionsContainerReference_Constraints.java">
-      <node id="8350235189170168165" at="15,61,16,192" concept="9" />
-      <node id="8350235189170168165" at="20,90,21,131" concept="4" />
-      <node id="8350235189170168170" at="21,131,22,308" concept="1" />
-      <node id="8350235189170168165" at="22,308,23,22" concept="5" />
-      <node id="8350235189170168165" at="15,0,18,0" concept="0" trace="CustomInstructionsContainerReference_Constraints#()V" />
-      <node id="8350235189170168165" at="19,0,25,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="8350235189170168165" at="15,61,16,192" />
-      <scope id="8350235189170168165" at="15,0,18,0" />
-      <scope id="8350235189170168165" at="20,90,23,22">
-        <var name="references" id="8350235189170168165" />
-      </scope>
-      <scope id="8350235189170168165" at="19,0,25,0" />
-      <unit id="8350235189170168170" at="22,158,22,306" name="jetbrains.mps.lang.dataFlow.analyzers.constraints.CustomInstructionsContainerReference_Constraints$1" />
-      <unit id="8350235189170168165" at="14,0,26,0" name="jetbrains.mps.lang.dataFlow.analyzers.constraints.CustomInstructionsContainerReference_Constraints" />
+      <node id="8350235189170168165" at="9,61,10,192" concept="9" />
+      <node id="8350235189170168165" at="9,0,12,0" concept="0" trace="CustomInstructionsContainerReference_Constraints#()V" />
+      <scope id="8350235189170168165" at="9,61,10,192" />
+      <scope id="8350235189170168165" at="9,0,12,0" />
+      <unit id="8350235189170168165" at="8,0,14,0" name="jetbrains.mps.lang.dataFlow.analyzers.constraints.CustomInstructionsContainerReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:73c9a355-2bf0-4466-8a7d-8b8d8a945cd4(jetbrains.mps.lang.dataFlow.analyzers.constraints)/95073643532950051">
