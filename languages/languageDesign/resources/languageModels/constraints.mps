@@ -184,7 +184,7 @@
                 <node concept="2OqwBi" id="58vJbzxnqV3" role="3uHU7B">
                   <node concept="1Wqviy" id="58vJbzxnqyA" role="2Oq$k0" />
                   <node concept="liA8E" id="58vJbzxnr$U" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
                   </node>
                 </node>
               </node>

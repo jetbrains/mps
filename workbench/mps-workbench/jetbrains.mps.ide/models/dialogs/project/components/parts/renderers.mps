@@ -192,7 +192,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1mBiRF0LAU_" role="2OqNvi">
-                <ref role="37wK5l" to="y8s3:~ModulePath.getPath():java.lang.String" resolve="getPath" />
+                <ref role="37wK5l" to="y8s3:#ModulePath.getPath():java.lang.String" resolve="getPath" />
               </node>
             </node>
           </node>
@@ -289,7 +289,7 @@
               <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
             </node>
             <node concept="3nyPlj" id="1mBiRF0LBJs" role="33vP2m">
-              <ref role="37wK5l" to="dxuu:~DefaultListCellRenderer.getListCellRendererComponent(javax.swing.JList,java.lang.Object,int,boolean,boolean):java.awt.Component" resolve="getListCellRendererComponent" />
+              <ref role="37wK5l" to="dxuu:#DefaultListCellRenderer.getListCellRendererComponent(javax.swing.JList,java.lang.Object,int,boolean,boolean):java.awt.Component" resolve="getListCellRendererComponent" />
               <node concept="37vLTw" id="2BHiRxglkg6" role="37wK5m">
                 <ref role="3cqZAo" node="1mBiRF0LBJ8" resolve="list" />
               </node>
@@ -348,7 +348,7 @@
           <node concept="3clFbS" id="1mBiRF0LBJW" role="3clFbx">
             <node concept="3clFbF" id="1mBiRF0LBJX" role="3cqZAp">
               <node concept="1rXfSq" id="4hiugqyz8ah" role="3clFbG">
-                <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color):void" resolve="setForeground" />
+                <ref role="37wK5l" to="dxuu:#JComponent.setForeground(java.awt.Color):void" resolve="setForeground" />
                 <node concept="10M0yZ" id="1mBiRF0LBK1" role="37wK5m">
                   <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
                   <ref role="3cqZAo" to="z60i:~Color.RED" resolve="RED" />

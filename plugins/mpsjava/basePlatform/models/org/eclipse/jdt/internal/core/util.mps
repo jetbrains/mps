@@ -718,7 +718,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="13BkTXkfc8k" role="2OqNvi">
-                        <ref role="37wK5l" to="pyqq:~JavadocParser.checkDeprecation(int):boolean" resolve="checkDeprecation" />
+                        <ref role="37wK5l" to="pyqq:#JavadocParser.checkDeprecation(int):boolean" resolve="checkDeprecation" />
                         <node concept="37vLTw" id="13BkTXkfc8l" role="37wK5m">
                           <ref role="3cqZAo" node="13BkTXkfc6k" resolve="lastCommentIndex" />
                         </node>
@@ -787,7 +787,7 @@
           <node concept="3clFbS" id="13BkTXkfc8L" role="3clFbx">
             <node concept="3clFbF" id="13BkTXkfc8M" role="3cqZAp">
               <node concept="1rXfSq" id="13BkTXkfc8N" role="3clFbG">
-                <ref role="37wK5l" to="pyqq:~Parser.checkAndSetModifiers(int):void" resolve="checkAndSetModifiers" />
+                <ref role="37wK5l" to="pyqq:#Parser.checkAndSetModifiers(int):void" resolve="checkAndSetModifiers" />
                 <node concept="10M0yZ" id="13BkTXkfi4$" role="37wK5m">
                   <ref role="1PxDUh" to="i7h4:~ClassFileConstants" resolve="ClassFileConstants" />
                   <ref role="3cqZAo" to="i7h4:~ClassFileConstants.AccDeprecated" resolve="AccDeprecated" />
@@ -907,7 +907,7 @@
         </node>
         <node concept="3clFbF" id="13BkTXkfc9C" role="3cqZAp">
           <node concept="3nyPlj" id="13BkTXkfc9D" role="3clFbG">
-            <ref role="37wK5l" to="pyqq:~Parser.consumeClassHeader():void" resolve="consumeClassHeader" />
+            <ref role="37wK5l" to="pyqq:#Parser.consumeClassHeader():void" resolve="consumeClassHeader" />
           </node>
         </node>
       </node>
@@ -947,7 +947,7 @@
         </node>
         <node concept="3clFbF" id="13BkTXkfc9Q" role="3cqZAp">
           <node concept="3nyPlj" id="13BkTXkfc9R" role="3clFbG">
-            <ref role="37wK5l" to="pyqq:~Parser.consumeEmptyTypeDeclaration():void" resolve="consumeEmptyTypeDeclaration" />
+            <ref role="37wK5l" to="pyqq:#Parser.consumeEmptyTypeDeclaration():void" resolve="consumeEmptyTypeDeclaration" />
           </node>
         </node>
       </node>
@@ -987,7 +987,7 @@
         </node>
         <node concept="3clFbF" id="13BkTXkfca4" role="3cqZAp">
           <node concept="3nyPlj" id="13BkTXkfca5" role="3clFbG">
-            <ref role="37wK5l" to="pyqq:~Parser.consumeInterfaceHeader():void" resolve="consumeInterfaceHeader" />
+            <ref role="37wK5l" to="pyqq:#Parser.consumeInterfaceHeader():void" resolve="consumeInterfaceHeader" />
           </node>
         </node>
       </node>
@@ -1019,7 +1019,7 @@
               <ref role="3uigEE" to="twf3:~CompilationUnitDeclaration" resolve="CompilationUnitDeclaration" />
             </node>
             <node concept="3nyPlj" id="13BkTXkfcaf" role="33vP2m">
-              <ref role="37wK5l" to="pyqq:~Parser.endParse(int):org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration" resolve="endParse" />
+              <ref role="37wK5l" to="pyqq:#Parser.endParse(int):org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration" resolve="endParse" />
               <node concept="37vLTw" id="13BkTXkfcag" role="37wK5m">
                 <ref role="3cqZAo" node="13BkTXkfca9" resolve="act" />
               </node>
@@ -1362,7 +1362,7 @@
                   <node concept="3y3z36" id="13BkTXkfccg" role="3clFbw">
                     <node concept="2YIFZM" id="13BkTXkfiAO" role="3uHU7w">
                       <ref role="1Pybhc" to="539:~Util" resolve="Util" />
-                      <ref role="37wK5l" to="539:~Util.getLineNumber(int,int[],int,int):int" resolve="getLineNumber" />
+                      <ref role="37wK5l" to="539:#Util.getLineNumber(int,int[],int,int):int" resolve="getLineNumber" />
                       <node concept="37vLTw" id="13BkTXkfccH" role="37wK5m">
                         <ref role="3cqZAo" node="13BkTXkfcbN" resolve="immediateCommentEnd" />
                       </node>
@@ -1394,7 +1394,7 @@
                     </node>
                     <node concept="2YIFZM" id="13BkTXkfiAM" role="3uHU7B">
                       <ref role="1Pybhc" to="539:~Util" resolve="Util" />
-                      <ref role="37wK5l" to="539:~Util.getLineNumber(int,int[],int,int):int" resolve="getLineNumber" />
+                      <ref role="37wK5l" to="539:#Util.getLineNumber(int,int[],int,int):int" resolve="getLineNumber" />
                       <node concept="37vLTw" id="13BkTXkfccp" role="37wK5m">
                         <ref role="3cqZAo" node="13BkTXkfcaG" resolve="position" />
                       </node>
@@ -1508,7 +1508,7 @@
             <node concept="3clFbF" id="13BkTXkfcg2" role="3cqZAp">
               <node concept="2YIFZM" id="13BkTXkfiAQ" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                <ref role="37wK5l" to="wyt6:~System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
+                <ref role="37wK5l" to="wyt6:#System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
                 <node concept="2OqwBi" id="13BkTXkfcg5" role="37wK5m">
                   <node concept="2OqwBi" id="13BkTXkfcg6" role="2Oq$k0">
                     <node concept="Xjq3P" id="13BkTXkfcg7" role="2Oq$k0" />
@@ -1550,7 +1550,7 @@
             <node concept="3clFbF" id="13BkTXkfcgk" role="3cqZAp">
               <node concept="2YIFZM" id="13BkTXkfiAS" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                <ref role="37wK5l" to="wyt6:~System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
+                <ref role="37wK5l" to="wyt6:#System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
                 <node concept="2OqwBi" id="13BkTXkfcgn" role="37wK5m">
                   <node concept="2OqwBi" id="13BkTXkfcgo" role="2Oq$k0">
                     <node concept="Xjq3P" id="13BkTXkfcgp" role="2Oq$k0" />
@@ -1592,7 +1592,7 @@
             <node concept="3clFbF" id="13BkTXkfcgA" role="3cqZAp">
               <node concept="2YIFZM" id="13BkTXkfiAU" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                <ref role="37wK5l" to="wyt6:~System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
+                <ref role="37wK5l" to="wyt6:#System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
                 <node concept="2OqwBi" id="13BkTXkfcgD" role="37wK5m">
                   <node concept="2OqwBi" id="13BkTXkfcgE" role="2Oq$k0">
                     <node concept="Xjq3P" id="13BkTXkfcgF" role="2Oq$k0" />
@@ -2240,7 +2240,7 @@
       <node concept="3clFbS" id="13BkTXkfcid" role="3clF47">
         <node concept="3clFbF" id="13BkTXkfcie" role="3cqZAp">
           <node concept="3nyPlj" id="13BkTXkfcif" role="3clFbG">
-            <ref role="37wK5l" to="pyqq:~Parser.initialize(boolean):void" resolve="initialize" />
+            <ref role="37wK5l" to="pyqq:#Parser.initialize(boolean):void" resolve="initialize" />
             <node concept="37vLTw" id="13BkTXkfcig" role="37wK5m">
               <ref role="3cqZAo" node="13BkTXkfcib" resolve="initializeNLS" />
             </node>
@@ -2279,7 +2279,7 @@
       <node concept="3clFbS" id="13BkTXkfcir" role="3clF47">
         <node concept="3clFbF" id="13BkTXkfcis" role="3cqZAp">
           <node concept="3nyPlj" id="13BkTXkfcit" role="3clFbG">
-            <ref role="37wK5l" to="pyqq:~Parser.initialize():void" resolve="initialize" />
+            <ref role="37wK5l" to="pyqq:#Parser.initialize():void" resolve="initialize" />
           </node>
         </node>
         <node concept="3clFbF" id="13BkTXkfciu" role="3cqZAp">
@@ -2372,7 +2372,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="13BkTXkfciQ" role="2OqNvi">
-                      <ref role="37wK5l" to="sc83:~CompilerOptions.getSeverity(int):int" resolve="getSeverity" />
+                      <ref role="37wK5l" to="sc83:#CompilerOptions.getSeverity(int):int" resolve="getSeverity" />
                       <node concept="10M0yZ" id="13BkTXkfiAY" role="37wK5m">
                         <ref role="1PxDUh" to="sc83:~CompilerOptions" resolve="CompilerOptions" />
                         <ref role="3cqZAo" to="sc83:~CompilerOptions.NonExternalizedString" resolve="NonExternalizedString" />
@@ -2693,7 +2693,7 @@
                     <node concept="3clFbF" id="13BkTXkfcl4" role="3cqZAp">
                       <node concept="2YIFZM" id="13BkTXkfjKg" role="3clFbG">
                         <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                        <ref role="37wK5l" to="wyt6:~System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
+                        <ref role="37wK5l" to="wyt6:#System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
                         <node concept="2OqwBi" id="13BkTXkfcl7" role="37wK5m">
                           <node concept="Xjq3P" id="13BkTXkfcl8" role="2Oq$k0" />
                           <node concept="2OwXpG" id="13BkTXkfcl9" role="2OqNvi">
@@ -2737,7 +2737,7 @@
                     <node concept="3clFbF" id="13BkTXkfclo" role="3cqZAp">
                       <node concept="2YIFZM" id="13BkTXkfjKi" role="3clFbG">
                         <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                        <ref role="37wK5l" to="wyt6:~System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
+                        <ref role="37wK5l" to="wyt6:#System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
                         <node concept="2OqwBi" id="13BkTXkfclr" role="37wK5m">
                           <node concept="Xjq3P" id="13BkTXkfcls" role="2Oq$k0" />
                           <node concept="2OwXpG" id="13BkTXkfclt" role="2OqNvi">
@@ -2889,7 +2889,7 @@
         </node>
         <node concept="3clFbF" id="13BkTXkfcmo" role="3cqZAp">
           <node concept="3nyPlj" id="13BkTXkfcmp" role="3clFbG">
-            <ref role="37wK5l" to="pyqq:~Parser.resetModifiers():void" resolve="resetModifiers" />
+            <ref role="37wK5l" to="pyqq:#Parser.resetModifiers():void" resolve="resetModifiers" />
           </node>
         </node>
       </node>
@@ -3424,7 +3424,7 @@
                   <node concept="3clFbF" id="13BkTXkfcrP" role="3cqZAp">
                     <node concept="2YIFZM" id="13BkTXkfjKJ" role="3clFbG">
                       <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                      <ref role="37wK5l" to="wyt6:~System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
+                      <ref role="37wK5l" to="wyt6:#System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
                       <node concept="37vLTw" id="13BkTXkfcrS" role="37wK5m">
                         <ref role="3cqZAo" node="13BkTXkfcrw" resolve="compilationResultProblems" />
                       </node>
@@ -3487,7 +3487,7 @@
                   <ref role="3cqZAo" node="13BkTXkfcr8" resolve="compilationResult" />
                 </node>
                 <node concept="liA8E" id="13BkTXkfjKP" role="2OqNvi">
-                  <ref role="37wK5l" to="6g5n:~CompilationResult.getLineSeparatorPositions():int[]" resolve="getLineSeparatorPositions" />
+                  <ref role="37wK5l" to="6g5n:#CompilationResult.getLineSeparatorPositions():int[]" resolve="getLineSeparatorPositions" />
                 </node>
               </node>
               <node concept="37vLTw" id="13BkTXkfcs9" role="37wK5m">
@@ -3660,7 +3660,7 @@
                 <ref role="37wK5l" to="mm0s:~ProblemReporter.&lt;init&gt;(org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy,org.eclipse.jdt.internal.compiler.impl.CompilerOptions,org.eclipse.jdt.internal.compiler.IProblemFactory)" resolve="ProblemReporter" />
                 <node concept="2YIFZM" id="13BkTXkfjL5" role="37wK5m">
                   <ref role="1Pybhc" to="6g5n:~DefaultErrorHandlingPolicies" resolve="DefaultErrorHandlingPolicies" />
-                  <ref role="37wK5l" to="6g5n:~DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
+                  <ref role="37wK5l" to="6g5n:#DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
                 </node>
                 <node concept="37vLTw" id="13BkTXkfctc" role="37wK5m">
                   <ref role="3cqZAo" node="13BkTXkfcsT" resolve="compilerOptions" />
@@ -3670,7 +3670,7 @@
                     <ref role="37wK5l" to="mm0s:~DefaultProblemFactory.&lt;init&gt;(java.util.Locale)" resolve="DefaultProblemFactory" />
                     <node concept="2YIFZM" id="13BkTXkfjL9" role="37wK5m">
                       <ref role="1Pybhc" to="33ny:~Locale" resolve="Locale" />
-                      <ref role="37wK5l" to="33ny:~Locale.getDefault():java.util.Locale" resolve="getDefault" />
+                      <ref role="37wK5l" to="33ny:#Locale.getDefault():java.util.Locale" resolve="getDefault" />
                     </node>
                   </node>
                 </node>
@@ -3707,7 +3707,7 @@
               <ref role="3cqZAo" node="13BkTXkfctg" resolve="parser" />
             </node>
             <node concept="liA8E" id="13BkTXkfjLf" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Parser.setMethodsFullRecovery(boolean):void" resolve="setMethodsFullRecovery" />
+              <ref role="37wK5l" to="pyqq:#Parser.setMethodsFullRecovery(boolean):void" resolve="setMethodsFullRecovery" />
               <node concept="3clFbT" id="13BkTXkfctp" role="37wK5m">
                 <property role="3clFbU" value="false" />
               </node>
@@ -3720,7 +3720,7 @@
               <ref role="3cqZAo" node="13BkTXkfctg" resolve="parser" />
             </node>
             <node concept="liA8E" id="13BkTXkfjLj" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Parser.setStatementsRecovery(boolean):void" resolve="setStatementsRecovery" />
+              <ref role="37wK5l" to="pyqq:#Parser.setStatementsRecovery(boolean):void" resolve="setStatementsRecovery" />
               <node concept="37vLTw" id="13BkTXkfctt" role="37wK5m">
                 <ref role="3cqZAo" node="13BkTXkfcsI" resolve="enabledStatementRecovery" />
               </node>
@@ -3826,7 +3826,7 @@
                 <ref role="3cqZAo" node="13BkTXkfctg" resolve="parser" />
               </node>
               <node concept="liA8E" id="13BkTXkfkgJ" role="2OqNvi">
-                <ref role="37wK5l" to="pyqq:~Parser.parseClassBodyDeclarations(char[],int,int,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration):org.eclipse.jdt.internal.compiler.ast.ASTNode[]" resolve="parseClassBodyDeclarations" />
+                <ref role="37wK5l" to="pyqq:#Parser.parseClassBodyDeclarations(char[],int,int,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration):org.eclipse.jdt.internal.compiler.ast.ASTNode[]" resolve="parseClassBodyDeclarations" />
                 <node concept="37vLTw" id="13BkTXkfcu0" role="37wK5m">
                   <ref role="3cqZAo" node="13BkTXkfcsz" resolve="source" />
                 </node>
@@ -3980,7 +3980,7 @@
                     <ref role="37wK5l" to="mm0s:~ProblemReporter.&lt;init&gt;(org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy,org.eclipse.jdt.internal.compiler.impl.CompilerOptions,org.eclipse.jdt.internal.compiler.IProblemFactory)" resolve="ProblemReporter" />
                     <node concept="2YIFZM" id="13BkTXkfkh1" role="37wK5m">
                       <ref role="1Pybhc" to="6g5n:~DefaultErrorHandlingPolicies" resolve="DefaultErrorHandlingPolicies" />
-                      <ref role="37wK5l" to="6g5n:~DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
+                      <ref role="37wK5l" to="6g5n:#DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
                     </node>
                     <node concept="37vLTw" id="13BkTXkfcuW" role="37wK5m">
                       <ref role="3cqZAo" node="13BkTXkfcuC" resolve="compilerOptions" />
@@ -3990,7 +3990,7 @@
                         <ref role="37wK5l" to="mm0s:~DefaultProblemFactory.&lt;init&gt;(java.util.Locale)" resolve="DefaultProblemFactory" />
                         <node concept="2YIFZM" id="13BkTXkfkh5" role="37wK5m">
                           <ref role="1Pybhc" to="33ny:~Locale" resolve="Locale" />
-                          <ref role="37wK5l" to="33ny:~Locale.getDefault():java.util.Locale" resolve="getDefault" />
+                          <ref role="37wK5l" to="33ny:#Locale.getDefault():java.util.Locale" resolve="getDefault" />
                         </node>
                       </node>
                     </node>
@@ -4079,7 +4079,7 @@
                 <ref role="3cqZAo" node="13BkTXkfcuP" resolve="parser" />
               </node>
               <node concept="liA8E" id="13BkTXkfkhl" role="2OqNvi">
-                <ref role="37wK5l" to="pyqq:~Parser.dietParse(org.eclipse.jdt.internal.compiler.env.ICompilationUnit,org.eclipse.jdt.internal.compiler.CompilationResult):org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration" resolve="dietParse" />
+                <ref role="37wK5l" to="pyqq:#Parser.dietParse(org.eclipse.jdt.internal.compiler.env.ICompilationUnit,org.eclipse.jdt.internal.compiler.CompilationResult):org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration" resolve="dietParse" />
                 <node concept="37vLTw" id="13BkTXkfcvp" role="37wK5m">
                   <ref role="3cqZAo" node="13BkTXkfcv1" resolve="sourceUnit" />
                 </node>
@@ -4182,7 +4182,7 @@
               </node>
             </node>
             <node concept="liA8E" id="13BkTXkfkhB" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Scanner.setSource(org.eclipse.jdt.internal.compiler.CompilationResult):void" resolve="setSource" />
+              <ref role="37wK5l" to="pyqq:#Scanner.setSource(org.eclipse.jdt.internal.compiler.CompilationResult):void" resolve="setSource" />
               <node concept="37vLTw" id="13BkTXkfcvV" role="37wK5m">
                 <ref role="3cqZAo" node="13BkTXkfcva" resolve="compilationResult" />
               </node>
@@ -4253,7 +4253,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="13BkTXkfcwy" role="2OqNvi">
-                      <ref role="37wK5l" to="twf3:~TypeDeclaration.parseMethods(org.eclipse.jdt.internal.compiler.parser.Parser,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration):void" resolve="parseMethods" />
+                      <ref role="37wK5l" to="twf3:#TypeDeclaration.parseMethods(org.eclipse.jdt.internal.compiler.parser.Parser,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration):void" resolve="parseMethods" />
                       <node concept="37vLTw" id="13BkTXkfcwz" role="37wK5m">
                         <ref role="3cqZAo" node="13BkTXkfcuP" resolve="parser" />
                       </node>
@@ -4436,7 +4436,7 @@
                 <ref role="37wK5l" to="mm0s:~ProblemReporter.&lt;init&gt;(org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy,org.eclipse.jdt.internal.compiler.impl.CompilerOptions,org.eclipse.jdt.internal.compiler.IProblemFactory)" resolve="ProblemReporter" />
                 <node concept="2YIFZM" id="13BkTXkfkhV" role="37wK5m">
                   <ref role="1Pybhc" to="6g5n:~DefaultErrorHandlingPolicies" resolve="DefaultErrorHandlingPolicies" />
-                  <ref role="37wK5l" to="6g5n:~DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
+                  <ref role="37wK5l" to="6g5n:#DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
                 </node>
                 <node concept="37vLTw" id="13BkTXkfcxC" role="37wK5m">
                   <ref role="3cqZAo" node="13BkTXkfcxt" resolve="compilerOptions" />
@@ -4446,7 +4446,7 @@
                     <ref role="37wK5l" to="mm0s:~DefaultProblemFactory.&lt;init&gt;(java.util.Locale)" resolve="DefaultProblemFactory" />
                     <node concept="2YIFZM" id="13BkTXkfkhZ" role="37wK5m">
                       <ref role="1Pybhc" to="33ny:~Locale" resolve="Locale" />
-                      <ref role="37wK5l" to="33ny:~Locale.getDefault():java.util.Locale" resolve="getDefault" />
+                      <ref role="37wK5l" to="33ny:#Locale.getDefault():java.util.Locale" resolve="getDefault" />
                     </node>
                   </node>
                 </node>
@@ -4576,7 +4576,7 @@
                 <ref role="3cqZAo" node="13BkTXkfcxG" resolve="parser" />
               </node>
               <node concept="liA8E" id="13BkTXkfkin" role="2OqNvi">
-                <ref role="37wK5l" to="pyqq:~Parser.parseExpression(char[],int,int,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration,boolean):org.eclipse.jdt.internal.compiler.ast.Expression" resolve="parseExpression" />
+                <ref role="37wK5l" to="pyqq:#Parser.parseExpression(char[],int,int,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration,boolean):org.eclipse.jdt.internal.compiler.ast.Expression" resolve="parseExpression" />
                 <node concept="37vLTw" id="13BkTXkfcyj" role="37wK5m">
                   <ref role="3cqZAo" node="13BkTXkfcx9" resolve="source" />
                 </node>
@@ -4789,7 +4789,7 @@
                 <ref role="37wK5l" to="mm0s:~ProblemReporter.&lt;init&gt;(org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy,org.eclipse.jdt.internal.compiler.impl.CompilerOptions,org.eclipse.jdt.internal.compiler.IProblemFactory)" resolve="ProblemReporter" />
                 <node concept="2YIFZM" id="13BkTXkfkiB" role="37wK5m">
                   <ref role="1Pybhc" to="6g5n:~DefaultErrorHandlingPolicies" resolve="DefaultErrorHandlingPolicies" />
-                  <ref role="37wK5l" to="6g5n:~DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
+                  <ref role="37wK5l" to="6g5n:#DefaultErrorHandlingPolicies.proceedWithAllProblems():org.eclipse.jdt.internal.compiler.IErrorHandlingPolicy" resolve="proceedWithAllProblems" />
                 </node>
                 <node concept="37vLTw" id="13BkTXkfczy" role="37wK5m">
                   <ref role="3cqZAo" node="13BkTXkfczn" resolve="compilerOptions" />
@@ -4799,7 +4799,7 @@
                     <ref role="37wK5l" to="mm0s:~DefaultProblemFactory.&lt;init&gt;(java.util.Locale)" resolve="DefaultProblemFactory" />
                     <node concept="2YIFZM" id="13BkTXkfkiF" role="37wK5m">
                       <ref role="1Pybhc" to="33ny:~Locale" resolve="Locale" />
-                      <ref role="37wK5l" to="33ny:~Locale.getDefault():java.util.Locale" resolve="getDefault" />
+                      <ref role="37wK5l" to="33ny:#Locale.getDefault():java.util.Locale" resolve="getDefault" />
                     </node>
                   </node>
                 </node>
@@ -4836,7 +4836,7 @@
               <ref role="3cqZAo" node="13BkTXkfczA" resolve="parser" />
             </node>
             <node concept="liA8E" id="13BkTXkfkiL" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Parser.setMethodsFullRecovery(boolean):void" resolve="setMethodsFullRecovery" />
+              <ref role="37wK5l" to="pyqq:#Parser.setMethodsFullRecovery(boolean):void" resolve="setMethodsFullRecovery" />
               <node concept="3clFbT" id="13BkTXkfczJ" role="37wK5m">
                 <property role="3clFbU" value="false" />
               </node>
@@ -4849,7 +4849,7 @@
               <ref role="3cqZAo" node="13BkTXkfczA" resolve="parser" />
             </node>
             <node concept="liA8E" id="13BkTXkfkiP" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Parser.setStatementsRecovery(boolean):void" resolve="setStatementsRecovery" />
+              <ref role="37wK5l" to="pyqq:#Parser.setStatementsRecovery(boolean):void" resolve="setStatementsRecovery" />
               <node concept="37vLTw" id="13BkTXkfczN" role="37wK5m">
                 <ref role="3cqZAo" node="13BkTXkfczc" resolve="enabledStatementRecovery" />
               </node>
@@ -5053,7 +5053,7 @@
               </node>
             </node>
             <node concept="liA8E" id="13BkTXkfkjr" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Scanner.setSource(org.eclipse.jdt.internal.compiler.CompilationResult):void" resolve="setSource" />
+              <ref role="37wK5l" to="pyqq:#Scanner.setSource(org.eclipse.jdt.internal.compiler.CompilationResult):void" resolve="setSource" />
               <node concept="37vLTw" id="13BkTXkfc$S" role="37wK5m">
                 <ref role="3cqZAo" node="13BkTXkfczX" resolve="compilationResult" />
               </node>
@@ -5071,7 +5071,7 @@
               </node>
             </node>
             <node concept="liA8E" id="13BkTXkfkjx" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Scanner.resetTo(int,int):void" resolve="resetTo" />
+              <ref role="37wK5l" to="pyqq:#Scanner.resetTo(int,int):void" resolve="resetTo" />
               <node concept="37vLTw" id="13BkTXkfc$X" role="37wK5m">
                 <ref role="3cqZAo" node="13BkTXkfcz4" resolve="offset" />
               </node>
@@ -5092,7 +5092,7 @@
               <ref role="3cqZAo" node="13BkTXkfczA" resolve="parser" />
             </node>
             <node concept="liA8E" id="13BkTXkfkj_" role="2OqNvi">
-              <ref role="37wK5l" to="pyqq:~Parser.parse(org.eclipse.jdt.internal.compiler.ast.ConstructorDeclaration,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration,boolean):void" resolve="parse" />
+              <ref role="37wK5l" to="pyqq:#Parser.parse(org.eclipse.jdt.internal.compiler.ast.ConstructorDeclaration,org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration,boolean):void" resolve="parse" />
               <node concept="37vLTw" id="13BkTXkfc_4" role="37wK5m">
                 <ref role="3cqZAo" node="13BkTXkfc$e" resolve="constructorDeclaration" />
               </node>

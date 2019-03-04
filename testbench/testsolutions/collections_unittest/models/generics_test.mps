@@ -445,7 +445,7 @@
                     <ref role="2Gs0qQ" node="h3yoyE7" resolve="bool" />
                   </node>
                   <node concept="liA8E" id="hyYnsww" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Boolean.booleanValue():boolean" resolve="booleanValue" />
+                    <ref role="37wK5l" to="wyt6:#Boolean.booleanValue():boolean" resolve="booleanValue" />
                   </node>
                 </node>
               </node>
@@ -501,7 +501,7 @@
                     <ref role="2Gs0qQ" node="h3yoAmv" resolve="i" />
                   </node>
                   <node concept="liA8E" id="hyYnsvI" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+                    <ref role="37wK5l" to="wyt6:#Integer.intValue():int" resolve="intValue" />
                   </node>
                 </node>
               </node>

@@ -165,7 +165,7 @@
                 <ref role="3cqZAo" node="4AbVKpmztQu" resolve="cell" />
               </node>
               <node concept="liA8E" id="eZ6bnNL02V" role="2OqNvi">
-                <ref role="37wK5l" to="f4zo:~EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
+                <ref role="37wK5l" to="f4zo:#EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
               </node>
             </node>
           </node>
@@ -291,7 +291,7 @@
                     <ref role="3cqZAo" node="4AbVKpmzExP" resolve="nextCell" />
                   </node>
                   <node concept="liA8E" id="4AbVKpmzENL" role="2OqNvi">
-                    <ref role="37wK5l" to="f4zo:~EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
+                    <ref role="37wK5l" to="f4zo:#EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
                   </node>
                 </node>
               </node>

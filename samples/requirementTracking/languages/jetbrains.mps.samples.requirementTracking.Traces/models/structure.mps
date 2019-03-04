@@ -75,7 +75,7 @@
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="targetEntry" />
       <property role="20lbJX" value="1" />
-      <ref role="20lvS9" to="dub1:3BHdE7cMsjF" resolve="RequirementEntry" />
+      <ref role="20lvS9" to="dub1:3BHdE7cMsjF" resolve="Entry" />
     </node>
   </node>
 </model>

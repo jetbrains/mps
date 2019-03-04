@@ -663,7 +663,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="6QrrVJU_5UT" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.size():int" resolve="size" />
+                <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
               </node>
             </node>
           </node>
@@ -920,7 +920,7 @@
                 <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
               </node>
               <node concept="liA8E" id="4D3RMlPNgfG" role="2OqNvi">
-                <ref role="37wK5l" to="guwi:~PrintStream.println():void" resolve="println" />
+                <ref role="37wK5l" to="guwi:#PrintStream.println():void" resolve="println" />
               </node>
             </node>
             <node concept="2b32R4" id="gLzrIOH" role="lGtFl">

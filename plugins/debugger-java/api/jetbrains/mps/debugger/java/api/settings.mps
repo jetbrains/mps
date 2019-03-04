@@ -356,7 +356,7 @@
               </node>
               <node concept="2YIFZM" id="2Y$mRnIClFY" role="37wK5m">
                 <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                <ref role="37wK5l" to="wyt6:~Integer.toString(int):java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:#Integer.toString(int):java.lang.String" resolve="toString" />
                 <node concept="37vLTw" id="2BHiRxglp3R" role="37wK5m">
                   <ref role="3cqZAo" node="2Y$mRnIClFO" resolve="port" />
                 </node>
@@ -1173,7 +1173,7 @@
                       <ref role="3cqZAo" node="2Y$mRnICm$H" resolve="freePort" />
                     </node>
                     <node concept="2YIFZM" id="2Y$mRnIDehn" role="37vLTx">
-                      <ref role="37wK5l" to="horf:~NetUtils.findAvailableSocketPort():int" resolve="findAvailableSocketPort" />
+                      <ref role="37wK5l" to="horf:#NetUtils.findAvailableSocketPort():int" resolve="findAvailableSocketPort" />
                       <ref role="1Pybhc" to="horf:~NetUtils" resolve="NetUtils" />
                     </node>
                   </node>

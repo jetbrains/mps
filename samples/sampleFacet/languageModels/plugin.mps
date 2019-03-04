@@ -290,7 +290,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="4Ql6f00WXrN" role="2OqNvi">
-                              <ref role="37wK5l" to="ap4t:~DefaultGenerationParametersProvider.addParameter(org.jetbrains.mps.openapi.model.SModel,java.lang.String,java.lang.Object):void" resolve="addParameter" />
+                              <ref role="37wK5l" to="ap4t:#DefaultGenerationParametersProvider.addParameter(org.jetbrains.mps.openapi.model.SModel,java.lang.String,java.lang.Object):void" resolve="addParameter" />
                               <node concept="37vLTw" id="3GM_nagTyrl" role="37wK5m">
                                 <ref role="3cqZAo" node="4Ql6f00WXrR" resolve="smd" />
                               </node>
@@ -324,7 +324,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="6SBjtG_yMen" role="2OqNvi">
-                              <ref role="37wK5l" to="ap4t:~DefaultGenerationParametersProvider.addParameter(org.jetbrains.mps.openapi.model.SModel,java.lang.String,java.lang.Object):void" resolve="addParameter" />
+                              <ref role="37wK5l" to="ap4t:#DefaultGenerationParametersProvider.addParameter(org.jetbrains.mps.openapi.model.SModel,java.lang.String,java.lang.Object):void" resolve="addParameter" />
                               <node concept="37vLTw" id="3GM_nagT_Gr" role="37wK5m">
                                 <ref role="3cqZAo" node="4Ql6f00WXrR" resolve="smd" />
                               </node>
@@ -358,7 +358,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="6WUlHAohcEV" role="2OqNvi">
-                              <ref role="37wK5l" to="ap4t:~DefaultGenerationParametersProvider.addParameter(org.jetbrains.mps.openapi.model.SModel,java.lang.String,java.lang.Object):void" resolve="addParameter" />
+                              <ref role="37wK5l" to="ap4t:#DefaultGenerationParametersProvider.addParameter(org.jetbrains.mps.openapi.model.SModel,java.lang.String,java.lang.Object):void" resolve="addParameter" />
                               <node concept="37vLTw" id="3GM_nagT$wQ" role="37wK5m">
                                 <ref role="3cqZAo" node="4Ql6f00WXrR" resolve="smd" />
                               </node>
@@ -413,7 +413,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="1aF0PuY4hwN" role="2OqNvi">
-                  <ref role="37wK5l" to="ap4t:~DefaultGenerationParametersProvider.addParameter(java.lang.String,java.lang.Object):void" resolve="addParameter" />
+                  <ref role="37wK5l" to="ap4t:#DefaultGenerationParametersProvider.addParameter(java.lang.String,java.lang.Object):void" resolve="addParameter" />
                   <node concept="Xl_RD" id="1aF0PuY4hwO" role="37wK5m">
                     <property role="Xl_RC" value="count" />
                   </node>

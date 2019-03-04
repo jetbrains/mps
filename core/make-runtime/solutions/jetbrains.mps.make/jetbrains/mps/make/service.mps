@@ -806,7 +806,7 @@
                   <node concept="3clFbF" id="6eQ0BhLYKt8" role="3cqZAp">
                     <node concept="2OqwBi" id="6eQ0BhLYKta" role="3clFbG">
                       <node concept="liA8E" id="6eQ0BhLYKte" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object,java.lang.Throwable):void" resolve="debug" />
+                        <ref role="37wK5l" to="q7tw:#Category.debug(java.lang.Object,java.lang.Throwable):void" resolve="debug" />
                         <node concept="Xl_RD" id="6eQ0BhLYKtf" role="37wK5m">
                           <property role="Xl_RC" value="Unexpected exception" />
                         </node>
@@ -816,7 +816,7 @@
                       </node>
                       <node concept="2YIFZM" id="Hn0$MvbXUw" role="2Oq$k0">
                         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+                        <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
                         <node concept="3VsKOn" id="Hn0$MvbXUx" role="37wK5m">
                           <ref role="3VsUkX" node="6eQ0BhLYtbb" resolve="CoreMakeTask" />
                         </node>
@@ -910,7 +910,7 @@
               <ref role="3cqZAo" node="1Z_kCIGSOom" resolve="monitor" />
             </node>
             <node concept="liA8E" id="1Z_kCIGSOou" role="2OqNvi">
-              <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
+              <ref role="37wK5l" to="yyf4:#ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
               <node concept="Xl_RD" id="6vhB1lBPg7n" role="37wK5m" />
               <node concept="37vLTw" id="3GM_nagTvMX" role="37wK5m">
                 <ref role="3cqZAo" node="1Z_kCIGSOow" resolve="clsize" />
@@ -962,7 +962,7 @@
                                 <ref role="3cqZAo" node="1Z_kCIGSOuI" resolve="myMessageHandler" />
                               </node>
                               <node concept="liA8E" id="41innpAi2jw" role="2OqNvi">
-                                <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
+                                <ref role="37wK5l" to="et5u:#IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
                                 <node concept="2ShNRf" id="41innpAi2jx" role="37wK5m">
                                   <node concept="1pGfFk" id="41innpAi2jy" role="2ShVmc">
                                     <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.Class,java.lang.String)" resolve="Message" />
@@ -1012,7 +1012,7 @@
                                     <ref role="3cqZAo" node="1Z_kCIGSOuI" resolve="myMessageHandler" />
                                   </node>
                                   <node concept="liA8E" id="41innpAi2jM" role="2OqNvi">
-                                    <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
+                                    <ref role="37wK5l" to="et5u:#IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
                                     <node concept="37vLTw" id="41innpAi2jN" role="37wK5m">
                                       <ref role="3cqZAo" node="41innpAi2jG" resolve="err" />
                                     </node>
@@ -1063,7 +1063,7 @@
                                 <ref role="3cqZAo" node="1Z_kCIGSOuI" resolve="myMessageHandler" />
                               </node>
                               <node concept="liA8E" id="41innpAibkw" role="2OqNvi">
-                                <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
+                                <ref role="37wK5l" to="et5u:#IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
                                 <node concept="2ShNRf" id="41innpAibkx" role="37wK5m">
                                   <node concept="1pGfFk" id="41innpAibky" role="2ShVmc">
                                     <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.String)" resolve="Message" />
@@ -1150,7 +1150,7 @@
                         </node>
                         <node concept="2YIFZM" id="41innpAibl2" role="3clFbw">
                           <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
-                          <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode():boolean" resolve="isInternalMode" />
+                          <ref role="37wK5l" to="fyhk:#InternalFlag.isInternalMode():boolean" resolve="isInternalMode" />
                         </node>
                       </node>
                       <node concept="3clFbH" id="41innpAibl3" role="3cqZAp" />
@@ -1160,7 +1160,7 @@
                             <ref role="3cqZAo" node="1Z_kCIGSOom" resolve="monitor" />
                           </node>
                           <node concept="liA8E" id="41innpAibl7" role="2OqNvi">
-                            <ref role="37wK5l" to="yyf4:~ProgressMonitor.step(java.lang.String):void" resolve="step" />
+                            <ref role="37wK5l" to="yyf4:#ProgressMonitor.step(java.lang.String):void" resolve="step" />
                             <node concept="3cpWs3" id="41innpAibl8" role="37wK5m">
                               <node concept="2OqwBi" id="41innpAibl9" role="3uHU7w">
                                 <node concept="2OqwBi" id="41innpAibla" role="2Oq$k0">
@@ -1247,7 +1247,7 @@
                                   <ref role="3cqZAo" node="1Z_kCIGSOom" resolve="monitor" />
                                 </node>
                                 <node concept="liA8E" id="41innpAiblJ" role="2OqNvi">
-                                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
+                                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
                                   <node concept="3cmrfG" id="41innpAiblK" role="37wK5m">
                                     <property role="3cmrfH" value="1" />
                                   </node>
@@ -1413,7 +1413,7 @@
                               <ref role="3cqZAo" node="1Z_kCIGSOom" resolve="monitor" />
                             </node>
                             <node concept="liA8E" id="41innpAibmU" role="2OqNvi">
-                              <ref role="37wK5l" to="yyf4:~ProgressMonitor.isCanceled():boolean" resolve="isCanceled" />
+                              <ref role="37wK5l" to="yyf4:#ProgressMonitor.isCanceled():boolean" resolve="isCanceled" />
                             </node>
                           </node>
                           <node concept="3fqX7Q" id="41innpAibmV" role="3uHU7B">
@@ -1589,7 +1589,7 @@
                           <ref role="3cqZAo" node="1Z_kCIGSOuI" resolve="myMessageHandler" />
                         </node>
                         <node concept="liA8E" id="5r7Kah5hfPT" role="2OqNvi">
-                          <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
+                          <ref role="37wK5l" to="et5u:#IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
                           <node concept="2ShNRf" id="5r7Kah5hfT7" role="37wK5m">
                             <node concept="1pGfFk" id="5r7Kah5hhtP" role="2ShVmc">
                               <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.Class,java.lang.String)" resolve="Message" />
@@ -1602,7 +1602,7 @@
                               </node>
                               <node concept="2YIFZM" id="5r7Kah5htO6" role="37wK5m">
                                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                                <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                                 <node concept="Xl_RD" id="5r7Kah5hvbQ" role="37wK5m">
                                   <property role="Xl_RC" value="\&quot;%s\&quot; target execution time: %d ms" />
                                 </node>
@@ -1671,7 +1671,7 @@
                   <ref role="3cqZAo" node="1Z_kCIGSOuI" resolve="myMessageHandler" />
                 </node>
                 <node concept="liA8E" id="5r7Kah5i6X5" role="2OqNvi">
-                  <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
+                  <ref role="37wK5l" to="et5u:#IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
                   <node concept="2ShNRf" id="5r7Kah5i70j" role="37wK5m">
                     <node concept="1pGfFk" id="5r7Kah5i7h1" role="2ShVmc">
                       <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.Class,java.lang.String)" resolve="Message" />
@@ -1684,7 +1684,7 @@
                       </node>
                       <node concept="2YIFZM" id="5r7Kah5iGz_" role="37wK5m">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                         <node concept="Xl_RD" id="5r7Kah5iIbi" role="37wK5m">
                           <property role="Xl_RC" value="Other targets execution time: %d ms; %s" />
                         </node>
@@ -1762,7 +1762,7 @@
                   <ref role="3cqZAo" node="1Z_kCIGSOom" resolve="monitor" />
                 </node>
                 <node concept="liA8E" id="6vhB1lBPg7$" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.done():void" resolve="done" />
+                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.done():void" resolve="done" />
                 </node>
               </node>
             </node>
@@ -1863,7 +1863,7 @@
                     <ref role="3cqZAo" node="1Z_kCIGSOuI" resolve="myMessageHandler" />
                   </node>
                   <node concept="liA8E" id="1Z_kCIGSOsv" role="2OqNvi">
-                    <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
+                    <ref role="37wK5l" to="et5u:#IMessageHandler.handle(jetbrains.mps.messages.IMessage):void" resolve="handle" />
                     <node concept="2ShNRf" id="1Z_kCIGSOsw" role="37wK5m">
                       <node concept="1pGfFk" id="1Z_kCIGSOsx" role="2ShVmc">
                         <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.String)" resolve="Message" />

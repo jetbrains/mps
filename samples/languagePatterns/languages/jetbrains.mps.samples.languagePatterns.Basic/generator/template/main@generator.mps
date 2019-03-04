@@ -179,7 +179,7 @@
                   <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="7UfLy9aMvIL" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                   <node concept="37vLTw" id="7UfLy9aMvJw" role="37wK5m">
                     <ref role="3cqZAo" node="7UfLy9aMvIc" resolve="s" />
                     <node concept="raruj" id="7UfLy9aMvN6" role="lGtFl" />

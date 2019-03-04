@@ -162,7 +162,7 @@
             <node concept="2OqwBi" id="7DH4b15vgjl" role="33vP2m">
               <node concept="1XNTG" id="7DH4b15vgjk" role="2Oq$k0" />
               <node concept="liA8E" id="7DH4b15vgjp" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNodes():java.util.List" resolve="getSelectedNodes" />
+                <ref role="37wK5l" to="cj4x:#EditorContext.getSelectedNodes():java.util.List" resolve="getSelectedNodes" />
               </node>
             </node>
           </node>
@@ -228,7 +228,7 @@
           <node concept="2OqwBi" id="7DH4b15vgkA" role="3clFbG">
             <node concept="1XNTG" id="7DH4b15vgk_" role="2Oq$k0" />
             <node concept="liA8E" id="7DH4b15vgkE" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
+              <ref role="37wK5l" to="cj4x:#EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
               <node concept="2OqwBi" id="7DH4b15vgkV" role="37wK5m">
                 <node concept="2OqwBi" id="7DH4b15vgkQ" role="2Oq$k0">
                   <node concept="2OqwBi" id="7DH4b15vgkL" role="2Oq$k0">

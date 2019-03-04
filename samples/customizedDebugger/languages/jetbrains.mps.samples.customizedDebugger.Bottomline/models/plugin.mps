@@ -301,7 +301,7 @@
                   <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
                 </node>
                 <node concept="liA8E" id="5uk1WWiP3hM" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Boolean.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:#Boolean.equals(java.lang.Object):boolean" resolve="equals" />
                   <node concept="1aIXbY" id="5uk1WWiP3hN" role="37wK5m">
                     <node concept="1aIXbZ" id="5uk1WWiP3hO" role="2Oq$k0" />
                     <node concept="2sxana" id="5uk1WWiP3hP" role="2OqNvi">
@@ -362,7 +362,7 @@
                             <node concept="3clFbS" id="3W4A8dypiEu" role="1bW5cS">
                               <node concept="3clFbF" id="4SLw4v09$3p" role="3cqZAp">
                                 <node concept="2YIFZM" id="4SLw4v09_rU" role="3clFbG">
-                                  <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule):boolean" resolve="isCompileInMps" />
+                                  <ref role="37wK5l" to="z1c3:#SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule):boolean" resolve="isCompileInMps" />
                                   <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
                                   <node concept="37vLTw" id="4SLw4v09AOs" role="37wK5m">
                                     <ref role="3cqZAo" node="3W4A8dypiEv" resolve="it" />
@@ -413,7 +413,7 @@
                       <ref role="37wK5l" to="vqh0:~ErrorsLoggingHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="ErrorsLoggingHandler" />
                       <node concept="2YIFZM" id="3k48dctF1Ll" role="37wK5m">
                         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.String):org.apache.log4j.Logger" resolve="getLogger" />
+                        <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.String):org.apache.log4j.Logger" resolve="getLogger" />
                         <node concept="2OqwBi" id="3k48dctF3ok" role="37wK5m">
                           <node concept="2n6ZRZ" id="3k48dctF3dw" role="2Oq$k0">
                             <node concept="2e$Q_j" id="3D3uKT_QlXh" role="2n6ZRX">
@@ -428,7 +428,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3D3uKT_OWEE" role="2OqNvi">
-                    <ref role="37wK5l" to="et5u:~IMessageHandler.compose(jetbrains.mps.messages.IMessageHandler):jetbrains.mps.messages.IMessageHandler" resolve="compose" />
+                    <ref role="37wK5l" to="et5u:#IMessageHandler.compose(jetbrains.mps.messages.IMessageHandler):jetbrains.mps.messages.IMessageHandler" resolve="compose" />
                     <node concept="2OqwBi" id="3D3uKT_P0aQ" role="37wK5m">
                       <node concept="2_BwXt" id="3D3uKT_OZV2" role="2Oq$k0" />
                       <node concept="liA8E" id="3D3uKT_P0qj" role="2OqNvi">
@@ -462,13 +462,13 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="3D3uKT_P$bn" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~Project.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                          <ref role="37wK5l" to="z1c3:#Project.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
                         </node>
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="3D3uKT_PAtC" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runReadAction" />
+                    <ref role="37wK5l" to="w1kc:#ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runReadAction" />
                     <node concept="1bVj0M" id="3D3uKT_PALN" role="37wK5m">
                       <node concept="3clFbS" id="3D3uKT_PALO" role="1bW5cS">
                         <node concept="3cpWs6" id="3D3uKT_PB7X" role="3cqZAp">
@@ -482,7 +482,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="6XbTA58QqMi" role="2OqNvi">
-                              <ref role="37wK5l" to="vqh0:~ModuleMaker.make(java.util.Collection,org.jetbrains.mps.openapi.util.ProgressMonitor,jetbrains.mps.compiler.JavaCompilerOptions):jetbrains.mps.make.MPSCompilationResult" resolve="make" />
+                              <ref role="37wK5l" to="vqh0:#ModuleMaker.make(java.util.Collection,org.jetbrains.mps.openapi.util.ProgressMonitor,jetbrains.mps.compiler.JavaCompilerOptions):jetbrains.mps.make.MPSCompilationResult" resolve="make" />
                               <node concept="37vLTw" id="6XbTA58QqMj" role="37wK5m">
                                 <ref role="3cqZAo" node="3W4A8dypiCw" resolve="toCompile" />
                               </node>
@@ -522,7 +522,7 @@
                       <ref role="3cqZAo" node="5L5h3brvDQU" resolve="cr" />
                     </node>
                     <node concept="liA8E" id="6XbTA58QqM$" role="2OqNvi">
-                      <ref role="37wK5l" to="vqh0:~MPSCompilationResult.isCompiledAnything():boolean" resolve="isCompiledAnything" />
+                      <ref role="37wK5l" to="vqh0:#MPSCompilationResult.isCompiledAnything():boolean" resolve="isCompiledAnything" />
                     </node>
                   </node>
                 </node>
@@ -548,7 +548,7 @@
                         <ref role="3cqZAo" node="5L5h3brvDQU" resolve="cr" />
                       </node>
                       <node concept="liA8E" id="6XbTA58QqMJ" role="2OqNvi">
-                        <ref role="37wK5l" to="vqh0:~MPSCompilationResult.getErrorsCount():int" resolve="getErrorsCount" />
+                        <ref role="37wK5l" to="vqh0:#MPSCompilationResult.getErrorsCount():int" resolve="getErrorsCount" />
                       </node>
                     </node>
                   </node>
@@ -562,7 +562,7 @@
                           <ref role="3cqZAo" node="5L5h3brvDQU" resolve="cr" />
                         </node>
                         <node concept="liA8E" id="6XbTA58QqMP" role="2OqNvi">
-                          <ref role="37wK5l" to="vqh0:~MPSCompilationResult.getWarningsCount():int" resolve="getWarningsCount" />
+                          <ref role="37wK5l" to="vqh0:#MPSCompilationResult.getWarningsCount():int" resolve="getWarningsCount" />
                         </node>
                       </node>
                     </node>
@@ -596,7 +596,7 @@
                     <ref role="3cqZAo" node="5L5h3brvDQU" resolve="cr" />
                   </node>
                   <node concept="liA8E" id="6XbTA58QqN1" role="2OqNvi">
-                    <ref role="37wK5l" to="vqh0:~MPSCompilationResult.isOk():boolean" resolve="isOk" />
+                    <ref role="37wK5l" to="vqh0:#MPSCompilationResult.isOk():boolean" resolve="isOk" />
                   </node>
                 </node>
               </node>
@@ -628,7 +628,7 @@
                 <node concept="3clFbJ" id="3NKhsqqvFfJ" role="3cqZAp">
                   <node concept="2OqwBi" id="5$SFEs5s1ox" role="3clFbw">
                     <node concept="liA8E" id="5$SFEs5s6hu" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object):boolean" resolve="contains" />
+                      <ref role="37wK5l" to="33ny:#Set.contains(java.lang.Object):boolean" resolve="contains" />
                       <node concept="2OqwBi" id="5$SFEs5s8eW" role="37wK5m">
                         <node concept="2sxana" id="5$SFEs5scWL" role="2OqNvi">
                           <ref role="2sxfKC" to="fn29:1Xl3kQ1uadw" resolve="module" />
@@ -640,7 +640,7 @@
                     </node>
                     <node concept="2OqwBi" id="5$SFEs5rKIh" role="2Oq$k0">
                       <node concept="liA8E" id="5$SFEs5rMMF" role="2OqNvi">
-                        <ref role="37wK5l" to="vqh0:~MPSCompilationResult.getChangedModules():java.util.Set" resolve="getChangedModules" />
+                        <ref role="37wK5l" to="vqh0:#MPSCompilationResult.getChangedModules():java.util.Set" resolve="getChangedModules" />
                       </node>
                       <node concept="37vLTw" id="5$SFEs5rKEd" role="2Oq$k0">
                         <ref role="3cqZAo" node="5L5h3brvDQU" resolve="cr" />
@@ -729,7 +729,7 @@
                   <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
                 </node>
                 <node concept="liA8E" id="3WNrFYxBpCh" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Boolean.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:#Boolean.equals(java.lang.Object):boolean" resolve="equals" />
                   <node concept="2bn25q" id="3WNrFYxBpCn" role="37wK5m">
                     <node concept="2bn25r" id="3WNrFYxBpCo" role="2Oq$k0">
                       <ref role="2bn25l" node="5L5h3brvDPy" resolve="compile" />
@@ -819,7 +819,7 @@
                       <node concept="3clFbS" id="4g8ToP4t8po" role="1bW5cS">
                         <node concept="3clFbF" id="4SLw4v0awq6" role="3cqZAp">
                           <node concept="2YIFZM" id="4SLw4v0ax$W" role="3clFbG">
-                            <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInIdea(org.jetbrains.mps.openapi.module.SModule):boolean" resolve="isCompileInIdea" />
+                            <ref role="37wK5l" to="z1c3:#SModuleOperations.isCompileInIdea(org.jetbrains.mps.openapi.module.SModule):boolean" resolve="isCompileInIdea" />
                             <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
                             <node concept="2OqwBi" id="4SLw4v0aAfn" role="37wK5m">
                               <node concept="2sxana" id="4SLw4v0aGSl" role="2OqNvi">
@@ -863,7 +863,7 @@
             <node concept="3clFbJ" id="61Cu8BBB58u" role="3cqZAp">
               <node concept="2YIFZM" id="1jLye1tJXyL" role="3clFbw">
                 <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
-                <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode():boolean" resolve="isTestMode" />
+                <ref role="37wK5l" to="fyhk:#RuntimeFlags.isTestMode():boolean" resolve="isTestMode" />
               </node>
               <node concept="3clFbS" id="61Cu8BBB58w" role="3clFbx">
                 <node concept="3D7k6m" id="61Cu8BBB8mk" role="3cqZAp">
@@ -886,7 +886,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="15CsYCmVqSk" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                    <ref role="37wK5l" to="z1c3:#Project.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
                     <node concept="3VsKOn" id="5L5h3brvDTn" role="37wK5m">
                       <ref role="3VsUkX" to="iqmz:2_5NjuZKW3j" resolve="IdeaJavaCompiler" />
                     </node>
@@ -958,13 +958,13 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="37hNSOQ$P2C" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~Project.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                          <ref role="37wK5l" to="z1c3:#Project.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
                         </node>
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="37hNSOQ$PAe" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runReadAction" />
+                    <ref role="37wK5l" to="w1kc:#ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runReadAction" />
                     <node concept="1bVj0M" id="37hNSOQ$PKf" role="37wK5m">
                       <node concept="3clFbS" id="37hNSOQ$PKg" role="1bW5cS">
                         <node concept="3clFbF" id="37hNSOQ$PW3" role="3cqZAp">
@@ -1031,7 +1031,7 @@
                         <ref role="3cqZAo" node="6XbTA58QAHo" resolve="cr" />
                       </node>
                       <node concept="liA8E" id="6XbTA58QAHN" role="2OqNvi">
-                        <ref role="37wK5l" to="vqh0:~CompilationResult.getErrorsCount():int" resolve="getErrorsCount" />
+                        <ref role="37wK5l" to="vqh0:#CompilationResult.getErrorsCount():int" resolve="getErrorsCount" />
                       </node>
                     </node>
                   </node>
@@ -1045,7 +1045,7 @@
                           <ref role="3cqZAo" node="6XbTA58QAHo" resolve="cr" />
                         </node>
                         <node concept="liA8E" id="6XbTA58QAHT" role="2OqNvi">
-                          <ref role="37wK5l" to="vqh0:~CompilationResult.getWarningsCount():int" resolve="getWarningsCount" />
+                          <ref role="37wK5l" to="vqh0:#CompilationResult.getWarningsCount():int" resolve="getWarningsCount" />
                         </node>
                       </node>
                     </node>
@@ -1079,7 +1079,7 @@
                     <ref role="3cqZAo" node="6XbTA58QAHo" resolve="cr" />
                   </node>
                   <node concept="liA8E" id="6XbTA58QAI5" role="2OqNvi">
-                    <ref role="37wK5l" to="vqh0:~CompilationResult.isOk():boolean" resolve="isOk" />
+                    <ref role="37wK5l" to="vqh0:#CompilationResult.isOk():boolean" resolve="isOk" />
                   </node>
                 </node>
               </node>

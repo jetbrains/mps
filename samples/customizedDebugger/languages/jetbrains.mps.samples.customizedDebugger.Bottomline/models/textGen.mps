@@ -137,7 +137,7 @@
                 <ref role="3cqZAo" node="vvfLbL9eXO" resolve="fqName" />
               </node>
               <node concept="liA8E" id="vvfLbL9gsq" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.lastIndexOf(java.lang.String):int" resolve="lastIndexOf" />
+                <ref role="37wK5l" to="wyt6:#String.lastIndexOf(java.lang.String):int" resolve="lastIndexOf" />
                 <node concept="Xl_RD" id="vvfLbL9gsr" role="37wK5m">
                   <property role="Xl_RC" value="." />
                 </node>
@@ -152,7 +152,7 @@
                 <ref role="3cqZAo" node="vvfLbL9eXO" resolve="fqName" />
               </node>
               <node concept="liA8E" id="vvfLbL9inB" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+                <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
                 <node concept="3cmrfG" id="vvfLbL9kCs" role="37wK5m">
                   <property role="3cmrfH" value="0" />
                 </node>

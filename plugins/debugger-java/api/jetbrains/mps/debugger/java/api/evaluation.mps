@@ -1112,18 +1112,18 @@
                   <node concept="2OqwBi" id="4jzwNwQQ8AA" role="2Oq$k0">
                     <node concept="2OqwBi" id="4jzwNwQQ8AB" role="2Oq$k0">
                       <node concept="liA8E" id="4jzwNwQQ8AD" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                        <ref role="37wK5l" to="wyt6:#Object.getClass():java.lang.Class" resolve="getClass" />
                       </node>
                       <node concept="37vLTw" id="3GM_nagTtgd" role="2Oq$k0">
                         <ref role="3cqZAo" node="4jzwNwQQ8Ar" resolve="e" />
                       </node>
                     </node>
                     <node concept="liA8E" id="4jzwNwQQ8AE" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Class.getName():java.lang.String" resolve="getName" />
+                      <ref role="37wK5l" to="wyt6:#Class.getName():java.lang.String" resolve="getName" />
                     </node>
                   </node>
                   <node concept="liA8E" id="4jzwNwQQ8AF" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                    <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
                     <node concept="Xl_RD" id="4jzwNwQQ8AG" role="37wK5m">
                       <property role="Xl_RC" value="com.sun.jdi" />
                     </node>
@@ -1199,7 +1199,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="4jNo0zI6BVz" role="2OqNvi">
-                              <ref role="37wK5l" to="frkw:~ThreadReference.name():java.lang.String" resolve="name" />
+                              <ref role="37wK5l" to="frkw:#ThreadReference.name():java.lang.String" resolve="name" />
                             </node>
                           </node>
                         </node>
@@ -1795,7 +1795,7 @@
               </node>
             </node>
             <node concept="liA8E" id="46sxDGTfo6P" role="2OqNvi">
-              <ref role="37wK5l" to="frkw:~Mirror.virtualMachine():com.sun.jdi.VirtualMachine" resolve="virtualMachine" />
+              <ref role="37wK5l" to="frkw:#Mirror.virtualMachine():com.sun.jdi.VirtualMachine" resolve="virtualMachine" />
             </node>
           </node>
         </node>
@@ -2126,7 +2126,7 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
       <node concept="2YIFZM" id="3AvZeSkP3lS" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+        <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
         <node concept="3VsKOn" id="3AvZeSkP3lT" role="37wK5m">
           <ref role="3VsUkX" node="46sxDGTfoi9" resolve="TargetVMEvaluationException" />
@@ -2193,15 +2193,15 @@
                   <ref role="3cqZAo" node="46sxDGTfoiu" resolve="e" />
                 </node>
                 <node concept="liA8E" id="46sxDGTfoiE" role="2OqNvi">
-                  <ref role="37wK5l" to="frkw:~InvocationException.exception():com.sun.jdi.ObjectReference" resolve="exception" />
+                  <ref role="37wK5l" to="frkw:#InvocationException.exception():com.sun.jdi.ObjectReference" resolve="exception" />
                 </node>
               </node>
               <node concept="liA8E" id="46sxDGTfoiF" role="2OqNvi">
-                <ref role="37wK5l" to="frkw:~ObjectReference.referenceType():com.sun.jdi.ReferenceType" resolve="referenceType" />
+                <ref role="37wK5l" to="frkw:#ObjectReference.referenceType():com.sun.jdi.ReferenceType" resolve="referenceType" />
               </node>
             </node>
             <node concept="liA8E" id="46sxDGTfoiG" role="2OqNvi">
-              <ref role="37wK5l" to="frkw:~ReferenceType.name():java.lang.String" resolve="name" />
+              <ref role="37wK5l" to="frkw:#ReferenceType.name():java.lang.String" resolve="name" />
             </node>
           </node>
         </node>
@@ -2222,7 +2222,7 @@
               <node concept="3clFbF" id="46sxDGTfoiQ" role="3cqZAp">
                 <node concept="2OqwBi" id="3AvZeSkP3m1" role="3clFbG">
                   <node concept="liA8E" id="3AvZeSkP3m2" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object,java.lang.Throwable):void" resolve="warn" />
+                    <ref role="37wK5l" to="q7tw:#Category.warn(java.lang.Object,java.lang.Throwable):void" resolve="warn" />
                     <node concept="3cpWs3" id="46sxDGTfoiU" role="37wK5m">
                       <node concept="Xl_RD" id="46sxDGTfoiV" role="3uHU7B">
                         <property role="Xl_RC" value="Cant create TargetVMEvaluationException for " />
@@ -2254,7 +2254,7 @@
               <node concept="3clFbF" id="46sxDGTfoj2" role="3cqZAp">
                 <node concept="2OqwBi" id="3AvZeSkP3mf" role="3clFbG">
                   <node concept="liA8E" id="3AvZeSkP3mg" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object,java.lang.Throwable):void" resolve="warn" />
+                    <ref role="37wK5l" to="q7tw:#Category.warn(java.lang.Object,java.lang.Throwable):void" resolve="warn" />
                     <node concept="3cpWs3" id="46sxDGTfoj6" role="37wK5m">
                       <node concept="Xl_RD" id="46sxDGTfoj7" role="3uHU7B">
                         <property role="Xl_RC" value="Cant create TargetVMEvaluationException for " />
@@ -2304,7 +2304,7 @@
                           <ref role="3cqZAo" node="46sxDGTfoiu" resolve="e" />
                         </node>
                         <node concept="liA8E" id="6dm0XGksHTp" role="2OqNvi">
-                          <ref role="37wK5l" to="frkw:~InvocationException.exception():com.sun.jdi.ObjectReference" resolve="exception" />
+                          <ref role="37wK5l" to="frkw:#InvocationException.exception():com.sun.jdi.ObjectReference" resolve="exception" />
                         </node>
                       </node>
                     </node>
@@ -2528,7 +2528,7 @@
             </node>
             <node concept="3clFbF" id="46sxDGTfokE" role="3cqZAp">
               <node concept="1rXfSq" id="4hiugqyyXVE" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~Throwable.setStackTrace(java.lang.StackTraceElement[]):void" resolve="setStackTrace" />
+                <ref role="37wK5l" to="wyt6:#Throwable.setStackTrace(java.lang.StackTraceElement[]):void" resolve="setStackTrace" />
                 <node concept="37vLTw" id="3GM_nagTu_W" role="37wK5m">
                   <ref role="3cqZAo" node="46sxDGTfojC" resolve="newStackTrace" />
                 </node>

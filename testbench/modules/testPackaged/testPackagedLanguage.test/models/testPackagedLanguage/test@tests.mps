@@ -254,7 +254,7 @@
               </node>
             </node>
             <node concept="liA8E" id="R$fwjLmpGH" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
+              <ref role="37wK5l" to="lui2:#SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
               <node concept="37vLTw" id="R$fwjLmpSu" role="37wK5m">
                 <ref role="3cqZAo" node="7LWqj7FLdYR" resolve="projectRepository" />
               </node>
@@ -413,7 +413,7 @@
               <node concept="3clFbS" id="2$qzYDjh2g1" role="1bW5cS">
                 <node concept="3clFbF" id="6xD69EixYMo" role="3cqZAp">
                   <node concept="2YIFZM" id="6xD69EixYWT" role="3clFbG">
-                    <ref role="37wK5l" to="zn9m:~IconLoader.activate():void" resolve="activate" />
+                    <ref role="37wK5l" to="zn9m:#IconLoader.activate():void" resolve="activate" />
                     <ref role="1Pybhc" to="zn9m:~IconLoader" resolve="IconLoader" />
                   </node>
                 </node>
@@ -462,7 +462,7 @@
                       <ref role="3cqZAo" node="1J9x1z49MYh" resolve="icon" />
                     </node>
                     <node concept="liA8E" id="1J9x1z49UfF" role="2OqNvi">
-                      <ref role="37wK5l" to="dxuu:~Icon.getIconWidth():int" resolve="getIconWidth" />
+                      <ref role="37wK5l" to="dxuu:#Icon.getIconWidth():int" resolve="getIconWidth" />
                     </node>
                   </node>
                 </node>
@@ -475,7 +475,7 @@
                       <ref role="3cqZAo" node="1J9x1z49MYh" resolve="icon" />
                     </node>
                     <node concept="liA8E" id="1J9x1z49UYB" role="2OqNvi">
-                      <ref role="37wK5l" to="dxuu:~Icon.getIconHeight():int" resolve="getIconHeight" />
+                      <ref role="37wK5l" to="dxuu:#Icon.getIconHeight():int" resolve="getIconHeight" />
                     </node>
                   </node>
                 </node>
@@ -522,7 +522,7 @@
                 <node concept="1DcWWT" id="1J9x1z49$dR" role="3cqZAp">
                   <node concept="2OqwBi" id="1J9x1z49$e9" role="1DdaDG">
                     <node concept="liA8E" id="1J9x1z49$ec" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                      <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
                     </node>
                     <node concept="1rXfSq" id="R$fwjLmu2B" role="2Oq$k0">
                       <ref role="37wK5l" node="R$fwjLmrrT" resolve="testPackagedLanguageModule" />
@@ -540,7 +540,7 @@
                           <ref role="3cqZAo" node="R$fwjLmuPx" resolve="expected" />
                         </node>
                         <node concept="liA8E" id="1J9x1z49$dX" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModelName.equals(java.lang.Object):boolean" resolve="equals" />
+                          <ref role="37wK5l" to="mhbf:#SModelName.equals(java.lang.Object):boolean" resolve="equals" />
                           <node concept="2OqwBi" id="1J9x1z49$fl" role="37wK5m">
                             <node concept="2JrnkZ" id="1J9x1z49Zp3" role="2Oq$k0">
                               <node concept="37vLTw" id="1J9x1z49$fk" role="2JrQYb">
@@ -548,7 +548,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="1J9x1z49$fm" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SModel.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
+                              <ref role="37wK5l" to="mhbf:#SModel.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
                             </node>
                           </node>
                         </node>
@@ -636,11 +636,11 @@
                   <ref role="3cqZAo" to="83ig:~EnvironmentAwareTestCase.myEnvironment" resolve="myEnvironment" />
                 </node>
                 <node concept="liA8E" id="7LWqj7FLiar" role="2OqNvi">
-                  <ref role="37wK5l" to="ew0j:~Environment.getPlatform():jetbrains.mps.core.platform.Platform" resolve="getPlatform" />
+                  <ref role="37wK5l" to="ew0j:#Environment.getPlatform():jetbrains.mps.core.platform.Platform" resolve="getPlatform" />
                 </node>
               </node>
               <node concept="liA8E" id="7LWqj7FLize" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class):jetbrains.mps.components.CoreComponent" resolve="findComponent" />
+                <ref role="37wK5l" to="wyuk:#ComponentHost.findComponent(java.lang.Class):jetbrains.mps.components.CoreComponent" resolve="findComponent" />
                 <node concept="3VsKOn" id="7LWqj7FLiJP" role="37wK5m">
                   <ref role="3VsUkX" to="w1kc:~MPSModuleRepository" resolve="MPSModuleRepository" />
                 </node>

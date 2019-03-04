@@ -448,11 +448,11 @@
                       <node concept="2ZBlsa" id="3jNcCGJ$YpM" role="2JrQYb" />
                     </node>
                     <node concept="liA8E" id="3jNcCGJ$YpN" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SModel.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
+                      <ref role="37wK5l" to="mhbf:#SModel.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3jNcCGJ$YpO" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModelName.getValue():java.lang.String" resolve="getValue" />
+                    <ref role="37wK5l" to="mhbf:#SModelName.getValue():java.lang.String" resolve="getValue" />
                   </node>
                 </node>
               </node>
@@ -469,11 +469,11 @@
                       <node concept="2ZBlsa" id="3jNcCGJ$LM9" role="2JrQYb" />
                     </node>
                     <node concept="liA8E" id="3jNcCGJ$LMa" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                      <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3jNcCGJ_2_a" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~SModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                    <ref role="37wK5l" to="lui2:#SModule.getModuleName():java.lang.String" resolve="getModuleName" />
                   </node>
                 </node>
               </node>
@@ -513,11 +513,11 @@
                     <node concept="2OqwBi" id="3jNcCGJ$K8m" role="2Oq$k0">
                       <node concept="1Q80Hx" id="3jNcCGJ$K8n" role="2Oq$k0" />
                       <node concept="liA8E" id="3jNcCGJ$K8o" role="2OqNvi">
-                        <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="cj4x:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3jNcCGJ$K8p" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SRepository.getModules():java.lang.Iterable" resolve="getModules" />
+                      <ref role="37wK5l" to="lui2:#SRepository.getModules():java.lang.Iterable" resolve="getModules" />
                     </node>
                   </node>
                 </node>
@@ -531,7 +531,7 @@
                           <ref role="3cqZAo" node="3jNcCGJ$K8x" resolve="it" />
                         </node>
                         <node concept="liA8E" id="3jNcCGJ$K8w" role="2OqNvi">
-                          <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                          <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
                         </node>
                       </node>
                     </node>
@@ -578,7 +578,7 @@
                     <node concept="2OqwBi" id="3bhfBP45b$a" role="37wK5m">
                       <node concept="1Q80Hx" id="3bhfBP45bll" role="2Oq$k0" />
                       <node concept="liA8E" id="3bhfBP45c29" role="2OqNvi">
-                        <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="cj4x:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                       </node>
                     </node>
                   </node>
@@ -886,7 +886,7 @@
                 <node concept="2OqwBi" id="7k$14oQrzYC" role="3clFbG">
                   <node concept="2ZBlsa" id="7k$14oQrzNt" role="2Oq$k0" />
                   <node concept="liA8E" id="7k$14oQr$fu" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~SModuleReference.getModuleName():java.lang.String" resolve="getModuleName" />
+                    <ref role="37wK5l" to="lui2:#SModuleReference.getModuleName():java.lang.String" resolve="getModuleName" />
                   </node>
                 </node>
               </node>
@@ -912,11 +912,11 @@
                     <node concept="2OqwBi" id="7k$14oQryEC" role="2Oq$k0">
                       <node concept="1Q80Hx" id="7k$14oQryED" role="2Oq$k0" />
                       <node concept="liA8E" id="7k$14oQryEE" role="2OqNvi">
-                        <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="cj4x:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                       </node>
                     </node>
                     <node concept="liA8E" id="7k$14oQryEF" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SRepository.getModules():java.lang.Iterable" resolve="getModules" />
+                      <ref role="37wK5l" to="lui2:#SRepository.getModules():java.lang.Iterable" resolve="getModules" />
                     </node>
                   </node>
                 </node>
@@ -930,7 +930,7 @@
                           <ref role="3cqZAo" node="7k$14oQrZR1" resolve="it" />
                         </node>
                         <node concept="liA8E" id="7k$14oQs0BX" role="2OqNvi">
-                          <ref role="37wK5l" to="lui2:~SModule.getModuleReference():org.jetbrains.mps.openapi.module.SModuleReference" resolve="getModuleReference" />
+                          <ref role="37wK5l" to="lui2:#SModule.getModuleReference():org.jetbrains.mps.openapi.module.SModuleReference" resolve="getModuleReference" />
                         </node>
                       </node>
                     </node>

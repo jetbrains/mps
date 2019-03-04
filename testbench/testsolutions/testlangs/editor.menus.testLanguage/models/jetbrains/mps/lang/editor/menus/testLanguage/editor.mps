@@ -326,7 +326,7 @@
                     <property role="Xl_RC" value="cannot" />
                   </node>
                   <node concept="liA8E" id="5oiZ4v5oYLX" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                     <node concept="ub8z3" id="2g57UMsqgKd" role="37wK5m" />
                   </node>
                 </node>
@@ -460,7 +460,7 @@
               <node concept="3clFbS" id="7mBovHgaHpy" role="3clFbx">
                 <node concept="3cpWs6" id="7mBovHgaKcP" role="3cqZAp">
                   <node concept="2YIFZM" id="7mBovHgaKcQ" role="3cqZAk">
-                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                    <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
                     <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                     <node concept="3cmrfG" id="7mBovHgaKcR" role="37wK5m">
                       <property role="3cmrfH" value="1" />

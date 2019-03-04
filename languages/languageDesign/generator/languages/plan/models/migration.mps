@@ -215,7 +215,7 @@
               <ref role="3cqZAo" node="3gcO7FHvBWi" resolve="m" />
             </node>
             <node concept="liA8E" id="3gcO7FHvDUq" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+              <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
             </node>
           </node>
           <node concept="3clFbS" id="3gcO7FHvDDo" role="2LFqv$">
@@ -280,7 +280,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="6OITmG45vER" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty):java.lang.String" resolve="getProperty" />
+                        <ref role="37wK5l" to="mhbf:#SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty):java.lang.String" resolve="getProperty" />
                         <node concept="355D3s" id="6OITmG45w3K" role="37wK5m">
                           <ref role="355D3t" to="tpck:h0TrEE$" resolve="INamedConcept" />
                           <ref role="355D3u" to="tpck:h0TrG11" resolve="name" />
@@ -297,7 +297,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="274NGw8PnaQ" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
+                      <ref role="37wK5l" to="mhbf:#SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
                       <node concept="355D3s" id="274NGw8Pnrb" role="37wK5m">
                         <ref role="355D3t" to="tpck:h0TrEE$" resolve="INamedConcept" />
                         <ref role="355D3u" to="tpck:h0TrG11" resolve="name" />

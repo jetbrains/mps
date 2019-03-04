@@ -382,7 +382,7 @@
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
-        <property id="1757699476691236116" name="linkRole" index="2qtEX8" />
+        <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -5747,7 +5747,7 @@
         <node concept="2OqwBi" id="i34E2_4" role="2OEOjV">
           <node concept="3622Ei" id="i34E2ua" role="2Oq$k0" />
           <node concept="liA8E" id="i34E4ly" role="2OqNvi">
-            <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+            <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
           </node>
         </node>
       </node>
@@ -6742,7 +6742,7 @@
         <node concept="2OqwBi" id="i2Z1UUf" role="2OEOjV">
           <node concept="3622Ei" id="i2Z1UL2" role="2Oq$k0" />
           <node concept="liA8E" id="i2Z1VoF" role="2OqNvi">
-            <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+            <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
           </node>
         </node>
         <node concept="Xl_RD" id="i2Z2vPx" role="2MkJ7o">

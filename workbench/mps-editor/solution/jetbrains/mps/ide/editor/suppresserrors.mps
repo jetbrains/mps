@@ -277,7 +277,7 @@
                 <ref role="3cqZAo" node="2POSI7yqMr2" resolve="editorComponent" />
               </node>
               <node concept="liA8E" id="2POSI7yqTqj" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getEditedNode" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getEditedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getEditedNode" />
               </node>
             </node>
           </node>
@@ -569,7 +569,7 @@
               <ref role="3cqZAo" node="2dHt7HZ2Xuj" resolve="editor" />
             </node>
             <node concept="liA8E" id="2dHt7HZ2X5E" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.findCellWithId(org.jetbrains.mps.openapi.model.SNode,java.lang.String):jetbrains.mps.nodeEditor.cells.EditorCell" resolve="findCellWithId" />
+              <ref role="37wK5l" to="exr9:#EditorComponent.findCellWithId(org.jetbrains.mps.openapi.model.SNode,java.lang.String):jetbrains.mps.nodeEditor.cells.EditorCell" resolve="findCellWithId" />
               <node concept="37vLTw" id="2dHt7HZ2X5F" role="37wK5m">
                 <ref role="3cqZAo" node="2dHt7HZ2WLK" resolve="sa" />
               </node>
@@ -603,7 +603,7 @@
             <property role="TrG5h" value="node" />
             <node concept="3Tqbb2" id="3BytnT75l4R" role="1tU5fm" />
             <node concept="1rXfSq" id="3BytnT75kCt" role="33vP2m">
-              <ref role="37wK5l" to="exr9:~DefaultEditorMessage.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+              <ref role="37wK5l" to="exr9:#DefaultEditorMessage.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
             </node>
           </node>
         </node>
@@ -660,7 +660,7 @@
         </node>
         <node concept="3cpWs6" id="3BytnT75mRR" role="3cqZAp">
           <node concept="3nyPlj" id="3BytnT75mRS" role="3cqZAk">
-            <ref role="37wK5l" to="exr9:~DefaultEditorMessage.getCell(jetbrains.mps.nodeEditor.EditorComponent):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getCell" />
+            <ref role="37wK5l" to="exr9:#DefaultEditorMessage.getCell(jetbrains.mps.nodeEditor.EditorComponent):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getCell" />
             <node concept="37vLTw" id="3BytnT75mRT" role="37wK5m">
               <ref role="3cqZAo" node="3BytnT74Zpf" resolve="editor" />
             </node>

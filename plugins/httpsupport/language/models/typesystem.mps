@@ -497,7 +497,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="40BYgsZZgIi" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                        <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                         <node concept="2OqwBi" id="40BYgsZZh_o" role="37wK5m">
                           <node concept="1YBJjd" id="40BYgsZZgPg" role="2Oq$k0">
                             <ref role="1YBMHb" node="40BYgsZYnvF" resolve="queryParameter" />
@@ -559,7 +559,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="xSXmQZvHiu" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                        <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
                         <node concept="2OqwBi" id="xSXmQZvHiv" role="37wK5m">
                           <node concept="1YBJjd" id="xSXmQZvHiw" role="2Oq$k0">
                             <ref role="1YBMHb" node="xSXmQZuKG2" resolve="parameterInitializer" />
@@ -822,7 +822,7 @@
               <ref role="3cqZAo" node="wgkxgTua2E" resolve="modelName" />
             </node>
             <node concept="liA8E" id="wgkxgTugtu" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
               <node concept="37vLTw" id="wgkxgTugtv" role="37wK5m">
                 <ref role="3cqZAo" node="wgkxgTua6c" resolve="correctName" />
               </node>

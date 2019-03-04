@@ -283,7 +283,7 @@
         <node concept="3clFbS" id="6Iq8148fFpS" role="2VODD2">
           <node concept="3clFbF" id="3TEkTgEKtgA" role="3cqZAp">
             <node concept="2YIFZM" id="3TEkTgEKt$g" role="3clFbG">
-              <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+              <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <node concept="Xl_RD" id="3TEkTgEKtRD" role="37wK5m">
                 <property role="Xl_RC" value="%s %d.%d" />
@@ -1335,7 +1335,7 @@
                     <node concept="2OqwBi" id="4Y6KxqRohn3" role="3uHU7B">
                       <node concept="1Wqviy" id="4Y6KxqRohn4" role="2Oq$k0" />
                       <node concept="liA8E" id="4Y6KxqRohn5" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                        <ref role="37wK5l" to="wyt6:#String.contains(java.lang.CharSequence):boolean" resolve="contains" />
                         <node concept="Xl_RD" id="4Y6KxqRohn6" role="37wK5m">
                           <property role="Xl_RC" value=" " />
                         </node>
@@ -1344,7 +1344,7 @@
                     <node concept="2OqwBi" id="4Y6KxqRos1K" role="3uHU7w">
                       <node concept="1Wqviy" id="4Y6KxqRos1L" role="2Oq$k0" />
                       <node concept="liA8E" id="4Y6KxqRos1M" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                        <ref role="37wK5l" to="wyt6:#String.contains(java.lang.CharSequence):boolean" resolve="contains" />
                         <node concept="Xl_RD" id="4Y6KxqRos1N" role="37wK5m">
                           <property role="Xl_RC" value="/" />
                         </node>
@@ -1354,7 +1354,7 @@
                   <node concept="2OqwBi" id="4Y6KxqRoLuL" role="3uHU7w">
                     <node concept="1Wqviy" id="4Y6KxqRoLuM" role="2Oq$k0" />
                     <node concept="liA8E" id="4Y6KxqRoLuN" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                      <ref role="37wK5l" to="wyt6:#String.contains(java.lang.CharSequence):boolean" resolve="contains" />
                       <node concept="Xl_RD" id="4Y6KxqRoOxp" role="37wK5m">
                         <property role="Xl_RC" value="\\" />
                       </node>

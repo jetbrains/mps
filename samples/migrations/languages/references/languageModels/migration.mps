@@ -219,7 +219,7 @@
                       <ref role="3cqZAo" node="14sMr$jTewZ" resolve="m" />
                     </node>
                     <node concept="liA8E" id="1Ij79tqteYz" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                      <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
                     </node>
                   </node>
                   <node concept="A3Dl8" id="1Ij79tqtkmV" role="10QFUM">
@@ -324,7 +324,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="5ggSOO4DUmP" role="2OqNvi">
-                        <ref role="37wK5l" to="w1kc:~SNode.setId(org.jetbrains.mps.openapi.model.SNodeId):void" resolve="setId" />
+                        <ref role="37wK5l" to="w1kc:#SNode.setId(org.jetbrains.mps.openapi.model.SNodeId):void" resolve="setId" />
                         <node concept="2OqwBi" id="5ggSOO4DUmQ" role="37wK5m">
                           <node concept="1eOMI4" id="5ggSOO4DUmR" role="2Oq$k0">
                             <node concept="10QFUN" id="5ggSOO4DUmS" role="1eOMHV">
@@ -339,7 +339,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="5ggSOO4DUmW" role="2OqNvi">
-                            <ref role="37wK5l" to="w1kc:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                            <ref role="37wK5l" to="w1kc:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
                           </node>
                         </node>
                       </node>

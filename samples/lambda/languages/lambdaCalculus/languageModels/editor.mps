@@ -1106,7 +1106,7 @@
               <node concept="2OqwBi" id="1wEcoXjJijy" role="3clFbw">
                 <node concept="ub8z3" id="1wEcoXjJijF" role="2Oq$k0" />
                 <node concept="liA8E" id="1wEcoXjJij$" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String):boolean" resolve="matches" />
+                  <ref role="37wK5l" to="wyt6:#String.matches(java.lang.String):boolean" resolve="matches" />
                   <node concept="Xl_RD" id="1wEcoXjJij_" role="37wK5m">
                     <property role="Xl_RC" value="[1-9]+[0-9]*" />
                   </node>
@@ -1146,7 +1146,7 @@
           <node concept="3clFbF" id="1wEcoXjJikf" role="3cqZAp">
             <node concept="37vLTI" id="1wEcoXjJikg" role="3clFbG">
               <node concept="2YIFZM" id="1wEcoXjJikh" role="37vLTx">
-                <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String):int" resolve="parseInt" />
+                <ref role="37wK5l" to="wyt6:#Integer.parseInt(java.lang.String):int" resolve="parseInt" />
                 <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
                 <node concept="ub8z3" id="1wEcoXjJiko" role="37wK5m" />
               </node>
@@ -1186,7 +1186,7 @@
               <node concept="2OqwBi" id="1wEcoXjJil1" role="3clFbw">
                 <node concept="ub8z3" id="1wEcoXjJil8" role="2Oq$k0" />
                 <node concept="liA8E" id="1wEcoXjJil3" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                  <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
                   <node concept="Xl_RD" id="1wEcoXjJil4" role="37wK5m">
                     <property role="Xl_RC" value="\&quot;" />
                   </node>
@@ -1210,7 +1210,7 @@
               <node concept="2OqwBi" id="1wEcoXjJilC" role="33vP2m">
                 <node concept="ub8z3" id="1wEcoXjJimc" role="2Oq$k0" />
                 <node concept="liA8E" id="1wEcoXjJilE" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.substring(int):java.lang.String" resolve="substring" />
+                  <ref role="37wK5l" to="wyt6:#String.substring(int):java.lang.String" resolve="substring" />
                   <node concept="3cmrfG" id="1wEcoXjJilF" role="37wK5m">
                     <property role="3cmrfH" value="1" />
                   </node>
@@ -1227,7 +1227,7 @@
                       <ref role="3cqZAo" node="1wEcoXjJilA" resolve="smallPattern" />
                     </node>
                     <node concept="liA8E" id="1wEcoXjJilM" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+                      <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
                       <node concept="3cmrfG" id="1wEcoXjJilN" role="37wK5m">
                         <property role="3cmrfH" value="0" />
                       </node>
@@ -1240,7 +1240,7 @@
                             <ref role="3cqZAo" node="1wEcoXjJilA" resolve="smallPattern" />
                           </node>
                           <node concept="liA8E" id="1wEcoXjJilS" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                            <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
                           </node>
                         </node>
                       </node>
@@ -1257,7 +1257,7 @@
                 <ref role="3cqZAo" node="1wEcoXjJilA" resolve="smallPattern" />
               </node>
               <node concept="liA8E" id="1wEcoXjJilW" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
                 <node concept="Xl_RD" id="1wEcoXjJilX" role="37wK5m">
                   <property role="Xl_RC" value="\&quot;" />
                 </node>

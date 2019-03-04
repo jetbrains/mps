@@ -989,7 +989,7 @@
           <node concept="2OqwBi" id="hapR_kTB68" role="3clFbG">
             <node concept="1XNTG" id="hapR_kTB67" role="2Oq$k0" />
             <node concept="liA8E" id="hapR_kTB6c" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
+              <ref role="37wK5l" to="cj4x:#EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
               <node concept="2OqwBi" id="hapR_kTB6e" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagT_JZ" role="2Oq$k0">
                   <ref role="3cqZAo" node="hapR_kTAm_" resolve="forStatement" />

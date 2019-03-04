@@ -115,7 +115,7 @@
                     <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                   </node>
                   <node concept="liA8E" id="yeZYa6LaMD" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                    <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                     <node concept="Xl_RD" id="yeZYa6LaME" role="37wK5m">
                       <property role="Xl_RC" value="Hello World" />
                     </node>
@@ -136,7 +136,7 @@
                     <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                   </node>
                   <node concept="liA8E" id="yeZYa6LaML" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                    <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                     <node concept="Xl_RD" id="yeZYa6LaMM" role="37wK5m">
                       <property role="Xl_RC" value=":-(" />
                     </node>
@@ -156,7 +156,7 @@
                   <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="yeZYa6LaMS" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                   <node concept="Xl_RD" id="yeZYa6LaMT" role="37wK5m">
                     <property role="Xl_RC" value=":-( again" />
                   </node>

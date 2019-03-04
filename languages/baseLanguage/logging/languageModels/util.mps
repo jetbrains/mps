@@ -346,13 +346,13 @@
                     </node>
                     <node concept="2YIFZM" id="6Gn$TkOxPO8" role="3uHU7w">
                       <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                      <ref role="37wK5l" to="wyt6:~Integer.toString(int):java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="wyt6:#Integer.toString(int):java.lang.String" resolve="toString" />
                       <node concept="2YIFZM" id="4MUSpJu90__" role="37wK5m">
                         <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
-                        <ref role="37wK5l" to="wyt6:~Math.abs(int):int" resolve="abs" />
+                        <ref role="37wK5l" to="wyt6:#Math.abs(int):int" resolve="abs" />
                         <node concept="2OqwBi" id="6Gn$TkOxPOa" role="37wK5m">
                           <node concept="liA8E" id="6Gn$TkOxPOc" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.hashCode():int" resolve="hashCode" />
+                            <ref role="37wK5l" to="wyt6:#String.hashCode():int" resolve="hashCode" />
                           </node>
                           <node concept="2OqwBi" id="4MUSpJu8Zns" role="2Oq$k0">
                             <node concept="37vLTw" id="2BHiRxgm9EL" role="2Oq$k0">
@@ -392,7 +392,7 @@
                                 <ref role="3cqZAo" node="3yfK3xXHBMC" resolve="baseName" />
                               </node>
                               <node concept="liA8E" id="2lOCDx$azZ$" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                 <node concept="2OqwBi" id="2lOCDx$azXJ" role="37wK5m">
                                   <node concept="1PxgMI" id="2lOCDx$azY5" role="2Oq$k0">
                                     <node concept="37vLTw" id="2BHiRxgmztZ" role="1m5AlR">

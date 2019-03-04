@@ -292,7 +292,7 @@
                   <ref role="3cqZAo" node="3tiTA5Idgrf" resolve="box" />
                 </node>
                 <node concept="liA8E" id="3tiTA5Idv98" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean):void" resolve="setSelected" />
+                  <ref role="37wK5l" to="dxuu:#AbstractButton.setSelected(boolean):void" resolve="setSelected" />
                   <node concept="2OqwBi" id="3tiTA5IdyCV" role="37wK5m">
                     <node concept="pncrf" id="3tiTA5Idywt" role="2Oq$k0" />
                     <node concept="3TrcHB" id="3tiTA5Idz3u" role="2OqNvi">
@@ -311,7 +311,7 @@
                 <node concept="2OqwBi" id="3tiTA5IeglZ" role="33vP2m">
                   <node concept="1Q80Hx" id="13$TqNLKpwh" role="2Oq$k0" />
                   <node concept="liA8E" id="3tiTA5Iegm1" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                    <ref role="37wK5l" to="cj4x:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                   </node>
                 </node>
               </node>
@@ -328,7 +328,7 @@
                     <ref role="3cqZAo" node="3tiTA5IeglY" resolve="repository" />
                   </node>
                   <node concept="liA8E" id="3tiTA5IeiAD" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                    <ref role="37wK5l" to="lui2:#SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
                   </node>
                 </node>
               </node>
@@ -339,7 +339,7 @@
                   <ref role="3cqZAo" node="3tiTA5Idgrf" resolve="box" />
                 </node>
                 <node concept="liA8E" id="3tiTA5IdiKB" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~AbstractButton.addActionListener(java.awt.event.ActionListener):void" resolve="addActionListener" />
+                  <ref role="37wK5l" to="dxuu:#AbstractButton.addActionListener(java.awt.event.ActionListener):void" resolve="addActionListener" />
                   <node concept="2ShNRf" id="3tiTA5IdiUf" role="37wK5m">
                     <node concept="YeOm9" id="3tiTA5IdjY_" role="2ShVmc">
                       <node concept="1Y3b0j" id="3tiTA5IdjYC" role="YeSDq">
@@ -370,7 +370,7 @@
                                         <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                                       </node>
                                       <node concept="liA8E" id="3tiTA5Ie5M6" role="2OqNvi">
-                                        <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                                        <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                                         <node concept="3cpWs3" id="3tiTA5Ie69c" role="37wK5m">
                                           <node concept="37vLTw" id="3tiTA5Ie6ea" role="3uHU7w">
                                             <ref role="3cqZAo" node="3tiTA5Ie5pI" resolve="e" />
@@ -397,7 +397,7 @@
                                       <ref role="3cqZAo" node="3tiTA5IeiAA" resolve="modelAccess" />
                                     </node>
                                     <node concept="liA8E" id="3tiTA5Ie2$4" role="2OqNvi">
-                                      <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable):void" resolve="executeCommand" />
+                                      <ref role="37wK5l" to="lui2:#ModelAccess.executeCommand(java.lang.Runnable):void" resolve="executeCommand" />
                                       <node concept="2ShNRf" id="4HamRaEOnQa" role="37wK5m">
                                         <node concept="YeOm9" id="4HamRaEOnQb" role="2ShVmc">
                                           <node concept="1Y3b0j" id="4HamRaEOnQc" role="YeSDq">
@@ -434,7 +434,7 @@
                                                       <ref role="3cqZAo" node="3tiTA5Idgrf" resolve="box" />
                                                     </node>
                                                     <node concept="liA8E" id="3tiTA5Ido7$" role="2OqNvi">
-                                                      <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected():boolean" resolve="isSelected" />
+                                                      <ref role="37wK5l" to="dxuu:#AbstractButton.isSelected():boolean" resolve="isSelected" />
                                                     </node>
                                                   </node>
                                                   <node concept="9aQIb" id="3tiTA5IdrXi" role="9aQIa">

@@ -716,7 +716,7 @@
               <ref role="3cqZAo" node="7zQRkz$T2OD" resolve="longName" />
             </node>
             <node concept="liA8E" id="7zQRkz$T2OT" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
               <node concept="Xl_RD" id="7zQRkz$T2OU" role="37wK5m">
                 <property role="Xl_RC" value="" />
               </node>

@@ -2622,15 +2622,15 @@
                 <node concept="2OqwBi" id="4wG2MBHCYVH" role="3fr31v">
                   <node concept="2YIFZM" id="4wG2MBHCYUr" role="2Oq$k0">
                     <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
-                    <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                    <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                     <node concept="37vLTw" id="4wG2MBHCYU_" role="37wK5m">
                       <ref role="3cqZAo" node="uktU6AWHPO" resolve="nodeConcept" />
                     </node>
                   </node>
                   <node concept="liA8E" id="4wG2MBHCZ3t" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                    <ref role="37wK5l" to="c17a:#SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
                     <node concept="2YIFZM" id="4wG2MBHCZ6O" role="37wK5m">
-                      <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                      <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                       <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                       <node concept="37vLTw" id="4wG2MBHCZaq" role="37wK5m">
                         <ref role="3cqZAo" node="uktU6AWHPr" resolve="templateApplicableConcept" />
@@ -3181,7 +3181,7 @@
                         <ref role="3cqZAo" node="WXiImLvzr0" resolve="l" />
                       </node>
                       <node concept="liA8E" id="4L5lkpK6cak" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SNamedElement.getName():java.lang.String" resolve="getName" />
+                        <ref role="37wK5l" to="c17a:#SNamedElement.getName():java.lang.String" resolve="getName" />
                       </node>
                     </node>
                   </node>
@@ -3207,7 +3207,7 @@
                     <ref role="3cqZAo" node="WXiImLvzr0" resolve="l" />
                   </node>
                   <node concept="liA8E" id="4L5lkpK6b9x" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SConceptFeature.isValid():boolean" resolve="isValid" />
+                    <ref role="37wK5l" to="c17a:#SConceptFeature.isValid():boolean" resolve="isValid" />
                   </node>
                 </node>
               </node>
@@ -3217,7 +3217,7 @@
                     <ref role="3cqZAo" node="WXiImLvzr0" resolve="l" />
                   </node>
                   <node concept="liA8E" id="4L5lkpK6bUQ" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SAbstractLink.isMultiple():boolean" resolve="isMultiple" />
+                    <ref role="37wK5l" to="c17a:#SAbstractLink.isMultiple():boolean" resolve="isMultiple" />
                   </node>
                 </node>
               </node>
@@ -3416,7 +3416,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4fnTrxcpv9T" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                  <ref role="37wK5l" to="mhbf:#SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
                 </node>
               </node>
             </node>
@@ -3468,7 +3468,7 @@
                       </node>
                       <node concept="2YIFZM" id="4fnTrxcpvah" role="2MkJ7o">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                         <node concept="Xl_RD" id="4fnTrxcpvai" role="37wK5m">
                           <property role="Xl_RC" value="Template Fragments shall reside under same parent node" />
                         </node>
@@ -3495,7 +3495,7 @@
                       </node>
                       <node concept="2YIFZM" id="4fnTrxcpvas" role="2MkJ7o">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                         <node concept="Xl_RD" id="4fnTrxcpvat" role="37wK5m">
                           <property role="Xl_RC" value="Template Fragments shall use same same containment link" />
                         </node>
@@ -3513,7 +3513,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="4fnTrxcpvaz" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                        <ref role="37wK5l" to="mhbf:#SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
                       </node>
                     </node>
                   </node>
@@ -4054,7 +4054,7 @@
                       <property role="TrG5h" value="msg" />
                       <node concept="17QB3L" id="3lJIBUNcmXQ" role="1tU5fm" />
                       <node concept="2YIFZM" id="3lJIBUNcmXR" role="33vP2m">
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                         <node concept="Xl_RD" id="3lJIBUNcmXS" role="37wK5m">
                           <property role="Xl_RC" value="Input node (%s) is not an instance of template's expected concept (%s)" />
@@ -4095,16 +4095,16 @@
                 <node concept="3fqX7Q" id="3lJIBUNcmY4" role="3clFbw">
                   <node concept="2OqwBi" id="3lJIBUNcmY5" role="3fr31v">
                     <node concept="2YIFZM" id="3lJIBUNcmY6" role="2Oq$k0">
-                      <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                      <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                       <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                       <node concept="37vLTw" id="3lJIBUNcmY7" role="37wK5m">
                         <ref role="3cqZAo" node="3lJIBUNcmXF" resolve="inputNodeConcept" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3lJIBUNcmY8" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:#SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
                       <node concept="2YIFZM" id="3lJIBUNcmY9" role="37wK5m">
-                        <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                         <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                         <node concept="2OqwBi" id="3lJIBUNcmYa" role="37wK5m">
                           <node concept="3TrEf2" id="3lJIBUNcmYc" role="2OqNvi">
@@ -4217,7 +4217,7 @@
                         <property role="TrG5h" value="msg" />
                         <node concept="17QB3L" id="6j1nfBdCgWc" role="1tU5fm" />
                         <node concept="2YIFZM" id="6j1nfBdCh4T" role="33vP2m">
-                          <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                          <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                           <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                           <node concept="Xl_RD" id="6j1nfBdCgWf" role="37wK5m">
                             <property role="Xl_RC" value="Input node (%s) is not an instance of template's expected concept (%s)" />
@@ -4258,16 +4258,16 @@
                   <node concept="3fqX7Q" id="6j1nfBdCgBE" role="3clFbw">
                     <node concept="2OqwBi" id="6j1nfBdCgBG" role="3fr31v">
                       <node concept="2YIFZM" id="6j1nfBdCgBH" role="2Oq$k0">
-                        <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                         <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                         <node concept="37vLTw" id="6j1nfBdCgBI" role="37wK5m">
                           <ref role="3cqZAo" node="6j1nfBdCeY9" resolve="inputNodeConcept" />
                         </node>
                       </node>
                       <node concept="liA8E" id="6j1nfBdCgBJ" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                        <ref role="37wK5l" to="c17a:#SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
                         <node concept="2YIFZM" id="6j1nfBdCgBK" role="37wK5m">
-                          <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                          <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                           <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                           <node concept="2OqwBi" id="6j1nfBdCgBL" role="37wK5m">
                             <node concept="37vLTw" id="6j1nfBdCgBM" role="2Oq$k0">
@@ -4466,7 +4466,7 @@
                   </node>
                   <node concept="2YIFZM" id="6lTMuI_3xUV" role="a7wSD">
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                    <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                    <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                     <node concept="Xl_RD" id="6lTMuI_3xVm" role="37wK5m">
                       <property role="Xl_RC" value="Root template %s misses annotation" />
                     </node>
@@ -4626,7 +4626,7 @@
                         <node concept="17QB3L" id="3lJIBUNck9w" role="1tU5fm" />
                         <node concept="2YIFZM" id="3lJIBUNck9x" role="33vP2m">
                           <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                          <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                          <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                           <node concept="Xl_RD" id="3lJIBUNck9y" role="37wK5m">
                             <property role="Xl_RC" value="Input node (%s) is not an instance of template's expected concept (%s)" />
                           </node>
@@ -4667,15 +4667,15 @@
                     <node concept="2OqwBi" id="3lJIBUNck9J" role="3fr31v">
                       <node concept="2YIFZM" id="3lJIBUNck9K" role="2Oq$k0">
                         <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
-                        <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                         <node concept="37vLTw" id="3lJIBUNck9L" role="37wK5m">
                           <ref role="3cqZAo" node="3lJIBUNck9l" resolve="inputNodeConcept" />
                         </node>
                       </node>
                       <node concept="liA8E" id="3lJIBUNck9M" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                        <ref role="37wK5l" to="c17a:#SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
                         <node concept="2YIFZM" id="3lJIBUNck9N" role="37wK5m">
-                          <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                          <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                           <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                           <node concept="2OqwBi" id="3lJIBUNck9O" role="37wK5m">
                             <node concept="37vLTw" id="3lJIBUNck9P" role="2Oq$k0">
@@ -4869,7 +4869,7 @@
                 </node>
                 <node concept="2YIFZM" id="rez4bFG2jN" role="2MkJ7o">
                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                  <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                   <node concept="Xl_RD" id="rez4bFG2kA" role="37wK5m">
                     <property role="Xl_RC" value="Name of parameter #%d, %s, doesn't match name of the original parameter (%s)" />
                   </node>
@@ -4943,7 +4943,7 @@
                 </node>
                 <node concept="2YIFZM" id="rez4bFGhTr" role="2MkJ7o">
                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                  <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                   <node concept="Xl_RD" id="rez4bFGhUh" role="37wK5m">
                     <property role="Xl_RC" value="Type of parameter #%d doesn't match type of the original parameter" />
                   </node>
@@ -5480,7 +5480,7 @@
                 </node>
                 <node concept="2YIFZM" id="5KqhIBTuGTA" role="2MkJ7o">
                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                  <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                   <node concept="Xl_RD" id="5KqhIBTu3vT" role="37wK5m">
                     <property role="Xl_RC" value="Node under %s macro should have multiple cardinality (role: %s)" />
                   </node>
@@ -5498,7 +5498,7 @@
                       <ref role="3cqZAo" node="5KqhIBTu3vH" resolve="l" />
                     </node>
                     <node concept="liA8E" id="4L5lkpK6cxF" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SNamedElement.getName():java.lang.String" resolve="getName" />
+                      <ref role="37wK5l" to="c17a:#SNamedElement.getName():java.lang.String" resolve="getName" />
                     </node>
                   </node>
                 </node>
@@ -5510,7 +5510,7 @@
                   <ref role="3cqZAo" node="5KqhIBTu3vH" resolve="l" />
                 </node>
                 <node concept="liA8E" id="4L5lkpK69F6" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SAbstractLink.isMultiple():boolean" resolve="isMultiple" />
+                  <ref role="37wK5l" to="c17a:#SAbstractLink.isMultiple():boolean" resolve="isMultiple" />
                 </node>
               </node>
             </node>
@@ -5521,7 +5521,7 @@
             <ref role="3cqZAo" node="5KqhIBTu3vH" resolve="l" />
           </node>
           <node concept="liA8E" id="4L5lkpK68rn" role="2OqNvi">
-            <ref role="37wK5l" to="c17a:~SConceptFeature.isValid():boolean" resolve="isValid" />
+            <ref role="37wK5l" to="c17a:#SConceptFeature.isValid():boolean" resolve="isValid" />
           </node>
         </node>
       </node>
@@ -5588,7 +5588,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4fnTrxcpsuj" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                  <ref role="37wK5l" to="mhbf:#SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
                 </node>
               </node>
             </node>
@@ -5640,7 +5640,7 @@
                       </node>
                       <node concept="2YIFZM" id="4fnTrxcpsWb" role="2MkJ7o">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                         <node concept="Xl_RD" id="4fnTrxcpsXJ" role="37wK5m">
                           <property role="Xl_RC" value="Template Fragments shall reside under same parent node" />
                         </node>
@@ -5667,7 +5667,7 @@
                       </node>
                       <node concept="2YIFZM" id="4fnTrxcptuq" role="2MkJ7o">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                         <node concept="Xl_RD" id="4fnTrxcptur" role="37wK5m">
                           <property role="Xl_RC" value="Template Fragments shall use same same containment link" />
                         </node>
@@ -5685,7 +5685,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="4fnTrxcpttR" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                        <ref role="37wK5l" to="mhbf:#SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
                       </node>
                     </node>
                   </node>
@@ -5762,7 +5762,7 @@
               <ref role="3cqZAo" node="5C_m7JvWhKR" resolve="model" />
             </node>
             <node concept="liA8E" id="256tImPkKH5" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+              <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
             </node>
           </node>
           <node concept="3uibUv" id="5C_m7JvWhLc" role="1tU5fm">

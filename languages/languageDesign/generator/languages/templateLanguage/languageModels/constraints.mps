@@ -752,7 +752,7 @@
                   <node concept="3clFbF" id="oIXu13GV_8" role="3cqZAp">
                     <node concept="2YIFZM" id="oIXu13GVGr" role="3clFbG">
                       <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
-                      <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+                      <ref role="37wK5l" to="w1kc:#SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
                       <node concept="37vLTw" id="oIXu13GVPJ" role="37wK5m">
                         <ref role="3cqZAo" node="oIXu13GVpG" resolve="it" />
                       </node>
@@ -774,7 +774,7 @@
                     </node>
                   </node>
                   <node concept="2YIFZM" id="oIXu13GSXL" role="10QFUP">
-                    <ref role="37wK5l" to="w1kc:~SModelOperations.allImportedModels(org.jetbrains.mps.openapi.model.SModel):java.util.List" resolve="allImportedModels" />
+                    <ref role="37wK5l" to="w1kc:#SModelOperations.allImportedModels(org.jetbrains.mps.openapi.model.SModel):java.util.List" resolve="allImportedModels" />
                     <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
                     <node concept="37vLTw" id="oIXu13GT0G" role="37wK5m">
                       <ref role="3cqZAo" node="4YDZ92cLOVt" resolve="model" />

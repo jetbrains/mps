@@ -170,7 +170,7 @@
                   <ref role="3cqZAo" node="3hgolwNo1R5" resolve="task" />
                 </node>
                 <node concept="liA8E" id="3hgolwNo1RL" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Runnable.run():void" resolve="run" />
+                  <ref role="37wK5l" to="wyt6:#Runnable.run():void" resolve="run" />
                 </node>
               </node>
             </node>
@@ -190,7 +190,7 @@
                     <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                   </node>
                   <node concept="liA8E" id="3hgolwNo1Rs" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                    <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                     <node concept="3cpWs3" id="3hgolwNo1Ru" role="37wK5m">
                       <node concept="Xl_RD" id="3hgolwNo1Rt" role="3uHU7B">
                         <property role="Xl_RC" value="exception: " />
@@ -200,7 +200,7 @@
                           <ref role="3cqZAo" node="3hgolwNo1Rl" resolve="x" />
                         </node>
                         <node concept="liA8E" id="3hgolwNo1RA" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Throwable.getMessage():java.lang.String" resolve="getMessage" />
+                          <ref role="37wK5l" to="wyt6:#Throwable.getMessage():java.lang.String" resolve="getMessage" />
                         </node>
                       </node>
                     </node>
@@ -300,7 +300,7 @@
                             <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                           </node>
                           <node concept="liA8E" id="2Y9T73IR5H8" role="2OqNvi">
-                            <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                            <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                             <node concept="Xl_RD" id="2Y9T73IR5H9" role="37wK5m">
                               <property role="Xl_RC" value="done" />
                             </node>
@@ -376,10 +376,10 @@
               </node>
             </node>
             <node concept="liA8E" id="2Y9T73IR5HK" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Readable.read(java.nio.CharBuffer):int" resolve="read" />
+              <ref role="37wK5l" to="wyt6:#Readable.read(java.nio.CharBuffer):int" resolve="read" />
               <node concept="2YIFZM" id="2Y9T73IR5HL" role="37wK5m">
                 <ref role="1Pybhc" to="zfbc:~CharBuffer" resolve="CharBuffer" />
-                <ref role="37wK5l" to="zfbc:~CharBuffer.wrap(java.lang.CharSequence):java.nio.CharBuffer" resolve="wrap" />
+                <ref role="37wK5l" to="zfbc:#CharBuffer.wrap(java.lang.CharSequence):java.nio.CharBuffer" resolve="wrap" />
                 <node concept="Xl_RD" id="2Y9T73IR5HM" role="37wK5m">
                   <property role="Xl_RC" value="aa" />
                 </node>
@@ -418,7 +418,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2Y9T73IR5I1" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Runnable.run():void" resolve="run" />
+              <ref role="37wK5l" to="wyt6:#Runnable.run():void" resolve="run" />
             </node>
           </node>
         </node>
@@ -466,7 +466,7 @@
                           <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                         </node>
                         <node concept="liA8E" id="2Y9T73IR66c" role="2OqNvi">
-                          <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                          <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
                           <node concept="Xl_RD" id="2Y9T73IR66d" role="37wK5m">
                             <property role="Xl_RC" value="initializer" />
                           </node>

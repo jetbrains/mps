@@ -792,7 +792,7 @@
                   <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="b3cCzsTQf6" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println():void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:#PrintStream.println():void" resolve="println" />
                 </node>
               </node>
               <node concept="2b32R4" id="b3cCzsTQff" role="lGtFl">

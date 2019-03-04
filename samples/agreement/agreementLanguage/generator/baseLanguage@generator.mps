@@ -357,10 +357,10 @@
               <property role="TrG5h" value="prefix" />
               <node concept="17QB3L" id="18nccIwC3Z3" role="1tU5fm" />
               <node concept="2YIFZM" id="hrqh590" role="33vP2m">
-                <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String):java.lang.String" resolve="capitalize" />
+                <ref role="37wK5l" to="18ew:#NameUtil.capitalize(java.lang.String):java.lang.String" resolve="capitalize" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="2YIFZM" id="58tRkh7oSRs" role="37wK5m">
-                  <ref role="37wK5l" to="18ew:~NameUtil.shortNameFromLongName(java.lang.String):java.lang.String" resolve="shortNameFromLongName" />
+                  <ref role="37wK5l" to="18ew:#NameUtil.shortNameFromLongName(java.lang.String):java.lang.String" resolve="shortNameFromLongName" />
                   <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                   <node concept="2YIFZM" id="2n9zn0CqMRj" role="37wK5m">
                     <ref role="37wK5l" to="unno:7WvVJ3rORmu" resolve="getModelLongName" />
@@ -415,7 +415,7 @@
                     <node concept="3clFbS" id="hrqhP67" role="2VODD2">
                       <node concept="3clFbF" id="hrqhQBM" role="3cqZAp">
                         <node concept="2YIFZM" id="hrqhRfB" role="3clFbG">
-                          <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String):java.lang.String" resolve="decapitalize" />
+                          <ref role="37wK5l" to="18ew:#NameUtil.decapitalize(java.lang.String):java.lang.String" resolve="decapitalize" />
                           <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                           <node concept="2OqwBi" id="hER6b60" role="37wK5m">
                             <node concept="30H73N" id="hrqhRVO" role="2Oq$k0" />
@@ -745,7 +745,7 @@
                             <property role="Xl_RC" value="SERVICE CALL" />
                           </node>
                           <node concept="liA8E" id="hER69ry" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                            <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                             <node concept="2OqwBi" id="hER6b64" role="37wK5m">
                               <node concept="37vLTw" id="3GM_nagTvhM" role="2Oq$k0">
                                 <ref role="3cqZAo" node="hrq6h0E" resolve="eventType" />
@@ -778,7 +778,7 @@
                             <property role="Xl_RC" value="USAGE" />
                           </node>
                           <node concept="liA8E" id="hER69eg" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                            <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                             <node concept="2OqwBi" id="hER6a3d" role="37wK5m">
                               <node concept="37vLTw" id="3GM_nagTrzR" role="2Oq$k0">
                                 <ref role="3cqZAo" node="hrq6h0E" resolve="eventType" />
@@ -811,7 +811,7 @@
                             <property role="Xl_RC" value="TAX" />
                           </node>
                           <node concept="liA8E" id="hER69v$" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                            <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                             <node concept="2OqwBi" id="hER6aiI" role="37wK5m">
                               <node concept="37vLTw" id="3GM_nagTBeq" role="2Oq$k0">
                                 <ref role="3cqZAo" node="hrq6h0E" resolve="eventType" />
@@ -894,7 +894,7 @@
                                 <property role="Xl_RC" value="base-usage" />
                               </node>
                               <node concept="liA8E" id="hER69fK" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                 <node concept="2OqwBi" id="hER69JV" role="37wK5m">
                                   <node concept="37vLTw" id="3GM_nagTu0B" role="2Oq$k0">
                                     <ref role="3cqZAo" node="hrqbbaz" resolve="accountType" />
@@ -924,7 +924,7 @@
                                 <property role="Xl_RC" value="service" />
                               </node>
                               <node concept="liA8E" id="hER69p2" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                 <node concept="2OqwBi" id="hER6b4f" role="37wK5m">
                                   <node concept="37vLTw" id="3GM_nagTtkd" role="2Oq$k0">
                                     <ref role="3cqZAo" node="hrqbbaz" resolve="accountType" />
@@ -954,7 +954,7 @@
                                 <property role="Xl_RC" value="tax" />
                               </node>
                               <node concept="liA8E" id="hER697f" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                 <node concept="2OqwBi" id="hER6b9D" role="37wK5m">
                                   <node concept="37vLTw" id="3GM_nagTz0o" role="2Oq$k0">
                                     <ref role="3cqZAo" node="hrqbbaz" resolve="accountType" />
@@ -1201,7 +1201,7 @@
                 <property role="Xl_RC" value="fee" />
               </node>
               <node concept="liA8E" id="hER69kM" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                 <node concept="2OqwBi" id="hER6aE3" role="37wK5m">
                   <node concept="37vLTw" id="3GM_nagTBWv" role="2Oq$k0">
                     <ref role="3cqZAo" node="hrqGNWT" resolve="eventVariable" />
@@ -1709,7 +1709,7 @@
                 <property role="Xl_RC" value="usage" />
               </node>
               <node concept="liA8E" id="hER69x4" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                 <node concept="2OqwBi" id="hER6b62" role="37wK5m">
                   <node concept="37vLTw" id="3GM_nagTyvZ" role="2Oq$k0">
                     <ref role="3cqZAo" node="hrqN4GF" resolve="eventVariable" />
@@ -1767,7 +1767,7 @@
                 <property role="Xl_RC" value="usage" />
               </node>
               <node concept="liA8E" id="hER69aJ" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                 <node concept="2OqwBi" id="hER6aOZ" role="37wK5m">
                   <node concept="37vLTw" id="3GM_nagTsvM" role="2Oq$k0">
                     <ref role="3cqZAo" node="hrqOzTh" resolve="eventVariable" />
@@ -1895,7 +1895,7 @@
                 <property role="Xl_RC" value="fee" />
               </node>
               <node concept="liA8E" id="hER69ny" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                 <node concept="2OqwBi" id="hER6acQ" role="37wK5m">
                   <node concept="37vLTw" id="3GM_nagT$Py" role="2Oq$k0">
                     <ref role="3cqZAo" node="hrqAxc$" resolve="eventVariable" />

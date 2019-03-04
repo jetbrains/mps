@@ -220,7 +220,7 @@
         <node concept="3cpWs6" id="2CFL3ni7A9_" role="3cqZAp">
           <node concept="3cpWs3" id="2CFL3ni7A9A" role="3cqZAk">
             <node concept="2YIFZM" id="3Cron0yxdz0" role="3uHU7B">
-              <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String):java.lang.String" resolve="toValidCamelIdentifier" />
+              <ref role="37wK5l" to="18ew:#NameUtil.toValidCamelIdentifier(java.lang.String):java.lang.String" resolve="toValidCamelIdentifier" />
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
               <node concept="37vLTw" id="3GM_nagTBld" role="37wK5m">
                 <ref role="3cqZAo" node="2CFL3ni7A9t" resolve="n" />

@@ -460,7 +460,7 @@
                       <ref role="3cqZAo" node="toFl8p7_E0" resolve="obj" />
                     </node>
                     <node concept="liA8E" id="toFl8p7_F6" role="2OqNvi">
-                      <ref role="37wK5l" to="zf81:~URL.openConnection():java.net.URLConnection" resolve="openConnection" />
+                      <ref role="37wK5l" to="zf81:#URL.openConnection():java.net.URLConnection" resolve="openConnection" />
                     </node>
                   </node>
                 </node>
@@ -472,7 +472,7 @@
                   <ref role="3cqZAo" node="toFl8p7_E5" resolve="con" />
                 </node>
                 <node concept="liA8E" id="49_GDO7ArFe" role="2OqNvi">
-                  <ref role="37wK5l" to="zf81:~URLConnection.connect():void" resolve="connect" />
+                  <ref role="37wK5l" to="zf81:#URLConnection.connect():void" resolve="connect" />
                 </node>
               </node>
             </node>
@@ -483,7 +483,7 @@
                   <ref role="3cqZAo" node="toFl8p7_E5" resolve="con" />
                 </node>
                 <node concept="liA8E" id="49_GDO7A8Ua" role="2OqNvi">
-                  <ref role="37wK5l" to="zf81:~HttpURLConnection.getResponseCode():int" resolve="getResponseCode" />
+                  <ref role="37wK5l" to="zf81:#HttpURLConnection.getResponseCode():int" resolve="getResponseCode" />
                 </node>
               </node>
               <node concept="37vLTw" id="49_GDO7A83i" role="3tpDZB">
@@ -510,7 +510,7 @@
                                 <ref role="3cqZAo" node="toFl8p7_E5" resolve="con" />
                               </node>
                               <node concept="liA8E" id="5leSqRbcPWz" role="2OqNvi">
-                                <ref role="37wK5l" to="zf81:~URLConnection.getInputStream():java.io.InputStream" resolve="getInputStream" />
+                                <ref role="37wK5l" to="zf81:#URLConnection.getInputStream():java.io.InputStream" resolve="getInputStream" />
                               </node>
                             </node>
                           </node>
@@ -554,7 +554,7 @@
                             <ref role="3cqZAo" node="5leSqRbcPG5" resolve="in" />
                           </node>
                           <node concept="liA8E" id="5leSqRbcPWF" role="2OqNvi">
-                            <ref role="37wK5l" to="guwi:~BufferedReader.readLine():java.lang.String" resolve="readLine" />
+                            <ref role="37wK5l" to="guwi:#BufferedReader.readLine():java.lang.String" resolve="readLine" />
                           </node>
                         </node>
                       </node>
@@ -568,7 +568,7 @@
                           <ref role="3cqZAo" node="5leSqRbcPGe" resolve="response" />
                         </node>
                         <node concept="liA8E" id="5leSqRbcPWI" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuffer.append(java.lang.String):java.lang.StringBuffer" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:#StringBuffer.append(java.lang.String):java.lang.StringBuffer" resolve="append" />
                           <node concept="37vLTw" id="5leSqRbcPGs" role="37wK5m">
                             <ref role="3cqZAo" node="5leSqRbcPGb" resolve="inputLine" />
                           </node>
@@ -583,7 +583,7 @@
                       <ref role="3cqZAo" node="5leSqRbcPG5" resolve="in" />
                     </node>
                     <node concept="liA8E" id="5leSqRbcPWL" role="2OqNvi">
-                      <ref role="37wK5l" to="guwi:~BufferedReader.close():void" resolve="close" />
+                      <ref role="37wK5l" to="guwi:#BufferedReader.close():void" resolve="close" />
                     </node>
                   </node>
                 </node>
@@ -597,7 +597,7 @@
                       <ref role="3cqZAo" node="5leSqRbcPGe" resolve="response" />
                     </node>
                     <node concept="liA8E" id="5leSqRbcTVQ" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~StringBuffer.toString():java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="wyt6:#StringBuffer.toString():java.lang.String" resolve="toString" />
                     </node>
                   </node>
                 </node>
@@ -623,7 +623,7 @@
                 <node concept="3_1$Yv" id="49_GDO7_PpW" role="3_9lra">
                   <node concept="3cpWs3" id="49_GDO7_S6x" role="3_1BAH">
                     <node concept="2YIFZM" id="49_GDO7_ZpF" role="3uHU7w">
-                      <ref role="37wK5l" to="9w4s:~ExceptionUtil.getThrowableText(java.lang.Throwable):java.lang.String" resolve="getThrowableText" />
+                      <ref role="37wK5l" to="9w4s:#ExceptionUtil.getThrowableText(java.lang.Throwable):java.lang.String" resolve="getThrowableText" />
                       <ref role="1Pybhc" to="9w4s:~ExceptionUtil" resolve="ExceptionUtil" />
                       <node concept="37vLTw" id="49_GDO7_ZyF" role="37wK5m">
                         <ref role="3cqZAo" node="49_GDO7_MxI" resolve="exception" />
@@ -674,11 +674,11 @@
               </node>
               <node concept="2OqwBi" id="6WBmrsj_TTb" role="3uHU7w">
                 <node concept="2YIFZM" id="6WBmrsj_TBF" role="2Oq$k0">
-                  <ref role="37wK5l" to="e5vs:~BuiltInServerManager.getInstance():org.jetbrains.ide.BuiltInServerManager" resolve="getInstance" />
+                  <ref role="37wK5l" to="e5vs:#BuiltInServerManager.getInstance():org.jetbrains.ide.BuiltInServerManager" resolve="getInstance" />
                   <ref role="1Pybhc" to="e5vs:~BuiltInServerManager" resolve="BuiltInServerManager" />
                 </node>
                 <node concept="liA8E" id="6WBmrsj_UYg" role="2OqNvi">
-                  <ref role="37wK5l" to="e5vs:~BuiltInServerManager.getPort():int" resolve="getPort" />
+                  <ref role="37wK5l" to="e5vs:#BuiltInServerManager.getPort():int" resolve="getPort" />
                 </node>
               </node>
             </node>

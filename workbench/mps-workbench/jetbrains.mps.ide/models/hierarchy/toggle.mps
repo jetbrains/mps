@@ -387,7 +387,7 @@
               <ref role="3cqZAo" node="51NkKCgB4nr" resolve="myActions" />
             </node>
             <node concept="liA8E" id="51NkKCgB4nO" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
               <node concept="37vLTw" id="2BHiRxgmLpI" role="37wK5m">
                 <ref role="3cqZAo" node="51NkKCgB4nD" resolve="action" />
               </node>

@@ -264,13 +264,13 @@
                           <ref role="3cqZAo" node="42TXcA3Jp$u" resolve="it" />
                         </node>
                         <node concept="liA8E" id="6YbpJJxeSs$" role="2OqNvi">
-                          <ref role="37wK5l" to="33ny:~Iterator.next():java.lang.Object" resolve="next" />
+                          <ref role="37wK5l" to="33ny:#Iterator.next():java.lang.Object" resolve="next" />
                         </node>
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="6YbpJJxeSs_" role="2OqNvi">
-                    <ref role="37wK5l" to="fwk:~BaseLanguageNodeLookup.getNodeAt(java.lang.String,int):org.jetbrains.mps.openapi.model.SNodeReference" resolve="getNodeAt" />
+                    <ref role="37wK5l" to="fwk:#BaseLanguageNodeLookup.getNodeAt(java.lang.String,int):org.jetbrains.mps.openapi.model.SNodeReference" resolve="getNodeAt" />
                     <node concept="2OqwBi" id="6YbpJJxeSsA" role="37wK5m">
                       <node concept="37vLTw" id="6YbpJJxeSsB" role="2Oq$k0">
                         <ref role="3cqZAo" node="42TXcA3GVaQ" resolve="location" />
@@ -326,10 +326,10 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="42TXcA3Jp$$" role="2OqNvi">
-                  <ref role="37wK5l" to="fwk:~TraceInfoProvider.debugInfo(java.lang.String):java.util.stream.Stream" resolve="debugInfo" />
+                  <ref role="37wK5l" to="fwk:#TraceInfoProvider.debugInfo(java.lang.String):java.util.stream.Stream" resolve="debugInfo" />
                   <node concept="2YIFZM" id="42TXcA3Jp$_" role="37wK5m">
                     <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                    <ref role="37wK5l" to="18ew:~NameUtil.namespaceFromLongName(java.lang.String):java.lang.String" resolve="namespaceFromLongName" />
+                    <ref role="37wK5l" to="18ew:#NameUtil.namespaceFromLongName(java.lang.String):java.lang.String" resolve="namespaceFromLongName" />
                     <node concept="2OqwBi" id="42TXcA3Jp$A" role="37wK5m">
                       <node concept="37vLTw" id="42TXcA3Jp$B" role="2Oq$k0">
                         <ref role="3cqZAo" node="42TXcA3GVaQ" resolve="location" />
@@ -342,7 +342,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="42TXcA3Jp$D" role="2OqNvi">
-                <ref role="37wK5l" to="1ctc:~BaseStream.iterator():java.util.Iterator" resolve="iterator" />
+                <ref role="37wK5l" to="1ctc:#BaseStream.iterator():java.util.Iterator" resolve="iterator" />
               </node>
             </node>
           </node>
@@ -351,7 +351,7 @@
               <ref role="3cqZAo" node="42TXcA3Jp$u" resolve="it" />
             </node>
             <node concept="liA8E" id="42TXcA3JsA$" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Iterator.hasNext():boolean" resolve="hasNext" />
+              <ref role="37wK5l" to="33ny:#Iterator.hasNext():boolean" resolve="hasNext" />
             </node>
           </node>
         </node>
@@ -406,7 +406,7 @@
                   <ref role="3VsUkX" to="8fo5:44XtxR1fJSW" resolve="NodeSourcePosition" />
                 </node>
                 <node concept="liA8E" id="6$AhvwzeVwx" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Class.getName():java.lang.String" resolve="getName" />
+                  <ref role="37wK5l" to="wyt6:#Class.getName():java.lang.String" resolve="getName" />
                 </node>
               </node>
             </node>

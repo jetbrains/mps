@@ -314,7 +314,7 @@
         <node concept="3clFbF" id="h1UlpIO" role="3cqZAp">
           <node concept="2YIFZM" id="UtZ9hSL4qq" role="3clFbG">
             <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
             <node concept="3cmrfG" id="UtZ9hSL4qr" role="37wK5m">
               <property role="3cmrfH" value="15" />
             </node>
@@ -422,7 +422,7 @@
         <node concept="3clFbF" id="h1U$ai9" role="3cqZAp">
           <node concept="2YIFZM" id="UtZ9hSL7oW" role="3clFbG">
             <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
             <node concept="3cmrfG" id="UtZ9hSL7oX" role="37wK5m">
               <property role="3cmrfH" value="15" />
             </node>
@@ -477,7 +477,7 @@
                             <ref role="3cqZAo" node="hOvD_Jq" resolve="s" />
                           </node>
                           <node concept="liA8E" id="hOvD_Jy" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                            <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
                           </node>
                         </node>
                         <node concept="37vLTw" id="3GM_nagTwWc" role="3uHU7B">
@@ -497,7 +497,7 @@
         <node concept="3clFbF" id="hyYoGSX" role="3cqZAp">
           <node concept="2YIFZM" id="UtZ9hSL7oZ" role="3clFbG">
             <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
             <node concept="3cmrfG" id="UtZ9hSL7p0" role="37wK5m">
               <property role="3cmrfH" value="0" />
             </node>
@@ -593,7 +593,7 @@
         <node concept="3clFbF" id="h1Uz1tE" role="3cqZAp">
           <node concept="2YIFZM" id="UtZ9hSL7p2" role="3clFbG">
             <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
             <node concept="3cmrfG" id="UtZ9hSL7p3" role="37wK5m">
               <property role="3cmrfH" value="15" />
             </node>
@@ -694,7 +694,7 @@
         <node concept="3clFbF" id="h1Uzkpn" role="3cqZAp">
           <node concept="2YIFZM" id="UtZ9hSL7p5" role="3clFbG">
             <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
             <node concept="3cmrfG" id="UtZ9hSL7p6" role="37wK5m">
               <property role="3cmrfH" value="15" />
             </node>
@@ -893,7 +893,7 @@
           <node concept="3clFbF" id="1ngiNkTyw3l" role="3cqZAp">
             <node concept="2YIFZM" id="1ngiNkTyw3m" role="3clFbG">
               <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-              <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+              <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
               <node concept="3cmrfG" id="1ngiNkTyw3n" role="37wK5m">
                 <property role="3cmrfH" value="0" />
               </node>
@@ -982,7 +982,7 @@
               <node concept="3clFbF" id="1ngiNkTyw3U" role="3cqZAp">
                 <node concept="2YIFZM" id="1ngiNkTyw3V" role="3clFbG">
                   <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-                  <ref role="37wK5l" to="u132:~Assert.assertEquals(java.lang.String,java.lang.String):void" resolve="assertEquals" />
+                  <ref role="37wK5l" to="u132:#Assert.assertEquals(java.lang.String,java.lang.String):void" resolve="assertEquals" />
                   <node concept="37vLTw" id="3GM_nagT$eg" role="37wK5m">
                     <ref role="3cqZAo" node="1ngiNkTyw3y" resolve="expected" />
                   </node>
@@ -1003,7 +1003,7 @@
           <node concept="3clFbF" id="1ngiNkTyw41" role="3cqZAp">
             <node concept="2YIFZM" id="UtZ9hSL7Ch" role="3clFbG">
               <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-              <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+              <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
               <node concept="3cmrfG" id="UtZ9hSL7Ci" role="37wK5m">
                 <property role="3cmrfH" value="5" />
               </node>
@@ -1071,7 +1071,7 @@
               <node concept="3clFbF" id="1ngiNkTyw4x" role="3cqZAp">
                 <node concept="2YIFZM" id="UtZ9hSL7pi" role="3clFbG">
                   <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-                  <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+                  <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
                   <node concept="3cmrfG" id="UtZ9hSL7pj" role="37wK5m">
                     <property role="3cmrfH" value="0" />
                   </node>
@@ -1141,7 +1141,7 @@
                 <node concept="3clFbF" id="1ngiNkT$0HK" role="3cqZAp">
                   <node concept="2YIFZM" id="UtZ9hSL7p8" role="3clFbG">
                     <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-                    <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+                    <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
                     <node concept="3cmrfG" id="UtZ9hSL7p9" role="37wK5m">
                       <property role="3cmrfH" value="1" />
                     </node>
@@ -1204,7 +1204,7 @@
                       <node concept="2n63Yl" id="1ngiNkTyw4T" role="3cqZAp">
                         <node concept="2OqwBi" id="1ngiNkTyw4U" role="2n6tg2">
                           <node concept="liA8E" id="1ngiNkTyw4V" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.substring(int):java.lang.String" resolve="substring" />
+                            <ref role="37wK5l" to="wyt6:#String.substring(int):java.lang.String" resolve="substring" />
                             <node concept="3cmrfG" id="1ngiNkTyw4W" role="37wK5m">
                               <property role="3cmrfH" value="10" />
                             </node>
@@ -1226,7 +1226,7 @@
           <node concept="3clFbF" id="1ngiNkTyw4Z" role="3cqZAp">
             <node concept="2YIFZM" id="1ngiNkTyw50" role="3clFbG">
               <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-              <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+              <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
               <node concept="3cmrfG" id="1ngiNkTyw51" role="37wK5m">
                 <property role="3cmrfH" value="0" />
               </node>
@@ -1388,7 +1388,7 @@
           <node concept="3clFbF" id="1ngiNkTzM3U" role="3cqZAp">
             <node concept="2YIFZM" id="1ngiNkTzM3V" role="3clFbG">
               <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-              <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+              <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
               <node concept="3cmrfG" id="1ngiNkTzM3W" role="37wK5m">
                 <property role="3cmrfH" value="0" />
               </node>
@@ -1431,7 +1431,7 @@
               <node concept="3clFbF" id="1ngiNkTzM4c" role="3cqZAp">
                 <node concept="2YIFZM" id="1ngiNkTzM4d" role="3clFbG">
                   <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-                  <ref role="37wK5l" to="u132:~Assert.assertEquals(java.lang.String,java.lang.String):void" resolve="assertEquals" />
+                  <ref role="37wK5l" to="u132:#Assert.assertEquals(java.lang.String,java.lang.String):void" resolve="assertEquals" />
                   <node concept="37vLTw" id="3GM_nagTxZd" role="37wK5m">
                     <ref role="3cqZAo" node="1ngiNkTzM47" resolve="expected" />
                   </node>
@@ -1460,7 +1460,7 @@
           <node concept="3clFbF" id="1ngiNkTzM4m" role="3cqZAp">
             <node concept="2YIFZM" id="1ngiNkTzM4n" role="3clFbG">
               <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-              <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+              <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
               <node concept="3cmrfG" id="1ngiNkTzM4o" role="37wK5m">
                 <property role="3cmrfH" value="5" />
               </node>
@@ -1567,7 +1567,7 @@
           <node concept="3clFbF" id="1ngiNkTzM53" role="3cqZAp">
             <node concept="2YIFZM" id="1ngiNkTzM54" role="3clFbG">
               <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-              <ref role="37wK5l" to="u132:~Assert.assertEquals(int,int):void" resolve="assertEquals" />
+              <ref role="37wK5l" to="u132:#Assert.assertEquals(int,int):void" resolve="assertEquals" />
               <node concept="3cmrfG" id="1ngiNkTzM55" role="37wK5m">
                 <property role="3cmrfH" value="0" />
               </node>
@@ -1646,7 +1646,7 @@
               <node concept="3clFbF" id="1ngiNkTzM5A" role="3cqZAp">
                 <node concept="2YIFZM" id="1ngiNkTzM5B" role="3clFbG">
                   <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-                  <ref role="37wK5l" to="u132:~Assert.assertTrue(boolean):void" resolve="assertTrue" />
+                  <ref role="37wK5l" to="u132:#Assert.assertTrue(boolean):void" resolve="assertTrue" />
                   <node concept="2OqwBi" id="1ngiNkTzM5C" role="37wK5m">
                     <node concept="37vLTw" id="3GM_nagTydi" role="2Oq$k0">
                       <ref role="3cqZAo" node="1ngiNkTzM5o" resolve="empty" />

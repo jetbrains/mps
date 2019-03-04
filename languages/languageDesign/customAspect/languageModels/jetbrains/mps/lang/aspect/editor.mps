@@ -361,11 +361,11 @@
                   </node>
                   <node concept="2OqwBi" id="34EJa6aIpEl" role="33vP2m">
                     <node concept="2YIFZM" id="34EJa6aIpEm" role="2Oq$k0">
-                      <ref role="37wK5l" to="vndm:~LanguageRegistry.getInstance():jetbrains.mps.smodel.language.LanguageRegistry" resolve="getInstance" />
+                      <ref role="37wK5l" to="vndm:#LanguageRegistry.getInstance():jetbrains.mps.smodel.language.LanguageRegistry" resolve="getInstance" />
                       <ref role="1Pybhc" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
                     </node>
                     <node concept="liA8E" id="34EJa6aIpEn" role="2OqNvi">
-                      <ref role="37wK5l" to="vndm:~LanguageRegistry.getAllLanguages():java.util.Collection" resolve="getAllLanguages" />
+                      <ref role="37wK5l" to="vndm:#LanguageRegistry.getAllLanguages():java.util.Collection" resolve="getAllLanguages" />
                     </node>
                   </node>
                 </node>
@@ -834,7 +834,7 @@
                   <ref role="3cqZAo" node="1nhYb0FOxH9" resolve="button" />
                 </node>
                 <node concept="liA8E" id="1nhYb0FOxHg" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~AbstractButton.setAction(javax.swing.Action):void" resolve="setAction" />
+                  <ref role="37wK5l" to="dxuu:#AbstractButton.setAction(javax.swing.Action):void" resolve="setAction" />
                   <node concept="2ShNRf" id="1nhYb0FOxHh" role="37wK5m">
                     <node concept="YeOm9" id="1nhYb0FOxHi" role="2ShVmc">
                       <node concept="1Y3b0j" id="1nhYb0FOxHj" role="YeSDq">
@@ -863,13 +863,13 @@
                                       <node concept="2OqwBi" id="7bnM4mNCdbK" role="37wK5m">
                                         <node concept="1Q80Hx" id="7bnM4mNCdbL" role="2Oq$k0" />
                                         <node concept="liA8E" id="7bnM4mNCdbM" role="2OqNvi">
-                                          <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                                          <ref role="37wK5l" to="cj4x:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                                         </node>
                                       </node>
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="7bnM4mNCdbN" role="2OqNvi">
-                                    <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runReadAction" />
+                                    <ref role="37wK5l" to="w1kc:#ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runReadAction" />
                                     <node concept="1bVj0M" id="7bnM4mNCdbO" role="37wK5m">
                                       <node concept="3clFbS" id="7bnM4mNCdbP" role="1bW5cS">
                                         <node concept="3clFbF" id="7bnM4mNCdbQ" role="3cqZAp">
@@ -888,7 +888,7 @@
                             </node>
                             <node concept="3clFbF" id="4voYo4rtpcg" role="3cqZAp">
                               <node concept="2YIFZM" id="4voYo4rtpmO" role="3clFbG">
-                                <ref role="37wK5l" to="ddhc:~BrowserUtil.browse(java.lang.String):void" resolve="browse" />
+                                <ref role="37wK5l" to="ddhc:#BrowserUtil.browse(java.lang.String):void" resolve="browse" />
                                 <ref role="1Pybhc" to="ddhc:~BrowserUtil" resolve="BrowserUtil" />
                                 <node concept="37vLTw" id="7bnM4mNCe$k" role="37wK5m">
                                   <ref role="3cqZAo" node="7bnM4mNCdbG" resolve="url" />
@@ -915,7 +915,7 @@
                   <ref role="3cqZAo" node="1nhYb0FOxH9" resolve="button" />
                 </node>
                 <node concept="liA8E" id="7Ift4HgceIk" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~JComponent.setOpaque(boolean):void" resolve="setOpaque" />
+                  <ref role="37wK5l" to="dxuu:#JComponent.setOpaque(boolean):void" resolve="setOpaque" />
                   <node concept="3clFbT" id="7Ift4Hgcfwp" role="37wK5m">
                     <property role="3clFbU" value="false" />
                   </node>

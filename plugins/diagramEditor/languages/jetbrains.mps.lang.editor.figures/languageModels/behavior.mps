@@ -600,13 +600,13 @@
                 </node>
               </node>
               <node concept="liA8E" id="3g73hQq8eww" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.substring(int):java.lang.String" resolve="substring" />
+                <ref role="37wK5l" to="wyt6:#String.substring(int):java.lang.String" resolve="substring" />
                 <node concept="2OqwBi" id="3g73hQq8eO9" role="37wK5m">
                   <node concept="37vLTw" id="3g73hQq8ezd" role="2Oq$k0">
                     <ref role="3cqZAo" node="3g73hQq89o4" resolve="prefix" />
                   </node>
                   <node concept="liA8E" id="3g73hQq8ho3" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
                   </node>
                 </node>
               </node>
@@ -625,7 +625,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3g73hQq899u" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
                 <node concept="37vLTw" id="3g73hQq8ag5" role="37wK5m">
                   <ref role="3cqZAo" node="3g73hQq89o4" resolve="prefix" />
                 </node>

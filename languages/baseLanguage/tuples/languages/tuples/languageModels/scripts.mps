@@ -816,7 +816,7 @@
                         <node concept="3clFbF" id="4V$BJAdTcRz" role="3cqZAp">
                           <node concept="2OqwBi" id="4V$BJAdTcR$" role="3clFbG">
                             <node concept="liA8E" id="4V$BJAdTcR_" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String):boolean" resolve="matches" />
+                              <ref role="37wK5l" to="wyt6:#String.matches(java.lang.String):boolean" resolve="matches" />
                               <node concept="Xl_RD" id="4V$BJAdTcRA" role="37wK5m">
                                 <property role="Xl_RC" value="_[0-9]+" />
                               </node>
@@ -845,7 +845,7 @@
                   <property role="Xl_RC" value="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
                 </node>
                 <node concept="liA8E" id="i1Po5J1" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                   <node concept="2OqwBi" id="4V$BJAdT1SW" role="37wK5m">
                     <node concept="2qgKlT" id="4V$BJAdT2vj" role="2OqNvi">
                       <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />

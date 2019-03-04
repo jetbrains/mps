@@ -535,7 +535,7 @@
             </node>
             <node concept="3cpWs3" id="7FuGcnvxpWa" role="3uHU7B">
               <node concept="2YIFZM" id="7FuGcnvxpWe" role="3uHU7B">
-                <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+                <ref role="37wK5l" to="18ew:#NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="2OqwBi" id="7FuGcnvxpWg" role="37wK5m">
                   <node concept="13iPFW" id="7FuGcnvxpWf" role="2Oq$k0" />
@@ -688,7 +688,7 @@
           <node concept="3cpWs3" id="5L5h3brCm0B" role="3clFbG">
             <node concept="2YIFZM" id="5L5h3brCm0M" role="3uHU7w">
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-              <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+              <ref role="37wK5l" to="18ew:#NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
               <node concept="2OqwBi" id="5L5h3brCm0O" role="37wK5m">
                 <node concept="13iPFW" id="5cTNP_RQ_Zd" role="2Oq$k0" />
                 <node concept="3TrcHB" id="5L5h3brCm0S" role="2OqNvi">

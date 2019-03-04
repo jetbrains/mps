@@ -193,7 +193,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8Ece" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.getEditor():jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEditor" resolve="getEditor" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.getEditor():jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEditor" resolve="getEditor" />
             </node>
           </node>
         </node>
@@ -244,7 +244,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8Ecl" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.getDetailsText():java.lang.String" resolve="getDetailsText" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.getDetailsText():java.lang.String" resolve="getDetailsText" />
             </node>
           </node>
         </node>
@@ -269,7 +269,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8Ecs" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.isValid():boolean" resolve="isValid" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.isValid():boolean" resolve="isValid" />
             </node>
           </node>
         </node>
@@ -302,7 +302,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8Ecz" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.addModelRootEntryListener(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry$ModelRootEntryListener):void" resolve="addModelRootEntryListener" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.addModelRootEntryListener(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry$ModelRootEntryListener):void" resolve="addModelRootEntryListener" />
               <node concept="37vLTw" id="2pZ8abj8Ebq" role="37wK5m">
                 <ref role="3cqZAo" node="2pZ8abj8Ebk" resolve="listener" />
               </node>
@@ -338,7 +338,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8EcE" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.removeModelRootEntryListener(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry$ModelRootEntryListener):void" resolve="removeModelRootEntryListener" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.removeModelRootEntryListener(org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry$ModelRootEntryListener):void" resolve="removeModelRootEntryListener" />
               <node concept="37vLTw" id="2pZ8abj8Eb_" role="37wK5m">
                 <ref role="3cqZAo" node="2pZ8abj8Ebv" resolve="listener" />
               </node>
@@ -361,7 +361,7 @@
         <node concept="3clFbF" id="2QYnDfv9qat" role="3cqZAp">
           <node concept="2YIFZM" id="4T4$xOHQJuU" role="3clFbG">
             <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
-            <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable):void" resolve="dispose" />
+            <ref role="37wK5l" to="zn9m:#Disposer.dispose(com.intellij.openapi.Disposable):void" resolve="dispose" />
             <node concept="37vLTw" id="4T4$xOHQJuW" role="37wK5m">
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
@@ -389,7 +389,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8EcS" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.getDetailsComponent():javax.swing.JComponent" resolve="getDetailsComponent" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.getDetailsComponent():javax.swing.JComponent" resolve="getDetailsComponent" />
             </node>
           </node>
         </node>
@@ -421,7 +421,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8EcZ" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.setForegroundColor(java.awt.Color):void" resolve="setForegroundColor" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.setForegroundColor(java.awt.Color):void" resolve="setForegroundColor" />
               <node concept="37vLTw" id="2pZ8abj8EbY" role="37wK5m">
                 <ref role="3cqZAo" node="2pZ8abj8EbT" resolve="foregroundColor" />
               </node>
@@ -447,7 +447,7 @@
               <ref role="3cqZAo" node="2pZ8abj8Eap" resolve="myModelRootData" />
             </node>
             <node concept="liA8E" id="2pZ8abj8Ed6" role="2OqNvi">
-              <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.resetForegroundColor():void" resolve="resetForegroundColor" />
+              <ref role="37wK5l" to="v2y9:#FileBasedModelRootEntry.resetForegroundColor():void" resolve="resetForegroundColor" />
             </node>
           </node>
         </node>

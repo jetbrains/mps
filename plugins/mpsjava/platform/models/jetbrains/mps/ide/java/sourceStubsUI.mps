@@ -212,7 +212,7 @@
           <node concept="37vLTI" id="1iml1A5i1q3" role="3clFbG">
             <node concept="2OqwBi" id="1iml1A5i1q4" role="37vLTx">
               <node concept="liA8E" id="1iml1A5i1q5" role="2OqNvi">
-                <ref role="37wK5l" to="ends:~FileBasedModelRoot.getContentRoot():java.lang.String" resolve="getContentRoot" />
+                <ref role="37wK5l" to="ends:#FileBasedModelRoot.getContentRoot():java.lang.String" resolve="getContentRoot" />
               </node>
               <node concept="1eOMI4" id="1iml1A5i1q6" role="2Oq$k0">
                 <node concept="10QFUN" id="1iml1A5i1q7" role="1eOMHV">
@@ -264,7 +264,7 @@
         <node concept="3clFbF" id="1iml1A5i1qn" role="3cqZAp">
           <node concept="2OqwBi" id="1iml1A5i1qo" role="3clFbG">
             <node concept="liA8E" id="1iml1A5i1qp" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentRoot(java.lang.String):void" resolve="setContentRoot" />
+              <ref role="37wK5l" to="ends:#FileBasedModelRoot.setContentRoot(java.lang.String):void" resolve="setContentRoot" />
               <node concept="37vLTw" id="1iml1A5i1qq" role="37wK5m">
                 <ref role="3cqZAo" node="1iml1A5i1pD" resolve="myPath" />
               </node>
@@ -345,11 +345,11 @@
                             <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
                           </node>
                           <node concept="2YIFZM" id="5jLviTUF3Lc" role="33vP2m">
-                            <ref role="37wK5l" to="3fkn:~FileChooser.chooseFile(com.intellij.openapi.fileChooser.FileChooserDescriptor,java.awt.Component,com.intellij.openapi.project.Project,com.intellij.openapi.vfs.VirtualFile):com.intellij.openapi.vfs.VirtualFile" resolve="chooseFile" />
+                            <ref role="37wK5l" to="3fkn:#FileChooser.chooseFile(com.intellij.openapi.fileChooser.FileChooserDescriptor,java.awt.Component,com.intellij.openapi.project.Project,com.intellij.openapi.vfs.VirtualFile):com.intellij.openapi.vfs.VirtualFile" resolve="chooseFile" />
                             <ref role="1Pybhc" to="3fkn:~FileChooser" resolve="FileChooser" />
                             <node concept="2YIFZM" id="5jLviTUEKCv" role="37wK5m">
                               <ref role="1Pybhc" to="3fkn:~FileChooserDescriptorFactory" resolve="FileChooserDescriptorFactory" />
-                              <ref role="37wK5l" to="3fkn:~FileChooserDescriptorFactory.createSingleFileDescriptor():com.intellij.openapi.fileChooser.FileChooserDescriptor" resolve="createSingleFileDescriptor" />
+                              <ref role="37wK5l" to="3fkn:#FileChooserDescriptorFactory.createSingleFileDescriptor():com.intellij.openapi.fileChooser.FileChooserDescriptor" resolve="createSingleFileDescriptor" />
                             </node>
                             <node concept="37vLTw" id="5jLviTUF3Le" role="37wK5m">
                               <ref role="3cqZAo" node="5jLviTUELZA" resolve="button" />
@@ -366,16 +366,16 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="5jLviTUF3Lk" role="2OqNvi">
-                                <ref role="37wK5l" to="z1c4:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                                <ref role="37wK5l" to="z1c4:#MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
                               </node>
                             </node>
                             <node concept="2OqwBi" id="5jLviTUF3Ll" role="37wK5m">
                               <node concept="2YIFZM" id="5jLviTUF3Lm" role="2Oq$k0">
-                                <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance():com.intellij.openapi.vfs.LocalFileSystem" resolve="getInstance" />
+                                <ref role="37wK5l" to="jlff:#LocalFileSystem.getInstance():com.intellij.openapi.vfs.LocalFileSystem" resolve="getInstance" />
                                 <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
                               </node>
                               <node concept="liA8E" id="5jLviTUF3Ln" role="2OqNvi">
-                                <ref role="37wK5l" to="jlff:~VirtualFileSystem.findFileByPath(java.lang.String):com.intellij.openapi.vfs.VirtualFile" resolve="findFileByPath" />
+                                <ref role="37wK5l" to="jlff:#VirtualFileSystem.findFileByPath(java.lang.String):com.intellij.openapi.vfs.VirtualFile" resolve="findFileByPath" />
                                 <node concept="37vLTw" id="5jLviTUF3Lo" role="37wK5m">
                                   <ref role="3cqZAo" node="1iml1A5i1pD" resolve="myPath" />
                                 </node>
@@ -399,7 +399,7 @@
                         <node concept="37vLTI" id="5jLviTUEKD8" role="3clFbG">
                           <node concept="2OqwBi" id="5jLviTUEKD9" role="37vLTx">
                             <node concept="liA8E" id="5jLviTUEKDa" role="2OqNvi">
-                              <ref role="37wK5l" to="jlff:~VirtualFile.getPath():java.lang.String" resolve="getPath" />
+                              <ref role="37wK5l" to="jlff:#VirtualFile.getPath():java.lang.String" resolve="getPath" />
                             </node>
                             <node concept="37vLTw" id="5jLviTUEKDb" role="2Oq$k0">
                               <ref role="3cqZAo" node="5jLviTUF3Lb" resolve="dir" />
@@ -426,7 +426,7 @@
               <ref role="3cqZAo" node="5jLviTUELZA" resolve="button" />
             </node>
             <node concept="liA8E" id="5jLviTUEQ8I" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~AbstractButton.setAction(javax.swing.Action):void" resolve="setAction" />
+              <ref role="37wK5l" to="dxuu:#AbstractButton.setAction(javax.swing.Action):void" resolve="setAction" />
               <node concept="37vLTw" id="5jLviTUEW6M" role="37wK5m">
                 <ref role="3cqZAo" node="5jLviTUEKCg" resolve="action" />
               </node>

@@ -1763,7 +1763,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJ9Y" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Boolean.booleanValue():boolean" resolve="booleanValue" />
+              <ref role="37wK5l" to="wyt6:#Boolean.booleanValue():boolean" resolve="booleanValue" />
             </node>
           </node>
         </node>
@@ -1789,7 +1789,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJa9" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Boolean.booleanValue():boolean" resolve="booleanValue" />
+              <ref role="37wK5l" to="wyt6:#Boolean.booleanValue():boolean" resolve="booleanValue" />
             </node>
           </node>
         </node>
@@ -1815,7 +1815,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJak" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Byte.byteValue():byte" resolve="byteValue" />
+              <ref role="37wK5l" to="wyt6:#Byte.byteValue():byte" resolve="byteValue" />
             </node>
           </node>
         </node>
@@ -1841,7 +1841,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJav" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Byte.byteValue():byte" resolve="byteValue" />
+              <ref role="37wK5l" to="wyt6:#Byte.byteValue():byte" resolve="byteValue" />
             </node>
           </node>
         </node>
@@ -1867,7 +1867,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJaE" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Character.charValue():char" resolve="charValue" />
+              <ref role="37wK5l" to="wyt6:#Character.charValue():char" resolve="charValue" />
             </node>
           </node>
         </node>
@@ -1893,7 +1893,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJaP" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Character.charValue():char" resolve="charValue" />
+              <ref role="37wK5l" to="wyt6:#Character.charValue():char" resolve="charValue" />
             </node>
           </node>
         </node>
@@ -1919,7 +1919,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJb0" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Double.doubleValue():double" resolve="doubleValue" />
+              <ref role="37wK5l" to="wyt6:#Double.doubleValue():double" resolve="doubleValue" />
             </node>
           </node>
         </node>
@@ -1945,7 +1945,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJbb" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Double.doubleValue():double" resolve="doubleValue" />
+              <ref role="37wK5l" to="wyt6:#Double.doubleValue():double" resolve="doubleValue" />
             </node>
           </node>
         </node>
@@ -1971,7 +1971,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJbm" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Float.floatValue():float" resolve="floatValue" />
+              <ref role="37wK5l" to="wyt6:#Float.floatValue():float" resolve="floatValue" />
             </node>
           </node>
         </node>
@@ -1997,7 +1997,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJbx" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Float.floatValue():float" resolve="floatValue" />
+              <ref role="37wK5l" to="wyt6:#Float.floatValue():float" resolve="floatValue" />
             </node>
           </node>
         </node>
@@ -2023,7 +2023,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJbG" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+              <ref role="37wK5l" to="wyt6:#Integer.intValue():int" resolve="intValue" />
             </node>
           </node>
         </node>
@@ -2049,7 +2049,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJbR" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+              <ref role="37wK5l" to="wyt6:#Integer.intValue():int" resolve="intValue" />
             </node>
           </node>
         </node>
@@ -2075,7 +2075,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJc2" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Long.longValue():long" resolve="longValue" />
+              <ref role="37wK5l" to="wyt6:#Long.longValue():long" resolve="longValue" />
             </node>
           </node>
         </node>
@@ -2101,7 +2101,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJcd" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Long.longValue():long" resolve="longValue" />
+              <ref role="37wK5l" to="wyt6:#Long.longValue():long" resolve="longValue" />
             </node>
           </node>
         </node>
@@ -2127,7 +2127,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJco" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Short.shortValue():short" resolve="shortValue" />
+              <ref role="37wK5l" to="wyt6:#Short.shortValue():short" resolve="shortValue" />
             </node>
           </node>
         </node>
@@ -2153,7 +2153,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4gM2XRkNJcz" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Short.shortValue():short" resolve="shortValue" />
+              <ref role="37wK5l" to="wyt6:#Short.shortValue():short" resolve="shortValue" />
             </node>
           </node>
         </node>

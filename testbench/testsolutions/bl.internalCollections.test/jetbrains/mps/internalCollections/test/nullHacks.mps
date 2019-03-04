@@ -1738,7 +1738,7 @@
                     <node concept="17QB3L" id="i3Rir4n" role="_ZDj9" />
                   </node>
                   <node concept="2YIFZM" id="i3Rir4o" role="33vP2m">
-                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                    <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
                     <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                     <node concept="Xl_RD" id="i3Rir4p" role="37wK5m">
                       <property role="Xl_RC" value="foo" />
@@ -1846,7 +1846,7 @@
                     <ref role="37wK5l" to="tp82:hxrGHlF" resolve="assertIterableEquals" />
                     <node concept="2YIFZM" id="i465tvp" role="37wK5m">
                       <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-                      <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                      <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
                       <node concept="Xl_RD" id="i465tvq" role="37wK5m">
                         <property role="Xl_RC" value="foo" />
                       </node>
@@ -1875,7 +1875,7 @@
                     </node>
                     <node concept="2YIFZM" id="1ngiNkT$1yw" role="33vP2m">
                       <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-                      <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                      <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
                       <node concept="Xl_RD" id="1ngiNkT$1yx" role="37wK5m">
                         <property role="Xl_RC" value="foo" />
                       </node>
@@ -1982,7 +1982,7 @@
                       <ref role="37wK5l" to="tp82:hxrGHlF" resolve="assertIterableEquals" />
                       <node concept="2YIFZM" id="1ngiNkT$1zg" role="37wK5m">
                         <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-                        <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                        <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
                         <node concept="Xl_RD" id="1ngiNkT$1zh" role="37wK5m">
                           <property role="Xl_RC" value="foo" />
                         </node>

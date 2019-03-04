@@ -881,7 +881,7 @@
                             <ref role="3cqZAo" node="5qocf8PzXrO" resolve="it" />
                           </node>
                           <node concept="liA8E" id="5qocf8PzXrN" role="2OqNvi">
-                            <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                            <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
                           </node>
                         </node>
                       </node>

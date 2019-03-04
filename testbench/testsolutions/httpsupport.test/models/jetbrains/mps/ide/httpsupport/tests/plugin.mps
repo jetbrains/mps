@@ -242,7 +242,7 @@
               <ref role="3_PKRw" node="toFl8p7syr" resolve="param" />
             </node>
             <node concept="liA8E" id="toFl8p7twm" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
               <node concept="Xl_RD" id="toFl8p7uhZ" role="37wK5m">
                 <property role="Xl_RC" value="param" />
               </node>
@@ -412,7 +412,7 @@
               <ref role="3cqZAo" node="6WBmrsjDSrB" resolve="PINGS" />
             </node>
             <node concept="liA8E" id="6WBmrsjDSI5" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicInteger.set(int):void" resolve="set" />
+              <ref role="37wK5l" to="i5cy:#AtomicInteger.set(int):void" resolve="set" />
               <node concept="3cmrfG" id="6WBmrsjDSJh" role="37wK5m">
                 <property role="3cmrfH" value="0" />
               </node>
@@ -436,7 +436,7 @@
               <ref role="3cqZAo" node="6WBmrsjDSrB" resolve="PINGS" />
             </node>
             <node concept="liA8E" id="6WBmrsjDSUR" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicInteger.incrementAndGet():int" resolve="incrementAndGet" />
+              <ref role="37wK5l" to="i5cy:#AtomicInteger.incrementAndGet():int" resolve="incrementAndGet" />
             </node>
           </node>
         </node>
@@ -457,7 +457,7 @@
               <ref role="3cqZAo" node="6WBmrsjDSrB" resolve="PINGS" />
             </node>
             <node concept="liA8E" id="6WBmrsjDTkQ" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicInteger.get():int" resolve="get" />
+              <ref role="37wK5l" to="i5cy:#AtomicInteger.get():int" resolve="get" />
             </node>
           </node>
         </node>

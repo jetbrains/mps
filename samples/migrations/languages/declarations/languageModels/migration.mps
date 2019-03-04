@@ -155,7 +155,7 @@
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049750" name="jetbrains.mps.lang.core.structure.PropertyAttribute" flags="ng" index="A9Btg">
-        <property id="1757699476691236117" name="propertyName" index="2qtEX9" />
+        <property id="1757699476691236117" name="name_DebugInfo" index="2qtEX9" />
         <property id="1341860900487648621" name="propertyId" index="P4ACc" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -223,7 +223,7 @@
                       <ref role="3cqZAo" node="14sMr$jSWp3" resolve="m" />
                     </node>
                     <node concept="liA8E" id="1Ij79tqteYz" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                      <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
                     </node>
                   </node>
                   <node concept="A3Dl8" id="1Ij79tqtkmV" role="10QFUM">
@@ -339,7 +339,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="5ggSOO4E70o" role="2OqNvi">
-                        <ref role="37wK5l" to="w1kc:~SNode.setId(org.jetbrains.mps.openapi.model.SNodeId):void" resolve="setId" />
+                        <ref role="37wK5l" to="w1kc:#SNode.setId(org.jetbrains.mps.openapi.model.SNodeId):void" resolve="setId" />
                         <node concept="2OqwBi" id="5ggSOO4E70p" role="37wK5m">
                           <node concept="1eOMI4" id="5ggSOO4E70q" role="2Oq$k0">
                             <node concept="10QFUN" id="5ggSOO4E70r" role="1eOMHV">
@@ -354,7 +354,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="5ggSOO4E70v" role="2OqNvi">
-                            <ref role="37wK5l" to="w1kc:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                            <ref role="37wK5l" to="w1kc:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
                           </node>
                         </node>
                       </node>

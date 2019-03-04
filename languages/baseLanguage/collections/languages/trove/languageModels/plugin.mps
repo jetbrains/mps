@@ -161,7 +161,7 @@
                   <property role="TrG5h" value="mdl" />
                   <node concept="2OqwBi" id="5kWneGu3MyG" role="33vP2m">
                     <node concept="liA8E" id="5kWneGu3MyF" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SModel" resolve="resolve" />
+                      <ref role="37wK5l" to="mhbf:#SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SModel" resolve="resolve" />
                       <node concept="37vLTw" id="6j36NaoDLTT" role="37wK5m">
                         <ref role="3cqZAo" node="6j36NaoDLKE" resolve="repo" />
                       </node>

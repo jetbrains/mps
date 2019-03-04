@@ -290,7 +290,7 @@
               <ref role="359W_F" to="tpc2:hJF10O6" resolve="styleItem" />
             </node>
             <node concept="liA8E" id="itlittRh8a" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
               <node concept="2DA6wF" id="itlittRhg3" role="37wK5m" />
             </node>
           </node>

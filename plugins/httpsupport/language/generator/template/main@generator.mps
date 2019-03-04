@@ -781,10 +781,10 @@
                       </node>
                       <node concept="2YIFZM" id="5FAyHK_CV$I" role="37wK5m">
                         <ref role="1Pybhc" to="iil0:~Unpooled" resolve="Unpooled" />
-                        <ref role="37wK5l" to="iil0:~Unpooled.copiedBuffer(java.lang.CharSequence,java.nio.charset.Charset):io.netty.buffer.ByteBuf" resolve="copiedBuffer" />
+                        <ref role="37wK5l" to="iil0:#Unpooled.copiedBuffer(java.lang.CharSequence,java.nio.charset.Charset):io.netty.buffer.ByteBuf" resolve="copiedBuffer" />
                         <node concept="2YIFZM" id="5FAyHK_G0h9" role="37wK5m">
                           <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                          <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
+                          <ref role="37wK5l" to="wyt6:#String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
                           <node concept="37vLTw" id="6dOBq74Ruec" role="37wK5m">
                             <ref role="3cqZAo" node="6dOBq74RudT" resolve="object" />
                             <node concept="29HgVG" id="6dOBq74Rued" role="lGtFl">
@@ -905,7 +905,7 @@
                         </node>
                         <node concept="2YIFZM" id="5FAyHK_CBkP" role="37wK5m">
                           <ref role="1Pybhc" to="iil0:~Unpooled" resolve="Unpooled" />
-                          <ref role="37wK5l" to="iil0:~Unpooled.copiedBuffer(java.lang.CharSequence,java.nio.charset.Charset):io.netty.buffer.ByteBuf" resolve="copiedBuffer" />
+                          <ref role="37wK5l" to="iil0:#Unpooled.copiedBuffer(java.lang.CharSequence,java.nio.charset.Charset):io.netty.buffer.ByteBuf" resolve="copiedBuffer" />
                           <node concept="37vLTw" id="21vgRr5BBi0" role="37wK5m">
                             <ref role="3cqZAo" node="21vgRr5BBbn" resolve="str" />
                             <node concept="29HgVG" id="21vgRr5BCDO" role="lGtFl">
@@ -1028,7 +1028,7 @@
                         </node>
                         <node concept="2YIFZM" id="5FAyHK_CI$7" role="37wK5m">
                           <ref role="1Pybhc" to="iil0:~Unpooled" resolve="Unpooled" />
-                          <ref role="37wK5l" to="iil0:~Unpooled.copiedBuffer(byte[]...):io.netty.buffer.ByteBuf" resolve="copiedBuffer" />
+                          <ref role="37wK5l" to="iil0:#Unpooled.copiedBuffer(byte[]...):io.netty.buffer.ByteBuf" resolve="copiedBuffer" />
                           <node concept="37vLTw" id="5FAyHK_CJ$j" role="37wK5m">
                             <ref role="3cqZAo" node="6dOBq74Rq8W" resolve="bytes" />
                             <node concept="29HgVG" id="5FAyHK_ErsB" role="lGtFl">
@@ -1150,7 +1150,7 @@
                             <ref role="3cqZAo" node="5FAyHK_CPWv" resolve="buffer" />
                           </node>
                           <node concept="liA8E" id="5FAyHK_CVkv" role="2OqNvi">
-                            <ref role="37wK5l" to="iil0:~ByteBuf.duplicate():io.netty.buffer.ByteBuf" resolve="duplicate" />
+                            <ref role="37wK5l" to="iil0:#ByteBuf.duplicate():io.netty.buffer.ByteBuf" resolve="duplicate" />
                           </node>
                         </node>
                         <node concept="raruj" id="5YhakczHIm9" role="lGtFl" />
@@ -1760,7 +1760,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="5dkEk59WT0e" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println():void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println():void" resolve="println" />
             </node>
           </node>
           <node concept="2b32R4" id="7rr3ESJDl2Y" role="lGtFl">
@@ -1819,7 +1819,7 @@
               <property role="TrG5h" value="value" />
               <node concept="10Oyi0" id="40BYgt018Ft" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt00YZT" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String):int" resolve="parseInt" />
+                <ref role="37wK5l" to="wyt6:#Integer.parseInt(java.lang.String):int" resolve="parseInt" />
                 <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
                 <node concept="37vLTw" id="40BYgt0170C" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt016$7" resolve="s" />
@@ -1862,7 +1862,7 @@
               <node concept="10P_77" id="40BYgt018Dm" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt017ae" role="33vP2m">
                 <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
-                <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String):boolean" resolve="parseBoolean" />
+                <ref role="37wK5l" to="wyt6:#Boolean.parseBoolean(java.lang.String):boolean" resolve="parseBoolean" />
                 <node concept="37vLTw" id="40BYgt06Vkn" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt0176Y" resolve="s" />
                   <node concept="29HgVG" id="40BYgt06Vko" role="lGtFl">
@@ -1903,7 +1903,7 @@
               <property role="TrG5h" value="value" />
               <node concept="10OMs4" id="40BYgt018wF" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt017_x" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Float.parseFloat(java.lang.String):float" resolve="parseFloat" />
+                <ref role="37wK5l" to="wyt6:#Float.parseFloat(java.lang.String):float" resolve="parseFloat" />
                 <ref role="1Pybhc" to="wyt6:~Float" resolve="Float" />
                 <node concept="37vLTw" id="40BYgt06Vow" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt017jt" resolve="s" />
@@ -1945,7 +1945,7 @@
               <property role="TrG5h" value="value" />
               <node concept="10P55v" id="40BYgt018my" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt017Bk" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Double.parseDouble(java.lang.String):double" resolve="parseDouble" />
+                <ref role="37wK5l" to="wyt6:#Double.parseDouble(java.lang.String):double" resolve="parseDouble" />
                 <ref role="1Pybhc" to="wyt6:~Double" resolve="Double" />
                 <node concept="37vLTw" id="40BYgt06VtU" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt017lY" resolve="s" />
@@ -1988,7 +1988,7 @@
               <node concept="3cpWsb" id="40BYgt018hl" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt017D7" role="33vP2m">
                 <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
-                <ref role="37wK5l" to="wyt6:~Long.parseLong(java.lang.String):long" resolve="parseLong" />
+                <ref role="37wK5l" to="wyt6:#Long.parseLong(java.lang.String):long" resolve="parseLong" />
                 <node concept="37vLTw" id="40BYgt06Vzk" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt017oO" resolve="s" />
                   <node concept="29HgVG" id="40BYgt06Vzl" role="lGtFl">
@@ -2356,11 +2356,11 @@
               </node>
               <node concept="2OqwBi" id="40BYgt01eNY" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt01eJG" role="2Oq$k0">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                 </node>
                 <node concept="liA8E" id="40BYgt01eUr" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.createNodeReference(java.lang.String):org.jetbrains.mps.openapi.model.SNodeReference" resolve="createNodeReference" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.createNodeReference(java.lang.String):org.jetbrains.mps.openapi.model.SNodeReference" resolve="createNodeReference" />
                   <node concept="37vLTw" id="40BYgt06X64" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt01eEE" resolve="s" />
                     <node concept="29HgVG" id="40BYgt06X65" role="lGtFl">
@@ -2419,11 +2419,11 @@
               </node>
               <node concept="2OqwBi" id="40BYgt01fcS" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt01fcT" role="2Oq$k0">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                 </node>
                 <node concept="liA8E" id="40BYgt01fcU" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.createModelReference(java.lang.String):org.jetbrains.mps.openapi.model.SModelReference" resolve="createModelReference" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.createModelReference(java.lang.String):org.jetbrains.mps.openapi.model.SModelReference" resolve="createModelReference" />
                   <node concept="37vLTw" id="40BYgt06XaE" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt01fcN" resolve="s" />
                     <node concept="29HgVG" id="40BYgt06XaF" role="lGtFl">
@@ -2482,11 +2482,11 @@
               </node>
               <node concept="2OqwBi" id="40BYgt01fCA" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt01fCB" role="2Oq$k0">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                 </node>
                 <node concept="liA8E" id="40BYgt01fCC" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleReference(java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference" resolve="createModuleReference" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.createModuleReference(java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference" resolve="createModuleReference" />
                   <node concept="37vLTw" id="40BYgt06Xgg" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt01fCx" resolve="s" />
                     <node concept="29HgVG" id="40BYgt06Xgh" role="lGtFl">
@@ -2546,10 +2546,10 @@
               <node concept="2OqwBi" id="40BYgt01go7" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt01go8" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt01go9" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.createNodeId(java.lang.String):org.jetbrains.mps.openapi.model.SNodeId" resolve="createNodeId" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.createNodeId(java.lang.String):org.jetbrains.mps.openapi.model.SNodeId" resolve="createNodeId" />
                   <node concept="37vLTw" id="40BYgt06XmT" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt01go2" resolve="s" />
                     <node concept="29HgVG" id="40BYgt06XmU" role="lGtFl">
@@ -2609,10 +2609,10 @@
               <node concept="2OqwBi" id="40BYgt01gos" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt01got" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt01gou" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.createModelId(java.lang.String):org.jetbrains.mps.openapi.model.SModelId" resolve="createModelId" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.createModelId(java.lang.String):org.jetbrains.mps.openapi.model.SModelId" resolve="createModelId" />
                   <node concept="37vLTw" id="40BYgt06XrM" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt01gon" resolve="s" />
                     <node concept="29HgVG" id="40BYgt06XrN" role="lGtFl">
@@ -2671,11 +2671,11 @@
               </node>
               <node concept="2OqwBi" id="40BYgt01goL" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt01goM" role="2Oq$k0">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                 </node>
                 <node concept="liA8E" id="40BYgt01goN" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleId(java.lang.String):org.jetbrains.mps.openapi.module.SModuleId" resolve="createModuleId" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.createModuleId(java.lang.String):org.jetbrains.mps.openapi.module.SModuleId" resolve="createModuleId" />
                   <node concept="37vLTw" id="40BYgt06XwF" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt01goG" resolve="s" />
                     <node concept="29HgVG" id="40BYgt06XwG" role="lGtFl">
@@ -3032,7 +3032,7 @@
               <property role="TrG5h" value="str" />
               <node concept="17QB3L" id="40BYgt05JPx" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt05LJZ" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Integer.toString(int):java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:#Integer.toString(int):java.lang.String" resolve="toString" />
                 <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
                 <node concept="37vLTw" id="40BYgt05LK0" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt05Jgd" resolve="value" />
@@ -3074,7 +3074,7 @@
               <property role="TrG5h" value="str" />
               <node concept="17QB3L" id="40BYgt05LSF" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt05MuT" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean):java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:#Boolean.toString(boolean):java.lang.String" resolve="toString" />
                 <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
                 <node concept="37vLTw" id="40BYgt0dIJ7" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt05LSB" resolve="value" />
@@ -3116,7 +3116,7 @@
               <property role="TrG5h" value="str" />
               <node concept="17QB3L" id="40BYgt05LXg" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt05MWk" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Float.toString(float):java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:#Float.toString(float):java.lang.String" resolve="toString" />
                 <ref role="1Pybhc" to="wyt6:~Float" resolve="Float" />
                 <node concept="37vLTw" id="40BYgt0dIS4" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt05LXc" resolve="value" />
@@ -3158,7 +3158,7 @@
               <property role="TrG5h" value="str" />
               <node concept="17QB3L" id="40BYgt05M1R" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt05NmR" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Double.toString(double):java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:#Double.toString(double):java.lang.String" resolve="toString" />
                 <ref role="1Pybhc" to="wyt6:~Double" resolve="Double" />
                 <node concept="37vLTw" id="40BYgt0dJ0N" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt05M1N" resolve="value" />
@@ -3200,7 +3200,7 @@
               <property role="TrG5h" value="str" />
               <node concept="17QB3L" id="40BYgt05M6u" role="1tU5fm" />
               <node concept="2YIFZM" id="40BYgt05Nvy" role="33vP2m">
-                <ref role="37wK5l" to="wyt6:~Long.toString(long):java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:#Long.toString(long):java.lang.String" resolve="toString" />
                 <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
                 <node concept="37vLTw" id="40BYgt0dJ9y" role="37wK5m">
                   <ref role="3cqZAo" node="40BYgt05M6q" resolve="value" />
@@ -3283,7 +3283,7 @@
               <node concept="17QB3L" id="40BYgt05O7H" role="1tU5fm" />
               <node concept="2OqwBi" id="40BYgt060Z6" role="33vP2m">
                 <node concept="liA8E" id="40BYgt062GB" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Integer.toString():java.lang.String" resolve="toString" />
+                  <ref role="37wK5l" to="wyt6:#Integer.toString():java.lang.String" resolve="toString" />
                 </node>
                 <node concept="raruj" id="40BYgt062L4" role="lGtFl" />
                 <node concept="37vLTw" id="40BYgt0dJih" role="2Oq$k0">
@@ -3342,7 +3342,7 @@
               <node concept="17QB3L" id="40BYgt05OvR" role="1tU5fm" />
               <node concept="2OqwBi" id="40BYgt05YRZ" role="33vP2m">
                 <node concept="liA8E" id="40BYgt0602S" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Float.toString():java.lang.String" resolve="toString" />
+                  <ref role="37wK5l" to="wyt6:#Float.toString():java.lang.String" resolve="toString" />
                 </node>
                 <node concept="raruj" id="40BYgt0607l" role="lGtFl" />
                 <node concept="37vLTw" id="40BYgt0dJr4" role="2Oq$k0">
@@ -3401,7 +3401,7 @@
               <node concept="17QB3L" id="40BYgt05PuK" role="1tU5fm" />
               <node concept="2OqwBi" id="40BYgt05WKt" role="33vP2m">
                 <node concept="liA8E" id="40BYgt05XJQ" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Double.toString():java.lang.String" resolve="toString" />
+                  <ref role="37wK5l" to="wyt6:#Double.toString():java.lang.String" resolve="toString" />
                 </node>
                 <node concept="raruj" id="40BYgt05XOj" role="lGtFl" />
                 <node concept="37vLTw" id="40BYgt0dJzR" role="2Oq$k0">
@@ -3460,7 +3460,7 @@
               <node concept="17QB3L" id="40BYgt05RcQ" role="1tU5fm" />
               <node concept="2OqwBi" id="40BYgt05UwH" role="33vP2m">
                 <node concept="liA8E" id="40BYgt05W2I" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Long.toString():java.lang.String" resolve="toString" />
+                  <ref role="37wK5l" to="wyt6:#Long.toString():java.lang.String" resolve="toString" />
                 </node>
                 <node concept="raruj" id="40BYgt05WfN" role="lGtFl" />
                 <node concept="37vLTw" id="40BYgt0dJGE" role="2Oq$k0">
@@ -3574,10 +3574,10 @@
               <node concept="2OqwBi" id="40BYgt05Jj1" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt05Jj2" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt05Jj3" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
                   <node concept="37vLTw" id="40BYgt0dKfY" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt063xy" resolve="value" />
                     <node concept="29HgVG" id="40BYgt0dKfZ" role="lGtFl">
@@ -3637,10 +3637,10 @@
               <node concept="2OqwBi" id="40BYgt063My" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt063Mz" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt063M$" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
                   <node concept="37vLTw" id="40BYgt0dKpr" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt063Mt" resolve="value" />
                     <node concept="29HgVG" id="40BYgt0dKps" role="lGtFl">
@@ -3700,10 +3700,10 @@
               <node concept="2OqwBi" id="40BYgt063RK" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt063RL" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt063RM" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
                   <node concept="37vLTw" id="40BYgt0dKyS" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt063RF" resolve="value" />
                     <node concept="29HgVG" id="40BYgt0dKyT" role="lGtFl">
@@ -3763,10 +3763,10 @@
               <node concept="2OqwBi" id="40BYgt063X0" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt063X1" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt063X2" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
                   <node concept="37vLTw" id="40BYgt0dKGl" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt063WV" resolve="value" />
                     <node concept="29HgVG" id="40BYgt0dKGm" role="lGtFl">
@@ -3826,10 +3826,10 @@
               <node concept="2OqwBi" id="40BYgt0642i" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt0642j" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt0642k" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
                   <node concept="37vLTw" id="40BYgt0dKPM" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt0642d" resolve="value" />
                     <node concept="29HgVG" id="40BYgt0dKPN" role="lGtFl">
@@ -3889,10 +3889,10 @@
               <node concept="2OqwBi" id="40BYgt0647A" role="33vP2m">
                 <node concept="2YIFZM" id="40BYgt0647B" role="2Oq$k0">
                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="40BYgt0647C" role="2OqNvi">
-                  <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
+                  <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference):java.lang.String" resolve="asString" />
                   <node concept="37vLTw" id="40BYgt0dKZf" role="37wK5m">
                     <ref role="3cqZAo" node="40BYgt0647x" resolve="value" />
                     <node concept="29HgVG" id="40BYgt0dKZg" role="lGtFl">
@@ -3951,7 +3951,7 @@
               <node concept="17QB3L" id="40BYgt064cV" role="1tU5fm" />
               <node concept="2OqwBi" id="40BYgt066Am" role="33vP2m">
                 <node concept="liA8E" id="40BYgt0670t" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.getName():java.lang.String" resolve="getName" />
+                  <ref role="37wK5l" to="z1c3:#Project.getName():java.lang.String" resolve="getName" />
                 </node>
                 <node concept="raruj" id="40BYgt0674U" role="lGtFl" />
                 <node concept="37vLTw" id="40BYgt0dL8G" role="2Oq$k0">
@@ -4059,7 +4059,7 @@
                                       <ref role="3cqZAo" node="5fiBL1fHq1Q" resolve="sb" />
                                     </node>
                                     <node concept="liA8E" id="5fiBL1fHyEl" role="2OqNvi">
-                                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                                      <ref role="37wK5l" to="wyt6:#StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
                                       <node concept="Xl_RD" id="5fiBL1fHz76" role="37wK5m">
                                         <property role="Xl_RC" value="/" />
                                       </node>
@@ -4072,7 +4072,7 @@
                                       <ref role="3cqZAo" node="5fiBL1fHq1Q" resolve="sb" />
                                     </node>
                                     <node concept="liA8E" id="5fiBL1fH_Uf" role="2OqNvi">
-                                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                                      <ref role="37wK5l" to="wyt6:#StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
                                       <node concept="2OqwBi" id="5fiBL1fHC0j" role="37wK5m">
                                         <node concept="2GrUjf" id="5fiBL1fHBdK" role="2Oq$k0">
                                           <ref role="2Gs0qQ" node="5fiBL1fHsZX" resolve="segment" />
@@ -4092,7 +4092,7 @@
                                   <ref role="3cqZAo" node="5fiBL1fHq1Q" resolve="sb" />
                                 </node>
                                 <node concept="liA8E" id="5fiBL1fHEBU" role="2OqNvi">
-                                  <ref role="37wK5l" to="wyt6:~StringBuilder.toString():java.lang.String" resolve="toString" />
+                                  <ref role="37wK5l" to="wyt6:#StringBuilder.toString():java.lang.String" resolve="toString" />
                                 </node>
                               </node>
                             </node>
@@ -4135,7 +4135,7 @@
                 <ref role="3cqZAo" node="40BYgt09xeB" resolve="encoder" />
               </node>
               <node concept="liA8E" id="40BYgt0bXOZ" role="2OqNvi">
-                <ref role="37wK5l" to="9xw8:~QueryStringEncoder.addParam(java.lang.String,java.lang.String):void" resolve="addParam" />
+                <ref role="37wK5l" to="9xw8:#QueryStringEncoder.addParam(java.lang.String,java.lang.String):void" resolve="addParam" />
                 <node concept="Xl_RD" id="40BYgt0bY2K" role="37wK5m">
                   <property role="Xl_RC" value="" />
                   <node concept="17Uvod" id="40BYgt0bZFQ" role="lGtFl">
@@ -4254,7 +4254,7 @@
                 <ref role="3cqZAo" node="40BYgt09xeB" resolve="encoder" />
               </node>
               <node concept="liA8E" id="40BYgt0btuF" role="2OqNvi">
-                <ref role="37wK5l" to="9xw8:~QueryStringEncoder.toString():java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="9xw8:#QueryStringEncoder.toString():java.lang.String" resolve="toString" />
               </node>
             </node>
           </node>
@@ -4748,7 +4748,7 @@
                 <node concept="3clFbF" id="6WBmrsjBXNX" role="3cqZAp">
                   <node concept="2YIFZM" id="6WBmrsjBZuB" role="3clFbG">
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                    <ref role="37wK5l" to="wyt6:~String.valueOf(int):java.lang.String" resolve="valueOf" />
+                    <ref role="37wK5l" to="wyt6:#String.valueOf(int):java.lang.String" resolve="valueOf" />
                     <node concept="2OqwBi" id="6WBmrsjBY45" role="37wK5m">
                       <node concept="30H73N" id="6WBmrsjBXNW" role="2Oq$k0" />
                       <node concept="2qgKlT" id="6WBmrsjBYn8" role="2OqNvi">
@@ -4769,11 +4769,11 @@
       <node concept="gft3U" id="6WBmrsjBZWN" role="1lVwrX">
         <node concept="2OqwBi" id="6WBmrsjC0a_" role="gfFT$">
           <node concept="2YIFZM" id="6WBmrsjBZYr" role="2Oq$k0">
-            <ref role="37wK5l" to="e5vs:~BuiltInServerManager.getInstance():org.jetbrains.ide.BuiltInServerManager" resolve="getInstance" />
+            <ref role="37wK5l" to="e5vs:#BuiltInServerManager.getInstance():org.jetbrains.ide.BuiltInServerManager" resolve="getInstance" />
             <ref role="1Pybhc" to="e5vs:~BuiltInServerManager" resolve="BuiltInServerManager" />
           </node>
           <node concept="liA8E" id="6WBmrsjC11r" role="2OqNvi">
-            <ref role="37wK5l" to="e5vs:~BuiltInServerManager.getPort():int" resolve="getPort" />
+            <ref role="37wK5l" to="e5vs:#BuiltInServerManager.getPort():int" resolve="getPort" />
           </node>
         </node>
       </node>

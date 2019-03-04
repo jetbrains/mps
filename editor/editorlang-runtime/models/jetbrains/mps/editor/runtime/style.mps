@@ -396,7 +396,7 @@
               <ref role="3cqZAo" node="1OmL7qfPfMA" resolve="toStyle" />
             </node>
             <node concept="liA8E" id="1OmL7qfPgR3" role="2OqNvi">
-              <ref role="37wK5l" to="hox0:~Style.removeAll(jetbrains.mps.openapi.editor.style.Style):void" resolve="removeAll" />
+              <ref role="37wK5l" to="hox0:#Style.removeAll(jetbrains.mps.openapi.editor.style.Style):void" resolve="removeAll" />
               <node concept="37vLTw" id="1OmL7qfPgSg" role="37wK5m">
                 <ref role="3cqZAo" node="1OmL7qfPgl3" resolve="toRemove" />
               </node>
@@ -529,14 +529,14 @@
             </node>
             <node concept="2OqwBi" id="3w77Jl_ssXo" role="33vP2m">
               <node concept="liA8E" id="3w77Jl_ssXp" role="2OqNvi">
-                <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String):jetbrains.mps.openapi.editor.style.Style" resolve="getStyle" />
+                <ref role="37wK5l" to="hox0:#StyleRegistry.getStyle(java.lang.String):jetbrains.mps.openapi.editor.style.Style" resolve="getStyle" />
                 <node concept="37vLTw" id="3w77Jl_ssXq" role="37wK5m">
                   <ref role="3cqZAo" node="3w77Jl_smQL" resolve="myKey" />
                 </node>
               </node>
               <node concept="2YIFZM" id="3w77Jl_ssXr" role="2Oq$k0">
                 <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
-                <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance():jetbrains.mps.openapi.editor.style.StyleRegistry" resolve="getInstance" />
+                <ref role="37wK5l" to="hox0:#StyleRegistry.getInstance():jetbrains.mps.openapi.editor.style.StyleRegistry" resolve="getInstance" />
               </node>
             </node>
           </node>
@@ -558,7 +558,7 @@
               <ref role="3cqZAo" node="3w77Jl_spyG" resolve="toStyle" />
             </node>
             <node concept="liA8E" id="1OmL7qfi1G0" role="2OqNvi">
-              <ref role="37wK5l" to="hox0:~Style.putAll(jetbrains.mps.openapi.editor.style.Style,int):void" resolve="putAll" />
+              <ref role="37wK5l" to="hox0:#Style.putAll(jetbrains.mps.openapi.editor.style.Style,int):void" resolve="putAll" />
               <node concept="37vLTw" id="1OmL7qfyqzs" role="37wK5m">
                 <ref role="3cqZAo" node="1OmL7qfyebP" resolve="style" />
               </node>
@@ -590,13 +590,13 @@
             </node>
             <node concept="2OqwBi" id="7Vnd$HXp2o$" role="33vP2m">
               <node concept="liA8E" id="7Vnd$HXp2o_" role="2OqNvi">
-                <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String):jetbrains.mps.openapi.editor.style.Style" resolve="getStyle" />
+                <ref role="37wK5l" to="hox0:#StyleRegistry.getStyle(java.lang.String):jetbrains.mps.openapi.editor.style.Style" resolve="getStyle" />
                 <node concept="37vLTw" id="7Vnd$HXp2oA" role="37wK5m">
                   <ref role="3cqZAo" node="3w77Jl_smQL" resolve="myKey" />
                 </node>
               </node>
               <node concept="2YIFZM" id="7Vnd$HXp2oB" role="2Oq$k0">
-                <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance():jetbrains.mps.openapi.editor.style.StyleRegistry" resolve="getInstance" />
+                <ref role="37wK5l" to="hox0:#StyleRegistry.getInstance():jetbrains.mps.openapi.editor.style.StyleRegistry" resolve="getInstance" />
                 <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
               </node>
             </node>
@@ -634,7 +634,7 @@
                   <ref role="3cqZAo" node="7Vnd$HXp9hW" resolve="toRemove" />
                 </node>
                 <node concept="liA8E" id="7Vnd$HXp9i3" role="2OqNvi">
-                  <ref role="37wK5l" to="hox0:~Style.putAll(jetbrains.mps.openapi.editor.style.Style,int):void" resolve="putAll" />
+                  <ref role="37wK5l" to="hox0:#Style.putAll(jetbrains.mps.openapi.editor.style.Style,int):void" resolve="putAll" />
                   <node concept="37vLTw" id="7Vnd$HXp9F$" role="37wK5m">
                     <ref role="3cqZAo" node="7Vnd$HXp2oy" resolve="style" />
                   </node>
@@ -670,7 +670,7 @@
               <ref role="3cqZAo" node="7Vnd$HXp2oN" resolve="toStyle" />
             </node>
             <node concept="liA8E" id="7Vnd$HXpduD" role="2OqNvi">
-              <ref role="37wK5l" to="hox0:~Style.removeAll(jetbrains.mps.openapi.editor.style.Style):void" resolve="removeAll" />
+              <ref role="37wK5l" to="hox0:#Style.removeAll(jetbrains.mps.openapi.editor.style.Style):void" resolve="removeAll" />
               <node concept="37vLTw" id="7Vnd$HXpdvI" role="37wK5m">
                 <ref role="3cqZAo" node="7Vnd$HXp2oy" resolve="style" />
               </node>

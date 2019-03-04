@@ -166,7 +166,7 @@
         </node>
         <node concept="3clFbF" id="7LGEsuh7UJd" role="3cqZAp">
           <node concept="2YIFZM" id="7LGEsuh7UMy" role="3clFbG">
-            <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="rjhg:#Assert.assertEquals(java.lang.Object,java.lang.Object):void" resolve="assertEquals" />
             <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
             <node concept="Xl_RD" id="7LGEsuh7UQ6" role="37wK5m">
               <property role="Xl_RC" value="unlockedPanel" />

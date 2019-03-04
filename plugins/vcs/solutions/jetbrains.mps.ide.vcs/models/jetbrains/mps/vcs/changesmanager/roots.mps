@@ -319,7 +319,7 @@
                   <node concept="1uHKPH" id="4C2otrAbWfN" role="2OqNvi" />
                 </node>
                 <node concept="liA8E" id="4C2otrAbWfZ" role="2OqNvi">
-                  <ref role="37wK5l" to="jlcu:~FileStatus.getColor():java.awt.Color" resolve="getColor" />
+                  <ref role="37wK5l" to="jlcu:#FileStatus.getColor():java.awt.Color" resolve="getColor" />
                 </node>
               </node>
             </node>
@@ -361,7 +361,7 @@
                     <ref role="3cqZAo" to="jlcu:~FileStatus.MODIFIED" resolve="MODIFIED" />
                   </node>
                   <node concept="liA8E" id="4C2otrAbWg9" role="2OqNvi">
-                    <ref role="37wK5l" to="jlcu:~FileStatus.getColor():java.awt.Color" resolve="getColor" />
+                    <ref role="37wK5l" to="jlcu:#FileStatus.getColor():java.awt.Color" resolve="getColor" />
                   </node>
                 </node>
               </node>
@@ -408,7 +408,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4C2otrAbWec" role="2OqNvi">
-              <ref role="37wK5l" to="jlcu:~FileStatus.getColor():java.awt.Color" resolve="getColor" />
+              <ref role="37wK5l" to="jlcu:#FileStatus.getColor():java.awt.Color" resolve="getColor" />
             </node>
           </node>
         </node>
@@ -515,7 +515,7 @@
                         <ref role="2Gs0qQ" node="2n7wcdLayHI" resolve="d" />
                       </node>
                       <node concept="liA8E" id="2n7wcdLayIb" role="2OqNvi">
-                        <ref role="37wK5l" to="b3f7:~RelationDescriptor.getBaseNode(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNode" resolve="getBaseNode" />
+                        <ref role="37wK5l" to="b3f7:#RelationDescriptor.getBaseNode(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNode" resolve="getBaseNode" />
                         <node concept="37vLTw" id="3GM_nagTxH8" role="37wK5m">
                           <ref role="3cqZAo" node="2n7wcdLayNl" resolve="currentNode" />
                         </node>
@@ -555,19 +555,19 @@
                       <ref role="3cqZAo" node="2n7wcdLayNj" resolve="fsm" />
                     </node>
                     <node concept="liA8E" id="2n7wcdLayIi" role="2OqNvi">
-                      <ref role="37wK5l" to="jlcu:~FileStatusManager.fileStatusChanged(com.intellij.openapi.vfs.VirtualFile):void" resolve="fileStatusChanged" />
+                      <ref role="37wK5l" to="jlcu:#FileStatusManager.fileStatusChanged(com.intellij.openapi.vfs.VirtualFile):void" resolve="fileStatusChanged" />
                       <node concept="2OqwBi" id="2n7wcdLayIj" role="37wK5m">
                         <node concept="37vLTw" id="5IHtz9v0$rq" role="2Oq$k0">
                           <ref role="3cqZAo" to="lcr:5IHtz9v0lld" resolve="myNodeFileSystem" />
                         </node>
                         <node concept="liA8E" id="2n7wcdLayIl" role="2OqNvi">
-                          <ref role="37wK5l" to="kip1:~NodeVirtualFileSystem.getFileFor(org.jetbrains.mps.openapi.module.SRepository,org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.nodefs.MPSNodeVirtualFile" resolve="getFileFor" />
+                          <ref role="37wK5l" to="kip1:#NodeVirtualFileSystem.getFileFor(org.jetbrains.mps.openapi.module.SRepository,org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.nodefs.MPSNodeVirtualFile" resolve="getFileFor" />
                           <node concept="2OqwBi" id="5IHtz9v0_5X" role="37wK5m">
                             <node concept="37vLTw" id="5IHtz9v0$IQ" role="2Oq$k0">
                               <ref role="3cqZAo" to="lcr:5A04Co8KyHu" resolve="myMPSProject" />
                             </node>
                             <node concept="liA8E" id="5IHtz9v0_GC" role="2OqNvi">
-                              <ref role="37wK5l" to="z1c4:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                              <ref role="37wK5l" to="z1c4:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                             </node>
                           </node>
                           <node concept="37vLTw" id="5IHtz9v0A2t" role="37wK5m">
@@ -604,14 +604,14 @@
                 <ref role="3cqZAo" to="1m72:~AbstractProjectComponent.myProject" resolve="myProject" />
               </node>
               <node concept="liA8E" id="2n7wcdLayIy" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
                 <node concept="3VsKOn" id="2n7wcdLayIz" role="37wK5m">
                   <ref role="3VsUkX" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="2n7wcdLayI$" role="2OqNvi">
-              <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getTabDescriptors():java.util.List" resolve="getTabDescriptors" />
+              <ref role="37wK5l" to="xj2j:#ProjectPluginManager.getTabDescriptors():java.util.List" resolve="getTabDescriptors" />
             </node>
           </node>
         </node>

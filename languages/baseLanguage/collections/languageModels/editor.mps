@@ -2621,7 +2621,7 @@
                               <node concept="3fqX7Q" id="4VG9JMUZkOz" role="3clFbG">
                                 <node concept="2OqwBi" id="2wdLO7KfyGz" role="3fr31v">
                                   <node concept="liA8E" id="1rQJladUmxA" role="2OqNvi">
-                                    <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                                    <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
                                   </node>
                                   <node concept="37vLTw" id="2BHiRxgmLqR" role="2Oq$k0">
                                     <ref role="3cqZAo" node="4VG9JMUZkOq" resolve="it" />
@@ -5439,7 +5439,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="1wEcoXjIBLW" role="2OqNvi">
-                                    <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                                    <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
                                   </node>
                                 </node>
                               </node>
@@ -5553,7 +5553,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="1wEcoXjIBNS" role="2OqNvi">
-                                    <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                                    <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
                                   </node>
                                 </node>
                               </node>
@@ -5755,7 +5755,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="1wEcoXjIBTz" role="2OqNvi">
-                                    <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                                    <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
                                   </node>
                                 </node>
                               </node>

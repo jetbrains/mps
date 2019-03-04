@@ -216,7 +216,7 @@
         <node concept="3clFbF" id="7kBaCir6$64" role="3cqZAp">
           <node concept="2OqwBi" id="7kBaCir6$i3" role="3clFbG">
             <node concept="liA8E" id="7kBaCir6$XQ" role="2OqNvi">
-              <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
+              <ref role="37wK5l" to="yyf4:#ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
               <node concept="Xl_RD" id="7kBaCir6AqR" role="37wK5m">
                 <property role="Xl_RC" value="Looking for method implementations" />
               </node>
@@ -308,7 +308,7 @@
           <node concept="2OqwBi" id="1ofoPOHOlbx" role="1ecym3">
             <node concept="24CIHX" id="1ofoPOHOkXs" role="2Oq$k0" />
             <node concept="liA8E" id="1ofoPOHOlCM" role="2OqNvi">
-              <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
+              <ref role="37wK5l" to="yyf4:#ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
               <node concept="3cmrfG" id="1ofoPOHOlRq" role="37wK5m">
                 <property role="3cmrfH" value="10" />
               </node>
@@ -454,7 +454,7 @@
                     <ref role="1quiSB" to="mg3u:2LiUEk8oQ$g" resolve="behavior" />
                     <node concept="2OqwBi" id="172ROKPCuF8" role="1qvjxb">
                       <node concept="liA8E" id="172ROKPCvmp" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                        <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
                       </node>
                       <node concept="2JrnkZ" id="172ROKPCuFh" role="2Oq$k0">
                         <node concept="2OqwBi" id="172ROKP_Jxj" role="2JrQYb">

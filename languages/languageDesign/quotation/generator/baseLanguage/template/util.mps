@@ -225,7 +225,7 @@
               <ref role="3cqZAo" node="6wtORYsNMD3" resolve="id" />
             </node>
             <node concept="liA8E" id="6wtORYsNMRT" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Integer.toString():java.lang.String" resolve="toString" />
+              <ref role="37wK5l" to="wyt6:#Integer.toString():java.lang.String" resolve="toString" />
             </node>
           </node>
         </node>
@@ -294,7 +294,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="nQfYv_g$iq" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                  <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
                 </node>
               </node>
             </node>
