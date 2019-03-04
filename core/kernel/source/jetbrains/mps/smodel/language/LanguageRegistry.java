@@ -291,13 +291,18 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         return null;
       }
     } catch (ClassNotFoundException e) {
+      String msg = format("Failed to load runtime %s of generator %s", rtClassName, g.getModuleName());
       if (g.generateTemplates()) {
-        LOG.warn(String.format("Failed to load runtime %s of generator %s", rtClassName, g.getModuleName()), e);
+        if (LOG.isDebugEnabled()) {
+          LOG.warn(msg, e);
+        } else {
+          LOG.warn(msg);
+        }
       } else {
         // FIXME this is compatibility code. Language RT generated prior to 2018.1 included #getGenerators() implementation for interpreted templates,
         //       and generator module lacked any activator class. With 2018.1, we generate Generator RT class for every generator module (including interpreted)
         //       Remove this code once 2018.1 is out.
-        LOG.debug(String.format("Failed to load runtime %s of generator %s", rtClassName, g.getModuleName()), e);
+        LOG.debug(msg, e);
       }
     } catch (InstantiationException | IllegalAccessException e) {
       LOG.error(String.format("Failed to instantiate runtime %s of generator %s", rtClassName, g.getModuleName()), e);
