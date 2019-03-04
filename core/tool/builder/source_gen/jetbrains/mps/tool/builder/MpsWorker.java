@@ -18,6 +18,8 @@ import jetbrains.mps.tool.common.RepositoryDescriptor;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -112,17 +114,23 @@ public abstract class MpsWorker {
       config = config.withBootstrapLibraries().withWorkbenchPath();
     }
     for (IMapping<String, String> macro : MapSequence.fromMap(whatToDo.getMacro())) {
-      config = config.addMacro(macro.key(), new File(macro.value()));
+      config.addMacro(macro.key(), new File(macro.value()));
     }
     for (IMapping<String, File> lib : MapSequence.fromMap(whatToDo.getLibraries())) {
-      config = config.addLib(lib.value().getAbsolutePath());
+      config.addLib(lib.value().getAbsolutePath());
     }
     for (String jar : whatToDo.getLibraryJars()) {
       File jarFile = new File(jar);
       if (!(jarFile.exists())) {
         warning("Library " + jar + " does not exist.");
       }
-      config = config.addLib(jar);
+      config.addLib(jar);
+    }
+    // let Environment know which idea plugins are expected to be loaded. 
+    // Note, this doesn't address plugin classpath, as it's up to respective Task to decide whether respective plugins and their classes/libraries 
+    // are in a global classpath or plugin classes are loaded in any other way. 
+    for (PluginData pd : ListSequence.fromList(myWhatToDo.getPlugins())) {
+      config.addPlugin(pd.path, pd.id);
     }
     return config;
   }

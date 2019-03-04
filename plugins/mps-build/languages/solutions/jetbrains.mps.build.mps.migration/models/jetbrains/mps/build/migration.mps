@@ -51,9 +51,6 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
-        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
-      </concept>
       <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
         <child id="1164879758292" name="body" index="SfCbr" />
         <child id="1164903496223" name="catchClause" index="TEbGg" />
@@ -196,16 +193,6 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
-    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="1153943597977" name="jetbrains.mps.baseLanguage.collections.structure.ForEachStatement" flags="nn" index="2Gpval">
-        <child id="1153944400369" name="variable" index="2Gsz3X" />
-        <child id="1153944424730" name="inputSequence" index="2GsD0m" />
-      </concept>
-      <concept id="1153944193378" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariable" flags="nr" index="2GrKxI" />
-      <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
-        <reference id="1153944258490" name="variable" index="2Gs0qQ" />
-      </concept>
-    </language>
   </registry>
   <node concept="312cEu" id="KL8Aqll4mG">
     <property role="TrG5h" value="MigrationWorker" />
@@ -270,49 +257,6 @@
       </node>
       <node concept="3Tmbuc" id="60oBoEfv6R" role="1B3o_S" />
       <node concept="3clFbS" id="60oBoEfv6S" role="3clF47">
-        <node concept="3cpWs8" id="75eqTYkq9g2" role="3cqZAp">
-          <node concept="3cpWsn" id="75eqTYkq9g3" role="3cpWs9">
-            <property role="TrG5h" value="cfg" />
-            <node concept="3uibUv" id="75eqTYkq9g0" role="1tU5fm">
-              <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-            </node>
-            <node concept="1rXfSq" id="63P3E8$mG2f" role="33vP2m">
-              <ref role="37wK5l" to="jo3e:63P3E8$mb3n" resolve="createEnvironmentConfig" />
-              <node concept="37vLTw" id="63P3E8$mHNi" role="37wK5m">
-                <ref role="3cqZAo" to="jo3e:KL8Aqlj5lG" resolve="myWhatToDo" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="4142FbgY_vo" role="3cqZAp">
-          <node concept="3SKdUq" id="4142FbgY_vq" role="3SKWNk">
-            <property role="3SKdUp" value="adding migration plugin here seems to be useless as it has to be in CP already to work properly." />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="4142FbgYP90" role="3cqZAp">
-          <node concept="3SKdUq" id="4142FbgYP92" role="3SKWNk">
-            <property role="3SKdUp" value="Looks like we have to specify 'migration' plugin in myWhatToDo in MigrationTask instead." />
-          </node>
-        </node>
-        <node concept="3clFbF" id="75eqTYkq9C4" role="3cqZAp">
-          <node concept="2OqwBi" id="75eqTYkq9C5" role="3clFbG">
-            <node concept="37vLTw" id="75eqTYkq9C6" role="2Oq$k0">
-              <ref role="3cqZAo" node="75eqTYkq9g3" resolve="cfg" />
-            </node>
-            <node concept="liA8E" id="4142FbgXSU8" role="2OqNvi">
-              <ref role="37wK5l" to="79ha:4asrSzSFl5Q" resolve="withMigrationPlugin" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="r$A3E5qwbs" role="3cqZAp">
-          <node concept="1rXfSq" id="r$A3E5qwbq" role="3clFbG">
-            <ref role="37wK5l" node="r$A3E5qsbh" resolve="addCustomPluginsToLoad" />
-            <node concept="37vLTw" id="r$A3E5qxRh" role="37wK5m">
-              <ref role="3cqZAo" node="75eqTYkq9g3" resolve="cfg" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="1oo0A63GDKI" role="3cqZAp" />
         <node concept="3cpWs8" id="7cOEBlPTW5X" role="3cqZAp">
           <node concept="3cpWsn" id="7cOEBlPTW5Y" role="3cpWs9">
             <property role="TrG5h" value="environment" />
@@ -322,8 +266,11 @@
             <node concept="2ShNRf" id="5kpQnuAv7PE" role="33vP2m">
               <node concept="1pGfFk" id="1oo0A63GGet" role="2ShVmc">
                 <ref role="37wK5l" to="cky9:6rx4kZDkRjb" resolve="IdeaEnvironment" />
-                <node concept="37vLTw" id="1oo0A63GGj5" role="37wK5m">
-                  <ref role="3cqZAo" node="75eqTYkq9g3" resolve="cfg" />
+                <node concept="1rXfSq" id="28$8eDmXY8e" role="37wK5m">
+                  <ref role="37wK5l" to="jo3e:63P3E8$mb3n" resolve="createEnvironmentConfig" />
+                  <node concept="37vLTw" id="28$8eDmXY8f" role="37wK5m">
+                    <ref role="3cqZAo" to="jo3e:KL8Aqlj5lG" resolve="myWhatToDo" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -339,7 +286,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="1oo0A63GDzl" role="3cqZAp" />
         <node concept="3cpWs6" id="1oo0A63GIqE" role="3cqZAp">
           <node concept="37vLTw" id="1oo0A63GIMb" role="3cqZAk">
             <ref role="3cqZAo" node="7cOEBlPTW5Y" resolve="environment" />
@@ -750,66 +696,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="1oo0A63FY21" role="jymVt" />
-    <node concept="3clFb_" id="r$A3E5qsbh" role="jymVt">
-      <property role="TrG5h" value="addCustomPluginsToLoad" />
-      <node concept="3clFbS" id="r$A3E5qsbk" role="3clF47">
-        <node concept="3SKdUt" id="r$A3E5qvva" role="3cqZAp">
-          <node concept="3SKdUq" id="r$A3E5qvvb" role="3SKWNk">
-            <property role="3SKdUp" value="todo: this functionality should be moved to some MpsWithPlatformLoadTask" />
-          </node>
-        </node>
-        <node concept="2Gpval" id="3x_lgCAjr8F" role="3cqZAp">
-          <node concept="2GrKxI" id="3x_lgCAjr8H" role="2Gsz3X">
-            <property role="TrG5h" value="pd" />
-          </node>
-          <node concept="3clFbS" id="3x_lgCAjr8L" role="2LFqv$">
-            <node concept="3clFbF" id="r$A3E5qNl$" role="3cqZAp">
-              <node concept="2OqwBi" id="r$A3E5qNuo" role="3clFbG">
-                <node concept="37vLTw" id="r$A3E5qNly" role="2Oq$k0">
-                  <ref role="3cqZAo" node="r$A3E5qtP9" resolve="cfg" />
-                </node>
-                <node concept="liA8E" id="r$A3E5qN_Q" role="2OqNvi">
-                  <ref role="37wK5l" to="79ha:6rx4kZDk6GC" resolve="addPlugin" />
-                  <node concept="2OqwBi" id="r$A3E5wR7A" role="37wK5m">
-                    <node concept="2GrUjf" id="r$A3E5qNCZ" role="2Oq$k0">
-                      <ref role="2Gs0qQ" node="3x_lgCAjr8H" resolve="pd" />
-                    </node>
-                    <node concept="2OwXpG" id="r$A3E5x72V" role="2OqNvi">
-                      <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
-                    </node>
-                  </node>
-                  <node concept="2OqwBi" id="r$A3E5x1V3" role="37wK5m">
-                    <node concept="2GrUjf" id="r$A3E5x1LM" role="2Oq$k0">
-                      <ref role="2Gs0qQ" node="3x_lgCAjr8H" resolve="pd" />
-                    </node>
-                    <node concept="2OwXpG" id="r$A3E5x6vV" role="2OqNvi">
-                      <ref role="2Oxat5" to="asz6:r$A3E5qOHV" resolve="id" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="3x_lgCAfj4g" role="2GsD0m">
-            <node concept="37vLTw" id="r$A3E5qLiU" role="2Oq$k0">
-              <ref role="3cqZAo" to="jo3e:KL8Aqlj5lG" resolve="myWhatToDo" />
-            </node>
-            <node concept="liA8E" id="3x_lgCAfj4i" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:r$A3E5tFQj" resolve="getPlugins" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="r$A3E5qqrZ" role="1B3o_S" />
-      <node concept="3cqZAl" id="r$A3E5qs4_" role="3clF45" />
-      <node concept="37vLTG" id="r$A3E5qtP9" role="3clF46">
-        <property role="TrG5h" value="cfg" />
-        <node concept="3uibUv" id="r$A3E5qtP8" role="1tU5fm">
-          <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3x_lgCAl9lA" role="jymVt" />
     <node concept="2YIFZL" id="1oo0A63FX91" role="jymVt">
       <property role="TrG5h" value="main" />
       <property role="DiZV1" value="false" />

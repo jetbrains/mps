@@ -5,7 +5,6 @@ package jetbrains.mps.build.migration;
 import jetbrains.mps.tool.builder.MpsWorker;
 import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.environment.Environment;
-import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import java.io.File;
 import jetbrains.mps.project.Project;
@@ -22,8 +21,6 @@ import java.lang.reflect.Method;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ModalityState;
-import jetbrains.mps.tool.common.PluginData;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class MigrationWorker extends MpsWorker {
   private static final String MIGRATION_PLUGIN = "jetbrains.mps.ide.migration.workbench";
@@ -35,15 +32,8 @@ public class MigrationWorker extends MpsWorker {
 
   @Override
   protected Environment createEnvironment() {
-    EnvironmentConfig cfg = createEnvironmentConfig(myWhatToDo);
-    // adding migration plugin here seems to be useless as it has to be in CP already to work properly. 
-    // Looks like we have to specify 'migration' plugin in myWhatToDo in MigrationTask instead. 
-    cfg.withMigrationPlugin();
-    addCustomPluginsToLoad(cfg);
-
-    IdeaEnvironment environment = new IdeaEnvironment(cfg);
+    IdeaEnvironment environment = new IdeaEnvironment(createEnvironmentConfig(myWhatToDo));
     environment.init();
-
     return environment;
   }
 
@@ -88,13 +78,6 @@ public class MigrationWorker extends MpsWorker {
 
       p.dispose();
       myEnvironment.flushAllEvents();
-    }
-  }
-
-  private void addCustomPluginsToLoad(EnvironmentConfig cfg) {
-    // todo: this functionality should be moved to some MpsWithPlatformLoadTask 
-    for (PluginData pd : ListSequence.fromList(myWhatToDo.getPlugins())) {
-      cfg.addPlugin(pd.path, pd.id);
     }
   }
 

@@ -865,31 +865,26 @@
             <property role="TrG5h" value="macro" />
           </node>
           <node concept="3clFbS" id="63P3E8$mb4_" role="2LFqv$">
-            <node concept="3clFbF" id="63P3E8$mb4A" role="3cqZAp">
-              <node concept="37vLTI" id="63P3E8$mb4B" role="3clFbG">
-                <node concept="37vLTw" id="63P3E8$mb4C" role="37vLTJ">
+            <node concept="3clFbF" id="28$8eDmXD3i" role="3cqZAp">
+              <node concept="2OqwBi" id="63P3E8$mb4D" role="3clFbG">
+                <node concept="37vLTw" id="63P3E8$mb4E" role="2Oq$k0">
                   <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
                 </node>
-                <node concept="2OqwBi" id="63P3E8$mb4D" role="37vLTx">
-                  <node concept="37vLTw" id="63P3E8$mb4E" role="2Oq$k0">
-                    <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
-                  </node>
-                  <node concept="liA8E" id="63P3E8$mb4F" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:6rx4kZDk6LY" resolve="addMacro" />
-                    <node concept="2OqwBi" id="63P3E8$mb4G" role="37wK5m">
-                      <node concept="3AY5_j" id="63P3E8$mb4H" role="2OqNvi" />
-                      <node concept="2GrUjf" id="63P3E8$mb4I" role="2Oq$k0">
-                        <ref role="2Gs0qQ" node="63P3E8$mb4$" resolve="macro" />
-                      </node>
+                <node concept="liA8E" id="63P3E8$mb4F" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:6rx4kZDk6LY" resolve="addMacro" />
+                  <node concept="2OqwBi" id="63P3E8$mb4G" role="37wK5m">
+                    <node concept="3AY5_j" id="63P3E8$mb4H" role="2OqNvi" />
+                    <node concept="2GrUjf" id="63P3E8$mb4I" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="63P3E8$mb4$" resolve="macro" />
                     </node>
-                    <node concept="2ShNRf" id="63P3E8$mb4J" role="37wK5m">
-                      <node concept="1pGfFk" id="63P3E8$mb4K" role="2ShVmc">
-                        <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                        <node concept="2OqwBi" id="63P3E8$mb4L" role="37wK5m">
-                          <node concept="3AV6Ez" id="63P3E8$mb4M" role="2OqNvi" />
-                          <node concept="2GrUjf" id="63P3E8$mb4N" role="2Oq$k0">
-                            <ref role="2Gs0qQ" node="63P3E8$mb4$" resolve="macro" />
-                          </node>
+                  </node>
+                  <node concept="2ShNRf" id="63P3E8$mb4J" role="37wK5m">
+                    <node concept="1pGfFk" id="63P3E8$mb4K" role="2ShVmc">
+                      <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                      <node concept="2OqwBi" id="63P3E8$mb4L" role="37wK5m">
+                        <node concept="3AV6Ez" id="63P3E8$mb4M" role="2OqNvi" />
+                        <node concept="2GrUjf" id="63P3E8$mb4N" role="2Oq$k0">
+                          <ref role="2Gs0qQ" node="63P3E8$mb4$" resolve="macro" />
                         </node>
                       </node>
                     </node>
@@ -912,28 +907,23 @@
             <property role="TrG5h" value="lib" />
           </node>
           <node concept="3clFbS" id="63P3E8$mb4T" role="2LFqv$">
-            <node concept="3clFbF" id="63P3E8$mb4U" role="3cqZAp">
-              <node concept="37vLTI" id="63P3E8$mb4V" role="3clFbG">
-                <node concept="2OqwBi" id="63P3E8$mb4W" role="37vLTx">
-                  <node concept="liA8E" id="63P3E8$mb4X" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:6rx4kZDk8ph" resolve="addLib" />
-                    <node concept="2OqwBi" id="63P3E8$mb4Y" role="37wK5m">
-                      <node concept="2OqwBi" id="63P3E8$mb4Z" role="2Oq$k0">
-                        <node concept="3AV6Ez" id="63P3E8$mb50" role="2OqNvi" />
-                        <node concept="2GrUjf" id="63P3E8$mb51" role="2Oq$k0">
-                          <ref role="2Gs0qQ" node="63P3E8$mb4S" resolve="lib" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="63P3E8$mb52" role="2OqNvi">
-                        <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />
+            <node concept="3clFbF" id="28$8eDmXAOj" role="3cqZAp">
+              <node concept="2OqwBi" id="63P3E8$mb4W" role="3clFbG">
+                <node concept="liA8E" id="63P3E8$mb4X" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:6rx4kZDk8ph" resolve="addLib" />
+                  <node concept="2OqwBi" id="63P3E8$mb4Y" role="37wK5m">
+                    <node concept="2OqwBi" id="63P3E8$mb4Z" role="2Oq$k0">
+                      <node concept="3AV6Ez" id="63P3E8$mb50" role="2OqNvi" />
+                      <node concept="2GrUjf" id="63P3E8$mb51" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="63P3E8$mb4S" resolve="lib" />
                       </node>
                     </node>
-                  </node>
-                  <node concept="37vLTw" id="63P3E8$mb53" role="2Oq$k0">
-                    <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
+                    <node concept="liA8E" id="63P3E8$mb52" role="2OqNvi">
+                      <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />
+                    </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="63P3E8$mb54" role="37vLTJ">
+                <node concept="37vLTw" id="63P3E8$mb53" role="2Oq$k0">
                   <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
                 </node>
               </node>
@@ -993,20 +983,15 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="63P3E8$mb5r" role="3cqZAp">
-              <node concept="37vLTI" id="63P3E8$mb5s" role="3clFbG">
-                <node concept="2OqwBi" id="63P3E8$mb5t" role="37vLTx">
-                  <node concept="liA8E" id="63P3E8$mb5u" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:6rx4kZDk8ph" resolve="addLib" />
-                    <node concept="2GrUjf" id="63P3E8$mb5v" role="37wK5m">
-                      <ref role="2Gs0qQ" node="63P3E8$mb56" resolve="jar" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="63P3E8$mb5w" role="2Oq$k0">
-                    <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
+            <node concept="3clFbF" id="28$8eDmXzOS" role="3cqZAp">
+              <node concept="2OqwBi" id="63P3E8$mb5t" role="3clFbG">
+                <node concept="liA8E" id="63P3E8$mb5u" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:6rx4kZDk8ph" resolve="addLib" />
+                  <node concept="2GrUjf" id="63P3E8$mb5v" role="37wK5m">
+                    <ref role="2Gs0qQ" node="63P3E8$mb56" resolve="jar" />
                   </node>
                 </node>
-                <node concept="37vLTw" id="63P3E8$mb5x" role="37vLTJ">
+                <node concept="37vLTw" id="63P3E8$mb5w" role="2Oq$k0">
                   <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
                 </node>
               </node>
@@ -1018,6 +1003,62 @@
             </node>
             <node concept="liA8E" id="63P3E8$mb5$" role="2OqNvi">
               <ref role="37wK5l" to="asz6:3GGnItM95Zu" resolve="getLibraryJars" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="28$8eDmXHZT" role="3cqZAp">
+          <node concept="3SKdUq" id="28$8eDmXHZV" role="3SKWNk">
+            <property role="3SKdUp" value="let Environment know which idea plugins are expected to be loaded." />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="28$8eDmXLTR" role="3cqZAp">
+          <node concept="3SKdUq" id="28$8eDmXLTT" role="3SKWNk">
+            <property role="3SKdUp" value="Note, this doesn't address plugin classpath, as it's up to respective Task to decide whether respective plugins and their classes/libraries" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="28$8eDmXPzu" role="3cqZAp">
+          <node concept="3SKdUq" id="28$8eDmXPzw" role="3SKWNk">
+            <property role="3SKdUp" value="are in a global classpath or plugin classes are loaded in any other way." />
+          </node>
+        </node>
+        <node concept="2Gpval" id="3x_lgCAjr8F" role="3cqZAp">
+          <node concept="2GrKxI" id="3x_lgCAjr8H" role="2Gsz3X">
+            <property role="TrG5h" value="pd" />
+          </node>
+          <node concept="3clFbS" id="3x_lgCAjr8L" role="2LFqv$">
+            <node concept="3clFbF" id="r$A3E5qNl$" role="3cqZAp">
+              <node concept="2OqwBi" id="r$A3E5qNuo" role="3clFbG">
+                <node concept="37vLTw" id="28$8eDmXs_A" role="2Oq$k0">
+                  <ref role="3cqZAo" node="63P3E8$mb3r" resolve="config" />
+                </node>
+                <node concept="liA8E" id="r$A3E5qN_Q" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:6rx4kZDk6GC" resolve="addPlugin" />
+                  <node concept="2OqwBi" id="r$A3E5wR7A" role="37wK5m">
+                    <node concept="2GrUjf" id="r$A3E5qNCZ" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="3x_lgCAjr8H" resolve="pd" />
+                    </node>
+                    <node concept="2OwXpG" id="r$A3E5x72V" role="2OqNvi">
+                      <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="r$A3E5x1V3" role="37wK5m">
+                    <node concept="2GrUjf" id="r$A3E5x1LM" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="3x_lgCAjr8H" resolve="pd" />
+                    </node>
+                    <node concept="2OwXpG" id="r$A3E5x6vV" role="2OqNvi">
+                      <ref role="2Oxat5" to="asz6:r$A3E5qOHV" resolve="id" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3x_lgCAfj4g" role="2GsD0m">
+            <node concept="37vLTw" id="r$A3E5qLiU" role="2Oq$k0">
+              <ref role="3cqZAo" node="KL8Aqlj5lG" resolve="myWhatToDo" />
+            </node>
+            <node concept="liA8E" id="3x_lgCAfj4i" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:r$A3E5tFQj" resolve="getPlugins" />
             </node>
           </node>
         </node>
