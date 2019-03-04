@@ -7,7 +7,6 @@ import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import gnu.trove.THashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -45,10 +44,10 @@ public class ClassifierCacher {
     myResult.put(new IdIndexEntry(concept.getQualifiedName(), true), 0);
   }
   private void ref(SNodeId id) {
-    if (!(id instanceof StringBasedIdForJavaStubMethods)) {
+    if (!(id instanceof jetbrains.mps.smodel.SNodeId.StringBasedId)) {
       return;
     }
-    myResult.put(new IdIndexEntry(((StringBasedIdForJavaStubMethods) id).getId(), true), 0);
+    myResult.put(new IdIndexEntry(((jetbrains.mps.smodel.SNodeId.StringBasedId) id).getId(), true), 0);
   }
   private void modelRef(String packageName) {
     myResult.put(new IdIndexEntry(packageName + "@java_stub", true), 0);
