@@ -2517,11 +2517,11 @@
             <node concept="3clFbF" id="6JXeUzMKhDi" role="3cqZAp">
               <node concept="2OqwBi" id="jVJrchb_Nc" role="3clFbG">
                 <node concept="37vLTw" id="6JXeUzMKhDh" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6JXeUzMK02X" />
+                  <ref role="3cqZAo" node="6JXeUzMK02X" resolve="result" />
                 </node>
                 <node concept="TSZUe" id="jVJrchbCg8" role="2OqNvi">
                   <node concept="2GrUjf" id="jVJrchbCIB" role="25WWJ7">
-                    <ref role="2Gs0qQ" node="6yiPRtqk2qL" />
+                    <ref role="2Gs0qQ" node="6yiPRtqk2qL" resolve="lib" />
                   </node>
                 </node>
               </node>
@@ -2960,8 +2960,8 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="liA8E" id="4oW2E9aSh9J" role="2OqNvi">
-                              <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader():jetbrains.mps.classloading.MPSModuleClassLoader" resolve="getClassLoader" />
+                            <node concept="liA8E" id="5N$sdYeU1dp" role="2OqNvi">
+                              <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader0():jetbrains.mps.classloading.MPSModuleClassLoader" resolve="getClassLoader0" />
                             </node>
                           </node>
                         </node>

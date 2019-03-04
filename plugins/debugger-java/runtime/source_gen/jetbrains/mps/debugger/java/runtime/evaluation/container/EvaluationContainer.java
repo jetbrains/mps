@@ -89,7 +89,7 @@ public class EvaluationContainer implements IEvaluationContainer {
         SModule extraClasspath = PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)").resolve(myDebuggerRepository);
         assert extraClasspath instanceof ReloadableModule;
 
-        return ((ReloadableModule) extraClasspath).getClassLoader();
+        return ((ReloadableModule) extraClasspath).getClassLoader0();
       }
     });
     return GeneratorUtil.generateAndLoadEvaluatorClass(myProject, containerModel, Properties.EVALUATOR_NAME, Properties.IS_DEVELOPER_MODE, extraCL);

@@ -100,9 +100,21 @@ public interface ReloadableModule extends SModule {
    * Use it if you want to get a class from the module with IdeaPluginFacet.
    * warning: this method is lazy implemented!
    * if getStatus().isDeployed() || getStatus().canBeDeployed() is true then the return value is guaranteed to be not null
+   *
+   * @deprecated use {@link #getClassLoader0()}
    */
   @Nullable
-  MPSModuleClassLoader getClassLoader();
+  @Deprecated
+  @ToRemove(version = 192)
+  default ClassLoader getClassLoader() {
+    return getClassLoader0();
+  }
+
+  /**
+   * @return not null classloader, if a specific module-related class loader is not found than the system classloader is returned
+   */
+  @NotNull
+  MPSModuleClassLoader getClassLoader0();
 
   /**
    * Call it to replace the old class loader of this module with a new one.

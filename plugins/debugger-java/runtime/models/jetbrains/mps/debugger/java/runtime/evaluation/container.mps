@@ -917,8 +917,8 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="liA8E" id="7ryvvKokesL" role="2OqNvi">
-                          <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader():jetbrains.mps.classloading.MPSModuleClassLoader" resolve="getClassLoader" />
+                        <node concept="liA8E" id="3zP9sKsk0az" role="2OqNvi">
+                          <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader0():jetbrains.mps.classloading.MPSModuleClassLoader" resolve="getClassLoader0" />
                         </node>
                       </node>
                     </node>

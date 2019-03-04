@@ -129,7 +129,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
     project.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         for (SModule module : ListSequence.fromList(myContextProject.getProjectModules())) {
-          ClassLoader moduleCL = ((ReloadableModule) module).getClassLoader();
+          ClassLoader moduleCL = ((ReloadableModule) module).getClassLoader0();
           if (moduleCL == null) {
             if (LOG.isEnabledFor(Level.ERROR)) {
               LOG.error("Classloader is not found for the " + module);
