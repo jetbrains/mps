@@ -377,15 +377,6 @@
         <property role="Xl_RC" value="project" />
       </node>
     </node>
-    <node concept="Wx3nA" id="KL8Aql8eoa" role="jymVt">
-      <property role="TrG5h" value="ELEMENT_PARAMETER" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="KL8Aql8eob" role="1B3o_S" />
-      <node concept="17QB3L" id="KL8Aql8eoc" role="1tU5fm" />
-      <node concept="Xl_RD" id="KL8Aql8eod" role="33vP2m">
-        <property role="Xl_RC" value="parameter" />
-      </node>
-    </node>
     <node concept="Wx3nA" id="KL8Aql8eoi" role="jymVt">
       <property role="TrG5h" value="PATH" />
       <property role="3TUv4t" value="true" />
@@ -393,15 +384,6 @@
       <node concept="17QB3L" id="KL8Aql8eok" role="1tU5fm" />
       <node concept="Xl_RD" id="KL8Aql8eol" role="33vP2m">
         <property role="Xl_RC" value="path" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="KL8Aql8eom" role="jymVt">
-      <property role="TrG5h" value="VALUE" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="KL8Aql8eon" role="1B3o_S" />
-      <node concept="17QB3L" id="KL8Aql8eoo" role="1tU5fm" />
-      <node concept="Xl_RD" id="KL8Aql8eop" role="33vP2m">
-        <property role="Xl_RC" value="value" />
       </node>
     </node>
     <node concept="Wx3nA" id="3GGnItM8NcH" role="jymVt">
@@ -524,21 +506,6 @@
           <node concept="1dT_AC" id="6tzA4yIiuc5" role="1dT_Ay">
             <property role="1dT_AB" value="XXX why File, can't I use some macro to specify project location?" />
           </node>
-        </node>
-      </node>
-    </node>
-    <node concept="312cEg" id="KL8Aql8epC" role="jymVt">
-      <property role="TrG5h" value="myParameters" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="KL8Aql8epD" role="1B3o_S" />
-      <node concept="3uibUv" id="KL8Aql8epE" role="1tU5fm">
-        <ref role="3uigEE" to="33ny:~List" resolve="List" />
-        <node concept="17QB3L" id="KL8Aql8epF" role="11_B2D" />
-      </node>
-      <node concept="2ShNRf" id="KL8Aql8epG" role="33vP2m">
-        <node concept="1pGfFk" id="KL8Aql8epH" role="2ShVmc">
-          <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
-          <node concept="17QB3L" id="KL8Aql8epI" role="1pMfVU" />
         </node>
       </node>
     </node>
@@ -1572,72 +1539,6 @@
         <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
       </node>
     </node>
-    <node concept="3clFb_" id="KL8Aql8evU" role="jymVt">
-      <property role="TrG5h" value="addParameter" />
-      <node concept="3cqZAl" id="KL8Aql8evV" role="3clF45" />
-      <node concept="3Tm1VV" id="KL8Aql8evW" role="1B3o_S" />
-      <node concept="3clFbS" id="KL8Aql8evX" role="3clF47">
-        <node concept="3clFbF" id="KL8Aql8evY" role="3cqZAp">
-          <node concept="2OqwBi" id="KL8Aql8evZ" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuu22" role="2Oq$k0">
-              <ref role="3cqZAo" node="KL8Aql8epC" resolve="myParameters" />
-            </node>
-            <node concept="liA8E" id="KL8Aql8ew1" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
-              <node concept="37vLTw" id="2BHiRxgm8uu" role="37wK5m">
-                <ref role="3cqZAo" node="KL8Aql8ew3" resolve="parameter" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="KL8Aql8ew3" role="3clF46">
-        <property role="TrG5h" value="parameter" />
-        <node concept="17QB3L" id="KL8Aql8ew4" role="1tU5fm" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="KL8Aql8ew5" role="jymVt">
-      <property role="TrG5h" value="getParameters" />
-      <node concept="3uibUv" id="KL8Aql8ew6" role="3clF45">
-        <ref role="3uigEE" to="33ny:~List" resolve="List" />
-        <node concept="17QB3L" id="KL8Aql8ew7" role="11_B2D" />
-      </node>
-      <node concept="3Tm1VV" id="KL8Aql8ew8" role="1B3o_S" />
-      <node concept="3clFbS" id="KL8Aql8ew9" role="3clF47">
-        <node concept="3cpWs6" id="KL8Aql8ewa" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeuGA2" role="3cqZAk">
-            <ref role="3cqZAo" node="KL8Aql8epC" resolve="myParameters" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3clFb_" id="KL8Aql8ewc" role="jymVt">
-      <property role="TrG5h" value="updateParameters" />
-      <node concept="3cqZAl" id="KL8Aql8ewd" role="3clF45" />
-      <node concept="3Tm1VV" id="KL8Aql8ewe" role="1B3o_S" />
-      <node concept="3clFbS" id="KL8Aql8ewf" role="3clF47">
-        <node concept="3clFbF" id="KL8Aql8ewg" role="3cqZAp">
-          <node concept="2OqwBi" id="KL8Aql8ewh" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuNW6" role="2Oq$k0">
-              <ref role="3cqZAo" node="KL8Aql8epC" resolve="myParameters" />
-            </node>
-            <node concept="liA8E" id="KL8Aql8ewj" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.addAll(java.util.Collection):boolean" resolve="addAll" />
-              <node concept="37vLTw" id="2BHiRxgmFl4" role="37wK5m">
-                <ref role="3cqZAo" node="KL8Aql8ewl" resolve="parameters" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="KL8Aql8ewl" role="3clF46">
-        <property role="TrG5h" value="parameters" />
-        <node concept="3uibUv" id="KL8Aql8ewm" role="1tU5fm">
-          <ref role="3uigEE" to="33ny:~List" resolve="List" />
-          <node concept="17QB3L" id="KL8Aql8ewn" role="11_B2D" />
-        </node>
-      </node>
-    </node>
     <node concept="2tJIrI" id="6tzA4yIn2La" role="jymVt" />
     <node concept="3clFb_" id="58KrZDES$s_" role="jymVt">
       <property role="TrG5h" value="addChunk" />
@@ -2024,46 +1925,6 @@
             <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myMPSProjects" />
           </node>
         </node>
-        <node concept="1DcWWT" id="KL8Aql8ezS" role="3cqZAp">
-          <node concept="3clFbS" id="KL8Aql8ezT" role="2LFqv$">
-            <node concept="3clFbF" id="KL8Aql8ezU" role="3cqZAp">
-              <node concept="2OqwBi" id="KL8Aql8ezV" role="3clFbG">
-                <node concept="37vLTw" id="3GM_nagT_dr" role="2Oq$k0">
-                  <ref role="3cqZAo" node="KL8Aql8eyi" resolve="data" />
-                </node>
-                <node concept="liA8E" id="KL8Aql8ezX" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element):org.jdom.Element" resolve="addContent" />
-                  <node concept="2OqwBi" id="KL8Aql8ezY" role="37wK5m">
-                    <node concept="2ShNRf" id="KL8Aql8ezZ" role="2Oq$k0">
-                      <node concept="1pGfFk" id="KL8Aql8e$0" role="2ShVmc">
-                        <ref role="37wK5l" to="mmaq:~Element.&lt;init&gt;(java.lang.String)" resolve="Element" />
-                        <node concept="37vLTw" id="2BHiRxeolJe" role="37wK5m">
-                          <ref role="3cqZAo" node="KL8Aql8eoa" resolve="ELEMENT_PARAMETER" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="KL8Aql8e$2" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String):org.jdom.Element" resolve="setAttribute" />
-                      <node concept="37vLTw" id="2BHiRxeoq9p" role="37wK5m">
-                        <ref role="3cqZAo" node="KL8Aql8eom" resolve="VALUE" />
-                      </node>
-                      <node concept="37vLTw" id="3GM_nagTzUh" role="37wK5m">
-                        <ref role="3cqZAo" node="KL8Aql8e$5" resolve="p" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3cpWsn" id="KL8Aql8e$5" role="1Duv9x">
-            <property role="TrG5h" value="p" />
-            <node concept="17QB3L" id="KL8Aql8e$6" role="1tU5fm" />
-          </node>
-          <node concept="37vLTw" id="2BHiRxeukwo" role="1DdaDG">
-            <ref role="3cqZAo" node="KL8Aql8epC" resolve="myParameters" />
-          </node>
-        </node>
         <node concept="1DcWWT" id="3GGnItM8Nd8" role="3cqZAp">
           <node concept="3clFbS" id="3GGnItM8Nd9" role="2LFqv$">
             <node concept="3cpWs8" id="3GGnItM8NeW" role="3cqZAp">
@@ -2352,37 +2213,6 @@
                     <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
                     <node concept="37vLTw" id="3GM_nagTBOd" role="37wK5m">
                       <ref role="3cqZAo" node="KL8Aql8e$n" resolve="elementName" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3eNFk2" id="KL8Aql8e_S" role="3eNLev">
-                <node concept="2OqwBi" id="KL8Aql8e_T" role="3eO9$A">
-                  <node concept="37vLTw" id="2BHiRxeola5" role="2Oq$k0">
-                    <ref role="3cqZAo" node="KL8Aql8eoa" resolve="ELEMENT_PARAMETER" />
-                  </node>
-                  <node concept="liA8E" id="KL8Aql8e_V" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
-                    <node concept="37vLTw" id="3GM_nagTvga" role="37wK5m">
-                      <ref role="3cqZAo" node="KL8Aql8e$n" resolve="elementName" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="KL8Aql8e_X" role="3eOfB_">
-                  <node concept="3clFbF" id="KL8Aql8e_Y" role="3cqZAp">
-                    <node concept="1rXfSq" id="4hiugqyz3qB" role="3clFbG">
-                      <ref role="37wK5l" node="KL8Aql8evU" resolve="addParameter" />
-                      <node concept="2OqwBi" id="KL8Aql8eA0" role="37wK5m">
-                        <node concept="37vLTw" id="3GM_nagTsME" role="2Oq$k0">
-                          <ref role="3cqZAo" node="KL8Aql8eA4" resolve="e" />
-                        </node>
-                        <node concept="liA8E" id="KL8Aql8eA2" role="2OqNvi">
-                          <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String):java.lang.String" resolve="getAttributeValue" />
-                          <node concept="37vLTw" id="2BHiRxeohy3" role="37wK5m">
-                            <ref role="3cqZAo" node="KL8Aql8eom" resolve="VALUE" />
-                          </node>
-                        </node>
-                      </node>
                     </node>
                   </node>
                 </node>
@@ -4503,70 +4333,35 @@
         </node>
         <node concept="1DcWWT" id="r$A3E5srw3" role="3cqZAp">
           <node concept="3clFbS" id="r$A3E5srw4" role="2LFqv$">
-            <node concept="3cpWs8" id="r$A3E5t75C" role="3cqZAp">
-              <node concept="3cpWsn" id="r$A3E5t75D" role="3cpWs9">
-                <property role="TrG5h" value="p" />
-                <node concept="3uibUv" id="r$A3E5wnOx" role="1tU5fm">
-                  <ref role="3uigEE" node="r$A3E5vV_o" resolve="PluginData" />
-                </node>
-                <node concept="2ShNRf" id="r$A3E5t75E" role="33vP2m">
-                  <node concept="HV5vD" id="r$A3E5wo5V" role="2ShVmc">
-                    <ref role="HV5vE" node="r$A3E5vV_o" resolve="PluginData" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="r$A3E5t8iD" role="3cqZAp">
-              <node concept="37vLTI" id="r$A3E5wqdn" role="3clFbG">
-                <node concept="2OqwBi" id="r$A3E5t8sK" role="37vLTJ">
-                  <node concept="37vLTw" id="r$A3E5t8iB" role="2Oq$k0">
-                    <ref role="3cqZAo" node="r$A3E5t75D" resolve="p" />
-                  </node>
-                  <node concept="2OwXpG" id="r$A3E5wpXy" role="2OqNvi">
-                    <ref role="2Oxat5" node="QkG2t1bxbe" resolve="path" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="r$A3E5vbcn" role="37vLTx">
-                  <node concept="37vLTw" id="r$A3E5vbco" role="2Oq$k0">
-                    <ref role="3cqZAo" node="r$A3E5srwf" resolve="e" />
-                  </node>
-                  <node concept="liA8E" id="r$A3E5vbcp" role="2OqNvi">
-                    <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String):java.lang.String" resolve="getAttributeValue" />
-                    <node concept="37vLTw" id="r$A3E5wqfe" role="37wK5m">
-                      <ref role="3cqZAo" node="KL8Aql8eF_" resolve="PATH" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="r$A3E5t9O6" role="3cqZAp">
-              <node concept="37vLTI" id="r$A3E5wrBy" role="3clFbG">
-                <node concept="2OqwBi" id="r$A3E5t9YC" role="37vLTJ">
-                  <node concept="37vLTw" id="r$A3E5t9O4" role="2Oq$k0">
-                    <ref role="3cqZAo" node="r$A3E5t75D" resolve="p" />
-                  </node>
-                  <node concept="2OwXpG" id="r$A3E5wrqO" role="2OqNvi">
-                    <ref role="2Oxat5" node="r$A3E5qOHV" resolve="id" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="r$A3E5vbE5" role="37vLTx">
-                  <node concept="37vLTw" id="r$A3E5vbE6" role="2Oq$k0">
-                    <ref role="3cqZAo" node="r$A3E5srwf" resolve="e" />
-                  </node>
-                  <node concept="liA8E" id="r$A3E5vbE7" role="2OqNvi">
-                    <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String):java.lang.String" resolve="getAttributeValue" />
-                    <node concept="37vLTw" id="r$A3E5wrG7" role="37wK5m">
-                      <ref role="3cqZAo" node="r$A3E5sdV7" resolve="ID" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="r$A3E5srw5" role="3cqZAp">
               <node concept="1rXfSq" id="r$A3E5srw6" role="3clFbG">
                 <ref role="37wK5l" node="r$A3E5sNES" resolve="addPlugin" />
-                <node concept="37vLTw" id="r$A3E5vd1Q" role="37wK5m">
-                  <ref role="3cqZAo" node="r$A3E5t75D" resolve="p" />
+                <node concept="2ShNRf" id="28$8eDn4UaM" role="37wK5m">
+                  <node concept="1pGfFk" id="28$8eDn4UaN" role="2ShVmc">
+                    <ref role="37wK5l" node="4OPNMy23eT$" resolve="PluginData" />
+                    <node concept="2OqwBi" id="28$8eDn4UaO" role="37wK5m">
+                      <node concept="37vLTw" id="28$8eDn4UaP" role="2Oq$k0">
+                        <ref role="3cqZAo" node="r$A3E5srwf" resolve="e" />
+                      </node>
+                      <node concept="liA8E" id="28$8eDn4UaQ" role="2OqNvi">
+                        <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String):java.lang.String" resolve="getAttributeValue" />
+                        <node concept="37vLTw" id="28$8eDn4UaR" role="37wK5m">
+                          <ref role="3cqZAo" node="KL8Aql8eF_" resolve="PATH" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2OqwBi" id="28$8eDn4UaS" role="37wK5m">
+                      <node concept="37vLTw" id="28$8eDn4UaT" role="2Oq$k0">
+                        <ref role="3cqZAo" node="r$A3E5srwf" resolve="e" />
+                      </node>
+                      <node concept="liA8E" id="28$8eDn4UaU" role="2OqNvi">
+                        <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String):java.lang.String" resolve="getAttributeValue" />
+                        <node concept="37vLTw" id="28$8eDn4UaV" role="37wK5m">
+                          <ref role="3cqZAo" node="r$A3E5sdV7" resolve="ID" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -5158,7 +4953,7 @@
       </node>
       <node concept="TZ5HA" id="1288c6E4lzK" role="TZ5H$">
         <node concept="1dT_AC" id="1288c6E4lzL" role="1dT_Ay">
-          <property role="1dT_AB" value="Primary scenario for this class is to get MPS started in a dtinct setup (e.g. by configuring IdeaEnvionment with EnvironmentConfig which gets populated with the properties serialized by this class)" />
+          <property role="1dT_AB" value="Primary scenario for this class is to get MPS started in a distinct setup (e.g. by configuring IdeaEnvionment with EnvironmentConfig which gets populated with the properties serialized by this class)" />
         </node>
       </node>
       <node concept="TZ5HA" id="1288c6E4lxg" role="TZ5H$">
@@ -5193,7 +4988,7 @@
       </node>
       <node concept="TZ5HA" id="1288c6E9o4i" role="TZ5H$">
         <node concept="1dT_AC" id="1288c6E9o4j" role="1dT_Ay">
-          <property role="1dT_AB" value="FIXME auxiliary properties are likely not part of MPS statup sequence" />
+          <property role="1dT_AB" value="FIXME auxiliary properties are likely not part of MPS startup sequence" />
         </node>
       </node>
       <node concept="TZ5HA" id="1288c6E9obG" role="TZ5H$">

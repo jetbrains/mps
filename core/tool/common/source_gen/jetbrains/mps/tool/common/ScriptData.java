@@ -13,14 +13,14 @@ import org.jdom.Element;
 /**
  * Keeps properties necessary to start an MPS instance and to execute a worker class within this new instance. 
  * Primary purpose is to supply persistence of the attributes to ensure they get passed between Java process boundaries.
- * Primary scenario for this class is to get MPS started in a dtinct setup (e.g. by configuring IdeaEnvionment with EnvironmentConfig which gets populated with the properties serialized by this class)
+ * Primary scenario for this class is to get MPS started in a distinct setup (e.g. by configuring IdeaEnvionment with EnvironmentConfig which gets populated with the properties serialized by this class)
  * Unlike Script counterpart, doesn't know anything about specific ant tasks and their possible arguments.
  * 
  * Collections are returned by-reference and could be modified from outside (this class is just a data holder + persistence)
  * 
  * FIXME deserves better name
  * 
- * FIXME auxiliary properties are likely not part of MPS statup sequence
+ * FIXME auxiliary properties are likely not part of MPS startup sequence
  * FIXME myLibraries - what the hell is 'name' key, and do I really want to stick to File there provided I may use macro values as part of a library path
  */
 public class ScriptData {
@@ -138,10 +138,7 @@ public class ScriptData {
       addMacro(e.getAttributeValue(NAME), e.getAttributeValue(VALUE));
     }
     for (Element e : root.getChildren(ELEM_PLUGIN)) {
-      PluginData p = new PluginData();
-      p.path = e.getAttributeValue(PATH);
-      p.id = e.getAttributeValue(ID);
-      addPlugin(p);
+      addPlugin(new PluginData(e.getAttributeValue(PATH), e.getAttributeValue(ID)));
     }
     for (Element e : root.getChildren(ELEM_PROPERTY)) {
       addProperty(e.getAttributeValue(NAME), e.getAttributeValue(VALUE));

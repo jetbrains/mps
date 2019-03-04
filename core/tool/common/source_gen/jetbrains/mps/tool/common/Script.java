@@ -23,9 +23,7 @@ public class Script {
   private static final String ELEMENT_MODULE = "module";
   private static final String ELEMENT_EXCLUDEDFROMDIFF = "excludedFromDiff";
   private static final String ELEMENT_PROJECT = "project";
-  private static final String ELEMENT_PARAMETER = "parameter";
   private static final String PATH = "path";
-  private static final String VALUE = "value";
   private static final String ELEMENT_CHUNK = "chunk";
   private static final String ATTRIBUTE_BOOTSTRAP = "bootstrap";
 
@@ -37,7 +35,6 @@ public class Script {
    * XXX why File, can't I use some macro to specify project location?
    */
   private final List<File> myMPSProjects = new ArrayList<File>(3);
-  private final List<String> myParameters = new ArrayList<String>();
   private final Map<List<String>, Boolean> myChunks = new LinkedHashMap<List<String>, Boolean>();
 
   public Script() {
@@ -149,15 +146,6 @@ public class Script {
   public Level getLogLevel() {
     return myStartupData.getLogLevel();
   }
-  public void addParameter(String parameter) {
-    myParameters.add(parameter);
-  }
-  public List<String> getParameters() {
-    return myParameters;
-  }
-  public void updateParameters(List<String> parameters) {
-    myParameters.addAll(parameters);
-  }
 
   public void addChunk(List<String> modules, boolean isBootstrap) {
     myChunks.put(modules, isBootstrap);
@@ -193,9 +181,6 @@ public class Script {
     for (File f : myMPSProjects) {
       data.addContent(new Element(ELEMENT_PROJECT).setAttribute(PATH, f.getAbsolutePath()));
     }
-    for (String p : myParameters) {
-      data.addContent(new Element(ELEMENT_PARAMETER).setAttribute(VALUE, p));
-    }
     for (Map.Entry<List<String>, Boolean> chunk : myChunks.entrySet()) {
       Element element = new Element(ELEMENT_CHUNK).setAttribute(ATTRIBUTE_BOOTSTRAP, chunk.getValue().toString());
       for (String module : chunk.getKey()) {
@@ -217,8 +202,6 @@ public class Script {
         excludeFileFromDiff(new File(e.getAttributeValue(PATH)));
       } else if (ELEMENT_PROJECT.equals(elementName)) {
         addProjectFile(new File(e.getAttributeValue(PATH)));
-      } else if (ELEMENT_PARAMETER.equals(elementName)) {
-        addParameter(e.getAttributeValue(VALUE));
       } else if (ELEMENT_CHUNK.equals(elementName)) {
         List<String> chunkModules = new ArrayList<String>();
         List modules = e.getChildren();
