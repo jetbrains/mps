@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_SelectPosition extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_SelectPosition extends EnumerationDescriptorB
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x117b13320c9L, "SelectPosition", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1201268793545", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_before_0 = new EnumerationDescriptor.MemberDescriptor("before", "before", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1201268793546", "before");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_after_0 = new EnumerationDescriptor.MemberDescriptor("after", "after", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1201268803781", "after");
+  private final EnumerationDescriptor.MemberDescriptor myMember_before_0 = new EnumerationDescriptor.MemberDescriptor("before", "before", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1201268793546", "before");
+  private final EnumerationDescriptor.MemberDescriptor myMember_after_0 = new EnumerationDescriptor.MemberDescriptor("after", "after", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1201268803781", "after");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x117b13320c9L, 0x117b13320caL, 0x117b13348c5L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_before_0, myMember_after_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_before_0;
+    return myMember_before_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_before_0, VALUE_after_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,16 @@ public class EnumerationDescriptor_SelectPosition extends EnumerationDescriptorB
     }
     switch (string) {
       case "before":
-        return VALUE_before_0;
+        return myMember_before_0;
       case "after":
-        return VALUE_after_0;
+        return myMember_after_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

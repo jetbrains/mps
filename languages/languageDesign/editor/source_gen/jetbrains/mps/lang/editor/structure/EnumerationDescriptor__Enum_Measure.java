@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor__Enum_Measure extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor__Enum_Measure extends EnumerationDescriptorBa
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d915f7d98L, "_Enum_Measure", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504633752", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_PIXELS_0 = new EnumerationDescriptor.MemberDescriptor("PIXELS", "pixels", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504633753", "pixels");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_SPACES_0 = new EnumerationDescriptor.MemberDescriptor("SPACES", "spaces", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504706052", "spaces");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PIXELS_0 = new EnumerationDescriptor.MemberDescriptor("PIXELS", "pixels", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504633753", "pixels");
+  private final EnumerationDescriptor.MemberDescriptor myMember_SPACES_0 = new EnumerationDescriptor.MemberDescriptor("SPACES", "spaces", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1226504706052", "spaces");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d915f7d98L, 0x11d915f7d99L, 0x11d91609804L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_PIXELS_0, myMember_SPACES_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_SPACES_0;
+    return myMember_SPACES_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_PIXELS_0, VALUE_SPACES_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,16 @@ public class EnumerationDescriptor__Enum_Measure extends EnumerationDescriptorBa
     }
     switch (string) {
       case "PIXELS":
-        return VALUE_PIXELS_0;
+        return myMember_PIXELS_0;
       case "SPACES":
-        return VALUE_SPACES_0;
+        return myMember_SPACES_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

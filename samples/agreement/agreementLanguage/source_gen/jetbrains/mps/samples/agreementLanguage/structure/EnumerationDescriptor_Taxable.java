@@ -5,10 +5,10 @@ package jetbrains.mps.samples.agreementLanguage.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_Taxable extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_Taxable extends EnumerationDescriptorBase {
     super(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x103ecb77bbfL, "Taxable", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1116367977407", PrimitiveTypeId.BOOLEAN);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_true_0 = new EnumerationDescriptor.MemberDescriptor("true", "TAXABLE", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1116367977408", "taxable");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_false_0 = new EnumerationDescriptor.MemberDescriptor("false", "TAXFREE", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1116368030878", "tax_free");
+  private final EnumerationDescriptor.MemberDescriptor myMember_true_0 = new EnumerationDescriptor.MemberDescriptor("true", "TAXABLE", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1116367977408", "taxable");
+  private final EnumerationDescriptor.MemberDescriptor myMember_false_0 = new EnumerationDescriptor.MemberDescriptor("false", "TAXFREE", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1116368030878", "tax_free");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x103ecb77bbfL, 0x103ecb77bc0L, 0x103ecb84c9eL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_true_0, myMember_false_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_true_0;
+    return myMember_true_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_true_0, VALUE_false_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,17 @@ public class EnumerationDescriptor_Taxable extends EnumerationDescriptorBase {
     }
     switch (string) {
       case "true":
-        return VALUE_true_0;
+        return myMember_true_0;
       case "false":
-        return VALUE_false_0;
+        return myMember_false_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

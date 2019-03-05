@@ -5,10 +5,10 @@ package jetbrains.mps.baseLanguage.math.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_MatrixNormKind extends EnumerationDescriptorBase {
 
@@ -16,21 +16,24 @@ public class EnumerationDescriptor_MatrixNormKind extends EnumerationDescriptorB
     super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, "MatrixNormKind", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666038", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "1", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666039", "norm1");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "∞", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666040", "normInfty");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "F", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666041", "norm2F");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "max", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666042", "normMax");
+  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "1", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666039", "norm1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "∞", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666040", "normInfty");
+  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "F", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666041", "norm2F");
+  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "max", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/758819215871666042", "normMax");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, 0xa87de0e72c56777L, 0xa87de0e72c56778L, 0xa87de0e72c56779L, 0xa87de0e72c5677aL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_1_0;
+    return myMember_1_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_0_0, VALUE_1_0, VALUE_2_0, VALUE_3_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -41,14 +44,21 @@ public class EnumerationDescriptor_MatrixNormKind extends EnumerationDescriptorB
     }
     switch (string) {
       case "0":
-        return VALUE_0_0;
+        return myMember_0_0;
       case "1":
-        return VALUE_1_0;
+        return myMember_1_0;
       case "2":
-        return VALUE_2_0;
+        return myMember_2_0;
       case "3":
-        return VALUE_3_0;
+        return myMember_3_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

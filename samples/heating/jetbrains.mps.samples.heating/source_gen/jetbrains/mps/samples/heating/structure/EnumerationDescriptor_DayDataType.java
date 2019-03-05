@@ -5,10 +5,10 @@ package jetbrains.mps.samples.heating.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_DayDataType extends EnumerationDescriptorBase {
 
@@ -16,24 +16,27 @@ public class EnumerationDescriptor_DayDataType extends EnumerationDescriptorBase
     super(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce0948664L, "DayDataType", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346660", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_monday_0 = new EnumerationDescriptor.MemberDescriptor("monday", "Monday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346661", "monday");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_tuesday_0 = new EnumerationDescriptor.MemberDescriptor("tuesday", "Tuesday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346662", "tuesday");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_wednesday_0 = new EnumerationDescriptor.MemberDescriptor("wednesday", "Wednesday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346665", "wednesday");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_thursday_0 = new EnumerationDescriptor.MemberDescriptor("thursday", "Thursday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346669", "thursday");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_friday_0 = new EnumerationDescriptor.MemberDescriptor("friday", "Friday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346674", "friday");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_saturday_0 = new EnumerationDescriptor.MemberDescriptor("saturday", "Saturday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346680", "saturday");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_sunday_0 = new EnumerationDescriptor.MemberDescriptor("sunday", "Sunday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346687", "sunday");
+  private final EnumerationDescriptor.MemberDescriptor myMember_monday_0 = new EnumerationDescriptor.MemberDescriptor("monday", "Monday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346661", "monday");
+  private final EnumerationDescriptor.MemberDescriptor myMember_tuesday_0 = new EnumerationDescriptor.MemberDescriptor("tuesday", "Tuesday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346662", "tuesday");
+  private final EnumerationDescriptor.MemberDescriptor myMember_wednesday_0 = new EnumerationDescriptor.MemberDescriptor("wednesday", "Wednesday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346665", "wednesday");
+  private final EnumerationDescriptor.MemberDescriptor myMember_thursday_0 = new EnumerationDescriptor.MemberDescriptor("thursday", "Thursday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346669", "thursday");
+  private final EnumerationDescriptor.MemberDescriptor myMember_friday_0 = new EnumerationDescriptor.MemberDescriptor("friday", "Friday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346674", "friday");
+  private final EnumerationDescriptor.MemberDescriptor myMember_saturday_0 = new EnumerationDescriptor.MemberDescriptor("saturday", "Saturday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346680", "saturday");
+  private final EnumerationDescriptor.MemberDescriptor myMember_sunday_0 = new EnumerationDescriptor.MemberDescriptor("sunday", "Sunday", "r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)/5063359128233346687", "sunday");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce0948664L, 0x4644aa4ce0948665L, 0x4644aa4ce0948666L, 0x4644aa4ce0948669L, 0x4644aa4ce094866dL, 0x4644aa4ce0948672L, 0x4644aa4ce0948678L, 0x4644aa4ce094867fL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_monday_0, myMember_tuesday_0, myMember_wednesday_0, myMember_thursday_0, myMember_friday_0, myMember_saturday_0, myMember_sunday_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_monday_0;
+    return myMember_monday_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_monday_0, VALUE_tuesday_0, VALUE_wednesday_0, VALUE_thursday_0, VALUE_friday_0, VALUE_saturday_0, VALUE_sunday_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -44,20 +47,27 @@ public class EnumerationDescriptor_DayDataType extends EnumerationDescriptorBase
     }
     switch (string) {
       case "monday":
-        return VALUE_monday_0;
+        return myMember_monday_0;
       case "tuesday":
-        return VALUE_tuesday_0;
+        return myMember_tuesday_0;
       case "wednesday":
-        return VALUE_wednesday_0;
+        return myMember_wednesday_0;
       case "thursday":
-        return VALUE_thursday_0;
+        return myMember_thursday_0;
       case "friday":
-        return VALUE_friday_0;
+        return myMember_friday_0;
       case "saturday":
-        return VALUE_saturday_0;
+        return myMember_saturday_0;
       case "sunday":
-        return VALUE_sunday_0;
+        return myMember_sunday_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

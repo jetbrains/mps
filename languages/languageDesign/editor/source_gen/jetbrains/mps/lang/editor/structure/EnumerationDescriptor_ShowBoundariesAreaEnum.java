@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_ShowBoundariesAreaEnum extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_ShowBoundariesAreaEnum extends EnumerationDes
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49177f9006c13bdaL, "ShowBoundariesAreaEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429658", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_GUTTER_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER", "gutter", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429659", "GUTTER");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_GUTTER_AND_EDITOR_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER_AND_EDITOR", "gutter-and-editor", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429768", "GUTTER_AND_EDITOR");
+  private final EnumerationDescriptor.MemberDescriptor myMember_GUTTER_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER", "gutter", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429659", "GUTTER");
+  private final EnumerationDescriptor.MemberDescriptor myMember_GUTTER_AND_EDITOR_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER_AND_EDITOR", "gutter-and-editor", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5266818545798429768", "GUTTER_AND_EDITOR");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49177f9006c13bdaL, 0x49177f9006c13bdbL, 0x49177f9006c13c48L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_GUTTER_0, myMember_GUTTER_AND_EDITOR_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_GUTTER_0;
+    return myMember_GUTTER_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_GUTTER_0, VALUE_GUTTER_AND_EDITOR_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,16 @@ public class EnumerationDescriptor_ShowBoundariesAreaEnum extends EnumerationDes
     }
     switch (string) {
       case "GUTTER":
-        return VALUE_GUTTER_0;
+        return myMember_GUTTER_0;
       case "GUTTER_AND_EDITOR":
-        return VALUE_GUTTER_AND_EDITOR_0;
+        return myMember_GUTTER_AND_EDITOR_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

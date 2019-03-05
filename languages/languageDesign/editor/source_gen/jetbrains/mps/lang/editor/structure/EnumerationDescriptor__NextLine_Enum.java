@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor__NextLine_Enum extends EnumerationDescriptorBase {
 
@@ -16,34 +16,43 @@ public class EnumerationDescriptor__NextLine_Enum extends EnumerationDescriptorB
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, "_NextLine_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308376568", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE__0 = new EnumerationDescriptor.MemberDescriptor(null, "right", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308507057", "right");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_nextline_0 = new EnumerationDescriptor.MemberDescriptor("next-line", "next-line", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308502931", "next-line");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_indented_0 = new EnumerationDescriptor.MemberDescriptor("indented", "indented", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308376569", "indented");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "right", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308507057", "right");
+  private final EnumerationDescriptor.MemberDescriptor myMember_nextline_0 = new EnumerationDescriptor.MemberDescriptor("next-line", "next-line", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308502931", "next-line");
+  private final EnumerationDescriptor.MemberDescriptor myMember_indented_0 = new EnumerationDescriptor.MemberDescriptor("indented", "indented", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216308376569", "indented");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, 0x11b31a2f1b1L, 0x11b31a2e193L, 0x11b31a0f3f9L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_nextline_0, myMember_indented_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE__0;
+    return myMember__0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE__0, VALUE_nextline_0, VALUE_indented_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
     if (string == null) {
-      return VALUE__0;
+      return myMember__0;
     }
     switch (string) {
       case "next-line":
-        return VALUE_nextline_0;
+        return myMember_nextline_0;
       case "indented":
-        return VALUE_indented_0;
+        return myMember_indented_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

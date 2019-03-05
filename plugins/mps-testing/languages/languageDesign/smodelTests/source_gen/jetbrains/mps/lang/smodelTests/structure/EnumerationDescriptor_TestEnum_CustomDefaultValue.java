@@ -5,10 +5,10 @@ package jetbrains.mps.lang.smodelTests.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_TestEnum_CustomDefaultValue extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_TestEnum_CustomDefaultValue extends Enumerati
     super(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, "TestEnum_CustomDefaultValue", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599819", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_a_0 = new EnumerationDescriptor.MemberDescriptor("a", "NotDefualt_A", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599820", "a");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_b_0 = new EnumerationDescriptor.MemberDescriptor("b", "Default_B", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599821", "b");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_c_0 = new EnumerationDescriptor.MemberDescriptor("c", "NotDefualt_C", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599824", "c");
+  private final EnumerationDescriptor.MemberDescriptor myMember_a_0 = new EnumerationDescriptor.MemberDescriptor("a", "NotDefualt_A", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599820", "a");
+  private final EnumerationDescriptor.MemberDescriptor myMember_b_0 = new EnumerationDescriptor.MemberDescriptor("b", "Default_B", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599821", "b");
+  private final EnumerationDescriptor.MemberDescriptor myMember_c_0 = new EnumerationDescriptor.MemberDescriptor("c", "NotDefualt_C", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1408723013993599824", "c");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x138cca1e1401934bL, 0x138cca1e1401934cL, 0x138cca1e1401934dL, 0x138cca1e14019350L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_a_0, myMember_b_0, myMember_c_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_b_0;
+    return myMember_b_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_a_0, VALUE_b_0, VALUE_c_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,19 @@ public class EnumerationDescriptor_TestEnum_CustomDefaultValue extends Enumerati
     }
     switch (string) {
       case "a":
-        return VALUE_a_0;
+        return myMember_a_0;
       case "b":
-        return VALUE_b_0;
+        return myMember_b_0;
       case "c":
-        return VALUE_c_0;
+        return myMember_c_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

@@ -5,10 +5,10 @@ package jetbrains.mps.lang.smodelTests.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_TestEnum_CustomIdentifier extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_TestEnum_CustomIdentifier extends Enumeration
     super(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, "TestEnum_CustomIdentifier", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346297", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_value_1_0 = new EnumerationDescriptor.MemberDescriptor("value_1", "presentation_1", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346298", "identifier_1");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_value_2_0 = new EnumerationDescriptor.MemberDescriptor("value_2", "presentation_2", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346299", "identifier_2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_value_1_0 = new EnumerationDescriptor.MemberDescriptor("value_1", "presentation_1", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346298", "identifier_1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_value_2_0 = new EnumerationDescriptor.MemberDescriptor("value_2", "presentation_2", "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/1322863731089346299", "identifier_2");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x125bc18df9d40ef9L, 0x125bc18df9d40efaL, 0x125bc18df9d40efbL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_value_1_0, myMember_value_2_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_value_1_0;
+    return myMember_value_1_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_value_1_0, VALUE_value_2_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,17 @@ public class EnumerationDescriptor_TestEnum_CustomIdentifier extends Enumeration
     }
     switch (string) {
       case "value_1":
-        return VALUE_value_1_0;
+        return myMember_value_1_0;
       case "value_2":
-        return VALUE_value_2_0;
+        return myMember_value_2_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

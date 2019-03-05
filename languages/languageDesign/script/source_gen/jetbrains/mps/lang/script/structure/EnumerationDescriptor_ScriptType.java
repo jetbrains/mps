@@ -5,10 +5,10 @@ package jetbrains.mps.lang.script.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_ScriptType extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_ScriptType extends EnumerationDescriptorBase 
     super(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x498b4f71ee081150L, "ScriptType", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925392", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_enhancement_0 = new EnumerationDescriptor.MemberDescriptor("enhancement", "enhancement", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925393", "enhancement");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_migration_0 = new EnumerationDescriptor.MemberDescriptor("migration", "migration", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925394", "migration");
+  private final EnumerationDescriptor.MemberDescriptor myMember_enhancement_0 = new EnumerationDescriptor.MemberDescriptor("enhancement", "enhancement", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925393", "enhancement");
+  private final EnumerationDescriptor.MemberDescriptor myMember_migration_0 = new EnumerationDescriptor.MemberDescriptor("migration", "migration", "r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)/5299416737274925394", "migration");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x498b4f71ee081150L, 0x498b4f71ee081151L, 0x498b4f71ee081152L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_enhancement_0, myMember_migration_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_enhancement_0;
+    return myMember_enhancement_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_enhancement_0, VALUE_migration_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,16 @@ public class EnumerationDescriptor_ScriptType extends EnumerationDescriptorBase 
     }
     switch (string) {
       case "enhancement":
-        return VALUE_enhancement_0;
+        return myMember_enhancement_0;
       case "migration":
-        return VALUE_migration_0;
+        return myMember_migration_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

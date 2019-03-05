@@ -5,10 +5,10 @@ package jetbrains.mps.transformation.test.inputLang.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_Option extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_Option extends EnumerationDescriptorBase {
     super(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645a380abL, "Option", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1195169251499", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_option_default_0 = new EnumerationDescriptor.MemberDescriptor("option_default", "option_default", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1195169251500", "option_default");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_option_1_0 = new EnumerationDescriptor.MemberDescriptor("option_1", "option_1", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1195169295907", "option_1");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_drop_it_0 = new EnumerationDescriptor.MemberDescriptor("drop_it", "drop it", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202780730330", "drop_it");
+  private final EnumerationDescriptor.MemberDescriptor myMember_option_default_0 = new EnumerationDescriptor.MemberDescriptor("option_default", "option_default", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1195169251500", "option_default");
+  private final EnumerationDescriptor.MemberDescriptor myMember_option_1_0 = new EnumerationDescriptor.MemberDescriptor("option_1", "option_1", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1195169295907", "option_1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_drop_it_0 = new EnumerationDescriptor.MemberDescriptor("drop_it", "drop it", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202780730330", "drop_it");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645a380abL, 0x11645a380acL, 0x11645a42e23L, 0x1180b5173daL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_option_default_0, myMember_option_1_0, myMember_drop_it_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_option_default_0;
+    return myMember_option_default_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_option_default_0, VALUE_option_1_0, VALUE_drop_it_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,19 @@ public class EnumerationDescriptor_Option extends EnumerationDescriptorBase {
     }
     switch (string) {
       case "option_default":
-        return VALUE_option_default_0;
+        return myMember_option_default_0;
       case "option_1":
-        return VALUE_option_1_0;
+        return myMember_option_1_0;
       case "drop_it":
-        return VALUE_drop_it_0;
+        return myMember_drop_it_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

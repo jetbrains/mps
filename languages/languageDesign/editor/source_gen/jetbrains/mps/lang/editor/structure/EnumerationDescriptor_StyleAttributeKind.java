@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_StyleAttributeKind extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_StyleAttributeKind extends EnumerationDescrip
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x78f111e66a6f854cL, "StyleAttributeKind", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8714766435264464204", PrimitiveTypeId.BOOLEAN);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_true_0 = new EnumerationDescriptor.MemberDescriptor("true", "inherited", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8714766435264464205", "inherited");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_false_0 = new EnumerationDescriptor.MemberDescriptor("false", "simple", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8714766435264464206", "simple");
+  private final EnumerationDescriptor.MemberDescriptor myMember_true_0 = new EnumerationDescriptor.MemberDescriptor("true", "inherited", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8714766435264464205", "inherited");
+  private final EnumerationDescriptor.MemberDescriptor myMember_false_0 = new EnumerationDescriptor.MemberDescriptor("false", "simple", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/8714766435264464206", "simple");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x78f111e66a6f854cL, 0x78f111e66a6f854dL, 0x78f111e66a6f854eL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_true_0, myMember_false_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_true_0;
+    return myMember_true_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_true_0, VALUE_false_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,16 @@ public class EnumerationDescriptor_StyleAttributeKind extends EnumerationDescrip
     }
     switch (string) {
       case "true":
-        return VALUE_true_0;
+        return myMember_true_0;
       case "false":
-        return VALUE_false_0;
+        return myMember_false_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

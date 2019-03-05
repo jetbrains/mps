@@ -5,10 +5,10 @@ package jetbrains.mps.samples.notesOrganizer.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_NotesPresentation extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_NotesPresentation extends EnumerationDescript
     super(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b1640efd5L, "NotesPresentation", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051925", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_default_0 = new EnumerationDescriptor.MemberDescriptor("default", "default", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051926", "default");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_compact_0 = new EnumerationDescriptor.MemberDescriptor("compact", "compact", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051930", "compact");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_inspected_0 = new EnumerationDescriptor.MemberDescriptor("inspected", "inspected", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051933", "inspected");
+  private final EnumerationDescriptor.MemberDescriptor myMember_default_0 = new EnumerationDescriptor.MemberDescriptor("default", "default", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051926", "default");
+  private final EnumerationDescriptor.MemberDescriptor myMember_compact_0 = new EnumerationDescriptor.MemberDescriptor("compact", "compact", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051930", "compact");
+  private final EnumerationDescriptor.MemberDescriptor myMember_inspected_0 = new EnumerationDescriptor.MemberDescriptor("inspected", "inspected", "r:d80ddecc-25d5-4844-86af-49ea7b4962af(jetbrains.mps.samples.notesOrganizer.structure)/8908453262580051933", "inspected");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b1640efd5L, 0x7ba12f0b1640efd6L, 0x7ba12f0b1640efdaL, 0x7ba12f0b1640efddL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_default_0, myMember_compact_0, myMember_inspected_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_default_0;
+    return myMember_default_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_default_0, VALUE_compact_0, VALUE_inspected_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,19 @@ public class EnumerationDescriptor_NotesPresentation extends EnumerationDescript
     }
     switch (string) {
       case "default":
-        return VALUE_default_0;
+        return myMember_default_0;
       case "compact":
-        return VALUE_compact_0;
+        return myMember_compact_0;
       case "inspected":
-        return VALUE_inspected_0;
+        return myMember_inspected_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

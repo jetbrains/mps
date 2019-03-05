@@ -5,10 +5,10 @@ package jetbrains.mps.lang.refactoring.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_RefactoringTargetKind_Enum extends EnumerationDescriptorBase {
 
@@ -16,40 +16,49 @@ public class EnumerationDescriptor_RefactoringTargetKind_Enum extends Enumeratio
     super(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1199f59d376L, "RefactoringTargetKind_Enum", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1209559274358", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE__0 = new EnumerationDescriptor.MemberDescriptor(null, "node", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1209559274359", "node");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_model_0 = new EnumerationDescriptor.MemberDescriptor("model", "model", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1209559325846", "model");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_language_0 = new EnumerationDescriptor.MemberDescriptor("language", "language", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1210084441783", "language");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_solution_0 = new EnumerationDescriptor.MemberDescriptor("solution", "solution", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1210084444144", "solution");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_devkit_0 = new EnumerationDescriptor.MemberDescriptor("devkit", "devkit", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1210084445238", "devkit");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "node", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1209559274359", "node");
+  private final EnumerationDescriptor.MemberDescriptor myMember_model_0 = new EnumerationDescriptor.MemberDescriptor("model", "model", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1209559325846", "model");
+  private final EnumerationDescriptor.MemberDescriptor myMember_language_0 = new EnumerationDescriptor.MemberDescriptor("language", "language", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1210084441783", "language");
+  private final EnumerationDescriptor.MemberDescriptor myMember_solution_0 = new EnumerationDescriptor.MemberDescriptor("solution", "solution", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1210084444144", "solution");
+  private final EnumerationDescriptor.MemberDescriptor myMember_devkit_0 = new EnumerationDescriptor.MemberDescriptor("devkit", "devkit", "r:00000000-0000-4000-0000-011c89590319(jetbrains.mps.lang.refactoring.structure)/1210084445238", "devkit");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1199f59d376L, 0x1199f59d377L, 0x1199f5a9c96L, 0x119bea73eb7L, 0x119bea747f0L, 0x119bea74c36L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_model_0, myMember_language_0, myMember_solution_0, myMember_devkit_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE__0;
+    return myMember__0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE__0, VALUE_model_0, VALUE_language_0, VALUE_solution_0, VALUE_devkit_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
     if (string == null) {
-      return VALUE__0;
+      return myMember__0;
     }
     switch (string) {
       case "model":
-        return VALUE_model_0;
+        return myMember_model_0;
       case "language":
-        return VALUE_language_0;
+        return myMember_language_0;
       case "solution":
-        return VALUE_solution_0;
+        return myMember_solution_0;
       case "devkit":
-        return VALUE_devkit_0;
+        return myMember_devkit_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

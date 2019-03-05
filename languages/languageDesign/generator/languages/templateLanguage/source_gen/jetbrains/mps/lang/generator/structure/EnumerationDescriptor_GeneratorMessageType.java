@@ -5,10 +5,10 @@ package jetbrains.mps.lang.generator.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_GeneratorMessageType extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_GeneratorMessageType extends EnumerationDescr
     super(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c71875L, "GeneratorMessageType", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670215797", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_info_0 = new EnumerationDescriptor.MemberDescriptor("info", "info", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670215798", "info");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_warning_0 = new EnumerationDescriptor.MemberDescriptor("warning", "warning", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670280596", "warning");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670287832", "error");
+  private final EnumerationDescriptor.MemberDescriptor myMember_info_0 = new EnumerationDescriptor.MemberDescriptor("info", "info", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670215798", "info");
+  private final EnumerationDescriptor.MemberDescriptor myMember_warning_0 = new EnumerationDescriptor.MemberDescriptor("warning", "warning", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670280596", "warning");
+  private final EnumerationDescriptor.MemberDescriptor myMember_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169670287832", "error");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c71875L, 0x11055c71876L, 0x11055c81594L, 0x11055c831d8L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_info_0, myMember_warning_0, myMember_error_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_info_0;
+    return myMember_info_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_info_0, VALUE_warning_0, VALUE_error_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,18 @@ public class EnumerationDescriptor_GeneratorMessageType extends EnumerationDescr
     }
     switch (string) {
       case "info":
-        return VALUE_info_0;
+        return myMember_info_0;
       case "warning":
-        return VALUE_warning_0;
+        return myMember_warning_0;
       case "error":
-        return VALUE_error_0;
+        return myMember_error_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

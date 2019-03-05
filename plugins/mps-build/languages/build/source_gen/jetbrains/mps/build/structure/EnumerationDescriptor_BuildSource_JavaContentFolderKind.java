@@ -5,10 +5,10 @@ package jetbrains.mps.build.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_BuildSource_JavaContentFolderKind extends EnumerationDescriptorBase {
 
@@ -16,9 +16,12 @@ public class EnumerationDescriptor_BuildSource_JavaContentFolderKind extends Enu
     super(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "BuildSource_JavaContentFolderKind", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265463", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_source_0 = new EnumerationDescriptor.MemberDescriptor("source", "source", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265464", "source");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_test_0 = new EnumerationDescriptor.MemberDescriptor("test", "test", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265465", "test");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_excluded_0 = new EnumerationDescriptor.MemberDescriptor("excluded", "excluded", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265466", "excluded");
+  private final EnumerationDescriptor.MemberDescriptor myMember_source_0 = new EnumerationDescriptor.MemberDescriptor("source", "source", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265464", "source");
+  private final EnumerationDescriptor.MemberDescriptor myMember_test_0 = new EnumerationDescriptor.MemberDescriptor("test", "test", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265465", "test");
+  private final EnumerationDescriptor.MemberDescriptor myMember_excluded_0 = new EnumerationDescriptor.MemberDescriptor("excluded", "excluded", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288265466", "excluded");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, 0x48d5d03db92974f8L, 0x48d5d03db92974f9L, 0x48d5d03db92974faL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_source_0, myMember_test_0, myMember_excluded_0);
 
   @Nullable
   @Override
@@ -28,8 +31,8 @@ public class EnumerationDescriptor_BuildSource_JavaContentFolderKind extends Enu
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_source_0, VALUE_test_0, VALUE_excluded_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,19 @@ public class EnumerationDescriptor_BuildSource_JavaContentFolderKind extends Enu
     }
     switch (string) {
       case "source":
-        return VALUE_source_0;
+        return myMember_source_0;
       case "test":
-        return VALUE_test_0;
+        return myMember_test_0;
       case "excluded":
-        return VALUE_excluded_0;
+        return myMember_excluded_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

@@ -5,10 +5,10 @@ package jetbrains.mps.make.facet.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_TargetDependencyQualifier extends EnumerationDescriptorBase {
 
@@ -16,21 +16,24 @@ public class EnumerationDescriptor_TargetDependencyQualifier extends Enumeration
     super(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "TargetDependencyQualifier", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326370", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("BEFORE", "before", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326371", "before");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_NOT_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("NOT_BEFORE", "not before", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326373", "not before");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("AFTER", "after", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326374", "after");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_NOT_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("NOT_AFTER", "not after", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326375", "not after");
+  private final EnumerationDescriptor.MemberDescriptor myMember_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("BEFORE", "before", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326371", "before");
+  private final EnumerationDescriptor.MemberDescriptor myMember_NOT_BEFORE_0 = new EnumerationDescriptor.MemberDescriptor("NOT_BEFORE", "not before", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326373", "not before");
+  private final EnumerationDescriptor.MemberDescriptor myMember_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("AFTER", "after", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326374", "after");
+  private final EnumerationDescriptor.MemberDescriptor myMember_NOT_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("NOT_AFTER", "not after", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/8351679702044326375", "not after");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, 0x73e720709e3139e3L, 0x73e720709e3139e5L, 0x73e720709e3139e6L, 0x73e720709e3139e7L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_BEFORE_0, myMember_NOT_BEFORE_0, myMember_AFTER_0, myMember_NOT_AFTER_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_BEFORE_0;
+    return myMember_BEFORE_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_BEFORE_0, VALUE_NOT_BEFORE_0, VALUE_AFTER_0, VALUE_NOT_AFTER_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -41,14 +44,20 @@ public class EnumerationDescriptor_TargetDependencyQualifier extends Enumeration
     }
     switch (string) {
       case "BEFORE":
-        return VALUE_BEFORE_0;
+        return myMember_BEFORE_0;
       case "NOT_BEFORE":
-        return VALUE_NOT_BEFORE_0;
+        return myMember_NOT_BEFORE_0;
       case "AFTER":
-        return VALUE_AFTER_0;
+        return myMember_AFTER_0;
       case "NOT_AFTER":
-        return VALUE_NOT_AFTER_0;
+        return myMember_NOT_AFTER_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

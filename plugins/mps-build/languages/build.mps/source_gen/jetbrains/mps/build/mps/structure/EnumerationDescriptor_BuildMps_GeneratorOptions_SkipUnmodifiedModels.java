@@ -5,10 +5,10 @@ package jetbrains.mps.build.mps.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_BuildMps_GeneratorOptions_SkipUnmodifiedModels extends EnumerationDescriptorBase {
 
@@ -16,31 +16,41 @@ public class EnumerationDescriptor_BuildMps_GeneratorOptions_SkipUnmodifiedModel
     super(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37b3e610a73c6cbL, "BuildMps_GeneratorOptions_SkipUnmodifiedModels", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/250862790757304011", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE__0 = new EnumerationDescriptor.MemberDescriptor(null, "use mps.generator.skipUnmodifiedModels macro", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/250862790757304012", "use mps.generator.skipUnmodifiedModels macro");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_never_0 = new EnumerationDescriptor.MemberDescriptor("never", "never", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/250862790757304013", "never");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "use mps.generator.skipUnmodifiedModels macro", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/250862790757304012", "use mps.generator.skipUnmodifiedModels macro");
+  private final EnumerationDescriptor.MemberDescriptor myMember_never_0 = new EnumerationDescriptor.MemberDescriptor("never", "never", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/250862790757304013", "never");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37b3e610a73c6cbL, 0x37b3e610a73c6ccL, 0x37b3e610a73c6cdL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_never_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE__0;
+    return myMember__0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE__0, VALUE_never_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
     if (string == null) {
-      return VALUE__0;
+      return myMember__0;
     }
     switch (string) {
       case "never":
-        return VALUE_never_0;
+        return myMember_never_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

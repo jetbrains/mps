@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_TestSubstituteEnumDataType extends EnumerationDescriptorBase {
 
@@ -16,8 +16,11 @@ public class EnumerationDescriptor_TestSubstituteEnumDataType extends Enumeratio
     super(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1807L, "TestSubstituteEnumDataType", "r:c9a3f91a-729c-4ebe-a9f0-0bd3bc03e39c(jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure)/476103360378640391", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_myFirstValue_0 = new EnumerationDescriptor.MemberDescriptor("myFirstValue", "first presentation", "r:c9a3f91a-729c-4ebe-a9f0-0bd3bc03e39c(jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure)/476103360378640392", "first presentation");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_mySecondValue_0 = new EnumerationDescriptor.MemberDescriptor("mySecondValue", "second presentation", "r:c9a3f91a-729c-4ebe-a9f0-0bd3bc03e39c(jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure)/476103360378640393", "second presentation");
+  private final EnumerationDescriptor.MemberDescriptor myMember_myFirstValue_0 = new EnumerationDescriptor.MemberDescriptor("myFirstValue", "first presentation", "r:c9a3f91a-729c-4ebe-a9f0-0bd3bc03e39c(jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure)/476103360378640392", "first presentation");
+  private final EnumerationDescriptor.MemberDescriptor myMember_mySecondValue_0 = new EnumerationDescriptor.MemberDescriptor("mySecondValue", "second presentation", "r:c9a3f91a-729c-4ebe-a9f0-0bd3bc03e39c(jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure)/476103360378640393", "second presentation");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1807L, 0x69b757bd7bd1808L, 0x69b757bd7bd1809L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_myFirstValue_0, myMember_mySecondValue_0);
 
   @Nullable
   @Override
@@ -27,8 +30,8 @@ public class EnumerationDescriptor_TestSubstituteEnumDataType extends Enumeratio
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_myFirstValue_0, VALUE_mySecondValue_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,17 @@ public class EnumerationDescriptor_TestSubstituteEnumDataType extends Enumeratio
     }
     switch (string) {
       case "myFirstValue":
-        return VALUE_myFirstValue_0;
+        return myMember_myFirstValue_0;
       case "mySecondValue":
-        return VALUE_mySecondValue_0;
+        return myMember_mySecondValue_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

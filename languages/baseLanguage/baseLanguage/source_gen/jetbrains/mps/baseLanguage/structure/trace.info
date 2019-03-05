@@ -6918,37 +6918,45 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514374">
     <file name="EnumerationDescriptor_TrimKind.java">
       <node id="1225271514374" at="15,43,16,198" concept="9" />
-      <node id="1225271514375" at="19,0,20,0" concept="2" trace="VALUE_both_0" />
-      <node id="1225271514376" at="20,0,21,0" concept="2" trace="VALUE_leading_0" />
-      <node id="1225271514377" at="21,0,22,0" concept="2" trace="VALUE_trailing_0" />
-      <node id="1225271514374" at="25,62,26,24" concept="6" />
-      <node id="1225271514374" at="31,74,32,74" concept="6" />
-      <node id="1225271514374" at="38,25,39,18" concept="6" />
-      <node id="1225271514375" at="42,18,43,28" concept="6" />
-      <node id="1225271514376" at="44,21,45,31" concept="6" />
-      <node id="1225271514377" at="46,22,47,32" concept="6" />
-      <node id="1225271514374" at="48,5,49,16" concept="6" />
+      <node id="1225271514375" at="19,0,20,0" concept="2" trace="myMember_both_0" />
+      <node id="1225271514376" at="20,0,21,0" concept="2" trace="myMember_leading_0" />
+      <node id="1225271514377" at="21,0,22,0" concept="2" trace="myMember_trailing_0" />
+      <node id="1225271514374" at="23,0,24,0" concept="2" trace="myIndex" />
+      <node id="1225271514374" at="24,0,25,0" concept="2" trace="myMembers" />
+      <node id="1225271514374" at="28,62,29,27" concept="6" />
+      <node id="1225271514374" at="34,68,35,21" concept="6" />
+      <node id="1225271514374" at="41,25,42,18" concept="6" />
+      <node id="1225271514375" at="45,18,46,31" concept="6" />
+      <node id="1225271514376" at="47,21,48,34" concept="6" />
+      <node id="1225271514377" at="49,22,50,35" concept="6" />
+      <node id="1225271514374" at="51,5,52,16" concept="6" />
+      <node id="1225271514374" at="57,73,58,49" concept="6" />
       <node id="1225271514374" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_TrimKind#()V" />
-      <node id="1225271514374" at="37,84,40,5" concept="3" />
-      <node id="1225271514374" at="23,0,28,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
-      <node id="1225271514374" at="29,0,34,0" concept="4" trace="getMembers#()Ljava/util/Collection;" />
-      <node id="1225271514374" at="40,5,48,5" concept="10" />
-      <node id="1225271514374" at="35,0,51,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="1225271514374" at="40,84,43,5" concept="3" />
+      <node id="1225271514374" at="26,0,31,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="1225271514374" at="32,0,37,0" concept="4" trace="getMembers#()Ljava/util/List;" />
+      <node id="1225271514374" at="55,0,60,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="1225271514374" at="43,5,51,5" concept="10" />
+      <node id="1225271514374" at="38,0,54,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
       <scope id="1225271514374" at="15,43,16,198" />
-      <scope id="1225271514374" at="25,62,26,24" />
-      <scope id="1225271514374" at="31,74,32,74" />
-      <scope id="1225271514374" at="38,25,39,18" />
-      <scope id="1225271514375" at="42,18,43,28" />
-      <scope id="1225271514376" at="44,21,45,31" />
-      <scope id="1225271514377" at="46,22,47,32" />
+      <scope id="1225271514374" at="28,62,29,27" />
+      <scope id="1225271514374" at="34,68,35,21" />
+      <scope id="1225271514374" at="41,25,42,18" />
+      <scope id="1225271514375" at="45,18,46,31" />
+      <scope id="1225271514376" at="47,21,48,34" />
+      <scope id="1225271514377" at="49,22,50,35" />
+      <scope id="1225271514374" at="57,73,58,49" />
       <scope id="1225271514374" at="15,0,18,0" />
-      <scope id="1225271514374" at="23,0,28,0" />
-      <scope id="1225271514374" at="29,0,34,0" />
-      <scope id="1225271514374" at="37,84,49,16" />
-      <scope id="1225271514374" at="35,0,51,0">
+      <scope id="1225271514374" at="26,0,31,0" />
+      <scope id="1225271514374" at="32,0,37,0" />
+      <scope id="1225271514374" at="55,0,60,0">
+        <var name="idValue" id="1225271514374" />
+      </scope>
+      <scope id="1225271514374" at="40,84,52,16" />
+      <scope id="1225271514374" at="38,0,54,0">
         <var name="string" id="1225271514374" />
       </scope>
-      <unit id="1225271514374" at="13,0,52,0" name="jetbrains.mps.baseLanguage.structure.EnumerationDescriptor_TrimKind" />
+      <unit id="1225271514374" at="13,0,61,0" name="jetbrains.mps.baseLanguage.structure.EnumerationDescriptor_TrimKind" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1225271514374" at="310,0,311,0" concept="2" trace="myEnumerationTrimKind" />

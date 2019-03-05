@@ -5,10 +5,10 @@ package jetbrains.mps.transformation.test.inputLang.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_UseInTest extends EnumerationDescriptorBase {
 
@@ -16,27 +16,30 @@ public class EnumerationDescriptor_UseInTest extends EnumerationDescriptorBase {
     super(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x117eb3f7611L, "UseInTest", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242680337", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_test1_0 = new EnumerationDescriptor.MemberDescriptor("test1", "test1", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242680338", "test1");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_getPrevInputTest_0 = new EnumerationDescriptor.MemberDescriptor("getPrevInputTest", "getPrevInputTest", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242753917", "getPrevInputTest");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_reduceInheritors_0 = new EnumerationDescriptor.MemberDescriptor("reduceInheritors", "reduceInheritors", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1206459825805", "reduceInheritors");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_reduceExpressionToStatement_0 = new EnumerationDescriptor.MemberDescriptor("reduceExpressionToStatement", "reduceExpressionToStatement", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1209146734796", "reduceExpressionToStatement");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_dontApplyReductionTwice_0 = new EnumerationDescriptor.MemberDescriptor("dontApplyReductionTwice", "dontApplyReductionTwice", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1209603553188", "dontApplyReductionTwice");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_weaveManyToSingularChild_0 = new EnumerationDescriptor.MemberDescriptor("weaveManyToSingularChild", "weaveManyToSingularChild", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1218736527492", "weaveManyToSingularChild");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_reduceOneToMany_0 = new EnumerationDescriptor.MemberDescriptor("reduceOneToMany", "reduceOneToMany", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/341670684286865622", "reduceOneToMany");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_argsInTemplDeclRef_0 = new EnumerationDescriptor.MemberDescriptor("argsInTemplDeclRef", "argsInTemplDeclRef", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/7496726876599722366", "argsInTemplDeclRef");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_argsInTemplateCall_0 = new EnumerationDescriptor.MemberDescriptor("argsInTemplateCall", "Expressions in ITemplateCall arguments", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/207553032706660027", "argsInTemplateCall");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242822699", "none");
+  private final EnumerationDescriptor.MemberDescriptor myMember_test1_0 = new EnumerationDescriptor.MemberDescriptor("test1", "test1", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242680338", "test1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_getPrevInputTest_0 = new EnumerationDescriptor.MemberDescriptor("getPrevInputTest", "getPrevInputTest", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242753917", "getPrevInputTest");
+  private final EnumerationDescriptor.MemberDescriptor myMember_reduceInheritors_0 = new EnumerationDescriptor.MemberDescriptor("reduceInheritors", "reduceInheritors", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1206459825805", "reduceInheritors");
+  private final EnumerationDescriptor.MemberDescriptor myMember_reduceExpressionToStatement_0 = new EnumerationDescriptor.MemberDescriptor("reduceExpressionToStatement", "reduceExpressionToStatement", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1209146734796", "reduceExpressionToStatement");
+  private final EnumerationDescriptor.MemberDescriptor myMember_dontApplyReductionTwice_0 = new EnumerationDescriptor.MemberDescriptor("dontApplyReductionTwice", "dontApplyReductionTwice", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1209603553188", "dontApplyReductionTwice");
+  private final EnumerationDescriptor.MemberDescriptor myMember_weaveManyToSingularChild_0 = new EnumerationDescriptor.MemberDescriptor("weaveManyToSingularChild", "weaveManyToSingularChild", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1218736527492", "weaveManyToSingularChild");
+  private final EnumerationDescriptor.MemberDescriptor myMember_reduceOneToMany_0 = new EnumerationDescriptor.MemberDescriptor("reduceOneToMany", "reduceOneToMany", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/341670684286865622", "reduceOneToMany");
+  private final EnumerationDescriptor.MemberDescriptor myMember_argsInTemplDeclRef_0 = new EnumerationDescriptor.MemberDescriptor("argsInTemplDeclRef", "argsInTemplDeclRef", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/7496726876599722366", "argsInTemplDeclRef");
+  private final EnumerationDescriptor.MemberDescriptor myMember_argsInTemplateCall_0 = new EnumerationDescriptor.MemberDescriptor("argsInTemplateCall", "Expressions in ITemplateCall arguments", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/207553032706660027", "argsInTemplateCall");
+  private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/1202242822699", "none");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x117eb3f7611L, 0x117eb3f7612L, 0x117eb40957dL, 0x118e69bfe8dL, 0x11986c2f8ccL, 0x119a1fd77a4L, 0x11bc25b9884L, 0x4bddbad571550d6L, 0x6809b95ff9d9a17eL, 0x2e16062328916bbL, 0x117eb41a22bL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_test1_0, myMember_getPrevInputTest_0, myMember_reduceInheritors_0, myMember_reduceExpressionToStatement_0, myMember_dontApplyReductionTwice_0, myMember_weaveManyToSingularChild_0, myMember_reduceOneToMany_0, myMember_argsInTemplDeclRef_0, myMember_argsInTemplateCall_0, myMember_none_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_none_0;
+    return myMember_none_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_test1_0, VALUE_getPrevInputTest_0, VALUE_reduceInheritors_0, VALUE_reduceExpressionToStatement_0, VALUE_dontApplyReductionTwice_0, VALUE_weaveManyToSingularChild_0, VALUE_reduceOneToMany_0, VALUE_argsInTemplDeclRef_0, VALUE_argsInTemplateCall_0, VALUE_none_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -47,26 +50,33 @@ public class EnumerationDescriptor_UseInTest extends EnumerationDescriptorBase {
     }
     switch (string) {
       case "test1":
-        return VALUE_test1_0;
+        return myMember_test1_0;
       case "getPrevInputTest":
-        return VALUE_getPrevInputTest_0;
+        return myMember_getPrevInputTest_0;
       case "reduceInheritors":
-        return VALUE_reduceInheritors_0;
+        return myMember_reduceInheritors_0;
       case "reduceExpressionToStatement":
-        return VALUE_reduceExpressionToStatement_0;
+        return myMember_reduceExpressionToStatement_0;
       case "dontApplyReductionTwice":
-        return VALUE_dontApplyReductionTwice_0;
+        return myMember_dontApplyReductionTwice_0;
       case "weaveManyToSingularChild":
-        return VALUE_weaveManyToSingularChild_0;
+        return myMember_weaveManyToSingularChild_0;
       case "reduceOneToMany":
-        return VALUE_reduceOneToMany_0;
+        return myMember_reduceOneToMany_0;
       case "argsInTemplDeclRef":
-        return VALUE_argsInTemplDeclRef_0;
+        return myMember_argsInTemplDeclRef_0;
       case "argsInTemplateCall":
-        return VALUE_argsInTemplateCall_0;
+        return myMember_argsInTemplateCall_0;
       case "none":
-        return VALUE_none_0;
+        return myMember_none_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

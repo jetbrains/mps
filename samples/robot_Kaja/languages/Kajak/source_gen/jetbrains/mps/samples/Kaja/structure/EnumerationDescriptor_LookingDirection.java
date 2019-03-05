@@ -5,10 +5,10 @@ package jetbrains.mps.samples.Kaja.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_LookingDirection extends EnumerationDescriptorBase {
 
@@ -16,10 +16,13 @@ public class EnumerationDescriptor_LookingDirection extends EnumerationDescripto
     super(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a34c05L, "LookingDirection", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893064709", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_north_0 = new EnumerationDescriptor.MemberDescriptor("north", "north", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893064772", "north");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_east_0 = new EnumerationDescriptor.MemberDescriptor("east", "east", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078070", "east");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_south_0 = new EnumerationDescriptor.MemberDescriptor("south", "south", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078073", "south");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_west_0 = new EnumerationDescriptor.MemberDescriptor("west", "west", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078077", "west");
+  private final EnumerationDescriptor.MemberDescriptor myMember_north_0 = new EnumerationDescriptor.MemberDescriptor("north", "north", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893064772", "north");
+  private final EnumerationDescriptor.MemberDescriptor myMember_east_0 = new EnumerationDescriptor.MemberDescriptor("east", "east", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078070", "east");
+  private final EnumerationDescriptor.MemberDescriptor myMember_south_0 = new EnumerationDescriptor.MemberDescriptor("south", "south", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078073", "south");
+  private final EnumerationDescriptor.MemberDescriptor myMember_west_0 = new EnumerationDescriptor.MemberDescriptor("west", "west", "r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)/7060824959893078077", "west");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x61fd16e423a34c05L, 0x61fd16e423a34c44L, 0x61fd16e423a38036L, 0x61fd16e423a38039L, 0x61fd16e423a3803dL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_north_0, myMember_east_0, myMember_south_0, myMember_west_0);
 
   @Nullable
   @Override
@@ -29,8 +32,8 @@ public class EnumerationDescriptor_LookingDirection extends EnumerationDescripto
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_north_0, VALUE_east_0, VALUE_south_0, VALUE_west_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -41,14 +44,21 @@ public class EnumerationDescriptor_LookingDirection extends EnumerationDescripto
     }
     switch (string) {
       case "north":
-        return VALUE_north_0;
+        return myMember_north_0;
       case "east":
-        return VALUE_east_0;
+        return myMember_east_0;
       case "south":
-        return VALUE_south_0;
+        return myMember_south_0;
       case "west":
-        return VALUE_west_0;
+        return myMember_west_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

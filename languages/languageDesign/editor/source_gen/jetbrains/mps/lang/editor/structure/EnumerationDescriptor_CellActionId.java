@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_CellActionId extends EnumerationDescriptorBase {
 
@@ -16,55 +16,58 @@ public class EnumerationDescriptor_CellActionId extends EnumerationDescriptorBas
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "CellActionId", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1139535328871", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_right_transform_action_id_0 = new EnumerationDescriptor.MemberDescriptor("right_transform_action_id", "RIGHT_TRANSFORM", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1139535329028", "RIGHT_TRANSFORM");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_delete_action_id_0 = new EnumerationDescriptor.MemberDescriptor("delete_action_id", "DELETE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1139535387060", "DELETE");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_insert_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_action_id", "INSERT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1222746468862079483", "INSERT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_insert_before_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_before_action_id", "INSERT_BEFORE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1222746468862079484", "INSERT_BEFORE");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_backspace_action_id_0 = new EnumerationDescriptor.MemberDescriptor("backspace_action_id", "BACKSPACE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657675082", "BACKSPACE");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_delete_to_word_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("delete_to_word_end_action_id", "DELETE_TO_WORD_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707152", "DELETE_TO_WORD_END");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_copy_action_id_0 = new EnumerationDescriptor.MemberDescriptor("copy_action_id", "COPY", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707153", "COPY");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_cut_action_id_0 = new EnumerationDescriptor.MemberDescriptor("cut_action_id", "CUT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707154", "CUT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_paste_action_id_0 = new EnumerationDescriptor.MemberDescriptor("paste_action_id", "PASTE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707155", "PASTE");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_paste_before_action_id_0 = new EnumerationDescriptor.MemberDescriptor("paste_before_action_id", "PASTE_BEFORE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707156", "PASTE_BEFORE");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_paste_after_action_id_0 = new EnumerationDescriptor.MemberDescriptor("paste_after_action_id", "PASTE_AFTER", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707157", "PASTE_AFTER");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_left_action_id_0 = new EnumerationDescriptor.MemberDescriptor("left_action_id", "LEFT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707158", "LEFT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_right_action_id_0 = new EnumerationDescriptor.MemberDescriptor("right_action_id", "RIGHT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707159", "RIGHT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_up_action_id_0 = new EnumerationDescriptor.MemberDescriptor("up_action_id", "UP", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707160", "UP");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_down_action_id_0 = new EnumerationDescriptor.MemberDescriptor("down_action_id", "DOWN", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707161", "DOWN");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_next_action_id_0 = new EnumerationDescriptor.MemberDescriptor("next_action_id", "NEXT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707162", "NEXT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_prev_action_id_0 = new EnumerationDescriptor.MemberDescriptor("prev_action_id", "PREV", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707163", "PREV");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("home_action_id", "HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707164", "HOME");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("end_action_id", "END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707165", "END");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_page_up_action_id_0 = new EnumerationDescriptor.MemberDescriptor("page_up_action_id", "PAGE_UP", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707166", "PAGE_UP");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_page_down_action_id_0 = new EnumerationDescriptor.MemberDescriptor("page_down_action_id", "PAGE_DOWN", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707167", "PAGE_DOWN");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_root_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("root_home_action_id", "ROOT_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707168", "ROOT_HOME");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_root_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("root_end_action_id", "ROOT_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707169", "ROOT_END");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_local_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("local_home_action_id", "LOCAL_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707170", "LOCAL_HOME");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_local_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("local_end_action_id", "LOCAL_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707171", "LOCAL_END");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_all_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_all_action_id", "SELECT_ALL", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5087404372099706598", "SELECT_ALL");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_left_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_left_action_id", "SELECT_LEFT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707172", "SELECT_LEFT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_right_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_right_action_id", "SELECT_RIGHT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707173", "SELECT_RIGHT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_up_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_up_action_id", "SELECT_UP", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707174", "SELECT_UP");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_down_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_down_action_id", "SELECT_DOWN", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707175", "SELECT_DOWN");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_home_action_id", "SELECT_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707176", "SELECT_HOME");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_end_action_id", "SELECT_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707177", "SELECT_END");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_local_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_local_end_action_id", "SELECT_LOCAL_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707178", "SELECT_LOCAL_END");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_local_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_local_home_action_id", "SELECT_LOCAL_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707179", "SELECT_LOCAL_HOME");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_next_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_next_action_id", "SELECT_NEXT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707180", "SELECT_NEXT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_select_previous_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_previous_action_id", "SELECT_PREVIOUS", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707181", "SELECT_PREVIOUS");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_left_transform_action_id_0 = new EnumerationDescriptor.MemberDescriptor("left_transform_action_id", "LEFT_TRANSFORM", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707182", "LEFT_TRANSFORM");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_complete_action_id_0 = new EnumerationDescriptor.MemberDescriptor("complete_action_id", "COMPLETE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707183", "COMPLETE");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_complete_smart_action_id_0 = new EnumerationDescriptor.MemberDescriptor("complete_smart_action_id", "COMPLETE_SMART", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707184", "COMPLETE_SMART");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_fold_action_id_0 = new EnumerationDescriptor.MemberDescriptor("fold_action_id", "FOLD", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707185", "FOLD");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_unfold_action_id_0 = new EnumerationDescriptor.MemberDescriptor("unfold_action_id", "UNFOLD", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707186", "UNFOLD");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_fold_all_action_id_0 = new EnumerationDescriptor.MemberDescriptor("fold_all_action_id", "FOLD_ALL", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707187", "FOLD_ALL");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_unfold_all_action_id_0 = new EnumerationDescriptor.MemberDescriptor("unfold_all_action_id", "UNFOLD_ALL", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707188", "UNFOLD_ALL");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_toggle_folding_action_id_0 = new EnumerationDescriptor.MemberDescriptor("toggle_folding_action_id", "TOGGLE_FOLDING", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707189", "TOGGLE_FOLDING");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_show_message_action_id_0 = new EnumerationDescriptor.MemberDescriptor("show_message_action_id", "SHOW_MESSAGE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707190", "SHOW_MESSAGE");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_comment_out_action_id_0 = new EnumerationDescriptor.MemberDescriptor("comment_out_action_id", "COMMENT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5238877291854096301", "COMMENT");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_click_action_id_0 = new EnumerationDescriptor.MemberDescriptor("click_action_id", "CLICK", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1943452258409327855", "CLICK");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_insert_placeholder_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_placeholder_action_id", "INSERT_PLACEHOLDER", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4058177569375008137", "INSERT_PLACEHOLDER");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_insert_placeholder_before_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_placeholder_before_action_id", "INSERT_PLACEHOLDER_BEFORE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/474718489010969512", "INSERT_PLACEHOLDER_BEFORE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_right_transform_action_id_0 = new EnumerationDescriptor.MemberDescriptor("right_transform_action_id", "RIGHT_TRANSFORM", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1139535329028", "RIGHT_TRANSFORM");
+  private final EnumerationDescriptor.MemberDescriptor myMember_delete_action_id_0 = new EnumerationDescriptor.MemberDescriptor("delete_action_id", "DELETE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1139535387060", "DELETE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_insert_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_action_id", "INSERT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1222746468862079483", "INSERT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_insert_before_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_before_action_id", "INSERT_BEFORE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1222746468862079484", "INSERT_BEFORE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_backspace_action_id_0 = new EnumerationDescriptor.MemberDescriptor("backspace_action_id", "BACKSPACE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657675082", "BACKSPACE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_delete_to_word_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("delete_to_word_end_action_id", "DELETE_TO_WORD_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707152", "DELETE_TO_WORD_END");
+  private final EnumerationDescriptor.MemberDescriptor myMember_copy_action_id_0 = new EnumerationDescriptor.MemberDescriptor("copy_action_id", "COPY", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707153", "COPY");
+  private final EnumerationDescriptor.MemberDescriptor myMember_cut_action_id_0 = new EnumerationDescriptor.MemberDescriptor("cut_action_id", "CUT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707154", "CUT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_paste_action_id_0 = new EnumerationDescriptor.MemberDescriptor("paste_action_id", "PASTE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707155", "PASTE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_paste_before_action_id_0 = new EnumerationDescriptor.MemberDescriptor("paste_before_action_id", "PASTE_BEFORE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707156", "PASTE_BEFORE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_paste_after_action_id_0 = new EnumerationDescriptor.MemberDescriptor("paste_after_action_id", "PASTE_AFTER", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707157", "PASTE_AFTER");
+  private final EnumerationDescriptor.MemberDescriptor myMember_left_action_id_0 = new EnumerationDescriptor.MemberDescriptor("left_action_id", "LEFT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707158", "LEFT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_right_action_id_0 = new EnumerationDescriptor.MemberDescriptor("right_action_id", "RIGHT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707159", "RIGHT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_up_action_id_0 = new EnumerationDescriptor.MemberDescriptor("up_action_id", "UP", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707160", "UP");
+  private final EnumerationDescriptor.MemberDescriptor myMember_down_action_id_0 = new EnumerationDescriptor.MemberDescriptor("down_action_id", "DOWN", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707161", "DOWN");
+  private final EnumerationDescriptor.MemberDescriptor myMember_next_action_id_0 = new EnumerationDescriptor.MemberDescriptor("next_action_id", "NEXT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707162", "NEXT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_prev_action_id_0 = new EnumerationDescriptor.MemberDescriptor("prev_action_id", "PREV", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707163", "PREV");
+  private final EnumerationDescriptor.MemberDescriptor myMember_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("home_action_id", "HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707164", "HOME");
+  private final EnumerationDescriptor.MemberDescriptor myMember_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("end_action_id", "END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707165", "END");
+  private final EnumerationDescriptor.MemberDescriptor myMember_page_up_action_id_0 = new EnumerationDescriptor.MemberDescriptor("page_up_action_id", "PAGE_UP", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707166", "PAGE_UP");
+  private final EnumerationDescriptor.MemberDescriptor myMember_page_down_action_id_0 = new EnumerationDescriptor.MemberDescriptor("page_down_action_id", "PAGE_DOWN", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707167", "PAGE_DOWN");
+  private final EnumerationDescriptor.MemberDescriptor myMember_root_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("root_home_action_id", "ROOT_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707168", "ROOT_HOME");
+  private final EnumerationDescriptor.MemberDescriptor myMember_root_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("root_end_action_id", "ROOT_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707169", "ROOT_END");
+  private final EnumerationDescriptor.MemberDescriptor myMember_local_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("local_home_action_id", "LOCAL_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707170", "LOCAL_HOME");
+  private final EnumerationDescriptor.MemberDescriptor myMember_local_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("local_end_action_id", "LOCAL_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707171", "LOCAL_END");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_all_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_all_action_id", "SELECT_ALL", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5087404372099706598", "SELECT_ALL");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_left_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_left_action_id", "SELECT_LEFT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707172", "SELECT_LEFT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_right_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_right_action_id", "SELECT_RIGHT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707173", "SELECT_RIGHT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_up_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_up_action_id", "SELECT_UP", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707174", "SELECT_UP");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_down_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_down_action_id", "SELECT_DOWN", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707175", "SELECT_DOWN");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_home_action_id", "SELECT_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707176", "SELECT_HOME");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_end_action_id", "SELECT_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707177", "SELECT_END");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_local_end_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_local_end_action_id", "SELECT_LOCAL_END", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707178", "SELECT_LOCAL_END");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_local_home_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_local_home_action_id", "SELECT_LOCAL_HOME", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707179", "SELECT_LOCAL_HOME");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_next_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_next_action_id", "SELECT_NEXT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707180", "SELECT_NEXT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_select_previous_action_id_0 = new EnumerationDescriptor.MemberDescriptor("select_previous_action_id", "SELECT_PREVIOUS", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707181", "SELECT_PREVIOUS");
+  private final EnumerationDescriptor.MemberDescriptor myMember_left_transform_action_id_0 = new EnumerationDescriptor.MemberDescriptor("left_transform_action_id", "LEFT_TRANSFORM", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707182", "LEFT_TRANSFORM");
+  private final EnumerationDescriptor.MemberDescriptor myMember_complete_action_id_0 = new EnumerationDescriptor.MemberDescriptor("complete_action_id", "COMPLETE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707183", "COMPLETE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_complete_smart_action_id_0 = new EnumerationDescriptor.MemberDescriptor("complete_smart_action_id", "COMPLETE_SMART", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707184", "COMPLETE_SMART");
+  private final EnumerationDescriptor.MemberDescriptor myMember_fold_action_id_0 = new EnumerationDescriptor.MemberDescriptor("fold_action_id", "FOLD", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707185", "FOLD");
+  private final EnumerationDescriptor.MemberDescriptor myMember_unfold_action_id_0 = new EnumerationDescriptor.MemberDescriptor("unfold_action_id", "UNFOLD", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707186", "UNFOLD");
+  private final EnumerationDescriptor.MemberDescriptor myMember_fold_all_action_id_0 = new EnumerationDescriptor.MemberDescriptor("fold_all_action_id", "FOLD_ALL", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707187", "FOLD_ALL");
+  private final EnumerationDescriptor.MemberDescriptor myMember_unfold_all_action_id_0 = new EnumerationDescriptor.MemberDescriptor("unfold_all_action_id", "UNFOLD_ALL", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707188", "UNFOLD_ALL");
+  private final EnumerationDescriptor.MemberDescriptor myMember_toggle_folding_action_id_0 = new EnumerationDescriptor.MemberDescriptor("toggle_folding_action_id", "TOGGLE_FOLDING", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707189", "TOGGLE_FOLDING");
+  private final EnumerationDescriptor.MemberDescriptor myMember_show_message_action_id_0 = new EnumerationDescriptor.MemberDescriptor("show_message_action_id", "SHOW_MESSAGE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9025760234657707190", "SHOW_MESSAGE");
+  private final EnumerationDescriptor.MemberDescriptor myMember_comment_out_action_id_0 = new EnumerationDescriptor.MemberDescriptor("comment_out_action_id", "COMMENT", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/5238877291854096301", "COMMENT");
+  private final EnumerationDescriptor.MemberDescriptor myMember_click_action_id_0 = new EnumerationDescriptor.MemberDescriptor("click_action_id", "CLICK", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1943452258409327855", "CLICK");
+  private final EnumerationDescriptor.MemberDescriptor myMember_insert_placeholder_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_placeholder_action_id", "INSERT_PLACEHOLDER", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4058177569375008137", "INSERT_PLACEHOLDER");
+  private final EnumerationDescriptor.MemberDescriptor myMember_insert_placeholder_before_action_id_0 = new EnumerationDescriptor.MemberDescriptor("insert_placeholder_before_action_id", "INSERT_PLACEHOLDER_BEFORE", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/474718489010969512", "INSERT_PLACEHOLDER_BEFORE");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, 0x10951993704L, 0x109519a19b4L, 0x10f8116f5ee331fbL, 0x10f8116f5ee331fcL, 0x7d41f11ce69df74aL, 0x7d41f11ce69e7490L, 0x7d41f11ce69e7491L, 0x7d41f11ce69e7492L, 0x7d41f11ce69e7493L, 0x7d41f11ce69e7494L, 0x7d41f11ce69e7495L, 0x7d41f11ce69e7496L, 0x7d41f11ce69e7497L, 0x7d41f11ce69e7498L, 0x7d41f11ce69e7499L, 0x7d41f11ce69e749aL, 0x7d41f11ce69e749bL, 0x7d41f11ce69e749cL, 0x7d41f11ce69e749dL, 0x7d41f11ce69e749eL, 0x7d41f11ce69e749fL, 0x7d41f11ce69e74a0L, 0x7d41f11ce69e74a1L, 0x7d41f11ce69e74a2L, 0x7d41f11ce69e74a3L, 0x469a17527bc5aee6L, 0x7d41f11ce69e74a4L, 0x7d41f11ce69e74a5L, 0x7d41f11ce69e74a6L, 0x7d41f11ce69e74a7L, 0x7d41f11ce69e74a8L, 0x7d41f11ce69e74a9L, 0x7d41f11ce69e74aaL, 0x7d41f11ce69e74abL, 0x7d41f11ce69e74acL, 0x7d41f11ce69e74adL, 0x7d41f11ce69e74aeL, 0x7d41f11ce69e74afL, 0x7d41f11ce69e74b0L, 0x7d41f11ce69e74b1L, 0x7d41f11ce69e74b2L, 0x7d41f11ce69e74b3L, 0x7d41f11ce69e74b4L, 0x7d41f11ce69e74b5L, 0x7d41f11ce69e74b6L, 0x48b43b23e2d2e7adL, 0x1af887883c6b2cefL, 0x38518aff8a0e3589L, 0x69689f359cf1ba8L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_transform_action_id_0, myMember_delete_action_id_0, myMember_insert_action_id_0, myMember_insert_before_action_id_0, myMember_backspace_action_id_0, myMember_delete_to_word_end_action_id_0, myMember_copy_action_id_0, myMember_cut_action_id_0, myMember_paste_action_id_0, myMember_paste_before_action_id_0, myMember_paste_after_action_id_0, myMember_left_action_id_0, myMember_right_action_id_0, myMember_up_action_id_0, myMember_down_action_id_0, myMember_next_action_id_0, myMember_prev_action_id_0, myMember_home_action_id_0, myMember_end_action_id_0, myMember_page_up_action_id_0, myMember_page_down_action_id_0, myMember_root_home_action_id_0, myMember_root_end_action_id_0, myMember_local_home_action_id_0, myMember_local_end_action_id_0, myMember_select_all_action_id_0, myMember_select_left_action_id_0, myMember_select_right_action_id_0, myMember_select_up_action_id_0, myMember_select_down_action_id_0, myMember_select_home_action_id_0, myMember_select_end_action_id_0, myMember_select_local_end_action_id_0, myMember_select_local_home_action_id_0, myMember_select_next_action_id_0, myMember_select_previous_action_id_0, myMember_left_transform_action_id_0, myMember_complete_action_id_0, myMember_complete_smart_action_id_0, myMember_fold_action_id_0, myMember_unfold_action_id_0, myMember_fold_all_action_id_0, myMember_unfold_all_action_id_0, myMember_toggle_folding_action_id_0, myMember_show_message_action_id_0, myMember_comment_out_action_id_0, myMember_click_action_id_0, myMember_insert_placeholder_action_id_0, myMember_insert_placeholder_before_action_id_0);
 
   @Nullable
   @Override
@@ -74,8 +77,8 @@ public class EnumerationDescriptor_CellActionId extends EnumerationDescriptorBas
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_right_transform_action_id_0, VALUE_delete_action_id_0, VALUE_insert_action_id_0, VALUE_insert_before_action_id_0, VALUE_backspace_action_id_0, VALUE_delete_to_word_end_action_id_0, VALUE_copy_action_id_0, VALUE_cut_action_id_0, VALUE_paste_action_id_0, VALUE_paste_before_action_id_0, VALUE_paste_after_action_id_0, VALUE_left_action_id_0, VALUE_right_action_id_0, VALUE_up_action_id_0, VALUE_down_action_id_0, VALUE_next_action_id_0, VALUE_prev_action_id_0, VALUE_home_action_id_0, VALUE_end_action_id_0, VALUE_page_up_action_id_0, VALUE_page_down_action_id_0, VALUE_root_home_action_id_0, VALUE_root_end_action_id_0, VALUE_local_home_action_id_0, VALUE_local_end_action_id_0, VALUE_select_all_action_id_0, VALUE_select_left_action_id_0, VALUE_select_right_action_id_0, VALUE_select_up_action_id_0, VALUE_select_down_action_id_0, VALUE_select_home_action_id_0, VALUE_select_end_action_id_0, VALUE_select_local_end_action_id_0, VALUE_select_local_home_action_id_0, VALUE_select_next_action_id_0, VALUE_select_previous_action_id_0, VALUE_left_transform_action_id_0, VALUE_complete_action_id_0, VALUE_complete_smart_action_id_0, VALUE_fold_action_id_0, VALUE_unfold_action_id_0, VALUE_fold_all_action_id_0, VALUE_unfold_all_action_id_0, VALUE_toggle_folding_action_id_0, VALUE_show_message_action_id_0, VALUE_comment_out_action_id_0, VALUE_click_action_id_0, VALUE_insert_placeholder_action_id_0, VALUE_insert_placeholder_before_action_id_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -86,104 +89,110 @@ public class EnumerationDescriptor_CellActionId extends EnumerationDescriptorBas
     }
     switch (string) {
       case "right_transform_action_id":
-        return VALUE_right_transform_action_id_0;
+        return myMember_right_transform_action_id_0;
       case "delete_action_id":
-        return VALUE_delete_action_id_0;
+        return myMember_delete_action_id_0;
       case "insert_action_id":
-        return VALUE_insert_action_id_0;
+        return myMember_insert_action_id_0;
       case "insert_before_action_id":
-        return VALUE_insert_before_action_id_0;
+        return myMember_insert_before_action_id_0;
       case "backspace_action_id":
-        return VALUE_backspace_action_id_0;
+        return myMember_backspace_action_id_0;
       case "delete_to_word_end_action_id":
-        return VALUE_delete_to_word_end_action_id_0;
+        return myMember_delete_to_word_end_action_id_0;
       case "copy_action_id":
-        return VALUE_copy_action_id_0;
+        return myMember_copy_action_id_0;
       case "cut_action_id":
-        return VALUE_cut_action_id_0;
+        return myMember_cut_action_id_0;
       case "paste_action_id":
-        return VALUE_paste_action_id_0;
+        return myMember_paste_action_id_0;
       case "paste_before_action_id":
-        return VALUE_paste_before_action_id_0;
+        return myMember_paste_before_action_id_0;
       case "paste_after_action_id":
-        return VALUE_paste_after_action_id_0;
+        return myMember_paste_after_action_id_0;
       case "left_action_id":
-        return VALUE_left_action_id_0;
+        return myMember_left_action_id_0;
       case "right_action_id":
-        return VALUE_right_action_id_0;
+        return myMember_right_action_id_0;
       case "up_action_id":
-        return VALUE_up_action_id_0;
+        return myMember_up_action_id_0;
       case "down_action_id":
-        return VALUE_down_action_id_0;
+        return myMember_down_action_id_0;
       case "next_action_id":
-        return VALUE_next_action_id_0;
+        return myMember_next_action_id_0;
       case "prev_action_id":
-        return VALUE_prev_action_id_0;
+        return myMember_prev_action_id_0;
       case "home_action_id":
-        return VALUE_home_action_id_0;
+        return myMember_home_action_id_0;
       case "end_action_id":
-        return VALUE_end_action_id_0;
+        return myMember_end_action_id_0;
       case "page_up_action_id":
-        return VALUE_page_up_action_id_0;
+        return myMember_page_up_action_id_0;
       case "page_down_action_id":
-        return VALUE_page_down_action_id_0;
+        return myMember_page_down_action_id_0;
       case "root_home_action_id":
-        return VALUE_root_home_action_id_0;
+        return myMember_root_home_action_id_0;
       case "root_end_action_id":
-        return VALUE_root_end_action_id_0;
+        return myMember_root_end_action_id_0;
       case "local_home_action_id":
-        return VALUE_local_home_action_id_0;
+        return myMember_local_home_action_id_0;
       case "local_end_action_id":
-        return VALUE_local_end_action_id_0;
+        return myMember_local_end_action_id_0;
       case "select_all_action_id":
-        return VALUE_select_all_action_id_0;
+        return myMember_select_all_action_id_0;
       case "select_left_action_id":
-        return VALUE_select_left_action_id_0;
+        return myMember_select_left_action_id_0;
       case "select_right_action_id":
-        return VALUE_select_right_action_id_0;
+        return myMember_select_right_action_id_0;
       case "select_up_action_id":
-        return VALUE_select_up_action_id_0;
+        return myMember_select_up_action_id_0;
       case "select_down_action_id":
-        return VALUE_select_down_action_id_0;
+        return myMember_select_down_action_id_0;
       case "select_home_action_id":
-        return VALUE_select_home_action_id_0;
+        return myMember_select_home_action_id_0;
       case "select_end_action_id":
-        return VALUE_select_end_action_id_0;
+        return myMember_select_end_action_id_0;
       case "select_local_end_action_id":
-        return VALUE_select_local_end_action_id_0;
+        return myMember_select_local_end_action_id_0;
       case "select_local_home_action_id":
-        return VALUE_select_local_home_action_id_0;
+        return myMember_select_local_home_action_id_0;
       case "select_next_action_id":
-        return VALUE_select_next_action_id_0;
+        return myMember_select_next_action_id_0;
       case "select_previous_action_id":
-        return VALUE_select_previous_action_id_0;
+        return myMember_select_previous_action_id_0;
       case "left_transform_action_id":
-        return VALUE_left_transform_action_id_0;
+        return myMember_left_transform_action_id_0;
       case "complete_action_id":
-        return VALUE_complete_action_id_0;
+        return myMember_complete_action_id_0;
       case "complete_smart_action_id":
-        return VALUE_complete_smart_action_id_0;
+        return myMember_complete_smart_action_id_0;
       case "fold_action_id":
-        return VALUE_fold_action_id_0;
+        return myMember_fold_action_id_0;
       case "unfold_action_id":
-        return VALUE_unfold_action_id_0;
+        return myMember_unfold_action_id_0;
       case "fold_all_action_id":
-        return VALUE_fold_all_action_id_0;
+        return myMember_fold_all_action_id_0;
       case "unfold_all_action_id":
-        return VALUE_unfold_all_action_id_0;
+        return myMember_unfold_all_action_id_0;
       case "toggle_folding_action_id":
-        return VALUE_toggle_folding_action_id_0;
+        return myMember_toggle_folding_action_id_0;
       case "show_message_action_id":
-        return VALUE_show_message_action_id_0;
+        return myMember_show_message_action_id_0;
       case "comment_out_action_id":
-        return VALUE_comment_out_action_id_0;
+        return myMember_comment_out_action_id_0;
       case "click_action_id":
-        return VALUE_click_action_id_0;
+        return myMember_click_action_id_0;
       case "insert_placeholder_action_id":
-        return VALUE_insert_placeholder_action_id_0;
+        return myMember_insert_placeholder_action_id_0;
       case "insert_placeholder_before_action_id":
-        return VALUE_insert_placeholder_before_action_id_0;
+        return myMember_insert_placeholder_before_action_id_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

@@ -5,10 +5,10 @@ package jetbrains.mps.make.script.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_Feedback extends EnumerationDescriptorBase {
 
@@ -16,21 +16,24 @@ public class EnumerationDescriptor_Feedback extends EnumerationDescriptorBase {
     super(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, "Feedback", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333674", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_INFO_0 = new EnumerationDescriptor.MemberDescriptor("INFO", "info", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333675", "info");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_WARNING_0 = new EnumerationDescriptor.MemberDescriptor("WARNING", "warning", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333676", "warning");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_ERROR_0 = new EnumerationDescriptor.MemberDescriptor("ERROR", "error", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333677", "error");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_MESSAGE_0 = new EnumerationDescriptor.MemberDescriptor("MESSAGE", "message", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/6320856973181134892", "message");
+  private final EnumerationDescriptor.MemberDescriptor myMember_INFO_0 = new EnumerationDescriptor.MemberDescriptor("INFO", "info", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333675", "info");
+  private final EnumerationDescriptor.MemberDescriptor myMember_WARNING_0 = new EnumerationDescriptor.MemberDescriptor("WARNING", "warning", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333676", "warning");
+  private final EnumerationDescriptor.MemberDescriptor myMember_ERROR_0 = new EnumerationDescriptor.MemberDescriptor("ERROR", "error", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/3668957831723333677", "error");
+  private final EnumerationDescriptor.MemberDescriptor myMember_MESSAGE_0 = new EnumerationDescriptor.MemberDescriptor("MESSAGE", "message", "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/6320856973181134892", "message");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, 0x32eac1b57fc1b82bL, 0x32eac1b57fc1b82cL, 0x32eac1b57fc1b82dL, 0x57b831ed8283282cL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_INFO_0, myMember_WARNING_0, myMember_ERROR_0, myMember_MESSAGE_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_INFO_0;
+    return myMember_INFO_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_INFO_0, VALUE_WARNING_0, VALUE_ERROR_0, VALUE_MESSAGE_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -41,14 +44,20 @@ public class EnumerationDescriptor_Feedback extends EnumerationDescriptorBase {
     }
     switch (string) {
       case "INFO":
-        return VALUE_INFO_0;
+        return myMember_INFO_0;
       case "WARNING":
-        return VALUE_WARNING_0;
+        return myMember_WARNING_0;
       case "ERROR":
-        return VALUE_ERROR_0;
+        return myMember_ERROR_0;
       case "MESSAGE":
-        return VALUE_MESSAGE_0;
+        return myMember_MESSAGE_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

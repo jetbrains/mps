@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_FocusPolicy extends EnumerationDescriptorBase {
 
@@ -16,21 +16,24 @@ public class EnumerationDescriptor_FocusPolicy extends EnumerationDescriptorBase
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "FocusPolicy", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926557197", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "noAttraction", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926557292", "noAttraction");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "attractsFocus", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926591919", "attractsFocus");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "firstEditableCell", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926603060", "firstEditableCell");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "attractsRecursively", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1227082414196", "attractsRecursively");
+  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "noAttraction", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926557292", "noAttraction");
+  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "attractsFocus", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926591919", "attractsFocus");
+  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "firstEditableCell", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1130926603060", "firstEditableCell");
+  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "attractsRecursively", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1227082414196", "attractsRecursively");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, 0x1075079c86cL, 0x107507a4fafL, 0x107507a7b34L, 0x11db3cfb874L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_0_0;
+    return myMember_0_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_0_0, VALUE_1_0, VALUE_2_0, VALUE_3_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -41,14 +44,20 @@ public class EnumerationDescriptor_FocusPolicy extends EnumerationDescriptorBase
     }
     switch (string) {
       case "0":
-        return VALUE_0_0;
+        return myMember_0_0;
       case "1":
-        return VALUE_1_0;
+        return myMember_1_0;
       case "2":
-        return VALUE_2_0;
+        return myMember_2_0;
       case "3":
-        return VALUE_3_0;
+        return myMember_3_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

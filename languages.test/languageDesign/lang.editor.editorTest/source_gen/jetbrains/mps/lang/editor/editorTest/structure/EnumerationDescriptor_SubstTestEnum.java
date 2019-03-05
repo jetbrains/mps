@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.editorTest.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_SubstTestEnum extends EnumerationDescriptorBase {
 
@@ -16,34 +16,44 @@ public class EnumerationDescriptor_SubstTestEnum extends EnumerationDescriptorBa
     super(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, "SubstTestEnum", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295436", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE__0 = new EnumerationDescriptor.MemberDescriptor(null, "v1", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295437", "v1");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_v2_0 = new EnumerationDescriptor.MemberDescriptor("v2", "v2", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295507", "v2");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_v3_0 = new EnumerationDescriptor.MemberDescriptor("v3", "v3", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295510", "v3");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "v1", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295437", "v1");
+  private final EnumerationDescriptor.MemberDescriptor myMember_v2_0 = new EnumerationDescriptor.MemberDescriptor("v2", "v2", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295507", "v2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_v3_0 = new EnumerationDescriptor.MemberDescriptor("v3", "v3", "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/957371990174295510", "v3");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, 0xd4944c0b03f658dL, 0xd4944c0b03f65d3L, 0xd4944c0b03f65d6L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_v2_0, myMember_v3_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE__0;
+    return myMember__0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE__0, VALUE_v2_0, VALUE_v3_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
     if (string == null) {
-      return VALUE__0;
+      return myMember__0;
     }
     switch (string) {
       case "v2":
-        return VALUE_v2_0;
+        return myMember_v2_0;
       case "v3":
-        return VALUE_v3_0;
+        return myMember_v3_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

@@ -5,10 +5,10 @@ package jetbrains.mps.lang.structure.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_EnumerationMemberIdentifierPolicy extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_EnumerationMemberIdentifierPolicy extends Enu
     super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "EnumerationMemberIdentifierPolicy", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1197590884613", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_derive_from_presentation_0 = new EnumerationDescriptor.MemberDescriptor("derive_from_presentation", "derive from presentation", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1197590884614", "derive_from_presentation");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_derive_from_internal_value_0 = new EnumerationDescriptor.MemberDescriptor("derive_from_internal_value", "derive from internal value", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1197591048630", "derive_from_internal_value");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_custom_0 = new EnumerationDescriptor.MemberDescriptor("custom", "custom", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1197591075491", "custom");
+  private final EnumerationDescriptor.MemberDescriptor myMember_derive_from_presentation_0 = new EnumerationDescriptor.MemberDescriptor("derive_from_presentation", "derive from presentation", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1197590884614", "derive_from_presentation");
+  private final EnumerationDescriptor.MemberDescriptor myMember_derive_from_internal_value_0 = new EnumerationDescriptor.MemberDescriptor("derive_from_internal_value", "derive from internal value", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1197591048630", "derive_from_internal_value");
+  private final EnumerationDescriptor.MemberDescriptor myMember_custom_0 = new EnumerationDescriptor.MemberDescriptor("custom", "custom", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1197591075491", "custom");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, 0x116d5fab106L, 0x116d5fd31b6L, 0x116d5fd9aa3L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_derive_from_presentation_0, myMember_derive_from_internal_value_0, myMember_custom_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_derive_from_presentation_0;
+    return myMember_derive_from_presentation_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_derive_from_presentation_0, VALUE_derive_from_internal_value_0, VALUE_custom_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,18 @@ public class EnumerationDescriptor_EnumerationMemberIdentifierPolicy extends Enu
     }
     switch (string) {
       case "derive_from_presentation":
-        return VALUE_derive_from_presentation_0;
+        return myMember_derive_from_presentation_0;
       case "derive_from_internal_value":
-        return VALUE_derive_from_internal_value_0;
+        return myMember_derive_from_internal_value_0;
       case "custom":
-        return VALUE_custom_0;
+        return myMember_custom_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

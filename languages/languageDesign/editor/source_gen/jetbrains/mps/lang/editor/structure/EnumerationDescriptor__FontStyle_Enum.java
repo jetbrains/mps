@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor__FontStyle_Enum extends EnumerationDescriptorBase {
 
@@ -16,22 +16,25 @@ public class EnumerationDescriptor__FontStyle_Enum extends EnumerationDescriptor
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "_FontStyle_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211480448", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_BOLD_0 = new EnumerationDescriptor.MemberDescriptor("BOLD", "bold", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211523070", "bold");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("ITALIC", "italic", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211542532", "italic");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_BOLD_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("BOLD_ITALIC", "boldItalic", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101213960346", "boldItalic");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_PLAIN_0 = new EnumerationDescriptor.MemberDescriptor("PLAIN", "plain", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1134577855137", "plain");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_QUERY_0 = new EnumerationDescriptor.MemberDescriptor("QUERY", "query", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1220973684614", "query");
+  private final EnumerationDescriptor.MemberDescriptor myMember_BOLD_0 = new EnumerationDescriptor.MemberDescriptor("BOLD", "bold", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211523070", "bold");
+  private final EnumerationDescriptor.MemberDescriptor myMember_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("ITALIC", "italic", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101211542532", "italic");
+  private final EnumerationDescriptor.MemberDescriptor myMember_BOLD_ITALIC_0 = new EnumerationDescriptor.MemberDescriptor("BOLD_ITALIC", "boldItalic", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101213960346", "boldItalic");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PLAIN_0 = new EnumerationDescriptor.MemberDescriptor("PLAIN", "plain", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1134577855137", "plain");
+  private final EnumerationDescriptor.MemberDescriptor myMember_QUERY_0 = new EnumerationDescriptor.MemberDescriptor("QUERY", "query", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1220973684614", "query");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, 0x100655257feL, 0x1006552a404L, 0x1006577889aL, 0x1082a1c2aa1L, 0x11c47b3e786L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_BOLD_0, myMember_ITALIC_0, myMember_BOLD_ITALIC_0, myMember_PLAIN_0, myMember_QUERY_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_PLAIN_0;
+    return myMember_PLAIN_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_BOLD_0, VALUE_ITALIC_0, VALUE_BOLD_ITALIC_0, VALUE_PLAIN_0, VALUE_QUERY_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -42,16 +45,22 @@ public class EnumerationDescriptor__FontStyle_Enum extends EnumerationDescriptor
     }
     switch (string) {
       case "BOLD":
-        return VALUE_BOLD_0;
+        return myMember_BOLD_0;
       case "ITALIC":
-        return VALUE_ITALIC_0;
+        return myMember_ITALIC_0;
       case "BOLD_ITALIC":
-        return VALUE_BOLD_ITALIC_0;
+        return myMember_BOLD_ITALIC_0;
       case "PLAIN":
-        return VALUE_PLAIN_0;
+        return myMember_PLAIN_0;
       case "QUERY":
-        return VALUE_QUERY_0;
+        return myMember_QUERY_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

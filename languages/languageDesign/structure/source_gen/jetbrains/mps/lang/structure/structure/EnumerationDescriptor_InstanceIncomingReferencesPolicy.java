@@ -5,10 +5,10 @@ package jetbrains.mps.lang.structure.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_InstanceIncomingReferencesPolicy extends EnumerationDescriptorBase {
 
@@ -16,34 +16,43 @@ public class EnumerationDescriptor_InstanceIncomingReferencesPolicy extends Enum
     super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x703af6ad4d1ea0f8L, "InstanceIncomingReferencesPolicy", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/8087047305080774904", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE__0 = new EnumerationDescriptor.MemberDescriptor(null, "allowed", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/8087047305080775282", "allowed");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_local_0 = new EnumerationDescriptor.MemberDescriptor("local", "same root only", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/8087047305080775412", "local");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_forbidden_0 = new EnumerationDescriptor.MemberDescriptor("forbidden", "forbidden", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/8087047305080775416", "forbidden");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "allowed", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/8087047305080775282", "allowed");
+  private final EnumerationDescriptor.MemberDescriptor myMember_local_0 = new EnumerationDescriptor.MemberDescriptor("local", "same root only", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/8087047305080775412", "local");
+  private final EnumerationDescriptor.MemberDescriptor myMember_forbidden_0 = new EnumerationDescriptor.MemberDescriptor("forbidden", "forbidden", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/8087047305080775416", "forbidden");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x703af6ad4d1ea0f8L, 0x703af6ad4d1ea272L, 0x703af6ad4d1ea2f4L, 0x703af6ad4d1ea2f8L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_local_0, myMember_forbidden_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE__0;
+    return myMember__0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE__0, VALUE_local_0, VALUE_forbidden_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
     if (string == null) {
-      return VALUE__0;
+      return myMember__0;
     }
     switch (string) {
       case "local":
-        return VALUE_local_0;
+        return myMember_local_0;
       case "forbidden":
-        return VALUE_forbidden_0;
+        return myMember_forbidden_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

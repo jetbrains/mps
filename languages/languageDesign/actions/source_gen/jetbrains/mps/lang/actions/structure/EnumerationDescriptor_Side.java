@@ -5,10 +5,10 @@ package jetbrains.mps.lang.actions.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_Side extends EnumerationDescriptorBase {
 
@@ -16,34 +16,43 @@ public class EnumerationDescriptor_Side extends EnumerationDescriptorBase {
     super(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11b07b3d491L, "Side", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215604970641", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE__0 = new EnumerationDescriptor.MemberDescriptor(null, "right", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215604970642", "right");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215605024347", "left");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_both_0 = new EnumerationDescriptor.MemberDescriptor("both", "both sides", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/3609453419537306772", "both sides");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "right", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215604970642", "right");
+  private final EnumerationDescriptor.MemberDescriptor myMember_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/1215605024347", "left");
+  private final EnumerationDescriptor.MemberDescriptor myMember_both_0 = new EnumerationDescriptor.MemberDescriptor("both", "both sides", "r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)/3609453419537306772", "both sides");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11b07b3d491L, 0x11b07b3d492L, 0x11b07b4a65bL, 0x32175ac2e8d71494L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_left_0, myMember_both_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE__0;
+    return myMember__0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE__0, VALUE_left_0, VALUE_both_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
     if (string == null) {
-      return VALUE__0;
+      return myMember__0;
     }
     switch (string) {
       case "left":
-        return VALUE_left_0;
+        return myMember_left_0;
       case "both":
-        return VALUE_both_0;
+        return myMember_both_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

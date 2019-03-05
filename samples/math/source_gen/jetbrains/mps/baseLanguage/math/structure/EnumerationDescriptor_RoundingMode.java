@@ -5,10 +5,10 @@ package jetbrains.mps.baseLanguage.math.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_RoundingMode extends EnumerationDescriptorBase {
 
@@ -16,25 +16,28 @@ public class EnumerationDescriptor_RoundingMode extends EnumerationDescriptorBas
     super(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, "RoundingMode", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402737615", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "CEILING", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402737616", "CEILING");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "DOWN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402766914", "DOWN");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "FLOOR", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767056", "FLOOR");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "HALF_DOWN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767229", "HALF_DOWN");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_4_0 = new EnumerationDescriptor.MemberDescriptor("4", "HALF_EVEN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767339", "HALF_EVEN");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_5_0 = new EnumerationDescriptor.MemberDescriptor("5", "HALF_UP", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402799184", "HALF_UP");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_6_0 = new EnumerationDescriptor.MemberDescriptor("6", "UNNECCESARY", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402803795", "UNNECCESARY");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_7_0 = new EnumerationDescriptor.MemberDescriptor("7", "UP", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402809265", "UP");
+  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "CEILING", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402737616", "CEILING");
+  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "DOWN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402766914", "DOWN");
+  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "FLOOR", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767056", "FLOOR");
+  private final EnumerationDescriptor.MemberDescriptor myMember_3_0 = new EnumerationDescriptor.MemberDescriptor("3", "HALF_DOWN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767229", "HALF_DOWN");
+  private final EnumerationDescriptor.MemberDescriptor myMember_4_0 = new EnumerationDescriptor.MemberDescriptor("4", "HALF_EVEN", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402767339", "HALF_EVEN");
+  private final EnumerationDescriptor.MemberDescriptor myMember_5_0 = new EnumerationDescriptor.MemberDescriptor("5", "HALF_UP", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402799184", "HALF_UP");
+  private final EnumerationDescriptor.MemberDescriptor myMember_6_0 = new EnumerationDescriptor.MemberDescriptor("6", "UNNECCESARY", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402803795", "UNNECCESARY");
+  private final EnumerationDescriptor.MemberDescriptor myMember_7_0 = new EnumerationDescriptor.MemberDescriptor("7", "UP", "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/1238402809265", "UP");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, 0x120568e25d0L, 0x120568e9842L, 0x120568e98d0L, 0x120568e997dL, 0x120568e99ebL, 0x120568f1650L, 0x120568f2853L, 0x120568f3db1L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0, myMember_3_0, myMember_4_0, myMember_5_0, myMember_6_0, myMember_7_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_4_0;
+    return myMember_4_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_0_0, VALUE_1_0, VALUE_2_0, VALUE_3_0, VALUE_4_0, VALUE_5_0, VALUE_6_0, VALUE_7_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -45,22 +48,29 @@ public class EnumerationDescriptor_RoundingMode extends EnumerationDescriptorBas
     }
     switch (string) {
       case "0":
-        return VALUE_0_0;
+        return myMember_0_0;
       case "1":
-        return VALUE_1_0;
+        return myMember_1_0;
       case "2":
-        return VALUE_2_0;
+        return myMember_2_0;
       case "3":
-        return VALUE_3_0;
+        return myMember_3_0;
       case "4":
-        return VALUE_4_0;
+        return myMember_4_0;
       case "5":
-        return VALUE_5_0;
+        return myMember_5_0;
       case "6":
-        return VALUE_6_0;
+        return myMember_6_0;
       case "7":
-        return VALUE_7_0;
+        return myMember_7_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

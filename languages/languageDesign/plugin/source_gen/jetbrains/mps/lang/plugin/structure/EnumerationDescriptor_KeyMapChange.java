@@ -5,10 +5,10 @@ package jetbrains.mps.lang.plugin.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_KeyMapChange extends EnumerationDescriptorBase {
 
@@ -16,8 +16,11 @@ public class EnumerationDescriptor_KeyMapChange extends EnumerationDescriptorBas
     super(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, "KeyMapChange", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453160", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_replaceall_0 = new EnumerationDescriptor.MemberDescriptor("replace all", "replace all", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453161", "replace all");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_remove_0 = new EnumerationDescriptor.MemberDescriptor("remove", "remove", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453162", "remove");
+  private final EnumerationDescriptor.MemberDescriptor myMember_replaceall_0 = new EnumerationDescriptor.MemberDescriptor("replace all", "replace all", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453161", "replace all");
+  private final EnumerationDescriptor.MemberDescriptor myMember_remove_0 = new EnumerationDescriptor.MemberDescriptor("remove", "remove", "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/6785623076777453162", "remove");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, 0x5e2b603c8f036669L, 0x5e2b603c8f03666aL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_replaceall_0, myMember_remove_0);
 
   @Nullable
   @Override
@@ -27,8 +30,8 @@ public class EnumerationDescriptor_KeyMapChange extends EnumerationDescriptorBas
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_replaceall_0, VALUE_remove_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,16 @@ public class EnumerationDescriptor_KeyMapChange extends EnumerationDescriptorBas
     }
     switch (string) {
       case "replace all":
-        return VALUE_replaceall_0;
+        return myMember_replaceall_0;
       case "remove":
-        return VALUE_remove_0;
+        return myMember_remove_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

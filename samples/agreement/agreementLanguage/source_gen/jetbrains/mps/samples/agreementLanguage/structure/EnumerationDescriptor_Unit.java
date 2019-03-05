@@ -5,10 +5,10 @@ package jetbrains.mps.samples.agreementLanguage.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_Unit extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_Unit extends EnumerationDescriptorBase {
     super(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc0a8282L, "Unit", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793238658", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_USD_KWH_0 = new EnumerationDescriptor.MemberDescriptor("USD_KWH", "USD_KWH", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793245330", "USD_KWH");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_USD_0 = new EnumerationDescriptor.MemberDescriptor("USD", "USD", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793298691", "USD");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_KWH_0 = new EnumerationDescriptor.MemberDescriptor("KWH", "KWH", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793319239", "KWH");
+  private final EnumerationDescriptor.MemberDescriptor myMember_USD_KWH_0 = new EnumerationDescriptor.MemberDescriptor("USD_KWH", "USD_KWH", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793245330", "USD_KWH");
+  private final EnumerationDescriptor.MemberDescriptor myMember_USD_0 = new EnumerationDescriptor.MemberDescriptor("USD", "USD", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793298691", "USD");
+  private final EnumerationDescriptor.MemberDescriptor myMember_KWH_0 = new EnumerationDescriptor.MemberDescriptor("KWH", "KWH", "r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)/1111793319239", "KWH");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc0a8282L, 0x102dc0a9c92L, 0x102dc0b6d03L, 0x102dc0bbd47L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_USD_KWH_0, myMember_USD_0, myMember_KWH_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_USD_KWH_0;
+    return myMember_USD_KWH_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_USD_KWH_0, VALUE_USD_0, VALUE_KWH_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,19 @@ public class EnumerationDescriptor_Unit extends EnumerationDescriptorBase {
     }
     switch (string) {
       case "USD_KWH":
-        return VALUE_USD_KWH_0;
+        return myMember_USD_KWH_0;
       case "USD":
-        return VALUE_USD_0;
+        return myMember_USD_0;
       case "KWH":
-        return VALUE_KWH_0;
+        return myMember_KWH_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

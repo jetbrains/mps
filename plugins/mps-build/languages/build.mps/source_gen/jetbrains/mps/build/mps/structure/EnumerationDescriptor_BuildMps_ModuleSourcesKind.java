@@ -5,10 +5,10 @@ package jetbrains.mps.build.mps.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_BuildMps_ModuleSourcesKind extends EnumerationDescriptorBase {
 
@@ -16,9 +16,12 @@ public class EnumerationDescriptor_BuildMps_ModuleSourcesKind extends Enumeratio
     super(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "BuildMps_ModuleSourcesKind", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/269707337715631379", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_sources_0 = new EnumerationDescriptor.MemberDescriptor("sources", "sources", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/269707337715631442", "sources");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_sourcesandtests_0 = new EnumerationDescriptor.MemberDescriptor("sources and tests", "sources and tests", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/269707337715631443", "sources and tests");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_tests_0 = new EnumerationDescriptor.MemberDescriptor("tests", "tests", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/269707337715631452", "tests");
+  private final EnumerationDescriptor.MemberDescriptor myMember_sources_0 = new EnumerationDescriptor.MemberDescriptor("sources", "sources", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/269707337715631442", "sources");
+  private final EnumerationDescriptor.MemberDescriptor myMember_sourcesandtests_0 = new EnumerationDescriptor.MemberDescriptor("sources and tests", "sources and tests", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/269707337715631443", "sources and tests");
+  private final EnumerationDescriptor.MemberDescriptor myMember_tests_0 = new EnumerationDescriptor.MemberDescriptor("tests", "tests", "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/269707337715631452", "tests");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, 0x3be316509db4552L, 0x3be316509db4553L, 0x3be316509db455cL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_sources_0, myMember_sourcesandtests_0, myMember_tests_0);
 
   @Nullable
   @Override
@@ -28,8 +31,8 @@ public class EnumerationDescriptor_BuildMps_ModuleSourcesKind extends Enumeratio
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_sources_0, VALUE_sourcesandtests_0, VALUE_tests_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,19 @@ public class EnumerationDescriptor_BuildMps_ModuleSourcesKind extends Enumeratio
     }
     switch (string) {
       case "sources":
-        return VALUE_sources_0;
+        return myMember_sources_0;
       case "sources and tests":
-        return VALUE_sourcesandtests_0;
+        return myMember_sourcesandtests_0;
       case "tests":
-        return VALUE_tests_0;
+        return myMember_tests_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor__Colors_Enum extends EnumerationDescriptorBase {
 
@@ -16,79 +16,88 @@ public class EnumerationDescriptor__Colors_Enum extends EnumerationDescriptorBas
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc609b3d55L, "_Colors_Enum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545109", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE__0 = new EnumerationDescriptor.MemberDescriptor(null, "none", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545110", "none");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_red_0 = new EnumerationDescriptor.MemberDescriptor("red", "red", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545111", "red");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_pink_0 = new EnumerationDescriptor.MemberDescriptor("pink", "pink", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545112", "pink");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_orange_0 = new EnumerationDescriptor.MemberDescriptor("orange", "orange", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545113", "orange");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_yellow_0 = new EnumerationDescriptor.MemberDescriptor("yellow", "yellow", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545114", "yellow");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_green_0 = new EnumerationDescriptor.MemberDescriptor("green", "green", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545115", "green");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_DARK_GREEN_0 = new EnumerationDescriptor.MemberDescriptor("DARK_GREEN", "darkGreen", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101213169706", "darkGreen");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_magenta_0 = new EnumerationDescriptor.MemberDescriptor("magenta", "magenta", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545116", "magenta");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_DARK_MAGENTA_0 = new EnumerationDescriptor.MemberDescriptor("DARK_MAGENTA", "darkMagenta", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101213185757", "darkMagenta");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_cyan_0 = new EnumerationDescriptor.MemberDescriptor("cyan", "cyan", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545117", "cyan");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_blue_0 = new EnumerationDescriptor.MemberDescriptor("blue", "blue", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545118", "blue");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_LIGHT_BLUE_0 = new EnumerationDescriptor.MemberDescriptor("LIGHT_BLUE", "lightBlue", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216404713420", "lightBlue");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_DARK_BLUE_0 = new EnumerationDescriptor.MemberDescriptor("DARK_BLUE", "darkBlue", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101209985304", "darkBlue");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_gray_0 = new EnumerationDescriptor.MemberDescriptor("gray", "gray", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1084208529765", "gray");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_lightGray_0 = new EnumerationDescriptor.MemberDescriptor("lightGray", "lightGray", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1084208529766", "lightGray");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_darkGray_0 = new EnumerationDescriptor.MemberDescriptor("darkGray", "darkGray", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1084208529767", "darkGray");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_WHITE_0 = new EnumerationDescriptor.MemberDescriptor("WHITE", "white", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1214395400259", "white");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_black_0 = new EnumerationDescriptor.MemberDescriptor("black", "black", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7151630269404055096", "black");
+  private final EnumerationDescriptor.MemberDescriptor myMember__0 = new EnumerationDescriptor.MemberDescriptor(null, "none", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545110", "none");
+  private final EnumerationDescriptor.MemberDescriptor myMember_red_0 = new EnumerationDescriptor.MemberDescriptor("red", "red", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545111", "red");
+  private final EnumerationDescriptor.MemberDescriptor myMember_pink_0 = new EnumerationDescriptor.MemberDescriptor("pink", "pink", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545112", "pink");
+  private final EnumerationDescriptor.MemberDescriptor myMember_orange_0 = new EnumerationDescriptor.MemberDescriptor("orange", "orange", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545113", "orange");
+  private final EnumerationDescriptor.MemberDescriptor myMember_yellow_0 = new EnumerationDescriptor.MemberDescriptor("yellow", "yellow", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545114", "yellow");
+  private final EnumerationDescriptor.MemberDescriptor myMember_green_0 = new EnumerationDescriptor.MemberDescriptor("green", "green", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545115", "green");
+  private final EnumerationDescriptor.MemberDescriptor myMember_DARK_GREEN_0 = new EnumerationDescriptor.MemberDescriptor("DARK_GREEN", "darkGreen", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101213169706", "darkGreen");
+  private final EnumerationDescriptor.MemberDescriptor myMember_magenta_0 = new EnumerationDescriptor.MemberDescriptor("magenta", "magenta", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545116", "magenta");
+  private final EnumerationDescriptor.MemberDescriptor myMember_DARK_MAGENTA_0 = new EnumerationDescriptor.MemberDescriptor("DARK_MAGENTA", "darkMagenta", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101213185757", "darkMagenta");
+  private final EnumerationDescriptor.MemberDescriptor myMember_cyan_0 = new EnumerationDescriptor.MemberDescriptor("cyan", "cyan", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545117", "cyan");
+  private final EnumerationDescriptor.MemberDescriptor myMember_blue_0 = new EnumerationDescriptor.MemberDescriptor("blue", "blue", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1083952545118", "blue");
+  private final EnumerationDescriptor.MemberDescriptor myMember_LIGHT_BLUE_0 = new EnumerationDescriptor.MemberDescriptor("LIGHT_BLUE", "lightBlue", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216404713420", "lightBlue");
+  private final EnumerationDescriptor.MemberDescriptor myMember_DARK_BLUE_0 = new EnumerationDescriptor.MemberDescriptor("DARK_BLUE", "darkBlue", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1101209985304", "darkBlue");
+  private final EnumerationDescriptor.MemberDescriptor myMember_gray_0 = new EnumerationDescriptor.MemberDescriptor("gray", "gray", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1084208529765", "gray");
+  private final EnumerationDescriptor.MemberDescriptor myMember_lightGray_0 = new EnumerationDescriptor.MemberDescriptor("lightGray", "lightGray", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1084208529766", "lightGray");
+  private final EnumerationDescriptor.MemberDescriptor myMember_darkGray_0 = new EnumerationDescriptor.MemberDescriptor("darkGray", "darkGray", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1084208529767", "darkGray");
+  private final EnumerationDescriptor.MemberDescriptor myMember_WHITE_0 = new EnumerationDescriptor.MemberDescriptor("WHITE", "white", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1214395400259", "white");
+  private final EnumerationDescriptor.MemberDescriptor myMember_black_0 = new EnumerationDescriptor.MemberDescriptor("black", "black", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7151630269404055096", "black");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc609b3d55L, 0xfc609b3d56L, 0xfc609b3d57L, 0xfc609b3d58L, 0xfc609b3d59L, 0xfc609b3d5aL, 0xfc609b3d5bL, 0x100656b782aL, 0xfc609b3d5cL, 0x100656bb6ddL, 0xfc609b3d5dL, 0xfc609b3d5eL, 0x11b375eefccL, 0x100653ae118L, 0xfc6fdd4165L, 0xfc6fdd4166L, 0xfc6fdd4167L, 0x11abf9b4043L, 0x633fb1d6ccc28638L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0, myMember_red_0, myMember_pink_0, myMember_orange_0, myMember_yellow_0, myMember_green_0, myMember_DARK_GREEN_0, myMember_magenta_0, myMember_DARK_MAGENTA_0, myMember_cyan_0, myMember_blue_0, myMember_LIGHT_BLUE_0, myMember_DARK_BLUE_0, myMember_gray_0, myMember_lightGray_0, myMember_darkGray_0, myMember_WHITE_0, myMember_black_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE__0;
+    return myMember__0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE__0, VALUE_red_0, VALUE_pink_0, VALUE_orange_0, VALUE_yellow_0, VALUE_green_0, VALUE_DARK_GREEN_0, VALUE_magenta_0, VALUE_DARK_MAGENTA_0, VALUE_cyan_0, VALUE_blue_0, VALUE_LIGHT_BLUE_0, VALUE_DARK_BLUE_0, VALUE_gray_0, VALUE_lightGray_0, VALUE_darkGray_0, VALUE_WHITE_0, VALUE_black_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getMember(@Nullable String string) {
     if (string == null) {
-      return VALUE__0;
+      return myMember__0;
     }
     switch (string) {
       case "red":
-        return VALUE_red_0;
+        return myMember_red_0;
       case "pink":
-        return VALUE_pink_0;
+        return myMember_pink_0;
       case "orange":
-        return VALUE_orange_0;
+        return myMember_orange_0;
       case "yellow":
-        return VALUE_yellow_0;
+        return myMember_yellow_0;
       case "green":
-        return VALUE_green_0;
+        return myMember_green_0;
       case "DARK_GREEN":
-        return VALUE_DARK_GREEN_0;
+        return myMember_DARK_GREEN_0;
       case "magenta":
-        return VALUE_magenta_0;
+        return myMember_magenta_0;
       case "DARK_MAGENTA":
-        return VALUE_DARK_MAGENTA_0;
+        return myMember_DARK_MAGENTA_0;
       case "cyan":
-        return VALUE_cyan_0;
+        return myMember_cyan_0;
       case "blue":
-        return VALUE_blue_0;
+        return myMember_blue_0;
       case "LIGHT_BLUE":
-        return VALUE_LIGHT_BLUE_0;
+        return myMember_LIGHT_BLUE_0;
       case "DARK_BLUE":
-        return VALUE_DARK_BLUE_0;
+        return myMember_DARK_BLUE_0;
       case "gray":
-        return VALUE_gray_0;
+        return myMember_gray_0;
       case "lightGray":
-        return VALUE_lightGray_0;
+        return myMember_lightGray_0;
       case "darkGray":
-        return VALUE_darkGray_0;
+        return myMember_darkGray_0;
       case "WHITE":
-        return VALUE_WHITE_0;
+        return myMember_WHITE_0;
       case "black":
-        return VALUE_black_0;
+        return myMember_black_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

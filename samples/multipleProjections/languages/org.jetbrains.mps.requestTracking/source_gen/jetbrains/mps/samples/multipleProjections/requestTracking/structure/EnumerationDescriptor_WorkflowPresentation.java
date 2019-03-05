@@ -5,10 +5,10 @@ package jetbrains.mps.samples.multipleProjections.requestTracking.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_WorkflowPresentation extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_WorkflowPresentation extends EnumerationDescr
     super(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, "WorkflowPresentation", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867317", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_structural_0 = new EnumerationDescriptor.MemberDescriptor("structural", "structural", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867318", "structural");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_tabular_0 = new EnumerationDescriptor.MemberDescriptor("tabular", "tabular", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867327", "tabular");
+  private final EnumerationDescriptor.MemberDescriptor myMember_structural_0 = new EnumerationDescriptor.MemberDescriptor("structural", "structural", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867318", "structural");
+  private final EnumerationDescriptor.MemberDescriptor myMember_tabular_0 = new EnumerationDescriptor.MemberDescriptor("tabular", "tabular", "r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420867327", "tabular");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, 0x3301f82dc7d4d8f6L, 0x3301f82dc7d4d8ffL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_structural_0, myMember_tabular_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_structural_0;
+    return myMember_structural_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_structural_0, VALUE_tabular_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,17 @@ public class EnumerationDescriptor_WorkflowPresentation extends EnumerationDescr
     }
     switch (string) {
       case "structural":
-        return VALUE_structural_0;
+        return myMember_structural_0;
       case "tabular":
-        return VALUE_tabular_0;
+        return myMember_tabular_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

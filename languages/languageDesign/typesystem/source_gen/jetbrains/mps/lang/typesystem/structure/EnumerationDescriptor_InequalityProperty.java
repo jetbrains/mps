@@ -5,10 +5,10 @@ package jetbrains.mps.lang.typesystem.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_InequalityProperty extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_InequalityProperty extends EnumerationDescrip
     super(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6b67310af31422a4L, "InequalityProperty", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103780", PrimitiveTypeId.INTEGER);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "as is", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103781", "as is");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "same as inequality", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103782", "same as inequality");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "opposite to inequality", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103783", "opposite to inequality");
+  private final EnumerationDescriptor.MemberDescriptor myMember_0_0 = new EnumerationDescriptor.MemberDescriptor("0", "as is", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103781", "as is");
+  private final EnumerationDescriptor.MemberDescriptor myMember_1_0 = new EnumerationDescriptor.MemberDescriptor("1", "same as inequality", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103782", "same as inequality");
+  private final EnumerationDescriptor.MemberDescriptor myMember_2_0 = new EnumerationDescriptor.MemberDescriptor("2", "opposite to inequality", "r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/7739208407757103783", "opposite to inequality");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6b67310af31422a4L, 0x6b67310af31422a5L, 0x6b67310af31422a6L, 0x6b67310af31422a7L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_0_0, myMember_1_0, myMember_2_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_0_0;
+    return myMember_0_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_0_0, VALUE_1_0, VALUE_2_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,18 @@ public class EnumerationDescriptor_InequalityProperty extends EnumerationDescrip
     }
     switch (string) {
       case "0":
-        return VALUE_0_0;
+        return myMember_0_0;
       case "1":
-        return VALUE_1_0;
+        return myMember_1_0;
       case "2":
-        return VALUE_2_0;
+        return myMember_2_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

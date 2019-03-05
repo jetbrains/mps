@@ -5,10 +5,10 @@ package jetbrains.mps.build.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_BuildLayout_CopyFilterEolStyle extends EnumerationDescriptorBase {
 
@@ -16,22 +16,25 @@ public class EnumerationDescriptor_BuildLayout_CopyFilterEolStyle extends Enumer
     super(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL, "BuildLayout_CopyFilterEolStyle", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416814", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_local_0 = new EnumerationDescriptor.MemberDescriptor("local", "use local system line separator", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254427813", "local");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_asis_0 = new EnumerationDescriptor.MemberDescriptor("asis", "leave as is", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416815", "asis");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_cr_0 = new EnumerationDescriptor.MemberDescriptor("cr", "convert to a single CR", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416816", "cr");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_lf_0 = new EnumerationDescriptor.MemberDescriptor("lf", "convert to a single LF", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416817", "lf");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_crlf_0 = new EnumerationDescriptor.MemberDescriptor("crlf", "convert to the pair CRLF", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416818", "crlf");
+  private final EnumerationDescriptor.MemberDescriptor myMember_local_0 = new EnumerationDescriptor.MemberDescriptor("local", "use local system line separator", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254427813", "local");
+  private final EnumerationDescriptor.MemberDescriptor myMember_asis_0 = new EnumerationDescriptor.MemberDescriptor("asis", "leave as is", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416815", "asis");
+  private final EnumerationDescriptor.MemberDescriptor myMember_cr_0 = new EnumerationDescriptor.MemberDescriptor("cr", "convert to a single CR", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416816", "cr");
+  private final EnumerationDescriptor.MemberDescriptor myMember_lf_0 = new EnumerationDescriptor.MemberDescriptor("lf", "convert to a single LF", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416817", "lf");
+  private final EnumerationDescriptor.MemberDescriptor myMember_crlf_0 = new EnumerationDescriptor.MemberDescriptor("crlf", "convert to the pair CRLF", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/4198392933254416818", "crlf");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3a43b020f623c9aeL, 0x3a43b020f623f4a5L, 0x3a43b020f623c9afL, 0x3a43b020f623c9b0L, 0x3a43b020f623c9b1L, 0x3a43b020f623c9b2L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_local_0, myMember_asis_0, myMember_cr_0, myMember_lf_0, myMember_crlf_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_local_0;
+    return myMember_local_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_local_0, VALUE_asis_0, VALUE_cr_0, VALUE_lf_0, VALUE_crlf_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -42,16 +45,23 @@ public class EnumerationDescriptor_BuildLayout_CopyFilterEolStyle extends Enumer
     }
     switch (string) {
       case "local":
-        return VALUE_local_0;
+        return myMember_local_0;
       case "asis":
-        return VALUE_asis_0;
+        return myMember_asis_0;
       case "cr":
-        return VALUE_cr_0;
+        return myMember_cr_0;
       case "lf":
-        return VALUE_lf_0;
+        return myMember_lf_0;
       case "crlf":
-        return VALUE_crlf_0;
+        return myMember_crlf_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }

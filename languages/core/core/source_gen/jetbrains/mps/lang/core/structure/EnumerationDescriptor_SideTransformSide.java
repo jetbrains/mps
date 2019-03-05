@@ -5,10 +5,10 @@ package jetbrains.mps.lang.core.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_SideTransformSide extends EnumerationDescriptorBase {
 
@@ -16,19 +16,22 @@ public class EnumerationDescriptor_SideTransformSide extends EnumerationDescript
     super(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "SideTransformSide", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853700076", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_right_0 = new EnumerationDescriptor.MemberDescriptor("right", "right", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853700077", "right");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853702223", "left");
+  private final EnumerationDescriptor.MemberDescriptor myMember_right_0 = new EnumerationDescriptor.MemberDescriptor("right", "right", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853700077", "right");
+  private final EnumerationDescriptor.MemberDescriptor myMember_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/779128492853702223", "left");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, 0xad0053c7aee25edL, 0xad0053c7aee2e4fL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_0, myMember_left_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_right_0;
+    return myMember_right_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_right_0, VALUE_left_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -39,10 +42,16 @@ public class EnumerationDescriptor_SideTransformSide extends EnumerationDescript
     }
     switch (string) {
       case "right":
-        return VALUE_right_0;
+        return myMember_right_0;
       case "left":
-        return VALUE_left_0;
+        return myMember_left_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

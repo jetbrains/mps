@@ -5,10 +5,10 @@ package jetbrains.mps.baseLanguage.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_TrimKind extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_TrimKind extends EnumerationDescriptorBase {
     super(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df9506L, "TrimKind", "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514374", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_both_0 = new EnumerationDescriptor.MemberDescriptor("both", "both", "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514375", "both");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_leading_0 = new EnumerationDescriptor.MemberDescriptor("leading", "leading", "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514376", "leading");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_trailing_0 = new EnumerationDescriptor.MemberDescriptor("trailing", "trailing", "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514377", "trailing");
+  private final EnumerationDescriptor.MemberDescriptor myMember_both_0 = new EnumerationDescriptor.MemberDescriptor("both", "both", "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514375", "both");
+  private final EnumerationDescriptor.MemberDescriptor myMember_leading_0 = new EnumerationDescriptor.MemberDescriptor("leading", "leading", "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514376", "leading");
+  private final EnumerationDescriptor.MemberDescriptor myMember_trailing_0 = new EnumerationDescriptor.MemberDescriptor("trailing", "trailing", "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1225271514377", "trailing");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df9506L, 0x11d47df9507L, 0x11d47df9508L, 0x11d47df9509L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_both_0, myMember_leading_0, myMember_trailing_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_both_0;
+    return myMember_both_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_both_0, VALUE_leading_0, VALUE_trailing_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,18 @@ public class EnumerationDescriptor_TrimKind extends EnumerationDescriptorBase {
     }
     switch (string) {
       case "both":
-        return VALUE_both_0;
+        return myMember_both_0;
       case "leading":
-        return VALUE_leading_0;
+        return myMember_leading_0;
       case "trailing":
-        return VALUE_trailing_0;
+        return myMember_trailing_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

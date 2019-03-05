@@ -5,10 +5,10 @@ package jetbrains.mps.make.facet.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_ResourcesPolicy extends EnumerationDescriptorBase {
 
@@ -16,21 +16,24 @@ public class EnumerationDescriptor_ResourcesPolicy extends EnumerationDescriptor
     super(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, "ResourcesPolicy", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562083", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_TRANSFORM_0 = new EnumerationDescriptor.MemberDescriptor("TRANSFORM", "transform", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562084", "transform");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_PASSTHRU_0 = new EnumerationDescriptor.MemberDescriptor("PASSTHRU", "pass through", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562085", "pass through");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_CONSUME_0 = new EnumerationDescriptor.MemberDescriptor("CONSUME", "consume", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562086", "consume");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_PRODUCE_0 = new EnumerationDescriptor.MemberDescriptor("PRODUCE", "produce", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562087", "produce");
+  private final EnumerationDescriptor.MemberDescriptor myMember_TRANSFORM_0 = new EnumerationDescriptor.MemberDescriptor("TRANSFORM", "transform", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562084", "transform");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PASSTHRU_0 = new EnumerationDescriptor.MemberDescriptor("PASSTHRU", "pass through", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562085", "pass through");
+  private final EnumerationDescriptor.MemberDescriptor myMember_CONSUME_0 = new EnumerationDescriptor.MemberDescriptor("CONSUME", "consume", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562086", "consume");
+  private final EnumerationDescriptor.MemberDescriptor myMember_PRODUCE_0 = new EnumerationDescriptor.MemberDescriptor("PRODUCE", "produce", "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/1675547159918562087", "produce");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, 0x1740bd43b75c4b24L, 0x1740bd43b75c4b25L, 0x1740bd43b75c4b26L, 0x1740bd43b75c4b27L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_TRANSFORM_0, myMember_PASSTHRU_0, myMember_CONSUME_0, myMember_PRODUCE_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_TRANSFORM_0;
+    return myMember_TRANSFORM_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_TRANSFORM_0, VALUE_PASSTHRU_0, VALUE_CONSUME_0, VALUE_PRODUCE_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -41,14 +44,20 @@ public class EnumerationDescriptor_ResourcesPolicy extends EnumerationDescriptor
     }
     switch (string) {
       case "TRANSFORM":
-        return VALUE_TRANSFORM_0;
+        return myMember_TRANSFORM_0;
       case "PASSTHRU":
-        return VALUE_PASSTHRU_0;
+        return myMember_PASSTHRU_0;
       case "CONSUME":
-        return VALUE_CONSUME_0;
+        return myMember_CONSUME_0;
       case "PRODUCE":
-        return VALUE_PRODUCE_0;
+        return myMember_PRODUCE_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

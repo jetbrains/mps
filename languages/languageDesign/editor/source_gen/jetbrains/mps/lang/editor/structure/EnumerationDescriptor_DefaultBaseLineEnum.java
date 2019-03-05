@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_DefaultBaseLineEnum extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_DefaultBaseLineEnum extends EnumerationDescri
     super(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x69c06896a0e4b8a9L, "DefaultBaseLineEnum", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7620205565664606377", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_FIRST_0 = new EnumerationDescriptor.MemberDescriptor("FIRST", "first cell baseline", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7620205565664606378", "first cell baseline");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_CENTER_0 = new EnumerationDescriptor.MemberDescriptor("CENTER", "collection center", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7620205565664606380", "collection center");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_LAST_0 = new EnumerationDescriptor.MemberDescriptor("LAST", "last cell baseline", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7620205565664606448", "last cell baseline");
+  private final EnumerationDescriptor.MemberDescriptor myMember_FIRST_0 = new EnumerationDescriptor.MemberDescriptor("FIRST", "first cell baseline", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7620205565664606378", "first cell baseline");
+  private final EnumerationDescriptor.MemberDescriptor myMember_CENTER_0 = new EnumerationDescriptor.MemberDescriptor("CENTER", "collection center", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7620205565664606380", "collection center");
+  private final EnumerationDescriptor.MemberDescriptor myMember_LAST_0 = new EnumerationDescriptor.MemberDescriptor("LAST", "last cell baseline", "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7620205565664606448", "last cell baseline");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x69c06896a0e4b8a9L, 0x69c06896a0e4b8aaL, 0x69c06896a0e4b8acL, 0x69c06896a0e4b8f0L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_FIRST_0, myMember_CENTER_0, myMember_LAST_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_FIRST_0;
+    return myMember_FIRST_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_FIRST_0, VALUE_CENTER_0, VALUE_LAST_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,18 @@ public class EnumerationDescriptor_DefaultBaseLineEnum extends EnumerationDescri
     }
     switch (string) {
       case "FIRST":
-        return VALUE_FIRST_0;
+        return myMember_FIRST_0;
       case "CENTER":
-        return VALUE_CENTER_0;
+        return myMember_CENTER_0;
       case "LAST":
-        return VALUE_LAST_0;
+        return myMember_LAST_0;
     }
     return null;
+  }
+
+    @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) { if (myIndex.index(idValue) == -1) return null;
+    return myMembers.get(myIndex.index(idValue));
   }
 }

@@ -5,10 +5,10 @@ package jetbrains.mps.build.structure;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptorBase;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
+import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import java.util.Arrays;
 
 public class EnumerationDescriptor_BuildLayout_TarCompression extends EnumerationDescriptorBase {
 
@@ -16,20 +16,23 @@ public class EnumerationDescriptor_BuildLayout_TarCompression extends Enumeratio
     super(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1b76dbd13de88924L, "BuildLayout_TarCompression", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/1979010778009209124", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor VALUE_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/1979010778009209125", "none");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_gzip_0 = new EnumerationDescriptor.MemberDescriptor("gzip", "gzip", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/1979010778009209126", "gzip");
-  private final EnumerationDescriptor.MemberDescriptor VALUE_bzip2_0 = new EnumerationDescriptor.MemberDescriptor("bzip2", "bzip2", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/1979010778009209127", "bzip2");
+  private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/1979010778009209125", "none");
+  private final EnumerationDescriptor.MemberDescriptor myMember_gzip_0 = new EnumerationDescriptor.MemberDescriptor("gzip", "gzip", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/1979010778009209126", "gzip");
+  private final EnumerationDescriptor.MemberDescriptor myMember_bzip2_0 = new EnumerationDescriptor.MemberDescriptor("bzip2", "bzip2", "r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/1979010778009209127", "bzip2");
+
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1b76dbd13de88924L, 0x1b76dbd13de88925L, 0x1b76dbd13de88926L, 0x1b76dbd13de88927L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_none_0, myMember_gzip_0, myMember_bzip2_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return VALUE_none_0;
+    return myMember_none_0;
   }
 
   @NotNull
   @Override
-  public Collection<EnumerationDescriptor.MemberDescriptor> getMembers() {
-    return Arrays.asList(VALUE_none_0, VALUE_gzip_0, VALUE_bzip2_0);
+  public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
+    return myMembers;
   }
 
   @Nullable
@@ -40,12 +43,19 @@ public class EnumerationDescriptor_BuildLayout_TarCompression extends Enumeratio
     }
     switch (string) {
       case "none":
-        return VALUE_none_0;
+        return myMember_none_0;
       case "gzip":
-        return VALUE_gzip_0;
+        return myMember_gzip_0;
       case "bzip2":
-        return VALUE_bzip2_0;
+        return myMember_bzip2_0;
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public EnumerationDescriptor.MemberDescriptor getMember(long idValue) {int index = myIndex.index(idValue);
+if (index == -1) { return null; }
+    return myMembers.get(myIndex.index(idValue));
   }
 }
