@@ -30,14 +30,11 @@ public class ClassifierMember_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
-        {
-          SNode classifier = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
-          if (classifier != null) {
-            return NodePresentationUtil.getRoleInParentOrConceptName(node) + " (" + NameUtil.compactNodeFQName(classifier) + ")";
-          }
-          return NodePresentationUtil.getRoleInParentOrConceptName(node) + " (?declaring classifier?)";
+        SNode classifier = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
+        if (classifier != null) {
+          return NodePresentationUtil.getRoleInParentOrConceptName(node) + " (" + NameUtil.compactNodeFQName(classifier) + ")";
         }
+        return NodePresentationUtil.getRoleInParentOrConceptName(node) + " (?declaring classifier?)";
       }
     });
     return properties;

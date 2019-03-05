@@ -28,7 +28,6 @@ public class StateMachineTest_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return StateMachineTest__BehaviorDescriptor.getStateMachineName_idhr1J3q0.invoke(node) + " State Machine Test";
       }
     });

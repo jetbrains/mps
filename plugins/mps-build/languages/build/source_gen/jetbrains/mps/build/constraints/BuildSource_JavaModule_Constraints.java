@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.build.util.NameUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -55,9 +54,9 @@ public class BuildSource_JavaModule_Constraints extends BaseConstraintsDescripto
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return NameUtil.isValidProjectPartName((SPropertyOperations.getString(propertyValue)));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return NameUtil.isValidProjectPartName(propertyValue);
       }
     });
     return properties;

@@ -28,7 +28,6 @@ public class BuildMps_IdeaPlugin_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id"));
       }
     });

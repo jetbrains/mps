@@ -29,7 +29,6 @@ public class DailyPlan_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "displayName";
         return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x40bcae6c0e686ffeL, "applicability")));
       }
     });

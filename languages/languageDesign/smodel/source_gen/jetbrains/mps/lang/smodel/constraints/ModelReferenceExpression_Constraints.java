@@ -28,7 +28,6 @@ public class ModelReferenceExpression_Constraints extends BaseConstraintsDescrip
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "fqName";
         if (isEmptyString(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e92b66L, "name")))) {
           return null;
         }

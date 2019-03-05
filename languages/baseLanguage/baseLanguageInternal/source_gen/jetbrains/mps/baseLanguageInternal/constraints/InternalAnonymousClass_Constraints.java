@@ -28,7 +28,6 @@ public class InternalAnonymousClass_Constraints extends BaseConstraintsDescripto
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, 0x2f7b79225e7468e5L, "fqClassName")) + "$anonymous";
       }
       @Override
@@ -36,9 +35,9 @@ public class InternalAnonymousClass_Constraints extends BaseConstraintsDescripto
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return (SPropertyOperations.getString(propertyValue)).matches("[a-zA-Z[_]][a-zA-Z0-9$.[_]]*");
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return propertyValue.matches("[a-zA-Z[_]][a-zA-Z0-9$.[_]]*");
       }
     });
     return properties;

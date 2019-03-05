@@ -28,7 +28,6 @@ public class IdeaInitializerDescriptor_Constraints extends BaseConstraintsDescri
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
         return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x45b64b294c2b3514L, 0x45b64b294c2b3516L, "id"));
       }
     });

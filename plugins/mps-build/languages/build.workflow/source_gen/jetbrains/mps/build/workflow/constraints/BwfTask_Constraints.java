@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.xml.constraints.XmlNameUtil;
 
 public class BwfTask_Constraints extends BaseConstraintsDescriptor {
@@ -28,9 +27,9 @@ public class BwfTask_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return !((SPropertyOperations.getString(propertyValue)).contains(" ")) && XmlNameUtil.isName((SPropertyOperations.getString(propertyValue)));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return !(propertyValue.contains(" ")) && XmlNameUtil.isName(propertyValue);
       }
     });
     return properties;

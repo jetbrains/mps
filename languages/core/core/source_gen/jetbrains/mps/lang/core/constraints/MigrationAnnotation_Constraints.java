@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 
@@ -29,10 +28,10 @@ public class MigrationAnnotation_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "createdByScript";
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
         try {
-          String migrationScriptReference = (SPropertyOperations.getString(propertyValue));
+          String migrationScriptReference = propertyValue;
           int version = Integer.parseInt(migrationScriptReference.substring(migrationScriptReference.indexOf('/') + 1));
           int ix = migrationScriptReference.indexOf('(');
           SLanguage language = MetaAdapterFactory.getLanguage(SLanguageId.deserialize(migrationScriptReference.substring(0, ix)), migrationScriptReference.substring(ix + 1, migrationScriptReference.indexOf(')', ix)));

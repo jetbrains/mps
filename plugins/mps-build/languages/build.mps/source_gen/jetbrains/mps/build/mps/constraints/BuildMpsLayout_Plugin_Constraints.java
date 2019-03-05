@@ -40,7 +40,6 @@ public class BuildMpsLayout_Plugin_Constraints extends BaseConstraintsDescriptor
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return (String) BuildSource_SingleFolder__BehaviorDescriptor.getApproximateName_id4RsV8qJH_Br.invoke(node);
       }
     });

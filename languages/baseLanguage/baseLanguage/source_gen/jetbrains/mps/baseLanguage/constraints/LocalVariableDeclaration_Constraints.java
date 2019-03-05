@@ -27,7 +27,6 @@ public class LocalVariableDeclaration_Constraints extends BaseConstraintsDescrip
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
         return "local variable";
       }
     });

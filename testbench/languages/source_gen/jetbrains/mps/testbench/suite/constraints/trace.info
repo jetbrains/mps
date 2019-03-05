@@ -95,30 +95,27 @@
       <node id="1280144168199745453" at="18,36,19,159" concept="6" />
       <node id="1280144168199745453" at="23,84,24,119" concept="3" />
       <node id="1280144168199745454" at="27,37,28,20" concept="4" />
-      <node id="1280144168199745454" at="31,42,32,37" concept="3" />
-      <node id="1280144168199745458" at="32,37,33,258" concept="4" />
-      <node id="1280144168199745453" at="35,7,36,22" concept="4" />
+      <node id="1280144168199745458" at="31,42,32,258" concept="4" />
+      <node id="1280144168199745453" at="34,7,35,22" concept="4" />
       <node id="1280144168199745453" at="18,0,21,0" concept="0" trace="ModuleSuite_Constraints#()V" />
       <node id="1280144168199745454" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
-      <node id="1280144168199745454" at="30,0,35,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="1280144168199745454" at="24,119,35,7" concept="1" />
-      <node id="1280144168199745453" at="22,0,38,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="1280144168199745454" at="30,0,34,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="1280144168199745454" at="24,119,34,7" concept="1" />
+      <node id="1280144168199745453" at="22,0,37,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="1280144168199745453" at="18,36,19,159" />
       <scope id="1280144168199745454" at="27,37,28,20" />
-      <scope id="1280144168199745454" at="31,42,33,258">
-        <var name="propertyName" id="1280144168199745454" />
-      </scope>
+      <scope id="1280144168199745456" at="31,42,32,258" />
       <scope id="1280144168199745453" at="18,0,21,0" />
       <scope id="1280144168199745454" at="26,0,30,0" />
-      <scope id="1280144168199745454" at="30,0,35,0">
+      <scope id="1280144168199745454" at="30,0,34,0">
         <var name="node" id="1280144168199745454" />
       </scope>
-      <scope id="1280144168199745453" at="23,84,36,22">
+      <scope id="1280144168199745453" at="23,84,35,22">
         <var name="properties" id="1280144168199745453" />
       </scope>
-      <scope id="1280144168199745453" at="22,0,38,0" />
-      <unit id="1280144168199745454" at="25,137,35,5" name="jetbrains.mps.testbench.suite.constraints.ModuleSuite_Constraints$1" />
-      <unit id="1280144168199745453" at="17,0,39,0" name="jetbrains.mps.testbench.suite.constraints.ModuleSuite_Constraints" />
+      <scope id="1280144168199745453" at="22,0,37,0" />
+      <unit id="1280144168199745454" at="25,137,34,5" name="jetbrains.mps.testbench.suite.constraints.ModuleSuite_Constraints$1" />
+      <unit id="1280144168199745453" at="17,0,38,0" name="jetbrains.mps.testbench.suite.constraints.ModuleSuite_Constraints" />
     </file>
   </root>
   <root nodeRef="r:137cc691-13a2-4fdd-885a-88f9405e83c0(jetbrains.mps.testbench.suite.constraints)/4504141816188599490">

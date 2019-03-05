@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class XmlEntityRefValue_Constraints extends BaseConstraintsDescriptor {
   public XmlEntityRefValue_Constraints() {
@@ -27,9 +26,9 @@ public class XmlEntityRefValue_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "entityName";
-        return XmlNameUtil.isName((SPropertyOperations.getString(propertyValue)));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return XmlNameUtil.isName(propertyValue);
       }
     });
     return properties;

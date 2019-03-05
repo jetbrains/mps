@@ -28,7 +28,6 @@ public class RegexpDeclaration_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
         return (isNotEmptyString(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x1117f5e9a48L, "description"))) ? SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x1117f5e9a48L, "description")) : "regular expression");
       }
     });

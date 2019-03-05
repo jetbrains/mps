@@ -28,7 +28,6 @@ public class PropertyPatternVariableDeclaration_Constraints extends BaseConstrai
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return "$" + SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, 0x108a9cb4796L, "varName"));
       }
     });

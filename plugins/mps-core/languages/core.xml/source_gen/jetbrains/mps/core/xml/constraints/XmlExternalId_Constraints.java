@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   public XmlExternalId_Constraints() {
@@ -27,9 +26,9 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "publicId";
-        return XmlNameUtil.isPublicId((SPropertyOperations.getString(propertyValue)));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return XmlNameUtil.isPublicId(propertyValue);
       }
     });
     properties.put(MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L, "systemId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L), this) {
@@ -38,9 +37,9 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "systemId";
-        return XmlNameUtil.isSystemId((SPropertyOperations.getString(propertyValue)));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return XmlNameUtil.isSystemId(propertyValue);
       }
     });
     return properties;

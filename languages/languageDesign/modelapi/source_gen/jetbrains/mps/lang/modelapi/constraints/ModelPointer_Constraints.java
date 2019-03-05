@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 public class ModelPointer_Constraints extends BaseConstraintsDescriptor {
@@ -28,21 +27,18 @@ public class ModelPointer_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "modelId";
-        if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        if ((propertyValue == null || propertyValue.length() == 0)) {
           return true;
         }
         try {
-          return PersistenceFacade.getInstance().createModelId((SPropertyOperations.getString(propertyValue))) != null;
+          return PersistenceFacade.getInstance().createModelId(propertyValue) != null;
         } catch (IllegalArgumentException exc) {
           return false;
         }
       }
     });
     return properties;
-  }
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
   }
 }

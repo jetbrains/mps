@@ -27,10 +27,10 @@ public class Circle_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "radius";
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        int propertyValue = (Integer) ($propertyValue);
         SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius"), 11110);
-        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius"), (SPropertyOperations.getInteger(propertyValue)));
+        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius"), propertyValue);
       }
     });
     return properties;

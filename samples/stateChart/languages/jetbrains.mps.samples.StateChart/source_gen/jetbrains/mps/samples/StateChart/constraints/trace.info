@@ -17,14 +17,14 @@
       <node id="1480846759627689858" at="20,30,21,156" concept="6" />
       <node id="1480846759627689858" at="25,84,26,119" concept="3" />
       <node id="1480846759627689859" at="29,40,30,20" concept="4" />
-      <node id="1480846759627689859" at="33,70,34,42" concept="3" />
+      <node id="1480846759627689859" at="33,71,34,59" concept="3" />
       <node id="1480846759627734723" at="36,43,37,192" concept="4" />
       <node id="1480846759627689858" at="41,7,42,22" concept="4" />
       <node id="1480846759627689858" at="20,0,23,0" concept="0" trace="State_Constraints#()V" />
       <node id="1480846759627733070" at="36,0,39,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1480846759627689859" at="28,0,32,0" concept="2" trace="hasOwnValidator#()Z" />
-      <node id="1480846759627693532" at="34,42,39,11" concept="4" />
-      <node id="1480846759627689859" at="32,0,41,0" concept="2" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="1480846759627693532" at="34,59,39,11" concept="4" />
+      <node id="1480846759627689859" at="32,0,41,0" concept="2" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;)Z" />
       <node id="1480846759627689859" at="26,119,41,7" concept="1" />
       <node id="1480846759627689858" at="24,0,44,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="1480846759627689858" at="20,30,21,156" />
@@ -35,18 +35,18 @@
         <var name="it" id="1480846759627733070" />
       </scope>
       <scope id="1480846759627689859" at="28,0,32,0" />
-      <scope id="1480846759627689859" at="33,70,39,11">
-        <var name="propertyName" id="1480846759627689859" />
+      <scope id="1480846759627689859" at="33,71,39,11">
+        <var name="propertyValue" id="1480846759627689859" />
       </scope>
       <scope id="1480846759627689859" at="32,0,41,0">
+        <var name="$propertyValue" id="1480846759627689859" />
         <var name="node" id="1480846759627689859" />
-        <var name="propertyValue" id="1480846759627689859" />
       </scope>
       <scope id="1480846759627689858" at="25,84,42,22">
         <var name="properties" id="1480846759627689858" />
       </scope>
       <scope id="1480846759627689858" at="24,0,44,0" />
-      <unit id="1480846759627733070" at="35,323,39,9" name="jetbrains.mps.samples.StateChart.constraints.State_Constraints$1$1" />
+      <unit id="1480846759627733070" at="35,289,39,9" name="jetbrains.mps.samples.StateChart.constraints.State_Constraints$1$1" />
       <unit id="1480846759627689859" at="27,152,41,5" name="jetbrains.mps.samples.StateChart.constraints.State_Constraints$1" />
       <unit id="1480846759627689858" at="19,0,45,0" name="jetbrains.mps.samples.StateChart.constraints.State_Constraints" />
     </file>

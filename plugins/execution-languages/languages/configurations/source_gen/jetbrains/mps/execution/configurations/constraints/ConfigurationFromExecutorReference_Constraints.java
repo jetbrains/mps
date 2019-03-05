@@ -53,7 +53,6 @@ public class ConfigurationFromExecutorReference_Constraints extends BaseConstrai
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return SPropertyOperations.getString(ConfigurationFromExecutorReference__BehaviorDescriptor.getExecutor_id6LlKjXrML19.invoke(node), MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName"));
       }
     });

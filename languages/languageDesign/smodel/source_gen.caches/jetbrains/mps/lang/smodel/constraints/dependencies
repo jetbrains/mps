@@ -456,7 +456,6 @@
   <dependency className="jetbrains.mps.lang.smodel.constraints.ModuleReferenceExpression_Constraints">
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.ModuleReferenceExpression__BehaviorDescriptor" />

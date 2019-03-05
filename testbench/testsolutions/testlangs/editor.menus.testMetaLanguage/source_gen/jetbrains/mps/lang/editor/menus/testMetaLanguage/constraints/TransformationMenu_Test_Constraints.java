@@ -27,7 +27,6 @@ public class TransformationMenu_Test_Constraints extends BaseConstraintsDescript
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return "test_menu";
       }
     });

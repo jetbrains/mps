@@ -28,7 +28,6 @@ public class ExtensionPointDeclaration_Constraints extends BaseConstraintsDescri
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         if (SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName")) != null) {
           return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName"));
         } else {

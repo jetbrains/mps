@@ -64,10 +64,10 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "hasNoDefaultMember";
-        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember"), (SPropertyOperations.getBoolean(propertyValue)));
-        if ((SPropertyOperations.getBoolean(propertyValue)) == true) {
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        boolean propertyValue = (Boolean) ($propertyValue);
+        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember"), propertyValue);
+        if (propertyValue == true) {
           SLinkOperations.setTarget(node, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember"), null);
         }
       }

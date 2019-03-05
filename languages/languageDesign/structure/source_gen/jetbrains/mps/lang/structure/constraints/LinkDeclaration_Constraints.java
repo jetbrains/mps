@@ -46,9 +46,9 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "sourceCardinality";
-        return SPropertyOperations.hasEnumValue(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation") || SEnumOperations.getMemberValue(SEnumOperations.getMember(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure", 0xfc6f3944c2L, "Cardinality", 0xfc6f3944c4L, "1")).equals((SPropertyOperations.getString(propertyValue))) || SEnumOperations.getMemberValue(SEnumOperations.getMember(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure", 0xfc6f3944c2L, "Cardinality", 0xfc6f3944c3L, "0..1")).equals((SPropertyOperations.getString(propertyValue)));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) (SPropertyOperations.downgradeFromEnumMember(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality"), $propertyValue));
+        return SPropertyOperations.hasEnumValue(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation") || SEnumOperations.getMemberValue(SEnumOperations.getMember(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure", 0xfc6f3944c2L, "Cardinality", 0xfc6f3944c4L, "1")).equals(propertyValue) || SEnumOperations.getMemberValue(SEnumOperations.getMember(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure", 0xfc6f3944c2L, "Cardinality", 0xfc6f3944c3L, "0..1")).equals(propertyValue);
       }
     });
     properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L), this) {
@@ -57,9 +57,9 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "role";
-        return (SPropertyOperations.getString(propertyValue)).matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return propertyValue.matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
       }
     });
     properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L), this) {
@@ -68,13 +68,13 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "linkId";
-        if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        if ((propertyValue == null || propertyValue.length() == 0)) {
           return true;
         }
         try {
-          Long.parseLong((SPropertyOperations.getString(propertyValue)));
+          Long.parseLong(propertyValue);
           return true;
         } catch (NumberFormatException e) {
           return false;
@@ -88,7 +88,6 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"));
       }
       @Override
@@ -96,9 +95,9 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"), (SPropertyOperations.getString(propertyValue)));
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"), propertyValue);
       }
     });
     return properties;
@@ -148,7 +147,4 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
     return references;
   }
   private static SNodePointer breakingNode_nfyhm3_a0a0a0a0a1a0b0a1a3 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805253");
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
-  }
 }

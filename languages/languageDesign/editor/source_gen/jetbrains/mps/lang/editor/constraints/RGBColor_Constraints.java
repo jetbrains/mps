@@ -27,9 +27,9 @@ public class RGBColor_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "value";
-        return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value")) == null || (SPropertyOperations.getString(propertyValue)).matches("[0-9a-fA-Z]{1,6}");
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value")) == null || propertyValue.matches("[0-9a-fA-Z]{1,6}");
       }
     });
     return properties;

@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.regex.Pattern;
 
 public class BuildVariableMacro_Constraints extends BaseConstraintsDescriptor {
@@ -28,9 +27,9 @@ public class BuildVariableMacro_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return REGEXP_xr7ei4_a0a1a1a0b0a1a2.matcher((SPropertyOperations.getString(propertyValue))).matches();
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return REGEXP_xr7ei4_a0a1a1a0b0a1a2.matcher(propertyValue).matches();
       }
     });
     return properties;

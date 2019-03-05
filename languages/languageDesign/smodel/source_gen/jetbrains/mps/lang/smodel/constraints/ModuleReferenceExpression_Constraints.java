@@ -29,14 +29,11 @@ public class ModuleReferenceExpression_Constraints extends BaseConstraintsDescri
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
-        {
-          SModule module = ModuleReferenceExpression__BehaviorDescriptor.getModule_id3wj3sjzQUV1.invoke(node);
-          if (module == null) {
-            return null;
-          }
-          return module.getModuleName();
+        SModule module = ModuleReferenceExpression__BehaviorDescriptor.getModule_id3wj3sjzQUV1.invoke(node);
+        if (module == null) {
+          return null;
         }
+        return module.getModuleName();
       }
     });
     return properties;

@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModelName;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class ModelName_Constraints extends BaseConstraintsDescriptor {
   public ModelName_Constraints() {
@@ -28,10 +27,10 @@ public class ModelName_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "value";
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
         try {
-          new SModelName((SPropertyOperations.getString(propertyValue)));
+          new SModelName(propertyValue);
           return true;
         } catch (IllegalArgumentException exception) {
           return false;

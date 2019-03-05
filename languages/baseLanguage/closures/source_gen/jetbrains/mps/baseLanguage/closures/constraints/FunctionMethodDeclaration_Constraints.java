@@ -27,7 +27,6 @@ public class FunctionMethodDeclaration_Constraints extends BaseConstraintsDescri
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return "invoke";
       }
     });
@@ -38,7 +37,6 @@ public class FunctionMethodDeclaration_Constraints extends BaseConstraintsDescri
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "isAbstract";
         return false;
       }
     });

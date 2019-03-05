@@ -272,34 +272,34 @@
   </root>
   <root nodeRef="r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)/8009469105144688911">
     <file name="Port_Constraints.java">
-      <node id="8009469105144688911" at="17,29,18,152" concept="9" />
-      <node id="8009469105144688911" at="22,84,23,119" concept="4" />
-      <node id="8009469105144688912" at="26,40,27,20" concept="5" />
-      <node id="8009469105144688912" at="30,70,31,43" concept="4" />
-      <node id="8009469105144689372" at="31,43,32,125" concept="5" />
-      <node id="8009469105144688911" at="34,7,35,22" concept="5" />
-      <node id="8009469105144688911" at="17,0,20,0" concept="0" trace="Port_Constraints#()V" />
-      <node id="8009469105144688912" at="25,0,29,0" concept="3" trace="hasOwnValidator#()Z" />
-      <node id="8009469105144688912" at="29,0,34,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
-      <node id="8009469105144688912" at="23,119,34,7" concept="1" />
-      <node id="8009469105144688911" at="21,0,37,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
-      <scope id="8009469105144688911" at="17,29,18,152" />
-      <scope id="8009469105144688912" at="26,40,27,20" />
-      <scope id="8009469105144688912" at="30,70,32,125">
-        <var name="propertyName" id="8009469105144688912" />
-      </scope>
-      <scope id="8009469105144688911" at="17,0,20,0" />
-      <scope id="8009469105144688912" at="25,0,29,0" />
-      <scope id="8009469105144688912" at="29,0,34,0">
-        <var name="node" id="8009469105144688912" />
+      <node id="8009469105144688911" at="16,29,17,152" concept="9" />
+      <node id="8009469105144688911" at="21,84,22,119" concept="4" />
+      <node id="8009469105144688912" at="25,40,26,20" concept="5" />
+      <node id="8009469105144688912" at="29,71,30,55" concept="4" />
+      <node id="8009469105144689372" at="30,55,31,57" concept="5" />
+      <node id="8009469105144688911" at="33,7,34,22" concept="5" />
+      <node id="8009469105144688911" at="16,0,19,0" concept="0" trace="Port_Constraints#()V" />
+      <node id="8009469105144688912" at="24,0,28,0" concept="3" trace="hasOwnValidator#()Z" />
+      <node id="8009469105144688912" at="28,0,33,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;)Z" />
+      <node id="8009469105144688912" at="22,119,33,7" concept="1" />
+      <node id="8009469105144688911" at="20,0,36,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <scope id="8009469105144688911" at="16,29,17,152" />
+      <scope id="8009469105144688912" at="25,40,26,20" />
+      <scope id="8009469105144688912" at="29,71,31,57">
         <var name="propertyValue" id="8009469105144688912" />
       </scope>
-      <scope id="8009469105144688911" at="22,84,35,22">
+      <scope id="8009469105144688911" at="16,0,19,0" />
+      <scope id="8009469105144688912" at="24,0,28,0" />
+      <scope id="8009469105144688912" at="28,0,33,0">
+        <var name="$propertyValue" id="8009469105144688912" />
+        <var name="node" id="8009469105144688912" />
+      </scope>
+      <scope id="8009469105144688911" at="21,84,34,22">
         <var name="properties" id="8009469105144688911" />
       </scope>
-      <scope id="8009469105144688911" at="21,0,37,0" />
-      <unit id="8009469105144688912" at="24,153,34,5" name="jetbrains.mps.ide.httpsupport.constraints.Port_Constraints$1" />
-      <unit id="8009469105144688911" at="16,0,38,0" name="jetbrains.mps.ide.httpsupport.constraints.Port_Constraints" />
+      <scope id="8009469105144688911" at="20,0,36,0" />
+      <unit id="8009469105144688912" at="23,153,33,5" name="jetbrains.mps.ide.httpsupport.constraints.Port_Constraints$1" />
+      <unit id="8009469105144688911" at="15,0,37,0" name="jetbrains.mps.ide.httpsupport.constraints.Port_Constraints" />
     </file>
   </root>
 </debug-info>

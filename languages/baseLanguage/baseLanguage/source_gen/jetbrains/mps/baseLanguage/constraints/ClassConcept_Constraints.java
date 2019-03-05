@@ -74,7 +74,6 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "isStatic";
         return !(SPropertyOperations.getBoolean(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic")));
       }
       @Override
@@ -82,9 +81,9 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "isStatic";
-        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic"), !((SPropertyOperations.getBoolean(propertyValue))));
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        boolean propertyValue = (Boolean) ($propertyValue);
+        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic"), !(propertyValue));
       }
     });
     return properties;

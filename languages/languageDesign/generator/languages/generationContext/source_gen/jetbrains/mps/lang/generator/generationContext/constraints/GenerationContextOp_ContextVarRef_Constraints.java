@@ -31,15 +31,15 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, final String propertyValue) {
-        String propertyName = "contextVarName";
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        final String propertyValue = (String) ($propertyValue);
         {
           SNode n = node;
           while (n != null) {
             if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider"))) {
               if (ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider")))).any(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals((SPropertyOperations.getString(propertyValue)));
+                  return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(propertyValue);
                 }
               })) {
                 return true;

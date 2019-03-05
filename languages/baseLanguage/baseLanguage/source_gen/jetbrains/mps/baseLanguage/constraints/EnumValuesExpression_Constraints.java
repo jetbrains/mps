@@ -27,7 +27,6 @@ public class EnumValuesExpression_Constraints extends BaseConstraintsDescriptor 
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
         return "values of enum";
       }
     });

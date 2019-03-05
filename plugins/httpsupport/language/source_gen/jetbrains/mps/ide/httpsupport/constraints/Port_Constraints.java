@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class Port_Constraints extends BaseConstraintsDescriptor {
   public Port_Constraints() {
@@ -27,9 +26,9 @@ public class Port_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "portNumber";
-        return (SPropertyOperations.getInteger(propertyValue)) > 0 & (SPropertyOperations.getInteger(propertyValue)) < 65536;
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        int propertyValue = (Integer) ($propertyValue);
+        return propertyValue > 0 & propertyValue < 65536;
       }
     });
     return properties;

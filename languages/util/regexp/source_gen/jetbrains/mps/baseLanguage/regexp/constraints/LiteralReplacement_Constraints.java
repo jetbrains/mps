@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class LiteralReplacement_Constraints extends BaseConstraintsDescriptor {
   public LiteralReplacement_Constraints() {
@@ -27,9 +26,9 @@ public class LiteralReplacement_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "text";
-        return (SPropertyOperations.getString(propertyValue)).indexOf(" ") < 1;
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return propertyValue.indexOf(" ") < 1;
       }
     });
     return properties;

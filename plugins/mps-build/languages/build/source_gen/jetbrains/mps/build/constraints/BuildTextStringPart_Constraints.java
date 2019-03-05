@@ -31,7 +31,6 @@ public class BuildTextStringPart_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"));
       }
     });
@@ -41,14 +40,14 @@ public class BuildTextStringPart_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "text";
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
         {
           SNode container = BuildTextStringPart__BehaviorDescriptor.getContainer_id5hFYqIiYHaE.invoke(node);
           if (container != null) {
-            return (boolean) BuildStringContainer__BehaviorDescriptor.isValidPart_id7XQqoCTkVIS.invoke(container, (SPropertyOperations.getString(propertyValue)), SNodeOperations.getParent(node).getContainmentLink());
+            return (boolean) BuildStringContainer__BehaviorDescriptor.isValidPart_id7XQqoCTkVIS.invoke(container, propertyValue, SNodeOperations.getParent(node).getContainmentLink());
           }
-          return !((SPropertyOperations.getString(propertyValue)).contains("$"));
+          return !(propertyValue.contains("$"));
         }
       }
     });

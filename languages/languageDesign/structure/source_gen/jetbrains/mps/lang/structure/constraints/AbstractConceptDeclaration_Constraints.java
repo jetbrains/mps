@@ -22,7 +22,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.UUID;
 import jetbrains.mps.smodel.SNodePointer;
 
@@ -58,9 +57,9 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return (SPropertyOperations.getString(propertyValue)).matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return propertyValue.matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
       }
     });
     properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L), this) {
@@ -69,13 +68,13 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "conceptId";
-        if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        if ((propertyValue == null || propertyValue.length() == 0)) {
           return true;
         }
         try {
-          Long.parseLong((SPropertyOperations.getString(propertyValue)));
+          Long.parseLong(propertyValue);
           return true;
         } catch (NumberFormatException e) {
           return false;
@@ -88,13 +87,13 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "languageId";
-        if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        if ((propertyValue == null || propertyValue.length() == 0)) {
           return true;
         }
         try {
-          UUID.fromString((SPropertyOperations.getString(propertyValue)));
+          UUID.fromString(propertyValue);
           return true;
         } catch (NumberFormatException e) {
           return false;
@@ -104,7 +103,4 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
     return properties;
   }
   private static SNodePointer breakingNode_c1kwet_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805233");
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
-  }
 }

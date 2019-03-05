@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class CustomContainerDeclaration_Constraints extends BaseConstraintsDescriptor {
   public CustomContainerDeclaration_Constraints() {
@@ -27,10 +26,10 @@ public class CustomContainerDeclaration_Constraints extends BaseConstraintsDescr
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        for (int i = 0; i < (SPropertyOperations.getString(propertyValue)).length(); i++) {
-          char c = (SPropertyOperations.getString(propertyValue)).charAt(i);
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        for (int i = 0; i < propertyValue.length(); i++) {
+          char c = propertyValue.charAt(i);
           if (!(((i == 0 && Character.isJavaIdentifierStart(c)) || (i > 0 && Character.isJavaIdentifierPart(c))))) {
             return false;
           }

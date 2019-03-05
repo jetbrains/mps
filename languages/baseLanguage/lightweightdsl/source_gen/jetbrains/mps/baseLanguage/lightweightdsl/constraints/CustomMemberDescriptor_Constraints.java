@@ -43,7 +43,6 @@ public class CustomMemberDescriptor_Constraints extends BaseConstraintsDescripto
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node);
       }
       @Override
@@ -51,8 +50,8 @@ public class CustomMemberDescriptor_Constraints extends BaseConstraintsDescripto
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "name";
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
       }
     });
     return properties;

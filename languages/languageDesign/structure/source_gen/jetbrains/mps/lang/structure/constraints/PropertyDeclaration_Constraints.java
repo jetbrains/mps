@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   public PropertyDeclaration_Constraints() {
@@ -27,9 +26,9 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return (SPropertyOperations.getString(propertyValue)).matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return propertyValue.matches("[a-zA-Z[_]][a-zA-Z0-9$[_]]*");
       }
     });
     properties.put(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L), this) {
@@ -38,13 +37,13 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "propertyId";
-        if (isEmptyString((SPropertyOperations.getString(propertyValue)))) {
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        if ((propertyValue == null || propertyValue.length() == 0)) {
           return true;
         }
         try {
-          Long.parseLong((SPropertyOperations.getString(propertyValue)));
+          Long.parseLong(propertyValue);
           return true;
         } catch (NumberFormatException e) {
           return false;
@@ -52,8 +51,5 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
       }
     });
     return properties;
-  }
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
   }
 }

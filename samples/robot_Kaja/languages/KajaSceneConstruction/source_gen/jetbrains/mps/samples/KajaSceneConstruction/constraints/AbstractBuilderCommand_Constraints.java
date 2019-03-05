@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import JavaKaja.runtime.KajaFrame;
 
 public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescriptor {
@@ -28,9 +27,9 @@ public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescripto
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "col";
-        return (SPropertyOperations.getInteger(propertyValue)) > 0 && (SPropertyOperations.getInteger(propertyValue)) < KajaFrame.WIDTH - 1;
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        int propertyValue = (Integer) ($propertyValue);
+        return propertyValue > 0 && propertyValue < KajaFrame.WIDTH - 1;
       }
     });
     properties.put(MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe40L, "row"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe40L), this) {
@@ -39,9 +38,9 @@ public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescripto
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "row";
-        return (SPropertyOperations.getInteger(propertyValue)) > 0 && (SPropertyOperations.getInteger(propertyValue)) < KajaFrame.HEIGHT - 1;
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        int propertyValue = (Integer) ($propertyValue);
+        return propertyValue > 0 && propertyValue < KajaFrame.HEIGHT - 1;
       }
     });
     return properties;

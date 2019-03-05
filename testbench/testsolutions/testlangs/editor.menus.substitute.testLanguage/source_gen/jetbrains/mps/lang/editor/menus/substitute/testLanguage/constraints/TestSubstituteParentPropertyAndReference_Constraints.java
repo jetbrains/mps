@@ -11,8 +11,8 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
@@ -43,9 +43,9 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "enumPropertyWithIsValidConstraints";
-        return Objects.equals((SPropertyOperations.getString(propertyValue)), "myFirstValue");
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) (SPropertyOperations.downgradeFromEnumMember(MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f165eaafL, "enumPropertyWithIsValidConstraints"), $propertyValue));
+        return Objects.equals(propertyValue, "myFirstValue");
       }
     });
     properties.put(MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16901efL, "enumPropertyWithGetter"), new BasePropertyConstraintsDescriptor(MetaIdFactory.propId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16901efL), this) {
@@ -55,7 +55,6 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "enumPropertyWithGetter";
         return "myFirstValue";
       }
     });
@@ -65,8 +64,8 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "enumPropertyWithSetter";
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) (SPropertyOperations.downgradeFromEnumMember(MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f168f8e1L, "enumPropertyWithSetter"), $propertyValue));
         SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "custom property setter executed");
       }
     });

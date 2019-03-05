@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.nio.charset.Charset;
 
 public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
@@ -28,16 +27,16 @@ public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "encoding";
-        if (isEmptyString(trim_p9uqyx_a0a0a1a1a0b0a1a2((SPropertyOperations.getString(propertyValue))))) {
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        if (isEmptyString(((propertyValue == null ? null : propertyValue.trim())))) {
           return false;
         }
-        if ((SPropertyOperations.getString(propertyValue)).equals("binary")) {
+        if (propertyValue.equals("binary")) {
           return true;
         }
         try {
-          Charset.forName((SPropertyOperations.getString(propertyValue)));
+          Charset.forName(propertyValue);
           return true;
         } catch (IllegalArgumentException uc) {
           return false;
@@ -48,8 +47,5 @@ public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
-  }
-  public static String trim_p9uqyx_a0a0a1a1a0b0a1a2(String str) {
-    return (str == null ? null : str.trim());
   }
 }

@@ -29,7 +29,6 @@ public class CommandBuilderExpression_Constraints extends BaseConstraintsDescrip
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
         return SPropertyOperations.getString(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription"));
       }
     });

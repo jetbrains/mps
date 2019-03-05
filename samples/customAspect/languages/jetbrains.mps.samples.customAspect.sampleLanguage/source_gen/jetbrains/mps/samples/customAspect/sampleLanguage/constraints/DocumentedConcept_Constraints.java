@@ -27,7 +27,6 @@ public class DocumentedConcept_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return "DocumentedNode";
       }
     });

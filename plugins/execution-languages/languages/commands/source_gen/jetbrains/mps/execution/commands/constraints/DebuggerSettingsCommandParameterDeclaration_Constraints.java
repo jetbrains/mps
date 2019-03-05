@@ -29,7 +29,6 @@ public class DebuggerSettingsCommandParameterDeclaration_Constraints extends Bas
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return SConceptOperations.conceptAlias(SNodeOperations.getConcept(node));
       }
     });

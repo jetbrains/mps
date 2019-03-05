@@ -28,7 +28,6 @@ public class PredefinedSymbolClassDeclaration_Constraints extends BaseConstraint
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
         return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e59fd0L, 0x11178e7fa54L, "description"));
       }
     });

@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.util.IdentifierConstraintsUtil;
 
 public class IValidIdentifier_Constraints extends BaseConstraintsDescriptor {
@@ -28,9 +27,9 @@ public class IValidIdentifier_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "name";
-        return (SPropertyOperations.getString(propertyValue)).matches("[a-zA-Z$[_]][a-zA-Z0-9$[_]]*") && !(IdentifierConstraintsUtil.isJavaReserved((SPropertyOperations.getString(propertyValue))));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return propertyValue.matches("[a-zA-Z$[_]][a-zA-Z0-9$[_]]*") && !(IdentifierConstraintsUtil.isJavaReserved(propertyValue));
       }
     });
     return properties;

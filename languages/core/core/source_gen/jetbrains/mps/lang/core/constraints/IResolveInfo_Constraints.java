@@ -27,7 +27,6 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "resolveInfo";
         return node.getName();
       }
       @Override
@@ -35,8 +34,8 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "resolveInfo";
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
         // nothing - resolveInfo is read-only 
       }
     });

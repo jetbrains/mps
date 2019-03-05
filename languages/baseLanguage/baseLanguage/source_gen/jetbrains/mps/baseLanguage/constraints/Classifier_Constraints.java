@@ -64,7 +64,6 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "nestedName";
         return (String) Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(node);
       }
     });
@@ -75,7 +74,6 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "resolveInfo";
         return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName"));
       }
     });
@@ -86,7 +84,6 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "shortDescription";
         return NodePresentationUtil.getAliasOrConceptName(node) + " (" + NameUtil.compactModelName(SModelOperations.getPointer(SNodeOperations.getModel(node))) + ")";
       }
     });

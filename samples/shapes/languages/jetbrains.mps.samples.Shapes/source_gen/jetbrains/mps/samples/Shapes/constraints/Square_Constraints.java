@@ -27,10 +27,10 @@ public class Square_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public void setValue(SNode node, String propertyValue) {
-        String propertyName = "size";
+      public void setPropertyValue(SNode node, Object $propertyValue) {
+        int propertyValue = (Integer) ($propertyValue);
         SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a8L, "size"), 111110);
-        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a8L, "size"), (SPropertyOperations.getInteger(propertyValue)));
+        SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a8L, "size"), propertyValue);
       }
     });
     return properties;

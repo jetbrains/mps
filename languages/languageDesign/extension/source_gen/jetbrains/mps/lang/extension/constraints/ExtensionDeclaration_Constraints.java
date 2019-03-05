@@ -29,11 +29,8 @@ public class ExtensionDeclaration_Constraints extends BaseConstraintsDescriptor 
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
-        {
-          SNode extensionPoint = SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint"));
-          return ((extensionPoint != null ? SPropertyOperations.getString(extensionPoint, MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName")) : "<unknown>")) + "_extension";
-        }
+        SNode extensionPoint = SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint"));
+        return ((extensionPoint != null ? SPropertyOperations.getString(extensionPoint, MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName")) : "<unknown>")) + "_extension";
       }
     });
     return properties;

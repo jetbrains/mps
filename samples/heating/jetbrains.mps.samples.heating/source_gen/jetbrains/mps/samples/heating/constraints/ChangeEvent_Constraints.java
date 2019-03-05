@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
   public ChangeEvent_Constraints() {
@@ -27,9 +26,9 @@ public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "temperature";
-        return (SPropertyOperations.getInteger(propertyValue)) >= 12 && (SPropertyOperations.getInteger(propertyValue)) <= 30;
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        int propertyValue = (Integer) ($propertyValue);
+        return propertyValue >= 12 && propertyValue <= 30;
       }
     });
     return properties;

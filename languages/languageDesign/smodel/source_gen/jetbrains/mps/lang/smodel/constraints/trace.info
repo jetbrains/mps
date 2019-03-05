@@ -1233,38 +1233,33 @@
       <node id="4040588429969031617" at="18,50,19,169" concept="11" />
       <node id="4040588429969031617" at="23,84,24,119" concept="5" />
       <node id="4040588429969031618" at="27,37,28,20" concept="6" />
-      <node id="4040588429969031618" at="31,42,32,37" concept="5" />
-      <node id="4040588429969035171" at="33,9,34,110" concept="5" />
-      <node id="4040588429969039552" at="35,31,36,24" concept="6" />
-      <node id="4040588429969039556" at="37,11,38,40" concept="6" />
-      <node id="4040588429969031617" at="41,7,42,22" concept="6" />
+      <node id="4040588429969035171" at="31,42,32,108" concept="5" />
+      <node id="4040588429969039552" at="33,29,34,22" concept="6" />
+      <node id="4040588429969039556" at="35,9,36,38" concept="6" />
+      <node id="4040588429969031617" at="38,7,39,22" concept="6" />
       <node id="4040588429969031617" at="18,0,21,0" concept="1" trace="ModuleReferenceExpression_Constraints#()V" />
-      <node id="4040588429969039543" at="34,110,37,11" concept="3" />
+      <node id="4040588429969039543" at="32,108,35,9" concept="3" />
       <node id="4040588429969031618" at="26,0,30,0" concept="4" trace="hasOwnGetter#()Z" />
-      <node id="4040588429969031618" at="32,37,39,9" concept="0" />
-      <node id="4040588429969031618" at="30,0,41,0" concept="4" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="4040588429969031618" at="24,119,41,7" concept="2" />
-      <node id="4040588429969031617" at="22,0,44,0" concept="4" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="4040588429969031618" at="30,0,38,0" concept="4" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="4040588429969031618" at="24,119,38,7" concept="2" />
+      <node id="4040588429969031617" at="22,0,41,0" concept="4" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="4040588429969031617" at="18,50,19,169" />
       <scope id="4040588429969031618" at="27,37,28,20" />
-      <scope id="4040588429969039544" at="35,31,36,24" />
+      <scope id="4040588429969039544" at="33,29,34,22" />
       <scope id="4040588429969031617" at="18,0,21,0" />
       <scope id="4040588429969031618" at="26,0,30,0" />
-      <scope id="4040588429969031620" at="33,9,38,40">
+      <scope id="4040588429969031620" at="31,42,36,38">
         <var name="module" id="4040588429969035172" />
       </scope>
-      <scope id="4040588429969031618" at="31,42,39,9">
-        <var name="propertyName" id="4040588429969031618" />
-      </scope>
-      <scope id="4040588429969031618" at="30,0,41,0">
+      <scope id="4040588429969031618" at="30,0,38,0">
         <var name="node" id="4040588429969031618" />
       </scope>
-      <scope id="4040588429969031617" at="23,84,42,22">
+      <scope id="4040588429969031617" at="23,84,39,22">
         <var name="properties" id="4040588429969031617" />
       </scope>
-      <scope id="4040588429969031617" at="22,0,44,0" />
-      <unit id="4040588429969031618" at="25,147,41,5" name="jetbrains.mps.lang.smodel.constraints.ModuleReferenceExpression_Constraints$1" />
-      <unit id="4040588429969031617" at="17,0,45,0" name="jetbrains.mps.lang.smodel.constraints.ModuleReferenceExpression_Constraints" />
+      <scope id="4040588429969031617" at="22,0,41,0" />
+      <unit id="4040588429969031618" at="25,147,38,5" name="jetbrains.mps.lang.smodel.constraints.ModuleReferenceExpression_Constraints$1" />
+      <unit id="4040588429969031617" at="17,0,42,0" name="jetbrains.mps.lang.smodel.constraints.ModuleReferenceExpression_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)/4065387505485843464">
@@ -1499,39 +1494,36 @@
       <node id="559557797393041555" at="17,49,18,167" concept="11" />
       <node id="559557797393041555" at="22,84,23,119" concept="5" />
       <node id="559557797393041556" at="26,37,27,20" concept="6" />
-      <node id="559557797393041556" at="30,42,31,39" concept="5" />
-      <node id="7649594692996323504" at="32,187,33,22" concept="6" />
-      <node id="559557797393041559" at="34,9,35,535" concept="6" />
-      <node id="559557797393041555" at="37,7,38,22" concept="6" />
-      <node id="7649594692996323503" at="40,52,41,44" concept="6" />
+      <node id="7649594692996323504" at="31,187,32,22" concept="6" />
+      <node id="559557797393041559" at="33,9,34,535" concept="6" />
+      <node id="559557797393041555" at="36,7,37,22" concept="6" />
+      <node id="7649594692996323503" at="39,52,40,44" concept="6" />
       <node id="559557797393041555" at="17,0,20,0" concept="1" trace="ModelReferenceExpression_Constraints#()V" />
-      <node id="7649594692996323485" at="31,39,34,9" concept="3" />
-      <node id="7649594692996323503" at="40,0,43,0" concept="10" trace="isEmptyString#(Ljava/lang/String;)Z" />
+      <node id="7649594692996323485" at="30,42,33,9" concept="3" />
+      <node id="7649594692996323503" at="39,0,42,0" concept="10" trace="isEmptyString#(Ljava/lang/String;)Z" />
       <node id="559557797393041556" at="25,0,29,0" concept="4" trace="hasOwnGetter#()Z" />
-      <node id="559557797393041556" at="29,0,37,0" concept="4" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="559557797393041556" at="23,119,37,7" concept="2" />
-      <node id="559557797393041555" at="21,0,40,0" concept="4" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="559557797393041556" at="29,0,36,0" concept="4" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="559557797393041556" at="23,119,36,7" concept="2" />
+      <node id="559557797393041555" at="21,0,39,0" concept="4" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="559557797393041555" at="17,49,18,167" />
       <scope id="559557797393041556" at="26,37,27,20" />
-      <scope id="7649594692996323486" at="32,187,33,22" />
-      <scope id="7649594692996323503" at="40,52,41,44" />
+      <scope id="7649594692996323486" at="31,187,32,22" />
+      <scope id="7649594692996323503" at="39,52,40,44" />
       <scope id="559557797393041555" at="17,0,20,0" />
-      <scope id="7649594692996323503" at="40,0,43,0">
+      <scope id="7649594692996323503" at="39,0,42,0">
         <var name="str" id="7649594692996323503" />
       </scope>
       <scope id="559557797393041556" at="25,0,29,0" />
-      <scope id="559557797393041556" at="30,42,35,535">
-        <var name="propertyName" id="559557797393041556" />
-      </scope>
-      <scope id="559557797393041556" at="29,0,37,0">
+      <scope id="559557797393041558" at="30,42,34,535" />
+      <scope id="559557797393041556" at="29,0,36,0">
         <var name="node" id="559557797393041556" />
       </scope>
-      <scope id="559557797393041555" at="22,84,38,22">
+      <scope id="559557797393041555" at="22,84,37,22">
         <var name="properties" id="559557797393041555" />
       </scope>
-      <scope id="559557797393041555" at="21,0,40,0" />
-      <unit id="559557797393041556" at="24,147,37,5" name="jetbrains.mps.lang.smodel.constraints.ModelReferenceExpression_Constraints$1" />
-      <unit id="559557797393041555" at="16,0,44,0" name="jetbrains.mps.lang.smodel.constraints.ModelReferenceExpression_Constraints" />
+      <scope id="559557797393041555" at="21,0,39,0" />
+      <unit id="559557797393041556" at="24,147,36,5" name="jetbrains.mps.lang.smodel.constraints.ModelReferenceExpression_Constraints$1" />
+      <unit id="559557797393041555" at="16,0,43,0" name="jetbrains.mps.lang.smodel.constraints.ModelReferenceExpression_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)/5779574625832943721">

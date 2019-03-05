@@ -27,7 +27,6 @@ public class RunConfigurationProducerPart_Constraints extends BaseConstraintsDes
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return "Producer Part";
       }
     });

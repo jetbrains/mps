@@ -11,7 +11,6 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
@@ -29,9 +28,9 @@ public class ArithmeticSimpleMathExpression_Constraints extends BaseConstraintsD
         return true;
       }
       @Override
-      public boolean validateValue(SNode node, String propertyValue) {
-        String propertyName = "operator";
-        return (SPropertyOperations.getString(propertyValue)).length() == 1 && ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<String>(), "+", "-", "*", "/")).contains((SPropertyOperations.getString(propertyValue)));
+      public boolean validateValue(SNode node, Object $propertyValue) {
+        String propertyValue = (String) ($propertyValue);
+        return propertyValue.length() == 1 && ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<String>(), "+", "-", "*", "/")).contains(propertyValue);
       }
     });
     return properties;

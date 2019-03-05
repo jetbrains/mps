@@ -70,7 +70,6 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "name";
         return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(node), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       }
     });
@@ -81,7 +80,6 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "nestedName";
         return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName"));
       }
     });
@@ -92,7 +90,6 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
       }
       @Override
       public Object getValue(SNode node) {
-        String propertyName = "resolveInfo";
         return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(node), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo"));
       }
     });
