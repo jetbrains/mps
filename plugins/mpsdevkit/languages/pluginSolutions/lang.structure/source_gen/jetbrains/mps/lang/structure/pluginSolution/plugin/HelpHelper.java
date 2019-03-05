@@ -65,7 +65,7 @@ public class HelpHelper {
       assert url != null : "should have checked that helpForAspectIsAvailable==true";
       BrowserUtil.browse(url);
     } else {
-      BrowserUtil.browse(LanguageAspect.CONFLUENCE_BASE + "generator.html");
+      BrowserUtil.browse(LanguageAspect.CONFLUENCE_BASE + "Generator#Generator-aboutgenerator");
     }
   }
   public static void showHelpForRoot(SNode node) {
