@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.vfs.iofs.jar;
 
+import gnu.trove.THashMap;
+import gnu.trove.THashSet;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -24,8 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
@@ -41,9 +41,9 @@ class JarFileData extends AbstractJarFileData {
   private final Object myLock = new Object();
   private boolean isInitialized = false;
   private final ZipFileContainer myZipFileContainer = new ZipFileContainer(); // cleared up in the JarFileDataCache#removeGCedReferences
-  private Map<String, Set<String>> myFiles = new HashMap<>();
-  private Map<String, Set<String>> mySubDirectories = new HashMap<>();
-  private Map<String, ZipEntry> myEntries = new HashMap<>();
+  private final Map<String, Set<String>> myFiles = new THashMap<>();
+  private final Map<String, Set<String>> mySubDirectories = new THashMap<>();
+  private final Map<String, ZipEntry> myEntries = new THashMap<>();
 
   JarFileData(File file) {
     super(file);
@@ -95,12 +95,12 @@ class JarFileData extends AbstractJarFileData {
   }
 
   private Set<String> getDirectoriesFor(String dir) {
-    mySubDirectories.putIfAbsent(dir, new HashSet<>());
+    mySubDirectories.putIfAbsent(dir, new THashSet<>());
     return mySubDirectories.get(dir);
   }
 
   private Set<String> getFilesFor(String dir) {
-    myFiles.putIfAbsent(dir, new HashSet<>());
+    myFiles.putIfAbsent(dir, new THashSet<>());
     return myFiles.get(dir);
   }
 
@@ -147,15 +147,17 @@ class JarFileData extends AbstractJarFileData {
 
             buildDirectoryCaches(name);
           } else {
-            String name = entry.getName();
+            final String name = entry.getName();
 
-            int packEnd = name.lastIndexOf('/');
-            String dir;
-            String fileName;
+            final int packEnd = name.lastIndexOf('/');
+            final String dir;
+            final String fileName;
             if (packEnd == -1) {
               dir = "";
               fileName = name;
             } else {
+              // FIXME packEnd == 0 means name == "/something", and myEntries eventually maps "something/something". Is it right?
+              // Either null instead of name or assert packEnd > 0
               dir = packEnd > 0 ? name.substring(0, packEnd) : name;
               fileName = name.substring(packEnd + 1);
             }
@@ -163,6 +165,7 @@ class JarFileData extends AbstractJarFileData {
             buildDirectoryCaches(dir);
             getFilesFor(dir).add(fileName);
 
+            // XXX seems that could use name
             if (dir.length() > 0) {
               myEntries.put(dir + '/' + fileName, entry);
             } else {
