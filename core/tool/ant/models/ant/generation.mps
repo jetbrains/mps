@@ -450,6 +450,22 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="1ROuiI1zlk" role="3cqZAp">
+          <node concept="3SKdUq" id="1ROuiI1zlm" role="3SKWNk">
+            <property role="3SKdUp" value="GeneratorWorker uses MpsEnvironment, which goes extra mile to manage plugin classes with their own classloaders." />
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ROuiI1yXs" role="3cqZAp">
+          <node concept="2OqwBi" id="1ROuiI1z4E" role="3clFbG">
+            <node concept="37vLTw" id="1ROuiI1yXq" role="2Oq$k0">
+              <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
+            </node>
+            <node concept="liA8E" id="1ROuiI1zaz" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:28$8eDn5Luf" resolve="classpathWithPlugins" />
+              <node concept="3clFbT" id="1ROuiI1zcr" role="37wK5m" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3Tm1VV" id="4VsuddjqnLt" role="1B3o_S" />
     </node>
