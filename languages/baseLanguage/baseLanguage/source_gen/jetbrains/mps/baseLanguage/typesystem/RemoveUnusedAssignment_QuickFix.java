@@ -14,7 +14,7 @@ public class RemoveUnusedAssignment_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7468068125290968523"));
   }
   public String getDescription(SNode node) {
-    return "remove unused assignment";
+    return "Remove unused assignment";
   }
   public void execute(SNode node) {
     if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"))) {

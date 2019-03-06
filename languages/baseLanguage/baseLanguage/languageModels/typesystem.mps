@@ -28304,7 +28304,7 @@
       <node concept="3clFbS" id="6uzU6hQoFo0" role="2VODD2">
         <node concept="3clFbF" id="6uzU6hQoFo1" role="3cqZAp">
           <node concept="Xl_RD" id="6uzU6hQoFo2" role="3clFbG">
-            <property role="Xl_RC" value="remove unused assignment" />
+            <property role="Xl_RC" value="Remove unused assignment" />
           </node>
         </node>
       </node>
