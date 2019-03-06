@@ -17,11 +17,6 @@ import java.io.File;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.core.tool.environment.util.MapPathMacrosProvider;
 import jetbrains.mps.core.tool.environment.util.CanonicalPath;
-import java.util.List;
-import jetbrains.mps.library.contributor.LibraryContributor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Project;
 
@@ -60,6 +55,9 @@ public abstract class EnvironmentBase implements Environment {
     }
     myRootClassLoader = createRootClassLoader();
     initMacros(mpsPlatform.findComponent(PathMacros.class));
+    if (LOG.isInfoEnabled()) {
+      LOG.info("Initializing libraries");
+    }
     initLibraries(mpsPlatform.findComponent(LibraryInitializer.class));
     retain();
     myInitialized = true;
@@ -89,21 +87,7 @@ public abstract class EnvironmentBase implements Environment {
     return new MapPathMacrosProvider(realMacros);
   }
 
-  protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
-    if (LOG.isInfoEnabled()) {
-      LOG.info("Initializing libraries");
-    }
-    final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
-    LibraryContributorHelper helper = new LibraryContributorHelper(myConfig, myRootClassLoader);
-    if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
-      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs());
-    }
-    // todo this hould go away. Instead, a regular contributor for plugins should perform 
-    if (myConfig.getPlugins() != null && SetSequence.fromSet(myConfig.getPlugins()).isNotEmpty()) {
-      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForPlugins());
-    }
-    libInitializer.load(libContribs);
-  }
+  protected abstract void initLibraries(@NotNull LibraryInitializer libInitializer);
 
   /**
    * Root class loader:

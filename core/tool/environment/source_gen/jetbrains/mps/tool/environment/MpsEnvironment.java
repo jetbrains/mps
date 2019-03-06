@@ -17,6 +17,12 @@ import jetbrains.mps.classloading.DumbIdeaPluginFacet;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.library.LibraryInitializer;
+import java.util.List;
+import jetbrains.mps.library.contributor.LibraryContributor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import java.io.File;
 import jetbrains.mps.core.tool.environment.util.FileMPSProject;
@@ -86,6 +92,21 @@ public final class MpsEnvironment extends EnvironmentBase {
         return rv;
       }
     });
+  }
+
+
+  @Override
+  protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
+    final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
+    LibraryContributorHelper helper = new LibraryContributorHelper(myConfig, getRootClassLoader());
+    if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
+      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs());
+    }
+    // todo this should go away. Instead, a regular contributor for plugins should perform 
+    if (myConfig.getPlugins() != null && SetSequence.fromSet(myConfig.getPlugins()).isNotEmpty()) {
+      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForPlugins());
+    }
+    libInitializer.load(libContribs);
   }
 
   @Override

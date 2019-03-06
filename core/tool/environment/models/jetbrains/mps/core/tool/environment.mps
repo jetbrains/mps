@@ -2104,6 +2104,161 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="1ROuiHSTGe" role="jymVt" />
+    <node concept="2tJIrI" id="1ROuiHSTK6" role="jymVt" />
+    <node concept="3clFb_" id="1ROuiHSUm7" role="jymVt">
+      <property role="TrG5h" value="initLibraries" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <node concept="37vLTG" id="1ROuiHSUm8" role="3clF46">
+        <property role="TrG5h" value="libInitializer" />
+        <node concept="3uibUv" id="1ROuiHSUm9" role="1tU5fm">
+          <ref role="3uigEE" to="32g5:~LibraryInitializer" resolve="LibraryInitializer" />
+        </node>
+        <node concept="2AHcQZ" id="1ROuiHSUma" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3Tmbuc" id="1ROuiHSUn3" role="1B3o_S" />
+      <node concept="3cqZAl" id="1ROuiHSUn4" role="3clF45" />
+      <node concept="3clFbS" id="1ROuiHSUn5" role="3clF47">
+        <node concept="3cpWs8" id="1ROuiHSV4q" role="3cqZAp">
+          <node concept="3cpWsn" id="1ROuiHSV4r" role="3cpWs9">
+            <property role="TrG5h" value="libContribs" />
+            <property role="3TUv4t" value="true" />
+            <node concept="_YKpA" id="1ROuiHSV4s" role="1tU5fm">
+              <node concept="3uibUv" id="1ROuiHSV4t" role="_ZDj9">
+                <ref role="3uigEE" to="je6q:~LibraryContributor" resolve="LibraryContributor" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="1ROuiHSV4u" role="33vP2m">
+              <node concept="Tc6Ow" id="1ROuiHSV4v" role="2ShVmc">
+                <node concept="3uibUv" id="1ROuiHSV4w" role="HW$YZ">
+                  <ref role="3uigEE" to="je6q:~LibraryContributor" resolve="LibraryContributor" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1ROuiHSV4x" role="3cqZAp">
+          <node concept="3cpWsn" id="1ROuiHSV4y" role="3cpWs9">
+            <property role="TrG5h" value="helper" />
+            <node concept="3uibUv" id="1ROuiHSV4z" role="1tU5fm">
+              <ref role="3uigEE" node="3eUNqOk8qK6" resolve="LibraryContributorHelper" />
+            </node>
+            <node concept="2ShNRf" id="1ROuiHSV4$" role="33vP2m">
+              <node concept="1pGfFk" id="1ROuiHSV4_" role="2ShVmc">
+                <ref role="37wK5l" node="3eUNqOk8rbd" resolve="LibraryContributorHelper" />
+                <node concept="37vLTw" id="1ROuiHSV4A" role="37wK5m">
+                  <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
+                </node>
+                <node concept="1rXfSq" id="1ROuiHSVxJ" role="37wK5m">
+                  <ref role="37wK5l" node="5mffBJ2WBJ9" resolve="getRootClassLoader" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1ROuiHSV4C" role="3cqZAp">
+          <node concept="3clFbS" id="1ROuiHSV4D" role="3clFbx">
+            <node concept="3clFbF" id="1ROuiHSV4E" role="3cqZAp">
+              <node concept="2OqwBi" id="1ROuiHSV4F" role="3clFbG">
+                <node concept="37vLTw" id="1ROuiHSV4G" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1ROuiHSV4r" resolve="libContribs" />
+                </node>
+                <node concept="TSZUe" id="1ROuiHSV4H" role="2OqNvi">
+                  <node concept="2OqwBi" id="1ROuiHSV4I" role="25WWJ7">
+                    <node concept="37vLTw" id="1ROuiHSV4J" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1ROuiHSV4y" resolve="helper" />
+                    </node>
+                    <node concept="liA8E" id="1ROuiHSV4K" role="2OqNvi">
+                      <ref role="37wK5l" node="3eUNqOk8lkP" resolve="createLibContributorForLibs" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="1ROuiHSV4L" role="3clFbw">
+            <node concept="2OqwBi" id="1ROuiHSV4M" role="2Oq$k0">
+              <node concept="37vLTw" id="1ROuiHSV4N" role="2Oq$k0">
+                <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
+              </node>
+              <node concept="liA8E" id="1ROuiHSV4O" role="2OqNvi">
+                <ref role="37wK5l" node="5UWB9tkma7" resolve="getLibs" />
+              </node>
+            </node>
+            <node concept="3GX2aA" id="1ROuiHSV4P" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1ROuiHSV4Q" role="3cqZAp">
+          <node concept="3SKdUq" id="1ROuiHSV4R" role="3SKWNk">
+            <property role="3SKdUp" value="todo this should go away. Instead, a regular contributor for plugins should perform" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1ROuiHSV4S" role="3cqZAp">
+          <node concept="3clFbS" id="1ROuiHSV4T" role="3clFbx">
+            <node concept="3clFbF" id="1ROuiHSV4U" role="3cqZAp">
+              <node concept="2OqwBi" id="1ROuiHSV4V" role="3clFbG">
+                <node concept="37vLTw" id="1ROuiHSV4W" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1ROuiHSV4r" resolve="libContribs" />
+                </node>
+                <node concept="TSZUe" id="1ROuiHSV4X" role="2OqNvi">
+                  <node concept="2OqwBi" id="1ROuiHSV4Y" role="25WWJ7">
+                    <node concept="37vLTw" id="1ROuiHSV4Z" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1ROuiHSV4y" resolve="helper" />
+                    </node>
+                    <node concept="liA8E" id="1ROuiHSV50" role="2OqNvi">
+                      <ref role="37wK5l" node="3eUNqOk8kWA" resolve="createLibContributorForPlugins" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="1ROuiHSV51" role="3clFbw">
+            <node concept="2OqwBi" id="1ROuiHSV52" role="3uHU7w">
+              <node concept="2OqwBi" id="1ROuiHSV53" role="2Oq$k0">
+                <node concept="37vLTw" id="1ROuiHSV54" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
+                </node>
+                <node concept="liA8E" id="1ROuiHSV55" role="2OqNvi">
+                  <ref role="37wK5l" node="5UWB9tjYeB" resolve="getPlugins" />
+                </node>
+              </node>
+              <node concept="3GX2aA" id="1ROuiHSV56" role="2OqNvi" />
+            </node>
+            <node concept="3y3z36" id="1ROuiHSV57" role="3uHU7B">
+              <node concept="2OqwBi" id="1ROuiHSV58" role="3uHU7B">
+                <node concept="37vLTw" id="1ROuiHSV59" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
+                </node>
+                <node concept="liA8E" id="1ROuiHSV5a" role="2OqNvi">
+                  <ref role="37wK5l" node="5UWB9tjYeB" resolve="getPlugins" />
+                </node>
+              </node>
+              <node concept="10Nm6u" id="1ROuiHSV5b" role="3uHU7w" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ROuiHSV5c" role="3cqZAp">
+          <node concept="2OqwBi" id="1ROuiHSV5d" role="3clFbG">
+            <node concept="37vLTw" id="1ROuiHSV5e" role="2Oq$k0">
+              <ref role="3cqZAo" node="1ROuiHSUm8" resolve="libInitializer" />
+            </node>
+            <node concept="liA8E" id="1ROuiHSV5f" role="2OqNvi">
+              <ref role="37wK5l" to="32g5:~LibraryInitializer.load(java.util.List):void" resolve="load" />
+              <node concept="37vLTw" id="1ROuiHSV5g" role="37wK5m">
+                <ref role="3cqZAo" node="1ROuiHSV4r" resolve="libContribs" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1ROuiHSUn6" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3eUNqOk7icx" role="jymVt" />
     <node concept="3Tm1VV" id="6rx4kZDk6yq" role="1B3o_S" />
     <node concept="3clFb_" id="6rx4kZDk6_W" role="jymVt">
@@ -3058,6 +3213,12 @@
             </node>
           </node>
         </node>
+        <node concept="RRSsy" id="3jYQuSB36Bm" role="3cqZAp">
+          <property role="RRSoG" value="info" />
+          <node concept="Xl_RD" id="3HZVFd9gI6h" role="RRSoy">
+            <property role="Xl_RC" value="Initializing libraries" />
+          </node>
+        </node>
         <node concept="3clFbF" id="1Pvl5nre9AW" role="3cqZAp">
           <node concept="1rXfSq" id="1Pvl5nre9AX" role="3clFbG">
             <ref role="37wK5l" node="2jln2VqYj4c" resolve="initLibraries" />
@@ -3356,7 +3517,7 @@
     </node>
     <node concept="2tJIrI" id="3eUNqOk8t9z" role="jymVt" />
     <node concept="3clFb_" id="2jln2VqYj4c" role="jymVt">
-      <property role="1EzhhJ" value="false" />
+      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="initLibraries" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
@@ -3369,146 +3530,7 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="3clFbS" id="2jln2VqYj4f" role="3clF47">
-        <node concept="RRSsy" id="3jYQuSB36Bm" role="3cqZAp">
-          <property role="RRSoG" value="info" />
-          <node concept="Xl_RD" id="3HZVFd9gI6h" role="RRSoy">
-            <property role="Xl_RC" value="Initializing libraries" />
-          </node>
-        </node>
-        <node concept="3cpWs8" id="2jln2VqYyZg" role="3cqZAp">
-          <node concept="3cpWsn" id="2jln2VqYyZh" role="3cpWs9">
-            <property role="TrG5h" value="libContribs" />
-            <property role="3TUv4t" value="true" />
-            <node concept="_YKpA" id="1vtSNIfMyOo" role="1tU5fm">
-              <node concept="3uibUv" id="1vtSNIfMyOq" role="_ZDj9">
-                <ref role="3uigEE" to="je6q:~LibraryContributor" resolve="LibraryContributor" />
-              </node>
-            </node>
-            <node concept="2ShNRf" id="2jln2VqYyZi" role="33vP2m">
-              <node concept="Tc6Ow" id="1vtSNIfM_Z8" role="2ShVmc">
-                <node concept="3uibUv" id="1vtSNIfM_Za" role="HW$YZ">
-                  <ref role="3uigEE" to="je6q:~LibraryContributor" resolve="LibraryContributor" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="3eUNqOk96xr" role="3cqZAp">
-          <node concept="3cpWsn" id="3eUNqOk96xs" role="3cpWs9">
-            <property role="TrG5h" value="helper" />
-            <node concept="3uibUv" id="3eUNqOk96xp" role="1tU5fm">
-              <ref role="3uigEE" node="3eUNqOk8qK6" resolve="LibraryContributorHelper" />
-            </node>
-            <node concept="2ShNRf" id="3eUNqOk96xt" role="33vP2m">
-              <node concept="1pGfFk" id="3eUNqOk96xu" role="2ShVmc">
-                <ref role="37wK5l" node="3eUNqOk8rbd" resolve="LibraryContributorHelper" />
-                <node concept="37vLTw" id="3eUNqOk96xv" role="37wK5m">
-                  <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
-                </node>
-                <node concept="37vLTw" id="3x_lgCAe028" role="37wK5m">
-                  <ref role="3cqZAo" node="3x_lgCAcKqs" resolve="myRootClassLoader" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="74F5dZ_1JI4" role="3cqZAp">
-          <node concept="3clFbS" id="74F5dZ_1JI6" role="3clFbx">
-            <node concept="3clFbF" id="5hfNQWynqYM" role="3cqZAp">
-              <node concept="2OqwBi" id="5hfNQWynrr1" role="3clFbG">
-                <node concept="37vLTw" id="5hfNQWynqYK" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2jln2VqYyZh" resolve="libContribs" />
-                </node>
-                <node concept="TSZUe" id="3eUNqOk8nQJ" role="2OqNvi">
-                  <node concept="2OqwBi" id="3eUNqOk98Kj" role="25WWJ7">
-                    <node concept="37vLTw" id="3eUNqOk98Iq" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3eUNqOk96xs" resolve="helper" />
-                    </node>
-                    <node concept="liA8E" id="3eUNqOk98Vs" role="2OqNvi">
-                      <ref role="37wK5l" node="3eUNqOk8lkP" resolve="createLibContributorForLibs" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="74F5dZ_1KhG" role="3clFbw">
-            <node concept="2OqwBi" id="74F5dZ_1K2b" role="2Oq$k0">
-              <node concept="37vLTw" id="74F5dZ_1JXh" role="2Oq$k0">
-                <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
-              </node>
-              <node concept="liA8E" id="74F5dZ_1K8T" role="2OqNvi">
-                <ref role="37wK5l" node="5UWB9tkma7" resolve="getLibs" />
-              </node>
-            </node>
-            <node concept="3GX2aA" id="74F5dZ_1KLQ" role="2OqNvi" />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="735HJCLtcuN" role="3cqZAp">
-          <node concept="3SKdUq" id="735HJCLtcuP" role="3SKWNk">
-            <property role="3SKdUp" value="todo this hould go away. Instead, a regular contributor for plugins should perform" />
-          </node>
-        </node>
-        <node concept="3clFbJ" id="74F5dZ_1Lm6" role="3cqZAp">
-          <node concept="3clFbS" id="74F5dZ_1Lm8" role="3clFbx">
-            <node concept="3clFbF" id="5hfNQWynuTH" role="3cqZAp">
-              <node concept="2OqwBi" id="5hfNQWynwkE" role="3clFbG">
-                <node concept="37vLTw" id="5hfNQWynuTF" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2jln2VqYyZh" resolve="libContribs" />
-                </node>
-                <node concept="TSZUe" id="5hfNQWynzUv" role="2OqNvi">
-                  <node concept="2OqwBi" id="3eUNqOk98Z4" role="25WWJ7">
-                    <node concept="37vLTw" id="3eUNqOk98Xp" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3eUNqOk96xs" resolve="helper" />
-                    </node>
-                    <node concept="liA8E" id="3eUNqOk997s" role="2OqNvi">
-                      <ref role="37wK5l" node="3eUNqOk8kWA" resolve="createLibContributorForPlugins" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1Wc70l" id="2$4oShLaIMb" role="3clFbw">
-            <node concept="2OqwBi" id="2$4oShLaK5a" role="3uHU7w">
-              <node concept="2OqwBi" id="2$4oShLaJ9F" role="2Oq$k0">
-                <node concept="37vLTw" id="2$4oShLaJ1Y" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
-                </node>
-                <node concept="liA8E" id="2$4oShLaJvZ" role="2OqNvi">
-                  <ref role="37wK5l" node="5UWB9tjYeB" resolve="getPlugins" />
-                </node>
-              </node>
-              <node concept="3GX2aA" id="2$4oShLaLk1" role="2OqNvi" />
-            </node>
-            <node concept="3y3z36" id="2$4oShLaIwB" role="3uHU7B">
-              <node concept="2OqwBi" id="74F5dZ_1LFE" role="3uHU7B">
-                <node concept="37vLTw" id="74F5dZ_1LA5" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
-                </node>
-                <node concept="liA8E" id="74F5dZ_1LN3" role="2OqNvi">
-                  <ref role="37wK5l" node="5UWB9tjYeB" resolve="getPlugins" />
-                </node>
-              </node>
-              <node concept="10Nm6u" id="2$4oShLaIJO" role="3uHU7w" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1vtSNIfMwTV" role="3cqZAp">
-          <node concept="2OqwBi" id="1vtSNIfMxdF" role="3clFbG">
-            <node concept="37vLTw" id="2KZwJXNrgfy" role="2Oq$k0">
-              <ref role="3cqZAo" node="5A5jZryYTCG" resolve="libInitializer" />
-            </node>
-            <node concept="liA8E" id="1vtSNIfMy0P" role="2OqNvi">
-              <ref role="37wK5l" to="32g5:~LibraryInitializer.load(java.util.List):void" resolve="load" />
-              <node concept="37vLTw" id="1vtSNIfMy1Y" role="37wK5m">
-                <ref role="3cqZAo" node="2jln2VqYyZh" resolve="libContribs" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="2jln2VqYj4f" role="3clF47" />
       <node concept="3Tmbuc" id="1sAB67TxiU3" role="1B3o_S" />
       <node concept="3cqZAl" id="1sAB67TxhdC" role="3clF45" />
     </node>
