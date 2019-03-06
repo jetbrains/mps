@@ -27,19 +27,16 @@
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="v27p" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.startup(MPS.IDEA/)" />
     <import index="zymn" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.startup(MPS.IDEA/)" />
-    <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="anz6" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.testFramework(MPS.IDEA/)" />
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
     <import index="ab4o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.newvfs.impl(MPS.IDEA/)" />
-    <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="7nyy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.refresh(MPS.Core/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="ctgy" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.plugins(MPS.IDEA/)" />
     <import index="f061" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application.ex(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
-    <import index="je6q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library.contributor(MPS.Core/)" />
     <import index="32g5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library(MPS.Core/)" />
   </imports>
   <registry>
@@ -55,14 +52,9 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -93,7 +85,6 @@
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
-      <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -135,9 +126,6 @@
       <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -252,14 +240,10 @@
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -411,173 +395,6 @@
       <node concept="3Tm1VV" id="4OPNMy2crcO" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="ZnkhVJX0Pq" role="jymVt" />
-    <node concept="2YIFZL" id="6LlhC3WJZzD" role="jymVt">
-      <property role="TrG5h" value="getOrCreate" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="37vLTG" id="6LlhC3WK08i" role="3clF46">
-        <property role="TrG5h" value="config" />
-        <node concept="3uibUv" id="$Ws9FwscQy" role="1tU5fm">
-          <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-        </node>
-        <node concept="2AHcQZ" id="6LlhC3WK08k" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="6LlhC3WJZzG" role="3clF47">
-        <node concept="3cpWs8" id="6LlhC3WM8rL" role="3cqZAp">
-          <node concept="3cpWsn" id="6LlhC3WM8rM" role="3cpWs9">
-            <property role="TrG5h" value="currentEnv" />
-            <node concept="3uibUv" id="6LlhC3WM8rK" role="1tU5fm">
-              <ref role="3uigEE" to="79ha:HKKzfMjqRV" resolve="Environment" />
-            </node>
-            <node concept="2YIFZM" id="6LlhC3WM8rN" role="33vP2m">
-              <ref role="37wK5l" to="79ha:3eUNqOk6lzG" resolve="get" />
-              <ref role="1Pybhc" to="79ha:3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="6LlhC3WM8DO" role="3cqZAp">
-          <node concept="3clFbS" id="6LlhC3WM8DQ" role="3clFbx">
-            <node concept="3clFbJ" id="3eUNqOk4UaF" role="3cqZAp">
-              <node concept="3clFbS" id="3eUNqOk4UaG" role="3clFbx">
-                <node concept="YS8fn" id="3eUNqOk7fjG" role="3cqZAp">
-                  <node concept="2ShNRf" id="3eUNqOk7fjH" role="YScLw">
-                    <node concept="1pGfFk" id="3eUNqOk7fjI" role="2ShVmc">
-                      <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                      <node concept="Xl_RD" id="3eUNqOk7fjJ" role="37wK5m">
-                        <property role="Xl_RC" value="Still no support for interchanging lightweight and heavyweight environments" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3fqX7Q" id="3eUNqOk4UnL" role="3clFbw">
-                <node concept="2ZW3vV" id="3eUNqOk4UnN" role="3fr31v">
-                  <node concept="3uibUv" id="6LlhC3WKcuH" role="2ZW6by">
-                    <ref role="3uigEE" node="6rx4kZDk5Br" resolve="IdeaEnvironment" />
-                  </node>
-                  <node concept="37vLTw" id="6LlhC3WM9nI" role="2ZW6bz">
-                    <ref role="3cqZAo" node="6LlhC3WM8rM" resolve="currentEnv" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="4X6_PQB3mei" role="3cqZAp">
-              <node concept="2OqwBi" id="4X6_PQB3mgp" role="3clFbG">
-                <node concept="37vLTw" id="4X6_PQB3meg" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6LlhC3WM8rM" resolve="currentEnv" />
-                </node>
-                <node concept="liA8E" id="4X6_PQB3mhT" role="2OqNvi">
-                  <ref role="37wK5l" to="79ha:3pEStHM3RSa" resolve="retain" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs6" id="6LlhC3WM9tP" role="3cqZAp">
-              <node concept="37vLTw" id="6LlhC3WM9ww" role="3cqZAk">
-                <ref role="3cqZAo" node="6LlhC3WM8rM" resolve="currentEnv" />
-              </node>
-            </node>
-          </node>
-          <node concept="3y3z36" id="6LlhC3WM8LI" role="3clFbw">
-            <node concept="10Nm6u" id="6LlhC3WM8Nb" role="3uHU7w" />
-            <node concept="37vLTw" id="6LlhC3WM8FC" role="3uHU7B">
-              <ref role="3cqZAo" node="6LlhC3WM8rM" resolve="currentEnv" />
-            </node>
-          </node>
-          <node concept="9aQIb" id="6LlhC3WM9Bd" role="9aQIa">
-            <node concept="3clFbS" id="6LlhC3WM9Be" role="9aQI4">
-              <node concept="3cpWs8" id="6LlhC3WK4W2" role="3cqZAp">
-                <node concept="3cpWsn" id="6LlhC3WK4W3" role="3cpWs9">
-                  <property role="TrG5h" value="ideaEnv" />
-                  <node concept="3uibUv" id="6LlhC3WK5n7" role="1tU5fm">
-                    <ref role="3uigEE" node="6rx4kZDk5Br" resolve="IdeaEnvironment" />
-                  </node>
-                  <node concept="2ShNRf" id="5UWB9tmx9o" role="33vP2m">
-                    <node concept="1pGfFk" id="5UWB9tmx9p" role="2ShVmc">
-                      <ref role="37wK5l" node="6rx4kZDkRjb" resolve="IdeaEnvironment" />
-                      <node concept="37vLTw" id="5UWB9tmx9q" role="37wK5m">
-                        <ref role="3cqZAo" node="6LlhC3WK08i" resolve="config" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6LlhC3WMam1" role="3cqZAp">
-                <node concept="2OqwBi" id="6LlhC3WMav9" role="3clFbG">
-                  <node concept="37vLTw" id="6LlhC3WMalZ" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6LlhC3WK4W3" resolve="ideaEnv" />
-                  </node>
-                  <node concept="liA8E" id="6LlhC3WMaDq" role="2OqNvi">
-                    <ref role="37wK5l" node="3eUNqOk7mHv" resolve="init" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6LlhC3WLQMj" role="3cqZAp">
-                <node concept="2YIFZM" id="6LlhC3WLQO8" role="3clFbG">
-                  <ref role="37wK5l" to="79ha:3Pdq2IL$A4K" resolve="setCurrent" />
-                  <ref role="1Pybhc" to="79ha:3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-                  <node concept="37vLTw" id="2NdVeS$v$0d" role="37wK5m">
-                    <ref role="3cqZAo" node="6LlhC3WK4W3" resolve="ideaEnv" />
-                  </node>
-                </node>
-              </node>
-              <node concept="1gVbGN" id="6LlhC3WMdwI" role="3cqZAp">
-                <node concept="3clFbC" id="6LlhC3WMdwJ" role="1gVkn0">
-                  <node concept="37vLTw" id="6LlhC3WMe5k" role="3uHU7w">
-                    <ref role="3cqZAo" node="6LlhC3WK4W3" resolve="ideaEnv" />
-                  </node>
-                  <node concept="2YIFZM" id="6LlhC3WMdwL" role="3uHU7B">
-                    <ref role="37wK5l" to="79ha:3eUNqOk6lzG" resolve="get" />
-                    <ref role="1Pybhc" to="79ha:3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3cpWs6" id="6LlhC3WKf_w" role="3cqZAp">
-                <node concept="37vLTw" id="6LlhC3WKf_x" role="3cqZAk">
-                  <ref role="3cqZAo" node="6LlhC3WK4W3" resolve="ideaEnv" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="6LlhC3WJZ5j" role="1B3o_S" />
-      <node concept="3uibUv" id="$Ws9Fwse2S" role="3clF45">
-        <ref role="3uigEE" to="79ha:HKKzfMjqRV" resolve="Environment" />
-      </node>
-      <node concept="2AHcQZ" id="6LlhC3WKfqV" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="P$JXv" id="6LlhC3WMj2d" role="lGtFl">
-        <node concept="TZ5HA" id="6LlhC3WMj2e" role="TZ5H$">
-          <node concept="1dT_AC" id="6LlhC3WMj2f" role="1dT_Ay">
-            <property role="1dT_AB" value="creates a new IdeaEnvironment or returns the cached one" />
-          </node>
-        </node>
-        <node concept="TZ5HI" id="1KxguJLVpFD" role="3nqlJM">
-          <node concept="TZ5HA" id="1KxguJLVpFE" role="3HnX3l">
-            <node concept="1dT_AC" id="ZWTyeZVCW$" role="1dT_Ay">
-              <property role="1dT_AB" value="Code that needs access to functionality of an Environment shall get its value configured from outside and not attempt to create one. The code that starts an environment doesn't need to re-use a cached instance." />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="1KxguJLVpFF" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="1KxguJLVquh" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="1KxguJLVvIr" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="1KxguJLVvO2" role="2B70Vg">
-            <property role="$nhwW" value="2018.1" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3eUNqOk7l07" role="jymVt" />
     <node concept="3clFb_" id="3eUNqOk7mHv" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="init" />

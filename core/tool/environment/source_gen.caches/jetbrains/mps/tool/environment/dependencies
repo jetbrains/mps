@@ -26,7 +26,6 @@
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.tool.environment.ProjectStrategy" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="jetbrains.mps.tool.environment.Retainable" />
   </dependency>
   <dependency className="jetbrains.mps.tool.environment.EnvironmentAware">
     <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
@@ -35,7 +34,6 @@
   <dependency className="jetbrains.mps.tool.environment.EnvironmentBase">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.ClassLoader" />
-    <classNode dependClassName="java.lang.IllegalStateException" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.HashMap" />
@@ -51,7 +49,6 @@
     <classNode dependClassName="jetbrains.mps.project.PathMacrosProvider" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentConfig" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentContainer" />
     <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentSetupException" />
     <classNode dependClassName="jetbrains.mps.tool.environment.Log4jInitializer" />
     <classNode dependClassName="jetbrains.mps.tool.environment.ProjectContainer" />
@@ -77,14 +74,6 @@
     <classNode dependClassName="jetbrains.mps.tool.environment.PluginDescriptor" />
     <classNode dependClassName="jetbrains.mps.util.PathManager" />
     <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-  </dependency>
-  <dependency className="jetbrains.mps.tool.environment.EnvironmentContainer">
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.IllegalStateException" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.tool.environment.EnvironmentSetupException">
@@ -127,7 +116,6 @@
   <dependency className="jetbrains.mps.tool.environment.MpsEnvironment">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.ClassLoader" />
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
@@ -144,12 +132,9 @@
     <classNode dependClassName="jetbrains.mps.library.LibraryInitializer" />
     <classNode dependClassName="jetbrains.mps.library.contributor.LibraryContributor" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
     <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentConfig" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentContainer" />
     <classNode dependClassName="jetbrains.mps.tool.environment.LibraryContributorHelper" />
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -226,6 +211,5 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode extendsClassName="jetbrains.mps.tool.environment.ProjectStrategy" />
   </dependency>
-  <dependency className="jetbrains.mps.tool.environment.Retainable" />
 </dependenciesRoot>
 

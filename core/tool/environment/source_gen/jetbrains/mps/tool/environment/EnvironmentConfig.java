@@ -19,7 +19,6 @@ import jetbrains.mps.util.PathManager;
  * 
  * 
  * @see jetbrains.mps.tool.environment.Environment 
- * @see jetbrains.mps.tool.environment.EnvironmentContainer 
  */
 public class EnvironmentConfig {
   private final Set<PluginDescriptor> myPlugins = SetSequence.fromSet(new LinkedHashSet<PluginDescriptor>());

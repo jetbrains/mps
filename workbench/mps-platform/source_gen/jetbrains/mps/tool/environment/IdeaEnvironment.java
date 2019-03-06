@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.idea.CommandLineApplication;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.PathManager;
@@ -66,31 +65,6 @@ public final class IdeaEnvironment extends EnvironmentBase {
   public IdeaEnvironment(@NotNull EnvironmentConfig config, boolean unitTestMode) {
     super(config);
     myUnitTestMode = unitTestMode;
-  }
-
-  /**
-   * creates a new IdeaEnvironment or returns the cached one
-   * 
-   * @deprecated Code that needs access to functionality of an Environment shall get its value configured from outside and not attempt to create one. The code that starts an environment doesn't need to re-use a cached instance.
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public static Environment getOrCreate(@NotNull EnvironmentConfig config) {
-    Environment currentEnv = EnvironmentContainer.get();
-    if (currentEnv != null) {
-      if (!(currentEnv instanceof IdeaEnvironment)) {
-        throw new IllegalStateException("Still no support for interchanging lightweight and heavyweight environments");
-      }
-      currentEnv.retain();
-      return currentEnv;
-    } else {
-      IdeaEnvironment ideaEnv = new IdeaEnvironment(config);
-      ideaEnv.init();
-      EnvironmentContainer.setCurrent(ideaEnv);
-      assert EnvironmentContainer.get() == ideaEnv;
-      return ideaEnv;
-    }
   }
 
   public void init() {

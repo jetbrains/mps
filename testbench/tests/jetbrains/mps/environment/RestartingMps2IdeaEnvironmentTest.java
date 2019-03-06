@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,12 @@ import jetbrains.mps.tool.environment.MpsEnvironment;
 public class RestartingMps2IdeaEnvironmentTest extends EnvironmentTest {
   @Override
   protected Environment createEnvironment() {
-    Environment environment = IdeaEnvironment.getOrCreate(EnvironmentConfig.defaultConfig());
+    // XXX not sure the statement above is still true
+    final IdeaEnvironment environment = new IdeaEnvironment(EnvironmentConfig.defaultConfig());
+    environment.init();
     environment.dispose();
-    return MpsEnvironment.getOrCreate(EnvironmentConfig.defaultConfig());
+    final MpsEnvironment rv = new MpsEnvironment(EnvironmentConfig.defaultConfig());
+    rv.init();
+    return rv;
   }
 }

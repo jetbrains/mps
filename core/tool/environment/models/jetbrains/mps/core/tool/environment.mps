@@ -49,11 +49,6 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
-      <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
-      <concept id="1239709577448" name="jetbrains.mps.baseLanguage.structure.PrefixDecrementExpression" flags="nn" index="2$sJ78" />
-      <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
-        <child id="1239714902950" name="expression" index="2$L3a6" />
-      </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
@@ -90,9 +85,7 @@
         <child id="1164903359218" name="catchBody" index="TDEfX" />
         <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
-      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA">
-        <property id="6468716278899126575" name="isVolatile" index="2dlcS1" />
-      </concept>
+      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
@@ -241,9 +234,7 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615">
-        <child id="1107797138135" name="extendedInterface" index="3HQHJm" />
-      </concept>
+      <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
         <child id="1221737317278" name="statementList" index="1Pe0a2" />
@@ -310,7 +301,6 @@
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
-      <concept id="4948473272651335344" name="jetbrains.mps.baseLanguage.javadoc.structure.EmptyBlockDocTag" flags="ng" index="1Ciki9" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
@@ -385,170 +375,6 @@
       <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
     </language>
   </registry>
-  <node concept="312cEu" id="3Pdq2IL$qR3">
-    <property role="TrG5h" value="EnvironmentContainer" />
-    <property role="1EXbeo" value="true" />
-    <node concept="Wx3nA" id="3Pdq2IL$rf2" role="jymVt">
-      <property role="TrG5h" value="ourCurrent" />
-      <property role="3TUv4t" value="false" />
-      <property role="2dlcS1" value="false" />
-      <node concept="3Tm6S6" id="3Pdq2IL$r6Y" role="1B3o_S" />
-      <node concept="3uibUv" id="3Pdq2IL$rf0" role="1tU5fm">
-        <ref role="3uigEE" node="HKKzfMjqRV" resolve="Environment" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="eJPH4nEYVK" role="jymVt" />
-    <node concept="3clFbW" id="3eUNqOk4AFx" role="jymVt">
-      <node concept="3cqZAl" id="3eUNqOk4AFy" role="3clF45" />
-      <node concept="3clFbS" id="3eUNqOk4AF$" role="3clF47" />
-      <node concept="3Tm6S6" id="3eUNqOk4ADp" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="6LlhC3WLOn5" role="jymVt" />
-    <node concept="2YIFZL" id="3eUNqOk6lzG" role="jymVt">
-      <property role="TrG5h" value="get" />
-      <property role="od$2w" value="true" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="3eUNqOk6lzJ" role="3clF47">
-        <node concept="3cpWs6" id="3eUNqOk6lA9" role="3cqZAp">
-          <node concept="37vLTw" id="3eUNqOk6lA$" role="3cqZAk">
-            <ref role="3cqZAo" node="3Pdq2IL$rf2" resolve="ourCurrent" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="3eUNqOk6lxs" role="1B3o_S" />
-      <node concept="3uibUv" id="3eUNqOk6lzy" role="3clF45">
-        <ref role="3uigEE" node="HKKzfMjqRV" resolve="Environment" />
-      </node>
-      <node concept="2AHcQZ" id="3eUNqOk6lAR" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3pEStHM45n8" role="jymVt" />
-    <node concept="2YIFZL" id="3Pdq2IL$A4K" role="jymVt">
-      <property role="TrG5h" value="setCurrent" />
-      <property role="od$2w" value="true" />
-      <node concept="37vLTG" id="3Pdq2IL$A5m" role="3clF46">
-        <property role="TrG5h" value="env" />
-        <node concept="3uibUv" id="3Pdq2IL$A5n" role="1tU5fm">
-          <ref role="3uigEE" node="HKKzfMjqRV" resolve="Environment" />
-        </node>
-        <node concept="2AHcQZ" id="3eUNqOk4Etd" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3cqZAl" id="3Pdq2IL$A4M" role="3clF45" />
-      <node concept="3clFbS" id="3Pdq2IL$A4O" role="3clF47">
-        <node concept="3clFbJ" id="3Pdq2IL$F66" role="3cqZAp">
-          <node concept="3y3z36" id="3Pdq2IL$FaA" role="3clFbw">
-            <node concept="10M0yZ" id="7zHHKD7wyVj" role="3uHU7B">
-              <ref role="1PxDUh" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-              <ref role="3cqZAo" node="3Pdq2IL$rf2" resolve="ourCurrent" />
-            </node>
-            <node concept="10Nm6u" id="3Pdq2IL$Fb5" role="3uHU7w" />
-          </node>
-          <node concept="3clFbS" id="3Pdq2IL$F69" role="3clFbx">
-            <node concept="YS8fn" id="3Pdq2IL$Fbd" role="3cqZAp">
-              <node concept="2ShNRf" id="3Pdq2IL$Fbm" role="YScLw">
-                <node concept="1pGfFk" id="3Pdq2IL$FxA" role="2ShVmc">
-                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                  <node concept="3cpWs3" id="3Pdq2IL$FMx" role="37wK5m">
-                    <node concept="10M0yZ" id="7zHHKD7wyVk" role="3uHU7w">
-                      <ref role="1PxDUh" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-                      <ref role="3cqZAo" node="3Pdq2IL$rf2" resolve="ourCurrent" />
-                    </node>
-                    <node concept="Xl_RD" id="3Pdq2IL$FxH" role="3uHU7B">
-                      <property role="Xl_RC" value="Another environment is active: " />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3Pdq2IL$FW8" role="3cqZAp">
-          <node concept="37vLTI" id="3Pdq2IL$G0A" role="3clFbG">
-            <node concept="10M0yZ" id="7zHHKD7wyVl" role="37vLTJ">
-              <ref role="1PxDUh" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-              <ref role="3cqZAo" node="3Pdq2IL$rf2" resolve="ourCurrent" />
-            </node>
-            <node concept="37vLTw" id="3Pdq2IL$G5d" role="37vLTx">
-              <ref role="3cqZAo" node="3Pdq2IL$A5m" resolve="env" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6LlhC3WLP2R" role="jymVt" />
-    <node concept="2YIFZL" id="3Pdq2IL$A69" role="jymVt">
-      <property role="TrG5h" value="clear" />
-      <property role="od$2w" value="true" />
-      <node concept="3cqZAl" id="3Pdq2IL$A6c" role="3clF45" />
-      <node concept="3clFbS" id="3Pdq2IL$A6d" role="3clF47">
-        <node concept="3clFbJ" id="3eUNqOk4CGn" role="3cqZAp">
-          <node concept="3clFbC" id="3eUNqOk4Dp6" role="3clFbw">
-            <node concept="37vLTw" id="3eUNqOk4CG$" role="3uHU7B">
-              <ref role="3cqZAo" node="3Pdq2IL$rf2" resolve="ourCurrent" />
-            </node>
-            <node concept="10Nm6u" id="3eUNqOk4CGq" role="3uHU7w" />
-          </node>
-          <node concept="3clFbS" id="3eUNqOk4CGr" role="3clFbx">
-            <node concept="YS8fn" id="3eUNqOk4CGs" role="3cqZAp">
-              <node concept="2ShNRf" id="3eUNqOk4CGt" role="YScLw">
-                <node concept="1pGfFk" id="3eUNqOk4CGu" role="2ShVmc">
-                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                  <node concept="Xl_RD" id="3eUNqOk4CGx" role="37wK5m">
-                    <property role="Xl_RC" value="No active environment currently" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3Pdq2IL$NpK" role="3cqZAp">
-          <node concept="37vLTI" id="3Pdq2IL$Nue" role="3clFbG">
-            <node concept="10M0yZ" id="7zHHKD7wyVo" role="37vLTJ">
-              <ref role="1PxDUh" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-              <ref role="3cqZAo" node="3Pdq2IL$rf2" resolve="ourCurrent" />
-            </node>
-            <node concept="10Nm6u" id="3Pdq2IL$Nux" role="37vLTx" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3Tm1VV" id="3Pdq2IL$qR4" role="1B3o_S" />
-    <node concept="3UR2Jj" id="6LlhC3WKHuj" role="lGtFl">
-      <node concept="TZ5HA" id="6LlhC3WKHuk" role="TZ5H$">
-        <node concept="1dT_AC" id="6LlhC3WKHul" role="1dT_Ay">
-          <property role="1dT_AB" value="This class is to store the current environment (e.g used in tests, ant tasks etc.)" />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="6LlhC3WKHuG" role="TZ5H$">
-        <node concept="1dT_AC" id="6LlhC3WKHuH" role="1dT_Ay">
-          <property role="1dT_AB" value="Note that there is only one possible environment at the same moment" />
-        </node>
-      </node>
-      <node concept="TZ5HI" id="5AcmpEOhLs6" role="3nqlJM">
-        <node concept="TZ5HA" id="5AcmpEOhLs7" role="3HnX3l">
-          <node concept="1dT_AC" id="5AcmpEOhLBE" role="1dT_Ay">
-            <property role="1dT_AB" value="Code that needs an Environment have to receive proper instance from external code (e.g. with a mechanism like dependency injection) rather than to assume the right instance is available from global singleton." />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2AHcQZ" id="5AcmpEOhLs8" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="5AcmpEOhLsB" role="2AJF6D">
-      <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-      <node concept="2B6LJw" id="5AcmpEOhLu0" role="2B76xF">
-        <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-        <node concept="3b6qkQ" id="5AcmpEOhLBu" role="2B70Vg">
-          <property role="$nhwW" value="2018.1" />
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="3HP615" id="HKKzfMjqRV">
     <property role="TrG5h" value="Environment" />
     <node concept="3clFb_" id="2BGPXkEw$sz" role="jymVt">
@@ -813,14 +639,6 @@
           <property role="1dT_AB" value=" generally intended for lightweight, API-like access to existing runtime instance." />
         </node>
       </node>
-      <node concept="VUp57" id="3eUNqOk4I2U" role="3nqlJM">
-        <node concept="VXe08" id="3eUNqOk4Snw" role="VUp5m">
-          <ref role="VXe09" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-        </node>
-      </node>
-    </node>
-    <node concept="3uibUv" id="3pEStHM45Le" role="3HQHJm">
-      <ref role="3uigEE" node="3pEStHM3RRT" resolve="Retainable" />
     </node>
   </node>
   <node concept="312cEu" id="6rx4kZDk5A9">
@@ -1658,11 +1476,6 @@
           <ref role="VXe09" node="HKKzfMjqRV" resolve="Environment" />
         </node>
       </node>
-      <node concept="VUp57" id="3eUNqOk6H56" role="3nqlJM">
-        <node concept="VXe08" id="3eUNqOk6RpV" role="VUp5m">
-          <ref role="VXe09" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="312cEu" id="6rx4kZDk6yp">
@@ -1710,150 +1523,6 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="3x_lgCAloNG" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="6LlhC3WJXZg" role="jymVt" />
-    <node concept="2YIFZL" id="6LlhC3WJZzD" role="jymVt">
-      <property role="TrG5h" value="getOrCreate" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="37vLTG" id="6LlhC3WK08i" role="3clF46">
-        <property role="TrG5h" value="config" />
-        <node concept="3uibUv" id="6LlhC3WK08j" role="1tU5fm">
-          <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
-        </node>
-        <node concept="2AHcQZ" id="6LlhC3WK08k" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="6LlhC3WJZzG" role="3clF47">
-        <node concept="3cpWs8" id="6LlhC3WM8rL" role="3cqZAp">
-          <node concept="3cpWsn" id="6LlhC3WM8rM" role="3cpWs9">
-            <property role="TrG5h" value="currentEnv" />
-            <node concept="3uibUv" id="6LlhC3WM8rK" role="1tU5fm">
-              <ref role="3uigEE" node="HKKzfMjqRV" resolve="Environment" />
-            </node>
-            <node concept="2YIFZM" id="6LlhC3WM8rN" role="33vP2m">
-              <ref role="1Pybhc" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-              <ref role="37wK5l" node="3eUNqOk6lzG" resolve="get" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="6LlhC3WM8DO" role="3cqZAp">
-          <node concept="3clFbS" id="6LlhC3WM8DQ" role="3clFbx">
-            <node concept="3clFbF" id="15VbAzMFy1T" role="3cqZAp">
-              <node concept="2OqwBi" id="15VbAzMFy40" role="3clFbG">
-                <node concept="37vLTw" id="15VbAzMFy1R" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6LlhC3WM8rM" resolve="currentEnv" />
-                </node>
-                <node concept="liA8E" id="15VbAzMFy7e" role="2OqNvi">
-                  <ref role="37wK5l" node="3pEStHM3RSa" resolve="retain" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs6" id="6LlhC3WM9tP" role="3cqZAp">
-              <node concept="37vLTw" id="6LlhC3WM9ww" role="3cqZAk">
-                <ref role="3cqZAo" node="6LlhC3WM8rM" resolve="currentEnv" />
-              </node>
-            </node>
-          </node>
-          <node concept="3y3z36" id="6LlhC3WM8LI" role="3clFbw">
-            <node concept="10Nm6u" id="6LlhC3WM8Nb" role="3uHU7w" />
-            <node concept="37vLTw" id="6LlhC3WM8FC" role="3uHU7B">
-              <ref role="3cqZAo" node="6LlhC3WM8rM" resolve="currentEnv" />
-            </node>
-          </node>
-          <node concept="9aQIb" id="6LlhC3WM9Bd" role="9aQIa">
-            <node concept="3clFbS" id="6LlhC3WM9Be" role="9aQI4">
-              <node concept="3cpWs8" id="6LlhC3WMbED" role="3cqZAp">
-                <node concept="3cpWsn" id="6LlhC3WMbEE" role="3cpWs9">
-                  <property role="TrG5h" value="mpsEnv" />
-                  <node concept="3uibUv" id="6LlhC3WMc3f" role="1tU5fm">
-                    <ref role="3uigEE" node="6rx4kZDk6yp" resolve="MpsEnvironment" />
-                  </node>
-                  <node concept="2ShNRf" id="5UWB9tmx9o" role="33vP2m">
-                    <node concept="1pGfFk" id="5UWB9tmx9p" role="2ShVmc">
-                      <ref role="37wK5l" node="6rx4kZDkRyV" resolve="MpsEnvironment" />
-                      <node concept="37vLTw" id="5UWB9tmx9q" role="37wK5m">
-                        <ref role="3cqZAo" node="6LlhC3WK08i" resolve="config" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6LlhC3WMam1" role="3cqZAp">
-                <node concept="2OqwBi" id="6LlhC3WMav9" role="3clFbG">
-                  <node concept="37vLTw" id="6LlhC3WMalZ" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6LlhC3WMbEE" resolve="mpsEnv" />
-                  </node>
-                  <node concept="liA8E" id="6LlhC3WMaDq" role="2OqNvi">
-                    <ref role="37wK5l" node="3eUNqOk7hpY" resolve="init" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6LlhC3WLQMj" role="3cqZAp">
-                <node concept="2YIFZM" id="6LlhC3WLQO8" role="3clFbG">
-                  <ref role="37wK5l" node="3Pdq2IL$A4K" resolve="setCurrent" />
-                  <ref role="1Pybhc" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-                  <node concept="37vLTw" id="2NdVeS$vi9m" role="37wK5m">
-                    <ref role="3cqZAo" node="6LlhC3WMbEE" resolve="mpsEnv" />
-                  </node>
-                </node>
-              </node>
-              <node concept="1gVbGN" id="6LlhC3WMdd1" role="3cqZAp">
-                <node concept="3clFbC" id="6LlhC3WMdpX" role="1gVkn0">
-                  <node concept="37vLTw" id="6LlhC3WMdvs" role="3uHU7w">
-                    <ref role="3cqZAo" node="6LlhC3WMbEE" resolve="mpsEnv" />
-                  </node>
-                  <node concept="2YIFZM" id="6LlhC3WMdkg" role="3uHU7B">
-                    <ref role="37wK5l" node="3eUNqOk6lzG" resolve="get" />
-                    <ref role="1Pybhc" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3cpWs6" id="6LlhC3WMbEF" role="3cqZAp">
-                <node concept="37vLTw" id="6LlhC3WMbEG" role="3cqZAk">
-                  <ref role="3cqZAo" node="6LlhC3WMbEE" resolve="mpsEnv" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="6LlhC3WJZ5j" role="1B3o_S" />
-      <node concept="3uibUv" id="6LlhC3WK53M" role="3clF45">
-        <ref role="3uigEE" node="HKKzfMjqRV" resolve="Environment" />
-      </node>
-      <node concept="2AHcQZ" id="6LlhC3WKfqV" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="P$JXv" id="6LlhC3WMj$w" role="lGtFl">
-        <node concept="TZ5HA" id="6LlhC3WMj2e" role="TZ5H$">
-          <node concept="1dT_AC" id="6LlhC3WMj2f" role="1dT_Ay">
-            <property role="1dT_AB" value="creates a new MpsEnvironment or returns the cached one" />
-          </node>
-        </node>
-        <node concept="TZ5HI" id="ZWTyeZVC04" role="3nqlJM">
-          <node concept="TZ5HA" id="ZWTyeZVC05" role="3HnX3l">
-            <node concept="1dT_AC" id="ZWTyeZVCW$" role="1dT_Ay">
-              <property role="1dT_AB" value="Code that needs access to functionality of an Environment shall get its value configured from outside and not attempt to create one. The code that starts an environment doesn't need to re-use a cached instance." />
-            </node>
-          </node>
-        </node>
-        <node concept="1Ciki9" id="ZWTyeZVCWA" role="3nqlJM" />
-      </node>
-      <node concept="2AHcQZ" id="ZWTyeZVC06" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="ZWTyeZVCdZ" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="ZWTyeZVCEd" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="ZWTyeZVCWl" role="2B70Vg">
-            <property role="$nhwW" value="2018.1" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="3eUNqOk7fxT" role="jymVt" />
     <node concept="3clFb_" id="3eUNqOk7hpY" role="jymVt">
@@ -3034,14 +2703,6 @@
       <node concept="3Tm6S6" id="6LlhC3WLCN7" role="1B3o_S" />
       <node concept="10P_77" id="6LlhC3WLD7Y" role="1tU5fm" />
     </node>
-    <node concept="312cEg" id="3pEStHM4mO8" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myRefCount" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3Tm6S6" id="3pEStHM4mmX" role="1B3o_S" />
-      <node concept="10Oyi0" id="3pEStHM4mMk" role="1tU5fm" />
-    </node>
     <node concept="312cEg" id="3eUNqOk88p_" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -3233,11 +2894,6 @@
                 <ref role="3cqZAo" node="1Pvl5nre0KE" resolve="mpsPlatform" />
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3pEStHM4lTu" role="3cqZAp">
-          <node concept="1rXfSq" id="3pEStHM4lTs" role="3clFbG">
-            <ref role="37wK5l" node="3pEStHM49S5" resolve="retain" />
           </node>
         </node>
         <node concept="3clFbF" id="6LlhC3WLDuK" role="3cqZAp">
@@ -3618,93 +3274,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="3x_lgCAgy3i" role="jymVt" />
-    <node concept="3clFb_" id="3pEStHM49S5" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="retain" />
-      <property role="od$2w" value="true" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="3pEStHM49S8" role="3clF47">
-        <node concept="3clFbF" id="3pEStHM4nd7" role="3cqZAp">
-          <node concept="2$rviw" id="3pEStHM4nd5" role="3clFbG">
-            <node concept="37vLTw" id="3pEStHM4ne_" role="2$L3a6">
-              <ref role="3cqZAo" node="3pEStHM4mO8" resolve="myRefCount" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="3pEStHM49uQ" role="1B3o_S" />
-      <node concept="3cqZAl" id="3pEStHM49PE" role="3clF45" />
-      <node concept="2AHcQZ" id="3pEStHM4ajv" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3pEStHM4bjv" role="jymVt" />
-    <node concept="3clFb_" id="3pEStHM4qEb" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="release" />
-      <node concept="3Tm1VV" id="3pEStHM4qEd" role="1B3o_S" />
-      <node concept="3cqZAl" id="3pEStHM4qEe" role="3clF45" />
-      <node concept="3clFbS" id="3pEStHM4qEg" role="3clF47">
-        <node concept="3clFbJ" id="3pEStHM4A6V" role="3cqZAp">
-          <node concept="3clFbS" id="3pEStHM4A6X" role="3clFbx">
-            <node concept="YS8fn" id="3pEStHM4Azu" role="3cqZAp">
-              <node concept="2ShNRf" id="3pEStHM4A$7" role="YScLw">
-                <node concept="1pGfFk" id="3pEStHM4B1L" role="2ShVmc">
-                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                  <node concept="Xl_RD" id="3pEStHM4B2w" role="37wK5m">
-                    <property role="Xl_RC" value="Reference counter is set to zero -- cannot release!" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbC" id="3pEStHM4Aux" role="3clFbw">
-            <node concept="3cmrfG" id="3pEStHM4Aw7" role="3uHU7w">
-              <property role="3cmrfH" value="0" />
-            </node>
-            <node concept="37vLTw" id="3pEStHM4A9W" role="3uHU7B">
-              <ref role="3cqZAo" node="3pEStHM4mO8" resolve="myRefCount" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3pEStHM4t6Q" role="3cqZAp">
-          <node concept="2$sJ78" id="3pEStHM4t6O" role="3clFbG">
-            <node concept="37vLTw" id="3pEStHM4t7R" role="2$L3a6">
-              <ref role="3cqZAo" node="3pEStHM4mO8" resolve="myRefCount" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3pEStHM4tfR" role="3cqZAp">
-          <node concept="3clFbS" id="3pEStHM4tfT" role="3clFbx">
-            <node concept="3clFbF" id="3pEStHM4z8I" role="3cqZAp">
-              <node concept="1rXfSq" id="3pEStHM4z8G" role="3clFbG">
-                <ref role="37wK5l" node="3pEStHM4yBP" resolve="doDispose" />
-              </node>
-            </node>
-            <node concept="3clFbF" id="3pEStHM4vBa" role="3cqZAp">
-              <node concept="2YIFZM" id="3pEStHM4vC3" role="3clFbG">
-                <ref role="37wK5l" node="3Pdq2IL$A69" resolve="clear" />
-                <ref role="1Pybhc" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbC" id="3pEStHM4tv5" role="3clFbw">
-            <node concept="3cmrfG" id="3pEStHM4tym" role="3uHU7w">
-              <property role="3cmrfH" value="0" />
-            </node>
-            <node concept="37vLTw" id="3pEStHM4tij" role="3uHU7B">
-              <ref role="3cqZAo" node="3pEStHM4mO8" resolve="myRefCount" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3pEStHM4sKR" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3pEStHM46XP" role="jymVt" />
     <node concept="3clFb_" id="6rx4kZDk5DQ" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="createProject" />
@@ -3990,46 +3559,9 @@
             <property role="Xl_RC" value="Disposing environment" />
           </node>
         </node>
-        <node concept="3clFbF" id="2eqc2bym503" role="3cqZAp">
-          <node concept="37vLTI" id="2eqc2bym5bQ" role="3clFbG">
-            <node concept="3cmrfG" id="2eqc2bym5dg" role="37vLTx">
-              <property role="3cmrfH" value="0" />
-            </node>
-            <node concept="37vLTw" id="2eqc2bym501" role="37vLTJ">
-              <ref role="3cqZAo" node="3pEStHM4mO8" resolve="myRefCount" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2eqc2bym5Cz" role="3cqZAp">
           <node concept="1rXfSq" id="2eqc2bym5C$" role="3clFbG">
             <ref role="37wK5l" node="3pEStHM4yBP" resolve="doDispose" />
-          </node>
-        </node>
-        <node concept="3clFbJ" id="2NdVeS$vGDz" role="3cqZAp">
-          <node concept="3clFbS" id="2NdVeS$vGD_" role="3clFbx">
-            <node concept="3SKdUt" id="2NdVeS$vHvq" role="3cqZAp">
-              <node concept="3SKdUq" id="2NdVeS$vHvs" role="3SKWNk">
-                <property role="3SKdUp" value="FIXME it's not responsibility of EnvironmentBase to clear EnvironmentContainer." />
-              </node>
-            </node>
-            <node concept="3SKdUt" id="2NdVeS$vHwu" role="3cqZAp">
-              <node concept="3SKdUq" id="2NdVeS$vHww" role="3SKWNk">
-                <property role="3SKdUp" value="In fact, we don't need EC at all." />
-              </node>
-            </node>
-            <node concept="3clFbF" id="2eqc2bym5C_" role="3cqZAp">
-              <node concept="2YIFZM" id="2eqc2bym5CA" role="3clFbG">
-                <ref role="37wK5l" node="3Pdq2IL$A69" resolve="clear" />
-                <ref role="1Pybhc" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbC" id="2NdVeS$vHeB" role="3clFbw">
-            <node concept="Xjq3P" id="2NdVeS$vHhJ" role="3uHU7w" />
-            <node concept="2YIFZM" id="2NdVeS$vGMR" role="3uHU7B">
-              <ref role="37wK5l" node="3eUNqOk6lzG" resolve="get" />
-              <ref role="1Pybhc" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
-            </node>
           </node>
         </node>
       </node>
@@ -4132,11 +3664,6 @@
       <node concept="TZ5HA" id="6LlhC3WLQPv" role="TZ5H$">
         <node concept="1dT_AC" id="6LlhC3WLQPw" role="1dT_Ay">
           <property role="1dT_AB" value="it is being stored in the special EnvironmentContainer class." />
-        </node>
-      </node>
-      <node concept="VUp57" id="6LlhC3WLQQ7" role="3nqlJM">
-        <node concept="VXe08" id="6LlhC3WLZe6" role="VUp5m">
-          <ref role="VXe09" node="3Pdq2IL$qR3" resolve="EnvironmentContainer" />
         </node>
       </node>
     </node>
@@ -6400,47 +5927,6 @@
     </node>
     <node concept="3Tm1VV" id="3FVfMMI0zlN" role="1B3o_S" />
   </node>
-  <node concept="3HP615" id="3pEStHM3RRT">
-    <property role="TrG5h" value="Retainable" />
-    <node concept="3clFb_" id="3pEStHM3RSa" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="retain" />
-      <node concept="3clFbS" id="3pEStHM3RSd" role="3clF47" />
-      <node concept="3Tm1VV" id="3pEStHM3RSe" role="1B3o_S" />
-      <node concept="3cqZAl" id="3pEStHM3RS5" role="3clF45" />
-      <node concept="P$JXv" id="6ylsT8BFm9y" role="lGtFl">
-        <node concept="TZ5HA" id="6ylsT8BFm9z" role="TZ5H$">
-          <node concept="1dT_AC" id="6ylsT8BFm9$" role="1dT_Ay">
-            <property role="1dT_AB" value="use it to increase the counter" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3Tm1VV" id="3pEStHM3RRU" role="1B3o_S" />
-    <node concept="3clFb_" id="3pEStHM3RSS" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="release" />
-      <node concept="3clFbS" id="3pEStHM3RSV" role="3clF47" />
-      <node concept="3Tm1VV" id="3pEStHM3RSW" role="1B3o_S" />
-      <node concept="3cqZAl" id="3pEStHM3RSD" role="3clF45" />
-      <node concept="P$JXv" id="6ylsT8BFmaq" role="lGtFl">
-        <node concept="TZ5HA" id="6ylsT8BFmar" role="TZ5H$">
-          <node concept="1dT_AC" id="6ylsT8BFmas" role="1dT_Ay">
-            <property role="1dT_AB" value="use it to decrease the counter" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3UR2Jj" id="6ylsT8BFm9X" role="lGtFl">
-      <node concept="TZ5HA" id="6ylsT8BFm9Y" role="TZ5H$">
-        <node concept="1dT_AC" id="6ylsT8BFm9Z" role="1dT_Ay">
-          <property role="1dT_AB" value="intended to count references to the instance of the interface" />
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="3HP615" id="7KC1aYnI6jD">
     <property role="TrG5h" value="EnvironmentAware" />
     <node concept="3clFb_" id="7KC1aYnI6li" role="jymVt">
@@ -6673,42 +6159,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1_D5Bk1O3So" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="1_D5Bk1OBk7" role="jymVt" />
-    <node concept="3clFb_" id="1_D5Bk1O3Sz" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="retain" />
-      <node concept="3Tm1VV" id="1_D5Bk1O3S_" role="1B3o_S" />
-      <node concept="3cqZAl" id="1_D5Bk1O3SA" role="3clF45" />
-      <node concept="3clFbS" id="1_D5Bk1O3SF" role="3clF47">
-        <node concept="3SKdUt" id="1_D5Bk1OBQD" role="3cqZAp">
-          <node concept="3SKdUq" id="1_D5Bk1OBQF" role="3SKWNk">
-            <property role="3SKdUp" value="no-op, shall remove this method from Environment interface" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="1_D5Bk1O3SG" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="1_D5Bk1OBR2" role="jymVt" />
-    <node concept="3clFb_" id="1_D5Bk1O3SH" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="release" />
-      <node concept="3Tm1VV" id="1_D5Bk1O3SJ" role="1B3o_S" />
-      <node concept="3cqZAl" id="1_D5Bk1O3SK" role="3clF45" />
-      <node concept="3clFbS" id="1_D5Bk1O3SP" role="3clF47">
-        <node concept="3SKdUt" id="1_D5Bk1OBQQ" role="3cqZAp">
-          <node concept="3SKdUq" id="1_D5Bk1OBQR" role="3SKWNk">
-            <property role="3SKdUp" value="no-op, shall remove this method from Environment interface" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="1_D5Bk1O3SQ" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
