@@ -7,10 +7,11 @@ import org.apache.log4j.LogManager;
 import com.intellij.idea.CommandLineApplication;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.util.PathManager;
+import jetbrains.mps.util.annotation.Hack;
+import java.util.StringJoiner;
 import java.io.File;
+import jetbrains.mps.util.PathManager;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.RuntimeFlags;
@@ -50,7 +51,8 @@ import com.intellij.openapi.project.DumbService;
  */
 public final class IdeaEnvironment extends EnvironmentBase {
   private static final Logger LOG = LogManager.getLogger(IdeaEnvironment.class);
-  private static final String PLUGINS_PATH = "plugin.path";
+  private static final String PLUGIN_PATH = "plugin.path";
+  private static final String IDEA_LOAD_PLUGINS_ID = "idea.load.plugins.id";
 
   private CommandLineApplication myIdeaApplication;
   private final boolean myUnitTestMode;
@@ -98,10 +100,6 @@ public final class IdeaEnvironment extends EnvironmentBase {
       LOG.info("Creating IDEA environment");
     }
 
-    System.setProperty("idea.is.internal", InternalFlag.isInternalMode() + "");
-    System.setProperty("idea.no.jre.check", "true");
-    System.setProperty("idea.load.plugins", "true");
-
     addRequiredPlugins(myConfig);
 
     myIdeaApplication = createIdeaTestApp();
@@ -111,23 +109,30 @@ public final class IdeaEnvironment extends EnvironmentBase {
     super.init(coreComponents.getPlatform());
   }
 
+  /**
+   * too late to set plugins here.
+   * it is the property of the EntryPointConfig the one, that is used in MPSWorker (before new process is started) 
+   * currently it is needed in tests from sources and I presume nowhere else
+   */
+  @Hack
   private void addRequiredPlugins(EnvironmentConfig config) {
     // [MM]: looks like a hack, should we regenerate it to a regular plugin specification?  
     // Probably, with plugin-set-ref to ensure the same plugin set is used 
 
     // typically, this property is set by generated ant scripts before running tests 
-    if (isNotEmptyString(System.getProperty(PLUGINS_PATH))) {
-      return;
-    }
 
     // otherwise, we set it from config 
+    if (isNotEmptyString(System.getProperty(PLUGIN_PATH))) {
+      return;
+    }
     setPluginPathProperty();
     setPluginIdsPropertyFromConfig(config);
   }
 
+  @Hack
   private void setPluginPathProperty() {
     // [MM]: why do we set ids from config, while path is not config-related? 
-    StringBuilder pluginPath = new StringBuilder();
+    StringJoiner pluginPath = new StringJoiner(File.pathSeparator);
     String preInstalledPluginsPath = PathManager.getPreInstalledPluginsPath();
     if (myUnitTestMode) {
       // PluginManagerCore.loadDescriptors loads plugin from preInstalledPluginsPath when in !unitTest 
@@ -138,41 +143,47 @@ public final class IdeaEnvironment extends EnvironmentBase {
       File pluginDir = new File(preInstalledPluginsPath);
       if (pluginDir.exists()) {
         for (File pluginFolder : pluginDir.listFiles()) {
-          if (pluginPath.length() > 0) {
-            pluginPath.append(File.pathSeparator);
-          }
-          pluginPath.append(pluginFolder.getPath());
+          pluginPath.add(pluginFolder.getPath());
         }
       }
     }
     for (PluginDescriptor pd : myConfig.getPlugins()) {
-      // see comment above regarding duplicated plugins in PLUGINS_PATH and in classpath 
-      if (pd.getPath().startsWith(preInstalledPluginsPath)) {
-        continue;
-      }
-      if (pluginPath.length() > 0) {
-        pluginPath.append(File.pathSeparator);
-      }
-      pluginPath.append(pd.getPath());
+      pluginPath.add(pd.getPath());
     }
     // IMPORTANT! "plugin.path" doesn't tell plugin's classpath, it points to location where to read plugin.xml from 
     // I.e. for unit test mode, complete plugin's classpath has to be in global CP already, and therefore would be loaded by 
     // PluginManagerCore.loadDescriptorsFromClassPath.  
-    System.setProperty(PLUGINS_PATH, pluginPath.toString());
+    System.setProperty(PLUGIN_PATH, pluginPath.toString());
   }
 
+  /**
+   * I would suggest to remove this functionality from MPS whatsoever and to define all the plugins using the IDEA cp
+   * parsing mechanism.
+   * I think it is workable since if a module A is packed in SomePlugin.jar which contains META-INF/plugin.xml,
+   * then almost always one needs to include the plugin as a whole (to provide correct deployment for the module A.
+   * If a module A is packed in SomePlugin/.../xxx.jar then SomePlugin is never in the cp, but only the xxx.jar is.
+   * Thus I assume that we can manage the set of idea plugins accurately enough using only the IDEA cp mechanism.
+   * OR
+   * if we use the idea.run.tests.with.bundled.plugins property from IDEA then we can not bother at all about the cp
+   * and use only the plugin.path property.
+   * 
+   * Either way we do not need idea.load.plugins.id property.
+   */
+  @Hack
   private void setPluginIdsPropertyFromConfig(EnvironmentConfig config) {
-    StringBuilder result = new StringBuilder();
+    if (isNotEmptyString(System.getProperty(IDEA_LOAD_PLUGINS_ID))) {
+      return;
+    }
+    StringJoiner result = new StringJoiner(File.pathSeparator);
     Set<PluginDescriptor> plugins = config.getPlugins();
     if (plugins == null) {
       return;
     }
     for (PluginDescriptor plugin : SetSequence.fromSet(plugins)) {
       assert plugin.getId() != null : "id should be specified for plugin " + plugin.getPath();
-      result.append(plugin.getId());
-      result.append(",");
+      result.add(plugin.getId());
     }
-    System.setProperty("idea.load.plugins.id", result.toString());
+    System.setProperty(IDEA_LOAD_PLUGINS_ID, result.toString());
   }
 
   private void disallowAccessToClosedProjectsDir() {

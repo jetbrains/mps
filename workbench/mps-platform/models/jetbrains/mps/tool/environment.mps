@@ -181,7 +181,6 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
-      <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -223,7 +222,6 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
         <child id="1221737317278" name="statementList" index="1Pe0a2" />
       </concept>
@@ -279,6 +277,13 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1226511727824" name="jetbrains.mps.baseLanguage.collections.structure.SetType" flags="in" index="2hMVRd">
@@ -301,12 +306,21 @@
     <node concept="Wx3nA" id="2Koq9V0scA0" role="jymVt">
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
-      <property role="TrG5h" value="PLUGINS_PATH" />
+      <property role="TrG5h" value="PLUGIN_PATH" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="2Koq9V0scdU" role="1B3o_S" />
       <node concept="17QB3L" id="2Koq9V0scz5" role="1tU5fm" />
       <node concept="Xl_RD" id="2Koq9V0tvl1" role="33vP2m">
         <property role="Xl_RC" value="plugin.path" />
+      </node>
+    </node>
+    <node concept="Wx3nA" id="3P4ieJFe0HU" role="jymVt">
+      <property role="TrG5h" value="IDEA_LOAD_PLUGINS_ID" />
+      <property role="3TUv4t" value="true" />
+      <node concept="17QB3L" id="3P4ieJFdXRC" role="1tU5fm" />
+      <node concept="3Tm6S6" id="3P4ieJFdXRB" role="1B3o_S" />
+      <node concept="Xl_RD" id="3P4ieJFdXRD" role="33vP2m">
+        <property role="Xl_RC" value="idea.load.plugins.id" />
       </node>
     </node>
     <node concept="2tJIrI" id="ZnkhVJWDS8" role="jymVt" />
@@ -592,49 +606,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="735HJCLsg_U" role="3cqZAp" />
-        <node concept="3clFbF" id="735HJCLsfLX" role="3cqZAp">
-          <node concept="2YIFZM" id="735HJCLsfLY" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
-            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-            <node concept="Xl_RD" id="735HJCLsfLZ" role="37wK5m">
-              <property role="Xl_RC" value="idea.is.internal" />
-            </node>
-            <node concept="3cpWs3" id="735HJCLsfM0" role="37wK5m">
-              <node concept="Xl_RD" id="735HJCLsfM1" role="3uHU7w">
-                <property role="Xl_RC" value="" />
-              </node>
-              <node concept="2YIFZM" id="735HJCLsfM2" role="3uHU7B">
-                <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
-                <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode():boolean" resolve="isInternalMode" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="735HJCLsfM3" role="3cqZAp">
-          <node concept="2YIFZM" id="735HJCLsfM4" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
-            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-            <node concept="Xl_RD" id="735HJCLsfM5" role="37wK5m">
-              <property role="Xl_RC" value="idea.no.jre.check" />
-            </node>
-            <node concept="Xl_RD" id="735HJCLsfM6" role="37wK5m">
-              <property role="Xl_RC" value="true" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="735HJCLsfM7" role="3cqZAp">
-          <node concept="2YIFZM" id="735HJCLsfM8" role="3clFbG">
-            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
-            <node concept="Xl_RD" id="735HJCLsfM9" role="37wK5m">
-              <property role="Xl_RC" value="idea.load.plugins" />
-            </node>
-            <node concept="Xl_RD" id="735HJCLsfMb" role="37wK5m">
-              <property role="Xl_RC" value="true" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="735HJCLsgd2" role="3cqZAp" />
         <node concept="3clFbF" id="sjigSAxp4M" role="3cqZAp">
           <node concept="1rXfSq" id="sjigSAxp4I" role="3clFbG">
             <ref role="37wK5l" node="sjigSAx$6d" resolve="addRequiredPlugins" />
@@ -709,25 +680,25 @@
             <property role="3SKdUp" value="typically, this property is set by generated ant scripts before running tests" />
           </node>
         </node>
-        <node concept="3clFbJ" id="sjigSAx$6n" role="3cqZAp">
-          <node concept="3clFbS" id="sjigSAx$6o" role="3clFbx">
-            <node concept="3cpWs6" id="sjigSAx$6p" role="3cqZAp" />
-          </node>
-          <node concept="2OqwBi" id="sjigSAx$6q" role="3clFbw">
-            <node concept="2YIFZM" id="sjigSAx$6r" role="2Oq$k0">
-              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
-              <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-              <node concept="37vLTw" id="sjigSAx$6s" role="37wK5m">
-                <ref role="3cqZAo" node="2Koq9V0scA0" resolve="PLUGINS_PATH" />
-              </node>
-            </node>
-            <node concept="17RvpY" id="sjigSAx$6t" role="2OqNvi" />
-          </node>
-        </node>
         <node concept="3clFbH" id="sjigSAx$6u" role="3cqZAp" />
         <node concept="3SKdUt" id="sjigSAx$6v" role="3cqZAp">
           <node concept="3SKdUq" id="sjigSAx$6w" role="3SKWNk">
             <property role="3SKdUp" value="otherwise, we set it from config" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="58KCQIw4Bew" role="3cqZAp">
+          <node concept="3clFbS" id="58KCQIw4Bey" role="3clFbx">
+            <node concept="3cpWs6" id="58KCQIw4Dli" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="58KCQIw4CIl" role="3clFbw">
+            <node concept="2YIFZM" id="58KCQIw4Bgq" role="2Oq$k0">
+              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+              <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+              <node concept="37vLTw" id="58KCQIw4Bmm" role="37wK5m">
+                <ref role="3cqZAo" node="2Koq9V0scA0" resolve="PLUGIN_PATH" />
+              </node>
+            </node>
+            <node concept="17RvpY" id="58KCQIw4Dfq" role="2OqNvi" />
           </node>
         </node>
         <node concept="3clFbF" id="sjigSAx$6x" role="3cqZAp">
@@ -752,6 +723,26 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="sjigSAx$6D" role="1B3o_S" />
+      <node concept="2AHcQZ" id="3P4ieJFdLhz" role="2AJF6D">
+        <ref role="2AI5Lk" to="ncw5:~Hack" resolve="Hack" />
+      </node>
+      <node concept="P$JXv" id="3P4ieJFdQeG" role="lGtFl">
+        <node concept="TZ5HA" id="3P4ieJFdQeH" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFdQeI" role="1dT_Ay">
+            <property role="1dT_AB" value="too late to set plugins here." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3P4ieJFdSMb" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFdSMc" role="1dT_Ay">
+            <property role="1dT_AB" value="it is the property of the EntryPointConfig the one, that is used in MPSWorker (before new process is started) " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3P4ieJFdSPO" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFdSPP" role="1dT_Ay">
+            <property role="1dT_AB" value="currently it is needed in tests from sources and I presume nowhere else" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="2$4oShLbctN" role="jymVt" />
     <node concept="3clFb_" id="sjigSAxAsb" role="jymVt">
@@ -766,12 +757,16 @@
           <node concept="3cpWsn" id="sjigSAxAsh" role="3cpWs9">
             <property role="TrG5h" value="pluginPath" />
             <property role="3TUv4t" value="false" />
-            <node concept="3uibUv" id="sjigSAxAsi" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~StringBuilder" resolve="StringBuilder" />
+            <node concept="3uibUv" id="58KCQIw3xHA" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~StringJoiner" resolve="StringJoiner" />
             </node>
             <node concept="2ShNRf" id="sjigSAxAsj" role="33vP2m">
               <node concept="1pGfFk" id="sjigSAxAsk" role="2ShVmc">
-                <ref role="37wK5l" to="wyt6:~StringBuilder.&lt;init&gt;()" resolve="StringBuilder" />
+                <ref role="37wK5l" to="33ny:~StringJoiner.&lt;init&gt;(java.lang.CharSequence)" resolve="StringJoiner" />
+                <node concept="10M0yZ" id="58KCQIw4A18" role="37wK5m">
+                  <ref role="3cqZAo" to="guwi:~File.pathSeparator" resolve="pathSeparator" />
+                  <ref role="1PxDUh" to="guwi:~File" resolve="File" />
+                </node>
               </node>
             </node>
           </node>
@@ -825,7 +820,7 @@
                 <node concept="2ShNRf" id="sjigSAxAso" role="33vP2m">
                   <node concept="1pGfFk" id="sjigSAxAsp" role="2ShVmc">
                     <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                    <node concept="37vLTw" id="4OPNMy2e0I_" role="37wK5m">
+                    <node concept="37vLTw" id="58KCQIw3UsL" role="37wK5m">
                       <ref role="3cqZAo" node="4OPNMy2e0Iz" resolve="preInstalledPluginsPath" />
                     </node>
                   </node>
@@ -836,7 +831,7 @@
               <node concept="3clFbS" id="sjigSAxAss" role="3clFbx">
                 <node concept="1DcWWT" id="sjigSAxAst" role="3cqZAp">
                   <node concept="2OqwBi" id="sjigSAxAsu" role="1DdaDG">
-                    <node concept="37vLTw" id="sjigSAxAsv" role="2Oq$k0">
+                    <node concept="37vLTw" id="58KCQIw3Uph" role="2Oq$k0">
                       <ref role="3cqZAo" node="sjigSAxAsm" resolve="pluginDir" />
                     </node>
                     <node concept="liA8E" id="sjigSAxAsw" role="2OqNvi">
@@ -851,46 +846,15 @@
                     </node>
                   </node>
                   <node concept="3clFbS" id="sjigSAxAsz" role="2LFqv$">
-                    <node concept="3clFbJ" id="sjigSAxAs$" role="3cqZAp">
-                      <node concept="3eOSWO" id="sjigSAxAs_" role="3clFbw">
-                        <node concept="2OqwBi" id="sjigSAxAsA" role="3uHU7B">
-                          <node concept="37vLTw" id="sjigSAxAsB" role="2Oq$k0">
-                            <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
-                          </node>
-                          <node concept="liA8E" id="sjigSAxAsC" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~AbstractStringBuilder.length():int" resolve="length" />
-                          </node>
-                        </node>
-                        <node concept="3cmrfG" id="sjigSAxAsD" role="3uHU7w">
-                          <property role="3cmrfH" value="0" />
-                        </node>
-                      </node>
-                      <node concept="3clFbS" id="sjigSAxAsE" role="3clFbx">
-                        <node concept="3clFbF" id="sjigSAxAsF" role="3cqZAp">
-                          <node concept="2OqwBi" id="sjigSAxAsG" role="3clFbG">
-                            <node concept="37vLTw" id="sjigSAxAsH" role="2Oq$k0">
-                              <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
-                            </node>
-                            <node concept="liA8E" id="sjigSAxAsI" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
-                              <node concept="10M0yZ" id="sjigSAxAsJ" role="37wK5m">
-                                <ref role="3cqZAo" to="guwi:~File.pathSeparator" resolve="pathSeparator" />
-                                <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3clFbF" id="sjigSAxAsK" role="3cqZAp">
                       <node concept="2OqwBi" id="sjigSAxAsL" role="3clFbG">
-                        <node concept="37vLTw" id="sjigSAxAsM" role="2Oq$k0">
+                        <node concept="37vLTw" id="58KCQIw3Utr" role="2Oq$k0">
                           <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
                         </node>
                         <node concept="liA8E" id="sjigSAxAsN" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="33ny:~StringJoiner.add(java.lang.CharSequence):java.util.StringJoiner" resolve="add" />
                           <node concept="2OqwBi" id="sjigSAxAsO" role="37wK5m">
-                            <node concept="37vLTw" id="sjigSAxAsP" role="2Oq$k0">
+                            <node concept="37vLTw" id="58KCQIw3Usd" role="2Oq$k0">
                               <ref role="3cqZAo" node="sjigSAxAsx" resolve="pluginFolder" />
                             </node>
                             <node concept="liA8E" id="sjigSAxAsQ" role="2OqNvi">
@@ -904,7 +868,7 @@
                 </node>
               </node>
               <node concept="2OqwBi" id="sjigSAxAsX" role="3clFbw">
-                <node concept="37vLTw" id="sjigSAxAsY" role="2Oq$k0">
+                <node concept="37vLTw" id="58KCQIw3UqU" role="2Oq$k0">
                   <ref role="3cqZAo" node="sjigSAxAsm" resolve="pluginDir" />
                 </node>
                 <node concept="liA8E" id="sjigSAxAsZ" role="2OqNvi">
@@ -913,7 +877,7 @@
               </node>
             </node>
           </node>
-          <node concept="37vLTw" id="4OPNMy2e3AA" role="3clFbw">
+          <node concept="37vLTw" id="58KCQIw3Uuo" role="3clFbw">
             <ref role="3cqZAo" node="4OPNMy2cxpb" resolve="myUnitTestMode" />
           </node>
         </node>
@@ -933,70 +897,13 @@
             </node>
           </node>
           <node concept="3clFbS" id="3a3EL8RMyN6" role="2LFqv$">
-            <node concept="3SKdUt" id="4OPNMy2ePAb" role="3cqZAp">
-              <node concept="3SKdUq" id="4OPNMy2ePAd" role="3SKWNk">
-                <property role="3SKdUp" value="see comment above regarding duplicated plugins in PLUGINS_PATH and in classpath" />
-              </node>
-            </node>
-            <node concept="3clFbJ" id="1fH6pN1fTQH" role="3cqZAp">
-              <node concept="3clFbS" id="1fH6pN1fTQJ" role="3clFbx">
-                <node concept="3N13vt" id="1fH6pN1fYQO" role="3cqZAp" />
-              </node>
-              <node concept="2OqwBi" id="1fH6pN1fY_N" role="3clFbw">
-                <node concept="2OqwBi" id="1fH6pN1fY8i" role="2Oq$k0">
-                  <node concept="37vLTw" id="1fH6pN1fY50" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3a3EL8RMyNj" resolve="pd" />
-                  </node>
-                  <node concept="liA8E" id="1fH6pN1fYlj" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="1fH6pN1fYMf" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
-                  <node concept="37vLTw" id="4OPNMy2e0IA" role="37wK5m">
-                    <ref role="3cqZAo" node="4OPNMy2e0Iz" resolve="preInstalledPluginsPath" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="3a3EL8RMyN7" role="3cqZAp">
-              <node concept="3eOSWO" id="3a3EL8RMyN8" role="3clFbw">
-                <node concept="2OqwBi" id="3a3EL8RMzN_" role="3uHU7B">
-                  <node concept="37vLTw" id="3a3EL8RMzN$" role="2Oq$k0">
-                    <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
-                  </node>
-                  <node concept="liA8E" id="3a3EL8RMzNA" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~AbstractStringBuilder.length():int" resolve="length" />
-                  </node>
-                </node>
-                <node concept="3cmrfG" id="3a3EL8RMyNa" role="3uHU7w">
-                  <property role="3cmrfH" value="0" />
-                </node>
-              </node>
-              <node concept="3clFbS" id="3a3EL8RMyNc" role="3clFbx">
-                <node concept="3clFbF" id="3a3EL8RMyNd" role="3cqZAp">
-                  <node concept="2OqwBi" id="3a3EL8RMzOS" role="3clFbG">
-                    <node concept="37vLTw" id="3a3EL8RMzOR" role="2Oq$k0">
-                      <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
-                    </node>
-                    <node concept="liA8E" id="3a3EL8RMzOT" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
-                      <node concept="10M0yZ" id="3a3EL8RMzOU" role="37wK5m">
-                        <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                        <ref role="3cqZAo" to="guwi:~File.pathSeparator" resolve="pathSeparator" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="3a3EL8RMyNg" role="3cqZAp">
-              <node concept="2OqwBi" id="3a3EL8RMzYV" role="3clFbG">
-                <node concept="37vLTw" id="3a3EL8RMzYU" role="2Oq$k0">
+            <node concept="3clFbF" id="mSHDyFrdcG" role="3cqZAp">
+              <node concept="2OqwBi" id="mSHDyFrdeK" role="3clFbG">
+                <node concept="37vLTw" id="58KCQIw4ARX" role="2Oq$k0">
                   <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
                 </node>
-                <node concept="liA8E" id="3a3EL8RMzYW" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                <node concept="liA8E" id="mSHDyFrdph" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~StringJoiner.add(java.lang.CharSequence):java.util.StringJoiner" resolve="add" />
                   <node concept="2OqwBi" id="3a3EL8RMAfe" role="37wK5m">
                     <node concept="37vLTw" id="3a3EL8RMAfd" role="2Oq$k0">
                       <ref role="3cqZAo" node="3a3EL8RMyNj" resolve="pd" />
@@ -1030,14 +937,14 @@
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
             <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
             <node concept="37vLTw" id="3a3EL8RMzL4" role="37wK5m">
-              <ref role="3cqZAo" node="2Koq9V0scA0" resolve="PLUGINS_PATH" />
+              <ref role="3cqZAo" node="2Koq9V0scA0" resolve="PLUGIN_PATH" />
             </node>
             <node concept="2OqwBi" id="3a3EL8RMzL5" role="37wK5m">
-              <node concept="37vLTw" id="3a3EL8RMzL6" role="2Oq$k0">
+              <node concept="37vLTw" id="58KCQIw4B6Y" role="2Oq$k0">
                 <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
               </node>
               <node concept="liA8E" id="3a3EL8RMzL7" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~StringBuilder.toString():java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="33ny:~StringJoiner.toString():java.lang.String" resolve="toString" />
               </node>
             </node>
           </node>
@@ -1045,20 +952,42 @@
       </node>
       <node concept="3cqZAl" id="sjigSAxAt1" role="3clF45" />
       <node concept="3Tm6S6" id="sjigSAxAt0" role="1B3o_S" />
+      <node concept="2AHcQZ" id="3P4ieJFegGz" role="2AJF6D">
+        <ref role="2AI5Lk" to="ncw5:~Hack" resolve="Hack" />
+      </node>
     </node>
     <node concept="2tJIrI" id="5A5jZrz7AVC" role="jymVt" />
     <node concept="3clFb_" id="sjigSAxCYH" role="jymVt">
       <property role="TrG5h" value="setPluginIdsPropertyFromConfig" />
       <node concept="3clFbS" id="sjigSAxCYJ" role="3clF47">
+        <node concept="3clFbJ" id="3P4ieJFdWTZ" role="3cqZAp">
+          <node concept="2OqwBi" id="3P4ieJFdWU2" role="3clFbw">
+            <node concept="2YIFZM" id="3P4ieJFdWU3" role="2Oq$k0">
+              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+              <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+              <node concept="37vLTw" id="3P4ieJFe4cq" role="37wK5m">
+                <ref role="3cqZAo" node="3P4ieJFe0HU" resolve="IDEA_LOAD_PLUGINS_ID" />
+              </node>
+            </node>
+            <node concept="17RvpY" id="3P4ieJFdWU4" role="2OqNvi" />
+          </node>
+          <node concept="3clFbS" id="3P4ieJFdWU0" role="3clFbx">
+            <node concept="3cpWs6" id="3P4ieJFdWU1" role="3cqZAp" />
+          </node>
+        </node>
         <node concept="3cpWs8" id="sjigSAxCYK" role="3cqZAp">
           <node concept="3cpWsn" id="sjigSAxCYL" role="3cpWs9">
             <property role="TrG5h" value="result" />
-            <node concept="3uibUv" id="sjigSAxCYM" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~StringBuilder" resolve="StringBuilder" />
+            <node concept="3uibUv" id="58KCQIw4DCp" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~StringJoiner" resolve="StringJoiner" />
             </node>
             <node concept="2ShNRf" id="sjigSAxCYN" role="33vP2m">
               <node concept="1pGfFk" id="sjigSAxCYO" role="2ShVmc">
-                <ref role="37wK5l" to="wyt6:~StringBuilder.&lt;init&gt;()" resolve="StringBuilder" />
+                <ref role="37wK5l" to="33ny:~StringJoiner.&lt;init&gt;(java.lang.CharSequence)" resolve="StringJoiner" />
+                <node concept="10M0yZ" id="58KCQIw4DXp" role="37wK5m">
+                  <ref role="3cqZAo" to="guwi:~File.pathSeparator" resolve="pathSeparator" />
+                  <ref role="1PxDUh" to="guwi:~File" resolve="File" />
+                </node>
               </node>
             </node>
           </node>
@@ -1132,7 +1061,7 @@
                   <ref role="3cqZAo" node="sjigSAxCYL" resolve="result" />
                 </node>
                 <node concept="liA8E" id="sjigSAxCZ9" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                  <ref role="37wK5l" to="33ny:~StringJoiner.add(java.lang.CharSequence):java.util.StringJoiner" resolve="add" />
                   <node concept="2OqwBi" id="sjigSAxCZa" role="37wK5m">
                     <node concept="2GrUjf" id="sjigSAxCZb" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="sjigSAxCZ3" resolve="plugin" />
@@ -1144,34 +1073,21 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="sjigSAxCZd" role="3cqZAp">
-              <node concept="2OqwBi" id="sjigSAxCZe" role="3clFbG">
-                <node concept="37vLTw" id="sjigSAxCZf" role="2Oq$k0">
-                  <ref role="3cqZAo" node="sjigSAxCYL" resolve="result" />
-                </node>
-                <node concept="liA8E" id="sjigSAxCZg" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
-                  <node concept="Xl_RD" id="sjigSAxCZh" role="37wK5m">
-                    <property role="Xl_RC" value="," />
-                  </node>
-                </node>
-              </node>
-            </node>
           </node>
         </node>
         <node concept="3clFbF" id="sjigSAxCZi" role="3cqZAp">
           <node concept="2YIFZM" id="sjigSAxCZj" role="3clFbG">
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
             <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
-            <node concept="Xl_RD" id="sjigSAxCZk" role="37wK5m">
-              <property role="Xl_RC" value="idea.load.plugins.id" />
+            <node concept="37vLTw" id="3P4ieJFe3YW" role="37wK5m">
+              <ref role="3cqZAo" node="3P4ieJFe0HU" resolve="IDEA_LOAD_PLUGINS_ID" />
             </node>
             <node concept="2OqwBi" id="sjigSAxCZl" role="37wK5m">
               <node concept="37vLTw" id="sjigSAxCZm" role="2Oq$k0">
                 <ref role="3cqZAo" node="sjigSAxCYL" resolve="result" />
               </node>
               <node concept="liA8E" id="sjigSAxCZn" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~StringBuilder.toString():java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="33ny:~StringJoiner.toString():java.lang.String" resolve="toString" />
               </node>
             </node>
           </node>
@@ -1185,6 +1101,66 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="sjigSAxCZo" role="1B3o_S" />
+      <node concept="2AHcQZ" id="3P4ieJFe4xH" role="2AJF6D">
+        <ref role="2AI5Lk" to="ncw5:~Hack" resolve="Hack" />
+      </node>
+      <node concept="P$JXv" id="3P4ieJFe8Ih" role="lGtFl">
+        <node concept="TZ5HA" id="3P4ieJFe8Ii" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFe8Ij" role="1dT_Ay">
+            <property role="1dT_AB" value="I would suggest to remove this functionality from MPS whatsoever and to define all the plugins using the IDEA cp" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3P4ieJFebn6" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFebn7" role="1dT_Ay">
+            <property role="1dT_AB" value="parsing mechanism." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3P4ieJFebns" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFebnt" role="1dT_Ay">
+            <property role="1dT_AB" value="I think it is workable since if a module A is packed in SomePlugin.jar which contains META-INF/plugin.xml," />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3P4ieJFebqz" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFebq$" role="1dT_Ay">
+            <property role="1dT_AB" value="then almost always one needs to include the plugin as a whole (to provide correct deployment for the module A." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3P4ieJFebqX" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFebqY" role="1dT_Ay">
+            <property role="1dT_AB" value="If a module A is packed in SomePlugin/.../xxx.jar then SomePlugin is never in the cp, but only the xxx.jar is." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3P4ieJFebrp" role="TZ5H$">
+          <node concept="1dT_AC" id="3P4ieJFebrq" role="1dT_Ay">
+            <property role="1dT_AB" value="Thus I assume that we can manage the set of idea plugins accurately enough using only the IDEA cp mechanism." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1zSQW5TZFsG" role="TZ5H$">
+          <node concept="1dT_AC" id="1zSQW5TZFsH" role="1dT_Ay">
+            <property role="1dT_AB" value="OR" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1zSQW5TZFte" role="TZ5H$">
+          <node concept="1dT_AC" id="1zSQW5TZFtf" role="1dT_Ay">
+            <property role="1dT_AB" value="if we use the idea.run.tests.with.bundled.plugins property from IDEA then we can not bother at all about the cp" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1zSQW5TZFtM" role="TZ5H$">
+          <node concept="1dT_AC" id="1zSQW5TZFtN" role="1dT_Ay">
+            <property role="1dT_AB" value="and use only the plugin.path property." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1zSQW5TZFuI" role="TZ5H$">
+          <node concept="1dT_AC" id="1zSQW5TZFuJ" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1zSQW5TZFu6" role="TZ5H$">
+          <node concept="1dT_AC" id="1zSQW5TZFu7" role="1dT_Ay">
+            <property role="1dT_AB" value="Either way we do not need idea.load.plugins.id property." />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="sjigSAxl61" role="jymVt" />
     <node concept="3clFb_" id="Pw_fmFMRo6" role="jymVt">
@@ -1318,6 +1294,28 @@
         </node>
         <node concept="3clFbJ" id="4OPNMy2cD0Q" role="3cqZAp">
           <node concept="3clFbS" id="4OPNMy2cD0S" role="3clFbx">
+            <node concept="1X3_iC" id="mSHDyFqKBO" role="lGtFl">
+              <property role="3V$3am" value="statement" />
+              <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+              <node concept="3clFbF" id="mSHDyFqH8G" role="8Wnug">
+                <node concept="2YIFZM" id="mSHDyFqJCA" role="3clFbG">
+                  <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
+                  <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                  <node concept="Xl_RD" id="mSHDyFqJSv" role="37wK5m">
+                    <property role="Xl_RC" value="idea.run.tests.with.bundled.plugins" />
+                  </node>
+                  <node concept="2OqwBi" id="mSHDyFqKs8" role="37wK5m">
+                    <node concept="10M0yZ" id="mSHDyFqKmH" role="2Oq$k0">
+                      <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
+                      <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
+                    </node>
+                    <node concept="liA8E" id="mSHDyFqKA7" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~Boolean.toString():java.lang.String" resolve="toString" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs6" id="6z7xhWkukv5" role="3cqZAp">
               <node concept="2YIFZM" id="4eRWbJ_JiEG" role="3cqZAk">
                 <ref role="37wK5l" to="1wbl:~IdeaTestApplication.getInstance():com.intellij.idea.IdeaTestApplication" resolve="getInstance" />
