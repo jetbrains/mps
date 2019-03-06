@@ -30,6 +30,8 @@ import jetbrains.mps.util.FileUtil;
 public final class MpsEnvironment extends EnvironmentBase {
   private static final Logger LOG = LogManager.getLogger(MpsEnvironment.class);
   private Platform myPlatform;
+  private PlatformPlugins myPlugins;
+
 
   static {
     EnvironmentBase.initializeLog4j();
@@ -46,6 +48,7 @@ public final class MpsEnvironment extends EnvironmentBase {
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
 
     myPlatform.findComponent(GenerationSettingsProvider.class).setGenerationSettings(new DefaultModifiableGenerationSettings());
+    myPlugins = new PlatformPlugins(myConfig);
     registerFacetFactory(myPlatform.findComponent(FacetsRegistry.class));
     super.init(myPlatform);
   }
@@ -62,7 +65,8 @@ public final class MpsEnvironment extends EnvironmentBase {
           @Override
           @Nullable
           public ClassLoader getClassLoader() {
-            return getRootClassLoader();
+            ClassLoader cl = myPlugins.pluginClassLoader(getPluginId());
+            return (cl == null ? getRootClassLoader() : cl);
           }
         };
         rv.setModule(module);
@@ -74,14 +78,18 @@ public final class MpsEnvironment extends EnvironmentBase {
 
   @Override
   protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
+    // can do it only here as root CL is initialized in super.init(). Once I get rid of its uses in IdeaEnvironment, 
+    // can move the field here and init CLs along with field initialization 
+    myPlugins.buildClassLoaders(getRootClassLoader());
     final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
-    LibraryContributorHelper helper = new LibraryContributorHelper(myConfig, getRootClassLoader());
+    LibraryContributorHelper helper = new LibraryContributorHelper();
     if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
-      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs());
+      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader()));
     }
-    // todo this should go away. Instead, a regular contributor for plugins should perform 
-    if (myConfig.getPlugins() != null && SetSequence.fromSet(myConfig.getPlugins()).isNotEmpty()) {
-      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForPlugins());
+    // FIXME at the moment, we always build CP for a plugin, despite the fact it could be in a global CP already 
+    //       need to respect global CP scenario and to use rootCL as plugin CL directly in that case 
+    if (!(myPlugins.isEmpty())) {
+      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForPlugins(myPlugins));
     }
     libInitializer.load(libContribs);
   }

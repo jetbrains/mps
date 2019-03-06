@@ -37,9 +37,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
-        <child id="1154032183016" name="body" index="2LFqv$" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -150,12 +147,6 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
-        <child id="1144226360166" name="iterable" index="1DdaDG" />
-      </concept>
-      <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
-        <child id="1144230900587" name="variable" index="1Duv9x" />
-      </concept>
       <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
         <property id="6329021646629104958" name="text" index="3SKdUp" />
       </concept>
@@ -189,19 +180,6 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-    </language>
-    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
-        <child id="540871147943773366" name="argument" index="25WWJ7" />
-      </concept>
-      <concept id="1226511727824" name="jetbrains.mps.baseLanguage.collections.structure.SetType" flags="in" index="2hMVRd">
-        <child id="1226511765987" name="elementType" index="2hN53Y" />
-      </concept>
-      <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
-        <child id="1237721435807" name="elementType" index="HW$YZ" />
-      </concept>
-      <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
-      <concept id="1240217271293" name="jetbrains.mps.baseLanguage.collections.structure.LinkedHashSetCreator" flags="nn" index="32HrFt" />
     </language>
   </registry>
   <node concept="312cEu" id="57xhZj4qVKZ">
@@ -1059,117 +1037,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="3eUNqOk8v1k" role="jymVt" />
-    <node concept="2YIFZL" id="3eUNqOk8vfn" role="jymVt">
-      <property role="TrG5h" value="fromMap" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="37vLTG" id="2ky3Rs1ticC" role="3clF46">
-        <property role="TrG5h" value="name" />
-        <node concept="17QB3L" id="2ky3Rs1tio3" role="1tU5fm" />
-      </node>
-      <node concept="37vLTG" id="2Koq9V0qXbf" role="3clF46">
-        <property role="TrG5h" value="libToClassLoader" />
-        <node concept="3uibUv" id="2Koq9V0qXbe" role="1tU5fm">
-          <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
-          <node concept="17QB3L" id="DMIDDhkfrt" role="11_B2D" />
-          <node concept="3uibUv" id="2Koq9V0qYjd" role="11_B2D">
-            <ref role="3uigEE" to="wyt6:~ClassLoader" resolve="ClassLoader" />
-          </node>
-        </node>
-      </node>
-      <node concept="3clFbS" id="3eUNqOk8vfq" role="3clF47">
-        <node concept="3cpWs8" id="2Koq9V0qYzi" role="3cqZAp">
-          <node concept="3cpWsn" id="2Koq9V0qYzj" role="3cpWs9">
-            <property role="TrG5h" value="libs" />
-            <node concept="2hMVRd" id="DMIDDhkj0v" role="1tU5fm">
-              <node concept="3uibUv" id="6SLhIWeIiB" role="2hN53Y">
-                <ref role="3uigEE" to="je6q:~LibDescriptor" resolve="LibDescriptor" />
-              </node>
-            </node>
-            <node concept="2ShNRf" id="2Koq9V0qYzm" role="33vP2m">
-              <node concept="32HrFt" id="DMIDDhkJuS" role="2ShVmc">
-                <node concept="3uibUv" id="6SLhIWeIps" role="HW$YZ">
-                  <ref role="3uigEE" to="je6q:~LibDescriptor" resolve="LibDescriptor" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1DcWWT" id="2Koq9V0qYzp" role="3cqZAp">
-          <node concept="2OqwBi" id="2Koq9V0r29_" role="1DdaDG">
-            <node concept="37vLTw" id="2Koq9V0qYzq" role="2Oq$k0">
-              <ref role="3cqZAo" node="2Koq9V0qXbf" resolve="libToClassLoader" />
-            </node>
-            <node concept="liA8E" id="2Koq9V0r3tr" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.keySet():java.util.Set" resolve="keySet" />
-            </node>
-          </node>
-          <node concept="3cpWsn" id="2Koq9V0qYzr" role="1Duv9x">
-            <property role="TrG5h" value="libPath" />
-            <property role="3TUv4t" value="false" />
-            <node concept="17QB3L" id="DMIDDhkg7P" role="1tU5fm" />
-          </node>
-          <node concept="3clFbS" id="2Koq9V0qYzt" role="2LFqv$">
-            <node concept="3clFbF" id="2Koq9V0qYzu" role="3cqZAp">
-              <node concept="2OqwBi" id="DMIDDhkLCt" role="3clFbG">
-                <node concept="37vLTw" id="2Koq9V0qYzw" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2Koq9V0qYzj" resolve="libs" />
-                </node>
-                <node concept="TSZUe" id="DMIDDhkMjT" role="2OqNvi">
-                  <node concept="2ShNRf" id="2Koq9V0qYzy" role="25WWJ7">
-                    <node concept="1pGfFk" id="2Koq9V0qYzz" role="2ShVmc">
-                      <ref role="37wK5l" to="je6q:~LibDescriptor.&lt;init&gt;(jetbrains.mps.vfs.IFile,java.lang.ClassLoader)" resolve="LibDescriptor" />
-                      <node concept="2OqwBi" id="6UQiGMPnF99" role="37wK5m">
-                        <node concept="2YIFZM" id="6UQiGMPnEPp" role="2Oq$k0">
-                          <ref role="37wK5l" to="3ju5:~FileSystem.getInstance():jetbrains.mps.vfs.FileSystem" resolve="getInstance" />
-                          <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
-                        </node>
-                        <node concept="liA8E" id="6UQiGMPnFyu" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String):jetbrains.mps.vfs.IFile" resolve="getFile" />
-                          <node concept="37vLTw" id="6UQiGMPnFOS" role="37wK5m">
-                            <ref role="3cqZAo" node="2Koq9V0qYzr" resolve="libPath" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="2OqwBi" id="2Koq9V0r8RZ" role="37wK5m">
-                        <node concept="37vLTw" id="2Koq9V0r3DV" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2Koq9V0qXbf" resolve="libToClassLoader" />
-                        </node>
-                        <node concept="liA8E" id="2Koq9V0r9XD" role="2OqNvi">
-                          <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object):java.lang.Object" resolve="get" />
-                          <node concept="37vLTw" id="2Koq9V0ra3S" role="37wK5m">
-                            <ref role="3cqZAo" node="2Koq9V0qYzr" resolve="libPath" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2Koq9V0qYzC" role="3cqZAp">
-          <node concept="2ShNRf" id="2Koq9V0qYzD" role="3clFbG">
-            <node concept="1pGfFk" id="2Koq9V0qYzE" role="2ShVmc">
-              <ref role="37wK5l" node="57xhZj4tkXH" resolve="SetLibraryContributor" />
-              <node concept="37vLTw" id="2ky3Rs1tmgV" role="37wK5m">
-                <ref role="3cqZAo" node="2ky3Rs1ticC" resolve="name" />
-              </node>
-              <node concept="37vLTw" id="2Koq9V0qYzF" role="37wK5m">
-                <ref role="3cqZAo" node="2Koq9V0qYzj" resolve="libs" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="3eUNqOk8v9L" role="1B3o_S" />
-      <node concept="3uibUv" id="3eUNqOk8ve3" role="3clF45">
-        <ref role="3uigEE" node="57xhZj4tkXA" resolve="SetLibraryContributor" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3eUNqOk8Dqy" role="jymVt" />
     <node concept="2YIFZL" id="3eUNqOk8DM1" role="jymVt">
       <property role="TrG5h" value="fromSet" />
       <property role="od$2w" value="false" />

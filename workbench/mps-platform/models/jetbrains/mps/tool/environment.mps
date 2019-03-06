@@ -1634,16 +1634,6 @@
       <node concept="3Tmbuc" id="28$8eDnahbS" role="1B3o_S" />
       <node concept="3cqZAl" id="28$8eDnahbT" role="3clF45" />
       <node concept="3clFbS" id="28$8eDnahbU" role="3clF47">
-        <node concept="3SKdUt" id="28$8eDnaryi" role="3cqZAp">
-          <node concept="3SKdUq" id="28$8eDnaryk" role="3SKWNk">
-            <property role="3SKdUp" value=" FIXME refactor super (a) not to deal with plugins (has to be left to MpsEnvironment or thrown away altogether, global CP seems to be sufficient)" />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="28$8eDnasYF" role="3cqZAp">
-          <node concept="3SKdUq" id="28$8eDnasYH" role="3SKWNk">
-            <property role="3SKdUp" value="       (b) build a list of LibraryContributor, instead, as it's easier to modify the list than to deal with whole mighty LibraryInitializer." />
-          </node>
-        </node>
         <node concept="3clFbJ" id="74F5dZ_1JI4" role="3cqZAp">
           <node concept="3clFbS" id="74F5dZ_1JI6" role="3clFbx">
             <node concept="3cpWs8" id="3eUNqOk96xr" role="3cqZAp">
@@ -1655,12 +1645,6 @@
                 <node concept="2ShNRf" id="3eUNqOk96xt" role="33vP2m">
                   <node concept="1pGfFk" id="3eUNqOk96xu" role="2ShVmc">
                     <ref role="37wK5l" to="79ha:3eUNqOk8rbd" resolve="LibraryContributorHelper" />
-                    <node concept="37vLTw" id="3eUNqOk96xv" role="37wK5m">
-                      <ref role="3cqZAo" to="79ha:3eUNqOk7wUa" resolve="myConfig" />
-                    </node>
-                    <node concept="1rXfSq" id="28$8eDnamEd" role="37wK5m">
-                      <ref role="37wK5l" to="79ha:5mffBJ2WBJ9" resolve="getRootClassLoader" />
-                    </node>
                   </node>
                 </node>
               </node>
@@ -1681,6 +1665,17 @@
                       </node>
                       <node concept="liA8E" id="28$8eDnar4y" role="2OqNvi">
                         <ref role="37wK5l" to="79ha:3eUNqOk8lkP" resolve="createLibContributorForLibs" />
+                        <node concept="2OqwBi" id="1ROuiI02$i" role="37wK5m">
+                          <node concept="37vLTw" id="3eUNqOk96xv" role="2Oq$k0">
+                            <ref role="3cqZAo" to="79ha:3eUNqOk7wUa" resolve="myConfig" />
+                          </node>
+                          <node concept="liA8E" id="1ROuiI03qt" role="2OqNvi">
+                            <ref role="37wK5l" to="79ha:5UWB9tkma7" resolve="getLibs" />
+                          </node>
+                        </node>
+                        <node concept="1rXfSq" id="28$8eDnamEd" role="37wK5m">
+                          <ref role="37wK5l" to="79ha:5mffBJ2WBJ9" resolve="getRootClassLoader" />
+                        </node>
                       </node>
                     </node>
                   </node>

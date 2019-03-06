@@ -245,11 +245,9 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
   @Override
   protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
-    //  FIXME refactor super (a) not to deal with plugins (has to be left to MpsEnvironment or thrown away altogether, global CP seems to be sufficient) 
-    //        (b) build a list of LibraryContributor, instead, as it's easier to modify the list than to deal with whole mighty LibraryInitializer. 
     if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
-      LibraryContributorHelper helper = new LibraryContributorHelper(myConfig, getRootClassLoader());
-      libInitializer.load(Collections.singletonList(helper.createLibContributorForLibs()));
+      LibraryContributorHelper helper = new LibraryContributorHelper();
+      libInitializer.load(Collections.singletonList(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader())));
     }
     // modules from IDEA plugins are loaded with regular plafrom component mechanism (ext points, PluginLibraryContributor and RepositoryInitializingComponent) 
   }
