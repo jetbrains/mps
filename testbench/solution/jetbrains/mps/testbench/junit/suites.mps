@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
@@ -399,6 +399,33 @@
   </registry>
   <node concept="312cEu" id="53UI$MLlMdq">
     <property role="TrG5h" value="AntModuleTestSuite" />
+    <node concept="3UR2Jj" id="5sV3JxOTGwn" role="lGtFl">
+      <node concept="TZ5HA" id="5sV3JxOTHad" role="TZ5H$">
+        <node concept="1dT_AC" id="5sV3JxOTHaf" role="1dT_Ay">
+          <property role="1dT_AB" value="* This suite used to run the tests, specified in the ant-xml junit task" />
+        </node>
+      </node>
+      <node concept="TZ5HI" id="12CYGR0YIZu" role="3nqlJM">
+        <node concept="TZ5HA" id="12CYGR0YIZv" role="3HnX3l">
+          <node concept="1dT_AC" id="12CYGR0YIZU" role="1dT_Ay">
+            <property role="1dT_AB" value="used to run in the old environment, kept for legacy runs" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="53UI$MLlMdr" role="1B3o_S" />
+    <node concept="2AHcQZ" id="53UI$MLlOuh" role="2AJF6D">
+      <ref role="2AI5Lk" to="cvlm:~RunWith" resolve="RunWith" />
+      <node concept="1SXeKx" id="MFnq$0XnRM" role="2B76xF">
+        <ref role="2B6OnR" to="cvlm:~RunWith.value()" resolve="value" />
+        <node concept="3VsKOn" id="4Gp9sYONrQI" role="2B70Vg">
+          <ref role="3VsUkX" node="1CBc8rDnd6w" resolve="MpsTestsSuite" />
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="12CYGR0YIZw" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
     <node concept="1Pe0a1" id="12CYGR0YO0B" role="jymVt">
       <node concept="3clFbS" id="12CYGR0YO0D" role="1Pe0a2">
         <node concept="3SKdUt" id="12CYGR0ZgLp" role="3cqZAp">
@@ -426,33 +453,6 @@
           </node>
         </node>
       </node>
-    </node>
-    <node concept="3UR2Jj" id="5sV3JxOTGwn" role="lGtFl">
-      <node concept="TZ5HI" id="12CYGR0YIZu" role="3nqlJM">
-        <node concept="TZ5HA" id="12CYGR0YIZv" role="3HnX3l">
-          <node concept="1dT_AC" id="12CYGR0YIZU" role="1dT_Ay">
-            <property role="1dT_AB" value="used to run in the old environment, kept for legacy runs" />
-          </node>
-        </node>
-      </node>
-      <node concept="TZ5HA" id="5sV3JxOTHad" role="TZ5H$">
-        <node concept="1dT_AC" id="5sV3JxOTHaf" role="1dT_Ay">
-          <property role="1dT_AB" value="* This suite used to run the tests, specified in the ant-xml junit task" />
-        </node>
-      </node>
-    </node>
-    <node concept="3Tm1VV" id="53UI$MLlMdr" role="1B3o_S" />
-    <node concept="2AHcQZ" id="53UI$MLlOuh" role="2AJF6D">
-      <ref role="2AI5Lk" to="cvlm:~RunWith" resolve="RunWith" />
-      <node concept="1SXeKx" id="MFnq$0XnRM" role="2B76xF">
-        <ref role="2B6OnR" to="cvlm:~RunWith.value()" resolve="value" />
-        <node concept="3VsKOn" id="4Gp9sYONrQI" role="2B70Vg">
-          <ref role="3VsUkX" node="1CBc8rDnd6w" resolve="MpsTestsSuite" />
-        </node>
-      </node>
-    </node>
-    <node concept="2AHcQZ" id="12CYGR0YIZw" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
   </node>
   <node concept="312cEu" id="7X3$Ctw3YsX">
@@ -1217,6 +1217,11 @@
                     <ref role="37wK5l" to="k8ev:4yqv8vrxVuu" resolve="TypesystemChecker" />
                   </node>
                 </node>
+                <node concept="2ShNRf" id="5DuNfrQNgr1" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQNgr2" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="37vLTw" id="3612de$owD2" role="37wK5m">
@@ -1336,6 +1341,11 @@
                 <node concept="2ShNRf" id="1valgbdNIn9" role="HW$Y0">
                   <node concept="HV5vD" id="1valgbdNIna" role="2ShVmc">
                     <ref role="HV5vE" to="wsw7:3TJpIwQlqFz" resolve="UsedLanguagesChecker" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="5DuNfrQNfuC" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQNfuD" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
                   </node>
                 </node>
               </node>
@@ -1571,6 +1581,11 @@
                     <ref role="3uigEE" to="wsw7:6qi2OtU3u$c" resolve="AbstractNodeCheckerInEditor" />
                   </node>
                 </node>
+                <node concept="2ShNRf" id="5DuNfrQN2Jp" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQN86c" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="10Nm6u" id="3ukCc1okPMU" role="37wK5m" />
@@ -1634,6 +1649,11 @@
                   </node>
                   <node concept="3uibUv" id="3ukCc1olfY6" role="10QFUM">
                     <ref role="3uigEE" to="wsw7:6qi2OtU3u$c" resolve="AbstractNodeCheckerInEditor" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="5DuNfrQN8Vj" role="HW$Y0">
+                  <node concept="HV5vD" id="5DuNfrQN8Vk" role="2ShVmc">
+                    <ref role="HV5vE" to="wsw7:4c7y4qc4V7B" resolve="SuppressErrorsChecker" />
                   </node>
                 </node>
               </node>
@@ -3522,6 +3542,9 @@
         <node concept="3cpWs8" id="a8z8zytENl" role="3cqZAp">
           <node concept="3cpWsn" id="a8z8zytENm" role="3cpWs9">
             <property role="TrG5h" value="config" />
+            <node concept="3uibUv" id="a8z8zytENk" role="1tU5fm">
+              <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+            </node>
             <node concept="2OqwBi" id="12CYGR0Z$fY" role="33vP2m">
               <node concept="2OqwBi" id="63DSRaTik3u" role="2Oq$k0">
                 <node concept="2OqwBi" id="12CYGR100Wd" role="2Oq$k0">
@@ -3541,9 +3564,6 @@
               <node concept="liA8E" id="12CYGR0Z_58" role="2OqNvi">
                 <ref role="37wK5l" to="79ha:4asrSzSFl5Q" resolve="withMigrationPlugin" />
               </node>
-            </node>
-            <node concept="3uibUv" id="a8z8zytENk" role="1tU5fm">
-              <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
             </node>
           </node>
         </node>

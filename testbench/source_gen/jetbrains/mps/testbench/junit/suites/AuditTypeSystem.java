@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
+import jetbrains.mps.checkers.SuppressErrorsChecker;
 
 public class AuditTypeSystem extends BaseCheckerTest {
   @ClassRule
@@ -22,6 +23,6 @@ public class AuditTypeSystem extends BaseCheckerTest {
 
   @Test
   public void checkTypeSystem() {
-    runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new TypesystemChecker()), ourStats, "Type system errors");
+    runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new TypesystemChecker(), new SuppressErrorsChecker()), ourStats, "Type system errors");
   }
 }
