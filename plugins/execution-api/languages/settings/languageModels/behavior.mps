@@ -606,7 +606,7 @@
     <node concept="13i0hz" id="O$iR4J$g1l" role="13h7CS">
       <property role="2Ki8OM" value="true" />
       <property role="13i0iv" value="false" />
-      <property role="TrG5h" value="getContextPersistentConfigurationType" />
+      <property role="TrG5h" value="getContextPersistentConfiguration" />
       <node concept="3clFbS" id="O$iR4J$g1q" role="3clF47">
         <node concept="3cpWs8" id="O$iR4J$g1r" role="3cqZAp">
           <node concept="3cpWsn" id="O$iR4J$g1s" role="3cpWs9">
@@ -683,24 +683,14 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="O$iR4J$g1X" role="3cqZAp">
-          <node concept="2pJPEk" id="2F8bNQsK6U" role="3clFbG">
-            <node concept="2pJPED" id="2F8bNQsK6R" role="2pJPEn">
-              <ref role="2pJxaS" to="fb9u:O$iR4J$g0s" resolve="PersistentConfigurationType" />
-              <node concept="2pIpSj" id="2F8bNQsK6S" role="2pJxcM">
-                <ref role="2pIpSl" to="fb9u:O$iR4J$g0t" resolve="persistentConfiguration" />
-                <node concept="36biLy" id="2F8bNQsK6T" role="2pJxcZ">
-                  <node concept="37vLTw" id="3GM_nagTzIG" role="36biLW">
-                    <ref role="3cqZAo" node="O$iR4J$g1s" resolve="configuration" />
-                  </node>
-                </node>
-              </node>
-            </node>
+        <node concept="3cpWs6" id="1T5iP2agrWa" role="3cqZAp">
+          <node concept="37vLTw" id="1T5iP2agYyh" role="3cqZAk">
+            <ref role="3cqZAo" node="O$iR4J$g1s" resolve="configuration" />
           </node>
         </node>
       </node>
       <node concept="3Tqbb2" id="O$iR4J$g1p" role="3clF45">
-        <ref role="ehGHo" to="fb9u:O$iR4J$g0s" resolve="PersistentConfigurationType" />
+        <ref role="ehGHo" to="fb9u:O$iR4J$g0w" resolve="PersistentConfiguration" />
       </node>
       <node concept="37vLTG" id="O$iR4J$g1m" role="3clF46">
         <property role="TrG5h" value="node" />
@@ -715,16 +705,16 @@
       <node concept="3clFbS" id="O$iR4J$g27" role="3clF47">
         <node concept="3cpWs8" id="O$iR4J$g28" role="3cqZAp">
           <node concept="3cpWsn" id="O$iR4J$g29" role="3cpWs9">
-            <property role="TrG5h" value="configurationType" />
+            <property role="TrG5h" value="configuration" />
             <node concept="3Tqbb2" id="O$iR4J$g2a" role="1tU5fm">
-              <ref role="ehGHo" to="fb9u:O$iR4J$g0s" resolve="PersistentConfigurationType" />
+              <ref role="ehGHo" to="fb9u:O$iR4J$g0w" resolve="PersistentConfiguration" />
             </node>
             <node concept="2OqwBi" id="L_Hr3kEshn" role="33vP2m">
               <node concept="35c_gC" id="7Ift4Hg3oy_" role="2Oq$k0">
                 <ref role="35c_gD" to="fb9u:O$iR4J$g0w" resolve="PersistentConfiguration" />
               </node>
               <node concept="2qgKlT" id="L_Hr3kEsho" role="2OqNvi">
-                <ref role="37wK5l" node="O$iR4J$g1l" resolve="getContextPersistentConfigurationType" />
+                <ref role="37wK5l" node="O$iR4J$g1l" resolve="getContextPersistentConfiguration" />
                 <node concept="37vLTw" id="L_Hr3kEshp" role="37wK5m">
                   <ref role="3cqZAo" node="O$iR4J$g23" resolve="node" />
                 </node>
@@ -744,35 +734,17 @@
               </node>
             </node>
           </node>
-          <node concept="22lmx$" id="O$iR4J$g2j" role="3clFbw">
-            <node concept="2OqwBi" id="O$iR4J$g2k" role="3uHU7w">
-              <node concept="2OqwBi" id="O$iR4J$g2l" role="2Oq$k0">
-                <node concept="37vLTw" id="3GM_nagT_yF" role="2Oq$k0">
-                  <ref role="3cqZAo" node="O$iR4J$g29" resolve="configurationType" />
-                </node>
-                <node concept="3TrEf2" id="O$iR4J$g2n" role="2OqNvi">
-                  <ref role="3Tt5mk" to="fb9u:O$iR4J$g0t" resolve="persistentConfiguration" />
-                </node>
-              </node>
-              <node concept="3w_OXm" id="O$iR4J$g2o" role="2OqNvi" />
+          <node concept="2OqwBi" id="O$iR4J$g2p" role="3clFbw">
+            <node concept="37vLTw" id="3GM_nagTtdB" role="2Oq$k0">
+              <ref role="3cqZAo" node="O$iR4J$g29" resolve="configuration" />
             </node>
-            <node concept="2OqwBi" id="O$iR4J$g2p" role="3uHU7B">
-              <node concept="37vLTw" id="3GM_nagTtdB" role="2Oq$k0">
-                <ref role="3cqZAo" node="O$iR4J$g29" resolve="configurationType" />
-              </node>
-              <node concept="3w_OXm" id="O$iR4J$g2r" role="2OqNvi" />
-            </node>
+            <node concept="3w_OXm" id="O$iR4J$g2r" role="2OqNvi" />
           </node>
         </node>
         <node concept="3clFbF" id="O$iR4J$g2s" role="3cqZAp">
           <node concept="2OqwBi" id="O$iR4J$g2t" role="3clFbG">
-            <node concept="2OqwBi" id="O$iR4J$g2u" role="2Oq$k0">
-              <node concept="37vLTw" id="3GM_nagTslf" role="2Oq$k0">
-                <ref role="3cqZAo" node="O$iR4J$g29" resolve="configurationType" />
-              </node>
-              <node concept="3TrEf2" id="O$iR4J$g2w" role="2OqNvi">
-                <ref role="3Tt5mk" to="fb9u:O$iR4J$g0t" resolve="persistentConfiguration" />
-              </node>
+            <node concept="37vLTw" id="1T5iP2agZjl" role="2Oq$k0">
+              <ref role="3cqZAo" node="O$iR4J$g29" resolve="configuration" />
             </node>
             <node concept="3Tsc0h" id="O$iR4J$g2x" role="2OqNvi">
               <ref role="3TtcxE" to="fb9u:O$iR4J$g4z" resolve="persistentProperty" />

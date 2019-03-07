@@ -49,7 +49,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
-    <classNode extendsClassName="javax.swing.JPanel" />
+    <classNode extendsClassName="com.intellij.ui.components.JBPanel" />
   </dependency>
   <dependency className="jetbrains.mps.execution.lib.ui.NodeByConceptChooser">
     <classNode dependClassName="java.lang.Boolean" />

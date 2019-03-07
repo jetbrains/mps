@@ -2109,8 +2109,8 @@
       <property role="TrG5h" value="myListComponent" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="1DeqbSMDT0v" role="1B3o_S" />
-      <node concept="3uibUv" id="1DeqbSMDT0w" role="1tU5fm">
-        <ref role="3uigEE" to="dxuu:~JList" resolve="JList" />
+      <node concept="3uibUv" id="1T5iP2aaWci" role="1tU5fm">
+        <ref role="3uigEE" to="qqrq:~JBList" resolve="JBList" />
       </node>
     </node>
     <node concept="312cEg" id="1DeqbSMDT0x" role="jymVt">
@@ -2250,12 +2250,12 @@
         <node concept="3cpWs8" id="7OiZBHE04_2" role="3cqZAp">
           <node concept="3cpWsn" id="7OiZBHE04_3" role="3cpWs9">
             <property role="TrG5h" value="mainPanel" />
-            <node concept="3uibUv" id="7OiZBHE04_4" role="1tU5fm">
-              <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
+            <node concept="3uibUv" id="1T5iP2ab1us" role="1tU5fm">
+              <ref role="3uigEE" to="qqrq:~JBPanel" resolve="JBPanel" />
             </node>
             <node concept="2ShNRf" id="7OiZBHE04_5" role="33vP2m">
               <node concept="1pGfFk" id="7OiZBHE04_6" role="2ShVmc">
-                <ref role="37wK5l" to="dxuu:~JPanel.&lt;init&gt;(java.awt.LayoutManager)" resolve="JPanel" />
+                <ref role="37wK5l" to="qqrq:~JBPanel.&lt;init&gt;(java.awt.LayoutManager)" resolve="JBPanel" />
                 <node concept="2ShNRf" id="7OiZBHE04_7" role="37wK5m">
                   <node concept="1pGfFk" id="7OiZBHE04_8" role="2ShVmc">
                     <ref role="37wK5l" to="z60i:~BorderLayout.&lt;init&gt;()" resolve="BorderLayout" />
@@ -3073,8 +3073,8 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1DeqbSMDT5I" role="1B3o_S" />
-    <node concept="3uibUv" id="1DeqbSMDT5J" role="1zkMxy">
-      <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
+    <node concept="3uibUv" id="1T5iP2aaNIk" role="1zkMxy">
+      <ref role="3uigEE" to="qqrq:~JBPanel" resolve="JBPanel" />
     </node>
     <node concept="16euLQ" id="1DeqbSMDT5K" role="16eVyc">
       <property role="TrG5h" value="T" />

@@ -960,7 +960,7 @@
       <node id="5041115067675811137" at="145,89,146,130" concept="5" />
       <node id="4342433276614928660" at="148,89,149,110" concept="5" />
       <node id="5041115067675811167" at="151,89,152,467" concept="5" />
-      <node id="5041115067675811234" at="154,89,155,594" concept="5" />
+      <node id="5041115067675811234" at="154,89,155,417" concept="5" />
       <node id="4342433276614908012" at="236,94,237,104" concept="5" />
       <node id="4342433276614947166" at="239,94,240,121" concept="5" />
       <node id="4342433276614907996" at="242,94,243,104" concept="5" />
@@ -1028,7 +1028,7 @@
       <scope id="5041115067675811136" at="145,89,146,130" />
       <scope id="4342433276614928650" at="148,89,149,110" />
       <scope id="5041115067675811166" at="151,89,152,467" />
-      <scope id="5041115067675811233" at="154,89,155,594" />
+      <scope id="5041115067675811233" at="154,89,155,417" />
       <scope id="4342433276614908011" at="236,94,237,104" />
       <scope id="4342433276614928680" at="239,94,240,121" />
       <scope id="4342433276614907995" at="242,94,243,104" />
@@ -1241,7 +1241,7 @@
   <root nodeRef="r:03a139dc-3ebb-4127-956e-d3aaa9b6277c(jetbrains.mps.execution.settings.generator.template.main@generator)/5041115067675811384">
     <file name="QueriesGenerated.java">
       <node id="5041115067675811410" at="164,89,165,467" concept="5" />
-      <node id="5041115067675811449" at="167,89,168,587" concept="5" />
+      <node id="5041115067675811449" at="167,89,168,410" concept="5" />
       <node id="5041115067675811424" at="275,94,276,115" concept="5" />
       <node id="5041115067675811433" at="278,94,279,111" concept="5" />
       <node id="5041115067675811396" at="450,93,451,188" concept="5" />
@@ -1269,7 +1269,7 @@
       <node id="5041115067675811401" at="592,0,595,0" concept="8" trace="sourceNodesQuery_16_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="5041115067675811439" at="595,0,598,0" concept="8" trace="sourceNodesQuery_16_1#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <scope id="5041115067675811409" at="164,89,165,467" />
-      <scope id="5041115067675811448" at="167,89,168,587" />
+      <scope id="5041115067675811448" at="167,89,168,410" />
       <scope id="5041115067675811423" at="275,94,276,115" />
       <scope id="5041115067675811432" at="278,94,279,111" />
       <scope id="5041115067675811395" at="450,93,451,188" />

@@ -43,11 +43,11 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<List<SNode>> getNonTemplateProperties_idO$iR4J$g3y = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getNonTemplateProperties").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g3y").registry(REGISTRY).build();
   /*package*/ static final SMethod<String> getEditorSuffix_idO$iR4J$g3R = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getEditorSuffix").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("O$iR4J$g3R").registry(REGISTRY).build();
   public static final SMethod<List<SNode>> getMembers_idhEwJink = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJink").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getContextPersistentConfigurationType_idO$iR4J$g1l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextPersistentConfigurationType").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g1l").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getContextPersistentConfiguration_idO$iR4J$g1l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextPersistentConfiguration").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g1l").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SNode>> getContextPersistentProperties_idO$iR4J$g22 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getContextPersistentProperties").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g22").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getCheckMethodName_idO$iR4J$g2y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCheckMethodName").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g2y").registry(REGISTRY).build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSuffix_idO$iR4JBsSb, getGeneratedEditorName_idO$iR4J$g2J, getFullEditorName_idO$iR4J$g2V, createType_idhEwJimy, getTemplateProperties_idO$iR4J$g3e, getNonTemplateProperties_idO$iR4J$g3y, getEditorSuffix_idO$iR4J$g3R, getMembers_idhEwJink, getContextPersistentConfigurationType_idO$iR4J$g1l, getContextPersistentProperties_idO$iR4J$g22, getCheckMethodName_idO$iR4J$g2y);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSuffix_idO$iR4JBsSb, getGeneratedEditorName_idO$iR4J$g2J, getFullEditorName_idO$iR4J$g2V, createType_idhEwJimy, getTemplateProperties_idO$iR4J$g3e, getNonTemplateProperties_idO$iR4J$g3y, getEditorSuffix_idO$iR4J$g3R, getMembers_idhEwJink, getContextPersistentConfiguration_idO$iR4J$g1l, getContextPersistentProperties_idO$iR4J$g22, getCheckMethodName_idO$iR4J$g2y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -93,7 +93,7 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
     }
     return allMemebers;
   }
-  /*package*/ static SNode getContextPersistentConfigurationType_idO$iR4J$g1l(@NotNull SAbstractConcept __thisConcept__, SNode node) {
+  /*package*/ static SNode getContextPersistentConfiguration_idO$iR4J$g1l(@NotNull SAbstractConcept __thisConcept__, SNode node) {
     SNode configuration = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, "jetbrains.mps.execution.settings.structure.PersistentConfiguration"), false, false);
     if (configuration == null) {
       SNode executor = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, "jetbrains.mps.execution.settings.structure.PersistentConfigurationAssistent"), false, false);
@@ -101,14 +101,14 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
         configuration = SLinkOperations.getTarget(executor, MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration"));
       }
     }
-    return createPersistentConfigurationType_4ves9l_a2a8(configuration);
+    return configuration;
   }
   /*package*/ static List<SNode> getContextPersistentProperties_idO$iR4J$g22(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    SNode configurationType = PersistentConfiguration__BehaviorDescriptor.getContextPersistentConfigurationType_idO$iR4J$g1l.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, "jetbrains.mps.execution.settings.structure.PersistentConfiguration")), node);
-    if ((configurationType == null) || (SLinkOperations.getTarget(configurationType, MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration")) == null)) {
+    SNode configuration = PersistentConfiguration__BehaviorDescriptor.getContextPersistentConfiguration_idO$iR4J$g1l.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, "jetbrains.mps.execution.settings.structure.PersistentConfiguration")), node);
+    if ((configuration == null)) {
       return new ArrayList<SNode>();
     }
-    return SLinkOperations.getChildren(SLinkOperations.getTarget(configurationType, MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration")), MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty"));
+    return SLinkOperations.getChildren(configuration, MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty"));
   }
   /*package*/ static String getCheckMethodName_idO$iR4J$g2y(@NotNull SAbstractConcept __thisConcept__) {
     return "checkConfiguration";
@@ -159,7 +159,7 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
     }
     switch (methodIndex) {
       case 8:
-        return (T) ((SNode) getContextPersistentConfigurationType_idO$iR4J$g1l(concept, (SNode) parameters[0]));
+        return (T) ((SNode) getContextPersistentConfiguration_idO$iR4J$g1l(concept, (SNode) parameters[0]));
       case 9:
         return (T) ((List<SNode>) getContextPersistentProperties_idO$iR4J$g22(concept, (SNode) parameters[0]));
       case 10:
@@ -181,12 +181,6 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
     return CONCEPT;
   }
   private static SNode createPersistentConfigurationType_4ves9l_a0a3(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType"), null, null, false);
-    n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"), node0);
-    return n1;
-  }
-  private static SNode createPersistentConfigurationType_4ves9l_a2a8(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType"), null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"), node0);
