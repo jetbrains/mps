@@ -33,9 +33,12 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.execution.ui.RunContentDescriptor;
 import jetbrains.mps.icons.MPSIcons;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.execution.ui.actions.CloseAction;
 import com.intellij.execution.ExecutionManager;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.Presentation;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
 import jetbrains.mps.util.FileUtil;
 
@@ -106,14 +109,14 @@ public class DeployPlugins_BeforeTask extends BaseMpsBeforeTaskProvider<DeployPl
         script.value.dispose();
         return false;
       }
-
+      // fixme use modern api instead 
       ApplicationManager.getApplication().invokeAndWait(new Runnable() {
         public void run() {
           Executor executor = DefaultRunExecutor.getRunExecutorInstance();
 
           DefaultActionGroup group = new DefaultActionGroup();
           JPanel consolePanel = new JPanel(new BorderLayout());
-          ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
+          ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUNNER_TOOLBAR, group, false);
           actionToolbar.setTargetComponent(console[0].getComponent());
           consolePanel.add(actionToolbar.getComponent(), BorderLayout.WEST);
           consolePanel.add(console[0].getComponent(), BorderLayout.CENTER);
@@ -122,12 +125,13 @@ public class DeployPlugins_BeforeTask extends BaseMpsBeforeTaskProvider<DeployPl
 
           group.add(ActionManager.getInstance().getAction("Stop"));
           group.addSeparator();
-          group.add(ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB));
+          AnAction pinAction = ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB);
+          group.add(pinAction);
           group.add(new CloseAction(executor, descriptor, projectFinal));
-
           ExecutionManager.getInstance(projectFinal).getContentManager().showRunContent(executor, descriptor);
+          pinAction.actionPerformed(new AnActionEvent(null, actionToolbar.getToolbarDataContext(), ActionPlaces.RUNNER_TOOLBAR, new Presentation(), ActionManager.getInstance(), 0));
         }
-      }, ModalityState.NON_MODAL);
+      }, ModalityState.defaultModalityState());
 
       int exitCode = ProcessHandlerBuilder.startAndWait(process.value);
       if (exitCode != 0) {

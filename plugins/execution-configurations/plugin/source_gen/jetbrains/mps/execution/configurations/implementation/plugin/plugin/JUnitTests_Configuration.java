@@ -41,10 +41,10 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   private static final Logger LOG = LogManager.getLogger(JUnitTests_Configuration.class);
   private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration(this.getProject());
   private JavaRunParameters_Configuration myJavaRunParameters = new JavaRunParameters_Configuration(this.getProject());
-  private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
+  private DeployPluginsSettings_Configuration myDeploySettings = new DeployPluginsSettings_Configuration(this.getProject());
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getJUnitSettings().checkConfiguration(context);
-    this.getPluginsSettings().checkConfiguration(context);
+    this.getDeploySettings().checkConfiguration(context);
   }
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
@@ -59,8 +59,8 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
       element.addContent(fieldElement);
     }
     {
-      Element fieldElement = new Element("myPluginsSettings");
-      myPluginsSettings.writeExternal(fieldElement);
+      Element fieldElement = new Element("myDeploySettings");
+      myDeploySettings.writeExternal(fieldElement);
       element.addContent(fieldElement);
     }
   }
@@ -90,12 +90,12 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
       }
     }
     {
-      Element fieldElement = element.getChild("myPluginsSettings");
+      Element fieldElement = element.getChild("myDeploySettings");
       if (fieldElement != null) {
-        myPluginsSettings.readExternal(fieldElement);
+        myDeploySettings.readExternal(fieldElement);
       } else {
         if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myPluginsSettings" + " in " + this.getClass().getName() + " was null.");
+          LOG.debug("Element " + "myDeploySettings" + " in " + this.getClass().getName() + " was null.");
         }
       }
     }
@@ -106,8 +106,8 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   public JavaRunParameters_Configuration getJavaRunParameters() {
     return myJavaRunParameters;
   }
-  public DeployPluginsSettings_Configuration getPluginsSettings() {
-    return myPluginsSettings;
+  public DeployPluginsSettings_Configuration getDeploySettings() {
+    return myDeploySettings;
   }
   public List<SNodeReference> getTestsToMake() {
     return this.getJUnitSettings().getTestsToMake(ProjectHelper.fromIdeaProject(this.getProject()));
@@ -128,7 +128,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
     JUnitTests_Configuration clone = createCloneTemplate();
     clone.myJUnitSettings = (JUnitSettings_Configuration) myJUnitSettings.clone();
     clone.myJavaRunParameters = (JavaRunParameters_Configuration) myJavaRunParameters.clone();
-    clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
+    clone.myDeploySettings = (DeployPluginsSettings_Configuration) myDeploySettings.clone();
     return clone;
   }
   public JUnitTests_Configuration(Project project, ConfigurationFactory factory, String name) {
@@ -152,7 +152,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
     return (JUnitTests_Configuration) super.clone();
   }
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
-    return new JUnitTests_Configuration_Editor(myJUnitSettings.getEditor(), myJavaRunParameters.getEditor(), myPluginsSettings.getEditor());
+    return new JUnitTests_Configuration_Editor(myJUnitSettings.getEditor(), myJavaRunParameters.getEditor(), myDeploySettings.getEditor());
   }
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
@@ -169,5 +169,8 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   }
   public Object[] createMakeNodePointersTask() {
     return new Object[]{this.getTestsToMake()};
+  }
+  public Object[] createDeployPluginsTask() {
+    return new Object[]{this.getDeploySettings().getPluginsListToDeploy(), this.getJUnitSettings().getPluginsPath()};
   }
 }

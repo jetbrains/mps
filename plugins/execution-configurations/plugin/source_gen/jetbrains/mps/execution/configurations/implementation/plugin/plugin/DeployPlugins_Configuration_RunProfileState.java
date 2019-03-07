@@ -51,7 +51,7 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
   @Nullable
   public ExecutionResult execute(Executor executor, @NotNull ProgramRunner runner) throws ExecutionException {
     Project project = myEnvironment.getProject();
-    final DeployScript script = ScriptsHolder.get(myEnvironment);
+    final DeployScript script = myEnvironment.getUserData(DeployScript.KEY);
     if (script == null) {
       throw new ExecutionException("Could not deploy plugins");
     }
@@ -61,7 +61,7 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
     String deployScriptLocation = script.getDeployScriptLocation();
     if ((deployScriptLocation == null || deployScriptLocation.length() == 0)) {
       script.dispose();
-      ScriptsHolder.remove(myEnvironment);
+      myEnvironment.putUserData(DeployScript.KEY, null);
       throw new ExecutionException("Can not generate deploy script");
     }
 
@@ -101,7 +101,7 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
 
             FileUtil.copyDir(artifacts, myRunConfiguration.getPluginsPath());
             script.dispose();
-            ScriptsHolder.remove(myEnvironment);
+            myEnvironment.putUserData(DeployScript.KEY, null);
 
             if (myRunConfiguration.getRestartCurrentInstance()) {
               ApplicationEx application = (ApplicationEx) ApplicationManager.getApplication();
@@ -112,7 +112,6 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
       });
     } catch (ExecutionException e) {
       script.dispose();
-      ScriptsHolder.remove(myEnvironment);
       throw new ExecutionException("Can not deploy plugins", e);
     }
 

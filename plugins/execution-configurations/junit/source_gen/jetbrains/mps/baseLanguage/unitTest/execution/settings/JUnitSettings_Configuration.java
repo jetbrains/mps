@@ -18,6 +18,7 @@ import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
 import jetbrains.mps.execution.lib.ClonableList;
+import java.io.File;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -135,6 +136,10 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     } else {
       return getDefaultPathForCaches();
     }
+  }
+  public File getPluginsPath() {
+    String configPath = new File(getCachesLocation(), "config").getAbsolutePath();
+    return new File(configPath, "plugins");
   }
   public SModuleReference getModuleReference() {
     if (this.getModuleRef() == null) {

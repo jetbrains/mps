@@ -51,6 +51,7 @@
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="mte5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)" />
     <import index="yctd" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.findUsages(MPS.Core/)" />
+    <import index="ic9i" ref="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1453,6 +1454,53 @@
       </node>
       <node concept="3Tm1VV" id="5dbgjInbZZT" role="1B3o_S" />
     </node>
+    <node concept="yHkHE" id="WN7eTvKI7q" role="yHkHi">
+      <property role="TrG5h" value="getPluginsPath" />
+      <node concept="3uibUv" id="WN7eTvKI7r" role="3clF45">
+        <ref role="3uigEE" to="guwi:~File" resolve="File" />
+      </node>
+      <node concept="3clFbS" id="WN7eTvKI7s" role="3clF47">
+        <node concept="3cpWs8" id="75c$k6X2Ekk" role="3cqZAp">
+          <node concept="3cpWsn" id="75c$k6X2Ekl" role="3cpWs9">
+            <property role="TrG5h" value="configPath" />
+            <node concept="17QB3L" id="75c$k6X2Ekh" role="1tU5fm" />
+            <node concept="2OqwBi" id="75c$k6X2HRK" role="33vP2m">
+              <node concept="2ShNRf" id="75c$k6X2F02" role="2Oq$k0">
+                <node concept="1pGfFk" id="75c$k6X2GDh" role="2ShVmc">
+                  <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
+                  <node concept="2OqwBi" id="75c$k6X2Eko" role="37wK5m">
+                    <node concept="2WthIp" id="75c$k6X2Ekp" role="2Oq$k0" />
+                    <node concept="2XshWL" id="3P4ieJEKvZD" role="2OqNvi">
+                      <ref role="2WH_rO" node="5dbgjInbZ3$" resolve="getCachesLocation" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="75c$k6X2Hs3" role="37wK5m">
+                    <property role="Xl_RC" value="config" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="75c$k6X2IZs" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3KKoaE5KmbB" role="3cqZAp">
+          <node concept="2ShNRf" id="3KKoaE5KkHd" role="3cqZAk">
+            <node concept="1pGfFk" id="3KKoaE5KlVE" role="2ShVmc">
+              <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
+              <node concept="37vLTw" id="75c$k6X2Ekr" role="37wK5m">
+                <ref role="3cqZAo" node="75c$k6X2Ekl" resolve="configPath" />
+              </node>
+              <node concept="Xl_RD" id="3KKoaE5KlXb" role="37wK5m">
+                <property role="Xl_RC" value="plugins" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="WN7eTvKI7F" role="1B3o_S" />
+    </node>
     <node concept="yHkHE" id="4Zh$Fg2VsBA" role="yHkHi">
       <property role="TrG5h" value="getModuleReference" />
       <node concept="3uibUv" id="4Zh$Fg2Vtfv" role="3clF45">
@@ -1704,7 +1752,7 @@
           <node concept="3cpWsn" id="21T7tZA9Gde" role="3cpWs9">
             <property role="TrG5h" value="settings" />
             <property role="3TUv4t" value="true" />
-            <node concept="yHkIc" id="21T7tZA9Gdf" role="1tU5fm">
+            <node concept="yHkIc" id="3P4ieJF1Gtt" role="1tU5fm">
               <ref role="yHkHG" node="5gyVhZ1bm9a" resolve="JUnitSettings" />
             </node>
             <node concept="2WthIp" id="21T7tZA9Gdg" role="33vP2m" />
@@ -6398,7 +6446,7 @@
     <node concept="2tJIrI" id="5LsMheeLBru" role="jymVt" />
     <node concept="3clFb_" id="2MipI7yPTYG" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="attachJavaComponentsAndUpdateInProcessFlag" />
+      <property role="TrG5h" value="attachJavaAndDeployComponentsAndUpdateInProcessFlag" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="2MipI7yPTYH" role="3clF47">
@@ -6424,6 +6472,34 @@
                   <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
                   <node concept="2GrUjf" id="59fG_Y4$e6Y" role="37wK5m">
                     <ref role="2Gs0qQ" node="59fG_Y4$4on" resolve="comp" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2Gpval" id="1T5iP2akpx4" role="3cqZAp">
+          <node concept="2GrKxI" id="1T5iP2akpx5" role="2Gsz3X">
+            <property role="TrG5h" value="comp" />
+          </node>
+          <node concept="2OqwBi" id="1T5iP2akpx6" role="2GsD0m">
+            <node concept="37vLTw" id="1T5iP2akw5e" role="2Oq$k0">
+              <ref role="3cqZAo" node="1T5iP2aa1c8" resolve="deployPanel" />
+            </node>
+            <node concept="liA8E" id="1T5iP2akpx8" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.getComponents():java.awt.Component[]" resolve="getComponents" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="1T5iP2akpx9" role="2LFqv$">
+            <node concept="3clFbF" id="1T5iP2akpxa" role="3cqZAp">
+              <node concept="2OqwBi" id="1T5iP2akpxb" role="3clFbG">
+                <node concept="37vLTw" id="1T5iP2akpxc" role="2Oq$k0">
+                  <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
+                </node>
+                <node concept="liA8E" id="1T5iP2akpxd" role="2OqNvi">
+                  <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
+                  <node concept="2GrUjf" id="1T5iP2akpxe" role="37wK5m">
+                    <ref role="2Gs0qQ" node="1T5iP2akpx5" resolve="comp" />
                   </node>
                 </node>
               </node>
@@ -6522,6 +6598,12 @@
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="2MipI7yPTZ4" role="1tU5fm">
           <ref role="3uigEE" to="go48:v01rbtVlXX" resolve="JavaConfigurationEditorComponent" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1T5iP2aa1c8" role="3clF46">
+        <property role="TrG5h" value="deployPanel" />
+        <node concept="3uibUv" id="1T5iP2ajXdD" role="1tU5fm">
+          <ref role="3uigEE" to="ic9i:1T5iP2aaCPh" resolve="DeployEditorPanel" />
         </node>
       </node>
     </node>

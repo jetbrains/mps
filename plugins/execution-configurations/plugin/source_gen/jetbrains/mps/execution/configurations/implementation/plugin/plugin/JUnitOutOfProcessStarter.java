@@ -5,27 +5,26 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
-import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
 import jetbrains.mps.debug.api.IDebuggerSettings;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
 import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
 import jetbrains.mps.debug.api.EmptyDebuggerSettings;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.JUnit_Command;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
+import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
 import jetbrains.mps.util.test.CachesUtil;
 import com.intellij.openapi.ui.MessageType;
 
 public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
   private final JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0 myStarter0;
 
-  public JUnitOutOfProcessStarter(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitSettings_Configuration jUnitSettings, JavaRunParameters_Configuration javaParams, String toolWindowIdToShowNotifications, IDebuggerSettings debuggerSettings) {
-    myStarter0 = new JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0(project, testNodes, jUnitSettings, javaParams, toolWindowIdToShowNotifications, debuggerSettings);
+  public JUnitOutOfProcessStarter(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitTests_Configuration junitRC, String toolWindowIdToShowNotifications, IDebuggerSettings debuggerSettings) {
+    myStarter0 = new JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0(project, testNodes, junitRC, toolWindowIdToShowNotifications, debuggerSettings);
   }
 
   @Override
@@ -39,47 +38,49 @@ public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
     private final List<ITestNodeWrapper> myTestNodes;
     private final String myHostToolWindowId;
     @NotNull
-    private final JUnitSettings_Configuration myJUnitSettings;
-    private final JavaRunParameters_Configuration myJavaParams;
+    private final JUnitTests_Configuration myJUnitRC;
     private final IDebuggerSettings myDebuggerSettings;
 
-    public JUnitOutOfProcessStarter0(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitSettings_Configuration settings, JavaRunParameters_Configuration javaParams, String toolWindowIdToShowNotifications, IDebuggerSettings debuggerSettings) {
+    public JUnitOutOfProcessStarter0(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitTests_Configuration junitRC, String toolWindowIdToShowNotifications, IDebuggerSettings debuggerSettings) {
       myProject = project;
       myHostToolWindowId = toolWindowIdToShowNotifications;
-      myJUnitSettings = settings;
+      myJUnitRC = (JUnitTests_Configuration) junitRC.clone();
       myDebuggerSettings = debuggerSettings;
-      myJavaParams = javaParams;
       myTestNodes = testNodes;
     }
 
-    public JUnitOutOfProcessStarter0(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitSettings_Configuration settings, JavaRunParameters_Configuration javaParams) {
-      this(project, testNodes, settings, javaParams, null, EmptyDebuggerSettings.getInstance());
+    public JUnitOutOfProcessStarter0(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitTests_Configuration junitRC, JavaRunParameters_Configuration javaParams) {
+      this(project, testNodes, junitRC, null, EmptyDebuggerSettings.getInstance());
     }
 
     public ProcessHandler execute() throws ExecutionException {
-      final boolean dirLock = RunCachesManager.acquireLock(myJUnitSettings.getCachesPath());
-      JavaRunParameters javaParamsUpdated = this.prepareJavaParamsForTests(dirLock);
-      ProcessHandler commandProcess = new JUnit_Command().setProject_Project(myProject).setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myTestNodes, javaParamsUpdated);
+      final boolean dirLock = RunCachesManager.acquireLock(myJUnitRC.getJUnitSettings().getCachesPath());
+      this.prepareJavaParamsForTests(dirLock);
+      ProcessHandler commandProcess = new JUnit_Command().setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myProject, myTestNodes, myJUnitRC);
       commandProcess.addProcessListener(new ProcessAdapter() {
         @Override
         public void processTerminated(ProcessEvent p0) {
           if (dirLock) {
-            RunCachesManager.releaseLock(myJUnitSettings.getCachesPath());
+            RunCachesManager.releaseLock(myJUnitRC.getJUnitSettings().getCachesPath());
           }
         }
       });
       return commandProcess;
     }
 
-    private JavaRunParameters prepareJavaParamsForTests(boolean dirLock) {
-      JavaRunParameters parameters = myJavaParams.getJavaParameters().clone();
+    /**
+     * awful, transfer to the junit command
+     * mutates the field myJUnitRC (which is clone, so it is ok)
+     */
+    private void prepareJavaParamsForTests(boolean dirLock) {
+      JavaRunParameters parameters = myJUnitRC.getJavaRunParameters().getJavaParameters();
       String vmFromJava = parameters.getVmOptions();
       if (vmFromJava == null) {
         vmFromJava = "";
       }
       String runIdString;
-      String cachesString = "=\"" + myJUnitSettings.getCachesPath() + "\"";
-      if (myJUnitSettings.getReuseCaches()) {
+      String cachesString = "=\"" + myJUnitRC.getJUnitSettings().getCachesPath() + "\"";
+      if (myJUnitRC.getJUnitSettings().getReuseCaches()) {
         if (dirLock) {
           runIdString = "-D" + CachesUtil.REUSE_CACHES_DIR + cachesString;
         } else {
@@ -96,7 +97,6 @@ public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
         }
       }
       parameters.setVmOptions(vmFromJava + " " + runIdString);
-      return parameters;
     }
 
     private void showWarning() {

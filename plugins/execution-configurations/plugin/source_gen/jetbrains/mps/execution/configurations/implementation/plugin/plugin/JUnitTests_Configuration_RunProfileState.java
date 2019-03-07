@@ -22,7 +22,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
-import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.baseLanguage.unitTest.execution.tool.UnitTestViewComponent;
 import com.intellij.execution.process.ProcessListener;
@@ -66,10 +65,10 @@ public class JUnitTests_Configuration_RunProfileState extends DebuggerRunProfile
     TestRunState runState = new TestRunState(testNodes);
     JUnitProcessStarter processExecutor;
     if (junitParams.canExecuteInProcess(testNodes)) {
-      JUnitTests_Configuration configuration = myRunConfiguration;
-      processExecutor = new JUnitInProcessRunStarter(mpsProject, ((BaseMpsRunConfiguration) configuration).getName(), testNodes);
+      processExecutor = new JUnitInProcessRunStarter(mpsProject, myRunConfiguration, testNodes);
     } else {
-      processExecutor = new JUnitOutOfProcessStarter(mpsProject, testNodes, junitParams, myRunConfiguration.getJavaRunParameters(), executor.getId(), myDebuggerSettings);
+      JUnitTests_Configuration configuration = myRunConfiguration;
+      processExecutor = new JUnitOutOfProcessStarter(mpsProject, testNodes, configuration, executor.getId(), myDebuggerSettings);
     }
     ProcessHandler process = processExecutor.execute();
     final UnitTestViewComponent testViewComponent = myRunConfiguration.createTestViewComponent(runState, process);

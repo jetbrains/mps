@@ -8,10 +8,22 @@ import jetbrains.mps.project.Project;
 import java.io.File;
 import com.intellij.execution.process.ProcessHandler;
 import java.util.List;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
+import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
 import com.intellij.execution.ExecutionException;
-import org.apache.log4j.Level;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import java.util.StringJoiner;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
+import org.apache.log4j.Level;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -37,7 +49,6 @@ import org.jdom.Document;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.LinkedList;
@@ -53,22 +64,22 @@ import jetbrains.mps.debug.api.Debuggers;
 
 public class JUnit_Command {
   private static final Logger LOG = LogManager.getLogger(JUnit_Command.class);
-  private Project myProject_Project;
   private String myDebuggerSettings_String;
+  private Project myProject_Project;
   private String myVirtualMachineParameter_String;
   private String myJrePath_String;
   private File myWorkingDirectory_File = new File(".");
   public JUnit_Command() {
   }
-  public JUnit_Command setProject_Project(Project project) {
-    if (project != null) {
-      myProject_Project = project;
-    }
-    return this;
-  }
   public JUnit_Command setDebuggerSettings_String(String debuggerSettings) {
     if (debuggerSettings != null) {
       myDebuggerSettings_String = debuggerSettings;
+    }
+    return this;
+  }
+  public JUnit_Command setProject_Project(Project project) {
+    if (project != null) {
+      myProject_Project = project;
     }
     return this;
   }
@@ -91,13 +102,43 @@ public class JUnit_Command {
     return this;
   }
 
+  public ProcessHandler createProcess(final Project project, List<ITestNodeWrapper> tests, JUnitTests_Configuration junitRC) throws ExecutionException {
+    final List<SNodeReference> pluginList = junitRC.getDeploySettings().getPluginsListToDeploy();
+    ModelAccessHelper access = new ModelAccessHelper(project.getModelAccess());
+    List<String> pluginIds = access.runWriteAction(new Computable<IListSequence<String>>() {
+      public IListSequence<String> compute() {
+        return ListSequence.fromList(pluginList).select(new ISelector<SNodeReference, SNode>() {
+          public SNode select(SNodeReference it) {
+            return it.resolve(project.getRepository());
+          }
+        }).ofType(SNode.class).select(new ISelector<SNode, String>() {
+          public String select(SNode it) {
+            return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id"));
+          }
+        }).toListSequence();
+      }
+    });
+    if (ListSequence.fromList(pluginIds).isNotEmpty()) {
+      String ideaLoadPluginsIdString = "-Didea.load.plugins.id=\"";
+      final StringJoiner joiner = new StringJoiner(",");
+      ListSequence.fromList(pluginIds).visitAll(new IVisitor<String>() {
+        public void visit(String it) {
+          joiner.add(it);
+        }
+      });
+      ideaLoadPluginsIdString += joiner.toString() + "\"";
+      JavaRunParameters parameters = junitRC.getJavaRunParameters().getJavaParameters();
+      parameters.vmOptions(parameters.vmOptions() + " " + ideaLoadPluginsIdString);
+    }
+    return new JUnit_Command().setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(tests, junitRC.getJavaRunParameters().getJavaParameters());
+  }
   public ProcessHandler createProcess(List<ITestNodeWrapper> tests, JavaRunParameters javaRunParameters) throws ExecutionException {
     if (myProject_Project == null) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("This is deprecated (since MPS 2018.3) way to execute JUnit tests, please refactor", new Throwable());
       }
     }
-    return new JUnit_Command().setProject_Project(myProject_Project).setVirtualMachineParameter_String(check_txeh3_a2a1a0a(javaRunParameters)).setJrePath_String((check_txeh3_a0d0b0a0(javaRunParameters) ? javaRunParameters.jrePath() : null)).setWorkingDirectory_File((isEmptyString(check_txeh3_a0a4a1a0a(javaRunParameters)) ? null : new File(javaRunParameters.workingDirectory()))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(tests);
+    return new JUnit_Command().setProject_Project(myProject_Project).setVirtualMachineParameter_String(check_txeh3_a2a1a0b(javaRunParameters)).setJrePath_String((check_txeh3_a0d0b0a1(javaRunParameters) ? javaRunParameters.jrePath() : null)).setWorkingDirectory_File((isEmptyString(check_txeh3_a0a4a1a0b(javaRunParameters)) ? null : new File(javaRunParameters.workingDirectory()))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(tests);
   }
   public ProcessHandler createProcess(List<ITestNodeWrapper> tests) throws ExecutionException {
     if (myProject_Project == null) {
@@ -377,19 +418,19 @@ public class JUnit_Command {
       }
     };
   }
-  private static String check_txeh3_a2a1a0a(JavaRunParameters checkedDotOperand) {
+  private static String check_txeh3_a2a1a0b(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.vmOptions();
     }
     return null;
   }
-  private static boolean check_txeh3_a0d0b0a0(JavaRunParameters checkedDotOperand) {
+  private static boolean check_txeh3_a0d0b0a1(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return (boolean) checkedDotOperand.useAlternativeJre();
     }
     return false;
   }
-  private static String check_txeh3_a0a4a1a0a(JavaRunParameters checkedDotOperand) {
+  private static String check_txeh3_a0a4a1a0b(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.workingDirectory();
     }

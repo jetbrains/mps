@@ -4,6 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import java.util.concurrent.TimeUnit;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsContributor;
 import jetbrains.mps.lang.test.util.TestInProcessRunState;
 import org.jetbrains.annotations.NotNull;
@@ -27,13 +28,13 @@ import com.intellij.execution.process.ProcessOutputTypes;
 
 public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   private static final Logger LOG = LogManager.getLogger(JUnitInProcessRunStarter.class);
-  private static final int MSECS_TO_WAIT_FOR_START = 50 * 1000;
+  private static final int MSECS_TO_WAIT_FOR_START = (int) TimeUnit.SECONDS.toMillis(50);
   private final NodeWrappersTestsContributor myTestsContributor;
   private final FakeProcess myFakeProcess = new FakeProcess();
   private final TestInProcessRunState myTestRunState;
 
-  public JUnitInProcessRunStarter(@NotNull Project mpsProject, @NotNull String runConfigurationName, Iterable<ITestNodeWrapper> testNodeWrappers) {
-    myTestsContributor = new NodeWrappersTestsContributor((MPSProject) mpsProject, runConfigurationName, testNodeWrappers);
+  public JUnitInProcessRunStarter(@NotNull Project mpsProject, @NotNull JUnitTests_Configuration runConfiguration, Iterable<ITestNodeWrapper> testNodeWrappers) {
+    myTestsContributor = new NodeWrappersTestsContributor((MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers);
     myTestRunState = TestInProcessRunState.getInstance();
   }
 

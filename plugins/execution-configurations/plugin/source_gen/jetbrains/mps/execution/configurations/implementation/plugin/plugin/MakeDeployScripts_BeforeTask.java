@@ -17,7 +17,7 @@ import com.intellij.openapi.application.ModalityState;
 public class MakeDeployScripts_BeforeTask extends BaseMpsBeforeTaskProvider<MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask> {
   private static final Key<MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.implementation.plugin.plugin.MakeDeployScripts_BeforeTask");
   public MakeDeployScripts_BeforeTask() {
-    super("Make deploy scripts", "Make deploy scripts");
+    super("Make deploy scripts", "Make Deploy Scripts");
   }
   protected MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask createTaskImpl() {
     return new MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask();
@@ -50,15 +50,14 @@ public class MakeDeployScripts_BeforeTask extends BaseMpsBeforeTaskProvider<Make
             }
           });
         }
-      }, ModalityState.NON_MODAL);
+      }, ModalityState.defaultModalityState());
 
       String deployScriptLocation = script.value.make();
       if ((deployScriptLocation == null || deployScriptLocation.length() == 0)) {
         script.value.dispose();
         return false;
       }
-
-      ScriptsHolder.put(environment, script.value);
+      environment.putUserData(DeployScript.KEY, script.value);
 
       return true;
     }

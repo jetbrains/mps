@@ -105,9 +105,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       ListSequence.fromList(toRemove).addElement(element);
     } else {
       for (Element child : ListSequence.fromList(element.getChildren())) {
-        if (child instanceof Element) {
-          removeLanguageLibraries((Element) child, project, toRemove);
-        }
+        removeLanguageLibraries((Element) child, project, toRemove);
       }
     }
   }

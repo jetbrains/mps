@@ -4,48 +4,33 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import org.jetbrains.annotations.NotNull;
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.ide.common.LayoutUtil;
 import com.intellij.openapi.options.ConfigurationException;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.execution.lib.PointerUtils;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Factory;
 
 public class DeployPluginsSettings_Configuration_Editor extends SettingsEditorEx<DeployPluginsSettings_Configuration> {
-  private PluginsListPanel myPluginsPanel;
+  private DeployEditorPanel myEditor;
   public void disposeEditor() {
+    myEditor.dispose();
   }
   @NotNull
-  public JPanel createEditor() {
-    JPanel panel = new JPanel(new GridBagLayout());
-    myPluginsPanel = new PluginsListPanel(myp);
-    myPluginsPanel.setData(ListSequence.fromList(new ArrayList<SNodeReference>()));
-    panel.add(myPluginsPanel, LayoutUtil.createPanelConstraints(0));
-    return panel;
+  public DeployEditorPanel createEditor() {
+    myEditor = new DeployEditorPanel(myProject);
+    return myEditor;
   }
   public void applyEditorTo(final DeployPluginsSettings_Configuration configuration) throws ConfigurationException {
-    configuration.getPluginsToDeploy().clear();
-    ListSequence.fromList(configuration.getPluginsToDeploy().getData()).addSequence(ListSequence.fromList(myPluginsPanel.getItems()).select(new ISelector<SNodeReference, String>() {
-      public String select(SNodeReference it) {
-        return PointerUtils.pointerToString(it);
-      }
-    }));
+    myEditor.apply(configuration);
   }
   public void resetEditorFrom(final DeployPluginsSettings_Configuration configuration) {
-    myPluginsPanel.setData(PointerUtils.clonableListToNodes(configuration.getPluginsToDeploy()));
+    myEditor.reset(configuration);
   }
-  private Project myp;
-  public DeployPluginsSettings_Configuration_Editor(final Project p) {
+  private Project myProject;
+  public DeployPluginsSettings_Configuration_Editor(final Project project) {
     super(new Factory<DeployPluginsSettings_Configuration>() {
       public DeployPluginsSettings_Configuration create() {
-        return new DeployPluginsSettings_Configuration(p);
+        return new DeployPluginsSettings_Configuration(project);
       }
     });
-    myp = p;
+    myProject = project;
   }
 }

@@ -23,6 +23,7 @@ import jetbrains.mps.ide.common.LayoutUtil;
 import com.intellij.ui.components.JBTextField;
 import javax.swing.Box;
 import jetbrains.mps.baseLanguage.execution.api.JavaConfigurationEditorComponent;
+import jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel;
 import java.awt.Component;
 import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
@@ -174,8 +175,11 @@ public class JUnitConfigurationEditorComponent extends JBPanel {
     myCachesDir.setEnabled(myOverrideCachesCheckBox.isSelected() & !(myInProcessCheckBox.isSelected()));
   }
 
-  public void attachJavaComponentsAndUpdateInProcessFlag(final JavaConfigurationEditorComponent javaEditorComponent) {
+  public void attachJavaAndDeployComponentsAndUpdateInProcessFlag(final JavaConfigurationEditorComponent javaEditorComponent, DeployEditorPanel deployPanel) {
     for (Component comp : javaEditorComponent.getComponents()) {
+      myInProcessCheckBox.registerDisableIffSelectedUpdater(comp);
+    }
+    for (Component comp : deployPanel.getComponents()) {
       myInProcessCheckBox.registerDisableIffSelectedUpdater(comp);
     }
     myInProcessCheckBox.registerDisableIffSelectedUpdater(myReuseCachesCheckBox);

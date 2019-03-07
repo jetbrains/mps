@@ -14,7 +14,24 @@
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode extendsClassName="jetbrains.mps.plugins.part.ProjectPluginPart" />
   </dependency>
+  <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="java.awt.GridBagLayout" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPluginsSettings_Configuration" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.PluginsListPanel" />
+    <classNode dependClassName="jetbrains.mps.execution.lib.ClonableList" />
+    <classNode dependClassName="jetbrains.mps.execution.lib.PointerUtils" />
+    <classNode dependClassName="jetbrains.mps.ide.common.LayoutUtil" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
+    <classNode extendsClassName="com.intellij.ui.components.JBPanel" />
+  </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPluginsSettings_Configuration">
+    <classNode dependClassName="com.intellij.execution.configurations.RuntimeConfigurationError" />
     <classNode dependClassName="com.intellij.execution.configurations.RuntimeConfigurationException" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.util.InvalidDataException" />
@@ -23,12 +40,17 @@
     <classNode dependClassName="java.lang.CloneNotSupportedException" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.execution.api.settings.PersistentConfigurationContext" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPluginsSettings_Configuration_Editor" />
     <classNode dependClassName="jetbrains.mps.execution.lib.ClonableList" />
     <classNode dependClassName="jetbrains.mps.execution.lib.PointerUtils" />
+    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
@@ -41,18 +63,9 @@
     <classNode dependClassName="com.intellij.openapi.options.ConfigurationException" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.util.Factory" />
-    <classNode dependClassName="java.awt.GridBagLayout" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="javax.swing.JPanel" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPluginsSettings_Configuration" />
-    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.PluginsListPanel" />
-    <classNode dependClassName="jetbrains.mps.execution.lib.PointerUtils" />
-    <classNode dependClassName="jetbrains.mps.ide.common.LayoutUtil" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode extendsClassName="jetbrains.mps.execution.api.settings.SettingsEditorEx" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPlugins_BeforeTask">
@@ -68,8 +81,11 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionManager" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionPlaces" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionToolbar" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnAction" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.DefaultActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.IdeActions" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.Presentation" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
@@ -178,7 +194,6 @@
     <classNode dependClassName="jetbrains.mps.execution.api.configurations.DefaultExecutionResult" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPlugins_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript" />
-    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ScriptsHolder" />
     <classNode dependClassName="jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter" />
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.util.JDOMUtil" />
@@ -189,6 +204,7 @@
     <classNode extendsClassName="com.intellij.execution.configurations.RunProfileState" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript">
+    <classNode dependClassName="com.intellij.openapi.util.Key" />
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.InterruptedException" />
@@ -239,6 +255,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScriptCreator">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Object" />
@@ -256,6 +273,8 @@
     <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
+    <classNode dependClassName="jetbrains.mps.vfs.path.Path" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
@@ -315,6 +334,7 @@
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.concurrent.Future" />
+    <classNode dependClassName="java.util.concurrent.TimeUnit" />
     <classNode dependClassName="jetbrains.mps.RuntimeFlags" />
     <classNode dependClassName="jetbrains.mps.TestMode" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
@@ -323,6 +343,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsContributor" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.FakeProcess" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.FakeProcessHandler" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration" />
     <classNode dependClassName="jetbrains.mps.lang.test.util.RunStateEnum" />
     <classNode dependClassName="jetbrains.mps.lang.test.util.TestInProcessRunState" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
@@ -348,9 +369,9 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.JUnit_Command" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration" />
     <classNode dependClassName="jetbrains.mps.debug.api.EmptyDebuggerSettings" />
     <classNode dependClassName="jetbrains.mps.debug.api.IDebuggerSettings" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestsUIUtil" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.util.test.CachesUtil" />
@@ -415,6 +436,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitConfigurationEditorComponent" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration_Editor" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPluginsSettings_Configuration_Editor" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration" />
     <classNode dependClassName="jetbrains.mps.ide.common.LayoutUtil" />
@@ -447,7 +469,6 @@
     <classNode dependClassName="jetbrains.mps.debug.api.IDebuggerSettings" />
     <classNode dependClassName="jetbrains.mps.debug.api.run.IDebuggerConfiguration" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.settings.LocalConnectionSettings" />
-    <classNode dependClassName="jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration" />
     <classNode dependClassName="jetbrains.mps.execution.api.configurations.DefaultExecutionConsole" />
     <classNode dependClassName="jetbrains.mps.execution.api.configurations.DefaultExecutionResult" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitInProcessRunStarter" />
@@ -712,7 +733,6 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript" />
-    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ScriptsHolder" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
@@ -974,16 +994,6 @@
     <classNode dependClassName="jetbrains.mps.icons.MPSIcons" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.plugins.part.ApplicationPluginPart" />
-  </dependency>
-  <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ScriptsHolder">
-    <classNode dependClassName="com.intellij.execution.runners.ExecutionEnvironment" />
-    <classNode dependClassName="java.lang.Long" />
-    <classNode dependClassName="java.util.HashMap" />
-    <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestsUIUtil">
     <classNode dependClassName="com.intellij.openapi.project.Project" />

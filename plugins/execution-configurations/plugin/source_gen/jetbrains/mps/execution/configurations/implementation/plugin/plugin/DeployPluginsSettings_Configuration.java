@@ -8,13 +8,18 @@ import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
+import java.util.List;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.execution.configurations.RuntimeConfigurationError;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
 import jetbrains.mps.execution.lib.ClonableList;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.execution.lib.PointerUtils;
 import org.apache.log4j.Level;
 import com.intellij.openapi.project.Project;
@@ -24,6 +29,22 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
   @NotNull
   private DeployPluginsSettings_Configuration.MyState myState = new DeployPluginsSettings_Configuration.MyState();
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
+    final List<SNodeReference> nodeRefList = getPluginsListToDeploy();
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    final Wrappers._T<SNodeReference> notResolvedPlugin = new Wrappers._T<SNodeReference>(null);
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        for (SNodeReference pluginRef : ListSequence.fromList(nodeRefList)) {
+          if (pluginRef.resolve(mpsProject.getRepository()) == null) {
+            notResolvedPlugin.value = pluginRef;
+            break;
+          }
+        }
+      }
+    });
+    if (notResolvedPlugin.value != null) {
+      throw new RuntimeConfigurationError("The plugin " + notResolvedPlugin.value + " is not found in the project");
+    }
   }
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
@@ -72,14 +93,14 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
       return state;
     }
   }
-  public DeployPluginsSettings_Configuration(Project p) {
-    myp = p;
+  public DeployPluginsSettings_Configuration(Project project) {
+    myProject = project;
   }
-  private final Project myp;
+  private final Project myProject;
   public DeployPluginsSettings_Configuration createCloneTemplate() {
-    return new DeployPluginsSettings_Configuration(myp);
+    return new DeployPluginsSettings_Configuration(myProject);
   }
   public DeployPluginsSettings_Configuration_Editor getEditor() {
-    return new DeployPluginsSettings_Configuration_Editor(myp);
+    return new DeployPluginsSettings_Configuration_Editor(myProject);
   }
 }

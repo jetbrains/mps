@@ -50,6 +50,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.ModuleChooser" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.TestListPanel" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.TestUtils" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel" />
     <classNode dependClassName="jetbrains.mps.execution.lib.ClonableList" />
     <classNode dependClassName="jetbrains.mps.execution.lib.PointerUtils" />
     <classNode dependClassName="jetbrains.mps.execution.lib.ui.FieldWithPathChooseDialog" />
@@ -111,6 +112,7 @@
     <classNode dependClassName="com.intellij.openapi.util.InvalidDataException" />
     <classNode dependClassName="com.intellij.openapi.util.WriteExternalException" />
     <classNode dependClassName="com.intellij.util.xmlb.XmlSerializer" />
+    <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.CloneNotSupportedException" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Object" />
