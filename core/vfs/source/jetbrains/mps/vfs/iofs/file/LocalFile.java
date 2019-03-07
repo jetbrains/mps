@@ -55,7 +55,7 @@ class LocalFile implements IFile {
   LocalFile(@NotNull String path, IFileSystem fileSystem) {
     myPath = path;
     myFileSystem = fileSystem;
-    myFile = new File(PathUtil.toSystemDependentName(path));
+    myFile = new File(PathUtil.toSystemDependent(path));
   }
 
   @NotNull

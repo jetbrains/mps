@@ -29,7 +29,7 @@ public class PathUtil {
   }
 
   @NotNull
-  public static String toSystemDependentName(@NotNull String path) {
+  public static String toSystemDependent(@NotNull String path) {
     String result = path.replace(IFileSystem.SEPARATOR, File.separator);
     new PathAssert(result).osDependentPath();
     return result;
