@@ -9,6 +9,8 @@ import jetbrains.mps.lang.editor.menus.MenuPart;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
+import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.IncludeSubstituteMenuSubstituteMenuPart;
@@ -18,7 +20,13 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.editor.menus.substitute.WrapperSubstituteMenuPart;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuItemWrapper;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
   @NotNull
@@ -29,6 +37,7 @@ public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
     result.add(new NodeBuilderInitLink_Menu.SMP_Include_5gak4t_b());
     result.add(new NodeBuilderInitLink_Menu.SMP_Include_5gak4t_c());
     result.add(new NodeBuilderInitLink_Menu.SMP_Include_5gak4t_d());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new NodeBuilderInitLink_Menu.SMP_Wrap_5gak4t_e(), MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression")));
     return result;
   }
 
@@ -140,5 +149,62 @@ public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
       return MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
     }
+  }
+  private class SMP_Wrap_5gak4t_e extends WrapperSubstituteMenuPart {
+    @NotNull
+    @Override
+    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "NullLiteral", new SNodePointer("r:00000000-0000-4000-0000-011c89590349(jetbrains.mps.lang.quotation.editor)", "6511867472298489813")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @NotNull
+    @Override
+    protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
+      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
+      return new SubstituteMenuItemWrapper(item) {
+        private SNode myCreatedNode;
+
+        @Nullable
+        @Override
+        public SAbstractConcept getOutputConcept() {
+          return MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
+        }
+        @Nullable
+        @Override
+        public SNode createNode(@NotNull String pattern) {
+          SNode nodeToWrap = super.createNode(pattern);
+          myCreatedNode = nodeToWrap;
+          return createNodeBuilderExpression_5gak4t_a0a0e(nodeToWrap);
+        }
+        @Override
+        public void select(@NotNull SNode createdNode, @NotNull String pattern) {
+          super.select(myCreatedNode, pattern);
+        }
+      };
+    }
+    @Nullable
+    @Override
+    protected SubstituteMenuLookup getLookup(SubstituteMenuContext _context) {
+      final EditorContext editorContext = _context.getEditorContext();
+      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+    }
+    private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
+      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
+    }
+  }
+  private static SNode createNodeBuilderExpression_5gak4t_a0a0e(SNode node0) {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression"), null, null, false);
+    if (node0 != null) {
+      n1.addChild(MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, 0x718e3f4cb7a31330L, "expression"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))));
+    }
+    return n1;
   }
 }
