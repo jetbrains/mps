@@ -24,7 +24,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 public class ModelCheckerBuilder {
   private static final Logger LOG = LogManager.getLogger(ModelCheckerBuilder.class);
@@ -167,7 +166,7 @@ public class ModelCheckerBuilder {
     };
   }
 
-  public static <O> IAbstractChecker<O, IssueKindReportItem> wrapWithFiltering(IAbstractChecker<O, ? extends IssueKindReportItem> specificChecker, String checkerName) {
+  public static <O> IAbstractChecker<O, IssueKindReportItem> wrapWithFiltering(IAbstractChecker<O, ? extends IssueKindReportItem> specificChecker) {
     return new FilteringChecker<O, IssueKindReportItem>(specificChecker, new _FunctionTypes._return_P2_E0<Boolean, IssueKindReportItem, SRepository>() {
       public Boolean invoke(IssueKindReportItem item, SRepository repository) {
         if (item instanceof NodeReportItem) {
@@ -196,15 +195,11 @@ public class ModelCheckerBuilder {
   }
 
   public static <O> IAbstractChecker<O, IssueKindReportItem> aggreagateSpecificCheckers(@NotNull List<IChecker<O, ? extends IssueKindReportItem>> specificCheckers, final _FunctionTypes._return_P1_E0<? extends String, ? super O> getFqName) {
-    AggregatingChecker<O, IssueKindReportItem> aggregation = new AggregatingChecker<O, IssueKindReportItem>(ListSequence.fromList(specificCheckers).select(new ISelector<IChecker<O, ? extends IssueKindReportItem>, CatchingChecker<O, IssueKindReportItem>>() {
-      public CatchingChecker<O, IssueKindReportItem> select(IChecker<O, ? extends IssueKindReportItem> specificChecker) {
-        return new CatchingChecker<O, IssueKindReportItem>(wrapWithFiltering(new CategoryShowingChecker<O, IssueKindReportItem>(specificChecker), specificChecker.toString()), new _FunctionTypes._return_P3_E0<String, O, Exception, SRepository>() {
-          public String invoke(O m, Exception e, SRepository repository) {
-            return "Exception while checking model " + getFqName.invoke(m);
-          }
-        });
+    AggregatingChecker<O, IssueKindReportItem> aggregation = new AggregatingChecker<O, IssueKindReportItem>(specificCheckers, getFqName);
+    return new CatchingChecker<O, IssueKindReportItem>(aggregation, new _FunctionTypes._return_P3_E0<String, O, Exception, SRepository>() {
+      public String invoke(O m, Exception e, SRepository repository) {
+        return "Exception while checking model " + getFqName.invoke(m);
       }
-    }).toListSequence(), getFqName);
-    return aggregation;
+    });
   }
 }

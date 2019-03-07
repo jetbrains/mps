@@ -22,7 +22,7 @@ public interface IPostprocessChecker<O, I extends IssueKindReportItem> extends I
    * 
    * @return whether error should be shown
    */
-  boolean postProcess(O toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor, I foundError, Map<O, Collection<? extends I>> allFoundErrors);
+  boolean postProcess(O toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor, IssueKindReportItem foundError, Map<O, ? extends Collection<? extends IssueKindReportItem>> allFoundErrors);
 
 
   class SuppressErrorsChecker extends AbstractNodeCheckerInEditor implements IPostprocessChecker<SNode, NodeReportItem> {
@@ -35,8 +35,12 @@ public interface IPostprocessChecker<O, I extends IssueKindReportItem> extends I
       // do nothing 
     }
     @Override
-    public boolean postProcess(SNode toCheck, SRepository repository, Consumer<? super NodeReportItem> errorCollector, ProgressMonitor monitor, NodeReportItem foundError, Map<SNode, Collection<? extends NodeReportItem>> allFoundErrors) {
-      return ErrorReportUtil.shouldReportError(foundError, repository);
+    public boolean postProcess(SNode toCheck, SRepository repository, Consumer<? super NodeReportItem> errorCollector, ProgressMonitor monitor, IssueKindReportItem foundError, Map<SNode, ? extends Collection<? extends IssueKindReportItem>> allFoundErrors) {
+      if (foundError instanceof NodeReportItem) {
+        return ErrorReportUtil.shouldReportError((NodeReportItem) foundError, repository);
+      } else {
+        return true;
+      }
     }
   }
 
