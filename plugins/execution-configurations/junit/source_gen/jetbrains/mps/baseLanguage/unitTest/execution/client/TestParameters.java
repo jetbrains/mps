@@ -62,6 +62,9 @@ public final class TestParameters {
     return ListSequence.fromList(myClassPath).asUnmodifiable();
   }
 
+  /**
+   * that will go away as soon as I extract the BTestCase run configuration from JUnit RC
+   */
   public boolean comprises(@NotNull TestParameters other) {
     if (this == other) {
       return true;

@@ -36,21 +36,27 @@ public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeN
   public MakeNodePointers_BeforeTask() {
     super("MakeNodePointers", "Make");
   }
+
   protected MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask createTaskImpl() {
     return new MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask();
   }
+
   public Key<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> getId() {
     return KEY;
   }
+
   public static class MakeNodePointers_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> {
     private List<SNodeReference> myNodePointers;
+
     public MakeNodePointers_BeforeTask_RunTask() {
       super(KEY);
     }
+
     public boolean configure(List<SNodeReference> nodePointers) {
       myNodePointers = nodePointers;
       return true;
     }
+
     public boolean execute(Project project, ExecutionEnvironment environment) {
       final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
       List<IResource> resources = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<List<IResource>>() {
