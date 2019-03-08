@@ -138,14 +138,15 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
     }
   }
 
-  public SModel getModelByModule(SModule module) {
+  @Nullable
+  public SModel getModelByModule(@Nullable SModule module) {
     myRepository.getModelAccess().checkReadAccess();
     if (module == null) {
       return null;
     }
     SModelReference ref = getSModelReference(module);
     ProjectStructureModule.ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
-    return (descriptor == null ? null : descriptor);
+    return descriptor;
   }
 
   @Override

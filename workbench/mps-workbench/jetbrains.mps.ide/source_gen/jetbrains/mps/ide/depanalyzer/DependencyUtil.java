@@ -16,9 +16,9 @@ import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -89,8 +89,8 @@ public class DependencyUtil {
           }
         }
         if (module instanceof Generator) {
-          Language srcLang = ((Generator) module).getSourceLanguage();
-          ListSequence.fromList(result).addElement(new DepLink(srcLang.getModuleReference(), DependencyUtil.Role.SourceLanguage, DependencyUtil.LinkType.GeneratorLanguage));
+          SLanguage srcLang = ((Generator) module).sourceLanguage();
+          ListSequence.fromList(result).addElement(new DepLink(srcLang.getSourceModuleReference(), DependencyUtil.Role.SourceLanguage, DependencyUtil.LinkType.GeneratorLanguage));
         }
         break;
 
@@ -156,7 +156,7 @@ public class DependencyUtil {
           addUsedLanguagesAndDevkitsOf(module, result, false);
         }
         if (module instanceof Generator) {
-          ListSequence.fromList(result).addElement(new DepLink((as_he47wm_a0a0a0a0a0a1a6d0g(module, Generator.class)).getSourceLanguage().getModuleReference(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.GeneratorLanguage));
+          ListSequence.fromList(result).addElement(new DepLink((as_he47wm_a0a0a0a0a0a1a6d0g(module, Generator.class)).sourceLanguage().getSourceModuleReference(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.GeneratorLanguage));
         }
         break;
 

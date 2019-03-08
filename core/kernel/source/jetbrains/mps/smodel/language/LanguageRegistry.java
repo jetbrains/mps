@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -218,7 +218,7 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
    * generated code.
    */
   private GeneratorRuntime createRuntime(Generator g) {
-    Language sourceLanguage = g.getSourceLanguage();
+    SLanguage sourceLanguage = g.sourceLanguage();
     // A bit of history. The need for activator class name arise when we generate a code from a Generator module and load it at runtime.
     // First, there were no activators at all. Then, activators for generator modules with 'generated' templates were introduced.
     // They resorted to g.getSourceLanguage().getModuleName() + ".Generator", likely, not to deal with '#' in generator module name, and the fact
@@ -254,7 +254,7 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         final Class<? extends GeneratorRuntime> aClass = rtClass.asSubclass(GeneratorRuntime.class);
         final LanguageRuntime sourceLanguageRuntime = getLanguage(sourceLanguage);
         if (sourceLanguageRuntime == null) {
-          throw new InstantiationException(String.format("Could not find language runtime for %s to attach generator %s to", sourceLanguage.getModuleName(),
+          throw new InstantiationException(String.format("Could not find language runtime for %s to attach generator %s to", sourceLanguage.getQualifiedName(),
               g.getModuleName()));
         }
         Constructor<?>[] allConstructors = aClass.getConstructors();

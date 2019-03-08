@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
@@ -122,15 +123,15 @@ public class CachedDefaultModelRoot extends ModelRootBase {
   @NotNull
   @Override
   public Iterable<SModel> loadModels() {
-    SModule module = getModule();
-    if (module instanceof Generator) {
-      module = ((Generator) module).getSourceLanguage();
+    SModuleReference module = null;
+    if (getModule() instanceof Generator) {
+      module = ((Generator) getModule()).sourceLanguage().getSourceModuleReference();
     }
     if (module == null) {
       return myDelegate.loadModels();
     }
 
-    CachedModuleData moduleData = myCachedRepository.getModuleData(module.getModuleReference());
+    CachedModuleData moduleData = myCachedRepository.getModuleData(module);
     if (moduleData == null) {
       return myDelegate.loadModels();
     }

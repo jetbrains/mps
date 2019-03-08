@@ -10,6 +10,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
@@ -34,23 +35,19 @@ public class ConceptEditorOpenHelper {
     // We should be sure that node and base node are inside the same module.  
     // Otherwise, tabbed editor for base node will be opened, but there will be no tab for "node" 
     // So, the user will not be able to open node by a double-click 
-    SModel baseModelDesIcriptor = SNodeOperations.getModel(baseNode);
+    SModel baseModelDescriptor = SNodeOperations.getModel(baseNode);
     SModel mainModelDescriptor = SNodeOperations.getModel(node);
     if (mainModelDescriptor == null) {
       return null;
     }
-    SModule baseModule = baseModelDesIcriptor.getModule();
+    SModule baseModule = baseModelDescriptor.getModule();
     SModule mainModule = mainModelDescriptor.getModule();
     if (mainModule instanceof Generator) {
-      mainModule = ((Generator) mainModule).getSourceLanguage();
+      SModuleReference mainModuleRef = ((Generator) mainModule).sourceLanguage().getSourceModuleReference();
+      return ((baseModule != null && mainModuleRef.equals(baseModule.getModuleReference())) && canOpen(baseNode) ? baseNode : null);
+    } else {
+      return (baseModule == mainModule && canOpen(baseNode) ? baseNode : null);
     }
-    if (baseModule != mainModule) {
-      return null;
-    }
-    if (!(canOpen(baseNode))) {
-      return null;
-    }
-    return baseNode;
   }
   private static SNode getBaseNode2(SNode node) {
     if (node == null) {
@@ -73,9 +70,8 @@ public class ConceptEditorOpenHelper {
   }
   private static SNode findBaseNodeMultiTab(SNode node) {
     SNode baseNode = null;
-    if (jetbrains.mps.util.SNodeOperations.isRoot(node) && SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"))) {
-      SNode bc = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
-      SNode annotation = AttributeOperations.getAttribute(bc, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")));
+    if (jetbrains.mps.util.SNodeOperations.isRoot(node)) {
+      SNode annotation = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")));
       if ((annotation != null) && (SLinkOperations.getTarget(annotation, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept")) != null)) {
         baseNode = SLinkOperations.getTarget(annotation, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept"));
       }
@@ -86,7 +82,10 @@ public class ConceptEditorOpenHelper {
     SModule baseNodeModule = SNodeOperations.getModel(baseNode).getModule();
     SModule nodeModule = SNodeOperations.getModel(node).getModule();
     if (nodeModule instanceof Generator) {
-      nodeModule = ((Generator) nodeModule).getSourceLanguage();
+      SModuleReference nodeModuleRef = ((Generator) nodeModule).sourceLanguage().getSourceModuleReference();
+      if (baseNodeModule != null && nodeModuleRef.equals(baseNodeModule.getModuleReference())) {
+        return baseNode;
+      }
     }
     if (baseNodeModule != nodeModule) {
       return null;
