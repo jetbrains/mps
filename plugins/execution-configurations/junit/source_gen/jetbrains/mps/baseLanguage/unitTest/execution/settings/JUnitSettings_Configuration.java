@@ -71,18 +71,18 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
   }
 
-  public String getDefaultPathForCaches() {
-    return new DefaultCachesPathChooser().chooseDir();
+  public String getDefaultPathForSettings() {
+    return new DefaultSettingsPathChooser().chooseDir();
   }
-  public String getCachesLocation() {
+  public String getSettingsLocation() {
     if (this.getOverrideCachesLocation()) {
       return this.getCachesPath();
     } else {
-      return getDefaultPathForCaches();
+      return getDefaultPathForSettings();
     }
   }
   public File getPluginsPath() {
-    String configPath = new File(getCachesLocation(), "config").getAbsolutePath();
+    String configPath = new File(getSettingsLocation(), "config").getAbsolutePath();
     return new File(configPath, "plugins");
   }
   public SModuleReference getModuleReference() {
@@ -104,7 +104,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     this.setRunType(runType.ordinal());
   }
   public boolean canSaveCachesPath() {
-    return this.getReuseCaches() && !(RunCachesManager.isLocked(getCachesLocation()));
+    return this.getReuseCaches() && !(RunCachesManager.isLocked(getSettingsLocation()));
   }
   public boolean canExecuteInProcess(Iterable<ITestNodeWrapper> testNodes) {
     return this.getInProcess() && !(this.getDebug());
@@ -237,7 +237,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     public boolean myReuseCaches = true;
     public boolean myOverrideCachesLocation = false;
     public boolean myDebug = false;
-    public String myCachesPath = getDefaultPathForCaches();
+    public String myCachesPath = getDefaultPathForSettings();
     public ClonableList<String> myTestCases = new ClonableList<String>();
     public ClonableList<String> myTestMethods = new ClonableList<String>();
     public int myRunType = JUnitRunTypes.PROJECT.ordinal();

@@ -29,6 +29,11 @@ public class BeforeTasksInitializer_ProjectPluginPart extends ProjectPluginPart 
       ListSequence.fromList(BeforeTasksInitializer_ProjectPluginPart.this.myRegisteredBeforeTasks).addElement(beforeTask);
       beforeTasksExtensionPoint.registerExtension(beforeTask);
     }
+    {
+      BeforeRunTaskProvider beforeTask = (BeforeRunTaskProvider) new ClearSettingsDirectoryBeforeRunTask_BeforeTask();
+      ListSequence.fromList(BeforeTasksInitializer_ProjectPluginPart.this.myRegisteredBeforeTasks).addElement(beforeTask);
+      beforeTasksExtensionPoint.registerExtension(beforeTask);
+    }
   }
   @Override
   public void dispose(MPSProject project) {

@@ -54,10 +54,19 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.MakeDeployScripts_BeforeTask" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode extendsClassName="jetbrains.mps.plugins.part.ProjectPluginPart" />
+  </dependency>
+  <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask">
+    <classNode dependClassName="com.intellij.execution.runners.ExecutionEnvironment" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.util.Key" />
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="jetbrains.mps.util.FileUtil" />
+    <classNode extendsClassName="jetbrains.mps.execution.api.configurations.BaseMpsBeforeTaskProvider" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel">
     <classNode dependClassName="com.intellij.openapi.project.Project" />
@@ -398,6 +407,7 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.util.InvalidDataException" />
     <classNode dependClassName="com.intellij.openapi.util.WriteExternalException" />
+    <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -660,6 +670,7 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.util.InvalidDataException" />
     <classNode dependClassName="com.intellij.openapi.util.WriteExternalException" />
+    <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -762,7 +773,6 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.nio.file.Paths" />
     <classNode dependClassName="jetbrains.mps.execution.api.settings.PersistentConfigurationContext" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.MpsStartupSettings_Configuration_Editor" />
     <classNode dependClassName="jetbrains.mps.util.MacrosFactory" />

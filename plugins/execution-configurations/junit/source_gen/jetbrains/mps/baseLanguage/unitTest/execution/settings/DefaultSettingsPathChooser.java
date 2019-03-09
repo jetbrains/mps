@@ -7,7 +7,7 @@ import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager;
 
-public class DefaultCachesPathChooser {
+public class DefaultSettingsPathChooser {
   private static final String BASE_NAME = "MPSJUnitRC";
 
   public String chooseDir() {

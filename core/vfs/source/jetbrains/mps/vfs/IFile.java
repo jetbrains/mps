@@ -16,18 +16,14 @@
 package jetbrains.mps.vfs;
 
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
-import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import jetbrains.mps.vfs.refresh.FileListener;
-import jetbrains.mps.vfs.refresh.FileListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.unitTest.execution.client;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Mutable;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.execution.ExecutionException;
 import java.util.List;

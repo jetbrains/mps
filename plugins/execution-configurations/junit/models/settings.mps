@@ -412,6 +412,13 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
@@ -6374,16 +6381,20 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="78pvOus7NOP" role="3cqZAp">
-          <node concept="1rXfSq" id="78pvOus7NOQ" role="3clFbG">
-            <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object):void" resolve="add" />
-            <node concept="37vLTw" id="78pvOus7Sc4" role="37wK5m">
-              <ref role="3cqZAo" node="78pvOus4ykx" resolve="myReuseCachesCheckBox" />
-            </node>
-            <node concept="1rwKMM" id="78pvOus7NOS" role="37wK5m">
-              <property role="1rwKMK" value="field" />
-              <node concept="3cmrfG" id="78pvOus7SxJ" role="1rxHDW">
-                <property role="3cmrfH" value="3" />
+        <node concept="1X3_iC" id="3djbh3BcSfh" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="78pvOus7NOP" role="8Wnug">
+            <node concept="1rXfSq" id="78pvOus7NOQ" role="3clFbG">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object):void" resolve="add" />
+              <node concept="37vLTw" id="78pvOus7Sc4" role="37wK5m">
+                <ref role="3cqZAo" node="78pvOus4ykx" resolve="myReuseCachesCheckBox" />
+              </node>
+              <node concept="1rwKMM" id="78pvOus7NOS" role="37wK5m">
+                <property role="1rwKMK" value="field" />
+                <node concept="3cmrfG" id="78pvOus7SxJ" role="1rxHDW">
+                  <property role="3cmrfH" value="3" />
+                </node>
               </node>
             </node>
           </node>

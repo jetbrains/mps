@@ -11480,8 +11480,12 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="r$A3E5vV_p" role="1B3o_S" />
-    <node concept="2AHcQZ" id="3djbh3AQBTB" role="2AJF6D">
-      <ref role="2AI5Lk" to="lhc4:~Immutable" resolve="Immutable" />
+    <node concept="3UR2Jj" id="7F7HpjGTC4E" role="lGtFl">
+      <node concept="TZ5HA" id="7F7HpjGTC4F" role="TZ5H$">
+        <node concept="1dT_AC" id="7F7HpjGTC4G" role="1dT_Ay">
+          <property role="1dT_AB" value="@Immutable" />
+        </node>
+      </node>
     </node>
   </node>
 </model>

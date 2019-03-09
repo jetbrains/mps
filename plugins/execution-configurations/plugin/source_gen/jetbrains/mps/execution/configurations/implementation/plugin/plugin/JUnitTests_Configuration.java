@@ -36,6 +36,7 @@ import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
+import java.io.File;
 
 public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(JUnitTests_Configuration.class);
@@ -185,6 +186,9 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   }
   public Object[] createMakeNodePointersTask() {
     return new Object[]{this.getTestsToMake()};
+  }
+  public Object[] createClearSettingsDirectoryBeforeRunTaskTask() {
+    return new Object[]{new File(this.getJUnitSettings().getSettingsLocation())};
   }
   public Object[] createAssemblePluginsBeforeTaskTask() {
     return new Object[]{this.getDeploySettings().getPluginsListToDeploy(), this.getJUnitSettings().getPluginsPath()};

@@ -16,7 +16,6 @@ import com.intellij.openapi.util.InvalidDataException;
 import jetbrains.mps.util.MacrosFactory;
 import java.io.File;
 import com.intellij.openapi.application.PathManager;
-import java.nio.file.Paths;
 import org.apache.log4j.Level;
 
 public class MpsStartupSettings_Configuration implements IPersistentConfiguration {
@@ -59,8 +58,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
     this.setSettingsPath(shrinkPath(path));
   }
   private String getDefaultSettingsPath() {
-    String defaultConfigPathFor = PathManager.getDefaultConfigPathFor("MPSInstanceRC");
-    String defaultSettingsPath = Paths.get(defaultConfigPathFor).getParent().toAbsolutePath().toString();
+    String defaultSettingsPath = PathManager.getDefaultConfigPathFor("MPSInstanceRC");
     return shrinkPath(defaultSettingsPath);
   }
   public String getExpandedSettingsPath() {

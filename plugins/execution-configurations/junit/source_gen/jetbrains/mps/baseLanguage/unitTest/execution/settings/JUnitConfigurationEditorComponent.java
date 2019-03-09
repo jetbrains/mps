@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 public class JUnitConfigurationEditorComponent extends JBPanel {
   private final InProcessJBCheckBox myInProcessCheckBox = new InProcessJBCheckBox("Execute in the same process ");
   private final JBCheckBox myReuseCachesCheckBox = new JBCheckBox("Reuse caches", true);
-  private final JBCheckBox myOverrideCachesCheckBox = new JBCheckBox("Override the default caches location:");
+  private final JBCheckBox myOverrideCachesCheckBox = new JBCheckBox("Override the default settings location:");
   private final FieldWithPathChooseDialog myCachesDir = new FieldWithPathChooseDialog(new FileChooserDescriptor(false, true, false, false, false, false));
 
   private final Project myProject;
@@ -166,7 +166,6 @@ public class JUnitConfigurationEditorComponent extends JBPanel {
     add(myClassesList, LayoutUtil.createPanelConstraints(1));
     add(myMethodsList, LayoutUtil.createPanelConstraints(1));
     add(myInProcessCheckBox, LayoutUtil.createFieldConstraints(2));
-    add(myReuseCachesCheckBox, LayoutUtil.createFieldConstraints(3));
     add(saveCachesPanel, LayoutUtil.createFieldConstraints(4));
   }
 
@@ -264,7 +263,7 @@ public class JUnitConfigurationEditorComponent extends JBPanel {
       myModuleChooser.setModule(settings.getModuleReference());
     }
 
-    myCachesDir.setText(settings.getCachesLocation());
+    myCachesDir.setText(settings.getSettingsLocation());
     updateCheckBoxes(settings);
     updatePanels();
   }

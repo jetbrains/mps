@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.settings.DefaultCachesPathChooser">
+  <dependency className="jetbrains.mps.baseLanguage.unitTest.execution.settings.DefaultSettingsPathChooser">
     <classNode dependClassName="com.intellij.openapi.application.PathManager" />
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.IllegalStateException" />
@@ -124,7 +124,7 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.DefaultCachesPathChooser" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.DefaultSettingsPathChooser" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitRunTypes" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration_Editor" />
     <classNode dependClassName="jetbrains.mps.execution.api.settings.PersistentConfigurationContext" />
