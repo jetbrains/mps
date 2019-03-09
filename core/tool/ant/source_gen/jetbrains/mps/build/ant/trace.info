@@ -1477,27 +1477,28 @@
   </root>
   <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/978600701689990961">
     <file name="Plugin.java">
-      <node id="496689236032864081" at="10,0,11,0" concept="6" trace="myDescriptor" />
-      <node id="496689236032868696" at="13,33,14,46" concept="5" />
-      <node id="496689236031525229" at="16,32,17,25" concept="5" />
-      <node id="496689236032875293" at="19,37,20,24" concept="12" />
-      <node id="978600701689991878" at="11,0,13,0" concept="3" trace="Plugin#()V" />
-      <node id="978600701689991882" at="13,0,16,0" concept="10" trace="setPath#(Ljava/io/File;)V" />
-      <node id="496689236031525225" at="16,0,19,0" concept="10" trace="setId#(Ljava/lang/String;)V" />
-      <node id="496689236032875289" at="19,0,22,0" concept="10" trace="getDescriptor#()Ljetbrains/mps/tool/common/PluginData;" />
-      <scope id="978600701689991881" at="11,19,11,19" />
-      <scope id="978600701689991885" at="13,33,14,46" />
-      <scope id="496689236031525228" at="16,32,17,25" />
-      <scope id="496689236032875292" at="19,37,20,24" />
-      <scope id="978600701689991878" at="11,0,13,0" />
-      <scope id="978600701689991882" at="13,0,16,0">
+      <node id="3698349269617104669" at="10,0,11,0" concept="6" trace="myPath" />
+      <node id="3698349269617104922" at="11,0,12,0" concept="6" trace="myId" />
+      <node id="496689236032868696" at="16,33,17,35" concept="5" />
+      <node id="496689236031525229" at="20,32,21,14" concept="5" />
+      <node id="496689236032875293" at="24,37,25,40" concept="12" />
+      <node id="978600701689991878" at="13,0,15,0" concept="3" trace="Plugin#()V" />
+      <node id="978600701689991882" at="16,0,19,0" concept="10" trace="setPath#(Ljava/io/File;)V" />
+      <node id="496689236031525225" at="20,0,23,0" concept="10" trace="setId#(Ljava/lang/String;)V" />
+      <node id="496689236032875289" at="24,0,27,0" concept="10" trace="getDescriptor#()Ljetbrains/mps/tool/common/PluginData;" />
+      <scope id="978600701689991881" at="13,19,13,19" />
+      <scope id="978600701689991885" at="16,33,17,35" />
+      <scope id="496689236031525228" at="20,32,21,14" />
+      <scope id="496689236032875292" at="24,37,25,40" />
+      <scope id="978600701689991878" at="13,0,15,0" />
+      <scope id="978600701689991882" at="16,0,19,0">
         <var name="dir" id="978600701689998661" />
       </scope>
-      <scope id="496689236031525225" at="16,0,19,0">
+      <scope id="496689236031525225" at="20,0,23,0">
         <var name="id" id="496689236031525232" />
       </scope>
-      <scope id="496689236032875289" at="19,0,22,0" />
-      <unit id="978600701689990961" at="9,0,23,0" name="jetbrains.mps.build.ant.Plugin" />
+      <scope id="496689236032875289" at="24,0,27,0" />
+      <unit id="978600701689990961" at="9,0,28,0" name="jetbrains.mps.build.ant.Plugin" />
     </file>
   </root>
 </debug-info>

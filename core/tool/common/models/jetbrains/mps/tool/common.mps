@@ -20,6 +20,7 @@
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="ddon" ref="r:58ba176b-8a52-400c-bf27-725996471cb9(jetbrains.mps.core.tool.environment.common)" />
+    <import index="lhc4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.annotations(MPS.OpenAPI/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -11423,6 +11424,7 @@
     <property role="TrG5h" value="PluginData" />
     <node concept="312cEg" id="QkG2t1bxbe" role="jymVt">
       <property role="TrG5h" value="path" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="r$A3E5vWWj" role="1B3o_S" />
       <node concept="3uibUv" id="r$A3E5vWWN" role="1tU5fm">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
@@ -11430,16 +11432,11 @@
     </node>
     <node concept="312cEg" id="r$A3E5qOHV" role="jymVt">
       <property role="TrG5h" value="id" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="r$A3E5vWWy" role="1B3o_S" />
       <node concept="3uibUv" id="r$A3E5qOQU" role="1tU5fm">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-    </node>
-    <node concept="2tJIrI" id="4OPNMy23eAf" role="jymVt" />
-    <node concept="3clFbW" id="4OPNMy23env" role="jymVt">
-      <node concept="3cqZAl" id="4OPNMy23enx" role="3clF45" />
-      <node concept="3Tm1VV" id="4OPNMy23eny" role="1B3o_S" />
-      <node concept="3clFbS" id="4OPNMy23enz" role="3clF47" />
     </node>
     <node concept="2tJIrI" id="4OPNMy23est" role="jymVt" />
     <node concept="3clFbW" id="4OPNMy23eT$" role="jymVt">
@@ -11449,7 +11446,7 @@
         <node concept="3clFbF" id="4OPNMy23f$8" role="3cqZAp">
           <node concept="37vLTI" id="4OPNMy23fRP" role="3clFbG">
             <node concept="37vLTw" id="4OPNMy23fT6" role="37vLTx">
-              <ref role="3cqZAo" node="4OPNMy23eYG" resolve="p" />
+              <ref role="3cqZAo" node="4OPNMy23eYG" resolve="path2Plugin" />
             </node>
             <node concept="2OqwBi" id="4OPNMy23f_A" role="37vLTJ">
               <node concept="Xjq3P" id="4OPNMy23f$7" role="2Oq$k0" />
@@ -11462,7 +11459,7 @@
         <node concept="3clFbF" id="4OPNMy23g9J" role="3cqZAp">
           <node concept="37vLTI" id="4OPNMy23gFx" role="3clFbG">
             <node concept="37vLTw" id="4OPNMy23gGU" role="37vLTx">
-              <ref role="3cqZAo" node="4OPNMy23fhb" resolve="id" />
+              <ref role="3cqZAo" node="4OPNMy23fhb" resolve="pluginId" />
             </node>
             <node concept="2OqwBi" id="4OPNMy23gci" role="37vLTJ">
               <node concept="Xjq3P" id="4OPNMy23g9H" role="2Oq$k0" />
@@ -11474,15 +11471,18 @@
         </node>
       </node>
       <node concept="37vLTG" id="4OPNMy23eYG" role="3clF46">
-        <property role="TrG5h" value="p" />
+        <property role="TrG5h" value="path2Plugin" />
         <node concept="17QB3L" id="4OPNMy23eYF" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="4OPNMy23fhb" role="3clF46">
-        <property role="TrG5h" value="id" />
+        <property role="TrG5h" value="pluginId" />
         <node concept="17QB3L" id="4OPNMy23fqz" role="1tU5fm" />
       </node>
     </node>
     <node concept="3Tm1VV" id="r$A3E5vV_p" role="1B3o_S" />
+    <node concept="2AHcQZ" id="3djbh3AQBTB" role="2AJF6D">
+      <ref role="2AI5Lk" to="lhc4:~Immutable" resolve="Immutable" />
+    </node>
   </node>
 </model>
 

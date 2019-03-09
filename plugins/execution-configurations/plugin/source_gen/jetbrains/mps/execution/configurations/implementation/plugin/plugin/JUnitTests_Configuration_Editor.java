@@ -21,6 +21,8 @@ public class JUnitTests_Configuration_Editor extends SettingsEditorEx<JUnitTests
   private DeployPluginsSettings_Configuration_Editor myDeploySettings;
   public void disposeEditor() {
     myJUnitSettings.dispose();
+    myDeploySettings.dispose();
+    myJavaRunParameters.dispose();
     Disposer.dispose(myJUnitSettings);
     Disposer.dispose(myJavaRunParameters);
     Disposer.dispose(myDeploySettings);
@@ -35,7 +37,7 @@ public class JUnitTests_Configuration_Editor extends SettingsEditorEx<JUnitTests
     junitEditorComponent.attachJavaAndDeployComponentsAndUpdateInProcessFlag(javaEditorComponent, pluginsEditor);
     resultPanel.add(junitEditorComponent, LayoutUtil.createPanelConstraints(0));
     resultPanel.add(javaEditorComponent, LayoutUtil.createPanelConstraints(1));
-    pluginsEditor.setBorder(new EmptyBorder(5, 0, 0, 0));
+    pluginsEditor.setBorder(new EmptyBorder(5, 5, 5, 5));
     resultPanel.add(pluginsEditor, LayoutUtil.createPanelConstraints(2));
     return resultPanel;
   }

@@ -33,7 +33,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   private final FakeProcess myFakeProcess = new FakeProcess();
   private final TestInProcessRunState myTestRunState;
 
-  public JUnitInProcessRunStarter(@NotNull Project mpsProject, @NotNull JUnitTests_Configuration runConfiguration, Iterable<ITestNodeWrapper> testNodeWrappers) {
+  public JUnitInProcessRunStarter(@NotNull Project mpsProject, @NotNull JUnitTests_Configuration runConfiguration, @NotNull Iterable<ITestNodeWrapper> testNodeWrappers) {
     myTestsContributor = new NodeWrappersTestsContributor((MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers);
     myTestRunState = TestInProcessRunState.getInstance();
   }

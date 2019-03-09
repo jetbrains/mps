@@ -29,6 +29,7 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
   @NotNull
   private DeployPluginsSettings_Configuration.MyState myState = new DeployPluginsSettings_Configuration.MyState();
 
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     final List<SNodeReference> nodeRefList = getPluginsListToDeploy();
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
@@ -88,8 +89,7 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
 
   public final class MyState {
     public ClonableList<String> myPluginsToDeploy = new ClonableList<String>();
-    public MyState() {
-    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
       DeployPluginsSettings_Configuration.MyState state = new DeployPluginsSettings_Configuration.MyState();

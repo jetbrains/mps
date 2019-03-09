@@ -24,6 +24,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
   @NotNull
   private MpsStartupSettings_Configuration.MyState myState = new MpsStartupSettings_Configuration.MyState();
 
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     if (isEmptyString(this.getSettingsPath())) {
       throw new RuntimeConfigurationError("The settings path is empty");
@@ -109,8 +110,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
     public String myVmOptions;
     public String myJrePath;
     public String mySettingsPath = getDefaultSettingsPath();
-    public MyState() {
-    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
       MpsStartupSettings_Configuration.MyState state = new MpsStartupSettings_Configuration.MyState();

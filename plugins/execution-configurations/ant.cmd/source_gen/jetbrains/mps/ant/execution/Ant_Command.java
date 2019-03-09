@@ -111,7 +111,7 @@ public class Ant_Command {
   private static Iterable<CommandPart> getMacroValues(final List<String> toDefine) {
     final PathMacros pathMacros = PathMacros.getInstance();
     List<CommandPart> macroValues = ListSequence.fromList(new ArrayList<CommandPart>());
-    if (toDefine == null || ListSequence.fromList(toDefine).contains("mps_home")) {
+    if (ListSequence.fromList(toDefine).contains("mps_home")) {
       ListSequence.fromList(macroValues).addElement(new PropertyCommandPart("mps_home", jetbrains.mps.util.PathManager.getHomePath()));
     }
     return ListSequence.fromList(macroValues).union(Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<String>() {

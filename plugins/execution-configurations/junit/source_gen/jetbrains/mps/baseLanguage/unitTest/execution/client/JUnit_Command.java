@@ -12,19 +12,8 @@ import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
 import com.intellij.execution.ExecutionException;
 import org.apache.log4j.Level;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.StringJoiner;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -83,34 +72,8 @@ public class JUnit_Command {
     }
     return new JUnit_Command().setProject_Project(myProject_Project).setVirtualMachineParameter_String(check_txeh3_a2a1a0a(javaRunParameters)).setJrePath_String((check_txeh3_a0d0b0a0(javaRunParameters) ? javaRunParameters.jrePath() : null)).setWorkingDirectory_File((isEmptyString(check_txeh3_a0a4a1a0a(javaRunParameters)) ? null : new File(javaRunParameters.workingDirectory()))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(tests);
   }
-  public ProcessHandler createProcess(final Project project, List<ITestNodeWrapper> tests, JUnitTests_Configuration junitRC) throws ExecutionException {
-    final List<SNodeReference> pluginList = junitRC.getDeploySettings().getPluginsListToDeploy();
-    ModelAccessHelper access = new ModelAccessHelper(project.getModelAccess());
-    List<String> pluginIds = access.runWriteAction(new Computable<IListSequence<String>>() {
-      public IListSequence<String> compute() {
-        return ListSequence.fromList(pluginList).select(new ISelector<SNodeReference, SNode>() {
-          public SNode select(SNodeReference it) {
-            return it.resolve(project.getRepository());
-          }
-        }).ofType(SNode.class).select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id"));
-          }
-        }).toListSequence();
-      }
-    });
+  public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests, JUnitTests_Configuration junitRC) throws ExecutionException {
     JavaRunParameters javaParams = junitRC.getJavaRunParameters().getJavaParameters();
-    if (ListSequence.fromList(pluginIds).isNotEmpty()) {
-      String ideaLoadPluginsIdString = "-Didea.load.plugins.id=\"";
-      final StringJoiner joiner = new StringJoiner(File.pathSeparator);
-      ListSequence.fromList(pluginIds).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          joiner.add(it);
-        }
-      });
-      ideaLoadPluginsIdString += joiner.toString() + "\"";
-      javaParams.vmOptions(javaParams.vmOptions() + " " + ideaLoadPluginsIdString);
-    }
     TestsWithParameters testsWithParams = TestsWithParameters.createFromTest2RunList(tests);
     TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(project.getRepository(), testsWithParams, junitRC);
 
@@ -118,7 +81,7 @@ public class JUnit_Command {
     String updatedVmParams = IterableUtils.join(ListSequence.fromList(testsWithParams.getParameters().getJvmArgs()), " ") + (((vmParam != null && vmParam.length() > 0) ? " " + vmParam : ""));
     List<String> calculatedCP = ListSequence.fromList(JUnit_Command.getClasspath(settings)).toListSequence();
     String workingDir = javaParams.workingDirectory();
-    return new Java_Command().setVirtualMachineParameter_String(updatedVmParams).setClassPath_ListString(calculatedCP).setJrePath_String((check_txeh3_a0c0m0a1(javaParams) ? javaParams.jrePath() : null)).setWorkingDirectory_File((workingDir == null ? null : new File(workingDir))).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
+    return new Java_Command().setVirtualMachineParameter_String(updatedVmParams).setClassPath_ListString(calculatedCP).setJrePath_String((check_txeh3_a0c0i0a1(javaParams) ? javaParams.jrePath() : null)).setWorkingDirectory_File((workingDir == null ? null : new File(workingDir))).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
   }
   public ProcessHandler createProcess(List<ITestNodeWrapper> tests) throws ExecutionException {
     //  
@@ -183,7 +146,7 @@ public class JUnit_Command {
     }
     return null;
   }
-  private static boolean check_txeh3_a0c0m0a1(JavaRunParameters checkedDotOperand) {
+  private static boolean check_txeh3_a0c0i0a1(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return (boolean) checkedDotOperand.useAlternativeJre();
     }

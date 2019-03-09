@@ -31,6 +31,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   private MpsStartupSettings_Configuration myMpsSettings = new MpsStartupSettings_Configuration();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
 
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getMpsSettings().checkConfiguration(context);
     this.getPluginsSettings().checkConfiguration(context);
@@ -92,8 +93,10 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   }
 
   public void setMpsSettings(MpsStartupSettings_Configuration value) {
+    myMpsSettings = value;
   }
   public void setPluginsSettings(DeployPluginsSettings_Configuration value) {
+    myPluginsSettings = value;
   }
 
   public MPSInstance_Configuration(Project project, ConfigurationFactory factory, String name) {
@@ -132,7 +135,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   public boolean canExecute(String executorId) {
     return MPSInstance_Configuration_RunProfileState.canExecute(executorId);
   }
-  public Object[] createDeployPluginsTask() {
+  public Object[] createAssemblePluginsBeforeTaskTask() {
     return new Object[]{this.getPluginsSettings().getPluginsListToDeploy(), this.getMpsSettings().getPluginsPath()};
   }
 }

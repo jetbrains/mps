@@ -19,6 +19,15 @@ import jetbrains.mps.tool.common.JDOMUtil;
 import org.jdom.Document;
 import java.io.IOException;
 import org.jetbrains.mps.annotations.Mutable;
+import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.tool.common.RepositoryDescriptor;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -54,6 +63,7 @@ import org.apache.log4j.Level;
     boolean doINeedMPS = myTestsToRun.getParameters().needsMPS();
     return (doINeedMPS ? calcParamsWithMpsPlatformToStart() : calcParamsWithoutMPSPlatformToStart());
   }
+
   private String calcParamsWithoutMPSPlatformToStart() {
     List<String> testsCommandLine = ListSequence.fromList(new ArrayList<String>(ListSequence.fromList(myTestsToRun.getTests()).count() * 2));
     for (ITestNodeWrapper test : ListSequence.fromList(myTestsToRun.getTests())) {
@@ -68,8 +78,10 @@ import org.apache.log4j.Level;
     ScriptData startupArgs = args.addStartupArguments();
     addModulesAndDepsToStartupArgs(startupArgs);
     addMacrosToStartupArgs(startupArgs);
+    addPluginsToStartupArgs(startupArgs);
     // XXX could deduce required plugins from IdeaPluginModuleFacet of required modules. 
     startupArgs.setLoadBootstrapLibraries(true);
+
     // XXX May want to pass value of idea.additional.classpath system property further to new IdeaApplication instance to ensure plugins that are  
     // loaded from sources could get loaded in the new application as well. 
     for (ITestNodeWrapper test : ListSequence.fromList(myTestsToRun.getTests())) {
@@ -85,6 +97,32 @@ import org.apache.log4j.Level;
     } catch (IOException ex) {
       throw new ExecutionException("Failed to prepare arguments for test executor", ex);
     }
+  }
+
+  private void addPluginsToStartupArgs(@Mutable final ScriptData startupArgs) {
+    JUnitTests_Configuration configuration = mySettings.myConfiguration;
+    if (configuration == null) {
+      return;
+    }
+    final List<SNodeReference> pluginList = configuration.getDeploySettings().getPluginsListToDeploy();
+    myRepo.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        ListSequence.fromList(pluginList).select(new ISelector<SNodeReference, SNode>() {
+          public SNode select(SNodeReference it) {
+            return it.resolve(myRepo);
+          }
+        }).ofType(SNode.class).select(new ISelector<SNode, PluginData>() {
+          public PluginData select(SNode it) {
+            return new PluginData("", SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id")));
+          }
+        }).visitAll(new IVisitor<PluginData>() {
+          public void visit(PluginData it) {
+            startupArgs.addPlugin(it);
+          }
+        });
+      }
+    });
+
   }
 
   private void addModulesAndDepsToStartupArgs(@Mutable ScriptData startupArgs) {

@@ -2560,17 +2560,17 @@
                 <node concept="2ShNRf" id="5dZuAAfo_YV" role="37wK5m">
                   <node concept="1pGfFk" id="5dZuAAfo_YW" role="2ShVmc">
                     <ref role="37wK5l" to="9z78:~EmptyBorder.&lt;init&gt;(int,int,int,int)" resolve="EmptyBorder" />
-                    <node concept="3cmrfG" id="5dZuAAfo_YX" role="37wK5m">
+                    <node concept="3cmrfG" id="5dZuAAfo_YY" role="37wK5m">
                       <property role="3cmrfH" value="5" />
                     </node>
-                    <node concept="3cmrfG" id="5dZuAAfo_YY" role="37wK5m">
-                      <property role="3cmrfH" value="0" />
+                    <node concept="3cmrfG" id="3qbI1lNhu7s" role="37wK5m">
+                      <property role="3cmrfH" value="5" />
                     </node>
-                    <node concept="3cmrfG" id="5dZuAAfo_YZ" role="37wK5m">
-                      <property role="3cmrfH" value="0" />
+                    <node concept="3cmrfG" id="3qbI1lNhwGt" role="37wK5m">
+                      <property role="3cmrfH" value="5" />
                     </node>
-                    <node concept="3cmrfG" id="5dZuAAfo_Z0" role="37wK5m">
-                      <property role="3cmrfH" value="0" />
+                    <node concept="3cmrfG" id="3qbI1lNhxOy" role="37wK5m">
+                      <property role="3cmrfH" value="5" />
                     </node>
                   </node>
                 </node>
@@ -2612,6 +2612,26 @@
               </node>
               <node concept="yHkDv" id="5gyVhZ1bqKs" role="2OqNvi">
                 <ref role="yHkD0" to="tty3:5gyVhZ1bmcX" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3qbI1lNh$JJ" role="3cqZAp">
+            <node concept="2OqwBi" id="3qbI1lNh$JK" role="3clFbG">
+              <node concept="yHkDH" id="3qbI1lNh$JL" role="2Oq$k0">
+                <ref role="yHkDG" node="5dZuAAfok8w" resolve="myDeploySettings" />
+              </node>
+              <node concept="yHkDv" id="3qbI1lNij0z" role="2OqNvi">
+                <ref role="yHkD0" node="1T5iP2ae8lS" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3qbI1lNh$MK" role="3cqZAp">
+            <node concept="2OqwBi" id="3qbI1lNh$ML" role="3clFbG">
+              <node concept="yHkDH" id="3qbI1lNh$MM" role="2Oq$k0">
+                <ref role="yHkDG" node="6woObKLCiTr" resolve="myJavaRunParameters" />
+              </node>
+              <node concept="yHkDv" id="3qbI1lNimsk" role="2OqNvi">
+                <ref role="yHkD0" to="go48:6woObKLBCkm" />
               </node>
             </node>
           </node>
@@ -3082,7 +3102,7 @@
       </node>
     </node>
     <node concept="yYvg6" id="3P4ieJEJQlR" role="yYvgT">
-      <ref role="yYvg7" node="1QpbsTfWh5" resolve="DeployPlugins" />
+      <ref role="yYvg7" node="1QpbsTfWh5" resolve="AssemblePluginsBeforeTask" />
       <node concept="2OqwBi" id="3P4ieJEJQlS" role="1ZwhtC">
         <node concept="2OqwBi" id="3P4ieJEJQlT" role="2Oq$k0">
           <node concept="RBKsg" id="3P4ieJEJQlU" role="2Oq$k0" />
@@ -4925,7 +4945,7 @@
     <property role="3gLNDv" value="myRunConfiguration" />
     <ref role="yIonz" node="5gyVhZ18biM" resolve="MPS Instance" />
     <node concept="yYvg6" id="1QpbsT7Bnx" role="yYvgT">
-      <ref role="yYvg7" node="1QpbsTfWh5" resolve="DeployPlugins" />
+      <ref role="yYvg7" node="1QpbsTfWh5" resolve="AssemblePluginsBeforeTask" />
       <node concept="2OqwBi" id="1QpbsTfSG0" role="1ZwhtC">
         <node concept="2OqwBi" id="1QpbsTfQY5" role="2Oq$k0">
           <node concept="RBKsg" id="1QpbsT9sY7" role="2Oq$k0" />
@@ -8429,33 +8449,37 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1QpbsSZXbj" role="3cqZAp">
-          <node concept="2OqwBi" id="1QpbsT01mM" role="3clFbG">
-            <node concept="2OqwBi" id="1QpbsSZXnq" role="2Oq$k0">
-              <node concept="37vLTw" id="1QpbsSZXbi" role="2Oq$k0">
-                <ref role="3cqZAo" node="1QpbsSVDHp" resolve="deployProject" />
-              </node>
-              <node concept="3TrcHB" id="1QpbsSZZOE" role="2OqNvi">
-                <ref role="3TsBF5" to="3ior:4wSvFFxC7Cz" resolve="internalBaseDirectory" />
-              </node>
-            </node>
-            <node concept="tyxLq" id="1QpbsT04bI" role="2OqNvi">
-              <node concept="1rXfSq" id="118c$$Yoozw" role="tz02z">
-                <ref role="37wK5l" node="1QpbsT0A4T" resolve="makeRelative" />
-                <node concept="2OqwBi" id="118c$$Yppwy" role="37wK5m">
-                  <node concept="37vLTw" id="mSHDyFrRaN" role="2Oq$k0">
-                    <ref role="3cqZAo" node="mSHDyFrRaK" resolve="ideaProject" />
-                  </node>
-                  <node concept="liA8E" id="118c$$Yps00" role="2OqNvi">
-                    <ref role="37wK5l" to="4nm9:~Project.getBasePath():java.lang.String" resolve="getBasePath" />
-                  </node>
+        <node concept="1X3_iC" id="3djbh3AT9Tm" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="1QpbsSZXbj" role="8Wnug">
+            <node concept="2OqwBi" id="1QpbsT01mM" role="3clFbG">
+              <node concept="2OqwBi" id="1QpbsSZXnq" role="2Oq$k0">
+                <node concept="37vLTw" id="1QpbsSZXbi" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1QpbsSVDHp" resolve="deployProject" />
                 </node>
-                <node concept="2OqwBi" id="mSHDyFrPbe" role="37wK5m">
-                  <node concept="37vLTw" id="118c$$Yposo" role="2Oq$k0">
-                    <ref role="3cqZAo" node="79FiGkx7rgJ" resolve="baseDir" />
+                <node concept="3TrcHB" id="1QpbsSZZOE" role="2OqNvi">
+                  <ref role="3TsBF5" to="3ior:4wSvFFxC7Cz" resolve="internalBaseDirectory" />
+                </node>
+              </node>
+              <node concept="tyxLq" id="1QpbsT04bI" role="2OqNvi">
+                <node concept="1rXfSq" id="118c$$Yoozw" role="tz02z">
+                  <ref role="37wK5l" node="1QpbsT0A4T" resolve="makeRelative" />
+                  <node concept="2OqwBi" id="118c$$Yppwy" role="37wK5m">
+                    <node concept="37vLTw" id="mSHDyFrRaN" role="2Oq$k0">
+                      <ref role="3cqZAo" node="mSHDyFrRaK" resolve="ideaProject" />
+                    </node>
+                    <node concept="liA8E" id="118c$$Yps00" role="2OqNvi">
+                      <ref role="37wK5l" to="4nm9:~Project.getBasePath():java.lang.String" resolve="getBasePath" />
+                    </node>
                   </node>
-                  <node concept="liA8E" id="mSHDyFrR7U" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />
+                  <node concept="2OqwBi" id="mSHDyFrPbe" role="37wK5m">
+                    <node concept="37vLTw" id="118c$$Yposo" role="2Oq$k0">
+                      <ref role="3cqZAo" node="79FiGkx7rgJ" resolve="baseDir" />
+                    </node>
+                    <node concept="liA8E" id="mSHDyFrR7U" role="2OqNvi">
+                      <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -8994,8 +9018,8 @@
   </node>
   <node concept="2PEKAc" id="1QpbsTfWh5">
     <property role="3GE5qa" value="mps.deployPlugins" />
-    <property role="TrG5h" value="DeployPlugins" />
-    <property role="OSgQB" value="Deploy plugins" />
+    <property role="TrG5h" value="AssemblePluginsBeforeTask" />
+    <property role="OSgQB" value="Assemble Plugins" />
     <node concept="1CW0x$" id="1QpbsTfWh6" role="1D3o6X">
       <node concept="3clFbS" id="1QpbsTfWh7" role="2VODD2">
         <node concept="3clFbJ" id="6bBAl1hWL41" role="3cqZAp">
@@ -9108,7 +9132,7 @@
         <node concept="3clFbH" id="1eIH0tnHsHL" role="3cqZAp" />
         <node concept="3cpWs8" id="4oL4a6snrZP" role="3cqZAp">
           <node concept="3cpWsn" id="4oL4a6snrZQ" role="3cpWs9">
-            <property role="TrG5h" value="deployScriptLocation" />
+            <property role="TrG5h" value="assembleScriptLocation" />
             <node concept="17QB3L" id="4oL4a6snrZM" role="1tU5fm" />
             <node concept="2OqwBi" id="4oL4a6snrZR" role="33vP2m">
               <node concept="37vLTw" id="4oL4a6snrZS" role="2Oq$k0">
@@ -9122,6 +9146,12 @@
         </node>
         <node concept="3clFbJ" id="4oL4a6snsrq" role="3cqZAp">
           <node concept="3clFbS" id="4oL4a6snsrt" role="3clFbx">
+            <node concept="RRSsy" id="3djbh3AV5du" role="3cqZAp">
+              <property role="RRSoG" value="error" />
+              <node concept="Xl_RD" id="3djbh3AV5dw" role="RRSoy">
+                <property role="Xl_RC" value="The script location is empty" />
+              </node>
+            </node>
             <node concept="3clFbF" id="4oL4a6sn_W5" role="3cqZAp">
               <node concept="2OqwBi" id="4oL4a6snA0x" role="3clFbG">
                 <node concept="37vLTw" id="4oL4a6sn_W4" role="2Oq$k0">
@@ -9140,7 +9170,7 @@
           </node>
           <node concept="2OqwBi" id="4oL4a6snvN9" role="3clFbw">
             <node concept="37vLTw" id="4oL4a6sntMQ" role="2Oq$k0">
-              <ref role="3cqZAo" node="4oL4a6snrZQ" resolve="deployScriptLocation" />
+              <ref role="3cqZAo" node="4oL4a6snrZQ" resolve="assembleScriptLocation" />
             </node>
             <node concept="17RlXB" id="4oL4a6sn_Su" role="2OqNvi" />
           </node>
@@ -9235,6 +9265,11 @@
         </node>
         <node concept="SfApY" id="3KKoaE5GAT0" role="3cqZAp">
           <node concept="3clFbS" id="3KKoaE5GAT2" role="SfCbr">
+            <node concept="3SKdUt" id="3djbh3AV8rU" role="3cqZAp">
+              <node concept="3SKdUq" id="3djbh3AV8rW" role="3SKWNk">
+                <property role="3SKdUp" value="targets in the mps build lang?" />
+              </node>
+            </node>
             <node concept="3clFbF" id="3KKoaE5G9t0" role="3cqZAp">
               <node concept="37vLTI" id="3KKoaE5GbL9" role="3clFbG">
                 <node concept="2LYoGx" id="7xMU3i03Sx8" role="37vLTx">
@@ -9242,13 +9277,13 @@
                   <node concept="2LYoGL" id="7xMU3i03Sx9" role="2LYoGw">
                     <ref role="2LYoGK" to="ximz:j$XAJDK0Dr" resolve="antFilePath" />
                     <node concept="37vLTw" id="4oL4a6snCNg" role="2LYoGN">
-                      <ref role="3cqZAo" node="4oL4a6snrZQ" resolve="deployScriptLocation" />
+                      <ref role="3cqZAo" node="4oL4a6snrZQ" resolve="assembleScriptLocation" />
                     </node>
                   </node>
                   <node concept="2LYoGL" id="7xMU3i03Sxd" role="2LYoGw">
                     <ref role="2LYoGK" to="ximz:j$XAJDK0D$" resolve="targetName" />
                     <node concept="Xl_RD" id="7xMU3i03Sxe" role="2LYoGN">
-                      <property role="Xl_RC" value="buildDependents assemble" />
+                      <property role="Xl_RC" value="buildDependents build" />
                     </node>
                   </node>
                 </node>
@@ -9287,7 +9322,7 @@
               <node concept="RRSsy" id="3jYQuSB36B0" role="3cqZAp">
                 <property role="RRSoG" value="error" />
                 <node concept="Xl_RD" id="3KKoaE5GBdU" role="RRSoy">
-                  <property role="Xl_RC" value="Can not deploy plugins" />
+                  <property role="Xl_RC" value="Cannot assemble plugins" />
                 </node>
                 <node concept="37vLTw" id="3KKoaE5GBdW" role="RRSow">
                   <ref role="3cqZAo" node="3KKoaE5GAT5" resolve="e" />
@@ -9495,7 +9530,7 @@
                             <ref role="3cqZAo" node="6hlEMz_kSaK" resolve="consolePanel" />
                           </node>
                           <node concept="Xl_RD" id="6hlEMz_kRtC" role="37wK5m">
-                            <property role="Xl_RC" value="Deploy plugins" />
+                            <property role="Xl_RC" value="Assemble Plugins" />
                           </node>
                           <node concept="10M0yZ" id="7zMrP8vNXIK" role="37wK5m">
                             <ref role="3cqZAo" to="l7us:~MPSIcons$Ant.Build" resolve="Build" />
@@ -9685,13 +9720,17 @@
         </node>
         <node concept="3clFbJ" id="3KKoaE5K0ex" role="3cqZAp">
           <node concept="3clFbS" id="3KKoaE5K0e$" role="3clFbx">
-            <node concept="3clFbF" id="4oL4a6snGeO" role="3cqZAp">
-              <node concept="2OqwBi" id="4oL4a6snGji" role="3clFbG">
-                <node concept="37vLTw" id="4oL4a6snGeN" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4oL4a6snlaM" resolve="script" />
-                </node>
-                <node concept="liA8E" id="4oL4a6snH3l" role="2OqNvi">
-                  <ref role="37wK5l" node="4oL4a6slRrt" resolve="dispose" />
+            <node concept="1X3_iC" id="3djbh3AV9YS" role="lGtFl">
+              <property role="3V$3am" value="statement" />
+              <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+              <node concept="3clFbF" id="4oL4a6snGeO" role="8Wnug">
+                <node concept="2OqwBi" id="4oL4a6snGji" role="3clFbG">
+                  <node concept="37vLTw" id="4oL4a6snGeN" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4oL4a6snlaM" resolve="script" />
+                  </node>
+                  <node concept="liA8E" id="4oL4a6snH3l" role="2OqNvi">
+                    <ref role="37wK5l" node="4oL4a6slRrt" resolve="dispose" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -9729,7 +9768,7 @@
               </node>
             </node>
             <node concept="yYjwu" id="3KKoaE5K4Cp" role="37wK5m">
-              <ref role="3cqZAo" node="3KKoaE5J7Jn" resolve="deployLocation" />
+              <ref role="3cqZAo" node="3KKoaE5J7Jn" resolve="assembleLocation" />
             </node>
           </node>
         </node>
@@ -9760,7 +9799,7 @@
       </node>
     </node>
     <node concept="yYmJa" id="3KKoaE5J7Jn" role="yYnPO">
-      <property role="TrG5h" value="deployLocation" />
+      <property role="TrG5h" value="assembleLocation" />
       <node concept="3uibUv" id="3KKoaE5J8DB" role="1tU5fm">
         <ref role="3uigEE" to="guwi:~File" resolve="File" />
       </node>

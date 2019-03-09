@@ -212,8 +212,10 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.server.ScriptTestContributor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.server.TestsContributor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IMapping" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.tool.common.JDOMUtil" />
+    <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.RepositoryDescriptor" />
     <classNode dependClassName="jetbrains.mps.tool.common.ScriptData" />
     <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />

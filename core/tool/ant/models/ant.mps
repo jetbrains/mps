@@ -9722,24 +9722,23 @@
   </node>
   <node concept="312cEu" id="QkG2t1bwWL">
     <property role="TrG5h" value="Plugin" />
-    <node concept="312cEg" id="r$A3E5vVXh" role="jymVt">
-      <property role="TrG5h" value="myDescriptor" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="r$A3E5vVS7" role="1B3o_S" />
-      <node concept="3uibUv" id="r$A3E5vVX9" role="1tU5fm">
-        <ref role="3uigEE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
-      </node>
-      <node concept="2ShNRf" id="r$A3E5vW2p" role="33vP2m">
-        <node concept="1pGfFk" id="4OPNMy2bIyF" role="2ShVmc">
-          <ref role="37wK5l" to="asz6:4OPNMy23env" resolve="PluginData" />
-        </node>
-      </node>
+    <node concept="312cEg" id="3djbh3AQ_st" role="jymVt">
+      <property role="TrG5h" value="myPath" />
+      <node concept="3Tm6S6" id="3djbh3AQ_oo" role="1B3o_S" />
+      <node concept="17QB3L" id="3djbh3AQ_sl" role="1tU5fm" />
     </node>
+    <node concept="312cEg" id="3djbh3AQ_wq" role="jymVt">
+      <property role="TrG5h" value="myId" />
+      <node concept="3Tm6S6" id="3djbh3AQ_wr" role="1B3o_S" />
+      <node concept="17QB3L" id="3djbh3AQ_ws" role="1tU5fm" />
+    </node>
+    <node concept="2tJIrI" id="3djbh3AQ_Bt" role="jymVt" />
     <node concept="3clFbW" id="QkG2t1bxb6" role="jymVt">
       <node concept="3cqZAl" id="QkG2t1bxb7" role="3clF45" />
       <node concept="3Tm1VV" id="QkG2t1bxb8" role="1B3o_S" />
       <node concept="3clFbS" id="QkG2t1bxb9" role="3clF47" />
     </node>
+    <node concept="2tJIrI" id="3djbh3AQu2i" role="jymVt" />
     <node concept="3clFb_" id="QkG2t1bxba" role="jymVt">
       <property role="TrG5h" value="setPath" />
       <node concept="3cqZAl" id="QkG2t1bxbb" role="3clF45" />
@@ -9755,13 +9754,8 @@
                 <ref role="37wK5l" to="guwi:~File.getAbsolutePath():java.lang.String" resolve="getAbsolutePath" />
               </node>
             </node>
-            <node concept="2OqwBi" id="r$A3E5vX8e" role="37vLTJ">
-              <node concept="37vLTw" id="r$A3E5vX5m" role="2Oq$k0">
-                <ref role="3cqZAo" node="r$A3E5vVXh" resolve="myDescriptor" />
-              </node>
-              <node concept="2OwXpG" id="r$A3E5vXbe" role="2OqNvi">
-                <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
-              </node>
+            <node concept="37vLTw" id="3djbh3AQ_F9" role="37vLTJ">
+              <ref role="3cqZAo" node="3djbh3AQ_st" resolve="myPath" />
             </node>
           </node>
         </node>
@@ -9777,6 +9771,7 @@
     <node concept="3uibUv" id="QkG2t1bwWN" role="1zkMxy">
       <ref role="3uigEE" to="rg95:~DataType" resolve="DataType" />
     </node>
+    <node concept="2tJIrI" id="3djbh3AQu2j" role="jymVt" />
     <node concept="3clFb_" id="r$A3E5qP5D" role="jymVt">
       <property role="TrG5h" value="setId" />
       <node concept="3cqZAl" id="r$A3E5qP5E" role="3clF45" />
@@ -9787,13 +9782,8 @@
             <node concept="37vLTw" id="r$A3E5qP5J" role="37vLTx">
               <ref role="3cqZAo" node="r$A3E5qP5K" resolve="id" />
             </node>
-            <node concept="2OqwBi" id="r$A3E5vYyp" role="37vLTJ">
-              <node concept="37vLTw" id="r$A3E5vYu5" role="2Oq$k0">
-                <ref role="3cqZAo" node="r$A3E5vVXh" resolve="myDescriptor" />
-              </node>
-              <node concept="2OwXpG" id="r$A3E5vY_B" role="2OqNvi">
-                <ref role="2Oxat5" to="asz6:r$A3E5qOHV" resolve="id" />
-              </node>
+            <node concept="37vLTw" id="3djbh3AQ_Lt" role="37vLTJ">
+              <ref role="3cqZAo" node="3djbh3AQ_wq" resolve="myId" />
             </node>
           </node>
         </node>
@@ -9805,6 +9795,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3djbh3AQu2k" role="jymVt" />
     <node concept="3clFb_" id="r$A3E5vYGp" role="jymVt">
       <property role="TrG5h" value="getDescriptor" />
       <node concept="3uibUv" id="r$A3E5vYGq" role="3clF45">
@@ -9813,8 +9804,16 @@
       <node concept="3Tm1VV" id="r$A3E5vYGr" role="1B3o_S" />
       <node concept="3clFbS" id="r$A3E5vYGs" role="3clF47">
         <node concept="3clFbF" id="r$A3E5vYGt" role="3cqZAp">
-          <node concept="37vLTw" id="r$A3E5vYGo" role="3clFbG">
-            <ref role="3cqZAo" node="r$A3E5vVXh" resolve="myDescriptor" />
+          <node concept="2ShNRf" id="3djbh3AQ_Vc" role="3clFbG">
+            <node concept="1pGfFk" id="3djbh3AQBsb" role="2ShVmc">
+              <ref role="37wK5l" to="asz6:4OPNMy23eT$" resolve="PluginData" />
+              <node concept="37vLTw" id="3djbh3AQBsV" role="37wK5m">
+                <ref role="3cqZAo" node="3djbh3AQ_st" resolve="myPath" />
+              </node>
+              <node concept="37vLTw" id="3djbh3AQBM7" role="37wK5m">
+                <ref role="3cqZAo" node="3djbh3AQ_wq" resolve="myId" />
+              </node>
+            </node>
           </node>
         </node>
       </node>

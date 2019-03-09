@@ -43,6 +43,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   private JavaRunParameters_Configuration myJavaRunParameters = new JavaRunParameters_Configuration(this.getProject());
   private DeployPluginsSettings_Configuration myDeploySettings = new DeployPluginsSettings_Configuration(this.getProject());
 
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getJUnitSettings().checkConfiguration(context);
     this.getDeploySettings().checkConfiguration(context);
@@ -137,10 +138,13 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   }
 
   public void setJUnitSettings(JUnitSettings_Configuration value) {
+    myJUnitSettings = value;
   }
   public void setJavaRunParameters(JavaRunParameters_Configuration value) {
+    myJavaRunParameters = value;
   }
   public void setDeploySettings(DeployPluginsSettings_Configuration value) {
+    myDeploySettings = value;
   }
 
   public JUnitTests_Configuration(Project project, ConfigurationFactory factory, String name) {
@@ -182,7 +186,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   public Object[] createMakeNodePointersTask() {
     return new Object[]{this.getTestsToMake()};
   }
-  public Object[] createDeployPluginsTask() {
+  public Object[] createAssemblePluginsBeforeTaskTask() {
     return new Object[]{this.getDeploySettings().getPluginsListToDeploy(), this.getJUnitSettings().getPluginsPath()};
   }
 }

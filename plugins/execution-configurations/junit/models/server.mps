@@ -1672,6 +1672,47 @@
             </node>
           </node>
         </node>
+        <node concept="2Gpval" id="3qbI1lNmrVt" role="3cqZAp">
+          <node concept="2GrKxI" id="3qbI1lNmrVu" role="2Gsz3X">
+            <property role="TrG5h" value="p" />
+          </node>
+          <node concept="2OqwBi" id="3qbI1lNmrVv" role="2GsD0m">
+            <node concept="37vLTw" id="3qbI1lNmrVw" role="2Oq$k0">
+              <ref role="3cqZAo" node="1lYY8Nv7NGc" resolve="startupArguments" />
+            </node>
+            <node concept="liA8E" id="3qbI1lNmtTi" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:r$A3E5taIM" resolve="getPlugins" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3qbI1lNmrVy" role="2LFqv$">
+            <node concept="3clFbF" id="3qbI1lNmrVz" role="3cqZAp">
+              <node concept="2OqwBi" id="3qbI1lNmrV$" role="3clFbG">
+                <node concept="37vLTw" id="3qbI1lNmrV_" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1_D5Bk1SJqR" resolve="cfg" />
+                </node>
+                <node concept="liA8E" id="3qbI1lNmrVA" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:6rx4kZDk6GC" resolve="addPlugin" />
+                  <node concept="2OqwBi" id="3qbI1lNmwxM" role="37wK5m">
+                    <node concept="2GrUjf" id="3qbI1lNmrVB" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="3qbI1lNmrVu" resolve="p" />
+                    </node>
+                    <node concept="2OwXpG" id="3qbI1lNmIP1" role="2OqNvi">
+                      <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="3qbI1lNmKlc" role="37wK5m">
+                    <node concept="2GrUjf" id="3qbI1lNmJDc" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="3qbI1lNmrVu" resolve="p" />
+                    </node>
+                    <node concept="2OwXpG" id="3qbI1lNn7lr" role="2OqNvi">
+                      <ref role="2Oxat5" to="asz6:r$A3E5qOHV" resolve="id" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="2Gpval" id="6fYV1N69lSk" role="3cqZAp">
           <node concept="2GrKxI" id="6fYV1N69lSm" role="2Gsz3X">
             <property role="TrG5h" value="m" />

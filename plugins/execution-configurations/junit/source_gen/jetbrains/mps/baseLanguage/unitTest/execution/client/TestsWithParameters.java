@@ -45,6 +45,7 @@ public final class TestsWithParameters {
     return Collections.unmodifiableSet(myRequiredModules);
   }
 
+  @NotNull
   public static TestsWithParameters createFromTest2RunList(@NotNull List<ITestNodeWrapper> tests2Run) throws ExecutionException {
     List<ITestNodeWrapper> testsNoNull = ListSequence.fromList(tests2Run).where(new NotNullWhereFilter<ITestNodeWrapper>()).toListSequence();
     if (ListSequence.fromList(testsNoNull).isEmpty()) {

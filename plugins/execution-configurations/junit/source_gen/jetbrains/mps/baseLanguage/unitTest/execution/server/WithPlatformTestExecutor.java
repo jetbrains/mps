@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.tool.common.RepositoryDescriptor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 /**
  * Command-line front-end to launch MPS tests that need MPS environment (ITestable, incliding BTestCase, and JUnit3/JUnit4 ClassConcept with respective annotation/superclass) 
@@ -75,6 +77,9 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
     }
     for (String l : startupArguments.getLibraryJars()) {
       cfg.addLib(l);
+    }
+    for (PluginData p : ListSequence.fromList(startupArguments.getPlugins())) {
+      cfg.addPlugin(p.path, p.id);
     }
     for (IMapping<String, String> m : MapSequence.fromMap(startupArguments.getMacros())) {
       cfg.addMacro(m.key(), new File(m.value()));

@@ -34,6 +34,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
   @NotNull
   private Remote_Configuration.MyState myState = new Remote_Configuration.MyState();
 
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
   }
   @Override
@@ -74,8 +75,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
 
   public final class MyState {
     public RemoteConnectionSettings mySettings = new RemoteConnectionSettings("localhost", 5005);
-    public MyState() {
-    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
       Remote_Configuration.MyState state = new Remote_Configuration.MyState();

@@ -17,7 +17,6 @@ import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
-import jetbrains.mps.execution.lib.ClonableList;
 import java.io.File;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.structure.modules.ModuleReference;
@@ -37,14 +36,17 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.apache.log4j.Level;
+import jetbrains.mps.execution.lib.ClonableList;
 
 public class JUnitSettings_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(JUnitSettings_Configuration.class);
   @NotNull
   private JUnitSettings_Configuration.MyState myState = new JUnitSettings_Configuration.MyState();
+
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     if (this.getRunType() < 0 || this.getRunType() > JUnitRunTypes.values().length) {
-      throw new RuntimeConfigurationError("Type of test not selected.");
+      throw new RuntimeConfigurationError("Type of test is not selected");
     }
     // We do not validate, only check if there is something to test, since validating everything be very slow 
     // see MPS-8781 JUnit run configuration check method performance. 
@@ -60,6 +62,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
   }
+
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -67,66 +70,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     }
     XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
   }
-  public String getModelRef() {
-    return myState.myModelRef;
-  }
-  public String getModuleRef() {
-    return myState.myModuleRef;
-  }
-  public boolean getInProcess() {
-    return myState.myInProcess;
-  }
-  public boolean getReuseCaches() {
-    return myState.myReuseCaches;
-  }
-  public boolean getOverrideCachesLocation() {
-    return myState.myOverrideCachesLocation;
-  }
-  public boolean getDebug() {
-    return myState.myDebug;
-  }
-  public String getCachesPath() {
-    return myState.myCachesPath;
-  }
-  public ClonableList<String> getTestCases() {
-    return myState.myTestCases;
-  }
-  public ClonableList<String> getTestMethods() {
-    return myState.myTestMethods;
-  }
-  public int getRunType() {
-    return myState.myRunType;
-  }
-  public void setModelRef(String value) {
-    myState.myModelRef = value;
-  }
-  public void setModuleRef(String value) {
-    myState.myModuleRef = value;
-  }
-  public void setInProcess(boolean value) {
-    myState.myInProcess = value;
-  }
-  public void setReuseCaches(boolean value) {
-    myState.myReuseCaches = value;
-  }
-  public void setOverrideCachesLocation(boolean value) {
-    myState.myOverrideCachesLocation = value;
-  }
-  public void setDebug(boolean value) {
-    myState.myDebug = value;
-  }
-  public void setCachesPath(String value) {
-    myState.myCachesPath = value;
-  }
-  public void setTestCases(ClonableList<String> value) {
-    myState.myTestCases = value;
-  }
-  public void setTestMethods(ClonableList<String> value) {
-    myState.myTestMethods = value;
-  }
-  public void setRunType(int value) {
-    myState.myRunType = value;
-  }
+
   public String getDefaultPathForCaches() {
     return new DefaultCachesPathChooser().chooseDir();
   }
@@ -223,6 +167,69 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     }
     return clone;
   }
+
+  public String getModelRef() {
+    return myState.myModelRef;
+  }
+  public String getModuleRef() {
+    return myState.myModuleRef;
+  }
+  public boolean getInProcess() {
+    return myState.myInProcess;
+  }
+  public boolean getReuseCaches() {
+    return myState.myReuseCaches;
+  }
+  public boolean getOverrideCachesLocation() {
+    return myState.myOverrideCachesLocation;
+  }
+  public boolean getDebug() {
+    return myState.myDebug;
+  }
+  public String getCachesPath() {
+    return myState.myCachesPath;
+  }
+  public ClonableList<String> getTestCases() {
+    return myState.myTestCases;
+  }
+  public ClonableList<String> getTestMethods() {
+    return myState.myTestMethods;
+  }
+  public int getRunType() {
+    return myState.myRunType;
+  }
+
+  public void setModelRef(String value) {
+    myState.myModelRef = value;
+  }
+  public void setModuleRef(String value) {
+    myState.myModuleRef = value;
+  }
+  public void setInProcess(boolean value) {
+    myState.myInProcess = value;
+  }
+  public void setReuseCaches(boolean value) {
+    myState.myReuseCaches = value;
+  }
+  public void setOverrideCachesLocation(boolean value) {
+    myState.myOverrideCachesLocation = value;
+  }
+  public void setDebug(boolean value) {
+    myState.myDebug = value;
+  }
+  public void setCachesPath(String value) {
+    myState.myCachesPath = value;
+  }
+  public void setTestCases(ClonableList<String> value) {
+    myState.myTestCases = value;
+  }
+  public void setTestMethods(ClonableList<String> value) {
+    myState.myTestMethods = value;
+  }
+  public void setRunType(int value) {
+    myState.myRunType = value;
+  }
+
   public final class MyState {
     public String myModelRef;
     public String myModuleRef;
@@ -234,8 +241,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     public ClonableList<String> myTestCases = new ClonableList<String>();
     public ClonableList<String> myTestMethods = new ClonableList<String>();
     public int myRunType = JUnitRunTypes.PROJECT.ordinal();
-    public MyState() {
-    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
       JUnitSettings_Configuration.MyState state = new JUnitSettings_Configuration.MyState();

@@ -41,6 +41,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
   private DeployPlugins_Configuration.MyState myState = new DeployPlugins_Configuration.MyState();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
 
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getPluginsSettings().checkConfiguration(context);
     if (ListSequence.fromList(this.getPluginsSettings().getPluginsListToDeploy()).isEmpty()) {
@@ -124,6 +125,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
   }
 
   public void setPluginsSettings(DeployPluginsSettings_Configuration value) {
+    myPluginsSettings = value;
   }
   public void setSkipModulesLoading(boolean value) {
     myState.mySkipModulesLoading = value;
@@ -135,8 +137,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
   public final class MyState {
     public boolean mySkipModulesLoading = true;
     public boolean myRestartCurrentInstance = true;
-    public MyState() {
-    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
       DeployPlugins_Configuration.MyState state = new DeployPlugins_Configuration.MyState();

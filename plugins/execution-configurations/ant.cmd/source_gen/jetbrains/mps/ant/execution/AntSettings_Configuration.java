@@ -18,12 +18,15 @@ public class AntSettings_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(AntSettings_Configuration.class);
   @NotNull
   private AntSettings_Configuration.MyState myState = new AntSettings_Configuration.MyState();
+
+  @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
   }
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
   }
+
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -31,24 +34,7 @@ public class AntSettings_Configuration implements IPersistentConfiguration {
     }
     XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
   }
-  public boolean getUseOtherAntLocation() {
-    return myState.myUseOtherAntLocation;
-  }
-  public String getOtherAntLocation() {
-    return myState.myOtherAntLocation;
-  }
-  public String getAntOptions() {
-    return myState.myAntOptions;
-  }
-  public void setUseOtherAntLocation(boolean value) {
-    myState.myUseOtherAntLocation = value;
-  }
-  public void setOtherAntLocation(String value) {
-    myState.myOtherAntLocation = value;
-  }
-  public void setAntOptions(String value) {
-    myState.myAntOptions = value;
-  }
+
   @Override
   public AntSettings_Configuration clone() {
     AntSettings_Configuration clone = createCloneTemplate();
@@ -63,12 +49,32 @@ public class AntSettings_Configuration implements IPersistentConfiguration {
     }
     return clone;
   }
+
+  public boolean getUseOtherAntLocation() {
+    return myState.myUseOtherAntLocation;
+  }
+  public String getOtherAntLocation() {
+    return myState.myOtherAntLocation;
+  }
+  public String getAntOptions() {
+    return myState.myAntOptions;
+  }
+
+  public void setUseOtherAntLocation(boolean value) {
+    myState.myUseOtherAntLocation = value;
+  }
+  public void setOtherAntLocation(String value) {
+    myState.myOtherAntLocation = value;
+  }
+  public void setAntOptions(String value) {
+    myState.myAntOptions = value;
+  }
+
   public final class MyState {
     public boolean myUseOtherAntLocation;
     public String myOtherAntLocation;
     public String myAntOptions;
-    public MyState() {
-    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
       AntSettings_Configuration.MyState state = new AntSettings_Configuration.MyState();
