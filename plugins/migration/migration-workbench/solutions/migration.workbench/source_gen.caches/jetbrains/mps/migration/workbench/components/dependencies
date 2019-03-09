@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.migration.workbench.components.HeadlessMigrationProblemHandler">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
+    <classNode extendsClassName="jetbrains.mps.migration.global.MigrationProblemHandler" />
+  </dependency>
   <dependency className="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler">
     <classNode dependClassName="com.intellij.icons.AllIcons" />
     <classNode dependClassName="java.lang.Iterable" />
@@ -35,14 +44,13 @@
     <classNode dependClassName="jetbrains.mps.make.MakeSession" />
     <classNode dependClassName="jetbrains.mps.make.resources.IResource" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.smodel.resources.MResource" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
-    <classNode extendsClassName="com.intellij.openapi.components.AbstractProjectComponent" />
+    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
     <classNode extendsClassName="jetbrains.mps.migration.global.MigrationProblemHandler" />
   </dependency>
 </dependenciesRoot>

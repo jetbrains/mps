@@ -19,6 +19,7 @@
   <component>
     <interface-class>jetbrains.mps.migration.global.MigrationProblemHandler</interface-class>
     <implementation-class>jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler</implementation-class>
+    <headless-implementation-class>jetbrains.mps.migration.workbench.components.HeadlessMigrationProblemHandler</headless-implementation-class>
   </component>
   </project-components>
 
