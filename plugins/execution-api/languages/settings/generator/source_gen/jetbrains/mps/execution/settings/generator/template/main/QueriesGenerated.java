@@ -26,6 +26,7 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
+import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -47,6 +48,7 @@ import jetbrains.mps.generator.impl.query.PropertyValueQuery;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
+import jetbrains.mps.generator.impl.query.VariableValueQuery;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
@@ -224,6 +226,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_2_11(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "PersistentPropertyToField");
   }
+  public static Object referenceMacro_GetReferent_2_12(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "PersistentPropertyToField");
+  }
   public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91010eL, 0xd244b712f91010fL, "variableDeclaration")), "PersistentPropertyToField");
   }
@@ -314,12 +319,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, 0xd244b712f910021L, "editor")), MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013dL, 0xd244b712f910140L, "resetFrom")) != null);
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
-    //  There's myState field only when there are state values to persist 
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it));
-      }
-    }).isNotEmpty();
+    return ((Boolean) _context.getVariable("var:DoGenerateState"));
   }
   public static boolean ifMacro_Condition_2_1(final IfMacroContext _context) {
     // see $IF$ [myState] 
@@ -352,15 +352,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return !((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(_context.getNode()));
   }
   public static boolean ifMacro_Condition_2_6(final IfMacroContext _context) {
-    // see $IF$ [myState] 
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it));
-      }
-    }).isNotEmpty();
+    return ((Boolean) _context.getVariable("var:DoGenerateState"));
   }
   public static boolean ifMacro_Condition_2_7(final IfMacroContext _context) {
-    return TypeChecker.getInstance().getSubtypingManager().isSubtype(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), _quotation_createNode_x583g4_b0a0a19());
+    return TypeChecker.getInstance().getSubtypingManager().isSubtype(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), _quotation_createNode_x583g4_b0a0a29());
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")) == null);
@@ -614,6 +609,14 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode weavingRule_ContextQuery_0_4(final WeavingMappingRuleContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "ConfigurationToClass");
+  }
+  public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
+    //  There's myState field only when there are state values to persist 
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty"))).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return !((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it));
+      }
+    }).isNotEmpty();
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -1126,7 +1129,7 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("7337446690843371870", new QueriesGenerated.IfMC(i++));
     imcMethods.put("7337446690844065038", new QueriesGenerated.IfMC(i++));
     imcMethods.put("5041115067675810617", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("5041115067675810686", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("3930437502076308318", new QueriesGenerated.IfMC(i++));
     imcMethods.put("7337446690843293030", new QueriesGenerated.IfMC(i++));
     imcMethods.put("5041115067675810373", new QueriesGenerated.IfMC(i++));
     imcMethods.put("5041115067675810909", new QueriesGenerated.IfMC(i++));
@@ -1205,36 +1208,37 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("5041115067675810609", new QueriesGenerated.RTQ(8, "myPersistentProperty"));
     rtqMethods.put("5041115067675810628", new QueriesGenerated.RTQ(9, "myTemplate"));
     rtqMethods.put("5041115067675810678", new QueriesGenerated.RTQ(10, "myPersistentProperty"));
-    rtqMethods.put("5041115067675810324", new QueriesGenerated.RTQ(11, "myPersistentProperty"));
-    rtqMethods.put("5041115067675810336", new QueriesGenerated.RTQ(12, "myPersistentProperty"));
-    rtqMethods.put("5041115067675810347", new QueriesGenerated.RTQ(13, "myPersistentProperty"));
-    rtqMethods.put("5041115067675810387", new QueriesGenerated.RTQ(14, "myPersistentProperty"));
-    rtqMethods.put("5041115067675810398", new QueriesGenerated.RTQ(15, "myPersistentProperty"));
-    rtqMethods.put("5041115067675810942", new QueriesGenerated.RTQ(16, "myPersistentProperty"));
-    rtqMethods.put("5041115067675811035", new QueriesGenerated.RTQ(17, null));
-    rtqMethods.put("5041115067675811048", new QueriesGenerated.RTQ(18, null));
-    rtqMethods.put("4342433276614908009", new QueriesGenerated.RTQ(19, "PersistentConfiguration_Template"));
-    rtqMethods.put("4342433276614928678", new QueriesGenerated.RTQ(20, "field"));
-    rtqMethods.put("4342433276614907993", new QueriesGenerated.RTQ(21, "PersistentConfiguration_Template"));
-    rtqMethods.put("5041115067675811187", new QueriesGenerated.RTQ(22, "myEditor"));
-    rtqMethods.put("5041115067675811178", new QueriesGenerated.RTQ(23, "editor"));
-    rtqMethods.put("5041115067675811214", new QueriesGenerated.RTQ(24, "myField"));
-    rtqMethods.put("5041115067675811205", new QueriesGenerated.RTQ(25, "field"));
-    rtqMethods.put("5041115067675811288", new QueriesGenerated.RTQ(26, "myTemplate"));
-    rtqMethods.put("5041115067675811306", new QueriesGenerated.RTQ(27, "PersistentConfigurationTemplateWeave"));
-    rtqMethods.put("5041115067675811316", new QueriesGenerated.RTQ(28, "SettingsEditorEx"));
-    rtqMethods.put("5041115067675811328", new QueriesGenerated.RTQ(29, "MyState"));
-    rtqMethods.put("5041115067675811339", new QueriesGenerated.RTQ(30, "myConfiguration"));
-    rtqMethods.put("5041115067675811374", new QueriesGenerated.RTQ(31, "myTemplate"));
-    rtqMethods.put("5041115067675811421", new QueriesGenerated.RTQ(32, "name"));
-    rtqMethods.put("5041115067675811430", new QueriesGenerated.RTQ(33, "myField"));
-    rtqMethods.put("5041115067675811493", new QueriesGenerated.RTQ(34, null));
-    rtqMethods.put("5041115067675811557", new QueriesGenerated.RTQ(35, "applyTo"));
-    rtqMethods.put("5041115067675811569", new QueriesGenerated.RTQ(36, null));
-    rtqMethods.put("5041115067675932687", new QueriesGenerated.RTQ(37, "setPersistentProperty"));
-    rtqMethods.put("5041115067675939293", new QueriesGenerated.RTQ(38, "method"));
-    rtqMethods.put("203908296139451945", new QueriesGenerated.RTQ(39, "IPersistentConfiguration"));
-    rtqMethods.put("203908296139284728", new QueriesGenerated.RTQ(40, "IPersistentConfiguration"));
+    rtqMethods.put("3930437502076692542", new QueriesGenerated.RTQ(11, "myTemplate"));
+    rtqMethods.put("5041115067675810324", new QueriesGenerated.RTQ(12, "myPersistentProperty"));
+    rtqMethods.put("5041115067675810336", new QueriesGenerated.RTQ(13, "myPersistentProperty"));
+    rtqMethods.put("5041115067675810347", new QueriesGenerated.RTQ(14, "myPersistentProperty"));
+    rtqMethods.put("5041115067675810387", new QueriesGenerated.RTQ(15, "myPersistentProperty"));
+    rtqMethods.put("5041115067675810398", new QueriesGenerated.RTQ(16, "myPersistentProperty"));
+    rtqMethods.put("5041115067675810942", new QueriesGenerated.RTQ(17, "myPersistentProperty"));
+    rtqMethods.put("5041115067675811035", new QueriesGenerated.RTQ(18, null));
+    rtqMethods.put("5041115067675811048", new QueriesGenerated.RTQ(19, null));
+    rtqMethods.put("4342433276614908009", new QueriesGenerated.RTQ(20, "PersistentConfiguration_Template"));
+    rtqMethods.put("4342433276614928678", new QueriesGenerated.RTQ(21, "field"));
+    rtqMethods.put("4342433276614907993", new QueriesGenerated.RTQ(22, "PersistentConfiguration_Template"));
+    rtqMethods.put("5041115067675811187", new QueriesGenerated.RTQ(23, "myEditor"));
+    rtqMethods.put("5041115067675811178", new QueriesGenerated.RTQ(24, "editor"));
+    rtqMethods.put("5041115067675811214", new QueriesGenerated.RTQ(25, "myField"));
+    rtqMethods.put("5041115067675811205", new QueriesGenerated.RTQ(26, "field"));
+    rtqMethods.put("5041115067675811288", new QueriesGenerated.RTQ(27, "myTemplate"));
+    rtqMethods.put("5041115067675811306", new QueriesGenerated.RTQ(28, "PersistentConfigurationTemplateWeave"));
+    rtqMethods.put("5041115067675811316", new QueriesGenerated.RTQ(29, "SettingsEditorEx"));
+    rtqMethods.put("5041115067675811328", new QueriesGenerated.RTQ(30, null));
+    rtqMethods.put("5041115067675811339", new QueriesGenerated.RTQ(31, "myConfiguration"));
+    rtqMethods.put("5041115067675811374", new QueriesGenerated.RTQ(32, "myTemplate"));
+    rtqMethods.put("5041115067675811421", new QueriesGenerated.RTQ(33, "name"));
+    rtqMethods.put("5041115067675811430", new QueriesGenerated.RTQ(34, "myField"));
+    rtqMethods.put("5041115067675811493", new QueriesGenerated.RTQ(35, null));
+    rtqMethods.put("5041115067675811557", new QueriesGenerated.RTQ(36, "applyTo"));
+    rtqMethods.put("5041115067675811569", new QueriesGenerated.RTQ(37, null));
+    rtqMethods.put("5041115067675932687", new QueriesGenerated.RTQ(38, "setPersistentProperty"));
+    rtqMethods.put("5041115067675939293", new QueriesGenerated.RTQ(39, "method"));
+    rtqMethods.put("203908296139451945", new QueriesGenerated.RTQ(40, "IPersistentConfiguration"));
+    rtqMethods.put("203908296139284728", new QueriesGenerated.RTQ(41, "IPersistentConfiguration"));
   }
   @NotNull
   @Override
@@ -1287,61 +1291,91 @@ public class QueriesGenerated extends QueryProviderBase {
         case 15:
           return QueriesGenerated.referenceMacro_GetReferent_2_11(ctx);
         case 16:
-          return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_2_12(ctx);
         case 17:
-          return QueriesGenerated.referenceMacro_GetReferent_9_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
         case 18:
-          return QueriesGenerated.referenceMacro_GetReferent_10_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_9_0(ctx);
         case 19:
-          return QueriesGenerated.referenceMacro_GetReferent_13_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_10_0(ctx);
         case 20:
-          return QueriesGenerated.referenceMacro_GetReferent_13_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_0(ctx);
         case 21:
-          return QueriesGenerated.referenceMacro_GetReferent_13_2(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_1(ctx);
         case 22:
-          return QueriesGenerated.referenceMacro_GetReferent_13_3(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_2(ctx);
         case 23:
-          return QueriesGenerated.referenceMacro_GetReferent_13_4(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_3(ctx);
         case 24:
-          return QueriesGenerated.referenceMacro_GetReferent_13_5(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_4(ctx);
         case 25:
-          return QueriesGenerated.referenceMacro_GetReferent_13_6(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_5(ctx);
         case 26:
-          return QueriesGenerated.referenceMacro_GetReferent_15_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_6(ctx);
         case 27:
-          return QueriesGenerated.referenceMacro_GetReferent_15_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_0(ctx);
         case 28:
-          return QueriesGenerated.referenceMacro_GetReferent_15_2(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_1(ctx);
         case 29:
-          return QueriesGenerated.referenceMacro_GetReferent_15_3(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_2(ctx);
         case 30:
-          return QueriesGenerated.referenceMacro_GetReferent_15_4(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_3(ctx);
         case 31:
-          return QueriesGenerated.referenceMacro_GetReferent_15_5(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_4(ctx);
         case 32:
-          return QueriesGenerated.referenceMacro_GetReferent_16_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_5(ctx);
         case 33:
-          return QueriesGenerated.referenceMacro_GetReferent_16_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_16_0(ctx);
         case 34:
-          return QueriesGenerated.referenceMacro_GetReferent_18_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_16_1(ctx);
         case 35:
-          return QueriesGenerated.referenceMacro_GetReferent_20_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_18_0(ctx);
         case 36:
-          return QueriesGenerated.referenceMacro_GetReferent_21_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_20_0(ctx);
         case 37:
-          return QueriesGenerated.referenceMacro_GetReferent_22_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_21_0(ctx);
         case 38:
-          return QueriesGenerated.referenceMacro_GetReferent_23_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_22_0(ctx);
         case 39:
-          return QueriesGenerated.referenceMacro_GetReferent_25_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_23_0(ctx);
         case 40:
+          return QueriesGenerated.referenceMacro_GetReferent_25_0(ctx);
+        case 41:
           return QueriesGenerated.referenceMacro_GetReferent_26_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_b0a0a19() {
+  private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
+  {
+    vvqMethods.put("3930437502076353421", new QueriesGenerated.VVQ(0));
+  }
+  @NotNull
+  @Override
+  public VariableValueQuery getVariableValueQuery(@NotNull QueryKey queryKey) {
+    final String id = queryKey.getTemplateNode().getNodeId().toString();
+    if (!(vvqMethods.containsKey(id))) {
+      return super.getVariableValueQuery(queryKey);
+    }
+    return vvqMethods.get(id);
+  }
+  private static class VVQ implements VariableValueQuery {
+    private final int methodKey;
+    /*package*/ VVQ(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @Nullable
+    public Object evaluate(@NotNull TemplateVarContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return QueriesGenerated.varMacro_Value_2_0(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
+      }
+    }
+  }
+  private static SNode _quotation_createNode_x583g4_b0a0a29() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
