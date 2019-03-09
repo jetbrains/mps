@@ -2,7 +2,7 @@
 <model ref="r:b37fdbd0-16ea-49c3-a711-9a930a47b589(jetbrains.mps.lang.migration.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -72,6 +72,10 @@
       </concept>
       <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
         <child id="1088186146602" name="editorComponent" index="1sWHZn" />
+      </concept>
+      <concept id="7597241200646296619" name="jetbrains.mps.lang.editor.structure.QueryFunction_SNode" flags="in" index="3k4GqP" />
+      <concept id="7597241200646296617" name="jetbrains.mps.lang.editor.structure.NavigatableNodeStyleClassItem" flags="ln" index="3k4GqR">
+        <child id="7597241200646296618" name="functionNode" index="3k4GqO" />
       </concept>
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
@@ -691,6 +695,26 @@
                         <node concept="3TrcHB" id="4SG2RcUB3wR" role="2OqNvi">
                           <ref role="3TsBF5" to="53vh:2uZcAeY8Zap" resolve="nodeName" />
                         </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3k4GqR" id="UwyhPpHHn_" role="3F10Kt">
+          <node concept="3k4GqP" id="UwyhPpHHnB" role="3k4GqO">
+            <node concept="3clFbS" id="UwyhPpHHnD" role="2VODD2">
+              <node concept="3clFbF" id="UwyhPpHKtu" role="3cqZAp">
+                <node concept="2OqwBi" id="UwyhPpHJ7M" role="3clFbG">
+                  <node concept="pncrf" id="UwyhPpHIVu" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="UwyhPpHJuS" role="2OqNvi">
+                    <ref role="37wK5l" to="buve:6szrkDoc2K7" resolve="tryToFindNode" />
+                    <node concept="2OqwBi" id="UwyhPpHLUn" role="37wK5m">
+                      <node concept="1Q80Hx" id="UwyhPpHLMT" role="2Oq$k0" />
+                      <node concept="liA8E" id="UwyhPpHMhp" role="2OqNvi">
+                        <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                       </node>
                     </node>
                   </node>

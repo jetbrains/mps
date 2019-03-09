@@ -95,6 +95,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     editorCell.setCellId("ReadOnlyModelAccessor_ktoyyv_c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_ktoyyv_a0c0()));
+    style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_ktoyyv_a1c0());
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
@@ -105,6 +106,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     } else {
       return null;
     }
+  }
+  private SNode _StyleParameter_QueryFunction_ktoyyv_a1c0() {
+    return (SNode) AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(getNode(), getEditorContext().getRepository());
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/");
