@@ -117,9 +117,12 @@ public abstract class EnvironmentBase implements Environment {
 
   @Nullable
   protected ClassLoader createRootClassLoader() {
-    // with idea plugins in actual (global, shared) classpath (both for Mps and Idea env), we don't need yet another CL 
-    // however, it doesn't look right to use same CL for DumbIdeaPluginFacet (supposed to load classes from any idea plugin) 
-    // and for languages/solutions referenced from <library> tag (these shall not get CP with idea plugins). With a single  
+    // with idea plugins in actual (global, shared) classpath (both for Mps and Idea env), 
+    // we don't need yet another CL 
+    // however, it doesn't look right to use same CL for DumbIdeaPluginFacet  
+    // (supposed to load classes from any idea plugin) 
+    // and for languages/solutions referenced from <library> tag 
+    //  (these shall not get CP with idea plugins). With a single  
     // global CP we have at the moment, it's hard to make a distinction, though. 
     return LibraryInitializer.class.getClassLoader();
   }

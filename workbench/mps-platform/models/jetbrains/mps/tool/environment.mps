@@ -41,9 +41,11 @@
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="je6q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library.contributor(MPS.Core/)" />
     <import index="32g5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library(MPS.Core/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -120,6 +122,7 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
+        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -277,13 +280,6 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
-        <property id="709746936026609031" name="linkId" index="3V$3ak" />
-        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
-      </concept>
-      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
-        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
-      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1226511727824" name="jetbrains.mps.baseLanguage.collections.structure.SetType" flags="in" index="2hMVRd">
@@ -297,6 +293,7 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
+      <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
   </registry>
@@ -321,6 +318,15 @@
       <node concept="3Tm6S6" id="3P4ieJFdXRB" role="1B3o_S" />
       <node concept="Xl_RD" id="3P4ieJFdXRD" role="33vP2m">
         <property role="Xl_RC" value="idea.load.plugins.id" />
+      </node>
+    </node>
+    <node concept="Wx3nA" id="12CYGR0YZor" role="jymVt">
+      <property role="TrG5h" value="CREATE_PLUGIN_CLASSLOADERS" />
+      <property role="3TUv4t" value="true" />
+      <node concept="17QB3L" id="12CYGR0YWzp" role="1tU5fm" />
+      <node concept="3Tm1VV" id="12CYGR0YWzo" role="1B3o_S" />
+      <node concept="Xl_RD" id="12CYGR0YWzq" role="33vP2m">
+        <property role="Xl_RC" value="idea.run.tests.with.bundled.plugins" />
       </node>
     </node>
     <node concept="2tJIrI" id="ZnkhVJWDS8" role="jymVt" />
@@ -621,13 +627,8 @@
               <ref role="3cqZAo" node="2jln2VraCpX" resolve="myIdeaApplication" />
             </node>
             <node concept="1rXfSq" id="6z7xhWkushs" role="37vLTx">
-              <ref role="37wK5l" node="6z7xhWku8L1" resolve="createIdeaTestApp" />
+              <ref role="37wK5l" node="6z7xhWku8L1" resolve="createIdeaApplication" />
             </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="Pw_fmFN_qH" role="3cqZAp">
-          <node concept="1rXfSq" id="Pw_fmFN_qF" role="3clFbG">
-            <ref role="37wK5l" node="Pw_fmFMRo6" resolve="disallowAccessToClosedProjectsDir" />
           </node>
         </node>
         <node concept="3clFbH" id="2KZwJXNrjan" role="3cqZAp" />
@@ -674,13 +675,11 @@
             <property role="3SKdUp" value="Probably, with plugin-set-ref to ensure the same plugin set is used" />
           </node>
         </node>
-        <node concept="3clFbH" id="sjigSAx$6k" role="3cqZAp" />
         <node concept="3SKdUt" id="sjigSAx$6l" role="3cqZAp">
           <node concept="3SKdUq" id="sjigSAx$6m" role="3SKWNk">
             <property role="3SKdUp" value="typically, this property is set by generated ant scripts before running tests" />
           </node>
         </node>
-        <node concept="3clFbH" id="sjigSAx$6u" role="3cqZAp" />
         <node concept="3SKdUt" id="sjigSAx$6v" role="3cqZAp">
           <node concept="3SKdUq" id="sjigSAx$6w" role="3SKWNk">
             <property role="3SKdUp" value="otherwise, we set it from config" />
@@ -729,17 +728,37 @@
       <node concept="P$JXv" id="3P4ieJFdQeG" role="lGtFl">
         <node concept="TZ5HA" id="3P4ieJFdQeH" role="TZ5H$">
           <node concept="1dT_AC" id="3P4ieJFdQeI" role="1dT_Ay">
-            <property role="1dT_AB" value="too late to set plugins here." />
+            <property role="1dT_AB" value="Currently it is needed in the tests from sources and ant tasks." />
           </node>
         </node>
-        <node concept="TZ5HA" id="3P4ieJFdSMb" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFdSMc" role="1dT_Ay">
-            <property role="1dT_AB" value="it is the property of the EntryPointConfig the one, that is used in MPSWorker (before new process is started) " />
+        <node concept="TZ5HA" id="3JONhIHes51" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHes52" role="1dT_Ay">
+            <property role="1dT_AB" value="I suggest that it is too late to set the plugins here and" />
           </node>
         </node>
-        <node concept="TZ5HA" id="3P4ieJFdSPO" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFdSPP" role="1dT_Ay">
-            <property role="1dT_AB" value="currently it is needed in tests from sources and I presume nowhere else" />
+        <node concept="TZ5HA" id="3JONhIHeu0D" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHeu0E" role="1dT_Ay">
+            <property role="1dT_AB" value="it is better for ant tasks and run configurations to initialize this properties earlier." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3JONhIHes6e" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHes6f" role="1dT_Ay">
+            <property role="1dT_AB" value="It is the property of the smth like `EntryPointConfig`, the one, that is used in MPSWorker (before new process is started)." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="12CYGR0ZhvZ" role="TZ5H$">
+          <node concept="1dT_AC" id="12CYGR0Zhw0" role="1dT_Ay">
+            <property role="1dT_AB" value="Source tests might be able to entry the execution (and creating a new java process) via the" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="12CYGR0ZhwF" role="TZ5H$">
+          <node concept="1dT_AC" id="12CYGR0ZhwG" role="1dT_Ay">
+            <property role="1dT_AB" value="same utility (in tool.common)" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3JONhIHes4r" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHes4s" role="1dT_Ay">
+            <property role="1dT_AB" value="apyshkin" />
           </node>
         </node>
       </node>
@@ -755,7 +774,7 @@
         </node>
         <node concept="3cpWs8" id="sjigSAxAsg" role="3cqZAp">
           <node concept="3cpWsn" id="sjigSAxAsh" role="3cpWs9">
-            <property role="TrG5h" value="pluginPath" />
+            <property role="TrG5h" value="pluginPathResult" />
             <property role="3TUv4t" value="false" />
             <node concept="3uibUv" id="58KCQIw3xHA" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~StringJoiner" resolve="StringJoiner" />
@@ -771,43 +790,31 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="4OPNMy2e0Iy" role="3cqZAp">
-          <node concept="3cpWsn" id="4OPNMy2e0Iz" role="3cpWs9">
-            <property role="TrG5h" value="preInstalledPluginsPath" />
-            <node concept="3uibUv" id="4OPNMy2e0Ix" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            </node>
-            <node concept="2YIFZM" id="4OPNMy2e0I$" role="33vP2m">
-              <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
-              <ref role="37wK5l" to="18ew:~PathManager.getPreInstalledPluginsPath():java.lang.String" resolve="getPreInstalledPluginsPath" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="4OPNMy2e2Ga" role="3cqZAp">
           <node concept="3clFbS" id="4OPNMy2e2Gc" role="3clFbx">
-            <node concept="3SKdUt" id="4OPNMy2e6zI" role="3cqZAp">
-              <node concept="3SKdUq" id="4OPNMy2e6zK" role="3SKWNk">
-                <property role="3SKdUp" value="PluginManagerCore.loadDescriptors loads plugin from preInstalledPluginsPath when in !unitTest" />
+            <node concept="3SKdUt" id="3qbI1lNnofO" role="3cqZAp">
+              <node concept="3SKdUq" id="2mXsR_u1vij" role="3SKWNk">
+                <property role="3SKdUp" value="it is comfortable for us to mimic the behavior in the non-test mode when we load by default all the plugins" />
               </node>
             </node>
-            <node concept="3SKdUt" id="4OPNMy2e7kw" role="3cqZAp">
-              <node concept="3SKdUq" id="4OPNMy2e7ky" role="3SKWNk">
-                <property role="3SKdUp" value="OTOH, with this code, it's easy to get duplicated plugins as aforementioned method loads plugins both" />
+            <node concept="3SKdUt" id="2mXsR_u1vz3" role="3cqZAp">
+              <node concept="3SKdUq" id="2mXsR_u1vz5" role="3SKWNk">
+                <property role="3SKdUp" value="from the app_dir/plugins folder." />
               </node>
             </node>
-            <node concept="3SKdUt" id="4OPNMy2e7HP" role="3cqZAp">
-              <node concept="3SKdUq" id="4OPNMy2e7HR" role="3SKWNk">
-                <property role="3SKdUp" value="from this property and from classpath. If calling code adds plugins to cp (like MpsLoadTask does), AND PD.getPath" />
+            <node concept="3SKdUt" id="2mXsR_u1vO7" role="3cqZAp">
+              <node concept="3SKdUq" id="2mXsR_u1vO9" role="3SKWNk">
+                <property role="3SKdUp" value="In order to avoid duplication plugin problem (we have IDEA loading plugins from cp, from plugin.path property," />
               </node>
             </node>
-            <node concept="3SKdUt" id="4OPNMy2eH4F" role="3cqZAp">
-              <node concept="3SKdUq" id="4OPNMy2eH4H" role="3SKWNk">
-                <property role="3SKdUp" value="specifies proper location (not just plugin/-relative folder name like EnvironmentConfig.with* methods do), we may get into" />
+            <node concept="3SKdUt" id="2mXsR_u1w46" role="3cqZAp">
+              <node concept="3SKdUq" id="2mXsR_u1w47" role="3SKWNk">
+                <property role="3SKdUp" value="from preinstalled plugins folder (non-test-mode only)" />
               </node>
             </node>
-            <node concept="3SKdUt" id="4OPNMy2eNbi" role="3cqZAp">
-              <node concept="3SKdUq" id="4OPNMy2eNbk" role="3SKWNk">
-                <property role="3SKdUp" value="trouble (IDEA complains about duplicated plugins)" />
+            <node concept="3SKdUt" id="2mXsR_u1GdG" role="3cqZAp">
+              <node concept="3SKdUq" id="2mXsR_u1GdH" role="3SKWNk">
+                <property role="3SKdUp" value="and from user settings plugins folder) we use filtering below which makes it totally 4 places to look after." />
               </node>
             </node>
             <node concept="3cpWs8" id="sjigSAxAsl" role="3cqZAp">
@@ -820,8 +827,9 @@
                 <node concept="2ShNRf" id="sjigSAxAso" role="33vP2m">
                   <node concept="1pGfFk" id="sjigSAxAsp" role="2ShVmc">
                     <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                    <node concept="37vLTw" id="58KCQIw3UsL" role="37wK5m">
-                      <ref role="3cqZAo" node="4OPNMy2e0Iz" resolve="preInstalledPluginsPath" />
+                    <node concept="2YIFZM" id="2mXsR_u1wEX" role="37wK5m">
+                      <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
+                      <ref role="37wK5l" to="bd8o:~PathManager.getPreInstalledPluginsPath():java.lang.String" resolve="getPreInstalledPluginsPath" />
                     </node>
                   </node>
                 </node>
@@ -849,7 +857,7 @@
                     <node concept="3clFbF" id="sjigSAxAsK" role="3cqZAp">
                       <node concept="2OqwBi" id="sjigSAxAsL" role="3clFbG">
                         <node concept="37vLTw" id="58KCQIw3Utr" role="2Oq$k0">
-                          <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
+                          <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPathResult" />
                         </node>
                         <node concept="liA8E" id="sjigSAxAsN" role="2OqNvi">
                           <ref role="37wK5l" to="33ny:~StringJoiner.add(java.lang.CharSequence):java.util.StringJoiner" resolve="add" />
@@ -897,20 +905,32 @@
             </node>
           </node>
           <node concept="3clFbS" id="3a3EL8RMyN6" role="2LFqv$">
-            <node concept="3clFbF" id="mSHDyFrdcG" role="3cqZAp">
-              <node concept="2OqwBi" id="mSHDyFrdeK" role="3clFbG">
-                <node concept="37vLTw" id="58KCQIw4ARX" role="2Oq$k0">
-                  <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
+            <node concept="3clFbJ" id="2Tuefk2gIT7" role="3cqZAp">
+              <node concept="3clFbS" id="2Tuefk2gIT9" role="3clFbx">
+                <node concept="3clFbF" id="mSHDyFrdcG" role="3cqZAp">
+                  <node concept="2OqwBi" id="mSHDyFrdeK" role="3clFbG">
+                    <node concept="37vLTw" id="58KCQIw4ARX" role="2Oq$k0">
+                      <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPathResult" />
+                    </node>
+                    <node concept="liA8E" id="mSHDyFrdph" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~StringJoiner.add(java.lang.CharSequence):java.util.StringJoiner" resolve="add" />
+                      <node concept="2OqwBi" id="2mXsR_u1$19" role="37wK5m">
+                        <node concept="37vLTw" id="2mXsR_u1zVA" role="2Oq$k0">
+                          <ref role="3cqZAo" node="3a3EL8RMyNj" resolve="pd" />
+                        </node>
+                        <node concept="liA8E" id="2mXsR_u1$6C" role="2OqNvi">
+                          <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
-                <node concept="liA8E" id="mSHDyFrdph" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~StringJoiner.add(java.lang.CharSequence):java.util.StringJoiner" resolve="add" />
-                  <node concept="2OqwBi" id="3a3EL8RMAfe" role="37wK5m">
-                    <node concept="37vLTw" id="3a3EL8RMAfd" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3a3EL8RMyNj" resolve="pd" />
-                    </node>
-                    <node concept="liA8E" id="3a3EL8RMAff" role="2OqNvi">
-                      <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
-                    </node>
+              </node>
+              <node concept="3fqX7Q" id="2mXsR_u1Jt7" role="3clFbw">
+                <node concept="1rXfSq" id="2mXsR_u1Jt9" role="3fr31v">
+                  <ref role="37wK5l" node="2mXsR_u1$eU" resolve="isPluginAlreadyLoadedByIDEA" />
+                  <node concept="37vLTw" id="2mXsR_u1Jta" role="37wK5m">
+                    <ref role="3cqZAo" node="3a3EL8RMyNj" resolve="pd" />
                   </node>
                 </node>
               </node>
@@ -924,10 +944,13 @@
         </node>
         <node concept="3SKdUt" id="4OPNMy2fbzK" role="3cqZAp">
           <node concept="3SKdUq" id="4OPNMy2fbzM" role="3SKWNk">
-            <property role="3SKdUp" value="I.e. for unit test mode, complete plugin's classpath has to be in global CP already, and therefore would be loaded by" />
+            <property role="3SKdUp" value="I.e. for unit test mode, complete plugin's classpath has to be in global CP already," />
           </node>
         </node>
-        <node concept="3SKdUt" id="4OPNMy2fhk7" role="3cqZAp">
+        <node concept="3SKdUt" id="3qbI1lNnqcz" role="3cqZAp">
+          <node concept="3SKdUq" id="3qbI1lNnqc$" role="3SKWNk">
+            <property role="3SKdUp" value="and therefore would be loaded by" />
+          </node>
           <node concept="3SKdUq" id="4OPNMy2fhk9" role="3SKWNk">
             <property role="3SKdUp" value="PluginManagerCore.loadDescriptorsFromClassPath. " />
           </node>
@@ -941,7 +964,7 @@
             </node>
             <node concept="2OqwBi" id="3a3EL8RMzL5" role="37wK5m">
               <node concept="37vLTw" id="58KCQIw4B6Y" role="2Oq$k0">
-                <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPath" />
+                <ref role="3cqZAo" node="sjigSAxAsh" resolve="pluginPathResult" />
               </node>
               <node concept="liA8E" id="3a3EL8RMzL7" role="2OqNvi">
                 <ref role="37wK5l" to="33ny:~StringJoiner.toString():java.lang.String" resolve="toString" />
@@ -956,25 +979,86 @@
         <ref role="2AI5Lk" to="ncw5:~Hack" resolve="Hack" />
       </node>
     </node>
+    <node concept="2tJIrI" id="2mXsR_u1B20" role="jymVt" />
+    <node concept="3clFb_" id="2mXsR_u1$eU" role="jymVt">
+      <property role="TrG5h" value="isPluginAlreadyLoadedByIDEA" />
+      <node concept="3Tm6S6" id="2mXsR_u1$eV" role="1B3o_S" />
+      <node concept="10P_77" id="2mXsR_u1$eW" role="3clF45" />
+      <node concept="37vLTG" id="2mXsR_u1$eP" role="3clF46">
+        <property role="TrG5h" value="pd" />
+        <node concept="3uibUv" id="2mXsR_u1$eQ" role="1tU5fm">
+          <ref role="3uigEE" to="79ha:3FVfMMI0zlM" resolve="PluginDescriptor" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="2mXsR_u1$eu" role="3clF47">
+        <node concept="3cpWs8" id="2mXsR_u1$ex" role="3cqZAp">
+          <node concept="3cpWsn" id="2mXsR_u1$ey" role="3cpWs9">
+            <property role="TrG5h" value="path" />
+            <node concept="17QB3L" id="2mXsR_u1$ez" role="1tU5fm" />
+            <node concept="2OqwBi" id="2mXsR_u1$e$" role="33vP2m">
+              <node concept="37vLTw" id="2mXsR_u1$eR" role="2Oq$k0">
+                <ref role="3cqZAo" node="2mXsR_u1$eP" resolve="pd" />
+              </node>
+              <node concept="liA8E" id="2mXsR_u1$eA" role="2OqNvi">
+                <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2mXsR_u1$eN" role="3cqZAp">
+          <node concept="22lmx$" id="2mXsR_u1O2W" role="3cqZAk">
+            <node concept="2YIFZM" id="2mXsR_u1$eG" role="3uHU7B">
+              <ref role="37wK5l" to="18ew:~FileUtil.isAncestor(java.lang.String,java.lang.String):boolean" resolve="isAncestor" />
+              <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+              <node concept="2YIFZM" id="2mXsR_u1$eH" role="37wK5m">
+                <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
+                <ref role="37wK5l" to="bd8o:~PathManager.getPreInstalledPluginsPath():java.lang.String" resolve="getPreInstalledPluginsPath" />
+              </node>
+              <node concept="37vLTw" id="2mXsR_u1$eI" role="37wK5m">
+                <ref role="3cqZAo" node="2mXsR_u1$ey" resolve="path" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="2mXsR_u1$eK" role="3uHU7w">
+              <ref role="37wK5l" to="18ew:~FileUtil.isAncestor(java.lang.String,java.lang.String):boolean" resolve="isAncestor" />
+              <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+              <node concept="2YIFZM" id="2mXsR_u1$eL" role="37wK5m">
+                <ref role="37wK5l" to="bd8o:~PathManager.getPluginsPath():java.lang.String" resolve="getPluginsPath" />
+                <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
+              </node>
+              <node concept="37vLTw" id="2mXsR_u1$eM" role="37wK5m">
+                <ref role="3cqZAo" node="2mXsR_u1$ey" resolve="path" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2mXsR_u1DIg" role="lGtFl">
+        <node concept="TZ5HA" id="2mXsR_u1DIh" role="TZ5H$">
+          <node concept="1dT_AC" id="2mXsR_u1DIi" role="1dT_Ay">
+            <property role="1dT_AB" value="Boolean method to filter out the plugins IDEA will load on its own." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="2mXsR_u1QvU" role="TZ5H$">
+          <node concept="1dT_AC" id="2mXsR_u1QvV" role="1dT_Ay">
+            <property role="1dT_AB" value="We want to put the plugin into the plugin.path property only if it does not reside in the user settings plugins" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="2mXsR_u1Hfw" role="TZ5H$">
+          <node concept="1dT_AC" id="2mXsR_u1Hfx" role="1dT_Ay">
+            <property role="1dT_AB" value="folder which IDEA loads by default, or in the preinstalled plugins folder (which we enabled a few lines above)." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="2mXsR_u1QuZ" role="TZ5H$">
+          <node concept="1dT_AC" id="2mXsR_u1Qv0" role="1dT_Ay">
+            <property role="1dT_AB" value="The reason for the filtering is that IDEA throw error if one plugin is found in more than one way." />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="5A5jZrz7AVC" role="jymVt" />
     <node concept="3clFb_" id="sjigSAxCYH" role="jymVt">
       <property role="TrG5h" value="setPluginIdsPropertyFromConfig" />
       <node concept="3clFbS" id="sjigSAxCYJ" role="3clF47">
-        <node concept="3clFbJ" id="3P4ieJFdWTZ" role="3cqZAp">
-          <node concept="2OqwBi" id="3P4ieJFdWU2" role="3clFbw">
-            <node concept="2YIFZM" id="3P4ieJFdWU3" role="2Oq$k0">
-              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
-              <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-              <node concept="37vLTw" id="3P4ieJFe4cq" role="37wK5m">
-                <ref role="3cqZAo" node="3P4ieJFe0HU" resolve="IDEA_LOAD_PLUGINS_ID" />
-              </node>
-            </node>
-            <node concept="17RvpY" id="3P4ieJFdWU4" role="2OqNvi" />
-          </node>
-          <node concept="3clFbS" id="3P4ieJFdWU0" role="3clFbx">
-            <node concept="3cpWs6" id="3P4ieJFdWU1" role="3cqZAp" />
-          </node>
-        </node>
         <node concept="3cpWs8" id="sjigSAxCYK" role="3cqZAp">
           <node concept="3cpWsn" id="sjigSAxCYL" role="3cpWs9">
             <property role="TrG5h" value="result" />
@@ -984,9 +1068,8 @@
             <node concept="2ShNRf" id="sjigSAxCYN" role="33vP2m">
               <node concept="1pGfFk" id="sjigSAxCYO" role="2ShVmc">
                 <ref role="37wK5l" to="33ny:~StringJoiner.&lt;init&gt;(java.lang.CharSequence)" resolve="StringJoiner" />
-                <node concept="10M0yZ" id="58KCQIw4DXp" role="37wK5m">
-                  <ref role="3cqZAo" to="guwi:~File.pathSeparator" resolve="pathSeparator" />
-                  <ref role="1PxDUh" to="guwi:~File" resolve="File" />
+                <node concept="Xl_RD" id="3djbh3AQIXq" role="37wK5m">
+                  <property role="Xl_RC" value="," />
                 </node>
               </node>
             </node>
@@ -1014,11 +1097,11 @@
           <node concept="3clFbS" id="sjigSAxCYX" role="3clFbx">
             <node concept="3cpWs6" id="sjigSAxCYY" role="3cqZAp" />
           </node>
-          <node concept="3clFbC" id="sjigSAxCYZ" role="3clFbw">
-            <node concept="10Nm6u" id="sjigSAxCZ0" role="3uHU7w" />
-            <node concept="37vLTw" id="sjigSAxCZ1" role="3uHU7B">
+          <node concept="2OqwBi" id="2Tuefk2gGMh" role="3clFbw">
+            <node concept="37vLTw" id="sjigSAxCZ1" role="2Oq$k0">
               <ref role="3cqZAo" node="sjigSAxCYQ" resolve="plugins" />
             </node>
+            <node concept="1v1jN8" id="2Tuefk2gIoN" role="2OqNvi" />
           </node>
         </node>
         <node concept="2Gpval" id="sjigSAxCZ2" role="3cqZAp">
@@ -1105,155 +1188,27 @@
         <ref role="2AI5Lk" to="ncw5:~Hack" resolve="Hack" />
       </node>
       <node concept="P$JXv" id="3P4ieJFe8Ih" role="lGtFl">
-        <node concept="TZ5HA" id="3P4ieJFe8Ii" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFe8Ij" role="1dT_Ay">
-            <property role="1dT_AB" value="I would suggest to remove this functionality from MPS whatsoever and to define all the plugins using the IDEA cp" />
+        <node concept="TZ5HA" id="3JONhIHes1Z" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHes20" role="1dT_Ay">
+            <property role="1dT_AB" value="after I talked to artem it seems that the property makes sense since we in fact want to" />
           </node>
         </node>
-        <node concept="TZ5HA" id="3P4ieJFebn6" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFebn7" role="1dT_Ay">
-            <property role="1dT_AB" value="parsing mechanism." />
+        <node concept="TZ5HA" id="3JONhIHes2i" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHes2j" role="1dT_Ay">
+            <property role="1dT_AB" value="constrict the set of plugins when we are running the rcp based on mps (say mbeddr)." />
           </node>
         </node>
-        <node concept="TZ5HA" id="3P4ieJFebns" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFebnt" role="1dT_Ay">
-            <property role="1dT_AB" value="I think it is workable since if a module A is packed in SomePlugin.jar which contains META-INF/plugin.xml," />
+        <node concept="TZ5HA" id="3JONhIHes2A" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHes2B" role="1dT_Ay">
+            <property role="1dT_AB" value="In that case they have a great number of bundled plugins in app_dir/plugins, but they want to" />
           </node>
         </node>
-        <node concept="TZ5HA" id="3P4ieJFebqz" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFebq$" role="1dT_Ay">
-            <property role="1dT_AB" value="then almost always one needs to include the plugin as a whole (to provide correct deployment for the module A." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="3P4ieJFebqX" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFebqY" role="1dT_Ay">
-            <property role="1dT_AB" value="If a module A is packed in SomePlugin/.../xxx.jar then SomePlugin is never in the cp, but only the xxx.jar is." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="3P4ieJFebrp" role="TZ5H$">
-          <node concept="1dT_AC" id="3P4ieJFebrq" role="1dT_Ay">
-            <property role="1dT_AB" value="Thus I assume that we can manage the set of idea plugins accurately enough using only the IDEA cp mechanism." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1zSQW5TZFsG" role="TZ5H$">
-          <node concept="1dT_AC" id="1zSQW5TZFsH" role="1dT_Ay">
-            <property role="1dT_AB" value="OR" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1zSQW5TZFte" role="TZ5H$">
-          <node concept="1dT_AC" id="1zSQW5TZFtf" role="1dT_Ay">
-            <property role="1dT_AB" value="if we use the idea.run.tests.with.bundled.plugins property from IDEA then we can not bother at all about the cp" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1zSQW5TZFtM" role="TZ5H$">
-          <node concept="1dT_AC" id="1zSQW5TZFtN" role="1dT_Ay">
-            <property role="1dT_AB" value="and use only the plugin.path property." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1zSQW5TZFuI" role="TZ5H$">
-          <node concept="1dT_AC" id="1zSQW5TZFuJ" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1zSQW5TZFu6" role="TZ5H$">
-          <node concept="1dT_AC" id="1zSQW5TZFu7" role="1dT_Ay">
-            <property role="1dT_AB" value="Either way we do not need idea.load.plugins.id property." />
+        <node concept="TZ5HA" id="3JONhIHes2I" role="TZ5H$">
+          <node concept="1dT_AC" id="3JONhIHes2J" role="1dT_Ay">
+            <property role="1dT_AB" value="disable some of them from time to time." />
           </node>
         </node>
       </node>
-    </node>
-    <node concept="2tJIrI" id="sjigSAxl61" role="jymVt" />
-    <node concept="3clFb_" id="Pw_fmFMRo6" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disallowAccessToClosedProjectsDir" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="Pw_fmFMRo9" role="3clF47">
-        <node concept="3clFbJ" id="Pw_fmFNvpb" role="3cqZAp">
-          <node concept="3clFbS" id="Pw_fmFNvpc" role="3clFbx">
-            <node concept="3clFbF" id="Pw_fmFMSe4" role="3cqZAp">
-              <node concept="2OqwBi" id="Pw_fmFMSoV" role="3clFbG">
-                <node concept="2YIFZM" id="Pw_fmFMSkp" role="2Oq$k0">
-                  <ref role="37wK5l" to="4nm9:~ProjectManager.getInstance():com.intellij.openapi.project.ProjectManager" resolve="getInstance" />
-                  <ref role="1Pybhc" to="4nm9:~ProjectManager" resolve="ProjectManager" />
-                </node>
-                <node concept="liA8E" id="Pw_fmFMTNe" role="2OqNvi">
-                  <ref role="37wK5l" to="4nm9:~ProjectManager.addProjectManagerListener(com.intellij.openapi.project.ProjectManagerListener):void" resolve="addProjectManagerListener" />
-                  <node concept="2ShNRf" id="Pw_fmFMZQh" role="37wK5m">
-                    <node concept="YeOm9" id="Pw_fmFNsBN" role="2ShVmc">
-                      <node concept="1Y3b0j" id="Pw_fmFNsBQ" role="YeSDq">
-                        <property role="2bfB8j" value="true" />
-                        <ref role="1Y3XeK" to="4nm9:~ProjectManagerAdapter" resolve="ProjectManagerAdapter" />
-                        <ref role="37wK5l" to="4nm9:~ProjectManagerAdapter.&lt;init&gt;()" resolve="ProjectManagerAdapter" />
-                        <node concept="3Tm1VV" id="Pw_fmFNsBR" role="1B3o_S" />
-                        <node concept="3clFb_" id="Pw_fmFNsC8" role="jymVt">
-                          <property role="1EzhhJ" value="false" />
-                          <property role="TrG5h" value="projectClosed" />
-                          <property role="DiZV1" value="false" />
-                          <property role="od$2w" value="false" />
-                          <node concept="3Tm1VV" id="Pw_fmFNsC9" role="1B3o_S" />
-                          <node concept="3cqZAl" id="Pw_fmFNsCb" role="3clF45" />
-                          <node concept="37vLTG" id="Pw_fmFNsCc" role="3clF46">
-                            <property role="TrG5h" value="project" />
-                            <node concept="3uibUv" id="Pw_fmFNsCd" role="1tU5fm">
-                              <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
-                            </node>
-                          </node>
-                          <node concept="3clFbS" id="Pw_fmFNsCe" role="3clF47">
-                            <node concept="3cpWs8" id="4sdsN9y64up" role="3cqZAp">
-                              <node concept="3cpWsn" id="4sdsN9y64uq" role="3cpWs9">
-                                <property role="TrG5h" value="basePath" />
-                                <node concept="17QB3L" id="4sdsN9y65iG" role="1tU5fm" />
-                                <node concept="2OqwBi" id="4sdsN9y64ur" role="33vP2m">
-                                  <node concept="37vLTw" id="4sdsN9y64us" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="Pw_fmFNsCc" resolve="project" />
-                                  </node>
-                                  <node concept="liA8E" id="4sdsN9y64ut" role="2OqNvi">
-                                    <ref role="37wK5l" to="4nm9:~Project.getBasePath():java.lang.String" resolve="getBasePath" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="3clFbJ" id="4sdsN9y64sa" role="3cqZAp">
-                              <node concept="3clFbS" id="4sdsN9y64sc" role="3clFbx">
-                                <node concept="3clFbF" id="Pw_fmFNx0R" role="3cqZAp">
-                                  <node concept="2YIFZM" id="Pw_fmFNxad" role="3clFbG">
-                                    <ref role="37wK5l" to="ab4o:~VfsRootAccess.disallowRootAccess(java.lang.String...):void" resolve="disallowRootAccess" />
-                                    <ref role="1Pybhc" to="ab4o:~VfsRootAccess" resolve="VfsRootAccess" />
-                                    <node concept="37vLTw" id="4sdsN9y64uu" role="37wK5m">
-                                      <ref role="3cqZAo" node="4sdsN9y64uq" resolve="basePath" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3y3z36" id="4sdsN9y65df" role="3clFbw">
-                                <node concept="10Nm6u" id="4sdsN9y65e2" role="3uHU7w" />
-                                <node concept="37vLTw" id="4sdsN9y656m" role="3uHU7B">
-                                  <ref role="3cqZAo" node="4sdsN9y64uq" resolve="basePath" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="2AHcQZ" id="Pw_fmFNt9w" role="2AJF6D">
-                            <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2YIFZM" id="Pw_fmFNvpi" role="3clFbw">
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode():boolean" resolve="isTestMode" />
-            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="Pw_fmFMQl2" role="1B3o_S" />
-      <node concept="3cqZAl" id="Pw_fmFMRed" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="5A5jZrz2$OE" role="jymVt" />
     <node concept="3clFb_" id="5A5jZrz2$ao" role="jymVt">
@@ -1282,38 +1237,61 @@
     <node concept="2tJIrI" id="2jln2VqX4mj" role="jymVt" />
     <node concept="3clFb_" id="6z7xhWku8L1" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="createIdeaTestApp" />
+      <property role="TrG5h" value="createIdeaApplication" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="6z7xhWku8L4" role="3clF47">
         <node concept="RRSsy" id="3jYQuSB36Wa" role="3cqZAp">
           <property role="RRSoG" value="info" />
           <node concept="Xl_RD" id="3HZVFd9gFnC" role="RRSoy">
-            <property role="Xl_RC" value="Creating IdeaTestApplication" />
+            <property role="Xl_RC" value="Creating IdeaCmdApplication" />
           </node>
         </node>
         <node concept="3clFbJ" id="4OPNMy2cD0Q" role="3cqZAp">
           <node concept="3clFbS" id="4OPNMy2cD0S" role="3clFbx">
-            <node concept="1X3_iC" id="mSHDyFqKBO" role="lGtFl">
-              <property role="3V$3am" value="statement" />
-              <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-              <node concept="3clFbF" id="mSHDyFqH8G" role="8Wnug">
-                <node concept="2YIFZM" id="mSHDyFqJCA" role="3clFbG">
-                  <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
+            <node concept="3cpWs8" id="2Tuefk2gna7" role="3cqZAp">
+              <node concept="3cpWsn" id="2Tuefk2gna8" role="3cpWs9">
+                <property role="TrG5h" value="oldValue" />
+                <node concept="17QB3L" id="2Tuefk2gsmv" role="1tU5fm" />
+                <node concept="2YIFZM" id="2Tuefk2gna9" role="33vP2m">
+                  <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
                   <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                  <node concept="Xl_RD" id="mSHDyFqJSv" role="37wK5m">
-                    <property role="Xl_RC" value="idea.run.tests.with.bundled.plugins" />
+                  <node concept="37vLTw" id="2Tuefk2gnaa" role="37wK5m">
+                    <ref role="3cqZAo" node="12CYGR0YZor" resolve="CREATE_PLUGIN_CLASSLOADERS" />
                   </node>
-                  <node concept="2OqwBi" id="mSHDyFqKs8" role="37wK5m">
-                    <node concept="10M0yZ" id="mSHDyFqKmH" role="2Oq$k0">
-                      <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
-                      <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="2Tuefk2gugo" role="3cqZAp">
+              <node concept="3clFbS" id="2Tuefk2gugq" role="3clFbx">
+                <node concept="3clFbF" id="mSHDyFqH8G" role="3cqZAp">
+                  <node concept="2YIFZM" id="mSHDyFqJCA" role="3clFbG">
+                    <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
+                    <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                    <node concept="37vLTw" id="12CYGR0Z33y" role="37wK5m">
+                      <ref role="3cqZAo" node="12CYGR0YZor" resolve="CREATE_PLUGIN_CLASSLOADERS" />
                     </node>
-                    <node concept="liA8E" id="mSHDyFqKA7" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Boolean.toString():java.lang.String" resolve="toString" />
+                    <node concept="3cpWs3" id="12CYGR10i1K" role="37wK5m">
+                      <node concept="Xl_RD" id="12CYGR10i2r" role="3uHU7w">
+                        <property role="Xl_RC" value="" />
+                      </node>
+                      <node concept="2OqwBi" id="12CYGR10fEW" role="3uHU7B">
+                        <node concept="37vLTw" id="12CYGR10flD" role="2Oq$k0">
+                          <ref role="3cqZAo" to="79ha:3eUNqOk7wUa" resolve="myConfig" />
+                        </node>
+                        <node concept="liA8E" id="12CYGR10g4O" role="2OqNvi">
+                          <ref role="37wK5l" to="79ha:12CYGR0ZMV5" resolve="doesCreatePluginClassLoaders" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
+              </node>
+              <node concept="3clFbC" id="2Tuefk2gzHb" role="3clFbw">
+                <node concept="37vLTw" id="2Tuefk2gwkn" role="3uHU7B">
+                  <ref role="3cqZAo" node="2Tuefk2gna8" resolve="oldValue" />
+                </node>
+                <node concept="10Nm6u" id="2Tuefk2gwJU" role="3uHU7w" />
               </node>
             </node>
             <node concept="3cpWs6" id="6z7xhWkukv5" role="3cqZAp">
@@ -1326,49 +1304,72 @@
           <node concept="37vLTw" id="4OPNMy2cHPW" role="3clFbw">
             <ref role="3cqZAo" node="4OPNMy2cxpb" resolve="myUnitTestMode" />
           </node>
+          <node concept="9aQIb" id="3qbI1lNoimf" role="9aQIa">
+            <node concept="3clFbS" id="3qbI1lNoimg" role="9aQI4">
+              <node concept="3cpWs6" id="3qbI1lNosfm" role="3cqZAp">
+                <node concept="1rXfSq" id="3qbI1lNocM8" role="3cqZAk">
+                  <ref role="37wK5l" node="3qbI1lNocM5" resolve="createCommandLineApplication0" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
-        <node concept="3SKdUt" id="4OPNMy2cPgy" role="3cqZAp">
-          <node concept="3SKdUq" id="4OPNMy2cPg$" role="3SKWNk">
+      </node>
+      <node concept="3Tm6S6" id="6z7xhWku6$B" role="1B3o_S" />
+      <node concept="3uibUv" id="4OPNMy2cFrB" role="3clF45">
+        <ref role="3uigEE" to="1wbl:~CommandLineApplication" resolve="CommandLineApplication" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3qbI1lNof_s" role="jymVt" />
+    <node concept="3clFb_" id="3qbI1lNocM5" role="jymVt">
+      <property role="TrG5h" value="createCommandLineApplication0" />
+      <node concept="3Tm6S6" id="3qbI1lNocM6" role="1B3o_S" />
+      <node concept="3uibUv" id="3qbI1lNocM7" role="3clF45">
+        <ref role="3uigEE" to="1wbl:~CommandLineApplication" resolve="CommandLineApplication" />
+      </node>
+      <node concept="3clFbS" id="3qbI1lNocL_" role="3clF47">
+        <node concept="3SKdUt" id="3qbI1lNocLC" role="3cqZAp">
+          <node concept="3SKdUq" id="3qbI1lNocLD" role="3SKWNk">
             <property role="3SKdUp" value="copied from IdeaTestApplication.getInstance(String)" />
           </node>
         </node>
-        <node concept="3SKdUt" id="4OPNMy2d8kJ" role="3cqZAp">
-          <node concept="3SKdUq" id="4OPNMy2d8kL" role="3SKWNk">
+        <node concept="3SKdUt" id="3qbI1lNocLE" role="3cqZAp">
+          <node concept="3SKdUq" id="3qbI1lNocLF" role="3SKWNk">
             <property role="3SKdUp" value="next line is shorthand for PlatformTestCase.doAutodetectPlatformPrefix()" />
           </node>
         </node>
-        <node concept="3clFbF" id="4OPNMy2cU5r" role="3cqZAp">
-          <node concept="2YIFZM" id="4OPNMy2cWw2" role="3clFbG">
+        <node concept="3clFbF" id="3qbI1lNocLG" role="3cqZAp">
+          <node concept="2YIFZM" id="3qbI1lNocLH" role="3clFbG">
             <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-            <node concept="10M0yZ" id="4OPNMy2d6qY" role="37wK5m">
+            <node concept="10M0yZ" id="3qbI1lNocLI" role="37wK5m">
               <ref role="3cqZAo" to="9w4s:~PlatformUtils.PLATFORM_PREFIX_KEY" resolve="PLATFORM_PREFIX_KEY" />
               <ref role="1PxDUh" to="9w4s:~PlatformUtils" resolve="PlatformUtils" />
             </node>
-            <node concept="10M0yZ" id="4OPNMy2d6BN" role="37wK5m">
+            <node concept="10M0yZ" id="3qbI1lNocLJ" role="37wK5m">
               <ref role="3cqZAo" to="9w4s:~PlatformUtils.IDEA_CE_PREFIX" resolve="IDEA_CE_PREFIX" />
               <ref role="1PxDUh" to="9w4s:~PlatformUtils" resolve="PlatformUtils" />
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="4OPNMy2deWE" role="3cqZAp">
-          <node concept="3cpWsn" id="4OPNMy2deWF" role="3cpWs9">
+        <node concept="3cpWs8" id="3qbI1lNocLK" role="3cqZAp">
+          <node concept="3cpWsn" id="3qbI1lNocLL" role="3cpWs9">
             <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="4OPNMy2deWG" role="1tU5fm">
+            <node concept="3uibUv" id="3qbI1lNocLM" role="1tU5fm">
               <ref role="3uigEE" to="1wbl:~CommandLineApplication" resolve="CommandLineApplication" />
             </node>
-            <node concept="2ShNRf" id="4OPNMy2dhvK" role="33vP2m">
-              <node concept="YeOm9" id="4OPNMy2dCyf" role="2ShVmc">
-                <node concept="1Y3b0j" id="4OPNMy2dCyi" role="YeSDq">
+            <node concept="2ShNRf" id="3qbI1lNocLN" role="33vP2m">
+              <node concept="YeOm9" id="3qbI1lNocLO" role="2ShVmc">
+                <node concept="1Y3b0j" id="3qbI1lNocLP" role="YeSDq">
                   <property role="2bfB8j" value="true" />
                   <ref role="37wK5l" to="1wbl:~CommandLineApplication.&lt;init&gt;(boolean,boolean,boolean)" resolve="CommandLineApplication" />
                   <ref role="1Y3XeK" to="1wbl:~CommandLineApplication" resolve="CommandLineApplication" />
-                  <node concept="3Tm1VV" id="4OPNMy2dCyj" role="1B3o_S" />
-                  <node concept="3clFbT" id="4OPNMy2dCp2" role="37wK5m">
+                  <node concept="3Tm1VV" id="3qbI1lNocLQ" role="1B3o_S" />
+                  <node concept="3clFbT" id="3qbI1lNocLR" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
-                  <node concept="3clFbT" id="4OPNMy2dCqH" role="37wK5m" />
-                  <node concept="3clFbT" id="4OPNMy2dCsv" role="37wK5m">
+                  <node concept="3clFbT" id="3qbI1lNocLS" role="37wK5m" />
+                  <node concept="3clFbT" id="3qbI1lNocLT" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
                 </node>
@@ -1376,33 +1377,29 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4OPNMy2dF4u" role="3cqZAp">
-          <node concept="2YIFZM" id="4OPNMy2dIfy" role="3clFbG">
+        <node concept="3clFbF" id="3qbI1lNocLU" role="3cqZAp">
+          <node concept="2YIFZM" id="3qbI1lNocLV" role="3clFbG">
             <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugins():com.intellij.ide.plugins.IdeaPluginDescriptor[]" resolve="getPlugins" />
             <ref role="1Pybhc" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
           </node>
         </node>
-        <node concept="3clFbF" id="4OPNMy2dKru" role="3cqZAp">
-          <node concept="2OqwBi" id="4OPNMy2dN3S" role="3clFbG">
-            <node concept="2YIFZM" id="4OPNMy2dMY6" role="2Oq$k0">
+        <node concept="3clFbF" id="3qbI1lNocLW" role="3cqZAp">
+          <node concept="2OqwBi" id="3qbI1lNocLX" role="3clFbG">
+            <node concept="2YIFZM" id="3qbI1lNocLY" role="2Oq$k0">
               <ref role="37wK5l" to="f061:~ApplicationManagerEx.getApplicationEx():com.intellij.openapi.application.ex.ApplicationEx" resolve="getApplicationEx" />
               <ref role="1Pybhc" to="f061:~ApplicationManagerEx" resolve="ApplicationManagerEx" />
             </node>
-            <node concept="liA8E" id="4OPNMy2dNfg" role="2OqNvi">
+            <node concept="liA8E" id="3qbI1lNocLZ" role="2OqNvi">
               <ref role="37wK5l" to="f061:~ApplicationEx.load(java.lang.String):void" resolve="load" />
-              <node concept="10Nm6u" id="4OPNMy2dNlS" role="37wK5m" />
+              <node concept="10Nm6u" id="3qbI1lNocM0" role="37wK5m" />
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="4OPNMy2dPJe" role="3cqZAp">
-          <node concept="37vLTw" id="4OPNMy2dSWQ" role="3cqZAk">
-            <ref role="3cqZAo" node="4OPNMy2deWF" resolve="rv" />
+        <node concept="3cpWs6" id="3qbI1lNocM1" role="3cqZAp">
+          <node concept="37vLTw" id="3qbI1lNocM2" role="3cqZAk">
+            <ref role="3cqZAo" node="3qbI1lNocLL" resolve="rv" />
           </node>
         </node>
-      </node>
-      <node concept="3Tm6S6" id="6z7xhWku6$B" role="1B3o_S" />
-      <node concept="3uibUv" id="4OPNMy2cFrB" role="3clF45">
-        <ref role="3uigEE" to="1wbl:~CommandLineApplication" resolve="CommandLineApplication" />
       </node>
     </node>
     <node concept="2tJIrI" id="3YQ3dO9l$od" role="jymVt" />
@@ -1427,17 +1424,49 @@
       </node>
       <node concept="3Tm1VV" id="6rx4kZDk5DL" role="1B3o_S" />
       <node concept="3clFbS" id="6rx4kZDk5DN" role="3clF47">
+        <node concept="3cpWs8" id="3qbI1lNp2CV" role="3cqZAp">
+          <node concept="3cpWsn" id="3qbI1lNp2CW" role="3cpWs9">
+            <property role="TrG5h" value="testMode" />
+            <node concept="10P_77" id="3qbI1lNp2CU" role="1tU5fm" />
+            <node concept="2YIFZM" id="3qbI1lNp2CX" role="33vP2m">
+              <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode():boolean" resolve="isTestMode" />
+              <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3qbI1lNoEgG" role="3cqZAp">
+          <node concept="3cpWsn" id="3qbI1lNoEgH" role="3cpWs9">
+            <property role="TrG5h" value="disposable0" />
+            <node concept="3uibUv" id="3qbI1lNoEgI" role="1tU5fm">
+              <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
+            </node>
+            <node concept="10Nm6u" id="3qbI1lNpf6P" role="33vP2m" />
+          </node>
+        </node>
         <node concept="3clFbJ" id="3AYmLIrPWCw" role="3cqZAp">
           <node concept="3clFbS" id="3AYmLIrPWCy" role="3clFbx">
+            <node concept="3clFbF" id="3qbI1lNpbSr" role="3cqZAp">
+              <node concept="37vLTI" id="3qbI1lNpbSt" role="3clFbG">
+                <node concept="1bVj0M" id="3qbI1lNpsOo" role="37vLTx">
+                  <node concept="3clFbS" id="3qbI1lNpsOx" role="1bW5cS" />
+                </node>
+                <node concept="37vLTw" id="3qbI1lNpbSx" role="37vLTJ">
+                  <ref role="3cqZAo" node="3qbI1lNoEgH" resolve="disposable0" />
+                </node>
+              </node>
+            </node>
             <node concept="3SKdUt" id="3oT7WQ909Fn" role="3cqZAp">
               <node concept="3SKdUq" id="3oT7WQ909Fp" role="3SKWNk">
-                <property role="3SKdUp" value="for ant tests we run with the flag, which disables those checks" />
+                <property role="3SKdUp" value="for ant tests we run with the flag, which disables the checks" />
               </node>
             </node>
             <node concept="3clFbF" id="3AYmLIrPXw2" role="3cqZAp">
               <node concept="2YIFZM" id="3AYmLIrPXHJ" role="3clFbG">
                 <ref role="1Pybhc" to="ab4o:~VfsRootAccess" resolve="VfsRootAccess" />
-                <ref role="37wK5l" to="ab4o:~VfsRootAccess.allowRootAccess(java.lang.String...):void" resolve="allowRootAccess" />
+                <ref role="37wK5l" to="ab4o:~VfsRootAccess.allowRootAccess(com.intellij.openapi.Disposable,java.lang.String...):void" resolve="allowRootAccess" />
+                <node concept="37vLTw" id="3qbI1lNoR_l" role="37wK5m">
+                  <ref role="3cqZAo" node="3qbI1lNoEgH" resolve="disposable0" />
+                </node>
                 <node concept="2OqwBi" id="3AYmLIrPXHK" role="37wK5m">
                   <node concept="37vLTw" id="3AYmLIrPYbu" role="2Oq$k0">
                     <ref role="3cqZAo" node="6rx4kZDk5DI" resolve="projectFile" />
@@ -1449,17 +1478,46 @@
               </node>
             </node>
           </node>
-          <node concept="2YIFZM" id="3AYmLIrPXvy" role="3clFbw">
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode():boolean" resolve="isTestMode" />
-            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+          <node concept="37vLTw" id="3qbI1lNp2CY" role="3clFbw">
+            <ref role="3cqZAo" node="3qbI1lNp2CW" resolve="testMode" />
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3qbI1lNoBDW" role="3cqZAp">
+          <node concept="3cpWsn" id="3qbI1lNoBDX" role="3cpWs9">
+            <property role="TrG5h" value="openedProject" />
+            <node concept="3uibUv" id="3qbI1lNpiXD" role="1tU5fm">
+              <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+            </node>
+            <node concept="1rXfSq" id="3qbI1lNoBDY" role="33vP2m">
+              <ref role="37wK5l" node="2mki3EciMiE" resolve="openProjectInIdeaEnvironment" />
+              <node concept="37vLTw" id="3qbI1lNoBDZ" role="37wK5m">
+                <ref role="3cqZAo" node="6rx4kZDk5DI" resolve="projectFile" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3qbI1lNp6Kk" role="3cqZAp">
+          <node concept="3clFbS" id="3qbI1lNp6Km" role="3clFbx">
+            <node concept="3clFbF" id="3qbI1lNoZLU" role="3cqZAp">
+              <node concept="2YIFZM" id="3qbI1lNp2uw" role="3clFbG">
+                <ref role="37wK5l" to="zn9m:~Disposer.register(com.intellij.openapi.Disposable,com.intellij.openapi.Disposable):void" resolve="register" />
+                <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+                <node concept="37vLTw" id="3qbI1lNp2xP" role="37wK5m">
+                  <ref role="3cqZAo" node="3qbI1lNoBDX" resolve="openedProject" />
+                </node>
+                <node concept="37vLTw" id="3qbI1lNpfdp" role="37wK5m">
+                  <ref role="3cqZAo" node="3qbI1lNoEgH" resolve="disposable0" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="3qbI1lNp8y_" role="3clFbw">
+            <ref role="3cqZAo" node="3qbI1lNp2CW" resolve="testMode" />
           </node>
         </node>
         <node concept="3cpWs6" id="5lulEoOe9fD" role="3cqZAp">
-          <node concept="1rXfSq" id="Pw_fmFN$z$" role="3cqZAk">
-            <ref role="37wK5l" node="2mki3EciMiE" resolve="openProjectInIdeaEnvironment" />
-            <node concept="37vLTw" id="Pw_fmFN$z_" role="37wK5m">
-              <ref role="3cqZAo" node="6rx4kZDk5DI" resolve="projectFile" />
-            </node>
+          <node concept="37vLTw" id="3qbI1lNoBE0" role="3cqZAk">
+            <ref role="3cqZAo" node="3qbI1lNoBDX" resolve="openedProject" />
           </node>
         </node>
       </node>
@@ -2371,8 +2429,8 @@
           <ref role="3uigEE" to="guwi:~File" resolve="File" />
         </node>
       </node>
-      <node concept="3uibUv" id="2pL3Qjr$6ye" role="3clF45">
-        <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+      <node concept="3uibUv" id="3qbI1lNpgiJ" role="3clF45">
+        <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
       </node>
       <node concept="3Tm6S6" id="1w0tHxV4Aoj" role="1B3o_S" />
     </node>
@@ -3117,6 +3175,9 @@
         </node>
         <node concept="3Tm1VV" id="6_mFlZWT$uc" role="1B3o_S" />
       </node>
+    </node>
+    <node concept="3uibUv" id="3qbI1lNnC6k" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
   </node>
 </model>

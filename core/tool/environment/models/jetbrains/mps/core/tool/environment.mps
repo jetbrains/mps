@@ -72,9 +72,6 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
-        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
-      </concept>
       <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
@@ -279,6 +276,7 @@
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
+      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="6832197706140518104" name="jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference" flags="ng" index="zr_55" />
       <concept id="6832197706140518103" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseParameterReference" flags="ng" index="zr_5a">
         <reference id="6832197706140518108" name="param" index="zr_51" />
@@ -895,14 +893,26 @@
       </node>
       <node concept="3Tm6S6" id="3x_lgCAhqMi" role="1B3o_S" />
     </node>
-    <node concept="312cEg" id="2$4oShLaqQF" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myLoadPluginsByDefault" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3Tm6S6" id="2$4oShLapVA" role="1B3o_S" />
-      <node concept="10P_77" id="2$4oShLaqQy" role="1tU5fm" />
-      <node concept="3clFbT" id="2$4oShLarLJ" role="33vP2m" />
+    <node concept="2tJIrI" id="12CYGR0ZRIB" role="jymVt" />
+    <node concept="312cEg" id="12CYGR0ZIor" role="jymVt">
+      <property role="TrG5h" value="myCreatePluginClassLoaders" />
+      <node concept="3Tm6S6" id="12CYGR0ZHew" role="1B3o_S" />
+      <node concept="10P_77" id="12CYGR0ZIlq" role="1tU5fm" />
+      <node concept="3clFbT" id="12CYGR0ZJHr" role="33vP2m">
+        <property role="3clFbU" value="true" />
+      </node>
+      <node concept="z59LJ" id="12CYGR0ZSUJ" role="lGtFl">
+        <node concept="TZ5HA" id="12CYGR0ZSUK" role="TZ5H$">
+          <node concept="1dT_AC" id="12CYGR0ZSUL" role="1dT_Ay">
+            <property role="1dT_AB" value="due to the support in IDEA we are able to support it in MPS" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="12CYGR0ZU9I" role="TZ5H$">
+          <node concept="1dT_AC" id="12CYGR0ZU9J" role="1dT_Ay">
+            <property role="1dT_AB" value="fixme implement with MpsEnv" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="6rx4kZDkayQ" role="jymVt" />
     <node concept="3clFbW" id="3YQ3dO9lyd8" role="jymVt">
@@ -922,16 +932,6 @@
         </node>
       </node>
       <node concept="3clFbS" id="5UWB9tjYeE" role="3clF47">
-        <node concept="3clFbJ" id="2$4oShLaoqZ" role="3cqZAp">
-          <node concept="3clFbS" id="2$4oShLaor1" role="3clFbx">
-            <node concept="3cpWs6" id="2$4oShLarOv" role="3cqZAp">
-              <node concept="10Nm6u" id="2$4oShLarPz" role="3cqZAk" />
-            </node>
-          </node>
-          <node concept="37vLTw" id="2$4oShLarMx" role="3clFbw">
-            <ref role="3cqZAo" node="2$4oShLaqQF" resolve="myLoadPluginsByDefault" />
-          </node>
-        </node>
         <node concept="3cpWs6" id="MVJ1IE7WZh" role="3cqZAp">
           <node concept="2OqwBi" id="MVJ1IE7WZi" role="3cqZAk">
             <node concept="26Dbio" id="MVJ1IE7WZj" role="2OqNvi" />
@@ -943,12 +943,7 @@
       </node>
       <node concept="3Tm1VV" id="5UWB9tjYcj" role="1B3o_S" />
       <node concept="2AHcQZ" id="2$4oShLakR9" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="P$JXv" id="2$4oShLamFQ" role="lGtFl">
-        <node concept="x79VA" id="2$4oShLamFT" role="3nqlJM">
-          <property role="x79VB" value="null if we do not want to specify plugins to the platform" />
-        </node>
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="2tJIrI" id="2jln2Vr3Ctz" role="jymVt" />
@@ -996,6 +991,19 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="5UWB9tkm4s" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="12CYGR0ZJNx" role="jymVt" />
+    <node concept="3clFb_" id="12CYGR0ZMV5" role="jymVt">
+      <property role="TrG5h" value="doesCreatePluginClassLoaders" />
+      <node concept="3clFbS" id="12CYGR0ZMV8" role="3clF47">
+        <node concept="3cpWs6" id="12CYGR0ZO2p" role="3cqZAp">
+          <node concept="37vLTw" id="12CYGR0ZO3z" role="3cqZAk">
+            <ref role="3cqZAo" node="12CYGR0ZIor" resolve="myCreatePluginClassLoaders" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="12CYGR0ZLyP" role="1B3o_S" />
+      <node concept="10P_77" id="12CYGR0ZMS4" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="3YQ3dO9ly4R" role="jymVt" />
     <node concept="3clFb_" id="3x_lgCAhI6G" role="jymVt">
@@ -1148,6 +1156,33 @@
       <node concept="37vLTG" id="6rx4kZDk8zb" role="3clF46">
         <property role="TrG5h" value="libPath" />
         <node concept="17QB3L" id="DMIDDhgxQL" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="12CYGR0ZONm" role="jymVt" />
+    <node concept="3clFb_" id="12CYGR0ZVly" role="jymVt">
+      <property role="TrG5h" value="setCreatePluginClassLoaders" />
+      <node concept="3clFbS" id="12CYGR0ZVl_" role="3clF47">
+        <node concept="3clFbF" id="12CYGR0ZXSA" role="3cqZAp">
+          <node concept="37vLTI" id="12CYGR0ZYiG" role="3clFbG">
+            <node concept="37vLTw" id="12CYGR0ZYnP" role="37vLTx">
+              <ref role="3cqZAo" node="12CYGR0ZWtT" resolve="value" />
+            </node>
+            <node concept="37vLTw" id="12CYGR0ZXS_" role="37vLTJ">
+              <ref role="3cqZAo" node="12CYGR0ZIor" resolve="myCreatePluginClassLoaders" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="12CYGR0ZZUv" role="3cqZAp">
+          <node concept="Xjq3P" id="12CYGR0ZZVa" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="12CYGR0ZQkB" role="1B3o_S" />
+      <node concept="3uibUv" id="12CYGR0ZREz" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+      <node concept="37vLTG" id="12CYGR0ZWtT" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="10P_77" id="12CYGR0ZWtS" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="3x_lgCAhpx_" role="jymVt" />
@@ -1579,21 +1614,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2$4oShLjXKK" role="3cqZAp">
-          <node concept="37vLTI" id="2$4oShLjYib" role="3clFbG">
-            <node concept="3clFbT" id="2$4oShLjYjV" role="37vLTx">
-              <property role="3clFbU" value="false" />
-            </node>
-            <node concept="2OqwBi" id="2$4oShLjXPK" role="37vLTJ">
-              <node concept="37vLTw" id="2$4oShLjXKI" role="2Oq$k0">
-                <ref role="3cqZAo" node="2$4oShLjXBn" resolve="defaultConf" />
-              </node>
-              <node concept="2OwXpG" id="2$4oShLjXWI" role="2OqNvi">
-                <ref role="2Oxat5" node="2$4oShLaqQF" resolve="myLoadPluginsByDefault" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2$4oShLawGl" role="3cqZAp">
           <node concept="37vLTw" id="2$4oShLjXBw" role="3clFbG">
             <ref role="3cqZAo" node="2$4oShLjXBn" resolve="defaultConf" />
@@ -1646,11 +1666,6 @@
       <node concept="TZ5HA" id="3eUNqOk6xnz" role="TZ5H$">
         <node concept="1dT_AC" id="3eUNqOk6xn$" role="1dT_Ay">
           <property role="1dT_AB" value="Represents a configuration options list for an environment, used a Builder pattern" />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="3eUNqOk6xP7" role="TZ5H$">
-        <node concept="1dT_AC" id="3eUNqOk6xP8" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
         </node>
       </node>
       <node concept="VUp57" id="3eUNqOk6xPi" role="3nqlJM">
@@ -3562,17 +3577,32 @@
       <node concept="3clFbS" id="3x_lgCAcjr3" role="3clF47">
         <node concept="3SKdUt" id="4142FbgUAAL" role="3cqZAp">
           <node concept="3SKdUq" id="4142FbgUAAN" role="3SKWNk">
-            <property role="3SKdUp" value="with idea plugins in actual (global, shared) classpath (both for Mps and Idea env), we don't need yet another CL" />
+            <property role="3SKdUp" value="with idea plugins in actual (global, shared) classpath (both for Mps and Idea env)," />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="12CYGR0Zkwi" role="3cqZAp">
+          <node concept="3SKdUq" id="12CYGR0Zkwj" role="3SKWNk">
+            <property role="3SKdUp" value="we don't need yet another CL" />
           </node>
         </node>
         <node concept="3SKdUt" id="4142FbgUDDc" role="3cqZAp">
           <node concept="3SKdUq" id="4142FbgUDDe" role="3SKWNk">
-            <property role="3SKdUp" value="however, it doesn't look right to use same CL for DumbIdeaPluginFacet (supposed to load classes from any idea plugin)" />
+            <property role="3SKdUp" value="however, it doesn't look right to use same CL for DumbIdeaPluginFacet " />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="12CYGR0ZlUt" role="3cqZAp">
+          <node concept="3SKdUq" id="12CYGR0ZlUu" role="3SKWNk">
+            <property role="3SKdUp" value="(supposed to load classes from any idea plugin)" />
           </node>
         </node>
         <node concept="3SKdUt" id="4142FbgUG3i" role="3cqZAp">
           <node concept="3SKdUq" id="4142FbgUG3k" role="3SKWNk">
-            <property role="3SKdUp" value="and for languages/solutions referenced from &lt;library&gt; tag (these shall not get CP with idea plugins). With a single " />
+            <property role="3SKdUp" value="and for languages/solutions referenced from &lt;library&gt; tag" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="12CYGR0ZnkF" role="3cqZAp">
+          <node concept="3SKdUq" id="12CYGR0ZnkG" role="3SKWNk">
+            <property role="3SKdUp" value=" (these shall not get CP with idea plugins). With a single " />
           </node>
         </node>
         <node concept="3SKdUt" id="4142FbgUH$0" role="3cqZAp">

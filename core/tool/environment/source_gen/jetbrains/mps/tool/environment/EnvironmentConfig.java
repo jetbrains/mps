@@ -9,14 +9,13 @@ import java.util.Map;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.PathManager;
 
 /**
  * Represents a configuration options list for an environment, used a Builder pattern
- * 
  * 
  * @see jetbrains.mps.tool.environment.Environment 
  * @see jetbrains.mps.tool.environment.EnvironmentContainer 
@@ -26,20 +25,18 @@ public class EnvironmentConfig {
   private final Map<String, File> myMacros = MapSequence.fromMap(new LinkedHashMap<String, File>(16, (float) 0.75, false));
   private final Set<String> myLibs = SetSequence.fromSet(new LinkedHashSet<String>());
   private final Set<String> myPluginClassPath = SetSequence.fromSet(new LinkedHashSet<String>());
-  private boolean myLoadPluginsByDefault = false;
+
+  /**
+   * due to the support in IDEA we are able to support it in MPS
+   * fixme implement with MpsEnv
+   */
+  private boolean myCreatePluginClassLoaders = true;
 
   private EnvironmentConfig() {
   }
 
-  /**
-   * 
-   * @return null if we do not want to specify plugins to the platform
-   */
-  @Nullable
+  @NotNull
   public Set<PluginDescriptor> getPlugins() {
-    if (myLoadPluginsByDefault) {
-      return null;
-    }
     return SetSequence.fromSet(myPlugins).asUnmodifiable();
   }
 
@@ -49,6 +46,10 @@ public class EnvironmentConfig {
 
   public Set<String> getLibs() {
     return SetSequence.fromSet(myLibs).asUnmodifiable();
+  }
+
+  public boolean doesCreatePluginClassLoaders() {
+    return myCreatePluginClassLoaders;
   }
 
   /**
@@ -73,6 +74,11 @@ public class EnvironmentConfig {
 
   public EnvironmentConfig addLib(String libPath) {
     SetSequence.fromSet(myLibs).addElement(libPath);
+    return this;
+  }
+
+  public EnvironmentConfig setCreatePluginClassLoaders(boolean value) {
+    myCreatePluginClassLoaders = value;
     return this;
   }
 
@@ -144,7 +150,6 @@ public class EnvironmentConfig {
    */
   public static EnvironmentConfig defaultConfigNoPluginsSpecified() {
     EnvironmentConfig defaultConf = defaultConfig();
-    defaultConf.myLoadPluginsByDefault = false;
     return defaultConf;
   }
 
