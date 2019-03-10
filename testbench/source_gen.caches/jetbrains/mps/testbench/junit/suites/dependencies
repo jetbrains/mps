@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite">
+    <classNode dependClassName="java.lang.Boolean" />
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="jetbrains.mps.testbench.junit.suites.MpsTestsSuite" />
+    <classNode dependClassName="jetbrains.mps.tool.environment.IdeaEnvironment" />
+    <classNode dependClassName="org.junit.runner.RunWith" />
+  </dependency>
+  <dependency className="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0">
     <classNode dependClassName="jetbrains.mps.testbench.junit.suites.MpsTestsSuite" />
     <classNode dependClassName="org.junit.runner.RunWith" />
   </dependency>

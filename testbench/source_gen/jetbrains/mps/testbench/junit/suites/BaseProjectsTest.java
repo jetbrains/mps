@@ -35,9 +35,7 @@ public class BaseProjectsTest {
 
   @Parameterized.Parameters
   public static List<Object[]> testParameters() throws InvocationTargetException, InterruptedException {
-    EnvironmentConfig config = EnvironmentConfig.defaultConfig().withJavaPlugin();
-    // todo generalize it when there are more tests 
-    config.addPlugin(MIGRATION_PLUGIN, MIGRATION_PLUGIN_ID);
+    EnvironmentConfig config = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(false).withJavaPlugin().withMigrationPlugin();
 
     ourEnv = new IdeaEnvironment(config);
     ourEnv.init();

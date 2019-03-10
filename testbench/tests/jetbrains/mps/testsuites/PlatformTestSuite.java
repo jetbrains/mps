@@ -55,8 +55,7 @@ public class PlatformTestSuite extends OutputWatchingTestSuite {
   static {
     // j.m.ide.test.merge tests need VCS plugin
     // MigrationsTest needs "migration" plugin
-    System.setProperty(IdeaEnvironment.CREATE_PLUGIN_CLASSLOADERS, Boolean.FALSE.toString());
-    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig().withVcsPlugin().withBuildPlugin().withMigrationPlugin();
+    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(false).withVcsPlugin().withBuildPlugin().withMigrationPlugin();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();
   }

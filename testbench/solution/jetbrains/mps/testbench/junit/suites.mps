@@ -277,6 +277,9 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
+      <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
+        <child id="1221737317278" name="statementList" index="1Pe0a2" />
+      </concept>
       <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
         <property id="6329021646629104958" name="text" index="3SKdUp" />
       </concept>
@@ -314,9 +317,13 @@
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -398,6 +405,13 @@
           <property role="1dT_AB" value="* This suite used to run the tests, specified in the ant-xml junit task" />
         </node>
       </node>
+      <node concept="TZ5HI" id="12CYGR0YIZu" role="3nqlJM">
+        <node concept="TZ5HA" id="12CYGR0YIZv" role="3HnX3l">
+          <node concept="1dT_AC" id="12CYGR0YIZU" role="1dT_Ay">
+            <property role="1dT_AB" value="used to run in the old environment, kept for legacy runs" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3Tm1VV" id="53UI$MLlMdr" role="1B3o_S" />
     <node concept="2AHcQZ" id="53UI$MLlOuh" role="2AJF6D">
@@ -406,6 +420,37 @@
         <ref role="2B6OnR" to="cvlm:~RunWith.value()" resolve="value" />
         <node concept="3VsKOn" id="4Gp9sYONrQI" role="2B70Vg">
           <ref role="3VsUkX" node="1CBc8rDnd6w" resolve="MpsTestsSuite" />
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="12CYGR0YIZw" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="1Pe0a1" id="12CYGR0YO0B" role="jymVt">
+      <node concept="3clFbS" id="12CYGR0YO0D" role="1Pe0a2">
+        <node concept="3SKdUt" id="12CYGR0ZgLp" role="3cqZAp">
+          <node concept="3SKdUq" id="12CYGR0ZgLr" role="3SKWNk">
+            <property role="3SKdUp" value="old behavior" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="12CYGR0YO1c" role="3cqZAp">
+          <node concept="2YIFZM" id="12CYGR0YO1t" role="3clFbG">
+            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String):java.lang.String" resolve="setProperty" />
+            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+            <node concept="10M0yZ" id="12CYGR0ZfAD" role="37wK5m">
+              <ref role="3cqZAo" to="cky9:12CYGR0YZor" resolve="CREATE_PLUGIN_CLASSLOADERS" />
+              <ref role="1PxDUh" to="cky9:6rx4kZDk5Br" resolve="IdeaEnvironment" />
+            </node>
+            <node concept="2OqwBi" id="12CYGR0ZgjC" role="37wK5m">
+              <node concept="10M0yZ" id="12CYGR0ZfWV" role="2Oq$k0">
+                <ref role="3cqZAo" to="wyt6:~Boolean.FALSE" resolve="FALSE" />
+                <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
+              </node>
+              <node concept="liA8E" id="12CYGR0ZgJ_" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString():java.lang.String" resolve="toString" />
+              </node>
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -3454,7 +3499,7 @@
       </node>
       <node concept="3Tm6S6" id="2SnxzQPEmh0" role="1B3o_S" />
     </node>
-    <node concept="2tJIrI" id="6lIwBnqiz$_" role="jymVt" />
+    <node concept="2tJIrI" id="12CYGR0ZzX7" role="jymVt" />
     <node concept="3clFbW" id="6lIwBnqiz$A" role="jymVt">
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
@@ -3496,38 +3541,28 @@
         <node concept="3cpWs8" id="a8z8zytENl" role="3cqZAp">
           <node concept="3cpWsn" id="a8z8zytENm" role="3cpWs9">
             <property role="TrG5h" value="config" />
-            <node concept="2OqwBi" id="63DSRaTik3u" role="33vP2m">
-              <node concept="2YIFZM" id="a8z8zytENn" role="2Oq$k0">
-                <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
-                <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+            <node concept="2OqwBi" id="12CYGR0Z$fY" role="33vP2m">
+              <node concept="2OqwBi" id="63DSRaTik3u" role="2Oq$k0">
+                <node concept="2OqwBi" id="12CYGR100Wd" role="2Oq$k0">
+                  <node concept="2YIFZM" id="a8z8zytENn" role="2Oq$k0">
+                    <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                    <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                  </node>
+                  <node concept="liA8E" id="12CYGR1017d" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:12CYGR0ZVly" resolve="setCreatePluginClassLoaders" />
+                    <node concept="3clFbT" id="12CYGR101d9" role="37wK5m" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="63DSRaTikig" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:6uGRett37Lr" resolve="withJavaPlugin" />
+                </node>
               </node>
-              <node concept="liA8E" id="63DSRaTikig" role="2OqNvi">
-                <ref role="37wK5l" to="79ha:6uGRett37Lr" resolve="withJavaPlugin" />
+              <node concept="liA8E" id="12CYGR0Z_58" role="2OqNvi">
+                <ref role="37wK5l" to="79ha:4asrSzSFl5Q" resolve="withMigrationPlugin" />
               </node>
             </node>
             <node concept="3uibUv" id="a8z8zytENk" role="1tU5fm">
               <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="MxMY3ahDQ4" role="3cqZAp">
-          <node concept="3SKdUq" id="MxMY3ahDQ6" role="3SKWNk">
-            <property role="3SKdUp" value="todo generalize it when there are more tests" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="MxMY3ahqgr" role="3cqZAp">
-          <node concept="2OqwBi" id="MxMY3ahqqy" role="3clFbG">
-            <node concept="37vLTw" id="MxMY3ahqgp" role="2Oq$k0">
-              <ref role="3cqZAo" node="a8z8zytENm" resolve="config" />
-            </node>
-            <node concept="liA8E" id="MxMY3ahqz2" role="2OqNvi">
-              <ref role="37wK5l" to="79ha:6rx4kZDk6GC" resolve="addPlugin" />
-              <node concept="37vLTw" id="4OGppb3igLv" role="37wK5m">
-                <ref role="3cqZAo" node="4OGppb3igLs" resolve="MIGRATION_PLUGIN" />
-              </node>
-              <node concept="37vLTw" id="4OGppb3igSk" role="37wK5m">
-                <ref role="3cqZAo" node="4OGppb3igSh" resolve="MIGRATION_PLUGIN_ID" />
-              </node>
             </node>
           </node>
         </node>
@@ -4970,6 +5005,26 @@
       <node concept="3Tm1VV" id="3ukCc1ogPIO" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="3ukCc1ogz$B" role="jymVt" />
+  </node>
+  <node concept="312cEu" id="12CYGR0YIV2">
+    <property role="TrG5h" value="AntModuleTestSuite0" />
+    <node concept="3UR2Jj" id="12CYGR0YIV3" role="lGtFl">
+      <node concept="TZ5HA" id="12CYGR0YIV4" role="TZ5H$">
+        <node concept="1dT_AC" id="12CYGR0YIV5" role="1dT_Ay">
+          <property role="1dT_AB" value="* This suite used to run the tests, specified in the ant-xml junit task" />
+        </node>
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="12CYGR0YIV6" role="1B3o_S" />
+    <node concept="2AHcQZ" id="12CYGR0YIV7" role="2AJF6D">
+      <ref role="2AI5Lk" to="cvlm:~RunWith" resolve="RunWith" />
+      <node concept="1SXeKx" id="12CYGR0YIV8" role="2B76xF">
+        <ref role="2B6OnR" to="cvlm:~RunWith.value()" resolve="value" />
+        <node concept="3VsKOn" id="12CYGR0YIV9" role="2B70Vg">
+          <ref role="3VsUkX" node="1CBc8rDnd6w" resolve="MpsTestsSuite" />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 
