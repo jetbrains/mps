@@ -1421,13 +1421,13 @@
                   <node concept="2pNUuL" id="6u4p9jnVuYV" role="2pNNFR">
                     <property role="2pNUuO" value="name" />
                     <node concept="2pMdtt" id="6u4p9jnVNup" role="2pMdts">
-                      <property role="2pMdty" value="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite" />
+                      <property role="2pMdty" value="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0" />
                     </node>
                   </node>
                   <node concept="2pNUuL" id="7rCBBnnOsw2" role="2pNNFR">
                     <property role="2pNUuO" value="outfile" />
                     <node concept="2pMdtt" id="7rCBBnnOwd9" role="2pMdts">
-                      <property role="2pMdty" value="TEST-jetbrains.mps.testbench.junit.suites.AntModuleTestSuite" />
+                      <property role="2pMdty" value="TEST-jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0" />
                       <node concept="17Uvod" id="7rCBBnnOwdd" role="lGtFl">
                         <property role="2qtEX9" value="text" />
                         <property role="P4ACc" value="479c7a8c-02f9-43b5-9139-d910cb22f298/6666499814681541919/6666499814681541920" />
