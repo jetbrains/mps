@@ -2083,7 +2083,7 @@
       <sysproperty key="mps.test.modules" value="${mps.tests.path.string}" />
       
       
-      <test name="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite" outfile="TEST-jetbrains.mps.testbench.junit.suites.AntModuleTestSuite-editor" />
+      <test name="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0" outfile="TEST-jetbrains.mps.testbench.junit.suites.AntModuleTestSuite-editor" />
       <formatter type="xml" />
     </junit>
   </target>
