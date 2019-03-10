@@ -40,7 +40,7 @@ import java.util.Objects;
  * Change 1: in a stub java class we construct a foreign* id for each java method [:= with-ret id + no-ret id] which resolves by with-ret part;
  * re-saving all refs to the foreign* id (project migration 1);
  *
- * State 1 (191).
+ * State 1 (191). [WE ARE HERE]
  * stub models have foreign* id;
  * ref a have foreign with-ret id, (before migration)
  * ref b have foreign* id,
@@ -54,7 +54,7 @@ import java.util.Objects;
  * Change 2: in a stub java class we construct a foreign id with no-ret part;
  * re-saving all foreign* refs to such foreign id (project migration 2);
  *
- * State 2 (192).
+ * State 2 (201).
  * stub model id = foreign id (no-ret);
  * ref a has a foreign* id, (before migration)
  * ref b has a foreign no-ret id,
@@ -67,12 +67,12 @@ import java.util.Objects;
  *
  * Change 3: removing this class, all java stub method are resolved by no-return-signatures now.
  */
-@ToRemove(version = 193)
+@ToRemove(version = 201)
 @Internal
 @Immutable
 public final class StringBasedIdForJavaStubMethods extends SNodeId implements StringBasedId {
   public static final String ID_PREFIX = "#";
-//    @NotNull private final String myStubMethodIdWithoutReturnType; // to enable in 192
+//    @NotNull private final String myStubMethodIdWithoutReturnType; // to enable in 201
 
   /**
    * does not contain ID_PREFIX
@@ -120,7 +120,7 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
   @Override
   public int hashCode() {
     return myStubMethodIdWithReturnType.hashCode();
-//      return myStubMethodIdWithoutReturnType.hashCode(); to enable in 192
+//      return myStubMethodIdWithoutReturnType.hashCode(); to enable in 201
   }
 
   /**
@@ -129,7 +129,7 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
   @Override
   public String toString() {
     return ID_PREFIX + myStubMethodIdWithReturnType;
-//      return asForeignIdString(); to enable in 192
+//      return asForeignIdString(); to enable in 201
   }
 
   @NotNull
