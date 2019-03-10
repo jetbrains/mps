@@ -1405,6 +1405,27 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs6" id="36Guwvsd_aq" role="3cqZAp">
+              <node concept="2ShNRf" id="36GuwvsdAfw" role="3cqZAk">
+                <node concept="1pGfFk" id="36GuwvsdCrp" role="2ShVmc">
+                  <ref role="37wK5l" to="w1kc:~StringBasedIdForJavaStubMethods.&lt;init&gt;(java.lang.String)" resolve="StringBasedIdForJavaStubMethods" />
+                  <node concept="3cpWs3" id="36GuwvsdIVs" role="37wK5m">
+                    <node concept="10M0yZ" id="36GuwvsdMFV" role="3uHU7B">
+                      <ref role="3cqZAo" to="w1kc:~StringBasedIdForJavaStubMethods.ID_PREFIX" resolve="ID_PREFIX" />
+                      <ref role="1PxDUh" to="w1kc:~StringBasedIdForJavaStubMethods" resolve="StringBasedIdForJavaStubMethods" />
+                    </node>
+                    <node concept="2OqwBi" id="36GuwvsdGrP" role="3uHU7w">
+                      <node concept="37vLTw" id="36GuwvsdEfW" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6hYzBiUOvdN" resolve="sb" />
+                      </node>
+                      <node concept="liA8E" id="36GuwvsdH2V" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:#StringBuilder.toString():java.lang.String" resolve="toString" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="6hYzBiUOveU" role="3cqZAp">

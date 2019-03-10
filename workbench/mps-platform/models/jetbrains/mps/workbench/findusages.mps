@@ -452,8 +452,8 @@
           </node>
           <node concept="3fqX7Q" id="pKxlqbNC7o" role="3clFbw">
             <node concept="2ZW3vV" id="pKxlqbNC7r" role="3fr31v">
-              <node concept="3uibUv" id="pKxlqbNCCH" role="2ZW6by">
-                <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
+              <node concept="3uibUv" id="36GuwvsegVk" role="2ZW6by">
+                <ref role="3uigEE" to="w1kc:~StringBasedIdForJavaStubMethods" resolve="StringBasedIdForJavaStubMethods" />
               </node>
               <node concept="37vLTw" id="2BHiRxgm9VG" role="2ZW6bz">
                 <ref role="3cqZAo" node="gPyMK9FQ$O" resolve="id" />
@@ -477,13 +477,13 @@
                         <node concept="37vLTw" id="2BHiRxgmyA0" role="10QFUP">
                           <ref role="3cqZAo" node="gPyMK9FQ$O" resolve="id" />
                         </node>
-                        <node concept="3uibUv" id="pKxlqbNCCO" role="10QFUM">
-                          <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
+                        <node concept="3uibUv" id="36GuwvsegW3" role="10QFUM">
+                          <ref role="3uigEE" to="w1kc:~StringBasedIdForJavaStubMethods" resolve="StringBasedIdForJavaStubMethods" />
                         </node>
                       </node>
                     </node>
                     <node concept="liA8E" id="pKxlqbNCCR" role="2OqNvi">
-                      <ref role="37wK5l" to="w1kc:#SNodeId$Foreign.getId():java.lang.String" resolve="getId" />
+                      <ref role="37wK5l" to="w1kc:#StringBasedIdForJavaStubMethods.getId():java.lang.String" resolve="getId" />
                     </node>
                   </node>
                   <node concept="3clFbT" id="pKxlqbNCCW" role="37wK5m">
@@ -4298,8 +4298,8 @@
                       <node concept="3clFbS" id="6f4clAe1qKZ" role="1bW5cS">
                         <node concept="3clFbF" id="6f4clAe1qL0" role="3cqZAp">
                           <node concept="2ZW3vV" id="6f4clAe1qL1" role="3clFbG">
-                            <node concept="3uibUv" id="6f4clAe1qL2" role="2ZW6by">
-                              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
+                            <node concept="3uibUv" id="36GuwvseuBN" role="2ZW6by">
+                              <ref role="3uigEE" to="w1kc:~StringBasedIdForJavaStubMethods" resolve="StringBasedIdForJavaStubMethods" />
                             </node>
                             <node concept="2OqwBi" id="6f4clAe1qL3" role="2ZW6bz">
                               <node concept="2JrnkZ" id="6f4clAe1qL4" role="2Oq$k0">

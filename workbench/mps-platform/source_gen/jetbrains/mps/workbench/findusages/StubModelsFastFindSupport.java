@@ -21,7 +21,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.SNodeId;
+import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.util.containers.MultiMap;
 import java.util.function.Function;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -81,7 +81,7 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
     }
     nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it.getNodeId() instanceof SNodeId.StubNodeId;
+        return it.getNodeId() instanceof StringBasedIdForJavaStubMethods;
       }
     }));
     MultiMap<SModel, SNode> candidates = findCandidates(models, nodes, processedConsumer, new Function<SNode, String>() {

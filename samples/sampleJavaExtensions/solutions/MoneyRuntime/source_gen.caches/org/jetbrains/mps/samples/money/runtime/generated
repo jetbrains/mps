@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-drelftd0359f8ls2g9qt17qntezreg">
+<product version="3" modelHash="-5fl9bixlvnbb7yaiblc8m11ca0b7rpt">
   <files names="DailyStockPrice.java:Money.java:MoneyConversion.java:StockPriceCalculator.java:StockPriceDownloader.java" />
 </product>
 

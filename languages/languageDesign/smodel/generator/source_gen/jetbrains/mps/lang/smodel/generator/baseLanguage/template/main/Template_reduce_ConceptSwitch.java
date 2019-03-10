@@ -177,7 +177,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
             {
               final SNode tnode16 = environment.createOutputNode(myConcepts[8]);
               try {
-                tnode16.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode16, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept):int")));
+                tnode16.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode16, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("#ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept):int")));
                 TemplateContext context7 = context6.subContext();
                 {
                   final SNode tnode17 = environment.createOutputNode(myConcepts[9]);

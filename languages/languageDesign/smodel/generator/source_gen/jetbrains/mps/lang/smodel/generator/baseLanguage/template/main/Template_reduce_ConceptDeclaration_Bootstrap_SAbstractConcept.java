@@ -45,7 +45,7 @@ public class Template_reduce_ConceptDeclaration_Bootstrap_SAbstractConcept exten
     if (QueriesGenerated.ifMacro_Condition_75_0(new IfMacroContext(context, ifMacroRef_s9ao26_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       try {
-        tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~BootstrapAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept")));
+        tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("#BootstrapAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept")));
         tnode2.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~BootstrapAdapterFactory")));
         TemplateContext context1 = context.subContext();
         {
@@ -90,7 +90,7 @@ public class Template_reduce_ConceptDeclaration_Bootstrap_SAbstractConcept exten
     } else {
       final SNode tnode7 = environment.createOutputNode(myConcepts[0]);
       try {
-        tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~BootstrapAdapterFactory.getInterface(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SInterfaceConcept")));
+        tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("#BootstrapAdapterFactory.getInterface(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SInterfaceConcept")));
         tnode7.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode7, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~BootstrapAdapterFactory")));
         TemplateContext context2 = context.subContext();
         {
