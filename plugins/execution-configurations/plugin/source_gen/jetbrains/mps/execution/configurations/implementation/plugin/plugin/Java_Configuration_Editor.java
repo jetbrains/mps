@@ -23,6 +23,7 @@ public class Java_Configuration_Editor extends SettingsEditorEx<Java_Configurati
     Disposer.dispose(myNode);
     Disposer.dispose(myRunParameters);
   }
+
   @NotNull
   public JPanel createEditor() {
     myLabel = new JLabel("Select class:");
@@ -37,10 +38,12 @@ public class Java_Configuration_Editor extends SettingsEditorEx<Java_Configurati
     mainPanel.add(javaRunParametersEditor, BorderLayout.CENTER);
     return mainPanel;
   }
+
   public void applyEditorTo(final Java_Configuration configuration) throws ConfigurationException {
     myNode.applyEditorTo(configuration.getNode());
     myRunParameters.applyEditorTo(configuration.getRunParameters());
   }
+
   public void resetEditorFrom(final Java_Configuration configuration) {
     myNode.resetEditorFrom(configuration.getNode());
     myRunParameters.resetEditorFrom(configuration.getRunParameters());

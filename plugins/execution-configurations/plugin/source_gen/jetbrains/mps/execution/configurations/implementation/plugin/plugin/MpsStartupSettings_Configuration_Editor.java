@@ -11,13 +11,16 @@ public class MpsStartupSettings_Configuration_Editor extends SettingsEditorEx<Mp
   private MpsStartupSettingsEditorComponent myComponent = new MpsStartupSettingsEditorComponent();
   public void disposeEditor() {
   }
+
   @NotNull
   public MpsStartupSettingsEditorComponent createEditor() {
     return myComponent;
   }
+
   public void applyEditorTo(final MpsStartupSettings_Configuration configuration) throws ConfigurationException {
     myComponent.applyTo(configuration);
   }
+
   public void resetEditorFrom(final MpsStartupSettings_Configuration configuration) {
     myComponent.resetFrom(configuration);
   }

@@ -13,14 +13,17 @@ public class DeployPluginsSettings_Configuration_Editor extends SettingsEditorEx
   public void disposeEditor() {
     myEditor.dispose();
   }
+
   @NotNull
   public DeployEditorPanel createEditor() {
     myEditor = new DeployEditorPanel(myProject);
     return myEditor;
   }
+
   public void applyEditorTo(final DeployPluginsSettings_Configuration configuration) throws ConfigurationException {
     myEditor.apply(configuration);
   }
+
   public void resetEditorFrom(final DeployPluginsSettings_Configuration configuration) {
     myEditor.reset(configuration);
   }

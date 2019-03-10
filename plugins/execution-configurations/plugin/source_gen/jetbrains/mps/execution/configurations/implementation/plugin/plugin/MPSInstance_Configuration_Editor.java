@@ -19,6 +19,7 @@ public class MPSInstance_Configuration_Editor extends SettingsEditorEx<MPSInstan
     Disposer.dispose(myMpsSettings);
     Disposer.dispose(myPluginsSettings);
   }
+
   @NotNull
   public JPanel createEditor() {
     myMpsStartupSettings = myMpsSettings.createEditor();
@@ -30,10 +31,12 @@ public class MPSInstance_Configuration_Editor extends SettingsEditorEx<MPSInstan
     panel.add(plugins, LayoutUtil.createPanelConstraints(1));
     return panel;
   }
+
   public void applyEditorTo(final MPSInstance_Configuration configuration) throws ConfigurationException {
     myMpsSettings.applyEditorTo(configuration.getMpsSettings());
     myPluginsSettings.applyEditorTo(configuration.getPluginsSettings());
   }
+
   public void resetEditorFrom(final MPSInstance_Configuration configuration) {
     myMpsSettings.resetEditorFrom(configuration.getMpsSettings());
     myPluginsSettings.resetEditorFrom(configuration.getPluginsSettings());

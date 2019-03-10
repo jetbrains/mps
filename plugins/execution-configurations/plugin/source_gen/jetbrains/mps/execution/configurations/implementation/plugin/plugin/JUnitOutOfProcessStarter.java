@@ -15,9 +15,6 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.JUnit_Command;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
-import jetbrains.mps.util.test.CachesUtil;
-import com.intellij.openapi.ui.MessageType;
 
 public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
   private final JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0 myStarter0;
@@ -54,7 +51,6 @@ public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
 
     public ProcessHandler execute() throws ExecutionException {
       final boolean dirLock = RunCachesManager.acquireLock(myJUnitRC.getJUnitSettings().getCachesPath());
-      this.prepareJavaParamsForTests(dirLock);
       ProcessHandler commandProcess = new JUnit_Command().setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myProject, myTestNodes, myJUnitRC);
       commandProcess.addProcessListener(new ProcessAdapter() {
         @Override
@@ -67,41 +63,5 @@ public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
       return commandProcess;
     }
 
-    /**
-     * awful, transfer to the junit command
-     * mutates the field myJUnitRC (which is clone, so it is ok)
-     */
-    private void prepareJavaParamsForTests(boolean dirLock) {
-      JavaRunParameters parameters = myJUnitRC.getJavaRunParameters().getJavaParameters();
-      String vmFromJava = parameters.getVmOptions();
-      if (vmFromJava == null) {
-        vmFromJava = "";
-      }
-      String runIdString;
-      String cachesString = "=\"" + myJUnitRC.getJUnitSettings().getCachesPath() + "\"";
-      if (myJUnitRC.getJUnitSettings().getReuseCaches()) {
-        if (dirLock) {
-          runIdString = "-D" + CachesUtil.REUSE_CACHES_DIR + cachesString;
-        } else {
-          // could not acquire the lock, but user wants to reuse caches 
-          runIdString = "";
-          showWarning();
-        }
-      } else {
-        if (dirLock) {
-          runIdString = "-D" + CachesUtil.SAVE_CACHES_DIR + cachesString;
-        } else {
-          // could not acquire the lock 
-          runIdString = "";
-        }
-      }
-      parameters.setVmOptions(vmFromJava + " " + runIdString);
-    }
-
-    private void showWarning() {
-      if (myHostToolWindowId != null) {
-        TestsUIUtil.notifyByBalloon(myProject.getProject(), myHostToolWindowId, MessageType.WARNING, "Cannot reuse caches, because the chosen directory is locked by another run.\nThe option will be turned off.");
-      }
-    }
   }
 }

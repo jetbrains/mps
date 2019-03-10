@@ -221,7 +221,6 @@
     <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
     <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentConfig" />
     <classNode dependClassName="jetbrains.mps.tool.environment.IdeaEnvironment" />
-    <classNode dependClassName="jetbrains.mps.util.test.CachesUtil" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jdom.Document" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor" />

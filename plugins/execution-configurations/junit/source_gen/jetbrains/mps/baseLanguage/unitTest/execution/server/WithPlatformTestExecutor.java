@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.unitTest.execution.server;
 import org.jdom.Document;
 import jetbrains.mps.tool.common.JDOMUtil;
 import java.io.File;
-import jetbrains.mps.util.test.CachesUtil;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.tool.common.ScriptData;
@@ -41,7 +40,6 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
       throw new RuntimeException("Need MPS startup arguments to launch tests that require MPS environment");
     }
 
-    CachesUtil.setupCaches();
     Environment env = startIdea(execScript.getStartupArguments());
 
     //  Instead of WithPlatformTestExecutor+TestContributor, could use Suite/ParentRunner without need to wrap my runners into Request (much like MpsTestsSuite does) 
@@ -50,7 +48,6 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
       executor.run();
     } finally {
       env.dispose();
-      CachesUtil.cleanupCaches();
       executor.exit();
     }
   }
@@ -88,5 +85,4 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
     rv.init();
     return rv;
   }
-
 }

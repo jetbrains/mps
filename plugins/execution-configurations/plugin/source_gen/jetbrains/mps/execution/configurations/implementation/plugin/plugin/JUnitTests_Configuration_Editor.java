@@ -26,6 +26,7 @@ public class JUnitTests_Configuration_Editor extends SettingsEditorEx<JUnitTests
     Disposer.dispose(myJavaRunParameters);
     Disposer.dispose(myDeploySettings);
   }
+
   @NotNull
   public JPanel createEditor() {
     JPanel resultPanel = new JPanel(new GridBagLayout());
@@ -39,11 +40,13 @@ public class JUnitTests_Configuration_Editor extends SettingsEditorEx<JUnitTests
     resultPanel.add(pluginsEditor, LayoutUtil.createPanelConstraints(2));
     return resultPanel;
   }
+
   public void applyEditorTo(final JUnitTests_Configuration configuration) throws ConfigurationException {
     myJavaRunParameters.applyEditorTo(configuration.getJavaRunParameters());
     myJUnitSettings.applyEditorTo(configuration.getJUnitSettings());
     myDeploySettings.applyEditorTo(configuration.getDeploySettings());
   }
+
   public void resetEditorFrom(final JUnitTests_Configuration configuration) {
     myJavaRunParameters.resetEditorFrom(configuration.getJavaRunParameters());
     myJUnitSettings.resetEditorFrom(configuration.getJUnitSettings());
