@@ -21,7 +21,6 @@ import com.intellij.openapi.util.SystemInfo;
 import jetbrains.mps.util.ClassPathReader;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
