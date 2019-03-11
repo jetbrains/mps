@@ -59,8 +59,7 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
     }
 
     if (other instanceof StringBasedId && this instanceof StringBasedId) {
-      return 0;
-//      return toString().compareTo(other.toString());
+      return toString().compareTo(other.toString());
     }
 
     if (other instanceof StringBasedId && this instanceof Regular) {
