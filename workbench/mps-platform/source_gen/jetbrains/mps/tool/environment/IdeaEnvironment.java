@@ -37,7 +37,6 @@ import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import com.intellij.testFramework.PlatformTestUtil;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.core.platform.Platform;
 import java.util.concurrent.Semaphore;
 import com.intellij.ide.startup.StartupManagerEx;
@@ -335,7 +334,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
         }
       }
     }, ModalityState.NON_MODAL);
-    ModelAccess.instance().flushEventQueue();
+    // There's no evidence invokeAndWait() above won't pump all the pending model events, why do it again? 
   }
 
   @Override
