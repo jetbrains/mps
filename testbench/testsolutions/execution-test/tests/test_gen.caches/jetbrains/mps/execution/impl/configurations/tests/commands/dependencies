@@ -23,7 +23,7 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.TestStateAdapter" />
   </dependency>
-  <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.JUnitBTestCase_Test">
+  <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.JUnitBTestCaseTest_Test">
     <classNode dependClassName="com.intellij.execution.ExecutionException" />
     <classNode dependClassName="com.intellij.execution.process.ProcessHandler" />
     <classNode dependClassName="java.io.File" />

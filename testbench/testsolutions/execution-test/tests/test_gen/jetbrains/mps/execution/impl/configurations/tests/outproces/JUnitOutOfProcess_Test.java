@@ -15,8 +15,7 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.execution.impl.configurations.util.TestNodeWrapHelper;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
+import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
 import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.ReadingPropertyBTestCase_Test;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitOutOfProcessStarter;
@@ -31,9 +30,11 @@ import java.util.concurrent.TimeUnit;
 import junit.framework.Assert;
 import com.intellij.execution.ExecutionException;
 import java.util.Collections;
+import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
 import com.intellij.openapi.project.Project;
 import java.io.File;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
 import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
 
 @MPSLaunch
@@ -68,33 +69,28 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
 
     public void test_startSimpleTestCase() throws Exception {
       List<ITestNodeWrapper> testsToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6937584626643047380"));
-      JUnitSettings_Configuration junitParams = this.createDefaultJUnitSettings();
-      JavaRunParameters_Configuration javaRunParams = this.createDefaultJavaSettings();
-      this.runTestsWithSettings(junitParams, javaRunParams, testsToSucceed, this.emptyList());
-
+      JUnitTests_Configuration junitRC = this.createDefaultJUnitRC();
+      this.runTestsWithSettings(junitRC, testsToSucceed, this.emptyList());
     }
     public void test_startFailedTestCase() throws Exception {
       List<ITestNodeWrapper> testsToFail = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6339244025082034140"));
-      JUnitSettings_Configuration junitParams = this.createDefaultJUnitSettings();
-      JavaRunParameters_Configuration javaRunParams = this.createDefaultJavaSettings();
-      this.runTestsWithSettings(junitParams, javaRunParams, this.emptyList(), testsToFail);
+      this.runTestsWithSettings(this.createDefaultJUnitRC(), this.emptyList(), testsToFail);
     }
     public void test_programParametersArePassedToTheTest() throws Exception {
       List<ITestNodeWrapper> testsToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "4414733712821357918"));
+      JUnitTests_Configuration junitRC = this.createDefaultJUnitRC();
       String vmParams = "-D" + ReadingPropertyBTestCase_Test.SYS_PROPERTY + "=" + ReadingPropertyBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE;
-      JUnitSettings_Configuration junitParams = this.createDefaultJUnitSettings();
-      JavaRunParameters_Configuration javaRunParams = this.createDefaultJavaSettings();
-      javaRunParams.getJavaParameters().setVmOptions(vmParams);
-      this.runTestsWithSettings(junitParams, javaRunParams, testsToSucceed, this.emptyList());
+      junitRC.getJavaRunParameters().getJavaParameters().setVmOptions(vmParams);
+      this.runTestsWithSettings(junitRC, testsToSucceed, this.emptyList());
     }
 
 
-    public void runTestsWithSettings(JUnitSettings_Configuration junit, JavaRunParameters_Configuration java, List<ITestNodeWrapper> testsToSucceed, List<ITestNodeWrapper> testsToFail) {
+    public void runTestsWithSettings(JUnitTests_Configuration junit, List<ITestNodeWrapper> testsToSucceed, List<ITestNodeWrapper> testsToFail) {
       try {
         List<ITestNodeWrapper> allTests = ListSequence.fromList(testsToSucceed).union(ListSequence.fromList(testsToFail)).toListSequence();
 
         JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0 processExecutor;
-        processExecutor = new JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0((MPSProject) myProject, allTests, junit, java);
+        processExecutor = new JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0((MPSProject) myProject, allTests, junit);
         ProcessHandler process = processExecutor.execute();
         TestRunState runState = new TestRunState(allTests);
         ProcessListener listener = new UnitTestProcessListener(runState);
@@ -134,6 +130,13 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
       JavaRunParameters_Configuration javaRunParams = new JavaRunParameters_Configuration(ideaProject);
       javaRunParams.setJavaParameters(javaRunParametersTuple);
       return javaRunParams;
+    }
+    public JUnitTests_Configuration createDefaultJUnitRC() {
+      Project ideaProject = ((MPSProject) myProject).getProject();
+      JUnitTests_Configuration junitRC = new JUnitTests_Configuration(ideaProject, null, "dummyRCInitializer");
+      junitRC.setJUnitSettings(this.createDefaultJUnitSettings());
+      junitRC.setJavaRunParameters(this.createDefaultJavaSettings());
+      return junitRC;
     }
     private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;

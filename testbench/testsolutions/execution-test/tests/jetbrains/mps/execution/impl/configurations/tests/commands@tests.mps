@@ -368,7 +368,7 @@
     </language>
   </registry>
   <node concept="1lH9Xt" id="73dkH4PmkdK">
-    <property role="TrG5h" value="JUnitBTestCase" />
+    <property role="TrG5h" value="JUnitBTestCaseTest" />
     <property role="3OwPAg" value="false" />
     <property role="26Nn1l" value="false" />
     <node concept="2XrIbr" id="6bfDvj8bCm1" role="1qtyYc">

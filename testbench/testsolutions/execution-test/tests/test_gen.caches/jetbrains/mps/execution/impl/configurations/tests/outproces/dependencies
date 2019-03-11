@@ -21,6 +21,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.api.commands.ProcessHandlerBuilder" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitOutOfProcessStarter" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.impl.configurations.tests.commands.CheckTestStateListener" />
     <classNode dependClassName="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.ReadingPropertyBTestCase_Test" />
     <classNode dependClassName="jetbrains.mps.execution.impl.configurations.util.TestNodeWrapHelper" />

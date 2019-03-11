@@ -179,6 +179,13 @@
       </concept>
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
+    <language id="22e72e4c-0f69-46ce-8403-6750153aa615" name="jetbrains.mps.execution.configurations">
+      <concept id="2181232403821926780" name="jetbrains.mps.execution.configurations.structure.DummyRunConfigurationInitializer" flags="ng" index="2k9t8G">
+        <reference id="946964771156066583" name="configuration" index="yHkDA" />
+        <child id="2181232403823127961" name="projectParameter" index="2kdUr9" />
+      </concept>
+      <concept id="4414733712826590568" name="jetbrains.mps.execution.configurations.structure.RunConfigurationType" flags="ig" index="3nJ2Q3" />
+    </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
       <concept id="1205752633985" name="jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression" flags="nn" index="2WthIp" />
       <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ng" index="2WEnae">
@@ -191,7 +198,7 @@
     </language>
     <language id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings">
       <concept id="946964771156066582" name="jetbrains.mps.execution.settings.structure.PersistentConfigurationTemplateInitializer" flags="nn" index="yHkDB">
-        <reference id="946964771156066583" name="template" index="yHkDA" />
+        <reference id="946964771156066583" name="template" index="yHkDB" />
         <child id="946964771156066584" name="parameter" index="yHkDD" />
       </concept>
       <concept id="946964771156066574" name="jetbrains.mps.execution.settings.structure.PersistentPropertyReferenceOperation" flags="nn" index="yHkDZ">
@@ -200,6 +207,7 @@
       <concept id="946964771156066332" name="jetbrains.mps.execution.settings.structure.PersistentConfigurationType" flags="in" index="yHkHH">
         <reference id="946964771156066333" name="persistentConfiguration" index="yHkHG" />
       </concept>
+      <concept id="946964771156066557" name="jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType" flags="in" index="yHkIc" />
     </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
       <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
@@ -311,9 +319,6 @@
                     </node>
                     <node concept="37vLTw" id="4rbJdZOSZoU" role="37wK5m">
                       <ref role="3cqZAo" node="4rbJdZOSVmw" resolve="junit" />
-                    </node>
-                    <node concept="37vLTw" id="4rbJdZOzOQr" role="37wK5m">
-                      <ref role="3cqZAo" node="4rbJdZOEY9H" resolve="java" />
                     </node>
                   </node>
                 </node>
@@ -554,14 +559,8 @@
       </node>
       <node concept="37vLTG" id="4rbJdZOSVmw" role="3clF46">
         <property role="TrG5h" value="junit" />
-        <node concept="yHkHH" id="4rbJdZOSWg2" role="1tU5fm">
-          <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="4rbJdZOEY9H" role="3clF46">
-        <property role="TrG5h" value="java" />
-        <node concept="yHkHH" id="4rbJdZOSXqd" role="1tU5fm">
-          <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
+        <node concept="3nJ2Q3" id="1T5iP2ay461" role="1tU5fm">
+          <ref role="yHkHG" to="ic9i:5gyVhZ187Zu" resolve="JUnit Tests" />
         </node>
       </node>
       <node concept="37vLTG" id="6bfDvj8bCm5" role="3clF46">
@@ -617,30 +616,16 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="4rbJdZOROQM" role="3cqZAp">
-          <node concept="3cpWsn" id="4rbJdZOROQP" role="3cpWs9">
-            <property role="TrG5h" value="junitParams" />
-            <node concept="yHkHH" id="4rbJdZOROQL" role="1tU5fm">
-              <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
+        <node concept="3cpWs8" id="1T5iP2anCjn" role="3cqZAp">
+          <node concept="3cpWsn" id="1T5iP2anCjq" role="3cpWs9">
+            <property role="TrG5h" value="junitRC" />
+            <node concept="3nJ2Q3" id="1T5iP2anCjm" role="1tU5fm">
+              <ref role="yHkHG" to="ic9i:5gyVhZ187Zu" resolve="JUnit Tests" />
             </node>
-            <node concept="2OqwBi" id="4rbJdZOYJbu" role="33vP2m">
-              <node concept="2WthIp" id="4rbJdZOYJbv" role="2Oq$k0" />
-              <node concept="2XshWL" id="4rbJdZOYJbt" role="2OqNvi">
-                <ref role="2WH_rO" node="4rbJdZOYJbm" resolve="createDefaultJUnitSettings" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="4rbJdZOSEXK" role="3cqZAp">
-          <node concept="3cpWsn" id="4rbJdZOSEXN" role="3cpWs9">
-            <property role="TrG5h" value="javaRunParams" />
-            <node concept="yHkHH" id="4rbJdZOSEXJ" role="1tU5fm">
-              <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
-            </node>
-            <node concept="2OqwBi" id="4rbJdZOYJuL" role="33vP2m">
-              <node concept="2WthIp" id="4rbJdZOYJuM" role="2Oq$k0" />
-              <node concept="2XshWL" id="4rbJdZOYJuK" role="2OqNvi">
-                <ref role="2WH_rO" node="4rbJdZOYJuD" resolve="createDefaultJavaSettings" />
+            <node concept="2OqwBi" id="1T5iP2az4YG" role="33vP2m">
+              <node concept="2WthIp" id="1T5iP2az4YH" role="2Oq$k0" />
+              <node concept="2XshWL" id="1T5iP2az4YF" role="2OqNvi">
+                <ref role="2WH_rO" node="1T5iP2az4YC" resolve="createDefaultJUnitRC" />
               </node>
             </node>
           </node>
@@ -650,11 +635,8 @@
             <node concept="2WthIp" id="6bfDvj8bDqf" role="2Oq$k0" />
             <node concept="2XshWL" id="6bfDvj8bDqg" role="2OqNvi">
               <ref role="2WH_rO" node="6bfDvj8bCm1" resolve="runTestsWithSettings" />
-              <node concept="37vLTw" id="4rbJdZOT0nA" role="2XxRq1">
-                <ref role="3cqZAo" node="4rbJdZOROQP" resolve="junitParams" />
-              </node>
-              <node concept="37vLTw" id="4rbJdZOSZsL" role="2XxRq1">
-                <ref role="3cqZAo" node="4rbJdZOSEXN" resolve="javaRunParams" />
+              <node concept="37vLTw" id="1T5iP2aySZt" role="2XxRq1">
+                <ref role="3cqZAo" node="1T5iP2anCjq" resolve="junitRC" />
               </node>
               <node concept="37vLTw" id="4rbJdZOvdxT" role="2XxRq1">
                 <ref role="3cqZAo" node="4rbJdZOvdxJ" resolve="testsToSucceed" />
@@ -668,7 +650,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="4rbJdZOXX3f" role="3cqZAp" />
       </node>
     </node>
     <node concept="1LZb2c" id="6bfDvj8bDyv" role="1SL9yI">
@@ -706,44 +687,16 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="4rbJdZOYMgu" role="3cqZAp">
-          <node concept="3cpWsn" id="4rbJdZOYMgv" role="3cpWs9">
-            <property role="TrG5h" value="junitParams" />
-            <node concept="yHkHH" id="4rbJdZOYMgw" role="1tU5fm">
-              <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
-            </node>
-            <node concept="2OqwBi" id="4rbJdZOYMgx" role="33vP2m">
-              <node concept="2WthIp" id="4rbJdZOYMgy" role="2Oq$k0" />
-              <node concept="2XshWL" id="4rbJdZOYMgz" role="2OqNvi">
-                <ref role="2WH_rO" node="4rbJdZOYJbm" resolve="createDefaultJUnitSettings" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="4rbJdZOYMg$" role="3cqZAp">
-          <node concept="3cpWsn" id="4rbJdZOYMg_" role="3cpWs9">
-            <property role="TrG5h" value="javaRunParams" />
-            <node concept="yHkHH" id="4rbJdZOYMgA" role="1tU5fm">
-              <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
-            </node>
-            <node concept="2OqwBi" id="4rbJdZOYMgB" role="33vP2m">
-              <node concept="2WthIp" id="4rbJdZOYMgC" role="2Oq$k0" />
-              <node concept="2XshWL" id="4rbJdZOYMgD" role="2OqNvi">
-                <ref role="2WH_rO" node="4rbJdZOYJuD" resolve="createDefaultJavaSettings" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="4rbJdZOYMgE" role="3cqZAp">
           <node concept="2OqwBi" id="4rbJdZOYMgF" role="3clFbG">
             <node concept="2WthIp" id="4rbJdZOYMgG" role="2Oq$k0" />
             <node concept="2XshWL" id="4rbJdZOYMgH" role="2OqNvi">
               <ref role="2WH_rO" node="6bfDvj8bCm1" resolve="runTestsWithSettings" />
-              <node concept="37vLTw" id="4rbJdZOYMgI" role="2XxRq1">
-                <ref role="3cqZAo" node="4rbJdZOYMgv" resolve="junitParams" />
-              </node>
-              <node concept="37vLTw" id="4rbJdZOYMgJ" role="2XxRq1">
-                <ref role="3cqZAo" node="4rbJdZOYMg_" resolve="javaRunParams" />
+              <node concept="2OqwBi" id="1T5iP2az6i2" role="2XxRq1">
+                <node concept="2WthIp" id="1T5iP2az6i5" role="2Oq$k0" />
+                <node concept="2XshWL" id="1T5iP2az6rp" role="2OqNvi">
+                  <ref role="2WH_rO" node="1T5iP2az4YC" resolve="createDefaultJUnitRC" />
+                </node>
               </node>
               <node concept="2OqwBi" id="4rbJdZOYMgL" role="2XxRq1">
                 <node concept="2WthIp" id="4rbJdZOYMgM" role="2Oq$k0" />
@@ -794,6 +747,20 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="1T5iP2az7WL" role="3cqZAp">
+          <node concept="3cpWsn" id="1T5iP2az7WM" role="3cpWs9">
+            <property role="TrG5h" value="junitRC" />
+            <node concept="3nJ2Q3" id="1T5iP2az7WK" role="1tU5fm">
+              <ref role="yHkHG" to="ic9i:5gyVhZ187Zu" resolve="JUnit Tests" />
+            </node>
+            <node concept="2OqwBi" id="1T5iP2az7WN" role="33vP2m">
+              <node concept="2WthIp" id="1T5iP2az7WO" role="2Oq$k0" />
+              <node concept="2XshWL" id="1T5iP2az7WP" role="2OqNvi">
+                <ref role="2WH_rO" node="1T5iP2az4YC" resolve="createDefaultJUnitRC" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4rbJdZOvySG" role="3cqZAp">
           <node concept="3cpWsn" id="4rbJdZOvySH" role="3cpWs9">
             <property role="TrG5h" value="vmParams" />
@@ -820,39 +787,16 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="3P4ieJEEfH6" role="3cqZAp">
-          <node concept="3cpWsn" id="3P4ieJEEfH7" role="3cpWs9">
-            <property role="TrG5h" value="junitParams" />
-            <node concept="yHkHH" id="3P4ieJEEfH8" role="1tU5fm">
-              <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
-            </node>
-            <node concept="2OqwBi" id="3P4ieJEEfH9" role="33vP2m">
-              <node concept="2WthIp" id="3P4ieJEEfHa" role="2Oq$k0" />
-              <node concept="2XshWL" id="3P4ieJEEfHb" role="2OqNvi">
-                <ref role="2WH_rO" node="4rbJdZOYJbm" resolve="createDefaultJUnitSettings" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="3P4ieJEEfHc" role="3cqZAp">
-          <node concept="3cpWsn" id="3P4ieJEEfHd" role="3cpWs9">
-            <property role="TrG5h" value="javaRunParams" />
-            <node concept="yHkHH" id="3P4ieJEEfHe" role="1tU5fm">
-              <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
-            </node>
-            <node concept="2OqwBi" id="3P4ieJEEfHf" role="33vP2m">
-              <node concept="2WthIp" id="3P4ieJEEfHg" role="2Oq$k0" />
-              <node concept="2XshWL" id="3P4ieJEEfHh" role="2OqNvi">
-                <ref role="2WH_rO" node="4rbJdZOYJuD" resolve="createDefaultJavaSettings" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="3P4ieJEEifq" role="3cqZAp">
           <node concept="2OqwBi" id="3P4ieJEElvJ" role="3clFbG">
             <node concept="2OqwBi" id="3P4ieJEEiqn" role="2Oq$k0">
-              <node concept="37vLTw" id="3P4ieJEEifo" role="2Oq$k0">
-                <ref role="3cqZAo" node="3P4ieJEEfHd" resolve="javaRunParams" />
+              <node concept="2OqwBi" id="1T5iP2azaIM" role="2Oq$k0">
+                <node concept="37vLTw" id="1T5iP2az9wH" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1T5iP2az7WM" resolve="junitRC" />
+                </node>
+                <node concept="yHkDZ" id="1T5iP2azeH_" role="2OqNvi">
+                  <ref role="yHkDY" to="ic9i:6woObKLCiTr" resolve="myJavaRunParameters" />
+                </node>
               </node>
               <node concept="yHkDZ" id="3P4ieJEEk4c" role="2OqNvi">
                 <ref role="yHkDY" to="go48:6woObKLBCks" resolve="myJavaParameters" />
@@ -871,11 +815,8 @@
             <node concept="2WthIp" id="3P4ieJEEcPI" role="2Oq$k0" />
             <node concept="2XshWL" id="3P4ieJEEcPJ" role="2OqNvi">
               <ref role="2WH_rO" node="6bfDvj8bCm1" resolve="runTestsWithSettings" />
-              <node concept="37vLTw" id="3P4ieJEEcPK" role="2XxRq1">
-                <ref role="3cqZAo" node="3P4ieJEEfH7" resolve="junitParams" />
-              </node>
-              <node concept="37vLTw" id="3P4ieJEEcPL" role="2XxRq1">
-                <ref role="3cqZAo" node="3P4ieJEEfHd" resolve="javaRunParams" />
+              <node concept="37vLTw" id="1T5iP2az7WQ" role="2XxRq1">
+                <ref role="3cqZAo" node="1T5iP2az7WM" resolve="junitRC" />
               </node>
               <node concept="37vLTw" id="3P4ieJEEgUl" role="2XxRq1">
                 <ref role="3cqZAo" node="4rbJdZOuzgw" resolve="testsToSucceed" />
@@ -1003,7 +944,7 @@
     <node concept="2XrIbr" id="4rbJdZOYJbm" role="1qtyYc">
       <property role="TrG5h" value="createDefaultJUnitSettings" />
       <node concept="3Tm6S6" id="4rbJdZOYJbn" role="1B3o_S" />
-      <node concept="yHkHH" id="4rbJdZOYJbo" role="3clF45">
+      <node concept="yHkIc" id="1T5iP2aqwjY" role="3clF45">
         <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
       </node>
       <node concept="3clFbS" id="4rbJdZOYJaJ" role="3clF47">
@@ -1031,12 +972,12 @@
         <node concept="3cpWs8" id="4rbJdZOYJaM" role="3cqZAp">
           <node concept="3cpWsn" id="4rbJdZOYJaN" role="3cpWs9">
             <property role="TrG5h" value="junitParams" />
-            <node concept="yHkHH" id="4rbJdZOYJaO" role="1tU5fm">
+            <node concept="yHkIc" id="1T5iP2aqNZR" role="1tU5fm">
               <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
             </node>
             <node concept="2ShNRf" id="4rbJdZOYJaP" role="33vP2m">
               <node concept="yHkDB" id="4rbJdZOYJaQ" role="2ShVmc">
-                <ref role="yHkDA" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
+                <ref role="yHkDB" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
                 <node concept="37vLTw" id="4rbJdZOYJbs" role="yHkDD">
                   <ref role="3cqZAo" node="4rbJdZOSMk5" resolve="ideaProject" />
                 </node>
@@ -1143,7 +1084,7 @@
     <node concept="2XrIbr" id="4rbJdZOYJuD" role="1qtyYc">
       <property role="TrG5h" value="createDefaultJavaSettings" />
       <node concept="3Tm6S6" id="4rbJdZOYJuE" role="1B3o_S" />
-      <node concept="yHkHH" id="4rbJdZOYJuF" role="3clF45">
+      <node concept="yHkIc" id="1T5iP2aqNUw" role="3clF45">
         <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
       </node>
       <node concept="3clFbS" id="4rbJdZOYJu8" role="3clF47">
@@ -1210,12 +1151,12 @@
         <node concept="3cpWs8" id="4rbJdZOYJup" role="3cqZAp">
           <node concept="3cpWsn" id="4rbJdZOYJuq" role="3cpWs9">
             <property role="TrG5h" value="javaRunParams" />
-            <node concept="yHkHH" id="4rbJdZOYJur" role="1tU5fm">
+            <node concept="yHkIc" id="1T5iP2aqN$p" role="1tU5fm">
               <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
             </node>
             <node concept="2ShNRf" id="4rbJdZOYJus" role="33vP2m">
               <node concept="yHkDB" id="4rbJdZOYJut" role="2ShVmc">
-                <ref role="yHkDA" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
+                <ref role="yHkDB" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
                 <node concept="37vLTw" id="4rbJdZOYJuJ" role="yHkDD">
                   <ref role="3cqZAo" node="4rbJdZOYLDt" resolve="ideaProject" />
                 </node>
@@ -1241,6 +1182,93 @@
         <node concept="3cpWs6" id="4rbJdZOYJu_" role="3cqZAp">
           <node concept="37vLTw" id="4rbJdZOYJuA" role="3cqZAk">
             <ref role="3cqZAo" node="4rbJdZOYJuq" resolve="javaRunParams" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2XrIbr" id="1T5iP2az4YC" role="1qtyYc">
+      <property role="TrG5h" value="createDefaultJUnitRC" />
+      <node concept="3Tm6S6" id="1T5iP2az4YD" role="1B3o_S" />
+      <node concept="3nJ2Q3" id="1T5iP2az4YE" role="3clF45">
+        <ref role="yHkHG" to="ic9i:5gyVhZ187Zu" resolve="JUnit Tests" />
+      </node>
+      <node concept="3clFbS" id="1T5iP2az4Y2" role="3clF47">
+        <node concept="3cpWs8" id="1T5iP2az4Y5" role="3cqZAp">
+          <node concept="3cpWsn" id="1T5iP2az4Y6" role="3cpWs9">
+            <property role="TrG5h" value="ideaProject" />
+            <node concept="3uibUv" id="1T5iP2az4Y7" role="1tU5fm">
+              <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+            </node>
+            <node concept="2OqwBi" id="1T5iP2az4Y8" role="33vP2m">
+              <node concept="1eOMI4" id="1T5iP2az4Y9" role="2Oq$k0">
+                <node concept="10QFUN" id="1T5iP2az4Ya" role="1eOMHV">
+                  <node concept="3uibUv" id="1T5iP2az4Yb" role="10QFUM">
+                    <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+                  </node>
+                  <node concept="1jxXqW" id="1T5iP2az4Yc" role="10QFUP" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1T5iP2az4Yd" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1T5iP2az4Ye" role="3cqZAp">
+          <node concept="3cpWsn" id="1T5iP2az4Yf" role="3cpWs9">
+            <property role="TrG5h" value="junitRC" />
+            <node concept="3nJ2Q3" id="1T5iP2az4Yg" role="1tU5fm">
+              <ref role="yHkHG" to="ic9i:5gyVhZ187Zu" resolve="JUnit Tests" />
+            </node>
+            <node concept="2ShNRf" id="1T5iP2az4Yh" role="33vP2m">
+              <node concept="2k9t8G" id="1T5iP2az4Yi" role="2ShVmc">
+                <ref role="yHkDA" to="ic9i:5gyVhZ187Zu" resolve="JUnit Tests" />
+                <node concept="37vLTw" id="1T5iP2az4Yj" role="2kdUr9">
+                  <ref role="3cqZAo" node="1T5iP2az4Y6" resolve="ideaProject" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1T5iP2az4Yk" role="3cqZAp">
+          <node concept="37vLTI" id="1T5iP2az4Yl" role="3clFbG">
+            <node concept="2OqwBi" id="1T5iP2az4Ym" role="37vLTx">
+              <node concept="2WthIp" id="1T5iP2az4Yn" role="2Oq$k0" />
+              <node concept="2XshWL" id="1T5iP2az4Yo" role="2OqNvi">
+                <ref role="2WH_rO" node="4rbJdZOYJbm" resolve="createDefaultJUnitSettings" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1T5iP2az4Yp" role="37vLTJ">
+              <node concept="37vLTw" id="1T5iP2az4Yq" role="2Oq$k0">
+                <ref role="3cqZAo" node="1T5iP2az4Yf" resolve="junitRC" />
+              </node>
+              <node concept="yHkDZ" id="1T5iP2az4Yr" role="2OqNvi">
+                <ref role="yHkDY" to="ic9i:5gyVhZ1ayaO" resolve="myJUnitSettings" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1T5iP2az4Ys" role="3cqZAp">
+          <node concept="37vLTI" id="1T5iP2az4Yt" role="3clFbG">
+            <node concept="2OqwBi" id="1T5iP2az4Yu" role="37vLTJ">
+              <node concept="37vLTw" id="1T5iP2az4Yv" role="2Oq$k0">
+                <ref role="3cqZAo" node="1T5iP2az4Yf" resolve="junitRC" />
+              </node>
+              <node concept="yHkDZ" id="1T5iP2az4Yw" role="2OqNvi">
+                <ref role="yHkDY" to="ic9i:6woObKLCiTr" resolve="myJavaRunParameters" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1T5iP2az4Yx" role="37vLTx">
+              <node concept="2WthIp" id="1T5iP2az4Yy" role="2Oq$k0" />
+              <node concept="2XshWL" id="1T5iP2az4Yz" role="2OqNvi">
+                <ref role="2WH_rO" node="4rbJdZOYJuD" resolve="createDefaultJavaSettings" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1T5iP2az4Y$" role="3cqZAp">
+          <node concept="37vLTw" id="1T5iP2az4Y_" role="3cqZAk">
+            <ref role="3cqZAo" node="1T5iP2az4Yf" resolve="junitRC" />
           </node>
         </node>
       </node>
