@@ -2942,9 +2942,6 @@
             </node>
             <node concept="2XshWL" id="6Aw2OSzluXn" role="2OqNvi">
               <ref role="2WH_rO" to="tty3:1b7CZFPJVXT" resolve="canExecuteInProcess" />
-              <node concept="37vLTw" id="6Aw2OSzlxa$" role="2XxRq1">
-                <ref role="3cqZAo" node="5gyVhZ1884o" resolve="testNodes" />
-              </node>
             </node>
           </node>
           <node concept="9aQIb" id="xK0$tolfxd" role="9aQIa">
@@ -3106,6 +3103,17 @@
     </node>
     <node concept="yYvg6" id="3djbh3BbrSj" role="yYvgT">
       <ref role="yYvg7" node="3djbh3B5ov9" resolve="ClearSettingsDirectoryBeforeRunTask" />
+      <node concept="2OqwBi" id="1tTdFdw7dMq" role="1ZwhtC">
+        <node concept="2OqwBi" id="1tTdFdvXDY0" role="2Oq$k0">
+          <node concept="RBKsg" id="1tTdFdvXDY1" role="2Oq$k0" />
+          <node concept="yHkDZ" id="1tTdFdvXDY2" role="2OqNvi">
+            <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
+          </node>
+        </node>
+        <node concept="2XshWL" id="1tTdFdwyg3r" role="2OqNvi">
+          <ref role="2WH_rO" to="tty3:1b7CZFPJVXT" resolve="canExecuteInProcess" />
+        </node>
+      </node>
       <node concept="2ShNRf" id="3djbh3BbrSk" role="1ZwhtC">
         <node concept="1pGfFk" id="3djbh3BbrSl" role="2ShVmc">
           <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
@@ -3125,6 +3133,17 @@
     </node>
     <node concept="yYvg6" id="3P4ieJEJQlR" role="yYvgT">
       <ref role="yYvg7" node="1QpbsTfWh5" resolve="AssemblePluginsBeforeTask" />
+      <node concept="2OqwBi" id="1tTdFdwyuHD" role="1ZwhtC">
+        <node concept="2OqwBi" id="1tTdFdwyuHE" role="2Oq$k0">
+          <node concept="RBKsg" id="1tTdFdwyuHF" role="2Oq$k0" />
+          <node concept="yHkDZ" id="1tTdFdwyuHG" role="2OqNvi">
+            <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
+          </node>
+        </node>
+        <node concept="2XshWL" id="1tTdFdwyuHH" role="2OqNvi">
+          <ref role="2WH_rO" to="tty3:1b7CZFPJVXT" resolve="canExecuteInProcess" />
+        </node>
+      </node>
       <node concept="2OqwBi" id="3P4ieJEJQlS" role="1ZwhtC">
         <node concept="2OqwBi" id="3P4ieJEJQlT" role="2Oq$k0">
           <node concept="RBKsg" id="3P4ieJEJQlU" role="2Oq$k0" />
@@ -7944,9 +7963,14 @@
                         <ref role="37wK5l" to="lui2:~FindUsagesFacade.findInstances(org.jetbrains.mps.openapi.module.SearchScope,java.util.Set,boolean,org.jetbrains.mps.openapi.util.Consumer,org.jetbrains.mps.openapi.util.ProgressMonitor):void" resolve="findInstances" />
                         <node concept="2ShNRf" id="2shlJwNLt8J" role="37wK5m">
                           <node concept="1pGfFk" id="2shlJwNLAif" role="2ShVmc">
-                            <ref role="37wK5l" to="mte5:~ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="ProjectScope" />
-                            <node concept="37vLTw" id="2shlJwNLCGb" role="37wK5m">
-                              <ref role="3cqZAo" node="2shlJwNLfg7" resolve="mpsProject" />
+                            <ref role="37wK5l" to="z1c3:~GlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="GlobalScope" />
+                            <node concept="2OqwBi" id="1tTdFdw$BIA" role="37wK5m">
+                              <node concept="37vLTw" id="2shlJwNLCGb" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2shlJwNLfg7" resolve="mpsProject" />
+                              </node>
+                              <node concept="liA8E" id="1tTdFdw$Ygm" role="2OqNvi">
+                                <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                              </node>
                             </node>
                           </node>
                         </node>
@@ -9035,6 +9059,23 @@
     <property role="OSgQB" value="Assemble Plugins" />
     <node concept="1CW0x$" id="1QpbsTfWh6" role="1D3o6X">
       <node concept="3clFbS" id="1QpbsTfWh7" role="2VODD2">
+        <node concept="3clFbJ" id="1tTdFdwyBUU" role="3cqZAp">
+          <node concept="3clFbS" id="1tTdFdwyBUW" role="3clFbx">
+            <node concept="3SKdUt" id="1tTdFdwyDuU" role="3cqZAp">
+              <node concept="3SKdUq" id="1tTdFdwyDuW" role="3SKWNk">
+                <property role="3SKdUp" value="dummy mode is needed for in-process tests; probably the configurations must be separated" />
+              </node>
+            </node>
+            <node concept="3cpWs6" id="1tTdFdwyCAr" role="3cqZAp">
+              <node concept="3clFbT" id="1tTdFdwyCS4" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="yYjwu" id="1tTdFdwyChm" role="3clFbw">
+            <ref role="3cqZAo" node="1tTdFdwyAtV" resolve="dummy" />
+          </node>
+        </node>
         <node concept="3clFbJ" id="6bBAl1hWL41" role="3cqZAp">
           <node concept="3clFbS" id="6bBAl1hWL44" role="3clFbx">
             <node concept="3cpWs6" id="6bBAl1hX1v$" role="3cqZAp">
@@ -9802,6 +9843,10 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="yYmJa" id="1tTdFdwyAtV" role="yYnPO">
+      <property role="TrG5h" value="dummy" />
+      <node concept="10P_77" id="1tTdFdwyAH2" role="1tU5fm" />
     </node>
     <node concept="yYmJa" id="1QpbsTfX0$" role="yYnPO">
       <property role="TrG5h" value="myPlugins" />
@@ -15254,6 +15299,23 @@
     <property role="OSgQB" value="Clear Settings Directory" />
     <node concept="1CW0x$" id="3djbh3B5ova" role="1D3o6X">
       <node concept="3clFbS" id="3djbh3B5ovb" role="2VODD2">
+        <node concept="3SKdUt" id="1tTdFdwyhkP" role="3cqZAp">
+          <node concept="3SKdUq" id="1tTdFdwyhkR" role="3SKWNk">
+            <property role="3SKdUp" value="no way to separate here in-process/out-of-process execution" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1tTdFdwygA$" role="3cqZAp">
+          <node concept="3clFbS" id="1tTdFdwygAA" role="3clFbx">
+            <node concept="3cpWs6" id="1tTdFdwygTK" role="3cqZAp">
+              <node concept="3clFbT" id="1tTdFdwyh1z" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="yYjwu" id="1tTdFdwygIx" role="3clFbw">
+            <ref role="3cqZAo" node="1tTdFdwygfw" resolve="dummy" />
+          </node>
+        </node>
         <node concept="3clFbF" id="3djbh3B5t98" role="3cqZAp">
           <node concept="2YIFZM" id="3djbh3B5ti6" role="3clFbG">
             <ref role="37wK5l" to="18ew:~FileUtil.delete(java.io.File):boolean" resolve="delete" />
@@ -15269,6 +15331,10 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="yYmJa" id="1tTdFdwygfw" role="yYnPO">
+      <property role="TrG5h" value="dummy" />
+      <node concept="10P_77" id="1tTdFdwygnb" role="1tU5fm" />
     </node>
     <node concept="yYmJa" id="3djbh3B5ozX" role="yYnPO">
       <property role="TrG5h" value="settingsLocation" />

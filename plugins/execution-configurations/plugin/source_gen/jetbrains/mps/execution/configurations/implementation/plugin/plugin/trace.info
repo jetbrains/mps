@@ -116,8 +116,8 @@
       <node id="2815126866103694342" at="64,84,65,75" concept="10" />
       <node id="6016662220987243417" at="65,75,66,87" concept="10" />
       <node id="6016662220987092090" at="68,45,69,72" concept="10" />
-      <node id="6016662220987231380" at="69,72,70,286" concept="5" />
-      <node id="3855706930655705052" at="70,286,71,89" concept="10" />
+      <node id="6016662220987231380" at="69,72,70,301" concept="5" />
+      <node id="3855706930655705052" at="70,301,71,89" concept="10" />
       <node id="3855706930655790273" at="72,85,73,68" concept="5" />
       <node id="3855706930655842635" at="74,9,75,18" concept="11" />
       <node id="3855706930654950371" at="81,84,82,134" concept="10" />
@@ -617,113 +617,120 @@
       <node id="33324785354130501" at="48,49,49,59" concept="16" />
       <node id="33324785354130501" at="52,112,53,99" concept="11" />
       <node id="33324785354130501" at="56,105,57,15" concept="11" />
-      <node id="33324785354133540" at="61,0,62,0" concept="6" trace="myPlugins" />
-      <node id="4337072726662216663" at="62,0,63,0" concept="6" trace="myAssembleLocation" />
-      <node id="33324785354130501" at="64,59,65,17" concept="16" />
-      <node id="33324785354133540" at="68,83,69,26" concept="5" />
-      <node id="4337072726662216663" at="69,26,70,44" concept="5" />
-      <node id="33324785354130501" at="70,44,71,18" concept="11" />
-      <node id="7126833505588484068" at="75,55,76,20" concept="11" />
-      <node id="7126833505588416196" at="77,7,78,0" concept="13" />
-      <node id="5057842142812918449" at="78,0,79,79" concept="10" />
-      <node id="4586384769575594104" at="79,79,80,91" concept="10" />
-      <node id="4586384769575801780" at="80,91,81,43" concept="10" />
-      <node id="5507539734801959725" at="81,43,82,0" concept="13" />
-      <node id="5057842142812919100" at="86,31,87,69" concept="5" />
-      <node id="1418268876297587569" at="91,34,92,0" concept="13" />
-      <node id="5057842142812946421" at="92,0,93,58" concept="10" />
-      <node id="3698349269618283358" at="95,44,96,52" concept="5" />
-      <node id="5057842142812987141" at="97,9,98,31" concept="5" />
-      <node id="5057842142812991936" at="98,31,99,21" concept="11" />
-      <node id="8679254744080796055" at="100,7,101,0" concept="13" />
-      <node id="8679254744081008784" at="101,0,102,55" concept="10" />
-      <node id="5930496931442235236" at="104,27,105,72" concept="5" />
-      <node id="8679254744081008791" at="107,34,108,78" concept="5" />
-      <node id="4337072726662308018" at="108,78,109,0" concept="13" />
-      <node id="8679254744080812102" at="109,0,110,84" concept="10" />
-      <node id="3698349269618296570" at="111,11,112,42" concept="12" />
-      <node id="4337072726661437248" at="112,42,113,126" concept="5" />
-      <node id="5199260298872264944" at="113,126,114,50" concept="5" />
-      <node id="3818729150937328064" at="116,44,117,50" concept="5" />
-      <node id="5057842142813004308" at="118,9,119,31" concept="5" />
-      <node id="4337072726661624144" at="119,31,120,21" concept="11" />
-      <node id="1799429675156190304" at="121,7,122,38" concept="12" />
-      <node id="7229872968947682895" at="124,27,125,74" concept="10" />
-      <node id="7229872968947687525" at="125,74,126,0" concept="13" />
-      <node id="7229872968947333847" at="126,0,127,62" concept="10" />
-      <node id="7229872968947696303" at="127,62,128,63" concept="10" />
-      <node id="476053548510634987" at="128,63,129,131" concept="10" />
-      <node id="476053548510641387" at="129,131,130,70" concept="5" />
-      <node id="7229872968947709255" at="130,70,131,76" concept="5" />
-      <node id="7229872968947784207" at="131,76,132,75" concept="5" />
-      <node id="2545331098615402569" at="132,75,133,0" concept="13" />
-      <node id="7229872968947693407" at="133,0,134,150" concept="10" />
-      <node id="7229872968947693534" at="134,150,135,0" concept="13" />
-      <node id="8031864729214425070" at="135,0,136,67" concept="5" />
-      <node id="8031864729214388746" at="136,67,137,31" concept="5" />
-      <node id="2181232403817273439" at="137,31,138,103" concept="10" />
-      <node id="8031864729214134987" at="138,103,139,31" concept="5" />
-      <node id="7229872968947565931" at="139,31,140,73" concept="5" />
-      <node id="8679254744081338538" at="140,73,141,110" concept="5" />
-      <node id="2181232403817279542" at="141,110,142,181" concept="5" />
-      <node id="5499214212287251889" at="144,47,145,0" concept="13" />
-      <node id="8679254744081283024" at="145,0,146,71" concept="10" />
-      <node id="4337072726662455960" at="147,26,148,21" concept="11" />
-      <node id="4337072726662468261" at="149,7,150,0" concept="13" />
-      <node id="4337072726662456220" at="150,0,151,86" concept="5" />
-      <node id="5057842142813022306" at="151,86,152,29" concept="5" />
-      <node id="5499214212286576968" at="152,29,153,0" concept="13" />
-      <node id="8679254744081265390" at="153,0,154,18" concept="11" />
+      <node id="1691443279101060987" at="61,0,62,0" concept="6" trace="myDummy" />
+      <node id="33324785354133540" at="62,0,63,0" concept="6" trace="myPlugins" />
+      <node id="4337072726662216663" at="63,0,64,0" concept="6" trace="myAssembleLocation" />
+      <node id="33324785354130501" at="65,59,66,17" concept="16" />
+      <node id="1691443279101060987" at="69,98,70,22" concept="5" />
+      <node id="33324785354133540" at="70,22,71,26" concept="5" />
+      <node id="4337072726662216663" at="71,26,72,44" concept="5" />
+      <node id="33324785354130501" at="72,44,73,18" concept="11" />
+      <node id="1691443279101073338" at="77,20,78,100" concept="12" />
+      <node id="1691443279101069723" at="78,100,79,20" concept="11" />
+      <node id="7126833505588484068" at="81,55,82,20" concept="11" />
+      <node id="7126833505588416196" at="83,7,84,0" concept="13" />
+      <node id="5057842142812918449" at="84,0,85,79" concept="10" />
+      <node id="4586384769575594104" at="85,79,86,91" concept="10" />
+      <node id="4586384769575801780" at="86,91,87,43" concept="10" />
+      <node id="5507539734801959725" at="87,43,88,0" concept="13" />
+      <node id="5057842142812919100" at="92,31,93,69" concept="5" />
+      <node id="1418268876297587569" at="97,34,98,0" concept="13" />
+      <node id="5057842142812946421" at="98,0,99,58" concept="10" />
+      <node id="3698349269618283358" at="101,44,102,52" concept="5" />
+      <node id="5057842142812987141" at="103,9,104,31" concept="5" />
+      <node id="5057842142812991936" at="104,31,105,21" concept="11" />
+      <node id="8679254744080796055" at="106,7,107,0" concept="13" />
+      <node id="8679254744081008784" at="107,0,108,55" concept="10" />
+      <node id="5930496931442235236" at="110,27,111,72" concept="5" />
+      <node id="8679254744081008791" at="113,34,114,78" concept="5" />
+      <node id="4337072726662308018" at="114,78,115,0" concept="13" />
+      <node id="8679254744080812102" at="115,0,116,84" concept="10" />
+      <node id="3698349269618296570" at="117,11,118,42" concept="12" />
+      <node id="4337072726661437248" at="118,42,119,126" concept="5" />
+      <node id="5199260298872264944" at="119,126,120,50" concept="5" />
+      <node id="3818729150937328064" at="122,44,123,50" concept="5" />
+      <node id="5057842142813004308" at="124,9,125,31" concept="5" />
+      <node id="4337072726661624144" at="125,31,126,21" concept="11" />
+      <node id="1799429675156190304" at="127,7,128,38" concept="12" />
+      <node id="7229872968947682895" at="130,27,131,74" concept="10" />
+      <node id="7229872968947687525" at="131,74,132,0" concept="13" />
+      <node id="7229872968947333847" at="132,0,133,62" concept="10" />
+      <node id="7229872968947696303" at="133,62,134,63" concept="10" />
+      <node id="476053548510634987" at="134,63,135,131" concept="10" />
+      <node id="476053548510641387" at="135,131,136,70" concept="5" />
+      <node id="7229872968947709255" at="136,70,137,76" concept="5" />
+      <node id="7229872968947784207" at="137,76,138,75" concept="5" />
+      <node id="2545331098615402569" at="138,75,139,0" concept="13" />
+      <node id="7229872968947693407" at="139,0,140,150" concept="10" />
+      <node id="7229872968947693534" at="140,150,141,0" concept="13" />
+      <node id="8031864729214425070" at="141,0,142,67" concept="5" />
+      <node id="8031864729214388746" at="142,67,143,31" concept="5" />
+      <node id="2181232403817273439" at="143,31,144,103" concept="10" />
+      <node id="8031864729214134987" at="144,103,145,31" concept="5" />
+      <node id="7229872968947565931" at="145,31,146,73" concept="5" />
+      <node id="8679254744081338538" at="146,73,147,110" concept="5" />
+      <node id="2181232403817279542" at="147,110,148,181" concept="5" />
+      <node id="5499214212287251889" at="150,47,151,0" concept="13" />
+      <node id="8679254744081283024" at="151,0,152,71" concept="10" />
+      <node id="4337072726662455960" at="153,26,154,21" concept="11" />
+      <node id="4337072726662468261" at="155,7,156,0" concept="13" />
+      <node id="4337072726662456220" at="156,0,157,86" concept="5" />
+      <node id="5057842142813022306" at="157,86,158,29" concept="5" />
+      <node id="5499214212286576968" at="158,29,159,0" concept="13" />
+      <node id="8679254744081265390" at="159,0,160,18" concept="11" />
       <node id="33324785354130501" at="48,0,51,0" concept="3" trace="AssemblePluginsBeforeTask_BeforeTask#()V" />
       <node id="33324785354130501" at="52,0,55,0" concept="9" trace="createTaskImpl#()Ljetbrains/mps/execution/configurations/implementation/plugin/plugin/AssemblePluginsBeforeTask_BeforeTask/AssemblePluginsBeforeTask_BeforeTask_RunTask;" />
       <node id="33324785354130501" at="56,0,59,0" concept="9" trace="getId#()Lcom/intellij/openapi/util/Key;" />
-      <node id="33324785354130501" at="64,0,67,0" concept="3" trace="AssemblePluginsBeforeTask_BeforeTask_RunTask#()V" />
-      <node id="7126833505588416769" at="74,79,77,7" concept="8" />
-      <node id="33324785354799865" at="86,0,89,0" concept="9" trace="run#()V" />
-      <node id="3698349269618283358" at="94,85,97,9" concept="8" />
-      <node id="5930496931442332140" at="104,0,107,0" concept="9" trace="run#()V" />
-      <node id="3818729150937328064" at="115,38,118,9" concept="8" />
-      <node id="4337072726662448033" at="146,71,149,7" concept="8" />
-      <node id="33324785354130501" at="68,0,73,0" concept="9" trace="configure#(Ljava/util/List;Ljava/io/File;)Z" />
-      <node id="33324785354794065" at="84,27,89,13" concept="5" />
-      <node id="5930496931442314475" at="102,55,107,34" concept="5" />
-      <node id="2640006856203720301" at="84,0,91,0" concept="9" trace="run#()V" />
-      <node id="5057842142812948186" at="93,58,100,7" concept="8" />
-      <node id="2640006856203567610" at="82,0,91,34" concept="5" />
-      <node id="4337072726661557824" at="110,84,121,7" concept="20" />
-      <node id="4337072726661637579" at="124,0,144,0" concept="9" trace="run#()V" />
-      <node id="4337072726661637574" at="122,38,144,47" concept="5" />
-      <node id="33324785354130501" at="74,0,156,0" concept="9" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
+      <node id="33324785354130501" at="65,0,68,0" concept="3" trace="AssemblePluginsBeforeTask_BeforeTask_RunTask#()V" />
+      <node id="7126833505588416769" at="80,7,83,7" concept="8" />
+      <node id="33324785354799865" at="92,0,95,0" concept="9" trace="run#()V" />
+      <node id="3698349269618283358" at="100,85,103,9" concept="8" />
+      <node id="5930496931442332140" at="110,0,113,0" concept="9" trace="run#()V" />
+      <node id="3818729150937328064" at="121,38,124,9" concept="8" />
+      <node id="4337072726662448033" at="152,71,155,7" concept="8" />
+      <node id="1691443279101066938" at="76,79,80,7" concept="8" />
+      <node id="33324785354794065" at="90,27,95,13" concept="5" />
+      <node id="5930496931442314475" at="108,55,113,34" concept="5" />
+      <node id="33324785354130501" at="69,0,75,0" concept="9" trace="configure#(ZLjava/util/List;Ljava/io/File;)Z" />
+      <node id="2640006856203720301" at="90,0,97,0" concept="9" trace="run#()V" />
+      <node id="5057842142812948186" at="99,58,106,7" concept="8" />
+      <node id="2640006856203567610" at="88,0,97,34" concept="5" />
+      <node id="4337072726661557824" at="116,84,127,7" concept="20" />
+      <node id="4337072726661637579" at="130,0,150,0" concept="9" trace="run#()V" />
+      <node id="4337072726661637574" at="128,38,150,47" concept="5" />
+      <node id="33324785354130501" at="76,0,162,0" concept="9" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
       <scope id="33324785354130501" at="48,49,49,59" />
       <scope id="33324785354130501" at="52,112,53,99" />
       <scope id="33324785354130501" at="56,105,57,15" />
-      <scope id="33324785354130501" at="64,59,65,17" />
-      <scope id="7126833505588416772" at="75,55,76,20" />
-      <scope id="33324785354799866" at="86,31,87,69" />
-      <scope id="3698349269618283358" at="95,44,96,52" />
-      <scope id="5930496931442332143" at="104,27,105,72" />
-      <scope id="3818729150937328064" at="116,44,117,50" />
-      <scope id="4337072726662448036" at="147,26,148,21" />
+      <scope id="33324785354130501" at="65,59,66,17" />
+      <scope id="7126833505588416772" at="81,55,82,20" />
+      <scope id="33324785354799866" at="92,31,93,69" />
+      <scope id="3698349269618283358" at="101,44,102,52" />
+      <scope id="5930496931442332143" at="110,27,111,72" />
+      <scope id="3818729150937328064" at="122,44,123,50" />
+      <scope id="4337072726662448036" at="153,26,154,21" />
+      <scope id="1691443279101066940" at="77,20,79,20" />
       <scope id="33324785354130501" at="48,0,51,0" />
       <scope id="33324785354130501" at="52,0,55,0" />
       <scope id="33324785354130501" at="56,0,59,0" />
-      <scope id="33324785354130501" at="64,0,67,0" />
-      <scope id="33324785354130501" at="68,83,71,18" />
-      <scope id="33324785354799865" at="86,0,89,0" />
-      <scope id="5930496931442332140" at="104,0,107,0" />
-      <scope id="4337072726661557826" at="111,11,114,50" />
-      <scope id="33324785354130501" at="68,0,73,0">
-        <var name="assembleLocation" id="4337072726662216663" />
-        <var name="plugins" id="33324785354133540" />
-      </scope>
-      <scope id="2640006856203720302" at="84,27,89,13" />
-      <scope id="5057842142812948189" at="94,85,99,21" />
-      <scope id="4337072726661557827" at="115,0,120,21">
+      <scope id="33324785354130501" at="65,0,68,0" />
+      <scope id="33324785354799865" at="92,0,95,0" />
+      <scope id="5930496931442332140" at="110,0,113,0" />
+      <scope id="4337072726661557826" at="117,11,120,50" />
+      <scope id="33324785354130501" at="69,98,73,18" />
+      <scope id="2640006856203720302" at="90,27,95,13" />
+      <scope id="5057842142812948189" at="100,85,105,21" />
+      <scope id="4337072726661557827" at="121,0,126,21">
         <var name="e" id="4337072726661557829" />
       </scope>
-      <scope id="4337072726661557833" at="115,38,120,21" />
-      <scope id="2640006856203720301" at="84,0,91,0" />
-      <scope id="4337072726661637580" at="124,27,142,181">
+      <scope id="4337072726661557833" at="121,38,126,21" />
+      <scope id="33324785354130501" at="69,0,75,0">
+        <var name="assembleLocation" id="4337072726662216663" />
+        <var name="dummy" id="1691443279101060987" />
+        <var name="plugins" id="33324785354133540" />
+      </scope>
+      <scope id="2640006856203720301" at="90,0,97,0" />
+      <scope id="4337072726661637580" at="130,27,148,181">
         <var name="actionToolbar" id="476053548510634988" />
         <var name="consolePanel" id="7229872968947696304" />
         <var name="descriptor" id="7229872968947693408" />
@@ -731,8 +738,8 @@
         <var name="group" id="7229872968947333848" />
         <var name="pinAction" id="2181232403817273440" />
       </scope>
-      <scope id="4337072726661637579" at="124,0,144,0" />
-      <scope id="33324785354130501" at="74,79,154,18">
+      <scope id="4337072726661637579" at="130,0,150,0" />
+      <scope id="33324785354130501" at="76,79,160,18">
         <var name="assembleScriptLocation" id="5057842142812946422" />
         <var name="console" id="8679254744081008785" />
         <var name="exitCode" id="8679254744081283025" />
@@ -741,16 +748,16 @@
         <var name="projectFinal" id="4586384769575801778" />
         <var name="script" id="5057842142812918450" />
       </scope>
-      <scope id="33324785354130501" at="74,0,156,0">
+      <scope id="33324785354130501" at="76,0,162,0">
         <var name="environment" id="33324785354130501" />
         <var name="project" id="33324785354130501" />
       </scope>
-      <unit id="33324785354799865" at="85,57,89,11" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$1$1" />
-      <unit id="5930496931442332140" at="103,60,107,7" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$2" />
-      <unit id="2640006856203720301" at="83,60,91,7" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$1" />
-      <unit id="4337072726661637579" at="123,60,144,7" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$3" />
-      <unit id="33324785354130501" at="60,0,157,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask" />
-      <unit id="33324785354130501" at="45,0,158,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask" />
+      <unit id="33324785354799865" at="91,57,95,11" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$1$1" />
+      <unit id="5930496931442332140" at="109,60,113,7" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$2" />
+      <unit id="2640006856203720301" at="89,60,97,7" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$1" />
+      <unit id="4337072726661637579" at="129,60,150,7" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask$3" />
+      <unit id="33324785354130501" at="60,0,163,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask$AssemblePluginsBeforeTask_BeforeTask_RunTask" />
+      <unit id="33324785354130501" at="45,0,164,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask" />
     </file>
     <file name="BeforeTasksInitializer_ProjectPluginPart.java">
       <node id="33324785354130501" at="22,5,23,108" concept="10" />
@@ -823,37 +830,44 @@
       <node id="3698349269620983753" at="14,59,15,77" concept="16" />
       <node id="3698349269620983753" at="18,132,19,119" concept="11" />
       <node id="3698349269620983753" at="22,125,23,15" concept="11" />
-      <node id="3698349269620984061" at="27,0,28,0" concept="6" trace="mySettingsLocation" />
-      <node id="3698349269620983753" at="29,69,30,17" concept="16" />
-      <node id="3698349269620984061" at="33,53,34,44" concept="5" />
-      <node id="3698349269620983753" at="34,44,35,18" concept="11" />
-      <node id="3698349269621002824" at="38,79,39,42" concept="5" />
-      <node id="3698349269620984056" at="39,42,40,18" concept="11" />
+      <node id="1691443279100969952" at="27,0,28,0" concept="6" trace="myDummy" />
+      <node id="3698349269620984061" at="28,0,29,0" concept="6" trace="mySettingsLocation" />
+      <node id="3698349269620983753" at="30,69,31,17" concept="16" />
+      <node id="1691443279100969952" at="34,68,35,22" concept="5" />
+      <node id="3698349269620984061" at="35,22,36,44" concept="5" />
+      <node id="3698349269620983753" at="36,44,37,18" concept="11" />
+      <node id="1691443279100974389" at="40,79,41,69" concept="12" />
+      <node id="1691443279100972656" at="42,20,43,20" concept="11" />
+      <node id="3698349269621002824" at="44,7,45,42" concept="5" />
+      <node id="3698349269620984056" at="45,42,46,18" concept="11" />
       <node id="3698349269620983753" at="14,0,17,0" concept="3" trace="ClearSettingsDirectoryBeforeRunTask_BeforeTask#()V" />
       <node id="3698349269620983753" at="18,0,21,0" concept="9" trace="createTaskImpl#()Ljetbrains/mps/execution/configurations/implementation/plugin/plugin/ClearSettingsDirectoryBeforeRunTask_BeforeTask/ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask;" />
       <node id="3698349269620983753" at="22,0,25,0" concept="9" trace="getId#()Lcom/intellij/openapi/util/Key;" />
-      <node id="3698349269620983753" at="29,0,32,0" concept="3" trace="ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask#()V" />
-      <node id="3698349269620983753" at="33,0,37,0" concept="9" trace="configure#(Ljava/io/File;)Z" />
-      <node id="3698349269620983753" at="38,0,42,0" concept="9" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
+      <node id="3698349269620983753" at="30,0,33,0" concept="3" trace="ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask#()V" />
+      <node id="1691443279100971428" at="41,69,44,7" concept="8" />
+      <node id="3698349269620983753" at="34,0,39,0" concept="9" trace="configure#(ZLjava/io/File;)Z" />
+      <node id="3698349269620983753" at="40,0,48,0" concept="9" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
       <scope id="3698349269620983753" at="14,59,15,77" />
       <scope id="3698349269620983753" at="18,132,19,119" />
       <scope id="3698349269620983753" at="22,125,23,15" />
-      <scope id="3698349269620983753" at="29,69,30,17" />
-      <scope id="3698349269620983753" at="33,53,35,18" />
-      <scope id="3698349269620983753" at="38,79,40,18" />
+      <scope id="3698349269620983753" at="30,69,31,17" />
+      <scope id="1691443279100971430" at="42,20,43,20" />
       <scope id="3698349269620983753" at="14,0,17,0" />
       <scope id="3698349269620983753" at="18,0,21,0" />
       <scope id="3698349269620983753" at="22,0,25,0" />
-      <scope id="3698349269620983753" at="29,0,32,0" />
-      <scope id="3698349269620983753" at="33,0,37,0">
+      <scope id="3698349269620983753" at="30,0,33,0" />
+      <scope id="3698349269620983753" at="34,68,37,18" />
+      <scope id="3698349269620983753" at="34,0,39,0">
+        <var name="dummy" id="1691443279100969952" />
         <var name="settingsLocation" id="3698349269620984061" />
       </scope>
-      <scope id="3698349269620983753" at="38,0,42,0">
+      <scope id="3698349269620983753" at="40,79,46,18" />
+      <scope id="3698349269620983753" at="40,0,48,0">
         <var name="environment" id="3698349269620983753" />
         <var name="project" id="3698349269620983753" />
       </scope>
-      <unit id="3698349269620983753" at="26,0,43,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask$ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask" />
-      <unit id="3698349269620983753" at="12,0,44,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask" />
+      <unit id="3698349269620983753" at="26,0,49,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask$ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask" />
+      <unit id="3698349269620983753" at="12,0,50,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask" />
     </file>
   </root>
   <root nodeRef="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)/4283566179238991813">
@@ -2421,14 +2435,14 @@
   <root nodeRef="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)/6062668769034010900">
     <file name="JUnitTests_Configuration.java">
       <node id="6062668769034010991" at="187,48,188,47" concept="11" />
-      <node id="3698349269622570515" at="190,67,191,75" concept="11" />
-      <node id="4414733712822855031" at="193,57,194,117" concept="11" />
+      <node id="3698349269622570515" at="190,67,191,122" concept="11" />
+      <node id="4414733712822855031" at="193,57,194,164" concept="11" />
       <node id="6062668769034010991" at="187,0,190,0" concept="9" trace="createMakeNodePointersTask#()[Ljava/lang/Object;" />
       <node id="3698349269622570515" at="190,0,193,0" concept="9" trace="createClearSettingsDirectoryBeforeRunTaskTask#()[Ljava/lang/Object;" />
       <node id="4414733712822855031" at="193,0,196,0" concept="9" trace="createAssemblePluginsBeforeTaskTask#()[Ljava/lang/Object;" />
       <scope id="6062668769034010991" at="187,48,188,47" />
-      <scope id="3698349269622570515" at="190,67,191,75" />
-      <scope id="4414733712822855031" at="193,57,194,117" />
+      <scope id="3698349269622570515" at="190,67,191,122" />
+      <scope id="4414733712822855031" at="193,57,194,164" />
       <scope id="6062668769034010991" at="187,0,190,0" />
       <scope id="3698349269622570515" at="190,0,193,0" />
       <scope id="4414733712822855031" at="193,0,196,0" />
@@ -2447,7 +2461,7 @@
       <node id="4617221241150998986" at="66,74,67,114" concept="19" />
       <node id="7510281581531232678" at="68,5,69,56" concept="10" />
       <node id="1353230511310623314" at="69,56,70,40" concept="10" />
-      <node id="1353230511310657603" at="71,53,72,96" concept="5" />
+      <node id="1353230511310657603" at="71,44,72,96" concept="5" />
       <node id="4414733712825964115" at="73,12,74,66" concept="10" />
       <node id="1353230511310672730" at="74,66,75,129" concept="5" />
       <node id="607988455145407992" at="76,5,77,55" concept="10" />
@@ -2484,7 +2498,7 @@
       <scope id="6062668769034010900" at="50,68,51,16" />
       <scope id="6062668769034010900" at="54,45,55,16" />
       <scope id="4617221241150984648" at="66,74,67,114" />
-      <scope id="607988455142887403" at="71,53,72,96" />
+      <scope id="607988455142887403" at="71,44,72,96" />
       <scope id="607988455143440747" at="81,28,82,36" />
       <scope id="4983984616962595155" at="96,57,97,49" />
       <scope id="4983984616962595155" at="99,38,100,65" />

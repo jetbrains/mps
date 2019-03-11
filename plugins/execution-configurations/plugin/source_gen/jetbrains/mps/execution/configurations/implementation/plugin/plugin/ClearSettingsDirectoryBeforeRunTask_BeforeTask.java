@@ -24,18 +24,24 @@ public class ClearSettingsDirectoryBeforeRunTask_BeforeTask extends BaseMpsBefor
   }
 
   public static class ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<ClearSettingsDirectoryBeforeRunTask_BeforeTask.ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask> {
+    private boolean myDummy;
     private File mySettingsLocation;
 
     public ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask() {
       super(KEY);
     }
 
-    public boolean configure(File settingsLocation) {
+    public boolean configure(boolean dummy, File settingsLocation) {
+      myDummy = dummy;
       mySettingsLocation = settingsLocation;
       return true;
     }
 
     public boolean execute(Project project, ExecutionEnvironment environment) {
+      // no way to separate here in-process/out-of-process execution 
+      if (myDummy) {
+        return true;
+      }
       FileUtil.delete(mySettingsLocation);
       return true;
     }

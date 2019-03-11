@@ -58,6 +58,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
   }
 
   public static class AssemblePluginsBeforeTask_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<AssemblePluginsBeforeTask_BeforeTask.AssemblePluginsBeforeTask_BeforeTask_RunTask> {
+    private boolean myDummy;
     private List<SNodeReference> myPlugins;
     private File myAssembleLocation;
 
@@ -65,13 +66,18 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
       super(KEY);
     }
 
-    public boolean configure(List<SNodeReference> plugins, File assembleLocation) {
+    public boolean configure(boolean dummy, List<SNodeReference> plugins, File assembleLocation) {
+      myDummy = dummy;
       myPlugins = plugins;
       myAssembleLocation = assembleLocation;
       return true;
     }
 
     public boolean execute(Project project, ExecutionEnvironment environment) {
+      if (myDummy) {
+        // dummy mode is needed for in-process tests; probably the configurations must be separated 
+        return true;
+      }
       if (ListSequence.fromList(myPlugins).isEmpty()) {
         return true;
       }

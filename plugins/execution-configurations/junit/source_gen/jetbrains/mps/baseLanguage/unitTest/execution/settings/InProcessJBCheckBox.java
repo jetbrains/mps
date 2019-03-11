@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Component;
-import javax.swing.JPanel;
+import java.awt.Container;
 
 public final class InProcessJBCheckBox extends JBCheckBox {
   private final List<InProcessJBCheckBox.Updater> myUpdaters = ListSequence.fromList(new LinkedList<InProcessJBCheckBox.Updater>());
@@ -66,8 +66,8 @@ public final class InProcessJBCheckBox extends JBCheckBox {
 
     private void syncComponent(Component component, boolean flag) {
       component.setEnabled(flag);
-      if (component instanceof JPanel) {
-        Component[] children = ((JPanel) component).getComponents();
+      if (component instanceof Container) {
+        Component[] children = ((Container) component).getComponents();
         for (Component comp : children) {
           syncComponent(comp, flag);
         }

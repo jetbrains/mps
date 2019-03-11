@@ -1655,14 +1655,6 @@
     </node>
     <node concept="yHkHE" id="1b7CZFPJVXT" role="yHkHi">
       <property role="TrG5h" value="canExecuteInProcess" />
-      <node concept="37vLTG" id="1b7CZFPK$CS" role="3clF46">
-        <property role="TrG5h" value="testNodes" />
-        <node concept="A3Dl8" id="1b7CZFPK$HD" role="1tU5fm">
-          <node concept="3uibUv" id="1b7CZFPK$HE" role="A3Ik2">
-            <ref role="3uigEE" to="sfqd:56tRMpP_ej7" resolve="ITestNodeWrapper" />
-          </node>
-        </node>
-      </node>
       <node concept="10P_77" id="1b7CZFPJWN1" role="3clF45" />
       <node concept="3clFbS" id="1b7CZFPJVXV" role="3clF47">
         <node concept="3cpWs6" id="1b7CZFPKrEf" role="3cqZAp">
@@ -8057,8 +8049,8 @@
                         <node concept="37vLTw" id="3qbI1lNl7un" role="10QFUP">
                           <ref role="3cqZAo" node="3qbI1lNkF8r" resolve="component" />
                         </node>
-                        <node concept="3uibUv" id="3qbI1lNl7uo" role="10QFUM">
-                          <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
+                        <node concept="3uibUv" id="1tTdFdvWLRf" role="10QFUM">
+                          <ref role="3uigEE" to="z60i:~Container" resolve="Container" />
                         </node>
                       </node>
                     </node>
@@ -8091,8 +8083,8 @@
               </node>
             </node>
             <node concept="2ZW3vV" id="3qbI1lNkWWq" role="3clFbw">
-              <node concept="3uibUv" id="3qbI1lNkXr8" role="2ZW6by">
-                <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
+              <node concept="3uibUv" id="1tTdFdvWHOr" role="2ZW6by">
+                <ref role="3uigEE" to="z60i:~Container" resolve="Container" />
               </node>
               <node concept="37vLTw" id="3qbI1lNkVqu" role="2ZW6bz">
                 <ref role="3cqZAo" node="3qbI1lNkF8r" resolve="component" />

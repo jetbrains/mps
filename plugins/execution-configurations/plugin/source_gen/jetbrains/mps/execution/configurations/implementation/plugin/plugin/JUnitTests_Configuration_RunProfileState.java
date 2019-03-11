@@ -68,7 +68,7 @@ public class JUnitTests_Configuration_RunProfileState extends DebuggerRunProfile
     }
     TestRunState runState = new TestRunState(testNodes);
     JUnitProcessStarter processExecutor;
-    if (junitParams.canExecuteInProcess(testNodes)) {
+    if (junitParams.canExecuteInProcess()) {
       processExecutor = new JUnitInProcessRunStarter(mpsProject, myRunConfiguration, testNodes);
     } else {
       JUnitTests_Configuration configuration = myRunConfiguration;

@@ -22,8 +22,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import java.util.List;
+import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
@@ -104,7 +104,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
   public void setJUnitRunType(JUnitRunTypes runType) {
     this.setRunType(runType.ordinal());
   }
-  public boolean canExecuteInProcess(Iterable<ITestNodeWrapper> testNodes) {
+  public boolean canExecuteInProcess() {
     return this.getInProcess() && !(this.getDebug());
   }
   public List<ITestNodeWrapper> getTests(final MPSProject project) {
