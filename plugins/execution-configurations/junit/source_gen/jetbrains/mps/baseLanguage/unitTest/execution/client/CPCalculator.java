@@ -22,6 +22,8 @@ import java.util.LinkedHashSet;
 import jetbrains.mps.util.PathManager;
 import java.io.File;
 import jetbrains.mps.core.tool.environment.classloading.ClassloaderUtil;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /*package*/ class CPCalculator {
@@ -76,6 +78,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     // WithPlatformTestExecutor starts IDEA, therefore needs it in CP 
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromLibFolder()).distinct());
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromPreInstalledPluginsFolder()).distinct());
+    ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromUserProvidedPlugins()));
     // Module classpath would get managed by IdeaEnvironment based on set of modules to load 
     // 
     // next is to ensure TestExecutor is loaded. Though it's part of execution plugin, it's a regular mps module 
@@ -122,20 +125,17 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
   private List<String> collectFromPreInstalledPluginsFolder() {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
-    // XXX why pre-installed only, and not any locally-deployed (getPluginsPath())? Why not MPS's PathManager but IDEA's? 
+    // XXX why pre-installed only, and not any locally-deployed (getPluginsPath())? 
+    // Why not MPS's PathManager but IDEA's? 
     File preinstalledFolder = new File(com.intellij.openapi.application.PathManager.getPreInstalledPluginsPath());
     final File[] pluginFiles = preinstalledFolder.listFiles();
     if (pluginFiles != null) {
       for (final File pluginFile : pluginFiles) {
         if (!(ClassloaderUtil.isJarOrZip(pluginFile))) {
           File classesDir = new File(pluginFile, "classes");
-          if (classesDir.exists()) {
-            ListSequence.fromList(result).addElement(classesDir.getAbsolutePath());
-          }
+          ListSequence.fromList(result).addElement(classesDir.getAbsolutePath());
           File libDir = new File(pluginFile, "lib");
-          if (libDir.exists()) {
-            ListSequence.fromList(result).addSequence(ListSequence.fromList(gatherAllJarsUnderRoot(libDir)));
-          }
+          ListSequence.fromList(result).addSequence(ListSequence.fromList(gatherAllJarsUnderRoot(libDir)));
         }
       }
     }
@@ -143,8 +143,22 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     return result;
   }
 
+  private List<String> collectFromUserProvidedPlugins() {
+    List<PluginData> plugins = new UserProvidedPluginsCalculator(mySettings).calculate();
+    return ListSequence.fromList(plugins).translate(new ITranslator2<PluginData, String>() {
+      public Iterable<String> translate(PluginData it) {
+        String path = it.path;
+        File pluginFile = new File(path);
+        return Sequence.fromIterable(Sequence.<String>singleton(path)).union(ListSequence.fromList(gatherAllJarsUnderRoot(pluginFile)));
+      }
+    }).toListSequence();
+  }
+
   private List<String> gatherAllJarsUnderRoot(File root) {
     List<String> res = ListSequence.fromList(new ArrayList<String>());
+    if (!(root.exists())) {
+      return res;
+    }
     File[] children = root.listFiles();
     if (children != null) {
       for (final File childFile : children) {

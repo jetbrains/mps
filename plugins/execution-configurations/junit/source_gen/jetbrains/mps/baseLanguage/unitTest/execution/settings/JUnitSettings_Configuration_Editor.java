@@ -13,14 +13,17 @@ public class JUnitSettings_Configuration_Editor extends SettingsEditorEx<JUnitSe
   public void disposeEditor() {
     myEditor.dispose();
   }
+
   @NotNull
   public JUnitConfigurationEditorComponent createEditor() {
     myEditor = new JUnitConfigurationEditorComponent(myProject);
     return myEditor;
   }
+
   public void applyEditorTo(final JUnitSettings_Configuration configuration) throws ConfigurationException {
     myEditor.apply(configuration);
   }
+
   public void resetEditorFrom(final JUnitSettings_Configuration configuration) {
     myEditor.reset(configuration);
   }
