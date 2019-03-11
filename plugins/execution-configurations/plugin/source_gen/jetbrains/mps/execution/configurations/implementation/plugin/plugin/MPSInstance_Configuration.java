@@ -30,6 +30,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   private static final Logger LOG = LogManager.getLogger(MPSInstance_Configuration.class);
   private MpsStartupSettings_Configuration myMpsSettings = new MpsStartupSettings_Configuration();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
+
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getMpsSettings().checkConfiguration(context);
     this.getPluginsSettings().checkConfiguration(context);
@@ -47,6 +48,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
       element.addContent(fieldElement);
     }
   }
+
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -73,12 +75,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
       }
     }
   }
-  public MpsStartupSettings_Configuration getMpsSettings() {
-    return myMpsSettings;
-  }
-  public DeployPluginsSettings_Configuration getPluginsSettings() {
-    return myPluginsSettings;
-  }
+
   @Override
   public MPSInstance_Configuration clone() {
     MPSInstance_Configuration clone = createCloneTemplate();
@@ -86,6 +83,19 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
     clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
     return clone;
   }
+
+  public MpsStartupSettings_Configuration getMpsSettings() {
+    return myMpsSettings;
+  }
+  public DeployPluginsSettings_Configuration getPluginsSettings() {
+    return myPluginsSettings;
+  }
+
+  public void setMpsSettings(MpsStartupSettings_Configuration value) {
+  }
+  public void setPluginsSettings(DeployPluginsSettings_Configuration value) {
+  }
+
   public MPSInstance_Configuration(Project project, ConfigurationFactory factory, String name) {
     super(project, factory, name);
   }

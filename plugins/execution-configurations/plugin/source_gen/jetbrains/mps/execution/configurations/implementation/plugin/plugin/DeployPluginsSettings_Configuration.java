@@ -19,15 +19,16 @@ import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
-import jetbrains.mps.execution.lib.ClonableList;
 import jetbrains.mps.execution.lib.PointerUtils;
 import org.apache.log4j.Level;
+import jetbrains.mps.execution.lib.ClonableList;
 import com.intellij.openapi.project.Project;
 
 public class DeployPluginsSettings_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(DeployPluginsSettings_Configuration.class);
   @NotNull
   private DeployPluginsSettings_Configuration.MyState myState = new DeployPluginsSettings_Configuration.MyState();
+
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     final List<SNodeReference> nodeRefList = getPluginsListToDeploy();
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
@@ -50,6 +51,7 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
   }
+
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -57,12 +59,7 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
     }
     XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
   }
-  public ClonableList<String> getPluginsToDeploy() {
-    return myState.myPluginsToDeploy;
-  }
-  public void setPluginsToDeploy(ClonableList<String> value) {
-    myState.myPluginsToDeploy = value;
-  }
+
   public List<SNodeReference> getPluginsListToDeploy() {
     return PointerUtils.clonableListToNodes(this.getPluginsToDeploy());
   }
@@ -80,6 +77,15 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
     }
     return clone;
   }
+
+  public ClonableList<String> getPluginsToDeploy() {
+    return myState.myPluginsToDeploy;
+  }
+
+  public void setPluginsToDeploy(ClonableList<String> value) {
+    myState.myPluginsToDeploy = value;
+  }
+
   public final class MyState {
     public ClonableList<String> myPluginsToDeploy = new ClonableList<String>();
     public MyState() {

@@ -40,6 +40,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
   @NotNull
   private DeployPlugins_Configuration.MyState myState = new DeployPlugins_Configuration.MyState();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
+
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getPluginsSettings().checkConfiguration(context);
     if (ListSequence.fromList(this.getPluginsSettings().getPluginsListToDeploy()).isEmpty()) {
@@ -55,6 +56,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       element.addContent(fieldElement);
     }
   }
+
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -72,21 +74,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       }
     }
   }
-  public DeployPluginsSettings_Configuration getPluginsSettings() {
-    return myPluginsSettings;
-  }
-  public boolean getSkipModulesLoading() {
-    return myState.mySkipModulesLoading;
-  }
-  public boolean getRestartCurrentInstance() {
-    return myState.myRestartCurrentInstance;
-  }
-  public void setSkipModulesLoading(boolean value) {
-    myState.mySkipModulesLoading = value;
-  }
-  public void setRestartCurrentInstance(boolean value) {
-    myState.myRestartCurrentInstance = value;
-  }
+
   public File getPluginsPath() {
     return new File(PathManager.getPluginsPath());
   }
@@ -124,6 +112,26 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
     clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
     return clone;
   }
+
+  public DeployPluginsSettings_Configuration getPluginsSettings() {
+    return myPluginsSettings;
+  }
+  public boolean getSkipModulesLoading() {
+    return myState.mySkipModulesLoading;
+  }
+  public boolean getRestartCurrentInstance() {
+    return myState.myRestartCurrentInstance;
+  }
+
+  public void setPluginsSettings(DeployPluginsSettings_Configuration value) {
+  }
+  public void setSkipModulesLoading(boolean value) {
+    myState.mySkipModulesLoading = value;
+  }
+  public void setRestartCurrentInstance(boolean value) {
+    myState.myRestartCurrentInstance = value;
+  }
+
   public final class MyState {
     public boolean mySkipModulesLoading = true;
     public boolean myRestartCurrentInstance = true;

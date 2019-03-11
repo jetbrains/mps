@@ -42,6 +42,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration(this.getProject());
   private JavaRunParameters_Configuration myJavaRunParameters = new JavaRunParameters_Configuration(this.getProject());
   private DeployPluginsSettings_Configuration myDeploySettings = new DeployPluginsSettings_Configuration(this.getProject());
+
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getJUnitSettings().checkConfiguration(context);
     this.getDeploySettings().checkConfiguration(context);
@@ -64,6 +65,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
       element.addContent(fieldElement);
     }
   }
+
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -100,15 +102,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
       }
     }
   }
-  public JUnitSettings_Configuration getJUnitSettings() {
-    return myJUnitSettings;
-  }
-  public JavaRunParameters_Configuration getJavaRunParameters() {
-    return myJavaRunParameters;
-  }
-  public DeployPluginsSettings_Configuration getDeploySettings() {
-    return myDeploySettings;
-  }
+
   public List<SNodeReference> getTestsToMake() {
     return this.getJUnitSettings().getTestsToMake(ProjectHelper.fromIdeaProject(this.getProject()));
   }
@@ -131,6 +125,24 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
     clone.myDeploySettings = (DeployPluginsSettings_Configuration) myDeploySettings.clone();
     return clone;
   }
+
+  public JUnitSettings_Configuration getJUnitSettings() {
+    return myJUnitSettings;
+  }
+  public JavaRunParameters_Configuration getJavaRunParameters() {
+    return myJavaRunParameters;
+  }
+  public DeployPluginsSettings_Configuration getDeploySettings() {
+    return myDeploySettings;
+  }
+
+  public void setJUnitSettings(JUnitSettings_Configuration value) {
+  }
+  public void setJavaRunParameters(JavaRunParameters_Configuration value) {
+  }
+  public void setDeploySettings(DeployPluginsSettings_Configuration value) {
+  }
+
   public JUnitTests_Configuration(Project project, ConfigurationFactory factory, String name) {
     super(project, factory, name);
   }

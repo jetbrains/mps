@@ -19,21 +19,27 @@ public class MakeDeployScripts_BeforeTask extends BaseMpsBeforeTaskProvider<Make
   public MakeDeployScripts_BeforeTask() {
     super("Make deploy scripts", "Make Deploy Scripts");
   }
+
   protected MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask createTaskImpl() {
     return new MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask();
   }
+
   public Key<MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask> getId() {
     return KEY;
   }
+
   public static class MakeDeployScripts_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<MakeDeployScripts_BeforeTask.MakeDeployScripts_BeforeTask_RunTask> {
     private List<SNodeReference> myPlugins;
+
     public MakeDeployScripts_BeforeTask_RunTask() {
       super(KEY);
     }
+
     public boolean configure(List<SNodeReference> plugins) {
       myPlugins = plugins;
       return true;
     }
+
     public boolean execute(Project project, ExecutionEnvironment environment) {
       if (ListSequence.fromList(myPlugins).isEmpty()) {
         return false;

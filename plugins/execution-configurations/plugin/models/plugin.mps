@@ -3115,11 +3115,11 @@
           <node concept="3cpWs8" id="5aSLaYRWGza" role="3cqZAp">
             <node concept="3cpWsn" id="5aSLaYRWGzb" role="3cpWs9">
               <property role="TrG5h" value="settings" />
-              <node concept="yHkIc" id="5aSLaYRWGsL" role="1tU5fm">
+              <node concept="yHkIc" id="1T5iP2aCswP" role="1tU5fm">
                 <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
               </node>
               <node concept="2OqwBi" id="5aSLaYRWGzc" role="33vP2m">
-                <node concept="nyUVq" id="4aK5w_lfTJa" role="2Oq$k0" />
+                <node concept="nyUVq" id="1T5iP2aBolS" role="2Oq$k0" />
                 <node concept="yHkDZ" id="5aSLaYRWGze" role="2OqNvi">
                   <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
                 </node>
@@ -12773,12 +12773,6 @@
             <ref role="yHkHG" node="5gyVhZ187Zu" resolve="JUnit Tests" />
           </node>
         </node>
-        <node concept="37vLTG" id="4rbJdZOLhMD" role="3clF46">
-          <property role="TrG5h" value="javaParams" />
-          <node concept="yHkHH" id="4rbJdZOSeGJ" role="1tU5fm">
-            <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
-          </node>
-        </node>
       </node>
       <node concept="2tJIrI" id="4rbJdZOFLu_" role="jymVt" />
       <node concept="3clFb_" id="4rbJdZOFxpz" role="jymVt">
@@ -14087,7 +14081,7 @@
       </node>
       <node concept="37vLTG" id="5kPsWkS8gVB" role="3clF46">
         <property role="TrG5h" value="runConfiguration" />
-        <node concept="yHkHH" id="3P4ieJEHprS" role="1tU5fm">
+        <node concept="3nJ2Q3" id="1T5iP2anqA9" role="1tU5fm">
           <ref role="yHkHG" node="5gyVhZ187Zu" resolve="JUnit Tests" />
         </node>
         <node concept="2AHcQZ" id="5kPsWkS8hVd" role="2AJF6D">

@@ -23,6 +23,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
   private static final Logger LOG = LogManager.getLogger(MpsStartupSettings_Configuration.class);
   @NotNull
   private MpsStartupSettings_Configuration.MyState myState = new MpsStartupSettings_Configuration.MyState();
+
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     if (isEmptyString(this.getSettingsPath())) {
       throw new RuntimeConfigurationError("The settings path is empty");
@@ -32,6 +33,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
   }
+
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -39,24 +41,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
     }
     XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
   }
-  public String getVmOptions() {
-    return myState.myVmOptions;
-  }
-  public String getJrePath() {
-    return myState.myJrePath;
-  }
-  public String getSettingsPath() {
-    return myState.mySettingsPath;
-  }
-  public void setVmOptions(String value) {
-    myState.myVmOptions = value;
-  }
-  public void setJrePath(String value) {
-    myState.myJrePath = value;
-  }
-  public void setSettingsPath(String value) {
-    myState.mySettingsPath = value;
-  }
+
   private String expandPath(String path) {
     if ((path == null || path.length() == 0)) {
       return path;
@@ -99,6 +84,27 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
     }
     return clone;
   }
+
+  public String getVmOptions() {
+    return myState.myVmOptions;
+  }
+  public String getJrePath() {
+    return myState.myJrePath;
+  }
+  public String getSettingsPath() {
+    return myState.mySettingsPath;
+  }
+
+  public void setVmOptions(String value) {
+    myState.myVmOptions = value;
+  }
+  public void setJrePath(String value) {
+    myState.myJrePath = value;
+  }
+  public void setSettingsPath(String value) {
+    myState.mySettingsPath = value;
+  }
+
   public final class MyState {
     public String myVmOptions;
     public String myJrePath;

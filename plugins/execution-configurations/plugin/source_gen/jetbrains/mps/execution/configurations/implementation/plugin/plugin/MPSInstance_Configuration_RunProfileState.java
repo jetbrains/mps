@@ -30,16 +30,20 @@ public class MPSInstance_Configuration_RunProfileState extends DebuggerRunProfil
   private final MPSInstance_Configuration myRunConfiguration;
   @NotNull
   private final ExecutionEnvironment myEnvironment;
+
   public MPSInstance_Configuration_RunProfileState(@NotNull MPSInstance_Configuration configuration, @NotNull Executor executor, @NotNull ExecutionEnvironment environment) {
     myRunConfiguration = configuration;
     myEnvironment = environment;
   }
+
   public ConfigurationPerRunnerSettings getConfigurationSettings() {
     return null;
   }
+
   public RunnerSettings getRunnerSettings() {
     return null;
   }
+
   @Nullable
   public ExecutionResult execute(Executor executor, @NotNull ProgramRunner runner) throws ExecutionException {
     Project project = myEnvironment.getProject();
@@ -59,10 +63,12 @@ public class MPSInstance_Configuration_RunProfileState extends DebuggerRunProfil
       }));
     }
   }
+
   @NotNull
   public IDebuggerConfiguration getDebuggerConfiguration() {
     return Mps_Command.getDebuggerConfiguration();
   }
+
   public static boolean canExecute(String executorId) {
     if (DefaultRunExecutor.EXECUTOR_ID.equals(executorId)) {
       return true;

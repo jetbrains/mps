@@ -10,7 +10,6 @@ import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
 import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
 import jetbrains.mps.debug.api.EmptyDebuggerSettings;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.JUnit_Command;
@@ -49,7 +48,7 @@ public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
       myTestNodes = testNodes;
     }
 
-    public JUnitOutOfProcessStarter0(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitTests_Configuration junitRC, JavaRunParameters_Configuration javaParams) {
+    public JUnitOutOfProcessStarter0(MPSProject project, List<ITestNodeWrapper> testNodes, JUnitTests_Configuration junitRC) {
       this(project, testNodes, junitRC, null, EmptyDebuggerSettings.getInstance());
     }
 
