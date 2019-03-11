@@ -29,10 +29,13 @@ public class typeof_BeforeTaskCall_InferenceRule extends AbstractInferenceRule_R
       }
     }
     for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x4bfe4368347f5400L, "parameter"))).count(); i++) {
-      {
-        SNode _nodeToCheck_1029348928467 = ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x4bfe4368347f5400L, "parameter"))).getElement(i);
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613814", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613798", true), (SNode) typeCheckingContext.typeOf(ListSequence.fromList(declaredParameters).getElement(i), "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765656730", true), false, false, _info_12389875345);
+      SNode param = ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x4bfe4368347f5400L, "parameter"))).getElement(i);
+      if (param != null) {
+        {
+          SNode _nodeToCheck_1029348928467 = param;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613814", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613798", true), (SNode) typeCheckingContext.typeOf(ListSequence.fromList(declaredParameters).getElement(i), "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765656730", true), false, false, _info_12389875345);
+        }
       }
     }
   }
