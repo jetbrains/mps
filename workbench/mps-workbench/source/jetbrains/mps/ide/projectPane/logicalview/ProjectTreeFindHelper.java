@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,8 +32,6 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.vfs.IFile;
@@ -43,7 +41,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -119,11 +116,15 @@ public final class ProjectTreeFindHelper {
   }
 
   public SModelTreeNode findMostSuitableModelTreeNode(@NotNull SModel model) {
-    SModule module = getModuleForModel(getProject(), model);
-    if (module == null) return findModelTreeNodeAnywhere(model, getTree().getRootNode());
+    SModule module = model.getModule();
+    if (module == null) {
+      return findModelTreeNodeAnywhere(model, getTree().getRootNode());
+    }
 
     ProjectModuleTreeNode moduleTreeNode = findMostSuitableModuleTreeNode(module);
-    if (moduleTreeNode == null) return findModelTreeNodeAnywhere(model, getTree().getRootNode());
+    if (moduleTreeNode == null) {
+      return findModelTreeNodeAnywhere(model, getTree().getRootNode());
+    }
 
     return findModelTreeNodeInModule(model, moduleTreeNode);
   }
@@ -351,36 +352,5 @@ public final class ProjectTreeFindHelper {
 
   protected ProjectTree getTree() {
     return myProjectTree;
-  }
-
-  //-----------find module by model------------
-
-  private static SModule getModuleForModel(Project project, SModel model) {
-    //language's and solution's own models (+generator models in language)
-    SModule owner = model.getModule();
-    if (owner == null) return null;
-    SModule mainModule = owner instanceof Generator ? ((Generator) owner).getSourceLanguage() : owner;
-    if (project.isProjectModule(mainModule)) return owner;
-
-    //accessories models in languages
-    /*
-      //with this enabled, alt-f1 does not work in case node is in non-owned accessory model to a project language
-      for (Language l : project.getProjectLanguages()) {
-        if (l.isAccessoryModel(model.getSModelReference())) return l;
-      }
-    */
-
-    //runtime models in languages
-    for (Language l : project.getProjectModules(Language.class)) {
-      for (SModuleReference depModule : l.getRuntimeModulesReferences()) {
-        if (depModule.equals(mainModule.getModuleReference())) return owner;
-      }
-    }
-
-    //accessories models in devkits
-
-    //runtime models in devkits
-
-    return owner;
   }
 }
