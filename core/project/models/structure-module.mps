@@ -226,6 +226,9 @@
       <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
         <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
+      <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
+        <child id="3106559687488741665" name="line" index="2Xj1qM" />
+      </concept>
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
@@ -235,6 +238,7 @@
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="4497478346159780083" name="jetbrains.mps.lang.smodel.structure.LanguageRefExpression" flags="ng" index="pHN19">
@@ -2230,6 +2234,94 @@
           </node>
         </node>
         <node concept="3cqZAl" id="4fSpAVAUjuc" role="3clF45" />
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="7$gH_FyXq6q" role="lGtFl">
+      <node concept="TZ5HI" id="7$gH_FyXq6r" role="3nqlJM">
+        <node concept="TZ5HA" id="7$gH_FyXq6s" role="3HnX3l">
+          <node concept="1dT_AC" id="7$gH_FyXubt" role="1dT_Ay">
+            <property role="1dT_AB" value="there seems to be no justification for stateless PSM. Tell MPS team (Artem) if you got any. Otherwise, the code will cease to exist soon." />
+          </node>
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXubv" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXubw" role="1dT_Ay">
+          <property role="1dT_AB" value="There seems to be little value in stateful collection of nodes that describe repository modules - we have to keep them up to date on " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXAW9" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXAWa" role="1dT_Ay">
+          <property role="1dT_AB" value="almost any model change even if there's no uses (it's mostly lang/generator @descriptor models that utilize these nodes, the rest of the code" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXAZ9" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXAZa" role="1dT_Ay">
+          <property role="1dT_AB" value="just does " />
+        </node>
+        <node concept="1dT_AA" id="7$gH_FyXB2k" role="1dT_Ay">
+          <node concept="VVOAv" id="7$gH_FyXB2q" role="qph3F">
+            <node concept="TZ5HA" id="7$gH_FyXB2s" role="2Xj1qM">
+              <node concept="1dT_AC" id="7$gH_FyXB2w" role="1dT_Ay">
+                <property role="1dT_AB" value="node.isInstanceOf(Generator)" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="7$gH_FyXB2j" role="1dT_Ay">
+          <property role="1dT_AB" value="). Besides, this change listener implicitly assumes what kind of repository change is worth to be reflected " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXB2E" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXB2F" role="1dT_Ay">
+          <property role="1dT_AB" value="in a Module node, and which is not (i.e. adding a new model triggers a refresh, while adding a root does not)." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXB9B" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXB9C" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXB6s" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXB6t" role="1dT_Ay">
+          <property role="1dT_AB" value="Nevertheless, the code to provide 'virtual' module into a repository might be worth to keep as it's kind of task that comes up from time to time (see MPSSPRT-133)" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXBcO" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXBcP" role="1dT_Ay">
+          <property role="1dT_AB" value="Indeed, in that case it has not be CoreComponent and global singleton, rather per-SRepository instance. Yet in this case it's not clear to how to do module " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXBg3" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXBg4" role="1dT_Ay">
+          <property role="1dT_AB" value="registration lazily (i.e. getModelByModule() may come when there's no write lock for a repository, can't add respective node on demand)." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXMxS" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXMxT" role="1dT_Ay">
+          <property role="1dT_AB" value="Alternative is to keep SModule non registered, though associated with a repo, so that we can change it at will." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXGST" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXGSU" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7$gH_FyXGTi" role="TZ5H$">
+        <node concept="1dT_AC" id="7$gH_FyXGTj" role="1dT_Ay">
+          <property role="1dT_AB" value="FIXME Before removing, have to fix FindInPriorityRules finder in lang.generator!" />
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="7$gH_FyXq6t" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="2AHcQZ" id="7$gH_FyXukq" role="2AJF6D">
+      <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
+      <node concept="2B6LJw" id="7$gH_FyXAxD" role="2B76xF">
+        <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
+        <node concept="3b6qkQ" id="7$gH_FyXAVO" role="2B70Vg">
+          <property role="$nhwW" value="2019.1" />
+        </node>
       </node>
     </node>
   </node>
