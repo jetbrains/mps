@@ -19,6 +19,8 @@ import jetbrains.mps.tool.common.JDOMUtil;
 import org.jdom.Document;
 import java.io.IOException;
 import org.jetbrains.mps.annotations.Mutable;
+import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.tool.common.RepositoryDescriptor;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -69,6 +71,7 @@ import org.apache.log4j.Level;
     ScriptData startupArgs = args.addStartupArguments();
     addModulesAndDepsToStartupArgs(startupArgs);
     addMacrosToStartupArgs(startupArgs);
+    addPluginsToStartupArgs(startupArgs);
     // XXX could deduce required plugins from IdeaPluginModuleFacet of required modules. 
     startupArgs.setLoadBootstrapLibraries(true);
 
@@ -89,6 +92,14 @@ import org.apache.log4j.Level;
     }
   }
 
+  private void addPluginsToStartupArgs(@Mutable final ScriptData startupArgs) {
+    List<PluginData> plugins = new UserProvidedPluginsCalculator(mySettings).calculate();
+    ListSequence.fromList(plugins).visitAll(new IVisitor<PluginData>() {
+      public void visit(PluginData it) {
+        startupArgs.addPlugin(it);
+      }
+    });
+  }
 
   private void addModulesAndDepsToStartupArgs(@Mutable ScriptData startupArgs) {
     final RepositoryDescriptor rd = new RepositoryDescriptor();

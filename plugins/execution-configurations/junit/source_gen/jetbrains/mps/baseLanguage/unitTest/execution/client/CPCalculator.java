@@ -22,8 +22,6 @@ import java.util.LinkedHashSet;
 import jetbrains.mps.util.PathManager;
 import java.io.File;
 import jetbrains.mps.core.tool.environment.classloading.ClassloaderUtil;
-import jetbrains.mps.tool.common.PluginData;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /*package*/ class CPCalculator {
@@ -78,7 +76,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     // WithPlatformTestExecutor starts IDEA, therefore needs it in CP 
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromLibFolder()).distinct());
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromPreInstalledPluginsFolder()).distinct());
-    ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromUserProvidedPlugins()));
     // Module classpath would get managed by IdeaEnvironment based on set of modules to load 
     // 
     // next is to ensure TestExecutor is loaded. Though it's part of execution plugin, it's a regular mps module 
@@ -142,17 +139,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     }
     ListSequence.fromList(result).addSequence(ListSequence.fromList(gatherAllJarsUnderRoot(preinstalledFolder)));
     return result;
-  }
-
-  private List<String> collectFromUserProvidedPlugins() {
-    List<PluginData> plugins = new UserProvidedPluginsCalculator(mySettings).calculate();
-    return ListSequence.fromList(plugins).translate(new ITranslator2<PluginData, String>() {
-      public Iterable<String> translate(PluginData it) {
-        String path = it.path;
-        File pluginFile = new File(path);
-        return Sequence.fromIterable(Sequence.<String>singleton(path)).union(ListSequence.fromList(gatherAllJarsUnderRoot(pluginFile)));
-      }
-    }).toListSequence();
   }
 
   private List<String> gatherAllJarsUnderRoot(File root) {
