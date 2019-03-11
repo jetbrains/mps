@@ -39,6 +39,12 @@ public abstract class EnumerationDescriptorBase extends NamedElementDescriptorBa
 
   @Nullable
   @Override
+  public ValueToIdMigrationFacility getMigrationFacility() {
+    return this::getMember;
+  }
+
+  @Nullable
+  @Override
   /*remove after 19.1 when all classes regenerated*/
   public MemberDescriptor getMember(long idValue) {
     Collection<MemberDescriptor> members = getMembers();

@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import jetbrains.mps.smodel.runtime.EnumerationDescriptor.MemberDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor.ValueToIdMigrationFacility;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,12 +33,15 @@ import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SEnumeration;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SType;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.AbstractList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Radimir.Sorokin
@@ -106,10 +110,13 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
       return SType.NOT_A_VALUE;
     }
     if (string == null) {
-      // if persisted by name == null, TODO remove after 19.1 since all literals stored by id
-      SEnumerationLiteral literal = getLiteral(null);
-      if (literal != null) {
-        return literal;
+      // if persisted by internal value == null, TODO remove after 19.1 since all literals stored by id
+      EnumMigrationFacilityAdapter migrationFacility = getMigrationFacility();
+      if (migrationFacility != null) {
+        SEnumerationLiteral literal = migrationFacility.getMemberByLegacyRawValue(null);
+        if (literal != null) {
+          return literal;
+        }
       }
       // else if default implicitly stored
       return getDefault();
@@ -124,10 +131,13 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     } catch (IllegalArgumentException e) {
       // serialized value is not id
     }
-    // else if persisted by name, TODO replace with just 'return SType.NOT_A_VALUE' after 19.1 since all literals stored by id
-    SEnumerationLiteral literal = getLiteral(string);
-    if (literal != null) {
-      return literal;
+    // else if persisted by internal value, TODO replace with just 'return SType.NOT_A_VALUE' after 19.1 since all literals stored by id
+    EnumMigrationFacilityAdapter migrationFacility = getMigrationFacility();
+    if (migrationFacility != null) {
+      SEnumerationLiteral literal = migrationFacility.getMemberByLegacyRawValue(string);
+      if (literal != null) {
+        return literal;
+      }
     }
     SDataType rawMemberType = getRawMemberType();
     if (rawMemberType != null) {
@@ -185,6 +195,33 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
   @Override
   public SLanguage getLanguage() {
     return MetaAdapterFactory.getLanguage(myId.getLanguageId(), NameUtil.namespaceFromConceptFQName(myFqName));
+  }
+
+  @Deprecated
+  public void migrateEnumProperty(SNode node, SProperty property) {
+    EnumMigrationFacilityAdapter migrationFacility = getMigrationFacility();
+    if (migrationFacility == null) {
+      return;
+    }
+    String rawValue = node.getProperty(property);
+    SEnumerationLiteral literal = migrationFacility.getMemberByLegacyRawValue(rawValue);
+    if (literal == null || Objects.equals(literal,  getDefault())) {
+      return;
+    }
+    node.setProperty(property, toString(literal));
+  }
+
+  @Nullable
+  private EnumMigrationFacilityAdapter getMigrationFacility() {
+    EnumerationDescriptor descriptor = getDescriptor();
+    if (descriptor == null) {
+      return null;
+    }
+    ValueToIdMigrationFacility migrationFacility = descriptor.getMigrationFacility();
+    if (migrationFacility == null) {
+      return null;
+    }
+    return new EnumMigrationFacilityAdapter(migrationFacility);
   }
 
   public class SEnumLiteralAdapter implements SEnumerationLiteral {
@@ -308,11 +345,14 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     if (value == null && getDefault() == null) {
       return null;
     }
+    EnumMigrationFacilityAdapter migrationFacility = getMigrationFacility();
     SDataType rawMemberType = getRawMemberType();
-    String name = rawMemberType.toString(value);
-    SEnumerationLiteral literal = getLiteral(name);
-    if (literal != null) {
-      return literal;
+    if (migrationFacility != null && rawMemberType != null) {
+      String rawValue = rawMemberType.toString(value);
+      SEnumerationLiteral literal = migrationFacility.getMemberByLegacyRawValue(rawValue);
+      if (literal != null) {
+        return literal;
+      }
     }
     return new InvalidEnumerationLiteral(this, value);
   }
@@ -370,5 +410,23 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
       return ((SEnumLiteralAdapter) o).getDescriptor();
     }
     return null;
+  }
+
+  class EnumMigrationFacilityAdapter {
+    @NotNull
+    final ValueToIdMigrationFacility myMigrationFacility;
+
+    public EnumMigrationFacilityAdapter(@NotNull ValueToIdMigrationFacility migrationFacility) {
+      myMigrationFacility = migrationFacility;
+    }
+
+    @Nullable
+    SEnumLiteralAdapter getMemberByLegacyRawValue(@Nullable String value) {
+      MemberDescriptor md = myMigrationFacility.getMemberByLegacyRawValue(value);
+      if (md == null) {
+        return null;
+      }
+      return new SEnumLiteralAdapter(md.getIdValue());
+    }
   }
 }

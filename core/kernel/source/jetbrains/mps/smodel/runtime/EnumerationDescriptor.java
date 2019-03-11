@@ -52,6 +52,9 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
     return null;
   }
 
+  @Nullable
+  ValueToIdMigrationFacility getMigrationFacility();
+
   class MemberDescriptor {
     @Nullable
     private final String myName;
@@ -61,6 +64,9 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
 
     @Nullable
     private final String myIdentifier;
+
+    @Nullable
+    private final String myLegacyRawValue;
 
     @Nullable
     private final SNodeReference mySourceNode;
@@ -79,6 +85,7 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
       } else {
         myIdValue = Objects.hashCode(name);
       }
+      myLegacyRawValue = name;
     }
 
     public MemberDescriptor(@Nullable String name, @NotNull String presentation, @Nullable String sourceNode) {
@@ -89,12 +96,18 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
       this(name, presentation, null);
     }
 
-    public MemberDescriptor(@NotNull String name, @NotNull String presentation, long idValue, @Nullable String sourceNode) {
+    @Deprecated
+    public MemberDescriptor(@NotNull String name, @NotNull String presentation, long idValue, @Nullable String sourceNode, @Nullable String legacyRawValue) {
       myName = name;
       myPresentation = presentation;
       mySourceNode = sourceNode == null ? null : PersistenceFacade.getInstance().createNodeReference(sourceNode);
       myIdentifier = null;
       myIdValue = idValue;
+      myLegacyRawValue = legacyRawValue;
+    }
+
+    public MemberDescriptor(@NotNull String name, @NotNull String presentation, long idValue, @Nullable String sourceNode) {
+      this(name, presentation, idValue, sourceNode, name);
     }
 
     public MemberDescriptor(@NotNull String name, @NotNull String presentation, long idValue) {
@@ -124,5 +137,12 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
     public long getIdValue() {
       return myIdValue;
     }
+  }
+
+  @Deprecated
+  interface ValueToIdMigrationFacility {
+
+    @Nullable
+    MemberDescriptor getMemberByLegacyRawValue(@Nullable String value);
   }
 }

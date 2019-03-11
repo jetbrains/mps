@@ -31,6 +31,12 @@ public class EnumerationDescriptor_ValueOperationMigrationStrategy extends Enume
     return null;
   }
 
+  @Nullable
+  @Override
+  public EnumerationDescriptor.ValueToIdMigrationFacility getMigrationFacility() {
+    return null;
+  }
+
   @NotNull
   @Override
   public List<EnumerationDescriptor.MemberDescriptor> getMembers() {
