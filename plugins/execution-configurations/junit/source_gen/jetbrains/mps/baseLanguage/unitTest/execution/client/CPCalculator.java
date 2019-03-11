@@ -117,7 +117,8 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
           rv.add(f.getPath());
         }
       }
-      // don't get into nested dir. though this is different e.g. from ant tasks (see MPSClasspathUtil#gatherAllClassesAndJarsUnder() 
+      // don't get into nested dir. though this is different e.g. 
+      // from ant tasks (see MPSClasspathUtil#gatherAllClassesAndJarsUnder() 
       // this is how it was with ClassloaderUtil.addIDEALibraries that used to be here. 
     }
     return rv;

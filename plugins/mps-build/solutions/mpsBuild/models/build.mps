@@ -24495,11 +24495,6 @@
             <ref role="3bR37D" node="4LDuh$Ud1LG" resolve="jetbrains.mps.debugger.api.lang" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6wOYoT0vjjC" role="3bR37C">
-          <node concept="3bR9La" id="6wOYoT0vjjD" role="1SiIV1">
-            <ref role="3bR37D" node="5cCcm$KATVz" resolve="jetbrains.mps.lang.migration.runtime" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="1zSQW5U0B0t" role="3bR37C">
           <node concept="3bR9La" id="1zSQW5U0B0u" role="1SiIV1">
             <ref role="3bR37D" node="2eDSGe9d1qo" resolve="jetbrains.mps.execution.api" />
@@ -25325,6 +25320,16 @@
         <node concept="1SiIV0" id="1zSQW5U0B0x" role="3bR37C">
           <node concept="3bR9La" id="1zSQW5U0B0y" role="1SiIV1">
             <ref role="3bR37D" node="5xa9wY2vhb7" resolve="jetbrains.mps.execution.configurations.implementation.plugin" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="kelsBo18zY" role="3bR37C">
+          <node concept="3bR9La" id="kelsBo18zZ" role="1SiIV1">
+            <ref role="3bR37D" node="7pdFgzxlDoA" resolve="jetbrains.mps.build" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="kelsBo18$0" role="3bR37C">
+          <node concept="3bR9La" id="kelsBo18$1" role="1SiIV1">
+            <ref role="3bR37D" node="5xa9wY2vhbf" resolve="jetbrains.mps.baseLanguage.unitTest.execution" />
           </node>
         </node>
       </node>

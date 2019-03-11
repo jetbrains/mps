@@ -18,6 +18,7 @@ package jetbrains.mps.testsuites;
 import jetbrains.mps.testbench.junit.runners.PushEnvironmentRunnerBuilder;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
+import jetbrains.mps.util.PathManager;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -54,6 +55,7 @@ public class PlatformTestSuite extends OutputWatchingTestSuite {
   static {
     // j.m.ide.test.merge tests need VCS plugin
     // MigrationsTest needs "migration" plugin
+    System.setProperty(IdeaEnvironment.CREATE_PLUGIN_CLASSLOADERS, Boolean.FALSE.toString());
     EnvironmentConfig cfg = EnvironmentConfig.defaultConfig().withVcsPlugin().withBuildPlugin().withMigrationPlugin();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();

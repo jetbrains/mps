@@ -13955,7 +13955,12 @@
             </node>
             <node concept="3SKdUt" id="1mVhhl9kRJo" role="3cqZAp">
               <node concept="3SKdUq" id="1mVhhl9kRJq" role="3SKWNk">
-                <property role="3SKdUp" value="don't get into nested dir. though this is different e.g. from ant tasks (see MPSClasspathUtil#gatherAllClassesAndJarsUnder()" />
+                <property role="3SKdUp" value="don't get into nested dir. though this is different e.g." />
+              </node>
+            </node>
+            <node concept="3SKdUt" id="$24$97wvm" role="3cqZAp">
+              <node concept="3SKdUq" id="$24$97wvn" role="3SKWNk">
+                <property role="3SKdUp" value="from ant tasks (see MPSClasspathUtil#gatherAllClassesAndJarsUnder()" />
               </node>
             </node>
             <node concept="3SKdUt" id="1mVhhl9l0KL" role="3cqZAp">

@@ -176,17 +176,7 @@ public class MpsLoadTask extends Task {
       }
     }
     final Set<File> pluginsClassPath;
-    if (myWhatToDo.isClasspathWithPlugins()) {
-      // perhaps, plugin classpath logic shall be part of calculateClassPath(boolean) method 
-      // but for the time being, keep it here (it's supplied through independent file, not through -classpath arg) 
-      // FIXME once there's jar/manifest.mf trick to build long classpath, and no AntBootstrap mediator, this logic shall move to calculateClassPath 
-      pluginsClassPath = new HashSet<File>();
-      for (PluginData pd : myWhatToDo.getPlugins()) {
-        MPSClasspathUtil.gatherAllClassesAndJarsUnder(new File(pd.path), pluginsClassPath);
-      }
-    } else {
-      pluginsClassPath = Collections.emptySet();
-    }
+    pluginsClassPath = Collections.emptySet();
     if (myFork) {
       String currentClassPathString = System.getProperty("java.class.path");
       List<String> commandLine = new ArrayList<String>();
