@@ -57,7 +57,7 @@ public class ModulePlugins {
       }
     }
 
-    SetSequence.fromSet(myPluginDependencies).addSequence(Sequence.fromIterable(new RequiredPlugins(myContext, myInitialProject, initialPlugins).returnDepsWithInitial()));
+    SetSequence.fromSet(myPluginDependencies).addSequence(Sequence.fromIterable(new RequiredPlugins(initialPlugins).returnDepsWithInitial()));
   }
 
   public Iterable<SNode> getDependency() {

@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -22,15 +21,11 @@ public class RequiredPlugins {
   private final Set<SNode> myDependencies = SetSequence.fromSet(new HashSet<SNode>());
   private final List<SNode> myPlugins = ListSequence.fromList(new ArrayList<SNode>());
 
-  public RequiredPlugins(SNode project, TemplateQueryContext genContext) {
+  public RequiredPlugins(SNode project) {
     ListSequence.fromList(myPlugins).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(project, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin"), false, new SAbstractConcept[]{})));
   }
 
-  public RequiredPlugins(TemplateQueryContext genContext, SNode initialPlugin) {
-    ListSequence.fromList(myPlugins).addElement(initialPlugin);
-  }
-
-  public RequiredPlugins(TemplateQueryContext genContext, SNode root, Iterable<SNode> initialPlugins) {
+  public RequiredPlugins(Iterable<SNode> initialPlugins) {
     ListSequence.fromList(myPlugins).addSequence(Sequence.fromIterable(initialPlugins));
   }
 
