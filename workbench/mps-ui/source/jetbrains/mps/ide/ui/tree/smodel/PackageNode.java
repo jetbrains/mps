@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,14 +33,21 @@ public class PackageNode extends SNodeGroupTreeNode {
   private SModelTreeNode myModelNode;
 
   public PackageNode(SModelTreeNode model, String name, @Nullable PackageNode parent) {
-    super(model, name, true);
+    super(model.getModel().getReference(), name, true);
     myModelNode = model;
     if (parent != null) {
-      myName = parent.getPackage() + "." + name;
+      myName = parent.getPackage() + '.' + name;
     } else {
       myName = name;
     }
   }
+
+  public PackageNode(SModelTreeNode model, String uiText, String fullName) {
+    super(model.getModel().getReference(), uiText, true);
+    myModelNode = model;
+    myName = fullName;
+  }
+
 
   public Set<SNode> getNodesUnderPackage() {
     if (myModelNode.getModel() == null) {
@@ -48,6 +55,10 @@ public class PackageNode extends SNodeGroupTreeNode {
     }
     Set<SNode> result = new LinkedHashSet<>();
 
+    // XXX this is odd code, with idea to change package name in all aspect models simultaneously.
+    // however, it's odd to expect such scenario for getter, it's rather question of the rename action itself and, besides, likely to get
+    // restricted to packages originating from an aspect model as well (i.e. if I rename a package in util/aux model, why would I expect packages
+    // in aspect models get changed?)
     final SModule module = myModelNode.getModel().getModule();
     if (module instanceof Language) {
       for (SModel sm : LanguageAspectSupport.getAspectModels(module)) {
@@ -60,12 +71,16 @@ public class PackageNode extends SNodeGroupTreeNode {
     return result;
   }
 
-  public Set<SNode> getNodesUnderPackage(SModel sm) {
+  private Set<SNode> getNodesUnderPackage(SModel sm) {
     Set<SNode> nodes = new LinkedHashSet<>();
+    final String fullPackageName = getFullPackage();
     for (SNode root : sm.getRootNodes()) {
       String rootPack = SNodeAccessUtil.getProperty(root, SNodeUtil.property_BaseConcept_virtualPackage);
-      if (rootPack != null && (rootPack.startsWith(getFullPackage() + ".") || rootPack.equals(getFullPackage()))) {
-        nodes.add(root);
+      if (rootPack != null && rootPack.startsWith(fullPackageName)) {
+        assert rootPack.length() >= fullPackageName.length();
+        if (rootPack.length() == fullPackageName.length() || rootPack.charAt(fullPackageName.length()) == '.') {
+          nodes.add(root);
+        }
       }
     }
     return nodes;

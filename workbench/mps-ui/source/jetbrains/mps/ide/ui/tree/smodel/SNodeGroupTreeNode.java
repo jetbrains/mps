@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,25 +20,32 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
+/**
+ * Groups nodes coming from {@linkplain #getModelReference the same model} under a text label.
+ */
 public class SNodeGroupTreeNode extends TextTreeNode {
-
   private final boolean myAutoDelete;
   private final SModelReference myModelReference;
 
+  /**
+   * @deprecated use {@link #SNodeGroupTreeNode(SModelReference, String, boolean)} counterpart
+   */
+  @Deprecated
   public SNodeGroupTreeNode(SModelTreeNode model, String text, boolean autoDelete) {
+    this(model.getModel().getReference(), text, autoDelete);
+  }
+
+  public SNodeGroupTreeNode(@NotNull SModelReference model, String text, boolean autoDelete) {
     super(text);
-    myModelReference = model.getModel().getReference();
+    myModelReference = model;
     myAutoDelete = autoDelete;
   }
 
   public SModelReference getModelReference() {
     return myModelReference;
-  }
-
-  public void registerInModelNode(SModelTreeNode model, SNodeGroupTreeNode parentGroup) {
-    model.register(parentGroup, this);
   }
 
   @Override
@@ -50,14 +57,12 @@ public class SNodeGroupTreeNode extends TextTreeNode {
   }
 
   private boolean hasErrors() {
-    for (int i = 0; i < getChildCount(); i++) {
-      MPSTreeNode node = (MPSTreeNode) getChildAt(i);
-      if (node instanceof SNodeTreeNode) {
-        if (((SNodeTreeNode) node).hasErrors()) return true;
+    for (MPSTreeNode node : getChildren()) {
+      if (node instanceof SNodeTreeNode && ((SNodeTreeNode) node).hasErrors()) {
+        return true;
       }
-
-      if (node instanceof SNodeGroupTreeNode) {
-        if (((SNodeGroupTreeNode) node).hasErrors()) return true;
+      if (node instanceof SNodeGroupTreeNode && ((SNodeGroupTreeNode) node).hasErrors()) {
+        return true;
       }
     }
 
@@ -67,6 +72,4 @@ public class SNodeGroupTreeNode extends TextTreeNode {
   public boolean isAutoDelete() {
     return myAutoDelete;
   }
-
-
 }

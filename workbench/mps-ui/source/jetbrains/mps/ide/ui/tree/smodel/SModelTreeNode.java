@@ -23,10 +23,8 @@ import jetbrains.mps.ide.ui.tree.TreeNodeTextSource;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.smodel.DependencyRecorder;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.SNodePresentationComparator;
 import jetbrains.mps.util.ToStringComparator;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -47,23 +45,22 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 public class SModelTreeNode extends MPSTreeNode implements TreeElement {
-
   private final SModel myModelDescriptor;
   private final TreeNodeTextSource<SModelTreeNode> myTextSource;
   private List<SModelTreeNode> myChildModelTreeNodes = new ArrayList<>();
 
+  private boolean myPackagesEnabled;
   private boolean myInitialized = false;
   private boolean myInitializing = false;
   private List<SNodeGroupTreeNode> myRootGroups = new ArrayList<>();
 
-  private final Condition<SNode> myNodesCondition;
-
   private final DependencyRecorder<SNodeTreeNode> myDependencyRecorder = new DependencyRecorder<>();
 
+  // the only reason to keep this map is its use through insertRoots()
   private Map<String, PackageNode> myPackageNodes = new HashMap<>();
   private Icon myBaseIcon;
 
-    public SModelTreeNode(@NotNull SModel model) {
+  public SModelTreeNode(@NotNull SModel model) {
     this(model, new LongModelNameText());
   }
 
@@ -78,9 +75,9 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
     Icon icon = GlobalIconManager.getInstance().getIconFor(model);
     setIcon(icon);
     setBaseIcon(icon);
-    myNodesCondition = Condition.TRUE_CONDITION;
     // invocation of external code with not completely initialized this is bad. Perhaps, shall rely on doUpdatePresentation invoked from onAdd()?
     setText(myTextSource.calculateText(this));
+    myPackagesEnabled = true;
   }
 
   public void setBaseIcon(@Nullable Icon baseIcon) {
@@ -99,15 +96,6 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
     return myBaseIcon;
   }
 
-  /**
-   * @deprecated renamed to {@link #getBaseIcon()}
-   */
-  @Deprecated
-  @ToRemove(version = 3.3)
-  public Icon getDefaultIcon() {
-    return getBaseIcon();
-  }
-
   @Override
   public boolean isLeaf() {
     return false;
@@ -123,8 +111,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
   }
 
   protected SNodeGroupTreeNode getNodeGroupFor(SNode node) {
-    boolean packagesEnabled = true;
-    if (!packagesEnabled) {
+    if (!myPackagesEnabled) {
       return null;
     }
 
@@ -145,7 +132,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
           PackageNode parent = current;
           current = new PackageNode(this, aPackage, parent);
           myPackageNodes.put(pack, current);
-          current.registerInModelNode(this, parent);
+          register(parent, current);
         }
 
         current = myPackageNodes.get(pack);
@@ -156,14 +143,13 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
     return null;
   }
 
-  void register(SNodeGroupTreeNode parent, SNodeGroupTreeNode groupTreeNode) {
+  private void register(SNodeGroupTreeNode parent, SNodeGroupTreeNode groupTreeNode) {
+    final String rp = groupTreeNode.getText();
     if (parent == null) {
       int index = -1;
       for (int i = 0; i < myRootGroups.size(); i++) {
         SNodeGroupTreeNode group = myRootGroups.get(i);
-        String rp = groupTreeNode.toString();
-        String cp = group.toString();
-        if (rp.compareTo(cp) < 0) {
+        if (rp.compareTo(group.getText()) < 0) {
           index = i;
           break;
         }
@@ -187,9 +173,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
         }
         groupCount++;
         SNodeGroupTreeNode group = (SNodeGroupTreeNode) parent.getChildAt(i);
-        String rp = groupTreeNode.toString();
-        String cp = group.toString();
-        if (rp.compareTo(cp) < 0) {
+        if (rp.compareTo(group.getText()) < 0) {
           index = i;
           break;
         }
@@ -242,7 +226,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
 
   @NotNull
   public final SNodeTreeNode createSNodeTreeNode(SNode node, String role) {
-    return createSNodeTreeNode(node, role, Condition.TRUE_CONDITION);
+    return createSNodeTreeNode(node, role, Condition.always());
   }
 
   @NotNull
@@ -340,7 +324,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
       org.jetbrains.mps.openapi.model.SModel model = getModel();
 
       List<SNode> filteredRoots = new ArrayList<>();
-      for (SNode node : new ConditionalIterable<>(model.getRootNodes(), myNodesCondition)) {
+      for (SNode node : model.getRootNodes()) {
         filteredRoots.add(node);
       }
       Comparator<Object> childrenComparator = getTree().getChildrenComparator();
@@ -350,7 +334,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
         Collections.sort(filteredRoots, new SNodePresentationComparator());
       }
       for (SNode sortedRoot : filteredRoots) {
-        MPSTreeNodeEx treeNode = createSNodeTreeNode(sortedRoot, myNodesCondition);
+        MPSTreeNodeEx treeNode = createSNodeTreeNode(sortedRoot);
         MPSTreeNode group = getNodeGroupFor(sortedRoot);
         if (group != null) {
           group.add(treeNode);
