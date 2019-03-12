@@ -75,7 +75,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
     // WithPlatformTestExecutor starts IDEA, therefore needs it in CP 
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromLibFolder()).distinct());
-    ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromPreInstalledPluginsFolder()).distinct());
     // Module classpath would get managed by IdeaEnvironment based on set of modules to load 
     // 
     // next is to ensure TestExecutor is loaded. Though it's part of execution plugin, it's a regular mps module 
