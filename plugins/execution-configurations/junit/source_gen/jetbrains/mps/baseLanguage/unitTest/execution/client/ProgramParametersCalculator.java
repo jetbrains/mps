@@ -72,7 +72,6 @@ import org.apache.log4j.Level;
     addModulesAndDepsToStartupArgs(startupArgs);
     addMacrosToStartupArgs(startupArgs);
     addPluginsToStartupArgs(startupArgs);
-    // XXX could deduce required plugins from IdeaPluginModuleFacet of required modules. 
     startupArgs.setLoadBootstrapLibraries(true);
 
     // XXX May want to pass value of idea.additional.classpath system property further to new IdeaApplication instance to ensure plugins that are  

@@ -56,7 +56,6 @@ public class DeployScriptCreator {
     return deployProject;
   }
 
-
   private static String makeRelative(String basePath, String fullPath) {
     if ((fullPath == null || fullPath.length() == 0)) {
       return "";

@@ -29,7 +29,7 @@ public class RequiredPlugins {
     ListSequence.fromList(myPlugins).addSequence(Sequence.fromIterable(initialPlugins));
   }
 
-  public void collectDependencies() {
+  private void collectDependencies() {
     Set<SNode> visited = SetSequence.fromSet(new LinkedHashSet<SNode>());
     for (SNode plugin : ListSequence.fromList(myPlugins)) {
       collectDependencies(plugin, visited);

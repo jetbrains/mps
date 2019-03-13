@@ -14,11 +14,13 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.IListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.build.mps.util.RequiredPlugins;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class UserProvidedPluginsCalculator {
@@ -40,15 +42,21 @@ public class UserProvidedPluginsCalculator {
     final List<SNodeReference> pluginList = configuration.getDeploySettings().getPluginsListToDeploy();
     return new ModelAccessHelper(repo).runReadAction(new Computable<IListSequence<PluginData>>() {
       public IListSequence<PluginData> compute() {
-        return ListSequence.fromList(pluginList).select(new ISelector<SNodeReference, SNode>() {
+        List<SNode> list = ListSequence.fromList(pluginList).select(new ISelector<SNodeReference, SNode>() {
           public SNode select(SNodeReference it) {
             return it.resolve(repo);
           }
-        }).ofType(SNode.class).select(new ISelector<SNode, PluginData>() {
+        }).ofType(SNode.class).select(new ISelector<SNode, SNode>() {
+          public SNode select(SNode it) {
+            return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin"));
+          }
+        }).toListSequence();
+        Iterable<SNode> withDeps = new RequiredPlugins(list).returnDepsWithInitial();
+        return Sequence.fromIterable(withDeps).select(new ISelector<SNode, PluginData>() {
           public PluginData select(SNode it) {
-            String pluginDirName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4def2c96L, "containerName")), null);
+            String pluginDirName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4def2c96L, "containerName")), null);
             String absolutePath2Plugin = new File(pluginsPath, pluginDirName).getAbsolutePath();
-            return new PluginData(absolutePath2Plugin, SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id")));
+            return new PluginData(absolutePath2Plugin, SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id")));
           }
         }).toListSequence();
       }
