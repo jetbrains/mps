@@ -178,7 +178,7 @@
         <node concept="3clFbF" id="244oDY5f5DB" role="3cqZAp">
           <node concept="2OqwBi" id="244oDY5f5O3" role="3clFbG">
             <node concept="liA8E" id="244oDY5f5UK" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
               <node concept="Xl_RD" id="244oDY5f74N" role="37wK5m">
                 <property role="Xl_RC" value="double" />
               </node>
@@ -209,7 +209,7 @@
         <node concept="3clFbF" id="244oDY5f7kH" role="3cqZAp">
           <node concept="2OqwBi" id="244oDY5f7kJ" role="3clFbG">
             <node concept="liA8E" id="244oDY5f7kK" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
               <node concept="Xl_RD" id="244oDY5f7kL" role="37wK5m">
                 <property role="Xl_RC" value="integer" />
               </node>

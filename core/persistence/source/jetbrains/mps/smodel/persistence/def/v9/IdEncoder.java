@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.persistence.def.v9;
 
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
 import jetbrains.mps.smodel.JavaFriendlyBase64;
+import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.smodel.SNodeId.Regular;
 import jetbrains.mps.smodel.StaticReference;
@@ -102,7 +103,7 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
 
   public SNodeId parseNodeId(String text) throws EncodingException {
     try {
-      if (!text.startsWith(Foreign.ID_PREFIX)) {
+      if (!text.startsWith(Foreign.ID_PREFIX) && !text.startsWith(StringBasedIdForJavaStubMethods.ID_PREFIX)) {
         long v = myBase64.parseLong(text);
         return new Regular(v);
       }

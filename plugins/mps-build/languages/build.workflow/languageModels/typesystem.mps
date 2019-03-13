@@ -153,7 +153,7 @@
       <node concept="1DcWWT" id="Y2EImGHLSt" role="3cqZAp">
         <node concept="2YIFZM" id="RmEX7Kc24Y" role="1DdaDG">
           <ref role="1Pybhc" to="mhbf:~SNodeUtil" resolve="SNodeUtil" />
-          <ref role="37wK5l" to="mhbf:~SNodeUtil.getDescendants(org.jetbrains.mps.openapi.model.SNode):java.lang.Iterable" resolve="getDescendants" />
+          <ref role="37wK5l" to="mhbf:#SNodeUtil.getDescendants(org.jetbrains.mps.openapi.model.SNode):java.lang.Iterable" resolve="getDescendants" />
           <node concept="2JrnkZ" id="RmEX7Kc24Z" role="37wK5m">
             <node concept="1YBJjd" id="RmEX7Kc250" role="2JrQYb">
               <ref role="1YBMHb" node="Y2EImGHLQK" resolve="lib" />
@@ -173,7 +173,7 @@
                 <ref role="3cqZAo" node="Y2EImGHLSu" resolve="n" />
               </node>
               <node concept="liA8E" id="2U15YDCSjb4" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getReferences():java.lang.Iterable" resolve="getReferences" />
+                <ref role="37wK5l" to="mhbf:#SNode.getReferences():java.lang.Iterable" resolve="getReferences" />
               </node>
             </node>
             <node concept="3cpWsn" id="Y2EImGHLSC" role="1Duv9x">
@@ -229,7 +229,7 @@
                           </node>
                           <node concept="2OqwBi" id="46wqQ5NQwsJ" role="1m5AlR">
                             <node concept="liA8E" id="46wqQ5NQwsK" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SNode.getContainingRoot():org.jetbrains.mps.openapi.model.SNode" resolve="getContainingRoot" />
+                              <ref role="37wK5l" to="mhbf:#SNode.getContainingRoot():org.jetbrains.mps.openapi.model.SNode" resolve="getContainingRoot" />
                             </node>
                             <node concept="37vLTw" id="3GM_nagTx9s" role="2Oq$k0">
                               <ref role="3cqZAo" node="Y2EImGHLSK" resolve="targetNode" />

@@ -142,7 +142,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="58TlvqhXRbz" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.Object):void" resolve="println" />
               <node concept="3cpWs3" id="58TlvqhXRb$" role="37wK5m">
                 <node concept="3cmrfG" id="58TlvqhXRb_" role="3uHU7w">
                   <property role="3cmrfH" value="1" />
@@ -212,7 +212,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="58TlvqhXQk9" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
               <node concept="2OqwBi" id="58TlvqhXQka" role="37wK5m">
                 <node concept="37vLTw" id="58TlvqhXQkb" role="2Oq$k0">
                   <ref role="3cqZAo" node="58TlvqhXQjN" resolve="stringBox" />
@@ -280,7 +280,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="58TlvqhXP__" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.Object):void" resolve="println" />
               <node concept="2OqwBi" id="58TlvqhXP_A" role="37wK5m">
                 <node concept="37vLTw" id="58TlvqhXP_B" role="2Oq$k0">
                   <ref role="3cqZAo" node="58TlvqhXP_f" resolve="dateBox" />

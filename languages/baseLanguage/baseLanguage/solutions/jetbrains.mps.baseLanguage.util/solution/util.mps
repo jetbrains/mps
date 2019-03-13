@@ -557,7 +557,7 @@
               </node>
             </node>
             <node concept="2YIFZM" id="4n$sOE9Wv29" role="3K4GZi">
-              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+              <ref role="37wK5l" to="wyt6:#System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
               <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
               <node concept="Xl_RD" id="4n$sOE9Wv2a" role="37wK5m">
                 <property role="Xl_RC" value="line.separator" />
@@ -1771,7 +1771,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6uKywTfYh1y" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
               <node concept="2YIFZM" id="6uKywTg12Ex" role="37wK5m">
                 <ref role="37wK5l" to="5h2r:2LflJcA4jVF" resolve="packageName" />
                 <ref role="1Pybhc" to="5h2r:2Jvt1sWfuv6" resolve="VisibilityUtil" />

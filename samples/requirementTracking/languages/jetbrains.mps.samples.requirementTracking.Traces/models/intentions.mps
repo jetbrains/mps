@@ -286,15 +286,15 @@
                           <node concept="2OqwBi" id="3BHdE7cSPKl" role="2Oq$k0">
                             <node concept="1XNTG" id="3BHdE7cSPKm" role="2Oq$k0" />
                             <node concept="liA8E" id="3BHdE7cSPKn" role="2OqNvi">
-                              <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
+                              <ref role="37wK5l" to="cj4x:#EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
                             </node>
                           </node>
                           <node concept="liA8E" id="3BHdE7cSPKo" role="2OqNvi">
-                            <ref role="37wK5l" to="cj4x:~EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
+                            <ref role="37wK5l" to="cj4x:#EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
                           </node>
                         </node>
                         <node concept="liA8E" id="3BHdE7cSPKp" role="2OqNvi">
-                          <ref role="37wK5l" to="22ra:~Updater.getInitialEditorHints():java.lang.String[]" resolve="getInitialEditorHints" />
+                          <ref role="37wK5l" to="22ra:#Updater.getInitialEditorHints():java.lang.String[]" resolve="getInitialEditorHints" />
                         </node>
                       </node>
                     </node>
@@ -366,7 +366,7 @@
                         </node>
                         <node concept="17R0WA" id="3BHdE7cTpCG" role="3clFbw">
                           <node concept="2pYGij" id="3BHdE7cTpDJ" role="3uHU7w">
-                            <ref role="2pYH_C" to="3pjd:3BHdE7cRY9B" resolve="ShowHints" />
+                            <ref role="2pYH_C" to="3pjd:3BHdE7cRY9B" resolve="ShowTraces" />
                           </node>
                           <node concept="AH0OO" id="3BHdE7cToDx" role="3uHU7B">
                             <node concept="37vLTw" id="3BHdE7cToIv" role="AHEQo">
@@ -426,7 +426,7 @@
                   <node concept="3clFbF" id="3BHdE7cTS1X" role="3cqZAp">
                     <node concept="37vLTI" id="3BHdE7cUyr5" role="3clFbG">
                       <node concept="2pYGij" id="3BHdE7cUzpc" role="37vLTx">
-                        <ref role="2pYH_C" to="3pjd:3BHdE7cRY9B" resolve="ShowHints" />
+                        <ref role="2pYH_C" to="3pjd:3BHdE7cRY9B" resolve="ShowTraces" />
                       </node>
                       <node concept="AH0OO" id="3BHdE7cTSIC" role="37vLTJ">
                         <node concept="2OqwBi" id="3BHdE7cTT64" role="AHEQo">
@@ -447,15 +447,15 @@
                         <node concept="2OqwBi" id="3BHdE7cSQdi" role="2Oq$k0">
                           <node concept="1XNTG" id="3BHdE7cSQdj" role="2Oq$k0" />
                           <node concept="liA8E" id="3BHdE7cSQdk" role="2OqNvi">
-                            <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
+                            <ref role="37wK5l" to="cj4x:#EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
                           </node>
                         </node>
                         <node concept="liA8E" id="3BHdE7cSQdl" role="2OqNvi">
-                          <ref role="37wK5l" to="cj4x:~EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
+                          <ref role="37wK5l" to="cj4x:#EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
                         </node>
                       </node>
                       <node concept="liA8E" id="3BHdE7cSSCm" role="2OqNvi">
-                        <ref role="37wK5l" to="22ra:~Updater.setInitialEditorHints(java.lang.String[]):boolean" resolve="setInitialEditorHints" />
+                        <ref role="37wK5l" to="22ra:#Updater.setInitialEditorHints(java.lang.String[]):boolean" resolve="setInitialEditorHints" />
                         <node concept="37vLTw" id="3BHdE7cTRwV" role="37wK5m">
                           <ref role="3cqZAo" node="3BHdE7cTuiS" resolve="newHints" />
                         </node>
@@ -468,15 +468,15 @@
                         <node concept="2OqwBi" id="3BHdE7cU$oO" role="2Oq$k0">
                           <node concept="1XNTG" id="3BHdE7cU$oP" role="2Oq$k0" />
                           <node concept="liA8E" id="3BHdE7cU$oQ" role="2OqNvi">
-                            <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
+                            <ref role="37wK5l" to="cj4x:#EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
                           </node>
                         </node>
                         <node concept="liA8E" id="3BHdE7cU$oR" role="2OqNvi">
-                          <ref role="37wK5l" to="cj4x:~EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
+                          <ref role="37wK5l" to="cj4x:#EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
                         </node>
                       </node>
                       <node concept="liA8E" id="3BHdE7cUBce" role="2OqNvi">
-                        <ref role="37wK5l" to="22ra:~Updater.update():void" resolve="update" />
+                        <ref role="37wK5l" to="22ra:#Updater.update():void" resolve="update" />
                       </node>
                     </node>
                   </node>
@@ -554,7 +554,7 @@
                     <node concept="2NL2c5" id="3BHdE7cPtxv" role="2OqNvi" />
                   </node>
                   <node concept="liA8E" id="3BHdE7cPupH" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SAbstractLink.isMultiple():boolean" resolve="isMultiple" />
+                    <ref role="37wK5l" to="c17a:#SAbstractLink.isMultiple():boolean" resolve="isMultiple" />
                   </node>
                 </node>
               </node>

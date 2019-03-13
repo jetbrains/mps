@@ -55,7 +55,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         try {
-          tnode3.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode3, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~SMethod.invoke(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...):java.lang.Object")));
+          tnode3.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode3, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("#SMethod.invoke(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...):java.lang.Object")));
           TemplateContext context3 = context2.subContext();
           {
             Collection<SNode> tlist4 = null;
@@ -106,7 +106,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[1]);
                     try {
-                      tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept")));
+                      tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("#SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept")));
                     } finally {
                     }
                     tnode8.addChild(myAggregationLinks[1], tnode10);

@@ -229,7 +229,7 @@
                               <ref role="3cqZAo" node="7k6J8c3tihB" resolve="cell" />
                             </node>
                             <node concept="liA8E" id="7k6J8c3tihJ" role="2OqNvi">
-                              <ref role="37wK5l" to="f4zo:~EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
+                              <ref role="37wK5l" to="f4zo:#EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
                             </node>
                           </node>
                         </node>
@@ -307,7 +307,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="3rlQhneEw5a" role="3K4GZi">
-                <ref role="37wK5l" to="g51k:~CellFinderUtil.findChildByCondition(jetbrains.mps.openapi.editor.cells.EditorCell,org.jetbrains.mps.util.Condition,boolean):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="findChildByCondition" />
+                <ref role="37wK5l" to="g51k:#CellFinderUtil.findChildByCondition(jetbrains.mps.openapi.editor.cells.EditorCell,org.jetbrains.mps.util.Condition,boolean):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="findChildByCondition" />
                 <ref role="1Pybhc" to="g51k:~CellFinderUtil" resolve="CellFinderUtil" />
                 <node concept="37vLTw" id="3rlQhneEw5b" role="37wK5m">
                   <ref role="3cqZAo" node="2qFJdjD$LCv" resolve="bigCell" />

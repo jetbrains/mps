@@ -449,7 +449,7 @@
               <node concept="2OqwBi" id="1u_ffTouBVY" role="2c44tc">
                 <node concept="1fM9EW" id="1u_ffTouBMu" role="2Oq$k0" />
                 <node concept="liA8E" id="1u_ffTouCfp" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                  <ref role="37wK5l" to="c17a:#SAbstractConcept.getName():java.lang.String" resolve="getName" />
                 </node>
               </node>
             </node>
@@ -1021,7 +1021,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="4w_uUHXwFnT" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
+                            <ref role="37wK5l" to="mhbf:#SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
                             <node concept="355D3s" id="4w_uUHXwF$f" role="37wK5m">
                               <ref role="355D3t" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
                               <ref role="355D3u" to="1i04:hP3i0m1" resolve="isPrivate" />

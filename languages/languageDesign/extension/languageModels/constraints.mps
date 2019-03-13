@@ -250,12 +250,12 @@
           <node concept="3clFbF" id="66AaOfxkVk_" role="3cqZAp">
             <node concept="2OqwBi" id="66AaOfxkVkF" role="3clFbG">
               <node concept="2YIFZM" id="66AaOfxkVkB" role="2Oq$k0">
-                <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+                <ref role="37wK5l" to="18ew:#NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="1Wqviy" id="66AaOfxkVkC" role="37wK5m" />
               </node>
               <node concept="liA8E" id="66AaOfxkVkL" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                 <node concept="1Wqviy" id="66AaOfxkVkM" role="37wK5m" />
               </node>
             </node>

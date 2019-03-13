@@ -216,13 +216,13 @@
             </node>
             <node concept="2OqwBi" id="3Lj0jv7ELvW" role="33vP2m">
               <node concept="2YIFZM" id="3Lj0jv7ELvX" role="2Oq$k0">
-                <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance():com.intellij.openapi.vfs.LocalFileSystem" resolve="getInstance" />
+                <ref role="37wK5l" to="jlff:#LocalFileSystem.getInstance():com.intellij.openapi.vfs.LocalFileSystem" resolve="getInstance" />
                 <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
               </node>
               <node concept="liA8E" id="3Lj0jv7ELvY" role="2OqNvi">
-                <ref role="37wK5l" to="jlff:~VirtualFileSystem.findFileByPath(java.lang.String):com.intellij.openapi.vfs.VirtualFile" resolve="findFileByPath" />
+                <ref role="37wK5l" to="jlff:#VirtualFileSystem.findFileByPath(java.lang.String):com.intellij.openapi.vfs.VirtualFile" resolve="findFileByPath" />
                 <node concept="2YIFZM" id="3Lj0jv7ELvZ" role="37wK5m">
-                  <ref role="37wK5l" to="bd8o:~PathManager.getHomePath():java.lang.String" resolve="getHomePath" />
+                  <ref role="37wK5l" to="bd8o:#PathManager.getHomePath():java.lang.String" resolve="getHomePath" />
                   <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
                 </node>
               </node>
@@ -255,10 +255,10 @@
               <node concept="2OqwBi" id="3Lj0jv7ELwc" role="AHHXb">
                 <node concept="2YIFZM" id="3Lj0jv7ELwd" role="2Oq$k0">
                   <ref role="1Pybhc" to="4nm9:~ProjectManager" resolve="ProjectManager" />
-                  <ref role="37wK5l" to="4nm9:~ProjectManager.getInstance():com.intellij.openapi.project.ProjectManager" resolve="getInstance" />
+                  <ref role="37wK5l" to="4nm9:#ProjectManager.getInstance():com.intellij.openapi.project.ProjectManager" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="3Lj0jv7ELwe" role="2OqNvi">
-                  <ref role="37wK5l" to="4nm9:~ProjectManager.getOpenProjects():com.intellij.openapi.project.Project[]" resolve="getOpenProjects" />
+                  <ref role="37wK5l" to="4nm9:#ProjectManager.getOpenProjects():com.intellij.openapi.project.Project[]" resolve="getOpenProjects" />
                 </node>
               </node>
             </node>
@@ -272,7 +272,7 @@
                 <node concept="17QB3L" id="3Lj0jv7ELwj" role="1tU5fm" />
                 <node concept="2EnYce" id="3Lj0jv7ELwk" role="33vP2m">
                   <node concept="2YIFZM" id="46_v$3HTVy7" role="2Oq$k0">
-                    <ref role="37wK5l" to="rfyv:~GitBranchUtil.getCurrentBranch(com.intellij.openapi.project.Project,com.intellij.openapi.vfs.VirtualFile):git4idea.GitLocalBranch" resolve="getCurrentBranch" />
+                    <ref role="37wK5l" to="rfyv:#GitBranchUtil.getCurrentBranch(com.intellij.openapi.project.Project,com.intellij.openapi.vfs.VirtualFile):git4idea.GitLocalBranch" resolve="getCurrentBranch" />
                     <ref role="1Pybhc" to="rfyv:~GitBranchUtil" resolve="GitBranchUtil" />
                     <node concept="37vLTw" id="3GM_nagTwhI" role="37wK5m">
                       <ref role="3cqZAo" node="3Lj0jv7ELw8" resolve="project" />
@@ -282,7 +282,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3Lj0jv7ELwo" role="2OqNvi">
-                    <ref role="37wK5l" to="hr4p:~GitReference.getName():java.lang.String" resolve="getName" />
+                    <ref role="37wK5l" to="hr4p:#GitReference.getName():java.lang.String" resolve="getName" />
                   </node>
                 </node>
               </node>
@@ -351,7 +351,7 @@
                     </node>
                     <node concept="2YIFZM" id="3Lj0jv7ELwP" role="37vLTx">
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                      <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                       <node concept="Xl_RD" id="3Lj0jv7ELwQ" role="37wK5m">
                         <property role="Xl_RC" value=", origin/master@%s + %s" />
                       </node>
@@ -359,7 +359,7 @@
                         <ref role="3cqZAo" node="3Lj0jv7ELww" resolve="mergeBase" />
                       </node>
                       <node concept="2YIFZM" id="3Lj0jv7ELwS" role="37wK5m">
-                        <ref role="37wK5l" to="18ew:~NameUtil.formatNumericalString(int,java.lang.String):java.lang.String" resolve="formatNumericalString" />
+                        <ref role="37wK5l" to="18ew:#NameUtil.formatNumericalString(int,java.lang.String):java.lang.String" resolve="formatNumericalString" />
                         <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                         <node concept="37vLTw" id="3GM_nagTxNP" role="37wK5m">
                           <ref role="3cqZAo" node="3Lj0jv7ELwA" resolve="distance" />
@@ -397,7 +397,7 @@
                       <ref role="3cqZAo" node="3Lj0jv7ELwH" resolve="headDescription" />
                     </node>
                     <node concept="2YIFZM" id="3Lj0jv7ELx7" role="37vLTx">
-                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                      <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                       <node concept="Xl_RD" id="3Lj0jv7ELx8" role="37wK5m">
                         <property role="Xl_RC" value="%s (%s)" />
@@ -477,7 +477,7 @@
               <ref role="3cqZAo" node="3Lj0jv7ELtu" resolve="h" />
             </node>
             <node concept="liA8E" id="3Lj0jv7ELtH" role="2OqNvi">
-              <ref role="37wK5l" to="l8al:~GitHandler.setSilent(boolean):void" resolve="setSilent" />
+              <ref role="37wK5l" to="l8al:#GitHandler.setSilent(boolean):void" resolve="setSilent" />
               <node concept="3clFbT" id="3Lj0jv7ELtI" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
@@ -490,7 +490,7 @@
               <ref role="3cqZAo" node="3Lj0jv7ELtu" resolve="h" />
             </node>
             <node concept="liA8E" id="3Lj0jv7ELtM" role="2OqNvi">
-              <ref role="37wK5l" to="l8al:~GitHandler.addParameters(java.lang.String...):void" resolve="addParameters" />
+              <ref role="37wK5l" to="l8al:#GitHandler.addParameters(java.lang.String...):void" resolve="addParameters" />
               <node concept="Xl_RD" id="3Lj0jv7ELtN" role="37wK5m">
                 <property role="Xl_RC" value="--max-count=1" />
               </node>
@@ -507,11 +507,11 @@
                 <ref role="3cqZAo" node="3Lj0jv7ELtu" resolve="h" />
               </node>
               <node concept="liA8E" id="3Lj0jv7ELtT" role="2OqNvi">
-                <ref role="37wK5l" to="l8al:~GitSimpleHandler.run():java.lang.String" resolve="run" />
+                <ref role="37wK5l" to="l8al:#GitSimpleHandler.run():java.lang.String" resolve="run" />
               </node>
             </node>
             <node concept="liA8E" id="3Lj0jv7ELtU" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.trim():java.lang.String" resolve="trim" />
+              <ref role="37wK5l" to="wyt6:#String.trim():java.lang.String" resolve="trim" />
             </node>
           </node>
         </node>
@@ -578,7 +578,7 @@
               <ref role="3cqZAo" node="3Lj0jv7ELu9" resolve="h" />
             </node>
             <node concept="liA8E" id="3Lj0jv7ELuo" role="2OqNvi">
-              <ref role="37wK5l" to="l8al:~GitHandler.setSilent(boolean):void" resolve="setSilent" />
+              <ref role="37wK5l" to="l8al:#GitHandler.setSilent(boolean):void" resolve="setSilent" />
               <node concept="3clFbT" id="3Lj0jv7ELup" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
@@ -591,7 +591,7 @@
               <ref role="3cqZAo" node="3Lj0jv7ELu9" resolve="h" />
             </node>
             <node concept="liA8E" id="3Lj0jv7ELut" role="2OqNvi">
-              <ref role="37wK5l" to="l8al:~GitHandler.addParameters(java.lang.String...):void" resolve="addParameters" />
+              <ref role="37wK5l" to="l8al:#GitHandler.addParameters(java.lang.String...):void" resolve="addParameters" />
               <node concept="Xl_RD" id="3Lj0jv7ELuu" role="37wK5m">
                 <property role="Xl_RC" value="origin/master" />
               </node>
@@ -610,7 +610,7 @@
                 <ref role="3cqZAo" node="3Lj0jv7ELu9" resolve="h" />
               </node>
               <node concept="liA8E" id="3Lj0jv7ELu_" role="2OqNvi">
-                <ref role="37wK5l" to="l8al:~GitSimpleHandler.run():java.lang.String" resolve="run" />
+                <ref role="37wK5l" to="l8al:#GitSimpleHandler.run():java.lang.String" resolve="run" />
               </node>
             </node>
           </node>
@@ -623,7 +623,7 @@
                   <ref role="3cqZAo" node="3Lj0jv7ELux" resolve="longRev" />
                 </node>
                 <node concept="liA8E" id="3Lj0jv7ELuF" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+                  <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
                   <node concept="3cmrfG" id="3Lj0jv7ELuG" role="37wK5m">
                     <property role="3cmrfH" value="0" />
                   </node>
@@ -643,7 +643,7 @@
                 <ref role="3cqZAo" node="3Lj0jv7ELux" resolve="longRev" />
               </node>
               <node concept="liA8E" id="3Lj0jv7ELuM" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
               </node>
             </node>
           </node>
@@ -706,7 +706,7 @@
               <ref role="3cqZAo" node="3Lj0jv7ELv1" resolve="h" />
             </node>
             <node concept="liA8E" id="3Lj0jv7ELvg" role="2OqNvi">
-              <ref role="37wK5l" to="l8al:~GitHandler.setSilent(boolean):void" resolve="setSilent" />
+              <ref role="37wK5l" to="l8al:#GitHandler.setSilent(boolean):void" resolve="setSilent" />
               <node concept="3clFbT" id="3Lj0jv7ELvh" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
@@ -719,7 +719,7 @@
               <ref role="3cqZAo" node="3Lj0jv7ELv1" resolve="h" />
             </node>
             <node concept="liA8E" id="3Lj0jv7ELvl" role="2OqNvi">
-              <ref role="37wK5l" to="l8al:~GitHandler.addParameters(java.lang.String...):void" resolve="addParameters" />
+              <ref role="37wK5l" to="l8al:#GitHandler.addParameters(java.lang.String...):void" resolve="addParameters" />
               <node concept="Xl_RD" id="3Lj0jv7ELvm" role="37wK5m">
                 <property role="Xl_RC" value="origin/master..HEAD" />
               </node>
@@ -738,21 +738,21 @@
                 <ref role="3cqZAo" node="3Lj0jv7ELv1" resolve="h" />
               </node>
               <node concept="liA8E" id="3Lj0jv7ELvt" role="2OqNvi">
-                <ref role="37wK5l" to="l8al:~GitSimpleHandler.run():java.lang.String" resolve="run" />
+                <ref role="37wK5l" to="l8al:#GitSimpleHandler.run():java.lang.String" resolve="run" />
               </node>
             </node>
           </node>
         </node>
         <node concept="3cpWs6" id="3Lj0jv7ELvu" role="3cqZAp">
           <node concept="2YIFZM" id="3Lj0jv7ELvv" role="3cqZAk">
-            <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String):int" resolve="parseInt" />
+            <ref role="37wK5l" to="wyt6:#Integer.parseInt(java.lang.String):int" resolve="parseInt" />
             <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
             <node concept="2OqwBi" id="3Lj0jv7ELvw" role="37wK5m">
               <node concept="37vLTw" id="3GM_nagTAJP" role="2Oq$k0">
                 <ref role="3cqZAo" node="3Lj0jv7ELvp" resolve="count" />
               </node>
               <node concept="liA8E" id="3Lj0jv7ELvy" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.trim():java.lang.String" resolve="trim" />
+                <ref role="37wK5l" to="wyt6:#String.trim():java.lang.String" resolve="trim" />
               </node>
             </node>
           </node>

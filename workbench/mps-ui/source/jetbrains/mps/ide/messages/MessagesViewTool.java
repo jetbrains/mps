@@ -146,9 +146,7 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
       this.defaultListState = new MessageListState();
     }
 
-    // XXX documentation of PersistentStateComponent tells it saves annotated and public fields. This one is neither of those.
-    //     I don't see MessagesViewTool entry in .mps/workspace.xml either. Does it work?
-    MessageListState defaultListState;
+    public MessageListState defaultListState;
   }
 
   @Override

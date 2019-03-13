@@ -380,16 +380,16 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="3cshyhzOcPW" role="2OqNvi">
-                          <ref role="37wK5l" to="vqh0:~ModuleMaker.make(java.util.Collection,org.jetbrains.mps.openapi.util.ProgressMonitor,jetbrains.mps.compiler.JavaCompilerOptions):jetbrains.mps.make.MPSCompilationResult" resolve="make" />
+                          <ref role="37wK5l" to="vqh0:#ModuleMaker.make(java.util.Collection,org.jetbrains.mps.openapi.util.ProgressMonitor,jetbrains.mps.compiler.JavaCompilerOptions):jetbrains.mps.make.MPSCompilationResult" resolve="make" />
                           <node concept="2YIFZM" id="3cshyhzOcQL" role="37wK5m">
                             <ref role="1Pybhc" to="18ew:~IterableUtil" resolve="IterableUtil" />
-                            <ref role="37wK5l" to="18ew:~IterableUtil.asCollection(java.lang.Iterable):java.util.Collection" resolve="asCollection" />
+                            <ref role="37wK5l" to="18ew:#IterableUtil.asCollection(java.lang.Iterable):java.util.Collection" resolve="asCollection" />
                             <node concept="2OqwBi" id="3cshyhzOcR0" role="37wK5m">
                               <node concept="37vLTw" id="3cshyhzOcQZ" role="2Oq$k0">
                                 <ref role="3cqZAo" node="60oBoEfqOa" resolve="p" />
                               </node>
                               <node concept="liA8E" id="3cshyhzOcR1" role="2OqNvi">
-                                <ref role="37wK5l" to="z1c3:~Project.getProjectModulesWithGenerators():java.util.List" resolve="getProjectModulesWithGenerators" />
+                                <ref role="37wK5l" to="z1c3:#Project.getProjectModulesWithGenerators():java.util.List" resolve="getProjectModulesWithGenerators" />
                               </node>
                             </node>
                           </node>
@@ -412,7 +412,7 @@
                   <ref role="3cqZAo" node="60oBoEfqOa" resolve="p" />
                 </node>
                 <node concept="liA8E" id="6tzA4yIiM2I" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                  <ref role="37wK5l" to="z1c3:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                 </node>
               </node>
             </node>
@@ -422,7 +422,7 @@
                   <ref role="3cqZAo" node="3cshyhzOcPH" resolve="mpsCompilationResult" />
                 </node>
                 <node concept="liA8E" id="3cshyhzOcRd" role="2OqNvi">
-                  <ref role="37wK5l" to="vqh0:~MPSCompilationResult.isReloadingNeeded():boolean" resolve="isReloadingNeeded" />
+                  <ref role="37wK5l" to="vqh0:#MPSCompilationResult.isReloadingNeeded():boolean" resolve="isReloadingNeeded" />
                 </node>
               </node>
               <node concept="3clFbS" id="3cshyhzOcQ7" role="3clFbx">
@@ -432,13 +432,13 @@
                       <node concept="3clFbF" id="3cshyhzOcQi" role="3cqZAp">
                         <node concept="2OqwBi" id="3cshyhzOcQj" role="3clFbG">
                           <node concept="liA8E" id="3cshyhzOcQl" role="2OqNvi">
-                            <ref role="37wK5l" to="3qmy:~ClassLoaderManager.reloadModules(java.lang.Iterable):void" resolve="reloadModules" />
+                            <ref role="37wK5l" to="3qmy:#ClassLoaderManager.reloadModules(java.lang.Iterable):void" resolve="reloadModules" />
                             <node concept="2OqwBi" id="3cshyhzOcRK" role="37wK5m">
                               <node concept="37vLTw" id="3cshyhzOcRJ" role="2Oq$k0">
                                 <ref role="3cqZAo" node="3cshyhzOcPH" resolve="mpsCompilationResult" />
                               </node>
                               <node concept="liA8E" id="3cshyhzOcRL" role="2OqNvi">
-                                <ref role="37wK5l" to="vqh0:~MPSCompilationResult.getChangedModules():java.util.Set" resolve="getChangedModules" />
+                                <ref role="37wK5l" to="vqh0:#MPSCompilationResult.getChangedModules():java.util.Set" resolve="getChangedModules" />
                               </node>
                             </node>
                           </node>
@@ -447,7 +447,7 @@
                               <ref role="3cqZAo" node="60oBoEfqOa" resolve="p" />
                             </node>
                             <node concept="liA8E" id="6tzA4yIiNyj" role="2OqNvi">
-                              <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                              <ref role="37wK5l" to="z1c3:#Project.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
                               <node concept="3VsKOn" id="6tzA4yIiOlh" role="37wK5m">
                                 <ref role="3VsUkX" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
                               </node>
@@ -462,7 +462,7 @@
                       <ref role="3cqZAo" node="60oBoEfqOa" resolve="p" />
                     </node>
                     <node concept="liA8E" id="6tzA4yIiMfS" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                      <ref role="37wK5l" to="z1c3:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                     </node>
                   </node>
                 </node>
@@ -482,11 +482,11 @@
             <node concept="3clFbF" id="1_ciHgTaaxD" role="3cqZAp">
               <node concept="2OqwBi" id="1_ciHgTabVw" role="3clFbG">
                 <node concept="2YIFZM" id="1_ciHgTabOz" role="2Oq$k0">
-                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+                  <ref role="37wK5l" to="bd8o:#ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
                   <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
                 </node>
                 <node concept="liA8E" id="1_ciHgTaccL" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:~Application.invokeAndWait(java.lang.Runnable,com.intellij.openapi.application.ModalityState):void" resolve="invokeAndWait" />
+                  <ref role="37wK5l" to="bd8o:#Application.invokeAndWait(java.lang.Runnable,com.intellij.openapi.application.ModalityState):void" resolve="invokeAndWait" />
                   <node concept="1bVj0M" id="1oo0A63IUaM" role="37wK5m">
                     <node concept="3clFbS" id="1oo0A63IUaN" role="1bW5cS">
                       <node concept="SfApY" id="75eqTYkoETW" role="3cqZAp">
@@ -512,9 +512,9 @@
                                 <node concept="2OqwBi" id="75eqTYkqhR0" role="2Oq$k0">
                                   <node concept="2YIFZM" id="75eqTYkqhR1" role="2Oq$k0">
                                     <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-                                    <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId):com.intellij.ide.plugins.IdeaPluginDescriptor" resolve="getPlugin" />
+                                    <ref role="37wK5l" to="ctgy:#PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId):com.intellij.ide.plugins.IdeaPluginDescriptor" resolve="getPlugin" />
                                     <node concept="2YIFZM" id="75eqTYkqlOF" role="37wK5m">
-                                      <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String):com.intellij.openapi.extensions.PluginId" resolve="getId" />
+                                      <ref role="37wK5l" to="9ti4:#PluginId.getId(java.lang.String):com.intellij.openapi.extensions.PluginId" resolve="getId" />
                                       <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
                                       <node concept="37vLTw" id="1oo0A63IYPh" role="37wK5m">
                                         <ref role="3cqZAo" node="75eqTYkqe2J" resolve="MIGRATION_PLUGIN" />
@@ -522,11 +522,11 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="75eqTYkqhR3" role="2OqNvi">
-                                    <ref role="37wK5l" to="9ti4:~PluginDescriptor.getPluginClassLoader():java.lang.ClassLoader" resolve="getPluginClassLoader" />
+                                    <ref role="37wK5l" to="9ti4:#PluginDescriptor.getPluginClassLoader():java.lang.ClassLoader" resolve="getPluginClassLoader" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="75eqTYkqhR4" role="2OqNvi">
-                                  <ref role="37wK5l" to="wyt6:~ClassLoader.loadClass(java.lang.String):java.lang.Class" resolve="loadClass" />
+                                  <ref role="37wK5l" to="wyt6:#ClassLoader.loadClass(java.lang.String):java.lang.Class" resolve="loadClass" />
                                   <node concept="37vLTw" id="1oo0A63IYPs" role="37wK5m">
                                     <ref role="3cqZAo" node="75eqTYkqm2O" resolve="TASK_EXEC_CLASS" />
                                   </node>
@@ -545,7 +545,7 @@
                                   <ref role="3cqZAo" node="75eqTYkqhQY" resolve="euClass" />
                                 </node>
                                 <node concept="liA8E" id="75eqTYkqkcB" role="2OqNvi">
-                                  <ref role="37wK5l" to="wyt6:~Class.getMethod(java.lang.String,java.lang.Class...):java.lang.reflect.Method" resolve="getMethod" />
+                                  <ref role="37wK5l" to="wyt6:#Class.getMethod(java.lang.String,java.lang.Class...):java.lang.reflect.Method" resolve="getMethod" />
                                   <node concept="Xl_RD" id="75eqTYkqkcC" role="37wK5m">
                                     <property role="Xl_RC" value="migrate" />
                                   </node>
@@ -562,7 +562,7 @@
                                 <ref role="3cqZAo" node="75eqTYkqkc$" resolve="method" />
                               </node>
                               <node concept="liA8E" id="75eqTYkqlcf" role="2OqNvi">
-                                <ref role="37wK5l" to="t6h5:~Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
+                                <ref role="37wK5l" to="t6h5:#Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
                                 <node concept="10Nm6u" id="1oo0A63IOPy" role="37wK5m" />
                                 <node concept="37vLTw" id="75eqTYkqlcg" role="37wK5m">
                                   <ref role="3cqZAo" node="60oBoEfqOa" resolve="p" />
@@ -581,10 +581,10 @@
                               <node concept="2OqwBi" id="58MnPCMVwfL" role="33vP2m">
                                 <node concept="2YIFZM" id="58MnPCMVBmG" role="2Oq$k0">
                                   <ref role="1Pybhc" to="4nm9:~ProjectManager" resolve="ProjectManager" />
-                                  <ref role="37wK5l" to="4nm9:~ProjectManager.getInstance():com.intellij.openapi.project.ProjectManager" resolve="getInstance" />
+                                  <ref role="37wK5l" to="4nm9:#ProjectManager.getInstance():com.intellij.openapi.project.ProjectManager" resolve="getInstance" />
                                 </node>
                                 <node concept="liA8E" id="58MnPCMVwfN" role="2OqNvi">
-                                  <ref role="37wK5l" to="4nm9:~ProjectManager.getOpenProjects():com.intellij.openapi.project.Project[]" resolve="getOpenProjects" />
+                                  <ref role="37wK5l" to="4nm9:#ProjectManager.getOpenProjects():com.intellij.openapi.project.Project[]" resolve="getOpenProjects" />
                                 </node>
                               </node>
                             </node>
@@ -616,7 +616,7 @@
                           <node concept="3clFbF" id="58MnPCMVxNS" role="3cqZAp">
                             <node concept="2YIFZM" id="58MnPCMVyuQ" role="3clFbG">
                               <ref role="1Pybhc" to="btn2:~ProjectUtil" resolve="ProjectUtil" />
-                              <ref role="37wK5l" to="btn2:~ProjectUtil.closeAndDispose(com.intellij.openapi.project.Project):boolean" resolve="closeAndDispose" />
+                              <ref role="37wK5l" to="btn2:#ProjectUtil.closeAndDispose(com.intellij.openapi.project.Project):boolean" resolve="closeAndDispose" />
                               <node concept="AH0OO" id="58MnPCMV_jM" role="37wK5m">
                                 <node concept="3cmrfG" id="58MnPCMV_r$" role="AHEQo">
                                   <property role="3cmrfH" value="0" />
@@ -655,7 +655,7 @@
                     </node>
                   </node>
                   <node concept="2YIFZM" id="1_ciHgTadCX" role="37wK5m">
-                    <ref role="37wK5l" to="bd8o:~ModalityState.defaultModalityState():com.intellij.openapi.application.ModalityState" resolve="defaultModalityState" />
+                    <ref role="37wK5l" to="bd8o:#ModalityState.defaultModalityState():com.intellij.openapi.application.ModalityState" resolve="defaultModalityState" />
                     <ref role="1Pybhc" to="bd8o:~ModalityState" resolve="ModalityState" />
                   </node>
                 </node>
@@ -668,7 +668,7 @@
                   <ref role="3cqZAo" node="60oBoEfqOa" resolve="p" />
                 </node>
                 <node concept="liA8E" id="6ylsT8BG92z" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.dispose():void" resolve="dispose" />
+                  <ref role="37wK5l" to="z1c3:#Project.dispose():void" resolve="dispose" />
                 </node>
               </node>
             </node>

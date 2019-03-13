@@ -590,7 +590,7 @@
                         <node concept="10Nm6u" id="6_TW7xVkpK0" role="3uHU7w" />
                         <node concept="2OqwBi" id="6_TW7xVkpK1" role="3uHU7B">
                           <node concept="liA8E" id="5kx7ze1rHbQ" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                            <ref role="37wK5l" to="mhbf:#SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
                           </node>
                           <node concept="37vLTw" id="7OcVEq$q2YI" role="2Oq$k0">
                             <ref role="3cqZAo" node="7OcVEq$pVXg" resolve="n" />
@@ -861,7 +861,7 @@
                 <ref role="37wK5l" to="qgo0:7Jzw3XJWFQB" resolve="addNode" />
                 <node concept="2YIFZM" id="5kx7ze1rEy1" role="37wK5m">
                   <ref role="1Pybhc" to="w1kc:~CopyUtil" resolve="CopyUtil" />
-                  <ref role="37wK5l" to="w1kc:~CopyUtil.copy(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNode" resolve="copy" />
+                  <ref role="37wK5l" to="w1kc:#CopyUtil.copy(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNode" resolve="copy" />
                   <node concept="37vLTw" id="5kx7ze1rEOj" role="37wK5m">
                     <ref role="3cqZAo" node="4LU9FcrP8ZH" resolve="node" />
                     <node concept="29HgVG" id="5kx7ze1rEOk" role="lGtFl">
@@ -1003,7 +1003,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="5mdbChISiba" role="2OqNvi">
-                              <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                              <ref role="37wK5l" to="z1c3:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                             </node>
                           </node>
                           <node concept="1ZhdrF" id="5mdbChISibb" role="lGtFl">

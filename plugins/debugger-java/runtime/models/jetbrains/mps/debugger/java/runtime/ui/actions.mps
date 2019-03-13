@@ -324,11 +324,11 @@
             <node concept="2OqwBi" id="2xODT92Ze3e" role="2Oq$k0">
               <node concept="tl45R" id="7vO$jtdT51M" role="2Oq$k0" />
               <node concept="liA8E" id="2xODT92Ze3g" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
               </node>
             </node>
             <node concept="liA8E" id="2xODT92Ze3h" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean):void" resolve="setEnabled" />
+              <ref role="37wK5l" to="qkt:#Presentation.setEnabled(boolean):void" resolve="setEnabled" />
               <node concept="3y3z36" id="2xODT92Ze3i" role="37wK5m">
                 <node concept="2YIFZM" id="11vMamAMMZc" role="3uHU7B">
                   <ref role="37wK5l" to="qiil:24OxoGwU3Jh" resolve="getEvaluationProvider" />
@@ -370,11 +370,11 @@
                 <ref role="1PxDUh" to="tbzr:6ra8WUbIhqG" resolve="EvaluationUi" />
               </node>
               <node concept="liA8E" id="2xODT92Ze3s" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="2xODT92Ze3t" role="37wK5m">
                   <node concept="tl45R" id="7vO$jtdT52m" role="2Oq$k0" />
                   <node concept="liA8E" id="2xODT92Ze3v" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -433,11 +433,11 @@
             <node concept="2OqwBi" id="2xODT92Ze30" role="2Oq$k0">
               <node concept="tl45R" id="7vO$jtdT52B" role="2Oq$k0" />
               <node concept="liA8E" id="2xODT92Ze32" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
               </node>
             </node>
             <node concept="liA8E" id="2xODT92Ze33" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean):void" resolve="setEnabled" />
+              <ref role="37wK5l" to="qkt:#Presentation.setEnabled(boolean):void" resolve="setEnabled" />
               <node concept="3y3z36" id="2xODT92Ze34" role="37wK5m">
                 <node concept="2OqwBi" id="2xODT92Ze35" role="3uHU7B">
                   <node concept="10M0yZ" id="2xODT92Ze36" role="2Oq$k0">
@@ -445,11 +445,11 @@
                     <ref role="3cqZAo" to="tbzr:3liY2UJHFk" resolve="EVALUATION_CONTAINER" />
                   </node>
                   <node concept="liA8E" id="2xODT92Ze37" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                    <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                     <node concept="2OqwBi" id="2xODT92Ze38" role="37wK5m">
                       <node concept="tl45R" id="7vO$jtdT52D" role="2Oq$k0" />
                       <node concept="liA8E" id="2xODT92Ze3a" role="2OqNvi">
-                        <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                        <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                       </node>
                     </node>
                   </node>
@@ -488,11 +488,11 @@
                 <ref role="3cqZAo" to="tbzr:3liY2UJHFk" resolve="EVALUATION_CONTAINER" />
               </node>
               <node concept="liA8E" id="2xODT92YH9_" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="2xODT92YH9A" role="37wK5m">
                   <node concept="tl45R" id="7vO$jtdT532" role="2Oq$k0" />
                   <node concept="liA8E" id="2xODT92YH9C" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -511,11 +511,11 @@
                 <ref role="3cqZAo" to="tbzr:IYmOvnHhVX" resolve="DEBUG_SESSION" />
               </node>
               <node concept="liA8E" id="IYmOvnI0CA" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="IYmOvnI0CB" role="37wK5m">
                   <node concept="tl45R" id="IYmOvnI0CC" role="2Oq$k0" />
                   <node concept="liA8E" id="IYmOvnI0CD" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -574,11 +574,11 @@
             <node concept="2OqwBi" id="2xODT92YHae" role="2Oq$k0">
               <node concept="tl45R" id="7vO$jtdT53h" role="2Oq$k0" />
               <node concept="liA8E" id="2xODT92YHag" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
               </node>
             </node>
             <node concept="liA8E" id="2xODT92YHah" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.setVisible(boolean):void" resolve="setVisible" />
+              <ref role="37wK5l" to="qkt:#Presentation.setVisible(boolean):void" resolve="setVisible" />
               <node concept="1Wc70l" id="IYmOvnHXSJ" role="37wK5m">
                 <node concept="3y3z36" id="IYmOvnHZG7" role="3uHU7w">
                   <node concept="10Nm6u" id="IYmOvnHZOp" role="3uHU7w" />
@@ -588,11 +588,11 @@
                       <ref role="3cqZAo" to="tbzr:IYmOvnHhVX" resolve="DEBUG_SESSION" />
                     </node>
                     <node concept="liA8E" id="IYmOvnHY3A" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                      <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                       <node concept="2OqwBi" id="IYmOvnHY3B" role="37wK5m">
                         <node concept="tl45R" id="IYmOvnHY3C" role="2Oq$k0" />
                         <node concept="liA8E" id="IYmOvnHY3D" role="2OqNvi">
-                          <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                          <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                         </node>
                       </node>
                     </node>
@@ -605,11 +605,11 @@
                       <ref role="3cqZAo" to="tbzr:3liY2UJHFk" resolve="EVALUATION_CONTAINER" />
                     </node>
                     <node concept="liA8E" id="2xODT92YHam" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                      <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                       <node concept="2OqwBi" id="2xODT92YHan" role="37wK5m">
                         <node concept="tl45R" id="7vO$jtdT53j" role="2Oq$k0" />
                         <node concept="liA8E" id="2xODT92YHap" role="2OqNvi">
-                          <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                          <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                         </node>
                       </node>
                     </node>
@@ -663,11 +663,11 @@
                 <ref role="1PxDUh" to="choc:3SnNvqCbxfw" resolve="VariablesTree" />
               </node>
               <node concept="liA8E" id="7HIptzC9jrw" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="7HIptzC9jrx" role="37wK5m">
                   <node concept="tl45R" id="7HIptzC9jry" role="2Oq$k0" />
                   <node concept="liA8E" id="7HIptzC9jrz" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -876,11 +876,11 @@
                 <ref role="1PxDUh" to="choc:3SnNvqCbxfw" resolve="VariablesTree" />
               </node>
               <node concept="liA8E" id="7HIptzC9jqX" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="7HIptzC9jqY" role="37wK5m">
                   <node concept="tl45R" id="7HIptzC9jqZ" role="2Oq$k0" />
                   <node concept="liA8E" id="7HIptzC9jr0" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -892,11 +892,11 @@
             <node concept="2OqwBi" id="7HIptzC9jql" role="2Oq$k0">
               <node concept="tl45R" id="7HIptzC9jq4" role="2Oq$k0" />
               <node concept="liA8E" id="7HIptzC9jqr" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
               </node>
             </node>
             <node concept="liA8E" id="7HIptzC9jqM" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.setVisible(boolean):void" resolve="setVisible" />
+              <ref role="37wK5l" to="qkt:#Presentation.setVisible(boolean):void" resolve="setVisible" />
               <node concept="1Wc70l" id="PEcGPiDr9f" role="37wK5m">
                 <node concept="1Wc70l" id="7HIptzC9jrj" role="3uHU7B">
                   <node concept="3y3z36" id="ndZCfAIV4L" role="3uHU7B">
@@ -963,11 +963,11 @@
                 <ref role="1PxDUh" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
               </node>
               <node concept="liA8E" id="4fC4L_vjdh4" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="4fC4L_vjdh5" role="37wK5m">
                   <node concept="tl45R" id="4fC4L_vjdh6" role="2Oq$k0" />
                   <node concept="liA8E" id="4fC4L_vjdh7" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -991,7 +991,7 @@
               <ref role="3cqZAo" node="4fC4L_vjdh0" resolve="trowable" />
             </node>
             <node concept="liA8E" id="4fC4L_vjdhZ" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Throwable.getStackTrace():java.lang.StackTraceElement[]" resolve="getStackTrace" />
+              <ref role="37wK5l" to="wyt6:#Throwable.getStackTrace():java.lang.StackTraceElement[]" resolve="getStackTrace" />
             </node>
           </node>
         </node>
@@ -1015,7 +1015,7 @@
               <ref role="3cqZAo" node="4fC4L_vjdh0" resolve="trowable" />
             </node>
             <node concept="liA8E" id="2xODT92Zh3O" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace(java.io.PrintWriter):void" resolve="printStackTrace" />
+              <ref role="37wK5l" to="wyt6:#Throwable.printStackTrace(java.io.PrintWriter):void" resolve="printStackTrace" />
               <node concept="2ShNRf" id="2xODT92Zh3P" role="37wK5m">
                 <node concept="1pGfFk" id="2xODT92Zh3Q" role="2ShVmc">
                   <ref role="37wK5l" to="guwi:~PrintWriter.&lt;init&gt;(java.io.Writer)" resolve="PrintWriter" />
@@ -1036,7 +1036,7 @@
                 <ref role="3cqZAo" node="2xODT92Zh3H" resolve="writer" />
               </node>
               <node concept="liA8E" id="4fC4L_vjdlk" role="2OqNvi">
-                <ref role="37wK5l" to="guwi:~StringWriter.toString():java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="guwi:#StringWriter.toString():java.lang.String" resolve="toString" />
               </node>
             </node>
           </node>
@@ -1050,11 +1050,11 @@
             <node concept="2OqwBi" id="4fC4L_vjdgn" role="2Oq$k0">
               <node concept="tl45R" id="4fC4L_vjdg6" role="2Oq$k0" />
               <node concept="liA8E" id="4fC4L_vjdgs" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
               </node>
             </node>
             <node concept="liA8E" id="4fC4L_vjdgN" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.setVisible(boolean):void" resolve="setVisible" />
+              <ref role="37wK5l" to="qkt:#Presentation.setVisible(boolean):void" resolve="setVisible" />
               <node concept="3y3z36" id="4fC4L_vjdfX" role="37wK5m">
                 <node concept="10Nm6u" id="4fC4L_vjdg3" role="3uHU7w" />
                 <node concept="2OqwBi" id="4fC4L_vjdf8" role="3uHU7B">
@@ -1063,11 +1063,11 @@
                     <ref role="1PxDUh" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
                   </node>
                   <node concept="liA8E" id="4fC4L_vjdfe" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                    <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                     <node concept="2OqwBi" id="4fC4L_vjdfy" role="37wK5m">
                       <node concept="tl45R" id="4fC4L_vjdff" role="2Oq$k0" />
                       <node concept="liA8E" id="4fC4L_vjdfF" role="2OqNvi">
-                        <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                        <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                       </node>
                     </node>
                   </node>
@@ -1099,11 +1099,11 @@
                   <ref role="3cqZAo" to="choc:ndZCfAIV0g" resolve="MPS_DEBUGGER_VALUE" />
                 </node>
                 <node concept="liA8E" id="3E$bVnPdc5F" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                  <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                   <node concept="2OqwBi" id="3E$bVnPdc5G" role="37wK5m">
                     <node concept="tl45R" id="3E$bVnPdc5H" role="2Oq$k0" />
                     <node concept="liA8E" id="3E$bVnPdc5I" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                      <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                     </node>
                   </node>
                 </node>
@@ -1117,11 +1117,11 @@
                   <node concept="2OqwBi" id="3E$bVnPdc5L" role="2Oq$k0">
                     <node concept="tl45R" id="3E$bVnPdc5M" role="2Oq$k0" />
                     <node concept="liA8E" id="3E$bVnPdc5N" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                      <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3E$bVnPdc5O" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~Presentation.setVisible(boolean):void" resolve="setVisible" />
+                    <ref role="37wK5l" to="qkt:#Presentation.setVisible(boolean):void" resolve="setVisible" />
                     <node concept="3clFbT" id="3E$bVnPdj8J" role="37wK5m">
                       <property role="3clFbU" value="false" />
                     </node>
@@ -1170,11 +1170,11 @@
                   <node concept="2OqwBi" id="63zEgthY5li" role="2Oq$k0">
                     <node concept="tl45R" id="63zEgthY5lj" role="2Oq$k0" />
                     <node concept="liA8E" id="63zEgthY5lk" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                      <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
                     </node>
                   </node>
                   <node concept="liA8E" id="63zEgthY5ll" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~Presentation.setVisible(boolean):void" resolve="setVisible" />
+                    <ref role="37wK5l" to="qkt:#Presentation.setVisible(boolean):void" resolve="setVisible" />
                     <node concept="3clFbT" id="63zEgthY5lm" role="37wK5m">
                       <property role="3clFbU" value="false" />
                     </node>
@@ -1286,11 +1286,11 @@
                   <node concept="2OqwBi" id="3E$bVnPdjmn" role="2Oq$k0">
                     <node concept="tl45R" id="3E$bVnPdjmo" role="2Oq$k0" />
                     <node concept="liA8E" id="3E$bVnPdjmp" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                      <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3E$bVnPdjmq" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~Presentation.setVisible(boolean):void" resolve="setVisible" />
+                    <ref role="37wK5l" to="qkt:#Presentation.setVisible(boolean):void" resolve="setVisible" />
                     <node concept="3clFbT" id="3E$bVnPdjmr" role="37wK5m">
                       <property role="3clFbU" value="false" />
                     </node>
@@ -1354,11 +1354,11 @@
                 <ref role="1PxDUh" to="choc:3SnNvqCbxfw" resolve="VariablesTree" />
               </node>
               <node concept="liA8E" id="3x4PZFhpt9h" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="3x4PZFhpt9i" role="37wK5m">
                   <node concept="tl45R" id="3x4PZFhpt9j" role="2Oq$k0" />
                   <node concept="liA8E" id="3x4PZFhpt9k" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -1446,11 +1446,11 @@
             <node concept="2OqwBi" id="3E$bVnPdDpA" role="2Oq$k0">
               <node concept="tl45R" id="3E$bVnPdDfR" role="2Oq$k0" />
               <node concept="liA8E" id="3E$bVnPdEtD" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
               </node>
             </node>
             <node concept="liA8E" id="3E$bVnPdFzE" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.setText(java.lang.String):void" resolve="setText" />
+              <ref role="37wK5l" to="qkt:#Presentation.setText(java.lang.String):void" resolve="setText" />
               <node concept="2OqwBi" id="3E$bVnPdH00" role="37wK5m">
                 <node concept="2OqwBi" id="3E$bVnPdFzI" role="2Oq$k0">
                   <node concept="2WthIp" id="3E$bVnPdFzL" role="2Oq$k0" />
@@ -1477,11 +1477,11 @@
                 <ref role="3cqZAo" to="choc:ndZCfAIV0g" resolve="MPS_DEBUGGER_VALUE" />
               </node>
               <node concept="liA8E" id="3x4PZFhpt1u" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="3x4PZFhpt1v" role="37wK5m">
                   <node concept="tl45R" id="3x4PZFhpt1w" role="2Oq$k0" />
                   <node concept="liA8E" id="3x4PZFhpt1x" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="qkt:#AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                   </node>
                 </node>
               </node>
@@ -1493,11 +1493,11 @@
             <node concept="2OqwBi" id="3x4PZFhpt1$" role="2Oq$k0">
               <node concept="tl45R" id="3x4PZFhpt1_" role="2Oq$k0" />
               <node concept="liA8E" id="3x4PZFhpt1A" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
               </node>
             </node>
             <node concept="liA8E" id="3x4PZFhpt1B" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.setVisible(boolean):void" resolve="setVisible" />
+              <ref role="37wK5l" to="qkt:#Presentation.setVisible(boolean):void" resolve="setVisible" />
               <node concept="1Wc70l" id="3x4PZFhpt1C" role="37wK5m">
                 <node concept="1Wc70l" id="3x4PZFhpt1D" role="3uHU7B">
                   <node concept="3y3z36" id="3x4PZFhpt1E" role="3uHU7B">

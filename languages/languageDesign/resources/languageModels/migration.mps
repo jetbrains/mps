@@ -288,7 +288,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="2p1v3tOaNqZ" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
+                            <ref role="37wK5l" to="mhbf:#SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
                             <node concept="355D3s" id="2p1v3tOaNzi" role="37wK5m">
                               <ref role="355D3t" to="1oap:7Mb2akaesra" resolve="Resource" />
                               <ref role="355D3u" to="1oap:7Mb2akaesrb" resolve="path" />

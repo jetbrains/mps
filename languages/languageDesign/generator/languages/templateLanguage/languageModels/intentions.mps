@@ -28,7 +28,6 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="75ov" ref="r:cdd4fc54-626c-4040-b1f7-5bc8bfd2ee53(jetbrains.mps.lang.generator.helper)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" />
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tpfj" ref="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)" implicit="true" />
@@ -299,6 +298,7 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="8866923313515890008" name="jetbrains.mps.lang.smodel.structure.AsNodeOperation" flags="nn" index="FGMqu" />
+      <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1143235216708" name="jetbrains.mps.lang.smodel.structure.Model_CreateNewNodeOperation" flags="nn" index="I8ghe">
         <reference id="1143235391024" name="concept" index="I8UWU" />
@@ -326,7 +326,6 @@
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1171500988903" name="jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation" flags="nn" index="32TBzR" />
       <concept id="1205861725686" name="jetbrains.mps.lang.smodel.structure.Node_IsAttributeOperation" flags="nn" index="32XrjI" />
-      <concept id="6995935425733782641" name="jetbrains.mps.lang.smodel.structure.Model_GetModule" flags="nn" index="13u695" />
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
@@ -2823,8 +2822,8 @@
               <property role="Xl_RC" value="Add IF macro for node." />
             </node>
             <node concept="2YIFZM" id="5U$CurGiIKV" role="3uHU7w">
-              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentaion" />
               <ref role="1Pybhc" node="1HXMiUdobK3" resolve="MacroIntentionsUtil" />
+              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentation" />
               <node concept="38Zlrr" id="5U$CurGiIKW" role="37wK5m" />
             </node>
           </node>
@@ -4019,8 +4018,8 @@
         <node concept="3clFbF" id="1Q7lWNZfMkr" role="3cqZAp">
           <node concept="3cpWs3" id="1Q7lWNZfMks" role="3clFbG">
             <node concept="2YIFZM" id="5U$CurGiERu" role="3uHU7w">
-              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentaion" />
               <ref role="1Pybhc" node="1HXMiUdobK3" resolve="MacroIntentionsUtil" />
+              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentation" />
               <node concept="38Zlrr" id="5U$CurGiFkS" role="37wK5m" />
             </node>
             <node concept="Xl_RD" id="1Q7lWNZfMkw" role="3uHU7B">
@@ -4334,8 +4333,8 @@
               <property role="Xl_RC" value="Apply COPY__SRCL over node." />
             </node>
             <node concept="2YIFZM" id="5U$CurGiIgK" role="3uHU7w">
-              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentaion" />
               <ref role="1Pybhc" node="1HXMiUdobK3" resolve="MacroIntentionsUtil" />
+              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentation" />
               <node concept="38Zlrr" id="5U$CurGiIgL" role="37wK5m" />
             </node>
           </node>
@@ -4646,8 +4645,8 @@
               <property role="Xl_RC" value="Add LOOP macro over node." />
             </node>
             <node concept="2YIFZM" id="5U$CurGiKDU" role="3uHU7w">
-              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentaion" />
               <ref role="1Pybhc" node="1HXMiUdobK3" resolve="MacroIntentionsUtil" />
+              <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentation" />
               <node concept="38Zlrr" id="5U$CurGiKDV" role="37wK5m" />
             </node>
           </node>
@@ -5505,7 +5504,7 @@
       </node>
     </node>
     <node concept="2YIFZL" id="5U$CurGilHS" role="jymVt">
-      <property role="TrG5h" value="getPresentaion" />
+      <property role="TrG5h" value="getPresentation" />
       <node concept="17QB3L" id="5U$CurGilSo" role="3clF45" />
       <node concept="3Tm1VV" id="5U$CurGilHV" role="1B3o_S" />
       <node concept="3clFbS" id="5U$CurGilHW" role="3clF47">
@@ -5615,21 +5614,40 @@
       <property role="od$2w" value="false" />
       <property role="TrG5h" value="isInGeneratorModel" />
       <node concept="3clFbS" id="6DGMsbSoqBA" role="3clF47">
-        <node concept="3cpWs6" id="6DGMsbSFN62" role="3cqZAp">
-          <node concept="2OqwBi" id="6DGMsbSFU36" role="3cqZAk">
-            <node concept="2OqwBi" id="6DGMsbSFS5n" role="2Oq$k0">
-              <node concept="2OqwBi" id="6DGMsbSFOQm" role="2Oq$k0">
-                <node concept="37vLTw" id="6DGMsbSFOND" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6DGMsbSoqCg" resolve="node" />
-                </node>
-                <node concept="I4A8Y" id="6DGMsbSFQtn" role="2OqNvi" />
+        <node concept="3cpWs8" id="5Ag6JGBIFUO" role="3cqZAp">
+          <node concept="3cpWsn" id="5Ag6JGBIFUP" role="3cpWs9">
+            <property role="TrG5h" value="model" />
+            <node concept="H_c77" id="5Ag6JGBIFUL" role="1tU5fm" />
+            <node concept="2OqwBi" id="5Ag6JGBIFUQ" role="33vP2m">
+              <node concept="37vLTw" id="5Ag6JGBIFUR" role="2Oq$k0">
+                <ref role="3cqZAo" node="6DGMsbSoqCg" resolve="node" />
               </node>
-              <node concept="13u695" id="6DGMsbSFSwo" role="2OqNvi" />
+              <node concept="I4A8Y" id="5Ag6JGBIFUS" role="2OqNvi" />
             </node>
-            <node concept="1mIQ4w" id="6DGMsbSFVkE" role="2OqNvi">
-              <node concept="chp4Y" id="6DGMsbSGfeS" role="cj9EA">
-                <ref role="cht4Q" to="hypd:5xDtKQA7vSx" resolve="Generator" />
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6DGMsbSFN62" role="3cqZAp">
+          <node concept="1Wc70l" id="5Ag6JGBIJjD" role="3cqZAk">
+            <node concept="2ZW3vV" id="5Ag6JGBIL9u" role="3uHU7w">
+              <node concept="3uibUv" id="5Ag6JGBILio" role="2ZW6by">
+                <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
               </node>
+              <node concept="2OqwBi" id="5Ag6JGBIJEH" role="2ZW6bz">
+                <node concept="2JrnkZ" id="5Ag6JGBIKJZ" role="2Oq$k0">
+                  <node concept="37vLTw" id="5Ag6JGBIJrU" role="2JrQYb">
+                    <ref role="3cqZAo" node="5Ag6JGBIFUP" resolve="model" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5Ag6JGBIKWy" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                </node>
+              </node>
+            </node>
+            <node concept="3y3z36" id="5Ag6JGBIJ9S" role="3uHU7B">
+              <node concept="37vLTw" id="5Ag6JGBIIVm" role="3uHU7B">
+                <ref role="3cqZAo" node="5Ag6JGBIFUP" resolve="model" />
+              </node>
+              <node concept="10Nm6u" id="5Ag6JGBIJgy" role="3uHU7w" />
             </node>
           </node>
         </node>
@@ -7017,8 +7035,8 @@
                 <property role="Xl_RC" value="Invoke " />
               </node>
               <node concept="2YIFZM" id="5U$CurGiM4Q" role="3uHU7w">
-                <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentaion" />
                 <ref role="1Pybhc" node="1HXMiUdobK3" resolve="MacroIntentionsUtil" />
+                <ref role="37wK5l" node="5U$CurGilHS" resolve="getPresentation" />
                 <node concept="38Zlrr" id="5U$CurGiM4R" role="37wK5m" />
               </node>
             </node>

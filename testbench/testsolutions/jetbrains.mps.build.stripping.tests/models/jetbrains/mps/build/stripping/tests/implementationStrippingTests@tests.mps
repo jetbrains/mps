@@ -229,10 +229,10 @@
           <node concept="2OqwBi" id="14TMHtHs1TS" role="33vP2m">
             <node concept="2YIFZM" id="14TMHtHs1TT" role="2Oq$k0">
               <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
-              <ref role="37wK5l" to="exr9:~EditorSettings.getInstance():jetbrains.mps.nodeEditor.EditorSettings" resolve="getInstance" />
+              <ref role="37wK5l" to="exr9:#EditorSettings.getInstance():jetbrains.mps.nodeEditor.EditorSettings" resolve="getInstance" />
             </node>
             <node concept="liA8E" id="14TMHtHs1TU" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorSettings.isUseTwoStepDeletion():boolean" resolve="isUseTwoStepDeletion" />
+              <ref role="37wK5l" to="exr9:#EditorSettings.isUseTwoStepDeletion():boolean" resolve="isUseTwoStepDeletion" />
             </node>
           </node>
         </node>
@@ -241,10 +241,10 @@
         <node concept="2OqwBi" id="14TMHtHs1TW" role="3clFbG">
           <node concept="2YIFZM" id="14TMHtHs1TX" role="2Oq$k0">
             <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
-            <ref role="37wK5l" to="exr9:~EditorSettings.getInstance():jetbrains.mps.nodeEditor.EditorSettings" resolve="getInstance" />
+            <ref role="37wK5l" to="exr9:#EditorSettings.getInstance():jetbrains.mps.nodeEditor.EditorSettings" resolve="getInstance" />
           </node>
           <node concept="liA8E" id="14TMHtHs1TY" role="2OqNvi">
-            <ref role="37wK5l" to="exr9:~EditorSettings.setUseTwoStepDeletion(boolean):void" resolve="setUseTwoStepDeletion" />
+            <ref role="37wK5l" to="exr9:#EditorSettings.setUseTwoStepDeletion(boolean):void" resolve="setUseTwoStepDeletion" />
             <node concept="3clFbT" id="14TMHtIgClG" role="37wK5m">
               <property role="3clFbU" value="false" />
             </node>
@@ -264,10 +264,10 @@
             <node concept="2OqwBi" id="14TMHtHs1U6" role="3clFbG">
               <node concept="2YIFZM" id="14TMHtHs1U7" role="2Oq$k0">
                 <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
-                <ref role="37wK5l" to="exr9:~EditorSettings.getInstance():jetbrains.mps.nodeEditor.EditorSettings" resolve="getInstance" />
+                <ref role="37wK5l" to="exr9:#EditorSettings.getInstance():jetbrains.mps.nodeEditor.EditorSettings" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="14TMHtHs1U8" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorSettings.setUseTwoStepDeletion(boolean):void" resolve="setUseTwoStepDeletion" />
+                <ref role="37wK5l" to="exr9:#EditorSettings.setUseTwoStepDeletion(boolean):void" resolve="setUseTwoStepDeletion" />
                 <node concept="37vLTw" id="14TMHtHs1U9" role="37wK5m">
                   <ref role="3cqZAo" node="14TMHtHs1TQ" resolve="twoStepDeletionSettings" />
                 </node>

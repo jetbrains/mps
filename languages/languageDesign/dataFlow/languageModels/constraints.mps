@@ -230,7 +230,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="2$3McZ0UixE" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                        <ref role="37wK5l" to="c17a:#SAbstractConcept.getName():java.lang.String" resolve="getName" />
                       </node>
                     </node>
                     <node concept="Xl_RD" id="5qKdWqHVUQx" role="3uHU7B">

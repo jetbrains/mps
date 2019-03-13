@@ -376,11 +376,11 @@
             </node>
             <node concept="2OqwBi" id="20Jj4S2CvVu" role="33vP2m">
               <node concept="2YIFZM" id="20Jj4S2CvVv" role="2Oq$k0">
-                <ref role="37wK5l" to="qkt:~ActionManager.getInstance():com.intellij.openapi.actionSystem.ActionManager" resolve="getInstance" />
+                <ref role="37wK5l" to="qkt:#ActionManager.getInstance():com.intellij.openapi.actionSystem.ActionManager" resolve="getInstance" />
                 <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
               </node>
               <node concept="liA8E" id="20Jj4S2CvVw" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~ActionManager.getAction(java.lang.String):com.intellij.openapi.actionSystem.AnAction" resolve="getAction" />
+                <ref role="37wK5l" to="qkt:#ActionManager.getAction(java.lang.String):com.intellij.openapi.actionSystem.AnAction" resolve="getAction" />
                 <node concept="37vLTw" id="20Jj4S2CvVx" role="37wK5m">
                   <ref role="3cqZAo" node="20Jj4S2CjgE" resolve="myActionId" />
                 </node>
@@ -586,7 +586,7 @@
                 <ref role="3cqZAo" node="5UD30_PS2ba" resolve="_context" />
               </node>
               <node concept="liA8E" id="5UD30_PS2bW" role="2OqNvi">
-                <ref role="37wK5l" to="uddc:~TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+                <ref role="37wK5l" to="uddc:#TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
               </node>
             </node>
           </node>
@@ -617,14 +617,14 @@
                 <ref role="3cqZAo" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
               </node>
               <node concept="liA8E" id="5UD30_PS2c8" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
                 <node concept="2OqwBi" id="5UD30_PS2c9" role="37wK5m">
                   <node concept="2YIFZM" id="5UD30_PS2ca" role="2Oq$k0">
-                    <ref role="37wK5l" to="ddhc:~DataManager.getInstance():com.intellij.ide.DataManager" resolve="getInstance" />
+                    <ref role="37wK5l" to="ddhc:#DataManager.getInstance():com.intellij.ide.DataManager" resolve="getInstance" />
                     <ref role="1Pybhc" to="ddhc:~DataManager" resolve="DataManager" />
                   </node>
                   <node concept="liA8E" id="5UD30_PS2cb" role="2OqNvi">
-                    <ref role="37wK5l" to="ddhc:~DataManager.getDataContext(java.awt.Component):com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                    <ref role="37wK5l" to="ddhc:#DataManager.getDataContext(java.awt.Component):com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                     <node concept="10QFUN" id="5UD30_PS2cc" role="37wK5m">
                       <node concept="3uibUv" id="5UD30_PS2cd" role="10QFUM">
                         <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
@@ -635,11 +635,11 @@
                             <ref role="3cqZAo" node="5UD30_PS2ba" resolve="_context" />
                           </node>
                           <node concept="liA8E" id="5UD30_PS2ch" role="2OqNvi">
-                            <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
+                            <ref role="37wK5l" to="uddc:#TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
                           </node>
                         </node>
                         <node concept="liA8E" id="5UD30_PS2ci" role="2OqNvi">
-                          <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
+                          <ref role="37wK5l" to="cj4x:#EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
                         </node>
                       </node>
                     </node>
@@ -664,18 +664,18 @@
               </node>
               <node concept="2YIFZM" id="5UD30_PS2cp" role="37wK5m">
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+                <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
               </node>
               <node concept="2YIFZM" id="5UD30_PS2cq" role="37wK5m">
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+                <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
               </node>
               <node concept="2OqwBi" id="5UD30_PS2cr" role="37wK5m">
                 <node concept="37vLTw" id="5UD30_PS2cs" role="2Oq$k0">
                   <ref role="3cqZAo" node="5UD30_PS2ba" resolve="_context" />
                 </node>
                 <node concept="liA8E" id="5UD30_PS2ct" role="2OqNvi">
-                  <ref role="37wK5l" to="uddc:~TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+                  <ref role="37wK5l" to="uddc:#TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
                 </node>
               </node>
               <node concept="37vLTw" id="5UD30_PS2cu" role="37wK5m">
@@ -778,7 +778,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="7GARn1zPCVb" role="3K4E3e">
-                <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                 <node concept="37vLTw" id="7GARn1zPCVc" role="37wK5m">
                   <ref role="3cqZAo" node="7GARn1zPCVm" resolve="node" />
@@ -915,11 +915,11 @@
                 <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
               </node>
               <node concept="liA8E" id="20Jj4S2Ckry" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnAction.getTemplatePresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getTemplatePresentation" />
+                <ref role="37wK5l" to="qkt:#AnAction.getTemplatePresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getTemplatePresentation" />
               </node>
             </node>
             <node concept="liA8E" id="20Jj4S2Ck_P" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.getText():java.lang.String" resolve="getText" />
+              <ref role="37wK5l" to="qkt:#Presentation.getText():java.lang.String" resolve="getText" />
             </node>
           </node>
         </node>
@@ -952,7 +952,7 @@
               <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
             </node>
             <node concept="liA8E" id="7GARn1zPoHW" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent):void" resolve="update" />
+              <ref role="37wK5l" to="qkt:#AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent):void" resolve="update" />
               <node concept="1rXfSq" id="7GARn1zPpkE" role="37wK5m">
                 <ref role="37wK5l" node="7GARn1zPoLr" resolve="createAnActionEventWithTemplatePresentation" />
               </node>
@@ -966,11 +966,11 @@
                 <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
               </node>
               <node concept="liA8E" id="7GARn1zPpOL" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnAction.getTemplatePresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getTemplatePresentation" />
+                <ref role="37wK5l" to="qkt:#AnAction.getTemplatePresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getTemplatePresentation" />
               </node>
             </node>
             <node concept="liA8E" id="7GARn1zPq2i" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~Presentation.isEnabled():boolean" resolve="isEnabled" />
+              <ref role="37wK5l" to="qkt:#Presentation.isEnabled():boolean" resolve="isEnabled" />
             </node>
           </node>
         </node>
@@ -1001,7 +1001,7 @@
               <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
             </node>
             <node concept="liA8E" id="20Jj4S2CvmU" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent):void" resolve="actionPerformed" />
+              <ref role="37wK5l" to="qkt:#AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent):void" resolve="actionPerformed" />
               <node concept="1rXfSq" id="7GARn1zPpdp" role="37wK5m">
                 <ref role="37wK5l" node="7GARn1zPoLr" resolve="createAnActionEventWithTemplatePresentation" />
               </node>
@@ -1029,11 +1029,11 @@
             </node>
             <node concept="2OqwBi" id="7GARn1zPoL0" role="33vP2m">
               <node concept="2YIFZM" id="7GARn1zPoL1" role="2Oq$k0">
-                <ref role="37wK5l" to="ddhc:~DataManager.getInstance():com.intellij.ide.DataManager" resolve="getInstance" />
+                <ref role="37wK5l" to="ddhc:#DataManager.getInstance():com.intellij.ide.DataManager" resolve="getInstance" />
                 <ref role="1Pybhc" to="ddhc:~DataManager" resolve="DataManager" />
               </node>
               <node concept="liA8E" id="7GARn1zPoL2" role="2OqNvi">
-                <ref role="37wK5l" to="ddhc:~DataManager.getDataContext(java.awt.Component):com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                <ref role="37wK5l" to="ddhc:#DataManager.getDataContext(java.awt.Component):com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
                 <node concept="10QFUN" id="7GARn1zPoL3" role="37wK5m">
                   <node concept="3uibUv" id="7GARn1zPoL4" role="10QFUM">
                     <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
@@ -1044,11 +1044,11 @@
                         <ref role="3cqZAo" node="20Jj4S2CjL6" resolve="_context" />
                       </node>
                       <node concept="liA8E" id="7GARn1zPoL8" role="2OqNvi">
-                        <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="uddc:#TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="7GARn1zPoL9" role="2OqNvi">
-                      <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
+                      <ref role="37wK5l" to="cj4x:#EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
                     </node>
                   </node>
                 </node>
@@ -1073,11 +1073,11 @@
                   <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
                 </node>
                 <node concept="liA8E" id="7GARn1zPoLk" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~AnAction.getTemplatePresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getTemplatePresentation" />
+                  <ref role="37wK5l" to="qkt:#AnAction.getTemplatePresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getTemplatePresentation" />
                 </node>
               </node>
               <node concept="2YIFZM" id="7GARn1zPoLl" role="37wK5m">
-                <ref role="37wK5l" to="qkt:~ActionManager.getInstance():com.intellij.openapi.actionSystem.ActionManager" resolve="getInstance" />
+                <ref role="37wK5l" to="qkt:#ActionManager.getInstance():com.intellij.openapi.actionSystem.ActionManager" resolve="getInstance" />
                 <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
               </node>
               <node concept="3cmrfG" id="7GARn1zPoLm" role="37wK5m">
@@ -1159,17 +1159,17 @@
             </node>
             <node concept="2OqwBi" id="E4JlmYmYPg" role="33vP2m">
               <node concept="2YIFZM" id="E4JlmYmYPh" role="2Oq$k0">
-                <ref role="37wK5l" to="91lp:~IntentionsManager.getInstance():jetbrains.mps.intentions.IntentionsManager" resolve="getInstance" />
+                <ref role="37wK5l" to="91lp:#IntentionsManager.getInstance():jetbrains.mps.intentions.IntentionsManager" resolve="getInstance" />
                 <ref role="1Pybhc" to="91lp:~IntentionsManager" resolve="IntentionsManager" />
               </node>
               <node concept="liA8E" id="E4JlmYmYPi" role="2OqNvi">
-                <ref role="37wK5l" to="91lp:~IntentionsManager.getIntentionsById(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.EditorContext,java.lang.String):java.util.List" resolve="getIntentionsById" />
+                <ref role="37wK5l" to="91lp:#IntentionsManager.getIntentionsById(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.EditorContext,java.lang.String):java.util.List" resolve="getIntentionsById" />
                 <node concept="2OqwBi" id="E4JlmYmYPj" role="37wK5m">
                   <node concept="37vLTw" id="E4JlmYmYPk" role="2Oq$k0">
                     <ref role="3cqZAo" node="E4JlmYmYP9" resolve="context" />
                   </node>
                   <node concept="liA8E" id="E4JlmYmYPl" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+                    <ref role="37wK5l" to="uddc:#TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="E4JlmYmYPm" role="37wK5m">
@@ -1177,7 +1177,7 @@
                     <ref role="3cqZAo" node="E4JlmYmYP9" resolve="context" />
                   </node>
                   <node concept="liA8E" id="E4JlmYmYPo" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
+                    <ref role="37wK5l" to="uddc:#TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="E4JlmYmYPp" role="37wK5m">
@@ -1234,7 +1234,7 @@
                       <ref role="3cqZAo" node="E4JlmYmYPs" resolve="result" />
                     </node>
                     <node concept="liA8E" id="E4JlmYmYPJ" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+                      <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
                       <node concept="37vLTw" id="E4JlmYmYPK" role="37wK5m">
                         <ref role="3cqZAo" node="E4JlmYmYP_" resolve="item" />
                       </node>
@@ -1379,13 +1379,13 @@
                 <ref role="3cqZAo" node="E4JlmYmYQa" resolve="myExecutable" />
               </node>
               <node concept="liA8E" id="E4JlmYmYQA" role="2OqNvi">
-                <ref role="37wK5l" to="nddn:~IntentionExecutable.getDescription(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.EditorContext):java.lang.String" resolve="getDescription" />
+                <ref role="37wK5l" to="nddn:#IntentionExecutable.getDescription(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.EditorContext):java.lang.String" resolve="getDescription" />
                 <node concept="2OqwBi" id="E4JlmYmYQB" role="37wK5m">
                   <node concept="37vLTw" id="E4JlmYmYQC" role="2Oq$k0">
                     <ref role="3cqZAo" node="E4JlmYmYQ7" resolve="_context" />
                   </node>
                   <node concept="liA8E" id="E4JlmYmYQD" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+                    <ref role="37wK5l" to="uddc:#TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="E4JlmYmYQE" role="37wK5m">
@@ -1393,7 +1393,7 @@
                     <ref role="3cqZAo" node="E4JlmYmYQ7" resolve="_context" />
                   </node>
                   <node concept="liA8E" id="E4JlmYmYQG" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
+                    <ref role="37wK5l" to="uddc:#TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
                   </node>
                 </node>
               </node>
@@ -1429,13 +1429,13 @@
                 <ref role="3cqZAo" node="E4JlmYmYQa" resolve="myExecutable" />
               </node>
               <node concept="liA8E" id="E4JlmYmYQU" role="2OqNvi">
-                <ref role="37wK5l" to="nddn:~IntentionExecutable.execute(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.EditorContext):void" resolve="execute" />
+                <ref role="37wK5l" to="nddn:#IntentionExecutable.execute(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.EditorContext):void" resolve="execute" />
                 <node concept="2OqwBi" id="E4JlmYmYQV" role="37wK5m">
                   <node concept="37vLTw" id="E4JlmYmYQW" role="2Oq$k0">
                     <ref role="3cqZAo" node="E4JlmYmYQ7" resolve="_context" />
                   </node>
                   <node concept="liA8E" id="E4JlmYmYQX" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+                    <ref role="37wK5l" to="uddc:#TransformationMenuContext.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="E4JlmYmYQY" role="37wK5m">
@@ -1443,7 +1443,7 @@
                     <ref role="3cqZAo" node="E4JlmYmYQ7" resolve="_context" />
                   </node>
                   <node concept="liA8E" id="E4JlmYmYR0" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
+                    <ref role="37wK5l" to="uddc:#TransformationMenuContext.getEditorContext():jetbrains.mps.openapi.editor.EditorContext" resolve="getEditorContext" />
                   </node>
                 </node>
               </node>

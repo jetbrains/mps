@@ -988,7 +988,7 @@
                 <node concept="3clFbF" id="64wWIxoT1e$" role="3cqZAp">
                   <node concept="2YIFZM" id="64wWIxoT1e_" role="3clFbG">
                     <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                    <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
                     <node concept="2ShNRf" id="64wWIxoT1eA" role="37wK5m">
                       <node concept="3g6Rrh" id="64wWIxoT1eB" role="2ShVmc">
                         <node concept="17QB3L" id="64wWIxoT1eC" role="3g7fb8" />
@@ -1030,7 +1030,7 @@
               <node concept="3clFbS" id="64wWIxoTqTb" role="2VODD2">
                 <node concept="3clFbF" id="64wWIxoTqTc" role="3cqZAp">
                   <node concept="2YIFZM" id="64wWIxoTqTd" role="3clFbG">
-                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                    <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
                     <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                     <node concept="2ShNRf" id="64wWIxoTqTe" role="37wK5m">
                       <node concept="3g6Rrh" id="64wWIxoTqTf" role="2ShVmc">

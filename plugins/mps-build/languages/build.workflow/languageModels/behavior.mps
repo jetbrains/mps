@@ -396,7 +396,7 @@
         <node concept="3cpWs6" id="3Par5_LaJ79" role="3cqZAp">
           <node concept="2YIFZM" id="1Mjrj7j48B8" role="3cqZAk">
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-            <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+            <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
             <node concept="2ShNRf" id="1Mjrj7j48_F" role="37wK5m">
               <node concept="3g6Rrh" id="1Mjrj7j48A5" role="2ShVmc">
                 <node concept="17QB3L" id="1Mjrj7j48_K" role="3g7fb8" />
@@ -486,7 +486,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3Par5_LaUot" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                     <node concept="Xl_RD" id="3Par5_LaUou" role="37wK5m">
                       <property role="Xl_RC" value="modern" />
                     </node>
@@ -512,7 +512,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="3Par5_LaHIR" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                       <node concept="Xl_RD" id="3Par5_LaHIS" role="37wK5m">
                         <property role="Xl_RC" value="IntelliJ" />
                       </node>
@@ -1184,7 +1184,7 @@
               <ref role="3cqZAo" node="2U15YDCRlW2" resolve="queue" />
             </node>
             <node concept="liA8E" id="2U15YDCRq$P" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~ArrayDeque.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:#ArrayDeque.add(java.lang.Object):boolean" resolve="add" />
               <node concept="13iPFW" id="2U15YDCRqIE" role="37wK5m" />
             </node>
           </node>
@@ -1202,7 +1202,7 @@
                     <ref role="3cqZAo" node="2U15YDCRlW2" resolve="queue" />
                   </node>
                   <node concept="liA8E" id="2U15YDCR_tb" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~ArrayDeque.removeFirst():java.lang.Object" resolve="removeFirst" />
+                    <ref role="37wK5l" to="33ny:#ArrayDeque.removeFirst():java.lang.Object" resolve="removeFirst" />
                   </node>
                 </node>
               </node>
@@ -1245,7 +1245,7 @@
                           <ref role="3cqZAo" node="2U15YDCRlW2" resolve="queue" />
                         </node>
                         <node concept="liA8E" id="2U15YDCRONd" role="2OqNvi">
-                          <ref role="37wK5l" to="33ny:~ArrayDeque.addLast(java.lang.Object):void" resolve="addLast" />
+                          <ref role="37wK5l" to="33ny:#ArrayDeque.addLast(java.lang.Object):void" resolve="addLast" />
                           <node concept="37vLTw" id="2U15YDCROVJ" role="37wK5m">
                             <ref role="3cqZAo" node="2U15YDCRGh3" resolve="targetLib" />
                           </node>
@@ -1289,7 +1289,7 @@
                 <ref role="3cqZAo" node="2U15YDCRlW2" resolve="queue" />
               </node>
               <node concept="liA8E" id="2U15YDCRv38" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~ArrayDeque.isEmpty():boolean" resolve="isEmpty" />
+                <ref role="37wK5l" to="33ny:#ArrayDeque.isEmpty():boolean" resolve="isEmpty" />
               </node>
             </node>
           </node>

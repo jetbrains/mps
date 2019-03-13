@@ -80,10 +80,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@State(
-    name = "MPSProjectPane",
-    storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
-)
 public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectViewPaneOverride {
   private static final Logger LOG = LogManager.getLogger(ProjectPane.class);
   private final SRepositoryListenerBase myRepositoryListener = new SRepositoryListenerBase() {

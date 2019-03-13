@@ -127,7 +127,7 @@
       </node>
       <node concept="2YIFZM" id="4XBaoL6cIx3" role="33vP2m">
         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.String):org.apache.log4j.Logger" resolve="getLogger" />
+        <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.String):org.apache.log4j.Logger" resolve="getLogger" />
         <node concept="37vLTw" id="4XBaoL6doXf" role="37wK5m">
           <ref role="3cqZAo" node="4XBaoL6doLm" resolve="MSG_VIEW_TOKEN" />
         </node>
@@ -143,14 +143,14 @@
         <node concept="3clFbF" id="4XBaoL6deaw" role="3cqZAp">
           <node concept="2OqwBi" id="4XBaoL6dejm" role="3clFbG">
             <node concept="2YIFZM" id="4XBaoL6deb3" role="2Oq$k0">
-              <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+              <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
               <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
               <node concept="37vLTw" id="4XBaoL6debx" role="37wK5m">
                 <ref role="3cqZAo" node="1KXtTGFRwGl" resolve="sender" />
               </node>
             </node>
             <node concept="liA8E" id="4XBaoL6dex8" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.log(org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable):void" resolve="log" />
+              <ref role="37wK5l" to="q7tw:#Category.log(org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable):void" resolve="log" />
               <node concept="37vLTw" id="4XBaoL6deIE" role="37wK5m">
                 <ref role="3cqZAo" node="1KXtTGFRwGg" resolve="level" />
               </node>
@@ -243,7 +243,7 @@
                     <ref role="3cqZAo" node="1N_0P$wXk53" resolve="msg" />
                   </node>
                   <node concept="liA8E" id="5X1zr0$GAvU" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                    <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
                   </node>
                 </node>
                 <node concept="10Nm6u" id="1N_0P$wXsLW" role="37wK5m" />
@@ -252,7 +252,7 @@
                     <ref role="3cqZAo" node="1N_0P$wXk55" resolve="sender" />
                   </node>
                   <node concept="liA8E" id="1N_0P$wXtei" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Class.toString():java.lang.String" resolve="toString" />
+                    <ref role="37wK5l" to="wyt6:#Class.toString():java.lang.String" resolve="toString" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="1N_0P$wXsZk" role="37wK5m">
@@ -268,7 +268,7 @@
               <ref role="3cqZAo" node="4XBaoL6cIrj" resolve="MSG_VIEW_LOG" />
             </node>
             <node concept="liA8E" id="1N_0P$wXk4U" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.log(org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable):void" resolve="log" />
+              <ref role="37wK5l" to="q7tw:#Category.log(org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable):void" resolve="log" />
               <node concept="37vLTw" id="1N_0P$wXk4V" role="37wK5m">
                 <ref role="3cqZAo" node="1N_0P$wXk50" resolve="level" />
               </node>

@@ -30,8 +30,9 @@ public class ModuleNameUtil {
   }
 
   public static String getModuleShortName(SModule module) {
-    String moduleUID = module.getModuleName();
-    String shortName = NameUtil.shortNameFromLongName(moduleUID);
+    String moduleName = module.getModuleName();
+    int sharp = moduleName.indexOf('#');
+    String shortName = NameUtil.shortNameFromLongName((sharp > 0 ? moduleName.substring(0, sharp) : moduleName));
     String normalShortName = NameUtil.toValidIdentifier(shortName);
     return NameUtil.capitalize(normalShortName);
   }

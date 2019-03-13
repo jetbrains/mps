@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.core.platform.Platform;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.generator.GenerationSettingsProvider;
@@ -17,6 +16,12 @@ import jetbrains.mps.classloading.DumbIdeaPluginFacet;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.library.LibraryInitializer;
+import java.util.List;
+import jetbrains.mps.library.contributor.LibraryContributor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import java.io.File;
 import jetbrains.mps.core.tool.environment.util.FileMPSProject;
@@ -25,6 +30,8 @@ import jetbrains.mps.util.FileUtil;
 public final class MpsEnvironment extends EnvironmentBase {
   private static final Logger LOG = LogManager.getLogger(MpsEnvironment.class);
   private Platform myPlatform;
+  private PlatformPlugins myPlugins;
+
 
   static {
     EnvironmentBase.initializeLog4j();
@@ -34,28 +41,6 @@ public final class MpsEnvironment extends EnvironmentBase {
     super(config);
   }
 
-  /**
-   * creates a new MpsEnvironment or returns the cached one
-   * 
-   * @deprecated Code that needs access to functionality of an Environment shall get its value configured from outside and not attempt to create one. The code that starts an environment doesn't need to re-use a cached instance.
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public static Environment getOrCreate(@NotNull EnvironmentConfig config) {
-    Environment currentEnv = EnvironmentContainer.get();
-    if (currentEnv != null) {
-      currentEnv.retain();
-      return currentEnv;
-    } else {
-      MpsEnvironment mpsEnv = new MpsEnvironment(config);
-      mpsEnv.init();
-      EnvironmentContainer.setCurrent(mpsEnv);
-      assert EnvironmentContainer.get() == mpsEnv;
-      return mpsEnv;
-    }
-  }
-
   public void init() {
     if (LOG.isInfoEnabled()) {
       LOG.info("Creating MPS environment");
@@ -63,6 +48,7 @@ public final class MpsEnvironment extends EnvironmentBase {
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
 
     myPlatform.findComponent(GenerationSettingsProvider.class).setGenerationSettings(new DefaultModifiableGenerationSettings());
+    myPlugins = new PlatformPlugins(myConfig);
     registerFacetFactory(myPlatform.findComponent(FacetsRegistry.class));
     super.init(myPlatform);
   }
@@ -79,13 +65,33 @@ public final class MpsEnvironment extends EnvironmentBase {
           @Override
           @Nullable
           public ClassLoader getClassLoader() {
-            return getRootClassLoader();
+            ClassLoader cl = myPlugins.pluginClassLoader(getPluginId());
+            return (cl == null ? getRootClassLoader() : cl);
           }
         };
         rv.setModule(module);
         return rv;
       }
     });
+  }
+
+
+  @Override
+  protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
+    // can do it only here as root CL is initialized in super.init(). Once I get rid of its uses in IdeaEnvironment, 
+    // can move the field here and init CLs along with field initialization 
+    myPlugins.buildClassLoaders(getRootClassLoader());
+    final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
+    LibraryContributorHelper helper = new LibraryContributorHelper();
+    if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
+      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader()));
+    }
+    // FIXME at the moment, we always build CP for a plugin, despite the fact it could be in a global CP already 
+    //       need to respect global CP scenario and to use rootCL as plugin CL directly in that case 
+    if (!(myPlugins.isEmpty())) {
+      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForPlugins(myPlugins));
+    }
+    libInitializer.load(libContribs);
   }
 
   @Override

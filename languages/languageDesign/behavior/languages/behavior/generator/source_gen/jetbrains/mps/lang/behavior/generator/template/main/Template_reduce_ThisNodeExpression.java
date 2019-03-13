@@ -61,7 +61,7 @@ public class Template_reduce_ThisNodeExpression extends TemplateDeclarationBase 
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
           try {
-            tnode4.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode4, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~SAbstractConcept.getDeclarationNode():org.jetbrains.mps.openapi.model.SNode")));
+            tnode4.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode4, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("#SAbstractConcept.getDeclarationNode():org.jetbrains.mps.openapi.model.SNode")));
           } finally {
           }
           tnode2.addChild(myAggregationLinks[1], tnode4);

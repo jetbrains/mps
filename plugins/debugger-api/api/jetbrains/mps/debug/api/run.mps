@@ -158,7 +158,7 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
       <node concept="2YIFZM" id="3AvZeSkP3sv" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+        <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
         <node concept="3VsKOn" id="3AvZeSkP3sw" role="37wK5m">
           <ref role="3VsUkX" node="3SnNvqCaJfM" resolve="DebuggerRunProfileState" />
@@ -215,7 +215,7 @@
             <node concept="3clFbF" id="3SnNvqCaJgf" role="3cqZAp">
               <node concept="2OqwBi" id="3AvZeSkP3sC" role="3clFbG">
                 <node concept="liA8E" id="3AvZeSkP3sD" role="2OqNvi">
-                  <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object):void" resolve="warn" />
+                  <ref role="37wK5l" to="q7tw:#Category.warn(java.lang.Object):void" resolve="warn" />
                   <node concept="Xl_RD" id="3SnNvqCaJgj" role="37wK5m">
                     <property role="Xl_RC" value="Updating debugger settings twice." />
                   </node>

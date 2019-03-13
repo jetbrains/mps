@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,6 @@ import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.CollectionUtil;
@@ -411,8 +410,7 @@ public class ValidationUtil {
 
   //returns true to continue analysing, false to stop
   private static boolean warnMissingTargetLangRuntime(Generator generator, Set<SLanguage> usedLanguages, Processor<? super ModuleValidationProblem> processor) {
-    Language sourceLanguage = generator.getSourceLanguage();
-    SLanguage sourceLanguageDeployed = MetaAdapterByDeclaration.getLanguage(sourceLanguage);
+    SLanguage sourceLanguageDeployed = generator.sourceLanguage();
     usedLanguages.remove(sourceLanguageDeployed);
     if (usedLanguages.isEmpty()) {
       return true;
@@ -437,7 +435,7 @@ public class ValidationUtil {
         continue;
       }
 
-      String m = String.format("%s shall specify language %s as generation target to include its runtime modules into compilation", sourceLanguage, lang);
+      String m = String.format("%s shall specify language %s as generation target to include its runtime modules into compilation", sourceLanguageDeployed.getQualifiedName(), lang);
       if (!processor.process(new ModuleValidationProblem(generator, MessageStatus.WARNING, m))) {
         return false;
       }

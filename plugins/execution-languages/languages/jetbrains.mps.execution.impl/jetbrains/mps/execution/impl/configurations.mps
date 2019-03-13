@@ -398,7 +398,7 @@
               <ref role="3cqZAo" node="1s_TLxa8SZ8" resolve="myRegistry" />
             </node>
             <node concept="liA8E" id="1cXeJmohr8V" role="2OqNvi">
-              <ref role="37wK5l" to="y8sq:~PluginLoaderRegistry.addReloadingListener(jetbrains.mps.plugins.PluginReloadingListener):void" resolve="addReloadingListener" />
+              <ref role="37wK5l" to="y8sq:#PluginLoaderRegistry.addReloadingListener(jetbrains.mps.plugins.PluginReloadingListener):void" resolve="addReloadingListener" />
               <node concept="Xjq3P" id="1cXeJmohr8W" role="37wK5m">
                 <ref role="1HBi2w" node="4tDMPuHdxCU" resolve="RunConfigurationsStateManager" />
               </node>
@@ -422,7 +422,7 @@
               <ref role="3cqZAo" node="1s_TLxa8SZ8" resolve="myRegistry" />
             </node>
             <node concept="liA8E" id="1cXeJmoht2T" role="2OqNvi">
-              <ref role="37wK5l" to="y8sq:~PluginLoaderRegistry.removeReloadingListener(jetbrains.mps.plugins.PluginReloadingListener):void" resolve="removeReloadingListener" />
+              <ref role="37wK5l" to="y8sq:#PluginLoaderRegistry.removeReloadingListener(jetbrains.mps.plugins.PluginReloadingListener):void" resolve="removeReloadingListener" />
               <node concept="Xjq3P" id="1cXeJmoht2U" role="37wK5m" />
             </node>
           </node>
@@ -443,7 +443,7 @@
               <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
             </node>
             <node concept="liA8E" id="4tDMPuHd$Qc" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed():boolean" resolve="isDisposed" />
+              <ref role="37wK5l" to="1m72:#ComponentManager.isDisposed():boolean" resolve="isDisposed" />
             </node>
           </node>
           <node concept="3clFbS" id="4tDMPuHd$Qd" role="3clFbx">
@@ -475,7 +475,7 @@
                 <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
               </node>
               <node concept="liA8E" id="4tDMPuHd$R7" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed():boolean" resolve="isDisposed" />
+                <ref role="37wK5l" to="1m72:#ComponentManager.isDisposed():boolean" resolve="isDisposed" />
               </node>
             </node>
           </node>
@@ -512,11 +512,11 @@
         <node concept="3clFbF" id="4tfwdmbGEsd" role="3cqZAp">
           <node concept="2OqwBi" id="4tfwdmbGEse" role="3clFbG">
             <node concept="2YIFZM" id="4tfwdmbGEsf" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+              <ref role="37wK5l" to="bd8o:#ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
               <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
             <node concept="liA8E" id="4tfwdmbGEsg" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable,com.intellij.openapi.application.ModalityState):void" resolve="invokeLater" />
+              <ref role="37wK5l" to="bd8o:#Application.invokeLater(java.lang.Runnable,com.intellij.openapi.application.ModalityState):void" resolve="invokeLater" />
               <node concept="2ShNRf" id="4tfwdmbGEsh" role="37wK5m">
                 <node concept="YeOm9" id="4tfwdmbGEsi" role="2ShVmc">
                   <node concept="1Y3b0j" id="4tfwdmbGEsj" role="YeSDq">
@@ -544,7 +544,7 @@
                                     <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
                                   </node>
                                   <node concept="liA8E" id="4r$i1_a$4py" role="2OqNvi">
-                                    <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getAttachedContent():com.intellij.ui.content.Content" resolve="getAttachedContent" />
+                                    <ref role="37wK5l" to="cjdg:#RunContentDescriptor.getAttachedContent():com.intellij.ui.content.Content" resolve="getAttachedContent" />
                                   </node>
                                 </node>
                               </node>
@@ -563,7 +563,7 @@
                                       <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
                                     </node>
                                     <node concept="liA8E" id="4r$i1_a$4pF" role="2OqNvi">
-                                      <ref role="37wK5l" to="v7ux:~Content.getManager():com.intellij.ui.content.ContentManager" resolve="getManager" />
+                                      <ref role="37wK5l" to="v7ux:#Content.getManager():com.intellij.ui.content.ContentManager" resolve="getManager" />
                                     </node>
                                   </node>
                                   <node concept="10Nm6u" id="4r$i1_a$4pG" role="3uHU7w" />
@@ -577,11 +577,11 @@
                                             <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
                                           </node>
                                           <node concept="liA8E" id="4r$i1_a$4pN" role="2OqNvi">
-                                            <ref role="37wK5l" to="v7ux:~Content.getManager():com.intellij.ui.content.ContentManager" resolve="getManager" />
+                                            <ref role="37wK5l" to="v7ux:#Content.getManager():com.intellij.ui.content.ContentManager" resolve="getManager" />
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="4r$i1_a$4pO" role="2OqNvi">
-                                          <ref role="37wK5l" to="v7ux:~ContentManager.removeAllContents(boolean):void" resolve="removeAllContents" />
+                                          <ref role="37wK5l" to="v7ux:#ContentManager.removeAllContents(boolean):void" resolve="removeAllContents" />
                                           <node concept="3clFbT" id="4r$i1_a$4pP" role="37wK5m">
                                             <property role="3clFbU" value="true" />
                                           </node>
@@ -603,7 +603,7 @@
                                             <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
                                           </node>
                                           <node concept="liA8E" id="4r$i1_a$4pX" role="2OqNvi">
-                                            <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getDisplayName():java.lang.String" resolve="getDisplayName" />
+                                            <ref role="37wK5l" to="cjdg:#RunContentDescriptor.getDisplayName():java.lang.String" resolve="getDisplayName" />
                                           </node>
                                         </node>
                                       </node>
@@ -627,7 +627,7 @@
                                           <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
                                         </node>
                                         <node concept="liA8E" id="4r$i1_a$4q6" role="2OqNvi">
-                                          <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getDisplayName():java.lang.String" resolve="getDisplayName" />
+                                          <ref role="37wK5l" to="cjdg:#RunContentDescriptor.getDisplayName():java.lang.String" resolve="getDisplayName" />
                                         </node>
                                       </node>
                                     </node>
@@ -675,7 +675,7 @@
               <ref role="37wK5l" node="4tDMPuHd$TR" resolve="getRunManager" />
             </node>
             <node concept="liA8E" id="4tfwdmbGnyg" role="2OqNvi">
-              <ref role="37wK5l" to="zjj4:~RunManagerImpl.clearAll():void" resolve="clearAll" />
+              <ref role="37wK5l" to="zjj4:#RunManagerImpl.clearAll():void" resolve="clearAll" />
             </node>
           </node>
         </node>
@@ -698,7 +698,7 @@
               <ref role="3uigEE" to="3v5a:~ExecutionManager" resolve="ExecutionManager" />
             </node>
             <node concept="2YIFZM" id="3RDARv$SsGq" role="33vP2m">
-              <ref role="37wK5l" to="3v5a:~ExecutionManager.getInstance(com.intellij.openapi.project.Project):com.intellij.execution.ExecutionManager" resolve="getInstance" />
+              <ref role="37wK5l" to="3v5a:#ExecutionManager.getInstance(com.intellij.openapi.project.Project):com.intellij.execution.ExecutionManager" resolve="getInstance" />
               <ref role="1Pybhc" to="3v5a:~ExecutionManager" resolve="ExecutionManager" />
               <node concept="37vLTw" id="3RDARv$StRr" role="37wK5m">
                 <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
@@ -719,7 +719,7 @@
                   <ref role="3cqZAo" node="3PIszklmnth" resolve="executionManager" />
                 </node>
                 <node concept="liA8E" id="3PIszklmntC" role="2OqNvi">
-                  <ref role="37wK5l" to="3v5a:~ExecutionManager.getContentManager():com.intellij.execution.ui.RunContentManager" resolve="getContentManager" />
+                  <ref role="37wK5l" to="3v5a:#ExecutionManager.getContentManager():com.intellij.execution.ui.RunContentManager" resolve="getContentManager" />
                 </node>
               </node>
               <node concept="3uibUv" id="3PIszklmntD" role="10QFUM">
@@ -742,7 +742,7 @@
                 <ref role="37wK5l" node="4tDMPuHd$TR" resolve="getRunManager" />
               </node>
               <node concept="liA8E" id="1xg2vZttK9b" role="2OqNvi">
-                <ref role="37wK5l" to="zjj4:~RunManagerImpl.getAllConfigurationsList():java.util.List" resolve="getAllConfigurationsList" />
+                <ref role="37wK5l" to="zjj4:#RunManagerImpl.getAllConfigurationsList():java.util.List" resolve="getAllConfigurationsList" />
               </node>
             </node>
           </node>
@@ -771,11 +771,11 @@
                                   <ref role="3cqZAo" node="3PIszklmnti" resolve="it" />
                                 </node>
                                 <node concept="liA8E" id="3PIszklmntX" role="2OqNvi">
-                                  <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                                  <ref role="37wK5l" to="wyt6:#Object.getClass():java.lang.Class" resolve="getClass" />
                                 </node>
                               </node>
                               <node concept="liA8E" id="3PIszklmntY" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~Class.getClassLoader():java.lang.ClassLoader" resolve="getClassLoader" />
+                                <ref role="37wK5l" to="wyt6:#Class.getClassLoader():java.lang.ClassLoader" resolve="getClassLoader" />
                               </node>
                             </node>
                           </node>
@@ -797,7 +797,7 @@
                             <ref role="3cqZAo" node="3PIszklmntj" resolve="it" />
                           </node>
                           <node concept="liA8E" id="3PIszklmnu6" role="2OqNvi">
-                            <ref role="37wK5l" to="dj99:~RunProfile.getName():java.lang.String" resolve="getName" />
+                            <ref role="37wK5l" to="dj99:#RunProfile.getName():java.lang.String" resolve="getName" />
                           </node>
                         </node>
                       </node>
@@ -863,7 +863,7 @@
                       <ref role="2Gs0qQ" node="4r$i1_a$2xY" resolve="descriptor" />
                     </node>
                     <node concept="liA8E" id="4r$i1_a$2xX" role="2OqNvi">
-                      <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getDisplayName():java.lang.String" resolve="getDisplayName" />
+                      <ref role="37wK5l" to="cjdg:#RunContentDescriptor.getDisplayName():java.lang.String" resolve="getDisplayName" />
                     </node>
                   </node>
                 </node>
@@ -875,7 +875,7 @@
               <ref role="3cqZAo" node="3PIszklmntk" resolve="contentManager" />
             </node>
             <node concept="liA8E" id="4r$i1_a$2xJ" role="2OqNvi">
-              <ref role="37wK5l" to="cjdg:~RunContentManagerImpl.getAllDescriptors():java.util.List" resolve="getAllDescriptors" />
+              <ref role="37wK5l" to="cjdg:#RunContentManagerImpl.getAllDescriptors():java.util.List" resolve="getAllDescriptors" />
             </node>
           </node>
           <node concept="2GrKxI" id="4r$i1_a$2xY" role="2Gsz3X">
@@ -904,7 +904,7 @@
             </node>
             <node concept="2YIFZM" id="4tDMPuHd$TX" role="10QFUP">
               <ref role="1Pybhc" to="3v5a:~RunManagerEx" resolve="RunManagerEx" />
-              <ref role="37wK5l" to="3v5a:~RunManagerEx.getInstanceEx(com.intellij.openapi.project.Project):com.intellij.execution.RunManagerEx" resolve="getInstanceEx" />
+              <ref role="37wK5l" to="3v5a:#RunManagerEx.getInstanceEx(com.intellij.openapi.project.Project):com.intellij.execution.RunManagerEx" resolve="getInstanceEx" />
               <node concept="37vLTw" id="2BHiRxeuogT" role="37wK5m">
                 <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
               </node>
@@ -955,7 +955,7 @@
               <ref role="3cqZAo" node="Fc1MGpTjc$" resolve="project" />
             </node>
             <node concept="liA8E" id="Fc1MGpTjcH" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+              <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
               <node concept="3VsKOn" id="Fc1MGpTjcK" role="37wK5m">
                 <ref role="3VsUkX" node="4tDMPuHdxCU" resolve="RunConfigurationsStateManager" />
               </node>
@@ -1015,14 +1015,14 @@
                 <ref role="3cqZAo" node="1xg2vZtrX28" resolve="runManager" />
               </node>
               <node concept="liA8E" id="1xg2vZtrX26" role="2OqNvi">
-                <ref role="37wK5l" to="zjj4:~RunManagerImpl.initializeConfigurationTypes(java.util.List):void" resolve="initializeConfigurationTypes" />
+                <ref role="37wK5l" to="zjj4:#RunManagerImpl.initializeConfigurationTypes(java.util.List):void" resolve="initializeConfigurationTypes" />
                 <node concept="2OqwBi" id="1xg2vZtrXFX" role="37wK5m">
                   <node concept="10M0yZ" id="1xg2vZtrXFW" role="2Oq$k0">
                     <ref role="1PxDUh" to="dj99:~ConfigurationType" resolve="ConfigurationType" />
                     <ref role="3cqZAo" to="dj99:~ConfigurationType.CONFIGURATION_TYPE_EP" resolve="CONFIGURATION_TYPE_EP" />
                   </node>
                   <node concept="liA8E" id="1xg2vZtrXFY" role="2OqNvi">
-                    <ref role="37wK5l" to="9ti4:~ExtensionPointName.getExtensionList():java.util.List" resolve="getExtensionList" />
+                    <ref role="37wK5l" to="9ti4:#ExtensionPointName.getExtensionList():java.util.List" resolve="getExtensionList" />
                   </node>
                 </node>
               </node>
@@ -1034,7 +1034,7 @@
                 <ref role="3cqZAo" node="1xg2vZtrX28" resolve="runManager" />
               </node>
               <node concept="liA8E" id="79c7v7kJeSK" role="2OqNvi">
-                <ref role="37wK5l" to="zjj4:~RunManagerImpl.reloadSchemes():void" resolve="reloadSchemes" />
+                <ref role="37wK5l" to="zjj4:#RunManagerImpl.reloadSchemes():void" resolve="reloadSchemes" />
               </node>
             </node>
           </node>
@@ -1051,7 +1051,7 @@
                       <ref role="3cqZAo" node="1xg2vZtrX28" resolve="runManager" />
                     </node>
                     <node concept="liA8E" id="6jU6GOqHgSx" role="2OqNvi">
-                      <ref role="37wK5l" to="zjj4:~RunManagerImpl.getConfigurationById(java.lang.String):com.intellij.execution.RunnerAndConfigurationSettings" resolve="getConfigurationById" />
+                      <ref role="37wK5l" to="zjj4:#RunManagerImpl.getConfigurationById(java.lang.String):com.intellij.execution.RunnerAndConfigurationSettings" resolve="getConfigurationById" />
                       <node concept="37vLTw" id="6jU6GOqHgSy" role="37wK5m">
                         <ref role="3cqZAo" node="6jU6GOqHdWW" resolve="selectedConfigurationId" />
                       </node>
@@ -1065,7 +1065,7 @@
                     <ref role="3cqZAo" node="1xg2vZtrX28" resolve="runManager" />
                   </node>
                   <node concept="liA8E" id="6jU6GOqHeAI" role="2OqNvi">
-                    <ref role="37wK5l" to="zjj4:~RunManagerImpl.setSelectedConfiguration(com.intellij.execution.RunnerAndConfigurationSettings):void" resolve="setSelectedConfiguration" />
+                    <ref role="37wK5l" to="zjj4:#RunManagerImpl.setSelectedConfiguration(com.intellij.execution.RunnerAndConfigurationSettings):void" resolve="setSelectedConfiguration" />
                     <node concept="37vLTw" id="6jU6GOqHhjH" role="37wK5m">
                       <ref role="3cqZAo" node="6jU6GOqHgSu" resolve="toSelect" />
                     </node>
@@ -1107,7 +1107,7 @@
                   <ref role="3cqZAo" node="PTeMHU5Coh" resolve="runManager" />
                 </node>
                 <node concept="liA8E" id="PTeMHU5CnZ" role="2OqNvi">
-                  <ref role="37wK5l" to="zjj4:~RunManagerImpl.getSelectedConfiguration():com.intellij.execution.RunnerAndConfigurationSettings" resolve="getSelectedConfiguration" />
+                  <ref role="37wK5l" to="zjj4:#RunManagerImpl.getSelectedConfiguration():com.intellij.execution.RunnerAndConfigurationSettings" resolve="getSelectedConfiguration" />
                 </node>
               </node>
             </node>
@@ -1128,7 +1128,7 @@
                       <ref role="3cqZAo" node="PTeMHU5CnV" resolve="selectedConfiguration" />
                     </node>
                     <node concept="liA8E" id="PTeMHU5Coa" role="2OqNvi">
-                      <ref role="37wK5l" to="3v5a:~RunnerAndConfigurationSettings.getUniqueID():java.lang.String" resolve="getUniqueID" />
+                      <ref role="37wK5l" to="3v5a:#RunnerAndConfigurationSettings.getUniqueID():java.lang.String" resolve="getUniqueID" />
                     </node>
                   </node>
                   <node concept="37vLTw" id="PTeMHU5Cob" role="37vLTJ">
@@ -1257,11 +1257,11 @@
             <node concept="2OqwBi" id="8ByOnNt8IH" role="2Oq$k0">
               <node concept="Xjq3P" id="8ByOnNt8_n" role="2Oq$k0" />
               <node concept="liA8E" id="8ByOnNt8Qo" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                <ref role="37wK5l" to="wyt6:#Object.getClass():java.lang.Class" resolve="getClass" />
               </node>
             </node>
             <node concept="liA8E" id="8ByOnNta0m" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Class.getSimpleName():java.lang.String" resolve="getSimpleName" />
+              <ref role="37wK5l" to="wyt6:#Class.getSimpleName():java.lang.String" resolve="getSimpleName" />
             </node>
           </node>
         </node>

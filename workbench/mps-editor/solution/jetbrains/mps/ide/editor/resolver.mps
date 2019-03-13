@@ -371,7 +371,7 @@
                     <ref role="3cqZAo" node="1$3BPv3VW9p" resolve="reference" />
                   </node>
                   <node concept="liA8E" id="4InNjD1HwXO" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SReference.getRole():java.lang.String" resolve="getRole" />
+                    <ref role="37wK5l" to="mhbf:#SReference.getRole():java.lang.String" resolve="getRole" />
                   </node>
                 </node>
               </node>
@@ -384,7 +384,7 @@
                   <ref role="3cqZAo" node="1$3BPv3VYXj" resolve="headlessEditor" />
                 </node>
                 <node concept="liA8E" id="c2bHEjvzFe" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.dispose():void" resolve="dispose" />
+                  <ref role="37wK5l" to="exr9:#EditorComponent.dispose():void" resolve="dispose" />
                 </node>
               </node>
             </node>

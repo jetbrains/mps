@@ -1111,7 +1111,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="_BZ6vQWsPC" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println():void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println():void" resolve="println" />
             </node>
           </node>
           <node concept="2b32R4" id="1H31ARNQAaI" role="lGtFl">

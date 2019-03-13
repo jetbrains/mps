@@ -117,11 +117,11 @@
         <node concept="3clFbF" id="5pylk$7XAEe" role="3cqZAp">
           <node concept="2OqwBi" id="1KUoCiqb5Xp" role="3clFbG">
             <node concept="2YIFZM" id="1KUoCiqb5Xq" role="2Oq$k0">
-              <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getInstance():jetbrains.mps.classloading.ClassLoaderManager" resolve="getInstance" />
+              <ref role="37wK5l" to="3qmy:#ClassLoaderManager.getInstance():jetbrains.mps.classloading.ClassLoaderManager" resolve="getInstance" />
               <ref role="1Pybhc" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
             </node>
             <node concept="liA8E" id="1KUoCiqb5Xr" role="2OqNvi">
-              <ref role="37wK5l" to="3qmy:~ClassLoaderManager.reloadAll(org.jetbrains.mps.openapi.util.ProgressMonitor):void" resolve="reloadAll" />
+              <ref role="37wK5l" to="3qmy:#ClassLoaderManager.reloadAll(org.jetbrains.mps.openapi.util.ProgressMonitor):void" resolve="reloadAll" />
               <node concept="2ShNRf" id="1KUoCiqb5Xs" role="37wK5m">
                 <node concept="1pGfFk" id="1KUoCiqb5Xt" role="2ShVmc">
                   <ref role="37wK5l" to="mk8z:~EmptyProgressMonitor.&lt;init&gt;()" resolve="EmptyProgressMonitor" />

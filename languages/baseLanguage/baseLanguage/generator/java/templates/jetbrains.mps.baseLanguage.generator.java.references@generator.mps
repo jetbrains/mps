@@ -695,7 +695,7 @@
             </node>
             <node concept="gft3U" id="15eNPIixEQD" role="UU_$l">
               <node concept="2YIFZM" id="4ZvcRdf4HS8" role="gfFT$">
-                <ref role="37wK5l" to="vl5q:~BLOperations.assign(jetbrains.mps.references.Reference,java.lang.Object):java.lang.Object" resolve="assign" />
+                <ref role="37wK5l" to="vl5q:#BLOperations.assign(jetbrains.mps.references.Reference,java.lang.Object):java.lang.Object" resolve="assign" />
                 <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
                 <node concept="10Nm6u" id="4ZvcRdf4HS9" role="37wK5m">
                   <node concept="29HgVG" id="4ZvcRdf4HSa" role="lGtFl">
@@ -823,7 +823,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="78UfAlSgWAx" role="2OqNvi">
-                  <ref role="37wK5l" to="vl5q:~Reference.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="vl5q:#Reference.get():java.lang.Object" resolve="get" />
                   <node concept="1ZhdrF" id="78UfAlSgWLd" role="lGtFl">
                     <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
                     <property role="2qtEX8" value="baseMethodDeclaration" />
@@ -1580,7 +1580,7 @@
       <node concept="gft3U" id="5Z1N4vbqVB8" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbrdG8" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~ArrayElementReference" resolve="ArrayElementReference" />
-          <ref role="37wK5l" to="vl5q:~ArrayElementReference.create(java.lang.Object[],int):jetbrains.mps.references.Reference" resolve="create" />
+          <ref role="37wK5l" to="vl5q:#ArrayElementReference.create(java.lang.Object[],int):jetbrains.mps.references.Reference" resolve="create" />
           <node concept="10Nm6u" id="5Z1N4vbrdHC" role="37wK5m">
             <node concept="29HgVG" id="5Z1N4vbroIY" role="lGtFl">
               <node concept="3NFfHV" id="5Z1N4vbroIZ" role="3NFExx">
@@ -1803,7 +1803,7 @@
       <node concept="gft3U" id="5Z1N4vbna2P" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbnh92" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.plusAssign(jetbrains.mps.references.Reference,int):int" resolve="plusAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.plusAssign(jetbrains.mps.references.Reference,int):int" resolve="plusAssign" />
           <node concept="2kxYUH" id="5Z1N4vbnh93" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbnh94" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbnh95" role="lGtFl">
@@ -1847,7 +1847,7 @@
       <node concept="gft3U" id="5Z1N4vbnx7_" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbnxeX" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.minusAssign(jetbrains.mps.references.Reference,int):int" resolve="minusAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.minusAssign(jetbrains.mps.references.Reference,int):int" resolve="minusAssign" />
           <node concept="2kxYUH" id="5Z1N4vbnxeY" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbnxeZ" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbnxf0" role="lGtFl">
@@ -1891,7 +1891,7 @@
       <node concept="gft3U" id="5Z1N4vbnxxv" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbnxD3" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.multAssign(jetbrains.mps.references.Reference,int):int" resolve="multAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.multAssign(jetbrains.mps.references.Reference,int):int" resolve="multAssign" />
           <node concept="2kxYUH" id="5Z1N4vbnxD4" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbnxD5" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbnxD6" role="lGtFl">
@@ -1935,7 +1935,7 @@
       <node concept="gft3U" id="5Z1N4vbnxKk" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbnxRS" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.divAssign(jetbrains.mps.references.Reference,int):int" resolve="divAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.divAssign(jetbrains.mps.references.Reference,int):int" resolve="divAssign" />
           <node concept="2kxYUH" id="5Z1N4vbnxRT" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbnxRU" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbnxRV" role="lGtFl">
@@ -1979,7 +1979,7 @@
       <node concept="gft3U" id="5Z1N4vbnxZ9" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbnA9V" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.remAssign(jetbrains.mps.references.Reference,int):int" resolve="remAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.remAssign(jetbrains.mps.references.Reference,int):int" resolve="remAssign" />
           <node concept="2kxYUH" id="5Z1N4vbnA9W" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbnA9X" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbnA9Y" role="lGtFl">
@@ -2023,7 +2023,7 @@
       <node concept="gft3U" id="5Z1N4vbqgyX" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbqgIs" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.andAssign(jetbrains.mps.references.Reference,boolean):boolean" resolve="andAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.andAssign(jetbrains.mps.references.Reference,boolean):boolean" resolve="andAssign" />
           <node concept="2kxYUH" id="5Z1N4vbqgIt" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbqgIu" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbqgIv" role="lGtFl">
@@ -2066,7 +2066,7 @@
       <node concept="gft3U" id="5Z1N4vbqivr" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbqiF9" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.orAssign(jetbrains.mps.references.Reference,boolean):boolean" resolve="orAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.orAssign(jetbrains.mps.references.Reference,boolean):boolean" resolve="orAssign" />
           <node concept="2kxYUH" id="5Z1N4vbqiFa" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbqiFb" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbqiFc" role="lGtFl">
@@ -2109,7 +2109,7 @@
       <node concept="gft3U" id="5Z1N4vbqiMr" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbqlcQ" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.xorAssign(jetbrains.mps.references.Reference,boolean):boolean" resolve="xorAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.xorAssign(jetbrains.mps.references.Reference,boolean):boolean" resolve="xorAssign" />
           <node concept="2kxYUH" id="5Z1N4vbqlcR" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbqlcS" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbqlcT" role="lGtFl">
@@ -2152,7 +2152,7 @@
       <node concept="gft3U" id="5Z1N4vbqlk6" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbqvSh" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.shiftLeftAssign(jetbrains.mps.references.Reference,int):int" resolve="shiftLeftAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.shiftLeftAssign(jetbrains.mps.references.Reference,int):int" resolve="shiftLeftAssign" />
           <node concept="2kxYUH" id="5Z1N4vbqvSi" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbqvSj" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbqvSk" role="lGtFl">
@@ -2196,7 +2196,7 @@
       <node concept="gft3U" id="5Z1N4vbqvxB" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbqvHk" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.shiftRightAssign(jetbrains.mps.references.Reference,int):int" resolve="shiftRightAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.shiftRightAssign(jetbrains.mps.references.Reference,int):int" resolve="shiftRightAssign" />
           <node concept="2kxYUH" id="5Z1N4vbqvHl" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbqvHm" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbqvHn" role="lGtFl">
@@ -2240,7 +2240,7 @@
       <node concept="gft3U" id="5Z1N4vbqw$R" role="1lVwrX">
         <node concept="2YIFZM" id="5Z1N4vbqwKn" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.shiftRightUAssign(jetbrains.mps.references.Reference,int):int" resolve="shiftRightUAssign" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.shiftRightUAssign(jetbrains.mps.references.Reference,int):int" resolve="shiftRightUAssign" />
           <node concept="2kxYUH" id="5Z1N4vbqwKo" role="37wK5m">
             <node concept="10Nm6u" id="5Z1N4vbqwKp" role="2kxYXK">
               <node concept="29HgVG" id="5Z1N4vbqwKq" role="lGtFl">
@@ -2288,7 +2288,7 @@
       <node concept="gft3U" id="5Z1N4vbnZ1G" role="1lVwrX">
         <node concept="2YIFZM" id="78UfAlSkUhN" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.incrementAndGet_int(jetbrains.mps.references.Reference):int" resolve="incrementAndGet_int" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.incrementAndGet_int(jetbrains.mps.references.Reference):int" resolve="incrementAndGet_int" />
           <node concept="2kxYUH" id="78UfAlSkUhO" role="37wK5m">
             <node concept="10Nm6u" id="78UfAlSkUhP" role="2kxYXK">
               <node concept="29HgVG" id="78UfAlSkUhQ" role="lGtFl">
@@ -2334,7 +2334,7 @@
       <node concept="gft3U" id="5Z1N4vbqdWO" role="1lVwrX">
         <node concept="2YIFZM" id="78UfAlSkV9_" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.getAndIncrement_int(jetbrains.mps.references.Reference):int" resolve="getAndIncrement_int" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.getAndIncrement_int(jetbrains.mps.references.Reference):int" resolve="getAndIncrement_int" />
           <node concept="2kxYUH" id="78UfAlSkV9A" role="37wK5m">
             <node concept="10Nm6u" id="78UfAlSkV9B" role="2kxYXK">
               <node concept="29HgVG" id="78UfAlSkV9C" role="lGtFl">
@@ -2380,7 +2380,7 @@
       <node concept="gft3U" id="5Z1N4vbqefd" role="1lVwrX">
         <node concept="2YIFZM" id="78UfAlSkVoB" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.decrementAndGet_int(jetbrains.mps.references.Reference):int" resolve="decrementAndGet_int" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.decrementAndGet_int(jetbrains.mps.references.Reference):int" resolve="decrementAndGet_int" />
           <node concept="2kxYUH" id="78UfAlSkVoC" role="37wK5m">
             <node concept="10Nm6u" id="78UfAlSkVoD" role="2kxYXK">
               <node concept="29HgVG" id="78UfAlSkVoE" role="lGtFl">
@@ -2426,7 +2426,7 @@
       <node concept="gft3U" id="5Z1N4vbqefo" role="1lVwrX">
         <node concept="2YIFZM" id="78UfAlSkVh9" role="gfFT$">
           <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-          <ref role="37wK5l" to="vl5q:~BLOperations.getAndDecrement_int(jetbrains.mps.references.Reference):int" resolve="getAndDecrement_int" />
+          <ref role="37wK5l" to="vl5q:#BLOperations.getAndDecrement_int(jetbrains.mps.references.Reference):int" resolve="getAndDecrement_int" />
           <node concept="2kxYUH" id="78UfAlSkVha" role="37wK5m">
             <node concept="10Nm6u" id="78UfAlSkVhb" role="2kxYXK">
               <node concept="29HgVG" id="78UfAlSkVhc" role="lGtFl">

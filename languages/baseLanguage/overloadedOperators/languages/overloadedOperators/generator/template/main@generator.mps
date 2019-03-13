@@ -495,7 +495,7 @@
                                 <node concept="30H73N" id="2kpoMNxbNsM" role="2JrQYb" />
                               </node>
                               <node concept="liA8E" id="2kpoMNxbMKl" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                                <ref role="37wK5l" to="mhbf:#SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
                                 <node concept="Xl_RD" id="2kpoMNxbMKm" role="37wK5m">
                                   <property role="Xl_RC" value="reversed" />
                                 </node>
@@ -577,7 +577,7 @@
                                 <node concept="30H73N" id="2kpoMNxbNsN" role="2JrQYb" />
                               </node>
                               <node concept="liA8E" id="2kpoMNxbMLf" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                                <ref role="37wK5l" to="mhbf:#SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
                                 <node concept="Xl_RD" id="2kpoMNxbMLg" role="37wK5m">
                                   <property role="Xl_RC" value="reversed" />
                                 </node>

@@ -939,7 +939,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6xkNu_iwkdG" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+              <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
               <node concept="3cmrfG" id="63hMjyLSlCf" role="37wK5m">
                 <property role="3cmrfH" value="0" />
                 <node concept="2b32R4" id="63hMjyLSlCh" role="lGtFl">

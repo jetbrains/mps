@@ -54,14 +54,4 @@ public abstract class AbstractEnvironment implements Environment {
   public void flushAllEvents() {
     // no-op, (a) no idea what this method is supposed to do anyway (b) this environment can't do anything about whatever events. 
   }
-
-  @Override
-  public void retain() {
-    // no-op, shall remove this method from Environment interface 
-  }
-
-  @Override
-  public void release() {
-    // no-op, shall remove this method from Environment interface 
-  }
 }

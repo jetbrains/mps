@@ -242,7 +242,7 @@
             <node concept="3clFbJ" id="6JoULz$juRq" role="3cqZAp">
               <node concept="3fqX7Q" id="6JoULz$juXI" role="3clFbw">
                 <node concept="2YIFZM" id="6JoULz$juXK" role="3fr31v">
-                  <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+                  <ref role="37wK5l" to="w1kc:#SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
                   <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
                   <node concept="37vLTw" id="6JoULz$juXL" role="37wK5m">
                     <ref role="3cqZAo" node="6JoULz$juId" resolve="model" />
@@ -384,7 +384,7 @@
               <ref role="3cqZAo" node="6JoULz$jt6u" resolve="m" />
             </node>
             <node concept="liA8E" id="6JoULz$juIk" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+              <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
             </node>
           </node>
         </node>
@@ -448,7 +448,7 @@
             <node concept="3clFbJ" id="za$VMvgHry" role="3cqZAp">
               <node concept="3fqX7Q" id="za$VMvgHrz" role="3clFbw">
                 <node concept="2YIFZM" id="za$VMvgHr$" role="3fr31v">
-                  <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+                  <ref role="37wK5l" to="w1kc:#SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
                   <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
                   <node concept="37vLTw" id="za$VMvgHr_" role="37wK5m">
                     <ref role="3cqZAo" node="za$VMvgHst" resolve="model" />
@@ -713,7 +713,7 @@
               <ref role="3cqZAo" node="za$VMvgGuU" resolve="m" />
             </node>
             <node concept="liA8E" id="za$VMvgHsx" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+              <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
             </node>
           </node>
         </node>

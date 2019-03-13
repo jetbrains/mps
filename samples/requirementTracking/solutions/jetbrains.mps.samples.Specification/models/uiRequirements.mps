@@ -8,10 +8,10 @@
   <imports />
   <registry>
     <language id="06144ad3-3416-4d7e-bbaf-076e158e80cf" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition">
-      <concept id="4174052498195727591" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.RequirementDocument" flags="ng" index="3P9f96">
+      <concept id="4174052498195727591" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.Specification" flags="ng" index="3P9f96">
         <child id="4174052498195794393" name="entries" index="3P9ZXS" />
       </concept>
-      <concept id="4174052498195727595" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.RequirementEntry" flags="ng" index="3P9f9a">
+      <concept id="4174052498195727595" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.Entry" flags="ng" index="3P9f9a">
         <property id="4174052498195727599" name="id" index="3P9f9e" />
         <child id="4174052498195727602" name="description" index="3P9f9j" />
       </concept>

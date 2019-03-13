@@ -178,7 +178,7 @@
           <node concept="3clFbS" id="7v5ch11Erzx" role="3clFbx">
             <node concept="3cpWs6" id="7v5ch11Erzy" role="3cqZAp">
               <node concept="2YIFZM" id="2$lGPJtm42B" role="3cqZAk">
-                <ref role="37wK5l" to="18ew:~NameUtil.escapeString(java.lang.String):java.lang.String" resolve="escapeString" />
+                <ref role="37wK5l" to="18ew:#NameUtil.escapeString(java.lang.String):java.lang.String" resolve="escapeString" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="37vLTw" id="2$lGPJtm4ks" role="37wK5m">
                   <ref role="3cqZAo" node="7v5ch11Erzq" resolve="projectPath" />
@@ -196,16 +196,16 @@
         <node concept="3clFbF" id="7v5ch11ErzB" role="3cqZAp">
           <node concept="2OqwBi" id="7v5ch11ErzC" role="3clFbG">
             <node concept="2YIFZM" id="7v5ch11ErzD" role="2Oq$k0">
-              <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+              <ref role="37wK5l" to="q7tw:#Logger.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
               <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
               <node concept="3VsKOn" id="7v5ch11ErzE" role="37wK5m">
                 <ref role="3VsUkX" node="L0xQjiTXbn" resolve="TestsUtil" />
               </node>
             </node>
             <node concept="liA8E" id="7v5ch11ErzF" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object):void" resolve="error" />
+              <ref role="37wK5l" to="q7tw:#Category.error(java.lang.Object):void" resolve="error" />
               <node concept="2YIFZM" id="7v5ch11ErzG" role="37wK5m">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="7v5ch11ErzH" role="37wK5m">
                   <property role="Xl_RC" value="Model %s (from %s) doesn't specify project path in TestInfo!" />
@@ -223,7 +223,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="7v5ch11ErzO" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getSource():org.jetbrains.mps.openapi.persistence.DataSource" resolve="getSource" />
+                    <ref role="37wK5l" to="mhbf:#SModel.getSource():org.jetbrains.mps.openapi.persistence.DataSource" resolve="getSource" />
                   </node>
                 </node>
               </node>

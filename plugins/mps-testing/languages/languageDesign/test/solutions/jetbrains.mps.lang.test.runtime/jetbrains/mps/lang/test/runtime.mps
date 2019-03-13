@@ -2,13 +2,13 @@
 <model ref="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
+    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
   </languages>
   <imports>
     <import index="tp5g" ref="r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)" />
@@ -3681,14 +3681,38 @@
       <node concept="3Tm6S6" id="5A5jZrz6Sq5" role="1B3o_S" />
       <node concept="3cqZAl" id="5A5jZrz6Sq6" role="3clF45" />
       <node concept="3clFbS" id="5A5jZrz6SpV" role="3clF47">
-        <node concept="3clFbF" id="5A5jZrz6SpW" role="3cqZAp">
-          <node concept="2OqwBi" id="5A5jZrz6SpX" role="3clFbG">
-            <node concept="liA8E" id="5A5jZrz6SpY" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~ModelCommandExecutor.flushEventQueue():void" resolve="flushEventQueue" />
-            </node>
-            <node concept="2YIFZM" id="5A5jZrz6SpZ" role="2Oq$k0">
-              <ref role="37wK5l" to="w1kc:~ModelAccess.instance():jetbrains.mps.smodel.ModelAccess" resolve="instance" />
-              <ref role="1Pybhc" to="w1kc:~ModelAccess" resolve="ModelAccess" />
+        <node concept="3SKdUt" id="4xXBKS7I6jh" role="3cqZAp">
+          <node concept="3SKdUq" id="4xXBKS7I6jj" role="3SKWNk">
+            <property role="3SKdUp" value="XXX MA.flushEventQueue has been commented out intentionally, don't bring it back unless you've got a bullet-proof justification" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="4xXBKS7I6Hm" role="3cqZAp">
+          <node concept="3SKdUq" id="4xXBKS7I6Ho" role="3SKWNk">
+            <property role="3SKdUp" value="    There's no flushEventQueue() in openapi.MA and I don't want to introduce one unless utterly necessary." />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="4xXBKS7I6MT" role="3cqZAp">
+          <node concept="3SKdUq" id="4xXBKS7I6MV" role="3SKWNk">
+            <property role="3SKdUp" value="    It it comes to a point we need to flush model events AND empty EDT cmd of flushEDTEvents is not sufficient, we may" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="4xXBKS7I6So" role="3cqZAp">
+          <node concept="3SKdUq" id="4xXBKS7I6Sq" role="3SKWNk">
+            <property role="3SKdUp" value="    consider doing smth like myProject.getModelAccess().runWriteInEDT() here, with some synchronization primitive." />
+          </node>
+        </node>
+        <node concept="1X3_iC" id="4xXBKS7HZp1" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="5A5jZrz6SpW" role="8Wnug">
+            <node concept="2OqwBi" id="5A5jZrz6SpX" role="3clFbG">
+              <node concept="liA8E" id="5A5jZrz6SpY" role="2OqNvi">
+                <ref role="37wK5l" to="w1kc:~ModelCommandExecutor.flushEventQueue():void" resolve="flushEventQueue" />
+              </node>
+              <node concept="2YIFZM" id="5A5jZrz6SpZ" role="2Oq$k0">
+                <ref role="37wK5l" to="w1kc:~ModelAccess.instance():jetbrains.mps.smodel.ModelAccess" resolve="instance" />
+                <ref role="1Pybhc" to="w1kc:~ModelAccess" resolve="ModelAccess" />
+              </node>
             </node>
           </node>
         </node>

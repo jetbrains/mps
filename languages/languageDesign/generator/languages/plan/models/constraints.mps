@@ -283,7 +283,7 @@
           <node concept="2OqwBi" id="3gcO7FHOxS3" role="3clFbw">
             <node concept="2DA6wF" id="3gcO7FHOxzZ" role="2Oq$k0" />
             <node concept="liA8E" id="3gcO7FHOyhI" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
               <node concept="359W_D" id="3gcO7FHOyzK" role="37wK5m">
                 <ref role="359W_E" to="bjdw:KhTgyaukO7" resolve="CheckpointSynchronization" />
                 <ref role="359W_F" to="bjdw:3gcO7FHOx8S" resolve="checkpoint" />

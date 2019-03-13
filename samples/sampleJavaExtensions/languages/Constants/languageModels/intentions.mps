@@ -400,7 +400,7 @@
           <node concept="2OqwBi" id="3tkDCy0Gf7K" role="3clFbG">
             <node concept="1XNTG" id="3tkDCy0Gf7J" role="2Oq$k0" />
             <node concept="liA8E" id="3tkDCy0Gf7O" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+              <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
               <node concept="37vLTw" id="3GM_nagTwIg" role="37wK5m">
                 <ref role="3cqZAo" node="3tkDCy0Gf1c" resolve="constant" />
               </node>

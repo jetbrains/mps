@@ -97,14 +97,10 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
       protected String[] getKeys(SModelData model, SReference sref) {
         SNodeId targetNodeId = sref.getTargetNodeId();
         if (targetNodeId instanceof Foreign) {
-
-          ArrayList<String> result = new ArrayList<String>();
-
-          String id = targetNodeId.toString();
-          id = id.substring(Foreign.ID_PREFIX.length());
+          String id = targetNodeId.toString().substring(Foreign.ID_PREFIX.length());
           int paren = id.indexOf("(");
           String firstPart = paren >= 0 ? id.substring(0, paren) : id;
-          result.addAll(getKeys(firstPart));
+          ArrayList<String> result = new ArrayList<String>(getKeys(firstPart));
 
           // now what's after the opening parenthesis, i.e params
           if (paren > 0) {
@@ -112,14 +108,14 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
             String params = id.substring(paren+1, paren2); // e.g. Object, int, my.pkg.Claz
             for (String paramId : params.split(",")) {
               paramId = paramId.trim();
-              if (!"".equals(paramId)) {
+              if (!paramId.isEmpty()) {
                 // adding dot because we want param types to be considered fully, not only prefixes
                 result.addAll(getKeys(paramId + "."));
               }
             }
           }
 
-          return result.toArray(new String[result.size()]);
+          return result.toArray(new String[0]);
         }
         return EMPTY;
       }

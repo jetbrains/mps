@@ -128,7 +128,7 @@
                 <node concept="EsrRn" id="hDMFLVZ" role="2JrQYb" />
               </node>
               <node concept="liA8E" id="hDMFLW0" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getName():java.lang.String" resolve="getName" />
+                <ref role="37wK5l" to="mhbf:#SNode.getName():java.lang.String" resolve="getName" />
               </node>
             </node>
           </node>
@@ -167,13 +167,13 @@
                   <node concept="10Oyi0" id="1HyHl70ZNqz" role="1tU5fm" />
                   <node concept="2YIFZM" id="2RG318eWq1W" role="33vP2m">
                     <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                    <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String):int" resolve="parseInt" />
+                    <ref role="37wK5l" to="wyt6:#Integer.parseInt(java.lang.String):int" resolve="parseInt" />
                     <node concept="2OqwBi" id="2RG318eWq1X" role="37wK5m">
                       <node concept="37vLTw" id="7z7TTo_CDVu" role="2Oq$k0">
                         <ref role="3cqZAo" node="7z7TTo_CkAm" resolve="migrationScriptReference" />
                       </node>
                       <node concept="liA8E" id="2RG318eWq1Z" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.substring(int):java.lang.String" resolve="substring" />
+                        <ref role="37wK5l" to="wyt6:#String.substring(int):java.lang.String" resolve="substring" />
                         <node concept="3cpWs3" id="2RG318eWq20" role="37wK5m">
                           <node concept="3cmrfG" id="2RG318eWq21" role="3uHU7w">
                             <property role="3cmrfH" value="1" />
@@ -183,7 +183,7 @@
                               <ref role="3cqZAo" node="7z7TTo_CkAm" resolve="migrationScriptReference" />
                             </node>
                             <node concept="liA8E" id="2RG318eWq1J" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:~String.indexOf(int):int" resolve="indexOf" />
+                              <ref role="37wK5l" to="wyt6:#String.indexOf(int):int" resolve="indexOf" />
                               <node concept="1Xhbcc" id="2RG318eWq1K" role="37wK5m">
                                 <property role="1XhdNS" value="/" />
                               </node>
@@ -204,7 +204,7 @@
                       <ref role="3cqZAo" node="7z7TTo_CkAm" resolve="migrationScriptReference" />
                     </node>
                     <node concept="liA8E" id="2LKJxlJRV_R" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.indexOf(int):int" resolve="indexOf" />
+                      <ref role="37wK5l" to="wyt6:#String.indexOf(int):int" resolve="indexOf" />
                       <node concept="1Xhbcc" id="2LKJxlJRV_S" role="37wK5m">
                         <property role="1XhdNS" value="(" />
                       </node>
@@ -219,17 +219,17 @@
                     <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
                   </node>
                   <node concept="2YIFZM" id="1HyHl70ZQ2j" role="33vP2m">
-                    <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(jetbrains.mps.smodel.adapter.ids.SLanguageId,java.lang.String):org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
+                    <ref role="37wK5l" to="2k9e:#MetaAdapterFactory.getLanguage(jetbrains.mps.smodel.adapter.ids.SLanguageId,java.lang.String):org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
                     <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
                     <node concept="2YIFZM" id="1HyHl70ZQ9W" role="37wK5m">
-                      <ref role="37wK5l" to="e8bb:~SLanguageId.deserialize(java.lang.String):jetbrains.mps.smodel.adapter.ids.SLanguageId" resolve="deserialize" />
+                      <ref role="37wK5l" to="e8bb:#SLanguageId.deserialize(java.lang.String):jetbrains.mps.smodel.adapter.ids.SLanguageId" resolve="deserialize" />
                       <ref role="1Pybhc" to="e8bb:~SLanguageId" resolve="SLanguageId" />
                       <node concept="2OqwBi" id="1HyHl70ZQb6" role="37wK5m">
                         <node concept="37vLTw" id="7z7TTo_CF$2" role="2Oq$k0">
                           <ref role="3cqZAo" node="7z7TTo_CkAm" resolve="migrationScriptReference" />
                         </node>
                         <node concept="liA8E" id="1HyHl70ZQb8" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+                          <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
                           <node concept="3cmrfG" id="1HyHl70ZQb9" role="37wK5m">
                             <property role="3cmrfH" value="0" />
                           </node>
@@ -244,7 +244,7 @@
                         <ref role="3cqZAo" node="7z7TTo_CkAm" resolve="migrationScriptReference" />
                       </node>
                       <node concept="liA8E" id="1HyHl70ZS7a" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+                        <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
                         <node concept="3cpWs3" id="1HyHl70ZTCb" role="37wK5m">
                           <node concept="3cmrfG" id="1HyHl70ZTCl" role="3uHU7w">
                             <property role="3cmrfH" value="1" />
@@ -258,7 +258,7 @@
                             <ref role="3cqZAo" node="7z7TTo_CkAm" resolve="migrationScriptReference" />
                           </node>
                           <node concept="liA8E" id="1HyHl70ZV$b" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.indexOf(int,int):int" resolve="indexOf" />
+                            <ref role="37wK5l" to="wyt6:#String.indexOf(int,int):int" resolve="indexOf" />
                             <node concept="1Xhbcc" id="1HyHl70ZVT1" role="37wK5m">
                               <property role="1XhdNS" value=")" />
                             </node>

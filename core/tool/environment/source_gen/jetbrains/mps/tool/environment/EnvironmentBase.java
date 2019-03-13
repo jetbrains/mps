@@ -17,11 +17,6 @@ import java.io.File;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.core.tool.environment.util.MapPathMacrosProvider;
 import jetbrains.mps.core.tool.environment.util.CanonicalPath;
-import java.util.List;
-import jetbrains.mps.library.contributor.LibraryContributor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Project;
 
@@ -29,15 +24,12 @@ import jetbrains.mps.project.Project;
  * Base class for all environments, represents a caching environment.
  * The contract: only one environment must be alive,
  * it is being stored in the special EnvironmentContainer class.
- * 
- * @see jetbrains.mps.tool.environment.EnvironmentContainer 
  */
 public abstract class EnvironmentBase implements Environment {
   private static final Logger LOG = LogManager.getLogger(EnvironmentBase.class);
 
   protected final EnvironmentConfig myConfig;
   private boolean myInitialized;
-  private int myRefCount;
   private PathMacrosProvider myMacrosProvider;
   private final ProjectContainer myContainer = new ProjectContainer();
   private ClassLoader myRootClassLoader = null;
@@ -60,8 +52,10 @@ public abstract class EnvironmentBase implements Environment {
     }
     myRootClassLoader = createRootClassLoader();
     initMacros(mpsPlatform.findComponent(PathMacros.class));
+    if (LOG.isInfoEnabled()) {
+      LOG.info("Initializing libraries");
+    }
     initLibraries(mpsPlatform.findComponent(LibraryInitializer.class));
-    retain();
     myInitialized = true;
   }
 
@@ -89,21 +83,7 @@ public abstract class EnvironmentBase implements Environment {
     return new MapPathMacrosProvider(realMacros);
   }
 
-  protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
-    if (LOG.isInfoEnabled()) {
-      LOG.info("Initializing libraries");
-    }
-    final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
-    LibraryContributorHelper helper = new LibraryContributorHelper(myConfig, myRootClassLoader);
-    if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
-      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs());
-    }
-    // todo this hould go away. Instead, a regular contributor for plugins should perform 
-    if (myConfig.getPlugins() != null && SetSequence.fromSet(myConfig.getPlugins()).isNotEmpty()) {
-      ListSequence.fromList(libContribs).addElement(helper.createLibContributorForPlugins());
-    }
-    libInitializer.load(libContribs);
-  }
+  protected abstract void initLibraries(@NotNull LibraryInitializer libInitializer);
 
   /**
    * Root class loader:
@@ -122,23 +102,6 @@ public abstract class EnvironmentBase implements Environment {
     // and for languages/solutions referenced from <library> tag (these shall not get CP with idea plugins). With a single  
     // global CP we have at the moment, it's hard to make a distinction, though. 
     return LibraryInitializer.class.getClassLoader();
-  }
-
-  @Override
-  public synchronized void retain() {
-    ++myRefCount;
-  }
-
-  @Override
-  public void release() {
-    if (myRefCount == 0) {
-      throw new IllegalStateException("Reference counter is set to zero -- cannot release!");
-    }
-    --myRefCount;
-    if (myRefCount == 0) {
-      doDispose();
-      EnvironmentContainer.clear();
-    }
   }
 
   @Override
@@ -194,13 +157,7 @@ public abstract class EnvironmentBase implements Environment {
     if (LOG.isDebugEnabled()) {
       LOG.debug("Disposing environment");
     }
-    myRefCount = 0;
     doDispose();
-    if (EnvironmentContainer.get() == this) {
-      // FIXME it's not responsibility of EnvironmentBase to clear EnvironmentContainer. 
-      // In fact, we don't need EC at all. 
-      EnvironmentContainer.clear();
-    }
   }
 
 

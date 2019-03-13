@@ -184,7 +184,7 @@
             <node concept="2OqwBi" id="6D854YCm$3m" role="33vP2m">
               <node concept="1XNTG" id="6D854YCm$3l" role="2Oq$k0" />
               <node concept="liA8E" id="6D854YCm$Fx" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                <ref role="37wK5l" to="cj4x:#EditorContext.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
               </node>
             </node>
           </node>
@@ -256,7 +256,7 @@
             <node concept="2OqwBi" id="2YVXvcLej8G" role="33vP2m">
               <node concept="1XNTG" id="2YVXvcLej8H" role="2Oq$k0" />
               <node concept="liA8E" id="2YVXvcLej8I" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                <ref role="37wK5l" to="cj4x:#EditorContext.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
               </node>
             </node>
           </node>
@@ -313,7 +313,7 @@
                   <ref role="3cqZAo" node="2YVXvcLej8U" resolve="ref" />
                 </node>
                 <node concept="liA8E" id="2YVXvcLeyA0" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SConceptFeature.isValid():boolean" resolve="isValid" />
+                  <ref role="37wK5l" to="c17a:#SConceptFeature.isValid():boolean" resolve="isValid" />
                 </node>
               </node>
             </node>

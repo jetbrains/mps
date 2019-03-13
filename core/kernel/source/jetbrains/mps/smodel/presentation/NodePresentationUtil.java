@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.smodel.presentation;
 
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.SmartReferentUtil;
@@ -28,11 +27,13 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 
 import java.awt.Font;
+import java.util.Objects;
 
 /**
  * This class provides utility methods for default presentation logic for referenced nodes.
@@ -64,17 +65,27 @@ public class NodePresentationUtil {
 
   public static boolean isLocalTo(SNode referenceNode, SNode referentNode) {
     SModel toModel = referenceNode.getModel();
-    if (toModel == null) return false;
+    if (toModel == null) {
+      return false;
+    }
     SModel fromModel = referentNode.getModel();
-    if (fromModel == null) return false;
-
-    SModule referenceModule = toLanguage(toModel.getModule());
-    if (referenceModule instanceof Language) {
-      SModule referentModule = toLanguage(fromModel.getModule());
-      return referentModule == referenceModule;
+    if (fromModel == null) {
+      return false;
+    }
+    if (toModel == fromModel) {
+      return true;
     }
 
-    return toModel == fromModel;
+    SModule referenceModule = toModel.getModule();
+    SModule referentModule = fromModel.getModule();
+    if (referentModule == referenceModule) {
+      return true;
+    }
+    if (referenceModule instanceof Generator || referentModule instanceof Generator) {
+      // at least one of modules is generator, so toLanguage != null and no null == null case here.
+      return Objects.equals(toLanguage(referenceModule), toLanguage(referentModule));
+    }
+    return false;
   }
 
   public static int getFontStyle(SNode referenceNode, SNode referentNode) {
@@ -89,7 +100,9 @@ public class NodePresentationUtil {
   }
 
   public static int getSortPriority(SNode referenceNode, SNode referentNode) {
-    if (isLocalTo(referenceNode, referentNode)) return -2;
+    if (isLocalTo(referenceNode, referentNode)) {
+      return -2;
+    }
     SModel model = referentNode.getModel();
     if (model == null) {
       return 0;
@@ -100,11 +113,11 @@ public class NodePresentationUtil {
     return 0;
   }
 
-  private static SModule toLanguage(SModule m) {
+  private static SLanguage toLanguage(SModule m) {
     if (m instanceof Generator) {
-      return ((Generator) m).getSourceLanguage();
+      return ((Generator) m).sourceLanguage();
     }
-    return m;
+    return null;
   }
 
   /**

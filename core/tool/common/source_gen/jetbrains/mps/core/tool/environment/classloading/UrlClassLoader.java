@@ -16,6 +16,7 @@ import java.util.Enumeration;
 
 /**
  * No idea why do we need to use this class and not {@code java.net.URLClassLoader}
+ * The last use of this class is to cease along with AntBootstrap class
  */
 public final class UrlClassLoader extends ClassLoader {
   @NonNls

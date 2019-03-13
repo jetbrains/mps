@@ -150,7 +150,7 @@
         <node concept="3clFbF" id="7kBaCiqWYu6" role="3cqZAp">
           <node concept="2OqwBi" id="7kBaCiqWYTr" role="3clFbG">
             <node concept="liA8E" id="7kBaCiqWZfz" role="2OqNvi">
-              <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
+              <ref role="37wK5l" to="yyf4:#ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
               <node concept="Xl_RD" id="7kBaCiqWZj2" role="37wK5m">
                 <property role="Xl_RC" value="All default menu references" />
               </node>
@@ -179,7 +179,7 @@
                     <node concept="2OqwBi" id="KwT0zcl3Pi" role="3JOdhr">
                       <node concept="24CIHX" id="KwT0zcl3Jx" role="2Oq$k0" />
                       <node concept="liA8E" id="KwT0zcl49n" role="2OqNvi">
-                        <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
+                        <ref role="37wK5l" to="yyf4:#ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
                         <node concept="3cmrfG" id="KwT0zcl4eg" role="37wK5m">
                           <property role="3cmrfH" value="1" />
                         </node>
@@ -234,7 +234,7 @@
               <node concept="2OqwBi" id="KwT0zcl6kT" role="3clFbG">
                 <node concept="24CIHX" id="KwT0zcl5T9" role="2Oq$k0" />
                 <node concept="liA8E" id="KwT0zcl6SL" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.done():void" resolve="done" />
+                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.done():void" resolve="done" />
                 </node>
               </node>
             </node>

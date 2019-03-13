@@ -1001,11 +1001,11 @@
             <node concept="2OqwBi" id="4KJeJqcMw8L" role="2Oq$k0">
               <node concept="369mXd" id="4KJeJqcMw8M" role="2Oq$k0" />
               <node concept="liA8E" id="4KJeJqcMw8N" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="4KJeJqcMw8O" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1016,7 +1016,7 @@
             <ref role="3cqZAo" node="4KJeJqcMw8J" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="4KJeJqcMyMx" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1035,11 +1035,11 @@
                   <ref role="2Gs0qQ" node="4KJeJqcMzJe" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="4KJeJqcM$mo" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="4KJeJqcMAI$" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1090,11 +1090,11 @@
             <node concept="2OqwBi" id="4KJeJqcMPj8" role="2Oq$k0">
               <node concept="369mXd" id="4KJeJqcMPj9" role="2Oq$k0" />
               <node concept="liA8E" id="4KJeJqcMPja" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="4KJeJqcMPjb" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1105,7 +1105,7 @@
             <ref role="3cqZAo" node="4KJeJqcMPj4" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="4KJeJqcMPjf" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1124,11 +1124,11 @@
                   <ref role="2Gs0qQ" node="4KJeJqcMPjh" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="4KJeJqcMSyq" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="4KJeJqcMSyr" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1173,11 +1173,11 @@
             <node concept="2OqwBi" id="4KJeJqcO8$w" role="2Oq$k0">
               <node concept="369mXd" id="4KJeJqcO8$x" role="2Oq$k0" />
               <node concept="liA8E" id="4KJeJqcO8$y" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="4KJeJqcO8$z" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1188,7 +1188,7 @@
             <ref role="3cqZAo" node="4KJeJqcO8$s" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="4KJeJqcO8$B" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1207,11 +1207,11 @@
                   <ref role="2Gs0qQ" node="4KJeJqcO8$D" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="4KJeJqcO8$K" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="4KJeJqcO8$L" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1248,11 +1248,11 @@
             <node concept="2OqwBi" id="4KJeJqcORp_" role="2Oq$k0">
               <node concept="369mXd" id="4KJeJqcORpA" role="2Oq$k0" />
               <node concept="liA8E" id="4KJeJqcORpB" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="4KJeJqcORpC" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1263,7 +1263,7 @@
             <ref role="3cqZAo" node="4KJeJqcORpx" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="4KJeJqcORpG" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1282,11 +1282,11 @@
                   <ref role="2Gs0qQ" node="4KJeJqcORpI" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="4KJeJqcORpP" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="4KJeJqcORpQ" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1324,11 +1324,11 @@
             <node concept="2OqwBi" id="3khGH3BKRqT" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BKRqU" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BKRqV" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BKRqW" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1339,7 +1339,7 @@
             <ref role="3cqZAo" node="3khGH3BKRqP" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BKRr0" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1358,11 +1358,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BKRr2" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BKRr9" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BKRra" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1397,11 +1397,11 @@
             <node concept="2OqwBi" id="3khGH3BKRrl" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BKRrm" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BKRrn" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BKRro" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1412,7 +1412,7 @@
             <ref role="3cqZAo" node="3khGH3BKRrh" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BKRrs" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1431,11 +1431,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BKRru" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BKRr_" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BKRrA" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1481,11 +1481,11 @@
             <node concept="2OqwBi" id="3khGH3BLk08" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BLk09" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BLk0a" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BLk0b" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1496,7 +1496,7 @@
             <ref role="3cqZAo" node="3khGH3BLk04" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BLk0f" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1515,11 +1515,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BLk0h" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BLk0o" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BLk0p" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1594,11 +1594,11 @@
             <node concept="2OqwBi" id="3khGH3BLrmO" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BLrmP" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BLrmQ" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BLrmR" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1609,7 +1609,7 @@
             <ref role="3cqZAo" node="3khGH3BLrmK" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BLrmV" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1628,11 +1628,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BLrmX" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BLrn4" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BLrn5" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1681,11 +1681,11 @@
             <node concept="2OqwBi" id="3khGH3BSPTn" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BSPTo" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BSPTp" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BSPTq" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1696,7 +1696,7 @@
             <ref role="3cqZAo" node="3khGH3BSPTj" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BSPTu" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1715,11 +1715,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BSPTw" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BSPTB" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BSPTC" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1761,11 +1761,11 @@
             <node concept="2OqwBi" id="3khGH3BSYlJ" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BSYlK" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BSYlL" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BSYlM" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1776,7 +1776,7 @@
             <ref role="3cqZAo" node="3khGH3BSYlF" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BSYlQ" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1795,11 +1795,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BSYlS" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BSYlZ" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BSYm0" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1848,11 +1848,11 @@
             <node concept="2OqwBi" id="3khGH3BT842" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BT843" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BT844" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BT845" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1863,7 +1863,7 @@
             <ref role="3cqZAo" node="3khGH3BT83Y" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BT849" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1882,11 +1882,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BT84b" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BT84i" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BT84j" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -1922,11 +1922,11 @@
             <node concept="2OqwBi" id="3khGH3BVqUl" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BVqUm" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BVqUn" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BVqUo" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -1937,7 +1937,7 @@
             <ref role="3cqZAo" node="3khGH3BVqUh" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BVqUs" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -1956,11 +1956,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BVqUu" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BVqU_" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BVqUA" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -2005,11 +2005,11 @@
             <node concept="2OqwBi" id="3khGH3BWf_s" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BWf_t" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BWf_u" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BWf_v" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -2020,7 +2020,7 @@
             <ref role="3cqZAo" node="3khGH3BWf_o" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BWf_z" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -2039,11 +2039,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BWf__" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BWf_G" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BWf_H" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>
@@ -2084,11 +2084,11 @@
             <node concept="2OqwBi" id="3khGH3BWAz0" role="2Oq$k0">
               <node concept="369mXd" id="3khGH3BWAz1" role="2Oq$k0" />
               <node concept="liA8E" id="3khGH3BWAz2" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
               </node>
             </node>
             <node concept="liA8E" id="3khGH3BWAz3" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
             </node>
           </node>
         </node>
@@ -2099,7 +2099,7 @@
             <ref role="3cqZAo" node="3khGH3BWAyW" resolve="componentCells" />
           </node>
           <node concept="liA8E" id="3khGH3BWAz7" role="2OqNvi">
-            <ref role="37wK5l" to="33ny:~Set.isEmpty():boolean" resolve="isEmpty" />
+            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
           </node>
         </node>
       </node>
@@ -2118,11 +2118,11 @@
                   <ref role="2Gs0qQ" node="3khGH3BWAz9" resolve="cell" />
                 </node>
                 <node concept="liA8E" id="3khGH3BWAzg" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
                 </node>
               </node>
               <node concept="liA8E" id="3khGH3BWAzh" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Component.isVisible():boolean" resolve="isVisible" />
+                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
               </node>
             </node>
           </node>

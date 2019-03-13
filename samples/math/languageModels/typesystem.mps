@@ -4489,7 +4489,7 @@
                 <node concept="2OqwBi" id="5yEI9As_sEf" role="2OEOjV">
                   <node concept="3622Ei" id="5yEI9As_sEg" role="2Oq$k0" />
                   <node concept="liA8E" id="5yEI9As_sEh" role="2OqNvi">
-                    <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+                    <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
                   </node>
                 </node>
               </node>
@@ -4538,7 +4538,7 @@
                 <node concept="2OqwBi" id="5yEI9As_sEF" role="2OEOjV">
                   <node concept="3622Ei" id="5yEI9As_sEG" role="2Oq$k0" />
                   <node concept="liA8E" id="5yEI9As_sEH" role="2OqNvi">
-                    <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+                    <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
                   </node>
                 </node>
               </node>
@@ -4644,7 +4644,7 @@
                 <node concept="2OqwBi" id="6E96ydYPv7A" role="2OEOjV">
                   <node concept="3622Ei" id="6E96ydYPv7B" role="2Oq$k0" />
                   <node concept="liA8E" id="6E96ydYPv7C" role="2OqNvi">
-                    <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+                    <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
                   </node>
                 </node>
               </node>
@@ -4713,7 +4713,7 @@
                 <node concept="2OqwBi" id="6E96ydYPv82" role="2OEOjV">
                   <node concept="3622Ei" id="6E96ydYPv83" role="2Oq$k0" />
                   <node concept="liA8E" id="6E96ydYPv84" role="2OqNvi">
-                    <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+                    <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
                   </node>
                 </node>
               </node>
@@ -5084,7 +5084,7 @@
                 <node concept="2OqwBi" id="5yEI9As_H1Q" role="2OEOjV">
                   <node concept="3622Ei" id="5yEI9As_H1R" role="2Oq$k0" />
                   <node concept="liA8E" id="5yEI9As_H1S" role="2OqNvi">
-                    <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+                    <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
                   </node>
                 </node>
               </node>

@@ -293,14 +293,14 @@
                   <property role="TrG5h" value="targetModelFQName" />
                   <node concept="2OqwBi" id="1TtVScPHW9a" role="33vP2m">
                     <node concept="liA8E" id="1TtVScPHW9b" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SModelReference.getModelName():java.lang.String" resolve="getModelName" />
+                      <ref role="37wK5l" to="mhbf:#SModelReference.getModelName():java.lang.String" resolve="getModelName" />
                     </node>
                     <node concept="2OqwBi" id="1TtVScPHW9e" role="2Oq$k0">
                       <node concept="37vLTw" id="3GM_nagTryX" role="2Oq$k0">
                         <ref role="3cqZAo" node="i2TQheH" resolve="ref" />
                       </node>
                       <node concept="liA8E" id="1TtVScPHW9g" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SReference.getTargetSModelReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getTargetSModelReference" />
+                        <ref role="37wK5l" to="mhbf:#SReference.getTargetSModelReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getTargetSModelReference" />
                       </node>
                     </node>
                   </node>
@@ -320,7 +320,7 @@
                     <property role="Xl_RC" value="java.util@java_stub" />
                   </node>
                   <node concept="liA8E" id="i2TQxCP" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                     <node concept="37vLTw" id="3GM_nagTzFj" role="37wK5m">
                       <ref role="3cqZAo" node="i2TQsSp" resolve="targetModelFQName" />
                     </node>
@@ -333,7 +333,7 @@
                 <node concept="_YI3z" id="i2TQiFA" role="2JrQYb" />
               </node>
               <node concept="liA8E" id="i2TQm2w" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getReferences():java.lang.Iterable" resolve="getReferences" />
+                <ref role="37wK5l" to="mhbf:#SNode.getReferences():java.lang.Iterable" resolve="getReferences" />
               </node>
             </node>
             <node concept="3cpWsn" id="i2TQheH" role="1Duv9x">
@@ -1323,7 +1323,7 @@
                                       <node concept="3fqX7Q" id="1rmSTqnwEgR" role="3clFbG">
                                         <node concept="2OqwBi" id="1rmSTqnwEgS" role="3fr31v">
                                           <node concept="liA8E" id="1rmSTqnwEgT" role="2OqNvi">
-                                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                            <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                             <node concept="2OqwBi" id="1rmSTqnwEgU" role="37wK5m">
                                               <node concept="2qgKlT" id="1rmSTqnwEgV" role="2OqNvi">
                                                 <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
@@ -1362,7 +1362,7 @@
                             </node>
                             <node concept="2YIFZM" id="1rmSTqnwEh5" role="3uHU7B">
                               <ref role="37wK5l" to="pz2c:7k6J8c3tHXh" resolve="canOverride" />
-                              <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+                              <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                               <node concept="37vLTw" id="1rmSTqnwEh6" role="37wK5m">
                                 <ref role="3cqZAo" node="1rmSTqnwEh7" resolve="it" />
                               </node>
@@ -1377,7 +1377,7 @@
                     </node>
                   </node>
                   <node concept="2YIFZM" id="1rmSTqnwEh9" role="2Oq$k0">
-                    <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+                    <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                     <ref role="37wK5l" to="pz2c:7k6J8c3tHW_" resolve="getInstanceMethods" />
                     <node concept="_YI3z" id="1rmSTqnwEha" role="37wK5m" />
                   </node>
@@ -1391,7 +1391,7 @@
               <property role="TrG5h" value="finder" />
               <node concept="2ShNRf" id="1rmSTqnwEhl" role="33vP2m">
                 <node concept="1pGfFk" id="1rmSTqnwEhm" role="2ShVmc">
-                  <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsFinder" />
+                  <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
                   <node concept="_YI3z" id="1rmSTqnwEhn" role="37wK5m" />
                   <node concept="37vLTw" id="1rmSTqnwEho" role="37wK5m">
                     <ref role="3cqZAo" node="1rmSTqnwEgC" resolve="instanceMethods" />
@@ -1399,7 +1399,7 @@
                 </node>
               </node>
               <node concept="3uibUv" id="1rmSTqnwEhp" role="1tU5fm">
-                <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+                <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
               </node>
             </node>
           </node>
@@ -1470,7 +1470,7 @@
                                       <node concept="3fqX7Q" id="1rmSTqntUkI" role="3clFbG">
                                         <node concept="2OqwBi" id="1rmSTqnoHoe" role="3fr31v">
                                           <node concept="liA8E" id="1rmSTqnoKRe" role="2OqNvi">
-                                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                            <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                             <node concept="2OqwBi" id="1rmSTqnovsJ" role="37wK5m">
                                               <node concept="2qgKlT" id="1rmSTqnoBS5" role="2OqNvi">
                                                 <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
@@ -1509,7 +1509,7 @@
                             </node>
                             <node concept="2YIFZM" id="1rmSTqnth2L" role="3uHU7B">
                               <ref role="37wK5l" to="pz2c:7k6J8c3tHXh" resolve="canOverride" />
-                              <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+                              <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                               <node concept="37vLTw" id="1rmSTqntl_Q" role="37wK5m">
                                 <ref role="3cqZAo" node="1rmSTqnt5vk" resolve="it" />
                               </node>
@@ -1525,7 +1525,7 @@
                   </node>
                   <node concept="2YIFZM" id="1rmSTqnt1_W" role="2Oq$k0">
                     <ref role="37wK5l" to="pz2c:7k6J8c3tHW_" resolve="getInstanceMethods" />
-                    <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+                    <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                     <node concept="_YI3z" id="1rmSTqntlaL" role="37wK5m" />
                   </node>
                 </node>
@@ -1553,7 +1553,7 @@
               <property role="TrG5h" value="finder" />
               <node concept="2ShNRf" id="1rmSTqnvhT3" role="33vP2m">
                 <node concept="1pGfFk" id="1rmSTqnvkgu" role="2ShVmc">
-                  <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsFinder" />
+                  <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
                   <node concept="_YI3z" id="1rmSTqnvkDx" role="37wK5m" />
                   <node concept="37vLTw" id="1rmSTqnvm0i" role="37wK5m">
                     <ref role="3cqZAo" node="1rmSTqnt1_V" resolve="instanceMethods" />
@@ -1561,7 +1561,7 @@
                 </node>
               </node>
               <node concept="3uibUv" id="1rmSTqnvh73" role="1tU5fm">
-                <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsFinder" />
+                <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
               </node>
             </node>
           </node>
@@ -1790,7 +1790,7 @@
                   <node concept="_YI3z" id="4xqiThWQp_A" role="2JrQYb" />
                 </node>
                 <node concept="liA8E" id="4xqiThWQp_B" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+                  <ref role="37wK5l" to="mhbf:#SNode.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
                   <node concept="Xl_RD" id="4xqiThWQp_C" role="37wK5m">
                     <property role="Xl_RC" value="isNative" />
                   </node>
@@ -1929,7 +1929,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1UVYfO0DYpq" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                      <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
                       <node concept="Xl_RD" id="1UVYfO0DYpr" role="37wK5m">
                         <property role="Xl_RC" value="f" />
                       </node>
@@ -1943,7 +1943,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1UVYfO0DXDn" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                      <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
                       <node concept="Xl_RD" id="1UVYfO0DXRB" role="37wK5m">
                         <property role="Xl_RC" value="F" />
                       </node>
@@ -2153,7 +2153,7 @@
                             <node concept="ZC_QK" id="3XR0QgVCmvx" role="1QN54C">
                               <ref role="2aWVGs" to="wyt6:~Object" resolve="Object" />
                               <node concept="ZC_QK" id="3XR0QgVCmvw" role="2aWVGa">
-                                <ref role="2aWVGs" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="2aWVGs" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
                               </node>
                             </node>
                           </node>

@@ -612,7 +612,7 @@
                     <ref role="3cqZAo" node="7YwKlJL2hdE" resolve="m" />
                   </node>
                   <node concept="liA8E" id="1Ij79tqteYz" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                    <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
                   </node>
                 </node>
                 <node concept="A3Dl8" id="1Ij79tqtkmV" role="10QFUM">
@@ -1109,7 +1109,7 @@
                                             </node>
                                           </node>
                                           <node concept="liA8E" id="161JGLBMBID" role="2OqNvi">
-                                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                            <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                             <node concept="Xl_RD" id="161JGLBMBIE" role="37wK5m">
                                               <property role="Xl_RC" value="Deprecated" />
                                             </node>
@@ -1844,7 +1844,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="4w_uUHXwFnT" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
+                            <ref role="37wK5l" to="mhbf:#SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
                             <node concept="355D3s" id="4w_uUHXwF$f" role="37wK5m">
                               <ref role="355D3t" to="tpee:hOIEacT" resolve="IBLDeprecatable" />
                               <ref role="355D3u" to="tpee:hOIEky$" resolve="isDeprecated" />

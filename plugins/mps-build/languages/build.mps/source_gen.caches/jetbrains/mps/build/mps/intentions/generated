@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-bzjttqr6k59fl2r30vy31l19zyw57fo">
+<product version="3" modelHash="626z52mvxnjpnj1v63hvno8g5s03he0">
   <files names="AddCustomLocationDependency_Intention.java:AddCustomPackaging_Intention.java:AddDefaultResources_Intention.java:IntentionsDescriptor.java:ReloadModulesFromDisk_Intention.java:ToggleCompactMpsModule_Intention.java" />
 </product>
 

@@ -993,7 +993,7 @@
                             <ref role="3cqZAo" node="klpHT7rnO9" resolve="cell" />
                           </node>
                           <node concept="liA8E" id="klpHT7rnOt" role="2OqNvi">
-                            <ref role="37wK5l" to="g51k:~EditorCell_Label.setDefaultText(java.lang.String):void" resolve="setDefaultText" />
+                            <ref role="37wK5l" to="g51k:#EditorCell_Label.setDefaultText(java.lang.String):void" resolve="setDefaultText" />
                             <node concept="2OqwBi" id="klpHT7rq3e" role="37wK5m">
                               <node concept="pncrf" id="klpHT7rpD_" role="2Oq$k0" />
                               <node concept="3TrcHB" id="klpHT7rqT3" role="2OqNvi">
@@ -1009,7 +1009,7 @@
                             <ref role="3cqZAo" node="klpHT7rnO9" resolve="cell" />
                           </node>
                           <node concept="liA8E" id="klpHT7yLOw" role="2OqNvi">
-                            <ref role="37wK5l" to="g51k:~EditorCell_Basic.setSelectable(boolean):void" resolve="setSelectable" />
+                            <ref role="37wK5l" to="g51k:#EditorCell_Basic.setSelectable(boolean):void" resolve="setSelectable" />
                             <node concept="3clFbT" id="klpHT7yLPL" role="37wK5m">
                               <property role="3clFbU" value="true" />
                             </node>
@@ -1022,7 +1022,7 @@
                             <ref role="3cqZAo" node="klpHT7rnO9" resolve="cell" />
                           </node>
                           <node concept="liA8E" id="2nUiI4k5DH7" role="2OqNvi">
-                            <ref role="37wK5l" to="g51k:~EditorCell_Basic.setSubstituteInfo(jetbrains.mps.openapi.editor.cells.SubstituteInfo):void" resolve="setSubstituteInfo" />
+                            <ref role="37wK5l" to="g51k:#EditorCell_Basic.setSubstituteInfo(jetbrains.mps.openapi.editor.cells.SubstituteInfo):void" resolve="setSubstituteInfo" />
                             <node concept="2ShNRf" id="2nUiI4k5QIe" role="37wK5m">
                               <node concept="1pGfFk" id="2nUiI4k5QIf" role="2ShVmc">
                                 <ref role="37wK5l" to="6lvu:~CompositeSubstituteInfo.&lt;init&gt;(jetbrains.mps.openapi.editor.EditorContext,jetbrains.mps.nodeEditor.cellMenu.CellContext,jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt[])" resolve="CompositeSubstituteInfo" />
@@ -1350,9 +1350,9 @@
                                 <node concept="2yIwOk" id="UBgfI9cWA7" role="2OqNvi" />
                               </node>
                               <node concept="liA8E" id="5vfjF5c8Lgs" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
                                 <node concept="2YIFZM" id="5vfjF5c8JSb" role="37wK5m">
-                                  <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                                  <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
                                   <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                                   <node concept="2OqwBi" id="UBgfI9cWiY" role="37wK5m">
                                     <node concept="37vLTw" id="UBgfI9cWiZ" role="2Oq$k0">

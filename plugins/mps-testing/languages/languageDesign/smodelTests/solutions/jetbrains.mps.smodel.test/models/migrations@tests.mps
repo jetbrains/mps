@@ -179,7 +179,7 @@
                 <ref role="35c_gD" to="tpee:fz3vP1J" resolve="Expression" />
               </node>
               <node concept="liA8E" id="4gQZRkTTpKW" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
               </node>
             </node>
           </node>
@@ -196,7 +196,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4gQZRkTTpL4" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
               </node>
             </node>
           </node>
@@ -232,7 +232,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4gQZRkTTpLl" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                <ref role="37wK5l" to="c17a:#SAbstractConcept.getName():java.lang.String" resolve="getName" />
               </node>
             </node>
           </node>
@@ -290,7 +290,7 @@
                 <ref role="35c_gD" to="tpee:fz3vP1J" resolve="Expression" />
               </node>
               <node concept="liA8E" id="7BApNipL_T7" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
               </node>
             </node>
           </node>
@@ -307,7 +307,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="7BApNipL_TR" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
               </node>
             </node>
           </node>

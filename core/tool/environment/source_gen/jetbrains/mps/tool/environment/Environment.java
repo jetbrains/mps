@@ -24,10 +24,8 @@ import jetbrains.mps.core.platform.Platform;
  * 
  * There are two base implementations, {@link jetbrains.mps.tool.environment.EnvironmentBase } which is deemed for full-fledged runtime instances, and
  *  {@link jetbrains.mps.tool.environment.AbstractEnvironment } generally intended for lightweight, API-like access to existing runtime instance.
- * 
- * @see jetbrains.mps.tool.environment.EnvironmentContainer 
  */
-public interface Environment extends Retainable {
+public interface Environment {
   /**
    * Creates and opens an empty project
    * 

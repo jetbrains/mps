@@ -252,13 +252,13 @@
             </node>
             <node concept="2YIFZM" id="x3u75dlyLX" role="37vLTx">
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-              <ref role="37wK5l" to="18ew:~NameUtil.pluralize(java.lang.String):java.lang.String" resolve="pluralize" />
+              <ref role="37wK5l" to="18ew:#NameUtil.pluralize(java.lang.String):java.lang.String" resolve="pluralize" />
               <node concept="2YIFZM" id="x3u75dlzDZ" role="37wK5m">
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String):java.lang.String" resolve="capitalize" />
+                <ref role="37wK5l" to="18ew:#NameUtil.capitalize(java.lang.String):java.lang.String" resolve="capitalize" />
                 <node concept="2YIFZM" id="x3u75dlzyC" role="37wK5m">
                   <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String):java.lang.String" resolve="decapitalize" />
+                  <ref role="37wK5l" to="18ew:#NameUtil.decapitalize(java.lang.String):java.lang.String" resolve="decapitalize" />
                   <node concept="2OqwBi" id="x3u75dlyLY" role="37wK5m">
                     <node concept="2OqwBi" id="x3u75dlyLZ" role="2Oq$k0">
                       <node concept="13iPFW" id="x3u75dlyM0" role="2Oq$k0" />
@@ -678,7 +678,7 @@
                     </node>
                     <node concept="2YIFZM" id="x3u75dl_Av" role="37vLTx">
                       <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                      <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String):java.lang.String" resolve="capitalize" />
+                      <ref role="37wK5l" to="18ew:#NameUtil.capitalize(java.lang.String):java.lang.String" resolve="capitalize" />
                       <node concept="3EllGN" id="x3u75dl$Nc" role="37wK5m">
                         <node concept="37vLTw" id="3GM_nagT$8w" role="3ElVtu">
                           <ref role="3cqZAo" node="x3u75dl$MT" resolve="mod" />

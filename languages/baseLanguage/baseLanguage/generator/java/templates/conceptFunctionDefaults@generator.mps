@@ -139,7 +139,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="4D3RMlPNgdd" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.Object):void" resolve="println" />
               <node concept="37vLTw" id="2BHiRxgm_vd" role="37wK5m">
                 <ref role="3cqZAo" node="gCCYkhD" resolve="_parameter_" />
                 <node concept="1ZhdrF" id="gCCYkhC" role="lGtFl">
@@ -204,7 +204,7 @@
                           <node concept="3clFbS" id="htuplMC" role="2VODD2">
                             <node concept="3clFbF" id="htupGX2" role="3cqZAp">
                               <node concept="2YIFZM" id="htupTS5" role="3clFbG">
-                                <ref role="37wK5l" to="18ew:~NameUtil.getGetterName(java.lang.String):java.lang.String" resolve="getGetterName" />
+                                <ref role="37wK5l" to="18ew:#NameUtil.getGetterName(java.lang.String):java.lang.String" resolve="getGetterName" />
                                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                                 <node concept="2OqwBi" id="2wdLO7KeqQI" role="37wK5m">
                                   <node concept="3n3YKJ" id="Z_z4A28LJH" role="2OqNvi" />

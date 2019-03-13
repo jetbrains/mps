@@ -115,7 +115,7 @@
                 <node concept="2OqwBi" id="2pKPpytnqFA" role="3fr31v">
                   <node concept="1Wqviy" id="2pKPpytnqFz" role="2Oq$k0" />
                   <node concept="liA8E" id="2pKPpytnqFI" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                    <ref role="37wK5l" to="wyt6:#String.contains(java.lang.CharSequence):boolean" resolve="contains" />
                     <node concept="Xl_RD" id="2pKPpytnqFL" role="37wK5m">
                       <property role="Xl_RC" value=" " />
                     </node>
@@ -140,7 +140,7 @@
               <node concept="2OqwBi" id="2pKPpytnqG2" role="3fr31v">
                 <node concept="1Wqviy" id="2pKPpytnqG3" role="2Oq$k0" />
                 <node concept="liA8E" id="2pKPpytnqG4" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                  <ref role="37wK5l" to="wyt6:#String.contains(java.lang.CharSequence):boolean" resolve="contains" />
                   <node concept="Xl_RD" id="2pKPpytnqG5" role="37wK5m">
                     <property role="Xl_RC" value=" " />
                   </node>

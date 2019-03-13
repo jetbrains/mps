@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -219,6 +219,14 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   @Override
   public void installComparator() {
     // Overrode to avoid NPE
+  }
+
+  @Override
+  public boolean supportsSortByType() {
+    // we've got our custom replacement, SortByTypeToggleAction, that uses projectView.isSortByType setting,
+    // but different mechanism to build the tree (not treeBuilder+comparator, hence #installComparator(), above, is no-op)
+    // false is to remove IDEA's provided action
+    return false;
   }
 
   @Nullable

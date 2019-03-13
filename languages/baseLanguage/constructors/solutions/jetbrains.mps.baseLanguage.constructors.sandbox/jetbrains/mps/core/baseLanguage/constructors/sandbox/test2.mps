@@ -167,7 +167,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="2WhjvKEQPqh" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.Object):void" resolve="println" />
               <node concept="37vLTw" id="3GM_nagTxHW" role="37wK5m">
                 <ref role="3cqZAo" node="2WhjvKEQPfj" resolve="r" />
               </node>
@@ -253,7 +253,7 @@
                 <ref role="3XVpon" node="3P1yT_0YxhY" resolve="topleft" />
               </node>
               <node concept="liA8E" id="3P1yT_0Yxis" role="2OqNvi">
-                <ref role="37wK5l" to="fbzs:~Point2D.getX():double" resolve="getX" />
+                <ref role="37wK5l" to="fbzs:#Point2D.getX():double" resolve="getX" />
               </node>
             </node>
           </node>
@@ -267,7 +267,7 @@
                 <ref role="3XVpon" node="3P1yT_0YxhY" resolve="topleft" />
               </node>
               <node concept="liA8E" id="3P1yT_0Yxiz" role="2OqNvi">
-                <ref role="37wK5l" to="fbzs:~Point2D.getY():double" resolve="getY" />
+                <ref role="37wK5l" to="fbzs:#Point2D.getY():double" resolve="getY" />
               </node>
             </node>
           </node>
@@ -288,7 +288,7 @@
                     <ref role="3XVpon" node="3P1yT_0Yxi0" resolve="bottomright" />
                   </node>
                   <node concept="liA8E" id="3P1yT_0YxiW" role="2OqNvi">
-                    <ref role="37wK5l" to="fbzs:~Point2D.getX():double" resolve="getX" />
+                    <ref role="37wK5l" to="fbzs:#Point2D.getX():double" resolve="getX" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="3GM_nagT$_s" role="3uHU7w">
@@ -301,7 +301,7 @@
                     <ref role="3XVpon" node="3P1yT_0Yxi0" resolve="bottomright" />
                   </node>
                   <node concept="liA8E" id="3P1yT_0Yxj0" role="2OqNvi">
-                    <ref role="37wK5l" to="fbzs:~Point2D.getY():double" resolve="getY" />
+                    <ref role="37wK5l" to="fbzs:#Point2D.getY():double" resolve="getY" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="3GM_nagTy32" role="3uHU7w">

@@ -260,7 +260,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="7$AKZZXbVTt" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class):jetbrains.mps.components.CoreComponent" resolve="findComponent" />
+                <ref role="37wK5l" to="wyuk:#ComponentHost.findComponent(java.lang.Class):jetbrains.mps.components.CoreComponent" resolve="findComponent" />
                 <node concept="3VsKOn" id="7$AKZZXbVTu" role="37wK5m">
                   <ref role="3VsUkX" to="w1kc:~MPSModuleRepository" resolve="MPSModuleRepository" />
                 </node>
@@ -291,7 +291,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="5AcmpEObeuI" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runWriteAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runWriteAction" />
+                <ref role="37wK5l" to="w1kc:#ModelAccessHelper.runWriteAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runWriteAction" />
                 <node concept="1bVj0M" id="5AcmpEObeuJ" role="37wK5m">
                   <node concept="3clFbS" id="5AcmpEObeuK" role="1bW5cS">
                     <node concept="3cpWs8" id="5AcmpEObeuL" role="3cqZAp">
@@ -301,7 +301,7 @@
                           <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
                         </node>
                         <node concept="2YIFZM" id="5AcmpEObeuO" role="33vP2m">
-                          <ref role="37wK5l" to="w0gx:~ModuleReference.parseReference(java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference" resolve="parseReference" />
+                          <ref role="37wK5l" to="w0gx:#ModuleReference.parseReference(java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference" resolve="parseReference" />
                           <ref role="1Pybhc" to="w0gx:~ModuleReference" resolve="ModuleReference" />
                           <node concept="2OqwBi" id="5AcmpEObeuP" role="37wK5m">
                             <node concept="37vLTw" id="5AcmpEObeuQ" role="2Oq$k0">
@@ -325,7 +325,7 @@
                             <ref role="3cqZAo" node="5AcmpEObeuM" resolve="solutionRef" />
                           </node>
                           <node concept="liA8E" id="5AcmpEObeuX" role="2OqNvi">
-                            <ref role="37wK5l" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
+                            <ref role="37wK5l" to="lui2:#SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
                             <node concept="37vLTw" id="5AcmpEObeuY" role="37wK5m">
                               <ref role="3cqZAo" node="7$AKZZXbVTo" resolve="repo" />
                             </node>
@@ -365,7 +365,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="5AcmpEObevf" role="2OqNvi">
-                              <ref role="37wK5l" to="j8aq:~ReloadableModule.getClass(java.lang.String):java.lang.Class" resolve="getClass" />
+                              <ref role="37wK5l" to="j8aq:#ReloadableModule.getClass(java.lang.String):java.lang.Class" resolve="getClass" />
                               <node concept="2OqwBi" id="5AcmpEObevg" role="37wK5m">
                                 <node concept="37vLTw" id="5AcmpEObevh" role="2Oq$k0">
                                   <ref role="3cqZAo" node="1Vi5mb_oEYY" resolve="properties" />
@@ -391,7 +391,7 @@
                               <ref role="37wK5l" to="jo3e:KL8Aqlj5zJ" resolve="error" />
                               <node concept="2YIFZM" id="5AcmpEObevp" role="37wK5m">
                                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                                <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                                 <node concept="Xl_RD" id="5AcmpEObevq" role="37wK5m">
                                   <property role="Xl_RC" value="cannot find class '%s' in solution %s" />
                                 </node>
@@ -461,19 +461,19 @@
                 <node concept="2OqwBi" id="5AcmpEOcg3p" role="33vP2m">
                   <node concept="2OqwBi" id="5AcmpEOcg3q" role="2Oq$k0">
                     <node concept="2YIFZM" id="5AcmpEOcg3r" role="2Oq$k0">
-                      <ref role="37wK5l" to="33ny:~Arrays.stream(java.lang.Object[]):java.util.stream.Stream" resolve="stream" />
+                      <ref role="37wK5l" to="33ny:#Arrays.stream(java.lang.Object[]):java.util.stream.Stream" resolve="stream" />
                       <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                       <node concept="2OqwBi" id="5AcmpEOcg3s" role="37wK5m">
                         <node concept="37vLTw" id="5AcmpEOcg3t" role="2Oq$k0">
                           <ref role="3cqZAo" node="5AcmpEObeuD" resolve="mainClass" />
                         </node>
                         <node concept="liA8E" id="5AcmpEOcg3u" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Class.getMethods():java.lang.reflect.Method[]" resolve="getMethods" />
+                          <ref role="37wK5l" to="wyt6:#Class.getMethods():java.lang.reflect.Method[]" resolve="getMethods" />
                         </node>
                       </node>
                     </node>
                     <node concept="liA8E" id="5AcmpEOcg3v" role="2OqNvi">
-                      <ref role="37wK5l" to="1ctc:~Stream.filter(java.util.function.Predicate):java.util.stream.Stream" resolve="filter" />
+                      <ref role="37wK5l" to="1ctc:#Stream.filter(java.util.function.Predicate):java.util.stream.Stream" resolve="filter" />
                       <node concept="1bVj0M" id="5AcmpEOcg3w" role="37wK5m">
                         <node concept="37vLTG" id="5AcmpEOcg3x" role="1bW2Oz">
                           <property role="TrG5h" value="m" />
@@ -493,7 +493,7 @@
                                     <ref role="3cqZAo" node="5AcmpEOcg3x" resolve="m" />
                                   </node>
                                   <node concept="liA8E" id="5AcmpEOcxh5" role="2OqNvi">
-                                    <ref role="37wK5l" to="t6h5:~Method.getParameterCount():int" resolve="getParameterCount" />
+                                    <ref role="37wK5l" to="t6h5:#Method.getParameterCount():int" resolve="getParameterCount" />
                                   </node>
                                 </node>
                               </node>
@@ -503,26 +503,26 @@
                                     <ref role="3cqZAo" node="5AcmpEObSuk" resolve="methodName" />
                                   </node>
                                   <node concept="liA8E" id="5AcmpEOcg3C" role="2OqNvi">
-                                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                    <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                                     <node concept="2OqwBi" id="5AcmpEOcg3D" role="37wK5m">
                                       <node concept="37vLTw" id="5AcmpEOcg3E" role="2Oq$k0">
                                         <ref role="3cqZAo" node="5AcmpEOcg3x" resolve="m" />
                                       </node>
                                       <node concept="liA8E" id="5AcmpEOcg3F" role="2OqNvi">
-                                        <ref role="37wK5l" to="t6h5:~Method.getName():java.lang.String" resolve="getName" />
+                                        <ref role="37wK5l" to="t6h5:#Method.getName():java.lang.String" resolve="getName" />
                                       </node>
                                     </node>
                                   </node>
                                 </node>
                                 <node concept="2YIFZM" id="5AcmpEOcg3G" role="3uHU7w">
-                                  <ref role="37wK5l" to="t6h5:~Modifier.isStatic(int):boolean" resolve="isStatic" />
+                                  <ref role="37wK5l" to="t6h5:#Modifier.isStatic(int):boolean" resolve="isStatic" />
                                   <ref role="1Pybhc" to="t6h5:~Modifier" resolve="Modifier" />
                                   <node concept="2OqwBi" id="5AcmpEOcg3H" role="37wK5m">
                                     <node concept="37vLTw" id="5AcmpEOcg3I" role="2Oq$k0">
                                       <ref role="3cqZAo" node="5AcmpEOcg3x" resolve="m" />
                                     </node>
                                     <node concept="liA8E" id="5AcmpEOcg3J" role="2OqNvi">
-                                      <ref role="37wK5l" to="t6h5:~Method.getModifiers():int" resolve="getModifiers" />
+                                      <ref role="37wK5l" to="t6h5:#Method.getModifiers():int" resolve="getModifiers" />
                                     </node>
                                   </node>
                                 </node>
@@ -534,9 +534,9 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="5AcmpEOcg3K" role="2OqNvi">
-                    <ref role="37wK5l" to="1ctc:~Stream.collect(java.util.stream.Collector):java.lang.Object" resolve="collect" />
+                    <ref role="37wK5l" to="1ctc:#Stream.collect(java.util.stream.Collector):java.lang.Object" resolve="collect" />
                     <node concept="2YIFZM" id="5AcmpEOcg3L" role="37wK5m">
-                      <ref role="37wK5l" to="1ctc:~Collectors.toList():java.util.stream.Collector" resolve="toList" />
+                      <ref role="37wK5l" to="1ctc:#Collectors.toList():java.util.stream.Collector" resolve="toList" />
                       <ref role="1Pybhc" to="1ctc:~Collectors" resolve="Collectors" />
                       <node concept="3uibUv" id="5AcmpEOdNfX" role="3PaCim">
                         <ref role="3uigEE" to="t6h5:~Method" resolve="Method" />
@@ -553,7 +553,7 @@
                     <ref role="37wK5l" to="jo3e:KL8Aqlj5zJ" resolve="error" />
                     <node concept="2YIFZM" id="5AcmpEOcn8U" role="37wK5m">
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                      <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
                       <node concept="Xl_RD" id="5AcmpEOcnh2" role="37wK5m">
                         <property role="Xl_RC" value="No public static method %s in the class %s" />
                       </node>
@@ -565,7 +565,7 @@
                           <ref role="3cqZAo" node="5AcmpEObeuD" resolve="mainClass" />
                         </node>
                         <node concept="liA8E" id="5AcmpEOcq_N" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Class.getName():java.lang.String" resolve="getName" />
+                          <ref role="37wK5l" to="wyt6:#Class.getName():java.lang.String" resolve="getName" />
                         </node>
                       </node>
                     </node>
@@ -578,7 +578,7 @@
                   <ref role="3cqZAo" node="5AcmpEOcg3o" resolve="methods" />
                 </node>
                 <node concept="liA8E" id="5AcmpEOclfm" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~List.isEmpty():boolean" resolve="isEmpty" />
+                  <ref role="37wK5l" to="33ny:#List.isEmpty():boolean" resolve="isEmpty" />
                 </node>
               </node>
             </node>
@@ -629,7 +629,7 @@
                         <ref role="3cqZAo" node="5AcmpEOcrJZ" resolve="m" />
                       </node>
                       <node concept="liA8E" id="5AcmpEOczZR" role="2OqNvi">
-                        <ref role="37wK5l" to="t6h5:~Method.getParameterTypes():java.lang.Class[]" resolve="getParameterTypes" />
+                        <ref role="37wK5l" to="t6h5:#Method.getParameterTypes():java.lang.Class[]" resolve="getParameterTypes" />
                       </node>
                     </node>
                   </node>
@@ -658,7 +658,7 @@
                           <ref role="3cqZAo" node="5AcmpEOcrJZ" resolve="m" />
                         </node>
                         <node concept="liA8E" id="5AcmpEOcLqk" role="2OqNvi">
-                          <ref role="37wK5l" to="t6h5:~Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
+                          <ref role="37wK5l" to="t6h5:#Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
                           <node concept="10Nm6u" id="5AcmpEOcMrJ" role="37wK5m" />
                           <node concept="37vLTw" id="5AcmpEOcMKB" role="37wK5m">
                             <ref role="3cqZAo" to="jo3e:KL8Aqlj5lM" resolve="myEnvironment" />
@@ -678,7 +678,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="5AcmpEOcJyu" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Class.isAssignableFrom(java.lang.Class):boolean" resolve="isAssignableFrom" />
+                      <ref role="37wK5l" to="wyt6:#Class.isAssignableFrom(java.lang.Class):boolean" resolve="isAssignableFrom" />
                       <node concept="3VsKOn" id="5AcmpEOcKlS" role="37wK5m">
                         <ref role="3VsUkX" to="79ha:HKKzfMjqRV" resolve="Environment" />
                       </node>
@@ -718,7 +718,7 @@
                         <ref role="3cqZAo" node="5AcmpEOd3Fd" resolve="m" />
                       </node>
                       <node concept="liA8E" id="5AcmpEOd3EP" role="2OqNvi">
-                        <ref role="37wK5l" to="t6h5:~Method.getParameterTypes():java.lang.Class[]" resolve="getParameterTypes" />
+                        <ref role="37wK5l" to="t6h5:#Method.getParameterTypes():java.lang.Class[]" resolve="getParameterTypes" />
                       </node>
                     </node>
                   </node>
@@ -747,7 +747,7 @@
                           <ref role="3cqZAo" node="5AcmpEOd3Fd" resolve="m" />
                         </node>
                         <node concept="liA8E" id="5AcmpEOd3F3" role="2OqNvi">
-                          <ref role="37wK5l" to="t6h5:~Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
+                          <ref role="37wK5l" to="t6h5:#Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
                           <node concept="10Nm6u" id="5AcmpEOd3F4" role="37wK5m" />
                           <node concept="2OqwBi" id="5AcmpEOd5Zp" role="37wK5m">
                             <node concept="37vLTw" id="5AcmpEOd3F5" role="2Oq$k0">
@@ -772,7 +772,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="5AcmpEOd3Fb" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Class.isAssignableFrom(java.lang.Class):boolean" resolve="isAssignableFrom" />
+                      <ref role="37wK5l" to="wyt6:#Class.isAssignableFrom(java.lang.Class):boolean" resolve="isAssignableFrom" />
                       <node concept="3VsKOn" id="5AcmpEOd3Fc" role="37wK5m">
                         <ref role="3VsUkX" to="4o98:~Platform" resolve="Platform" />
                       </node>
@@ -816,7 +816,7 @@
                         <ref role="3cqZAo" node="5AcmpEOdnPP" resolve="m" />
                       </node>
                       <node concept="liA8E" id="5AcmpEOdnPr" role="2OqNvi">
-                        <ref role="37wK5l" to="t6h5:~Method.getParameterTypes():java.lang.Class[]" resolve="getParameterTypes" />
+                        <ref role="37wK5l" to="t6h5:#Method.getParameterTypes():java.lang.Class[]" resolve="getParameterTypes" />
                       </node>
                     </node>
                   </node>
@@ -843,7 +843,7 @@
                       <ref role="3cqZAo" node="5AcmpEOdnPP" resolve="m" />
                     </node>
                     <node concept="liA8E" id="5AcmpEOdnPD" role="2OqNvi">
-                      <ref role="37wK5l" to="t6h5:~Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
+                      <ref role="37wK5l" to="t6h5:#Method.invoke(java.lang.Object,java.lang.Object...):java.lang.Object" resolve="invoke" />
                       <node concept="10Nm6u" id="5AcmpEOdnPE" role="37wK5m" />
                     </node>
                   </node>

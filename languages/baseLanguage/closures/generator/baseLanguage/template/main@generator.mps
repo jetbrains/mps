@@ -5522,7 +5522,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="hRrq45E" role="2OqNvi">
-                        <ref role="37wK5l" to="q1l7:~TemplateQueryContext.getGenerator():jetbrains.mps.generator.template.ITemplateGenerator" resolve="getGenerator" />
+                        <ref role="37wK5l" to="q1l7:#TemplateQueryContext.getGenerator():jetbrains.mps.generator.template.ITemplateGenerator" resolve="getGenerator" />
                       </node>
                     </node>
                   </node>
@@ -10326,7 +10326,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="hA2jBy1" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~Iterator.hasNext():boolean" resolve="hasNext" />
+                            <ref role="37wK5l" to="33ny:#Iterator.hasNext():boolean" resolve="hasNext" />
                           </node>
                         </node>
                       </node>
@@ -10503,7 +10503,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="hA2jCKX" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~Iterator.next():java.lang.Object" resolve="next" />
+                            <ref role="37wK5l" to="33ny:#Iterator.next():java.lang.Object" resolve="next" />
                           </node>
                         </node>
                       </node>
@@ -13589,7 +13589,7 @@
                                         </node>
                                       </node>
                                       <node concept="liA8E" id="hO1Rvfo" role="2OqNvi">
-                                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                                        <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
                                         <node concept="Xl_RD" id="hO1Rvfp" role="37wK5m">
                                           <property role="Xl_RC" value="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
                                         </node>
@@ -18015,7 +18015,7 @@
                     <node concept="3clFbF" id="5wbBYSJo8L1" role="3cqZAp">
                       <node concept="3TNMnd" id="5wbBYSJo8L0" role="3clFbG">
                         <ref role="3TNMnq" node="5wbBYSJo81A" resolve="F" />
-                        <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                        <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
                         <node concept="raruj" id="5wbBYSJo8MI" role="lGtFl" />
                         <node concept="1ZhdrF" id="5wbBYSJo8No" role="lGtFl">
                           <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/4032730095448229738/4032730095448229757" />

@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.behavior.ModuleIdentity__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
 
@@ -71,9 +72,9 @@ import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
       }
       ListSequence.fromList(SLinkOperations.getChildren(generatorStep, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0x73246de9adf5a45cL, "generator"))).addElement(gmp);
     } else {
-      SModuleReference languageModuleRef = as_mld0p3_a0a0a0a0c0r(generatorIdentity.resolve(myGeneratorLookupRepo), Generator.class).getSourceLanguage().getModuleReference();
+      SLanguage srcLanguage = as_mld0p3_a0a0a0a2a71(generatorIdentity.resolve(myGeneratorLookupRepo), Generator.class).sourceLanguage();
       SNode langId = SModelOperations.createNewNode(myTargetModel, null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId"));
-      LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(langId, MetaAdapterFactory.getLanguage(languageModuleRef));
+      LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(langId, srcLanguage);
       SNode transform;
       if (myDistinctSteps || mySharedLanguagesStep == null) {
         transform = SModelOperations.createNewNode(myTargetModel, null, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, "jetbrains.mps.lang.generator.plan.structure.Transform"));
@@ -87,7 +88,7 @@ import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
       ListSequence.fromList(SLinkOperations.getChildren(transform, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages"))).addElement(langId);
     }
   }
-  private static <T> T as_mld0p3_a0a0a0a0c0r(Object o, Class<T> type) {
+  private static <T> T as_mld0p3_a0a0a0a2a71(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

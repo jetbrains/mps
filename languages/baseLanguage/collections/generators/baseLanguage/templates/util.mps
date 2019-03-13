@@ -207,7 +207,7 @@
           <node concept="3cpWs3" id="i3QAlyr" role="3clFbG">
             <node concept="2YIFZM" id="i3QAlys" role="3uHU7w">
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-              <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
+              <ref role="37wK5l" to="wyt6:#String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
               <node concept="37vLTw" id="2BHiRxghg9G" role="37wK5m">
                 <ref role="3cqZAo" node="i3QAlyy" resolve="o" />
               </node>
@@ -346,7 +346,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2ZbXqoJYVfJ" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:#SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
               <node concept="Xjq3P" id="2ZbXqoJYVfK" role="37wK5m" />
               <node concept="37vLTw" id="2BHiRxglbug" role="37wK5m">
                 <ref role="3cqZAo" node="2ZbXqoJYVfA" resolve="value" />
@@ -368,7 +368,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2ZbXqoJYVfT" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+              <ref role="37wK5l" to="mhbf:#SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
               <node concept="Xjq3P" id="2ZbXqoJYVfU" role="37wK5m" />
             </node>
           </node>
@@ -396,7 +396,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2ZbXqoJYVg7" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                <ref role="37wK5l" to="mhbf:#SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
                 <node concept="Xjq3P" id="2ZbXqoJYVg8" role="37wK5m" />
               </node>
             </node>

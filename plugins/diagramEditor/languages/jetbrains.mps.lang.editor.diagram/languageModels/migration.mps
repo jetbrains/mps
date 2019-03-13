@@ -281,7 +281,7 @@
                           </node>
                           <node concept="2YIFZM" id="3xsoX6owRsi" role="33vP2m">
                             <ref role="1Pybhc" to="18ew:~MacrosFactory" resolve="MacrosFactory" />
-                            <ref role="37wK5l" to="18ew:~MacrosFactory.forModule(org.jetbrains.mps.openapi.module.SModule):jetbrains.mps.util.MacroHelper" resolve="forModule" />
+                            <ref role="37wK5l" to="18ew:#MacrosFactory.forModule(org.jetbrains.mps.openapi.module.SModule):jetbrains.mps.util.MacroHelper" resolve="forModule" />
                             <node concept="37vLTw" id="3xsoX6owRsk" role="37wK5m">
                               <ref role="3cqZAo" node="4qBHWh_rspt" resolve="m" />
                             </node>
@@ -299,13 +299,13 @@
                               <ref role="3cqZAo" node="3xsoX6owRsh" resolve="macros" />
                             </node>
                             <node concept="liA8E" id="4qBHWh_ssBh" role="2OqNvi">
-                              <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String):java.lang.String" resolve="shrinkPath" />
+                              <ref role="37wK5l" to="18ew:#MacroHelper.shrinkPath(java.lang.String):java.lang.String" resolve="shrinkPath" />
                               <node concept="2OqwBi" id="4qBHWh_suTY" role="37wK5m">
                                 <node concept="37vLTw" id="3xsoX6owRsn" role="2Oq$k0">
                                   <ref role="3cqZAo" node="3xsoX6owRsh" resolve="macros" />
                                 </node>
                                 <node concept="liA8E" id="4qBHWh_svg_" role="2OqNvi">
-                                  <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String):java.lang.String" resolve="expandPath" />
+                                  <ref role="37wK5l" to="18ew:#MacroHelper.expandPath(java.lang.String):java.lang.String" resolve="expandPath" />
                                   <node concept="2OqwBi" id="4qBHWh_svJN" role="37wK5m">
                                     <node concept="37vLTw" id="4qBHWh_svqW" role="2Oq$k0">
                                       <ref role="3cqZAo" node="4qBHWh_rCK_" resolve="it" />
@@ -353,7 +353,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="4qBHWh_sDTm" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
+                            <ref role="37wK5l" to="mhbf:#SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
                             <node concept="355D3s" id="4qBHWh_sE4s" role="37wK5m">
                               <ref role="355D3t" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
                               <ref role="355D3u" to="tpce:gSMwhzt" resolve="iconPath" />
@@ -454,7 +454,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="7eHFHBMw84k" role="2OqNvi">
-                            <ref role="37wK5l" to="w1kc:~SModelInternal.addLanguage(org.jetbrains.mps.openapi.language.SLanguage):void" resolve="addLanguage" />
+                            <ref role="37wK5l" to="w1kc:#SModelInternal.addLanguage(org.jetbrains.mps.openapi.language.SLanguage):void" resolve="addLanguage" />
                             <node concept="pHN19" id="7eHFHBMw84l" role="37wK5m">
                               <node concept="2V$Bhx" id="7eHFHBMw84m" role="2V$M_3">
                                 <property role="2V$B1T" value="982eb8df-2c96-4bd7-9963-11712ea622e5" />

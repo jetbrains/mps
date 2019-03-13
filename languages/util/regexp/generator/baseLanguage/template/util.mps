@@ -138,7 +138,7 @@
               </node>
             </node>
             <node concept="liA8E" id="67iNJ0IU83T" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:#SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
               <node concept="Xjq3P" id="67iNJ0IU83U" role="37wK5m" />
               <node concept="3clFbT" id="67iNJ0IU84H" role="37wK5m">
                 <property role="3clFbU" value="true" />
@@ -161,7 +161,7 @@
               </node>
             </node>
             <node concept="liA8E" id="67iNJ0IU844" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:#SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
               <node concept="Xjq3P" id="67iNJ0IU845" role="37wK5m" />
               <node concept="10Nm6u" id="67iNJ0IU846" role="37wK5m" />
             </node>
@@ -191,7 +191,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="67iNJ0IU84k" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                <ref role="37wK5l" to="mhbf:#SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
                 <node concept="Xjq3P" id="67iNJ0IU84l" role="37wK5m" />
               </node>
             </node>

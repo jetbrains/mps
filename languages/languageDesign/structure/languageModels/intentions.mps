@@ -635,13 +635,13 @@
                   <node concept="2OqwBi" id="1sZSvV3MgkU" role="37wK5m">
                     <node concept="1XNTG" id="1sZSvV3MgkV" role="2Oq$k0" />
                     <node concept="liA8E" id="1sZSvV3MgkW" role="2OqNvi">
-                      <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                      <ref role="37wK5l" to="cj4x:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
                     </node>
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="1sZSvV3MgkX" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~ModuleRepositoryFacade.getAllModels():java.util.Collection" resolve="getAllModels" />
+                <ref role="37wK5l" to="w1kc:#ModuleRepositoryFacade.getAllModels():java.util.Collection" resolve="getAllModels" />
               </node>
             </node>
           </node>
@@ -892,7 +892,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="73kiaCI9g8e" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+                            <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
                             <node concept="3cmrfG" id="73kiaCI9iUe" role="37wK5m">
                               <property role="3cmrfH" value="0" />
                             </node>
@@ -973,7 +973,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="73kiaCI9uQm" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Random.nextInt(int):int" resolve="nextInt" />
+                  <ref role="37wK5l" to="33ny:#Random.nextInt(int):int" resolve="nextInt" />
                   <node concept="2nou5x" id="73kiaCI9uQn" role="37wK5m">
                     <property role="2noCCI" value="1000000" />
                   </node>
@@ -993,7 +993,7 @@
               <node concept="2OqwBi" id="73kiaCI9Kj3" role="3uHU7B">
                 <node concept="2OqwBi" id="73kiaCI9HDn" role="2Oq$k0">
                   <node concept="liA8E" id="73kiaCI9HDp" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:~Color.darker():java.awt.Color" resolve="darker" />
+                    <ref role="37wK5l" to="z60i:#Color.darker():java.awt.Color" resolve="darker" />
                   </node>
                   <node concept="2ShNRf" id="73kiaCI9EHv" role="2Oq$k0">
                     <node concept="1pGfFk" id="73kiaCI9EHw" role="2ShVmc">
@@ -1005,7 +1005,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="73kiaCI9KK6" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Color.getRGB():int" resolve="getRGB" />
+                  <ref role="37wK5l" to="z60i:#Color.getRGB():int" resolve="getRGB" />
                 </node>
               </node>
               <node concept="2nou5x" id="1q0v2XHycfC" role="3uHU7w">
@@ -1056,7 +1056,7 @@
                 <property role="Xl_RC" value="" />
               </node>
               <node concept="2YIFZM" id="73kiaCI9_yX" role="3uHU7B">
-                <ref role="37wK5l" to="wyt6:~Integer.toHexString(int):java.lang.String" resolve="toHexString" />
+                <ref role="37wK5l" to="wyt6:#Integer.toHexString(int):java.lang.String" resolve="toHexString" />
                 <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
                 <node concept="37vLTw" id="73kiaCI9_ze" role="37wK5m">
                   <ref role="3cqZAo" node="73kiaCI9_zc" resolve="ic" />
@@ -1089,7 +1089,7 @@
                 <ref role="3cqZAo" node="73kiaCI9_yT" resolve="c" />
               </node>
               <node concept="liA8E" id="73kiaCI9_zb" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
               </node>
             </node>
             <node concept="3cmrfG" id="73kiaCI9_z8" role="3uHU7w">

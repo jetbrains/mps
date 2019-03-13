@@ -501,7 +501,7 @@
                     <ref role="3cqZAo" node="1vfbBx2m2yY" resolve="joined" />
                   </node>
                   <node concept="liA8E" id="1vfbBx2m2yU" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+                    <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
                     <node concept="3cmrfG" id="1vfbBx2m2yV" role="37wK5m">
                       <property role="3cmrfH" value="0" />
                     </node>
@@ -511,7 +511,7 @@
                           <ref role="3cqZAo" node="1vfbBx2m2yY" resolve="joined" />
                         </node>
                         <node concept="liA8E" id="1vfbBx2m2zn" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                          <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
                         </node>
                       </node>
                       <node concept="3cmrfG" id="1vfbBx2m4Ft" role="3uHU7w">

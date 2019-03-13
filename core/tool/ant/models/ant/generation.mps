@@ -175,10 +175,10 @@
         <node concept="3clFbF" id="58KrZDESx$h" role="3cqZAp">
           <node concept="2OqwBi" id="58KrZDESx$p" role="3clFbG">
             <node concept="liA8E" id="58KrZDESx$v" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
               <node concept="2OqwBi" id="58KrZDESx$R" role="37wK5m">
                 <node concept="liA8E" id="58KrZDESx$Y" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~File.getPath():java.lang.String" resolve="getPath" />
+                  <ref role="37wK5l" to="guwi:#File.getPath():java.lang.String" resolve="getPath" />
                 </node>
                 <node concept="2OqwBi" id="58KrZDESx$C" role="2Oq$k0">
                   <node concept="liA8E" id="58KrZDESx$I" role="2OqNvi">
@@ -447,6 +447,22 @@
                   <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
                 </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1ROuiI1zlk" role="3cqZAp">
+          <node concept="3SKdUq" id="1ROuiI1zlm" role="3SKWNk">
+            <property role="3SKdUp" value="GeneratorWorker uses MpsEnvironment, which goes extra mile to manage plugin classes with their own classloaders." />
+          </node>
+        </node>
+        <node concept="3clFbF" id="1ROuiI1yXs" role="3cqZAp">
+          <node concept="2OqwBi" id="1ROuiI1z4E" role="3clFbG">
+            <node concept="37vLTw" id="1ROuiI1yXq" role="2Oq$k0">
+              <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
+            </node>
+            <node concept="liA8E" id="1ROuiI1zaz" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:28$8eDn5Luf" resolve="classpathWithPlugins" />
+              <node concept="3clFbT" id="1ROuiI1zcr" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -781,7 +797,7 @@
         <node concept="3cpWs6" id="3ufQioQQtFz" role="3cqZAp">
           <node concept="2YIFZM" id="3ufQioQQtF$" role="3cqZAk">
             <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
-            <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String):boolean" resolve="parseBoolean" />
+            <ref role="37wK5l" to="wyt6:#Boolean.parseBoolean(java.lang.String):boolean" resolve="parseBoolean" />
             <node concept="2OqwBi" id="3ufQioQQtF_" role="37wK5m">
               <node concept="37vLTw" id="2BHiRxeufOG" role="2Oq$k0">
                 <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
@@ -816,7 +832,7 @@
                 <ref role="3cqZAo" to="asz6:1bMaI2Xpbut" resolve="SHOW_DIFF" />
               </node>
               <node concept="2YIFZM" id="3ufQioQQtFO" role="37wK5m">
-                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean):java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:#Boolean.toString(boolean):java.lang.String" resolve="toString" />
                 <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
                 <node concept="37vLTw" id="2BHiRxghekK" role="37wK5m">
                   <ref role="3cqZAo" node="3ufQioQQtFG" resolve="isDifferenceCalculated" />

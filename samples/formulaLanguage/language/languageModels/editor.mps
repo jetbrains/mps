@@ -910,7 +910,7 @@
               </node>
               <node concept="tyxLq" id="1wEcoXjJ0TQ" role="2OqNvi">
                 <node concept="2YIFZM" id="1wEcoXjJ0TR" role="tz02z">
-                  <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String):int" resolve="parseInt" />
+                  <ref role="37wK5l" to="wyt6:#Integer.parseInt(java.lang.String):int" resolve="parseInt" />
                   <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
                   <node concept="ub8z3" id="1wEcoXjJ0TV" role="37wK5m" />
                 </node>
@@ -996,7 +996,7 @@
             <node concept="2OqwBi" id="1wEcoXjJ0Vj" role="3clFbw">
               <node concept="ub8z3" id="1wEcoXjJ0VG" role="2Oq$k0" />
               <node concept="liA8E" id="1wEcoXjJ0Vl" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
                 <node concept="Xl_RD" id="1wEcoXjJ0Vm" role="37wK5m">
                   <property role="Xl_RC" value="." />
                 </node>

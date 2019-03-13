@@ -18,15 +18,15 @@ package jetbrains.mps.persistence;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
+import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.smodel.SModelId.ForeignSModelId;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelId.RegularSModelId;
 import jetbrains.mps.smodel.SModelId.RelativePathSModelId;
+import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -49,17 +49,11 @@ import org.jetbrains.mps.openapi.persistence.SNodeIdFactory;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
  * evgeny, 10/23/12
@@ -216,24 +210,30 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
 
   @Override
   @Nullable
-  public SNodeId createNodeId(@NotNull String text) {
-    if (text.length() == 0) return null;
-    char c = text.charAt(0);
+  public SNodeId createNodeId(@NotNull String nodeIdString) {
+    if (nodeIdString.isEmpty()) return null;
 
-    if (c == '~' || c <= '9' && c >= '0') {
+    if (isPreinstalledNodeId(nodeIdString)) {
       // default id is supported without type+colon prefix
-      return jetbrains.mps.smodel.SNodeId.fromString(text);
+      return jetbrains.mps.smodel.SNodeId.fromString(nodeIdString);
     }
 
-    int colon = text.indexOf(':');
+    int colon = nodeIdString.indexOf(':');
     if (colon == -1) {
-      throw new IncorrectNodeIdFormatException(String.format("The node id text '%s' does not contain the colon ':' separator", text), null);
+      throw new IncorrectNodeIdFormatException(String.format("The node id text '%s' does not contain the colon ':' separator", nodeIdString), null);
     }
-    SNodeIdFactory factory = myNodeIdFactory.get(text.substring(0, colon));
+    SNodeIdFactory factory = myNodeIdFactory.get(nodeIdString.substring(0, colon));
     if (factory == null) {
       return null;
     }
-    return factory.create(text.substring(colon + 1));
+    return factory.create(nodeIdString.substring(colon + 1));
+  }
+
+  private boolean isPreinstalledNodeId(@NotNull String nodeIdString) {
+    char first = nodeIdString.charAt(0);
+    return String.valueOf(first).equals(Foreign.ID_PREFIX)
+           || String.valueOf(first).equals(StringBasedIdForJavaStubMethods.ID_PREFIX)
+           || first <= '9' && first >= '0';
   }
 
   @NotNull

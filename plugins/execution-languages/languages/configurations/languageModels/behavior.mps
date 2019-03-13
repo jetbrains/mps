@@ -1235,7 +1235,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="4z_irkM0Chj" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
                               <node concept="37vLTw" id="2BHiRxgmw$v" role="37wK5m">
                                 <ref role="3cqZAo" node="1ovLDatOkEJ" resolve="name" />
                               </node>

@@ -395,7 +395,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="X" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:#Set.add(java.lang.Object):boolean" resolve="add" />
                   <node concept="37vLTw" id="10" role="37wK5m">
                     <ref role="3cqZAo" node="R" resolve="nonTypesystemRule" />
                   </node>
@@ -428,7 +428,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="1a" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:#Set.add(java.lang.Object):boolean" resolve="add" />
                   <node concept="37vLTw" id="1d" role="37wK5m">
                     <ref role="3cqZAo" node="14" resolve="nonTypesystemRule" />
                   </node>
@@ -649,7 +649,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2F" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze():jetbrains.mps.lang.dataFlow.framework.AnalysisResult" resolve="analyze" />
+                <ref role="37wK5l" to="1fjm:#AnalyzerRunner.analyze():jetbrains.mps.lang.dataFlow.framework.AnalysisResult" resolve="analyze" />
                 <node concept="cd27G" id="2J" role="lGtFl">
                   <node concept="3u3nmq" id="2K" role="cd27D">
                     <property role="3u3nmv" value="6628579460233858819" />
@@ -718,7 +718,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2Z" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~Program.getInstructions():java.util.List" resolve="getInstructions" />
+                <ref role="37wK5l" to="1fjm:#Program.getInstructions():java.util.List" resolve="getInstructions" />
                 <node concept="cd27G" id="39" role="lGtFl">
                   <node concept="3u3nmq" id="3a" role="cd27D">
                     <property role="3u3nmv" value="6628579460233866850" />
@@ -774,7 +774,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3w" role="2OqNvi">
-                    <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction):java.lang.Object" resolve="get" />
+                    <ref role="37wK5l" to="1fjm:#AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction):java.lang.Object" resolve="get" />
                     <node concept="2GrUjf" id="3$" role="37wK5m">
                       <ref role="2Gs0qQ" node="3e" resolve="instruction" />
                       <node concept="cd27G" id="3A" role="lGtFl">
@@ -829,7 +829,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="3T" role="2OqNvi">
-                        <ref role="37wK5l" to="dau9:~Instruction.getSource():java.lang.Object" resolve="getSource" />
+                        <ref role="37wK5l" to="dau9:#Instruction.getSource():java.lang.Object" resolve="getSource" />
                         <node concept="cd27G" id="3X" role="lGtFl">
                           <node concept="3u3nmq" id="3Y" role="cd27D">
                             <property role="3u3nmv" value="5783684243118792879" />
@@ -904,7 +904,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="4o" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.reportTypeError(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget):jetbrains.mps.errors.IErrorReporter" resolve="reportTypeError" />
+                            <ref role="37wK5l" to="u78q:#TypeCheckingContext.reportTypeError(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget):jetbrains.mps.errors.IErrorReporter" resolve="reportTypeError" />
                             <node concept="37vLTw" id="4q" role="37wK5m">
                               <ref role="3cqZAo" node="3G" resolve="source" />
                               <node concept="cd27G" id="4w" role="lGtFl">
@@ -1165,7 +1165,7 @@
                   <node concept="2OqwBi" id="5U" role="37wK5m">
                     <node concept="2OqwBi" id="5X" role="2Oq$k0">
                       <node concept="liA8E" id="60" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:#SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
                         <node concept="cd27G" id="63" role="lGtFl">
                           <node concept="3u3nmq" id="64" role="cd27D">
                             <property role="3u3nmv" value="6628579460233842869" />
@@ -1194,7 +1194,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="5Y" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:#SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="6b" role="37wK5m">
                         <ref role="37wK5l" node="1h" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="6d" role="lGtFl">
@@ -1649,7 +1649,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="8U" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze():jetbrains.mps.lang.dataFlow.framework.AnalysisResult" resolve="analyze" />
+                <ref role="37wK5l" to="1fjm:#AnalyzerRunner.analyze():jetbrains.mps.lang.dataFlow.framework.AnalysisResult" resolve="analyze" />
                 <node concept="cd27G" id="8Y" role="lGtFl">
                   <node concept="3u3nmq" id="8Z" role="cd27D">
                     <property role="3u3nmv" value="2955426575106086752" />
@@ -1718,7 +1718,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="9e" role="2OqNvi">
-                <ref role="37wK5l" to="1fjm:~Program.getInstructions():java.util.List" resolve="getInstructions" />
+                <ref role="37wK5l" to="1fjm:#Program.getInstructions():java.util.List" resolve="getInstructions" />
                 <node concept="cd27G" id="9o" role="lGtFl">
                   <node concept="3u3nmq" id="9p" role="cd27D">
                     <property role="3u3nmv" value="2955426575106086761" />
@@ -1774,7 +1774,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="9J" role="2OqNvi">
-                    <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction):java.lang.Object" resolve="get" />
+                    <ref role="37wK5l" to="1fjm:#AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction):java.lang.Object" resolve="get" />
                     <node concept="2GrUjf" id="9N" role="37wK5m">
                       <ref role="2Gs0qQ" node="9t" resolve="instruction" />
                       <node concept="cd27G" id="9P" role="lGtFl">
@@ -1829,7 +1829,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="a8" role="2OqNvi">
-                        <ref role="37wK5l" to="dau9:~Instruction.getSource():java.lang.Object" resolve="getSource" />
+                        <ref role="37wK5l" to="dau9:#Instruction.getSource():java.lang.Object" resolve="getSource" />
                         <node concept="cd27G" id="ac" role="lGtFl">
                           <node concept="3u3nmq" id="ad" role="cd27D">
                             <property role="3u3nmv" value="2955426575106086779" />
@@ -1904,7 +1904,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="aC" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.reportTypeError(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget):jetbrains.mps.errors.IErrorReporter" resolve="reportTypeError" />
+                            <ref role="37wK5l" to="u78q:#TypeCheckingContext.reportTypeError(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget):jetbrains.mps.errors.IErrorReporter" resolve="reportTypeError" />
                             <node concept="37vLTw" id="aE" role="37wK5m">
                               <ref role="3cqZAo" node="7c" resolve="root" />
                               <node concept="cd27G" id="aK" role="lGtFl">
@@ -2172,7 +2172,7 @@
                   <node concept="2OqwBi" id="cc" role="37wK5m">
                     <node concept="2OqwBi" id="cf" role="2Oq$k0">
                       <node concept="liA8E" id="ci" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:#SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
                         <node concept="cd27G" id="cl" role="lGtFl">
                           <node concept="3u3nmq" id="cm" role="cd27D">
                             <property role="3u3nmv" value="2955426575106086733" />
@@ -2201,7 +2201,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="cg" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:#SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="ct" role="37wK5m">
                         <ref role="37wK5l" node="6T" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="cv" role="lGtFl">

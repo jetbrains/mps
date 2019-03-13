@@ -998,6 +998,9 @@
         <node concept="3uibUv" id="4fSpAVAUjxs" role="1tU5fm">
           <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
         </node>
+        <node concept="2AHcQZ" id="4DQMC1CjWQX" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
       </node>
       <node concept="3clFbS" id="4fSpAVAUjxt" role="3clF47">
         <node concept="3clFbF" id="4fSpAVAUjxu" role="3cqZAp">
@@ -1069,23 +1072,17 @@
           </node>
         </node>
         <node concept="3cpWs6" id="4fSpAVAUjxN" role="3cqZAp">
-          <node concept="3K4zz7" id="4fSpAVAUjxT" role="3cqZAk">
-            <node concept="3clFbC" id="4fSpAVAUjxO" role="3K4Cdx">
-              <node concept="37vLTw" id="4fSpAVAUjxP" role="3uHU7B">
-                <ref role="3cqZAo" node="4fSpAVAUjxI" resolve="descriptor" />
-              </node>
-              <node concept="10Nm6u" id="4fSpAVAUjxQ" role="3uHU7w" />
-            </node>
-            <node concept="10Nm6u" id="4fSpAVAUjxR" role="3K4E3e" />
-            <node concept="37vLTw" id="4fSpAVAUjxS" role="3K4GZi">
-              <ref role="3cqZAo" node="4fSpAVAUjxI" resolve="descriptor" />
-            </node>
+          <node concept="37vLTw" id="4DQMC1CjSKe" role="3cqZAk">
+            <ref role="3cqZAo" node="4fSpAVAUjxI" resolve="descriptor" />
           </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="4fSpAVAUjxU" role="1B3o_S" />
       <node concept="3uibUv" id="4fSpAVAUjxV" role="3clF45">
         <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+      </node>
+      <node concept="2AHcQZ" id="4DQMC1Ck7XX" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>
     <node concept="2tJIrI" id="4F1sLpFrmmg" role="jymVt" />
@@ -1877,9 +1874,9 @@
                   <node concept="1rXfSq" id="4fSpAVAUjrW" role="37wK5m">
                     <ref role="37wK5l" to="g3l6:~SModelBase.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
                   </node>
-                  <node concept="2ShNRf" id="3$eHQlfCtdg" role="37wK5m">
-                    <node concept="1pGfFk" id="3$eHQlfCtdh" role="2ShVmc">
-                      <ref role="37wK5l" to="tzbx:~ForeignNodeIdMap.&lt;init&gt;()" resolve="ForeignNodeIdMap" />
+                  <node concept="2ShNRf" id="1$0KT$2MbxQ" role="37wK5m">
+                    <node concept="1pGfFk" id="1bLNqh3MkkO" role="2ShVmc">
+                      <ref role="37wK5l" to="tzbx:~StringBasedNodeIdMap.&lt;init&gt;()" resolve="StringBasedNodeIdMap" />
                     </node>
                   </node>
                 </node>

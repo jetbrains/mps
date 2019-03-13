@@ -355,7 +355,7 @@
             </node>
             <node concept="2YIFZM" id="6vSrlVUNVnv" role="33vP2m">
               <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-              <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project):com.intellij.openapi.vcs.ProjectLevelVcsManager" resolve="getInstance" />
+              <ref role="37wK5l" to="jlcu:#ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project):com.intellij.openapi.vcs.ProjectLevelVcsManager" resolve="getInstance" />
               <node concept="37vLTw" id="6vSrlVUNVnw" role="37wK5m">
                 <ref role="3cqZAo" node="4mqZImXXUXu" resolve="myProject" />
               </node>
@@ -371,7 +371,7 @@
                     <ref role="3cqZAo" node="6vSrlVUNVnt" resolve="manager" />
                   </node>
                   <node concept="liA8E" id="6vSrlVUNZA6" role="2OqNvi">
-                    <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getAllVcsRoots():com.intellij.openapi.vcs.VcsRoot[]" resolve="getAllVcsRoots" />
+                    <ref role="37wK5l" to="jlcu:#ProjectLevelVcsManager.getAllVcsRoots():com.intellij.openapi.vcs.VcsRoot[]" resolve="getAllVcsRoots" />
                   </node>
                 </node>
                 <node concept="39bAoz" id="6vSrlVUNYE2" role="2OqNvi" />
@@ -385,7 +385,7 @@
                           <ref role="3cqZAo" node="6vSrlVUNYVZ" resolve="it" />
                         </node>
                         <node concept="liA8E" id="6vSrlVUNZ3m" role="2OqNvi">
-                          <ref role="37wK5l" to="jlcu:~VcsRoot.getPath():com.intellij.openapi.vfs.VirtualFile" resolve="getPath" />
+                          <ref role="37wK5l" to="jlcu:#VcsRoot.getPath():com.intellij.openapi.vfs.VirtualFile" resolve="getPath" />
                         </node>
                       </node>
                     </node>

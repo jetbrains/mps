@@ -2,12 +2,12 @@
 <model ref="r:5fa3dbe8-68dd-482e-b37c-ddafab2ef308(jetbrains.mps.lang.generator.pluginSolution.plugin)">
   <persistence version="9" />
   <languages>
-    <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
+    <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="0" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
-    <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
+    <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
   </languages>
@@ -5436,35 +5436,30 @@
             <node concept="3clFbS" id="5PAPEu$hWGT" role="9aQI4">
               <node concept="3cpWs8" id="5PAPEu$i3aG" role="3cqZAp">
                 <node concept="3cpWsn" id="5PAPEu$i3aH" role="3cpWs9">
-                  <property role="TrG5h" value="languageModuleRef" />
-                  <node concept="3uibUv" id="5PAPEu$i3az" role="1tU5fm">
-                    <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
+                  <property role="TrG5h" value="srcLanguage" />
+                  <node concept="2OqwBi" id="5PAPEu$i3aJ" role="33vP2m">
+                    <node concept="0kSF2" id="5PAPEu$i3aK" role="2Oq$k0">
+                      <node concept="3uibUv" id="5PAPEu$i3aL" role="0kSFW">
+                        <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
+                      </node>
+                      <node concept="2OqwBi" id="5PAPEu$i3aM" role="0kSFX">
+                        <node concept="37vLTw" id="5PAPEu$i3aN" role="2Oq$k0">
+                          <ref role="3cqZAo" node="5PAPEu$bL0n" resolve="generatorIdentity" />
+                        </node>
+                        <node concept="liA8E" id="5PAPEu$i3aO" role="2OqNvi">
+                          <ref role="37wK5l" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
+                          <node concept="37vLTw" id="5PAPEu$i3aP" role="37wK5m">
+                            <ref role="3cqZAo" node="5PAPEu$bJvi" resolve="myGeneratorLookupRepo" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="3g3Xh9jeetX" role="2OqNvi">
+                      <ref role="37wK5l" to="w1kc:~Generator.sourceLanguage():org.jetbrains.mps.openapi.language.SLanguage" resolve="sourceLanguage" />
+                    </node>
                   </node>
-                  <node concept="2OqwBi" id="5PAPEu$i3aI" role="33vP2m">
-                    <node concept="2OqwBi" id="5PAPEu$i3aJ" role="2Oq$k0">
-                      <node concept="0kSF2" id="5PAPEu$i3aK" role="2Oq$k0">
-                        <node concept="3uibUv" id="5PAPEu$i3aL" role="0kSFW">
-                          <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
-                        </node>
-                        <node concept="2OqwBi" id="5PAPEu$i3aM" role="0kSFX">
-                          <node concept="37vLTw" id="5PAPEu$i3aN" role="2Oq$k0">
-                            <ref role="3cqZAo" node="5PAPEu$bL0n" resolve="generatorIdentity" />
-                          </node>
-                          <node concept="liA8E" id="5PAPEu$i3aO" role="2OqNvi">
-                            <ref role="37wK5l" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
-                            <node concept="37vLTw" id="5PAPEu$i3aP" role="37wK5m">
-                              <ref role="3cqZAo" node="5PAPEu$bJvi" resolve="myGeneratorLookupRepo" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="5PAPEu$i3aQ" role="2OqNvi">
-                        <ref role="37wK5l" to="w1kc:~Generator.getSourceLanguage():jetbrains.mps.smodel.Language" resolve="getSourceLanguage" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="5PAPEu$i3aR" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c4:~AbstractModule.getModuleReference():org.jetbrains.mps.openapi.module.SModuleReference" resolve="getModuleReference" />
-                    </node>
+                  <node concept="3uibUv" id="3g3Xh9jehnA" role="1tU5fm">
+                    <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
                   </node>
                 </node>
               </node>
@@ -5491,12 +5486,8 @@
                   </node>
                   <node concept="2qgKlT" id="5PAPEu$ibXq" role="2OqNvi">
                     <ref role="37wK5l" to="tpeu:34EJa6aIcyw" resolve="setLanguage" />
-                    <node concept="2YIFZM" id="5PAPEu$i7bP" role="37wK5m">
-                      <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(org.jetbrains.mps.openapi.module.SModuleReference):org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
-                      <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                      <node concept="37vLTw" id="5PAPEu$i7bQ" role="37wK5m">
-                        <ref role="3cqZAo" node="5PAPEu$i3aH" resolve="languageModuleRef" />
-                      </node>
+                    <node concept="37vLTw" id="3g3Xh9jeibY" role="37wK5m">
+                      <ref role="3cqZAo" node="5PAPEu$i3aH" resolve="srcLanguage" />
                     </node>
                   </node>
                 </node>
