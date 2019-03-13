@@ -104,6 +104,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.vcs.test.merge.ChangesTestBase">
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
+    <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.util.registry.Registry" />
     <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcs" />
@@ -115,20 +116,21 @@
     <classNode dependClassName="com.intellij.openapi.vcs.VcsShowConfirmationOption" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.Change" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManagerImpl" />
+    <classNode dependClassName="com.intellij.openapi.vcs.changes.VcsDirtyScopeManager" />
     <classNode dependClassName="com.intellij.openapi.vcs.impl.projectlevelman.AllVcses" />
+    <classNode dependClassName="com.intellij.openapi.vcs.rollback.RollbackEnvironment" />
     <classNode dependClassName="com.intellij.openapi.vcs.rollback.RollbackProgressListener" />
+    <classNode dependClassName="com.intellij.openapi.vfs.LocalFileSystem" />
+    <classNode dependClassName="com.intellij.openapi.vfs.VfsUtil" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
+    <classNode dependClassName="com.intellij.util.ui.UIUtil" />
     <classNode dependClassName="java.io.File" />
-    <classNode dependClassName="java.lang.AssertionError" />
-    <classNode dependClassName="java.lang.InterruptedException" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.reflect.InvocationTargetException" />
     <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="javax.swing.SwingUtilities" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.FileDataSource" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes" />
     <classNode dependClassName="jetbrains.mps.ide.platform.watching.ReloadManager" />
@@ -142,7 +144,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.InspectorTool" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.smodel.SReference" />
     <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
@@ -237,7 +238,7 @@
     <classNode extendsClassName="jetbrains.mps.tool.environment.EnvironmentAware" />
   </dependency>
   <dependency className="jetbrains.mps.ide.vcs.test.merge.IncrementalChangeUpdateTest_Model">
-    <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsException" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsShowConfirmationOption" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
@@ -247,8 +248,6 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.FileDataSource" />
-    <classNode dependClassName="jetbrains.mps.ide.vfs.VirtualFileUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceUtil" />

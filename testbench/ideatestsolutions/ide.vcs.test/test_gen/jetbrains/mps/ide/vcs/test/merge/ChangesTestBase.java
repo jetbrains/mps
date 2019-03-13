@@ -14,24 +14,26 @@ import org.junit.BeforeClass;
 import jetbrains.mps.smodel.SReference;
 import com.intellij.openapi.util.registry.Registry;
 import org.junit.AfterClass;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VfsUtil;
+import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.util.ui.UIUtil;
+import com.intellij.openapi.application.ModalityState;
 import org.junit.Before;
 import java.io.File;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import com.intellij.openapi.vcs.impl.projectlevelman.AllVcses;
 import org.junit.Assume;
 import com.intellij.openapi.vcs.VcsShowConfirmationOption;
-import javax.swing.SwingUtilities;
 import com.intellij.openapi.vcs.FileStatusManager;
-import java.lang.reflect.InvocationTargetException;
 import org.junit.After;
-import jetbrains.mps.nodeEditor.InspectorTool;
+import jetbrains.mps.vcs.diff.ChangeSet;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.VcsConfiguration;
-import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -41,14 +43,15 @@ import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.vcs.FileStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import com.intellij.openapi.vfs.VirtualFile;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.vcs.changes.Change;
 import java.util.List;
 import com.intellij.openapi.vcs.VcsException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import com.intellij.openapi.vcs.rollback.RollbackEnvironment;
+import java.util.Collections;
 import com.intellij.openapi.vcs.rollback.RollbackProgressListener;
-import org.jetbrains.mps.openapi.model.EditableSModel;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.extapi.persistence.FileDataSource;
@@ -93,6 +96,22 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     ourProject = null;
   }
 
+  private void refreshFS(@NotNull VirtualFile file) {
+    VfsUtil.markDirtyAndRefresh(false, true, false, file);
+    myWaitHelper.waitForReloadFinished();
+  }
+
+  /*package*/ void updateChangeListManager() {
+    VcsDirtyScopeManager.getInstance(myIdeaProject).markEverythingDirty();
+    myChangeListManager.ensureUpToDate();
+    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+      public void run() {
+        // ensure `fileStatusesChanged' evens are fired 
+        UIUtil.dispatchAllInvocationEvents();
+      }
+    }, ModalityState.any());
+  }
+
   @Before
   public void init() {
     if (ourProject == null) {
@@ -101,54 +120,34 @@ public abstract class ChangesTestBase implements EnvironmentAware {
       ourProject = ((MPSProject) myEnv.openProject(mpsProject));
       // For whatever reason, tests with this superclass work only if there's 1 project dispose per class (open/close of the project in Before/After doesn't work) 
       // Given there's odd magic with ourEnabled and the fact it's VCS, I don't want to dive into this sh!t now. 
-      ourProject.getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-        }
-      });
-      // By some reason batch event processor flushing is paused during project initializing, we flush it this way 
-      //  see ClassLoaderManager#runNonReloadableTransaction() 
     }
 
     myIdeaProject = ourProject.getProject();
+    myChangeListManager = ChangeListManagerImpl.getInstanceImpl(myIdeaProject);
     CurrentDifferenceRegistry.getInstance(myIdeaProject).getCommandQueue().setHadExceptions(false);
     myWaitHelper = new ChangesManagerTestWaitHelper(myIdeaProject, ApplicationManager.getApplication().getComponent(ReloadManager.class));
-    myWaitHelper.waitForChangesManager();
+    myWaitHelper.waitForDiffRegistry();
 
     myGitVcs = AllVcses.getInstance(myIdeaProject).getByName("Git");
     Assume.assumeNotNull(myGitVcs);
     Assume.assumeNotNull(getTestModel());
     myDiff = CurrentDifferenceRegistry.getInstance(myIdeaProject).getCurrentDifference((getTestModel()));
-    myChangeListManager = ChangeListManagerImpl.getInstanceImpl(myIdeaProject);
     setAutoaddPolicy(VcsShowConfirmationOption.Value.DO_NOTHING_SILENTLY);
 
     if (!(ChangesTestBase.ourEnabled)) {
-      myChangeListManager.ensureUpToDate();
-      try {
-        SwingUtilities.invokeAndWait(new Runnable() {
-          public void run() {
-            FileStatusManager.getInstance(myIdeaProject).fileStatusesChanged();
-          }
-        });
-      } catch (InterruptedException e) {
-        throw new AssertionError(e);
-      } catch (InvocationTargetException e) {
-        throw new AssertionError(e);
-      }
-
+      updateChangeListManager();
+      FileStatusManager.getInstance(myIdeaProject).fileStatusesChanged();
       checkAndEnable();
       ChangesTestBase.ourEnabled = true;
     }
   }
 
   @After
-  public void after() throws InvocationTargetException, InterruptedException {
-    revertMemChangesAndWait();
-    SwingUtilities.invokeAndWait(new Runnable() {
-      public void run() {
-        myIdeaProject.getComponent(InspectorTool.class).getInspector().editNode(null);
-      }
-    });
-    Assert.assertFalse(CurrentDifferenceRegistry.getInstance(myIdeaProject).getCommandQueue().hadExceptions());
+  public void after() {
+    myChangeListManager.waitEverythingDoneInTestMode();
+    revertDiskChangesAndWait(getTestModelFile(), false);
+    revertMemChangesAndWait(false);
+    Assume.assumeFalse(CurrentDifferenceRegistry.getInstance(myIdeaProject).getCommandQueue().hadExceptions());
     myWaitHelper.dispose();
   }
 
@@ -156,12 +155,12 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     return ourProject;
   }
 
-  protected void checkAndEnable() {
-
+  private void checkAndEnable() {
     myDiff.setEnabled(true);
-    myWaitHelper.waitForChangesManager();
+    myWaitHelper.waitForDiffRegistry();
 
-    Assert.assertTrue(ListSequence.fromList(myDiff.getChangeSet().getModelChanges()).isEmpty());
+    ChangeSet changeSet = myDiff.getChangeSet();
+    Assert.assertTrue(changeSet == null || ListSequence.fromList(changeSet.getModelChanges()).isEmpty());
   }
 
   protected void setAutoaddPolicy(VcsShowConfirmationOption.Value value) {
@@ -185,7 +184,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     ourProject.getModelAccess().executeCommandInEDT(change);
 
     myEnv.flushAllEvents();
-    myWaitHelper.waitForChangesManager();
+    myWaitHelper.waitForDiffRegistry();
   }
 
   protected void checkRootStatuses(final RootStatusItem... statuses) {
@@ -202,13 +201,13 @@ public abstract class ChangesTestBase implements EnvironmentAware {
       }
     });
     // wait while statuses update 
-    myWaitHelper.waitForChangesManager();
+    myWaitHelper.waitForDiffRegistry();
     ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
           public void visit(final SNode r) {
             FileStatus actual = fsm.getStatus(r);
-            FileStatus expected = check_l1nwgz_a0b0a0a0a0g0ib(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
+            FileStatus expected = check_l1nwgz_a0b0a0a0a0g0mb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
               public boolean accept(RootStatusItem it) {
                 return it.rootName().equals(r.getName());
               }
@@ -220,27 +219,53 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     });
   }
 
-  protected void revertMemChangesAndWait() {
+  protected void revertMemChangesAndWait(final boolean withAsserts) {
     ourProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
-        getTestModel().reloadFromSource();
+        EditableSModel testModel = getTestModel();
+        if (withAsserts) {
+          Assert.assertNotNull(testModel);
+        }
+        if (testModel != null) {
+          testModel.reloadFromSource();
+        }
       }
     });
     myEnv.flushAllEvents();
-    myWaitHelper.waitForChangesManager();
-    Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a3a63(myDiff.getChangeSet())).isEmpty());
+    myWaitHelper.waitForDiffRegistry();
+    if (withAsserts) {
+      Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a3a04(myDiff.getChangeSet())).isEmpty());
+    }
   }
 
-  protected void revertDiskChangesAndWait(VirtualFile modelFile) {
-    myChangeListManager.ensureUpToDate();
+  protected void revertDiskChangesAndWait(@NotNull VirtualFile modelFile, boolean withAsserts) {
+    refreshFS(getProjectBaseFile());
+    updateChangeListManager();
     Change modelFileChange = myChangeListManager.getChange(modelFile);
-    List<VcsException> exceptions = ListSequence.fromList(new ArrayList<VcsException>());
-    myGitVcs.getRollbackEnvironment().rollbackChanges(Arrays.asList(modelFileChange), exceptions, RollbackProgressListener.EMPTY);
-    Assert.assertTrue(ListSequence.fromList(exceptions).isEmpty());
+    if (withAsserts) {
+      Assert.assertNotNull(modelFileChange);
+    }
+    if (modelFileChange != null) {
+      List<VcsException> exceptions = ListSequence.fromList(new ArrayList<VcsException>());
+      RollbackEnvironment rollbackEnvironment = myGitVcs.getRollbackEnvironment();
+      Assume.assumeNotNull(rollbackEnvironment);
+      rollbackEnvironment.rollbackChanges(Collections.singletonList(modelFileChange), exceptions, RollbackProgressListener.EMPTY);
+      refreshFS(getProjectBaseFile());
+      updateChangeListManager();
+      if (withAsserts) {
+        Assert.assertTrue(ListSequence.fromList(exceptions).isEmpty());
+      }
 
-    myWaitHelper.waitForFileStatusChange(modelFile, FileStatus.NOT_CHANGED);
-    myWaitHelper.waitForChangesManager();
-    Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a8a83(myDiff.getChangeSet())).isEmpty());
+      updateChangeListManager();
+      myWaitHelper.waitForDiffRegistry();
+      if (withAsserts) {
+        Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a01a4a24(myDiff.getChangeSet())).isEmpty());
+      }
+    }
+  }
+
+  private VirtualFile getProjectBaseFile() {
+    return LocalFileSystem.getInstance().refreshAndFindFileByPath(myIdeaProject.getBasePath());
   }
 
   protected EditableSModel getTestModel() {
@@ -270,19 +295,19 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   public String getDefaultExt() {
     return PreinstalledDataSourceTypes.MPS.getFileExtension();
   }
-  private static FileStatus check_l1nwgz_a0b0a0a0a0g0ib(RootStatusItem checkedDotOperand) {
+  private static FileStatus check_l1nwgz_a0b0a0a0a0g0mb(RootStatusItem checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.status();
     }
     return null;
   }
-  private static List<ModelChange> check_l1nwgz_a0a3a63(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_l1nwgz_a0a0a3a04(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-  private static List<ModelChange> check_l1nwgz_a0a8a83(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_l1nwgz_a0a0a01a4a24(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }

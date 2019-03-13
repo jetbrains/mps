@@ -87,7 +87,7 @@ public class ChangesManagerTestWaitHelper {
       }
     }
   }
-  public void waitForChangesManager() {
+  public void waitForDiffRegistry() {
     waitForSomething(new Runnable() {
       public void run() {
         CurrentDifferenceRegistry.getInstance(myProject).getCommandQueue().addTask(new ChangesManagerTestWaitHelper.WaitForChangesManagerTask());
@@ -96,20 +96,7 @@ public class ChangesManagerTestWaitHelper {
   }
 
   public void waitForReloadFinished() {
-    waitForSomething(new Runnable() {
-      public void run() {
-        synchronized (ChangesManagerTestWaitHelper.this) {
-          myAfterReloadTask = new Runnable() {
-            public void run() {
-              synchronized (ChangesManagerTestWaitHelper.this) {
-                myAfterReloadTask = null;
-              }
-              waitCompleted();
-            }
-          };
-        }
-      }
-    }, -1);
+    myProject.getComponent(ReloadManager.class).flush();
   }
 
   /**
