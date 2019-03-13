@@ -239,6 +239,7 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
     return myInitialized;
   }
 
+  // FIXME bad code, not in use, kept for mbeddr
   public boolean isSubfolderModel(@NotNull SModel candidate) {
     final String modelName = myModelDescriptor.getName().getLongName();
     String candidateName = candidate.getName().getLongName();
