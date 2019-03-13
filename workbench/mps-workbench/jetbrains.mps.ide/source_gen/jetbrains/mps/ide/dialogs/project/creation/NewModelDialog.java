@@ -109,7 +109,7 @@ public class NewModelDialog extends DialogWrapper {
   }
 
   public EditableSModel getResult() {
-    if (myResult == null) {
+    if (myResult == null && myResultHelper != null) {
       try {
         myResult = myResultHelper.createModel(myClone, myPreserveIds);
       } catch (ModelCannotBeCreatedException ex) {

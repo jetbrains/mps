@@ -545,8 +545,8 @@
         <node concept="XkiVB" id="5Kh0XTSxwM_" role="3cqZAp">
           <ref role="37wK5l" to="jkm4:~DialogWrapper.&lt;init&gt;(com.intellij.openapi.project.Project)" resolve="DialogWrapper" />
           <node concept="2YIFZM" id="4oi2Bf2r_Df" role="37wK5m">
-            <ref role="37wK5l" to="alof:~ProjectHelper.toIdeaProject(jetbrains.mps.project.Project)" resolve="toIdeaProject" />
             <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+            <ref role="37wK5l" to="alof:~ProjectHelper.toIdeaProject(jetbrains.mps.project.Project)" resolve="toIdeaProject" />
             <node concept="37vLTw" id="4oi2Bf2rA2e" role="37wK5m">
               <ref role="3cqZAo" node="5Kh0XTSxwMx" resolve="project" />
             </node>
@@ -1037,10 +1037,18 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbC" id="7KfSwxyD3AL" role="3clFbw">
-            <node concept="10Nm6u" id="7KfSwxyD3I4" role="3uHU7w" />
-            <node concept="37vLTw" id="7KfSwxyD3r_" role="3uHU7B">
-              <ref role="3cqZAo" node="1pyYjDPRa0n" resolve="myResult" />
+          <node concept="1Wc70l" id="UwyhPpKJsA" role="3clFbw">
+            <node concept="3y3z36" id="UwyhPpKJUT" role="3uHU7w">
+              <node concept="10Nm6u" id="UwyhPpKJV4" role="3uHU7w" />
+              <node concept="37vLTw" id="UwyhPpKJJ8" role="3uHU7B">
+                <ref role="3cqZAo" node="7KfSwxyBOrw" resolve="myResultHelper" />
+              </node>
+            </node>
+            <node concept="3clFbC" id="7KfSwxyD3AL" role="3uHU7B">
+              <node concept="37vLTw" id="7KfSwxyD3r_" role="3uHU7B">
+                <ref role="3cqZAo" node="1pyYjDPRa0n" resolve="myResult" />
+              </node>
+              <node concept="10Nm6u" id="7KfSwxyD3I4" role="3uHU7w" />
             </node>
           </node>
         </node>
@@ -1782,8 +1790,8 @@
                 <ref role="37wK5l" to="33ny:~LinkedList.&lt;init&gt;(java.util.Collection)" resolve="LinkedList" />
                 <node concept="17QB3L" id="5$SHav7hnSc" role="1pMfVU" />
                 <node concept="2YIFZM" id="6BEHsuXk_0g" role="37wK5m">
-                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                   <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
+                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                   <node concept="10M0yZ" id="1pyYjDPRa2k" role="37wK5m">
                     <ref role="1PxDUh" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
                     <ref role="3cqZAo" to="w1kc:~SModelStereotype.values" resolve="values" />
@@ -2746,8 +2754,8 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="7IH442cXuI0" role="3clFbw">
-                <ref role="37wK5l" to="vndm:~LanguageAspectSupport.isLanguageModelNameForbidden(java.lang.String)" resolve="isLanguageModelNameForbidden" />
                 <ref role="1Pybhc" to="vndm:~LanguageAspectSupport" resolve="LanguageAspectSupport" />
+                <ref role="37wK5l" to="vndm:~LanguageAspectSupport.isLanguageModelNameForbidden(java.lang.String)" resolve="isLanguageModelNameForbidden" />
                 <node concept="37vLTw" id="7IH442cXuIG" role="37wK5m">
                   <ref role="3cqZAo" node="2R7pax8jqxP" resolve="modelName" />
                 </node>
@@ -3078,8 +3086,8 @@
         <node concept="3clFbF" id="eb0uW_jHnR" role="3cqZAp">
           <node concept="37vLTI" id="eb0uW_jHNz" role="3clFbG">
             <node concept="2YIFZM" id="eb0uW_jI8s" role="37vLTx">
-              <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
               <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
+              <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
             </node>
             <node concept="37vLTw" id="eb0uW_jHnP" role="37vLTJ">
               <ref role="3cqZAo" node="eb0uW_jEZW" resolve="myProjectFS" />
@@ -3312,8 +3320,8 @@
                               </node>
                               <node concept="2OqwBi" id="5jLviTUEc0e" role="37wK5m">
                                 <node concept="2YIFZM" id="5jLviTUEc0f" role="2Oq$k0">
-                                  <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
                                   <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
+                                  <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
                                 </node>
                                 <node concept="liA8E" id="5jLviTUEc0g" role="2OqNvi">
                                   <ref role="37wK5l" to="jlff:~VirtualFileSystem.findFileByPath(java.lang.String)" resolve="findFileByPath" />
@@ -3754,8 +3762,8 @@
                           <ref role="37wK5l" to="tprr:eb0uW_hJzW" resolve="createGeneratorDescriptor" />
                           <ref role="1Pybhc" to="tprr:56Y$nab_bZy" resolve="NewModuleUtil" />
                           <node concept="2YIFZM" id="1pyYjDPRara" role="37wK5m">
-                            <ref role="37wK5l" to="w1kc:~Generator.generateGeneratorUID(jetbrains.mps.smodel.Language)" resolve="generateGeneratorUID" />
                             <ref role="1Pybhc" to="w1kc:~Generator" resolve="Generator" />
+                            <ref role="37wK5l" to="w1kc:~Generator.generateGeneratorUID(jetbrains.mps.smodel.Language)" resolve="generateGeneratorUID" />
                             <node concept="37vLTw" id="eb0uW_m1LG" role="37wK5m">
                               <ref role="3cqZAo" node="1pyYjDPRajQ" resolve="mySourceLanguage" />
                             </node>
