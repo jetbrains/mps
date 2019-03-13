@@ -68,7 +68,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
 
   @Override
   public void initComponent() {
-    myPlatform.findComponent(ClassLoaderManager.class).runNonReloadableTransaction(this::update);
+    update();
   }
 
   public void disposeComponent() {

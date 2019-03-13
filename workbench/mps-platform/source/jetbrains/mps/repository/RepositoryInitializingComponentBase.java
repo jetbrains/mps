@@ -77,7 +77,7 @@ public class RepositoryInitializingComponentBase implements ApplicationComponent
   @Override
   public void initComponent() {
     if (PathManager.isFromSources()) {
-      ClassLoaderManager.getInstance().runNonReloadableTransaction(this::load);
+      load();
     } else {
       load();
     }
