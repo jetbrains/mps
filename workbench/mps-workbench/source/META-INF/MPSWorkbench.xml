@@ -1,6 +1,7 @@
 <components>
   <extensions defaultExtensionNs="com.intellij">
     <mps.facetTabFactory facetType="ideaPlugin" className="jetbrains.mps.ide.project.facets.ui.IdeaPluginModuleFacetTabFactory"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.projectPane.TreeNodeSortService"/>
   </extensions>
   <application-components>
     <component>

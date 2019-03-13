@@ -77,7 +77,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -209,10 +208,12 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   }
 
   public boolean showNodeStructure() {
+    // re-use IDEA's 'show members' for 'show node structure'
     return !isDisposed() && getProjectView().isShowMembers(getId());
   }
 
-  public boolean isSortByType() {
+  public boolean isSortByConcept() {
+    // we re-use IDEA's sort by type for MPS 'sort by root concept'
     return getProjectView().isSortByType(getId());
   }
 
@@ -227,55 +228,6 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     // but different mechanism to build the tree (not treeBuilder+comparator, hence #installComparator(), above, is no-op)
     // false is to remove IDEA's provided action
     return false;
-  }
-
-  @Nullable
-  public Comparator<Object> getTreeChildrenComparator() {
-    return new Comparator<Object>() {
-      @Override
-      public int compare(final Object o1, final Object o2) {
-        if (!(o1 instanceof SNode) || !(o2 instanceof SNode)) {
-          return 0;
-        }
-
-        final SNode node1 = (SNode) o1;
-        final SNode node2 = (SNode) o2;
-
-        if (!isSortByType()) {
-          return comparePresentations(node1, node2);
-        }
-
-        // (1) node.getConcept() doesn't require model read, nor concept.getQualifiedName
-        // (2) If we got SNode, we're are already in model read
-        int result = compareConceptFqNames(node1, node2);
-
-        if (result != 0) {
-          return result;
-        }
-
-        return comparePresentations(node1, node2);
-      }
-
-      private int compareConceptFqNames(SNode node1, SNode node2) {
-        String concept1 = node1.getConcept().getQualifiedName();
-        String concept2 = node2.getConcept().getQualifiedName();
-
-        return concept1.compareTo(concept2);
-      }
-
-      private int comparePresentations(SNode node1, SNode node2) {
-        String presentation1 = node1.getPresentation();
-        String presentation2 = node2.getPresentation();
-
-        if (presentation1 == null) {
-          return presentation2 == null ? 0 : 1;
-        }
-        if (presentation2 == null) {
-          return -1;
-        }
-        return presentation1.compareTo(presentation2);
-      }
-    };
   }
 
   @Override
@@ -641,12 +593,12 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
     @Override
     public boolean isSelected(@Nullable AnActionEvent e) {
-      return isSortByType();
+      return isSortByConcept();
     }
 
     @Override
     public void setSelected(@Nullable AnActionEvent e, boolean state) {
-      if (state != isSortByType()) {
+      if (state != isSortByConcept()) {
         getProjectView().setSortByType(getId(), state);
         rebuild();
       }

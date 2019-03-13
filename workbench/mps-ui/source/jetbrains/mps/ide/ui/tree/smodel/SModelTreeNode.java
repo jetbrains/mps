@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.ui.tree.smodel;
 
 import jetbrains.mps.ide.icons.GlobalIconManager;
+import jetbrains.mps.ide.ui.tree.MPSTreeChildOrder;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
 import jetbrains.mps.ide.ui.tree.TreeElement;
@@ -23,7 +24,6 @@ import jetbrains.mps.ide.ui.tree.TreeNodeTextSource;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.smodel.DependencyRecorder;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.util.SNodePresentationComparator;
 import jetbrains.mps.util.ToStringComparator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -326,12 +326,6 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
       for (SNode node : model.getRootNodes()) {
         filteredRoots.add(node);
       }
-      Comparator<Object> childrenComparator = getTree().getChildrenComparator();
-      if (childrenComparator != null) {
-        Collections.sort(filteredRoots, childrenComparator);
-      } else {
-        Collections.sort(filteredRoots, new SNodePresentationComparator());
-      }
       for (SNode sortedRoot : filteredRoots) {
         MPSTreeNodeEx treeNode = createSNodeTreeNode(sortedRoot);
         MPSTreeNode group = getNodeGroupFor(sortedRoot);
@@ -339,6 +333,14 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
           group.add(treeNode);
         } else {
           add(treeNode);
+        }
+      }
+
+      if (getTree() instanceof MPSTreeChildOrder) {
+        final ArrayList<MPSTreeNode> copyToSort = new ArrayList<>(getChildren());
+        if (((MPSTreeChildOrder) getTree()).reorder(this, copyToSort)) {
+          removeAllChildren();
+          copyToSort.forEach(this::add);
         }
       }
 

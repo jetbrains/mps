@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +45,6 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.event.TreeWillExpandListener;
 import javax.swing.plaf.TreeUI;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.ExpandVetoException;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.Graphics;
@@ -436,7 +436,12 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     e.consume();
   }
 
+  /**
+   * @deprecated Poor contract (despite being in MPSTree context, the comparator is expected to sort user objects, not MPSTreeNode), single use
+   */
   @Nullable
+  @Deprecated
+  @ToRemove(version = 2019.1)
   public Comparator<Object> getChildrenComparator() {
     return null;
   }

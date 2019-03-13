@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,7 +72,6 @@ import java.awt.dnd.InvalidDnDOperationException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -153,12 +152,6 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     myHighlighter.dispose();
     removeKeyListener(myKeyListener);
     super.dispose();
-  }
-
-
-  @Override
-  public Comparator<Object> getChildrenComparator() {
-    return myProjectPane.getTreeChildrenComparator();
   }
 
   @Override
