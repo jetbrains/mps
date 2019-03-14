@@ -1093,7 +1093,7 @@
           <node concept="2OqwBi" id="32jmVfUB5r6" role="3clFbG">
             <node concept="1XNTG" id="32jmVfUB5qR" role="2Oq$k0" />
             <node concept="liA8E" id="32jmVfUB5rc" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
               <node concept="37vLTw" id="3GM_nagT$im" role="37wK5m">
                 <ref role="3cqZAo" node="4ERQEDB1F7A" resolve="variable" />
               </node>
@@ -1365,7 +1365,7 @@
           <node concept="2OqwBi" id="32jmVfUAQx2" role="3clFbG">
             <node concept="1XNTG" id="32jmVfUAQuM" role="2Oq$k0" />
             <node concept="liA8E" id="32jmVfUAXB6" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
               <node concept="37vLTw" id="3GM_nagTBBM" role="37wK5m">
                 <ref role="3cqZAo" node="4ERQEDB1LeA" resolve="variable" />
               </node>

@@ -1974,21 +1974,21 @@
       <node concept="3clFbS" id="2yare9CXCWs" role="3clF47">
         <node concept="3clFbF" id="2yare9CXCWt" role="3cqZAp">
           <node concept="2YIFZM" id="2yare9CXCWu" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:#System.gc():void" resolve="gc" />
+            <ref role="37wK5l" to="wyt6:~System.gc()" resolve="gc" />
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
           </node>
         </node>
         <node concept="3clFbF" id="FQ0yUFkjUY" role="3cqZAp">
           <node concept="2YIFZM" id="FQ0yUFkjUZ" role="3clFbG">
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-            <ref role="37wK5l" to="wyt6:#System.gc():void" resolve="gc" />
+            <ref role="37wK5l" to="wyt6:~System.gc()" resolve="gc" />
           </node>
         </node>
         <node concept="SfApY" id="2yare9CXCWv" role="3cqZAp">
           <node concept="3clFbS" id="2yare9CXCWw" role="SfCbr">
             <node concept="3clFbF" id="2yare9CXCWx" role="3cqZAp">
               <node concept="2YIFZM" id="2yare9CXCWy" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:#Thread.sleep(long):void" resolve="sleep" />
+                <ref role="37wK5l" to="wyt6:~Thread.sleep(long)" resolve="sleep" />
                 <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
                 <node concept="3cmrfG" id="2yare9CXCWz" role="37wK5m">
                   <property role="3cmrfH" value="1000" />
@@ -2008,7 +2008,7 @@
         </node>
         <node concept="3clFbF" id="2yare9CXCWC" role="3cqZAp">
           <node concept="2YIFZM" id="2yare9CXCWD" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:#System.gc():void" resolve="gc" />
+            <ref role="37wK5l" to="wyt6:~System.gc()" resolve="gc" />
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
           </node>
         </node>
@@ -2019,7 +2019,7 @@
               <ref role="3uigEE" to="uzjr:~MemoryMXBean" resolve="MemoryMXBean" />
             </node>
             <node concept="2YIFZM" id="FQ0yUFihC5" role="33vP2m">
-              <ref role="37wK5l" to="uzjr:#ManagementFactory.getMemoryMXBean():java.lang.management.MemoryMXBean" resolve="getMemoryMXBean" />
+              <ref role="37wK5l" to="uzjr:~ManagementFactory.getMemoryMXBean()" resolve="getMemoryMXBean" />
               <ref role="1Pybhc" to="uzjr:~ManagementFactory" resolve="ManagementFactory" />
             </node>
           </node>
@@ -2034,7 +2034,7 @@
                 <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
               </node>
               <node concept="liA8E" id="FQ0yUFjmR3" role="2OqNvi">
-                <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
                 <node concept="3cpWs3" id="FQ0yUFjmR5" role="37wK5m">
                   <node concept="2OqwBi" id="FQ0yUFjmRe" role="3uHU7w">
                     <node concept="2OqwBi" id="FQ0yUFjmR9" role="2Oq$k0">
@@ -2042,11 +2042,11 @@
                         <ref role="3cqZAo" node="FQ0yUFihC3" resolve="bean" />
                       </node>
                       <node concept="liA8E" id="FQ0yUFjmRd" role="2OqNvi">
-                        <ref role="37wK5l" to="uzjr:#MemoryMXBean.getHeapMemoryUsage():java.lang.management.MemoryUsage" resolve="getHeapMemoryUsage" />
+                        <ref role="37wK5l" to="uzjr:~MemoryMXBean.getHeapMemoryUsage()" resolve="getHeapMemoryUsage" />
                       </node>
                     </node>
                     <node concept="liA8E" id="FQ0yUFjmRi" role="2OqNvi">
-                      <ref role="37wK5l" to="uzjr:#MemoryUsage.toString():java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="uzjr:~MemoryUsage.toString()" resolve="toString" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="FQ0yUFjmR4" role="3uHU7B">
@@ -2064,11 +2064,11 @@
                 <ref role="3cqZAo" node="FQ0yUFihC3" resolve="bean" />
               </node>
               <node concept="liA8E" id="FQ0yUFihCd" role="2OqNvi">
-                <ref role="37wK5l" to="uzjr:#MemoryMXBean.getHeapMemoryUsage():java.lang.management.MemoryUsage" resolve="getHeapMemoryUsage" />
+                <ref role="37wK5l" to="uzjr:~MemoryMXBean.getHeapMemoryUsage()" resolve="getHeapMemoryUsage" />
               </node>
             </node>
             <node concept="liA8E" id="FQ0yUFihCi" role="2OqNvi">
-              <ref role="37wK5l" to="uzjr:#MemoryUsage.getUsed():long" resolve="getUsed" />
+              <ref role="37wK5l" to="uzjr:~MemoryUsage.getUsed()" resolve="getUsed" />
             </node>
           </node>
         </node>

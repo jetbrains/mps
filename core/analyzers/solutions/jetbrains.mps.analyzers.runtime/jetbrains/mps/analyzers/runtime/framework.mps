@@ -283,7 +283,7 @@
       <node concept="3clFbS" id="6L60FDzMFhM" role="3clF47">
         <node concept="3cpWs6" id="1o68y$H6wfm" role="3cqZAp">
           <node concept="2YIFZM" id="2CzxSeGAbs2" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:#Collections.unmodifiableList(java.util.List):java.util.List" resolve="unmodifiableList" />
+            <ref role="37wK5l" to="33ny:~Collections.unmodifiableList(java.util.List)" resolve="unmodifiableList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="37vLTw" id="2BHiRxeuyRB" role="37wK5m">
               <ref role="3cqZAo" node="6L60FDzMFhB" resolve="myParameters" />
@@ -305,7 +305,7 @@
               <ref role="3cqZAo" node="6L60FDzMFhB" resolve="myParameters" />
             </node>
             <node concept="liA8E" id="6L60FDzMFii" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+              <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
               <node concept="37vLTw" id="2BHiRxgm7ES" role="37wK5m">
                 <ref role="3cqZAo" node="6L60FDzMFia" resolve="index" />
               </node>
@@ -345,7 +345,7 @@
               <ref role="3cqZAo" node="6L60FDzMFhB" resolve="myParameters" />
             </node>
             <node concept="liA8E" id="6L60FDzMFi3" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="2BHiRxgmFyb" role="37wK5m">
                 <ref role="3cqZAo" node="6L60FDzMFi1" resolve="p" />
               </node>

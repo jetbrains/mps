@@ -556,7 +556,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="6lZ8OoRvh3y" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:#SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
                       </node>
                     </node>
                   </node>
@@ -569,7 +569,7 @@
               <node concept="2OqwBi" id="7XQqoCTkVID" role="3fr31v">
                 <node concept="1Wqviy" id="7XQqoCTkVIE" role="2Oq$k0" />
                 <node concept="liA8E" id="7XQqoCTkVIF" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                  <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
                   <node concept="Xl_RD" id="7XQqoCTkVIG" role="37wK5m">
                     <property role="Xl_RC" value="$" />
                   </node>

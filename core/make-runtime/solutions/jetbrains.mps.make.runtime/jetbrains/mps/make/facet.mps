@@ -692,7 +692,7 @@
     <node concept="Wx3nA" id="5mqBoD3U575" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <node concept="2YIFZM" id="Hn0$MvbYhs" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
         <node concept="3VsKOn" id="Hn0$MvbYht" role="37wK5m">
           <ref role="3VsUkX" node="5mqBoD3U4oX" resolve="FacetRegistry" />
@@ -1036,7 +1036,7 @@
                           <node concept="3fqX7Q" id="4edLwTTwn9A" role="3clFbG">
                             <node concept="2OqwBi" id="4edLwTTwn9C" role="3fr31v">
                               <node concept="liA8E" id="4edLwTTwn9D" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                                 <node concept="1LFfDK" id="4edLwTTwn9E" role="37wK5m">
                                   <node concept="3cmrfG" id="4edLwTTwn9F" role="1LF_Uc">
                                     <property role="3cmrfH" value="1" />
@@ -1100,7 +1100,7 @@
                     <ref role="3cqZAo" node="7F$lR9jRN9b" resolve="langReg" />
                   </node>
                   <node concept="liA8E" id="4xx4xYCJyUf" role="2OqNvi">
-                    <ref role="37wK5l" to="vndm:#LanguageRegistry.getLanguage(java.lang.String):jetbrains.mps.smodel.language.LanguageRuntime" resolve="getLanguage" />
+                    <ref role="37wK5l" to="vndm:~LanguageRegistry.getLanguage(java.lang.String)" resolve="getLanguage" />
                     <node concept="2OqwBi" id="4xx4xYCJyUg" role="37wK5m">
                       <node concept="37vLTw" id="2BHiRxgm$aF" role="2Oq$k0">
                         <ref role="3cqZAo" node="5mqBoD3U4q3" resolve="fn" />
@@ -1127,14 +1127,14 @@
                           <ref role="3cqZAo" node="4xx4xYCJyUb" resolve="lr" />
                         </node>
                         <node concept="liA8E" id="6KmdtJuG6bz" role="2OqNvi">
-                          <ref role="37wK5l" to="vndm:#LanguageRuntime.getAspect(java.lang.Class):jetbrains.mps.smodel.runtime.ILanguageAspect" resolve="getAspect" />
+                          <ref role="37wK5l" to="vndm:~LanguageRuntime.getAspect(java.lang.Class)" resolve="getAspect" />
                           <node concept="3VsKOn" id="7_1la9pBWBe" role="37wK5m">
                             <ref role="3VsUkX" to="ze1i:~MakeAspectDescriptor" resolve="MakeAspectDescriptor" />
                           </node>
                         </node>
                       </node>
                       <node concept="liA8E" id="6KmdtJuG6bA" role="2OqNvi">
-                        <ref role="37wK5l" to="ze1i:#MakeAspectDescriptor.getManifest():jetbrains.mps.make.facet.IFacetManifest" resolve="getManifest" />
+                        <ref role="37wK5l" to="ze1i:~MakeAspectDescriptor.getManifest()" resolve="getManifest" />
                       </node>
                     </node>
                   </node>
@@ -1150,7 +1150,7 @@
                         <ref role="3cqZAo" node="6KmdtJuG6bt" resolve="fm" />
                       </node>
                       <node concept="liA8E" id="6KmdtJuG6bQ" role="2OqNvi">
-                        <ref role="37wK5l" to="8uml:#IFacetManifest.lookup(jetbrains.mps.make.facet.IFacet$Name):jetbrains.mps.make.facet.IFacet" resolve="lookup" />
+                        <ref role="37wK5l" to="8uml:~IFacetManifest.lookup(jetbrains.mps.make.facet.IFacet$Name)" resolve="lookup" />
                         <node concept="37vLTw" id="2BHiRxgma31" role="37wK5m">
                           <ref role="3cqZAo" node="5mqBoD3U4q3" resolve="fn" />
                         </node>
@@ -1200,7 +1200,7 @@
               <ref role="3cqZAo" node="5mqBoD3U575" resolve="LOG" />
             </node>
             <node concept="liA8E" id="4tDYbgl3ctR" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:#Category.debug(java.lang.Object):void" resolve="debug" />
+              <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
               <node concept="3cpWs3" id="4tDYbgl3ctT" role="37wK5m">
                 <node concept="37vLTw" id="2BHiRxghfmt" role="3uHU7w">
                   <ref role="3cqZAo" node="5mqBoD3U4q3" resolve="fn" />
@@ -1271,7 +1271,7 @@
                           <ref role="3cqZAo" node="4edLwTTxDI6" resolve="languageNamespace" />
                         </node>
                         <node concept="liA8E" id="4edLwTTxV$4" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                           <node concept="1LFfDK" id="4edLwTTy1R2" role="37wK5m">
                             <node concept="3cmrfG" id="4edLwTTy3a9" role="1LF_Uc">
                               <property role="3cmrfH" value="0" />
@@ -1314,7 +1314,7 @@
       <node concept="3clFbS" id="5mqBoD3U4q7" role="3clF47">
         <node concept="3clFbF" id="5mqBoD3U4q8" role="3cqZAp">
           <node concept="2YIFZM" id="5mqBoD3U4q9" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#Collections.unmodifiableMap(java.util.Map):java.util.Map" resolve="unmodifiableMap" />
+            <ref role="37wK5l" to="33ny:~Collections.unmodifiableMap(java.util.Map)" resolve="unmodifiableMap" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="37vLTw" id="2BHiRxeumvX" role="37wK5m">
               <ref role="3cqZAo" node="5mqBoD3U4oY" resolve="facetMap" />
@@ -1344,7 +1344,7 @@
                   <ref role="3cqZAo" node="5mqBoD3U575" resolve="LOG" />
                 </node>
                 <node concept="liA8E" id="5mqBoD3U4qm" role="2OqNvi">
-                  <ref role="37wK5l" to="q7tw:#Category.fatal(java.lang.Object):void" resolve="fatal" />
+                  <ref role="37wK5l" to="q7tw:~Category.fatal(java.lang.Object)" resolve="fatal" />
                   <node concept="Xl_RD" id="5mqBoD3U4qn" role="37wK5m">
                     <property role="Xl_RC" value="not initialized" />
                   </node>

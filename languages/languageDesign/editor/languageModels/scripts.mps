@@ -264,7 +264,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="hXZjkLW" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="hXZjkYF" role="37wK5m">
                     <property role="Xl_RC" value="1." />
                   </node>
@@ -278,7 +278,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="hXZjhcW" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="hXZjh$Z" role="37wK5m">
                     <property role="Xl_RC" value="1.0" />
                   </node>
@@ -314,7 +314,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="hXAr_9_" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="hXAr_9A" role="37wK5m">
                     <property role="Xl_RC" value="1." />
                   </node>
@@ -328,7 +328,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="hXAr_9F" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="hXAr_9G" role="37wK5m">
                     <property role="Xl_RC" value="1.0" />
                   </node>
@@ -895,7 +895,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="MRN5EIcuky" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:#SModel.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                      <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
                     </node>
                   </node>
                 </node>

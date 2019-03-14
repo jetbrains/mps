@@ -824,7 +824,7 @@
                                     </node>
                                     <node concept="2YIFZM" id="hoTJGpY" role="33vP2m">
                                       <ref role="1Pybhc" to="18ew:~CollectionUtil" resolve="CollectionUtil" />
-                                      <ref role="37wK5l" to="18ew:#CollectionUtil.filter(java.util.List,org.jetbrains.mps.util.Condition):java.util.List" resolve="filter" />
+                                      <ref role="37wK5l" to="18ew:~CollectionUtil.filter(java.util.List,org.jetbrains.mps.util.Condition)" resolve="filter" />
                                       <node concept="2YIFZM" id="1HQWUj8kbVC" role="37wK5m">
                                         <ref role="1Pybhc" to="unno:1NYD3hytmTa" resolve="SNodeOperations" />
                                         <ref role="37wK5l" to="unno:1GH7SoqS5UT" resolve="getChildren" />

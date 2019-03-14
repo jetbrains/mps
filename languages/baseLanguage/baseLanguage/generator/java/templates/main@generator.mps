@@ -338,14 +338,14 @@
                           <node concept="2OqwBi" id="1R1KclLA1bH" role="3uHU7w">
                             <node concept="2OqwBi" id="1R1KclLA1bI" role="2Oq$k0">
                               <node concept="liA8E" id="24cAaiVCakj" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                                <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                               </node>
                               <node concept="2JrnkZ" id="1R1KclLA1bJ" role="2Oq$k0">
                                 <node concept="30H73N" id="1R1KclLA1bK" role="2JrQYb" />
                               </node>
                             </node>
                             <node concept="liA8E" id="1R1KclLA1bM" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                              <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                             </node>
                           </node>
                           <node concept="Xl_RD" id="hO0qUSz" role="3uHU7B">
@@ -455,7 +455,7 @@
                                 <ref role="3cqZAo" node="hO0qUSb" resolve="resource" />
                               </node>
                               <node concept="liA8E" id="2EAjPwZojUl" role="2OqNvi">
-                                <ref role="37wK5l" to="guwi:#Closeable.close():void" resolve="close" />
+                                <ref role="37wK5l" to="guwi:~Closeable.close()" resolve="close" />
                               </node>
                             </node>
                           </node>
@@ -620,7 +620,7 @@
                   <ref role="3cqZAo" node="2aok5Jw8IcR" resolve="type" />
                 </node>
                 <node concept="liA8E" id="2aok5Jw8Iuk" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#Class.isInstance(java.lang.Object):boolean" resolve="isInstance" />
+                  <ref role="37wK5l" to="wyt6:~Class.isInstance(java.lang.Object)" resolve="isInstance" />
                   <node concept="37vLTw" id="2BHiRxgm7mm" role="37wK5m">
                     <ref role="3cqZAo" node="2aok5Jw8IcP" resolve="o" />
                   </node>

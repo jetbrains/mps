@@ -266,7 +266,7 @@
                                         <ref role="3cqZAo" node="3y18G5nZ8c" resolve="it" />
                                       </node>
                                       <node concept="liA8E" id="6tXk5rOgRTc" role="2OqNvi">
-                                        <ref role="37wK5l" to="w1kc:#SNodeUndoableAction.getAffectedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getAffectedNode" />
+                                        <ref role="37wK5l" to="w1kc:~SNodeUndoableAction.getAffectedNode()" resolve="getAffectedNode" />
                                       </node>
                                     </node>
                                   </node>
@@ -274,7 +274,7 @@
                                 <node concept="z$bX8" id="6tXk5rOgRTd" role="2OqNvi" />
                               </node>
                               <node concept="liA8E" id="6tXk5rOgRTe" role="2OqNvi">
-                                <ref role="37wK5l" to="33ny:#List.contains(java.lang.Object):boolean" resolve="contains" />
+                                <ref role="37wK5l" to="33ny:~List.contains(java.lang.Object)" resolve="contains" />
                                 <node concept="37vLTw" id="6tXk5rOgRTf" role="37wK5m">
                                   <ref role="3cqZAo" node="3y18G5nwlu" resolve="myMainNode" />
                                 </node>
@@ -530,7 +530,7 @@
                       <ref role="3cqZAo" node="1VBAMEMsw8t" resolve="action" />
                     </node>
                     <node concept="liA8E" id="1VBAMEMswyf" role="2OqNvi">
-                      <ref role="37wK5l" to="w1kc:#SNodeUndoableAction.getAffectedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getAffectedNode" />
+                      <ref role="37wK5l" to="w1kc:~SNodeUndoableAction.getAffectedNode()" resolve="getAffectedNode" />
                     </node>
                   </node>
                 </node>

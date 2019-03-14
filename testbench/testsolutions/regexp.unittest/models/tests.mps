@@ -978,7 +978,7 @@
                 <ref role="3cqZAo" node="7eq8FHGIgeI" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGIgeT" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1023,7 +1023,7 @@
                 <ref role="3cqZAo" node="7eq8FHGJr6q" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGJr6G" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1070,7 +1070,7 @@
                 <ref role="3cqZAo" node="75Jea4IGOOa" resolve="p" />
               </node>
               <node concept="liA8E" id="75Jea4IGOOm" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1081,14 +1081,14 @@
                   <ref role="3cqZAo" node="75Jea4IGOOa" resolve="p" />
                 </node>
                 <node concept="liA8E" id="75Jea4IHgyN" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="75Jea4IHgyO" role="37wK5m">
                     <property role="Xl_RC" value="1" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="75Jea4IHgyT" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1099,14 +1099,14 @@
                   <ref role="3cqZAo" node="75Jea4IGOOa" resolve="p" />
                 </node>
                 <node concept="liA8E" id="75Jea4IHgyZ" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="75Jea4IHgz0" role="37wK5m">
                     <property role="Xl_RC" value="a" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="75Jea4IHgz1" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1117,14 +1117,14 @@
                   <ref role="3cqZAo" node="75Jea4IGOOa" resolve="p" />
                 </node>
                 <node concept="liA8E" id="75Jea4IHgz7" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="75Jea4IHgz8" role="37wK5m">
                     <property role="Xl_RC" value="g" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="75Jea4IHgz9" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1135,14 +1135,14 @@
                   <ref role="3cqZAo" node="75Jea4IGOOa" resolve="p" />
                 </node>
                 <node concept="liA8E" id="75Jea4IHgzn" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="75Jea4IHgzo" role="37wK5m">
                     <property role="Xl_RC" value="f" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="75Jea4IHgzp" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1185,7 +1185,7 @@
                 <ref role="3cqZAo" node="75Jea4IGR1M" resolve="p" />
               </node>
               <node concept="liA8E" id="75Jea4IGR1Z" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1228,7 +1228,7 @@
                 <ref role="3cqZAo" node="7eq8FHGIgqL" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGIgqX" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1239,14 +1239,14 @@
                   <ref role="3cqZAo" node="7eq8FHGIgqL" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGIg_u" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGIg_$" role="37wK5m">
                     <property role="Xl_RC" value="''\&quot;\&quot;" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGIg_z" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1295,7 +1295,7 @@
                 <ref role="3cqZAo" node="7eq8FHGIDo_" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGIDp6" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1306,14 +1306,14 @@
                   <ref role="3cqZAo" node="7eq8FHGIDo_" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGIDph" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGIDpi" role="37wK5m">
                     <property role="Xl_RC" value="kbbbwkbbbw" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGIDpj" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1324,14 +1324,14 @@
                   <ref role="3cqZAo" node="7eq8FHGIDo_" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGIDpy" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGIDpz" role="37wK5m">
                     <property role="Xl_RC" value="kbbbwkbbw" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGIDp$" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1377,7 +1377,7 @@
                 <ref role="3cqZAo" node="7eq8FHGJqBU" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGJqCA" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1388,14 +1388,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJqBU" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJqCF" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJqCG" role="37wK5m">
                     <property role="Xl_RC" value="bwbb" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJqCH" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1406,14 +1406,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJqBU" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJqCQ" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJqCR" role="37wK5m">
                     <property role="Xl_RC" value="bbb" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJqCW" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1461,7 +1461,7 @@
                 <ref role="3cqZAo" node="7eq8FHGJqU6" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGJqUl" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1472,14 +1472,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJqU6" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJqUq" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJqUr" role="37wK5m">
                     <property role="Xl_RC" value="bwbbbb" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJqUs" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1490,14 +1490,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJqU6" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJqUx" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJqUy" role="37wK5m">
                     <property role="Xl_RC" value="bbaabbaacc" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJqUz" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1544,7 +1544,7 @@
                 <ref role="3cqZAo" node="7eq8FHGJqZ6" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGJqZl" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1555,14 +1555,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJqZ6" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJqZq" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJqZr" role="37wK5m">
                     <property role="Xl_RC" value="bwbb" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJqZs" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1573,14 +1573,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJqZ6" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJqZx" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJqZy" role="37wK5m">
                     <property role="Xl_RC" value="bb" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJqZz" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1627,7 +1627,7 @@
                 <ref role="3cqZAo" node="7eq8FHGJr0i" resolve="p" />
               </node>
               <node concept="liA8E" id="7eq8FHGJr0x" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Pattern.pattern():java.lang.String" resolve="pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.pattern()" resolve="pattern" />
               </node>
             </node>
           </node>
@@ -1638,14 +1638,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJr0i" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJr0A" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJr0B" role="37wK5m">
                     <property role="Xl_RC" value="bwbb" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJr0C" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1656,14 +1656,14 @@
                   <ref role="3cqZAo" node="7eq8FHGJr0i" resolve="p" />
                 </node>
                 <node concept="liA8E" id="7eq8FHGJr0H" role="2OqNvi">
-                  <ref role="37wK5l" to="ni5j:#Pattern.matcher(java.lang.CharSequence):java.util.regex.Matcher" resolve="matcher" />
+                  <ref role="37wK5l" to="ni5j:~Pattern.matcher(java.lang.CharSequence)" resolve="matcher" />
                   <node concept="Xl_RD" id="7eq8FHGJr0I" role="37wK5m">
                     <property role="Xl_RC" value="bb" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="7eq8FHGJr0J" role="2OqNvi">
-                <ref role="37wK5l" to="ni5j:#Matcher.matches():boolean" resolve="matches" />
+                <ref role="37wK5l" to="ni5j:~Matcher.matches()" resolve="matches" />
               </node>
             </node>
           </node>
@@ -1952,7 +1952,7 @@
                 <ref role="3cqZAo" node="5kfJOUWthDq" resolve="list" />
               </node>
               <node concept="liA8E" id="5kfJOUWthDL" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
               </node>
             </node>
             <node concept="3cmrfG" id="5kfJOUWthDM" role="3tpDZA">
@@ -1968,7 +1968,7 @@
                 <ref role="3cqZAo" node="5kfJOUWthDq" resolve="list" />
               </node>
               <node concept="liA8E" id="5kfJOUWthDX" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                 <node concept="3cmrfG" id="5kfJOUWthDY" role="37wK5m">
                   <property role="3cmrfH" value="0" />
                 </node>
@@ -1984,7 +1984,7 @@
                 <ref role="3cqZAo" node="5kfJOUWthDq" resolve="list" />
               </node>
               <node concept="liA8E" id="5kfJOUWthE5" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                 <node concept="3cmrfG" id="5kfJOUWthE8" role="37wK5m">
                   <property role="3cmrfH" value="1" />
                 </node>
@@ -2000,7 +2000,7 @@
                 <ref role="3cqZAo" node="5kfJOUWthDq" resolve="list" />
               </node>
               <node concept="liA8E" id="5kfJOUWthEf" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                 <node concept="3cmrfG" id="5kfJOUWthEi" role="37wK5m">
                   <property role="3cmrfH" value="2" />
                 </node>

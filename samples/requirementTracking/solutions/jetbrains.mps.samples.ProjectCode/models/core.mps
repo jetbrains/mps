@@ -96,7 +96,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="3BHdE7cVCr2" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="3BHdE7cVCs_" role="37wK5m">
                 <property role="Xl_RC" value="Encrypting..." />
               </node>
@@ -126,7 +126,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="3BHdE7cVOw6" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="3BHdE7cVOxZ" role="37wK5m">
                 <property role="Xl_RC" value="Handling http" />
               </node>
@@ -170,7 +170,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="3BHdE7cPiaz" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println():void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println()" resolve="println" />
             </node>
           </node>
         </node>
@@ -181,7 +181,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="3BHdE7cPGr_" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println():void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println()" resolve="println" />
             </node>
           </node>
         </node>

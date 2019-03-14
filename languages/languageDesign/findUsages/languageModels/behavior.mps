@@ -179,7 +179,7 @@
           <node concept="3cpWs3" id="hEwIc4D" role="3cqZAk">
             <node concept="2YIFZM" id="hEwIc4E" role="3uHU7B">
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-              <ref role="37wK5l" to="18ew:#NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+              <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String)" resolve="toValidIdentifier" />
               <node concept="2OqwBi" id="hEwIc4F" role="37wK5m">
                 <node concept="13iPFW" id="hEwIc4G" role="2Oq$k0" />
                 <node concept="3TrcHB" id="hEwIc4H" role="2OqNvi">

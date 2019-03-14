@@ -940,7 +940,7 @@
               <ref role="3cqZAo" node="7yGn3z4N62I" resolve="scriptRunnable" />
             </node>
             <node concept="liA8E" id="7yGn3z4N62R" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Runnable.run():void" resolve="run" />
+              <ref role="37wK5l" to="wyt6:~Runnable.run()" resolve="run" />
             </node>
           </node>
         </node>
@@ -1044,7 +1044,7 @@
               <ref role="3uigEE" node="1NAY6bPd4nM" resolve="IMakeService" />
             </node>
             <node concept="3nyPlj" id="7lTD6YZthQN" role="10QFUP">
-              <ref role="37wK5l" to="33ny:#EventObject.getSource():java.lang.Object" resolve="getSource" />
+              <ref role="37wK5l" to="33ny:~EventObject.getSource()" resolve="getSource" />
             </node>
           </node>
         </node>

@@ -422,7 +422,7 @@
                 <ref role="3cqZAo" node="1kS6Xt3lhWx" resolve="panel" />
               </node>
               <node concept="liA8E" id="2TPT8ohCk2W" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:#Container.add(java.awt.Component,java.lang.Object):void" resolve="add" />
+                <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
                 <node concept="yHkD2" id="2TPT8ohCk2X" role="37wK5m">
                   <ref role="3cqZAo" node="2TPT8ohCk2o" resolve="label" />
                 </node>
@@ -439,7 +439,7 @@
                 <ref role="3cqZAo" node="1kS6Xt3lhWx" resolve="panel" />
               </node>
               <node concept="liA8E" id="6PDbr4S3xe1" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:#Container.add(java.awt.Component,java.lang.Object):void" resolve="add" />
+                <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
                 <node concept="37vLTw" id="6PDbr4S3xe2" role="37wK5m">
                   <ref role="3cqZAo" node="6PDbr4S3wIH" resolve="nodeChooser" />
                 </node>
@@ -641,7 +641,7 @@
             <node concept="2LYoGL" id="1CVOLqONYFJ" role="2LYoGw">
               <ref role="2LYoGK" to="go48:1CVOLqONYr_" resolve="repository" />
               <node concept="2YIFZM" id="1CVOLqOO23Y" role="2LYoGN">
-                <ref role="37wK5l" to="alof:#ProjectHelper.getProjectRepository(com.intellij.openapi.project.Project):org.jetbrains.mps.openapi.module.SRepository" resolve="getProjectRepository" />
+                <ref role="37wK5l" to="alof:~ProjectHelper.getProjectRepository(com.intellij.openapi.project.Project)" resolve="getProjectRepository" />
                 <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
                 <node concept="21ER0p" id="1CVOLqOO24B" role="37wK5m" />
               </node>

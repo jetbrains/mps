@@ -319,11 +319,11 @@
                         <ref role="3cqZAo" node="6jXjkltJ9c$" resolve="modelBeingGenerated" />
                       </node>
                       <node concept="liA8E" id="6cEFRXIyKI1" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:#SModel.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
+                        <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
                       </node>
                     </node>
                     <node concept="liA8E" id="6cEFRXIyKRg" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:#SModelName.getLongName():java.lang.String" resolve="getLongName" />
+                      <ref role="37wK5l" to="mhbf:~SModelName.getLongName()" resolve="getLongName" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="O7HwFiVOSo" role="3uHU7w">
@@ -641,7 +641,7 @@
                         <node concept="3clFbF" id="3b1thj6Cbxh" role="2c44tc">
                           <node concept="2OqwBi" id="3b1thj6Cbxi" role="3clFbG">
                             <node concept="liA8E" id="3b1thj6Cbxk" role="2OqNvi">
-                              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+                              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                               <node concept="1nCR9W" id="6jXjkltJwhD" role="37wK5m">
                                 <property role="1nD$Q0" value="Object" />
                                 <node concept="2EMmih" id="6jXjkltJx65" role="lGtFl">
@@ -661,7 +661,7 @@
                                           <ref role="2Gs0qQ" node="6jXjkltJLPJ" resolve="aspect" />
                                         </node>
                                         <node concept="liA8E" id="6jXjkltJWSR" role="2OqNvi">
-                                          <ref role="37wK5l" to="mhbf:#SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                                          <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
                                         </node>
                                       </node>
                                     </node>
@@ -915,7 +915,7 @@
                             <ref role="3cqZAo" node="6jXjkltLDnE" resolve="byConcept" />
                           </node>
                           <node concept="liA8E" id="6jXjkltMzOu" role="2OqNvi">
-                            <ref role="37wK5l" to="yg2w:#MultiMap.putValue(java.lang.Object,java.lang.Object):void" resolve="putValue" />
+                            <ref role="37wK5l" to="yg2w:~MultiMap.putValue(java.lang.Object,java.lang.Object)" resolve="putValue" />
                             <node concept="2OqwBi" id="6jXjkltM_sO" role="37wK5m">
                               <node concept="2GrUjf" id="6jXjkltM$CB" role="2Oq$k0">
                                 <ref role="2Gs0qQ" node="6jXjkltL6p7" resolve="acd" />
@@ -1031,7 +1031,7 @@
                             <node concept="3clFbF" id="6jXjkltL6p_" role="2c44tc">
                               <node concept="2OqwBi" id="6jXjkltL6pA" role="3clFbG">
                                 <node concept="liA8E" id="6jXjkltL6pF" role="2OqNvi">
-                                  <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+                                  <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                                   <node concept="1nCR9W" id="6jXjkltL6pG" role="37wK5m">
                                     <property role="1nD$Q0" value="Object" />
                                     <node concept="2EMmih" id="6jXjkltL6pH" role="lGtFl">
@@ -1080,7 +1080,7 @@
                       <ref role="3cqZAo" node="6jXjkltLDnE" resolve="byConcept" />
                     </node>
                     <node concept="liA8E" id="6jXjkltPNSu" role="2OqNvi">
-                      <ref role="37wK5l" to="yg2w:#MultiMap.get(java.lang.Object):java.util.Collection" resolve="get" />
+                      <ref role="37wK5l" to="yg2w:~MultiMap.get(java.lang.Object)" resolve="get" />
                       <node concept="2GrUjf" id="6jXjkltPRIL" role="37wK5m">
                         <ref role="2Gs0qQ" node="6jXjkltMW$x" resolve="c" />
                       </node>
@@ -1131,7 +1131,7 @@
                           </node>
                           <node concept="2OqwBi" id="6jXjkltNfQU" role="3clFbw">
                             <node concept="liA8E" id="6jXjkltNh0k" role="2OqNvi">
-                              <ref role="37wK5l" to="33ny:#List.equals(java.lang.Object):boolean" resolve="equals" />
+                              <ref role="37wK5l" to="33ny:~List.equals(java.lang.Object)" resolve="equals" />
                               <node concept="35c_gC" id="6jXjkltNjKZ" role="37wK5m">
                                 <ref role="35c_gD" to="tpck:gw2VY9q" resolve="BaseConcept" />
                                 <node concept="2c44tb" id="6jXjkltNjNq" role="lGtFl">
@@ -1166,7 +1166,7 @@
                   <ref role="3cqZAo" node="6jXjkltLDnE" resolve="byConcept" />
                 </node>
                 <node concept="liA8E" id="6jXjkltMXXy" role="2OqNvi">
-                  <ref role="37wK5l" to="yg2w:#MultiMap.keySet():java.util.Set" resolve="keySet" />
+                  <ref role="37wK5l" to="yg2w:~MultiMap.keySet()" resolve="keySet" />
                 </node>
               </node>
             </node>
@@ -1193,7 +1193,7 @@
                         </node>
                         <node concept="3cpWs6" id="6jXjkltL6qi" role="3cqZAp">
                           <node concept="2YIFZM" id="6jXjkltNkC7" role="3cqZAk">
-                            <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                           </node>
                         </node>
@@ -1435,7 +1435,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="6jXjkltJDCM" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:#SModel.getModelName():java.lang.String" resolve="getModelName" />
+                    <ref role="37wK5l" to="mhbf:~SModel.getModelName()" resolve="getModelName" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="6jXjkltJE9l" role="3uHU7w">
@@ -1478,14 +1478,14 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="6jXjkltNJfR" role="3uHU7w">
-                <ref role="37wK5l" to="18ew:#NameUtil.pluralize(java.lang.String):java.lang.String" resolve="pluralize" />
+                <ref role="37wK5l" to="18ew:~NameUtil.pluralize(java.lang.String)" resolve="pluralize" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="2OqwBi" id="6jXjkltNQQc" role="37wK5m">
                   <node concept="1rXfSq" id="6jXjkltNPOd" role="2Oq$k0">
                     <ref role="37wK5l" node="6jXjkltHOVb" resolve="getApplicableConcept" />
                   </node>
                   <node concept="liA8E" id="6jXjkltNS55" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:#SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                    <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
                   </node>
                 </node>
               </node>

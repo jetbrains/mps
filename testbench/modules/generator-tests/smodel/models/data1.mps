@@ -137,7 +137,7 @@
                     <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                   </node>
                   <node concept="liA8E" id="2kP5W5ySCKD" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:#PrintStream.println(int):void" resolve="println" />
+                    <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
                     <node concept="3cmrfG" id="2kP5W5ySCQo" role="37wK5m">
                       <property role="3cmrfH" value="1" />
                     </node>

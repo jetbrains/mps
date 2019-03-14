@@ -101,11 +101,11 @@
             <ref role="1Pybhc" to="i8bi:3ayRDg9cgZG" resolve="SPointerOperations" />
             <node concept="2OqwBi" id="2kP5W5yTh9U" role="37wK5m">
               <node concept="2YIFZM" id="2kP5W5yTh5I" role="2Oq$k0">
-                <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                 <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
               </node>
               <node concept="liA8E" id="2kP5W5yThey" role="2OqNvi">
-                <ref role="37wK5l" to="dush:#PersistenceFacade.createModelReference(java.lang.String):org.jetbrains.mps.openapi.model.SModelReference" resolve="createModelReference" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.createModelReference(java.lang.String)" resolve="createModelReference" />
                 <node concept="Xl_RD" id="2kP5W5yThhW" role="37wK5m">
                   <property role="Xl_RC" value="r:a0bda7de-bcb5-44a6-828e-6ce19d09a34f(jetbrains.mps.test.smodel.data1)" />
                 </node>
@@ -147,7 +147,7 @@
                           <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                         </node>
                         <node concept="liA8E" id="2kP5W5ySKF_" role="2OqNvi">
-                          <ref role="37wK5l" to="guwi:#PrintStream.println(int):void" resolve="println" />
+                          <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
                           <node concept="3cmrfG" id="2kP5W5ySKGT" role="37wK5m">
                             <property role="3cmrfH" value="1" />
                           </node>

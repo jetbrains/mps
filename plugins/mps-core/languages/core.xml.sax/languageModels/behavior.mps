@@ -594,7 +594,7 @@
           <node concept="1Wc70l" id="460OzqriVAv" role="3clFbw">
             <node concept="2OqwBi" id="460Ozqrj0jT" role="3uHU7w">
               <node concept="liA8E" id="460Ozqrj3Rq" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                 <node concept="359W_D" id="42Bx8VbGceW" role="37wK5m">
                   <ref role="359W_E" to="nv7r:1XGsQcRHubo" resolve="XMLSAXChildRule" />
                   <ref role="359W_F" to="nv7r:fz7wK6I" resolve="actualArgument" />
@@ -602,7 +602,7 @@
               </node>
               <node concept="2OqwBi" id="460OzqriXjq" role="2Oq$k0">
                 <node concept="liA8E" id="460OzqriYgz" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:#SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                  <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
                 </node>
                 <node concept="2JrnkZ" id="460OzqriXdF" role="2Oq$k0">
                   <node concept="37vLTw" id="460OzqriVOM" role="2JrQYb">
@@ -744,7 +744,7 @@
               <ref role="3cqZAo" node="460Ozqrjbg6" resolve="role" />
             </node>
             <node concept="liA8E" id="460Ozqrjfx0" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
               <node concept="359W_D" id="42Bx8VbGfME" role="37wK5m">
                 <ref role="359W_E" to="nv7r:1XGsQcRHubo" resolve="XMLSAXChildRule" />
                 <ref role="359W_F" to="nv7r:fz7wK6I" resolve="actualArgument" />

@@ -799,7 +799,7 @@
             <node concept="2OqwBi" id="3n123GgVb9c" role="33vP2m">
               <node concept="2YIFZM" id="3n123GgVb8O" role="2Oq$k0">
                 <ref role="1Pybhc" to="ykok:~ModelConstraints" resolve="ModelConstraints" />
-                <ref role="37wK5l" to="ykok:#ModelConstraints.getReferenceDescriptor(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SReferenceLink):jetbrains.mps.smodel.constraints.ReferenceDescriptor" resolve="getReferenceDescriptor" />
+                <ref role="37wK5l" to="ykok:~ModelConstraints.getReferenceDescriptor(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="getReferenceDescriptor" />
                 <node concept="37vLTw" id="3GM_nagTBv0" role="37wK5m">
                   <ref role="3cqZAo" node="hLuQ$Yf3D$" resolve="methodCall" />
                 </node>
@@ -809,7 +809,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3n123GgVb9i" role="2OqNvi">
-                <ref role="37wK5l" to="ykok:#ReferenceDescriptor.getScope():jetbrains.mps.scope.Scope" resolve="getScope" />
+                <ref role="37wK5l" to="ykok:~ReferenceDescriptor.getScope()" resolve="getScope" />
               </node>
             </node>
           </node>
@@ -846,7 +846,7 @@
                 <ref role="3cqZAo" node="15YZbuhMsu2" resolve="scope" />
               </node>
               <node concept="liA8E" id="15YZbuhMswT" role="2OqNvi">
-                <ref role="37wK5l" to="35tq:#Scope.getAvailableElements(java.lang.String):java.lang.Iterable" resolve="getAvailableElements" />
+                <ref role="37wK5l" to="35tq:~Scope.getAvailableElements(java.lang.String)" resolve="getAvailableElements" />
                 <node concept="3K4zz7" id="15YZbuhMsKF" role="37wK5m">
                   <node concept="37vLTw" id="3GM_nagTu6m" role="3K4E3e">
                     <ref role="3cqZAo" node="15YZbuhMsJR" resolve="name" />
@@ -970,7 +970,7 @@
                 <ref role="3cqZAo" node="hLuQ$Yf3C1" resolve="editorContext" />
               </node>
               <node concept="liA8E" id="hLuQ$Yf3Ch" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:#EditorContext.getSelectedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSelectedNode" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNode()" resolve="getSelectedNode" />
               </node>
             </node>
           </node>

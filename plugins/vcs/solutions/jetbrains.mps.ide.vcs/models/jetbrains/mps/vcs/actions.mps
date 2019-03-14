@@ -185,14 +185,14 @@
           <node concept="10QFUN" id="6FKiTwA0IZM" role="3cqZAk">
             <node concept="2OqwBi" id="6FKiTwA0IZN" role="10QFUP">
               <node concept="2YIFZM" id="6FKiTwA0IZO" role="2Oq$k0">
-                <ref role="37wK5l" to="bnjk:#ProjectView.getInstance(com.intellij.openapi.project.Project):com.intellij.ide.projectView.ProjectView" resolve="getInstance" />
+                <ref role="37wK5l" to="bnjk:~ProjectView.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                 <ref role="1Pybhc" to="bnjk:~ProjectView" resolve="ProjectView" />
                 <node concept="37vLTw" id="2BHiRxgm91d" role="37wK5m">
                   <ref role="3cqZAo" node="6FKiTwA0IZI" resolve="project" />
                 </node>
               </node>
               <node concept="liA8E" id="6FKiTwA0IZQ" role="2OqNvi">
-                <ref role="37wK5l" to="bnjk:#ProjectView.getProjectViewPaneById(java.lang.String):com.intellij.ide.projectView.impl.AbstractProjectViewPane" resolve="getProjectViewPaneById" />
+                <ref role="37wK5l" to="bnjk:~ProjectView.getProjectViewPaneById(java.lang.String)" resolve="getProjectViewPaneById" />
                 <node concept="10M0yZ" id="6FKiTwA0IZR" role="37wK5m">
                   <ref role="3cqZAo" to="7vf6:~FileViewProjectPane.ID" resolve="ID" />
                   <ref role="1PxDUh" to="7vf6:~FileViewProjectPane" resolve="FileViewProjectPane" />
@@ -229,17 +229,17 @@
           <node concept="3clFbS" id="3FLm4EWtLt6" role="3clFbx">
             <node concept="3cpWs6" id="3FLm4EWtXQC" role="3cqZAp">
               <node concept="2YIFZM" id="3FLm4EWtCCl" role="3cqZAk">
-                <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                 <node concept="2YIFZM" id="3FLm4EWtCCm" role="37wK5m">
                   <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
-                  <ref role="37wK5l" to="4nm9:#ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                  <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project)" resolve="guessProjectDir" />
                   <node concept="2OqwBi" id="3FLm4EWtCCn" role="37wK5m">
                     <node concept="37vLTw" id="3FLm4EWtCCo" role="2Oq$k0">
                       <ref role="3cqZAo" node="6FKiTwA0IZX" resolve="vcsContext" />
                     </node>
                     <node concept="liA8E" id="3FLm4EWtCCp" role="2OqNvi">
-                      <ref role="37wK5l" to="de5p:#VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                      <ref role="37wK5l" to="de5p:~VcsContext.getProject()" resolve="getProject" />
                     </node>
                   </node>
                 </node>
@@ -250,14 +250,14 @@
             <node concept="3y3z36" id="3FLm4EWtCCa" role="3uHU7w">
               <node concept="10Nm6u" id="3FLm4EWtCCb" role="3uHU7w" />
               <node concept="2YIFZM" id="3FLm4EWtCCc" role="3uHU7B">
-                <ref role="37wK5l" to="4nm9:#ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project):com.intellij.openapi.vfs.VirtualFile" resolve="guessProjectDir" />
+                <ref role="37wK5l" to="4nm9:~ProjectUtil.guessProjectDir(com.intellij.openapi.project.Project)" resolve="guessProjectDir" />
                 <ref role="1Pybhc" to="4nm9:~ProjectUtil" resolve="ProjectUtil" />
                 <node concept="2OqwBi" id="3FLm4EWtCCd" role="37wK5m">
                   <node concept="37vLTw" id="3FLm4EWtCCe" role="2Oq$k0">
                     <ref role="3cqZAo" node="6FKiTwA0IZX" resolve="vcsContext" />
                   </node>
                   <node concept="liA8E" id="3FLm4EWtCCf" role="2OqNvi">
-                    <ref role="37wK5l" to="de5p:#VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                    <ref role="37wK5l" to="de5p:~VcsContext.getProject()" resolve="getProject" />
                   </node>
                 </node>
               </node>
@@ -268,7 +268,7 @@
                   <ref role="3cqZAo" node="6FKiTwA0IZX" resolve="vcsContext" />
                 </node>
                 <node concept="liA8E" id="3FLm4EWtCCj" role="2OqNvi">
-                  <ref role="37wK5l" to="de5p:#VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                  <ref role="37wK5l" to="de5p:~VcsContext.getProject()" resolve="getProject" />
                 </node>
               </node>
               <node concept="10Nm6u" id="3FLm4EWtCCk" role="3uHU7w" />
@@ -277,7 +277,7 @@
         </node>
         <node concept="3cpWs6" id="3FLm4EWtWZU" role="3cqZAp">
           <node concept="2YIFZM" id="3FLm4EWtXim" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
           </node>
         </node>
@@ -320,7 +320,7 @@
                 <ref role="3cqZAo" node="6FKiTwA0J3i" resolve="e" />
               </node>
               <node concept="liA8E" id="6FKiTwA0J3q" role="2OqNvi">
-                <ref role="37wK5l" to="de5p:#VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                <ref role="37wK5l" to="de5p:~VcsContext.getProject()" resolve="getProject" />
               </node>
             </node>
           </node>
@@ -375,7 +375,7 @@
                   <ref role="3cqZAo" node="6FKiTwA0J3E" resolve="view" />
                 </node>
                 <node concept="liA8E" id="6FKiTwA0J3L" role="2OqNvi">
-                  <ref role="37wK5l" to="7vf6:#FileViewProjectPane.selectNode(com.intellij.openapi.vfs.VirtualFile,boolean):void" resolve="selectNode" />
+                  <ref role="37wK5l" to="7vf6:~FileViewProjectPane.selectNode(com.intellij.openapi.vfs.VirtualFile,boolean)" resolve="selectNode" />
                   <node concept="37vLTw" id="3GM_nagTyhV" role="37wK5m">
                     <ref role="3cqZAo" node="6FKiTwA0J3s" resolve="selectedFile" />
                   </node>
@@ -418,7 +418,7 @@
                 <ref role="3cqZAo" node="6FKiTwA0J3R" resolve="e" />
               </node>
               <node concept="liA8E" id="6FKiTwA0J40" role="2OqNvi">
-                <ref role="37wK5l" to="de5p:#VcsContext.getSelectedFiles():com.intellij.openapi.vfs.VirtualFile[]" resolve="getSelectedFiles" />
+                <ref role="37wK5l" to="de5p:~VcsContext.getSelectedFiles()" resolve="getSelectedFiles" />
               </node>
             </node>
           </node>
@@ -469,7 +469,7 @@
         <node concept="3cpWs6" id="6FKiTwA0J4l" role="3cqZAp">
           <node concept="AH0OO" id="6FKiTwA0J4m" role="3cqZAk">
             <node concept="2YIFZM" id="6FKiTwA0J4n" role="AHHXb">
-              <ref role="37wK5l" to="jlff:#VfsUtil.getCommonAncestors(com.intellij.openapi.vfs.VirtualFile[]):com.intellij.openapi.vfs.VirtualFile[]" resolve="getCommonAncestors" />
+              <ref role="37wK5l" to="jlff:~VfsUtil.getCommonAncestors(com.intellij.openapi.vfs.VirtualFile[])" resolve="getCommonAncestors" />
               <ref role="1Pybhc" to="jlff:~VfsUtil" resolve="VfsUtil" />
               <node concept="37vLTw" id="3GM_nagT_0M" role="37wK5m">
                 <ref role="3cqZAo" node="6FKiTwA0J3V" resolve="selectedFiles" />
@@ -525,7 +525,7 @@
                   <ref role="3cqZAo" node="6FKiTwA0J4A" resolve="presentation" />
                 </node>
                 <node concept="liA8E" id="1$VOgPOK3qp" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:#Presentation.setEnabled(boolean):void" resolve="setEnabled" />
+                  <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
                   <node concept="3clFbT" id="1$VOgPOK3qq" role="37wK5m" />
                 </node>
               </node>
@@ -539,7 +539,7 @@
                 <ref role="3cqZAo" node="6FKiTwA0J4$" resolve="vcsContext" />
               </node>
               <node concept="liA8E" id="1$VOgPOK3gk" role="2OqNvi">
-                <ref role="37wK5l" to="de5p:#VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                <ref role="37wK5l" to="de5p:~VcsContext.getProject()" resolve="getProject" />
               </node>
             </node>
           </node>
@@ -611,7 +611,7 @@
                           <ref role="3cqZAo" node="6FKiTwA0J4A" resolve="presentation" />
                         </node>
                         <node concept="liA8E" id="6FKiTwA0J56" role="2OqNvi">
-                          <ref role="37wK5l" to="qkt:#Presentation.setEnabled(boolean):void" resolve="setEnabled" />
+                          <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
                           <node concept="3clFbT" id="6FKiTwA0J57" role="37wK5m">
                             <property role="3clFbU" value="true" />
                           </node>
@@ -631,7 +631,7 @@
               <ref role="3cqZAo" node="6FKiTwA0J4A" resolve="presentation" />
             </node>
             <node concept="liA8E" id="6FKiTwA0J5c" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:#Presentation.setEnabled(boolean):void" resolve="setEnabled" />
+              <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
               <node concept="3clFbT" id="6FKiTwA0J5d" role="37wK5m" />
             </node>
           </node>
@@ -689,7 +689,7 @@
           <node concept="3clFbS" id="6FKiTwA0J5y" role="3clFbx">
             <node concept="3cpWs6" id="6FKiTwA0J5z" role="3cqZAp">
               <node concept="2YIFZM" id="6FKiTwA0J5$" role="3cqZAk">
-                <ref role="37wK5l" to="jlff:#VfsUtilCore.isAncestor(com.intellij.openapi.vfs.VirtualFile,com.intellij.openapi.vfs.VirtualFile,boolean):boolean" resolve="isAncestor" />
+                <ref role="37wK5l" to="jlff:~VfsUtilCore.isAncestor(com.intellij.openapi.vfs.VirtualFile,com.intellij.openapi.vfs.VirtualFile,boolean)" resolve="isAncestor" />
                 <ref role="1Pybhc" to="jlff:~VfsUtil" resolve="VfsUtil" />
                 <node concept="37vLTw" id="2BHiRxglFNY" role="37wK5m">
                   <ref role="3cqZAo" node="6FKiTwA0J5o" resolve="baseDir" />
@@ -793,7 +793,7 @@
                     <ref role="3cqZAo" node="7cKnY6JuY_F" resolve="pp" />
                   </node>
                   <node concept="liA8E" id="7cKnY6Jv0Ow" role="2OqNvi">
-                    <ref role="37wK5l" to="rvbb:#BaseLogicalViewProjectPane.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                    <ref role="37wK5l" to="rvbb:~BaseLogicalViewProjectPane.getProject()" resolve="getProject" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="7cKnY6Jv0da" role="37wK5m">
@@ -815,11 +815,11 @@
                 <ref role="3cqZAo" node="7cKnY6JuY_F" resolve="pp" />
               </node>
               <node concept="liA8E" id="7cKnY6JuAMx" role="2OqNvi">
-                <ref role="37wK5l" to="rvbb:#ProjectPane.createSelectInTarget():com.intellij.ide.SelectInTarget" resolve="createSelectInTarget" />
+                <ref role="37wK5l" to="rvbb:~ProjectPane.createSelectInTarget()" resolve="createSelectInTarget" />
               </node>
             </node>
             <node concept="liA8E" id="7cKnY6Jv1eC" role="2OqNvi">
-              <ref role="37wK5l" to="ddhc:#SelectInTarget.selectIn(com.intellij.ide.SelectInContext,boolean):void" resolve="selectIn" />
+              <ref role="37wK5l" to="ddhc:~SelectInTarget.selectIn(com.intellij.ide.SelectInContext,boolean)" resolve="selectIn" />
               <node concept="37vLTw" id="7cKnY6Jv1k5" role="37wK5m">
                 <ref role="3cqZAo" node="7cKnY6JuA3p" resolve="ctx" />
               </node>
@@ -861,7 +861,7 @@
                 <ref role="3cqZAo" node="6FKiTwA0J7R" resolve="e" />
               </node>
               <node concept="liA8E" id="6FKiTwA0J80" role="2OqNvi">
-                <ref role="37wK5l" to="de5p:#VcsContext.getSelectedFiles():com.intellij.openapi.vfs.VirtualFile[]" resolve="getSelectedFiles" />
+                <ref role="37wK5l" to="de5p:~VcsContext.getSelectedFiles()" resolve="getSelectedFiles" />
               </node>
             </node>
           </node>
@@ -915,7 +915,7 @@
                 <ref role="3cqZAo" node="7cKnY6JuQ_$" resolve="ctx" />
               </node>
               <node concept="liA8E" id="7cKnY6JuRAf" role="2OqNvi">
-                <ref role="37wK5l" to="de5p:#VcsContext.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                <ref role="37wK5l" to="de5p:~VcsContext.getProject()" resolve="getProject" />
               </node>
             </node>
           </node>
@@ -941,7 +941,7 @@
               <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
             </node>
             <node concept="2YIFZM" id="1hsg_gwyEPv" role="33vP2m">
-              <ref role="37wK5l" to="alof:#ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project):jetbrains.mps.project.MPSProject" resolve="fromIdeaProject" />
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
               <node concept="37vLTw" id="1hsg_gwyEPw" role="37wK5m">
                 <ref role="3cqZAo" node="7cKnY6JuRAc" resolve="project" />
@@ -965,7 +965,7 @@
         <node concept="3cpWs6" id="7cKnY6JuSKo" role="3cqZAp">
           <node concept="2YIFZM" id="7cKnY6JuTaw" role="3cqZAk">
             <ref role="1Pybhc" to="rvbb:~ProjectPane" resolve="ProjectPane" />
-            <ref role="37wK5l" to="rvbb:#ProjectPane.getInstance(jetbrains.mps.project.Project):jetbrains.mps.ide.projectPane.ProjectPane" resolve="getInstance" />
+            <ref role="37wK5l" to="rvbb:~ProjectPane.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
             <node concept="37vLTw" id="7cKnY6JuTRF" role="37wK5m">
               <ref role="3cqZAo" node="6y_kxB1XZfE" resolve="mpsProject" />
             </node>
@@ -1038,7 +1038,7 @@
               <ref role="3cqZAo" node="6FKiTwA0J8j" resolve="presentation" />
             </node>
             <node concept="liA8E" id="6FKiTwA0J8u" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:#Presentation.setEnabled(boolean):void" resolve="setEnabled" />
+              <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
               <node concept="1Wc70l" id="7cKnY6JuWDs" role="37wK5m">
                 <node concept="2OqwBi" id="7cKnY6JuXwh" role="3uHU7w">
                   <node concept="2OqwBi" id="7cKnY6JuWRS" role="2Oq$k0">
@@ -1046,11 +1046,11 @@
                       <ref role="3cqZAo" node="7cKnY6JuVfp" resolve="pp" />
                     </node>
                     <node concept="liA8E" id="7cKnY6JuXkt" role="2OqNvi">
-                      <ref role="37wK5l" to="rvbb:#ProjectPane.createSelectInTarget():com.intellij.ide.SelectInTarget" resolve="createSelectInTarget" />
+                      <ref role="37wK5l" to="rvbb:~ProjectPane.createSelectInTarget()" resolve="createSelectInTarget" />
                     </node>
                   </node>
                   <node concept="liA8E" id="7cKnY6JuXBR" role="2OqNvi">
-                    <ref role="37wK5l" to="ddhc:#SelectInTarget.canSelect(com.intellij.ide.SelectInContext):boolean" resolve="canSelect" />
+                    <ref role="37wK5l" to="ddhc:~SelectInTarget.canSelect(com.intellij.ide.SelectInContext)" resolve="canSelect" />
                     <node concept="2ShNRf" id="7cKnY6JuXE_" role="37wK5m">
                       <node concept="1pGfFk" id="7cKnY6JuXEA" role="2ShVmc">
                         <ref role="37wK5l" to="ddhc:~FileSelectInContext.&lt;init&gt;(com.intellij.openapi.project.Project,com.intellij.openapi.vfs.VirtualFile)" resolve="FileSelectInContext" />
@@ -1059,7 +1059,7 @@
                             <ref role="3cqZAo" node="7cKnY6JuVfp" resolve="pp" />
                           </node>
                           <node concept="liA8E" id="7cKnY6JuYmk" role="2OqNvi">
-                            <ref role="37wK5l" to="rvbb:#BaseLogicalViewProjectPane.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                            <ref role="37wK5l" to="rvbb:~BaseLogicalViewProjectPane.getProject()" resolve="getProject" />
                           </node>
                         </node>
                         <node concept="37vLTw" id="7cKnY6JuXEC" role="37wK5m">

@@ -278,7 +278,7 @@
                         <ref role="3cqZAo" node="ANVkWUiA1A" resolve="module" />
                       </node>
                       <node concept="liA8E" id="ANVkWUiO6o" role="2OqNvi">
-                        <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                        <ref role="37wK5l" to="lui2:~SModule.getModels()" resolve="getModels" />
                       </node>
                     </node>
                     <node concept="A3Dl8" id="ANVkWUiO6p" role="10QFUM">
@@ -297,7 +297,7 @@
                             <ref role="3cqZAo" node="ANVkWUiO6y" resolve="it" />
                           </node>
                           <node concept="liA8E" id="ANVkWUiO6x" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:#SModel.getRootNodes():java.lang.Iterable" resolve="getRootNodes" />
+                            <ref role="37wK5l" to="mhbf:~SModel.getRootNodes()" resolve="getRootNodes" />
                           </node>
                         </node>
                       </node>
@@ -419,7 +419,7 @@
                   <node concept="3clFbS" id="ANVkWUjpU7" role="2LFqv$">
                     <node concept="3clFbF" id="ANVkWUjv09" role="3cqZAp">
                       <node concept="2YIFZM" id="ANVkWUjviR" role="3clFbG">
-                        <ref role="37wK5l" to="b3bi:#CommentUtil.commentOut(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNode" resolve="commentOut" />
+                        <ref role="37wK5l" to="b3bi:~CommentUtil.commentOut(org.jetbrains.mps.openapi.model.SNode)" resolve="commentOut" />
                         <ref role="1Pybhc" to="b3bi:~CommentUtil" resolve="CommentUtil" />
                         <node concept="2GrUjf" id="ANVkWUjvjl" role="37wK5m">
                           <ref role="2Gs0qQ" node="ANVkWUjpU6" resolve="commentedNode" />

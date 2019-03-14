@@ -150,7 +150,7 @@
       <node concept="3clFbS" id="lS$o0er$Hb" role="3clF47">
         <node concept="3clFbF" id="4wqDzu9TCMA" role="3cqZAp">
           <node concept="2YIFZM" id="4wqDzu9TDb1" role="3clFbG">
-            <ref role="37wK5l" to="18ew:#NameUtil.toValidCamelIdentifier(java.lang.String):java.lang.String" resolve="toValidCamelIdentifier" />
+            <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String)" resolve="toValidCamelIdentifier" />
             <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
             <node concept="3cpWs3" id="lS$o0erHCW" role="37wK5m">
               <node concept="Xl_RD" id="lS$o0erHCZ" role="3uHU7w">
@@ -201,7 +201,7 @@
               <ref role="3cqZAo" node="6PHzvTW0Oiw" resolve="methods" />
             </node>
             <node concept="liA8E" id="6PHzvTW0OiG" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="13iPFW" id="6PHzvTW0OiH" role="37wK5m" />
             </node>
           </node>
@@ -234,7 +234,7 @@
                     <node concept="13iPFW" id="2n9zn0CqMPP" role="2JrQYb" />
                   </node>
                   <node concept="liA8E" id="2n9zn0CqMPQ" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:#SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
                   </node>
                 </node>
               </node>
@@ -278,7 +278,7 @@
               <ref role="3cqZAo" node="6PHzvTW1lrj" resolve="methods" />
             </node>
             <node concept="liA8E" id="6PHzvTW1lrr" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="13iPFW" id="6PHzvTW1lrs" role="37wK5m" />
             </node>
           </node>

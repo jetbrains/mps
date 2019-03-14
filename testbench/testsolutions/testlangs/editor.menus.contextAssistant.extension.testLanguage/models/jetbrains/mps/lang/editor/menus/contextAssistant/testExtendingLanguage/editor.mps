@@ -333,11 +333,11 @@
                   <node concept="2OqwBi" id="291CjQFiAED" role="2Oq$k0">
                     <node concept="291QRk" id="291CjQFiArt" role="2Oq$k0" />
                     <node concept="liA8E" id="291CjQFiBrn" role="2OqNvi">
-                      <ref role="37wK5l" to="nddn:#IntentionExecutable.getDescriptor():jetbrains.mps.openapi.intentions.IntentionDescriptor" resolve="getDescriptor" />
+                      <ref role="37wK5l" to="nddn:~IntentionExecutable.getDescriptor()" resolve="getDescriptor" />
                     </node>
                   </node>
                   <node concept="liA8E" id="291CjQFiCHQ" role="2OqNvi">
-                    <ref role="37wK5l" to="nddn:#IntentionDescriptor.getPresentation():java.lang.String" resolve="getPresentation" />
+                    <ref role="37wK5l" to="nddn:~IntentionDescriptor.getPresentation()" resolve="getPresentation" />
                   </node>
                 </node>
               </node>

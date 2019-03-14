@@ -110,7 +110,7 @@
           <node concept="3cpWs3" id="5Z1N4vb$2tM" role="3clFbG">
             <node concept="2OqwBi" id="5Z1N4vb$2Mi" role="3uHU7w">
               <node concept="liA8E" id="5Z1N4vb$2T8" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
               </node>
               <node concept="2JrnkZ" id="5Z1N4vb$2Mn" role="2Oq$k0">
                 <node concept="37vLTw" id="5Z1N4vb$2up" role="2JrQYb">

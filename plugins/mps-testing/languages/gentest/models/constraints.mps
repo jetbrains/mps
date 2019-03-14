@@ -168,7 +168,7 @@
                 <node concept="2OqwBi" id="6VhyYlfJM7r" role="3uHU7w">
                   <node concept="2DA6wF" id="6VhyYlfJHLf" role="2Oq$k0" />
                   <node concept="liA8E" id="6VhyYlfJMC7" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                     <node concept="359W_D" id="6VhyYlfJMKH" role="37wK5m">
                       <ref role="359W_E" to="lur:uLQNrGWd1n" resolve="TransformationMatchAssertion" />
                       <ref role="359W_F" to="lur:uLQNrGWd1z" resolve="transformationPlan" />
@@ -179,7 +179,7 @@
                   <node concept="2OqwBi" id="6VhyYlfJKLU" role="3uHU7w">
                     <node concept="2DA6wF" id="6VhyYlfJKsZ" role="2Oq$k0" />
                     <node concept="liA8E" id="6VhyYlfJLme" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                       <node concept="359W_D" id="6VhyYlfJLys" role="37wK5m">
                         <ref role="359W_E" to="lur:uLQNrGWd1n" resolve="TransformationMatchAssertion" />
                         <ref role="359W_F" to="lur:uLQNrGWd1w" resolve="referenceModel" />
@@ -189,7 +189,7 @@
                   <node concept="2OqwBi" id="6VhyYlfJIDR" role="3uHU7B">
                     <node concept="2DA6wF" id="6VhyYlfJFVu" role="2Oq$k0" />
                     <node concept="liA8E" id="6VhyYlfJJ6e" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                       <node concept="359W_D" id="6VhyYlfJGqL" role="37wK5m">
                         <ref role="359W_E" to="lur:uLQNrGWd1n" resolve="TransformationMatchAssertion" />
                         <ref role="359W_F" to="lur:uLQNrGWd1u" resolve="inputModel" />
@@ -295,7 +295,7 @@
                   <node concept="2OqwBi" id="5wiIlPAvML0" role="3uHU7B">
                     <node concept="2DA6wF" id="5wiIlPAvML1" role="2Oq$k0" />
                     <node concept="liA8E" id="5wiIlPAvML2" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                       <node concept="359W_D" id="5wiIlPAvML3" role="37wK5m">
                         <ref role="359W_E" to="lur:5wiIlPAvMBp" resolve="TransformationMatchManyAssertion" />
                         <ref role="359W_F" to="lur:5wiIlPAvMBr" resolve="inputModel" />
@@ -305,7 +305,7 @@
                   <node concept="2OqwBi" id="5wiIlPAvWSe" role="3uHU7w">
                     <node concept="2DA6wF" id="5wiIlPAvWSf" role="2Oq$k0" />
                     <node concept="liA8E" id="5wiIlPAvWSg" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                       <node concept="359W_D" id="5wiIlPAvWSh" role="37wK5m">
                         <ref role="359W_E" to="lur:5wiIlPAvMBp" resolve="TransformationMatchManyAssertion" />
                         <ref role="359W_F" to="lur:5wiIlPAvMBs" resolve="referenceModels" />
@@ -316,7 +316,7 @@
                 <node concept="2OqwBi" id="5wiIlPAvMKM" role="3uHU7w">
                   <node concept="2DA6wF" id="5wiIlPAvMKN" role="2Oq$k0" />
                   <node concept="liA8E" id="5wiIlPAvMKO" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                     <node concept="359W_D" id="5wiIlPAvMKP" role="37wK5m">
                       <ref role="359W_E" to="lur:uLQNrGWd1n" resolve="TransformationMatchAssertion" />
                       <ref role="359W_F" to="lur:uLQNrGWd1z" resolve="transformationPlan" />

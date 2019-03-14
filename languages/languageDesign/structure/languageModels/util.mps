@@ -625,7 +625,7 @@
                   <ref role="3cqZAo" node="2sxsDnZyoKt" resolve="sn" />
                 </node>
                 <node concept="liA8E" id="2sxsDnZyu5V" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                  <ref role="37wK5l" to="w1kc:~SNode.getNodeId()" resolve="getNodeId" />
                 </node>
               </node>
             </node>
@@ -655,7 +655,7 @@
                 <ref role="3cqZAo" node="2sxsDnZyu5Q" resolve="ni" />
               </node>
               <node concept="liA8E" id="2sxsDnZywYh" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:#SNodeId$Regular.getId():long" resolve="getId" />
+                <ref role="37wK5l" to="w1kc:~SNodeId$Regular.getId()" resolve="getId" />
               </node>
             </node>
           </node>
@@ -703,7 +703,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4H96pIbGFGY" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                   </node>
                 </node>
               </node>
@@ -732,7 +732,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="4H96pIbGFHb" role="2OqNvi">
-                        <ref role="37wK5l" to="w1kc:#SNodeId$Regular.getId():long" resolve="getId" />
+                        <ref role="37wK5l" to="w1kc:~SNodeId$Regular.getId()" resolve="getId" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="4H96pIbGFHv" role="37vLTJ">
@@ -773,7 +773,7 @@
                     <ref role="1PxDUh" to="wyt6:~Long" resolve="Long" />
                   </node>
                   <node concept="2YIFZM" id="4H96pIbFdBY" role="3uHU7B">
-                    <ref role="37wK5l" to="wyt6:#Math.random():double" resolve="random" />
+                    <ref role="37wK5l" to="wyt6:~Math.random()" resolve="random" />
                     <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
                   </node>
                 </node>

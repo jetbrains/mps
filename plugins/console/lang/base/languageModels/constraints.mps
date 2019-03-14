@@ -222,7 +222,7 @@
                 <node concept="2yIwOk" id="70Zinr8JyVk" role="2OqNvi" />
               </node>
               <node concept="liA8E" id="70Zinr8JzOn" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:#SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
               </node>
             </node>
           </node>
@@ -240,11 +240,11 @@
                   <node concept="1rGIog" id="147CB3QsVl2" role="2OqNvi" />
                 </node>
                 <node concept="liA8E" id="147CB3QsVl3" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:#SAbstractConcept.getLanguage():org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
+                  <ref role="37wK5l" to="c17a:~SAbstractConcept.getLanguage()" resolve="getLanguage" />
                 </node>
               </node>
               <node concept="liA8E" id="147CB3QsVl4" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                 <node concept="pHN19" id="147CB3QsVl5" role="37wK5m">
                   <node concept="2V$Bhx" id="147CB3QsVl6" role="2V$M_3">
                     <property role="2V$B1T" value="760a0a8c-eabb-4521-8bfd-65db761a9ba3" />

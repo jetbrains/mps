@@ -774,7 +774,7 @@
                   </node>
                   <node concept="2YIFZM" id="1wEcoXjJF6e" role="3uHU7w">
                     <ref role="1Pybhc" to="5b0:~NodePresentationUtil" resolve="NodePresentationUtil" />
-                    <ref role="37wK5l" to="5b0:#NodePresentationUtil.descriptionText(org.jetbrains.mps.openapi.model.SNode):java.lang.String" resolve="descriptionText" />
+                    <ref role="37wK5l" to="5b0:~NodePresentationUtil.descriptionText(org.jetbrains.mps.openapi.model.SNode)" resolve="descriptionText" />
                     <node concept="2ZBlsa" id="1wEcoXjJF6g" role="37wK5m" />
                   </node>
                 </node>

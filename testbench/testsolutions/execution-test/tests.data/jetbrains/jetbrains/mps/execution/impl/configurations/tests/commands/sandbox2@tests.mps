@@ -109,7 +109,7 @@
           <node concept="3clFbS" id="5vTxdEz_SHy" role="SfCbr">
             <node concept="3clFbF" id="5vTxdEz_SA6" role="3cqZAp">
               <node concept="2YIFZM" id="5vTxdEz_SAm" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:#Thread.sleep(long):void" resolve="sleep" />
+                <ref role="37wK5l" to="wyt6:~Thread.sleep(long)" resolve="sleep" />
                 <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
                 <node concept="3cmrfG" id="5vTxdEz_SA$" role="37wK5m">
                   <property role="3cmrfH" value="5000" />

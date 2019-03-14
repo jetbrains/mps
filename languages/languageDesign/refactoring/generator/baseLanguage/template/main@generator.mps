@@ -999,11 +999,11 @@
                       <node concept="3cpWs3" id="q$PMBgcBzx" role="3uHU7B">
                         <node concept="2OqwBi" id="2ZDBRmk5f3Q" role="3uHU7B">
                           <node concept="liA8E" id="2ZDBRmk5f3R" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:#SModelReference.getModelName():java.lang.String" resolve="getModelName" />
+                            <ref role="37wK5l" to="mhbf:~SModelReference.getModelName()" resolve="getModelName" />
                           </node>
                           <node concept="2OqwBi" id="2ZDBRmk5f3T" role="2Oq$k0">
                             <node concept="liA8E" id="2ZDBRmk5f3V" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:#SModel.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
+                              <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
                             </node>
                             <node concept="2JrnkZ" id="2ZDBRmk5f3W" role="2Oq$k0">
                               <node concept="2OqwBi" id="2ZDBRmk5f3Y" role="2JrQYb">
@@ -2627,7 +2627,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="5lCz6ko76nM" role="37wK5m">
-                <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                 <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                 <node concept="Xl_RD" id="5lCz6ko76nN" role="37wK5m">
                   <property role="Xl_RC" value="name" />
@@ -2669,7 +2669,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="5lCz6ko76o4" role="37wK5m">
-                <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                 <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                 <node concept="2ShNRf" id="5lCz6ko76o5" role="37wK5m">
                   <node concept="1pGfFk" id="5lCz6ko76o6" role="2ShVmc">
@@ -2753,7 +2753,7 @@
               <node concept="3clFbS" id="10tOJLdjswA" role="2VODD2">
                 <node concept="3clFbF" id="10tOJLdjB38" role="3cqZAp">
                   <node concept="2YIFZM" id="10tOJLdjBuJ" role="3clFbG">
-                    <ref role="37wK5l" to="18ew:#NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode):java.lang.String" resolve="nodeFQName" />
+                    <ref role="37wK5l" to="18ew:~NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode)" resolve="nodeFQName" />
                     <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                     <node concept="2OqwBi" id="10tOJLdjBRx" role="37wK5m">
                       <node concept="30H73N" id="10tOJLdjBGz" role="2Oq$k0" />
@@ -2861,7 +2861,7 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="2MPsJ5SqXU4" role="2OqNvi">
-                                <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                                <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                               </node>
                             </node>
                           </node>
@@ -2949,7 +2949,7 @@
       <node concept="3clFbS" id="2MPsJ5Sqz45" role="3clF47">
         <node concept="3clFbF" id="2MPsJ5SqZeP" role="3cqZAp">
           <node concept="2YIFZM" id="2MPsJ5SqZiu" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+            <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="37vLTw" id="2MPsJ5SqZjX" role="37wK5m">
               <ref role="3cqZAo" node="2MPsJ5SqCPy" resolve="myRefactorings" />
@@ -3001,7 +3001,7 @@
                       <ref role="3cqZAo" node="6olX11zm73C" resolve="aspectClass" />
                     </node>
                     <node concept="liA8E" id="6olX11zm8Dw" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Class.cast(java.lang.Object):java.lang.Object" resolve="cast" />
+                      <ref role="37wK5l" to="wyt6:~Class.cast(java.lang.Object)" resolve="cast" />
                       <node concept="2ShNRf" id="6olX11zm9dV" role="37wK5m">
                         <node concept="1pGfFk" id="6olX11zma_E" role="2ShVmc">
                           <ref role="37wK5l" node="2MPsJ5SqCUG" resolve="RefactoringAspectDescriptor" />

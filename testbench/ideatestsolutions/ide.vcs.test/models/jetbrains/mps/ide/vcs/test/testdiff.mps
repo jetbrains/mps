@@ -534,7 +534,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="1TLFXyarfJM" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.Object):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object)" resolve="println" />
               <node concept="3VsKOn" id="1TLFXyarfLT" role="37wK5m">
                 <ref role="3VsUkX" to="1k94:56cvcsnDMz9" resolve="Root" />
               </node>
@@ -1298,7 +1298,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="1TLFXyarfQc" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.Object):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object)" resolve="println" />
               <node concept="3VsKOn" id="1TLFXyarfQd" role="37wK5m">
                 <ref role="3VsUkX" to="1k94:56cvcsnDMz9" resolve="Root" />
               </node>

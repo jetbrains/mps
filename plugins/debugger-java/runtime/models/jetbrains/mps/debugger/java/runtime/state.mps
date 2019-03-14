@@ -889,7 +889,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3L_P6qKH8dk" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="3L_P6qKH8dl" role="37wK5m">
                   <ref role="3VsUkX" to="1nsa:7Lv9a5UcAjq" resolve="VMEventsProcessorManagerComponent" />
                 </node>
@@ -2035,7 +2035,7 @@
         <node concept="1gVbGN" id="3UdBmwRq22c" role="3cqZAp">
           <node concept="3fqX7Q" id="3UdBmwRq22d" role="1gVkn0">
             <node concept="2YIFZM" id="5XQGVRztU39" role="3fr31v">
-              <ref role="37wK5l" to="3a50:#ThreadUtils.isInEDT():boolean" resolve="isInEDT" />
+              <ref role="37wK5l" to="3a50:~ThreadUtils.isInEDT()" resolve="isInEDT" />
               <ref role="1Pybhc" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
             </node>
           </node>
@@ -2046,7 +2046,7 @@
               <ref role="37wK5l" node="3NjNDLgGGtU" resolve="getExecutionState" />
             </node>
             <node concept="liA8E" id="3UdBmwRq22k" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Enum.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~Enum.equals(java.lang.Object)" resolve="equals" />
               <node concept="Rm8GO" id="3UdBmwRq22l" role="37wK5m">
                 <ref role="Rm8GQ" to="1l1h:3SnNvqCaK7w" resolve="Paused" />
                 <ref role="1Px2BO" to="1l1h:3SnNvqCaJaJ" resolve="AbstractDebugSession.ExecutionState" />
@@ -2066,7 +2066,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3UdBmwRq22s" role="2OqNvi">
-              <ref role="37wK5l" to="frkw:#VirtualMachine.allThreads():java.util.List" resolve="allThreads" />
+              <ref role="37wK5l" to="frkw:~VirtualMachine.allThreads()" resolve="allThreads" />
             </node>
           </node>
           <node concept="3cpWsn" id="3UdBmwRq22t" role="1Duv9x">
@@ -2214,7 +2214,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3UdBmwRqjPL" role="2OqNvi">
-              <ref role="37wK5l" to="frkw:#ThreadReference.isSuspended():boolean" resolve="isSuspended" />
+              <ref role="37wK5l" to="frkw:~ThreadReference.isSuspended()" resolve="isSuspended" />
             </node>
           </node>
         </node>
@@ -2868,7 +2868,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3L_P6qKH8lO" role="2OqNvi">
-                <ref role="37wK5l" to="frkw:#VirtualMachine.allThreads():java.util.List" resolve="allThreads" />
+                <ref role="37wK5l" to="frkw:~VirtualMachine.allThreads()" resolve="allThreads" />
               </node>
             </node>
           </node>
@@ -2899,7 +2899,7 @@
                   <ref role="3cqZAo" node="3L_P6qKH8lH" resolve="threads" />
                 </node>
                 <node concept="liA8E" id="3L_P6qKH8m1" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#List.indexOf(java.lang.Object):int" resolve="indexOf" />
+                  <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object)" resolve="indexOf" />
                   <node concept="37vLTw" id="3GM_nagTAbJ" role="37wK5m">
                     <ref role="3cqZAo" node="3L_P6qKH8lQ" resolve="thread" />
                   </node>
@@ -2941,15 +2941,15 @@
                         <ref role="3cqZAo" node="3L_P6qKH8m9" resolve="t" />
                       </node>
                       <node concept="liA8E" id="3L_P6qKH8mk" role="2OqNvi">
-                        <ref role="37wK5l" to="frkw:#ThreadReference.threadGroup():com.sun.jdi.ThreadGroupReference" resolve="threadGroup" />
+                        <ref role="37wK5l" to="frkw:~ThreadReference.threadGroup()" resolve="threadGroup" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3L_P6qKH8ml" role="2OqNvi">
-                      <ref role="37wK5l" to="frkw:#ThreadGroupReference.name():java.lang.String" resolve="name" />
+                      <ref role="37wK5l" to="frkw:~ThreadGroupReference.name()" resolve="name" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3L_P6qKH8mm" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                     <node concept="Xl_RD" id="3L_P6qKH8mn" role="37wK5m">
                       <property role="Xl_RC" value="system" />
                     </node>
@@ -2963,7 +2963,7 @@
                       <ref role="3cqZAo" node="3L_P6qKH8lH" resolve="threads" />
                     </node>
                     <node concept="liA8E" id="3L_P6qKH8ms" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.indexOf(java.lang.Object):int" resolve="indexOf" />
+                      <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object)" resolve="indexOf" />
                       <node concept="37vLTw" id="3GM_nagT$wF" role="37wK5m">
                         <ref role="3cqZAo" node="3L_P6qKH8m9" resolve="t" />
                       </node>
@@ -3021,7 +3021,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3L_P6qKH8mM" role="2OqNvi">
-                  <ref role="37wK5l" to="frkw:#StackFrame.thisObject():com.sun.jdi.ObjectReference" resolve="thisObject" />
+                  <ref role="37wK5l" to="frkw:~StackFrame.thisObject()" resolve="thisObject" />
                 </node>
               </node>
             </node>
@@ -3273,7 +3273,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3L_P6qKH8pt" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                 <node concept="37vLTw" id="2BHiRxeuPjS" role="37wK5m">
                   <ref role="3cqZAo" node="3L_P6qKH8h_" resolve="myStackFrameIndex" />
                 </node>
@@ -3556,7 +3556,7 @@
               <ref role="3cqZAo" node="3L_P6qKH8ri" resolve="watchables" />
             </node>
             <node concept="liA8E" id="3L_P6qKH8rr" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.addAll(java.util.Collection):boolean" resolve="addAll" />
+              <ref role="37wK5l" to="33ny:~List.addAll(java.util.Collection)" resolve="addAll" />
               <node concept="3nyPlj" id="3L_P6qKH8rs" role="37wK5m">
                 <ref role="37wK5l" to="1l1h:3SnNvqCaJ_X" resolve="getWatchables" />
               </node>
@@ -3569,7 +3569,7 @@
               <ref role="3cqZAo" node="3L_P6qKH8ri" resolve="watchables" />
             </node>
             <node concept="liA8E" id="3L_P6qKH8rw" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.addAll(java.util.Collection):boolean" resolve="addAll" />
+              <ref role="37wK5l" to="33ny:~List.addAll(java.util.Collection)" resolve="addAll" />
               <node concept="37vLTw" id="2BHiRxeuQw0" role="37wK5m">
                 <ref role="3cqZAo" node="3L_P6qKH8hJ" resolve="myWatchables" />
               </node>

@@ -351,7 +351,7 @@
                 <ref role="3cqZAo" node="2Dk4xBelnAV" resolve="editorCell" />
               </node>
               <node concept="liA8E" id="13c7lpEz_Bq" role="2OqNvi">
-                <ref role="37wK5l" to="f4zo:#EditorCell.setSubstituteInfo(jetbrains.mps.openapi.editor.cells.SubstituteInfo):void" resolve="setSubstituteInfo" />
+                <ref role="37wK5l" to="f4zo:~EditorCell.setSubstituteInfo(jetbrains.mps.openapi.editor.cells.SubstituteInfo)" resolve="setSubstituteInfo" />
                 <node concept="10Nm6u" id="13c7lpEz_Br" role="37wK5m" />
               </node>
             </node>

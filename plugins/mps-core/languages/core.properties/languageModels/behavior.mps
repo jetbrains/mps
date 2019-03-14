@@ -111,7 +111,7 @@
                     <node concept="13iPFW" id="2n9zn0CqMMX" role="2JrQYb" />
                   </node>
                   <node concept="liA8E" id="2n9zn0CqMMY" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:#SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
                   </node>
                 </node>
               </node>

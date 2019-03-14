@@ -226,7 +226,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4NUyk588GV3" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:#SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
               <node concept="Xjq3P" id="4NUyk588GV4" role="37wK5m" />
               <node concept="10M0yZ" id="4NUyk588GV5" role="37wK5m">
                 <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
@@ -250,7 +250,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4NUyk588GVe" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:#SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
               <node concept="Xjq3P" id="4NUyk588GVf" role="37wK5m" />
               <node concept="10Nm6u" id="4NUyk588GVg" role="37wK5m" />
             </node>
@@ -280,7 +280,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4NUyk588GVu" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:#SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object)" resolve="getUserObject" />
                 <node concept="Xjq3P" id="4NUyk588GVv" role="37wK5m" />
               </node>
             </node>

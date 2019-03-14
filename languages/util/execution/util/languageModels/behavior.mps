@@ -110,7 +110,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1MGOcNZOtW0" role="2OqNvi">
-                    <ref role="37wK5l" to="fwk:#TraceInfo.getUnitNames(org.jetbrains.mps.openapi.model.SNode):java.util.Collection" resolve="getUnitNames" />
+                    <ref role="37wK5l" to="fwk:~TraceInfo.getUnitNames(org.jetbrains.mps.openapi.model.SNode)" resolve="getUnitNames" />
                     <node concept="13iPFW" id="1MGOcNZOtX_" role="37wK5m" />
                   </node>
                 </node>

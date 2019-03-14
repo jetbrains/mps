@@ -82,7 +82,7 @@
                 </node>
                 <node concept="2OqwBi" id="1N6$leSb9F9" role="3uHU7B">
                   <node concept="liA8E" id="1N6$leSbbsV" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
+                    <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                   </node>
                   <node concept="1Wqviy" id="1N6$leSb9au" role="2Oq$k0" />
                 </node>

@@ -271,7 +271,7 @@
                     <node concept="2OqwBi" id="5nAzUdZif1j" role="3uHU7w">
                       <node concept="2OqwBi" id="5nAzUdZif1k" role="2Oq$k0">
                         <node concept="liA8E" id="24cAaiUz$jl" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                          <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                         </node>
                         <node concept="2JrnkZ" id="5nAzUdZif1l" role="2Oq$k0">
                           <node concept="2OqwBi" id="5nAzUdZif1m" role="2JrQYb">
@@ -283,7 +283,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="5nAzUdZif1q" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                        <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                       </node>
                     </node>
                     <node concept="Xl_RD" id="1n8rXLwweUQ" role="3uHU7B">
@@ -317,7 +317,7 @@
                 </node>
                 <node concept="2YIFZM" id="2G6PgZGKnHP" role="3uHU7w">
                   <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <ref role="37wK5l" to="18ew:#NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+                  <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String)" resolve="toValidIdentifier" />
                   <node concept="2OqwBi" id="2G6PgZGKnHQ" role="37wK5m">
                     <node concept="2OqwBi" id="2G6PgZGKnHR" role="2Oq$k0">
                       <node concept="13iPFW" id="2G6PgZGKnHS" role="2Oq$k0" />
@@ -337,7 +337,7 @@
             </node>
             <node concept="2YIFZM" id="2G6PgZGKnHs" role="3uHU7w">
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-              <ref role="37wK5l" to="18ew:#NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+              <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String)" resolve="toValidIdentifier" />
               <node concept="2OqwBi" id="2G6PgZGKnHt" role="37wK5m">
                 <node concept="2OqwBi" id="2G6PgZGKnHu" role="2Oq$k0">
                   <node concept="13iPFW" id="2G6PgZGKnHv" role="2Oq$k0" />
@@ -523,7 +523,7 @@
         <node concept="3cpWs6" id="6oKb3MdXYIN" role="3cqZAp">
           <node concept="2YIFZM" id="6oKb3MdXYWR" role="3cqZAk">
             <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-            <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
             <node concept="Xl_RD" id="6oKb3MdXYXA" role="37wK5m">
               <property role="Xl_RC" value="Import %s" />
             </node>

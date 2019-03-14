@@ -2514,7 +2514,7 @@
           <node concept="3clFbF" id="3wj3sjzQU34" role="3cqZAp">
             <node concept="2OqwBi" id="75gf1bhG9dP" role="3clFbG">
               <node concept="liA8E" id="75gf1bhG9dQ" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:#SModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
               </node>
               <node concept="37vLTw" id="3GM_nagTzCs" role="2Oq$k0">
                 <ref role="3cqZAo" node="3wj3sjzQSY$" resolve="module" />

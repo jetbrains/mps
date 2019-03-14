@@ -253,7 +253,7 @@
           <node concept="2OqwBi" id="4xJ8SYvWPUm" role="3clFbG">
             <node concept="1XNTG" id="4xJ8SYvWPUl" role="2Oq$k0" />
             <node concept="liA8E" id="4xJ8SYvWQ_A" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:#EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode)" resolve="select" />
               <node concept="2OqwBi" id="4xJ8SYvWQ_C" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagTsNg" role="2Oq$k0">
                   <ref role="3cqZAo" node="4xJ8SYvVJIA" resolve="creator" />

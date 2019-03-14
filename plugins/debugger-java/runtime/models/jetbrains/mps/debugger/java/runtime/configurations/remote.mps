@@ -321,7 +321,7 @@
                               </node>
                               <node concept="3clFbF" id="5yNeVI8LPMZ" role="3cqZAp">
                                 <node concept="1rXfSq" id="4hiugqyz8Ow" role="3clFbG">
-                                  <ref role="37wK5l" to="uu3z:#ProcessHandler.notifyProcessDetached():void" resolve="notifyProcessDetached" />
+                                  <ref role="37wK5l" to="uu3z:~ProcessHandler.notifyProcessDetached()" resolve="notifyProcessDetached" />
                                 </node>
                               </node>
                             </node>
@@ -386,7 +386,7 @@
                     </node>
                     <node concept="3clFbF" id="5yNeVI8LPNn" role="3cqZAp">
                       <node concept="1rXfSq" id="4hiugqyzafo" role="3clFbG">
-                        <ref role="37wK5l" to="uu3z:#ProcessHandler.notifyProcessDetached():void" resolve="notifyProcessDetached" />
+                        <ref role="37wK5l" to="uu3z:~ProcessHandler.notifyProcessDetached()" resolve="notifyProcessDetached" />
                       </node>
                     </node>
                   </node>
@@ -395,7 +395,7 @@
               <node concept="3clFbS" id="5yNeVI8LPNp" role="2GV8ay">
                 <node concept="3clFbF" id="5yNeVI8LPNq" role="3cqZAp">
                   <node concept="3nyPlj" id="5yNeVI8LPNr" role="3clFbG">
-                    <ref role="37wK5l" to="uu3z:#ProcessHandler.startNotify():void" resolve="startNotify" />
+                    <ref role="37wK5l" to="uu3z:~ProcessHandler.startNotify()" resolve="startNotify" />
                   </node>
                 </node>
               </node>

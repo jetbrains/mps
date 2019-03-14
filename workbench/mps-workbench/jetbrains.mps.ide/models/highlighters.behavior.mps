@@ -434,7 +434,7 @@
               <ref role="3cqZAo" node="1dN09JzT_Ra" resolve="myProject" />
             </node>
             <node concept="liA8E" id="1dN09JzTCKo" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:#MPSProject.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+              <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
               <node concept="3VsKOn" id="1dN09JzTCKp" role="37wK5m">
                 <ref role="3VsUkX" to="exr9:~Highlighter" resolve="Highlighter" />
               </node>
@@ -458,7 +458,7 @@
               <ref role="37wK5l" node="1dN09JzTCKs" resolve="getHighlighter" />
             </node>
             <node concept="liA8E" id="1dN09JzTEMN" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#Highlighter.addChecker(jetbrains.mps.nodeEditor.checking.EditorChecker):void" resolve="addChecker" />
+              <ref role="37wK5l" to="exr9:~Highlighter.addChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="addChecker" />
               <node concept="37vLTw" id="2mjA7mXxk70" role="37wK5m">
                 <ref role="3cqZAo" node="2mjA7mXxfan" resolve="myStructureChecker" />
               </node>
@@ -471,7 +471,7 @@
               <ref role="37wK5l" node="1dN09JzTCKs" resolve="getHighlighter" />
             </node>
             <node concept="liA8E" id="2mjA7mXxjCc" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#Highlighter.addChecker(jetbrains.mps.nodeEditor.checking.EditorChecker):void" resolve="addChecker" />
+              <ref role="37wK5l" to="exr9:~Highlighter.addChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="addChecker" />
               <node concept="37vLTw" id="2mjA7mXxjCd" role="37wK5m">
                 <ref role="3cqZAo" node="1dN09JzXnf4" resolve="myBehaviorChecker" />
               </node>
@@ -498,7 +498,7 @@
               <ref role="37wK5l" node="1dN09JzTCKs" resolve="getHighlighter" />
             </node>
             <node concept="liA8E" id="1dN09JzXqkm" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#Highlighter.removeChecker(jetbrains.mps.nodeEditor.checking.EditorChecker):void" resolve="removeChecker" />
+              <ref role="37wK5l" to="exr9:~Highlighter.removeChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="removeChecker" />
               <node concept="37vLTw" id="1dN09JzXqqv" role="37wK5m">
                 <ref role="3cqZAo" node="1dN09JzXnf4" resolve="myBehaviorChecker" />
               </node>
@@ -511,7 +511,7 @@
               <ref role="37wK5l" node="1dN09JzTCKs" resolve="getHighlighter" />
             </node>
             <node concept="liA8E" id="2mjA7mXxjM0" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#Highlighter.removeChecker(jetbrains.mps.nodeEditor.checking.EditorChecker):void" resolve="removeChecker" />
+              <ref role="37wK5l" to="exr9:~Highlighter.removeChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="removeChecker" />
               <node concept="37vLTw" id="2mjA7mXxkpX" role="37wK5m">
                 <ref role="3cqZAo" node="2mjA7mXxfan" resolve="myStructureChecker" />
               </node>
@@ -640,7 +640,7 @@
                 <ref role="3cqZAo" node="1dN09JzU0c0" resolve="component" />
               </node>
               <node concept="liA8E" id="1dN09JzXtz4" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:#EditorComponent.getEditedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getEditedNode" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
               </node>
             </node>
           </node>
@@ -757,7 +757,7 @@
               <ref role="3cqZAo" node="1dN09JzU0c6" resolve="cancellable" />
             </node>
             <node concept="liA8E" id="1dN09JzYkXy" role="2OqNvi">
-              <ref role="37wK5l" to="18ew:#Cancellable.isCancelled():boolean" resolve="isCancelled" />
+              <ref role="37wK5l" to="18ew:~Cancellable.isCancelled()" resolve="isCancelled" />
             </node>
           </node>
         </node>
@@ -787,7 +787,7 @@
       <node concept="3clFbS" id="1dN09J$2ecf" role="3clF47">
         <node concept="3cpWs6" id="1dN09J$2ecC" role="3cqZAp">
           <node concept="2YIFZM" id="6xaYinJLpkH" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="3uibUv" id="6xaYinJLpqz" role="3PaCim">
               <ref role="3uigEE" to="exr9:~EditorMessage" resolve="EditorMessage" />
@@ -862,7 +862,7 @@
               <ref role="3cqZAo" node="1dN09JzYg6N" resolve="cancellable" />
             </node>
             <node concept="liA8E" id="6xaYinJLssa" role="2OqNvi">
-              <ref role="37wK5l" to="18ew:#Cancellable.isCancelled():boolean" resolve="isCancelled" />
+              <ref role="37wK5l" to="18ew:~Cancellable.isCancelled()" resolve="isCancelled" />
             </node>
           </node>
         </node>
@@ -1612,7 +1612,7 @@
                       <ref role="3cqZAo" node="6xaYinJLQeK" resolve="myCancellable" />
                     </node>
                     <node concept="liA8E" id="6xaYinJKZVK" role="2OqNvi">
-                      <ref role="37wK5l" to="18ew:#Cancellable.isCancelled():boolean" resolve="isCancelled" />
+                      <ref role="37wK5l" to="18ew:~Cancellable.isCancelled()" resolve="isCancelled" />
                     </node>
                   </node>
                 </node>
@@ -1837,7 +1837,7 @@
                             <ref role="3cqZAo" node="6xaYinJPDKB" resolve="monitor" />
                           </node>
                           <node concept="liA8E" id="2mjA7mXu9U3" role="2OqNvi">
-                            <ref role="37wK5l" to="yyf4:#ProgressMonitor.cancel():void" resolve="cancel" />
+                            <ref role="37wK5l" to="yyf4:~ProgressMonitor.cancel()" resolve="cancel" />
                           </node>
                         </node>
                       </node>
@@ -2155,7 +2155,7 @@
                       <ref role="3cqZAo" node="6xaYinJOL2j" resolve="myCancellable" />
                     </node>
                     <node concept="liA8E" id="6xaYinJOL3_" role="2OqNvi">
-                      <ref role="37wK5l" to="18ew:#Cancellable.isCancelled():boolean" resolve="isCancelled" />
+                      <ref role="37wK5l" to="18ew:~Cancellable.isCancelled()" resolve="isCancelled" />
                     </node>
                   </node>
                 </node>
@@ -2369,7 +2369,7 @@
                             <ref role="3cqZAo" node="6xaYinJP8Zl" resolve="monitor" />
                           </node>
                           <node concept="liA8E" id="59G_UM6kkkN" role="2OqNvi">
-                            <ref role="37wK5l" to="yyf4:#ProgressMonitor.cancel():void" resolve="cancel" />
+                            <ref role="37wK5l" to="yyf4:~ProgressMonitor.cancel()" resolve="cancel" />
                           </node>
                         </node>
                       </node>
@@ -2591,14 +2591,14 @@
               <node concept="3K4zz7" id="6xaYinJONZJ" role="3cqZAk">
                 <node concept="2YIFZM" id="2mjA7mXteOJ" role="3K4GZi">
                   <ref role="1Pybhc" to="3a50:~MPSCodeInsightBundle" resolve="MPSCodeInsightBundle" />
-                  <ref role="37wK5l" to="3a50:#MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...):java.lang.String" resolve="message" />
+                  <ref role="37wK5l" to="3a50:~MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
                   <node concept="Xl_RD" id="2mjA7mXteOK" role="37wK5m">
                     <property role="Xl_RC" value="method.is.implemented.too.many" />
                   </node>
                 </node>
                 <node concept="2YIFZM" id="1R9kKoB7ZcP" role="3K4E3e">
                   <ref role="1Pybhc" to="3a50:~MPSCodeInsightBundle" resolve="MPSCodeInsightBundle" />
-                  <ref role="37wK5l" to="3a50:#MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...):java.lang.String" resolve="message" />
+                  <ref role="37wK5l" to="3a50:~MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
                   <node concept="Xl_RD" id="1R9kKoB7ZIA" role="37wK5m">
                     <property role="Xl_RC" value="method.is.overridden.too.many" />
                   </node>
@@ -2925,14 +2925,14 @@
         <node concept="3cpWs6" id="6xaYinJP4KW" role="3cqZAp">
           <node concept="22lmx$" id="6xaYinJPbXV" role="3cqZAk">
             <node concept="3nyPlj" id="6xaYinJPc6I" role="3uHU7w">
-              <ref role="37wK5l" to="mk8z:#EmptyProgressMonitor.isCanceled():boolean" resolve="isCanceled" />
+              <ref role="37wK5l" to="mk8z:~EmptyProgressMonitor.isCanceled()" resolve="isCanceled" />
             </node>
             <node concept="2OqwBi" id="6xaYinJP62n" role="3uHU7B">
               <node concept="37vLTw" id="6xaYinJP5QQ" role="2Oq$k0">
                 <ref role="3cqZAo" node="6xaYinJP5lE" resolve="myCancellable" />
               </node>
               <node concept="liA8E" id="6xaYinJP6h6" role="2OqNvi">
-                <ref role="37wK5l" to="18ew:#Cancellable.isCancelled():boolean" resolve="isCancelled" />
+                <ref role="37wK5l" to="18ew:~Cancellable.isCancelled()" resolve="isCancelled" />
               </node>
             </node>
           </node>

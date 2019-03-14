@@ -266,7 +266,7 @@
               <node concept="2OqwBi" id="3hEqlZ1qKCW" role="3clFbG">
                 <node concept="EWnkA" id="3hEqlZ1qKCB" role="2Oq$k0" />
                 <node concept="liA8E" id="3hEqlZ1qKD2" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
+                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int)" resolve="start" />
                   <node concept="Xl_RD" id="3hEqlZ1qKD3" role="37wK5m">
                     <property role="Xl_RC" value="Copying resources" />
                   </node>
@@ -280,7 +280,7 @@
               <node concept="2OqwBi" id="3hEqlZ1qKEe" role="3clFbG">
                 <node concept="EWnkA" id="3hEqlZ1qKDT" role="2Oq$k0" />
                 <node concept="liA8E" id="3hEqlZ1qKEj" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.step(java.lang.String):void" resolve="step" />
+                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.step(java.lang.String)" resolve="step" />
                   <node concept="Xl_RD" id="3hEqlZ1qKEk" role="37wK5m">
                     <property role="Xl_RC" value="Collecting" />
                   </node>
@@ -348,7 +348,7 @@
                         <node concept="2_BwXt" id="1LzZ23MeXJg" role="2Oq$k0" />
                       </node>
                       <node concept="liA8E" id="7OtjhV3LXCm" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c3:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
                   </node>
@@ -390,7 +390,7 @@
                                               <node concept="3y3z36" id="5KGdJjDZUNW" role="3clFbG">
                                                 <node concept="10Nm6u" id="5KGdJjDZUNX" role="3uHU7w" />
                                                 <node concept="2YIFZM" id="7OtjhV3O1Hz" role="3uHU7B">
-                                                  <ref role="37wK5l" to="w1kc:#SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel):jetbrains.mps.vfs.IFile" resolve="getOutputLocation" />
+                                                  <ref role="37wK5l" to="w1kc:~SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel)" resolve="getOutputLocation" />
                                                   <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
                                                   <node concept="37vLTw" id="7OtjhV3O1H$" role="37wK5m">
                                                     <ref role="3cqZAo" node="5KGdJjDZUO0" resolve="it" />
@@ -433,14 +433,14 @@
                               <node concept="2Sg_IR" id="36GkqAMyLlU" role="33vP2m">
                                 <node concept="2OqwBi" id="7OtjhV3NY49" role="2SgHGx">
                                   <node concept="2YIFZM" id="7OtjhV3NXw2" role="2Oq$k0">
-                                    <ref role="37wK5l" to="w1kc:#SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel):jetbrains.mps.vfs.IFile" resolve="getOutputLocation" />
+                                    <ref role="37wK5l" to="w1kc:~SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel)" resolve="getOutputLocation" />
                                     <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
                                     <node concept="2GrUjf" id="7OtjhV3NXw3" role="37wK5m">
                                       <ref role="2Gs0qQ" node="5KGdJjE0hIX" resolve="model" />
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="7OtjhV3NYG0" role="2OqNvi">
-                                    <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                                   </node>
                                 </node>
                                 <node concept="2bn25q" id="36GkqAMyLlV" role="2SgG2M">
@@ -541,7 +541,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="m01hLQ1fo" role="2OqNvi">
-                                              <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                                              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                                             </node>
                                           </node>
                                           <node concept="2GrUjf" id="m01hLQ21T" role="37wK5m">
@@ -699,7 +699,7 @@
                   <node concept="2OqwBi" id="3hEqlZ1r0jU" role="3clFbG">
                     <node concept="EWnkA" id="3hEqlZ1r0j_" role="2Oq$k0" />
                     <node concept="liA8E" id="3hEqlZ1r0jZ" role="2OqNvi">
-                      <ref role="37wK5l" to="yyf4:#ProgressMonitor.advance(int):void" resolve="advance" />
+                      <ref role="37wK5l" to="yyf4:~ProgressMonitor.advance(int)" resolve="advance" />
                       <node concept="3cmrfG" id="3hEqlZ1r0k0" role="37wK5m">
                         <property role="3cmrfH" value="1" />
                       </node>
@@ -710,7 +710,7 @@
                   <node concept="2OqwBi" id="3hEqlZ1r0k3" role="3clFbG">
                     <node concept="EWnkA" id="3hEqlZ1r0k4" role="2Oq$k0" />
                     <node concept="liA8E" id="3hEqlZ1r0k5" role="2OqNvi">
-                      <ref role="37wK5l" to="yyf4:#ProgressMonitor.step(java.lang.String):void" resolve="step" />
+                      <ref role="37wK5l" to="yyf4:~ProgressMonitor.step(java.lang.String)" resolve="step" />
                       <node concept="Xl_RD" id="3hEqlZ1r0k6" role="37wK5m">
                         <property role="Xl_RC" value="Copying content" />
                       </node>
@@ -721,11 +721,11 @@
                 <node concept="3clFbF" id="20tipxamyqZ" role="3cqZAp">
                   <node concept="2OqwBi" id="20tipxamza4" role="3clFbG">
                     <node concept="2YIFZM" id="20tipxamz9A" role="2Oq$k0">
-                      <ref role="37wK5l" to="3ju5:#FileSystem.getInstance():jetbrains.mps.vfs.FileSystem" resolve="getInstance" />
+                      <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
                       <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
                     </node>
                     <node concept="liA8E" id="20tipxamzgA" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:#FileSystem.runWriteTransaction(java.lang.Runnable):boolean" resolve="runWriteTransaction" />
+                      <ref role="37wK5l" to="3ju5:~FileSystem.runWriteTransaction(java.lang.Runnable)" resolve="runWriteTransaction" />
                       <node concept="1bVj0M" id="5KGdJjE1QSd" role="37wK5m">
                         <property role="3yWfEV" value="true" />
                         <node concept="3clFbS" id="5KGdJjE1QSo" role="1bW5cS">
@@ -750,7 +750,7 @@
                   <node concept="2OqwBi" id="3hEqlZ1r0ju" role="3clFbG">
                     <node concept="EWnkA" id="3hEqlZ1r0j9" role="2Oq$k0" />
                     <node concept="liA8E" id="3hEqlZ1r0jz" role="2OqNvi">
-                      <ref role="37wK5l" to="yyf4:#ProgressMonitor.done():void" resolve="done" />
+                      <ref role="37wK5l" to="yyf4:~ProgressMonitor.done()" resolve="done" />
                     </node>
                   </node>
                 </node>

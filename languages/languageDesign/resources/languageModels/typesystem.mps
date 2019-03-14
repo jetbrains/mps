@@ -586,7 +586,7 @@
                     <ref role="3cqZAo" node="46nPloeq_Ft" resolve="url" />
                   </node>
                   <node concept="liA8E" id="4voYo4ruSP6" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                    <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                     <node concept="Xl_RD" id="4voYo4ruSP7" role="37wK5m">
                       <property role="Xl_RC" value="http://" />
                     </node>
@@ -597,7 +597,7 @@
                     <ref role="3cqZAo" node="46nPloeq_Ft" resolve="url" />
                   </node>
                   <node concept="liA8E" id="4voYo4ruSBb" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                    <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                     <node concept="Xl_RD" id="4voYo4ruSCI" role="37wK5m">
                       <property role="Xl_RC" value="https://" />
                     </node>
@@ -633,7 +633,7 @@
                             <ref role="3cqZAo" node="4voYo4rte8C" resolve="e" />
                           </node>
                           <node concept="liA8E" id="4voYo4rtemp" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:#Throwable.getMessage():java.lang.String" resolve="getMessage" />
+                            <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
                           </node>
                         </node>
                         <node concept="Xl_RD" id="4voYo4rtebL" role="3uHU7B">

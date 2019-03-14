@@ -197,7 +197,7 @@
                 <ref role="37wK5l" to="dpdg:5Xa7gk5bu$I" resolve="convertItems" />
                 <ref role="1Pybhc" to="dpdg:5Xa7gk5b7L1" resolve="ItemConverter" />
                 <node concept="2YIFZM" id="5Xa7gk5bZIL" role="37wK5m">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="37vLTw" id="5Xa7gk5bZIM" role="37wK5m">
                     <ref role="3cqZAo" node="5Xa7gk5bSuX" resolve="item" />
@@ -284,7 +284,7 @@
                 <ref role="37wK5l" to="dpdg:5Xa7gk5bu$I" resolve="convertItems" />
                 <ref role="1Pybhc" to="dpdg:5Xa7gk5b7L1" resolve="ItemConverter" />
                 <node concept="2YIFZM" id="5Xa7gk5dumS" role="37wK5m">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="37vLTw" id="5Xa7gk5dumT" role="37wK5m">
                     <ref role="3cqZAo" node="5Xa7gk5dum$" resolve="item" />

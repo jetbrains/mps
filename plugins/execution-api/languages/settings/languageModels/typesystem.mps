@@ -642,7 +642,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="63yBSeEXxHx" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                    <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                     <node concept="37vLTw" id="3GM_nagTwYj" role="37wK5m">
                       <ref role="3cqZAo" node="63yBSeEXxHz" resolve="i" />
                     </node>
@@ -871,7 +871,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4AWjvCLCF3O" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                    <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                     <node concept="37vLTw" id="3GM_nagTunk" role="37wK5m">
                       <ref role="3cqZAo" node="63yBSeEXxJ2" resolve="i" />
                     </node>

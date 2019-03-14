@@ -5747,7 +5747,7 @@
         <node concept="2OqwBi" id="i34E2_4" role="2OEOjV">
           <node concept="3622Ei" id="i34E2ua" role="2Oq$k0" />
           <node concept="liA8E" id="i34E4ly" role="2OqNvi">
-            <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+            <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError()" resolve="getNodeWithError" />
           </node>
         </node>
       </node>
@@ -6742,7 +6742,7 @@
         <node concept="2OqwBi" id="i2Z1UUf" role="2OEOjV">
           <node concept="3622Ei" id="i2Z1UL2" role="2Oq$k0" />
           <node concept="liA8E" id="i2Z1VoF" role="2OqNvi">
-            <ref role="37wK5l" to="u78q:#EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+            <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError()" resolve="getNodeWithError" />
           </node>
         </node>
         <node concept="Xl_RD" id="i2Z2vPx" role="2MkJ7o">

@@ -452,7 +452,7 @@
                     <ref role="3cqZAo" node="3EnpNH2_Hxe" resolve="unitName" />
                   </node>
                   <node concept="liA8E" id="3EnpNH2_Hxz" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.lastIndexOf(int):int" resolve="lastIndexOf" />
+                    <ref role="37wK5l" to="wyt6:~String.lastIndexOf(int)" resolve="lastIndexOf" />
                     <node concept="1Xhbcc" id="785kb9uuB1" role="37wK5m">
                       <property role="1XhdNS" value="." />
                     </node>
@@ -498,7 +498,7 @@
                                 <ref role="3cqZAo" node="3EnpNH2_Hxe" resolve="unitName" />
                               </node>
                               <node concept="liA8E" id="3EnpNH2_HxR" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
+                                <ref role="37wK5l" to="wyt6:~String.substring(int,int)" resolve="substring" />
                                 <node concept="3cmrfG" id="3EnpNH2_HxS" role="37wK5m">
                                   <property role="3cmrfH" value="0" />
                                 </node>
@@ -508,7 +508,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="3EnpNH2_HxU" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:#String.replace(char,char):java.lang.String" resolve="replace" />
+                              <ref role="37wK5l" to="wyt6:~String.replace(char,char)" resolve="replace" />
                               <node concept="1Xhbcc" id="785kb9uvFf" role="37wK5m">
                                 <property role="1XhdNS" value="." />
                               </node>
@@ -540,7 +540,7 @@
                 <ref role="3cqZAo" node="3EnpNH2_Hxe" resolve="unitName" />
               </node>
               <node concept="liA8E" id="3EnpNH2_Hy3" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
                 <node concept="37vLTw" id="2BHiRxgll20" role="37wK5m">
                   <ref role="3cqZAo" node="3EnpNH2_Hxg" resolve="fileName" />
                 </node>
@@ -556,7 +556,7 @@
                       <ref role="3cqZAo" node="3EnpNH2_Hxe" resolve="unitName" />
                     </node>
                     <node concept="liA8E" id="3EnpNH2_Hxp" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#String.replace(char,char):java.lang.String" resolve="replace" />
+                      <ref role="37wK5l" to="wyt6:~String.replace(char,char)" resolve="replace" />
                       <node concept="1Xhbcc" id="785kb9utNB" role="37wK5m">
                         <property role="1XhdNS" value="." />
                       </node>
@@ -585,7 +585,7 @@
                 </node>
                 <node concept="2YIFZM" id="785kb9tYPv" role="33vP2m">
                   <ref role="1Pybhc" to="fpru:~FilenameIndex" resolve="FilenameIndex" />
-                  <ref role="37wK5l" to="fpru:#FilenameIndex.getVirtualFilesByName(com.intellij.openapi.project.Project,java.lang.String,com.intellij.psi.search.GlobalSearchScope):java.util.Collection" resolve="getVirtualFilesByName" />
+                  <ref role="37wK5l" to="fpru:~FilenameIndex.getVirtualFilesByName(com.intellij.openapi.project.Project,java.lang.String,com.intellij.psi.search.GlobalSearchScope)" resolve="getVirtualFilesByName" />
                   <node concept="37vLTw" id="785kb9tYPw" role="37wK5m">
                     <ref role="3cqZAo" node="3EnpNH2_Hxc" resolve="project" />
                   </node>
@@ -593,7 +593,7 @@
                     <ref role="3cqZAo" node="3EnpNH2_Hxg" resolve="fileName" />
                   </node>
                   <node concept="2YIFZM" id="785kb9tYPy" role="37wK5m">
-                    <ref role="37wK5l" to="fpru:#GlobalSearchScope.allScope(com.intellij.openapi.project.Project):com.intellij.psi.search.GlobalSearchScope" resolve="allScope" />
+                    <ref role="37wK5l" to="fpru:~GlobalSearchScope.allScope(com.intellij.openapi.project.Project)" resolve="allScope" />
                     <ref role="1Pybhc" to="fpru:~GlobalSearchScope" resolve="GlobalSearchScope" />
                     <node concept="37vLTw" id="785kb9tYPz" role="37wK5m">
                       <ref role="3cqZAo" node="3EnpNH2_Hxc" resolve="project" />
@@ -618,11 +618,11 @@
                                 <ref role="3cqZAo" node="3EnpNH2_Hz9" resolve="it" />
                               </node>
                               <node concept="liA8E" id="3EnpNH2_Hz6" role="2OqNvi">
-                                <ref role="37wK5l" to="jlff:#VirtualFile.getPath():java.lang.String" resolve="getPath" />
+                                <ref role="37wK5l" to="jlff:~VirtualFile.getPath()" resolve="getPath" />
                               </node>
                             </node>
                             <node concept="liA8E" id="3EnpNH2_Hz7" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                              <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
                               <node concept="37vLTw" id="3GM_nagTy5h" role="37wK5m">
                                 <ref role="3cqZAo" node="3EnpNH2_Hxl" resolve="fullFileName" />
                               </node>
@@ -685,14 +685,14 @@
             </node>
             <node concept="2OqwBi" id="3EnpNH2_Hzw" role="33vP2m">
               <node concept="2YIFZM" id="3EnpNH2_Hzx" role="2Oq$k0">
-                <ref role="37wK5l" to="iwsx:#FileEditorManager.getInstance(com.intellij.openapi.project.Project):com.intellij.openapi.fileEditor.FileEditorManager" resolve="getInstance" />
+                <ref role="37wK5l" to="iwsx:~FileEditorManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                 <ref role="1Pybhc" to="iwsx:~FileEditorManager" resolve="FileEditorManager" />
                 <node concept="37vLTw" id="2BHiRxglrfh" role="37wK5m">
                   <ref role="3cqZAo" node="3EnpNH2_H$m" resolve="project" />
                 </node>
               </node>
               <node concept="liA8E" id="3EnpNH2_Hzz" role="2OqNvi">
-                <ref role="37wK5l" to="iwsx:#FileEditorManager.openFile(com.intellij.openapi.vfs.VirtualFile,boolean,boolean):com.intellij.openapi.fileEditor.FileEditor[]" resolve="openFile" />
+                <ref role="37wK5l" to="iwsx:~FileEditorManager.openFile(com.intellij.openapi.vfs.VirtualFile,boolean,boolean)" resolve="openFile" />
                 <node concept="37vLTw" id="2BHiRxglDsH" role="37wK5m">
                   <ref role="3cqZAo" node="3EnpNH2_H$o" resolve="file" />
                 </node>
@@ -789,15 +789,15 @@
                       <ref role="3cqZAo" node="3EnpNH2_HzO" resolve="textEditor" />
                     </node>
                     <node concept="liA8E" id="3EnpNH2_H$9" role="2OqNvi">
-                      <ref role="37wK5l" to="iwsx:#TextEditor.getEditor():com.intellij.openapi.editor.Editor" resolve="getEditor" />
+                      <ref role="37wK5l" to="iwsx:~TextEditor.getEditor()" resolve="getEditor" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3EnpNH2_H$a" role="2OqNvi">
-                    <ref role="37wK5l" to="s9o5:#Editor.getCaretModel():com.intellij.openapi.editor.CaretModel" resolve="getCaretModel" />
+                    <ref role="37wK5l" to="s9o5:~Editor.getCaretModel()" resolve="getCaretModel" />
                   </node>
                 </node>
                 <node concept="liA8E" id="3EnpNH2_H$b" role="2OqNvi">
-                  <ref role="37wK5l" to="s9o5:#CaretModel.moveToLogicalPosition(com.intellij.openapi.editor.LogicalPosition):void" resolve="moveToLogicalPosition" />
+                  <ref role="37wK5l" to="s9o5:~CaretModel.moveToLogicalPosition(com.intellij.openapi.editor.LogicalPosition)" resolve="moveToLogicalPosition" />
                   <node concept="37vLTw" id="3GM_nagTtoK" role="37wK5m">
                     <ref role="3cqZAo" node="3EnpNH2_HzW" resolve="position" />
                   </node>
@@ -812,15 +812,15 @@
                       <ref role="3cqZAo" node="3EnpNH2_HzO" resolve="textEditor" />
                     </node>
                     <node concept="liA8E" id="3EnpNH2_H$i" role="2OqNvi">
-                      <ref role="37wK5l" to="iwsx:#TextEditor.getEditor():com.intellij.openapi.editor.Editor" resolve="getEditor" />
+                      <ref role="37wK5l" to="iwsx:~TextEditor.getEditor()" resolve="getEditor" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3EnpNH2_H$j" role="2OqNvi">
-                    <ref role="37wK5l" to="s9o5:#Editor.getScrollingModel():com.intellij.openapi.editor.ScrollingModel" resolve="getScrollingModel" />
+                    <ref role="37wK5l" to="s9o5:~Editor.getScrollingModel()" resolve="getScrollingModel" />
                   </node>
                 </node>
                 <node concept="liA8E" id="3EnpNH2_H$k" role="2OqNvi">
-                  <ref role="37wK5l" to="s9o5:#ScrollingModel.scrollToCaret(com.intellij.openapi.editor.ScrollType):void" resolve="scrollToCaret" />
+                  <ref role="37wK5l" to="s9o5:~ScrollingModel.scrollToCaret(com.intellij.openapi.editor.ScrollType)" resolve="scrollToCaret" />
                   <node concept="Rm8GO" id="3EnpNH2_H$l" role="37wK5m">
                     <ref role="Rm8GQ" to="s9o5:~ScrollType.MAKE_VISIBLE" resolve="MAKE_VISIBLE" />
                     <ref role="1Px2BO" to="s9o5:~ScrollType" resolve="ScrollType" />

@@ -167,7 +167,7 @@
               <ref role="3cqZAo" node="5ARbEwNkijb" resolve="myComboBox" />
             </node>
             <node concept="liA8E" id="3tOCygy3THk" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:#JComboBox.addItem(java.lang.Object):void" resolve="addItem" />
+              <ref role="37wK5l" to="dxuu:~JComboBox.addItem(java.lang.Object)" resolve="addItem" />
               <node concept="Rm8GO" id="3tOCygy3THl" role="37wK5m">
                 <ref role="Rm8GQ" to="yo1v:~RuleType.STRICTLY_BEFORE" resolve="STRICTLY_BEFORE" />
                 <ref role="1Px2BO" to="yo1v:~RuleType" resolve="RuleType" />
@@ -181,7 +181,7 @@
               <ref role="3cqZAo" node="5ARbEwNkijb" resolve="myComboBox" />
             </node>
             <node concept="liA8E" id="3tOCygy3THp" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:#JComboBox.addItem(java.lang.Object):void" resolve="addItem" />
+              <ref role="37wK5l" to="dxuu:~JComboBox.addItem(java.lang.Object)" resolve="addItem" />
               <node concept="Rm8GO" id="3tOCygy3THq" role="37wK5m">
                 <ref role="Rm8GQ" to="yo1v:~RuleType.BEFORE_OR_TOGETHER" resolve="BEFORE_OR_TOGETHER" />
                 <ref role="1Px2BO" to="yo1v:~RuleType" resolve="RuleType" />
@@ -195,7 +195,7 @@
               <ref role="3cqZAo" node="5ARbEwNkijb" resolve="myComboBox" />
             </node>
             <node concept="liA8E" id="3tOCygy3THu" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:#JComboBox.addItem(java.lang.Object):void" resolve="addItem" />
+              <ref role="37wK5l" to="dxuu:~JComboBox.addItem(java.lang.Object)" resolve="addItem" />
               <node concept="Rm8GO" id="3tOCygy3THv" role="37wK5m">
                 <ref role="Rm8GQ" to="yo1v:~RuleType.STRICTLY_AFTER" resolve="STRICTLY_AFTER" />
                 <ref role="1Px2BO" to="yo1v:~RuleType" resolve="RuleType" />
@@ -209,7 +209,7 @@
               <ref role="3cqZAo" node="5ARbEwNkijb" resolve="myComboBox" />
             </node>
             <node concept="liA8E" id="3tOCygy3THz" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:#JComboBox.addItem(java.lang.Object):void" resolve="addItem" />
+              <ref role="37wK5l" to="dxuu:~JComboBox.addItem(java.lang.Object)" resolve="addItem" />
               <node concept="Rm8GO" id="3tOCygy3TH$" role="37wK5m">
                 <ref role="Rm8GQ" to="yo1v:~RuleType.AFTER_OR_TOGETHER" resolve="AFTER_OR_TOGETHER" />
                 <ref role="1Px2BO" to="yo1v:~RuleType" resolve="RuleType" />
@@ -223,7 +223,7 @@
               <ref role="3cqZAo" node="5ARbEwNkijb" resolve="myComboBox" />
             </node>
             <node concept="liA8E" id="3tOCygy3THC" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:#JComboBox.addItem(java.lang.Object):void" resolve="addItem" />
+              <ref role="37wK5l" to="dxuu:~JComboBox.addItem(java.lang.Object)" resolve="addItem" />
               <node concept="Rm8GO" id="3tOCygy3THD" role="37wK5m">
                 <ref role="Rm8GQ" to="yo1v:~RuleType.STRICTLY_TOGETHER" resolve="STRICTLY_TOGETHER" />
                 <ref role="1Px2BO" to="yo1v:~RuleType" resolve="RuleType" />
@@ -251,7 +251,7 @@
               <ref role="3cqZAo" to="dxuu:~DefaultCellEditor.editorComponent" resolve="editorComponent" />
             </node>
             <node concept="liA8E" id="7$24V3gCLOA" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:#Component.addKeyListener(java.awt.event.KeyListener):void" resolve="addKeyListener" />
+              <ref role="37wK5l" to="z60i:~Component.addKeyListener(java.awt.event.KeyListener)" resolve="addKeyListener" />
               <node concept="2ShNRf" id="7$24V3gCLOI" role="37wK5m">
                 <node concept="YeOm9" id="7$24V3gD5Zp" role="2ShVmc">
                   <node concept="1Y3b0j" id="7$24V3gD5Zs" role="YeSDq">
@@ -295,7 +295,7 @@
                               </node>
                               <node concept="2OqwBi" id="6XbuxloLXr5" role="3uHU7B">
                                 <node concept="liA8E" id="6XbuxloLZs1" role="2OqNvi">
-                                  <ref role="37wK5l" to="hyam:#KeyEvent.getKeyCode():int" resolve="getKeyCode" />
+                                  <ref role="37wK5l" to="hyam:~KeyEvent.getKeyCode()" resolve="getKeyCode" />
                                 </node>
                                 <node concept="37vLTw" id="6XbuxloLXks" role="2Oq$k0">
                                   <ref role="3cqZAo" node="7$24V3gD5ZE" resolve="p0" />
@@ -304,7 +304,7 @@
                             </node>
                             <node concept="2OqwBi" id="6XbuxloL1Io" role="3uHU7B">
                               <node concept="liA8E" id="6XbuxloL3IX" role="2OqNvi">
-                                <ref role="37wK5l" to="hyam:#KeyEvent.isActionKey():boolean" resolve="isActionKey" />
+                                <ref role="37wK5l" to="hyam:~KeyEvent.isActionKey()" resolve="isActionKey" />
                               </node>
                               <node concept="37vLTw" id="6XbuxloL1BI" role="2Oq$k0">
                                 <ref role="3cqZAo" node="7$24V3gD5ZE" resolve="p0" />
@@ -315,7 +315,7 @@
                             <node concept="3clFbF" id="7H0Sghdtlxr" role="3cqZAp">
                               <node concept="2OqwBi" id="7H0Sghdtmho" role="3clFbG">
                                 <node concept="liA8E" id="7H0Sghdtu2a" role="2OqNvi">
-                                  <ref role="37wK5l" to="dxuu:#JComboBox.processKeyEvent(java.awt.event.KeyEvent):void" resolve="processKeyEvent" />
+                                  <ref role="37wK5l" to="dxuu:~JComboBox.processKeyEvent(java.awt.event.KeyEvent)" resolve="processKeyEvent" />
                                   <node concept="37vLTw" id="7H0Sghdtu4B" role="37wK5m">
                                     <ref role="3cqZAo" node="7$24V3gD5ZE" resolve="p0" />
                                   </node>
@@ -328,7 +328,7 @@
                             <node concept="3clFbF" id="7H0SghdtcEY" role="3cqZAp">
                               <node concept="2OqwBi" id="7H0SghdtcLD" role="3clFbG">
                                 <node concept="liA8E" id="7H0SghdteK3" role="2OqNvi">
-                                  <ref role="37wK5l" to="hyam:#InputEvent.consume():void" resolve="consume" />
+                                  <ref role="37wK5l" to="hyam:~InputEvent.consume()" resolve="consume" />
                                 </node>
                                 <node concept="37vLTw" id="7H0SghdtcEX" role="2Oq$k0">
                                   <ref role="3cqZAo" node="7$24V3gD5ZE" resolve="p0" />

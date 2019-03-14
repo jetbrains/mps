@@ -285,7 +285,7 @@
                 <node concept="3clFbS" id="BMoFi_zUiy" role="2VODD2">
                   <node concept="3clFbF" id="BMoFi_zUte" role="3cqZAp">
                     <node concept="2YIFZM" id="2$lGPJtm42B" role="3clFbG">
-                      <ref role="37wK5l" to="18ew:#NameUtil.escapeString(java.lang.String):java.lang.String" resolve="escapeString" />
+                      <ref role="37wK5l" to="18ew:~NameUtil.escapeString(java.lang.String)" resolve="escapeString" />
                       <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                       <node concept="2OqwBi" id="BMoFi_zVqQ" role="37wK5m">
                         <node concept="30H73N" id="BMoFi_zVco" role="2Oq$k0" />
@@ -310,7 +310,7 @@
                     <node concept="2OqwBi" id="3SXwVgLRhwq" role="3clFbG">
                       <node concept="2OqwBi" id="2n9zn0CqNiK" role="2Oq$k0">
                         <node concept="liA8E" id="2n9zn0CqNiL" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:#SModel.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
+                          <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
                         </node>
                         <node concept="2JrnkZ" id="2n9zn0CqNiM" role="2Oq$k0">
                           <node concept="2OqwBi" id="2n9zn0CqNiN" role="2JrQYb">
@@ -320,7 +320,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="3SXwVgLRhwx" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                        <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                       </node>
                     </node>
                   </node>
@@ -922,7 +922,7 @@
         <node concept="3clFbF" id="5wiIlPAwmuH" role="3cqZAp">
           <node concept="2YIFZM" id="5wiIlPAwn4F" role="3clFbG">
             <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="rjhg:#Assert.assertEquals(java.lang.String,long,long):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.String,long,long)" resolve="assertEquals" />
             <node concept="Xl_RD" id="5wiIlPAwnwK" role="37wK5m">
               <property role="Xl_RC" value="Number of output models" />
             </node>
@@ -953,7 +953,7 @@
                 <ref role="3cqZAo" node="5wiIlPAwpKw" resolve="outputModels" />
               </node>
               <node concept="liA8E" id="5wiIlPAws9L" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#Collection.size():int" resolve="size" />
+                <ref role="37wK5l" to="33ny:~Collection.size()" resolve="size" />
               </node>
             </node>
           </node>
@@ -1222,11 +1222,11 @@
                             <node concept="3clFbF" id="6VhyYlfPuzf" role="3cqZAp">
                               <node concept="2OqwBi" id="6VhyYlfPvkH" role="3clFbG">
                                 <node concept="2YIFZM" id="6VhyYlfPv9k" role="2Oq$k0">
-                                  <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                                   <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                                 </node>
                                 <node concept="liA8E" id="6VhyYlfPvQU" role="2OqNvi">
-                                  <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference):java.lang.String" resolve="asString" />
+                                  <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference)" resolve="asString" />
                                   <node concept="2OqwBi" id="6VhyYlfPsRD" role="37wK5m">
                                     <node concept="2OqwBi" id="6VhyYlfPsRE" role="2Oq$k0">
                                       <node concept="30H73N" id="6VhyYlfPsRF" role="2Oq$k0" />

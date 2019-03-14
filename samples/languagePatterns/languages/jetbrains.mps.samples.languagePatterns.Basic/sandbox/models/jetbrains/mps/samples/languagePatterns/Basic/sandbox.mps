@@ -418,11 +418,11 @@
             <node concept="1I7xeh" id="4yAESKAJhwT" role="2OqNvi" />
           </node>
           <node concept="liA8E" id="4yAESKAKGnK" role="2OqNvi">
-            <ref role="37wK5l" to="wyt6:#String.toUpperCase():java.lang.String" resolve="toUpperCase" />
+            <ref role="37wK5l" to="wyt6:~String.toUpperCase()" resolve="toUpperCase" />
           </node>
         </node>
         <node concept="liA8E" id="4yAESKAKGwr" role="2OqNvi">
-          <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
           <node concept="2OqwBi" id="4yAESKAKGDQ" role="37wK5m">
             <node concept="2OqwBi" id="4yAESKAKG$z" role="2Oq$k0">
               <node concept="1I4TUT" id="4yAESKAKGyi" role="2Oq$k0">
@@ -431,7 +431,7 @@
               <node concept="1I7xeh" id="4yAESKAKGAM" role="2OqNvi" />
             </node>
             <node concept="liA8E" id="4yAESKAKGHA" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.toUpperCase():java.lang.String" resolve="toUpperCase" />
+              <ref role="37wK5l" to="wyt6:~String.toUpperCase()" resolve="toUpperCase" />
             </node>
           </node>
         </node>
@@ -445,7 +445,7 @@
             <node concept="1I7L_F" id="4yAESKAJhE4" role="2OqNvi" />
           </node>
           <node concept="liA8E" id="4yAESKAJuGK" role="2OqNvi">
-            <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
+            <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
           </node>
         </node>
         <node concept="3cmrfG" id="4yAESKAJv6M" role="3uHU7w">
@@ -505,7 +505,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="7UfLy9aMcLT" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="37vLTw" id="7UfLy9aMcNg" role="37wK5m">
                 <ref role="3cqZAo" node="7UfLy9aMcyc" resolve="s" />
               </node>
@@ -534,7 +534,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="7UfLy9aMdcB" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="37vLTw" id="7UfLy9aMdcC" role="37wK5m">
                 <ref role="3cqZAo" node="7UfLy9aMcyc" resolve="s" />
               </node>

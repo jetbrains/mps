@@ -193,11 +193,11 @@
         <node concept="3clFbF" id="36aT086Whqu" role="3cqZAp">
           <node concept="2OqwBi" id="36aT086Whxs" role="3clFbG">
             <node concept="2YIFZM" id="36aT086Whro" role="2Oq$k0">
-              <ref role="37wK5l" to="smjb:#HelpURLProvider.getInstance():jetbrains.mps.help.HelpURLProvider" resolve="getInstance" />
+              <ref role="37wK5l" to="smjb:~HelpURLProvider.getInstance()" resolve="getInstance" />
               <ref role="1Pybhc" to="smjb:~HelpURLProvider" resolve="HelpURLProvider" />
             </node>
             <node concept="liA8E" id="36aT086WhCA" role="2OqNvi">
-              <ref role="37wK5l" to="smjb:#HelpURLProvider.getURL():java.lang.String" resolve="getURL" />
+              <ref role="37wK5l" to="smjb:~HelpURLProvider.getURL()" resolve="getURL" />
             </node>
           </node>
         </node>

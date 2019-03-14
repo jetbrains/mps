@@ -195,7 +195,7 @@
                 </node>
                 <node concept="2OqwBi" id="3nCzltNmdUm" role="2ZW6bz">
                   <node concept="liA8E" id="3nCzltNmdUn" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                   </node>
                   <node concept="2JrnkZ" id="3nCzltNmdUo" role="2Oq$k0">
                     <node concept="1Q6Npb" id="3nCzltNmdUp" role="2JrQYb" />
@@ -215,7 +215,7 @@
               <property role="TrG5h" value="module" />
               <node concept="2OqwBi" id="256tImPkKxc" role="33vP2m">
                 <node concept="liA8E" id="256tImPkKxd" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
                 <node concept="37vLTw" id="3GM_nagTBJV" role="2Oq$k0">
                   <ref role="3cqZAo" node="1AfwOXhJ9Q6" resolve="modelDescriptor" />
@@ -251,7 +251,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1AfwOXhJacf" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:#AbstractModule.getDescriptorFile():jetbrains.mps.vfs.IFile" resolve="getDescriptorFile" />
+                    <ref role="37wK5l" to="z1c3:~AbstractModule.getDescriptorFile()" resolve="getDescriptorFile" />
                   </node>
                 </node>
               </node>

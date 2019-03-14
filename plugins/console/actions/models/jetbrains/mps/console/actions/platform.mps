@@ -303,7 +303,7 @@
         </node>
         <node concept="3clFbF" id="5eawdd7Z1XQ" role="3cqZAp">
           <node concept="2YIFZM" id="4FXPPIUeIRl" role="3clFbG">
-            <ref role="37wK5l" to="ap4t:#GenerationFacade.canGenerate(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="canGenerate" />
+            <ref role="37wK5l" to="ap4t:~GenerationFacade.canGenerate(org.jetbrains.mps.openapi.model.SModel)" resolve="canGenerate" />
             <ref role="1Pybhc" to="ap4t:~GenerationFacade" resolve="GenerationFacade" />
             <node concept="2OqwBi" id="4FXPPIUeIRm" role="37wK5m">
               <node concept="2WthIp" id="4FXPPIUeIRn" role="2Oq$k0" />
@@ -334,11 +334,11 @@
                   <ref role="3cqZAo" node="2Lh2NufzKMn" resolve="evt" />
                 </node>
                 <node concept="liA8E" id="3BMr33A4h$o" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:#AnActionEvent.getInputEvent():java.awt.event.InputEvent" resolve="getInputEvent" />
+                  <ref role="37wK5l" to="qkt:~AnActionEvent.getInputEvent()" resolve="getInputEvent" />
                 </node>
               </node>
               <node concept="liA8E" id="3BMr33A4hH7" role="2OqNvi">
-                <ref role="37wK5l" to="hyam:#InputEvent.isAltDown():boolean" resolve="isAltDown" />
+                <ref role="37wK5l" to="hyam:~InputEvent.isAltDown()" resolve="isAltDown" />
               </node>
             </node>
             <node concept="3y3z36" id="3BMr33A4hgT" role="3uHU7B">
@@ -347,7 +347,7 @@
                   <ref role="3cqZAo" node="2Lh2NufzKMn" resolve="evt" />
                 </node>
                 <node concept="liA8E" id="3BMr33A4h5G" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:#AnActionEvent.getInputEvent():java.awt.event.InputEvent" resolve="getInputEvent" />
+                  <ref role="37wK5l" to="qkt:~AnActionEvent.getInputEvent()" resolve="getInputEvent" />
                 </node>
               </node>
               <node concept="10Nm6u" id="3BMr33A4hmL" role="3uHU7w" />
@@ -366,7 +366,7 @@
                     <ref role="3cqZAo" node="2Lh2NufzKMn" resolve="evt" />
                   </node>
                   <node concept="liA8E" id="2Lh2NufzL93" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:#AnActionEvent.getModifiers():int" resolve="getModifiers" />
+                    <ref role="37wK5l" to="qkt:~AnActionEvent.getModifiers()" resolve="getModifiers" />
                   </node>
                 </node>
                 <node concept="1eOMI4" id="3BMr33A4iAq" role="3uHU7w">
@@ -485,7 +485,7 @@
           <node concept="2OqwBi" id="6rp$qsPsGLa" role="3clFbG">
             <node concept="2OqwBi" id="6rp$qsPsmAR" role="2Oq$k0">
               <node concept="liA8E" id="6rp$qsPsoFg" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="6rp$qsPsG7d" role="37wK5m">
                   <ref role="3VsUkX" to="qgo0:1iC2RjkXjYJ" resolve="ConsoleTool" />
                 </node>
@@ -498,7 +498,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="2Lh2Nufz7Vd" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:#MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                  <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
                 </node>
               </node>
             </node>
@@ -558,7 +558,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="YAuj$rVJ1x" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="YAuj$rVJ1y" role="37wK5m">
                   <ref role="3VsUkX" to="qgo0:1iC2RjkXjYJ" resolve="ConsoleTool" />
                 </node>
@@ -737,7 +737,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="2UF8zdtXdDG" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                   <node concept="3VsKOn" id="2UF8zdtXdDH" role="37wK5m">
                     <ref role="3VsUkX" to="qgo0:1iC2RjkXjYJ" resolve="ConsoleTool" />
                   </node>

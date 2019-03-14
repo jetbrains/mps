@@ -327,7 +327,7 @@
                 <ref role="3cqZAo" node="7YDJGVyWP2x" resolve="m" />
               </node>
               <node concept="liA8E" id="7YDJGVyX3Ix" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                <ref role="37wK5l" to="lui2:~SModule.getModels()" resolve="getModels" />
               </node>
             </node>
           </node>
@@ -352,7 +352,7 @@
                             <ref role="3cqZAo" node="7YDJGVyX6o9" resolve="it" />
                           </node>
                           <node concept="liA8E" id="7YDJGVyX6o8" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:#SModel.isReadOnly():boolean" resolve="isReadOnly" />
+                            <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
                           </node>
                         </node>
                       </node>
@@ -1433,7 +1433,7 @@
                 <ref role="3cqZAo" node="4T7JBGSuXuT" resolve="m" />
               </node>
               <node concept="liA8E" id="4T7JBGSuXJH" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                <ref role="37wK5l" to="lui2:~SModule.getModels()" resolve="getModels" />
               </node>
             </node>
           </node>
@@ -1458,7 +1458,7 @@
                             <ref role="3cqZAo" node="4T7JBGSuXJW" resolve="it" />
                           </node>
                           <node concept="liA8E" id="4T7JBGSuXJV" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:#SModel.isReadOnly():boolean" resolve="isReadOnly" />
+                            <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
                           </node>
                         </node>
                       </node>

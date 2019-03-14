@@ -212,11 +212,11 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="2uZcAeYa5Kp" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                       </node>
                     </node>
                     <node concept="liA8E" id="2uZcAeYa5Kq" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="2uZcAeYa5Kr" role="37vLTJ">
@@ -237,11 +237,11 @@
                   </node>
                   <node concept="2OqwBi" id="2uZcAeYa7nb" role="37vLTx">
                     <node concept="2YIFZM" id="2uZcAeYa7nc" role="2Oq$k0">
-                      <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                      <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                       <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                     </node>
                     <node concept="liA8E" id="2uZcAeYa7nd" role="2OqNvi">
-                      <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference):java.lang.String" resolve="asString" />
+                      <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference)" resolve="asString" />
                       <node concept="2OqwBi" id="3XR0QgVCmUc" role="37wK5m">
                         <node concept="2OqwBi" id="3XR0QgVCmU5" role="2Oq$k0">
                           <node concept="2OqwBi" id="3XR0QgVCmU6" role="2Oq$k0">

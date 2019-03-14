@@ -193,7 +193,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5Vvmn_QkM6L" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
               </node>
             </node>
@@ -217,7 +217,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5Vvmn_QkM6U" role="2OqNvi">
-                  <ref role="37wK5l" to="gp7a:#GlobalModuleDependenciesManager.getUsedLanguages():java.util.Collection" resolve="getUsedLanguages" />
+                  <ref role="37wK5l" to="gp7a:~GlobalModuleDependenciesManager.getUsedLanguages()" resolve="getUsedLanguages" />
                 </node>
               </node>
             </node>

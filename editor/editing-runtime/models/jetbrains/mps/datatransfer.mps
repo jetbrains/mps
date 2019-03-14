@@ -250,7 +250,7 @@
         <node concept="1pGfFk" id="11cLQV4zfJy" role="2ShVmc">
           <ref role="37wK5l" node="ymNu2s6LPl" resolve="DataTransferManager" />
           <node concept="2YIFZM" id="11cLQV4zj2q" role="37wK5m">
-            <ref role="37wK5l" to="vndm:#LanguageRegistry.getInstance():jetbrains.mps.smodel.language.LanguageRegistry" resolve="getInstance" />
+            <ref role="37wK5l" to="vndm:~LanguageRegistry.getInstance()" resolve="getInstance" />
             <ref role="1Pybhc" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
           </node>
         </node>
@@ -408,7 +408,7 @@
               <ref role="3cqZAo" node="ymNu2s6LPs" resolve="languageRegistry" />
             </node>
             <node concept="liA8E" id="11cLQV4znT2" role="2OqNvi">
-              <ref role="37wK5l" to="vndm:#LanguageRegistry.addRegistryListener(jetbrains.mps.smodel.language.LanguageRegistryListener):void" resolve="addRegistryListener" />
+              <ref role="37wK5l" to="vndm:~LanguageRegistry.addRegistryListener(jetbrains.mps.smodel.language.LanguageRegistryListener)" resolve="addRegistryListener" />
               <node concept="Xjq3P" id="11cLQV4znWj" role="37wK5m" />
             </node>
           </node>
@@ -554,7 +554,7 @@
                   <ref role="3cqZAo" node="2OF_YfjqDOY" resolve="preProcessor" />
                 </node>
                 <node concept="liA8E" id="2OF_YfjqDP9" role="2OqNvi">
-                  <ref role="37wK5l" to="9eus:#CopyPreProcessor.preProcessNode(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):void" resolve="preProcessNode" />
+                  <ref role="37wK5l" to="9eus:~CopyPreProcessor.preProcessNode(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="preProcessNode" />
                   <node concept="37vLTw" id="2OF_YfjqDPa" role="37wK5m">
                     <ref role="3cqZAo" node="2OF_YfjqDPv" resolve="copy" />
                   </node>
@@ -651,7 +651,7 @@
                   <ref role="3cqZAo" node="ymNu2s7lot" resolve="preProcessor" />
                 </node>
                 <node concept="liA8E" id="ymNu2s7mus" role="2OqNvi">
-                  <ref role="37wK5l" to="9eus:#CopyPreProcessor.preProcessNode(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):void" resolve="preProcessNode" />
+                  <ref role="37wK5l" to="9eus:~CopyPreProcessor.preProcessNode(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="preProcessNode" />
                   <node concept="37vLTw" id="ymNu2s7nxW" role="37wK5m">
                     <ref role="3cqZAo" node="ymNu2s76bA" resolve="copy" />
                   </node>
@@ -825,7 +825,7 @@
                   <ref role="3cqZAo" node="ymNu2s9hd9" resolve="postProcessor" />
                 </node>
                 <node concept="liA8E" id="ymNu2s9hdk" role="2OqNvi">
-                  <ref role="37wK5l" to="9eus:#PastePostProcessor.postProcessNode(org.jetbrains.mps.openapi.model.SNode):void" resolve="postProcessNode" />
+                  <ref role="37wK5l" to="9eus:~PastePostProcessor.postProcessNode(org.jetbrains.mps.openapi.model.SNode)" resolve="postProcessNode" />
                   <node concept="37vLTw" id="ymNu2s9hdl" role="37wK5m">
                     <ref role="3cqZAo" node="ymNu2s9he7" resolve="pastedNode" />
                   </node>
@@ -948,7 +948,7 @@
                     <ref role="3cqZAo" node="4x7n4mGbSA" resolve="pasteWrapper" />
                   </node>
                   <node concept="liA8E" id="4x7n4mGdig" role="2OqNvi">
-                    <ref role="37wK5l" to="9eus:#PasteWrapper.wrap(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNode" resolve="wrap" />
+                    <ref role="37wK5l" to="9eus:~PasteWrapper.wrap(org.jetbrains.mps.openapi.model.SNode)" resolve="wrap" />
                     <node concept="37vLTw" id="4x7n4mGdln" role="37wK5m">
                       <ref role="3cqZAo" node="4x7n4mG9QT" resolve="node" />
                     </node>
@@ -1181,7 +1181,7 @@
               <ref role="3cqZAo" node="ymNu2s6LOt" resolve="myLanguageRegistry" />
             </node>
             <node concept="liA8E" id="7DBGuZZ11x7" role="2OqNvi">
-              <ref role="37wK5l" to="vndm:#LanguageRegistry.withAvailableLanguages(java.util.function.Consumer):void" resolve="withAvailableLanguages" />
+              <ref role="37wK5l" to="vndm:~LanguageRegistry.withAvailableLanguages(java.util.function.Consumer)" resolve="withAvailableLanguages" />
               <node concept="1bVj0M" id="7DBGuZZ11Ls" role="37wK5m">
                 <node concept="3clFbS" id="7DBGuZZ11Lt" role="1bW5cS">
                   <node concept="3cpWs8" id="ymNu2s8F3U" role="3cqZAp">
@@ -1195,7 +1195,7 @@
                           <ref role="3cqZAo" node="7DBGuZZ1qmU" resolve="lang" />
                         </node>
                         <node concept="liA8E" id="ymNu2s8FmT" role="2OqNvi">
-                          <ref role="37wK5l" to="vndm:#LanguageRuntime.getAspect(java.lang.Class):jetbrains.mps.smodel.runtime.ILanguageAspect" resolve="getAspect" />
+                          <ref role="37wK5l" to="vndm:~LanguageRuntime.getAspect(java.lang.Class)" resolve="getAspect" />
                           <node concept="3VsKOn" id="ymNu2s8G8y" role="37wK5m">
                             <ref role="3VsUkX" to="9eus:~ActionAspectDescriptor" resolve="ActionAspectDescriptor" />
                           </node>
@@ -1223,7 +1223,7 @@
                         <ref role="3cqZAo" node="ymNu2s8F3V" resolve="actionAscpect" />
                       </node>
                       <node concept="liA8E" id="ymNu2s8HVs" role="2OqNvi">
-                        <ref role="37wK5l" to="9eus:#ActionAspectDescriptor.getCopyPreProcessors():java.util.Collection" resolve="getCopyPreProcessors" />
+                        <ref role="37wK5l" to="9eus:~ActionAspectDescriptor.getCopyPreProcessors()" resolve="getCopyPreProcessors" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="ymNu2s8HB6" role="2LFqv$">
@@ -1238,7 +1238,7 @@
                                 <ref role="2Gs0qQ" node="ymNu2s8HB2" resolve="copyPreProcessor" />
                               </node>
                               <node concept="liA8E" id="ymNu2s8Kfd" role="2OqNvi">
-                                <ref role="37wK5l" to="9eus:#CopyPreProcessor.getApplicableConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getApplicableConcept" />
+                                <ref role="37wK5l" to="9eus:~CopyPreProcessor.getApplicableConcept()" resolve="getApplicableConcept" />
                               </node>
                             </node>
                             <node concept="37vLTw" id="ymNu2s8Io$" role="3ElQJh">
@@ -1258,7 +1258,7 @@
                         <ref role="3cqZAo" node="ymNu2s8F3V" resolve="actionAscpect" />
                       </node>
                       <node concept="liA8E" id="ymNu2s8QK0" role="2OqNvi">
-                        <ref role="37wK5l" to="9eus:#ActionAspectDescriptor.getPastePostProcessors():java.util.Collection" resolve="getPastePostProcessors" />
+                        <ref role="37wK5l" to="9eus:~ActionAspectDescriptor.getPastePostProcessors()" resolve="getPastePostProcessors" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="ymNu2s8Qnn" role="2LFqv$">
@@ -1273,7 +1273,7 @@
                                 <ref role="2Gs0qQ" node="ymNu2s8Qnj" resolve="pastePostProcessor" />
                               </node>
                               <node concept="liA8E" id="ymNu2s8S7z" role="2OqNvi">
-                                <ref role="37wK5l" to="9eus:#PastePostProcessor.getApplicableConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getApplicableConcept" />
+                                <ref role="37wK5l" to="9eus:~PastePostProcessor.getApplicableConcept()" resolve="getApplicableConcept" />
                               </node>
                             </node>
                             <node concept="37vLTw" id="ymNu2s8Ro2" role="3ElQJh">
@@ -1293,7 +1293,7 @@
                         <ref role="3cqZAo" node="ymNu2s8F3V" resolve="actionAscpect" />
                       </node>
                       <node concept="liA8E" id="4x7n4mEBE9" role="2OqNvi">
-                        <ref role="37wK5l" to="9eus:#ActionAspectDescriptor.getPasteWrappers():java.util.Collection" resolve="getPasteWrappers" />
+                        <ref role="37wK5l" to="9eus:~ActionAspectDescriptor.getPasteWrappers()" resolve="getPasteWrappers" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="4x7n4mEAzG" role="2LFqv$">
@@ -1309,7 +1309,7 @@
                                   <ref role="2Gs0qQ" node="4x7n4mEAzC" resolve="pasteWrapper" />
                                 </node>
                                 <node concept="liA8E" id="11cLQV4zF_K" role="2OqNvi">
-                                  <ref role="37wK5l" to="9eus:#PasteWrapper.getTargetConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getTargetConcept" />
+                                  <ref role="37wK5l" to="9eus:~PasteWrapper.getTargetConcept()" resolve="getTargetConcept" />
                                 </node>
                               </node>
                             </node>
@@ -1324,7 +1324,7 @@
                                     <ref role="2Gs0qQ" node="4x7n4mEAzC" resolve="pasteWrapper" />
                                   </node>
                                   <node concept="liA8E" id="11cLQV4zBjJ" role="2OqNvi">
-                                    <ref role="37wK5l" to="9eus:#PasteWrapper.getTargetConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getTargetConcept" />
+                                    <ref role="37wK5l" to="9eus:~PasteWrapper.getTargetConcept()" resolve="getTargetConcept" />
                                   </node>
                                 </node>
                                 <node concept="37vLTw" id="4x7n4mEFPM" role="3ElQJh">
@@ -1354,7 +1354,7 @@
                                 <ref role="2Gs0qQ" node="4x7n4mEAzC" resolve="pasteWrapper" />
                               </node>
                               <node concept="liA8E" id="4x7n4mEY_x" role="2OqNvi">
-                                <ref role="37wK5l" to="9eus:#PasteWrapper.getSourceConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getSourceConcept" />
+                                <ref role="37wK5l" to="9eus:~PasteWrapper.getSourceConcept()" resolve="getSourceConcept" />
                               </node>
                             </node>
                             <node concept="3EllGN" id="4x7n4mEU6h" role="3ElQJh">
@@ -1363,7 +1363,7 @@
                                   <ref role="2Gs0qQ" node="4x7n4mEAzC" resolve="pasteWrapper" />
                                 </node>
                                 <node concept="liA8E" id="4x7n4mEUJZ" role="2OqNvi">
-                                  <ref role="37wK5l" to="9eus:#PasteWrapper.getTargetConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getTargetConcept" />
+                                  <ref role="37wK5l" to="9eus:~PasteWrapper.getTargetConcept()" resolve="getTargetConcept" />
                                 </node>
                               </node>
                               <node concept="37vLTw" id="4x7n4mET$q" role="3ElQJh">

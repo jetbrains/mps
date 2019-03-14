@@ -2410,7 +2410,7 @@
                               <ref role="2Gs0qQ" node="1653mnvCj6M" resolve="a" />
                             </node>
                             <node concept="liA8E" id="1rQJladUxIC" role="2OqNvi">
-                              <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                              <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract()" resolve="isAbstract" />
                             </node>
                           </node>
                         </node>
@@ -3922,7 +3922,7 @@
                     <node concept="3fqX7Q" id="4sp4$05ZLjJ" role="3clFbw">
                       <node concept="2OqwBi" id="4sp4$05ZLjK" role="3fr31v">
                         <node concept="liA8E" id="4sp4$05ZLjL" role="2OqNvi">
-                          <ref role="37wK5l" to="c17a:#SAbstractConcept.isAbstract():boolean" resolve="isAbstract" />
+                          <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract()" resolve="isAbstract" />
                         </node>
                         <node concept="2GrUjf" id="4sp4$05ZLjM" role="2Oq$k0">
                           <ref role="2Gs0qQ" node="4sp4$05ZLjG" resolve="a" />

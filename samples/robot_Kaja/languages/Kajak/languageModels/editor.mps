@@ -1337,7 +1337,7 @@
               <node concept="2OqwBi" id="rutuztWudw" role="3uHU7B">
                 <node concept="1Q80Hx" id="rutuztWucg" role="2Oq$k0" />
                 <node concept="liA8E" id="rutuztWugM" role="2OqNvi">
-                  <ref role="37wK5l" to="cj4x:#EditorContext.getSelectedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSelectedNode" />
+                  <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNode()" resolve="getSelectedNode" />
                 </node>
               </node>
             </node>
@@ -1446,7 +1446,7 @@
                 <node concept="2OqwBi" id="132rpJxUvqP" role="3clFbG">
                   <node concept="1Q80Hx" id="132rpJxUvpS" role="2Oq$k0" />
                   <node concept="liA8E" id="132rpJxUvs6" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                     <node concept="37vLTw" id="u67o_MTEFN" role="37wK5m">
                       <ref role="3cqZAo" node="u67o_MTEDe" resolve="inserted" />
                     </node>
@@ -1528,7 +1528,7 @@
                 <node concept="2OqwBi" id="u67o_MSQO4" role="3clFbG">
                   <node concept="1Q80Hx" id="u67o_MSQO5" role="2Oq$k0" />
                   <node concept="liA8E" id="u67o_MSQO6" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                     <node concept="37vLTw" id="u67o_MSQTu" role="37wK5m">
                       <ref role="3cqZAo" node="u67o_MSQQL" resolve="inserted" />
                     </node>
@@ -1575,7 +1575,7 @@
                 <node concept="2OqwBi" id="u67o_MSQVE" role="3clFbG">
                   <node concept="1Q80Hx" id="u67o_MSQVF" role="2Oq$k0" />
                   <node concept="liA8E" id="u67o_MSQVG" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                     <node concept="37vLTw" id="u67o_MSQVH" role="37wK5m">
                       <ref role="3cqZAo" node="u67o_MSR6$" resolve="inserted" />
                     </node>
@@ -1621,7 +1621,7 @@
                 <node concept="2OqwBi" id="u67o_MSQZ7" role="3clFbG">
                   <node concept="1Q80Hx" id="u67o_MSQZ8" role="2Oq$k0" />
                   <node concept="liA8E" id="u67o_MSQZ9" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                     <node concept="37vLTw" id="u67o_MSQZa" role="37wK5m">
                       <ref role="3cqZAo" node="u67o_MSR2x" resolve="inserted" />
                     </node>
@@ -1751,7 +1751,7 @@
                 <node concept="2OqwBi" id="u67o_MSUSY" role="3clFbG">
                   <node concept="1Q80Hx" id="u67o_MSUSZ" role="2Oq$k0" />
                   <node concept="liA8E" id="u67o_MSUT0" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                     <node concept="37vLTw" id="u67o_MSUT1" role="37wK5m">
                       <ref role="3cqZAo" node="u67o_MSURk" resolve="inserted" />
                     </node>
@@ -1942,7 +1942,7 @@
                 <node concept="2OqwBi" id="1wEcoXjJypN" role="3clFbw">
                   <node concept="2ZBlsa" id="1wEcoXjJyqT" role="2Oq$k0" />
                   <node concept="liA8E" id="1wEcoXjJypP" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                     <node concept="Xl_RD" id="1wEcoXjJypQ" role="37wK5m">
                       <property role="Xl_RC" value="heading" />
                     </node>
@@ -1952,7 +1952,7 @@
                   <node concept="2OqwBi" id="1wEcoXjJypS" role="3eO9$A">
                     <node concept="2ZBlsa" id="1wEcoXjJyqU" role="2Oq$k0" />
                     <node concept="liA8E" id="1wEcoXjJypU" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                       <node concept="Xl_RD" id="1wEcoXjJypV" role="37wK5m">
                         <property role="Xl_RC" value="mark" />
                       </node>
@@ -1979,7 +1979,7 @@
                   <node concept="2OqwBi" id="1wEcoXjJyq4" role="3eO9$A">
                     <node concept="2ZBlsa" id="1wEcoXjJyqV" role="2Oq$k0" />
                     <node concept="liA8E" id="1wEcoXjJyq6" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                       <node concept="Xl_RD" id="1wEcoXjJyq7" role="37wK5m">
                         <property role="Xl_RC" value="full" />
                       </node>
@@ -2022,7 +2022,7 @@
                   <node concept="2OqwBi" id="1wEcoXjJyqn" role="3eO9$A">
                     <node concept="2ZBlsa" id="1wEcoXjJyqW" role="2Oq$k0" />
                     <node concept="liA8E" id="1wEcoXjJyqp" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                       <node concept="Xl_RD" id="1wEcoXjJyqq" role="37wK5m">
                         <property role="Xl_RC" value="wall" />
                       </node>
@@ -2032,7 +2032,7 @@
                 <node concept="3eNFk2" id="1wEcoXjJyqr" role="3eNLev">
                   <node concept="2OqwBi" id="1wEcoXjJyqs" role="3eO9$A">
                     <node concept="liA8E" id="1wEcoXjJyqt" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                       <node concept="Xl_RD" id="1wEcoXjJyqu" role="37wK5m">
                         <property role="Xl_RC" value="looking" />
                       </node>

@@ -354,7 +354,7 @@
                         <property role="Xl_RC" value="EditorAspectDescriptorImpl" />
                       </node>
                       <node concept="liA8E" id="CgolD_wRqi" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                         <node concept="2OqwBi" id="CgolD_wVRv" role="37wK5m">
                           <node concept="37vLTw" id="CgolD_wSWH" role="2Oq$k0">
                             <ref role="3cqZAo" node="CgolD_y6D8" resolve="it" />

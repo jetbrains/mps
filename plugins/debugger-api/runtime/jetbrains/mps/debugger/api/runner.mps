@@ -176,7 +176,7 @@
             <node concept="1Wc70l" id="3WEbiHBEXJx" role="3uHU7B">
               <node concept="2OqwBi" id="3WEbiHBEXJK" role="3uHU7B">
                 <node concept="liA8E" id="3WEbiHBEXJL" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="10M0yZ" id="3WEbiHBEXJM" role="37wK5m">
                     <ref role="1PxDUh" to="9mrk:~DefaultDebugExecutor" resolve="DefaultDebugExecutor" />
                     <ref role="3cqZAo" to="9mrk:~DefaultDebugExecutor.EXECUTOR_ID" resolve="EXECUTOR_ID" />
@@ -292,7 +292,7 @@
                 <ref role="3cqZAo" node="3SnNvqCbzno" resolve="env" />
               </node>
               <node concept="liA8E" id="7zMLEC01yGO" role="2OqNvi">
-                <ref role="37wK5l" to="fhz7:#ExecutionEnvironment.getExecutor():com.intellij.execution.Executor" resolve="getExecutor" />
+                <ref role="37wK5l" to="fhz7:~ExecutionEnvironment.getExecutor()" resolve="getExecutor" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxghat$" role="37wK5m">
@@ -520,7 +520,7 @@
             </node>
             <node concept="2OqwBi" id="5p_z32FSCLm" role="3uHU7w">
               <node concept="liA8E" id="5p_z32FSCLs" role="2OqNvi">
-                <ref role="37wK5l" to="3v5a:#ExecutionResult.getProcessHandler():com.intellij.execution.process.ProcessHandler" resolve="getProcessHandler" />
+                <ref role="37wK5l" to="3v5a:~ExecutionResult.getProcessHandler()" resolve="getProcessHandler" />
               </node>
               <node concept="37vLTw" id="3GM_nagT_nQ" role="2Oq$k0">
                 <ref role="3cqZAo" node="3SnNvqCbzor" resolve="executionResult" />

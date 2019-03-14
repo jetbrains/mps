@@ -137,10 +137,10 @@
               <node concept="2OqwBi" id="X8Ly3tyQUo" role="I$8f6">
                 <node concept="2YIFZM" id="X8Ly3tyQUp" role="2Oq$k0">
                   <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
-                  <ref role="37wK5l" to="qkt:#ActionManager.getInstance():com.intellij.openapi.actionSystem.ActionManager" resolve="getInstance" />
+                  <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
                 </node>
                 <node concept="liA8E" id="X8Ly3tyQUq" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:#ActionManager.getActionIds(java.lang.String):java.lang.String[]" resolve="getActionIds" />
+                  <ref role="37wK5l" to="qkt:~ActionManager.getActionIds(java.lang.String)" resolve="getActionIds" />
                   <node concept="Xl_RD" id="X8Ly3tyQUr" role="37wK5m">
                     <property role="Xl_RC" value="" />
                   </node>

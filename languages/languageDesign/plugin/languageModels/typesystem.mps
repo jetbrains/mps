@@ -1689,7 +1689,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="6pfW_jugHGM" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                 <node concept="Xl_RD" id="6pfW_jugHIl" role="37wK5m">
                   <property role="Xl_RC" value="${" />
                 </node>
@@ -2003,7 +2003,7 @@
                 <ref role="3cqZAo" node="5YeG5fEo3G2" resolve="character" />
               </node>
               <node concept="liA8E" id="5YeG5fEo4v4" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.length():int" resolve="length" />
+                <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
               </node>
             </node>
           </node>
@@ -2019,14 +2019,14 @@
           <node concept="22lmx$" id="5YeG5fEoc8A" role="3clFbw">
             <node concept="3fqX7Q" id="5YeG5fEocdw" role="3uHU7B">
               <node concept="2YIFZM" id="5YeG5fEogpq" role="3fr31v">
-                <ref role="37wK5l" to="wyt6:#Character.isLetter(char):boolean" resolve="isLetter" />
+                <ref role="37wK5l" to="wyt6:~Character.isLetter(char)" resolve="isLetter" />
                 <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
                 <node concept="2OqwBi" id="5YeG5fEoggV" role="37wK5m">
                   <node concept="37vLTw" id="5YeG5fEoggW" role="2Oq$k0">
                     <ref role="3cqZAo" node="5YeG5fEo3G2" resolve="character" />
                   </node>
                   <node concept="liA8E" id="5YeG5fEoggX" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
+                    <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                     <node concept="3cmrfG" id="5YeG5fEoggY" role="37wK5m">
                       <property role="3cmrfH" value="0" />
                     </node>
@@ -2043,7 +2043,7 @@
                   <ref role="3cqZAo" node="5YeG5fEo3DD" resolve="caption" />
                 </node>
                 <node concept="liA8E" id="5YeG5fEo8Mf" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.indexOf(java.lang.String):int" resolve="indexOf" />
+                  <ref role="37wK5l" to="wyt6:~String.indexOf(java.lang.String)" resolve="indexOf" />
                   <node concept="37vLTw" id="5YeG5fEo9ft" role="37wK5m">
                     <ref role="3cqZAo" node="5YeG5fEo3G2" resolve="character" />
                   </node>

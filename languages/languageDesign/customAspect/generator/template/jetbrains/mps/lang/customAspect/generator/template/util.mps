@@ -107,7 +107,7 @@
               <property role="Xl_RC" value="Descriptor" />
             </node>
             <node concept="2YIFZM" id="7NyVmB7TTll" role="3uHU7B">
-              <ref role="37wK5l" to="18ew:#NameUtil.capitalize(java.lang.String):java.lang.String" resolve="capitalize" />
+              <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String)" resolve="capitalize" />
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
               <node concept="2OqwBi" id="7NyVmB7TTsI" role="37wK5m">
                 <node concept="37vLTw" id="7NyVmB7TTpV" role="2Oq$k0">

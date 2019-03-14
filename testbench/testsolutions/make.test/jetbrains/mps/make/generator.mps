@@ -544,7 +544,7 @@
                   <ref role="3cqZAo" to="gffh:1MpPVq5jPc9" resolve="context" />
                 </node>
                 <node concept="liA8E" id="1HN6OkgSalE" role="2OqNvi">
-                  <ref role="37wK5l" to="mg6i:#Mockery.mock(java.lang.Class):java.lang.Object" resolve="mock" />
+                  <ref role="37wK5l" to="mg6i:~Mockery.mock(java.lang.Class)" resolve="mock" />
                   <node concept="3VsKOn" id="1HN6OkgSalF" role="37wK5m">
                     <ref role="3VsUkX" to="i9so:7eUbKP2Zue8" resolve="IConfigMonitor" />
                   </node>
@@ -558,7 +558,7 @@
                 <ref role="3cqZAo" to="gffh:1MpPVq5jPc9" resolve="context" />
               </node>
               <node concept="liA8E" id="2dB$GwFJsx5" role="2OqNvi">
-                <ref role="37wK5l" to="mg6i:#Mockery.checking(org.jmock.internal.ExpectationBuilder):void" resolve="checking" />
+                <ref role="37wK5l" to="mg6i:~Mockery.checking(org.jmock.internal.ExpectationBuilder)" resolve="checking" />
                 <node concept="2ShNRf" id="2dB$GwFJsx6" role="37wK5m">
                   <node concept="YeOm9" id="2dB$GwFJsx7" role="2ShVmc">
                     <node concept="1Y3b0j" id="2dB$GwFJsx8" role="YeSDq">
@@ -595,13 +595,13 @@
                             <node concept="2OqwBi" id="4TqQgK0ruvr" role="3clFbG">
                               <node concept="2OqwBi" id="4TqQgK0ruvs" role="2Oq$k0">
                                 <node concept="1rXfSq" id="4hiugqyyZ1F" role="2Oq$k0">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.exactly(int):org.jmock.syntax.ReceiverClause" resolve="exactly" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.exactly(int)" resolve="exactly" />
                                   <node concept="3cmrfG" id="4TqQgK0ruvu" role="37wK5m">
                                     <property role="3cmrfH" value="1" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="4TqQgK0ruvv" role="2OqNvi">
-                                  <ref role="37wK5l" to="atif:#ReceiverClause.of(java.lang.Object):java.lang.Object" resolve="of" />
+                                  <ref role="37wK5l" to="atif:~ReceiverClause.of(java.lang.Object)" resolve="of" />
                                   <node concept="37vLTw" id="3GM_nagTs7Z" role="37wK5m">
                                     <ref role="3cqZAo" node="4TqQgK0ruv9" resolve="mons" />
                                   </node>
@@ -617,7 +617,7 @@
                                     </node>
                                   </node>
                                   <node concept="1rXfSq" id="4hiugqyz5KU" role="10QFUP">
-                                    <ref role="37wK5l" to="mg6i:#AbstractExpectations.with(java.lang.Object):java.lang.Object" resolve="with" />
+                                    <ref role="37wK5l" to="mg6i:~AbstractExpectations.with(java.lang.Object)" resolve="with" />
                                     <node concept="2ShNRf" id="4TqQgK0ruvB" role="37wK5m">
                                       <node concept="YeOm9" id="4TqQgK0ruvC" role="2ShVmc">
                                         <node concept="1Y3b0j" id="4TqQgK0ruvD" role="YeSDq">
@@ -691,7 +691,7 @@
                           </node>
                           <node concept="3clFbF" id="4TqQgK0ruw0" role="3cqZAp">
                             <node concept="1rXfSq" id="4hiugqyz7K7" role="3clFbG">
-                              <ref role="37wK5l" to="mg6i:#AbstractExpectations.will(org.jmock.api.Action):void" resolve="will" />
+                              <ref role="37wK5l" to="mg6i:~AbstractExpectations.will(org.jmock.api.Action)" resolve="will" />
                               <node concept="2ShNRf" id="4TqQgK0ruw2" role="37wK5m">
                                 <node concept="YeOm9" id="4TqQgK0ruw3" role="2ShVmc">
                                   <node concept="1Y3b0j" id="4TqQgK0ruw4" role="YeSDq">
@@ -772,13 +772,13 @@
                             <node concept="2OqwBi" id="2CB0w6xf7sq" role="3clFbG">
                               <node concept="2OqwBi" id="2CB0w6xf6YG" role="2Oq$k0">
                                 <node concept="1rXfSq" id="4hiugqyzeXz" role="2Oq$k0">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.exactly(int):org.jmock.syntax.ReceiverClause" resolve="exactly" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.exactly(int)" resolve="exactly" />
                                   <node concept="3cmrfG" id="2CB0w6xf6YI" role="37wK5m">
                                     <property role="3cmrfH" value="1" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="2CB0w6xf6YJ" role="2OqNvi">
-                                  <ref role="37wK5l" to="atif:#ReceiverClause.of(java.lang.Object):java.lang.Object" resolve="of" />
+                                  <ref role="37wK5l" to="atif:~ReceiverClause.of(java.lang.Object)" resolve="of" />
                                   <node concept="37vLTw" id="3GM_nagTAsL" role="37wK5m">
                                     <ref role="3cqZAo" node="4TqQgK0ruv9" resolve="mons" />
                                   </node>
@@ -787,29 +787,29 @@
                               <node concept="liA8E" id="2CB0w6xf7su" role="2OqNvi">
                                 <ref role="37wK5l" to="i9so:70hZ3jyJvfD" resolve="setup" />
                                 <node concept="1rXfSq" id="4hiugqyz5Ne" role="37wK5m">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.with(java.lang.Object):java.lang.Object" resolve="with" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.with(java.lang.Object)" resolve="with" />
                                   <node concept="2YIFZM" id="4O1dS63KY_m" role="37wK5m">
                                     <ref role="1Pybhc" to="mg6i:~Expectations" resolve="Expectations" />
-                                    <ref role="37wK5l" to="mg6i:#AbstractExpectations.aNonNull(java.lang.Class):org.hamcrest.Matcher" resolve="aNonNull" />
+                                    <ref role="37wK5l" to="mg6i:~AbstractExpectations.aNonNull(java.lang.Class)" resolve="aNonNull" />
                                     <node concept="3VsKOn" id="4O1dS63KY_n" role="37wK5m">
                                       <ref role="3VsUkX" to="i9so:5XvfMqim0Fp" resolve="IPropertiesPool" />
                                     </node>
                                   </node>
                                 </node>
                                 <node concept="1rXfSq" id="4hiugqyyYAg" role="37wK5m">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.with(java.lang.Object):java.lang.Object" resolve="with" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.with(java.lang.Object)" resolve="with" />
                                   <node concept="2YIFZM" id="4O1dS63KY_o" role="37wK5m">
                                     <ref role="1Pybhc" to="mg6i:~Expectations" resolve="Expectations" />
-                                    <ref role="37wK5l" to="mg6i:#AbstractExpectations.aNonNull(java.lang.Class):org.hamcrest.Matcher" resolve="aNonNull" />
+                                    <ref role="37wK5l" to="mg6i:~AbstractExpectations.aNonNull(java.lang.Class)" resolve="aNonNull" />
                                     <node concept="3VsKOn" id="4O1dS63KY_p" role="37wK5m">
                                       <ref role="3VsUkX" to="wyt6:~Iterable" resolve="Iterable" />
                                     </node>
                                   </node>
                                 </node>
                                 <node concept="1rXfSq" id="4hiugqyzhIy" role="37wK5m">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.with(java.lang.Object):java.lang.Object" resolve="with" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.with(java.lang.Object)" resolve="with" />
                                   <node concept="2YIFZM" id="3rVxTa_fYI0" role="37wK5m">
-                                    <ref role="37wK5l" to="mg6i:#AbstractExpectations.anything():org.hamcrest.Matcher" resolve="anything" />
+                                    <ref role="37wK5l" to="mg6i:~AbstractExpectations.anything()" resolve="anything" />
                                     <ref role="1Pybhc" to="mg6i:~Expectations" resolve="Expectations" />
                                     <node concept="3uibUv" id="3rVxTa_gANT" role="3PaCim">
                                       <ref role="3uigEE" to="wyt6:~Iterable" resolve="Iterable" />
@@ -823,13 +823,13 @@
                             <node concept="2OqwBi" id="7$uOxFlnq0C" role="3clFbG">
                               <node concept="2OqwBi" id="7$uOxFlnq0D" role="2Oq$k0">
                                 <node concept="1rXfSq" id="4hiugqyzeLU" role="2Oq$k0">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.exactly(int):org.jmock.syntax.ReceiverClause" resolve="exactly" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.exactly(int)" resolve="exactly" />
                                   <node concept="3cmrfG" id="7$uOxFlnq0F" role="37wK5m">
                                     <property role="3cmrfH" value="1" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="7$uOxFlnq0G" role="2OqNvi">
-                                  <ref role="37wK5l" to="atif:#ReceiverClause.of(java.lang.Object):java.lang.Object" resolve="of" />
+                                  <ref role="37wK5l" to="atif:~ReceiverClause.of(java.lang.Object)" resolve="of" />
                                   <node concept="37vLTw" id="3GM_nagT$LP" role="37wK5m">
                                     <ref role="3cqZAo" node="1HN6OkgSalA" resolve="cmon" />
                                   </node>
@@ -838,10 +838,10 @@
                               <node concept="liA8E" id="7$uOxFlnq0I" role="2OqNvi">
                                 <ref role="37wK5l" to="i9so:3bEKrlZKk50" resolve="reportFeedback" />
                                 <node concept="1rXfSq" id="4hiugqyyQMP" role="37wK5m">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.with(java.lang.Object):java.lang.Object" resolve="with" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.with(java.lang.Object)" resolve="with" />
                                   <node concept="2YIFZM" id="4O1dS63KY_s" role="37wK5m">
                                     <ref role="1Pybhc" to="mg6i:~Expectations" resolve="Expectations" />
-                                    <ref role="37wK5l" to="mg6i:#AbstractExpectations.aNonNull(java.lang.Class):org.hamcrest.Matcher" resolve="aNonNull" />
+                                    <ref role="37wK5l" to="mg6i:~AbstractExpectations.aNonNull(java.lang.Class)" resolve="aNonNull" />
                                     <node concept="3VsKOn" id="4O1dS63KY_t" role="37wK5m">
                                       <ref role="3VsUkX" to="i9so:6KRD$9F_Ul3" resolve="IFeedback" />
                                     </node>
@@ -878,13 +878,13 @@
                             <node concept="2OqwBi" id="2dB$GwFJsxm" role="3clFbG">
                               <node concept="2OqwBi" id="2dB$GwFJsxn" role="2Oq$k0">
                                 <node concept="1rXfSq" id="4hiugqyzfG6" role="2Oq$k0">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.exactly(int):org.jmock.syntax.ReceiverClause" resolve="exactly" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.exactly(int)" resolve="exactly" />
                                   <node concept="3cmrfG" id="2dB$GwFJsxp" role="37wK5m">
                                     <property role="3cmrfH" value="1" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="2dB$GwFJsxq" role="2OqNvi">
-                                  <ref role="37wK5l" to="atif:#ReceiverClause.of(java.lang.Object):java.lang.Object" resolve="of" />
+                                  <ref role="37wK5l" to="atif:~ReceiverClause.of(java.lang.Object)" resolve="of" />
                                   <node concept="37vLTw" id="3GM_nagTuBq" role="37wK5m">
                                     <ref role="3cqZAo" node="1HN6OkgSalA" resolve="cmon" />
                                   </node>
@@ -893,7 +893,7 @@
                               <node concept="liA8E" id="2dB$GwFJsxs" role="2OqNvi">
                                 <ref role="37wK5l" to="i9so:7eUbKP2ZRJM" resolve="relayQuery" />
                                 <node concept="1rXfSq" id="4hiugqyzd_S" role="37wK5m">
-                                  <ref role="37wK5l" to="mg6i:#AbstractExpectations.with(java.lang.Object):java.lang.Object" resolve="with" />
+                                  <ref role="37wK5l" to="mg6i:~AbstractExpectations.with(java.lang.Object)" resolve="with" />
                                   <node concept="2ShNRf" id="2dB$GwFJsxu" role="37wK5m">
                                     <node concept="YeOm9" id="2dB$GwFJsxv" role="2ShVmc">
                                       <node concept="1Y3b0j" id="2dB$GwFJsxw" role="YeSDq">
@@ -991,7 +991,7 @@
                           </node>
                           <node concept="3clFbF" id="2dB$GwFJsy0" role="3cqZAp">
                             <node concept="1rXfSq" id="4hiugqyzeyk" role="3clFbG">
-                              <ref role="37wK5l" to="mg6i:#AbstractExpectations.will(org.jmock.api.Action):void" resolve="will" />
+                              <ref role="37wK5l" to="mg6i:~AbstractExpectations.will(org.jmock.api.Action)" resolve="will" />
                               <node concept="2ShNRf" id="2dB$GwFJsy2" role="37wK5m">
                                 <node concept="YeOm9" id="2dB$GwFJsy3" role="2ShVmc">
                                   <node concept="1Y3b0j" id="2dB$GwFJsy4" role="YeSDq">
@@ -1269,7 +1269,7 @@
               <node concept="3qTvmN" id="_iTMAGHbsg" role="11_B2D" />
             </node>
             <node concept="2YIFZM" id="_iTMAGHbsh" role="33vP2m">
-              <ref role="37wK5l" to="wyt6:#Class.forName(java.lang.String):java.lang.Class" resolve="forName" />
+              <ref role="37wK5l" to="wyt6:~Class.forName(java.lang.String)" resolve="forName" />
               <ref role="1Pybhc" to="wyt6:~Class" resolve="Class" />
               <node concept="3cpWs3" id="_iTMAGHbsi" role="37wK5m">
                 <node concept="Xl_RD" id="_iTMAGHbsj" role="3uHU7w">
@@ -1281,11 +1281,11 @@
                       <ref role="3VsUkX" node="_iTMAGGHPU" resolve="Generator_Test" />
                     </node>
                     <node concept="liA8E" id="_iTMAGHbsn" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Class.getPackage():java.lang.Package" resolve="getPackage" />
+                      <ref role="37wK5l" to="wyt6:~Class.getPackage()" resolve="getPackage" />
                     </node>
                   </node>
                   <node concept="liA8E" id="_iTMAGHbso" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#Package.getName():java.lang.String" resolve="getName" />
+                    <ref role="37wK5l" to="wyt6:~Package.getName()" resolve="getName" />
                   </node>
                 </node>
               </node>
@@ -1304,7 +1304,7 @@
                 <ref role="3cqZAo" node="_iTMAGHbse" resolve="mf" />
               </node>
               <node concept="liA8E" id="_iTMAGHbsH" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Class.getConstructor(java.lang.Class...):java.lang.reflect.Constructor" resolve="getConstructor" />
+                <ref role="37wK5l" to="wyt6:~Class.getConstructor(java.lang.Class...)" resolve="getConstructor" />
               </node>
             </node>
           </node>
@@ -1320,7 +1320,7 @@
                 <ref role="3cqZAo" node="_iTMAGHbsC" resolve="ctor" />
               </node>
               <node concept="liA8E" id="_iTMAGHbsV" role="2OqNvi">
-                <ref role="37wK5l" to="t6h5:#Constructor.newInstance(java.lang.Object...):java.lang.Object" resolve="newInstance" />
+                <ref role="37wK5l" to="t6h5:~Constructor.newInstance(java.lang.Object...)" resolve="newInstance" />
               </node>
             </node>
           </node>

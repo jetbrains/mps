@@ -522,7 +522,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="hz41eRI" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Object.getClass():java.lang.Class" resolve="getClass" />
+                <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
               </node>
             </node>
             <node concept="raruj" id="hPzQK0E" role="lGtFl" />
@@ -536,7 +536,7 @@
                     <ref role="3cqZAo" node="hz41cEJ" resolve="c" />
                   </node>
                   <node concept="liA8E" id="hPzR8v0" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#Object.getClass():java.lang.Class" resolve="getClass" />
+                    <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                   </node>
                 </node>
               </node>
@@ -554,7 +554,7 @@
         <node concept="2c44tf" id="7oTZmjkCrbn" role="HM535">
           <node concept="2OqwBi" id="1GF9yVLIU0Q" role="2c44tc">
             <node concept="liA8E" id="1GF9yVLIXWa" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.hashCode():int" resolve="hashCode" />
+              <ref role="37wK5l" to="wyt6:~String.hashCode()" resolve="hashCode" />
               <node concept="2DMOqr" id="1GF9yVLIYdm" role="lGtFl">
                 <property role="2DMOqs" value="x" />
               </node>
@@ -597,7 +597,7 @@
         <node concept="2c44tf" id="7oTZmjkCrbm" role="HM535">
           <node concept="2OqwBi" id="1GF9yVLIZkz" role="2c44tc">
             <node concept="liA8E" id="1GF9yVLJ0LC" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.hashCode():int" resolve="hashCode" />
+              <ref role="37wK5l" to="wyt6:~String.hashCode()" resolve="hashCode" />
               <node concept="2DMOqr" id="1GF9yVLJ17g" role="lGtFl">
                 <property role="2DMOqs" value="right" />
               </node>
@@ -1032,7 +1032,7 @@
           <node concept="2OqwBi" id="hISH0Sv" role="3clFbG">
             <node concept="Xjq3P" id="hISH0gc" role="2Oq$k0" />
             <node concept="liA8E" id="GPlTP7FuUd" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Object.getClass():java.lang.Class" resolve="getClass" />
+              <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
             </node>
           </node>
         </node>

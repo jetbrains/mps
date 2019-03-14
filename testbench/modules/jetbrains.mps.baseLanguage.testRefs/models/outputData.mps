@@ -574,7 +574,7 @@
           <node concept="3clFbF" id="1y5ThBENNbQ" role="3cqZAp">
             <node concept="2YIFZM" id="1y5ThBEOhOt" role="3clFbG">
               <ref role="1Pybhc" to="vl5q:~BLOperations" resolve="BLOperations" />
-              <ref role="37wK5l" to="vl5q:#BLOperations.plusAssign(jetbrains.mps.references.Reference,int):int" resolve="plusAssign" />
+              <ref role="37wK5l" to="vl5q:~BLOperations.plusAssign(jetbrains.mps.references.Reference,int)" resolve="plusAssign" />
               <node concept="37vLTw" id="7ht2wdZmx$4" role="37wK5m">
                 <ref role="3cqZAo" node="7ht2wdZmuqG" resolve="valueRef" />
               </node>

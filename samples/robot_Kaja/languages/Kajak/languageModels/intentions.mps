@@ -172,7 +172,7 @@
             <node concept="2OqwBi" id="2URGstPlayb" role="33vP2m">
               <node concept="1XNTG" id="2URGstPlaya" role="2Oq$k0" />
               <node concept="liA8E" id="2URGstPlayf" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:#EditorContext.getSelectedNodes():java.util.List" resolve="getSelectedNodes" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNodes()" resolve="getSelectedNodes" />
               </node>
             </node>
           </node>
@@ -298,7 +298,7 @@
           <node concept="2OqwBi" id="6tmz5v675Xp" role="3clFbG">
             <node concept="1XNTG" id="6tmz5v675X4" role="2Oq$k0" />
             <node concept="liA8E" id="6tmz5v675Xv" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
               <node concept="37vLTw" id="3GM_nagTBAC" role="37wK5m">
                 <ref role="3cqZAo" node="2URGstPlaxx" resolve="routineDefinition" />
               </node>

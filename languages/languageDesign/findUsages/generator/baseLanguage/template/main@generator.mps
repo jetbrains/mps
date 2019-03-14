@@ -486,7 +486,7 @@
         <property role="3GE5qa" value="Statements" />
         <node concept="2YIFZM" id="3CIwUQvT_mH" role="gfFT$">
           <ref role="1Pybhc" to="ngmm:~FindUtils" resolve="FindUtils" />
-          <ref role="37wK5l" to="ngmm:#FindUtils.getSearchResults(org.jetbrains.mps.openapi.util.ProgressMonitor,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.module.SearchScope,java.lang.String...):jetbrains.mps.ide.findusages.model.SearchResults" resolve="getSearchResults" />
+          <ref role="37wK5l" to="ngmm:~FindUtils.getSearchResults(org.jetbrains.mps.openapi.util.ProgressMonitor,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.module.SearchScope,java.lang.String...)" resolve="getSearchResults" />
           <node concept="10Nm6u" id="3CIwUQvT_mI" role="37wK5m">
             <node concept="1W57fq" id="3CIwUQvT_mJ" role="lGtFl">
               <node concept="3IZrLx" id="3CIwUQvT_mK" role="3IZSJc">
@@ -629,7 +629,7 @@
       <node concept="gft3U" id="5xq1uvO2yRD" role="1lVwrX">
         <property role="3GE5qa" value="Statements" />
         <node concept="2YIFZM" id="6xoQp139y92" role="gfFT$">
-          <ref role="37wK5l" to="ngmm:#FindUtils.makeProvider(java.lang.String...):jetbrains.mps.ide.findusages.model.IResultProvider" resolve="makeProvider" />
+          <ref role="37wK5l" to="ngmm:~FindUtils.makeProvider(java.lang.String...)" resolve="makeProvider" />
           <ref role="1Pybhc" to="ngmm:~FindUtils" resolve="FindUtils" />
           <node concept="Xl_RD" id="6xoQp139y93" role="37wK5m">
             <property role="Xl_RC" value="" />
@@ -677,7 +677,7 @@
       <ref role="30HIoZ" to="tp3b:1JlDhgSjx_v" resolve="FinderReference" />
       <node concept="gft3U" id="5UvmwWxPl49" role="1lVwrX">
         <node concept="2YIFZM" id="6xoQp139rzX" role="gfFT$">
-          <ref role="37wK5l" to="ngmm:#FindUtils.getFinder(java.lang.String):jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder" resolve="getFinder" />
+          <ref role="37wK5l" to="ngmm:~FindUtils.getFinder(java.lang.String)" resolve="getFinder" />
           <ref role="1Pybhc" to="ngmm:~FindUtils" resolve="FindUtils" />
           <node concept="Xl_RD" id="6xoQp139rzY" role="37wK5m">
             <property role="Xl_RC" value="" />
@@ -861,7 +861,7 @@
                 <ref role="37wK5l" to="mte5:~ModelsScope.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel...)" resolve="ModelsScope" />
                 <node concept="2OqwBi" id="5tzxsWqd9E1" role="37wK5m">
                   <node concept="liA8E" id="5tzxsWqdbrJ" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:#SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
                   </node>
                   <node concept="37vLTw" id="5tzxsWqd9_k" role="2Oq$k0">
                     <ref role="3cqZAo" node="5tzxsWqbky0" resolve="node" />
@@ -1012,7 +1012,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="hGQVvdL" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                       <node concept="Xl_RD" id="hGQVvdM" role="37wK5m">
                         <property role="Xl_RC" value="" />
                       </node>
@@ -1179,7 +1179,7 @@
               <ref role="3cqZAo" node="h$fic7U" resolve="monitor" />
             </node>
             <node concept="liA8E" id="6L$IFeKsM37" role="2OqNvi">
-              <ref role="37wK5l" to="yyf4:#ProgressMonitor.start(java.lang.String,int):void" resolve="start" />
+              <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int)" resolve="start" />
               <node concept="1rXfSq" id="4hiugqyz8NY" role="37wK5m">
                 <ref role="37wK5l" node="hwePbuh" resolve="getDescription" />
               </node>
@@ -1247,7 +1247,7 @@
                   <ref role="3cqZAo" node="h$fic7U" resolve="monitor" />
                 </node>
                 <node concept="liA8E" id="6L$IFeKsM3g" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.done():void" resolve="done" />
+                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.done()" resolve="done" />
                 </node>
               </node>
             </node>
@@ -1417,16 +1417,16 @@
                       <node concept="2OqwBi" id="4WgT1ADZxry" role="3clFbG">
                         <node concept="2OqwBi" id="4WgT1ADZuKd" role="2Oq$k0">
                           <node concept="2YIFZM" id="4WgT1ADZuwj" role="2Oq$k0">
-                            <ref role="37wK5l" to="fwk:#TracingUtil.getInput(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNodeReference" resolve="getInput" />
+                            <ref role="37wK5l" to="fwk:~TracingUtil.getInput(org.jetbrains.mps.openapi.model.SNode)" resolve="getInput" />
                             <ref role="1Pybhc" to="fwk:~TracingUtil" resolve="TracingUtil" />
                             <node concept="30H73N" id="4WgT1ADZuwk" role="37wK5m" />
                           </node>
                           <node concept="liA8E" id="4WgT1ADZuYK" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:#SNodeReference.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                            <ref role="37wK5l" to="mhbf:~SNodeReference.getNodeId()" resolve="getNodeId" />
                           </node>
                         </node>
                         <node concept="liA8E" id="4WgT1ADZxMz" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                          <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                         </node>
                       </node>
                     </node>
@@ -1447,7 +1447,7 @@
               <node concept="3y3z36" id="4WgT1ADZn6J" role="3clFbG">
                 <node concept="10Nm6u" id="4WgT1ADZnfp" role="3uHU7w" />
                 <node concept="2YIFZM" id="4WgT1ADZmkm" role="3uHU7B">
-                  <ref role="37wK5l" to="fwk:#TracingUtil.getInput(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNodeReference" resolve="getInput" />
+                  <ref role="37wK5l" to="fwk:~TracingUtil.getInput(org.jetbrains.mps.openapi.model.SNode)" resolve="getInput" />
                   <ref role="1Pybhc" to="fwk:~TracingUtil" resolve="TracingUtil" />
                   <node concept="30H73N" id="4WgT1ADZmLO" role="37wK5m" />
                 </node>
@@ -1528,9 +1528,9 @@
                 <ref role="3cqZAo" node="h$fiy9l" resolve="callback" />
               </node>
               <node concept="liA8E" id="61W0QHrDTY$" role="2OqNvi">
-                <ref role="37wK5l" to="k4i4:#IFinder$FindCallback.onUsageFound(jetbrains.mps.ide.findusages.model.SearchResult):void" resolve="onUsageFound" />
+                <ref role="37wK5l" to="k4i4:~IFinder$FindCallback.onUsageFound(jetbrains.mps.ide.findusages.model.SearchResult)" resolve="onUsageFound" />
                 <node concept="1rXfSq" id="61W0QHrEdVE" role="37wK5m">
-                  <ref role="37wK5l" to="k4i4:#GeneratedFinder.createSingleResult(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.ide.findusages.model.SearchResult" resolve="createSingleResult" />
+                  <ref role="37wK5l" to="k4i4:~GeneratedFinder.createSingleResult(org.jetbrains.mps.openapi.model.SNode)" resolve="createSingleResult" />
                   <node concept="10Nm6u" id="hzF1mKJ" role="37wK5m">
                     <node concept="29HgVG" id="hzF1mKK" role="lGtFl">
                       <node concept="3NFfHV" id="hzF1mKL" role="3NFExx">
@@ -1588,7 +1588,7 @@
           <node concept="3clFbF" id="hzERXd_" role="3cqZAp">
             <node concept="2YIFZM" id="4qZj4itray0" role="3clFbG">
               <ref role="1Pybhc" to="ngmm:~FindUtils" resolve="FindUtils" />
-              <ref role="37wK5l" to="ngmm:#FindUtils.executeFinder(java.lang.String,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.module.SearchScope,org.jetbrains.mps.openapi.util.ProgressMonitor):java.util.List" resolve="executeFinder" />
+              <ref role="37wK5l" to="ngmm:~FindUtils.executeFinder(java.lang.String,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.module.SearchScope,org.jetbrains.mps.openapi.util.ProgressMonitor)" resolve="executeFinder" />
               <node concept="Xl_RD" id="4qZj4itray1" role="37wK5m">
                 <property role="Xl_RC" value="" />
                 <node concept="17Uvod" id="4qZj4itray2" role="lGtFl">
@@ -1672,7 +1672,7 @@
                   <ref role="3cqZAo" node="h$fipHT" resolve="monitor" />
                 </node>
                 <node concept="liA8E" id="4qZj4itraAO" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
+                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int)" resolve="subTask" />
                   <node concept="3cmrfG" id="4qZj4itraAP" role="37wK5m">
                     <property role="3cmrfH" value="1" />
                   </node>
@@ -1868,7 +1868,7 @@
                 <ref role="3cqZAo" node="h$fiADF" resolve="monitor" />
               </node>
               <node concept="liA8E" id="h$fiF9r" role="2OqNvi">
-                <ref role="37wK5l" to="yyf4:#ProgressMonitor.isCanceled():boolean" resolve="isCanceled" />
+                <ref role="37wK5l" to="yyf4:~ProgressMonitor.isCanceled()" resolve="isCanceled" />
               </node>
             </node>
             <node concept="3clFbS" id="h$fiDT2" role="3clFbx">
@@ -1904,7 +1904,7 @@
       </node>
       <node concept="2OqwBi" id="4WgT1ADYB89" role="33vP2m">
         <node concept="liA8E" id="4WgT1ADYB8a" role="2OqNvi">
-          <ref role="37wK5l" to="dush:#PersistenceFacade.createModelReference(java.lang.String):org.jetbrains.mps.openapi.model.SModelReference" resolve="createModelReference" />
+          <ref role="37wK5l" to="dush:~PersistenceFacade.createModelReference(java.lang.String)" resolve="createModelReference" />
           <node concept="Xl_RD" id="4WgT1ADYB8b" role="37wK5m">
             <property role="Xl_RC" value="modelRef" />
             <node concept="17Uvod" id="4WgT1ADYB8c" role="lGtFl">
@@ -1916,7 +1916,7 @@
                     <node concept="2OqwBi" id="4WgT1ADYB8g" role="3clFbG">
                       <node concept="2OqwBi" id="4WgT1ADYB8h" role="2Oq$k0">
                         <node concept="liA8E" id="4WgT1ADYB8i" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:#SModel.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
+                          <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
                         </node>
                         <node concept="2JrnkZ" id="4WgT1ADYB8j" role="2Oq$k0">
                           <node concept="2OqwBi" id="4WgT1ADYB8k" role="2JrQYb">
@@ -1926,7 +1926,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="4WgT1ADYB8n" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                        <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                       </node>
                     </node>
                   </node>
@@ -1936,7 +1936,7 @@
           </node>
         </node>
         <node concept="2YIFZM" id="4WgT1ADYB8o" role="2Oq$k0">
-          <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+          <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
           <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
         </node>
       </node>
@@ -2066,7 +2066,7 @@
                   <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
                   <node concept="2YIFZM" id="4WgT1ADZKG2" role="37wK5m">
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                    <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                    <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                     <node concept="Xl_RD" id="4WgT1ADZKMC" role="37wK5m">
                       <property role="Xl_RC" value="Illegal identifier of a finder implementation: %d" />
                     </node>
@@ -2097,7 +2097,7 @@
               <ref role="3cqZAo" node="4WgT1ADY2NO" resolve="reg" />
             </node>
             <node concept="liA8E" id="4WgT1ADYct6" role="2OqNvi">
-              <ref role="37wK5l" to="ze1i:#FinderRegistry.add(org.jetbrains.mps.openapi.language.SAbstractConcept,int,java.lang.String):void" resolve="add" />
+              <ref role="37wK5l" to="ze1i:~FinderRegistry.add(org.jetbrains.mps.openapi.language.SAbstractConcept,int,java.lang.String)" resolve="add" />
               <node concept="35c_gC" id="4WgT1AE0awY" role="37wK5m">
                 <ref role="35c_gD" to="tpck:gw2VY9q" resolve="BaseConcept" />
                 <node concept="1ZhdrF" id="4WgT1AE0awZ" role="lGtFl">
@@ -2145,7 +2145,7 @@
                     <node concept="3clFbS" id="4WgT1AE0icf" role="2VODD2">
                       <node concept="3clFbF" id="4WgT1AE0kmT" role="3cqZAp">
                         <node concept="2YIFZM" id="hEwIc4E" role="3clFbG">
-                          <ref role="37wK5l" to="18ew:#NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+                          <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String)" resolve="toValidIdentifier" />
                           <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                           <node concept="2OqwBi" id="hEwIc4F" role="37wK5m">
                             <node concept="30H73N" id="4WgT1AE0ohb" role="2Oq$k0" />
@@ -2299,7 +2299,7 @@
                       <ref role="3cqZAo" node="3XrE5vcna5N" resolve="aspectClass" />
                     </node>
                     <node concept="liA8E" id="3AguOYZ6aql" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Class.cast(java.lang.Object):java.lang.Object" resolve="cast" />
+                      <ref role="37wK5l" to="wyt6:~Class.cast(java.lang.Object)" resolve="cast" />
                       <node concept="2ShNRf" id="3AguOYZ6a_d" role="37wK5m">
                         <node concept="1pGfFk" id="3AguOYZ6gTd" role="2ShVmc">
                           <ref role="37wK5l" node="6VBrDosl4_U" resolve="FindUsagesDescriptor" />
@@ -2408,14 +2408,14 @@
         <node concept="3clFbS" id="5Xky2$hqp03" role="3clF47">
           <node concept="3clFbF" id="5Xky2$hrYGW" role="3cqZAp">
             <node concept="2YIFZM" id="5Xky2$hrYYO" role="3clFbG">
-              <ref role="37wK5l" to="ngmm:#FindUtils.searchForResults(org.jetbrains.mps.openapi.util.ProgressMonitor,jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder$FindCallback,jetbrains.mps.ide.findusages.model.SearchQuery,jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder...):void" resolve="searchForResults" />
+              <ref role="37wK5l" to="ngmm:~FindUtils.searchForResults(org.jetbrains.mps.openapi.util.ProgressMonitor,jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder$FindCallback,jetbrains.mps.ide.findusages.model.SearchQuery,jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder...)" resolve="searchForResults" />
               <ref role="1Pybhc" to="ngmm:~FindUtils" resolve="FindUtils" />
               <node concept="2OqwBi" id="5Xky2$hrYZD" role="37wK5m">
                 <node concept="37vLTw" id="5Xky2$hrYZE" role="2Oq$k0">
                   <ref role="3cqZAo" node="5Xky2$hka0Z" resolve="monitor" />
                 </node>
                 <node concept="liA8E" id="5Xky2$hrYZF" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:#ProgressMonitor.subTask(int):org.jetbrains.mps.openapi.util.ProgressMonitor" resolve="subTask" />
+                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int)" resolve="subTask" />
                   <node concept="3cmrfG" id="5Xky2$hrYZG" role="37wK5m">
                     <property role="3cmrfH" value="1" />
                   </node>
@@ -2744,7 +2744,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="5Xky2$hs8Ky" role="37wK5m">
-                <ref role="37wK5l" to="ngmm:#FindUtils.getFinder(java.lang.String):jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder" resolve="getFinder" />
+                <ref role="37wK5l" to="ngmm:~FindUtils.getFinder(java.lang.String)" resolve="getFinder" />
                 <ref role="1Pybhc" to="ngmm:~FindUtils" resolve="FindUtils" />
                 <node concept="Xl_RD" id="5Xky2$hs8Kz" role="37wK5m">
                   <property role="Xl_RC" value="" />

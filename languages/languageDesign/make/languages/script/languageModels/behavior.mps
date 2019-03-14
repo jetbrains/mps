@@ -198,7 +198,7 @@
             </node>
             <node concept="3cpWs3" id="7FuGcnvxAt5" role="3uHU7B">
               <node concept="2YIFZM" id="2dB$GwFGVQJ" role="3uHU7B">
-                <ref role="37wK5l" to="18ew:#NameUtil.toValidCamelIdentifier(java.lang.String):java.lang.String" resolve="toValidCamelIdentifier" />
+                <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String)" resolve="toValidCamelIdentifier" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="2OqwBi" id="2dB$GwFGVQK" role="37wK5m">
                   <node concept="13iPFW" id="2dB$GwFGVQL" role="2Oq$k0" />
@@ -240,7 +240,7 @@
             </node>
             <node concept="3cpWs3" id="7n5UAVXW$iG" role="3uHU7B">
               <node concept="2YIFZM" id="2dB$GwFGVQN" role="3uHU7B">
-                <ref role="37wK5l" to="18ew:#NameUtil.toValidCamelIdentifier(java.lang.String):java.lang.String" resolve="toValidCamelIdentifier" />
+                <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String)" resolve="toValidCamelIdentifier" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="2OqwBi" id="2dB$GwFGVQO" role="37wK5m">
                   <node concept="13iPFW" id="2dB$GwFGVQP" role="2Oq$k0" />

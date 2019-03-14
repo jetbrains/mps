@@ -813,7 +813,7 @@
                         <node concept="17QB3L" id="4ipeeu8VyeJ" role="1tU5fm" />
                         <node concept="2YIFZM" id="4ipeeu8VyeK" role="33vP2m">
                           <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                          <ref role="37wK5l" to="18ew:#NameUtil.decapitalize(java.lang.String):java.lang.String" resolve="decapitalize" />
+                          <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String)" resolve="decapitalize" />
                           <node concept="2OqwBi" id="4ipeeu8VyeL" role="37wK5m">
                             <node concept="2OqwBi" id="4ipeeu8VyeM" role="2Oq$k0">
                               <node concept="3GMtW1" id="4ipeeu8VyeN" role="2Oq$k0" />
@@ -839,7 +839,7 @@
                           </node>
                           <node concept="2YIFZM" id="4ipeeu8VyeT" role="10QFUP">
                             <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                            <ref role="37wK5l" to="18ew:#NameUtil.splitByCamels(java.lang.String):java.util.List" resolve="splitByCamels" />
+                            <ref role="37wK5l" to="18ew:~NameUtil.splitByCamels(java.lang.String)" resolve="splitByCamels" />
                             <node concept="37vLTw" id="3GM_nagT$wo" role="37wK5m">
                               <ref role="3cqZAo" node="4ipeeu8VyeI" resolve="name" />
                             </node>

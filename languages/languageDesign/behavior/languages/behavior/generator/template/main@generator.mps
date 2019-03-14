@@ -616,7 +616,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4XEqvth_lMR" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:#SAbstractConcept.getDeclarationNode():org.jetbrains.mps.openapi.model.SNode" resolve="getDeclarationNode" />
+                  <ref role="37wK5l" to="c17a:~SAbstractConcept.getDeclarationNode()" resolve="getDeclarationNode" />
                 </node>
                 <node concept="raruj" id="4XEqvth_nBm" role="lGtFl" />
                 <node concept="1W57fq" id="4XEqvth_qqR" role="lGtFl">
@@ -743,7 +743,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4XEqvth_gEn" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:#SAbstractConcept.getDeclarationNode():org.jetbrains.mps.openapi.model.SNode" resolve="getDeclarationNode" />
+                  <ref role="37wK5l" to="c17a:~SAbstractConcept.getDeclarationNode()" resolve="getDeclarationNode" />
                 </node>
                 <node concept="raruj" id="4XEqvth_gQ5" role="lGtFl" />
                 <node concept="1W57fq" id="4XEqvth_gQQ" role="lGtFl">
@@ -1038,7 +1038,7 @@
                         <node concept="3clFbF" id="7gHklTe9kT_" role="3cqZAp">
                           <node concept="2OqwBi" id="7gHklTe9v4o" role="3clFbG">
                             <node concept="2YIFZM" id="7gHklTe9v4p" role="2Oq$k0">
-                              <ref role="37wK5l" to="e8bb:#MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="getConceptId" />
+                              <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode)" resolve="getConceptId" />
                               <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
                               <node concept="2OqwBi" id="6pZ_jf9PLRY" role="37wK5m">
                                 <node concept="37vLTw" id="6pZ_jf9PLw$" role="2Oq$k0">
@@ -1050,7 +1050,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="7gHklTe9v4t" role="2OqNvi">
-                              <ref role="37wK5l" to="e8bb:#SConceptId.getIdValue():long" resolve="getIdValue" />
+                              <ref role="37wK5l" to="e8bb:~SConceptId.getIdValue()" resolve="getIdValue" />
                             </node>
                           </node>
                         </node>
@@ -1089,7 +1089,7 @@
             <node concept="2OqwBi" id="6qWswXqU9RB" role="3clFbG">
               <node concept="raruj" id="24JB88Kk0WR" role="lGtFl" />
               <node concept="liA8E" id="nLgsWA4ecn" role="2OqNvi">
-                <ref role="37wK5l" to="9r19:#SMethod.invoke(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...):java.lang.Object" resolve="invoke" />
+                <ref role="37wK5l" to="9r19:~SMethod.invoke(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...)" resolve="invoke" />
                 <node concept="37vLTw" id="78MdKhpIgwh" role="37wK5m">
                   <ref role="3cqZAo" node="78MdKhpIe39" resolve="thisNode" />
                   <node concept="1ZhdrF" id="78MdKhpIgZr" role="lGtFl">
@@ -1206,7 +1206,7 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="4eYijs7jfuA" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:#SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                                <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                               </node>
                             </node>
                           </node>
@@ -1921,10 +1921,10 @@
       <node concept="2OqwBi" id="2Km$7e2tmrZ" role="33vP2m">
         <node concept="2YIFZM" id="2Km$7e2tmqJ" role="2Oq$k0">
           <ref role="1Pybhc" to="vndm:~ConceptRegistry" resolve="ConceptRegistry" />
-          <ref role="37wK5l" to="vndm:#ConceptRegistry.getInstance():jetbrains.mps.smodel.language.ConceptRegistry" resolve="getInstance" />
+          <ref role="37wK5l" to="vndm:~ConceptRegistry.getInstance()" resolve="getInstance" />
         </node>
         <node concept="liA8E" id="2Km$7e2tmAM" role="2OqNvi">
-          <ref role="37wK5l" to="vndm:#ConceptRegistry.getBehaviorRegistry():jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry" resolve="getBehaviorRegistry" />
+          <ref role="37wK5l" to="vndm:~ConceptRegistry.getBehaviorRegistry()" resolve="getBehaviorRegistry" />
         </node>
       </node>
     </node>
@@ -2051,7 +2051,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="2Km$7e2swQC" role="2OqNvi">
-                    <ref role="37wK5l" to="manl:#SMethodBuilder.name(java.lang.String):jetbrains.mps.core.aspects.behaviour.SMethodBuilder" resolve="name" />
+                    <ref role="37wK5l" to="manl:~SMethodBuilder.name(java.lang.String)" resolve="name" />
                     <node concept="Xl_RD" id="2Km$7e2swQD" role="37wK5m">
                       <property role="Xl_RC" value="methodName" />
                       <node concept="17Uvod" id="2Km$7e2swQE" role="lGtFl">
@@ -2074,9 +2074,9 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="2Km$7e2swQQ" role="2OqNvi">
-                  <ref role="37wK5l" to="manl:#SMethodBuilder.modifiers(jetbrains.mps.core.aspects.behaviour.SModifiersImpl):jetbrains.mps.core.aspects.behaviour.SMethodBuilder" resolve="modifiers" />
+                  <ref role="37wK5l" to="manl:~SMethodBuilder.modifiers(jetbrains.mps.core.aspects.behaviour.SModifiersImpl)" resolve="modifiers" />
                   <node concept="2YIFZM" id="24vl_o3hVon" role="37wK5m">
-                    <ref role="37wK5l" to="manl:#SModifiersImpl.create(int,jetbrains.mps.core.aspects.behaviour.AccessPrivileges):jetbrains.mps.core.aspects.behaviour.SModifiersImpl" resolve="create" />
+                    <ref role="37wK5l" to="manl:~SModifiersImpl.create(int,jetbrains.mps.core.aspects.behaviour.AccessPrivileges)" resolve="create" />
                     <ref role="1Pybhc" to="manl:~SModifiersImpl" resolve="SModifiersImpl" />
                     <node concept="3cmrfG" id="24vl_o3i0Nw" role="37wK5m">
                       <property role="3cmrfH" value="0" />
@@ -2290,14 +2290,14 @@
                 </node>
               </node>
               <node concept="liA8E" id="2Km$7e2swRM" role="2OqNvi">
-                <ref role="37wK5l" to="manl:#SMethodBuilder.concept(org.jetbrains.mps.openapi.language.SAbstractConcept):jetbrains.mps.core.aspects.behaviour.SMethodBuilder" resolve="concept" />
+                <ref role="37wK5l" to="manl:~SMethodBuilder.concept(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="concept" />
                 <node concept="37vLTw" id="2Km$7e2ueER" role="37wK5m">
                   <ref role="3cqZAo" node="3uq0yNaWR0_" resolve="CONCEPT" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="4xAhdQ47HAp" role="2OqNvi">
-              <ref role="37wK5l" to="manl:#SMethodBuilder.id(java.lang.String):jetbrains.mps.core.aspects.behaviour.SMethodBuilder" resolve="id" />
+              <ref role="37wK5l" to="manl:~SMethodBuilder.id(java.lang.String)" resolve="id" />
               <node concept="Xl_RD" id="4xAhdQ47RrN" role="37wK5m">
                 <property role="Xl_RC" value="nodeId123" />
                 <node concept="17Uvod" id="4xAhdQ480YO" role="lGtFl">
@@ -2325,14 +2325,14 @@
             </node>
           </node>
           <node concept="liA8E" id="24JB88Kjnhj" role="2OqNvi">
-            <ref role="37wK5l" to="manl:#SMethodBuilder.registry(jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry):jetbrains.mps.core.aspects.behaviour.SMethodBuilder" resolve="registry" />
+            <ref role="37wK5l" to="manl:~SMethodBuilder.registry(jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry)" resolve="registry" />
             <node concept="37vLTw" id="24JB88KjzSd" role="37wK5m">
               <ref role="3cqZAo" node="24JB88KjwL$" resolve="REGISTRY" />
             </node>
           </node>
         </node>
         <node concept="liA8E" id="2Km$7e2swSR" role="2OqNvi">
-          <ref role="37wK5l" to="manl:#SMethodBuilder.build(jetbrains.mps.core.aspects.behaviour.api.SParameter...):jetbrains.mps.core.aspects.behaviour.api.SMethod" resolve="build" />
+          <ref role="37wK5l" to="manl:~SMethodBuilder.build(jetbrains.mps.core.aspects.behaviour.api.SParameter...)" resolve="build" />
           <node concept="10Nm6u" id="44O701NncTz" role="37wK5m">
             <node concept="1WS0z7" id="44O701Nnhli" role="lGtFl">
               <node concept="3JmXsc" id="44O701Nnhll" role="3Jn$fo">
@@ -2405,7 +2405,7 @@
       </node>
       <node concept="3Tm6S6" id="1Am6JRr446F" role="1B3o_S" />
       <node concept="2YIFZM" id="CVylyn_GAf" role="33vP2m">
-        <ref role="37wK5l" to="33ny:#Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+        <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
         <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
         <node concept="37vLTw" id="CVylyn_GAg" role="37wK5m">
           <ref role="3cqZAo" node="2Km$7e2swQ0" resolve="BH_METHOD" />
@@ -2460,7 +2460,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="CVylynEUTi" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:#PrintStream.print(boolean):void" resolve="print" />
+              <ref role="37wK5l" to="guwi:~PrintStream.print(boolean)" resolve="print" />
             </node>
           </node>
           <node concept="1WS0z7" id="CVylynEUUL" role="lGtFl">
@@ -2981,7 +2981,7 @@
                 <ref role="3cqZAo" node="5eGkp75yUi_" resolve="BH_METHODS" />
               </node>
               <node concept="liA8E" id="6UOODqO0n0X" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.indexOf(java.lang.Object):int" resolve="indexOf" />
+                <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object)" resolve="indexOf" />
                 <node concept="37vLTw" id="6UOODqO0n0Y" role="37wK5m">
                   <ref role="3cqZAo" node="6UOODqO06uu" resolve="method" />
                 </node>
@@ -3262,7 +3262,7 @@
                 <ref role="3cqZAo" node="5eGkp75yUi_" resolve="BH_METHODS" />
               </node>
               <node concept="liA8E" id="5WXskL2e7zw" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.indexOf(java.lang.Object):int" resolve="indexOf" />
+                <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object)" resolve="indexOf" />
                 <node concept="37vLTw" id="5WXskL2e7zx" role="37wK5m">
                   <ref role="3cqZAo" node="6UOODqO06uJ" resolve="method" />
                 </node>
@@ -3569,7 +3569,7 @@
       <node concept="1Koe21" id="44O701NmIzr" role="1lVwrX">
         <node concept="3clFbF" id="44O701NmIzs" role="1Koe22">
           <node concept="2YIFZM" id="6MHiaoH8Rjl" role="3clFbG">
-            <ref role="37wK5l" to="manl:#SMethodBuilder.createVarArgPrm(java.lang.Class,java.lang.String):jetbrains.mps.core.aspects.behaviour.api.SParameter" resolve="createVarArgPrm" />
+            <ref role="37wK5l" to="manl:~SMethodBuilder.createVarArgPrm(java.lang.Class,java.lang.String)" resolve="createVarArgPrm" />
             <ref role="1Pybhc" to="manl:~SMethodBuilder" resolve="SMethodBuilder" />
             <node concept="3VsKOn" id="44O701NmKwk" role="37wK5m">
               <ref role="3VsUkX" to="wyt6:~Object" resolve="Object" />
@@ -3620,7 +3620,7 @@
       <node concept="1Koe21" id="44O701NmVBf" role="1lVwrX">
         <node concept="3clFbF" id="44O701NmKIb" role="1Koe22">
           <node concept="2YIFZM" id="6MHiaoH8RTL" role="3clFbG">
-            <ref role="37wK5l" to="manl:#SMethodBuilder.createJavaParameter(java.lang.Class,java.lang.String):jetbrains.mps.core.aspects.behaviour.api.SParameter" resolve="createJavaParameter" />
+            <ref role="37wK5l" to="manl:~SMethodBuilder.createJavaParameter(java.lang.Class,java.lang.String)" resolve="createJavaParameter" />
             <ref role="1Pybhc" to="manl:~SMethodBuilder" resolve="SMethodBuilder" />
             <node concept="3VsKOn" id="6MHiaoH8RTM" role="37wK5m">
               <ref role="3VsUkX" to="wyt6:~Object" resolve="Object" />
@@ -4222,7 +4222,7 @@
                       <ref role="3cqZAo" node="3XrE5vcna5N" resolve="aspectClass" />
                     </node>
                     <node concept="liA8E" id="3AguOYZ6aql" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Class.cast(java.lang.Object):java.lang.Object" resolve="cast" />
+                      <ref role="37wK5l" to="wyt6:~Class.cast(java.lang.Object)" resolve="cast" />
                       <node concept="2ShNRf" id="3AguOYZ6a_d" role="37wK5m">
                         <node concept="1pGfFk" id="3AguOYZ6gTd" role="2ShVmc">
                           <ref role="37wK5l" node="7ZU0Lz4JDNL" resolve="BehaviorAspectDescriptor" />

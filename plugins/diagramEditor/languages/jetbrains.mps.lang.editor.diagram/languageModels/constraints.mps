@@ -361,7 +361,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="5Vvmn_QkXiP" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:#SNode.getName():java.lang.String" resolve="getName" />
+                            <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
                           </node>
                         </node>
                       </node>

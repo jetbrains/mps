@@ -174,7 +174,7 @@
           <node concept="2Gpval" id="ND8l7ITuxN" role="3cqZAp">
             <node concept="2OqwBi" id="ND8l7ITuzi" role="2GsD0m">
               <node concept="liA8E" id="ND8l7ITuzj" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:#SNode.getReferences():java.lang.Iterable" resolve="getReferences" />
+                <ref role="37wK5l" to="mhbf:~SNode.getReferences()" resolve="getReferences" />
               </node>
               <node concept="2JrnkZ" id="ND8l7ITuzk" role="2Oq$k0">
                 <node concept="_YI3z" id="ND8l7ITuzl" role="2JrQYb" />
@@ -203,7 +203,7 @@
                 <node concept="37vLTI" id="ND8l7ITEvA" role="3clFbG">
                   <node concept="2OqwBi" id="ND8l7ITF2l" role="37vLTx">
                     <node concept="liA8E" id="ND8l7ITFO5" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:#SReference.getTargetNode():org.jetbrains.mps.openapi.model.SNode" resolve="getTargetNode" />
+                      <ref role="37wK5l" to="mhbf:~SReference.getTargetNode()" resolve="getTargetNode" />
                     </node>
                     <node concept="2GrUjf" id="ND8l7ITEIE" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="ND8l7ITuxP" resolve="ref" />
@@ -212,7 +212,7 @@
                   <node concept="3EllGN" id="ND8l7ITD58" role="37vLTJ">
                     <node concept="2OqwBi" id="ND8l7ITDoC" role="3ElVtu">
                       <node concept="liA8E" id="ND8l7ITE8G" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:#SReference.getRole():java.lang.String" resolve="getRole" />
+                        <ref role="37wK5l" to="mhbf:~SReference.getRole()" resolve="getRole" />
                       </node>
                       <node concept="2GrUjf" id="ND8l7ITD60" role="2Oq$k0">
                         <ref role="2Gs0qQ" node="ND8l7ITuxP" resolve="ref" />
@@ -229,7 +229,7 @@
           <node concept="2Gpval" id="ND8l7ITLW3" role="3cqZAp">
             <node concept="2OqwBi" id="ND8l7IU0bB" role="2GsD0m">
               <node concept="liA8E" id="ND8l7IU8LF" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#Map.entrySet():java.util.Set" resolve="entrySet" />
+                <ref role="37wK5l" to="33ny:~Map.entrySet()" resolve="entrySet" />
               </node>
               <node concept="3S9uib" id="ND8l7ITZd$" role="2Oq$k0">
                 <node concept="37vLTw" id="ND8l7ITLX7" role="3S9DZi">
@@ -244,10 +244,10 @@
               <node concept="3clFbF" id="ND8l7ITQNp" role="3cqZAp">
                 <node concept="2OqwBi" id="ND8l7ITR2h" role="3clFbG">
                   <node concept="liA8E" id="ND8l7ITR_2" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:#SNode.setReferenceTarget(java.lang.String,org.jetbrains.mps.openapi.model.SNode):void" resolve="setReferenceTarget" />
+                    <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                     <node concept="2OqwBi" id="ND8l7IUb29" role="37wK5m">
                       <node concept="liA8E" id="ND8l7IUe_1" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:#Map$Entry.getKey():java.lang.Object" resolve="getKey" />
+                        <ref role="37wK5l" to="33ny:~Map$Entry.getKey()" resolve="getKey" />
                       </node>
                       <node concept="2GrUjf" id="ND8l7ITXoZ" role="2Oq$k0">
                         <ref role="2Gs0qQ" node="ND8l7ITLW5" resolve="m" />
@@ -255,7 +255,7 @@
                     </node>
                     <node concept="2OqwBi" id="ND8l7IUhIX" role="37wK5m">
                       <node concept="liA8E" id="ND8l7IUj_z" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:#Map$Entry.getValue():java.lang.Object" resolve="getValue" />
+                        <ref role="37wK5l" to="33ny:~Map$Entry.getValue()" resolve="getValue" />
                       </node>
                       <node concept="2GrUjf" id="ND8l7IUfPO" role="2Oq$k0">
                         <ref role="2Gs0qQ" node="ND8l7ITLW5" resolve="m" />
@@ -299,7 +299,7 @@
                 <node concept="10QFUN" id="ND8l7ITcFW" role="1eOMHV">
                   <node concept="2OqwBi" id="ND8l7IT96X" role="10QFUP">
                     <node concept="liA8E" id="ND8l7IT9DV" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:#SNode.getReferences():java.lang.Iterable" resolve="getReferences" />
+                      <ref role="37wK5l" to="mhbf:~SNode.getReferences()" resolve="getReferences" />
                     </node>
                     <node concept="2JrnkZ" id="ND8l7IT90A" role="2Oq$k0">
                       <node concept="_YI3z" id="ND8l7IT87s" role="2JrQYb" />

@@ -1369,7 +1369,7 @@
                 <node concept="2OqwBi" id="4IJMzQ1z1Zt" role="3clFbG">
                   <node concept="Xjq3P" id="4IJMzQ1z1Zs" role="2Oq$k0" />
                   <node concept="liA8E" id="4IJMzQ1z1Zx" role="2OqNvi">
-                    <ref role="37wK5l" to="dj99:#RunConfigurationBase.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                    <ref role="37wK5l" to="dj99:~RunConfigurationBase.getProject()" resolve="getProject" />
                     <node concept="raruj" id="4IJMzQ1z1Zy" role="lGtFl" />
                   </node>
                 </node>
@@ -1650,7 +1650,7 @@
                 <ref role="3cqZAo" node="52CUgX5Y8TE" resolve="myEnvironment" />
               </node>
               <node concept="liA8E" id="52CUgX5YaoH" role="2OqNvi">
-                <ref role="37wK5l" to="fhz7:#ExecutionEnvironment.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                <ref role="37wK5l" to="fhz7:~ExecutionEnvironment.getProject()" resolve="getProject" />
               </node>
             </node>
           </node>
@@ -1860,7 +1860,7 @@
               <ref role="3cqZAo" to="9mrk:~DefaultRunExecutor.EXECUTOR_ID" resolve="EXECUTOR_ID" />
             </node>
             <node concept="liA8E" id="6LlKjXrMeOQ" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="37vLTw" id="2BHiRxgm7np" role="37wK5m">
                 <ref role="3cqZAo" node="6LlKjXrMeSn" resolve="executorId" />
               </node>
@@ -1898,7 +1898,7 @@
           </node>
           <node concept="2OqwBi" id="6LlKjXrMeP5" role="3clFbw">
             <node concept="liA8E" id="6LlKjXrMeP7" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="37vLTw" id="2BHiRxgm_xD" role="37wK5m">
                 <ref role="3cqZAo" node="6LlKjXrMeSn" resolve="executorId" />
               </node>
@@ -2266,7 +2266,7 @@
           <node concept="3clFbF" id="7WkE0gr9Cy" role="3cqZAp">
             <node concept="10QFUN" id="7WkE0grgdg" role="3clFbG">
               <node concept="3nyPlj" id="7WkE0gr9Cz" role="10QFUP">
-                <ref role="37wK5l" to="dj99:#RunConfigurationBase.clone():com.intellij.execution.configurations.RunConfiguration" resolve="clone" />
+                <ref role="37wK5l" to="dj99:~RunConfigurationBase.clone()" resolve="clone" />
               </node>
               <node concept="3uibUv" id="7WkE0grgdj" role="10QFUM">
                 <ref role="3uigEE" node="_0hjroTa4s" resolve="RunConfigurationTemplateWeave" />
@@ -2443,9 +2443,9 @@
               </node>
               <node concept="2YIFZM" id="qCQmZRUG01" role="33vP2m">
                 <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                <ref role="37wK5l" to="alof:#ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project):jetbrains.mps.project.MPSProject" resolve="fromIdeaProject" />
+                <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
                 <node concept="1rXfSq" id="qCQmZRUNG7" role="37wK5m">
-                  <ref role="37wK5l" to="dj99:#RunConfigurationBase.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                  <ref role="37wK5l" to="dj99:~RunConfigurationBase.getProject()" resolve="getProject" />
                 </node>
               </node>
             </node>
@@ -2595,7 +2595,7 @@
                         </node>
                         <node concept="3cpWs3" id="6LlKjXrMfcD" role="3uHU7B">
                           <node concept="2YIFZM" id="6LlKjXrMfcs" role="3uHU7B">
-                            <ref role="37wK5l" to="18ew:#NodeNameUtil.getNamespace(java.lang.String):java.lang.String" resolve="getNamespace" />
+                            <ref role="37wK5l" to="18ew:~NodeNameUtil.getNamespace(java.lang.String)" resolve="getNamespace" />
                             <ref role="1Pybhc" to="18ew:~NodeNameUtil" resolve="NodeNameUtil" />
                             <node concept="2OqwBi" id="6LlKjXrMfc$" role="37wK5m">
                               <node concept="2OqwBi" id="6LlKjXrMfcv" role="2Oq$k0">
@@ -3148,7 +3148,7 @@
               <ref role="3cqZAo" node="48oTQQ_5sI6" resolve="_consoleView" />
             </node>
             <node concept="liA8E" id="2LU2uraehH4" role="2OqNvi">
-              <ref role="37wK5l" to="cjdg:#ConsoleView.attachToProcess(com.intellij.execution.process.ProcessHandler):void" resolve="attachToProcess" />
+              <ref role="37wK5l" to="cjdg:~ConsoleView.attachToProcess(com.intellij.execution.process.ProcessHandler)" resolve="attachToProcess" />
               <node concept="37vLTw" id="2LU2uraehHl" role="37wK5m">
                 <ref role="3cqZAo" node="48oTQQ_5uph" resolve="_processHandler" />
               </node>
@@ -3170,7 +3170,7 @@
                       <ref role="3cqZAo" node="48oTQQ_5sI6" resolve="_consoleView" />
                     </node>
                     <node concept="liA8E" id="48oTQQ_5uoT" role="2OqNvi">
-                      <ref role="37wK5l" to="jkm4:#ComponentContainer.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                      <ref role="37wK5l" to="jkm4:~ComponentContainer.getComponent()" resolve="getComponent" />
                     </node>
                   </node>
                   <node concept="1bVj0M" id="48oTQQ_5uoV" role="37wK5m">
@@ -3181,7 +3181,7 @@
                             <ref role="3cqZAo" node="48oTQQ_5sI6" resolve="_consoleView" />
                           </node>
                           <node concept="liA8E" id="48oTQQ_5up3" role="2OqNvi">
-                            <ref role="37wK5l" to="v23q:#Disposable.dispose():void" resolve="dispose" />
+                            <ref role="37wK5l" to="v23q:~Disposable.dispose()" resolve="dispose" />
                           </node>
                         </node>
                       </node>
@@ -3243,7 +3243,7 @@
                     <ref role="3cqZAo" node="1ovLDatOfxM" resolve="_processHandler" />
                   </node>
                   <node concept="liA8E" id="1ovLDatOfy7" role="2OqNvi">
-                    <ref role="37wK5l" to="uu3z:#ProcessHandler.addProcessListener(com.intellij.execution.process.ProcessListener):void" resolve="addProcessListener" />
+                    <ref role="37wK5l" to="uu3z:~ProcessHandler.addProcessListener(com.intellij.execution.process.ProcessListener)" resolve="addProcessListener" />
                     <node concept="10Nm6u" id="1ovLDatOkFP" role="37wK5m">
                       <node concept="29HgVG" id="1ovLDatOkFR" role="lGtFl">
                         <node concept="3NFfHV" id="1ovLDatOkFS" role="3NFExx">
@@ -3389,7 +3389,7 @@
                           <ref role="3cqZAo" node="6hGfvQPbJwp" resolve="_consoleView" />
                         </node>
                         <node concept="liA8E" id="2LU2uraehLX" role="2OqNvi">
-                          <ref role="37wK5l" to="cjdg:#ConsoleView.attachToProcess(com.intellij.execution.process.ProcessHandler):void" resolve="attachToProcess" />
+                          <ref role="37wK5l" to="cjdg:~ConsoleView.attachToProcess(com.intellij.execution.process.ProcessHandler)" resolve="attachToProcess" />
                           <node concept="37vLTw" id="2LU2uraehLY" role="37wK5m">
                             <ref role="3cqZAo" node="6hGfvQPbJva" resolve="_processHandler" />
                           </node>
@@ -3411,7 +3411,7 @@
                                   <ref role="3cqZAo" node="6hGfvQPbJwp" resolve="_consoleView" />
                                 </node>
                                 <node concept="liA8E" id="6hGfvQPbKVp" role="2OqNvi">
-                                  <ref role="37wK5l" to="jkm4:#ComponentContainer.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                                  <ref role="37wK5l" to="jkm4:~ComponentContainer.getComponent()" resolve="getComponent" />
                                 </node>
                               </node>
                               <node concept="1bVj0M" id="6hGfvQPbJvI" role="37wK5m">
@@ -3422,7 +3422,7 @@
                                         <ref role="3cqZAo" node="6hGfvQPbJwp" resolve="_consoleView" />
                                       </node>
                                       <node concept="liA8E" id="6hGfvQPbKVw" role="2OqNvi">
-                                        <ref role="37wK5l" to="v23q:#Disposable.dispose():void" resolve="dispose" />
+                                        <ref role="37wK5l" to="v23q:~Disposable.dispose()" resolve="dispose" />
                                       </node>
                                     </node>
                                   </node>
@@ -3499,11 +3499,11 @@
             </node>
             <node concept="2OqwBi" id="AuxEqQ$ckk" role="33vP2m">
               <node concept="2YIFZM" id="6Frip1cg6pf" role="2Oq$k0">
-                <ref role="37wK5l" to="9ti4:#Extensions.getRootArea():com.intellij.openapi.extensions.ExtensionsArea" resolve="getRootArea" />
+                <ref role="37wK5l" to="9ti4:~Extensions.getRootArea()" resolve="getRootArea" />
                 <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
               </node>
               <node concept="liA8E" id="AuxEqQ$ckn" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:#ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName):com.intellij.openapi.extensions.ExtensionPoint" resolve="getExtensionPoint" />
+                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
                 <node concept="10M0yZ" id="AuxEqQ$cko" role="37wK5m">
                   <ref role="1PxDUh" to="dj99:~ConfigurationType" resolve="ConfigurationType" />
                   <ref role="3cqZAo" to="dj99:~ConfigurationType.CONFIGURATION_TYPE_EP" resolve="CONFIGURATION_TYPE_EP" />
@@ -3761,7 +3761,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6Frip1clMgG" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#Deque.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Deque.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="6Frip1clMj$" role="37wK5m">
                     <ref role="3cqZAo" node="6Frip1cg9Ov" resolve="runConfigurationKind" />
                   </node>
@@ -3774,7 +3774,7 @@
                   <ref role="3cqZAo" node="AuxEqQ$ckh" resolve="configurationExtensionPoint" />
                 </node>
                 <node concept="liA8E" id="3r1oSEf$v9N" role="2OqNvi">
-                  <ref role="37wK5l" to="9ti4:#ExtensionPoint.registerExtension(java.lang.Object):void" resolve="registerExtension" />
+                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.registerExtension(java.lang.Object)" resolve="registerExtension" />
                   <node concept="37vLTw" id="6Frip1chCkR" role="37wK5m">
                     <ref role="3cqZAo" node="6Frip1cg9Ov" resolve="runConfigurationKind" />
                   </node>
@@ -3909,13 +3909,13 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6Frip1chY0_" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="2OqwBi" id="6Frip1chWbs" role="37wK5m">
                     <node concept="2GrUjf" id="6Frip1chW1b" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="6Frip1chTZH" resolve="ext" />
                     </node>
                     <node concept="liA8E" id="6Frip1chWyg" role="2OqNvi">
-                      <ref role="37wK5l" to="dj99:#ConfigurationType.getId():java.lang.String" resolve="getId" />
+                      <ref role="37wK5l" to="dj99:~ConfigurationType.getId()" resolve="getId" />
                     </node>
                   </node>
                 </node>
@@ -3927,7 +3927,7 @@
               <ref role="3cqZAo" node="AuxEqQ$ckh" resolve="configurationExtensionPoint" />
             </node>
             <node concept="liA8E" id="6Frip1chU_l" role="2OqNvi">
-              <ref role="37wK5l" to="9ti4:#ExtensionPoint.getExtensions():java.lang.Object[]" resolve="getExtensions" />
+              <ref role="37wK5l" to="9ti4:~ExtensionPoint.getExtensions()" resolve="getExtensions" />
             </node>
           </node>
           <node concept="1WS0z7" id="6Frip1cimLD" role="lGtFl">
@@ -3993,11 +3993,11 @@
             <node concept="2OqwBi" id="3uNEAUKw0O3" role="33vP2m">
               <node concept="2YIFZM" id="3uNEAUKw0O1" role="2Oq$k0">
                 <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
-                <ref role="37wK5l" to="9ti4:#Extensions.getArea(com.intellij.openapi.extensions.AreaInstance):com.intellij.openapi.extensions.ExtensionsArea" resolve="getArea" />
+                <ref role="37wK5l" to="9ti4:~Extensions.getArea(com.intellij.openapi.extensions.AreaInstance)" resolve="getArea" />
                 <node concept="10Nm6u" id="3uNEAUKw0O2" role="37wK5m" />
               </node>
               <node concept="liA8E" id="3uNEAUKw0Vh" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:#ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName):com.intellij.openapi.extensions.ExtensionPoint" resolve="getExtensionPoint" />
+                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
                 <node concept="10M0yZ" id="3uNEAUKw0Vi" role="37wK5m">
                   <ref role="3cqZAo" to="uycu:~RuntimeConfigurationProducer.RUNTIME_CONFIGURATION_PRODUCER" resolve="RUNTIME_CONFIGURATION_PRODUCER" />
                   <ref role="1PxDUh" to="uycu:~RuntimeConfigurationProducer" resolve="RuntimeConfigurationProducer" />
@@ -4090,7 +4090,7 @@
                           <ref role="3cqZAo" node="3uNEAUKvTMq" resolve="producerExtensionPoint" />
                         </node>
                         <node concept="liA8E" id="4WBk1A5RVSk" role="2OqNvi">
-                          <ref role="37wK5l" to="9ti4:#ExtensionPoint.registerExtension(java.lang.Object):void" resolve="registerExtension" />
+                          <ref role="37wK5l" to="9ti4:~ExtensionPoint.registerExtension(java.lang.Object)" resolve="registerExtension" />
                           <node concept="2GrUjf" id="4WBk1A5RVSl" role="37wK5m">
                             <ref role="2Gs0qQ" node="4WBk1A5RVSe" resolve="producer" />
                           </node>
@@ -4142,13 +4142,13 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="LPAYBxZtIM" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="2OqwBi" id="LPAYBxZtIN" role="37wK5m">
                     <node concept="2GrUjf" id="LPAYBxZtIO" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="LPAYBxZtI7" resolve="ext" />
                     </node>
                     <node concept="liA8E" id="LPAYBxZtIP" role="2OqNvi">
-                      <ref role="37wK5l" to="dj99:#ConfigurationType.getId():java.lang.String" resolve="getId" />
+                      <ref role="37wK5l" to="dj99:~ConfigurationType.getId()" resolve="getId" />
                     </node>
                   </node>
                 </node>
@@ -4160,7 +4160,7 @@
               <ref role="3cqZAo" node="AuxEqQ$ckh" resolve="configurationExtensionPoint" />
             </node>
             <node concept="liA8E" id="LPAYBxZtIS" role="2OqNvi">
-              <ref role="37wK5l" to="9ti4:#ExtensionPoint.getExtensions():java.lang.Object[]" resolve="getExtensions" />
+              <ref role="37wK5l" to="9ti4:~ExtensionPoint.getExtensions()" resolve="getExtensions" />
             </node>
           </node>
           <node concept="1WS0z7" id="LPAYBxZtIT" role="lGtFl">
@@ -4196,11 +4196,11 @@
             </node>
             <node concept="2OqwBi" id="AuxEqQ$jFy" role="33vP2m">
               <node concept="2YIFZM" id="6Frip1cjgjr" role="2Oq$k0">
-                <ref role="37wK5l" to="9ti4:#Extensions.getRootArea():com.intellij.openapi.extensions.ExtensionsArea" resolve="getRootArea" />
+                <ref role="37wK5l" to="9ti4:~Extensions.getRootArea()" resolve="getRootArea" />
                 <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
               </node>
               <node concept="liA8E" id="AuxEqQ$jF_" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:#ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName):com.intellij.openapi.extensions.ExtensionPoint" resolve="getExtensionPoint" />
+                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
                 <node concept="10M0yZ" id="AuxEqQ$jFA" role="37wK5m">
                   <ref role="1PxDUh" to="dj99:~ConfigurationType" resolve="ConfigurationType" />
                   <ref role="3cqZAo" to="dj99:~ConfigurationType.CONFIGURATION_TYPE_EP" resolve="CONFIGURATION_TYPE_EP" />
@@ -4299,13 +4299,13 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="CZHNfv_0_Y" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="2OqwBi" id="CZHNfv_0_Z" role="37wK5m">
                     <node concept="2GrUjf" id="CZHNfv_0A0" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="CZHNfv_0_p" resolve="ext" />
                     </node>
                     <node concept="liA8E" id="CZHNfv_0A1" role="2OqNvi">
-                      <ref role="37wK5l" to="dj99:#ConfigurationType.getId():java.lang.String" resolve="getId" />
+                      <ref role="37wK5l" to="dj99:~ConfigurationType.getId()" resolve="getId" />
                     </node>
                   </node>
                 </node>
@@ -4317,7 +4317,7 @@
               <ref role="3cqZAo" node="AuxEqQ$ckh" resolve="configurationExtensionPoint" />
             </node>
             <node concept="liA8E" id="CZHNfv_0A4" role="2OqNvi">
-              <ref role="37wK5l" to="9ti4:#ExtensionPoint.getExtensions():java.lang.Object[]" resolve="getExtensions" />
+              <ref role="37wK5l" to="9ti4:~ExtensionPoint.getExtensions()" resolve="getExtensions" />
             </node>
           </node>
           <node concept="1WS0z7" id="CZHNfv_0A5" role="lGtFl">
@@ -4379,7 +4379,7 @@
                     <ref role="3cqZAo" node="6Frip1cjCS7" resolve="it" />
                   </node>
                   <node concept="liA8E" id="6Frip1cjHK$" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Iterator.next():java.lang.Object" resolve="next" />
+                    <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                   </node>
                 </node>
               </node>
@@ -4400,7 +4400,7 @@
                   <ref role="3cqZAo" node="AuxEqQ$jFv" resolve="configurationExtensionPoint" />
                 </node>
                 <node concept="liA8E" id="3SsxaLc6Gat" role="2OqNvi">
-                  <ref role="37wK5l" to="9ti4:#ExtensionPoint.unregisterExtension(java.lang.Object):void" resolve="unregisterExtension" />
+                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.unregisterExtension(java.lang.Object)" resolve="unregisterExtension" />
                   <node concept="37vLTw" id="6Frip1cjKSE" role="37wK5m">
                     <ref role="3cqZAo" node="6Frip1cjHew" resolve="configKind" />
                   </node>
@@ -4424,7 +4424,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="6Frip1cjG74" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#Deque.descendingIterator():java.util.Iterator" resolve="descendingIterator" />
+                <ref role="37wK5l" to="33ny:~Deque.descendingIterator()" resolve="descendingIterator" />
               </node>
             </node>
           </node>
@@ -4433,7 +4433,7 @@
               <ref role="3cqZAo" node="6Frip1cjCS7" resolve="it" />
             </node>
             <node concept="liA8E" id="6Frip1cjH3o" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#Iterator.hasNext():boolean" resolve="hasNext" />
+              <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
             </node>
           </node>
         </node>
@@ -4446,7 +4446,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6Frip1cjNNH" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#Collection.clear():void" resolve="clear" />
+              <ref role="37wK5l" to="33ny:~Collection.clear()" resolve="clear" />
             </node>
           </node>
         </node>
@@ -4462,11 +4462,11 @@
             </node>
             <node concept="2OqwBi" id="3uNEAUKw0XR" role="33vP2m">
               <node concept="2YIFZM" id="6Frip1cjgAo" role="2Oq$k0">
-                <ref role="37wK5l" to="9ti4:#Extensions.getRootArea():com.intellij.openapi.extensions.ExtensionsArea" resolve="getRootArea" />
+                <ref role="37wK5l" to="9ti4:~Extensions.getRootArea()" resolve="getRootArea" />
                 <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
               </node>
               <node concept="liA8E" id="3uNEAUKw0XU" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:#ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName):com.intellij.openapi.extensions.ExtensionPoint" resolve="getExtensionPoint" />
+                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
                 <node concept="10M0yZ" id="3uNEAUKw0XV" role="37wK5m">
                   <ref role="1PxDUh" to="uycu:~RuntimeConfigurationProducer" resolve="RuntimeConfigurationProducer" />
                   <ref role="3cqZAo" to="uycu:~RuntimeConfigurationProducer.RUNTIME_CONFIGURATION_PRODUCER" resolve="RUNTIME_CONFIGURATION_PRODUCER" />
@@ -4492,7 +4492,7 @@
                   <ref role="3cqZAo" node="3uNEAUKw0XO" resolve="producerExtensionPoint" />
                 </node>
                 <node concept="liA8E" id="3uNEAUKw0Ya" role="2OqNvi">
-                  <ref role="37wK5l" to="9ti4:#ExtensionPoint.unregisterExtension(java.lang.Object):void" resolve="unregisterExtension" />
+                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.unregisterExtension(java.lang.Object)" resolve="unregisterExtension" />
                   <node concept="2GrUjf" id="3uNEAUKw0Yb" role="37wK5m">
                     <ref role="2Gs0qQ" node="3uNEAUKw0XY" resolve="producer" />
                   </node>
@@ -5033,17 +5033,17 @@
                     <ref role="2Gs0qQ" node="CZHNfvynQm" resolve="f" />
                   </node>
                   <node concept="liA8E" id="CZHNfvyoSb" role="2OqNvi">
-                    <ref role="37wK5l" to="dj99:#ConfigurationFactory.getId():java.lang.String" resolve="getId" />
+                    <ref role="37wK5l" to="dj99:~ConfigurationFactory.getId()" resolve="getId" />
                   </node>
                 </node>
                 <node concept="liA8E" id="CZHNfvyqdn" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="2OqwBi" id="CZHNfvyqJO" role="37wK5m">
                     <node concept="37vLTw" id="CZHNfvyqqO" role="2Oq$k0">
                       <ref role="3cqZAo" node="1XgDflG1g_l" resolve="configurationType" />
                     </node>
                     <node concept="liA8E" id="CZHNfvyr0z" role="2OqNvi">
-                      <ref role="37wK5l" to="dj99:#ConfigurationType.getId():java.lang.String" resolve="getId" />
+                      <ref role="37wK5l" to="dj99:~ConfigurationType.getId()" resolve="getId" />
                     </node>
                   </node>
                 </node>
@@ -5068,7 +5068,7 @@
               <ref role="3cqZAo" node="1XgDflG1g_l" resolve="configurationType" />
             </node>
             <node concept="liA8E" id="CZHNfvylOu" role="2OqNvi">
-              <ref role="37wK5l" to="dj99:#ConfigurationType.getConfigurationFactories():com.intellij.execution.configurations.ConfigurationFactory[]" resolve="getConfigurationFactories" />
+              <ref role="37wK5l" to="dj99:~ConfigurationType.getConfigurationFactories()" resolve="getConfigurationFactories" />
             </node>
           </node>
         </node>
@@ -5085,7 +5085,7 @@
                       <ref role="3cqZAo" node="1XgDflG1g_l" resolve="configurationType" />
                     </node>
                     <node concept="liA8E" id="CZHNfvyxs_" role="2OqNvi">
-                      <ref role="37wK5l" to="dj99:#ConfigurationType.getConfigurationFactories():com.intellij.execution.configurations.ConfigurationFactory[]" resolve="getConfigurationFactories" />
+                      <ref role="37wK5l" to="dj99:~ConfigurationType.getConfigurationFactories()" resolve="getConfigurationFactories" />
                     </node>
                   </node>
                 </node>
@@ -5396,7 +5396,7 @@
                   <node concept="gft3U" id="pDlR6_PNII" role="UU_$l">
                     <node concept="2YIFZM" id="pDlR6_QgEb" role="gfFT$">
                       <ref role="1Pybhc" to="irxm:~MPSPsiElement" resolve="MPSPsiElement" />
-                      <ref role="37wK5l" to="irxm:#MPSPsiElement.createFor(java.lang.Object,jetbrains.mps.project.MPSProject):jetbrains.mps.plugins.runconfigs.MPSPsiElement" resolve="createFor" />
+                      <ref role="37wK5l" to="irxm:~MPSPsiElement.createFor(java.lang.Object,jetbrains.mps.project.MPSProject)" resolve="createFor" />
                       <node concept="37vLTw" id="pDlR6_Qhhw" role="37wK5m">
                         <ref role="3cqZAo" node="3uNEAUKvTjB" resolve="source" />
                       </node>
@@ -5632,7 +5632,7 @@
                 <ref role="3uigEE" node="3uNEAUKvGzA" resolve="RunConfigurationProducer_Template.RunConfigurationProducerPart_Template" />
               </node>
               <node concept="3nyPlj" id="2eOtvO7hLEC" role="10QFUP">
-                <ref role="37wK5l" to="uycu:#RuntimeConfigurationProducer.clone():com.intellij.execution.junit.RuntimeConfigurationProducer" resolve="clone" />
+                <ref role="37wK5l" to="uycu:~RuntimeConfigurationProducer.clone()" resolve="clone" />
               </node>
             </node>
           </node>
@@ -5775,7 +5775,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="5DSVq22y3SA" role="2OqNvi">
-                <ref role="37wK5l" to="dj99:#ConfigurationFactory.createConfiguration(java.lang.String,com.intellij.execution.configurations.RunConfiguration):com.intellij.execution.configurations.RunConfiguration" resolve="createConfiguration" />
+                <ref role="37wK5l" to="dj99:~ConfigurationFactory.createConfiguration(java.lang.String,com.intellij.execution.configurations.RunConfiguration)" resolve="createConfiguration" />
                 <node concept="3cpWs3" id="53nATsA4Akk" role="37wK5m">
                   <node concept="Xl_RD" id="53nATsA4B8w" role="3uHU7w">
                     <property role="Xl_RC" value="name" />
@@ -5811,7 +5811,7 @@
                 <node concept="2OqwBi" id="6zMwJmzE9sB" role="37wK5m">
                   <node concept="2OqwBi" id="5DSVq22y3U9" role="2Oq$k0">
                     <node concept="liA8E" id="5DSVq22y3Ux" role="2OqNvi">
-                      <ref role="37wK5l" to="3v5a:#RunManager.getConfigurationTemplate(com.intellij.execution.configurations.ConfigurationFactory):com.intellij.execution.RunnerAndConfigurationSettings" resolve="getConfigurationTemplate" />
+                      <ref role="37wK5l" to="3v5a:~RunManager.getConfigurationTemplate(com.intellij.execution.configurations.ConfigurationFactory)" resolve="getConfigurationTemplate" />
                       <node concept="1DoJHT" id="5DSVq22y3W7" role="37wK5m">
                         <property role="1Dpdpm" value="getConfigurationFactory" />
                         <node concept="3uibUv" id="5DSVq22y3W8" role="1Ez5kq">
@@ -5827,12 +5827,12 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="5DSVq22y3Tw" role="2OqNvi">
-                        <ref role="37wK5l" to="feyl:#ConfigurationContext.getRunManager():com.intellij.execution.RunManager" resolve="getRunManager" />
+                        <ref role="37wK5l" to="feyl:~ConfigurationContext.getRunManager()" resolve="getRunManager" />
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="6zMwJmzE9sH" role="2OqNvi">
-                    <ref role="37wK5l" to="3v5a:#RunnerAndConfigurationSettings.getConfiguration():com.intellij.execution.configurations.RunConfiguration" resolve="getConfiguration" />
+                    <ref role="37wK5l" to="3v5a:~RunnerAndConfigurationSettings.getConfiguration()" resolve="getConfiguration" />
                   </node>
                 </node>
               </node>
@@ -5894,7 +5894,7 @@
       </node>
       <node concept="2YIFZM" id="4hE$sQ8D2k9" role="33vP2m">
         <ref role="1Pybhc" to="zn9m:~Key" resolve="Key" />
-        <ref role="37wK5l" to="zn9m:#Key.create(java.lang.String):com.intellij.openapi.util.Key" resolve="create" />
+        <ref role="37wK5l" to="zn9m:~Key.create(java.lang.String)" resolve="create" />
         <node concept="Xl_RD" id="4hE$sQ8D2ka" role="37wK5m">
           <property role="Xl_RC" value="TaskKey" />
           <node concept="17Uvod" id="4hE$sQ8D2kb" role="lGtFl">
@@ -6416,16 +6416,16 @@
             <node concept="2OqwBi" id="3eSyq7SD33y" role="33vP2m">
               <node concept="2YIFZM" id="3eSyq7SD33z" role="2Oq$k0">
                 <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
-                <ref role="37wK5l" to="9ti4:#Extensions.getArea(com.intellij.openapi.extensions.AreaInstance):com.intellij.openapi.extensions.ExtensionsArea" resolve="getArea" />
+                <ref role="37wK5l" to="9ti4:~Extensions.getArea(com.intellij.openapi.extensions.AreaInstance)" resolve="getArea" />
                 <node concept="2OqwBi" id="3eSyq7SDikd" role="37wK5m">
                   <node concept="1KvdUw" id="3eSyq7SDike" role="2Oq$k0" />
                   <node concept="liA8E" id="3eSyq7SDikf" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c4:#MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="3eSyq7SD33_" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:#ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName):com.intellij.openapi.extensions.ExtensionPoint" resolve="getExtensionPoint" />
+                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
                 <node concept="10M0yZ" id="3eSyq7SD33A" role="37wK5m">
                   <ref role="1PxDUh" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
                   <ref role="3cqZAo" to="3v5a:~BeforeRunTaskProvider.EXTENSION_POINT_NAME" resolve="EXTENSION_POINT_NAME" />
@@ -6520,7 +6520,7 @@
                   <ref role="3cqZAo" node="3eSyq7SD33u" resolve="beforeTasksExtensionPoint" />
                 </node>
                 <node concept="liA8E" id="3eSyq7SD34n" role="2OqNvi">
-                  <ref role="37wK5l" to="9ti4:#ExtensionPoint.registerExtension(java.lang.Object):void" resolve="registerExtension" />
+                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.registerExtension(java.lang.Object)" resolve="registerExtension" />
                   <node concept="37vLTw" id="3GM_nagTAo4" role="37wK5m">
                     <ref role="3cqZAo" node="3eSyq7SD33P" resolve="beforeTask" />
                   </node>
@@ -6564,17 +6564,17 @@
             </node>
             <node concept="2OqwBi" id="3eSyq7SD34M" role="33vP2m">
               <node concept="2YIFZM" id="3eSyq7SDi60" role="2Oq$k0">
-                <ref role="37wK5l" to="9ti4:#Extensions.getArea(com.intellij.openapi.extensions.AreaInstance):com.intellij.openapi.extensions.ExtensionsArea" resolve="getArea" />
+                <ref role="37wK5l" to="9ti4:~Extensions.getArea(com.intellij.openapi.extensions.AreaInstance)" resolve="getArea" />
                 <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
                 <node concept="2OqwBi" id="3eSyq7SDiii" role="37wK5m">
                   <node concept="1KvdUw" id="3eSyq7SDiih" role="2Oq$k0" />
                   <node concept="liA8E" id="3eSyq7SDikc" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c4:#MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="3eSyq7SD34P" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:#ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName):com.intellij.openapi.extensions.ExtensionPoint" resolve="getExtensionPoint" />
+                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
                 <node concept="10M0yZ" id="3eSyq7SD34Q" role="37wK5m">
                   <ref role="1PxDUh" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
                   <ref role="3cqZAo" to="3v5a:~BeforeRunTaskProvider.EXTENSION_POINT_NAME" resolve="EXTENSION_POINT_NAME" />
@@ -6600,7 +6600,7 @@
                   <ref role="3cqZAo" node="3eSyq7SD34I" resolve="beforeTasksExtensionPoint" />
                 </node>
                 <node concept="liA8E" id="3eSyq7SD350" role="2OqNvi">
-                  <ref role="37wK5l" to="9ti4:#ExtensionPoint.unregisterExtension(java.lang.Object):void" resolve="unregisterExtension" />
+                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.unregisterExtension(java.lang.Object)" resolve="unregisterExtension" />
                   <node concept="2GrUjf" id="3eSyq7SD351" role="37wK5m">
                     <ref role="2Gs0qQ" node="3eSyq7SD34S" resolve="beforeTask" />
                   </node>
@@ -6729,7 +6729,7 @@
       <ref role="30HIoZ" to="1oap:7Mb2akaesqV" resolve="FileIcon" />
       <node concept="gft3U" id="6Frip1cgRYZ" role="1lVwrX">
         <node concept="2YIFZM" id="6Frip1cgSbv" role="gfFT$">
-          <ref role="37wK5l" to="zn9m:#IconLoader.findIcon(java.lang.String):javax.swing.Icon" resolve="findIcon" />
+          <ref role="37wK5l" to="zn9m:~IconLoader.findIcon(java.lang.String)" resolve="findIcon" />
           <ref role="1Pybhc" to="zn9m:~IconLoader" resolve="IconLoader" />
           <node concept="Xl_RD" id="6Frip1cgSbw" role="37wK5m">
             <property role="Xl_RC" value="iconId" />

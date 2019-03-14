@@ -234,7 +234,7 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="false" />
       <node concept="2YIFZM" id="Hn0$MvbXW0" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:#LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
         <node concept="3VsKOn" id="Hn0$MvbXW1" role="37wK5m">
           <ref role="3VsUkX" node="1AxNPWQ_V$" resolve="DefaultSearchOptionsComponent" />
@@ -316,7 +316,7 @@
                 <ref role="3cqZAo" node="1AxNPWQ_VK" resolve="myDefaultOptions" />
               </node>
               <node concept="liA8E" id="1AxNPWQ_Wo" role="2OqNvi">
-                <ref role="37wK5l" to="rhcb:#FindUsagesOptions.clone():jetbrains.mps.ide.findusages.view.optionseditor.FindUsagesOptions" resolve="clone" />
+                <ref role="37wK5l" to="rhcb:~FindUsagesOptions.clone()" resolve="clone" />
               </node>
             </node>
           </node>
@@ -333,7 +333,7 @@
                 <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
               </node>
               <node concept="liA8E" id="1AxNPWQ_Wu" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#HashMap.get(java.lang.Object):java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="33ny:~HashMap.get(java.lang.Object)" resolve="get" />
                 <node concept="37vLTw" id="2BHiRxglRLf" role="37wK5m">
                   <ref role="3cqZAo" node="1AxNPWQ_Wg" resolve="concept" />
                 </node>
@@ -347,7 +347,7 @@
               <ref role="3cqZAo" node="1AxNPWQ_Wk" resolve="result" />
             </node>
             <node concept="liA8E" id="1AxNPWQ_WC" role="2OqNvi">
-              <ref role="37wK5l" to="rhcb:#FindUsagesOptions.setFindersOptions(jetbrains.mps.ide.findusages.view.optionseditor.options.FindersOptions):void" resolve="setFindersOptions" />
+              <ref role="37wK5l" to="rhcb:~FindUsagesOptions.setFindersOptions(jetbrains.mps.ide.findusages.view.optionseditor.options.FindersOptions)" resolve="setFindersOptions" />
               <node concept="3K4zz7" id="4CJNoNwpEHa" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagTBjD" role="3K4E3e">
                   <ref role="3cqZAo" node="1AxNPWQ_Wq" resolve="finders" />
@@ -403,7 +403,7 @@
                 <ref role="3cqZAo" node="1AxNPWQ_WL" resolve="defaultSearchOptions" />
               </node>
               <node concept="liA8E" id="1AxNPWQ_WT" role="2OqNvi">
-                <ref role="37wK5l" to="rhcb:#FindUsagesOptions.clone():jetbrains.mps.ide.findusages.view.optionseditor.FindUsagesOptions" resolve="clone" />
+                <ref role="37wK5l" to="rhcb:~FindUsagesOptions.clone()" resolve="clone" />
               </node>
             </node>
           </node>
@@ -414,7 +414,7 @@
               <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
             </node>
             <node concept="liA8E" id="1AxNPWQ_X2" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#HashMap.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~HashMap.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="37vLTw" id="2BHiRxgm6un" role="37wK5m">
                 <ref role="3cqZAo" node="1AxNPWQ_WJ" resolve="concept" />
               </node>
@@ -423,7 +423,7 @@
                   <ref role="3cqZAo" node="1AxNPWQ_WL" resolve="defaultSearchOptions" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQ_X6" role="2OqNvi">
-                  <ref role="37wK5l" to="rhcb:#FindUsagesOptions.getFindersOptions():jetbrains.mps.ide.findusages.view.optionseditor.options.FindersOptions" resolve="getFindersOptions" />
+                  <ref role="37wK5l" to="rhcb:~FindUsagesOptions.getFindersOptions()" resolve="getFindersOptions" />
                 </node>
               </node>
             </node>
@@ -462,7 +462,7 @@
                     </node>
                     <node concept="2YIFZM" id="1AxNPWQ_XI" role="3K4Cdx">
                       <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
-                      <ref role="37wK5l" to="fyhk:#InternalFlag.isInternalMode():boolean" resolve="isInternalMode" />
+                      <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
                     </node>
                   </node>
                 </node>
@@ -561,7 +561,7 @@
                     <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
                   </node>
                   <node concept="liA8E" id="1AxNPWQ_Yc" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:#Category.error(java.lang.Object,java.lang.Throwable):void" resolve="error" />
+                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
                     <node concept="Xl_RD" id="1AxNPWQ_Yd" role="37wK5m">
                       <property role="Xl_RC" value="error saving options" />
                     </node>
@@ -604,7 +604,7 @@
                   <ref role="3cqZAo" node="1AxNPWQ_VK" resolve="myDefaultOptions" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQ_Yr" role="2OqNvi">
-                  <ref role="37wK5l" to="rhcb:#FindUsagesOptions.write(org.jdom.Element,jetbrains.mps.project.Project):void" resolve="write" />
+                  <ref role="37wK5l" to="rhcb:~FindUsagesOptions.write(org.jdom.Element,jetbrains.mps.project.Project)" resolve="write" />
                   <node concept="37vLTw" id="3GM_nagTyxm" role="37wK5m">
                     <ref role="3cqZAo" node="1AxNPWQ_Yj" resolve="soXML" />
                   </node>
@@ -620,7 +620,7 @@
                   <ref role="3cqZAo" node="1AxNPWQ_Y1" resolve="defaultFindOptionsXML" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQ_Yx" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:#Element.addContent(org.jdom.Element):org.jdom.Element" resolve="addContent" />
+                  <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element)" resolve="addContent" />
                   <node concept="37vLTw" id="3GM_nagTuLu" role="37wK5m">
                     <ref role="3cqZAo" node="1AxNPWQ_Yj" resolve="soXML" />
                   </node>
@@ -633,7 +633,7 @@
                   <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQ_YA" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#HashMap.keySet():java.util.Set" resolve="keySet" />
+                  <ref role="37wK5l" to="33ny:~HashMap.keySet()" resolve="keySet" />
                 </node>
               </node>
               <node concept="3cpWsn" id="1AxNPWQ_YB" role="1Duv9x">
@@ -667,7 +667,7 @@
                       <ref role="3cqZAo" node="1AxNPWQ_YF" resolve="optionXML" />
                     </node>
                     <node concept="liA8E" id="1AxNPWQ_YN" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:#Element.setAttribute(java.lang.String,java.lang.String):org.jdom.Element" resolve="setAttribute" />
+                      <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
                       <node concept="37vLTw" id="2BHiRxeohar" role="37wK5m">
                         <ref role="3cqZAo" node="1AxNPWQ_W0" resolve="NODE_ID" />
                       </node>
@@ -684,14 +684,14 @@
                         <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
                       </node>
                       <node concept="liA8E" id="1AxNPWQ_YU" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:#HashMap.get(java.lang.Object):java.lang.Object" resolve="get" />
+                        <ref role="37wK5l" to="33ny:~HashMap.get(java.lang.Object)" resolve="get" />
                         <node concept="37vLTw" id="3GM_nagTBHX" role="37wK5m">
                           <ref role="3cqZAo" node="1AxNPWQ_YB" resolve="np" />
                         </node>
                       </node>
                     </node>
                     <node concept="liA8E" id="1AxNPWQ_YW" role="2OqNvi">
-                      <ref role="37wK5l" to="32gr:#FindersOptions.write(org.jdom.Element,jetbrains.mps.project.Project):void" resolve="write" />
+                      <ref role="37wK5l" to="32gr:~FindersOptions.write(org.jdom.Element,jetbrains.mps.project.Project)" resolve="write" />
                       <node concept="37vLTw" id="3GM_nagT_A5" role="37wK5m">
                         <ref role="3cqZAo" node="1AxNPWQ_YF" resolve="optionXML" />
                       </node>
@@ -707,7 +707,7 @@
                       <ref role="3cqZAo" node="1AxNPWQ_Y1" resolve="defaultFindOptionsXML" />
                     </node>
                     <node concept="liA8E" id="1AxNPWQ_Z2" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:#Element.addContent(org.jdom.Element):org.jdom.Element" resolve="addContent" />
+                      <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element)" resolve="addContent" />
                       <node concept="37vLTw" id="3GM_nagTwYo" role="37wK5m">
                         <ref role="3cqZAo" node="1AxNPWQ_YF" resolve="optionXML" />
                       </node>
@@ -765,7 +765,7 @@
                     <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
                   </node>
                   <node concept="liA8E" id="1AxNPWQ_ZA" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#HashMap.clear():void" resolve="clear" />
+                    <ref role="37wK5l" to="33ny:~HashMap.clear()" resolve="clear" />
                   </node>
                 </node>
               </node>
@@ -775,7 +775,7 @@
                     <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
                   </node>
                   <node concept="liA8E" id="1AxNPWQ_ZE" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:#Category.error(java.lang.Object,java.lang.Throwable):void" resolve="error" />
+                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
                     <node concept="Xl_RD" id="1AxNPWQ_ZF" role="37wK5m">
                       <property role="Xl_RC" value="error reading options" />
                     </node>
@@ -807,7 +807,7 @@
                     <ref role="3cqZAo" node="1AxNPWQ_Z9" resolve="state" />
                   </node>
                   <node concept="liA8E" id="1AxNPWQ_ZP" role="2OqNvi">
-                    <ref role="37wK5l" to="mmaq:#Element.getChild(java.lang.String):org.jdom.Element" resolve="getChild" />
+                    <ref role="37wK5l" to="mmaq:~Element.getChild(java.lang.String)" resolve="getChild" />
                     <node concept="37vLTw" id="2BHiRxeoq7q" role="37wK5m">
                       <ref role="3cqZAo" node="1AxNPWQ_VS" resolve="SEARCH_OPTION" />
                     </node>
@@ -840,7 +840,7 @@
                   <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQ_Zm" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#HashMap.clear():void" resolve="clear" />
+                  <ref role="37wK5l" to="33ny:~HashMap.clear()" resolve="clear" />
                 </node>
               </node>
             </node>
@@ -850,7 +850,7 @@
                   <ref role="3cqZAo" node="1AxNPWQ_Z9" resolve="state" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQA01" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:#Element.getChildren(java.lang.String):java.util.List" resolve="getChildren" />
+                  <ref role="37wK5l" to="mmaq:~Element.getChildren(java.lang.String)" resolve="getChildren" />
                   <node concept="37vLTw" id="2BHiRxeoso9" role="37wK5m">
                     <ref role="3cqZAo" node="1AxNPWQ_VW" resolve="FINDERS_OPTION" />
                   </node>
@@ -876,7 +876,7 @@
                         <ref role="3cqZAo" node="1AxNPWQA05" resolve="findersXML" />
                       </node>
                       <node concept="liA8E" id="1AxNPWQA0d" role="2OqNvi">
-                        <ref role="37wK5l" to="mmaq:#Element.getAttributeValue(java.lang.String):java.lang.String" resolve="getAttributeValue" />
+                        <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
                         <node concept="37vLTw" id="2BHiRxeoflT" role="37wK5m">
                           <ref role="3cqZAo" node="1AxNPWQ_W0" resolve="NODE_ID" />
                         </node>
@@ -904,7 +904,7 @@
                       <ref role="3cqZAo" node="1AxNPWQA0g" resolve="opt" />
                     </node>
                     <node concept="liA8E" id="1AxNPWQA0n" role="2OqNvi">
-                      <ref role="37wK5l" to="32gr:#FindersOptions.read(org.jdom.Element,jetbrains.mps.project.Project):void" resolve="read" />
+                      <ref role="37wK5l" to="32gr:~FindersOptions.read(org.jdom.Element,jetbrains.mps.project.Project)" resolve="read" />
                       <node concept="37vLTw" id="3GM_nagTxiw" role="37wK5m">
                         <ref role="3cqZAo" node="1AxNPWQA05" resolve="findersXML" />
                       </node>
@@ -920,7 +920,7 @@
                       <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
                     </node>
                     <node concept="liA8E" id="1AxNPWQA0t" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#HashMap.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+                      <ref role="37wK5l" to="33ny:~HashMap.put(java.lang.Object,java.lang.Object)" resolve="put" />
                       <node concept="37vLTw" id="3GM_nagTsUJ" role="37wK5m">
                         <ref role="3cqZAo" node="1AxNPWQA09" resolve="np" />
                       </node>
@@ -1062,7 +1062,7 @@
               <ref role="3VsUkX" node="1AxNPWQ_V$" resolve="DefaultSearchOptionsComponent" />
             </node>
             <node concept="liA8E" id="1AxNPWQA1k" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Class.getSimpleName():java.lang.String" resolve="getSimpleName" />
+              <ref role="37wK5l" to="wyt6:~Class.getSimpleName()" resolve="getSimpleName" />
             </node>
           </node>
         </node>
@@ -1139,7 +1139,7 @@
                     <ref role="3cqZAo" node="1AxNPWQA0P" resolve="myProject" />
                   </node>
                   <node concept="liA8E" id="1AxNPWQA1M" role="2OqNvi">
-                    <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                     <node concept="3VsKOn" id="1AxNPWQA1N" role="37wK5m">
                       <ref role="3VsUkX" to="z1c3:~MPSProject" resolve="MPSProject" />
                     </node>
@@ -1184,7 +1184,7 @@
                   <ref role="3cqZAo" node="1AxNPWQA1T" resolve="state" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQA22" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:#Element.clone():org.jdom.Element" resolve="clone" />
+                  <ref role="37wK5l" to="mmaq:~Element.clone()" resolve="clone" />
                 </node>
               </node>
               <node concept="3uibUv" id="1AxNPWQA23" role="10QFUM">
@@ -1219,7 +1219,7 @@
                   <ref role="3cqZAo" node="1AxNPWQA0P" resolve="myProject" />
                 </node>
                 <node concept="liA8E" id="1AxNPWQA2h" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                   <node concept="3VsKOn" id="1AxNPWQA2i" role="37wK5m">
                     <ref role="3VsUkX" to="z1c3:~MPSProject" resolve="MPSProject" />
                   </node>
@@ -1244,13 +1244,13 @@
           <node concept="2OqwBi" id="1AxNPWQA2o" role="3clFbG">
             <node concept="2YIFZM" id="1AxNPWQA2p" role="2Oq$k0">
               <ref role="1Pybhc" to="v27p:~StartupManager" resolve="StartupManager" />
-              <ref role="37wK5l" to="v27p:#StartupManager.getInstance(com.intellij.openapi.project.Project):com.intellij.openapi.startup.StartupManager" resolve="getInstance" />
+              <ref role="37wK5l" to="v27p:~StartupManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
               <node concept="37vLTw" id="2BHiRxeukoA" role="37wK5m">
                 <ref role="3cqZAo" node="1AxNPWQA0P" resolve="myProject" />
               </node>
             </node>
             <node concept="liA8E" id="1AxNPWQA2r" role="2OqNvi">
-              <ref role="37wK5l" to="v27p:#StartupManager.registerStartupActivity(java.lang.Runnable):void" resolve="registerStartupActivity" />
+              <ref role="37wK5l" to="v27p:~StartupManager.registerStartupActivity(java.lang.Runnable)" resolve="registerStartupActivity" />
               <node concept="2ShNRf" id="1AxNPWQA2s" role="37wK5m">
                 <node concept="YeOm9" id="1AxNPWQA2t" role="2ShVmc">
                   <node concept="1Y3b0j" id="1AxNPWQA2u" role="YeSDq">
@@ -1303,7 +1303,7 @@
                                   <ref role="3cqZAo" node="1AxNPWQA0P" resolve="myProject" />
                                 </node>
                                 <node concept="liA8E" id="1AxNPWQA33" role="2OqNvi">
-                                  <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                                   <node concept="3VsKOn" id="1AxNPWQA34" role="37wK5m">
                                     <ref role="3VsUkX" to="z1c3:~MPSProject" resolve="MPSProject" />
                                   </node>

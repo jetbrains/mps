@@ -841,7 +841,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="7RPG7RvAtAM" role="2OqNvi">
-                                          <ref role="37wK5l" to="mhbf:#SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty):java.lang.String" resolve="getProperty" />
+                                          <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty)" resolve="getProperty" />
                                           <node concept="355D3s" id="1Lb1CYjWaRi" role="37wK5m">
                                             <ref role="355D3t" to="kdzh:5D0zVz80y2D" resolve="BuildMpsAspect" />
                                             <ref role="355D3u" to="kdzh:6V3S4ekuLVH" resolve="generationMaxHeapSizeInMb" />

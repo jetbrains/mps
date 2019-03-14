@@ -1710,7 +1710,7 @@
                 <node concept="2OqwBi" id="5vhYBWF2kOr" role="10QFUP">
                   <node concept="369mXd" id="5vhYBWF2kOs" role="2Oq$k0" />
                   <node concept="liA8E" id="5vhYBWF2kOt" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:#EditorComponent.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell()" resolve="getSelectedCell" />
                   </node>
                 </node>
                 <node concept="3uibUv" id="5vhYBWF2kOu" role="10QFUM">
@@ -1719,11 +1719,11 @@
               </node>
             </node>
             <node concept="liA8E" id="5vhYBWF2lCH" role="2OqNvi">
-              <ref role="37wK5l" to="g51k:#EditorCell_Label.getRenderedTextLine():jetbrains.mps.nodeEditor.cells.TextLine" resolve="getRenderedTextLine" />
+              <ref role="37wK5l" to="g51k:~EditorCell_Label.getRenderedTextLine()" resolve="getRenderedTextLine" />
             </node>
           </node>
           <node concept="liA8E" id="5vhYBWF2lRZ" role="2OqNvi">
-            <ref role="37wK5l" to="g51k:#TextLine.isUnderlined():boolean" resolve="isUnderlined" />
+            <ref role="37wK5l" to="g51k:~TextLine.isUnderlined()" resolve="isUnderlined" />
           </node>
         </node>
       </node>

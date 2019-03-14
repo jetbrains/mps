@@ -784,7 +784,7 @@
       <node concept="3clFbS" id="3yX4vo2bXxW" role="2VODD2">
         <node concept="3clFbF" id="3yX4vo2nHa7" role="3cqZAp">
           <node concept="2YIFZM" id="3yX4vo2cGb2" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+            <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="2OqwBi" id="3yX4vo2c4a5" role="37wK5m">
               <node concept="jzRn0" id="3yX4vo2c2Rs" role="2Oq$k0" />
@@ -843,7 +843,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3yX4vo2odeQ" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:#SNode.getPresentation():java.lang.String" resolve="getPresentation" />
+                  <ref role="37wK5l" to="mhbf:~SNode.getPresentation()" resolve="getPresentation" />
                 </node>
               </node>
             </node>
@@ -868,7 +868,7 @@
             <node concept="2OqwBi" id="3yX4vo2fvZl" role="33vP2m">
               <node concept="1Q80Hx" id="3yX4vo2fvZm" role="2Oq$k0" />
               <node concept="liA8E" id="3yX4vo2fvZn" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:#EditorContext.getSelectedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSelectedNode" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNode()" resolve="getSelectedNode" />
               </node>
             </node>
           </node>
@@ -1828,7 +1828,7 @@
               <node concept="3cpWs6" id="1wEcoXjJky7" role="3cqZAp">
                 <node concept="2YIFZM" id="1wEcoXjJky8" role="3cqZAk">
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                  <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                  <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                 </node>
               </node>
             </node>
@@ -1980,7 +1980,7 @@
               <node concept="3cpWs6" id="1wEcoXjJk$W" role="3cqZAp">
                 <node concept="2YIFZM" id="1wEcoXjJk$X" role="3cqZAk">
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                  <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                  <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                 </node>
               </node>
             </node>

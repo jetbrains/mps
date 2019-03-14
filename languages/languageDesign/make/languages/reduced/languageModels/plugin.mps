@@ -218,11 +218,11 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="6csMYGQIk4g" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:#Project.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                    <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
                   </node>
                 </node>
                 <node concept="liA8E" id="7Ch2QCiG3ZU" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:#ModelAccess.runWriteAction(java.lang.Runnable):void" resolve="runWriteAction" />
+                  <ref role="37wK5l" to="lui2:~ModelAccess.runWriteAction(java.lang.Runnable)" resolve="runWriteAction" />
                   <node concept="1bVj0M" id="7Ch2QCiG3ZV" role="37wK5m">
                     <node concept="3clFbS" id="7Ch2QCiG3ZW" role="1bW5cS">
                       <node concept="2Gpval" id="4g8ToP4MVkD" role="3cqZAp">
@@ -285,7 +285,7 @@
                                                     <ref role="3cqZAo" node="7Ch2QCiG$$I" resolve="file" />
                                                   </node>
                                                   <node concept="liA8E" id="7Ch2QCiG$_c" role="2OqNvi">
-                                                    <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -308,7 +308,7 @@
                                                     <ref role="3cqZAo" node="7Ch2QCiG$$I" resolve="file" />
                                                   </node>
                                                   <node concept="liA8E" id="2sankzhgHu5" role="2OqNvi">
-                                                    <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -350,7 +350,7 @@
                                                     <ref role="3cqZAo" node="2sankzhd_Y_" resolve="file" />
                                                   </node>
                                                   <node concept="liA8E" id="2sankzhdA3S" role="2OqNvi">
-                                                    <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -373,7 +373,7 @@
                                                     <ref role="3cqZAo" node="2sankzhd_Y_" resolve="file" />
                                                   </node>
                                                   <node concept="liA8E" id="2sankzhgHOQ" role="2OqNvi">
-                                                    <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -415,7 +415,7 @@
                                                     <ref role="3cqZAo" node="5l6UMaRNkhk" resolve="file" />
                                                   </node>
                                                   <node concept="liA8E" id="5l6UMaRNkhR" role="2OqNvi">
-                                                    <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -438,7 +438,7 @@
                                                     <ref role="3cqZAo" node="5l6UMaRNkhk" resolve="file" />
                                                   </node>
                                                   <node concept="liA8E" id="2sankzhgHUo" role="2OqNvi">
-                                                    <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                                                   </node>
                                                 </node>
                                               </node>

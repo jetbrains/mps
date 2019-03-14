@@ -194,7 +194,7 @@
                   <ref role="3cqZAo" node="4WGKd_KBM4_" resolve="p" />
                 </node>
                 <node concept="liA8E" id="4WGKd_KBT4_" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:#SConceptFeature.getOwner():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getOwner" />
+                  <ref role="37wK5l" to="c17a:~SConceptFeature.getOwner()" resolve="getOwner" />
                 </node>
               </node>
             </node>
@@ -233,7 +233,7 @@
                   <ref role="3cqZAo" node="4WGKd_KFPAI" resolve="l" />
                 </node>
                 <node concept="liA8E" id="4WGKd_KFPAF" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:#SConceptFeature.getOwner():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getOwner" />
+                  <ref role="37wK5l" to="c17a:~SConceptFeature.getOwner()" resolve="getOwner" />
                 </node>
               </node>
             </node>
@@ -272,7 +272,7 @@
                   <ref role="3cqZAo" node="4WGKd_KFPC1" resolve="l" />
                 </node>
                 <node concept="liA8E" id="4WGKd_KFPBY" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:#SConceptFeature.getOwner():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getOwner" />
+                  <ref role="37wK5l" to="c17a:~SConceptFeature.getOwner()" resolve="getOwner" />
                 </node>
               </node>
             </node>
@@ -311,16 +311,16 @@
             <node concept="2OqwBi" id="4WGKd_KBIBs" role="33vP2m">
               <node concept="2YIFZM" id="4WGKd_KBIBt" role="2Oq$k0">
                 <ref role="1Pybhc" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
-                <ref role="37wK5l" to="vndm:#LanguageRegistry.getInstance():jetbrains.mps.smodel.language.LanguageRegistry" resolve="getInstance" />
+                <ref role="37wK5l" to="vndm:~LanguageRegistry.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="4WGKd_KBIBu" role="2OqNvi">
-                <ref role="37wK5l" to="vndm:#LanguageRegistry.getLanguage(org.jetbrains.mps.openapi.language.SLanguage):jetbrains.mps.smodel.language.LanguageRuntime" resolve="getLanguage" />
+                <ref role="37wK5l" to="vndm:~LanguageRegistry.getLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="getLanguage" />
                 <node concept="2OqwBi" id="4WGKd_KBPtw" role="37wK5m">
                   <node concept="37vLTw" id="4WGKd_KBPi_" role="2Oq$k0">
                     <ref role="3cqZAo" node="4WGKd_KBIBW" resolve="c" />
                   </node>
                   <node concept="liA8E" id="4WGKd_KBPKH" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:#SAbstractConcept.getLanguage():org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
+                    <ref role="37wK5l" to="c17a:~SAbstractConcept.getLanguage()" resolve="getLanguage" />
                   </node>
                 </node>
               </node>
@@ -334,7 +334,7 @@
                 <ref role="3cqZAo" node="4WGKd_KBIBq" resolve="runtime" />
               </node>
               <node concept="liA8E" id="4WGKd_KBIBH" role="2OqNvi">
-                <ref role="37wK5l" to="vndm:#LanguageRuntime.getAspect(java.lang.Class):jetbrains.mps.smodel.runtime.ILanguageAspect" resolve="getAspect" />
+                <ref role="37wK5l" to="vndm:~LanguageRuntime.getAspect(java.lang.Class)" resolve="getAspect" />
                 <node concept="3VsKOn" id="4WGKd_KBIBI" role="37wK5m">
                   <ref role="3VsUkX" node="16TciwZII5d" resolve="VCSAspectDescriptor" />
                 </node>

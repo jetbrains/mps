@@ -207,7 +207,7 @@
           <node concept="3clFbS" id="snlvQWgC4S" role="3clFbx">
             <node concept="3cpWs6" id="snlvQWgC4T" role="3cqZAp">
               <node concept="2YIFZM" id="5kVFkwb5BU8" role="3cqZAk">
-                <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
               </node>
             </node>
@@ -261,7 +261,7 @@
           <node concept="3clFbS" id="snlvQWgC5e" role="3clFbx">
             <node concept="3cpWs6" id="snlvQWgC5f" role="3cqZAp">
               <node concept="2YIFZM" id="5kVFkwb5C46" role="3cqZAk">
-                <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
               </node>
             </node>
@@ -364,7 +364,7 @@
           <node concept="3clFbS" id="3RmJrVJJZBM" role="3clFbx">
             <node concept="3cpWs6" id="3RmJrVJJZBN" role="3cqZAp">
               <node concept="2YIFZM" id="3RmJrVJJZBO" role="3cqZAk">
-                <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
               </node>
             </node>
@@ -418,7 +418,7 @@
           <node concept="3clFbS" id="3RmJrVJJZCa" role="3clFbx">
             <node concept="3cpWs6" id="3RmJrVJJZCb" role="3cqZAp">
               <node concept="2YIFZM" id="3RmJrVJJZCc" role="3cqZAk">
-                <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
               </node>
             </node>

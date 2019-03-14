@@ -855,7 +855,7 @@
               <node concept="2OqwBi" id="7PU0zk4Y9iF" role="3clFbG">
                 <node concept="1Q80Hx" id="7PU0zk4Y999" role="2Oq$k0" />
                 <node concept="liA8E" id="7PU0zk4Y9qC" role="2OqNvi">
-                  <ref role="37wK5l" to="cj4x:#EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
+                  <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode)" resolve="select" />
                   <node concept="2OqwBi" id="1iYfrXH0LjQ" role="37wK5m">
                     <node concept="2OqwBi" id="1iYfrXH0GOj" role="2Oq$k0">
                       <node concept="2OqwBi" id="7PU0zk4YaaM" role="2Oq$k0">
@@ -1042,7 +1042,7 @@
               <node concept="2OqwBi" id="6tIni_jSufW" role="3clFbG">
                 <node concept="1Q80Hx" id="6tIni_jSue$" role="2Oq$k0" />
                 <node concept="liA8E" id="6tIni_jSuiL" role="2OqNvi">
-                  <ref role="37wK5l" to="cj4x:#EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
+                  <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode)" resolve="select" />
                   <node concept="2OqwBi" id="6tIni_jSy5n" role="37wK5m">
                     <node concept="2OqwBi" id="6tIni_jSveW" role="2Oq$k0">
                       <node concept="2OqwBi" id="6tIni_jSukZ" role="2Oq$k0">

@@ -244,7 +244,7 @@
                 <ref role="3cqZAo" node="7_qPA17IYDP" resolve="m" />
               </node>
               <node concept="liA8E" id="7_qPA17J8Y_" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
+                <ref role="37wK5l" to="lui2:~SModule.getModels()" resolve="getModels" />
               </node>
             </node>
           </node>
@@ -307,17 +307,17 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="7_qPA17KbEF" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:#SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
+                        <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
                         <node concept="355D3s" id="7_qPA17KbEG" role="37wK5m">
                           <ref role="355D3t" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                           <ref role="355D3u" to="tpck:1avfQ4BzllH" resolve="propertyId" />
                         </node>
                         <node concept="2OqwBi" id="7_qPA17KbEH" role="37wK5m">
                           <node concept="liA8E" id="7_qPA17KbEQ" role="2OqNvi">
-                            <ref role="37wK5l" to="e8bb:#SPropertyId.serialize():java.lang.String" resolve="serialize" />
+                            <ref role="37wK5l" to="e8bb:~SPropertyId.serialize()" resolve="serialize" />
                           </node>
                           <node concept="2YIFZM" id="7bsIVfo62q2" role="2Oq$k0">
-                            <ref role="37wK5l" to="e8bb:#MetaIdHelper.getProperty(org.jetbrains.mps.openapi.language.SProperty):jetbrains.mps.smodel.adapter.ids.SPropertyId" resolve="getProperty" />
+                            <ref role="37wK5l" to="e8bb:~MetaIdHelper.getProperty(org.jetbrains.mps.openapi.language.SProperty)" resolve="getProperty" />
                             <ref role="1Pybhc" to="e8bb:~MetaIdHelper" resolve="MetaIdHelper" />
                             <node concept="2OqwBi" id="7_qPA17KbEM" role="37wK5m">
                               <node concept="37vLTw" id="7_qPA17KbEN" role="2Oq$k0">
@@ -401,14 +401,14 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="1avfQ4BFAoe" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:#SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):void" resolve="setProperty" />
+                        <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
                         <node concept="355D3s" id="1avfQ4BFAof" role="37wK5m">
                           <ref role="355D3t" to="tpck:2ULFgo8_XDh" resolve="LinkAttribute" />
                           <ref role="355D3u" to="tpck:1avfQ4B$JLs" resolve="linkId" />
                         </node>
                         <node concept="2OqwBi" id="7_qPA17K7ND" role="37wK5m">
                           <node concept="2YIFZM" id="3HmgCTBoERU" role="2Oq$k0">
-                            <ref role="37wK5l" to="e8bb:#MetaIdHelper.getAssociation(org.jetbrains.mps.openapi.language.SReferenceLink):jetbrains.mps.smodel.adapter.ids.SReferenceLinkId" resolve="getAssociation" />
+                            <ref role="37wK5l" to="e8bb:~MetaIdHelper.getAssociation(org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="getAssociation" />
                             <ref role="1Pybhc" to="e8bb:~MetaIdHelper" resolve="MetaIdHelper" />
                             <node concept="2OqwBi" id="3HmgCTBoERX" role="37wK5m">
                               <node concept="37vLTw" id="3HmgCTBoERY" role="2Oq$k0">
@@ -420,7 +420,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="7_qPA17K8fs" role="2OqNvi">
-                            <ref role="37wK5l" to="e8bb:#SReferenceLinkId.serialize():java.lang.String" resolve="serialize" />
+                            <ref role="37wK5l" to="e8bb:~SReferenceLinkId.serialize()" resolve="serialize" />
                           </node>
                         </node>
                       </node>

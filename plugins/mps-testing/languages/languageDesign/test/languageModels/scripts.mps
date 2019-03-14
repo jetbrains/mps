@@ -346,7 +346,7 @@
                   <ref role="3cqZAo" node="1CWvv8TgHDH" resolve="ourLastCheck" />
                 </node>
                 <node concept="liA8E" id="1CWvv8TgKrV" role="2OqNvi">
-                  <ref role="37wK5l" to="mpcv:#Reference.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="mpcv:~Reference.get()" resolve="get" />
                 </node>
               </node>
               <node concept="3clFbC" id="1CWvv8TgIIy" role="3K4Cdx">
@@ -410,7 +410,7 @@
                 </node>
                 <node concept="2YIFZM" id="1CWvv8TgVZ2" role="37vLTx">
                   <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-                  <ref role="37wK5l" to="wyt6:#System.currentTimeMillis():long" resolve="currentTimeMillis" />
+                  <ref role="37wK5l" to="wyt6:~System.currentTimeMillis()" resolve="currentTimeMillis" />
                 </node>
               </node>
             </node>
@@ -436,7 +436,7 @@
           <node concept="22lmx$" id="1CWvv8TgPpu" role="3clFbw">
             <node concept="3eOVzh" id="1CWvv8Th3mn" role="3uHU7w">
               <node concept="2YIFZM" id="1CWvv8Th4Ys" role="3uHU7w">
-                <ref role="37wK5l" to="wyt6:#System.currentTimeMillis():long" resolve="currentTimeMillis" />
+                <ref role="37wK5l" to="wyt6:~System.currentTimeMillis()" resolve="currentTimeMillis" />
                 <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
               </node>
               <node concept="3cpWs3" id="1CWvv8TgYlv" role="3uHU7B">
@@ -589,7 +589,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="525bmK9ujv9" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:#SModel.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                      <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
                     </node>
                   </node>
                 </node>
@@ -765,7 +765,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6s_qFz8GN5K" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:#ModelImports.addModelImport(org.jetbrains.mps.openapi.model.SModelReference):void" resolve="addModelImport" />
+              <ref role="37wK5l" to="w1kc:~ModelImports.addModelImport(org.jetbrains.mps.openapi.model.SModelReference)" resolve="addModelImport" />
               <node concept="37vLTw" id="6s_qFz8GN7Z" role="37wK5m">
                 <ref role="3cqZAo" node="6KNTF2XLQcF" resolve="ruleModelRef" />
               </node>

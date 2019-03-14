@@ -86,7 +86,7 @@
               <ref role="3cqZAo" node="3klDZpbs381" resolve="date" />
             </node>
             <node concept="liA8E" id="3klDZpbsfkh" role="2OqNvi">
-              <ref role="37wK5l" to="28m1:#LocalDate.plus(long,java.time.temporal.TemporalUnit):java.time.LocalDate" resolve="plus" />
+              <ref role="37wK5l" to="28m1:~LocalDate.plus(long,java.time.temporal.TemporalUnit)" resolve="plus" />
               <node concept="37vLTw" id="3klDZpbsj9p" role="37wK5m">
                 <ref role="3cqZAo" node="3klDZpbs38w" resolve="days" />
               </node>
@@ -129,11 +129,11 @@
                   <ref role="3cqZAo" node="5Z1N4vbDXtG" resolve="dateReference" />
                 </node>
                 <node concept="liA8E" id="4E9YLO0jkyY" role="2OqNvi">
-                  <ref role="37wK5l" to="vl5q:#Reference.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="vl5q:~Reference.get()" resolve="get" />
                 </node>
               </node>
               <node concept="liA8E" id="4E9YLO0jkyZ" role="2OqNvi">
-                <ref role="37wK5l" to="28m1:#LocalDate.plus(long,java.time.temporal.TemporalUnit):java.time.LocalDate" resolve="plus" />
+                <ref role="37wK5l" to="28m1:~LocalDate.plus(long,java.time.temporal.TemporalUnit)" resolve="plus" />
                 <node concept="37vLTw" id="4E9YLO0jkz0" role="37wK5m">
                   <ref role="3cqZAo" node="5Z1N4vbE3hh" resolve="days" />
                 </node>
@@ -151,7 +151,7 @@
               <ref role="3cqZAo" node="5Z1N4vbDXtG" resolve="dateReference" />
             </node>
             <node concept="liA8E" id="4E9YLO0jlzA" role="2OqNvi">
-              <ref role="37wK5l" to="vl5q:#Reference.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="vl5q:~Reference.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="4E9YLO0jlDn" role="37wK5m">
                 <ref role="3cqZAo" node="4E9YLO0jkyU" resolve="newValue" />
               </node>

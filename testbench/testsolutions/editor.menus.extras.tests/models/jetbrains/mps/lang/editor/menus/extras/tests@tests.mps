@@ -228,11 +228,11 @@
             <node concept="2OqwBi" id="5UD30_PR7sp" role="2Oq$k0">
               <node concept="369mXd" id="5UD30_PR7sq" role="2Oq$k0" />
               <node concept="liA8E" id="5UD30_PR7sr" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
               </node>
             </node>
             <node concept="liA8E" id="5UD30_PR7ss" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -269,12 +269,12 @@
                   <ref role="3uigEE" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
                 </node>
                 <node concept="2YIFZM" id="5UD30_PSail" role="33vP2m">
-                  <ref role="37wK5l" to="u59o:#DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String):jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext" resolve="createInitialContextForCell" />
+                  <ref role="37wK5l" to="u59o:~DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String)" resolve="createInitialContextForCell" />
                   <ref role="1Pybhc" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
                   <node concept="2OqwBi" id="5UD30_PSaim" role="37wK5m">
                     <node concept="369mXd" id="5UD30_PSain" role="2Oq$k0" />
                     <node concept="liA8E" id="5UD30_PSaio" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell()" resolve="getSelectedCell" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="5UD30_PSaip" role="37wK5m">
@@ -309,7 +309,7 @@
                   <ref role="3cqZAo" node="5UD30_PSais" resolve="item" />
                 </node>
                 <node concept="liA8E" id="5UD30_PSaVr" role="2OqNvi">
-                  <ref role="37wK5l" to="uddc:#ActionItem.canExecute(java.lang.String):boolean" resolve="canExecute" />
+                  <ref role="37wK5l" to="uddc:~ActionItem.canExecute(java.lang.String)" resolve="canExecute" />
                   <node concept="Xl_RD" id="5UD30_PSaVs" role="37wK5m">
                     <property role="Xl_RC" value="irrelevant pattern" />
                   </node>
@@ -346,11 +346,11 @@
             <node concept="2OqwBi" id="5UD30_PRpM3" role="2Oq$k0">
               <node concept="369mXd" id="5UD30_PRpM4" role="2Oq$k0" />
               <node concept="liA8E" id="5UD30_PRpM5" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
               </node>
             </node>
             <node concept="liA8E" id="5UD30_PRpM6" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -388,11 +388,11 @@
                 </node>
                 <node concept="2YIFZM" id="5UD30_PS65c" role="33vP2m">
                   <ref role="1Pybhc" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
-                  <ref role="37wK5l" to="u59o:#DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String):jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext" resolve="createInitialContextForCell" />
+                  <ref role="37wK5l" to="u59o:~DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String)" resolve="createInitialContextForCell" />
                   <node concept="2OqwBi" id="5UD30_PS65d" role="37wK5m">
                     <node concept="369mXd" id="5UD30_PS65e" role="2Oq$k0" />
                     <node concept="liA8E" id="5UD30_PS65f" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell()" resolve="getSelectedCell" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="5UD30_PS65g" role="37wK5m">
@@ -427,7 +427,7 @@
                   <ref role="3cqZAo" node="5UD30_PRpMl" resolve="item" />
                 </node>
                 <node concept="liA8E" id="5UD30_PRrKW" role="2OqNvi">
-                  <ref role="37wK5l" to="uddc:#ActionItem.canExecute(java.lang.String):boolean" resolve="canExecute" />
+                  <ref role="37wK5l" to="uddc:~ActionItem.canExecute(java.lang.String)" resolve="canExecute" />
                   <node concept="Xl_RD" id="5UD30_PRrKX" role="37wK5m">
                     <property role="Xl_RC" value="irrelevant pattern" />
                   </node>
@@ -462,7 +462,7 @@
                   <ref role="3cqZAo" node="5UD30_PS7q8" resolve="refactoringReference" />
                 </node>
                 <node concept="liA8E" id="5UD30_PS7$G" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:#SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SNode" resolve="resolve" />
+                  <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                   <node concept="37vLTw" id="5UD30_PS7$H" role="37wK5m">
                     <ref role="3cqZAo" node="5UD30_PS7pE" resolve="repository" />
                   </node>
@@ -529,7 +529,7 @@
                   <ref role="3cqZAo" node="5UD30_PTI2X" resolve="intentionReference" />
                 </node>
                 <node concept="liA8E" id="5UD30_PTJFF" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:#SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SNode" resolve="resolve" />
+                  <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                   <node concept="37vLTw" id="5UD30_PTJHZ" role="37wK5m">
                     <ref role="3cqZAo" node="5UD30_PTI28" resolve="repository" />
                   </node>
@@ -604,11 +604,11 @@
             <node concept="2OqwBi" id="5UD30_PTNlf" role="2Oq$k0">
               <node concept="369mXd" id="5UD30_PTNlg" role="2Oq$k0" />
               <node concept="liA8E" id="5UD30_PTNlh" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
               </node>
             </node>
             <node concept="liA8E" id="5UD30_PTNli" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -696,12 +696,12 @@
                   <ref role="3uigEE" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
                 </node>
                 <node concept="2YIFZM" id="5UD30_PTG0M" role="33vP2m">
-                  <ref role="37wK5l" to="u59o:#DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String):jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext" resolve="createInitialContextForCell" />
+                  <ref role="37wK5l" to="u59o:~DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String)" resolve="createInitialContextForCell" />
                   <ref role="1Pybhc" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
                   <node concept="2OqwBi" id="5UD30_PTG0N" role="37wK5m">
                     <node concept="369mXd" id="5UD30_PTG0O" role="2Oq$k0" />
                     <node concept="liA8E" id="5UD30_PTG0P" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell()" resolve="getSelectedCell" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="5UD30_PTG0Q" role="37wK5m">
@@ -725,7 +725,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5UD30_PTRBK" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                  <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                 </node>
               </node>
               <node concept="3cmrfG" id="5UD30_PTOSs" role="3tpDZB">
@@ -776,11 +776,11 @@
             <node concept="2OqwBi" id="7GARn1zME4X" role="2Oq$k0">
               <node concept="369mXd" id="7GARn1zME4Y" role="2Oq$k0" />
               <node concept="liA8E" id="7GARn1zME4Z" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
               </node>
             </node>
             <node concept="liA8E" id="7GARn1zME50" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -868,12 +868,12 @@
                   <ref role="3uigEE" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
                 </node>
                 <node concept="2YIFZM" id="7GARn1zME5x" role="33vP2m">
-                  <ref role="37wK5l" to="u59o:#DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String):jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext" resolve="createInitialContextForCell" />
+                  <ref role="37wK5l" to="u59o:~DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String)" resolve="createInitialContextForCell" />
                   <ref role="1Pybhc" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
                   <node concept="2OqwBi" id="7GARn1zME5y" role="37wK5m">
                     <node concept="369mXd" id="7GARn1zME5z" role="2Oq$k0" />
                     <node concept="liA8E" id="7GARn1zME5$" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell()" resolve="getSelectedCell" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="7GARn1zME5_" role="37wK5m">
@@ -897,7 +897,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="7GARn1zME5H" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                  <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                 </node>
               </node>
               <node concept="3cmrfG" id="7GARn1zMEwI" role="3tpDZB">
@@ -934,11 +934,11 @@
             <node concept="2OqwBi" id="7GARn1zOQqd" role="2Oq$k0">
               <node concept="369mXd" id="7GARn1zOQqe" role="2Oq$k0" />
               <node concept="liA8E" id="7GARn1zOQqf" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
               </node>
             </node>
             <node concept="liA8E" id="7GARn1zOQqg" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -975,7 +975,7 @@
                         <node concept="3clFbS" id="7GARn1zPxzc" role="3clF47">
                           <node concept="3clFbF" id="7GARn1zPxzg" role="3cqZAp">
                             <node concept="3nyPlj" id="7GARn1zPxzf" role="3clFbG">
-                              <ref role="37wK5l" to="qkt:#AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent):void" resolve="update" />
+                              <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
                               <node concept="37vLTw" id="7GARn1zPxze" role="37wK5m">
                                 <ref role="3cqZAo" node="7GARn1zPxz9" resolve="e" />
                               </node>
@@ -988,11 +988,11 @@
                                   <ref role="3cqZAo" node="7GARn1zPxz9" resolve="e" />
                                 </node>
                                 <node concept="liA8E" id="7GARn1zPyXd" role="2OqNvi">
-                                  <ref role="37wK5l" to="qkt:#AnActionEvent.getPresentation():com.intellij.openapi.actionSystem.Presentation" resolve="getPresentation" />
+                                  <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
                                 </node>
                               </node>
                               <node concept="liA8E" id="7GARn1zPzrK" role="2OqNvi">
-                                <ref role="37wK5l" to="qkt:#Presentation.setEnabled(boolean):void" resolve="setEnabled" />
+                                <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
                                 <node concept="3clFbT" id="7GARn1zPzsX" role="37wK5m">
                                   <property role="3clFbU" value="false" />
                                 </node>
@@ -1034,11 +1034,11 @@
                 </node>
                 <node concept="2YIFZM" id="7GARn1zOQqv" role="33vP2m">
                   <ref role="1Pybhc" to="u59o:~DefaultTransformationMenuContext" resolve="DefaultTransformationMenuContext" />
-                  <ref role="37wK5l" to="u59o:#DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String):jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext" resolve="createInitialContextForCell" />
+                  <ref role="37wK5l" to="u59o:~DefaultTransformationMenuContext.createInitialContextForCell(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.String)" resolve="createInitialContextForCell" />
                   <node concept="2OqwBi" id="7GARn1zOQqw" role="37wK5m">
                     <node concept="369mXd" id="7GARn1zOQqx" role="2Oq$k0" />
                     <node concept="liA8E" id="7GARn1zOQqy" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell()" resolve="getSelectedCell" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="7GARn1zOQqz" role="37wK5m">
@@ -1073,7 +1073,7 @@
                   <ref role="3cqZAo" node="7GARn1zOQqA" resolve="item" />
                 </node>
                 <node concept="liA8E" id="7GARn1zOQqJ" role="2OqNvi">
-                  <ref role="37wK5l" to="uddc:#ActionItem.canExecute(java.lang.String):boolean" resolve="canExecute" />
+                  <ref role="37wK5l" to="uddc:~ActionItem.canExecute(java.lang.String)" resolve="canExecute" />
                   <node concept="Xl_RD" id="7GARn1zOQqK" role="37wK5m">
                     <property role="Xl_RC" value="irrelevant pattern" />
                   </node>

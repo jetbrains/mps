@@ -287,7 +287,7 @@
         </node>
         <node concept="3clFbF" id="_Qgg$$utwM" role="3cqZAp">
           <node concept="1rXfSq" id="_Qgg$$utwN" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:#DialogWrapper.setTitle(java.lang.String):void" resolve="setTitle" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
             <node concept="Xl_RD" id="_Qgg$$utwO" role="37wK5m">
               <property role="Xl_RC" value="Choose Node" />
             </node>
@@ -301,7 +301,7 @@
             </node>
             <node concept="2YIFZM" id="3m2egpBGj2b" role="37vLTx">
               <ref role="1Pybhc" to="cuxm:~MpsPopupFactory" resolve="MpsPopupFactory" />
-              <ref role="37wK5l" to="cuxm:#MpsPopupFactory.createPanelForNode(com.intellij.openapi.project.Project,com.intellij.ide.util.gotoByName.ChooseByNameModel,boolean):jetbrains.mps.workbench.goTo.ui.ChooseByNamePanel" resolve="createPanelForNode" />
+              <ref role="37wK5l" to="cuxm:~MpsPopupFactory.createPanelForNode(com.intellij.openapi.project.Project,com.intellij.ide.util.gotoByName.ChooseByNameModel,boolean)" resolve="createPanelForNode" />
               <node concept="37vLTw" id="3m2egpBGj2c" role="37wK5m">
                 <ref role="3cqZAo" node="_Qgg$$utwB" resolve="project" />
               </node>
@@ -320,7 +320,7 @@
               <ref role="3cqZAo" node="m2MuEX6ppL" resolve="myChooser" />
             </node>
             <node concept="liA8E" id="3m2egpBGj2i" role="2OqNvi">
-              <ref role="37wK5l" to="1l1f:#ChooseByNameBase.invoke(com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent$Callback,com.intellij.openapi.application.ModalityState,boolean):void" resolve="invoke" />
+              <ref role="37wK5l" to="1l1f:~ChooseByNameBase.invoke(com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent$Callback,com.intellij.openapi.application.ModalityState,boolean)" resolve="invoke" />
               <node concept="2ShNRf" id="3m2egpBGj2j" role="37wK5m">
                 <node concept="YeOm9" id="3m2egpBGj2k" role="2ShVmc">
                   <node concept="1Y3b0j" id="3m2egpBGj2l" role="YeSDq">
@@ -355,7 +355,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="1P_k_VEn0g0" role="37wK5m">
-                <ref role="37wK5l" to="bd8o:#ModalityState.any():com.intellij.openapi.application.ModalityState" resolve="any" />
+                <ref role="37wK5l" to="bd8o:~ModalityState.any()" resolve="any" />
                 <ref role="1Pybhc" to="bd8o:~ModalityState" resolve="ModalityState" />
               </node>
               <node concept="3clFbT" id="3m2egpBGj2H" role="37wK5m">
@@ -367,7 +367,7 @@
         <node concept="3clFbH" id="3m2egpBGj2I" role="3cqZAp" />
         <node concept="3clFbF" id="3m2egpBGj2J" role="3cqZAp">
           <node concept="1rXfSq" id="3m2egpBGj2K" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:#DialogWrapper.init():void" resolve="init" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.init()" resolve="init" />
           </node>
         </node>
       </node>
@@ -393,7 +393,7 @@
                 <ref role="3cqZAo" node="m2MuEX6ppL" resolve="myChooser" />
               </node>
               <node concept="liA8E" id="2QiWOxvvpQn" role="2OqNvi">
-                <ref role="37wK5l" to="1l1f:#ChooseByNameBase.getChosenElement():java.lang.Object" resolve="getChosenElement" />
+                <ref role="37wK5l" to="1l1f:~ChooseByNameBase.getChosenElement()" resolve="getChosenElement" />
               </node>
             </node>
           </node>
@@ -438,7 +438,7 @@
         <node concept="3clFbH" id="2QiWOxvvoES" role="3cqZAp" />
         <node concept="3clFbF" id="2QiWOxvvolC" role="3cqZAp">
           <node concept="3nyPlj" id="2QiWOxvvolB" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:#DialogWrapper.doOKAction():void" resolve="doOKAction" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.doOKAction()" resolve="doOKAction" />
           </node>
         </node>
       </node>
@@ -481,7 +481,7 @@
                       <ref role="37wK5l" to="yha4:~NodesPresentation.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="NodesPresentation" />
                       <node concept="2YIFZM" id="3m2egpBG1Q9" role="37wK5m">
                         <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                        <ref role="37wK5l" to="alof:#ProjectHelper.getProjectRepository(com.intellij.openapi.project.Project):org.jetbrains.mps.openapi.module.SRepository" resolve="getProjectRepository" />
+                        <ref role="37wK5l" to="alof:~ProjectHelper.getProjectRepository(com.intellij.openapi.project.Project)" resolve="getProjectRepository" />
                         <node concept="37vLTw" id="3m2egpBG1Qa" role="37wK5m">
                           <ref role="3cqZAo" node="m2MuEX6ocd" resolve="project" />
                         </node>
@@ -491,20 +491,20 @@
                 </node>
               </node>
               <node concept="liA8E" id="3m2egpBGnJ$" role="2OqNvi">
-                <ref role="37wK5l" to="yha4:#ChooseByNameData.derivePrompts(java.lang.String):jetbrains.mps.workbench.choose.ChooseByNameData" resolve="derivePrompts" />
+                <ref role="37wK5l" to="yha4:~ChooseByNameData.derivePrompts(java.lang.String)" resolve="derivePrompts" />
                 <node concept="Xl_RD" id="3m2egpBGocP" role="37wK5m">
                   <property role="Xl_RC" value="node" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="3m2egpBGqec" role="2OqNvi">
-              <ref role="37wK5l" to="yha4:#ChooseByNameData.setScope(java.lang.Iterable,java.lang.Iterable):jetbrains.mps.workbench.choose.ChooseByNameData" resolve="setScope" />
+              <ref role="37wK5l" to="yha4:~ChooseByNameData.setScope(java.lang.Iterable,java.lang.Iterable)" resolve="setScope" />
               <node concept="37vLTw" id="3m2egpBG5Gi" role="37wK5m">
                 <ref role="3cqZAo" node="m2MuEX6ocA" resolve="nodes" />
               </node>
               <node concept="2YIFZM" id="3m2egpBG7R3" role="37wK5m">
                 <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                <ref role="37wK5l" to="33ny:#Collections.emptySet():java.util.Set" resolve="emptySet" />
+                <ref role="37wK5l" to="33ny:~Collections.emptySet()" resolve="emptySet" />
                 <node concept="3uibUv" id="3m2egpBG8tF" role="3PaCim">
                   <ref role="3uigEE" to="mhbf:~SNodeReference" resolve="SNodeReference" />
                 </node>
@@ -585,11 +585,11 @@
                 <ref role="3cqZAo" node="m2MuEX6ppL" resolve="myChooser" />
               </node>
               <node concept="liA8E" id="30VS_eRpd$o" role="2OqNvi">
-                <ref role="37wK5l" to="1l1f:#ChooseByNamePanel.getPanel():javax.swing.JPanel" resolve="getPanel" />
+                <ref role="37wK5l" to="1l1f:~ChooseByNamePanel.getPanel()" resolve="getPanel" />
               </node>
             </node>
             <node concept="liA8E" id="30VS_eRpi0z" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:#JComponent.setPreferredSize(java.awt.Dimension):void" resolve="setPreferredSize" />
+              <ref role="37wK5l" to="dxuu:~JComponent.setPreferredSize(java.awt.Dimension)" resolve="setPreferredSize" />
               <node concept="2ShNRf" id="30VS_eRpi0_" role="37wK5m">
                 <node concept="1pGfFk" id="30VS_eRpi0D" role="2ShVmc">
                   <ref role="37wK5l" to="z60i:~Dimension.&lt;init&gt;(int,int)" resolve="Dimension" />
@@ -610,7 +610,7 @@
               <ref role="3cqZAo" node="m2MuEX6ppL" resolve="myChooser" />
             </node>
             <node concept="liA8E" id="$BWYFf6flT" role="2OqNvi">
-              <ref role="37wK5l" to="1l1f:#ChooseByNamePanel.getPanel():javax.swing.JPanel" resolve="getPanel" />
+              <ref role="37wK5l" to="1l1f:~ChooseByNamePanel.getPanel()" resolve="getPanel" />
             </node>
           </node>
         </node>
@@ -627,7 +627,7 @@
         <node concept="3clFbJ" id="L4W0vZ$xq6" role="3cqZAp">
           <node concept="3y3z36" id="L4W0vZ$xq7" role="3clFbw">
             <node concept="1rXfSq" id="4hiugqyzbZa" role="3uHU7B">
-              <ref role="37wK5l" to="jkm4:#DialogWrapper.getExitCode():int" resolve="getExitCode" />
+              <ref role="37wK5l" to="jkm4:~DialogWrapper.getExitCode()" resolve="getExitCode" />
             </node>
             <node concept="10M0yZ" id="L4W0vZ$xq8" role="3uHU7w">
               <ref role="1PxDUh" to="jkm4:~DialogWrapper" resolve="DialogWrapper" />
@@ -672,7 +672,7 @@
               <ref role="3cqZAo" node="m2MuEX6ppL" resolve="myChooser" />
             </node>
             <node concept="liA8E" id="29u3Sr2Sq2k" role="2OqNvi">
-              <ref role="37wK5l" to="1l1f:#ChooseByNamePanel.getPreferredFocusedComponent():javax.swing.JComponent" resolve="getPreferredFocusedComponent" />
+              <ref role="37wK5l" to="1l1f:~ChooseByNamePanel.getPreferredFocusedComponent()" resolve="getPreferredFocusedComponent" />
             </node>
           </node>
         </node>
@@ -790,7 +790,7 @@
               <ref role="3cqZAo" node="6IhgjCFSgf" resolve="myModel" />
             </node>
             <node concept="liA8E" id="6IhgjCFSgG" role="2OqNvi">
-              <ref role="37wK5l" to="f5fe:#TreeModel.getSorters():com.intellij.ide.util.treeView.smartTree.Sorter[]" resolve="getSorters" />
+              <ref role="37wK5l" to="f5fe:~TreeModel.getSorters()" resolve="getSorters" />
             </node>
           </node>
           <node concept="3cpWsn" id="6IhgjCFSgH" role="1Duv9x">
@@ -808,11 +808,11 @@
                     <ref role="3cqZAo" node="6IhgjCFSgH" resolve="sorter" />
                   </node>
                   <node concept="liA8E" id="6IhgjCFSgO" role="2OqNvi">
-                    <ref role="37wK5l" to="f5fe:#TreeAction.getName():java.lang.String" resolve="getName" />
+                    <ref role="37wK5l" to="f5fe:~TreeAction.getName()" resolve="getName" />
                   </node>
                 </node>
                 <node concept="liA8E" id="6IhgjCFSgP" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="37vLTw" id="2BHiRxgmP47" role="37wK5m">
                     <ref role="3cqZAo" node="6IhgjCFSgA" resolve="name" />
                   </node>
@@ -826,7 +826,7 @@
                         <ref role="3cqZAo" node="6IhgjCFSgH" resolve="sorter" />
                       </node>
                       <node concept="liA8E" id="6IhgjCFSgW" role="2OqNvi">
-                        <ref role="37wK5l" to="f5fe:#Sorter.isVisible():boolean" resolve="isVisible" />
+                        <ref role="37wK5l" to="f5fe:~Sorter.isVisible()" resolve="isVisible" />
                       </node>
                     </node>
                   </node>
@@ -861,11 +861,11 @@
                     <ref role="3cqZAo" node="6IhgjCFSh2" resolve="action" />
                   </node>
                   <node concept="liA8E" id="6IhgjCFSh9" role="2OqNvi">
-                    <ref role="37wK5l" to="f5fe:#TreeAction.getName():java.lang.String" resolve="getName" />
+                    <ref role="37wK5l" to="f5fe:~TreeAction.getName()" resolve="getName" />
                   </node>
                 </node>
                 <node concept="liA8E" id="6IhgjCFSha" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="37vLTw" id="2BHiRxglJTL" role="37wK5m">
                     <ref role="3cqZAo" node="6IhgjCFSgA" resolve="name" />
                   </node>
@@ -888,7 +888,7 @@
               <ref role="1PxDUh" to="f5fe:~Sorter" resolve="Sorter" />
             </node>
             <node concept="liA8E" id="6IhgjCFShi" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="37vLTw" id="2BHiRxgm6rZ" role="37wK5m">
                 <ref role="3cqZAo" node="6IhgjCFSgA" resolve="name" />
               </node>
@@ -931,7 +931,7 @@
                     <ref role="3cqZAo" node="6IhgjCFSg8" resolve="myActions" />
                   </node>
                   <node concept="liA8E" id="6IhgjCFShz" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Set.remove(java.lang.Object):boolean" resolve="remove" />
+                    <ref role="37wK5l" to="33ny:~Set.remove(java.lang.Object)" resolve="remove" />
                     <node concept="37vLTw" id="2BHiRxgm9hS" role="37wK5m">
                       <ref role="3cqZAo" node="6IhgjCFShn" resolve="filter" />
                     </node>
@@ -947,7 +947,7 @@
                   <ref role="3cqZAo" node="6IhgjCFSg8" resolve="myActions" />
                 </node>
                 <node concept="liA8E" id="6IhgjCFShD" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="2BHiRxglguM" role="37wK5m">
                     <ref role="3cqZAo" node="6IhgjCFShn" resolve="filter" />
                   </node>

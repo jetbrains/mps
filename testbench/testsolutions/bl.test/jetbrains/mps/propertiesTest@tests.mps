@@ -661,7 +661,7 @@
                       <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                     </node>
                     <node concept="liA8E" id="5TtLaVgAbgO" role="2OqNvi">
-                      <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
+                      <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
                       <node concept="3cpWs3" id="5TtLaVgZhFB" role="37wK5m">
                         <node concept="2OqwBi" id="5TtLaVgZhLs" role="3uHU7w">
                           <node concept="Xjq3P" id="5TtLaVgZhGh" role="2Oq$k0" />
@@ -704,7 +704,7 @@
                   <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="5TtLaVgAcJz" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:#PrintStream.println(java.lang.String):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
                   <node concept="3cpWs3" id="5TtLaVgZh1U" role="37wK5m">
                     <node concept="2OqwBi" id="5TtLaVgZh7p" role="3uHU7w">
                       <node concept="Xjq3P" id="5TtLaVgZh2w" role="2Oq$k0" />

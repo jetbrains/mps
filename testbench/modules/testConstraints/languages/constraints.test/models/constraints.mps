@@ -251,7 +251,7 @@
             <node concept="2OqwBi" id="Cy$byQ1eXO" role="3fr31v">
               <node concept="2DD5aU" id="Cy$byQ1eCW" role="2Oq$k0" />
               <node concept="liA8E" id="Cy$byQ1fv$" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                 <node concept="35c_gC" id="Cy$byQ1fBr" role="37wK5m">
                   <ref role="35c_gD" to="zibw:Cy$byQ19ex" resolve="TestConstraintsInvocation_Child" />
                 </node>
@@ -272,7 +272,7 @@
             <node concept="2OqwBi" id="Cy$byQ1eae" role="3fr31v">
               <node concept="2DD5aU" id="Cy$byQ1eaf" role="2Oq$k0" />
               <node concept="liA8E" id="Cy$byQ1eag" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Object.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                 <node concept="35c_gC" id="Cy$byQ1eah" role="37wK5m">
                   <ref role="35c_gD" to="zibw:Cy$byQ19ex" resolve="TestConstraintsInvocation_Child" />
                 </node>

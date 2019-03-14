@@ -401,7 +401,7 @@
                       <property role="3clFbU" value="false" />
                     </node>
                     <node concept="2YIFZM" id="5Vvmn_QkR1D" role="37wK5m">
-                      <ref role="37wK5l" to="pjrh:#MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                      <ref role="37wK5l" to="pjrh:~MetaAdapterByDeclaration.getConcept(org.jetbrains.mps.openapi.model.SNode)" resolve="getConcept" />
                       <ref role="1Pybhc" to="pjrh:~MetaAdapterByDeclaration" resolve="MetaAdapterByDeclaration" />
                       <node concept="2OqwBi" id="5Vvmn_QkR1E" role="37wK5m">
                         <node concept="2OqwBi" id="5Vvmn_QkR1F" role="2Oq$k0">

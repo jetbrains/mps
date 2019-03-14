@@ -285,7 +285,7 @@
                 <ref role="3cqZAo" node="4vqd2Vc83Yo" resolve="file" />
               </node>
               <node concept="liA8E" id="4vqd2Vc84yL" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
               </node>
             </node>
           </node>
@@ -331,7 +331,7 @@
               <ref role="3cqZAo" node="4vqd2Vc83YQ" resolve="path" />
             </node>
             <node concept="liA8E" id="4vqd2Vc83Z4" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+              <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
               <node concept="10M0yZ" id="4vqd2Vc83Zf" role="37wK5m">
                 <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
                 <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_LANGUAGE" resolve="DOT_LANGUAGE" />
@@ -368,7 +368,7 @@
                 <ref role="3cqZAo" node="4vqd2Vc83YQ" resolve="path" />
               </node>
               <node concept="liA8E" id="4vqd2Vc83Zl" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
                 <node concept="10M0yZ" id="4vqd2Vc83Zm" role="37wK5m">
                   <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
                   <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_SOLUTION" resolve="DOT_SOLUTION" />
@@ -394,7 +394,7 @@
                 <ref role="3cqZAo" node="4vqd2Vc83YQ" resolve="path" />
               </node>
               <node concept="liA8E" id="4vqd2Vc83Zs" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
                 <node concept="10M0yZ" id="4vqd2Vc83Zt" role="37wK5m">
                   <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
                   <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_DEVKIT" resolve="DOT_DEVKIT" />
@@ -539,7 +539,7 @@
                   <ref role="3cqZAo" node="6nRwuNsmkpA" resolve="moduleFile" />
                 </node>
                 <node concept="liA8E" id="3rjNyPdcMcr" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                  <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                 </node>
               </node>
             </node>
@@ -552,7 +552,7 @@
                 <node concept="1pGfFk" id="3rjNyPdeLo6" role="2ShVmc">
                   <ref role="37wK5l" node="7S9zv5RY34Y" resolve="DescriptorIOException" />
                   <node concept="2YIFZM" id="3rjNyPdeLxj" role="37wK5m">
-                    <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                    <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                     <node concept="Xl_RD" id="3rjNyPdeLx_" role="37wK5m">
                       <property role="Xl_RC" value="File %s is not a recognized module descriptor" />
@@ -648,7 +648,7 @@
                   <ref role="3cqZAo" node="3rjNyPdeOwR" resolve="file" />
                 </node>
                 <node concept="liA8E" id="3rjNyPdeQWp" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                  <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                 </node>
               </node>
             </node>
@@ -1026,7 +1026,7 @@
                 <ref role="3cqZAo" node="4lDG4W6tYj2" resolve="myMacroHelperSource" />
               </node>
               <node concept="liA8E" id="4B6g3jZE4gn" role="2OqNvi">
-                <ref role="37wK5l" to="18ew:#MacroHelper$Source.moduleFile(jetbrains.mps.vfs.IFile):jetbrains.mps.util.MacroHelper" resolve="moduleFile" />
+                <ref role="37wK5l" to="18ew:~MacroHelper$Source.moduleFile(jetbrains.mps.vfs.IFile)" resolve="moduleFile" />
                 <node concept="37vLTw" id="4B6g3jZE4j_" role="37wK5m">
                   <ref role="3cqZAo" node="4B6g3jZE1cy" resolve="file" />
                 </node>
@@ -1102,7 +1102,7 @@
                     <ref role="3uigEE" to="mmaq:~Document" resolve="Document" />
                   </node>
                   <node concept="2YIFZM" id="IMUMWuHR4r" role="33vP2m">
-                    <ref role="37wK5l" to="18ew:#JDOMUtil.loadDocument(jetbrains.mps.vfs.IFile):org.jdom.Document" resolve="loadDocument" />
+                    <ref role="37wK5l" to="18ew:~JDOMUtil.loadDocument(jetbrains.mps.vfs.IFile)" resolve="loadDocument" />
                     <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
                     <node concept="37vLTw" id="2BHiRxgmv3n" role="37wK5m">
                       <ref role="3cqZAo" node="uVnzTvUvj1" resolve="file" />
@@ -1118,7 +1118,7 @@
                   </node>
                   <node concept="2OqwBi" id="IMUMWuHR4w" role="33vP2m">
                     <node concept="liA8E" id="IMUMWuHR4x" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:#Document.getRootElement():org.jdom.Element" resolve="getRootElement" />
+                      <ref role="37wK5l" to="mmaq:~Document.getRootElement()" resolve="getRootElement" />
                     </node>
                     <node concept="37vLTw" id="3GM_nagTtPe" role="2Oq$k0">
                       <ref role="3cqZAo" node="IMUMWuHR4p" resolve="document" />
@@ -1283,7 +1283,7 @@
                       <ref role="3cqZAo" node="uVnzTvUvjb" resolve="file" />
                     </node>
                     <node concept="liA8E" id="5TArB5I1Q1w" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                      <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="8gPSbxcSxC" role="3uHU7B">
@@ -1298,7 +1298,7 @@
                 <ref role="3cqZAo" node="uVnzTvUvjb" resolve="file" />
               </node>
               <node concept="liA8E" id="IMUMWuHR7y" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:#IFile.isReadOnly():boolean" resolve="isReadOnly" />
+                <ref role="37wK5l" to="3ju5:~IFile.isReadOnly()" resolve="isReadOnly" />
               </node>
             </node>
           </node>
@@ -1345,7 +1345,7 @@
               </node>
               <node concept="3clFbF" id="IMUMWuHR9Z" role="3cqZAp">
                 <node concept="2YIFZM" id="6Hfjuo1B_kx" role="3clFbG">
-                  <ref role="37wK5l" to="18ew:#JDOMUtil.writeDocument(org.jdom.Document,jetbrains.mps.vfs.IFile):void" resolve="writeDocument" />
+                  <ref role="37wK5l" to="18ew:~JDOMUtil.writeDocument(org.jdom.Document,jetbrains.mps.vfs.IFile)" resolve="writeDocument" />
                   <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
                   <node concept="2ShNRf" id="6Hfjuo1B_ky" role="37wK5m">
                     <node concept="1pGfFk" id="6Hfjuo1B_kz" role="2ShVmc">
@@ -1530,7 +1530,7 @@
                   </node>
                   <node concept="2YIFZM" id="IMUMWuHQEh" role="33vP2m">
                     <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
-                    <ref role="37wK5l" to="18ew:#JDOMUtil.loadDocument(jetbrains.mps.vfs.IFile):org.jdom.Document" resolve="loadDocument" />
+                    <ref role="37wK5l" to="18ew:~JDOMUtil.loadDocument(jetbrains.mps.vfs.IFile)" resolve="loadDocument" />
                     <node concept="37vLTw" id="2BHiRxglp5J" role="37wK5m">
                       <ref role="3cqZAo" node="uVnzTvU$ir" resolve="file" />
                     </node>
@@ -1548,7 +1548,7 @@
                       <ref role="3cqZAo" node="IMUMWuHQEf" resolve="document" />
                     </node>
                     <node concept="liA8E" id="IMUMWuHQEq" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:#Document.getRootElement():org.jdom.Element" resolve="getRootElement" />
+                      <ref role="37wK5l" to="mmaq:~Document.getRootElement()" resolve="getRootElement" />
                     </node>
                   </node>
                 </node>
@@ -1690,7 +1690,7 @@
                 <ref role="3cqZAo" node="IMUMWuHQE9" resolve="descriptor" />
               </node>
               <node concept="liA8E" id="33oJVYhlVqd" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:#LanguageDescriptor.getGenerators():java.util.List" resolve="getGenerators" />
+                <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getGenerators()" resolve="getGenerators" />
               </node>
             </node>
           </node>
@@ -1733,7 +1733,7 @@
                 <ref role="3cqZAo" node="uVnzTvU$i_" resolve="file" />
               </node>
               <node concept="liA8E" id="IMUMWuHQJe" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:#IFile.isReadOnly():boolean" resolve="isReadOnly" />
+                <ref role="37wK5l" to="3ju5:~IFile.isReadOnly()" resolve="isReadOnly" />
               </node>
             </node>
             <node concept="3clFbS" id="IMUMWuHQJf" role="3clFbx">
@@ -1745,7 +1745,7 @@
                       <ref role="3cqZAo" node="uVnzTvU$i_" resolve="file" />
                     </node>
                     <node concept="liA8E" id="5TArB5I1Q1u" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:#IFile.getPath():java.lang.String" resolve="getPath" />
+                      <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="6wmUrITx7XX" role="3uHU7B">
@@ -1815,7 +1815,7 @@
               <node concept="3clFbF" id="6PNr9t9OJ9o" role="3cqZAp">
                 <node concept="2YIFZM" id="6PNr9t9OJ9p" role="3clFbG">
                   <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
-                  <ref role="37wK5l" to="18ew:#JDOMUtil.writeDocument(org.jdom.Document,jetbrains.mps.vfs.IFile):void" resolve="writeDocument" />
+                  <ref role="37wK5l" to="18ew:~JDOMUtil.writeDocument(org.jdom.Document,jetbrains.mps.vfs.IFile)" resolve="writeDocument" />
                   <node concept="37vLTw" id="6PNr9t9OJ9q" role="37wK5m">
                     <ref role="3cqZAo" node="6PNr9t9OJ9a" resolve="doc" />
                   </node>
@@ -1983,7 +1983,7 @@
                     <ref role="3uigEE" to="mmaq:~Document" resolve="Document" />
                   </node>
                   <node concept="2YIFZM" id="33oJVYhmrK_" role="33vP2m">
-                    <ref role="37wK5l" to="18ew:#JDOMUtil.loadDocument(jetbrains.mps.vfs.IFile):org.jdom.Document" resolve="loadDocument" />
+                    <ref role="37wK5l" to="18ew:~JDOMUtil.loadDocument(jetbrains.mps.vfs.IFile)" resolve="loadDocument" />
                     <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
                     <node concept="37vLTw" id="33oJVYhmrKA" role="37wK5m">
                       <ref role="3cqZAo" node="uVnzTvU$ra" resolve="file" />
@@ -2006,7 +2006,7 @@
                           <ref role="3cqZAo" node="33oJVYhmrKz" resolve="document" />
                         </node>
                         <node concept="liA8E" id="33oJVYhmC4Q" role="2OqNvi">
-                          <ref role="37wK5l" to="mmaq:#Document.getRootElement():org.jdom.Element" resolve="getRootElement" />
+                          <ref role="37wK5l" to="mmaq:~Document.getRootElement()" resolve="getRootElement" />
                         </node>
                       </node>
                     </node>
@@ -2161,7 +2161,7 @@
               </node>
               <node concept="3clFbF" id="IMUMWuHQvb" role="3cqZAp">
                 <node concept="2YIFZM" id="6Hfjuo1Bsdz" role="3clFbG">
-                  <ref role="37wK5l" to="18ew:#JDOMUtil.writeDocument(org.jdom.Document,jetbrains.mps.vfs.IFile):void" resolve="writeDocument" />
+                  <ref role="37wK5l" to="18ew:~JDOMUtil.writeDocument(org.jdom.Document,jetbrains.mps.vfs.IFile)" resolve="writeDocument" />
                   <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
                   <node concept="2ShNRf" id="6Hfjuo1Bsd$" role="37wK5m">
                     <node concept="1pGfFk" id="6Hfjuo1Bsd_" role="2ShVmc">

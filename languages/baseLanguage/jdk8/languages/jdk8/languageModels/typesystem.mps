@@ -221,7 +221,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6wTaD3Fq6J0" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
             </node>
           </node>
         </node>
@@ -232,7 +232,7 @@
             <ref role="3cqZAo" node="6wTaD3Fq3ok" resolve="project" />
           </node>
           <node concept="2YIFZM" id="2tVhVboYx1K" role="37vLTx">
-            <ref role="37wK5l" to="z1c3:#SModuleOperations.getProjectForModule(org.jetbrains.mps.openapi.module.SModule):jetbrains.mps.project.Project" resolve="getProjectForModule" />
+            <ref role="37wK5l" to="z1c3:~SModuleOperations.getProjectForModule(org.jetbrains.mps.openapi.module.SModule)" resolve="getProjectForModule" />
             <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
             <node concept="37vLTw" id="2tVhVboYxjT" role="37wK5m">
               <ref role="3cqZAo" node="6wTaD3Fq6IU" resolve="module" />
@@ -261,17 +261,17 @@
             <node concept="2OqwBi" id="6wTaD3FwK7y" role="2Oq$k0">
               <node concept="2YIFZM" id="6wTaD3FwK7z" role="2Oq$k0">
                 <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
-                <ref role="37wK5l" to="l46t:#JavaCompilerOptionsComponent.getInstance():jetbrains.mps.compiler.JavaCompilerOptionsComponent" resolve="getInstance" />
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="6wTaD3FwK7$" role="2OqNvi">
-                <ref role="37wK5l" to="l46t:#JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project):jetbrains.mps.compiler.JavaCompilerOptions" resolve="getJavaCompilerOptions" />
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
                 <node concept="37vLTw" id="6wTaD3FwK7_" role="37wK5m">
                   <ref role="3cqZAo" node="6wTaD3Fq3ok" resolve="project" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="6wTaD3FwK7A" role="2OqNvi">
-              <ref role="37wK5l" to="l46t:#JavaCompilerOptions.getTargetJavaVersion():jetbrains.mps.compiler.JavaCompilerOptionsComponent$JavaVersion" resolve="getTargetJavaVersion" />
+              <ref role="37wK5l" to="l46t:~JavaCompilerOptions.getTargetJavaVersion()" resolve="getTargetJavaVersion" />
             </node>
           </node>
         </node>
@@ -291,7 +291,7 @@
                   <ref role="3cqZAo" node="6wTaD3FwK7w" resolve="sourceJavaVersion" />
                 </node>
                 <node concept="liA8E" id="2_KFgtF86KI" role="2OqNvi">
-                  <ref role="37wK5l" to="l46t:#JavaCompilerOptionsComponent$JavaVersion.getCompilerVersion():java.lang.String" resolve="getCompilerVersion" />
+                  <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.getCompilerVersion()" resolve="getCompilerVersion" />
                 </node>
               </node>
             </node>
@@ -306,7 +306,7 @@
               <ref role="3cqZAo" node="6wTaD3FwK7w" resolve="sourceJavaVersion" />
             </node>
             <node concept="liA8E" id="6wTaD3FqfWX" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Enum.compareTo(java.lang.Enum):int" resolve="compareTo" />
+              <ref role="37wK5l" to="wyt6:~Enum.compareTo(java.lang.Enum)" resolve="compareTo" />
               <node concept="Rm8GO" id="6wTaD3FwPLU" role="37wK5m">
                 <ref role="Rm8GQ" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.VERSION_1_8" resolve="VERSION_1_8" />
                 <ref role="1Px2BO" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
@@ -627,7 +627,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6fye98S_6a1" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
             </node>
           </node>
         </node>
@@ -639,7 +639,7 @@
           </node>
           <node concept="2YIFZM" id="6fye98S_6a5" role="37vLTx">
             <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
-            <ref role="37wK5l" to="z1c3:#SModuleOperations.getProjectForModule(org.jetbrains.mps.openapi.module.SModule):jetbrains.mps.project.Project" resolve="getProjectForModule" />
+            <ref role="37wK5l" to="z1c3:~SModuleOperations.getProjectForModule(org.jetbrains.mps.openapi.module.SModule)" resolve="getProjectForModule" />
             <node concept="37vLTw" id="6fye98S_6a6" role="37wK5m">
               <ref role="3cqZAo" node="6fye98S_69U" resolve="module" />
             </node>
@@ -667,17 +667,17 @@
             <node concept="2OqwBi" id="6fye98S_6ah" role="2Oq$k0">
               <node concept="2YIFZM" id="6fye98S_6ai" role="2Oq$k0">
                 <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
-                <ref role="37wK5l" to="l46t:#JavaCompilerOptionsComponent.getInstance():jetbrains.mps.compiler.JavaCompilerOptionsComponent" resolve="getInstance" />
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="6fye98S_6aj" role="2OqNvi">
-                <ref role="37wK5l" to="l46t:#JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project):jetbrains.mps.compiler.JavaCompilerOptions" resolve="getJavaCompilerOptions" />
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
                 <node concept="37vLTw" id="6fye98S_6ak" role="37wK5m">
                   <ref role="3cqZAo" node="6fye98S_69R" resolve="project" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="6fye98S_6al" role="2OqNvi">
-              <ref role="37wK5l" to="l46t:#JavaCompilerOptions.getTargetJavaVersion():jetbrains.mps.compiler.JavaCompilerOptionsComponent$JavaVersion" resolve="getTargetJavaVersion" />
+              <ref role="37wK5l" to="l46t:~JavaCompilerOptions.getTargetJavaVersion()" resolve="getTargetJavaVersion" />
             </node>
           </node>
         </node>
@@ -697,7 +697,7 @@
                   <ref role="3cqZAo" node="6fye98S_6ae" resolve="sourceJavaVersion" />
                 </node>
                 <node concept="liA8E" id="6fye98S_6au" role="2OqNvi">
-                  <ref role="37wK5l" to="l46t:#JavaCompilerOptionsComponent$JavaVersion.getCompilerVersion():java.lang.String" resolve="getCompilerVersion" />
+                  <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.getCompilerVersion()" resolve="getCompilerVersion" />
                 </node>
               </node>
             </node>
@@ -712,7 +712,7 @@
               <ref role="3cqZAo" node="6fye98S_6ae" resolve="sourceJavaVersion" />
             </node>
             <node concept="liA8E" id="6fye98S_6az" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Enum.compareTo(java.lang.Enum):int" resolve="compareTo" />
+              <ref role="37wK5l" to="wyt6:~Enum.compareTo(java.lang.Enum)" resolve="compareTo" />
               <node concept="Rm8GO" id="6fye98S_6a$" role="37wK5m">
                 <ref role="1Px2BO" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
                 <ref role="Rm8GQ" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.VERSION_1_8" resolve="VERSION_1_8" />

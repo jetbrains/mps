@@ -395,7 +395,7 @@
               </node>
             </node>
             <node concept="liA8E" id="7B2vBh7fO$a" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Runnable.run():void" resolve="run" />
+              <ref role="37wK5l" to="wyt6:~Runnable.run()" resolve="run" />
             </node>
           </node>
         </node>
@@ -501,7 +501,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6oeD7bTtB6h" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -511,7 +511,7 @@
               <ref role="3cqZAo" node="6oeD7bTtBfD" resolve="action" />
             </node>
             <node concept="liA8E" id="7B2vBh7fhLH" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Runnable.run():void" resolve="run" />
+              <ref role="37wK5l" to="wyt6:~Runnable.run()" resolve="run" />
             </node>
           </node>
         </node>
@@ -567,7 +567,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3weXYUupfw1" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:#ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="3weXYUupfHo" role="37wK5m">
                   <ref role="3VsUkX" to="qgo0:1iC2RjkXjYJ" resolve="ConsoleTool" />
                 </node>
@@ -580,14 +580,14 @@
                   <node concept="3clFbF" id="2BT5gU6EdIX" role="3cqZAp">
                     <node concept="2YIFZM" id="2BT5gU6EdIY" role="3clFbG">
                       <ref role="1Pybhc" to="7bx7:~ActionUtils" resolve="ActionUtils" />
-                      <ref role="37wK5l" to="7bx7:#ActionUtils.updateAndPerformAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent):void" resolve="updateAndPerformAction" />
+                      <ref role="37wK5l" to="7bx7:~ActionUtils.updateAndPerformAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="updateAndPerformAction" />
                       <node concept="2OqwBi" id="2BT5gU6EdIZ" role="37wK5m">
                         <node concept="2YIFZM" id="2BT5gU6EdJ0" role="2Oq$k0">
                           <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
-                          <ref role="37wK5l" to="qkt:#ActionManager.getInstance():com.intellij.openapi.actionSystem.ActionManager" resolve="getInstance" />
+                          <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
                         </node>
                         <node concept="liA8E" id="2BT5gU6EdJ1" role="2OqNvi">
-                          <ref role="37wK5l" to="qkt:#ActionManager.getAction(java.lang.String):com.intellij.openapi.actionSystem.AnAction" resolve="getAction" />
+                          <ref role="37wK5l" to="qkt:~ActionManager.getAction(java.lang.String)" resolve="getAction" />
                           <node concept="10M0yZ" id="2BT5gU6EdJ2" role="37wK5m">
                             <ref role="1PxDUh" to="qkt:~IdeActions" resolve="IdeActions" />
                             <ref role="3cqZAo" to="qkt:~IdeActions.ACTION_PASTE" resolve="ACTION_PASTE" />
@@ -618,7 +618,7 @@
                   <ref role="3cqZAo" to="qkt:~PlatformDataKeys.PASTE_PROVIDER" resolve="PASTE_PROVIDER" />
                 </node>
                 <node concept="liA8E" id="4ASMi_2fuRs" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:#DataKey.getData(com.intellij.openapi.actionSystem.DataProvider):java.lang.Object" resolve="getData" />
+                  <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataProvider)" resolve="getData" />
                   <node concept="2OqwBi" id="4ASMi_2fv7N" role="37wK5m">
                     <node concept="2WthIp" id="4ASMi_2fv7Q" role="2Oq$k0" />
                     <node concept="1DTwFV" id="4ASMi_2fv7S" role="2OqNvi">
@@ -630,7 +630,7 @@
             </node>
             <node concept="3fqX7Q" id="1hGiwlkTU6u" role="3uHU7w">
               <node concept="2YIFZM" id="MlMxr8v9$N" role="3fr31v">
-                <ref role="37wK5l" to="3ahc:#ReadOnlyUtil.isCellOrSelectionReadOnlyInEditor(jetbrains.mps.openapi.editor.EditorComponent,jetbrains.mps.openapi.editor.cells.EditorCell):boolean" resolve="isCellOrSelectionReadOnlyInEditor" />
+                <ref role="37wK5l" to="3ahc:~ReadOnlyUtil.isCellOrSelectionReadOnlyInEditor(jetbrains.mps.openapi.editor.EditorComponent,jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="isCellOrSelectionReadOnlyInEditor" />
                 <ref role="1Pybhc" to="3ahc:~ReadOnlyUtil" resolve="ReadOnlyUtil" />
                 <node concept="2OqwBi" id="MlMxr8vagd" role="37wK5m">
                   <node concept="2WthIp" id="MlMxr8vagg" role="2Oq$k0" />

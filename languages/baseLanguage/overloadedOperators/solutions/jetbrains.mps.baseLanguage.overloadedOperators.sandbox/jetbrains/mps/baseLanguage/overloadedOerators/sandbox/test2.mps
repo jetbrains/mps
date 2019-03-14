@@ -124,7 +124,7 @@
               <ref role="3cqZAo" node="4fnbQpI7aia" resolve="str" />
             </node>
             <node concept="liA8E" id="4fnbQpI7air" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.concat(java.lang.String):java.lang.String" resolve="concat" />
+              <ref role="37wK5l" to="wyt6:~String.concat(java.lang.String)" resolve="concat" />
               <node concept="Xl_RD" id="4fnbQpI7ais" role="37wK5m">
                 <property role="Xl_RC" value="a" />
               </node>
@@ -137,7 +137,7 @@
               <ref role="3cqZAo" node="4fnbQpI7aia" resolve="str" />
             </node>
             <node concept="liA8E" id="4fnbQpI7ai$" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.concat(java.lang.String):java.lang.String" resolve="concat" />
+              <ref role="37wK5l" to="wyt6:~String.concat(java.lang.String)" resolve="concat" />
               <node concept="Xl_RD" id="4fnbQpI7ai_" role="37wK5m">
                 <property role="Xl_RC" value="b" />
               </node>

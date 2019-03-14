@@ -626,7 +626,7 @@
                 </node>
                 <node concept="2OqwBi" id="2uZW74tBdOr" role="3uHU7B">
                   <node concept="liA8E" id="2uZW74tBe7V" role="2OqNvi">
-                    <ref role="37wK5l" to="xlxw:#BigDecimal.compareTo(java.math.BigDecimal):int" resolve="compareTo" />
+                    <ref role="37wK5l" to="xlxw:~BigDecimal.compareTo(java.math.BigDecimal)" resolve="compareTo" />
                     <node concept="2OqwBi" id="2uZW74tBesh" role="37wK5m">
                       <node concept="iyuNs" id="2uZW74tBeAM" role="2OqNvi" />
                       <node concept="37vLTw" id="2uZW74tBeg4" role="2Oq$k0">
@@ -702,7 +702,7 @@
               <node concept="2d3UOw" id="2uZW74tHt0D" role="3K4Cdx">
                 <node concept="2OqwBi" id="2uZW74tHt0G" role="3uHU7B">
                   <node concept="liA8E" id="2uZW74tHt0H" role="2OqNvi">
-                    <ref role="37wK5l" to="xlxw:#BigDecimal.compareTo(java.math.BigDecimal):int" resolve="compareTo" />
+                    <ref role="37wK5l" to="xlxw:~BigDecimal.compareTo(java.math.BigDecimal)" resolve="compareTo" />
                     <node concept="2OqwBi" id="2uZW74tHt0I" role="37wK5m">
                       <node concept="iyuNs" id="2uZW74tHt0J" role="2OqNvi" />
                       <node concept="37vLTw" id="2uZW74tHt0K" role="2Oq$k0">
@@ -787,7 +787,7 @@
               <node concept="3eOVzh" id="2uZW74tHvj_" role="3K4Cdx">
                 <node concept="2OqwBi" id="2uZW74tHvjC" role="3uHU7B">
                   <node concept="liA8E" id="2uZW74tHvjD" role="2OqNvi">
-                    <ref role="37wK5l" to="xlxw:#BigDecimal.compareTo(java.math.BigDecimal):int" resolve="compareTo" />
+                    <ref role="37wK5l" to="xlxw:~BigDecimal.compareTo(java.math.BigDecimal)" resolve="compareTo" />
                     <node concept="2OqwBi" id="2uZW74tHvjE" role="37wK5m">
                       <node concept="iyuNs" id="2uZW74tHvjF" role="2OqNvi" />
                       <node concept="37vLTw" id="2uZW74tHvjG" role="2Oq$k0">
@@ -872,7 +872,7 @@
               <node concept="2dkUwp" id="2uZW74tHwdh" role="3K4Cdx">
                 <node concept="2OqwBi" id="2uZW74tHwdk" role="3uHU7B">
                   <node concept="liA8E" id="2uZW74tHwdl" role="2OqNvi">
-                    <ref role="37wK5l" to="xlxw:#BigDecimal.compareTo(java.math.BigDecimal):int" resolve="compareTo" />
+                    <ref role="37wK5l" to="xlxw:~BigDecimal.compareTo(java.math.BigDecimal)" resolve="compareTo" />
                     <node concept="2OqwBi" id="2uZW74tHwdm" role="37wK5m">
                       <node concept="iyuNs" id="2uZW74tHwdn" role="2OqNvi" />
                       <node concept="37vLTw" id="2uZW74tHwdo" role="2Oq$k0">

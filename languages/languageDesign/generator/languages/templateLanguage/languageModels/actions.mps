@@ -150,7 +150,7 @@
                   </node>
                   <node concept="1PxgMI" id="6ZLZOmPFOIO" role="33vP2m">
                     <node concept="2YIFZM" id="6ZLZOmPFOaB" role="1m5AlR">
-                      <ref role="37wK5l" to="80j5:#RuleUtil.getSourceNodeQuery(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.model.SNode" resolve="getSourceNodeQuery" />
+                      <ref role="37wK5l" to="80j5:~RuleUtil.getSourceNodeQuery(org.jetbrains.mps.openapi.model.SNode)" resolve="getSourceNodeQuery" />
                       <ref role="1Pybhc" to="80j5:~RuleUtil" resolve="RuleUtil" />
                       <node concept="1r4N5L" id="6ZLZOmPFOaD" role="37wK5m" />
                     </node>

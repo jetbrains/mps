@@ -150,7 +150,7 @@
                   <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
                 </node>
                 <node concept="liA8E" id="11WvlAiOhWa" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:#PrintStream.println(int):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
                   <node concept="2GrUjf" id="11WvlAiOhWf" role="37wK5m">
                     <ref role="2Gs0qQ" node="11WvlAiOhW3" resolve="it" />
                   </node>
@@ -174,7 +174,7 @@
                   <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
                 </node>
                 <node concept="liA8E" id="6V1k6Hk$tKG" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:#PrintStream.println(int):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
                   <node concept="2GrUjf" id="6V1k6Hk$tKK" role="37wK5m">
                     <ref role="2Gs0qQ" node="6V1k6Hk$txm" resolve="var" />
                   </node>

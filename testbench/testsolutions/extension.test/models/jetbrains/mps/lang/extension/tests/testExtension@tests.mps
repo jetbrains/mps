@@ -257,7 +257,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="66AaOfxlrbg" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:#ExtensionPoint.getExtensions():java.lang.Iterable" resolve="getExtensions" />
+                  <ref role="37wK5l" to="bmr5:~ExtensionPoint.getExtensions()" resolve="getExtensions" />
                 </node>
               </node>
             </node>
@@ -286,7 +286,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrba" resolve="extensions" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrdL" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#Iterable.iterator():java.util.Iterator" resolve="iterator" />
+                  <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
                 </node>
               </node>
             </node>
@@ -297,7 +297,7 @@
                 <ref role="3cqZAo" node="66AaOfxlrdF" resolve="it" />
               </node>
               <node concept="liA8E" id="66AaOfxlre8" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#Iterator.hasNext():boolean" resolve="hasNext" />
+                <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
               </node>
             </node>
           </node>
@@ -315,7 +315,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrdF" resolve="it" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrbV" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#Iterator.next():java.lang.Object" resolve="next" />
+                  <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                 </node>
               </node>
             </node>
@@ -330,7 +330,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrdF" resolve="it" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrdW" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#Iterator.next():java.lang.Object" resolve="next" />
+                  <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                 </node>
               </node>
             </node>
@@ -351,7 +351,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrbO" resolve="ext" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrce" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:#Extension.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="bmr5:~Extension.get()" resolve="get" />
                 </node>
               </node>
             </node>
@@ -434,7 +434,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="2hA_2dv2TY9" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:#ExtensionPoint.getExtensions():java.lang.Iterable" resolve="getExtensions" />
+                  <ref role="37wK5l" to="bmr5:~ExtensionPoint.getExtensions()" resolve="getExtensions" />
                 </node>
               </node>
             </node>
@@ -452,15 +452,15 @@
                       <ref role="3cqZAo" node="2hA_2dv2TY3" resolve="extensions" />
                     </node>
                     <node concept="liA8E" id="2hA_2dv2Upc" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Iterable.iterator():java.util.Iterator" resolve="iterator" />
+                      <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
                     </node>
                   </node>
                   <node concept="liA8E" id="2hA_2dv2Upd" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Iterator.next():java.lang.Object" resolve="next" />
+                    <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                   </node>
                 </node>
                 <node concept="liA8E" id="2hA_2dv2Upe" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:#Extension.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="bmr5:~Extension.get()" resolve="get" />
                 </node>
               </node>
             </node>
@@ -559,11 +559,11 @@
             <node concept="3clFbF" id="2hA_2dv2AwK" role="3cqZAp">
               <node concept="2OqwBi" id="2hA_2dv2G6T" role="3clFbG">
                 <node concept="2YIFZM" id="2hA_2dv2G6Q" role="2Oq$k0">
-                  <ref role="37wK5l" to="f061:#ApplicationManagerEx.getApplicationEx():com.intellij.openapi.application.ex.ApplicationEx" resolve="getApplicationEx" />
+                  <ref role="37wK5l" to="f061:~ApplicationManagerEx.getApplicationEx()" resolve="getApplicationEx" />
                   <ref role="1Pybhc" to="f061:~ApplicationManagerEx" resolve="ApplicationManagerEx" />
                 </node>
                 <node concept="liA8E" id="2hA_2dv2Ihi" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:#Application.addApplicationListener(com.intellij.openapi.application.ApplicationListener):void" resolve="addApplicationListener" />
+                  <ref role="37wK5l" to="bd8o:~Application.addApplicationListener(com.intellij.openapi.application.ApplicationListener)" resolve="addApplicationListener" />
                   <node concept="2ShNRf" id="2hA_2dv2Ihj" role="37wK5m">
                     <node concept="YeOm9" id="2hA_2dv2L1P" role="2ShVmc">
                       <node concept="1Y3b0j" id="2hA_2dv2L1Q" role="YeSDq">

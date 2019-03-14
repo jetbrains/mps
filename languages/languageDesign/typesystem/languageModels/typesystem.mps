@@ -3561,7 +3561,7 @@
                         <ref role="3cqZAo" node="1lzwuy2UDlf" resolve="name" />
                       </node>
                       <node concept="liA8E" id="ROe8AA5FmW" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:#String.equalsIgnoreCase(java.lang.String):boolean" resolve="equalsIgnoreCase" />
+                        <ref role="37wK5l" to="wyt6:~String.equalsIgnoreCase(java.lang.String)" resolve="equalsIgnoreCase" />
                         <node concept="2OqwBi" id="ROe8AA5FBf" role="37wK5m">
                           <node concept="37vLTw" id="ROe8AA5Ftc" role="2Oq$k0">
                             <ref role="3cqZAo" node="7k8A8aD934Q" resolve="it" />
@@ -3611,7 +3611,7 @@
               <node concept="3cpWs6" id="9OfcwEiKqU" role="3cqZAp" />
             </node>
             <node concept="2YIFZM" id="9OfcwEiJ4I" role="3clFbw">
-              <ref role="37wK5l" to="ggp6:#MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):boolean" resolve="matchNodes" />
+              <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
               <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
               <node concept="37vLTw" id="9OfcwEiJ4J" role="37wK5m">
                 <ref role="3cqZAo" node="9OfcwEiJ4L" resolve="arg" />
@@ -3806,7 +3806,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="9OfcwEiHaG" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:#MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):boolean" resolve="matchNodes" />
+                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
                 <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
                 <node concept="37vLTw" id="9OfcwEiHFG" role="37wK5m">
                   <ref role="3cqZAo" node="9OfcwEi$tK" resolve="arg" />
@@ -4027,7 +4027,7 @@
               </node>
             </node>
             <node concept="2YIFZM" id="6KWqjXlavN8" role="3clFbw">
-              <ref role="37wK5l" to="ggp6:#MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):boolean" resolve="matchNodes" />
+              <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
               <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
               <node concept="37vLTw" id="6KWqjXlavNs" role="37wK5m">
                 <ref role="3cqZAo" node="6KWqjXlahCW" resolve="arg" />
@@ -4088,7 +4088,7 @@
                 </node>
               </node>
               <node concept="2YIFZM" id="5tUET537XUk" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:#MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):boolean" resolve="matchNodes" />
+                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
                 <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
                 <node concept="37vLTw" id="5tUET537Z3O" role="37wK5m">
                   <ref role="3cqZAo" node="5tUET537S$4" resolve="arg" />

@@ -347,7 +347,7 @@
           <node concept="3clFbS" id="3oW7HLfqDrz" role="SfCbr">
             <node concept="3clFbF" id="3oW7HLfqDr$" role="3cqZAp">
               <node concept="1rXfSq" id="4hiugqyzeGO" role="3clFbG">
-                <ref role="37wK5l" to="hq8m:#SettingsEditor.applyTo(java.lang.Object):void" resolve="applyTo" />
+                <ref role="37wK5l" to="hq8m:~SettingsEditor.applyTo(java.lang.Object)" resolve="applyTo" />
                 <node concept="37vLTw" id="2BHiRxgmCMB" role="37wK5m">
                   <ref role="3cqZAo" node="3oW7HLfqDrv" resolve="settings" />
                 </node>
@@ -364,17 +364,17 @@
             <node concept="3clFbS" id="3oW7HLfqDrE" role="TDEfX">
               <node concept="3clFbF" id="3oW7HLfqDrF" role="3cqZAp">
                 <node concept="2YIFZM" id="3oW7HLfqDrG" role="3clFbG">
-                  <ref role="37wK5l" to="jkm4:#Messages.showErrorDialog(java.awt.Component,java.lang.String,java.lang.String):void" resolve="showErrorDialog" />
+                  <ref role="37wK5l" to="jkm4:~Messages.showErrorDialog(java.awt.Component,java.lang.String,java.lang.String)" resolve="showErrorDialog" />
                   <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
                   <node concept="1rXfSq" id="4hiugqyyYu7" role="37wK5m">
-                    <ref role="37wK5l" to="hq8m:#SettingsEditor.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                    <ref role="37wK5l" to="hq8m:~SettingsEditor.getComponent()" resolve="getComponent" />
                   </node>
                   <node concept="2OqwBi" id="3oW7HLfqDrI" role="37wK5m">
                     <node concept="37vLTw" id="3GM_nagTzph" role="2Oq$k0">
                       <ref role="3cqZAo" node="3oW7HLfqDrC" resolve="e" />
                     </node>
                     <node concept="liA8E" id="3oW7HLfqDrK" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Throwable.getMessage():java.lang.String" resolve="getMessage" />
+                      <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="3oW7HLfqDrL" role="37wK5m">
@@ -433,7 +433,7 @@
                 <ref role="3cqZAo" node="7j2UX07aLfC" resolve="action" />
               </node>
               <node concept="liA8E" id="7j2UX07aLiy" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:#Action.getValue(java.lang.String):java.lang.Object" resolve="getValue" />
+                <ref role="37wK5l" to="dxuu:~Action.getValue(java.lang.String)" resolve="getValue" />
                 <node concept="10M0yZ" id="7j2UX07aLiz" role="37wK5m">
                   <ref role="1PxDUh" to="dxuu:~Action" resolve="Action" />
                   <ref role="3cqZAo" to="dxuu:~Action.NAME" resolve="NAME" />
@@ -444,13 +444,13 @@
         </node>
         <node concept="3clFbF" id="5yIL7HqOd53" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyzk5f" role="3clFbG">
-            <ref role="37wK5l" to="dxuu:#AbstractAction.setEnabled(boolean):void" resolve="setEnabled" />
+            <ref role="37wK5l" to="dxuu:~AbstractAction.setEnabled(boolean)" resolve="setEnabled" />
             <node concept="2OqwBi" id="5yIL7HqOd56" role="37wK5m">
               <node concept="37vLTw" id="2BHiRxgmFcn" role="2Oq$k0">
                 <ref role="3cqZAo" node="7j2UX07aLfC" resolve="action" />
               </node>
               <node concept="liA8E" id="5yIL7HqOd5a" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:#Action.isEnabled():boolean" resolve="isEnabled" />
+                <ref role="37wK5l" to="dxuu:~Action.isEnabled()" resolve="isEnabled" />
               </node>
             </node>
           </node>
@@ -471,7 +471,7 @@
               <ref role="3cqZAo" node="7j2UX07aLfL" resolve="myAction" />
             </node>
             <node concept="liA8E" id="23GyebjhE4P" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:#Action.addPropertyChangeListener(java.beans.PropertyChangeListener):void" resolve="addPropertyChangeListener" />
+              <ref role="37wK5l" to="dxuu:~Action.addPropertyChangeListener(java.beans.PropertyChangeListener)" resolve="addPropertyChangeListener" />
               <node concept="2ShNRf" id="23GyebjhE4Q" role="37wK5m">
                 <node concept="YeOm9" id="23GyebjhE4S" role="2ShVmc">
                   <node concept="1Y3b0j" id="23GyebjhE4T" role="YeSDq">
@@ -493,13 +493,13 @@
                       <node concept="3clFbS" id="23GyebjhE50" role="3clF47">
                         <node concept="3clFbF" id="23GyebjhOBb" role="3cqZAp">
                           <node concept="1rXfSq" id="4hiugqyzeWt" role="3clFbG">
-                            <ref role="37wK5l" to="dxuu:#AbstractAction.putValue(java.lang.String,java.lang.Object):void" resolve="putValue" />
+                            <ref role="37wK5l" to="dxuu:~AbstractAction.putValue(java.lang.String,java.lang.Object)" resolve="putValue" />
                             <node concept="2OqwBi" id="23GyebjhOBe" role="37wK5m">
                               <node concept="37vLTw" id="2BHiRxgm8xx" role="2Oq$k0">
                                 <ref role="3cqZAo" node="23GyebjhE4Y" resolve="event" />
                               </node>
                               <node concept="liA8E" id="23GyebjhOBi" role="2OqNvi">
-                                <ref role="37wK5l" to="mnlj:#PropertyChangeEvent.getPropertyName():java.lang.String" resolve="getPropertyName" />
+                                <ref role="37wK5l" to="mnlj:~PropertyChangeEvent.getPropertyName()" resolve="getPropertyName" />
                               </node>
                             </node>
                             <node concept="2OqwBi" id="23GyebjhOBl" role="37wK5m">
@@ -507,7 +507,7 @@
                                 <ref role="3cqZAo" node="23GyebjhE4Y" resolve="event" />
                               </node>
                               <node concept="liA8E" id="23GyebjhOBp" role="2OqNvi">
-                                <ref role="37wK5l" to="mnlj:#PropertyChangeEvent.getNewValue():java.lang.Object" resolve="getNewValue" />
+                                <ref role="37wK5l" to="mnlj:~PropertyChangeEvent.getNewValue()" resolve="getNewValue" />
                               </node>
                             </node>
                           </node>
@@ -574,7 +574,7 @@
               <ref role="3cqZAo" node="7j2UX07aLfL" resolve="myAction" />
             </node>
             <node concept="liA8E" id="7j2UX07aLgw" role="2OqNvi">
-              <ref role="37wK5l" to="hyam:#ActionListener.actionPerformed(java.awt.event.ActionEvent):void" resolve="actionPerformed" />
+              <ref role="37wK5l" to="hyam:~ActionListener.actionPerformed(java.awt.event.ActionEvent)" resolve="actionPerformed" />
               <node concept="37vLTw" id="2BHiRxghgjc" role="37wK5m">
                 <ref role="3cqZAo" node="7j2UX07aLgn" resolve="event" />
               </node>

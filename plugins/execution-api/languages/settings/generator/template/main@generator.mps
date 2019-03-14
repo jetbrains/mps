@@ -1036,7 +1036,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2n8I3DYjww_" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                 <node concept="Xl_RD" id="2n8I3DYjwwA" role="37wK5m">
                   <property role="Xl_RC" value="label" />
                 </node>
@@ -1083,7 +1083,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1RNUzzI3xdB" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                 <node concept="Xl_RD" id="1RNUzzI3xdC" role="37wK5m">
                   <property role="Xl_RC" value="panel" />
                 </node>
@@ -1130,7 +1130,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1RNUzzI3xdV" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                 <node concept="Xl_RD" id="1RNUzzI3xdW" role="37wK5m">
                   <property role="Xl_RC" value="field" />
                 </node>
@@ -1354,7 +1354,7 @@
           </node>
           <node concept="2YIFZM" id="4nPCR7KFT_w" role="3clFbG">
             <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
-            <ref role="37wK5l" to="zn9m:#Disposer.dispose(com.intellij.openapi.Disposable):void" resolve="dispose" />
+            <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
             <node concept="37vLTw" id="2BHiRxeuzHk" role="37wK5m">
               <ref role="3cqZAo" node="4nPCR7KFT$e" resolve="myEditor" />
               <node concept="1ZhdrF" id="4nPCR7KFT_y" role="lGtFl">
@@ -1824,10 +1824,10 @@
               <ref role="3cqZAo" node="4nPCR7KFTE9" resolve="element" />
             </node>
             <node concept="liA8E" id="4nPCR7KFTEg" role="2OqNvi">
-              <ref role="37wK5l" to="mmaq:#Element.addContent(org.jdom.Element):org.jdom.Element" resolve="addContent" />
+              <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element)" resolve="addContent" />
               <node concept="2YIFZM" id="4nPCR7KFTEh" role="37wK5m">
                 <ref role="1Pybhc" to="mz8t:~XmlSerializer" resolve="XmlSerializer" />
-                <ref role="37wK5l" to="mz8t:#XmlSerializer.serialize(java.lang.Object):org.jdom.Element" resolve="serialize" />
+                <ref role="37wK5l" to="mz8t:~XmlSerializer.serialize(java.lang.Object)" resolve="serialize" />
                 <node concept="37vLTw" id="2BHiRxeumE1" role="37wK5m">
                   <ref role="3cqZAo" node="4nPCR7KFTGe" resolve="myState" />
                 </node>
@@ -1938,7 +1938,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4nPCR7KFTEH" role="2OqNvi">
-                  <ref role="37wK5l" to="zn9m:#JDOMExternalizable.writeExternal(org.jdom.Element):void" resolve="writeExternal" />
+                  <ref role="37wK5l" to="zn9m:~JDOMExternalizable.writeExternal(org.jdom.Element)" resolve="writeExternal" />
                   <node concept="37vLTw" id="3GM_nagTyp3" role="37wK5m">
                     <ref role="3cqZAo" node="4nPCR7KFTEm" resolve="fieldElement" />
                   </node>
@@ -1951,7 +1951,7 @@
                   <ref role="3cqZAo" node="4nPCR7KFTE9" resolve="element" />
                 </node>
                 <node concept="liA8E" id="4nPCR7KFTEM" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:#Element.addContent(org.jdom.Element):org.jdom.Element" resolve="addContent" />
+                  <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element)" resolve="addContent" />
                   <node concept="37vLTw" id="3GM_nagTzrF" role="37wK5m">
                     <ref role="3cqZAo" node="4nPCR7KFTEm" resolve="fieldElement" />
                   </node>
@@ -2046,7 +2046,7 @@
         <node concept="3clFbF" id="4nPCR7KFTFd" role="3cqZAp">
           <node concept="2YIFZM" id="4nPCR7KFTFe" role="3clFbG">
             <ref role="1Pybhc" to="mz8t:~XmlSerializer" resolve="XmlSerializer" />
-            <ref role="37wK5l" to="mz8t:#XmlSerializer.deserializeInto(java.lang.Object,org.jdom.Element):void" resolve="deserializeInto" />
+            <ref role="37wK5l" to="mz8t:~XmlSerializer.deserializeInto(java.lang.Object,org.jdom.Element)" resolve="deserializeInto" />
             <node concept="37vLTw" id="2BHiRxeul8k" role="37wK5m">
               <ref role="3cqZAo" node="4nPCR7KFTGe" resolve="myState" />
             </node>
@@ -2060,11 +2060,11 @@
                     <ref role="3cqZAo" node="4nPCR7KFTF9" resolve="element" />
                   </node>
                   <node concept="liA8E" id="4nPCR7KFTFl" role="2OqNvi">
-                    <ref role="37wK5l" to="mmaq:#Element.getChildren():java.util.List" resolve="getChildren" />
+                    <ref role="37wK5l" to="mmaq:~Element.getChildren()" resolve="getChildren" />
                   </node>
                 </node>
                 <node concept="liA8E" id="4nPCR7KFTFm" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                   <node concept="3cmrfG" id="4nPCR7KFTFn" role="37wK5m">
                     <property role="3cmrfH" value="0" />
                   </node>
@@ -2132,7 +2132,7 @@
                     <ref role="3cqZAo" node="4nPCR7KFTF9" resolve="element" />
                   </node>
                   <node concept="liA8E" id="4nPCR7KFTFv" role="2OqNvi">
-                    <ref role="37wK5l" to="mmaq:#Element.getChild(java.lang.String):org.jdom.Element" resolve="getChild" />
+                    <ref role="37wK5l" to="mmaq:~Element.getChild(java.lang.String)" resolve="getChild" />
                     <node concept="Xl_RD" id="4nPCR7KFTFw" role="37wK5m">
                       <property role="Xl_RC" value="myTemplate" />
                       <node concept="17Uvod" id="4nPCR7KFTFx" role="lGtFl">
@@ -2181,7 +2181,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="4nPCR7KFTFN" role="2OqNvi">
-                      <ref role="37wK5l" to="zn9m:#JDOMExternalizable.readExternal(org.jdom.Element):void" resolve="readExternal" />
+                      <ref role="37wK5l" to="zn9m:~JDOMExternalizable.readExternal(org.jdom.Element)" resolve="readExternal" />
                       <node concept="37vLTw" id="3GM_nagTAH0" role="37wK5m">
                         <ref role="3cqZAo" node="4nPCR7KFTFr" resolve="fieldElement" />
                       </node>
@@ -2205,11 +2205,11 @@
                           <node concept="2OqwBi" id="7UXbuwFw4B3" role="2Oq$k0">
                             <node concept="Xjq3P" id="7UXbuwFw4B2" role="2Oq$k0" />
                             <node concept="liA8E" id="7UXbuwFw4B_" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:#Object.getClass():java.lang.Class" resolve="getClass" />
+                              <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                             </node>
                           </node>
                           <node concept="liA8E" id="7UXbuwFw4CA" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:#Class.getName():java.lang.String" resolve="getName" />
+                            <ref role="37wK5l" to="wyt6:~Class.getName()" resolve="getName" />
                           </node>
                         </node>
                         <node concept="3cpWs3" id="7UXbuwFw4yb" role="3uHU7B">
@@ -2833,7 +2833,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4nPCR7KFTK7" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#Object.clone():java.lang.Object" resolve="clone" />
+                  <ref role="37wK5l" to="wyt6:~Object.clone()" resolve="clone" />
                 </node>
               </node>
               <node concept="3uibUv" id="4nPCR7KFTK8" role="10QFUM">
@@ -3072,7 +3072,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="4nPCR7KFTCs" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Object.clone():java.lang.Object" resolve="clone" />
+                      <ref role="37wK5l" to="wyt6:~Object.clone()" resolve="clone" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="4nPCR7KFTCt" role="37vLTJ">
@@ -5034,7 +5034,7 @@
             <ref role="3cqZAo" node="4nPCR7KFTVm" resolve="e" />
           </node>
           <node concept="liA8E" id="4nPCR7KFTVr" role="2OqNvi">
-            <ref role="37wK5l" to="hq8m:#SettingsEditor.applyTo(java.lang.Object):void" resolve="applyTo" />
+            <ref role="37wK5l" to="hq8m:~SettingsEditor.applyTo(java.lang.Object)" resolve="applyTo" />
             <node concept="raruj" id="4nPCR7KFTVs" role="lGtFl" />
             <node concept="10Nm6u" id="4nPCR7KFTVt" role="37wK5m">
               <node concept="2b32R4" id="4nPCR7KFTVu" role="lGtFl">

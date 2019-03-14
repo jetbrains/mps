@@ -1000,11 +1000,11 @@
         <node concept="3clFbF" id="6WBmrsjAkdU" role="3cqZAp">
           <node concept="2OqwBi" id="6WBmrsjAkun" role="3clFbG">
             <node concept="2YIFZM" id="6WBmrsjAkef" role="2Oq$k0">
-              <ref role="37wK5l" to="e5vs:#BuiltInServerManager.getInstance():org.jetbrains.ide.BuiltInServerManager" resolve="getInstance" />
+              <ref role="37wK5l" to="e5vs:~BuiltInServerManager.getInstance()" resolve="getInstance" />
               <ref role="1Pybhc" to="e5vs:~BuiltInServerManager" resolve="BuiltInServerManager" />
             </node>
             <node concept="liA8E" id="6WBmrsjAkHh" role="2OqNvi">
-              <ref role="37wK5l" to="e5vs:#BuiltInServerManager.getPort():int" resolve="getPort" />
+              <ref role="37wK5l" to="e5vs:~BuiltInServerManager.getPort()" resolve="getPort" />
             </node>
           </node>
         </node>

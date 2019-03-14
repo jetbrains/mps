@@ -739,7 +739,7 @@
                           <node concept="3fqX7Q" id="6u4p9jo9Fhs" role="3clFbG">
                             <node concept="2OqwBi" id="6u4p9jo9Fhu" role="3fr31v">
                               <node concept="liA8E" id="6u4p9jo9Fhv" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
                                 <node concept="Xl_RD" id="6u4p9jo9Fhw" role="37wK5m">
                                   <property role="Xl_RC" value=".jar" />
                                 </node>
@@ -1517,7 +1517,7 @@
                                         </node>
                                       </node>
                                       <node concept="liA8E" id="8knae4H70v" role="2OqNvi">
-                                        <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                                         <node concept="Xl_RD" id="8knae4H7U9" role="37wK5m">
                                           <property role="Xl_RC" value="mps.macro." />
                                         </node>

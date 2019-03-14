@@ -2071,7 +2071,7 @@
             <node concept="3clFbF" id="41K1b4v5FYc" role="3cqZAp">
               <node concept="2YIFZM" id="41K1b4v5FYf" role="3clFbG">
                 <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
-                <ref role="37wK5l" to="w1kc:#SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+                <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isGeneratorModel" />
                 <node concept="2OqwBi" id="41K1b4v5FY4" role="37wK5m">
                   <node concept="pncrf" id="41K1b4v5FXN" role="2Oq$k0" />
                   <node concept="I4A8Y" id="41K1b4v5FYa" role="2OqNvi" />
@@ -5467,7 +5467,7 @@
                     <ref role="3cqZAo" node="1wEcoXjJz6K" resolve="sourcesKind" />
                   </node>
                   <node concept="liA8E" id="1wEcoXjJz6W" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                     <node concept="3f7Wdw" id="1wEcoXjJz6X" role="37wK5m">
                       <ref role="3f7vo2" to="kdzh:eYcmk9QOkj" resolve="BuildMps_ModuleSourcesKind" />
                       <ref role="3f7u_j" to="kdzh:eYcmk9QOli" />

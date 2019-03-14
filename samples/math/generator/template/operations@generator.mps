@@ -1344,7 +1344,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="i09UV9J" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Comparable.compareTo(java.lang.Object):int" resolve="compareTo" />
+                <ref role="37wK5l" to="wyt6:~Comparable.compareTo(java.lang.Object)" resolve="compareTo" />
                 <node concept="37vLTw" id="3GM_nagTuSs" role="37wK5m">
                   <ref role="3cqZAo" node="i09I$Lf" resolve="p" />
                   <node concept="1ZhdrF" id="i09V_kN" role="lGtFl">
@@ -1392,7 +1392,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="i09V7s$" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:#Comparable.compareTo(java.lang.Object):int" resolve="compareTo" />
+                      <ref role="37wK5l" to="wyt6:~Comparable.compareTo(java.lang.Object)" resolve="compareTo" />
                       <node concept="37vLTw" id="3GM_nagTt8d" role="37wK5m">
                         <ref role="3cqZAo" node="i09I$Lf" resolve="p" />
                         <node concept="1ZhdrF" id="i09V_Z6" role="lGtFl">

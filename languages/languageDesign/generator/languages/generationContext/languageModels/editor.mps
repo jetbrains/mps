@@ -633,7 +633,7 @@
                     <ref role="3cqZAo" node="775sqVWOrO" resolve="pres" />
                   </node>
                   <node concept="liA8E" id="775sqVWOf$" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:#ConceptPresentation.isDeprecated():boolean" resolve="isDeprecated" />
+                    <ref role="37wK5l" to="ze1i:~ConceptPresentation.isDeprecated()" resolve="isDeprecated" />
                   </node>
                 </node>
               </node>

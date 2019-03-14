@@ -345,7 +345,7 @@
             <node concept="3clFbS" id="1wEcoXjJ55a" role="3clFbx">
               <node concept="3cpWs6" id="1wEcoXjJ55b" role="3cqZAp">
                 <node concept="2YIFZM" id="1wEcoXjJ55c" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+                  <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                 </node>
               </node>
@@ -429,7 +429,7 @@
                     <property role="Xl_RC" value="super method call^" />
                   </node>
                   <node concept="2YIFZM" id="1wEcoXjJ56B" role="3uHU7w">
-                    <ref role="37wK5l" to="5b0:#NodePresentationUtil.descriptionText(org.jetbrains.mps.openapi.model.SNode):java.lang.String" resolve="descriptionText" />
+                    <ref role="37wK5l" to="5b0:~NodePresentationUtil.descriptionText(org.jetbrains.mps.openapi.model.SNode)" resolve="descriptionText" />
                     <ref role="1Pybhc" to="5b0:~NodePresentationUtil" resolve="NodePresentationUtil" />
                     <node concept="2ZBlsa" id="1wEcoXjJ56D" role="37wK5m" />
                   </node>
@@ -494,7 +494,7 @@
                 <node concept="2OqwBi" id="7$vLFyJhaj$" role="3clFbG">
                   <node concept="1Q80Hx" id="7$vLFyJhadY" role="2Oq$k0" />
                   <node concept="liA8E" id="7$vLFyJhaVI" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:#EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                     <node concept="uqdCJ" id="7$vLFyJib7Q" role="37wK5m" />
                   </node>
                 </node>

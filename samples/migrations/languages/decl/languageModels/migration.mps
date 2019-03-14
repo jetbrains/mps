@@ -448,11 +448,11 @@
                                       </node>
                                     </node>
                                     <node concept="liA8E" id="5TUCQr2AreR" role="2OqNvi">
-                                      <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                                      <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="5TUCQr2AreS" role="2OqNvi">
-                                    <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                                    <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                                   </node>
                                 </node>
                               </node>
@@ -466,11 +466,11 @@
                                       </node>
                                     </node>
                                     <node concept="liA8E" id="5TUCQr2Asrp" role="2OqNvi">
-                                      <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                                      <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="5TUCQr2Asrq" role="2OqNvi">
-                                    <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                                    <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                                   </node>
                                 </node>
                               </node>

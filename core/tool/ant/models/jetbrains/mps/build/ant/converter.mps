@@ -263,7 +263,7 @@
         <node concept="3clFbF" id="2fW_UHbB4z8" role="3cqZAp">
           <node concept="2OqwBi" id="2fW_UHbB4$W" role="3clFbG">
             <node concept="liA8E" id="2fW_UHbB4HR" role="2OqNvi">
-              <ref role="37wK5l" to="qy5u:#GlobPatternMapper.setFrom(java.lang.String):void" resolve="setFrom" />
+              <ref role="37wK5l" to="qy5u:~GlobPatternMapper.setFrom(java.lang.String)" resolve="setFrom" />
               <node concept="Xl_RD" id="2fW_UHbB4IH" role="37wK5m">
                 <property role="Xl_RC" value="*.mps" />
               </node>
@@ -276,7 +276,7 @@
         <node concept="3clFbF" id="2fW_UHbB4KV" role="3cqZAp">
           <node concept="2OqwBi" id="2fW_UHbB4MJ" role="3clFbG">
             <node concept="liA8E" id="2fW_UHbB4Pa" role="2OqNvi">
-              <ref role="37wK5l" to="qy5u:#GlobPatternMapper.setTo(java.lang.String):void" resolve="setTo" />
+              <ref role="37wK5l" to="qy5u:~GlobPatternMapper.setTo(java.lang.String)" resolve="setTo" />
               <node concept="Xl_RD" id="2fW_UHbB4Qm" role="37wK5m">
                 <property role="Xl_RC" value="*.mpb" />
               </node>
@@ -289,7 +289,7 @@
         <node concept="3clFbF" id="6NgXkpAOAuM" role="3cqZAp">
           <node concept="2OqwBi" id="6NgXkpAOAwL" role="3clFbG">
             <node concept="liA8E" id="6NgXkpAOAzH" role="2OqNvi">
-              <ref role="37wK5l" to="qy5u:#ContainerMapper.add(org.apache.tools.ant.util.FileNameMapper):void" resolve="add" />
+              <ref role="37wK5l" to="qy5u:~ContainerMapper.add(org.apache.tools.ant.util.FileNameMapper)" resolve="add" />
               <node concept="37vLTw" id="6NgXkpAOACM" role="37wK5m">
                 <ref role="3cqZAo" node="2fW_UHbB3Pn" resolve="first" />
               </node>
@@ -302,7 +302,7 @@
         <node concept="3clFbF" id="6NgXkpAOAFG" role="3cqZAp">
           <node concept="2OqwBi" id="6NgXkpAOAHE" role="3clFbG">
             <node concept="liA8E" id="6NgXkpAOAKF" role="2OqNvi">
-              <ref role="37wK5l" to="qy5u:#ContainerMapper.add(org.apache.tools.ant.util.FileNameMapper):void" resolve="add" />
+              <ref role="37wK5l" to="qy5u:~ContainerMapper.add(org.apache.tools.ant.util.FileNameMapper)" resolve="add" />
               <node concept="2ShNRf" id="6NgXkpAOARw" role="37wK5m">
                 <node concept="1pGfFk" id="6NgXkpAODnw" role="2ShVmc">
                   <ref role="37wK5l" to="qy5u:~IdentityMapper.&lt;init&gt;()" resolve="IdentityMapper" />
@@ -316,7 +316,7 @@
         </node>
         <node concept="3clFbF" id="2fW_UHbB238" role="3cqZAp">
           <node concept="1rXfSq" id="2fW_UHbB237" role="3clFbG">
-            <ref role="37wK5l" to="kpdv:#Copy.add(org.apache.tools.ant.util.FileNameMapper):void" resolve="add" />
+            <ref role="37wK5l" to="kpdv:~Copy.add(org.apache.tools.ant.util.FileNameMapper)" resolve="add" />
             <node concept="37vLTw" id="6NgXkpAOApl" role="37wK5m">
               <ref role="3cqZAo" node="6NgXkpAO_XU" resolve="mapper" />
             </node>
@@ -447,7 +447,7 @@
               <ref role="3cqZAo" node="7Z_17SWWcxG" resolve="set" />
             </node>
             <node concept="liA8E" id="7Z_17SWWng1" role="2OqNvi">
-              <ref role="37wK5l" to="rg95:#AbstractFileSet.setErrorOnMissingDir(boolean):void" resolve="setErrorOnMissingDir" />
+              <ref role="37wK5l" to="rg95:~AbstractFileSet.setErrorOnMissingDir(boolean)" resolve="setErrorOnMissingDir" />
               <node concept="3clFbT" id="7Z_17SWWnhg" role="37wK5m">
                 <property role="3clFbU" value="false" />
               </node>
@@ -456,7 +456,7 @@
         </node>
         <node concept="3clFbF" id="7Z_17SWWcxM" role="3cqZAp">
           <node concept="3nyPlj" id="7Z_17SWWcxL" role="3clFbG">
-            <ref role="37wK5l" to="kpdv:#Copy.addFileset(org.apache.tools.ant.types.FileSet):void" resolve="addFileset" />
+            <ref role="37wK5l" to="kpdv:~Copy.addFileset(org.apache.tools.ant.types.FileSet)" resolve="addFileset" />
             <node concept="37vLTw" id="7Z_17SWWcxK" role="37wK5m">
               <ref role="3cqZAo" node="7Z_17SWWcxG" resolve="set" />
             </node>
@@ -480,7 +480,7 @@
       <node concept="3clFbS" id="6NgXkpAOE4L" role="3clF47">
         <node concept="3clFbF" id="6NgXkpAOE4O" role="3cqZAp">
           <node concept="3nyPlj" id="6NgXkpAOE4N" role="3clFbG">
-            <ref role="37wK5l" to="kpdv:#Copy.execute():void" resolve="execute" />
+            <ref role="37wK5l" to="kpdv:~Copy.execute()" resolve="execute" />
           </node>
         </node>
         <node concept="3SKdUt" id="7Z_17SWX6kt" role="3cqZAp">
@@ -496,7 +496,7 @@
                   <ref role="3cqZAo" to="kpdv:~Copy.destDir" resolve="destDir" />
                 </node>
                 <node concept="liA8E" id="7Z_17SWX3JY" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:#File.mkdirs():boolean" resolve="mkdirs" />
+                  <ref role="37wK5l" to="guwi:~File.mkdirs()" resolve="mkdirs" />
                 </node>
               </node>
             </node>
@@ -564,7 +564,7 @@
                                       <ref role="3cqZAo" node="1XAHtgEFqUI" resolve="workerClass" />
                                     </node>
                                     <node concept="liA8E" id="1XAHtgEFvvk" role="2OqNvi">
-                                      <ref role="37wK5l" to="wyt6:#Class.getConstructor(java.lang.Class...):java.lang.reflect.Constructor" resolve="getConstructor" />
+                                      <ref role="37wK5l" to="wyt6:~Class.getConstructor(java.lang.Class...)" resolve="getConstructor" />
                                       <node concept="3VsKOn" id="1XAHtgEFvvl" role="37wK5m">
                                         <ref role="3VsUkX" to="33ny:~Map" resolve="Map" />
                                       </node>
@@ -581,7 +581,7 @@
                                     <ref role="3cqZAo" node="1XAHtgEFvvh" resolve="cons" />
                                   </node>
                                   <node concept="liA8E" id="1XAHtgEFK6y" role="2OqNvi">
-                                    <ref role="37wK5l" to="t6h5:#Constructor.newInstance(java.lang.Object...):java.lang.Object" resolve="newInstance" />
+                                    <ref role="37wK5l" to="t6h5:~Constructor.newInstance(java.lang.Object...)" resolve="newInstance" />
                                     <node concept="37vLTw" id="1XAHtgEFKtS" role="37wK5m">
                                       <ref role="3cqZAo" node="6NgXkpAOzGp" resolve="toConvert" />
                                     </node>
@@ -607,7 +607,7 @@
                       <ref role="3cqZAo" node="1XAHtgEBiZK" resolve="mpsWorkerTask" />
                     </node>
                     <node concept="liA8E" id="1XAHtgEBoZZ" role="2OqNvi">
-                      <ref role="37wK5l" to="gola:#Task.bindToOwner(org.apache.tools.ant.Task):void" resolve="bindToOwner" />
+                      <ref role="37wK5l" to="gola:~Task.bindToOwner(org.apache.tools.ant.Task)" resolve="bindToOwner" />
                       <node concept="Xjq3P" id="1XAHtgEBp9F" role="37wK5m" />
                     </node>
                   </node>
@@ -651,10 +651,10 @@
                 <node concept="3clFbS" id="6NgXkpAZm1h" role="TDEfX">
                   <node concept="3clFbF" id="1XAHtgEHSJK" role="3cqZAp">
                     <node concept="1rXfSq" id="1XAHtgEHSJI" role="3clFbG">
-                      <ref role="37wK5l" to="gola:#Task.log(java.lang.String,int):void" resolve="log" />
+                      <ref role="37wK5l" to="gola:~Task.log(java.lang.String,int)" resolve="log" />
                       <node concept="2YIFZM" id="1XAHtgEHTBP" role="37wK5m">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                         <node concept="Xl_RD" id="1XAHtgEHTBQ" role="37wK5m">
                           <property role="Xl_RC" value="Cannot convert .mps into .mpb: %s\nModels:%s" />
                         </node>
@@ -663,7 +663,7 @@
                             <ref role="3cqZAo" node="6NgXkpAZm1d" resolve="ex" />
                           </node>
                           <node concept="liA8E" id="1XAHtgEHUP8" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:#Throwable.getMessage():java.lang.String" resolve="getMessage" />
+                            <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
                           </node>
                         </node>
                         <node concept="2OqwBi" id="1XAHtgEHTBS" role="37wK5m">
@@ -671,7 +671,7 @@
                             <ref role="3cqZAo" node="6NgXkpAOzGp" resolve="toConvert" />
                           </node>
                           <node concept="liA8E" id="1XAHtgEHTBU" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:#Map.keySet():java.util.Set" resolve="keySet" />
+                            <ref role="37wK5l" to="33ny:~Map.keySet()" resolve="keySet" />
                           </node>
                         </node>
                       </node>
@@ -703,7 +703,7 @@
                 <ref role="3cqZAo" node="6NgXkpAOzGp" resolve="toConvert" />
               </node>
               <node concept="liA8E" id="6NgXkpAOQJ5" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#Map.isEmpty():boolean" resolve="isEmpty" />
+                <ref role="37wK5l" to="33ny:~Map.isEmpty()" resolve="isEmpty" />
               </node>
             </node>
           </node>
@@ -766,7 +766,7 @@
           <node concept="3clFbF" id="2fW_UHbC9Br" role="3cqZAp">
             <node concept="2OqwBi" id="2fW_UHbC9DK" role="3clFbG">
               <node concept="liA8E" id="2fW_UHbC9FK" role="2OqNvi">
-                <ref role="37wK5l" to="qy5u:#FileUtils.getDefaultEncoding():java.lang.String" resolve="getDefaultEncoding" />
+                <ref role="37wK5l" to="qy5u:~FileUtils.getDefaultEncoding()" resolve="getDefaultEncoding" />
               </node>
               <node concept="37vLTw" id="2fW_UHbC9Bq" role="2Oq$k0">
                 <ref role="3cqZAo" node="2fW_UHbC9y9" resolve="delegate" />
@@ -849,11 +849,11 @@
                   <ref role="3cqZAo" node="2fW_UHbCaJd" resolve="sourceFile" />
                 </node>
                 <node concept="liA8E" id="6NgXkpB0j20" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:#File.getPath():java.lang.String" resolve="getPath" />
+                  <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
                 </node>
               </node>
               <node concept="liA8E" id="6NgXkpB0j1x" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.endsWith(java.lang.String):boolean" resolve="endsWith" />
+                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
                 <node concept="Xl_RD" id="6NgXkpB0j1y" role="37wK5m">
                   <property role="Xl_RC" value=".mps" />
                 </node>
@@ -867,7 +867,7 @@
                       <ref role="3cqZAo" node="2fW_UHbC9y9" resolve="delegate" />
                     </node>
                     <node concept="liA8E" id="2fW_UHbCe_c" role="2OqNvi">
-                      <ref role="37wK5l" to="qy5u:#FileUtils.copyFile(java.io.File,java.io.File,org.apache.tools.ant.types.FilterSetCollection,java.util.Vector,boolean,boolean,boolean,java.lang.String,java.lang.String,org.apache.tools.ant.Project,boolean):void" resolve="copyFile" />
+                      <ref role="37wK5l" to="qy5u:~FileUtils.copyFile(java.io.File,java.io.File,org.apache.tools.ant.types.FilterSetCollection,java.util.Vector,boolean,boolean,boolean,java.lang.String,java.lang.String,org.apache.tools.ant.Project,boolean)" resolve="copyFile" />
                       <node concept="37vLTw" id="2BHiRxghiBP" role="37wK5m">
                         <ref role="3cqZAo" node="2fW_UHbCaJd" resolve="sourceFile" />
                       </node>
@@ -913,7 +913,7 @@
                     <ref role="3cqZAo" node="6NgXkpAOzGp" resolve="toConvert" />
                   </node>
                   <node concept="liA8E" id="6NgXkpB0j2a" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+                    <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
                     <node concept="37vLTw" id="6NgXkpB0j2d" role="37wK5m">
                       <ref role="3cqZAo" node="2fW_UHbCaJd" resolve="sourceFile" />
                     </node>

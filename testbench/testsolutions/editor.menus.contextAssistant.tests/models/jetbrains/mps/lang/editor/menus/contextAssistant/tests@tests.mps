@@ -273,14 +273,14 @@
           <node concept="2OqwBi" id="1L0AWmYgINR" role="33vP2m">
             <node concept="369mXd" id="1L0AWmYgINS" role="2Oq$k0" />
             <node concept="liA8E" id="1L0AWmYgINT" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
             </node>
           </node>
         </node>
       </node>
       <node concept="3clFbF" id="1gEVAxw34qt" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0zX9z" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3DOW7A0zX9$" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0zX9_" role="1bW5cS">
@@ -294,11 +294,11 @@
                     <node concept="2OqwBi" id="3DOW7A0zX9O" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0zX9P" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0zX9Q" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0zX9R" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -309,7 +309,7 @@
                     <ref role="3cqZAo" node="3DOW7A0zX9L" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0zX9V" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -320,7 +320,7 @@
                     <ref role="3cqZAo" node="3DOW7A0zX9L" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0zXa0" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -339,7 +339,7 @@
                       <ref role="3cqZAo" node="3DOW7A0zX9L" resolve="contextAssistantManager" />
                     </node>
                     <node concept="liA8E" id="3DOW7A0zXa8" role="2OqNvi">
-                      <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                      <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                     </node>
                   </node>
                 </node>
@@ -359,7 +359,7 @@
                       <ref role="3cqZAo" node="3DOW7A0zXa3" resolve="activeItems" />
                     </node>
                     <node concept="liA8E" id="3DOW7A0zXag" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                 </node>
@@ -390,7 +390,7 @@
     <node concept="3clFbS" id="6cnCU_HRY4X" role="LjaKd">
       <node concept="3clFbF" id="1gEVAxw2VRu" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0zVdN" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3DOW7A0zVdO" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0zVdP" role="1bW5cS">
@@ -403,7 +403,7 @@
                   <node concept="2OqwBi" id="1L0AWmYgHBm" role="33vP2m">
                     <node concept="369mXd" id="1L0AWmYgHBn" role="2Oq$k0" />
                     <node concept="liA8E" id="1L0AWmYgHBo" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -416,15 +416,15 @@
                         <ref role="3cqZAo" node="1L0AWmYgHBk" resolve="editorContext" />
                       </node>
                       <node concept="liA8E" id="3DOW7A0zVdV" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0zVdW" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:#SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                      <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3DOW7A0zVdX" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:#ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+                    <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                     <node concept="1bVj0M" id="3DOW7A0zVdY" role="37wK5m">
                       <node concept="3clFbS" id="3DOW7A0zVdZ" role="1bW5cS">
                         <node concept="3cpWs8" id="3DOW7A0zVe0" role="3cqZAp">
@@ -438,7 +438,7 @@
                                 <ref role="3cqZAo" node="1L0AWmYgHBk" resolve="editorContext" />
                               </node>
                               <node concept="liA8E" id="3DOW7A0zVe7" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                                <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                               </node>
                             </node>
                           </node>
@@ -449,7 +449,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVe1" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVeb" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                             </node>
                           </node>
                         </node>
@@ -459,7 +459,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVe1" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVef" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                             </node>
                           </node>
                         </node>
@@ -469,7 +469,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVe1" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0$eVK" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                             </node>
                           </node>
                         </node>
@@ -513,14 +513,14 @@
           <node concept="2OqwBi" id="5ngDOM8vhqy" role="33vP2m">
             <node concept="369mXd" id="5ngDOM8vhqz" role="2Oq$k0" />
             <node concept="liA8E" id="5ngDOM8vhq$" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
             </node>
           </node>
         </node>
       </node>
       <node concept="3clFbF" id="1gEVAxw2Yvm" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0zVIr" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3DOW7A0zVIs" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0zVIt" role="1bW5cS">
@@ -532,15 +532,15 @@
                         <ref role="3cqZAo" node="5ngDOM8vhqx" resolve="editorContext" />
                       </node>
                       <node concept="liA8E" id="3DOW7A0zVIz" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0zVI$" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:#SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                      <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3DOW7A0zVI_" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:#ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+                    <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                     <node concept="1bVj0M" id="3DOW7A0zVIA" role="37wK5m">
                       <node concept="3clFbS" id="3DOW7A0zVIB" role="1bW5cS">
                         <node concept="3cpWs8" id="3DOW7A0zVIC" role="3cqZAp">
@@ -554,7 +554,7 @@
                                 <ref role="3cqZAo" node="5ngDOM8vhqx" resolve="editorContext" />
                               </node>
                               <node concept="liA8E" id="3DOW7A0zVIH" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                                <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                               </node>
                             </node>
                           </node>
@@ -565,7 +565,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVID" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVIL" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                             </node>
                           </node>
                         </node>
@@ -575,7 +575,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVID" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVIP" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                             </node>
                           </node>
                         </node>
@@ -585,7 +585,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVID" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVIT" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                             </node>
                           </node>
                         </node>
@@ -595,11 +595,11 @@
                             <node concept="2OqwBi" id="3DOW7A0zVIX" role="2Oq$k0">
                               <node concept="369mXd" id="3DOW7A0zVIY" role="2Oq$k0" />
                               <node concept="liA8E" id="3DOW7A0zVIZ" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorComponent.getSelectionManager():jetbrains.mps.openapi.editor.selection.SelectionManager" resolve="getSelectionManager" />
+                                <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
                               </node>
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVJ0" role="2OqNvi">
-                              <ref role="37wK5l" to="lwvz:#SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode):void" resolve="setSelection" />
+                              <ref role="37wK5l" to="lwvz:~SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode)" resolve="setSelection" />
                               <node concept="3xONca" id="3DOW7A0zVJ1" role="37wK5m">
                                 <ref role="3xOPvv" node="5ngDOM8ukGy" resolve="parentNode" />
                               </node>
@@ -613,7 +613,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVID" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVJ6" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                             </node>
                           </node>
                         </node>
@@ -624,7 +624,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVID" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVJb" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                             </node>
                           </node>
                         </node>
@@ -634,7 +634,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zVID" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zVJf" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                             </node>
                           </node>
                         </node>
@@ -699,14 +699,14 @@
           <node concept="2OqwBi" id="1H9M4VxNiQe" role="33vP2m">
             <node concept="369mXd" id="1H9M4VxNiQf" role="2Oq$k0" />
             <node concept="liA8E" id="1H9M4VxNiQg" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
             </node>
           </node>
         </node>
       </node>
       <node concept="3clFbF" id="1gEVAxw2F0e" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0zU$P" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3DOW7A0zU$Q" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0zU$R" role="1bW5cS">
@@ -718,15 +718,15 @@
                         <ref role="3cqZAo" node="1H9M4VxNiQc" resolve="editorContext" />
                       </node>
                       <node concept="liA8E" id="3DOW7A0zU$X" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0zU$Y" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:#SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                      <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3DOW7A0zU$Z" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:#ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+                    <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                     <node concept="1bVj0M" id="3DOW7A0zU_0" role="37wK5m">
                       <node concept="3clFbS" id="3DOW7A0zU_1" role="1bW5cS">
                         <node concept="3cpWs8" id="3DOW7A0zU_2" role="3cqZAp">
@@ -740,7 +740,7 @@
                                 <ref role="3cqZAo" node="1H9M4VxNiQc" resolve="editorContext" />
                               </node>
                               <node concept="liA8E" id="3DOW7A0zU_7" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                                <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                               </node>
                             </node>
                           </node>
@@ -751,11 +751,11 @@
                             <node concept="2OqwBi" id="3DOW7A0zU_b" role="2Oq$k0">
                               <node concept="369mXd" id="3DOW7A0zU_c" role="2Oq$k0" />
                               <node concept="liA8E" id="3DOW7A0zU_d" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorComponent.getSelectionManager():jetbrains.mps.openapi.editor.selection.SelectionManager" resolve="getSelectionManager" />
+                                <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
                               </node>
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU_e" role="2OqNvi">
-                              <ref role="37wK5l" to="lwvz:#SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode):void" resolve="setSelection" />
+                              <ref role="37wK5l" to="lwvz:~SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode)" resolve="setSelection" />
                               <node concept="1eOMI4" id="3DOW7A0zU_f" role="37wK5m">
                                 <node concept="10QFUN" id="3DOW7A0zU_g" role="1eOMHV">
                                   <node concept="3xONca" id="3DOW7A0zU_h" role="10QFUP">
@@ -773,7 +773,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zU_3" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU_m" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                             </node>
                           </node>
                         </node>
@@ -783,7 +783,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zU_3" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU_q" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                             </node>
                           </node>
                         </node>
@@ -793,7 +793,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zU_3" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU_u" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                             </node>
                           </node>
                         </node>
@@ -803,11 +803,11 @@
                             <node concept="2OqwBi" id="3DOW7A0zU_y" role="2Oq$k0">
                               <node concept="369mXd" id="3DOW7A0zU_z" role="2Oq$k0" />
                               <node concept="liA8E" id="3DOW7A0zU_$" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorComponent.getSelectionManager():jetbrains.mps.openapi.editor.selection.SelectionManager" resolve="getSelectionManager" />
+                                <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
                               </node>
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU__" role="2OqNvi">
-                              <ref role="37wK5l" to="lwvz:#SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode):void" resolve="setSelection" />
+                              <ref role="37wK5l" to="lwvz:~SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode)" resolve="setSelection" />
                               <node concept="1eOMI4" id="3DOW7A0zU_A" role="37wK5m">
                                 <node concept="10QFUN" id="3DOW7A0zU_B" role="1eOMHV">
                                   <node concept="3xONca" id="3DOW7A0zU_C" role="10QFUP">
@@ -825,7 +825,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zU_3" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU_H" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                             </node>
                           </node>
                         </node>
@@ -835,7 +835,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zU_3" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU_L" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                             </node>
                           </node>
                         </node>
@@ -845,7 +845,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zU_3" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zU_P" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                             </node>
                           </node>
                         </node>
@@ -891,14 +891,14 @@
           <node concept="2OqwBi" id="7P0KIHplZiE" role="33vP2m">
             <node concept="369mXd" id="7P0KIHplZiF" role="2Oq$k0" />
             <node concept="liA8E" id="7P0KIHplZiG" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
             </node>
           </node>
         </node>
       </node>
       <node concept="3clFbF" id="1gEVAxw32xd" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0zWsL" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3DOW7A0zWsM" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0zWsN" role="1bW5cS">
@@ -910,15 +910,15 @@
                         <ref role="3cqZAo" node="7P0KIHplZiC" resolve="editorContext" />
                       </node>
                       <node concept="liA8E" id="3DOW7A0zWsT" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0zWsU" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:#SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                      <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3DOW7A0zWsV" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:#ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+                    <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                     <node concept="1bVj0M" id="3DOW7A0zWsW" role="37wK5m">
                       <node concept="3clFbS" id="3DOW7A0zWsX" role="1bW5cS">
                         <node concept="3cpWs8" id="3DOW7A0zWsY" role="3cqZAp">
@@ -932,7 +932,7 @@
                                 <ref role="3cqZAo" node="7P0KIHplZiC" resolve="editorContext" />
                               </node>
                               <node concept="liA8E" id="3DOW7A0zWt3" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                                <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                               </node>
                             </node>
                           </node>
@@ -943,11 +943,11 @@
                             <node concept="2OqwBi" id="3DOW7A0zWt7" role="2Oq$k0">
                               <node concept="369mXd" id="3DOW7A0zWt8" role="2Oq$k0" />
                               <node concept="liA8E" id="3DOW7A0zWt9" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorComponent.getSelectionManager():jetbrains.mps.openapi.editor.selection.SelectionManager" resolve="getSelectionManager" />
+                                <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
                               </node>
                             </node>
                             <node concept="liA8E" id="3DOW7A0zWta" role="2OqNvi">
-                              <ref role="37wK5l" to="lwvz:#SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode):void" resolve="setSelection" />
+                              <ref role="37wK5l" to="lwvz:~SelectionManager.setSelection(org.jetbrains.mps.openapi.model.SNode)" resolve="setSelection" />
                               <node concept="3xONca" id="3DOW7A0zWtb" role="37wK5m">
                                 <ref role="3xOPvv" node="7P0KIHpm35H" resolve="base" />
                               </node>
@@ -960,7 +960,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zWsZ" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zWtf" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                             </node>
                           </node>
                         </node>
@@ -970,7 +970,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zWsZ" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zWtj" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                             </node>
                           </node>
                         </node>
@@ -980,7 +980,7 @@
                               <ref role="3cqZAo" node="3DOW7A0zWsZ" resolve="contextAssistantManager" />
                             </node>
                             <node concept="liA8E" id="3DOW7A0zWtn" role="2OqNvi">
-                              <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                              <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                             </node>
                           </node>
                         </node>
@@ -1004,11 +1004,11 @@
           <node concept="2OqwBi" id="1bRU2WTLVxu" role="2Oq$k0">
             <node concept="369mXd" id="1bRU2WTLUlS" role="2Oq$k0" />
             <node concept="liA8E" id="1bRU2WTLWL6" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:#EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getUpdater()" resolve="getUpdater" />
             </node>
           </node>
           <node concept="liA8E" id="1bRU2WTLX7T" role="2OqNvi">
-            <ref role="37wK5l" to="22ra:#Updater.addListener(jetbrains.mps.openapi.editor.update.UpdaterListener):void" resolve="addListener" />
+            <ref role="37wK5l" to="22ra:~Updater.addListener(jetbrains.mps.openapi.editor.update.UpdaterListener)" resolve="addListener" />
             <node concept="2ShNRf" id="1bRU2WTLZRV" role="37wK5m">
               <node concept="YeOm9" id="1bRU2WTMd02" role="2ShVmc">
                 <node concept="1Y3b0j" id="1bRU2WTMd05" role="YeSDq">
@@ -1043,11 +1043,11 @@
                             <node concept="2OqwBi" id="3DOW7A0$B1I" role="2Oq$k0">
                               <node concept="369mXd" id="3DOW7A0$B1J" role="2Oq$k0" />
                               <node concept="liA8E" id="3DOW7A0$B1K" role="2OqNvi">
-                                <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                                <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker()" resolve="getCellTracker" />
                               </node>
                             </node>
                             <node concept="liA8E" id="3DOW7A0$B1L" role="2OqNvi">
-                              <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+                              <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells()" resolve="getComponentCells" />
                             </node>
                           </node>
                         </node>
@@ -1058,7 +1058,7 @@
                             <ref role="3cqZAo" node="3DOW7A0$B1E" resolve="componentCells" />
                           </node>
                           <node concept="liA8E" id="3DOW7A0$B1P" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
+                            <ref role="37wK5l" to="33ny:~Set.isEmpty()" resolve="isEmpty" />
                           </node>
                         </node>
                       </node>
@@ -1077,11 +1077,11 @@
                                   <ref role="2Gs0qQ" node="3DOW7A0$B1R" resolve="cell" />
                                 </node>
                                 <node concept="liA8E" id="3DOW7A0$B1Y" role="2OqNvi">
-                                  <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                                  <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent()" resolve="getComponent" />
                                 </node>
                               </node>
                               <node concept="liA8E" id="3DOW7A0$B1Z" role="2OqNvi">
-                                <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                                <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                               </node>
                             </node>
                           </node>
@@ -1100,7 +1100,7 @@
       </node>
       <node concept="3clFbF" id="5wnHeuDnWyJ" role="3cqZAp">
         <node concept="2YIFZM" id="5wnHeuDnWNb" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="5wnHeuDnZL0" role="37wK5m">
             <node concept="3clFbS" id="5wnHeuDnZL1" role="1bW5cS">
@@ -1110,15 +1110,15 @@
                     <node concept="2OqwBi" id="5wnHeuDnR4F" role="2Oq$k0">
                       <node concept="369mXd" id="5wnHeuDnR4G" role="2Oq$k0" />
                       <node concept="liA8E" id="5wnHeuDnR4H" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="5wnHeuDnR4I" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                   <node concept="liA8E" id="5wnHeuDnR4J" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -1133,7 +1133,7 @@
       </node>
       <node concept="3clFbF" id="2UeSTzXe1Wn" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0zXXn" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3DOW7A0zXXo" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0zXXp" role="1bW5cS">
@@ -1143,15 +1143,15 @@
                     <node concept="2OqwBi" id="3DOW7A0zXXt" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0zXXu" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0zXXv" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0zXXw" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3DOW7A0zXXx" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -1168,11 +1168,11 @@
                     <node concept="2OqwBi" id="3DOW7A0$_fN" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0$_fO" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0$_fP" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker()" resolve="getCellTracker" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0$_fQ" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+                      <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells()" resolve="getComponentCells" />
                     </node>
                   </node>
                 </node>
@@ -1183,7 +1183,7 @@
                     <ref role="3cqZAo" node="3DOW7A0$_fJ" resolve="componentCells" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0$_fU" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
+                    <ref role="37wK5l" to="33ny:~Set.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
               </node>
@@ -1202,11 +1202,11 @@
                           <ref role="2Gs0qQ" node="3DOW7A0$_fW" resolve="cell" />
                         </node>
                         <node concept="liA8E" id="3DOW7A0$_g3" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                          <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent()" resolve="getComponent" />
                         </node>
                       </node>
                       <node concept="liA8E" id="3DOW7A0$_g4" role="2OqNvi">
-                        <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                        <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                       </node>
                     </node>
                   </node>
@@ -1239,7 +1239,7 @@
       </node>
       <node concept="3clFbF" id="3DOW7A0$uF$" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0$uNB" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3DOW7A0$uPP" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0$uPQ" role="1bW5cS">
@@ -1253,11 +1253,11 @@
                     <node concept="2OqwBi" id="3DOW7A0$2HJ" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0$2HK" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0$2HL" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0$2HM" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -1268,7 +1268,7 @@
                     <ref role="3cqZAo" node="3DOW7A0$2HH" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="5wnHeuDnLfp" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -1278,7 +1278,7 @@
                     <ref role="3cqZAo" node="3DOW7A0$2HH" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0$2DB" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -1295,11 +1295,11 @@
                     <node concept="2OqwBi" id="1s2WyfjrHO5" role="2Oq$k0">
                       <node concept="369mXd" id="1s2WyfjrHO6" role="2Oq$k0" />
                       <node concept="liA8E" id="1s2WyfjrHO7" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker()" resolve="getCellTracker" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1s2WyfjrHO8" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+                      <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells()" resolve="getComponentCells" />
                     </node>
                   </node>
                 </node>
@@ -1310,7 +1310,7 @@
                     <ref role="3cqZAo" node="1s2WyfjrHO1" resolve="componentCells" />
                   </node>
                   <node concept="liA8E" id="1s2WyfjrHOc" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
+                    <ref role="37wK5l" to="33ny:~Set.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
               </node>
@@ -1329,11 +1329,11 @@
                           <ref role="2Gs0qQ" node="1s2WyfjrHOe" resolve="cell" />
                         </node>
                         <node concept="liA8E" id="1s2WyfjrHOl" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                          <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent()" resolve="getComponent" />
                         </node>
                       </node>
                       <node concept="liA8E" id="1s2WyfjrHOm" role="2OqNvi">
-                        <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                        <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                       </node>
                     </node>
                   </node>
@@ -1372,7 +1372,7 @@
       <node concept="3clFbF" id="3DOW7A0$vRI" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0$vRJ" role="3clFbG">
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <node concept="1bVj0M" id="3DOW7A0$vRK" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0$vRL" role="1bW5cS">
               <node concept="3cpWs8" id="3DOW7A0$ebU" role="3cqZAp">
@@ -1385,11 +1385,11 @@
                     <node concept="2OqwBi" id="3DOW7A0$ebY" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0$ebZ" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0$ec0" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0$ec1" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -1400,7 +1400,7 @@
                     <ref role="3cqZAo" node="3DOW7A0$ebV" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0$ec5" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -1410,7 +1410,7 @@
                     <ref role="3cqZAo" node="3DOW7A0$ebV" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0$ec9" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -1428,7 +1428,7 @@
                       <ref role="3cqZAo" node="3DOW7A0$ebV" resolve="contextAssistantManager" />
                     </node>
                     <node concept="liA8E" id="3DOW7A0$g2k" role="2OqNvi">
-                      <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                      <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                     </node>
                   </node>
                 </node>
@@ -1448,7 +1448,7 @@
                       <ref role="3cqZAo" node="3DOW7A0$g2f" resolve="activeItems" />
                     </node>
                     <node concept="liA8E" id="3DOW7A0$g2s" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                 </node>
@@ -1466,11 +1466,11 @@
                     <node concept="2OqwBi" id="3DOW7A0$vRR" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0$vRS" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0$vRT" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker()" resolve="getCellTracker" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0$vRU" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+                      <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells()" resolve="getComponentCells" />
                     </node>
                   </node>
                 </node>
@@ -1481,7 +1481,7 @@
                     <ref role="3cqZAo" node="3DOW7A0$vRN" resolve="componentCells" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0$vRY" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
+                    <ref role="37wK5l" to="33ny:~Set.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
               </node>
@@ -1500,11 +1500,11 @@
                           <ref role="2Gs0qQ" node="3DOW7A0$vS0" resolve="cell" />
                         </node>
                         <node concept="liA8E" id="3DOW7A0$y1i" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                          <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent()" resolve="getComponent" />
                         </node>
                       </node>
                       <node concept="liA8E" id="3DOW7A0$$_5" role="2OqNvi">
-                        <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                        <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                       </node>
                     </node>
                   </node>
@@ -1544,7 +1544,7 @@
       <node concept="3clFbF" id="3DOW7A0_rgb" role="3cqZAp">
         <node concept="2YIFZM" id="3DOW7A0_rgc" role="3clFbG">
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <node concept="1bVj0M" id="3DOW7A0_rgd" role="37wK5m">
             <node concept="3clFbS" id="3DOW7A0_rge" role="1bW5cS">
               <node concept="3cpWs8" id="3DOW7A0_rfZ" role="3cqZAp">
@@ -1557,11 +1557,11 @@
                     <node concept="2OqwBi" id="3DOW7A0_rg3" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0_rg4" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0_rg5" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0_rg6" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -1572,7 +1572,7 @@
                     <ref role="3cqZAo" node="3DOW7A0_rg0" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0_rga" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -1589,11 +1589,11 @@
                     <node concept="2OqwBi" id="3DOW7A0_rgk" role="2Oq$k0">
                       <node concept="369mXd" id="3DOW7A0_rgl" role="2Oq$k0" />
                       <node concept="liA8E" id="3DOW7A0_rgm" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getCellTracker():jetbrains.mps.nodeEditor.CellTracker" resolve="getCellTracker" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getCellTracker()" resolve="getCellTracker" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3DOW7A0_rgn" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#CellTracker.getComponentCells():java.util.Set" resolve="getComponentCells" />
+                      <ref role="37wK5l" to="exr9:~CellTracker.getComponentCells()" resolve="getComponentCells" />
                     </node>
                   </node>
                 </node>
@@ -1604,7 +1604,7 @@
                     <ref role="3cqZAo" node="3DOW7A0_rgg" resolve="componentCells" />
                   </node>
                   <node concept="liA8E" id="3DOW7A0_rgr" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:#Set.isEmpty():boolean" resolve="isEmpty" />
+                    <ref role="37wK5l" to="33ny:~Set.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
               </node>
@@ -1623,11 +1623,11 @@
                           <ref role="2Gs0qQ" node="3DOW7A0_rgt" resolve="cell" />
                         </node>
                         <node concept="liA8E" id="3DOW7A0_BNa" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:#EditorCell_WithComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                          <ref role="37wK5l" to="exr9:~EditorCell_WithComponent.getComponent()" resolve="getComponent" />
                         </node>
                       </node>
                       <node concept="liA8E" id="3DOW7A0_BNb" role="2OqNvi">
-                        <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                        <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                       </node>
                     </node>
                   </node>
@@ -1657,7 +1657,7 @@
       </node>
       <node concept="3clFbF" id="l2zRMrjuwk" role="3cqZAp">
         <node concept="2YIFZM" id="l2zRMrjuwl" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="l2zRMrjuwm" role="37wK5m">
             <node concept="3clFbS" id="l2zRMrjuwn" role="1bW5cS">
@@ -1671,11 +1671,11 @@
                     <node concept="2OqwBi" id="l2zRMrjuws" role="2Oq$k0">
                       <node concept="369mXd" id="l2zRMrjuwt" role="2Oq$k0" />
                       <node concept="liA8E" id="l2zRMrjuwu" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="l2zRMrjuwv" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -1686,7 +1686,7 @@
                     <ref role="3cqZAo" node="l2zRMrjuwp" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="l2zRMrjzSl" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -1696,7 +1696,7 @@
                     <ref role="3cqZAo" node="l2zRMrjuwp" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="l2zRMrjy8R" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -1714,7 +1714,7 @@
                       <ref role="3cqZAo" node="l2zRMrjuwp" resolve="contextAssistantManager" />
                     </node>
                     <node concept="liA8E" id="l2zRMrkkXZ" role="2OqNvi">
-                      <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                      <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                     </node>
                   </node>
                 </node>
@@ -1734,7 +1734,7 @@
                       <ref role="3cqZAo" node="l2zRMrkkXU" resolve="activeItems" />
                     </node>
                     <node concept="liA8E" id="l2zRMrkkY7" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                 </node>
@@ -1747,11 +1747,11 @@
                   </node>
                   <node concept="2YIFZM" id="l2zRMrkbNy" role="33vP2m">
                     <ref role="1Pybhc" to="g51k:~CellFinderUtil" resolve="CellFinderUtil" />
-                    <ref role="37wK5l" to="g51k:#CellFinderUtil.findChildByClass(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.Class,boolean):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="findChildByClass" />
+                    <ref role="37wK5l" to="g51k:~CellFinderUtil.findChildByClass(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.Class,boolean)" resolve="findChildByClass" />
                     <node concept="2OqwBi" id="l2zRMrkbNz" role="37wK5m">
                       <node concept="369mXd" id="l2zRMrkbN$" role="2Oq$k0" />
                       <node concept="liA8E" id="l2zRMrkbN_" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
                       </node>
                     </node>
                     <node concept="3VsKOn" id="l2zRMrkbNA" role="37wK5m">
@@ -1770,11 +1770,11 @@
                       <ref role="3cqZAo" node="l2zRMrkbNx" resolve="contextAssistantCell" />
                     </node>
                     <node concept="liA8E" id="l2zRMrkf7g" role="2OqNvi">
-                      <ref role="37wK5l" to="g51k:#EditorCell_ContextAssistantComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                      <ref role="37wK5l" to="g51k:~EditorCell_ContextAssistantComponent.getComponent()" resolve="getComponent" />
                     </node>
                   </node>
                   <node concept="liA8E" id="l2zRMrkgZr" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                    <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                   </node>
                 </node>
               </node>
@@ -1812,7 +1812,7 @@
       </node>
       <node concept="3clFbF" id="l2zRMrklxA" role="3cqZAp">
         <node concept="2YIFZM" id="l2zRMrklxB" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="l2zRMrklxC" role="37wK5m">
             <node concept="3clFbS" id="l2zRMrklxD" role="1bW5cS">
@@ -1826,11 +1826,11 @@
                     <node concept="2OqwBi" id="l2zRMrklxI" role="2Oq$k0">
                       <node concept="369mXd" id="l2zRMrklxJ" role="2Oq$k0" />
                       <node concept="liA8E" id="l2zRMrklxK" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                       </node>
                     </node>
                     <node concept="liA8E" id="l2zRMrklxL" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -1841,7 +1841,7 @@
                     <ref role="3cqZAo" node="l2zRMrklxF" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="l2zRMrklxP" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -1851,7 +1851,7 @@
                     <ref role="3cqZAo" node="l2zRMrklxF" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="l2zRMrklxT" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -1869,7 +1869,7 @@
                       <ref role="3cqZAo" node="l2zRMrklxF" resolve="contextAssistantManager" />
                     </node>
                     <node concept="liA8E" id="l2zRMrkly0" role="2OqNvi">
-                      <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                      <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                     </node>
                   </node>
                 </node>
@@ -1889,7 +1889,7 @@
                       <ref role="3cqZAo" node="l2zRMrklxV" resolve="activeItems" />
                     </node>
                     <node concept="liA8E" id="l2zRMrkly8" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                 </node>
@@ -1901,12 +1901,12 @@
                     <ref role="3uigEE" to="g51k:~EditorCell_ContextAssistantComponent" resolve="EditorCell_ContextAssistantComponent" />
                   </node>
                   <node concept="2YIFZM" id="l2zRMrklyc" role="33vP2m">
-                    <ref role="37wK5l" to="g51k:#CellFinderUtil.findChildByClass(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.Class,boolean):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="findChildByClass" />
+                    <ref role="37wK5l" to="g51k:~CellFinderUtil.findChildByClass(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.Class,boolean)" resolve="findChildByClass" />
                     <ref role="1Pybhc" to="g51k:~CellFinderUtil" resolve="CellFinderUtil" />
                     <node concept="2OqwBi" id="l2zRMrklyd" role="37wK5m">
                       <node concept="369mXd" id="l2zRMrklye" role="2Oq$k0" />
                       <node concept="liA8E" id="l2zRMrklyf" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
                       </node>
                     </node>
                     <node concept="3VsKOn" id="l2zRMrklyg" role="37wK5m">
@@ -1930,11 +1930,11 @@
                       <ref role="3cqZAo" node="l2zRMrklya" resolve="firstContextAssistantCell" />
                     </node>
                     <node concept="liA8E" id="l2zRMrklym" role="2OqNvi">
-                      <ref role="37wK5l" to="g51k:#EditorCell_ContextAssistantComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                      <ref role="37wK5l" to="g51k:~EditorCell_ContextAssistantComponent.getComponent()" resolve="getComponent" />
                     </node>
                   </node>
                   <node concept="liA8E" id="l2zRMrklyn" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                    <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                   </node>
                 </node>
               </node>
@@ -1945,12 +1945,12 @@
                     <ref role="3uigEE" to="g51k:~EditorCell_ContextAssistantComponent" resolve="EditorCell_ContextAssistantComponent" />
                   </node>
                   <node concept="2YIFZM" id="7ERNpAybvtc" role="33vP2m">
-                    <ref role="37wK5l" to="g51k:#CellFinderUtil.findChildByClass(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.Class,boolean):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="findChildByClass" />
+                    <ref role="37wK5l" to="g51k:~CellFinderUtil.findChildByClass(jetbrains.mps.openapi.editor.cells.EditorCell,java.lang.Class,boolean)" resolve="findChildByClass" />
                     <ref role="1Pybhc" to="g51k:~CellFinderUtil" resolve="CellFinderUtil" />
                     <node concept="2OqwBi" id="7ERNpAybvtd" role="37wK5m">
                       <node concept="369mXd" id="7ERNpAybvte" role="2Oq$k0" />
                       <node concept="liA8E" id="7ERNpAybvtf" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:#EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
                       </node>
                     </node>
                     <node concept="3VsKOn" id="7ERNpAybvtg" role="37wK5m">
@@ -1982,11 +1982,11 @@
                       <ref role="3cqZAo" node="7ERNpAybvta" resolve="secondContextAssistantCell" />
                     </node>
                     <node concept="liA8E" id="7ERNpAybYdx" role="2OqNvi">
-                      <ref role="37wK5l" to="g51k:#EditorCell_ContextAssistantComponent.getComponent():javax.swing.JComponent" resolve="getComponent" />
+                      <ref role="37wK5l" to="g51k:~EditorCell_ContextAssistantComponent.getComponent()" resolve="getComponent" />
                     </node>
                   </node>
                   <node concept="liA8E" id="7ERNpAyc0m6" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:#Component.isVisible():boolean" resolve="isVisible" />
+                    <ref role="37wK5l" to="z60i:~Component.isVisible()" resolve="isVisible" />
                   </node>
                 </node>
               </node>
@@ -2025,7 +2025,7 @@
       <node concept="3clFbF" id="3XP_kj6Eeju" role="3cqZAp">
         <node concept="2YIFZM" id="3XP_kj6Eejv" role="3clFbG">
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <node concept="1bVj0M" id="3XP_kj6Eejw" role="37wK5m">
             <node concept="3clFbS" id="3XP_kj6Eejx" role="1bW5cS">
               <node concept="3cpWs8" id="3XP_kj6Eejy" role="3cqZAp">
@@ -2037,7 +2037,7 @@
                   <node concept="2OqwBi" id="3XP_kj6Eej_" role="33vP2m">
                     <node concept="369mXd" id="3XP_kj6EejA" role="2Oq$k0" />
                     <node concept="liA8E" id="3XP_kj6EejB" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2053,7 +2053,7 @@
                       <ref role="3cqZAo" node="3XP_kj6Eejz" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="3XP_kj6EejR" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2064,7 +2064,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EejN" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EejV" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2074,7 +2074,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EejN" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EejZ" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2084,7 +2084,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EejN" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6Eek3" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2099,11 +2099,11 @@
                         <ref role="3cqZAo" node="3XP_kj6EejN" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="3XP_kj6EgeR" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3XP_kj6EleM" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                 </node>
@@ -2132,7 +2132,7 @@
       <node concept="3clFbF" id="3XP_kj6EyOW" role="3cqZAp">
         <node concept="2YIFZM" id="3XP_kj6EyOX" role="3clFbG">
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <node concept="1bVj0M" id="3XP_kj6EyOY" role="37wK5m">
             <node concept="3clFbS" id="3XP_kj6EyOZ" role="1bW5cS">
               <node concept="3cpWs8" id="3XP_kj6EyP0" role="3cqZAp">
@@ -2144,7 +2144,7 @@
                   <node concept="2OqwBi" id="3XP_kj6EyP3" role="33vP2m">
                     <node concept="369mXd" id="3XP_kj6EyP4" role="2Oq$k0" />
                     <node concept="liA8E" id="3XP_kj6EyP5" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2160,7 +2160,7 @@
                       <ref role="3cqZAo" node="3XP_kj6EyP1" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="3XP_kj6EyPl" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2171,7 +2171,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EyPh" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EyPp" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2181,7 +2181,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EyPh" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EyPt" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2191,7 +2191,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EyPh" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EyPx" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2203,11 +2203,11 @@
                         <ref role="3cqZAo" node="3XP_kj6EyPh" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="3XP_kj6EyPC" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3XP_kj6EyPD" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="3XP_kj6ECs8" role="3uHU7w">
@@ -2242,7 +2242,7 @@
       <node concept="3clFbF" id="3XP_kj6ENFy" role="3cqZAp">
         <node concept="2YIFZM" id="3XP_kj6ENFz" role="3clFbG">
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <node concept="1bVj0M" id="3XP_kj6ENF$" role="37wK5m">
             <node concept="3clFbS" id="3XP_kj6ENF_" role="1bW5cS">
               <node concept="3cpWs8" id="3XP_kj6ENFA" role="3cqZAp">
@@ -2254,7 +2254,7 @@
                   <node concept="2OqwBi" id="3XP_kj6ENFD" role="33vP2m">
                     <node concept="369mXd" id="3XP_kj6ENFE" role="2Oq$k0" />
                     <node concept="liA8E" id="3XP_kj6ENFF" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2270,7 +2270,7 @@
                       <ref role="3cqZAo" node="3XP_kj6ENFB" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="3XP_kj6ENFV" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2281,7 +2281,7 @@
                     <ref role="3cqZAo" node="3XP_kj6ENFR" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6ENFZ" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2291,7 +2291,7 @@
                     <ref role="3cqZAo" node="3XP_kj6ENFR" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6ENG3" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2301,7 +2301,7 @@
                     <ref role="3cqZAo" node="3XP_kj6ENFR" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6ENG7" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2313,11 +2313,11 @@
                         <ref role="3cqZAo" node="3XP_kj6ENFR" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="3XP_kj6ENGd" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3XP_kj6ENGe" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="3XP_kj6ENGf" role="3uHU7w">
@@ -2347,7 +2347,7 @@
     <node concept="3clFbS" id="3XP_kj6Eqgw" role="LjaKd">
       <node concept="3clFbF" id="3XP_kj6Eqgx" role="3cqZAp">
         <node concept="2YIFZM" id="3XP_kj6Eqgy" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="3XP_kj6Eqgz" role="37wK5m">
             <node concept="3clFbS" id="3XP_kj6Eqg$" role="1bW5cS">
@@ -2360,7 +2360,7 @@
                   <node concept="2OqwBi" id="3XP_kj6EqgC" role="33vP2m">
                     <node concept="369mXd" id="3XP_kj6EqgD" role="2Oq$k0" />
                     <node concept="liA8E" id="3XP_kj6EqgE" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2376,7 +2376,7 @@
                       <ref role="3cqZAo" node="3XP_kj6EqgA" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="3XP_kj6EqgU" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2387,7 +2387,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EqgQ" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EqgY" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2397,7 +2397,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EqgQ" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6Eqh2" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2407,7 +2407,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EqgQ" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6Eqh6" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2422,11 +2422,11 @@
                         <ref role="3cqZAo" node="3XP_kj6EqgQ" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="3XP_kj6Eqhd" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3XP_kj6Eqhe" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                 </node>
@@ -2454,7 +2454,7 @@
     <node concept="3clFbS" id="1D1LJGC3f_Z" role="LjaKd">
       <node concept="3clFbF" id="1D1LJGC3fA0" role="3cqZAp">
         <node concept="2YIFZM" id="1D1LJGC3fA1" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="1D1LJGC3fA2" role="37wK5m">
             <node concept="3clFbS" id="1D1LJGC3fA3" role="1bW5cS">
@@ -2467,7 +2467,7 @@
                   <node concept="2OqwBi" id="1D1LJGC3fA7" role="33vP2m">
                     <node concept="369mXd" id="1D1LJGC3fA8" role="2Oq$k0" />
                     <node concept="liA8E" id="1D1LJGC3fA9" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2483,7 +2483,7 @@
                       <ref role="3cqZAo" node="1D1LJGC3fA5" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="1D1LJGC3fAf" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2494,7 +2494,7 @@
                     <ref role="3cqZAo" node="1D1LJGC3fAb" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC3fAj" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2504,7 +2504,7 @@
                     <ref role="3cqZAo" node="1D1LJGC3fAb" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC3fAn" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2514,7 +2514,7 @@
                     <ref role="3cqZAo" node="1D1LJGC3fAb" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC3fAr" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2526,11 +2526,11 @@
                         <ref role="3cqZAo" node="1D1LJGC3fAb" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="1D1LJGC3fAx" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1D1LJGC3fAy" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="1D1LJGC3fAz" role="3uHU7w">
@@ -2561,7 +2561,7 @@
     <node concept="3clFbS" id="1D1LJGC2dBZ" role="LjaKd">
       <node concept="3clFbF" id="1D1LJGC2dC0" role="3cqZAp">
         <node concept="2YIFZM" id="1D1LJGC2dC1" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="1D1LJGC2dC2" role="37wK5m">
             <node concept="3clFbS" id="1D1LJGC2dC3" role="1bW5cS">
@@ -2574,7 +2574,7 @@
                   <node concept="2OqwBi" id="1D1LJGC2dC7" role="33vP2m">
                     <node concept="369mXd" id="1D1LJGC2dC8" role="2Oq$k0" />
                     <node concept="liA8E" id="1D1LJGC2dC9" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2590,7 +2590,7 @@
                       <ref role="3cqZAo" node="1D1LJGC2dC5" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="1D1LJGC2dCf" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2601,7 +2601,7 @@
                     <ref role="3cqZAo" node="1D1LJGC2dCb" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC2dCj" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2611,7 +2611,7 @@
                     <ref role="3cqZAo" node="1D1LJGC2dCb" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC2dCn" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2621,7 +2621,7 @@
                     <ref role="3cqZAo" node="1D1LJGC2dCb" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC2dCr" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2633,11 +2633,11 @@
                         <ref role="3cqZAo" node="1D1LJGC2dCb" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="1D1LJGC2dCx" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1D1LJGC2dCy" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="1D1LJGC2dCz" role="3uHU7w">
@@ -2668,7 +2668,7 @@
     <node concept="3clFbS" id="44DBaIkRM2N" role="LjaKd">
       <node concept="3clFbF" id="44DBaIkRM2O" role="3cqZAp">
         <node concept="2YIFZM" id="44DBaIkRM2P" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="44DBaIkRM2Q" role="37wK5m">
             <node concept="3clFbS" id="44DBaIkRM2R" role="1bW5cS">
@@ -2681,7 +2681,7 @@
                   <node concept="2OqwBi" id="44DBaIkRM2V" role="33vP2m">
                     <node concept="369mXd" id="44DBaIkRM2W" role="2Oq$k0" />
                     <node concept="liA8E" id="44DBaIkRM2X" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2697,7 +2697,7 @@
                       <ref role="3cqZAo" node="44DBaIkRM2T" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="44DBaIkRM33" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2708,7 +2708,7 @@
                     <ref role="3cqZAo" node="44DBaIkRM2Z" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkRM37" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2718,7 +2718,7 @@
                     <ref role="3cqZAo" node="44DBaIkRM2Z" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkRM3b" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2728,7 +2728,7 @@
                     <ref role="3cqZAo" node="44DBaIkRM2Z" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkRM3f" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2740,11 +2740,11 @@
                         <ref role="3cqZAo" node="44DBaIkRM2Z" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="44DBaIkRM3l" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="44DBaIkRM3m" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="44DBaIkRM3n" role="3uHU7w">
@@ -2778,7 +2778,7 @@
     <node concept="3clFbS" id="1D1LJGC35P_" role="LjaKd">
       <node concept="3clFbF" id="1D1LJGC35PA" role="3cqZAp">
         <node concept="2YIFZM" id="1D1LJGC35PB" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="1D1LJGC35PC" role="37wK5m">
             <node concept="3clFbS" id="1D1LJGC35PD" role="1bW5cS">
@@ -2791,7 +2791,7 @@
                   <node concept="2OqwBi" id="1D1LJGC35PH" role="33vP2m">
                     <node concept="369mXd" id="1D1LJGC35PI" role="2Oq$k0" />
                     <node concept="liA8E" id="1D1LJGC35PJ" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2807,7 +2807,7 @@
                       <ref role="3cqZAo" node="1D1LJGC35PF" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="1D1LJGC35PP" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2818,7 +2818,7 @@
                     <ref role="3cqZAo" node="1D1LJGC35PL" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC35PT" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2828,7 +2828,7 @@
                     <ref role="3cqZAo" node="1D1LJGC35PL" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC35PX" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2838,7 +2838,7 @@
                     <ref role="3cqZAo" node="1D1LJGC35PL" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="1D1LJGC35Q1" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2850,11 +2850,11 @@
                         <ref role="3cqZAo" node="1D1LJGC35PL" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="1D1LJGC35Q7" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1D1LJGC35Q8" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="1D1LJGC35Q9" role="3uHU7w">
@@ -2885,7 +2885,7 @@
       <node concept="3clFbF" id="3XP_kj6EH3K" role="3cqZAp">
         <node concept="2YIFZM" id="3XP_kj6EH3L" role="3clFbG">
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <node concept="1bVj0M" id="3XP_kj6EH3M" role="37wK5m">
             <node concept="3clFbS" id="3XP_kj6EH3N" role="1bW5cS">
               <node concept="3cpWs8" id="3XP_kj6EH3O" role="3cqZAp">
@@ -2897,7 +2897,7 @@
                   <node concept="2OqwBi" id="3XP_kj6EH3R" role="33vP2m">
                     <node concept="369mXd" id="3XP_kj6EH3S" role="2Oq$k0" />
                     <node concept="liA8E" id="3XP_kj6EH3T" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -2913,7 +2913,7 @@
                       <ref role="3cqZAo" node="3XP_kj6EH3P" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="3XP_kj6EH49" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -2924,7 +2924,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EH45" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EH4d" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -2934,7 +2934,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EH45" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EH4h" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -2944,7 +2944,7 @@
                     <ref role="3cqZAo" node="3XP_kj6EH45" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="3XP_kj6EH4l" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -2956,11 +2956,11 @@
                         <ref role="3cqZAo" node="3XP_kj6EH45" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="3XP_kj6EH4r" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3XP_kj6EH4s" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="3XP_kj6EMbS" role="3uHU7w">
@@ -2991,7 +2991,7 @@
     <node concept="3clFbS" id="44DBaIkTog0" role="LjaKd">
       <node concept="3clFbF" id="44DBaIkTog1" role="3cqZAp">
         <node concept="2YIFZM" id="44DBaIkTog2" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="44DBaIkTog3" role="37wK5m">
             <node concept="3clFbS" id="44DBaIkTog4" role="1bW5cS">
@@ -3004,7 +3004,7 @@
                   <node concept="2OqwBi" id="44DBaIkTog8" role="33vP2m">
                     <node concept="369mXd" id="44DBaIkTog9" role="2Oq$k0" />
                     <node concept="liA8E" id="44DBaIkToga" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -3020,7 +3020,7 @@
                       <ref role="3cqZAo" node="44DBaIkTog6" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="44DBaIkTogg" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -3031,7 +3031,7 @@
                     <ref role="3cqZAo" node="44DBaIkTogc" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkTogk" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -3041,7 +3041,7 @@
                     <ref role="3cqZAo" node="44DBaIkTogc" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkTogo" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -3051,7 +3051,7 @@
                     <ref role="3cqZAo" node="44DBaIkTogc" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkTogs" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -3066,11 +3066,11 @@
                         <ref role="3cqZAo" node="44DBaIkTogc" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="44DBaIkTogz" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="44DBaIkTog$" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                 </node>
@@ -3098,7 +3098,7 @@
     <node concept="3clFbS" id="44DBaIkU$2N" role="LjaKd">
       <node concept="3clFbF" id="44DBaIkU$2O" role="3cqZAp">
         <node concept="2YIFZM" id="44DBaIkU$2P" role="3clFbG">
-          <ref role="37wK5l" to="dxuu:#SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
           <node concept="1bVj0M" id="44DBaIkU$2Q" role="37wK5m">
             <node concept="3clFbS" id="44DBaIkU$2R" role="1bW5cS">
@@ -3111,7 +3111,7 @@
                   <node concept="2OqwBi" id="44DBaIkU$2V" role="33vP2m">
                     <node concept="369mXd" id="44DBaIkU$2W" role="2Oq$k0" />
                     <node concept="liA8E" id="44DBaIkU$2X" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                 </node>
@@ -3127,7 +3127,7 @@
                       <ref role="3cqZAo" node="44DBaIkU$2T" resolve="editorContext" />
                     </node>
                     <node concept="liA8E" id="44DBaIkU$33" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:#EditorContext.getContextAssistantManager():jetbrains.mps.openapi.editor.assist.ContextAssistantManager" resolve="getContextAssistantManager" />
+                      <ref role="37wK5l" to="exr9:~EditorContext.getContextAssistantManager()" resolve="getContextAssistantManager" />
                     </node>
                   </node>
                 </node>
@@ -3138,7 +3138,7 @@
                     <ref role="3cqZAo" node="44DBaIkU$2Z" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkU$37" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.updateImmediately():void" resolve="updateImmediately" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.updateImmediately()" resolve="updateImmediately" />
                   </node>
                 </node>
               </node>
@@ -3148,7 +3148,7 @@
                     <ref role="3cqZAo" node="44DBaIkU$2Z" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkU$3b" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveAssistant():jetbrains.mps.openapi.editor.assist.ContextAssistant" resolve="getActiveAssistant" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveAssistant()" resolve="getActiveAssistant" />
                   </node>
                 </node>
               </node>
@@ -3158,7 +3158,7 @@
                     <ref role="3cqZAo" node="44DBaIkU$2Z" resolve="contextAssistantManager" />
                   </node>
                   <node concept="liA8E" id="44DBaIkU$3f" role="2OqNvi">
-                    <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                    <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                   </node>
                 </node>
               </node>
@@ -3170,11 +3170,11 @@
                         <ref role="3cqZAo" node="44DBaIkU$2Z" resolve="contextAssistantManager" />
                       </node>
                       <node concept="liA8E" id="44DBaIkU$3m" role="2OqNvi">
-                        <ref role="37wK5l" to="2rdi:#ContextAssistantManager.getActiveMenuItems():java.util.List" resolve="getActiveMenuItems" />
+                        <ref role="37wK5l" to="2rdi:~ContextAssistantManager.getActiveMenuItems()" resolve="getActiveMenuItems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="44DBaIkU$3n" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:#List.size():int" resolve="size" />
+                      <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                     </node>
                   </node>
                   <node concept="3cmrfG" id="44DBaIkUYD3" role="3uHU7w">

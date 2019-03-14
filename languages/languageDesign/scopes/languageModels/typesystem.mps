@@ -177,7 +177,7 @@
               </node>
             </node>
             <node concept="liA8E" id="70qA1hy$wx6" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="70qA1hy$wx7" role="37wK5m">
                 <property role="Xl_RC" value="getScope" />
               </node>
@@ -255,7 +255,7 @@
               </node>
             </node>
             <node concept="liA8E" id="70qA1hy$CJO" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="70qA1hy$CJP" role="37wK5m">
                 <property role="Xl_RC" value="getScope" />
               </node>
@@ -331,7 +331,7 @@
               </node>
             </node>
             <node concept="liA8E" id="70qA1hy$IEa" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="70qA1hy$IEb" role="37wK5m">
                 <property role="Xl_RC" value="getScope" />
               </node>

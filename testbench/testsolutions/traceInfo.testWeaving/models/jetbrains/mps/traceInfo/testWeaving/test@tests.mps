@@ -724,13 +724,13 @@
                           <ref role="3cqZAo" node="42TXcA3KBjA" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="42TXcA3L5mV" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                          <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
                         </node>
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="42TXcA3L5mW" role="2OqNvi">
-                    <ref role="37wK5l" to="fwk:#TraceInfoProvider.debugInfo(java.lang.String):java.util.stream.Stream" resolve="debugInfo" />
+                    <ref role="37wK5l" to="fwk:~TraceInfoProvider.debugInfo(java.lang.String)" resolve="debugInfo" />
                     <node concept="2OqwBi" id="42TXcA3L5mX" role="37wK5m">
                       <node concept="2OqwBi" id="42TXcA3L5mY" role="2Oq$k0">
                         <node concept="37vLTw" id="42TXcA3L5mZ" role="2Oq$k0">
@@ -743,11 +743,11 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="42TXcA3L5n2" role="2OqNvi">
-                  <ref role="37wK5l" to="1ctc:#Stream.findFirst():java.util.Optional" resolve="findFirst" />
+                  <ref role="37wK5l" to="1ctc:~Stream.findFirst()" resolve="findFirst" />
                 </node>
               </node>
               <node concept="liA8E" id="42TXcA3L5n3" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#Optional.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="33ny:~Optional.get()" resolve="get" />
               </node>
             </node>
           </node>
@@ -779,7 +779,7 @@
                 <ref role="3cqZAo" node="42TXcA3L5mN" resolve="di" />
               </node>
               <node concept="liA8E" id="42TXcA3Ldu6" role="2OqNvi">
-                <ref role="37wK5l" to="fwk:#DebugInfo.getTracedNodesForPosition(java.lang.String,int):java.util.List" resolve="getTracedNodesForPosition" />
+                <ref role="37wK5l" to="fwk:~DebugInfo.getTracedNodesForPosition(java.lang.String,int)" resolve="getTracedNodesForPosition" />
                 <node concept="3cpWs3" id="42TXcA3Ldu7" role="37wK5m">
                   <node concept="Xl_RD" id="42TXcA3Ldu8" role="3uHU7w">
                     <property role="Xl_RC" value=".java" />
@@ -809,20 +809,20 @@
                   <ref role="3cqZAo" node="42TXcA3Ldu3" resolve="tracedNodes" />
                 </node>
                 <node concept="liA8E" id="42TXcA3Lnvf" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#List.get(int):java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
                   <node concept="3cmrfG" id="42TXcA3Ln_q" role="37wK5m">
                     <property role="3cmrfH" value="0" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="42TXcA3Lo5o" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:#SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SNode" resolve="resolve" />
+                <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                 <node concept="2OqwBi" id="42TXcA3Lokb" role="37wK5m">
                   <node concept="37vLTw" id="42TXcA3LoaY" role="2Oq$k0">
                     <ref role="3cqZAo" node="42TXcA3KBjA" resolve="myProject" />
                   </node>
                   <node concept="liA8E" id="42TXcA3LpEx" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:#Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                    <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
                   </node>
                 </node>
               </node>
@@ -832,7 +832,7 @@
                 <ref role="3cqZAo" node="42TXcA3Ldu3" resolve="tracedNodes" />
               </node>
               <node concept="liA8E" id="42TXcA3LiFq" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.isEmpty():boolean" resolve="isEmpty" />
+                <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
               </node>
             </node>
           </node>

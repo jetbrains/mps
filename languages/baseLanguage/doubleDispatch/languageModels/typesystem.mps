@@ -1398,7 +1398,7 @@
                           <ref role="2Gs0qQ" node="6clv3_skf7w" resolve="p" />
                         </node>
                         <node concept="liA8E" id="6clv3_sknAM" role="2OqNvi">
-                          <ref role="37wK5l" to="33ny:#Iterator.next():java.lang.Object" resolve="next" />
+                          <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                         </node>
                       </node>
                     </node>
@@ -1827,7 +1827,7 @@
                 <ref role="3cqZAo" node="5WzrsV0ymO2" resolve="methodName" />
               </node>
               <node concept="liA8E" id="6clv3_syiiz" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                 <node concept="2OqwBi" id="6clv3_syii$" role="37wK5m">
                   <node concept="37vLTw" id="6clv3_syii_" role="2Oq$k0">
                     <ref role="3cqZAo" node="6clv3_sycXq" resolve="other" />
@@ -1943,7 +1943,7 @@
                   <ref role="3cqZAo" node="5WzrsV0ymO2" resolve="methodName" />
                 </node>
                 <node concept="liA8E" id="6clv3_sxTsU" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#String.hashCode():int" resolve="hashCode" />
+                  <ref role="37wK5l" to="wyt6:~String.hashCode()" resolve="hashCode" />
                 </node>
               </node>
               <node concept="1eOMI4" id="2JMw7nsDtcE" role="3uHU7w">
@@ -2078,7 +2078,7 @@
         <node concept="3cpWs6" id="7mMqb2Z5I0$" role="3cqZAp">
           <node concept="2OqwBi" id="7mMqb2Z5JSs" role="3cqZAk">
             <node concept="liA8E" id="7mMqb2Z5KTF" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="2OqwBi" id="7mMqb2Z5M9x" role="37wK5m">
                 <node concept="37vLTw" id="7mMqb2Z5Lsa" role="2Oq$k0">
                   <ref role="3cqZAo" node="7mMqb2Z5rs2" resolve="typ2" />
@@ -2140,7 +2140,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="7mMqb2Z63Q3" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:#Object.hashCode():int" resolve="hashCode" />
+                  <ref role="37wK5l" to="wyt6:~Object.hashCode()" resolve="hashCode" />
                 </node>
               </node>
             </node>
@@ -2157,7 +2157,7 @@
               </node>
             </node>
             <node concept="liA8E" id="7mMqb2Z68II" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#String.hashCode():int" resolve="hashCode" />
+              <ref role="37wK5l" to="wyt6:~String.hashCode()" resolve="hashCode" />
             </node>
           </node>
         </node>

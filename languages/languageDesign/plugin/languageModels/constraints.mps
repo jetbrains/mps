@@ -1313,7 +1313,7 @@
                           <ref role="3cqZAo" node="49zfj5SbiFR" resolve="referenceText" />
                         </node>
                         <node concept="liA8E" id="49zfj5Sbn4d" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:#String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                          <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                           <node concept="37vLTw" id="49zfj5Sbnqm" role="37wK5m">
                             <ref role="3cqZAo" node="49zfj5Sb3rd" resolve="prefix" />
                           </node>
@@ -1380,7 +1380,7 @@
                           <ref role="3cqZAo" node="49zfj5Sb3rt" resolve="refText" />
                         </node>
                         <node concept="liA8E" id="49zfj5SbqFU" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:#String.equals(java.lang.Object):boolean" resolve="equals" />
+                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                           <node concept="1rXfSq" id="49zfj5SbqFV" role="37wK5m">
                             <ref role="37wK5l" node="7Afu0ZGY7We" resolve="getReferenceText" />
                             <node concept="37vLTw" id="49zfj5SbqFW" role="37wK5m">
@@ -1560,7 +1560,7 @@
               <ref role="3cqZAo" node="7Afu0ZGYEP6" resolve="allIModels" />
             </node>
             <node concept="liA8E" id="7Afu0ZGYHXG" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="7Afu0ZGYI6D" role="37wK5m">
                 <ref role="3cqZAo" node="7Afu0ZGY5qP" resolve="myModel" />
               </node>
@@ -1573,10 +1573,10 @@
               <ref role="3cqZAo" node="7Afu0ZGYEP6" resolve="allIModels" />
             </node>
             <node concept="liA8E" id="7Afu0ZGYGIc" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.addAll(java.util.Collection):boolean" resolve="addAll" />
+              <ref role="37wK5l" to="33ny:~List.addAll(java.util.Collection)" resolve="addAll" />
               <node concept="2YIFZM" id="7Afu0ZGYEP7" role="37wK5m">
                 <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
-                <ref role="37wK5l" to="w1kc:#SModelOperations.allImportedModels(org.jetbrains.mps.openapi.model.SModel):java.util.List" resolve="allImportedModels" />
+                <ref role="37wK5l" to="w1kc:~SModelOperations.allImportedModels(org.jetbrains.mps.openapi.model.SModel)" resolve="allImportedModels" />
                 <node concept="37vLTw" id="7Afu0ZGYEP8" role="37wK5m">
                   <ref role="3cqZAo" node="7Afu0ZGY5qP" resolve="myModel" />
                 </node>
@@ -1598,7 +1598,7 @@
                 <ref role="3cqZAo" node="7Afu0ZGYEP6" resolve="allIModels" />
               </node>
               <node concept="liA8E" id="7Afu0ZGYKmz" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:#List.contains(java.lang.Object):boolean" resolve="contains" />
+                <ref role="37wK5l" to="33ny:~List.contains(java.lang.Object)" resolve="contains" />
                 <node concept="2OqwBi" id="7Afu0ZGYKm$" role="37wK5m">
                   <node concept="37vLTw" id="7Afu0ZGYKm_" role="2Oq$k0">
                     <ref role="3cqZAo" node="7Afu0ZGYoAa" resolve="staticField" />

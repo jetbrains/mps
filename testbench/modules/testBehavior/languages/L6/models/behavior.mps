@@ -226,7 +226,7 @@
         <node concept="3cpWs6" id="4RMBeRWcipX" role="3cqZAp">
           <node concept="2YIFZM" id="4RMBeRWcBt$" role="3cqZAk">
             <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-            <ref role="37wK5l" to="wyt6:#Integer.valueOf(int):java.lang.Integer" resolve="valueOf" />
+            <ref role="37wK5l" to="wyt6:~Integer.valueOf(int)" resolve="valueOf" />
             <node concept="3cmrfG" id="4RMBeRWcBtT" role="37wK5m">
               <property role="3cmrfH" value="1" />
             </node>
@@ -477,7 +477,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4RMBeRWciRz" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Integer.byteValue():byte" resolve="byteValue" />
+              <ref role="37wK5l" to="wyt6:~Integer.byteValue()" resolve="byteValue" />
             </node>
           </node>
         </node>

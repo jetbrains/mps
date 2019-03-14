@@ -285,7 +285,7 @@
         </node>
         <node concept="3clFbF" id="1o1N$5kG2xR" role="3cqZAp">
           <node concept="2YIFZM" id="1o1N$5kG2xS" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:#System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void" resolve="arraycopy" />
+            <ref role="37wK5l" to="wyt6:~System.arraycopy(java.lang.Object,int,java.lang.Object,int,int)" resolve="arraycopy" />
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
             <node concept="37vLTw" id="1o1N$5kG2xT" role="37wK5m">
               <ref role="3cqZAo" node="1o1N$5kG2y4" resolve="dependencies" />
@@ -343,7 +343,7 @@
               <ref role="3cqZAo" node="1o1N$5kG2xb" resolve="myMainProperty" />
             </node>
             <node concept="liA8E" id="1o1N$5kG2yf" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:#ReadableProperty.get():java.lang.Object" resolve="get" />
+              <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
             </node>
           </node>
         </node>
@@ -418,7 +418,7 @@
               <ref role="3cqZAo" node="1o1N$5kG2x4" resolve="myHandlers" />
             </node>
             <node concept="liA8E" id="1o1N$5kG2yH" role="2OqNvi">
-              <ref role="37wK5l" to="x7mh:#Listeners.isEmpty():boolean" resolve="isEmpty" />
+              <ref role="37wK5l" to="x7mh:~Listeners.isEmpty()" resolve="isEmpty" />
             </node>
           </node>
         </node>
@@ -434,7 +434,7 @@
                 <ref role="3cqZAo" node="1o1N$5kG2x4" resolve="myHandlers" />
               </node>
               <node concept="liA8E" id="1o1N$5kG2yN" role="2OqNvi">
-                <ref role="37wK5l" to="x7mh:#Listeners.add(java.lang.Object):jetbrains.jetpad.base.Registration" resolve="add" />
+                <ref role="37wK5l" to="x7mh:~Listeners.add(java.lang.Object)" resolve="add" />
                 <node concept="37vLTw" id="1o1N$5kG2yO" role="37wK5m">
                   <ref role="3cqZAo" node="1o1N$5kG2yj" resolve="handler" />
                 </node>
@@ -463,7 +463,7 @@
                           <ref role="3cqZAo" node="1o1N$5kG2yJ" resolve="reg" />
                         </node>
                         <node concept="liA8E" id="1o1N$5kG2z1" role="2OqNvi">
-                          <ref role="37wK5l" to="chl9:#Registration.remove():void" resolve="remove" />
+                          <ref role="37wK5l" to="chl9:~Registration.remove()" resolve="remove" />
                         </node>
                       </node>
                     </node>
@@ -480,7 +480,7 @@
                           <ref role="3cqZAo" node="1o1N$5kG2x4" resolve="myHandlers" />
                         </node>
                         <node concept="liA8E" id="1o1N$5kG2z8" role="2OqNvi">
-                          <ref role="37wK5l" to="x7mh:#Listeners.isEmpty():boolean" resolve="isEmpty" />
+                          <ref role="37wK5l" to="x7mh:~Listeners.isEmpty()" resolve="isEmpty" />
                         </node>
                       </node>
                     </node>
@@ -591,7 +591,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1o1N$5kG2zP" role="2OqNvi">
-                    <ref role="37wK5l" to="x7mh:#EventSource.addHandler(jetbrains.jetpad.model.event.EventHandler):jetbrains.jetpad.base.Registration" resolve="addHandler" />
+                    <ref role="37wK5l" to="x7mh:~EventSource.addHandler(jetbrains.jetpad.model.event.EventHandler)" resolve="addHandler" />
                     <node concept="37vLTw" id="1o1N$5kG2zQ" role="37wK5m">
                       <ref role="3cqZAo" node="1o1N$5kG2zc" resolve="handler" />
                     </node>
@@ -650,7 +650,7 @@
                   <ref role="3cqZAo" node="1o1N$5kG2$e" resolve="reg" />
                 </node>
                 <node concept="liA8E" id="1o1N$5kG2$d" role="2OqNvi">
-                  <ref role="37wK5l" to="chl9:#Registration.remove():void" resolve="remove" />
+                  <ref role="37wK5l" to="chl9:~Registration.remove()" resolve="remove" />
                 </node>
               </node>
             </node>
@@ -749,7 +749,7 @@
                   <ref role="3cqZAo" node="1o1N$5kG2x4" resolve="myHandlers" />
                 </node>
                 <node concept="liA8E" id="1o1N$5kG2$N" role="2OqNvi">
-                  <ref role="37wK5l" to="x7mh:#Listeners.fire(jetbrains.jetpad.model.event.ListenerCaller):void" resolve="fire" />
+                  <ref role="37wK5l" to="x7mh:~Listeners.fire(jetbrains.jetpad.model.event.ListenerCaller)" resolve="fire" />
                   <node concept="2ShNRf" id="1o1N$5kG2$O" role="37wK5m">
                     <node concept="YeOm9" id="1o1N$5kG2$P" role="2ShVmc">
                       <node concept="1Y3b0j" id="1o1N$5kG2$Q" role="YeSDq">
@@ -784,7 +784,7 @@
                                   <ref role="3cqZAo" node="1o1N$5kG2$V" resolve="handler" />
                                 </node>
                                 <node concept="liA8E" id="1o1N$5kG2_4" role="2OqNvi">
-                                  <ref role="37wK5l" to="x7mh:#EventHandler.onEvent(java.lang.Object):void" resolve="onEvent" />
+                                  <ref role="37wK5l" to="x7mh:~EventHandler.onEvent(java.lang.Object)" resolve="onEvent" />
                                   <node concept="37vLTw" id="1o1N$5kG2_5" role="37wK5m">
                                     <ref role="3cqZAo" node="1o1N$5kG2$C" resolve="event" />
                                   </node>

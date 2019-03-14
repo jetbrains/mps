@@ -375,14 +375,14 @@
                     <property role="Xl_RC" value="T" />
                   </node>
                   <node concept="2YIFZM" id="46Yg2xrdqiE" role="3uHU7w">
-                    <ref role="37wK5l" to="wyt6:#Character.toUpperCase(char):char" resolve="toUpperCase" />
+                    <ref role="37wK5l" to="wyt6:~Character.toUpperCase(char)" resolve="toUpperCase" />
                     <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
                     <node concept="2OqwBi" id="46Yg2xrdqiF" role="37wK5m">
                       <node concept="37vLTw" id="3GM_nagTwna" role="2Oq$k0">
                         <ref role="3cqZAo" node="46Yg2xrdqis" resolve="p" />
                       </node>
                       <node concept="liA8E" id="46Yg2xrdqiH" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
+                        <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                         <node concept="3cmrfG" id="46Yg2xrdqiI" role="37wK5m">
                           <property role="3cmrfH" value="0" />
                         </node>
@@ -482,14 +482,14 @@
                         <property role="Xl_RC" value="[gnu.trove]T" />
                       </node>
                       <node concept="2YIFZM" id="4Liorovq4O4" role="3uHU7w">
-                        <ref role="37wK5l" to="wyt6:#Character.toUpperCase(char):char" resolve="toUpperCase" />
+                        <ref role="37wK5l" to="wyt6:~Character.toUpperCase(char)" resolve="toUpperCase" />
                         <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
                         <node concept="2OqwBi" id="4Liorovq4Om" role="37wK5m">
                           <node concept="37vLTw" id="3GM_nagTsTd" role="2Oq$k0">
                             <ref role="3cqZAo" node="4Liorovq4EB" resolve="p" />
                           </node>
                           <node concept="liA8E" id="4Liorovq4OE" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
+                            <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                             <node concept="3cmrfG" id="4Liorovq4OV" role="37wK5m">
                               <property role="3cmrfH" value="0" />
                             </node>
@@ -568,14 +568,14 @@
                           <property role="Xl_RC" value="[gnu.trove]T" />
                         </node>
                         <node concept="2YIFZM" id="4Liorovq4Q$" role="3uHU7w">
-                          <ref role="37wK5l" to="wyt6:#Character.toUpperCase(char):char" resolve="toUpperCase" />
+                          <ref role="37wK5l" to="wyt6:~Character.toUpperCase(char)" resolve="toUpperCase" />
                           <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
                           <node concept="2OqwBi" id="4Liorovq4Q_" role="37wK5m">
                             <node concept="37vLTw" id="3GM_nagTzKb" role="2Oq$k0">
                               <ref role="3cqZAo" node="4Liorovq4Qm" resolve="p" />
                             </node>
                             <node concept="liA8E" id="4Liorovq4QB" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
+                              <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                               <node concept="3cmrfG" id="4Liorovq4QC" role="37wK5m">
                                 <property role="3cmrfH" value="0" />
                               </node>
@@ -614,7 +614,7 @@
               <node concept="Xjq3P" id="4LiorovoSKL" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYWQ" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.remove(int,int):void" resolve="remove" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.remove(int,int)" resolve="remove" />
               <node concept="37vLTw" id="2BHiRxgmuXS" role="37wK5m">
                 <ref role="3cqZAo" node="4LiorovoQjq" resolve="fromIdx" />
               </node>
@@ -641,7 +641,7 @@
       <node concept="3clFbS" id="4LiorovoQjy" role="3clF47">
         <node concept="3clFbF" id="4Liorovqrkz" role="3cqZAp">
           <node concept="3nyPlj" id="4Liorovqrk$" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractList.hashCode():int" resolve="hashCode" />
+            <ref role="37wK5l" to="33ny:~AbstractList.hashCode()" resolve="hashCode" />
           </node>
         </node>
       </node>
@@ -705,13 +705,13 @@
                                     </node>
                                     <node concept="2YIFZM" id="46Yg2xrd$yY" role="3uHU7w">
                                       <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
-                                      <ref role="37wK5l" to="wyt6:#Character.toUpperCase(char):char" resolve="toUpperCase" />
+                                      <ref role="37wK5l" to="wyt6:~Character.toUpperCase(char)" resolve="toUpperCase" />
                                       <node concept="2OqwBi" id="46Yg2xrd$yZ" role="37wK5m">
                                         <node concept="37vLTw" id="3GM_nagTuwT" role="2Oq$k0">
                                           <ref role="3cqZAo" node="46Yg2xrd$yK" resolve="p" />
                                         </node>
                                         <node concept="liA8E" id="46Yg2xrd$z1" role="2OqNvi">
-                                          <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
+                                          <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                                           <node concept="3cmrfG" id="46Yg2xrd$z2" role="37wK5m">
                                             <property role="3cmrfH" value="0" />
                                           </node>
@@ -782,13 +782,13 @@
                               </node>
                               <node concept="2YIFZM" id="46Yg2xrd$yp" role="3uHU7w">
                                 <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
-                                <ref role="37wK5l" to="wyt6:#Character.toUpperCase(char):char" resolve="toUpperCase" />
+                                <ref role="37wK5l" to="wyt6:~Character.toUpperCase(char)" resolve="toUpperCase" />
                                 <node concept="2OqwBi" id="46Yg2xrd$yq" role="37wK5m">
                                   <node concept="37vLTw" id="3GM_nagTyJz" role="2Oq$k0">
                                     <ref role="3cqZAo" node="46Yg2xrd$yb" resolve="p" />
                                   </node>
                                   <node concept="liA8E" id="46Yg2xrd$ys" role="2OqNvi">
-                                    <ref role="37wK5l" to="wyt6:#String.charAt(int):char" resolve="charAt" />
+                                    <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                                     <node concept="3cmrfG" id="46Yg2xrd$yt" role="37wK5m">
                                       <property role="3cmrfH" value="0" />
                                     </node>
@@ -818,7 +818,7 @@
         </node>
         <node concept="3clFbF" id="4Liorovqrm0" role="3cqZAp">
           <node concept="3nyPlj" id="4Liorovqrm2" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractList.equals(java.lang.Object):boolean" resolve="equals" />
+            <ref role="37wK5l" to="33ny:~AbstractList.equals(java.lang.Object)" resolve="equals" />
             <node concept="37vLTw" id="2BHiRxglazD" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQjA" resolve="that" />
             </node>
@@ -873,7 +873,7 @@
                   <node concept="Xjq3P" id="4LiorovoYXC" role="2Oq$k0" />
                 </node>
                 <node concept="liA8E" id="4LiorovoYXH" role="2OqNvi">
-                  <ref role="37wK5l" to="lktc:#TByteArrayList.subList(int,int):gnu.trove.TByteArrayList" resolve="subList" />
+                  <ref role="37wK5l" to="lktc:~TByteArrayList.subList(int,int)" resolve="subList" />
                   <node concept="37vLTw" id="2BHiRxglB_V" role="37wK5m">
                     <ref role="3cqZAo" node="4LiorovoQjH" resolve="fromIdx" />
                   </node>
@@ -943,7 +943,7 @@
               <node concept="Xjq3P" id="4LiorovoYXX" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYY2" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.clear():void" resolve="clear" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.clear()" resolve="clear" />
             </node>
           </node>
         </node>
@@ -972,7 +972,7 @@
               <node concept="Xjq3P" id="4LiorovoYYk" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYYu" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.lastIndexOf(byte):int" resolve="lastIndexOf" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.lastIndexOf(byte)" resolve="lastIndexOf" />
               <node concept="2OqwBi" id="4LiorovoYYv" role="37wK5m">
                 <node concept="liA8E" id="4LiorovoYYw" role="2OqNvi">
                   <ref role="37wK5l" node="4LiorovoSHb" resolve="unwrap" />
@@ -1010,7 +1010,7 @@
               <node concept="Xjq3P" id="4LiorovoYYJ" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYYK" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.indexOf(byte):int" resolve="indexOf" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.indexOf(byte)" resolve="indexOf" />
               <node concept="2OqwBi" id="4LiorovoYYL" role="37wK5m">
                 <node concept="liA8E" id="4LiorovoYYM" role="2OqNvi">
                   <ref role="37wK5l" node="4LiorovoSHb" resolve="unwrap" />
@@ -1062,7 +1062,7 @@
               <node concept="Xjq3P" id="4LiorovoYYT" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYYU" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.add(byte):void" resolve="add" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.add(byte)" resolve="add" />
               <node concept="2OqwBi" id="4LiorovoYYV" role="37wK5m">
                 <node concept="liA8E" id="4LiorovoYYW" role="2OqNvi">
                   <ref role="37wK5l" node="4LiorovoSHb" resolve="unwrap" />
@@ -1158,7 +1158,7 @@
       <node concept="3clFbS" id="4LiorovoQkr" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQmv" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQmw" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractList.addAll(int,java.util.Collection):boolean" resolve="addAll" />
+            <ref role="37wK5l" to="33ny:~AbstractList.addAll(int,java.util.Collection)" resolve="addAll" />
             <node concept="37vLTw" id="2BHiRxgmI6W" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQkl" resolve="idx" />
             </node>
@@ -1189,7 +1189,7 @@
               <node concept="Xjq3P" id="4LiorovoYZ7" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYZc" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.remove(int):byte" resolve="remove" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.remove(int)" resolve="remove" />
               <node concept="37vLTw" id="2BHiRxghbDP" role="37wK5m">
                 <ref role="3cqZAo" node="4LiorovoQkv" resolve="e" />
               </node>
@@ -1256,7 +1256,7 @@
               <node concept="Xjq3P" id="4LiorovoYZh" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYZx" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.insert(int,byte):void" resolve="insert" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.insert(int,byte)" resolve="insert" />
               <node concept="37vLTw" id="2BHiRxglIdt" role="37wK5m">
                 <ref role="3cqZAo" node="4LiorovoQk_" resolve="index" />
               </node>
@@ -1307,7 +1307,7 @@
       <node concept="3clFbS" id="4LiorovoQkL" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQmH" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQmI" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractList.set(int,java.lang.Object):java.lang.Object" resolve="set" />
+            <ref role="37wK5l" to="33ny:~AbstractList.set(int,java.lang.Object)" resolve="set" />
             <node concept="37vLTw" id="2BHiRxgl6r3" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQkH" resolve="p0" />
             </node>
@@ -1358,7 +1358,7 @@
                   <node concept="Xjq3P" id="4LiorovoYZJ" role="2Oq$k0" />
                 </node>
                 <node concept="liA8E" id="4LiorovoYZO" role="2OqNvi">
-                  <ref role="37wK5l" to="lktc:#TByteArrayList.get(int):byte" resolve="get" />
+                  <ref role="37wK5l" to="lktc:~TByteArrayList.get(int)" resolve="get" />
                   <node concept="37vLTw" id="2BHiRxgm9$c" role="37wK5m">
                     <ref role="3cqZAo" node="4LiorovoQkP" resolve="index" />
                   </node>
@@ -1406,7 +1406,7 @@
               <node concept="Xjq3P" id="4LiorovoYZT" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoYZY" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.toString():java.lang.String" resolve="toString" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.toString()" resolve="toString" />
             </node>
           </node>
         </node>
@@ -1429,7 +1429,7 @@
       <node concept="3clFbS" id="4LiorovoQl2" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQmT" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQmU" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractCollection.retainAll(java.util.Collection):boolean" resolve="retainAll" />
+            <ref role="37wK5l" to="33ny:~AbstractCollection.retainAll(java.util.Collection)" resolve="retainAll" />
             <node concept="37vLTw" id="2BHiRxgm9vY" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQkZ" resolve="that" />
             </node>
@@ -1454,7 +1454,7 @@
       <node concept="3clFbS" id="4LiorovoQl9" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQmX" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQmY" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractCollection.removeAll(java.util.Collection):boolean" resolve="removeAll" />
+            <ref role="37wK5l" to="33ny:~AbstractCollection.removeAll(java.util.Collection)" resolve="removeAll" />
             <node concept="37vLTw" id="2BHiRxgm9x2" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQl6" resolve="that" />
             </node>
@@ -1497,7 +1497,7 @@
       <node concept="3clFbS" id="4LiorovoQlh" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQn1" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQn2" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractCollection.addAll(java.util.Collection):boolean" resolve="addAll" />
+            <ref role="37wK5l" to="33ny:~AbstractCollection.addAll(java.util.Collection)" resolve="addAll" />
             <node concept="37vLTw" id="2BHiRxglm_c" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQld" resolve="that" />
             </node>
@@ -1522,7 +1522,7 @@
       <node concept="3clFbS" id="4LiorovoQlo" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQn5" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQn6" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractCollection.containsAll(java.util.Collection):boolean" resolve="containsAll" />
+            <ref role="37wK5l" to="33ny:~AbstractCollection.containsAll(java.util.Collection)" resolve="containsAll" />
             <node concept="37vLTw" id="2BHiRxgmyAi" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQll" resolve="that" />
             </node>
@@ -1618,7 +1618,7 @@
       <node concept="3clFbS" id="4LiorovoQlC" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQnd" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQne" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractCollection.toArray(java.lang.Object[]):java.lang.Object[]" resolve="toArray" />
+            <ref role="37wK5l" to="33ny:~AbstractCollection.toArray(java.lang.Object[])" resolve="toArray" />
             <node concept="37vLTw" id="2BHiRxgm9ei" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQl_" resolve="array" />
             </node>
@@ -1640,7 +1640,7 @@
       <node concept="3clFbS" id="4LiorovoQlH" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQnh" role="3cqZAp">
           <node concept="3nyPlj" id="4LiorovoQni" role="3clFbG">
-            <ref role="37wK5l" to="33ny:#AbstractCollection.toArray():java.lang.Object[]" resolve="toArray" />
+            <ref role="37wK5l" to="33ny:~AbstractCollection.toArray()" resolve="toArray" />
           </node>
         </node>
       </node>
@@ -1694,7 +1694,7 @@
                 <node concept="Xjq3P" id="4LiorovoZ1C" role="2Oq$k0" />
               </node>
               <node concept="liA8E" id="4LiorovoZ1D" role="2OqNvi">
-                <ref role="37wK5l" to="lktc:#TByteArrayList.contains(byte):boolean" resolve="contains" />
+                <ref role="37wK5l" to="lktc:~TByteArrayList.contains(byte)" resolve="contains" />
                 <node concept="2OqwBi" id="4LiorovoZ1E" role="37wK5m">
                   <node concept="liA8E" id="4LiorovoZ1F" role="2OqNvi">
                     <ref role="37wK5l" node="4LiorovoSHb" resolve="unwrap" />
@@ -1727,7 +1727,7 @@
               <node concept="Xjq3P" id="4LiorovoZ0g" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoZ0l" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.isEmpty():boolean" resolve="isEmpty" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.isEmpty()" resolve="isEmpty" />
             </node>
           </node>
         </node>
@@ -1750,7 +1750,7 @@
               <node concept="Xjq3P" id="4LiorovoZ0p" role="2Oq$k0" />
             </node>
             <node concept="liA8E" id="4LiorovoZ0u" role="2OqNvi">
-              <ref role="37wK5l" to="lktc:#TByteArrayList.size():int" resolve="size" />
+              <ref role="37wK5l" to="lktc:~TByteArrayList.size()" resolve="size" />
             </node>
           </node>
         </node>
@@ -1819,7 +1819,7 @@
                 <node concept="Xjq3P" id="4LiorovoZ2K" role="2Oq$k0" />
               </node>
               <node concept="liA8E" id="4LiorovoZ2P" role="2OqNvi">
-                <ref role="37wK5l" to="lktc:#TByteArrayList.indexOf(byte):int" resolve="indexOf" />
+                <ref role="37wK5l" to="lktc:~TByteArrayList.indexOf(byte)" resolve="indexOf" />
                 <node concept="37vLTw" id="2BHiRxgm0rh" role="37wK5m">
                   <ref role="3cqZAo" node="4LiorovoZ2z" resolve="primValue" />
                 </node>
@@ -1838,7 +1838,7 @@
                   <node concept="Xjq3P" id="4LiorovoZ3t" role="2Oq$k0" />
                 </node>
                 <node concept="liA8E" id="4LiorovoZ3u" role="2OqNvi">
-                  <ref role="37wK5l" to="lktc:#TByteArrayList.remove(int):byte" resolve="remove" />
+                  <ref role="37wK5l" to="lktc:~TByteArrayList.remove(int)" resolve="remove" />
                   <node concept="37vLTw" id="3GM_nagT$nb" role="37wK5m">
                     <ref role="3cqZAo" node="4LiorovoZ2F" resolve="idx" />
                   </node>
@@ -1896,7 +1896,7 @@
       <node concept="3clFbS" id="4LiorovoQn$" role="3clF47">
         <node concept="3clFbF" id="4LiorovoQnK" role="3cqZAp">
           <node concept="2YIFZM" id="4LiorovoQom" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:#Byte.valueOf(byte):java.lang.Byte" resolve="valueOf" />
+            <ref role="37wK5l" to="wyt6:~Byte.valueOf(byte)" resolve="valueOf" />
             <ref role="1Pybhc" to="wyt6:~Byte" resolve="Byte" />
             <node concept="37vLTw" id="2BHiRxgmzs4" role="37wK5m">
               <ref role="3cqZAo" node="4LiorovoQnB" resolve="primValue" />
@@ -1977,7 +1977,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4LiorovoZ1X" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:#Byte.byteValue():byte" resolve="byteValue" />
+              <ref role="37wK5l" to="wyt6:~Byte.byteValue()" resolve="byteValue" />
               <node concept="1ZhdrF" id="4LiorovoZ1Y" role="lGtFl">
                 <property role="2qtEX8" value="baseMethodDeclaration" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
@@ -2182,7 +2182,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4LiorovqfOt" role="2OqNvi">
-                <ref role="37wK5l" to="lktc:#TByteArrayList.remove(int):byte" resolve="remove" />
+                <ref role="37wK5l" to="lktc:~TByteArrayList.remove(int)" resolve="remove" />
                 <node concept="2OqwBi" id="4LiorovqfOu" role="37wK5m">
                   <node concept="2OwXpG" id="4LiorovqfOv" role="2OqNvi">
                     <ref role="2Oxat5" node="4LiorovqfNJ" resolve="nextIdx" />
@@ -2263,7 +2263,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4LiorovqfPl" role="2OqNvi">
-                    <ref role="37wK5l" to="lktc:#TByteArrayList.size():int" resolve="size" />
+                    <ref role="37wK5l" to="lktc:~TByteArrayList.size()" resolve="size" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="4LiorovqfOY" role="3uHU7B">
@@ -2300,7 +2300,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="4LiorovqpKi" role="2OqNvi">
-                        <ref role="37wK5l" to="lktc:#TByteArrayList.get(int):byte" resolve="get" />
+                        <ref role="37wK5l" to="lktc:~TByteArrayList.get(int)" resolve="get" />
                         <node concept="2$sJ78" id="4LiorovqpKj" role="37wK5m">
                           <node concept="2OqwBi" id="4LiorovqpKk" role="2$L3a6">
                             <node concept="2OwXpG" id="4LiorovqpKl" role="2OqNvi">
@@ -2346,7 +2346,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4Liorovqg9I" role="2OqNvi">
-                    <ref role="37wK5l" to="lktc:#TByteArrayList.size():int" resolve="size" />
+                    <ref role="37wK5l" to="lktc:~TByteArrayList.size()" resolve="size" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="4Liorovqg9J" role="3uHU7B">
@@ -2411,7 +2411,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4Liorovqga_" role="2OqNvi">
-                    <ref role="37wK5l" to="lktc:#TByteArrayList.size():int" resolve="size" />
+                    <ref role="37wK5l" to="lktc:~TByteArrayList.size()" resolve="size" />
                   </node>
                 </node>
               </node>
@@ -2442,7 +2442,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="4LiorovqpJS" role="2OqNvi">
-                        <ref role="37wK5l" to="lktc:#TByteArrayList.get(int):byte" resolve="get" />
+                        <ref role="37wK5l" to="lktc:~TByteArrayList.get(int)" resolve="get" />
                         <node concept="3uNrnE" id="4LiorovqpJT" role="37wK5m">
                           <node concept="2OqwBi" id="4LiorovqpJU" role="2$L3a6">
                             <node concept="2OwXpG" id="4LiorovqpJV" role="2OqNvi">
@@ -2494,7 +2494,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4LiorovqgaP" role="2OqNvi">
-                    <ref role="37wK5l" to="lktc:#TByteArrayList.size():int" resolve="size" />
+                    <ref role="37wK5l" to="lktc:~TByteArrayList.size()" resolve="size" />
                   </node>
                 </node>
               </node>

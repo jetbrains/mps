@@ -258,7 +258,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2FhC$BdBTjE" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:#SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
               </node>
             </node>
           </node>
@@ -270,11 +270,11 @@
             <node concept="17QB3L" id="6ON23Nk9$Jd" role="1tU5fm" />
             <node concept="2OqwBi" id="6ON23Nka9OW" role="33vP2m">
               <node concept="2YIFZM" id="6ON23Nka9uP" role="2Oq$k0">
-                <ref role="37wK5l" to="dush:#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                 <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
               </node>
               <node concept="liA8E" id="6ON23Nkaaeb" role="2OqNvi">
-                <ref role="37wK5l" to="dush:#PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference):java.lang.String" resolve="asString" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SModelReference)" resolve="asString" />
                 <node concept="2OqwBi" id="3XR0QgVClSL" role="37wK5m">
                   <node concept="37vLTw" id="3XR0QgVClSK" role="2Oq$k0">
                     <ref role="3cqZAo" node="6ON23Nk9dtD" resolve="modelOfSelectedMC" />
@@ -296,11 +296,11 @@
                   <node concept="39LhUk" id="6ON23Nk9WwJ" role="2JrQYb" />
                 </node>
                 <node concept="liA8E" id="6ON23Nk9W4p" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:#SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                  <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                 </node>
               </node>
               <node concept="liA8E" id="6ON23Nk9Wuh" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:#Object.toString():java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
               </node>
             </node>
           </node>
@@ -542,7 +542,7 @@
               <ref role="3cqZAo" node="6ON23Nk7S2S" resolve="projectStructureModule" />
             </node>
             <node concept="liA8E" id="2FhC$BdBZD4" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:#SModule.getModels():java.lang.Iterable" resolve="getModels" />
+              <ref role="37wK5l" to="lui2:~SModule.getModels()" resolve="getModels" />
             </node>
           </node>
         </node>
@@ -581,7 +581,7 @@
                         <ref role="3cqZAo" node="6ON23Nk7gMU" resolve="gms" />
                       </node>
                       <node concept="liA8E" id="6ON23Nk7gtG" role="2OqNvi">
-                        <ref role="37wK5l" to="gp7a:#GeneratorModuleScanner.walkPriorityRules(jetbrains.mps.smodel.Generator):void" resolve="walkPriorityRules" />
+                        <ref role="37wK5l" to="gp7a:~GeneratorModuleScanner.walkPriorityRules(jetbrains.mps.smodel.Generator)" resolve="walkPriorityRules" />
                         <node concept="10QFUN" id="6ON23Nk7gIx" role="37wK5m">
                           <node concept="3uibUv" id="6ON23Nk7gKP" role="10QFUM">
                             <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
@@ -610,7 +610,7 @@
             <node concept="2OqwBi" id="6ON23Nk78Hb" role="1DdaDG">
               <node concept="1Q7BxF" id="6ON23Nk78Hc" role="2Oq$k0" />
               <node concept="liA8E" id="6ON23Nk78Hd" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:#SearchScope.getModules():java.lang.Iterable" resolve="getModules" />
+                <ref role="37wK5l" to="lui2:~SearchScope.getModules()" resolve="getModules" />
               </node>
             </node>
           </node>

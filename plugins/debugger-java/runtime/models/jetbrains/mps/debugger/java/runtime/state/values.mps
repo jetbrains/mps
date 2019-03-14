@@ -275,7 +275,7 @@
               <ref role="3cqZAo" node="2KV5YDxCSkV" resolve="myField" />
             </node>
             <node concept="liA8E" id="2KV5YDxCSlQ" role="2OqNvi">
-              <ref role="37wK5l" to="frkw:#TypeComponent.name():java.lang.String" resolve="name" />
+              <ref role="37wK5l" to="frkw:~TypeComponent.name()" resolve="name" />
             </node>
           </node>
         </node>
@@ -357,7 +357,7 @@
               <ref role="3cqZAo" node="2KV5YDxCSmc" resolve="result" />
             </node>
             <node concept="liA8E" id="2KV5YDxCSml" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2KV5YDxCSmm" role="37wK5m">
                 <node concept="1pGfFk" id="2KV5YDxCSmn" role="2ShVmc">
                   <ref role="37wK5l" to="lnt2:2KV5YDxCSg3" resolve="JavaWatchpointValueWatchable" />
@@ -388,7 +388,7 @@
                   <ref role="3cqZAo" node="2KV5YDxCSmc" resolve="result" />
                 </node>
                 <node concept="liA8E" id="2KV5YDxCSmz" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:#List.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                   <node concept="2ShNRf" id="2KV5YDxCSm$" role="37wK5m">
                     <node concept="1pGfFk" id="2KV5YDxCSm_" role="2ShVmc">
                       <ref role="37wK5l" to="lnt2:2KV5YDxCSg3" resolve="JavaWatchpointValueWatchable" />

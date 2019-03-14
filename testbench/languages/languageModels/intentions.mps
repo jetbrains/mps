@@ -122,11 +122,11 @@
             <node concept="2OqwBi" id="7tF7F0nXgmH" role="2Oq$k0">
               <node concept="1XNTG" id="7tF7F0nXgmG" role="2Oq$k0" />
               <node concept="liA8E" id="7tF7F0nXgmL" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:#EditorContext.getEditorComponent():jetbrains.mps.openapi.editor.EditorComponent" resolve="getEditorComponent" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
               </node>
             </node>
             <node concept="liA8E" id="7tF7F0nXq99" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:#EditorComponent.rebuildEditorContent():void" resolve="rebuildEditorContent" />
+              <ref role="37wK5l" to="cj4x:~EditorComponent.rebuildEditorContent()" resolve="rebuildEditorContent" />
             </node>
           </node>
         </node>
