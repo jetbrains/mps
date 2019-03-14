@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 public class Migrations_2019_1 implements BaseComponent {
-  private final ProjectMigration[] myMigrations = new ProjectMigration[]{new UpdateJavaStubMethodRefs()};
+  private final ProjectMigration[] myMigrations = new ProjectMigration[]{new UpdateJavaStubMethodRefs(), new SaveAllJavaStubMethodRefsToShortForeignFormat()};
 
   @Override
   public void initComponent() {
