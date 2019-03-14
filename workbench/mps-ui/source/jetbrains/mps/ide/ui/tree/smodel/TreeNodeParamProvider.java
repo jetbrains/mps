@@ -15,6 +15,13 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
+import jetbrains.mps.util.annotation.ToRemove;
+
+/**
+ * @deprecated unused, just remove its uses, if any
+ */
+@Deprecated
+@ToRemove(version = 2019.1)
 public interface TreeNodeParamProvider {
   boolean isShowStructure();
 }

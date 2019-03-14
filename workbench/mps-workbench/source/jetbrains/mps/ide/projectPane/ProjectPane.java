@@ -251,7 +251,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
 
     ProjectPaneTree tree = new ProjectPaneTree(this, myProject);
     Disposer.register(this, tree);
-    tree.setShowStructureCondition(this::showNodeStructure);
     tree.orderChildrenWith(new LogicalViewChildOrder(this, new ProjectTreeChildOrder(t -> t instanceof SModelTreeNode && isSortByConcept())));
     myTree = tree;
 

@@ -49,12 +49,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class ProjectTree extends MPSTree implements TreeNodeParamProvider, MPSTreeChildOrder {
+public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
   private Project myProject;
   private ProjectTreeNode myProjectTreeNode;
   private ProjectModulesPoolTreeNode myModulesPoolTreeNode;
   private AtomicReference<IMakeNotificationListener> myMakeNotificationListener = new AtomicReference<>();
-  private Computable<Boolean> myShowStructureCondition;
   private MPSTreeChildOrder myChildOrder;
 
   public ProjectTree(Project project) {
@@ -147,15 +146,6 @@ public class ProjectTree extends MPSTree implements TreeNodeParamProvider, MPSTr
   @Override
   public boolean reorder(@NotNull MPSTreeNode parent, @NotNull List<MPSTreeNode> childrenToSort) {
     return myChildOrder != null && myChildOrder.reorder(parent, childrenToSort);
-  }
-
-  public void setShowStructureCondition(Computable<Boolean> showStructureCondition) {
-    myShowStructureCondition = showStructureCondition;
-  }
-
-  @Override
-  public boolean isShowStructure() {
-    return myShowStructureCondition == null || myShowStructureCondition.compute();
   }
 
   public static class ModulesNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder {

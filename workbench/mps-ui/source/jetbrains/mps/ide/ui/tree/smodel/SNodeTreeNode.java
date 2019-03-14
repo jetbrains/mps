@@ -20,17 +20,14 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.ui.tree.ErrorState;
-import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
 import jetbrains.mps.ide.ui.util.NodeAttributesUtil;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.Icon;
@@ -69,6 +66,8 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
       setNodeIdentifier(myNode.getNodeId().toString());
     }
     setToggleClickCount(-1);
+    // as a replacement for isLeaf() that used to consult isShowStructure setting, be explicit this node may have children.
+    setAllowsChildren(true);
   }
 
   @Override
@@ -152,36 +151,24 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
   protected void doInit() {
     this.removeAllChildren();
     SNode n = getSNode();
-    if (n == null || !SNodeUtil.isAccessible(n, MPSModuleRepository.getInstance())) {
+    if (n == null ) {
       return;
     }
 
     NodeChildrenProvider provider = getAncestor(NodeChildrenProvider.class);
     if (provider != null) {
       provider.populate(this);
+    } else {
+      StreamSupport.stream(n.getChildren().spliterator(), false).filter(myCondition::met).map(this::createChildTreeNode).forEach(this::add);
     }
-
-    if (isShowStructure()) {
-      StreamSupport.stream(n.getChildren().spliterator(), false).filter(myCondition::met).forEach(o -> add(createChildTreeNode(o)));
-    }
-
     DefaultTreeModel treeModel = getTree().getModel();
     treeModel.nodeStructureChanged(this);
     myInitialized = true;
   }
 
-  @Override
-  public boolean isLeaf() {
-    return !isShowStructure();
-  }
-
-  private boolean isShowStructure() {
-    MPSTree tree = getTree();
-    //Check for instance of TreeNodeParamProvider to not affect usages other than those we want to
-    return !(tree instanceof TreeNodeParamProvider) || ((TreeNodeParamProvider) tree).isShowStructure();
-  }
-
-  protected SNodeTreeNode createChildTreeNode(SNode childNode) {
+  // not sure there's any reason for this factory method, given that I'd like to drop myCondition
+  // and therefore getSModeModelTreeNode lookup would be of no value
+  public SNodeTreeNode createChildTreeNode(SNode childNode) {
     SContainmentLink cl = childNode.getContainmentLink();
     return createChildTreeNode(childNode, cl == null ? null : cl.getName());
   }

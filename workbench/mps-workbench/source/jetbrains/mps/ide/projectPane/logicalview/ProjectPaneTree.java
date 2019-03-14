@@ -206,6 +206,10 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
       treeNode.add(new ConceptTreeNode(n));
       treeNode.add(new PropertiesTreeNode(n));
       treeNode.add(new ReferencesTreeNode(n));
+
+      for (SNode child : n.getChildren()) {
+        treeNode.add(treeNode.createChildTreeNode(child));
+      }
     }
   }
 
