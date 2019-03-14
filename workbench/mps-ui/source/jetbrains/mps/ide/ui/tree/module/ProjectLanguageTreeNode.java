@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,15 +109,18 @@ public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
       add(generatorNode);
     }
 
-    TextTreeNode languageRuntime = new RuntimeModulesTreeNode();
-    for (SModuleReference mr : getModule().getRuntimeModulesReferences()) {
-      SModule m = mr.resolve(myProject.getRepository());
-      if (m == null || m == getModule()) {
-        continue;
+    if (!getModule().getRuntimeModulesReferences().isEmpty()) {
+      TextTreeNode languageRuntime = new RuntimeModulesTreeNode();
+      for (SModuleReference mr : getModule().getRuntimeModulesReferences()) {
+        SModule m = mr.resolve(myProject.getRepository());
+        if (m == null || m == getModule()) {
+          continue;
+        }
+        // FIXME use smth like SModelReferenceTreeNode instead of full-fledged module nodes
+        languageRuntime.add(createFor(myProject, m));
       }
-      languageRuntime.add(createFor(myProject, m));
+      add(languageRuntime);
     }
-    add(languageRuntime);
 
     if (getModule().getUtilModels().size() > 0) {
       TextTreeNode utilModels = new SModelGroupTreeNode();
