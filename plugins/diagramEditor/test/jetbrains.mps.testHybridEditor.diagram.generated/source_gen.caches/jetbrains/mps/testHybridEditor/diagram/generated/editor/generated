@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="8jg07ant36fdw3cr5f5gjp2onpy0ab0">
+<product version="3" modelHash="acd598a9r0p5klih6xrlj69q8jgcxcj">
   <files names="BlockActionMap.java:BlockInstance_diagram_Editor.java:BlockInstance_diagram_EditorBuilder_a.java:Block_diagram_Editor.java:Block_diagram_EditorBuilder_a.java:ConnectorActionMap.java:ConnectorInstance_diagram_Editor.java:ConnectorInstance_diagram_EditorBuilder_a.java:Connector_diagram_Editor.java:Connector_diagram_EditorBuilder_a.java:DefaultDiagramElementActionMap_0.java:Diagram_diagram_Editor.java:Diagram_diagram_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:InputPort_diagram_Editor.java:InputPort_diagram_EditorBuilder_a.java:MyActionGroup.java:MyBlockCreationAction.java:MyConnectorCreationAction.java:MyMainActionGroup.java:OutputPort_diagram_Editor.java:OutputPort_diagram_EditorBuilder_a.java" />
 </product>
 

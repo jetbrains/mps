@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5r9e4iykk6jzonj9k0n9u7vxvhv3yzo">
+<product version="3" modelHash="-v0i4zb0kpxwromys35rprmhf9300k3">
   <files names="CompositeWithParentScope.java:DelegatingScope.java:HidingByNameScope.java:LazyParentScope.java:LazyScope.java:NamedElementsScope.java:ScopeProviderContext.java:ScopeUtils.java:SimpleScope.java" />
 </product>
 

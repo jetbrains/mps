@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-665au56wetycyex9njmqm4qxzmwow18">
+<product version="3" modelHash="599c4k257ip0dn72kd9n2qj1ojvzxmd">
   <files names="Mapping_mc_Behavior.java:QueriesGenerated.java:Switch_BehaviorDescriptor.java:Switch_switch_ClassFromType.java:Switch_switch_Parameter.java:TemplateModelImpl.java:Template_BehaviorAspectDescriptor.java:Template_BehaviorDescriptor.java:Template_reduce_LocalBehaviorMethodCall.java:Template_reduce_LocalBehaviorMethodCallWithCast.java:Template_reduce_MethodInvocation.java:Template_reduce_SuperConceptExpression.java:Template_reduce_SuperNodeExpression.java:Template_reduce_ThisConceptExpression.java:Template_reduce_ThisNodeExpression.java" />
 </product>
 

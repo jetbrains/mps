@@ -232,7 +232,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
                         {
                           final SNode tnode26 = environment.createOutputNode(myConcepts[14]);
                           try {
-                            tnode26.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode26, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("#TemplateUtil.asCollection(java.lang.Object...):java.util.Collection")));
+                            tnode26.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode26, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~TemplateUtil.asCollection(java.lang.Object...)")));
                             tnode26.setReference(myAssociationLinks[3], SReference.create(myAssociationLinks[3], tnode26, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~TemplateUtil")));
                             TemplateContext context11 = context10.subContext();
                             {
@@ -639,7 +639,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
                   {
                     final SNode tnode73 = environment.createOutputNode(myConcepts[14]);
                     try {
-                      tnode73.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode73, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("#Arrays.asList(java.lang.Object...):java.util.List")));
+                      tnode73.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode73, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Arrays.asList(java.lang.Object...)")));
                       tnode73.setReference(myAssociationLinks[3], SReference.create(myAssociationLinks[3], tnode73, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Arrays")));
                       TemplateContext context35 = context34.subContext();
                       {
@@ -826,7 +826,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
                       {
                         final SNode tnode95 = environment.createOutputNode(myConcepts[14]);
                         try {
-                          tnode95.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode95, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("#PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade")));
+                          tnode95.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode95, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade.getInstance()")));
                           tnode95.setReference(myAssociationLinks[3], SReference.create(myAssociationLinks[3], tnode95, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade")));
                         } finally {
                         }
@@ -836,7 +836,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
                       {
                         final SNode tnode96 = environment.createOutputNode(myConcepts[32]);
                         try {
-                          tnode96.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode96, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("#PersistenceFacade.createModuleReference(java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference")));
+                          tnode96.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode96, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~PersistenceFacade.createModuleReference(java.lang.String)")));
                           TemplateContext context44 = context43.subContext();
                           {
                             final SNode tnode97 = environment.createOutputNode(myConcepts[18]);
@@ -1102,7 +1102,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
                     final SNode tnode125 = environment.createOutputNode(myConcepts[14]);
                     try {
                       tnode125.setReference(myAssociationLinks[3], SReference.create(myAssociationLinks[3], tnode125, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Arrays")));
-                      tnode125.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode125, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("#Arrays.asList(java.lang.Object...):java.util.List")));
+                      tnode125.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode125, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Arrays.asList(java.lang.Object...)")));
                       TemplateContext context61 = context60.subContext();
                       {
                         final SNode tnode126 = environment.createOutputNode(myConcepts[11]);
@@ -1230,7 +1230,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
                           {
                             final SNode tnode141 = environment.createOutputNode(myConcepts[32]);
                             try {
-                              tnode141.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode141, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("#TemplateModuleBase$ReferencedGenerators.extended(java.lang.String):void")));
+                              tnode141.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode141, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~TemplateModuleBase$ReferencedGenerators.extended(java.lang.String)")));
                               TemplateContext context68 = context67.subContext();
                               {
                                 final SNode tnode142 = environment.createOutputNode(myConcepts[18]);
@@ -1289,7 +1289,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase implement
                           {
                             final SNode tnode148 = environment.createOutputNode(myConcepts[32]);
                             try {
-                              tnode148.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode148, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("#TemplateModuleBase$ReferencedGenerators.employed(java.lang.String):void")));
+                              tnode148.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode148, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~TemplateModuleBase$ReferencedGenerators.employed(java.lang.String)")));
                               TemplateContext context72 = context71.subContext();
                               {
                                 final SNode tnode149 = environment.createOutputNode(myConcepts[18]);

@@ -688,8 +688,8 @@
                           <ref role="37wK5l" to="g3l6:~SModelBase.getReference()" resolve="getReference" />
                         </node>
                         <node concept="2ShNRf" id="1$0KT$2MbxQ" role="37wK5m">
-                          <node concept="1pGfFk" id="1bLNqh3MkkO" role="2ShVmc">
-                            <ref role="37wK5l" to="tzbx:~StringBasedNodeIdMap.&lt;init&gt;()" resolve="StringBasedNodeIdMap" />
+                          <node concept="1pGfFk" id="2gddEz7bhi1" role="2ShVmc">
+                            <ref role="37wK5l" to="tzbx:~MigratingJavaStubRefsNodeIdMap.&lt;init&gt;()" resolve="MigratingJavaStubRefsNodeIdMap" />
                           </node>
                         </node>
                       </node>
@@ -885,8 +885,8 @@
                   <ref role="37wK5l" to="g3l6:~SModelBase.getReference()" resolve="getReference" />
                 </node>
                 <node concept="2ShNRf" id="1bLNqh3MkFC" role="37wK5m">
-                  <node concept="1pGfFk" id="1bLNqh3MkFD" role="2ShVmc">
-                    <ref role="37wK5l" to="tzbx:~StringBasedNodeIdMap.&lt;init&gt;()" resolve="StringBasedNodeIdMap" />
+                  <node concept="1pGfFk" id="2gddEz7beBs" role="2ShVmc">
+                    <ref role="37wK5l" to="tzbx:~MigratingJavaStubRefsNodeIdMap.&lt;init&gt;()" resolve="MigratingJavaStubRefsNodeIdMap" />
                   </node>
                 </node>
               </node>

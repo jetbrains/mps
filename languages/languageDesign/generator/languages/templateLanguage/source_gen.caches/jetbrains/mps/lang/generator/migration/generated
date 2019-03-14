@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5dhqw5vqktas3za5fedjwss3y9346is">
+<product version="3" modelHash="-6pusfltvydkyzlvmh5za06b4qyv5ao">
   <files names="MigrationDescriptor.java:ReplaceIncludeWithCall.java:WeaveEachConsequence.java" />
 </product>
 

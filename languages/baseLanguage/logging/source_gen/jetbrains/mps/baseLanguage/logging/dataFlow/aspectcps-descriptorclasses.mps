@@ -234,7 +234,7 @@
             <node concept="3clFbS" id="o" role="1pnPq1">
               <node concept="3cpWs6" id="q" role="3cqZAp">
                 <node concept="2YIFZM" id="r" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="s" role="37wK5m">
                     <node concept="HV5vD" id="u" role="2ShVmc">
@@ -255,7 +255,7 @@
             <node concept="3clFbS" id="v" role="1pnPq1">
               <node concept="3cpWs6" id="x" role="3cqZAp">
                 <node concept="2YIFZM" id="y" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="z" role="37wK5m">
                     <node concept="HV5vD" id="_" role="2ShVmc">
@@ -276,7 +276,7 @@
             <node concept="3clFbS" id="A" role="1pnPq1">
               <node concept="3cpWs6" id="C" role="3cqZAp">
                 <node concept="2YIFZM" id="D" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="E" role="37wK5m">
                     <node concept="HV5vD" id="G" role="2ShVmc">
@@ -297,7 +297,7 @@
             <node concept="3clFbS" id="H" role="1pnPq1">
               <node concept="3cpWs6" id="J" role="3cqZAp">
                 <node concept="2YIFZM" id="K" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="L" role="37wK5m">
                     <node concept="HV5vD" id="N" role="2ShVmc">
@@ -318,7 +318,7 @@
         </node>
         <node concept="3cpWs6" id="e" role="3cqZAp">
           <node concept="2YIFZM" id="O" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="3uibUv" id="P" role="3PaCim">
               <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
@@ -491,7 +491,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1K" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="1N" role="37wK5m">
                 <node concept="2OqwBi" id="1O" role="10QFUP">
                   <node concept="1DoJHT" id="1Q" role="2Oq$k0">
@@ -545,7 +545,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="29" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
                   <node concept="10QFUN" id="2c" role="37wK5m">
                     <node concept="2OqwBi" id="2d" role="10QFUP">
                       <node concept="1DoJHT" id="2f" role="2Oq$k0">
@@ -721,7 +721,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3c" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="3f" role="37wK5m">
                 <node concept="2OqwBi" id="3g" role="10QFUP">
                   <node concept="1DoJHT" id="3i" role="2Oq$k0">
@@ -775,7 +775,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3_" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
                   <node concept="10QFUN" id="3C" role="37wK5m">
                     <node concept="2OqwBi" id="3D" role="10QFUP">
                       <node concept="1DoJHT" id="3F" role="2Oq$k0">
@@ -951,7 +951,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4C" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="4F" role="37wK5m">
                 <node concept="2OqwBi" id="4G" role="10QFUP">
                   <node concept="1DoJHT" id="4I" role="2Oq$k0">
@@ -1005,7 +1005,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="51" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
                   <node concept="10QFUN" id="54" role="37wK5m">
                     <node concept="2OqwBi" id="55" role="10QFUP">
                       <node concept="1DoJHT" id="57" role="2Oq$k0">
@@ -1220,7 +1220,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6l" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
                   <node concept="10QFUN" id="6o" role="37wK5m">
                     <node concept="2GrUjf" id="6p" role="10QFUP">
                       <ref role="2Gs0qQ" node="60" resolve="textExpression" />

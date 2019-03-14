@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3nxy9vo33t18hnvd9sdscgq19fhttik">
+<product version="3" modelHash="cve1lxvd61xfj85uwaif2aq5erkm0c4">
   <files names="AddMissingOverrideAnnotations_MigrationScript.java:AddNativeFlagToAllMethods_MigrationScript.java:BaseLanguageEnhancements_MigrationScript.java:MigrateCanBeCoerced_MigrationScript.java:MigrateFloatConstants_MigrationScript.java:RemoveThisWhereAppropriate_MigrationScript.java:ScriptsDescriptor.java:ShowJavaUtilReferences_MigrationScript.java:UpdateCastExpressionParens_MigrationScript.java:UpdateTernaryOperatorExpressionParens_MigrationScript.java:WrapNotChildWithParens_MigrationScript.java" />
 </product>
 

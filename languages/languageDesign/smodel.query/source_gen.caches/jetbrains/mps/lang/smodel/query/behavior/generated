@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ah2v9pbu3mcevxz7n2xv4k6t2zhov1x">
+<product version="3" modelHash="a0wxmwgg7rmhigbhjjfgyr9dtrpnd6o">
   <files names="BehaviorAspectDescriptor.java:ExpressionHelpProvider__BehaviorDescriptor.java:HelpProvider__BehaviorDescriptor.java:InstancesExpression__BehaviorDescriptor.java:ModelsExpression__BehaviorDescriptor.java:ModulesExpression__BehaviorDescriptor.java:NodesExpression__BehaviorDescriptor.java:OperationHelpProvider__BehaviorDescriptor.java:QueryExpression__BehaviorDescriptor.java:ReferencesExpression__BehaviorDescriptor.java:UsagesExpression__BehaviorDescriptor.java" />
 </product>
 

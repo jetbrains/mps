@@ -220,7 +220,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="i" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:#MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="k" role="37wK5m">
               <property role="1adDun" value="0xceab519525ea4f22L" />
               <node concept="cd27G" id="p" role="lGtFl">
@@ -421,7 +421,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="1A" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:#MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SInterfaceConcept" resolve="getInterfaceConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String)" resolve="getInterfaceConcept" />
             <node concept="1adDum" id="1C" role="37wK5m">
               <property role="1adDun" value="0xceab519525ea4f22L" />
               <node concept="cd27G" id="1H" role="lGtFl">
@@ -609,10 +609,10 @@
               </node>
             </node>
             <node concept="liA8E" id="2H" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="2YIFZM" id="2L" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                <ref role="37wK5l" to="2k9e:#MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SProperty" resolve="getProperty" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String)" resolve="getProperty" />
                 <node concept="1adDum" id="2O" role="37wK5m">
                   <property role="1adDun" value="0xceab519525ea4f22L" />
                   <node concept="cd27G" id="2U" role="lGtFl">
@@ -667,7 +667,7 @@
                     <ref role="37wK5l" to="79pl:~BasePropertyConstraintsDescriptor.&lt;init&gt;(jetbrains.mps.smodel.adapter.ids.SPropertyId,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BasePropertyConstraintsDescriptor" />
                     <node concept="2YIFZM" id="39" role="37wK5m">
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                      <ref role="37wK5l" to="e8bb:#MetaIdFactory.propId(long,long,long,long):jetbrains.mps.smodel.adapter.ids.SPropertyId" resolve="propId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.propId(long,long,long,long)" resolve="propId" />
                       <node concept="1adDum" id="3h" role="37wK5m">
                         <property role="1adDun" value="0xceab519525ea4f22L" />
                         <node concept="cd27G" id="3m" role="lGtFl">
@@ -859,7 +859,7 @@
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="4r" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:#SNode.getName():java.lang.String" resolve="getName" />
+                                  <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
                                   <node concept="cd27G" id="4y" role="lGtFl">
                                     <node concept="3u3nmq" id="4z" role="cd27D">
                                       <property role="3u3nmv" value="1213104856832" />
@@ -1200,7 +1200,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="6l" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:#MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SInterfaceConcept" resolve="getInterfaceConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String)" resolve="getInterfaceConcept" />
             <node concept="1adDum" id="6n" role="37wK5m">
               <property role="1adDun" value="0xceab519525ea4f22L" />
               <node concept="cd27G" id="6s" role="lGtFl">
@@ -1388,10 +1388,10 @@
               </node>
             </node>
             <node concept="liA8E" id="7s" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:#Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="2YIFZM" id="7w" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                <ref role="37wK5l" to="2k9e:#MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SProperty" resolve="getProperty" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String)" resolve="getProperty" />
                 <node concept="1adDum" id="7z" role="37wK5m">
                   <property role="1adDun" value="0xceab519525ea4f22L" />
                   <node concept="cd27G" id="7D" role="lGtFl">
@@ -1446,7 +1446,7 @@
                     <ref role="37wK5l" to="79pl:~BasePropertyConstraintsDescriptor.&lt;init&gt;(jetbrains.mps.smodel.adapter.ids.SPropertyId,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BasePropertyConstraintsDescriptor" />
                     <node concept="2YIFZM" id="7S" role="37wK5m">
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                      <ref role="37wK5l" to="e8bb:#MetaIdFactory.propId(long,long,long,long):jetbrains.mps.smodel.adapter.ids.SPropertyId" resolve="propId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.propId(long,long,long,long)" resolve="propId" />
                       <node concept="1adDum" id="7Y" role="37wK5m">
                         <property role="1adDun" value="0xceab519525ea4f22L" />
                         <node concept="cd27G" id="83" role="lGtFl">
@@ -1684,7 +1684,7 @@
                                     </node>
                                     <node concept="2YIFZM" id="9$" role="33vP2m">
                                       <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                                      <ref role="37wK5l" to="wyt6:#Integer.parseInt(java.lang.String):int" resolve="parseInt" />
+                                      <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
                                       <node concept="2OqwBi" id="9C" role="37wK5m">
                                         <node concept="37vLTw" id="9E" role="2Oq$k0">
                                           <ref role="3cqZAo" node="9k" resolve="migrationScriptReference" />
@@ -1695,7 +1695,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="9F" role="2OqNvi">
-                                          <ref role="37wK5l" to="wyt6:#String.substring(int):java.lang.String" resolve="substring" />
+                                          <ref role="37wK5l" to="wyt6:~String.substring(int)" resolve="substring" />
                                           <node concept="3cpWs3" id="9J" role="37wK5m">
                                             <node concept="3cmrfG" id="9L" role="3uHU7w">
                                               <property role="3cmrfH" value="1" />
@@ -1715,7 +1715,7 @@
                                                 </node>
                                               </node>
                                               <node concept="liA8E" id="9R" role="2OqNvi">
-                                                <ref role="37wK5l" to="wyt6:#String.indexOf(int):int" resolve="indexOf" />
+                                                <ref role="37wK5l" to="wyt6:~String.indexOf(int)" resolve="indexOf" />
                                                 <node concept="1Xhbcc" id="9V" role="37wK5m">
                                                   <property role="1XhdNS" value="/" />
                                                   <node concept="cd27G" id="9X" role="lGtFl">
@@ -1792,7 +1792,7 @@
                                         </node>
                                       </node>
                                       <node concept="liA8E" id="af" role="2OqNvi">
-                                        <ref role="37wK5l" to="wyt6:#String.indexOf(int):int" resolve="indexOf" />
+                                        <ref role="37wK5l" to="wyt6:~String.indexOf(int)" resolve="indexOf" />
                                         <node concept="1Xhbcc" id="aj" role="37wK5m">
                                           <property role="1XhdNS" value="(" />
                                           <node concept="cd27G" id="al" role="lGtFl">
@@ -1837,10 +1837,10 @@
                                       </node>
                                     </node>
                                     <node concept="2YIFZM" id="au" role="33vP2m">
-                                      <ref role="37wK5l" to="2k9e:#MetaAdapterFactory.getLanguage(jetbrains.mps.smodel.adapter.ids.SLanguageId,java.lang.String):org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
+                                      <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(jetbrains.mps.smodel.adapter.ids.SLanguageId,java.lang.String)" resolve="getLanguage" />
                                       <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
                                       <node concept="2YIFZM" id="ay" role="37wK5m">
-                                        <ref role="37wK5l" to="e8bb:#SLanguageId.deserialize(java.lang.String):jetbrains.mps.smodel.adapter.ids.SLanguageId" resolve="deserialize" />
+                                        <ref role="37wK5l" to="e8bb:~SLanguageId.deserialize(java.lang.String)" resolve="deserialize" />
                                         <ref role="1Pybhc" to="e8bb:~SLanguageId" resolve="SLanguageId" />
                                         <node concept="2OqwBi" id="a_" role="37wK5m">
                                           <node concept="37vLTw" id="aB" role="2Oq$k0">
@@ -1852,7 +1852,7 @@
                                             </node>
                                           </node>
                                           <node concept="liA8E" id="aC" role="2OqNvi">
-                                            <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
+                                            <ref role="37wK5l" to="wyt6:~String.substring(int,int)" resolve="substring" />
                                             <node concept="3cmrfG" id="aG" role="37wK5m">
                                               <property role="3cmrfH" value="0" />
                                               <node concept="cd27G" id="aJ" role="lGtFl">
@@ -1897,7 +1897,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="aR" role="2OqNvi">
-                                          <ref role="37wK5l" to="wyt6:#String.substring(int,int):java.lang.String" resolve="substring" />
+                                          <ref role="37wK5l" to="wyt6:~String.substring(int,int)" resolve="substring" />
                                           <node concept="3cpWs3" id="aV" role="37wK5m">
                                             <node concept="3cmrfG" id="aY" role="3uHU7w">
                                               <property role="3cmrfH" value="1" />
@@ -1931,7 +1931,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="b7" role="2OqNvi">
-                                              <ref role="37wK5l" to="wyt6:#String.indexOf(int,int):int" resolve="indexOf" />
+                                              <ref role="37wK5l" to="wyt6:~String.indexOf(int,int)" resolve="indexOf" />
                                               <node concept="1Xhbcc" id="bb" role="37wK5m">
                                                 <property role="1XhdNS" value=")" />
                                                 <node concept="cd27G" id="be" role="lGtFl">

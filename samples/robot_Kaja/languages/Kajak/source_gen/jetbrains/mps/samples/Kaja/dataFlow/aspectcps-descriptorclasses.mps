@@ -261,7 +261,7 @@
         <node concept="3clFbF" id="n" role="3cqZAp">
           <node concept="2OqwBi" id="p" role="3clFbG">
             <node concept="liA8E" id="r" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="t" role="37wK5m">
                 <property role="Xl_RC" value="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469862303" />
               </node>
@@ -367,7 +367,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="1c" role="2OqNvi">
-                        <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+                        <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
                         <node concept="10QFUN" id="1f" role="37wK5m">
                           <node concept="37vLTw" id="1g" role="10QFUP">
                             <ref role="3cqZAo" node="15" resolve="it" />
@@ -517,7 +517,7 @@
             <node concept="3clFbS" id="2b" role="1pnPq1">
               <node concept="3cpWs6" id="2d" role="3cqZAp">
                 <node concept="2YIFZM" id="2e" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="2f" role="37wK5m">
                     <node concept="HV5vD" id="2h" role="2ShVmc">
@@ -538,7 +538,7 @@
             <node concept="3clFbS" id="2i" role="1pnPq1">
               <node concept="3cpWs6" id="2k" role="3cqZAp">
                 <node concept="2YIFZM" id="2l" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="2m" role="37wK5m">
                     <node concept="HV5vD" id="2o" role="2ShVmc">
@@ -559,7 +559,7 @@
             <node concept="3clFbS" id="2p" role="1pnPq1">
               <node concept="3cpWs6" id="2r" role="3cqZAp">
                 <node concept="2YIFZM" id="2s" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="2t" role="37wK5m">
                     <node concept="HV5vD" id="2v" role="2ShVmc">
@@ -580,7 +580,7 @@
             <node concept="3clFbS" id="2w" role="1pnPq1">
               <node concept="3cpWs6" id="2y" role="3cqZAp">
                 <node concept="2YIFZM" id="2z" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="2$" role="37wK5m">
                     <node concept="HV5vD" id="2A" role="2ShVmc">
@@ -601,7 +601,7 @@
             <node concept="3clFbS" id="2B" role="1pnPq1">
               <node concept="3cpWs6" id="2D" role="3cqZAp">
                 <node concept="2YIFZM" id="2E" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="2F" role="37wK5m">
                     <node concept="HV5vD" id="2H" role="2ShVmc">
@@ -622,7 +622,7 @@
             <node concept="3clFbS" id="2I" role="1pnPq1">
               <node concept="3cpWs6" id="2K" role="3cqZAp">
                 <node concept="2YIFZM" id="2L" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="2M" role="37wK5m">
                     <node concept="HV5vD" id="2O" role="2ShVmc">
@@ -643,7 +643,7 @@
             <node concept="3clFbS" id="2P" role="1pnPq1">
               <node concept="3cpWs6" id="2R" role="3cqZAp">
                 <node concept="2YIFZM" id="2S" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="2T" role="37wK5m">
                     <node concept="HV5vD" id="2V" role="2ShVmc">
@@ -664,7 +664,7 @@
             <node concept="3clFbS" id="2W" role="1pnPq1">
               <node concept="3cpWs6" id="2Y" role="3cqZAp">
                 <node concept="2YIFZM" id="2Z" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="30" role="37wK5m">
                     <node concept="HV5vD" id="32" role="2ShVmc">
@@ -685,7 +685,7 @@
             <node concept="3clFbS" id="33" role="1pnPq1">
               <node concept="3cpWs6" id="35" role="3cqZAp">
                 <node concept="2YIFZM" id="36" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="37" role="37wK5m">
                     <node concept="HV5vD" id="39" role="2ShVmc">
@@ -706,7 +706,7 @@
             <node concept="3clFbS" id="3a" role="1pnPq1">
               <node concept="3cpWs6" id="3c" role="3cqZAp">
                 <node concept="2YIFZM" id="3d" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="3e" role="37wK5m">
                     <node concept="HV5vD" id="3g" role="2ShVmc">
@@ -727,7 +727,7 @@
             <node concept="3clFbS" id="3h" role="1pnPq1">
               <node concept="3cpWs6" id="3j" role="3cqZAp">
                 <node concept="2YIFZM" id="3k" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:#Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="3l" role="37wK5m">
                     <node concept="HV5vD" id="3n" role="2ShVmc">
@@ -748,7 +748,7 @@
         </node>
         <node concept="3cpWs6" id="1U" role="3cqZAp">
           <node concept="2YIFZM" id="3o" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:#Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="3uibUv" id="3p" role="3PaCim">
               <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
@@ -1054,7 +1054,7 @@
         <node concept="3clFbF" id="4S" role="3cqZAp">
           <node concept="2OqwBi" id="50" role="3clFbG">
             <node concept="liA8E" id="52" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="54" role="37wK5m">
                 <property role="Xl_RC" value="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702472274368" />
               </node>
@@ -1085,7 +1085,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5b" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="5e" role="37wK5m">
                 <node concept="2OqwBi" id="5f" role="10QFUP">
                   <node concept="3TrEf2" id="5h" role="2OqNvi">
@@ -1137,7 +1137,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5v" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitIfJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,int,java.lang.String):void" resolve="emitIfJump" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitIfJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,int,java.lang.String)" resolve="emitIfJump" />
               <node concept="2OqwBi" id="5y" role="37wK5m">
                 <node concept="2OqwBi" id="5$" role="2Oq$k0">
                   <node concept="37vLTw" id="5B" role="2Oq$k0">
@@ -1163,7 +1163,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5_" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.label(java.lang.Object,java.lang.String):jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position" resolve="label" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.label(java.lang.Object,java.lang.String)" resolve="label" />
                   <node concept="2OqwBi" id="5J" role="37wK5m">
                     <node concept="37vLTw" id="5M" role="2Oq$k0">
                       <ref role="3cqZAo" node="4G" resolve="_context" />
@@ -1229,7 +1229,7 @@
               </node>
             </node>
             <node concept="liA8E" id="62" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="65" role="37wK5m">
                 <node concept="2OqwBi" id="66" role="10QFUP">
                   <node concept="3TrEf2" id="68" role="2OqNvi">
@@ -1273,10 +1273,10 @@
         <node concept="3clFbF" id="4W" role="3cqZAp">
           <node concept="2OqwBi" id="6j" role="3clFbG">
             <node concept="liA8E" id="6l" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,java.lang.String):void" resolve="emitJump" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,java.lang.String)" resolve="emitJump" />
               <node concept="2OqwBi" id="6n" role="37wK5m">
                 <node concept="liA8E" id="6p" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.after(java.lang.Object):jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position" resolve="after" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.after(java.lang.Object)" resolve="after" />
                   <node concept="1DoJHT" id="6s" role="37wK5m">
                     <property role="1Dpdpm" value="getNode" />
                     <node concept="3uibUv" id="6u" role="1Ez5kq">
@@ -1356,7 +1356,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6M" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitLabel(java.lang.String):void" resolve="emitLabel" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitLabel(java.lang.String)" resolve="emitLabel" />
               <node concept="Xl_RD" id="6P" role="37wK5m">
                 <property role="Xl_RC" value="elseBranch" />
               </node>
@@ -1379,7 +1379,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6U" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="6X" role="37wK5m">
                 <node concept="2OqwBi" id="6Y" role="10QFUP">
                   <node concept="3TrEf2" id="70" role="2OqNvi">
@@ -1493,7 +1493,7 @@
         <node concept="3clFbF" id="7_" role="3cqZAp">
           <node concept="2OqwBi" id="7B" role="3clFbG">
             <node concept="liA8E" id="7D" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="7F" role="37wK5m">
                 <property role="Xl_RC" value="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469874802" />
               </node>
@@ -1586,7 +1586,7 @@
         <node concept="3clFbF" id="89" role="3cqZAp">
           <node concept="2OqwBi" id="8c" role="3clFbG">
             <node concept="liA8E" id="8e" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="8g" role="37wK5m">
                 <property role="Xl_RC" value="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469874871" />
               </node>
@@ -1617,7 +1617,7 @@
               </node>
             </node>
             <node concept="liA8E" id="8n" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="8q" role="37wK5m">
                 <node concept="2OqwBi" id="8r" role="10QFUP">
                   <node concept="3TrEf2" id="8t" role="2OqNvi">
@@ -1777,7 +1777,7 @@
             <node concept="3clFbF" id="9r" role="3cqZAp">
               <node concept="2OqwBi" id="9t" role="3clFbG">
                 <node concept="liA8E" id="9v" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,java.lang.String):void" resolve="emitJump" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,java.lang.String)" resolve="emitJump" />
                   <node concept="2OqwBi" id="9x" role="37wK5m">
                     <node concept="2OqwBi" id="9z" role="2Oq$k0">
                       <node concept="37vLTw" id="9A" role="2Oq$k0">
@@ -1803,7 +1803,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="9$" role="2OqNvi">
-                      <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.label(java.lang.Object,java.lang.String):jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position" resolve="label" />
+                      <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.label(java.lang.Object,java.lang.String)" resolve="label" />
                       <node concept="2OqwBi" id="9I" role="37wK5m">
                         <node concept="37vLTw" id="9L" role="2Oq$k0">
                           <ref role="3cqZAo" node="8Q" resolve="_context" />
@@ -1889,7 +1889,7 @@
               </node>
             </node>
             <node concept="liA8E" id="a5" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitLabel(java.lang.String):void" resolve="emitLabel" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitLabel(java.lang.String)" resolve="emitLabel" />
               <node concept="Xl_RD" id="a8" role="37wK5m">
                 <property role="Xl_RC" value="loopStart" />
               </node>
@@ -1912,7 +1912,7 @@
               </node>
             </node>
             <node concept="liA8E" id="ad" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="ag" role="37wK5m">
                 <node concept="2OqwBi" id="ah" role="10QFUP">
                   <node concept="3TrEf2" id="aj" role="2OqNvi">
@@ -1964,7 +1964,7 @@
               </node>
             </node>
             <node concept="liA8E" id="ax" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitIfJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,int,java.lang.String):void" resolve="emitIfJump" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitIfJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,int,java.lang.String)" resolve="emitIfJump" />
               <node concept="2OqwBi" id="a$" role="37wK5m">
                 <node concept="2OqwBi" id="aA" role="2Oq$k0">
                   <node concept="37vLTw" id="aD" role="2Oq$k0">
@@ -1990,7 +1990,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="aB" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.label(java.lang.Object,java.lang.String):jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position" resolve="label" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.label(java.lang.Object,java.lang.String)" resolve="label" />
                   <node concept="2OqwBi" id="aL" role="37wK5m">
                     <node concept="37vLTw" id="aO" role="2Oq$k0">
                       <ref role="3cqZAo" node="8Q" resolve="_context" />
@@ -2056,7 +2056,7 @@
               </node>
             </node>
             <node concept="liA8E" id="b4" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitLabel(java.lang.String):void" resolve="emitLabel" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitLabel(java.lang.String)" resolve="emitLabel" />
               <node concept="Xl_RD" id="b7" role="37wK5m">
                 <property role="Xl_RC" value="end" />
               </node>
@@ -2141,7 +2141,7 @@
         <node concept="3clFbF" id="bz" role="3cqZAp">
           <node concept="2OqwBi" id="b_" role="3clFbG">
             <node concept="liA8E" id="bB" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="bD" role="37wK5m">
                 <property role="Xl_RC" value="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/4816737345356005354" />
               </node>
@@ -2234,7 +2234,7 @@
         <node concept="3clFbF" id="c7" role="3cqZAp">
           <node concept="2OqwBi" id="c9" role="3clFbG">
             <node concept="liA8E" id="cb" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="cd" role="37wK5m">
                 <property role="Xl_RC" value="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/4816737345356027784" />
               </node>
@@ -2334,7 +2334,7 @@
               </node>
             </node>
             <node concept="liA8E" id="cK" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="cN" role="37wK5m">
                 <node concept="2OqwBi" id="cO" role="10QFUP">
                   <node concept="3TrEf2" id="cQ" role="2OqNvi">
@@ -2448,7 +2448,7 @@
         <node concept="3clFbF" id="dr" role="3cqZAp">
           <node concept="2OqwBi" id="dt" role="3clFbG">
             <node concept="liA8E" id="dv" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="dx" role="37wK5m">
                 <property role="Xl_RC" value="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469857412" />
               </node>
@@ -2549,7 +2549,7 @@
               </node>
             </node>
             <node concept="liA8E" id="e7" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="ea" role="37wK5m">
                 <node concept="2OqwBi" id="eb" role="10QFUP">
                   <node concept="3TrEf2" id="ed" role="2OqNvi">
@@ -2601,10 +2601,10 @@
               </node>
             </node>
             <node concept="liA8E" id="er" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitIfJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,int,java.lang.String):void" resolve="emitIfJump" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitIfJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,int,java.lang.String)" resolve="emitIfJump" />
               <node concept="2OqwBi" id="eu" role="37wK5m">
                 <node concept="liA8E" id="ew" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.after(java.lang.Object):jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position" resolve="after" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.after(java.lang.Object)" resolve="after" />
                   <node concept="1DoJHT" id="ez" role="37wK5m">
                     <property role="1Dpdpm" value="getNode" />
                     <node concept="3uibUv" id="e_" role="1Ez5kq">
@@ -2676,7 +2676,7 @@
               </node>
             </node>
             <node concept="liA8E" id="eR" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="eU" role="37wK5m">
                 <node concept="2OqwBi" id="eV" role="10QFUP">
                   <node concept="3TrEf2" id="eX" role="2OqNvi">
@@ -2720,7 +2720,7 @@
         <node concept="3clFbF" id="e2" role="3cqZAp">
           <node concept="2OqwBi" id="f8" role="3clFbG">
             <node concept="liA8E" id="fa" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.emitJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,java.lang.String):void" resolve="emitJump" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitJump(jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position,java.lang.String)" resolve="emitJump" />
               <node concept="2OqwBi" id="fc" role="37wK5m">
                 <node concept="2OqwBi" id="fe" role="2Oq$k0">
                   <node concept="37vLTw" id="fh" role="2Oq$k0">
@@ -2746,7 +2746,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="ff" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:#StructuralProgramBuilder.before(java.lang.Object):jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder$Position" resolve="before" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.before(java.lang.Object)" resolve="before" />
                   <node concept="1DoJHT" id="fp" role="37wK5m">
                     <property role="1Dpdpm" value="getNode" />
                     <node concept="3uibUv" id="fr" role="1Ez5kq">

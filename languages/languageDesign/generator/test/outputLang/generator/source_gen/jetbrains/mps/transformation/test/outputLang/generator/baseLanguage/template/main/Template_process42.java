@@ -75,7 +75,7 @@ public class Template_process42 extends TemplateDeclarationBase implements Templ
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
                 try {
-                  tnode6.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode6, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("#String.length():int")));
+                  tnode6.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode6, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~String.length()")));
                 } finally {
                 }
                 tnode4.addChild(myAggregationLinks[2], tnode6);

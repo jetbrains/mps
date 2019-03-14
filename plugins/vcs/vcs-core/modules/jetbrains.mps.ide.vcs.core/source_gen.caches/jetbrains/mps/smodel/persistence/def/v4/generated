@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-ekcxgsmzcgzxqh7mil0gw24i5o222xh">
+<product version="3" modelHash="-d2gwnl91st5v9r8kph7x1jewmnksvx5">
   <files names="DOMVisibleModelElements.java:IModelReader.java:IPersistenceWithReader.java:ModelPersistence4.java:ModelReader4.java:ReferencePersister4.java:VersionUtil.java" />
 </product>
 

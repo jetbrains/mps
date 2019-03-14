@@ -137,8 +137,8 @@
       <node id="1703835097133380246" at="320,251,321,265" concept="2" />
       <node id="1703835097133380246" at="321,265,322,164" concept="2" />
       <node id="1703835097133380246" at="322,164,323,265" concept="2" />
-      <node id="1703835097133380246" at="323,265,324,525" concept="2" />
-      <node id="1703835097133380246" at="324,525,325,166" concept="2" />
+      <node id="1703835097133380246" at="323,265,324,508" concept="2" />
+      <node id="1703835097133380246" at="324,508,325,166" concept="2" />
       <node id="1703835097133380246" at="325,166,326,24" concept="6" />
       <node id="1703835097132830266" at="41,0,44,0" concept="4" trace="getCaption#()Ljava/lang/String;" />
       <node id="1703835097133345263" at="56,0,59,0" concept="4" trace="translate#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
