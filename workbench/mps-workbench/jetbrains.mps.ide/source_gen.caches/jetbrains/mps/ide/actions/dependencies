@@ -1739,7 +1739,6 @@
     <classNode dependClassName="jetbrains.mps.ide.actions.NewElement_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.NewFile_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.NewModel_Action" />
-    <classNode dependClassName="jetbrains.mps.ide.actions.NewRuntimeModule_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.NewSolution_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.NewSubModel_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.NewSubTestModel_Action" />
@@ -1767,7 +1766,6 @@
     <classNode dependClassName="jetbrains.mps.ide.actions.RenamePackage_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RenameVirtualFolder_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RevertMemoryChanges_Action" />
-    <classNode dependClassName="jetbrains.mps.ide.actions.RuntimeFolderActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SafeDeleteModuleDependency_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SafeDelete_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.Search_ActionGroup" />
@@ -2241,40 +2239,6 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
-    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.actions.NewRuntimeModule_Action">
-    <classNode dependClassName="com.intellij.ide.util.gotoByName.ChooseByNamePopup" />
-    <classNode dependClassName="com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent" />
-    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
-    <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.Runnable" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="javax.swing.Icon" />
-    <classNode dependClassName="javax.swing.tree.TreeNode" />
-    <classNode dependClassName="jetbrains.mps.FilteredGlobalScope" />
-    <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
-    <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTree" />
-    <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTreeNode" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
-    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.project.ModuleInstanceCondition" />
-    <classNode dependClassName="jetbrains.mps.project.Solution" />
-    <classNode dependClassName="jetbrains.mps.scope.ConditionalScope" />
-    <classNode dependClassName="jetbrains.mps.smodel.Language" />
-    <classNode dependClassName="jetbrains.mps.workbench.choose.ChooseByNameData" />
-    <classNode dependClassName="jetbrains.mps.workbench.choose.ModuleScopeIterable" />
-    <classNode dependClassName="jetbrains.mps.workbench.choose.ModulesPresentation" />
-    <classNode dependClassName="jetbrains.mps.workbench.goTo.ui.MpsPopupFactory" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.NewSolution_Action">
@@ -2804,10 +2768,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.actions.RuntimeFolderActions_ActionGroup">
-    <classNode dependClassName="java.lang.String" />
-    <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.SafeDeleteModuleDependency_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />

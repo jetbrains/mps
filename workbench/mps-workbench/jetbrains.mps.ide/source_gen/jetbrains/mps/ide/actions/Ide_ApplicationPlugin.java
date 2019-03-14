@@ -68,7 +68,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new NewElement_Action());
     addAction(new NewFile_Action());
     addAction(new NewModel_Action());
-    addAction(new NewRuntimeModule_Action());
     addAction(new NewSolution_Action());
     addAction(new NewSubModel_Action());
     addAction(new NewSubTestModel_Action());
@@ -160,7 +159,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new ProjectNewActions_ActionGroup());
     addGroup(new PropertyNodeActions_ActionGroup());
     addGroup(new ReferenceNodeActions_ActionGroup());
-    addGroup(new RuntimeFolderActions_ActionGroup());
     addGroup(new Search_ActionGroup());
     addGroup(new SolutionActions_ActionGroup());
     addGroup(new SolutionNewActions_ActionGroup());
@@ -265,7 +263,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(CommonModuleActions_ActionGroup.ID, LanguageActions_ActionGroup.ID, LanguageActions_ActionGroup.LABEL_ID_commonModule);
     insertGroupIntoAnother(CommonModuleActions_ActionGroup.ID, SolutionActions_ActionGroup.ID, SolutionActions_ActionGroup.LABEL_ID_commonModule);
     insertGroupIntoAnother(MessagesViewActions_ActionGroup.ID, "MPS.MessagesView", null);
-    insertGroupIntoAnother(RuntimeFolderActions_ActionGroup.ID, FlyingActions_ActionGroup.ID, null);
     insertGroupIntoAnother(NamespaceMakeActions_ActionGroup.ID, FlyingActions_ActionGroup.ID, null);
     insertGroupIntoAnother(PrintNodePosition_Addition_ActionGroup.ID, EditorInternal_ActionGroup.ID, null);
     insertGroupIntoAnother(Search_ActionGroup.ID, "FindMenuGroup", null);
