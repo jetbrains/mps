@@ -26818,6 +26818,9 @@
     <node concept="26Ea6D" id="4A8SxGHvPam" role="2hID6k">
       <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
     </node>
+    <node concept="26Ea6D" id="4z969tcIApt" role="2hID6k">
+      <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
+    </node>
     <node concept="26Ea6D" id="4A8SxGHvPb5" role="2hID6k">
       <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
     </node>
@@ -26884,6 +26887,9 @@
     </node>
     <node concept="26Ea6D" id="4A8SxGHvPaH" role="26FZ21">
       <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
+    </node>
+    <node concept="26Ea6D" id="4z969tcIApT" role="26FZ21">
+      <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
     </node>
     <node concept="26Ea6D" id="4A8SxGHvPbu" role="26FZ21">
       <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />

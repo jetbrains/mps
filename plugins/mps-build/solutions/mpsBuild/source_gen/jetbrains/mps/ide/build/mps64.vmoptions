@@ -13,6 +13,7 @@
 -XX:SoftRefLRUPolicyMSPerMB=50
 -Dsun.io.useCanonCaches=false
 -Djava.net.preferIPv4Stack=true
+-Didea.invalidate.caches.invalidates.vfs=true
 -XX:-OmitStackTraceInFastThrow
 -XX:ReservedCodeCacheSize=240m
 #-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071
