@@ -1841,7 +1841,7 @@
                         </node>
                         <node concept="3cpWs3" id="9F" role="37wK5m">
                           <node concept="Xl_RD" id="9M" role="3uHU7B">
-                            <property role="Xl_RC" value="Default methods are allowed only at source level 1.8 or abovea. Current java language level:" />
+                            <property role="Xl_RC" value="Default methods are allowed only at source level 1.8 or above. Current java language level:" />
                             <node concept="cd27G" id="9P" role="lGtFl">
                               <node concept="3u3nmq" id="9Q" role="cd27D">
                                 <property role="3u3nmv" value="7197377355157103259" />

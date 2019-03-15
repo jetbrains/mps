@@ -690,7 +690,7 @@
             </node>
             <node concept="3cpWs3" id="6fye98S_6aq" role="2MkJ7o">
               <node concept="Xl_RD" id="6fye98S_6ar" role="3uHU7B">
-                <property role="Xl_RC" value="Default methods are allowed only at source level 1.8 or abovea. Current java language level:" />
+                <property role="Xl_RC" value="Default methods are allowed only at source level 1.8 or above. Current java language level:" />
               </node>
               <node concept="2OqwBi" id="6fye98S_6as" role="3uHU7w">
                 <node concept="37vLTw" id="6fye98S_6at" role="2Oq$k0">
