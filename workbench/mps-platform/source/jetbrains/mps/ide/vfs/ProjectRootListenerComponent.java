@@ -92,12 +92,14 @@ public final class ProjectRootListenerComponent implements ProjectComponent {
   @Override
   public void disposeComponent() {
     Collection<EmptyFSListener> listeners = myProject2ListenersMap.remove(myProject);
-    ApplicationManager.getApplication().runReadAction(() -> {
-      for (EmptyFSListener listener : listeners) {
-        IFile file = listener.getFile();
-        file.removeListener(listener);
-      }
-    });
+    if (listeners != null) {
+      ApplicationManager.getApplication().runReadAction(() -> {
+        for (EmptyFSListener listener : listeners) {
+          IFile file = listener.getFile();
+          file.removeListener(listener);
+        }
+      });
+    }
   }
 
   @NotNull
