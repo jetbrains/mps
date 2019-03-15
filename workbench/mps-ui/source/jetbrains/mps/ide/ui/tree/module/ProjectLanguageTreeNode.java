@@ -112,12 +112,7 @@ public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
     if (!getModule().getRuntimeModulesReferences().isEmpty()) {
       TextTreeNode languageRuntime = new RuntimeModulesTreeNode();
       for (SModuleReference mr : getModule().getRuntimeModulesReferences()) {
-        SModule m = mr.resolve(myProject.getRepository());
-        if (m == null || m == getModule()) {
-          continue;
-        }
-        // FIXME use smth like SModelReferenceTreeNode instead of full-fledged module nodes
-        languageRuntime.add(createFor(myProject, m));
+        languageRuntime.add(new SModuleReferenceTreeNode(mr, myProject));
       }
       add(languageRuntime);
     }

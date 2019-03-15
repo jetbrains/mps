@@ -2,15 +2,14 @@
 <model ref="r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
-    <use id="80208897-4572-437d-b50e-8f050cba9566" name="jetbrains.mps.debugger.java.privateMembers" version="-1" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
-    <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
+    <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
   </languages>
   <imports>
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
@@ -691,16 +690,16 @@
                           <ref role="37wK5l" to="tqvn:~TemporaryModels.create(boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="create" />
                           <node concept="3clFbT" id="6N7oOgwRcPp" role="37wK5m" />
                           <node concept="2YIFZM" id="6N7oOgwReRI" role="37wK5m">
-                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.forExistingModule(org.jetbrains.mps.openapi.module.SModule)" resolve="forExistingModule" />
                             <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
+                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.forExistingModule(org.jetbrains.mps.openapi.module.SModule)" resolve="forExistingModule" />
                             <node concept="37vLTw" id="6N7oOgwRo2Z" role="37wK5m">
                               <ref role="3cqZAo" node="_Rntce2R6h" resolve="containerModule" />
                             </node>
                           </node>
                         </node>
                         <node concept="2YIFZM" id="6N7oOgwR93h" role="2Oq$k0">
-                          <ref role="37wK5l" to="tqvn:~TemporaryModels.getInstance()" resolve="getInstance" />
                           <ref role="1Pybhc" to="tqvn:~TemporaryModels" resolve="TemporaryModels" />
+                          <ref role="37wK5l" to="tqvn:~TemporaryModels.getInstance()" resolve="getInstance" />
                         </node>
                       </node>
                     </node>
@@ -1561,8 +1560,8 @@
       </node>
       <node concept="3Tm6S6" id="4kSix$ymJxB" role="1B3o_S" />
       <node concept="2YIFZM" id="4kSix$yn4DF" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="4kSix$yn4DG" role="37wK5m">
           <ref role="3VsUkX" node="IYmOvntYf8" resolve="EvaluationModule" />
         </node>
@@ -1840,21 +1839,31 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="jVJrchk2MN" role="3cqZAp">
-              <node concept="2OqwBi" id="jVJrchk4ro" role="3clFbG">
-                <node concept="2OqwBi" id="jVJrchk3_a" role="2Oq$k0">
-                  <node concept="37vLTw" id="jVJrchk2ML" role="2Oq$k0">
-                    <ref role="3cqZAo" node="29Pb3oJp8Wm" resolve="myDescriptor" />
-                  </node>
-                  <node concept="liA8E" id="jVJrchk41C" role="2OqNvi">
-                    <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModelRootDescriptors()" resolve="getModelRootDescriptors" />
+            <node concept="3clFbJ" id="3Tx3Kt6vV8Q" role="3cqZAp">
+              <node concept="3clFbS" id="3Tx3Kt6vV8S" role="3clFbx">
+                <node concept="3clFbF" id="jVJrchk2MN" role="3cqZAp">
+                  <node concept="2OqwBi" id="jVJrchk4ro" role="3clFbG">
+                    <node concept="2OqwBi" id="jVJrchk3_a" role="2Oq$k0">
+                      <node concept="37vLTw" id="jVJrchk2ML" role="2Oq$k0">
+                        <ref role="3cqZAo" node="29Pb3oJp8Wm" resolve="myDescriptor" />
+                      </node>
+                      <node concept="liA8E" id="4z969tcHkS0" role="2OqNvi">
+                        <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModelRootDescriptors()" resolve="getModelRootDescriptors" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="jVJrchk8ah" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~Collection.add(java.lang.Object)" resolve="add" />
+                      <node concept="37vLTw" id="jVJrchkj8G" role="37wK5m">
+                        <ref role="3cqZAo" node="jVJrchkj8A" resolve="javaStubRoot" />
+                      </node>
+                    </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="jVJrchk8ah" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Collection.add(java.lang.Object)" resolve="add" />
-                  <node concept="37vLTw" id="jVJrchkj8G" role="37wK5m">
-                    <ref role="3cqZAo" node="jVJrchkj8A" resolve="javaStubRoot" />
-                  </node>
+              </node>
+              <node concept="3y3z36" id="3Tx3Kt6vV__" role="3clFbw">
+                <node concept="10Nm6u" id="3Tx3Kt6vVAw" role="3uHU7w" />
+                <node concept="37vLTw" id="3Tx3Kt6vVmD" role="3uHU7B">
+                  <ref role="3cqZAo" node="jVJrchkj8A" resolve="javaStubRoot" />
                 </node>
               </node>
             </node>
@@ -2404,8 +2413,8 @@
                           </node>
                           <node concept="3cpWs3" id="IYmOvntYfY" role="3uHU7B">
                             <node concept="2YIFZM" id="2AYTeDfPNtu" role="3uHU7B">
-                              <ref role="37wK5l" to="18ew:~JavaNameUtil.packageName(org.jetbrains.mps.openapi.model.SModel)" resolve="packageName" />
                               <ref role="1Pybhc" to="18ew:~JavaNameUtil" resolve="JavaNameUtil" />
+                              <ref role="37wK5l" to="18ew:~JavaNameUtil.packageName(org.jetbrains.mps.openapi.model.SModel)" resolve="packageName" />
                               <node concept="37vLTw" id="2AYTeDfPNtv" role="37wK5m">
                                 <ref role="3cqZAo" node="IYmOvntYfs" resolve="model" />
                               </node>
@@ -4399,8 +4408,8 @@
       <property role="TrG5h" value="IS_DEVELOPER_MODE" />
       <property role="3TUv4t" value="true" />
       <node concept="2YIFZM" id="7GZZbkPAwt" role="33vP2m">
-        <ref role="37wK5l" to="wyt6:~Boolean.getBoolean(java.lang.String)" resolve="getBoolean" />
         <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+        <ref role="37wK5l" to="wyt6:~Boolean.getBoolean(java.lang.String)" resolve="getBoolean" />
         <node concept="37vLTw" id="7GZZbkQ9KU" role="37wK5m">
           <ref role="3cqZAo" node="7GZZbkQ9KR" resolve="DEVELOPER_PROPERTY" />
         </node>

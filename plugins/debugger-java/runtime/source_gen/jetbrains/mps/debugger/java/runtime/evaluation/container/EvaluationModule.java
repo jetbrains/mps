@@ -68,7 +68,9 @@ public final class EvaluationModule extends AbstractModule implements SModule {
       //     a mechanism to access parent/name. It could be java.io.File, if MRD.getJavaStubsModelRoot pleases to support one 
       IFile file = IoFileSystem.INSTANCE.getFile(path);
       ModelRootDescriptor javaStubRoot = ModelRootDescriptor.getJavaStubsModelRoot(file, myDescriptor.getModelRootDescriptors());
-      myDescriptor.getModelRootDescriptors().add(javaStubRoot);
+      if (javaStubRoot != null) {
+        myDescriptor.getModelRootDescriptors().add(javaStubRoot);
+      }
       myDescriptor.getAdditionalJavaStubPaths().add(path);
       fireChanged();
     }

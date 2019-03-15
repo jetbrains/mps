@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.ide.ui.tree.smodel;
+package jetbrains.mps.ide.ui.tree.module;
 
 import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ui.LayeredIcon;
@@ -22,34 +22,35 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
 
-public class SModelReferenceTreeNode extends MPSTreeNode {
-  private Project myProject;
+/**
+ * @author Artem Tikhomirov
+ */
+public class SModuleReferenceTreeNode extends MPSTreeNode {
+  private final Project myProject;
 
-  public SModelReferenceTreeNode(@NotNull SModel modelDescriptor, @NotNull Project mpsProject) {
-    super(modelDescriptor.getReference());
+  SModuleReferenceTreeNode(@NotNull SModuleReference moduleReference, @NotNull Project mpsProject) {
+    super(moduleReference);
     myProject = mpsProject;
-    String name = modelDescriptor.getName().getValue();
-    setNodeIdentifier(name);
+    setNodeIdentifier(moduleReference.getModuleName());
     setAutoExpandable(true);
     setAllowsChildren(false);
-    Icon icon = IdeIcons.MODEL_ICON;
+    Icon icon = IdeIcons.SOLUTION_ICON;
     icon = new LayeredIcon(icon, Nodes.Symlink);
     setIcon(icon);
   }
 
-  private SModelReference getModelReference() {
-    return (SModelReference) getUserObject();
+  private SModuleReference getModuleReference() {
+    return (SModuleReference) getUserObject();
   }
 
   @Override
   public void doubleClick() {
-    // XXX why not focus? It dates back to 1dbb830bc313cdbc389dea5b52107f49b0347720, but I don't understand, why.
-    new ProjectPaneNavigator(myProject).select(getModelReference());
+    // though SModelReferenceTreeNode doesn't focus when navigating, I don't see a reason not to focus
+    new ProjectPaneNavigator(myProject).shallFocus(true).select(getModuleReference());
   }
 
   @Override

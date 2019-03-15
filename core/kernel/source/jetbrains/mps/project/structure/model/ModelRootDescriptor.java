@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
@@ -102,6 +103,10 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
     return getJavaStubsModelRoot(file, Collections.emptyList());
   }
 
+  /**
+   * @return {@code null} if one of supplied descriptors has been updated with the path, or new descriptor if none matched
+   */
+  @Nullable
   public static ModelRootDescriptor getJavaStubsModelRoot(IFile file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
     String path = file.getParent().getPath();
 
