@@ -59,7 +59,7 @@ import java.util.Objects;
  *
  * Change 2: we changed the foreign* id in such a way that it persists to the foreign id without return type.
  * Thus instead of (:#println:void) the toString method returns (:~println).
- * By the way the foreign* id did not change his #equals and #hashcode methods however it started accept not only strings starting with '#', but also with '~'.
+ * By the way the foreign* id did not change the #equals and #hashcode methods, only the method #toString.
  *
  * Furthermore, we created a special {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} in the JavaClassStubModelDescriptor
  * which essentially for each stub java method node creates two different mappings: for a string id with return type and for a string id without return type.
@@ -126,7 +126,7 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
   }
 
   private void checkStartsWithPrefix(@NotNull String idWithReturnType) {
-    if (!idWithReturnType.startsWith(ID_PREFIX) && !idWithReturnType.startsWith(Foreign.ID_PREFIX)) {
+    if (!idWithReturnType.startsWith(ID_PREFIX)) {
       throw new IncorrectNodeIdFormatException(String.format("Node id must begin with '%s' or '%s'", ID_PREFIX, Foreign.ID_PREFIX), null);
     }
   }
