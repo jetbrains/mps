@@ -1312,7 +1312,7 @@
               <node concept="2OqwBi" id="41utEALo9tN" role="3clFbG">
                 <node concept="1Q80Hx" id="41utEALo9os" role="2Oq$k0" />
                 <node concept="liA8E" id="41utEALo9Qh" role="2OqNvi">
-                  <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                  <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                   <node concept="37vLTw" id="41utEALo9QC" role="37wK5m">
                     <ref role="3cqZAo" node="34YubGAq_9n" resolve="cmd" />
                   </node>

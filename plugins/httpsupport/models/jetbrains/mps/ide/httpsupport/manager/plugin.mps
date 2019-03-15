@@ -267,7 +267,7 @@
             <ref role="3uigEE" to="wyt6:~String" resolve="String" />
           </node>
           <node concept="2YIFZM" id="2Zv85d0BBvh" role="37wK5m">
-            <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+            <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="Xl_RD" id="2Zv85d0BBIQ" role="37wK5m">
               <property role="Xl_RC" value="youtrack.jetbrains.com" />
@@ -320,7 +320,7 @@
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
             <node concept="2YIFZM" id="4rrGGGbg9jd" role="33vP2m">
-              <ref role="37wK5l" to="g1go:~NettyKt.getHost(io.netty.handler.codec.http.HttpRequest):java.lang.String" resolve="getHost" />
+              <ref role="37wK5l" to="g1go:~NettyKt.getHost(io.netty.handler.codec.http.HttpRequest)" resolve="getHost" />
               <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
               <node concept="37vLTw" id="4rrGGGbg9kE" role="37wK5m">
                 <ref role="3cqZAo" node="2Zv85d0AOpU" resolve="request" />
@@ -339,7 +339,7 @@
           <node concept="22lmx$" id="4rrGGGbgfmi" role="3clFbw">
             <node concept="3fqX7Q" id="1RY0zwirMZ" role="3uHU7w">
               <node concept="2YIFZM" id="1RY0zwirTm" role="3fr31v">
-                <ref role="37wK5l" to="g1go:~NettyKt.parseAndCheckIsLocalHost(java.lang.String):boolean" resolve="parseAndCheckIsLocalHost" />
+                <ref role="37wK5l" to="g1go:~NettyKt.parseAndCheckIsLocalHost(java.lang.String)" resolve="parseAndCheckIsLocalHost" />
                 <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
                 <node concept="3cpWs3" id="1RY0zwiybj" role="37wK5m">
                   <node concept="Xl_RD" id="1RY0zwiyhE" role="3uHU7B">
@@ -367,7 +367,7 @@
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
             <node concept="2YIFZM" id="2Zv85d0AYTo" role="33vP2m">
-              <ref role="37wK5l" to="g1go:~NettyKt.getOrigin(io.netty.handler.codec.http.HttpRequest):java.lang.String" resolve="getOrigin" />
+              <ref role="37wK5l" to="g1go:~NettyKt.getOrigin(io.netty.handler.codec.http.HttpRequest)" resolve="getOrigin" />
               <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
               <node concept="37vLTw" id="2Zv85d0AYY4" role="37wK5m">
                 <ref role="3cqZAo" node="2Zv85d0AOpU" resolve="request" />
@@ -380,7 +380,7 @@
             <node concept="3clFbF" id="2Zv85d0B0_P" role="3cqZAp">
               <node concept="37vLTI" id="2Zv85d0B0IB" role="3clFbG">
                 <node concept="2YIFZM" id="2Zv85d0B0RH" role="37vLTx">
-                  <ref role="37wK5l" to="g1go:~NettyKt.getReferrer(io.netty.handler.codec.http.HttpRequest):java.lang.String" resolve="getReferrer" />
+                  <ref role="37wK5l" to="g1go:~NettyKt.getReferrer(io.netty.handler.codec.http.HttpRequest)" resolve="getReferrer" />
                   <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
                   <node concept="37vLTw" id="2Zv85d0B0Si" role="37wK5m">
                     <ref role="3cqZAo" node="2Zv85d0AOpU" resolve="request" />
@@ -438,7 +438,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4rrGGGbg5pE" role="2OqNvi">
-                    <ref role="37wK5l" to="zf81:~URI.getHost():java.lang.String" resolve="getHost" />
+                    <ref role="37wK5l" to="zf81:~URI.getHost()" resolve="getHost" />
                   </node>
                 </node>
               </node>
@@ -453,7 +453,7 @@
                     <node concept="17RvpY" id="4rrGGGbgjYg" role="2OqNvi" />
                   </node>
                   <node concept="2YIFZM" id="4rrGGGbfYBK" role="3uHU7w">
-                    <ref role="37wK5l" to="g1go:~NettyKt.isLocalHost(java.lang.String,boolean,boolean):boolean" resolve="isLocalHost" />
+                    <ref role="37wK5l" to="g1go:~NettyKt.isLocalHost(java.lang.String,boolean,boolean)" resolve="isLocalHost" />
                     <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
                     <node concept="37vLTw" id="4rrGGGbfYY2" role="37wK5m">
                       <ref role="3cqZAo" node="4rrGGGbg5p$" resolve="referrerHost" />
@@ -471,7 +471,7 @@
                     <ref role="3cqZAo" node="2Zv85d0B_PJ" resolve="TRUSTED" />
                   </node>
                   <node concept="liA8E" id="2Zv85d0CEJG" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object):boolean" resolve="contains" />
+                    <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
                     <node concept="37vLTw" id="2Zv85d0CFjp" role="37wK5m">
                       <ref role="3cqZAo" node="4rrGGGbg5p$" resolve="referrerHost" />
                     </node>
@@ -530,7 +530,7 @@
                 <ref role="3cqZAo" node="3xqp3A6tBLa" resolve="request" />
               </node>
               <node concept="liA8E" id="3xqp3A6tCn3" role="2OqNvi">
-                <ref role="37wK5l" to="9xw8:~HttpRequest.method():io.netty.handler.codec.http.HttpMethod" resolve="method" />
+                <ref role="37wK5l" to="9xw8:~HttpRequest.method()" resolve="method" />
               </node>
             </node>
           </node>
@@ -605,7 +605,7 @@
                         <ref role="3cqZAo" node="3xqp3A6tCTH" resolve="context" />
                       </node>
                       <node concept="liA8E" id="5dkEk59WAAv" role="2OqNvi">
-                        <ref role="37wK5l" to="lqgf:~ChannelHandlerContext.channel():io.netty.channel.Channel" resolve="channel" />
+                        <ref role="37wK5l" to="lqgf:~ChannelHandlerContext.channel()" resolve="channel" />
                       </node>
                     </node>
                   </node>
@@ -1024,11 +1024,11 @@
                 <ref role="3cqZAo" node="6GArDv5I3px" resolve="decoder" />
               </node>
               <node concept="liA8E" id="6GArDv5I7ov" role="2OqNvi">
-                <ref role="37wK5l" to="9xw8:~QueryStringDecoder.parameters():java.util.Map" resolve="parameters" />
+                <ref role="37wK5l" to="9xw8:~QueryStringDecoder.parameters()" resolve="parameters" />
               </node>
             </node>
             <node concept="liA8E" id="6GArDv5IhC8" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object):java.lang.Object" resolve="get" />
+              <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
               <node concept="37vLTw" id="6GArDv5IhTL" role="37wK5m">
                 <ref role="3cqZAo" node="6GArDv5I735" resolve="key" />
               </node>
@@ -1061,7 +1061,7 @@
               <ref role="3cqZAo" node="6GArDv5I3px" resolve="decoder" />
             </node>
             <node concept="liA8E" id="6GArDv5Iwtr" role="2OqNvi">
-              <ref role="37wK5l" to="9xw8:~QueryStringDecoder.path():java.lang.String" resolve="path" />
+              <ref role="37wK5l" to="9xw8:~QueryStringDecoder.path()" resolve="path" />
             </node>
           </node>
         </node>
@@ -1123,7 +1123,7 @@
             </node>
             <node concept="2YIFZM" id="5FAyHK_C4aP" role="33vP2m">
               <ref role="1Pybhc" to="iwnc:~Responses" resolve="Responses" />
-              <ref role="37wK5l" to="iwnc:~Responses.response(java.lang.String,io.netty.buffer.ByteBuf):io.netty.handler.codec.http.FullHttpResponse" resolve="response" />
+              <ref role="37wK5l" to="iwnc:~Responses.response(java.lang.String,io.netty.buffer.ByteBuf)" resolve="response" />
               <node concept="37vLTw" id="5FAyHK_C4cR" role="37wK5m">
                 <ref role="3cqZAo" node="5FAyHK_BY3M" resolve="contentType" />
               </node>
@@ -1139,7 +1139,7 @@
               <ref role="3cqZAo" node="5FAyHK_C47c" resolve="response" />
             </node>
             <node concept="liA8E" id="5FAyHK_C6rb" role="2OqNvi">
-              <ref role="37wK5l" to="9xw8:~FullHttpResponse.setStatus(io.netty.handler.codec.http.HttpResponseStatus):io.netty.handler.codec.http.FullHttpResponse" resolve="setStatus" />
+              <ref role="37wK5l" to="9xw8:~FullHttpResponse.setStatus(io.netty.handler.codec.http.HttpResponseStatus)" resolve="setStatus" />
               <node concept="37vLTw" id="5FAyHK_C6tJ" role="37wK5m">
                 <ref role="3cqZAo" node="5FAyHK_C32t" resolve="status" />
               </node>
@@ -1149,7 +1149,7 @@
         <node concept="3clFbF" id="5FAyHK_C6Bx" role="3cqZAp">
           <node concept="2YIFZM" id="5FAyHK_C6Dm" role="3clFbG">
             <ref role="1Pybhc" to="iwnc:~Responses" resolve="Responses" />
-            <ref role="37wK5l" to="iwnc:~Responses.send(io.netty.handler.codec.http.HttpResponse,io.netty.channel.Channel,io.netty.handler.codec.http.HttpRequest):void" resolve="send" />
+            <ref role="37wK5l" to="iwnc:~Responses.send(io.netty.handler.codec.http.HttpResponse,io.netty.channel.Channel,io.netty.handler.codec.http.HttpRequest)" resolve="send" />
             <node concept="37vLTw" id="5FAyHK_C6FB" role="37wK5m">
               <ref role="3cqZAo" node="5FAyHK_C47c" resolve="response" />
             </node>
@@ -1201,7 +1201,7 @@
                 <property role="Xl_RC" value="text/plain" />
               </node>
               <node concept="2YIFZM" id="5YhakczIl4G" role="37wK5m">
-                <ref role="37wK5l" to="iil0:~Unpooled.copiedBuffer(java.lang.CharSequence,java.nio.charset.Charset):io.netty.buffer.ByteBuf" resolve="copiedBuffer" />
+                <ref role="37wK5l" to="iil0:~Unpooled.copiedBuffer(java.lang.CharSequence,java.nio.charset.Charset)" resolve="copiedBuffer" />
                 <ref role="1Pybhc" to="iil0:~Unpooled" resolve="Unpooled" />
                 <node concept="37vLTw" id="5YhakczIzXq" role="37wK5m">
                   <ref role="3cqZAo" node="5YhakczIx0u" resolve="message" />
@@ -1254,7 +1254,7 @@
                   </node>
                 </node>
                 <node concept="2YIFZM" id="5YhakczIl4L" role="3uHU7w">
-                  <ref role="37wK5l" to="9w4s:~ExceptionUtil.getThrowableText(java.lang.Throwable):java.lang.String" resolve="getThrowableText" />
+                  <ref role="37wK5l" to="9w4s:~ExceptionUtil.getThrowableText(java.lang.Throwable)" resolve="getThrowableText" />
                   <ref role="1Pybhc" to="9w4s:~ExceptionUtil" resolve="ExceptionUtil" />
                   <node concept="37vLTw" id="5YhakczIqj1" role="37wK5m">
                     <ref role="3cqZAo" node="5YhakczIjaj" resolve="error" />
@@ -1300,7 +1300,7 @@
                     <ref role="3cqZAo" node="3sFACrPVVOQ" resolve="path" />
                   </node>
                   <node concept="liA8E" id="5fiBL1fGJTN" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.substring(int):java.lang.String" resolve="substring" />
+                    <ref role="37wK5l" to="wyt6:~String.substring(int)" resolve="substring" />
                     <node concept="3cmrfG" id="5fiBL1fGKC1" role="37wK5m">
                       <property role="3cmrfH" value="1" />
                     </node>
@@ -1317,7 +1317,7 @@
               <ref role="3cqZAo" node="3sFACrPVVOQ" resolve="path" />
             </node>
             <node concept="liA8E" id="5fiBL1fGI_l" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+              <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
               <node concept="Xl_RD" id="5fiBL1fGIFC" role="37wK5m">
                 <property role="Xl_RC" value="/" />
               </node>
@@ -1332,7 +1332,7 @@
                   <ref role="3cqZAo" node="3sFACrPVVOQ" resolve="path" />
                 </node>
                 <node concept="liA8E" id="5fiBL1fGDkK" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.split(java.lang.String):java.lang.String[]" resolve="split" />
+                  <ref role="37wK5l" to="wyt6:~String.split(java.lang.String)" resolve="split" />
                   <node concept="Xl_RD" id="5fiBL1fGDvI" role="37wK5m">
                     <property role="Xl_RC" value="/" />
                   </node>
@@ -1366,7 +1366,7 @@
           <node concept="3cpWsn" id="5FAyHK_FnbZ" role="3cpWs9">
             <property role="TrG5h" value="refferer" />
             <node concept="2YIFZM" id="1sqsa4ayUyV" role="33vP2m">
-              <ref role="37wK5l" to="g1go:~NettyKt.getOrigin(io.netty.handler.codec.http.HttpRequest):java.lang.String" resolve="getOrigin" />
+              <ref role="37wK5l" to="g1go:~NettyKt.getOrigin(io.netty.handler.codec.http.HttpRequest)" resolve="getOrigin" />
               <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
               <node concept="37vLTw" id="1sqsa4ayUyW" role="37wK5m">
                 <ref role="3cqZAo" node="5FAyHK_FEFG" resolve="request" />
@@ -1380,7 +1380,7 @@
             <node concept="3clFbF" id="5FAyHK_FraK" role="3cqZAp">
               <node concept="37vLTI" id="5FAyHK_FrZb" role="3clFbG">
                 <node concept="2YIFZM" id="5FAyHK_Fsbp" role="37vLTx">
-                  <ref role="37wK5l" to="g1go:~NettyKt.getReferrer(io.netty.handler.codec.http.HttpRequest):java.lang.String" resolve="getReferrer" />
+                  <ref role="37wK5l" to="g1go:~NettyKt.getReferrer(io.netty.handler.codec.http.HttpRequest)" resolve="getReferrer" />
                   <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
                   <node concept="37vLTw" id="5FAyHK_Fseg" role="37wK5m">
                     <ref role="3cqZAo" node="5FAyHK_FEFG" resolve="request" />
@@ -1402,7 +1402,7 @@
         <node concept="3clFbH" id="5FAyHK_FskM" role="3cqZAp" />
         <node concept="3clFbF" id="5FAyHK_FG6J" role="3cqZAp">
           <node concept="2YIFZM" id="5FAyHK_FWVI" role="3clFbG">
-            <ref role="37wK5l" to="zdap:~StringUtil.nullize(java.lang.String):java.lang.String" resolve="nullize" />
+            <ref role="37wK5l" to="zdap:~StringUtil.nullize(java.lang.String)" resolve="nullize" />
             <ref role="1Pybhc" to="zdap:~StringUtil" resolve="StringUtil" />
             <node concept="3K4zz7" id="5yeCBqdORJ2" role="37wK5m">
               <node concept="3clFbC" id="5yeCBqdOSEJ" role="3K4Cdx">
@@ -1422,7 +1422,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5FAyHK_FJvo" role="2OqNvi">
-                  <ref role="37wK5l" to="zf81:~URI.getHost():java.lang.String" resolve="getHost" />
+                  <ref role="37wK5l" to="zf81:~URI.getHost()" resolve="getHost" />
                 </node>
               </node>
             </node>
@@ -1599,7 +1599,7 @@
               </node>
               <node concept="3clFbF" id="3whKZwB1M_9" role="3cqZAp">
                 <node concept="1rXfSq" id="3whKZwB1M_7" role="3clFbG">
-                  <ref role="37wK5l" to="iwnc:~CustomPortServerManagerBase.portChanged():void" resolve="portChanged" />
+                  <ref role="37wK5l" to="iwnc:~CustomPortServerManagerBase.portChanged()" resolve="portChanged" />
                 </node>
               </node>
             </node>
@@ -1640,7 +1640,7 @@
           <node concept="2OqwBi" id="3ApdfsumtJ" role="3clFbG">
             <node concept="2OqwBi" id="3ApdfsulCp" role="2Oq$k0">
               <node concept="liA8E" id="3ApdfsulTQ" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:~ExtensionPointName.findExtension(java.lang.Class):java.lang.Object" resolve="findExtension" />
+                <ref role="37wK5l" to="9ti4:~ExtensionPointName.findExtension(java.lang.Class)" resolve="findExtension" />
                 <node concept="3VsKOn" id="3ApdfsumbI" role="37wK5m">
                   <ref role="3VsUkX" node="G$0uqqC2Yz" resolve="MPSIntegrationPortManager" />
                 </node>
@@ -1813,14 +1813,14 @@
                 <ref role="3cqZAo" to="e5vs:~CustomPortServerManager.EP_NAME" resolve="EP_NAME" />
               </node>
               <node concept="liA8E" id="3PMO5H7XzOv" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:~ExtensionPointName.findExtension(java.lang.Class):java.lang.Object" resolve="findExtension" />
+                <ref role="37wK5l" to="9ti4:~ExtensionPointName.findExtension(java.lang.Class)" resolve="findExtension" />
                 <node concept="3VsKOn" id="3PMO5H7X$0_" role="37wK5m">
                   <ref role="3VsUkX" node="3PMO5H7WIrG" resolve="MPSInternalPortManager" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="3PMO5H7X$sc" role="2OqNvi">
-              <ref role="37wK5l" to="iwnc:~CustomPortServerManagerBase.isBound():boolean" resolve="isBound" />
+              <ref role="37wK5l" to="iwnc:~CustomPortServerManagerBase.isBound()" resolve="isBound" />
             </node>
           </node>
           <node concept="15s5l7" id="3PMO5H7X$G7" role="lGtFl" />
@@ -1856,7 +1856,7 @@
       <node concept="3clFbS" id="3gdTObr$r8z" role="3clF47">
         <node concept="3clFbF" id="3gdTObr$rkC" role="3cqZAp">
           <node concept="2YIFZM" id="3gdTObr$rkD" role="3clFbG">
-            <ref role="37wK5l" to="fnpx:~Notifications$Bus.notify(com.intellij.notification.Notification):void" resolve="notify" />
+            <ref role="37wK5l" to="fnpx:~Notifications$Bus.notify(com.intellij.notification.Notification)" resolve="notify" />
             <ref role="1Pybhc" to="fnpx:~Notifications$Bus" resolve="Notifications.Bus" />
             <node concept="2ShNRf" id="3gdTObr$rkE" role="37wK5m">
               <node concept="1pGfFk" id="3gdTObr$rkF" role="2ShVmc">

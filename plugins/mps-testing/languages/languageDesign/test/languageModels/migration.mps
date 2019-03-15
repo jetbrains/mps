@@ -270,7 +270,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="2BKoAeu13ET" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.setProperty(java.lang.String,java.lang.String):void" resolve="setProperty" />
+                    <ref role="37wK5l" to="mhbf:~SNode.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
                     <node concept="Xl_RD" id="2BKoAeu15Fe" role="37wK5m">
                       <property role="Xl_RC" value="uiTest" />
                     </node>

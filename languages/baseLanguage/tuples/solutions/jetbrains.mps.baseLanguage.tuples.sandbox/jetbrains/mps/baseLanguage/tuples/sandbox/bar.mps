@@ -103,7 +103,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="3I9XST$B74o" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(int):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
               <node concept="1LFfDK" id="3I9XST$B74p" role="37wK5m">
                 <node concept="3cmrfG" id="3I9XST$B74q" role="1LF_Uc">
                   <property role="3cmrfH" value="0" />
@@ -120,7 +120,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3I9XST$B74w" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~HashMap.get(java.lang.Object):java.lang.Object" resolve="get" />
+                    <ref role="37wK5l" to="33ny:~HashMap.get(java.lang.Object)" resolve="get" />
                     <node concept="3cmrfG" id="3I9XST$B74x" role="37wK5m">
                       <property role="3cmrfH" value="1" />
                     </node>

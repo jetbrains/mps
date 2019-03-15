@@ -274,7 +274,7 @@
             <node concept="2OqwBi" id="5nAzUdZieZa" role="3uHU7w">
               <node concept="2OqwBi" id="5nAzUdZieZb" role="2Oq$k0">
                 <node concept="liA8E" id="24cAaiUz$ol" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                  <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                 </node>
                 <node concept="2JrnkZ" id="5nAzUdZieZc" role="2Oq$k0">
                   <node concept="37vLTw" id="3GM_nagTz2H" role="2JrQYb">
@@ -283,7 +283,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="5nAzUdZieZf" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
               </node>
             </node>
             <node concept="3cpWs3" id="hKujnYo" role="3uHU7B">
@@ -1114,7 +1114,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4WpFdPuw8L8" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleName()" resolve="getModuleName" />
               </node>
             </node>
           </node>
@@ -1133,7 +1133,7 @@
                   <property role="Xl_RC" value="_CopyPasteHandlers" />
                 </node>
                 <node concept="2YIFZM" id="4WpFdPuw8Lb" role="3uHU7B">
-                  <ref role="37wK5l" to="18ew:~NameUtil.shortNameFromLongName(java.lang.String):java.lang.String" resolve="shortNameFromLongName" />
+                  <ref role="37wK5l" to="18ew:~NameUtil.shortNameFromLongName(java.lang.String)" resolve="shortNameFromLongName" />
                   <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                   <node concept="37vLTw" id="3GM_nagTw8p" role="37wK5m">
                     <ref role="3cqZAo" node="4WpFdPuw8L2" resolve="name" />

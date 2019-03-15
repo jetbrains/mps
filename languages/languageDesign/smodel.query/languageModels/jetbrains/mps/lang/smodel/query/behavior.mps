@@ -747,11 +747,11 @@
             <node concept="2OqwBi" id="4L5lkpKd4Pw" role="2Oq$k0">
               <node concept="1fM9EW" id="4L5lkpKd4Aj" role="2Oq$k0" />
               <node concept="liA8E" id="4L5lkpKd5d5" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.getLanguage():org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
+                <ref role="37wK5l" to="c17a:~SAbstractConcept.getLanguage()" resolve="getLanguage" />
               </node>
             </node>
             <node concept="liA8E" id="4L5lkpKd5Cf" role="2OqNvi">
-              <ref role="37wK5l" to="c17a:~SLanguage.getQualifiedName():java.lang.String" resolve="getQualifiedName" />
+              <ref role="37wK5l" to="c17a:~SLanguage.getQualifiedName()" resolve="getQualifiedName" />
             </node>
           </node>
         </node>
@@ -795,7 +795,7 @@
                 <node concept="2OqwBi" id="60B$833bwqJ" role="3cqZAk">
                   <node concept="1fM9EW" id="1u_ffTozKcJ" role="2Oq$k0" />
                   <node concept="liA8E" id="1u_ffTozKcK" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                    <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
                   </node>
                 </node>
               </node>

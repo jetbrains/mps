@@ -1495,7 +1495,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1dahvLECl4p" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence):java.lang.String" resolve="replace" />
+                <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
                 <node concept="Xl_RD" id="1dahvLECl4q" role="37wK5m">
                   <property role="Xl_RC" value="." />
                 </node>
@@ -1513,7 +1513,7 @@
                     <node concept="13iPFW" id="2n9zn0CqMQ1" role="2JrQYb" />
                   </node>
                   <node concept="liA8E" id="2n9zn0CqMQ2" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
                   </node>
                 </node>
               </node>

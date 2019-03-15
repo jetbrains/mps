@@ -193,7 +193,7 @@
               <ref role="3cqZAo" node="5JXsuoWG7RP" resolve="runner" />
             </node>
             <node concept="liA8E" id="5JXsuoWG8W3" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze():jetbrains.mps.lang.dataFlow.framework.AnalysisResult" resolve="analyze" />
+              <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze()" resolve="analyze" />
             </node>
           </node>
         </node>
@@ -217,7 +217,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5JXsuoWGaTy" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~Program.getInstructions():java.util.List" resolve="getInstructions" />
+              <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
             </node>
           </node>
         </node>
@@ -238,7 +238,7 @@
                   <ref role="3cqZAo" node="5JXsuoWG8W0" resolve="result" />
                 </node>
                 <node concept="liA8E" id="5JXsuoWGbE0" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction):java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction)" resolve="get" />
                   <node concept="2GrUjf" id="5JXsuoWGbE1" role="37wK5m">
                     <ref role="2Gs0qQ" node="5JXsuoWGbfx" resolve="instruction" />
                   </node>
@@ -257,7 +257,7 @@
                       <ref role="2Gs0qQ" node="5JXsuoWGbfx" resolve="instruction" />
                     </node>
                     <node concept="liA8E" id="513LyO47E2J" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~Instruction.getSource():java.lang.Object" resolve="getSource" />
+                      <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
                     </node>
                   </node>
                   <node concept="3Tqbb2" id="513LyO47E2K" role="10QFUM" />
@@ -395,7 +395,7 @@
               <ref role="3cqZAo" node="2$3McZ0WDtg" resolve="runner" />
             </node>
             <node concept="liA8E" id="2$3McZ0WDtw" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze():jetbrains.mps.lang.dataFlow.framework.AnalysisResult" resolve="analyze" />
+              <ref role="37wK5l" to="1fjm:~AnalyzerRunner.analyze()" resolve="analyze" />
             </node>
           </node>
         </node>
@@ -419,7 +419,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2$3McZ0WDtD" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~Program.getInstructions():java.util.List" resolve="getInstructions" />
+              <ref role="37wK5l" to="1fjm:~Program.getInstructions()" resolve="getInstructions" />
             </node>
           </node>
         </node>
@@ -440,7 +440,7 @@
                   <ref role="3cqZAo" node="2$3McZ0WDtr" resolve="result" />
                 </node>
                 <node concept="liA8E" id="2$3McZ0WDtM" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction):java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="1fjm:~AnalysisResult.get(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction)" resolve="get" />
                   <node concept="2GrUjf" id="2$3McZ0WDtN" role="37wK5m">
                     <ref role="2Gs0qQ" node="2$3McZ0WDtF" resolve="instruction" />
                   </node>
@@ -459,7 +459,7 @@
                       <ref role="2Gs0qQ" node="2$3McZ0WDtF" resolve="instruction" />
                     </node>
                     <node concept="liA8E" id="2$3McZ0WDtV" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~Instruction.getSource():java.lang.Object" resolve="getSource" />
+                      <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
                     </node>
                   </node>
                   <node concept="3Tqbb2" id="2$3McZ0WDtW" role="10QFUM" />

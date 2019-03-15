@@ -303,11 +303,11 @@
                     <ref role="3cqZAo" node="6kJcyCQ$JZA" resolve="context" />
                   </node>
                   <node concept="liA8E" id="7w6_O22_HHu" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace():jetbrains.mps.openapi.editor.menus.EditorMenuTrace" resolve="getEditorMenuTrace" />
+                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace()" resolve="getEditorMenuTrace" />
                   </node>
                 </node>
                 <node concept="liA8E" id="7w6_O22_HHv" role="2OqNvi">
-                  <ref role="37wK5l" to="x4mf:~EditorMenuTrace.pushTraceInfo():void" resolve="pushTraceInfo" />
+                  <ref role="37wK5l" to="x4mf:~EditorMenuTrace.pushTraceInfo()" resolve="pushTraceInfo" />
                 </node>
               </node>
             </node>
@@ -318,11 +318,11 @@
                     <ref role="3cqZAo" node="6kJcyCQ$JZA" resolve="context" />
                   </node>
                   <node concept="liA8E" id="7w6_O22_Imz" role="2OqNvi">
-                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace():jetbrains.mps.openapi.editor.menus.EditorMenuTrace" resolve="getEditorMenuTrace" />
+                    <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace()" resolve="getEditorMenuTrace" />
                   </node>
                 </node>
                 <node concept="liA8E" id="7w6_O22_Im$" role="2OqNvi">
-                  <ref role="37wK5l" to="x4mf:~EditorMenuTrace.setDescriptor(jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor):void" resolve="setDescriptor" />
+                  <ref role="37wK5l" to="x4mf:~EditorMenuTrace.setDescriptor(jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor)" resolve="setDescriptor" />
                   <node concept="2ShNRf" id="7w6_O22_Im_" role="37wK5m">
                     <node concept="1pGfFk" id="7w6_O22_ImA" role="2ShVmc">
                       <ref role="37wK5l" to="v95p:~EditorMenuDescriptorBase.&lt;init&gt;(java.lang.String,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="EditorMenuDescriptorBase" />
@@ -389,11 +389,11 @@
                         <ref role="3cqZAo" node="6kJcyCQ$JZA" resolve="context" />
                       </node>
                       <node concept="liA8E" id="2GsMyueDDc" role="2OqNvi">
-                        <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace():jetbrains.mps.openapi.editor.menus.EditorMenuTrace" resolve="getEditorMenuTrace" />
+                        <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace()" resolve="getEditorMenuTrace" />
                       </node>
                     </node>
                     <node concept="liA8E" id="2GsMyueE7e" role="2OqNvi">
-                      <ref role="37wK5l" to="x4mf:~EditorMenuTrace.popTraceInfo():void" resolve="popTraceInfo" />
+                      <ref role="37wK5l" to="x4mf:~EditorMenuTrace.popTraceInfo()" resolve="popTraceInfo" />
                     </node>
                   </node>
                 </node>
@@ -444,11 +444,11 @@
                         <ref role="3cqZAo" node="6kJcyCQ$K06" resolve="context" />
                       </node>
                       <node concept="liA8E" id="7w6_O22_RhA" role="2OqNvi">
-                        <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace():jetbrains.mps.openapi.editor.menus.EditorMenuTrace" resolve="getEditorMenuTrace" />
+                        <ref role="37wK5l" to="uddc:~TransformationMenuContext.getEditorMenuTrace()" resolve="getEditorMenuTrace" />
                       </node>
                     </node>
                     <node concept="liA8E" id="7w6_O22_RhB" role="2OqNvi">
-                      <ref role="37wK5l" to="x4mf:~EditorMenuTrace.getTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getTraceInfo" />
+                      <ref role="37wK5l" to="x4mf:~EditorMenuTrace.getTraceInfo()" resolve="getTraceInfo" />
                     </node>
                   </node>
                 </node>

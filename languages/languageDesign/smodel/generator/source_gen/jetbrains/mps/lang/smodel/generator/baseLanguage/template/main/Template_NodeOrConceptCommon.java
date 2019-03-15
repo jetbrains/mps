@@ -43,7 +43,7 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase implem
     if (QueriesGenerated.ifMacro_Condition_115_0(new IfMacroContext(context, ifMacroRef_um8mvo_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       try {
-        tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SNodeOperations.asSConcept(org.jetbrains.mps.openapi.model.SNode):org.jetbrains.mps.openapi.language.SAbstractConcept")));
+        tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SNodeOperations.asSConcept(org.jetbrains.mps.openapi.model.SNode)")));
         tnode2.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SNodeOperations")));
         TemplateContext context1 = context.subContext();
         {

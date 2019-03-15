@@ -7,6 +7,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMField;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMMethod;
+import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMParameterizedType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
@@ -47,6 +48,7 @@ public class ASMNodeId {
     if (!(method.isConstructor())) {
       sb.append(':');
       sb.append(ASMNodeId.asString(method.getReturnType()));
+      return new StringBasedIdForJavaStubMethods(StringBasedIdForJavaStubMethods.ID_PREFIX + sb.toString());
     }
     return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + sb.toString());
   }

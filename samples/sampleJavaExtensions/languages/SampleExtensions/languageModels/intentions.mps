@@ -402,7 +402,7 @@
             <node concept="2OqwBi" id="4CxnSKED7dh" role="33vP2m">
               <node concept="1XNTG" id="4CxnSKED7di" role="2Oq$k0" />
               <node concept="liA8E" id="4CxnSKED7dj" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSelectedNode" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNode()" resolve="getSelectedNode" />
               </node>
             </node>
           </node>
@@ -1092,7 +1092,7 @@
           <node concept="2OqwBi" id="3itTNQrsGsY" role="3clFbG">
             <node concept="1XNTG" id="3itTNQrsGsX" role="2Oq$k0" />
             <node concept="liA8E" id="3itTNQrsGNx" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode)" resolve="select" />
               <node concept="2OqwBi" id="3itTNQrsNSo" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagT_cw" role="2Oq$k0">
                   <ref role="3cqZAo" node="P0flyHhI$g" resolve="statement" />
@@ -1143,7 +1143,7 @@
             <node concept="2OqwBi" id="7_IUqRBKvtV" role="33vP2m">
               <node concept="1XNTG" id="2A0RSQDIqrx" role="2Oq$k0" />
               <node concept="liA8E" id="7_IUqRBKvtZ" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNodes():java.util.List" resolve="getSelectedNodes" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedNodes()" resolve="getSelectedNodes" />
               </node>
             </node>
           </node>
@@ -1209,7 +1209,7 @@
           <node concept="2OqwBi" id="7_IUqRBKurw" role="3clFbG">
             <node concept="1XNTG" id="7_IUqRBKvu5" role="2Oq$k0" />
             <node concept="liA8E" id="7_IUqRBKury" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode):void" resolve="select" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.select(org.jetbrains.mps.openapi.model.SNode)" resolve="select" />
               <node concept="2OqwBi" id="7_IUqRBKurz" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagTtIa" role="2Oq$k0">
                   <ref role="3cqZAo" node="7_IUqRBKur5" resolve="unlessStatement" />

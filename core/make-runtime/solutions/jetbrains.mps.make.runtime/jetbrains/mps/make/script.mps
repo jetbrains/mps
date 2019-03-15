@@ -1158,7 +1158,7 @@
                 <ref role="3cqZAo" node="6KRD$9FAbSk" resolve="severity" />
               </node>
               <node concept="liA8E" id="lH75Xs4C1Q" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.toUpperCase():java.lang.String" resolve="toUpperCase" />
+                <ref role="37wK5l" to="wyt6:~String.toUpperCase()" resolve="toUpperCase" />
               </node>
             </node>
           </node>
@@ -1262,7 +1262,7 @@
                 <ref role="3cqZAo" node="3MQtXko2avs" resolve="msg" />
               </node>
               <node concept="liA8E" id="3MQtXko2avA" role="2OqNvi">
-                <ref role="37wK5l" to="et5u:~IMessage.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="et5u:~IMessage.getText()" resolve="getText" />
               </node>
             </node>
           </node>
@@ -1326,7 +1326,7 @@
                 <ref role="3cqZAo" node="3MQtXko2avs" resolve="msg" />
               </node>
               <node concept="liA8E" id="3MQtXko2avJ" role="2OqNvi">
-                <ref role="37wK5l" to="et5u:~IMessage.getKind():jetbrains.mps.messages.MessageKind" resolve="getKind" />
+                <ref role="37wK5l" to="et5u:~IMessage.getKind()" resolve="getKind" />
               </node>
             </node>
             <node concept="3clFbS" id="3MQtXko2avD" role="3Kb1Dw">
@@ -1354,7 +1354,7 @@
                 <ref role="3cqZAo" node="3MQtXko2avs" resolve="msg" />
               </node>
               <node concept="liA8E" id="3MQtXko2bGX" role="2OqNvi">
-                <ref role="37wK5l" to="et5u:~IMessage.getHintObject():java.lang.Object" resolve="getHintObject" />
+                <ref role="37wK5l" to="et5u:~IMessage.getHintObject()" resolve="getHintObject" />
               </node>
             </node>
           </node>
@@ -1377,7 +1377,7 @@
                 <ref role="3cqZAo" node="3MQtXko2avs" resolve="msg" />
               </node>
               <node concept="liA8E" id="3MQtXko2bH4" role="2OqNvi">
-                <ref role="37wK5l" to="et5u:~IMessage.getException():java.lang.Throwable" resolve="getException" />
+                <ref role="37wK5l" to="et5u:~IMessage.getException()" resolve="getException" />
               </node>
             </node>
           </node>
@@ -1578,7 +1578,7 @@
                     <ref role="37wK5l" node="2W20f651bXQ" resolve="getMessage" />
                   </node>
                   <node concept="liA8E" id="lH75Xs4C2v" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.toString():java.lang.String" resolve="toString" />
+                    <ref role="37wK5l" to="wyt6:~String.toString()" resolve="toString" />
                   </node>
                 </node>
                 <node concept="3cpWs3" id="lH75Xs4C2w" role="3uHU7B">
@@ -1617,7 +1617,7 @@
                       <ref role="37wK5l" node="2W20f651bYp" resolve="getException" />
                     </node>
                     <node concept="liA8E" id="lH75Xs4C39" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Throwable.toString():java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="wyt6:~Throwable.toString()" resolve="toString" />
                     </node>
                   </node>
                 </node>
@@ -2957,7 +2957,7 @@
     <node concept="Wx3nA" id="1i9nLvh04oX" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <node concept="2YIFZM" id="Hn0$MvbYCP" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
         <node concept="3VsKOn" id="Hn0$MvbYCQ" role="37wK5m">
           <ref role="3VsUkX" node="1i9nLvh04oW" resolve="ScriptBuilder" />
@@ -4293,7 +4293,7 @@
         <node concept="3clFbF" id="ZRBLoZl4rL" role="3cqZAp">
           <node concept="2OqwBi" id="ZRBLoZl4rM" role="3clFbG">
             <node concept="liA8E" id="ZRBLoZl4rN" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object):void" resolve="debug" />
+              <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
               <node concept="37vLTw" id="2BHiRxgm99F" role="37wK5m">
                 <ref role="3cqZAo" node="1i9nLvh04$e" resolve="message" />
               </node>
@@ -4643,7 +4643,7 @@
                             <ref role="3cqZAo" node="1i9nLvh04oX" resolve="LOG" />
                           </node>
                           <node concept="liA8E" id="4O1dS63ROOS" role="2OqNvi">
-                            <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object):void" resolve="debug" />
+                            <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
                             <node concept="3cpWs3" id="4O1dS63TaPq" role="37wK5m">
                               <node concept="2OqwBi" id="4O1dS63TcsW" role="3uHU7w">
                                 <node concept="37vLTw" id="4O1dS63TbCD" role="2Oq$k0">

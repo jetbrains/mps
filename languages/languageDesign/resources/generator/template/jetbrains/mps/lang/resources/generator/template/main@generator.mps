@@ -460,7 +460,7 @@
                       <node concept="3cpWs3" id="2_ZsO1DMANW" role="3uHU7B">
                         <node concept="2YIFZM" id="2_ZsO1DMANX" role="3uHU7B">
                           <ref role="1Pybhc" to="18ew:~JavaNameUtil" resolve="JavaNameUtil" />
-                          <ref role="37wK5l" to="18ew:~JavaNameUtil.packageName(org.jetbrains.mps.openapi.model.SModel):java.lang.String" resolve="packageName" />
+                          <ref role="37wK5l" to="18ew:~JavaNameUtil.packageName(org.jetbrains.mps.openapi.model.SModel)" resolve="packageName" />
                           <node concept="2OqwBi" id="2_ZsO1DMANY" role="37wK5m">
                             <node concept="37vLTw" id="3GM_nagTulM" role="2Oq$k0">
                               <ref role="3cqZAo" node="2_ZsO1DMANI" resolve="irb" />
@@ -657,7 +657,7 @@
               <node concept="3clFbS" id="66H88lVoK4q" role="3KIlGz">
                 <node concept="3clFbF" id="2_ZsO1DJhqh" role="3cqZAp">
                   <node concept="1rXfSq" id="4hiugqyz8t9" role="3clFbG">
-                    <ref role="37wK5l" to="33ny:~HashMap.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+                    <ref role="37wK5l" to="33ny:~HashMap.put(java.lang.Object,java.lang.Object)" resolve="put" />
                     <node concept="Xl_RD" id="2_ZsO1DJhqj" role="37wK5m">
                       <property role="Xl_RC" value="" />
                       <node concept="17Uvod" id="2_ZsO1DJhqk" role="lGtFl">
@@ -753,7 +753,7 @@
               <ref role="3cqZAo" node="66H88lVoBUh" resolve="icons" />
             </node>
             <node concept="liA8E" id="66H88lVoK6w" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.keySet():java.util.Set" resolve="keySet" />
+              <ref role="37wK5l" to="33ny:~Map.keySet()" resolve="keySet" />
             </node>
           </node>
         </node>
@@ -779,7 +779,7 @@
               <ref role="3cqZAo" node="66H88lVoBUh" resolve="icons" />
             </node>
             <node concept="liA8E" id="66H88lVoK6J" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object):java.lang.Object" resolve="get" />
+              <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
               <node concept="37vLTw" id="2BHiRxgmHzg" role="37wK5m">
                 <ref role="3cqZAo" node="66H88lVoBUb" resolve="key" />
               </node>
@@ -1114,7 +1114,7 @@
         <node concept="3clFbS" id="ve0pw_$cyP" role="3clF47">
           <node concept="3clFbF" id="ve0pw_$dF1" role="3cqZAp">
             <node concept="2YIFZM" id="ve0pw_$dFr" role="3clFbG">
-              <ref role="37wK5l" to="ze1i:~IconResourceUtil.getIconResourceForConcept(org.jetbrains.mps.openapi.language.SAbstractConcept):jetbrains.mps.smodel.runtime.IconResource" resolve="getIconResourceForConcept" />
+              <ref role="37wK5l" to="ze1i:~IconResourceUtil.getIconResourceForConcept(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getIconResourceForConcept" />
               <ref role="1Pybhc" to="ze1i:~IconResourceUtil" resolve="IconResourceUtil" />
               <node concept="10Nm6u" id="ve0pw_$vL0" role="37wK5m">
                 <node concept="1W57fq" id="49FXMLkTX5V" role="lGtFl">
@@ -1240,7 +1240,7 @@
     <property role="3GE5qa" value="icons.instantiation" />
     <ref role="3gUMe" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
     <node concept="2YIFZM" id="7b4SkXXMjoH" role="13RCb5">
-      <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+      <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
       <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
       <node concept="1adDum" id="7b4SkXXNfSf" role="37wK5m">
         <property role="1adDun" value="0l" />
@@ -1257,20 +1257,20 @@
                     <node concept="2OqwBi" id="23CHI7KLMW4" role="2Oq$k0">
                       <node concept="2OqwBi" id="23CHI7KLMW5" role="2Oq$k0">
                         <node concept="2YIFZM" id="18MdLntxClC" role="2Oq$k0">
-                          <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="getConceptId" />
+                          <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode)" resolve="getConceptId" />
                           <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
                           <node concept="30H73N" id="18MdLntxCvB" role="37wK5m" />
                         </node>
                         <node concept="liA8E" id="23CHI7KLMWa" role="2OqNvi">
-                          <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId():jetbrains.mps.smodel.adapter.ids.SLanguageId" resolve="getLanguageId" />
+                          <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId()" resolve="getLanguageId" />
                         </node>
                       </node>
                       <node concept="liA8E" id="23CHI7KLMWb" role="2OqNvi">
-                        <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue():java.util.UUID" resolve="getIdValue" />
+                        <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue()" resolve="getIdValue" />
                       </node>
                     </node>
                     <node concept="liA8E" id="23CHI7KLMWc" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~UUID.getMostSignificantBits():long" resolve="getMostSignificantBits" />
+                      <ref role="37wK5l" to="33ny:~UUID.getMostSignificantBits()" resolve="getMostSignificantBits" />
                     </node>
                   </node>
                 </node>
@@ -1285,7 +1285,7 @@
                       <property role="Xl_RC" value="0x" />
                     </node>
                     <node concept="2YIFZM" id="23CHI7KLOie" role="3uHU7w">
-                      <ref role="37wK5l" to="wyt6:~Long.toHexString(long):java.lang.String" resolve="toHexString" />
+                      <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
                       <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
                       <node concept="37vLTw" id="23CHI7KLOif" role="37wK5m">
                         <ref role="3cqZAo" node="23CHI7KLMW2" resolve="msb" />
@@ -1314,19 +1314,19 @@
                       <node concept="2OqwBi" id="23CHI7KLPAm" role="2Oq$k0">
                         <node concept="2YIFZM" id="23CHI7KLPAn" role="2Oq$k0">
                           <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
-                          <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="getConceptId" />
+                          <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode)" resolve="getConceptId" />
                           <node concept="30H73N" id="23CHI7KLPAp" role="37wK5m" />
                         </node>
                         <node concept="liA8E" id="23CHI7KLPAr" role="2OqNvi">
-                          <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId():jetbrains.mps.smodel.adapter.ids.SLanguageId" resolve="getLanguageId" />
+                          <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId()" resolve="getLanguageId" />
                         </node>
                       </node>
                       <node concept="liA8E" id="23CHI7KLPAs" role="2OqNvi">
-                        <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue():java.util.UUID" resolve="getIdValue" />
+                        <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue()" resolve="getIdValue" />
                       </node>
                     </node>
                     <node concept="liA8E" id="23CHI7KLPAt" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~UUID.getLeastSignificantBits():long" resolve="getLeastSignificantBits" />
+                      <ref role="37wK5l" to="33ny:~UUID.getLeastSignificantBits()" resolve="getLeastSignificantBits" />
                     </node>
                   </node>
                 </node>
@@ -1338,7 +1338,7 @@
                   </node>
                   <node concept="3cpWs3" id="23CHI7KQb74" role="3uHU7B">
                     <node concept="2YIFZM" id="23CHI7KLQWv" role="3uHU7w">
-                      <ref role="37wK5l" to="wyt6:~Long.toHexString(long):java.lang.String" resolve="toHexString" />
+                      <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
                       <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
                       <node concept="37vLTw" id="23CHI7KLRGz" role="37wK5m">
                         <ref role="3cqZAo" node="23CHI7KLPAj" resolve="lsb" />
@@ -1368,11 +1368,11 @@
                   <node concept="2OqwBi" id="23CHI7KLEX5" role="33vP2m">
                     <node concept="2YIFZM" id="23CHI7KLEX6" role="2Oq$k0">
                       <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
-                      <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="getConceptId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode)" resolve="getConceptId" />
                       <node concept="30H73N" id="23CHI7KLEX8" role="37wK5m" />
                     </node>
                     <node concept="liA8E" id="23CHI7KLEXa" role="2OqNvi">
-                      <ref role="37wK5l" to="e8bb:~SConceptId.getIdValue():long" resolve="getIdValue" />
+                      <ref role="37wK5l" to="e8bb:~SConceptId.getIdValue()" resolve="getIdValue" />
                     </node>
                   </node>
                 </node>
@@ -1384,7 +1384,7 @@
                   </node>
                   <node concept="3cpWs3" id="23CHI7KQbMZ" role="3uHU7B">
                     <node concept="2YIFZM" id="23CHI7KLH3h" role="3uHU7w">
-                      <ref role="37wK5l" to="wyt6:~Long.toHexString(long):java.lang.String" resolve="toHexString" />
+                      <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
                       <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
                       <node concept="37vLTw" id="23CHI7KLHNl" role="37wK5m">
                         <ref role="3cqZAo" node="23CHI7KLEX4" resolve="id" />
@@ -1410,7 +1410,7 @@
               <node concept="3clFbF" id="7b4SkXXNPpb" role="3cqZAp">
                 <node concept="2YIFZM" id="7b4SkXXNP$1" role="3clFbG">
                   <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <ref role="37wK5l" to="18ew:~NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode):java.lang.String" resolve="nodeFQName" />
+                  <ref role="37wK5l" to="18ew:~NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode)" resolve="nodeFQName" />
                   <node concept="30H73N" id="7b4SkXXNPK7" role="37wK5m" />
                 </node>
               </node>
@@ -1437,7 +1437,7 @@
         <node concept="gft3U" id="5Kxyj$3AlXV" role="UU_$l">
           <node concept="2YIFZM" id="5Kxyj$3Aw6f" role="gfFT$">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SInterfaceConcept" resolve="getInterfaceConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String)" resolve="getInterfaceConcept" />
             <node concept="1adDum" id="5Kxyj$3Aw6i" role="37wK5m">
               <property role="1adDun" value="0l" />
               <node concept="17Uvod" id="5Kxyj$3Aw6j" role="lGtFl">
@@ -1454,19 +1454,19 @@
                             <node concept="2OqwBi" id="23CHI7KL$Mq" role="2Oq$k0">
                               <node concept="2YIFZM" id="23CHI7KL$Mr" role="2Oq$k0">
                                 <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
-                                <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="getConceptId" />
+                                <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode)" resolve="getConceptId" />
                                 <node concept="30H73N" id="23CHI7KL$Mt" role="37wK5m" />
                               </node>
                               <node concept="liA8E" id="23CHI7KL$Mv" role="2OqNvi">
-                                <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId():jetbrains.mps.smodel.adapter.ids.SLanguageId" resolve="getLanguageId" />
+                                <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId()" resolve="getLanguageId" />
                               </node>
                             </node>
                             <node concept="liA8E" id="23CHI7KL$Mw" role="2OqNvi">
-                              <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue():java.util.UUID" resolve="getIdValue" />
+                              <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue()" resolve="getIdValue" />
                             </node>
                           </node>
                           <node concept="liA8E" id="23CHI7KL$Mx" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~UUID.getMostSignificantBits():long" resolve="getMostSignificantBits" />
+                            <ref role="37wK5l" to="33ny:~UUID.getMostSignificantBits()" resolve="getMostSignificantBits" />
                           </node>
                         </node>
                       </node>
@@ -1478,7 +1478,7 @@
                         </node>
                         <node concept="3cpWs3" id="23CHI7KQcuT" role="3uHU7B">
                           <node concept="2YIFZM" id="23CHI7KLA8z" role="3uHU7w">
-                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long):java.lang.String" resolve="toHexString" />
+                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
                             <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
                             <node concept="37vLTw" id="23CHI7KLA8$" role="37wK5m">
                               <ref role="3cqZAo" node="23CHI7KL$Mn" resolve="msb" />
@@ -1510,19 +1510,19 @@
                             <node concept="2OqwBi" id="23CHI7KLBpZ" role="2Oq$k0">
                               <node concept="2YIFZM" id="23CHI7KLBq0" role="2Oq$k0">
                                 <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
-                                <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="getConceptId" />
+                                <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode)" resolve="getConceptId" />
                                 <node concept="30H73N" id="23CHI7KLBq2" role="37wK5m" />
                               </node>
                               <node concept="liA8E" id="23CHI7KLBq4" role="2OqNvi">
-                                <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId():jetbrains.mps.smodel.adapter.ids.SLanguageId" resolve="getLanguageId" />
+                                <ref role="37wK5l" to="e8bb:~SConceptId.getLanguageId()" resolve="getLanguageId" />
                               </node>
                             </node>
                             <node concept="liA8E" id="23CHI7KLBq5" role="2OqNvi">
-                              <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue():java.util.UUID" resolve="getIdValue" />
+                              <ref role="37wK5l" to="e8bb:~SLanguageId.getIdValue()" resolve="getIdValue" />
                             </node>
                           </node>
                           <node concept="liA8E" id="23CHI7KLBq6" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~UUID.getLeastSignificantBits():long" resolve="getLeastSignificantBits" />
+                            <ref role="37wK5l" to="33ny:~UUID.getLeastSignificantBits()" resolve="getLeastSignificantBits" />
                           </node>
                         </node>
                       </node>
@@ -1535,7 +1535,7 @@
                         <node concept="3cpWs3" id="23CHI7KQdaN" role="3uHU7B">
                           <node concept="2YIFZM" id="23CHI7KLCMM" role="3uHU7w">
                             <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
-                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long):java.lang.String" resolve="toHexString" />
+                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
                             <node concept="37vLTw" id="23CHI7KLDGc" role="37wK5m">
                               <ref role="3cqZAo" node="23CHI7KLBpW" resolve="lsb" />
                             </node>
@@ -1563,12 +1563,12 @@
                         <node concept="3cpWsb" id="23CHI7KLJ48" role="1tU5fm" />
                         <node concept="2OqwBi" id="23CHI7KLJ4d" role="33vP2m">
                           <node concept="2YIFZM" id="23CHI7KLJ4e" role="2Oq$k0">
-                            <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="getConceptId" />
+                            <ref role="37wK5l" to="e8bb:~MetaIdByDeclaration.getConceptId(org.jetbrains.mps.openapi.model.SNode)" resolve="getConceptId" />
                             <ref role="1Pybhc" to="e8bb:~MetaIdByDeclaration" resolve="MetaIdByDeclaration" />
                             <node concept="30H73N" id="23CHI7KLJ4g" role="37wK5m" />
                           </node>
                           <node concept="liA8E" id="23CHI7KLJ4i" role="2OqNvi">
-                            <ref role="37wK5l" to="e8bb:~SConceptId.getIdValue():long" resolve="getIdValue" />
+                            <ref role="37wK5l" to="e8bb:~SConceptId.getIdValue()" resolve="getIdValue" />
                           </node>
                         </node>
                       </node>
@@ -1580,7 +1580,7 @@
                         </node>
                         <node concept="3cpWs3" id="23CHI7KQdQH" role="3uHU7B">
                           <node concept="2YIFZM" id="23CHI7KLKU$" role="3uHU7w">
-                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long):java.lang.String" resolve="toHexString" />
+                            <ref role="37wK5l" to="wyt6:~Long.toHexString(long)" resolve="toHexString" />
                             <ref role="1Pybhc" to="wyt6:~Long" resolve="Long" />
                             <node concept="37vLTw" id="23CHI7KLLED" role="37wK5m">
                               <ref role="3cqZAo" node="23CHI7KLJ4c" resolve="id" />
@@ -1606,7 +1606,7 @@
                     <node concept="3clFbF" id="5Kxyj$3Aw75" role="3cqZAp">
                       <node concept="2YIFZM" id="5Kxyj$3Aw76" role="3clFbG">
                         <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                        <ref role="37wK5l" to="18ew:~NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode):java.lang.String" resolve="nodeFQName" />
+                        <ref role="37wK5l" to="18ew:~NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode)" resolve="nodeFQName" />
                         <node concept="30H73N" id="5Kxyj$3Aw77" role="37wK5m" />
                       </node>
                     </node>
@@ -1634,7 +1634,7 @@
         <node concept="3clFbS" id="ve0pw_$B3B" role="3clF47">
           <node concept="3clFbF" id="ve0pw_$B3C" role="3cqZAp">
             <node concept="2YIFZM" id="ve0pw_$BgD" role="3clFbG">
-              <ref role="37wK5l" to="ze1i:~IconResourceUtil.getIconResourceForNode(org.jetbrains.mps.openapi.model.SNode):jetbrains.mps.smodel.runtime.IconResource" resolve="getIconResourceForNode" />
+              <ref role="37wK5l" to="ze1i:~IconResourceUtil.getIconResourceForNode(org.jetbrains.mps.openapi.model.SNode)" resolve="getIconResourceForNode" />
               <ref role="1Pybhc" to="ze1i:~IconResourceUtil" resolve="IconResourceUtil" />
               <node concept="raruj" id="ve0pw_$BgM" role="lGtFl" />
               <node concept="10Nm6u" id="ve0pw_$Brl" role="37wK5m">
@@ -1862,11 +1862,11 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="46nPloe$sn4" role="2OqNvi">
-                                    <ref role="37wK5l" to="mhbf:~SModel.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
+                                    <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="46nPloe$tu1" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SModelName.getLongName():java.lang.String" resolve="getLongName" />
+                                  <ref role="37wK5l" to="mhbf:~SModelName.getLongName()" resolve="getLongName" />
                                 </node>
                               </node>
                             </node>

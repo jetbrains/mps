@@ -23,6 +23,7 @@ import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
@@ -46,12 +47,25 @@ import java.util.Set;
 public class Generator extends ReloadableModuleBase {
   public static final Logger LOG = LogManager.getLogger(Generator.class);
 
+  /**
+   * @deprecated have to use SLanguage to facilitate standalone generator modules
+   */
+  @Deprecated
   @NotNull private Language mySourceLanguage;
+  /**
+   * though SLanguage is runtime identity, and here we deal with source model presentation (where SModuleReference would be better
+   * match to represent source language module), I stick to SLanguage as it's pretty much the same as SModuleReference anyway, and, perhaps,
+   * we would need to add generators to deployed languages some day. Besides, as long as we use SModule instances for deployed modules as well,
+   * it's convenient to have SLanguage here for that purpose, too.
+   */
+  @NotNull private SLanguage mySourceLanguage0;
+
   private GeneratorDescriptor myGeneratorDescriptor;
 
   public Generator(@NotNull Language sourceLanguage, GeneratorDescriptor generatorDescriptor) {
     super(sourceLanguage.getFileSystem());
     mySourceLanguage = sourceLanguage;
+    mySourceLanguage0 = MetaAdapterFactory.getLanguage(sourceLanguage.getModuleReference());
     initGeneratorDescriptor(generatorDescriptor);
   }
 
@@ -147,6 +161,10 @@ public class Generator extends ReloadableModuleBase {
 
   public static String generateGeneratorUID(Language sourceLanguage) {
     return sourceLanguage.getModuleName() + '#' + jetbrains.mps.smodel.SModel.generateUniqueId();
+  }
+
+  public SLanguage sourceLanguage() {
+    return mySourceLanguage0;
   }
 
   public Language getSourceLanguage() {

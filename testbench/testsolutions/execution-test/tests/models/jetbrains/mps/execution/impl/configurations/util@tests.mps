@@ -201,7 +201,7 @@
               </node>
             </node>
             <node concept="liA8E" id="7hSRFL3Kn9H" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable):java.lang.Object" resolve="runReadAction" />
+              <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable)" resolve="runReadAction" />
               <node concept="1bVj0M" id="7hSRFL3Kne$" role="37wK5m">
                 <node concept="3clFbS" id="7hSRFL3Kne_" role="1bW5cS">
                   <node concept="3cpWs8" id="7hSRFL3KnB0" role="3cqZAp">
@@ -238,7 +238,7 @@
                               <ref role="2Gs0qQ" node="7hSRFL3KnqI" resolve="nodeRef" />
                             </node>
                             <node concept="liA8E" id="7hSRFL3KqQd" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SNode" resolve="resolve" />
+                              <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                               <node concept="37vLTw" id="7hSRFL3KqQe" role="37wK5m">
                                 <ref role="3cqZAo" node="7hSRFL3KjsW" resolve="myRepo" />
                               </node>

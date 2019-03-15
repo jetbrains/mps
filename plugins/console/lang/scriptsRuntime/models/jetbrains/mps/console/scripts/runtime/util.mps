@@ -236,7 +236,7 @@
         <node concept="3clFbF" id="4xSV0Lc4NHD" role="3cqZAp">
           <node concept="2YIFZM" id="4xSV0Lc4OhZ" role="3clFbG">
             <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-            <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeLater(java.lang.Runnable):void" resolve="invokeLater" />
+            <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
             <node concept="1bVj0M" id="4xSV0Lc4OtV" role="37wK5m">
               <node concept="3clFbS" id="4xSV0Lc4OtW" role="1bW5cS">
                 <node concept="3clFbF" id="ntTX46606H" role="3cqZAp">
@@ -310,11 +310,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="6s_qFz8Gf5X" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
               </node>
             </node>
             <node concept="liA8E" id="6s_qFz8Gfqa" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable):void" resolve="executeCommand" />
+              <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable)" resolve="executeCommand" />
               <node concept="1bVj0M" id="6s_qFz8GfBZ" role="37wK5m">
                 <node concept="3clFbS" id="6s_qFz8GfC0" role="1bW5cS">
                   <node concept="3clFbF" id="7mj7IbYRaIf" role="3cqZAp">
@@ -435,7 +435,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="6s_qFz8FMNT" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
               </node>
             </node>
           </node>
@@ -449,7 +449,7 @@
             <node concept="liA8E" id="6nZLqty3x$h" role="2OqNvi">
               <ref role="37wK5l" to="u42p:3g3N8kb3vlF" resolve="showRefactoringView" />
               <node concept="2YIFZM" id="6s_qFz8FN7e" role="37wK5m">
-                <ref role="37wK5l" to="alof:~ProjectHelper.toIdeaProject(jetbrains.mps.project.Project):com.intellij.openapi.project.Project" resolve="toIdeaProject" />
+                <ref role="37wK5l" to="alof:~ProjectHelper.toIdeaProject(jetbrains.mps.project.Project)" resolve="toIdeaProject" />
                 <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
                 <node concept="2OqwBi" id="6s_qFz8FN7f" role="37wK5m">
                   <node concept="37vLTw" id="6s_qFz8FN7g" role="2Oq$k0">
@@ -488,11 +488,11 @@
                                 <ref role="3cqZAo" node="6s_qFz8FIrL" resolve="projectRepo" />
                               </node>
                               <node concept="liA8E" id="6s_qFz8FOCj" role="2OqNvi">
-                                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                               </node>
                             </node>
                             <node concept="liA8E" id="6s_qFz8FOZt" role="2OqNvi">
-                              <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable):void" resolve="executeCommand" />
+                              <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable)" resolve="executeCommand" />
                               <node concept="1bVj0M" id="6s_qFz8FPrc" role="37wK5m">
                                 <node concept="3clFbS" id="6s_qFz8FPrd" role="1bW5cS">
                                   <node concept="3cpWs8" id="5KpVuOe3qiG" role="3cqZAp">
@@ -523,7 +523,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="2Pn89z5hW_X" role="2OqNvi">
-                                              <ref role="37wK5l" to="ngmm:~UsagesView.getIncludedResultNodes():java.util.List" resolve="getIncludedResultNodes" />
+                                              <ref role="37wK5l" to="ngmm:~UsagesView.getIncludedResultNodes()" resolve="getIncludedResultNodes" />
                                             </node>
                                           </node>
                                           <node concept="_YKpA" id="5KpVuOe4B$H" role="1tU5fm">
@@ -551,7 +551,7 @@
                                                         <ref role="3cqZAo" node="5KpVuOe4Gwr" resolve="it" />
                                                       </node>
                                                       <node concept="liA8E" id="5KpVuOe4I$r" role="2OqNvi">
-                                                        <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SNode" resolve="resolve" />
+                                                        <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                                                         <node concept="37vLTw" id="6s_qFz8FSi$" role="37wK5m">
                                                           <ref role="3cqZAo" node="6s_qFz8FIrL" resolve="projectRepo" />
                                                         </node>
@@ -739,7 +739,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="6nZLqtybUJf" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+                        <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                         <node concept="2ShNRf" id="6nZLqtybUJg" role="37wK5m">
                           <node concept="1pGfFk" id="6nZLqtybUJh" role="2ShVmc">
                             <ref role="37wK5l" to="g4jo:J2bOg02GIy" resolve="SearchResult" />

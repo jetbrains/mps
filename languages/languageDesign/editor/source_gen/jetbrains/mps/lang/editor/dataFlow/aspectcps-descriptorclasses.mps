@@ -242,7 +242,7 @@
         <node concept="3clFbF" id="n" role="3cqZAp">
           <node concept="2OqwBi" id="q" role="3clFbG">
             <node concept="liA8E" id="s" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="u" role="37wK5m">
                 <property role="Xl_RC" value="r:ee466c3b-c879-435f-9e8d-bb261ada44ed(jetbrains.mps.lang.editor.dataFlow)/4531786690998643509" />
               </node>
@@ -312,7 +312,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="R" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
                   <node concept="10QFUN" id="U" role="37wK5m">
                     <node concept="2GrUjf" id="V" role="10QFUP">
                       <ref role="2Gs0qQ" node="y" resolve="argument" />
@@ -400,7 +400,7 @@
             <node concept="3clFbS" id="1q" role="1pnPq1">
               <node concept="3cpWs6" id="1s" role="3cqZAp">
                 <node concept="2YIFZM" id="1t" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="1u" role="37wK5m">
                     <node concept="HV5vD" id="1w" role="2ShVmc">
@@ -421,7 +421,7 @@
         </node>
         <node concept="3cpWs6" id="1j" role="3cqZAp">
           <node concept="2YIFZM" id="1x" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="3uibUv" id="1y" role="3PaCim">
               <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />

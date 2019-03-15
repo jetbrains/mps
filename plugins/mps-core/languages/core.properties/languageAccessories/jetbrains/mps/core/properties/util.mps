@@ -335,7 +335,7 @@
                 <ref role="3cqZAo" node="5YNybgUCzjt" resolve="text" />
               </node>
               <node concept="liA8E" id="5YNybgUCzjF" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
               </node>
             </node>
           </node>
@@ -428,7 +428,7 @@
                     <ref role="3cqZAo" node="5YNybgUCzjt" resolve="text" />
                   </node>
                   <node concept="liA8E" id="5YNybgUCzkg" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+                    <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                     <node concept="37vLTw" id="3GM_nagT_Bw" role="37wK5m">
                       <ref role="3cqZAo" node="5YNybgUCzk2" resolve="x" />
                     </node>
@@ -486,7 +486,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzkD" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1Xhbcc" id="5YNybgUCzkE" role="37wK5m">
                             <property role="1XhdNS" value="\\" />
                           </node>
@@ -499,7 +499,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzkI" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1Xhbcc" id="5YNybgUCzkJ" role="37wK5m">
                             <property role="1XhdNS" value="\\" />
                           </node>
@@ -515,7 +515,7 @@
                       <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                     </node>
                     <node concept="liA8E" id="5YNybgUCzkO" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                       <node concept="37vLTw" id="3GM_nagTzjr" role="37wK5m">
                         <ref role="3cqZAo" node="5YNybgUCzkc" resolve="aChar" />
                       </node>
@@ -568,7 +568,7 @@
                             <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                           </node>
                           <node concept="liA8E" id="5YNybgUCzlc" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                            <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                             <node concept="37vLTw" id="3GM_nagT_Nk" role="37wK5m">
                               <ref role="3cqZAo" node="5YNybgUCzkc" resolve="aChar" />
                             </node>
@@ -584,7 +584,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzli" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1Xhbcc" id="5YNybgUCzlj" role="37wK5m">
                             <property role="1XhdNS" value="\\" />
                           </node>
@@ -597,7 +597,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzln" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1Xhbcc" id="5YNybgUCzlo" role="37wK5m">
                             <property role="1XhdNS" value="u" />
                           </node>
@@ -610,7 +610,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzqu" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqysuel" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUCzlu" role="37wK5m">
@@ -638,7 +638,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzqB" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqyswHD" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUCzlD" role="37wK5m">
@@ -666,7 +666,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzqJ" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqystSM" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUCzlO" role="37wK5m">
@@ -694,7 +694,7 @@
                           <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUCzqR" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqyswGn" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUCzlZ" role="37wK5m">
@@ -739,7 +739,7 @@
                             <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                           </node>
                           <node concept="liA8E" id="5YNybgUCzmf" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                            <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                             <node concept="1Xhbcc" id="5YNybgUCzmg" role="37wK5m">
                               <property role="1XhdNS" value="\\" />
                             </node>
@@ -754,7 +754,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzmk" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzml" role="37wK5m">
                           <property role="1XhdNS" value=" " />
                         </node>
@@ -775,7 +775,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzmt" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzmu" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -788,7 +788,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzmy" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzmz" role="37wK5m">
                           <property role="1XhdNS" value="t" />
                         </node>
@@ -809,7 +809,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzmF" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzmG" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -822,7 +822,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzmK" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzmL" role="37wK5m">
                           <property role="1XhdNS" value="n" />
                         </node>
@@ -843,7 +843,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzmT" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzmU" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -856,7 +856,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzmY" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzmZ" role="37wK5m">
                           <property role="1XhdNS" value="r" />
                         </node>
@@ -877,7 +877,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzn7" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzn8" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -890,7 +890,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCznc" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCznd" role="37wK5m">
                           <property role="1XhdNS" value="f" />
                         </node>
@@ -947,7 +947,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCzn$" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUCzn_" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -960,7 +960,7 @@
                         <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUCznD" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="37vLTw" id="3GM_nagTAxq" role="37wK5m">
                           <ref role="3cqZAo" node="5YNybgUCzkc" resolve="aChar" />
                         </node>
@@ -979,7 +979,7 @@
               <ref role="3cqZAo" node="5YNybgUCzjW" resolve="outBuffer" />
             </node>
             <node concept="liA8E" id="5YNybgUCznJ" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~StringBuilder.toString():java.lang.String" resolve="toString" />
+              <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
             </node>
           </node>
         </node>
@@ -1038,7 +1038,7 @@
                 <ref role="3cqZAo" node="5YNybgUC$Wg" resolve="text" />
               </node>
               <node concept="liA8E" id="5YNybgUC_1P" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
               </node>
             </node>
           </node>
@@ -1131,7 +1131,7 @@
                     <ref role="3cqZAo" node="5YNybgUC$Wg" resolve="text" />
                   </node>
                   <node concept="liA8E" id="5YNybgUC_2q" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+                    <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                     <node concept="37vLTw" id="3GM_nagTBL9" role="37wK5m">
                       <ref role="3cqZAo" node="5YNybgUC_2c" resolve="x" />
                     </node>
@@ -1151,7 +1151,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_6p" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_6q" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -1164,7 +1164,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_6u" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_6v" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -1211,7 +1211,7 @@
                             <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                           </node>
                           <node concept="liA8E" id="5YNybgUC_3m" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                            <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                             <node concept="37vLTw" id="3GM_nagT_o2" role="37wK5m">
                               <ref role="3cqZAo" node="5YNybgUC_2m" resolve="aChar" />
                             </node>
@@ -1227,7 +1227,7 @@
                           <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUC_3s" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1Xhbcc" id="5YNybgUC_3t" role="37wK5m">
                             <property role="1XhdNS" value="\\" />
                           </node>
@@ -1240,7 +1240,7 @@
                           <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUC_3x" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1Xhbcc" id="5YNybgUC_3y" role="37wK5m">
                             <property role="1XhdNS" value="u" />
                           </node>
@@ -1253,7 +1253,7 @@
                           <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUC_3A" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqysnZE" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUC_3C" role="37wK5m">
@@ -1281,7 +1281,7 @@
                           <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUC_3L" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqysnYA" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUC_3N" role="37wK5m">
@@ -1309,7 +1309,7 @@
                           <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUC_3W" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqysiFY" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUC_3Y" role="37wK5m">
@@ -1337,7 +1337,7 @@
                           <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                         </node>
                         <node concept="liA8E" id="5YNybgUC_47" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                          <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                           <node concept="1rXfSq" id="4hiugqysqrJ" role="37wK5m">
                             <ref role="37wK5l" node="5YNybgUCzp2" resolve="toHex" />
                             <node concept="pVHWs" id="5YNybgUC_49" role="37wK5m">
@@ -1367,7 +1367,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_4Q" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_4R" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -1380,7 +1380,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_4V" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_4W" role="37wK5m">
                           <property role="1XhdNS" value="n" />
                         </node>
@@ -1401,7 +1401,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_54" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_55" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -1414,7 +1414,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_59" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_5a" role="37wK5m">
                           <property role="1XhdNS" value="r" />
                         </node>
@@ -1435,7 +1435,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_5i" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_5j" role="37wK5m">
                           <property role="1XhdNS" value="\\" />
                         </node>
@@ -1448,7 +1448,7 @@
                         <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
                       </node>
                       <node concept="liA8E" id="5YNybgUC_5n" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char):java.lang.StringBuilder" resolve="append" />
+                        <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
                         <node concept="1Xhbcc" id="5YNybgUC_5o" role="37wK5m">
                           <property role="1XhdNS" value="f" />
                         </node>
@@ -1467,7 +1467,7 @@
               <ref role="3cqZAo" node="5YNybgUC_26" resolve="outBuffer" />
             </node>
             <node concept="liA8E" id="5YNybgUC_5U" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~StringBuilder.toString():java.lang.String" resolve="toString" />
+              <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
             </node>
           </node>
         </node>

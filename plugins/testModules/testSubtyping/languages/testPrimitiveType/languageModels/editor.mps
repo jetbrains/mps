@@ -130,7 +130,7 @@
                     <node concept="pncrf" id="Bcyb5kElRt" role="2JrQYb" />
                   </node>
                   <node concept="liA8E" id="Bcyb5kElRu" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty):java.lang.String" resolve="getProperty" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty)" resolve="getProperty" />
                     <node concept="355D3s" id="Bcyb5kElRv" role="37wK5m">
                       <ref role="355D3t" to="c7kk:Bcyb5kDkPG" resolve="TypeWithProperties" />
                       <ref role="355D3u" to="c7kk:Bcyb5kDlqy" resolve="str" />
@@ -186,7 +186,7 @@
                     <node concept="pncrf" id="Bcyb5kEhoT" role="2JrQYb" />
                   </node>
                   <node concept="liA8E" id="Bcyb5kEjek" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty):java.lang.String" resolve="getProperty" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty)" resolve="getProperty" />
                     <node concept="355D3s" id="Bcyb5kEkGx" role="37wK5m">
                       <ref role="355D3t" to="c7kk:Bcyb5kDkPG" resolve="TypeWithProperties" />
                       <ref role="355D3u" to="c7kk:Bcyb5kDlqC" resolve="num" />
@@ -244,7 +244,7 @@
                     <node concept="pncrf" id="Bcyb5kEq$H" role="2JrQYb" />
                   </node>
                   <node concept="liA8E" id="Bcyb5kEq$I" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty):java.lang.String" resolve="getProperty" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getProperty(org.jetbrains.mps.openapi.language.SProperty)" resolve="getProperty" />
                     <node concept="355D3s" id="Bcyb5kEq$J" role="37wK5m">
                       <ref role="355D3t" to="c7kk:Bcyb5kDkPG" resolve="TypeWithProperties" />
                       <ref role="355D3u" to="c7kk:Bcyb5kDlqF" resolve="bool" />

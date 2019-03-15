@@ -110,7 +110,7 @@ public class SNodePointer implements SNodeReference {
 
   public static String serialize(SNodeReference p) {
     SNodePointer np = (SNodePointer) p;
-    return String.valueOf(np.myModelReference) + "/" + StringUtil.escapeRefChars(String.valueOf(np.myNodeId));
+    return np.myModelReference + "/" + StringUtil.escapeRefChars(String.valueOf(np.myNodeId));
   }
 
   public static SNodeReference deserialize(@NotNull String from) {

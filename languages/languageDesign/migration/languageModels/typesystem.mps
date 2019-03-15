@@ -307,7 +307,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1IkLLL1qAja" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
               </node>
             </node>
           </node>
@@ -369,7 +369,7 @@
               <ref role="QwW4h" node="2T7ZPM5eMe8" resolve="l" />
             </node>
             <node concept="liA8E" id="4uVwhQywyrv" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~Language.setLanguageVersion(int):void" resolve="setLanguageVersion" />
+              <ref role="37wK5l" to="w1kc:~Language.setLanguageVersion(int)" resolve="setLanguageVersion" />
               <node concept="QwW4i" id="4uVwhQywyrU" role="37wK5m">
                 <ref role="QwW4h" node="2T7ZPM5dYTS" resolve="wanted" />
               </node>

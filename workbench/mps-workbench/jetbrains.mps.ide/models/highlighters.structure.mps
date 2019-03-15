@@ -438,7 +438,7 @@
                                   <ref role="3cqZAo" node="7k6J8c3ti_5" resolve="cell" />
                                 </node>
                                 <node concept="liA8E" id="7k6J8c3ti_k" role="2OqNvi">
-                                  <ref role="37wK5l" to="f4zo:~EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
+                                  <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
                                 </node>
                               </node>
                               <node concept="37vLTw" id="2BHiRxgmrgZ" role="3uHU7w">
@@ -466,7 +466,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="7k6J8c3ti_f" role="2OqNvi">
-                              <ref role="37wK5l" to="g51k:~EditorCell_Label.isEditable():boolean" resolve="isEditable" />
+                              <ref role="37wK5l" to="g51k:~EditorCell_Label.isEditable()" resolve="isEditable" />
                             </node>
                           </node>
                         </node>
@@ -523,14 +523,14 @@
                   </node>
                 </node>
                 <node concept="2YIFZM" id="1R9kKoB7ZcP" role="3K4E3e">
-                  <ref role="37wK5l" to="3a50:~MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...):java.lang.String" resolve="message" />
+                  <ref role="37wK5l" to="3a50:~MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
                   <ref role="1Pybhc" to="3a50:~MPSCodeInsightBundle" resolve="MPSCodeInsightBundle" />
                   <node concept="Xl_RD" id="1R9kKoB7ZIA" role="37wK5m">
                     <property role="Xl_RC" value="concept.is.subclassed.too.many" />
                   </node>
                 </node>
                 <node concept="2YIFZM" id="2mjA7mXteOJ" role="3K4GZi">
-                  <ref role="37wK5l" to="3a50:~MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...):java.lang.String" resolve="message" />
+                  <ref role="37wK5l" to="3a50:~MPSCodeInsightBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
                   <ref role="1Pybhc" to="3a50:~MPSCodeInsightBundle" resolve="MPSCodeInsightBundle" />
                   <node concept="Xl_RD" id="2mjA7mXteOK" role="37wK5m">
                     <property role="Xl_RC" value="interface.is.implemented.too.many" />
@@ -804,7 +804,7 @@
               </node>
               <node concept="2YIFZM" id="6F8YhWAp6PL" role="3K4GZi">
                 <ref role="1Pybhc" to="g51k:~CellFinderUtil" resolve="CellFinderUtil" />
-                <ref role="37wK5l" to="g51k:~CellFinderUtil.findChildByCondition(jetbrains.mps.openapi.editor.cells.EditorCell,org.jetbrains.mps.util.Condition,boolean):jetbrains.mps.openapi.editor.cells.EditorCell" resolve="findChildByCondition" />
+                <ref role="37wK5l" to="g51k:~CellFinderUtil.findChildByCondition(jetbrains.mps.openapi.editor.cells.EditorCell,org.jetbrains.mps.util.Condition,boolean)" resolve="findChildByCondition" />
                 <node concept="37vLTw" id="2qFJdjDzYsR" role="37wK5m">
                   <ref role="3cqZAo" node="2qFJdjDzUY8" resolve="nodeCell" />
                 </node>
@@ -1214,7 +1214,7 @@
                             <ref role="3cqZAo" node="2mjA7mXucKG" resolve="monitor" />
                           </node>
                           <node concept="liA8E" id="2mjA7mXu9U3" role="2OqNvi">
-                            <ref role="37wK5l" to="yyf4:~ProgressMonitor.cancel():void" resolve="cancel" />
+                            <ref role="37wK5l" to="yyf4:~ProgressMonitor.cancel()" resolve="cancel" />
                           </node>
                         </node>
                       </node>
@@ -1377,7 +1377,7 @@
                 <ref role="3cqZAo" node="1dN09JzU0c0" resolve="component" />
               </node>
               <node concept="liA8E" id="1dN09JzXtz4" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode():org.jetbrains.mps.openapi.model.SNode" resolve="getEditedNode" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
               </node>
             </node>
           </node>
@@ -1451,7 +1451,7 @@
               <ref role="3cqZAo" node="1dN09JzU0c6" resolve="cancellable" />
             </node>
             <node concept="liA8E" id="1dN09JzYkXy" role="2OqNvi">
-              <ref role="37wK5l" to="18ew:~Cancellable.isCancelled():boolean" resolve="isCancelled" />
+              <ref role="37wK5l" to="18ew:~Cancellable.isCancelled()" resolve="isCancelled" />
             </node>
           </node>
         </node>
@@ -1482,7 +1482,7 @@
         <node concept="3cpWs6" id="1dN09J$2ecC" role="3cqZAp">
           <node concept="2YIFZM" id="6xaYinJLpkH" role="3cqZAk">
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-            <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <node concept="3uibUv" id="6xaYinJLpqz" role="3PaCim">
               <ref role="3uigEE" to="exr9:~EditorMessage" resolve="EditorMessage" />
             </node>
@@ -1544,7 +1544,7 @@
         <node concept="3cpWs6" id="1dN09JzYomw" role="3cqZAp">
           <node concept="3K4zz7" id="2HhdZggTyGN" role="3cqZAk">
             <node concept="2YIFZM" id="2HhdZggTzZA" role="3K4E3e">
-              <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+              <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
               <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
               <node concept="3uibUv" id="2HhdZggTQo4" role="3PaCim">
                 <ref role="3uigEE" to="exr9:~EditorMessage" resolve="EditorMessage" />
@@ -1558,7 +1558,7 @@
             </node>
             <node concept="2YIFZM" id="2mjA7mXxbUj" role="3K4GZi">
               <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-              <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+              <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
               <node concept="37vLTw" id="2mjA7mXxctQ" role="37wK5m">
                 <ref role="3cqZAo" node="6xaYinJLvPs" resolve="msg" />
               </node>

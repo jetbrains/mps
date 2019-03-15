@@ -20,10 +20,13 @@ import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class ConflictsUtil {
@@ -57,8 +60,10 @@ public class ConflictsUtil {
   @NotNull
   public static List<VirtualFile> getConflictingModuleFiles(@Nullable SModule module, @NotNull Project project) {
     List<IFile> filesToCheck = ListSequence.fromList(new ArrayList<IFile>());
-    if (module instanceof Generator) {
-      module = ((Generator) module).getSourceLanguage();
+    if (module instanceof Generator && ((Generator) module).getDescriptorFile() == null) {
+      SRepository projectRepository = ProjectHelper.getProjectRepository(project);
+      assert projectRepository != null;
+      module = ((Generator) module).sourceLanguage().getSourceModuleReference().resolve(projectRepository);
     }
     if (module instanceof AbstractModule) {
       AbstractModule amodule = (AbstractModule) module;
@@ -69,23 +74,19 @@ public class ConflictsUtil {
     return getConflictingFiles(filesToCheck, project);
   }
 
-  private static boolean isConflictedFile(@NotNull IFile file, @NotNull Project project) {
-    VirtualFile vf = VirtualFileUtils.getProjectVirtualFile(file);
-    if (vf == null) {
-      return false;
-    }
+  private static boolean isConflictedFile(@NotNull VirtualFile vf, @NotNull Project project) {
     FileStatus status = FileStatusManager.getInstance(project).getStatus(vf);
     return FileStatus.MERGED_WITH_CONFLICTS == status || FileStatus.MERGED_WITH_BOTH_CONFLICTS == status;
   }
 
   private static List<VirtualFile> getConflictingFiles(Iterable<IFile> files, final Project project) {
-    return Sequence.fromIterable(files).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile f) {
-        return isConflictedFile(f, project);
-      }
-    }).select(new ISelector<IFile, VirtualFile>() {
+    return Sequence.fromIterable(files).select(new ISelector<IFile, VirtualFile>() {
       public VirtualFile select(IFile f) {
         return VirtualFileUtils.getProjectVirtualFile(f);
+      }
+    }).where(new NotNullWhereFilter<VirtualFile>()).where(new IWhereFilter<VirtualFile>() {
+      public boolean accept(VirtualFile f) {
+        return isConflictedFile(f, project);
       }
     }).toListSequence();
   }

@@ -183,7 +183,7 @@
                     <node concept="3clFbF" id="3sP3FIIyZw3" role="3cqZAp">
                       <node concept="2OqwBi" id="3sP3FIIyZw4" role="3clFbG">
                         <node concept="liA8E" id="3sP3FIIyZw5" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                          <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                           <node concept="Xl_RD" id="3sP3FIIyZw6" role="37wK5m">
                             <property role="Xl_RC" value="MPS" />
                           </node>

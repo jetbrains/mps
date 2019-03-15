@@ -94,7 +94,7 @@ abstract class UsageEntry {
   final static class NodeUse extends UsageEntry {
     private final SNodeId myNode;
 
-    public NodeUse(SNodeId node) {
+    public NodeUse(@NotNull SNodeId node) {
       myNode = node;
     }
 

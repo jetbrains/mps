@@ -185,7 +185,7 @@
                     <ref role="3cqZAo" node="4tDMPuHd$Xe" resolve="executorId" />
                   </node>
                   <node concept="liA8E" id="4tDMPuHd$Xp" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                     <node concept="10M0yZ" id="4tDMPuHd$Xq" role="37wK5m">
                       <ref role="1PxDUh" to="9mrk:~DefaultRunExecutor" resolve="DefaultRunExecutor" />
                       <ref role="3cqZAo" to="9mrk:~DefaultRunExecutor.EXECUTOR_ID" resolve="EXECUTOR_ID" />

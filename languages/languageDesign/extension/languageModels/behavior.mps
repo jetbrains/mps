@@ -397,7 +397,7 @@
         <node concept="3clFbF" id="3vRuGRS5eW" role="3cqZAp">
           <node concept="3cpWs3" id="3vRuGRS5eX" role="3clFbG">
             <node concept="2YIFZM" id="3vRuGRS5eY" role="3uHU7w">
-              <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String):java.lang.String" resolve="toValidIdentifier" />
+              <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String)" resolve="toValidIdentifier" />
               <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
               <node concept="2OqwBi" id="3vRuGRS5eZ" role="37wK5m">
                 <node concept="2OqwBi" id="3vRuGRS5f0" role="2Oq$k0">
@@ -530,7 +530,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="256tImPkKBo" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
               </node>
             </node>
             <node concept="3uibUv" id="3vRuGRSaFN" role="1tU5fm">
@@ -543,7 +543,7 @@
             <property role="TrG5h" value="moduleFqName" />
             <node concept="2OqwBi" id="75gf1bhG9b4" role="33vP2m">
               <node concept="liA8E" id="75gf1bhG9b5" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
               </node>
               <node concept="37vLTw" id="3GM_nagT_$0" role="2Oq$k0">
                 <ref role="3cqZAo" node="3vRuGRSaFM" resolve="module" />
@@ -563,7 +563,7 @@
                 <ref role="3cqZAo" node="3vRuGRSbg8" resolve="moduleFqName" />
               </node>
               <node concept="liA8E" id="3vRuGRSbgz" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.indexOf(java.lang.String):int" resolve="indexOf" />
+                <ref role="37wK5l" to="wyt6:~String.indexOf(java.lang.String)" resolve="indexOf" />
                 <node concept="Xl_RD" id="3vRuGRSbg$" role="37wK5m">
                   <property role="Xl_RC" value="@" />
                 </node>
@@ -580,7 +580,7 @@
                     <ref role="3cqZAo" node="3vRuGRSbg8" resolve="moduleFqName" />
                   </node>
                   <node concept="liA8E" id="3vRuGRSbhe" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+                    <ref role="37wK5l" to="wyt6:~String.substring(int,int)" resolve="substring" />
                     <node concept="3cmrfG" id="3vRuGRSbhf" role="37wK5m">
                       <property role="3cmrfH" value="0" />
                     </node>

@@ -216,7 +216,7 @@
               <ref role="37wK5l" to="6f4m:3n7MNzOA6ls" resolve="getReason" />
             </node>
             <node concept="liA8E" id="7jW5$X5UA_F" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModule.getModuleReference():org.jetbrains.mps.openapi.module.SModuleReference" resolve="getModuleReference" />
+              <ref role="37wK5l" to="lui2:~SModule.getModuleReference()" resolve="getModuleReference" />
             </node>
           </node>
         </node>
@@ -323,7 +323,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="6Z8qT6OVcY7" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SLanguage.getSourceModule():org.jetbrains.mps.openapi.module.SModule" resolve="getSourceModule" />
+                <ref role="37wK5l" to="c17a:~SLanguage.getSourceModule()" resolve="getSourceModule" />
               </node>
             </node>
           </node>
@@ -386,7 +386,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="1UfEnA_FyUA" role="2OqNvi">
-                                          <ref role="37wK5l" to="c17a:~SLanguage.getQualifiedName():java.lang.String" resolve="getQualifiedName" />
+                                          <ref role="37wK5l" to="c17a:~SLanguage.getQualifiedName()" resolve="getQualifiedName" />
                                         </node>
                                       </node>
                                     </node>
@@ -421,7 +421,7 @@
                         </node>
                         <node concept="2OqwBi" id="6Z8qT6OVpTI" role="3uHU7w">
                           <node concept="liA8E" id="6Z8qT6OVpTJ" role="2OqNvi">
-                            <ref role="37wK5l" to="c17a:~SLanguage.getLanguageVersion():int" resolve="getLanguageVersion" />
+                            <ref role="37wK5l" to="c17a:~SLanguage.getLanguageVersion()" resolve="getLanguageVersion" />
                           </node>
                           <node concept="2OqwBi" id="6Z8qT6OVpTK" role="2Oq$k0">
                             <node concept="liA8E" id="6Z8qT6OVpTL" role="2OqNvi">
@@ -443,7 +443,7 @@
                 <ref role="37wK5l" to="6f4m:3n7MNzOA6ls" resolve="getReason" />
               </node>
               <node concept="liA8E" id="6Z8qT6OV1pD" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SModule.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
               </node>
             </node>
           </node>
@@ -563,7 +563,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="6Z8qT6OW_5z" role="2OqNvi">
-                                          <ref role="37wK5l" to="lui2:~SModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                                          <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
                                         </node>
                                       </node>
                                     </node>
@@ -598,7 +598,7 @@
                         </node>
                         <node concept="2OqwBi" id="6Z8qT6OW_5G" role="3uHU7w">
                           <node concept="liA8E" id="6Z8qT6OW_5H" role="2OqNvi">
-                            <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleVersion():int" resolve="getModuleVersion" />
+                            <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleVersion()" resolve="getModuleVersion" />
                           </node>
                           <node concept="1eOMI4" id="6Z8qT6OWBii" role="2Oq$k0">
                             <node concept="10QFUN" id="6Z8qT6OWBij" role="1eOMHV">
@@ -627,7 +627,7 @@
                 <ref role="37wK5l" to="6f4m:3n7MNzOA6ls" resolve="getReason" />
               </node>
               <node concept="liA8E" id="6Z8qT6OW_5N" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SModule.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
               </node>
             </node>
           </node>
@@ -683,7 +683,7 @@
               <ref role="37wK5l" to="6f4m:3n7MNzOA6ls" resolve="getReason" />
             </node>
             <node concept="liA8E" id="7jW5$X5UGKR" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModule.getModuleReference():org.jetbrains.mps.openapi.module.SModuleReference" resolve="getModuleReference" />
+              <ref role="37wK5l" to="lui2:~SModule.getModuleReference()" resolve="getModuleReference" />
             </node>
           </node>
         </node>
@@ -788,7 +788,7 @@
                       <ref role="3cqZAo" node="ANqTy7pLwj" resolve="myProjectModule" />
                     </node>
                     <node concept="liA8E" id="ANqTy7pMvQ" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                      <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
                     </node>
                   </node>
                 </node>
@@ -823,7 +823,7 @@
               <ref role="37wK5l" to="6f4m:3n7MNzOA6ls" resolve="getReason" />
             </node>
             <node concept="liA8E" id="7jW5$X5U_L0" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModule.getModuleReference():org.jetbrains.mps.openapi.module.SModuleReference" resolve="getModuleReference" />
+              <ref role="37wK5l" to="lui2:~SModule.getModuleReference()" resolve="getModuleReference" />
             </node>
           </node>
         </node>

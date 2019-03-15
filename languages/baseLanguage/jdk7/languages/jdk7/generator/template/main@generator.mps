@@ -289,7 +289,7 @@
             </node>
           </node>
           <node concept="2YIFZM" id="3dRwJQ$J98o" role="3KbGdf">
-            <ref role="37wK5l" to="33ny:~Arrays.binarySearch(java.lang.Object[],java.lang.Object):int" resolve="binarySearch" />
+            <ref role="37wK5l" to="33ny:~Arrays.binarySearch(java.lang.Object[],java.lang.Object)" resolve="binarySearch" />
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <node concept="1dyn4i" id="3dRwJQ$Jh7g" role="37wK5m">
               <property role="1zomUR" value="true" />

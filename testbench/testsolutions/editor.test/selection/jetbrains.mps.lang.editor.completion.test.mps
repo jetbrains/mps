@@ -273,11 +273,11 @@
               <node concept="2OqwBi" id="5tii5yjzXbf" role="2Oq$k0">
                 <node concept="369mXd" id="5tii5yjzXbg" role="2Oq$k0" />
                 <node concept="liA8E" id="5tii5yjzXbh" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="5tii5yjzXbi" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="5tii5yjzY2A" role="3uHU7w">
@@ -288,11 +288,11 @@
             <node concept="2OqwBi" id="5tii5yjzXbl" role="2Oq$k0">
               <node concept="369mXd" id="5tii5yjzXbm" role="2Oq$k0" />
               <node concept="liA8E" id="5tii5yjzXbn" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="5tii5yjzXbo" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -344,11 +344,11 @@
               <node concept="2OqwBi" id="5tii5yjzV1t" role="2Oq$k0">
                 <node concept="369mXd" id="5tii5yjzV1u" role="2Oq$k0" />
                 <node concept="liA8E" id="5tii5yjzV1v" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="5tii5yjzV1w" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="5x_pUd9bmLK" role="3uHU7w">
@@ -359,11 +359,11 @@
             <node concept="2OqwBi" id="5tii5yjzV1z" role="2Oq$k0">
               <node concept="369mXd" id="5tii5yjzV1$" role="2Oq$k0" />
               <node concept="liA8E" id="5tii5yjzV1_" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="5tii5yjzV1A" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -415,11 +415,11 @@
               <node concept="2OqwBi" id="5tii5yj$10T" role="2Oq$k0">
                 <node concept="369mXd" id="5tii5yj$10U" role="2Oq$k0" />
                 <node concept="liA8E" id="5tii5yj$10V" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="5tii5yj$10W" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="5tii5yj$1tR" role="3uHU7w">
@@ -430,11 +430,11 @@
             <node concept="2OqwBi" id="5tii5yj$10Z" role="2Oq$k0">
               <node concept="369mXd" id="5tii5yj$110" role="2Oq$k0" />
               <node concept="liA8E" id="5tii5yj$111" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="5tii5yj$112" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -486,11 +486,11 @@
               <node concept="2OqwBi" id="5tii5yj$09s" role="2Oq$k0">
                 <node concept="369mXd" id="5tii5yj$09t" role="2Oq$k0" />
                 <node concept="liA8E" id="5tii5yj$09u" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="5tii5yj$09v" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="5x_pUd9bDaO" role="3uHU7w">
@@ -501,11 +501,11 @@
             <node concept="2OqwBi" id="5tii5yj$09y" role="2Oq$k0">
               <node concept="369mXd" id="5tii5yj$09z" role="2Oq$k0" />
               <node concept="liA8E" id="5tii5yj$09$" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="5tii5yj$09_" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -557,11 +557,11 @@
               <node concept="2OqwBi" id="5tii5yjzYRu" role="2Oq$k0">
                 <node concept="369mXd" id="5tii5yjzYRv" role="2Oq$k0" />
                 <node concept="liA8E" id="5tii5yjzYRw" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="5tii5yjzYRx" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="5tii5yjzZks" role="3uHU7w">
@@ -572,11 +572,11 @@
             <node concept="2OqwBi" id="5tii5yjzYR$" role="2Oq$k0">
               <node concept="369mXd" id="5tii5yjzYR_" role="2Oq$k0" />
               <node concept="liA8E" id="5tii5yjzYRA" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="5tii5yjzYRB" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -628,11 +628,11 @@
               <node concept="2OqwBi" id="5tii5yjzSHK" role="2Oq$k0">
                 <node concept="369mXd" id="5tii5yjzSHL" role="2Oq$k0" />
                 <node concept="liA8E" id="5tii5yjzSHM" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="5tii5yjzSHN" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="ZpFTMriTmt" role="3uHU7w">
@@ -643,11 +643,11 @@
             <node concept="2OqwBi" id="5tii5yjzSHQ" role="2Oq$k0">
               <node concept="369mXd" id="5tii5yjzSHR" role="2Oq$k0" />
               <node concept="liA8E" id="5tii5yjzSHS" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="5tii5yjzSHT" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -699,11 +699,11 @@
               <node concept="2OqwBi" id="5tii5yjzVT6" role="2Oq$k0">
                 <node concept="369mXd" id="5tii5yjzVT7" role="2Oq$k0" />
                 <node concept="liA8E" id="5tii5yjzVT8" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="5tii5yjzVT9" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="FG454jYr8N" role="3uHU7w">
@@ -714,11 +714,11 @@
             <node concept="2OqwBi" id="5tii5yjzVTc" role="2Oq$k0">
               <node concept="369mXd" id="5tii5yjzVTd" role="2Oq$k0" />
               <node concept="liA8E" id="5tii5yjzVTe" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="5tii5yjzVTf" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -788,19 +788,19 @@
               <node concept="2OqwBi" id="F2OYSPvms0" role="2Oq$k0">
                 <node concept="369mXd" id="F2OYSPvlTg" role="2Oq$k0" />
                 <node concept="liA8E" id="F2OYSPvnG_" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="F2OYSPvofB" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="F2OYSPvoBv" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="F2OYSPvp9Z" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="F2OYSPvpcE" role="37wK5m">
               <node concept="3clFbS" id="F2OYSPvpcF" role="1bW5cS">
                 <node concept="3vwNmj" id="5tii5yjzScy" role="3cqZAp">
@@ -808,11 +808,11 @@
                     <node concept="2OqwBi" id="5tii5yjzGCE" role="2Oq$k0">
                       <node concept="369mXd" id="5tii5yjzGCF" role="2Oq$k0" />
                       <node concept="liA8E" id="5tii5yjzGCG" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="5tii5yjzGCH" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -826,10 +826,10 @@
                       <node concept="2OqwBi" id="5tii5yjzRJJ" role="10QFUP">
                         <node concept="369mXd" id="5tii5yjzRJK" role="2Oq$k0" />
                         <node concept="liA8E" id="5tii5yjzRJL" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="5tii5yjzRJM" role="37wK5m">
                             <node concept="liA8E" id="5tii5yjzRJO" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxsWy" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -864,7 +864,7 @@
                         <ref role="3cqZAo" node="5tii5yjzRrF" resolve="action" />
                       </node>
                       <node concept="liA8E" id="MGAZl36Keb" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -942,11 +942,11 @@
               <node concept="2OqwBi" id="FG454jYtOz" role="2Oq$k0">
                 <node concept="369mXd" id="FG454jYtO$" role="2Oq$k0" />
                 <node concept="liA8E" id="FG454jYtO_" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="FG454jYtOA" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="FG454jYtOB" role="3uHU7w">
@@ -957,11 +957,11 @@
             <node concept="2OqwBi" id="FG454jYtOD" role="2Oq$k0">
               <node concept="369mXd" id="FG454jYtOE" role="2Oq$k0" />
               <node concept="liA8E" id="FG454jYtOF" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="FG454jYtOG" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -1013,11 +1013,11 @@
               <node concept="2OqwBi" id="FG454jYOBx" role="2Oq$k0">
                 <node concept="369mXd" id="FG454jYOBy" role="2Oq$k0" />
                 <node concept="liA8E" id="FG454jYOBz" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="FG454jYOB$" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="FG454jYOB_" role="3uHU7w">
@@ -1028,11 +1028,11 @@
             <node concept="2OqwBi" id="FG454jYOBB" role="2Oq$k0">
               <node concept="369mXd" id="FG454jYOBC" role="2Oq$k0" />
               <node concept="liA8E" id="FG454jYOBD" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="FG454jYOBE" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -1084,11 +1084,11 @@
               <node concept="2OqwBi" id="4BaxyrV9C3O" role="2Oq$k0">
                 <node concept="369mXd" id="4BaxyrV9C3P" role="2Oq$k0" />
                 <node concept="liA8E" id="4BaxyrV9C3Q" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="4BaxyrV9C3R" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="4BaxyrV9C3S" role="3uHU7w">
@@ -1099,11 +1099,11 @@
             <node concept="2OqwBi" id="4BaxyrV9C3U" role="2Oq$k0">
               <node concept="369mXd" id="4BaxyrV9C3V" role="2Oq$k0" />
               <node concept="liA8E" id="4BaxyrV9C3W" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="4BaxyrV9C3X" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -1155,19 +1155,19 @@
               <node concept="2OqwBi" id="1cRoRtw8SlG" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw8SlH" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw8SlI" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw8SlJ" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw8SlK" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw8SlL" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw8SlM" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw8SlN" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw8SlO" role="3cqZAp">
@@ -1175,11 +1175,11 @@
                     <node concept="2OqwBi" id="1cRoRtw8SlQ" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw8SlR" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw8SlS" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw8SlT" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -1193,10 +1193,10 @@
                       <node concept="2OqwBi" id="1cRoRtw8SlY" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw8SlZ" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw8Sm0" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw8Sm1" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw8Sm3" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxrzv" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -1231,7 +1231,7 @@
                         <ref role="3cqZAo" node="1cRoRtw8SlV" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw8Smf" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -1368,19 +1368,19 @@
               <node concept="2OqwBi" id="1cRoRtwbcTP" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwbcTQ" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwbcTR" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwbcTS" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwbcTT" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwbcTU" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwbcTV" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwbcTW" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwbcTX" role="3cqZAp">
@@ -1388,11 +1388,11 @@
                     <node concept="2OqwBi" id="1cRoRtwbcTZ" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwbcU0" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwbcU1" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwbcU2" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -1406,10 +1406,10 @@
                       <node concept="2OqwBi" id="1cRoRtwbcU7" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwbcU8" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwbcU9" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwbcUa" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwbcUc" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxrQD" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -1444,7 +1444,7 @@
                         <ref role="3cqZAo" node="1cRoRtwbcU4" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwbcUo" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -1586,19 +1586,19 @@
               <node concept="2OqwBi" id="1cRoRtwhYbg" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwhYbh" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwhYbi" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwhYbj" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwhYbk" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwhYbl" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwhYbm" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwhYbn" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwhYbo" role="3cqZAp">
@@ -1606,11 +1606,11 @@
                     <node concept="2OqwBi" id="1cRoRtwhYbq" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwhYbr" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwhYbs" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwhYbt" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -1624,10 +1624,10 @@
                       <node concept="2OqwBi" id="1cRoRtwhYby" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwhYbz" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwhYb$" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwhYb_" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwhYbB" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyFIv" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -1662,7 +1662,7 @@
                         <ref role="3cqZAo" node="1cRoRtwhYbv" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwhZ5G" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -1821,19 +1821,19 @@
               <node concept="2OqwBi" id="MGAZl38IM8" role="2Oq$k0">
                 <node concept="369mXd" id="MGAZl38IM9" role="2Oq$k0" />
                 <node concept="liA8E" id="MGAZl38IMa" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="MGAZl38IMb" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="MGAZl38IMc" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="MGAZl38IMd" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="MGAZl38IMe" role="37wK5m">
               <node concept="3clFbS" id="MGAZl38IMf" role="1bW5cS">
                 <node concept="3vwNmj" id="MGAZl38IMg" role="3cqZAp">
@@ -1841,11 +1841,11 @@
                     <node concept="2OqwBi" id="MGAZl38IMi" role="2Oq$k0">
                       <node concept="369mXd" id="MGAZl38IMj" role="2Oq$k0" />
                       <node concept="liA8E" id="MGAZl38IMk" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="MGAZl38IMl" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -1859,10 +1859,10 @@
                       <node concept="2OqwBi" id="MGAZl38IMq" role="10QFUP">
                         <node concept="369mXd" id="MGAZl38IMr" role="2Oq$k0" />
                         <node concept="liA8E" id="MGAZl38IMs" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="MGAZl38IMt" role="37wK5m">
                             <node concept="liA8E" id="MGAZl38IMv" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyEas" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -1897,7 +1897,7 @@
                         <ref role="3cqZAo" node="MGAZl38IMn" resolve="action" />
                       </node>
                       <node concept="liA8E" id="MGAZl38IMF" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -1994,19 +1994,19 @@
               <node concept="2OqwBi" id="MGAZl36kjg" role="2Oq$k0">
                 <node concept="369mXd" id="MGAZl36kjh" role="2Oq$k0" />
                 <node concept="liA8E" id="MGAZl36kji" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="MGAZl36kjj" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="MGAZl36kjk" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="MGAZl36kjl" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="MGAZl36kjm" role="37wK5m">
               <node concept="3clFbS" id="MGAZl36kjn" role="1bW5cS">
                 <node concept="3vwNmj" id="MGAZl36kjo" role="3cqZAp">
@@ -2014,11 +2014,11 @@
                     <node concept="2OqwBi" id="MGAZl36kjq" role="2Oq$k0">
                       <node concept="369mXd" id="MGAZl36kjr" role="2Oq$k0" />
                       <node concept="liA8E" id="MGAZl36kjs" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="MGAZl36kjt" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -2032,10 +2032,10 @@
                       <node concept="2OqwBi" id="MGAZl36kjy" role="10QFUP">
                         <node concept="369mXd" id="MGAZl36kjz" role="2Oq$k0" />
                         <node concept="liA8E" id="MGAZl36kj$" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="MGAZl36kj_" role="37wK5m">
                             <node concept="liA8E" id="MGAZl36kjB" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxy$Z" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -2070,7 +2070,7 @@
                         <ref role="3cqZAo" node="MGAZl36kjv" resolve="action" />
                       </node>
                       <node concept="liA8E" id="MGAZl36kjN" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -2204,19 +2204,19 @@
               <node concept="2OqwBi" id="MGAZl38ZBZ" role="2Oq$k0">
                 <node concept="369mXd" id="MGAZl38ZC0" role="2Oq$k0" />
                 <node concept="liA8E" id="MGAZl38ZC1" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="MGAZl38ZC2" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="MGAZl38ZC3" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="MGAZl38ZC4" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="MGAZl38ZC5" role="37wK5m">
               <node concept="3clFbS" id="MGAZl38ZC6" role="1bW5cS">
                 <node concept="3vwNmj" id="MGAZl38ZC7" role="3cqZAp">
@@ -2224,11 +2224,11 @@
                     <node concept="2OqwBi" id="MGAZl38ZC9" role="2Oq$k0">
                       <node concept="369mXd" id="MGAZl38ZCa" role="2Oq$k0" />
                       <node concept="liA8E" id="MGAZl38ZCb" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="MGAZl38ZCc" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -2242,10 +2242,10 @@
                       <node concept="2OqwBi" id="MGAZl38ZCh" role="10QFUP">
                         <node concept="369mXd" id="MGAZl38ZCi" role="2Oq$k0" />
                         <node concept="liA8E" id="MGAZl38ZCj" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="MGAZl38ZCk" role="37wK5m">
                             <node concept="liA8E" id="MGAZl38ZCm" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyEq9" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -2280,7 +2280,7 @@
                         <ref role="3cqZAo" node="MGAZl38ZCe" resolve="action" />
                       </node>
                       <node concept="liA8E" id="MGAZl38ZCy" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -2376,19 +2376,19 @@
               <node concept="2OqwBi" id="1cRoRtwbZGD" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwbZGE" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwbZGF" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwbZGG" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwbZGH" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwbZGI" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwbZGJ" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwbZGK" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwbZGL" role="3cqZAp">
@@ -2396,11 +2396,11 @@
                     <node concept="2OqwBi" id="1cRoRtwbZGN" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwbZGO" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwbZGP" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwbZGQ" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -2414,10 +2414,10 @@
                       <node concept="2OqwBi" id="1cRoRtwbZGV" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwbZGW" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwbZGX" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwbZGY" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwbZH0" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxrGW" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -2452,7 +2452,7 @@
                         <ref role="3cqZAo" node="1cRoRtwbZGS" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwbZHc" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -2475,7 +2475,7 @@
                         <ref role="3cqZAo" node="1cRoRtwbZH8" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwbZHm" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtwbZHn" role="37vLTJ">
@@ -2504,11 +2504,11 @@
                         <ref role="3cqZAo" node="1cRoRtwbZH8" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwbZHw" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor():jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor" resolve="getMenuDescriptor" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor()" resolve="getMenuDescriptor" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwbZHx" role="2OqNvi">
-                      <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.isImplicit():boolean" resolve="isImplicit" />
+                      <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.isImplicit()" resolve="isImplicit" />
                     </node>
                   </node>
                 </node>
@@ -2520,7 +2520,7 @@
                         <ref role="3cqZAo" node="1cRoRtwbZH8" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwbZHB" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtwbZHC" role="37vLTJ">
@@ -2620,7 +2620,7 @@
                         <ref role="3cqZAo" node="1cRoRtwbZH8" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwbZIj" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtwbZIk" role="37vLTJ">
@@ -2684,19 +2684,19 @@
               <node concept="2OqwBi" id="1cRoRtw5XNg" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw5XNh" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw5XNi" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw5XNj" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw5XNk" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw5XNl" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw5XNm" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw5XNn" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw5XNo" role="3cqZAp">
@@ -2704,11 +2704,11 @@
                     <node concept="2OqwBi" id="1cRoRtw5XNq" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw5XNr" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw5XNs" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw5XNt" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -2722,10 +2722,10 @@
                       <node concept="2OqwBi" id="1cRoRtw5XNy" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw5XNz" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw5XN$" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw5XN_" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw5XNB" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxs$u" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -2760,7 +2760,7 @@
                         <ref role="3cqZAo" node="1cRoRtw5XNv" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw5XNN" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -2892,19 +2892,19 @@
               <node concept="2OqwBi" id="1cRoRtw9oX0" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw9oX1" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw9oX2" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw9oX3" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw9oX4" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw9oX5" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw9oX6" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw9oX7" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw9oX8" role="3cqZAp">
@@ -2912,11 +2912,11 @@
                     <node concept="2OqwBi" id="1cRoRtw9oXa" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw9oXb" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw9oXc" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw9oXd" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -2930,10 +2930,10 @@
                       <node concept="2OqwBi" id="1cRoRtw9oXi" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw9oXj" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw9oXk" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw9oXl" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw9oXn" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxsh4" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -2968,7 +2968,7 @@
                         <ref role="3cqZAo" node="1cRoRtw9oXf" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw9sMK" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -3155,19 +3155,19 @@
               <node concept="2OqwBi" id="1cRoRtwaE07" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwaE08" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwaE09" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwaE0a" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwaE0b" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwaE0c" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwaE0d" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwaE0e" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwaE0f" role="3cqZAp">
@@ -3175,11 +3175,11 @@
                     <node concept="2OqwBi" id="1cRoRtwaE0h" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwaE0i" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwaE0j" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwaE0k" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -3193,10 +3193,10 @@
                       <node concept="2OqwBi" id="1cRoRtwaE0p" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwaE0q" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwaE0r" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwaE0s" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwaE0u" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxrZk" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -3231,7 +3231,7 @@
                         <ref role="3cqZAo" node="1cRoRtwaE0m" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwaE0E" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -3373,19 +3373,19 @@
               <node concept="2OqwBi" id="1cRoRtwknQi" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwknQj" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwknQk" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwknQl" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwknQm" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwknQn" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwknQo" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwknQp" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwknQq" role="3cqZAp">
@@ -3393,11 +3393,11 @@
                     <node concept="2OqwBi" id="1cRoRtwknQs" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwknQt" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwknQu" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwknQv" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -3411,10 +3411,10 @@
                       <node concept="2OqwBi" id="1cRoRtwknQ$" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwknQ_" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwknQA" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwknQB" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwknQD" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyH44" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -3449,7 +3449,7 @@
                         <ref role="3cqZAo" node="1cRoRtwknQx" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwknQP" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -3573,19 +3573,19 @@
               <node concept="2OqwBi" id="1cRoRtw5Ntm" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw5Ntn" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw5Nto" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw5Ntp" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw5Ntq" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw5Ntr" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw5Nts" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw5Ntt" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw5Ntu" role="3cqZAp">
@@ -3593,11 +3593,11 @@
                     <node concept="2OqwBi" id="1cRoRtw5Ntw" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw5Ntx" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw5Nty" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw5Ntz" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -3611,10 +3611,10 @@
                       <node concept="2OqwBi" id="1cRoRtw5NtC" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw5NtD" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw5NtE" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw5NtF" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw5NtH" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxr1a" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -3649,7 +3649,7 @@
                         <ref role="3cqZAo" node="1cRoRtw5Nt_" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw5NtT" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -3784,19 +3784,19 @@
               <node concept="2OqwBi" id="1cRoRtwm_Hb" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwm_Hc" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwm_Hd" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwm_He" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwm_Hf" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwm_Hg" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwm_Hh" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwm_Hi" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwm_Hj" role="3cqZAp">
@@ -3804,11 +3804,11 @@
                     <node concept="2OqwBi" id="1cRoRtwm_Hl" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwm_Hm" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwm_Hn" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwm_Ho" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -3822,10 +3822,10 @@
                       <node concept="2OqwBi" id="1cRoRtwm_Ht" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwm_Hu" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwm_Hv" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwm_Hw" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwm_Hy" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyIbq" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -3860,7 +3860,7 @@
                         <ref role="3cqZAo" node="1cRoRtwm_Hq" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwm_HI" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -4011,19 +4011,19 @@
               <node concept="2OqwBi" id="1cRoRtw7HO9" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw7HOa" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw7HOb" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw7HOc" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw7HOd" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw7HOe" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw7HOf" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw7HOg" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw7HOh" role="3cqZAp">
@@ -4031,11 +4031,11 @@
                     <node concept="2OqwBi" id="1cRoRtw7HOj" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw7HOk" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw7HOl" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw7HOm" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -4049,10 +4049,10 @@
                       <node concept="2OqwBi" id="1cRoRtw7HOr" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw7HOs" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw7HOt" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw7HOu" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw7HOw" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxr9R" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -4087,7 +4087,7 @@
                         <ref role="3cqZAo" node="1cRoRtw7HOo" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw7HOG" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -4227,19 +4227,19 @@
               <node concept="2OqwBi" id="1cRoRtwgOQH" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwgOQI" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwgOQJ" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwgOQK" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwgOQL" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwgOQM" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwgOQN" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwgOQO" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwgOQP" role="3cqZAp">
@@ -4247,11 +4247,11 @@
                     <node concept="2OqwBi" id="1cRoRtwgOQR" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwgOQS" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwgOQT" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwgOQU" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -4265,10 +4265,10 @@
                       <node concept="2OqwBi" id="1cRoRtwgOQZ" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwgOR0" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwgOR1" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwgOR2" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwgOR4" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyGnf" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -4303,7 +4303,7 @@
                         <ref role="3cqZAo" node="1cRoRtwgOQW" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwgORg" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -4470,7 +4470,7 @@
                 <ref role="3cqZAo" node="MGAZl36C_Y" resolve="editorMenuTraceInfo" />
               </node>
               <node concept="liA8E" id="MGAZl36Ew$" role="2OqNvi">
-                <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor():jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor" resolve="getMenuDescriptor" />
+                <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor()" resolve="getMenuDescriptor" />
               </node>
             </node>
           </node>
@@ -4493,7 +4493,7 @@
                 <ref role="3cqZAo" node="MGAZl36Eww" resolve="menuDescriptor" />
               </node>
               <node concept="liA8E" id="MGAZl36Ex0" role="2OqNvi">
-                <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.getSource():org.jetbrains.mps.openapi.model.SNodeReference" resolve="getSource" />
+                <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.getSource()" resolve="getSource" />
               </node>
             </node>
           </node>
@@ -4547,7 +4547,7 @@
                     <ref role="3cqZAo" node="5Uth2zvMA$L" resolve="editorMenuTraceInfo" />
                   </node>
                   <node concept="liA8E" id="5Uth2zvMA$Z" role="2OqNvi">
-                    <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor():jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor" resolve="getMenuDescriptor" />
+                    <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor()" resolve="getMenuDescriptor" />
                   </node>
                 </node>
               </node>
@@ -4570,7 +4570,7 @@
                     <ref role="3cqZAo" node="5Uth2zvMA$V" resolve="menuDescriptor" />
                   </node>
                   <node concept="liA8E" id="5Uth2zvMA_9" role="2OqNvi">
-                    <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.getSource():org.jetbrains.mps.openapi.model.SNodeReference" resolve="getSource" />
+                    <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.getSource()" resolve="getSource" />
                   </node>
                 </node>
               </node>
@@ -4585,7 +4585,7 @@
                     <ref role="3cqZAo" node="5Uth2zvMA$L" resolve="editorMenuTraceInfo" />
                   </node>
                   <node concept="liA8E" id="5Uth2zvMCC6" role="2OqNvi">
-                    <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                    <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                   </node>
                 </node>
               </node>
@@ -4627,19 +4627,19 @@
               <node concept="2OqwBi" id="1cRoRtwdiIA" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwdiIB" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwdiIC" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwdiID" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwdiIE" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwdiIF" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwdiIG" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwdiIH" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwdiII" role="3cqZAp">
@@ -4647,11 +4647,11 @@
                     <node concept="2OqwBi" id="1cRoRtwdiIK" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwdiIL" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwdiIM" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwdiIN" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -4665,10 +4665,10 @@
                       <node concept="2OqwBi" id="1cRoRtwdiIS" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwdiIT" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwdiIU" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwdiIV" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwdiIX" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyG0W" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -4703,7 +4703,7 @@
                         <ref role="3cqZAo" node="1cRoRtwdiIP" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwdiJ9" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -4820,19 +4820,19 @@
               <node concept="2OqwBi" id="1cRoRtwiWDH" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwiWDI" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwiWDJ" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwiWDK" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwiWDL" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwiWDM" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwiWDN" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwiWDO" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwiWDP" role="3cqZAp">
@@ -4840,11 +4840,11 @@
                     <node concept="2OqwBi" id="1cRoRtwiWDR" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwiWDS" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwiWDT" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwiWDU" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -4858,10 +4858,10 @@
                       <node concept="2OqwBi" id="1cRoRtwiWDZ" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwiWE0" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwiWE1" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwiWE2" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwiWE4" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyGJy" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -4896,7 +4896,7 @@
                         <ref role="3cqZAo" node="1cRoRtwiWDW" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwiWEg" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -5046,19 +5046,19 @@
               <node concept="2OqwBi" id="1cRoRtw3etI" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw3etJ" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw3etK" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw3etL" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw3etM" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw3etN" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw3etO" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw3etP" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw3etQ" role="3cqZAp">
@@ -5066,11 +5066,11 @@
                     <node concept="2OqwBi" id="1cRoRtw3etS" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw3etT" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw3etU" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw3etV" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -5084,10 +5084,10 @@
                       <node concept="2OqwBi" id="1cRoRtw3eu0" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw3eu1" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw3eu2" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw3eu3" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw3eu5" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyFlv" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -5122,7 +5122,7 @@
                         <ref role="3cqZAo" node="1cRoRtw3etX" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw3euh" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -5259,19 +5259,19 @@
               <node concept="2OqwBi" id="1cRoRtw31OK" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw31OL" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw31OM" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw31ON" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw31OO" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw31OP" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw31OQ" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw31OR" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw31OS" role="3cqZAp">
@@ -5279,11 +5279,11 @@
                     <node concept="2OqwBi" id="1cRoRtw31OU" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw31OV" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw31OW" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw31OX" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -5297,10 +5297,10 @@
                       <node concept="2OqwBi" id="1cRoRtw31P2" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw31P3" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw31P4" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw31P5" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw31P7" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyF00" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -5335,7 +5335,7 @@
                         <ref role="3cqZAo" node="1cRoRtw31OZ" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw31Pj" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -5431,19 +5431,19 @@
               <node concept="2OqwBi" id="1cRoRtw2J3J" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw2J3K" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw2J3L" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw2J3M" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw2J3N" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw2J3O" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw2J3P" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw2J3Q" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw2J3R" role="3cqZAp">
@@ -5451,11 +5451,11 @@
                     <node concept="2OqwBi" id="1cRoRtw2J3T" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw2J3U" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw2J3V" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw2J3W" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -5469,10 +5469,10 @@
                       <node concept="2OqwBi" id="1cRoRtw2J41" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw2J42" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw2J43" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw2J44" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw2J46" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyEHF" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -5507,7 +5507,7 @@
                         <ref role="3cqZAo" node="1cRoRtw2J3Y" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw2J4i" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -5530,7 +5530,7 @@
                         <ref role="3cqZAo" node="1cRoRtw2J4e" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw2L3B" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtw2L3C" role="37vLTJ">
@@ -5559,11 +5559,11 @@
                         <ref role="3cqZAo" node="1cRoRtw2J4e" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw7HkI" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor():jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor" resolve="getMenuDescriptor" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor()" resolve="getMenuDescriptor" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw7HkJ" role="2OqNvi">
-                      <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.isImplicit():boolean" resolve="isImplicit" />
+                      <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.isImplicit()" resolve="isImplicit" />
                     </node>
                   </node>
                 </node>
@@ -5576,7 +5576,7 @@
                         <ref role="3cqZAo" node="1cRoRtw2J4e" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw2J4s" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtw2J4t" role="37vLTJ">
@@ -5623,7 +5623,7 @@
                         <ref role="3cqZAo" node="1cRoRtw2J4e" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw2J4M" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtw2J4N" role="37vLTJ">
@@ -5654,7 +5654,7 @@
                         <ref role="3cqZAo" node="1cRoRtw2J4e" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw2J4Z" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtw2J50" role="37vLTJ">
@@ -5714,19 +5714,19 @@
               <node concept="2OqwBi" id="1cRoRtw7tpW" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw7tpX" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw7tpY" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw7tpZ" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw7tq0" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw7tq1" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw7tq2" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw7tq3" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw7tq4" role="3cqZAp">
@@ -5734,11 +5734,11 @@
                     <node concept="2OqwBi" id="1cRoRtw7tq6" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw7tq7" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw7tq8" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw7tq9" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -5752,10 +5752,10 @@
                       <node concept="2OqwBi" id="1cRoRtw7tqe" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw7tqf" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw7tqg" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw7tqh" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtw7tqj" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUxsqN" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -5790,7 +5790,7 @@
                         <ref role="3cqZAo" node="1cRoRtw7tqb" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw7tqv" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -5813,7 +5813,7 @@
                         <ref role="3cqZAo" node="1cRoRtw7tqr" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw7tWi" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtw7tWj" role="37vLTJ">
@@ -5842,11 +5842,11 @@
                         <ref role="3cqZAo" node="1cRoRtw7tqr" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw7Foa" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor():jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor" resolve="getMenuDescriptor" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getMenuDescriptor()" resolve="getMenuDescriptor" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw9HK$" role="2OqNvi">
-                      <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.isImplicit():boolean" resolve="isImplicit" />
+                      <ref role="37wK5l" to="x4mf:~EditorMenuDescriptor.isImplicit()" resolve="isImplicit" />
                     </node>
                   </node>
                 </node>
@@ -5859,7 +5859,7 @@
                         <ref role="3cqZAo" node="1cRoRtw7tqr" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw7$cv" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtw7$cw" role="37vLTJ">
@@ -5953,7 +5953,7 @@
                         <ref role="3cqZAo" node="1cRoRtw7tqr" resolve="editorMenuTraceInfo" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw7tr8" role="2OqNvi">
-                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getParent" />
+                        <ref role="37wK5l" to="x4mf:~EditorMenuTraceInfo.getParent()" resolve="getParent" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1cRoRtw7tr9" role="37vLTJ">
@@ -6020,19 +6020,19 @@
               <node concept="2OqwBi" id="1cRoRtwlWrL" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwlWrM" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwlWrN" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwlWrO" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwlWrP" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwlWrQ" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwlWrR" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwlWrS" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwlXp6" role="3cqZAp">
@@ -6040,11 +6040,11 @@
                     <node concept="2OqwBi" id="1cRoRtwlXp8" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwlXp9" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwlXpa" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwlXpb" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -6058,10 +6058,10 @@
                       <node concept="2OqwBi" id="1cRoRtwlXpg" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwlXph" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwlXpi" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwlXpj" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwlXpl" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyHNd" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -6096,7 +6096,7 @@
                         <ref role="3cqZAo" node="1cRoRtwlXpd" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwlXpx" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -6255,19 +6255,19 @@
               <node concept="2OqwBi" id="1cRoRtwdmvX" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwdmvY" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwdmvZ" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwdmw0" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwdmw1" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwdmw2" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwdmw3" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwdmw4" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwdmw5" role="3cqZAp">
@@ -6275,11 +6275,11 @@
                     <node concept="2OqwBi" id="1cRoRtwdmw7" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwdmw8" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwdmw9" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwdmwa" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -6293,14 +6293,14 @@
                       <node concept="2OqwBi" id="1cRoRtwdmwf" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwdmwg" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwdmwh" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwdmwi" role="37wK5m">
                             <node concept="10M0yZ" id="6RfgSQUxv4o" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
                             </node>
                             <node concept="liA8E" id="1cRoRtwdmwk" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                           </node>
                         </node>
@@ -6331,7 +6331,7 @@
                         <ref role="3cqZAo" node="1cRoRtwdmwc" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwdmww" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -6459,19 +6459,19 @@
               <node concept="2OqwBi" id="MGAZl37VBT" role="2Oq$k0">
                 <node concept="369mXd" id="MGAZl37VBU" role="2Oq$k0" />
                 <node concept="liA8E" id="MGAZl37VBV" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="MGAZl37VBW" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="MGAZl37VBX" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="MGAZl37VBY" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="MGAZl37VBZ" role="37wK5m">
               <node concept="3clFbS" id="MGAZl37VC0" role="1bW5cS">
                 <node concept="3vwNmj" id="MGAZl37VC1" role="3cqZAp">
@@ -6479,11 +6479,11 @@
                     <node concept="2OqwBi" id="MGAZl37VC3" role="2Oq$k0">
                       <node concept="369mXd" id="MGAZl37VC4" role="2Oq$k0" />
                       <node concept="liA8E" id="MGAZl37VC5" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="MGAZl37VC6" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -6497,10 +6497,10 @@
                       <node concept="2OqwBi" id="MGAZl37VCb" role="10QFUP">
                         <node concept="369mXd" id="MGAZl37VCc" role="2Oq$k0" />
                         <node concept="liA8E" id="MGAZl37VCd" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="MGAZl37VCe" role="37wK5m">
                             <node concept="liA8E" id="MGAZl37VCg" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyDS0" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -6535,7 +6535,7 @@
                         <ref role="3cqZAo" node="MGAZl37VC8" resolve="action" />
                       </node>
                       <node concept="liA8E" id="MGAZl37VCs" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -6641,19 +6641,19 @@
               <node concept="2OqwBi" id="1cRoRtw4IDI" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtw4IDJ" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtw4IDK" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtw4IDL" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtw4IDM" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtw4IDN" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtw4IDO" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtw4IDP" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtw4IDQ" role="3cqZAp">
@@ -6661,11 +6661,11 @@
                     <node concept="2OqwBi" id="1cRoRtw4IDS" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtw4IDT" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtw4IDU" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtw4IDV" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -6680,14 +6680,14 @@
                       <node concept="2OqwBi" id="1cRoRtw4IE0" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtw4IE1" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtw4IE2" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtw4IE3" role="37wK5m">
                             <node concept="10M0yZ" id="6RfgSQUxegB" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
                             </node>
                             <node concept="liA8E" id="1cRoRtw4IE5" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                           </node>
                         </node>
@@ -6718,7 +6718,7 @@
                         <ref role="3cqZAo" node="1cRoRtw4IDX" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtw4IEh" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -6853,19 +6853,19 @@
               <node concept="2OqwBi" id="1cRoRtwltaR" role="2Oq$k0">
                 <node concept="369mXd" id="1cRoRtwltaS" role="2Oq$k0" />
                 <node concept="liA8E" id="1cRoRtwltaT" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="1cRoRtwltaU" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="1cRoRtwltaV" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="1cRoRtwltaW" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="1cRoRtwltaX" role="37wK5m">
               <node concept="3clFbS" id="1cRoRtwltaY" role="1bW5cS">
                 <node concept="3vwNmj" id="1cRoRtwltaZ" role="3cqZAp">
@@ -6873,11 +6873,11 @@
                     <node concept="2OqwBi" id="1cRoRtwltb1" role="2Oq$k0">
                       <node concept="369mXd" id="1cRoRtwltb2" role="2Oq$k0" />
                       <node concept="liA8E" id="1cRoRtwltb3" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1cRoRtwltb4" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -6891,10 +6891,10 @@
                       <node concept="2OqwBi" id="1cRoRtwltb9" role="10QFUP">
                         <node concept="369mXd" id="1cRoRtwltba" role="2Oq$k0" />
                         <node concept="liA8E" id="1cRoRtwltbb" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="1cRoRtwltbc" role="37wK5m">
                             <node concept="liA8E" id="1cRoRtwltbe" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="6RfgSQUyHsV" role="2Oq$k0">
                               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
@@ -6929,7 +6929,7 @@
                         <ref role="3cqZAo" node="1cRoRtwltb6" resolve="action" />
                       </node>
                       <node concept="liA8E" id="1cRoRtwltbq" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -7096,19 +7096,19 @@
               <node concept="2OqwBi" id="39A5F7XG_iH" role="2Oq$k0">
                 <node concept="369mXd" id="39A5F7XG_iI" role="2Oq$k0" />
                 <node concept="liA8E" id="39A5F7XG_iJ" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="39A5F7XG_iK" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="39A5F7XG_iL" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="39A5F7XG_iM" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="39A5F7XG_iN" role="37wK5m">
               <node concept="3clFbS" id="39A5F7XG_iO" role="1bW5cS">
                 <node concept="3vwNmj" id="39A5F7XG_iP" role="3cqZAp">
@@ -7116,11 +7116,11 @@
                     <node concept="2OqwBi" id="39A5F7XG_iR" role="2Oq$k0">
                       <node concept="369mXd" id="39A5F7XG_iS" role="2Oq$k0" />
                       <node concept="liA8E" id="39A5F7XG_iT" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="39A5F7XG_iU" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -7134,10 +7134,10 @@
                       <node concept="2OqwBi" id="39A5F7XG_iZ" role="10QFUP">
                         <node concept="369mXd" id="39A5F7XG_j0" role="2Oq$k0" />
                         <node concept="liA8E" id="39A5F7XG_j1" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="39A5F7XG_j2" role="37wK5m">
                             <node concept="liA8E" id="39A5F7XG_j3" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="39A5F7XG_j4" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -7172,7 +7172,7 @@
                         <ref role="3cqZAo" node="39A5F7XG_iW" resolve="action" />
                       </node>
                       <node concept="liA8E" id="39A5F7XG_jg" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -7259,19 +7259,19 @@
               <node concept="2OqwBi" id="39A5F7XH1N9" role="2Oq$k0">
                 <node concept="369mXd" id="39A5F7XH1Na" role="2Oq$k0" />
                 <node concept="liA8E" id="39A5F7XH1Nb" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                 </node>
               </node>
               <node concept="liA8E" id="39A5F7XH1Nc" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="39A5F7XH1Nd" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+              <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
             </node>
           </node>
           <node concept="liA8E" id="39A5F7XH1Ne" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
             <node concept="1bVj0M" id="39A5F7XH1Nf" role="37wK5m">
               <node concept="3clFbS" id="39A5F7XH1Ng" role="1bW5cS">
                 <node concept="3vwNmj" id="39A5F7XH1Nh" role="3cqZAp">
@@ -7279,11 +7279,11 @@
                     <node concept="2OqwBi" id="39A5F7XH1Nj" role="2Oq$k0">
                       <node concept="369mXd" id="39A5F7XH1Nk" role="2Oq$k0" />
                       <node concept="liA8E" id="39A5F7XH1Nl" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                       </node>
                     </node>
                     <node concept="liA8E" id="39A5F7XH1Nm" role="2OqNvi">
-                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
                     </node>
                   </node>
                 </node>
@@ -7297,10 +7297,10 @@
                       <node concept="2OqwBi" id="39A5F7XH1Nr" role="10QFUP">
                         <node concept="369mXd" id="39A5F7XH1Ns" role="2Oq$k0" />
                         <node concept="liA8E" id="39A5F7XH1Nt" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String):java.lang.Object" resolve="getData" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                           <node concept="2OqwBi" id="39A5F7XH1Nu" role="37wK5m">
                             <node concept="liA8E" id="39A5F7XH1Nv" role="2OqNvi">
-                              <ref role="37wK5l" to="qkt:~DataKey.getName():java.lang.String" resolve="getName" />
+                              <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
                             </node>
                             <node concept="10M0yZ" id="39A5F7XH1Nw" role="2Oq$k0">
                               <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
@@ -7335,7 +7335,7 @@
                         <ref role="3cqZAo" node="39A5F7XH1No" resolve="action" />
                       </node>
                       <node concept="liA8E" id="39A5F7XH1NG" role="2OqNvi">
-                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo():jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" resolve="getEditorMenuTraceInfo" />
+                        <ref role="37wK5l" to="f4zo:~SubstituteAction.getEditorMenuTraceInfo()" resolve="getEditorMenuTraceInfo" />
                       </node>
                     </node>
                   </node>
@@ -7437,11 +7437,11 @@
               <node concept="2OqwBi" id="1MX1$u8j$yX" role="2Oq$k0">
                 <node concept="369mXd" id="1MX1$u8j$yY" role="2Oq$k0" />
                 <node concept="liA8E" id="1MX1$u8j$yZ" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="1MX1$u8j$z0" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="1MX1$u8jCpW" role="3uHU7w">
@@ -7452,11 +7452,11 @@
             <node concept="2OqwBi" id="1MX1$u8j$z3" role="2Oq$k0">
               <node concept="369mXd" id="1MX1$u8j$z4" role="2Oq$k0" />
               <node concept="liA8E" id="1MX1$u8j$z5" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="1MX1$u8j$z6" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -7509,11 +7509,11 @@
               <node concept="2OqwBi" id="2pIJmcs6lMh" role="2Oq$k0">
                 <node concept="369mXd" id="2pIJmcs6lMi" role="2Oq$k0" />
                 <node concept="liA8E" id="2pIJmcs6lMj" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="2pIJmcs6lMk" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="2pIJmcs6vhN" role="3uHU7w">
@@ -7524,11 +7524,11 @@
             <node concept="2OqwBi" id="2pIJmcs6lMn" role="2Oq$k0">
               <node concept="369mXd" id="2pIJmcs6lMo" role="2Oq$k0" />
               <node concept="liA8E" id="2pIJmcs6lMp" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="2pIJmcs6lMq" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -7581,11 +7581,11 @@
               <node concept="2OqwBi" id="2pIJmcs6wwV" role="2Oq$k0">
                 <node concept="369mXd" id="2pIJmcs6wwW" role="2Oq$k0" />
                 <node concept="liA8E" id="2pIJmcs6wwX" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="2pIJmcs6wwY" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="2pIJmcs6wwZ" role="3uHU7w">
@@ -7596,11 +7596,11 @@
             <node concept="2OqwBi" id="2pIJmcs6wx1" role="2Oq$k0">
               <node concept="369mXd" id="2pIJmcs6wx2" role="2Oq$k0" />
               <node concept="liA8E" id="2pIJmcs6wx3" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="2pIJmcs6wx4" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -7653,11 +7653,11 @@
               <node concept="2OqwBi" id="2pIJmcs5jp7" role="2Oq$k0">
                 <node concept="369mXd" id="2pIJmcs5jp8" role="2Oq$k0" />
                 <node concept="liA8E" id="2pIJmcs5jp9" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="2pIJmcs5jpa" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="2pIJmcs6ln7" role="3uHU7w">
@@ -7668,11 +7668,11 @@
             <node concept="2OqwBi" id="2pIJmcs5jpd" role="2Oq$k0">
               <node concept="369mXd" id="2pIJmcs5jpe" role="2Oq$k0" />
               <node concept="liA8E" id="2pIJmcs5jpf" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="2pIJmcs5jpg" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -7833,11 +7833,11 @@
               <node concept="2OqwBi" id="2pIJmcs31HJ" role="2Oq$k0">
                 <node concept="369mXd" id="2pIJmcs31HK" role="2Oq$k0" />
                 <node concept="liA8E" id="2pIJmcs31HL" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="2pIJmcs31HM" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="2pIJmcs31HN" role="3uHU7w">
@@ -7848,11 +7848,11 @@
             <node concept="2OqwBi" id="2pIJmcs31HP" role="2Oq$k0">
               <node concept="369mXd" id="2pIJmcs31HQ" role="2Oq$k0" />
               <node concept="liA8E" id="2pIJmcs31HR" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="2pIJmcs31HS" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -7905,11 +7905,11 @@
               <node concept="2OqwBi" id="lKjGr4fMhF" role="2Oq$k0">
                 <node concept="369mXd" id="lKjGr4fMhG" role="2Oq$k0" />
                 <node concept="liA8E" id="lKjGr4fMhH" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="lKjGr4fMhI" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="2pIJmcs683E" role="3uHU7w">
@@ -7920,11 +7920,11 @@
             <node concept="2OqwBi" id="lKjGr4fMhL" role="2Oq$k0">
               <node concept="369mXd" id="lKjGr4fMhM" role="2Oq$k0" />
               <node concept="liA8E" id="lKjGr4fMhN" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="lKjGr4fMhO" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>
@@ -7974,11 +7974,11 @@
               <node concept="2OqwBi" id="2pIJmcs449H" role="2Oq$k0">
                 <node concept="369mXd" id="2pIJmcs449I" role="2Oq$k0" />
                 <node concept="liA8E" id="2pIJmcs449J" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
                 </node>
               </node>
               <node concept="liA8E" id="2pIJmcs449K" role="2OqNvi">
-                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions():int" resolve="getNumberOfActions" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
               </node>
             </node>
             <node concept="3cmrfG" id="2pIJmcs4OMc" role="3uHU7w">
@@ -7989,11 +7989,11 @@
             <node concept="2OqwBi" id="2pIJmcs449N" role="2Oq$k0">
               <node concept="369mXd" id="2pIJmcs449O" role="2Oq$k0" />
               <node concept="liA8E" id="2pIJmcs449P" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser():jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser" resolve="getNodeSubstituteChooser" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
               </node>
             </node>
             <node concept="liA8E" id="2pIJmcs449Q" role="2OqNvi">
-              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible():boolean" resolve="isVisible" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
             </node>
           </node>
         </node>

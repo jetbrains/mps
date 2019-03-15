@@ -374,7 +374,7 @@
                 <ref role="3cqZAo" node="c" resolve="ctx" />
               </node>
               <node concept="liA8E" id="K" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
               <node concept="cd27G" id="L" role="lGtFl">
                 <node concept="3u3nmq" id="M" role="cd27D">
@@ -660,7 +660,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2s" role="2OqNvi">
-              <ref role="37wK5l" to="mmaq:~Document.setRootElement(org.jdom.Element):org.jdom.Document" resolve="setRootElement" />
+              <ref role="37wK5l" to="mmaq:~Document.setRootElement(org.jdom.Element)" resolve="setRootElement" />
               <node concept="37vLTw" id="2w" role="37wK5m">
                 <ref role="3cqZAo" node="1V" resolve="result" />
                 <node concept="cd27G" id="2y" role="lGtFl">
@@ -701,7 +701,7 @@
                   </node>
                 </node>
                 <node concept="2YIFZM" id="2N" role="33vP2m">
-                  <ref role="37wK5l" to="se19:~Format.getPrettyFormat():org.jdom.output.Format" resolve="getPrettyFormat" />
+                  <ref role="37wK5l" to="se19:~Format.getPrettyFormat()" resolve="getPrettyFormat" />
                   <ref role="1Pybhc" to="se19:~Format" resolve="Format" />
                   <node concept="cd27G" id="2R" role="lGtFl">
                     <node concept="3u3nmq" id="2S" role="cd27D">
@@ -732,7 +732,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="2Y" role="2OqNvi">
-                  <ref role="37wK5l" to="se19:~Format.setTextMode(org.jdom.output.Format$TextMode):org.jdom.output.Format" resolve="setTextMode" />
+                  <ref role="37wK5l" to="se19:~Format.setTextMode(org.jdom.output.Format$TextMode)" resolve="setTextMode" />
                   <node concept="Rm8GO" id="32" role="37wK5m">
                     <ref role="Rm8GQ" to="se19:~Format$TextMode.PRESERVE" resolve="PRESERVE" />
                     <ref role="1Px2BO" to="se19:~Format$TextMode" resolve="Format.TextMode" />
@@ -826,7 +826,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3y" role="2OqNvi">
-                    <ref role="37wK5l" to="se19:~XMLOutputter.outputString(org.jdom.Document):java.lang.String" resolve="outputString" />
+                    <ref role="37wK5l" to="se19:~XMLOutputter.outputString(org.jdom.Document)" resolve="outputString" />
                     <node concept="37vLTw" id="3A" role="37wK5m">
                       <ref role="3cqZAo" node="2b" resolve="document" />
                       <node concept="cd27G" id="3C" role="lGtFl">
@@ -870,7 +870,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3L" role="2OqNvi">
-                  <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+                  <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <node concept="37vLTw" id="3P" role="37wK5m">
                     <ref role="3cqZAo" node="3q" resolve="output" />
                     <node concept="cd27G" id="3R" role="lGtFl">
@@ -925,7 +925,7 @@
                 <node concept="2OqwBi" id="47" role="3clFbG">
                   <node concept="2YIFZM" id="49" role="2Oq$k0">
                     <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                    <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+                    <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
                     <node concept="3VsKOn" id="4c" role="37wK5m">
                       <ref role="3VsUkX" to="mmaq:~Document" resolve="Document" />
                       <node concept="cd27G" id="4e" role="lGtFl">
@@ -941,7 +941,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4a" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable):void" resolve="error" />
+                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
                     <node concept="10Nm6u" id="4h" role="37wK5m">
                       <node concept="cd27G" id="4k" role="lGtFl">
                         <node concept="3u3nmq" id="4l" role="cd27D">
@@ -1212,7 +1212,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="5V" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String):org.jdom.Element" resolve="setAttribute" />
+                      <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
                       <node concept="2OqwBi" id="5Z" role="37wK5m">
                         <node concept="37vLTw" id="62" role="2Oq$k0">
                           <ref role="3cqZAo" node="5J" resolve="attribute" />
@@ -1424,7 +1424,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="7l" role="2OqNvi">
-                          <ref role="37wK5l" to="mmaq:~Element.addContent(java.lang.String):org.jdom.Element" resolve="addContent" />
+                          <ref role="37wK5l" to="mmaq:~Element.addContent(java.lang.String)" resolve="addContent" />
                           <node concept="Xl_RD" id="7p" role="37wK5m">
                             <property role="Xl_RC" value="\n" />
                             <node concept="cd27G" id="7r" role="lGtFl">
@@ -1489,7 +1489,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="7E" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:~Element.addContent(java.lang.String):org.jdom.Element" resolve="addContent" />
+                      <ref role="37wK5l" to="mmaq:~Element.addContent(java.lang.String)" resolve="addContent" />
                       <node concept="2OqwBi" id="7I" role="37wK5m">
                         <node concept="1PxgMI" id="7K" role="2Oq$k0">
                           <node concept="37vLTw" id="7N" role="1m5AlR">
@@ -1601,7 +1601,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="8m" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element):org.jdom.Element" resolve="addContent" />
+                      <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element)" resolve="addContent" />
                       <node concept="1niqFM" id="8q" role="37wK5m">
                         <property role="1npUBZ" value="jetbrains.mps.sampleXML.textGen.ElementCreator" />
                         <property role="1npL6y" value="createElement" />
@@ -2057,7 +2057,7 @@
                       <ref role="3cqZAo" node="aA" resolve="outline" />
                     </node>
                     <node concept="liA8E" id="b0" role="2OqNvi">
-                      <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(java.lang.String,java.lang.String,java.nio.charset.Charset,org.jetbrains.mps.openapi.model.SNode...):void" resolve="registerTextUnit" />
+                      <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(java.lang.String,java.lang.String,java.nio.charset.Charset,org.jetbrains.mps.openapi.model.SNode...)" resolve="registerTextUnit" />
                       <node concept="3K4zz7" id="b1" role="37wK5m">
                         <node concept="1eOMI4" id="b3" role="3K4GZi">
                           <node concept="3cpWs3" id="b6" role="1eOMHV">
@@ -2098,11 +2098,11 @@
                     <ref role="3cqZAo" node="aH" resolve="root" />
                   </node>
                   <node concept="liA8E" id="bg" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
                 <node concept="liA8E" id="be" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                   <node concept="35c_gC" id="bh" role="37wK5m">
                     <ref role="35c_gD" to="dghb:hP5YayQ" resolve="Document" />
                   </node>
@@ -2122,11 +2122,11 @@
                 <ref role="3cqZAo" node="aA" resolve="outline" />
               </node>
               <node concept="liA8E" id="bm" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.getModel()" resolve="getModel" />
               </node>
             </node>
             <node concept="liA8E" id="bk" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.getRootNodes():java.lang.Iterable" resolve="getRootNodes" />
+              <ref role="37wK5l" to="mhbf:~SModel.getRootNodes()" resolve="getRootNodes" />
             </node>
           </node>
         </node>
@@ -2147,7 +2147,7 @@
               <ref role="3cqZAo" node="bq" resolve="node" />
             </node>
             <node concept="liA8E" id="bu" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.getName():java.lang.String" resolve="getName" />
+              <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>

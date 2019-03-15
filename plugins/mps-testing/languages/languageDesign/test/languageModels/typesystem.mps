@@ -935,7 +935,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="7dAoyMZUjnT" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
               </node>
             </node>
           </node>

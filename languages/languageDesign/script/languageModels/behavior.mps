@@ -349,7 +349,7 @@
           <node concept="2OqwBi" id="4HFrnGEtFPx" role="3clFbG">
             <node concept="2OqwBi" id="2n9zn0CqN3X" role="2Oq$k0">
               <node concept="liA8E" id="2n9zn0CqN3Y" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
+                <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
               </node>
               <node concept="2JrnkZ" id="2n9zn0CqN3Z" role="2Oq$k0">
                 <node concept="2OqwBi" id="2n9zn0CqN40" role="2JrQYb">
@@ -364,7 +364,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4HFrnGEtFT_" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+              <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
             </node>
           </node>
         </node>

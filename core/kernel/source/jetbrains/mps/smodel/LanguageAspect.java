@@ -34,37 +34,37 @@ import java.util.Set;
 
 public enum LanguageAspect {
   //mostly migrated
-  STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Structure"),
+  STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "structure.html"),
 
   //mostly migrated
-  EDITOR("editor", BootstrapLanguages.editorLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Editor"),
+  EDITOR("editor", BootstrapLanguages.editorLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "editor.html  "),
 
   //mostly migrated
-  ACTIONS("actions", BootstrapLanguages.actionsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Editor+Actions"),
+  ACTIONS("actions", BootstrapLanguages.actionsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "editor-actions.html"),
 
   //mostly migrated
-  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Constraints"),
+  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "constraints.html"),
 
   //mostly migrated
-  BEHAVIOR("behavior", BootstrapLanguages.behaviorLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Behavior"),
+  BEHAVIOR("behavior", BootstrapLanguages.behaviorLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "behavior.html"),
 
   //mostly migrated
-  TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Typesystem"),
+  TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "typesystem.html"),
 
   //mostly migrated
-  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Refactoring"),
+  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "refactoring.html"),
 
   //mostly migrated
-  SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), null),
+  SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "scripts.html"),
 
   //mostly migrated
-  INTENTIONS("intentions", BootstrapLanguages.intentionsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Intentions"),
+  INTENTIONS("intentions", BootstrapLanguages.intentionsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "intentions.html"),
 
   //mostly migrated
-  FIND_USAGES("findUsages", BootstrapLanguages.findUsagesLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Find+usages"),
+  FIND_USAGES("findUsages", BootstrapLanguages.findUsagesLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "find-usages.html"),
 
   //migrated, uncomment when migration is finished [compatibility] and deprecate this class
-  PLUGIN("plugin", null, LanguageAspect.CONFLUENCE_BASE + "Plugin"){
+  PLUGIN("plugin", null, LanguageAspect.CONFLUENCE_BASE + "plugin.html"){
     @Override
     public Collection<SLanguage> getMainLanguages() {
       ArrayList<SLanguage> result = new ArrayList<>();
@@ -75,19 +75,19 @@ public enum LanguageAspect {
   },
 
   //mostly migrated
-  DATA_FLOW("dataFlow", BootstrapLanguages.dataFlowLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Data+flow#Dataflow-intermediatelanguage"),
+  DATA_FLOW("dataFlow", BootstrapLanguages.dataFlowLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "data-flow.html"),
 
   //mostly migrated
-  TEST("test", BootstrapLanguages.testLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Testing+languages"),
+  TEST("test", BootstrapLanguages.testLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "testing-languages.html"),
 
   //mostly migrated
-  TEXT_GEN("textGen", BootstrapLanguages.textGenLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "TextGen"),
+  TEXT_GEN("textGen", BootstrapLanguages.textGenLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "textGen.html"),
 
   //mostly migrated
-  MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "Migrations");
+  MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "migrations.html");
 
   //TODO must be changed for each major/minor version release
-  public static final String CONFLUENCE_BASE = "http://confluence.jetbrains.com/display/MPSD20191/";
+  public static final String CONFLUENCE_BASE = "https://www.jetbrains.com/help/mps/2019.1/";
 
   private String myName;
   private final SModuleReference myMainLang;

@@ -218,7 +218,7 @@
               <node concept="10Oyi0" id="1ZERt_dQceo" role="1tU5fm" />
               <node concept="2YIFZM" id="1ZERt_dQcer" role="33vP2m">
                 <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
-                <ref role="37wK5l" to="wyt6:~Math.min(int,int):int" resolve="min" />
+                <ref role="37wK5l" to="wyt6:~Math.min(int,int)" resolve="min" />
                 <node concept="2OqwBi" id="1ZERt_dQhrN" role="37wK5m">
                   <node concept="2OqwBi" id="1ZERt_dQces" role="2Oq$k0">
                     <node concept="1PxgMI" id="1ZERt_dQcet" role="2Oq$k0">

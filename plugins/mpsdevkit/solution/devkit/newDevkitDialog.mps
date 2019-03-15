@@ -272,7 +272,7 @@
         </node>
         <node concept="3clFbF" id="5qUkmeYCtfT" role="3cqZAp">
           <node concept="1rXfSq" id="5qUkmeYCtfU" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String):void" resolve="setTitle" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
             <node concept="Xl_RD" id="5qUkmeYCtfV" role="37wK5m">
               <property role="Xl_RC" value="New Devkit" />
             </node>
@@ -280,7 +280,7 @@
         </node>
         <node concept="3clFbF" id="7iZR6YlWmSS" role="3cqZAp">
           <node concept="1rXfSq" id="7iZR6YlWmST" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonText(java.lang.String):void" resolve="setOKButtonText" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonText(java.lang.String)" resolve="setOKButtonText" />
             <node concept="Xl_RD" id="7iZR6YlWmSU" role="37wK5m">
               <property role="Xl_RC" value="&amp;OK" />
             </node>
@@ -288,7 +288,7 @@
         </node>
         <node concept="3clFbF" id="7iZR6YlWmSV" role="3cqZAp">
           <node concept="1rXfSq" id="7iZR6YlWmSW" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setCancelButtonText(java.lang.String):void" resolve="setCancelButtonText" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.setCancelButtonText(java.lang.String)" resolve="setCancelButtonText" />
             <node concept="Xl_RD" id="7iZR6YlWmSX" role="37wK5m">
               <property role="Xl_RC" value="Ca&amp;ncel" />
             </node>
@@ -298,7 +298,7 @@
         <node concept="3clFbF" id="5G4JuOncW3X" role="3cqZAp">
           <node concept="37vLTI" id="5G4JuOncWbK" role="3clFbG">
             <node concept="2YIFZM" id="19iE5pnHP8v" role="37vLTx">
-              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project):jetbrains.mps.project.MPSProject" resolve="fromIdeaProject" />
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
               <node concept="37vLTw" id="19iE5pnHP8w" role="37wK5m">
                 <ref role="3cqZAo" node="5qUkmeYCtfQ" resolve="project" />
@@ -317,7 +317,7 @@
         <node concept="3clFbH" id="269UQAkZCqy" role="3cqZAp" />
         <node concept="3clFbF" id="5qUkmeYCtfW" role="3cqZAp">
           <node concept="1rXfSq" id="5qUkmeYCtfX" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.init():void" resolve="init" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.init()" resolve="init" />
           </node>
         </node>
       </node>
@@ -377,7 +377,7 @@
               <ref role="3cqZAo" node="5qUkmeYCtf$" resolve="myContentPane" />
             </node>
             <node concept="liA8E" id="5qUkmeYCAK1" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component):java.awt.Component" resolve="add" />
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
               <node concept="2ShNRf" id="5qUkmeYCBpx" role="37wK5m">
                 <node concept="1pGfFk" id="5qUkmeYCBpy" role="2ShVmc">
                   <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;(java.lang.String)" resolve="JLabel" />
@@ -395,7 +395,7 @@
               <ref role="3cqZAo" node="5qUkmeYCtf$" resolve="myContentPane" />
             </node>
             <node concept="liA8E" id="5qUkmeYCAK5" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component):java.awt.Component" resolve="add" />
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
               <node concept="37vLTI" id="1JGcfS3Eeq_" role="37wK5m">
                 <node concept="37vLTw" id="1JGcfS3EdVm" role="37vLTJ">
                   <ref role="3cqZAo" node="1JGcfS3E99a" resolve="myDevkitName" />
@@ -419,11 +419,11 @@
                 <ref role="3cqZAo" node="1JGcfS3E99a" resolve="myDevkitName" />
               </node>
               <node concept="liA8E" id="9$$2x2lyyl" role="2OqNvi">
-                <ref role="37wK5l" to="r791:~JTextComponent.getDocument():javax.swing.text.Document" resolve="getDocument" />
+                <ref role="37wK5l" to="r791:~JTextComponent.getDocument()" resolve="getDocument" />
               </node>
             </node>
             <node concept="liA8E" id="9$$2x2l$cZ" role="2OqNvi">
-              <ref role="37wK5l" to="r791:~Document.addDocumentListener(javax.swing.event.DocumentListener):void" resolve="addDocumentListener" />
+              <ref role="37wK5l" to="r791:~Document.addDocumentListener(javax.swing.event.DocumentListener)" resolve="addDocumentListener" />
               <node concept="2ShNRf" id="9$$2x2lAG_" role="37wK5m">
                 <node concept="YeOm9" id="9$$2x2lCMS" role="2ShVmc">
                   <node concept="1Y3b0j" id="9$$2x2lCMV" role="YeSDq">
@@ -498,11 +498,11 @@
                 <ref role="3cqZAo" node="1JGcfS3E0Jp" resolve="myDevkitLocation" />
               </node>
               <node concept="liA8E" id="OOCyqSdf$j" role="2OqNvi">
-                <ref role="37wK5l" to="r791:~JTextComponent.getDocument():javax.swing.text.Document" resolve="getDocument" />
+                <ref role="37wK5l" to="r791:~JTextComponent.getDocument()" resolve="getDocument" />
               </node>
             </node>
             <node concept="liA8E" id="OOCyqSdhA$" role="2OqNvi">
-              <ref role="37wK5l" to="r791:~Document.addDocumentListener(javax.swing.event.DocumentListener):void" resolve="addDocumentListener" />
+              <ref role="37wK5l" to="r791:~Document.addDocumentListener(javax.swing.event.DocumentListener)" resolve="addDocumentListener" />
               <node concept="2ShNRf" id="OOCyqSdi08" role="37wK5m">
                 <node concept="YeOm9" id="OOCyqSdmg0" role="2ShVmc">
                   <node concept="1Y3b0j" id="OOCyqSdmg3" role="YeSDq">
@@ -564,14 +564,14 @@
             </node>
             <node concept="2YIFZM" id="7iZR6YlPWOL" role="33vP2m">
               <ref role="1Pybhc" to="3fkn:~FileChooserDescriptorFactory" resolve="FileChooserDescriptorFactory" />
-              <ref role="37wK5l" to="3fkn:~FileChooserDescriptorFactory.createSingleFolderDescriptor():com.intellij.openapi.fileChooser.FileChooserDescriptor" resolve="createSingleFolderDescriptor" />
+              <ref role="37wK5l" to="3fkn:~FileChooserDescriptorFactory.createSingleFolderDescriptor()" resolve="createSingleFolderDescriptor" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="7iZR6YlPWOM" role="3cqZAp">
           <node concept="2YIFZM" id="7iZR6YlPWON" role="3clFbG">
             <ref role="1Pybhc" to="lzb2:~InsertPathAction" resolve="InsertPathAction" />
-            <ref role="37wK5l" to="lzb2:~InsertPathAction.addTo(javax.swing.text.JTextComponent,com.intellij.openapi.fileChooser.FileChooserDescriptor):void" resolve="addTo" />
+            <ref role="37wK5l" to="lzb2:~InsertPathAction.addTo(javax.swing.text.JTextComponent,com.intellij.openapi.fileChooser.FileChooserDescriptor)" resolve="addTo" />
             <node concept="37vLTw" id="OOCyqSd1yi" role="37wK5m">
               <ref role="3cqZAo" node="1JGcfS3E0Jp" resolve="myDevkitLocation" />
             </node>
@@ -621,7 +621,7 @@
                 </node>
                 <node concept="2YIFZM" id="7iZR6YlPWP7" role="37wK5m">
                   <ref role="1Pybhc" to="zn9m:~EmptyRunnable" resolve="EmptyRunnable" />
-                  <ref role="37wK5l" to="zn9m:~EmptyRunnable.getInstance():java.lang.Runnable" resolve="getInstance" />
+                  <ref role="37wK5l" to="zn9m:~EmptyRunnable.getInstance()" resolve="getInstance" />
                 </node>
               </node>
             </node>
@@ -633,10 +633,10 @@
         <node concept="3clFbF" id="7iZR6YlPWP9" role="3cqZAp">
           <node concept="2OqwBi" id="7iZR6YlPWPa" role="3clFbG">
             <node concept="liA8E" id="7iZR6YlPWPb" role="2OqNvi">
-              <ref role="37wK5l" to="3fkn:~FileChooserFactory.installFileCompletion(javax.swing.JTextField,com.intellij.openapi.fileChooser.FileChooserDescriptor,boolean,com.intellij.openapi.Disposable):void" resolve="installFileCompletion" />
+              <ref role="37wK5l" to="3fkn:~FileChooserFactory.installFileCompletion(javax.swing.JTextField,com.intellij.openapi.fileChooser.FileChooserDescriptor,boolean,com.intellij.openapi.Disposable)" resolve="installFileCompletion" />
               <node concept="2OqwBi" id="7iZR6YlPWPc" role="37wK5m">
                 <node concept="liA8E" id="7iZR6YlPWPd" role="2OqNvi">
-                  <ref role="37wK5l" to="lzb2:~FieldPanel.getTextField():javax.swing.JTextField" resolve="getTextField" />
+                  <ref role="37wK5l" to="lzb2:~FieldPanel.getTextField()" resolve="getTextField" />
                 </node>
                 <node concept="37vLTw" id="7iZR6YlPWPe" role="2Oq$k0">
                   <ref role="3cqZAo" node="7iZR6YlPWP0" resolve="fieldPanel" />
@@ -651,13 +651,13 @@
                   <ref role="3cqZAo" node="5qUkmeYC_mj" resolve="myProject" />
                 </node>
                 <node concept="liA8E" id="2L8RbuxAYqI" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c4:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                 </node>
               </node>
             </node>
             <node concept="2YIFZM" id="7iZR6YlPWPi" role="2Oq$k0">
               <ref role="1Pybhc" to="3fkn:~FileChooserFactory" resolve="FileChooserFactory" />
-              <ref role="37wK5l" to="3fkn:~FileChooserFactory.getInstance():com.intellij.openapi.fileChooser.FileChooserFactory" resolve="getInstance" />
+              <ref role="37wK5l" to="3fkn:~FileChooserFactory.getInstance()" resolve="getInstance" />
             </node>
           </node>
         </node>
@@ -667,7 +667,7 @@
               <ref role="3cqZAo" node="5qUkmeYCtf$" resolve="myContentPane" />
             </node>
             <node concept="liA8E" id="7iZR6YlPWPm" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component):java.awt.Component" resolve="add" />
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
               <node concept="37vLTw" id="7iZR6YlPWPn" role="37wK5m">
                 <ref role="3cqZAo" node="7iZR6YlPWP0" resolve="fieldPanel" />
               </node>
@@ -692,7 +692,7 @@
               <ref role="3cqZAo" node="1JGcfS3E99a" resolve="myDevkitName" />
             </node>
             <node concept="liA8E" id="5G4JuOnhO7E" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Component.setName(java.lang.String):void" resolve="setName" />
+              <ref role="37wK5l" to="z60i:~Component.setName(java.lang.String)" resolve="setName" />
               <node concept="Xl_RD" id="5G4JuOnhOdR" role="37wK5m">
                 <property role="Xl_RC" value="Name" />
               </node>
@@ -705,7 +705,7 @@
               <ref role="3cqZAo" node="1JGcfS3E0Jp" resolve="myDevkitLocation" />
             </node>
             <node concept="liA8E" id="5G4JuOnhWaw" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Component.setName(java.lang.String):void" resolve="setName" />
+              <ref role="37wK5l" to="z60i:~Component.setName(java.lang.String)" resolve="setName" />
               <node concept="Xl_RD" id="5G4JuOnhWgG" role="37wK5m">
                 <property role="Xl_RC" value="Path" />
               </node>
@@ -750,7 +750,7 @@
       <node concept="3clFbS" id="WvMI7quMSG" role="3clF47">
         <node concept="3clFbF" id="WvMI7quAxT" role="3cqZAp">
           <node concept="1rXfSq" id="WvMI7quAxU" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setErrorText(java.lang.String):void" resolve="setErrorText" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.setErrorText(java.lang.String)" resolve="setErrorText" />
             <node concept="2YIFZM" id="WvMI7quAxV" role="37wK5m">
               <ref role="1Pybhc" to="tprr:56Y$nab_bZy" resolve="NewModuleUtil" />
               <ref role="37wK5l" to="tprr:3WcIkZau4TB" resolve="check" />
@@ -759,7 +759,7 @@
                   <ref role="3cqZAo" node="5qUkmeYC_mj" resolve="myProject" />
                 </node>
                 <node concept="liA8E" id="5z$T2YvON6T" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                  <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
                 </node>
               </node>
               <node concept="10M0yZ" id="WvMI7quAxW" role="37wK5m">
@@ -807,7 +807,7 @@
         </node>
         <node concept="3clFbF" id="7W3RBQnFhgh" role="3cqZAp">
           <node concept="3nyPlj" id="7W3RBQnFhgf" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.doOKAction():void" resolve="doOKAction" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.doOKAction()" resolve="doOKAction" />
           </node>
         </node>
         <node concept="3clFbH" id="7W3RBQnFhEj" role="3cqZAp" />
@@ -884,11 +884,11 @@
                 <ref role="3cqZAo" node="1JGcfS3E99a" resolve="myDevkitName" />
               </node>
               <node concept="liA8E" id="9$$2x2liXg" role="2OqNvi">
-                <ref role="37wK5l" to="r791:~JTextComponent.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="r791:~JTextComponent.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="liA8E" id="WvMI7qu$yI" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.trim():java.lang.String" resolve="trim" />
+              <ref role="37wK5l" to="wyt6:~String.trim()" resolve="trim" />
             </node>
           </node>
         </node>
@@ -911,11 +911,11 @@
                 <ref role="3cqZAo" node="1JGcfS3E0Jp" resolve="myDevkitLocation" />
               </node>
               <node concept="liA8E" id="OOCyqSdO47" role="2OqNvi">
-                <ref role="37wK5l" to="r791:~JTextComponent.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="r791:~JTextComponent.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="liA8E" id="WvMI7qu_nW" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.trim():java.lang.String" resolve="trim" />
+              <ref role="37wK5l" to="wyt6:~String.trim()" resolve="trim" />
             </node>
           </node>
         </node>
@@ -947,7 +947,7 @@
               <ref role="3cqZAo" node="1JGcfS3E0Jp" resolve="myDevkitLocation" />
             </node>
             <node concept="liA8E" id="OOCyqSdGob" role="2OqNvi">
-              <ref role="37wK5l" to="r791:~JTextComponent.setText(java.lang.String):void" resolve="setText" />
+              <ref role="37wK5l" to="r791:~JTextComponent.setText(java.lang.String)" resolve="setText" />
               <node concept="37vLTw" id="OOCyqSdJ6H" role="37wK5m">
                 <ref role="3cqZAo" node="OOCyqSdGSP" resolve="devkitLocation" />
               </node>
@@ -998,11 +998,11 @@
                         <ref role="3cqZAo" node="5qUkmeYC_mj" resolve="myProject" />
                       </node>
                       <node concept="liA8E" id="1y9$ePCdJFg" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c4:~MPSProject.getProject():com.intellij.openapi.project.Project" resolve="getProject" />
+                        <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1y9$ePCdJFh" role="2OqNvi">
-                      <ref role="37wK5l" to="4nm9:~Project.getBasePath():java.lang.String" resolve="getBasePath" />
+                      <ref role="37wK5l" to="4nm9:~Project.getBasePath()" resolve="getBasePath" />
                     </node>
                   </node>
                 </node>

@@ -264,7 +264,7 @@
               <ref role="3cqZAo" node="5ABJGODKe8i" resolve="myThread" />
             </node>
             <node concept="liA8E" id="5ABJGODKe9v" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Thread.start():void" resolve="start" />
+              <ref role="37wK5l" to="wyt6:~Thread.start()" resolve="start" />
             </node>
           </node>
         </node>
@@ -382,7 +382,7 @@
                                   <ref role="3cqZAo" node="5ABJGODKeh9" resolve="countDown" />
                                 </node>
                                 <node concept="liA8E" id="2ErCJ2zWY_6" role="2OqNvi">
-                                  <ref role="37wK5l" to="5zyv:~CountDownLatch.countDown():void" resolve="countDown" />
+                                  <ref role="37wK5l" to="5zyv:~CountDownLatch.countDown()" resolve="countDown" />
                                 </node>
                               </node>
                             </node>
@@ -412,7 +412,7 @@
                                   <ref role="3cqZAo" node="5ABJGODKeh9" resolve="countDown" />
                                 </node>
                                 <node concept="liA8E" id="5DZ5wiJ6hnc" role="2OqNvi">
-                                  <ref role="37wK5l" to="5zyv:~CountDownLatch.countDown():void" resolve="countDown" />
+                                  <ref role="37wK5l" to="5zyv:~CountDownLatch.countDown()" resolve="countDown" />
                                 </node>
                               </node>
                             </node>
@@ -431,7 +431,7 @@
                         <ref role="3cqZAo" node="5ABJGODKeh9" resolve="countDown" />
                       </node>
                       <node concept="liA8E" id="5ABJGODKehL" role="2OqNvi">
-                        <ref role="37wK5l" to="5zyv:~CountDownLatch.await():void" resolve="await" />
+                        <ref role="37wK5l" to="5zyv:~CountDownLatch.await()" resolve="await" />
                       </node>
                     </node>
                   </node>
@@ -489,7 +489,7 @@
                     <ref role="3cqZAo" node="5ABJGODKe7T" resolve="myCommandQueue" />
                   </node>
                   <node concept="liA8E" id="2ErCJ2zWYzy" role="2OqNvi">
-                    <ref role="37wK5l" to="5zyv:~BlockingQueue.offer(java.lang.Object):boolean" resolve="offer" />
+                    <ref role="37wK5l" to="5zyv:~BlockingQueue.offer(java.lang.Object)" resolve="offer" />
                     <node concept="37vLTw" id="2BHiRxgm6La" role="37wK5m">
                       <ref role="3cqZAo" node="5ABJGODKecH" resolve="command" />
                     </node>
@@ -535,7 +535,7 @@
               <ref role="3uigEE" node="5ABJGODKe7r" resolve="ManagerThread.WorkerThread" />
             </node>
             <node concept="2YIFZM" id="5ABJGODKea1" role="2ZW6bz">
-              <ref role="37wK5l" to="wyt6:~Thread.currentThread():java.lang.Thread" resolve="currentThread" />
+              <ref role="37wK5l" to="wyt6:~Thread.currentThread()" resolve="currentThread" />
               <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
             </node>
           </node>
@@ -587,7 +587,7 @@
                         <ref role="3cqZAo" node="2ErCJ2zWYv0" resolve="myClosed" />
                       </node>
                       <node concept="1rXfSq" id="4hiugqyzeKQ" role="3uHU7B">
-                        <ref role="37wK5l" to="wyt6:~Thread.isInterrupted():boolean" resolve="isInterrupted" />
+                        <ref role="37wK5l" to="wyt6:~Thread.isInterrupted()" resolve="isInterrupted" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="5ABJGODKe8s" role="3clFbx">
@@ -602,7 +602,7 @@
                           <ref role="3cqZAo" node="5ABJGODKe7T" resolve="myCommandQueue" />
                         </node>
                         <node concept="liA8E" id="5ABJGODKec0" role="2OqNvi">
-                          <ref role="37wK5l" to="5zyv:~BlockingQueue.take():java.lang.Object" resolve="take" />
+                          <ref role="37wK5l" to="5zyv:~BlockingQueue.take()" resolve="take" />
                         </node>
                       </node>
                     </node>
@@ -635,7 +635,7 @@
                         <ref role="3cqZAo" node="5ABJGODKe7T" resolve="myCommandQueue" />
                       </node>
                       <node concept="liA8E" id="5DZ5wiJ6ho2" role="2OqNvi">
-                        <ref role="37wK5l" to="5zyv:~BlockingQueue.drainTo(java.util.Collection):int" resolve="drainTo" />
+                        <ref role="37wK5l" to="5zyv:~BlockingQueue.drainTo(java.util.Collection)" resolve="drainTo" />
                         <node concept="37vLTw" id="3GM_nagTxeV" role="37wK5m">
                           <ref role="3cqZAo" node="5DZ5wiJ6hoh" resolve="unprocessed" />
                         </node>

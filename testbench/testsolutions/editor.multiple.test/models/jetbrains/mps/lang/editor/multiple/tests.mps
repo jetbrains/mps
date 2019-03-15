@@ -1136,11 +1136,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="1PhFbPjmbGP" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector():jetbrains.mps.nodeEditor.EditorComponent" resolve="getInspector" />
+                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector()" resolve="getInspector" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjmbGQ" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
             </node>
           </node>
         </node>
@@ -1160,11 +1160,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="1PhFbPjmc3C" role="2OqNvi">
-                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjmci9" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="1PhFbPjmcj5" role="37wK5m">
                 <property role="Xl_RC" value="compact" />
               </node>
@@ -1228,11 +1228,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="1PhFbPjmdQb" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector():jetbrains.mps.nodeEditor.EditorComponent" resolve="getInspector" />
+                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector()" resolve="getInspector" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjmdQc" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
             </node>
           </node>
         </node>
@@ -1252,11 +1252,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="1PhFbPjmdQl" role="2OqNvi">
-                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjmdQm" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="1PhFbPjmdQn" role="37wK5m">
                 <property role="Xl_RC" value="rich" />
               </node>
@@ -1320,11 +1320,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="1PhFbPjme4B" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector():jetbrains.mps.nodeEditor.EditorComponent" resolve="getInspector" />
+                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector()" resolve="getInspector" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjme4C" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
             </node>
           </node>
         </node>
@@ -1344,11 +1344,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="1PhFbPjme4L" role="2OqNvi">
-                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjme4M" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="1PhFbPjme4N" role="37wK5m">
                 <property role="Xl_RC" value="default" />
               </node>
@@ -1420,11 +1420,11 @@
                 <ref role="3cqZAo" node="1PhFbPjmf16" resolve="component" />
               </node>
               <node concept="liA8E" id="1PhFbPjmeks" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector():jetbrains.mps.nodeEditor.EditorComponent" resolve="getInspector" />
+                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector()" resolve="getInspector" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjmekt" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
             </node>
           </node>
         </node>
@@ -1444,11 +1444,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="7Lu8LsGJwwE" role="2OqNvi">
-                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="liA8E" id="7Lu8LsGJwwF" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="7Lu8LsGJwwG" role="37wK5m">
                 <property role="Xl_RC" value="default" />
               </node>
@@ -1471,11 +1471,11 @@
               <ref role="3cqZAo" node="1PhFbPjmf16" resolve="component" />
             </node>
             <node concept="liA8E" id="1PhFbPjmge_" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getUpdater()" resolve="getUpdater" />
             </node>
           </node>
           <node concept="liA8E" id="1PhFbPjmgjv" role="2OqNvi">
-            <ref role="37wK5l" to="22ra:~Updater.setInitialEditorHints(java.lang.String[]):boolean" resolve="setInitialEditorHints" />
+            <ref role="37wK5l" to="22ra:~Updater.setInitialEditorHints(java.lang.String[])" resolve="setInitialEditorHints" />
             <node concept="2ShNRf" id="1PhFbPjmgjY" role="37wK5m">
               <node concept="3g6Rrh" id="1PhFbPjms5$" role="2ShVmc">
                 <node concept="17QB3L" id="1PhFbPjms3L" role="3g7fb8" />
@@ -1490,7 +1490,7 @@
       <node concept="3clFbF" id="6YormRhWDhB" role="3cqZAp">
         <node concept="2YIFZM" id="6YormRhWDGv" role="3clFbG">
           <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
-          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable):void" resolve="invokeAndWait" />
+          <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
           <node concept="1bVj0M" id="6YormRhWDGN" role="37wK5m">
             <node concept="3clFbS" id="6YormRhWDGO" role="1bW5cS">
               <node concept="3clFbF" id="1PhFbPjmBp7" role="3cqZAp">
@@ -1502,19 +1502,19 @@
                           <ref role="3cqZAo" node="1PhFbPjmf16" resolve="component" />
                         </node>
                         <node concept="liA8E" id="1PhFbPjmCyW" role="2OqNvi">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                          <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                         </node>
                       </node>
                       <node concept="liA8E" id="1PhFbPjmCEs" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1PhFbPjmCKA" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                      <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                     </node>
                   </node>
                   <node concept="liA8E" id="1PhFbPjmCRa" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+                    <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                     <node concept="1bVj0M" id="1PhFbPjmCS1" role="37wK5m">
                       <node concept="3clFbS" id="1PhFbPjmCS2" role="1bW5cS">
                         <node concept="3clFbF" id="1PhFbPjmsE6" role="3cqZAp">
@@ -1523,7 +1523,7 @@
                               <ref role="3cqZAo" node="1PhFbPjmf16" resolve="component" />
                             </node>
                             <node concept="liA8E" id="1PhFbPjmtM_" role="2OqNvi">
-                              <ref role="37wK5l" to="exr9:~NodeEditorComponent.rebuildEditorContent():void" resolve="rebuildEditorContent" />
+                              <ref role="37wK5l" to="exr9:~NodeEditorComponent.rebuildEditorContent()" resolve="rebuildEditorContent" />
                             </node>
                           </node>
                         </node>
@@ -1539,11 +1539,11 @@
                       <ref role="3cqZAo" node="1PhFbPjmf16" resolve="component" />
                     </node>
                     <node concept="liA8E" id="1PhFbPjmwxQ" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                     </node>
                   </node>
                   <node concept="liA8E" id="1PhFbPjmwDf" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorContext.flushEvents():void" resolve="flushEvents" />
+                    <ref role="37wK5l" to="exr9:~EditorContext.flushEvents()" resolve="flushEvents" />
                   </node>
                 </node>
               </node>
@@ -1559,11 +1559,11 @@
                 <ref role="3cqZAo" node="1PhFbPjmf16" resolve="component" />
               </node>
               <node concept="liA8E" id="7Lu8LsGJvq2" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector():jetbrains.mps.nodeEditor.EditorComponent" resolve="getInspector" />
+                <ref role="37wK5l" to="exr9:~NodeEditorComponent.getInspector()" resolve="getInspector" />
               </node>
             </node>
             <node concept="liA8E" id="7Lu8LsGJvq3" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell():jetbrains.mps.nodeEditor.cells.EditorCell" resolve="getRootCell" />
+              <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
             </node>
           </node>
           <node concept="37vLTw" id="7Lu8LsGJvAU" role="37vLTJ">
@@ -1586,11 +1586,11 @@
                 </node>
               </node>
               <node concept="liA8E" id="1PhFbPjmekA" role="2OqNvi">
-                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="g51k:~EditorCell_Label.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="liA8E" id="1PhFbPjmekB" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="Xl_RD" id="1PhFbPjmekC" role="37wK5m">
                 <property role="Xl_RC" value="compact" />
               </node>

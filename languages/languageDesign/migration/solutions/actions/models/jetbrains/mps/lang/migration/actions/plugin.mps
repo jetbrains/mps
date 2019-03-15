@@ -252,7 +252,7 @@
               <ref role="3cqZAo" node="IkVTleIcuL" resolve="lang" />
             </node>
             <node concept="liA8E" id="5$lI4SjhWt4" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~Language.setLanguageVersion(int):void" resolve="setLanguageVersion" />
+              <ref role="37wK5l" to="w1kc:~Language.setLanguageVersion(int)" resolve="setLanguageVersion" />
               <node concept="3cpWs3" id="5$lI4SjhWP6" role="37wK5m">
                 <node concept="3cmrfG" id="5$lI4SjhWPl" role="3uHU7w">
                   <property role="3cmrfH" value="1" />
@@ -386,7 +386,7 @@
                 <ref role="3cqZAo" node="IkVTleGFeF" resolve="lang" />
               </node>
               <node concept="liA8E" id="MGgIRlJxpf" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~Language.getLanguageVersion():int" resolve="getLanguageVersion" />
+                <ref role="37wK5l" to="w1kc:~Language.getLanguageVersion()" resolve="getLanguageVersion" />
               </node>
             </node>
             <node concept="3cpWs3" id="MGgIRlJxpa" role="3uHU7w">

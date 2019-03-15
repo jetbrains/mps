@@ -198,7 +198,7 @@
                     <ref role="3cqZAo" node="hZL9ibi" resolve="fqClassName" />
                   </node>
                   <node concept="liA8E" id="hZL9mdZ" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                    <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
                     <node concept="Xl_RD" id="hZL9mrs" role="37wK5m">
                       <property role="Xl_RC" value="@" />
                     </node>
@@ -235,7 +235,7 @@
                       <ref role="3cqZAo" node="hZL9ibi" resolve="fqClassName" />
                     </node>
                     <node concept="liA8E" id="hZL9Ej6" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.split(java.lang.String):java.lang.String[]" resolve="split" />
+                      <ref role="37wK5l" to="wyt6:~String.split(java.lang.String)" resolve="split" />
                       <node concept="Xl_RD" id="hZL9Eum" role="37wK5m">
                         <property role="Xl_RC" value="!" />
                       </node>
@@ -292,7 +292,7 @@
                     <node concept="3clFbF" id="hZL9QC8" role="3cqZAp">
                       <node concept="37vLTI" id="hZL9Rbk" role="3clFbG">
                         <node concept="2YIFZM" id="umZuBMPmRI" role="37vLTx">
-                          <ref role="37wK5l" to="18ew:~JavaNameUtil.packageName(java.lang.String):java.lang.String" resolve="packageName" />
+                          <ref role="37wK5l" to="18ew:~JavaNameUtil.packageName(java.lang.String)" resolve="packageName" />
                           <ref role="1Pybhc" to="18ew:~JavaNameUtil" resolve="JavaNameUtil" />
                           <node concept="37vLTw" id="2BHiRxgm9ZT" role="37wK5m">
                             <ref role="3cqZAo" node="hZL9ibi" resolve="fqClassName" />
@@ -306,7 +306,7 @@
                     <node concept="3clFbF" id="hZLa1VX" role="3cqZAp">
                       <node concept="37vLTI" id="hZLa2ua" role="3clFbG">
                         <node concept="2YIFZM" id="umZuBMPmRK" role="37vLTx">
-                          <ref role="37wK5l" to="18ew:~JavaNameUtil.shortName(java.lang.String):java.lang.String" resolve="shortName" />
+                          <ref role="37wK5l" to="18ew:~JavaNameUtil.shortName(java.lang.String)" resolve="shortName" />
                           <ref role="1Pybhc" to="18ew:~JavaNameUtil" resolve="JavaNameUtil" />
                           <node concept="37vLTw" id="2BHiRxgm_tn" role="37wK5m">
                             <ref role="3cqZAo" node="hZL9ibi" resolve="fqClassName" />
@@ -391,7 +391,7 @@
                     <property role="TrG5h" value="pack" />
                     <node concept="17QB3L" id="hZLbalJ" role="1tU5fm" />
                     <node concept="2YIFZM" id="hZLbjBq" role="33vP2m">
-                      <ref role="37wK5l" to="18ew:~NameUtil.namespaceFromLongName(java.lang.String):java.lang.String" resolve="namespaceFromLongName" />
+                      <ref role="37wK5l" to="18ew:~NameUtil.namespaceFromLongName(java.lang.String)" resolve="namespaceFromLongName" />
                       <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                       <node concept="2OqwBi" id="hZLbkeK" role="37wK5m">
                         <node concept="37vLTw" id="3GM_nagTtQe" role="2Oq$k0">
@@ -409,7 +409,7 @@
                     <property role="TrG5h" value="name" />
                     <node concept="17QB3L" id="hZLblHB" role="1tU5fm" />
                     <node concept="2YIFZM" id="hZLboPn" role="33vP2m">
-                      <ref role="37wK5l" to="18ew:~NameUtil.shortNameFromLongName(java.lang.String):java.lang.String" resolve="shortNameFromLongName" />
+                      <ref role="37wK5l" to="18ew:~NameUtil.shortNameFromLongName(java.lang.String)" resolve="shortNameFromLongName" />
                       <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                       <node concept="2OqwBi" id="hZLbpsW" role="37wK5m">
                         <node concept="37vLTw" id="3GM_nagTxqR" role="2Oq$k0">

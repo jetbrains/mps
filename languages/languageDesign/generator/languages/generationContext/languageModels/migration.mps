@@ -256,13 +256,13 @@
                 <ref role="3cqZAo" node="6ONdyjmHApJ" resolve="m" />
               </node>
               <node concept="liA8E" id="6ONdyjmI9Bp" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SModule.getModels(java.util.function.Predicate):java.util.Collection" resolve="getModels" />
+                <ref role="37wK5l" to="lui2:~SModule.getModels(java.util.function.Predicate)" resolve="getModels" />
                 <node concept="1bVj0M" id="6ONdyjmI9Bq" role="37wK5m">
                   <node concept="3clFbS" id="6ONdyjmI9Br" role="1bW5cS">
                     <node concept="3clFbF" id="6ONdyjmI9Bs" role="3cqZAp">
                       <node concept="1Wc70l" id="6ONdyjmI9Bt" role="3clFbG">
                         <node concept="2YIFZM" id="6ONdyjmI9Bu" role="3uHU7w">
-                          <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+                          <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isGeneratorModel" />
                           <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
                           <node concept="37vLTw" id="6ONdyjmI9Bv" role="37wK5m">
                             <ref role="3cqZAo" node="6ONdyjmI9B$" resolve="md" />
@@ -274,7 +274,7 @@
                               <ref role="3cqZAo" node="6ONdyjmI9B$" resolve="md" />
                             </node>
                             <node concept="liA8E" id="6ONdyjmI9Bz" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SModel.isReadOnly():boolean" resolve="isReadOnly" />
+                              <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
                             </node>
                           </node>
                         </node>

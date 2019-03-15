@@ -165,7 +165,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="79C96s2bVZ8" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="79C96s2bVZ9" role="37wK5m">
                 <property role="Xl_RC" value="setup test!!" />
               </node>
@@ -183,7 +183,7 @@
               <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
             </node>
             <node concept="liA8E" id="79C96s2bVZr" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="79C96s2bVZs" role="37wK5m">
                 <property role="Xl_RC" value="teardown test!!" />
               </node>
@@ -247,7 +247,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="2kGTfCQPUx6" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="2kGTfCQPUx7" role="37wK5m">
                 <property role="Xl_RC" value="Hi!" />
               </node>
@@ -257,7 +257,7 @@
         <node concept="3clFbF" id="3GY2l4dhyjX" role="3cqZAp">
           <node concept="2YIFZM" id="5uy3kSHexcI" role="3clFbG">
             <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="u132:~Assert.assertFalse(boolean):void" resolve="assertFalse" />
+            <ref role="37wK5l" to="u132:~Assert.assertFalse(boolean)" resolve="assertFalse" />
             <node concept="3clFbT" id="5uy3kSHexcJ" role="37wK5m" />
           </node>
         </node>
@@ -394,7 +394,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="7JmqdyD79sE" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="3cpWs3" id="7JmqdyD79sG" role="37wK5m">
                 <node concept="37vLTw" id="2BHiRxgm8u9" role="3uHU7w">
                   <ref role="3cqZAo" node="7JmqdyD79ss" resolve="method" />
@@ -408,7 +408,7 @@
         </node>
         <node concept="3clFbF" id="7JmqdyD79sy" role="3cqZAp">
           <node concept="3nyPlj" id="7JmqdyD79sz" role="3clFbG">
-            <ref role="37wK5l" to="bbnd:~BlockJUnit4ClassRunner.runChild(org.junit.runners.model.FrameworkMethod,org.junit.runner.notification.RunNotifier):void" resolve="runChild" />
+            <ref role="37wK5l" to="bbnd:~BlockJUnit4ClassRunner.runChild(org.junit.runners.model.FrameworkMethod,org.junit.runner.notification.RunNotifier)" resolve="runChild" />
             <node concept="37vLTw" id="2BHiRxgmyVh" role="37wK5m">
               <ref role="3cqZAo" node="7JmqdyD79ss" resolve="method" />
             </node>
@@ -449,7 +449,7 @@
               <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
             </node>
             <node concept="liA8E" id="5V6TCVQm_nl" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="5V6TCVQm_nm" role="37wK5m">
                 <property role="Xl_RC" value="Hello, Universe!" />
               </node>
@@ -479,7 +479,7 @@
         <node concept="3clFbF" id="1URdE03IsJy" role="3cqZAp">
           <node concept="2YIFZM" id="5uy3kSHe$rG" role="3clFbG">
             <ref role="1Pybhc" to="u132:~Assert" resolve="Assert" />
-            <ref role="37wK5l" to="u132:~Assert.assertEquals(java.lang.String,java.lang.String):void" resolve="assertEquals" />
+            <ref role="37wK5l" to="u132:~Assert.assertEquals(java.lang.String,java.lang.String)" resolve="assertEquals" />
             <node concept="Xl_RD" id="5uy3kSHe$rH" role="37wK5m">
               <property role="Xl_RC" value="" />
             </node>

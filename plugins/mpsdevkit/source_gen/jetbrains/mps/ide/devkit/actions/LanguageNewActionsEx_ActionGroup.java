@@ -11,5 +11,6 @@ public class LanguageNewActionsEx_ActionGroup extends GeneratedActionGroup {
     this.setIsInternal(false);
     this.setPopup(false);
     LanguageNewActionsEx_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.NewAccessoryModel_Action");
+    LanguageNewActionsEx_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.NewRuntimeModule_Action");
   }
 }

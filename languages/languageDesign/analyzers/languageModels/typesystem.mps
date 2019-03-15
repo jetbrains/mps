@@ -704,7 +704,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5420fVrSLxH" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
             </node>
           </node>
         </node>
@@ -750,7 +750,7 @@
               <ref role="3cqZAo" node="hYjR2Jc" resolve="ruleLanguage" />
             </node>
             <node concept="liA8E" id="3Z93mP$_164" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~Language.getAllExtendedLanguages():java.util.Set" resolve="getAllExtendedLanguages" />
+              <ref role="37wK5l" to="w1kc:~Language.getAllExtendedLanguages()" resolve="getAllExtendedLanguages" />
             </node>
           </node>
           <node concept="2hMVRd" id="2u_1aB3ByY8" role="1tU5fm">
@@ -803,7 +803,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5420fVrT3TW" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
             </node>
           </node>
         </node>
@@ -887,7 +887,7 @@
                   <ref role="3cqZAo" node="hYjR2Jc" resolve="ruleLanguage" />
                 </node>
                 <node concept="liA8E" id="4WpFdPuvzu_" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                  <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleName()" resolve="getModuleName" />
                 </node>
               </node>
               <node concept="3cpWs3" id="hYjSaT1" role="3uHU7B">
@@ -910,7 +910,7 @@
                           <ref role="3cqZAo" node="5420fVrT3U9" resolve="analyzerLanguage" />
                         </node>
                         <node concept="liA8E" id="4WpFdPuvzuB" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                          <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleName()" resolve="getModuleName" />
                         </node>
                       </node>
                     </node>

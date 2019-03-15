@@ -147,7 +147,7 @@
       <node concept="3clFbS" id="z9$5E0VVqh" role="3clF47">
         <node concept="3cpWs6" id="z9$5E0VVqi" role="3cqZAp">
           <node concept="2YIFZM" id="z9$5E0VVqm" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:~Collections.unmodifiableList(java.util.List):java.util.List" resolve="unmodifiableList" />
+            <ref role="37wK5l" to="33ny:~Collections.unmodifiableList(java.util.List)" resolve="unmodifiableList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="37vLTw" id="2BHiRxeuNX0" role="37wK5m">
               <ref role="3cqZAo" node="z9$5E0VVpQ" resolve="exceptions" />

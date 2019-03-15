@@ -221,7 +221,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5AcmpEOhWAj" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -265,7 +265,7 @@
             <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
           </node>
           <node concept="2YIFZM" id="6rDosczM1ns" role="33vP2m">
-            <ref role="37wK5l" to="w0gx:~ModuleReference.parseReference(java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference" resolve="parseReference" />
+            <ref role="37wK5l" to="w0gx:~ModuleReference.parseReference(java.lang.String)" resolve="parseReference" />
             <ref role="1Pybhc" to="w0gx:~ModuleReference" resolve="ModuleReference" />
             <node concept="2OqwBi" id="6rDosczM1nt" role="37wK5m">
               <node concept="37vLTw" id="7L2U3nU1lro" role="2Oq$k0">
@@ -289,7 +289,7 @@
               <ref role="3cqZAo" node="6rDosczM1nr" resolve="moduleReference" />
             </node>
             <node concept="liA8E" id="5AcmpEOhYzj" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
+              <ref role="37wK5l" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
               <node concept="37vLTw" id="5AcmpEOhYCr" role="37wK5m">
                 <ref role="3cqZAo" node="5AcmpEOhWAd" resolve="repo" />
               </node>
@@ -362,7 +362,7 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="1aYLt$9bB$D" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                                 <node concept="37vLTw" id="1aYLt$9esyX" role="37wK5m">
                                   <ref role="3cqZAo" node="1aYLt$9esyT" resolve="className" />
                                 </node>
@@ -437,7 +437,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="1aYLt$9c3Ma" role="2OqNvi">
-                                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                                     <node concept="37vLTw" id="1aYLt$9euiX" role="37wK5m">
                                       <ref role="3cqZAo" node="1aYLt$9euiT" resolve="methodName" />
                                     </node>
@@ -491,13 +491,13 @@
                 <node concept="LkI2h" id="6rDosczNAnu" role="2OqNvi" />
               </node>
               <node concept="liA8E" id="6rDosczNBAb" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                 <node concept="2OqwBi" id="6rDosczNBAW" role="37wK5m">
                   <node concept="37vLTw" id="6rDosczNBAX" role="2Oq$k0">
                     <ref role="3cqZAo" node="6rDosczM1NB" resolve="module" />
                   </node>
                   <node concept="liA8E" id="6rDosczNBAY" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~SModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                    <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
                   </node>
                 </node>
               </node>
@@ -513,7 +513,7 @@
             <ref role="3cqZAo" node="6rDosczM1NB" resolve="module" />
           </node>
           <node concept="liA8E" id="6rDosczNx9C" role="2OqNvi">
-            <ref role="37wK5l" to="lui2:~SModule.getModels():java.lang.Iterable" resolve="getModels" />
+            <ref role="37wK5l" to="lui2:~SModule.getModels()" resolve="getModels" />
           </node>
         </node>
       </node>

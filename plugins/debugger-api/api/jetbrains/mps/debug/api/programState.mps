@@ -387,7 +387,7 @@
               </node>
             </node>
             <node concept="liA8E" id="18TdFgFGlbd" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.hashCode():int" resolve="hashCode" />
+              <ref role="37wK5l" to="wyt6:~String.hashCode()" resolve="hashCode" />
             </node>
           </node>
         </node>
@@ -439,11 +439,11 @@
                   <ref role="3cqZAo" node="18TdFgFGhVG" resolve="o" />
                 </node>
                 <node concept="liA8E" id="18TdFgFMFmP" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                  <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                 </node>
               </node>
               <node concept="1rXfSq" id="18TdFgFMEVz" role="3uHU7B">
-                <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
               </node>
             </node>
             <node concept="3clFbC" id="18TdFgFMEJx" role="3uHU7B">
@@ -463,7 +463,7 @@
               </node>
             </node>
             <node concept="liA8E" id="18TdFgFGjmQ" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="2OqwBi" id="18TdFgFMJ$J" role="37wK5m">
                 <node concept="1eOMI4" id="18TdFgFMIDT" role="2Oq$k0">
                   <node concept="10QFUN" id="18TdFgFMIDQ" role="1eOMHV">
@@ -510,7 +510,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3SnNvqCaJiq" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.compareTo(java.lang.String):int" resolve="compareTo" />
+              <ref role="37wK5l" to="wyt6:~String.compareTo(java.lang.String)" resolve="compareTo" />
               <node concept="2OqwBi" id="3SnNvqCaJir" role="37wK5m">
                 <node concept="37vLTw" id="2BHiRxghfCu" role="2Oq$k0">
                   <ref role="3cqZAo" node="3SnNvqCaJii" resolve="o" />

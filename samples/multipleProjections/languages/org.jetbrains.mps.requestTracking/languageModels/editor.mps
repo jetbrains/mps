@@ -171,7 +171,7 @@
             <node concept="3cpWs6" id="3c1Y2R7PjBV" role="3cqZAp">
               <node concept="3K4zz7" id="3c1Y2R7PrKT" role="3cqZAk">
                 <node concept="2YIFZM" id="3c1Y2R7QfS0" role="3K4GZi">
-                  <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+                  <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="17QB3L" id="3c1Y2R7QNHW" role="3PaCim" />
                 </node>

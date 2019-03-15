@@ -533,7 +533,7 @@
               <property role="1npUBZ" value="classFQName" />
               <property role="1npL6y" value="methodName" />
               <node concept="2YIFZM" id="6tDhftmH5ZI" role="2U24H$">
-                <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                 <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                 <node concept="10QFUN" id="6tDhftmH5ZJ" role="37wK5m">
                   <node concept="3uibUv" id="6tDhftmH5ZK" role="10QFUM">

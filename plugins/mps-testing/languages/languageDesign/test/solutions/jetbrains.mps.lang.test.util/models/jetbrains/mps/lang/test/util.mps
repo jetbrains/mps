@@ -233,7 +233,7 @@
               <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
             </node>
             <node concept="liA8E" id="5uCAHWJWrgR" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+              <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
             </node>
           </node>
         </node>
@@ -262,7 +262,7 @@
               <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
             </node>
             <node concept="liA8E" id="5uCAHWJWsMa" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="5uCAHWJWsT1" role="37wK5m">
                 <ref role="3cqZAo" node="1$FrpHy4udS" resolve="value" />
               </node>
@@ -298,7 +298,7 @@
               <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
             </node>
             <node concept="liA8E" id="5uCAHWJWvTn" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object):boolean" resolve="compareAndSet" />
+              <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object)" resolve="compareAndSet" />
               <node concept="37vLTw" id="5uCAHWJWxB2" role="37wK5m">
                 <ref role="3cqZAo" node="5uCAHWJWwrx" resolve="oldValue" />
               </node>
@@ -340,7 +340,7 @@
               <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
             </node>
             <node concept="liA8E" id="5uCAHWJWy7x" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
               <node concept="Rm8GO" id="2A5UIbg6F5o" role="37wK5m">
                 <ref role="Rm8GQ" node="1$FrpHy4ufD" resolve="IDLE" />
                 <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
@@ -365,11 +365,11 @@
                 <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
               </node>
               <node concept="liA8E" id="5uCAHWJWz_I" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
             <node concept="liA8E" id="1$FrpHy4uem" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Enum.ordinal():int" resolve="ordinal" />
+              <ref role="37wK5l" to="wyt6:~Enum.ordinal()" resolve="ordinal" />
             </node>
           </node>
         </node>
@@ -403,7 +403,7 @@
                 <ref role="3cqZAo" node="1$FrpHy4ueq" resolve="another" />
               </node>
               <node concept="liA8E" id="1$FrpHy4ue$" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Enum.ordinal():int" resolve="ordinal" />
+                <ref role="37wK5l" to="wyt6:~Enum.ordinal()" resolve="ordinal" />
               </node>
             </node>
           </node>
@@ -473,11 +473,11 @@
                 <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
               </node>
               <node concept="liA8E" id="5uCAHWJWFNJ" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
             <node concept="liA8E" id="1$FrpHy4ueY" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Enum.compareTo(java.lang.Enum):int" resolve="compareTo" />
+              <ref role="37wK5l" to="wyt6:~Enum.compareTo(java.lang.Enum)" resolve="compareTo" />
               <node concept="2OqwBi" id="5uCAHWJWJjJ" role="37wK5m">
                 <node concept="2OqwBi" id="1$FrpHy4ueZ" role="2Oq$k0">
                   <node concept="37vLTw" id="1$FrpHy4uf0" role="2Oq$k0">
@@ -488,7 +488,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="5uCAHWJWKoL" role="2OqNvi">
-                  <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
                 </node>
               </node>
             </node>
@@ -511,7 +511,7 @@
                 <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
               </node>
               <node concept="liA8E" id="5uCAHWJWOk0" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
             <node concept="Rm8GO" id="1$FrpHy4uf9" role="3uHU7w">
@@ -542,7 +542,7 @@
                 <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
               </node>
               <node concept="liA8E" id="5uCAHWJWQr2" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
           </node>
@@ -564,7 +564,7 @@
                 <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
               </node>
               <node concept="liA8E" id="5uCAHWJWSod" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
             <node concept="Rm8GO" id="1$FrpHy4ufh" role="3uHU7w">
@@ -590,7 +590,7 @@
                 <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
               </node>
               <node concept="liA8E" id="5uCAHWJWUav" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
             <node concept="Rm8GO" id="1$FrpHy4ufp" role="3uHU7w">
@@ -616,7 +616,7 @@
                 <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
               </node>
               <node concept="liA8E" id="5uCAHWJWVB1" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
             <node concept="Rm8GO" id="1$FrpHy4ufx" role="3uHU7w">

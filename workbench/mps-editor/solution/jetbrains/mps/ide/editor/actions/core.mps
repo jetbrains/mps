@@ -227,11 +227,11 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6G33IkaAPCb" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getHighlightManager():jetbrains.mps.nodeEditor.NodeHighlightManager" resolve="getHighlightManager" />
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getHighlightManager()" resolve="getHighlightManager" />
                 </node>
               </node>
               <node concept="liA8E" id="6G33IkaAPCc" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~NodeHighlightManager.getMessagesFor(org.jetbrains.mps.openapi.model.SNode):java.util.List" resolve="getMessagesFor" />
+                <ref role="37wK5l" to="exr9:~NodeHighlightManager.getMessagesFor(org.jetbrains.mps.openapi.model.SNode)" resolve="getMessagesFor" />
                 <node concept="2OqwBi" id="6G33IkaAPCd" role="37wK5m">
                   <node concept="2WthIp" id="6G33IkaAPCe" role="2Oq$k0" />
                   <node concept="1DTwFV" id="6G33IkaAPCf" role="2OqNvi">
@@ -261,7 +261,7 @@
                             <ref role="3cqZAo" node="5BxS2Byts6t" resolve="it" />
                           </node>
                           <node concept="liA8E" id="5BxS2Byttuh" role="2OqNvi">
-                            <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage():java.lang.String" resolve="getMessage" />
+                            <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage()" resolve="getMessage" />
                           </node>
                         </node>
                         <node concept="17RlXB" id="2nIohV8v3ek" role="2OqNvi" />
@@ -312,7 +312,7 @@
               <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
             </node>
             <node concept="liA8E" id="5BxS2ByqtvU" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
               <node concept="Xl_RD" id="5BxS2ByqtSv" role="37wK5m">
                 <property role="Xl_RC" value="&lt;html&gt;" />
               </node>
@@ -327,7 +327,7 @@
                   <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="5BxS2ByqKo3" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                   <node concept="Xl_RD" id="5BxS2ByqKo4" role="37wK5m">
                     <property role="Xl_RC" value="&lt;p&gt;" />
                   </node>
@@ -340,16 +340,16 @@
                   <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="6G33IkaAPCq" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                   <node concept="2YIFZM" id="2itmi5iAtwd" role="37wK5m">
-                    <ref role="37wK5l" to="zdap:~StringUtil.escapeXml(java.lang.String):java.lang.String" resolve="escapeXml" />
+                    <ref role="37wK5l" to="zdap:~StringUtil.escapeXml(java.lang.String)" resolve="escapeXml" />
                     <ref role="1Pybhc" to="zdap:~StringUtil" resolve="StringUtil" />
                     <node concept="2OqwBi" id="6G33IkaAPCr" role="37wK5m">
                       <node concept="37vLTw" id="3GM_nagTtnJ" role="2Oq$k0">
                         <ref role="3cqZAo" node="6G33IkaAPCK" resolve="message" />
                       </node>
                       <node concept="liA8E" id="6G33IkaAPCt" role="2OqNvi">
-                        <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage():java.lang.String" resolve="getMessage" />
+                        <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage()" resolve="getMessage" />
                       </node>
                     </node>
                   </node>
@@ -362,7 +362,7 @@
                   <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="5BxS2ByqUn$" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                   <node concept="Xl_RD" id="5BxS2ByqUZG" role="37wK5m">
                     <property role="Xl_RC" value="&lt;br&gt;" />
                   </node>
@@ -375,7 +375,7 @@
                   <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="2uyAW6nrjuK" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                   <node concept="Xl_RD" id="2uyAW6nrjQk" role="37wK5m">
                     <property role="Xl_RC" value="Message owner: " />
                   </node>
@@ -388,13 +388,13 @@
                   <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="6G33IkaAPCA" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.Object):java.lang.StringBuilder" resolve="append" />
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.Object)" resolve="append" />
                   <node concept="2OqwBi" id="6G33IkaAPCB" role="37wK5m">
                     <node concept="37vLTw" id="3GM_nagTyeg" role="2Oq$k0">
                       <ref role="3cqZAo" node="6G33IkaAPCK" resolve="message" />
                     </node>
                     <node concept="liA8E" id="6G33IkaAPCD" role="2OqNvi">
-                      <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getOwner():jetbrains.mps.openapi.editor.message.EditorMessageOwner" resolve="getOwner" />
+                      <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getOwner()" resolve="getOwner" />
                     </node>
                   </node>
                 </node>
@@ -406,7 +406,7 @@
                   <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="5BxS2ByqLVI" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                   <node concept="Xl_RD" id="5BxS2ByqLVJ" role="37wK5m">
                     <property role="Xl_RC" value="&lt;/p&gt;" />
                   </node>
@@ -421,7 +421,7 @@
                       <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
                     </node>
                     <node concept="liA8E" id="5BxS2Byszxh" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                       <node concept="Xl_RD" id="5BxS2Byszxi" role="37wK5m">
                         <property role="Xl_RC" value="&lt;br&gt;" />
                       </node>
@@ -438,7 +438,7 @@
                     <node concept="1yVyf7" id="5BxS2Byt$Vk" role="2OqNvi" />
                   </node>
                   <node concept="liA8E" id="5BxS2Byt$Vl" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                     <node concept="37vLTw" id="5BxS2Byt$Vm" role="37wK5m">
                       <ref role="3cqZAo" node="6G33IkaAPCK" resolve="message" />
                     </node>
@@ -463,7 +463,7 @@
               <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
             </node>
             <node concept="liA8E" id="5BxS2ByquwE" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String):java.lang.StringBuilder" resolve="append" />
+              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
               <node concept="Xl_RD" id="5BxS2ByquwF" role="37wK5m">
                 <property role="Xl_RC" value="&lt;html&gt;" />
               </node>
@@ -474,7 +474,7 @@
         <node concept="3clFbF" id="6G33IkaAPCM" role="3cqZAp">
           <node concept="2YIFZM" id="vmpbTJ9qly" role="3clFbG">
             <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
-            <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(com.intellij.openapi.project.Project,java.lang.String,java.lang.String):void" resolve="showInfoMessage" />
+            <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(com.intellij.openapi.project.Project,java.lang.String,java.lang.String)" resolve="showInfoMessage" />
             <node concept="2OqwBi" id="vmpbTJ9qlz" role="37wK5m">
               <node concept="2WthIp" id="vmpbTJ9ql$" role="2Oq$k0" />
               <node concept="1DTwFV" id="vmpbTJ9ql_" role="2OqNvi">
@@ -486,7 +486,7 @@
                 <ref role="3cqZAo" node="6G33IkaAPCh" resolve="sb" />
               </node>
               <node concept="liA8E" id="vmpbTJ9qlC" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~StringBuilder.toString():java.lang.String" resolve="toString" />
+                <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
               </node>
             </node>
             <node concept="Xl_RD" id="vmpbTJ9qlD" role="37wK5m">
@@ -511,11 +511,11 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="6G33IkaAPD8" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorComponent.getHighlightManager():jetbrains.mps.nodeEditor.NodeHighlightManager" resolve="getHighlightManager" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getHighlightManager()" resolve="getHighlightManager" />
                     </node>
                   </node>
                   <node concept="liA8E" id="6G33IkaAPD9" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~NodeHighlightManager.getMessagesFor(org.jetbrains.mps.openapi.model.SNode):java.util.List" resolve="getMessagesFor" />
+                    <ref role="37wK5l" to="exr9:~NodeHighlightManager.getMessagesFor(org.jetbrains.mps.openapi.model.SNode)" resolve="getMessagesFor" />
                     <node concept="2OqwBi" id="6G33IkaAPDa" role="37wK5m">
                       <node concept="2WthIp" id="6G33IkaAPDb" role="2Oq$k0" />
                       <node concept="1DTwFV" id="6G33IkaAPDc" role="2OqNvi">
@@ -541,7 +541,7 @@
                           <ref role="3cqZAo" node="2uyAW6nr77T" resolve="it" />
                         </node>
                         <node concept="liA8E" id="2uyAW6nr77R" role="2OqNvi">
-                          <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage():java.lang.String" resolve="getMessage" />
+                          <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage()" resolve="getMessage" />
                         </node>
                       </node>
                       <node concept="17RvpY" id="2uyAW6nr77S" role="2OqNvi" />

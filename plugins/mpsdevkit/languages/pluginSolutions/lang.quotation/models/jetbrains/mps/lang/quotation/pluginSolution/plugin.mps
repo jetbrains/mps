@@ -189,20 +189,20 @@
               </node>
             </node>
             <node concept="liA8E" id="48WE3Hcojs4" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+              <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="48WE3HcojIv" role="3cqZAp">
           <node concept="2YIFZM" id="48WE3HcojTl" role="3clFbG">
-            <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeLater(java.lang.Runnable):void" resolve="invokeLater" />
+            <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
             <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
             <node concept="1bVj0M" id="48WE3Hcok0a" role="37wK5m">
               <node concept="3clFbS" id="48WE3Hcok0b" role="1bW5cS">
                 <node concept="3clFbF" id="4KDfkUwM8Vr" role="3cqZAp">
                   <node concept="2YIFZM" id="4KDfkUwM8Vs" role="3clFbG">
                     <ref role="1Pybhc" to="dxuu:~JOptionPane" resolve="JOptionPane" />
-                    <ref role="37wK5l" to="dxuu:~JOptionPane.showMessageDialog(java.awt.Component,java.lang.Object):void" resolve="showMessageDialog" />
+                    <ref role="37wK5l" to="dxuu:~JOptionPane.showMessageDialog(java.awt.Component,java.lang.Object)" resolve="showMessageDialog" />
                     <node concept="2OqwBi" id="4KDfkUwM8Vt" role="37wK5m">
                       <node concept="2WthIp" id="4KDfkUwM8Vu" role="2Oq$k0" />
                       <node concept="1DTwFV" id="4KDfkUwM8Vv" role="2OqNvi">

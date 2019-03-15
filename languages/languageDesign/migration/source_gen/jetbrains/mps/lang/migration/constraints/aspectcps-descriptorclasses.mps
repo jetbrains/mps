@@ -386,7 +386,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="1j" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="1l" role="37wK5m">
               <property role="1adDun" value="0x9074634404fd4286L" />
               <node concept="cd27G" id="1q" role="lGtFl">
@@ -574,10 +574,10 @@
               </node>
             </node>
             <node concept="liA8E" id="2q" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="2YIFZM" id="2u" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SReferenceLink" resolve="getReferenceLink" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                 <node concept="1adDum" id="2x" role="37wK5m">
                   <property role="1adDun" value="0x9074634404fd4286L" />
                   <node concept="cd27G" id="2B" role="lGtFl">
@@ -632,7 +632,7 @@
                     <ref role="37wK5l" to="79pl:~BaseReferenceConstraintsDescriptor.&lt;init&gt;(jetbrains.mps.smodel.adapter.ids.SReferenceLinkId,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BaseReferenceConstraintsDescriptor" />
                     <node concept="2YIFZM" id="2Q" role="37wK5m">
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long):jetbrains.mps.smodel.adapter.ids.SReferenceLinkId" resolve="refId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long)" resolve="refId" />
                       <node concept="1adDum" id="2W" role="37wK5m">
                         <property role="1adDun" value="0x9074634404fd4286L" />
                         <node concept="cd27G" id="31" role="lGtFl">
@@ -933,7 +933,7 @@
                                         </node>
                                         <node concept="2YIFZM" id="4R" role="33vP2m">
                                           <ref role="1Pybhc" to="35tq:~Scope" resolve="Scope" />
-                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept):jetbrains.mps.scope.Scope" resolve="getScope" />
+                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                           <node concept="2OqwBi" id="4V" role="37wK5m">
                                             <node concept="37vLTw" id="50" role="2Oq$k0">
                                               <ref role="3cqZAo" node="4t" resolve="_context" />
@@ -944,7 +944,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="51" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode():org.jetbrains.mps.openapi.model.SNode" resolve="getContextNode" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode()" resolve="getContextNode" />
                                               <node concept="cd27G" id="55" role="lGtFl">
                                                 <node concept="3u3nmq" id="56" role="cd27D">
                                                   <property role="3u3nmv" value="7153805464398835597" />
@@ -959,7 +959,7 @@
                                           </node>
                                           <node concept="2OqwBi" id="4W" role="37wK5m">
                                             <node concept="liA8E" id="58" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink()" resolve="getContainmentLink" />
                                               <node concept="cd27G" id="5b" role="lGtFl">
                                                 <node concept="3u3nmq" id="5c" role="cd27D">
                                                   <property role="3u3nmv" value="7153805464398835597" />
@@ -990,7 +990,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="5h" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition():int" resolve="getPosition" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition()" resolve="getPosition" />
                                               <node concept="cd27G" id="5l" role="lGtFl">
                                                 <node concept="3u3nmq" id="5m" role="cd27D">
                                                   <property role="3u3nmv" value="7153805464398835597" />
@@ -1261,7 +1261,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="6_" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="6B" role="37wK5m">
               <property role="1adDun" value="0x9074634404fd4286L" />
               <node concept="cd27G" id="6G" role="lGtFl">
@@ -1482,7 +1482,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="8a" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <node concept="cd27G" id="8e" role="lGtFl">
                                 <node concept="3u3nmq" id="8f" role="cd27D">
                                   <property role="3u3nmv" value="6807933448472903571" />
@@ -1505,7 +1505,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="8i" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getParentNode():org.jetbrains.mps.openapi.model.SNode" resolve="getParentNode" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
                               <node concept="cd27G" id="8m" role="lGtFl">
                                 <node concept="3u3nmq" id="8n" role="cd27D">
                                   <property role="3u3nmv" value="6807933448472903571" />
@@ -1528,7 +1528,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="8q" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
                               <node concept="cd27G" id="8u" role="lGtFl">
                                 <node concept="3u3nmq" id="8v" role="cd27D">
                                   <property role="3u3nmv" value="6807933448472903571" />
@@ -1551,7 +1551,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="8y" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getLink" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <node concept="cd27G" id="8A" role="lGtFl">
                                 <node concept="3u3nmq" id="8B" role="cd27D">
                                   <property role="3u3nmv" value="6807933448472903571" />
@@ -1602,7 +1602,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="8Q" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference):void" resolve="setBreakingNode" />
+                              <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                               <node concept="1dyn4i" id="8U" role="37wK5m">
                                 <property role="1dyqJU" value="canBeChildBreakingPoint" />
                                 <node concept="2ShNRf" id="8W" role="1dyrYi">
@@ -1998,7 +1998,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="b4" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="b6" role="37wK5m">
               <property role="1adDun" value="0x9074634404fd4286L" />
               <node concept="cd27G" id="bb" role="lGtFl">
@@ -2186,10 +2186,10 @@
               </node>
             </node>
             <node concept="liA8E" id="cb" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="2YIFZM" id="cf" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SReferenceLink" resolve="getReferenceLink" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                 <node concept="1adDum" id="ci" role="37wK5m">
                   <property role="1adDun" value="0x9074634404fd4286L" />
                   <node concept="cd27G" id="co" role="lGtFl">
@@ -2244,7 +2244,7 @@
                     <ref role="37wK5l" to="79pl:~BaseReferenceConstraintsDescriptor.&lt;init&gt;(jetbrains.mps.smodel.adapter.ids.SReferenceLinkId,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BaseReferenceConstraintsDescriptor" />
                     <node concept="2YIFZM" id="cB" role="37wK5m">
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long):jetbrains.mps.smodel.adapter.ids.SReferenceLinkId" resolve="refId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long)" resolve="refId" />
                       <node concept="1adDum" id="cH" role="37wK5m">
                         <property role="1adDun" value="0x9074634404fd4286L" />
                         <node concept="cd27G" id="cM" role="lGtFl">
@@ -2545,7 +2545,7 @@
                                         </node>
                                         <node concept="2YIFZM" id="eC" role="33vP2m">
                                           <ref role="1Pybhc" to="35tq:~Scope" resolve="Scope" />
-                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept):jetbrains.mps.scope.Scope" resolve="getScope" />
+                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                           <node concept="2OqwBi" id="eG" role="37wK5m">
                                             <node concept="37vLTw" id="eL" role="2Oq$k0">
                                               <ref role="3cqZAo" node="ee" resolve="_context" />
@@ -2556,7 +2556,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="eM" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode():org.jetbrains.mps.openapi.model.SNode" resolve="getContextNode" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode()" resolve="getContextNode" />
                                               <node concept="cd27G" id="eQ" role="lGtFl">
                                                 <node concept="3u3nmq" id="eR" role="cd27D">
                                                   <property role="3u3nmv" value="3220955710218443162" />
@@ -2571,7 +2571,7 @@
                                           </node>
                                           <node concept="2OqwBi" id="eH" role="37wK5m">
                                             <node concept="liA8E" id="eT" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink()" resolve="getContainmentLink" />
                                               <node concept="cd27G" id="eW" role="lGtFl">
                                                 <node concept="3u3nmq" id="eX" role="cd27D">
                                                   <property role="3u3nmv" value="3220955710218443162" />
@@ -2602,7 +2602,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="f2" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition():int" resolve="getPosition" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition()" resolve="getPosition" />
                                               <node concept="cd27G" id="f6" role="lGtFl">
                                                 <node concept="3u3nmq" id="f7" role="cd27D">
                                                   <property role="3u3nmv" value="3220955710218443162" />
@@ -2872,7 +2872,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="gk" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="gm" role="37wK5m">
               <property role="1adDun" value="0x9074634404fd4286L" />
               <node concept="cd27G" id="gr" role="lGtFl">
@@ -3060,10 +3060,10 @@
               </node>
             </node>
             <node concept="liA8E" id="hr" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="2YIFZM" id="hv" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SReferenceLink" resolve="getReferenceLink" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                 <node concept="1adDum" id="hy" role="37wK5m">
                   <property role="1adDun" value="0x9074634404fd4286L" />
                   <node concept="cd27G" id="hC" role="lGtFl">
@@ -3118,7 +3118,7 @@
                     <ref role="37wK5l" to="79pl:~BaseReferenceConstraintsDescriptor.&lt;init&gt;(jetbrains.mps.smodel.adapter.ids.SReferenceLinkId,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BaseReferenceConstraintsDescriptor" />
                     <node concept="2YIFZM" id="hR" role="37wK5m">
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long):jetbrains.mps.smodel.adapter.ids.SReferenceLinkId" resolve="refId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long)" resolve="refId" />
                       <node concept="1adDum" id="hX" role="37wK5m">
                         <property role="1adDun" value="0x9074634404fd4286L" />
                         <node concept="cd27G" id="i2" role="lGtFl">
@@ -3419,7 +3419,7 @@
                                         </node>
                                         <node concept="2YIFZM" id="jS" role="33vP2m">
                                           <ref role="1Pybhc" to="35tq:~Scope" resolve="Scope" />
-                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept):jetbrains.mps.scope.Scope" resolve="getScope" />
+                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                           <node concept="2OqwBi" id="jW" role="37wK5m">
                                             <node concept="37vLTw" id="k1" role="2Oq$k0">
                                               <ref role="3cqZAo" node="ju" resolve="_context" />
@@ -3430,7 +3430,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="k2" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode():org.jetbrains.mps.openapi.model.SNode" resolve="getContextNode" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode()" resolve="getContextNode" />
                                               <node concept="cd27G" id="k6" role="lGtFl">
                                                 <node concept="3u3nmq" id="k7" role="cd27D">
                                                   <property role="3u3nmv" value="6129256022887940369" />
@@ -3445,7 +3445,7 @@
                                           </node>
                                           <node concept="2OqwBi" id="jX" role="37wK5m">
                                             <node concept="liA8E" id="k9" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink()" resolve="getContainmentLink" />
                                               <node concept="cd27G" id="kc" role="lGtFl">
                                                 <node concept="3u3nmq" id="kd" role="cd27D">
                                                   <property role="3u3nmv" value="6129256022887940369" />
@@ -3476,7 +3476,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="ki" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition():int" resolve="getPosition" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition()" resolve="getPosition" />
                                               <node concept="cd27G" id="km" role="lGtFl">
                                                 <node concept="3u3nmq" id="kn" role="cd27D">
                                                   <property role="3u3nmv" value="6129256022887940369" />
@@ -3746,7 +3746,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="l$" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="lA" role="37wK5m">
               <property role="1adDun" value="0x9074634404fd4286L" />
               <node concept="cd27G" id="lF" role="lGtFl">
@@ -3934,10 +3934,10 @@
               </node>
             </node>
             <node concept="liA8E" id="mF" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="2YIFZM" id="mJ" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SReferenceLink" resolve="getReferenceLink" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                 <node concept="1adDum" id="mM" role="37wK5m">
                   <property role="1adDun" value="0x9074634404fd4286L" />
                   <node concept="cd27G" id="mS" role="lGtFl">
@@ -3992,7 +3992,7 @@
                     <ref role="37wK5l" to="79pl:~BaseReferenceConstraintsDescriptor.&lt;init&gt;(jetbrains.mps.smodel.adapter.ids.SReferenceLinkId,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BaseReferenceConstraintsDescriptor" />
                     <node concept="2YIFZM" id="n7" role="37wK5m">
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long):jetbrains.mps.smodel.adapter.ids.SReferenceLinkId" resolve="refId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long)" resolve="refId" />
                       <node concept="1adDum" id="nd" role="37wK5m">
                         <property role="1adDun" value="0x9074634404fd4286L" />
                         <node concept="cd27G" id="ni" role="lGtFl">
@@ -4293,7 +4293,7 @@
                                         </node>
                                         <node concept="2YIFZM" id="p8" role="33vP2m">
                                           <ref role="1Pybhc" to="35tq:~Scope" resolve="Scope" />
-                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept):jetbrains.mps.scope.Scope" resolve="getScope" />
+                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                           <node concept="2OqwBi" id="pc" role="37wK5m">
                                             <node concept="37vLTw" id="ph" role="2Oq$k0">
                                               <ref role="3cqZAo" node="oI" resolve="_context" />
@@ -4304,7 +4304,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="pi" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode():org.jetbrains.mps.openapi.model.SNode" resolve="getContextNode" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode()" resolve="getContextNode" />
                                               <node concept="cd27G" id="pm" role="lGtFl">
                                                 <node concept="3u3nmq" id="pn" role="cd27D">
                                                   <property role="3u3nmv" value="7527743013695059105" />
@@ -4319,7 +4319,7 @@
                                           </node>
                                           <node concept="2OqwBi" id="pd" role="37wK5m">
                                             <node concept="liA8E" id="pp" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink()" resolve="getContainmentLink" />
                                               <node concept="cd27G" id="ps" role="lGtFl">
                                                 <node concept="3u3nmq" id="pt" role="cd27D">
                                                   <property role="3u3nmv" value="7527743013695059105" />
@@ -4350,7 +4350,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="py" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition():int" resolve="getPosition" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition()" resolve="getPosition" />
                                               <node concept="cd27G" id="pA" role="lGtFl">
                                                 <node concept="3u3nmq" id="pB" role="cd27D">
                                                   <property role="3u3nmv" value="7527743013695059105" />
@@ -4620,7 +4620,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="qO" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="qQ" role="37wK5m">
               <property role="1adDun" value="0x9074634404fd4286L" />
               <node concept="cd27G" id="qV" role="lGtFl">
@@ -4808,10 +4808,10 @@
               </node>
             </node>
             <node concept="liA8E" id="rV" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="2YIFZM" id="rZ" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SReferenceLink" resolve="getReferenceLink" />
+                <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                 <node concept="1adDum" id="s2" role="37wK5m">
                   <property role="1adDun" value="0x9074634404fd4286L" />
                   <node concept="cd27G" id="s8" role="lGtFl">
@@ -4866,7 +4866,7 @@
                     <ref role="37wK5l" to="79pl:~BaseReferenceConstraintsDescriptor.&lt;init&gt;(jetbrains.mps.smodel.adapter.ids.SReferenceLinkId,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BaseReferenceConstraintsDescriptor" />
                     <node concept="2YIFZM" id="sn" role="37wK5m">
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long):jetbrains.mps.smodel.adapter.ids.SReferenceLinkId" resolve="refId" />
+                      <ref role="37wK5l" to="e8bb:~MetaIdFactory.refId(long,long,long,long)" resolve="refId" />
                       <node concept="1adDum" id="st" role="37wK5m">
                         <property role="1adDun" value="0x9074634404fd4286L" />
                         <node concept="cd27G" id="sy" role="lGtFl">
@@ -5167,7 +5167,7 @@
                                         </node>
                                         <node concept="2YIFZM" id="uo" role="33vP2m">
                                           <ref role="1Pybhc" to="35tq:~Scope" resolve="Scope" />
-                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept):jetbrains.mps.scope.Scope" resolve="getScope" />
+                                          <ref role="37wK5l" to="35tq:~Scope.getScope(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink,int,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getScope" />
                                           <node concept="2OqwBi" id="us" role="37wK5m">
                                             <node concept="37vLTw" id="ux" role="2Oq$k0">
                                               <ref role="3cqZAo" node="tY" resolve="_context" />
@@ -5178,7 +5178,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="uy" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode():org.jetbrains.mps.openapi.model.SNode" resolve="getContextNode" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContextNode()" resolve="getContextNode" />
                                               <node concept="cd27G" id="uA" role="lGtFl">
                                                 <node concept="3u3nmq" id="uB" role="cd27D">
                                                   <property role="3u3nmv" value="3220955710218374757" />
@@ -5193,7 +5193,7 @@
                                           </node>
                                           <node concept="2OqwBi" id="ut" role="37wK5m">
                                             <node concept="liA8E" id="uD" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getContainmentLink()" resolve="getContainmentLink" />
                                               <node concept="cd27G" id="uG" role="lGtFl">
                                                 <node concept="3u3nmq" id="uH" role="cd27D">
                                                   <property role="3u3nmv" value="3220955710218374757" />
@@ -5224,7 +5224,7 @@
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="uM" role="2OqNvi">
-                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition():int" resolve="getPosition" />
+                                              <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getPosition()" resolve="getPosition" />
                                               <node concept="cd27G" id="uQ" role="lGtFl">
                                                 <node concept="3u3nmq" id="uR" role="cd27D">
                                                   <property role="3u3nmv" value="3220955710218374757" />
@@ -5494,7 +5494,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="2YIFZM" id="w5" role="37wK5m">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
             <node concept="1adDum" id="w7" role="37wK5m">
               <property role="1adDun" value="0x9074634404fd4286L" />
               <node concept="cd27G" id="wc" role="lGtFl">
@@ -5715,7 +5715,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="xE" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getNode():org.jetbrains.mps.openapi.model.SNode" resolve="getNode" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <node concept="cd27G" id="xI" role="lGtFl">
                                 <node concept="3u3nmq" id="xJ" role="cd27D">
                                   <property role="3u3nmv" value="6807933448471123935" />
@@ -5738,7 +5738,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="xM" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getParentNode():org.jetbrains.mps.openapi.model.SNode" resolve="getParentNode" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
                               <node concept="cd27G" id="xQ" role="lGtFl">
                                 <node concept="3u3nmq" id="xR" role="cd27D">
                                   <property role="3u3nmv" value="6807933448471123935" />
@@ -5761,7 +5761,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="xU" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getConcept():org.jetbrains.mps.openapi.language.SAbstractConcept" resolve="getConcept" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
                               <node concept="cd27G" id="xY" role="lGtFl">
                                 <node concept="3u3nmq" id="xZ" role="cd27D">
                                   <property role="3u3nmv" value="6807933448471123935" />
@@ -5784,7 +5784,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="y2" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getLink():org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getLink" />
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <node concept="cd27G" id="y6" role="lGtFl">
                                 <node concept="3u3nmq" id="y7" role="cd27D">
                                   <property role="3u3nmv" value="6807933448471123935" />
@@ -5835,7 +5835,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="ym" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference):void" resolve="setBreakingNode" />
+                              <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                               <node concept="1dyn4i" id="yq" role="37wK5m">
                                 <property role="1dyqJU" value="canBeChildBreakingPoint" />
                                 <node concept="2ShNRf" id="ys" role="1dyrYi">

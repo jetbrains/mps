@@ -43,6 +43,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMVarArgType" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodeId" />
+    <classNode dependClassName="jetbrains.mps.smodel.StringBasedIdForJavaStubMethods" />
     <classNode dependClassName="jetbrains.mps.util.NameUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
   </dependency>

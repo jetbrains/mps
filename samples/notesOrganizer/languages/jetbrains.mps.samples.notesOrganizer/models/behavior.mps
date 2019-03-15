@@ -142,7 +142,7 @@
                         <ref role="3VsUkX" to="z60i:~Color" resolve="Color" />
                       </node>
                       <node concept="liA8E" id="3o4bEdkAodE" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Class.getField(java.lang.String):java.lang.reflect.Field" resolve="getField" />
+                        <ref role="37wK5l" to="wyt6:~Class.getField(java.lang.String)" resolve="getField" />
                         <node concept="37vLTw" id="3o4bEdkADda" role="37wK5m">
                           <ref role="3cqZAo" node="3o4bEdkAKCl" resolve="colorName" />
                         </node>
@@ -163,7 +163,7 @@
                             <ref role="3cqZAo" node="3o4bEdkAodB" resolve="field" />
                           </node>
                           <node concept="liA8E" id="3o4bEdkArzf" role="2OqNvi">
-                            <ref role="37wK5l" to="t6h5:~Field.get(java.lang.Object):java.lang.Object" resolve="get" />
+                            <ref role="37wK5l" to="t6h5:~Field.get(java.lang.Object)" resolve="get" />
                             <node concept="3VsKOn" id="3o4bEdkArzg" role="37wK5m">
                               <ref role="3VsUkX" to="z60i:~Color" resolve="Color" />
                             </node>

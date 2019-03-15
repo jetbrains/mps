@@ -259,7 +259,7 @@
                         <ref role="3cqZAo" node="75IEcLE0Uei" resolve="s" />
                       </node>
                       <node concept="liA8E" id="75IEcLE0Uer" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                        <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                       </node>
                     </node>
                   </node>
@@ -287,7 +287,7 @@
                       <ref role="3cqZAo" node="25RNw_CdazF" resolve="s" />
                     </node>
                     <node concept="liA8E" id="25RNw_CdazL" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                      <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                     </node>
                   </node>
                 </node>

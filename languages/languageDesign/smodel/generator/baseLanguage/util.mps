@@ -778,7 +778,7 @@
         <node concept="3cpWs6" id="h3TWPdf" role="3cqZAp">
           <node concept="2YIFZM" id="h3TWTwb" role="3cqZAk">
             <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-            <ref role="37wK5l" to="18ew:~NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode):java.lang.String" resolve="nodeFQName" />
+            <ref role="37wK5l" to="18ew:~NameUtil.nodeFQName(org.jetbrains.mps.openapi.model.SNode)" resolve="nodeFQName" />
             <node concept="37vLTw" id="2BHiRxgm9VQ" role="37wK5m">
               <ref role="3cqZAo" node="h3TWL3l" resolve="concept" />
             </node>

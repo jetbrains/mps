@@ -23,6 +23,6 @@ public class ShowUserGuideAction extends ShowSiteAction {
   }
 
   protected String getSiteURL() {
-    return DocumentationHelper.getConfluenceBase() + "MPS+User%27s+Guide";
+    return DocumentationHelper.getConfluenceBase() + "mps-user-s-guide.html";
   }
 }

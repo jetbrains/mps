@@ -572,11 +572,11 @@
                             </node>
                             <node concept="2OqwBi" id="2fKiB6PjtBp" role="10QFUP">
                               <node concept="2YIFZM" id="2fKiB6PjtBq" role="2Oq$k0">
-                                <ref role="37wK5l" to="7x5y:~Charset.availableCharsets():java.util.SortedMap" resolve="availableCharsets" />
+                                <ref role="37wK5l" to="7x5y:~Charset.availableCharsets()" resolve="availableCharsets" />
                                 <ref role="1Pybhc" to="7x5y:~Charset" resolve="Charset" />
                               </node>
                               <node concept="liA8E" id="2fKiB6PjtBr" role="2OqNvi">
-                                <ref role="37wK5l" to="33ny:~SortedMap.keySet():java.util.Set" resolve="keySet" />
+                                <ref role="37wK5l" to="33ny:~SortedMap.keySet()" resolve="keySet" />
                               </node>
                             </node>
                           </node>
@@ -1703,7 +1703,7 @@
               <node concept="2OqwBi" id="1wEcoXjJxGC" role="3clFbG">
                 <node concept="ub8z3" id="1wEcoXjJxGG" role="2Oq$k0" />
                 <node concept="liA8E" id="1wEcoXjJxGE" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="1wEcoXjJxGF" role="37wK5m">
                     <property role="Xl_RC" value="\&quot;" />
                   </node>
@@ -1743,7 +1743,7 @@
               <node concept="tyxLq" id="1wEcoXjJxHl" role="2OqNvi">
                 <node concept="2YIFZM" id="1wEcoXjJxHm" role="tz02z">
                   <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <ref role="37wK5l" to="18ew:~NameUtil.stripQuotes(java.lang.String,java.lang.String,java.lang.String):java.lang.String" resolve="stripQuotes" />
+                  <ref role="37wK5l" to="18ew:~NameUtil.stripQuotes(java.lang.String,java.lang.String,java.lang.String)" resolve="stripQuotes" />
                   <node concept="ub8z3" id="1wEcoXjJxHt" role="37wK5m" />
                   <node concept="Xl_RD" id="1wEcoXjJxHo" role="37wK5m">
                     <property role="Xl_RC" value="\&quot;" />

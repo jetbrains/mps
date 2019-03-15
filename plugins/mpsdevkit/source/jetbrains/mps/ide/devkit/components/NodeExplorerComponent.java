@@ -145,6 +145,9 @@ public class NodeExplorerComponent extends JPanel implements Disposable {
           myInitialized = true;
         }
       });
+      for (SNode child : n.getChildren()) {
+        treeNode.add(new SNodeTreeNode(child, child.getContainmentLink().getName()));
+      }
     }
 
     @Override

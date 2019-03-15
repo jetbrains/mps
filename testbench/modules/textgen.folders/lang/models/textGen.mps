@@ -96,7 +96,7 @@
       <node concept="3clFbS" id="3bBSY7NOpYP" role="2VODD2">
         <node concept="3clFbF" id="3bBSY7NODU9" role="3cqZAp">
           <node concept="2YIFZM" id="3bBSY7NOEkr" role="3clFbG">
-            <ref role="37wK5l" to="18ew:~FileUtil.getNameWithoutExtension(java.lang.String):java.lang.String" resolve="getNameWithoutExtension" />
+            <ref role="37wK5l" to="18ew:~FileUtil.getNameWithoutExtension(java.lang.String)" resolve="getNameWithoutExtension" />
             <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
             <node concept="2OqwBi" id="3bBSY7NOEJy" role="37wK5m">
               <node concept="117lpO" id="3bBSY7NOExs" role="2Oq$k0" />
@@ -124,7 +124,7 @@
       <node concept="3clFbS" id="3bBSY7NOFOj" role="2VODD2">
         <node concept="3clFbF" id="3bBSY7NOG0Q" role="3cqZAp">
           <node concept="2YIFZM" id="3bBSY7NOG9U" role="3clFbG">
-            <ref role="37wK5l" to="18ew:~FileUtil.getExtension(java.lang.String):java.lang.String" resolve="getExtension" />
+            <ref role="37wK5l" to="18ew:~FileUtil.getExtension(java.lang.String)" resolve="getExtension" />
             <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
             <node concept="2OqwBi" id="3bBSY7NOGwJ" role="37wK5m">
               <node concept="117lpO" id="3bBSY7NOGjI" role="2Oq$k0" />

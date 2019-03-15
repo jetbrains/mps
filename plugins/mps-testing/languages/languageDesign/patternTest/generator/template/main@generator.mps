@@ -302,7 +302,7 @@
                     <node concept="2OqwBi" id="xtlewLP02J" role="3clFbG">
                       <node concept="2OqwBi" id="2n9zn0CqNgX" role="2Oq$k0">
                         <node concept="liA8E" id="2n9zn0CqNgY" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModel.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
+                          <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
                         </node>
                         <node concept="2JrnkZ" id="2n9zn0CqNgZ" role="2Oq$k0">
                           <node concept="2OqwBi" id="2n9zn0CqNh0" role="2JrQYb">
@@ -312,7 +312,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="xtlewLP02Q" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                        <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                       </node>
                     </node>
                   </node>
@@ -359,11 +359,11 @@
                 <ref role="37wK5l" to="tp6m:e$hNri9Pga" resolve="getProject" />
               </node>
               <node concept="liA8E" id="5UhD89E22By" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
               </node>
             </node>
             <node concept="liA8E" id="5UhD89E24C1" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+              <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
               <node concept="2ShNRf" id="5UhD89E2goq" role="37wK5m">
                 <node concept="YeOm9" id="5UhD89E2igC" role="2ShVmc">
                   <node concept="1Y3b0j" id="5UhD89E2igF" role="YeSDq">
@@ -437,7 +437,7 @@
                                 <ref role="3cqZAo" node="1mO8VfSNZVE" resolve="pattern" />
                               </node>
                               <node concept="liA8E" id="1mO8VfSOjWk" role="2OqNvi">
-                                <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.match(org.jetbrains.mps.openapi.model.SNode):boolean" resolve="match" />
+                                <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.match(org.jetbrains.mps.openapi.model.SNode)" resolve="match" />
                                 <node concept="37vLTw" id="6L8Fg_wJ8$5" role="37wK5m">
                                   <ref role="3cqZAo" node="1mO8VfSNZVu" resolve="nodeToMatch" />
                                 </node>
@@ -448,7 +448,7 @@
                         <node concept="3clFbF" id="1043xPhxvLH" role="3cqZAp">
                           <node concept="2YIFZM" id="1043xPhxx$L" role="3clFbG">
                             <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
-                            <ref role="37wK5l" to="rjhg:~Assert.assertTrue(java.lang.String,boolean):void" resolve="assertTrue" />
+                            <ref role="37wK5l" to="rjhg:~Assert.assertTrue(java.lang.String,boolean)" resolve="assertTrue" />
                             <node concept="Xl_RD" id="1043xPhxy0V" role="37wK5m">
                               <property role="Xl_RC" value="Pattern match expected" />
                             </node>
@@ -478,7 +478,7 @@
                               <node concept="3clFbF" id="1043xPhxQR2" role="gfFT$">
                                 <node concept="2YIFZM" id="1043xPhxQRT" role="3clFbG">
                                   <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
-                                  <ref role="37wK5l" to="rjhg:~Assert.assertFalse(java.lang.String,boolean):void" resolve="assertFalse" />
+                                  <ref role="37wK5l" to="rjhg:~Assert.assertFalse(java.lang.String,boolean)" resolve="assertFalse" />
                                   <node concept="Xl_RD" id="1043xPhxQSP" role="37wK5m">
                                     <property role="Xl_RC" value="Unexpected pattern match" />
                                   </node>
@@ -496,7 +496,7 @@
                               <ref role="3cqZAo" node="1mO8VfSNZVE" resolve="pattern" />
                             </node>
                             <node concept="liA8E" id="1mO8VfSNZX8" role="2OqNvi">
-                              <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.getMatchedNode(java.lang.String):org.jetbrains.mps.openapi.model.SNode" resolve="getMatchedNode" />
+                              <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.getMatchedNode(java.lang.String)" resolve="getMatchedNode" />
                               <node concept="Xl_RD" id="1mO8VfSNZX9" role="37wK5m">
                                 <property role="Xl_RC" value="" />
                                 <node concept="17Uvod" id="1mO8VfSNZXa" role="lGtFl">
@@ -636,7 +636,7 @@
                               <ref role="3cqZAo" node="1mO8VfSNZVE" resolve="pattern" />
                             </node>
                             <node concept="liA8E" id="1mO8VfSO59H" role="2OqNvi">
-                              <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.getMatchedProperty(java.lang.String):java.lang.String" resolve="getMatchedProperty" />
+                              <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.getMatchedProperty(java.lang.String)" resolve="getMatchedProperty" />
                               <node concept="Xl_RD" id="1mO8VfSO59I" role="37wK5m">
                                 <property role="Xl_RC" value="" />
                                 <node concept="17Uvod" id="1mO8VfSO59J" role="lGtFl">
@@ -680,7 +680,7 @@
                                       <ref role="3cqZAo" node="1mO8VfSNZVE" resolve="pattern" />
                                     </node>
                                     <node concept="liA8E" id="1mO8VfSOfDD" role="2OqNvi">
-                                      <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.getMatchedList(java.lang.String):java.util.List" resolve="getMatchedList" />
+                                      <ref role="37wK5l" to="7jhi:~DefaultMatchingPattern.getMatchedList(java.lang.String)" resolve="getMatchedList" />
                                       <node concept="Xl_RD" id="1mO8VfSOfDE" role="37wK5m">
                                         <property role="Xl_RC" value="" />
                                         <node concept="17Uvod" id="1mO8VfSOfDF" role="lGtFl">
@@ -713,7 +713,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="1043xPh_hmH" role="2OqNvi">
-                                    <ref role="37wK5l" to="33ny:~List.iterator():java.util.Iterator" resolve="iterator" />
+                                    <ref role="37wK5l" to="33ny:~List.iterator()" resolve="iterator" />
                                   </node>
                                 </node>
                                 <node concept="3uibUv" id="1mO8VfSOfEF" role="1tU5fm">
@@ -735,7 +735,7 @@
                                   <ref role="3cqZAo" node="1mO8VfSOfDy" resolve="listIt" />
                                 </node>
                                 <node concept="liA8E" id="1043xPh_WeP" role="2OqNvi">
-                                  <ref role="37wK5l" to="33ny:~Iterator.next():java.lang.Object" resolve="next" />
+                                  <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                                 </node>
                               </node>
                               <node concept="1WS0z7" id="1043xPh_GTa" role="lGtFl">

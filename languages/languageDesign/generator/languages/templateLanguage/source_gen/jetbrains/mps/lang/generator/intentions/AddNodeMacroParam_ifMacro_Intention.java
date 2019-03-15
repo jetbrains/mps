@@ -80,7 +80,7 @@ public final class AddNodeMacroParam_ifMacro_Intention extends AbstractIntention
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Add IF macro for node." + MacroIntentionsUtil.getPresentaion(myParameter);
+      return "Add IF macro for node." + MacroIntentionsUtil.getPresentation(myParameter);
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

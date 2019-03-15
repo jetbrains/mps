@@ -199,7 +199,7 @@
               <ref role="3cqZAo" node="hS9mpR8" resolve="frame" />
             </node>
             <node concept="liA8E" id="hS9mpRg" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JFrame.setDefaultCloseOperation(int):void" resolve="setDefaultCloseOperation" />
+              <ref role="37wK5l" to="dxuu:~JFrame.setDefaultCloseOperation(int)" resolve="setDefaultCloseOperation" />
               <node concept="10M0yZ" id="hS9mpRh" role="37wK5m">
                 <ref role="1PxDUh" to="dxuu:~JFrame" resolve="JFrame" />
                 <ref role="3cqZAo" to="dxuu:~JFrame.EXIT_ON_CLOSE" resolve="EXIT_ON_CLOSE" />
@@ -218,7 +218,7 @@
                 <ref role="3cqZAo" node="hS9mpR8" resolve="frame" />
               </node>
               <node concept="liA8E" id="hS9mpRn" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~JFrame.getContentPane():java.awt.Container" resolve="getContentPane" />
+                <ref role="37wK5l" to="dxuu:~JFrame.getContentPane()" resolve="getContentPane" />
               </node>
             </node>
           </node>
@@ -229,7 +229,7 @@
               <ref role="3cqZAo" node="hS9mpRj" resolve="container" />
             </node>
             <node concept="liA8E" id="hS9mpRr" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Container.setLayout(java.awt.LayoutManager):void" resolve="setLayout" />
+              <ref role="37wK5l" to="z60i:~Container.setLayout(java.awt.LayoutManager)" resolve="setLayout" />
               <node concept="2ShNRf" id="hS9mpRs" role="37wK5m">
                 <node concept="1pGfFk" id="hS9mpRt" role="2ShVmc">
                   <ref role="37wK5l" to="z60i:~FlowLayout.&lt;init&gt;()" resolve="FlowLayout" />
@@ -244,7 +244,7 @@
               <ref role="3cqZAo" node="hS9mpRj" resolve="container" />
             </node>
             <node concept="liA8E" id="hS9mpRx" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Component.add(java.awt.PopupMenu):void" resolve="add" />
+              <ref role="37wK5l" to="z60i:~Component.add(java.awt.PopupMenu)" resolve="add" />
               <node concept="10Nm6u" id="hS9mpRy" role="37wK5m">
                 <node concept="1sPUBX" id="1WfddY$XIB8" role="lGtFl">
                   <ref role="v9R2y" node="hS9n23H" resolve="switch_JComponentByElementName" />
@@ -288,7 +288,7 @@
               <ref role="3cqZAo" node="hS9mpR8" resolve="frame" />
             </node>
             <node concept="liA8E" id="hS9mpRH" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Window.pack():void" resolve="pack" />
+              <ref role="37wK5l" to="z60i:~Window.pack()" resolve="pack" />
             </node>
           </node>
         </node>
@@ -298,7 +298,7 @@
               <ref role="3cqZAo" node="hS9mpR8" resolve="frame" />
             </node>
             <node concept="liA8E" id="hS9mpRL" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Window.setLocationRelativeTo(java.awt.Component):void" resolve="setLocationRelativeTo" />
+              <ref role="37wK5l" to="z60i:~Window.setLocationRelativeTo(java.awt.Component)" resolve="setLocationRelativeTo" />
               <node concept="10Nm6u" id="hS9mpRM" role="37wK5m" />
             </node>
           </node>
@@ -309,7 +309,7 @@
               <ref role="3cqZAo" node="hS9mpR8" resolve="frame" />
             </node>
             <node concept="liA8E" id="hS9mpRQ" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Window.setVisible(boolean):void" resolve="setVisible" />
+              <ref role="37wK5l" to="z60i:~Window.setVisible(boolean)" resolve="setVisible" />
               <node concept="3clFbT" id="hS9mpRR" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
@@ -347,7 +347,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="hS9n23T" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                 <node concept="Xl_RD" id="hS9n23U" role="37wK5m">
                   <property role="Xl_RC" value="button" />
                 </node>
@@ -377,7 +377,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="hS9n246" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                 <node concept="Xl_RD" id="hS9n247" role="37wK5m">
                   <property role="Xl_RC" value="label" />
                 </node>

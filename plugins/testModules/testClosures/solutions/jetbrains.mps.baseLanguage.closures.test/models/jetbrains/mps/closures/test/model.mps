@@ -361,7 +361,7 @@
               <ref role="3cqZAo" node="6eup$H2Z1sy" resolve="sessionObjects" />
             </node>
             <node concept="liA8E" id="6eup$H2Z2Bu" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object):java.lang.Object" resolve="put" />
+              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
               <node concept="37vLTw" id="2BHiRxglBz_" role="37wK5m">
                 <ref role="3cqZAo" node="6eup$H2YtCz" resolve="key" />
               </node>
@@ -402,7 +402,7 @@
               <ref role="3cqZAo" node="6eup$H2Z1sy" resolve="sessionObjects" />
             </node>
             <node concept="liA8E" id="6eup$H2Z2BS" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object):java.lang.Object" resolve="get" />
+              <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
               <node concept="37vLTw" id="2BHiRxglyI4" role="37wK5m">
                 <ref role="3cqZAo" node="6eup$H2YtCM" resolve="key" />
               </node>
@@ -504,7 +504,7 @@
         <node concept="3vwNmj" id="6eup$H2Z9Ct" role="3cqZAp">
           <node concept="2YIFZM" id="6eup$H2Z9Cx" role="3vwVQn">
             <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-            <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):boolean" resolve="matchNodes" />
+            <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
             <node concept="37vLTw" id="2BHiRxglCz4" role="37wK5m">
               <ref role="3cqZAo" node="6eup$H2Z9mI" resolve="expected" />
             </node>
@@ -868,7 +868,7 @@
         <node concept="3vwNmj" id="5xREo5PH8yW" role="3cqZAp">
           <node concept="2YIFZM" id="5xREo5PH8yX" role="3vwVQn">
             <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-            <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode):boolean" resolve="matchNodes" />
+            <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
             <node concept="37vLTw" id="2BHiRxgm6mm" role="37wK5m">
               <ref role="3cqZAo" node="5xREo5PH8yB" resolve="expected" />
             </node>

@@ -301,7 +301,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3vXGXT8byIE" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.isEmpty():boolean" resolve="isEmpty" />
+              <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
             </node>
           </node>
         </node>
@@ -338,7 +338,7 @@
                   <node concept="1pGfFk" id="6cqWk79Eg9z" role="2ShVmc">
                     <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="LogHandler" />
                     <node concept="2YIFZM" id="6cqWk79Eg9$" role="37wK5m">
-                      <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class):org.apache.log4j.Logger" resolve="getLogger" />
+                      <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
                       <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
                       <node concept="3VsKOn" id="6cqWk79Eg9_" role="37wK5m">
                         <ref role="3VsUkX" to="tken:3HwLahs69DJ" resolve="ModuleLoader" />

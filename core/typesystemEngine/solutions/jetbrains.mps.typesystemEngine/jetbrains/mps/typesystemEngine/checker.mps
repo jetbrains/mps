@@ -219,10 +219,10 @@
           <node concept="2OqwBi" id="4Et1D9aUT$F" role="3clFbG">
             <node concept="2YIFZM" id="4Et1D9aUT$G" role="2Oq$k0">
               <ref role="1Pybhc" to="u78q:~TypeContextManager" resolve="TypeContextManager" />
-              <ref role="37wK5l" to="u78q:~TypeContextManager.getInstance():jetbrains.mps.typesystem.inference.TypeContextManager" resolve="getInstance" />
+              <ref role="37wK5l" to="u78q:~TypeContextManager.getInstance()" resolve="getInstance" />
             </node>
             <node concept="liA8E" id="4Et1D9aUT$H" role="2OqNvi">
-              <ref role="37wK5l" to="u78q:~TypeContextManager.runTypeCheckingAction(jetbrains.mps.typesystem.inference.ITypeContextOwner,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.ITypechecking$Action):void" resolve="runTypeCheckingAction" />
+              <ref role="37wK5l" to="u78q:~TypeContextManager.runTypeCheckingAction(jetbrains.mps.typesystem.inference.ITypeContextOwner,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.ITypechecking$Action)" resolve="runTypeCheckingAction" />
               <node concept="37vLTw" id="63oasX2duNz" role="37wK5m">
                 <ref role="3cqZAo" node="63oasX2du_R" resolve="myContextOwner" />
               </node>
@@ -292,7 +292,7 @@
                         <ref role="3cqZAo" node="63oasX2dnym" resolve="typeContext" />
                       </node>
                       <node concept="liA8E" id="63oasX2dsrZ" role="2OqNvi">
-                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.checkRootAndGetErrors(boolean):java.util.Set" resolve="checkRootAndGetErrors" />
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.checkRootAndGetErrors(boolean)" resolve="checkRootAndGetErrors" />
                         <node concept="3clFbT" id="63oasX2dss0" role="37wK5m">
                           <property role="3clFbU" value="true" />
                         </node>
@@ -386,7 +386,7 @@
                         <ref role="3cqZAo" node="4SGXHKgZsSB" resolve="errorCollector" />
                       </node>
                       <node concept="liA8E" id="IMyJ9JmbgT" role="2OqNvi">
-                        <ref role="37wK5l" to="yyf4:~Consumer.consume(java.lang.Object):void" resolve="consume" />
+                        <ref role="37wK5l" to="yyf4:~Consumer.consume(java.lang.Object)" resolve="consume" />
                         <node concept="37vLTw" id="3RAxiQnE89U" role="37wK5m">
                           <ref role="3cqZAo" node="IMyJ9JmbgX" resolve="it" />
                         </node>

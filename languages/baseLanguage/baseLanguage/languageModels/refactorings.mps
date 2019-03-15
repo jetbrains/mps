@@ -512,7 +512,7 @@
               <ref role="1M0zk5" node="7UcKRu2PUFQ" resolve="usages" />
             </node>
             <node concept="liA8E" id="7UcKRu2Q3l5" role="2OqNvi">
-              <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults():java.util.List" resolve="getSearchResults" />
+              <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults()" resolve="getSearchResults" />
             </node>
           </node>
           <node concept="3clFbS" id="7UcKRu2Q3kZ" role="2LFqv$">
@@ -525,7 +525,7 @@
                     <ref role="2Gs0qQ" node="7UcKRu2Q3kX" resolve="result" />
                   </node>
                   <node concept="liA8E" id="7UcKRu2Q8h3" role="2OqNvi">
-                    <ref role="37wK5l" to="9erk:~SearchResult.getObject():java.lang.Object" resolve="getObject" />
+                    <ref role="37wK5l" to="9erk:~SearchResult.getObject()" resolve="getObject" />
                   </node>
                 </node>
               </node>
@@ -691,7 +691,7 @@
         <node concept="3clFbF" id="59D800tSyfr" role="3cqZAp">
           <node concept="2OqwBi" id="59D800tTr6p" role="3clFbG">
             <node concept="liA8E" id="59D800tTtt2" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable):void" resolve="runReadAction" />
+              <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
               <node concept="1bVj0M" id="59D800tTulR" role="37wK5m">
                 <node concept="3clFbS" id="59D800tTulS" role="1bW5cS">
                   <node concept="3clFbJ" id="7UcKRu2PUFg" role="3cqZAp">
@@ -738,7 +738,7 @@
                                   <node concept="1uHKPH" id="7UcKRu2PUF_" role="2OqNvi" />
                                 </node>
                                 <node concept="liA8E" id="7UcKRu2PUFA" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SReference.getTargetNode():org.jetbrains.mps.openapi.model.SNode" resolve="getTargetNode" />
+                                  <ref role="37wK5l" to="mhbf:~SReference.getTargetNode()" resolve="getTargetNode" />
                                 </node>
                               </node>
                               <node concept="chp4Y" id="714IaVdH0ZC" role="3oSUPX">
@@ -806,7 +806,7 @@
                         <ref role="1M0zk5" node="7UcKRu2PUFQ" resolve="usages" />
                       </node>
                       <node concept="liA8E" id="7UcKRu2PVr4" role="2OqNvi">
-                        <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults():java.util.List" resolve="getSearchResults" />
+                        <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults()" resolve="getSearchResults" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="7UcKRu2PVqj" role="2LFqv$">
@@ -836,7 +836,7 @@
                                 <ref role="2Gs0qQ" node="7UcKRu2PVqh" resolve="result" />
                               </node>
                               <node concept="liA8E" id="7UcKRu2Q8gP" role="2OqNvi">
-                                <ref role="37wK5l" to="9erk:~SearchResult.getObject():java.lang.Object" resolve="getObject" />
+                                <ref role="37wK5l" to="9erk:~SearchResult.getObject()" resolve="getObject" />
                               </node>
                             </node>
                             <node concept="2Rxl7S" id="7UcKRu2PVrZ" role="2OqNvi" />
@@ -850,7 +850,7 @@
             </node>
             <node concept="2OqwBi" id="59D800tTnSL" role="2Oq$k0">
               <node concept="liA8E" id="59D800tTq98" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess():org.jetbrains.mps.openapi.module.ModelAccess" resolve="getModelAccess" />
+                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
               </node>
               <node concept="2OqwBi" id="59D800tSz0c" role="2Oq$k0">
                 <node concept="1fyP_b" id="59D800tTm2x" role="2OqNvi" />
@@ -1008,7 +1008,7 @@
                   <ref role="3cqZAo" node="4uwyJ44usUZ" resolve="curResults" />
                 </node>
                 <node concept="liA8E" id="4uwyJ44usVJ" role="2OqNvi">
-                  <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults():java.util.List" resolve="getSearchResults" />
+                  <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults()" resolve="getSearchResults" />
                 </node>
               </node>
               <node concept="3clFbS" id="4uwyJ44usVw" role="2LFqv$">
@@ -1023,7 +1023,7 @@
                           <ref role="2Gs0qQ" node="4uwyJ44usVu" resolve="result" />
                         </node>
                         <node concept="liA8E" id="4uwyJ44usVX" role="2OqNvi">
-                          <ref role="37wK5l" to="9erk:~SearchResult.getObject():java.lang.Object" resolve="getObject" />
+                          <ref role="37wK5l" to="9erk:~SearchResult.getObject()" resolve="getObject" />
                         </node>
                       </node>
                     </node>
@@ -1050,7 +1050,7 @@
                   <ref role="3cqZAo" node="4uwyJ44usUa" resolve="allResults" />
                 </node>
                 <node concept="liA8E" id="4uwyJ44usUy" role="2OqNvi">
-                  <ref role="37wK5l" to="9erk:~SearchResults.addAll(jetbrains.mps.ide.findusages.model.SearchResults):void" resolve="addAll" />
+                  <ref role="37wK5l" to="9erk:~SearchResults.addAll(jetbrains.mps.ide.findusages.model.SearchResults)" resolve="addAll" />
                   <node concept="37vLTw" id="3GM_nagTt8z" role="37wK5m">
                     <ref role="3cqZAo" node="4uwyJ44usUZ" resolve="curResults" />
                   </node>
@@ -1311,7 +1311,7 @@
               <ref role="2$JaeB" to="tpeg:hRek0zv" resolve="ExactMethodUsages" />
             </node>
             <node concept="zAVLb" id="2DpPExh8v1q" role="1C5ry4">
-              <ref role="2$JaeB" to="tya3:hReyrfg" resolve="ImplementingMethods" />
+              <ref role="2$JaeB" to="tya3:hReyrfg" resolve="OverridingMethods" />
             </node>
             <node concept="2OqwBi" id="1KbO_aWRtpm" role="2GiN3o">
               <node concept="50NuE" id="1KbO_aWRtaS" role="2Oq$k0" />

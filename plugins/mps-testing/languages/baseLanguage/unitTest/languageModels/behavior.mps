@@ -864,7 +864,7 @@
         <node concept="3clFbF" id="4wqDzu9Tn7U" role="3cqZAp">
           <node concept="2YIFZM" id="4wqDzu9TnbM" role="3clFbG">
             <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-            <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String):java.lang.String" resolve="toValidCamelIdentifier" />
+            <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String)" resolve="toValidCamelIdentifier" />
             <node concept="2OqwBi" id="5BeGwkd6Q$i" role="37wK5m">
               <node concept="13iPFW" id="5BeGwkd6QlR" role="2Oq$k0" />
               <node concept="3TrcHB" id="5BeGwkd6QNZ" role="2OqNvi">
@@ -945,7 +945,7 @@
                 <node concept="13iPFW" id="2_tP28kjNFc" role="2JrQYb" />
               </node>
               <node concept="liA8E" id="2_tP28kjNFd" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
               </node>
             </node>
           </node>
@@ -982,11 +982,11 @@
                     <ref role="3cqZAo" node="2_tP28kjNF9" resolve="model" />
                   </node>
                   <node concept="liA8E" id="2_tP28kjMPv" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
+                    <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
                   </node>
                 </node>
                 <node concept="liA8E" id="2_tP28kjNit" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModelName.getLongName():java.lang.String" resolve="getLongName" />
+                  <ref role="37wK5l" to="mhbf:~SModelName.getLongName()" resolve="getLongName" />
                 </node>
               </node>
             </node>
@@ -1006,7 +1006,7 @@
       <node concept="3clFbS" id="hSQIE8r" role="3clF47">
         <node concept="3cpWs6" id="4wqDzu9T4Y0" role="3cqZAp">
           <node concept="2YIFZM" id="4wqDzu9T5Aa" role="3cqZAk">
-            <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String):java.lang.String" resolve="toValidCamelIdentifier" />
+            <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String)" resolve="toValidCamelIdentifier" />
             <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
             <node concept="3cpWs3" id="hSQJJ0r" role="37wK5m">
               <node concept="2OqwBi" id="hSQJJ0s" role="3uHU7B">

@@ -249,7 +249,7 @@
                       <ref role="3VsUkX" node="27Aw0E1zDTz" resolve="Cls" />
                     </node>
                     <node concept="liA8E" id="3m6iW5ABPby" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Class.getSimpleName():java.lang.String" resolve="getSimpleName" />
+                      <ref role="37wK5l" to="wyt6:~Class.getSimpleName()" resolve="getSimpleName" />
                     </node>
                   </node>
                 </node>
@@ -354,10 +354,10 @@
             </node>
             <node concept="2OqwBi" id="4z6xDh$Xb8G" role="33vP2m">
               <node concept="1rXfSq" id="4z6xDh$Xb5O" role="2Oq$k0">
-                <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
               </node>
               <node concept="liA8E" id="4z6xDh$XbhV" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Class.getResourceAsStream(java.lang.String):java.io.InputStream" resolve="getResourceAsStream" />
+                <ref role="37wK5l" to="wyt6:~Class.getResourceAsStream(java.lang.String)" resolve="getResourceAsStream" />
                 <node concept="37vLTw" id="27Aw0E1zpoe" role="37wK5m">
                   <ref role="3cqZAo" node="4z6xDh$XaQ6" resolve="myPath" />
                 </node>
@@ -368,7 +368,7 @@
         <node concept="3cpWs6" id="4z6xDh$Xb_H" role="3cqZAp">
           <node concept="2YIFZM" id="4z6xDh$Xb07" role="3cqZAk">
             <ref role="1Pybhc" to="oqcp:~ImageIO" resolve="ImageIO" />
-            <ref role="37wK5l" to="oqcp:~ImageIO.read(java.io.InputStream):java.awt.image.BufferedImage" resolve="read" />
+            <ref role="37wK5l" to="oqcp:~ImageIO.read(java.io.InputStream)" resolve="read" />
             <node concept="37vLTw" id="4z6xDh$Xb08" role="37wK5m">
               <ref role="3cqZAo" node="4z6xDh$XaZW" resolve="imageStream" />
             </node>

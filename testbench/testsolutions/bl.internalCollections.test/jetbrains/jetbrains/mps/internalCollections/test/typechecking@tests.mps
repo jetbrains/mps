@@ -392,7 +392,7 @@
               <node concept="1rXfSq" id="WuSHxkqul1" role="3clFbG">
                 <ref role="37wK5l" node="WuSHxkqtql" resolve="acceptTwoSeqs" />
                 <node concept="2YIFZM" id="WuSHxkqul2" role="37wK5m">
-                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                   <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                   <node concept="3cmrfG" id="WuSHxkqul3" role="37wK5m">
                     <property role="3cmrfH" value="5" />
@@ -410,7 +410,7 @@
                   <ref role="37wK5l" node="WuSHxkqtql" resolve="acceptTwoSeqs" />
                   <node concept="2YIFZM" id="WuSHxkqul9" role="37wK5m">
                     <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                     <node concept="3cmrfG" id="WuSHxkqula" role="37wK5m">
                       <property role="3cmrfH" value="5" />
                     </node>
@@ -426,7 +426,7 @@
                 <ref role="37wK5l" node="WuSHxkqtwI" resolve="acceptTwoSeqsRaw" />
                 <node concept="2YIFZM" id="3rohxPV7IJJ" role="37wK5m">
                   <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                   <node concept="3cmrfG" id="3rohxPV7IJK" role="37wK5m">
                     <property role="3cmrfH" value="5" />
                   </node>
@@ -446,7 +446,7 @@
                   <ref role="37wK5l" node="WuSHxkqtwI" resolve="acceptTwoSeqsRaw" />
                   <node concept="2YIFZM" id="WuSHxkqull" role="37wK5m">
                     <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...):java.util.List" resolve="asList" />
+                    <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                     <node concept="3cmrfG" id="WuSHxkqulm" role="37wK5m">
                       <property role="3cmrfH" value="5" />
                     </node>
@@ -630,7 +630,7 @@
                                         <ref role="3cqZAo" node="5xvSMnuGPDY" resolve="it" />
                                       </node>
                                       <node concept="liA8E" id="5xvSMnuGPDX" role="2OqNvi">
-                                        <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                                        <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                                       </node>
                                     </node>
                                   </node>

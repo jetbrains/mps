@@ -441,10 +441,10 @@
         <node concept="3clFbF" id="1DlxheblRbZ" role="3cqZAp">
           <node concept="2OqwBi" id="1DlxheblTWq" role="3clFbG">
             <node concept="1rXfSq" id="1DlxheblRbY" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+              <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
             </node>
             <node concept="liA8E" id="1DlxheblX9P" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="1DlxheblXhv" role="37wK5m">
                 <ref role="3cqZAo" node="1DlxheblLVm" resolve="myDecoratorsContainer" />
               </node>
@@ -483,7 +483,7 @@
                     <node concept="3clFbS" id="1DlxheaCWuQ" role="3clF47">
                       <node concept="3clFbF" id="1DlxheaCWuU" role="3cqZAp">
                         <node concept="3nyPlj" id="1DlxheaCWuT" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="1DlxheaCWuS" role="37wK5m">
                             <ref role="3cqZAo" node="1DlxheaCWuL" resolve="configuration" />
                           </node>
@@ -495,9 +495,9 @@
                             <ref role="3cqZAo" node="1DlxheaCWuL" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaDDpz" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaDDt$" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="1DlxheaDDvV" role="37wK5m">
                                 <ref role="3cqZAo" node="3HZBsOQg6A8" resolve="hasError" />
@@ -512,7 +512,7 @@
                                             <ref role="3cqZAo" node="1DlxheaD42z" resolve="errorDecorator" />
                                           </node>
                                           <node concept="liA8E" id="1DlxheaDLUS" role="2OqNvi">
-                                            <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object):void" resolve="setItem" />
+                                            <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object)" resolve="setItem" />
                                             <node concept="10M0yZ" id="1DlxheaDMQy" role="37wK5m">
                                               <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
                                               <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
@@ -526,7 +526,7 @@
                                         <ref role="3cqZAo" node="3HZBsOQg6A8" resolve="hasError" />
                                       </node>
                                       <node concept="liA8E" id="1DlxheaDH8Y" role="2OqNvi">
-                                        <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                        <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                       </node>
                                     </node>
                                     <node concept="9aQIb" id="1DlxheaDHBQ" role="9aQIa">
@@ -537,7 +537,7 @@
                                               <ref role="3cqZAo" node="1DlxheaD42z" resolve="errorDecorator" />
                                             </node>
                                             <node concept="liA8E" id="1DlxheaDTQ2" role="2OqNvi">
-                                              <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object):void" resolve="setItem" />
+                                              <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object)" resolve="setItem" />
                                               <node concept="10Nm6u" id="1DlxheaDUZO" role="37wK5m" />
                                             </node>
                                           </node>
@@ -557,10 +557,10 @@
                             <ref role="3cqZAo" node="1DlxheaCWuL" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaDWGq" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaDWGr" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <node concept="37vLTw" id="1DlxheaE1p9" role="37wK5m">
                                 <ref role="3cqZAo" node="3HZBsOQg6Ag" resolve="isSelected" />
                               </node>
@@ -574,7 +574,7 @@
                                             <ref role="3cqZAo" node="1DlxheaD9Q4" resolve="selectionDecorator" />
                                           </node>
                                           <node concept="liA8E" id="1DlxheaDWG$" role="2OqNvi">
-                                            <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object):void" resolve="setItem" />
+                                            <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object)" resolve="setItem" />
                                             <node concept="10M0yZ" id="1DlxheaDWG_" role="37wK5m">
                                               <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
                                               <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
@@ -588,7 +588,7 @@
                                         <ref role="3cqZAo" node="3HZBsOQg6Ag" resolve="isSelected" />
                                       </node>
                                       <node concept="liA8E" id="1DlxheaDWGC" role="2OqNvi">
-                                        <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                        <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                       </node>
                                     </node>
                                     <node concept="9aQIb" id="1DlxheaDWGD" role="9aQIa">
@@ -599,7 +599,7 @@
                                               <ref role="3cqZAo" node="1DlxheaD9Q4" resolve="selectionDecorator" />
                                             </node>
                                             <node concept="liA8E" id="1DlxheaDWGI" role="2OqNvi">
-                                              <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object):void" resolve="setItem" />
+                                              <ref role="37wK5l" to="qoc8:~ObservableSingleItemList.setItem(java.lang.Object)" resolve="setItem" />
                                               <node concept="10Nm6u" id="1DlxheaDWGJ" role="37wK5m" />
                                             </node>
                                           </node>
@@ -622,7 +622,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1DlxheaCVBj" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -660,7 +660,7 @@
                           <ref role="3cqZAo" node="1DlxheblLVm" resolve="myDecoratorsContainer" />
                         </node>
                         <node concept="liA8E" id="1DlxhebmuVV" role="2OqNvi">
-                          <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+                          <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
                         </node>
                       </node>
                     </node>
@@ -814,7 +814,7 @@
                     <node concept="3clFbS" id="1DlxheaEhYg" role="3clF47">
                       <node concept="3clFbF" id="1DlxheaEhYk" role="3cqZAp">
                         <node concept="3nyPlj" id="1DlxheaEhYj" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="1DlxheaEhYi" role="37wK5m">
                             <ref role="3cqZAo" node="1DlxheaEhYb" resolve="configuration" />
                           </node>
@@ -826,9 +826,9 @@
                             <ref role="3cqZAo" node="1DlxheaEhYb" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaGg5f" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaGg5g" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forObservableRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forObservableRole" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="Xjq3P" id="1DlxheaGg5h" role="37wK5m" />
                               <node concept="37vLTw" id="1DlxheaGjL0" role="37wK5m">
@@ -850,10 +850,10 @@
                             <ref role="3cqZAo" node="1DlxheaEhYb" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaEi$Y" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaEiCW" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forObservableRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forObservableRole" />
                               <node concept="Xjq3P" id="1DlxheaEiH0" role="37wK5m" />
                               <node concept="37vLTw" id="1DlxheaEiQF" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaD42z" resolve="errorDecorator" />
@@ -878,7 +878,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1DlxheaEhzV" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -965,7 +965,7 @@
                               <node concept="3clFbS" id="1DlxheaNy87" role="3clF47">
                                 <node concept="3clFbF" id="1DlxheaNy88" role="3cqZAp">
                                   <node concept="3nyPlj" id="1DlxheaNy89" role="3clFbG">
-                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                                     <node concept="37vLTw" id="1DlxheaNy8a" role="37wK5m">
                                       <ref role="3cqZAo" node="1DlxheaNy85" resolve="configuration" />
                                     </node>
@@ -977,9 +977,9 @@
                                       <ref role="3cqZAo" node="1DlxheaNy85" resolve="configuration" />
                                     </node>
                                     <node concept="liA8E" id="1DlxheaNy8e" role="2OqNvi">
-                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                       <node concept="2YIFZM" id="1DlxheaNy8f" role="37wK5m">
-                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                                         <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                                         <node concept="37vLTw" id="1DlxheaNy8g" role="37wK5m">
                                           <ref role="3cqZAo" node="3HZBsOQqEQs" resolve="myValid" />
@@ -990,7 +990,7 @@
                                               <node concept="1rXfSq" id="1DlxheaNy8q" role="3clFbG">
                                                 <ref role="37wK5l" node="3HZBsOQgHV7" resolve="updateSelectionView" />
                                                 <node concept="1rXfSq" id="1DlxheaNy8r" role="37wK5m">
-                                                  <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                  <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                 </node>
                                               </node>
                                             </node>
@@ -1104,7 +1104,7 @@
                               <node concept="3clFbS" id="1DlxheaNdw8" role="3clF47">
                                 <node concept="3clFbF" id="1DlxheaNdw9" role="3cqZAp">
                                   <node concept="3nyPlj" id="1DlxheaNdwa" role="3clFbG">
-                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                                     <node concept="37vLTw" id="1DlxheaNdwb" role="37wK5m">
                                       <ref role="3cqZAo" node="1DlxheaNdw6" resolve="configuration" />
                                     </node>
@@ -1116,9 +1116,9 @@
                                       <ref role="3cqZAo" node="1DlxheaNdw6" resolve="configuration" />
                                     </node>
                                     <node concept="liA8E" id="1DlxheaNdwf" role="2OqNvi">
-                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                       <node concept="2YIFZM" id="1DlxheaNdwg" role="37wK5m">
-                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                                         <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                                         <node concept="37vLTw" id="1DlxheaNdwh" role="37wK5m">
                                           <ref role="3cqZAo" node="3HZBsOQqEQs" resolve="myValid" />
@@ -1129,14 +1129,14 @@
                                               <node concept="2OqwBi" id="1DlxheaNdwr" role="3clFbG">
                                                 <node concept="2OqwBi" id="1DlxheaNdws" role="2Oq$k0">
                                                   <node concept="1rXfSq" id="1DlxheaNdwt" role="2Oq$k0">
-                                                    <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                    <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                   </node>
                                                   <node concept="2OwXpG" id="1DlxheaNdwu" role="2OqNvi">
                                                     <ref role="2Oxat5" node="3HZBsOQqerV" resolve="centerLocation" />
                                                   </node>
                                                 </node>
                                                 <node concept="liA8E" id="1DlxheaNdwv" role="2OqNvi">
-                                                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                                                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                                                   <node concept="1rXfSq" id="1DlxheaNdww" role="37wK5m">
                                                     <ref role="37wK5l" node="3HZBsOQgHQO" resolve="getErrorPoint" />
                                                   </node>
@@ -1250,7 +1250,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3HZBsOQjjCU" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="10M0yZ" id="3HZBsOQjjRk" role="37wK5m">
                 <ref role="1PxDUh" to="4rj2:~Color" resolve="Color" />
                 <ref role="3cqZAo" to="4rj2:~Color.RED" resolve="RED" />
@@ -1331,7 +1331,7 @@
                     <ref role="2Gs0qQ" node="3HZBsOQgHR2" resolve="segment" />
                   </node>
                   <node concept="liA8E" id="3HZBsOQgHR9" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Segment.length():double" resolve="length" />
+                    <ref role="37wK5l" to="g88e:~Segment.length()" resolve="length" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="3HZBsOQgHRa" role="37vLTJ">
@@ -1407,7 +1407,7 @@
                     <ref role="2Gs0qQ" node="3HZBsOQgHRx" resolve="segment" />
                   </node>
                   <node concept="liA8E" id="3HZBsOQgHRD" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Segment.length():double" resolve="length" />
+                    <ref role="37wK5l" to="g88e:~Segment.length()" resolve="length" />
                   </node>
                 </node>
               </node>
@@ -1430,7 +1430,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="3HZBsOQgHRN" role="2OqNvi">
-                        <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                        <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                         <node concept="2OqwBi" id="3HZBsOQgHRO" role="37wK5m">
                           <node concept="2GrUjf" id="3HZBsOQgHRP" role="2Oq$k0">
                             <ref role="2Gs0qQ" node="3HZBsOQgHRx" resolve="segment" />
@@ -1453,7 +1453,7 @@
                           <ref role="3cqZAo" node="3HZBsOQgHRH" resolve="se" />
                         </node>
                         <node concept="liA8E" id="3HZBsOQgHRX" role="2OqNvi">
-                          <ref role="37wK5l" to="g88e:~Vector.length():double" resolve="length" />
+                          <ref role="37wK5l" to="g88e:~Vector.length()" resolve="length" />
                         </node>
                       </node>
                       <node concept="1eOMI4" id="3HZBsOQgHRY" role="3uHU7B">
@@ -1523,7 +1523,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="3HZBsOQgHSp" role="2OqNvi">
-                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                         <node concept="2ShNRf" id="3HZBsOQgHSq" role="37wK5m">
                           <node concept="1pGfFk" id="3HZBsOQgHSr" role="2ShVmc">
                             <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -1606,14 +1606,14 @@
           <node concept="2OqwBi" id="3HZBsOQgHVi" role="3clFbG">
             <node concept="2OqwBi" id="3HZBsOQgHVj" role="2Oq$k0">
               <node concept="liA8E" id="3HZBsOQgHVl" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+                <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
               </node>
               <node concept="37vLTw" id="2HJ7U3LKnh9" role="2Oq$k0">
                 <ref role="3cqZAo" node="2HJ7U3LKk_$" resolve="selectionView" />
               </node>
             </node>
             <node concept="liA8E" id="3HZBsOQgHVm" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.clear():void" resolve="clear" />
+              <ref role="37wK5l" to="33ny:~List.clear()" resolve="clear" />
             </node>
           </node>
         </node>
@@ -1659,13 +1659,13 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1DlxhebolIl" role="2OqNvi">
-                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                       <node concept="2OqwBi" id="1DlxhebonkJ" role="37wK5m">
                         <node concept="37vLTw" id="1Dlxhebom1j" role="2Oq$k0">
                           <ref role="3cqZAo" node="1Dlxhebo4X0" resolve="color" />
                         </node>
                         <node concept="liA8E" id="1DlxheboobS" role="2OqNvi">
-                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                         </node>
                       </node>
                     </node>
@@ -1682,13 +1682,13 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1Dlxhebop3D" role="2OqNvi">
-                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                       <node concept="2OqwBi" id="1Dlxhebop3E" role="37wK5m">
                         <node concept="37vLTw" id="1DlxheboqZ_" role="2Oq$k0">
                           <ref role="3cqZAo" node="1Dlxhebo4Xe" resolve="backgroundColor" />
                         </node>
                         <node concept="liA8E" id="1Dlxhebop3G" role="2OqNvi">
-                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                         </node>
                       </node>
                     </node>
@@ -1701,11 +1701,11 @@
                         <ref role="3cqZAo" node="2HJ7U3LKk_$" resolve="selectionView" />
                       </node>
                       <node concept="liA8E" id="2HJ7U3LPPih" role="2OqNvi">
-                        <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+                        <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
                       </node>
                     </node>
                     <node concept="liA8E" id="2HJ7U3LPQQu" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+                      <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                       <node concept="37vLTw" id="2HJ7U3LPW2w" role="37wK5m">
                         <ref role="3cqZAo" node="2HJ7U3LPW2t" resolve="handleView" />
                       </node>
@@ -1826,13 +1826,13 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1DlxheboDju" role="2OqNvi">
-                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                       <node concept="2OqwBi" id="1DlxheboDjv" role="37wK5m">
                         <node concept="37vLTw" id="1DlxheboDjw" role="2Oq$k0">
                           <ref role="3cqZAo" node="1Dlxhebo4X0" resolve="color" />
                         </node>
                         <node concept="liA8E" id="1DlxheboDjx" role="2OqNvi">
-                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                         </node>
                       </node>
                     </node>
@@ -1849,13 +1849,13 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1DlxheboDjB" role="2OqNvi">
-                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                      <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                       <node concept="2OqwBi" id="1DlxheboDjC" role="37wK5m">
                         <node concept="37vLTw" id="1DlxheboDjD" role="2Oq$k0">
                           <ref role="3cqZAo" node="1Dlxhebo4Xe" resolve="backgroundColor" />
                         </node>
                         <node concept="liA8E" id="1DlxheboDjE" role="2OqNvi">
-                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                         </node>
                       </node>
                     </node>
@@ -1868,11 +1868,11 @@
                         <ref role="3cqZAo" node="2HJ7U3LKk_$" resolve="selectionView" />
                       </node>
                       <node concept="liA8E" id="3HZBsOQgHVM" role="2OqNvi">
-                        <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+                        <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
                       </node>
                     </node>
                     <node concept="liA8E" id="3HZBsOQgHVN" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+                      <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                       <node concept="37vLTw" id="2HJ7U3LQcz3" role="37wK5m">
                         <ref role="3cqZAo" node="2HJ7U3LQ8ee" resolve="handleView" />
                       </node>
@@ -1894,7 +1894,7 @@
                     <ref role="2Gs0qQ" node="3HZBsOQgHVo" resolve="segment" />
                   </node>
                   <node concept="liA8E" id="3HZBsOQgHWp" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Segment.length():double" resolve="length" />
+                    <ref role="37wK5l" to="g88e:~Segment.length()" resolve="length" />
                   </node>
                 </node>
               </node>
@@ -1995,7 +1995,7 @@
         <node concept="3clFbS" id="3HZBsOQqPf_" role="3clF47">
           <node concept="3clFbF" id="3HZBsOQqVE9" role="3cqZAp">
             <node concept="1rXfSq" id="3HZBsOQqVIw" role="3clFbG">
-              <ref role="37wK5l" to="x7mh:~SimpleEventSource.fire(java.lang.Object):void" resolve="fire" />
+              <ref role="37wK5l" to="x7mh:~SimpleEventSource.fire(java.lang.Object)" resolve="fire" />
               <node concept="2ShNRf" id="3HZBsOQqW2y" role="37wK5m">
                 <node concept="1pGfFk" id="3HZBsOQqWgC" role="2ShVmc">
                   <ref role="37wK5l" to="lgza:~PropertyChangeEvent.&lt;init&gt;(java.lang.Object,java.lang.Object)" resolve="PropertyChangeEvent" />
@@ -2191,10 +2191,10 @@
         <node concept="3clFbF" id="3HZBsOQhnXo" role="3cqZAp">
           <node concept="2OqwBi" id="3HZBsOQhnXp" role="3clFbG">
             <node concept="1rXfSq" id="3HZBsOQhnXq" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+              <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
             </node>
             <node concept="liA8E" id="3HZBsOQhnXr" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="3HZBsOQhnXs" role="37wK5m">
                 <ref role="3cqZAo" node="3HZBsOQhmPN" resolve="myFirstLine" />
               </node>
@@ -2204,10 +2204,10 @@
         <node concept="3clFbF" id="3HZBsOQhnX$" role="3cqZAp">
           <node concept="2OqwBi" id="3HZBsOQhnX_" role="3clFbG">
             <node concept="1rXfSq" id="3HZBsOQhnXA" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+              <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
             </node>
             <node concept="liA8E" id="3HZBsOQhnXB" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="3HZBsOQhnXC" role="37wK5m">
                 <ref role="3cqZAo" node="3HZBsOQhndr" resolve="mySecondLine" />
               </node>
@@ -2246,7 +2246,7 @@
                     <node concept="3clFbS" id="2HJ7U3LRamK" role="3clF47">
                       <node concept="3clFbF" id="2HJ7U3LRamO" role="3cqZAp">
                         <node concept="3nyPlj" id="2HJ7U3LRamN" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="2HJ7U3LRamM" role="37wK5m">
                             <ref role="3cqZAo" node="2HJ7U3LRamF" resolve="configuration" />
                           </node>
@@ -2258,10 +2258,10 @@
                             <ref role="3cqZAo" node="2HJ7U3LRamF" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LRcvU" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LRczd" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                               <node concept="37vLTw" id="2HJ7U3LRc_6" role="37wK5m">
                                 <ref role="3cqZAo" node="3HZBsOQhs72" resolve="color" />
                               </node>
@@ -2270,7 +2270,7 @@
                                   <ref role="3cqZAo" node="3HZBsOQhmPN" resolve="myFirstLine" />
                                 </node>
                                 <node concept="liA8E" id="2HJ7U3LReWS" role="2OqNvi">
-                                  <ref role="37wK5l" to="jqfx:~LineView.color():jetbrains.jetpad.model.property.Property" resolve="color" />
+                                  <ref role="37wK5l" to="jqfx:~LineView.color()" resolve="color" />
                                 </node>
                               </node>
                             </node>
@@ -2283,9 +2283,9 @@
                             <ref role="3cqZAo" node="2HJ7U3LRamF" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LSHQw" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LSHTE" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperties(jetbrains.jetpad.model.property.Property,jetbrains.jetpad.model.property.Property):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperties" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperties(jetbrains.jetpad.model.property.Property,jetbrains.jetpad.model.property.Property)" resolve="forProperties" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="2HJ7U3LSHVB" role="37wK5m">
                                 <ref role="3cqZAo" node="2HJ7U3LSwgD" resolve="lineWidth" />
@@ -2295,7 +2295,7 @@
                                   <ref role="3cqZAo" node="3HZBsOQhmPN" resolve="myFirstLine" />
                                 </node>
                                 <node concept="liA8E" id="2HJ7U3LSJhW" role="2OqNvi">
-                                  <ref role="37wK5l" to="jqfx:~LineView.width():jetbrains.jetpad.model.property.Property" resolve="width" />
+                                  <ref role="37wK5l" to="jqfx:~LineView.width()" resolve="width" />
                                 </node>
                               </node>
                             </node>
@@ -2308,10 +2308,10 @@
                             <ref role="3cqZAo" node="2HJ7U3LRamF" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LRhbc" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LRhbd" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                               <node concept="37vLTw" id="2HJ7U3LRhbe" role="37wK5m">
                                 <ref role="3cqZAo" node="3HZBsOQhs72" resolve="color" />
                               </node>
@@ -2320,7 +2320,7 @@
                                   <ref role="3cqZAo" node="3HZBsOQhndr" resolve="mySecondLine" />
                                 </node>
                                 <node concept="liA8E" id="2HJ7U3LRhbh" role="2OqNvi">
-                                  <ref role="37wK5l" to="jqfx:~LineView.color():jetbrains.jetpad.model.property.Property" resolve="color" />
+                                  <ref role="37wK5l" to="jqfx:~LineView.color()" resolve="color" />
                                 </node>
                               </node>
                             </node>
@@ -2333,9 +2333,9 @@
                             <ref role="3cqZAo" node="2HJ7U3LRamF" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LSLzV" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LSLzW" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperties(jetbrains.jetpad.model.property.Property,jetbrains.jetpad.model.property.Property):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperties" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperties(jetbrains.jetpad.model.property.Property,jetbrains.jetpad.model.property.Property)" resolve="forProperties" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="2HJ7U3LSLzX" role="37wK5m">
                                 <ref role="3cqZAo" node="2HJ7U3LSwgD" resolve="lineWidth" />
@@ -2345,7 +2345,7 @@
                                   <ref role="3cqZAo" node="3HZBsOQhndr" resolve="mySecondLine" />
                                 </node>
                                 <node concept="liA8E" id="2HJ7U3LSL$0" role="2OqNvi">
-                                  <ref role="37wK5l" to="jqfx:~LineView.width():jetbrains.jetpad.model.property.Property" resolve="width" />
+                                  <ref role="37wK5l" to="jqfx:~LineView.width()" resolve="width" />
                                 </node>
                               </node>
                             </node>
@@ -2358,9 +2358,9 @@
                             <ref role="3cqZAo" node="2HJ7U3LRamF" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LRlEE" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LRpXP" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="2HJ7U3LRqe8" role="37wK5m">
                                 <ref role="3cqZAo" node="3HZBsOQqerV" resolve="centerLocation" />
@@ -2375,7 +2375,7 @@
                                           <ref role="3cqZAo" node="3HZBsOQqerV" resolve="centerLocation" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LRTmi" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="2HJ7U3LRVc$" role="37wK5m">
@@ -2383,7 +2383,7 @@
                                           <ref role="3cqZAo" node="3HZBsOQj_gD" resolve="segmentLength" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LRWve" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -2400,10 +2400,10 @@
                             <ref role="3cqZAo" node="2HJ7U3LRamF" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LRslZ" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LRsm0" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <node concept="37vLTw" id="2HJ7U3LRv8Y" role="37wK5m">
                                 <ref role="3cqZAo" node="3HZBsOQj_gD" resolve="segmentLength" />
                               </node>
@@ -2417,7 +2417,7 @@
                                           <ref role="3cqZAo" node="3HZBsOQqerV" resolve="centerLocation" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LRXb6" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="2HJ7U3LRXb7" role="37wK5m">
@@ -2425,7 +2425,7 @@
                                           <ref role="3cqZAo" node="3HZBsOQj_gD" resolve="segmentLength" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LRXb9" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -2445,7 +2445,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3LRaY0" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -2496,11 +2496,11 @@
                 <ref role="3cqZAo" node="3HZBsOQhmPN" resolve="myFirstLine" />
               </node>
               <node concept="liA8E" id="3HZBsOQsjpU" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~LineView.start():jetbrains.jetpad.model.property.Property" resolve="start" />
+                <ref role="37wK5l" to="jqfx:~LineView.start()" resolve="start" />
               </node>
             </node>
             <node concept="liA8E" id="3HZBsOQsjpV" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="2ShNRf" id="3HZBsOQsjpW" role="37wK5m">
                 <node concept="1pGfFk" id="3HZBsOQsjpX" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -2542,11 +2542,11 @@
                 <ref role="3cqZAo" node="3HZBsOQhmPN" resolve="myFirstLine" />
               </node>
               <node concept="liA8E" id="3HZBsOQsjq7" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~LineView.end():jetbrains.jetpad.model.property.Property" resolve="end" />
+                <ref role="37wK5l" to="jqfx:~LineView.end()" resolve="end" />
               </node>
             </node>
             <node concept="liA8E" id="3HZBsOQsjq8" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="2ShNRf" id="3HZBsOQsL8O" role="37wK5m">
                 <node concept="1pGfFk" id="3HZBsOQsL8P" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -2588,11 +2588,11 @@
                 <ref role="3cqZAo" node="3HZBsOQhndr" resolve="mySecondLine" />
               </node>
               <node concept="liA8E" id="3HZBsOQsjqd" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~LineView.start():jetbrains.jetpad.model.property.Property" resolve="start" />
+                <ref role="37wK5l" to="jqfx:~LineView.start()" resolve="start" />
               </node>
             </node>
             <node concept="liA8E" id="3HZBsOQsjqe" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="2ShNRf" id="3HZBsOQsOdk" role="37wK5m">
                 <node concept="1pGfFk" id="3HZBsOQsOdl" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -2634,11 +2634,11 @@
                 <ref role="3cqZAo" node="3HZBsOQhndr" resolve="mySecondLine" />
               </node>
               <node concept="liA8E" id="3HZBsOQsjqj" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~LineView.end():jetbrains.jetpad.model.property.Property" resolve="end" />
+                <ref role="37wK5l" to="jqfx:~LineView.end()" resolve="end" />
               </node>
             </node>
             <node concept="liA8E" id="3HZBsOQsjqk" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="2ShNRf" id="3HZBsOQsP2N" role="37wK5m">
                 <node concept="1pGfFk" id="3HZBsOQsP2O" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -2695,10 +2695,10 @@
         <node concept="3clFbF" id="21G88dsmE8a" role="3cqZAp">
           <node concept="2OqwBi" id="21G88dsmE8b" role="3clFbG">
             <node concept="1rXfSq" id="21G88dsmE8c" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.visible():jetbrains.jetpad.model.property.Property" resolve="visible" />
+              <ref role="37wK5l" to="jqfx:~View.visible()" resolve="visible" />
             </node>
             <node concept="liA8E" id="21G88dsmE8d" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="21G88dsmJXX" role="37wK5m">
                 <ref role="3cqZAo" node="21G88dsmGDC" resolve="isVisible" />
               </node>
@@ -2712,11 +2712,11 @@
                 <ref role="3cqZAo" node="3HZBsOQhmPN" resolve="myFirstLine" />
               </node>
               <node concept="liA8E" id="21G88dsmE8j" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~View.visible():jetbrains.jetpad.model.property.Property" resolve="visible" />
+                <ref role="37wK5l" to="jqfx:~View.visible()" resolve="visible" />
               </node>
             </node>
             <node concept="liA8E" id="21G88dsmE8k" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="21G88dsmKGi" role="37wK5m">
                 <ref role="3cqZAo" node="21G88dsmGDC" resolve="isVisible" />
               </node>
@@ -2730,11 +2730,11 @@
                 <ref role="3cqZAo" node="3HZBsOQhndr" resolve="mySecondLine" />
               </node>
               <node concept="liA8E" id="21G88dsmE8q" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~View.visible():jetbrains.jetpad.model.property.Property" resolve="visible" />
+                <ref role="37wK5l" to="jqfx:~View.visible()" resolve="visible" />
               </node>
             </node>
             <node concept="liA8E" id="21G88dsmE8r" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="21G88dsmKtR" role="37wK5m">
                 <ref role="3cqZAo" node="21G88dsmGDC" resolve="isVisible" />
               </node>
@@ -2909,7 +2909,7 @@
                     <node concept="3clFbS" id="1DlxheaHrN$" role="3clF47">
                       <node concept="3clFbF" id="1DlxheaHrNC" role="3cqZAp">
                         <node concept="3nyPlj" id="1DlxheaHrNB" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="1DlxheaHrNA" role="37wK5m">
                             <ref role="3cqZAo" node="1DlxheaHrNv" resolve="configuration" />
                           </node>
@@ -2921,10 +2921,10 @@
                             <ref role="3cqZAo" node="1DlxheaHrNv" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaNQ38" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaNQ39" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                               <node concept="37vLTw" id="1DlxheaNQ3a" role="37wK5m">
                                 <ref role="3cqZAo" node="3HZBsOQy1Y7" resolve="bounds" />
                               </node>
@@ -2942,7 +2942,7 @@
                                         <ref role="3cqZAo" node="1Dlxhealtuo" resolve="myInternalsBounds" />
                                       </node>
                                       <node concept="liA8E" id="1DlxheaNQ3o" role="2OqNvi">
-                                        <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                                        <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                                         <node concept="2ShNRf" id="1DlxheaNQ3p" role="37wK5m">
                                           <node concept="1pGfFk" id="1DlxheaNQ3q" role="2ShVmc">
                                             <ref role="37wK5l" to="g88e:~Rectangle.&lt;init&gt;(int,int,int,int)" resolve="Rectangle" />
@@ -3025,10 +3025,10 @@
                             <ref role="3cqZAo" node="1DlxheaHrNv" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaHulU" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaHulV" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forObservableRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forObservableRole" />
                               <node concept="Xjq3P" id="1DlxheaHulW" role="37wK5m" />
                               <node concept="37vLTw" id="1DlxheaICbx" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaD9Q4" resolve="selectionDecorator" />
@@ -3049,10 +3049,10 @@
                             <ref role="3cqZAo" node="1DlxheaHrNv" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaHsO0" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaHsRa" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forObservableRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forObservableRole" />
                               <node concept="Xjq3P" id="1DlxheaHsUO" role="37wK5m" />
                               <node concept="37vLTw" id="1DlxheaHt49" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaD42z" resolve="errorDecorator" />
@@ -3076,7 +3076,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1DlxheaHrbq" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -3165,7 +3165,7 @@
                               <node concept="3clFbS" id="1DlxheaOuMa" role="3clF47">
                                 <node concept="3clFbF" id="1DlxheaOuMb" role="3cqZAp">
                                   <node concept="3nyPlj" id="1DlxheaOuMc" role="3clFbG">
-                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                                     <node concept="37vLTw" id="1DlxheaOuMd" role="37wK5m">
                                       <ref role="3cqZAo" node="1DlxheaOuM8" resolve="configuration" />
                                     </node>
@@ -3177,9 +3177,9 @@
                                       <ref role="3cqZAo" node="1DlxheaOuM8" resolve="configuration" />
                                     </node>
                                     <node concept="liA8E" id="1DlxheaTye3" role="2OqNvi">
-                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                       <node concept="2YIFZM" id="1DlxheaTye4" role="37wK5m">
-                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                         <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                                         <node concept="2ShNRf" id="1o1N$5kxZt_" role="37wK5m">
                                           <node concept="1pGfFk" id="1o1N$5ky6cy" role="2ShVmc">
@@ -3197,7 +3197,7 @@
                                         </node>
                                         <node concept="2OqwBi" id="1DlxheaTye6" role="37wK5m">
                                           <node concept="1rXfSq" id="1DlxheaTye7" role="2Oq$k0">
-                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                           </node>
                                           <node concept="2OwXpG" id="1DlxheaTHOZ" role="2OqNvi">
                                             <ref role="2Oxat5" node="1DlxheaqV9f" resolve="internalsBounds" />
@@ -3213,13 +3213,13 @@
                                       <ref role="3cqZAo" node="1DlxheaOuM8" resolve="configuration" />
                                     </node>
                                     <node concept="liA8E" id="1o1N$5km7ub" role="2OqNvi">
-                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                       <node concept="2YIFZM" id="1o1N$5km7zE" role="37wK5m">
                                         <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                         <node concept="2OqwBi" id="1o1N$5km7UZ" role="37wK5m">
                                           <node concept="1rXfSq" id="1o1N$5km7_S" role="2Oq$k0">
-                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                           </node>
                                           <node concept="2OwXpG" id="1o1N$5km8qy" role="2OqNvi">
                                             <ref role="2Oxat5" node="1o1N$5kjWBf" resolve="boundsDelta" />
@@ -3255,7 +3255,7 @@
                                                     <ref role="3cqZAo" node="3HZBsOQy1Y7" resolve="bounds" />
                                                   </node>
                                                   <node concept="liA8E" id="4N$3GFNYniw" role="2OqNvi">
-                                                    <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                                    <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -3279,7 +3279,7 @@
                                                         </node>
                                                       </node>
                                                       <node concept="liA8E" id="4N$3GFNWRrA" role="2OqNvi">
-                                                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                                                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                                                         <node concept="2OqwBi" id="4N$3GFNWSWa" role="37wK5m">
                                                           <node concept="37vLTw" id="4N$3GFNWSbJ" role="2Oq$k0">
                                                             <ref role="3cqZAo" node="4N$3GFNWi71" resolve="internalsBoundsDelta" />
@@ -3300,7 +3300,7 @@
                                                         </node>
                                                       </node>
                                                       <node concept="liA8E" id="4N$3GFNXl9G" role="2OqNvi">
-                                                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                                                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                                                         <node concept="2OqwBi" id="4N$3GFNXmBh" role="37wK5m">
                                                           <node concept="37vLTw" id="4N$3GFNXlS7" role="2Oq$k0">
                                                             <ref role="3cqZAo" node="4N$3GFNWi71" resolve="internalsBoundsDelta" />
@@ -3349,7 +3349,7 @@
                                                           <ref role="3cqZAo" node="4N$3GFNXuZ4" resolve="min" />
                                                         </node>
                                                         <node concept="liA8E" id="4N$3GFNXKyb" role="2OqNvi">
-                                                          <ref role="37wK5l" to="g88e:~Vector.min(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="min" />
+                                                          <ref role="37wK5l" to="g88e:~Vector.min(jetbrains.jetpad.geometry.Vector)" resolve="min" />
                                                           <node concept="2GrUjf" id="4N$3GFNXLkm" role="37wK5m">
                                                             <ref role="2Gs0qQ" node="4N$3GFNX_hI" resolve="nextPoint" />
                                                           </node>
@@ -3378,7 +3378,7 @@
                                                           <ref role="3cqZAo" node="4N$3GFNXxOG" resolve="max" />
                                                         </node>
                                                         <node concept="liA8E" id="4N$3GFNXMSb" role="2OqNvi">
-                                                          <ref role="37wK5l" to="g88e:~Vector.max(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="max" />
+                                                          <ref role="37wK5l" to="g88e:~Vector.max(jetbrains.jetpad.geometry.Vector)" resolve="max" />
                                                           <node concept="2GrUjf" id="4N$3GFNXMSc" role="37wK5m">
                                                             <ref role="2Gs0qQ" node="4N$3GFNX_hI" resolve="nextPoint" />
                                                           </node>
@@ -3402,7 +3402,7 @@
                                                   <ref role="3cqZAo" node="4N$3GFNYumr" resolve="newBounds" />
                                                 </node>
                                                 <node concept="liA8E" id="4N$3GFNXrYF" role="2OqNvi">
-                                                  <ref role="37wK5l" to="g88e:~Rectangle.getBoundPoints():jetbrains.jetpad.geometry.Vector[]" resolve="getBoundPoints" />
+                                                  <ref role="37wK5l" to="g88e:~Rectangle.getBoundPoints()" resolve="getBoundPoints" />
                                                 </node>
                                               </node>
                                             </node>
@@ -3419,7 +3419,7 @@
                                                         <ref role="3cqZAo" node="4N$3GFNXxOG" resolve="max" />
                                                       </node>
                                                       <node concept="liA8E" id="4N$3GFNZC7g" role="2OqNvi">
-                                                        <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                                                        <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                                                         <node concept="37vLTw" id="4N$3GFNZD7Q" role="37wK5m">
                                                           <ref role="3cqZAo" node="4N$3GFNXuZ4" resolve="min" />
                                                         </node>
@@ -3438,7 +3438,7 @@
                                                   <ref role="3cqZAo" node="1o1N$5kJ6KY" resolve="boundsDelta" />
                                                 </node>
                                                 <node concept="liA8E" id="4N$3GFNWqmF" role="2OqNvi">
-                                                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                                                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                                                   <node concept="2ShNRf" id="4N$3GFNYiEy" role="37wK5m">
                                                     <node concept="1pGfFk" id="4N$3GFNYjKZ" role="2ShVmc">
                                                       <ref role="37wK5l" to="g88e:~Rectangle.&lt;init&gt;(jetbrains.jetpad.geometry.Vector,jetbrains.jetpad.geometry.Vector)" resolve="Rectangle" />
@@ -3452,7 +3452,7 @@
                                                           </node>
                                                         </node>
                                                         <node concept="liA8E" id="4N$3GFNYDRy" role="2OqNvi">
-                                                          <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                                                          <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                                                           <node concept="2OqwBi" id="4N$3GFNYFNV" role="37wK5m">
                                                             <node concept="37vLTw" id="4N$3GFNYEQ5" role="2Oq$k0">
                                                               <ref role="3cqZAo" node="4N$3GFNYnit" resolve="oldBounds" />
@@ -3473,7 +3473,7 @@
                                                           </node>
                                                         </node>
                                                         <node concept="liA8E" id="4N$3GFNYN0n" role="2OqNvi">
-                                                          <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                                                          <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                                                           <node concept="2OqwBi" id="4N$3GFNYP14" role="37wK5m">
                                                             <node concept="37vLTw" id="4N$3GFNYO0q" role="2Oq$k0">
                                                               <ref role="3cqZAo" node="4N$3GFNYnit" resolve="oldBounds" />
@@ -3501,16 +3501,16 @@
                                       <ref role="3cqZAo" node="1DlxheaOuM8" resolve="configuration" />
                                     </node>
                                     <node concept="liA8E" id="1DlxhebbAoI" role="2OqNvi">
-                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                       <node concept="2YIFZM" id="1DlxhebbAu0" role="37wK5m">
                                         <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                         <node concept="37vLTw" id="1DlxhebbAwe" role="37wK5m">
                                           <ref role="3cqZAo" node="1Dlxhebbpi8" resolve="resizable" />
                                         </node>
                                         <node concept="2OqwBi" id="1DlxhebbCf0" role="37wK5m">
                                           <node concept="1rXfSq" id="1DlxhebbB3e" role="2Oq$k0">
-                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                           </node>
                                           <node concept="2OwXpG" id="1DlxhebbD3x" role="2OqNvi">
                                             <ref role="2Oxat5" node="1DlxheaWpoU" resolve="resizable" />
@@ -3526,12 +3526,12 @@
                                       <ref role="3cqZAo" node="1DlxheaOuM8" resolve="configuration" />
                                     </node>
                                     <node concept="liA8E" id="1Dlxheb1Pf3" role="2OqNvi">
-                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                       <node concept="2YIFZM" id="1Dlxheb1Pks" role="37wK5m">
                                         <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                         <node concept="2YIFZM" id="1Dlxheb1Q0M" role="37wK5m">
-                                          <ref role="37wK5l" to="lgza:~Properties.ifProp(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Object,java.lang.Object):jetbrains.jetpad.model.property.ReadableProperty" resolve="ifProp" />
+                                          <ref role="37wK5l" to="lgza:~Properties.ifProp(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Object,java.lang.Object)" resolve="ifProp" />
                                           <ref role="1Pybhc" to="lgza:~Properties" resolve="Properties" />
                                           <node concept="37vLTw" id="1Dlxheb1YJ8" role="37wK5m">
                                             <ref role="3cqZAo" node="3HZBsOQg6A8" resolve="hasError" />
@@ -3549,21 +3549,21 @@
                                             <node concept="2OqwBi" id="1Dlxheb2Lqj" role="37wK5m">
                                               <node concept="2OqwBi" id="1Dlxheb22fU" role="2Oq$k0">
                                                 <node concept="1rXfSq" id="1Dlxheb20L9" role="2Oq$k0">
-                                                  <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                  <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                 </node>
                                                 <node concept="2OwXpG" id="1Dlxheb2F4B" role="2OqNvi">
                                                   <ref role="2Oxat5" node="1Dlxheb2lZn" resolve="selectionLineWidth" />
                                                 </node>
                                               </node>
                                               <node concept="liA8E" id="1Dlxheb2Nig" role="2OqNvi">
-                                                <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                                <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                               </node>
                                             </node>
                                           </node>
                                         </node>
                                         <node concept="2OqwBi" id="1Dlxheb2UtJ" role="37wK5m">
                                           <node concept="1rXfSq" id="1Dlxheb2S9K" role="2Oq$k0">
-                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                           </node>
                                           <node concept="2OwXpG" id="1Dlxheb2Wr4" role="2OqNvi">
                                             <ref role="2Oxat5" node="1DlxheaqV97" resolve="frameWidth" />
@@ -3677,7 +3677,7 @@
                               <node concept="3clFbS" id="1DlxheaNQ31" role="3clF47">
                                 <node concept="3clFbF" id="1DlxheaNQ32" role="3cqZAp">
                                   <node concept="3nyPlj" id="1DlxheaNQ33" role="3clFbG">
-                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                                    <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                                     <node concept="37vLTw" id="1DlxheaNQ34" role="37wK5m">
                                       <ref role="3cqZAo" node="1DlxheaNQ2Z" resolve="configuration" />
                                     </node>
@@ -3689,16 +3689,16 @@
                                       <ref role="3cqZAo" node="1DlxheaNQ2Z" resolve="configuration" />
                                     </node>
                                     <node concept="liA8E" id="1DlxheaNQ3R" role="2OqNvi">
-                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                      <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                       <node concept="2YIFZM" id="1DlxheaNQ3S" role="37wK5m">
                                         <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                        <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                         <node concept="37vLTw" id="1DlxheaNQ3T" role="37wK5m">
                                           <ref role="3cqZAo" node="1Dlxhealtuo" resolve="myInternalsBounds" />
                                         </node>
                                         <node concept="2OqwBi" id="1DlxheaNQ3U" role="37wK5m">
                                           <node concept="1rXfSq" id="1DlxheaNQ3V" role="2Oq$k0">
-                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                            <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                           </node>
                                           <node concept="2OwXpG" id="1DlxheaNQ3W" role="2OqNvi">
                                             <ref role="2Oxat5" node="1DlxheaqV9f" resolve="internalsBounds" />
@@ -3762,7 +3762,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3HZBsOQwnhk" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="10M0yZ" id="3HZBsOQwnhl" role="37wK5m">
                 <ref role="1PxDUh" to="4rj2:~Color" resolve="Color" />
                 <ref role="3cqZAo" to="4rj2:~Color.RED" resolve="RED" />
@@ -3834,10 +3834,10 @@
         <node concept="3clFbF" id="3HZBsOQyWBB" role="3cqZAp">
           <node concept="2OqwBi" id="3HZBsOQyWBC" role="3clFbG">
             <node concept="1rXfSq" id="3HZBsOQyWBD" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+              <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
             </node>
             <node concept="liA8E" id="3HZBsOQyWBE" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="3HZBsOQyWBF" role="37wK5m">
                 <ref role="3cqZAo" node="3HZBsOQyWBq" resolve="inputPortDecotatorView" />
               </node>
@@ -3847,10 +3847,10 @@
         <node concept="3clFbF" id="3HZBsOQyWBG" role="3cqZAp">
           <node concept="2OqwBi" id="3HZBsOQyWBH" role="3clFbG">
             <node concept="1rXfSq" id="3HZBsOQyWBI" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+              <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
             </node>
             <node concept="liA8E" id="3HZBsOQyWBJ" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="3HZBsOQyWBK" role="37wK5m">
                 <ref role="3cqZAo" node="3HZBsOQyWBv" resolve="outputPortDecotatorView" />
               </node>
@@ -3916,10 +3916,10 @@
         <node concept="3clFbF" id="3HZBsOQ$4n3" role="3cqZAp">
           <node concept="2OqwBi" id="3HZBsOQ$4n4" role="3clFbG">
             <node concept="1rXfSq" id="3HZBsOQ$4n5" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+              <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
             </node>
             <node concept="liA8E" id="3HZBsOQ$4n6" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="3HZBsOQ$4n7" role="37wK5m">
                 <ref role="3cqZAo" node="3HZBsOQ$4mQ" resolve="itemsDecotatorView" />
               </node>
@@ -3929,10 +3929,10 @@
         <node concept="3clFbF" id="3HZBsOQ$4n8" role="3cqZAp">
           <node concept="2OqwBi" id="3HZBsOQ$4n9" role="3clFbG">
             <node concept="1rXfSq" id="3HZBsOQ$4na" role="2Oq$k0">
-              <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+              <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
             </node>
             <node concept="liA8E" id="3HZBsOQ$4nb" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="3HZBsOQ$4nc" role="37wK5m">
                 <ref role="3cqZAo" node="3HZBsOQ$4mV" resolve="connectorsDecotatorView" />
               </node>
@@ -4125,7 +4125,7 @@
                     <node concept="3clFbS" id="2HJ7U3LNQw8" role="3clF47">
                       <node concept="3clFbF" id="2HJ7U3LNQwc" role="3cqZAp">
                         <node concept="3nyPlj" id="2HJ7U3LNQwb" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="2HJ7U3LNQwa" role="37wK5m">
                             <ref role="3cqZAo" node="2HJ7U3LNQw3" resolve="configuration" />
                           </node>
@@ -4137,15 +4137,15 @@
                             <ref role="3cqZAo" node="2HJ7U3LNQw3" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LNRgW" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LNRk6" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                               <node concept="37vLTw" id="2HJ7U3LNRmq" role="37wK5m">
                                 <ref role="3cqZAo" node="2HJ7U3LLEbm" resolve="color" />
                               </node>
                               <node concept="1rXfSq" id="2HJ7U3LNXsk" role="37wK5m">
-                                <ref role="37wK5l" to="jqfx:~MultiPointView.color():jetbrains.jetpad.model.property.Property" resolve="color" />
+                                <ref role="37wK5l" to="jqfx:~MultiPointView.color()" resolve="color" />
                               </node>
                             </node>
                           </node>
@@ -4157,15 +4157,15 @@
                             <ref role="3cqZAo" node="2HJ7U3LNQw3" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LNZZg" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LNZZh" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="2HJ7U3LO0NP" role="37wK5m">
                                 <ref role="3cqZAo" node="2HJ7U3LLEd2" resolve="backgroundColor" />
                               </node>
                               <node concept="1rXfSq" id="2HJ7U3LNZZj" role="37wK5m">
-                                <ref role="37wK5l" to="jqfx:~View.background():jetbrains.jetpad.model.property.Property" resolve="background" />
+                                <ref role="37wK5l" to="jqfx:~View.background()" resolve="background" />
                               </node>
                             </node>
                           </node>
@@ -4177,9 +4177,9 @@
                             <ref role="3cqZAo" node="2HJ7U3LNQw3" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LO9An" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LO9Dx" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="2HJ7U3LO9Fq" role="37wK5m">
                                 <ref role="3cqZAo" node="2HJ7U3LMO1u" resolve="halfWidth" />
@@ -4194,7 +4194,7 @@
                                           <ref role="3cqZAo" node="2HJ7U3LMWCO" resolve="centerLocation" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LOBdO" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="2HJ7U3LODLV" role="37wK5m">
@@ -4202,7 +4202,7 @@
                                           <ref role="3cqZAo" node="2HJ7U3LMO1u" resolve="halfWidth" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LOF3A" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -4219,9 +4219,9 @@
                             <ref role="3cqZAo" node="2HJ7U3LNQw3" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="2HJ7U3LOmox" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="2HJ7U3LOmtD" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="2HJ7U3LOmvy" role="37wK5m">
                                 <ref role="3cqZAo" node="2HJ7U3LMWCO" resolve="centerLocation" />
@@ -4236,7 +4236,7 @@
                                           <ref role="3cqZAo" node="2HJ7U3LMWCO" resolve="centerLocation" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LOG5a" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="2HJ7U3LOG5b" role="37wK5m">
@@ -4244,7 +4244,7 @@
                                           <ref role="3cqZAo" node="2HJ7U3LMO1u" resolve="halfWidth" />
                                         </node>
                                         <node concept="liA8E" id="2HJ7U3LOG5d" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -4261,10 +4261,10 @@
                             <ref role="3cqZAo" node="2HJ7U3LNQw3" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="3wCUwlCq9$B" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="3wCUwlCqhfR" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                               <node concept="37vLTw" id="3wCUwlCqi8V" role="37wK5m">
                                 <ref role="3cqZAo" node="3wCUwlCpY3X" resolve="dragHandler" />
                               </node>
@@ -4306,7 +4306,7 @@
                                                   <ref role="3cqZAo" node="3wCUwlCqD5b" resolve="myRegistration" />
                                                 </node>
                                                 <node concept="liA8E" id="3wCUwlCqKsB" role="2OqNvi">
-                                                  <ref role="37wK5l" to="chl9:~Registration.remove():void" resolve="remove" />
+                                                  <ref role="37wK5l" to="chl9:~Registration.remove()" resolve="remove" />
                                                 </node>
                                               </node>
                                             </node>
@@ -4326,7 +4326,7 @@
                                                   <ref role="3cqZAo" node="3wCUwlCqD5b" resolve="myRegistration" />
                                                 </node>
                                                 <node concept="1rXfSq" id="3wCUwlCqLQ_" role="37vLTx">
-                                                  <ref role="37wK5l" to="jqfx:~View.addTrait(jetbrains.jetpad.projectional.view.ViewTrait):jetbrains.jetpad.base.Registration" resolve="addTrait" />
+                                                  <ref role="37wK5l" to="jqfx:~View.addTrait(jetbrains.jetpad.projectional.view.ViewTrait)" resolve="addTrait" />
                                                   <node concept="1rXfSq" id="3wCUwlCqPhW" role="37wK5m">
                                                     <ref role="37wK5l" node="3wCUwlCeV5R" resolve="getResizeHandlingTrait" />
                                                   </node>
@@ -4362,7 +4362,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3LNOEB" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -4381,7 +4381,7 @@
               <ref role="3cqZAo" node="2HJ7U3LMWCO" resolve="centerLocation" />
             </node>
             <node concept="liA8E" id="2HJ7U3LZcdc" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="2HJ7U3LZcoC" role="37wK5m">
                 <ref role="3cqZAo" node="3wCUwlC3b2F" resolve="location" />
               </node>
@@ -4420,7 +4420,7 @@
                 <ref role="3cqZAo" node="3wCUwlCpY3X" resolve="dragHandler" />
               </node>
               <node concept="liA8E" id="3wCUwlCs8Am" role="2OqNvi">
-                <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
               </node>
             </node>
           </node>
@@ -4444,7 +4444,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3wCUwlC9cA8" role="2OqNvi">
-                    <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.on(jetbrains.jetpad.projectional.view.ViewEventSpec,jetbrains.jetpad.projectional.view.ViewEventHandler):jetbrains.jetpad.projectional.view.ViewTraitBuilder" resolve="on" />
+                    <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.on(jetbrains.jetpad.projectional.view.ViewEventSpec,jetbrains.jetpad.projectional.view.ViewEventHandler)" resolve="on" />
                     <node concept="10M0yZ" id="3wCUwlC9dem" role="37wK5m">
                       <ref role="3cqZAo" to="jqfx:~ViewEvents.MOUSE_PRESSED" resolve="MOUSE_PRESSED" />
                       <ref role="1PxDUh" to="jqfx:~ViewEvents" resolve="ViewEvents" />
@@ -4470,7 +4470,7 @@
                                 <ref role="3cqZAo" node="3wCUwlCpY3X" resolve="dragHandler" />
                               </node>
                               <node concept="liA8E" id="1o1N$5kfUI8" role="2OqNvi">
-                                <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                               </node>
                             </node>
                             <node concept="liA8E" id="1o1N$5kfVyU" role="2OqNvi">
@@ -4480,7 +4480,7 @@
                                   <ref role="3cqZAo" node="3wCUwlC9eS7" resolve="event" />
                                 </node>
                                 <node concept="liA8E" id="1o1N$5kfWrB" role="2OqNvi">
-                                  <ref role="37wK5l" to="v7xa:~MouseEvent.location():jetbrains.jetpad.geometry.Vector" resolve="location" />
+                                  <ref role="37wK5l" to="v7xa:~MouseEvent.location()" resolve="location" />
                                 </node>
                               </node>
                             </node>
@@ -4492,7 +4492,7 @@
                               <ref role="3cqZAo" node="3wCUwlC9eS7" resolve="event" />
                             </node>
                             <node concept="liA8E" id="3wCUwlCa3MB" role="2OqNvi">
-                              <ref role="37wK5l" to="v7xa:~Event.consume():void" resolve="consume" />
+                              <ref role="37wK5l" to="v7xa:~Event.consume()" resolve="consume" />
                             </node>
                           </node>
                         </node>
@@ -4501,7 +4501,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3wCUwlC9iVp" role="2OqNvi">
-                  <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.on(jetbrains.jetpad.projectional.view.ViewEventSpec,jetbrains.jetpad.projectional.view.ViewEventHandler):jetbrains.jetpad.projectional.view.ViewTraitBuilder" resolve="on" />
+                  <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.on(jetbrains.jetpad.projectional.view.ViewEventSpec,jetbrains.jetpad.projectional.view.ViewEventHandler)" resolve="on" />
                   <node concept="10M0yZ" id="3wCUwlC9jMa" role="37wK5m">
                     <ref role="3cqZAo" to="jqfx:~ViewEvents.MOUSE_DRAGGED" resolve="MOUSE_DRAGGED" />
                     <ref role="1PxDUh" to="jqfx:~ViewEvents" resolve="ViewEvents" />
@@ -4527,7 +4527,7 @@
                               <ref role="3cqZAo" node="3wCUwlCpY3X" resolve="dragHandler" />
                             </node>
                             <node concept="liA8E" id="1o1N$5kfYyx" role="2OqNvi">
-                              <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                              <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                             </node>
                           </node>
                           <node concept="liA8E" id="1o1N$5kfZMJ" role="2OqNvi">
@@ -4537,7 +4537,7 @@
                                 <ref role="3cqZAo" node="3wCUwlC9kdi" resolve="event" />
                               </node>
                               <node concept="liA8E" id="1o1N$5kg1gi" role="2OqNvi">
-                                <ref role="37wK5l" to="v7xa:~MouseEvent.location():jetbrains.jetpad.geometry.Vector" resolve="location" />
+                                <ref role="37wK5l" to="v7xa:~MouseEvent.location()" resolve="location" />
                               </node>
                             </node>
                           </node>
@@ -4548,7 +4548,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3wCUwlC9l5a" role="2OqNvi">
-                <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.on(jetbrains.jetpad.projectional.view.ViewEventSpec,jetbrains.jetpad.projectional.view.ViewEventHandler):jetbrains.jetpad.projectional.view.ViewTraitBuilder" resolve="on" />
+                <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.on(jetbrains.jetpad.projectional.view.ViewEventSpec,jetbrains.jetpad.projectional.view.ViewEventHandler)" resolve="on" />
                 <node concept="10M0yZ" id="3wCUwlC9lqk" role="37wK5m">
                   <ref role="1PxDUh" to="jqfx:~ViewEvents" resolve="ViewEvents" />
                   <ref role="3cqZAo" to="jqfx:~ViewEvents.MOUSE_RELEASED" resolve="MOUSE_RELEASED" />
@@ -4574,7 +4574,7 @@
                             <ref role="3cqZAo" node="3wCUwlCpY3X" resolve="dragHandler" />
                           </node>
                           <node concept="liA8E" id="1o1N$5kg7BR" role="2OqNvi">
-                            <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                            <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                           </node>
                         </node>
                         <node concept="liA8E" id="1o1N$5kg8UD" role="2OqNvi">
@@ -4584,7 +4584,7 @@
                               <ref role="3cqZAo" node="3wCUwlC9m6R" resolve="event" />
                             </node>
                             <node concept="liA8E" id="1o1N$5kgaKr" role="2OqNvi">
-                              <ref role="37wK5l" to="v7xa:~MouseEvent.location():jetbrains.jetpad.geometry.Vector" resolve="location" />
+                              <ref role="37wK5l" to="v7xa:~MouseEvent.location()" resolve="location" />
                             </node>
                           </node>
                         </node>
@@ -4595,7 +4595,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3wCUwlC9cph" role="2OqNvi">
-              <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.build():jetbrains.jetpad.projectional.view.ViewTrait" resolve="build" />
+              <ref role="37wK5l" to="jqfx:~ViewTraitBuilder.build()" resolve="build" />
             </node>
           </node>
         </node>
@@ -4617,7 +4617,7 @@
               <ref role="3cqZAo" to="jqfx:~MultiPointView.points" resolve="points" />
             </node>
             <node concept="liA8E" id="2HJ7U3LP5BA" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.clear():void" resolve="clear" />
+              <ref role="37wK5l" to="33ny:~List.clear()" resolve="clear" />
             </node>
           </node>
         </node>
@@ -4627,7 +4627,7 @@
               <ref role="3cqZAo" to="jqfx:~MultiPointView.points" resolve="points" />
             </node>
             <node concept="liA8E" id="2HJ7U3LP9xG" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3LP9GU" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3LPa8m" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -4668,7 +4668,7 @@
               <ref role="3cqZAo" to="jqfx:~MultiPointView.points" resolve="points" />
             </node>
             <node concept="liA8E" id="2HJ7U3LPgak" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3LPgal" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3LPgam" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -4709,7 +4709,7 @@
               <ref role="3cqZAo" to="jqfx:~MultiPointView.points" resolve="points" />
             </node>
             <node concept="liA8E" id="2HJ7U3LPhGU" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3LPhGV" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3LPhGW" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -4750,7 +4750,7 @@
               <ref role="3cqZAo" to="jqfx:~MultiPointView.points" resolve="points" />
             </node>
             <node concept="liA8E" id="2HJ7U3LPjoQ" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3LPjoR" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3LPjoS" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -4791,7 +4791,7 @@
               <ref role="3cqZAo" to="jqfx:~MultiPointView.points" resolve="points" />
             </node>
             <node concept="liA8E" id="2HJ7U3LPl9o" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3LPl9p" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3LPl9q" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -4933,7 +4933,7 @@
                     <node concept="3clFbS" id="1Dlxhea_Oz5" role="3clF47">
                       <node concept="3clFbF" id="1Dlxhea_Oz9" role="3cqZAp">
                         <node concept="3nyPlj" id="1Dlxhea_Oz8" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="1Dlxhea_Oz7" role="37wK5m">
                             <ref role="3cqZAo" node="1Dlxhea_Oz0" resolve="configuration" />
                           </node>
@@ -4945,16 +4945,16 @@
                             <ref role="3cqZAo" node="1Dlxhea_Oz0" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1Dlxheaz2QY" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1Dlxheaz367" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forConstantRole(jetbrains.jetpad.mapper.Mapper,java.lang.Object,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forConstantRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forConstantRole(jetbrains.jetpad.mapper.Mapper,java.lang.Object,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forConstantRole" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="Xjq3P" id="1DlxheaA6$P" role="37wK5m" />
                               <node concept="Xjq3P" id="1DlxheaAcTz" role="37wK5m">
                                 <ref role="1HBi2w" node="2HJ7U3M1geU" resolve="SelectionFrameView" />
                               </node>
                               <node concept="1rXfSq" id="1Dlxheaz3zb" role="37wK5m">
-                                <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+                                <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
                               </node>
                               <node concept="2ShNRf" id="1Dlxheaz3OI" role="37wK5m">
                                 <node concept="YeOm9" id="1Dlxheaz49Y" role="2ShVmc">
@@ -5017,7 +5017,7 @@
                                                   <node concept="3clFbS" id="1Dlxheaz9UN" role="3clF47">
                                                     <node concept="3clFbF" id="1Dlxheaz9UR" role="3cqZAp">
                                                       <node concept="3nyPlj" id="1Dlxheaz9UQ" role="3clFbG">
-                                                        <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                                                        <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                                                         <node concept="37vLTw" id="1Dlxheaz9UP" role="37wK5m">
                                                           <ref role="3cqZAo" node="1Dlxheaz9UI" resolve="configuration" />
                                                         </node>
@@ -5029,19 +5029,19 @@
                                                           <ref role="3cqZAo" node="1Dlxheaz9UI" resolve="configuration" />
                                                         </node>
                                                         <node concept="liA8E" id="1Dlxheaz$CQ" role="2OqNvi">
-                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                                           <node concept="2YIFZM" id="1Dlxheaz$TW" role="37wK5m">
-                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                                             <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                                                             <node concept="37vLTw" id="1Dlxheaz_2Y" role="37wK5m">
                                                               <ref role="3cqZAo" node="2HJ7U3M1SQZ" resolve="color" />
                                                             </node>
                                                             <node concept="2OqwBi" id="1DlxheazAQ2" role="37wK5m">
                                                               <node concept="1rXfSq" id="1Dlxheaz_EV" role="2Oq$k0">
-                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                               </node>
                                                               <node concept="liA8E" id="1DlxheazL1e" role="2OqNvi">
-                                                                <ref role="37wK5l" to="jqfx:~MultiPointView.color():jetbrains.jetpad.model.property.Property" resolve="color" />
+                                                                <ref role="37wK5l" to="jqfx:~MultiPointView.color()" resolve="color" />
                                                               </node>
                                                             </node>
                                                           </node>
@@ -5054,19 +5054,19 @@
                                                           <ref role="3cqZAo" node="1Dlxheaz9UI" resolve="configuration" />
                                                         </node>
                                                         <node concept="liA8E" id="2HJ7U3M7feU" role="2OqNvi">
-                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                                           <node concept="2YIFZM" id="2HJ7U3M7fjB" role="37wK5m">
                                                             <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperties(jetbrains.jetpad.model.property.Property,jetbrains.jetpad.model.property.Property):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperties" />
+                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperties(jetbrains.jetpad.model.property.Property,jetbrains.jetpad.model.property.Property)" resolve="forProperties" />
                                                             <node concept="37vLTw" id="2HJ7U3M7flH" role="37wK5m">
                                                               <ref role="3cqZAo" node="1DlxheasVsV" resolve="lineWidth" />
                                                             </node>
                                                             <node concept="2OqwBi" id="2HJ7U3M7gb6" role="37wK5m">
                                                               <node concept="1rXfSq" id="1DlxheazW2O" role="2Oq$k0">
-                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                               </node>
                                                               <node concept="liA8E" id="2HJ7U3M7hB4" role="2OqNvi">
-                                                                <ref role="37wK5l" to="jqfx:~MultiPointView.width():jetbrains.jetpad.model.property.Property" resolve="width" />
+                                                                <ref role="37wK5l" to="jqfx:~MultiPointView.width()" resolve="width" />
                                                               </node>
                                                             </node>
                                                           </node>
@@ -5079,9 +5079,9 @@
                                                           <ref role="3cqZAo" node="1Dlxheaz9UI" resolve="configuration" />
                                                         </node>
                                                         <node concept="liA8E" id="1DlxheapuHa" role="2OqNvi">
-                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                                           <node concept="2YIFZM" id="1DlxheapuK2" role="37wK5m">
-                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                                                             <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                                                             <node concept="37vLTw" id="1Dlxheatm3L" role="37wK5m">
                                                               <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
@@ -5092,14 +5092,14 @@
                                                                   <node concept="1rXfSq" id="1DlxheapvH9" role="3clFbG">
                                                                     <ref role="37wK5l" node="2HJ7U3M23wF" resolve="updateBorderView" />
                                                                     <node concept="1rXfSq" id="1Dlxhea$6$_" role="37wK5m">
-                                                                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                                     </node>
                                                                     <node concept="2OqwBi" id="1Dlxheaq8ww" role="37wK5m">
                                                                       <node concept="37vLTw" id="1Dlxheatn6Q" role="2Oq$k0">
                                                                         <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
                                                                       </node>
                                                                       <node concept="liA8E" id="1Dlxheaq9P$" role="2OqNvi">
-                                                                        <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                                                        <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                                                       </node>
                                                                     </node>
                                                                   </node>
@@ -5151,7 +5151,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1Dlxhea_Lbm" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -5169,7 +5169,7 @@
               <ref role="3cqZAo" node="1DlxheasVsV" resolve="lineWidth" />
             </node>
             <node concept="liA8E" id="1DlxheaUWpM" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="1DlxheaUW_b" role="37wK5m">
                 <ref role="3cqZAo" node="1DlxheaUF0M" resolve="width" />
               </node>
@@ -5182,7 +5182,7 @@
               <ref role="3cqZAo" node="1DlxheaqV97" resolve="frameWidth" />
             </node>
             <node concept="liA8E" id="1DlxheaUYaS" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="2YIFZM" id="1DlxheaUYmB" role="37wK5m">
                 <ref role="37wK5l" node="1DlxheawDfx" resolve="getHalfWidth" />
                 <ref role="1Pybhc" node="1DlxheaqRZB" resolve="AbstractExternalFrameView" />
@@ -5246,7 +5246,7 @@
                 <ref role="3cqZAo" node="2HJ7U3M37bc" resolve="topLeft" />
               </node>
               <node concept="liA8E" id="2HJ7U3M37vW" role="2OqNvi">
-                <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                 <node concept="2OqwBi" id="2HJ7U3M37vX" role="37wK5m">
                   <node concept="37vLTw" id="1DlxheaqiKm" role="2Oq$k0">
                     <ref role="3cqZAo" node="2HJ7U3M2n8p" resolve="frameBounds" />
@@ -5271,7 +5271,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3M4d0V" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.clear():void" resolve="clear" />
+              <ref role="37wK5l" to="33ny:~List.clear()" resolve="clear" />
             </node>
           </node>
         </node>
@@ -5286,7 +5286,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3M4iSe" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3M2wPT" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3M2wPU" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -5322,7 +5322,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3M4mhn" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3M2wQb" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3M2wQc" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -5358,7 +5358,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3M4ocU" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3M2wQx" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3M2wQy" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -5394,7 +5394,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3M4pyP" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3M2wQV" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3M2wQW" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -5430,7 +5430,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2HJ7U3M4pBj" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object):boolean" resolve="add" />
+              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
               <node concept="2ShNRf" id="2HJ7U3M2wRh" role="37wK5m">
                 <node concept="1pGfFk" id="2HJ7U3M2wRi" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Vector.&lt;init&gt;(int,int)" resolve="Vector" />
@@ -5588,7 +5588,7 @@
                     <node concept="3clFbS" id="1Dlxheau_oG" role="3clF47">
                       <node concept="3clFbF" id="1Dlxheau_oK" role="3cqZAp">
                         <node concept="3nyPlj" id="1Dlxheau_oJ" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="1Dlxheau_oI" role="37wK5m">
                             <ref role="3cqZAo" node="1Dlxheau_oB" resolve="configuration" />
                           </node>
@@ -5600,9 +5600,9 @@
                             <ref role="3cqZAo" node="1Dlxheau_oB" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheauPQd" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheauPQe" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="1DlxheauRsd" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaqV97" resolve="frameWidth" />
@@ -5617,7 +5617,7 @@
                                           <ref role="3cqZAo" node="1DlxheaqV9f" resolve="internalsBounds" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheauSF_" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1DlxheauSFA" role="37wK5m">
@@ -5625,7 +5625,7 @@
                                           <ref role="3cqZAo" node="1DlxheaqV97" resolve="frameWidth" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheauSFC" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -5642,9 +5642,9 @@
                             <ref role="3cqZAo" node="1Dlxheau_oB" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheauNuU" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheauNxb" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="1DlxheauOCd" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaqV9f" resolve="internalsBounds" />
@@ -5659,7 +5659,7 @@
                                           <ref role="3cqZAo" node="1DlxheaqV9f" resolve="internalsBounds" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheauTpL" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1DlxheauTpM" role="37wK5m">
@@ -5667,7 +5667,7 @@
                                           <ref role="3cqZAo" node="1DlxheaqV97" resolve="frameWidth" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheauTpO" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -5687,7 +5687,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1Dlxheau$Mt" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -5705,7 +5705,7 @@
               <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
             </node>
             <node concept="liA8E" id="1DlxhearImZ" role="2OqNvi">
-              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+              <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
               <node concept="2ShNRf" id="1DlxhearIn0" role="37wK5m">
                 <node concept="1pGfFk" id="1DlxhearIn1" role="2ShVmc">
                   <ref role="37wK5l" to="g88e:~Rectangle.&lt;init&gt;(int,int,int,int)" resolve="Rectangle" />
@@ -5867,7 +5867,7 @@
                   <node concept="3clFbS" id="1DlxheaRN7U" role="3clF47">
                     <node concept="3clFbF" id="1DlxheaRQRN" role="3cqZAp">
                       <node concept="1rXfSq" id="1DlxheaRQRM" role="3clFbG">
-                        <ref role="37wK5l" to="jqfx:~View.children():jetbrains.jetpad.model.collections.list.ObservableList" resolve="children" />
+                        <ref role="37wK5l" to="jqfx:~View.children()" resolve="children" />
                       </node>
                     </node>
                   </node>
@@ -6118,7 +6118,7 @@
                     <node concept="3clFbS" id="1DlxheaQaSV" role="3clF47">
                       <node concept="3clFbF" id="1DlxheaQaSZ" role="3cqZAp">
                         <node concept="3nyPlj" id="1DlxheaQaSY" role="3clFbG">
-                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                          <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                           <node concept="37vLTw" id="1DlxheaQaSX" role="37wK5m">
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
@@ -6135,9 +6135,9 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaX3PB" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaX9Y5" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="1DlxheaXaMX" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaWpoU" resolve="resizable" />
@@ -6152,7 +6152,7 @@
                                           <ref role="3cqZAo" node="1DlxheaWpoU" resolve="resizable" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheaXZ$h" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1DlxheaY1GE" role="37wK5m">
@@ -6160,7 +6160,7 @@
                                           <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheaY2XB" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -6177,10 +6177,10 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaXdmS" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaXdmT" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <node concept="37vLTw" id="1DlxheaXhRt" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
                               </node>
@@ -6194,7 +6194,7 @@
                                           <ref role="3cqZAo" node="1DlxheaWpoU" resolve="resizable" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheaY3E3" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1DlxheaY3E4" role="37wK5m">
@@ -6202,7 +6202,7 @@
                                           <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
                                         </node>
                                         <node concept="liA8E" id="1DlxheaY3E6" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -6224,10 +6224,10 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1Dlxheb6BfV" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1Dlxheb6BfW" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <node concept="37vLTw" id="1Dlxheb6KDh" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaWpoU" resolve="resizable" />
                               </node>
@@ -6241,7 +6241,7 @@
                                           <ref role="3cqZAo" node="1DlxheaWpoU" resolve="resizable" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb6Bg4" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1Dlxheb6Bg5" role="37wK5m">
@@ -6249,7 +6249,7 @@
                                           <ref role="3cqZAo" node="1Dlxheb3CsU" resolve="showSideHandler" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb6Bg7" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1Dlxheb6Bg8" role="37wK5m">
@@ -6257,7 +6257,7 @@
                                           <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb6Bga" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -6274,9 +6274,9 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1Dlxheb5qnt" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1Dlxheb5SQ2" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="1Dlxheb5SRK" role="37wK5m">
                                 <ref role="3cqZAo" node="1Dlxheb3CsU" resolve="showSideHandler" />
@@ -6291,7 +6291,7 @@
                                           <ref role="3cqZAo" node="1DlxheaWpoU" resolve="resizable" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb6x7Q" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1Dlxheb5UQE" role="37wK5m">
@@ -6299,7 +6299,7 @@
                                           <ref role="3cqZAo" node="1Dlxheb3CsU" resolve="showSideHandler" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb5VXE" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1Dlxheb5XMm" role="37wK5m">
@@ -6307,7 +6307,7 @@
                                           <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb5Z3b" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -6324,9 +6324,9 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1Dlxheb64yn" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1Dlxheb64yo" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,java.lang.Runnable)" resolve="forProperty" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="37vLTw" id="1Dlxheb6dQi" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
@@ -6341,7 +6341,7 @@
                                           <ref role="3cqZAo" node="1DlxheaWpoU" resolve="resizable" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb6yy_" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1Dlxheb64yu" role="37wK5m">
@@ -6349,7 +6349,7 @@
                                           <ref role="3cqZAo" node="1Dlxheb3CsU" resolve="showSideHandler" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb64yw" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                       <node concept="2OqwBi" id="1Dlxheb64yx" role="37wK5m">
@@ -6357,7 +6357,7 @@
                                           <ref role="3cqZAo" node="1DlxhearPn4" resolve="frameRectangle" />
                                         </node>
                                         <node concept="liA8E" id="1Dlxheb64yz" role="2OqNvi">
-                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                                          <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                                         </node>
                                       </node>
                                     </node>
@@ -6375,9 +6375,9 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaR0$F" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaR0EA" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forConstantRole(jetbrains.jetpad.mapper.Mapper,java.lang.Object,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forConstantRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forConstantRole(jetbrains.jetpad.mapper.Mapper,java.lang.Object,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forConstantRole" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="Xjq3P" id="1DlxheaR0HH" role="37wK5m" />
                               <node concept="Xjq3P" id="1DlxheaR0Qc" role="37wK5m">
@@ -6455,7 +6455,7 @@
                                                   <node concept="3clFbS" id="1DlxheaSAGI" role="3clF47">
                                                     <node concept="3clFbF" id="1DlxheaSAGM" role="3cqZAp">
                                                       <node concept="3nyPlj" id="1DlxheaSAGL" role="3clFbG">
-                                                        <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+                                                        <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
                                                         <node concept="37vLTw" id="1DlxheaSAGK" role="37wK5m">
                                                           <ref role="3cqZAo" node="1DlxheaSAGD" resolve="configuration" />
                                                         </node>
@@ -6467,16 +6467,16 @@
                                                           <ref role="3cqZAo" node="1DlxheaSAGD" resolve="configuration" />
                                                         </node>
                                                         <node concept="liA8E" id="1DlxhebgRB9" role="2OqNvi">
-                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                                           <node concept="2YIFZM" id="1Dlxhebhp5H" role="37wK5m">
                                                             <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                                             <node concept="37vLTw" id="1DlxhebkY6M" role="37wK5m">
                                                               <ref role="3cqZAo" node="1DlxhebjCFc" resolve="color" />
                                                             </node>
                                                             <node concept="2OqwBi" id="1Dlxhebhp5K" role="37wK5m">
                                                               <node concept="1rXfSq" id="1Dlxhebhp5L" role="2Oq$k0">
-                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                               </node>
                                                               <node concept="2OwXpG" id="1Dlxhebhp5M" role="2OqNvi">
                                                                 <ref role="2Oxat5" node="2HJ7U3M1SQZ" resolve="color" />
@@ -6492,16 +6492,16 @@
                                                           <ref role="3cqZAo" node="1DlxheaSAGD" resolve="configuration" />
                                                         </node>
                                                         <node concept="liA8E" id="1DlxheaVwOo" role="2OqNvi">
-                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                                           <node concept="2YIFZM" id="1DlxheaVwOp" role="37wK5m">
                                                             <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                                             <node concept="37vLTw" id="1DlxheaVyJK" role="37wK5m">
                                                               <ref role="3cqZAo" node="1DlxheaqV97" resolve="frameWidth" />
                                                             </node>
                                                             <node concept="2OqwBi" id="1DlxheaVwOr" role="37wK5m">
                                                               <node concept="1rXfSq" id="1DlxheaVwOs" role="2Oq$k0">
-                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                               </node>
                                                               <node concept="2OwXpG" id="1DlxheaV$Sr" role="2OqNvi">
                                                                 <ref role="2Oxat5" node="1DlxheaqV97" resolve="frameWidth" />
@@ -6517,16 +6517,16 @@
                                                           <ref role="3cqZAo" node="1DlxheaSAGD" resolve="configuration" />
                                                         </node>
                                                         <node concept="liA8E" id="1DlxheaSBTh" role="2OqNvi">
-                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                                           <node concept="2YIFZM" id="1DlxheaSCam" role="37wK5m">
                                                             <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                                             <node concept="37vLTw" id="1DlxheaVtOQ" role="37wK5m">
                                                               <ref role="3cqZAo" node="1DlxheaqV9f" resolve="internalsBounds" />
                                                             </node>
                                                             <node concept="2OqwBi" id="1DlxheaSPjw" role="37wK5m">
                                                               <node concept="1rXfSq" id="1DlxheaSO7m" role="2Oq$k0">
-                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                               </node>
                                                               <node concept="2OwXpG" id="1DlxheaVuWx" role="2OqNvi">
                                                                 <ref role="2Oxat5" node="1DlxheaqV9f" resolve="internalsBounds" />
@@ -6542,16 +6542,16 @@
                                                           <ref role="3cqZAo" node="1DlxheaSAGD" resolve="configuration" />
                                                         </node>
                                                         <node concept="liA8E" id="1Dlxheb2vRj" role="2OqNvi">
-                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                                                          <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                                                           <node concept="2YIFZM" id="1Dlxheb2vW2" role="37wK5m">
                                                             <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                                                            <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                                                             <node concept="37vLTw" id="1Dlxheb2vYo" role="37wK5m">
                                                               <ref role="3cqZAo" node="1Dlxheb2lZn" resolve="selectionLineWidth" />
                                                             </node>
                                                             <node concept="2OqwBi" id="1Dlxheb2xJe" role="37wK5m">
                                                               <node concept="1rXfSq" id="1Dlxheb2wyG" role="2Oq$k0">
-                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                                                                <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                                                               </node>
                                                               <node concept="2OwXpG" id="1Dlxheb2y$5" role="2OqNvi">
                                                                 <ref role="2Oxat5" node="1DlxheasVsV" resolve="lineWidth" />
@@ -6597,10 +6597,10 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1DlxheaZ9y2" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1DlxheaZ9_c" role="37wK5m">
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forObservableRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forObservableRole" />
                               <node concept="Xjq3P" id="1DlxheaZ9CF" role="37wK5m" />
                               <node concept="37vLTw" id="1DlxheaZ9LD" role="37wK5m">
                                 <ref role="3cqZAo" node="1DlxheaXnZp" resolve="myCornerResizeHandlePositions" />
@@ -6649,7 +6649,7 @@
                                                 <ref role="3cqZAo" node="1DlxheaXnZp" resolve="myCornerResizeHandlePositions" />
                                               </node>
                                               <node concept="liA8E" id="3wCUwlDmV24" role="2OqNvi">
-                                                <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object):int" resolve="indexOf" />
+                                                <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object)" resolve="indexOf" />
                                                 <node concept="37vLTw" id="3wCUwlDmV25" role="37wK5m">
                                                   <ref role="3cqZAo" node="1DlxheaZeC3" resolve="position" />
                                                 </node>
@@ -6844,9 +6844,9 @@
                             <ref role="3cqZAo" node="1DlxheaQaSQ" resolve="configuration" />
                           </node>
                           <node concept="liA8E" id="1Dlxheb8j5Y" role="2OqNvi">
-                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                            <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                             <node concept="2YIFZM" id="1Dlxheb8jlC" role="37wK5m">
-                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory):jetbrains.jetpad.mapper.RoleSynchronizer" resolve="forObservableRole" />
+                              <ref role="37wK5l" to="sm7x:~Synchronizers.forObservableRole(jetbrains.jetpad.mapper.Mapper,jetbrains.jetpad.model.collections.list.ObservableList,java.util.List,jetbrains.jetpad.mapper.MapperFactory)" resolve="forObservableRole" />
                               <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                               <node concept="Xjq3P" id="1Dlxheb8jpa" role="37wK5m" />
                               <node concept="37vLTw" id="1Dlxheb8jxI" role="37wK5m">
@@ -6893,7 +6893,7 @@
                                             <node concept="10Oyi0" id="3wCUwlDo9tP" role="1tU5fm" />
                                             <node concept="2OqwBi" id="3wCUwlDo9tQ" role="33vP2m">
                                               <node concept="liA8E" id="3wCUwlDo9tS" role="2OqNvi">
-                                                <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object):int" resolve="indexOf" />
+                                                <ref role="37wK5l" to="33ny:~List.indexOf(java.lang.Object)" resolve="indexOf" />
                                                 <node concept="37vLTw" id="3wCUwlDo9tT" role="37wK5m">
                                                   <ref role="3cqZAo" node="1Dlxheb8m5K" resolve="position" />
                                                 </node>
@@ -7053,7 +7053,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1DlxheaQ9uE" role="2OqNvi">
-              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot():void" resolve="attachRoot" />
+              <ref role="37wK5l" to="sm7x:~Mapper.attachRoot()" resolve="attachRoot" />
             </node>
           </node>
         </node>
@@ -7083,7 +7083,7 @@
                   <ref role="3cqZAo" node="1DlxheaXnZp" resolve="myCornerResizeHandlePositions" />
                 </node>
                 <node concept="liA8E" id="1DlxheaY89c" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~List.clear():void" resolve="clear" />
+                  <ref role="37wK5l" to="33ny:~List.clear()" resolve="clear" />
                 </node>
               </node>
             </node>
@@ -7109,7 +7109,7 @@
                 <ref role="3cqZAo" node="1DlxheaXnZp" resolve="myCornerResizeHandlePositions" />
               </node>
               <node concept="liA8E" id="1DlxheaYjbB" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.listIterator():java.util.ListIterator" resolve="listIterator" />
+                <ref role="37wK5l" to="33ny:~List.listIterator()" resolve="listIterator" />
               </node>
             </node>
           </node>
@@ -7129,7 +7129,7 @@
                         <ref role="3cqZAo" node="1DlxheaYjb$" resolve="iterator" />
                       </node>
                       <node concept="liA8E" id="1DlxheaYo$w" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:~ListIterator.next():java.lang.Object" resolve="next" />
+                        <ref role="37wK5l" to="33ny:~ListIterator.next()" resolve="next" />
                       </node>
                     </node>
                   </node>
@@ -7143,7 +7143,7 @@
                       <ref role="3cqZAo" node="1DlxheaYkSV" resolve="nextPoint" />
                     </node>
                     <node concept="liA8E" id="1DlxheaYp3r" role="2OqNvi">
-                      <ref role="37wK5l" to="g88e:~Vector.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="g88e:~Vector.equals(java.lang.Object)" resolve="equals" />
                       <node concept="37vLTw" id="1DlxheaYp3s" role="37wK5m">
                         <ref role="3cqZAo" node="1DlxheaYo$t" resolve="next" />
                       </node>
@@ -7156,7 +7156,7 @@
                       <ref role="3cqZAo" node="1DlxheaYjb$" resolve="iterator" />
                     </node>
                     <node concept="liA8E" id="1DlxheaYpRp" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~ListIterator.remove():void" resolve="remove" />
+                      <ref role="37wK5l" to="33ny:~ListIterator.remove()" resolve="remove" />
                     </node>
                   </node>
                 </node>
@@ -7166,7 +7166,7 @@
                   <ref role="3cqZAo" node="1DlxheaYjb$" resolve="iterator" />
                 </node>
                 <node concept="liA8E" id="1DlxheaYo5i" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~ListIterator.hasNext():boolean" resolve="hasNext" />
+                  <ref role="37wK5l" to="33ny:~ListIterator.hasNext()" resolve="hasNext" />
                 </node>
               </node>
             </node>
@@ -7176,7 +7176,7 @@
                   <ref role="3cqZAo" node="1DlxheaYjb$" resolve="iterator" />
                 </node>
                 <node concept="liA8E" id="1DlxheaYtMl" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~ListIterator.add(java.lang.Object):void" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~ListIterator.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="1DlxheaYtO8" role="37wK5m">
                     <ref role="3cqZAo" node="1DlxheaYkSV" resolve="nextPoint" />
                   </node>
@@ -7195,7 +7195,7 @@
               <ref role="3cqZAo" node="1DlxheaXUfj" resolve="rectangle" />
             </node>
             <node concept="liA8E" id="1DlxheaYddy" role="2OqNvi">
-              <ref role="37wK5l" to="g88e:~Rectangle.getBoundPoints():jetbrains.jetpad.geometry.Vector[]" resolve="getBoundPoints" />
+              <ref role="37wK5l" to="g88e:~Rectangle.getBoundPoints()" resolve="getBoundPoints" />
             </node>
           </node>
         </node>
@@ -7217,7 +7217,7 @@
                   <ref role="3cqZAo" node="1Dlxheb4ZPZ" resolve="mySideResizeHandlePositions" />
                 </node>
                 <node concept="liA8E" id="1Dlxheb6NAq" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~List.clear():void" resolve="clear" />
+                  <ref role="37wK5l" to="33ny:~List.clear()" resolve="clear" />
                 </node>
               </node>
             </node>
@@ -7246,7 +7246,7 @@
                       <ref role="3cqZAo" node="1Dlxheb4ZPZ" resolve="mySideResizeHandlePositions" />
                     </node>
                     <node concept="liA8E" id="1Dlxheb7qZQ" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~List.clear():void" resolve="clear" />
+                      <ref role="37wK5l" to="33ny:~List.clear()" resolve="clear" />
                     </node>
                   </node>
                 </node>
@@ -7267,7 +7267,7 @@
                     <ref role="3cqZAo" node="1Dlxheb6Y27" resolve="nextSegment" />
                   </node>
                   <node concept="liA8E" id="1Dlxheb76Eg" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Segment.length():double" resolve="length" />
+                    <ref role="37wK5l" to="g88e:~Segment.length()" resolve="length" />
                   </node>
                 </node>
               </node>
@@ -7284,7 +7284,7 @@
               <ref role="3cqZAo" node="1Dlxheb5NOO" resolve="rectangle" />
             </node>
             <node concept="liA8E" id="1Dlxheb70bq" role="2OqNvi">
-              <ref role="37wK5l" to="g88e:~Rectangle.getBoundSegments():jetbrains.jetpad.geometry.Segment[]" resolve="getBoundSegments" />
+              <ref role="37wK5l" to="g88e:~Rectangle.getBoundSegments()" resolve="getBoundSegments" />
             </node>
           </node>
         </node>
@@ -7303,7 +7303,7 @@
                 <ref role="3cqZAo" node="1Dlxheb4ZPZ" resolve="mySideResizeHandlePositions" />
               </node>
               <node concept="liA8E" id="1Dlxheb6PJd" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.listIterator():java.util.ListIterator" resolve="listIterator" />
+                <ref role="37wK5l" to="33ny:~List.listIterator()" resolve="listIterator" />
               </node>
             </node>
           </node>
@@ -7328,7 +7328,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="1Dlxheb8NwN" role="2OqNvi">
-                        <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                        <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                         <node concept="2OqwBi" id="1Dlxheb8NwO" role="37wK5m">
                           <node concept="37vLTw" id="1Dlxheb8NwP" role="2Oq$k0">
                             <ref role="3cqZAo" node="1Dlxheb6PJF" resolve="nextSegment" />
@@ -7340,14 +7340,14 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1Dlxheb8NwR" role="2OqNvi">
-                      <ref role="37wK5l" to="g88e:~Vector.div(int):jetbrains.jetpad.geometry.Vector" resolve="div" />
+                      <ref role="37wK5l" to="g88e:~Vector.div(int)" resolve="div" />
                       <node concept="3cmrfG" id="1Dlxheb8NwS" role="37wK5m">
                         <property role="3cmrfH" value="2" />
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="1Dlxheb99$f" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                    <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                     <node concept="2OqwBi" id="1Dlxheb99KN" role="37wK5m">
                       <node concept="37vLTw" id="1Dlxheb99En" role="2Oq$k0">
                         <ref role="3cqZAo" node="1Dlxheb6PJF" resolve="nextSegment" />
@@ -7373,7 +7373,7 @@
                         <ref role="3cqZAo" node="1Dlxheb6PJ8" resolve="iterator" />
                       </node>
                       <node concept="liA8E" id="1Dlxheb6PJn" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:~ListIterator.next():java.lang.Object" resolve="next" />
+                        <ref role="37wK5l" to="33ny:~ListIterator.next()" resolve="next" />
                       </node>
                     </node>
                   </node>
@@ -7387,7 +7387,7 @@
                       <ref role="3cqZAo" node="1Dlxheb8NwB" resolve="nextPoint" />
                     </node>
                     <node concept="liA8E" id="1Dlxheb6PJt" role="2OqNvi">
-                      <ref role="37wK5l" to="g88e:~Vector.equals(java.lang.Object):boolean" resolve="equals" />
+                      <ref role="37wK5l" to="g88e:~Vector.equals(java.lang.Object)" resolve="equals" />
                       <node concept="37vLTw" id="1Dlxheb6PJu" role="37wK5m">
                         <ref role="3cqZAo" node="1Dlxheb6PJj" resolve="next" />
                       </node>
@@ -7400,7 +7400,7 @@
                       <ref role="3cqZAo" node="1Dlxheb6PJ8" resolve="iterator" />
                     </node>
                     <node concept="liA8E" id="1Dlxheb6PJy" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~ListIterator.remove():void" resolve="remove" />
+                      <ref role="37wK5l" to="33ny:~ListIterator.remove()" resolve="remove" />
                     </node>
                   </node>
                 </node>
@@ -7410,7 +7410,7 @@
                   <ref role="3cqZAo" node="1Dlxheb6PJ8" resolve="iterator" />
                 </node>
                 <node concept="liA8E" id="1Dlxheb6PJ_" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~ListIterator.hasNext():boolean" resolve="hasNext" />
+                  <ref role="37wK5l" to="33ny:~ListIterator.hasNext()" resolve="hasNext" />
                 </node>
               </node>
             </node>
@@ -7420,7 +7420,7 @@
                   <ref role="3cqZAo" node="1Dlxheb6PJ8" resolve="iterator" />
                 </node>
                 <node concept="liA8E" id="1Dlxheb6PJD" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~ListIterator.add(java.lang.Object):void" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~ListIterator.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="1Dlxheb8T6R" role="37wK5m">
                     <ref role="3cqZAo" node="1Dlxheb8NwB" resolve="nextPoint" />
                   </node>
@@ -7439,7 +7439,7 @@
               <ref role="3cqZAo" node="1Dlxheb5NOO" resolve="rectangle" />
             </node>
             <node concept="liA8E" id="1Dlxheb6PJJ" role="2OqNvi">
-              <ref role="37wK5l" to="g88e:~Rectangle.getBoundSegments():jetbrains.jetpad.geometry.Segment[]" resolve="getBoundSegments" />
+              <ref role="37wK5l" to="g88e:~Rectangle.getBoundSegments()" resolve="getBoundSegments" />
             </node>
           </node>
         </node>
@@ -7525,7 +7525,7 @@
                 <ref role="3cqZAo" node="3wCUwlDmxNg" resolve="myDragHandler" />
               </node>
               <node concept="liA8E" id="3wCUwlDmGZD" role="2OqNvi">
-                <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                 <node concept="2ShNRf" id="3wCUwlDm79u" role="37wK5m">
                   <node concept="1pGfFk" id="3wCUwlDm7KP" role="2ShVmc">
                     <ref role="37wK5l" node="3wCUwlDdqZ0" resolve="ResizableSelectionFrameView.ResizeHandleMapper.DragHandlerImpl" />
@@ -7554,7 +7554,7 @@
         <node concept="3clFbS" id="3wCUwlDlySe" role="3clF47">
           <node concept="3clFbF" id="3wCUwlDlySi" role="3cqZAp">
             <node concept="3nyPlj" id="3wCUwlDlySh" role="3clFbG">
-              <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration):void" resolve="registerSynchronizers" />
+              <ref role="37wK5l" to="sm7x:~Mapper.registerSynchronizers(jetbrains.jetpad.mapper.Mapper$SynchronizersConfiguration)" resolve="registerSynchronizers" />
               <node concept="37vLTw" id="3wCUwlDlySg" role="37wK5m">
                 <ref role="3cqZAo" node="3wCUwlDlySc" resolve="configuration" />
               </node>
@@ -7566,16 +7566,16 @@
                 <ref role="3cqZAo" node="3wCUwlDlySc" resolve="configuration" />
               </node>
               <node concept="liA8E" id="3wCUwlDlzbq" role="2OqNvi">
-                <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                 <node concept="2YIFZM" id="3wCUwlDlzbr" role="37wK5m">
-                  <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                  <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                   <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
                   <node concept="37vLTw" id="3wCUwlDlzbs" role="37wK5m">
                     <ref role="3cqZAo" node="1DlxhebjCFc" resolve="color" />
                   </node>
                   <node concept="2OqwBi" id="3wCUwlDlzbt" role="37wK5m">
                     <node concept="1rXfSq" id="3wCUwlDlzbu" role="2Oq$k0">
-                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                     </node>
                     <node concept="2OwXpG" id="3wCUwlDlzbv" role="2OqNvi">
                       <ref role="2Oxat5" node="2HJ7U3LLEbm" resolve="color" />
@@ -7591,16 +7591,16 @@
                 <ref role="3cqZAo" node="3wCUwlDlySc" resolve="configuration" />
               </node>
               <node concept="liA8E" id="3wCUwlDlzbz" role="2OqNvi">
-                <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                 <node concept="2YIFZM" id="3wCUwlDlzb$" role="37wK5m">
                   <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                  <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                  <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                   <node concept="37vLTw" id="3wCUwlDlzb_" role="37wK5m">
                     <ref role="3cqZAo" node="1DlxhebjZbH" resolve="backgroundColor" />
                   </node>
                   <node concept="2OqwBi" id="3wCUwlDlzbA" role="37wK5m">
                     <node concept="1rXfSq" id="3wCUwlDlzbB" role="2Oq$k0">
-                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                     </node>
                     <node concept="2OwXpG" id="3wCUwlDlzbC" role="2OqNvi">
                       <ref role="2Oxat5" node="2HJ7U3LLEd2" resolve="backgroundColor" />
@@ -7616,16 +7616,16 @@
                 <ref role="3cqZAo" node="3wCUwlDlySc" resolve="configuration" />
               </node>
               <node concept="liA8E" id="3wCUwlDlJ7O" role="2OqNvi">
-                <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer):void" resolve="add" />
+                <ref role="37wK5l" to="sm7x:~Mapper$SynchronizersConfiguration.add(jetbrains.jetpad.mapper.Synchronizer)" resolve="add" />
                 <node concept="2YIFZM" id="3wCUwlDlJbZ" role="37wK5m">
                   <ref role="1Pybhc" to="sm7x:~Synchronizers" resolve="Synchronizers" />
-                  <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty):jetbrains.jetpad.mapper.Synchronizer" resolve="forProperty" />
+                  <ref role="37wK5l" to="sm7x:~Synchronizers.forProperty(jetbrains.jetpad.model.property.ReadableProperty,jetbrains.jetpad.model.property.WritableProperty)" resolve="forProperty" />
                   <node concept="37vLTw" id="3wCUwlDmIw6" role="37wK5m">
                     <ref role="3cqZAo" node="3wCUwlDmxNg" resolve="myDragHandler" />
                   </node>
                   <node concept="2OqwBi" id="3wCUwlDlKHJ" role="37wK5m">
                     <node concept="1rXfSq" id="3wCUwlDlJEZ" role="2Oq$k0">
-                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget():java.lang.Object" resolve="getTarget" />
+                      <ref role="37wK5l" to="sm7x:~Mapper.getTarget()" resolve="getTarget" />
                     </node>
                     <node concept="2OwXpG" id="3wCUwlDlLa3" role="2OqNvi">
                       <ref role="2Oxat5" node="3wCUwlCpY3X" resolve="dragHandler" />
@@ -7722,7 +7722,7 @@
                     <ref role="3cqZAo" node="1DlxheaqV9f" resolve="internalsBounds" />
                   </node>
                   <node concept="liA8E" id="1o1N$5kNW73" role="2OqNvi">
-                    <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                    <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="1o1N$5kNUws" role="37vLTJ">
@@ -7784,7 +7784,7 @@
                     <ref role="3cqZAo" node="1o1N$5kgJgy" resolve="position" />
                   </node>
                   <node concept="liA8E" id="3n001qjg7jY" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                    <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                     <node concept="37vLTw" id="3n001qjg7jZ" role="37wK5m">
                       <ref role="3cqZAo" node="3n001qjg000" resolve="myDragStartposition" />
                     </node>
@@ -7832,7 +7832,7 @@
                   <ref role="3cqZAo" node="1DlxheaqV9f" resolve="internalsBounds" />
                 </node>
                 <node concept="liA8E" id="3wCUwlDiv60" role="2OqNvi">
-                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                   <node concept="37vLTw" id="3wCUwlDivhy" role="37wK5m">
                     <ref role="3cqZAo" node="3wCUwlDdxtQ" resolve="bounds" />
                   </node>
@@ -7864,7 +7864,7 @@
                     <ref role="3cqZAo" node="1DlxheaqV9f" resolve="internalsBounds" />
                   </node>
                   <node concept="liA8E" id="1o1N$5kO0L8" role="2OqNvi">
-                    <ref role="37wK5l" to="lgza:~ReadableProperty.get():java.lang.Object" resolve="get" />
+                    <ref role="37wK5l" to="lgza:~ReadableProperty.get()" resolve="get" />
                   </node>
                 </node>
               </node>
@@ -7885,7 +7885,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1o1N$5kO4C$" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                    <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                     <node concept="2OqwBi" id="1o1N$5kO4C_" role="37wK5m">
                       <node concept="37vLTw" id="1o1N$5kO4CA" role="2Oq$k0">
                         <ref role="3cqZAo" node="1o1N$5kNSOE" resolve="myOriginalBounds" />
@@ -7914,7 +7914,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1o1N$5kO6fG" role="2OqNvi">
-                    <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="sub" />
+                    <ref role="37wK5l" to="g88e:~Vector.sub(jetbrains.jetpad.geometry.Vector)" resolve="sub" />
                     <node concept="2OqwBi" id="1o1N$5kO6fH" role="37wK5m">
                       <node concept="37vLTw" id="1o1N$5kO6fI" role="2Oq$k0">
                         <ref role="3cqZAo" node="1o1N$5kNSOE" resolve="myOriginalBounds" />
@@ -7933,7 +7933,7 @@
                   <ref role="3cqZAo" node="1o1N$5kjWBf" resolve="boundsDelta" />
                 </node>
                 <node concept="liA8E" id="1o1N$5kl_wi" role="2OqNvi">
-                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object):void" resolve="set" />
+                  <ref role="37wK5l" to="lgza:~WritableProperty.set(java.lang.Object)" resolve="set" />
                   <node concept="2ShNRf" id="1o1N$5kOYnC" role="37wK5m">
                     <node concept="1pGfFk" id="1o1N$5kOYOX" role="2ShVmc">
                       <ref role="37wK5l" to="g88e:~Rectangle.&lt;init&gt;(jetbrains.jetpad.geometry.Vector,jetbrains.jetpad.geometry.Vector)" resolve="Rectangle" />
@@ -8112,7 +8112,7 @@
                       <ref role="3cqZAo" node="3wCUwlDgEmD" resolve="origin" />
                     </node>
                     <node concept="liA8E" id="3n001qjgder" role="2OqNvi">
-                      <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                      <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                       <node concept="37vLTw" id="3n001qjglNF" role="37wK5m">
                         <ref role="3cqZAo" node="3n001qjglNB" resolve="effectiveDelta" />
                       </node>
@@ -8130,13 +8130,13 @@
                       <ref role="3cqZAo" node="3wCUwlDgEFp" resolve="dimension" />
                     </node>
                     <node concept="liA8E" id="3n001qjgfw8" role="2OqNvi">
-                      <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                      <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                       <node concept="2OqwBi" id="3n001qjgFMi" role="37wK5m">
                         <node concept="37vLTw" id="3n001qjgFKE" role="2Oq$k0">
                           <ref role="3cqZAo" node="3n001qjglNB" resolve="effectiveDelta" />
                         </node>
                         <node concept="liA8E" id="3n001qjgG5m" role="2OqNvi">
-                          <ref role="37wK5l" to="g88e:~Vector.negate():jetbrains.jetpad.geometry.Vector" resolve="negate" />
+                          <ref role="37wK5l" to="g88e:~Vector.negate()" resolve="negate" />
                         </node>
                       </node>
                     </node>
@@ -8162,7 +8162,7 @@
                         <ref role="3cqZAo" node="3wCUwlDgEFp" resolve="dimension" />
                       </node>
                       <node concept="liA8E" id="3n001qjgitE" role="2OqNvi">
-                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector):jetbrains.jetpad.geometry.Vector" resolve="add" />
+                        <ref role="37wK5l" to="g88e:~Vector.add(jetbrains.jetpad.geometry.Vector)" resolve="add" />
                         <node concept="37vLTw" id="3n001qjglNG" role="37wK5m">
                           <ref role="3cqZAo" node="3n001qjglNB" resolve="effectiveDelta" />
                         </node>

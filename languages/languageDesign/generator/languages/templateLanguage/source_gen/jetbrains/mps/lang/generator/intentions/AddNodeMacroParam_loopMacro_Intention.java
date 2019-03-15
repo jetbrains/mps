@@ -70,7 +70,7 @@ public final class AddNodeMacroParam_loopMacro_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Add LOOP macro over node." + MacroIntentionsUtil.getPresentaion(myParameter);
+      return "Add LOOP macro over node." + MacroIntentionsUtil.getPresentation(myParameter);
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

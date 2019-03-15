@@ -525,7 +525,7 @@
           <node concept="2OqwBi" id="hxBNAc4" role="3clFbG">
             <node concept="1XNTG" id="htwuU6l" role="2Oq$k0" />
             <node concept="liA8E" id="hxBNAc5" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
               <node concept="37vLTw" id="25JZ4W$ZKdY" role="37wK5m">
                 <ref role="3cqZAo" node="4AYHTJVOC5H" resolve="vmNew" />
               </node>

@@ -98,7 +98,7 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[3]);
         try {
-          tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Arrays.binarySearch(java.lang.Object[],java.lang.Object):int")));
+          tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Arrays.binarySearch(java.lang.Object[],java.lang.Object)")));
           tnode10.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode10, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Arrays")));
           TemplateContext context4 = context1.subContext();
           {

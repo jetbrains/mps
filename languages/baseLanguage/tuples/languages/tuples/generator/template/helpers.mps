@@ -184,7 +184,7 @@
                     <ref role="3cqZAo" node="7IHlAc70Zhz" resolve="fqName" />
                   </node>
                   <node concept="liA8E" id="7IHlAc70ZhX" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.substring(int):java.lang.String" resolve="substring" />
+                    <ref role="37wK5l" to="wyt6:~String.substring(int)" resolve="substring" />
                     <node concept="3cpWs3" id="7IHlAc70ZhY" role="37wK5m">
                       <node concept="3cmrfG" id="7IHlAc70ZhZ" role="3uHU7w">
                         <property role="3cmrfH" value="1" />
@@ -194,7 +194,7 @@
                           <ref role="3cqZAo" node="7IHlAc70ZhF" resolve="packageName" />
                         </node>
                         <node concept="liA8E" id="7IHlAc70Zi2" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                          <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                         </node>
                       </node>
                     </node>
@@ -221,7 +221,7 @@
               <ref role="3cqZAo" node="7IHlAc70Zhz" resolve="fqName" />
             </node>
             <node concept="liA8E" id="7IHlAc70Zi8" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+              <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
               <node concept="3cpWs3" id="7IHlAc70Zi9" role="37wK5m">
                 <node concept="Xl_RD" id="7IHlAc70Zia" role="3uHU7w">
                   <property role="Xl_RC" value="." />
@@ -310,7 +310,7 @@
         <node concept="3clFbF" id="i3QP2ov" role="3cqZAp">
           <node concept="3cpWs3" id="i3QP2ox" role="3clFbG">
             <node concept="2YIFZM" id="i3QP2oy" role="3uHU7w">
-              <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
+              <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <node concept="37vLTw" id="2BHiRxghg9K" role="37wK5m">
                 <ref role="3cqZAo" node="i3QP2oC" resolve="o" />
@@ -429,7 +429,7 @@
               </node>
             </node>
             <node concept="liA8E" id="i3QQr_9" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
               <node concept="Xjq3P" id="i3QQr_a" role="37wK5m" />
               <node concept="37vLTw" id="2BHiRxgm8ES" role="37wK5m">
                 <ref role="3cqZAo" node="i3QQr_0" resolve="value" />
@@ -451,7 +451,7 @@
               </node>
             </node>
             <node concept="liA8E" id="i3QQr_j" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object)" resolve="getUserObject" />
               <node concept="Xjq3P" id="i3QQr_k" role="37wK5m" />
             </node>
           </node>
@@ -479,7 +479,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="i3QQr_x" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object)" resolve="getUserObject" />
                 <node concept="Xjq3P" id="i3QQr_y" role="37wK5m" />
               </node>
             </node>

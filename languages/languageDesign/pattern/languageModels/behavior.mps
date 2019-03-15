@@ -445,7 +445,7 @@
                       <ref role="3cqZAo" node="4dzCQkRGUMm" resolve="names" />
                     </node>
                     <node concept="liA8E" id="4dzCQkRGUN9" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                      <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                       <node concept="2OqwBi" id="4dzCQkRGUNb" role="37wK5m">
                         <node concept="37vLTw" id="3GM_nagTsNV" role="2Oq$k0">
                           <ref role="3cqZAo" node="4dzCQkRGUMw" resolve="var" />
@@ -464,7 +464,7 @@
                     <ref role="3cqZAo" node="4dzCQkRGUMm" resolve="names" />
                   </node>
                   <node concept="liA8E" id="4dzCQkRGUMK" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object):boolean" resolve="contains" />
+                    <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
                     <node concept="2OqwBi" id="4dzCQkRGUMM" role="37wK5m">
                       <node concept="37vLTw" id="3GM_nagTri0" role="2Oq$k0">
                         <ref role="3cqZAo" node="4dzCQkRGUMw" resolve="var" />

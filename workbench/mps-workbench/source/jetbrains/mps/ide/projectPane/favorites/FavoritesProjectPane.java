@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,6 @@ import com.intellij.ide.SelectInTarget;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -33,9 +30,11 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.BaseLogicalViewProjectPane;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
+import jetbrains.mps.ide.projectPane.ProjectTreeChildOrder;
 import jetbrains.mps.ide.projectPane.favorites.MPSFavoritesManager.MPSFavoritesListener;
 import jetbrains.mps.ide.projectPane.favorites.root.FavoritesRoot;
 import jetbrains.mps.ide.ui.tree.MPSTree;
+import jetbrains.mps.ide.ui.tree.MPSTreeChildOrder;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
@@ -50,13 +49,8 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.tree.TreeNode;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-@State(
-    name = "Favorites",
-    storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
-)
 public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
   public static final String ID = "Favorites";
   private MPSFavoritesManager myFavoritesManager;
@@ -227,12 +221,15 @@ public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
     return "Favorites";
   }
 
-  private class MyLogicalViewTree extends MPSTree {
+  private class MyLogicalViewTree extends MPSTree implements MPSTreeChildOrder {
 
     private final jetbrains.mps.project.Project myProject;
+    private final MPSTreeChildOrder myChildOrder;
 
     MyLogicalViewTree(jetbrains.mps.project.Project mpsProject) {
       myProject = mpsProject;
+      // don't care to group nodes by concept in this view
+      myChildOrder = new ProjectTreeChildOrder();
     }
 
     @Override
@@ -288,8 +285,9 @@ public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
     }
 
     @Override
-    public Comparator<Object> getChildrenComparator() {
-      return getTreeChildrenComparator();
+    public boolean reorder(@NotNull MPSTreeNode parent, @NotNull List<MPSTreeNode> childrenToSort) {
+      // XXX in fact, not sure I shall care to order children in the favourites view, just coded a replacement for getChildrenComparator
+      return myChildOrder.reorder(parent, childrenToSort);
     }
 
     @Override

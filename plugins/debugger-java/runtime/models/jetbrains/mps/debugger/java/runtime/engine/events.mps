@@ -605,7 +605,7 @@
               <ref role="3cqZAo" node="2wxFklq8GuB" resolve="myState" />
             </node>
             <node concept="liA8E" id="2wxFklq8Gxd" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicInteger.compareAndSet(int,int):boolean" resolve="compareAndSet" />
+              <ref role="37wK5l" to="i5cy:~AtomicInteger.compareAndSet(int,int)" resolve="compareAndSet" />
               <node concept="37vLTw" id="2BHiRxeofRH" role="37wK5m">
                 <ref role="3cqZAo" node="5ABJGODL8rN" resolve="STATE_INITIAL" />
               </node>
@@ -642,7 +642,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2wxFklq8GvF" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Thread.start():void" resolve="start" />
+              <ref role="37wK5l" to="wyt6:~Thread.start()" resolve="start" />
             </node>
           </node>
         </node>
@@ -662,7 +662,7 @@
                 <ref role="3cqZAo" node="2wxFklq8GuB" resolve="myState" />
               </node>
               <node concept="liA8E" id="2wxFklq8GwY" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicInteger.get():int" resolve="get" />
+                <ref role="37wK5l" to="i5cy:~AtomicInteger.get()" resolve="get" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeompe" role="3uHU7w">
@@ -691,7 +691,7 @@
                 <ref role="3cqZAo" node="2wxFklq8GuB" resolve="myState" />
               </node>
               <node concept="liA8E" id="2wxFklq8G$V" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicInteger.compareAndSet(int,int):boolean" resolve="compareAndSet" />
+                <ref role="37wK5l" to="i5cy:~AtomicInteger.compareAndSet(int,int)" resolve="compareAndSet" />
                 <node concept="37vLTw" id="2BHiRxeojYb" role="37wK5m">
                   <ref role="3cqZAo" node="5ABJGODL8rN" resolve="STATE_INITIAL" />
                 </node>
@@ -705,7 +705,7 @@
                 <ref role="3cqZAo" node="2wxFklq8GuB" resolve="myState" />
               </node>
               <node concept="liA8E" id="2wxFklq8G_0" role="2OqNvi">
-                <ref role="37wK5l" to="i5cy:~AtomicInteger.compareAndSet(int,int):boolean" resolve="compareAndSet" />
+                <ref role="37wK5l" to="i5cy:~AtomicInteger.compareAndSet(int,int)" resolve="compareAndSet" />
                 <node concept="37vLTw" id="2BHiRxeoe58" role="37wK5m">
                   <ref role="3cqZAo" node="5ABJGODL8rR" resolve="STATE_ATTACHED" />
                 </node>
@@ -732,7 +732,7 @@
                       <ref role="3cqZAo" node="2wxFklq8GuB" resolve="myState" />
                     </node>
                     <node concept="liA8E" id="2wxFklq8G_d" role="2OqNvi">
-                      <ref role="37wK5l" to="i5cy:~AtomicInteger.set(int):void" resolve="set" />
+                      <ref role="37wK5l" to="i5cy:~AtomicInteger.set(int)" resolve="set" />
                       <node concept="37vLTw" id="2BHiRxeogpp" role="37wK5m">
                         <ref role="3cqZAo" node="5ABJGODL8rZ" resolve="STATE_DETACHED" />
                       </node>
@@ -798,7 +798,7 @@
                           <ref role="3cqZAo" node="5ABJGODL8sd" resolve="myVirtualMachine" />
                         </node>
                         <node concept="liA8E" id="y48tyGZ_x_" role="2OqNvi">
-                          <ref role="37wK5l" to="frkw:~VirtualMachine.suspend():void" resolve="suspend" />
+                          <ref role="37wK5l" to="frkw:~VirtualMachine.suspend()" resolve="suspend" />
                         </node>
                       </node>
                     </node>
@@ -1074,7 +1074,7 @@
                               <node concept="3clFbF" id="2wxFklq8GFw" role="3cqZAp">
                                 <node concept="2OqwBi" id="2wxFklq8GFx" role="3clFbG">
                                   <node concept="liA8E" id="2wxFklq8GFz" role="2OqNvi">
-                                    <ref role="37wK5l" to="frkw:~VirtualMachine.resume():void" resolve="resume" />
+                                    <ref role="37wK5l" to="frkw:~VirtualMachine.resume()" resolve="resume" />
                                   </node>
                                   <node concept="37vLTw" id="2BHiRxeuW3y" role="2Oq$k0">
                                     <ref role="3cqZAo" node="5ABJGODL8sd" resolve="myVirtualMachine" />
@@ -1084,7 +1084,7 @@
                               <node concept="3clFbF" id="2wxFklq8GF$" role="3cqZAp">
                                 <node concept="2OqwBi" id="2wxFklq8GF_" role="3clFbG">
                                   <node concept="liA8E" id="2wxFklq8GFB" role="2OqNvi">
-                                    <ref role="37wK5l" to="frkw:~VirtualMachine.dispose():void" resolve="dispose" />
+                                    <ref role="37wK5l" to="frkw:~VirtualMachine.dispose()" resolve="dispose" />
                                   </node>
                                   <node concept="37vLTw" id="2BHiRxeuk0e" role="2Oq$k0">
                                     <ref role="3cqZAo" node="5ABJGODL8sd" resolve="myVirtualMachine" />
@@ -1100,7 +1100,7 @@
                                   <ref role="3cqZAo" node="5ABJGODL8sd" resolve="myVirtualMachine" />
                                 </node>
                                 <node concept="liA8E" id="2wxFklq8GFG" role="2OqNvi">
-                                  <ref role="37wK5l" to="frkw:~VirtualMachine.exit(int):void" resolve="exit" />
+                                  <ref role="37wK5l" to="frkw:~VirtualMachine.exit(int)" resolve="exit" />
                                   <node concept="1ZRNhn" id="2wxFklq8GFH" role="37wK5m">
                                     <node concept="3cmrfG" id="2wxFklq8GFI" role="2$L3a6">
                                       <property role="3cmrfH" value="1" />
@@ -1254,7 +1254,7 @@
                 <ref role="3cqZAo" node="5ABJGODL8DA" resolve="event" />
               </node>
               <node concept="liA8E" id="5ABJGODLbUa" role="2OqNvi">
-                <ref role="37wK5l" to="5qx8:~Event.request():com.sun.jdi.request.EventRequest" resolve="request" />
+                <ref role="37wK5l" to="5qx8:~Event.request()" resolve="request" />
               </node>
             </node>
           </node>
@@ -1384,7 +1384,7 @@
                           <ref role="3cqZAo" node="5ABJGODL8DA" resolve="event" />
                         </node>
                         <node concept="liA8E" id="5ABJGODLciS" role="2OqNvi">
-                          <ref role="37wK5l" to="5qx8:~LocatableEvent.thread():com.sun.jdi.ThreadReference" resolve="thread" />
+                          <ref role="37wK5l" to="5qx8:~LocatableEvent.thread()" resolve="thread" />
                         </node>
                       </node>
                       <node concept="2OqwBi" id="5ABJGODLcju" role="37wK5m">
@@ -1493,7 +1493,7 @@
               <ref role="3cqZAo" node="2wxFklq8GAz" resolve="stepRequest" />
             </node>
             <node concept="liA8E" id="2wxFklq8GAL" role="2OqNvi">
-              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String):void" resolve="addClassExclusionFilter" />
+              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String)" resolve="addClassExclusionFilter" />
               <node concept="Xl_RD" id="2wxFklq8GAM" role="37wK5m">
                 <property role="Xl_RC" value="java.*" />
               </node>
@@ -1506,7 +1506,7 @@
               <ref role="3cqZAo" node="2wxFklq8GAz" resolve="stepRequest" />
             </node>
             <node concept="liA8E" id="2wxFklq8GAQ" role="2OqNvi">
-              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String):void" resolve="addClassExclusionFilter" />
+              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String)" resolve="addClassExclusionFilter" />
               <node concept="Xl_RD" id="2wxFklq8GAR" role="37wK5m">
                 <property role="Xl_RC" value="javax.*" />
               </node>
@@ -1519,7 +1519,7 @@
               <ref role="3cqZAo" node="2wxFklq8GAz" resolve="stepRequest" />
             </node>
             <node concept="liA8E" id="2wxFklq8GAV" role="2OqNvi">
-              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String):void" resolve="addClassExclusionFilter" />
+              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String)" resolve="addClassExclusionFilter" />
               <node concept="Xl_RD" id="2wxFklq8GAW" role="37wK5m">
                 <property role="Xl_RC" value="org.omg.*" />
               </node>
@@ -1532,7 +1532,7 @@
               <ref role="3cqZAo" node="2wxFklq8GAz" resolve="stepRequest" />
             </node>
             <node concept="liA8E" id="2wxFklq8GB0" role="2OqNvi">
-              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String):void" resolve="addClassExclusionFilter" />
+              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String)" resolve="addClassExclusionFilter" />
               <node concept="Xl_RD" id="2wxFklq8GB1" role="37wK5m">
                 <property role="Xl_RC" value="sun.*" />
               </node>
@@ -1545,7 +1545,7 @@
               <ref role="3cqZAo" node="2wxFklq8GAz" resolve="stepRequest" />
             </node>
             <node concept="liA8E" id="2wxFklq8GB5" role="2OqNvi">
-              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String):void" resolve="addClassExclusionFilter" />
+              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String)" resolve="addClassExclusionFilter" />
               <node concept="Xl_RD" id="2wxFklq8GB6" role="37wK5m">
                 <property role="Xl_RC" value="junit.*" />
               </node>
@@ -1558,7 +1558,7 @@
               <ref role="3cqZAo" node="2wxFklq8GAz" resolve="stepRequest" />
             </node>
             <node concept="liA8E" id="2wxFklq8GBa" role="2OqNvi">
-              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String):void" resolve="addClassExclusionFilter" />
+              <ref role="37wK5l" to="rpq9:~StepRequest.addClassExclusionFilter(java.lang.String)" resolve="addClassExclusionFilter" />
               <node concept="Xl_RD" id="2wxFklq8GBb" role="37wK5m">
                 <property role="Xl_RC" value="com.sun.*" />
               </node>
@@ -1644,7 +1644,7 @@
                 <ref role="3cqZAo" node="5ABJGODL8DI" resolve="event" />
               </node>
               <node concept="liA8E" id="2wxFklq8GxV" role="2OqNvi">
-                <ref role="37wK5l" to="5qx8:~LocatableEvent.thread():com.sun.jdi.ThreadReference" resolve="thread" />
+                <ref role="37wK5l" to="5qx8:~LocatableEvent.thread()" resolve="thread" />
               </node>
             </node>
           </node>
@@ -1693,7 +1693,7 @@
                       <ref role="3cqZAo" node="5ABJGODL8DI" resolve="event" />
                     </node>
                     <node concept="liA8E" id="2ErCJ2zXqF2" role="2OqNvi">
-                      <ref role="37wK5l" to="5qx8:~Event.request():com.sun.jdi.request.EventRequest" resolve="request" />
+                      <ref role="37wK5l" to="5qx8:~Event.request()" resolve="request" />
                     </node>
                   </node>
                 </node>
@@ -1892,11 +1892,11 @@
                                                     <ref role="3cqZAo" node="5ABJGODL8DI" resolve="event" />
                                                   </node>
                                                   <node concept="liA8E" id="2wxFklq8GIe" role="2OqNvi">
-                                                    <ref role="37wK5l" to="frkw:~Locatable.location():com.sun.jdi.Location" resolve="location" />
+                                                    <ref role="37wK5l" to="frkw:~Locatable.location()" resolve="location" />
                                                   </node>
                                                 </node>
                                                 <node concept="liA8E" id="2wxFklq8GIf" role="2OqNvi">
-                                                  <ref role="37wK5l" to="frkw:~Location.sourceName():java.lang.String" resolve="sourceName" />
+                                                  <ref role="37wK5l" to="frkw:~Location.sourceName()" resolve="sourceName" />
                                                 </node>
                                               </node>
                                             </node>
@@ -1910,11 +1910,11 @@
                                                 <ref role="3cqZAo" node="5ABJGODL8DI" resolve="event" />
                                               </node>
                                               <node concept="liA8E" id="2wxFklq8GIk" role="2OqNvi">
-                                                <ref role="37wK5l" to="frkw:~Locatable.location():com.sun.jdi.Location" resolve="location" />
+                                                <ref role="37wK5l" to="frkw:~Locatable.location()" resolve="location" />
                                               </node>
                                             </node>
                                             <node concept="liA8E" id="2wxFklq8GIl" role="2OqNvi">
-                                              <ref role="37wK5l" to="frkw:~Location.lineNumber():int" resolve="lineNumber" />
+                                              <ref role="37wK5l" to="frkw:~Location.lineNumber()" resolve="lineNumber" />
                                             </node>
                                           </node>
                                         </node>
@@ -2019,11 +2019,11 @@
         <node concept="3clFbF" id="2ErCJ2zX3X3" role="3cqZAp">
           <node concept="2OqwBi" id="2ErCJ2zX4$5" role="3clFbG">
             <node concept="2YIFZM" id="2ErCJ2zX4zO" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
               <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
             <node concept="liA8E" id="2ErCJ2zX4Ig" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.executeOnPooledThread(java.lang.Runnable):java.util.concurrent.Future" resolve="executeOnPooledThread" />
+              <ref role="37wK5l" to="bd8o:~Application.executeOnPooledThread(java.lang.Runnable)" resolve="executeOnPooledThread" />
               <node concept="1bVj0M" id="2ErCJ2zX4Ih" role="37wK5m">
                 <node concept="3clFbS" id="2ErCJ2zX4Ii" role="1bW5cS">
                   <node concept="3clFbF" id="1nuoWSHLfW_" role="3cqZAp">
@@ -2088,11 +2088,11 @@
         <node concept="3clFbF" id="1nuoWSHToFW" role="3cqZAp">
           <node concept="2OqwBi" id="1nuoWSHToMI" role="3clFbG">
             <node concept="2YIFZM" id="1nuoWSHToFY" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
               <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
             <node concept="liA8E" id="1nuoWSHTsVs" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.assertIsDispatchThread():void" resolve="assertIsDispatchThread" />
+              <ref role="37wK5l" to="bd8o:~Application.assertIsDispatchThread()" resolve="assertIsDispatchThread" />
             </node>
           </node>
         </node>
@@ -2144,7 +2144,7 @@
               <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
             </node>
             <node concept="liA8E" id="6iKTdy44Hyy" role="2OqNvi">
-              <ref role="37wK5l" to="ot7:~ProgressWindow.setTitle(java.lang.String):void" resolve="setTitle" />
+              <ref role="37wK5l" to="ot7:~ProgressWindow.setTitle(java.lang.String)" resolve="setTitle" />
               <node concept="Xl_RD" id="6iKTdy44CsI" role="37wK5m">
                 <property role="Xl_RC" value="Evaluating" />
               </node>
@@ -2179,7 +2179,7 @@
                             <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
                           </node>
                           <node concept="liA8E" id="4sfZAWyrFH3" role="2OqNvi">
-                            <ref role="37wK5l" to="ot7:~ProgressWindow.stop():void" resolve="stop" />
+                            <ref role="37wK5l" to="ot7:~ProgressWindow.stop()" resolve="stop" />
                           </node>
                         </node>
                       </node>
@@ -2199,7 +2199,7 @@
               <ref role="3cqZAo" node="4sfZAWyrFGR" resolve="progressIndicatorListener" />
             </node>
             <node concept="liA8E" id="4sfZAWyrQNV" role="2OqNvi">
-              <ref role="37wK5l" to="ot7:~ProgressIndicatorListener.installToProgress(com.intellij.openapi.wm.ex.ProgressIndicatorEx):void" resolve="installToProgress" />
+              <ref role="37wK5l" to="ot7:~ProgressIndicatorListener.installToProgress(com.intellij.openapi.wm.ex.ProgressIndicatorEx)" resolve="installToProgress" />
               <node concept="37vLTw" id="4sfZAWyrQWz" role="37wK5m">
                 <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
               </node>
@@ -2210,11 +2210,11 @@
         <node concept="3clFbF" id="4IpZL7CsIm0" role="3cqZAp">
           <node concept="2OqwBi" id="4IpZL7CsJo0" role="3clFbG">
             <node concept="2YIFZM" id="4IpZL7CsJdE" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
               <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
             <node concept="liA8E" id="4IpZL7CsMpy" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.executeOnPooledThread(java.lang.Runnable):java.util.concurrent.Future" resolve="executeOnPooledThread" />
+              <ref role="37wK5l" to="bd8o:~Application.executeOnPooledThread(java.lang.Runnable)" resolve="executeOnPooledThread" />
               <node concept="1bVj0M" id="4IpZL7CsMqw" role="37wK5m">
                 <node concept="3clFbS" id="4IpZL7CsMqx" role="1bW5cS">
                   <node concept="SfApY" id="6iKTdy44H$U" role="3cqZAp">
@@ -2222,11 +2222,11 @@
                       <node concept="3clFbF" id="7$iWx78nu5O" role="3cqZAp">
                         <node concept="2OqwBi" id="6pYUqzDdNt$" role="3clFbG">
                           <node concept="2YIFZM" id="6pYUqzDdNqC" role="2Oq$k0">
-                            <ref role="37wK5l" to="xygl:~ProgressManager.getInstance():com.intellij.openapi.progress.ProgressManager" resolve="getInstance" />
+                            <ref role="37wK5l" to="xygl:~ProgressManager.getInstance()" resolve="getInstance" />
                             <ref role="1Pybhc" to="xygl:~ProgressManager" resolve="ProgressManager" />
                           </node>
                           <node concept="liA8E" id="6pYUqzDdO1K" role="2OqNvi">
-                            <ref role="37wK5l" to="xygl:~ProgressManager.runProcess(java.lang.Runnable,com.intellij.openapi.progress.ProgressIndicator):void" resolve="runProcess" />
+                            <ref role="37wK5l" to="xygl:~ProgressManager.runProcess(java.lang.Runnable,com.intellij.openapi.progress.ProgressIndicator)" resolve="runProcess" />
                             <node concept="1bVj0M" id="6iKTdy449TW" role="37wK5m">
                               <node concept="3clFbS" id="6iKTdy449TX" role="1bW5cS">
                                 <node concept="3clFbF" id="1nuoWSHLftS" role="3cqZAp">
@@ -2245,7 +2245,7 @@
                                           <ref role="3cqZAo" node="7_cOjZe5fzs" resolve="resultReference" />
                                         </node>
                                         <node concept="liA8E" id="7_cOjZe5pYs" role="2OqNvi">
-                                          <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object):void" resolve="set" />
+                                          <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
                                           <node concept="2Sg_IR" id="47Hi8V$ZasL" role="37wK5m">
                                             <node concept="37vLTw" id="47Hi8V$ZasM" role="2SgG2M">
                                               <ref role="3cqZAo" node="47Hi8V$YpXW" resolve="evaluationCommand" />
@@ -2289,7 +2289,7 @@
                               <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
                             </node>
                             <node concept="liA8E" id="6iKTdy44L0$" role="2OqNvi">
-                              <ref role="37wK5l" to="ot7:~ProgressIndicatorBase.cancel():void" resolve="cancel" />
+                              <ref role="37wK5l" to="ot7:~ProgressIndicatorBase.cancel()" resolve="cancel" />
                             </node>
                           </node>
                         </node>
@@ -2309,7 +2309,7 @@
                               <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
                             </node>
                             <node concept="liA8E" id="6iKTdy44OF9" role="2OqNvi">
-                              <ref role="37wK5l" to="ot7:~ProgressIndicatorBase.cancel():void" resolve="cancel" />
+                              <ref role="37wK5l" to="ot7:~ProgressIndicatorBase.cancel()" resolve="cancel" />
                             </node>
                           </node>
                         </node>
@@ -2333,7 +2333,7 @@
               <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
             </node>
             <node concept="liA8E" id="6iKTdy45bwt" role="2OqNvi">
-              <ref role="37wK5l" to="ot7:~ProgressWindow.startBlocking():void" resolve="startBlocking" />
+              <ref role="37wK5l" to="ot7:~ProgressWindow.startBlocking()" resolve="startBlocking" />
             </node>
           </node>
         </node>
@@ -2344,7 +2344,7 @@
               <ref role="3cqZAo" node="7_cOjZe5fzs" resolve="resultReference" />
             </node>
             <node concept="liA8E" id="7_cOjZe5t0n" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicReference.get():java.lang.Object" resolve="get" />
+              <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
             </node>
           </node>
         </node>
@@ -2859,11 +2859,11 @@
             <node concept="3fqX7Q" id="5MCUugRdYOo" role="3uHU7w">
               <node concept="2OqwBi" id="5MCUugRdYOG" role="3fr31v">
                 <node concept="2YIFZM" id="5MCUugRdYOr" role="2Oq$k0">
-                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
                   <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
                 </node>
                 <node concept="liA8E" id="5MCUugRdYOM" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:~Application.isDispatchThread():boolean" resolve="isDispatchThread" />
+                  <ref role="37wK5l" to="bd8o:~Application.isDispatchThread()" resolve="isDispatchThread" />
                 </node>
               </node>
             </node>
@@ -2919,7 +2919,7 @@
                       <ref role="3cqZAo" node="5ABJGODL8sd" resolve="myVirtualMachine" />
                     </node>
                     <node concept="liA8E" id="5ABJGODL8ri" role="2OqNvi">
-                      <ref role="37wK5l" to="frkw:~VirtualMachine.eventQueue():com.sun.jdi.event.EventQueue" resolve="eventQueue" />
+                      <ref role="37wK5l" to="frkw:~VirtualMachine.eventQueue()" resolve="eventQueue" />
                     </node>
                   </node>
                 </node>
@@ -2942,7 +2942,7 @@
                           <ref role="3cqZAo" node="5ABJGODL8re" resolve="eventQueue" />
                         </node>
                         <node concept="liA8E" id="5ABJGODL8rs" role="2OqNvi">
-                          <ref role="37wK5l" to="5qx8:~EventQueue.remove():com.sun.jdi.event.EventSet" resolve="remove" />
+                          <ref role="37wK5l" to="5qx8:~EventQueue.remove()" resolve="remove" />
                         </node>
                       </node>
                     </node>
@@ -3339,7 +3339,7 @@
                 <ref role="3cqZAo" node="5ABJGODL8$8" resolve="eventSet" />
               </node>
               <node concept="liA8E" id="5ABJGODL8At" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~Set.size():int" resolve="size" />
+                <ref role="37wK5l" to="33ny:~Set.size()" resolve="size" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeuMB4" role="37vLTJ">
@@ -3406,7 +3406,7 @@
                 <ref role="3cqZAo" node="6DVSY0NISvA" resolve="event" />
               </node>
               <node concept="liA8E" id="6DVSY0NISwE" role="2OqNvi">
-                <ref role="37wK5l" to="5qx8:~LocatableEvent.thread():com.sun.jdi.ThreadReference" resolve="thread" />
+                <ref role="37wK5l" to="5qx8:~LocatableEvent.thread()" resolve="thread" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeut4H" role="37vLTJ">
@@ -3444,7 +3444,7 @@
               <ref role="3cqZAo" node="5ABJGODL8$a" resolve="myEventSet" />
             </node>
             <node concept="liA8E" id="5ABJGODLck6" role="2OqNvi">
-              <ref role="37wK5l" to="5qx8:~EventSet.suspendPolicy():int" resolve="suspendPolicy" />
+              <ref role="37wK5l" to="5qx8:~EventSet.suspendPolicy()" resolve="suspendPolicy" />
             </node>
           </node>
         </node>
@@ -3544,7 +3544,7 @@
               <ref role="3cqZAo" node="5ABJGODL8$a" resolve="myEventSet" />
             </node>
             <node concept="liA8E" id="2u4CbglLzwR" role="2OqNvi">
-              <ref role="37wK5l" to="5qx8:~EventSet.resume():void" resolve="resume" />
+              <ref role="37wK5l" to="5qx8:~EventSet.resume()" resolve="resume" />
             </node>
           </node>
         </node>
@@ -3966,7 +3966,7 @@
                             <ref role="3cqZAo" node="2wxFklq8MFw" resolve="e" />
                           </node>
                           <node concept="liA8E" id="2wxFklq8MFi" role="2OqNvi">
-                            <ref role="37wK5l" to="frkw:~InternalException.errorCode():int" resolve="errorCode" />
+                            <ref role="37wK5l" to="frkw:~InternalException.errorCode()" resolve="errorCode" />
                           </node>
                         </node>
                         <node concept="3cmrfG" id="2wxFklq8MFj" role="3uHU7w">
@@ -4394,7 +4394,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4cAPFLA9hDs" role="2OqNvi">
-              <ref role="37wK5l" to="frkw:~VirtualMachine.resume():void" resolve="resume" />
+              <ref role="37wK5l" to="frkw:~VirtualMachine.resume()" resolve="resume" />
             </node>
           </node>
         </node>

@@ -278,7 +278,7 @@
                     <node concept="2OqwBi" id="1R1KclLA1dz" role="3uHU7w">
                       <node concept="2OqwBi" id="1R1KclLA1d$" role="2Oq$k0">
                         <node concept="liA8E" id="24cAaiVCalb" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                          <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                         </node>
                         <node concept="2JrnkZ" id="1R1KclLA1d_" role="2Oq$k0">
                           <node concept="37vLTw" id="2BHiRxghfUn" role="2JrQYb">
@@ -287,7 +287,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="1R1KclLA1dC" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                        <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                       </node>
                     </node>
                   </node>
@@ -409,7 +409,7 @@
                   <node concept="2OqwBi" id="1R1KclLA19S" role="3uHU7w">
                     <node concept="2OqwBi" id="1R1KclLA19T" role="2Oq$k0">
                       <node concept="liA8E" id="24cAaiVCamZ" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                       </node>
                       <node concept="2JrnkZ" id="1R1KclLA19U" role="2Oq$k0">
                         <node concept="37vLTw" id="2BHiRxglawp" role="2JrQYb">
@@ -418,7 +418,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="1R1KclLA19X" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                     </node>
                   </node>
                 </node>

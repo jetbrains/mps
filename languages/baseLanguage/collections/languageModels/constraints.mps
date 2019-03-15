@@ -257,7 +257,7 @@
                   <node concept="2OqwBi" id="5i_Pov1ZH6b" role="33vP2m">
                     <node concept="1Wqviy" id="5i_Pov1ZH6a" role="2Oq$k0" />
                     <node concept="liA8E" id="5i_Pov1ZH6f" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+                      <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                       <node concept="37vLTw" id="3GM_nagTyau" role="37wK5m">
                         <ref role="3cqZAo" node="5i_Pov1ZH5O" resolve="i" />
                       </node>
@@ -279,7 +279,7 @@
                       <node concept="1eOMI4" id="5i_Pov1ZR$p" role="3uHU7w">
                         <node concept="1Wc70l" id="5i_Pov1ZR$q" role="1eOMHV">
                           <node concept="2YIFZM" id="5i_Pov1ZR$r" role="3uHU7w">
-                            <ref role="37wK5l" to="wyt6:~Character.isJavaIdentifierPart(char):boolean" resolve="isJavaIdentifierPart" />
+                            <ref role="37wK5l" to="wyt6:~Character.isJavaIdentifierPart(char)" resolve="isJavaIdentifierPart" />
                             <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
                             <node concept="37vLTw" id="3GM_nagTwcv" role="37wK5m">
                               <ref role="3cqZAo" node="5i_Pov1ZH67" resolve="c" />
@@ -298,7 +298,7 @@
                       <node concept="1eOMI4" id="5i_Pov1ZR$w" role="3uHU7B">
                         <node concept="1Wc70l" id="5i_Pov1ZR$x" role="1eOMHV">
                           <node concept="2YIFZM" id="5i_Pov1ZR$y" role="3uHU7w">
-                            <ref role="37wK5l" to="wyt6:~Character.isJavaIdentifierStart(char):boolean" resolve="isJavaIdentifierStart" />
+                            <ref role="37wK5l" to="wyt6:~Character.isJavaIdentifierStart(char)" resolve="isJavaIdentifierStart" />
                             <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
                             <node concept="37vLTw" id="3GM_nagTuA9" role="37wK5m">
                               <ref role="3cqZAo" node="5i_Pov1ZH67" resolve="c" />
@@ -330,7 +330,7 @@
               <node concept="2OqwBi" id="5i_Pov1ZH5Y" role="3uHU7w">
                 <node concept="1Wqviy" id="5i_Pov1ZH5X" role="2Oq$k0" />
                 <node concept="liA8E" id="5i_Pov1ZH62" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                  <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                 </node>
               </node>
               <node concept="37vLTw" id="3GM_nagTATw" role="3uHU7B">

@@ -6111,7 +6111,7 @@
                   <ref role="1M0zk5" node="6FdTrwaBvDz" resolve="intVar" />
                 </node>
                 <node concept="liA8E" id="6FdTrwaBvDH" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+                  <ref role="37wK5l" to="wyt6:~Integer.intValue()" resolve="intValue" />
                 </node>
               </node>
             </node>
@@ -6227,7 +6227,7 @@
                   <ref role="1M0zk5" node="6rwLYE$obHc" resolve="intVar" />
                 </node>
                 <node concept="liA8E" id="6rwLYE$obHl" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+                  <ref role="37wK5l" to="wyt6:~Integer.intValue()" resolve="intValue" />
                 </node>
               </node>
               <node concept="37vLTw" id="3GM_nagT_hq" role="37vLTJ">
@@ -6348,7 +6348,7 @@
                   <ref role="1M0zk5" node="EKmx8W6Ohe" resolve="intVar" />
                 </node>
                 <node concept="liA8E" id="EKmx8W6Ohn" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+                  <ref role="37wK5l" to="wyt6:~Integer.intValue()" resolve="intValue" />
                 </node>
               </node>
               <node concept="3uibUv" id="EKmx8W6Ohr" role="1tU5fm">
@@ -6362,7 +6362,7 @@
                 <ref role="3cqZAo" node="EKmx8W6Ohj" resolve="intValue" />
               </node>
               <node concept="liA8E" id="EKmx8W6OhK" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.hashCode():int" resolve="hashCode" />
+                <ref role="37wK5l" to="wyt6:~Object.hashCode()" resolve="hashCode" />
               </node>
             </node>
           </node>
@@ -6518,7 +6518,7 @@
                   <ref role="1M0zk5" node="4BBxyFbWyM4" resolve="intVar" />
                 </node>
                 <node concept="liA8E" id="4BBxyFbWyMc" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+                  <ref role="37wK5l" to="wyt6:~Integer.intValue()" resolve="intValue" />
                 </node>
               </node>
               <node concept="3uibUv" id="4BBxyFbWyMd" role="1tU5fm">
@@ -6532,7 +6532,7 @@
                 <ref role="3cqZAo" node="4BBxyFbWyM9" resolve="intValue" />
               </node>
               <node concept="liA8E" id="4BBxyFbWyMh" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.hashCode():int" resolve="hashCode" />
+                <ref role="37wK5l" to="wyt6:~Object.hashCode()" resolve="hashCode" />
               </node>
             </node>
           </node>
@@ -6695,7 +6695,7 @@
                   <ref role="1M0zk5" node="6rwLYE$obI2" resolve="intVar" />
                 </node>
                 <node concept="liA8E" id="6rwLYE$obIa" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+                  <ref role="37wK5l" to="wyt6:~Integer.intValue()" resolve="intValue" />
                 </node>
               </node>
               <node concept="37vLTw" id="3GM_nagTvkc" role="37vLTJ">
@@ -6709,7 +6709,7 @@
                 <ref role="3cqZAo" node="6rwLYE$obI7" resolve="intValue" />
               </node>
               <node concept="liA8E" id="6rwLYE$obIf" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.hashCode():int" resolve="hashCode" />
+                <ref role="37wK5l" to="wyt6:~Object.hashCode()" resolve="hashCode" />
               </node>
             </node>
           </node>
@@ -6866,7 +6866,7 @@
                   <ref role="1M0zk5" node="EKmx8W6Oim" resolve="intVar" />
                 </node>
                 <node concept="liA8E" id="EKmx8W6Oj2" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                  <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                 </node>
               </node>
             </node>
@@ -6984,7 +6984,7 @@
                   <ref role="1M0zk5" node="6rwLYE$n_CF" resolve="intVar" />
                 </node>
                 <node concept="liA8E" id="6rwLYE$n_CO" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Object.getClass():java.lang.Class" resolve="getClass" />
+                  <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                 </node>
               </node>
               <node concept="37vLTw" id="3GM_nagTxzf" role="37vLTJ">
@@ -10049,7 +10049,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="15fEaLewjg_" role="2OqNvi">
-                <ref role="37wK5l" to="zf81:~URLClassLoader.getURLs():java.net.URL[]" resolve="getURLs" />
+                <ref role="37wK5l" to="zf81:~URLClassLoader.getURLs()" resolve="getURLs" />
               </node>
             </node>
           </node>

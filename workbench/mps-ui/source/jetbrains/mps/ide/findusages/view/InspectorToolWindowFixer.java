@@ -51,6 +51,9 @@ final class InspectorToolWindowFixer {
     if (weAreInInspector) {
       UsagesViewTool usagesViewTool = project.getComponent(UsagesViewTool.class);
       int currentTabIndex = usagesViewTool.getCurrentTabIndex();
+      if (currentTabIndex < 0) {
+        return null;
+      }
       UsagesView usagesView = usagesViewTool.getUsagesView(currentTabIndex);
       return usagesView.getTreeComponent().getOccurenceNavigator();
     }

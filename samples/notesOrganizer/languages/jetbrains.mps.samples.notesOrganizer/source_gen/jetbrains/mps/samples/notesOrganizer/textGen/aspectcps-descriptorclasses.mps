@@ -314,14 +314,14 @@
               </node>
             </node>
             <node concept="liA8E" id="F" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode):void" resolve="appendNode" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <node concept="2OqwBi" id="J" role="37wK5m">
                 <node concept="2OqwBi" id="L" role="2Oq$k0">
                   <node concept="37vLTw" id="O" role="2Oq$k0">
                     <ref role="3cqZAo" node="c" resolve="ctx" />
                   </node>
                   <node concept="liA8E" id="P" role="2OqNvi">
-                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                   <node concept="cd27G" id="Q" role="lGtFl">
                     <node concept="3u3nmq" id="R" role="cd27D">
@@ -372,7 +372,7 @@
               </node>
             </node>
             <node concept="liA8E" id="11" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="Xl_RD" id="15" role="37wK5m">
                 <property role="Xl_RC" value=" " />
                 <node concept="cd27G" id="17" role="lGtFl">
@@ -535,14 +535,14 @@
               </node>
             </node>
             <node concept="liA8E" id="20" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="2OqwBi" id="24" role="37wK5m">
                 <node concept="2OqwBi" id="26" role="2Oq$k0">
                   <node concept="37vLTw" id="29" role="2Oq$k0">
                     <ref role="3cqZAo" node="1y" resolve="ctx" />
                   </node>
                   <node concept="liA8E" id="2a" role="2OqNvi">
-                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                   <node concept="cd27G" id="2b" role="lGtFl">
                     <node concept="3u3nmq" id="2c" role="cd27D">
@@ -880,7 +880,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4e" role="2OqNvi">
-                  <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode):void" resolve="appendNode" />
+                  <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <node concept="37vLTw" id="4i" role="37wK5m">
                     <ref role="3cqZAo" node="46" resolve="item" />
                     <node concept="cd27G" id="4k" role="lGtFl">
@@ -934,7 +934,7 @@
                 <ref role="3cqZAo" node="3q" resolve="ctx" />
               </node>
               <node concept="liA8E" id="4z" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
               <node concept="cd27G" id="4$" role="lGtFl">
                 <node concept="3u3nmq" id="4_" role="cd27D">
@@ -973,7 +973,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4H" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine():jetbrains.mps.text.TextArea" resolve="newLine" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <node concept="cd27G" id="4L" role="lGtFl">
                 <node concept="3u3nmq" id="4M" role="cd27D">
                   <property role="3u3nmv" value="8908453262580000428" />
@@ -1005,7 +1005,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4Y" role="2OqNvi">
-                  <ref role="37wK5l" to="yfwt:~TextGenContext.getBuffer():jetbrains.mps.text.TextBuffer" resolve="getBuffer" />
+                  <ref role="37wK5l" to="yfwt:~TextGenContext.getBuffer()" resolve="getBuffer" />
                   <node concept="cd27G" id="52" role="lGtFl">
                     <node concept="3u3nmq" id="53" role="cd27D">
                       <property role="3u3nmv" value="8908453262580015142" />
@@ -1019,7 +1019,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4V" role="2OqNvi">
-                <ref role="37wK5l" to="ao3:~TextBuffer.area():jetbrains.mps.text.TextArea" resolve="area" />
+                <ref role="37wK5l" to="ao3:~TextBuffer.area()" resolve="area" />
                 <node concept="cd27G" id="55" role="lGtFl">
                   <node concept="3u3nmq" id="56" role="cd27D">
                     <property role="3u3nmv" value="8908453262580015142" />
@@ -1033,7 +1033,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4S" role="2OqNvi">
-              <ref role="37wK5l" to="ao3:~TextArea.increaseIndent():jetbrains.mps.text.TextArea" resolve="increaseIndent" />
+              <ref role="37wK5l" to="ao3:~TextArea.increaseIndent()" resolve="increaseIndent" />
               <node concept="cd27G" id="58" role="lGtFl">
                 <node concept="3u3nmq" id="59" role="cd27D">
                   <property role="3u3nmv" value="8908453262580015142" />
@@ -1063,7 +1063,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5f" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.indent():jetbrains.mps.text.TextArea" resolve="indent" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.indent()" resolve="indent" />
               <node concept="cd27G" id="5j" role="lGtFl">
                 <node concept="3u3nmq" id="5k" role="cd27D">
                   <property role="3u3nmv" value="8908453262580016817" />
@@ -1093,7 +1093,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5q" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="Xl_RD" id="5u" role="37wK5m">
                 <property role="Xl_RC" value="Status " />
                 <node concept="cd27G" id="5w" role="lGtFl">
@@ -1131,7 +1131,7 @@
               </node>
             </node>
             <node concept="liA8E" id="5C" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="2OqwBi" id="5G" role="37wK5m">
                 <node concept="2OqwBi" id="5I" role="2Oq$k0">
                   <node concept="2OqwBi" id="5L" role="2Oq$k0">
@@ -1139,7 +1139,7 @@
                       <ref role="3cqZAo" node="3q" resolve="ctx" />
                     </node>
                     <node concept="liA8E" id="5P" role="2OqNvi">
-                      <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                      <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                     </node>
                     <node concept="cd27G" id="5Q" role="lGtFl">
                       <node concept="3u3nmq" id="5R" role="cd27D">
@@ -1204,7 +1204,7 @@
               </node>
             </node>
             <node concept="liA8E" id="64" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine():jetbrains.mps.text.TextArea" resolve="newLine" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <node concept="cd27G" id="68" role="lGtFl">
                 <node concept="3u3nmq" id="69" role="cd27D">
                   <property role="3u3nmv" value="8908453262580006775" />
@@ -1234,7 +1234,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6f" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.indent():jetbrains.mps.text.TextArea" resolve="indent" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.indent()" resolve="indent" />
               <node concept="cd27G" id="6j" role="lGtFl">
                 <node concept="3u3nmq" id="6k" role="cd27D">
                   <property role="3u3nmv" value="8908453262580017699" />
@@ -1264,7 +1264,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6q" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="Xl_RD" id="6u" role="37wK5m">
                 <property role="Xl_RC" value="Priority " />
                 <node concept="cd27G" id="6w" role="lGtFl">
@@ -1302,7 +1302,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6C" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="2OqwBi" id="6G" role="37wK5m">
                 <node concept="2OqwBi" id="6I" role="2Oq$k0">
                   <node concept="2OqwBi" id="6L" role="2Oq$k0">
@@ -1310,7 +1310,7 @@
                       <ref role="3cqZAo" node="3q" resolve="ctx" />
                     </node>
                     <node concept="liA8E" id="6P" role="2OqNvi">
-                      <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                      <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                     </node>
                     <node concept="cd27G" id="6Q" role="lGtFl">
                       <node concept="3u3nmq" id="6R" role="cd27D">
@@ -1375,7 +1375,7 @@
               </node>
             </node>
             <node concept="liA8E" id="74" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine():jetbrains.mps.text.TextArea" resolve="newLine" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <node concept="cd27G" id="78" role="lGtFl">
                 <node concept="3u3nmq" id="79" role="cd27D">
                   <property role="3u3nmv" value="8908453262580006914" />
@@ -1405,7 +1405,7 @@
               </node>
             </node>
             <node concept="liA8E" id="7f" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.indent():jetbrains.mps.text.TextArea" resolve="indent" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.indent()" resolve="indent" />
               <node concept="cd27G" id="7j" role="lGtFl">
                 <node concept="3u3nmq" id="7k" role="cd27D">
                   <property role="3u3nmv" value="8908453262580017757" />
@@ -1435,7 +1435,7 @@
               </node>
             </node>
             <node concept="liA8E" id="7q" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="Xl_RD" id="7u" role="37wK5m">
                 <property role="Xl_RC" value="Category " />
                 <node concept="cd27G" id="7w" role="lGtFl">
@@ -1475,7 +1475,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="7I" role="2OqNvi">
-                  <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode):void" resolve="appendNode" />
+                  <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <node concept="37vLTw" id="7M" role="37wK5m">
                     <ref role="3cqZAo" node="7A" resolve="item" />
                     <node concept="cd27G" id="7O" role="lGtFl">
@@ -1529,7 +1529,7 @@
                 <ref role="3cqZAo" node="3q" resolve="ctx" />
               </node>
               <node concept="liA8E" id="83" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
               <node concept="cd27G" id="84" role="lGtFl">
                 <node concept="3u3nmq" id="85" role="cd27D">
@@ -1570,7 +1570,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="8j" role="2OqNvi">
-                  <ref role="37wK5l" to="yfwt:~TextGenContext.getBuffer():jetbrains.mps.text.TextBuffer" resolve="getBuffer" />
+                  <ref role="37wK5l" to="yfwt:~TextGenContext.getBuffer()" resolve="getBuffer" />
                   <node concept="cd27G" id="8n" role="lGtFl">
                     <node concept="3u3nmq" id="8o" role="cd27D">
                       <property role="3u3nmv" value="8908453262580015142" />
@@ -1584,7 +1584,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="8g" role="2OqNvi">
-                <ref role="37wK5l" to="ao3:~TextBuffer.area():jetbrains.mps.text.TextArea" resolve="area" />
+                <ref role="37wK5l" to="ao3:~TextBuffer.area()" resolve="area" />
                 <node concept="cd27G" id="8q" role="lGtFl">
                   <node concept="3u3nmq" id="8r" role="cd27D">
                     <property role="3u3nmv" value="8908453262580015142" />
@@ -1598,7 +1598,7 @@
               </node>
             </node>
             <node concept="liA8E" id="8d" role="2OqNvi">
-              <ref role="37wK5l" to="ao3:~TextArea.decreaseIndent():jetbrains.mps.text.TextArea" resolve="decreaseIndent" />
+              <ref role="37wK5l" to="ao3:~TextArea.decreaseIndent()" resolve="decreaseIndent" />
               <node concept="cd27G" id="8t" role="lGtFl">
                 <node concept="3u3nmq" id="8u" role="cd27D">
                   <property role="3u3nmv" value="8908453262580015142" />
@@ -1628,7 +1628,7 @@
               </node>
             </node>
             <node concept="liA8E" id="8$" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine():jetbrains.mps.text.TextArea" resolve="newLine" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <node concept="cd27G" id="8C" role="lGtFl">
                 <node concept="3u3nmq" id="8D" role="cd27D">
                   <property role="3u3nmv" value="8908453262580003689" />
@@ -1658,7 +1658,7 @@
               </node>
             </node>
             <node concept="liA8E" id="8J" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine():jetbrains.mps.text.TextArea" resolve="newLine" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <node concept="cd27G" id="8N" role="lGtFl">
                 <node concept="3u3nmq" id="8O" role="cd27D">
                   <property role="3u3nmv" value="8908453262580018596" />
@@ -1813,7 +1813,7 @@
               </node>
             </node>
             <node concept="liA8E" id="9J" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="Xl_RD" id="9N" role="37wK5m">
                 <property role="Xl_RC" value="Notes" />
                 <node concept="cd27G" id="9P" role="lGtFl">
@@ -1851,14 +1851,14 @@
               </node>
             </node>
             <node concept="liA8E" id="9X" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="2OqwBi" id="a1" role="37wK5m">
                 <node concept="2OqwBi" id="a3" role="2Oq$k0">
                   <node concept="37vLTw" id="a6" role="2Oq$k0">
                     <ref role="3cqZAo" node="9d" resolve="ctx" />
                   </node>
                   <node concept="liA8E" id="a7" role="2OqNvi">
-                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                   <node concept="cd27G" id="a8" role="lGtFl">
                     <node concept="3u3nmq" id="a9" role="cd27D">
@@ -1909,7 +1909,7 @@
               </node>
             </node>
             <node concept="liA8E" id="aj" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine():jetbrains.mps.text.TextArea" resolve="newLine" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <node concept="cd27G" id="an" role="lGtFl">
                 <node concept="3u3nmq" id="ao" role="cd27D">
                   <property role="3u3nmv" value="8908453262579996735" />
@@ -1939,7 +1939,7 @@
               </node>
             </node>
             <node concept="liA8E" id="au" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine():jetbrains.mps.text.TextArea" resolve="newLine" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <node concept="cd27G" id="ay" role="lGtFl">
                 <node concept="3u3nmq" id="az" role="cd27D">
                   <property role="3u3nmv" value="8908453262579996877" />
@@ -1971,7 +1971,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="aJ" role="2OqNvi">
-                  <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode):void" resolve="appendNode" />
+                  <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <node concept="37vLTw" id="aN" role="37wK5m">
                     <ref role="3cqZAo" node="aB" resolve="item" />
                     <node concept="cd27G" id="aP" role="lGtFl">
@@ -2025,7 +2025,7 @@
                 <ref role="3cqZAo" node="9d" resolve="ctx" />
               </node>
               <node concept="liA8E" id="b4" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
               <node concept="cd27G" id="b5" role="lGtFl">
                 <node concept="3u3nmq" id="b6" role="cd27D">
@@ -2296,7 +2296,7 @@
                       <ref role="3cqZAo" node="co" resolve="outline" />
                     </node>
                     <node concept="liA8E" id="cM" role="2OqNvi">
-                      <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(java.lang.String,java.lang.String,java.nio.charset.Charset,org.jetbrains.mps.openapi.model.SNode...):void" resolve="registerTextUnit" />
+                      <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(java.lang.String,java.lang.String,java.nio.charset.Charset,org.jetbrains.mps.openapi.model.SNode...)" resolve="registerTextUnit" />
                       <node concept="3K4zz7" id="cN" role="37wK5m">
                         <node concept="1eOMI4" id="cP" role="3K4GZi">
                           <node concept="3cpWs3" id="cS" role="1eOMHV">
@@ -2337,11 +2337,11 @@
                     <ref role="3cqZAo" node="cv" resolve="root" />
                   </node>
                   <node concept="liA8E" id="d2" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
                 <node concept="liA8E" id="d0" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                   <node concept="35c_gC" id="d3" role="37wK5m">
                     <ref role="35c_gD" to="g4p9:7IxbKGmfht2" resolve="Notes" />
                   </node>
@@ -2361,11 +2361,11 @@
                 <ref role="3cqZAo" node="co" resolve="outline" />
               </node>
               <node concept="liA8E" id="d8" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.getModel()" resolve="getModel" />
               </node>
             </node>
             <node concept="liA8E" id="d6" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.getRootNodes():java.lang.Iterable" resolve="getRootNodes" />
+              <ref role="37wK5l" to="mhbf:~SModel.getRootNodes()" resolve="getRootNodes" />
             </node>
           </node>
         </node>
@@ -2386,7 +2386,7 @@
               <ref role="3cqZAo" node="dc" resolve="node" />
             </node>
             <node concept="liA8E" id="dg" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.getName():java.lang.String" resolve="getName" />
+              <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
@@ -2529,14 +2529,14 @@
               </node>
             </node>
             <node concept="liA8E" id="e7" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="2OqwBi" id="eb" role="37wK5m">
                 <node concept="2OqwBi" id="ed" role="2Oq$k0">
                   <node concept="37vLTw" id="eg" role="2Oq$k0">
                     <ref role="3cqZAo" node="dD" resolve="ctx" />
                   </node>
                   <node concept="liA8E" id="eh" role="2OqNvi">
-                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                    <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                   <node concept="cd27G" id="ei" role="lGtFl">
                     <node concept="3u3nmq" id="ej" role="cd27D">

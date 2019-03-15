@@ -147,7 +147,7 @@
                 <node concept="2OqwBi" id="7$vLFyJhaj$" role="3clFbG">
                   <node concept="1Q80Hx" id="7$vLFyJhadY" role="2Oq$k0" />
                   <node concept="liA8E" id="7$vLFyJhaVI" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+                    <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
                     <node concept="uqdCJ" id="7$vLFyJib7Q" role="37wK5m" />
                   </node>
                 </node>

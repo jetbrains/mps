@@ -44,10 +44,10 @@ public class ClassifierCacher {
     myResult.put(new IdIndexEntry(concept.getQualifiedName(), true), 0);
   }
   private void ref(SNodeId id) {
-    if (!(id instanceof jetbrains.mps.smodel.SNodeId.Foreign)) {
+    if (!(id instanceof jetbrains.mps.smodel.SNodeId.StringBasedId)) {
       return;
     }
-    myResult.put(new IdIndexEntry(((jetbrains.mps.smodel.SNodeId.Foreign) id).getId(), true), 0);
+    myResult.put(new IdIndexEntry(((jetbrains.mps.smodel.SNodeId.StringBasedId) id).getId(), true), 0);
   }
   private void modelRef(String packageName) {
     myResult.put(new IdIndexEntry(packageName + "@java_stub", true), 0);

@@ -307,7 +307,7 @@
         </node>
         <node concept="3cpWs6" id="7lekRzco4tX" role="3cqZAp">
           <node concept="2YIFZM" id="7lekRzco78c" role="3cqZAk">
-            <ref role="37wK5l" to="manl:~SMethodTrimmedId.toText(org.jetbrains.mps.openapi.model.SNodeId):java.lang.String" resolve="toText" />
+            <ref role="37wK5l" to="manl:~SMethodTrimmedId.toText(org.jetbrains.mps.openapi.model.SNodeId)" resolve="toText" />
             <ref role="1Pybhc" to="manl:~SMethodTrimmedId" resolve="SMethodTrimmedId" />
             <node concept="2OqwBi" id="1lvLhh1KS7g" role="37wK5m">
               <node concept="2JrnkZ" id="1lvLhh1KRR1" role="2Oq$k0">
@@ -316,7 +316,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1lvLhh1KSng" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
               </node>
             </node>
           </node>

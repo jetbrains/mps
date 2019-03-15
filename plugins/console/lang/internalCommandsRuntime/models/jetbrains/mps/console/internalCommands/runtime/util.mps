@@ -74,7 +74,7 @@
       <node concept="3clFbS" id="7E9dkpktrj0" role="3clF47">
         <node concept="3cpWs6" id="7E9dkpktrjh" role="3cqZAp">
           <node concept="2YIFZM" id="7E9dkpkts8V" role="3cqZAk">
-            <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode():boolean" resolve="isInternalMode" />
+            <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
             <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
           </node>
         </node>
@@ -91,11 +91,11 @@
         <node concept="3clFbF" id="7E9dkpktsb$" role="3cqZAp">
           <node concept="2OqwBi" id="7E9dkpktsga" role="3clFbG">
             <node concept="2YIFZM" id="7E9dkpktsbL" role="2Oq$k0">
-              <ref role="37wK5l" to="fyhk:~InternalFlag.getInstance():jetbrains.mps.InternalFlag" resolve="getInstance" />
+              <ref role="37wK5l" to="fyhk:~InternalFlag.getInstance()" resolve="getInstance" />
               <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
             </node>
             <node concept="liA8E" id="7E9dkpktsW0" role="2OqNvi">
-              <ref role="37wK5l" to="fyhk:~InternalFlag.setInternalFlag(boolean):void" resolve="setInternalFlag" />
+              <ref role="37wK5l" to="fyhk:~InternalFlag.setInternalFlag(boolean)" resolve="setInternalFlag" />
               <node concept="37vLTw" id="7E9dkpktsYv" role="37wK5m">
                 <ref role="3cqZAo" node="7E9dkpktsaX" resolve="flag" />
               </node>

@@ -70,7 +70,7 @@ public final class AddNodeMacroParam_copySrclMacro_Intention extends AbstractInt
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Apply COPY__SRCL over node." + MacroIntentionsUtil.getPresentaion(myParameter);
+      return "Apply COPY__SRCL over node." + MacroIntentionsUtil.getPresentation(myParameter);
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -218,7 +218,7 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
    * generated code.
    */
   private GeneratorRuntime createRuntime(Generator g) {
-    Language sourceLanguage = g.getSourceLanguage();
+    SLanguage sourceLanguage = g.sourceLanguage();
     // A bit of history. The need for activator class name arise when we generate a code from a Generator module and load it at runtime.
     // First, there were no activators at all. Then, activators for generator modules with 'generated' templates were introduced.
     // They resorted to g.getSourceLanguage().getModuleName() + ".Generator", likely, not to deal with '#' in generator module name, and the fact
@@ -254,7 +254,7 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         final Class<? extends GeneratorRuntime> aClass = rtClass.asSubclass(GeneratorRuntime.class);
         final LanguageRuntime sourceLanguageRuntime = getLanguage(sourceLanguage);
         if (sourceLanguageRuntime == null) {
-          throw new InstantiationException(String.format("Could not find language runtime for %s to attach generator %s to", sourceLanguage.getModuleName(),
+          throw new InstantiationException(String.format("Could not find language runtime for %s to attach generator %s to", sourceLanguage.getQualifiedName(),
               g.getModuleName()));
         }
         Constructor<?>[] allConstructors = aClass.getConstructors();
@@ -291,13 +291,18 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         return null;
       }
     } catch (ClassNotFoundException e) {
+      String msg = format("Failed to load runtime %s of generator %s", rtClassName, g.getModuleName());
       if (g.generateTemplates()) {
-        LOG.warn(String.format("Failed to load runtime %s of generator %s", rtClassName, g.getModuleName()), e);
+        if (LOG.isDebugEnabled()) {
+          LOG.warn(msg, e);
+        } else {
+          LOG.warn(msg);
+        }
       } else {
         // FIXME this is compatibility code. Language RT generated prior to 2018.1 included #getGenerators() implementation for interpreted templates,
         //       and generator module lacked any activator class. With 2018.1, we generate Generator RT class for every generator module (including interpreted)
         //       Remove this code once 2018.1 is out.
-        LOG.debug(String.format("Failed to load runtime %s of generator %s", rtClassName, g.getModuleName()), e);
+        LOG.debug(msg, e);
       }
     } catch (InstantiationException | IllegalAccessException e) {
       LOG.error(String.format("Failed to instantiate runtime %s of generator %s", rtClassName, g.getModuleName()), e);

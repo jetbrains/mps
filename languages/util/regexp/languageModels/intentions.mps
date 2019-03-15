@@ -114,7 +114,7 @@
           <node concept="2OqwBi" id="gY_W6IloJk" role="3clFbG">
             <node concept="1XNTG" id="gY_W6IloJj" role="2Oq$k0" />
             <node concept="liA8E" id="gY_W6IloJo" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.flushEvents():void" resolve="flushEvents" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.flushEvents()" resolve="flushEvents" />
             </node>
           </node>
         </node>
@@ -122,7 +122,7 @@
           <node concept="2OqwBi" id="gY_W6IloDf" role="3clFbG">
             <node concept="1XNTG" id="gY_W6IloDe" role="2Oq$k0" />
             <node concept="liA8E" id="gY_W6IloJf" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode):void" resolve="selectWRTFocusPolicy" />
+              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
               <node concept="37vLTw" id="3GM_nagTrVt" role="37wK5m">
                 <ref role="3cqZAo" node="gY_W6IloCT" resolve="n" />
               </node>

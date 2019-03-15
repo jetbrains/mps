@@ -182,7 +182,7 @@
               </node>
             </node>
             <node concept="liA8E" id="7Cm4l4B9s7j" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
             </node>
           </node>
           <node concept="3uibUv" id="7Cm4l4B9s7k" role="1tU5fm">
@@ -203,7 +203,7 @@
         </node>
         <node concept="3fqX7Q" id="7bvvztf1c_7" role="3clFbw">
           <node concept="2YIFZM" id="yrgDsjpIWS" role="3fr31v">
-            <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule):boolean" resolve="isCompileInMps" />
+            <ref role="37wK5l" to="z1c3:~SModuleOperations.isCompileInMps(org.jetbrains.mps.openapi.module.SModule)" resolve="isCompileInMps" />
             <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
             <node concept="37vLTw" id="yrgDsjpIXt" role="37wK5m">
               <ref role="3cqZAo" node="7Cm4l4B9s7b" resolve="module" />

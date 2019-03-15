@@ -68,10 +68,10 @@
       </concept>
     </language>
     <language id="2b800570-3758-4c14-86fb-871266fb9d11" name="constraints.test">
-      <concept id="8374682609824965612" name="constraints.test.structure.CanBeParentFail" flags="ng" index="5uJEq">
+      <concept id="8374682609824965612" name="constraints.test.structure.TestConstraintsInvocation_CanBeParentFail" flags="ng" index="5uJEq">
         <child id="8374682609824965624" name="child" index="5uJEe" />
       </concept>
-      <concept id="8374682609824965610" name="constraints.test.structure.CanBeChildFail" flags="ng" index="5uJEs" />
+      <concept id="8374682609824965610" name="constraints.test.structure.TestConstraintsInvocation_CanBeChildFail" flags="ng" index="5uJEs" />
       <concept id="2614955748377238644" name="constraints.test.structure.TestRefConstraints_Target" flags="ng" index="xbyKi">
         <property id="2614955748377238651" name="debug" index="xbyKt" />
         <property id="2614955748377238656" name="inScope" index="xbyNA" />
@@ -92,11 +92,11 @@
       </concept>
       <concept id="2614955748379967630" name="constraints.test.structure.TestRefConstraints_SubReference_ScopingSuperHandler" flags="ng" index="xLZ3C" />
       <concept id="2614955748379967633" name="constraints.test.structure.TestRefConstraints_SubReference_HandlerSuperHandler" flags="ng" index="xLZ3R" />
-      <concept id="730305212589577121" name="constraints.test.structure.Child" flags="ng" index="2W9wcp" />
-      <concept id="5816870305080518533" name="constraints.test.structure.Concept_II" flags="ng" index="1YrwGW" />
-      <concept id="5816870305080518517" name="constraints.test.structure.Concept_CI" flags="ng" index="1YrwJc" />
-      <concept id="5816870305080518495" name="constraints.test.structure.Concept_CC" flags="ng" index="1YrwJA" />
-      <concept id="5816870305080488180" name="constraints.test.structure.Container" flags="ng" index="1YrDLd">
+      <concept id="730305212589577121" name="constraints.test.structure.TestConstraintsInvocation_Child" flags="ng" index="2W9wcp" />
+      <concept id="5816870305080518533" name="constraints.test.structure.TestConstraintsInheritance_Concept_II" flags="ng" index="1YrwGW" />
+      <concept id="5816870305080518517" name="constraints.test.structure.TestConstraintsInheritance_Concept_CI" flags="ng" index="1YrwJc" />
+      <concept id="5816870305080518495" name="constraints.test.structure.TestConstraintsInheritance_Concept_CC" flags="ng" index="1YrwJA" />
+      <concept id="5816870305080488180" name="constraints.test.structure.TestConstraintsInheritance_Container" flags="ng" index="1YrDLd">
         <property id="5816870305080488232" name="triggerBase" index="1YrDQh" />
         <property id="5816870305080488234" name="triggerD1" index="1YrDQj" />
         <property id="5816870305080488237" name="triggerD2" index="1YrDQk" />

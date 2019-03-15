@@ -218,7 +218,7 @@
             <node concept="3clFbS" id="i" role="3Kbo56">
               <node concept="3cpWs6" id="j" role="3cqZAp">
                 <node concept="2YIFZM" id="k" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="l" role="37wK5m">
                     <node concept="HV5vD" id="n" role="2ShVmc">
@@ -240,7 +240,7 @@
         <node concept="3cpWs6" id="d" role="3cqZAp">
           <node concept="2YIFZM" id="o" role="3cqZAk">
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-            <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <node concept="3uibUv" id="p" role="3PaCim">
               <ref role="3uigEE" to="1fjm:~DataFlowConstructor" resolve="DataFlowConstructor" />
             </node>
@@ -434,7 +434,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1_" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
                 <node concept="37vLTw" id="1D" role="37wK5m">
                   <ref role="3cqZAo" node="1k" resolve="applicableConcept" />
                   <node concept="cd27G" id="1F" role="lGtFl">
@@ -465,7 +465,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1K" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                 <node concept="37vLTw" id="1O" role="37wK5m">
                   <ref role="3cqZAo" node="1k" resolve="applicableConcept" />
                   <node concept="cd27G" id="1Q" role="lGtFl">
@@ -717,7 +717,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="3i" role="2OqNvi">
-                        <ref role="37wK5l" to="1fjm:~Program.getStart(java.lang.Object):int" resolve="getStart" />
+                        <ref role="37wK5l" to="1fjm:~Program.getStart(java.lang.Object)" resolve="getStart" />
                         <node concept="37vLTw" id="3y" role="37wK5m">
                           <ref role="3cqZAo" node="2i" resolve="node" />
                           <node concept="cd27G" id="3$" role="lGtFl">
@@ -822,7 +822,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="44" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~Instruction.setRuleReference(java.lang.String):void" resolve="setRuleReference" />
+                      <ref role="37wK5l" to="dau9:~Instruction.setRuleReference(java.lang.String)" resolve="setRuleReference" />
                       <node concept="Xl_RD" id="48" role="37wK5m">
                         <property role="Xl_RC" value="r:b7d9737f-8e9b-4112-92de-8cd1bf30ae09(testExtendingAnalyzer.dataFlow)/1417601170173058915" />
                         <node concept="cd27G" id="4a" role="lGtFl">
@@ -860,7 +860,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="4i" role="2OqNvi">
-                      <ref role="37wK5l" to="dau9:~Instruction.setSource(java.lang.Object):void" resolve="setSource" />
+                      <ref role="37wK5l" to="dau9:~Instruction.setSource(java.lang.Object)" resolve="setSource" />
                       <node concept="37vLTw" id="4m" role="37wK5m">
                         <ref role="3cqZAo" node="2i" resolve="node" />
                         <node concept="cd27G" id="4o" role="lGtFl">
@@ -927,7 +927,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="4w" role="2OqNvi">
-                      <ref role="37wK5l" to="1fjm:~Program.insert(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction,int,boolean,boolean):void" resolve="insert" />
+                      <ref role="37wK5l" to="1fjm:~Program.insert(jetbrains.mps.lang.dataFlow.framework.instructions.Instruction,int,boolean,boolean)" resolve="insert" />
                       <node concept="37vLTw" id="4K" role="37wK5m">
                         <ref role="3cqZAo" node="3E" resolve="instruction" />
                         <node concept="cd27G" id="4P" role="lGtFl">
@@ -1016,7 +1016,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="52" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~Program.contains(java.lang.Object):boolean" resolve="contains" />
+                  <ref role="37wK5l" to="1fjm:~Program.contains(java.lang.Object)" resolve="contains" />
                   <node concept="37vLTw" id="5f" role="37wK5m">
                     <ref role="3cqZAo" node="2E" resolve="object" />
                     <node concept="cd27G" id="5h" role="lGtFl">

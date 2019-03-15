@@ -339,7 +339,7 @@
                         <node concept="3clFbH" id="2g$3PZUpQGc" role="3cqZAp" />
                         <node concept="3clFbF" id="2g$3PZUpRQ8" role="3cqZAp">
                           <node concept="2YIFZM" id="2g$3PZUpRQa" role="3clFbG">
-                            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                             <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                             <node concept="Xl_RD" id="2g$3PZUpRQb" role="37wK5m">
                               <property role="Xl_RC" value="%s.icns" />
@@ -403,7 +403,7 @@
                         <node concept="3clFbF" id="2g$3PZUpV1S" role="3cqZAp">
                           <node concept="2YIFZM" id="2g$3PZUpV1T" role="3clFbG">
                             <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                             <node concept="Xl_RD" id="2g$3PZUpV1U" role="37wK5m">
                               <property role="Xl_RC" value="%s Project" />
                             </node>
@@ -604,7 +604,7 @@
                     <node concept="3clFbF" id="2g$3PZUpYc5" role="3cqZAp">
                       <node concept="2YIFZM" id="2g$3PZUpYc6" role="3clFbG">
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                         <node concept="Xl_RD" id="2g$3PZUpYc7" role="37wK5m">
                           <property role="Xl_RC" value="%s.icns" />
                         </node>
@@ -1030,7 +1030,7 @@
                                       </node>
                                     </node>
                                     <node concept="liA8E" id="7Muxx6JTrDv" role="2OqNvi">
-                                      <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence):java.lang.String" resolve="replace" />
+                                      <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
                                       <node concept="Xl_RD" id="7Muxx6JTrDw" role="37wK5m">
                                         <property role="Xl_RC" value="\\" />
                                       </node>
@@ -1074,7 +1074,7 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="7Muxx6JTrDK" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence):java.lang.String" resolve="replace" />
+                                <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
                                 <node concept="Xl_RD" id="7Muxx6JTrDL" role="37wK5m">
                                   <property role="Xl_RC" value="\\" />
                                 </node>
@@ -1322,7 +1322,7 @@
                             <node concept="37vLTI" id="3TEkTgEJhKp" role="3clFbG">
                               <node concept="3cpWs3" id="5GLkm1jcN83" role="37vLTx">
                                 <node concept="2YIFZM" id="5GLkm1jcNTh" role="3uHU7w">
-                                  <ref role="37wK5l" to="wyt6:~Integer.toString(int):java.lang.String" resolve="toString" />
+                                  <ref role="37wK5l" to="wyt6:~Integer.toString(int)" resolve="toString" />
                                   <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
                                   <node concept="2OqwBi" id="5GLkm1jcy5c" role="37wK5m">
                                     <node concept="2OqwBi" id="5GLkm1jcw_O" role="2Oq$k0">
@@ -1356,7 +1356,7 @@
                                       </node>
                                     </node>
                                     <node concept="2YIFZM" id="5GLkm1jcKYg" role="3uHU7w">
-                                      <ref role="37wK5l" to="wyt6:~Integer.toString(int):java.lang.String" resolve="toString" />
+                                      <ref role="37wK5l" to="wyt6:~Integer.toString(int)" resolve="toString" />
                                       <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
                                       <node concept="2OqwBi" id="5GLkm1jcrTw" role="37wK5m">
                                         <node concept="2OqwBi" id="5GLkm1jcqZK" role="2Oq$k0">
@@ -1395,7 +1395,7 @@
                       <node concept="3clFbH" id="3TEkTgEJCba" role="3cqZAp" />
                       <node concept="3clFbF" id="5GLkm1jcQc5" role="3cqZAp">
                         <node concept="2YIFZM" id="5GLkm1jcQ_B" role="3clFbG">
-                          <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                          <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                           <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                           <node concept="3zGtF$" id="5GLkm1jcQXZ" role="37wK5m" />
                           <node concept="37vLTw" id="5GLkm1jcRJ_" role="37wK5m">
@@ -1516,7 +1516,7 @@
             <node concept="3clFbH" id="3TEkTgEJDuw" role="3cqZAp" />
             <node concept="3clFbF" id="4eWOtElZCds" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtElZCdt" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="4eWOtElZCdu" role="37wK5m">
                   <property role="Xl_RC" value=":: %s startup script" />
@@ -1600,7 +1600,7 @@
             <node concept="3clFbF" id="2g$3PZUpK7t" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUpK7u" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="2g$3PZUpK7v" role="37wK5m">
                   <property role="Xl_RC" value="  echo    You are trying to run %s from generic distribution" />
                 </node>
@@ -1660,7 +1660,7 @@
             <node concept="3clFbF" id="2g$3PZUpKMr" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUpKMs" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="2g$3PZUpKMt" role="37wK5m">
                   <property role="Xl_RC" value="  echo and then run %s.bat from there" />
                 </node>
@@ -1732,7 +1732,7 @@
             <node concept="3clFbH" id="3TEkTgEJEZU" role="3cqZAp" />
             <node concept="3clFbF" id="4eWOtEm0HAv" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtEm0HAw" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="4eWOtEm0HAx" role="37wK5m">
                   <property role="Xl_RC" value=":: Try (in order): %s_JDK, %s%%BITS%%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME." />
@@ -1800,7 +1800,7 @@
             <node concept="3clFbH" id="NkL_Hn1ma6" role="3cqZAp" />
             <node concept="3clFbF" id="NkL_Hn1ma7" role="3cqZAp">
               <node concept="2YIFZM" id="NkL_Hn1ma8" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="NkL_Hn1ma9" role="37wK5m">
                   <property role="Xl_RC" value=":: Try (in order): %s_JDK, %s%%BITS%%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME." />
@@ -1902,7 +1902,7 @@
             <node concept="3clFbF" id="4eWOtEm0LgY" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtEm0LgZ" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="4eWOtEm0Lh0" role="37wK5m">
                   <property role="Xl_RC" value="IF EXIST \&quot;%%%s_JDK%%\&quot; SET JDK=%%%s_JDK%%" />
                 </node>
@@ -1952,7 +1952,7 @@
             <node concept="3clFbF" id="4eWOtEm0ihn" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtEm0iho" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="4eWOtEm0ihp" role="37wK5m">
                   <property role="Xl_RC" value="SET USER_JDK64_FILE=%%USERPROFILE%%\\.%s\\config\\%s%%BITS%%.exe.jdk" />
                 </node>
@@ -2015,7 +2015,7 @@
             <node concept="3clFbF" id="4eWOtEm0mIT" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtEm0mIU" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="4eWOtEm0mIV" role="37wK5m">
                   <property role="Xl_RC" value="SET USER_JDK_FILE=%%USERPROFILE%%\\.%s\\config\\%s%%BITS%%.exe.jdk" />
                 </node>
@@ -2150,7 +2150,7 @@
             <node concept="3clFbF" id="4eWOtEm10wJ" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtEm10wK" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="4eWOtEm10wL" role="37wK5m">
                   <property role="Xl_RC" value="  ECHO ERROR: cannot start %s." />
                 </node>
@@ -2204,7 +2204,7 @@
             <node concept="3clFbF" id="4eWOtEm12wH" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtEm12wI" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="4eWOtEm12wJ" role="37wK5m">
                   <property role="Xl_RC" value="  ECHO No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME points to valid JDK installation." />
                 </node>
@@ -2310,7 +2310,7 @@
             <node concept="3clFbF" id="NkL_HmLU1x" role="3cqZAp">
               <node concept="2YIFZM" id="NkL_HmLU1y" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="NkL_HmLU1z" role="37wK5m">
                   <property role="Xl_RC" value="IF NOT \&quot;%%%s_PROPERTIES%%\&quot; == \&quot;\&quot; SET IDE_PROPERTIES_PROPERTY=\&quot;-Didea.properties.file=%%%s_PROPERTIES%%\&quot;" />
                 </node>
@@ -2356,7 +2356,7 @@
             <node concept="3clFbH" id="NkL_HmMQnr" role="3cqZAp" />
             <node concept="3clFbF" id="NkL_HmMQnB" role="3cqZAp">
               <node concept="2YIFZM" id="NkL_HmMQnC" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="NkL_HmMQnD" role="37wK5m">
                   <property role="Xl_RC" value="SET VM_OPTIONS_FILE=%%%s_VM_OPTIONS%%" />
@@ -2429,7 +2429,7 @@
             <node concept="3clFbF" id="4eWOtEm1o6M" role="3cqZAp">
               <node concept="2YIFZM" id="4eWOtEm1o6N" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="4eWOtEm1o6O" role="37wK5m">
                   <property role="Xl_RC" value="  SET VM_OPTIONS_FILE=%%USERPROFILE%%\\.%s\\config\\mps%%BITS%%.exe.vmoptions" />
                 </node>
@@ -2498,7 +2498,7 @@
             <node concept="3clFbF" id="2g$3PZUpxGe" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUpxGf" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="2g$3PZUpxGg" role="37wK5m">
                   <property role="Xl_RC" value="  SET VM_OPTIONS_FILE=%%IDE_BIN_DIR%%\\%s%%BITS%%.exe.vmoptions" />
                 </node>
@@ -2560,7 +2560,7 @@
             <node concept="3clFbH" id="2g$3PZUpAu8" role="3cqZAp" />
             <node concept="3clFbF" id="2g$3PZUpAu9" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUpAua" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="2g$3PZUpAub" role="37wK5m">
                   <property role="Xl_RC" value="  SET VM_OPTIONS_FILE=%%IDE_BIN_DIR%%\\win\\%s%%BITS%%.exe.vmoptions" />
@@ -2670,7 +2670,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1w81suLSU9_" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence):java.lang.String" resolve="replace" />
+                    <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
                     <node concept="Xl_RD" id="1w81suLSU9A" role="37wK5m">
                       <property role="Xl_RC" value="/" />
                     </node>
@@ -2724,7 +2724,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1w81suLSXyM" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence):java.lang.String" resolve="replace" />
+                    <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
                     <node concept="Xl_RD" id="1w81suLSXyN" role="37wK5m">
                       <property role="Xl_RC" value="/" />
                     </node>
@@ -2927,7 +2927,7 @@
             <node concept="3clFbH" id="3TEkTgEK203" role="3cqZAp" />
             <node concept="3clFbF" id="BsOHnjlmSa" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjlne7" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="BsOHnjlk$p" role="37wK5m">
                   <property role="Xl_RC" value="# %s startup script" />
@@ -2994,7 +2994,7 @@
             <node concept="3clFbH" id="3TEkTgEK4I6" role="3cqZAp" />
             <node concept="3clFbF" id="BsOHnjlt5T" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjlt5U" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="BsOHnjlrbv" role="37wK5m">
                   <property role="Xl_RC" value="  TITLE=\&quot;Cannot start %s\&quot;" />
@@ -3184,7 +3184,7 @@
             <node concept="3clFbF" id="BsOHnjlC9A" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjlC9B" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjlC9C" role="37wK5m">
                   <property role="Xl_RC" value="# Try (in order): %s_JDK, %s.jdk, ../jre, JDK_HOME, JAVA_HOME, \&quot;java\&quot; in PATH." />
                 </node>
@@ -3224,7 +3224,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="RfNsRQ0tbp" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.toLowerCase():java.lang.String" resolve="toLowerCase" />
+                    <ref role="37wK5l" to="wyt6:~String.toLowerCase()" resolve="toLowerCase" />
                   </node>
                 </node>
               </node>
@@ -3262,7 +3262,7 @@
             <node concept="3clFbH" id="mVos7Tjpt8" role="3cqZAp" />
             <node concept="3clFbF" id="BsOHnjlHA6" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjlHA7" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="BsOHnjlHA8" role="37wK5m">
                   <property role="Xl_RC" value="if [ -n \&quot;$%s_JDK\&quot; -a -x \&quot;$%s_JDK/bin/java\&quot; ]; then" />
@@ -3333,7 +3333,7 @@
             <node concept="3clFbH" id="3TEkTgEKcg$" role="3cqZAp" />
             <node concept="3clFbF" id="3TEkTgEKcEH" role="3cqZAp">
               <node concept="2YIFZM" id="3TEkTgEKcEI" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="3TEkTgEKcEJ" role="37wK5m">
                   <property role="Xl_RC" value="  JDK=\&quot;$%s_JDK\&quot;" />
@@ -3388,7 +3388,7 @@
             <node concept="3clFbF" id="BsOHnjlWXX" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjlWXY" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjlWXZ" role="37wK5m">
                   <property role="Xl_RC" value="elif [ -s \&quot;$HOME/.%s/config/%s.jdk\&quot; ]; then" />
                 </node>
@@ -3417,7 +3417,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="RfNsRQ0AvT" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.toLowerCase():java.lang.String" resolve="toLowerCase" />
+                    <ref role="37wK5l" to="wyt6:~String.toLowerCase()" resolve="toLowerCase" />
                   </node>
                 </node>
               </node>
@@ -3453,7 +3453,7 @@
             <node concept="3clFbF" id="BsOHnjlXBQ" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjlXBR" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjlXBS" role="37wK5m">
                   <property role="Xl_RC" value="  JDK=`\&quot;$CAT\&quot; $HOME/.%s/config/%s.jdk`" />
                 </node>
@@ -3482,7 +3482,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="RfNsRQ0BZM" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.toLowerCase():java.lang.String" resolve="toLowerCase" />
+                    <ref role="37wK5l" to="wyt6:~String.toLowerCase()" resolve="toLowerCase" />
                   </node>
                 </node>
               </node>
@@ -3678,7 +3678,7 @@
             <node concept="3clFbF" id="BsOHnjm5dT" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjm5dU" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjm5dV" role="37wK5m">
                   <property role="Xl_RC" value="  message \&quot;No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.\&quot;" />
                 </node>
@@ -3767,7 +3767,7 @@
             <node concept="3clFbF" id="1Kdb5nd$qyc" role="3cqZAp">
               <node concept="2YIFZM" id="1Kdb5nd$qyd" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="1Kdb5nd$qye" role="37wK5m">
                   <property role="Xl_RC" value="if [ -n \&quot;$%s_PROPERTIES\&quot; ]; then" />
                 </node>
@@ -3821,7 +3821,7 @@
             <node concept="3clFbF" id="1Kdb5nd$vLk" role="3cqZAp">
               <node concept="2YIFZM" id="1Kdb5nd$vLl" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="1Kdb5nd$vLm" role="37wK5m">
                   <property role="Xl_RC" value="  IDE_PROPERTIES_PROPERTY=\&quot;-Didea.properties.file=$%s_PROPERTIES\&quot;" />
                 </node>
@@ -3899,7 +3899,7 @@
             <node concept="3clFbH" id="mVos7TjpuK" role="3cqZAp" />
             <node concept="3clFbF" id="BsOHnjICyY" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjICyZ" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="BsOHnjICz0" role="37wK5m">
                   <property role="Xl_RC" value="elif [ -r \&quot;$HOME/.%s/config/mps$BITS.vmoptions\&quot; ]; then" />
@@ -3963,7 +3963,7 @@
             <node concept="3clFbF" id="BsOHnjmEBP" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjmEBQ" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjmEBR" role="37wK5m">
                   <property role="Xl_RC" value="  VM_OPTIONS_FILE=\&quot;$HOME/.%s/config/mps$BITS.vmoptions\&quot;" />
                 </node>
@@ -4022,7 +4022,7 @@
             <node concept="3clFbH" id="2g$3PZUoGFv" role="3cqZAp" />
             <node concept="3clFbF" id="2g$3PZUoGFw" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUoGFx" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="2g$3PZUoGFy" role="37wK5m">
                   <property role="Xl_RC" value="elif [ -r \&quot;$IDE_BIN_HOME/%s$BITS.vmoptions\&quot; ]; then" />
@@ -4079,7 +4079,7 @@
             <node concept="3clFbH" id="2g$3PZUoJUH" role="3cqZAp" />
             <node concept="3clFbF" id="2g$3PZUoJUI" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUoJUJ" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="2g$3PZUoKHF" role="37wK5m">
                   <property role="Xl_RC" value="  VM_OPTIONS_FILE=\&quot;$IDE_BIN_HOME/%s$BITS.vmoptions\&quot;" />
@@ -4142,7 +4142,7 @@
             <node concept="3clFbH" id="2g$3PZUoN1N" role="3cqZAp" />
             <node concept="3clFbF" id="2g$3PZUoN1O" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUoN1P" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="2g$3PZUoN1Q" role="37wK5m">
                   <property role="Xl_RC" value="  VM_OPTIONS_FILE=\&quot;$IDE_BIN_HOME/$OS_SPECIFIC/%s$BITS.vmoptions\&quot;" />
@@ -4218,7 +4218,7 @@
             <node concept="3clFbF" id="BsOHnjmUAO" role="3cqZAp">
               <node concept="2YIFZM" id="BsOHnjmUAP" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjmUAQ" role="37wK5m">
                   <property role="Xl_RC" value="    AGENT=\&quot;-agentlib:$AGENT_LIB=disablealloc,delay=10000,sessionname=%s\&quot;" />
                 </node>
@@ -4346,7 +4346,7 @@
             <node concept="3clFbF" id="2g$3PZUp4Xy" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUp4Xz" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="2g$3PZUp4X$" role="37wK5m">
                   <property role="Xl_RC" value="if [ -n \&quot;$%s_CLASSPATH\&quot; ]; then" />
                 </node>
@@ -4400,7 +4400,7 @@
             <node concept="3clFbF" id="2g$3PZUpa1H" role="3cqZAp">
               <node concept="2YIFZM" id="2g$3PZUpa1I" role="3clFbG">
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="2g$3PZUpa1J" role="37wK5m">
                   <property role="Xl_RC" value="  CLASSPATH=\&quot;$CLASSPATH:$%s_CLASSPATH\&quot;" />
                 </node>

@@ -70,7 +70,7 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Invoke " + MacroIntentionsUtil.getPresentaion(myParameter) + " SWITCH macro";
+      return "Invoke " + MacroIntentionsUtil.getPresentation(myParameter) + " SWITCH macro";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,6 +67,9 @@ public class ProjectModulesPoolTreeNode extends TextTreeNode {
   private void populate() {
     final VisibleModuleRegistry visibleModules = VisibleModuleRegistry.getInstance();
     // no condition for models as we are not going to ask anything but modules from the scope
+    // XXX I wonder if there's true need to respect 'visibility' status for the pool
+    // XXX Why it's project's repository, and not the one with 'deployed' modules only? On one hand, it's convenient to see
+    //     whole project scope, OTOH, non-deployed project modules are not the same as deployed modules, and why do we see both under 'pool' then?
     final ConditionalScope scope = new ConditionalScope(new GlobalScope(myProject.getRepository()), visibleModules::isVisible, null);
     List<SModule> modules = IterableUtil.asList(scope.getModules());
     {
@@ -88,6 +91,11 @@ public class ProjectModulesPoolTreeNode extends TextTreeNode {
         if (m instanceof Language) {
           builder.addNode(ProjectModuleTreeNode.createFor(myProject, m, true));
         }
+        // Provided language module shows its *owned* generators, would be great to show language's associated
+        // generators here. Just need an easy way to tell owned from standalone.
+//        else if (m instanceof Generator) {
+//          builder.addNode(ProjectModuleTreeNode.createFor(myProject, m, true));
+//        }
       }
       builder.fillNode(languages);
       add(languages);
@@ -114,12 +122,12 @@ public class ProjectModulesPoolTreeNode extends TextTreeNode {
   private class ModulePoolNamespaceBuilder extends DefaultNamespaceTreeBuilder<ProjectModuleTreeNode> {
     @Override
     protected String getNamespace(ProjectModuleTreeNode node) {
-      if (node.getModule() instanceof Generator) {
-        Generator generator = (Generator) node.getModule();
-        return NameUtil.namespaceFromLongName(generator.getSourceLanguage().getModuleName());
+      String fqName = node.getModule().getModuleName();
+      if (node.getModule() instanceof Generator && fqName.indexOf('#') > 0) {
+        fqName = fqName.substring(0, fqName.indexOf('#'));
       }
 
-      return NameUtil.namespaceFromLongName(node.getModule().getModuleName());
+      return NameUtil.namespaceFromLongName(fqName);
     }
   }
 }

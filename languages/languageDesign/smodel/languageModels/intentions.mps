@@ -528,7 +528,7 @@
             </node>
             <node concept="tyxLq" id="hnKL29c" role="2OqNvi">
               <node concept="2YIFZM" id="hnKRN56" role="tz02z">
-                <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String):java.lang.String" resolve="decapitalize" />
+                <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String)" resolve="decapitalize" />
                 <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
                 <node concept="2OqwBi" id="hxx1_wb" role="37wK5m">
                   <node concept="37vLTw" id="3GM_nagTA_6" role="2Oq$k0">
@@ -2336,7 +2336,7 @@
               <ref role="3uigEE" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
             </node>
             <node concept="2YIFZM" id="R$fwjLlTBO" role="33vP2m">
-              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
               <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
             </node>
           </node>
@@ -2352,7 +2352,7 @@
                 <ref role="3cqZAo" node="R$fwjLlTBN" resolve="pf" />
               </node>
               <node concept="liA8E" id="525bmK9rwu9" role="2OqNvi">
-                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleId(java.lang.String):org.jetbrains.mps.openapi.module.SModuleId" resolve="createModuleId" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleId(java.lang.String)" resolve="createModuleId" />
                 <node concept="2OqwBi" id="R$fwjLlTez" role="37wK5m">
                   <node concept="2Sf5sV" id="R$fwjLlT5M" role="2Oq$k0" />
                   <node concept="3TrcHB" id="R$fwjLlTow" role="2OqNvi">
@@ -2374,7 +2374,7 @@
                 <ref role="3cqZAo" node="R$fwjLlTBN" resolve="pf" />
               </node>
               <node concept="liA8E" id="R$fwjLlUN3" role="2OqNvi">
-                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleReference(org.jetbrains.mps.openapi.module.SModuleId,java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference" resolve="createModuleReference" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleReference(org.jetbrains.mps.openapi.module.SModuleId,java.lang.String)" resolve="createModuleReference" />
                 <node concept="37vLTw" id="R$fwjLlUN4" role="37wK5m">
                   <ref role="3cqZAo" node="525bmK9rwu6" resolve="mid" />
                 </node>
@@ -2462,7 +2462,7 @@
             </node>
             <node concept="2YIFZM" id="R$fwjLlWC4" role="33vP2m">
               <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance():org.jetbrains.mps.openapi.persistence.PersistenceFacade" resolve="getInstance" />
+              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
             </node>
           </node>
         </node>
@@ -2477,7 +2477,7 @@
                 <ref role="3cqZAo" node="R$fwjLlWC2" resolve="pf" />
               </node>
               <node concept="liA8E" id="R$fwjLlWCa" role="2OqNvi">
-                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleId(java.lang.String):org.jetbrains.mps.openapi.module.SModuleId" resolve="createModuleId" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleId(java.lang.String)" resolve="createModuleId" />
                 <node concept="2OqwBi" id="R$fwjLlWCb" role="37wK5m">
                   <node concept="2Sf5sV" id="R$fwjLlWCc" role="2Oq$k0" />
                   <node concept="3TrcHB" id="R$fwjLlWCd" role="2OqNvi">
@@ -2499,7 +2499,7 @@
                 <ref role="3cqZAo" node="R$fwjLlWC2" resolve="pf" />
               </node>
               <node concept="liA8E" id="R$fwjLlWCj" role="2OqNvi">
-                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleReference(org.jetbrains.mps.openapi.module.SModuleId,java.lang.String):org.jetbrains.mps.openapi.module.SModuleReference" resolve="createModuleReference" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleReference(org.jetbrains.mps.openapi.module.SModuleId,java.lang.String)" resolve="createModuleReference" />
                 <node concept="37vLTw" id="R$fwjLlWCk" role="37wK5m">
                   <ref role="3cqZAo" node="R$fwjLlWC6" resolve="mid" />
                 </node>
@@ -2623,7 +2623,7 @@
                 <node concept="ZC_QK" id="3XR0QgVCnIM" role="1QN54C">
                   <ref role="2aWVGs" to="lui2:~SModuleReference" resolve="SModuleReference" />
                   <node concept="ZC_QK" id="3XR0QgVCnIL" role="2aWVGa">
-                    <ref role="2aWVGs" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.module.SModule" resolve="resolve" />
+                    <ref role="2aWVGs" to="lui2:~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                   </node>
                 </node>
               </node>

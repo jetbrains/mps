@@ -877,7 +877,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1S7rCMcWPcB" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
               </node>
             </node>
           </node>
@@ -1495,7 +1495,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="55a9$rdk$vA" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                   </node>
                 </node>
               </node>
@@ -1694,14 +1694,14 @@
                     <node concept="3clFbF" id="36hYR6_Bkfz" role="3cqZAp">
                       <node concept="2OqwBi" id="1R1KclLA18U" role="3clFbG">
                         <node concept="liA8E" id="24cAaiVCap7" role="2OqNvi">
-                          <ref role="37wK5l" to="c17a:~SAbstractConcept.getQualifiedName():java.lang.String" resolve="getQualifiedName" />
+                          <ref role="37wK5l" to="c17a:~SAbstractConcept.getQualifiedName()" resolve="getQualifiedName" />
                         </node>
                         <node concept="2OqwBi" id="1R1KclLA18V" role="2Oq$k0">
                           <node concept="2JrnkZ" id="1R1KclLA18W" role="2Oq$k0">
                             <node concept="30H73N" id="1R1KclLA18X" role="2JrQYb" />
                           </node>
                           <node concept="liA8E" id="1R1KclLA18Y" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                            <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                           </node>
                         </node>
                       </node>
@@ -1726,14 +1726,14 @@
                   <node concept="2OqwBi" id="1R1KclLA1cr" role="3uHU7w">
                     <node concept="2OqwBi" id="1R1KclLA1cs" role="2Oq$k0">
                       <node concept="liA8E" id="24cAaiVCam7" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                       </node>
                       <node concept="2JrnkZ" id="1R1KclLA1ct" role="2Oq$k0">
                         <node concept="30H73N" id="1R1KclLA1cu" role="2JrQYb" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1R1KclLA1cw" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                      <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                     </node>
                   </node>
                 </node>
@@ -1772,14 +1772,14 @@
                         <node concept="2OqwBi" id="5AyHvbfOxsP" role="3uHU7w">
                           <node concept="2OqwBi" id="5AyHvbfOxsQ" role="2Oq$k0">
                             <node concept="liA8E" id="5AyHvbfOxsR" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SNode.getNodeId():org.jetbrains.mps.openapi.model.SNodeId" resolve="getNodeId" />
+                              <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                             </node>
                             <node concept="2JrnkZ" id="5AyHvbfOxsS" role="2Oq$k0">
                               <node concept="30H73N" id="5AyHvbfOxsT" role="2JrQYb" />
                             </node>
                           </node>
                           <node concept="liA8E" id="5AyHvbfOxsU" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~Object.toString():java.lang.String" resolve="toString" />
+                            <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                           </node>
                         </node>
                       </node>

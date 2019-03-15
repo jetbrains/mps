@@ -649,7 +649,7 @@
             <node concept="3clFbF" id="22" role="3cqZAp">
               <node concept="2OqwBi" id="27" role="3clFbG">
                 <node concept="liA8E" id="28" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="2a" role="37wK5m">
                     <ref role="3cqZAo" node="23" resolve="inferenceRule" />
                   </node>
@@ -682,7 +682,7 @@
             <node concept="3clFbF" id="2f" role="3cqZAp">
               <node concept="2OqwBi" id="2k" role="3clFbG">
                 <node concept="liA8E" id="2l" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="2n" role="37wK5m">
                     <ref role="3cqZAo" node="2g" resolve="inferenceRule" />
                   </node>
@@ -715,7 +715,7 @@
             <node concept="3clFbF" id="2s" role="3cqZAp">
               <node concept="2OqwBi" id="2x" role="3clFbG">
                 <node concept="liA8E" id="2y" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="2$" role="37wK5m">
                     <ref role="3cqZAo" node="2t" resolve="inferenceRule" />
                   </node>
@@ -748,7 +748,7 @@
             <node concept="3clFbF" id="2D" role="3cqZAp">
               <node concept="2OqwBi" id="2I" role="3clFbG">
                 <node concept="liA8E" id="2J" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="2L" role="37wK5m">
                     <ref role="3cqZAo" node="2E" resolve="inferenceRule" />
                   </node>
@@ -781,7 +781,7 @@
             <node concept="3clFbF" id="2Q" role="3cqZAp">
               <node concept="2OqwBi" id="2V" role="3clFbG">
                 <node concept="liA8E" id="2W" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="2Y" role="37wK5m">
                     <ref role="3cqZAo" node="2R" resolve="inferenceRule" />
                   </node>
@@ -820,7 +820,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3a" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="3d" role="37wK5m">
                     <ref role="3cqZAo" node="34" resolve="nonTypesystemRule" />
                   </node>
@@ -1021,7 +1021,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="4G" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.reportTypeError(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget):jetbrains.mps.errors.IErrorReporter" resolve="reportTypeError" />
+                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.reportTypeError(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget)" resolve="reportTypeError" />
                             <node concept="37vLTw" id="4I" role="37wK5m">
                               <ref role="3cqZAo" node="3$" resolve="customConstructorUsage" />
                               <node concept="cd27G" id="4O" role="lGtFl">
@@ -1303,7 +1303,7 @@
                   <node concept="2OqwBi" id="6n" role="37wK5m">
                     <node concept="2OqwBi" id="6q" role="2Oq$k0">
                       <node concept="liA8E" id="6t" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                         <node concept="cd27G" id="6w" role="lGtFl">
                           <node concept="3u3nmq" id="6x" role="cd27D">
                             <property role="3u3nmv" value="960932673514536096" />
@@ -1332,7 +1332,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="6r" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="6C" role="37wK5m">
                         <ref role="37wK5l" node="3h" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="6E" role="lGtFl">
@@ -1642,7 +1642,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="8y" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                       <node concept="3VmV3z" id="8A" role="37wK5m">
                         <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
                         <node concept="3uibUv" id="8E" role="3Vn4Tt">
@@ -1687,7 +1687,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="8L" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                       <node concept="2OqwBi" id="8P" role="37wK5m">
                         <node concept="37vLTw" id="8T" role="2Oq$k0">
                           <ref role="3cqZAo" node="7D" resolve="customConstructorParameterReference" />
@@ -1850,7 +1850,7 @@
                   <node concept="2OqwBi" id="9I" role="37wK5m">
                     <node concept="2OqwBi" id="9L" role="2Oq$k0">
                       <node concept="liA8E" id="9O" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                         <node concept="cd27G" id="9R" role="lGtFl">
                           <node concept="3u3nmq" id="9S" role="cd27D">
                             <property role="3u3nmv" value="5379647004618398324" />
@@ -1879,7 +1879,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="9M" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="9Z" role="37wK5m">
                         <ref role="37wK5l" node="7m" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="a1" role="lGtFl">
@@ -2189,7 +2189,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="bT" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                       <node concept="3VmV3z" id="bX" role="37wK5m">
                         <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
                         <node concept="3uibUv" id="c1" role="3Vn4Tt">
@@ -2368,7 +2368,7 @@
                   <node concept="2OqwBi" id="cV" role="37wK5m">
                     <node concept="2OqwBi" id="cY" role="2Oq$k0">
                       <node concept="liA8E" id="d1" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                         <node concept="cd27G" id="d4" role="lGtFl">
                           <node concept="3u3nmq" id="d5" role="cd27D">
                             <property role="3u3nmv" value="5379647004618398306" />
@@ -2397,7 +2397,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="cZ" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="dc" role="37wK5m">
                         <ref role="37wK5l" node="aH" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="de" role="lGtFl">
@@ -2707,7 +2707,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="f8" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                       <node concept="3VmV3z" id="fc" role="37wK5m">
                         <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
                         <node concept="3uibUv" id="fg" role="3Vn4Tt">
@@ -2886,7 +2886,7 @@
                 </node>
                 <node concept="2YIFZM" id="g7" role="33vP2m">
                   <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
-                  <ref role="37wK5l" to="wyt6:~Math.min(int,int):int" resolve="min" />
+                  <ref role="37wK5l" to="wyt6:~Math.min(int,int)" resolve="min" />
                   <node concept="2OqwBi" id="gb" role="37wK5m">
                     <node concept="2OqwBi" id="ge" role="2Oq$k0">
                       <node concept="1PxgMI" id="gh" role="2Oq$k0">
@@ -3128,7 +3128,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="hR" role="2OqNvi">
-                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                               <node concept="2OqwBi" id="hV" role="37wK5m">
                                 <node concept="2OqwBi" id="hZ" role="2Oq$k0">
                                   <node concept="1PxgMI" id="i2" role="2Oq$k0">
@@ -3227,7 +3227,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="is" role="2OqNvi">
-                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                               <node concept="37vLTw" id="iw" role="37wK5m">
                                 <ref role="3cqZAo" node="gV" resolve="actualParam" />
                                 <node concept="cd27G" id="i$" role="lGtFl">
@@ -3494,7 +3494,7 @@
                   <node concept="2OqwBi" id="jR" role="37wK5m">
                     <node concept="2OqwBi" id="jU" role="2Oq$k0">
                       <node concept="liA8E" id="jX" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                         <node concept="cd27G" id="k0" role="lGtFl">
                           <node concept="3u3nmq" id="k1" role="cd27D">
                             <property role="3u3nmv" value="3041831561922455919" />
@@ -3523,7 +3523,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="jV" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="k8" role="37wK5m">
                         <ref role="37wK5l" node="dU" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="ka" role="lGtFl">
@@ -3834,7 +3834,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="m2" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                       <node concept="3VmV3z" id="m6" role="37wK5m">
                         <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
                         <node concept="3uibUv" id="ma" role="3Vn4Tt">
@@ -4013,7 +4013,7 @@
                   <node concept="2OqwBi" id="n4" role="37wK5m">
                     <node concept="2OqwBi" id="n7" role="2Oq$k0">
                       <node concept="liA8E" id="na" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                         <node concept="cd27G" id="nd" role="lGtFl">
                           <node concept="3u3nmq" id="ne" role="cd27D">
                             <property role="3u3nmv" value="7085790726146865267" />
@@ -4042,7 +4042,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="n8" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="nl" role="37wK5m">
                         <ref role="37wK5l" node="kQ" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="nn" role="lGtFl">
@@ -4352,7 +4352,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="pf" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean):org.jetbrains.mps.openapi.model.SNode" resolve="typeOf" />
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
                       <node concept="3VmV3z" id="pj" role="37wK5m">
                         <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
                         <node concept="3uibUv" id="pn" role="3Vn4Tt">
@@ -4559,7 +4559,7 @@
                   <node concept="2OqwBi" id="qt" role="37wK5m">
                     <node concept="2OqwBi" id="qw" role="2Oq$k0">
                       <node concept="liA8E" id="qz" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SNode.getConcept():org.jetbrains.mps.openapi.language.SConcept" resolve="getConcept" />
+                        <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                         <node concept="cd27G" id="qA" role="lGtFl">
                           <node concept="3u3nmq" id="qB" role="cd27D">
                             <property role="3u3nmv" value="4739047193854376701" />
@@ -4588,7 +4588,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="qx" role="2OqNvi">
-                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept):boolean" resolve="isSubConceptOf" />
+                      <ref role="37wK5l" to="c17a:~SAbstractConcept.isSubConceptOf(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isSubConceptOf" />
                       <node concept="1rXfSq" id="qI" role="37wK5m">
                         <ref role="37wK5l" node="o3" resolve="getApplicableConcept" />
                         <node concept="cd27G" id="qK" role="lGtFl">

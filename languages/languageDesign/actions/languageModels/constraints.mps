@@ -153,7 +153,7 @@
             </node>
             <node concept="2YIFZM" id="1KFbmnBQDut" role="3uHU7w">
               <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
-              <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+              <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isGeneratorModel" />
               <node concept="1Q6Npb" id="1KFbmnBQDuu" role="37wK5m" />
             </node>
           </node>
@@ -175,7 +175,7 @@
             </node>
             <node concept="2YIFZM" id="1KFbmnBQvZm" role="3uHU7w">
               <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
-              <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+              <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isGeneratorModel" />
               <node concept="1Q6Npb" id="1KFbmnBQvZn" role="37wK5m" />
             </node>
           </node>
@@ -198,7 +198,7 @@
             </node>
             <node concept="2YIFZM" id="1KFbmnBQDtV" role="3uHU7w">
               <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
-              <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel):boolean" resolve="isGeneratorModel" />
+              <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isGeneratorModel" />
               <node concept="1Q6Npb" id="1KFbmnBQDtW" role="37wK5m" />
             </node>
           </node>
@@ -225,7 +225,7 @@
               </node>
               <node concept="2YIFZM" id="5Vvmn_QkMEr" role="33vP2m">
                 <ref role="1Pybhc" to="w1kc:~Language" resolve="Language" />
-                <ref role="37wK5l" to="w1kc:~Language.getLanguageForLanguageAspect(org.jetbrains.mps.openapi.model.SModel):jetbrains.mps.smodel.Language" resolve="getLanguageForLanguageAspect" />
+                <ref role="37wK5l" to="w1kc:~Language.getLanguageForLanguageAspect(org.jetbrains.mps.openapi.model.SModel)" resolve="getLanguageForLanguageAspect" />
                 <node concept="2JrnkZ" id="5Vvmn_QkMEs" role="37wK5m">
                   <node concept="2OqwBi" id="5Vvmn_QkMEC" role="2JrQYb">
                     <node concept="2rP1CM" id="5Vvmn_QkMED" role="2Oq$k0" />
@@ -243,7 +243,7 @@
                   <ref role="3cqZAo" node="5Vvmn_QkMEp" resolve="language" />
                 </node>
                 <node concept="liA8E" id="5Vvmn_QkMEy" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~Language.getStructureModelDescriptor():org.jetbrains.mps.openapi.model.SModel" resolve="getStructureModelDescriptor" />
+                  <ref role="37wK5l" to="w1kc:~Language.getStructureModelDescriptor()" resolve="getStructureModelDescriptor" />
                 </node>
               </node>
               <node concept="H_c77" id="5Vvmn_QkMEz" role="1tU5fm" />

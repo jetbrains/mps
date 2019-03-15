@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.idea.CommandLineApplication;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.annotation.Hack;
 import java.util.StringJoiner;
@@ -39,7 +38,6 @@ import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import com.intellij.testFramework.PlatformTestUtil;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.core.platform.Platform;
 import java.util.concurrent.Semaphore;
 import com.intellij.ide.startup.StartupManagerEx;
@@ -69,31 +67,6 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
   public IdeaEnvironment(@NotNull EnvironmentConfig config, boolean unitTestMode) {
     super(config);
     myUnitTestMode = unitTestMode;
-  }
-
-  /**
-   * creates a new IdeaEnvironment or returns the cached one
-   * 
-   * @deprecated Code that needs access to functionality of an Environment shall get its value configured from outside and not attempt to create one. The code that starts an environment doesn't need to re-use a cached instance.
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public static Environment getOrCreate(@NotNull EnvironmentConfig config) {
-    Environment currentEnv = EnvironmentContainer.get();
-    if (currentEnv != null) {
-      if (!(currentEnv instanceof IdeaEnvironment)) {
-        throw new IllegalStateException("Still no support for interchanging lightweight and heavyweight environments");
-      }
-      currentEnv.retain();
-      return currentEnv;
-    } else {
-      IdeaEnvironment ideaEnv = new IdeaEnvironment(config);
-      ideaEnv.init();
-      EnvironmentContainer.setCurrent(ideaEnv);
-      assert EnvironmentContainer.get() == ideaEnv;
-      return ideaEnv;
-    }
   }
 
   public void init() {
@@ -291,11 +264,9 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
 
   @Override
   protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
-    //  FIXME refactor super (a) not to deal with plugins (has to be left to MpsEnvironment or thrown away altogether, global CP seems to be sufficient) 
-    //        (b) build a list of LibraryContributor, instead, as it's easier to modify the list than to deal with whole mighty LibraryInitializer. 
     if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
-      LibraryContributorHelper helper = new LibraryContributorHelper(myConfig, getRootClassLoader());
-      libInitializer.load(Collections.singletonList(helper.createLibContributorForLibs()));
+      LibraryContributorHelper helper = new LibraryContributorHelper();
+      libInitializer.load(Collections.singletonList(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader())));
     }
     // modules from IDEA plugins are loaded with regular plafrom component mechanism (ext points, PluginLibraryContributor and RepositoryInitializingComponent) 
   }
@@ -383,7 +354,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
         }
       }
     }, ModalityState.NON_MODAL);
-    ModelAccess.instance().flushEventQueue();
+    // There's no evidence invokeAndWait() above won't pump all the pending model events, why do it again? 
   }
 
   @Override

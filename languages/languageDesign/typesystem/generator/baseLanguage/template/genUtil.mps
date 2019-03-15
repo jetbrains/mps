@@ -249,7 +249,7 @@
         <node concept="3cpWs6" id="hKCXlL3" role="3cqZAp">
           <node concept="2OqwBi" id="hKCXokb" role="3cqZAk">
             <node concept="liA8E" id="hKCXokd" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="2OqwBi" id="hKCXoke" role="37wK5m">
                 <node concept="3TrcHB" id="hKCXokk" role="2OqNvi">
                   <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />

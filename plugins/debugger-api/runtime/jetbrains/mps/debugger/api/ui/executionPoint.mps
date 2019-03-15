@@ -326,7 +326,7 @@
       <node concept="3clFbS" id="1ijklmZVTVH" role="3clF47">
         <node concept="3clFbF" id="1ijklmZVTVI" role="3cqZAp">
           <node concept="3nyPlj" id="1ijklmZVTVJ" role="3clFbG">
-            <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.init():void" resolve="init" />
+            <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.init()" resolve="init" />
           </node>
         </node>
         <node concept="3cpWs8" id="1ijklmZVTVK" role="3cqZAp">
@@ -341,7 +341,7 @@
                 <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
               </node>
               <node concept="liA8E" id="1ijklmZVTVP" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="1ijklmZVTVQ" role="37wK5m">
                   <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
                 </node>
@@ -386,7 +386,7 @@
                 <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
               </node>
               <node concept="liA8E" id="1ijklmZVTW6" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="1ijklmZVTW7" role="37wK5m">
                   <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
                 </node>
@@ -409,7 +409,7 @@
         </node>
         <node concept="3clFbF" id="1ijklmZVTWd" role="3cqZAp">
           <node concept="3nyPlj" id="1ijklmZVTWe" role="3clFbG">
-            <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.dispose():void" resolve="dispose" />
+            <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.dispose()" resolve="dispose" />
           </node>
         </node>
       </node>
@@ -433,7 +433,7 @@
                 <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
               </node>
               <node concept="liA8E" id="1ijklmZVTWo" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="1ijklmZVTWp" role="37wK5m">
                   <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
                 </node>
@@ -470,7 +470,7 @@
                 <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
               </node>
               <node concept="liA8E" id="2OK5FUlJf1Q" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="2OK5FUlJf1R" role="37wK5m">
                   <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
                 </node>
@@ -673,7 +673,7 @@
                 <ref role="1HBi2w" node="1ijklmZVTTH" resolve="CurrentLinePositionComponent" />
               </node>
               <node concept="liA8E" id="1ijklmZVTUc" role="2OqNvi">
-                <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.currentSessionChanged(java.lang.Object):void" resolve="currentSessionChanged" />
+                <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.currentSessionChanged(java.lang.Object)" resolve="currentSessionChanged" />
                 <node concept="37vLTw" id="2BHiRxgkWqR" role="37wK5m">
                   <ref role="3cqZAo" node="1ijklmZVTU6" resolve="newDebugSession" />
                 </node>
@@ -701,7 +701,7 @@
         <node concept="3clFbS" id="1ijklmZVTUk" role="3clF47">
           <node concept="3clFbF" id="1ijklmZVTUl" role="3cqZAp">
             <node concept="1rXfSq" id="4hiugqyzcDo" role="3clFbG">
-              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.detachPainter(java.lang.Object):void" resolve="detachPainter" />
+              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.detachPainter(java.lang.Object)" resolve="detachPainter" />
               <node concept="37vLTw" id="2BHiRxgheMb" role="37wK5m">
                 <ref role="3cqZAo" node="1ijklmZVTUi" resolve="newDebugSession" />
               </node>
@@ -756,7 +756,7 @@
         <node concept="3clFbS" id="1ijklmZVTUE" role="3clF47">
           <node concept="3clFbF" id="1ijklmZVTUF" role="3cqZAp">
             <node concept="1rXfSq" id="4hiugqyz9nU" role="3clFbG">
-              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.reAttachPainter(java.lang.Object,boolean):void" resolve="reAttachPainter" />
+              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.reAttachPainter(java.lang.Object,boolean)" resolve="reAttachPainter" />
               <node concept="37vLTw" id="2BHiRxgmEZY" role="37wK5m">
                 <ref role="3cqZAo" node="1ijklmZVTUC" resolve="session" />
               </node>
@@ -786,7 +786,7 @@
         <node concept="3clFbS" id="1ijklmZVTUO" role="3clF47">
           <node concept="3clFbF" id="1ijklmZVTUP" role="3cqZAp">
             <node concept="1rXfSq" id="4hiugqyzkeX" role="3clFbG">
-              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.reAttachPainter(java.lang.Object,boolean):void" resolve="reAttachPainter" />
+              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.reAttachPainter(java.lang.Object,boolean)" resolve="reAttachPainter" />
               <node concept="37vLTw" id="2BHiRxgm6QY" role="37wK5m">
                 <ref role="3cqZAo" node="1ijklmZVTUM" resolve="debugSession" />
               </node>
@@ -816,7 +816,7 @@
         <node concept="3clFbS" id="1ijklmZVTUY" role="3clF47">
           <node concept="3clFbF" id="1ijklmZVTUZ" role="3cqZAp">
             <node concept="1rXfSq" id="4hiugqyzcKi" role="3clFbG">
-              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.detachPainter(java.lang.Object):void" resolve="detachPainter" />
+              <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.detachPainter(java.lang.Object)" resolve="detachPainter" />
               <node concept="37vLTw" id="2BHiRxgmgn8" role="37wK5m">
                 <ref role="3cqZAo" node="1ijklmZVTUW" resolve="debugSession" />
               </node>
@@ -973,7 +973,7 @@
                 <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
               </node>
               <node concept="liA8E" id="1ijklmZVTZ0" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="1ijklmZVTZ1" role="37wK5m">
                   <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
                 </node>
@@ -1005,11 +1005,11 @@
                   <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
                 </node>
                 <node concept="liA8E" id="4QCds4yLcv0" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getMessageBus():com.intellij.util.messages.MessageBus" resolve="getMessageBus" />
+                  <ref role="37wK5l" to="1m72:~ComponentManager.getMessageBus()" resolve="getMessageBus" />
                 </node>
               </node>
               <node concept="liA8E" id="4QCds4yLcv1" role="2OqNvi">
-                <ref role="37wK5l" to="4b2m:~MessageBus.connect():com.intellij.util.messages.MessageBusConnection" resolve="connect" />
+                <ref role="37wK5l" to="4b2m:~MessageBus.connect()" resolve="connect" />
               </node>
             </node>
           </node>
@@ -1020,7 +1020,7 @@
               <ref role="3cqZAo" node="4QCds4yLcvm" resolve="myConnection" />
             </node>
             <node concept="liA8E" id="4QCds4yLcw9" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object):void" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="4QCds4yLcwc" role="37wK5m">
                 <ref role="1PxDUh" to="iwsx:~FileEditorManagerListener" resolve="FileEditorManagerListener" />
                 <ref role="3cqZAo" to="iwsx:~FileEditorManagerListener.FILE_EDITOR_MANAGER" resolve="FILE_EDITOR_MANAGER" />
@@ -1126,7 +1126,7 @@
               <ref role="3cqZAo" node="4QCds4yLcvm" resolve="myConnection" />
             </node>
             <node concept="liA8E" id="4QCds4yLcyz" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect():void" resolve="disconnect" />
+              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>
@@ -1142,7 +1142,7 @@
                 <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
               </node>
               <node concept="liA8E" id="1ijklmZVTZg" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="1ijklmZVTZh" role="37wK5m">
                   <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
                 </node>
@@ -1207,7 +1207,7 @@
                 <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
               </node>
               <node concept="liA8E" id="1ijklmZVTZB" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class):java.lang.Object" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="1ijklmZVTZC" role="37wK5m">
                   <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
                 </node>
@@ -1278,11 +1278,11 @@
             <node concept="3clFbF" id="1ijklmZVU04" role="3cqZAp">
               <node concept="2OqwBi" id="1ijklmZVU05" role="3clFbG">
                 <node concept="2YIFZM" id="1ijklmZVU06" role="2Oq$k0">
-                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
                   <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
                 </node>
                 <node concept="liA8E" id="1ijklmZVU07" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable):void" resolve="invokeLater" />
+                  <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
                   <node concept="2ShNRf" id="1ijklmZVU08" role="37wK5m">
                     <node concept="YeOm9" id="1ijklmZVU09" role="2ShVmc">
                       <node concept="1Y3b0j" id="1ijklmZVU0a" role="YeSDq">
@@ -1389,11 +1389,11 @@
             <node concept="3clFbF" id="5iJck12pnP" role="3cqZAp">
               <node concept="2OqwBi" id="5iJck12pnQ" role="3clFbG">
                 <node concept="2YIFZM" id="5iJck12pnR" role="2Oq$k0">
-                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
                   <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
                 </node>
                 <node concept="liA8E" id="5iJck12pnS" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable):void" resolve="invokeLater" />
+                  <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
                   <node concept="2ShNRf" id="5iJck12pnT" role="37wK5m">
                     <node concept="YeOm9" id="5iJck12pnU" role="2ShVmc">
                       <node concept="1Y3b0j" id="5iJck12pnV" role="YeSDq">
@@ -1657,11 +1657,11 @@
         <node concept="3clFbF" id="1ijklmZVU1S" role="3cqZAp">
           <node concept="2OqwBi" id="1ijklmZVU1T" role="3clFbG">
             <node concept="2YIFZM" id="1ijklmZVU1U" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication():com.intellij.openapi.application.Application" resolve="getApplication" />
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
               <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
             <node concept="liA8E" id="1ijklmZVU1V" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable):void" resolve="invokeLater" />
+              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
               <node concept="2ShNRf" id="1ijklmZVU1W" role="37wK5m">
                 <node concept="YeOm9" id="1ijklmZVU1X" role="2ShVmc">
                   <node concept="1Y3b0j" id="1ijklmZVU1Y" role="YeSDq">
@@ -1748,7 +1748,7 @@
                         <ref role="3cqZAo" node="1ijklmZVU2k" resolve="highlighter" />
                       </node>
                       <node concept="liA8E" id="1ijklmZVU2u" role="2OqNvi">
-                        <ref role="37wK5l" to="s9o5:~RangeMarker.dispose():void" resolve="dispose" />
+                        <ref role="37wK5l" to="s9o5:~RangeMarker.dispose()" resolve="dispose" />
                       </node>
                     </node>
                   </node>
@@ -1885,11 +1885,11 @@
             </node>
             <node concept="2OqwBi" id="1ijklmZVU3m" role="33vP2m">
               <node concept="2YIFZM" id="1ijklmZVU3n" role="2Oq$k0">
-                <ref role="37wK5l" to="iwsx:~FileDocumentManager.getInstance():com.intellij.openapi.fileEditor.FileDocumentManager" resolve="getInstance" />
+                <ref role="37wK5l" to="iwsx:~FileDocumentManager.getInstance()" resolve="getInstance" />
                 <ref role="1Pybhc" to="iwsx:~FileDocumentManager" resolve="FileDocumentManager" />
               </node>
               <node concept="liA8E" id="1ijklmZVU3o" role="2OqNvi">
-                <ref role="37wK5l" to="iwsx:~FileDocumentManager.getDocument(com.intellij.openapi.vfs.VirtualFile):com.intellij.openapi.editor.Document" resolve="getDocument" />
+                <ref role="37wK5l" to="iwsx:~FileDocumentManager.getDocument(com.intellij.openapi.vfs.VirtualFile)" resolve="getDocument" />
                 <node concept="2OqwBi" id="1ijklmZVU3p" role="37wK5m">
                   <node concept="37vLTw" id="2BHiRxghgiu" role="2Oq$k0">
                     <ref role="3cqZAo" node="1ijklmZVU4C" resolve="location" />
@@ -1944,7 +1944,7 @@
                   <ref role="3cqZAo" node="1ijklmZVU3k" resolve="document" />
                 </node>
                 <node concept="liA8E" id="1ijklmZVU3K" role="2OqNvi">
-                  <ref role="37wK5l" to="s9o5:~Document.getLineCount():int" resolve="getLineCount" />
+                  <ref role="37wK5l" to="s9o5:~Document.getLineCount()" resolve="getLineCount" />
                 </node>
               </node>
             </node>
@@ -1975,7 +1975,7 @@
               <ref role="3cqZAo" node="1ijklmZVU3Q" resolve="attributes" />
             </node>
             <node concept="liA8E" id="1ijklmZVU3X" role="2OqNvi">
-              <ref role="37wK5l" to="8m69:~TextAttributes.setForegroundColor(java.awt.Color):void" resolve="setForegroundColor" />
+              <ref role="37wK5l" to="8m69:~TextAttributes.setForegroundColor(java.awt.Color)" resolve="setForegroundColor" />
               <node concept="10M0yZ" id="1ijklmZVU3Y" role="37wK5m">
                 <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
                 <ref role="3cqZAo" to="z60i:~Color.WHITE" resolve="WHITE" />
@@ -1989,7 +1989,7 @@
               <ref role="3cqZAo" node="1ijklmZVU3Q" resolve="attributes" />
             </node>
             <node concept="liA8E" id="1ijklmZVU42" role="2OqNvi">
-              <ref role="37wK5l" to="8m69:~TextAttributes.setBackgroundColor(java.awt.Color):void" resolve="setBackgroundColor" />
+              <ref role="37wK5l" to="8m69:~TextAttributes.setBackgroundColor(java.awt.Color)" resolve="setBackgroundColor" />
               <node concept="10M0yZ" id="1ijklmZVU43" role="37wK5m">
                 <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
                 <ref role="3cqZAo" to="z60i:~Color.BLUE" resolve="BLUE" />
@@ -2009,7 +2009,7 @@
               <node concept="1eOMI4" id="1ijklmZVU49" role="2Oq$k0">
                 <node concept="10QFUN" id="1ijklmZVU4a" role="1eOMHV">
                   <node concept="2YIFZM" id="1ijklmZVU4b" role="10QFUP">
-                    <ref role="37wK5l" to="sjuh:~DocumentMarkupModel.forDocument(com.intellij.openapi.editor.Document,com.intellij.openapi.project.Project,boolean):com.intellij.openapi.editor.markup.MarkupModel" resolve="forDocument" />
+                    <ref role="37wK5l" to="sjuh:~DocumentMarkupModel.forDocument(com.intellij.openapi.editor.Document,com.intellij.openapi.project.Project,boolean)" resolve="forDocument" />
                     <ref role="1Pybhc" to="sjuh:~DocumentMarkupModel" resolve="DocumentMarkupModel" />
                     <node concept="37vLTw" id="3GM_nagTw3X" role="37wK5m">
                       <ref role="3cqZAo" node="1ijklmZVU3k" resolve="document" />
@@ -2027,7 +2027,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="1ijklmZVU4g" role="2OqNvi">
-                <ref role="37wK5l" to="tbgs:~MarkupModelEx.addPersistentLineHighlighter(int,int,com.intellij.openapi.editor.markup.TextAttributes):com.intellij.openapi.editor.ex.RangeHighlighterEx" resolve="addPersistentLineHighlighter" />
+                <ref role="37wK5l" to="tbgs:~MarkupModelEx.addPersistentLineHighlighter(int,int,com.intellij.openapi.editor.markup.TextAttributes)" resolve="addPersistentLineHighlighter" />
                 <node concept="3cpWsd" id="1ijklmZVU4h" role="37wK5m">
                   <node concept="3cmrfG" id="1ijklmZVU4i" role="3uHU7w">
                     <property role="3cmrfH" value="1" />
@@ -2071,7 +2071,7 @@
                   <ref role="3cqZAo" node="1ijklmZVU46" resolve="highlighter" />
                 </node>
                 <node concept="liA8E" id="1ijklmZVU4y" role="2OqNvi">
-                  <ref role="37wK5l" to="s9o5:~RangeMarker.isValid():boolean" resolve="isValid" />
+                  <ref role="37wK5l" to="s9o5:~RangeMarker.isValid()" resolve="isValid" />
                 </node>
               </node>
             </node>

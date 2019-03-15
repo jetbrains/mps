@@ -42,7 +42,6 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 import javax.swing.SwingUtilities;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
@@ -336,7 +335,10 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private void flushEvents() {
-    ModelAccess.instance().flushEventQueue();
+    // XXX MA.flushEventQueue has been commented out intentionally, don't bring it back unless you've got a bullet-proof justification 
+    //     There's no flushEventQueue() in openapi.MA and I don't want to introduce one unless utterly necessary. 
+    //     It it comes to a point we need to flush model events AND empty EDT cmd of flushEDTEvents is not sufficient, we may 
+    //     consider doing smth like myProject.getModelAccess().runWriteInEDT() here, with some synchronization primitive. 
   }
 
   protected void switchToInspector() throws InvocationTargetException, InterruptedException {

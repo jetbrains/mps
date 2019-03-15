@@ -276,7 +276,7 @@
               </node>
             </node>
             <node concept="liA8E" id="E" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="Xl_RD" id="I" role="37wK5m">
                 <property role="Xl_RC" value="default" />
                 <node concept="cd27G" id="K" role="lGtFl">
@@ -500,7 +500,7 @@
                   <ref role="3cqZAo" node="1s" resolve="ctx" />
                 </node>
                 <node concept="liA8E" id="25" role="2OqNvi">
-                  <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                  <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
                 <node concept="cd27G" id="26" role="lGtFl">
                   <node concept="3u3nmq" id="27" role="cd27D">
@@ -567,7 +567,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2o" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence):jetbrains.mps.text.TextArea" resolve="append" />
+              <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <node concept="Xl_RD" id="2s" role="37wK5m">
                 <property role="Xl_RC" value=".super." />
                 <node concept="cd27G" id="2u" role="lGtFl">
@@ -611,7 +611,7 @@
                 <ref role="3cqZAo" node="1s" resolve="ctx" />
               </node>
               <node concept="liA8E" id="2G" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput():org.jetbrains.mps.openapi.model.SNode" resolve="getPrimaryInput" />
+                <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
               <node concept="cd27G" id="2H" role="lGtFl">
                 <node concept="3u3nmq" id="2I" role="cd27D">

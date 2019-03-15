@@ -25,7 +25,7 @@ public class PlatformHelpURLProvider implements ApplicationComponent {
     HelpURLProvider.setInstance(new HelpURLProvider() {
       @Override
       public String getURL() {
-        return "http://confluence.jetbrains.com/display/MPSD" + ApplicationInfo.getInstance().getMajorVersion() + ApplicationInfo.getInstance().getMinorVersion();
+        return "https://www.jetbrains.com/help/mps/" + ApplicationInfo.getInstance().getMajorVersion() + "." + ApplicationInfo.getInstance().getMinorVersion();
       }
     });
   }

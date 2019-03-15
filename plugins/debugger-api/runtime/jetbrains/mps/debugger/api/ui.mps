@@ -142,7 +142,7 @@
                 <ref role="3cqZAo" node="24OxoGwU3J4" resolve="event" />
               </node>
               <node concept="liA8E" id="24OxoGwU3Jc" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext():com.intellij.openapi.actionSystem.DataContext" resolve="getDataContext" />
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext()" resolve="getDataContext" />
               </node>
             </node>
           </node>
@@ -242,7 +242,7 @@
                 <ref role="3cqZAo" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
               </node>
               <node concept="liA8E" id="24OxoGwU3JU" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext)" resolve="getData" />
                 <node concept="37vLTw" id="2BHiRxgh9Xj" role="37wK5m">
                   <ref role="3cqZAo" node="24OxoGwU3JF" resolve="dataContext" />
                 </node>
@@ -276,7 +276,7 @@
                 <ref role="3cqZAo" to="cjdg:~RunContentManager.RUN_CONTENT_DESCRIPTOR" resolve="RUN_CONTENT_DESCRIPTOR" />
               </node>
               <node concept="liA8E" id="24OxoGwU3JN" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext):java.lang.Object" resolve="getData" />
+                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext)" resolve="getData" />
                 <node concept="37vLTw" id="2BHiRxgmP7g" role="37wK5m">
                   <ref role="3cqZAo" node="24OxoGwU3JF" resolve="dataContext" />
                 </node>
@@ -307,7 +307,7 @@
                       <ref role="3cqZAo" node="24OxoGwU3JJ" resolve="runContentDescriptor" />
                     </node>
                     <node concept="liA8E" id="5N5J$YBiDZ5" role="2OqNvi">
-                      <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getProcessHandler():com.intellij.execution.process.ProcessHandler" resolve="getProcessHandler" />
+                      <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getProcessHandler()" resolve="getProcessHandler" />
                     </node>
                   </node>
                 </node>
@@ -337,17 +337,17 @@
               <node concept="2OqwBi" id="5N5J$YBiDYp" role="2Oq$k0">
                 <node concept="2YIFZM" id="5N5J$YBiDYq" role="2Oq$k0">
                   <ref role="1Pybhc" to="3v5a:~ExecutionManager" resolve="ExecutionManager" />
-                  <ref role="37wK5l" to="3v5a:~ExecutionManager.getInstance(com.intellij.openapi.project.Project):com.intellij.execution.ExecutionManager" resolve="getInstance" />
+                  <ref role="37wK5l" to="3v5a:~ExecutionManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                   <node concept="37vLTw" id="5N5J$YBiDYr" role="37wK5m">
                     <ref role="3cqZAo" node="24OxoGwU3JQ" resolve="project" />
                   </node>
                 </node>
                 <node concept="liA8E" id="5N5J$YBiDYs" role="2OqNvi">
-                  <ref role="37wK5l" to="3v5a:~ExecutionManager.getContentManager():com.intellij.execution.ui.RunContentManager" resolve="getContentManager" />
+                  <ref role="37wK5l" to="3v5a:~ExecutionManager.getContentManager()" resolve="getContentManager" />
                 </node>
               </node>
               <node concept="liA8E" id="5N5J$YBiDYt" role="2OqNvi">
-                <ref role="37wK5l" to="cjdg:~RunContentManager.getSelectedContent():com.intellij.execution.ui.RunContentDescriptor" resolve="getSelectedContent" />
+                <ref role="37wK5l" to="cjdg:~RunContentManager.getSelectedContent()" resolve="getSelectedContent" />
               </node>
             </node>
           </node>
@@ -378,21 +378,21 @@
                 <node concept="2OqwBi" id="5N5J$YBiDYE" role="37vLTx">
                   <node concept="2OqwBi" id="5N5J$YBiDYF" role="2Oq$k0">
                     <node concept="2YIFZM" id="5N5J$YBiDYG" role="2Oq$k0">
-                      <ref role="37wK5l" to="3v5a:~ExecutionManager.getInstance(com.intellij.openapi.project.Project):com.intellij.execution.ExecutionManager" resolve="getInstance" />
+                      <ref role="37wK5l" to="3v5a:~ExecutionManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                       <ref role="1Pybhc" to="3v5a:~ExecutionManager" resolve="ExecutionManager" />
                       <node concept="37vLTw" id="5N5J$YBiDYH" role="37wK5m">
                         <ref role="3cqZAo" node="24OxoGwU3JQ" resolve="project" />
                       </node>
                     </node>
                     <node concept="liA8E" id="5N5J$YBiDYI" role="2OqNvi">
-                      <ref role="37wK5l" to="3v5a:~ExecutionManager.getContentManager():com.intellij.execution.ui.RunContentManager" resolve="getContentManager" />
+                      <ref role="37wK5l" to="3v5a:~ExecutionManager.getContentManager()" resolve="getContentManager" />
                     </node>
                   </node>
                   <node concept="liA8E" id="5N5J$YBiDYJ" role="2OqNvi">
-                    <ref role="37wK5l" to="cjdg:~RunContentManager.getSelectedContent(com.intellij.execution.Executor):com.intellij.execution.ui.RunContentDescriptor" resolve="getSelectedContent" />
+                    <ref role="37wK5l" to="cjdg:~RunContentManager.getSelectedContent(com.intellij.execution.Executor)" resolve="getSelectedContent" />
                     <node concept="2YIFZM" id="5N5J$YBiDYK" role="37wK5m">
                       <ref role="1Pybhc" to="9mrk:~DefaultDebugExecutor" resolve="DefaultDebugExecutor" />
-                      <ref role="37wK5l" to="9mrk:~DefaultDebugExecutor.getDebugExecutorInstance():com.intellij.execution.Executor" resolve="getDebugExecutorInstance" />
+                      <ref role="37wK5l" to="9mrk:~DefaultDebugExecutor.getDebugExecutorInstance()" resolve="getDebugExecutorInstance" />
                     </node>
                   </node>
                 </node>
@@ -429,7 +429,7 @@
                   <ref role="3cqZAo" node="5N5J$YBiDYm" resolve="selectedContent" />
                 </node>
                 <node concept="liA8E" id="5N5J$YBiDYW" role="2OqNvi">
-                  <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getProcessHandler():com.intellij.execution.process.ProcessHandler" resolve="getProcessHandler" />
+                  <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getProcessHandler()" resolve="getProcessHandler" />
                 </node>
               </node>
             </node>

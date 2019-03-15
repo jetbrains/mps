@@ -1261,7 +1261,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1Gd1YUjFVlK" role="2OqNvi">
-                    <ref role="37wK5l" to="7jhi:~NodeMatcher.child(org.jetbrains.mps.openapi.language.SContainmentLink):jetbrains.mps.lang.pattern.ChildMatcher" resolve="child" />
+                    <ref role="37wK5l" to="7jhi:~NodeMatcher.child(org.jetbrains.mps.openapi.language.SContainmentLink)" resolve="child" />
                     <node concept="10Nm6u" id="4L5lkpK7dbW" role="37wK5m">
                       <node concept="1sPUBX" id="4L5lkpK7dbX" role="lGtFl">
                         <ref role="v9R2y" to="tp27:7jb4LXp9xud" resolve="switch_AggregationIdentity_SContainmentLink" />
@@ -1308,7 +1308,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="1Gd1YUjFVlV" role="2OqNvi">
-                  <ref role="37wK5l" to="7jhi:~ChildMatcher.at(int):jetbrains.mps.lang.pattern.NodeMatcher" resolve="at" />
+                  <ref role="37wK5l" to="7jhi:~ChildMatcher.at(int)" resolve="at" />
                   <node concept="3cmrfG" id="1Gd1YUjFVlW" role="37wK5m">
                     <property role="3cmrfH" value="0" />
                     <node concept="17Uvod" id="1Gd1YUjFVlX" role="lGtFl">
@@ -1504,7 +1504,7 @@
             </node>
           </node>
           <node concept="liA8E" id="6wyfy1abADu" role="2OqNvi">
-            <ref role="37wK5l" to="7jhi:~ChildMatcher.capture(java.lang.String):jetbrains.mps.lang.pattern.ChildMatcher" resolve="capture" />
+            <ref role="37wK5l" to="7jhi:~ChildMatcher.capture(java.lang.String)" resolve="capture" />
             <node concept="Xl_RD" id="6wyfy1abADv" role="37wK5m">
               <property role="Xl_RC" value="" />
               <node concept="17Uvod" id="6wyfy1abADw" role="lGtFl">
@@ -1558,7 +1558,7 @@
             </node>
           </node>
           <node concept="liA8E" id="7Qbh0xgh96K" role="2OqNvi">
-            <ref role="37wK5l" to="7jhi:~NodeMatcher.property(org.jetbrains.mps.openapi.language.SProperty,java.lang.String):jetbrains.mps.lang.pattern.NodeMatcher" resolve="property" />
+            <ref role="37wK5l" to="7jhi:~NodeMatcher.property(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="property" />
             <node concept="10Nm6u" id="7Qbh0xgh970" role="37wK5m">
               <node concept="5jKBG" id="za$VMvkOeF" role="lGtFl">
                 <ref role="v9R2y" to="tp27:5ZE7FBZ0xn2" resolve="reduce_PropertyId_SProperty" />
@@ -1660,7 +1660,7 @@
             </node>
           </node>
           <node concept="liA8E" id="6wyfy1abwJl" role="2OqNvi">
-            <ref role="37wK5l" to="7jhi:~NodeMatcher.association(org.jetbrains.mps.openapi.language.SReferenceLink,java.lang.String):jetbrains.mps.lang.pattern.NodeMatcher" resolve="association" />
+            <ref role="37wK5l" to="7jhi:~NodeMatcher.association(org.jetbrains.mps.openapi.language.SReferenceLink,java.lang.String)" resolve="association" />
             <node concept="10Nm6u" id="6wyfy1abwJ_" role="37wK5m">
               <node concept="5jKBG" id="za$VMvkOeG" role="lGtFl">
                 <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
@@ -1680,7 +1680,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="6wyfy1abxtU" role="2OqNvi">
-                          <ref role="37wK5l" to="c17a:~SReferenceLink.getDeclarationNode():org.jetbrains.mps.openapi.model.SNode" resolve="getDeclarationNode" />
+                          <ref role="37wK5l" to="c17a:~SReferenceLink.getDeclarationNode()" resolve="getDeclarationNode" />
                         </node>
                       </node>
                     </node>
@@ -1741,7 +1741,7 @@
             </node>
           </node>
           <node concept="liA8E" id="5VyyigDhSOK" role="2OqNvi">
-            <ref role="37wK5l" to="7jhi:~NodeMatcher.any():jetbrains.mps.lang.pattern.NodeMatcher" resolve="any" />
+            <ref role="37wK5l" to="7jhi:~NodeMatcher.any()" resolve="any" />
           </node>
         </node>
       </node>
@@ -1776,7 +1776,7 @@
             </node>
           </node>
           <node concept="liA8E" id="6wyfy1abA4a" role="2OqNvi">
-            <ref role="37wK5l" to="7jhi:~NodeMatcher.capture(java.lang.String):jetbrains.mps.lang.pattern.NodeMatcher" resolve="capture" />
+            <ref role="37wK5l" to="7jhi:~NodeMatcher.capture(java.lang.String)" resolve="capture" />
             <node concept="Xl_RD" id="6wyfy1abAiR" role="37wK5m">
               <property role="Xl_RC" value="" />
               <node concept="17Uvod" id="6wyfy1abAiS" role="lGtFl">
@@ -1861,7 +1861,7 @@
             </node>
           </node>
           <node concept="liA8E" id="1Gd1YUjEBwD" role="2OqNvi">
-            <ref role="37wK5l" to="7jhi:~NodeMatcher.capture(java.lang.String):jetbrains.mps.lang.pattern.NodeMatcher" resolve="capture" />
+            <ref role="37wK5l" to="7jhi:~NodeMatcher.capture(java.lang.String)" resolve="capture" />
             <node concept="Xl_RD" id="1Gd1YUjEBwE" role="37wK5m">
               <property role="Xl_RC" value="" />
               <node concept="17Uvod" id="1Gd1YUjEBwF" role="lGtFl">
@@ -2115,7 +2115,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1Gd1YUjF610" role="2OqNvi">
-              <ref role="37wK5l" to="7jhi:~NodeMatcher.disjunct(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.lang.pattern.NodeMatcher):jetbrains.mps.lang.pattern.NodeMatcher" resolve="disjunct" />
+              <ref role="37wK5l" to="7jhi:~NodeMatcher.disjunct(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.lang.pattern.NodeMatcher)" resolve="disjunct" />
               <node concept="37vLTw" id="1Gd1YUjF9z8" role="37wK5m">
                 <ref role="3cqZAo" node="1Gd1YUjF9nu" resolve="patternNode" />
                 <node concept="1ZhdrF" id="1Gd1YUjFi$m" role="lGtFl">
@@ -2349,7 +2349,7 @@
         </node>
       </node>
       <node concept="liA8E" id="4tPQHKlmWul" role="2OqNvi">
-        <ref role="37wK5l" to="7jhi:~NodeMatcher.child(org.jetbrains.mps.openapi.language.SContainmentLink):jetbrains.mps.lang.pattern.ChildMatcher" resolve="child" />
+        <ref role="37wK5l" to="7jhi:~NodeMatcher.child(org.jetbrains.mps.openapi.language.SContainmentLink)" resolve="child" />
         <node concept="10Nm6u" id="4tPQHKlmWum" role="37wK5m">
           <node concept="1sPUBX" id="4L5lkpK77e5" role="lGtFl">
             <ref role="v9R2y" to="tp27:7jb4LXp9xud" resolve="switch_AggregationIdentity_SContainmentLink" />

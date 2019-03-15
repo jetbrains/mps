@@ -2,9 +2,9 @@
 <model ref="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)">
   <persistence version="9" />
   <languages>
-    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="u9u1" ref="r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)" />
@@ -132,8 +132,8 @@
           <node concept="3clFbS" id="5vTxdEz_SHy" role="SfCbr">
             <node concept="3clFbF" id="5vTxdEz_SA6" role="3cqZAp">
               <node concept="2YIFZM" id="5vTxdEz_SAm" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~Thread.sleep(long):void" resolve="sleep" />
                 <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
+                <ref role="37wK5l" to="wyt6:~Thread.sleep(long)" resolve="sleep" />
                 <node concept="3cmrfG" id="5vTxdEz_SA$" role="37wK5m">
                   <property role="3cmrfH" value="5000" />
                 </node>
@@ -170,7 +170,7 @@
         <node concept="3vlDli" id="4rbJdZOxa40" role="3cqZAp">
           <node concept="2YIFZM" id="4rbJdZOuyd5" role="3tpDZA">
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-            <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+            <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
             <node concept="Xl_RD" id="4rbJdZOxa5E" role="37wK5m">
               <property role="Xl_RC" value="MyProp" />
             </node>
@@ -196,7 +196,7 @@
             </node>
             <node concept="2YIFZM" id="3P4ieJEE8RQ" role="3uHU7B">
               <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
               <node concept="10M0yZ" id="3P4ieJEE8QS" role="37wK5m">
                 <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
                 <ref role="3cqZAo" to="u9u1:4rbJdZOuy6t" resolve="SYS_PROPERTY" />

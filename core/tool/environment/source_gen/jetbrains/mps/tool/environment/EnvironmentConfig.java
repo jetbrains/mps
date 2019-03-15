@@ -18,7 +18,6 @@ import jetbrains.mps.util.PathManager;
  * Represents a configuration options list for an environment, used a Builder pattern
  * 
  * @see jetbrains.mps.tool.environment.Environment 
- * @see jetbrains.mps.tool.environment.EnvironmentContainer 
  */
 public class EnvironmentConfig {
   private final Set<PluginDescriptor> myPlugins = SetSequence.fromSet(new LinkedHashSet<PluginDescriptor>());

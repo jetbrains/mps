@@ -39,7 +39,7 @@ import jetbrains.mps.smodel.RegularModelDescriptor;
 import org.jetbrains.mps.openapi.persistence.NullDataSource;
 import jetbrains.mps.smodel.ModelLoadResult;
 import jetbrains.mps.smodel.SnapshotModelData;
-import jetbrains.mps.smodel.nodeidmap.ForeignNodeIdMap;
+import jetbrains.mps.smodel.nodeidmap.StringBasedNodeIdMap;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -138,14 +138,15 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
     }
   }
 
-  public SModel getModelByModule(SModule module) {
+  @Nullable
+  public SModel getModelByModule(@Nullable SModule module) {
     myRepository.getModelAccess().checkReadAccess();
     if (module == null) {
       return null;
     }
     SModelReference ref = getSModelReference(module);
     ProjectStructureModule.ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
-    return (descriptor == null ? null : descriptor);
+    return descriptor;
   }
 
   @Override
@@ -243,7 +244,7 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
     @Override
     @NotNull
     protected ModelLoadResult<jetbrains.mps.smodel.SModel> createModel() {
-      final SnapshotModelData modelData = new SnapshotModelData(getReference(), new ForeignNodeIdMap());
+      final SnapshotModelData modelData = new SnapshotModelData(getReference(), new StringBasedNodeIdMap());
       final ModuleDescriptor moduleDescriptor = ((AbstractModule) myModule).getModuleDescriptor();
       final IFile file = ((AbstractModule) myModule).getDescriptorFile();
       if (file != null && moduleDescriptor != null) {

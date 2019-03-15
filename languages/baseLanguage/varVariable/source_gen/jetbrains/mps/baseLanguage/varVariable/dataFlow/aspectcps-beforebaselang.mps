@@ -318,7 +318,7 @@
             <node concept="3clFbS" id="X" role="3Kbo56">
               <node concept="3cpWs6" id="11" role="3cqZAp">
                 <node concept="2YIFZM" id="13" role="3cqZAk">
-                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object):java.util.List" resolve="singletonList" />
+                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
                   <node concept="2ShNRf" id="15" role="37wK5m">
                     <node concept="HV5vD" id="18" role="2ShVmc">
@@ -369,7 +369,7 @@
           </node>
           <node concept="2OqwBi" id="S" role="3KbGdf">
             <node concept="liA8E" id="1j" role="2OqNvi">
-              <ref role="37wK5l" to="ksn4:~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept):int" resolve="index" />
+              <ref role="37wK5l" to="ksn4:~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="index" />
               <node concept="37vLTw" id="1m" role="37wK5m">
                 <ref role="3cqZAo" node="y" resolve="cncpt" />
                 <node concept="cd27G" id="1o" role="lGtFl">
@@ -406,7 +406,7 @@
         </node>
         <node concept="3cpWs6" id="w" role="3cqZAp">
           <node concept="2YIFZM" id="1v" role="3cqZAk">
-            <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="3uibUv" id="1x" role="3PaCim">
               <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
@@ -475,9 +475,9 @@
             </node>
           </node>
           <node concept="liA8E" id="1P" role="2OqNvi">
-            <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.put(jetbrains.mps.smodel.adapter.ids.SConceptId...):jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" resolve="put" />
+            <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.put(jetbrains.mps.smodel.adapter.ids.SConceptId...)" resolve="put" />
             <node concept="2YIFZM" id="1R" role="37wK5m">
-              <ref role="37wK5l" to="e8bb:~MetaIdFactory.conceptId(long,long,long):jetbrains.mps.smodel.adapter.ids.SConceptId" resolve="conceptId" />
+              <ref role="37wK5l" to="e8bb:~MetaIdFactory.conceptId(long,long,long)" resolve="conceptId" />
               <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
               <node concept="1adDum" id="1S" role="37wK5m">
                 <property role="1adDun" value="0x515552c7fcc04ab4L" />
@@ -492,7 +492,7 @@
           </node>
         </node>
         <node concept="liA8E" id="1N" role="2OqNvi">
-          <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.seal():jetbrains.mps.lang.smodel.ConceptSwitchIndex" resolve="seal" />
+          <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.seal()" resolve="seal" />
         </node>
       </node>
       <node concept="3uibUv" id="1L" role="1tU5fm">
@@ -605,7 +605,7 @@
         <node concept="3clFbF" id="2y" role="3cqZAp">
           <node concept="2OqwBi" id="2A" role="3clFbG">
             <node concept="liA8E" id="2C" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String):void" resolve="emitNop" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
               <node concept="Xl_RD" id="2F" role="37wK5m">
                 <property role="Xl_RC" value="r:04eb0d47-e25d-4def-b754-199026c42388(jetbrains.mps.baseLanguage.varVariable.dataFlow)/1206990208534" />
                 <node concept="cd27G" id="2H" role="lGtFl">
@@ -681,7 +681,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2X" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object):void" resolve="build" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
               <node concept="10QFUN" id="37" role="37wK5m">
                 <node concept="2YIFZM" id="39" role="10QFUP">
                   <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
@@ -712,7 +712,7 @@
                   </node>
                   <node concept="2YIFZM" id="3d" role="37wK5m">
                     <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                    <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                    <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String)" resolve="getContainmentLink" />
                     <node concept="1adDum" id="3n" role="37wK5m">
                       <property role="1adDun" value="0xf3061a5392264cc5L" />
                     </node>
@@ -770,7 +770,7 @@
         <node concept="3clFbF" id="2$" role="3cqZAp">
           <node concept="2OqwBi" id="3z" role="3clFbG">
             <node concept="liA8E" id="3_" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitWrite(java.lang.Object,java.lang.Object,java.lang.String):void" resolve="emitWrite" />
+              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitWrite(java.lang.Object,java.lang.Object,java.lang.String)" resolve="emitWrite" />
               <node concept="1DoJHT" id="3C" role="37wK5m">
                 <property role="1Dpdpm" value="getNode" />
                 <node concept="3uibUv" id="3G" role="1Ez5kq">
@@ -824,7 +824,7 @@
                 </node>
                 <node concept="2YIFZM" id="3P" role="37wK5m">
                   <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                  <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SContainmentLink" resolve="getContainmentLink" />
+                  <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String)" resolve="getContainmentLink" />
                   <node concept="1adDum" id="3Z" role="37wK5m">
                     <property role="1adDun" value="0xf3061a5392264cc5L" />
                   </node>

@@ -21,7 +21,7 @@ public class ShowTutorialAction extends ShowSiteAction {
 
   // TODO: revert to simple major + minor version after MPS-26466 is fixed
   private final String myMajorMinorVersion =
-      ApplicationInfo.getInstance().getMajorVersion() +
+      ApplicationInfo.getInstance().getMajorVersion() + "." +
       (
           ApplicationInfo.getInstance().getMinorVersion().indexOf('.') < 0 ?
           ApplicationInfo.getInstance().getMinorVersion() :
@@ -35,6 +35,6 @@ public class ShowTutorialAction extends ShowSiteAction {
 
   @Override
   protected String getSiteURL() {
-    return String.format("https://confluence.jetbrains.com/display/MPSD%s/Fast+Track+to+MPS", myMajorMinorVersion);
+    return String.format("https://www.jetbrains.com/help/mps/%s/fast-track-to-mps.html", myMajorMinorVersion);
   }
 }

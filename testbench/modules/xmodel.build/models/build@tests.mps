@@ -275,13 +275,13 @@
                                         <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                                       </node>
                                       <node concept="liA8E" id="3Af5TgnEtGI" role="2OqNvi">
-                                        <ref role="37wK5l" to="guwi:~PrintStream.print(java.lang.String):void" resolve="print" />
+                                        <ref role="37wK5l" to="guwi:~PrintStream.print(java.lang.String)" resolve="print" />
                                         <node concept="2OqwBi" id="3Af5TgnEtGJ" role="37wK5m">
                                           <node concept="37vLTw" id="3Af5TgnEtGK" role="2Oq$k0">
                                             <ref role="3cqZAo" node="3Af5TgnEtGz" resolve="event" />
                                           </node>
                                           <node concept="liA8E" id="3Af5TgnEtGL" role="2OqNvi">
-                                            <ref role="37wK5l" to="uu3z:~ProcessEvent.getText():java.lang.String" resolve="getText" />
+                                            <ref role="37wK5l" to="uu3z:~ProcessEvent.getText()" resolve="getText" />
                                           </node>
                                         </node>
                                       </node>
@@ -302,13 +302,13 @@
                                       <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
                                     </node>
                                     <node concept="liA8E" id="3Af5TgnEtGS" role="2OqNvi">
-                                      <ref role="37wK5l" to="guwi:~PrintStream.print(java.lang.String):void" resolve="print" />
+                                      <ref role="37wK5l" to="guwi:~PrintStream.print(java.lang.String)" resolve="print" />
                                       <node concept="2OqwBi" id="3Af5TgnEtGT" role="37wK5m">
                                         <node concept="37vLTw" id="3Af5TgnEtGU" role="2Oq$k0">
                                           <ref role="3cqZAo" node="3Af5TgnEtGz" resolve="event" />
                                         </node>
                                         <node concept="liA8E" id="3Af5TgnEtGV" role="2OqNvi">
-                                          <ref role="37wK5l" to="uu3z:~ProcessEvent.getText():java.lang.String" resolve="getText" />
+                                          <ref role="37wK5l" to="uu3z:~ProcessEvent.getText()" resolve="getText" />
                                         </node>
                                       </node>
                                     </node>
@@ -321,7 +321,7 @@
                                   <ref role="3cqZAo" to="uu3z:~ProcessOutputTypes.STDERR" resolve="STDERR" />
                                 </node>
                                 <node concept="liA8E" id="3Af5TgnEtGY" role="2OqNvi">
-                                  <ref role="37wK5l" to="zn9m:~Key.equals(java.lang.Object):boolean" resolve="equals" />
+                                  <ref role="37wK5l" to="zn9m:~Key.equals(java.lang.Object)" resolve="equals" />
                                   <node concept="37vLTw" id="3Af5TgnEtGZ" role="37wK5m">
                                     <ref role="3cqZAo" node="3Af5TgnEtG_" resolve="key" />
                                   </node>
@@ -348,7 +348,7 @@
                   <property role="TrG5h" value="mpsHomePath" />
                   <node concept="17QB3L" id="4BZZ2Mx1_O_" role="1tU5fm" />
                   <node concept="2YIFZM" id="4BZZ2Mx1_9K" role="33vP2m">
-                    <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+                    <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
                     <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
                     <node concept="Xl_RD" id="4BZZ2Mx1_9L" role="37wK5m">
                       <property role="Xl_RC" value="mps.home.path" />
@@ -579,7 +579,7 @@
                       <ref role="3cqZAo" node="1ZVcZhrXDY8" resolve="ex" />
                     </node>
                     <node concept="liA8E" id="1ZVcZhrXDY4" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace():void" resolve="printStackTrace" />
+                      <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace()" resolve="printStackTrace" />
                     </node>
                   </node>
                 </node>

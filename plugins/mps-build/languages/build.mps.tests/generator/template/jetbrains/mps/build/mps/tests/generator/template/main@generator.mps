@@ -2,13 +2,13 @@
 <model ref="r:707b7eb5-6dae-4291-ab4d-8d1bac7cbc86(jetbrains.mps.build.mps.tests.generator.template.main@generator)">
   <persistence version="9" />
   <languages>
-    <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="-1" />
-    <use id="698a8d22-a104-47a0-ba8d-10e3ec237f13" name="jetbrains.mps.build.workflow" version="-1" />
-    <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="-1" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="-1" />
+    <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="0" />
+    <use id="698a8d22-a104-47a0-ba8d-10e3ec237f13" name="jetbrains.mps.build.workflow" version="0" />
+    <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="0" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
-    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="-1" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
+    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -1008,6 +1008,7 @@
                                   </node>
                                 </node>
                                 <node concept="2OqwBi" id="1CnLp85qxsB" role="3clFbw">
+                                  <node concept="3w_OXm" id="1CnLp85qy5A" role="2OqNvi" />
                                   <node concept="2OqwBi" id="$24$97E_E" role="2Oq$k0">
                                     <node concept="2OqwBi" id="1CnLp85qwya" role="2Oq$k0">
                                       <node concept="30H73N" id="1CnLp85qwqM" role="2Oq$k0" />
@@ -1019,11 +1020,16 @@
                                       <ref role="3Tt5mk" to="5tjl:5I1s5NvGMfd" resolve="haltonfailure" />
                                     </node>
                                   </node>
-                                  <node concept="3w_OXm" id="1CnLp85qy5A" role="2OqNvi" />
                                 </node>
                               </node>
                               <node concept="3cpWs6" id="6ZIjmC0pqqZ" role="3cqZAp">
                                 <node concept="2OqwBi" id="6g2MV4s6lfG" role="3cqZAk">
+                                  <node concept="2qgKlT" id="6g2MV4s6rGs" role="2OqNvi">
+                                    <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
+                                    <node concept="37vLTw" id="6g2MV4s7Gcy" role="37wK5m">
+                                      <ref role="3cqZAo" node="6g2MV4s7FbP" resolve="macroHelper" />
+                                    </node>
+                                  </node>
                                   <node concept="2OqwBi" id="$24$97HhY" role="2Oq$k0">
                                     <node concept="2OqwBi" id="6g2MV4s53R8" role="2Oq$k0">
                                       <node concept="30H73N" id="6g2MV4s53NL" role="2Oq$k0" />
@@ -1033,12 +1039,6 @@
                                     </node>
                                     <node concept="3TrEf2" id="$24$97I6S" role="2OqNvi">
                                       <ref role="3Tt5mk" to="5tjl:5I1s5NvGMfd" resolve="haltonfailure" />
-                                    </node>
-                                  </node>
-                                  <node concept="2qgKlT" id="6g2MV4s6rGs" role="2OqNvi">
-                                    <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                                    <node concept="37vLTw" id="6g2MV4s7Gcy" role="37wK5m">
-                                      <ref role="3cqZAo" node="6g2MV4s7FbP" resolve="macroHelper" />
                                     </node>
                                   </node>
                                 </node>
@@ -1394,7 +1394,7 @@
                                         </node>
                                       </node>
                                       <node concept="liA8E" id="8knae4H70v" role="2OqNvi">
-                                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                                         <node concept="Xl_RD" id="8knae4H7U9" role="37wK5m">
                                           <property role="Xl_RC" value="mps.macro." />
                                         </node>

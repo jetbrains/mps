@@ -617,7 +617,7 @@
                       <node concept="2OqwBi" id="6szrkDocjQB" role="37wK5m">
                         <node concept="1Q80Hx" id="6szrkDocjED" role="2Oq$k0" />
                         <node concept="liA8E" id="6szrkDock3j" role="2OqNvi">
-                          <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                          <ref role="37wK5l" to="cj4x:~EditorContext.getRepository()" resolve="getRepository" />
                         </node>
                       </node>
                     </node>
@@ -654,11 +654,11 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="3pibKp8qBB5" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                            <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                           </node>
                         </node>
                         <node concept="liA8E" id="3pibKp8qBMA" role="2OqNvi">
-                          <ref role="37wK5l" to="lui2:~SModule.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                          <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
                         </node>
                       </node>
                     </node>

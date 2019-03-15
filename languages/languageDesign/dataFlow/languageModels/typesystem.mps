@@ -515,7 +515,7 @@
             </node>
             <node concept="2OqwBi" id="5qKdWqI9nTi" role="0kSFX">
               <node concept="liA8E" id="5qKdWqI9nTj" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
               </node>
               <node concept="2JrnkZ" id="5qKdWqI9nTk" role="2Oq$k0">
                 <node concept="2OqwBi" id="5qKdWqI9nTl" role="2JrQYb">
@@ -907,7 +907,7 @@
                                         <node concept="3clFbF" id="5qKdWqIiYuj" role="3cqZAp">
                                           <node concept="2OqwBi" id="59ZEGVQDnFF" role="3clFbG">
                                             <node concept="liA8E" id="dZuDV0fX35" role="2OqNvi">
-                                              <ref role="37wK5l" to="c17a:~SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                                              <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
                                             </node>
                                             <node concept="2OqwBi" id="5qKdWqIiZ17" role="2Oq$k0">
                                               <node concept="2yIwOk" id="dZuDV0fWcV" role="2OqNvi" />

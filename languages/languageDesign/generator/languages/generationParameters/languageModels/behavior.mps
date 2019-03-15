@@ -184,7 +184,7 @@
                 <node concept="3cpWs3" id="7mYJ4gC7JFC" role="3uHU7B">
                   <node concept="2OqwBi" id="2n9zn0CqN0R" role="3uHU7B">
                     <node concept="liA8E" id="2n9zn0CqN0S" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SModel.getModelId():org.jetbrains.mps.openapi.model.SModelId" resolve="getModelId" />
+                      <ref role="37wK5l" to="mhbf:~SModel.getModelId()" resolve="getModelId" />
                     </node>
                     <node concept="2JrnkZ" id="2n9zn0CqN0T" role="2Oq$k0">
                       <node concept="2OqwBi" id="2n9zn0CqN0U" role="2JrQYb">

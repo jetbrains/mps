@@ -1091,7 +1091,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4nxgFhR8gNp" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object)" resolve="getUserObject" />
                     <node concept="Xl_RD" id="4nxgFhR8gNq" role="37wK5m">
                       <property role="Xl_RC" value="operator" />
                     </node>
@@ -1276,7 +1276,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4nxgFhR8gOG" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
               <node concept="Xl_RD" id="4nxgFhR8gOH" role="37wK5m">
                 <property role="Xl_RC" value="operator" />
               </node>
@@ -1294,7 +1294,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4nxgFhR8gON" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
               <node concept="Xl_RD" id="4nxgFhR8gOO" role="37wK5m">
                 <property role="Xl_RC" value="reversed" />
               </node>

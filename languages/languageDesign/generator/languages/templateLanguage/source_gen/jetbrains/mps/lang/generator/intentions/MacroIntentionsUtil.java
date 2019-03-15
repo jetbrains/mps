@@ -16,7 +16,8 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 
@@ -87,7 +88,7 @@ public final class MacroIntentionsUtil {
     }
     return result;
   }
-  public static String getPresentaion(SNode intentionParam) {
+  public static String getPresentation(SNode intentionParam) {
     //  characters '_' and '&' are treated as mnemonics in AnAction that is created for each intention, 
     //  however it's common to see '_' in link/property/conecept/template names, and removing this char 
     //  (as mnemonics processing does) results in incorrect name shown to user, which is wrong. 
@@ -100,7 +101,8 @@ public final class MacroIntentionsUtil {
     SPropertyOperations.set(to, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage"), SPropertyOperations.getString(SNodeOperations.getContainingRoot(from), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage")));
   }
   public static boolean isInGeneratorModel(SNode node) {
-    return SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(SNodeOperations.getModel(node)), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
+    SModel model = SNodeOperations.getModel(node);
+    return model != null && model.getModule() instanceof Generator;
   }
   private static SNode _quotation_createNode_iiuth6_a0a0a0a0d0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

@@ -85,7 +85,7 @@ public class Template_weave_ChildConceptWeave extends TemplateDeclarationBase im
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
                     try {
-                      tnode8.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode8, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), PersistenceFacade.getInstance().createNodeId("~PrintStream.println(java.lang.String):void")));
+                      tnode8.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode8, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), PersistenceFacade.getInstance().createNodeId("~PrintStream.println(java.lang.String)")));
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[8]);

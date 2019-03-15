@@ -119,7 +119,7 @@
         <node concept="3clFbF" id="1NmRLF_Ewer" role="3cqZAp">
           <node concept="2OqwBi" id="1NmRLF_Eyw$" role="3clFbG">
             <node concept="2YIFZM" id="1NmRLF_EwAN" role="2Oq$k0">
-              <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
+              <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <node concept="2OqwBi" id="1NmRLF_ExrL" role="37wK5m">
                 <node concept="1YBJjd" id="1NmRLF_Exio" role="2Oq$k0">
@@ -131,9 +131,9 @@
               </node>
             </node>
             <node concept="liA8E" id="1NmRLF_EzBK" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+              <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
               <node concept="2YIFZM" id="1NmRLF_E$4X" role="37wK5m">
-                <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
+                <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="2OqwBi" id="1NmRLF_E$EM" role="37wK5m">
                   <node concept="1YBJjd" id="1NmRLF_E$jB" role="2Oq$k0">

@@ -816,7 +816,7 @@
           <node concept="3eOVzh" id="3kRslntA0kt" role="1Dwp0S">
             <node concept="2YIFZM" id="3kRslntA0ku" role="3uHU7w">
               <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
-              <ref role="37wK5l" to="wyt6:~Math.max(int,int):int" resolve="max" />
+              <ref role="37wK5l" to="wyt6:~Math.max(int,int)" resolve="max" />
               <node concept="37vLTw" id="3GM_nagTwpW" role="37wK5m">
                 <ref role="3cqZAo" node="3kRslntA0iR" resolve="paramCount" />
               </node>
@@ -1638,7 +1638,7 @@
                   <node concept="2yIwOk" id="6WSEafdxXHN" role="2OqNvi" />
                 </node>
                 <node concept="liA8E" id="6WSEafdxYoX" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                  <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
                 </node>
               </node>
             </node>

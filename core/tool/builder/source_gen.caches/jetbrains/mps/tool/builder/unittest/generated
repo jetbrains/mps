@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-3pvq0oxd5xvd7pywpelntkz3o6mht87">
+<product version="3" modelHash="6b8mq25g84ed95zgxjem9ajq8a88v2y">
   <files names="ConsoleTestReporter.java:ITestReporter.java:XmlTestReporter.java" />
 </product>
 

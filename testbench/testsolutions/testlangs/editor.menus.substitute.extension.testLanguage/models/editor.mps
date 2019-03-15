@@ -196,7 +196,7 @@
                           <property role="Xl_RC" value="canexecute" />
                         </node>
                         <node concept="liA8E" id="7GdFcVk8Kih" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String):boolean" resolve="startsWith" />
+                          <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
                           <node concept="ub8z3" id="7GdFcVk8Kr_" role="37wK5m" />
                         </node>
                       </node>

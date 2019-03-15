@@ -319,7 +319,7 @@
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
-        <property id="1757699476691236116" name="linkRole" index="2qtEX8" />
+        <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -504,7 +504,7 @@
         <node concept="2OqwBi" id="i1L_6ei" role="2OEOjV">
           <node concept="3622Ei" id="i1L_5YE" role="2Oq$k0" />
           <node concept="liA8E" id="i1L_7YK" role="2OqNvi">
-            <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+            <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError()" resolve="getNodeWithError" />
           </node>
         </node>
       </node>
@@ -633,7 +633,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="RD1RP300ni" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                          <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                         </node>
                       </node>
                     </node>
@@ -669,7 +669,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="i1M3TTE" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Integer.intValue():int" resolve="intValue" />
+                        <ref role="37wK5l" to="wyt6:~Integer.intValue()" resolve="intValue" />
                       </node>
                     </node>
                   </node>
@@ -839,7 +839,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="RD1RP2ZZZ8" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                   </node>
                 </node>
               </node>
@@ -1227,7 +1227,7 @@
             <node concept="2OqwBi" id="i2NSZV2" role="2OEOjV">
               <node concept="3622Ei" id="i2NSZV3" role="2Oq$k0" />
               <node concept="liA8E" id="i2NSZV4" role="2OqNvi">
-                <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError():org.jetbrains.mps.openapi.model.SNode" resolve="getNodeWithError" />
+                <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError()" resolve="getNodeWithError" />
               </node>
             </node>
           </node>
@@ -2198,7 +2198,7 @@
                         <ref role="3cqZAo" node="4$gye5ncIvW" resolve="ifcname" />
                       </node>
                       <node concept="liA8E" id="44mPrYm384V" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                         <node concept="2OqwBi" id="44mPrYm384W" role="37wK5m">
                           <node concept="3TrcHB" id="44mPrYm384X" role="2OqNvi">
                             <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />

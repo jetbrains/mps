@@ -24,7 +24,7 @@ public final class DocumentationHelper {
     final String minorVersion = dotIndex < 0 ?
                                 ApplicationInfo.getInstance().getMinorVersion() :
                                 ApplicationInfo.getInstance().getMinorVersion().substring(0, dotIndex);
-    return String.format("http://confluence.jetbrains.com/display/MPSD%s%s/",
+    return String.format("https://www.jetbrains.com/help/mps/%s.%s/",
                          ApplicationInfo.getInstance().getMajorVersion(),
                          minorVersion
     );

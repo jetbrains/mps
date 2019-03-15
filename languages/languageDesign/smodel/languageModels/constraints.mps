@@ -281,7 +281,7 @@
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
-        <property id="1757699476691236116" name="linkRole" index="2qtEX8" />
+        <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -2514,7 +2514,7 @@
           <node concept="3clFbF" id="3wj3sjzQU34" role="3cqZAp">
             <node concept="2OqwBi" id="75gf1bhG9dP" role="3clFbG">
               <node concept="liA8E" id="75gf1bhG9dQ" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SModule.getModuleName():java.lang.String" resolve="getModuleName" />
+                <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
               </node>
               <node concept="37vLTw" id="3GM_nagTzCs" role="2Oq$k0">
                 <ref role="3cqZAo" node="3wj3sjzQSY$" resolve="module" />

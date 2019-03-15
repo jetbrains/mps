@@ -4511,7 +4511,7 @@
                   <node concept="_YI3z" id="1eApgdEHLGZ" role="2JrQYb" />
                 </node>
                 <node concept="liA8E" id="38Q9nYyUDH_" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getProperty(java.lang.String):java.lang.String" resolve="getProperty" />
+                  <ref role="37wK5l" to="mhbf:~SNode.getProperty(java.lang.String)" resolve="getProperty" />
                   <node concept="Xl_RD" id="1eApgdEHM9p" role="37wK5m">
                     <property role="Xl_RC" value="value" />
                   </node>

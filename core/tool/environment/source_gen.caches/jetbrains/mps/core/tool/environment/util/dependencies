@@ -42,16 +42,11 @@
     <classNode extendsClassName="jetbrains.mps.project.PathMacrosProvider" />
   </dependency>
   <dependency className="jetbrains.mps.core.tool.environment.util.SetLibraryContributor">
-    <classNode dependClassName="java.lang.ClassLoader" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="java.util.LinkedHashSet" />
-    <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.library.contributor.LibDescriptor" />
-    <classNode dependClassName="jetbrains.mps.vfs.FileSystem" />
     <classNode extendsClassName="jetbrains.mps.library.contributor.LibraryContributor" />
   </dependency>
 </dependenciesRoot>

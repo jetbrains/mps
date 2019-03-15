@@ -2673,7 +2673,7 @@
                     <property role="Xl_RC" value="abc" />
                   </node>
                   <node concept="liA8E" id="i2_57dx" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equalsIgnoreCase(java.lang.String):boolean" resolve="equalsIgnoreCase" />
+                    <ref role="37wK5l" to="wyt6:~String.equalsIgnoreCase(java.lang.String)" resolve="equalsIgnoreCase" />
                     <node concept="2OqwBi" id="i2_57L_" role="37wK5m">
                       <node concept="2GrUjf" id="i2_57GN" role="2Oq$k0">
                         <ref role="2Gs0qQ" node="i2_51$F" resolve="tpl" />
@@ -2691,7 +2691,7 @@
                     <property role="Xl_RC" value="xyz" />
                   </node>
                   <node concept="liA8E" id="i2_5asr" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equalsIgnoreCase(java.lang.String):boolean" resolve="equalsIgnoreCase" />
+                    <ref role="37wK5l" to="wyt6:~String.equalsIgnoreCase(java.lang.String)" resolve="equalsIgnoreCase" />
                     <node concept="2OqwBi" id="i2_5aNG" role="37wK5m">
                       <node concept="2GrUjf" id="i2_5aKs" role="2Oq$k0">
                         <ref role="2Gs0qQ" node="i2_51$F" resolve="tpl" />

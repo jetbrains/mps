@@ -441,7 +441,7 @@
                   <ref role="3cqZAo" node="4CsL_MEliwr" resolve="frame" />
                 </node>
                 <node concept="liA8E" id="4CsL_MEmxDv" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~JFrame.setLayout(java.awt.LayoutManager):void" resolve="setLayout" />
+                  <ref role="37wK5l" to="dxuu:~JFrame.setLayout(java.awt.LayoutManager)" resolve="setLayout" />
                   <node concept="2ShNRf" id="4CsL_MEmxDY" role="37wK5m">
                     <node concept="1pGfFk" id="4CsL_MEmzHj" role="2ShVmc">
                       <ref role="37wK5l" to="z60i:~FlowLayout.&lt;init&gt;()" resolve="FlowLayout" />
@@ -456,7 +456,7 @@
                   <ref role="3cqZAo" node="4CsL_MEliwr" resolve="frame" />
                 </node>
                 <node concept="liA8E" id="4CsL_MEliwy" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Frame.setTitle(java.lang.String):void" resolve="setTitle" />
+                  <ref role="37wK5l" to="z60i:~Frame.setTitle(java.lang.String)" resolve="setTitle" />
                   <node concept="Xl_RD" id="4CsL_MEliwz" role="37wK5m">
                     <property role="Xl_RC" value="title" />
                     <node concept="29HgVG" id="4CsL_MEli_C" role="lGtFl">
@@ -498,7 +498,7 @@
                       <ref role="3cqZAo" node="4CsL_MEliwr" resolve="frame" />
                     </node>
                     <node concept="liA8E" id="4CsL_MElrz1" role="2OqNvi">
-                      <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component):java.awt.Component" resolve="add" />
+                      <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
                       <node concept="37vLTw" id="4CsL_MElrzJ" role="37wK5m">
                         <ref role="3cqZAo" node="4CsL_MElo65" resolve="component" />
                         <node concept="1ZhdrF" id="4CsL_MElvBi" role="lGtFl">
@@ -570,7 +570,7 @@
                   <ref role="3cqZAo" node="4CsL_MEliwr" resolve="frame" />
                 </node>
                 <node concept="liA8E" id="4CsL_MEll$B" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Window.setVisible(boolean):void" resolve="setVisible" />
+                  <ref role="37wK5l" to="z60i:~Window.setVisible(boolean)" resolve="setVisible" />
                   <node concept="3clFbT" id="4CsL_MEll_h" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
@@ -583,7 +583,7 @@
                   <ref role="3cqZAo" node="4CsL_MEliwr" resolve="frame" />
                 </node>
                 <node concept="liA8E" id="4CsL_MElnSF" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Window.pack():void" resolve="pack" />
+                  <ref role="37wK5l" to="z60i:~Window.pack()" resolve="pack" />
                 </node>
               </node>
             </node>
@@ -706,7 +706,7 @@
                     <ref role="3cqZAo" node="4CsL_MElwjV" resolve="button" />
                   </node>
                   <node concept="liA8E" id="4CsL_MElNBh" role="2OqNvi">
-                    <ref role="37wK5l" to="dxuu:~AbstractButton.addActionListener(java.awt.event.ActionListener):void" resolve="addActionListener" />
+                    <ref role="37wK5l" to="dxuu:~AbstractButton.addActionListener(java.awt.event.ActionListener)" resolve="addActionListener" />
                     <node concept="2ShNRf" id="4CsL_MElNBF" role="37wK5m">
                       <node concept="YeOm9" id="4CsL_MElOPy" role="2ShVmc">
                         <node concept="1Y3b0j" id="4CsL_MElOP_" role="YeSDq">
@@ -808,7 +808,7 @@
                   <ref role="3cqZAo" node="4CsL_MElVl9" resolve="p" />
                 </node>
                 <node concept="liA8E" id="3tiTA5Id_lU" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Container.setLayout(java.awt.LayoutManager):void" resolve="setLayout" />
+                  <ref role="37wK5l" to="z60i:~Container.setLayout(java.awt.LayoutManager)" resolve="setLayout" />
                   <node concept="2ShNRf" id="3tiTA5Id_mq" role="37wK5m">
                     <node concept="1pGfFk" id="3tiTA5IdFIi" role="2ShVmc">
                       <ref role="37wK5l" to="z60i:~GridLayout.&lt;init&gt;(int,int)" resolve="GridLayout" />
@@ -919,7 +919,7 @@
                       <ref role="3cqZAo" node="4CsL_MElVl9" resolve="p" />
                     </node>
                     <node concept="liA8E" id="4CsL_MElZtr" role="2OqNvi">
-                      <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component):java.awt.Component" resolve="add" />
+                      <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
                       <node concept="37vLTw" id="4CsL_MElZtW" role="37wK5m">
                         <ref role="3cqZAo" node="4CsL_MElWm4" resolve="component" />
                         <node concept="1ZhdrF" id="4CsL_MElZ__" role="lGtFl">
@@ -1042,7 +1042,7 @@
                 <ref role="3cqZAo" node="4CsL_MEm0Mt" resolve="field" />
               </node>
               <node concept="liA8E" id="3tiTA5IdbGk" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~JTextField.setColumns(int):void" resolve="setColumns" />
+                <ref role="37wK5l" to="dxuu:~JTextField.setColumns(int)" resolve="setColumns" />
                 <node concept="3cmrfG" id="3tiTA5IdbKf" role="37wK5m">
                   <property role="3cmrfH" value="10" />
                 </node>
@@ -1056,7 +1056,7 @@
                 <ref role="3cqZAo" node="4CsL_MEm0Mt" resolve="field" />
               </node>
               <node concept="liA8E" id="4CsL_MEmjU0" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~JTextField.addActionListener(java.awt.event.ActionListener):void" resolve="addActionListener" />
+                <ref role="37wK5l" to="dxuu:~JTextField.addActionListener(java.awt.event.ActionListener)" resolve="addActionListener" />
                 <node concept="2ShNRf" id="4CsL_MEmjX7" role="37wK5m">
                   <node concept="YeOm9" id="4CsL_MEmkl4" role="2ShVmc">
                     <node concept="1Y3b0j" id="4CsL_MEmkl7" role="YeSDq">
@@ -1108,7 +1108,7 @@
                                   <ref role="3cqZAo" node="4CsL_MEm0Mt" resolve="field" />
                                 </node>
                                 <node concept="liA8E" id="4CsL_MEmozI" role="2OqNvi">
-                                  <ref role="37wK5l" to="r791:~JTextComponent.getText():java.lang.String" resolve="getText" />
+                                  <ref role="37wK5l" to="r791:~JTextComponent.getText()" resolve="getText" />
                                 </node>
                               </node>
                             </node>
@@ -1404,7 +1404,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="OfqpBCgkqU" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="3cpWs3" id="OfqpBCgkqV" role="37wK5m">
                 <node concept="37vLTw" id="OfqpBCgkqW" role="3uHU7w">
                   <ref role="3cqZAo" node="OfqpBCgkqt" resolve="data" />
@@ -1628,7 +1628,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="OfqpBCgkrd" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="3cpWs3" id="OfqpBCgkre" role="37wK5m">
                 <node concept="37vLTw" id="OfqpBCgkrf" role="3uHU7w">
                   <ref role="3cqZAo" node="OfqpBCgkqZ" resolve="processedData" />

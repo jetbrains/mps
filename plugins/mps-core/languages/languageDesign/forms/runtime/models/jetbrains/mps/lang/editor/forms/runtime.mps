@@ -249,7 +249,7 @@
                 <ref role="3cqZAo" node="19qhldhKsmm" resolve="mySelectedCell" />
               </node>
               <node concept="liA8E" id="19qhldhK20Z" role="2OqNvi">
-                <ref role="37wK5l" to="f4zo:~EditorCell.getParent():jetbrains.mps.openapi.editor.cells.EditorCell_Collection" resolve="getParent" />
+                <ref role="37wK5l" to="f4zo:~EditorCell.getParent()" resolve="getParent" />
               </node>
             </node>
           </node>
@@ -272,7 +272,7 @@
               </node>
               <node concept="2YIFZM" id="3nMoDN_0d79" role="3uHU7B">
                 <ref role="1Pybhc" to="18ew:~IterableUtil" resolve="IterableUtil" />
-                <ref role="37wK5l" to="18ew:~IterableUtil.get(java.lang.Iterable,int):java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="18ew:~IterableUtil.get(java.lang.Iterable,int)" resolve="get" />
                 <node concept="37vLTw" id="3nMoDN_0dyD" role="37wK5m">
                   <ref role="3cqZAo" node="19qhldhK20V" resolve="parent" />
                 </node>
@@ -287,7 +287,7 @@
                   <ref role="3cqZAo" node="19qhldhK20V" resolve="parent" />
                 </node>
                 <node concept="liA8E" id="783I1NXtZ0N" role="2OqNvi">
-                  <ref role="37wK5l" to="f4zo:~EditorCell_Collection.getCellsCount():int" resolve="getCellsCount" />
+                  <ref role="37wK5l" to="f4zo:~EditorCell_Collection.getCellsCount()" resolve="getCellsCount" />
                 </node>
               </node>
               <node concept="3cpWs3" id="783I1NXu0mF" role="3uHU7w">
@@ -317,7 +317,7 @@
                           <ref role="3cqZAo" node="19qhldhK20V" resolve="parent" />
                         </node>
                         <node concept="liA8E" id="19qhldhK21Y" role="2OqNvi">
-                          <ref role="37wK5l" to="f4zo:~EditorCell.getCellId():java.lang.String" resolve="getCellId" />
+                          <ref role="37wK5l" to="f4zo:~EditorCell.getCellId()" resolve="getCellId" />
                         </node>
                       </node>
                       <node concept="2OqwBi" id="19qhldhK21Z" role="37wK5m">
@@ -325,7 +325,7 @@
                           <ref role="3cqZAo" node="19qhldhK20V" resolve="parent" />
                         </node>
                         <node concept="liA8E" id="19qhldhK221" role="2OqNvi">
-                          <ref role="37wK5l" to="f4zo:~EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
+                          <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
                         </node>
                       </node>
                     </node>
@@ -422,7 +422,7 @@
                   <ref role="3cqZAo" node="1$0KR3zbN5J" resolve="editorContext" />
                 </node>
                 <node concept="liA8E" id="1$0KR3zbBsz" role="2OqNvi">
-                  <ref role="37wK5l" to="cj4x:~EditorContext.flushEvents():void" resolve="flushEvents" />
+                  <ref role="37wK5l" to="cj4x:~EditorContext.flushEvents()" resolve="flushEvents" />
                 </node>
               </node>
             </node>
@@ -432,7 +432,7 @@
                   <ref role="3cqZAo" node="43TOVRWQeFO" resolve="selection" />
                 </node>
                 <node concept="liA8E" id="1$0KR3zbBsB" role="2OqNvi">
-                  <ref role="37wK5l" to="x4nc:~RestorableSelection.restore(jetbrains.mps.openapi.editor.EditorContext):boolean" resolve="restore" />
+                  <ref role="37wK5l" to="x4nc:~RestorableSelection.restore(jetbrains.mps.openapi.editor.EditorContext)" resolve="restore" />
                   <node concept="37vLTw" id="1$0KR3zbNs5" role="37wK5m">
                     <ref role="3cqZAo" node="1$0KR3zbN5J" resolve="editorContext" />
                   </node>
@@ -475,7 +475,7 @@
                 <ref role="3cqZAo" node="43TOVRWQc_K" resolve="editorContext" />
               </node>
               <node concept="liA8E" id="19qhldhKzi8" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedCell()" resolve="getSelectedCell" />
               </node>
             </node>
           </node>
@@ -521,7 +521,7 @@
                 <ref role="3cqZAo" node="19qhldhKzi5" resolve="selectedCell" />
               </node>
               <node concept="liA8E" id="43TOVRWQazP" role="2OqNvi">
-                <ref role="37wK5l" to="f4zo:~EditorCell.getParent():jetbrains.mps.openapi.editor.cells.EditorCell_Collection" resolve="getParent" />
+                <ref role="37wK5l" to="f4zo:~EditorCell.getParent()" resolve="getParent" />
               </node>
             </node>
           </node>
@@ -544,7 +544,7 @@
               </node>
               <node concept="2YIFZM" id="3nMoDN_09QZ" role="3uHU7B">
                 <ref role="1Pybhc" to="18ew:~IterableUtil" resolve="IterableUtil" />
-                <ref role="37wK5l" to="18ew:~IterableUtil.get(java.lang.Iterable,int):java.lang.Object" resolve="get" />
+                <ref role="37wK5l" to="18ew:~IterableUtil.get(java.lang.Iterable,int)" resolve="get" />
                 <node concept="37vLTw" id="3nMoDN_0aiz" role="37wK5m">
                   <ref role="3cqZAo" node="43TOVRWQazL" resolve="parent" />
                 </node>
@@ -559,7 +559,7 @@
                   <ref role="3cqZAo" node="43TOVRWQazL" resolve="parent" />
                 </node>
                 <node concept="liA8E" id="43TOVRWQa$5" role="2OqNvi">
-                  <ref role="37wK5l" to="f4zo:~EditorCell_Collection.getCellsCount():int" resolve="getCellsCount" />
+                  <ref role="37wK5l" to="f4zo:~EditorCell_Collection.getCellsCount()" resolve="getCellsCount" />
                 </node>
               </node>
               <node concept="3cpWs3" id="43TOVRWQa$6" role="3uHU7w">
@@ -589,7 +589,7 @@
                           <ref role="3cqZAo" node="43TOVRWQazL" resolve="parent" />
                         </node>
                         <node concept="liA8E" id="43TOVRWQa$m" role="2OqNvi">
-                          <ref role="37wK5l" to="f4zo:~EditorCell.getCellId():java.lang.String" resolve="getCellId" />
+                          <ref role="37wK5l" to="f4zo:~EditorCell.getCellId()" resolve="getCellId" />
                         </node>
                       </node>
                       <node concept="2OqwBi" id="43TOVRWQa$n" role="37wK5m">
@@ -597,7 +597,7 @@
                           <ref role="3cqZAo" node="43TOVRWQazL" resolve="parent" />
                         </node>
                         <node concept="liA8E" id="43TOVRWQa$p" role="2OqNvi">
-                          <ref role="37wK5l" to="f4zo:~EditorCell.getSNode():org.jetbrains.mps.openapi.model.SNode" resolve="getSNode" />
+                          <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
                         </node>
                       </node>
                     </node>

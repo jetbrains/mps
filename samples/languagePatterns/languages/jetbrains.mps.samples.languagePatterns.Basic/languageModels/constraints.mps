@@ -267,17 +267,17 @@
                 <node concept="2OqwBi" id="3j8xjFBy$Sy" role="3uHU7B">
                   <node concept="1Wqviy" id="3j8xjFBy$hv" role="2Oq$k0" />
                   <node concept="liA8E" id="3j8xjFByA1K" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
                   </node>
                 </node>
               </node>
               <node concept="2YIFZM" id="3j8xjFByIAY" role="3uHU7w">
-                <ref role="37wK5l" to="wyt6:~Character.isUpperCase(char):boolean" resolve="isUpperCase" />
+                <ref role="37wK5l" to="wyt6:~Character.isUpperCase(char)" resolve="isUpperCase" />
                 <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
                 <node concept="2OqwBi" id="3j8xjFByuZY" role="37wK5m">
                   <node concept="1Wqviy" id="3j8xjFByulN" role="2Oq$k0" />
                   <node concept="liA8E" id="3j8xjFBywHz" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+                    <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
                     <node concept="3cmrfG" id="3j8xjFByzpl" role="37wK5m">
                       <property role="3cmrfH" value="0" />
                     </node>

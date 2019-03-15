@@ -212,7 +212,7 @@
                         <ref role="3cqZAo" node="5Vvmn_Ql2lZ" resolve="names" />
                       </node>
                       <node concept="liA8E" id="5Vvmn_Ql2mi" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object):boolean" resolve="add" />
+                        <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                         <node concept="2OqwBi" id="5Vvmn_Ql2mj" role="37wK5m">
                           <node concept="37vLTw" id="5Vvmn_Ql2mk" role="2Oq$k0">
                             <ref role="3cqZAo" node="5Vvmn_Ql2m5" resolve="var" />
@@ -231,7 +231,7 @@
                       <ref role="3cqZAo" node="5Vvmn_Ql2lZ" resolve="names" />
                     </node>
                     <node concept="liA8E" id="5Vvmn_Ql2mp" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object):boolean" resolve="contains" />
+                      <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
                       <node concept="2OqwBi" id="5Vvmn_Ql2mq" role="37wK5m">
                         <node concept="37vLTw" id="5Vvmn_Ql2mr" role="2Oq$k0">
                           <ref role="3cqZAo" node="5Vvmn_Ql2m5" resolve="var" />

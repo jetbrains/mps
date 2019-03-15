@@ -141,7 +141,7 @@
               <ref role="37wK5l" to="6xgk:2AitiqbD8vU" resolve="rolePlusIndexContext" />
               <node concept="2OqwBi" id="42Bx8VbD0AJ" role="37wK5m">
                 <node concept="liA8E" id="42Bx8VbD0AK" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SNamedElement.getName():java.lang.String" resolve="getName" />
+                  <ref role="37wK5l" to="c17a:~SNamedElement.getName()" resolve="getName" />
                 </node>
                 <node concept="37vLTw" id="42Bx8VbD0AL" role="2Oq$k0">
                   <ref role="3cqZAo" node="2AitiqbD8ut" resolve="role" />

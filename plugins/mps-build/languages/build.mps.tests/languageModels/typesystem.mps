@@ -255,7 +255,7 @@
                 <ref role="3cqZAo" node="7xxJYNIbUDZ" resolve="approxPresentation" />
               </node>
               <node concept="liA8E" id="7xxJYNIbWCd" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
                 <node concept="Xl_RD" id="7xxJYNIbWD5" role="37wK5m">
                   <property role="Xl_RC" value="${" />
                 </node>
@@ -267,7 +267,7 @@
                   <ref role="3cqZAo" node="7xxJYNIbUDZ" resolve="approxPresentation" />
                 </node>
                 <node concept="liA8E" id="7xxJYNIbXvQ" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="7xxJYNIbXBX" role="37wK5m">
                     <property role="Xl_RC" value="true" />
                   </node>
@@ -283,7 +283,7 @@
                   <ref role="3cqZAo" node="7xxJYNIbUDZ" resolve="approxPresentation" />
                 </node>
                 <node concept="liA8E" id="7xxJYNIbYnh" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="7xxJYNIbYvl" role="37wK5m">
                     <property role="Xl_RC" value="false" />
                   </node>
@@ -360,7 +360,7 @@
                 <ref role="3cqZAo" node="5I1s5NvHqq8" resolve="approxPresentation" />
               </node>
               <node concept="liA8E" id="5I1s5NvHqql" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence):boolean" resolve="contains" />
+                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
                 <node concept="Xl_RD" id="5I1s5NvHqqm" role="37wK5m">
                   <property role="Xl_RC" value="${" />
                 </node>
@@ -372,7 +372,7 @@
                   <ref role="3cqZAo" node="5I1s5NvHqq8" resolve="approxPresentation" />
                 </node>
                 <node concept="liA8E" id="5I1s5NvHqqq" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="5I1s5NvHqqr" role="37wK5m">
                     <property role="Xl_RC" value="true" />
                   </node>
@@ -388,7 +388,7 @@
                   <ref role="3cqZAo" node="5I1s5NvHqq8" resolve="approxPresentation" />
                 </node>
                 <node concept="liA8E" id="5I1s5NvHqqx" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="Xl_RD" id="5I1s5NvHqqy" role="37wK5m">
                     <property role="Xl_RC" value="false" />
                   </node>

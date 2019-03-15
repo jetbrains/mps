@@ -453,7 +453,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="2lwFGYOXZel" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.split(java.lang.String):java.lang.String[]" resolve="split" />
+                    <ref role="37wK5l" to="wyt6:~String.split(java.lang.String)" resolve="split" />
                     <node concept="Xl_RD" id="2lwFGYOXZml" role="37wK5m">
                       <property role="Xl_RC" value="\\s" />
                     </node>
@@ -532,7 +532,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="31jVCtHhzvl" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.split(java.lang.String):java.lang.String[]" resolve="split" />
+                    <ref role="37wK5l" to="wyt6:~String.split(java.lang.String)" resolve="split" />
                     <node concept="Xl_RD" id="31jVCtHhzvm" role="37wK5m">
                       <property role="Xl_RC" value="\\s" />
                     </node>

@@ -627,6 +627,14 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     super.dispose();
   }
 
+  /**
+   * @deprecated though there are no uses, I still hesitate what's the right way to access source paths of a module
+   * ModuleDesciptor.getSourcePath(), actively in use, is the worst possible way, no MD shall get exposed to end-user.
+   * SModuleOperations.getAllSourcePaths(this) is better, yet not that discoverable.
+   * AbstractModule.getSourcePaths() is both discoverable and not exposing MD, but cast to AM is odd, and getSourcePaths is definitely
+   * not a part of SModule API. To me, it's rather part of JavaModuleFacet. Left as a reminder to refactor uses of other APIs prior to removing the method.
+   */
+  @Deprecated
   public List<String> getSourcePaths() {
     assertCanRead();
     return new ArrayList<>(SModuleOperations.getAllSourcePaths(this));

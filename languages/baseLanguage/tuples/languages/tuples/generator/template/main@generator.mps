@@ -627,7 +627,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="i1Qjgz3" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                           <node concept="3cpWs3" id="i1QjhDi" role="37wK5m">
                             <node concept="2OqwBi" id="i1QjlDr" role="3uHU7w">
                               <node concept="2OqwBi" id="i1Qji8X" role="2Oq$k0">
@@ -702,7 +702,7 @@
       <node concept="gft3U" id="i1Qc4dt" role="1lVwrX">
         <node concept="2YIFZM" id="6VGAEh8BOMw" role="gfFT$">
           <ref role="1Pybhc" to="j8ec:~MultiTuple" resolve="MultiTuple" />
-          <ref role="37wK5l" to="j8ec:~MultiTuple.from(java.lang.Object):jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_1" resolve="from" />
+          <ref role="37wK5l" to="j8ec:~MultiTuple.from(java.lang.Object)" resolve="from" />
           <node concept="33vP2n" id="6VGAEh8BOMx" role="37wK5m">
             <node concept="2b32R4" id="6VGAEh8BOMy" role="lGtFl">
               <node concept="3JmXsc" id="6VGAEh8BOMz" role="2P8S$">
@@ -841,7 +841,7 @@
       <node concept="gft3U" id="5sdO8wLSjf_" role="1lVwrX">
         <node concept="2YIFZM" id="5sdO8wLSjfA" role="gfFT$">
           <ref role="1Pybhc" to="j8ec:~MultiTuple" resolve="MultiTuple" />
-          <ref role="37wK5l" to="j8ec:~MultiTuple.from(java.lang.Object):jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_1" resolve="from" />
+          <ref role="37wK5l" to="j8ec:~MultiTuple.from(java.lang.Object)" resolve="from" />
           <node concept="33vP2n" id="5sdO8wLSjfB" role="37wK5m">
             <node concept="2b32R4" id="5sdO8wLSjfC" role="lGtFl">
               <node concept="3JmXsc" id="5sdO8wLSjfD" role="2P8S$">
@@ -976,7 +976,7 @@
       <ref role="30HIoZ" to="cx9y:i1Ls8Kj" resolve="IndexedTupleLiteral" />
       <node concept="gft3U" id="5sdO8wLS2wC" role="1lVwrX">
         <node concept="2YIFZM" id="5sdO8wLS2wD" role="gfFT$">
-          <ref role="37wK5l" to="j8ec:~MultiTuple.from(java.lang.Object):jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_1" resolve="from" />
+          <ref role="37wK5l" to="j8ec:~MultiTuple.from(java.lang.Object)" resolve="from" />
           <ref role="1Pybhc" to="j8ec:~MultiTuple" resolve="MultiTuple" />
           <node concept="33vP2n" id="5sdO8wLS2wE" role="37wK5m">
             <node concept="2b32R4" id="5sdO8wLS2wF" role="lGtFl">
@@ -1077,7 +1077,7 @@
       <node concept="gft3U" id="i1QtWrg" role="1lVwrX">
         <node concept="2OqwBi" id="i1Qu1TN" role="gfFT$">
           <node concept="liA8E" id="i1Qu1TO" role="2OqNvi">
-            <ref role="37wK5l" to="j8ec:~Tuples$_1._0(java.lang.Object):java.lang.Object" resolve="_0" />
+            <ref role="37wK5l" to="j8ec:~Tuples$_1._0(java.lang.Object)" resolve="_0" />
             <node concept="33vP2n" id="i1Quda8" role="37wK5m">
               <node concept="29HgVG" id="i1QueGB" role="lGtFl">
                 <node concept="3NFfHV" id="i1QueGC" role="3NFExx">
@@ -1128,7 +1128,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="256tImPkKvh" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                             </node>
                           </node>
                         </node>
@@ -1219,7 +1219,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="256tImPkKEW" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                          <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                         </node>
                       </node>
                     </node>
@@ -1337,7 +1337,7 @@
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="256tImPkKIo" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                                 </node>
                               </node>
                             </node>
@@ -1479,7 +1479,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="256tImPkKzx" role="2OqNvi">
-                                    <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                                   </node>
                                 </node>
                               </node>
@@ -1631,7 +1631,7 @@
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="256tImPkKHa" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                                 </node>
                               </node>
                             </node>
@@ -1679,7 +1679,7 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="256tImPkKx5" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                                <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                               </node>
                             </node>
                           </node>
@@ -1849,7 +1849,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="256tImPkK_y" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SModel.getModule():org.jetbrains.mps.openapi.module.SModule" resolve="getModule" />
+                              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                             </node>
                           </node>
                         </node>
@@ -2053,7 +2053,7 @@
                 </node>
                 <node concept="2OqwBi" id="i416hY9" role="37vLTx">
                   <node concept="liA8E" id="i416hYa" role="2OqNvi">
-                    <ref role="37wK5l" to="j8ec:~Tuples$_1._0():java.lang.Object" resolve="_0" />
+                    <ref role="37wK5l" to="j8ec:~Tuples$_1._0()" resolve="_0" />
                     <node concept="1ZhdrF" id="i416hYb" role="lGtFl">
                       <property role="2qtEX8" value="baseMethodDeclaration" />
                       <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
@@ -2065,7 +2065,7 @@
                                 <property role="Xl_RC" value="_" />
                               </node>
                               <node concept="2YIFZM" id="i416hYh" role="3uHU7w">
-                                <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object):java.lang.String" resolve="valueOf" />
+                                <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
                                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                                 <node concept="2OqwBi" id="i416hYi" role="37wK5m">
                                   <node concept="Rm8GO" id="i416hYj" role="2Oq$k0">
@@ -2254,7 +2254,7 @@
       <node concept="gft3U" id="i2_hFxV" role="1lVwrX">
         <node concept="2YIFZM" id="i2_ibtU" role="gfFT$">
           <ref role="1Pybhc" to="j8ec:~MultiTuple" resolve="MultiTuple" />
-          <ref role="37wK5l" to="j8ec:~MultiTuple.eq(java.lang.Object,java.lang.Object):boolean" resolve="eq" />
+          <ref role="37wK5l" to="j8ec:~MultiTuple.eq(java.lang.Object,java.lang.Object)" resolve="eq" />
           <node concept="33vP2n" id="i2_ibPM" role="37wK5m">
             <node concept="29HgVG" id="i2_icvZ" role="lGtFl">
               <node concept="3NFfHV" id="i2_icw0" role="3NFExx">
@@ -2339,7 +2339,7 @@
       <node concept="gft3U" id="i2_lbAJ" role="1lVwrX">
         <node concept="3fqX7Q" id="i2_le6i" role="gfFT$">
           <node concept="2YIFZM" id="i2_lfOk" role="3fr31v">
-            <ref role="37wK5l" to="j8ec:~MultiTuple.eq(java.lang.Object,java.lang.Object):boolean" resolve="eq" />
+            <ref role="37wK5l" to="j8ec:~MultiTuple.eq(java.lang.Object,java.lang.Object)" resolve="eq" />
             <ref role="1Pybhc" to="j8ec:~MultiTuple" resolve="MultiTuple" />
             <node concept="33vP2n" id="i2_lfOl" role="37wK5m">
               <node concept="29HgVG" id="i2_lfOm" role="lGtFl">
@@ -2426,7 +2426,7 @@
       <node concept="gft3U" id="70MU2JMlFjs" role="1lVwrX">
         <node concept="10QFUN" id="1p3uw9JXplM" role="gfFT$">
           <node concept="2YIFZM" id="1p3uw9JXplN" role="10QFUP">
-            <ref role="37wK5l" to="k9t0:~ArrayUtils.newArrayInstance(java.lang.Class,int...):java.lang.Object" resolve="newArrayInstance" />
+            <ref role="37wK5l" to="k9t0:~ArrayUtils.newArrayInstance(java.lang.Class,int...)" resolve="newArrayInstance" />
             <ref role="1Pybhc" to="k9t0:~ArrayUtils" resolve="ArrayUtils" />
             <node concept="1OoodG" id="1p3uw9JXplO" role="37wK5m">
               <node concept="3uibUv" id="1p3uw9JXplP" role="1Ooz5N">
@@ -2467,7 +2467,7 @@
                                       </node>
                                     </node>
                                     <node concept="liA8E" id="7o87b_0WiRl" role="2OqNvi">
-                                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                      <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                                       <node concept="3cpWs3" id="7o87b_0WiRm" role="37wK5m">
                                         <node concept="Xl_RD" id="7o87b_0WiRn" role="3uHU7B">
                                           <property role="Xl_RC" value="_" />
@@ -2608,7 +2608,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="7o87b_0WmZB" role="2OqNvi">
-                                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                                     <node concept="3cpWs3" id="7o87b_0WmZC" role="37wK5m">
                                       <node concept="Xl_RD" id="7o87b_0WmZD" role="3uHU7B">
                                         <property role="Xl_RC" value="_" />
@@ -2756,7 +2756,7 @@
       <ref role="30HIoZ" to="tpee:gEShNN5" resolve="GenericNewExpression" />
       <node concept="gft3U" id="1p3uw9JSXoD" role="1lVwrX">
         <node concept="2YIFZM" id="1p3uw9JU0OP" role="gfFT$">
-          <ref role="37wK5l" to="k9t0:~ArrayUtils.asArray(java.lang.Object...):java.lang.Object[]" resolve="asArray" />
+          <ref role="37wK5l" to="k9t0:~ArrayUtils.asArray(java.lang.Object...)" resolve="asArray" />
           <ref role="1Pybhc" to="k9t0:~ArrayUtils" resolve="ArrayUtils" />
           <node concept="33vP2n" id="1p3uw9JU0OQ" role="37wK5m">
             <node concept="2b32R4" id="1p3uw9JU0OR" role="lGtFl">
@@ -2968,7 +2968,7 @@
                   <property role="Xl_RC" value="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
                 </node>
                 <node concept="liA8E" id="i1POvx2" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="2OqwBi" id="i1POvx3" role="37wK5m">
                     <node concept="30H73N" id="i1POvx4" role="2Oq$k0" />
                     <node concept="2qgKlT" id="i1POvx5" role="2OqNvi">
@@ -3130,7 +3130,7 @@
                   <property role="Xl_RC" value="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
                 </node>
                 <node concept="liA8E" id="i1Q5wWO" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="2OqwBi" id="i1Q5wWP" role="37wK5m">
                     <node concept="30H73N" id="i1Q5wWQ" role="2Oq$k0" />
                     <node concept="2qgKlT" id="i1Q5wWR" role="2OqNvi">
@@ -3292,7 +3292,7 @@
                   <property role="Xl_RC" value="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
                 </node>
                 <node concept="liA8E" id="i1RcRlj" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                   <node concept="2OqwBi" id="i1RcRlk" role="37wK5m">
                     <node concept="30H73N" id="i1RcRll" role="2Oq$k0" />
                     <node concept="2qgKlT" id="i1RcRlm" role="2OqNvi">
@@ -7662,7 +7662,7 @@
       <node concept="gft3U" id="7A1e$NV7R2I" role="1lVwrX">
         <node concept="10QFUN" id="7A1e$NV85u5" role="gfFT$">
           <node concept="2YIFZM" id="7A1e$NV85u6" role="10QFUP">
-            <ref role="37wK5l" to="k9t0:~ArrayUtils.newArrayInstance(java.lang.Class,int...):java.lang.Object" resolve="newArrayInstance" />
+            <ref role="37wK5l" to="k9t0:~ArrayUtils.newArrayInstance(java.lang.Class,int...)" resolve="newArrayInstance" />
             <ref role="1Pybhc" to="k9t0:~ArrayUtils" resolve="ArrayUtils" />
             <node concept="1OoodG" id="7A1e$NV85u7" role="37wK5m">
               <node concept="3uibUv" id="7A1e$NV85u8" role="1Ooz5N">
@@ -8013,7 +8013,7 @@
       </node>
       <node concept="gft3U" id="7A1e$NV7R1n" role="1lVwrX">
         <node concept="2YIFZM" id="7A1e$NV7R1o" role="gfFT$">
-          <ref role="37wK5l" to="k9t0:~ArrayUtils.asArray(java.lang.Object...):java.lang.Object[]" resolve="asArray" />
+          <ref role="37wK5l" to="k9t0:~ArrayUtils.asArray(java.lang.Object...)" resolve="asArray" />
           <ref role="1Pybhc" to="k9t0:~ArrayUtils" resolve="ArrayUtils" />
           <node concept="33vP2n" id="7A1e$NV7R1p" role="37wK5m">
             <node concept="2b32R4" id="7A1e$NV7R1q" role="lGtFl">
@@ -8220,7 +8220,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="i2w7jCh" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                         <node concept="3cpWs3" id="i2w7jCi" role="37wK5m">
                           <node concept="2OqwBi" id="i2w7jCj" role="3uHU7w">
                             <node concept="2OqwBi" id="i2w7jCk" role="2Oq$k0">
@@ -8465,7 +8465,7 @@
         <node concept="3clFbS" id="i2w7sBX" role="3clF47">
           <node concept="3clFbF" id="1_eX022Snu6" role="3cqZAp">
             <node concept="3nyPlj" id="1_eX022SnuS" role="3clFbG">
-              <ref role="37wK5l" to="j8ec:~MultiTuple$_1._0():java.lang.Object" resolve="_0" />
+              <ref role="37wK5l" to="j8ec:~MultiTuple$_1._0()" resolve="_0" />
               <node concept="37vLTw" id="2BHiRxgm$b3" role="37wK5m">
                 <ref role="3cqZAo" node="i2w7Fta" resolve="value" />
               </node>
@@ -8584,7 +8584,7 @@
         <node concept="3clFbS" id="i2w8Atb" role="3clF47">
           <node concept="3cpWs6" id="i2$62Ym" role="3cqZAp">
             <node concept="3nyPlj" id="i2$63pb" role="3cqZAk">
-              <ref role="37wK5l" to="j8ec:~MultiTuple$_1._0():java.lang.Object" resolve="_0" />
+              <ref role="37wK5l" to="j8ec:~MultiTuple$_1._0()" resolve="_0" />
               <node concept="1ZhdrF" id="i2$65e$" role="lGtFl">
                 <property role="2qtEX8" value="baseMethodDeclaration" />
                 <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
@@ -8808,7 +8808,7 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="dK2K5WfjAW" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                        <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                         <node concept="3cpWs3" id="dK2K5WfjAX" role="37wK5m">
                           <node concept="37vLTw" id="3GM_nagTxBE" role="3uHU7w">
                             <ref role="3cqZAo" node="dK2K5WfjC1" resolve="cmpSize" />
@@ -9166,7 +9166,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="dK2K5WfjGL" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                           <node concept="3cpWs3" id="dK2K5WfjGM" role="37wK5m">
                             <node concept="37vLTw" id="3GM_nagTups" role="3uHU7w">
                               <ref role="3cqZAo" node="dK2K5WfjGh" resolve="cmpSize" />
@@ -9483,7 +9483,7 @@
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="dK2K5Wfk4R" role="2OqNvi">
-                                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                                   <node concept="3cpWs3" id="dK2K5Wfk4S" role="37wK5m">
                                     <node concept="37vLTw" id="2_9gekT4B0W" role="3uHU7w">
                                       <ref role="3cqZAo" node="2_9gekT3Qo2" resolve="cmpSize" />
@@ -10567,7 +10567,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="5yQZ6rPp5vb" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                             <node concept="3cpWs3" id="5yQZ6rPp5vc" role="37wK5m">
                               <node concept="37vLTw" id="3GM_nagTzxU" role="3uHU7w">
                                 <ref role="3cqZAo" node="5yQZ6rPp5uw" resolve="idx" />
@@ -10602,7 +10602,7 @@
         <node concept="3clFbS" id="5yQZ6rPoWph" role="3clF47">
           <node concept="3clFbF" id="5yQZ6rPoWJq" role="3cqZAp">
             <node concept="3nyPlj" id="5yQZ6rPoWJr" role="3clFbG">
-              <ref role="37wK5l" to="j8ec:~MultiTuple$_1.assign(jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_0):jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_0" resolve="assign" />
+              <ref role="37wK5l" to="j8ec:~MultiTuple$_1.assign(jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_0)" resolve="assign" />
               <node concept="37vLTw" id="2BHiRxgm_rD" role="37wK5m">
                 <ref role="3cqZAo" node="5yQZ6rPoWIC" resolve="from" />
               </node>
@@ -10999,7 +10999,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="5yQZ6rPp5jz" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
+                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                           <node concept="3cpWs3" id="5yQZ6rPp5j$" role="37wK5m">
                             <node concept="37vLTw" id="3GM_nagTtc6" role="3uHU7w">
                               <ref role="3cqZAo" node="5yQZ6rPp5j3" resolve="idx" />

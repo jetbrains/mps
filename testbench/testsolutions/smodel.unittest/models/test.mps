@@ -325,7 +325,7 @@
               <node concept="H_c77" id="2BrVG2hhxZ0" role="1tU5fm" />
               <node concept="2OqwBi" id="5kWneGu3MGn" role="33vP2m">
                 <node concept="liA8E" id="5kWneGu3MGm" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SModel" resolve="resolve" />
+                  <ref role="37wK5l" to="mhbf:~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                   <node concept="37vLTw" id="2BrVG2hhxZ7" role="37wK5m">
                     <ref role="3cqZAo" node="2BrVG2hhxX9" resolve="repository" />
                   </node>
@@ -613,7 +613,7 @@
                 <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
               </node>
               <node concept="liA8E" id="35RdY2NIZfN" role="2OqNvi">
-                <ref role="37wK5l" to="guwi:~PrintStream.println(int):void" resolve="println" />
+                <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
                 <node concept="37vLTw" id="35RdY2NIZj2" role="37wK5m">
                   <ref role="3cqZAo" node="35RdY2NIWXJ" resolve="a" />
                 </node>
