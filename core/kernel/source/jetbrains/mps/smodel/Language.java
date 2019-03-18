@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -215,7 +216,9 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
         nextGenerator.updateGeneratorDescriptor(nextDescriptor);
       } else {
         // new generator is registered with the same owners as this language
-        Generator generator = new Generator(this, nextDescriptor);
+        // at the moment, we may use old cons that doesn't take explicit descriptor file (as it uses the one from this language, which is what we need there),
+        // but it's fun to try a new one
+        Generator generator = new Generator(MetaAdapterFactory.getLanguage(getModuleReference()), nextDescriptor, getDescriptorFile(), this);
         for (MPSModuleOwner moduleOwner : mrf.getModuleOwners(this)) {
           moduleRepository.registerModule(generator, moduleOwner);
         }
@@ -224,6 +227,8 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     // stale generator modules are unregistered from all owners
     // here we assume generator modules could not exist without their language (which is true now provided Generator cons takes Language instance)
     // therefore we unregister even generator modules the language doesn't own (see existingGenerators initialization, above).
+    // FIXME has to be reviewed for standalone generators. With SLanguage instead of source language module, we might want to let them be as is.
+    //       Alternatively, may use some package-local initialization method to pass new language module instance there.
     for (Generator stale : existingGenerators) {
       mrf.unregisterModule(stale);
     }

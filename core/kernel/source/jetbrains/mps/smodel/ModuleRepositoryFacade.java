@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -333,7 +334,7 @@ public final class ModuleRepositoryFacade implements CoreComponent {
     } else if (moduleDescriptor instanceof DevkitDescriptor) {
       instance = newDevKitInstance((DevkitDescriptor) moduleDescriptor, handle.getFile());
     } else if (moduleDescriptor instanceof GeneratorDescriptor) {
-      instance = newGeneratorInstance((GeneratorDescriptor) moduleDescriptor);
+      instance = newGeneratorInstance((GeneratorDescriptor) moduleDescriptor, handle.getFile());
     } else {
       throw new IllegalArgumentException("Unknown module " + handle.getFile().getName());
     }
@@ -371,7 +372,7 @@ public final class ModuleRepositoryFacade implements CoreComponent {
   }
 
   @NotNull
-  private Generator newGeneratorInstance(@NotNull GeneratorDescriptor descriptor) {
+  private Generator newGeneratorInstance(@NotNull GeneratorDescriptor descriptor, IFile descriptorFile) {
     SModule module = myRepo.getModule(descriptor.getSourceLanguage().getModuleId());
     if (module == null) {
       // XXX for the time being, we register generator modules only *after* respective source language module, although
@@ -388,7 +389,7 @@ public final class ModuleRepositoryFacade implements CoreComponent {
       String msg = String.format("Module %s specified as source language of generator %s in not a Language module", descriptor.getSourceLanguage(), descriptor.getNamespace());
       throw new IllegalStateException(msg);
     }
-    return new Generator((Language) module, descriptor);
+    return new Generator(MetaAdapterFactory.getLanguage(descriptor.getSourceLanguage()), descriptor, descriptorFile, (Language) module);
   }
 
   private <T extends AbstractModule> T registerModule(T module, MPSModuleOwner moduleOwner) {

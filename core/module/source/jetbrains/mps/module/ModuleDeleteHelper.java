@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ public final class ModuleDeleteHelper {
     ModuleRepositoryFacade facade = new ModuleRepositoryFacade(myProject.getRepository());
     modules.forEach((module) -> {
       if (deleteFiles) {
-        deleteModuleFiles(module);
+        deleteModuleFiles(module, innerModule);
       }
 
       /*
@@ -109,7 +109,7 @@ public final class ModuleDeleteHelper {
     }
   }
 
-  public void deleteModuleFiles(@NotNull SModule module) {
+  private void deleteModuleFiles(@NotNull SModule module, boolean innerModule) {
     Iterable<SModel> models = new ArrayList<>(IterableUtil.asCollection(module.getModels()));
     for (SModel model : models) {
       new ModelDeleteHelper(model).delete();
@@ -118,7 +118,7 @@ public final class ModuleDeleteHelper {
     deleteJavaFacet(module);
     deleteTestsFacet(module);
 
-    if (module instanceof AbstractModule) {
+    if (module instanceof AbstractModule && !innerModule) {
       AbstractModule curModule = (AbstractModule) module;
 
       IFile descriptorFile = curModule.getDescriptorFile();

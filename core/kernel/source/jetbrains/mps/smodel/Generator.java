@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SDependency;
@@ -62,10 +63,21 @@ public class Generator extends ReloadableModuleBase {
 
   private GeneratorDescriptor myGeneratorDescriptor;
 
-  public Generator(@NotNull Language sourceLanguage, GeneratorDescriptor generatorDescriptor) {
-    super(sourceLanguage.getFileSystem());
+  public Generator(@NotNull Language sourceLanguage, @NotNull GeneratorDescriptor generatorDescriptor) {
+    super(sourceLanguage.getDescriptorFile());
     mySourceLanguage = sourceLanguage;
     mySourceLanguage0 = MetaAdapterFactory.getLanguage(sourceLanguage.getModuleReference());
+    initGeneratorDescriptor(generatorDescriptor);
+  }
+
+  /**
+   * this is pretty much how generator instantiation would look like (once we drop Language module).
+   * with this, we support standalone generators story
+   */
+  /*package*/ Generator(@NotNull SLanguage sourceLanguage, @NotNull GeneratorDescriptor generatorDescriptor, @Nullable IFile descriptorFile, @NotNull Language langModuleToBeRemoved) {
+    super(descriptorFile);
+    mySourceLanguage = langModuleToBeRemoved;
+    mySourceLanguage0 = sourceLanguage;
     initGeneratorDescriptor(generatorDescriptor);
   }
 
