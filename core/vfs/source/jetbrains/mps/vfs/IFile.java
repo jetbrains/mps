@@ -16,6 +16,7 @@
 package jetbrains.mps.vfs;
 
 import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
@@ -55,7 +56,8 @@ public interface IFile {
    */
   @Deprecated
   @ToRemove(version = 2019.1)
-  @NotNull FileSystem getFileSystem();
+  @NotNull
+  FileSystem getFileSystem();
 
   @NotNull IFileSystem getFS();
 

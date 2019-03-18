@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @Deprecated
 @ToRemove(version = 2019.1)
-public interface FileSystem {
+public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
 
   @Deprecated
   @ToRemove(version = 2019.1)

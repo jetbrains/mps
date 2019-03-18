@@ -17,7 +17,7 @@ package jetbrains.mps.project;
 
 import jetbrains.mps.library.ModuleFileTracker;
 import jetbrains.mps.project.structure.project.ModulePath;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.FileListener;
 import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
