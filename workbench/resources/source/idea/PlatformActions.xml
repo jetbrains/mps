@@ -832,6 +832,7 @@
       <separator/>
       <reference ref="HelpTopics"/>
       <!-- MPS Patch
+      <reference ref="RunAnything"/>
       <reference ref="SearchEverywhere"/>
       -->
     </group>
@@ -989,7 +990,6 @@
     <group id="MaintenanceGroup">
       <action id="ShowRegistry" class="com.intellij.openapi.util.registry.ShowRegistryAction"/>
       <action id="SwitchBootJdk" class="com.intellij.ide.actions.SwitchBootJdkAction"/>
-      <action id="SwitchBootRuntime" class="com.intellij.bootRuntime.SwitchBootRuntimeAction"/>
       <action id="UiDebugger" class="com.intellij.ui.debugger.ShowUiDebuggerAction"/>
       <action id="ShowExperiments" class="com.intellij.application.ShowExperimentsAction"/>
     </group>
