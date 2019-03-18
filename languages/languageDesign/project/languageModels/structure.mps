@@ -9,10 +9,7 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118929411" name="build" index="YLPcu" />
-        <property id="1225118933224" name="comment" index="YLQ7P" />
-      </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
       <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration" flags="ng" index="AxPO7">
         <property id="1197591154882" name="memberIdentifierPolicy" index="3lZH7k" />
         <reference id="1083171729157" name="memberDataType" index="M4eZT" />
@@ -230,15 +227,6 @@
     <property role="TrG5h" value="Generator" />
     <property role="EcuMT" value="6370754048397540897" />
     <ref role="1TJDcQ" node="5xDtKQA7vSu" resolve="Module" />
-    <node concept="1TJgyi" id="eY0iPzBCD4" role="1TKVEl">
-      <property role="TrG5h" value="generatorUID" />
-      <property role="IQ2nx" value="269654322145299012" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-      <node concept="asaX9" id="2NRMQ_$pg2D" role="lGtFl">
-        <property role="YLPcu" value="2017.1" />
-        <property role="YLQ7P" value="Copy of namespace value, use namespace instead" />
-      </node>
-    </node>
     <node concept="1TJgyi" id="2NRMQ_$oqa2" role="1TKVEl">
       <property role="IQ2nx" value="3240282110432486018" />
       <property role="TrG5h" value="generatorAlias" />
@@ -248,15 +236,6 @@
       <property role="TrG5h" value="generateTemplates" />
       <property role="IQ2nx" value="3000929436959691392" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="1TJgyi" id="6iByHjqzSmA" role="1TKVEl">
-      <property role="TrG5h" value="reflectiveQueries" />
-      <property role="IQ2nx" value="7252918371708011942" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-      <node concept="asaX9" id="5lVMngvZgeB" role="lGtFl">
-        <property role="YLPcu" value="2018.1" />
-        <property role="YLQ7P" value="Always false, don't use" />
-      </node>
     </node>
     <node concept="1TJgyj" id="1AZH1sZHi4b" role="1TKVEi">
       <property role="20lmBu" value="aggregation" />

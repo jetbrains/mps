@@ -128,10 +128,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.project.structure.Module", 0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL);
     b.origin("r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)/6370754048397540897");
     b.version(2);
-    b.property("generatorUID", 0x3be012d639e8a44L).type(PrimitiveTypeId.STRING).origin("269654322145299012").done();
     b.property("generatorAlias", 0x2cf7cb696461a282L).type(PrimitiveTypeId.STRING).origin("3240282110432486018").done();
     b.property("generateTemplates", 0x29a5716c5dfed280L).type(PrimitiveTypeId.BOOLEAN).origin("3000929436959691392").done();
-    b.property("reflectiveQueries", 0x64a78ad4da8f85a6L).type(PrimitiveTypeId.BOOLEAN).origin("7252918371708011942").done();
     b.aggregate("priorityRules", 0x19bfb4173fb5210bL).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L).optional(true).ordered(true).multiple(true).origin("1855399583446016267").done();
     b.aggregate("depGenerators", 0x19bfb4173fb5210fL).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL).optional(true).ordered(true).multiple(true).origin("1855399583446016271").done();
     return b.create();

@@ -1816,26 +1816,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="eY0iPzBCD8" role="3cqZAp">
-          <node concept="37vLTI" id="eY0iPzBCDf" role="3clFbG">
-            <node concept="2OqwBi" id="eY0iPzBCDa" role="37vLTJ">
-              <node concept="37vLTw" id="3GM_nagTvBt" role="2Oq$k0">
-                <ref role="3cqZAo" node="2n3WChpmgR2" resolve="generator" />
-              </node>
-              <node concept="3TrcHB" id="eY0iPzBCDe" role="2OqNvi">
-                <ref role="3TsBF5" to="hypd:eY0iPzBCD4" resolve="generatorUID" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="eY0iPzBCDj" role="37vLTx">
-              <node concept="37vLTw" id="2BHiRxgmzFH" role="2Oq$k0">
-                <ref role="3cqZAo" node="6mz0KzMF7AL" resolve="source" />
-              </node>
-              <node concept="liA8E" id="eY0iPzBCDn" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getNamespace()" resolve="getNamespace" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2A_smLtZHa4" role="3cqZAp">
           <node concept="37vLTI" id="2A_smLtZP89" role="3clFbG">
             <node concept="2OqwBi" id="2A_smLtZHa6" role="37vLTJ">
@@ -1852,21 +1832,6 @@
               </node>
               <node concept="liA8E" id="2A_smLtZP8h" role="2OqNvi">
                 <ref role="37wK5l" to="w0gx:~GeneratorDescriptor.isGenerateTemplates()" resolve="isGenerateTemplates" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6iByHjq_iAT" role="3cqZAp">
-          <node concept="37vLTI" id="6iByHjq_r0L" role="3clFbG">
-            <node concept="3clFbT" id="5lVMngvZg4Q" role="37vLTx">
-              <property role="3clFbU" value="false" />
-            </node>
-            <node concept="2OqwBi" id="6iByHjq_lsV" role="37vLTJ">
-              <node concept="37vLTw" id="6iByHjq_iAS" role="2Oq$k0">
-                <ref role="3cqZAo" node="2n3WChpmgR2" resolve="generator" />
-              </node>
-              <node concept="3TrcHB" id="6iByHjq_nM4" role="2OqNvi">
-                <ref role="3TsBF5" to="hypd:6iByHjqzSmA" resolve="reflectiveQueries" />
               </node>
             </node>
           </node>

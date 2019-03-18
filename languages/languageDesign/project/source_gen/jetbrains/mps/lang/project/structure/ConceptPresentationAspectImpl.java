@@ -43,9 +43,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_DevKit;
       case LanguageConceptSwitch.Generator:
         if (props_Generator == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L);
-          cpb.deprecateProperty(0x3be012d639e8a44L, "generatorUID");
-          cpb.deprecateProperty(0x64a78ad4da8f85a6L, "reflectiveQueries");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           props_Generator = cpb.create();
         }

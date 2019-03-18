@@ -189,9 +189,7 @@ public class ProjectStructureBuilder {
     GeneratorDescriptor source = (GeneratorDescriptor) mySource;
     SNode generator = SModelOperations.createNewNode(myModel, null, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
     fillModule(generator);
-    SPropertyOperations.assign(generator, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x3be012d639e8a44L, "generatorUID"), source.getNamespace());
     SPropertyOperations.assign(generator, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates"), source.isGenerateTemplates());
-    SPropertyOperations.assign(generator, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x64a78ad4da8f85a6L, "reflectiveQueries"), false);
     SPropertyOperations.assign(generator, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x2cf7cb696461a282L, "generatorAlias"), (isNotEmptyString(source.getAlias()) ? source.getAlias() : null));
     for (MappingPriorityRule rule : source.getPriorityRules()) {
       SLinkOperations.getChildren(generator, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210bL, "priorityRules")).add(convert(rule));
