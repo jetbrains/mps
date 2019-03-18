@@ -63,6 +63,7 @@ class EditorSettingsPreferencesPage implements Disposable {
   private final JCheckBox myAntialiasingCheckBox;
   private final JCheckBox myPowerSaveModeCheckBox;
   private final JCheckBox myAutoQuickFixCheckBox;
+  private final JCheckBox myCompletionStylingCheckBox;
   private final JCheckBox myUseBraces;
   private final JCheckBox myUseTwoStepDeletion;
   private final JCheckBox myShowContextAssistant;
@@ -153,6 +154,9 @@ class EditorSettingsPreferencesPage implements Disposable {
     myAutoQuickFixCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.auto.resolve.refs"));
     checkboxes.add(myAutoQuickFixCheckBox);
 
+    myCompletionStylingCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.completion.styling"));
+    checkboxes.add(myCompletionStylingCheckBox);
+
     myShowContextAssistant = new JCheckBox(EditorSettingsBundle.message("checkbox.context.assistant"));
     checkboxes.add(myShowContextAssistant);
 
@@ -220,6 +224,8 @@ class EditorSettingsPreferencesPage implements Disposable {
     mySettings.setPowerSaveMode(myPowerSaveModeCheckBox.isSelected());
     mySettings.setAutoQuickFix(myAutoQuickFixCheckBox.isSelected());
 
+    mySettings.setCompletionStyling(myCompletionStylingCheckBox.isSelected());
+
     mySettings.setLineSpacing((Double) myLineSpacing.getModel().getValue());
 
     mySettings.setShow(myTabPerAspect.isSelected() || myTabPerNode.isSelected() || myAllTabs.isSelected());
@@ -252,6 +258,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     boolean sameTwoStepBackspace = myUseTwoStepDeletion.isSelected() == mySettings.isUseTwoStepDeletion();
     boolean samePowerSaveMode = myPowerSaveModeCheckBox.isSelected() == mySettings.isPowerSaveMode();
     boolean sameAutoQuickFix = myAutoQuickFixCheckBox.isSelected() == mySettings.isAutoQuickFix();
+    boolean sameCompletionStyling = myCompletionStylingCheckBox.isSelected() == mySettings.isCompletionStyling();
     boolean sameFontSize = myFontSizesComboBox.getSelectedItem().equals(Integer.toString(mySettings.getSpecifiedFontSize()));
     boolean sameFontFamily = myFontsComboBox.getFontName().equals(mySettings.getFontFamily());
     boolean sameLineSpacing = myLineSpacing.getModel().getValue().equals(mySettings.getLineSpacing());
@@ -260,7 +267,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     boolean sameUseContextAssistant = myShowContextAssistant.isSelected() == mySettings.isShowContextAssistant();
 
     return !(sameTextWidth && sameIndentSize && sameAntialiasing && sameUseBraces && samePowerSaveMode && sameTwoStepBackspace
-             && sameAutoQuickFix && sameFontSize && sameFontFamily && sameLineSpacing && sameBlinkingRate && sameTabs && sameUseContextAssistant);
+             && sameAutoQuickFix && sameCompletionStyling && sameFontSize && sameFontFamily && sameLineSpacing && sameBlinkingRate && sameTabs && sameUseContextAssistant);
   }
 
   public void reset() {
@@ -277,6 +284,8 @@ class EditorSettingsPreferencesPage implements Disposable {
     myPowerSaveModeCheckBox.setSelected(mySettings.isPowerSaveMode());
 
     myAutoQuickFixCheckBox.setSelected(mySettings.isAutoQuickFix());
+
+    myCompletionStylingCheckBox.setSelected(mySettings.isCompletionStyling());
 
     myShowContextAssistant.setSelected(mySettings.isShowContextAssistant());
 

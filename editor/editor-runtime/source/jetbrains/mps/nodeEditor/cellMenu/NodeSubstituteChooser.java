@@ -53,6 +53,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Author: Sergey Dmitriev.
@@ -81,6 +82,8 @@ public class NodeSubstituteChooser implements KeyboardHandler {
       moveToContextCell();
     }
   };
+  private CompletionCustomizationManager myCompletionCustomizationManager;
+
 
   public NodeSubstituteChooser(EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
@@ -93,6 +96,10 @@ public class NodeSubstituteChooser implements KeyboardHandler {
       component = component.getParent();
     }
     return (Window) component;
+  }
+
+  public CompletionCustomizationManager getCompletionCustomizationManager() {
+    return myCompletionCustomizationManager;
   }
 
   /**
@@ -220,6 +227,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
         throw new IllegalStateException("Context cell and substitute info must not be null to show the NodeSubstituteChooser");
       }
       initList();
+      myCompletionCustomizationManager = new CompletionCustomizationManager();
       myEditorComponent.pushKeyboardHandler(this);
       rebuildMenuEntries();
       Point location = calcPatternEditorLocation();
@@ -243,11 +251,11 @@ public class NodeSubstituteChooser implements KeyboardHandler {
       if (realUi) {
         getEditorWindow().removeComponentListener(myComponentListener);
       }
+      myCompletionCustomizationManager = null;
       myList = null;
     }
     setUserChoseItem(false);
     myIsVisible = visible;
-
   }
 
   @NotNull
@@ -256,14 +264,17 @@ public class NodeSubstituteChooser implements KeyboardHandler {
   }
 
   private List<SubstituteAction> getMatchingActions(final String pattern) {
+
     final ITypeContextOwner contextOwner = myIsSmart ? new NonReusableTypecheckingContextOwner() : myEditorComponent.getTypecheckingContextOwner();
-    return TypeContextManager.getInstance().runTypeCheckingComputation(contextOwner, myEditorComponent.getEditedNode(), context -> {
-      if (myIsSmart) {
-        return myNodeSubstituteInfo.getSmartMatchingActions(pattern, false, myContextCell);
-      } else {
-        return myNodeSubstituteInfo.getMatchingActions(pattern, false);
-      }
-    });
+    List<SubstituteAction> substituteActions =
+        TypeContextManager.getInstance().runTypeCheckingComputation(contextOwner, myEditorComponent.getEditedNode(), context -> {
+          if (myIsSmart) {
+            return myNodeSubstituteInfo.getSmartMatchingActions(pattern, false, myContextCell);
+          } else {
+            return myNodeSubstituteInfo.getMatchingActions(pattern, false);
+          }
+        });
+    return substituteActions;
   }
 
   private void rebuildMenuEntries() {
@@ -301,47 +312,50 @@ public class NodeSubstituteChooser implements KeyboardHandler {
     if (needToTrim) {
       matchingActions = getMatchingActions(trimPattern);
     }
-    try {
-      matchingActions.sort(new SubstituteActionComparator(needToTrim ? trimPattern : pattern) {
-        private Map<SubstituteAction, Integer> myLocalSortPrioritiesMap = new HashMap<>();
-        private Map<SubstituteAction, Integer> myRatesMap = new HashMap<>();
-        private Map<SubstituteAction, String> myVisibleMatchingTextsMap = new HashMap<>();
-        private Map<SubstituteAction, Boolean> myCanSubstituteStrictlyMap = new HashMap<>();
-        private Map<SubstituteAction, Boolean> myStartsWithMap = new HashMap<>();
-        private Map<SubstituteAction, Boolean> myStartsWithLowerCaseMap = new HashMap<>();
 
-        @Override
-        protected int getLocalSortPriority(SubstituteAction action) {
-          return myLocalSortPrioritiesMap.computeIfAbsent(action, a -> super.getLocalSortPriority(a));
-        }
+    matchingActions = matchingActions.stream().filter(action -> myCompletionCustomizationManager.getActionVisibility(action, pattern)).collect(Collectors.toList());
 
-        @Override
-        protected String getVisibleMatchingText(SubstituteAction action) {
-          return myVisibleMatchingTextsMap.computeIfAbsent(action, a -> super.getVisibleMatchingText(a));
-        }
+    myCompletionCustomizationManager.sort(matchingActions, pattern);
 
-        @Override
-        protected boolean canSubstituteStrictly(SubstituteAction action) {
-          return myCanSubstituteStrictlyMap.computeIfAbsent(action, a -> super.canSubstituteStrictly(a));
-        }
 
-        @Override
-        protected int getRate(SubstituteAction action) {
-          return myRatesMap.computeIfAbsent(action, a -> super.getRate(a));
-        }
+    if (!pattern.isEmpty()) {
+      try {
+        matchingActions.sort(new SubstituteActionComparator(needToTrim ? trimPattern : pattern) {
+          private Map<SubstituteAction, Integer> myRatesMap = new HashMap<>();
+          private Map<SubstituteAction, String> myVisibleMatchingTextsMap = new HashMap<>();
+          private Map<SubstituteAction, Boolean> myCanSubstituteStrictlyMap = new HashMap<>();
+          private Map<SubstituteAction, Boolean> myStartsWithMap = new HashMap<>();
+          private Map<SubstituteAction, Boolean> myStartsWithLowerCaseMap = new HashMap<>();
 
-        @Override
-        protected boolean startsWith(SubstituteAction action) {
-          return myStartsWithMap.computeIfAbsent(action, a -> super.startsWith(a));
-        }
 
-        @Override
-        protected boolean startsWithLowerCase(SubstituteAction action) {
-          return myStartsWithLowerCaseMap.computeIfAbsent(action, a -> super.startsWithLowerCase(a));
-        }
-      });
-    } catch (Exception e) {
-      LOG.error(e, e);
+          @Override
+          protected String getVisibleMatchingText(SubstituteAction action) {
+            return myVisibleMatchingTextsMap.computeIfAbsent(action, a -> super.getVisibleMatchingText(a));
+          }
+
+          @Override
+          protected boolean canSubstituteStrictly(SubstituteAction action) {
+            return myCanSubstituteStrictlyMap.computeIfAbsent(action, a -> super.canSubstituteStrictly(a));
+          }
+
+          @Override
+          protected int getRate(SubstituteAction action) {
+            return myRatesMap.computeIfAbsent(action, a -> super.getRate(a));
+          }
+
+          @Override
+          protected boolean startsWith(SubstituteAction action) {
+            return myStartsWithMap.computeIfAbsent(action, a -> super.startsWith(a));
+          }
+
+          @Override
+          protected boolean startsWithLowerCase(SubstituteAction action) {
+            return myStartsWithLowerCaseMap.computeIfAbsent(action, a -> super.startsWithLowerCase(a));
+          }
+        });
+      } catch (Exception e) {
+        LOG.error(e, e);
+      }
     }
 
 

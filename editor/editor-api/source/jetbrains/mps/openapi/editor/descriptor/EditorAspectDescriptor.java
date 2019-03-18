@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.openapi.editor.descriptor;
 
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -131,4 +132,7 @@ public interface EditorAspectDescriptor extends ILanguageAspect {
    */
   @NotNull
   Collection<SubstituteMenu> getNamedSubstituteMenus(NamedMenuId menuId, @NotNull Collection<SLanguage> usedLanguages);
+
+  @NotNull
+  Collection<EditorMenuItemCustomizer> getEditorMenuItemCustomizers();
 }

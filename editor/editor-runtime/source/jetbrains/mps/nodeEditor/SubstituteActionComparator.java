@@ -18,8 +18,6 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.psi.codeStyle.MinusculeMatcher;
 import com.intellij.psi.codeStyle.NameUtil;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Comparator;
 
@@ -32,13 +30,9 @@ public class SubstituteActionComparator implements Comparator<SubstituteAction> 
   }
 
 
+  @Deprecated
   protected int getLocalSortPriority(SubstituteAction action) {
-    final Object parameterObject = action.getParameterObject();
-    if (parameterObject instanceof SNode) {
-      return NodePresentationUtil.getSortPriority(action.getSourceNode(), (SNode) parameterObject);
-    } else {
-      return 0;
-    }
+    return 0;
   }
 
   protected String getVisibleMatchingText(SubstituteAction action) {
@@ -89,12 +83,6 @@ public class SubstituteActionComparator implements Comparator<SubstituteAction> 
     return 0;
   }
 
-  private int compareByLocalPriority(SubstituteAction i1, SubstituteAction i2) {
-    int p1 = getLocalSortPriority(i1);
-    int p2 = getLocalSortPriority(i2);
-    return p1 - p2;
-  }
-
   private int compareByStartsWith(SubstituteAction i1, SubstituteAction i2) {
     boolean startsWith1 = startsWith(i1);
     boolean startsWith2 = startsWith(i2);
@@ -121,21 +109,6 @@ public class SubstituteActionComparator implements Comparator<SubstituteAction> 
       return result;
     }
 
-    String s1 = getVisibleMatchingText(action1);
-    String s2 = getVisibleMatchingText(action2);
-
-    boolean null_s1 = (s1 == null || s1.length() == 0);
-    boolean null_s2 = (s2 == null || s2.length() == 0);
-    if (null_s1 && null_s2) {
-      return compareByLocalPriority(action1, action2);
-    }
-    if (null_s1) {
-      return 1;
-    }
-    if (null_s2) {
-      return -1;
-    }
-
     result = compareByStartsWith(action1, action2);
     if (result != 0) {
       return result;
@@ -150,14 +123,7 @@ public class SubstituteActionComparator implements Comparator<SubstituteAction> 
     if (result != 0) {
       return result;
     }
-
-    result = compareByLocalPriority(action1, action2);
-    if (result != 0) {
-      return result;
-    }
-
-
-    return s1.compareTo(s2);
+    return 0;
   }
 
   private MinusculeMatcher getMatcher() {

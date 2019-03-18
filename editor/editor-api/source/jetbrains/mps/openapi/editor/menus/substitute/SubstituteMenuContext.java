@@ -18,6 +18,7 @@ package jetbrains.mps.openapi.editor.menus.substitute;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace.EmptyEditorMenuTrace;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -25,6 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -65,6 +67,8 @@ public interface SubstituteMenuContext {
   default Predicate<SAbstractConcept> getConstraintsCheckingPredicate() {
     return (concept -> true);
   }
+
+  Collection<EditorMenuItemCustomizer> getCustomizers();
 
   @NotNull
   default EditorMenuTrace getEditorMenuTrace() {

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
@@ -141,6 +142,12 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
   @NotNull
   @Override
   public Collection<SubstituteMenu> getDeclaredNamedSubstituteMenus(NamedMenuId menuId) {
+    return Collections.emptyList();
+  }
+
+
+  @NotNull
+  public Collection<EditorMenuItemCustomizer> getEditorMenuItemCustomizers() {
     return Collections.emptyList();
   }
 

@@ -24,6 +24,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class CellActionMapImportSelectorByActionId_SubstituteMenu extends SubstituteMenuBase {
@@ -103,7 +104,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId"), context);
           _context = context;
         }
 
@@ -123,6 +124,10 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         @Override
         public EditorMenuTraceInfo getTraceInfo() {
           return myTraceInfo;
+        }
+        @NotNull
+        protected CompletionItemInformation createInformation(String pattern) {
+          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId"), getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override

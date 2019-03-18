@@ -21,6 +21,7 @@ import jetbrains.mps.nodeEditor.menus.RecursionSafeMenuItemFactory;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace.EmptyEditorMenuTrace;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
@@ -28,6 +29,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class DefaultSubstituteMenuContextBuilder {
   private MenuItemFactory<SubstituteMenuItem, SubstituteMenuContext, SubstituteMenuLookup> myMenuItemFactory;
@@ -37,6 +41,7 @@ public class DefaultSubstituteMenuContextBuilder {
   private SNode myCurrentChild;
   private EditorContext myEditorContext;
   private EditorMenuTrace myEditorMenuTrace;
+  private Collection<EditorMenuItemCustomizer> myCustomizers = Collections.emptySet();
 
   public DefaultSubstituteMenuContextBuilder(@NotNull SNode parentNode, @NotNull EditorContext editorContext) {
     myParentNode = parentNode;
@@ -65,10 +70,16 @@ public class DefaultSubstituteMenuContextBuilder {
     return this;
   }
 
+  public DefaultSubstituteMenuContextBuilder setCustomizers(Collection<EditorMenuItemCustomizer> customizers) {
+    myCustomizers = customizers;
+    return this;
+  }
+
   public DefaultSubstituteMenuContext createDefaultSubstituteMenuContext() {
-    if (myEditorMenuTrace == null){
+    if (myEditorMenuTrace == null) {
       myEditorMenuTrace = new EmptyEditorMenuTrace();
     }
-    return new DefaultSubstituteMenuContext(myMenuItemFactory, myContainmentLink, myTargetConcept, myParentNode, myCurrentChild, myEditorContext, myEditorMenuTrace);
+    return new DefaultSubstituteMenuContext(myMenuItemFactory, myContainmentLink, myTargetConcept, myParentNode, myCurrentChild, myEditorContext,
+                                            myEditorMenuTrace, myCustomizers);
   }
 }

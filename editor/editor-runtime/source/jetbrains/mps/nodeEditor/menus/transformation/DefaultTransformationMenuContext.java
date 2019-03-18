@@ -27,7 +27,9 @@ import jetbrains.mps.nodeEditor.menus.RecursionSafeMenuItemFactory;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
+import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
@@ -41,6 +43,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -65,6 +68,8 @@ public class DefaultTransformationMenuContext implements TransformationMenuConte
   private final EditorMenuTrace myEditorMenuTrace;
 
   private Predicate<SAbstractConcept> mySuitableForConstraintsPredicate;
+
+  private Set<EditorMenuItemCustomizer> myEditorMenuItemCustomizers;
 
   private Set<TransformationMenuLookup> myUsedLookups = new HashSet<>();
 
@@ -132,6 +137,14 @@ public class DefaultTransformationMenuContext implements TransformationMenuConte
     myEditorContext = editorContext;
     myNodeLocation = nodeLocation;
     myEditorMenuTrace = editorMenuTrace;
+    myEditorMenuItemCustomizers = new HashSet<>();
+    LanguageRegistry.getInstance(myEditorContext.getRepository()).withAvailableLanguages(languageRuntime -> {
+      EditorAspectDescriptor aspect = languageRuntime.getAspect(EditorAspectDescriptor.class);
+      if (aspect != null) {
+        Collection<EditorMenuItemCustomizer> editorMenuItemCustomizers = aspect.getEditorMenuItemCustomizers();
+        myEditorMenuItemCustomizers.addAll(editorMenuItemCustomizers);
+      }
+    });
   }
 
   @NotNull
@@ -160,6 +173,11 @@ public class DefaultTransformationMenuContext implements TransformationMenuConte
   @Override
   public EditorContext getEditorContext() {
     return myEditorContext;
+  }
+
+  @Override
+  public Collection<EditorMenuItemCustomizer> getCustomizers() {
+    return Collections.unmodifiableSet(myEditorMenuItemCustomizers);
   }
 
   @NotNull

@@ -26,6 +26,14 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
 public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -127,6 +135,15 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
       @Override
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
+      }
+
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+        SAbstractConcept outputConcept = null;
+        EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+        for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+          customizer.customize(style, compositeContext);
+        }
       }
     }
 

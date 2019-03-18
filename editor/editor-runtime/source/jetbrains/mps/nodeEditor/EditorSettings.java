@@ -193,6 +193,15 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
     myState.autoQuickFix = autoQuickFix;
   }
 
+
+  public boolean isCompletionStyling() {
+    return myState.completionStyling;
+  }
+
+  public void setCompletionStyling(boolean completionStyling) {
+    myState.completionStyling = completionStyling;
+  }
+
   /**
    * @return <code>true</code> when each (potential) use of an edited node get own tab, <code>false</code> means aspect has own tab
    */
@@ -359,6 +368,7 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
     public int verticalBound = 120;
 
     public boolean autoQuickFix = false;
+    public boolean completionStyling = true;
 
     public boolean showPlain = true;
     public boolean showGrayed = true;

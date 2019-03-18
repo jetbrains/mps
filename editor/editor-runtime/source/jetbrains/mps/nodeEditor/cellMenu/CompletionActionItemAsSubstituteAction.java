@@ -19,6 +19,7 @@ import jetbrains.mps.lang.editor.menus.transformation.CompletionActionItemUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.CommandPolicy;
 import jetbrains.mps.openapi.editor.menus.transformation.CompletionActionItem;
@@ -135,5 +136,10 @@ public class CompletionActionItemAsSubstituteAction implements SubstituteAction 
   @Override
   public EditorMenuTraceInfo getEditorMenuTraceInfo() {
     return myActionItem.getTraceInfo();
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    myActionItem.customize(pattern, style);
   }
 }

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.lang.editor.menus.substitute;
 
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
@@ -92,5 +93,11 @@ public class ReferenceScopeSubstituteMenuItem extends DefaultSubstituteMenuItem 
   @NotNull
   protected SReferenceLink getReferenceLink() {
     return myReferenceLink;
+  }
+
+  @NotNull
+  @Override
+  protected CompletionItemInformation createInformation(String pattern) {
+    return new CompletionItemInformation(myReferent, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern));
   }
 }

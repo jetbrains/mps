@@ -134,6 +134,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }
@@ -205,6 +206,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }
@@ -311,6 +313,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -384,6 +387,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }
@@ -516,6 +520,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -625,6 +630,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }
@@ -693,6 +699,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }
@@ -801,6 +808,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

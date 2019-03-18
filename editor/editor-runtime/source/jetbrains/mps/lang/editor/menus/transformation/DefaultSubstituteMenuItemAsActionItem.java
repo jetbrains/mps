@@ -63,7 +63,7 @@ public class DefaultSubstituteMenuItemAsActionItem extends SubstituteMenuItemAsA
       }
       if (!newChild.getConcept().isSubConceptOf(containmentLink.getTargetConcept())) {
         LOG.error("couldn't set instance of " + newChild.getConcept().getName() +
-            " as child '" + containmentLink.getName() + "' to parent" + parentNode.getPresentation() + " Parent id: " + parentNode.getNodeId());
+                  " as child '" + containmentLink.getName() + "' to parent" + parentNode.getPresentation() + " Parent id: " + parentNode.getNodeId());
         return null;
       }
       if (currentChild == null) {

@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.lang.editor.generator.internal;
 
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
@@ -29,6 +32,7 @@ import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
@@ -36,6 +40,7 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Igor Alshannikov
@@ -86,6 +91,19 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
           EditorMenuTraceInfoImpl info = new EditorMenuTraceInfoImpl();
           info.setDescriptor(AbstractCellMenuPart_ReplaceNode_Group.this.getEditorMenuDescriptor(parameterObject));
           return info;
+        }
+
+        @Override
+        protected Optional<EditorMenuItemCompositeCustomizationContext> createCustomizationContext(String pattern) {
+          SContainmentLink containmentLink = node.getContainmentLink();
+          if (containmentLink!= null){
+            return Optional.of(new EditorMenuItemCompositeCustomizationContext(new EditorMenuItemModifyingCustomizationContext(parent, containmentLink, null, null),
+                                                                               new EditorMenuItemCreatingCustomizationContext(parent, node,
+                                                                                                                              containmentLink, containmentLink.getTargetConcept())));
+          } else {
+            return Optional.empty();
+          }
+
         }
       });
     }

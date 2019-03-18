@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.openapi.editor.menus.substitute;
 
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.annotations.NotNull;
@@ -98,12 +99,16 @@ public interface SubstituteMenuItem {
    * Performs the selection.
    *
    * @param createdNode the node which was created by the actions
-   * @param pattern the text that the user has typed so far
+   * @param pattern     the text that the user has typed so far
    */
   void select(@NotNull SNode createdNode, @NotNull String pattern);
 
   @Nullable
   default EditorMenuTraceInfo getTraceInfo() {
     return null;
+  }
+
+  default void customize(String pattern, EditorMenuItemStyle style) {
+
   }
 }

@@ -6735,5 +6735,155 @@
     <property role="34LRSv" value="*" />
     <ref role="1TJDcQ" node="4Y8fgghaRne" resolve="CellActionMapImportSelector" />
   </node>
+  <node concept="1TIwiD" id="6LZbIQxCb5y">
+    <property role="R5$K7" value="false" />
+    <property role="19KtqR" value="true" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="CompletionCustomization" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="34LRSv" value="Completion Customization" />
+    <property role="EcuMT" value="7818019076292260194" />
+    <ref role="1TJDcQ" to="tpee:fz12cDA" resolve="ClassConcept" />
+    <node concept="1TJgyj" id="6iw7UxkrjtF" role="1TKVEi">
+      <property role="IQ2ns" value="7250830207897909099" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="specificator" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="7U0pk79eiKy" resolve="CompletionCustomizationContextSpecificator" />
+    </node>
+    <node concept="1TJgyj" id="ETPn3vanhF" role="1TKVEi">
+      <property role="IQ2ns" value="772883491827840107" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="customizeFunction" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="ETPn3v9nv8" resolve="CompletionCustomization_CustomizeFunction" />
+    </node>
+    <node concept="PrWs8" id="6LZbIQxCb5E" role="PzmwI">
+      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6iw7UxkrgbU">
+    <property role="EcuMT" value="7250830207897895674" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="CompletionCustomizationContextSpecificator_Concept" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="7U0pk79ej2_" role="1TKVEi">
+      <property role="IQ2ns" value="9115396979021131941" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="conceptDeclaration" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+    </node>
+    <node concept="PrWs8" id="7U0pk79ej30" role="PzmwI">
+      <ref role="PrY4T" node="7U0pk79eiKy" resolve="CompletionCustomizationContextSpecificator" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6iw7UxkrgbX">
+    <property role="EcuMT" value="7250830207897895677" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="TrG5h" value="CompletionCustomizationConceptModifyingSpecificator" />
+    <property role="34LRSv" value="modifying" />
+    <ref role="1TJDcQ" node="6iw7UxkrgbU" resolve="CompletionCustomizationContextSpecificator_Concept" />
+    <node concept="1TJgyj" id="ETPn3uQNeZ" role="1TKVEi">
+      <property role="IQ2ns" value="772883491822711743" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="feature" />
+      <ref role="20lvS9" node="ETPn3uQNdA" resolve="CompletionCustomization_Feature" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6iw7UxkrgbY">
+    <property role="EcuMT" value="7250830207897895678" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="TrG5h" value="CompletionCustomizationConceptCreatingSpecificator" />
+    <property role="34LRSv" value="creating" />
+    <ref role="1TJDcQ" node="6iw7UxkrgbU" resolve="CompletionCustomizationContextSpecificator_Concept" />
+  </node>
+  <node concept="PlHQZ" id="7U0pk79eiKy">
+    <property role="EcuMT" value="9115396979021130786" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="TrG5h" value="CompletionCustomizationContextSpecificator" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3uQNdA">
+    <property role="EcuMT" value="772883491822711654" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="TrG5h" value="CompletionCustomization_Feature" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3uQNdD">
+    <property role="EcuMT" value="772883491822711657" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="TrG5h" value="CompletionCustomization_PropertyFeature" />
+    <ref role="1TJDcQ" node="ETPn3uQNdA" resolve="CompletionCustomization_Feature" />
+    <node concept="1TJgyj" id="ETPn3uQNdH" role="1TKVEi">
+      <property role="IQ2ns" value="772883491822711661" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="property" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="ETPn3uQNdE">
+    <property role="EcuMT" value="772883491822711658" />
+    <property role="3GE5qa" value="Menu.Completion" />
+    <property role="TrG5h" value="CompletionCustomization_LinkFeature" />
+    <ref role="1TJDcQ" node="ETPn3uQNdA" resolve="CompletionCustomization_Feature" />
+    <node concept="1TJgyj" id="ETPn3uQNdJ" role="1TKVEi">
+      <property role="IQ2ns" value="772883491822711663" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="link" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="ETPn3v9nv8">
+    <property role="EcuMT" value="772883491827578824" />
+    <property role="3GE5qa" value="Menu.Completion.CustomizeFunction" />
+    <property role="TrG5h" value="CompletionCustomization_CustomizeFunction" />
+    <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3v9I5L">
+    <property role="EcuMT" value="772883491827671409" />
+    <property role="3GE5qa" value="Menu.Completion.CustomizeFunction" />
+    <property role="TrG5h" value="ConceptFunctionParameterCustomize_CompletionItemInformation" />
+    <property role="34LRSv" value="itemInformation" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3v9I6m">
+    <property role="EcuMT" value="772883491827671446" />
+    <property role="3GE5qa" value="Menu.Completion.CustomizeFunction" />
+    <property role="TrG5h" value="ConceptFunctionParameterCustomize_Style" />
+    <property role="34LRSv" value="style" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3v9Ij4">
+    <property role="EcuMT" value="772883491827672260" />
+    <property role="3GE5qa" value="Menu.Completion.CustomizeFunction" />
+    <property role="TrG5h" value="ConceptFunctionParameterCustomize_ContextNode" />
+    <property role="34LRSv" value="contextNode" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3v9Ij5">
+    <property role="EcuMT" value="772883491827672261" />
+    <property role="3GE5qa" value="Menu.Completion.CustomizeFunction" />
+    <property role="TrG5h" value="ConceptFunctionParameterCustomize_ParentNode" />
+    <property role="34LRSv" value="parentNode" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3v9JFK">
+    <property role="EcuMT" value="772883491827677936" />
+    <property role="3GE5qa" value="Menu.Completion.CustomizeFunction" />
+    <property role="TrG5h" value="ConceptFunctionParameterCustomize_CurrentChild" />
+    <property role="34LRSv" value="currentChild" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="ETPn3v9KhP">
+    <property role="EcuMT" value="772883491827680373" />
+    <property role="3GE5qa" value="Menu.Completion.CustomizeFunction" />
+    <property role="TrG5h" value="ConceptFunctionParameterCustomize_ContainmentLink" />
+    <property role="34LRSv" value="containmentLink" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
 </model>
 

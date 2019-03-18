@@ -18,6 +18,7 @@ package jetbrains.mps.smodel.action;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -101,5 +102,10 @@ public class NodeSubstituteActionWrapper implements SubstituteAction {
   @Override
   public EditorMenuTraceInfo getEditorMenuTraceInfo() {
     return mySubstituteAction.getEditorMenuTraceInfo();
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    mySubstituteAction.customize(pattern, style);
   }
 }

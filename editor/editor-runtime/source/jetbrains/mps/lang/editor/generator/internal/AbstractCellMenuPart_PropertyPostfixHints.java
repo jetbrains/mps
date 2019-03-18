@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.lang.editor.generator.internal;
 
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
@@ -22,6 +25,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
@@ -40,6 +44,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -208,6 +213,14 @@ public abstract class AbstractCellMenuPart_PropertyPostfixHints implements Subst
         }
       }
       return null;
+    }
+
+    protected Optional<EditorMenuItemCompositeCustomizationContext> createCustomizationContext(String pattern) {
+      SNode sourceNode = getSourceNode();
+      if (sourceNode != null ) {
+        return Optional.of(new EditorMenuItemCompositeCustomizationContext(new EditorMenuItemModifyingCustomizationContext(sourceNode, null, myProperty, null)));
+      }
+      return Optional.empty();
     }
   }
 }

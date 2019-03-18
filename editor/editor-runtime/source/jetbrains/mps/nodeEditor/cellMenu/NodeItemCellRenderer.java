@@ -41,8 +41,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 class NodeItemCellRenderer extends JPanel implements ListCellRenderer<SubstituteAction> {
   private static final Logger LOG = LogManager.getLogger(NodeItemCellRenderer.class);
@@ -95,9 +97,9 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
     }
 
     try {
-      int style = getStyle(action);
+      int style = getStyle(action, pattern);
       if (myStyle != style) {
-        Font font = getFont(action);
+        Font font = getFont(action, pattern);
         myLeft.setFont(font);
         myRight.setFont(font);
         myStyle = style;
@@ -107,10 +109,13 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
       LOG.error(null, t);
     }
 
+
+    Optional<Color> actionTextColor = mySubstituteChooser.getCompletionCustomizationManager().getActionTextColor(action, pattern);
+    Color foreground = actionTextColor.orElse(list.getForeground());
     try {
       String visibleMatchingText = action.getVisibleMatchingText(pattern);
       if (visibleMatchingText != null) {
-        appendText(pattern, myLeft, isSelected, visibleMatchingText);
+        appendText(pattern, myLeft, isSelected, visibleMatchingText, foreground);
       }
     } catch (Throwable t) {
       myLeft.append(EXCEPTION_WAS_THROWN_TEXT);
@@ -133,10 +138,13 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
       myLeft.setForeground(list.getSelectionForeground());
       myRight.setForeground(list.getSelectionForeground());
     } else {
-      setBackground(list.getBackground());
-      setForeground(list.getForeground());
-      myLeft.setForeground(list.getForeground());
-      myRight.setForeground(list.getForeground());
+      Optional<Color> actionBackgroundColor = mySubstituteChooser.getCompletionCustomizationManager().getActionBackgroundColor(action, pattern);
+      Color background = actionBackgroundColor.orElse(list.getBackground());
+
+      setBackground(background);
+      setForeground(foreground);
+      myRight.setForeground(foreground);
+      myLeft.setForeground(foreground);
     }
 
     validate();
@@ -146,8 +154,8 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
     }
   }
 
-  private void appendText(String pattern, SimpleColoredComponent component, boolean isSelected, String text) {
-    Color foreground = isSelected ? NodeSubstituteChooserUi.SELECTED_FOREGROUND_COLOR : NodeSubstituteChooserUi.FOREGROUND_COLOR;
+  private void appendText(String pattern, SimpleColoredComponent component, boolean isSelected, String text, Color textColor) {
+    Color foreground = isSelected ? NodeSubstituteChooserUi.SELECTED_FOREGROUND_COLOR : textColor;
     final SimpleTextAttributes base = new SimpleTextAttributes(myStyle, foreground);
 
     Iterable<TextRange> ranges = getMatchingFragments(pattern, text);
@@ -164,21 +172,26 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
     return NodeSubstituteChooserHandler.CASE_INSENSITIVE_MATCHER_FACTORY.createMatcher(pattern).matchingFragments(text);
   }
 
-  private int getStyle(SubstituteAction action) {
-    int style;
-    final Object parameterObject = action.getParameterObject();
-    if (parameterObject instanceof SNode) {
-      style = NodePresentationUtil.getFontStyle(action.getSourceNode(), (SNode) parameterObject);
-    } else {
-      style = Font.PLAIN;
+  private int getStyle(SubstituteAction action, String pattern) {
+    int style = mySubstituteChooser.getCompletionCustomizationManager().getBold(action, pattern) ? Font.BOLD : Font.PLAIN;
+
+    boolean italic = mySubstituteChooser.getCompletionCustomizationManager().getItalic(action, pattern);
+    if (italic) {
+      style = style | Font.ITALIC;
+    }
+    if (style == Font.PLAIN) {
+      final Object parameterObject = action.getParameterObject();
+      if (parameterObject instanceof SNode) {
+        style = NodePresentationUtil.getFontStyle(action.getSourceNode(), (SNode) parameterObject);
+      }
     }
     return style;
   }
 
-  private Font getFont(SubstituteAction action) {
+  private Font getFont(SubstituteAction action, String pattern) {
     Font font = EditorSettings.getInstance().getDefaultEditorFont();
     try {
-      int style = getStyle(action);
+      int style = getStyle(action, pattern);
       font = font.deriveFont(style);
     } catch (Throwable t) {
       LOG.error(null, t);

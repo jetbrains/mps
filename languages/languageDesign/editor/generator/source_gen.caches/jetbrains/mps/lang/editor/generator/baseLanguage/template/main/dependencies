@@ -75,6 +75,7 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.CellModel_Collection__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.CellModel_ListWithRole__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.CellModel_WithRole__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.behavior.CompletionCustomizationContextSpecificator__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.ConceptEditorHintDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.ConceptFunctionParameter_editorContext__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.editor.behavior.ConceptFunctionParameter_node__BehaviorDescriptor" />

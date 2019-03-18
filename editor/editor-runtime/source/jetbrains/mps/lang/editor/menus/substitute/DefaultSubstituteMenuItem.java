@@ -16,13 +16,19 @@
 package jetbrains.mps.lang.editor.menus.substitute;
 
 import jetbrains.mps.actions.runtime.impl.ActionsUtil;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
@@ -57,7 +63,11 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
   private EditorContext myEditorContext;
   private EditorMenuTraceInfo myTraceInfo;
 
-  public DefaultSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SNode parentNode, @Nullable SNode currentChild, @NotNull EditorContext editorContext) {
+  SubstituteMenuContext myContext;
+
+  @Deprecated
+  public DefaultSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SNode parentNode, @Nullable SNode currentChild,
+                                   @NotNull EditorContext editorContext) {
     myConcept = concept;
     myParentNode = parentNode;
     myCurrentChild = currentChild;
@@ -70,6 +80,7 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
     myCurrentChild = context.getCurrentTargetNode();
     myEditorContext = context.getEditorContext();
     myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
+    myContext = context;
   }
 
   @Nullable
@@ -82,12 +93,16 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
   @Override
   public SNode getType(@NotNull String pattern) {
     SNode node = createNode(pattern);
-    if (node == null) return null;
+    if (node == null) {
+      return null;
+    }
     if (node.getParent() != null) {
       LOG.warn("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
     }
 
-    if (ActionsUtil.isInstanceOfIType(node)) return node;
+    if (ActionsUtil.isInstanceOfIType(node)) {
+      return node;
+    }
 
     //the following is for smart-type completion
 
@@ -167,5 +182,26 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
   @Override
   public EditorMenuTraceInfo getTraceInfo() {
     return myTraceInfo;
+  }
+
+
+  @NotNull
+  protected CompletionItemInformation createInformation(String pattern) {
+    return new CompletionItemInformation(null, myConcept, getMatchingText(pattern), getDescriptionText(pattern));
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    if (myContext != null) {
+      SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext =
+          new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(myContext, myConcept);
+      SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext
+          modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(myContext);
+      CompletionMenuItemCustomizationContext customizationContext = new CompletionMenuItemCustomizationContext(createInformation(pattern));
+      EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(creatingContext, modifyingContext, customizationContext);
+      for (EditorMenuItemCustomizer customizer : myContext.getCustomizers()) {
+        customizer.customize(style, compositeContext);
+      }
+    }
   }
 }

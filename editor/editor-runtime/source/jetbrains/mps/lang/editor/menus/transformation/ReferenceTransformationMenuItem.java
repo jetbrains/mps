@@ -15,11 +15,17 @@
  */
 package jetbrains.mps.lang.editor.menus.transformation;
 
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.nodeEditor.cellMenu.BaseCompletionActionItem;
+import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import jetbrains.mps.smodel.CopyUtil;
@@ -47,6 +53,7 @@ public class ReferenceTransformationMenuItem extends ActionItemBase implements B
   @NotNull
   private final EditorContext myEditorContext;
   private final EditorMenuTraceInfo myTraceInfo;
+  private final TransformationMenuContext myContext;
 
   public ReferenceTransformationMenuItem(@NotNull SReferenceLink link, SNode targetNode, @NotNull TransformationMenuContext context) {
     myNode = context.getNode();
@@ -54,6 +61,7 @@ public class ReferenceTransformationMenuItem extends ActionItemBase implements B
     myTargetNode = targetNode;
     myEditorContext = context.getEditorContext();
     myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
+    myContext = context;
   }
 
   @Nullable
@@ -122,5 +130,18 @@ public class ReferenceTransformationMenuItem extends ActionItemBase implements B
 
   SNode getTargetNode() {
     return myTargetNode;
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    TransformationMenuContextToEditorMenuItemCustomizationContext
+        context = new TransformationMenuContextToEditorMenuItemCustomizationContext(myContext, null, myLink);
+    CompletionItemInformation completionItemInformation =
+        new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+    EditorMenuItemCompositeCustomizationContext compositeContext =
+        new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+    for (EditorMenuItemCustomizer customizer : myContext.getCustomizers()) {
+      customizer.customize(style, compositeContext);
+    }
   }
 }

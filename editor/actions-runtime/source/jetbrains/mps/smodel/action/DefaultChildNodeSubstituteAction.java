@@ -16,6 +16,9 @@
 package jetbrains.mps.smodel.action;
 
 import jetbrains.mps.actions.runtime.impl.ActionsUtil;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -24,14 +27,16 @@ import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Optional;
 
 /**
  * Igor Alshannikov
  * Mar 29, 2005
- *
- *
  */
 public class DefaultChildNodeSubstituteAction extends AbstractNodeSubstituteAction {
   private static final Logger LOG = LogManager.getLogger(DefaultChildNodeSubstituteAction.class);
@@ -105,11 +110,15 @@ public class DefaultChildNodeSubstituteAction extends AbstractNodeSubstituteActi
   @Override
   public SNode getActionType(String pattern) {
     SNode node = createChildNode(getParameterObject(), AbstractNodeSubstituteInfo.getModelForTypechecking(), pattern);
-    if (node == null) return null;
+    if (node == null) {
+      return null;
+    }
     if (node.getParent() != null) {
       LOG.warn("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
     }
-    if (ActionsUtil.isInstanceOfIType(node)) return node;
+    if (ActionsUtil.isInstanceOfIType(node)) {
+      return node;
+    }
 
     //the following is for smart-type completion
 
@@ -119,5 +128,26 @@ public class DefaultChildNodeSubstituteAction extends AbstractNodeSubstituteActi
     } finally {
       AbstractNodeSubstituteInfo.getModelForTypechecking().removeRootNode(node);
     }
+  }
+
+  protected Optional<EditorMenuItemCompositeCustomizationContext> createCustomizationContext(String pattern) {
+    SNode sourceNode = getSourceNode();
+    SAbstractConcept outputSConcept = getOutputSConcept();
+    if (sourceNode != null && outputSConcept != null) {
+      SContainmentLink link = getLink();
+      return Optional.of(new EditorMenuItemCompositeCustomizationContext(new EditorMenuItemModifyingCustomizationContext(sourceNode, link, null, null),
+                                                                         new EditorMenuItemCreatingCustomizationContext(sourceNode, myCurrentChild, link,
+                                                                                                                        outputSConcept)));
+    }
+    return Optional.empty();
+  }
+
+  private SContainmentLink getLink() {
+    if (mySetter instanceof DefaultChildNodeSetter) {
+      return MetaAdapterByDeclaration.getContainmentLink(((DefaultChildNodeSetter) mySetter).getLinkDeclaration());
+    } else if (mySetter instanceof DefaultSChildSetter) {
+      return ((DefaultSChildSetter) mySetter).getLink();
+    }
+    return null;
   }
 }

@@ -24,6 +24,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMenu extends SubstituteMenuBase {
@@ -103,7 +104,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder"), context);
           _context = context;
         }
 
@@ -122,6 +123,10 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
         @Override
         public EditorMenuTraceInfo getTraceInfo() {
           return myTraceInfo;
+        }
+        @NotNull
+        protected CompletionItemInformation createInformation(String pattern) {
+          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder"), getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override

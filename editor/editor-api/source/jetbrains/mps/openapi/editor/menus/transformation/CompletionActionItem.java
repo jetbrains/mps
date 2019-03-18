@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.openapi.editor.menus.transformation;
 
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -73,4 +74,6 @@ public interface CompletionActionItem extends ActionItem {
    * @param pattern the text that the user has typed so far
    */
   boolean canExecuteStrictly(@NotNull String pattern);
+
+  default void customize(String pattern, EditorMenuItemStyle style) { }
 }

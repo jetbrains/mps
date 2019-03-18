@@ -15,17 +15,29 @@
  */
 package jetbrains.mps.smodel.action;
 
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Optional;
 
 public abstract class AbstractNodeSubstituteAction implements SubstituteAction {
   private static final Logger LOG = LogManager.getLogger(AbstractNodeSubstituteAction.class);
@@ -177,5 +189,35 @@ public abstract class AbstractNodeSubstituteAction implements SubstituteAction {
       }
     }
     return nodeToSelect;
+  }
+
+  @NotNull
+  private CompletionItemInformation createCompletionItemInformation(String pattern, SAbstractConcept outputConcept) {
+    return new CompletionItemInformation(getParameterObject(), outputConcept, getMatchingText(pattern), getDescriptionText(pattern));
+  }
+
+  @Nullable
+  protected final SAbstractConcept getOutputSConcept() {
+    return myOutputConcept != null ? MetaAdapterByDeclaration.getConcept(myOutputConcept) : null;
+  }
+
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    Optional<EditorMenuItemCompositeCustomizationContext> customizationContext = createCustomizationContext(pattern);
+    if (customizationContext.isPresent() && mySourceNode.getModel() != null) {
+      EditorMenuItemCustomizationContext finalContext = new EditorMenuItemCompositeCustomizationContext(customizationContext.get(), new CompletionMenuItemCustomizationContext(
+          createCompletionItemInformation(pattern, getOutputSConcept())));
+      CompletionItemCustomizationUtil.customize(finalContext, style, mySourceNode.getModel().getRepository());
+    }
+  }
+
+  protected Optional<EditorMenuItemCompositeCustomizationContext> createCustomizationContext(String pattern) {
+    SNode sourceNode = getSourceNode();
+    SAbstractConcept outputSConcept = getOutputSConcept();
+    if (sourceNode != null && outputSConcept != null) {
+      return Optional.of(new EditorMenuItemCompositeCustomizationContext(new EditorMenuItemModifyingCustomizationContext(sourceNode, null, null, null),
+                                                                         new EditorMenuItemCreatingCustomizationContext(sourceNode.getParent(), sourceNode,
+                                                                                                                        null, outputSConcept)));
+    }
+    return Optional.empty();
   }
 }
