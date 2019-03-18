@@ -79,6 +79,7 @@
     <import index="qqrq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.components(MPS.IDEA/)" />
     <import index="s7om" ref="r:a930f08c-5447-4203-8f2e-507bb76fab12(jetbrains.mps.build.startup.structure)" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" />
+    <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" implicit="true" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" implicit="true" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
@@ -15697,8 +15698,8 @@
           <node concept="3cpWsn" id="reSgCPLKLt" role="3cpWs9">
             <property role="TrG5h" value="fileSystem" />
             <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="3obB83rlQ4b" role="1tU5fm">
-              <ref role="3uigEE" to="3ju5:~FileSystem" resolve="FileSystem" />
+            <node concept="3uibUv" id="4fN6_U27nha" role="1tU5fm">
+              <ref role="3uigEE" to="w827:~FileSystem" resolve="FileSystem" />
             </node>
             <node concept="2OqwBi" id="reSgCPLKLu" role="33vP2m">
               <node concept="37vLTw" id="reSgCPLKLv" role="2Oq$k0">
@@ -15745,7 +15746,7 @@
                     <ref role="3cqZAo" node="reSgCPLKLt" resolve="fileSystem" />
                   </node>
                   <node concept="liA8E" id="7S35ELNTYdH" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
+                    <ref role="37wK5l" to="w827:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
                     <node concept="3cpWs3" id="7S35ELNTYe_" role="37wK5m">
                       <node concept="37vLTw" id="3GM_nagTzn3" role="3uHU7w">
                         <ref role="3cqZAo" node="7S35ELNTYaG" resolve="i" />

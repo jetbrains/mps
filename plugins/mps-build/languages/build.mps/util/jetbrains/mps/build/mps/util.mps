@@ -42,6 +42,7 @@
     <import index="keqv" ref="r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)" />
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
+    <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -12286,7 +12287,7 @@
                   <node concept="2OqwBi" id="7AaordoBmAP" role="37wK5m">
                     <node concept="2OqwBi" id="7AaordoBnOX" role="2Oq$k0">
                       <node concept="liA8E" id="7AaordoBnP7" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
+                        <ref role="37wK5l" to="w827:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
                         <node concept="37vLTw" id="3GM_nagTupX" role="37wK5m">
                           <ref role="3cqZAo" node="7AaordoBmA8" resolve="localPath" />
                         </node>
