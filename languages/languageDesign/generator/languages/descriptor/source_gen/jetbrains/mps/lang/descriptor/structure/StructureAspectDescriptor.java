@@ -65,7 +65,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)/3919235298192590467");
     b.version(2);
-    b.associate("generator", 0x3663ebbd1bf10684L).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L).optional(false).origin("3919235298192590468").done();
+    b.aggregate("generator", 0x6907f3fa7dfc783cL).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L).optional(true).ordered(true).multiple(false).origin("7568285956000479292").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForGeneratorInternal_Aspect() {

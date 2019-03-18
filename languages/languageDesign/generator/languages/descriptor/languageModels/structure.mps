@@ -80,11 +80,11 @@
     <property role="19KtqR" value="true" />
     <property role="EcuMT" value="3919235298192590467" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="3pzUVOrWgq4" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
+    <node concept="1TJgyj" id="6$7WZDXZ7wW" role="1TKVEi">
+      <property role="IQ2ns" value="7568285956000479292" />
+      <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="generator" />
-      <property role="20lbJX" value="1" />
-      <property role="IQ2ns" value="3919235298192590468" />
+      <property role="20lbJX" value="0..1" />
       <ref role="20lvS9" to="hypd:5xDtKQA7vSx" resolve="Generator" />
     </node>
     <node concept="PrWs8" id="eB6_hfARLz" role="PzmwI">

@@ -58,14 +58,14 @@ public class TemplateModelImpl extends TemplateModelBase implements TemplateMode
     if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1698302279987411125"))) {
       return new Template_language_descriptor();
     }
-    if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639617419"))) {
-      return new Template_generator_descriptor();
-    }
     if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639692929"))) {
       return new Template_GDClass();
     }
     if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152715734036"))) {
       return new Template_InterpretedGeneratorRuntimeDescriptor();
+    }
+    if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000709565"))) {
+      return new Template_generator_descriptor();
     }
     return null;
   }
