@@ -100,6 +100,7 @@ public class UsedContribution extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

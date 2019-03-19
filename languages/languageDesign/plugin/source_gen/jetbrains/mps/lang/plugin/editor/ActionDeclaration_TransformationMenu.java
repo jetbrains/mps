@@ -143,6 +143,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }
@@ -214,6 +215,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

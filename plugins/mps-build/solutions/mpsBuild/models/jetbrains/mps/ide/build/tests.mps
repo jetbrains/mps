@@ -7354,6 +7354,11 @@
             <ref role="3bR37D" to="ffeo:3MI1gu0QouH" resolve="jetbrains.mps.editor.runtime" />
           </node>
         </node>
+        <node concept="1SiIV0" id="4AL49khgOvS" role="3bR37C">
+          <node concept="3bR9La" id="4AL49khgOvT" role="1SiIV1">
+            <ref role="3bR37D" node="4AL49kgFgzZ" resolve="jetbrains.mps.lang.editor.menus.style.testLanguage" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="4AL49kgFg$g" role="2G$12L">
         <property role="BnDLt" value="true" />

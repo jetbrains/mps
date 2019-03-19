@@ -78,7 +78,7 @@ public class NotEditableVaraileReference_SubstituteMenu extends SubstituteMenuBa
       private EditorMenuTraceInfo myTraceInfo;
 
       private Item(SubstituteMenuContext context, SNode refNode, SAbstractConcept concept, SReferenceLink referenceLink) {
-        super(concept, context.getParentNode(), context.getCurrentTargetNode(), refNode, referenceLink, context.getEditorContext());
+        super(concept, context, refNode, referenceLink);
         _context = context;
         referencedNode = refNode;
         myTraceInfo = context.getEditorMenuTrace().getTraceInfo();

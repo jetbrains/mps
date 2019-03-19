@@ -101,6 +101,7 @@ public class BLCommand_TransformationMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

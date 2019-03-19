@@ -101,6 +101,7 @@ public class Child_MoreNamedActions extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

@@ -97,6 +97,7 @@ public class TransformationMenuTestConcept_TransformationMenu extends Transforma
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

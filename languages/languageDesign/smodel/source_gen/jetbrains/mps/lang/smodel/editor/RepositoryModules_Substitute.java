@@ -24,6 +24,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.behavior.ModuleIdentity__BehaviorDescriptor;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.util.PatternUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.project.Solution;
@@ -113,7 +114,7 @@ public class RepositoryModules_Substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer"), context);
           _context = context;
         }
 
@@ -132,6 +133,10 @@ public class RepositoryModules_Substitute extends SubstituteMenuBase {
         @Override
         public EditorMenuTraceInfo getTraceInfo() {
           return myTraceInfo;
+        }
+        @NotNull
+        protected CompletionItemInformation createInformation(String pattern) {
+          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer"), getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -169,16 +174,16 @@ public class RepositoryModules_Substitute extends SubstituteMenuBase {
         public IconResource getIcon(@NotNull String pattern) {
           SModule module = myParameterObject.resolve(_context.getEditorContext().getRepository());
           if (module instanceof Solution || module instanceof ProjectStructureModule) {
-            return IconContainer.RESOURCE_a0a1a41e3f;
+            return IconContainer.RESOURCE_a0a1a51e3f;
           }
           if (module instanceof Language) {
-            return IconContainer.RESOURCE_a0a2a41e3f;
+            return IconContainer.RESOURCE_a0a2a51e3f;
           }
           if (module instanceof Generator) {
-            return IconContainer.RESOURCE_a0a3a41e3f;
+            return IconContainer.RESOURCE_a0a3a51e3f;
           }
           if (module instanceof DevKit) {
-            return IconContainer.RESOURCE_a0a4a41e3f;
+            return IconContainer.RESOURCE_a0a4a51e3f;
           }
           return null;
         }

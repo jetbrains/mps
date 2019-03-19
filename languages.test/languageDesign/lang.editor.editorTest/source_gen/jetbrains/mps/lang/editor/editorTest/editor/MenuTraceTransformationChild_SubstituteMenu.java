@@ -71,7 +71,7 @@ public class MenuTraceTransformationChild_SubstituteMenu extends SubstituteMenuB
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776035327cL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776035327cL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild"), context);
         _context = context;
       }
 

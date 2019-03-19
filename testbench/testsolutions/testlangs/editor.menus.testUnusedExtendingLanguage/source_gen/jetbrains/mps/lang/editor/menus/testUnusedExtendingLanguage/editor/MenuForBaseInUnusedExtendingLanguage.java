@@ -97,6 +97,7 @@ public class MenuForBaseInUnusedExtendingLanguage extends TransformationMenuBase
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

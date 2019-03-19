@@ -202,9 +202,9 @@
       <scope id="6436886136984939528" at="54,0,73,0">
         <var name="context" id="6436886136984939528" />
       </scope>
-      <unit id="6436886136984939528" at="74,0,101,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.TransformationMenuTestConcept_TransformationMenu$TMP_Action_ihci5o_a0$Item" />
-      <unit id="6436886136984939528" at="53,0,103,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.TransformationMenuTestConcept_TransformationMenu$TMP_Action_ihci5o_a0" />
-      <unit id="2344528742722105431" at="24,0,104,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.TransformationMenuTestConcept_TransformationMenu" />
+      <unit id="6436886136984939528" at="74,0,102,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.TransformationMenuTestConcept_TransformationMenu$TMP_Action_ihci5o_a0$Item" />
+      <unit id="6436886136984939528" at="53,0,104,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.TransformationMenuTestConcept_TransformationMenu$TMP_Action_ihci5o_a0" />
+      <unit id="2344528742722105431" at="24,0,105,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.TransformationMenuTestConcept_TransformationMenu" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/2705676212746996078">
@@ -631,11 +631,11 @@
       <unit id="2314756748950080393" at="62,14,66,7" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$1" />
       <unit id="7655327340756260444" at="67,14,71,7" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$2" />
       <unit id="2314756748950343916" at="98,16,102,9" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$TMP_Group_foze4d_a0a$1" />
-      <unit id="2314756748950080433" at="141,0,168,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$TMP_Group_foze4d_a0a$TMP_Action_foze4d_a0a0$Item" />
-      <unit id="2314756748950080433" at="120,0,170,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$TMP_Group_foze4d_a0a$TMP_Action_foze4d_a0a0" />
-      <unit id="7655327340757282617" at="93,0,171,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$TMP_Group_foze4d_a0a" />
-      <unit id="7655327340756249209" at="56,0,172,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0" />
-      <unit id="5239313638630261293" at="27,0,173,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables" />
+      <unit id="2314756748950080433" at="141,0,169,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$TMP_Group_foze4d_a0a$TMP_Action_foze4d_a0a0$Item" />
+      <unit id="2314756748950080433" at="120,0,171,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$TMP_Group_foze4d_a0a$TMP_Action_foze4d_a0a0" />
+      <unit id="7655327340757282617" at="93,0,172,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0$TMP_Group_foze4d_a0a" />
+      <unit id="7655327340756249209" at="56,0,173,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables$TMP_Group_foze4d_a0" />
+      <unit id="5239313638630261293" at="27,0,174,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNestedVariables" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/5339489019635911012">
@@ -857,9 +857,9 @@
       <scope id="6202297022023752058" at="54,0,73,0">
         <var name="context" id="6202297022023752058" />
       </scope>
-      <unit id="6202297022023752058" at="74,0,101,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.NamedTestMenu$TMP_Action_xyzz9_a0$Item" />
-      <unit id="6202297022023752058" at="53,0,103,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.NamedTestMenu$TMP_Action_xyzz9_a0" />
-      <unit id="6202297022023752048" at="24,0,104,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.NamedTestMenu" />
+      <unit id="6202297022023752058" at="74,0,102,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.NamedTestMenu$TMP_Action_xyzz9_a0$Item" />
+      <unit id="6202297022023752058" at="53,0,104,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.NamedTestMenu$TMP_Action_xyzz9_a0" />
+      <unit id="6202297022023752048" at="24,0,105,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.NamedTestMenu" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/6202297022026415601">
@@ -957,9 +957,9 @@
       <scope id="6202297022026415611" at="54,0,73,0">
         <var name="context" id="6202297022026415611" />
       </scope>
-      <unit id="6202297022026415611" at="74,0,105,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNonExecutableAction$TMP_Action_guv3c3_a0$Item" />
-      <unit id="6202297022026415611" at="53,0,107,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNonExecutableAction$TMP_Action_guv3c3_a0" />
-      <unit id="6202297022026415601" at="24,0,108,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNonExecutableAction" />
+      <unit id="6202297022026415611" at="74,0,106,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNonExecutableAction$TMP_Action_guv3c3_a0$Item" />
+      <unit id="6202297022026415611" at="53,0,108,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNonExecutableAction$TMP_Action_guv3c3_a0" />
+      <unit id="6202297022026415601" at="24,0,109,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithNonExecutableAction" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/6202297022027494849">
@@ -1058,9 +1058,9 @@
       <scope id="6202297022027496051" at="54,0,73,0">
         <var name="context" id="6202297022027496051" />
       </scope>
-      <unit id="6202297022027496051" at="74,0,102,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithExecutableAction$TMP_Action_mk0emr_a0$Item" />
-      <unit id="6202297022027496051" at="53,0,104,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithExecutableAction$TMP_Action_mk0emr_a0" />
-      <unit id="6202297022027496048" at="24,0,105,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithExecutableAction" />
+      <unit id="6202297022027496051" at="74,0,103,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithExecutableAction$TMP_Action_mk0emr_a0$Item" />
+      <unit id="6202297022027496051" at="53,0,105,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithExecutableAction$TMP_Action_mk0emr_a0" />
+      <unit id="6202297022027496048" at="24,0,106,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.WithExecutableAction" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/7552401496952041239">
@@ -1152,9 +1152,9 @@
       <scope id="7552401496952043210" at="54,0,73,0">
         <var name="context" id="7552401496952043210" />
       </scope>
-      <unit id="7552401496952043210" at="74,0,101,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.BaseWithNonEmptyMenu_TransformationMenu$TMP_Action_n7av48_a0$Item" />
-      <unit id="7552401496952043210" at="53,0,103,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.BaseWithNonEmptyMenu_TransformationMenu$TMP_Action_n7av48_a0" />
-      <unit id="7552401496952041239" at="24,0,104,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.BaseWithNonEmptyMenu_TransformationMenu" />
+      <unit id="7552401496952043210" at="74,0,102,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.BaseWithNonEmptyMenu_TransformationMenu$TMP_Action_n7av48_a0$Item" />
+      <unit id="7552401496952043210" at="53,0,104,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.BaseWithNonEmptyMenu_TransformationMenu$TMP_Action_n7av48_a0" />
+      <unit id="7552401496952041239" at="24,0,105,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.BaseWithNonEmptyMenu_TransformationMenu" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/7552401496952045430">
@@ -1371,11 +1371,11 @@
       </scope>
       <unit id="8477852555557930482" at="78,27,109,17" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0$1$1$1" />
       <unit id="8477852555557930482" at="76,23,111,13" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0$1$1" />
-      <unit id="8477852555557899250" at="153,0,190,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0$TMP_Action_ud82js_a0a$Item" />
+      <unit id="8477852555557899250" at="153,0,191,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0$TMP_Action_ud82js_a0a$Item" />
       <unit id="8477852555557930482" at="74,40,113,9" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0$1" />
-      <unit id="8477852555557899250" at="128,0,192,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0$TMP_Action_ud82js_a0a" />
-      <unit id="8477852555557899250" at="59,0,193,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0" />
-      <unit id="8477852555557899240" at="30,0,194,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType" />
+      <unit id="8477852555557899250" at="128,0,193,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0$TMP_Action_ud82js_a0a" />
+      <unit id="8477852555557899250" at="59,0,194,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType$TMP_Param_ud82js_a0" />
+      <unit id="8477852555557899240" at="30,0,195,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ParameterizedByPrimitiveType" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/8991930073415883058">
@@ -1591,8 +1591,8 @@
       <node id="8991930073415901205" at="67,0,68,18" concept="10" />
       <node id="8991930073415901205" at="71,0,72,0" concept="6" trace="_context" />
       <node id="8991930073415901205" at="72,0,73,0" concept="6" trace="myTraceInfo" />
-      <node id="8991930073415901205" at="73,50,74,278" concept="14" />
-      <node id="8991930073415901205" at="74,278,75,27" concept="5" />
+      <node id="8991930073415901205" at="73,50,74,202" concept="14" />
+      <node id="8991930073415901205" at="74,202,75,27" concept="5" />
       <node id="8991930073415901205" at="78,64,79,32" concept="5" />
       <node id="8991930073415901556" at="84,56,85,227" concept="10" />
       <node id="8991930073415901205" at="89,49,90,27" concept="10" />

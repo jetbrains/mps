@@ -98,6 +98,7 @@ public class IncludeDefaultAndNullMenu_TransformationMenu extends Transformation
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

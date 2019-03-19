@@ -105,9 +105,9 @@
       <scope id="1068638940632619218" at="54,0,73,0">
         <var name="context" id="1068638940632619218" />
       </scope>
-      <unit id="1068638940632619218" at="74,0,101,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage$TMP_Action_kkl41h_a0$Item" />
-      <unit id="1068638940632619218" at="53,0,103,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage$TMP_Action_kkl41h_a0" />
-      <unit id="1068638940632617910" at="24,0,104,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage" />
+      <unit id="1068638940632619218" at="74,0,102,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage$TMP_Action_kkl41h_a0$Item" />
+      <unit id="1068638940632619218" at="53,0,104,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage$TMP_Action_kkl41h_a0" />
+      <unit id="1068638940632617910" at="24,0,105,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage" />
     </file>
   </root>
   <root nodeRef="r:965afa85-7195-40ad-84ac-dc46d395c63b(jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor)/189670312547646590">
@@ -205,9 +205,9 @@
       <scope id="3526874291840080514" at="57,0,76,0">
         <var name="context" id="3526874291840080514" />
       </scope>
-      <unit id="3526874291840080514" at="77,0,106,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.UnusedContribution$TMP_Action_upxn7_a0$Item" />
-      <unit id="3526874291840080514" at="56,0,108,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.UnusedContribution$TMP_Action_upxn7_a0" />
-      <unit id="189670312547646590" at="24,0,109,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.UnusedContribution" />
+      <unit id="3526874291840080514" at="77,0,107,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.UnusedContribution$TMP_Action_upxn7_a0$Item" />
+      <unit id="3526874291840080514" at="56,0,109,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.UnusedContribution$TMP_Action_upxn7_a0" />
+      <unit id="189670312547646590" at="24,0,110,0" name="jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.UnusedContribution" />
     </file>
   </root>
 </debug-info>

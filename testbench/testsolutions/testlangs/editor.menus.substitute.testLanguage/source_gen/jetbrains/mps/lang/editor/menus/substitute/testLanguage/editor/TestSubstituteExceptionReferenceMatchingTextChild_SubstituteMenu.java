@@ -77,7 +77,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
       private EditorMenuTraceInfo myTraceInfo;
 
       private Item(SubstituteMenuContext context, SNode refNode, SAbstractConcept concept, SReferenceLink referenceLink) {
-        super(concept, context.getParentNode(), context.getCurrentTargetNode(), refNode, referenceLink, context.getEditorContext());
+        super(concept, context, refNode, referenceLink);
         _context = context;
         referencedNode = refNode;
         myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
@@ -125,7 +125,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild"), context);
         _context = context;
       }
 

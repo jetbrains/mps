@@ -98,6 +98,7 @@ public class Parent_ContextAssistant_NamedMenu extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

@@ -132,6 +132,7 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

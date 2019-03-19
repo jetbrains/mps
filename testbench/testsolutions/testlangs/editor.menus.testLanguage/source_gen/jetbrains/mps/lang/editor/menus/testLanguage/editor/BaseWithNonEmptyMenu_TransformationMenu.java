@@ -97,6 +97,7 @@ public class BaseWithNonEmptyMenu_TransformationMenu extends TransformationMenuB
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

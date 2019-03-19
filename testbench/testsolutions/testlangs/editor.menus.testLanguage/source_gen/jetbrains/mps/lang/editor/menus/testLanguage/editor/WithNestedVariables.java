@@ -164,6 +164,7 @@ public class WithNestedVariables extends TransformationMenuBase {
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }

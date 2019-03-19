@@ -180,6 +180,7 @@ public class Math extends TransformationMenuBase {
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
@@ -239,6 +240,7 @@ public class Math extends TransformationMenuBase {
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
@@ -298,6 +300,7 @@ public class Math extends TransformationMenuBase {
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
@@ -357,6 +360,7 @@ public class Math extends TransformationMenuBase {
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
@@ -448,6 +452,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -507,6 +512,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -596,6 +602,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -655,6 +662,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -714,6 +722,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -773,6 +782,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -862,6 +872,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -921,6 +932,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -980,6 +992,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -1039,6 +1052,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -1128,6 +1142,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -1187,6 +1202,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -1246,6 +1262,7 @@ public class Math extends TransformationMenuBase {
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }

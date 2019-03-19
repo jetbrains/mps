@@ -71,7 +71,7 @@ public class ChildOfParentWithEmptyCell_SubstituteMenu extends SubstituteMenuBas
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18deL, "jetbrains.mps.lang.editor.menus.testLanguage.structure.ChildOfParentWithEmptyCell"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18deL, "jetbrains.mps.lang.editor.menus.testLanguage.structure.ChildOfParentWithEmptyCell"), context);
         _context = context;
       }
 

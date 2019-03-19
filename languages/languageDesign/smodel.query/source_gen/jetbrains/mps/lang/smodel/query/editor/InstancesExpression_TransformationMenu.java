@@ -119,6 +119,7 @@ public class InstancesExpression_TransformationMenu extends TransformationMenuBa
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

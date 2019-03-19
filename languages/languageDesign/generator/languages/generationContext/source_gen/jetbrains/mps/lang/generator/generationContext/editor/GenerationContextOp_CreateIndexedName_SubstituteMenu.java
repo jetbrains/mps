@@ -73,7 +73,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName"), context);
         _context = context;
       }
 
@@ -133,7 +133,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName"), context);
         _context = context;
       }
 

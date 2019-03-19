@@ -113,6 +113,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }
@@ -166,6 +167,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myEditorMenuTraceInfo;
       }
+
     }
 
   }

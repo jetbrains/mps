@@ -210,6 +210,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
@@ -289,6 +290,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
@@ -363,6 +365,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
         }
+
       }
 
     }
@@ -463,6 +466,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
@@ -525,6 +529,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           public EditorMenuTraceInfo getTraceInfo() {
             return myEditorMenuTraceInfo;
           }
+
         }
 
       }
