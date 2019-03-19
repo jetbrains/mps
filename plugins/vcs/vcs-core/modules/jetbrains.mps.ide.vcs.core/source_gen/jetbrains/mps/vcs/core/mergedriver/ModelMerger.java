@@ -66,7 +66,7 @@ import jetbrains.mps.extapi.model.SModelData;
     SModel baseModel = loadModel(baseContent, ext);
     SModel localModel = loadModel(localContent, ext);
     SModel latestModel = loadModel(latestContent, ext);
-    if (baseModel == null || localModel == null || latestModel == null) {
+    if (isModelInvalid(baseModel) || isModelInvalid(localModel) || isModelInvalid(latestModel)) {
       return backup(baseContent, localContent, latestContent);
     }
     myModelName = baseModel.getName();
@@ -140,6 +140,14 @@ import jetbrains.mps.extapi.model.SModelData;
     }
 
     return backup(baseContent, localContent, latestContent);
+  }
+  private boolean isModelInvalid(@Nullable SModel model) {
+    // check if the model cannot be used for merge 
+    if (model == null) {
+      return true;
+    }
+    model.load();
+    return !((model.isLoaded())) || model.getProblems().iterator().hasNext();
   }
   private Tuples._2<Integer, byte[]> backup(FileContent baseContent, FileContent localContent, FileContent latestContent) {
     try {

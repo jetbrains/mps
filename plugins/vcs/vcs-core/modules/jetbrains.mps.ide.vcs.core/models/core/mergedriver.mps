@@ -2,12 +2,12 @@
 <model ref="r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
-    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
+    <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="13" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
   </languages>
   <imports>
     <import index="vmu8" ref="r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)" />
@@ -508,8 +508,8 @@
             </node>
             <node concept="3clFbF" id="2TzypFyLI67" role="3cqZAp">
               <node concept="2YIFZM" id="2TzypFyLI68" role="3clFbG">
-                <ref role="37wK5l" to="wyt6:~System.exit(int)" resolve="exit" />
                 <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                <ref role="37wK5l" to="wyt6:~System.exit(int)" resolve="exit" />
                 <node concept="3cmrfG" id="2TzypFyLI69" role="37wK5m">
                   <property role="3cmrfH" value="2" />
                 </node>
@@ -771,8 +771,8 @@
             <node concept="3clFbS" id="2TzypFyLI7y" role="9aQI4">
               <node concept="3clFbF" id="2TzypFyLI7z" role="3cqZAp">
                 <node concept="2YIFZM" id="2TzypFyLI7$" role="3clFbG">
-                  <ref role="37wK5l" to="wyt6:~System.exit(int)" resolve="exit" />
                   <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                  <ref role="37wK5l" to="wyt6:~System.exit(int)" resolve="exit" />
                   <node concept="3cmrfG" id="2TzypFyLI7_" role="37wK5m">
                     <property role="3cmrfH" value="2" />
                   </node>
@@ -794,8 +794,8 @@
               <ref role="3uigEE" to="4o98:~Platform" resolve="Platform" />
             </node>
             <node concept="2YIFZM" id="Y1BBlv$vrh" role="33vP2m">
-              <ref role="37wK5l" to="4o98:~PlatformFactory.initPlatform(jetbrains.mps.core.platform.PlatformOptionsBuilder)" resolve="initPlatform" />
               <ref role="1Pybhc" to="4o98:~PlatformFactory" resolve="PlatformFactory" />
+              <ref role="37wK5l" to="4o98:~PlatformFactory.initPlatform(jetbrains.mps.core.platform.PlatformOptionsBuilder)" resolve="initPlatform" />
               <node concept="Rm8GO" id="Y1BBlv$vri" role="37wK5m">
                 <ref role="Rm8GQ" to="4o98:~PlatformOptionsBuilder.PERSISTENCE" resolve="PERSISTENCE" />
                 <ref role="1Px2BO" to="4o98:~PlatformOptionsBuilder" resolve="PlatformOptionsBuilder" />
@@ -815,8 +815,8 @@
                     <node concept="1pGfFk" id="2TzypFyLI7K" role="2ShVmc">
                       <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
                       <node concept="2YIFZM" id="2TzypFyLI7L" role="37wK5m">
-                        <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
                         <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                        <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
                         <node concept="37vLTw" id="2BHiRxeopYx" role="37wK5m">
                           <ref role="3cqZAo" node="2TzypFyLI5q" resolve="LOG_PROPERTY" />
                         </node>
@@ -1048,8 +1048,8 @@
         </node>
         <node concept="3clFbF" id="2TzypFyLI8k" role="3cqZAp">
           <node concept="2YIFZM" id="2TzypFyLI8l" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:~System.exit(int)" resolve="exit" />
             <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+            <ref role="37wK5l" to="wyt6:~System.exit(int)" resolve="exit" />
             <node concept="37vLTw" id="3GM_nagTB3x" role="37wK5m">
               <ref role="3cqZAo" node="3ahUWOxDrOX" resolve="status" />
             </node>
@@ -1206,8 +1206,8 @@
           <node concept="3clFbS" id="3ahUWOxE0o8" role="2GVbov">
             <node concept="3clFbF" id="3ahUWOxDYW5" role="3cqZAp">
               <node concept="2YIFZM" id="3ahUWOxE0o2" role="3clFbG">
-                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <node concept="37vLTw" id="3GM_nagT_kM" role="37wK5m">
                   <ref role="3cqZAo" node="3ahUWOxE0oO" resolve="r" />
                 </node>
@@ -1513,8 +1513,8 @@
             <property role="TrG5h" value="logPath" />
             <node concept="17QB3L" id="2TzypFyLI9Z" role="1tU5fm" />
             <node concept="2YIFZM" id="2TzypFyLIa0" role="33vP2m">
-              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
               <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
               <node concept="37vLTw" id="2BHiRxeooIw" role="37wK5m">
                 <ref role="3cqZAo" node="2TzypFyLI5q" resolve="LOG_PROPERTY" />
               </node>
@@ -1675,8 +1675,8 @@
         </node>
         <node concept="3clFbF" id="2TzypFyLIaX" role="3cqZAp">
           <node concept="2YIFZM" id="2TzypFyLIaY" role="3clFbG">
-            <ref role="37wK5l" to="q7tw:~PropertyConfigurator.configure(java.util.Properties)" resolve="configure" />
             <ref role="1Pybhc" to="q7tw:~PropertyConfigurator" resolve="PropertyConfigurator" />
+            <ref role="37wK5l" to="q7tw:~PropertyConfigurator.configure(java.util.Properties)" resolve="configure" />
             <node concept="37vLTw" id="3GM_nagT$Dg" role="37wK5m">
               <ref role="3cqZAo" node="2TzypFyLIa9" resolve="p" />
             </node>
@@ -2406,8 +2406,8 @@
       <node concept="3clFbS" id="2TzypFyLJ6t" role="3clF47">
         <node concept="3clFbF" id="2TzypFyLJ6u" role="3cqZAp">
           <node concept="2YIFZM" id="2TzypFyLJ6v" role="3clFbG">
-            <ref role="37wK5l" to="18ew:~JDOMUtil.writeDocument(org.jdom.Document,java.io.OutputStream)" resolve="writeDocument" />
             <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
+            <ref role="37wK5l" to="18ew:~JDOMUtil.writeDocument(org.jdom.Document,java.io.OutputStream)" resolve="writeDocument" />
             <node concept="2ShNRf" id="2TzypFyLJ6w" role="37wK5m">
               <node concept="1pGfFk" id="2TzypFyLJ6x" role="2ShVmc">
                 <ref role="37wK5l" to="mmaq:~Document.&lt;init&gt;(org.jdom.Element)" resolve="Document" />
@@ -2845,8 +2845,8 @@
             </node>
           </node>
           <node concept="2YIFZM" id="6Ro6jphLm1i" role="3clFbw">
-            <ref role="37wK5l" to="wyt6:~Boolean.getBoolean(java.lang.String)" resolve="getBoolean" />
             <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+            <ref role="37wK5l" to="wyt6:~Boolean.getBoolean(java.lang.String)" resolve="getBoolean" />
             <node concept="Xl_RD" id="6Ro6jphLoaK" role="37wK5m">
               <property role="Xl_RC" value="mps.mergedriver.model.fail" />
             </node>
@@ -2855,8 +2855,8 @@
         <node concept="3clFbH" id="CoC$x5IL2w" role="3cqZAp" />
         <node concept="3clFbF" id="2TzypFyLJej" role="3cqZAp">
           <node concept="2YIFZM" id="1jLye1tMAri" role="3clFbG">
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.setMergeDriverMode(boolean)" resolve="setMergeDriverMode" />
             <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+            <ref role="37wK5l" to="fyhk:~RuntimeFlags.setMergeDriverMode(boolean)" resolve="setMergeDriverMode" />
             <node concept="3clFbT" id="1jLye1tMI0M" role="37wK5m">
               <property role="3clFbU" value="true" />
             </node>
@@ -3009,24 +3009,24 @@
             </node>
           </node>
           <node concept="22lmx$" id="13cOvvwxwaJ" role="3clFbw">
-            <node concept="3clFbC" id="13cOvvwxFaN" role="3uHU7w">
-              <node concept="10Nm6u" id="13cOvvwxHEs" role="3uHU7w" />
-              <node concept="37vLTw" id="13cOvvwxCBT" role="3uHU7B">
-                <ref role="3cqZAo" node="2TzypFyLJeC" resolve="latestModel" />
-              </node>
-            </node>
             <node concept="22lmx$" id="13cOvvwxr6c" role="3uHU7B">
-              <node concept="3clFbC" id="13cOvvwxg8e" role="3uHU7B">
-                <node concept="37vLTw" id="13cOvvwxd_U" role="3uHU7B">
+              <node concept="1rXfSq" id="2UUMsZEeYw1" role="3uHU7B">
+                <ref role="37wK5l" node="2UUMsZEeuFb" resolve="isModelInvalid" />
+                <node concept="37vLTw" id="2UUMsZEeYMb" role="37wK5m">
                   <ref role="3cqZAo" node="2TzypFyLJey" resolve="baseModel" />
                 </node>
-                <node concept="10Nm6u" id="13cOvvwxg8r" role="3uHU7w" />
               </node>
-              <node concept="3clFbC" id="13cOvvwxtD1" role="3uHU7w">
-                <node concept="37vLTw" id="13cOvvwxt_B" role="3uHU7B">
+              <node concept="1rXfSq" id="2UUMsZEfbb9" role="3uHU7w">
+                <ref role="37wK5l" node="2UUMsZEeuFb" resolve="isModelInvalid" />
+                <node concept="37vLTw" id="2UUMsZEfbt0" role="37wK5m">
                   <ref role="3cqZAo" node="2TzypFyLJe_" resolve="localModel" />
                 </node>
-                <node concept="10Nm6u" id="13cOvvwxtDe" role="3uHU7w" />
+              </node>
+            </node>
+            <node concept="1rXfSq" id="2UUMsZEfbNn" role="3uHU7w">
+              <ref role="37wK5l" node="2UUMsZEeuFb" resolve="isModelInvalid" />
+              <node concept="37vLTw" id="2UUMsZEfc5k" role="37wK5m">
+                <ref role="3cqZAo" node="2TzypFyLJeC" resolve="latestModel" />
               </node>
             </node>
           </node>
@@ -3276,8 +3276,8 @@
                 <node concept="RRSsy" id="3jYQuSB37hf" role="3cqZAp">
                   <property role="RRSoG" value="info" />
                   <node concept="2YIFZM" id="2TzypFyLJhe" role="RRSoy">
-                    <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                     <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                    <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                     <node concept="Xl_RD" id="2TzypFyLJhf" role="37wK5m">
                       <property role="Xl_RC" value="%s: %d changes detected: %d local and %d latest." />
                     </node>
@@ -3361,8 +3361,8 @@
                   <node concept="RRSsy" id="3jYQuSB37hZ" role="3cqZAp">
                     <property role="RRSoG" value="info" />
                     <node concept="2YIFZM" id="2TzypFyLJit" role="RRSoy">
-                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                       <node concept="Xl_RD" id="2TzypFyLJiu" role="37wK5m">
                         <property role="Xl_RC" value="%s: %d changes detected, %d of them are conflicting" />
                       </node>
@@ -3517,8 +3517,8 @@
                         <node concept="3clFbF" id="13cOvvwKP2Q" role="3cqZAp">
                           <node concept="37vLTI" id="13cOvvwL24W" role="3clFbG">
                             <node concept="2YIFZM" id="13cOvvwLhiN" role="37vLTx">
-                              <ref role="37wK5l" to="pa15:~PersistenceUtil.saveModel(org.jetbrains.mps.openapi.model.SModel,java.lang.String)" resolve="saveModel" />
                               <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
+                              <ref role="37wK5l" to="pa15:~PersistenceUtil.saveModel(org.jetbrains.mps.openapi.model.SModel,java.lang.String)" resolve="saveModel" />
                               <node concept="37vLTw" id="7vnu9rGOuKR" role="37wK5m">
                                 <ref role="3cqZAo" node="7vnu9rGOuKM" resolve="resultModel" />
                               </node>
@@ -3683,6 +3683,86 @@
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>
+    <node concept="3clFb_" id="2UUMsZEeuFb" role="jymVt">
+      <property role="TrG5h" value="isModelInvalid" />
+      <node concept="3clFbS" id="2UUMsZEeuFe" role="3clF47">
+        <node concept="3SKdUt" id="2UUMsZEf$AR" role="3cqZAp">
+          <node concept="3SKdUq" id="2UUMsZEf$AT" role="3SKWNk">
+            <property role="3SKdUp" value="check if the model cannot be used for merge" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2UUMsZEeSNj" role="3cqZAp">
+          <node concept="3clFbS" id="2UUMsZEeSNl" role="3clFbx">
+            <node concept="3cpWs6" id="2UUMsZEeXBQ" role="3cqZAp">
+              <node concept="3clFbT" id="2UUMsZEeXCJ" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="2UUMsZEeWe7" role="3clFbw">
+            <node concept="10Nm6u" id="2UUMsZEeX2T" role="3uHU7w" />
+            <node concept="37vLTw" id="2UUMsZEeUKg" role="3uHU7B">
+              <ref role="3cqZAo" node="2UUMsZEewNO" resolve="model" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2UUMsZEez6w" role="3cqZAp">
+          <node concept="2OqwBi" id="2UUMsZEez6x" role="3clFbG">
+            <node concept="37vLTw" id="2UUMsZEe_XJ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2UUMsZEewNO" resolve="model" />
+            </node>
+            <node concept="liA8E" id="2UUMsZEez6z" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.load():void" resolve="load" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2UUMsZEeBoX" role="3cqZAp">
+          <node concept="22lmx$" id="2UUMsZEfsZY" role="3cqZAk">
+            <node concept="3fqX7Q" id="2UUMsZEf4Q5" role="3uHU7B">
+              <node concept="1eOMI4" id="2UUMsZEf91a" role="3fr31v">
+                <node concept="2OqwBi" id="2UUMsZEf4Q7" role="1eOMHV">
+                  <node concept="37vLTw" id="2UUMsZEf4Q8" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2UUMsZEewNO" resolve="model" />
+                  </node>
+                  <node concept="liA8E" id="2UUMsZEf4Q9" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.isLoaded():boolean" resolve="isLoaded" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="2UUMsZEfuSE" role="3uHU7w">
+              <node concept="2OqwBi" id="2UUMsZEfuSF" role="2Oq$k0">
+                <node concept="2OqwBi" id="2UUMsZEfuSG" role="2Oq$k0">
+                  <node concept="37vLTw" id="2UUMsZEfuSH" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2UUMsZEewNO" resolve="model" />
+                  </node>
+                  <node concept="liA8E" id="2UUMsZEfuSI" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.getProblems():java.lang.Iterable" resolve="getProblems" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2UUMsZEfuSJ" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Iterable.iterator():java.util.Iterator" resolve="iterator" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2UUMsZEfuSK" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Iterator.hasNext():boolean" resolve="hasNext" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2UUMsZEess7" role="1B3o_S" />
+      <node concept="10P_77" id="2UUMsZEeuzv" role="3clF45" />
+      <node concept="37vLTG" id="2UUMsZEewNO" role="3clF46">
+        <property role="TrG5h" value="model" />
+        <node concept="3uibUv" id="2UUMsZEeyS5" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+        </node>
+        <node concept="2AHcQZ" id="2UUMsZEeMX0" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+    </node>
     <node concept="3clFb_" id="2TzypFyLJiU" role="jymVt">
       <property role="TrG5h" value="backup" />
       <node concept="1LlUBW" id="2TzypFyLJiV" role="3clF45">
@@ -3791,8 +3871,8 @@
               <node concept="RRSsy" id="3jYQuSB37jb" role="3cqZAp">
                 <property role="RRSoG" value="error" />
                 <node concept="2YIFZM" id="2TzypFyLJjH" role="RRSoy">
-                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                   <node concept="Xl_RD" id="2TzypFyLJjI" role="37wK5m">
                     <property role="Xl_RC" value="%s: exception while backuping" />
                   </node>
@@ -3877,8 +3957,8 @@
             </node>
             <node concept="2OqwBi" id="7vnu9rGLBVn" role="33vP2m">
               <node concept="2YIFZM" id="7vnu9rGLBVo" role="2Oq$k0">
-                <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                 <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="7vnu9rGLBVp" role="2OqNvi">
                 <ref role="37wK5l" to="dush:~PersistenceFacade.getModelFactory(java.lang.String)" resolve="getModelFactory" />
@@ -5023,8 +5103,8 @@
           <node concept="3clFbS" id="2TzypFyLPRW" role="2GVbov">
             <node concept="3clFbF" id="2TzypFyLPS6" role="3cqZAp">
               <node concept="2YIFZM" id="2TzypFyLPS7" role="3clFbG">
-                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <node concept="37vLTw" id="3GM_nagTuTy" role="37wK5m">
                   <ref role="3cqZAo" node="2TzypFyLPQo" resolve="out" />
                 </node>
@@ -5726,8 +5806,8 @@
           <node concept="3clFbS" id="5YKGT2p4QUl" role="2GVbov">
             <node concept="3clFbF" id="5YKGT2p4V5N" role="3cqZAp">
               <node concept="2YIFZM" id="5YKGT2p4V5O" role="3clFbG">
-                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <node concept="37vLTw" id="5YKGT2p5off" role="37wK5m">
                   <ref role="3cqZAo" node="5YKGT2p53Uz" resolve="is" />
                 </node>
@@ -6100,8 +6180,8 @@
           <node concept="3clFbS" id="1nBtCnDNcPi" role="2GVbov">
             <node concept="3clFbF" id="1nBtCnDNfjP" role="3cqZAp">
               <node concept="2YIFZM" id="1nBtCnDNfmU" role="3clFbG">
-                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                <ref role="37wK5l" to="18ew:~FileUtil.closeFileSafe(java.io.Closeable)" resolve="closeFileSafe" />
                 <node concept="37vLTw" id="1nBtCnDNfqz" role="37wK5m">
                   <ref role="3cqZAo" node="1nBtCnDNd25" resolve="stream" />
                 </node>
