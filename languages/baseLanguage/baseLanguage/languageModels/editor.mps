@@ -358,7 +358,7 @@
       <concept id="2896773699153795590" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform" flags="ng" index="3cWJ9i">
         <child id="3473224453637651919" name="placeInCell" index="CtIbM" />
       </concept>
-      <concept id="7818019076292260194" name="jetbrains.mps.lang.editor.structure.CompletionCustomization" flags="ig" index="3dRTYf">
+      <concept id="7818019076292260194" name="jetbrains.mps.lang.editor.structure.CompletionStyling" flags="ig" index="3dRTYf">
         <child id="7250830207897909099" name="specificator" index="KNiz3" />
         <child id="772883491827840107" name="customizeFunction" index="3l$a4r" />
       </concept>
@@ -63479,7 +63479,7 @@
     </node>
   </node>
   <node concept="3dRTYf" id="1M3uMbM4Py5">
-    <property role="TrG5h" value="ReturnStatement" />
+    <property role="TrG5h" value="ReturnStatementStyling" />
     <property role="3GE5qa" value="completionCustomizations" />
     <node concept="2tJIrI" id="77kLPhJMJ9k" role="jymVt" />
     <node concept="2tJIrI" id="6MqJAGoe_8X" role="jymVt" />

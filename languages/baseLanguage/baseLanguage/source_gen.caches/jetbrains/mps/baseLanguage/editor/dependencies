@@ -6320,7 +6320,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.QualifiedSuperMethodCall_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.RemarkStatement_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.RemarkStatement_SubstituteMenu" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReturnStatement" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReturnStatementStyling" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReturnStatement_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReturnStatement_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.SetAccessor_Editor" />
@@ -12007,7 +12007,22 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.menus.substitute.SubstituteMenuBase" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.editor.ReturnStatement">
+  <dependency className="jetbrains.mps.baseLanguage.editor.ReturnStatementExpressionRefActions">
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.selection.SelectionUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.selection.SelectionManager" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.editor.ReturnStatementStyling">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionItemInformation" />
@@ -12023,21 +12038,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
-  </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.editor.ReturnStatementExpressionRefActions">
-    <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.selection.SelectionUtil" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.selection.SelectionManager" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.ReturnStatement_Actions">
     <classNode dependClassName="java.lang.String" />

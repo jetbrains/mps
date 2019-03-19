@@ -1379,7 +1379,7 @@ public class QueriesGenerated extends QueryProviderBase {
               _context.showErrorMessage(it, "parametrized actions are not supported");
               continue;
             }
-            if (!(Objects.equals(SModelOperations.getModuleStub(SNodeOperations.getModel(_context.getOriginalCopiedInputNode(action))), SModelOperations.getModuleStub(SNodeOperations.getModel(_context.getOriginalCopiedInputNode(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71fL, 0x498be7ea73fa720L, "group")))))))) {
+            if (!(Objects.equals(SNodeOperations.getModel(_context.getOriginalCopiedInputNode(action)).getModule(), SNodeOperations.getModel(_context.getOriginalCopiedInputNode(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71fL, 0x498be7ea73fa720L, "group")))).getModule()))) {
               continue;
             }
             ListSequence.fromList(actions).addElement(action);

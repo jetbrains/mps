@@ -17,20 +17,20 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 
-public class ReturnStatement implements EditorMenuItemCustomizer {
+public class ReturnStatementStyling implements EditorMenuItemCustomizer {
 
   @Override
   public void customize(EditorMenuItemStyle customization, EditorMenuItemCustomizationContext context) {
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    ReturnStatement.ReturnStatementSpecific customizer = new ReturnStatement.ReturnStatementSpecific();
+    ReturnStatementStyling.ReturnStatementStylingSpecific customizer = new ReturnStatementStyling.ReturnStatementStylingSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
   }
 
-  private static class ReturnStatementSpecific implements EditorMenuItemCustomizer {
+  private static class ReturnStatementStylingSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
       return new EditorMenuItemCreatingConceptContextMatcher(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement")).matchesContext(context) && getCompletionItemInformation(context) != null;
