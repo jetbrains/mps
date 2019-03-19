@@ -47,7 +47,7 @@ public interface GenerationTargetFacet extends SModuleFacet {
 
   /**
    * XXX See javadoc for JavaModuleFacet#getOutputRoot(). Perhaps, with the rise of textgen-controlled location, GTF shall tell root only
-   *     and cease answering getOuputLocation()?
+   *     and cease answering getOutputLocation()?
    *
    * @param model model of a module this facet is associated with
    * @return FS location where generated files for the model go, same or ancestor of {@link #getOutputLocation(SModel)} value,

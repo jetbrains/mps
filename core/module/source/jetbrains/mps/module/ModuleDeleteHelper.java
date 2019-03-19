@@ -15,17 +15,16 @@
  */
 package jetbrains.mps.module;
 
-import jetbrains.mps.model.ModelDeleteHelper;
+import jetbrains.mps.extapi.persistence.DisposableDataSource;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectBase;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -33,10 +32,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public final class ModuleDeleteHelper {
   private static final Logger LOG = LogManager.getLogger(ModuleDeleteHelper.class);
@@ -45,137 +49,196 @@ public final class ModuleDeleteHelper {
   private final Project myProject;
   private final static String NON_PROJECT_MODULES_MSG =
       "Non-project modules can only be deleted with files deletion enabled. The module %s will not be deleted";
+  // we need IdentityHashSet, value is always null
+  private final IdentityHashMap<DisposableDataSource, Object> myDataSources = new IdentityHashMap<>();
+  // force remove, even if dir and not empty
+  private final Set<IFile> myFilesToDelete = new HashSet<>();
+  // remove if dir and empty
+  private final Set<IFile> myLikelyEmptyDirs = new HashSet<>();
 
   public ModuleDeleteHelper(@NotNull Project project) {
     myProject = project;
   }
 
-  public void deleteModules(List<SModule> modules, boolean safeDelete, boolean deleteFiles) {
+  // needs model write for project repository
+  public void deleteModules(List<SModule> modules, boolean safeDelete, final boolean deleteFiles) {
     if (safeDelete) {
       LOG.error("SAFE DELETE MODULE - NOT IMPLEMENTED", new Throwable());
-    } else {
-      modules.stream().filter(m -> m instanceof Language).forEach(m -> {
-        List<SModule> generators = new ArrayList<>(((Language) m).getOwnedGenerators());
-        delete(generators, deleteFiles, true);
-      });
-      delete(modules, deleteFiles, false);
+      return;
     }
-  }
-
-  private void delete(@NotNull List<SModule> modules, boolean deleteFiles, boolean innerModule) {
-    modules = new ArrayList<>(modules);
-
-    checkNonProjectModules(modules, deleteFiles);
-
     // fixme: MPS-18743
     modules.stream().filter(module -> module instanceof AbstractModule).forEach(module -> ((AbstractModule) module).save());
 
+    modules = new ArrayList<>(modules);
+
+    if (!deleteFiles) {
+      filterOutNonProjectModulesWhenFilesKept(modules);
+    }
+
+    myDataSources.clear();
+    myFilesToDelete.clear();
+    myLikelyEmptyDirs.clear();
+
+    // these generators to be removed along with their owning language
+    ArrayList<Generator> ownedGenerators = new ArrayList<>();
+    // these generators either standalone (*FUTURE*) or part of a language that is not, perhaps (!), among those to be deleted
+    // need special care not to remove owning language (if share .mpl/descriptor file)
+    ArrayList<Generator> unascribedGenerators = new ArrayList<>();
+    for (SModule m : modules) {
+      // no, it's not nice/compact/clear with lambdas
+      if (m instanceof Language) {
+        ownedGenerators.addAll(((Language) m).getOwnedGenerators());
+      } else if (m instanceof Generator) {
+        unascribedGenerators.add((Generator) m);
+      }
+    }
+    // just in case the request came to delete language L1 and its generator G1 (modules = {L1, G1})
+    unascribedGenerators.removeAll(ownedGenerators);
+
+    // owned generators and those of uncertain ownership need special treatment, keep them separate
+    modules.removeAll(ownedGenerators);
+    modules.removeAll(unascribedGenerators);
+
+
+    if (deleteFiles) {
+      // technically, can use collectModuleFilesToDelete for ownedGenerators as well, as their language mpl would get recorded for deletion anyway
+      ownedGenerators.forEach(this::collectModelsAndArtifactsToDelete);
+      modules.forEach(this::collectModuleFilesToDelete);
+    }
 
     ModuleRepositoryFacade facade = new ModuleRepositoryFacade(myProject.getRepository());
-    modules.forEach((module) -> {
-      if (deleteFiles) {
-        deleteModuleFiles(module, innerModule);
-      }
 
-      /*
-      * If we delete Language, then we don't need to unregister Generator from it.
-      * So after this Language is re-added to project, it will still contain Generator.
-      *
-      * But if we delete Generator, than we have to unregister it from Language (delete from Language descriptor).
-      * Otherwise Generator will reappear after Language reload.
-      */
-      if (!innerModule) {
-        unregisterGeneratorFromLanguage(module);
+    /*
+     * If we delete complete Language, then we don't need to remove 'owned' Generators from its descriptor.
+     * So after this Language is re-added to project, it will still contain Generator.
+     *
+     * But if we delete Generator *owned* by a language which is not deleted, than we have to unregister it from
+     * the language (delete from Language descriptor). Otherwise Generator will reappear after Language reload.
+     */
+    for (Generator g : unascribedGenerators) {
+      final boolean ownedBySomeLanguageModule = unregisterGeneratorFromLanguage(g);
+      if (deleteFiles) {
+        if (ownedBySomeLanguageModule) {
+          collectModelsAndArtifactsToDelete(g);
+        } else {
+          collectModuleFilesToDelete(g);
+        }
       }
-      if (myProject.isProjectModule(module)) {
-        myProject.removeModule(module);
+      facade.unregisterModule(g);
+    }
+
+    final List<SModule> projectModulesNoNestedGenerators = myProject.getProjectModules();
+    // owned generators are not "project modules", just report them to SRepository
+    ownedGenerators.forEach(facade::unregisterModule);
+    // while those in 'modules' might be part of the project and needs special treatment to get unregistered
+    for (SModule m : modules) {
+      if (projectModulesNoNestedGenerators.contains(m)) {
+        // FIXME it's odd to have if/else to unregister a module. I'd prefer unconditional facade.unregisterModule() for every module
+        //       with subsequent myProject.modulesRemoved(modules) notification so that the project can update its state. Is it feasible?
+        myProject.removeModule(m);
       } else {
-        facade.unregisterModule(module);
+        facade.unregisterModule(m);
       }
-    });
+    }
+    if (deleteFiles) {
+      myDataSources.keySet().forEach(DisposableDataSource::delete);
+      myFilesToDelete.forEach(IFile::delete);
+      myLikelyEmptyDirs.stream().filter(ModuleDeleteHelper::canDeleteDirIfEmpty).forEach(IFile::delete);
+    }
     ((ProjectBase) myProject).save();
   }
 
-  private void unregisterGeneratorFromLanguage(@NotNull SModule module) {
+  /**
+   *
+   * @param module generator, which is not among owned of any other language we are going to delete
+   * @return {@code true} if generator module has been owned by a language module
+   */
+  private boolean unregisterGeneratorFromLanguage(Generator module) {
     // TODO: remove after Generator will be moved it's own descriptor file
     // Second parameter prevent exceptions after Generator extraction from Language
-    if (module instanceof Generator && ((Generator) module).getDescriptorFile() == null) {
-      // This logic was taken from DeleteGeneratorHelper#delete() method
-      final Language sourceLanguage = ((Generator) module).getSourceLanguage();
+    final SModule sourceModule = module.sourceLanguage().getSourceModuleReference().resolve(myProject.getRepository());
+    if (sourceModule instanceof Language && !sourceModule.isReadOnly()) {
+      final Language sourceLanguage = (Language) sourceModule;
       LanguageDescriptor languageDescriptor = sourceLanguage.getModuleDescriptor();
-      languageDescriptor.getGenerators().remove(((Generator) module).getModuleDescriptor());
-      sourceLanguage.setModuleDescriptor(languageDescriptor);
-      sourceLanguage.save();
+      if (languageDescriptor.getGenerators().contains(module.getModuleDescriptor())) {
+        languageDescriptor.getGenerators().remove(module.getModuleDescriptor());
+        sourceLanguage.setModuleDescriptor(languageDescriptor);
+        sourceLanguage.save();
+        return true;
+      }
+      // fall-through
+    }
+    return false;
+  }
+
+  // doesn't touch module descriptor and module's home dir, just models and generated artifacts
+  private void collectModelsAndArtifactsToDelete(SModule module) {
+    final ArrayList<GenerationTargetFacet> gtf = new ArrayList<>(4);
+    for (SModuleFacet f : module.getFacets()) {
+      // no, it's not better with lambdas
+      if (f instanceof GenerationTargetFacet) {
+        gtf.add((GenerationTargetFacet) f);
+      }
+    }
+    for (SModel model : module.getModels()) {
+      // see ModelDeleteHelper#deleteDataSource()
+      final DataSource ds = model.getSource();
+      if (ds instanceof DisposableDataSource) {
+        myDataSources.put((DisposableDataSource) ds, null);
+      }
+      for (GenerationTargetFacet f : gtf) {
+        // XXX what if output root is in use for anything else but model output, e.g. custom files?
+        //     do we want to delete them as well? We used to remove javaModuleFacet.getOutputRoot() in deleteJavaFacet(), hence
+        //     present approach seems reasonable
+        recordForceDelete(f.getOutputRoot(model));
+        recordForceDelete(f.getOutputCacheRoot(model));
+      }
+    }
+
+    // gtf.stream().filter(JavaModuleFacet.class::isInstance).forEach(f -> recordForceDelete(((JavaModuleFacet) f).getClassesGen()));
+    for (GenerationTargetFacet f : gtf) {
+      if (f instanceof JavaModuleFacet) {
+        recordForceDelete(((JavaModuleFacet) f).getClassesGen());
+      }
     }
   }
 
-  private void deleteModuleFiles(@NotNull SModule module, boolean innerModule) {
-    Iterable<SModel> models = new ArrayList<>(IterableUtil.asCollection(module.getModels()));
-    for (SModel model : models) {
-      new ModelDeleteHelper(model).delete();
-    }
+  private void collectModuleFilesToDelete(SModule module) {
+    collectModelsAndArtifactsToDelete(module);
 
-    deleteJavaFacet(module);
-    deleteTestsFacet(module);
-
-    if (module instanceof AbstractModule && !innerModule) {
+    if (module instanceof AbstractModule) {
       AbstractModule curModule = (AbstractModule) module;
 
       IFile descriptorFile = curModule.getDescriptorFile();
       if (descriptorFile != null) {
-        deleteFile(descriptorFile);
+        recordForceDelete(descriptorFile);
         // XXX here we assume module file lives under a module-dedicated folder
         IFile moduleFolder = descriptorFile.getParent();
-        if (moduleFolder != null && deleteDirIfEmpty(moduleFolder)) {
-          moduleFolder.delete();
-        }
+        myLikelyEmptyDirs.add(moduleFolder);
       }
     }
   }
 
-  private void checkNonProjectModules(List<SModule> modules, boolean deleteFiles) {
-    if (!deleteFiles) {
-      for (Iterator<SModule> iterator = modules.iterator(); iterator.hasNext(); ) {
-        SModule module = iterator.next();
-        SModule module0 = module;
-        if (module instanceof Generator) {
-          module0 = ((Generator) module).getSourceLanguage();
-        }
-        if (!myProject.isProjectModule(module0)) {
-          LOG.warn(String.format(NON_PROJECT_MODULES_MSG, module), new Exception());
-          iterator.remove();
-        }
+  // modifies list in-place, removing modules that are not manifested as owned by the project
+  // the method makes sense only if files deletion has not been requested (project modules can be 'deleted'/removed from the project w/o deleting files)
+  private void filterOutNonProjectModulesWhenFilesKept(List<SModule> modules) {
+    final List<SModule> projectModulesWithGenerators = myProject.getProjectModulesWithGenerators();
+    for (Iterator<SModule> iterator = modules.iterator(); iterator.hasNext(); ) {
+      SModule module = iterator.next();
+      if (!projectModulesWithGenerators.contains(module)) {
+        LOG.warn(String.format(NON_PROJECT_MODULES_MSG, module));
+        iterator.remove();
       }
     }
   }
 
-  private static void deleteTestsFacet(SModule module) {
-    TestsFacet testsFacet = module.getFacet(TestsFacet.class);
-    if (testsFacet == null) {
-      return;
-    }
-    deleteFile(testsFacet.getTestsOutputPath());
-    deleteFile(testsFacet.getOutputCacheRoot());
-  }
-
-  private static void deleteJavaFacet(SModule module) {
-    JavaModuleFacet javaModuleFacet = module.getFacet(JavaModuleFacet.class);
-    if (javaModuleFacet == null) {
-      return;
-    }
-    deleteFile(javaModuleFacet.getClassesGen());
-    deleteFile(javaModuleFacet.getOutputRoot());
-    deleteFile(javaModuleFacet.getOutputCacheRoot());
-  }
-
-  private static void deleteFile(@Nullable IFile file) {
-    if (file != null && file.exists()) {
-      // FIXME is there true need to check for existence file that gonna be deleted? Does delete() tolerate non-existent files?
-      file.delete();
+  private void recordForceDelete(@Nullable IFile file) {
+    if (file != null) {
+      myFilesToDelete.add(file);
     }
   }
 
-  private static boolean deleteDirIfEmpty(@NotNull IFile file) {
+  private static boolean canDeleteDirIfEmpty(@NotNull IFile file) {
     if (!file.exists()) {
       return true;
     }
@@ -192,7 +255,7 @@ public final class ModuleDeleteHelper {
     assert children != null : "IFile.getChildren() == null iff !isDirectory";
 
     for (IFile child : children) {
-      if (!deleteDirIfEmpty(child)) {
+      if (!canDeleteDirIfEmpty(child)) {
         return false;
       }
     }
