@@ -28,6 +28,14 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
+import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
@@ -115,6 +123,16 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
             smc.setReference(role, new StaticReference(role, smc, SModelOperations.getPointer(SNodeOperations.getModel(smc)), null, ((jetbrains.mps.smodel.SReference) sReference).getResolveInfo()));
             SNodeOperations.replaceWithAnother(dotExpression, smc);
             return smc;
+          }
+
+          public void customize(String pattern, EditorMenuItemStyle style) {
+            super.customize(pattern, style);
+            SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
+            SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
+            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
+            for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+              customizer.customize(style, compositeContext);
+            }
           }
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {

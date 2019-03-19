@@ -21,6 +21,14 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
+import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
@@ -82,6 +90,16 @@ public class localVariables extends SubstituteMenuBase {
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"), null);
           SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), nodeToWrap);
           return result;
+        }
+
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          super.customize(pattern, style);
+          SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
+          SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
+          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+            customizer.customize(style, compositeContext);
+          }
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {

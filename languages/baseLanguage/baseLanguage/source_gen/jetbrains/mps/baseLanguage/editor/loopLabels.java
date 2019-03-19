@@ -33,6 +33,13 @@ import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
 public class loopLabels extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -140,6 +147,15 @@ public class loopLabels extends TransformationMenuBase {
         @Override
         public EditorMenuTraceInfo getTraceInfo() {
           return myEditorMenuTraceInfo;
+        }
+
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+            customizer.customize(style, compositeContext);
+          }
         }
       }
 

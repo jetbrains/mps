@@ -94,7 +94,7 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"), context);
         _context = context;
       }
 

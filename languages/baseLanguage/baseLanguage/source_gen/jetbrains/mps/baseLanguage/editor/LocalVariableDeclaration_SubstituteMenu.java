@@ -94,7 +94,7 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), context);
         _context = context;
       }
 

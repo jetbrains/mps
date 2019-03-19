@@ -81,7 +81,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), context);
         _context = context;
       }
 
@@ -149,7 +149,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), context);
         _context = context;
       }
 

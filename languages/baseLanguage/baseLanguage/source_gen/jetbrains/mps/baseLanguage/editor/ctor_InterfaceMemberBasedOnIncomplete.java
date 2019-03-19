@@ -103,7 +103,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c416a65e467a66L, "jetbrains.mps.baseLanguage.structure.ClassifierMethodMember"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c416a65e467a66L, "jetbrains.mps.baseLanguage.structure.ClassifierMethodMember"), context);
           _context = context;
         }
 
@@ -212,7 +212,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"), context);
           _context = context;
         }
 
@@ -314,7 +314,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context);
           _context = context;
         }
 
@@ -389,7 +389,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context);
           _context = context;
         }
 
@@ -460,7 +460,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context);
           _context = context;
         }
 
@@ -531,7 +531,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), context);
           _context = context;
         }
 

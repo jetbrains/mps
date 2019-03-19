@@ -28,6 +28,7 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 
@@ -142,7 +143,7 @@ public class thisExpression extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression"), context.getParentNode(), context.getCurrentTargetNode(), context.getEditorContext());
+            super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression"), context);
             _context = context;
           }
 
@@ -161,6 +162,10 @@ public class thisExpression extends SubstituteMenuBase {
           @Override
           public EditorMenuTraceInfo getTraceInfo() {
             return myTraceInfo;
+          }
+          @NotNull
+          protected CompletionItemInformation createInformation(String pattern) {
+            return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression"), getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
