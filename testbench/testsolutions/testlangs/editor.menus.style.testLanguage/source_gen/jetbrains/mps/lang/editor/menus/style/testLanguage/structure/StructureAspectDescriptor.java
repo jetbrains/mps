@@ -16,17 +16,24 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildInLinkNoPriority = createDescriptorForTestCompletionCustomization_ChildInLinkNoPriority();
+  /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildInLinkWithPriority = createDescriptorForTestCompletionCustomization_ChildInLinkWithPriority();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildNoMenu = createDescriptorForTestCompletionCustomization_ChildNoMenu();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildNoPriority = createDescriptorForTestCompletionCustomization_ChildNoPriority();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildParameterizedSubstituteMenu = createDescriptorForTestCompletionCustomization_ChildParameterizedSubstituteMenu();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildSimpleSubstituteMenu = createDescriptorForTestCompletionCustomization_ChildSimpleSubstituteMenu();
+  /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildToReference = createDescriptorForTestCompletionCustomization_ChildToReference();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildWithPriority = createDescriptorForTestCompletionCustomization_ChildWithPriority();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ChildWrapSubstituteMenu = createDescriptorForTestCompletionCustomization_ChildWrapSubstituteMenu();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ConceptToWrap = createDescriptorForTestCompletionCustomization_ConceptToWrap();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ConceptToWrapNoPriority = createDescriptorForTestCompletionCustomization_ConceptToWrapNoPriority();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ConceptToWrapWithPriority = createDescriptorForTestCompletionCustomization_ConceptToWrapWithPriority();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ContextMatcherBaseChild = createDescriptorForTestCompletionCustomization_ContextMatcherBaseChild();
+  /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ContextMatcherChildInMatchingLink = createDescriptorForTestCompletionCustomization_ContextMatcherChildInMatchingLink();
+  /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ContextMatcherChildToSubstitute = createDescriptorForTestCompletionCustomization_ContextMatcherChildToSubstitute();
   /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ParentTestContextMatcher = createDescriptorForTestCompletionCustomization_ParentTestContextMatcher();
+  /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_ParentTestStyle = createDescriptorForTestCompletionCustomization_ParentTestStyle();
+  /*package*/ final ConceptDescriptor myConceptTestCompletionCustomization_RootToReference = createDescriptorForTestCompletionCustomization_RootToReference();
   /*package*/ final EnumerationDescriptor myEnumerationTestCompletionCustomization_Enum = new EnumerationDescriptor_TestCompletionCustomization_Enum();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -42,13 +49,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptTestCompletionCustomization_ChildNoMenu, myConceptTestCompletionCustomization_ChildNoPriority, myConceptTestCompletionCustomization_ChildParameterizedSubstituteMenu, myConceptTestCompletionCustomization_ChildSimpleSubstituteMenu, myConceptTestCompletionCustomization_ChildWithPriority, myConceptTestCompletionCustomization_ChildWrapSubstituteMenu, myConceptTestCompletionCustomization_ConceptToWrap, myConceptTestCompletionCustomization_ConceptToWrapNoPriority, myConceptTestCompletionCustomization_ConceptToWrapWithPriority, myConceptTestCompletionCustomization_ContextMatcherBaseChild, myConceptTestCompletionCustomization_ParentTestContextMatcher);
+    return Arrays.asList(myConceptTestCompletionCustomization_ChildInLinkNoPriority, myConceptTestCompletionCustomization_ChildInLinkWithPriority, myConceptTestCompletionCustomization_ChildNoMenu, myConceptTestCompletionCustomization_ChildNoPriority, myConceptTestCompletionCustomization_ChildParameterizedSubstituteMenu, myConceptTestCompletionCustomization_ChildSimpleSubstituteMenu, myConceptTestCompletionCustomization_ChildToReference, myConceptTestCompletionCustomization_ChildWithPriority, myConceptTestCompletionCustomization_ChildWrapSubstituteMenu, myConceptTestCompletionCustomization_ConceptToWrap, myConceptTestCompletionCustomization_ConceptToWrapNoPriority, myConceptTestCompletionCustomization_ConceptToWrapWithPriority, myConceptTestCompletionCustomization_ContextMatcherBaseChild, myConceptTestCompletionCustomization_ContextMatcherChildInMatchingLink, myConceptTestCompletionCustomization_ContextMatcherChildToSubstitute, myConceptTestCompletionCustomization_ParentTestContextMatcher, myConceptTestCompletionCustomization_ParentTestStyle, myConceptTestCompletionCustomization_RootToReference);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.TestCompletionCustomization_ChildInLinkNoPriority:
+        return myConceptTestCompletionCustomization_ChildInLinkNoPriority;
+      case LanguageConceptSwitch.TestCompletionCustomization_ChildInLinkWithPriority:
+        return myConceptTestCompletionCustomization_ChildInLinkWithPriority;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildNoMenu:
         return myConceptTestCompletionCustomization_ChildNoMenu;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildNoPriority:
@@ -57,6 +68,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptTestCompletionCustomization_ChildParameterizedSubstituteMenu;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildSimpleSubstituteMenu:
         return myConceptTestCompletionCustomization_ChildSimpleSubstituteMenu;
+      case LanguageConceptSwitch.TestCompletionCustomization_ChildToReference:
+        return myConceptTestCompletionCustomization_ChildToReference;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildWithPriority:
         return myConceptTestCompletionCustomization_ChildWithPriority;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildWrapSubstituteMenu:
@@ -69,8 +82,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptTestCompletionCustomization_ConceptToWrapWithPriority;
       case LanguageConceptSwitch.TestCompletionCustomization_ContextMatcherBaseChild:
         return myConceptTestCompletionCustomization_ContextMatcherBaseChild;
+      case LanguageConceptSwitch.TestCompletionCustomization_ContextMatcherChildInMatchingLink:
+        return myConceptTestCompletionCustomization_ContextMatcherChildInMatchingLink;
+      case LanguageConceptSwitch.TestCompletionCustomization_ContextMatcherChildToSubstitute:
+        return myConceptTestCompletionCustomization_ContextMatcherChildToSubstitute;
       case LanguageConceptSwitch.TestCompletionCustomization_ParentTestContextMatcher:
         return myConceptTestCompletionCustomization_ParentTestContextMatcher;
+      case LanguageConceptSwitch.TestCompletionCustomization_ParentTestStyle:
+        return myConceptTestCompletionCustomization_ParentTestStyle;
+      case LanguageConceptSwitch.TestCompletionCustomization_RootToReference:
+        return myConceptTestCompletionCustomization_RootToReference;
       default:
         return null;
     }
@@ -85,6 +106,24 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildInLinkNoPriority() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildInLinkNoPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf553L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
+    b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851198803");
+    b.version(2);
+    b.alias("no priority");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildInLinkWithPriority() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildInLinkWithPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf554L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
+    b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851198804");
+    b.version(2);
+    b.alias("with priority");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildNoMenu() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildNoMenu", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510aaf4beL);
     b.interface_();
@@ -112,6 +151,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildSimpleSubstituteMenu", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510ac9aacL);
     b.interface_();
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668062444204");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildToReference() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildToReference", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44eL);
+    b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851051086");
     b.version(2);
     return b.create();
   }
@@ -168,6 +215,21 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ContextMatcherChildInMatchingLink() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ContextMatcherChildInMatchingLink", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
+    b.class_(false, true, false);
+    b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851198798");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ContextMatcherChildToSubstitute() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ContextMatcherChildToSubstitute", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80f0bc815L);
+    b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645853153301");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ParentTestContextMatcher() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ParentTestContextMatcher", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L);
     b.class_(false, false, false);
@@ -175,10 +237,31 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("booleanProperty", 0x49b1109510b71d68L).type(PrimitiveTypeId.BOOLEAN).origin("5310043668063133032").done();
     b.property("enumProperty", 0x49b1109510b71ff1L).type(MetaIdFactory.dataTypeId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L)).origin("5310043668063133681").done();
+    b.property("stringProperty", 0x406156e80eef1d16L).type(PrimitiveTypeId.STRING).origin("4639084645851274518").done();
+    b.associate("reference", 0x406156e80eebb455L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44eL).optional(true).origin("4639084645851051093").done();
     b.aggregate("childNoMenu", 0x49b11095109798e7L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510aaf4beL).optional(true).ordered(true).multiple(true).origin("5310043668061067495").done();
     b.aggregate("childSimpleSubstituteMenu", 0x49b1109510acbc9dL).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510ac9aacL).optional(true).ordered(true).multiple(true).origin("5310043668062452893").done();
     b.aggregate("childParameterizedSubstituteMenu", 0x49b1109510b55ff1L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L).optional(true).ordered(true).multiple(true).origin("5310043668063018993").done();
     b.aggregate("childWrapSubstituteMenu", 0x49b1109510b66880L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8a8L).optional(true).ordered(true).multiple(true).origin("5310043668063086720").done();
+    b.aggregate("childInMatchingLink", 0x406156e80eedf547L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL).optional(true).ordered(true).multiple(true).origin("4639084645851198791").done();
+    b.aggregate("childInMatchingLinkInlineMenu", 0x71cb9a076ce00534L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL).optional(true).ordered(true).multiple(true).origin("8199816903240189236").done();
+    b.aggregate("childToSubstitute", 0x406156e80f0c4673L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80f0bc815L).optional(true).ordered(true).multiple(true).origin("4639084645853185651").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ParentTestStyle() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ParentTestStyle", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L);
+    b.class_(false, false, false);
+    b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/8199816903239730016");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTestCompletionCustomization_RootToReference() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_RootToReference", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44dL);
+    b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851051085");
+    b.version(2);
+    b.aggregate("children", 0x406156e80eebb451L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44eL).optional(true).ordered(true).multiple(true).origin("4639084645851051089").done();
     return b.create();
   }
 }

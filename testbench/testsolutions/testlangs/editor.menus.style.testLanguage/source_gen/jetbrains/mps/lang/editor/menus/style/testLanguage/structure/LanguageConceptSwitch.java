@@ -9,31 +9,45 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int TestCompletionCustomization_ChildNoMenu = 0;
-  public static final int TestCompletionCustomization_ChildNoPriority = 1;
-  public static final int TestCompletionCustomization_ChildParameterizedSubstituteMenu = 2;
-  public static final int TestCompletionCustomization_ChildSimpleSubstituteMenu = 3;
-  public static final int TestCompletionCustomization_ChildWithPriority = 4;
-  public static final int TestCompletionCustomization_ChildWrapSubstituteMenu = 5;
-  public static final int TestCompletionCustomization_ConceptToWrap = 6;
-  public static final int TestCompletionCustomization_ConceptToWrapNoPriority = 7;
-  public static final int TestCompletionCustomization_ConceptToWrapWithPriority = 8;
-  public static final int TestCompletionCustomization_ContextMatcherBaseChild = 9;
-  public static final int TestCompletionCustomization_ParentTestContextMatcher = 10;
+  public static final int TestCompletionCustomization_ChildInLinkNoPriority = 0;
+  public static final int TestCompletionCustomization_ChildInLinkWithPriority = 1;
+  public static final int TestCompletionCustomization_ChildNoMenu = 2;
+  public static final int TestCompletionCustomization_ChildNoPriority = 3;
+  public static final int TestCompletionCustomization_ChildParameterizedSubstituteMenu = 4;
+  public static final int TestCompletionCustomization_ChildSimpleSubstituteMenu = 5;
+  public static final int TestCompletionCustomization_ChildToReference = 6;
+  public static final int TestCompletionCustomization_ChildWithPriority = 7;
+  public static final int TestCompletionCustomization_ChildWrapSubstituteMenu = 8;
+  public static final int TestCompletionCustomization_ConceptToWrap = 9;
+  public static final int TestCompletionCustomization_ConceptToWrapNoPriority = 10;
+  public static final int TestCompletionCustomization_ConceptToWrapWithPriority = 11;
+  public static final int TestCompletionCustomization_ContextMatcherBaseChild = 12;
+  public static final int TestCompletionCustomization_ContextMatcherChildInMatchingLink = 13;
+  public static final int TestCompletionCustomization_ContextMatcherChildToSubstitute = 14;
+  public static final int TestCompletionCustomization_ParentTestContextMatcher = 15;
+  public static final int TestCompletionCustomization_ParentTestStyle = 16;
+  public static final int TestCompletionCustomization_RootToReference = 17;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xb4a430be169648bfL, 0xbb724333242e590cL);
+    builder.put(0x406156e80eedf553L, TestCompletionCustomization_ChildInLinkNoPriority);
+    builder.put(0x406156e80eedf554L, TestCompletionCustomization_ChildInLinkWithPriority);
     builder.put(0x49b1109510aaf4beL, TestCompletionCustomization_ChildNoMenu);
     builder.put(0x49b1109510979992L, TestCompletionCustomization_ChildNoPriority);
     builder.put(0x49b1109510b4fee9L, TestCompletionCustomization_ChildParameterizedSubstituteMenu);
     builder.put(0x49b1109510ac9aacL, TestCompletionCustomization_ChildSimpleSubstituteMenu);
+    builder.put(0x406156e80eebb44eL, TestCompletionCustomization_ChildToReference);
     builder.put(0x49b1109510979993L, TestCompletionCustomization_ChildWithPriority);
     builder.put(0x49b1109510b5c8a8L, TestCompletionCustomization_ChildWrapSubstituteMenu);
     builder.put(0x49b1109510b5c8dcL, TestCompletionCustomization_ConceptToWrap);
     builder.put(0x49b1109510b5c8deL, TestCompletionCustomization_ConceptToWrapNoPriority);
     builder.put(0x49b1109510b5c8ddL, TestCompletionCustomization_ConceptToWrapWithPriority);
     builder.put(0x49b1109510b5eddcL, TestCompletionCustomization_ContextMatcherBaseChild);
+    builder.put(0x406156e80eedf54eL, TestCompletionCustomization_ContextMatcherChildInMatchingLink);
+    builder.put(0x406156e80f0bc815L, TestCompletionCustomization_ContextMatcherChildToSubstitute);
     builder.put(0x49b11095109798c7L, TestCompletionCustomization_ParentTestContextMatcher);
+    builder.put(0x71cb9a076cd90360L, TestCompletionCustomization_ParentTestStyle);
+    builder.put(0x406156e80eebb44dL, TestCompletionCustomization_RootToReference);
     myIndex = builder.seal();
   }
 

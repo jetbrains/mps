@@ -13,6 +13,9 @@
     <import index="tp6m" ref="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)" />
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
     <import index="6lvu" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.cellMenu(MPS.Editor/)" />
+    <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
+    <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -55,15 +58,26 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
+        <child id="1145553007750" name="creator" index="2ShVmc" />
+      </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
+      </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
+      <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -71,6 +85,7 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
@@ -88,6 +103,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
@@ -102,6 +118,14 @@
       </concept>
     </language>
     <language id="b4a430be-1696-48bf-bb72-4333242e590c" name="jetbrains.mps.lang.editor.menus.style.testLanguage">
+      <concept id="8199816903239730016" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestStyle" flags="ng" index="t4D_B" />
+      <concept id="4639084645851051085" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_RootToReference" flags="ng" index="1eyIa_">
+        <child id="4639084645851051089" name="children" index="1eyIaT" />
+      </concept>
+      <concept id="4639084645851051086" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildToReference" flags="ng" index="1eyIaA" />
+      <concept id="4639084645851198803" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildInLinkNoPriority" flags="ng" index="1ezaeV" />
+      <concept id="4639084645851198804" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildInLinkWithPriority" flags="ng" index="1ezaeW" />
+      <concept id="4639084645853153301" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildToSubstitute" flags="ng" index="1fqDVX" />
       <concept id="5310043668063045800" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildWrapSubstituteMenu" flags="ng" index="1p1dwX">
         <child id="5310043668063045855" name="wrapped" index="1p1dxa" />
       </concept>
@@ -109,8 +133,13 @@
       <concept id="5310043668063045854" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ConceptToWrapNoPriority" flags="ng" index="1p1dxb" />
       <concept id="5310043668063055324" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherBaseChild" flags="ng" index="1p1fP9" />
       <concept id="5310043668061067463" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher" flags="ng" index="1p9Cxi">
+        <property id="4639084645851274518" name="stringProperty" index="1ez$JY" />
         <property id="5310043668063133032" name="booleanProperty" index="1p1wRX" />
         <property id="5310043668063133681" name="enumProperty" index="1p1wX$" />
+        <reference id="4639084645851051093" name="reference" index="1eyIaX" />
+        <child id="8199816903240189236" name="childInMatchingLinkInlineMenu" index="taTWN" />
+        <child id="4639084645851198791" name="childInMatchingLink" index="1ezaeJ" />
+        <child id="4639084645853185651" name="childToSubstitute" index="1frh2r" />
         <child id="5310043668063018993" name="childParameterizedSubstituteMenu" index="1p14X$" />
         <child id="5310043668063086720" name="childWrapSubstituteMenu" index="1p1Rwl" />
         <child id="5310043668062452893" name="childSimpleSubstituteMenu" index="1p7qK8" />
@@ -975,6 +1004,900 @@
             </node>
           </node>
           <node concept="3clFbT" id="4AL49kgHV1S" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="41xlIweUVno">
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_ReferenceNoStyling" />
+    <property role="3YCmrE" value="if we don't use styling, &quot;a&quot; comes first lexicographically" />
+    <node concept="1p9Cxi" id="41xlIweUVnp" role="LiRBU">
+      <node concept="LIFWc" id="41xlIweVkyC" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="empty_reference" />
+      </node>
+    </node>
+    <node concept="1p9Cxi" id="41xlIweUVnr" role="LiZbd">
+      <ref role="1eyIaX" node="41xlIweV9gG" resolve="a" />
+      <node concept="LIFWc" id="41xlIweV9qw" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="1" />
+        <property role="p6zMs" value="1" />
+        <property role="LIFWd" value="property_name" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="41xlIweUVnt" role="LjaKd">
+      <node concept="3clFbF" id="41xlIweUVnu" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIweUVnv" role="3clFbG">
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <node concept="1bVj0M" id="41xlIweUVnw" role="37wK5m">
+            <node concept="3clFbS" id="41xlIweUVnx" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIweUVny" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIweUVnz" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIweUVn$" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIweUVn_" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIweUVnA" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweUVnB" role="33vP2m">
+                    <node concept="369mXd" id="41xlIweUVnC" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIweUVnD" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIweUVnE" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIweUVnF" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIweUVnG" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweUVnH" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIweUVnI" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIweUVn_" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIweUVnJ" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIweUVnK" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIweUVnL" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIweUVnM" role="37wK5m" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="41xlIweUVuq">
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_ReferenceWithStyling" />
+    <property role="3YCmrE" value="if we don't use styling, &quot;b&quot; comes first lexicographically" />
+    <node concept="1p9Cxi" id="41xlIweUVur" role="LiRBU">
+      <node concept="LIFWc" id="41xlIweVk_y" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="empty_reference" />
+      </node>
+    </node>
+    <node concept="1p9Cxi" id="41xlIweUVut" role="LiZbd">
+      <ref role="1eyIaX" node="41xlIweV9gI" resolve="b" />
+      <node concept="LIFWc" id="41xlIweV9uW" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="1" />
+        <property role="p6zMs" value="1" />
+        <property role="LIFWd" value="property_name" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="41xlIweUVuv" role="LjaKd">
+      <node concept="3clFbF" id="41xlIweUVuw" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIweUVux" role="3clFbG">
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <node concept="1bVj0M" id="41xlIweUVuy" role="37wK5m">
+            <node concept="3clFbS" id="41xlIweUVuz" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIweUVu$" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIweUVu_" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIweUVuA" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIweUVuB" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIweUVuC" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweUVuD" role="33vP2m">
+                    <node concept="369mXd" id="41xlIweUVuE" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIweUVuF" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIweUVuG" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIweUVuH" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIweUVuI" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweUVuJ" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIweUVuK" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIweUVuB" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIweUVuL" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIweUVuM" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIweUVuN" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIweUVuO" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1eyIa_" id="41xlIweV9gF">
+    <property role="TrG5h" value="root" />
+    <node concept="1eyIaA" id="41xlIweV9gG" role="1eyIaT">
+      <property role="TrG5h" value="a" />
+    </node>
+    <node concept="1eyIaA" id="41xlIweV9gI" role="1eyIaT">
+      <property role="TrG5h" value="b" />
+    </node>
+  </node>
+  <node concept="LiM7Y" id="41xlIweV_jK">
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_ChildInLink" />
+    <property role="3YCmrE" value="if we don't use styling, child with no priority comes first lexicographically, else child with priority comes first" />
+    <node concept="1p9Cxi" id="41xlIweV_jL" role="LiRBU">
+      <node concept="LIFWc" id="41xlIweV_$O" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="empty_childInMatchingLink" />
+      </node>
+    </node>
+    <node concept="1p9Cxi" id="41xlIweV_jN" role="LiZbd">
+      <node concept="1ezaeV" id="41xlIweV_A8" role="1ezaeJ" />
+      <node concept="1ezaeW" id="41xlIweV_At" role="1ezaeJ">
+        <node concept="LIFWc" id="41xlIweV_Ez" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="13" />
+          <property role="p6zMs" value="13" />
+          <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="41xlIweV_jT" role="LjaKd">
+      <node concept="3clFbF" id="41xlIweV_jU" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIweV_jV" role="3clFbG">
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <node concept="1bVj0M" id="41xlIweV_jW" role="37wK5m">
+            <node concept="3clFbS" id="41xlIweV_jX" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIweV_jY" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIweV_jZ" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIweV_k0" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIweV_k1" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIweV_k2" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweV_k3" role="33vP2m">
+                    <node concept="369mXd" id="41xlIweV_k4" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIweV_k5" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIweV_k6" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIweV_k7" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIweV_k8" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweV_k9" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIweV_ka" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIweV_k1" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIweV_kb" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIweV_kc" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIweV_kd" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIweV_ke" role="37wK5m" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="41xlIweV_kf" role="3cqZAp">
+        <node concept="1iFQzN" id="41xlIweV_kg" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:6KwcZ1G3Pjm" resolve="Insert" />
+        </node>
+      </node>
+      <node concept="3clFbF" id="41xlIweV_kh" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIweV_ki" role="3clFbG">
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <node concept="1bVj0M" id="41xlIweV_kj" role="37wK5m">
+            <node concept="3clFbS" id="41xlIweV_kk" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIweV_kl" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIweV_km" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIweV_kn" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIweV_ko" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIweV_kp" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweV_kq" role="33vP2m">
+                    <node concept="369mXd" id="41xlIweV_kr" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIweV_ks" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIweV_kt" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIweV_ku" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIweV_kv" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweV_kw" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIweV_kx" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIweV_ko" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIweV_ky" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIweV_kz" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIweV_k$" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIweV_k_" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="41xlIweVNMD">
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_NoFeatureNoStyling" />
+    <property role="3YCmrE" value="if we don't use styling, &quot;no priority&quot; comes first lexicographically" />
+    <node concept="1p9Cxi" id="41xlIweVNME" role="LiRBU">
+      <node concept="LIFWc" id="41xlIwf2IHR" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="Constant_oe0rtl_h2a" />
+      </node>
+    </node>
+    <node concept="1p9Cxi" id="41xlIweVNMG" role="LiZbd">
+      <property role="1ez$JY" value="no priority" />
+      <node concept="LIFWc" id="41xlIwf2IKa" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="Constant_oe0rtl_h2a" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="41xlIweVNMI" role="LjaKd">
+      <node concept="3clFbF" id="41xlIweVNMJ" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIweVNMK" role="3clFbG">
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <node concept="1bVj0M" id="41xlIweVNML" role="37wK5m">
+            <node concept="3clFbS" id="41xlIweVNMM" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIweVNMN" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIweVNMO" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIweVNMP" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIweVNMQ" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIweVNMR" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweVNMS" role="33vP2m">
+                    <node concept="369mXd" id="41xlIweVNMT" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIweVNMU" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIweVNMV" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIweVNMW" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIweVNMX" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweVNMY" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIweVNMZ" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIweVNMQ" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIweVNN0" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIweVNN1" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIweVNN2" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIweVNN3" role="37wK5m" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="41xlIweVNN4">
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_NoFeatureWithStyling" />
+    <property role="3YCmrE" value="if we use styling &quot;with priority&quot; is with priority and comes first" />
+    <node concept="1p9Cxi" id="41xlIweVNN5" role="LiRBU">
+      <property role="1ez$JY" value="f" />
+      <node concept="LIFWc" id="41xlIwf2IOu" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="Constant_oe0rtl_h2a" />
+      </node>
+    </node>
+    <node concept="1p9Cxi" id="41xlIweVNN7" role="LiZbd">
+      <property role="1ez$JY" value="with priority" />
+      <node concept="LIFWc" id="41xlIwf2IOC" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="Constant_oe0rtl_h2a" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="41xlIweVNN9" role="LjaKd">
+      <node concept="3clFbF" id="41xlIweVNNa" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIweVNNb" role="3clFbG">
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <node concept="1bVj0M" id="41xlIweVNNc" role="37wK5m">
+            <node concept="3clFbS" id="41xlIweVNNd" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIweVNNe" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIweVNNf" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIweVNNg" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIweVNNh" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIweVNNi" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweVNNj" role="33vP2m">
+                    <node concept="369mXd" id="41xlIweVNNk" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIweVNNl" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIweVNNm" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIweVNNn" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIweVNNo" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIweVNNp" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIweVNNq" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIweVNNh" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIweVNNr" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIweVNNs" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIweVNNt" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIweVNNu" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="41xlIwf3aYy">
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_ChildToSubstitute" />
+    <property role="3YCmrE" value="if we don't use styling, child with no priority comes first lexicographically, else child with priority comes first" />
+    <node concept="1p9Cxi" id="41xlIwf3aYz" role="LiRBU">
+      <node concept="1fqDVX" id="41xlIwf3iPj" role="1frh2r">
+        <node concept="LIFWc" id="41xlIwf3iTF" role="lGtFl">
+          <property role="LIFWa" value="0" />
+          <property role="LIFWd" value="collection_0" />
+        </node>
+      </node>
+    </node>
+    <node concept="1p9Cxi" id="41xlIwf3aY_" role="LiZbd">
+      <node concept="1fqDVX" id="41xlIwf3b3G" role="1frh2r">
+        <property role="TrG5h" value="no priority" />
+      </node>
+      <node concept="1fqDVX" id="41xlIwf3iU0" role="1frh2r">
+        <property role="TrG5h" value="with priority" />
+        <node concept="LIFWc" id="41xlIwf3iY5" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="13" />
+          <property role="p6zMs" value="13" />
+          <property role="LIFWd" value="property_name" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="41xlIwf3aYF" role="LjaKd">
+      <node concept="3clFbF" id="41xlIwf3aYG" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIwf3aYH" role="3clFbG">
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <node concept="1bVj0M" id="41xlIwf3aYI" role="37wK5m">
+            <node concept="3clFbS" id="41xlIwf3aYJ" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIwf3aYK" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIwf3aYL" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIwf3aYM" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIwf3aYN" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIwf3aYO" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIwf3aYP" role="33vP2m">
+                    <node concept="369mXd" id="41xlIwf3aYQ" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIwf3aYR" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIwf3aYS" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIwf3aYT" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIwf3aYU" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIwf3aYV" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIwf3aYW" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIwf3aYN" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIwf3aYX" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIwf3aYY" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIwf3aYZ" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIwf3aZ0" role="37wK5m" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="41xlIwf3aZ1" role="3cqZAp">
+        <node concept="1iFQzN" id="41xlIwf3aZ2" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:6KwcZ1G3Pjm" resolve="Insert" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="41xlIwf3ydl" role="3cqZAp">
+        <node concept="1iFQzN" id="41xlIwf3ydm" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:6KwcZ1G3Po2" resolve="SelectUp" />
+        </node>
+      </node>
+      <node concept="3clFbF" id="41xlIwf3aZ3" role="3cqZAp">
+        <node concept="2YIFZM" id="41xlIwf3aZ4" role="3clFbG">
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <node concept="1bVj0M" id="41xlIwf3aZ5" role="37wK5m">
+            <node concept="3clFbS" id="41xlIwf3aZ6" role="1bW5cS">
+              <node concept="2HxZob" id="41xlIwf3aZ7" role="3cqZAp">
+                <node concept="1iFQzN" id="41xlIwf3aZ8" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="41xlIwf3aZ9" role="3cqZAp">
+                <node concept="3cpWsn" id="41xlIwf3aZa" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="41xlIwf3aZb" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIwf3aZc" role="33vP2m">
+                    <node concept="369mXd" id="41xlIwf3aZd" role="2Oq$k0" />
+                    <node concept="liA8E" id="41xlIwf3aZe" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="41xlIwf3aZf" role="3cqZAp">
+                <node concept="3clFbC" id="41xlIwf3aZg" role="3vwVQn">
+                  <node concept="3cmrfG" id="41xlIwf3aZh" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="41xlIwf3aZi" role="3uHU7B">
+                    <node concept="37vLTw" id="41xlIwf3aZj" role="2Oq$k0">
+                      <ref role="3cqZAo" node="41xlIwf3aZa" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="41xlIwf3aZk" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="41xlIwf3aZl" role="3cqZAp">
+                <node concept="pLAjd" id="41xlIwf3aZm" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="41xlIwf3aZn" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="77bAwtGQIg9">
+    <property role="TrG5h" value="TestCompletionCustomization_Style" />
+    <node concept="3clFbS" id="77bAwtGQIgi" role="LjaKd">
+      <node concept="3clFbH" id="77bAwtGR3cq" role="3cqZAp" />
+      <node concept="3clFbF" id="77bAwtGQIgj" role="3cqZAp">
+        <node concept="2YIFZM" id="77bAwtGQIgk" role="3clFbG">
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <node concept="1bVj0M" id="77bAwtGQIgl" role="37wK5m">
+            <node concept="3clFbS" id="77bAwtGQIgm" role="1bW5cS">
+              <node concept="2HxZob" id="77bAwtGQIgn" role="3cqZAp">
+                <node concept="1iFQzN" id="77bAwtGQIgo" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="77bAwtGQIgp" role="3cqZAp">
+                <node concept="3cpWsn" id="77bAwtGQIgq" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="77bAwtGQIgr" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGQIgs" role="33vP2m">
+                    <node concept="369mXd" id="77bAwtGQIgt" role="2Oq$k0" />
+                    <node concept="liA8E" id="77bAwtGQIgu" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="77bAwtGQIgv" role="3cqZAp">
+                <node concept="3clFbC" id="77bAwtGQIgw" role="3vwVQn">
+                  <node concept="2OqwBi" id="77bAwtGQIgy" role="3uHU7B">
+                    <node concept="37vLTw" id="77bAwtGQIgz" role="2Oq$k0">
+                      <ref role="3cqZAo" node="77bAwtGQIgq" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="77bAwtGQIg$" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                  <node concept="3cmrfG" id="77bAwtGR17A" role="3uHU7w">
+                    <property role="3cmrfH" value="1" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs8" id="77bAwtGQJ8X" role="3cqZAp">
+                <node concept="3cpWsn" id="77bAwtGQJ8Y" role="3cpWs9">
+                  <property role="TrG5h" value="currentSubstituteAction" />
+                  <node concept="3uibUv" id="77bAwtGQJ8S" role="1tU5fm">
+                    <ref role="3uigEE" to="f4zo:~SubstituteAction" resolve="SubstituteAction" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGQJ8Z" role="33vP2m">
+                    <node concept="37vLTw" id="77bAwtGQJ90" role="2Oq$k0">
+                      <ref role="3cqZAo" node="77bAwtGQIgq" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="77bAwtGQJ91" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getCurrentSubstituteAction()" resolve="getCurrentSubstituteAction" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs8" id="77bAwtGR0gw" role="3cqZAp">
+                <node concept="3cpWsn" id="77bAwtGR0gx" role="3cpWs9">
+                  <property role="TrG5h" value="impl" />
+                  <node concept="3uibUv" id="77bAwtGR0gv" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~EditorMenuItemStyleImpl" resolve="EditorMenuItemStyleImpl" />
+                  </node>
+                  <node concept="2ShNRf" id="77bAwtGR0gy" role="33vP2m">
+                    <node concept="1pGfFk" id="77bAwtGR0gz" role="2ShVmc">
+                      <ref role="37wK5l" to="6lvu:~EditorMenuItemStyleImpl.&lt;init&gt;()" resolve="EditorMenuItemStyleImpl" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="77bAwtGQIOn" role="3cqZAp">
+                <node concept="2OqwBi" id="77bAwtGQZFS" role="3clFbG">
+                  <node concept="37vLTw" id="77bAwtGQJ92" role="2Oq$k0">
+                    <ref role="3cqZAo" node="77bAwtGQJ8Y" resolve="currentSubstituteAction" />
+                  </node>
+                  <node concept="liA8E" id="77bAwtGQZKL" role="2OqNvi">
+                    <ref role="37wK5l" to="f4zo:~SubstituteAction.customize(java.lang.String,jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle)" resolve="customize" />
+                    <node concept="Xl_RD" id="77bAwtGQZOv" role="37wK5m">
+                      <property role="Xl_RC" value="" />
+                    </node>
+                    <node concept="37vLTw" id="77bAwtGR0g$" role="37wK5m">
+                      <ref role="3cqZAo" node="77bAwtGR0gx" resolve="impl" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="77bAwtGR0vG" role="3cqZAp">
+                <node concept="2OqwBi" id="77bAwtGR0Da" role="3vwVQn">
+                  <node concept="37vLTw" id="77bAwtGR0zP" role="2Oq$k0">
+                    <ref role="3cqZAo" node="77bAwtGR0gx" resolve="impl" />
+                  </node>
+                  <node concept="liA8E" id="77bAwtGR0Lm" role="2OqNvi">
+                    <ref role="37wK5l" to="6lvu:~EditorMenuItemStyleImpl.isBold()" resolve="isBold" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="77bAwtGR0Pi" role="3cqZAp">
+                <node concept="2OqwBi" id="77bAwtGR0Pj" role="3vwVQn">
+                  <node concept="37vLTw" id="77bAwtGR0Pk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="77bAwtGR0gx" resolve="impl" />
+                  </node>
+                  <node concept="liA8E" id="77bAwtGR0Yq" role="2OqNvi">
+                    <ref role="37wK5l" to="6lvu:~EditorMenuItemStyleImpl.isItalic()" resolve="isItalic" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="77bAwtGR12y" role="3cqZAp">
+                <node concept="17R0WA" id="77bAwtGR1mJ" role="3vwVQn">
+                  <node concept="10M0yZ" id="77bAwtGR1wb" role="3uHU7w">
+                    <ref role="3cqZAo" to="z60i:~Color.BLUE" resolve="BLUE" />
+                    <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGR1AQ" role="3uHU7B">
+                    <node concept="2OqwBi" id="77bAwtGR12z" role="2Oq$k0">
+                      <node concept="37vLTw" id="77bAwtGR12$" role="2Oq$k0">
+                        <ref role="3cqZAo" node="77bAwtGR0gx" resolve="impl" />
+                      </node>
+                      <node concept="liA8E" id="77bAwtGR1g6" role="2OqNvi">
+                        <ref role="37wK5l" to="6lvu:~EditorMenuItemStyleImpl.getBackgroundColor()" resolve="getBackgroundColor" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="77bAwtGR20o" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~Optional.orElse(java.lang.Object)" resolve="orElse" />
+                      <node concept="10Nm6u" id="77bAwtGR26W" role="37wK5m" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="77bAwtGR2e4" role="3cqZAp">
+                <node concept="17R0WA" id="77bAwtGR2e5" role="3vwVQn">
+                  <node concept="10M0yZ" id="77bAwtGR7$Q" role="3uHU7w">
+                    <ref role="3cqZAo" to="z60i:~Color.YELLOW" resolve="YELLOW" />
+                    <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGR2e7" role="3uHU7B">
+                    <node concept="2OqwBi" id="77bAwtGR2e8" role="2Oq$k0">
+                      <node concept="37vLTw" id="77bAwtGR2e9" role="2Oq$k0">
+                        <ref role="3cqZAo" node="77bAwtGR0gx" resolve="impl" />
+                      </node>
+                      <node concept="liA8E" id="77bAwtGR2rB" role="2OqNvi">
+                        <ref role="37wK5l" to="6lvu:~EditorMenuItemStyleImpl.getTextColor()" resolve="getTextColor" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="77bAwtGR2eb" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~Optional.orElse(java.lang.Object)" resolve="orElse" />
+                      <node concept="10Nm6u" id="77bAwtGR2ec" role="37wK5m" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="77bAwtGR7Wn" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="t4D_B" id="77bAwtGQI$h" role="LiRBU">
+      <node concept="LIFWc" id="77bAwtGQIF9" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="Constant_h0s4wo_b0" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="77bAwtGS8cl">
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcher_ChildInLinkInlineMenu" />
+    <property role="3YCmrE" value="if we don't use styling, child with no priority comes first lexicographically, else child with priority comes first" />
+    <node concept="1p9Cxi" id="77bAwtGS8cm" role="LiRBU">
+      <node concept="LIFWc" id="77bAwtGSgeS" role="lGtFl">
+        <property role="ZRATv" value="true" />
+        <property role="OXtK3" value="true" />
+        <property role="p6zMq" value="0" />
+        <property role="p6zMs" value="0" />
+        <property role="LIFWd" value="empty_childInMatchingLinkInlineMenu" />
+      </node>
+    </node>
+    <node concept="1p9Cxi" id="77bAwtGS8co" role="LiZbd">
+      <node concept="1ezaeV" id="77bAwtGSgj6" role="taTWN" />
+      <node concept="1ezaeW" id="77bAwtGSgjr" role="taTWN">
+        <node concept="LIFWc" id="77bAwtGSgnx" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="13" />
+          <property role="p6zMs" value="13" />
+          <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="77bAwtGS8cs" role="LjaKd">
+      <node concept="3clFbF" id="77bAwtGS8ct" role="3cqZAp">
+        <node concept="2YIFZM" id="77bAwtGS8cu" role="3clFbG">
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <node concept="1bVj0M" id="77bAwtGS8cv" role="37wK5m">
+            <node concept="3clFbS" id="77bAwtGS8cw" role="1bW5cS">
+              <node concept="2HxZob" id="77bAwtGS8cx" role="3cqZAp">
+                <node concept="1iFQzN" id="77bAwtGS8cy" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="77bAwtGS8cz" role="3cqZAp">
+                <node concept="3cpWsn" id="77bAwtGS8c$" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="77bAwtGS8c_" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGS8cA" role="33vP2m">
+                    <node concept="369mXd" id="77bAwtGS8cB" role="2Oq$k0" />
+                    <node concept="liA8E" id="77bAwtGS8cC" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="77bAwtGS8cD" role="3cqZAp">
+                <node concept="3clFbC" id="77bAwtGS8cE" role="3vwVQn">
+                  <node concept="3cmrfG" id="77bAwtGS8cF" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGS8cG" role="3uHU7B">
+                    <node concept="37vLTw" id="77bAwtGS8cH" role="2Oq$k0">
+                      <ref role="3cqZAo" node="77bAwtGS8c$" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="77bAwtGS8cI" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="77bAwtGS8cJ" role="3cqZAp">
+                <node concept="pLAjd" id="77bAwtGS8cK" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="77bAwtGS8cL" role="37wK5m" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="77bAwtGS8cM" role="3cqZAp">
+        <node concept="1iFQzN" id="77bAwtGS8cN" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:6KwcZ1G3Pjm" resolve="Insert" />
+        </node>
+      </node>
+      <node concept="3clFbF" id="77bAwtGS8cO" role="3cqZAp">
+        <node concept="2YIFZM" id="77bAwtGS8cP" role="3clFbG">
+          <ref role="37wK5l" to="tp6m:4AL49kgA3EJ" resolve="runWithCompletionStyling" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <node concept="1bVj0M" id="77bAwtGS8cQ" role="37wK5m">
+            <node concept="3clFbS" id="77bAwtGS8cR" role="1bW5cS">
+              <node concept="2HxZob" id="77bAwtGS8cS" role="3cqZAp">
+                <node concept="1iFQzN" id="77bAwtGS8cT" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="77bAwtGS8cU" role="3cqZAp">
+                <node concept="3cpWsn" id="77bAwtGS8cV" role="3cpWs9">
+                  <property role="TrG5h" value="nodeSubstituteChooser" />
+                  <node concept="3uibUv" id="77bAwtGS8cW" role="1tU5fm">
+                    <ref role="3uigEE" to="6lvu:~NodeSubstituteChooser" resolve="NodeSubstituteChooser" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGS8cX" role="33vP2m">
+                    <node concept="369mXd" id="77bAwtGS8cY" role="2Oq$k0" />
+                    <node concept="liA8E" id="77bAwtGS8cZ" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3vwNmj" id="77bAwtGS8d0" role="3cqZAp">
+                <node concept="3clFbC" id="77bAwtGS8d1" role="3vwVQn">
+                  <node concept="3cmrfG" id="77bAwtGS8d2" role="3uHU7w">
+                    <property role="3cmrfH" value="2" />
+                  </node>
+                  <node concept="2OqwBi" id="77bAwtGS8d3" role="3uHU7B">
+                    <node concept="37vLTw" id="77bAwtGS8d4" role="2Oq$k0">
+                      <ref role="3cqZAo" node="77bAwtGS8cV" resolve="nodeSubstituteChooser" />
+                    </node>
+                    <node concept="liA8E" id="77bAwtGS8d5" role="2OqNvi">
+                      <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="yd1bK" id="77bAwtGS8d6" role="3cqZAp">
+                <node concept="pLAjd" id="77bAwtGS8d7" role="yd6KS">
+                  <property role="pLAjf" value="VK_ENTER" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="77bAwtGS8d8" role="37wK5m">
             <property role="3clFbU" value="true" />
           </node>
         </node>

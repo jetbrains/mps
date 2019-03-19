@@ -9,23 +9,44 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_TestCompletionCustomization_ChildInLinkNoPriority;
+  private ConceptPresentation props_TestCompletionCustomization_ChildInLinkWithPriority;
   private ConceptPresentation props_TestCompletionCustomization_ChildNoMenu;
   private ConceptPresentation props_TestCompletionCustomization_ChildNoPriority;
   private ConceptPresentation props_TestCompletionCustomization_ChildParameterizedSubstituteMenu;
   private ConceptPresentation props_TestCompletionCustomization_ChildSimpleSubstituteMenu;
+  private ConceptPresentation props_TestCompletionCustomization_ChildToReference;
   private ConceptPresentation props_TestCompletionCustomization_ChildWithPriority;
   private ConceptPresentation props_TestCompletionCustomization_ChildWrapSubstituteMenu;
   private ConceptPresentation props_TestCompletionCustomization_ConceptToWrap;
   private ConceptPresentation props_TestCompletionCustomization_ConceptToWrapNoPriority;
   private ConceptPresentation props_TestCompletionCustomization_ConceptToWrapWithPriority;
   private ConceptPresentation props_TestCompletionCustomization_ContextMatcherBaseChild;
+  private ConceptPresentation props_TestCompletionCustomization_ContextMatcherChildInMatchingLink;
+  private ConceptPresentation props_TestCompletionCustomization_ContextMatcherChildToSubstitute;
   private ConceptPresentation props_TestCompletionCustomization_ParentTestContextMatcher;
+  private ConceptPresentation props_TestCompletionCustomization_ParentTestStyle;
+  private ConceptPresentation props_TestCompletionCustomization_RootToReference;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.TestCompletionCustomization_ChildInLinkNoPriority:
+        if (props_TestCompletionCustomization_ChildInLinkNoPriority == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("no priority");
+          props_TestCompletionCustomization_ChildInLinkNoPriority = cpb.create();
+        }
+        return props_TestCompletionCustomization_ChildInLinkNoPriority;
+      case LanguageConceptSwitch.TestCompletionCustomization_ChildInLinkWithPriority:
+        if (props_TestCompletionCustomization_ChildInLinkWithPriority == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("with priority");
+          props_TestCompletionCustomization_ChildInLinkWithPriority = cpb.create();
+        }
+        return props_TestCompletionCustomization_ChildInLinkWithPriority;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildNoMenu:
         if (props_TestCompletionCustomization_ChildNoMenu == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -51,6 +72,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TestCompletionCustomization_ChildSimpleSubstituteMenu = cpb.create();
         }
         return props_TestCompletionCustomization_ChildSimpleSubstituteMenu;
+      case LanguageConceptSwitch.TestCompletionCustomization_ChildToReference:
+        if (props_TestCompletionCustomization_ChildToReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TestCompletionCustomization_ChildToReference = cpb.create();
+        }
+        return props_TestCompletionCustomization_ChildToReference;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildWithPriority:
         if (props_TestCompletionCustomization_ChildWithPriority == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -90,6 +118,19 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TestCompletionCustomization_ContextMatcherBaseChild = cpb.create();
         }
         return props_TestCompletionCustomization_ContextMatcherBaseChild;
+      case LanguageConceptSwitch.TestCompletionCustomization_ContextMatcherChildInMatchingLink:
+        if (props_TestCompletionCustomization_ContextMatcherChildInMatchingLink == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_TestCompletionCustomization_ContextMatcherChildInMatchingLink = cpb.create();
+        }
+        return props_TestCompletionCustomization_ContextMatcherChildInMatchingLink;
+      case LanguageConceptSwitch.TestCompletionCustomization_ContextMatcherChildToSubstitute:
+        if (props_TestCompletionCustomization_ContextMatcherChildToSubstitute == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TestCompletionCustomization_ContextMatcherChildToSubstitute = cpb.create();
+        }
+        return props_TestCompletionCustomization_ContextMatcherChildToSubstitute;
       case LanguageConceptSwitch.TestCompletionCustomization_ParentTestContextMatcher:
         if (props_TestCompletionCustomization_ParentTestContextMatcher == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -97,6 +138,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TestCompletionCustomization_ParentTestContextMatcher = cpb.create();
         }
         return props_TestCompletionCustomization_ParentTestContextMatcher;
+      case LanguageConceptSwitch.TestCompletionCustomization_ParentTestStyle:
+        if (props_TestCompletionCustomization_ParentTestStyle == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TestCompletionCustomization_ParentTestStyle");
+          props_TestCompletionCustomization_ParentTestStyle = cpb.create();
+        }
+        return props_TestCompletionCustomization_ParentTestStyle;
+      case LanguageConceptSwitch.TestCompletionCustomization_RootToReference:
+        if (props_TestCompletionCustomization_RootToReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TestCompletionCustomization_RootToReference = cpb.create();
+        }
+        return props_TestCompletionCustomization_RootToReference;
     }
     return null;
   }

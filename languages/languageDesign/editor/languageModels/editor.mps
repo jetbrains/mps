@@ -26545,7 +26545,7 @@
       </node>
       <node concept="l2Vlx" id="6iw7Uxkrjt4" role="2iSdaV" />
       <node concept="3F1sOY" id="ETPn3uQNfy" role="3EZMnx">
-        <property role="1$x2rV" value="&lt;any feature&gt;" />
+        <property role="1$x2rV" value="&lt;no feature&gt;" />
         <ref role="1NtTu8" to="tpc2:ETPn3uQNeZ" resolve="feature" />
       </node>
     </node>

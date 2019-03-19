@@ -137,7 +137,7 @@ public class ReferenceTransformationMenuItem extends ActionItemBase implements B
     TransformationMenuContextToEditorMenuItemCustomizationContext
         context = new TransformationMenuContextToEditorMenuItemCustomizationContext(myContext, null, myLink);
     CompletionItemInformation completionItemInformation =
-        new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+        new CompletionItemInformation(myTargetNode, null, getMatchingText(pattern), getShortDescriptionText(pattern));
     EditorMenuItemCompositeCustomizationContext compositeContext =
         new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
     for (EditorMenuItemCustomizer customizer : myContext.getCustomizers()) {

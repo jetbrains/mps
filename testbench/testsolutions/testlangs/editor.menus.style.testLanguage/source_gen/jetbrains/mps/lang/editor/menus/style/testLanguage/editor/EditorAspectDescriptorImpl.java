@@ -8,9 +8,11 @@ import java.util.Collection;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
+import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
+import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
+import java.util.Arrays;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
-import java.util.Arrays;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -25,7 +27,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 1:
         return Collections.<ConceptEditor>singletonList(new TestCompletionCustomization_ContextMatcherBaseChild_Editor());
       case 2:
+        return Collections.<ConceptEditor>singletonList(new TestCompletionCustomization_ContextMatcherChildInMatchingLink_Editor());
+      case 3:
         return Collections.<ConceptEditor>singletonList(new TestCompletionCustomization_ParentTestContextMatcher_Editor());
+      case 4:
+        return Collections.<ConceptEditor>singletonList(new TestCompletionCustomization_ParentTestStyle_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();
@@ -34,15 +40,45 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
 
   @NotNull
   @Override
+  public Collection<TransformationMenu> getDeclaredNamedTransformationMenus(NamedMenuId menuId) {
+    SAbstractConcept cncpt = (SAbstractConcept) menuId.getConcept();
+    switch (conceptIndex1.index(cncpt)) {
+      case 0:
+        if (true) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
+            case 0:
+              return Arrays.asList(new TransformationMenu[]{new ModifyStringProperty()});
+            default:
+          }
+        }
+        break;
+      case 1:
+        if (true) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a3, menuId.getFqName())) {
+            case 0:
+              return Arrays.asList(new TransformationMenu[]{new TestStyle()});
+            default:
+          }
+        }
+        break;
+      default:
+    }
+
+    return Collections.<TransformationMenu>emptyList();
+  }
+  @NotNull
+  @Override
   public Collection<SubstituteMenu> getDeclaredDefaultSubstituteMenus(SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (conceptIndex1.index(cncpt)) {
+    switch (conceptIndex2.index(cncpt)) {
       case 0:
         return Collections.<SubstituteMenu>singletonList(new TestCompletionCustomization_ChildParameterizedSubstituteMenu_SubstituteMenu());
       case 1:
         return Collections.<SubstituteMenu>singletonList(new TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu());
       case 2:
         return Collections.<SubstituteMenu>singletonList(new TestCompletionCustomization_ChildWrapSubstituteMenu_SubstituteMenu());
+      case 3:
+        return Collections.<SubstituteMenu>singletonList(new TestCompletionCustomization_ContextMatcherChildToSubstitute_SubstituteMenu());
       default:
     }
     return Collections.<SubstituteMenu>emptyList();
@@ -50,9 +86,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @NotNull
   @Override
   public Collection<EditorMenuItemCustomizer> getEditorMenuItemCustomizers() {
-    return Arrays.asList(new EditorMenuItemCustomizer[]{new ChildWithPriority_Customization(), new ConceptToWrapWithPriority_Customization(), new BooleanProperty_Customization(), new EnumProperty_Customization(), new ParameterizedChild_Customization()});
+    return Arrays.asList(new EditorMenuItemCustomizer[]{new ChildWithPriority_Customization(), new ConceptToWrapWithPriority_Customization(), new BooleanProperty_Customization(), new EnumProperty_Customization(), new ParameterizedChild_Customization(), new Reference_Customization(), new Link_Customization(), new NoFeature_Customization(), new ChildToSubstituteCustomization(), new TestStyle_Customization(), new LinkInlineMenu_Customization()});
   }
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L)).seal();
-  private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510ac9aacL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8a8L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L)).seal();
+  private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L)).seal();
+  private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510ac9aacL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8a8L), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80f0bc815L)).seal();
+  private static String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ModifyStringProperty"};
+  private static String[] stringSwitchCases_xbvbvu_a0a0a0b1a3 = new String[]{"jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestStyle"};
 }

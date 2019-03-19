@@ -15,6 +15,13 @@
  */
 package jetbrains.mps.lang.editor.menus.transformation;
 
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import org.apache.log4j.Logger;
@@ -74,6 +81,23 @@ public class DefaultSubstituteMenuItemAsActionItem extends SubstituteMenuItemAsA
       }
     }
     return newChild;
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    super.customize(pattern, style);
+    if (myContext.getCurrentTargetNode() != null) {
+
+      EditorMenuItemModifyingCustomizationContext
+          context = new EditorMenuItemModifyingCustomizationContext(myContext.getCurrentTargetNode(), null, null, null);
+      CompletionItemInformation completionItemInformation =
+          new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+      EditorMenuItemCompositeCustomizationContext compositeContext =
+          new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+      for (EditorMenuItemCustomizer customizer : myContext.getCustomizers()) {
+        customizer.customize(style, compositeContext);
+      }
+    }
   }
 
   protected SubstituteMenuContext getSubstituteMenuContext() {

@@ -234,7 +234,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       }
     }
     protected String getNoTargetText() {
-      return "<any feature>";
+      return "<no feature>";
     }
   }
 }

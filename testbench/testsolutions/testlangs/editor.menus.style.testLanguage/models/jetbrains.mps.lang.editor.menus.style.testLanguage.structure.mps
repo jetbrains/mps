@@ -30,6 +30,7 @@
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
+        <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
         <child id="1169129564478" name="implements" index="PzmwI" />
       </concept>
@@ -59,6 +60,12 @@
     <property role="TrG5h" value="TestCompletionCustomization_ParentTestContextMatcher" />
     <property role="3GE5qa" value="contextMatcher" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="41xlIweUVhl" role="1TKVEi">
+      <property role="IQ2ns" value="4639084645851051093" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="reference" />
+      <ref role="20lvS9" node="41xlIweUVhe" resolve="TestCompletionCustomization_ChildToReference" />
+    </node>
     <node concept="1TJgyi" id="4AL49kgHLPC" role="1TKVEl">
       <property role="IQ2nx" value="5310043668063133032" />
       <property role="TrG5h" value="booleanProperty" />
@@ -68,6 +75,11 @@
       <property role="IQ2nx" value="5310043668063133681" />
       <property role="TrG5h" value="enumProperty" />
       <ref role="AX2Wp" node="4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
+    </node>
+    <node concept="1TJgyi" id="41xlIweVLOm" role="1TKVEl">
+      <property role="IQ2nx" value="4639084645851274518" />
+      <property role="TrG5h" value="stringProperty" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="4AL49kg_TzB" role="1TKVEi">
       <property role="IQ2ns" value="5310043668061067495" />
@@ -96,6 +108,27 @@
       <property role="20kJfa" value="childWrapSubstituteMenu" />
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="4AL49kgHsyC" resolve="TestCompletionCustomization_ChildWrapSubstituteMenu" />
+    </node>
+    <node concept="1TJgyj" id="41xlIweVvl7" role="1TKVEi">
+      <property role="IQ2ns" value="4639084645851198791" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="childInMatchingLink" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+    </node>
+    <node concept="1TJgyj" id="77bAwtGS0kO" role="1TKVEi">
+      <property role="IQ2ns" value="8199816903240189236" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="childInMatchingLinkInlineMenu" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+    </node>
+    <node concept="1TJgyj" id="41xlIwf34pN" role="1TKVEi">
+      <property role="IQ2ns" value="4639084645853185651" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="childToSubstitute" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="41xlIwf2Wwl" resolve="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
     </node>
   </node>
   <node concept="1TIwiD" id="4AL49kg_TAi">
@@ -190,6 +223,68 @@
       <property role="1uS6qv" value="no priority" />
       <property role="1uS6qo" value="no priority" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="41xlIweUVhd">
+    <property role="EcuMT" value="4639084645851051085" />
+    <property role="3GE5qa" value="contextMatcher" />
+    <property role="TrG5h" value="TestCompletionCustomization_RootToReference" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="41xlIweUVhh" role="1TKVEi">
+      <property role="IQ2ns" value="4639084645851051089" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="children" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="41xlIweUVhe" resolve="TestCompletionCustomization_ChildToReference" />
+    </node>
+    <node concept="PrWs8" id="41xlIweUVhj" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="41xlIweUVhe">
+    <property role="EcuMT" value="4639084645851051086" />
+    <property role="3GE5qa" value="contextMatcher" />
+    <property role="TrG5h" value="TestCompletionCustomization_ChildToReference" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="41xlIweUVhf" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="41xlIweVvle">
+    <property role="EcuMT" value="4639084645851198798" />
+    <property role="3GE5qa" value="contextMatcher.children" />
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="41xlIweVvlj">
+    <property role="EcuMT" value="4639084645851198803" />
+    <property role="TrG5h" value="TestCompletionCustomization_ChildInLinkNoPriority" />
+    <property role="3GE5qa" value="contextMatcher.children" />
+    <property role="34LRSv" value="no priority" />
+    <ref role="1TJDcQ" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+  </node>
+  <node concept="1TIwiD" id="41xlIweVvlk">
+    <property role="EcuMT" value="4639084645851198804" />
+    <property role="TrG5h" value="TestCompletionCustomization_ChildInLinkWithPriority" />
+    <property role="3GE5qa" value="contextMatcher.children" />
+    <property role="34LRSv" value="with priority" />
+    <ref role="1TJDcQ" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+  </node>
+  <node concept="1TIwiD" id="41xlIwf2Wwl">
+    <property role="EcuMT" value="4639084645853153301" />
+    <property role="3GE5qa" value="contextMatcher.children" />
+    <property role="TrG5h" value="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="41xlIwf2YRA" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="77bAwtGQgdw">
+    <property role="EcuMT" value="8199816903239730016" />
+    <property role="TrG5h" value="TestCompletionCustomization_ParentTestStyle" />
+    <property role="3GE5qa" value="contextMatcher" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
 </model>
 
