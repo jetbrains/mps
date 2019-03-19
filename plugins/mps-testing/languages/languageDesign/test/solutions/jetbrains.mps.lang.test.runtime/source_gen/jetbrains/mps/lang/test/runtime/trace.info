@@ -1394,8 +1394,8 @@
       <node id="6270156512829024074" at="60,56,61,119" concept="6" />
       <node id="6270156512829024118" at="64,5,65,35" concept="0" />
       <node id="6270156512829024122" at="65,35,66,0" concept="14" />
-      <node id="6270156512829024123" at="66,0,67,99" concept="11" />
-      <node id="5347446703374961031" at="67,99,68,109" concept="11" />
+      <node id="6270156512829024123" at="66,0,67,103" concept="11" />
+      <node id="5347446703374961031" at="67,103,68,109" concept="11" />
       <node id="5347446703374949399" at="68,109,69,0" concept="14" />
       <node id="5347446703374981639" at="69,0,70,87" concept="11" />
       <node id="6270156512829024137" at="70,87,71,35" concept="0" />
@@ -1530,7 +1530,7 @@
       <node id="6270156512828732164" at="141,72,142,64" concept="11" />
       <node id="6270156512828732172" at="143,31,144,43" concept="13" />
       <node id="6270156512828732174" at="144,43,145,18" concept="12" />
-      <node id="6270156512828732179" at="146,5,147,94" concept="11" />
+      <node id="6270156512828732179" at="146,5,147,98" concept="11" />
       <node id="6270156512828732187" at="148,41,149,43" concept="13" />
       <node id="6270156512828732189" at="149,43,150,18" concept="12" />
       <node id="6270156512828732196" at="152,103,153,112" concept="6" />
@@ -1551,7 +1551,7 @@
       <node id="6270156512828777832" at="159,82,162,5" concept="9" />
       <node id="6270156512829307231" at="55,27,59,23" concept="9" />
       <node id="6270156512828732170" at="142,64,146,5" concept="9" />
-      <node id="6270156512828732185" at="147,94,151,5" concept="9" />
+      <node id="6270156512828732185" at="147,98,151,5" concept="9" />
       <node id="6270156512829460215" at="31,100,36,7" concept="11" />
       <node id="6270156512828777852" at="165,48,171,7" concept="21" />
       <node id="6270156512828702202" at="125,64,132,13" concept="21" />
@@ -1685,28 +1685,39 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/6270156512828877125">
-    <file name="EditorUtil.java">
+    <file name="EditorTestUtil.java">
       <node id="6270156512828829868" at="14,60,15,71" concept="12" />
       <node id="6270156512828829878" at="16,7,17,44" concept="6" />
       <node id="6270156512828829887" at="18,5,19,27" concept="12" />
-      <node id="1241246198920126069" at="21,127,22,90" concept="11" />
+      <node id="1241246198920126069" at="21,131,22,90" concept="11" />
       <node id="1241246198920126075" at="22,90,23,72" concept="6" />
       <node id="1241246198920127317" at="24,9,25,21" concept="6" />
       <node id="1241246198920126085" at="26,15,27,82" concept="6" />
-      <node id="1241246198920694363" at="32,0,33,0" concept="10" trace="run#()V" />
+      <node id="5310043668061108913" at="30,135,31,91" concept="11" />
+      <node id="5310043668061108919" at="31,91,32,73" concept="6" />
+      <node id="5310043668061108926" at="33,9,34,21" concept="6" />
+      <node id="5310043668061108931" at="35,15,36,83" concept="6" />
+      <node id="1241246198920694363" at="41,0,42,0" concept="10" trace="run#()V" />
       <node id="6270156512828829866" at="13,33,16,7" concept="9" />
       <node id="1241246198920126080" at="23,72,28,5" concept="22" />
+      <node id="5310043668061108924" at="32,73,37,5" concept="22" />
       <node id="6270156512828829864" at="12,109,18,5" concept="23" />
       <node id="6270156512828829856" at="12,0,21,0" concept="16" trace="getEventTargetComponent#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljetbrains/mps/nodeEditor/EditorComponent;)Ljavax/swing/JComponent;" />
-      <node id="1241246198920125107" at="21,0,30,0" concept="16" trace="runWithTwoStepDeletion#(Ljetbrains/mps/lang/test/runtime/EditorUtil/EditorTestRunnable;Z)V" />
+      <node id="1241246198920125107" at="21,0,30,0" concept="16" trace="runWithTwoStepDeletion#(Ljetbrains/mps/lang/test/runtime/EditorTestUtil/EditorTestRunnable;Z)V" />
+      <node id="5310043668061108911" at="30,0,39,0" concept="16" trace="runWithCompletionStyling#(Ljetbrains/mps/lang/test/runtime/EditorTestUtil/EditorTestRunnable;Z)V" />
       <scope id="6270156512828829867" at="14,60,15,71" />
       <scope id="1241246198920126081" at="24,9,25,21" />
       <scope id="1241246198920126084" at="26,15,27,82" />
-      <scope id="1241246198920694363" at="32,0,33,0" />
+      <scope id="5310043668061108925" at="33,9,34,21" />
+      <scope id="5310043668061108930" at="35,15,36,83" />
+      <scope id="1241246198920694363" at="41,0,42,0" />
       <scope id="6270156512828829865" at="13,33,17,44" />
       <scope id="6270156512828829863" at="12,109,19,27" />
-      <scope id="1241246198920125077" at="21,127,28,5">
+      <scope id="1241246198920125077" at="21,131,28,5">
         <var name="twoStepDeletionSettings" id="1241246198920126070" />
+      </scope>
+      <scope id="5310043668061108912" at="30,135,37,5">
+        <var name="completionStylingSettings" id="5310043668061108914" />
       </scope>
       <scope id="6270156512828829856" at="12,0,21,0">
         <var name="currentCell" id="6270156512828829857" />
@@ -1716,8 +1727,12 @@
         <var name="runnable" id="1241246198920125718" />
         <var name="twoStepDeletion" id="1241246198920129300" />
       </scope>
-      <unit id="1241246198920693729" at="31,0,34,0" name="jetbrains.mps.lang.test.runtime.EditorUtil$EditorTestRunnable" />
-      <unit id="6270156512828877125" at="11,0,36,0" name="jetbrains.mps.lang.test.runtime.EditorUtil" />
+      <scope id="5310043668061108911" at="30,0,39,0">
+        <var name="completionStyling" id="5310043668061108939" />
+        <var name="runnable" id="5310043668061108937" />
+      </scope>
+      <unit id="1241246198920693729" at="40,0,43,0" name="jetbrains.mps.lang.test.runtime.EditorTestUtil$EditorTestRunnable" />
+      <unit id="6270156512828877125" at="11,0,45,0" name="jetbrains.mps.lang.test.runtime.EditorTestUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/7187651930234842193">

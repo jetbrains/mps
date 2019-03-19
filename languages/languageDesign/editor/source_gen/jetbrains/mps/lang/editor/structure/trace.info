@@ -11996,7 +11996,7 @@
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="5944657839000868711" at="134,0,135,0" concept="7" trace="ConceptEditorContextHints" />
-      <node id="5944657839000868711" at="578,77,579,64" concept="1" />
+      <node id="5944657839000868711" at="578,56,579,64" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5944657839000868711" at="145,0,146,0" concept="2" trace="myConceptConceptEditorContextHints" />
@@ -13231,106 +13231,106 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7250830207897895674">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="7250830207897895674" at="129,0,130,0" concept="2" trace="props_CompletionCustomizationContextSpecificator_Concept" />
-      <node id="7250830207897895674" at="1292,79,1293,76" concept="5" />
-      <node id="7250830207897895674" at="1293,76,1294,82" concept="1" />
-      <node id="7250830207897895674" at="1295,9,1296,72" concept="6" />
-      <node id="7250830207897895674" at="1291,84,1295,9" concept="3" />
-      <scope id="7250830207897895674" at="1292,79,1294,82">
+      <node id="7250830207897895674" at="128,0,129,0" concept="2" trace="props_CompletionCustomizationContextSpecificator_Concept" />
+      <node id="7250830207897895674" at="1285,79,1286,76" concept="5" />
+      <node id="7250830207897895674" at="1286,76,1287,82" concept="1" />
+      <node id="7250830207897895674" at="1288,9,1289,72" concept="6" />
+      <node id="7250830207897895674" at="1284,84,1288,9" concept="3" />
+      <scope id="7250830207897895674" at="1285,79,1287,82">
         <var name="cpb" id="7250830207897895674" />
       </scope>
-      <scope id="7250830207897895674" at="1291,84,1296,72" />
+      <scope id="7250830207897895674" at="1284,84,1289,72" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7250830207897895674" at="129,0,130,0" concept="7" trace="CompletionCustomizationContextSpecificator_Concept" />
-      <node id="7250830207897895674" at="573,81,574,89" concept="1" />
+      <node id="7250830207897895674" at="128,0,129,0" concept="7" trace="CompletionCustomizationContextSpecificator_Concept" />
+      <node id="7250830207897895674" at="572,81,573,89" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="7250830207897895674" at="140,0,141,0" concept="2" trace="myConceptCompletionCustomizationContextSpecificator_Concept" />
-      <node id="7250830207897895674" at="749,84,750,75" concept="6" />
-      <node id="7250830207897895674" at="2697,108,2698,210" concept="5" />
-      <node id="7250830207897895674" at="2698,210,2699,33" concept="1" />
-      <node id="7250830207897895674" at="2700,76,2701,112" concept="1" />
-      <node id="7250830207897895674" at="2701,112,2702,17" concept="1" />
-      <node id="9115396979021131941" at="2702,17,2703,177" concept="1" />
-      <node id="7250830207897895674" at="2703,177,2704,22" concept="6" />
-      <node id="7250830207897895674" at="2697,0,2706,0" concept="8" trace="createDescriptorForCompletionCustomizationContextSpecificator_Concept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="7250830207897895674" at="749,84,750,75" />
-      <scope id="7250830207897895674" at="2697,108,2704,22">
+      <node id="7250830207897895674" at="139,0,140,0" concept="2" trace="myConceptCompletionCustomizationContextSpecificator_Concept" />
+      <node id="7250830207897895674" at="747,84,748,75" concept="6" />
+      <node id="7250830207897895674" at="2684,108,2685,210" concept="5" />
+      <node id="7250830207897895674" at="2685,210,2686,33" concept="1" />
+      <node id="7250830207897895674" at="2687,76,2688,112" concept="1" />
+      <node id="7250830207897895674" at="2688,112,2689,17" concept="1" />
+      <node id="9115396979021131941" at="2689,17,2690,177" concept="1" />
+      <node id="7250830207897895674" at="2690,177,2691,22" concept="6" />
+      <node id="7250830207897895674" at="2684,0,2693,0" concept="8" trace="createDescriptorForCompletionCustomizationContextSpecificator_Concept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7250830207897895674" at="747,84,748,75" />
+      <scope id="7250830207897895674" at="2684,108,2691,22">
         <var name="b" id="7250830207897895674" />
       </scope>
-      <scope id="7250830207897895674" at="2697,0,2706,0" />
+      <scope id="7250830207897895674" at="2684,0,2693,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7250830207897895677">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="7250830207897895677" at="127,0,128,0" concept="2" trace="props_CompletionCustomizationConceptModifyingSpecificator" />
-      <node id="7250830207897895677" at="1279,80,1280,76" concept="5" />
-      <node id="7250830207897895677" at="1280,76,1281,43" concept="1" />
-      <node id="7250830207897895677" at="1281,43,1282,83" concept="1" />
-      <node id="7250830207897895677" at="1283,9,1284,73" concept="6" />
-      <node id="7250830207897895677" at="1278,85,1283,9" concept="3" />
-      <scope id="7250830207897895677" at="1279,80,1282,83">
+      <node id="7250830207897895677" at="126,0,127,0" concept="2" trace="props_CompletionCustomizationConceptModifyingSpecificator" />
+      <node id="7250830207897895677" at="1272,80,1273,76" concept="5" />
+      <node id="7250830207897895677" at="1273,76,1274,43" concept="1" />
+      <node id="7250830207897895677" at="1274,43,1275,83" concept="1" />
+      <node id="7250830207897895677" at="1276,9,1277,73" concept="6" />
+      <node id="7250830207897895677" at="1271,85,1276,9" concept="3" />
+      <scope id="7250830207897895677" at="1272,80,1275,83">
         <var name="cpb" id="7250830207897895677" />
       </scope>
-      <scope id="7250830207897895677" at="1278,85,1284,73" />
+      <scope id="7250830207897895677" at="1271,85,1277,73" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7250830207897895677" at="127,0,128,0" concept="7" trace="CompletionCustomizationConceptModifyingSpecificator" />
-      <node id="7250830207897895677" at="571,89,572,90" concept="1" />
+      <node id="7250830207897895677" at="126,0,127,0" concept="7" trace="CompletionCustomizationConceptModifyingSpecificator" />
+      <node id="7250830207897895677" at="570,89,571,90" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="7250830207897895677" at="138,0,139,0" concept="2" trace="myConceptCompletionCustomizationConceptModifyingSpecificator" />
-      <node id="7250830207897895677" at="745,85,746,76" concept="6" />
-      <node id="7250830207897895677" at="2680,109,2681,211" concept="5" />
-      <node id="7250830207897895677" at="2681,211,2682,34" concept="1" />
-      <node id="7250830207897895677" at="2682,34,2683,166" concept="1" />
-      <node id="7250830207897895677" at="2683,166,2684,112" concept="1" />
-      <node id="7250830207897895677" at="2684,112,2685,17" concept="1" />
-      <node id="772883491822711743" at="2685,17,2686,197" concept="1" />
-      <node id="7250830207897895677" at="2686,197,2687,25" concept="1" />
-      <node id="7250830207897895677" at="2687,25,2688,22" concept="6" />
-      <node id="7250830207897895677" at="2680,0,2690,0" concept="8" trace="createDescriptorForCompletionCustomizationConceptModifyingSpecificator#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="7250830207897895677" at="745,85,746,76" />
-      <scope id="7250830207897895677" at="2680,109,2688,22">
+      <node id="7250830207897895677" at="137,0,138,0" concept="2" trace="myConceptCompletionCustomizationConceptModifyingSpecificator" />
+      <node id="7250830207897895677" at="743,85,744,76" concept="6" />
+      <node id="7250830207897895677" at="2667,109,2668,211" concept="5" />
+      <node id="7250830207897895677" at="2668,211,2669,34" concept="1" />
+      <node id="7250830207897895677" at="2669,34,2670,166" concept="1" />
+      <node id="7250830207897895677" at="2670,166,2671,112" concept="1" />
+      <node id="7250830207897895677" at="2671,112,2672,17" concept="1" />
+      <node id="772883491822711743" at="2672,17,2673,197" concept="1" />
+      <node id="7250830207897895677" at="2673,197,2674,25" concept="1" />
+      <node id="7250830207897895677" at="2674,25,2675,22" concept="6" />
+      <node id="7250830207897895677" at="2667,0,2677,0" concept="8" trace="createDescriptorForCompletionCustomizationConceptModifyingSpecificator#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7250830207897895677" at="743,85,744,76" />
+      <scope id="7250830207897895677" at="2667,109,2675,22">
         <var name="b" id="7250830207897895677" />
       </scope>
-      <scope id="7250830207897895677" at="2680,0,2690,0" />
+      <scope id="7250830207897895677" at="2667,0,2677,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7250830207897895678">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="7250830207897895678" at="126,0,127,0" concept="2" trace="props_CompletionCustomizationConceptCreatingSpecificator" />
-      <node id="7250830207897895678" at="1272,79,1273,76" concept="5" />
-      <node id="7250830207897895678" at="1273,76,1274,42" concept="1" />
-      <node id="7250830207897895678" at="1274,42,1275,82" concept="1" />
-      <node id="7250830207897895678" at="1276,9,1277,72" concept="6" />
-      <node id="7250830207897895678" at="1271,84,1276,9" concept="3" />
-      <scope id="7250830207897895678" at="1272,79,1275,82">
+      <node id="7250830207897895678" at="125,0,126,0" concept="2" trace="props_CompletionCustomizationConceptCreatingSpecificator" />
+      <node id="7250830207897895678" at="1265,79,1266,76" concept="5" />
+      <node id="7250830207897895678" at="1266,76,1267,42" concept="1" />
+      <node id="7250830207897895678" at="1267,42,1268,82" concept="1" />
+      <node id="7250830207897895678" at="1269,9,1270,72" concept="6" />
+      <node id="7250830207897895678" at="1264,84,1269,9" concept="3" />
+      <scope id="7250830207897895678" at="1265,79,1268,82">
         <var name="cpb" id="7250830207897895678" />
       </scope>
-      <scope id="7250830207897895678" at="1271,84,1277,72" />
+      <scope id="7250830207897895678" at="1264,84,1270,72" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7250830207897895678" at="126,0,127,0" concept="7" trace="CompletionCustomizationConceptCreatingSpecificator" />
-      <node id="7250830207897895678" at="570,62,571,89" concept="1" />
+      <node id="7250830207897895678" at="125,0,126,0" concept="7" trace="CompletionCustomizationConceptCreatingSpecificator" />
+      <node id="7250830207897895678" at="569,53,570,89" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="7250830207897895678" at="137,0,138,0" concept="2" trace="myConceptCompletionCustomizationConceptCreatingSpecificator" />
-      <node id="7250830207897895678" at="743,84,744,75" concept="6" />
-      <node id="7250830207897895678" at="2671,108,2672,210" concept="5" />
-      <node id="7250830207897895678" at="2672,210,2673,34" concept="1" />
-      <node id="7250830207897895678" at="2673,34,2674,166" concept="1" />
-      <node id="7250830207897895678" at="2674,166,2675,112" concept="1" />
-      <node id="7250830207897895678" at="2675,112,2676,17" concept="1" />
-      <node id="7250830207897895678" at="2676,17,2677,24" concept="1" />
-      <node id="7250830207897895678" at="2677,24,2678,22" concept="6" />
-      <node id="7250830207897895678" at="2671,0,2680,0" concept="8" trace="createDescriptorForCompletionCustomizationConceptCreatingSpecificator#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="7250830207897895678" at="743,84,744,75" />
-      <scope id="7250830207897895678" at="2671,108,2678,22">
+      <node id="7250830207897895678" at="136,0,137,0" concept="2" trace="myConceptCompletionCustomizationConceptCreatingSpecificator" />
+      <node id="7250830207897895678" at="741,84,742,75" concept="6" />
+      <node id="7250830207897895678" at="2658,108,2659,210" concept="5" />
+      <node id="7250830207897895678" at="2659,210,2660,34" concept="1" />
+      <node id="7250830207897895678" at="2660,34,2661,166" concept="1" />
+      <node id="7250830207897895678" at="2661,166,2662,112" concept="1" />
+      <node id="7250830207897895678" at="2662,112,2663,17" concept="1" />
+      <node id="7250830207897895678" at="2663,17,2664,24" concept="1" />
+      <node id="7250830207897895678" at="2664,24,2665,22" concept="6" />
+      <node id="7250830207897895678" at="2658,0,2667,0" concept="8" trace="createDescriptorForCompletionCustomizationConceptCreatingSpecificator#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7250830207897895678" at="741,84,742,75" />
+      <scope id="7250830207897895678" at="2658,108,2665,22">
         <var name="b" id="7250830207897895678" />
       </scope>
-      <scope id="7250830207897895678" at="2671,0,2680,0" />
+      <scope id="7250830207897895678" at="2658,0,2667,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7291101478617127464">
@@ -14429,139 +14429,139 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/772883491822711654">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="772883491822711654" at="131,0,132,0" concept="2" trace="props_CompletionCustomization_Feature" />
-      <node id="772883491822711654" at="1305,60,1306,76" concept="5" />
-      <node id="772883491822711654" at="1306,76,1307,63" concept="1" />
-      <node id="772883491822711654" at="1308,9,1309,53" concept="6" />
-      <node id="772883491822711654" at="1304,65,1308,9" concept="3" />
-      <scope id="772883491822711654" at="1305,60,1307,63">
+      <node id="772883491822711654" at="130,0,131,0" concept="2" trace="props_CompletionCustomization_Feature" />
+      <node id="772883491822711654" at="1298,60,1299,76" concept="5" />
+      <node id="772883491822711654" at="1299,76,1300,63" concept="1" />
+      <node id="772883491822711654" at="1301,9,1302,53" concept="6" />
+      <node id="772883491822711654" at="1297,65,1301,9" concept="3" />
+      <scope id="772883491822711654" at="1298,60,1300,63">
         <var name="cpb" id="772883491822711654" />
       </scope>
-      <scope id="772883491822711654" at="1304,65,1309,53" />
+      <scope id="772883491822711654" at="1297,65,1302,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="772883491822711654" at="131,0,132,0" concept="7" trace="CompletionCustomization_Feature" />
-      <node id="772883491822711654" at="575,79,576,69" concept="1" />
+      <node id="772883491822711654" at="130,0,131,0" concept="7" trace="CompletionCustomization_Feature" />
+      <node id="772883491822711654" at="574,79,575,69" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="772883491822711654" at="142,0,143,0" concept="2" trace="myConceptCompletionCustomization_Feature" />
-      <node id="772883491822711654" at="753,65,754,56" concept="6" />
-      <node id="772883491822711654" at="2715,89,2716,190" concept="5" />
-      <node id="772883491822711654" at="2716,190,2717,33" concept="1" />
-      <node id="772883491822711654" at="2717,33,2718,111" concept="1" />
-      <node id="772883491822711654" at="2718,111,2719,17" concept="1" />
-      <node id="772883491822711654" at="2719,17,2720,22" concept="6" />
-      <node id="772883491822711654" at="2715,0,2722,0" concept="8" trace="createDescriptorForCompletionCustomization_Feature#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="772883491822711654" at="753,65,754,56" />
-      <scope id="772883491822711654" at="2715,89,2720,22">
+      <node id="772883491822711654" at="141,0,142,0" concept="2" trace="myConceptCompletionCustomization_Feature" />
+      <node id="772883491822711654" at="751,65,752,56" concept="6" />
+      <node id="772883491822711654" at="2702,89,2703,190" concept="5" />
+      <node id="772883491822711654" at="2703,190,2704,33" concept="1" />
+      <node id="772883491822711654" at="2704,33,2705,111" concept="1" />
+      <node id="772883491822711654" at="2705,111,2706,17" concept="1" />
+      <node id="772883491822711654" at="2706,17,2707,22" concept="6" />
+      <node id="772883491822711654" at="2702,0,2709,0" concept="8" trace="createDescriptorForCompletionCustomization_Feature#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="772883491822711654" at="751,65,752,56" />
+      <scope id="772883491822711654" at="2702,89,2707,22">
         <var name="b" id="772883491822711654" />
       </scope>
-      <scope id="772883491822711654" at="2715,0,2722,0" />
+      <scope id="772883491822711654" at="2702,0,2709,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/772883491822711657">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="772883491822711657" at="133,0,134,0" concept="2" trace="props_CompletionCustomization_PropertyFeature" />
-      <node id="772883491822711657" at="1318,68,1319,76" concept="5" />
-      <node id="772883491822711657" at="1319,76,1320,140" concept="1" />
-      <node id="772883491822711657" at="1320,140,1321,71" concept="1" />
-      <node id="772883491822711657" at="1322,9,1323,61" concept="6" />
-      <node id="772883491822711657" at="1317,73,1322,9" concept="3" />
-      <scope id="772883491822711657" at="1318,68,1321,71">
+      <node id="772883491822711657" at="132,0,133,0" concept="2" trace="props_CompletionCustomization_PropertyFeature" />
+      <node id="772883491822711657" at="1311,68,1312,76" concept="5" />
+      <node id="772883491822711657" at="1312,76,1313,140" concept="1" />
+      <node id="772883491822711657" at="1313,140,1314,71" concept="1" />
+      <node id="772883491822711657" at="1315,9,1316,61" concept="6" />
+      <node id="772883491822711657" at="1310,73,1315,9" concept="3" />
+      <scope id="772883491822711657" at="1311,68,1314,71">
         <var name="cpb" id="772883491822711657" />
       </scope>
-      <scope id="772883491822711657" at="1317,73,1323,61" />
+      <scope id="772883491822711657" at="1310,73,1316,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="772883491822711657" at="133,0,134,0" concept="7" trace="CompletionCustomization_PropertyFeature" />
-      <node id="772883491822711657" at="577,73,578,77" concept="1" />
+      <node id="772883491822711657" at="132,0,133,0" concept="7" trace="CompletionCustomization_PropertyFeature" />
+      <node id="772883491822711657" at="576,73,577,77" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="772883491822711657" at="144,0,145,0" concept="2" trace="myConceptCompletionCustomization_PropertyFeature" />
-      <node id="772883491822711657" at="757,73,758,64" concept="6" />
-      <node id="772883491822711657" at="2731,97,2732,198" concept="5" />
-      <node id="772883491822711657" at="2732,198,2733,34" concept="1" />
-      <node id="772883491822711657" at="2733,34,2734,146" concept="1" />
-      <node id="772883491822711657" at="2734,146,2735,111" concept="1" />
-      <node id="772883491822711657" at="2735,111,2736,17" concept="1" />
-      <node id="772883491822711661" at="2736,17,2737,164" concept="1" />
-      <node id="772883491822711657" at="2737,164,2738,22" concept="6" />
-      <node id="772883491822711657" at="2731,0,2740,0" concept="8" trace="createDescriptorForCompletionCustomization_PropertyFeature#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="772883491822711657" at="757,73,758,64" />
-      <scope id="772883491822711657" at="2731,97,2738,22">
+      <node id="772883491822711657" at="143,0,144,0" concept="2" trace="myConceptCompletionCustomization_PropertyFeature" />
+      <node id="772883491822711657" at="755,73,756,64" concept="6" />
+      <node id="772883491822711657" at="2718,97,2719,198" concept="5" />
+      <node id="772883491822711657" at="2719,198,2720,34" concept="1" />
+      <node id="772883491822711657" at="2720,34,2721,146" concept="1" />
+      <node id="772883491822711657" at="2721,146,2722,111" concept="1" />
+      <node id="772883491822711657" at="2722,111,2723,17" concept="1" />
+      <node id="772883491822711661" at="2723,17,2724,164" concept="1" />
+      <node id="772883491822711657" at="2724,164,2725,22" concept="6" />
+      <node id="772883491822711657" at="2718,0,2727,0" concept="8" trace="createDescriptorForCompletionCustomization_PropertyFeature#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="772883491822711657" at="755,73,756,64" />
+      <scope id="772883491822711657" at="2718,97,2725,22">
         <var name="b" id="772883491822711657" />
       </scope>
-      <scope id="772883491822711657" at="2731,0,2740,0" />
+      <scope id="772883491822711657" at="2718,0,2727,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/772883491822711658">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="772883491822711658" at="132,0,133,0" concept="2" trace="props_CompletionCustomization_LinkFeature" />
-      <node id="772883491822711658" at="1311,64,1312,76" concept="5" />
-      <node id="772883491822711658" at="1312,76,1313,136" concept="1" />
-      <node id="772883491822711658" at="1313,136,1314,67" concept="1" />
-      <node id="772883491822711658" at="1315,9,1316,57" concept="6" />
-      <node id="772883491822711658" at="1310,69,1315,9" concept="3" />
-      <scope id="772883491822711658" at="1311,64,1314,67">
+      <node id="772883491822711658" at="131,0,132,0" concept="2" trace="props_CompletionCustomization_LinkFeature" />
+      <node id="772883491822711658" at="1304,64,1305,76" concept="5" />
+      <node id="772883491822711658" at="1305,76,1306,136" concept="1" />
+      <node id="772883491822711658" at="1306,136,1307,67" concept="1" />
+      <node id="772883491822711658" at="1308,9,1309,57" concept="6" />
+      <node id="772883491822711658" at="1303,69,1308,9" concept="3" />
+      <scope id="772883491822711658" at="1304,64,1307,67">
         <var name="cpb" id="772883491822711658" />
       </scope>
-      <scope id="772883491822711658" at="1310,69,1316,57" />
+      <scope id="772883491822711658" at="1303,69,1309,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="772883491822711658" at="132,0,133,0" concept="7" trace="CompletionCustomization_LinkFeature" />
-      <node id="772883491822711658" at="576,69,577,73" concept="1" />
+      <node id="772883491822711658" at="131,0,132,0" concept="7" trace="CompletionCustomization_LinkFeature" />
+      <node id="772883491822711658" at="575,69,576,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="772883491822711658" at="143,0,144,0" concept="2" trace="myConceptCompletionCustomization_LinkFeature" />
-      <node id="772883491822711658" at="755,69,756,60" concept="6" />
-      <node id="772883491822711658" at="2722,93,2723,194" concept="5" />
-      <node id="772883491822711658" at="2723,194,2724,34" concept="1" />
-      <node id="772883491822711658" at="2724,34,2725,146" concept="1" />
-      <node id="772883491822711658" at="2725,146,2726,111" concept="1" />
-      <node id="772883491822711658" at="2726,111,2727,17" concept="1" />
-      <node id="772883491822711663" at="2727,17,2728,160" concept="1" />
-      <node id="772883491822711658" at="2728,160,2729,22" concept="6" />
-      <node id="772883491822711658" at="2722,0,2731,0" concept="8" trace="createDescriptorForCompletionCustomization_LinkFeature#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="772883491822711658" at="755,69,756,60" />
-      <scope id="772883491822711658" at="2722,93,2729,22">
+      <node id="772883491822711658" at="142,0,143,0" concept="2" trace="myConceptCompletionCustomization_LinkFeature" />
+      <node id="772883491822711658" at="753,69,754,60" concept="6" />
+      <node id="772883491822711658" at="2709,93,2710,194" concept="5" />
+      <node id="772883491822711658" at="2710,194,2711,34" concept="1" />
+      <node id="772883491822711658" at="2711,34,2712,146" concept="1" />
+      <node id="772883491822711658" at="2712,146,2713,111" concept="1" />
+      <node id="772883491822711658" at="2713,111,2714,17" concept="1" />
+      <node id="772883491822711663" at="2714,17,2715,160" concept="1" />
+      <node id="772883491822711658" at="2715,160,2716,22" concept="6" />
+      <node id="772883491822711658" at="2709,0,2718,0" concept="8" trace="createDescriptorForCompletionCustomization_LinkFeature#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="772883491822711658" at="753,69,754,60" />
+      <scope id="772883491822711658" at="2709,93,2716,22">
         <var name="b" id="772883491822711658" />
       </scope>
-      <scope id="772883491822711658" at="2722,0,2731,0" />
+      <scope id="772883491822711658" at="2709,0,2718,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/772883491827578824">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="772883491827578824" at="130,0,131,0" concept="2" trace="props_CompletionCustomization_CustomizeFunction" />
-      <node id="772883491827578824" at="1298,70,1299,76" concept="5" />
-      <node id="772883491827578824" at="1299,76,1300,75" concept="1" />
-      <node id="772883491827578824" at="1300,75,1301,73" concept="1" />
-      <node id="772883491827578824" at="1302,9,1303,63" concept="6" />
-      <node id="772883491827578824" at="1297,75,1302,9" concept="3" />
-      <scope id="772883491827578824" at="1298,70,1301,73">
+      <node id="772883491827578824" at="129,0,130,0" concept="2" trace="props_CompletionCustomization_CustomizeFunction" />
+      <node id="772883491827578824" at="1291,70,1292,76" concept="5" />
+      <node id="772883491827578824" at="1292,76,1293,75" concept="1" />
+      <node id="772883491827578824" at="1293,75,1294,73" concept="1" />
+      <node id="772883491827578824" at="1295,9,1296,63" concept="6" />
+      <node id="772883491827578824" at="1290,75,1295,9" concept="3" />
+      <scope id="772883491827578824" at="1291,70,1294,73">
         <var name="cpb" id="772883491827578824" />
       </scope>
-      <scope id="772883491827578824" at="1297,75,1303,63" />
+      <scope id="772883491827578824" at="1290,75,1296,63" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="772883491827578824" at="130,0,131,0" concept="7" trace="CompletionCustomization_CustomizeFunction" />
-      <node id="772883491827578824" at="574,89,575,79" concept="1" />
+      <node id="772883491827578824" at="129,0,130,0" concept="7" trace="CompletionCustomization_CustomizeFunction" />
+      <node id="772883491827578824" at="573,89,574,79" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="772883491827578824" at="141,0,142,0" concept="2" trace="myConceptCompletionCustomization_CustomizeFunction" />
-      <node id="772883491827578824" at="751,75,752,66" concept="6" />
-      <node id="772883491827578824" at="2706,99,2707,200" concept="5" />
-      <node id="772883491827578824" at="2707,200,2708,34" concept="1" />
-      <node id="772883491827578824" at="2708,34,2709,127" concept="1" />
-      <node id="772883491827578824" at="2709,127,2710,111" concept="1" />
-      <node id="772883491827578824" at="2710,111,2711,17" concept="1" />
-      <node id="772883491827578824" at="2711,17,2712,54" concept="1" />
-      <node id="772883491827578824" at="2712,54,2713,22" concept="6" />
-      <node id="772883491827578824" at="2706,0,2715,0" concept="8" trace="createDescriptorForCompletionCustomization_CustomizeFunction#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="772883491827578824" at="751,75,752,66" />
-      <scope id="772883491827578824" at="2706,99,2713,22">
+      <node id="772883491827578824" at="140,0,141,0" concept="2" trace="myConceptCompletionCustomization_CustomizeFunction" />
+      <node id="772883491827578824" at="749,75,750,66" concept="6" />
+      <node id="772883491827578824" at="2693,99,2694,200" concept="5" />
+      <node id="772883491827578824" at="2694,200,2695,34" concept="1" />
+      <node id="772883491827578824" at="2695,34,2696,127" concept="1" />
+      <node id="772883491827578824" at="2696,127,2697,111" concept="1" />
+      <node id="772883491827578824" at="2697,111,2698,17" concept="1" />
+      <node id="772883491827578824" at="2698,17,2699,54" concept="1" />
+      <node id="772883491827578824" at="2699,54,2700,22" concept="6" />
+      <node id="772883491827578824" at="2693,0,2702,0" concept="8" trace="createDescriptorForCompletionCustomization_CustomizeFunction#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="772883491827578824" at="749,75,750,66" />
+      <scope id="772883491827578824" at="2693,99,2700,22">
         <var name="b" id="772883491827578824" />
       </scope>
-      <scope id="772883491827578824" at="2706,0,2715,0" />
+      <scope id="772883491827578824" at="2693,0,2702,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/772883491827671409">
@@ -14776,41 +14776,41 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/7818019076292260194">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="7818019076292260194" at="125,0,126,0" concept="2" trace="props_CompletionCustomization" />
-      <node id="7818019076292260194" at="1265,52,1266,76" concept="5" />
-      <node id="7818019076292260194" at="1266,76,1267,35" concept="1" />
-      <node id="7818019076292260194" at="1267,35,1268,55" concept="1" />
-      <node id="7818019076292260194" at="1269,9,1270,45" concept="6" />
-      <node id="7818019076292260194" at="1264,57,1269,9" concept="3" />
-      <scope id="7818019076292260194" at="1265,52,1268,55">
+      <node id="7818019076292260194" at="133,0,134,0" concept="2" trace="props_CompletionStyling" />
+      <node id="7818019076292260194" at="1318,46,1319,76" concept="5" />
+      <node id="7818019076292260194" at="1319,76,1320,35" concept="1" />
+      <node id="7818019076292260194" at="1320,35,1321,49" concept="1" />
+      <node id="7818019076292260194" at="1322,9,1323,39" concept="6" />
+      <node id="7818019076292260194" at="1317,51,1322,9" concept="3" />
+      <scope id="7818019076292260194" at="1318,46,1321,49">
         <var name="cpb" id="7818019076292260194" />
       </scope>
-      <scope id="7818019076292260194" at="1264,57,1270,45" />
+      <scope id="7818019076292260194" at="1317,51,1323,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7818019076292260194" at="125,0,126,0" concept="7" trace="CompletionCustomization" />
-      <node id="7818019076292260194" at="569,53,570,62" concept="1" />
+      <node id="7818019076292260194" at="133,0,134,0" concept="7" trace="CompletionStyling" />
+      <node id="7818019076292260194" at="577,77,578,56" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="7818019076292260194" at="136,0,137,0" concept="2" trace="myConceptCompletionCustomization" />
-      <node id="7818019076292260194" at="741,57,742,48" concept="6" />
-      <node id="7818019076292260194" at="2658,81,2659,183" concept="5" />
-      <node id="7818019076292260194" at="2659,183,2660,33" concept="1" />
-      <node id="7818019076292260194" at="2660,33,2661,123" concept="1" />
-      <node id="7818019076292260194" at="2661,123,2662,71" concept="1" />
-      <node id="7818019076292260194" at="2662,71,2663,112" concept="1" />
-      <node id="7818019076292260194" at="2663,112,2664,17" concept="1" />
-      <node id="7250830207897909099" at="2664,17,2665,206" concept="1" />
-      <node id="772883491827840107" at="2665,206,2666,208" concept="1" />
-      <node id="7818019076292260194" at="2666,208,2667,54" concept="1" />
-      <node id="7818019076292260194" at="2667,54,2668,40" concept="1" />
-      <node id="7818019076292260194" at="2668,40,2669,22" concept="6" />
-      <node id="7818019076292260194" at="2658,0,2671,0" concept="8" trace="createDescriptorForCompletionCustomization#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="7818019076292260194" at="741,57,742,48" />
-      <scope id="7818019076292260194" at="2658,81,2669,22">
+      <node id="7818019076292260194" at="144,0,145,0" concept="2" trace="myConceptCompletionStyling" />
+      <node id="7818019076292260194" at="757,51,758,42" concept="6" />
+      <node id="7818019076292260194" at="2727,75,2728,177" concept="5" />
+      <node id="7818019076292260194" at="2728,177,2729,33" concept="1" />
+      <node id="7818019076292260194" at="2729,33,2730,123" concept="1" />
+      <node id="7818019076292260194" at="2730,123,2731,71" concept="1" />
+      <node id="7818019076292260194" at="2731,71,2732,112" concept="1" />
+      <node id="7818019076292260194" at="2732,112,2733,17" concept="1" />
+      <node id="7250830207897909099" at="2733,17,2734,206" concept="1" />
+      <node id="772883491827840107" at="2734,206,2735,208" concept="1" />
+      <node id="7818019076292260194" at="2735,208,2736,54" concept="1" />
+      <node id="7818019076292260194" at="2736,54,2737,34" concept="1" />
+      <node id="7818019076292260194" at="2737,34,2738,22" concept="6" />
+      <node id="7818019076292260194" at="2727,0,2740,0" concept="8" trace="createDescriptorForCompletionStyling#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="7818019076292260194" at="757,51,758,42" />
+      <scope id="7818019076292260194" at="2727,75,2738,22">
         <var name="b" id="7818019076292260194" />
       </scope>
-      <scope id="7818019076292260194" at="2658,0,2671,0" />
+      <scope id="7818019076292260194" at="2727,0,2740,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/784421273959492578">
@@ -16867,35 +16867,35 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9115396979021130786">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="9115396979021130786" at="128,0,129,0" concept="2" trace="props_CompletionCustomizationContextSpecificator" />
-      <node id="9115396979021130786" at="1286,71,1287,76" concept="5" />
-      <node id="9115396979021130786" at="1287,76,1288,74" concept="1" />
-      <node id="9115396979021130786" at="1289,9,1290,64" concept="6" />
-      <node id="9115396979021130786" at="1285,76,1289,9" concept="3" />
-      <scope id="9115396979021130786" at="1286,71,1288,74">
+      <node id="9115396979021130786" at="127,0,128,0" concept="2" trace="props_CompletionCustomizationContextSpecificator" />
+      <node id="9115396979021130786" at="1279,71,1280,76" concept="5" />
+      <node id="9115396979021130786" at="1280,76,1281,74" concept="1" />
+      <node id="9115396979021130786" at="1282,9,1283,64" concept="6" />
+      <node id="9115396979021130786" at="1278,76,1282,9" concept="3" />
+      <scope id="9115396979021130786" at="1279,71,1281,74">
         <var name="cpb" id="9115396979021130786" />
       </scope>
-      <scope id="9115396979021130786" at="1285,76,1290,64" />
+      <scope id="9115396979021130786" at="1278,76,1283,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9115396979021130786" at="128,0,129,0" concept="7" trace="CompletionCustomizationContextSpecificator" />
-      <node id="9115396979021130786" at="572,90,573,81" concept="1" />
+      <node id="9115396979021130786" at="127,0,128,0" concept="7" trace="CompletionCustomizationContextSpecificator" />
+      <node id="9115396979021130786" at="571,90,572,81" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="9115396979021130786" at="139,0,140,0" concept="2" trace="myConceptCompletionCustomizationContextSpecificator" />
-      <node id="9115396979021130786" at="747,76,748,67" concept="6" />
-      <node id="9115396979021130786" at="2690,100,2691,202" concept="5" />
-      <node id="9115396979021130786" at="2691,202,2692,19" concept="1" />
-      <node id="9115396979021130786" at="2692,19,2693,112" concept="1" />
-      <node id="9115396979021130786" at="2693,112,2694,17" concept="1" />
-      <node id="9115396979021130786" at="2694,17,2695,22" concept="6" />
-      <node id="9115396979021130786" at="2699,33,2700,76" concept="1" />
-      <node id="9115396979021130786" at="2690,0,2697,0" concept="8" trace="createDescriptorForCompletionCustomizationContextSpecificator#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="9115396979021130786" at="747,76,748,67" />
-      <scope id="9115396979021130786" at="2690,100,2695,22">
+      <node id="9115396979021130786" at="138,0,139,0" concept="2" trace="myConceptCompletionCustomizationContextSpecificator" />
+      <node id="9115396979021130786" at="745,76,746,67" concept="6" />
+      <node id="9115396979021130786" at="2677,100,2678,202" concept="5" />
+      <node id="9115396979021130786" at="2678,202,2679,19" concept="1" />
+      <node id="9115396979021130786" at="2679,19,2680,112" concept="1" />
+      <node id="9115396979021130786" at="2680,112,2681,17" concept="1" />
+      <node id="9115396979021130786" at="2681,17,2682,22" concept="6" />
+      <node id="9115396979021130786" at="2686,33,2687,76" concept="1" />
+      <node id="9115396979021130786" at="2677,0,2684,0" concept="8" trace="createDescriptorForCompletionCustomizationContextSpecificator#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="9115396979021130786" at="745,76,746,67" />
+      <scope id="9115396979021130786" at="2677,100,2682,22">
         <var name="b" id="9115396979021130786" />
       </scope>
-      <scope id="9115396979021130786" at="2690,0,2697,0" />
+      <scope id="9115396979021130786" at="2677,0,2684,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/9122903797276194520">

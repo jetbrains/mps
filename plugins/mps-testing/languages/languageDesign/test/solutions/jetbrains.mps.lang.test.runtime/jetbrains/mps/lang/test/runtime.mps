@@ -8373,7 +8373,7 @@
             </node>
             <node concept="2YIFZM" id="5s44y2LhH84" role="33vP2m">
               <ref role="37wK5l" node="5s44y2LgV2w" resolve="getEventTargetComponent" />
-              <ref role="1Pybhc" node="5s44y2Lh6_5" resolve="EditorUtil" />
+              <ref role="1Pybhc" node="5s44y2Lh6_5" resolve="EditorTestUtil" />
               <node concept="37vLTw" id="5s44y2LhLUC" role="37wK5m">
                 <ref role="3cqZAo" node="5s44y2LhEsR" resolve="eventTargetCell" />
               </node>
@@ -8542,7 +8542,7 @@
   </node>
   <node concept="312cEu" id="5s44y2Lh6_5">
     <property role="3GE5qa" value="util" />
-    <property role="TrG5h" value="EditorUtil" />
+    <property role="TrG5h" value="EditorTestUtil" />
     <node concept="2YIFZL" id="5s44y2LgV2w" role="jymVt">
       <property role="TrG5h" value="getEventTargetComponent" />
       <node concept="37vLTG" id="5s44y2LgV2x" role="3clF46">
@@ -8692,7 +8692,7 @@
       <node concept="37vLTG" id="14TMHtHs1Om" role="3clF46">
         <property role="TrG5h" value="runnable" />
         <node concept="3uibUv" id="14TMHtHue26" role="1tU5fm">
-          <ref role="3uigEE" node="14TMHtHucvx" resolve="EditorUtil.EditorTestRunnable" />
+          <ref role="3uigEE" node="14TMHtHucvx" resolve="EditorTestUtil.EditorTestRunnable" />
         </node>
       </node>
       <node concept="37vLTG" id="14TMHtHs2Gk" role="3clF46">
@@ -8703,6 +8703,87 @@
         <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
       </node>
       <node concept="3Tm1VV" id="14TMHtI7vqd" role="1B3o_S" />
+    </node>
+    <node concept="2YIFZL" id="4AL49kgA3EJ" role="jymVt">
+      <property role="TrG5h" value="runWithCompletionStyling" />
+      <property role="DiZV1" value="false" />
+      <property role="od$2w" value="false" />
+      <node concept="3clFbS" id="4AL49kgA3EK" role="3clF47">
+        <node concept="3cpWs8" id="4AL49kgA3EL" role="3cqZAp">
+          <node concept="3cpWsn" id="4AL49kgA3EM" role="3cpWs9">
+            <property role="TrG5h" value="completionStylingSettings" />
+            <node concept="10P_77" id="4AL49kgA3EN" role="1tU5fm" />
+            <node concept="2OqwBi" id="4AL49kgA3EO" role="33vP2m">
+              <node concept="2YIFZM" id="4AL49kgA3EP" role="2Oq$k0">
+                <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
+                <ref role="37wK5l" to="exr9:~EditorSettings.getInstance()" resolve="getInstance" />
+              </node>
+              <node concept="liA8E" id="4AL49kgA4hD" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorSettings.isCompletionStyling()" resolve="isCompletionStyling" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4AL49kgA3ER" role="3cqZAp">
+          <node concept="2OqwBi" id="4AL49kgA3ES" role="3clFbG">
+            <node concept="2YIFZM" id="4AL49kgA3ET" role="2Oq$k0">
+              <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
+              <ref role="37wK5l" to="exr9:~EditorSettings.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="4AL49kgA3EU" role="2OqNvi">
+              <ref role="37wK5l" to="exr9:~EditorSettings.setCompletionStyling(boolean)" resolve="setCompletionStyling" />
+              <node concept="37vLTw" id="4AL49kgA3EV" role="37wK5m">
+                <ref role="3cqZAo" node="4AL49kgA3Fb" resolve="completionStyling" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2GUZhq" id="4AL49kgA3EW" role="3cqZAp">
+          <node concept="3clFbS" id="4AL49kgA3EX" role="2GV8ay">
+            <node concept="3clFbF" id="4AL49kgA3EY" role="3cqZAp">
+              <node concept="2OqwBi" id="4AL49kgA3EZ" role="3clFbG">
+                <node concept="37vLTw" id="4AL49kgA3F0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4AL49kgA3F9" resolve="runnable" />
+                </node>
+                <node concept="liA8E" id="4AL49kgA3F1" role="2OqNvi">
+                  <ref role="37wK5l" node="14TMHtHucDr" resolve="run" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="4AL49kgA3F2" role="2GVbov">
+            <node concept="3clFbF" id="4AL49kgA3F3" role="3cqZAp">
+              <node concept="2OqwBi" id="4AL49kgA3F4" role="3clFbG">
+                <node concept="2YIFZM" id="4AL49kgA3F5" role="2Oq$k0">
+                  <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
+                  <ref role="37wK5l" to="exr9:~EditorSettings.getInstance()" resolve="getInstance" />
+                </node>
+                <node concept="liA8E" id="4AL49kgA3F6" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorSettings.setCompletionStyling(boolean)" resolve="setCompletionStyling" />
+                  <node concept="37vLTw" id="4AL49kgA3F7" role="37wK5m">
+                    <ref role="3cqZAo" node="4AL49kgA3EM" resolve="completionStylingSettings" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3cqZAl" id="4AL49kgA3F8" role="3clF45" />
+      <node concept="37vLTG" id="4AL49kgA3F9" role="3clF46">
+        <property role="TrG5h" value="runnable" />
+        <node concept="3uibUv" id="4AL49kgA3Fa" role="1tU5fm">
+          <ref role="3uigEE" node="14TMHtHucvx" resolve="EditorTestUtil.EditorTestRunnable" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="4AL49kgA3Fb" role="3clF46">
+        <property role="TrG5h" value="completionStyling" />
+        <node concept="10P_77" id="4AL49kgA3Fc" role="1tU5fm" />
+      </node>
+      <node concept="3uibUv" id="4AL49kgA3Fd" role="Sfmx6">
+        <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+      </node>
+      <node concept="3Tm1VV" id="4AL49kgA3Fe" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="14TMHtHubnK" role="jymVt" />
     <node concept="3HP615" id="14TMHtHucvx" role="jymVt">
@@ -10516,7 +10597,7 @@
             </node>
             <node concept="2YIFZM" id="5s44y2Lg_tr" role="33vP2m">
               <ref role="37wK5l" node="5s44y2LgV2w" resolve="getEventTargetComponent" />
-              <ref role="1Pybhc" node="5s44y2Lh6_5" resolve="EditorUtil" />
+              <ref role="1Pybhc" node="5s44y2Lh6_5" resolve="EditorTestUtil" />
               <node concept="37vLTw" id="5s44y2Lg_ts" role="37wK5m">
                 <ref role="3cqZAo" node="5s44y2Lgzc5" resolve="selectedCell" />
               </node>

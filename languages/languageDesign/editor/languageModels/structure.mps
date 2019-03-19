@@ -6739,9 +6739,9 @@
     <property role="R5$K7" value="false" />
     <property role="19KtqR" value="true" />
     <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CompletionCustomization" />
+    <property role="TrG5h" value="CompletionStyling" />
     <property role="3GE5qa" value="Menu.Completion" />
-    <property role="34LRSv" value="Completion Customization" />
+    <property role="34LRSv" value="Completion Styling" />
     <property role="EcuMT" value="7818019076292260194" />
     <ref role="1TJDcQ" to="tpee:fz12cDA" resolve="ClassConcept" />
     <node concept="1TJgyj" id="6iw7UxkrjtF" role="1TKVEi">

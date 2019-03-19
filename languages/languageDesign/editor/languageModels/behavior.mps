@@ -25421,7 +25421,7 @@
                   <node concept="2Xjw5R" id="ETPn3v9Jm9" role="2OqNvi">
                     <node concept="1xMEDy" id="ETPn3v9Jma" role="1xVPHs">
                       <node concept="chp4Y" id="ETPn3vi_lO" role="ri$Ld">
-                        <ref role="cht4Q" to="tpc2:6LZbIQxCb5y" resolve="CompletionCustomization" />
+                        <ref role="cht4Q" to="tpc2:6LZbIQxCb5y" resolve="CompletionStyling" />
                       </node>
                     </node>
                   </node>
@@ -25676,7 +25676,7 @@
                     <node concept="2Xjw5R" id="ETPn3va1Dm" role="2OqNvi">
                       <node concept="1xMEDy" id="ETPn3va1Do" role="1xVPHs">
                         <node concept="chp4Y" id="ETPn3va27e" role="ri$Ld">
-                          <ref role="cht4Q" to="tpc2:6LZbIQxCb5y" resolve="CompletionCustomization" />
+                          <ref role="cht4Q" to="tpc2:6LZbIQxCb5y" resolve="CompletionStyling" />
                         </node>
                       </node>
                     </node>

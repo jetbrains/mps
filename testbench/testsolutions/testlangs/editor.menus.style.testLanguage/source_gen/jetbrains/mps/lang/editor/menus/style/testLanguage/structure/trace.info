@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,104,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,48,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="18,0,185,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668061067463">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668061067463" at="22,0,23,0" concept="2" trace="props_TestCompletionCustomization_ParentTestContextMatcher" />
+      <node id="5310043668061067463" at="94,81,95,76" concept="5" />
+      <node id="5310043668061067463" at="95,76,96,86" concept="1" />
+      <node id="5310043668061067463" at="96,86,97,84" concept="1" />
+      <node id="5310043668061067463" at="98,9,99,74" concept="6" />
+      <node id="5310043668061067463" at="93,86,98,9" concept="3" />
+      <scope id="5310043668061067463" at="94,81,97,84">
+        <var name="cpb" id="5310043668061067463" />
+      </scope>
+      <scope id="5310043668061067463" at="93,86,99,74" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668061067463" at="22,0,23,0" concept="7" trace="TestCompletionCustomization_ParentTestContextMatcher" />
+      <node id="5310043668061067463" at="35,90,36,91" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668061067463" at="29,0,30,0" concept="2" trace="myConceptTestCompletionCustomization_ParentTestContextMatcher" />
+      <node id="5310043668061067463" at="72,86,73,77" concept="6" />
+      <node id="5310043668061067463" at="171,110,172,237" concept="5" />
+      <node id="5310043668061067463" at="172,237,173,34" concept="1" />
+      <node id="5310043668061067463" at="173,34,174,137" concept="1" />
+      <node id="5310043668061067463" at="174,137,175,17" concept="1" />
+      <node id="5310043668063133032" at="175,17,176,122" concept="1" />
+      <node id="5310043668063133681" at="176,122,177,183" concept="1" />
+      <node id="5310043668061067495" at="177,183,178,203" concept="1" />
+      <node id="5310043668062452893" at="178,203,179,217" concept="1" />
+      <node id="5310043668063018993" at="179,217,180,224" concept="1" />
+      <node id="5310043668063086720" at="180,224,181,215" concept="1" />
+      <node id="5310043668061067463" at="181,215,182,22" concept="6" />
+      <node id="5310043668061067463" at="171,0,184,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ParentTestContextMatcher#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668061067463" at="72,86,73,77" />
+      <scope id="5310043668061067463" at="171,110,182,22">
+        <var name="b" id="5310043668061067463" />
+      </scope>
+      <scope id="5310043668061067463" at="171,0,184,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668061067666">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668061067666" at="13,0,14,0" concept="2" trace="props_TestCompletionCustomization_ChildNoPriority" />
+      <node id="5310043668061067666" at="36,72,37,76" concept="5" />
+      <node id="5310043668061067666" at="37,76,38,45" concept="1" />
+      <node id="5310043668061067666" at="38,45,39,75" concept="1" />
+      <node id="5310043668061067666" at="40,9,41,65" concept="6" />
+      <node id="5310043668061067666" at="35,77,40,9" concept="3" />
+      <scope id="5310043668061067666" at="36,72,39,75">
+        <var name="cpb" id="5310043668061067666" />
+      </scope>
+      <scope id="5310043668061067666" at="35,77,41,65" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668061067666" at="13,0,14,0" concept="7" trace="TestCompletionCustomization_ChildNoPriority" />
+      <node id="5310043668061067666" at="26,78,27,82" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668061067666" at="20,0,21,0" concept="2" trace="myConceptTestCompletionCustomization_ChildNoPriority" />
+      <node id="5310043668061067666" at="54,77,55,68" concept="6" />
+      <node id="5310043668061067666" at="95,101,96,228" concept="5" />
+      <node id="5310043668061067666" at="96,228,97,34" concept="1" />
+      <node id="5310043668061067666" at="97,34,98,192" concept="1" />
+      <node id="5310043668061067666" at="98,192,99,137" concept="1" />
+      <node id="5310043668061067666" at="99,137,100,17" concept="1" />
+      <node id="5310043668061067666" at="100,17,101,27" concept="1" />
+      <node id="5310043668061067666" at="101,27,102,22" concept="6" />
+      <node id="5310043668061067666" at="95,0,104,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ChildNoPriority#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668061067666" at="54,77,55,68" />
+      <scope id="5310043668061067666" at="95,101,102,22">
+        <var name="b" id="5310043668061067666" />
+      </scope>
+      <scope id="5310043668061067666" at="95,0,104,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668061067667">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668061067667" at="16,0,17,0" concept="2" trace="props_TestCompletionCustomization_ChildWithPriority" />
+      <node id="5310043668061067667" at="55,74,56,76" concept="5" />
+      <node id="5310043668061067667" at="56,76,57,47" concept="1" />
+      <node id="5310043668061067667" at="57,47,58,77" concept="1" />
+      <node id="5310043668061067667" at="59,9,60,67" concept="6" />
+      <node id="5310043668061067667" at="54,79,59,9" concept="3" />
+      <scope id="5310043668061067667" at="55,74,58,77">
+        <var name="cpb" id="5310043668061067667" />
+      </scope>
+      <scope id="5310043668061067667" at="54,79,60,67" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668061067667" at="16,0,17,0" concept="7" trace="TestCompletionCustomization_ChildWithPriority" />
+      <node id="5310043668061067667" at="29,92,30,84" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668061067667" at="23,0,24,0" concept="2" trace="myConceptTestCompletionCustomization_ChildWithPriority" />
+      <node id="5310043668061067667" at="60,79,61,70" concept="6" />
+      <node id="5310043668061067667" at="118,103,119,230" concept="5" />
+      <node id="5310043668061067667" at="119,230,120,34" concept="1" />
+      <node id="5310043668061067667" at="120,34,121,192" concept="1" />
+      <node id="5310043668061067667" at="121,192,122,137" concept="1" />
+      <node id="5310043668061067667" at="122,137,123,17" concept="1" />
+      <node id="5310043668061067667" at="123,17,124,29" concept="1" />
+      <node id="5310043668061067667" at="124,29,125,22" concept="6" />
+      <node id="5310043668061067667" at="118,0,127,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ChildWithPriority#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668061067667" at="60,79,61,70" />
+      <scope id="5310043668061067667" at="118,103,125,22">
+        <var name="b" id="5310043668061067667" />
+      </scope>
+      <scope id="5310043668061067667" at="118,0,127,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668062336190">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668062336190" at="12,0,13,0" concept="2" trace="props_TestCompletionCustomization_ChildNoMenu" />
+      <node id="5310043668062336190" at="30,68,31,76" concept="5" />
+      <node id="5310043668062336190" at="31,76,32,71" concept="1" />
+      <node id="5310043668062336190" at="33,9,34,61" concept="6" />
+      <node id="5310043668062336190" at="29,73,33,9" concept="3" />
+      <scope id="5310043668062336190" at="30,68,32,71">
+        <var name="cpb" id="5310043668062336190" />
+      </scope>
+      <scope id="5310043668062336190" at="29,73,34,61" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668062336190" at="12,0,13,0" concept="7" trace="TestCompletionCustomization_ChildNoMenu" />
+      <node id="5310043668062336190" at="25,116,26,78" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668062336190" at="19,0,20,0" concept="2" trace="myConceptTestCompletionCustomization_ChildNoMenu" />
+      <node id="5310043668062336190" at="52,73,53,64" concept="6" />
+      <node id="5310043668062336190" at="88,97,89,224" concept="5" />
+      <node id="5310043668062336190" at="89,224,90,19" concept="1" />
+      <node id="5310043668062336190" at="90,19,91,137" concept="1" />
+      <node id="5310043668062336190" at="91,137,92,17" concept="1" />
+      <node id="5310043668062336190" at="92,17,93,22" concept="6" />
+      <node id="5310043668062336190" at="162,33,163,76" concept="1" />
+      <node id="5310043668062336190" at="88,0,95,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ChildNoMenu#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668062336190" at="52,73,53,64" />
+      <scope id="5310043668062336190" at="88,97,93,22">
+        <var name="b" id="5310043668062336190" />
+      </scope>
+      <scope id="5310043668062336190" at="88,0,95,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668062444204">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668062444204" at="15,0,16,0" concept="2" trace="props_TestCompletionCustomization_ChildSimpleSubstituteMenu" />
+      <node id="5310043668062444204" at="49,82,50,76" concept="5" />
+      <node id="5310043668062444204" at="50,76,51,85" concept="1" />
+      <node id="5310043668062444204" at="52,9,53,75" concept="6" />
+      <node id="5310043668062444204" at="48,87,52,9" concept="3" />
+      <scope id="5310043668062444204" at="49,82,51,85">
+        <var name="cpb" id="5310043668062444204" />
+      </scope>
+      <scope id="5310043668062444204" at="48,87,53,75" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668062444204" at="15,0,16,0" concept="7" trace="TestCompletionCustomization_ChildSimpleSubstituteMenu" />
+      <node id="5310043668062444204" at="28,99,29,92" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668062444204" at="22,0,23,0" concept="2" trace="myConceptTestCompletionCustomization_ChildSimpleSubstituteMenu" />
+      <node id="5310043668062444204" at="58,87,59,78" concept="6" />
+      <node id="5310043668062444204" at="111,111,112,238" concept="5" />
+      <node id="5310043668062444204" at="112,238,113,19" concept="1" />
+      <node id="5310043668062444204" at="113,19,114,137" concept="1" />
+      <node id="5310043668062444204" at="114,137,115,17" concept="1" />
+      <node id="5310043668062444204" at="115,17,116,22" concept="6" />
+      <node id="5310043668062444204" at="163,76,164,76" concept="1" />
+      <node id="5310043668062444204" at="111,0,118,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ChildSimpleSubstituteMenu#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668062444204" at="58,87,59,78" />
+      <scope id="5310043668062444204" at="111,111,116,22">
+        <var name="b" id="5310043668062444204" />
+      </scope>
+      <scope id="5310043668062444204" at="111,0,118,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668062994153">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668062994153" at="14,0,15,0" concept="2" trace="props_TestCompletionCustomization_ChildParameterizedSubstituteMenu" />
+      <node id="5310043668062994153" at="43,89,44,76" concept="5" />
+      <node id="5310043668062994153" at="44,76,45,92" concept="1" />
+      <node id="5310043668062994153" at="46,9,47,82" concept="6" />
+      <node id="5310043668062994153" at="42,94,46,9" concept="3" />
+      <scope id="5310043668062994153" at="43,89,45,92">
+        <var name="cpb" id="5310043668062994153" />
+      </scope>
+      <scope id="5310043668062994153" at="42,94,47,82" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668062994153" at="14,0,15,0" concept="7" trace="TestCompletionCustomization_ChildParameterizedSubstituteMenu" />
+      <node id="5310043668062994153" at="27,82,28,99" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668062994153" at="21,0,22,0" concept="2" trace="myConceptTestCompletionCustomization_ChildParameterizedSubstituteMenu" />
+      <node id="5310043668062994153" at="56,94,57,85" concept="6" />
+      <node id="5310043668062994153" at="104,118,105,245" concept="5" />
+      <node id="5310043668062994153" at="105,245,106,19" concept="1" />
+      <node id="5310043668062994153" at="106,19,107,137" concept="1" />
+      <node id="5310043668062994153" at="107,137,108,17" concept="1" />
+      <node id="5310043668062994153" at="108,17,109,22" concept="6" />
+      <node id="5310043668062994153" at="164,76,165,76" concept="1" />
+      <node id="5310043668062994153" at="104,0,111,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ChildParameterizedSubstituteMenu#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668062994153" at="56,94,57,85" />
+      <scope id="5310043668062994153" at="104,118,109,22">
+        <var name="b" id="5310043668062994153" />
+      </scope>
+      <scope id="5310043668062994153" at="104,0,111,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045800">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668063045800" at="17,0,18,0" concept="2" trace="props_TestCompletionCustomization_ChildWrapSubstituteMenu" />
+      <node id="5310043668063045800" at="62,80,63,76" concept="5" />
+      <node id="5310043668063045800" at="63,76,64,83" concept="1" />
+      <node id="5310043668063045800" at="65,9,66,73" concept="6" />
+      <node id="5310043668063045800" at="61,85,65,9" concept="3" />
+      <scope id="5310043668063045800" at="62,80,64,83">
+        <var name="cpb" id="5310043668063045800" />
+      </scope>
+      <scope id="5310043668063045800" at="61,85,66,73" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668063045800" at="17,0,18,0" concept="7" trace="TestCompletionCustomization_ChildWrapSubstituteMenu" />
+      <node id="5310043668063045800" at="30,84,31,90" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668063045800" at="24,0,25,0" concept="2" trace="myConceptTestCompletionCustomization_ChildWrapSubstituteMenu" />
+      <node id="5310043668063045800" at="62,85,63,76" concept="6" />
+      <node id="5310043668063045800" at="127,109,128,236" concept="5" />
+      <node id="5310043668063045800" at="128,236,129,19" concept="1" />
+      <node id="5310043668063045800" at="129,19,130,137" concept="1" />
+      <node id="5310043668063045800" at="130,137,131,17" concept="1" />
+      <node id="5310043668063045855" at="131,17,132,200" concept="1" />
+      <node id="5310043668063045800" at="132,200,133,22" concept="6" />
+      <node id="5310043668063045800" at="165,76,166,76" concept="1" />
+      <node id="5310043668063045800" at="127,0,135,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ChildWrapSubstituteMenu#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668063045800" at="62,85,63,76" />
+      <scope id="5310043668063045800" at="127,109,133,22">
+        <var name="b" id="5310043668063045800" />
+      </scope>
+      <scope id="5310043668063045800" at="127,0,135,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045852">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668063045852" at="18,0,19,0" concept="2" trace="props_TestCompletionCustomization_ConceptToWrap" />
+      <node id="5310043668063045852" at="68,70,69,76" concept="5" />
+      <node id="5310043668063045852" at="69,76,70,73" concept="1" />
+      <node id="5310043668063045852" at="71,9,72,63" concept="6" />
+      <node id="5310043668063045852" at="67,75,71,9" concept="3" />
+      <scope id="5310043668063045852" at="68,70,70,73">
+        <var name="cpb" id="5310043668063045852" />
+      </scope>
+      <scope id="5310043668063045852" at="67,75,72,63" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668063045852" at="18,0,19,0" concept="7" trace="TestCompletionCustomization_ConceptToWrap" />
+      <node id="5310043668063045852" at="31,90,32,80" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668063045852" at="25,0,26,0" concept="2" trace="myConceptTestCompletionCustomization_ConceptToWrap" />
+      <node id="5310043668063045852" at="64,75,65,66" concept="6" />
+      <node id="5310043668063045852" at="135,99,136,226" concept="5" />
+      <node id="5310043668063045852" at="136,226,137,33" concept="1" />
+      <node id="5310043668063045852" at="137,33,138,137" concept="1" />
+      <node id="5310043668063045852" at="138,137,139,17" concept="1" />
+      <node id="5310043668063045852" at="139,17,140,22" concept="6" />
+      <node id="5310043668063045852" at="135,0,142,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ConceptToWrap#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668063045852" at="64,75,65,66" />
+      <scope id="5310043668063045852" at="135,99,140,22">
+        <var name="b" id="5310043668063045852" />
+      </scope>
+      <scope id="5310043668063045852" at="135,0,142,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045853">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668063045853" at="20,0,21,0" concept="2" trace="props_TestCompletionCustomization_ConceptToWrapWithPriority" />
+      <node id="5310043668063045853" at="81,82,82,76" concept="5" />
+      <node id="5310043668063045853" at="82,76,83,47" concept="1" />
+      <node id="5310043668063045853" at="83,47,84,85" concept="1" />
+      <node id="5310043668063045853" at="85,9,86,75" concept="6" />
+      <node id="5310043668063045853" at="80,87,85,9" concept="3" />
+      <scope id="5310043668063045853" at="81,82,84,85">
+        <var name="cpb" id="5310043668063045853" />
+      </scope>
+      <scope id="5310043668063045853" at="80,87,86,75" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668063045853" at="20,0,21,0" concept="7" trace="TestCompletionCustomization_ConceptToWrapWithPriority" />
+      <node id="5310043668063045853" at="33,90,34,92" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668063045853" at="27,0,28,0" concept="2" trace="myConceptTestCompletionCustomization_ConceptToWrapWithPriority" />
+      <node id="5310043668063045853" at="68,87,69,78" concept="6" />
+      <node id="5310043668063045853" at="151,111,152,238" concept="5" />
+      <node id="5310043668063045853" at="152,238,153,34" concept="1" />
+      <node id="5310043668063045853" at="153,34,154,182" concept="1" />
+      <node id="5310043668063045853" at="154,182,155,137" concept="1" />
+      <node id="5310043668063045853" at="155,137,156,17" concept="1" />
+      <node id="5310043668063045853" at="156,17,157,29" concept="1" />
+      <node id="5310043668063045853" at="157,29,158,22" concept="6" />
+      <node id="5310043668063045853" at="151,0,160,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ConceptToWrapWithPriority#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668063045853" at="68,87,69,78" />
+      <scope id="5310043668063045853" at="151,111,158,22">
+        <var name="b" id="5310043668063045853" />
+      </scope>
+      <scope id="5310043668063045853" at="151,0,160,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045854">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668063045854" at="19,0,20,0" concept="2" trace="props_TestCompletionCustomization_ConceptToWrapNoPriority" />
+      <node id="5310043668063045854" at="74,80,75,76" concept="5" />
+      <node id="5310043668063045854" at="75,76,76,45" concept="1" />
+      <node id="5310043668063045854" at="76,45,77,83" concept="1" />
+      <node id="5310043668063045854" at="78,9,79,73" concept="6" />
+      <node id="5310043668063045854" at="73,85,78,9" concept="3" />
+      <scope id="5310043668063045854" at="74,80,77,83">
+        <var name="cpb" id="5310043668063045854" />
+      </scope>
+      <scope id="5310043668063045854" at="73,85,79,73" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668063045854" at="19,0,20,0" concept="7" trace="TestCompletionCustomization_ConceptToWrapNoPriority" />
+      <node id="5310043668063045854" at="32,80,33,90" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668063045854" at="26,0,27,0" concept="2" trace="myConceptTestCompletionCustomization_ConceptToWrapNoPriority" />
+      <node id="5310043668063045854" at="66,85,67,76" concept="6" />
+      <node id="5310043668063045854" at="142,109,143,236" concept="5" />
+      <node id="5310043668063045854" at="143,236,144,34" concept="1" />
+      <node id="5310043668063045854" at="144,34,145,182" concept="1" />
+      <node id="5310043668063045854" at="145,182,146,137" concept="1" />
+      <node id="5310043668063045854" at="146,137,147,17" concept="1" />
+      <node id="5310043668063045854" at="147,17,148,27" concept="1" />
+      <node id="5310043668063045854" at="148,27,149,22" concept="6" />
+      <node id="5310043668063045854" at="142,0,151,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ConceptToWrapNoPriority#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668063045854" at="66,85,67,76" />
+      <scope id="5310043668063045854" at="142,109,149,22">
+        <var name="b" id="5310043668063045854" />
+      </scope>
+      <scope id="5310043668063045854" at="142,0,151,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063055324">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="5310043668063055324" at="21,0,22,0" concept="2" trace="props_TestCompletionCustomization_ContextMatcherBaseChild" />
+      <node id="5310043668063055324" at="88,80,89,76" concept="5" />
+      <node id="5310043668063055324" at="89,76,90,83" concept="1" />
+      <node id="5310043668063055324" at="91,9,92,73" concept="6" />
+      <node id="5310043668063055324" at="87,85,91,9" concept="3" />
+      <scope id="5310043668063055324" at="88,80,90,83">
+        <var name="cpb" id="5310043668063055324" />
+      </scope>
+      <scope id="5310043668063055324" at="87,85,92,73" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="5310043668063055324" at="21,0,22,0" concept="7" trace="TestCompletionCustomization_ContextMatcherBaseChild" />
+      <node id="5310043668063055324" at="34,92,35,90" concept="1" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668063055324" at="28,0,29,0" concept="2" trace="myConceptTestCompletionCustomization_ContextMatcherBaseChild" />
+      <node id="5310043668063055324" at="70,85,71,76" concept="6" />
+      <node id="5310043668063055324" at="160,109,161,236" concept="5" />
+      <node id="5310043668063055324" at="161,236,162,33" concept="1" />
+      <node id="5310043668063055324" at="166,76,167,137" concept="1" />
+      <node id="5310043668063055324" at="167,137,168,17" concept="1" />
+      <node id="5310043668063055324" at="168,17,169,22" concept="6" />
+      <node id="5310043668063055324" at="160,0,171,0" concept="8" trace="createDescriptorForTestCompletionCustomization_ContextMatcherBaseChild#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5310043668063055324" at="70,85,71,76" />
+      <scope id="5310043668063055324" at="160,109,169,22">
+        <var name="b" id="5310043668063055324" />
+      </scope>
+      <scope id="5310043668063055324" at="160,0,171,0" />
+    </file>
+  </root>
+  <root nodeRef="r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063133684">
+    <file name="EnumerationDescriptor_TestCompletionCustomization_Enum.java">
+      <node id="5310043668063133684" at="15,67,16,257" concept="9" />
+      <node id="5310043668063133685" at="19,0,20,0" concept="2" trace="VALUE_withpriority_0" />
+      <node id="5310043668063133686" at="20,0,21,0" concept="2" trace="VALUE_nopriority_0" />
+      <node id="5310043668063133684" at="24,62,25,32" concept="6" />
+      <node id="5310043668063133684" at="30,74,31,67" concept="6" />
+      <node id="5310043668063133684" at="37,25,38,18" concept="6" />
+      <node id="5310043668063133685" at="41,27,42,36" concept="6" />
+      <node id="5310043668063133686" at="43,25,44,34" concept="6" />
+      <node id="5310043668063133684" at="45,5,46,16" concept="6" />
+      <node id="5310043668063133684" at="15,0,18,0" concept="0" trace="EnumerationDescriptor_TestCompletionCustomization_Enum#()V" />
+      <node id="5310043668063133684" at="36,84,39,5" concept="3" />
+      <node id="5310043668063133684" at="22,0,27,0" concept="4" trace="getDefault#()Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <node id="5310043668063133684" at="28,0,33,0" concept="4" trace="getMembers#()Ljava/util/Collection;" />
+      <node id="5310043668063133684" at="39,5,45,5" concept="10" />
+      <node id="5310043668063133684" at="34,0,48,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
+      <scope id="5310043668063133684" at="15,67,16,257" />
+      <scope id="5310043668063133684" at="24,62,25,32" />
+      <scope id="5310043668063133684" at="30,74,31,67" />
+      <scope id="5310043668063133684" at="37,25,38,18" />
+      <scope id="5310043668063133685" at="41,27,42,36" />
+      <scope id="5310043668063133686" at="43,25,44,34" />
+      <scope id="5310043668063133684" at="15,0,18,0" />
+      <scope id="5310043668063133684" at="22,0,27,0" />
+      <scope id="5310043668063133684" at="28,0,33,0" />
+      <scope id="5310043668063133684" at="36,84,46,16" />
+      <scope id="5310043668063133684" at="34,0,48,0">
+        <var name="string" id="5310043668063133684" />
+      </scope>
+      <unit id="5310043668063133684" at="13,0,49,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.EnumerationDescriptor_TestCompletionCustomization_Enum" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="5310043668063133684" at="30,0,31,0" concept="2" trace="myEnumerationTestCompletionCustomization_Enum" />
+    </file>
+  </root>
+</debug-info>
+

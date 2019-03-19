@@ -37,7 +37,7 @@ public final class ConceptFunctionParameterCustomize_ContextNode__BehaviorDescri
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    SNode concept = CompletionCustomizationContextSpecificator__BehaviorDescriptor.getConcept_id7U0pk79eiL7.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionCustomization"), false, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator")));
+    SNode concept = CompletionCustomizationContextSpecificator__BehaviorDescriptor.getConcept_id7U0pk79eiL7.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling"), false, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator")));
     return _quotation_createNode_o1ng4y_a1a0(concept);
   }
 

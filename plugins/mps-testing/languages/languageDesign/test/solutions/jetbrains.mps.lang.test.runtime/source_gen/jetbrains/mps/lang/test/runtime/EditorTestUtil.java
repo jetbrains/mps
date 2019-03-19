@@ -8,7 +8,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
 import jetbrains.mps.nodeEditor.EditorSettings;
 
-public class EditorUtil {
+public class EditorTestUtil {
   public static JComponent getEventTargetComponent(EditorCell currentCell, EditorComponent editorComponent) {
     while (currentCell != null) {
       if (currentCell instanceof EditorCell_WithComponent) {
@@ -18,13 +18,22 @@ public class EditorUtil {
     }
     return editorComponent;
   }
-  public static void runWithTwoStepDeletion(EditorUtil.EditorTestRunnable runnable, boolean twoStepDeletion) throws Exception {
+  public static void runWithTwoStepDeletion(EditorTestUtil.EditorTestRunnable runnable, boolean twoStepDeletion) throws Exception {
     boolean twoStepDeletionSettings = EditorSettings.getInstance().isUseTwoStepDeletion();
     EditorSettings.getInstance().setUseTwoStepDeletion(twoStepDeletion);
     try {
       runnable.run();
     } finally {
       EditorSettings.getInstance().setUseTwoStepDeletion(twoStepDeletionSettings);
+    }
+  }
+  public static void runWithCompletionStyling(EditorTestUtil.EditorTestRunnable runnable, boolean completionStyling) throws Exception {
+    boolean completionStylingSettings = EditorSettings.getInstance().isCompletionStyling();
+    EditorSettings.getInstance().setCompletionStyling(completionStyling);
+    try {
+      runnable.run();
+    } finally {
+      EditorSettings.getInstance().setCompletionStyling(completionStylingSettings);
     }
   }
 

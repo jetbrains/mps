@@ -64,7 +64,7 @@ public class MouseEventsDispatcher {
     }
     assert eventTargetCell != null;
 
-    Component cellComponent = EditorUtil.getEventTargetComponent(eventTargetCell, editorComponent);
+    Component cellComponent = EditorTestUtil.getEventTargetComponent(eventTargetCell, editorComponent);
     Point cellComponentPoint = SwingUtilities.convertPoint(editorComponent, editorX, editorY, cellComponent);
 
     final Component targetComponent = cellComponent.getComponentAt(cellComponentPoint);

@@ -40,7 +40,7 @@ public final class CompletionCustomization_CustomizeFunction__BehaviorDescriptor
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
     ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e171L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_CompletionItemInformation"));
     ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e196L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_Style"));
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(CompletionCustomizationContextSpecificator__BehaviorDescriptor.getAdditionalParameters_idETPn3v9Kre.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionCustomization"), false, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator")))));
+    ListSequence.fromList(result).addSequence(ListSequence.fromList(CompletionCustomizationContextSpecificator__BehaviorDescriptor.getAdditionalParameters_idETPn3v9Kre.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling"), false, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator")))));
     return result;
   }
 

@@ -122,7 +122,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CellModel_URL;
   private ConceptPresentation props_CellModel_WithRole;
   private ConceptPresentation props_ColorStyleClassItem;
-  private ConceptPresentation props_CompletionCustomization;
   private ConceptPresentation props_CompletionCustomizationConceptCreatingSpecificator;
   private ConceptPresentation props_CompletionCustomizationConceptModifyingSpecificator;
   private ConceptPresentation props_CompletionCustomizationContextSpecificator;
@@ -131,6 +130,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CompletionCustomization_Feature;
   private ConceptPresentation props_CompletionCustomization_LinkFeature;
   private ConceptPresentation props_CompletionCustomization_PropertyFeature;
+  private ConceptPresentation props_CompletionStyling;
   private ConceptPresentation props_ConceptEditorContextHints;
   private ConceptPresentation props_ConceptEditorDeclaration;
   private ConceptPresentation props_ConceptEditorHintDeclaration;
@@ -1261,13 +1261,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ColorStyleClassItem = cpb.create();
         }
         return props_ColorStyleClassItem;
-      case LanguageConceptSwitch.CompletionCustomization:
-        if (props_CompletionCustomization == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_CompletionCustomization = cpb.create();
-        }
-        return props_CompletionCustomization;
       case LanguageConceptSwitch.CompletionCustomizationConceptCreatingSpecificator:
         if (props_CompletionCustomizationConceptCreatingSpecificator == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1321,6 +1314,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CompletionCustomization_PropertyFeature = cpb.create();
         }
         return props_CompletionCustomization_PropertyFeature;
+      case LanguageConceptSwitch.CompletionStyling:
+        if (props_CompletionStyling == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_CompletionStyling = cpb.create();
+        }
+        return props_CompletionStyling;
       case LanguageConceptSwitch.ConceptEditorContextHints:
         if (props_ConceptEditorContextHints == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

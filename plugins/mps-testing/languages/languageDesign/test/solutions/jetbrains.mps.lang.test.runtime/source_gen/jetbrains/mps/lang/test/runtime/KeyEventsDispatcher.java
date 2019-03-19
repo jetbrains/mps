@@ -144,7 +144,7 @@ __switch__:
       // TODO: return editorComponent here 
       return null;
     }
-    Component eventTarget = EditorUtil.getEventTargetComponent(selectedCell, editorComponent);
+    Component eventTarget = EditorTestUtil.getEventTargetComponent(selectedCell, editorComponent);
     if (eventTarget == editorComponent) {
       // TODO: return editorComponent here 
       return null;

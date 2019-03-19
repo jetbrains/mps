@@ -513,6 +513,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.contextAssistant.tests/jetbrains.mps.lang.editor.menus.contextAssistant.tests.msd" folder="core.aspects.editor.menus.contextAssistant.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.extras.tests/jetbrains.mps.lang.editor.menus.extras.tests.msd" folder="core.aspects.editor.menus.extras.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.sideTransform.tests/jetbrains.mps.lang.editor.menus.sideTransform.tests.msd" folder="core.aspects.editor.menus.sideTransform.tests" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.style.tests/jetbrains.mps.lang.editor.menus.style.tests.msd" folder="core.aspects.editor.menus.style.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.substitute.tests/jetbrains.mps.lang.editor.menus.substitute.tests.msd" folder="core.aspects.editor.menus.substitute.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.menus.tests/jetbrains.mps.lang.editor.menus.tests.msd" folder="core.aspects.editor.menus.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.multiple.test/jetbrains.mps.lang.editor.multiple.tests.msd" folder="core.aspects.editor" />
@@ -542,6 +543,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.contextAssistant.testLanguage/jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.mpl" folder="core.aspects.editor.menus.contextAssistant.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.extras.testLanguage/jetbrains.mps.lang.editor.menus.extras.testLanguage.mpl" folder="core.aspects.editor.menus.extras.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.sideTransform.testLanguage/jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.mpl" folder="core.aspects.editor.menus.sideTransform.tests" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.style.testLanguage/jetbrains.mps.lang.editor.menus.style.testLanguage.mpl" folder="core.aspects.editor.menus.style.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.substitute.extension.testLanguage/jetbrains.mps.lang.editor.menus.substitute.testExtendingLanguage.mpl" folder="core.aspects.editor.menus.substitute.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.substitute.testLanguage/jetbrains.mps.lang.editor.menus.substitute.testLanguage.mpl" folder="core.aspects.editor.menus.substitute.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.testExtendingLanguage/jetbrains.mps.lang.editor.menus.testExtendingLanguage.mpl" folder="core.aspects.editor.menus.tests" />
