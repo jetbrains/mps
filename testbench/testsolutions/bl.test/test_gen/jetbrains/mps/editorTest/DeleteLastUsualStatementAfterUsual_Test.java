@@ -9,7 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.EditorUtil;
+import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class DeleteLastUsualStatementAfterUsual_Test extends BaseTransformationTest {
@@ -34,7 +34,7 @@ public class DeleteLastUsualStatementAfterUsual_Test extends BaseTransformationT
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8821749938013444048", "8821749938013444071");
-      EditorUtil.runWithTwoStepDeletion(new EditorUtil.EditorTestRunnable() {
+      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
         }

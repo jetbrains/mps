@@ -9,7 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.EditorUtil;
+import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import junit.framework.Assert;
 
 @MPSLaunch
@@ -35,7 +35,7 @@ public class DeleteIncompleteMemberStaticKeywordTwoStep_Test extends BaseTransfo
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795788990919680", "5758795788990919685");
-      EditorUtil.runWithTwoStepDeletion(new EditorUtil.EditorTestRunnable() {
+      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
           Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell()));

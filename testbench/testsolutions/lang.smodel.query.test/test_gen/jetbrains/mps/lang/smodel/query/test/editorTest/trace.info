@@ -58,7 +58,7 @@
       <scope id="8654290870483576296" at="23,0,27,0" />
       <scope id="8654290870483576296" at="35,51,41,16" />
       <scope id="8654290870483576296" at="34,0,43,0" />
-      <unit id="1241246198932925232" at="37,44,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete1_Test$TestBody$1" />
+      <unit id="1241246198932925232" at="37,48,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete1_Test$TestBody$1" />
       <unit id="8654290870483576296" at="28,0,44,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete1_Test$TestBody" />
       <unit id="8654290870483576296" at="14,0,45,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete1_Test" />
     </file>
@@ -89,7 +89,7 @@
       <scope id="8654290870483593557" at="23,0,27,0" />
       <scope id="8654290870483593557" at="35,51,41,16" />
       <scope id="8654290870483593557" at="34,0,43,0" />
-      <unit id="1241246198932925490" at="37,44,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete2_Test$TestBody$1" />
+      <unit id="1241246198932925490" at="37,48,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete2_Test$TestBody$1" />
       <unit id="8654290870483593557" at="28,0,44,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete2_Test$TestBody" />
       <unit id="8654290870483593557" at="14,0,45,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete2_Test" />
     </file>
@@ -124,7 +124,7 @@
       <scope id="1241246198932925687" at="38,0,45,0" />
       <scope id="8654290870483594273" at="35,51,45,16" />
       <scope id="8654290870483594273" at="34,0,47,0" />
-      <unit id="1241246198932925687" at="37,44,45,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete3_Test$TestBody$1" />
+      <unit id="1241246198932925687" at="37,48,45,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete3_Test$TestBody$1" />
       <unit id="8654290870483594273" at="28,0,48,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete3_Test$TestBody" />
       <unit id="8654290870483594273" at="14,0,49,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete3_Test" />
     </file>
@@ -160,7 +160,7 @@
       <scope id="1241246198932926128" at="38,0,44,0" />
       <scope id="8654290870483596008" at="35,51,46,0" />
       <scope id="8654290870483596008" at="34,0,48,0" />
-      <unit id="1241246198932926128" at="37,44,44,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete4_Test$TestBody$1" />
+      <unit id="1241246198932926128" at="37,48,44,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete4_Test$TestBody$1" />
       <unit id="8654290870483596008" at="28,0,49,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete4_Test$TestBody" />
       <unit id="8654290870483596008" at="14,0,50,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete4_Test" />
     </file>
@@ -194,7 +194,7 @@
       <scope id="8654290870483597591" at="23,0,27,0" />
       <scope id="8654290870483597591" at="35,51,44,0" />
       <scope id="8654290870483597591" at="34,0,46,0" />
-      <unit id="1241246198932926620" at="37,44,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete5_Test$TestBody$1" />
+      <unit id="1241246198932926620" at="37,48,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete5_Test$TestBody$1" />
       <unit id="8654290870483597591" at="28,0,47,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete5_Test$TestBody" />
       <unit id="8654290870483597591" at="14,0,48,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete5_Test" />
     </file>
@@ -233,7 +233,7 @@
       <scope id="1241246198932926901" at="38,0,46,0" />
       <scope id="8654290870483598918" at="35,51,49,0" />
       <scope id="8654290870483598918" at="34,0,51,0" />
-      <unit id="1241246198932926901" at="37,44,46,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete6_Test$TestBody$1" />
+      <unit id="1241246198932926901" at="37,48,46,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete6_Test$TestBody$1" />
       <unit id="8654290870483598918" at="28,0,52,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete6_Test$TestBody" />
       <unit id="8654290870483598918" at="14,0,53,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete6_Test" />
     </file>
@@ -324,7 +324,7 @@
       <scope id="8654290870483605555" at="23,0,27,0" />
       <scope id="8654290870483605555" at="35,51,44,0" />
       <scope id="8654290870483605555" at="34,0,46,0" />
-      <unit id="1241246198932927347" at="37,44,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete7_Test$TestBody$1" />
+      <unit id="1241246198932927347" at="37,48,41,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete7_Test$TestBody$1" />
       <unit id="8654290870483605555" at="28,0,47,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete7_Test$TestBody" />
       <unit id="8654290870483605555" at="14,0,48,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryParameterList_Delete7_Test" />
     </file>
@@ -360,7 +360,7 @@
       <scope id="1241246198932818868" at="38,0,46,0" />
       <scope id="8654290870483608219" at="35,51,46,16" />
       <scope id="8654290870483608219" at="34,0,48,0" />
-      <unit id="1241246198932818868" at="37,44,46,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryExpression_Delete_Test$TestBody$1" />
+      <unit id="1241246198932818868" at="37,48,46,7" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryExpression_Delete_Test$TestBody$1" />
       <unit id="8654290870483608219" at="28,0,49,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryExpression_Delete_Test$TestBody" />
       <unit id="8654290870483608219" at="14,0,50,0" name="jetbrains.mps.lang.smodel.query.test.editorTest.QueryExpression_Delete_Test" />
     </file>

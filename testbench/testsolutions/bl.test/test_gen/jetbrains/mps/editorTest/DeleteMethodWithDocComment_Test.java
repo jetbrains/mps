@@ -9,7 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.EditorUtil;
+import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class DeleteMethodWithDocComment_Test extends BaseTransformationTest {
@@ -34,7 +34,7 @@ public class DeleteMethodWithDocComment_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3063259108972912919", "3063259108972913454");
-      EditorUtil.runWithTwoStepDeletion(new EditorUtil.EditorTestRunnable() {
+      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
         }

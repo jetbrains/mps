@@ -9,7 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.EditorUtil;
+import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class SubstituteSmartInvalidReference_CaretInCenter_Test extends BaseTran
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2389096682426212168", "2389096682426212172");
-      EditorUtil.runWithTwoStepDeletion(new EditorUtil.EditorTestRunnable() {
+      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           // replace node with the other node 
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");

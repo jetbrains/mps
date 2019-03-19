@@ -841,7 +841,7 @@
       <scope id="6328114375522041259" at="23,0,27,0" />
       <scope id="6328114375522041259" at="35,51,41,16" />
       <scope id="6328114375522041259" at="34,0,43,0" />
-      <unit id="6328114375522060973" at="37,44,41,7" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test$TestBody$1" />
+      <unit id="6328114375522060973" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test$TestBody$1" />
       <unit id="6328114375522041259" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test$TestBody" />
       <unit id="6328114375522041259" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test" />
     </file>
@@ -872,7 +872,7 @@
       <scope id="6328114375522061918" at="23,0,27,0" />
       <scope id="6328114375522061918" at="35,51,41,16" />
       <scope id="6328114375522061918" at="34,0,43,0" />
-      <unit id="6328114375522062050" at="37,44,41,7" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test$TestBody$1" />
+      <unit id="6328114375522062050" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test$TestBody$1" />
       <unit id="6328114375522061918" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test$TestBody" />
       <unit id="6328114375522061918" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test" />
     </file>
@@ -959,7 +959,7 @@
       <scope id="6328114375522082447" at="23,0,27,0" />
       <scope id="6328114375522082447" at="35,51,41,16" />
       <scope id="6328114375522082447" at="34,0,43,0" />
-      <unit id="6328114375522082589" at="37,44,41,7" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test$TestBody$1" />
+      <unit id="6328114375522082589" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test$TestBody$1" />
       <unit id="6328114375522082447" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test$TestBody" />
       <unit id="6328114375522082447" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test" />
     </file>
@@ -990,7 +990,7 @@
       <scope id="6328114375522082810" at="23,0,27,0" />
       <scope id="6328114375522082810" at="35,51,41,16" />
       <scope id="6328114375522082810" at="34,0,43,0" />
-      <unit id="6328114375522082824" at="37,44,41,7" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test$TestBody$1" />
+      <unit id="6328114375522082824" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test$TestBody$1" />
       <unit id="6328114375522082810" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test$TestBody" />
       <unit id="6328114375522082810" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test" />
     </file>

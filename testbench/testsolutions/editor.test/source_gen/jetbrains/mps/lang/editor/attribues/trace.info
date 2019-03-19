@@ -57,7 +57,7 @@
       <scope id="3447504547919025668" at="23,0,27,0" />
       <scope id="3447504547919025668" at="35,51,41,16" />
       <scope id="3447504547919025668" at="34,0,43,0" />
-      <unit id="1241246198932925232" at="37,44,41,7" name="jetbrains.mps.lang.editor.attribues.RemovePropertyAttribute_Test$TestBody$1" />
+      <unit id="1241246198932925232" at="37,48,41,7" name="jetbrains.mps.lang.editor.attribues.RemovePropertyAttribute_Test$TestBody$1" />
       <unit id="3447504547919025668" at="28,0,44,0" name="jetbrains.mps.lang.editor.attribues.RemovePropertyAttribute_Test$TestBody" />
       <unit id="3447504547919025668" at="14,0,45,0" name="jetbrains.mps.lang.editor.attribues.RemovePropertyAttribute_Test" />
     </file>
@@ -89,7 +89,7 @@
       <scope id="1241246198932938829" at="38,0,42,0" />
       <scope id="3447504547919025677" at="35,51,42,16" />
       <scope id="3447504547919025677" at="34,0,44,0" />
-      <unit id="1241246198932938829" at="37,44,42,7" name="jetbrains.mps.lang.editor.attribues.RemovingLeftTransformForAttributedProperty_Test$TestBody$1" />
+      <unit id="1241246198932938829" at="37,48,42,7" name="jetbrains.mps.lang.editor.attribues.RemovingLeftTransformForAttributedProperty_Test$TestBody$1" />
       <unit id="3447504547919025677" at="28,0,45,0" name="jetbrains.mps.lang.editor.attribues.RemovingLeftTransformForAttributedProperty_Test$TestBody" />
       <unit id="3447504547919025677" at="14,0,46,0" name="jetbrains.mps.lang.editor.attribues.RemovingLeftTransformForAttributedProperty_Test" />
     </file>
@@ -148,7 +148,7 @@
       <scope id="3447504547919057576" at="23,0,27,0" />
       <scope id="3447504547919057576" at="35,51,42,16" />
       <scope id="3447504547919057576" at="34,0,44,0" />
-      <unit id="1241246198932939120" at="38,44,42,7" name="jetbrains.mps.lang.editor.attribues.RemovingRightTransformForAttributedProperty_Test$TestBody$1" />
+      <unit id="1241246198932939120" at="38,48,42,7" name="jetbrains.mps.lang.editor.attribues.RemovingRightTransformForAttributedProperty_Test$TestBody$1" />
       <unit id="3447504547919057576" at="28,0,45,0" name="jetbrains.mps.lang.editor.attribues.RemovingRightTransformForAttributedProperty_Test$TestBody" />
       <unit id="3447504547919057576" at="14,0,46,0" name="jetbrains.mps.lang.editor.attribues.RemovingRightTransformForAttributedProperty_Test" />
     </file>

@@ -239,7 +239,7 @@
       <scope id="6012981979753468744" at="23,0,27,0" />
       <scope id="6012981979753468744" at="35,51,41,16" />
       <scope id="6012981979753468744" at="34,0,43,0" />
-      <unit id="1241246198920217441" at="37,44,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test$TestBody$1" />
+      <unit id="1241246198920217441" at="37,48,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test$TestBody$1" />
       <unit id="6012981979753468744" at="28,0,44,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test$TestBody" />
       <unit id="6012981979753468744" at="14,0,45,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test" />
     </file>
@@ -270,7 +270,7 @@
       <scope id="6012981979753516823" at="23,0,27,0" />
       <scope id="6012981979753516823" at="35,51,41,16" />
       <scope id="6012981979753516823" at="34,0,43,0" />
-      <unit id="6012981979753516831" at="37,44,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test$TestBody$1" />
+      <unit id="6012981979753516831" at="37,48,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test$TestBody$1" />
       <unit id="6012981979753516823" at="28,0,44,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test$TestBody" />
       <unit id="6012981979753516823" at="14,0,45,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test" />
     </file>
@@ -301,7 +301,7 @@
       <scope id="6012981979753517067" at="23,0,27,0" />
       <scope id="6012981979753517067" at="35,51,41,16" />
       <scope id="6012981979753517067" at="34,0,43,0" />
-      <unit id="6012981979753517076" at="37,44,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test$TestBody$1" />
+      <unit id="6012981979753517076" at="37,48,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test$TestBody$1" />
       <unit id="6012981979753517067" at="28,0,44,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test$TestBody" />
       <unit id="6012981979753517067" at="14,0,45,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test" />
     </file>
