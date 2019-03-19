@@ -31,6 +31,9 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
   public void test_useModelRepository() throws Exception {
     runAndCheck(PROJECT_PATH, "test4.xml");
   }
+  public void test_useAdditionalPlugin() throws Exception {
+    runAndCheck(PROJECT_PATH, "test5.xml");
+  }
   public void setUp() {
     myProject = myEnvironment.openProject(new File(PROJECT_PATH));
   }
