@@ -508,6 +508,10 @@
   <node concept="LiM7Y" id="4TGwyKDxZNq">
     <property role="TrG5h" value="TestSideTransformExceptionActionDescriptionText" />
     <property role="3GE5qa" value="exception" />
+    <node concept="2ng5p9" id="3c5h9FPxd8y" role="2ng5wh">
+      <property role="2nlSSt" value="ERROR" />
+      <property role="2nlSSu" value="Intentional Exception - ignore this" />
+    </node>
     <node concept="3clFbS" id="4TGwyKDxZNs" role="LjaKd">
       <node concept="2TK7Tu" id="4TGwyKDxZNt" role="3cqZAp">
         <property role="2TTd_B" value=" " />

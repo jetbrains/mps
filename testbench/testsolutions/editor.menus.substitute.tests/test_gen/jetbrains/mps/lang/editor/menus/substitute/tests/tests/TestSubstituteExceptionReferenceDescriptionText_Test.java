@@ -11,6 +11,8 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
 import junit.framework.Assert;
+import jetbrains.mps.testbench.util.CachingAppender;
+import org.apache.log4j.Priority;
 
 @MPSLaunch
 public class TestSubstituteExceptionReferenceDescriptionText_Test extends BaseTransformationTest {
@@ -38,6 +40,11 @@ public class TestSubstituteExceptionReferenceDescriptionText_Test extends BaseTr
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
       Assert.assertTrue(nodeSubstituteChooser.isVisible() && nodeSubstituteChooser.getNumberOfActions() == 1);
+    }
+
+    @Override
+    protected void populateExpectedEvents(CachingAppender appender) {
+      appender.expectEvent(Priority.ERROR_INT, null);
     }
   }
 }

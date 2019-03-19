@@ -3989,6 +3989,10 @@
   <node concept="LiM7Y" id="6d5vlMPyvqp">
     <property role="TrG5h" value="TestSubstituteExceptionReferenceDescriptionText" />
     <property role="3GE5qa" value="exception" />
+    <node concept="2ng5p9" id="42LbKxU0TEi" role="2ng5wh">
+      <property role="2nlSSt" value="ERROR" />
+      <property role="2nlSSu" value="Intentional Exception - ignore this" />
+    </node>
     <node concept="3mLoSd" id="6d5vlMPyvqq" role="LiRBU">
       <node concept="LIFWc" id="6d5vlMPyzVn" role="lGtFl">
         <property role="ZRATv" value="true" />
@@ -4599,6 +4603,10 @@
   <node concept="LiM7Y" id="6d5vlMPxUcC">
     <property role="TrG5h" value="TestSubstituteExceptionActionDescriptionText" />
     <property role="3GE5qa" value="exception" />
+    <node concept="2ng5p9" id="42LbKxU0TBI" role="2ng5wh">
+      <property role="2nlSSt" value="ERROR" />
+      <property role="2nlSSu" value="Intentional Exception - ignore this" />
+    </node>
     <node concept="3mLoSd" id="6d5vlMPxUcD" role="LiRBU">
       <node concept="LIFWc" id="3c5h9FPxvJU" role="lGtFl">
         <property role="ZRATv" value="true" />

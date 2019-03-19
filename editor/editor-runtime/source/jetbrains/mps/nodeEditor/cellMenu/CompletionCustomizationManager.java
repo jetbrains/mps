@@ -99,7 +99,7 @@ class CompletionCustomizationManager {
         try {
           action.customize(pattern, completionItemStyle);
         } catch (Throwable t) {
-          LOG.error("Error while executing the customization");
+          LOG.error("Error while executing the customization", t);
           completionItemStyle = new EditorMenuItemStyleImpl();
         }
         actionsToStyle.put(action, completionItemStyle);
