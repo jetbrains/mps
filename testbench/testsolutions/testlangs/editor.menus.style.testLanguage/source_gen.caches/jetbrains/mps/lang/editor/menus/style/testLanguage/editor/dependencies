@@ -68,12 +68,15 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ChildToSubstituteCustomization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ChildWithPriority_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ConceptToWrapWithPriority_Customization" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.EnumPropertyCustomAction_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.EnumProperty_Customization" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.LinkCustomAction_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.LinkInlineMenu_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.Link_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ModifyStringProperty" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.NoFeature_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ParameterizedChild_Customization" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ReferenceCustomAction_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.Reference_Customization" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildParameterizedSubstituteMenu_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMenu" />
@@ -98,6 +101,22 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.EditorAspectDescriptorBase" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.EnumPropertyCustomAction_Customization">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionItemInformation" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingConceptContextMatcher" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.EnumProperty_Customization">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
@@ -108,6 +127,25 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.LinkCustomAction_Customization">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionItemInformation" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingConceptContextMatcher" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
@@ -214,6 +252,25 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.editor.menus.style.testLanguage.editor.ReferenceCustomAction_Customization">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionItemInformation" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingConceptContextMatcher" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
   </dependency>

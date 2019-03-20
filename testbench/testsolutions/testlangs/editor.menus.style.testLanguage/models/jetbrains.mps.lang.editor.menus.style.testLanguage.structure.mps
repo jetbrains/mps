@@ -66,6 +66,12 @@
       <property role="20kJfa" value="reference" />
       <ref role="20lvS9" node="41xlIweUVhe" resolve="TestCompletionCustomization_ChildToReference" />
     </node>
+    <node concept="1TJgyj" id="3jjUuIj4B9$" role="1TKVEi">
+      <property role="IQ2ns" value="3806643308052247140" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="customActionReference" />
+      <ref role="20lvS9" node="41xlIweUVhe" resolve="TestCompletionCustomization_ChildToReference" />
+    </node>
     <node concept="1TJgyi" id="4AL49kgHLPC" role="1TKVEl">
       <property role="IQ2nx" value="5310043668063133032" />
       <property role="TrG5h" value="booleanProperty" />
@@ -74,6 +80,11 @@
     <node concept="1TJgyi" id="4AL49kgHLZL" role="1TKVEl">
       <property role="IQ2nx" value="5310043668063133681" />
       <property role="TrG5h" value="enumProperty" />
+      <ref role="AX2Wp" node="4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
+    </node>
+    <node concept="1TJgyi" id="3jjUuIj4B3E" role="1TKVEl">
+      <property role="IQ2nx" value="3806643308052246762" />
+      <property role="TrG5h" value="customActionEnumProperty" />
       <ref role="AX2Wp" node="4AL49kgHLZO" resolve="TestCompletionCustomization_Enum" />
     </node>
     <node concept="1TJgyi" id="41xlIweVLOm" role="1TKVEl">
@@ -129,6 +140,13 @@
       <property role="20kJfa" value="childToSubstitute" />
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="41xlIwf2Wwl" resolve="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
+    </node>
+    <node concept="1TJgyj" id="3jjUuIj4BaK" role="1TKVEi">
+      <property role="IQ2ns" value="3806643308052247216" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="customActionChildInMatchingLink" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
     </node>
   </node>
   <node concept="1TIwiD" id="4AL49kg_TAi">

@@ -237,8 +237,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("booleanProperty", 0x49b1109510b71d68L).type(PrimitiveTypeId.BOOLEAN).origin("5310043668063133032").done();
     b.property("enumProperty", 0x49b1109510b71ff1L).type(MetaIdFactory.dataTypeId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L)).origin("5310043668063133681").done();
+    b.property("customActionEnumProperty", 0x34d3e9eb931270eaL).type(MetaIdFactory.dataTypeId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L)).origin("3806643308052246762").done();
     b.property("stringProperty", 0x406156e80eef1d16L).type(PrimitiveTypeId.STRING).origin("4639084645851274518").done();
     b.associate("reference", 0x406156e80eebb455L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44eL).optional(true).origin("4639084645851051093").done();
+    b.associate("customActionReference", 0x34d3e9eb93127264L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44eL).optional(true).origin("3806643308052247140").done();
     b.aggregate("childNoMenu", 0x49b11095109798e7L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510aaf4beL).optional(true).ordered(true).multiple(true).origin("5310043668061067495").done();
     b.aggregate("childSimpleSubstituteMenu", 0x49b1109510acbc9dL).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510ac9aacL).optional(true).ordered(true).multiple(true).origin("5310043668062452893").done();
     b.aggregate("childParameterizedSubstituteMenu", 0x49b1109510b55ff1L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L).optional(true).ordered(true).multiple(true).origin("5310043668063018993").done();
@@ -246,6 +248,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("childInMatchingLink", 0x406156e80eedf547L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL).optional(true).ordered(true).multiple(true).origin("4639084645851198791").done();
     b.aggregate("childInMatchingLinkInlineMenu", 0x71cb9a076ce00534L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL).optional(true).ordered(true).multiple(true).origin("8199816903240189236").done();
     b.aggregate("childToSubstitute", 0x406156e80f0c4673L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80f0bc815L).optional(true).ordered(true).multiple(true).origin("4639084645853185651").done();
+    b.aggregate("customActionChildInMatchingLink", 0x34d3e9eb931272b0L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL).optional(true).ordered(true).multiple(true).origin("3806643308052247216").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ParentTestStyle() {

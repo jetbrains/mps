@@ -27,35 +27,42 @@ public class EditorMenuItemStyleImpl implements EditorMenuItemStyle {
   private Color myBackgroundColor;
   private Color myTextColor;
   private boolean myItalic;
+  private boolean myWasCustomized;
 
   @Override
   public void hide() {
     myIsVisible = false;
+    myWasCustomized = true;
   }
 
   @Override
   public void setPriority(double priority) {
     myPriority = Math.max(myPriority, priority);
+    myWasCustomized = true;
   }
 
   @Override
   public void setBold() {
     myBold = true;
+    myWasCustomized = true;
   }
 
   @Override
   public void setItalic() {
     myItalic = true;
+    myWasCustomized = true;
   }
 
   @Override
   public void setBackgroundColor(Color color) {
     myBackgroundColor = color;
+    myWasCustomized = true;
   }
 
   @Override
   public void setTextColor(Color color) {
     myTextColor = color;
+    myWasCustomized = true;
   }
 
 
@@ -81,5 +88,9 @@ public class EditorMenuItemStyleImpl implements EditorMenuItemStyle {
 
   public Optional<Color> getTextColor() {
     return Optional.ofNullable(myTextColor);
+  }
+
+  boolean wasCustomized() {
+    return myWasCustomized;
   }
 }

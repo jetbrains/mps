@@ -86,7 +86,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @NotNull
   @Override
   public Collection<EditorMenuItemCustomizer> getEditorMenuItemCustomizers() {
-    return Arrays.asList(new EditorMenuItemCustomizer[]{new ChildWithPriority_Customization(), new ConceptToWrapWithPriority_Customization(), new BooleanProperty_Customization(), new EnumProperty_Customization(), new ParameterizedChild_Customization(), new Reference_Customization(), new Link_Customization(), new NoFeature_Customization(), new ChildToSubstituteCustomization(), new TestStyle_Customization(), new LinkInlineMenu_Customization()});
+    return Arrays.asList(new EditorMenuItemCustomizer[]{new ChildWithPriority_Customization(), new ConceptToWrapWithPriority_Customization(), new BooleanProperty_Customization(), new EnumProperty_Customization(), new ParameterizedChild_Customization(), new Reference_Customization(), new Link_Customization(), new NoFeature_Customization(), new ChildToSubstituteCustomization(), new TestStyle_Customization(), new LinkInlineMenu_Customization(), new EnumPropertyCustomAction_Customization(), new ReferenceCustomAction_Customization(), new LinkCustomAction_Customization()});
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L), MetaIdFactory.conceptId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L)).seal();

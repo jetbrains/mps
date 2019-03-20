@@ -6,12 +6,12 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class CompletionItemInformation {
   private final Object myParameterObject;
-  private final SAbstractConcept myTargetConcept;
+  private final SAbstractConcept myOutputConcept;
   private final String myMatchingText;
   private final String myDescriptionText;
-  public CompletionItemInformation(Object parameterObject, SAbstractConcept targetConcept, String matchingText, String descriptionText) {
+  public CompletionItemInformation(Object parameterObject, SAbstractConcept outputConcept, String matchingText, String descriptionText) {
     myParameterObject = parameterObject;
-    myTargetConcept = targetConcept;
+    myOutputConcept = outputConcept;
     myMatchingText = matchingText;
     myDescriptionText = descriptionText;
   }
@@ -20,7 +20,7 @@ public class CompletionItemInformation {
     return myParameterObject;
   }
   public SAbstractConcept getOutputConcept() {
-    return myTargetConcept;
+    return myOutputConcept;
   }
   public String getMatchingText() {
     return myMatchingText;

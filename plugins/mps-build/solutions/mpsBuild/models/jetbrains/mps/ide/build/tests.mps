@@ -7366,10 +7366,10 @@
         </node>
       </node>
       <node concept="1E1JtA" id="4AL49kgFg$g" role="2G$12L">
-        <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.menus.style.tests" />
         <property role="3LESm3" value="f16c447a-f70c-4850-983c-0d3efc4e55a9" />
         <property role="aoJFB" value="tests" />
+        <property role="BnDLt" value="true" />
         <node concept="3rtmxn" id="4AL49kgFg$h" role="3bR31x">
           <node concept="3LXTmp" id="4AL49kgFg$i" role="3rtmxm">
             <node concept="3qWCbU" id="4AL49kgFg$j" role="3LXTna">
@@ -7420,6 +7420,11 @@
         <node concept="1SiIV0" id="4AL49kgFgEE" role="3bR37C">
           <node concept="3bR9La" id="4AL49kgFgEF" role="1SiIV1">
             <ref role="3bR37D" to="ffeo:ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6nBi4Xpgoe7" role="3bR37C">
+          <node concept="3bR9La" id="6nBi4Xpgoe8" role="1SiIV1">
+            <ref role="3bR37D" node="4AL49kgFgzZ" resolve="jetbrains.mps.lang.editor.menus.style.testLanguage" />
           </node>
         </node>
       </node>

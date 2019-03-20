@@ -227,7 +227,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
         throw new IllegalStateException("Context cell and substitute info must not be null to show the NodeSubstituteChooser");
       }
       initList();
-      myCompletionCustomizationManager = new CompletionCustomizationManager();
+      myCompletionCustomizationManager = new CompletionCustomizationManager(myContextCell);
       myEditorComponent.pushKeyboardHandler(this);
       rebuildMenuEntries();
       Point location = calcPatternEditorLocation();
