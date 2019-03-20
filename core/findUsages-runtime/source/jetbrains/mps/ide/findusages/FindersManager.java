@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,13 +130,17 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     if (myLoaded) {
       return;
     }
-    myLoaded = true;
     load();
   }
 
-  private void load() {
+  private synchronized void load() {
     // withAvailableLanguages doesn't require model read
+    // yet we may get here from different threads (e.g. highlighter and main/EDT, MPS-29909), have to be careful not to initialize twice
+    if (myLoaded) {
+      return;
+    }
     myLanguageRegistry.withAvailableLanguages(this::initFindersDescriptor);
+    myLoaded = true;
   }
 
   private void clear() {
