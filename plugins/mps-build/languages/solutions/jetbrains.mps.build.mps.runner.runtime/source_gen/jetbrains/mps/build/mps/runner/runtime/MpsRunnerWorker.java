@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.core.platform.Platform;
 import java.lang.reflect.InvocationTargetException;
-import jetbrains.mps.tool.environment.IdeaEnvironment;
 import java.io.File;
 
 public class MpsRunnerWorker extends PlatformWorker {
@@ -109,13 +108,6 @@ public class MpsRunnerWorker extends PlatformWorker {
     } catch (IllegalAccessException ex) {
       log(ex);
     }
-  }
-
-  @Override
-  protected Environment createEnvironment() {
-    IdeaEnvironment environment = new IdeaEnvironment(createEnvironmentConfig(myWhatToDo), false);
-    environment.init();
-    return environment;
   }
 
   public static void main(String[] args) {

@@ -5,8 +5,6 @@ package jetbrains.mps.build.migration;
 import jetbrains.mps.tool.builder.PlatformWorker;
 import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.builder.WorkerBase;
-import jetbrains.mps.tool.environment.Environment;
-import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.tool.builder.WorkerHelper;
 import java.io.File;
 import jetbrains.mps.project.Project;
@@ -30,13 +28,6 @@ public class MigrationWorker extends PlatformWorker {
 
   public MigrationWorker(Script whatToDo, WorkerBase.AntLogger logger) {
     super(whatToDo, logger);
-  }
-
-  @Override
-  protected Environment createEnvironment() {
-    IdeaEnvironment environment = new IdeaEnvironment(createEnvironmentConfig(myWhatToDo), false);
-    environment.init();
-    return environment;
   }
 
   @Override

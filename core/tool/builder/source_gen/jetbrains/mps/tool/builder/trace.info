@@ -71,14 +71,22 @@
   </root>
   <root nodeRef="r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/6744798568372052998">
     <file name="PlatformWorker.java">
-      <node id="6744798568372335149" at="8,71,9,28" concept="15" />
-      <node id="6744798568372335143" at="8,0,11,0" concept="2" trace="PlatformWorker#(Ljetbrains/mps/tool/common/Script;Ljetbrains/mps/tool/builder/WorkerBase/AntLogger;)V" />
-      <scope id="6744798568372335147" at="8,71,9,28" />
-      <scope id="6744798568372335143" at="8,0,11,0">
+      <node id="6744798568372335149" at="10,71,11,28" concept="15" />
+      <node id="3307120220353975269" at="15,45,16,98" concept="9" />
+      <node id="3307120220353975273" at="16,98,17,23" concept="3" />
+      <node id="3307120220353975275" at="17,23,18,23" concept="10" />
+      <node id="6744798568372335143" at="10,0,13,0" concept="2" trace="PlatformWorker#(Ljetbrains/mps/tool/common/Script;Ljetbrains/mps/tool/builder/WorkerBase/AntLogger;)V" />
+      <node id="3307120220353975254" at="14,0,20,0" concept="8" trace="createEnvironment#()Ljetbrains/mps/tool/environment/Environment;" />
+      <scope id="6744798568372335147" at="10,71,11,28" />
+      <scope id="6744798568372335143" at="10,0,13,0">
         <var name="logger" id="6744798568372335154" />
         <var name="whatToDo" id="6744798568372335150" />
       </scope>
-      <unit id="6744798568372052998" at="7,0,12,0" name="jetbrains.mps.tool.builder.PlatformWorker" />
+      <scope id="3307120220353975256" at="15,45,18,23">
+        <var name="environment" id="3307120220353975268" />
+      </scope>
+      <scope id="3307120220353975254" at="14,0,20,0" />
+      <unit id="6744798568372052998" at="9,0,21,0" name="jetbrains.mps.tool.builder.PlatformWorker" />
     </file>
   </root>
   <root nodeRef="r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/6744798568372185045">
