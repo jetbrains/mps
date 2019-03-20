@@ -15,18 +15,14 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import org.jetbrains.mps.openapi.module.SModule;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 public class PackageNode extends SNodeGroupTreeNode {
   private String myName;
@@ -49,32 +45,17 @@ public class PackageNode extends SNodeGroupTreeNode {
   }
 
 
-  public Set<SNode> getNodesUnderPackage() {
+  /**
+   * Nodes from ancestor {@link SModelTreeNode}'s node with package name starting with the one of this node
+   * @return
+   */
+  public Collection<SNode> getNodesUnderPackage() {
     if (myModelNode.getModel() == null) {
       return Collections.emptySet();
     }
-    Set<SNode> result = new LinkedHashSet<>();
-
-    // XXX this is odd code, with idea to change package name in all aspect models simultaneously.
-    // however, it's odd to expect such scenario for getter, it's rather question of the rename action itself and, besides, likely to get
-    // restricted to packages originating from an aspect model as well (i.e. if I rename a package in util/aux model, why would I expect packages
-    // in aspect models get changed?)
-    final SModule module = myModelNode.getModel().getModule();
-    if (module instanceof Language) {
-      for (SModel sm : LanguageAspectSupport.getAspectModels(module)) {
-        result.addAll(getNodesUnderPackage(sm));
-      }
-    }
-
-    result.addAll(getNodesUnderPackage(myModelNode.getModel()));
-
-    return result;
-  }
-
-  private Set<SNode> getNodesUnderPackage(SModel sm) {
-    Set<SNode> nodes = new LinkedHashSet<>();
+    ArrayList<SNode> nodes = new ArrayList<>();
     final String fullPackageName = getFullPackage();
-    for (SNode root : sm.getRootNodes()) {
+    for (SNode root : myModelNode.getModel().getRootNodes()) {
       String rootPack = SNodeAccessUtil.getProperty(root, SNodeUtil.property_BaseConcept_virtualPackage);
       if (rootPack != null && rootPack.startsWith(fullPackageName)) {
         assert rootPack.length() >= fullPackageName.length();
