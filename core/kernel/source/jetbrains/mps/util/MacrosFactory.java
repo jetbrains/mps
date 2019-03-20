@@ -19,11 +19,8 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -79,6 +76,7 @@ public final class MacrosFactory implements MacroHelper.Source {
 
   @NotNull
   public static MacroHelper forModule(SModule module) {
+    // XXX would be great to adapt/cast SModule to MacroHelper (or anything that could be source of macro values, so that we don't need to expose 'descriptorFile')
     if (module instanceof AbstractModule && ((AbstractModule) module).getDescriptorFile() != null) {
       return forModuleFile(((AbstractModule) module).getDescriptorFile());
     }

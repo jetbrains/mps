@@ -31,9 +31,8 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.smodel.Generator;
 
 public class MigrationDataUtil {
   public static void saveData(AbstractModule module, Iterable<Tuples._2<MigrationScriptReference, SNode>> data) {
@@ -97,13 +96,21 @@ public class MigrationDataUtil {
     }).first();
     return (result == null ? null : result._1());
   }
-  public static IFile getDataFile(AbstractModule module) {
-    String path;
-    if (module instanceof Generator) {
-      path = FileUtil.getNameWithoutExtension(((Generator) module).getSourceLanguage().getDescriptorFile().getPath()) + "generator.migration";
-    } else {
-      path = FileUtil.getNameWithoutExtension(module.getDescriptorFile().getPath()) + ".migration";
+
+  private static IFile getDataFile(AbstractModule module) {
+    // XXX note, next code implies data files are kept along with META-INF/module.xml for packaged modules, but who cares provided these files were never distributed with a build 
+    //     (there's no support in build language) 
+    IFile descriptorFile = module.getDescriptorFile();
+    if (descriptorFile == null) {
+      return null;
     }
-    return FileSystem.getInstance().getFile(path);
+    String dataFileName = FileUtil.getNameWithoutExtension(descriptorFile.getName());
+    if (module instanceof Generator) {
+      dataFileName = dataFileName + "generator.migration";
+      // sic(!), no dot in front, that's how it was 
+    } else {
+      dataFileName = dataFileName + ".migration";
+    }
+    return descriptorFile.getParent().findChild(dataFileName);
   }
 }

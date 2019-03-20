@@ -157,12 +157,7 @@ public class GeneratorDescriptorModelProvider extends DescriptorModelProvider {
         return hash;
       }
       Element element = new Element("gd"); // there's little value in this element, but if I remove it, I suspect a lot of 'generated' files would change
-      // FIXME can't use myModule for MacrosFactory - there's no file in generator's descriptor, hence use one of the source language.
-      // Though once generator modules are standalone there's file, guess, the right way is to tolerate modules without file, and to supply
-      // e.g. MacrosFactory.getGlobal() instead of null.
-      // Would be great to have Generator.getDescriptorFile() to answer owner language's .mpl but there seems to be quite a lot of code
-      // to assume getDescriptorFile() != null means something specific
-      element.addContent(new GeneratorDescriptorPersistence(MacrosFactory.forModule(myModule.getSourceLanguage()), true).save(myModule.getModuleDescriptor()));
+      element.addContent(new GeneratorDescriptorPersistence(MacrosFactory.forModule((SModule) myModule), true).save(myModule.getModuleDescriptor()));
       StringWriter out = new StringWriter();
       try {
         JDOMUtil.writeDocument(new Document(element), out);

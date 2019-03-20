@@ -34,8 +34,8 @@ import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.openapi.FileSystem;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Contract;
@@ -516,6 +516,16 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     return getDescriptorFile() != null ? getDescriptorFile().getParent() : null;
   }
 
+  /**
+   * The use of the method is discouraged as it exposes some internal MPS infrastructure.
+   * Modules do not necessarily originate from files.
+   * There's no limitation of number of modules that share same descriptor file.
+   * <p>
+   * Note, the name of descriptor file for deployed module is not necessarily the same as for the same module in sources
+   * (e.g. META-INF/module.xml vs mylang/my.lang.mpl)
+   * </p>
+   * @return a file (might be shared with other module) we took module's description from, or {@code null} if no such information is available.
+   */
   @Nullable
   public final IFile getDescriptorFile() {
 //    assertCanRead();   if getModuleSourceDir doesn't require read, why getDescriptorFile does?

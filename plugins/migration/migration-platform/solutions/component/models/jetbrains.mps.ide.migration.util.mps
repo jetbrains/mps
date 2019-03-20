@@ -151,9 +151,6 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
-        <child id="1079359253376" name="expression" index="1eOMHV" />
-      </concept>
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -1102,6 +1099,7 @@
         <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3k_pqcUM_RS" role="jymVt" />
     <node concept="2YIFZL" id="1J$cIcvsVtC" role="jymVt">
       <property role="TrG5h" value="getDataFile" />
       <property role="DiZV1" value="false" />
@@ -1114,53 +1112,85 @@
         </node>
       </node>
       <node concept="3clFbS" id="1J$cIcvsVtF" role="3clF47">
-        <node concept="3cpWs8" id="7Lz9B$9yiii" role="3cqZAp">
-          <node concept="3cpWsn" id="7Lz9B$9yiij" role="3cpWs9">
-            <property role="TrG5h" value="path" />
-            <node concept="17QB3L" id="7Lz9B$9yiig" role="1tU5fm" />
+        <node concept="3SKdUt" id="3k_pqcUNIac" role="3cqZAp">
+          <node concept="3SKdUq" id="3k_pqcUNIae" role="3SKWNk">
+            <property role="3SKdUp" value="XXX note, next code implies data files are kept along with META-INF/module.xml for packaged modules, but who cares provided these files were never distributed with a build" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="3k_pqcUNIDU" role="3cqZAp">
+          <node concept="3SKdUq" id="3k_pqcUNIDW" role="3SKWNk">
+            <property role="3SKdUp" value="    (there's no support in build language)" />
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3k_pqcUMKhF" role="3cqZAp">
+          <node concept="3cpWsn" id="3k_pqcUMKhG" role="3cpWs9">
+            <property role="TrG5h" value="descriptorFile" />
+            <node concept="3uibUv" id="3k_pqcUMKhE" role="1tU5fm">
+              <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+            </node>
+            <node concept="2OqwBi" id="3k_pqcUMKhH" role="33vP2m">
+              <node concept="37vLTw" id="3k_pqcUMKhI" role="2Oq$k0">
+                <ref role="3cqZAo" node="1J$cIcvsVtD" resolve="module" />
+              </node>
+              <node concept="liA8E" id="3k_pqcUMKhJ" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~AbstractModule.getDescriptorFile()" resolve="getDescriptorFile" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3k_pqcUMLki" role="3cqZAp">
+          <node concept="3clFbS" id="3k_pqcUMLkk" role="3clFbx">
+            <node concept="3cpWs6" id="3k_pqcUMN1x" role="3cqZAp">
+              <node concept="10Nm6u" id="3k_pqcUMNlc" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="3k_pqcUMMpd" role="3clFbw">
+            <node concept="10Nm6u" id="3k_pqcUMN0x" role="3uHU7w" />
+            <node concept="37vLTw" id="3k_pqcUMKhK" role="3uHU7B">
+              <ref role="3cqZAo" node="3k_pqcUMKhG" resolve="descriptorFile" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3k_pqcUMTlS" role="3cqZAp">
+          <node concept="3cpWsn" id="3k_pqcUMTlT" role="3cpWs9">
+            <property role="TrG5h" value="dataFileName" />
+            <node concept="3uibUv" id="3k_pqcUMTlQ" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="2YIFZM" id="3k_pqcUMTlU" role="33vP2m">
+              <ref role="37wK5l" to="18ew:~FileUtil.getNameWithoutExtension(java.lang.String)" resolve="getNameWithoutExtension" />
+              <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+              <node concept="2OqwBi" id="3k_pqcUMTlV" role="37wK5m">
+                <node concept="37vLTw" id="3k_pqcUMTlW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3k_pqcUMKhG" resolve="descriptorFile" />
+                </node>
+                <node concept="liA8E" id="3k_pqcUMTlX" role="2OqNvi">
+                  <ref role="37wK5l" to="3ju5:~IFile.getName()" resolve="getName" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="7Lz9B$9yoI_" role="3cqZAp">
           <node concept="3clFbS" id="7Lz9B$9yoIC" role="3clFbx">
-            <node concept="3clFbF" id="7Lz9B$9ySSS" role="3cqZAp">
-              <node concept="37vLTI" id="7Lz9B$9ySST" role="3clFbG">
-                <node concept="3cpWs3" id="7Lz9B$9ySSU" role="37vLTx">
-                  <node concept="2YIFZM" id="7Lz9B$9ySSV" role="3uHU7B">
-                    <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                    <ref role="37wK5l" to="18ew:~FileUtil.getNameWithoutExtension(java.lang.String)" resolve="getNameWithoutExtension" />
-                    <node concept="2OqwBi" id="7Lz9B$9ySnn" role="37wK5m">
-                      <node concept="2OqwBi" id="7Lz9B$9yRgF" role="2Oq$k0">
-                        <node concept="2OqwBi" id="7Lz9B$9yPDp" role="2Oq$k0">
-                          <node concept="1eOMI4" id="7Lz9B$9yPpO" role="2Oq$k0">
-                            <node concept="10QFUN" id="7Lz9B$9yPpL" role="1eOMHV">
-                              <node concept="3uibUv" id="7Lz9B$9yPpQ" role="10QFUM">
-                                <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
-                              </node>
-                              <node concept="37vLTw" id="7Lz9B$9yPpR" role="10QFUP">
-                                <ref role="3cqZAo" node="1J$cIcvsVtD" resolve="module" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="7Lz9B$9yR9D" role="2OqNvi">
-                            <ref role="37wK5l" to="w1kc:~Generator.getSourceLanguage()" resolve="getSourceLanguage" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="7Lz9B$9yShC" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~AbstractModule.getDescriptorFile()" resolve="getDescriptorFile" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="7Lz9B$9ySHn" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
-                      </node>
-                    </node>
+            <node concept="3clFbF" id="3k_pqcUMU$Q" role="3cqZAp">
+              <node concept="37vLTI" id="3k_pqcUMVmN" role="3clFbG">
+                <node concept="3cpWs3" id="3k_pqcUMWfN" role="37vLTx">
+                  <node concept="37vLTw" id="3k_pqcUMVsP" role="3uHU7B">
+                    <ref role="3cqZAo" node="3k_pqcUMTlT" resolve="dataFileName" />
                   </node>
                   <node concept="Xl_RD" id="7Lz9B$9yST1" role="3uHU7w">
                     <property role="Xl_RC" value="generator.migration" />
                   </node>
                 </node>
-                <node concept="37vLTw" id="7Lz9B$9yST2" role="37vLTJ">
-                  <ref role="3cqZAo" node="7Lz9B$9yiij" resolve="path" />
+                <node concept="37vLTw" id="3k_pqcUMU$O" role="37vLTJ">
+                  <ref role="3cqZAo" node="3k_pqcUMTlT" resolve="dataFileName" />
                 </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="3k_pqcUMWCX" role="3cqZAp">
+              <node concept="3SKdUq" id="3k_pqcUMWCZ" role="3SKWNk">
+                <property role="3SKdUp" value="sic(!), no dot in front, that's how it was" />
               </node>
             </node>
           </node>
@@ -1174,32 +1204,18 @@
           </node>
           <node concept="9aQIb" id="7Lz9B$9yrdJ" role="9aQIa">
             <node concept="3clFbS" id="7Lz9B$9yrdK" role="9aQI4">
-              <node concept="3clFbF" id="7Lz9B$9yn9f" role="3cqZAp">
-                <node concept="37vLTI" id="7Lz9B$9yn9h" role="3clFbG">
-                  <node concept="3cpWs3" id="7Lz9B$9yiik" role="37vLTx">
-                    <node concept="2YIFZM" id="7Lz9B$9yiil" role="3uHU7B">
-                      <ref role="37wK5l" to="18ew:~FileUtil.getNameWithoutExtension(java.lang.String)" resolve="getNameWithoutExtension" />
-                      <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                      <node concept="2OqwBi" id="7Lz9B$9yiim" role="37wK5m">
-                        <node concept="2OqwBi" id="7Lz9B$9yiin" role="2Oq$k0">
-                          <node concept="37vLTw" id="7Lz9B$9yiio" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1J$cIcvsVtD" resolve="module" />
-                          </node>
-                          <node concept="liA8E" id="7Lz9B$9yiip" role="2OqNvi">
-                            <ref role="37wK5l" to="z1c3:~AbstractModule.getDescriptorFile()" resolve="getDescriptorFile" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="7Lz9B$9yiiq" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
-                        </node>
-                      </node>
+              <node concept="3clFbF" id="3k_pqcUMWZn" role="3cqZAp">
+                <node concept="37vLTI" id="3k_pqcUMWZo" role="3clFbG">
+                  <node concept="3cpWs3" id="3k_pqcUMWZp" role="37vLTx">
+                    <node concept="37vLTw" id="3k_pqcUMWZq" role="3uHU7B">
+                      <ref role="3cqZAo" node="3k_pqcUMTlT" resolve="dataFileName" />
                     </node>
                     <node concept="Xl_RD" id="7Lz9B$9yiir" role="3uHU7w">
                       <property role="Xl_RC" value=".migration" />
                     </node>
                   </node>
-                  <node concept="37vLTw" id="7Lz9B$9yn9l" role="37vLTJ">
-                    <ref role="3cqZAo" node="7Lz9B$9yiij" resolve="path" />
+                  <node concept="37vLTw" id="3k_pqcUMWZs" role="37vLTJ">
+                    <ref role="3cqZAo" node="3k_pqcUMTlT" resolve="dataFileName" />
                   </node>
                 </node>
               </node>
@@ -1208,20 +1224,24 @@
         </node>
         <node concept="3cpWs6" id="1J$cIcvsVtG" role="3cqZAp">
           <node concept="2OqwBi" id="1J$cIcvsVtH" role="3cqZAk">
-            <node concept="2YIFZM" id="1J$cIcvt4dP" role="2Oq$k0">
-              <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
-              <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
+            <node concept="2OqwBi" id="3k_pqcUMY82" role="2Oq$k0">
+              <node concept="37vLTw" id="3k_pqcUMXLi" role="2Oq$k0">
+                <ref role="3cqZAo" node="3k_pqcUMKhG" resolve="descriptorFile" />
+              </node>
+              <node concept="liA8E" id="3k_pqcUMZoL" role="2OqNvi">
+                <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
+              </node>
             </node>
             <node concept="liA8E" id="1J$cIcvsVtJ" role="2OqNvi">
-              <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
-              <node concept="37vLTw" id="7Lz9B$9yiis" role="37wK5m">
-                <ref role="3cqZAo" node="7Lz9B$9yiij" resolve="path" />
+              <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
+              <node concept="37vLTw" id="3k_pqcUN0ni" role="37wK5m">
+                <ref role="3cqZAo" node="3k_pqcUMTlT" resolve="dataFileName" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="1J$cIcvsVtQ" role="1B3o_S" />
+      <node concept="3Tm6S6" id="3k_pqcUMAct" role="1B3o_S" />
       <node concept="3uibUv" id="1J$cIcvsVtR" role="3clF45">
         <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
       </node>
