@@ -745,6 +745,24 @@
           </node>
         </node>
       </node>
+      <node concept="3s$Bmu" id="2R_g56b_cyH" role="3s_gse">
+        <property role="3s$Bm0" value="useAdditionalPlugin" />
+        <node concept="3cqZAl" id="2R_g56b_cyI" role="3clF45" />
+        <node concept="3Tm1VV" id="2R_g56b_cyJ" role="1B3o_S" />
+        <node concept="3clFbS" id="2R_g56b_cyK" role="3clF47">
+          <node concept="3clFbF" id="2R_g56b_cyL" role="3cqZAp">
+            <node concept="1rXfSq" id="2R_g56b_cyM" role="3clFbG">
+              <ref role="37wK5l" node="1ZVcZhrXDWP" resolve="runAndCheck" />
+              <node concept="37vLTw" id="2R_g56b_cyN" role="37wK5m">
+                <ref role="3cqZAo" node="74sHQpDbWx3" resolve="PROJECT_PATH" />
+              </node>
+              <node concept="Xl_RD" id="2R_g56b_cyO" role="37wK5m">
+                <property role="Xl_RC" value="test5.xml" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="1KhYhu" id="1ZVcZhrXkJ6" role="1KhZu4">
       <node concept="3clFbS" id="1ZVcZhrXkJ7" role="2VODD2">
