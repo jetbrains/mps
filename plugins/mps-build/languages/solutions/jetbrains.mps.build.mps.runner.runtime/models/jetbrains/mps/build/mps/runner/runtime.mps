@@ -100,7 +100,6 @@
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
-        <property id="1181808852946" name="isFinal" index="DiZV1" />
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
@@ -913,30 +912,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5AcmpEOaDre" role="jymVt" />
-    <node concept="2tJIrI" id="5AcmpEOaDvF" role="jymVt" />
-    <node concept="3clFb_" id="5AcmpEOaDYA" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="make" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tmbuc" id="5AcmpEOaDYB" role="1B3o_S" />
-      <node concept="3cqZAl" id="5AcmpEOaDYC" role="3clF45" />
-      <node concept="3clFbS" id="5AcmpEOaDZi" role="3clF47">
-        <node concept="3SKdUt" id="5AcmpEOaEEW" role="3cqZAp">
-          <node concept="3SKdUq" id="5AcmpEOaEEX" role="3SKWNk">
-            <property role="3SKdUp" value="no-op, the runner is loaded from packaged distribution, nothing to make." />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="5AcmpEOaEGf" role="3cqZAp">
-          <node concept="3SKdUq" id="5AcmpEOaEGh" role="3SKWNk">
-            <property role="3SKdUp" value="FWIW, I don't see a reason for make in base worker at all. Perhaps, should not be part of a worker, but separate reusable code." />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="5AcmpEOaDZj" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="63P3E8$lHXM" role="jymVt" />
     <node concept="3Tm1VV" id="3H7CugYdV9c" role="1B3o_S" />
     <node concept="3uibUv" id="5QqlCZXoHLn" role="1zkMxy">
       <ref role="3uigEE" to="jo3e:5QqlCZXoig6" resolve="PlatformWorker" />

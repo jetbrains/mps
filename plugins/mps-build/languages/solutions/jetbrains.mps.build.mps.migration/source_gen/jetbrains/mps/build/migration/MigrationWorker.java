@@ -7,6 +7,7 @@ import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.builder.WorkerBase;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
+import jetbrains.mps.tool.builder.WorkerHelper;
 import java.io.File;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -40,6 +41,9 @@ public class MigrationWorker extends PlatformWorker {
 
   @Override
   public void work() {
+    // todo the following line is needed until we introduce layered migration 
+    new WorkerHelper(myEnvironment).make(myJavaCompilerOptions);
+
     for (File file : myWhatToDo.getMPSProjectFiles()) {
       final Project p = myEnvironment.openProject(file);
       info("Loaded project " + p);

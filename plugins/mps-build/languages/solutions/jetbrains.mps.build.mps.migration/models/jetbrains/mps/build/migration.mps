@@ -304,6 +304,30 @@
       <node concept="3Tm1VV" id="KL8Aqll4qV" role="1B3o_S" />
       <node concept="3cqZAl" id="KL8Aqll4qW" role="3clF45" />
       <node concept="3clFbS" id="KL8Aqll4qX" role="3clF47">
+        <node concept="3SKdUt" id="5QqlCZXsrVK" role="3cqZAp">
+          <node concept="3SKdUq" id="5QqlCZXsrVM" role="3SKWNk">
+            <property role="3SKdUp" value="todo the following line is needed until we introduce layered migration" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="5QqlCZXto7c" role="3cqZAp">
+          <node concept="2OqwBi" id="5QqlCZXtJ3i" role="3clFbG">
+            <node concept="2ShNRf" id="5QqlCZXto78" role="2Oq$k0">
+              <node concept="1pGfFk" id="5QqlCZXtIC7" role="2ShVmc">
+                <ref role="37wK5l" to="jo3e:5QqlCZXte0k" resolve="WorkerHelper" />
+                <node concept="37vLTw" id="5QqlCZXtIGZ" role="37wK5m">
+                  <ref role="3cqZAo" to="jo3e:KL8Aqlj5lM" resolve="myEnvironment" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="5QqlCZXtKON" role="2OqNvi">
+              <ref role="37wK5l" to="jo3e:5QqlCZXtfUQ" resolve="make" />
+              <node concept="37vLTw" id="5QqlCZXtKYy" role="37wK5m">
+                <ref role="3cqZAo" to="jo3e:6wglnuBbnIo" resolve="myJavaCompilerOptions" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="5QqlCZXsuBu" role="3cqZAp" />
         <node concept="1DcWWT" id="KL8Aqll4rf" role="3cqZAp">
           <node concept="3cpWsn" id="KL8Aqll4rj" role="1Duv9x">
             <property role="TrG5h" value="file" />

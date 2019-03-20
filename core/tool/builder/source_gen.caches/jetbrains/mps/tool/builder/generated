@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ckadyq0699ycsp655lwfg9ig2rpky9g">
-  <files names="AntBootstrap.java:CoreWorker.java:MpsWorkerTest.java:PlatformWorker.java:WorkerBase.java" />
+<product version="3" modelHash="b7zxqxlpugbb9xkd31gzzhviehskhnr">
+  <files names="AntBootstrap.java:CoreWorker.java:MpsWorkerTest.java:PlatformWorker.java:WorkerBase.java:WorkerHelper.java" />
 </product>
 

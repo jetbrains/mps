@@ -114,13 +114,6 @@ public class MpsRunnerWorker extends PlatformWorker {
     }
   }
 
-
-  @Override
-  protected void make() {
-    // no-op, the runner is loaded from packaged distribution, nothing to make. 
-    // FWIW, I don't see a reason for make in base worker at all. Perhaps, should not be part of a worker, but separate reusable code. 
-  }
-
   @Override
   protected Environment createEnvironment() {
     EnvironmentConfig cfg = createEnvironmentConfig(myWhatToDo);

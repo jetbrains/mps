@@ -21,14 +21,6 @@ import jetbrains.mps.tool.common.PluginData;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.make.MPSCompilationResult;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.make.ModuleMaker;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -45,7 +37,6 @@ import jetbrains.mps.library.ModulesMiner;
 import org.apache.log4j.Level;
 import java.io.StringWriter;
 import java.io.PrintWriter;
-import jetbrains.mps.util.annotation.ToRemove;
 
 /**
  * MPS-aware job triggered by an Ant task. Unlike the task, assumes MPS classes in the classpath. 
@@ -65,7 +56,6 @@ public abstract class WorkerBase {
   private final WorkerBase.AntLogger myLogger;
   protected Environment myEnvironment;
   private final BaseMPSModuleOwner myOwner = new BaseMPSModuleOwner();
-
 
   public WorkerBase(Script whatToDo, WorkerBase.AntLogger logger) {
     myWhatToDo = whatToDo;
@@ -87,7 +77,7 @@ public abstract class WorkerBase {
 
   protected abstract Environment createEnvironment();
 
-  public EnvironmentConfig createEnvironmentConfig(Script whatToDo) {
+  protected final EnvironmentConfig createEnvironmentConfig(Script whatToDo) {
     EnvironmentConfig config = EnvironmentConfig.emptyConfig().withDefaultSamples().withDefaultPlugins();
     RepositoryDescriptor repo = whatToDo.getRepoDescriptor();
     if (repo != null) {
@@ -124,7 +114,7 @@ public abstract class WorkerBase {
     // let Environment know which idea plugins are expected to be loaded. 
     // Note, this doesn't address plugin classpath, as it's up to respective Task to decide whether respective plugins and their classes/libraries 
     // are in a global classpath or plugin classes are loaded in any other way. 
-    for (PluginData pd : ListSequence.fromList(myWhatToDo.getPlugins())) {
+    for (PluginData pd : ListSequence.fromList(whatToDo.getPlugins())) {
       config.addPlugin(pd.path, pd.id);
     }
     return config;
@@ -134,8 +124,6 @@ public abstract class WorkerBase {
     try {
       Logger.getRootLogger().setLevel(myWhatToDo.getLogLevel());
       myEnvironment = createEnvironment();
-      make();
-
       work();
       dispose();
       System.exit(0);
@@ -160,27 +148,6 @@ public abstract class WorkerBase {
 
   protected final ComponentHost getPlatform() {
     return myEnvironment.getPlatform();
-  }
-
-  protected void make() {
-    // FIXME why do I care to make these modules? 
-    final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
-    MPSCompilationResult mpsCompilationResult = new ModelAccessHelper(repo).runReadAction(new Computable<MPSCompilationResult>() {
-      public MPSCompilationResult compute() {
-        ModuleMaker maker = new ModuleMaker();
-        return maker.make(IterableUtil.asCollection(repo.getModules()), new EmptyProgressMonitor(), myJavaCompilerOptions);
-      }
-    });
-    reload(mpsCompilationResult);
-  }
-  protected void reload(final MPSCompilationResult mpsCompilationResult) {
-    if (mpsCompilationResult.isReloadingNeeded()) {
-      myEnvironment.getPlatform().findComponent(MPSModuleRepository.class).getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-          ClassLoaderManager.getInstance().reloadModules(mpsCompilationResult.getChangedModules());
-        }
-      });
-    }
   }
 
   protected StringBuffer formatErrorsReport(String taskName) {
@@ -349,34 +316,6 @@ public abstract class WorkerBase {
           }
           break;
       }
-    }
-  }
-  /**
-   * 
-   * @deprecated There's no need to wrap set of modules into this class, and there's no added value whatsoever.
-   */
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  protected class ObjectsToProcess {
-    private final Set<Project> myProjects = new LinkedHashSet<Project>();
-    private final Set<SModule> myModules = new LinkedHashSet<SModule>();
-
-    @Deprecated
-    public ObjectsToProcess() {
-    }
-    @Deprecated
-    public ObjectsToProcess(Set<? extends Project> mpsProjects, Set<SModule> modules) {
-      myProjects.addAll(mpsProjects);
-      myModules.addAll(modules);
-    }
-    public Set<Project> getProjects() {
-      return myProjects;
-    }
-    public Set<SModule> getModules() {
-      return myModules;
-    }
-    public boolean hasAnythingToGenerate() {
-      return !(myProjects.isEmpty()) || !(myModules.isEmpty());
     }
   }
 }
