@@ -7,8 +7,8 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.MpsEnvironment;
 
 public abstract class CoreWorker extends WorkerBase {
-  public CoreWorker(Script whatToDo, WorkerBase.AntLogger logger) {
-    super(whatToDo, logger);
+  public CoreWorker(Script whatToDo) {
+    super(whatToDo);
   }
 
   @Override

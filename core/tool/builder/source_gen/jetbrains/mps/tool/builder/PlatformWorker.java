@@ -7,8 +7,8 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 
 public abstract class PlatformWorker extends WorkerBase {
-  public PlatformWorker(Script whatToDo, WorkerBase.AntLogger logger) {
-    super(whatToDo, logger);
+  public PlatformWorker(Script whatToDo) {
+    super(whatToDo);
   }
 
   @Override

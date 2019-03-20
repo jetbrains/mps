@@ -121,7 +121,6 @@
     <classNode dependClassName="jetbrains.mps.project.AbstractModule" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.smodel.ModelAccessHelper" />
-    <classNode dependClassName="jetbrains.mps.tool.builder.WorkerBase" />
     <classNode dependClassName="jetbrains.mps.tool.builder.make.BuildMakeService" />
     <classNode dependClassName="jetbrains.mps.tool.builder.unittest.ConsoleTestReporter" />
     <classNode dependClassName="jetbrains.mps.tool.builder.unittest.ITestReporter" />

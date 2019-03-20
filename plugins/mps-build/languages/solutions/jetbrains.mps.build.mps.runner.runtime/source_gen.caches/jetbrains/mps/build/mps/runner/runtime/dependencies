@@ -19,7 +19,6 @@
     <classNode dependClassName="jetbrains.mps.project.structure.modules.ModuleReference" />
     <classNode dependClassName="jetbrains.mps.smodel.MPSModuleRepository" />
     <classNode dependClassName="jetbrains.mps.smodel.ModelAccessHelper" />
-    <classNode dependClassName="jetbrains.mps.tool.builder.WorkerBase" />
     <classNode dependClassName="jetbrains.mps.tool.common.MpsRunnerProperties" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
     <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />

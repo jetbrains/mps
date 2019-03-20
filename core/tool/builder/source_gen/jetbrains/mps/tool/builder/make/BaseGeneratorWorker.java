@@ -4,7 +4,6 @@ package jetbrains.mps.tool.builder.make;
 
 import jetbrains.mps.tool.builder.CoreWorker;
 import jetbrains.mps.tool.common.Script;
-import jetbrains.mps.tool.builder.WorkerBase;
 import jetbrains.mps.tool.common.GeneratorProperties;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.generator.GenerationSettingsProvider;
@@ -31,12 +30,13 @@ import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.messages.IMessage;
+import jetbrains.mps.tool.builder.WorkerBase;
 
 public abstract class BaseGeneratorWorker extends CoreWorker {
   private boolean mySkipUnmodifiedModels;
 
-  public BaseGeneratorWorker(Script whatToDo, WorkerBase.AntLogger logger) {
-    super(whatToDo, logger);
+  public BaseGeneratorWorker(Script whatToDo) {
+    super(whatToDo);
   }
 
   protected void setGenerationProperties() {

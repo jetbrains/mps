@@ -222,20 +222,11 @@
           <ref role="3uigEE" to="asz6:KL8Aql8enO" resolve="Script" />
         </node>
       </node>
-      <node concept="37vLTG" id="KL8Aqll4n5" role="3clF46">
-        <property role="TrG5h" value="logger" />
-        <node concept="3uibUv" id="KL8Aqll4n6" role="1tU5fm">
-          <ref role="3uigEE" to="jo3e:KL8Aqlj5BL" resolve="WorkerBase.AntLogger" />
-        </node>
-      </node>
       <node concept="3clFbS" id="KL8Aqll4n7" role="3clF47">
         <node concept="XkiVB" id="KL8Aqll4n8" role="3cqZAp">
           <ref role="37wK5l" to="jo3e:5QqlCZXpn8B" resolve="PlatformWorker" />
           <node concept="37vLTw" id="2BHiRxglITb" role="37wK5m">
             <ref role="3cqZAo" node="KL8Aqll4n3" resolve="whatToDo" />
-          </node>
-          <node concept="37vLTw" id="2BHiRxgm8$A" role="37wK5m">
-            <ref role="3cqZAo" node="KL8Aqll4n5" resolve="logger" />
           </node>
         </node>
       </node>
@@ -703,11 +694,6 @@
                         </node>
                       </node>
                     </node>
-                  </node>
-                </node>
-                <node concept="2ShNRf" id="1oo0A63FX9V" role="37wK5m">
-                  <node concept="1pGfFk" id="1oo0A63FX9W" role="2ShVmc">
-                    <ref role="37wK5l" to="jo3e:KL8Aqlj5BY" resolve="WorkerBase.SystemOutLogger" />
                   </node>
                 </node>
               </node>

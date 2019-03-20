@@ -4,7 +4,6 @@ package jetbrains.mps.build.mps.runner.runtime;
 
 import jetbrains.mps.tool.builder.PlatformWorker;
 import jetbrains.mps.tool.common.Script;
-import jetbrains.mps.tool.builder.WorkerBase;
 import jetbrains.mps.tool.common.MpsRunnerProperties;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -25,8 +24,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.io.File;
 
 public class MpsRunnerWorker extends PlatformWorker {
-  public MpsRunnerWorker(Script whatToDo, WorkerBase.AntLogger logger) {
-    super(whatToDo, logger);
+  public MpsRunnerWorker(Script whatToDo) {
+    super(whatToDo);
   }
 
   @Override
@@ -111,7 +110,7 @@ public class MpsRunnerWorker extends PlatformWorker {
   }
 
   public static void main(String[] args) {
-    MpsRunnerWorker runner = new MpsRunnerWorker(Script.fromDumpInFile(new File(args[0])), new WorkerBase.SystemOutLogger());
+    MpsRunnerWorker runner = new MpsRunnerWorker(Script.fromDumpInFile(new File(args[0])));
     runner.workFromMain();
   }
 }

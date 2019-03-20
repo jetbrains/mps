@@ -4,7 +4,6 @@ package jetbrains.mps.build.migration;
 
 import jetbrains.mps.tool.builder.PlatformWorker;
 import jetbrains.mps.tool.common.Script;
-import jetbrains.mps.tool.builder.WorkerBase;
 import jetbrains.mps.tool.builder.WorkerHelper;
 import java.io.File;
 import jetbrains.mps.project.Project;
@@ -26,8 +25,8 @@ public class MigrationWorker extends PlatformWorker {
   private static final String MIGRATION_PLUGIN = "jetbrains.mps.ide.migration.workbench";
   private static final String TASK_EXEC_CLASS = "jetbrains.mps.ide.migration.AntTaskExecutionUtil";
 
-  public MigrationWorker(Script whatToDo, WorkerBase.AntLogger logger) {
-    super(whatToDo, logger);
+  public MigrationWorker(Script whatToDo) {
+    super(whatToDo);
   }
 
   @Override
@@ -78,7 +77,7 @@ public class MigrationWorker extends PlatformWorker {
   }
 
   public static void main(String[] args) {
-    MigrationWorker mpsWorker = new MigrationWorker(Script.fromDumpInFile(new File(args[0])), new WorkerBase.SystemOutLogger());
+    MigrationWorker mpsWorker = new MigrationWorker(Script.fromDumpInFile(new File(args[0])));
     mpsWorker.workFromMain();
   }
 }

@@ -13,8 +13,8 @@ public class MpsWorkerTest extends CoreWorker {
   private String myModuleRef;
   private boolean myIsPresent;
 
-  public MpsWorkerTest(Script whatToDo, WorkerBase.AntLogger logger) {
-    super(whatToDo, logger);
+  public MpsWorkerTest(Script whatToDo) {
+    super(whatToDo);
   }
 
   private void setModuleToCheck(String moduleRef, boolean isPresent) {
@@ -42,7 +42,7 @@ public class MpsWorkerTest extends CoreWorker {
   }
 
   public static void main(String[] args) {
-    MpsWorkerTest testWorker = new MpsWorkerTest(Script.fromDumpInFile(new File(args[0])), new WorkerBase.SystemOutLogger());
+    MpsWorkerTest testWorker = new MpsWorkerTest(Script.fromDumpInFile(new File(args[0])));
     testWorker.setModuleToCheck(args[1], Boolean.parseBoolean(args[2]));
     testWorker.workFromMain();
   }
