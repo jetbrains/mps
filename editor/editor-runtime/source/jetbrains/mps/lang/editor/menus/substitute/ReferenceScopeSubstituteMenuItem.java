@@ -39,6 +39,7 @@ public class ReferenceScopeSubstituteMenuItem extends DefaultSubstituteMenuItem 
   @NotNull
   private final SReferenceLink myReferenceLink;
 
+  @Deprecated
   public ReferenceScopeSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SNode parentNode, @Nullable SNode currentChild,
                                           @NotNull SNode referent, @NotNull SReferenceLink referenceLink,
                                           @NotNull EditorContext editorContext) {

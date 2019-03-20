@@ -34,29 +34,13 @@ public class SubstituteMenuItemUtil {
     if (wrappedItem instanceof ReferenceScopeSubstituteMenuItem) {
       return ((ReferenceScopeSubstituteMenuItem) wrappedItem).getReferent();
     }
-    if (wrappedItem instanceof SmartReferenceSubstituteMenuItem) {
-      return ((SmartReferenceSubstituteMenuItem) wrappedItem).getReferentNode();
-    }
     return null;
-  }
-
-  /**
-   *
-   * @deprecated Use {@link #getVisibleMatchingText(SubstituteMenuItem, String)} instead.
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public static String getVisibleMatchingText(SubstituteMenuItem item) {
-    return getVisibleMatchingText(item, "");
   }
 
   public static String getVisibleMatchingText(SubstituteMenuItem item, String pattern) {
     final SubstituteMenuItem wrappedItem = getWrappedItem(item);
     if (wrappedItem instanceof ReferenceScopeSubstituteMenuItem) {
       return ((ReferenceScopeSubstituteMenuItem) wrappedItem).getVisibleMatchingText(pattern);
-    }
-    if (wrappedItem instanceof SmartReferenceSubstituteMenuItem) {
-      return ((SmartReferenceSubstituteMenuItem) wrappedItem).getVisibleMatchingText();
     }
     return null;
   }

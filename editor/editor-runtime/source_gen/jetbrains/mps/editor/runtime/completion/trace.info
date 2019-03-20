@@ -9,7 +9,7 @@
   <root nodeRef="r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)/7825776669670531989">
     <file name="CompletionItemInformation.java">
       <node id="7825776669670565975" at="8,0,9,0" concept="2" trace="myParameterObject" />
-      <node id="7825776669670565979" at="9,0,10,0" concept="2" trace="myTargetConcept" />
+      <node id="7825776669670565979" at="9,0,10,0" concept="2" trace="myOutputConcept" />
       <node id="7825776669670565983" at="10,0,11,0" concept="2" trace="myMatchingText" />
       <node id="7825776669670565987" at="11,0,12,0" concept="2" trace="myDescriptionText" />
       <node id="7825776669670566002" at="12,137,13,40" concept="1" />
@@ -37,8 +37,8 @@
       <scope id="7825776669670565991" at="12,0,18,0">
         <var name="descriptionText" id="7825776669670565999" />
         <var name="matchingText" id="7825776669670565997" />
+        <var name="outputConcept" id="7825776669670565995" />
         <var name="parameterObject" id="7825776669670565993" />
-        <var name="targetConcept" id="7825776669670565995" />
       </scope>
       <unit id="7825776669670531989" at="7,0,33,0" name="jetbrains.mps.editor.runtime.completion.CompletionItemInformation" />
     </file>

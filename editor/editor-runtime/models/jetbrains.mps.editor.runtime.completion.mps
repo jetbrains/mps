@@ -97,7 +97,7 @@
       <node concept="3Tm6S6" id="6MqJAGngexq" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="6MqJAGngexr" role="jymVt">
-      <property role="TrG5h" value="myTargetConcept" />
+      <property role="TrG5h" value="myOutputConcept" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="6MqJAGngext" role="1tU5fm">
         <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
@@ -125,7 +125,7 @@
         </node>
       </node>
       <node concept="37vLTG" id="6MqJAGngexF" role="3clF46">
-        <property role="TrG5h" value="targetConcept" />
+        <property role="TrG5h" value="outputConcept" />
         <node concept="3bZ5Sz" id="6MqJAGnggLa" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="6MqJAGngexH" role="3clF46">
@@ -150,10 +150,10 @@
         <node concept="3clFbF" id="6MqJAGngexQ" role="3cqZAp">
           <node concept="37vLTI" id="6MqJAGngexR" role="3clFbG">
             <node concept="37vLTw" id="6MqJAGngexS" role="37vLTJ">
-              <ref role="3cqZAo" node="6MqJAGngexr" resolve="myTargetConcept" />
+              <ref role="3cqZAo" node="6MqJAGngexr" resolve="myOutputConcept" />
             </node>
             <node concept="37vLTw" id="6MqJAGngexT" role="37vLTx">
-              <ref role="3cqZAo" node="6MqJAGngexF" resolve="targetConcept" />
+              <ref role="3cqZAo" node="6MqJAGngexF" resolve="outputConcept" />
             </node>
           </node>
         </node>
@@ -200,7 +200,7 @@
       <node concept="3clFbS" id="6MqJAGngeyE" role="3clF47">
         <node concept="3cpWs6" id="6MqJAGngeyF" role="3cqZAp">
           <node concept="37vLTw" id="6MqJAGngeyG" role="3cqZAk">
-            <ref role="3cqZAo" node="6MqJAGngexr" resolve="myTargetConcept" />
+            <ref role="3cqZAo" node="6MqJAGngexr" resolve="myOutputConcept" />
           </node>
         </node>
       </node>
