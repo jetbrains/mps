@@ -49,7 +49,6 @@ import java.io.PrintWriter;
 public abstract class WorkerBase {
   private static final Logger LOG = LogManager.getLogger(WorkerBase.class);
   protected final List<String> myErrors = new ArrayList<String>();
-  protected final List<String> myWarnings = new ArrayList<String>();
   protected final Script myWhatToDo;
   protected final JavaCompilerOptions myJavaCompilerOptions;
   protected final boolean mySkipCompilation;
@@ -247,7 +246,6 @@ public abstract class WorkerBase {
   }
   public void warning(String text) {
     log(text, Level.WARN);
-    myWarnings.add(text);
   }
   public void debug(String text) {
     log(text, Level.DEBUG);

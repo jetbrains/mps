@@ -332,22 +332,6 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="KL8Aqlj5l_" role="jymVt">
-      <property role="TrG5h" value="myWarnings" />
-      <property role="34CwA1" value="false" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="KL8Aqlj5lA" role="1tU5fm">
-        <ref role="3uigEE" to="33ny:~List" resolve="List" />
-        <node concept="17QB3L" id="KL8Aqlj5lB" role="11_B2D" />
-      </node>
-      <node concept="3Tmbuc" id="KL8Aqlj5lC" role="1B3o_S" />
-      <node concept="2ShNRf" id="KL8Aqlj5lD" role="33vP2m">
-        <node concept="1pGfFk" id="KL8Aqlj5lE" role="2ShVmc">
-          <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
-          <node concept="17QB3L" id="KL8Aqlj5lF" role="1pMfVU" />
-        </node>
-      </node>
-    </node>
     <node concept="312cEg" id="KL8Aqlj5lG" role="jymVt">
       <property role="TrG5h" value="myWhatToDo" />
       <property role="34CwA1" value="false" />
@@ -2150,19 +2134,6 @@
             <node concept="10M0yZ" id="KL8Aqlj5zv" role="37wK5m">
               <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
               <ref role="3cqZAo" to="q7tw:~Level.WARN" resolve="WARN" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="KL8Aqlj5zw" role="3cqZAp">
-          <node concept="2OqwBi" id="KL8Aqlj5zx" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeudIp" role="2Oq$k0">
-              <ref role="3cqZAo" node="KL8Aqlj5l_" resolve="myWarnings" />
-            </node>
-            <node concept="liA8E" id="KL8Aqlj5zz" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-              <node concept="37vLTw" id="2BHiRxgm6$O" role="37wK5m">
-                <ref role="3cqZAo" node="KL8Aqlj5zp" resolve="text" />
-              </node>
             </node>
           </node>
         </node>
