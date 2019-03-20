@@ -21,13 +21,10 @@
     <classNode dependClassName="jetbrains.mps.smodel.ModelAccessHelper" />
     <classNode dependClassName="jetbrains.mps.tool.builder.WorkerBase" />
     <classNode dependClassName="jetbrains.mps.tool.common.MpsRunnerProperties" />
-    <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
     <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentConfig" />
     <classNode dependClassName="jetbrains.mps.tool.environment.IdeaEnvironment" />
     <classNode dependClassName="jetbrains.mps.util.Computable" />
-    <classNode dependClassName="jetbrains.mps.util.PathManager" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
     <classNode extendsClassName="jetbrains.mps.tool.builder.PlatformWorker" />

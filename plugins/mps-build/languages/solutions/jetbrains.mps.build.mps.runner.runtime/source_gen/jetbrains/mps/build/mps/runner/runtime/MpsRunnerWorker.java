@@ -22,11 +22,8 @@ import java.util.stream.Collectors;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.core.platform.Platform;
 import java.lang.reflect.InvocationTargetException;
-import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import java.io.File;
-import jetbrains.mps.util.PathManager;
-import jetbrains.mps.tool.common.PluginData;
 
 public class MpsRunnerWorker extends PlatformWorker {
   public MpsRunnerWorker(Script whatToDo, WorkerBase.AntLogger logger) {
@@ -116,34 +113,9 @@ public class MpsRunnerWorker extends PlatformWorker {
 
   @Override
   protected Environment createEnvironment() {
-    EnvironmentConfig cfg = createEnvironmentConfig(myWhatToDo);
-    addPluginsToClassPath(cfg);
-    addCustomPluginsToLoad(cfg);
-    IdeaEnvironment environment = new IdeaEnvironment(cfg, false);
+    IdeaEnvironment environment = new IdeaEnvironment(createEnvironmentConfig(myWhatToDo), false);
     environment.init();
     return environment;
-  }
-
-  private void addPluginsToClassPath(EnvironmentConfig cfg) {
-    File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
-    for (File plugin : pluginDir.listFiles()) {
-      if (plugin.isFile()) {
-        cfg.addPluginClassPath(plugin.getAbsolutePath());
-      } else {
-        File lib = new File(plugin + File.separator + "lib");
-        if (lib.exists() && lib.isDirectory()) {
-          for (File libJar : lib.listFiles(PathManager.JAR_FILE_FILTER)) {
-            cfg.addPluginClassPath(libJar.getAbsolutePath());
-          }
-        }
-      }
-    }
-  }
-  private void addCustomPluginsToLoad(EnvironmentConfig cfg) {
-    // todo: this functionality should be moved to some MpsWithPlatformLoadTask 
-    for (PluginData pd : myWhatToDo.getPlugins()) {
-      cfg.addPlugin(pd.path, pd.id);
-    }
   }
 
   public static void main(String[] args) {
