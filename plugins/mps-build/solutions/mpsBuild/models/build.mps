@@ -20024,6 +20024,10 @@
           <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
         </node>
       </node>
+      <node concept="1E1SXE" id="2JGPlbYz2rw" role="3bR37C">
+        <property role="1E1SXH" value="true" />
+        <ref role="1E1SXG" node="1nJh0raVm57" resolve="modelchecker" />
+      </node>
     </node>
     <node concept="m$_wf" id="5lGJ4Taqfsl" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.modelchecker" />
