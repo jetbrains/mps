@@ -11,10 +11,8 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import java.util.Set;
 import java.util.Hashtable;
-import java.util.HashSet;
-import jetbrains.mps.tool.common.PluginData;
-import java.util.Collections;
 import org.apache.tools.ant.util.JavaEnvUtils;
+import java.util.HashSet;
 import java.io.IOException;
 import org.apache.tools.ant.taskdefs.Execute;
 import java.net.URL;
@@ -22,11 +20,10 @@ import java.net.MalformedURLException;
 import java.net.URLClassLoader;
 import java.lang.reflect.InvocationTargetException;
 import org.jetbrains.annotations.NotNull;
-import java.nio.file.Files;
-import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import org.apache.tools.ant.ProjectComponent;
 import java.lang.reflect.Method;
+import java.util.Collections;
 import java.io.FileInputStream;
 import org.jetbrains.annotations.Nullable;
 import java.util.LinkedHashSet;
@@ -175,18 +172,6 @@ public class MpsLoadTask extends Task {
         myWhatToDo.addMacro((String) name, (String) value);
       }
     }
-    final Set<File> pluginsClassPath;
-    if (myWhatToDo.isClasspathWithPlugins()) {
-      // perhaps, plugin classpath logic shall be part of calculateClassPath(boolean) method 
-      // but for the time being, keep it here (it's supplied through independent file, not through -classpath arg) 
-      // FIXME once there's jar/manifest.mf trick to build long classpath, and no AntBootstrap mediator, this logic shall move to calculateClassPath 
-      pluginsClassPath = new HashSet<File>();
-      for (PluginData pd : myWhatToDo.getPlugins()) {
-        MPSClasspathUtil.gatherAllClassesAndJarsUnder(new File(pd.path), pluginsClassPath);
-      }
-    } else {
-      pluginsClassPath = Collections.emptySet();
-    }
     if (myFork) {
       String currentClassPathString = System.getProperty("java.class.path");
       List<String> commandLine = new ArrayList<String>();
@@ -219,9 +204,6 @@ public class MpsLoadTask extends Task {
       }
       commandLine.add("-classpath");
       commandLine.add(sb.toString());
-      // AntBootstrap comes from this module, and this module is part of currentClassPathString, hence AntBootstrap would be available 
-      commandLine.add("jetbrains.mps.tool.builder.AntBootstrap");
-      commandLine.add(formatClassPath(pluginsClassPath));
       commandLine.add(getWorkerClass());
       dumpPropertiesToWhatToDo();
       try {
@@ -247,13 +229,6 @@ public class MpsLoadTask extends Task {
     } else {
       List<URL> classPathUrls = new ArrayList<URL>();
       for (File path : classPaths) {
-        try {
-          classPathUrls.add(fileToUrl(path));
-        } catch (MalformedURLException e) {
-          throw new BuildException(e);
-        }
-      }
-      for (File path : pluginsClassPath) {
         try {
           classPathUrls.add(fileToUrl(path));
         } catch (MalformedURLException e) {
@@ -294,29 +269,6 @@ public class MpsLoadTask extends Task {
   protected void doInProcessWork(@NotNull Class<?> workerClass) throws Exception {
     Object worker = instantiateInProcessWorker(workerClass);
     invokeInProcessMain(workerClass, worker);
-  }
-
-  @NotNull
-  private String formatClassPath(Set<File> classPaths) {
-    try {
-      File optionsFile = Files.createTempFile("mpstemp_ant", null).toFile();
-      optionsFile.deleteOnExit();
-
-      PrintWriter out = null;
-      try {
-        out = new PrintWriter(optionsFile);
-        for (File cpEntry : classPaths) {
-          out.println(fileToUrl(cpEntry).toString());
-        }
-      } finally {
-        if (out != null) {
-          out.close();
-        }
-      }
-      return optionsFile.getAbsolutePath();
-    } catch (IOException e) {
-      throw new BuildException("Exception on launching the worker", e);
-    }
   }
 
   /**

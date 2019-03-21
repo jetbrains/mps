@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.tool.builder.AntBootstrap">
-    <classNode dependClassName="java.io.BufferedReader" />
-    <classNode dependClassName="java.io.FileReader" />
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.System" />
-    <classNode dependClassName="java.lang.Thread" />
-    <classNode dependClassName="java.lang.reflect.Method" />
-    <classNode dependClassName="java.net.URL" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="jetbrains.mps.core.tool.environment.classloading.ClassloaderUtil" />
-    <classNode dependClassName="jetbrains.mps.core.tool.environment.classloading.UrlClassLoader" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-  </dependency>
   <dependency className="jetbrains.mps.tool.builder.CoreWorker">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />

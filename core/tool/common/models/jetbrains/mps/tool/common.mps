@@ -293,9 +293,6 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
-        <property id="5858074156537516431" name="text" index="x79VB" />
-      </concept>
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="6832197706140518104" name="jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference" flags="ng" index="zr_55" />
       <concept id="6832197706140518103" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseParameterReference" flags="ng" index="zr_5a">
@@ -1494,113 +1491,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="28$8eDn5BUc" role="jymVt" />
-    <node concept="3clFb_" id="28$8eDn5Luf" role="jymVt">
-      <property role="TrG5h" value="classpathWithPlugins" />
-      <node concept="3clFbS" id="28$8eDn5Lui" role="3clF47">
-        <node concept="3clFbF" id="28$8eDn5UJB" role="3cqZAp">
-          <node concept="2OqwBi" id="28$8eDn5V2m" role="3clFbG">
-            <node concept="37vLTw" id="28$8eDn5UJA" role="2Oq$k0">
-              <ref role="3cqZAo" node="6aGZllYSCBv" resolve="myStartupData" />
-            </node>
-            <node concept="liA8E" id="28$8eDn5VnK" role="2OqNvi">
-              <ref role="37wK5l" node="KL8Aql8eN9" resolve="addProperty" />
-              <node concept="Xl_RD" id="28$8eDn6xm4" role="37wK5m">
-                <property role="Xl_RC" value="classpathWithPlugins" />
-              </node>
-              <node concept="2YIFZM" id="28$8eDn6$xH" role="37wK5m">
-                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
-                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
-                <node concept="37vLTw" id="28$8eDn6$xI" role="37wK5m">
-                  <ref role="3cqZAo" node="28$8eDn5Q2j" resolve="pluginsInClasspath" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="28$8eDn5GIg" role="1B3o_S" />
-      <node concept="3cqZAl" id="28$8eDn5LiK" role="3clF45" />
-      <node concept="37vLTG" id="28$8eDn5Q2j" role="3clF46">
-        <property role="TrG5h" value="pluginsInClasspath" />
-        <node concept="10P_77" id="28$8eDn5Q2i" role="1tU5fm" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="28$8eDn6Inb" role="jymVt">
-      <property role="TrG5h" value="isClasspathWithPlugins" />
-      <node concept="3clFbS" id="28$8eDn6Ine" role="3clF47">
-        <node concept="3cpWs8" id="28$8eDn6Pz1" role="3cqZAp">
-          <node concept="3cpWsn" id="28$8eDn6Pz2" role="3cpWs9">
-            <property role="TrG5h" value="value" />
-            <node concept="17QB3L" id="28$8eDn6PyR" role="1tU5fm" />
-            <node concept="2OqwBi" id="28$8eDn6Pz3" role="33vP2m">
-              <node concept="2OqwBi" id="28$8eDn6Pz4" role="2Oq$k0">
-                <node concept="37vLTw" id="28$8eDn6Pz5" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6aGZllYSCBv" resolve="myStartupData" />
-                </node>
-                <node concept="liA8E" id="28$8eDn6Pz6" role="2OqNvi">
-                  <ref role="37wK5l" node="KL8Aql8eN1" resolve="getProperties" />
-                </node>
-              </node>
-              <node concept="liA8E" id="28$8eDn6Pz7" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
-                <node concept="Xl_RD" id="28$8eDn6Pz8" role="37wK5m">
-                  <property role="Xl_RC" value="classpathWithPlugins" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="28$8eDn6Uh_" role="3cqZAp">
-          <node concept="3SKdUq" id="28$8eDn6UhB" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME MPS though it's only 2018.3 that started to add plugins to classpath, I decided to go with 'true' as fallback value" />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="28$8eDn6VDT" role="3cqZAp">
-          <node concept="3SKdUq" id="28$8eDn6VDV" role="3SKWNk">
-            <property role="3SKdUp" value="      while I work on headless IdeaEnvironment. Likely shall become 'false' " />
-          </node>
-        </node>
-        <node concept="3cpWs8" id="28$8eDn6TKX" role="3cqZAp">
-          <node concept="3cpWsn" id="28$8eDn6TKV" role="3cpWs9">
-            <property role="3TUv4t" value="true" />
-            <property role="TrG5h" value="legacyDefaultValue" />
-            <node concept="10P_77" id="28$8eDn6TRX" role="1tU5fm" />
-            <node concept="3clFbT" id="28$8eDn6U6u" role="33vP2m">
-              <property role="3clFbU" value="true" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="28$8eDn6R5l" role="3cqZAp">
-          <node concept="3K4zz7" id="28$8eDn6RRg" role="3clFbG">
-            <node concept="37vLTw" id="28$8eDn6U9a" role="3K4E3e">
-              <ref role="3cqZAo" node="28$8eDn6TKV" resolve="legacyDefaultValue" />
-            </node>
-            <node concept="3clFbC" id="28$8eDn6RJq" role="3K4Cdx">
-              <node concept="10Nm6u" id="28$8eDn6RPZ" role="3uHU7w" />
-              <node concept="37vLTw" id="28$8eDn6R5i" role="3uHU7B">
-                <ref role="3cqZAo" node="28$8eDn6Pz2" resolve="value" />
-              </node>
-            </node>
-            <node concept="2YIFZM" id="28$8eDn6P7U" role="3K4GZi">
-              <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
-              <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
-              <node concept="37vLTw" id="28$8eDn6ShY" role="37wK5m">
-                <ref role="3cqZAo" node="28$8eDn6Pz2" resolve="value" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="28$8eDn6DA0" role="1B3o_S" />
-      <node concept="10P_77" id="28$8eDn6IbG" role="3clF45" />
-      <node concept="P$JXv" id="28$8eDn6Wy9" role="lGtFl">
-        <node concept="x79VA" id="28$8eDn6Wyc" role="3nqlJM">
-          <property role="x79VB" value="true if Task builds worker's classpath with plugin locations, and worker may rely on this when deciding whether it needs to build custom plugin classpath or shall assume classes global availability" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="28$8eDn6_0n" role="jymVt" />
-    <node concept="2tJIrI" id="6tzA4yIgqS4" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8evE" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateLogLevel" />

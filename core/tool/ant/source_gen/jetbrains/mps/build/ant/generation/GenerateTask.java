@@ -16,8 +16,6 @@ public class GenerateTask extends MpsLoadTask {
     myGenProps = new GeneratorProperties(myWhatToDo);
     myGenProps.setStrictMode(true).setParallelMode(false).setInplaceTransform(false).setHideWarnings(false).setCreateStaticRefs(true);
     myJavaCompilerProperties = new JavaCompilerProperties(myWhatToDo);
-    // GeneratorWorker uses MpsEnvironment, which goes extra mile to manage plugin classes with their own classloaders. 
-    myWhatToDo.classpathWithPlugins(false);
   }
 
   public void addConfiguredChunk(Chunk chunk) {

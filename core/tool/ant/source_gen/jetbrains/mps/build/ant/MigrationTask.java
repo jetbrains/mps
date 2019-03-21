@@ -31,9 +31,6 @@ public class MigrationTask extends MpsLoadTask {
     // as long as headless IdeaApplication doesn't start in unittest mode. 
     myWhatToDo.addPlugin(new PluginData("modelchecker", "jetbrains.mps.ide.modelchecker"));
     myWhatToDo.addPlugin(new PluginData("migration", "jetbrains.mps.ide.migration.workbench"));
-    // MigrationWorker starts headless IdeaEnvironment, not IdeaTestApplication (the one with unittest mode == true), which loads idea plugins properly, using native idea mechanism 
-    // hence no need to fill global CP with plugin locations. 
-    myWhatToDo.classpathWithPlugins(false);
   }
 
   public void setProject(String project) {
