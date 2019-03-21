@@ -28,7 +28,7 @@
       <unit at="24,0,88,0" name="jetbrains.mps.lang.generator.editor.DropRootRule_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,324,0" name="jetbrains.mps.lang.generator.editor.EditorAspectDescriptorImpl" />
+      <unit at="21,0,330,0" name="jetbrains.mps.lang.generator.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="GeneratorDebug_NodeRef_SubstituteMenu.java">
       <unit at="47,0,66,0" name="jetbrains.mps.lang.generator.editor.GeneratorDebug_NodeRef_SubstituteMenu$SMP_ReferenceScope_qqztgz_a" />
@@ -22733,6 +22733,75 @@
       <unit id="5808518347809783051" at="159,90,169,7" name="jetbrains.mps.lang.generator.editor.GeneratorDebug_InputNode_InspectorBuilder_a$Inline_Builder0$1" />
       <unit id="5808518347809773356" at="123,0,185,0" name="jetbrains.mps.lang.generator.editor.GeneratorDebug_InputNode_InspectorBuilder_a$Inline_Builder0" />
       <unit id="5808518347809748947" at="43,0,186,0" name="jetbrains.mps.lang.generator.editor.GeneratorDebug_InputNode_InspectorBuilder_a" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/5847724903319649585">
+    <file name="OldVarMacroStrikeout.java">
+      <node id="5847724903319649585" at="20,98,21,13" concept="9" />
+      <node id="5847724903319649585" at="22,5,23,123" concept="8" />
+      <node id="5847724903319649585" at="24,38,25,51" concept="3" />
+      <node id="5847724903319649718" at="31,72,32,279" concept="9" />
+      <node id="5847724903319649718" at="36,77,37,81" concept="9" />
+      <node id="5847724903319649718" at="39,72,40,83" concept="9" />
+      <node id="5847724903319649718" at="42,82,43,86" concept="9" />
+      <node id="5847724903319649718" at="45,112,46,93" concept="9" />
+      <node id="5847724903319649718" at="50,98,51,124" concept="3" />
+      <node id="5847724903319660099" at="53,171,54,27" concept="3" />
+      <node id="5847724903320069850" at="54,27,55,28" concept="3" />
+      <node id="5847724903319649585" at="19,104,22,5" concept="6" />
+      <node id="5847724903319649585" at="23,123,26,5" concept="6" />
+      <node id="5847724903319649718" at="31,0,34,0" concept="7" trace="matches#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Z" />
+      <node id="5847724903319649718" at="36,0,39,0" concept="7" trace="getParentNode#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5847724903319649718" at="39,0,42,0" concept="7" trace="getChild#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5847724903319649718" at="42,0,45,0" concept="7" trace="getLink#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Lorg/jetbrains/mps/openapi/language/SContainmentLink;" />
+      <node id="5847724903319649718" at="45,0,48,0" concept="7" trace="getCompletionItemInformation#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Ljetbrains/mps/editor/runtime/completion/CompletionItemInformation;" />
+      <node id="5847724903319649718" at="49,0,53,0" concept="7" trace="customize#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)V" />
+      <node id="5847724903319649718" at="53,0,57,0" concept="7" trace="customize_#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;Ljetbrains/mps/editor/runtime/completion/CompletionItemInformation;)V" />
+      <node id="5847724903319649585" at="18,0,28,0" concept="7" trace="customize#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)V" />
+      <scope id="5847724903319649585" at="20,98,21,13" />
+      <scope id="5847724903319649585" at="24,38,25,51" />
+      <scope id="5847724903319649718" at="31,72,32,279" />
+      <scope id="5847724903319649718" at="36,77,37,81" />
+      <scope id="5847724903319649718" at="39,72,40,83" />
+      <scope id="5847724903319649718" at="42,82,43,86" />
+      <scope id="5847724903319649718" at="45,112,46,93" />
+      <scope id="5847724903319649718" at="50,98,51,124" />
+      <scope id="5847724903319649589" at="53,171,55,28" />
+      <scope id="5847724903319649718" at="31,0,34,0">
+        <var name="context" id="5847724903319649718" />
+      </scope>
+      <scope id="5847724903319649718" at="36,0,39,0">
+        <var name="context" id="5847724903319649718" />
+      </scope>
+      <scope id="5847724903319649718" at="39,0,42,0">
+        <var name="context" id="5847724903319649718" />
+      </scope>
+      <scope id="5847724903319649718" at="42,0,45,0">
+        <var name="context" id="5847724903319649718" />
+      </scope>
+      <scope id="5847724903319649718" at="45,0,48,0">
+        <var name="context" id="5847724903319649718" />
+      </scope>
+      <scope id="5847724903319649718" at="49,0,53,0">
+        <var name="context" id="5847724903319649718" />
+        <var name="style" id="5847724903319649718" />
+      </scope>
+      <scope id="5847724903319649718" at="53,0,57,0">
+        <var name="containmentLink" id="5847724903319649718" />
+        <var name="currentChild" id="5847724903319649718" />
+        <var name="itemInformation" id="5847724903319649718" />
+        <var name="parentNode" id="5847724903319649718" />
+        <var name="style" id="5847724903319649718" />
+      </scope>
+      <scope id="5847724903319649585" at="19,104,26,5">
+        <var name="customizer" id="5847724903319649585" />
+      </scope>
+      <scope id="5847724903319649585" at="18,0,28,0">
+        <var name="context" id="5847724903319649585" />
+        <var name="customization" id="5847724903319649585" />
+      </scope>
+      <unit id="5847724903319649718" at="29,0,58,0" name="jetbrains.mps.lang.generator.editor.OldVarMacroStrikeout$OldVarMacroStrikeoutSpecific" />
+      <unit id="5847724903319649585" at="16,0,61,0" name="jetbrains.mps.lang.generator.editor.OldVarMacroStrikeout" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/7386719926921893550">

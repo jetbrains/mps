@@ -23,6 +23,7 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" implicit="true" />
+    <import index="av1m" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.style(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -93,6 +94,10 @@
         <property id="2162403111523065396" name="cellId" index="1lyBwo" />
       </concept>
       <concept id="1239814640496" name="jetbrains.mps.lang.editor.structure.CellLayout_VerticalGrid" flags="nn" index="2EHx9g" />
+      <concept id="7250830207897895674" name="jetbrains.mps.lang.editor.structure.CompletionCustomizationContextSpecificator_Concept" flags="ng" index="KNhPi">
+        <reference id="9115396979021131941" name="conceptDeclaration" index="2RIln$" />
+      </concept>
+      <concept id="7250830207897895678" name="jetbrains.mps.lang.editor.structure.CompletionCustomizationConceptCreatingSpecificator" flags="ng" index="KNhPm" />
       <concept id="1160493135005" name="jetbrains.mps.lang.editor.structure.CellMenuPart_PropertyValues_GetValues" flags="in" index="MLZmj" />
       <concept id="1164824717996" name="jetbrains.mps.lang.editor.structure.CellMenuDescriptor" flags="ng" index="OXEIz">
         <child id="1164824815888" name="cellMenuPart" index="OY2wv" />
@@ -178,6 +183,10 @@
       </concept>
       <concept id="1896914160037423680" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_WrapperHandler" flags="ig" index="3c8PGw" />
       <concept id="1896914160037437306" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_CreatedNode" flags="ng" index="3c8USq" />
+      <concept id="7818019076292260194" name="jetbrains.mps.lang.editor.structure.CompletionStyling" flags="ig" index="3dRTYf">
+        <child id="7250830207897909099" name="specificator" index="KNiz3" />
+        <child id="772883491827840107" name="customizeFunction" index="3l$a4r" />
+      </concept>
       <concept id="1165253627126" name="jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup" flags="ng" index="1exORT">
         <property id="1165254125954" name="presentation" index="1ezIyd" />
         <child id="1165253890469" name="parameterObjectType" index="1eyP2E" />
@@ -212,6 +221,8 @@
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
+      <concept id="772883491827578824" name="jetbrains.mps.lang.editor.structure.CompletionCustomization_CustomizeFunction" flags="ig" index="3lBaaS" />
+      <concept id="772883491827671446" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_Style" flags="ng" index="3lBNjA" />
       <concept id="1236262245656" name="jetbrains.mps.lang.editor.structure.MatchingLabelStyleClassItem" flags="ln" index="3mYdg7">
         <property id="1238091709220" name="labelName" index="1413C4" />
       </concept>
@@ -441,6 +452,7 @@
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
+      <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
@@ -7675,6 +7687,37 @@
           <property role="1Intyy" value="true" />
           <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
           <ref role="1k5W1q" node="5Ex$Jzqi8Mt" resolve="VariableRef" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="3dRTYf" id="54BiH4A$FOL">
+    <property role="3GE5qa" value="macro" />
+    <property role="TrG5h" value="OldVarMacroStrikeout" />
+    <node concept="3Tm1VV" id="54BiH4A$FOM" role="1B3o_S" />
+    <node concept="KNhPm" id="54BiH4A$FQQ" role="KNiz3">
+      <ref role="2RIln$" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
+    </node>
+    <node concept="3lBaaS" id="54BiH4A$FOO" role="3l$a4r">
+      <node concept="3clFbS" id="54BiH4A$FOP" role="2VODD2">
+        <node concept="3clFbF" id="54BiH4A$Ip3" role="3cqZAp">
+          <node concept="2OqwBi" id="54BiH4A$IvG" role="3clFbG">
+            <node concept="3lBNjA" id="54BiH4A$Ip2" role="2Oq$k0" />
+            <node concept="liA8E" id="54BiH4A$IAN" role="2OqNvi">
+              <ref role="37wK5l" to="av1m:~EditorMenuItemStyle.setStrikeout()" resolve="setStrikeout" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="54BiH4AAirq" role="3cqZAp">
+          <node concept="2OqwBi" id="54BiH4AAirr" role="3clFbG">
+            <node concept="3lBNjA" id="54BiH4AAirs" role="2Oq$k0" />
+            <node concept="liA8E" id="54BiH4AAiz5" role="2OqNvi">
+              <ref role="37wK5l" to="av1m:~EditorMenuItemStyle.setPriority(double)" resolve="setPriority" />
+              <node concept="3cmrfG" id="54BiH4AAl9x" role="37wK5m">
+                <property role="3cmrfH" value="-1" />
+              </node>
+            </node>
+          </node>
         </node>
       </node>
     </node>

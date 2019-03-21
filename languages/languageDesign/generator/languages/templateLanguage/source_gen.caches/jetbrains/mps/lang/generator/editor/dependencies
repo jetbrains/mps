@@ -629,6 +629,7 @@
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.NodeMacro_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.NodeMacro_label_inspector" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.NodeMacro_postfix" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.editor.OldVarMacroStrikeout" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.PatternReduction_MappingRule_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.PropertyMacro_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.PropertyMacro_SubstituteMenu" />
@@ -688,6 +689,7 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.TransformationMenu" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
@@ -2321,6 +2323,19 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.generator.editor.OldVarMacroStrikeout">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionItemInformation" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingConceptContextMatcher" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
   </dependency>
   <dependency className="jetbrains.mps.lang.generator.editor.PatternReduction_MappingRule_Editor">
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.PatternReduction_MappingRule_EditorBuilder_a" />
