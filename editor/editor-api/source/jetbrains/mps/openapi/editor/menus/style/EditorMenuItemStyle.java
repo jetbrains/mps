@@ -26,6 +26,8 @@ public interface EditorMenuItemStyle {
 
   void setItalic();
 
+  void setStrikeout();
+
   void setBackgroundColor(Color color);
 
   void setTextColor(Color color);

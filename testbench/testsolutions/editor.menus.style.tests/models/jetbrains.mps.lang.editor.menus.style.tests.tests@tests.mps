@@ -1886,6 +1886,16 @@
                   </node>
                 </node>
               </node>
+              <node concept="3vwNmj" id="7vZWNs6R7Hj" role="3cqZAp">
+                <node concept="2OqwBi" id="7vZWNs6R7Hk" role="3vwVQn">
+                  <node concept="37vLTw" id="7vZWNs6R7Hl" role="2Oq$k0">
+                    <ref role="3cqZAo" node="77bAwtGR0gx" resolve="impl" />
+                  </node>
+                  <node concept="liA8E" id="7vZWNs6R90g" role="2OqNvi">
+                    <ref role="37wK5l" to="6lvu:~EditorMenuItemStyleImpl.isStrikeout()" resolve="isStrikeout" />
+                  </node>
+                </node>
+              </node>
               <node concept="3vwNmj" id="77bAwtGR12y" role="3cqZAp">
                 <node concept="17R0WA" id="77bAwtGR1mJ" role="3vwVQn">
                   <node concept="10M0yZ" id="77bAwtGR1wb" role="3uHU7w">

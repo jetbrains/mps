@@ -809,15 +809,16 @@
       <node id="8199816903239855383" at="50,71,51,54" concept="2" />
       <node id="8199816903239927788" at="51,54,52,43" concept="2" />
       <node id="8199816903239929170" at="52,43,53,45" concept="2" />
-      <node id="8199816903239930018" at="53,45,54,96" concept="2" />
-      <node id="8199816903239934852" at="54,96,55,92" concept="2" />
+      <node id="8646897227238505299" at="53,45,54,48" concept="2" />
+      <node id="8199816903239930018" at="54,48,55,96" concept="2" />
+      <node id="8199816903239934852" at="55,96,56,92" concept="2" />
       <node id="8199816903239853065" at="22,0,24,0" concept="9" trace="ourParamCache" />
       <node id="8199816903239853065" at="25,0,28,0" concept="1" trace="TestCompletionCustomization_Style_Test#()V" />
       <node id="8199816903239853065" at="36,0,39,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8199816903239853065" at="29,0,33,0" concept="5" trace="test_TestCompletionCustomization_Style#()V" />
-      <node id="8199816903239853077" at="45,0,57,0" concept="5" trace="run#()V" />
-      <node id="8199816903239853075" at="43,0,57,15" concept="2" />
-      <node id="8199816903239853065" at="40,0,59,0" concept="5" trace="testMethodImpl#()V" />
+      <node id="8199816903239853077" at="45,0,58,0" concept="5" trace="run#()V" />
+      <node id="8199816903239853075" at="43,0,58,15" concept="2" />
+      <node id="8199816903239853065" at="40,0,60,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8199816903239853065" at="25,51,26,25" />
       <scope id="8199816903239853065" at="30,73,31,75" />
       <scope id="8199816903239853065" at="36,52,37,19" />
@@ -826,17 +827,17 @@
         <var name="owner" id="8199816903239853065" />
       </scope>
       <scope id="8199816903239853065" at="29,0,33,0" />
-      <scope id="8199816903239853078" at="45,44,55,92">
+      <scope id="8199816903239853078" at="45,44,56,92">
         <var name="currentSubstituteAction" id="8199816903239856702" />
         <var name="impl" id="8199816903239926817" />
         <var name="nodeSubstituteChooser" id="8199816903239853082" />
       </scope>
-      <scope id="8199816903239853077" at="45,0,57,0" />
-      <scope id="8199816903239853065" at="41,51,57,15" />
-      <scope id="8199816903239853065" at="40,0,59,0" />
-      <unit id="8199816903239853077" at="44,50,57,7" name="jetbrains.mps.lang.editor.menus.style.tests.tests.TestCompletionCustomization_Style_Test$TestBody$1" />
-      <unit id="8199816903239853065" at="34,0,60,0" name="jetbrains.mps.lang.editor.menus.style.tests.tests.TestCompletionCustomization_Style_Test$TestBody" />
-      <unit id="8199816903239853065" at="20,0,61,0" name="jetbrains.mps.lang.editor.menus.style.tests.tests.TestCompletionCustomization_Style_Test" />
+      <scope id="8199816903239853077" at="45,0,58,0" />
+      <scope id="8199816903239853065" at="41,51,58,15" />
+      <scope id="8199816903239853065" at="40,0,60,0" />
+      <unit id="8199816903239853077" at="44,50,58,7" name="jetbrains.mps.lang.editor.menus.style.tests.tests.TestCompletionCustomization_Style_Test$TestBody$1" />
+      <unit id="8199816903239853065" at="34,0,61,0" name="jetbrains.mps.lang.editor.menus.style.tests.tests.TestCompletionCustomization_Style_Test$TestBody" />
+      <unit id="8199816903239853065" at="20,0,62,0" name="jetbrains.mps.lang.editor.menus.style.tests.tests.TestCompletionCustomization_Style_Test" />
     </file>
   </root>
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/8199816903240221461">

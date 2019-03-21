@@ -313,7 +313,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
       matchingActions = getMatchingActions(trimPattern);
     }
 
-    matchingActions = matchingActions.stream().filter(action -> myCompletionCustomizationManager.getActionVisibility(action, pattern)).collect(Collectors.toList());
+    matchingActions = matchingActions.stream().filter(action -> myCompletionCustomizationManager.getVisibility(action, pattern)).collect(Collectors.toList());
 
     myCompletionCustomizationManager.sort(matchingActions, pattern);
 

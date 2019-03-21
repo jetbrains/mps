@@ -114,24 +114,27 @@ class CompletionCustomizationManager {
     } while (currentCell != null);
   }
 
-  boolean getBold(SubstituteAction action, String pattern) {
+  boolean isBold(SubstituteAction action, String pattern) {
     return getActionStyle(action, pattern, EditorMenuItemStyleImpl::isBold);
   }
 
-  boolean getItalic(SubstituteAction action, String pattern) {
+  boolean isItalic(SubstituteAction action, String pattern) {
     return getActionStyle(action, pattern, EditorMenuItemStyleImpl::isItalic);
   }
 
-  boolean getActionVisibility(SubstituteAction action, String pattern) {
+  boolean isStrikeout(SubstituteAction action, String pattern) {
+    return getActionStyle(action, pattern, EditorMenuItemStyleImpl::isStrikeout);
+  }
+
+  boolean getVisibility(SubstituteAction action, String pattern) {
     return getActionStyle(action, pattern, EditorMenuItemStyleImpl::isVisible);
   }
 
-  Optional<Color> getActionBackgroundColor(SubstituteAction action, String pattern) {
+  Optional<Color> getBackgroundColor(SubstituteAction action, String pattern) {
     return getActionStyle(action, pattern, EditorMenuItemStyleImpl::getBackgroundColor);
-
   }
 
-  Optional<Color> getActionTextColor(SubstituteAction action, String pattern) {
+  Optional<Color> getTextColor(SubstituteAction action, String pattern) {
     return getActionStyle(action, pattern, EditorMenuItemStyleImpl::getTextColor);
   }
 

@@ -1514,6 +1514,14 @@
                   </node>
                 </node>
               </node>
+              <node concept="3clFbF" id="7vZWNs6R9$F" role="3cqZAp">
+                <node concept="2OqwBi" id="7vZWNs6R9$G" role="3clFbG">
+                  <node concept="3lBNjA" id="7vZWNs6R9$H" role="2Oq$k0" />
+                  <node concept="liA8E" id="7vZWNs6R9$I" role="2OqNvi">
+                    <ref role="37wK5l" to="av1m:~EditorMenuItemStyle.setStrikeout()" resolve="setStrikeout" />
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbF" id="77bAwtGQhmo" role="3cqZAp">
                 <node concept="2OqwBi" id="77bAwtGQhtY" role="3clFbG">
                   <node concept="3lBNjA" id="77bAwtGQhmm" role="2Oq$k0" />

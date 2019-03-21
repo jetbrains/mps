@@ -23,10 +23,11 @@ import java.util.Optional;
 public class EditorMenuItemStyleImpl implements EditorMenuItemStyle {
   private boolean myIsVisible = true;
   private boolean myBold;
-  private double myPriority;
+  private Priority myPriority = new Priority();
   private Color myBackgroundColor;
   private Color myTextColor;
   private boolean myItalic;
+  private boolean myStrikeout;
   private boolean myWasCustomized;
 
   @Override
@@ -37,7 +38,7 @@ public class EditorMenuItemStyleImpl implements EditorMenuItemStyle {
 
   @Override
   public void setPriority(double priority) {
-    myPriority = Math.max(myPriority, priority);
+    myPriority.setPriority(priority);
     myWasCustomized = true;
   }
 
@@ -50,6 +51,12 @@ public class EditorMenuItemStyleImpl implements EditorMenuItemStyle {
   @Override
   public void setItalic() {
     myItalic = true;
+    myWasCustomized = true;
+  }
+
+  @Override
+  public void setStrikeout() {
+    myStrikeout = true;
     myWasCustomized = true;
   }
 
@@ -78,8 +85,12 @@ public class EditorMenuItemStyleImpl implements EditorMenuItemStyle {
     return myItalic;
   }
 
+  public boolean isStrikeout() {
+    return myStrikeout;
+  }
+
   public double getPriority() {
-    return myPriority;
+    return myPriority.getPriority();
   }
 
   public Optional<Color> getBackgroundColor() {
@@ -92,5 +103,19 @@ public class EditorMenuItemStyleImpl implements EditorMenuItemStyle {
 
   boolean wasCustomized() {
     return myWasCustomized;
+  }
+
+  private static class Priority {
+    private double myPriority;
+    private boolean wasExplicitlyCustomized;
+
+    private void setPriority(double priority) {
+      myPriority = wasExplicitlyCustomized ? Math.max(priority, myPriority) : priority;
+      wasExplicitlyCustomized = true;
+    }
+
+    private double getPriority() {
+      return myPriority;
+    }
   }
 }
