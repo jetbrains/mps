@@ -16,7 +16,6 @@
 package jetbrains.mps.vfs;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import jetbrains.mps.vfs.iofs.jar.JarIoFileSystem;
 import jetbrains.mps.vfs.iofs.jrt.JrtIoFileSystem;
@@ -27,6 +26,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Entry point to access various FS protocols available in MPS
+ * @since 2019.1
+ */
 public class VFSManager implements CoreComponent {
   public static final String FILE_FS = "file";
   public static final String JAR_FS = "jar";
@@ -34,7 +37,6 @@ public class VFSManager implements CoreComponent {
 
   private static final Logger LOG = LogManager.getLogger(VFSManager.class);
 
-  private static VFSManager INSTANCE;
   final private Map<String, IFileSystem> myFileSystems = new HashMap<>();
 
   public VFSManager() {
@@ -42,22 +44,12 @@ public class VFSManager implements CoreComponent {
 
   @Override
   public void init() {
-    INSTANCE = this;
   }
 
   @Override
   public void dispose() {
-    INSTANCE = null;
   }
 
-  /**
-   * @deprecated provisional code, not yet exposed in any release, to be removed
-   */
-  @Deprecated
-  @ToRemove(version = 0)
-  public static VFSManager getInstance() {
-    return INSTANCE;
-  }
 
   public void registerFS(@NotNull String fsId, @NotNull IFileSystem fs) {
     if (myFileSystems.containsKey(fsId)) {

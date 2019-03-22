@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.reloading;
 
 import jetbrains.mps.util.SystemInfo;
 import jetbrains.mps.vfs.Files;
-import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
@@ -34,9 +33,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,7 +53,7 @@ import java.util.Set;
  */
 public class SDKDiscovery {
   public static List<QualifiedPath> discover() {
-    return findClasses(new File(System.getProperty("java.home")));
+    return findJavaRuntimeClasses(new File(System.getProperty("java.home")));
   }
 
   //------------------------------
@@ -81,36 +84,45 @@ public class SDKDiscovery {
   private static final Logger LOG = LogManager.getLogger(SDKDiscovery.class);
 
   @NotNull
-  public static List<QualifiedPath> findClasses(@NotNull File file) {
+  private static List<QualifiedPath> findJavaRuntimeClasses(@NotNull File javaHome) {
     List<QualifiedPath> result = new ArrayList<>();
-    VFSManager fManager = VFSManager.getInstance();
 
-    if (isExplodedModularRuntime(file.getPath())) {
-      IFile exploded = fManager.getFileSystem(VFSManager.FILE_FS).getFile(getPath(new File(file, "modules")));
-      if (exploded.exists()) {
-        for (IFile virtualFile : exploded.getChildren()) {
-          result.add(virtualFile.getQualifiedPath());
+    if (isExplodedModularRuntime(javaHome.getPath())) {
+      File[] exploded = new File(javaHome, "modules").listFiles();
+      if (exploded != null) {
+        for (File root : exploded) {
+          result.add(new QualifiedPath(VFSManager.FILE_FS, getPath(root))); // == LocalFile.getQualifiedPath()
         }
       }
-    } else if (isModularRuntime(file)) {
-      IFile jdkRoot = fManager.getFileSystem(VFSManager.JRT_FS).getFile(getPath(file) + JrtIoFileSystem.JDK_PATH_SEPARATOR + IFileSystem.SEPARATOR);
-      List<String> modules = readModulesFromReleaseFile(file);
+    } else if (isModularRuntime(javaHome)) {
+      String jrtBase = getPath(javaHome) + JrtIoFileSystem.JDK_PATH_SEPARATOR + IFileSystem.SEPARATOR;
+      List<String> modules = readModulesFromReleaseFile(javaHome);
+      // XXX this seems to be dead code, isModularRuntime() here true iff isFile() == true (isExplodedModularRuntime branch is above)
+      //     and there could be no "release" file under another File (in java.io)
       if (modules != null) {
         for (String module : modules) {
-          result.add(jdkRoot.findChild(module).getQualifiedPath());
+          result.add(new QualifiedPath(VFSManager.JRT_FS, jrtBase + module));
         }
       } else {
-        if (jdkRoot.exists()) {
-          for (IFile virtualFile : jdkRoot.getChildren()) {
-            result.add(virtualFile.getQualifiedPath());
+        // JrtIoFile#getChildren
+        java.nio.file.FileSystem jrtfs = FileSystems.getFileSystem(URI.create("jrt:/"));
+        Path jdkRoot = jrtfs.getPath("modules");
+        if (java.nio.file.Files.isDirectory(jdkRoot)) {
+          try (DirectoryStream<Path> ds = java.nio.file.Files.newDirectoryStream(jdkRoot)) {
+            for (Path p : ds) {
+              // see JrtIoFile#getPath.
+              // JrtIoFile#getPathInJDK() doesn't include "modules" part, which is hardcoded in JrtIoFile#getRealFile, hence p.getFileName only
+              result.add(new QualifiedPath(VFSManager.JRT_FS, jrtBase + p.getFileName().toString()));
+            }
+          } catch (IOException e) {
+            LOG.warn(String.format("Can't read %s", jdkRoot), e);
           }
         }
       }
     } else {
-      for (File root : getJdkClassesRoots(file, !new File(file, "jre").exists())) {
+      for (File root : getJdkClassesRoots(javaHome, !new File(javaHome, "jre").exists())) {
         String path = getPath(root);
-        String proto = VFSManager.FILE_FS;
-        result.add(new QualifiedPath(proto, path));
+        result.add(new QualifiedPath(VFSManager.FILE_FS, path));
       }
       QualifiedPath toolsJar = getJDK_ToolsPath();
       if (toolsJar != null) {
@@ -157,11 +169,11 @@ public class SDKDiscovery {
 
   //-------------------------------------copied from JdkUtil----------------------------------
 
-  public static boolean isModularRuntime(@NotNull File homePath) {
+  private static boolean isModularRuntime(@NotNull File homePath) {
     return new File(homePath, "lib/jrt-fs.jar").isFile() || isExplodedModularRuntime(homePath.getPath());
   }
 
-  public static boolean isExplodedModularRuntime(@NotNull String homePath) {
+  private static boolean isExplodedModularRuntime(@NotNull String homePath) {
     return new File(homePath, "modules/java.base").isDirectory();
   }
 

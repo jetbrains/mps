@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URL;
+import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -221,10 +222,10 @@ public class JrtIoFile implements IFile {
       return Collections.emptyList();
     }
 
-    try {
-      ArrayList<IFile> result = new ArrayList<>();
-      Files.newDirectoryStream(getRealFile(this))
-           .forEach(it -> result.add(getDescendant(it.getFileName().toString())));
+    ArrayList<IFile> result = new ArrayList<>();
+    try (DirectoryStream<Path> ds = Files.newDirectoryStream(getRealFile(this))) {
+      // expect DirectoryStream not to report entries like '.' or '..', otherwise findChild might fail
+      ds.forEach(it -> result.add(findChild(it.getFileName().toString())));
       return result;
     } catch (IOException e) {
       LOG.error(e);
@@ -262,7 +263,7 @@ public class JrtIoFile implements IFile {
     return Files.newInputStream(getRealFile(this));
   }
 
-  private Path getRealFile(JrtIoFile file) {
+  private static Path getRealFile(JrtIoFile file) {
     java.nio.file.FileSystem jrtfs = FileSystems.getFileSystem(URI.create("jrt:/"));
     return jrtfs.getPath("modules", file.getPathInJDK().split(IFileSystem.SEPARATOR));
   }
