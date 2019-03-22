@@ -7896,6 +7896,30 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="5xfzfY98xPs" role="3cqZAp">
+          <node concept="3clFbS" id="5xfzfY98xPu" role="3clFbx">
+            <node concept="3SKdUt" id="5xfzfY99Ell" role="3cqZAp">
+              <node concept="3SKdUq" id="5xfzfY99Eln" role="3SKWNk">
+                <property role="3SKdUp" value=" e.g. default idea project" />
+              </node>
+            </node>
+            <node concept="3cpWs6" id="5xfzfY98Do_" role="3cqZAp">
+              <node concept="2ShNRf" id="5xfzfY996$X" role="3cqZAk">
+                <node concept="Tc6Ow" id="5xfzfY99wZm" role="2ShVmc">
+                  <node concept="3uibUv" id="5xfzfY99AqE" role="HW$YZ">
+                    <ref role="3uigEE" to="mhbf:~SNodeReference" resolve="SNodeReference" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="5xfzfY98BKV" role="3clFbw">
+            <node concept="10Nm6u" id="5xfzfY98Cz4" role="3uHU7w" />
+            <node concept="37vLTw" id="5xfzfY98_eg" role="3uHU7B">
+              <ref role="3cqZAo" node="2shlJwNLfg7" resolve="mpsProject" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="5dZuAAfthIp" role="3cqZAp">
           <node concept="3cpWsn" id="5dZuAAfthIq" role="3cpWs9">
             <property role="TrG5h" value="accessHelper" />

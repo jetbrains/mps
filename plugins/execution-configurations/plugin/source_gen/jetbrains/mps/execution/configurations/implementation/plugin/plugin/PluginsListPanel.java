@@ -19,12 +19,12 @@ import jetbrains.mps.util.Computable;
 import java.util.List;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.util.CollectConsumer;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.project.GlobalScope;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
@@ -63,6 +63,10 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
   @Override
   protected List<SNodeReference> collectCandidates(final ProgressMonitor progress) {
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    if (mpsProject == null) {
+      //  e.g. default idea project 
+      return ListSequence.fromList(new ArrayList<SNodeReference>());
+    }
     ModelAccessHelper accessHelper = new ModelAccessHelper(mpsProject.getRepository());
     return accessHelper.runReadAction(new Computable<List<SNodeReference>>() {
       public List<SNodeReference> compute() {
