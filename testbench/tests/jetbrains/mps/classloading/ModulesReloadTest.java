@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.extapi.module.FacetsRegistry;
+import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.module.ModuleClassLoaderIsNullException;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
@@ -47,6 +47,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOError;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -529,11 +530,12 @@ public class ModulesReloadTest extends ModuleMpsTest {
   /**
    * My personal JavaModuleFacet implementation, which allows to reset library class path and compileInMps flag.
    */
-  private static class TestJavaModuleFacet extends JavaModuleFacetImpl implements JavaModuleFacet {
+  private static class TestJavaModuleFacet extends ModuleFacetBase implements JavaModuleFacet {
     private String myLibClassPath = null;
     private boolean myCompileInMps = true;
 
     public TestJavaModuleFacet() {
+      super(JavaModuleFacet.FACET_TYPE);
     }
 
     @Override
@@ -549,9 +551,25 @@ public class ModulesReloadTest extends ModuleMpsTest {
 
     @Override
     public Set<String> getLibraryClassPath() {
-      Set<String> result = new HashSet<String>();
-      if (myLibClassPath != null) result.add(myLibClassPath);
+      Set<String> result = new HashSet<>();
+      if (myLibClassPath != null) {
+        result.add(myLibClassPath);
+      }
       return result;
+    }
+
+    @Override
+    public Set<String> getClassPath() {
+      // don't need complexity of JavaModuleFacetImpl#getClassPath(), we know there's nothing but library path we care about.
+      // besides, there's some assumptions about 'packaged' modules and DD that are hard to hold given perverted isPackaged base implementation
+      // (module w/o file treated as 'packaged', see TestLanguage#isPackaged).
+      // perhaps, shall not even change 'library cp', rather just 'cp' (I suppose 'library' was there to overcome final getClassPath() of JMFI)
+      return getLibraryClassPath();
+    }
+
+    @Override
+    public Set<String> getAdditionalSourcePaths() {
+      return Collections.emptySet();
     }
 
     public void setLibClassPath(@Nullable String newPath) {

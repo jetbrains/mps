@@ -25,6 +25,7 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -84,28 +85,40 @@ public class Generator extends ReloadableModuleBase {
   //models will be named like xxx.modelName, where xxx is a part of newName before sharp symbol
   @Override
   public void rename(@NotNull String newModuleName) {
-    int sharp = newModuleName.indexOf('#');
-    newModuleName = sharp < 0 ? newModuleName : newModuleName.substring(sharp);
-    renameModels(getSourceLanguage().getModuleName(), newModuleName, false);
+    final String oldModuleName = getModuleName();
+    final String oldModuleNameStem = nameUpToSharp(oldModuleName);
+    newModuleName = nameUpToSharp(newModuleName);
+    renameModels(oldModuleNameStem, newModuleName, false);
 
     //see MPS-18743, need to save before setting descriptor
     getRepository().saveAll();
 
     // MPS-22787 - update generator id
-    String uid = myGeneratorDescriptor.getNamespace();
-    int sharpIndex = uid.indexOf('#');
-    myGeneratorDescriptor.setNamespace(newModuleName + "#" + uid.substring(sharpIndex + 1));
+    int sharpIndexNew = newModuleName.indexOf('#');
+    if (sharpIndexNew > 0) {
+      // new name comes with a #suffix, no need to copy old one
+      myGeneratorDescriptor.setNamespace(newModuleName);
+    } else {
+      // keep old #suffix, if any.
+      // XXX in fact, I see no reason to do that. Instead, caller shall supply complete name.
+      // Kept for compatibility reasons (rename comes with owner language's name, and we don't want module names to be the same
+      // for language and its generator)
+      int sharpIndexOld = oldModuleName.indexOf('#');
+      assert sharpIndexNew < 0; // new name without '#'
+      myGeneratorDescriptor.setNamespace(sharpIndexOld > 0 ? newModuleName + oldModuleName.substring(sharpIndexOld) : newModuleName);
+    }
     // FIXME why there's no fireModuleRenamed() as in super.rename()???
 
-    final String oldLanguageName = this.getSourceLanguage().getModuleName();
-    final IFile languageFolder = this.getSourceLanguage().getModuleSourceDir();
+    final IFile moduleFolder = getModuleSourceDir();
     // Only rename generation output path if we expect language folder rename (is equal to language name)
-    if (languageFolder!= null && languageFolder.getName().equals(oldLanguageName)) {
+    if (moduleFolder!= null && moduleFolder.getName().equals(oldModuleNameStem)) {
       // TODO: remove, when generator will call super method
       // Update output path for generated files
       final String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(myGeneratorDescriptor);
-      if (generatorOutputPath != null && generatorOutputPath.contains(oldLanguageName)) {
-        ProjectPathUtil.setGeneratorOutputPath(myGeneratorDescriptor, generatorOutputPath.replace(oldLanguageName, newModuleName));
+      if (generatorOutputPath != null && generatorOutputPath.contains(oldModuleNameStem)) {
+        // FIXME this is not precise, would be better to reduce original name to ${module}/path and expand back with new ${module} value
+        // FIXME who's responsible to rename the fs folder?
+        ProjectPathUtil.setGeneratorOutputPath(myGeneratorDescriptor, generatorOutputPath.replace(oldModuleNameStem, nameUpToSharp(newModuleName)));
       }
     }
   }
@@ -120,12 +133,6 @@ public class Generator extends ReloadableModuleBase {
   public void dispose() {
     mySourceLanguage.unregister(this);
     super.dispose();
-  }
-
-  @Override
-  public boolean isPackaged() {
-    // XXX valid only for generators that are part of language module
-    return getSourceLanguage().isPackaged();
   }
 
   public List<SModel> getOwnTemplateModels() {
@@ -168,7 +175,10 @@ public class Generator extends ReloadableModuleBase {
 
   public String getAlias() {
     String name = myGeneratorDescriptor.getAlias();
-    return getSourceLanguage().getModuleName() + '/' + (name == null ? "<no name>" : name);
+    // with standalone generators in mind, sourceLanguage.qualifiedName + alias make much more sense than for 'language-owned'
+    // generators, where namespace reflects source language name anyway. Once we have arbitrary module names for Generators,
+    // use of alias with the name of source language gives some valuable info.
+    return sourceLanguage().getQualifiedName() + '/' + (name == null ? "<no name>" : name);
   }
 
   public static String generateGeneratorUID(Language sourceLanguage) {
@@ -179,6 +189,12 @@ public class Generator extends ReloadableModuleBase {
     return mySourceLanguage0;
   }
 
+  /**
+   * @deprecated Hard link to Language module makes Generator modules inflexible and bound to Language presence.
+   *             Use {@link #sourceLanguage()} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2019.1)
   public Language getSourceLanguage() {
     return mySourceLanguage;
   }
@@ -259,6 +275,16 @@ public class Generator extends ReloadableModuleBase {
       myGeneratorDescriptor.setId(uuid);
     }
     setModuleReference(myGeneratorDescriptor.getModuleReference());
+  }
+
+  /**
+   * For some obscure historical reasons, module name for generator uses `#` to keep two parts, left-hand expected to match
+   * source language, right-hand to be unique. We gradually move towards regular module names for generators as well, but
+   * have to support names with sharp as well.
+   */
+  private static String nameUpToSharp(String generatorModuleName) {
+    int sharp = generatorModuleName.indexOf("#");
+    return sharp < 0 ? generatorModuleName : generatorModuleName.substring(0, sharp);
   }
 
   public static class GeneratorModelsAutoImports extends AutoImportsContributor {
