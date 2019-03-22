@@ -6579,6 +6579,7 @@
         <pathelement path="${mps_home}/core/kernel/smodelRuntime/source_gen" />
         <pathelement path="${mps_home}/core/dataFlowRuntime/source" />
         <pathelement path="${mps_home}/core/dataFlowRuntime/source_gen" />
+        <pathelement path="${mps_home}/core/typechecking/source" />
         <pathelement path="${mps_home}/core/typesystemEngine/source" />
         <pathelement path="${mps_home}/core/typesystemEngine/source_gen" />
         <pathelement path="${mps_home}/core/findUsages-runtime/source" />
@@ -6696,6 +6697,7 @@
         <pathelement path="${mps_home}/core/kernel/smodelRuntime/source_gen" />
         <pathelement path="${mps_home}/core/dataFlowRuntime/source" />
         <pathelement path="${mps_home}/core/dataFlowRuntime/source_gen" />
+        <pathelement path="${mps_home}/core/typechecking/source" />
         <pathelement path="${mps_home}/core/typesystemEngine/source" />
         <pathelement path="${mps_home}/core/typesystemEngine/source_gen" />
         <pathelement path="${mps_home}/core/findUsages-runtime/source" />
@@ -6737,6 +6739,7 @@
       <fileset dir="${mps_home}/core/kernel/smodelRuntime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/core/dataFlowRuntime/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/core/dataFlowRuntime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+      <fileset dir="${mps_home}/core/typechecking/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/core/typesystemEngine/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/core/typesystemEngine/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/core/findUsages-runtime/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
