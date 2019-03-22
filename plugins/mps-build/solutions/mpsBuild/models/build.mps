@@ -20148,6 +20148,10 @@
           <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
         </node>
       </node>
+      <node concept="1E1SXE" id="2JGPlbYz2rw" role="3bR37C">
+        <property role="1E1SXH" value="true" />
+        <ref role="1E1SXG" node="1nJh0raVm57" resolve="modelchecker" />
+      </node>
     </node>
     <node concept="m$_wf" id="5lGJ4Taqfsl" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.modelchecker" />
@@ -24080,9 +24084,6 @@
     <property role="turDy" value="mpsExecutionPlugin.xml" />
     <property role="3GE5qa" value="ide.plugins" />
     <property role="2DA0ip" value="../../../../" />
-    <node concept="2igEWh" id="1zSQW5U0ZuF" role="1hWBAP">
-      <property role="2igJW4" value="true" />
-    </node>
     <node concept="13uUGR" id="3IKDaVZorXM" role="1l3spa">
       <ref role="13uUGO" node="6eCuTcwOnJO" resolve="IDEA" />
       <node concept="398BVA" id="3IKDaVZorXN" role="13uUGP">
@@ -25554,6 +25555,9 @@
     </node>
     <node concept="10PD9b" id="5xa9wY2vhbK" role="10PD9s" />
     <node concept="3b7kt6" id="5xa9wY2vhbL" role="10PD9s" />
+    <node concept="2igEWh" id="1zSQW5U0ZuF" role="1hWBAP">
+      <property role="2igJW4" value="true" />
+    </node>
   </node>
   <node concept="1l3spW" id="5D1dJ7xWer5">
     <property role="TrG5h" value="mpsCore" />
