@@ -171,9 +171,11 @@
 
   <target name="download-platform" depends="check-platform,install-ivy" if="${do.platform.download}"
           description="Download platform based on IDEA Community from TeamCity">
-    <antcall target="clean-platform"/>
     <ivy:resolve file="ivy.xml" showprogress="true"/>
     <ivy:retrieve pattern="${basedir}/../[artifact].[ext]" overwritemode="different"/>
+
+    <!-- Delete current platform only after successful download of new one -->
+    <antcall target="clean-platform"/>
 
     <unzip src="${basedir}/../mps-platform.zip" dest="${basedir}/../" overwrite="true">
       <!--TODO use license files from IDEA Community-->
