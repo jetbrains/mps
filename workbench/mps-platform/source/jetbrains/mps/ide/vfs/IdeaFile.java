@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
-import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
@@ -440,7 +439,7 @@ public class IdeaFile implements IFile, CachingFile {
 
   @Override
   public IFile getBundleHome() {
-    BaseIdeaFileSystem localFS = (BaseIdeaFileSystem) VFSManager.getInstance().getFileSystem(VFSManager.FILE_FS);
+    BaseIdeaFileSystem localFS = myFS.getLocalFS();
     if (findVirtualFile()) {
       if (myVirtualFilePtr.getFileSystem() instanceof ArchiveFileSystem) {
         VirtualFile fileForJar = ((ArchiveFileSystem) myVirtualFilePtr.getFileSystem()).getLocalByEntry(myVirtualFilePtr);

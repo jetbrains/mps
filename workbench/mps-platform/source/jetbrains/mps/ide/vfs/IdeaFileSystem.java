@@ -90,10 +90,4 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
   VirtualFileSystem getUnderlyingFS() {
     throw new UnsupportedOperationException("Should not be invoked on IdeaFileSystem");
   }
-
-  @NotNull
-  @Override
-  String getProtocol() {
-    throw new UnsupportedOperationException("Should not be invoked on IdeaFileSystem");
-  }
 }

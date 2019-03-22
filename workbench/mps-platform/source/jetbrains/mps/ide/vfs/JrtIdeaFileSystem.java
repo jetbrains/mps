@@ -15,20 +15,12 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.vfs.VFSManager;
-import org.jetbrains.annotations.NotNull;
 
 public class JrtIdeaFileSystem extends BaseIdeaFileSystem {
   public JrtIdeaFileSystem(MPSCoreComponents mpsCore, FileSystemListenersContainer listenerContainer) {
-    super(mpsCore, listenerContainer);
-  }
-
-  @NotNull
-  @Override
-  String getProtocol() {
-    return VFSManager.JRT_FS;
+    super(mpsCore, listenerContainer, VFSManager.JRT_FS);
   }
 }

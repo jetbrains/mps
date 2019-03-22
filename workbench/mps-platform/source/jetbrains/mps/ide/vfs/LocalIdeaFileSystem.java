@@ -18,16 +18,9 @@ package jetbrains.mps.ide.vfs;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.vfs.VFSManager;
-import org.jetbrains.annotations.NotNull;
 
 public class LocalIdeaFileSystem extends BaseIdeaFileSystem {
   public LocalIdeaFileSystem(MPSCoreComponents mpsCore, FileSystemListenersContainer listenerContainer) {
-    super(mpsCore, listenerContainer);
-  }
-
-  @NotNull
-  @Override
-  String getProtocol() {
-    return VFSManager.FILE_FS;
+    super(mpsCore, listenerContainer, VFSManager.FILE_FS);
   }
 }
