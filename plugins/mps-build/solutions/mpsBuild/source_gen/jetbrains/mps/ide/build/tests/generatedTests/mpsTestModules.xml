@@ -654,7 +654,7 @@
       <plugin path="${artifacts.mps}/plugins/migration" />
       <plugin path="${artifacts.mps}/plugins/modelchecker" />
       <plugin path="${artifacts.mps}/plugins/mps-build" />
-      <plugin path="${artifacts.mps}/plugins/mps-core/META-INF/plugin.xml/../.." />
+      <plugin path="${artifacts.mps}/plugins/mps-core" />
       <plugin path="${artifacts.mps}/plugins/mps-devkit" />
       <plugin path="${artifacts.mps}/plugins/mps-make" />
       <plugin path="${artifacts.mps}/plugins/mps-testing" />
@@ -1571,7 +1571,7 @@
       <pathelement location="${artifacts.mps}/plugins/migration" />
       <pathelement location="${artifacts.mps}/plugins/modelchecker" />
       <pathelement location="${artifacts.mps}/plugins/mps-build" />
-      <pathelement location="${artifacts.mps}/plugins/mps-core/META-INF/plugin.xml/../.." />
+      <pathelement location="${artifacts.mps}/plugins/mps-core" />
       <pathelement location="${artifacts.mps}/plugins/mps-devkit" />
       <pathelement location="${artifacts.mps}/plugins/mps-make" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing" />
