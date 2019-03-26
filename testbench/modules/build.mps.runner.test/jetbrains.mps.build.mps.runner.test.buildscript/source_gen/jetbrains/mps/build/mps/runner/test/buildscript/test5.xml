@@ -261,7 +261,7 @@
     <echo message="Running code from jetbrains.mps.build.mps.runner.test.test5 solution in MPS" />
     <runMPS solution="07566df8-279c-48af-b73c-c8a1a451c7b2(jetbrains.mps.build.mps.runner.test.test5)" startClass="jetbrains.mps.build.mps.runner.test.test5.MainClass" startMethod="mpsMain">
       <plugin path="${artifacts.mps}/plugins/mps-console" id="jetbrains.mps.console" />
-      <plugin path="${artifacts.mps}/plugins/mps-core/META-INF/plugin.xml/../.." id="jetbrains.mps.core" />
+      <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-make" id="jetbrains.mps.ide.make" />
       <plugin path="${artifacts.mps}/plugins/mps-testing" id="jetbrains.mps.testing" />
       <plugin path="${build.tmp}/deps/mpsWorkbench/mps-workbench.jar/META-INF/plugin.xml/../.." id="com.intellij.modules.mps" />

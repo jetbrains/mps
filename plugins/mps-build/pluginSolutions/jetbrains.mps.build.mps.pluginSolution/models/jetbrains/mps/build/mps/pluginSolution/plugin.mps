@@ -12747,8 +12747,8 @@
                           <node concept="3_I8Xc" id="73fHb9hpuxm" role="39821P">
                             <ref role="3_I8Xa" to="ffeo:I6XuqH2zYV" resolve="git4idea" />
                           </node>
-                          <node concept="3_I8Xc" id="5wzCg4BvpWy" role="39821P">
-                            <ref role="3_I8Xa" to="ffeo:ymnOULBdbM" resolve="mps-core" />
+                          <node concept="3_I8Xc" id="1SFIfQkx0Yw" role="39821P">
+                            <ref role="3_I8Xa" to="ffeo:4EdAnGErOtx" resolve="mps-core" />
                           </node>
                           <node concept="3_I8Xc" id="6lX6mkqfz6m" role="39821P">
                             <ref role="3_I8Xa" to="ffeo:1x6h9EwqP32" resolve="mps-make" />
