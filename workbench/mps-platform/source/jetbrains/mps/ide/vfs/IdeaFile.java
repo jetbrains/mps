@@ -140,7 +140,14 @@ public class IdeaFile implements IFile, CachingFile {
       assert myVirtualFilePtr != null;
       return myVirtualFilePtr.getName();
     } else {
-      return truncateFileName(myPath);
+      if (PathUtil.isRoot(myPath)) {
+        return myPath;
+      }
+
+      int index = myPath.lastIndexOf(IFileSystem.SEPARATOR);
+      assert index > 0 : "illegal file path: " + myPath;
+
+      return myPath.substring(index + 1);
     }
   }
 
@@ -153,7 +160,14 @@ public class IdeaFile implements IFile, CachingFile {
       }
       return null;
     } else {
-      return myFS.getFile(truncateDirPath(myPath));
+      if (PathUtil.isRoot(myPath)) {
+        return null;
+      }
+
+      int index = myPath.lastIndexOf(IFileSystem.SEPARATOR);
+      assert index > 0 : "can't extract parent from path: " + myPath;
+
+      return myFS.getFile(myPath.substring(0, index));
     }
   }
 
@@ -229,11 +243,13 @@ public class IdeaFile implements IFile, CachingFile {
       return !myVirtualFilePtr.isDirectory();
     } else {
       try {
-        VirtualFile directory = createDirectories(truncateDirPath(myPath));
+        IdeaFile parent = getParent();
+        assert parent != null : "can't create a root directory";
+        VirtualFile directory = createDirectories(parent.getPath());
         if (directory == null) {
-          throw new IllegalStateException("Could not create directory under the path '" + truncateDirPath(myPath));
+          throw new IllegalStateException("Could not create directory for file '" + myPath);
         }
-        String fileName = truncateFileName(myPath);
+        String fileName = getName();
         directory.findChild(fileName); // This is a workaround for IDEA-67279
         myVirtualFilePtr = directory.createChildData(getFileSystem(), fileName);
         return true;
@@ -380,7 +396,7 @@ public class IdeaFile implements IFile, CachingFile {
           // existing file. However, Java is strict about case, and won't allow class A to live in file a.java
           // Hence, when we try to write into a file with the name different from one requested initially,
           // try to bring the name up to the desired one.
-          final String desiredFileName = truncateFileName(myPath);
+          final String desiredFileName = getName();
           if (!filePtr.getName().equals(desiredFileName)) {
             filePtr.rename(getFileSystem(), desiredFileName);
           }
@@ -486,25 +502,6 @@ public class IdeaFile implements IFile, CachingFile {
       return fileSystem.refreshAndFindFileByPath(myPath);
     } else {
       return fileSystem.findFileByPath(myPath);
-    }
-  }
-
-  @NotNull
-  private static String truncateDirPath(String path) {
-    int index = path.lastIndexOf(IFileSystem.SEPARATOR);
-    if (index == -1) {
-      return path;
-    } else {
-      return path.substring(0, index);
-    }
-  }
-
-  private static String truncateFileName(String path) {
-    int index = path.lastIndexOf(IFileSystem.SEPARATOR);
-    if (index == -1) {
-      return path;
-    } else {
-      return path.substring(index + 1);
     }
   }
 

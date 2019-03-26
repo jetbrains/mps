@@ -19,6 +19,7 @@ import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Contract;
@@ -190,6 +191,8 @@ public class FileUtil {
   @Deprecated
   //replaces /xx/.. with /. Use with already-normalized paths
   public static String resolveParentDirs(@NotNull String path) {
+    path = normalize(path);
+
     String currentPath = path;
     if (currentPath.endsWith("/..")) {
       currentPath += "/";
@@ -200,8 +203,8 @@ public class FileUtil {
 
     int index;
     next_occ:
-    while ((index = currentPath.indexOf("/../")) > 0) {
-      for (int i = index - 1; i > 0; i--) {
+    while ((index = currentPath.indexOf("/../")) >= 0) {
+      for (int i = index - 1; i >= 0; i--) {
         if (currentPath.charAt(i) == '/') {
           currentPath = currentPath.substring(0, i) + currentPath.substring(index + 3); //we leave the last slash in "/../"
           continue next_occ;
@@ -210,7 +213,7 @@ public class FileUtil {
       assert false : "Unexpected path: can't get parent: " + path;
     }
 
-    if (currentPath.endsWith("/")) {
+    if (currentPath.endsWith("/") && !PathUtil.isRoot(currentPath)) {
       currentPath = currentPath.substring(0, currentPath.length() - 1);
     }
     return currentPath;

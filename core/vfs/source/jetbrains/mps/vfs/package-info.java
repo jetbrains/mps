@@ -29,7 +29,7 @@
  *    - File FS
  *        Path is a regular path, with straight slashes, "." and ".." are not allowed
  *        E.g. /Users/user/project/file.ext
- *        Note: path should not end with slash.
+ *        Note: path should not end with slash except for root directories ("/" on MacOS/Linux and "C:/" on Windows).
  *
  *    - Jar FS
  *        Path is [path_to_jar]![path_inside_jar]

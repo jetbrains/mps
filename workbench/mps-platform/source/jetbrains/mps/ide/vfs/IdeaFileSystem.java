@@ -43,7 +43,6 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
   @NotNull
   @Override
   public IdeaFile getFile(@NotNull String path) {
-    path = FileUtil.normalize(path);
     path = FileUtil.resolveParentDirs(path);
     if (path.endsWith("!")) {
       path += "/";

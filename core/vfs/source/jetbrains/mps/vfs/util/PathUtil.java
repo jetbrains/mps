@@ -20,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
+/**
+ * For internal use only.
+ */
 public class PathUtil {
   @NotNull
   public static String toSystemIndependent(@NotNull String path) {
@@ -33,5 +36,9 @@ public class PathUtil {
     String result = path.replace(IFileSystem.SEPARATOR, File.separator);
     new PathAssert(result).osDependentPath();
     return result;
+  }
+
+  public static boolean isRoot(@NotNull String path) {
+    return path.endsWith(":/") || path.equals("/");
   }
 }

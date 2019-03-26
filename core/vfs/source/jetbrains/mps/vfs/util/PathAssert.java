@@ -65,8 +65,7 @@ public final class PathAssert {
   //Checks that no slash is after file name. E.g. /a/b/ is error, while c:/, /a.jar!/ and / are not
   public PathAssert noOddEndSlash() {
     assert
-        myPath.length() == 1 ||
-        myPath.endsWith(":/") ||
+        PathUtil.isRoot(myPath) ||
         !myPath.endsWith(IFileSystem.SEPARATOR) ||
         myPath.endsWith("!" + IFileSystem.SEPARATOR) :
         "Only archive paths can end with " + IFileSystem.SEPARATOR + ": " + myPath;
