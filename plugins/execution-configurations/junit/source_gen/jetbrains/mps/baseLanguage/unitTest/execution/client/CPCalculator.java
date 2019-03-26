@@ -21,7 +21,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.util.PathManager;
 import java.io.File;
-import jetbrains.mps.core.tool.environment.classloading.ClassloaderUtil;
+import jetbrains.mps.core.tool.environment.common.StringUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /*package*/ class CPCalculator {
@@ -109,7 +109,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
         continue;
       }
       for (File f : libDir.listFiles()) {
-        if (ClassloaderUtil.isJarOrZip(f)) {
+        if (isJarOrZip(f)) {
           rv.add(f.getPath());
         }
       }
@@ -128,7 +128,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     final File[] pluginFiles = preinstalledFolder.listFiles();
     if (pluginFiles != null) {
       for (final File pluginFile : pluginFiles) {
-        if (!(ClassloaderUtil.isJarOrZip(pluginFile))) {
+        if (!(isJarOrZip(pluginFile))) {
           File classesDir = new File(pluginFile, "classes");
           ListSequence.fromList(result).addElement(classesDir.getAbsolutePath());
           File libDir = new File(pluginFile, "lib");
@@ -148,13 +148,22 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     File[] children = root.listFiles();
     if (children != null) {
       for (final File childFile : children) {
-        if (ClassloaderUtil.isJarOrZip(childFile)) {
+        if (isJarOrZip(childFile)) {
           ListSequence.fromList(res).addElement(childFile.getAbsolutePath());
         }
       }
     }
 
     return res;
+  }
+
+  @SuppressWarnings(value = {"HardCodedStringLiteral"})
+  private static boolean isJarOrZip(File file) {
+    if (file.isDirectory()) {
+      return false;
+    }
+    final String name = file.getName();
+    return StringUtil.endsWithIgnoreCase(name, ".jar") || StringUtil.endsWithIgnoreCase(name, ".zip");
   }
 
   @NotNull

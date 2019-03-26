@@ -32,6 +32,7 @@
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.SuppressWarnings" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.LinkedHashSet" />
@@ -41,7 +42,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.execution.api.Java_Command" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.TestsWithParameters" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.TestsWithParametersAndConfiguration" />
-    <classNode dependClassName="jetbrains.mps.core.tool.environment.classloading.ClassloaderUtil" />
+    <classNode dependClassName="jetbrains.mps.core.tool.environment.common.StringUtil" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
