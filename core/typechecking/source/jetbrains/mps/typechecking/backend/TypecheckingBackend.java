@@ -57,7 +57,7 @@ public class TypecheckingBackend implements CoreComponent {
   public ProviderToken installProvider(@NotNull TypecheckingProvider provider, @NotNull ProviderLevel level) {
     if (myProviders.containsKey(level)) {
       LOG.error("Provider already installed at level: " + level.getLevelID());
-      return null;
+      throw new IllegalStateException("Provider already installed at level: " + level.getLevelID());
     }
     myProviders.put(level, provider);
     return new ProviderToken(provider, level);
@@ -74,12 +74,14 @@ public class TypecheckingBackend implements CoreComponent {
 
   @Override
   public void init() {
-//    throw new UnsupportedOperationException(); // FIXME
   }
 
   @Override
   public void dispose() {
-//    throw new UnsupportedOperationException(); // FIXME
+    if (!myProviders.isEmpty()) {
+      LOG.error("Still registered providers on dispose");
+      myProviders.clear();
+    }
   }
 
   /**

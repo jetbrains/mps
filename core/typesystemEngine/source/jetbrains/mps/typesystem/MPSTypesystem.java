@@ -54,15 +54,16 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
   @Override
   public void init() {
     super.init();
-    myProviderToken = myMPSTypechecking.getTypecheckingBackend().installProvider(new LegacyTypecheckingProvider(), new DefaultProviderLevel());
     myTypeChecker = init(new TypeChecker(myLanguageRegistry));
     myTypeContextManager = init(new TypeContextManager(myTypeChecker, myClassLoaderManager));
+    myProviderToken = myMPSTypechecking.getTypecheckingBackend().installProvider(new LegacyTypecheckingProvider(), new DefaultProviderLevel());
   }
 
   @Override
   public void dispose() {
     myProviderToken.uninstall();
     this.myProviderToken = null;
+    super.dispose();
   }
 
   @Nullable
@@ -77,7 +78,7 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
     return null;
   }
 
-  private static class DefaultProviderLevel implements ProviderLevel {
+  private static final class DefaultProviderLevel implements ProviderLevel {
 
     private DefaultProviderLevel() {
     }
@@ -89,6 +90,7 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
 
     @Override
     public int compareTo(@NotNull ProviderLevel that) {
+      if (that.getClass().equals(this.getClass())) return 0;
       // the default provider is always the first one
       return -1;
     }

@@ -25,8 +25,9 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author Fedor Isakov
  */
-public class TypecheckingFacadeImpl extends TypecheckingFacade implements CoreComponent {
+public class TypecheckingFacadeComponent extends TypecheckingFacade implements CoreComponent {
 
+  // dependencies
   private final LanguageRegistry myLanguageRegistry;
   private final TypecheckingBackend myTypecheckingBackend;
   private final LanguageScopeFactory myLanguageScopeFactory;
@@ -34,9 +35,9 @@ public class TypecheckingFacadeImpl extends TypecheckingFacade implements CoreCo
   /**
    * Created by MPSTypechecking.
    */ 
-  public TypecheckingFacadeImpl(@NotNull LanguageRegistry languageRegistry,
-                                @NotNull TypecheckingBackend typecheckingBackend,
-                                @NotNull LanguageScopeFactory languageScopeFactory) {
+  public TypecheckingFacadeComponent(@NotNull LanguageRegistry languageRegistry,
+                                     @NotNull TypecheckingBackend typecheckingBackend,
+                                     @NotNull LanguageScopeFactory languageScopeFactory) {
     this.myLanguageRegistry = languageRegistry;
     this.myTypecheckingBackend = typecheckingBackend;
     this.myLanguageScopeFactory = languageScopeFactory;
@@ -53,6 +54,7 @@ public class TypecheckingFacadeImpl extends TypecheckingFacade implements CoreCo
     setContextInstance(null);
   }
 
+  @NotNull
   @Override
   protected TypecheckingBackend getTypecheckingBackend() {
     return myTypecheckingBackend;

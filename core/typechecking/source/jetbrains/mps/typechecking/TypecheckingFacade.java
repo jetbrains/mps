@@ -17,8 +17,10 @@ package jetbrains.mps.typechecking;
 
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
+import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -40,53 +42,65 @@ public abstract class TypecheckingFacade implements TypecheckingQueries {
    * @throws IllegalStateException if no instance is available in the current context.
    */
   @NotNull
-  static TypecheckingFacade getFromContext() {
+  public static TypecheckingFacade getFromContext() {
     return getContextInstance();
   }
 
   @Override
   public SNode getTypeOf(@NotNull SNode expression) {
-    throw new UnsupportedOperationException(); // FIXME
+    return getTypecheckingBackend().selectProvider(expression).getTypeOf(expression);
   }
 
   @Override
   public SNode getInferredType(@NotNull SNode expression) {
-    throw new UnsupportedOperationException(); // FIXME
+    return getTypecheckingBackend().selectProvider(expression).getInferredType(expression);
   }
 
   @Override
   public boolean convertsTo(@NotNull SNode typeA, @NotNull SNode typeB) {
-    throw new UnsupportedOperationException(); // FIXME
+    return getTypecheckingBackend().selectProvider(typeA, typeB).convertsTo(typeA, typeB);
   }
 
   @Override
   public boolean isSubtype(@NotNull SNode typeA, @NotNull SNode typeB) {
-    throw new UnsupportedOperationException(); // FIXME
+    return getTypecheckingBackend().selectProvider(typeA, typeB).isSubtype(typeA, typeB);
   }
 
   @Override
   public boolean isStrongSubtype(@NotNull SNode typeA, @NotNull SNode typeB) {
-    throw new UnsupportedOperationException(); // FIXME
+    return getTypecheckingBackend().selectProvider(typeA, typeB).isStrongSubtype(typeA, typeB);
   }
 
   @NotNull
   @Override
-  public Collection<SNode> getImmediateSupertypes(@NotNull SNode typeA) {
-    throw new UnsupportedOperationException(); // FIXME
+  public Collection<SNode> getImmediateSupertypes(@NotNull SNode type) {
+    return getTypecheckingBackend().selectProvider(type).getImmediateSupertypes(type);
   }
 
   @Override
   public SNode coerceType(@NotNull SNode type, @NotNull SConcept typeConcept) {
-    throw new UnsupportedOperationException(); // FIXME
+    return getTypecheckingBackend().selectProvider(type, typeConcept).coerceType(type, typeConcept);
+  }
+
+  @Nullable
+  @Override
+  public SNode coerceType(@NotNull SNode type, @NotNull INodeMatchingPattern targetPattern) {
+    return getTypecheckingBackend().selectProvider(type, targetPattern.getConcept()).coerceType(type, targetPattern);
   }
 
   @Override
   public SNode strongCoerceType(@NotNull SNode type, @NotNull SConcept typeConcept) {
-    throw new UnsupportedOperationException(); // FIXME
+    return getTypecheckingBackend().selectProvider(type, typeConcept).strongCoerceType(type, typeConcept);
   }
 
-  protected abstract TypecheckingBackend getTypecheckingBackend();
+  @Nullable
+  @Override
+  public SNode strongCoerceType(@NotNull SNode type, @NotNull INodeMatchingPattern targetPattern) {
+    return getTypecheckingBackend().selectProvider(type, targetPattern.getConcept()).strongCoerceType(type, targetPattern);
+  }
 
+  @NotNull
+  protected abstract TypecheckingBackend getTypecheckingBackend();
 
   protected static void setContextInstance(TypecheckingFacade contextInstance) {
     CONTEXT_INSTANCE.set(contextInstance);

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.typechecking;
 
+import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -83,11 +84,29 @@ public interface TypecheckingQueries {
   SNode coerceType(@NotNull SNode type, @NotNull SConcept targetConcept);
 
   /**
-   * Provided for compatibility with the legacy system. Is essentially the same as {@code coerceType()}.
+   * Tries to coerce a type to the form corresponding to the specified {@code targetPattern}.
+   * This is a more specific variant of the method {@link TypecheckingQueries#coerceType(SNode, SConcept)}, with the difference being that
+   * in addition to the target concept one can specify one or more features of the target type.
+   *
+   * Returns the coerced type or null, if the type can't be coerced to the specified form.
+   */
+  @Nullable
+  SNode coerceType(@NotNull SNode type, @NotNull INodeMatchingPattern targetPattern);
+
+  /**
+   * Provided for compatibility with the legacy system. Is essentially the same as {@link TypecheckingQueries#coerceType(SNode, SConcept)}.
    */
   @Nullable
   default SNode strongCoerceType(@NotNull SNode type, @NotNull SConcept targetConcept) {
     return coerceType(type, targetConcept);
+  }
+
+  /**
+   * Provided for compatibility with the legacy system. Is essentially the same as {@link TypecheckingQueries#coerceType(SNode, INodeMatchingPattern)}.
+   */
+  @Nullable
+  default SNode strongCoerceType(@NotNull SNode type,  @NotNull INodeMatchingPattern targetPattern) {
+    return coerceType(type, targetPattern);
   }
 
 }

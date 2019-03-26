@@ -40,7 +40,7 @@ public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
   private final ClassLoaderManager myClassLoaderManager;
 
   // internal components
-  private TypecheckingFacadeImpl myTypecheckingFacade;
+  private TypecheckingFacadeComponent myTypecheckingFacade;
   private LanguageScopeFactory myLanguageScopeFactory;
   private TypecheckingBackend myTypecheckingBackend;
 
@@ -63,12 +63,15 @@ public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
     super.init();
     this.myTypecheckingBackend = init(new TypecheckingBackend());
     this.myLanguageScopeFactory = init(new LanguageScopeFactory(myLanguageRegistry));
-    this.myTypecheckingFacade = init(new TypecheckingFacadeImpl(myLanguageRegistry, myTypecheckingBackend, myLanguageScopeFactory));
+    this.myTypecheckingFacade = init(new TypecheckingFacadeComponent(myLanguageRegistry, myTypecheckingBackend, myLanguageScopeFactory));
   }
 
   @Override
   public void dispose() {
     super.dispose();
+    this.myTypecheckingBackend = null;
+    this.myLanguageScopeFactory = null;
+    this.myTypecheckingFacade = null;
   }
 
   @Override

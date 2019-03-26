@@ -16,14 +16,17 @@
 package jetbrains.mps.typesystem;
 
 import jetbrains.mps.lang.pattern.ConceptMatchingPattern;
+import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.typechecking.backend.TypecheckingProvider;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 /**
  * Implementation of typechecking queries on top of the legacy (default) typechecking provider.
@@ -53,28 +56,29 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider {
 
   @Override
   public SNode getInferredType(@NotNull SNode expression) {
-    return null;
+    return TypeChecker.getInstance().getInferredTypeOf(expression);
   }
 
   @Override
   public boolean convertsTo(@NotNull SNode typeA, @NotNull SNode typeB) {
-    return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB);
+    return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, true);
   }
 
   @Override
   public boolean isSubtype(@NotNull SNode typeA, @NotNull SNode typeB) {
-    return false;
+    return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, true);
   }
 
   @Override
   public boolean isStrongSubtype(@NotNull SNode typeA, @NotNull SNode typeB) {
-    return false;
+    return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, false);
   }
 
   @NotNull
   @Override
   public Collection<SNode> getImmediateSupertypes(@NotNull SNode typeA) {
-    return null;
+    StructuralNodeSet<?> sns = TypeChecker.getInstance().getSubtypingManager().collectImmediateSupertypes(typeA); // weak is the default
+    return Collections.unmodifiableCollection(sns);
   }
 
   @Override
@@ -82,9 +86,21 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider {
     return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, new ConceptMatchingPattern(typeConcept), true);
   }
 
+  @Nullable
   @Override
-  public SNode strongCoerceType(@NotNull SNode type, @NotNull SConcept typeConcept) {
-    return null;
+  public SNode coerceType(@NotNull SNode type, @NotNull INodeMatchingPattern targetPattern) {
+    return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, targetPattern, true);
   }
 
+  @Override
+  public SNode strongCoerceType(@NotNull SNode type, @NotNull SConcept typeConcept) {
+    return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, new ConceptMatchingPattern(typeConcept), false);
+  }
+
+  @Nullable
+  @Override
+  public SNode strongCoerceType(@NotNull SNode type, @NotNull INodeMatchingPattern targetPattern) {
+    return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, targetPattern, false);
+  }
+  
 }
