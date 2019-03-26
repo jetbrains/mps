@@ -70,7 +70,7 @@ public class BooleanLocalVariable implements EditorMenuItemCustomizer {
     private void customize_(SNode contextNode, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       SAbstractConcept outputConcept = itemInformation.getOutputConcept();
       if (isBooleanVariable(contextNode) && outputConcept != null && outputConcept.isSubConceptOf(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant"))) {
-        style.setPriority(1.0);
+        style.setPriority(2.0);
         style.setBold();
       }
     }
