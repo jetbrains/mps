@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,8 @@ public class ReferenceInfo_Template extends ReferenceInfo {
       return createStaticReference(ref, outputTargetNode);
     }
     if (myResolveInfo != null) {
-      final SReference dr = createDynamicReference(ref, myResolveInfo, new DynamicReferenceOrigin(myTemplateSourceNode, myContext.getInput().getReference()));
+      final SNodeReference inputNodeRef = myContext.getInput() == null ? null : myContext.getInput().getReference();
+      final SReference dr = createDynamicReference(ref, myResolveInfo, new DynamicReferenceOrigin(myTemplateSourceNode, inputNodeRef));
       ref.getGenerator().registerDynamicReference(dr);
       return dr; 
     }
