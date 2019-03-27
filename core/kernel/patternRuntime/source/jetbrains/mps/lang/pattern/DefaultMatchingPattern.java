@@ -18,6 +18,7 @@ package jetbrains.mps.lang.pattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class DefaultMatchingPattern implements IMatchingPattern {
 
   @NotNull
   @Override
-  public SAbstractConcept getConcept() {
+  public SConcept getConcept() {
     throw new UnsupportedOperationException();
   }
 

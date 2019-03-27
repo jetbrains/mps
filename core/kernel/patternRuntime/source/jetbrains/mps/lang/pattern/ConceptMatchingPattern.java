@@ -17,12 +17,14 @@ package jetbrains.mps.lang.pattern;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class ConceptMatchingPattern implements IMatchingPattern {
-  private SAbstractConcept myConcept;
 
-  public ConceptMatchingPattern(SAbstractConcept concept) {
+  private SConcept myConcept;
+
+  public ConceptMatchingPattern(SConcept concept) {
     myConcept = concept;
   }
 
@@ -33,7 +35,7 @@ public class ConceptMatchingPattern implements IMatchingPattern {
 
   @NotNull
   @Override
-  public SAbstractConcept getConcept() {
+  public SConcept getConcept() {
     return myConcept;
   }
 }

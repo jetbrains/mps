@@ -16,14 +16,13 @@
 package jetbrains.mps.lang.pattern;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public interface IMatchingPattern {
-  boolean match(SNode nodeToMatch);
-  //public Object getFieldValue(String s);
 
-  // perhaps, shall be SConcept, I don't know exact contract for pattern's concept
+  boolean match(SNode nodeToMatch);
+
   @NotNull
-  SAbstractConcept getConcept();
+  SConcept getConcept();
 }
