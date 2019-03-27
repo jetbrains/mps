@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="4vq9ytfawcxxn5crmkd4n1m1s2v9io7">
-  <files names="ClassPath.java:ClasspathCache.java:FileLoader.java:JarLoader.java:Loader.java:Resource.java:UrlClassLoader.java" />
-</product>
-
