@@ -26555,11 +26555,6 @@
             <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
           </node>
         </node>
-        <node concept="1SiIV0" id="1WGJoq9Wr75" role="3bR37C">
-          <node concept="3bR9La" id="1WGJoq9Wr76" role="1SiIV1">
-            <ref role="3bR37D" node="1WGJoq9Wd0d" resolve="jetbrains.mps.build.workflow.preset" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="4aB4InNNy1d" role="3bR37C">
           <node concept="3bR9La" id="4aB4InNNy1e" role="1SiIV1">
             <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
@@ -26568,11 +26563,6 @@
         <node concept="1SiIV0" id="B6nJXVycia" role="3bR37C">
           <node concept="3bR9La" id="B6nJXVycib" role="1SiIV1">
             <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="B6nJXVycic" role="3bR37C">
-          <node concept="3bR9La" id="B6nJXVycid" role="1SiIV1">
-            <ref role="3bR37D" node="7pdFgzxlDoP" resolve="jetbrains.mps.build.mps" />
           </node>
         </node>
       </node>
