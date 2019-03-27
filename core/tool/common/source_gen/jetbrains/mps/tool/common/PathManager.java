@@ -11,11 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import java.net.URL;
 import jetbrains.mps.core.tool.environment.common.StringUtil;
 import jetbrains.mps.core.tool.environment.common.URLUtil;
-import java.io.InputStream;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.util.PropertyResourceBundle;
-import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Set;
 
@@ -97,7 +92,7 @@ public class PathManager {
   }
 
   private static boolean isMpsDir(File file) {
-    return new File(file, FileUtil.toSystemDependentName("bin/" + PROPERTIES_FILE_NAME)).exists();
+    return new File(new File(file, "bin"), PROPERTIES_FILE_NAME).exists();
   }
 
   public static boolean ensureConfigFolderExists(final boolean createIfNotExists) {
@@ -200,41 +195,6 @@ public class PathManager {
     resultPath = StringUtil.trimEnd(resultPath, File.separator);
     resultPath = URLUtil.unescapePercentSequences(resultPath);
     return resultPath;
-  }
-
-  public static void loadProperties() {
-    File propFile = FileUtil.findFirstThatExist(System.getProperty(PathManager.PROPERTIES_FILE), System.getProperty("user.home") + "/idea.properties", PathManager.getHomePath() + "/bin/idea.properties", PathManager.getHomePath() + "/community/bin/idea.properties");
-    if (propFile != null) {
-      InputStream fis = null;
-      try {
-        fis = new BufferedInputStream(new FileInputStream(propFile));
-        final PropertyResourceBundle bundle = new PropertyResourceBundle(fis);
-        final Enumeration keys = bundle.getKeys();
-        String home = (String) bundle.handleGetObject("idea.home");
-        if (home != null && PathManager.ourHomePath == null) {
-          PathManager.ourHomePath = FileUtil.getAbsolutePath(PathManager.substituteVars(home));
-        }
-        final Properties sysProperties = System.getProperties();
-        while (keys.hasMoreElements()) {
-          String key = (String) keys.nextElement();
-          if (sysProperties.getProperty(key, null) == null) {
-            //  load the property from the property file only if it is not defined yet 
-            final String value = PathManager.substituteVars(bundle.getString(key));
-            sysProperties.setProperty(key, value);
-          }
-        }
-      } catch (IOException e) {
-        // noinspection HardCodedStringLiteral 
-        System.err.println("Problem reading from property file: " + propFile.getPath());
-      } finally {
-        try {
-          if (fis != null) {
-            fis.close();
-          }
-        } catch (IOException e) {
-        }
-      }
-    }
   }
 
   public static String substituteVars(String s) {

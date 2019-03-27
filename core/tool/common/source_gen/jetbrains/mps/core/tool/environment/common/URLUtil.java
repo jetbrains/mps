@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.io.UnsupportedEncodingException;
 
 public class URLUtil {
-  public URLUtil() {
+  private URLUtil() {
   }
   @NotNull
   public static String unescapePercentSequences(@NotNull String s) {
