@@ -122,7 +122,13 @@ public abstract class MpsLoadTask extends Task {
     }
     Set<File> pluginsClassPath = new LinkedHashSet<File>();
     for (PluginData pd : myWhatToDo.getPlugins()) {
-      MPSClasspathUtil.gatherAllClassesAndJarsUnder(new File(pd.path), pluginsClassPath);
+      File pf = new File(pd.path);
+      if (pf.isDirectory()) {
+        MPSClasspathUtil.gatherAllClassesAndJarsUnder(pf, pluginsClassPath);
+      } else {
+        assert pf.getName().endsWith(".jar") : "Plugin should be either a plugin directory or a .jar file";
+        pluginsClassPath.add(pf);
+      }
     }
     if (myFork) {
       String currentClassPathString = System.getProperty("java.class.path");
