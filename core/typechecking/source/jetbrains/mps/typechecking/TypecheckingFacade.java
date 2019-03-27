@@ -35,8 +35,6 @@ import java.util.Collection;
  */
 public abstract class TypecheckingFacade implements TypecheckingQueries {
 
-  private static ThreadLocal<TypecheckingFacade> CONTEXT_INSTANCE = new ThreadLocal<>();
-
   /**
    * Provides access to an instance of {@code TypecheckingFacade} that is made available by the environment.
    * @throws IllegalStateException if no instance is available in the current context.
@@ -103,13 +101,19 @@ public abstract class TypecheckingFacade implements TypecheckingQueries {
   protected abstract TypecheckingBackend getTypecheckingBackend();
 
   protected static void setContextInstance(TypecheckingFacade contextInstance) {
-    CONTEXT_INSTANCE.set(contextInstance);
+//    CONTEXT_INSTANCE.set(contextInstance);
+    GLOBAL_INSTANCE = contextInstance;
   }
 
   protected static TypecheckingFacade getContextInstance() {
-    TypecheckingFacade facade = CONTEXT_INSTANCE.get();
+//    TypecheckingFacade facade = CONTEXT_INSTANCE.get();
+    TypecheckingFacade facade = GLOBAL_INSTANCE;
     if (facade == null) throw new IllegalStateException("No TypecheckingFacade instance in the context");
     return facade;
   }
-  
+
+  private static TypecheckingFacade GLOBAL_INSTANCE;
+
+  private static ThreadLocal<TypecheckingFacade> CONTEXT_INSTANCE = new ThreadLocal<>();
+
 }
