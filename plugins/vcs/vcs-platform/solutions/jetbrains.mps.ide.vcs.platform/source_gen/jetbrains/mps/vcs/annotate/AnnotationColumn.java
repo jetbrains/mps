@@ -18,7 +18,6 @@ import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.vcs.annotate.LineAnnotationAspect;
 import com.intellij.openapi.vcs.AbstractVcs;
-import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
@@ -85,18 +84,14 @@ import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
-import com.intellij.openapi.vcs.changes.BackgroundFromStartOption;
+import com.intellij.openapi.progress.PerformInBackgroundOption;
 import com.intellij.openapi.progress.ProgressIndicator;
-import com.intellij.openapi.vcs.CommittedChangesProvider;
-import com.intellij.openapi.vcs.versionBrowser.CommittedChangeList;
-import com.intellij.openapi.vcs.versionBrowser.ChangeBrowserSettings;
 import com.intellij.openapi.util.Pair;
+import com.intellij.openapi.vcs.versionBrowser.CommittedChangeList;
 import com.intellij.openapi.vcs.FilePath;
-import com.intellij.openapi.vcs.FilePathImpl;
 import com.intellij.openapi.vcs.ui.VcsBalloonProblemNotifier;
 import com.intellij.openapi.vcs.changes.Change;
 import com.intellij.openapi.vcs.changes.ChangesUtil;
-import java.io.File;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.fileTypes.FileType;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
@@ -125,11 +120,10 @@ public class AnnotationColumn extends AbstractLeftColumn {
   private List<Integer> myPseudoLinesToFileLines;
   private int mySubcolumnInterval;
   private Map<String, Color> myAuthorsToColors = MapSequence.fromMap(new HashMap<String, Color>());
-  private FileAnnotation myFileAnnotation;
+  private final FileAnnotation myFileAnnotation;
   private Map<VcsRevisionNumber, VcsFileRevision> myRevisionNumberToRevision = MapSequence.fromMap(new HashMap<VcsRevisionNumber, VcsFileRevision>());
   private LineAnnotationAspect myAuthorAnnotationAspect;
   private AbstractVcs myVcs;
-  private VirtualFile myVirtualFile;
   private EditableSModel myModel;
   private List<LineContent> myFileLineToContent;
   private Map<ModelChange, LineContent[]> myChangesToLineContents = MapSequence.fromMap(new HashMap<ModelChange, LineContent[]>());
@@ -139,7 +133,8 @@ public class AnnotationColumn extends AbstractLeftColumn {
   private AnnotationColumn.MyDifferenceListener myDifferenceListener = new AnnotationColumn.MyDifferenceListener();
   private boolean myShowAdditionalInfo = false;
   private MessageBusConnection myMessageBusConnection;
-  public AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, SNode root, FileAnnotation fileAnnotation, final AbstractVcs vcs, VirtualFile virtualFile) {
+
+  /*package*/ AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, SNode root, FileAnnotation fileAnnotation, final AbstractVcs vcs) {
     super(leftEditorHighlighter);
     myModel = (EditableSModel) SNodeOperations.getModel(root);
     myFileAnnotation = fileAnnotation;
@@ -189,7 +184,6 @@ public class AnnotationColumn extends AbstractLeftColumn {
     myViewActionGroup = new ViewActionGroup(this, myAspectSubcolumns);
     myRevisionRange = new VcsRevisionRange(this, myFileAnnotation);
     ListSequence.fromList(myAspectSubcolumns).addElement(new HighlightRevisionSubcolumn(this, myRevisionRange));
-    myVirtualFile = virtualFile;
     myVcs = vcs;
     final SRepository editorRepo = getEditorComponent().getEditorContext().getRepository();
     final CurrentDifferenceRegistry registry = CurrentDifferenceRegistry.getInstance(getProject());
@@ -198,7 +192,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
         final CurrentDifference currentDifference = registry.getCurrentDifference(myModel);
         editorRepo.getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            ListSequence.fromList(check_5mnya_a0a0a0a1a0a0s0v(currentDifference.getChangeSet())).visitAll(new IVisitor<ModelChange>() {
+            ListSequence.fromList(check_5mnya_a0a0a0a1a0a0r0v(currentDifference.getChangeSet())).visitAll(new IVisitor<ModelChange>() {
               public void visit(ModelChange ch) {
                 saveChange(ch);
               }
@@ -509,7 +503,7 @@ __switch__:
     ListSequence.fromList(actions).addElement(Separator.getInstance());
     ListSequence.fromList(actions).addElement(myViewActionGroup);
     if (fileLine != -1) {
-      ListSequence.fromList(actions).addElement(new AnnotationColumn.ShowDiffFromAnnotationAction(fileLine));
+      ListSequence.fromList(actions).addElement(new AnnotationColumn.ShowDiffFromAnnotationAction(myFileAnnotation, fileLine, ListSequence.fromList(myFileLineToContent).getElement(fileLine)));
       ListSequence.fromList(actions).addElement(new BaseAction("Copy revision number") {
         @Override
         protected void doExecute(AnActionEvent e, Map<String, Object> params) {
@@ -585,55 +579,48 @@ __switch__:
       saveChange(change);
     }
   }
-  private class ShowDiffFromAnnotationAction extends AnAction {
-    private int myFileLine;
-    public ShowDiffFromAnnotationAction(int fileLine) {
+  private static class ShowDiffFromAnnotationAction extends AnAction {
+    private final FileAnnotation myFileAnnotation;
+    private final int myFileLine;
+    private final LineContent myLineContent;
+
+    public ShowDiffFromAnnotationAction(FileAnnotation fileAnnotation, int fileLine, LineContent lineContent) {
       super("Show Diff");
       myFileLine = fileLine;
+      myFileAnnotation = fileAnnotation;
+      myLineContent = lineContent;
     }
     @Override
     public void actionPerformed(AnActionEvent event) {
-      final VcsRevisionNumber revisionNumber = myFileAnnotation.getLineRevisionNumber(myFileLine);
-      if (revisionNumber == null) {
+      final FileAnnotation.RevisionChangesProvider rcp = myFileAnnotation.getRevisionsChangesProvider();
+      if (rcp == null) {
         return;
       }
 
-      final Project project = getProject();
-      ProgressManager.getInstance().run(new Task.Backgroundable(project, "Loading revision " + revisionNumber.asString() + " contents", true, BackgroundFromStartOption.getInstance()) {
+      final Project project = myFileAnnotation.getProject();
+      ProgressManager.getInstance().run(new Task.Backgroundable(project, "Loading revision content...", true, PerformInBackgroundOption.ALWAYS_BACKGROUND) {
         @Override
         public void run(@NotNull ProgressIndicator pi) {
-          CommittedChangesProvider<CommittedChangeList, ChangeBrowserSettings> provider = myVcs.getCommittedChangesProvider();
-
           try {
-            Pair<CommittedChangeList, FilePath> pair = null;
-            if (provider != null) {
-              pair = provider.getOneList(myVirtualFile, revisionNumber);
-            }
-            FilePath targetPath = (check_5mnya_a0a0c0c0a0a0a0e0c54(pair) == null ? new FilePathImpl(myVirtualFile) : check_5mnya_a0a2a2a0a0a0a4a2tb(pair));
-            CommittedChangeList cl = check_5mnya_a0d0c0a0a0a0e0c54(pair);
-            if (cl == null) {
+            final Pair<? extends CommittedChangeList, FilePath> pair = rcp.getChangesIn(myFileLine);
+            if (pair == null) {
               VcsBalloonProblemNotifier.showOverChangesView(project, "Cannot load data for showing diff", MessageType.ERROR);
               return;
             }
-            List<Change> changes = Sequence.fromIterable(((Iterable<Change>) cl.getChanges())).sort(new ISelector<Change, String>() {
+            // the way RevisionChangesProvider is built and != null pair means both values there are set 
+            assert pair.getFirst() != null;
+            assert pair.getSecond() != null;
+            List<Change> changes = Sequence.fromIterable(((Iterable<Change>) pair.getFirst().getChanges())).sort(new ISelector<Change, String>() {
               public String select(Change c) {
                 return ChangesUtil.getFilePath(c).getName().toLowerCase();
               }
             }, true).toListSequence();
-            final File ioFile = targetPath.getIOFile();
             Change change = ListSequence.fromList(changes).findFirst(new IWhereFilter<Change>() {
               public boolean accept(Change c) {
-                return c.getAfterRevision() != null && c.getAfterRevision().getFile().getIOFile().equals(ioFile);
+                return c.getAfterRevision() != null && c.getAfterRevision().getFile().equals(pair.getSecond());
               }
             });
             if (change != null) {
-              final String name = ioFile.getName();
-              change = ListSequence.fromList(changes).findFirst(new IWhereFilter<Change>() {
-                public boolean accept(Change c) {
-                  return c.getAfterRevision() != null && c.getAfterRevision().getFile().getName().equals(name);
-                }
-              });
-
               ContentRevision before = change.getBeforeRevision();
               ContentRevision after = change.getAfterRevision();
 
@@ -655,7 +642,7 @@ __switch__:
 
               final Wrappers._T<SModel> beforeModel = new Wrappers._T<SModel>();
               if (before == null) {
-                beforeModel.value = new MergeTemporaryModel(myModel.getReference(), true);
+                beforeModel.value = new MergeTemporaryModel(afterModel.getReference(), true);
               } else {
                 beforeModel.value = VCSPersistenceUtil.loadModel(before.getContent().getBytes(FileUtil.DEFAULT_CHARSET), (isPerRoot ? MPSExtentions.MODEL : filetypes[0].getDefaultExtension()));
               }
@@ -663,13 +650,13 @@ __switch__:
               final Wrappers._T<String> rootName = new Wrappers._T<String>();
               ProjectHelper.fromIdeaProject(project).getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<String>() {
                 public String invoke() {
-                  SNodeId nodeId = check_5mnya_a0a0a0a22a8a2a0a0a0a4a2tb(ListSequence.fromList(myFileLineToContent).getElement(myFileLine));
+                  SNodeId nodeId = myLineContent.getNodeId();
                   SNode node = afterModel.getNode(nodeId);
                   if ((node == null)) {
                     node = beforeModel.value.getNode(nodeId);
                   }
                   SNode root = SNodeOperations.getContainingRoot(node);
-                  rootId.value = check_5mnya_a0e0a0a22a8a2a0a0a0a4a2tb(root);
+                  rootId.value = check_5mnya_a0e0a0a91a7a0a0a0a0a4a5tb(root);
                   return rootName.value = (((root == null) ? "" : root.getName())) + " (" + SModelOperations.getModelName(afterModel) + ")";
                 }
               }));
@@ -695,6 +682,12 @@ __switch__:
         }
       });
     }
+    private static SNodeId check_5mnya_a0e0a0a91a7a0a0a0a0a4a5tb(SNode checkedDotOperand) {
+      if (null != checkedDotOperand) {
+        return checkedDotOperand.getNodeId();
+      }
+      return null;
+    }
   }
   private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
     public MyEditorComponentCreateListener() {
@@ -709,39 +702,9 @@ __switch__:
       }
     }
   }
-  private static List<ModelChange> check_5mnya_a0a0a0a1a0a0s0v(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_5mnya_a0a0a0a1a0a0r0v(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
-    }
-    return null;
-  }
-  private static FilePath check_5mnya_a0a2a2a0a0a0a4a2tb(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getSecond();
-    }
-    return null;
-  }
-  private static FilePath check_5mnya_a0a0c0c0a0a0a0e0c54(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getSecond();
-    }
-    return null;
-  }
-  private static CommittedChangeList check_5mnya_a0d0c0a0a0a0e0c54(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getFirst();
-    }
-    return null;
-  }
-  private static SNodeId check_5mnya_a0a0a0a22a8a2a0a0a0a4a2tb(LineContent checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getNodeId();
-    }
-    return null;
-  }
-  private static SNodeId check_5mnya_a0e0a0a22a8a2a0a0a0a4a2tb(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getNodeId();
     }
     return null;
   }

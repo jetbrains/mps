@@ -148,7 +148,7 @@ public class AnnotationHelper {
           }
           editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, root, myFileAnnotation, vcs, file);
+              AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, root, myFileAnnotation, vcs);
               leftEditorHighlighter.addLeftColumn(annotationColumn);
             }
           });
