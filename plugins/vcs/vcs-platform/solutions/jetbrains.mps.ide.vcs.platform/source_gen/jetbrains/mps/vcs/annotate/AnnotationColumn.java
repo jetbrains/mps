@@ -82,34 +82,6 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.progress.ProgressManager;
-import com.intellij.openapi.progress.Task;
-import com.intellij.openapi.progress.PerformInBackgroundOption;
-import com.intellij.openapi.progress.ProgressIndicator;
-import com.intellij.openapi.util.Pair;
-import com.intellij.openapi.vcs.versionBrowser.CommittedChangeList;
-import com.intellij.openapi.vcs.FilePath;
-import com.intellij.openapi.vcs.ui.VcsBalloonProblemNotifier;
-import com.intellij.openapi.vcs.changes.Change;
-import com.intellij.openapi.vcs.changes.ChangesUtil;
-import com.intellij.openapi.vcs.changes.ContentRevision;
-import com.intellij.openapi.fileTypes.FileType;
-import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import com.intellij.diff.contents.DiffContent;
-import com.intellij.diff.DiffContentFactory;
-import com.intellij.diff.requests.DiffRequest;
-import com.intellij.diff.requests.SimpleDiffRequest;
-import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
-import com.intellij.diff.DiffManager;
-import com.intellij.openapi.vcs.VcsException;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
 public class AnnotationColumn extends AbstractLeftColumn {
@@ -503,7 +475,7 @@ __switch__:
     ListSequence.fromList(actions).addElement(Separator.getInstance());
     ListSequence.fromList(actions).addElement(myViewActionGroup);
     if (fileLine != -1) {
-      ListSequence.fromList(actions).addElement(new AnnotationColumn.ShowDiffFromAnnotationAction(myFileAnnotation, fileLine, ListSequence.fromList(myFileLineToContent).getElement(fileLine)));
+      ListSequence.fromList(actions).addElement(new ShowDiffFromAnnotationAction(myFileAnnotation, fileLine, ListSequence.fromList(myFileLineToContent).getElement(fileLine)));
       ListSequence.fromList(actions).addElement(new BaseAction("Copy revision number") {
         @Override
         protected void doExecute(AnActionEvent e, Map<String, Object> params) {
@@ -577,116 +549,6 @@ __switch__:
     @Override
     public void changeAdded(@NotNull ModelChange change) {
       saveChange(change);
-    }
-  }
-  private static class ShowDiffFromAnnotationAction extends AnAction {
-    private final FileAnnotation myFileAnnotation;
-    private final int myFileLine;
-    private final LineContent myLineContent;
-
-    public ShowDiffFromAnnotationAction(FileAnnotation fileAnnotation, int fileLine, LineContent lineContent) {
-      super("Show Diff");
-      myFileLine = fileLine;
-      myFileAnnotation = fileAnnotation;
-      myLineContent = lineContent;
-    }
-    @Override
-    public void actionPerformed(AnActionEvent event) {
-      final FileAnnotation.RevisionChangesProvider rcp = myFileAnnotation.getRevisionsChangesProvider();
-      if (rcp == null) {
-        return;
-      }
-
-      final Project project = myFileAnnotation.getProject();
-      ProgressManager.getInstance().run(new Task.Backgroundable(project, "Loading revision content...", true, PerformInBackgroundOption.ALWAYS_BACKGROUND) {
-        @Override
-        public void run(@NotNull ProgressIndicator pi) {
-          try {
-            final Pair<? extends CommittedChangeList, FilePath> pair = rcp.getChangesIn(myFileLine);
-            if (pair == null) {
-              VcsBalloonProblemNotifier.showOverChangesView(project, "Cannot load data for showing diff", MessageType.ERROR);
-              return;
-            }
-            // the way RevisionChangesProvider is built and != null pair means both values there are set 
-            assert pair.getFirst() != null;
-            assert pair.getSecond() != null;
-            List<Change> changes = Sequence.fromIterable(((Iterable<Change>) pair.getFirst().getChanges())).sort(new ISelector<Change, String>() {
-              public String select(Change c) {
-                return ChangesUtil.getFilePath(c).getName().toLowerCase();
-              }
-            }, true).toListSequence();
-            Change change = ListSequence.fromList(changes).findFirst(new IWhereFilter<Change>() {
-              public boolean accept(Change c) {
-                return c.getAfterRevision() != null && c.getAfterRevision().getFile().equals(pair.getSecond());
-              }
-            });
-            if (change != null) {
-              ContentRevision before = change.getBeforeRevision();
-              ContentRevision after = change.getAfterRevision();
-
-              if (pi.isCanceled()) {
-                return;
-              }
-              pi.setText("Loading model after change");
-
-              assert after != null;
-              FileType[] filetypes = {(before == null ? null : before.getFile().getFileType()), after.getFile().getFileType()};
-              boolean isPerRoot = MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(filetypes[1]) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(filetypes[1]);
-
-              final SModel afterModel = VCSPersistenceUtil.loadModel(after.getContent().getBytes(FileUtil.DEFAULT_CHARSET), (isPerRoot ? MPSExtentions.MODEL : filetypes[1].getDefaultExtension()));
-
-              if (pi.isCanceled()) {
-                return;
-              }
-              pi.setText("Loading model before change");
-
-              final Wrappers._T<SModel> beforeModel = new Wrappers._T<SModel>();
-              if (before == null) {
-                beforeModel.value = new MergeTemporaryModel(afterModel.getReference(), true);
-              } else {
-                beforeModel.value = VCSPersistenceUtil.loadModel(before.getContent().getBytes(FileUtil.DEFAULT_CHARSET), (isPerRoot ? MPSExtentions.MODEL : filetypes[0].getDefaultExtension()));
-              }
-              final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
-              final Wrappers._T<String> rootName = new Wrappers._T<String>();
-              ProjectHelper.fromIdeaProject(project).getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<String>() {
-                public String invoke() {
-                  SNodeId nodeId = myLineContent.getNodeId();
-                  SNode node = afterModel.getNode(nodeId);
-                  if ((node == null)) {
-                    node = beforeModel.value.getNode(nodeId);
-                  }
-                  SNode root = SNodeOperations.getContainingRoot(node);
-                  rootId.value = check_5mnya_a0e0a0a91a7a0a0a0a0a4a5tb(root);
-                  return rootName.value = (((root == null) ? "" : root.getName())) + " (" + SModelOperations.getModelName(afterModel) + ")";
-                }
-              }));
-
-              List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), DiffContentFactory.getInstance().create((before == null ? "" : before.getContent()), filetypes[0]), DiffContentFactory.getInstance().create(after.getContent(), filetypes[1]));
-              List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), (before == null ? "<no revision>" : before.getRevisionNumber().asString()), after.getRevisionNumber().asString());
-              final DiffRequest request = new SimpleDiffRequest(rootName.value, contents, titles);
-              // put hint to show only one root 
-              request.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, rootId.value);
-              ApplicationManager.getApplication().invokeLater(new Runnable() {
-                public void run() {
-                  DiffManager.getInstance().showDiff(project, request);
-                }
-              });
-            }
-          } catch (final VcsException ve) {
-            ApplicationManager.getApplication().invokeLater(new Runnable() {
-              public void run() {
-                VcsBalloonProblemNotifier.showOverChangesView(project, "Cannot show diff: " + ve.getMessage(), MessageType.ERROR);
-              }
-            });
-          }
-        }
-      });
-    }
-    private static SNodeId check_5mnya_a0e0a0a91a7a0a0a0a0a4a5tb(SNode checkedDotOperand) {
-      if (null != checkedDotOperand) {
-        return checkedDotOperand.getNodeId();
-      }
-      return null;
     }
   }
   private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
