@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
  *
  *
  */
-public class GeneratedMatchingPattern extends DefaultMatchingPattern {
+public abstract class GeneratedMatchingPattern extends DefaultMatchingPattern implements INodeMatchingPattern {
   /**
    * Generic access to matched values, don't use unless generic is the only way to go.
    * Prefer {@link #getMatchedNode(String)}, {@link #getMatchedProperty(String)} and {@link #getMatchedList(String)} instead.
