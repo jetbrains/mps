@@ -10,7 +10,6 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.FileStatus;
@@ -20,6 +19,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 
 public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Diff;
@@ -35,8 +36,11 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    String rootName = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName();
-    VirtualFile virtualFile = new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), rootName).detectVirtualFile();
+    // only applicable to root nodes 
+    if (SNodeOperations.getParent(event.getData(MPSCommonDataKeys.NODE)) != null) {
+      return false;
+    }
+    VirtualFile virtualFile = ShowDiffererenceWithCurrentRevision_Action.this.getVcsActionsUtil(event).detectVirtualFile();
     if (virtualFile == null) {
       return false;
     }
@@ -82,7 +86,15 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    String rootName = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName();
-    new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), rootName).showRootDifference(null);
+    ShowDiffererenceWithCurrentRevision_Action.this.getVcsActionsUtil(event).showRootDifference(null);
+  }
+  /*package*/ VcsActionsUtil getVcsActionsUtil(final AnActionEvent event) {
+    final Wrappers._T<String> rootName = new Wrappers._T<String>();
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName();
+      }
+    });
+    return new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), rootName.value);
   }
 }
