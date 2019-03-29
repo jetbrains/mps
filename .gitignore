@@ -34,7 +34,7 @@ teamcity-info.xml
 *.class
 
 # Plugins related excludes:
-# * Platform bundled plagins
+# * Platform bundled plugins
 # * Downloadable plugin libraries
 /plugins/debugger-api/lib
 /plugins/debugger-java/lib
@@ -47,7 +47,6 @@ teamcity-info.xml
 /plugins/jetpad/lib
 /plugins/jetpad/lib/*.war
 /plugins/jetpad/lib/jetpadBuildNumber.txt
-/plugins/cvsIntegration/lib
 /plugins/git4idea/lib
 /plugins/github
 /plugins/svn4idea/lib
