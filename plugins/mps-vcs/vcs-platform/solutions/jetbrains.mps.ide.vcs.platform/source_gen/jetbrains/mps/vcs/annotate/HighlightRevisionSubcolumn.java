@@ -11,7 +11,7 @@ package jetbrains.mps.vcs.annotate;
   }
   @Override
   public String getId() {
-    return "higlight.revision";
+    return "highlight.revision";
   }
   @Override
   public String getTextForFileLine(int fileLine) {

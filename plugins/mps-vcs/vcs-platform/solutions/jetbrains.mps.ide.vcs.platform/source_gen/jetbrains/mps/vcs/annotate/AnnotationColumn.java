@@ -54,8 +54,8 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
+import java.awt.Graphics2D;
 import java.awt.FontMetrics;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import org.jetbrains.annotations.Nullable;
@@ -65,6 +65,7 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import com.intellij.openapi.vcs.annotate.LineAnnotationAspectAdapter;
@@ -82,6 +83,7 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
 public class AnnotationColumn extends AbstractLeftColumn {
@@ -89,7 +91,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
   private Font myFont = EditorSettings.getInstance().getDefaultEditorFont();
   private List<AnnotationAspectSubcolumn> myAspectSubcolumns = ListSequence.fromList(new ArrayList<AnnotationAspectSubcolumn>());
   private List<Integer> myPseudoLinesY;
-  private List<Integer> myPseudoLinesToFileLines;
+  private List<AnnotationColumn.LineRevisionRecord> myEditorLineRecords;
   private int mySubcolumnInterval;
   private Map<String, Color> myAuthorsToColors = MapSequence.fromMap(new HashMap<String, Color>());
   private final FileAnnotation myFileAnnotation;
@@ -110,9 +112,6 @@ public class AnnotationColumn extends AbstractLeftColumn {
     super(leftEditorHighlighter);
     myModel = (EditableSModel) SNodeOperations.getModel(root);
     myFileAnnotation = fileAnnotation;
-    for (VcsFileRevision rev : ListSequence.fromList(fileAnnotation.getRevisions())) {
-      MapSequence.fromMap(myRevisionNumberToRevision).put(rev.getRevisionNumber(), rev);
-    }
     final Wrappers._T<ModelReadException> mre = new Wrappers._T<ModelReadException>(null);
     try {
       myFileLineToContent = VCSPersistenceSupport.getLineToContentMap(myFileAnnotation.getAnnotatedContent());
@@ -152,9 +151,10 @@ public class AnnotationColumn extends AbstractLeftColumn {
         }
         MapSequence.fromMap(myAuthorsToColors).put(author, color);
       }
+      MapSequence.fromMap(myRevisionNumberToRevision).put(revision.getRevisionNumber(), revision);
     }
     myViewActionGroup = new ViewActionGroup(this, myAspectSubcolumns);
-    myRevisionRange = new VcsRevisionRange(this, myFileAnnotation);
+    myRevisionRange = new VcsRevisionRange(this);
     ListSequence.fromList(myAspectSubcolumns).addElement(new HighlightRevisionSubcolumn(this, myRevisionRange));
     myVcs = vcs;
     final SRepository editorRepo = getEditorComponent().getEditorContext().getRepository();
@@ -164,7 +164,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
         final CurrentDifference currentDifference = registry.getCurrentDifference(myModel);
         editorRepo.getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            ListSequence.fromList(check_5mnya_a0a0a0a1a0a0r0v(currentDifference.getChangeSet())).visitAll(new IVisitor<ModelChange>() {
+            ListSequence.fromList(check_5mnya_a0a0a0a1a0a0q0v(currentDifference.getChangeSet())).visitAll(new IVisitor<ModelChange>() {
               public void visit(ModelChange ch) {
                 saveChange(ch);
               }
@@ -218,6 +218,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
   @Override
   public void paint(Graphics graphics) {
     graphics.setFont(myFont);
+    final Font boldFont = FontRegistry.getInstance().getFont(myFont.getName(), myFont.getStyle() | Font.BOLD, myFont.getSize());
     EditorComponent.turnOnAliasingIfPossible((Graphics2D) graphics);
     Map<AnnotationAspectSubcolumn, Integer> subcolumnToX = MapSequence.fromMap(new HashMap<AnnotationAspectSubcolumn, Integer>());
     int x = getX() + 1;
@@ -231,18 +232,24 @@ public class AnnotationColumn extends AbstractLeftColumn {
       if (SetSequence.fromSet(myCurrentPseudoLines).contains(pseudoLine)) {
         continue;
       }
+      AnnotationColumn.LineRevisionRecord record = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
+      if (record == null) {
+        // XXX is it possible to face this? Previous code didn't account for myPseudoLinesToFileLines[pseudoLine] == -1 
+        continue;
+      }
 
-      int fileLine = ListSequence.fromList(myPseudoLinesToFileLines).getElement(pseudoLine);
       int height = (pseudoLine == ListSequence.fromList(myPseudoLinesY).count() - 1 ? getEditorComponent().getHeight() - ListSequence.fromList(myPseudoLinesY).last() : ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine + 1) - ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine));
       if (myAuthorAnnotationAspect != null && ViewAction.isSet(ViewAction.COLORS)) {
-        String author = myAuthorAnnotationAspect.getValue(fileLine);
+        String author = MapSequence.fromMap(myRevisionNumberToRevision).get(record.rev).getAuthor();
         graphics.setColor(MapSequence.fromMap(myAuthorsToColors).get(author));
         graphics.fillRect(getX(), ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine), getWidth(), height);
       }
 
       graphics.setColor(ANNOTATION_COLOR);
-      if (myRevisionRange.isFileLineHighlighted(fileLine)) {
-        graphics.setFont(FontRegistry.getInstance().getFont(myFont.getName(), myFont.getStyle() | Font.BOLD, myFont.getSize()));
+      if (myRevisionRange.isRevisionHighlighted(MapSequence.fromMap(myRevisionNumberToRevision).get(record.rev))) {
+        graphics.setFont(boldFont);
+      } else {
+        graphics.setFont(myFont);
       }
       FontMetrics metrics = graphics.getFontMetrics();
       if (height < metrics.getHeight()) {
@@ -253,7 +260,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
           return myShowAdditionalInfo || s.isEnabled();
         }
       })) {
-        String text = subcolumn.getTextForFileLine(fileLine);
+        String text = subcolumn.getTextForFileLine(record.fileLine);
         int textX = MapSequence.fromMap(subcolumnToX).get(subcolumn);
         if (subcolumn.isRightAligned()) {
           textX += subcolumn.getWidth() - metrics.stringWidth(text);
@@ -274,6 +281,11 @@ public class AnnotationColumn extends AbstractLeftColumn {
       }
     }) + 1 + mySubcolumnInterval / 2);
   }
+
+  /*package*/ VcsFileRevision fileRevForLine(int fileLine) {
+    return MapSequence.fromMap(myRevisionNumberToRevision).get(myFileAnnotation.getLineRevisionNumber(fileLine));
+  }
+
   @Nullable
   private EditorCell findCellForContent(@Nullable LineContent content) {
     if (content == null) {
@@ -298,6 +310,9 @@ public class AnnotationColumn extends AbstractLeftColumn {
 
   }
   private Iterable<Integer> getPseudoLinesForContent(@Nullable LineContent content) {
+    // XXX what makes me feel uneasy is that findCellForContent gives whole node cell in case respective cell for Property/Reference LineContent have not been found 
+    //     On one hand, the change is indeed there and we might want to reflect the fact node has been changed. OTOH, it might be technical/private property not reflected in the editor and 
+    //     there's no reason to tell it's a change for complete node. 
     EditorCell cell = findCellForContent(content);
     if (cell == null) {
       return Sequence.fromIterable(Collections.<Integer>emptyList());
@@ -378,26 +393,59 @@ __switch__:
         return y;
       }
     }, true).toListSequence();
-    myPseudoLinesToFileLines = ListSequence.fromList(new ArrayList<Integer>());
+    myEditorLineRecords = ListSequence.fromList(new ArrayList<AnnotationColumn.LineRevisionRecord>());
     ListSequence.fromList(myPseudoLinesY).visitAll(new IVisitor<Integer>() {
       public void visit(Integer t) {
-        ListSequence.fromList(myPseudoLinesToFileLines).addElement(-1);
+        ListSequence.fromList(myEditorLineRecords).addElement(null);
       }
     });
     editor.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         // It seems the reason for model read is getPseudoLinedForContent->findCellForContent that deals with model of edited node 
         for (int fileLine = 0; fileLine < ListSequence.fromList(myFileLineToContent).count(); fileLine++) {
-          for (int pseudoLine : getPseudoLinesForContent(ListSequence.fromList(myFileLineToContent).getElement(fileLine))) {
-            int currentFileLine = ListSequence.fromList(myPseudoLinesToFileLines).getElement(pseudoLine);
-            ListSequence.fromList(myPseudoLinesToFileLines).setElement(pseudoLine, getFileLineWithMaxRevision(currentFileLine, fileLine));
+          LineContent lineContent = ListSequence.fromList(myFileLineToContent).getElement(fileLine);
+          final VcsRevisionNumber fileLineRev = myFileAnnotation.getLineRevisionNumber(fileLine);
+          for (int pseudoLine : getPseudoLinesForContent(lineContent)) {
+            final AnnotationColumn.LineRevisionRecord lr = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
+            if (lr == null) {
+              // XXX we might want to share same LRR instance for the group of editor lines, but then need to be careful 
+              // when updating its actual revision 
+              ListSequence.fromList(myEditorLineRecords).setElement(pseudoLine, new AnnotationColumn.LineRevisionRecord(lineContent.getNodeId(), fileLineRev, fileLine));
+            } else {
+              // we've got info for the editor line already, and it's attributed to some node and a revision 
+              if (lr.nodeId.equals(lineContent.getNodeId())) {
+                // same node is reported, but different revision, perhaps? Update if newer, keep previous otherwise 
+                // XXX I assume 'less than' means 'earlier' 
+                if (lr.rev.compareTo(fileLineRev) < 0) {
+                  lr.rev = fileLineRev;
+                  lr.fileLine = fileLine;
+                }
+              } else {
+                // new node is reported for the line 
+                // XXX it might be child of the original and therefore needs to take precedence over parent 
+                //     or it might be parent again after child put its record earlier, replacing parent record 
+                //     (keep in mind nested and closing tags <node parent><node child/></node parent>) 
+                if (!(lr.isAmongPrevious(lineContent.getNodeId()))) {
+                  // treat actual LineContent as more relevant and overwrite editor line record, yet keep knowledge about nodeid of the original record 
+                  ListSequence.fromList(myEditorLineRecords).setElement(pseudoLine, new AnnotationColumn.LineRevisionRecord(lineContent.getNodeId(), fileLineRev, fileLine, lr));
+                }
+                // else this editor line has been recorded for the node of actual lineContent and later overwritten with another node 
+                // assume that other node is more relevant (e.g. actual LineContent represents closing </node> tag of a parent node 
+                // indeed, it's not necessarily true (we'd better record 'technical' lines like closing tag right in LineContent), but this heuristic is still better  
+                // than 'just take the latest' approach 
+              }
+            }
           }
         }
       }
     });
     FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(myFont);
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
-      aspectSubcolumn.computeWidth(metrics, myPseudoLinesToFileLines);
+      aspectSubcolumn.computeWidth(metrics, ListSequence.fromList(myEditorLineRecords).where(new NotNullWhereFilter<AnnotationColumn.LineRevisionRecord>()).select(new ISelector<AnnotationColumn.LineRevisionRecord, Integer>() {
+        public Integer select(AnnotationColumn.LineRevisionRecord it) {
+          return it.fileLine;
+        }
+      }));
     }
     mySubcolumnInterval = metrics.stringWidth(" ");
     calculateCurrentPseudoLinesLater();
@@ -446,7 +494,7 @@ __switch__:
     if (pseudoLine < 0) {
       pseudoLine = -pseudoLine - 2;
     }
-    if (pseudoLine < 0 || pseudoLine >= ListSequence.fromList(myPseudoLinesToFileLines).count()) {
+    if (pseudoLine < 0 || pseudoLine >= ListSequence.fromList(myEditorLineRecords).count()) {
       return -1;
     }
     return pseudoLine;
@@ -459,7 +507,7 @@ __switch__:
       if (SetSequence.fromSet(myCurrentPseudoLines).contains(pseudoLine)) {
         return -1;
       }
-      return ListSequence.fromList(myPseudoLinesToFileLines).getElement(pseudoLine);
+      return ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine).fileLine;
     }
   }
   @Override
@@ -564,7 +612,45 @@ __switch__:
       }
     }
   }
-  private static List<ModelChange> check_5mnya_a0a0a0a1a0a0r0v(ChangeSet checkedDotOperand) {
+
+  private static class LineRevisionRecord {
+    /*package*/ final SNodeId nodeId;
+
+    /**
+     * Perhaps, shall stick to VcsFileRevision instead, as it gives both vcsRevNumber and author
+     * Intentionally not final as it's updated if we find newer revision for the node
+     */
+    /*package*/ VcsRevisionNumber rev;
+    /**
+     * provisional, just to get legacy code that relies on file line number working
+     * indicates file line where we picked rev from
+     */
+    /*package*/ int fileLine;
+    private final List<SNodeId> prevRecordNodeId;
+
+    /*package*/ LineRevisionRecord(SNodeId nid, VcsRevisionNumber n, int fileLineNumber) {
+      nodeId = nid;
+      rev = n;
+      fileLine = fileLineNumber;
+      prevRecordNodeId = null;
+    }
+
+    /*package*/ LineRevisionRecord(SNodeId nid, VcsRevisionNumber n, int fileLineNumber, AnnotationColumn.LineRevisionRecord prev) {
+      nodeId = nid;
+      rev = n;
+      fileLine = fileLineNumber;
+      prevRecordNodeId = ListSequence.fromList(new ArrayList<SNodeId>());
+      ListSequence.fromList(prevRecordNodeId).addElement(prev.nodeId);
+      if (ListSequence.fromList(prev.prevRecordNodeId).isNotEmpty()) {
+        ListSequence.fromList(prevRecordNodeId).addSequence(ListSequence.fromList(prev.prevRecordNodeId));
+      }
+    }
+
+    /*package*/ boolean isAmongPrevious(SNodeId nid) {
+      return ListSequence.fromList(prevRecordNodeId).contains(nid);
+    }
+  }
+  private static List<ModelChange> check_5mnya_a0a0a0a1a0a0q0v(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
