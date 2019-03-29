@@ -250,6 +250,7 @@
         <module file="${plugin_home}/migration-platform/solutions/component/jetbrains.mps.migration.component.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

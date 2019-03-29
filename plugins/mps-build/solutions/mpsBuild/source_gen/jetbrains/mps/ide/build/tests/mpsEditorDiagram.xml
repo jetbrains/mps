@@ -289,6 +289,7 @@
         <module file="${basedir}/plugins/diagramEditor/test/jetbrains.mps.lang.editor.diagram.tests/jetbrains.mps.lang.editor.diagram.tests.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />

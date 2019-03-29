@@ -766,6 +766,7 @@
         <module file="${basedir}/plugins/testModules/testSubstituteType/solutions/testSubstituteType/testSubstituteType.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />

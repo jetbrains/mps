@@ -326,6 +326,7 @@
         <module file="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/jetbrains.mps.editor.contextActionsTool.pluginSolution.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

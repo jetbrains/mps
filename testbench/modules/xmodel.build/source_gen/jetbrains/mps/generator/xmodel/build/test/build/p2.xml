@@ -151,6 +151,7 @@
         <module file="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.test2/jetbrains.mps.generator.xmodel.test2.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />

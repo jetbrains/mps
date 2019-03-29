@@ -366,6 +366,7 @@
         <module file="${mps_home}/plugins/vcs/languages/mergehints/jetbrains.mps.vcs.mergehints.mpl" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

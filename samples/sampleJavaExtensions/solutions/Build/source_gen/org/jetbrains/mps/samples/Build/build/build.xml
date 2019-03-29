@@ -555,6 +555,7 @@
       </chunk>
       <chunk />
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="project_home" path="${project_home}" />

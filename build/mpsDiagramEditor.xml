@@ -412,6 +412,7 @@
         <module file="${mps_home}/plugins/diagramEditor/solutions/jetbrains.mps.lang.editor.figures.library/jetbrains.mps.lang.editor.figures.library.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

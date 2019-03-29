@@ -590,6 +590,7 @@
         <module file="${mps_home}/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.mpl" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

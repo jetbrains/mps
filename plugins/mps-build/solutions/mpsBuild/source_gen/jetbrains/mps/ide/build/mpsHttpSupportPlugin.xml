@@ -362,6 +362,7 @@
         <module file="${plugin_home}/solutions/nodeaccess/jetbrains.mps.ide.httpsupport.nodeaccess.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

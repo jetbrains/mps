@@ -688,6 +688,7 @@
         <module file="${mps_home}/plugins/debugger-java/customViewers/jetbrains.mps.debugger.java.customViewers.plugin.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

@@ -180,6 +180,7 @@
         <module file="${basedir}/plugins/modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

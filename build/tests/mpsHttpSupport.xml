@@ -212,6 +212,7 @@
         <module file="${basedir}/testbench/testsolutions/httpsupport.test/jetbrains.mps.ide.httpsupport.tests.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />

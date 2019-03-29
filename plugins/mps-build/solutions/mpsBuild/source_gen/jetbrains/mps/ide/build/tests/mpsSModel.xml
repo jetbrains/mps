@@ -273,6 +273,7 @@
         <module file="${basedir}/testbench/modules/testRead/jetbrains.mps.testRead.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />

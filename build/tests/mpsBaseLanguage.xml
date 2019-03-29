@@ -341,6 +341,7 @@
         <module file="${basedir}/testbench/testsolutions/bl.unittest/jetbrains.mps.baseLanguage.unittest.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />

@@ -210,6 +210,7 @@
         <module file="${mps_home}/plugins/mpsmake/jetbrains.mps.ide.make.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

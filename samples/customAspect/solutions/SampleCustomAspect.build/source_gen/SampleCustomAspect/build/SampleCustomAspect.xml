@@ -420,6 +420,7 @@
         <module file="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />

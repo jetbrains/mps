@@ -178,6 +178,7 @@
         <module file="${mps_home}/plugins/mpsjava/platform/jetbrains.mps.ide.java.platform.msd" />
       </chunk>
       <jvmargs>
+        <arg value="-ea" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />
