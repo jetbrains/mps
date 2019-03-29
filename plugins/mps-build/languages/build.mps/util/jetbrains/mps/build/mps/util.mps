@@ -6795,16 +6795,14 @@
             <node concept="37vLTw" id="4fCiNXEpoeW" role="37wK5m">
               <ref role="3cqZAo" node="2pk5iwY3nT7" resolve="myInitialModules" />
             </node>
-            <node concept="3clFbT" id="4fCiNXEpooz" role="37wK5m">
-              <property role="3clFbU" value="false" />
-            </node>
+            <node concept="3clFbT" id="4fCiNXEpooz" role="37wK5m" />
           </node>
         </node>
         <node concept="3clFbF" id="4fCiNXEpp4h" role="3cqZAp">
           <node concept="1rXfSq" id="4fCiNXEpp4g" role="3clFbG">
             <ref role="37wK5l" node="4fCiNXEbDzJ" resolve="collectAllUsedLanguageRuntimesAndTheirDeps" />
-            <node concept="37vLTw" id="4fCiNXEppHj" role="37wK5m">
-              <ref role="3cqZAo" node="2pk5iwY3nT7" resolve="myInitialModules" />
+            <node concept="37vLTw" id="1yck7qstOxd" role="37wK5m">
+              <ref role="3cqZAo" node="6xJrZo0GW9x" resolve="myModules" />
             </node>
           </node>
         </node>
@@ -6956,12 +6954,32 @@
             <property role="3SKdUp" value="used languages must be deployable" />
           </node>
         </node>
+        <node concept="3cpWs8" id="1yck7qsEbnj" role="3cqZAp">
+          <node concept="3cpWsn" id="1yck7qsEbnk" role="3cpWs9">
+            <property role="TrG5h" value="copyOfMyModules" />
+            <node concept="_YKpA" id="1yck7qsEbnb" role="1tU5fm">
+              <node concept="3Tqbb2" id="1yck7qsEbne" role="_ZDj9">
+                <ref role="ehGHo" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="1yck7qsEbnl" role="33vP2m">
+              <node concept="Tc6Ow" id="1yck7qsEbnm" role="2ShVmc">
+                <node concept="37vLTw" id="1yck7qsEbnn" role="I$8f6">
+                  <ref role="3cqZAo" node="6xJrZo0GW9x" resolve="myModules" />
+                </node>
+                <node concept="3Tqbb2" id="1yck7qsEbno" role="HW$YZ">
+                  <ref role="ehGHo" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="2Gpval" id="7LkEFTMzmu$" role="3cqZAp">
           <node concept="2GrKxI" id="7LkEFTMzmu_" role="2Gsz3X">
             <property role="TrG5h" value="module" />
           </node>
-          <node concept="37vLTw" id="2BHiRxeuFme" role="2GsD0m">
-            <ref role="3cqZAo" node="2pk5iwY3nT7" resolve="myInitialModules" />
+          <node concept="37vLTw" id="1yck7qsEbnp" role="2GsD0m">
+            <ref role="3cqZAo" node="1yck7qsEbnk" resolve="copyOfMyModules" />
           </node>
           <node concept="3clFbS" id="7LkEFTMzmuB" role="2LFqv$">
             <node concept="3cpWs8" id="4fCiNXEptfL" role="3cqZAp">

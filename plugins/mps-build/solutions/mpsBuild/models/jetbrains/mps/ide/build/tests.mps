@@ -196,6 +196,9 @@
       <concept id="3189788309731928315" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnJavaModule" flags="ng" index="1E1SXE">
         <reference id="3189788309731928317" name="module" index="1E1SXG" />
       </concept>
+      <concept id="3189788309731922642" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage" flags="ng" index="1E1Vl3">
+        <reference id="3189788309731922643" name="language" index="1E1Vl2" />
+      </concept>
       <concept id="322010710375871467" name="jetbrains.mps.build.mps.structure.BuildMps_AbstractModule" flags="ng" index="3LEN3z">
         <property id="8369506495128725901" name="compact" index="BnDLt" />
         <property id="322010710375892619" name="uuid" index="3LESm3" />
@@ -304,15 +307,8 @@
             <ref role="3bR37D" to="ffeo:mXGwHwhVPj" resolve="JDK" />
           </node>
         </node>
-        <node concept="1SiIV0" id="3T4oiWuYWrk" role="3bR37C">
-          <node concept="3bR9La" id="3T4oiWuYWrl" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:ymnOULAU0H" resolve="jetbrains.mps.lang.test" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="3vfBydmDYYK" role="3bR37C">
-          <node concept="3bR9La" id="3vfBydmDYYL" role="1SiIV1">
-            <ref role="3bR37D" node="53PdBITf4ee" resolve="jetbrains.mps.lang.editor.tableTests" />
-          </node>
+        <node concept="1E1Vl3" id="1yck7qsfYC9" role="3bR37C">
+          <ref role="1E1Vl2" node="3vfBydmDZ3c" resolve="testLangWithRT" />
         </node>
       </node>
       <node concept="1E1JtA" id="3vfBydmDYXe" role="2G$12L">
@@ -485,24 +481,9 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="7DjC5ztkN97" role="3bR37C">
-          <node concept="3bR9La" id="7DjC5ztkN98" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:5xa9wY2vh9z" resolve="jetbrains.mps.execution.library" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="7DjC5ztkN99" role="3bR37C">
-          <node concept="3bR9La" id="7DjC5ztkN9a" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:4Hc8TwAmypn" resolve="jetbrains.mps.tool.common" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="7DjC5ztkN9b" role="3bR37C">
           <node concept="3bR9La" id="7DjC5ztkN9c" role="1SiIV1">
             <ref role="3bR37D" to="ffeo:44LXwdzyvTi" resolve="Annotations" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="7DjC5ztkN9d" role="3bR37C">
-          <node concept="3bR9La" id="7DjC5ztkN9e" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:7gdoTYdo$et" resolve="jetbrains.mps.debugger.api.api" />
           </node>
         </node>
       </node>

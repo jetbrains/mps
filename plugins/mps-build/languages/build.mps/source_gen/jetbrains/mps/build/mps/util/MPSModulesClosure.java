@@ -296,7 +296,7 @@ public class MPSModulesClosure {
   public MPSModulesClosure runtimeClosure() {
     SetSequence.fromSet(myModules).addSequence(Sequence.fromIterable(myInitialModules));
     collectDependencies(myInitialModules, false);
-    collectAllUsedLanguageRuntimesAndTheirDeps(myInitialModules);
+    collectAllUsedLanguageRuntimesAndTheirDeps(myModules);
     if (!(myOptions.doesIncludeInitial())) {
       SetSequence.fromSet(myModules).removeSequence(Sequence.fromIterable(myInitialModules).toListSequence());
     }
@@ -314,7 +314,8 @@ public class MPSModulesClosure {
     mergeIntoMe(rtClosure);
 
     // used languages must be deployable 
-    for (SNode module : Sequence.fromIterable(myInitialModules)) {
+    List<SNode> copyOfMyModules = ListSequence.fromListWithValues(new ArrayList<SNode>(), myModules);
+    for (SNode module : ListSequence.fromList(copyOfMyModules)) {
       Iterable<SNode> usedLanguages = getUsedLanguagesWithExtended(module);
       SetSequence.fromSet(myModules).addSequence(Sequence.fromIterable(usedLanguages).toListSequence());
       MPSModulesClosure rtClosureOfUsedLangs = new MPSModulesClosure(usedLanguages, new MPSModulesClosure.ModuleDependenciesOptions(myOptions).setIncludeInitial()).runtimeClosure();
