@@ -85,5 +85,6 @@ public class CloneModel_Action extends BaseAction {
       }
     });
     dialog.value.show();
+    dialog.value.createModel();
   }
 }

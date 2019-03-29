@@ -108,7 +108,7 @@ public class NewModelDialog extends DialogWrapper {
     check();
   }
 
-  public EditableSModel getResult() {
+  public EditableSModel createModel() {
     if (myResult == null && myResultHelper != null) {
       try {
         myResult = myResultHelper.createModel(myClone, myPreserveIds);

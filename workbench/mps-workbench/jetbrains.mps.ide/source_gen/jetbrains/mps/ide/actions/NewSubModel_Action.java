@@ -104,7 +104,7 @@ public class NewSubModel_Action extends BaseAction {
     });
 
     dialog.value.show();
-    SModel result = dialog.value.getResult();
+    SModel result = dialog.value.createModel();
     if (result != null) {
       SModel modelDescriptor = result;
       ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).selectModel(modelDescriptor, false);

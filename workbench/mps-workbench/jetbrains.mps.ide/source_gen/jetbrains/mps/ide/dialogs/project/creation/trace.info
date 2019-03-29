@@ -184,14 +184,14 @@
       <node id="2784446709006311164" at="184,118,190,7" concept="3" />
       <node id="2085437128635824593" at="95,0,102,0" concept="2" trace="NewModelDialog#(Ljetbrains/mps/project/Project;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="8555887791804622098" at="103,0,110,0" concept="2" trace="NewModelDialog#(Ljetbrains/mps/project/Project;Ljetbrains/mps/project/AbstractModule;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="8939612310996268272" at="111,37,118,5" concept="6" />
+      <node id="8939612310996268272" at="111,39,118,5" concept="6" />
       <node id="1613125646032871633" at="148,60,155,7" concept="3" />
       <node id="3419827872459024661" at="190,7,197,7" concept="3" />
       <node id="3298715926002509814" at="236,0,243,0" concept="7" trace="check#()Z" />
       <node id="1613125646032871959" at="264,0,271,5" concept="6" />
       <node id="1547151020173608293" at="277,0,284,5" concept="6" />
       <node id="1613125646032871595" at="135,82,143,5" concept="5" />
-      <node id="1613125646032871523" at="111,0,121,0" concept="7" trace="getResult#()Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
+      <node id="1613125646032871523" at="111,0,121,0" concept="7" trace="createModel#()Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
       <node id="5149305731183885477" at="221,0,231,0" concept="7" trace="doOKAction#()V" />
       <node id="1613125646032871453" at="74,0,94,0" concept="2" trace="NewModelDialog#(Ljetbrains/mps/project/Project;Ljetbrains/mps/project/AbstractModule;Ljava/lang/String;Ljava/lang/String;ZLorg/jetbrains/mps/openapi/model/SModel;Z)V" />
       <node id="7671451525403065902" at="244,0,289,0" concept="7" trace="checkImpl#()Z" />
@@ -283,7 +283,7 @@
       </scope>
       <scope id="5149305731183885480" at="222,31,229,23" />
       <scope id="3298715926002509814" at="236,0,243,0" />
-      <scope id="1613125646032871526" at="111,37,119,20" />
+      <scope id="1613125646032871526" at="111,39,119,20" />
       <scope id="1613125646032871595" at="135,82,143,5">
         <var name="root" id="1613125646032871599" />
       </scope>

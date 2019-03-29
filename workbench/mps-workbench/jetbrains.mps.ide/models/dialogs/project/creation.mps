@@ -958,7 +958,7 @@
     </node>
     <node concept="2tJIrI" id="1lS_qvri3ve" role="jymVt" />
     <node concept="3clFb_" id="1pyYjDPRa1z" role="jymVt">
-      <property role="TrG5h" value="getResult" />
+      <property role="TrG5h" value="createModel" />
       <node concept="3Tm1VV" id="1pyYjDPRa1$" role="1B3o_S" />
       <node concept="3uibUv" id="50HON5izJdP" role="3clF45">
         <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />

@@ -116,7 +116,7 @@ public class NewModel_Action extends BaseAction {
         String stereotype = NewModel_Action.this.getStereotype(_params);
         NewModelDialog dialog = new NewModelDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), (AbstractModule) ((SModule) MapSequence.fromMap(_params).get("module")), NewModel_Action.this.getNamespace(_params), stereotype, NewModel_Action.this.isStrict(_params));
         dialog.show();
-        final SModel result = dialog.getResult();
+        final SModel result = dialog.createModel();
 
         if (result != null) {
           // Model creation will lead to indexes update, dialog and navigation should be perfomed after that 
