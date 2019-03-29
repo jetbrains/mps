@@ -28459,23 +28459,6 @@
             <property role="3MwjfP" value="plugins" />
           </node>
         </node>
-        <node concept="398223" id="1diLdO26H7T" role="39821P">
-          <node concept="3_J27D" id="1diLdO26H7U" role="Nbhlr">
-            <node concept="3Mxwew" id="1diLdO26H7V" role="3MwsjC">
-              <property role="3MwjfP" value="cvsIntegration" />
-            </node>
-          </node>
-          <node concept="2HvfSZ" id="35zoHQHRCK8" role="39821P">
-            <node concept="55IIr" id="1diLdO26H7Y" role="2HvfZ0">
-              <node concept="2Ry0Ak" id="1diLdO26H7Z" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="1diLdO26H80" role="2Ry0An">
-                  <property role="2Ry0Am" value="cvsIntegration" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="398223" id="7NGz2TYsond" role="39821P">
           <node concept="3_J27D" id="7NGz2TYsonf" role="Nbhlr">
             <node concept="3Mxwew" id="7NGz2TYsonF" role="3MwsjC">
