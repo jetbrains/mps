@@ -25,15 +25,12 @@ import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.refactoring.participant.MoveModelRefactoringParticipant;
 import jetbrains.mps.ide.platform.actions.core.RefactoringProcessor;
-import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.persistence.ModelCannotBeCreatedException;
-import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
 import jetbrains.mps.ide.platform.actions.core.DefaultRefactoringUI;
+import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
 public class MoveModel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -128,22 +125,15 @@ public class MoveModel_Action extends BaseAction {
         return ListSequence.fromListAndArray(new ArrayList<SModel>(), ((SModel) MapSequence.fromMap(_params).get("model")));
       }
       private EditableSModel newModel = null;
-      private ModelCreateHelper modelCreateHelper = null;
       public void prepareRefactoring() {
         final Wrappers._T<NewModelDialog> dialog = new Wrappers._T<NewModelDialog>();
         ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            dialog.value = NewModelDialog.createForMoveModel(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), (AbstractModule) selectedModule.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), ((SModel) MapSequence.fromMap(_params).get("model")));
+            dialog.value = NewModelDialog.createForMoveModel(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), selectedModule.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), ((SModel) MapSequence.fromMap(_params).get("model")).getName());
           }
         });
         dialog.value.show();
-        modelCreateHelper = dialog.value.getResultHelper();
-        try {
-          newModel = modelCreateHelper.createModel(((SModel) MapSequence.fromMap(_params).get("model")), true);
-        } catch (ModelCannotBeCreatedException e) {
-          Messages.showErrorDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject(), "Could not create a new model because '" + e.getMessage() + "'", "Error");
-          return;
-        }
+        newModel = check_pp3sda_a0d0e0a0a01a7(check_pp3sda_a0a3a4a0a0k0h(dialog.value.getResultHelper(), _params));
       }
       public void doRefactor(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SModel, SModel, SModel, SModel>> participantStates, RefactoringSession refactoringSession) {
         if (newModel == null) {
@@ -162,5 +152,17 @@ public class MoveModel_Action extends BaseAction {
     };
 
     RefactoringProcessor.performRefactoringInProject(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), new DefaultRefactoringUI(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))), refactoringBody);
+  }
+  private static EditableSModel check_pp3sda_a0d0e0a0a01a7(ModelCreateHelper checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.createModelHandleExceptions();
+    }
+    return null;
+  }
+  private static ModelCreateHelper check_pp3sda_a0a3a4a0a0k0h(ModelCreateHelper checkedDotOperand, Map<String, Object> _params) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.setClone(((SModel) MapSequence.fromMap(_params).get("model")), true);
+    }
+    return null;
   }
 }

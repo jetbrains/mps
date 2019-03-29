@@ -20,6 +20,8 @@ import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
 public class NewAccessoryModel_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Models.AccessoryModel;
@@ -69,14 +71,14 @@ public class NewAccessoryModel_Action extends BaseAction {
     }
 
     final Language language = ((Language) event.getData(MPSCommonDataKeys.CONTEXT_MODULE));
-    final Wrappers._T<NewModelDialog> d = new Wrappers._T<NewModelDialog>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
+    final Wrappers._T<NewModelDialog> dialog = new Wrappers._T<NewModelDialog>();
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        d.value = new NewModelDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), ((AbstractModule) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)), language.getModuleName(), SModelStereotype.NONE, true);
+        dialog.value = NewModelDialog.createForNewModel(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.CONTEXT_MODULE), language.getModuleName(), SModelStereotype.NONE, true);
       }
     });
-    d.value.show();
-    final SModel result = d.value.getResult();
+    dialog.value.show();
+    final SModel result = check_zdqgyn_a0g0g(dialog.value.getResultHelper());
 
     if (result == null) {
       return;
@@ -89,5 +91,11 @@ public class NewAccessoryModel_Action extends BaseAction {
         language.save();
       }
     });
+  }
+  private static EditableSModel check_zdqgyn_a0g0g(ModelCreateHelper checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.createModelHandleExceptions();
+    }
+    return null;
   }
 }

@@ -31,6 +31,8 @@ import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
 public class NewModel_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Model;
@@ -116,7 +118,7 @@ public class NewModel_Action extends BaseAction {
         String stereotype = NewModel_Action.this.getStereotype(_params);
         NewModelDialog dialog = NewModelDialog.createForNewModel(((MPSProject) MapSequence.fromMap(_params).get("project")), (AbstractModule) ((SModule) MapSequence.fromMap(_params).get("module")), NewModel_Action.this.getNamespace(_params), stereotype, NewModel_Action.this.isStrict(_params));
         dialog.show();
-        final SModel result = dialog.createModel();
+        final SModel result = check_2aou7a_a0f0a0a0a7(dialog.getResultHelper());
 
         if (result != null) {
           // Model creation will lead to indexes update, dialog and navigation should be perfomed after that 
@@ -184,5 +186,11 @@ public class NewModel_Action extends BaseAction {
         return ((SModule) MapSequence.fromMap(_params).get("module")).getModelRoots().iterator().hasNext();
       }
     });
+  }
+  private static EditableSModel check_2aou7a_a0f0a0a0a7(ModelCreateHelper checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.createModelHandleExceptions();
+    }
+    return null;
   }
 }

@@ -20,6 +20,8 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.ide.projectPane.ProjectPane;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
 public class NewSubModel_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Model;
@@ -104,10 +106,16 @@ public class NewSubModel_Action extends BaseAction {
     });
 
     dialog.value.show();
-    SModel result = dialog.value.createModel();
+    SModel result = check_xgrzw6_a0g0h(dialog.value.getResultHelper());
     if (result != null) {
       SModel modelDescriptor = result;
       ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).selectModel(modelDescriptor, false);
     }
+  }
+  private static EditableSModel check_xgrzw6_a0g0h(ModelCreateHelper checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.createModelHandleExceptions();
+    }
+    return null;
   }
 }

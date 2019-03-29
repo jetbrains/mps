@@ -8,6 +8,8 @@ import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -15,8 +17,6 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.util.Reference;
@@ -36,6 +36,10 @@ public class ModelCreateHelper {
   private final SModelName myFqName;
   private final ModelRoot mySelectedModelRoot;
   private final ModelFactoryType myStorageFormat;
+
+  @Nullable
+  private SModel myClone = null;
+  private boolean myPreserveIds;
 
   public ModelCreateHelper(MPSProject project, AbstractModule module, SModelName fqName, ModelRoot selectedModelRoot, ModelFactoryType storageFormat) {
     this.myProject = project;
@@ -70,16 +74,22 @@ public class ModelCreateHelper {
     });
   }
 
-  public EditableSModel createModelHandleExceptions(@Nullable final SModel myClone, final boolean myPreserveIds) {
+  public ModelCreateHelper setClone(SModel toClone, boolean preserveIds) {
+    myClone = toClone;
+    myPreserveIds = preserveIds;
+    return this;
+  }
+
+  public EditableSModel createModelHandleExceptions() {
     try {
-      return createModel(myClone, myPreserveIds);
+      return createModel();
     } catch (ModelCannotBeCreatedException e) {
       Messages.showErrorDialog(myProject.getProject(), "Could not create a new model because '" + e.getMessage() + "'", "Error");
       return null;
     }
   }
 
-  public EditableSModel createModel(@Nullable final SModel myClone, final boolean myPreserveIds) throws ModelCannotBeCreatedException {
+  public EditableSModel createModel() throws ModelCannotBeCreatedException {
     final Reference<SourceRoot> sourceRootOpt = new Reference<SourceRoot>(null);
     if (myModule instanceof Language && mySelectedModelRoot instanceof DefaultModelRoot) {
       sourceRootOpt.set(prepareAccessorySourceRootIfNeeded((DefaultModelRoot) mySelectedModelRoot));

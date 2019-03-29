@@ -17,6 +17,8 @@ import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
 public class CloneModel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -81,10 +83,22 @@ public class CloneModel_Action extends BaseAction {
     final Wrappers._T<NewModelDialog> dialog = new Wrappers._T<NewModelDialog>();
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        dialog.value = NewModelDialog.createForCloneModel(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")));
+        dialog.value = NewModelDialog.createForCloneModel(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")).getModule(), ((SModel) MapSequence.fromMap(_params).get("model")).getName());
       }
     });
     dialog.value.show();
-    dialog.value.createModel();
+    check_38yux0_a3a6(check_38yux0_a0d0g(dialog.value.getResultHelper(), _params));
+  }
+  private static EditableSModel check_38yux0_a3a6(ModelCreateHelper checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.createModelHandleExceptions();
+    }
+    return null;
+  }
+  private static ModelCreateHelper check_38yux0_a0d0g(ModelCreateHelper checkedDotOperand, Map<String, Object> _params) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.setClone(((SModel) MapSequence.fromMap(_params).get("model")), false);
+    }
+    return null;
   }
 }
