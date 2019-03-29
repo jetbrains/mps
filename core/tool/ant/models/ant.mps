@@ -3134,6 +3134,14 @@
                 <ref role="37wK5l" node="7oFdQJwHF24" resolve="getAdditionalArgs" />
               </node>
             </node>
+            <node concept="3clFbF" id="oY$DTc6ImX" role="3cqZAp">
+              <node concept="1rXfSq" id="oY$DTc6ImV" role="3clFbG">
+                <ref role="37wK5l" node="oY$DTc6Hyy" resolve="checkHasEAOption" />
+                <node concept="37vLTw" id="oY$DTc6MoI" role="37wK5m">
+                  <ref role="3cqZAo" node="3ufQioQQtqL" resolve="commandLine" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="5qUkmeYAmcy" role="3cqZAp">
               <node concept="3cpWsn" id="5qUkmeYAmcz" role="3cpWs9">
                 <property role="TrG5h" value="exe" />
@@ -3292,6 +3300,73 @@
       </node>
       <node concept="3uibUv" id="3ufQioQQttq" role="Sfmx6">
         <ref role="3uigEE" to="gola:~BuildException" resolve="BuildException" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="oY$DTc6HWo" role="jymVt" />
+    <node concept="3clFb_" id="oY$DTc6Hyy" role="jymVt">
+      <property role="TrG5h" value="checkHasEAOption" />
+      <node concept="37vLTG" id="oY$DTc6Imd" role="3clF46">
+        <property role="TrG5h" value="cmdLine" />
+        <node concept="3uibUv" id="oY$DTc6Imh" role="1tU5fm">
+          <ref role="3uigEE" to="33ny:~List" resolve="List" />
+          <node concept="17QB3L" id="oY$DTc6Imi" role="11_B2D" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="oY$DTc6Hy$" role="3clF45" />
+      <node concept="3Tm6S6" id="oY$DTc6Ima" role="1B3o_S" />
+      <node concept="3clFbS" id="oY$DTc6HyA" role="3clF47">
+        <node concept="1DcWWT" id="oY$DTc6Mqf" role="3cqZAp">
+          <node concept="3cpWsn" id="oY$DTc6Mqg" role="1Duv9x">
+            <property role="TrG5h" value="arg" />
+            <node concept="17QB3L" id="oY$DTc6Mqr" role="1tU5fm" />
+          </node>
+          <node concept="37vLTw" id="oY$DTc6Mr9" role="1DdaDG">
+            <ref role="3cqZAo" node="oY$DTc6Imd" resolve="cmdLine" />
+          </node>
+          <node concept="3clFbS" id="oY$DTc6Mqi" role="2LFqv$">
+            <node concept="3clFbJ" id="oY$DTc6Mrv" role="3cqZAp">
+              <node concept="2OqwBi" id="oY$DTc6MXp" role="3clFbw">
+                <node concept="37vLTw" id="oY$DTc6MrS" role="2Oq$k0">
+                  <ref role="3cqZAo" node="oY$DTc6Mqg" resolve="arg" />
+                </node>
+                <node concept="liA8E" id="oY$DTc6N03" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+                  <node concept="Xl_RD" id="oY$DTc6N0p" role="37wK5m">
+                    <property role="Xl_RC" value="-ea" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="oY$DTc6Mrx" role="3clFbx">
+                <node concept="3cpWs6" id="oY$DTc6N4e" role="3cqZAp" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="oY$DTc6N5p" role="3cqZAp">
+          <node concept="1rXfSq" id="oY$DTc6N5n" role="3clFbG">
+            <ref role="37wK5l" to="gola:~Task.log(java.lang.String,int)" resolve="log" />
+            <node concept="3cpWs3" id="oY$DTc6NRW" role="37wK5m">
+              <node concept="2OqwBi" id="oY$DTc6Omu" role="3uHU7w">
+                <node concept="2OqwBi" id="oY$DTc6O0Q" role="2Oq$k0">
+                  <node concept="Xjq3P" id="oY$DTc6NSs" role="2Oq$k0" />
+                  <node concept="liA8E" id="oY$DTc6Ocg" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="oY$DTc6OOJ" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Class.getSimpleName()" resolve="getSimpleName" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="oY$DTc6Npm" role="3uHU7B">
+                <property role="Xl_RC" value="The executed worker's command line does not have the -ea option, which is highly recommended. Task: " />
+              </node>
+            </node>
+            <node concept="10M0yZ" id="oY$DTc6Nj0" role="37wK5m">
+              <ref role="3cqZAo" to="gola:~Project.MSG_WARN" resolve="MSG_WARN" />
+              <ref role="1PxDUh" to="gola:~Project" resolve="Project" />
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="5JXeQM0w0x5" role="jymVt" />

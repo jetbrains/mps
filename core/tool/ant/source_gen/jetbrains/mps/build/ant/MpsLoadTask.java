@@ -214,6 +214,7 @@ public class MpsLoadTask extends Task {
       for (String s : getAdditionalArgs()) {
         commandLine.add(s);
       }
+      checkHasEAOption(commandLine);
       Execute exe = new Execute(new MyExecuteStreamHandler(this));
       exe.setAntRun(this.getProject());
       exe.setWorkingDirectory(this.getProject().getBaseDir());
@@ -256,6 +257,15 @@ public class MpsLoadTask extends Task {
         Thread.currentThread().setContextClassLoader(threadContextCL);
       }
     }
+  }
+
+  private void checkHasEAOption(List<String> cmdLine) {
+    for (String arg : cmdLine) {
+      if (arg.contains("-ea")) {
+        return;
+      }
+    }
+    log("The executed worker's command line does not have the -ea option, which is highly recommended. Task: " + this.getClass().getSimpleName(), Project.MSG_WARN);
   }
 
   private URL fileToUrl(File file) throws MalformedURLException {
