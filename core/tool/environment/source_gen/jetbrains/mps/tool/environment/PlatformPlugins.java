@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 import java.io.File;
-import jetbrains.mps.tool.common.PathManager;
 import java.util.List;
 import java.util.regex.Matcher;
 import org.apache.log4j.Level;
@@ -30,6 +29,8 @@ import java.net.URLClassLoader;
  */
 /*package*/ class PlatformPlugins {
   private static final Logger LOG = LogManager.getLogger(PlatformPlugins.class);
+  public static final String PLUGIN_DESCRIPTOR_LOCATION = "META-INF/plugin.xml";
+
   private final Map<String, PlatformPlugins.Descriptor> myPlugins = new HashMap<String, PlatformPlugins.Descriptor>();
   private final Map<String, ClassLoader> myLoaders = new HashMap<String, ClassLoader>();
   private final Pattern myPluginIdPattern = Pattern.compile("<id>([a-zA-Z_0-9.]+)</id>");
@@ -38,27 +39,11 @@ import java.net.URLClassLoader;
   /*package*/ PlatformPlugins(EnvironmentConfig config) {
     // FIXME PathManager.getPluginsPath is a dependency to j.m.tool.common I'd like to get rid of (this class has access to MPS kernel classes 
     //       and doesn't need to depend from tool.common at all), but I didn't find a proper alternative. Alex P., could you please help me here? 
-    final File localPluginsFolder = new File(PathManager.getPluginsPath());
-    final File preinstalledPluginFolder = new File(jetbrains.mps.util.PathManager.getPreInstalledPluginsPath());
-    final String pluginDescriptorLocation = "META-INF/plugin.xml";
     for (PluginDescriptor pd : config.getPlugins()) {
       File pluginLocation = new File(pd.getPath());
-      // XXX we don't support plugins distributed as .zip files here, only as folders 
-      if (!(new File(pluginLocation, pluginDescriptorLocation).exists())) {
-        pluginLocation = new File(localPluginsFolder, pd.getPath());
-        if (!(new File(pluginLocation, pluginDescriptorLocation).exists())) {
-          pluginLocation = new File(preinstalledPluginFolder, pd.getPath());
-          if (!(new File(pluginLocation, pluginDescriptorLocation).exists())) {
-            if (LOG.isDebugEnabled()) {
-              LOG.debug(String.format("No platform plugin descriptor (plugin.xml) detected under %s", pd.getPath()));
-            }
-            continue;
-          }
-        }
-      }
       List<File> cp = detectClasspath(pluginLocation);
       List<File> langLibs = detectLanguageLibraries(pluginLocation);
-      final CharSequence pluginXmlContent = readFile(new File(pluginLocation, pluginDescriptorLocation), 4096);
+      final CharSequence pluginXmlContent = readFile(new File(pluginLocation, PLUGIN_DESCRIPTOR_LOCATION), 4096);
       final Matcher idMatcher = myPluginIdPattern.matcher(pluginXmlContent);
       final String detectedId = (idMatcher.find() ? idMatcher.group(1) : null);
       final String pluginId;
