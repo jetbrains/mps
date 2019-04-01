@@ -140,7 +140,7 @@ public class ModelOrNodeChooser extends ProjectViewPane implements ModelElementT
         continue;
       }
       for (SourceRoot sourceRoot : ((DefaultModelRoot) mr).getSourceRoots(SourceRootKinds.SOURCES)) {
-        String srcRootLocation = sourceRoot.getPath();
+        String srcRootLocation = sourceRoot.getAbsolutePath().getPath();
         if (FileUtil.isAncestor(path, srcRootLocation)) {
           // vf is (grand-)parent of the source root
           return true;
