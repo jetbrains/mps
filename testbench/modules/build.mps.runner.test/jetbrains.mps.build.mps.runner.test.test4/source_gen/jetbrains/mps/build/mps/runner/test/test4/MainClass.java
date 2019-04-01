@@ -43,7 +43,7 @@ public class MainClass {
         return ListSequence.fromListWithValues(new ArrayList<SModel>(), project.getProjectModels());
       }
     });
-    assert ListSequence.fromList(projectModels).count() == 1;
+    assert ListSequence.fromList(projectModels).count() == 2 : "Project models count: " + ListSequence.fromList(projectModels).count();
     final SModel model = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<SModel>() {
       public SModel compute() {
         return ListSequence.fromList(projectModels).findFirst(new IWhereFilter<SModel>() {

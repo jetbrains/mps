@@ -84,6 +84,7 @@
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
+      <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
@@ -91,6 +92,7 @@
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
+        <child id="1160998916832" name="message" index="1gVpfI" />
       </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
@@ -331,14 +333,25 @@
         </node>
         <node concept="1gVbGN" id="1CZB82AuSIT" role="3cqZAp">
           <node concept="3clFbC" id="1CZB82AuVHM" role="1gVkn0">
-            <node concept="3cmrfG" id="1CZB82AuVXC" role="3uHU7w">
-              <property role="3cmrfH" value="1" />
-            </node>
             <node concept="2OqwBi" id="1CZB82AuTDG" role="3uHU7B">
               <node concept="37vLTw" id="1CZB82AuT6C" role="2Oq$k0">
                 <ref role="3cqZAo" node="1CZB82AuQ0F" resolve="projectModels" />
               </node>
               <node concept="34oBXx" id="1CZB82AuUDZ" role="2OqNvi" />
+            </node>
+            <node concept="3cmrfG" id="7lKcB_1tazw" role="3uHU7w">
+              <property role="3cmrfH" value="2" />
+            </node>
+          </node>
+          <node concept="3cpWs3" id="7lKcB_1t2hM" role="1gVpfI">
+            <node concept="Xl_RD" id="7lKcB_1t0PY" role="3uHU7B">
+              <property role="Xl_RC" value="Project models count: " />
+            </node>
+            <node concept="2OqwBi" id="7lKcB_1t3wn" role="3uHU7w">
+              <node concept="37vLTw" id="7lKcB_1t3wo" role="2Oq$k0">
+                <ref role="3cqZAo" node="1CZB82AuQ0F" resolve="projectModels" />
+              </node>
+              <node concept="34oBXx" id="7lKcB_1t3wp" role="2OqNvi" />
             </node>
           </node>
         </node>
