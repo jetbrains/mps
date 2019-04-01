@@ -5,32 +5,25 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.apache.log4j.Level;
 import java.util.List;
-import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class AttributeOperations {
   private static final Logger LOG = LogManager.getLogger(AttributeOperations.class);
   private AttributeOperations() {
-  }
-  public static Iterable<SNode> getAttributes(SNode node, final IAttributeDescriptor descriptor) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return descriptor.match(it);
-      }
-    });
   }
   public static SNode getAttribute(SNode node, IAttributeDescriptor descriptor) {
     Iterable<SNode> list = getAttributes(node, descriptor);
@@ -42,17 +35,72 @@ public class AttributeOperations {
         LOG.error(Sequence.fromIterable(list).count() + " nodes match single value attribute. The first found node returned as the value.");
       }
       if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("  node=" + SNodeOperations.getPointer(node) + "; concept=" + SNodeOperations.getConcept(Sequence.fromIterable(list).first()).getQualifiedName() + " (" + Sequence.fromIterable(list).first().getNodeId() + ")");
+        LOG.error("  node=" + node.getReference() + "; concept=" + SNodeOperations.getConcept(Sequence.fromIterable(list).first()).getQualifiedName() + " (" + Sequence.fromIterable(list).first().getNodeId() + ")");
       }
     }
     return Sequence.fromIterable(list).first();
+
+  }
+  public static SNode setAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
+    Iterable<SNode> oldlist = getAttributes(node, descriptor);
+    if (Sequence.fromIterable(oldlist).isEmpty() && value != null) {
+      addAttribute(node, descriptor, (SNode) value);
+    } else if (value == null) {
+      deleteAttribute(node, descriptor, (SNode) value);
+    } else {
+      if (Sequence.fromIterable(oldlist).count() > 1) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error(Sequence.fromIterable(oldlist).count() + " nodes match single value attribute during attribute replacing. Only the first found node replaced.");
+        }
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("  node=" + node.getReference() + "; attribute=" + SNodeOperations.getConcept(Sequence.fromIterable(oldlist).first()).getQualifiedName() + " (" + Sequence.fromIterable(oldlist).first().getNodeId() + ")");
+        }
+      }
+      SNodeOperations.replaceWithAnother(Sequence.fromIterable(oldlist).first(), value);
+      descriptor.update(value);
+    }
+    return value;
+  }
+  public static List<SNode> getAttributeList(SNode node, IAttributeDescriptor descriptor) {
+    return (node == null ? null : new AttributeOperations.AttributeList(node, descriptor));
+  }
+  public static SNode createAndSetAttrbiute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
+    return setAttribute(node, descriptor, SModelOperations.createNewNode(node.getModel(), null, newConcept));
+  }
+  public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConceptFqname) {
+    return addAttribute(node, descriptor, (SNode) SModelOperations.createNewNode(node.getModel(), null, newConceptFqname));
+  }
+  public static Iterable<SNode> getChildNodesAndAttributes(SNode parent, final SContainmentLink link) {
+    Iterable<? extends SNode> children = parent.getChildren();
+    return Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        if (isChildAttribute(it)) {
+          return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf"))), link);
+        } else {
+          return Objects.equals(SNodeOperations.getContainingLink(it), link);
+        }
+      }
+    }).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return it;
+      }
+    });
+  }
+
+
+  private static Iterable<SNode> getAttributes(SNode node, final IAttributeDescriptor descriptor) {
+    return ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return descriptor.match(it);
+      }
+    });
   }
   public static SNode addAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
     ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).addElement(value);
     descriptor.update(value);
     return value;
   }
-  public static SNode insertAttribute(SNode node, SNode anchor, IAttributeDescriptor descriptor, SNode value) {
+  private static SNode insertAttribute(SNode node, SNode anchor, IAttributeDescriptor descriptor, SNode value) {
     // shall insert value *after* anchor 
     if (anchor == null || !(ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).contains(anchor))) {
       addAttribute(node, descriptor, value);
@@ -62,7 +110,7 @@ public class AttributeOperations {
     descriptor.update(value);
     return value;
   }
-  public static void deleteAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
+  private static void deleteAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
     List<SNode> list = new ArrayList<SNode>();
     ListSequence.fromList(list).addSequence(Sequence.fromIterable(getAttributes(node, descriptor)));
     for (SNode attribute : ListSequence.fromList(list)) {
@@ -70,37 +118,6 @@ public class AttributeOperations {
         SNodeOperations.deleteNode(attribute);
       }
     }
-  }
-  public static SNode setAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
-    Iterable<SNode> oldlist = getAttributes(node, descriptor);
-    if (Sequence.fromIterable(oldlist).isEmpty() && (value != null)) {
-      addAttribute(node, descriptor, value);
-    } else if ((value == null)) {
-      deleteAttribute(node, descriptor, value);
-    } else {
-      if (Sequence.fromIterable(oldlist).count() > 1) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error(Sequence.fromIterable(oldlist).count() + " nodes match single value attribute during attribute replacing. Only the first found node replaced.");
-        }
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("  node=" + SNodeOperations.getPointer(node) + "; attribute=" + SNodeOperations.getConcept(Sequence.fromIterable(oldlist).first()).getQualifiedName() + " (" + Sequence.fromIterable(oldlist).first().getNodeId() + ")");
-        }
-      }
-      SNodeOperations.replaceWithAnother(Sequence.fromIterable(oldlist).first(), value);
-      descriptor.update(value);
-    }
-    return value;
-  }
-  public static List<SNode> getAttributeList(SNode node, IAttributeDescriptor descriptor) {
-    return ((node == null) ? null : new AttributeOperations.AttributeList(node, descriptor));
-  }
-  public static SNode createAndSetAttrbiute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
-    SModel model = SNodeOperations.getModel(node);
-    return setAttribute(node, descriptor, (SNode) SModelOperations.createNewNode(model, null, newConcept));
-  }
-  public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConceptFqname) {
-    SModel model = SNodeOperations.getModel(node);
-    return addAttribute(node, descriptor, (SNode) SModelOperations.createNewNode(model, null, newConceptFqname));
   }
   public static boolean isAttribute(SNode node) {
     if (node == null) {
@@ -149,17 +166,6 @@ public class AttributeOperations {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(((SContainmentLink) BHReflection.invoke0(it, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf"))), link);
-      }
-    });
-  }
-  public static Iterable<SNode> getChildNodesAndAttributes(SNode parent, final SContainmentLink link) {
-    return ListSequence.fromList(SNodeOperations.getChildren(parent)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        if (isChildAttribute(it)) {
-          return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf"))), link);
-        } else {
-          return Objects.equals(SNodeOperations.getContainingLink(it), link);
-        }
       }
     });
   }

@@ -15,6 +15,9 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -22,9 +25,11 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 public class YieldSNodeTest_Test extends TestCase {
   public void test_MPS29957() throws Exception {
     // This test is to ensure that the code is generated and compiled correctly 
-    Assert.assertEquals(Sequence.fromIterable(createCollection()).count(), 3);
+    Assert.assertEquals(Sequence.fromIterable(createCollection1()).count(), 3);
+    Assert.assertEquals(Sequence.fromIterable(createCollection2()).count(), 1);
+    Assert.assertEquals(Sequence.fromIterable(createCollection3()).count(), 1);
   }
-  public Iterable<SNode> createCollection() {
+  public Iterable<SNode> createCollection1() {
     return Sequence.fromClosure(new ISequenceClosure<SNode>() {
       public Iterable<SNode> iterable() {
         return new Iterable<SNode>() {
@@ -73,8 +78,125 @@ __switch__:
                 } while (true);
                 return false;
               }
-              private <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.SNodeType'!> _2__yield_6gh6m3_a0a0a0a;
+              private SNode _2__yield_6gh6m3_a0a0a0a;
               private Iterator<SNode> _2__yield_6gh6m3_a0a0a0a_it;
+            };
+          }
+        };
+      }
+    });
+  }
+
+  public Iterable<SNode> createCollection2() {
+    return Sequence.fromClosure(new ISequenceClosure<SNode>() {
+      public Iterable<SNode> iterable() {
+        return new Iterable<SNode>() {
+          public Iterator<SNode> iterator() {
+            return new YieldingIterator<SNode>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
+__loop__:
+                do {
+__switch__:
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      this._2__yield_6gh6m3_a0a0a0c_it = Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(new ArrayList<SNode>()), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).iterator();
+                    case 3:
+                      if (!(this._2__yield_6gh6m3_a0a0a0c_it.hasNext())) {
+                        this.__CP__ = 5;
+                        break;
+                      }
+                      this._2__yield_6gh6m3_a0a0a0c = this._2__yield_6gh6m3_a0a0a0c_it.next();
+                      this.__CP__ = 4;
+                      break;
+                    case 6:
+                      this.__CP__ = 3;
+                      this.yield(_2__yield_6gh6m3_a0a0a0c);
+                      return true;
+                    case 5:
+                      this.__CP__ = 1;
+                      this.yield(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")));
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    case 4:
+                      this.__CP__ = 6;
+                      break;
+                    default:
+                      break __loop__;
+                  }
+                } while (true);
+                return false;
+              }
+              private SNode _2__yield_6gh6m3_a0a0a0c;
+              private Iterator<SNode> _2__yield_6gh6m3_a0a0a0c_it;
+            };
+          }
+        };
+      }
+    });
+  }
+
+  public Iterable<SNode> createCollection3() {
+    return Sequence.fromClosure(new ISequenceClosure<SNode>() {
+      public Iterable<SNode> iterable() {
+        return new Iterable<SNode>() {
+          public Iterator<SNode> iterator() {
+            return new YieldingIterator<SNode>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
+__loop__:
+                do {
+__switch__:
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      this._2__yield_6gh6m3_a0a0a0e_it = Sequence.fromIterable(ListSequence.fromList(ListSequence.fromList(new ArrayList<SNode>())).translate(new ITranslator2<SNode, SNode>() {
+                        public Iterable<SNode> translate(SNode it) {
+                          return AttributeOperations.getChildNodesAndAttributes(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
+                        }
+                      })).iterator();
+                    case 3:
+                      if (!(this._2__yield_6gh6m3_a0a0a0e_it.hasNext())) {
+                        this.__CP__ = 5;
+                        break;
+                      }
+                      this._2__yield_6gh6m3_a0a0a0e = this._2__yield_6gh6m3_a0a0a0e_it.next();
+                      this.__CP__ = 4;
+                      break;
+                    case 6:
+                      this.__CP__ = 3;
+                      this.yield(_2__yield_6gh6m3_a0a0a0e);
+                      return true;
+                    case 8:
+                      this.__CP__ = 1;
+                      this.yield(_7_node);
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    case 5:
+                      this._7_node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"));
+                      this.__CP__ = 8;
+                      break;
+                    case 4:
+                      this.__CP__ = 6;
+                      break;
+                    default:
+                      break __loop__;
+                  }
+                } while (true);
+                return false;
+              }
+              private SNode _2__yield_6gh6m3_a0a0a0e;
+              private Iterator<SNode> _2__yield_6gh6m3_a0a0a0e_it;
+              private SNode _7_node;
             };
           }
         };

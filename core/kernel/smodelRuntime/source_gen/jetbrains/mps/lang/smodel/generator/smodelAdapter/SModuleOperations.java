@@ -16,11 +16,11 @@ public class SModuleOperations {
    * This is because we can't generate generators yet
    * Still, it is better if user does not write this by-name stuff explicitly - it will be changed later by regenerating, not by manually changing code
    */
-  public static SModel getAspect(SModule m, final String name) {
-    if (!((m instanceof Language))) {
+  public static SModel getAspect(SModule module, final String name) {
+    if (!((module instanceof Language))) {
       return null;
     }
-    List<SModel> models = ((Language) m).getModels();
+    List<SModel> models = ((Language) module).getModels();
     return ListSequence.fromList(models).findFirst(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {
         return !(it.getName().hasStereotype()) && it.getName().getSimpleName().equals(name);
@@ -28,11 +28,11 @@ public class SModuleOperations {
     });
   }
 
-  public static boolean isAspect(SModel m, String name) {
-    if (!((m.getModule() instanceof Language))) {
+  public static boolean isAspect(SModel model, String name) {
+    if (!((model.getModule() instanceof Language))) {
       return false;
     }
-    SModelName mn = m.getName();
+    SModelName mn = model.getName();
     return !(mn.hasStereotype()) && mn.getSimpleName().equals(name);
   }
 }
