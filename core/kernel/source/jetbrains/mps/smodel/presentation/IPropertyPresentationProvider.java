@@ -80,6 +80,9 @@ public interface IPropertyPresentationProvider {
             return lit;
           }
         }
+        if (presentation == null && enumeration.getDefault() == null) {
+          return null;
+        }
         return SType.NOT_A_VALUE;
       }
     };
