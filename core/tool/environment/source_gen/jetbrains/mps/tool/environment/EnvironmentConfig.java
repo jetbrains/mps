@@ -5,6 +5,7 @@ package jetbrains.mps.tool.environment;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import java.util.Set;
+import jetbrains.mps.tool.common.PluginData;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -23,7 +24,7 @@ import jetbrains.mps.tool.common.PathManager;
  */
 public class EnvironmentConfig {
   private static final Logger LOG = LogManager.getLogger(EnvironmentConfig.class);
-  private final Set<PluginDescriptor> myPlugins = SetSequence.fromSet(new LinkedHashSet<PluginDescriptor>());
+  private final Set<PluginData> myPlugins = SetSequence.fromSet(new LinkedHashSet<PluginData>());
   private final Map<String, File> myMacros = MapSequence.fromMap(new LinkedHashMap<String, File>(16, (float) 0.75, false));
   private final Set<String> myLibs = SetSequence.fromSet(new LinkedHashSet<String>());
   private final Set<String> myPluginClassPath = SetSequence.fromSet(new LinkedHashSet<String>());
@@ -38,7 +39,7 @@ public class EnvironmentConfig {
   }
 
   @NotNull
-  public Set<PluginDescriptor> getPlugins() {
+  public Set<PluginData> getPlugins() {
     return SetSequence.fromSet(myPlugins).asUnmodifiable();
   }
 
@@ -67,6 +68,8 @@ public class EnvironmentConfig {
   public EnvironmentConfig addPlugin(String path, String id) {
     File pluginLocation = new File(path);
 
+    // this is a compatibility code needed to support relative paths, also see doc comment for PluginData 
+    // todo get rid of it 
     final File localPluginsFolder = new File(PathManager.getPluginsPath());
     final File preinstalledPluginFolder = new File(jetbrains.mps.util.PathManager.getPreInstalledPluginsPath());
     // XXX we don't support plugins distributed as .zip files here, only as folders 
@@ -83,7 +86,7 @@ public class EnvironmentConfig {
       }
     }
 
-    SetSequence.fromSet(myPlugins).addElement(new PluginDescriptor(pluginLocation.getAbsolutePath(), id));
+    SetSequence.fromSet(myPlugins).addElement(new PluginData(pluginLocation.getAbsolutePath(), id));
     return this;
   }
 

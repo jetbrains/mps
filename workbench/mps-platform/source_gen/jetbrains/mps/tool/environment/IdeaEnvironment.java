@@ -12,6 +12,7 @@ import jetbrains.mps.util.annotation.Hack;
 import java.util.StringJoiner;
 import java.io.File;
 import com.intellij.openapi.application.PathManager;
+import jetbrains.mps.tool.common.PluginData;
 import jetbrains.mps.util.FileUtil;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -121,9 +122,9 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
         }
       }
     }
-    for (PluginDescriptor pd : myConfig.getPlugins()) {
+    for (PluginData pd : myConfig.getPlugins()) {
       if (!(isPluginAlreadyLoadedByIDEA(pd))) {
-        pluginPathResult.add(pd.getPath());
+        pluginPathResult.add(pd.path);
       }
     }
     // IMPORTANT! "plugin.path" doesn't tell plugin's classpath, it points to location where to read plugin.xml from 
@@ -138,9 +139,8 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
    * folder which IDEA loads by default, or in the preinstalled plugins folder (which we enabled a few lines above).
    * The reason for the filtering is that IDEA throw error if one plugin is found in more than one way.
    */
-  private boolean isPluginAlreadyLoadedByIDEA(PluginDescriptor pd) {
-    String path = pd.getPath();
-    return FileUtil.isAncestor(PathManager.getPreInstalledPluginsPath(), path) || FileUtil.isAncestor(PathManager.getPluginsPath(), path);
+  private boolean isPluginAlreadyLoadedByIDEA(PluginData pd) {
+    return FileUtil.isAncestor(PathManager.getPreInstalledPluginsPath(), pd.path) || FileUtil.isAncestor(PathManager.getPluginsPath(), pd.path);
   }
 
   /**
@@ -152,13 +152,13 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
   @Hack
   private void setPluginIdsPropertyFromConfig(EnvironmentConfig config) {
     StringJoiner result = new StringJoiner(",");
-    Set<PluginDescriptor> plugins = config.getPlugins();
+    Set<PluginData> plugins = config.getPlugins();
     if (SetSequence.fromSet(plugins).isEmpty()) {
       return;
     }
-    for (PluginDescriptor plugin : SetSequence.fromSet(plugins)) {
-      assert plugin.getId() != null : "id should be specified for plugin " + plugin.getPath();
-      result.add(plugin.getId());
+    for (PluginData plugin : SetSequence.fromSet(plugins)) {
+      assert plugin.id != null : "id should be specified for plugin " + plugin.path;
+      result.add(plugin.id);
     }
     System.setProperty(IDEA_LOAD_PLUGINS_ID, result.toString());
   }

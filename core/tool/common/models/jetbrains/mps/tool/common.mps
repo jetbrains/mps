@@ -10936,6 +10936,26 @@
     <node concept="3UR2Jj" id="7F7HpjGTC4E" role="lGtFl">
       <node concept="TZ5HA" id="7F7HpjGTC4F" role="TZ5H$">
         <node concept="1dT_AC" id="7F7HpjGTC4G" role="1dT_Ay">
+          <property role="1dT_AB" value="Idealy, path should be absolute. However, for compatibility reasons, relative paths are temporary supported." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7bo6V6sLV6c" role="TZ5H$">
+        <node concept="1dT_AC" id="7bo6V6sLV6d" role="1dT_Ay">
+          <property role="1dT_AB" value="In EnvironmentConfig.addPlugin(), those are converted to absolute paths." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7bo6V6sLZ2c" role="TZ5H$">
+        <node concept="1dT_AC" id="7bo6V6sLZ2d" role="1dT_Ay">
+          <property role="1dT_AB" value="todo [MM]: rewrite addPlugin() usages to absolute paths, remove compatibility code" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7bo6V6sLR0e" role="TZ5H$">
+        <node concept="1dT_AC" id="7bo6V6sLR0f" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7bo6V6sLR0m" role="TZ5H$">
+        <node concept="1dT_AC" id="7bo6V6sLR0n" role="1dT_Ay">
           <property role="1dT_AB" value="@Immutable" />
         </node>
       </node>

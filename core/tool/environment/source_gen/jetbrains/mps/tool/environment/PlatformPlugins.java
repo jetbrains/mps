@@ -7,6 +7,7 @@ import org.apache.log4j.LogManager;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.regex.Pattern;
+import jetbrains.mps.tool.common.PluginData;
 import java.io.File;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -39,24 +40,24 @@ import java.net.URLClassLoader;
   /*package*/ PlatformPlugins(EnvironmentConfig config) {
     // FIXME PathManager.getPluginsPath is a dependency to j.m.tool.common I'd like to get rid of (this class has access to MPS kernel classes 
     //       and doesn't need to depend from tool.common at all), but I didn't find a proper alternative. Alex P., could you please help me here? 
-    for (PluginDescriptor pd : config.getPlugins()) {
-      File pluginLocation = new File(pd.getPath());
+    for (PluginData pd : config.getPlugins()) {
+      File pluginLocation = new File(pd.path);
       List<File> cp = detectClasspath(pluginLocation);
       List<File> langLibs = detectLanguageLibraries(pluginLocation);
       final CharSequence pluginXmlContent = readFile(new File(pluginLocation, PLUGIN_DESCRIPTOR_LOCATION), 4096);
       final Matcher idMatcher = myPluginIdPattern.matcher(pluginXmlContent);
       final String detectedId = (idMatcher.find() ? idMatcher.group(1) : null);
       final String pluginId;
-      if (pd.getId() != null && !(pd.getId().isEmpty())) {
+      if (pd.id != null && !(pd.id.isEmpty())) {
         if (detectedId == null) {
           if (LOG.isDebugEnabled()) {
-            LOG.debug(String.format("Could not verify id of plugin %s from %s", pd.getId(), pluginLocation));
+            LOG.debug(String.format("Could not verify id of plugin %s from %s", pd.id, pluginLocation));
           }
-          pluginId = pd.getId();
+          pluginId = pd.id;
         } else {
-          if (!(pd.getId().equals(detectedId))) {
+          if (!(pd.id.equals(detectedId))) {
             if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error(String.format("Plugin %s has been detected as %s but claims to be %s. Resort to detected value.", pluginLocation, detectedId, pd.getId()));
+              LOG.error(String.format("Plugin %s has been detected as %s but claims to be %s. Resort to detected value.", pluginLocation, detectedId, pd.id));
             }
           }
           pluginId = detectedId;

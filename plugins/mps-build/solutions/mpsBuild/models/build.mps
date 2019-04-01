@@ -2098,6 +2098,9 @@
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="TfcoydlQ6W" resolve="idea-platform" />
       </node>
+      <node concept="nCB5N" id="7bo6V6sNkUQ" role="nCB5Z">
+        <ref role="nCB5Y" node="6NgXkpBaAOU" resolve="ant-mps" />
+      </node>
       <node concept="2sjeV3" id="4PRDOPWNZKO" role="nCB5Z">
         <ref role="2sjeV2" node="1s0vtrx9SbK" resolve="asm-all" />
       </node>
@@ -15331,6 +15334,11 @@
         <node concept="1SiIV0" id="1qokWp1VLId" role="3bR37C">
           <node concept="3bR9La" id="1qokWp1VLIe" role="1SiIV1">
             <ref role="3bR37D" node="1qokWp1VHJa" resolve="jetbrains.mps.refactoring.participant" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="7bo6V6sNp44" role="3bR37C">
+          <node concept="3bR9La" id="7bo6V6sNp45" role="1SiIV1">
+            <ref role="3bR37D" node="4Hc8TwAmypn" resolve="jetbrains.mps.tool.common" />
           </node>
         </node>
       </node>

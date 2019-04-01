@@ -7389,7 +7389,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.java.modules.cycle.3" depends="java.compile.platform, java.compile.mps-environment, java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-core-components, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-project, java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-kernel, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-persistence, java.compile.mps-generator, java.compile.idea-platform, java.compile.mps-editor-api, java.compile.mps-editing, java.compile.mps-icons, java.compile.mps-migration, fetchDependencies">
+  <target name="java.compile.java.modules.cycle.3" depends="java.compile.platform, java.compile.mps-environment, java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-core-components, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-project, java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-kernel, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-persistence, java.compile.mps-generator, java.compile.idea-platform, java.compile.ant-mps, java.compile.mps-editor-api, java.compile.mps-editing, java.compile.mps-icons, java.compile.mps-migration, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.3" />
     <javac destdir="${build.tmp}/java.modules.cycle.3" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
@@ -7439,6 +7439,7 @@
         <pathelement path="${build.tmp}/java/out/mps-persistence" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
+        <pathelement path="${build.tmp}/java/out/ant-mps" />
         <pathelement path="${build.tmp}/java/out/mps-editor-api" />
         <pathelement path="${build.tmp}/java/out/mps-editing" />
         <pathelement path="${build.tmp}/java/out/mps-icons" />
@@ -7546,7 +7547,7 @@
     <mkdir dir="${build.tmp}/java/out/idea-platform" />
   </target>
   
-  <target name="java.compile.mps-platform" depends="java.compile.mps-generator, java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-core-components, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-project, java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-kernel, java.compile.mps-persistence, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.idea-platform, java.compile.mps-editor-api, java.compile.mps-editing, java.compile.mps-icons, java.compile.platform, java.compile.mps-environment, java.compile.mps-migration, java.compile.java.modules.cycle.3, fetchDependencies">
+  <target name="java.compile.mps-platform" depends="java.compile.mps-generator, java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-core-components, java.compile.mps-logging, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-project, java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-kernel, java.compile.mps-persistence, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.idea-platform, java.compile.ant-mps, java.compile.mps-editor-api, java.compile.mps-editing, java.compile.mps-icons, java.compile.platform, java.compile.mps-environment, java.compile.mps-migration, java.compile.java.modules.cycle.3, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/mps-platform" />
     <javac2 destdir="${build.tmp}/java/out/mps-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
@@ -7579,6 +7580,7 @@
         <pathelement path="${build.tmp}/java/out/kernel-resources" />
         <pathelement path="${build.tmp}/java/out/mps-make-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
+        <pathelement path="${build.tmp}/java/out/ant-mps" />
         <pathelement path="${build.tmp}/java/out/mps-editor-api" />
         <pathelement path="${build.tmp}/java/out/mps-editing" />
         <pathelement path="${build.tmp}/java/out/mps-icons" />

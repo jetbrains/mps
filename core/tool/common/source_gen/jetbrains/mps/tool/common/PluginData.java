@@ -4,6 +4,10 @@ package jetbrains.mps.tool.common;
 
 
 /**
+ * Idealy, path should be absolute. However, for compatibility reasons, relative paths are temporary supported.
+ * In EnvironmentConfig.addPlugin(), those are converted to absolute paths.
+ * todo [MM]: rewrite addPlugin() usages to absolute paths, remove compatibility code
+ * 
  * @Immutable
  */
 public class PluginData {

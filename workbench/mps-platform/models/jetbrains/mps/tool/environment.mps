@@ -40,6 +40,7 @@
     <import index="32g5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library(MPS.Core/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
+    <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -65,6 +66,9 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
+        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
       <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
         <child id="1164879758292" name="body" index="SfCbr" />
@@ -725,8 +729,8 @@
           </node>
           <node concept="3cpWsn" id="3a3EL8RMyNj" role="1Duv9x">
             <property role="TrG5h" value="pd" />
-            <node concept="3uibUv" id="3a3EL8RMyNl" role="1tU5fm">
-              <ref role="3uigEE" to="79ha:3FVfMMI0zlM" resolve="PluginDescriptor" />
+            <node concept="3uibUv" id="7bo6V6sMJLp" role="1tU5fm">
+              <ref role="3uigEE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
             </node>
           </node>
           <node concept="3clFbS" id="3a3EL8RMyN6" role="2LFqv$">
@@ -743,8 +747,8 @@
                         <node concept="37vLTw" id="2mXsR_u1zVA" role="2Oq$k0">
                           <ref role="3cqZAo" node="3a3EL8RMyNj" resolve="pd" />
                         </node>
-                        <node concept="liA8E" id="2mXsR_u1$6C" role="2OqNvi">
-                          <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
+                        <node concept="2OwXpG" id="7bo6V6sMKkX" role="2OqNvi">
+                          <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
                         </node>
                       </node>
                     </node>
@@ -811,25 +815,11 @@
       <node concept="10P_77" id="2mXsR_u1$eW" role="3clF45" />
       <node concept="37vLTG" id="2mXsR_u1$eP" role="3clF46">
         <property role="TrG5h" value="pd" />
-        <node concept="3uibUv" id="2mXsR_u1$eQ" role="1tU5fm">
-          <ref role="3uigEE" to="79ha:3FVfMMI0zlM" resolve="PluginDescriptor" />
+        <node concept="3uibUv" id="7bo6V6sMK$U" role="1tU5fm">
+          <ref role="3uigEE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
         </node>
       </node>
       <node concept="3clFbS" id="2mXsR_u1$eu" role="3clF47">
-        <node concept="3cpWs8" id="2mXsR_u1$ex" role="3cqZAp">
-          <node concept="3cpWsn" id="2mXsR_u1$ey" role="3cpWs9">
-            <property role="TrG5h" value="path" />
-            <node concept="17QB3L" id="2mXsR_u1$ez" role="1tU5fm" />
-            <node concept="2OqwBi" id="2mXsR_u1$e$" role="33vP2m">
-              <node concept="37vLTw" id="2mXsR_u1$eR" role="2Oq$k0">
-                <ref role="3cqZAo" node="2mXsR_u1$eP" resolve="pd" />
-              </node>
-              <node concept="liA8E" id="2mXsR_u1$eA" role="2OqNvi">
-                <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="2mXsR_u1$eN" role="3cqZAp">
           <node concept="22lmx$" id="2mXsR_u1O2W" role="3cqZAk">
             <node concept="2YIFZM" id="2mXsR_u1$eG" role="3uHU7B">
@@ -839,8 +829,13 @@
                 <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
                 <ref role="37wK5l" to="bd8o:~PathManager.getPreInstalledPluginsPath()" resolve="getPreInstalledPluginsPath" />
               </node>
-              <node concept="37vLTw" id="2mXsR_u1$eI" role="37wK5m">
-                <ref role="3cqZAo" node="2mXsR_u1$ey" resolve="path" />
+              <node concept="2OqwBi" id="7bo6V6sMRto" role="37wK5m">
+                <node concept="37vLTw" id="7bo6V6sMRtp" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2mXsR_u1$eP" resolve="pd" />
+                </node>
+                <node concept="2OwXpG" id="7bo6V6sMRtq" role="2OqNvi">
+                  <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
+                </node>
               </node>
             </node>
             <node concept="2YIFZM" id="2mXsR_u1$eK" role="3uHU7w">
@@ -850,8 +845,13 @@
                 <ref role="37wK5l" to="bd8o:~PathManager.getPluginsPath()" resolve="getPluginsPath" />
                 <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
               </node>
-              <node concept="37vLTw" id="2mXsR_u1$eM" role="37wK5m">
-                <ref role="3cqZAo" node="2mXsR_u1$ey" resolve="path" />
+              <node concept="2OqwBi" id="7bo6V6sMRtr" role="37wK5m">
+                <node concept="37vLTw" id="7bo6V6sMRts" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2mXsR_u1$eP" resolve="pd" />
+                </node>
+                <node concept="2OwXpG" id="7bo6V6sMRtt" role="2OqNvi">
+                  <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
+                </node>
               </node>
             </node>
           </node>
@@ -904,8 +904,8 @@
           <node concept="3cpWsn" id="sjigSAxCYQ" role="3cpWs9">
             <property role="TrG5h" value="plugins" />
             <node concept="2hMVRd" id="sjigSAxCYR" role="1tU5fm">
-              <node concept="3uibUv" id="sjigSAxCYS" role="2hN53Y">
-                <ref role="3uigEE" to="79ha:3FVfMMI0zlM" resolve="PluginDescriptor" />
+              <node concept="3uibUv" id="7bo6V6sMU5R" role="2hN53Y">
+                <ref role="3uigEE" to="asz6:r$A3E5vV_o" resolve="PluginData" />
               </node>
             </node>
             <node concept="2OqwBi" id="sjigSAxCYT" role="33vP2m">
@@ -944,8 +944,8 @@
                   <node concept="2GrUjf" id="r$A3E5xWPh" role="2Oq$k0">
                     <ref role="2Gs0qQ" node="sjigSAxCZ3" resolve="plugin" />
                   </node>
-                  <node concept="liA8E" id="r$A3E5xZyu" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:3FVfMMI0xPY" resolve="getId" />
+                  <node concept="2OwXpG" id="7bo6V6sMXVL" role="2OqNvi">
+                    <ref role="2Oxat5" to="asz6:r$A3E5qOHV" resolve="id" />
                   </node>
                 </node>
               </node>
@@ -954,8 +954,8 @@
                   <node concept="2GrUjf" id="r$A3E5y177" role="2Oq$k0">
                     <ref role="2Gs0qQ" node="sjigSAxCZ3" resolve="plugin" />
                   </node>
-                  <node concept="liA8E" id="r$A3E5y1CP" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:3FVfMMI0xY_" resolve="getPath" />
+                  <node concept="2OwXpG" id="7bo6V6sN6MM" role="2OqNvi">
+                    <ref role="2Oxat5" to="asz6:QkG2t1bxbe" resolve="path" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="r$A3E5y0kA" role="3uHU7B">
@@ -974,8 +974,8 @@
                     <node concept="2GrUjf" id="sjigSAxCZb" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="sjigSAxCZ3" resolve="plugin" />
                     </node>
-                    <node concept="liA8E" id="sjigSAxCZc" role="2OqNvi">
-                      <ref role="37wK5l" to="79ha:3FVfMMI0xPY" resolve="getId" />
+                    <node concept="2OwXpG" id="7bo6V6sN2iF" role="2OqNvi">
+                      <ref role="2Oxat5" to="asz6:r$A3E5qOHV" resolve="id" />
                     </node>
                   </node>
                 </node>

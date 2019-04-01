@@ -39,5 +39,6 @@
     <orderEntry type="module" module-name="resources_en" />
     <orderEntry type="module" module-name="actions-runtime" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
+    <orderEntry type="module" module-name="ant-mps-common" />
   </component>
 </module>
