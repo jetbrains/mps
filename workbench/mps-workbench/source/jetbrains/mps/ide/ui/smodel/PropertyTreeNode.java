@@ -25,7 +25,7 @@ public class PropertyTreeNode extends TextTreeNode {
   private final SProperty myProperty;
 
   public PropertyTreeNode(SNode mainNode, SProperty p) {
-    super(p + " = " + SNodeAccessUtil.getProperty(mainNode, p));
+    super(p + " = " + SNodeAccessUtil.getPropertyValue(mainNode, p));
     myProperty = p;
     setIcon(Nodes.Parameter);
     setNodeIdentifier(myProperty.getName());
