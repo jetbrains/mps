@@ -61,23 +61,24 @@ public class NewModelDialog extends DialogWrapper {
   private ModelCreateHelper myResult;
 
   public static NewModelDialog createForNewModel(Project project, SModule module, String namespace, String stereotype, boolean strict) {
-    NewModelDialog dialog = new NewModelDialog(project, (AbstractModule) module, namespace, stereotype, strict, "New Model", (namespace == null || namespace.length() == 0 ? namespace : namespace + "."), false);
+    NewModelDialog dialog = new NewModelDialog(project, (AbstractModule) module, stereotype, strict, "New Model", (namespace == null || namespace.length() == 0 ? namespace : namespace + "."), false);
     return dialog;
 
   }
 
   public static NewModelDialog createForCloneModel(Project project, SModule containingModule, @NotNull SModelName originalModelName) {
-    NewModelDialog dialog = new NewModelDialog(project, (AbstractModule) containingModule, null, originalModelName.getStereotype(), false, String.format("Clone Model %s", originalModelName.getValue()), new SModelName(originalModelName.getLongName() + "_clone").getValue(), true);
+    NewModelDialog dialog = new NewModelDialog(project, (AbstractModule) containingModule, originalModelName.getStereotype(), false, String.format("Clone Model %s", originalModelName.getValue()), new SModelName(originalModelName.getLongName() + "_clone").getValue(), true);
     return dialog;
   }
 
   public static NewModelDialog createForMoveModel(Project project, SModule targetModule, @NotNull SModelName originalModelName) {
-    NewModelDialog dialog = new NewModelDialog(project, (AbstractModule) targetModule, null, originalModelName.getStereotype(), true, String.format("Move Model %s", originalModelName.getValue()), originalModelName.getLongName(), true);
+    NewModelDialog dialog = new NewModelDialog(project, (AbstractModule) targetModule, originalModelName.getStereotype(), true, String.format("Move Model %s", originalModelName.getValue()), originalModelName.getLongName(), true);
     return dialog;
   }
 
-  /*package*/ NewModelDialog(Project project, @NotNull AbstractModule module, String namespace, String stereotype, boolean strict, String title, String modelName, boolean checkInitial) throws HeadlessException {
+  /*package*/ NewModelDialog(Project project, @NotNull AbstractModule module, String stereotype, boolean strict, String title, String modelName, boolean checkInitial) throws HeadlessException {
     super(ProjectHelper.toIdeaProject(project));
+    setTitle(title);
     myProject = (MPSProject) project;
     myModule = module;
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -86,12 +87,16 @@ public class NewModelDialog extends DialogWrapper {
         initContentPane();
       }
     });
+    myModelName.setText(modelName);
     if (stereotype != null) {
       myModelStereotype.setSelectedItem(stereotype);
       myModelStereotype.setEnabled(!(strict));
     }
 
     init();
+    if (checkInitial) {
+      check();
+    }
   }
 
   public ModelCreateHelper getResultHelper() {
