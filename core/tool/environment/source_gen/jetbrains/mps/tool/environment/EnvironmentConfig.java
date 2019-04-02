@@ -15,6 +15,7 @@ import java.util.LinkedHashMap;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.Level;
 import jetbrains.mps.util.PathManager;
 
 /**
@@ -67,20 +68,11 @@ public class EnvironmentConfig {
 
   public EnvironmentConfig addPlugin(String path, String id) {
     File pluginLocation = new File(path);
-
-    // this is a compatibility code needed to support relative paths, also see doc comment for PluginData 
-    // todo get rid of it 
-    final File preinstalledPluginFolder = new File(PathManager.getPreInstalledPluginsPath());
-    // XXX we don't support plugins distributed as .zip files here, only as folders 
-    if (!(new File(pluginLocation, PlatformPlugins.PLUGIN_DESCRIPTOR_LOCATION).exists())) {
-      pluginLocation = new File(preinstalledPluginFolder, path);
-      if (!(new File(pluginLocation, PlatformPlugins.PLUGIN_DESCRIPTOR_LOCATION).exists())) {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug(String.format("No platform plugin descriptor (plugin.xml) detected under %s", path));
-        }
-        SetSequence.fromSet(myPlugins).addElement(new PluginData(path, id));
-        return this;
+    if (!(pluginLocation.exists())) {
+      if (LOG.isEnabledFor(Level.WARN)) {
+        LOG.warn(String.format("Can't load plugin. Plugin file or folder was not found: %s", path));
       }
+      return this;
     }
 
     SetSequence.fromSet(myPlugins).addElement(new PluginData(pluginLocation.getAbsolutePath(), id));
@@ -117,34 +109,40 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withDefaultPlugins() {
-    addPlugin("mps-testing", "jetbrains.mps.testing");
-    addPlugin("mpsmake", "jetbrains.mps.ide.make");
+    addDistributedPlugin("mps-testing", "jetbrains.mps.testing");
+    addDistributedPlugin("mps-make", "jetbrains.mps.ide.make");
     return withCorePlugin();
   }
 
   public EnvironmentConfig withVcsPlugin() {
-    return addPlugin("vcs", "jetbrains.mps.vcs").withGit4IdeaPlugin();
+    return addDistributedPlugin("mps-vcs", "jetbrains.mps.vcs").withGit4IdeaPlugin();
   }
 
   public EnvironmentConfig withCorePlugin() {
-    return addPlugin("mps-core", "jetbrains.mps.core");
+    return addDistributedPlugin("mps-core", "jetbrains.mps.core");
   }
 
   public EnvironmentConfig withGit4IdeaPlugin() {
-    return addPlugin("git4idea", "Git4Idea");
+    return addDistributedPlugin("git4idea", "Git4Idea");
   }
 
   public EnvironmentConfig withBuildPlugin() {
-    return addPlugin("mps-build", "jetbrains.mps.build");
+    return addDistributedPlugin("mps-build", "jetbrains.mps.build");
   }
 
   public EnvironmentConfig withJavaPlugin() {
-    return addPlugin("mps-java-workbench", "jetbrains.mps.ide.java").addPlugin("mpsjava", "jetbrains.mps.ide.java.platform");
+    return addDistributedPlugin("mps-java-workbench", "jetbrains.mps.ide.java").addDistributedPlugin("mpsjava", "jetbrains.mps.ide.java.platform");
   }
 
   public EnvironmentConfig withMigrationPlugin() {
     // migration plugin depends on modelchecker, add both 
-    return addPlugin("modelchecker", "jetbrains.mps.ide.modelchecker").addPlugin("migration", "jetbrains.mps.ide.migration.workbench");
+    return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker").addDistributedPlugin("mps-migration", "jetbrains.mps.ide.migration.workbench");
+  }
+
+  private EnvironmentConfig addDistributedPlugin(String folder, String id) {
+    // for internal use only, accepts a folder in /plugins 
+    File preinstalledPluginFolder = new File(PathManager.getPreInstalledPluginsPath());
+    return addPlugin(new File(preinstalledPluginFolder, folder).getAbsolutePath(), id);
   }
 
   public EnvironmentConfig withBootstrapLibraries() {
