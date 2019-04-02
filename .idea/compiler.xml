@@ -301,12 +301,6 @@
       <directory url="file://$PROJECT_DIR$/plugins/execution-languages/languages/library/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/execution-languages/languages/plugin/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/execution-languages/languages/plugin/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/language/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/language/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/solutions/nodeaccess/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/httpsupport/solutions/nodeaccess/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/solutions/runtime/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/httpsupport/solutions/runtime/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/jetpad/solutions/jetbrains.jetpad/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/jetpad/solutions/jetbrains.jetpad/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-build/languages/build.mps.runner/generator/source_gen" includeSubdirectories="true" />
@@ -359,6 +353,12 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/runtime/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/runtime/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/language/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/language/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/solutions/nodeaccess/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/solutions/nodeaccess/test_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/solutions/runtime/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-httpsupport/solutions/runtime/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-java-workbench/tests/jetbrains.mps.ide.java.tests/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-java-workbench/tests/jetbrains.mps.ide.java.tests/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-make/source_gen" includeSubdirectories="true" />
@@ -925,3 +925,4 @@
     <option name="MAXIMUM_HEAP_SIZE" value="1024" />
   </component>
 </project>
+

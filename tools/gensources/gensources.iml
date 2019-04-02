@@ -510,18 +510,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/execution-languages/languages/plugin/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/execution-languages/languages/plugin/classes_gen" />
     </content>
-    <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/generator/classes_gen" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/nodeaccess/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/runtime/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/nodeaccess/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/runtime/classes_gen" />
-    </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-build">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-build/languages/build.mps.runner/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-build/languages/build.mps.runner/source_gen" isTestSource="false" />
@@ -597,6 +585,18 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-core/languages/languageDesign/table/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-core/languages/languageDesign/table/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-core/languages/languageDesign/table/runtime/classes_gen" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/generator/classes_gen" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/nodeaccess/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/runtime/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/nodeaccess/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/runtime/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-make">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-make/source_gen" isTestSource="false" />
@@ -1189,9 +1189,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/generator/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/sandbox/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../testbench/modules/testMoveElements">
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMoveElements/languages/testMoveElements/source_gen" isTestSource="false" />
@@ -1472,3 +1469,4 @@
     <orderEntry type="module" module-name="project-check" />
   </component>
 </module>
+
