@@ -72,7 +72,7 @@
     <orderEntry type="module" module-name="execution-impl" />
     <orderEntry type="module" module-name="findUsages-runtime" />
     <orderEntry type="module" module-name="gensources" />
-    <orderEntry type="module" module-name="httpsupport" />
+    <orderEntry type="module" module-name="mps-httpsupport" />
     <orderEntry type="module" module-name="ideaIntegration" />
     <orderEntry type="module" module-name="ideaIntegrationCommon" />
     <orderEntry type="module" module-name="IDEAPlugin" />

@@ -137,8 +137,8 @@
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
     <generate strictMode="true" parallelMode="true" parallelThreads="8" useInplaceTransform="false" hideWarnings="false" createStaticRefs="true" fork="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}">
-      <plugin path="${artifacts.mps}/plugins/http-support" />
       <plugin path="${artifacts.mps}/plugins/mps-core" />
+      <plugin path="${artifacts.mps}/plugins/mps-httpsupport" />
       <plugin path="${artifacts.mps}/plugins/mps-testing" />
       <plugin path="${build.tmp}/deps/mpsWorkbench/mps-workbench.jar/META-INF/plugin.xml/../.." />
       <library file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.blTypes.jar" />
@@ -201,9 +201,9 @@
       <library file="${artifacts.mps}/lib/mps-test.jar" />
       <library file="${artifacts.mps}/lib/mps-tool.jar" />
       <library file="${artifacts.mps}/lib/mps-tuples.jar" />
-      <library file="${artifacts.mps}/plugins/http-support/languages/jetbrains.mps.ide.httpsupport.jar" />
-      <library file="${artifacts.mps}/plugins/http-support/lib/httpsupport.jar" />
-      <library file="${artifacts.mps}/plugins/http-support/solutions/jetbrains.mps.ide.httpsupport.runtime.jar" />
+      <library file="${artifacts.mps}/plugins/mps-httpsupport/languages/jetbrains.mps.ide.httpsupport.jar" />
+      <library file="${artifacts.mps}/plugins/mps-httpsupport/lib/httpsupport.jar" />
+      <library file="${artifacts.mps}/plugins/mps-httpsupport/solutions/jetbrains.mps.ide.httpsupport.runtime.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
@@ -275,7 +275,7 @@
         <pathelement path="${basedir}/testbench/testsolutions/httpsupport.test/test_gen/" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mps}/plugins/http-support/lib/httpsupport.jar" />
+        <fileset file="${artifacts.mps}/plugins/mps-httpsupport/lib/httpsupport.jar" />
         <fileset file="${artifacts.mps}/lib/mps-platform.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-runtime.jar" />
@@ -310,8 +310,8 @@
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.collections.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
-        <fileset file="${artifacts.mps}/plugins/http-support/languages/jetbrains.mps.ide.httpsupport.jar" />
-        <fileset file="${artifacts.mps}/plugins/http-support/solutions/jetbrains.mps.ide.httpsupport.runtime.jar" />
+        <fileset file="${artifacts.mps}/plugins/mps-httpsupport/languages/jetbrains.mps.ide.httpsupport.jar" />
+        <fileset file="${artifacts.mps}/plugins/mps-httpsupport/solutions/jetbrains.mps.ide.httpsupport.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.modelapi.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.smodel.jar" />
@@ -388,9 +388,9 @@
       <pathelement location="${artifacts.mps}/lib/mps-test.jar" />
       <pathelement location="${artifacts.mps}/lib/mps-tool.jar" />
       <pathelement location="${artifacts.mps}/lib/mps-tuples.jar" />
-      <pathelement location="${artifacts.mps}/plugins/http-support/languages/jetbrains.mps.ide.httpsupport.jar" />
-      <pathelement location="${artifacts.mps}/plugins/http-support/lib/httpsupport.jar" />
-      <pathelement location="${artifacts.mps}/plugins/http-support/solutions/jetbrains.mps.ide.httpsupport.runtime.jar" />
+      <pathelement location="${artifacts.mps}/plugins/mps-httpsupport/languages/jetbrains.mps.ide.httpsupport.jar" />
+      <pathelement location="${artifacts.mps}/plugins/mps-httpsupport/lib/httpsupport.jar" />
+      <pathelement location="${artifacts.mps}/plugins/mps-httpsupport/solutions/jetbrains.mps.ide.httpsupport.runtime.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
@@ -398,8 +398,8 @@
     </path>
     <pathconvert pathsep="${path.separator}" property="mps.libraries.path.string" refid="mps.libraries.path" />
     <path id="mps.plugins.path">
-      <pathelement location="${artifacts.mps}/plugins/http-support" />
       <pathelement location="${artifacts.mps}/plugins/mps-core" />
+      <pathelement location="${artifacts.mps}/plugins/mps-httpsupport" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing" />
       <pathelement location="${build.tmp}/deps/mpsWorkbench/mps-workbench.jar/META-INF/plugin.xml/../.." />
     </path>

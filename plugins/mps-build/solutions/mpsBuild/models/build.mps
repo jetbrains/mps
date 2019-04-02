@@ -33131,7 +33131,7 @@
         <node concept="2Ry0Ak" id="6pse5qHNghg" role="iGT6I">
           <property role="2Ry0Am" value="plugins" />
           <node concept="2Ry0Ak" id="6pse5qHNghl" role="2Ry0An">
-            <property role="2Ry0Am" value="httpsupport" />
+            <property role="2Ry0Am" value="mps-httpsupport" />
           </node>
         </node>
       </node>
@@ -33216,7 +33216,7 @@
       </node>
       <node concept="3_J27D" id="5xhjlkpPhJy" role="m_cZH">
         <node concept="3Mxwew" id="5xhjlkpPi0N" role="3MwsjC">
-          <property role="3MwjfP" value="http-support" />
+          <property role="3MwjfP" value="mps-httpsupport" />
         </node>
       </node>
       <node concept="3_J27D" id="5xhjlkpPhJ$" role="m$_w8">

@@ -510,17 +510,17 @@
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/execution-languages/languages/plugin/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/execution-languages/languages/plugin/classes_gen" />
     </content>
-    <content url="file://$MODULE_DIR$/../../plugins/httpsupport/language">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/language/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/language/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/language/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/language/generator/classes_gen" />
+    <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language/generator/classes_gen" />
     </content>
-    <content url="file://$MODULE_DIR$/../../plugins/httpsupport/solutions">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/solutions/nodeaccess/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/solutions/runtime/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/solutions/nodeaccess/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/httpsupport/solutions/runtime/classes_gen" />
+    <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/nodeaccess/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/runtime/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/nodeaccess/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/runtime/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-build">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-build/languages/build.mps.runner/generator/source_gen" isTestSource="false" />
@@ -1465,7 +1465,7 @@
     <orderEntry type="module" module-name="execution-api" />
     <orderEntry type="module" module-name="refactoring" />
     <orderEntry type="module" module-name="mps-java-platform-base" />
-    <orderEntry type="module" module-name="httpsupport" />
+    <orderEntry type="module" module-name="mps-httpsupport" />
     <orderEntry type="module" module-name="migration-platform" />
     <orderEntry type="module" module-name="model" />
     <orderEntry type="module" module-name="debuginfo-impl" />
