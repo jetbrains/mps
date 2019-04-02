@@ -168,9 +168,9 @@
     <copy todir="${build.layout}/plugins/svn4idea">
       <fileset dir="${artifacts.mpsVcs}/svn4idea" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/migration" />
-    <copy todir="${build.layout}/plugins/migration">
-      <fileset dir="${artifacts.mpsMigration}/migration" />
+    <mkdir dir="${build.layout}/plugins/mps-migration" />
+    <copy todir="${build.layout}/plugins/mps-migration">
+      <fileset dir="${artifacts.mpsMigration}/mps-migration" />
     </copy>
     <mkdir dir="${build.layout}/plugins/projectMigrations" />
     <copy todir="${build.layout}/plugins/projectMigrations">

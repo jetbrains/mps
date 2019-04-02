@@ -10,7 +10,7 @@
     <facet pluginId="jetbrains.mps.ide.migration.workbench" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${mps_home}/plugins/migration/migration-platform/lib/migration-platform.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-migration/migration-platform/lib/migration-platform.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

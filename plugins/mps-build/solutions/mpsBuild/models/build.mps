@@ -19499,7 +19499,7 @@
           <ref role="3_I8Xa" node="3nGzrDEfcNJ" resolve="svn4idea" />
         </node>
         <node concept="3_I8Xc" id="1d6huufKTau" role="39821P">
-          <ref role="3_I8Xa" node="5lGJ4TajoPh" resolve="migration" />
+          <ref role="3_I8Xa" node="5lGJ4TajoPh" resolve="mps-migration" />
         </node>
         <node concept="3_I8Xc" id="1d6huufKTb8" role="39821P">
           <ref role="3_I8Xa" node="1d6huufKT8x" resolve="projectMigrations" />
@@ -33644,7 +33644,7 @@
             <node concept="2Ry0Ak" id="3_S1WmROVif" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
               <node concept="2Ry0Ak" id="1d6huufKSWg" role="2Ry0An">
-                <property role="2Ry0Am" value="migration" />
+                <property role="2Ry0Am" value="mps-migration" />
                 <node concept="2Ry0Ak" id="1d6huufKSWc" role="2Ry0An">
                   <property role="2Ry0Am" value="migration-workbench" />
                   <node concept="2Ry0Ak" id="1d6huufKSWd" role="2Ry0An">
@@ -33716,7 +33716,7 @@
       </node>
       <node concept="3_J27D" id="5lGJ4TajoVd" role="m_cZH">
         <node concept="3Mxwew" id="5lGJ4TajoVL" role="3MwsjC">
-          <property role="3MwjfP" value="migration" />
+          <property role="3MwjfP" value="mps-migration" />
         </node>
       </node>
       <node concept="3_J27D" id="5lGJ4TajoVf" role="m$_w8">
@@ -33893,7 +33893,7 @@
         <node concept="2Ry0Ak" id="5lGJ4TajoXb" role="iGT6I">
           <property role="2Ry0Am" value="plugins" />
           <node concept="2Ry0Ak" id="5lGJ4TajoXc" role="2Ry0An">
-            <property role="2Ry0Am" value="migration" />
+            <property role="2Ry0Am" value="mps-migration" />
           </node>
         </node>
       </node>
@@ -33922,7 +33922,7 @@
               <node concept="2Ry0Ak" id="3_S1WmROW0p" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="1d6huufKSWq" role="2Ry0An">
-                  <property role="2Ry0Am" value="migration" />
+                  <property role="2Ry0Am" value="mps-migration" />
                   <node concept="2Ry0Ak" id="1d6huufKSWn" role="2Ry0An">
                     <property role="2Ry0Am" value="META-INF" />
                     <node concept="2Ry0Ak" id="6prxl$ztH$T" role="2Ry0An">
@@ -34109,7 +34109,7 @@
             <node concept="2Ry0Ak" id="1nJh0raUWjC" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
               <node concept="2Ry0Ak" id="1nJh0raUWjD" role="2Ry0An">
-                <property role="2Ry0Am" value="migration" />
+                <property role="2Ry0Am" value="mps-migration" />
                 <node concept="2Ry0Ak" id="1d6huufKSPb" role="2Ry0An">
                   <property role="2Ry0Am" value="migration-platform" />
                   <node concept="2Ry0Ak" id="1d6huufKSP8" role="2Ry0An">
@@ -34207,7 +34207,7 @@
               <node concept="2Ry0Ak" id="1VTNP4xgbra" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="1VTNP4xgbrb" role="2Ry0An">
-                  <property role="2Ry0Am" value="migration" />
+                  <property role="2Ry0Am" value="mps-migration" />
                   <node concept="2Ry0Ak" id="1VTNP4xgbrc" role="2Ry0An">
                     <property role="2Ry0Am" value="migration-platform" />
                     <node concept="2Ry0Ak" id="1VTNP4xgbrd" role="2Ry0An">

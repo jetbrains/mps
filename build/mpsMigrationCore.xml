@@ -42,7 +42,7 @@
     </jar>
     <mkdir dir="${build.layout}/migration-platform/META-INF" />
     <copy todir="${build.layout}/migration-platform/META-INF">
-      <fileset file="${mps_home}/plugins/migration/migration-platform/pluginBase.xml" />
+      <fileset file="${mps_home}/plugins/mps-migration/migration-platform/pluginBase.xml" />
     </copy>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
@@ -78,12 +78,12 @@
   <target name="check" depends="test" />
   
   <target name="java.compile.migration-platform" depends="fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/migration/migration-platform/solutions/component/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-migration/migration-platform/solutions/component/source_gen" />
     <mkdir dir="${build.tmp}/java/out/migration-platform" />
     <javac2 destdir="${build.tmp}/java/out/migration-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/migration/migration-platform/solutions/component/source_gen" />
+        <path location="${mps_home}/plugins/mps-migration/migration-platform/solutions/component/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
@@ -112,7 +112,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/migration-platform">
-      <fileset dir="${mps_home}/plugins/migration/migration-platform/solutions/component/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-migration/migration-platform/solutions/component/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

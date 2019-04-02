@@ -52,7 +52,7 @@ teamcity-info.xml
 /plugins/svn4idea/lib
 /plugins/mps-testing/lib
 /plugins/terminal
-/plugins/migration/migration-platform/lib
+/plugins/mps-migration/migration-platform/lib
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
 /lib/

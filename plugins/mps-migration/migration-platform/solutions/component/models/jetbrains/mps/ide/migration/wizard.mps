@@ -9567,7 +9567,7 @@
       </node>
       <node concept="1QGGTA" id="3XH1aBtfXXp" role="33vP2m">
         <node concept="1QGGSu" id="3XH1aBtfXXF" role="1QGGTw">
-          <property role="1iqoE4" value="${mps_home}/plugins/migration/migration-platform/icons/language.png" />
+          <property role="1iqoE4" value="${mps_home}/plugins/mps-migration/migration-platform/icons/language.png" />
         </node>
       </node>
       <node concept="3Tm1VV" id="3XH1aBtfKGw" role="1B3o_S" />
