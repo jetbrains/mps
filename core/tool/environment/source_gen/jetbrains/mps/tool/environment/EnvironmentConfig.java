@@ -15,7 +15,7 @@ import java.util.LinkedHashMap;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.tool.common.PathManager;
+import jetbrains.mps.util.PathManager;
 
 /**
  * Represents a configuration options list for an environment, used a Builder pattern
@@ -70,20 +70,16 @@ public class EnvironmentConfig {
 
     // this is a compatibility code needed to support relative paths, also see doc comment for PluginData 
     // todo get rid of it 
-    final File localPluginsFolder = new File(PathManager.getPluginsPath());
-    final File preinstalledPluginFolder = new File(jetbrains.mps.util.PathManager.getPreInstalledPluginsPath());
+    final File preinstalledPluginFolder = new File(PathManager.getPreInstalledPluginsPath());
     // XXX we don't support plugins distributed as .zip files here, only as folders 
     if (!(new File(pluginLocation, PlatformPlugins.PLUGIN_DESCRIPTOR_LOCATION).exists())) {
-      pluginLocation = new File(localPluginsFolder, path);
+      pluginLocation = new File(preinstalledPluginFolder, path);
       if (!(new File(pluginLocation, PlatformPlugins.PLUGIN_DESCRIPTOR_LOCATION).exists())) {
-        pluginLocation = new File(preinstalledPluginFolder, path);
-        if (!(new File(pluginLocation, PlatformPlugins.PLUGIN_DESCRIPTOR_LOCATION).exists())) {
-          if (LOG.isDebugEnabled()) {
-            LOG.debug(String.format("No platform plugin descriptor (plugin.xml) detected under %s", path));
-          }
-          SetSequence.fromSet(myPlugins).addElement(new PluginData(path, id));
-          return this;
+        if (LOG.isDebugEnabled()) {
+          LOG.debug(String.format("No platform plugin descriptor (plugin.xml) detected under %s", path));
         }
+        SetSequence.fromSet(myPlugins).addElement(new PluginData(path, id));
+        return this;
       }
     }
 
@@ -152,15 +148,15 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withBootstrapLibraries() {
-    for (String path : jetbrains.mps.util.PathManager.getBootstrapPaths()) {
+    for (String path : PathManager.getBootstrapPaths()) {
       addLib(path);
     }
-    addLib(jetbrains.mps.util.PathManager.getLanguagesPath());
+    addLib(PathManager.getLanguagesPath());
     return this;
   }
 
   public EnvironmentConfig withWorkbenchPath() {
-    addLib(jetbrains.mps.util.PathManager.getWorkbenchPath());
+    addLib(PathManager.getWorkbenchPath());
     return this;
   }
 

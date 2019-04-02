@@ -918,24 +918,6 @@
             <property role="3SKdUp" value="todo get rid of it" />
           </node>
         </node>
-        <node concept="3cpWs8" id="7lKcB_1uyz3" role="3cqZAp">
-          <node concept="3cpWsn" id="7lKcB_1uyz4" role="3cpWs9">
-            <property role="TrG5h" value="localPluginsFolder" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="7lKcB_1uyz5" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
-            </node>
-            <node concept="2ShNRf" id="7lKcB_1uyz6" role="33vP2m">
-              <node concept="1pGfFk" id="7lKcB_1uyz7" role="2ShVmc">
-                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                <node concept="2YIFZM" id="7lKcB_1uyz8" role="37wK5m">
-                  <ref role="1Pybhc" to="asz6:4937uxYQn6D" resolve="PathManager" />
-                  <ref role="37wK5l" to="asz6:4937uxYQng3" resolve="getPluginsPath" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="7lKcB_1uyz9" role="3cqZAp">
           <node concept="3cpWsn" id="7lKcB_1uyza" role="3cpWs9">
             <property role="TrG5h" value="preinstalledPluginFolder" />
@@ -961,119 +943,78 @@
         </node>
         <node concept="3clFbJ" id="1ROuiHUGi_" role="3cqZAp">
           <node concept="3clFbS" id="1ROuiHUGiB" role="3clFbx">
-            <node concept="3clFbF" id="1ROuiHUGvk" role="3cqZAp">
-              <node concept="37vLTI" id="1ROuiHUGIY" role="3clFbG">
-                <node concept="2ShNRf" id="1ROuiHUGR_" role="37vLTx">
-                  <node concept="1pGfFk" id="1ROuiHUHrC" role="2ShVmc">
+            <node concept="3clFbF" id="1ROuiHUIaO" role="3cqZAp">
+              <node concept="37vLTI" id="1ROuiHUIqD" role="3clFbG">
+                <node concept="2ShNRf" id="1ROuiHUIsj" role="37vLTx">
+                  <node concept="1pGfFk" id="1ROuiHUJ0m" role="2ShVmc">
                     <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                    <node concept="37vLTw" id="1ROuiHUHtF" role="37wK5m">
-                      <ref role="3cqZAo" node="7lKcB_1uyz4" resolve="localPluginsFolder" />
+                    <node concept="37vLTw" id="1ROuiHUJ3f" role="37wK5m">
+                      <ref role="3cqZAo" node="7lKcB_1uyza" resolve="preinstalledPluginFolder" />
                     </node>
-                    <node concept="37vLTw" id="7lKcB_1uXtg" role="37wK5m">
+                    <node concept="37vLTw" id="7lKcB_1uXX3" role="37wK5m">
                       <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="1ROuiHUGvi" role="37vLTJ">
+                <node concept="37vLTw" id="1ROuiHUIaM" role="37vLTJ">
                   <ref role="3cqZAo" node="7lKcB_1uGKG" resolve="pluginLocation" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="1ROuiHUI1T" role="3cqZAp">
-              <node concept="3clFbS" id="1ROuiHUI1V" role="3clFbx">
-                <node concept="3clFbF" id="1ROuiHUIaO" role="3cqZAp">
-                  <node concept="37vLTI" id="1ROuiHUIqD" role="3clFbG">
-                    <node concept="2ShNRf" id="1ROuiHUIsj" role="37vLTx">
-                      <node concept="1pGfFk" id="1ROuiHUJ0m" role="2ShVmc">
-                        <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                        <node concept="37vLTw" id="1ROuiHUJ3f" role="37wK5m">
-                          <ref role="3cqZAo" node="7lKcB_1uyza" resolve="preinstalledPluginFolder" />
-                        </node>
-                        <node concept="37vLTw" id="7lKcB_1uXX3" role="37wK5m">
-                          <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
-                        </node>
-                      </node>
+            <node concept="3clFbJ" id="1ROuiHUJxm" role="3cqZAp">
+              <node concept="3clFbS" id="1ROuiHUJxo" role="3clFbx">
+                <node concept="RRSsy" id="1ROuiHUJAX" role="3cqZAp">
+                  <property role="RRSoG" value="debug" />
+                  <node concept="2YIFZM" id="1ROuiHUJM7" role="RRSoy">
+                    <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                    <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                    <node concept="Xl_RD" id="1ROuiHUJAZ" role="37wK5m">
+                      <property role="Xl_RC" value="No platform plugin descriptor (plugin.xml) detected under %s" />
                     </node>
-                    <node concept="37vLTw" id="1ROuiHUIaM" role="37vLTJ">
-                      <ref role="3cqZAo" node="7lKcB_1uGKG" resolve="pluginLocation" />
+                    <node concept="37vLTw" id="5zGxXCm8Yyr" role="37wK5m">
+                      <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbJ" id="1ROuiHUJxm" role="3cqZAp">
-                  <node concept="3clFbS" id="1ROuiHUJxo" role="3clFbx">
-                    <node concept="RRSsy" id="1ROuiHUJAX" role="3cqZAp">
-                      <property role="RRSoG" value="debug" />
-                      <node concept="2YIFZM" id="1ROuiHUJM7" role="RRSoy">
-                        <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
-                        <node concept="Xl_RD" id="1ROuiHUJAZ" role="37wK5m">
-                          <property role="Xl_RC" value="No platform plugin descriptor (plugin.xml) detected under %s" />
-                        </node>
-                        <node concept="37vLTw" id="5zGxXCm8Yyr" role="37wK5m">
-                          <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbF" id="5avE1b7nHQ2" role="3cqZAp">
-                      <node concept="2OqwBi" id="5avE1b7nHQ3" role="3clFbG">
-                        <node concept="TSZUe" id="5avE1b7nHQ4" role="2OqNvi">
-                          <node concept="2ShNRf" id="5avE1b7nHQ5" role="25WWJ7">
-                            <node concept="1pGfFk" id="5avE1b7nHQ6" role="2ShVmc">
-                              <ref role="37wK5l" to="asz6:4OPNMy23eT$" resolve="PluginData" />
-                              <node concept="37vLTw" id="5avE1b7nKry" role="37wK5m">
-                                <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
-                              </node>
-                              <node concept="37vLTw" id="5avE1b7nHQa" role="37wK5m">
-                                <ref role="3cqZAo" node="3FVfMMI0_S2" resolve="id" />
-                              </node>
-                            </node>
+                <node concept="3clFbF" id="5avE1b7nHQ2" role="3cqZAp">
+                  <node concept="2OqwBi" id="5avE1b7nHQ3" role="3clFbG">
+                    <node concept="TSZUe" id="5avE1b7nHQ4" role="2OqNvi">
+                      <node concept="2ShNRf" id="5avE1b7nHQ5" role="25WWJ7">
+                        <node concept="1pGfFk" id="5avE1b7nHQ6" role="2ShVmc">
+                          <ref role="37wK5l" to="asz6:4OPNMy23eT$" resolve="PluginData" />
+                          <node concept="37vLTw" id="5avE1b7nKry" role="37wK5m">
+                            <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
+                          </node>
+                          <node concept="37vLTw" id="5avE1b7nHQa" role="37wK5m">
+                            <ref role="3cqZAo" node="3FVfMMI0_S2" resolve="id" />
                           </node>
                         </node>
-                        <node concept="37vLTw" id="5avE1b7nHQb" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6rx4kZDkyzy" resolve="myPlugins" />
-                        </node>
                       </node>
                     </node>
-                    <node concept="3cpWs6" id="7lKcB_1uZak" role="3cqZAp">
-                      <node concept="Xjq3P" id="7lKcB_1v0NI" role="3cqZAk" />
+                    <node concept="37vLTw" id="5avE1b7nHQb" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6rx4kZDkyzy" resolve="myPlugins" />
                     </node>
                   </node>
-                  <node concept="3fqX7Q" id="1ROuiHUJyC" role="3clFbw">
-                    <node concept="2OqwBi" id="1ROuiHUJyD" role="3fr31v">
-                      <node concept="2ShNRf" id="1ROuiHUJyE" role="2Oq$k0">
-                        <node concept="1pGfFk" id="1ROuiHUJyF" role="2ShVmc">
-                          <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                          <node concept="37vLTw" id="1ROuiHUJyG" role="37wK5m">
-                            <ref role="3cqZAo" node="7lKcB_1uGKG" resolve="pluginLocation" />
-                          </node>
-                          <node concept="10M0yZ" id="7lKcB_1vatU" role="37wK5m">
-                            <ref role="3cqZAo" node="7lKcB_1v4$0" resolve="PLUGIN_DESCRIPTOR_LOCATION" />
-                            <ref role="1PxDUh" node="1ROuiHUyBT" resolve="PlatformPlugins" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="1ROuiHUJyI" role="2OqNvi">
-                        <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
-                      </node>
-                    </node>
-                  </node>
+                </node>
+                <node concept="3cpWs6" id="7lKcB_1uZak" role="3cqZAp">
+                  <node concept="Xjq3P" id="7lKcB_1v0NI" role="3cqZAk" />
                 </node>
               </node>
-              <node concept="3fqX7Q" id="1ROuiHUI7F" role="3clFbw">
-                <node concept="2OqwBi" id="1ROuiHUI7G" role="3fr31v">
-                  <node concept="2ShNRf" id="1ROuiHUI7H" role="2Oq$k0">
-                    <node concept="1pGfFk" id="1ROuiHUI7I" role="2ShVmc">
+              <node concept="3fqX7Q" id="1ROuiHUJyC" role="3clFbw">
+                <node concept="2OqwBi" id="1ROuiHUJyD" role="3fr31v">
+                  <node concept="2ShNRf" id="1ROuiHUJyE" role="2Oq$k0">
+                    <node concept="1pGfFk" id="1ROuiHUJyF" role="2ShVmc">
                       <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                      <node concept="37vLTw" id="1ROuiHUI7J" role="37wK5m">
+                      <node concept="37vLTw" id="1ROuiHUJyG" role="37wK5m">
                         <ref role="3cqZAo" node="7lKcB_1uGKG" resolve="pluginLocation" />
                       </node>
-                      <node concept="10M0yZ" id="7lKcB_1vatV" role="37wK5m">
-                        <ref role="3cqZAo" node="7lKcB_1v4$0" resolve="PLUGIN_DESCRIPTOR_LOCATION" />
+                      <node concept="10M0yZ" id="7lKcB_1vatU" role="37wK5m">
                         <ref role="1PxDUh" node="1ROuiHUyBT" resolve="PlatformPlugins" />
+                        <ref role="3cqZAo" node="7lKcB_1v4$0" resolve="PLUGIN_DESCRIPTOR_LOCATION" />
                       </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="1ROuiHUI7L" role="2OqNvi">
+                  <node concept="liA8E" id="1ROuiHUJyI" role="2OqNvi">
                     <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
                   </node>
                 </node>

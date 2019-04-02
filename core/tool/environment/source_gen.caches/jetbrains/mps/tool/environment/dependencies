@@ -71,7 +71,6 @@
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
-    <classNode dependClassName="jetbrains.mps.tool.common.PathManager" />
     <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.environment.PlatformPlugins" />
     <classNode dependClassName="jetbrains.mps.util.PathManager" />
