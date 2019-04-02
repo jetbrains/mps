@@ -3401,6 +3401,87 @@
       <node concept="3uibUv" id="1NiMOxizod8" role="3clF45">
         <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
       </node>
+      <node concept="2AHcQZ" id="1vtkyQdi8Oy" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+    </node>
+    <node concept="2YIFZL" id="1vtkyQdhXzr" role="jymVt">
+      <property role="TrG5h" value="isModelFullyLoaded" />
+      <node concept="37vLTG" id="1vtkyQdhYdY" role="3clF46">
+        <property role="TrG5h" value="model" />
+        <node concept="3uibUv" id="1vtkyQdhYgy" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+        </node>
+        <node concept="2AHcQZ" id="1vtkyQdi5Sj" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="1vtkyQdhXzu" role="3clF47">
+        <node concept="3SKdUt" id="1vtkyQdi59e" role="3cqZAp">
+          <node concept="3SKdUq" id="1vtkyQdi59g" role="3SKWNk">
+            <property role="3SKdUp" value=" call after loadModel to fully load model and check for errors" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1vtkyQdi5w2" role="3cqZAp">
+          <node concept="3clFbS" id="1vtkyQdi5w4" role="3clFbx">
+            <node concept="3cpWs6" id="1vtkyQdi5MJ" role="3cqZAp">
+              <node concept="3clFbT" id="1vtkyQdi5NL" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="1vtkyQdi5GJ" role="3clFbw">
+            <node concept="10Nm6u" id="1vtkyQdi5LD" role="3uHU7w" />
+            <node concept="37vLTw" id="1vtkyQdi5_e" role="3uHU7B">
+              <ref role="3cqZAo" node="1vtkyQdhYdY" resolve="model" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1JWxj3cJO4i" role="3cqZAp">
+          <node concept="2OqwBi" id="1JWxj3cJO4j" role="3clFbG">
+            <node concept="37vLTw" id="1JWxj3cJO4k" role="2Oq$k0">
+              <ref role="3cqZAo" node="1vtkyQdhYdY" resolve="model" />
+            </node>
+            <node concept="liA8E" id="1JWxj3cJO4l" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.load():void" resolve="load" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1vtkyQdi3dr" role="3cqZAp">
+          <node concept="1Wc70l" id="1vtkyQdi3Lu" role="3cqZAk">
+            <node concept="2OqwBi" id="1vtkyQdi3mP" role="3uHU7B">
+              <node concept="37vLTw" id="1vtkyQdi3mQ" role="2Oq$k0">
+                <ref role="3cqZAo" node="1vtkyQdhYdY" resolve="model" />
+              </node>
+              <node concept="liA8E" id="1vtkyQdi3mR" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SModel.isLoaded():boolean" resolve="isLoaded" />
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="1vtkyQdi4kM" role="3uHU7w">
+              <node concept="1eOMI4" id="1vtkyQdi4Hk" role="3fr31v">
+                <node concept="2OqwBi" id="1vtkyQdi4kO" role="1eOMHV">
+                  <node concept="2OqwBi" id="1vtkyQdi4kP" role="2Oq$k0">
+                    <node concept="2OqwBi" id="1vtkyQdi4kQ" role="2Oq$k0">
+                      <node concept="37vLTw" id="1vtkyQdi4kR" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1vtkyQdhYdY" resolve="model" />
+                      </node>
+                      <node concept="liA8E" id="1vtkyQdi4kS" role="2OqNvi">
+                        <ref role="37wK5l" to="mhbf:~SModel.getProblems():java.lang.Iterable" resolve="getProblems" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1vtkyQdi4kT" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~Iterable.iterator():java.util.Iterator" resolve="iterator" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1vtkyQdi4kU" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~Iterator.hasNext():boolean" resolve="hasNext" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="1vtkyQdhWQW" role="1B3o_S" />
+      <node concept="10P_77" id="1vtkyQdhXxP" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="1NiMOxiwPHW" role="jymVt" />
     <node concept="2YIFZL" id="1NiMOxiwVQ1" role="jymVt">

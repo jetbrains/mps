@@ -6418,15 +6418,36 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="7lfItRMJ2Vv" role="3cqZAp">
-          <node concept="2YIFZM" id="7lfItRMJ39Q" role="3cqZAk">
-            <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
-            <ref role="37wK5l" to="iho:1NiMOxiwPI2" resolve="loadModel" />
-            <node concept="37vLTw" id="7lfItRMJ3ji" role="37wK5m">
-              <ref role="3cqZAo" node="7lfItRMIPkT" resolve="bytes" />
+        <node concept="3cpWs8" id="1JWxj3cJIim" role="3cqZAp">
+          <node concept="3cpWsn" id="1JWxj3cJIin" role="3cpWs9">
+            <property role="TrG5h" value="model" />
+            <node concept="3uibUv" id="1JWxj3cJIil" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
             </node>
-            <node concept="37vLTw" id="7lfItRMJ3ym" role="37wK5m">
-              <ref role="3cqZAo" node="7lfItRMIPuU" resolve="ext" />
+            <node concept="2YIFZM" id="1JWxj3cJIio" role="33vP2m">
+              <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
+              <ref role="37wK5l" to="iho:1NiMOxiwPI2" resolve="loadModel" />
+              <node concept="37vLTw" id="1JWxj3cJIip" role="37wK5m">
+                <ref role="3cqZAo" node="7lfItRMIPkT" resolve="bytes" />
+              </node>
+              <node concept="37vLTw" id="1JWxj3cJIiq" role="37wK5m">
+                <ref role="3cqZAo" node="7lfItRMIPuU" resolve="ext" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7lfItRMJ2Vv" role="3cqZAp">
+          <node concept="3K4zz7" id="1vtkyQdiFBw" role="3cqZAk">
+            <node concept="37vLTw" id="1vtkyQdiGc5" role="3K4E3e">
+              <ref role="3cqZAo" node="1JWxj3cJIin" resolve="model" />
+            </node>
+            <node concept="10Nm6u" id="1vtkyQdiGDI" role="3K4GZi" />
+            <node concept="2YIFZM" id="1vtkyQdiEaD" role="3K4Cdx">
+              <ref role="37wK5l" to="iho:1vtkyQdhXzr" resolve="isModelFullyLoaded" />
+              <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
+              <node concept="37vLTw" id="1vtkyQdiEaE" role="37wK5m">
+                <ref role="3cqZAo" node="1JWxj3cJIin" resolve="model" />
+              </node>
             </node>
           </node>
         </node>

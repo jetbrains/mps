@@ -8,6 +8,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.persistence.ByteArrayInputSource;
 import java.util.Collections;
 import java.io.IOException;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vfs.IFile;
 import java.io.InputStream;
 import jetbrains.mps.util.ReadUtil;
@@ -20,7 +21,6 @@ import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.persistence.PersistenceVersionAware;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.module.SModuleId;
@@ -51,6 +51,7 @@ public class VCSPersistenceUtil {
     }
   }
 
+  @Nullable
   public static SModel loadModel(IFile file) {
     InputStream input = null;
     try {
@@ -68,6 +69,14 @@ public class VCSPersistenceUtil {
         }
       }
     }
+  }
+  public static boolean isModelFullyLoaded(@Nullable SModel model) {
+    //  call after loadModel to fully load model and check for errors 
+    if (model == null) {
+      return false;
+    }
+    model.load();
+    return model.isLoaded() && !((model.getProblems().iterator().hasNext()));
   }
 
   private static SModel loadFromOldMPSPersistence(final byte[] content) {
