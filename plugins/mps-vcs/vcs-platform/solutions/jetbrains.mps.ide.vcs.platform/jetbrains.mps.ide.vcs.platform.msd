@@ -16,7 +16,7 @@
     <facet pluginId="jetbrains.mps.vcs" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${mps_home}/plugins/vcs/lib/vcs-platform.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-vcs/lib/vcs-platform.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

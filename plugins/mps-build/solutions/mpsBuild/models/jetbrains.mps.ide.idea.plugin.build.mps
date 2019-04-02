@@ -1835,7 +1835,7 @@
               <node concept="2Ry0Ak" id="3SChJ9XyqVB" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="3SChJ9XyqVG" role="2Ry0An">
-                  <property role="2Ry0Am" value="vcs" />
+                  <property role="2Ry0Am" value="mps-vcs" />
                   <node concept="2Ry0Ak" id="3SChJ9XyqVL" role="2Ry0An">
                     <property role="2Ry0Am" value="META-INF" />
                     <node concept="2Ry0Ak" id="3SChJ9XyqVQ" role="2Ry0An">

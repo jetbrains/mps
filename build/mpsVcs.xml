@@ -51,14 +51,14 @@
     <mkdir dir="${build.layout}/mps-vcs" />
     <mkdir dir="${build.layout}/mps-vcs/META-INF" />
     <copy todir="${build.layout}/mps-vcs/META-INF">
-      <fileset file="${mps_home}/plugins/vcs/META-INF/plugin.xml" />
+      <fileset file="${mps_home}/plugins/mps-vcs/META-INF/plugin.xml" />
     </copy>
     <mkdir dir="${build.layout}/mps-vcs/META-INF" />
     <copy todir="${build.layout}/mps-vcs/META-INF">
-      <fileset file="${mps_home}/plugins/vcs/META-INF/MPSVcs.xml" />
+      <fileset file="${mps_home}/plugins/mps-vcs/META-INF/MPSVcs.xml" />
     </copy>
     <copy todir="${build.layout}/mps-vcs/META-INF">
-      <fileset file="${mps_home}/plugins/vcs/META-INF/langDesignOptional.xml" />
+      <fileset file="${mps_home}/plugins/mps-vcs/META-INF/langDesignOptional.xml" />
     </copy>
     <mkdir dir="${build.layout}/mps-vcs/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints.jar" />
@@ -96,7 +96,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-vcs/languages/jetbrains.mps.vcs.mergehints.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" />
-      <fileset dir="${mps_home}/plugins/vcs/languages/mergehints/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints-generator.jar" />
@@ -128,28 +128,28 @@
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-vcs-languages-mergehints-generator-template">
-      <fileset dir="${mps_home}/plugins/vcs/languages/mergehints/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-languages-mergehints-generator-template">
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-vcs-languages-mergehints-languageModels">
-      <fileset dir="${mps_home}/plugins/vcs/languages/mergehints/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-languages-mergehints-languageModels">
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-vcs/languages/jetbrains.mps.vcs.mergehints-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/vcs/languages/mergehints/generator/source_gen">
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <fileset dir="${mps_home}/plugins/vcs/languages/mergehints/source_gen">
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/plugins/vcs/languages/mergehints/jetbrains.mps.vcs.mergehints.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-vcs-languages-mergehints-generator-template" prefix="module/generator/template" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-vcs-languages-mergehints-languageModels" prefix="module/languageModels" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/languages/mergehints/jetbrains.mps.vcs.mergehints.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-languages-mergehints-generator-template" prefix="module/generator/template" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-languages-mergehints-languageModels" prefix="module/languageModels" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.aspect.vcs.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.aspect.vcs.jar/META-INF" />
@@ -160,7 +160,7 @@
       </module>
     </echoxml>
     <jar destfile="${build.layout}/mps-vcs/languages/jetbrains.mps.devkit.aspect.vcs.jar" duplicate="preserve">
-      <zipfileset file="${mps_home}/plugins/vcs/languages/jetbrains.mps.devkit.aspect.vcs/jetbrains.mps.devkit.aspect.vcs.devkit" prefix="module" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/languages/jetbrains.mps.devkit.aspect.vcs/jetbrains.mps.devkit.aspect.vcs.devkit" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.devkit.aspect.vcs.jar" />
     </jar>
     <mkdir dir="${build.layout}/mps-vcs/languages" />
@@ -195,22 +195,22 @@
       </module>
     </echoxml>
     <jar destfile="${build.layout}/mps-vcs/lib/jetbrains.mps.ide.vcs.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/vcs" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/plugins/vcs/solutions/jetbrains.mps.ide.vcs/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/mps-vcs" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.vcs.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-vcs-solutions-jetbrains.mps.ide.vcs-models">
-      <fileset dir="${mps_home}/plugins/vcs/solutions/jetbrains.mps.ide.vcs/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-solutions-jetbrains.mps.ide.vcs-models">
+      <fileset dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-vcs/lib/jetbrains.mps.ide.vcs-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/vcs/solutions/jetbrains.mps.ide.vcs/source_gen">
+      <fileset dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/plugins/vcs/solutions/jetbrains.mps.ide.vcs/jetbrains.mps.ide.vcs.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-vcs-solutions-jetbrains.mps.ide.vcs-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/jetbrains.mps.ide.vcs.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-solutions-jetbrains.mps.ide.vcs-models" prefix="module/models" />
     </jar>
     <copy todir="${build.layout}/mps-vcs/lib">
       <fileset dir="${artifacts.mpsVcsStandaloneJar}/lib" />
@@ -361,9 +361,9 @@
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
       <library file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
       <chunk>
-        <module file="${mps_home}/plugins/vcs/languages/jetbrains.mps.devkit.aspect.vcs/jetbrains.mps.devkit.aspect.vcs.devkit" />
-        <module file="${mps_home}/plugins/vcs/solutions/jetbrains.mps.ide.vcs/jetbrains.mps.ide.vcs.msd" />
-        <module file="${mps_home}/plugins/vcs/languages/mergehints/jetbrains.mps.vcs.mergehints.mpl" />
+        <module file="${mps_home}/plugins/mps-vcs/languages/jetbrains.mps.devkit.aspect.vcs/jetbrains.mps.devkit.aspect.vcs.devkit" />
+        <module file="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/jetbrains.mps.ide.vcs.msd" />
+        <module file="${mps_home}/plugins/mps-vcs/languages/mergehints/jetbrains.mps.vcs.mergehints.mpl" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />
@@ -438,12 +438,12 @@
   </target>
   
   <target name="java.compile.jetbrains.mps.vcs.mergehints" depends="fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/vcs/languages/mergehints/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-vcs/languages/mergehints/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/vcs/languages/mergehints/source_gen" />
+        <path location="${mps_home}/plugins/mps-vcs/languages/mergehints/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
@@ -508,17 +508,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints">
-      <fileset dir="${mps_home}/plugins/vcs/languages/mergehints/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.vcs.mergehints#1277106018273766025" depends="java.compile.jetbrains.mps.vcs.mergehints, fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/vcs/languages/mergehints/generator/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/vcs/languages/mergehints/generator/source_gen" />
+        <path location="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
@@ -561,13 +561,13 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025">
-      <fileset dir="${mps_home}/plugins/vcs/languages/mergehints/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="cleanSources">
-    <delete dir="${mps_home}/plugins/vcs/solutions/jetbrains.mps.ide.vcs/source_gen" />
-    <delete dir="${mps_home}/plugins/vcs/languages/mergehints/source_gen" />
-    <delete dir="${mps_home}/plugins/vcs/languages/mergehints/generator/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-vcs/languages/mergehints/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/source_gen" />
   </target>
 </project>

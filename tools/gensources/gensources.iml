@@ -698,15 +698,15 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/testModules/testSubtyping/languages/testSubtypingB/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/testModules/testSubtyping/solutions/testSubtypingTest/classes_gen" />
     </content>
-    <content url="file://$MODULE_DIR$/../../plugins/vcs/languages">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/vcs/languages/mergehints/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/vcs/languages/mergehints/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/vcs/languages/mergehints/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/vcs/languages/mergehints/generator/classes_gen" />
+    <content url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/generator/classes_gen" />
     </content>
-    <content url="file://$MODULE_DIR$/../../plugins/vcs/vcs-platform/languages">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/vcs/vcs-platform/languages/modelmetadata/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/vcs/vcs-platform/languages/modelmetadata/classes_gen" />
+    <content url="file://$MODULE_DIR$/../../plugins/mps-vcs/vcs-platform/languages">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/vcs-platform/languages/modelmetadata/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../samples">
       <sourceFolder url="file://$MODULE_DIR$/../../samples/agreement/agreementLanguage/generator/source_gen" isTestSource="false" />

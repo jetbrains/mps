@@ -39,7 +39,7 @@
     <orderEntry type="module" module-name="environment" />
     <orderEntry type="module" module-name="editorlang-runtime" scope="TEST" />
     <orderEntry type="module" module-name="persistence" scope="TEST" />
-    <orderEntry type="module" module-name="vcs" scope="TEST" />
+    <orderEntry type="module" module-name="mps-vcs" scope="TEST" />
     <orderEntry type="module" module-name="kernel-resources" scope="TEST" />
     <orderEntry type="library" name="PicoContainer" level="project" />
     <orderEntry type="library" name="Log4j" level="project" />

@@ -38,7 +38,7 @@ teamcity-info.xml
 # * Downloadable plugin libraries
 /plugins/debugger-api/lib
 /plugins/debugger-java/lib
-/plugins/vcs/lib/
+/plugins/mps-vcs/lib/
 /plugins/mpsjava/lib/
 /plugins/mps-java-workbench/lib/
 /plugins/execution-languages/lib

@@ -85,8 +85,8 @@ public class RebuildIdeaPluginTestCase extends MpsJpsBuildTestCaseWithEnvironmen
     // 1) pre-compile them into jars in the same way as core
     // 2) make IdeaPlugin and mps one same project, and then don't do pre-building at all
     // (to be precise, pre-built only what's in gensources, but not what's compiled in idea)
-    copyToProject("../plugins/vcs/common/source_gen", "plugins/vcs/common/source_gen");
-    copyToProject("../plugins/vcs/common/source", "plugins/vcs/common/source");
+    copyToProject("../plugins/mps-vcs/common/source_gen", "plugins/mps-vcs/common/source_gen");
+    copyToProject("../plugins/mps-vcs/common/source", "plugins/mps-vcs/common/source");
 
     loadProject(projectDir);
     setUpJdk();

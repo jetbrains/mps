@@ -116,7 +116,7 @@
     <orderEntry type="module" module-name="typesystemIntegration" />
     <orderEntry type="module" module-name="typesystemUi" />
     <orderEntry type="module" module-name="util-core" />
-    <orderEntry type="module" module-name="vcs" />
+    <orderEntry type="module" module-name="mps-vcs" />
     <orderEntry type="module" module-name="vcs-core" />
     <orderEntry type="module" module-name="vcs-platform" />
   </component>
