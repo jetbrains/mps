@@ -1014,6 +1014,26 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3clFbF" id="5avE1b7nHQ2" role="3cqZAp">
+                      <node concept="2OqwBi" id="5avE1b7nHQ3" role="3clFbG">
+                        <node concept="TSZUe" id="5avE1b7nHQ4" role="2OqNvi">
+                          <node concept="2ShNRf" id="5avE1b7nHQ5" role="25WWJ7">
+                            <node concept="1pGfFk" id="5avE1b7nHQ6" role="2ShVmc">
+                              <ref role="37wK5l" to="asz6:4OPNMy23eT$" resolve="PluginData" />
+                              <node concept="37vLTw" id="5avE1b7nKry" role="37wK5m">
+                                <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
+                              </node>
+                              <node concept="37vLTw" id="5avE1b7nHQa" role="37wK5m">
+                                <ref role="3cqZAo" node="3FVfMMI0_S2" resolve="id" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="5avE1b7nHQb" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6rx4kZDkyzy" resolve="myPlugins" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3cpWs6" id="7lKcB_1uZak" role="3cqZAp">
                       <node concept="Xjq3P" id="7lKcB_1v0NI" role="3cqZAk" />
                     </node>

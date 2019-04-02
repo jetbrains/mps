@@ -81,6 +81,7 @@ public class EnvironmentConfig {
           if (LOG.isDebugEnabled()) {
             LOG.debug(String.format("No platform plugin descriptor (plugin.xml) detected under %s", path));
           }
+          SetSequence.fromSet(myPlugins).addElement(new PluginData(path, id));
           return this;
         }
       }
