@@ -47,9 +47,6 @@
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
-      <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
-        <child id="1070534760952" name="componentType" index="10Q1$1" />
-      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -1495,9 +1492,6 @@
           <node concept="1ps_y7" id="25JZ4W_7J3M" role="lGtFl">
             <node concept="1ps_xZ" id="25JZ4W_7J3L" role="1ps_xO">
               <property role="TrG5h" value="closure" />
-              <node concept="3uibUv" id="3umvbTCB2Wj" role="1ps_xK">
-                <ref role="3uigEE" to="tken:1jjYQYSjid_" resolve="MPSModulesClosure" />
-              </node>
               <node concept="2jfdEK" id="3umvbTCAhQC" role="1ps_xN">
                 <node concept="3clFbS" id="3umvbTCAhQE" role="2VODD2">
                   <node concept="3SKdUt" id="6p_fvFaALm9" role="3cqZAp">
@@ -1558,13 +1552,8 @@
                 </node>
               </node>
             </node>
-          </node>
-          <node concept="1ps_y7" id="25JZ4W_7J3Q" role="lGtFl">
             <node concept="1ps_xZ" id="25JZ4W_7J3P" role="1ps_xO">
               <property role="TrG5h" value="requiredPlugins" />
-              <node concept="10Q1$e" id="3umvbTCARch" role="1ps_xK">
-                <node concept="17QB3L" id="3umvbTCAMoQ" role="10Q1$1" />
-              </node>
               <node concept="2jfdEK" id="3umvbTCAhz8" role="1ps_xN">
                 <node concept="3clFbS" id="3umvbTCAhza" role="2VODD2">
                   <node concept="3cpWs8" id="5VKiljKNLl" role="3cqZAp">
