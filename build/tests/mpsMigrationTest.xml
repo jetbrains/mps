@@ -74,7 +74,7 @@
 
     <migrate project="${project.migrationTaskPlugin}">
       <macro name="mps_home" path="${mps_build_home}"/>
-      <plugin path="${mps_build_home}/plugins/http-support/" id="jetbrains.mps.ide.httpsupport"/>
+      <plugin path="${mps_build_home}/plugins/mps-httpsupport/" id="jetbrains.mps.ide.httpsupport"/>
     </migrate>
 
     <junit fork="true" dir="${mps_build_home}" showoutput="true">
