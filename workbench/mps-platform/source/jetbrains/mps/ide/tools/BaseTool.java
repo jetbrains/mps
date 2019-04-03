@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -292,10 +292,6 @@ public abstract class BaseTool {
     if (myComponent != null) {
       addContent(myComponent, "", null, false);
     }
-
-    toolWindow.setToHideOnEmptyContent(true);
-    toolWindow.installWatcher(toolWindow.getContentManager());
-    setAvailable(isInitiallyAvailable());
   }
 
   /**
@@ -386,14 +382,14 @@ public abstract class BaseTool {
   }
 
   protected Content addContent(JComponent component, @NotNull String name, Icon icon, boolean isLockable) {
-    Content content = new ContentFactoryImpl().createContent(component, name, isLockable);
+    ContentManager contentManager = getContentManager();
+    Content content = contentManager.getFactory().createContent(component, name, isLockable);
     if (icon != null) {
       content.putUserData(ToolWindow.SHOW_CONTENT_ICON, Boolean.TRUE);
       content.setIcon(icon);
     } else {
       content.setIcon(myIcon);
     }
-    ContentManager contentManager = getContentManager();
     contentManager.addContent(content);
     return content;
   }
