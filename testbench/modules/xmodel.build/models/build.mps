@@ -101,9 +101,6 @@
         <property id="322010710375892619" name="uuid" index="3LESm3" />
         <child id="322010710375956261" name="path" index="3LF7KH" />
       </concept>
-      <concept id="322010710376037449" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnDevKit" flags="ng" index="3LFrX1">
-        <reference id="322010710376037450" name="devkit" index="3LFrX2" />
-      </concept>
       <concept id="7259033139236285166" name="jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency" flags="nn" index="1SiIV0">
         <child id="7259033139236285167" name="dependency" index="1SiIV1" />
       </concept>
@@ -336,9 +333,6 @@
           <property role="3bR36h" value="false" />
           <ref role="3bR37D" node="3Af5TgnBvrs" resolve="jetbrains.mps.generator.xmodel.test" />
         </node>
-      </node>
-      <node concept="3LFrX1" id="3Af5TgnEDtK" role="3bR37C">
-        <ref role="3LFrX2" node="3Af5TgnBvrX" resolve="jetbrains.mps.generator.xmodel-sample" />
       </node>
       <node concept="1SiIV0" id="5kOge16Ar2c" role="3bR37C">
         <node concept="3bR9La" id="5kOge16Ar2d" role="1SiIV1">
