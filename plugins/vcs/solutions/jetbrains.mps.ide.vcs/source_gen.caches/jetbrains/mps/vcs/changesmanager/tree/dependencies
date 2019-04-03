@@ -151,7 +151,6 @@
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMap" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapListener" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport" />
-    <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.TreeNodeFeatureExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.features.Feature" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.features.ModelFeature" />
@@ -175,13 +174,10 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory">
     <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="java.util.HashMap" />
-    <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree" />
     <classNode dependClassName="jetbrains.mps.ide.hierarchy.AbstractHierarchyTree" />
     <classNode dependClassName="jetbrains.mps.ide.projectPane.logicalview.ProjectTree" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTree" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.HierarchyFeatureExtractor" />
@@ -189,7 +185,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighter" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.UsagesTreeFeatureExtractor" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="com.intellij.openapi.components.AbstractProjectComponent" />
+    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.tree.TreeNodeFeatureExtractor">
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTreeNode" />

@@ -62,10 +62,10 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 public class TreeHighlighter implements TreeMessageOwner {
   private static final Logger LOG = LogManager.getLogger(TreeHighlighter.class);
   private Map<FileStatus, TreeMessage> myTreeMessages = MapSequence.fromMap(new HashMap<FileStatus, TreeMessage>());
-  private CurrentDifferenceRegistry myRegistry;
+  private final CurrentDifferenceRegistry myRegistry;
   private SimpleCommandQueue myCommandQueue;
   private FeatureForestMap<ModelChange> myMap;
-  private MPSTree myTree;
+  private final MPSTree myTree;
   private TreeNodeFeatureExtractor myFeatureExtractor;
   private boolean myInitialized;
   private TreeHighlighter.MyTreeNodeListener myTreeNodeListener = new TreeHighlighter.MyTreeNodeListener();
@@ -74,6 +74,7 @@ public class TreeHighlighter implements TreeMessageOwner {
   private TreeHighlighter.MyModelDisposeListener myGlobalModelListener;
   private final TreeHighlighter.FeaturesHolder myFeaturesHolder = new TreeHighlighter.FeaturesHolder();
   private MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null);
+
   public TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal) {
     myRegistry = registry;
     myCommandQueue = registry.getCommandQueue();
@@ -371,9 +372,10 @@ public class TreeHighlighter implements TreeMessageOwner {
     }
     @Override
     public void beforeTreeDisposed(MPSTree tree) {
-      TreeHighlighterFactory.getInstance(myRegistry.getProject()).unhighlightTree(myTree);
+      TreeHighlighter.this.dispose();
     }
   }
+
   private class MyFeatureForestMapListener implements FeatureForestMapListener {
     public MyFeatureForestMapListener() {
     }

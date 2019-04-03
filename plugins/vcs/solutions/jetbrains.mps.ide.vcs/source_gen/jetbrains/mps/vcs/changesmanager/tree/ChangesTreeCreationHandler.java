@@ -5,11 +5,15 @@ package jetbrains.mps.vcs.changesmanager.tree;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 
+/**
+ * This is per-project extension to highlight vcs changes in a tree
+ */
 public class ChangesTreeCreationHandler extends TreeHighlighterExtension {
   private TreeHighlighterFactory myTreesHighlighter;
   public ChangesTreeCreationHandler(TreeHighlighterFactory treesHighlighter) {
     myTreesHighlighter = treesHighlighter;
   }
+
   @Override
   protected void attach(MPSTree tree) {
     myTreesHighlighter.highlightTreeIfNeeded(tree);
