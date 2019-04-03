@@ -61,8 +61,8 @@ cd "$OLDPWD"
 # ---------------------------------------------------------------------
 if [ -n "$MPS_JDK" -a -x "$MPS_JDK/bin/java" ]; then
   JDK="$MPS_JDK"
-elif [ -s "$HOME/.MPS2019.1/config/mps.jdk" ]; then
-  JDK=`"$CAT" $HOME/.MPS2019.1/config/mps.jdk`
+elif [ -s "$HOME/.MPS2019.2/config/mps.jdk" ]; then
+  JDK=`"$CAT" $HOME/.MPS2019.2/config/mps.jdk`
   if [ ! -d "$JDK" ]; then
     JDK="$IDE_HOME/$JDK"
   fi
@@ -143,9 +143,9 @@ if [ -n "$IDEA_VM_OPTIONS" -a -r "$IDEA_VM_OPTIONS" ]; then
 elif [ -r "$IDE_HOME.vmoptions" ]; then
   # Toolbox
   VM_OPTIONS_FILE="$IDE_HOME.vmoptions"
-elif [ -r "$HOME/.MPS2019.1/config/mps$BITS.vmoptions" ]; then
+elif [ -r "$HOME/.MPS2019.2/config/mps$BITS.vmoptions" ]; then
   # user-overridden
-  VM_OPTIONS_FILE="$HOME/.MPS2019.1/config/mps$BITS.vmoptions"
+  VM_OPTIONS_FILE="$HOME/.MPS2019.2/config/mps$BITS.vmoptions"
 elif [ -r "$IDE_BIN_HOME/mps$BITS.vmoptions" ]; then
   # default, standard installation
   VM_OPTIONS_FILE="$IDE_BIN_HOME/mps$BITS.vmoptions"
@@ -167,7 +167,7 @@ if [ "$IS_EAP" = "true" ]; then
   OS_NAME=`echo "$OS_TYPE" | "$TR" '[:upper:]' '[:lower:]'`
   AGENT_LIB="yjpagent-$OS_NAME$BITS"
   if [ -r "$IDE_BIN_HOME/lib$AGENT_LIB.so" ]; then
-    AGENT="-agentlib:$AGENT_LIB=disablealloc,delay=10000,sessionname=MPS2019.1"
+    AGENT="-agentlib:$AGENT_LIB=disablealloc,delay=10000,sessionname=MPS2019.2"
   fi
 fi
 
@@ -191,7 +191,7 @@ fi
 # ---------------------------------------------------------------------
 IFS="$(printf '\n\t')"
 MAIN_CLASS=jetbrains.mps.Launcher
-IDEA_PATHS_SELECTOR=MPS2019.1
+IDEA_PATHS_SELECTOR=MPS2019.2
 LD_LIBRARY_PATH="$IDE_BIN_HOME:$LD_LIBRARY_PATH" "$JAVA_BIN" \
   ${AGENT} \
   -classpath "$CLASSPATH" \

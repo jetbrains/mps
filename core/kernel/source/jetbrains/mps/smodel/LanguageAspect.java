@@ -87,7 +87,7 @@ public enum LanguageAspect {
   MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "migrations.html");
 
   //TODO must be changed for each major/minor version release
-  public static final String CONFLUENCE_BASE = "https://www.jetbrains.com/help/mps/2019.1/";
+  public static final String CONFLUENCE_BASE = "https://www.jetbrains.com/help/mps/2019.2/";
 
   private String myName;
   private final SModuleReference myMainLang;

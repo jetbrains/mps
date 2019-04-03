@@ -379,6 +379,7 @@
       <concept id="7753544965996377997" name="jetbrains.mps.build.mps.structure.BuildMps_Branding" flags="ng" index="1zClus">
         <property id="3497141547781541445" name="minor" index="2OjLBK" />
         <property id="3497141547781541444" name="major" index="2OjLBL" />
+        <property id="3497141547781541446" name="eap" index="2OjLBN" />
         <child id="6845119683729424406" name="customXmlElement" index="27hc03" />
         <child id="6845119683729337285" name="progressY" index="27hAJg" />
         <child id="6845119683729294884" name="progressColor" index="27hGoL" />
@@ -2412,7 +2413,7 @@
       <node concept="aVJcg" id="5HVSRHdVf2e" role="aVJcv">
         <node concept="NbPM2" id="5HVSRHdVf2f" role="aVJcq">
           <node concept="3Mxwew" id="5HVSRHdVf2g" role="3MwsjC">
-            <property role="3MwjfP" value="2019.1" />
+            <property role="3MwjfP" value="2019.2 EAP" />
           </node>
         </node>
       </node>
@@ -18924,9 +18925,10 @@
       <ref role="1l3spb" node="3E9C6pCXzPk" resolve="mpsConsolePlugin" />
     </node>
     <node concept="1zClus" id="6Iq8148fw_a" role="3989C9">
-      <property role="2OjLBK" value="1" />
+      <property role="2OjLBK" value="2" />
       <property role="TrG5h" value="MPS" />
       <property role="2OjLBL" value="2019" />
+      <property role="2OjLBN" value="true" />
       <node concept="NbPM2" id="2FTyjkjSqva" role="2gocG4">
         <node concept="3Mxwew" id="2FTyjkjSqv9" role="3MwsjC">
           <property role="3MwjfP" value="117" />
@@ -18977,12 +18979,12 @@
       <node concept="3$GE4K" id="57dcfYPx6EW" role="3$GE96">
         <node concept="3_J27D" id="57dcfYPx6EX" role="3$GE4B">
           <node concept="3Mxwew" id="57dcfYPx6F4" role="3MwsjC">
-            <property role="3MwjfP" value="https://confluence.jetbrains.com/display/MPSD20191/Default+Keymap+Reference" />
+            <property role="3MwjfP" value="https://confluence.jetbrains.com/display/MPSD20192/Default+Keymap+Reference" />
           </node>
         </node>
         <node concept="3_J27D" id="57dcfYPx6EY" role="3$GE4G">
           <node concept="3Mxwew" id="57dcfYPx6F2" role="3MwsjC">
-            <property role="3MwjfP" value="https://confluence.jetbrains.com/display/MPSD20191/Default+Keymap+Reference" />
+            <property role="3MwjfP" value="https://confluence.jetbrains.com/display/MPSD20192/Default+Keymap+Reference" />
           </node>
         </node>
       </node>
@@ -19095,7 +19097,7 @@
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
           <node concept="3Mxwew" id="6Iq8148f_YX" role="3MwsjC">
-            <property role="3MwjfP" value="MPS191EAP" />
+            <property role="3MwjfP" value="MPS192EAP" />
           </node>
         </node>
       </node>
@@ -19343,7 +19345,7 @@
             </node>
           </node>
           <node concept="1zDrgl" id="6Iq8148gFCu" role="39821P">
-            <ref role="1zDrgn" node="6Iq8148fw_a" resolve="JetBrains MPS 2019.1" />
+            <ref role="1zDrgn" node="6Iq8148fw_a" resolve="JetBrains MPS 2019.2" />
           </node>
           <node concept="28jJK3" id="5gyid2dEaaf" role="39821P">
             <node concept="55IIr" id="5gyid2dEaag" role="28jJRO">
@@ -26688,7 +26690,7 @@
     <property role="TrG5h" value="mps" />
     <property role="3GE5qa" value="ide.data" />
     <property role="26EafI" value="bin" />
-    <ref role="1_kbm$" node="6Iq8148fw_a" resolve="JetBrains MPS 2019.1" />
+    <ref role="1_kbm$" node="6Iq8148fw_a" resolve="JetBrains MPS 2019.2" />
     <node concept="26Ea6D" id="2lwFGYOW7EY" role="2hID6k">
       <property role="26Ea6C" value="-client -Xss1024k -ea -Xmx2048m -XX:NewSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xverify:none" />
     </node>
