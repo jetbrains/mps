@@ -73,7 +73,7 @@ public class TreeHighlighter implements TreeMessageOwner {
   private TreeHighlighter.MyFileStatusListener myFileStatusListener = new TreeHighlighter.MyFileStatusListener();
   private TreeHighlighter.MyModelDisposeListener myGlobalModelListener;
   private final TreeHighlighter.FeaturesHolder myFeaturesHolder = new TreeHighlighter.FeaturesHolder();
-  private MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null);
+  private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null);
 
   public TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal) {
     myRegistry = registry;
@@ -84,6 +84,9 @@ public class TreeHighlighter implements TreeMessageOwner {
     if (removeNodesOnModelDisposal) {
       myGlobalModelListener = new TreeHighlighter.MyModelDisposeListener();
     }
+    // given cycle queue(Update), update.run-> queue(Update), it's vital not to allow pass-through model of MergingUpdateQueue, 
+    // otherwise we risk StackOverflowException, see MPS-29973 
+    myQueue.setPassThrough(false);
   }
 
   public synchronized void init() {
@@ -288,6 +291,7 @@ public class TreeHighlighter implements TreeMessageOwner {
     }
   };
   private void rehighlightAllFeaturesLater() {
+    assert !(myQueue.isPassThrough()) : "You are about to face StackOverflowException";
     myQueue.queue(rehighlightAllFeaturesUpdate);
   }
 

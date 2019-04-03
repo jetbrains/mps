@@ -209,6 +209,7 @@
       </concept>
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
+        <child id="1160998916832" name="message" index="1gVpfI" />
       </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
@@ -2443,6 +2444,7 @@
     </node>
     <node concept="312cEg" id="1_HLebvhvzm" role="jymVt">
       <property role="TrG5h" value="myQueue" />
+      <property role="3TUv4t" value="true" />
       <node concept="2ShNRf" id="1_HLebvhzjE" role="33vP2m">
         <node concept="1pGfFk" id="1_HLebvhFYT" role="2ShVmc">
           <ref role="37wK5l" to="t335:~MergingUpdateQueue.&lt;init&gt;(java.lang.String,int,boolean,javax.swing.JComponent)" resolve="MergingUpdateQueue" />
@@ -2545,6 +2547,27 @@
           </node>
           <node concept="37vLTw" id="2BHiRxgm6n3" role="3clFbw">
             <ref role="3cqZAo" node="1OS8OtPz6xU" resolve="removeNodesOnModelDisposal" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="63ipUBXx1Do" role="3cqZAp">
+          <node concept="3SKdUq" id="63ipUBXx1Dq" role="3SKWNk">
+            <property role="3SKdUp" value="given cycle queue(Update), update.run-&gt; queue(Update), it's vital not to allow pass-through model of MergingUpdateQueue," />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="63ipUBXx2ct" role="3cqZAp">
+          <node concept="3SKdUq" id="63ipUBXx2cv" role="3SKWNk">
+            <property role="3SKdUp" value="otherwise we risk StackOverflowException, see MPS-29973" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="63ipUBXwZUG" role="3cqZAp">
+          <node concept="2OqwBi" id="63ipUBXx0mr" role="3clFbG">
+            <node concept="37vLTw" id="63ipUBXwZUE" role="2Oq$k0">
+              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+            </node>
+            <node concept="liA8E" id="63ipUBXx0GX" role="2OqNvi">
+              <ref role="37wK5l" to="t335:~MergingUpdateQueue.setPassThrough(boolean)" resolve="setPassThrough" />
+              <node concept="3clFbT" id="63ipUBXx0JQ" role="37wK5m" />
+            </node>
           </node>
         </node>
       </node>
@@ -4131,6 +4154,21 @@
       <node concept="3Tm6S6" id="1_HLebvhK8D" role="1B3o_S" />
       <node concept="3cqZAl" id="1_HLebvhIoE" role="3clF45" />
       <node concept="3clFbS" id="1_HLebvhIoG" role="3clF47">
+        <node concept="1gVbGN" id="63ipUBXwXyL" role="3cqZAp">
+          <node concept="3fqX7Q" id="63ipUBXwXBp" role="1gVkn0">
+            <node concept="2OqwBi" id="63ipUBXwY45" role="3fr31v">
+              <node concept="37vLTw" id="63ipUBXwXGX" role="2Oq$k0">
+                <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+              </node>
+              <node concept="liA8E" id="63ipUBXwYqv" role="2OqNvi">
+                <ref role="37wK5l" to="t335:~MergingUpdateQueue.isPassThrough()" resolve="isPassThrough" />
+              </node>
+            </node>
+          </node>
+          <node concept="Xl_RD" id="63ipUBXwZwS" role="1gVpfI">
+            <property role="Xl_RC" value="You are about to face StackOverflowException" />
+          </node>
+        </node>
         <node concept="3clFbF" id="1_HLebviCIv" role="3cqZAp">
           <node concept="2OqwBi" id="1_HLebviEjn" role="3clFbG">
             <node concept="liA8E" id="1_HLebviFTi" role="2OqNvi">
