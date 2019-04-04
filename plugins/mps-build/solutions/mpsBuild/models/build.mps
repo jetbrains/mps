@@ -33685,6 +33685,7 @@
     </node>
     <node concept="m$_wf" id="5lGJ4TajoV9" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.migration.workbench" />
+      <property role="1NdglO" value="true" />
       <node concept="m$_yB" id="5lGJ4Tajp8z" role="m$_yh">
         <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="5lGJ4Tajp1p" resolve="jetbrains.mps.migration.component" />
@@ -33712,15 +33713,6 @@
       <node concept="2iUeEo" id="5lGJ4TajoVT" role="2iVFfd">
         <property role="2iUeEt" value="JetBrains" />
         <property role="2iUeEu" value="http://www.jetbrains.com/mps/" />
-      </node>
-      <node concept="398BVA" id="5lGJ4TajoXk" role="I30fb">
-        <ref role="398BVh" node="5lGJ4TajoX9" resolve="plugin_home" />
-        <node concept="2Ry0Ak" id="5lGJ4TajoXq" role="iGT6I">
-          <property role="2Ry0Am" value="META-INF" />
-          <node concept="2Ry0Ak" id="5lGJ4TajoXv" role="2Ry0An">
-            <property role="2Ry0Am" value="plugin.xml" />
-          </node>
-        </node>
       </node>
       <node concept="m$_yC" id="5lGJ4Tajp9w" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
@@ -33905,8 +33897,8 @@
                   <property role="2Ry0Am" value="mps-migration" />
                   <node concept="2Ry0Ak" id="1d6huufKSWn" role="2Ry0An">
                     <property role="2Ry0Am" value="META-INF" />
-                    <node concept="2Ry0Ak" id="6prxl$ztH$T" role="2Ry0An">
-                      <property role="2Ry0Am" value="pluginBaseDispatch.xml" />
+                    <node concept="2Ry0Ak" id="7Uv5YRSTwp7" role="2Ry0An">
+                      <property role="2Ry0Am" value="plugin.xml" />
                     </node>
                   </node>
                 </node>
