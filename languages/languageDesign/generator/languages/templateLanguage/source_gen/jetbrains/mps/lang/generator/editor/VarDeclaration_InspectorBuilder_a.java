@@ -23,6 +23,14 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
+import jetbrains.mps.nodeEditor.cells.ModelAccessor;
+import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.util.EqualUtil;
+import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import jetbrains.mps.lang.generator.editor.Styles_StyleSheet.CommentStyleClass;
 
 /*package*/ class VarDeclaration_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -124,8 +132,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       getCellFactory().pushCellContext();
       getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type")));
       try {
-        EditorCell editorCell = super.createEmptyCell();
-        editorCell.setCellId("empty_type");
+        EditorCell editorCell = createReadOnlyModelAccessor_0();
         installCellInfo(null, editorCell, true);
         setCellContext(editorCell);
         return editorCell;
@@ -133,8 +140,25 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
         getCellFactory().popCellContext();
       }
     }
-    protected String getNoTargetText() {
-      return "Object";
+    private EditorCell createReadOnlyModelAccessor_0() {
+      EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
+        public String getText() {
+          return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypeChecker.getInstance().getTypeOf(SLinkOperations.getTarget(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value"))));
+        }
+        public void setText(String s) {
+        }
+        public boolean isValidText(String s) {
+          return EqualUtil.equals(s, getText());
+        }
+      }, myNode);
+      editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
+      editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
+      editorCell.setCellId("ReadOnlyModelAccessor_644mng_0");
+      Style style = new StyleImpl();
+      new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.EDITABLE, false);
+      editorCell.getStyle().putAll(style);
+      return editorCell;
     }
   }
   private EditorCell createCollection_2() {
