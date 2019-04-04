@@ -60,18 +60,13 @@ import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 
   private static String shortenName(String longName) {
     if (longName != null) {
-      String[] strings = longName.split(" ");
-      if (strings.length > 1) {
-        // Middle name check: Vasya S. Pupkin 
-        return (strings[1].length() < 3 && strings.length > 2 && strings[2].length() > 1 ? strings[2] : strings[1]);
+      int space = longName.lastIndexOf(' ');
+      if (space > 0 && space < longName.length() - 1) {
+        return longName.substring(space + 1);
       }
-      if (longName.contains(".")) {
-        strings = longName.split(".");
-        // vasya.pupkin case 
-        if (strings.length > 1) {
-          // Middle name check: Vasya.S.Pupkin 
-          return (strings[1].length() == 1 && strings.length > 2 && strings[2].length() > 1 ? strings[2] : strings[1]);
-        }
+      int dot = longName.lastIndexOf('.');
+      if (dot > 0 && dot < longName.length() - 1) {
+        return longName.substring(dot + 1);
       }
     }
     return longName;

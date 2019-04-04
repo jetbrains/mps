@@ -856,31 +856,27 @@
       <node id="4433480198085381947" at="55,43,56,52" concept="6" />
       <node id="4433480198085381940" at="56,52,57,24" concept="6" />
       <node id="4527744427438226025" at="57,24,58,42" concept="6" />
-      <node id="736151805632552097" at="62,27,63,45" concept="12" />
-      <node id="736151805632552121" at="64,31,65,46" concept="14" />
-      <node id="736151805632552124" at="65,46,66,116" concept="13" />
-      <node id="736151805632552211" at="68,35,69,38" concept="6" />
-      <node id="736151805632552228" at="69,38,70,29" concept="14" />
-      <node id="736151805632552250" at="71,33,72,47" concept="14" />
-      <node id="736151805632552252" at="72,47,73,119" concept="13" />
-      <node id="736151805632552297" at="76,5,77,20" concept="13" />
+      <node id="7428875688360076484" at="62,27,63,44" concept="12" />
+      <node id="736151805632552124" at="64,55,65,45" concept="13" />
+      <node id="7428875688360198771" at="66,7,67,42" concept="12" />
+      <node id="7428875688360266244" at="68,51,69,43" concept="13" />
+      <node id="736151805632552297" at="71,5,72,20" concept="13" />
       <node id="736151805632552379" at="30,10,32,5" concept="1" />
       <node id="391337651435638624" at="34,0,37,0" concept="11" trace="getWidth#()I" />
       <node id="391337651435638674" at="39,0,42,0" concept="11" trace="combine#(Ljava/lang/Integer;Ljetbrains/mps/vcs/annotate/AnnotationColumn/LineRevisionRecord;)Ljava/lang/Integer;" />
       <node id="4433480198085381897" at="44,0,47,0" concept="11" trace="getId#()Ljava/lang/String;" />
       <node id="4433480198085380386" at="47,0,50,0" concept="11" trace="isEnabled#()Z" />
       <node id="2735498088651838552" at="51,0,54,0" concept="11" trace="isRightAligned#()Z" />
-      <node id="736151805632552107" at="63,45,67,7" concept="10" />
-      <node id="736151805632552282" at="70,29,74,9" concept="10" />
+      <node id="736151805632552107" at="63,44,66,7" concept="10" />
+      <node id="736151805632552200" at="67,42,70,7" concept="10" />
       <node id="736151805632552347" at="27,65,32,5" concept="10" />
       <node id="391337651435638649" at="37,116,42,7" concept="6" />
       <node id="4433480198085381934" at="55,0,60,0" concept="11" trace="setEnabled#(Z)V" />
       <node id="391337651435533969" at="19,0,25,0" concept="3" trace="AnnotationAspectSubcolumn#(Ljetbrains/mps/vcs/annotate/AnnotationColumn;Lcom/intellij/openapi/vcs/annotate/LineAnnotationAspect;)V" />
       <node id="391337651435638630" at="37,0,44,0" concept="11" trace="computeWidth#(Ljava/awt/FontMetrics;Ljava/lang/Iterable;)V" />
       <node id="391337651435534003" at="26,0,34,0" concept="11" trace="getTextForFileLine#(Ljetbrains/mps/vcs/annotate/AnnotationColumn/LineRevisionRecord;)Ljava/lang/String;" />
-      <node id="736151805632552200" at="67,7,75,7" concept="10" />
-      <node id="736151805632552075" at="61,54,76,5" concept="10" />
-      <node id="736151805632552064" at="61,0,79,0" concept="17" trace="shortenName#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="736151805632552075" at="61,54,71,5" concept="10" />
+      <node id="736151805632552064" at="61,0,74,0" concept="17" trace="shortenName#(Ljava/lang/String;)Ljava/lang/String;" />
       <scope id="736151805632552348" at="28,114,29,32" />
       <scope id="736151805632552380" at="30,12,31,19" />
       <scope id="391337651435638627" at="34,25,35,19" />
@@ -888,8 +884,8 @@
       <scope id="4433480198085381899" at="44,25,45,76" />
       <scope id="4433480198085380388" at="47,30,48,21" />
       <scope id="2735498088651838554" at="51,35,52,26" />
-      <scope id="736151805632552108" at="64,31,66,116" />
-      <scope id="736151805632552283" at="71,33,73,119" />
+      <scope id="736151805632552108" at="64,55,65,45" />
+      <scope id="736151805632552201" at="68,51,69,43" />
       <scope id="391337651435638624" at="34,0,37,0" />
       <scope id="391337651435638674" at="39,0,42,0">
         <var name="fl" id="391337651435638674" />
@@ -911,7 +907,6 @@
       <scope id="391337651435534006" at="26,81,32,5">
         <var name="value" id="736151805632552371" />
       </scope>
-      <scope id="736151805632552201" at="68,35,74,9" />
       <scope id="391337651435638630" at="37,0,44,0">
         <var name="fileLines" id="391337651435638641" />
         <var name="fontMetrics" id="391337651435638638" />
@@ -919,15 +914,16 @@
       <scope id="391337651435534003" at="26,0,34,0">
         <var name="lineRec" id="391337651435638465" />
       </scope>
-      <scope id="736151805632552077" at="62,27,75,7">
-        <var name="strings" id="736151805632552098" />
+      <scope id="736151805632552077" at="62,27,70,7">
+        <var name="dot" id="7428875688360198774" />
+        <var name="space" id="7428875688360076485" />
       </scope>
-      <scope id="736151805632552066" at="61,54,77,20" />
-      <scope id="736151805632552064" at="61,0,79,0">
+      <scope id="736151805632552066" at="61,54,72,20" />
+      <scope id="736151805632552064" at="61,0,74,0">
         <var name="longName" id="736151805632552069" />
       </scope>
       <unit id="391337651435638674" at="38,63,42,5" name="jetbrains.mps.vcs.annotate.AnnotationAspectSubcolumn$1" />
-      <unit id="391337651435524407" at="12,0,80,0" name="jetbrains.mps.vcs.annotate.AnnotationAspectSubcolumn" />
+      <unit id="391337651435524407" at="12,0,75,0" name="jetbrains.mps.vcs.annotate.AnnotationAspectSubcolumn" />
     </file>
   </root>
   <root nodeRef="r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4433480198085290549">
