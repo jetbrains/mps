@@ -13,15 +13,12 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
-import jetbrains.mps.checkedName.PropertyReference;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.util.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,9 +29,8 @@ public final class EditorTab__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getGeneratedName_id3fOKOapZKP0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3fOKOapZKP0").registry(REGISTRY).build();
   public static final SMethod<String> getGeneratedClassFQName_id3fOKOapZKPb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3fOKOapZKPb").registry(REGISTRY).build();
-  public static final SMethod<List<PropertyReference>> getPropertiesToCheck_id4cWf37B8oXP = new SMethodBuilder<List<PropertyReference>>(new SJavaCompoundTypeImpl((Class<List<PropertyReference>>) ((Class) Object.class))).name("getPropertiesToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXP").registry(REGISTRY).build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id3fOKOapZKP0, getGeneratedClassFQName_id3fOKOapZKPb, getPropertiesToCheck_id4cWf37B8oXP);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id3fOKOapZKP0, getGeneratedClassFQName_id3fOKOapZKPb);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -43,11 +39,7 @@ public final class EditorTab__BehaviorDescriptor extends BaseBHDescriptor {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) + "_TabDescriptor";
   }
   /*package*/ static String getGeneratedClassFQName_id3fOKOapZKPb(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getModelLongName(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getModel(__thisNode__)) + "." + EditorTab__BehaviorDescriptor.getGeneratedName_id3fOKOapZKP0.invoke(__thisNode__);
-  }
-  /*package*/ static List<PropertyReference> getPropertiesToCheck_id4cWf37B8oXP(@NotNull SNode __thisNode__) {
-    List<PropertyReference> props = ListSequence.fromList(new ArrayList<PropertyReference>());
-    return props;
+    return SNodeOperations.getModel(__thisNode__).getName().getLongName() + "." + EditorTab__BehaviorDescriptor.getGeneratedName_id3fOKOapZKP0.invoke(__thisNode__);
   }
 
   /*package*/ EditorTab__BehaviorDescriptor() {
@@ -70,8 +62,6 @@ public final class EditorTab__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((String) getGeneratedName_id3fOKOapZKP0(node));
       case 1:
         return (T) ((String) getGeneratedClassFQName_id3fOKOapZKPb(node));
-      case 2:
-        return (T) ((List<PropertyReference>) getPropertiesToCheck_id4cWf37B8oXP(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
