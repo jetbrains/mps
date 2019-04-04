@@ -126,8 +126,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       if (props.contains(p)) {
         continue;
       }
-      final String msg = String.format("Property %s.%s doesn't belong to concept %s", p.getOwner().getName(), p.getName(), concept.getName());
-      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), p, msg));
+      errorsCollector.addError(new ConceptFeatureMissingError(node, p));
     }
 
     List<SContainmentLink> links = IterableUtil.asList(concept.getContainmentLinks());
@@ -137,8 +136,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
         continue;
       }
       assert l != null : "non-root node is supposed to have proper aggregation";
-      final String msg = String.format("Child in role %s.%s doesn't belong to concept %s", l.getOwner().getName(), l.getName(), concept.getName());
-      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), l, msg));
+      errorsCollector.addError(new ConceptFeatureMissingError(node, l));
     }
 
     List<SReferenceLink> refs = IterableUtil.asList(concept.getReferenceLinks());
@@ -147,8 +145,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       if (refs.contains(l)) {
         continue;
       }
-      final String msg = String.format("Reference with role %s.%s doesn't belong to concept %s", l.getOwner().getName(), l.getName(), concept.getName());
-      errorsCollector.addError(new ConceptFeatureMissingError(node.getReference(), l, msg));
+      errorsCollector.addError(new ConceptFeatureMissingError(node, l));
     }
     return true;
   }

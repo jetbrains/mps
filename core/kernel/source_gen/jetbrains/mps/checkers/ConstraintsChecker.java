@@ -60,7 +60,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
       if (SNodeOperations.getConcept(parent).isValid()) {
         SContainmentLink link = node.getContainmentLink();
         if (!(SNodeOperations.getConcept(parent).getContainmentLinks().contains(link))) {
-          errorsCollector.addError(new ConceptFeatureMissingError(SNodeOperations.getPointer(node), SNodeOperations.getContainingLink(node), "Incorrect child role used: LinkDeclaration with role \"" + SNodeOperations.getContainingLink(node).getName() + "\" was not found in parent node's concept: " + SNodeOperations.getConcept(parent).getName()));
+          errorsCollector.addError(new ConceptFeatureMissingError(node, SNodeOperations.getContainingLink(node)));
           return;
         }
         runCheck(errorsCollector, new _FunctionTypes._return_P1_E0<Boolean, CheckingNodeContext>() {

@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
@@ -384,7 +384,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="5045161044515397667" name="jetbrains.mps.lang.smodel.structure.Node_PointerOperation" flags="ng" index="iZEcu" />
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
@@ -954,52 +953,15 @@
                           <ref role="37wK5l" node="5S0STpDMb1Q" resolve="addError" />
                           <node concept="2ShNRf" id="1PHXAu1pwXx" role="37wK5m">
                             <node concept="1pGfFk" id="1PHXAu1pxcS" role="2ShVmc">
-                              <ref role="37wK5l" to="6if8:~ConceptFeatureMissingError.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNodeReference,org.jetbrains.mps.openapi.language.SConceptFeature,java.lang.String)" resolve="ConceptFeatureMissingError" />
-                              <node concept="2OqwBi" id="dQllQpiMRA" role="37wK5m">
-                                <node concept="37vLTw" id="1PHXAu1pxhh" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="6qi2OtU3uwL" resolve="node" />
-                                </node>
-                                <node concept="iZEcu" id="dQllQpiNzQ" role="2OqNvi" />
+                              <ref role="37wK5l" to="6if8:~ConceptFeatureMissingError.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SContainmentLink)" resolve="ConceptFeatureMissingError" />
+                              <node concept="37vLTw" id="1PHXAu1pxhh" role="37wK5m">
+                                <ref role="3cqZAo" node="6qi2OtU3uwL" resolve="node" />
                               </node>
                               <node concept="2OqwBi" id="1PHXAu1py4Y" role="37wK5m">
                                 <node concept="37vLTw" id="1PHXAu1pxRM" role="2Oq$k0">
                                   <ref role="3cqZAo" node="6qi2OtU3uwL" resolve="node" />
                                 </node>
                                 <node concept="2NL2c5" id="1PHXAu1pyhF" role="2OqNvi" />
-                              </node>
-                              <node concept="3cpWs3" id="6xoucZk5aXm" role="37wK5m">
-                                <node concept="2OqwBi" id="6xoucZk5aXn" role="3uHU7w">
-                                  <node concept="2OqwBi" id="6xoucZk5aXo" role="2Oq$k0">
-                                    <node concept="37vLTw" id="3bWbRfeuKZ0" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="552CEt2aC_M" resolve="parent" />
-                                    </node>
-                                    <node concept="2yIwOk" id="6xoucZk5aXp" role="2OqNvi" />
-                                  </node>
-                                  <node concept="liA8E" id="60$TPp4NRtj" role="2OqNvi">
-                                    <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
-                                  </node>
-                                </node>
-                                <node concept="3cpWs3" id="6xoucZk5aXq" role="3uHU7B">
-                                  <node concept="3cpWs3" id="6xoucZk5aXr" role="3uHU7B">
-                                    <node concept="2OqwBi" id="19B7r36boI" role="3uHU7w">
-                                      <node concept="2OqwBi" id="6xoucZk5aXs" role="2Oq$k0">
-                                        <node concept="37vLTw" id="6xoucZk5aXt" role="2Oq$k0">
-                                          <ref role="3cqZAo" node="6qi2OtU3uwL" resolve="node" />
-                                        </node>
-                                        <node concept="2NL2c5" id="19B7r36aVf" role="2OqNvi" />
-                                      </node>
-                                      <node concept="liA8E" id="19B7r36bQ0" role="2OqNvi">
-                                        <ref role="37wK5l" to="c17a:~SNamedElement.getName()" resolve="getName" />
-                                      </node>
-                                    </node>
-                                    <node concept="Xl_RD" id="6xoucZk5aXv" role="3uHU7B">
-                                      <property role="Xl_RC" value="Incorrect child role used: LinkDeclaration with role \&quot;" />
-                                    </node>
-                                  </node>
-                                  <node concept="Xl_RD" id="6xoucZk5aXw" role="3uHU7w">
-                                    <property role="Xl_RC" value="\&quot; was not found in parent node's concept: " />
-                                  </node>
-                                </node>
                               </node>
                             </node>
                           </node>

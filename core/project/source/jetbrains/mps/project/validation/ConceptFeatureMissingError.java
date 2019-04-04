@@ -18,8 +18,13 @@ package jetbrains.mps.project.validation;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.NodeFeatureReportItem;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SNamedElement;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class ConceptFeatureMissingError extends LanguageFeatureMissingError implements NodeFeatureReportItem {
@@ -27,6 +32,18 @@ public class ConceptFeatureMissingError extends LanguageFeatureMissingError impl
   public ConceptFeatureMissingError(SNodeReference node, SConceptFeature feature, String message) {
     super(MessageStatus.ERROR, node, message);
     myConceptFeature = feature;
+  }
+  public ConceptFeatureMissingError(SNode node, SProperty p) {
+    super(MessageStatus.ERROR, node.getReference(), String.format("Property %s.%s doesn't belong to concept %s", p.getOwner().getName(), p.getName(), node.getConcept().getName()));
+    myConceptFeature = p;
+  }
+  public ConceptFeatureMissingError(SNode node, SContainmentLink l) {
+    super(MessageStatus.ERROR, node.getReference(), String.format("Child in role %s.%s doesn't belong to concept %s", l.getOwner().getName(), l.getName(), node.getConcept().getName()));
+    myConceptFeature = l;
+  }
+  public ConceptFeatureMissingError(SNode node, SReferenceLink r) {
+    super(MessageStatus.ERROR, node.getReference(), String.format("Reference with role %s.%s doesn't belong to concept %s", r.getOwner().getName(), r.getName(), node.getConcept().getName()));
+    myConceptFeature = r;
   }
   @Override
   public ItemKind getIssueKind() {
