@@ -33,7 +33,8 @@ class MPSProperties extends ProductProperties {
                 "intellij.java.remoteServers.git",
                 "intellij.vcs.svn",
                 "intellij.vcs.github",
-                "intellij.terminal"
+                "intellij.terminal",
+                "intellij.java.coverage"
                 /*, "properties", "ant"*/
         ]
 
@@ -53,24 +54,15 @@ class MPSProperties extends ProductProperties {
             layout.customize {
 
                 // Copied from BaseIdeaProperties
-                def JAVA_RESOURCES_JAR = "java_resources_en.jar"
-                withModule("intellij.java.analysis", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.jvm.analysis", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.java.indexing", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.java.psi", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.java", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.jsp.base", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.jsp", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.platform.uast", JAVA_API_JAR, JAVA_RESOURCES_JAR)
-
-                withModule("intellij.java.analysis.impl", JAVA_IMPL_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.jvm.analysis.impl", JAVA_IMPL_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.java.indexing.impl", JAVA_IMPL_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.java.psi.impl", JAVA_IMPL_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.java.impl", JAVA_IMPL_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.jsp.spi", JAVA_IMPL_JAR, JAVA_RESOURCES_JAR)
-                withModule("intellij.java.uast", JAVA_IMPL_JAR, JAVA_RESOURCES_JAR)
+                BaseIdeaProperties.MAIN_JAVA_API_MODULES.each {
+                    withModule(it, "java-api.jar", "java_resources_en.jar")
+                }
+                BaseIdeaProperties.MAIN_JAVA_IMPLEMENTATION_MODULES.each {
+                    withModule(it, "java-impl.jar", "java_resources_en.jar")
+                }
                 // end of copy from BaseIdeaProperties
+
+                withModule("intellij.platform.coverage", productLayout.mainJarName)
 
                 withModule("intellij.java.rt", "idea_rt.jar", null)
                 withProjectLibrary("Eclipse")
