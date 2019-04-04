@@ -42,13 +42,13 @@
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
   
   <target name="assemble" depends="classes, declare-mps-tasks">
-    <mkdir dir="${build.layout}/context-tool" />
-    <mkdir dir="${build.layout}/context-tool/META-INF" />
-    <copy todir="${build.layout}/context-tool/META-INF">
-      <fileset file="${mps_home}/plugins/editor.contextActionsTool/META-INF/plugin.xml" />
+    <mkdir dir="${build.layout}/mps-context-actions" />
+    <mkdir dir="${build.layout}/mps-context-actions/META-INF" />
+    <copy todir="${build.layout}/mps-context-actions/META-INF">
+      <fileset file="${mps_home}/plugins/mps-context-actions/META-INF/plugin.xml" />
     </copy>
-    <mkdir dir="${build.layout}/context-tool/languages" />
-    <mkdir dir="${build.layout}/context-tool/languages/mps-context-actions-tool" />
+    <mkdir dir="${build.layout}/mps-context-actions/languages" />
+    <mkdir dir="${build.layout}/mps-context-actions/languages/mps-context-actions-tool" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar/META-INF/module.xml">
@@ -74,24 +74,24 @@
         <sources jar="jetbrains.mps.editor.contextActionsTool.pluginSolution-src.jar" descriptor="jetbrains.mps.editor.contextActionsTool.pluginSolution.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/context-tool/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" />
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.pluginSolution.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-pluginSolution-models">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-pluginSolution-models">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/context-tool/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.pluginSolution-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/source_gen">
+    <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.pluginSolution-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/jetbrains.mps.editor.contextActionsTool.pluginSolution.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-pluginSolution-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/jetbrains.mps.editor.contextActionsTool.pluginSolution.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-pluginSolution-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.jar/META-INF" />
@@ -117,10 +117,10 @@
         <sources jar="jetbrains.mps.editor.contextActionsTool.lang.menus-src.jar" descriptor="jetbrains.mps.editor.contextActionsTool.lang.menus.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/context-tool/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" />
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus-generator.jar" />
@@ -146,32 +146,32 @@
         <sources jar="jetbrains.mps.editor.contextActionsTool.lang.menus-src.jar" descriptor="jetbrains.mps.editor.contextActionsTool.lang.menus.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/context-tool/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus-generator.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-lang.menus-generator-template">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-generator-template">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-lang.menus-models">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-models">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/context-tool/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/generator/source_gen">
+    <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/source_gen">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/jetbrains.mps.editor.contextActionsTool.lang.menus.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-lang.menus-generator-template" prefix="module/generator/template" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-lang.menus-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/plugins/mps-context-actions/modules/lang.menus/jetbrains.mps.editor.contextActionsTool.lang.menus.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-generator-template" prefix="module/generator/template" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar/META-INF" />
@@ -187,24 +187,24 @@
         <sources jar="jetbrains.mps.editor.contextActionsTool.lang.menus.runtime-src.jar" descriptor="jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/context-tool/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" />
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/runtime" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/runtime" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-runtime-models">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-runtime-models">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/runtime/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/context-tool/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/source_gen">
+    <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-editor.contextActionsTool-modules-runtime-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/plugins/mps-context-actions/modules/runtime/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-runtime-models" prefix="module/models" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
@@ -319,9 +319,9 @@
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
       <library file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
       <chunk>
-        <module file="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/jetbrains.mps.editor.contextActionsTool.lang.menus.mpl" />
-        <module file="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.msd" />
-        <module file="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/jetbrains.mps.editor.contextActionsTool.pluginSolution.msd" />
+        <module file="${mps_home}/plugins/mps-context-actions/modules/lang.menus/jetbrains.mps.editor.contextActionsTool.lang.menus.mpl" />
+        <module file="${mps_home}/plugins/mps-context-actions/modules/runtime/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.msd" />
+        <module file="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/jetbrains.mps.editor.contextActionsTool.pluginSolution.msd" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />
@@ -356,12 +356,12 @@
   </target>
   
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.pluginSolution" depends="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus.runtime, fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/source_gen" />
+        <path location="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
@@ -397,17 +397,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus" depends="java.compile.jetbrains.mps.editor.contextActionsTool.pluginSolution, fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/source_gen" />
+        <path location="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
@@ -454,17 +454,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" depends="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus, fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/generator/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/generator/source_gen" />
+        <path location="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
@@ -509,17 +509,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" depends="fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/source_gen" />
+        <path location="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
@@ -550,14 +550,14 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime">
-      <fileset dir="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="cleanSources">
-    <delete dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/source_gen" />
-    <delete dir="${mps_home}/plugins/editor.contextActionsTool/modules/lang.menus/generator/source_gen" />
-    <delete dir="${mps_home}/plugins/editor.contextActionsTool/modules/runtime/source_gen" />
-    <delete dir="${mps_home}/plugins/editor.contextActionsTool/modules/pluginSolution/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen" />
   </target>
 </project>

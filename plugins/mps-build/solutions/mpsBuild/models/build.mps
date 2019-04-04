@@ -32403,7 +32403,7 @@
               <node concept="2Ry0Ak" id="EpEP7iiijn" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iiijo" role="2Ry0An">
-                  <property role="2Ry0Am" value="editor.contextActionsTool" />
+                  <property role="2Ry0Am" value="mps-context-actions" />
                   <node concept="2Ry0Ak" id="EpEP7iiijp" role="2Ry0An">
                     <property role="2Ry0Am" value="modules" />
                     <node concept="2Ry0Ak" id="EpEP7iiijq" role="2Ry0An">
@@ -32420,7 +32420,7 @@
           <node concept="2Ry0Ak" id="1JaUSFUm50U" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="1JaUSFUm5j$" role="2Ry0An">
-              <property role="2Ry0Am" value="editor.contextActionsTool" />
+              <property role="2Ry0Am" value="mps-context-actions" />
               <node concept="2Ry0Ak" id="1JaUSFUm5lX" role="2Ry0An">
                 <property role="2Ry0Am" value="modules" />
                 <node concept="2Ry0Ak" id="1JaUSFUm5om" role="2Ry0An">
@@ -32467,7 +32467,7 @@
               <node concept="2Ry0Ak" id="EpEP7iihPi" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iihPj" role="2Ry0An">
-                  <property role="2Ry0Am" value="editor.contextActionsTool" />
+                  <property role="2Ry0Am" value="mps-context-actions" />
                   <node concept="2Ry0Ak" id="EpEP7iihPk" role="2Ry0An">
                     <property role="2Ry0Am" value="modules" />
                     <node concept="2Ry0Ak" id="EpEP7iihPl" role="2Ry0An">
@@ -32484,7 +32484,7 @@
           <node concept="2Ry0Ak" id="601$vVQgYeY" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="601$vVQgYf_" role="2Ry0An">
-              <property role="2Ry0Am" value="editor.contextActionsTool" />
+              <property role="2Ry0Am" value="mps-context-actions" />
               <node concept="2Ry0Ak" id="601$vVQgYgM" role="2Ry0An">
                 <property role="2Ry0Am" value="modules" />
                 <node concept="2Ry0Ak" id="601$vVQgYhf" role="2Ry0An">
@@ -32594,7 +32594,7 @@
               <node concept="2Ry0Ak" id="EpEP7iihMp" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iihMq" role="2Ry0An">
-                  <property role="2Ry0Am" value="editor.contextActionsTool" />
+                  <property role="2Ry0Am" value="mps-context-actions" />
                   <node concept="2Ry0Ak" id="EpEP7iihMr" role="2Ry0An">
                     <property role="2Ry0Am" value="modules" />
                     <node concept="2Ry0Ak" id="EpEP7iihMs" role="2Ry0An">
@@ -32611,7 +32611,7 @@
           <node concept="2Ry0Ak" id="pUqJj8tAjt" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="pUqJj8tAju" role="2Ry0An">
-              <property role="2Ry0Am" value="editor.contextActionsTool" />
+              <property role="2Ry0Am" value="mps-context-actions" />
               <node concept="2Ry0Ak" id="pUqJj8tAjv" role="2Ry0An">
                 <property role="2Ry0Am" value="modules" />
                 <node concept="2Ry0Ak" id="pUqJj8tAkO" role="2Ry0An">
@@ -32641,7 +32641,7 @@
       </node>
       <node concept="3_J27D" id="1JaUSFUm4GD" role="m_cZH">
         <node concept="3Mxwew" id="1JaUSFUm4GE" role="3MwsjC">
-          <property role="3MwjfP" value="context-tool" />
+          <property role="3MwjfP" value="mps-context-actions" />
         </node>
       </node>
       <node concept="3_J27D" id="1JaUSFUm4GF" role="m$_w8">
@@ -32654,7 +32654,7 @@
         <node concept="2Ry0Ak" id="1JaUSFUm4GI" role="iGT6I">
           <property role="2Ry0Am" value="plugins" />
           <node concept="2Ry0Ak" id="1JaUSFUm4GJ" role="2Ry0An">
-            <property role="2Ry0Am" value="editor.contextActionsTool" />
+            <property role="2Ry0Am" value="mps-context-actions" />
             <node concept="2Ry0Ak" id="1JaUSFUm4GK" role="2Ry0An">
               <property role="2Ry0Am" value="META-INF" />
               <node concept="2Ry0Ak" id="1JaUSFUm5OF" role="2Ry0An">

@@ -7029,7 +7029,7 @@
               <node concept="2Ry0Ak" id="EpEP7iihEz" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iihE$" role="2Ry0An">
-                  <property role="2Ry0Am" value="editor.contextActionsTool" />
+                  <property role="2Ry0Am" value="mps-context-actions" />
                   <node concept="2Ry0Ak" id="EpEP7iihE_" role="2Ry0An">
                     <property role="2Ry0Am" value="testModules" />
                     <node concept="2Ry0Ak" id="EpEP7iihEA" role="2Ry0An">
@@ -7045,7 +7045,7 @@
           <node concept="2Ry0Ak" id="5Xa7gk5dESA" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5Xa7gk5dEVF" role="2Ry0An">
-              <property role="2Ry0Am" value="editor.contextActionsTool" />
+              <property role="2Ry0Am" value="mps-context-actions" />
               <node concept="2Ry0Ak" id="5Xa7gk5dEXK" role="2Ry0An">
                 <property role="2Ry0Am" value="testModules" />
                 <node concept="2Ry0Ak" id="5Xa7gk5dEZP" role="2Ry0An">
