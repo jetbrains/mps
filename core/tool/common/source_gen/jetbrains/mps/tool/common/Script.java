@@ -47,7 +47,7 @@ public class Script {
   }
 
   public void addProjectFile(File projectFile) {
-    assert projectFile.exists() && projectFile.isFile();
+    assert projectFile.exists() : projectFile.getPath();
     if (!(myMPSProjects.contains(projectFile))) {
       myMPSProjects.add(projectFile);
     }

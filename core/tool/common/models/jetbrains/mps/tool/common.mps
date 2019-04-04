@@ -604,22 +604,20 @@
       </node>
       <node concept="3clFbS" id="KL8Aql8er2" role="3clF47">
         <node concept="1gVbGN" id="KL8Aql8er3" role="3cqZAp">
-          <node concept="1Wc70l" id="KL8Aql8er4" role="1gVkn0">
-            <node concept="2OqwBi" id="KL8Aql8er5" role="3uHU7B">
-              <node concept="37vLTw" id="2BHiRxghit5" role="2Oq$k0">
-                <ref role="3cqZAo" node="KL8Aql8er0" resolve="projectFile" />
-              </node>
-              <node concept="liA8E" id="KL8Aql8er7" role="2OqNvi">
-                <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
-              </node>
+          <node concept="2OqwBi" id="KL8Aql8er5" role="1gVkn0">
+            <node concept="37vLTw" id="2BHiRxghit5" role="2Oq$k0">
+              <ref role="3cqZAo" node="KL8Aql8er0" resolve="projectFile" />
             </node>
-            <node concept="2OqwBi" id="KL8Aql8er8" role="3uHU7w">
-              <node concept="37vLTw" id="2BHiRxghfqj" role="2Oq$k0">
-                <ref role="3cqZAo" node="KL8Aql8er0" resolve="projectFile" />
-              </node>
-              <node concept="liA8E" id="KL8Aql8era" role="2OqNvi">
-                <ref role="37wK5l" to="guwi:~File.isFile()" resolve="isFile" />
-              </node>
+            <node concept="liA8E" id="KL8Aql8er7" role="2OqNvi">
+              <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="59deIt5t0xo" role="1gVpfI">
+            <node concept="37vLTw" id="59deIt5t05x" role="2Oq$k0">
+              <ref role="3cqZAo" node="KL8Aql8er0" resolve="projectFile" />
+            </node>
+            <node concept="liA8E" id="59deIt5t0Uv" role="2OqNvi">
+              <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
             </node>
           </node>
         </node>
