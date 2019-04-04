@@ -17,8 +17,8 @@ public class CodeStyleSettings {
     _setFieldPrefix(value);
     return value;
   }
-  public void refToFieldPrefix() {
-    new Reference<String>() {
+  public Reference<String> refToFieldPrefix() {
+    return new Reference<String>() {
       public String get() {
         return getFieldPrefix();
       }
@@ -38,8 +38,8 @@ public class CodeStyleSettings {
     _setFieldSuffix(value);
     return value;
   }
-  public void refToFieldSuffix() {
-    new Reference<String>() {
+  public Reference<String> refToFieldSuffix() {
+    return new Reference<String>() {
       public String get() {
         return getFieldSuffix();
       }
@@ -59,8 +59,8 @@ public class CodeStyleSettings {
     _setStaticFieldPrefix(value);
     return value;
   }
-  public void refToStaticFieldPrefix() {
-    new Reference<String>() {
+  public Reference<String> refToStaticFieldPrefix() {
+    return new Reference<String>() {
       public String get() {
         return getStaticFieldPrefix();
       }
@@ -80,8 +80,8 @@ public class CodeStyleSettings {
     _setStaticFieldSuffix(value);
     return value;
   }
-  public void refToStaticFieldSuffix() {
-    new Reference<String>() {
+  public Reference<String> refToStaticFieldSuffix() {
+    return new Reference<String>() {
       public String get() {
         return getStaticFieldSuffix();
       }
@@ -101,8 +101,8 @@ public class CodeStyleSettings {
     _setParameterPrefix(value);
     return value;
   }
-  public void refToParameterPrefix() {
-    new Reference<String>() {
+  public Reference<String> refToParameterPrefix() {
+    return new Reference<String>() {
       public String get() {
         return getParameterPrefix();
       }
@@ -122,8 +122,8 @@ public class CodeStyleSettings {
     _setParameterSuffix(value);
     return value;
   }
-  public void refToParameterSuffix() {
-    new Reference<String>() {
+  public Reference<String> refToParameterSuffix() {
+    return new Reference<String>() {
       public String get() {
         return getParameterSuffix();
       }
@@ -143,8 +143,8 @@ public class CodeStyleSettings {
     _setLocalVariablePrefix(value);
     return value;
   }
-  public void refToLocalVariablePrefix() {
-    new Reference<String>() {
+  public Reference<String> refToLocalVariablePrefix() {
+    return new Reference<String>() {
       public String get() {
         return getLocalVariablePrefix();
       }
@@ -164,8 +164,8 @@ public class CodeStyleSettings {
     _setLocalVariableSuffix(value);
     return value;
   }
-  public void refToLocalVariableSuffix() {
-    new Reference<String>() {
+  public Reference<String> refToLocalVariableSuffix() {
+    return new Reference<String>() {
       public String get() {
         return getLocalVariableSuffix();
       }
@@ -185,8 +185,8 @@ public class CodeStyleSettings {
     _setLineSeparator(value);
     return value;
   }
-  public void refToLineSeparator() {
-    new Reference<String>() {
+  public Reference<String> refToLineSeparator() {
+    return new Reference<String>() {
       public String get() {
         return getLineSeparator();
       }

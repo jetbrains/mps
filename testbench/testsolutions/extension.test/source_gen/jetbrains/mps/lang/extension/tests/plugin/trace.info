@@ -89,10 +89,10 @@
       <node id="7036359038356246776" at="45,0,48,0" concept="4" trace="set#(Ljava/lang/String;)V" />
       <node id="7036359038356246776" at="15,0,19,0" concept="4" trace="setShutDown#(Z)Z" />
       <node id="7036359038356246776" at="36,0,40,0" concept="4" trace="setValue#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="7036359038356246776" at="19,31,27,6" concept="2" />
-      <node id="7036359038356246776" at="40,28,48,6" concept="2" />
-      <node id="7036359038356246776" at="19,0,29,0" concept="4" trace="refToShutDown#()V" />
-      <node id="7036359038356246776" at="40,0,50,0" concept="4" trace="refToValue#()V" />
+      <node id="7036359038356246776" at="19,45,27,6" concept="5" />
+      <node id="7036359038356246776" at="40,41,48,6" concept="5" />
+      <node id="7036359038356246776" at="19,0,29,0" concept="4" trace="refToShutDown#()Ljetbrains/mps/references/Reference;" />
+      <node id="7036359038356246776" at="40,0,50,0" concept="4" trace="refToValue#()Ljetbrains/mps/references/Reference;" />
       <scope id="7036359038356246781" at="50,23,50,23" />
       <scope id="7036359038356246776" at="9,31,10,27" />
       <scope id="7036359038356246776" at="12,44,13,28" />
@@ -127,12 +127,12 @@
       <scope id="7036359038356246776" at="36,0,40,0">
         <var name="value" id="7036359038356246776" />
       </scope>
-      <scope id="7036359038356246776" at="19,31,27,6" />
-      <scope id="7036359038356246776" at="40,28,48,6" />
+      <scope id="7036359038356246776" at="19,45,27,6" />
+      <scope id="7036359038356246776" at="40,41,48,6" />
       <scope id="7036359038356246776" at="19,0,29,0" />
       <scope id="7036359038356246776" at="40,0,50,0" />
-      <unit id="7036359038356246776" at="20,8,27,5" name="jetbrains.mps.lang.extension.tests.plugin.TestObject$1" />
-      <unit id="7036359038356246776" at="41,8,48,5" name="jetbrains.mps.lang.extension.tests.plugin.TestObject$2" />
+      <unit id="7036359038356246776" at="20,15,27,5" name="jetbrains.mps.lang.extension.tests.plugin.TestObject$1" />
+      <unit id="7036359038356246776" at="41,15,48,5" name="jetbrains.mps.lang.extension.tests.plugin.TestObject$2" />
       <unit id="7036359038356246776" at="7,0,53,0" name="jetbrains.mps.lang.extension.tests.plugin.TestObject" />
     </file>
   </root>

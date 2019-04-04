@@ -228,12 +228,12 @@
       <node id="4288082098349208141" at="96,0,100,0" concept="6" trace="toString#()Ljava/lang/String;" />
       <node id="4288082098349208095" at="82,0,89,0" concept="0" trace="ModelTreeNode#(Ljava/lang/String;Ljavax/swing/Icon;Ljava/lang/Object;)V" />
       <node id="4288082098349208124" at="89,0,96,0" concept="6" trace="isLeaf#()Z" />
-      <node id="4288082098349208038" at="21,28,29,6" concept="1" />
-      <node id="4288082098349208038" at="42,35,50,6" concept="1" />
-      <node id="4288082098349208038" at="63,34,71,6" concept="1" />
-      <node id="4288082098349208038" at="21,0,31,0" concept="6" trace="refToText#()V" />
-      <node id="4288082098349208038" at="42,0,52,0" concept="6" trace="refToLeafPosition#()V" />
-      <node id="4288082098349208038" at="63,0,73,0" concept="6" trace="refToInitialized#()V" />
+      <node id="4288082098349208038" at="21,41,29,6" concept="8" />
+      <node id="4288082098349208038" at="42,49,50,6" concept="8" />
+      <node id="4288082098349208038" at="63,48,71,6" concept="8" />
+      <node id="4288082098349208038" at="21,0,31,0" concept="6" trace="refToText#()Ljetbrains/mps/references/Reference;" />
+      <node id="4288082098349208038" at="42,0,52,0" concept="6" trace="refToLeafPosition#()Ljetbrains/mps/references/Reference;" />
+      <node id="4288082098349208038" at="63,0,73,0" concept="6" trace="refToInitialized#()Ljetbrains/mps/references/Reference;" />
       <scope id="4288082098349208038" at="11,27,12,23" />
       <scope id="4288082098349208038" at="14,39,15,24" />
       <scope id="4288082098349208038" at="23,27,24,25" />
@@ -307,15 +307,15 @@
         <var name="label" id="4288082098349208117" />
       </scope>
       <scope id="4288082098349208124" at="89,0,96,0" />
-      <scope id="4288082098349208038" at="21,28,29,6" />
-      <scope id="4288082098349208038" at="42,35,50,6" />
-      <scope id="4288082098349208038" at="63,34,71,6" />
+      <scope id="4288082098349208038" at="21,41,29,6" />
+      <scope id="4288082098349208038" at="42,49,50,6" />
+      <scope id="4288082098349208038" at="63,48,71,6" />
       <scope id="4288082098349208038" at="21,0,31,0" />
       <scope id="4288082098349208038" at="42,0,52,0" />
       <scope id="4288082098349208038" at="63,0,73,0" />
-      <unit id="4288082098349208038" at="22,8,29,5" name="jetbrains.mps.ide.platform.modeltree.ModelTreeNode$1" />
-      <unit id="4288082098349208038" at="43,8,50,5" name="jetbrains.mps.ide.platform.modeltree.ModelTreeNode$2" />
-      <unit id="4288082098349208038" at="64,8,71,5" name="jetbrains.mps.ide.platform.modeltree.ModelTreeNode$3" />
+      <unit id="4288082098349208038" at="22,15,29,5" name="jetbrains.mps.ide.platform.modeltree.ModelTreeNode$1" />
+      <unit id="4288082098349208038" at="43,15,50,5" name="jetbrains.mps.ide.platform.modeltree.ModelTreeNode$2" />
+      <unit id="4288082098349208038" at="64,15,71,5" name="jetbrains.mps.ide.platform.modeltree.ModelTreeNode$3" />
       <unit id="4288082098349208038" at="9,0,104,0" name="jetbrains.mps.ide.platform.modeltree.ModelTreeNode" />
     </file>
   </root>

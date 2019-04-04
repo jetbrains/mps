@@ -17,8 +17,8 @@ public class Money {
     _setAmount(value);
     return value;
   }
-  private void refToAmount() {
-    new Reference<BigDecimal>() {
+  private Reference<BigDecimal> refToAmount() {
+    return new Reference<BigDecimal>() {
       public BigDecimal get() {
         return getAmount();
       }
@@ -38,8 +38,8 @@ public class Money {
     _setCurrency(value);
     return value;
   }
-  private void refToCurrency() {
-    new Reference<String>() {
+  private Reference<String> refToCurrency() {
+    return new Reference<String>() {
       public String get() {
         return getCurrency();
       }

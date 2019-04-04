@@ -16,8 +16,8 @@ public class BaseTestClass {
     _setBaseProperty(value);
     return value;
   }
-  public void refToBaseProperty() {
-    new Reference<Integer>() {
+  public Reference<Integer> refToBaseProperty() {
+    return new Reference<Integer>() {
       public Integer get() {
         return getBaseProperty();
       }

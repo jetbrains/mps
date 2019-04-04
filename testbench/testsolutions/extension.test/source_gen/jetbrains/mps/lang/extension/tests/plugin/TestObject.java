@@ -16,8 +16,8 @@ public class TestObject {
     _setShutDown(value);
     return value;
   }
-  public void refToShutDown() {
-    new Reference<Boolean>() {
+  public Reference<Boolean> refToShutDown() {
+    return new Reference<Boolean>() {
       public Boolean get() {
         return isShutDown();
       }
@@ -37,8 +37,8 @@ public class TestObject {
     _setValue(value);
     return value;
   }
-  public void refToValue() {
-    new Reference<String>() {
+  public Reference<String> refToValue() {
+    return new Reference<String>() {
       public String get() {
         return getValue();
       }

@@ -128,24 +128,24 @@
       <node id="1650638035896359074" at="163,0,167,0" concept="7" trace="setLocalVariableSuffix#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="1650638035896359074" at="184,0,188,0" concept="7" trace="setLineSeparator#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="5036277047286161914" at="200,0,204,0" concept="7" trace="getLineSeparatorValue#()Ljava/lang/String;" />
-      <node id="1650638035896359074" at="20,34,28,6" concept="3" />
-      <node id="1650638035896359074" at="41,34,49,6" concept="3" />
-      <node id="1650638035896359074" at="62,40,70,6" concept="3" />
-      <node id="1650638035896359074" at="83,40,91,6" concept="3" />
-      <node id="1650638035896359074" at="104,38,112,6" concept="3" />
-      <node id="1650638035896359074" at="125,38,133,6" concept="3" />
-      <node id="1650638035896359074" at="146,42,154,6" concept="3" />
-      <node id="1650638035896359074" at="167,42,175,6" concept="3" />
-      <node id="1650638035896359074" at="188,36,196,6" concept="3" />
-      <node id="1650638035896359074" at="20,0,30,0" concept="7" trace="refToFieldPrefix#()V" />
-      <node id="1650638035896359074" at="41,0,51,0" concept="7" trace="refToFieldSuffix#()V" />
-      <node id="1650638035896359074" at="62,0,72,0" concept="7" trace="refToStaticFieldPrefix#()V" />
-      <node id="1650638035896359074" at="83,0,93,0" concept="7" trace="refToStaticFieldSuffix#()V" />
-      <node id="1650638035896359074" at="104,0,114,0" concept="7" trace="refToParameterPrefix#()V" />
-      <node id="1650638035896359074" at="125,0,135,0" concept="7" trace="refToParameterSuffix#()V" />
-      <node id="1650638035896359074" at="146,0,156,0" concept="7" trace="refToLocalVariablePrefix#()V" />
-      <node id="1650638035896359074" at="167,0,177,0" concept="7" trace="refToLocalVariableSuffix#()V" />
-      <node id="1650638035896359074" at="188,0,198,0" concept="7" trace="refToLineSeparator#()V" />
+      <node id="1650638035896359074" at="20,47,28,6" concept="9" />
+      <node id="1650638035896359074" at="41,47,49,6" concept="9" />
+      <node id="1650638035896359074" at="62,53,70,6" concept="9" />
+      <node id="1650638035896359074" at="83,53,91,6" concept="9" />
+      <node id="1650638035896359074" at="104,51,112,6" concept="9" />
+      <node id="1650638035896359074" at="125,51,133,6" concept="9" />
+      <node id="1650638035896359074" at="146,55,154,6" concept="9" />
+      <node id="1650638035896359074" at="167,55,175,6" concept="9" />
+      <node id="1650638035896359074" at="188,49,196,6" concept="9" />
+      <node id="1650638035896359074" at="20,0,30,0" concept="7" trace="refToFieldPrefix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="41,0,51,0" concept="7" trace="refToFieldSuffix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="62,0,72,0" concept="7" trace="refToStaticFieldPrefix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="83,0,93,0" concept="7" trace="refToStaticFieldSuffix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="104,0,114,0" concept="7" trace="refToParameterPrefix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="125,0,135,0" concept="7" trace="refToParameterSuffix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="146,0,156,0" concept="7" trace="refToLocalVariablePrefix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="167,0,177,0" concept="7" trace="refToLocalVariableSuffix#()Ljetbrains/mps/references/Reference;" />
+      <node id="1650638035896359074" at="188,0,198,0" concept="7" trace="refToLineSeparator#()Ljetbrains/mps/references/Reference;" />
       <scope id="1650638035896359079" at="198,30,198,30" />
       <scope id="1650638035896359074" at="10,34,11,30" />
       <scope id="1650638035896359074" at="13,46,14,31" />
@@ -294,15 +294,15 @@
         <var name="value" id="1650638035896359074" />
       </scope>
       <scope id="5036277047286161914" at="200,0,204,0" />
-      <scope id="1650638035896359074" at="20,34,28,6" />
-      <scope id="1650638035896359074" at="41,34,49,6" />
-      <scope id="1650638035896359074" at="62,40,70,6" />
-      <scope id="1650638035896359074" at="83,40,91,6" />
-      <scope id="1650638035896359074" at="104,38,112,6" />
-      <scope id="1650638035896359074" at="125,38,133,6" />
-      <scope id="1650638035896359074" at="146,42,154,6" />
-      <scope id="1650638035896359074" at="167,42,175,6" />
-      <scope id="1650638035896359074" at="188,36,196,6" />
+      <scope id="1650638035896359074" at="20,47,28,6" />
+      <scope id="1650638035896359074" at="41,47,49,6" />
+      <scope id="1650638035896359074" at="62,53,70,6" />
+      <scope id="1650638035896359074" at="83,53,91,6" />
+      <scope id="1650638035896359074" at="104,51,112,6" />
+      <scope id="1650638035896359074" at="125,51,133,6" />
+      <scope id="1650638035896359074" at="146,55,154,6" />
+      <scope id="1650638035896359074" at="167,55,175,6" />
+      <scope id="1650638035896359074" at="188,49,196,6" />
       <scope id="1650638035896359074" at="20,0,30,0" />
       <scope id="1650638035896359074" at="41,0,51,0" />
       <scope id="1650638035896359074" at="62,0,72,0" />
@@ -312,15 +312,15 @@
       <scope id="1650638035896359074" at="146,0,156,0" />
       <scope id="1650638035896359074" at="167,0,177,0" />
       <scope id="1650638035896359074" at="188,0,198,0" />
-      <unit id="1650638035896359074" at="21,8,28,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$1" />
-      <unit id="1650638035896359074" at="42,8,49,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$2" />
-      <unit id="1650638035896359074" at="63,8,70,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$3" />
-      <unit id="1650638035896359074" at="84,8,91,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$4" />
-      <unit id="1650638035896359074" at="105,8,112,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$5" />
-      <unit id="1650638035896359074" at="126,8,133,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$6" />
-      <unit id="1650638035896359074" at="147,8,154,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$7" />
-      <unit id="1650638035896359074" at="168,8,175,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$8" />
-      <unit id="1650638035896359074" at="189,8,196,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$9" />
+      <unit id="1650638035896359074" at="21,15,28,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$1" />
+      <unit id="1650638035896359074" at="42,15,49,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$2" />
+      <unit id="1650638035896359074" at="63,15,70,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$3" />
+      <unit id="1650638035896359074" at="84,15,91,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$4" />
+      <unit id="1650638035896359074" at="105,15,112,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$5" />
+      <unit id="1650638035896359074" at="126,15,133,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$6" />
+      <unit id="1650638035896359074" at="147,15,154,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$7" />
+      <unit id="1650638035896359074" at="168,15,175,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$8" />
+      <unit id="1650638035896359074" at="189,15,196,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$9" />
       <unit id="1650638035896359074" at="8,0,205,0" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings" />
     </file>
   </root>

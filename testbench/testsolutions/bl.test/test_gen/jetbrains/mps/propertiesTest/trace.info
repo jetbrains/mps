@@ -92,15 +92,15 @@
       <node id="12077399789561873" at="57,0,61,0" concept="3" trace="setProp3#(I)I" />
       <node id="12077399789561873" at="77,0,81,0" concept="3" trace="setProp4#(I)I" />
       <node id="12077399789561939" at="106,0,112,0" concept="0" trace="PropertyChanger#(I)V" />
-      <node id="12077399789561873" at="19,29,27,6" concept="1" />
-      <node id="12077399789561873" at="40,28,48,6" concept="1" />
-      <node id="12077399789561873" at="61,28,69,6" concept="1" />
-      <node id="12077399789561873" at="81,28,89,6" concept="1" />
+      <node id="12077399789561873" at="19,43,27,6" concept="5" />
+      <node id="12077399789561873" at="40,42,48,6" concept="5" />
+      <node id="12077399789561873" at="61,42,69,6" concept="5" />
+      <node id="12077399789561873" at="81,42,89,6" concept="5" />
       <node id="12077399789561875" at="92,0,100,0" concept="0" trace="TestClass#(I)V" />
-      <node id="12077399789561873" at="19,0,29,0" concept="3" trace="refToProp1#()V" />
-      <node id="12077399789561873" at="40,0,50,0" concept="3" trace="refToProp2#()V" />
-      <node id="12077399789561873" at="61,0,71,0" concept="3" trace="refToProp3#()V" />
-      <node id="12077399789561873" at="81,0,91,0" concept="3" trace="refToProp4#()V" />
+      <node id="12077399789561873" at="19,0,29,0" concept="3" trace="refToProp1#()Ljetbrains/mps/references/Reference;" />
+      <node id="12077399789561873" at="40,0,50,0" concept="3" trace="refToProp2#()Ljetbrains/mps/references/Reference;" />
+      <node id="12077399789561873" at="61,0,71,0" concept="3" trace="refToProp3#()Ljetbrains/mps/references/Reference;" />
+      <node id="12077399789561873" at="81,0,91,0" concept="3" trace="refToProp4#()Ljetbrains/mps/references/Reference;" />
       <scope id="12077399789561873" at="9,25,10,24" />
       <scope id="12077399789561873" at="12,37,13,25" />
       <scope id="12077399789561873" at="21,28,22,26" />
@@ -174,10 +174,10 @@
       <scope id="12077399789561939" at="106,0,112,0">
         <var name="newValue" id="12077399789561943" />
       </scope>
-      <scope id="12077399789561873" at="19,29,27,6" />
-      <scope id="12077399789561873" at="40,28,48,6" />
-      <scope id="12077399789561873" at="61,28,69,6" />
-      <scope id="12077399789561873" at="81,28,89,6" />
+      <scope id="12077399789561873" at="19,43,27,6" />
+      <scope id="12077399789561873" at="40,42,48,6" />
+      <scope id="12077399789561873" at="61,42,69,6" />
+      <scope id="12077399789561873" at="81,42,89,6" />
       <scope id="12077399789561875" at="92,0,100,0">
         <var name="initialValue" id="12077399789561887" />
       </scope>
@@ -185,10 +185,10 @@
       <scope id="12077399789561873" at="40,0,50,0" />
       <scope id="12077399789561873" at="61,0,71,0" />
       <scope id="12077399789561873" at="81,0,91,0" />
-      <unit id="12077399789561873" at="20,8,27,5" name="jetbrains.mps.propertiesTest.TestClass$1" />
-      <unit id="12077399789561873" at="41,8,48,5" name="jetbrains.mps.propertiesTest.TestClass$2" />
-      <unit id="12077399789561873" at="62,8,69,5" name="jetbrains.mps.propertiesTest.TestClass$3" />
-      <unit id="12077399789561873" at="82,8,89,5" name="jetbrains.mps.propertiesTest.TestClass$4" />
+      <unit id="12077399789561873" at="20,15,27,5" name="jetbrains.mps.propertiesTest.TestClass$1" />
+      <unit id="12077399789561873" at="41,15,48,5" name="jetbrains.mps.propertiesTest.TestClass$2" />
+      <unit id="12077399789561873" at="62,15,69,5" name="jetbrains.mps.propertiesTest.TestClass$3" />
+      <unit id="12077399789561873" at="82,15,89,5" name="jetbrains.mps.propertiesTest.TestClass$4" />
       <unit id="12077399789561937" at="105,0,113,0" name="jetbrains.mps.propertiesTest.TestClass$PropertyChanger" />
       <unit id="12077399789561873" at="7,0,114,0" name="jetbrains.mps.propertiesTest.TestClass" />
     </file>
@@ -325,8 +325,8 @@
       <node id="7319542056806110576" at="21,0,24,0" concept="3" trace="get#()Ljava/lang/Integer;" />
       <node id="7319542056806110576" at="24,0,27,0" concept="3" trace="set#(Ljava/lang/Integer;)V" />
       <node id="7319542056806110576" at="15,0,19,0" concept="3" trace="setBaseProperty#(I)I" />
-      <node id="7319542056806110576" at="19,35,27,6" concept="1" />
-      <node id="7319542056806110576" at="19,0,29,0" concept="3" trace="refToBaseProperty#()V" />
+      <node id="7319542056806110576" at="19,49,27,6" concept="5" />
+      <node id="7319542056806110576" at="19,0,29,0" concept="3" trace="refToBaseProperty#()Ljetbrains/mps/references/Reference;" />
       <scope id="7319542056806117243" at="29,26,29,26" />
       <scope id="7319542056806110576" at="9,32,10,31" />
       <scope id="7319542056806110576" at="12,44,13,32" />
@@ -345,9 +345,9 @@
       <scope id="7319542056806110576" at="15,0,19,0">
         <var name="value" id="7319542056806110576" />
       </scope>
-      <scope id="7319542056806110576" at="19,35,27,6" />
+      <scope id="7319542056806110576" at="19,49,27,6" />
       <scope id="7319542056806110576" at="19,0,29,0" />
-      <unit id="7319542056806110576" at="20,8,27,5" name="jetbrains.mps.propertiesTest.BaseTestClass$1" />
+      <unit id="7319542056806110576" at="20,15,27,5" name="jetbrains.mps.propertiesTest.BaseTestClass$1" />
       <unit id="7319542056806110576" at="7,0,32,0" name="jetbrains.mps.propertiesTest.BaseTestClass" />
     </file>
   </root>

@@ -609,8 +609,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
       _setStatementList(value);
       return value;
     }
-    private void refToStatementList() {
-      new Reference<SNode>() {
+    private Reference<SNode> refToStatementList() {
+      return new Reference<SNode>() {
         public SNode get() {
           return getStatementList();
         }
@@ -630,8 +630,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
       _setStartPos(value);
       return value;
     }
-    private void refToStartPos() {
-      new Reference<Integer>() {
+    private Reference<Integer> refToStartPos() {
+      return new Reference<Integer>() {
         public Integer get() {
           return getStartPos();
         }
@@ -651,8 +651,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
       _setEndPos(value);
       return value;
     }
-    private void refToEndPos() {
-      new Reference<Integer>() {
+    private Reference<Integer> refToEndPos() {
+      return new Reference<Integer>() {
         public Integer get() {
           return getEndPos();
         }

@@ -525,8 +525,8 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
       _setFromNode(value);
       return value;
     }
-    private void refToFromNode() {
-      new Reference<SNode>() {
+    private Reference<SNode> refToFromNode() {
+      return new Reference<SNode>() {
         public SNode get() {
           return getFromNode();
         }
@@ -546,8 +546,8 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
       _setFromId(value);
       return value;
     }
-    private void refToFromId() {
-      new Reference<Object>() {
+    private Reference<Object> refToFromId() {
+      return new Reference<Object>() {
         public Object get() {
           return getFromId();
         }
@@ -567,8 +567,8 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
       _setToNode(value);
       return value;
     }
-    private void refToToNode() {
-      new Reference<SNode>() {
+    private Reference<SNode> refToToNode() {
+      return new Reference<SNode>() {
         public SNode get() {
           return getToNode();
         }
@@ -588,8 +588,8 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
       _setToId(value);
       return value;
     }
-    private void refToToId() {
-      new Reference<Object>() {
+    private Reference<Object> refToToId() {
+      return new Reference<Object>() {
         public Object get() {
           return getToId();
         }

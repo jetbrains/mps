@@ -16,8 +16,8 @@ public class TestClass extends BaseTestClass {
     _setProp1(value);
     return value;
   }
-  private void refToProp1() {
-    new Reference<Integer>() {
+  private Reference<Integer> refToProp1() {
+    return new Reference<Integer>() {
       public Integer get() {
         return getProp1();
       }
@@ -37,8 +37,8 @@ public class TestClass extends BaseTestClass {
     _setProp2(value);
     return value;
   }
-  public void refToProp2() {
-    new Reference<Integer>() {
+  public Reference<Integer> refToProp2() {
+    return new Reference<Integer>() {
       public Integer get() {
         return getProp2();
       }
@@ -58,8 +58,8 @@ public class TestClass extends BaseTestClass {
     _setProp3(value);
     return value;
   }
-  public void refToProp3() {
-    new Reference<Integer>() {
+  public Reference<Integer> refToProp3() {
+    return new Reference<Integer>() {
       public Integer get() {
         return getProp3();
       }
@@ -78,8 +78,8 @@ public class TestClass extends BaseTestClass {
     _setProp4(value);
     return value;
   }
-  public void refToProp4() {
-    new Reference<Integer>() {
+  public Reference<Integer> refToProp4() {
+    return new Reference<Integer>() {
       public Integer get() {
         return getProp4();
       }

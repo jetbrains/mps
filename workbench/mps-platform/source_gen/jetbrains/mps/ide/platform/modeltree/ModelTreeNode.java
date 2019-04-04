@@ -18,8 +18,8 @@ public class ModelTreeNode extends DefaultMutableTreeNode {
     _setText(value);
     return value;
   }
-  private void refToText() {
-    new Reference<String>() {
+  private Reference<String> refToText() {
+    return new Reference<String>() {
       public String get() {
         return getText();
       }
@@ -39,8 +39,8 @@ public class ModelTreeNode extends DefaultMutableTreeNode {
     _setLeafPosition(value);
     return value;
   }
-  public void refToLeafPosition() {
-    new Reference<Boolean>() {
+  public Reference<Boolean> refToLeafPosition() {
+    return new Reference<Boolean>() {
       public Boolean get() {
         return isLeafPosition();
       }
@@ -60,8 +60,8 @@ public class ModelTreeNode extends DefaultMutableTreeNode {
     _setInitialized(value);
     return value;
   }
-  public void refToInitialized() {
-    new Reference<Boolean>() {
+  public Reference<Boolean> refToInitialized() {
+    return new Reference<Boolean>() {
       public Boolean get() {
         return isInitialized();
       }

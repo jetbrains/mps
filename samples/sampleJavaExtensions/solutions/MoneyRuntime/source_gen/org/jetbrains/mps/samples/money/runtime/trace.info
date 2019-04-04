@@ -270,10 +270,10 @@
       <node id="5447719361346555937" at="73,41,78,5" concept="5" />
       <node id="5447719361346555824" at="66,0,73,0" concept="6" trace="plus#(Lorg/jetbrains/mps/samples/money/runtime/Money;)Lorg/jetbrains/mps/samples/money/runtime/Money;" />
       <node id="5447719361346555932" at="73,0,80,0" concept="6" trace="minus#(Lorg/jetbrains/mps/samples/money/runtime/Money;)Lorg/jetbrains/mps/samples/money/runtime/Money;" />
-      <node id="5447719361346501252" at="20,30,28,6" concept="2" />
-      <node id="5447719361346501252" at="41,32,49,6" concept="2" />
-      <node id="5447719361346501252" at="20,0,30,0" concept="6" trace="refToAmount#()V" />
-      <node id="5447719361346501252" at="41,0,51,0" concept="6" trace="refToCurrency#()V" />
+      <node id="5447719361346501252" at="20,47,28,6" concept="8" />
+      <node id="5447719361346501252" at="41,45,49,6" concept="8" />
+      <node id="5447719361346501252" at="20,0,30,0" concept="6" trace="refToAmount#()Ljetbrains/mps/references/Reference;" />
+      <node id="5447719361346501252" at="41,0,51,0" concept="6" trace="refToCurrency#()Ljetbrains/mps/references/Reference;" />
       <scope id="5447719361346501252" at="10,33,11,25" />
       <scope id="5447719361346501252" at="13,45,14,26" />
       <scope id="5447719361346501252" at="22,31,23,27" />
@@ -334,12 +334,12 @@
       <scope id="5447719361346555932" at="73,0,80,0">
         <var name="other" id="5447719361346555978" />
       </scope>
-      <scope id="5447719361346501252" at="20,30,28,6" />
-      <scope id="5447719361346501252" at="41,32,49,6" />
+      <scope id="5447719361346501252" at="20,47,28,6" />
+      <scope id="5447719361346501252" at="41,45,49,6" />
       <scope id="5447719361346501252" at="20,0,30,0" />
       <scope id="5447719361346501252" at="41,0,51,0" />
-      <unit id="5447719361346501252" at="21,8,28,5" name="org.jetbrains.mps.samples.money.runtime.Money$1" />
-      <unit id="5447719361346501252" at="42,8,49,5" name="org.jetbrains.mps.samples.money.runtime.Money$2" />
+      <unit id="5447719361346501252" at="21,15,28,5" name="org.jetbrains.mps.samples.money.runtime.Money$1" />
+      <unit id="5447719361346501252" at="42,15,49,5" name="org.jetbrains.mps.samples.money.runtime.Money$2" />
       <unit id="5447719361346501252" at="8,0,81,0" name="org.jetbrains.mps.samples.money.runtime.Money" />
     </file>
   </root>

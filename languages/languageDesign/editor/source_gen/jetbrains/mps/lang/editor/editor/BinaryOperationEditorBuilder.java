@@ -114,8 +114,8 @@ public class BinaryOperationEditorBuilder {
       _setMainCell(value);
       return value;
     }
-    private void refToMainCell() {
-      new Reference<SNode>() {
+    private Reference<SNode> refToMainCell() {
+      return new Reference<SNode>() {
         public SNode get() {
           return getMainCell();
         }
@@ -135,8 +135,8 @@ public class BinaryOperationEditorBuilder {
       _setAliasCell(value);
       return value;
     }
-    private void refToAliasCell() {
-      new Reference<SNode>() {
+    private Reference<SNode> refToAliasCell() {
+      return new Reference<SNode>() {
         public SNode get() {
           return getAliasCell();
         }

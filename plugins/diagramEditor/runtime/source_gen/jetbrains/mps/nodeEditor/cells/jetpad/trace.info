@@ -735,18 +735,18 @@
       <node id="7494254745215847042" at="255,0,263,0" concept="9" trace="createNewDiagramElement#(II)V" />
       <node id="4958193202997934856" at="334,0,342,0" concept="9" trace="doSubstitute#(Ljetbrains/mps/openapi/editor/EditorContext;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6981942132929010940" at="478,0,486,0" concept="9" trace="showConnectionDragFeedback#(Ljetbrains/jetpad/projectional/view/View;)Ljetbrains/jetpad/projectional/diagram/view/PolyLineConnection;" />
-      <node id="5204867329711318576" at="528,34,536,8" concept="5" />
-      <node id="5204867329711318576" at="549,32,557,8" concept="5" />
-      <node id="5204867329711318576" at="570,32,578,8" concept="5" />
-      <node id="5204867329711318576" at="591,30,599,8" concept="5" />
+      <node id="5204867329711318576" at="528,46,536,8" concept="11" />
+      <node id="5204867329711318576" at="549,45,557,8" concept="11" />
+      <node id="5204867329711318576" at="570,44,578,8" concept="11" />
+      <node id="5204867329711318576" at="591,43,599,8" concept="11" />
       <node id="4958193202997934814" at="325,0,334,0" concept="9" trace="canSubstitute#(Ljava/lang/String;)Z" />
       <node id="4883868441281039008" at="444,0,453,0" concept="9" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
       <node id="828763237677149335" at="462,40,471,7" concept="5" />
       <node id="1853186767785085632" at="501,0,510,0" concept="9" trace="syncDiagramElements#(Ljava/lang/Iterable;Ljava/util/ListIterator;Ljava/util/Set;Ljava/util/ListIterator;Ljava/util/Set;)V" />
-      <node id="5204867329711318576" at="528,0,538,0" concept="9" trace="refToFromNode#()V" />
-      <node id="5204867329711318576" at="549,0,559,0" concept="9" trace="refToFromId#()V" />
-      <node id="5204867329711318576" at="570,0,580,0" concept="9" trace="refToToNode#()V" />
-      <node id="5204867329711318576" at="591,0,601,0" concept="9" trace="refToToId#()V" />
+      <node id="5204867329711318576" at="528,0,538,0" concept="9" trace="refToFromNode#()Ljetbrains/mps/references/Reference;" />
+      <node id="5204867329711318576" at="549,0,559,0" concept="9" trace="refToFromId#()Ljetbrains/mps/references/Reference;" />
+      <node id="5204867329711318576" at="570,0,580,0" concept="9" trace="refToToNode#()Ljetbrains/mps/references/Reference;" />
+      <node id="5204867329711318576" at="591,0,601,0" concept="9" trace="refToToId#()Ljetbrains/mps/references/Reference;" />
       <node id="639949279726829813" at="209,0,220,0" concept="9" trace="handle#(Ljetbrains/jetpad/projectional/view/View;Ljetbrains/jetpad/event/KeyEvent;)V" />
       <node id="4883868441281039000" at="442,41,453,8" concept="5" />
       <node id="639949279726829754" at="196,0,208,0" concept="9" trace="handle#(Ljetbrains/jetpad/projectional/view/View;Ljetbrains/jetpad/event/MouseEvent;)V" />
@@ -1043,10 +1043,10 @@
       <scope id="6981942132929010940" at="478,0,486,0">
         <var name="fromView" id="6981942132929149947" />
       </scope>
-      <scope id="5204867329711318576" at="528,34,536,8" />
-      <scope id="5204867329711318576" at="549,32,557,8" />
-      <scope id="5204867329711318576" at="570,32,578,8" />
-      <scope id="5204867329711318576" at="591,30,599,8" />
+      <scope id="5204867329711318576" at="528,46,536,8" />
+      <scope id="5204867329711318576" at="549,45,557,8" />
+      <scope id="5204867329711318576" at="570,44,578,8" />
+      <scope id="5204867329711318576" at="591,43,599,8" />
       <scope id="639949279726829818" at="209,55,218,11" />
       <scope id="4958193202997934814" at="325,0,334,0">
         <var name="string" id="4958193202997934817" />
@@ -1173,10 +1173,10 @@
       <unit id="4958193202997342826" at="307,25,312,11" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$9$1" />
       <unit id="639949279721536038" at="510,0,515,0" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$DiagramSubstituteActionWraper" />
       <unit id="2346751616334326746" at="124,39,131,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$1" />
-      <unit id="5204867329711318576" at="529,10,536,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$1" />
-      <unit id="5204867329711318576" at="550,10,557,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$2" />
-      <unit id="5204867329711318576" at="571,10,578,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$3" />
-      <unit id="5204867329711318576" at="592,10,599,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$4" />
+      <unit id="5204867329711318576" at="529,17,536,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$1" />
+      <unit id="5204867329711318576" at="550,17,557,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$2" />
+      <unit id="5204867329711318576" at="571,17,578,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$3" />
+      <unit id="5204867329711318576" at="592,17,599,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$ConnectionInfo$4" />
       <unit id="639949279726829857" at="220,38,228,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$4" />
       <unit id="828763237677149342" at="463,43,471,5" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$14" />
       <unit id="718530200790693796" at="242,43,251,7" name="jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell$6" />
