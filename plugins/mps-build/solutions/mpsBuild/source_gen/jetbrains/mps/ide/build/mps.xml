@@ -172,9 +172,9 @@
     <copy todir="${build.layout}/plugins/mps-migration">
       <fileset dir="${artifacts.mpsMigration}/mps-migration" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/projectMigrations" />
-    <copy todir="${build.layout}/plugins/projectMigrations">
-      <fileset dir="${artifacts.mpsMigration}/projectMigrations" />
+    <mkdir dir="${build.layout}/plugins/mps-project-migrations" />
+    <copy todir="${build.layout}/plugins/mps-project-migrations">
+      <fileset dir="${artifacts.mpsMigration}/mps-project-migrations" />
     </copy>
     <mkdir dir="${build.layout}/plugins/mps-build" />
     <copy todir="${build.layout}/plugins/mps-build">

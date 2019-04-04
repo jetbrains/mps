@@ -97,7 +97,7 @@
     <orderEntry type="module" module-name="mps-project-excludes" />
     <orderEntry type="module" module-name="mps-testing" />
     <orderEntry type="module" module-name="mps-workbench" />
-    <orderEntry type="module" module-name="projectMigrations" />
+    <orderEntry type="module" module-name="mps-project-migrations" />
     <orderEntry type="module" module-name="refactoring" />
     <orderEntry type="module" module-name="resources" />
     <orderEntry type="module" module-name="resources_en" />

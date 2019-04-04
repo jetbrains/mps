@@ -19468,7 +19468,7 @@
           <ref role="3_I8Xa" node="5lGJ4TajoPh" resolve="mps-migration" />
         </node>
         <node concept="3_I8Xc" id="1d6huufKTb8" role="39821P">
-          <ref role="3_I8Xa" node="1d6huufKT8x" resolve="projectMigrations" />
+          <ref role="3_I8Xa" node="1d6huufKT8x" resolve="mps-project-migrations" />
         </node>
         <node concept="3_I8Xc" id="1Z_UwmOKF0$" role="39821P">
           <ref role="3_I8Xa" node="78GwwOvE66$" resolve="mps-build" />
@@ -33653,7 +33653,7 @@
             <node concept="2Ry0Ak" id="1CY6j2K6aZL" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
               <node concept="2Ry0Ak" id="1CY6j2K6aZM" role="2Ry0An">
-                <property role="2Ry0Am" value="projectMigrations" />
+                <property role="2Ry0Am" value="mps-project-migrations" />
                 <node concept="2Ry0Ak" id="1CY6j2K6aZN" role="2Ry0An">
                   <property role="2Ry0Am" value="source_gen" />
                 </node>
@@ -33988,7 +33988,7 @@
                   <node concept="2Ry0Ak" id="1CY6j2K5DBx" role="iGT6I">
                     <property role="2Ry0Am" value="plugins" />
                     <node concept="2Ry0Ak" id="1CY6j2K5DBy" role="2Ry0An">
-                      <property role="2Ry0Am" value="projectMigrations" />
+                      <property role="2Ry0Am" value="mps-project-migrations" />
                       <node concept="2Ry0Ak" id="1CY6j2K5DBz" role="2Ry0An">
                         <property role="2Ry0Am" value="META-INF" />
                         <node concept="2Ry0Ak" id="1CY6j2K5DB$" role="2Ry0An">
@@ -34014,7 +34014,7 @@
         </node>
         <node concept="3_J27D" id="1d6huufKT8z" role="Nbhlr">
           <node concept="3Mxwew" id="1d6huufKT9e" role="3MwsjC">
-            <property role="3MwjfP" value="projectMigrations" />
+            <property role="3MwjfP" value="mps-project-migrations" />
           </node>
         </node>
       </node>
