@@ -16,8 +16,8 @@ public final class TraversalControllerImpl implements ClassifierTraversalCallbac
     _setStopTraversal(value);
     return value;
   }
-  private void refToStopTraversal() {
-    new Reference<Boolean>() {
+  private Reference<Boolean> refToStopTraversal() {
+    return new Reference<Boolean>() {
       public Boolean get() {
         return isStopTraversal();
       }
@@ -37,8 +37,8 @@ public final class TraversalControllerImpl implements ClassifierTraversalCallbac
     _setDoNotGoInto(value);
     return value;
   }
-  private void refToDoNotGoInto() {
-    new Reference<Boolean>() {
+  private Reference<Boolean> refToDoNotGoInto() {
+    return new Reference<Boolean>() {
       public Boolean get() {
         return isDoNotGoInto();
       }

@@ -22,8 +22,8 @@ public interface ClassifierTraversalCallback {
       _setCurrentClassifier(value);
       return value;
     }
-    private void refToCurrentClassifier() {
-      new Reference<SNode>() {
+    private Reference<SNode> refToCurrentClassifier() {
+      return new Reference<SNode>() {
         public SNode get() {
           return getCurrentClassifier();
         }
@@ -43,8 +43,8 @@ public interface ClassifierTraversalCallback {
       _setController(value);
       return value;
     }
-    private void refToController() {
-      new Reference<ClassifierTraversalCallback.TraversalController>() {
+    private Reference<ClassifierTraversalCallback.TraversalController> refToController() {
+      return new Reference<ClassifierTraversalCallback.TraversalController>() {
         public ClassifierTraversalCallback.TraversalController get() {
           return getController();
         }

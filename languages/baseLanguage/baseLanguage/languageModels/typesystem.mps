@@ -50965,48 +50965,6 @@
       </node>
     </node>
   </node>
-  <node concept="18kY7G" id="5WTl5xVjaCT">
-    <property role="TrG5h" value="check_PropertyReferenceNotUsedInUnaryNumericOperations" />
-    <property role="3GE5qa" value="ext.property" />
-    <node concept="3clFbS" id="5WTl5xVjaCU" role="18ibNy">
-      <node concept="2Mj0R9" id="5WTl5xVjeFm" role="3cqZAp">
-        <node concept="2OqwBi" id="5WTl5xVj$09" role="2MkoU_">
-          <node concept="2OqwBi" id="5WTl5xVjeJI" role="2Oq$k0">
-            <node concept="1YBJjd" id="5WTl5xVjeFQ" role="2Oq$k0">
-              <ref role="1YBMHb" node="5WTl5xVjaCW" resolve="propertyReference" />
-            </node>
-            <node concept="2Xjw5R" id="5WTl5xVjwPH" role="2OqNvi">
-              <node concept="3gmYPX" id="5WTl5xVjyii" role="1xVPHs">
-                <node concept="3gn64h" id="5WTl5xVjyjq" role="3gmYPZ">
-                  <ref role="3gnhBz" to="tpee:i2$sJ3C" resolve="PrefixDecrementExpression" />
-                </node>
-                <node concept="3gn64h" id="5WTl5xVjymB" role="3gmYPZ">
-                  <ref role="3gnhBz" to="tpee:i2$rvm0" resolve="PrefixIncrementExpression" />
-                </node>
-                <node concept="3gn64h" id="5WTl5xVjyDt" role="3gmYPZ">
-                  <ref role="3gnhBz" to="tpee:hFuO5ZA" resolve="PostfixDecrementExpression" />
-                </node>
-                <node concept="3gn64h" id="5WTl5xVjzdP" role="3gmYPZ">
-                  <ref role="3gnhBz" to="tpee:hFuNrjK" resolve="PostfixIncrementExpression" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3w_OXm" id="5WTl5xVjANg" role="2OqNvi" />
-        </node>
-        <node concept="1YBJjd" id="5WTl5xVjBBa" role="2OEOjV">
-          <ref role="1YBMHb" node="5WTl5xVjaCW" resolve="propertyReference" />
-        </node>
-        <node concept="Xl_RD" id="5WTl5xVjASi" role="2MkJ7o">
-          <property role="Xl_RC" value="variable expected" />
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="5WTl5xVjaCW" role="1YuTPh">
-      <property role="TrG5h" value="propertyReference" />
-      <ref role="1YaFvo" to="tpee:huS8uEI" resolve="PropertyReference" />
-    </node>
-  </node>
   <node concept="Q5z_Y" id="3v2v_L9FdTT">
     <property role="TrG5h" value="ChangeExpectedType" />
     <node concept="Q6JDH" id="3v2v_L9FdU0" role="Q6Id_">

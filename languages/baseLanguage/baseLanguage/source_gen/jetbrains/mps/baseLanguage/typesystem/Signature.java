@@ -19,8 +19,8 @@ import java.util.Objects;
     _setName(value);
     return value;
   }
-  private void refToName() {
-    new Reference<String>() {
+  private Reference<String> refToName() {
+    return new Reference<String>() {
       public String get() {
         return getName();
       }
@@ -40,8 +40,8 @@ import java.util.Objects;
     _setParamsCount(value);
     return value;
   }
-  private void refToParamsCount() {
-    new Reference<Integer>() {
+  private Reference<Integer> refToParamsCount() {
+    return new Reference<Integer>() {
       public Integer get() {
         return getParamsCount();
       }
@@ -61,8 +61,8 @@ import java.util.Objects;
     _setParamsErasure(value);
     return value;
   }
-  private void refToParamsErasure() {
-    new Reference<String>() {
+  private Reference<String> refToParamsErasure() {
+    return new Reference<String>() {
       public String get() {
         return getParamsErasure();
       }
