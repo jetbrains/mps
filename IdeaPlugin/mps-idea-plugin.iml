@@ -55,7 +55,7 @@
     <orderEntry type="module" module-name="closures-runtime" />
     <orderEntry type="module" module-name="collections-runtime" />
     <orderEntry type="module" module-name="components" />
-    <orderEntry type="module" module-name="console" />
+    <orderEntry type="module" module-name="mps-console" />
     <orderEntry type="module" module-name="dataflow-rt" />
     <orderEntry type="module" module-name="debugger-api-api" />
     <orderEntry type="module" module-name="debugger-api-runtime" />

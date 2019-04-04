@@ -178,16 +178,16 @@
       <modulePath path="$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.baseLanguage.regexp.runtime/jetbrains.mps.baseLanguage.regexp.runtime.msd" folder="core.baseLanguage.regexp" />
       <modulePath path="$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.regexp.examples/jetbrains.mps.baseLanguage.regexp.examples.msd" folder="core.baseLanguage.regexp" />
       <modulePath path="$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.regexp.sandbox/jetbrains.mps.baseLanguage.regexp.sandbox.msd" folder="core.baseLanguage.regexp" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/jetbrains.mps.console.actions.msd" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/jetbrains.mps.console.msd" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/base/jetbrains.mps.console.base.mpl" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/devkit/jetbrains.mps.console.devkit.devkit" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/ideCommands/jetbrains.mps.console.ideCommands.mpl" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/ideCommandsRuntime/jetbrains.mps.console.ideCommands.runtime.msd" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/internalCommands/jetbrains.mps.console.internalCommands.mpl" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/internalCommandsRuntime/jetbrains.mps.console.internalCommands.runtime.msd" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/scripts/jetbrains.mps.console.scripts.mpl" folder="platform.console" />
-      <modulePath path="$PROJECT_DIR$/plugins/console/lang/scriptsRuntime/jetbrains.mps.console.scripts.runtime.msd" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/jetbrains.mps.console.actions.msd" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/jetbrains.mps.console.msd" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/base/jetbrains.mps.console.base.mpl" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/devkit/jetbrains.mps.console.devkit.devkit" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/ideCommands/jetbrains.mps.console.ideCommands.mpl" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/ideCommandsRuntime/jetbrains.mps.console.ideCommands.runtime.msd" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/internalCommands/jetbrains.mps.console.internalCommands.mpl" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/internalCommandsRuntime/jetbrains.mps.console.internalCommands.runtime.msd" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/scripts/jetbrains.mps.console.scripts.mpl" folder="platform.console" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-console/lang/scriptsRuntime/jetbrains.mps.console.scripts.runtime.msd" folder="platform.console" />
       <modulePath path="$PROJECT_DIR$/plugins/debugger-api/api/jetbrains.mps.debugger.api.api.msd" folder="workbench.debugger" />
       <modulePath path="$PROJECT_DIR$/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/jetbrains.mps.debugger.api.lang.mpl" folder="workbench.debugger" />
       <modulePath path="$PROJECT_DIR$/plugins/debugger-api/runtime/jetbrains.mps.debugger.api.runtime.msd" folder="workbench.debugger" />

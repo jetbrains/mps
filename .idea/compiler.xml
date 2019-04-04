@@ -226,20 +226,20 @@
       <directory url="file://$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.regexp.sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.regexp.sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/regexp/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/actions/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/base/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/base/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/ideCommands/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/ideCommands/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/ideCommandsRuntime/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/actions/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/base/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/base/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/ideCommands/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/ideCommands/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/ideCommandsRuntime/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/console/lang/ideCommandsRuntime/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/internalCommands/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/internalCommands/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/internalCommandsRuntime/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/internalCommands/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/internalCommands/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/internalCommandsRuntime/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/console/lang/internalCommandsRuntime/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/scripts/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/scripts/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/console/lang/scriptsRuntime/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/scripts/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/scripts/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-console/lang/scriptsRuntime/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/console/lang/scriptsRuntime/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/console/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/generator/source_gen" includeSubdirectories="true" />
