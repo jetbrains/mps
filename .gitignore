@@ -43,7 +43,6 @@ teamcity-info.xml
 /plugins/mps-java-workbench/lib/
 /plugins/execution-languages/lib
 /plugins/execution-configurations/lib
-/plugins/mps-execution-deprecated/lib
 /plugins/jetpad/lib
 /plugins/jetpad/lib/*.war
 /plugins/jetpad/lib/jetpadBuildNumber.txt
