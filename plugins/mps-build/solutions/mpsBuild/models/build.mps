@@ -26931,7 +26931,7 @@
         <node concept="2Ry0Ak" id="3BEvYVrXfSB" role="iGT6I">
           <property role="2Ry0Am" value="plugins" />
           <node concept="2Ry0Ak" id="3BEvYVrXfSC" role="2Ry0An">
-            <property role="2Ry0Am" value="mpsdevkit" />
+            <property role="2Ry0Am" value="mps-devkit" />
             <node concept="2Ry0Ak" id="3BEvYVrXfSD" role="2Ry0An">
               <property role="2Ry0Am" value="META-INF" />
               <node concept="2Ry0Ak" id="3BEvYVrXfSE" role="2Ry0An">
@@ -26993,7 +26993,7 @@
           <node concept="2Ry0Ak" id="5sovPIfS$mN" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5sovPIfS$mO" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
             </node>
           </node>
         </node>
@@ -27027,7 +27027,7 @@
               <node concept="2Ry0Ak" id="EpEP7iiihT" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iiihU" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iiihV" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iiihW" role="2Ry0An">
@@ -27071,7 +27071,7 @@
           <node concept="2Ry0Ak" id="5bqL32k0kwF" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5uXoHdKELDs" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="5uXoHdKELDB" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="5uXoHdKELDM" role="2Ry0An">
@@ -27145,7 +27145,7 @@
               <node concept="2Ry0Ak" id="EpEP7iiiev" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iiiew" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iiiex" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iiiey" role="2Ry0An">
@@ -27165,7 +27165,7 @@
           <node concept="2Ry0Ak" id="5uXoHdKEPEo" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5uXoHdKEPEp" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="5uXoHdKEPEq" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="5uXoHdKEPEr" role="2Ry0An">
@@ -27269,7 +27269,7 @@
               <node concept="2Ry0Ak" id="EpEP7iihZB" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iihZC" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iihZD" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iihZE" role="2Ry0An">
@@ -27289,7 +27289,7 @@
           <node concept="2Ry0Ak" id="5uXoHdKEPJ9" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5uXoHdKEPJa" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="5uXoHdKEPJb" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="5uXoHdKEPJc" role="2Ry0An">
@@ -27421,7 +27421,7 @@
               <node concept="2Ry0Ak" id="EpEP7iii58" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iii59" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iii5a" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iii5b" role="2Ry0An">
@@ -27441,7 +27441,7 @@
           <node concept="2Ry0Ak" id="6zEiAnm2Trf" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="6zEiAnm2Trg" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="6zEiAnm2Trh" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="6zEiAnm2Tri" role="2Ry0An">
@@ -27533,7 +27533,7 @@
               <node concept="2Ry0Ak" id="EpEP7iihKa" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iihKb" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iihKc" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iihKd" role="2Ry0An">
@@ -27553,7 +27553,7 @@
           <node concept="2Ry0Ak" id="5uXoHdKEPQU" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5uXoHdKEPQV" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="5uXoHdKEPQW" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="5uXoHdKEPQX" role="2Ry0An">
@@ -27675,7 +27675,7 @@
               <node concept="2Ry0Ak" id="EpEP7iihHt" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iihHu" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iihHv" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iihHw" role="2Ry0An">
@@ -27695,7 +27695,7 @@
           <node concept="2Ry0Ak" id="5c5foM6wxNt" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5c5foM6wxNu" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="5c5foM6wxNv" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="5c5foM6wxNw" role="2Ry0An">
@@ -27745,7 +27745,7 @@
               <node concept="2Ry0Ak" id="EpEP7iiicD" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iiicE" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iiicF" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iiicG" role="2Ry0An">
@@ -27795,7 +27795,7 @@
           <node concept="2Ry0Ak" id="5bqL32k0kuw" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5bqL32k0kux" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="5bqL32k0kuy" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="5bqL32k0kuz" role="2Ry0An">
@@ -27819,7 +27819,7 @@
         </node>
       </node>
       <node concept="1E1JtA" id="4vCqlNf_1Yi" role="2G$12L">
-        <property role="BnDLt" value="false" />
+        <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.typesystem.devkit.pluginSolution" />
         <property role="3LESm3" value="64bcb807-f98e-4fa4-b07d-2b9f9d2f2ad3" />
         <property role="2GAjPV" value="false" />
@@ -27833,7 +27833,7 @@
               <node concept="2Ry0Ak" id="EpEP7iii4z" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iii4$" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iii4_" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iii4A" role="2Ry0An">
@@ -27889,7 +27889,7 @@
           <node concept="2Ry0Ak" id="4vCqlNf_1Yl" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="4vCqlNf_1Ym" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="4vCqlNf_1Yn" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="4vCqlNf_1Yo" role="2Ry0An">
@@ -27930,7 +27930,7 @@
               <node concept="2Ry0Ak" id="EpEP7iii2g" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="EpEP7iii2h" role="2Ry0An">
-                  <property role="2Ry0Am" value="mpsdevkit" />
+                  <property role="2Ry0Am" value="mps-devkit" />
                   <node concept="2Ry0Ak" id="EpEP7iii2i" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
                     <node concept="2Ry0Ak" id="EpEP7iii2j" role="2Ry0An">
@@ -27986,7 +27986,7 @@
           <node concept="2Ry0Ak" id="5bqL32k0kzT" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="5bqL32k0kzU" role="2Ry0An">
-              <property role="2Ry0Am" value="mpsdevkit" />
+              <property role="2Ry0Am" value="mps-devkit" />
               <node concept="2Ry0Ak" id="5bqL32k0kzV" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
                 <node concept="2Ry0Ak" id="5bqL32k0kzW" role="2Ry0An">
@@ -28103,7 +28103,7 @@
             <node concept="2Ry0Ak" id="EpEP7iii3F" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
               <node concept="2Ry0Ak" id="EpEP7iii3G" role="2Ry0An">
-                <property role="2Ry0Am" value="mpsdevkit" />
+                <property role="2Ry0Am" value="mps-devkit" />
               </node>
             </node>
           </node>
@@ -28114,7 +28114,7 @@
         <node concept="2Ry0Ak" id="5sovPIfS$ng" role="iGT6I">
           <property role="2Ry0Am" value="plugins" />
           <node concept="2Ry0Ak" id="5sovPIfS$nh" role="2Ry0An">
-            <property role="2Ry0Am" value="mpsdevkit" />
+            <property role="2Ry0Am" value="mps-devkit" />
             <node concept="2Ry0Ak" id="5sovPIfS$ni" role="2Ry0An">
               <property role="2Ry0Am" value="jetbrains.mps.ide.mpsdevkit.msd" />
             </node>

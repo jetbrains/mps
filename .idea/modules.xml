@@ -53,7 +53,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/mps-annotations/mps-annotations.iml" filepath="$PROJECT_DIR$/core/mps-annotations/mps-annotations.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/tool/builder/mps-ant.iml" filepath="$PROJECT_DIR$/core/tool/builder/mps-ant.iml" group="ant" />
       <module fileurl="file://$PROJECT_DIR$/workbench/mps-debugger/mps-debugger.iml" filepath="$PROJECT_DIR$/workbench/mps-debugger/mps-debugger.iml" group="workbench" />
-      <module fileurl="file://$PROJECT_DIR$/plugins/mpsdevkit/mps-devkit.iml" filepath="$PROJECT_DIR$/plugins/mpsdevkit/mps-devkit.iml" group="plugins" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/mps-devkit/mps-devkit.iml" filepath="$PROJECT_DIR$/plugins/mps-devkit/mps-devkit.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/workbench/mps-editor/mps-editor.iml" filepath="$PROJECT_DIR$/workbench/mps-editor/mps-editor.iml" group="workbench" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-httpsupport/mps-httpsupport.iml" filepath="$PROJECT_DIR$/plugins/mps-httpsupport/mps-httpsupport.iml" />
       <module fileurl="file://$PROJECT_DIR$/workbench/mps-icons/mps-icons.iml" filepath="$PROJECT_DIR$/workbench/mps-icons/mps-icons.iml" group="workbench" />

@@ -391,23 +391,23 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/baseLanguage/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/baseLanguage/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/baseLanguage/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.actions/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.actions/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.actions/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.dataFlow/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.dataFlow/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.dataFlow/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.generator/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.migration/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.migration/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.migration/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.plugin/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.plugin/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.plugin/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.quotation/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.quotation/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.quotation/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.structure/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.structure/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.structure/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.typesystem.devkit/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.typesystem.devkit/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mpsdevkit/languages/pluginSolutions/lang.typesystem.devkit/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/testModules/testClosures/solutions/jetbrains.mps.baseLanguage.closures.test/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/testModules/testClosures/solutions/jetbrains.mps.baseLanguage.closures.test/test_gen" includeSubdirectories="true" />
