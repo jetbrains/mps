@@ -5,7 +5,7 @@
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
-    <modelRoot contentPath="${mps_home}/plugins/ideaIntegration/classes" type="java_classes">
+    <modelRoot contentPath="${mps_home}/plugins/mps-idea-integration/classes" type="java_classes">
       <sourceRoot location="." />
     </modelRoot>
   </models>

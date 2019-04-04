@@ -1433,7 +1433,7 @@
     <orderEntry type="module" module-name="refactoring-runtime" />
     <orderEntry type="module" module-name="baseLanguage-util" />
     <orderEntry type="module" module-name="environment" />
-    <orderEntry type="module" module-name="ideaIntegration" />
+    <orderEntry type="module" module-name="mps-idea-integration" />
     <orderEntry type="module" module-name="make-facets" />
     <orderEntry type="module" module-name="make-runtime" />
     <orderEntry type="module" module-name="mps-modelchecker" />

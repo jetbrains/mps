@@ -7183,7 +7183,7 @@
                             </node>
                           </node>
                           <node concept="Xl_RD" id="4CyoKIoxAZX" role="3uHU7w">
-                            <property role="Xl_RC" value="ideaIntegration" />
+                            <property role="Xl_RC" value="mps-idea-integration" />
                           </node>
                         </node>
                         <node concept="10M0yZ" id="4CyoKIoxBTp" role="3uHU7w">
