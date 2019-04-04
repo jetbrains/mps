@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 public class PropertyReference {
   private SNode myNode;
@@ -46,15 +45,4 @@ public class PropertyReference {
     return myProperty;
   }
 
-  public String getPropertyName() {
-    return myProperty.getName();
-  }
-
-  public String getValue() {
-    return SNodeAccessUtil.getProperty(myNode, myProperty);
-  }
-
-  public void setValue(String value) {
-    SNodeAccessUtil.setProperty(myNode, myProperty, value);
-  }
 }
