@@ -350,9 +350,7 @@
                 <node concept="37vLTw" id="3GM_nagTBYt" role="2Oq$k0">
                   <ref role="3cqZAo" node="4cWf37B8oZU" resolve="p" />
                 </node>
-                <node concept="liA8E" id="4cWf37B8oZa" role="2OqNvi">
-                  <ref role="37wK5l" to="ttfg:~PropertyReference.getValue()" resolve="getValue" />
-                </node>
+                <node concept="30WB0d" id="5KWsMXTGZFk" role="2OqNvi" />
               </node>
             </node>
           </node>
@@ -365,9 +363,7 @@
                   <node concept="37vLTw" id="3GM_nagTAwK" role="2Oq$k0">
                     <ref role="3cqZAo" node="4cWf37B8oZU" resolve="p" />
                   </node>
-                  <node concept="liA8E" id="4cWf37B8oZg" role="2OqNvi">
-                    <ref role="37wK5l" to="ttfg:~PropertyReference.getValue()" resolve="getValue" />
-                  </node>
+                  <node concept="30WB0d" id="5KWsMXTGZ$i" role="2OqNvi" />
                 </node>
               </node>
             </node>

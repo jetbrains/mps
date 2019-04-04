@@ -45,10 +45,10 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
       }
     }
     for (PropertyReference p : ICheckedNamePolicy__BehaviorDescriptor.getPropertiesToCheck_id4cWf37B8oXP.invoke(node)) {
-      if (p.getValue() == null) {
+      if (SPropertyOperations.getString(p.getNode(), p.getProperty()) == null) {
         continue;
       }
-      if (!(NameUtil.satisfiesNamingPolicy(p.getValue()))) {
+      if (!(NameUtil.satisfiesNamingPolicy(SPropertyOperations.getString(p.getNode(), p.getProperty())))) {
         String myWarning = warningMessage + "; no leading and trailing whitespaces are allowed.";
         {
           MessageTarget errorTarget = new NodeMessageTarget();
