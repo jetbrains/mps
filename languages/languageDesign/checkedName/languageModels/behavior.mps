@@ -10,6 +10,7 @@
     <import index="4j10" ref="r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -77,6 +78,9 @@
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
+      <concept id="1171903916106" name="jetbrains.mps.baseLanguage.structure.UpperBoundType" flags="in" index="3qUE_q">
+        <child id="1171903916107" name="bound" index="3qUE_r" />
+      </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
@@ -88,7 +92,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="fe9d76d7-5809-45c9-ae28-a40915b4d6ff" name="jetbrains.mps.lang.checkedName">
-      <concept id="4844813484172611390" name="jetbrains.mps.lang.checkedName.structure.PropertyRefType" flags="in" index="2$7rcf" />
+      <concept id="8697758915834076725" name="jetbrains.mps.lang.checkedName.structure.PropertyPointerType" flags="in" index="30WBIj">
+        <reference id="3232030656012226095" name="dataType" index="3u4BjI" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
@@ -211,11 +217,15 @@
           <node concept="3cpWsn" id="4cWf37B8oXT" role="3cpWs9">
             <property role="TrG5h" value="result" />
             <node concept="_YKpA" id="4cWf37B8oXU" role="1tU5fm">
-              <node concept="2$7rcf" id="4cWf37B8oXV" role="_ZDj9" />
+              <node concept="30WBIj" id="5KWsMXTG5$c" role="_ZDj9">
+                <ref role="3u4BjI" to="tpck:fKAOsGN" resolve="string" />
+              </node>
             </node>
             <node concept="2ShNRf" id="4cWf37B8oXW" role="33vP2m">
               <node concept="Tc6Ow" id="4cWf37B8oXX" role="2ShVmc">
-                <node concept="2$7rcf" id="4cWf37B8oXY" role="HW$YZ" />
+                <node concept="30WBIj" id="5KWsMXTG64o" role="HW$YZ">
+                  <ref role="3u4BjI" to="tpck:fKAOsGN" resolve="string" />
+                </node>
               </node>
             </node>
           </node>
@@ -223,9 +233,11 @@
         <node concept="3cpWs8" id="4cWf37B8oXZ" role="3cqZAp">
           <node concept="3cpWsn" id="4cWf37B8oY0" role="3cpWs9">
             <property role="TrG5h" value="property" />
-            <node concept="2$7rcf" id="4cWf37B8oY1" role="1tU5fm" />
             <node concept="BsUDl" id="4cWf37B8oY2" role="33vP2m">
               <ref role="37wK5l" node="4cWf37B8oYh" resolve="getPropertyToCheck" />
+            </node>
+            <node concept="30WBIj" id="5KWsMXTG68q" role="1tU5fm">
+              <ref role="3u4BjI" to="tpck:fKAOsGN" resolve="string" />
             </node>
           </node>
         </node>
@@ -258,18 +270,24 @@
         </node>
       </node>
       <node concept="_YKpA" id="4cWf37B8oYf" role="3clF45">
-        <node concept="2$7rcf" id="4cWf37B8oYg" role="_ZDj9" />
+        <node concept="3qUE_q" id="5KWsMXTGQpL" role="_ZDj9">
+          <node concept="30WBIj" id="5KWsMXTG5fC" role="3qUE_r">
+            <ref role="3u4BjI" to="tpck:fKAOsGN" resolve="string" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="13i0hz" id="4cWf37B8oYh" role="13h7CS">
       <property role="TrG5h" value="getPropertyToCheck" />
       <property role="13i0it" value="true" />
       <node concept="3Tm1VV" id="4cWf37B8oYi" role="1B3o_S" />
-      <node concept="2$7rcf" id="4cWf37B8oYj" role="3clF45" />
       <node concept="3clFbS" id="4cWf37B8oYk" role="3clF47">
         <node concept="3cpWs6" id="4cWf37B8oYl" role="3cqZAp">
           <node concept="10Nm6u" id="4cWf37B8oYm" role="3cqZAk" />
         </node>
+      </node>
+      <node concept="30WBIj" id="5KWsMXTG6bz" role="3clF45">
+        <ref role="3u4BjI" to="tpck:fKAOsGN" resolve="string" />
       </node>
     </node>
   </node>

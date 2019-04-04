@@ -29,7 +29,7 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<List<SNode>> getDescendantsToCheck_id4cWf37B8oXl = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDescendantsToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXl").registry(REGISTRY).build();
   public static final SMethod<SNode> getDescendantToCheck_id4cWf37B8oXJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescendantToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXJ").registry(REGISTRY).build();
-  public static final SMethod<List<PropertyReference>> getPropertiesToCheck_id4cWf37B8oXP = new SMethodBuilder<List<PropertyReference>>(new SJavaCompoundTypeImpl((Class<List<PropertyReference>>) ((Class) Object.class))).name("getPropertiesToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXP").registry(REGISTRY).build();
+  public static final SMethod<List<? extends PropertyReference>> getPropertiesToCheck_id4cWf37B8oXP = new SMethodBuilder<List<? extends PropertyReference>>(new SJavaCompoundTypeImpl((Class<List<? extends PropertyReference>>) ((Class) Object.class))).name("getPropertiesToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXP").registry(REGISTRY).build();
   public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oYh").registry(REGISTRY).build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescendantsToCheck_id4cWf37B8oXl, getDescendantToCheck_id4cWf37B8oXJ, getPropertiesToCheck_id4cWf37B8oXP, getPropertyToCheck_id4cWf37B8oYh);
@@ -48,7 +48,7 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static SNode getDescendantToCheck_id4cWf37B8oXJ(@NotNull SNode __thisNode__) {
     return null;
   }
-  /*package*/ static List<PropertyReference> getPropertiesToCheck_id4cWf37B8oXP(@NotNull SNode __thisNode__) {
+  /*package*/ static List<? extends PropertyReference> getPropertiesToCheck_id4cWf37B8oXP(@NotNull SNode __thisNode__) {
     List<PropertyReference> result = ListSequence.fromList(new ArrayList<PropertyReference>());
     PropertyReference property = ICheckedNamePolicy__BehaviorDescriptor.getPropertyToCheck_id4cWf37B8oYh.invoke(__thisNode__);
     if (property != null) {
@@ -81,7 +81,7 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
       case 1:
         return (T) ((SNode) getDescendantToCheck_id4cWf37B8oXJ(node));
       case 2:
-        return (T) ((List<PropertyReference>) getPropertiesToCheck_id4cWf37B8oXP(node));
+        return (T) ((List<? extends PropertyReference>) getPropertiesToCheck_id4cWf37B8oXP(node));
       case 3:
         return (T) ((PropertyReference) getPropertyToCheck_id4cWf37B8oYh(node));
       default:
