@@ -1205,115 +1205,128 @@
   </root>
   <root nodeRef="r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/7744421503924576834">
     <file name="VcsRevisionRange.java">
-      <node id="7744421503924577133" at="17,0,18,0" concept="7" trace="myColumn" />
-      <node id="7744421503924676822" at="18,0,19,0" concept="7" trace="myBeforeAction" />
-      <node id="7744421503924676829" at="19,0,20,0" concept="7" trace="myAfterAction" />
-      <node id="7744421503924771774" at="20,52,21,28" concept="18" />
-      <node id="7744421503924585228" at="21,28,22,22" concept="6" />
-      <node id="7744421503924676833" at="22,22,23,63" concept="6" />
-      <node id="7744421503924771222" at="23,63,24,63" concept="6" />
-      <node id="7744421503924771777" at="24,63,25,20" concept="6" />
-      <node id="7744421503924771781" at="25,20,26,24" concept="6" />
-      <node id="7744421503924771785" at="26,24,27,23" concept="6" />
-      <node id="7744421503924805781" at="30,78,31,41" concept="6" />
-      <node id="7744421503924805792" at="31,41,32,40" concept="6" />
-      <node id="7744421503924805824" at="32,40,33,36" concept="6" />
-      <node id="8297230296890480006" at="39,80,40,89" concept="13" />
-      <node id="8297230296890480018" at="41,12,42,19" concept="13" />
-      <node id="7744421503924675034" at="46,68,47,60" concept="12" />
-      <node id="7744421503924676543" at="48,51,49,63" concept="13" />
-      <node id="7744421503924676557" at="50,12,51,31" concept="13" />
-      <node id="7744421503924585256" at="55,0,56,0" concept="7" trace="myRevision" />
-      <node id="7744421503924585262" at="56,0,57,0" concept="7" trace="myBefore" />
-      <node id="7744421503924585268" at="57,43,58,24" concept="6" />
-      <node id="7744421503924771277" at="59,22,60,76" concept="6" />
-      <node id="7744421503924676780" at="64,75,65,68" concept="12" />
-      <node id="7744421503924676806" at="65,68,66,143" concept="12" />
-      <node id="7744421503924676590" at="66,143,67,130" concept="6" />
-      <node id="7744421503924676615" at="67,130,68,58" concept="6" />
-      <node id="7744421503924676647" at="68,58,69,102" concept="6" />
-      <node id="7744421503924676752" at="75,55,76,32" concept="6" />
-      <node id="7744421503924676762" at="76,32,77,38" concept="6" />
-      <node id="7744421503924771652" at="82,31,83,20" concept="13" />
-      <node id="8703200563941381208" at="84,36,85,21" concept="13" />
-      <node id="7744421503924771670" at="86,14,87,95" concept="12" />
-      <node id="7744421503924771682" at="87,95,88,68" concept="13" />
-      <node id="8297230296890480016" at="41,10,43,5" concept="1" />
-      <node id="7744421503924676555" at="50,10,52,5" concept="1" />
-      <node id="7744421503924771230" at="58,24,61,7" concept="10" />
-      <node id="7744421503924771655" at="86,12,89,7" concept="1" />
-      <node id="8297230296890479993" at="38,70,43,5" concept="10" />
-      <node id="7744421503924676532" at="47,60,52,5" concept="10" />
-      <node id="7744421503924676707" at="74,0,79,0" concept="11" trace="consume#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)V" />
-      <node id="1567533269522942320" at="29,0,35,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="7744421503924585249" at="57,0,63,0" concept="3" trace="HiglightAction#(Z)V" />
-      <node id="8297230296890479978" at="38,0,45,0" concept="11" trace="isRevisionHighlighted#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Z" />
-      <node id="7744421503924676695" at="72,80,79,15" concept="6" />
-      <node id="7744421503924805767" at="27,23,35,7" concept="6" />
-      <node id="7744421503924675013" at="46,0,54,0" concept="17" trace="revisionToString#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Ljava/lang/String;" />
-      <node id="1567533269522942308" at="63,0,71,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="7744421503924771643" at="81,59,89,7" concept="10" />
-      <node id="8703200563941381179" at="71,0,81,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="7744421503924771581" at="81,0,91,0" concept="11" trace="isHiglighted#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Z" />
-      <node id="7744421503924585221" at="20,0,37,0" concept="3" trace="VcsRevisionRange#(Ljetbrains/mps/vcs/annotate/AnnotationColumn;)V" />
-      <scope id="8297230296890480005" at="39,80,40,89" />
-      <scope id="8297230296890480017" at="41,12,42,19" />
-      <scope id="7744421503924676533" at="48,51,49,63" />
-      <scope id="7744421503924676556" at="50,12,51,31" />
-      <scope id="7744421503924771231" at="59,22,60,76" />
-      <scope id="7744421503924771644" at="82,31,83,20" />
-      <scope id="8703200563941381201" at="84,36,85,21" />
-      <scope id="7744421503924676712" at="75,55,77,38" />
-      <scope id="7744421503924771656" at="86,14,88,68">
-        <var name="compareResult" id="7744421503924771671" />
-      </scope>
-      <scope id="1567533269522942329" at="30,78,33,36" />
-      <scope id="7744421503924585252" at="57,43,61,7" />
-      <scope id="8297230296890479983" at="38,70,43,5" />
-      <scope id="1567533269522942317" at="64,75,69,102">
+      <node id="7744421503924577133" at="19,0,20,0" concept="7" trace="myColumn" />
+      <node id="7744421503924676822" at="20,0,21,0" concept="7" trace="myBeforeAction" />
+      <node id="7744421503924676829" at="21,0,22,0" concept="7" trace="myAfterAction" />
+      <node id="7744421503924771774" at="22,52,23,28" concept="18" />
+      <node id="7744421503924585228" at="23,28,24,22" concept="6" />
+      <node id="7744421503924676833" at="24,22,25,63" concept="6" />
+      <node id="7744421503924771222" at="25,63,26,63" concept="6" />
+      <node id="7744421503924771777" at="26,63,27,20" concept="6" />
+      <node id="7744421503924771781" at="27,20,28,24" concept="6" />
+      <node id="7744421503924771785" at="28,24,29,23" concept="6" />
+      <node id="7744421503924805781" at="32,78,33,41" concept="6" />
+      <node id="7744421503924805792" at="33,41,34,40" concept="6" />
+      <node id="7744421503924805824" at="34,40,35,36" concept="6" />
+      <node id="8297230296890480006" at="41,80,42,91" concept="13" />
+      <node id="8297230296890480018" at="43,12,44,19" concept="13" />
+      <node id="7744421503924675034" at="48,68,49,60" concept="12" />
+      <node id="7744421503924676543" at="50,51,51,63" concept="13" />
+      <node id="7744421503924676557" at="52,12,53,31" concept="13" />
+      <node id="7744421503924585256" at="57,0,58,0" concept="7" trace="myRevision" />
+      <node id="7744421503924585262" at="58,0,59,0" concept="7" trace="myBefore" />
+      <node id="7744421503924585268" at="59,43,60,24" concept="6" />
+      <node id="7744421503924771277" at="61,22,62,76" concept="6" />
+      <node id="7744421503924676780" at="66,75,67,68" concept="12" />
+      <node id="7744421503924676806" at="67,68,68,143" concept="12" />
+      <node id="7744421503924676590" at="68,143,69,130" concept="6" />
+      <node id="7744421503924676615" at="69,130,70,58" concept="6" />
+      <node id="7744421503924676647" at="70,58,71,102" concept="6" />
+      <node id="7744421503924676752" at="77,55,78,32" concept="6" />
+      <node id="7744421503924676762" at="78,32,79,38" concept="6" />
+      <node id="7744421503924771652" at="84,31,85,20" concept="13" />
+      <node id="8703200563941381208" at="86,36,87,21" concept="13" />
+      <node id="7744421503924771670" at="88,14,89,95" concept="12" />
+      <node id="7428875688360529029" at="89,95,90,121" concept="14" />
+      <node id="7428875688360540370" at="90,121,91,130" concept="14" />
+      <node id="7428875688360630969" at="91,130,92,55" concept="14" />
+      <node id="7428875688360474952" at="93,117,94,67" concept="12" />
+      <node id="7428875688360481315" at="94,67,95,69" concept="12" />
+      <node id="7428875688360444202" at="96,41,97,45" concept="6" />
+      <node id="7744421503924771682" at="99,9,100,68" concept="13" />
+      <node id="8297230296890480016" at="43,10,45,5" concept="1" />
+      <node id="7744421503924676555" at="52,10,54,5" concept="1" />
+      <node id="7744421503924771230" at="60,24,63,7" concept="10" />
+      <node id="7428875688360488569" at="95,69,98,11" concept="10" />
+      <node id="8297230296890479993" at="40,70,45,5" concept="10" />
+      <node id="7744421503924676532" at="49,60,54,5" concept="10" />
+      <node id="7744421503924676707" at="76,0,81,0" concept="11" trace="consume#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)V" />
+      <node id="1567533269522942320" at="31,0,37,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="7744421503924585249" at="59,0,65,0" concept="3" trace="HiglightAction#(Z)V" />
+      <node id="8297230296890479978" at="40,0,47,0" concept="11" trace="isRevisionHighlighted#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Z" />
+      <node id="7744421503924676695" at="74,80,81,15" concept="6" />
+      <node id="7428875688360409085" at="92,55,99,9" concept="10" />
+      <node id="7744421503924805767" at="29,23,37,7" concept="6" />
+      <node id="7744421503924675013" at="48,0,56,0" concept="17" trace="revisionToString#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Ljava/lang/String;" />
+      <node id="1567533269522942308" at="65,0,73,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8703200563941381179" at="73,0,83,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="7744421503924771655" at="88,12,101,7" concept="1" />
+      <node id="7744421503924585221" at="22,0,39,0" concept="3" trace="VcsRevisionRange#(Ljetbrains/mps/vcs/annotate/AnnotationColumn;)V" />
+      <node id="7744421503924771643" at="83,65,101,7" concept="10" />
+      <node id="7744421503924771581" at="83,0,103,0" concept="11" trace="isHighlighted#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Z" />
+      <scope id="8297230296890480005" at="41,80,42,91" />
+      <scope id="8297230296890480017" at="43,12,44,19" />
+      <scope id="7744421503924676533" at="50,51,51,63" />
+      <scope id="7744421503924676556" at="52,12,53,31" />
+      <scope id="7744421503924771231" at="61,22,62,76" />
+      <scope id="7744421503924771644" at="84,31,85,20" />
+      <scope id="8703200563941381201" at="86,36,87,21" />
+      <scope id="7428875688360488571" at="96,41,97,45" />
+      <scope id="7744421503924676712" at="77,55,79,38" />
+      <scope id="1567533269522942329" at="32,78,35,36" />
+      <scope id="7744421503924585252" at="59,43,63,7" />
+      <scope id="8297230296890479983" at="40,70,45,5" />
+      <scope id="1567533269522942317" at="66,75,71,102">
         <var name="description" id="7744421503924676807" />
         <var name="text" id="7744421503924676781" />
       </scope>
-      <scope id="7744421503924676707" at="74,0,79,0">
+      <scope id="7744421503924676707" at="76,0,81,0">
         <var name="revision" id="7744421503924676710" />
       </scope>
-      <scope id="1567533269522942320" at="29,0,35,0">
+      <scope id="7428875688360409087" at="93,117,98,11">
+        <var name="d1" id="7428875688360474953" />
+        <var name="d2" id="7428875688360481316" />
+      </scope>
+      <scope id="1567533269522942320" at="31,0,37,0">
         <var name="event" id="1567533269522942323" />
         <var name="map" id="1567533269522942325" />
       </scope>
-      <scope id="7744421503924675016" at="46,68,52,5">
+      <scope id="7744421503924675016" at="48,68,54,5">
         <var name="number" id="7744421503924675035" />
       </scope>
-      <scope id="7744421503924585249" at="57,0,63,0">
+      <scope id="7744421503924585249" at="59,0,65,0">
         <var name="before" id="7744421503924585266" />
       </scope>
-      <scope id="8297230296890479978" at="38,0,45,0">
+      <scope id="8297230296890479978" at="40,0,47,0">
         <var name="fileRev" id="8297230296890479979" />
       </scope>
-      <scope id="8703200563941381188" at="72,80,79,15" />
-      <scope id="7744421503924675013" at="46,0,54,0">
+      <scope id="8703200563941381188" at="74,80,81,15" />
+      <scope id="7744421503924675013" at="48,0,56,0">
         <var name="revision" id="7744421503924675018" />
       </scope>
-      <scope id="1567533269522942308" at="63,0,71,0">
+      <scope id="1567533269522942308" at="65,0,73,0">
         <var name="event" id="1567533269522942311" />
         <var name="map" id="1567533269522942313" />
       </scope>
-      <scope id="7744421503924771583" at="81,59,89,7" />
-      <scope id="8703200563941381179" at="71,0,81,0">
+      <scope id="8703200563941381179" at="73,0,83,0">
         <var name="_params" id="8703200563941381192" />
         <var name="event" id="8703200563941381190" />
       </scope>
-      <scope id="7744421503924771581" at="81,0,91,0">
-        <var name="revision" id="7744421503924771585" />
+      <scope id="7744421503924771656" at="88,14,100,68">
+        <var name="compareResult" id="7744421503924771671" />
       </scope>
-      <scope id="7744421503924585225" at="20,52,35,7" />
-      <scope id="7744421503924585221" at="20,0,37,0">
+      <scope id="7744421503924585225" at="22,52,37,7" />
+      <scope id="7744421503924585221" at="22,0,39,0">
         <var name="column" id="7744421503924585226" />
       </scope>
-      <unit id="7744421503924676705" at="73,106,79,7" name="jetbrains.mps.vcs.annotate.VcsRevisionRange$HiglightAction$1" />
-      <unit id="7744421503924805772" at="28,12,35,5" name="jetbrains.mps.vcs.annotate.VcsRevisionRange$1" />
-      <unit id="7744421503924585247" at="54,0,92,0" name="jetbrains.mps.vcs.annotate.VcsRevisionRange$HiglightAction" />
-      <unit id="7744421503924576834" at="16,0,93,0" name="jetbrains.mps.vcs.annotate.VcsRevisionRange" />
+      <scope id="7744421503924771583" at="83,65,101,7" />
+      <scope id="7744421503924771581" at="83,0,103,0">
+        <var name="revision" id="7744421503924771585" />
+      </scope>
+      <unit id="7744421503924676705" at="75,106,81,7" name="jetbrains.mps.vcs.annotate.VcsRevisionRange$HiglightAction$1" />
+      <unit id="7744421503924805772" at="30,12,37,5" name="jetbrains.mps.vcs.annotate.VcsRevisionRange$1" />
+      <unit id="7744421503924585247" at="56,0,104,0" name="jetbrains.mps.vcs.annotate.VcsRevisionRange$HiglightAction" />
+      <unit id="7744421503924576834" at="18,0,105,0" name="jetbrains.mps.vcs.annotate.VcsRevisionRange" />
     </file>
   </root>
   <root nodeRef="r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/8955628568092674522">

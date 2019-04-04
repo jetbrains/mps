@@ -8142,7 +8142,7 @@
                     <ref role="3cqZAo" node="6HTH_dWkUzm" resolve="myBeforeAction" />
                   </node>
                   <node concept="liA8E" id="7c_FJUhL1ma" role="2OqNvi">
-                    <ref role="37wK5l" node="6HTH_dWlhFX" resolve="isHiglighted" />
+                    <ref role="37wK5l" node="6HTH_dWlhFX" resolve="isHighlighted" />
                     <node concept="37vLTw" id="7c_FJUhL1mb" role="37wK5m">
                       <ref role="3cqZAo" node="7c_FJUhL1lF" resolve="fileRev" />
                     </node>
@@ -8150,7 +8150,7 @@
                 </node>
                 <node concept="2OqwBi" id="7c_FJUhL1mc" role="3uHU7w">
                   <node concept="liA8E" id="7c_FJUhL1md" role="2OqNvi">
-                    <ref role="37wK5l" node="6HTH_dWlhFX" resolve="isHiglighted" />
+                    <ref role="37wK5l" node="6HTH_dWlhFX" resolve="isHighlighted" />
                     <node concept="37vLTw" id="7c_FJUhL1me" role="37wK5m">
                       <ref role="3cqZAo" node="7c_FJUhL1lF" resolve="fileRev" />
                     </node>
@@ -8563,7 +8563,7 @@
         </node>
       </node>
       <node concept="3clFb_" id="6HTH_dWlhFX" role="jymVt">
-        <property role="TrG5h" value="isHiglighted" />
+        <property role="TrG5h" value="isHighlighted" />
         <node concept="3clFbS" id="6HTH_dWlhFZ" role="3clF47">
           <node concept="3clFbJ" id="6HTH_dWlhGV" role="3cqZAp">
             <node concept="3eNFk2" id="7z7YGOAH9hf" role="3eNLev">
@@ -8616,6 +8616,135 @@
                     </node>
                   </node>
                 </node>
+                <node concept="3SKdUt" id="6soELg_gWM5" role="3cqZAp">
+                  <node concept="3SKdUq" id="6soELg_gWM7" role="3SKWNk">
+                    <property role="3SKdUp" value="XXX not clear what VcsRevisionNumber.timestamp means (that's what VcsFileRevision.getRevisionDate() looks at)" />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="6soELg_gZzi" role="3cqZAp">
+                  <node concept="3SKdUq" id="6soELg_gZzk" role="3SKWNk">
+                    <property role="3SKdUp" value="and why it's the same for few (or even all?) file revisions. It seems it does not reflect actual commit moment either," />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="6soELg_hlET" role="3cqZAp">
+                  <node concept="3SKdUq" id="6soELg_hlEV" role="3SKWNk">
+                    <property role="3SKdUp" value="though I didn't investigate this thoroughly" />
+                  </node>
+                </node>
+                <node concept="3clFbJ" id="6soELg_gvvX" role="3cqZAp">
+                  <node concept="3clFbS" id="6soELg_gvvZ" role="3clFbx">
+                    <node concept="3cpWs8" id="6soELg_gJ_8" role="3cqZAp">
+                      <node concept="3cpWsn" id="6soELg_gJ_9" role="3cpWs9">
+                        <property role="TrG5h" value="d1" />
+                        <node concept="3uibUv" id="6soELg_gJ_3" role="1tU5fm">
+                          <ref role="3uigEE" to="33ny:~Date" resolve="Date" />
+                        </node>
+                        <node concept="2OqwBi" id="6soELg_gJ_a" role="33vP2m">
+                          <node concept="1eOMI4" id="6soELg_gJ_b" role="2Oq$k0">
+                            <node concept="10QFUN" id="6soELg_gJ_c" role="1eOMHV">
+                              <node concept="3uibUv" id="6soELg_gJ_d" role="10QFUM">
+                                <ref role="3uigEE" to="yah0:~VcsFileRevisionEx" resolve="VcsFileRevisionEx" />
+                              </node>
+                              <node concept="37vLTw" id="6soELg_gJ_e" role="10QFUP">
+                                <ref role="3cqZAo" node="6HTH_dWlhG1" resolve="revision" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="6soELg_gJ_f" role="2OqNvi">
+                            <ref role="37wK5l" to="yah0:~VcsFileRevisionEx.getAuthorDate()" resolve="getAuthorDate" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3cpWs8" id="6soELg_gL8z" role="3cqZAp">
+                      <node concept="3cpWsn" id="6soELg_gL8$" role="3cpWs9">
+                        <property role="TrG5h" value="d2" />
+                        <node concept="3uibUv" id="6soELg_gL8v" role="1tU5fm">
+                          <ref role="3uigEE" to="33ny:~Date" resolve="Date" />
+                        </node>
+                        <node concept="2OqwBi" id="6soELg_gL8_" role="33vP2m">
+                          <node concept="1eOMI4" id="6soELg_gL8A" role="2Oq$k0">
+                            <node concept="10QFUN" id="6soELg_gL8B" role="1eOMHV">
+                              <node concept="3uibUv" id="6soELg_gL8C" role="10QFUM">
+                                <ref role="3uigEE" to="yah0:~VcsFileRevisionEx" resolve="VcsFileRevisionEx" />
+                              </node>
+                              <node concept="37vLTw" id="6soELg_gL8D" role="10QFUP">
+                                <ref role="3cqZAo" node="6HTH_dWk$cC" resolve="myRevision" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="6soELg_gL8E" role="2OqNvi">
+                            <ref role="37wK5l" to="yah0:~VcsFileRevisionEx.getAuthorDate()" resolve="getAuthorDate" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbJ" id="6soELg_gMTT" role="3cqZAp">
+                      <node concept="3clFbS" id="6soELg_gMTV" role="3clFbx">
+                        <node concept="3clFbF" id="6soELg_gC4E" role="3cqZAp">
+                          <node concept="37vLTI" id="6soELg_gC4F" role="3clFbG">
+                            <node concept="2OqwBi" id="6soELg_gC4G" role="37vLTx">
+                              <node concept="37vLTw" id="6soELg_gJ_g" role="2Oq$k0">
+                                <ref role="3cqZAo" node="6soELg_gJ_9" resolve="d1" />
+                              </node>
+                              <node concept="liA8E" id="6soELg_gC4K" role="2OqNvi">
+                                <ref role="37wK5l" to="33ny:~Date.compareTo(java.util.Date)" resolve="compareTo" />
+                                <node concept="37vLTw" id="6soELg_gL8F" role="37wK5m">
+                                  <ref role="3cqZAo" node="6soELg_gL8$" resolve="d2" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="37vLTw" id="6soELg_gC4O" role="37vLTJ">
+                              <ref role="3cqZAo" node="6HTH_dWlhHn" resolve="compareResult" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="1Wc70l" id="6soELg_gT8g" role="3clFbw">
+                        <node concept="3y3z36" id="6soELg_gTST" role="3uHU7w">
+                          <node concept="10Nm6u" id="6soELg_gU91" role="3uHU7w" />
+                          <node concept="37vLTw" id="6soELg_gTnw" role="3uHU7B">
+                            <ref role="3cqZAo" node="6soELg_gL8$" resolve="d2" />
+                          </node>
+                        </node>
+                        <node concept="3y3z36" id="6soELg_gSAW" role="3uHU7B">
+                          <node concept="37vLTw" id="6soELg_gS5W" role="3uHU7B">
+                            <ref role="3cqZAo" node="6soELg_gJ_9" resolve="d1" />
+                          </node>
+                          <node concept="10Nm6u" id="6soELg_gSQX" role="3uHU7w" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="1Wc70l" id="6soELg_g$wb" role="3clFbw">
+                    <node concept="2ZW3vV" id="6soELg_gBmW" role="3uHU7w">
+                      <node concept="3uibUv" id="6soELg_gBMU" role="2ZW6by">
+                        <ref role="3uigEE" to="yah0:~VcsFileRevisionEx" resolve="VcsFileRevisionEx" />
+                      </node>
+                      <node concept="37vLTw" id="6soELg_g_F7" role="2ZW6bz">
+                        <ref role="3cqZAo" node="6HTH_dWk$cC" resolve="myRevision" />
+                      </node>
+                    </node>
+                    <node concept="1Wc70l" id="6soELg_gOPX" role="3uHU7B">
+                      <node concept="3clFbC" id="6soELg_gQHx" role="3uHU7B">
+                        <node concept="3cmrfG" id="6soELg_gRqa" role="3uHU7w">
+                          <property role="3cmrfH" value="0" />
+                        </node>
+                        <node concept="37vLTw" id="6soELg_gPq8" role="3uHU7B">
+                          <ref role="3cqZAo" node="6HTH_dWlhHn" resolve="compareResult" />
+                        </node>
+                      </node>
+                      <node concept="2ZW3vV" id="6soELg_gyQQ" role="3uHU7w">
+                        <node concept="3uibUv" id="6soELg_gzR0" role="2ZW6by">
+                          <ref role="3uigEE" to="yah0:~VcsFileRevisionEx" resolve="VcsFileRevisionEx" />
+                        </node>
+                        <node concept="37vLTw" id="6soELg_gxCB" role="2ZW6bz">
+                          <ref role="3cqZAo" node="6HTH_dWlhG1" resolve="revision" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
                 <node concept="3cpWs6" id="6HTH_dWlhHy" role="3cqZAp">
                   <node concept="3K4zz7" id="6HTH_dWlhHB" role="3cqZAk">
                     <node concept="37vLTw" id="2BHiRxeunet" role="3K4Cdx">
@@ -8657,7 +8786,6 @@
             <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
           </node>
         </node>
-        <node concept="3Tm1VV" id="6HTH_dWlhG0" role="1B3o_S" />
       </node>
     </node>
     <node concept="3Tm1VV" id="6HTH_dWky93" role="1B3o_S" />

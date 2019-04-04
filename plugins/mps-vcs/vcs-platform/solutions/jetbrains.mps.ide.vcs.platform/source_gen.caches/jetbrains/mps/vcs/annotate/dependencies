@@ -256,11 +256,13 @@
     <classNode dependClassName="com.intellij.openapi.vcs.actions.CompareWithSelectedRevisionAction" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.ShortVcsRevisionNumber" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
+    <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevisionEx" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsRevisionNumber" />
     <classNode dependClassName="com.intellij.util.Consumer" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Date" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />

@@ -12,6 +12,8 @@ import com.intellij.openapi.vcs.history.ShortVcsRevisionNumber;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.vcs.actions.CompareWithSelectedRevisionAction;
 import com.intellij.util.Consumer;
+import com.intellij.openapi.vcs.history.VcsFileRevisionEx;
+import java.util.Date;
 
 public class VcsRevisionRange extends BaseGroup {
   private AnnotationColumn myColumn;
@@ -37,7 +39,7 @@ public class VcsRevisionRange extends BaseGroup {
 
   /*package*/ boolean isRevisionHighlighted(VcsFileRevision fileRev) {
     if (myBeforeAction.myRevision != null || myAfterAction.myRevision != null) {
-      return myBeforeAction.isHiglighted(fileRev) && myAfterAction.isHiglighted(fileRev);
+      return myBeforeAction.isHighlighted(fileRev) && myAfterAction.isHighlighted(fileRev);
     } else {
       return false;
     }
@@ -78,13 +80,23 @@ public class VcsRevisionRange extends BaseGroup {
         }
       }, true);
     }
-    public boolean isHiglighted(VcsFileRevision revision) {
+    /*package*/ boolean isHighlighted(VcsFileRevision revision) {
       if (myRevision == null) {
         return true;
       } else if (revision == null) {
         return false;
       } else {
         int compareResult = revision.getRevisionDate().compareTo(myRevision.getRevisionDate());
+        // XXX not clear what VcsRevisionNumber.timestamp means (that's what VcsFileRevision.getRevisionDate() looks at) 
+        // and why it's the same for few (or even all?) file revisions. It seems it does not reflect actual commit moment either, 
+        // though I didn't investigate this thoroughly 
+        if (compareResult == 0 && revision instanceof VcsFileRevisionEx && myRevision instanceof VcsFileRevisionEx) {
+          Date d1 = ((VcsFileRevisionEx) revision).getAuthorDate();
+          Date d2 = ((VcsFileRevisionEx) myRevision).getAuthorDate();
+          if (d1 != null && d2 != null) {
+            compareResult = d1.compareTo(d2);
+          }
+        }
         return (myBefore ? compareResult <= 0 : compareResult >= 0);
       }
     }
