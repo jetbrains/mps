@@ -14,7 +14,7 @@ package jetbrains.mps.vcs.annotate;
     return "highlight.revision";
   }
   @Override
-  public String getTextForFileLine(int fileLine) {
-    return (myRevisionRange.isFileLineHighlighted(fileLine) ? "*" : "");
+  public String getTextForFileLine(AnnotationColumn.LineRevisionRecord lineRec) {
+    return (myRevisionRange.isRevisionHighlighted(lineRec.rev) ? "*" : "");
   }
 }

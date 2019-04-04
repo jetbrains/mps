@@ -17,29 +17,23 @@ import com.intellij.openapi.vcs.annotate.FileAnnotation;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.vcs.annotate.LineAnnotationAspect;
-import com.intellij.openapi.vcs.AbstractVcs;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import java.util.Set;
 import com.intellij.util.messages.MessageBusConnection;
+import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
-import com.intellij.openapi.ui.MessageType;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.vcs.actions.AnnotationColors;
 import com.intellij.ui.ColorUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.changesmanager.CurrentDifference;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
@@ -62,6 +56,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.messageTargets.CellFinder;
 import java.util.Collections;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
@@ -80,9 +75,8 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.project.Project;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
@@ -97,9 +91,8 @@ public class AnnotationColumn extends AbstractLeftColumn {
   private final FileAnnotation myFileAnnotation;
   private Map<VcsRevisionNumber, VcsFileRevision> myRevisionNumberToRevision = MapSequence.fromMap(new HashMap<VcsRevisionNumber, VcsFileRevision>());
   private LineAnnotationAspect myAuthorAnnotationAspect;
-  private AbstractVcs myVcs;
-  private EditableSModel myModel;
-  private List<LineContent> myFileLineToContent;
+  private final EditableSModel myModel;
+  private final List<LineContent> myFileLineToContent;
   private Map<ModelChange, LineContent[]> myChangesToLineContents = MapSequence.fromMap(new HashMap<ModelChange, LineContent[]>());
   private Set<Integer> myCurrentPseudoLines = null;
   private VcsRevisionRange myRevisionRange;
@@ -107,30 +100,14 @@ public class AnnotationColumn extends AbstractLeftColumn {
   private AnnotationColumn.MyDifferenceListener myDifferenceListener = new AnnotationColumn.MyDifferenceListener();
   private boolean myShowAdditionalInfo = false;
   private MessageBusConnection myMessageBusConnection;
+  private final CurrentDifferenceRegistry myDiffRegistry;
 
-  /*package*/ AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, SNode root, FileAnnotation fileAnnotation, final AbstractVcs vcs) {
+
+  /*package*/ AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, SNode root, @NotNull FileAnnotation fileAnnotation, @NotNull List<LineContent> lineToContent) {
     super(leftEditorHighlighter);
     myModel = (EditableSModel) SNodeOperations.getModel(root);
     myFileAnnotation = fileAnnotation;
-    final Wrappers._T<ModelReadException> mre = new Wrappers._T<ModelReadException>(null);
-    try {
-      myFileLineToContent = VCSPersistenceSupport.getLineToContentMap(myFileAnnotation.getAnnotatedContent());
-    } catch (ModelReadException e) {
-      mre.value = e;
-    }
-    if (myFileLineToContent == null) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          String msg = "Couldn't show annotation";
-          if (mre.value != null && mre.value.getCause() != null) {
-            msg += ": " + mre.value.getCause().getMessage();
-          }
-          ToolWindowManager.getInstance(vcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, msg);
-          close();
-        }
-      });
-      return;
-    }
+    myFileLineToContent = lineToContent;
     myAuthorAnnotationAspect = Sequence.fromIterable(Sequence.fromArray(myFileAnnotation.getAspects())).findFirst(new IWhereFilter<LineAnnotationAspect>() {
       public boolean accept(LineAnnotationAspect a) {
         return LineAnnotationAspect.AUTHOR.equals(a.getId());
@@ -151,20 +128,21 @@ public class AnnotationColumn extends AbstractLeftColumn {
         }
         MapSequence.fromMap(myAuthorsToColors).put(author, color);
       }
+      //  XXX can use FA.getCurrentFileRevisionProvider() 
       MapSequence.fromMap(myRevisionNumberToRevision).put(revision.getRevisionNumber(), revision);
     }
     myViewActionGroup = new ViewActionGroup(this, myAspectSubcolumns);
     myRevisionRange = new VcsRevisionRange(this);
     ListSequence.fromList(myAspectSubcolumns).addElement(new HighlightRevisionSubcolumn(this, myRevisionRange));
-    myVcs = vcs;
     final SRepository editorRepo = getEditorComponent().getEditorContext().getRepository();
-    final CurrentDifferenceRegistry registry = CurrentDifferenceRegistry.getInstance(getProject());
-    registry.getCommandQueue().runTask(new Runnable() {
+    final Project ideaProject = fileAnnotation.getProject();
+    myDiffRegistry = CurrentDifferenceRegistry.getInstance(ideaProject);
+    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
       public void run() {
-        final CurrentDifference currentDifference = registry.getCurrentDifference(myModel);
+        final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference(myModel);
         editorRepo.getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            ListSequence.fromList(check_5mnya_a0a0a0a1a0a0q0v(currentDifference.getChangeSet())).visitAll(new IVisitor<ModelChange>() {
+            ListSequence.fromList(check_5mnya_a0a0a0a1a0a0o0w(currentDifference.getChangeSet())).visitAll(new IVisitor<ModelChange>() {
               public void visit(ModelChange ch) {
                 saveChange(ch);
               }
@@ -174,7 +152,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
         currentDifference.addDifferenceListener(myDifferenceListener);
       }
     });
-    myMessageBusConnection = getProject().getMessageBus().connect();
+    myMessageBusConnection = ideaProject.getMessageBus().connect();
     myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new AnnotationColumn.MyEditorComponentCreateListener());
   }
   private void saveChange(ModelChange ch) {
@@ -260,7 +238,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
           return myShowAdditionalInfo || s.isEnabled();
         }
       })) {
-        String text = subcolumn.getTextForFileLine(record.fileLine);
+        String text = subcolumn.getTextForFileLine(record);
         int textX = MapSequence.fromMap(subcolumnToX).get(subcolumn);
         if (subcolumn.isRightAligned()) {
           textX += subcolumn.getWidth() - metrics.stringWidth(text);
@@ -282,7 +260,8 @@ public class AnnotationColumn extends AbstractLeftColumn {
     }) + 1 + mySubcolumnInterval / 2);
   }
 
-  /*package*/ VcsFileRevision fileRevForLine(int fileLine) {
+  @Nullable
+  private VcsFileRevision fileRevForLine(int fileLine) {
     return MapSequence.fromMap(myRevisionNumberToRevision).get(myFileAnnotation.getLineRevisionNumber(fileLine));
   }
 
@@ -405,6 +384,12 @@ __switch__:
         for (int fileLine = 0; fileLine < ListSequence.fromList(myFileLineToContent).count(); fileLine++) {
           LineContent lineContent = ListSequence.fromList(myFileLineToContent).getElement(fileLine);
           final VcsFileRevision fileLineRev = fileRevForLine(fileLine);
+          if (fileLineRev == null) {
+            // though it's odd, it happens that FileAnnotation.getLineRevisionNumber gives VcsRevisionNumber 
+            // that has not been reported from FA.getRevisions().getRevisionNumber(), and the mapping is null 
+            // FIXME figure out why is that and what one can do not to get empty lines in annotate 
+            continue;
+          }
           for (int pseudoLine : getPseudoLinesForContent(lineContent)) {
             final AnnotationColumn.LineRevisionRecord lr = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
             if (lr == null) {
@@ -440,11 +425,7 @@ __switch__:
     });
     FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(myFont);
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
-      aspectSubcolumn.computeWidth(metrics, ListSequence.fromList(myEditorLineRecords).where(new NotNullWhereFilter<AnnotationColumn.LineRevisionRecord>()).select(new ISelector<AnnotationColumn.LineRevisionRecord, Integer>() {
-        public Integer select(AnnotationColumn.LineRevisionRecord it) {
-          return it.fileLine;
-        }
-      }));
+      aspectSubcolumn.computeWidth(metrics, ListSequence.fromList(myEditorLineRecords).where(new NotNullWhereFilter<AnnotationColumn.LineRevisionRecord>()));
     }
     mySubcolumnInterval = metrics.stringWidth(" ");
     calculateCurrentPseudoLinesLater();
@@ -475,19 +456,20 @@ __switch__:
   }
   @Override
   public void dispose() {
-    myMessageBusConnection.disconnect();
-    myFileAnnotation.dispose();
-    final CurrentDifferenceRegistry registry = CurrentDifferenceRegistry.getInstance(getProject());
-    registry.getCommandQueue().runTask(new Runnable() {
+    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
       public void run() {
-        registry.getCurrentDifference(myModel).removeDifferenceListener(myDifferenceListener);
+        myDiffRegistry.getCurrentDifference(myModel).removeDifferenceListener(myDifferenceListener);
       }
     });
+    myMessageBusConnection.disconnect();
+    myFileAnnotation.dispose();
   }
+
   public void close() {
     getLeftEditorHighlighter().removeLeftColumn(this);
     dispose();
   }
+
   private int findPseudoLineByY(int y) {
     int pseudoLine = Collections.binarySearch((List) myPseudoLinesY, y);
     if (pseudoLine < 0) {
@@ -576,12 +558,20 @@ __switch__:
     myShowAdditionalInfo = showAdditionalInfo;
     invalidateLayout();
   }
-  public List<VcsFileRevision> getRevisions() {
+
+  /**
+   * 
+   * 
+   * @return revisions from FileAnnotation, in the same order (from newest to oldest)
+   */
+  /*package*/ List<VcsFileRevision> getRevisions() {
     return myFileAnnotation.getRevisions();
   }
-  public Project getProject() {
-    return myVcs.getProject();
+
+  /*package*/ Project getProject() {
+    return myFileAnnotation.getProject();
   }
+
   private class MyDifferenceListener extends CurrentDifferenceAdapter {
     public MyDifferenceListener() {
     }
@@ -612,7 +602,7 @@ __switch__:
     }
   }
 
-  private static class LineRevisionRecord {
+  /*package*/ static class LineRevisionRecord {
     /*package*/ final SNodeId nodeId;
 
     /**
@@ -650,7 +640,7 @@ __switch__:
       return ListSequence.fromList(prevRecordNodeId).contains(nid);
     }
   }
-  private static List<ModelChange> check_5mnya_a0a0a0a1a0a0q0v(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_5mnya_a0a0a0a1a0a0o0w(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }

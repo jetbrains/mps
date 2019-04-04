@@ -27,13 +27,22 @@ import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vcs.annotate.AnnotationProvider;
 import com.intellij.openapi.progress.Task;
-import com.intellij.openapi.vcs.changes.BackgroundFromStartOption;
+import com.intellij.openapi.progress.PerformInBackgroundOption;
 import com.intellij.openapi.vcs.annotate.FileAnnotation;
 import com.intellij.openapi.vcs.VcsException;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.vcs.AbstractVcsHelper;
 import java.util.Arrays;
 import com.intellij.util.Consumer;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.List;
+import jetbrains.mps.smodel.persistence.lines.LineContent;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
+import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
+import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.progress.ProgressManager;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -111,7 +120,7 @@ public class AnnotationHelper {
     if (dryRun) {
       return true;
     }
-    Task.Backgroundable annotateTask = new Task.Backgroundable(ideaProject, "Retrieving annotations", true, BackgroundFromStartOption.getInstance()) {
+    Task.Backgroundable annotateTask = new Task.Backgroundable(ideaProject, "Retrieving annotations", true, PerformInBackgroundOption.ALWAYS_BACKGROUND) {
       private FileAnnotation myFileAnnotation;
       private VcsException myException;
       @Override
@@ -146,9 +155,29 @@ public class AnnotationHelper {
           if (myFileAnnotation.getRevisions() == null) {
             return;
           }
+          final Wrappers._T<List<LineContent>> fileLineToContent = new Wrappers._T<List<LineContent>>(null);
+          final Wrappers._T<ModelReadException> mre = new Wrappers._T<ModelReadException>(null);
+          try {
+            fileLineToContent.value = VCSPersistenceSupport.getLineToContentMap(myFileAnnotation.getAnnotatedContent());
+          } catch (ModelReadException e) {
+            mre.value = e;
+          }
+          if (fileLineToContent.value == null) {
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
+              public void run() {
+                String msg = "Couldn't show annotation";
+                if (mre.value != null && mre.value.getCause() != null) {
+                  msg += ": " + mre.value.getCause().getMessage();
+                }
+                ToolWindowManager.getInstance(vcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, msg);
+              }
+            });
+            return;
+          }
+
           editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, root, myFileAnnotation, vcs);
+              AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, root, myFileAnnotation, fileLineToContent.value);
               leftEditorHighlighter.addLeftColumn(annotationColumn);
             }
           });

@@ -35,12 +35,6 @@ public class VcsRevisionRange extends BaseGroup {
     });
   }
 
-  public boolean isFileLineHighlighted(int fileLine) {
-    // FIXME unfortunate API using fileLine, have to be fixed along with AnnotateAspectSubcolumn#getTextForFileLine 
-    VcsFileRevision revision = myColumn.fileRevForLine(fileLine);
-    return isRevisionHighlighted(revision);
-  }
-
   /*package*/ boolean isRevisionHighlighted(VcsFileRevision fileRev) {
     if (myBeforeAction.myRevision != null || myAfterAction.myRevision != null) {
       return myBeforeAction.isHiglighted(fileRev) && myAfterAction.isHiglighted(fileRev);
