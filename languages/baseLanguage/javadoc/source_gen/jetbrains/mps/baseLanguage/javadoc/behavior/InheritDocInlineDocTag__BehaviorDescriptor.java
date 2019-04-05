@@ -32,7 +32,7 @@ public final class InheritDocInlineDocTag__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static String buildCommentText_id7Qt73fl50wX(@NotNull SNode __thisNode__) {
-    return "inheritDoc";
+    return "";
   }
 
   /*package*/ InheritDocInlineDocTag__BehaviorDescriptor() {
