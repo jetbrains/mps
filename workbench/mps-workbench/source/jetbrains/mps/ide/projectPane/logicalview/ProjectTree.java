@@ -26,7 +26,6 @@ import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectModulesPoolTreeNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectTreeNode;
 import jetbrains.mps.ide.ui.tree.module.TransientModelsTreeNode;
-import jetbrains.mps.ide.ui.tree.smodel.TreeNodeParamProvider;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
 import jetbrains.mps.make.IMakeService;
@@ -38,7 +37,7 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelReadRunnable;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -124,6 +123,8 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
     return root;
   }
 
+  @Deprecated
+  @ToRemove(version = 2019.1)
   public void expandProjectNode() {
     this.expandPath(new TreePath(myProjectTreeNode.getPath()));
   }

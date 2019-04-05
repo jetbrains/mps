@@ -277,7 +277,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
           return;
         }
         getTree().rebuildNow();
-        getTree().expandProjectNode();
       }
     });
   }
