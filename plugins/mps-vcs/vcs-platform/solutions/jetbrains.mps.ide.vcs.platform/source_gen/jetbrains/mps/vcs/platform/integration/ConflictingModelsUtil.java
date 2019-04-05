@@ -282,7 +282,8 @@ public class ConflictingModelsUtil {
     if (bytes.length == 0) {
       return null;
     }
-    return VCSPersistenceUtil.loadModel(bytes, ext);
+    SModel model = VCSPersistenceUtil.loadModel(bytes, ext);
+    return (VCSPersistenceUtil.isModelFullyLoaded(model) ? model : null);
   }
   @Nullable
   public static MergeData loadRevisions(final MergeProvider provider, final VirtualFile file) {

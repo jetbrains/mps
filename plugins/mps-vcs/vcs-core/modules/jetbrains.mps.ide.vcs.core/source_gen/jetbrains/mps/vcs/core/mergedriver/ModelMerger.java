@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.ContentOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
+import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import jetbrains.mps.smodel.DefaultSModel;
@@ -66,7 +67,7 @@ import jetbrains.mps.extapi.model.SModelData;
     SModel baseModel = loadModel(baseContent, ext);
     SModel localModel = loadModel(localContent, ext);
     SModel latestModel = loadModel(latestContent, ext);
-    if (isModelInvalid(baseModel) || isModelInvalid(localModel) || isModelInvalid(latestModel)) {
+    if (baseModel == null || localModel == null || latestModel == null) {
       return backup(baseContent, localContent, latestContent);
     }
     myModelName = baseModel.getName();
@@ -141,14 +142,6 @@ import jetbrains.mps.extapi.model.SModelData;
 
     return backup(baseContent, localContent, latestContent);
   }
-  private boolean isModelInvalid(@Nullable SModel model) {
-    // check if the model cannot be used for merge 
-    if (model == null) {
-      return true;
-    }
-    model.load();
-    return !((model.isLoaded())) || model.getProblems().iterator().hasNext();
-  }
   private Tuples._2<Integer, byte[]> backup(FileContent baseContent, FileContent localContent, FileContent latestContent) {
     try {
       File zipModel = MergeDriverBackupUtil.zipModel(new byte[][]{baseContent.getData(), localContent.getData(), latestContent.getData()}, myModelName);
@@ -177,7 +170,8 @@ import jetbrains.mps.extapi.model.SModelData;
       return null;
     }
     try {
-      return modelFactory.load(content, ContentOption.CONTENT_ONLY, MetaModelInfoProvider.MetaInfoLoadingOption.KEEP_READ);
+      SModel model = modelFactory.load(content, ContentOption.CONTENT_ONLY, MetaModelInfoProvider.MetaInfoLoadingOption.KEEP_READ);
+      return (VCSPersistenceUtil.isModelFullyLoaded(model) ? model : null);
     } catch (ModelLoadException ex) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("Failed to read model", ex);
