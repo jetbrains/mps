@@ -122,6 +122,9 @@ import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.editor.update.Updater;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.CancellableReadAction;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingSessionHandler.SessionToken;
+import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
 import jetbrains.mps.typesystem.inference.DefaultTypecheckingContextOwner;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
@@ -220,6 +223,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
+  private SessionToken mySessionToken;
 
   public static void turnOnAliasingIfPossible(Graphics2D g) {
     if (EditorSettings.getInstance().isUseAntialiasing()) {
@@ -919,16 +923,19 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     });
   }
 
+  @Deprecated
   @Override
   public TypeCheckingContext createTypecheckingContext(SNode sNode, TypeContextManager typeContextManager) {
     return (new DefaultTypecheckingContextOwner()).createTypecheckingContext(sNode, typeContextManager);
   }
 
+  @Deprecated
   @Override
   public boolean reuseTypecheckingContext() {
     return true;
   }
 
+  @Deprecated
   @Override
   public SubtypingCache createSubtypingCache() {
     return new ConcurrentSubtypingCache();
@@ -1021,8 +1028,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
 
       final boolean needNewTypecheckingContext = updateContainingRoot(node);
-      if (needNewTypecheckingContext) {
-        releaseTypeCheckingContext();
+      if (needNewTypecheckingContext && mySessionToken != null) {
+        mySessionToken.release();
+        mySessionToken = null;
       }
 
       myNode = node;
@@ -1039,8 +1047,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
       myCommandContext.updateContextNode();
 
-      if (needNewTypecheckingContext) {
-        acquireTypeCheckingContext();
+      if (needNewTypecheckingContext && myNode != null) {
+        mySessionToken = TypecheckingFacade.getFromContext().requestNewSession(Flags.forRoot(myNode).incremental());
       }
 
       rebuildEditorContent();
@@ -1359,7 +1367,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       hideMessageToolTip();
     }
 
-    releaseTypeCheckingContext();
+    if (mySessionToken != null) {
+      mySessionToken.release();
+      mySessionToken = null;
+    }
     myHighlightManager.dispose();
 
     detachListeners();
@@ -2204,14 +2215,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return this;
   }
 
-  protected void acquireTypeCheckingContext() {
-    getModelAccess().runReadAction(() -> TypeContextManager.getInstance().acquireTypecheckingContext(getNodeForTypechecking(), EditorComponent.this));
-  }
-
-  protected void releaseTypeCheckingContext() {
-    getModelAccess().runReadAction(() -> TypeContextManager.getInstance().releaseTypecheckingContext(EditorComponent.this));
-  }
-
   /**
    * Returns false iff the containing root has been changed as a result of this method call.
    */
@@ -2678,14 +2681,19 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   public void rebuildAfterReloadModel() {
-    releaseTypeCheckingContext();
+    if (mySessionToken != null) {
+      mySessionToken.release();
+      mySessionToken = null;
+    }
     if (myNodePointer != null) {
       myNode = myNodePointer.resolve(getRepository());
       myEditorContext = createEditorContext(myNode == null ? null : myNode.getModel(), myRepository);
       myUpdater.clearExplicitHints();
     }
     myCommandContext.updateContextNode();
-    acquireTypeCheckingContext();
+    if (myNode != null) {
+      mySessionToken = TypecheckingFacade.getFromContext().requestNewSession(Flags.forRoot(myNode).incremental());
+    }
   }
 
   private static class MyBaseAction extends BaseAction implements DumbAware {
