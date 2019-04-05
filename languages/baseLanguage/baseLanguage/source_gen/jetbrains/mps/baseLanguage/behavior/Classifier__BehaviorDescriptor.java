@@ -197,6 +197,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
 
       @Override
       public void onExited(@NotNull ClassifierTraversalCallback.TraversalInfo info) {
+        if (info.getCurrentClassifier() == __thisNode__) {
+          return;
+        }
         for (SNode clMethod : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(info.getCurrentClassifier()))) {
           if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(clMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
             continue;
