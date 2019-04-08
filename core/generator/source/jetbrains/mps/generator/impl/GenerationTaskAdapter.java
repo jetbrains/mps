@@ -17,6 +17,9 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.GenerationTask;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingSessionHandler.SessionToken;
+import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.Callback;
 import org.jetbrains.annotations.NotNull;
@@ -37,13 +40,13 @@ class GenerationTaskAdapter implements Runnable {
 
   @Override
   public void run() {
+    SessionToken sessionToken = TypecheckingFacade.getFromContext().requestNewSession(Flags.generator());
     try {
-      TypeChecker.getInstance().generationWorkerStarted();
       myTask.run();
     } catch (Throwable th) {
       myExceptionReporter.call(th);
     } finally {
-      TypeChecker.getInstance().generationWorkerFinished();
+      sessionToken.release();
     }
   }
 
