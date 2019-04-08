@@ -104,7 +104,8 @@ public class WorkbenchMigrationProblemHandler implements ProjectComponent, Migra
             final List<SModel> modelsToClean = Sequence.fromIterable(modules).translate(new ITranslator2<SModuleReference, SModel>() {
               public Iterable<SModel> translate(SModuleReference it) {
                 SModule module = it.resolve(repo);
-                return (module == null ? Collections.<SModel>emptyList() : module.getModels());
+                Iterable<SModel> seq = (module == null ? Collections.<SModel>emptyList() : module.getModels());
+                return seq;
               }
             }).where(new IWhereFilter<SModel>() {
               public boolean accept(SModel it) {
