@@ -20,9 +20,15 @@ import com.intellij.openapi.wm.ToolWindowAnchor;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseProjectTool;
+import jetbrains.mps.util.annotation.ToRemove;
 
 import javax.swing.JComponent;
 
+/**
+ * @deprecated not functional and will be removed
+ */
+@Deprecated
+@ToRemove(version = 2019.1)
 public class TypecheckerStateView extends BaseProjectTool {
   private TypecheckerStateViewComponent myComponent;
 

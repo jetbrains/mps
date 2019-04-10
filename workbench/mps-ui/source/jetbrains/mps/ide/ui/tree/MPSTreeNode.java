@@ -417,16 +417,30 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     }
   }
 
+  /**
+   * @deprecated use {@link MPSTreeNode#getIcon()} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2019.1)
   public final Icon getIcon(boolean expanded) {
+    return getIcon();
+  }
+
+  public final Icon getIcon() {
     return myIcon;
   }
 
+  /**
+   * @deprecated use {@link MPSTreeNode#setIcon(javax.swing.Icon)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2019.1)
   public final void setIcon(Icon newIcon, boolean expanded) {
-    myIcon = newIcon;
+    setIcon(newIcon);
   }
 
   public final void setIcon(Icon newIcon) {
-    setIcon(newIcon, true);
+    myIcon = newIcon;
   }
 
   public final Color getColor() {

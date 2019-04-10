@@ -99,12 +99,17 @@ import javax.swing.UIManager;
       // CheckBoxNodeRenderer uses NodeData to represent checked state, therefore we have to attach NodeData to group node to 
       // represent composite state of its children 
       setUserObject(new CheckBoxNodeRenderer.NodeData() {
-        public Icon getIcon(boolean expanded) {
-          return GroupTreeNode.this.getIcon(expanded);
+        @Override
+        public Icon getIcon() {
+          return GroupTreeNode.this.getIcon();
         }
+
+        @Override
         public String getText() {
           return GroupTreeNode.this.getText();
         }
+
+        @Override
         public boolean isSelected() {
           for (MPSTreeNode c : GroupTreeNode.this.getChildren()) {
             if (c.getUserObject() instanceof CheckBoxNodeRenderer.NodeData) {
@@ -116,6 +121,8 @@ import javax.swing.UIManager;
           }
           return true;
         }
+
+        @Override
         public void setSelected(boolean selected) {
           for (MPSTreeNode c : GroupTreeNode.this.getChildren()) {
             if (c.getUserObject() instanceof CheckBoxNodeRenderer.NodeData) {

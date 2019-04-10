@@ -56,54 +56,54 @@
       <node id="2269491314710927476" at="97,35,98,0" concept="13" />
       <node id="2269491314711706508" at="98,0,99,126" concept="12" />
       <node id="2269491314711727134" at="99,126,100,51" concept="12" />
-      <node id="2269491314711112365" at="102,47,103,54" concept="11" />
-      <node id="2269491314711090158" at="105,33,106,46" concept="11" />
-      <node id="2269491314711660410" at="111,88,112,29" concept="11" />
-      <node id="2269491314711690490" at="114,13,115,39" concept="12" />
-      <node id="2269491314711675448" at="116,11,117,22" concept="11" />
-      <node id="2269491314711526882" at="121,77,122,88" concept="4" />
-      <node id="4066181782149372319" at="126,9,127,0" concept="13" />
-      <node id="4474271214083125668" at="127,0,128,77" concept="10" />
-      <node id="4474271214083125686" at="129,67,130,54" concept="4" />
-      <node id="4474271214083125753" at="133,26,134,33" concept="4" />
-      <node id="4474271214083125698" at="136,14,137,69" concept="10" />
-      <node id="4474271214083125735" at="139,33,140,93" concept="4" />
-      <node id="4474271214083125729" at="142,46,143,37" concept="4" />
+      <node id="2269491314711112365" at="103,31,104,46" concept="11" />
+      <node id="2269491314711090158" at="108,33,109,46" concept="11" />
+      <node id="2269491314711660410" at="116,88,117,29" concept="11" />
+      <node id="2269491314711690490" at="119,13,120,39" concept="12" />
+      <node id="2269491314711675448" at="121,11,122,22" concept="11" />
+      <node id="2269491314711526882" at="128,77,129,88" concept="4" />
+      <node id="4066181782149372319" at="133,9,134,0" concept="13" />
+      <node id="4474271214083125668" at="134,0,135,77" concept="10" />
+      <node id="4474271214083125686" at="136,67,137,54" concept="4" />
+      <node id="4474271214083125753" at="140,26,141,33" concept="4" />
+      <node id="4474271214083125698" at="143,14,144,69" concept="10" />
+      <node id="4474271214083125735" at="146,33,147,93" concept="4" />
+      <node id="4474271214083125729" at="149,46,150,37" concept="4" />
       <node id="4474271214083125191" at="51,0,53,0" concept="2" trace="GroupKind#()V" />
       <node id="4474271214083125194" at="53,0,55,0" concept="9" trace="getGroup#(null)null" />
       <node id="4474271214083125380" at="42,50,45,5" concept="8" />
       <node id="4474271214083125204" at="59,0,62,0" concept="9" trace="getText#(null)Ljava/lang/String;" />
       <node id="4474271214083125221" at="79,0,82,0" concept="9" trace="isVisible#()Z" />
       <node id="4474271214083125224" at="82,0,85,0" concept="9" trace="setVisible#(Z)V" />
-      <node id="2269491314711071708" at="102,0,105,0" concept="9" trace="getIcon#(Z)Ljavax/swing/Icon;" />
-      <node id="2269491314711071716" at="105,0,108,0" concept="9" trace="getText#()Ljava/lang/String;" />
-      <node id="2269491314711635896" at="110,77,113,15" concept="8" />
-      <node id="2269491314711500562" at="120,66,123,13" concept="8" />
-      <node id="4474271214083125676" at="128,77,131,7" concept="17" />
-      <node id="4474271214083125748" at="132,33,135,9" concept="7" />
-      <node id="4474271214083125721" at="141,18,144,13" concept="7" />
+      <node id="2269491314711635896" at="115,77,118,15" concept="8" />
+      <node id="2269491314711500562" at="127,66,130,13" concept="8" />
+      <node id="4474271214083125676" at="135,77,138,7" concept="17" />
+      <node id="4474271214083125748" at="139,33,142,9" concept="7" />
+      <node id="4474271214083125721" at="148,18,151,13" concept="7" />
       <node id="4474271214083125360" at="36,0,40,0" concept="9" trace="rebuild#()Ljetbrains/mps/ide/ui/tree/MPSTreeNode;" />
       <node id="4474271214083125199" at="55,0,59,0" concept="9" trace="getIcon#(null)Ljavax/swing/Icon;" />
       <node id="4474271214083125209" at="62,0,66,0" concept="9" trace="getSubGroupKind#()Ljetbrains/mps/debugger/api/ui/breakpoints/GroupedTree/GroupKind;" />
       <node id="4474271214083125523" at="70,48,74,9" concept="8" />
-      <node id="4474271214083125719" at="141,16,145,11" concept="0" />
-      <node id="2269491314711616552" at="109,66,114,13" concept="8" />
-      <node id="2269491314711406341" at="119,51,124,11" concept="7" />
+      <node id="2269491314711071708" at="102,0,106,0" concept="9" trace="getIcon#()Ljavax/swing/Icon;" />
+      <node id="2269491314711071716" at="107,0,111,0" concept="9" trace="getText#()Ljava/lang/String;" />
+      <node id="4474271214083125719" at="148,16,152,11" concept="0" />
+      <node id="2269491314711616552" at="114,66,119,13" concept="8" />
+      <node id="2269491314711406341" at="126,51,131,11" concept="7" />
       <node id="4474271214083125332" at="22,0,29,0" concept="9" trace="createNodeData#(Z)Ljetbrains/mps/ide/platform/ui/CheckBoxNodeRenderer/NodeData;" />
       <node id="4474271214083125374" at="41,0,48,0" concept="9" trace="findNodeForData#(null)Ljetbrains/mps/ide/ui/tree/MPSTreeNode;" />
-      <node id="2269491314711071728" at="119,0,126,0" concept="9" trace="setSelected#(Z)V" />
-      <node id="4474271214083125715" at="138,49,145,11" concept="8" />
-      <node id="2269491314711616550" at="108,37,116,11" concept="7" />
+      <node id="4474271214083125715" at="145,49,152,11" concept="8" />
+      <node id="2269491314711616550" at="113,37,121,11" concept="7" />
+      <node id="2269491314711071728" at="125,0,133,0" concept="9" trace="setSelected#(Z)V" />
       <node id="4474271214083125327" at="20,71,29,7" concept="4" />
       <node id="4474271214083125505" at="67,55,76,7" concept="7" />
-      <node id="4474271214083125708" at="137,69,146,9" concept="7" />
-      <node id="2269491314711071722" at="108,0,119,0" concept="9" trace="isSelected#()Z" />
-      <node id="4474271214083125696" at="136,12,147,7" concept="0" />
+      <node id="4474271214083125708" at="144,69,153,9" concept="7" />
+      <node id="4474271214083125696" at="143,12,154,7" concept="0" />
+      <node id="2269491314711071722" at="112,0,124,0" concept="9" trace="isSelected#()Z" />
       <node id="4474271214083125312" at="19,0,32,0" concept="2" trace="GroupedTree#()V" />
       <node id="4474271214083125212" at="66,0,79,0" concept="9" trace="sortByGroups#(Ljava/util/Collection;)Ljava/util/Map;" />
-      <node id="4474271214083125692" at="131,7,147,7" concept="8" />
-      <node id="2269491314710946282" at="100,51,126,9" concept="4" />
-      <node id="4474271214083125292" at="89,0,149,0" concept="2" trace="GroupTreeNode#(Ljetbrains/mps/debugger/api/ui/breakpoints/GroupedTree/GroupKind;nullLjava/util/Collection;)V" />
+      <node id="4474271214083125692" at="138,7,154,7" concept="8" />
+      <node id="2269491314710946282" at="100,51,133,9" concept="4" />
+      <node id="4474271214083125292" at="89,0,156,0" concept="2" trace="GroupTreeNode#(Ljetbrains/mps/debugger/api/ui/breakpoints/GroupedTree/GroupKind;nullLjava/util/Collection;)V" />
       <scope id="4474271214083125476" at="51,24,51,24" />
       <scope id="4474271214083125341" at="32,0,33,0">
         <var name="data" id="4474271214083125346" />
@@ -117,14 +117,14 @@
       <scope id="4474271214083125489" at="63,52,64,18" />
       <scope id="4474271214083125547" at="79,32,80,25" />
       <scope id="4474271214083125550" at="82,47,83,30" />
-      <scope id="2269491314711071714" at="102,47,103,54" />
-      <scope id="2269491314711071720" at="105,33,106,46" />
-      <scope id="2269491314711635898" at="111,88,112,29" />
-      <scope id="2269491314711500564" at="121,77,122,88" />
-      <scope id="4474271214083125685" at="129,67,130,54" />
-      <scope id="4474271214083125752" at="133,26,134,33" />
-      <scope id="4474271214083125734" at="139,33,140,93" />
-      <scope id="4474271214083125728" at="142,46,143,37" />
+      <scope id="2269491314711071714" at="103,31,104,46" />
+      <scope id="2269491314711071720" at="108,33,109,46" />
+      <scope id="2269491314711635898" at="116,88,117,29" />
+      <scope id="2269491314711500564" at="128,77,129,88" />
+      <scope id="4474271214083125685" at="136,67,137,54" />
+      <scope id="4474271214083125752" at="140,26,141,33" />
+      <scope id="4474271214083125734" at="146,33,147,93" />
+      <scope id="4474271214083125728" at="149,46,150,37" />
       <scope id="4474271214083125191" at="51,0,53,0" />
       <scope id="4474271214083125194" at="53,0,55,0">
         <var name="data" id="4474271214083125197" />
@@ -137,18 +137,14 @@
       <scope id="4474271214083125224" at="82,0,85,0">
         <var name="isVisible" id="4474271214083125227" />
       </scope>
-      <scope id="2269491314711071708" at="102,0,105,0">
-        <var name="expanded" id="2269491314711071712" />
-      </scope>
-      <scope id="2269491314711071716" at="105,0,108,0" />
-      <scope id="2269491314711616553" at="110,77,113,15" />
-      <scope id="2269491314711406343" at="120,66,123,13" />
-      <scope id="4474271214083125747" at="132,33,135,9" />
-      <scope id="4474271214083125748" at="132,33,135,9">
+      <scope id="2269491314711616553" at="115,77,118,15" />
+      <scope id="2269491314711406343" at="127,66,130,13" />
+      <scope id="4474271214083125747" at="139,33,142,9" />
+      <scope id="4474271214083125748" at="139,33,142,9">
         <var name="d" id="4474271214083125750" />
       </scope>
-      <scope id="4474271214083125720" at="141,18,144,13" />
-      <scope id="4474271214083125721" at="141,18,144,13">
+      <scope id="4474271214083125720" at="148,18,151,13" />
+      <scope id="4474271214083125721" at="148,18,151,13">
         <var name="d" id="4474271214083125726" />
       </scope>
       <scope id="4474271214083125765" at="23,80,27,20">
@@ -160,11 +156,13 @@
         <var name="group" id="4474271214083125202" />
       </scope>
       <scope id="4474271214083125209" at="62,0,66,0" />
-      <scope id="2269491314711071734" at="119,51,124,11" />
-      <scope id="2269491314711406341" at="119,51,124,11">
+      <scope id="2269491314711071708" at="102,0,106,0" />
+      <scope id="2269491314711071716" at="107,0,111,0" />
+      <scope id="2269491314711071734" at="126,51,131,11" />
+      <scope id="2269491314711406341" at="126,51,131,11">
         <var name="c" id="2269491314711406344" />
       </scope>
-      <scope id="2269491314711616551" at="109,66,115,39" />
+      <scope id="2269491314711616551" at="114,66,120,39" />
       <scope id="4474271214083125332" at="22,0,29,0">
         <var name="selected" id="4474271214083125335" />
       </scope>
@@ -175,46 +173,46 @@
         <var name="dataForGroup" id="4474271214083125516" />
         <var name="group" id="4474271214083125511" />
       </scope>
-      <scope id="2269491314711071728" at="119,0,126,0">
-        <var name="selected" id="2269491314711071732" />
-      </scope>
-      <scope id="4474271214083125714" at="138,49,145,11" />
-      <scope id="2269491314711616550" at="108,37,116,11">
+      <scope id="4474271214083125714" at="145,49,152,11" />
+      <scope id="2269491314711616550" at="113,37,121,11">
         <var name="c" id="2269491314711616569" />
+      </scope>
+      <scope id="2269491314711071728" at="125,0,133,0">
+        <var name="selected" id="2269491314711071732" />
       </scope>
       <scope id="4474271214083125505" at="67,55,76,7">
         <var name="data" id="4474271214083125507" />
       </scope>
-      <scope id="2269491314711071726" at="108,37,117,22" />
-      <scope id="4474271214083125708" at="137,69,146,9">
+      <scope id="2269491314711071726" at="113,37,122,22" />
+      <scope id="4474271214083125708" at="144,69,153,9">
         <var name="subGroup" id="4474271214083125712" />
       </scope>
-      <scope id="4474271214083125697" at="136,14,146,9">
+      <scope id="4474271214083125697" at="143,14,153,9">
         <var name="sorted" id="4474271214083125699" />
       </scope>
       <scope id="4474271214083125317" at="19,24,30,22" />
       <scope id="4474271214083125493" at="66,66,77,20">
         <var name="result" id="4474271214083125495" />
       </scope>
-      <scope id="2269491314711071722" at="108,0,119,0" />
+      <scope id="2269491314711071722" at="112,0,124,0" />
       <scope id="4474271214083125312" at="19,0,32,0" />
       <scope id="4474271214083125212" at="66,0,79,0">
         <var name="dataToSort" id="4474271214083125218" />
       </scope>
-      <scope id="4474271214083125625" at="89,107,147,7">
+      <scope id="4474271214083125625" at="89,107,154,7">
         <var name="subGroupKind" id="4474271214083125669" />
         <var name="text" id="4066181782149176192" />
       </scope>
-      <scope id="4474271214083125292" at="89,0,149,0">
+      <scope id="4474271214083125292" at="89,0,156,0">
         <var name="data" id="4474271214083125303" />
         <var name="group" id="4474271214083125301" />
         <var name="kind" id="4474271214083125297" />
       </scope>
       <unit id="4474271214083125331" at="21,22,29,5" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree$1" />
-      <unit id="2269491314711071706" at="101,24,126,7" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree$GroupTreeNode$1" />
+      <unit id="2269491314711071706" at="101,24,133,7" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree$GroupTreeNode$1" />
       <unit id="4474271214083111857" at="49,0,86,0" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree$GroupKind" />
-      <unit id="4474271214083117743" at="87,0,150,0" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree$GroupTreeNode" />
-      <unit id="4474271214083111858" at="18,0,151,0" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree" />
+      <unit id="4474271214083117743" at="87,0,157,0" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree$GroupTreeNode" />
+      <unit id="4474271214083111858" at="18,0,158,0" name="jetbrains.mps.debugger.api.ui.breakpoints.GroupedTree" />
     </file>
   </root>
   <root nodeRef="r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083117744">
@@ -1019,8 +1017,8 @@
       <node id="4066181782149846132" at="57,47,58,37" concept="10" />
       <node id="4066181782149808507" at="58,37,59,35" concept="4" />
       <node id="4066181782149858909" at="59,35,60,25" concept="4" />
-      <node id="4066181782149888915" at="60,25,61,39" concept="4" />
-      <node id="4474271214083119882" at="61,39,62,18" concept="11" />
+      <node id="4066181782149888915" at="60,25,61,35" concept="4" />
+      <node id="4474271214083119882" at="61,35,62,18" concept="11" />
       <node id="4474271214083119888" at="66,113,67,58" concept="11" />
       <node id="4474271214083119893" at="70,82,71,22" concept="11" />
       <node id="4474271214083119897" at="76,54,77,67" concept="4" />
@@ -1069,7 +1067,7 @@
       <node id="4474271214083119750" at="221,7,222,18" concept="11" />
       <node id="8335510736428856521" at="225,38,226,63" concept="11" />
       <node id="4474271214083119763" at="232,64,233,32" concept="4" />
-      <node id="4474271214083119769" at="236,43,237,61" concept="11" />
+      <node id="4474271214083119769" at="236,27,237,61" concept="11" />
       <node id="4474271214083119779" at="240,29,241,44" concept="11" />
       <node id="4474271214083119785" at="244,33,245,38" concept="11" />
       <node id="4474271214083119791" at="248,47,249,40" concept="4" />
@@ -1111,7 +1109,7 @@
       <node id="4474271214083119189" at="201,0,205,0" concept="9" trace="getText#(Lorg/jetbrains/mps/openapi/model/SModelReference;)Ljava/lang/String;" />
       <node id="4474271214083119194" at="205,0,209,0" concept="9" trace="getIcon#(Lorg/jetbrains/mps/openapi/model/SModelReference;)Ljavax/swing/Icon;" />
       <node id="4474271214083119212" at="224,0,228,0" concept="9" trace="getIcon#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljavax/swing/Icon;" />
-      <node id="4474271214083119227" at="235,0,239,0" concept="9" trace="getIcon#(Z)Ljavax/swing/Icon;" />
+      <node id="4474271214083119227" at="235,0,239,0" concept="9" trace="getIcon#()Ljavax/swing/Icon;" />
       <node id="4474271214083119235" at="239,0,243,0" concept="9" trace="getText#()Ljava/lang/String;" />
       <node id="4474271214083119238" at="243,0,247,0" concept="9" trace="isSelected#()Z" />
       <node id="4474271214083119241" at="247,0,251,0" concept="9" trace="setSelected#(Z)V" />
@@ -1169,7 +1167,7 @@
       <scope id="4474271214083119743" at="218,27,219,42" />
       <scope id="4474271214083119754" at="225,38,226,63" />
       <scope id="4474271214083119762" at="232,64,233,32" />
-      <scope id="4474271214083119768" at="236,43,237,61" />
+      <scope id="4474271214083119768" at="236,27,237,61" />
       <scope id="4474271214083119778" at="240,29,241,44" />
       <scope id="4474271214083119784" at="244,33,245,38" />
       <scope id="4474271214083119790" at="248,47,249,40" />
@@ -1234,9 +1232,7 @@
       <scope id="4474271214083119212" at="224,0,228,0">
         <var name="group" id="4474271214083119215" />
       </scope>
-      <scope id="4474271214083119227" at="235,0,239,0">
-        <var name="expanded" id="4474271214083119230" />
-      </scope>
+      <scope id="4474271214083119227" at="235,0,239,0" />
       <scope id="4474271214083119235" at="239,0,243,0" />
       <scope id="4474271214083119238" at="243,0,247,0" />
       <scope id="4474271214083119241" at="247,0,251,0">

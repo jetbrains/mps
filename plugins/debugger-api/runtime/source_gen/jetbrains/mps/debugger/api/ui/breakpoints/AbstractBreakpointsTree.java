@@ -58,7 +58,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
         String text = data.getText();
         rv.setNodeIdentifier(text);
         rv.setText(text);
-        rv.setIcon(data.getIcon(true));
+        rv.setIcon(data.getIcon());
         return rv;
       }
 
@@ -233,7 +233,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       myBreakpoint = breakpoint;
     }
     @Override
-    public Icon getIcon(boolean expanded) {
+    public Icon getIcon() {
       return BreakpointIconRenderer.getIconFor(myBreakpoint);
     }
     @Override

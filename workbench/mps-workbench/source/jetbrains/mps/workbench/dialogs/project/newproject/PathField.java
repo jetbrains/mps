@@ -28,6 +28,8 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentEvent.EventType;
 import java.awt.BorderLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,14 @@ public class PathField extends JPanel {
 
   private JTextField createPathField() {
     JTextField component = new JTextField(40);
+    component.addKeyListener(new KeyAdapter() {
+      @Override
+      public void keyReleased(KeyEvent e) {
+        super.keyReleased(e);
+        myIsPathChangedByUser = true;
+        pathFromField();
+      }
+    });
     component.getDocument().addDocumentListener(new DocumentAdapter() {
       @Override
       protected void textChanged(DocumentEvent e) {
@@ -84,7 +94,7 @@ public class PathField extends JPanel {
   }
 
   public void setPath(String newValue) {
-    myPath = newValue;
+    myPath = FileUtil.toSystemDependentName(newValue);
     final boolean isPathChangedByUser = myIsPathChangedByUser; //Save current flag state.
     myPathField.setText(newValue);
     myIsPathChangedByUser = isPathChangedByUser; //Reset state. It was not user action.
@@ -104,7 +114,7 @@ public class PathField extends JPanel {
     final String oldPath = !myPathField.getText().isEmpty() ? myPathField.getText() : "";
     final VirtualFile result = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), myPathField, null, LocalFileSystem.getInstance().findFileByPath(oldPath));
     if (result != null) {
-      setPath(FileUtil.toSystemDependentName(result.getPath()));
+      setPath(result.getPath());
       myIsPathChangedByUser = true; //User change path only if dialog has result.
     }
   }

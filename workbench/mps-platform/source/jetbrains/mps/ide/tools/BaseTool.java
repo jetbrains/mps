@@ -280,18 +280,18 @@ public abstract class BaseTool {
       toolWindow.setIcon(myIcon);
     }
 
-    toolWindow.setToHideOnEmptyContent(true);
-    toolWindow.installWatcher(toolWindow.getContentManager());
-    setAvailable(isInitiallyAvailable());
-
-    doRegister();
-
     if (myComponent == null) {
       myComponent = getComponent();
     }
     if (myComponent != null) {
       addContent(myComponent, "", null, false);
     }
+
+    toolWindow.setToHideOnEmptyContent(true);
+    toolWindow.installWatcher(toolWindow.getContentManager());
+    setAvailable(isInitiallyAvailable());
+
+    doRegister();
   }
 
   /**

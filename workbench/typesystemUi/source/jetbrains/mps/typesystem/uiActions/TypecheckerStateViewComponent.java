@@ -26,6 +26,7 @@ import jetbrains.mps.nodeEditor.highlighter.EditorsHelper;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +42,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 
+/**
+ * @deprecated not functional and will be removed
+ */
+@Deprecated
+@ToRemove(version = 2019.1)
 public class TypecheckerStateViewComponent extends JPanel {
   private static final Logger LOG = LogManager.getLogger(TypecheckerStateViewComponent.class);
   private final Project myProject;

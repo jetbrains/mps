@@ -57,7 +57,7 @@ public class NewMPSTreeCellRenderer extends JPanel implements TreeCellRenderer {
     String additionalText = null;
     if (value instanceof MPSTreeNode) {
       MPSTreeNode treeNode = (MPSTreeNode) value;
-      icon = treeNode.getIcon(expanded);
+      icon = treeNode.getIcon();
       text = treeNode.getText();
       additionalText = treeNode.getAdditionalText();
 

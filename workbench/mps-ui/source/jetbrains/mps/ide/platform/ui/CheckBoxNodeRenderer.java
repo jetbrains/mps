@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.ide.platform.ui;
 
+import jetbrains.mps.util.annotation.ToRemove;
+
 import javax.swing.AbstractCellEditor;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
@@ -118,7 +120,13 @@ public class CheckBoxNodeRenderer implements TreeCellRenderer {
   }
 
   public interface NodeData {
-    Icon getIcon(boolean expanded);
+    /**
+     * Implement and use {@link NodeData#getIcon()} instead
+     */
+    @Deprecated
+    @ToRemove(version = 2019.1)
+    default Icon getIcon(boolean expanded){return getIcon();}
+    default Icon getIcon(){return null;}
     String getText();
 
     boolean isSelected();
