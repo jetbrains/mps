@@ -140,6 +140,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.nodeaccess.plugin.NodeReferenceURL_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.util.registry.Registry" />
     <classNode dependClassName="io.netty.handler.codec.http.QueryStringEncoder" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />

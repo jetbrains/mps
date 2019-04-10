@@ -7,6 +7,8 @@
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir=""/>
     <httpRequestHandler implementation="jetbrains.mps.ide.httpsupport.manager.plugin.MPSRequestManager" />
+    <registryKey key="ide.httpsupport.specifyProjectInNodeURL" defaultValue="false"
+                 description="Specify project name in node URL" />
   </extensions>
   <extensions defaultExtensionNs="org.jetbrains">
     <customPortServerManager implementation="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager"/>

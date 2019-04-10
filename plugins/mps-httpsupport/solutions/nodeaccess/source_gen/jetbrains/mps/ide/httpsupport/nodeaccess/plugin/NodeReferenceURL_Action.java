@@ -14,8 +14,9 @@ import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
+import com.intellij.openapi.util.registry.Registry;
 import jetbrains.mps.project.Project;
 import io.netty.handler.codec.http.QueryStringEncoder;
 import jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager;
@@ -60,13 +61,24 @@ public class NodeReferenceURL_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CopyPasteUtil.copyTextToClipboard(buildRequest_njdhnr_a0a0a7(SNodeOperations.getPointer(event.getData(MPSCommonDataKeys.NODE)), event.getData(MPSCommonDataKeys.MPS_PROJECT)));
+    SNodeReference pointer = SNodeOperations.getPointer(event.getData(MPSCommonDataKeys.NODE));
+    CopyPasteUtil.copyTextToClipboard((NodeReferenceURL_Action.this.specifyProjectInURL(event) ? buildRequest_njdhnr_a0a0b0h(pointer, event.getData(MPSCommonDataKeys.MPS_PROJECT)) : buildRequest_njdhnr_a0a0b0h_0(pointer)));
   }
-  private static String buildRequest_njdhnr_a0a0a7(SNodeReference ref, Project project) {
+  private boolean specifyProjectInURL(final AnActionEvent event) {
+    return Registry.is("ide.httpsupport.specifyProjectInNodeURL");
+  }
+  private static String buildRequest_njdhnr_a0a0b0h(SNodeReference ref, Project project) {
     QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.PORT + "/node");
 
     encoder.addParam("ref", PersistenceFacade.getInstance().asString(ref));
     encoder.addParam("project", project.getName());
+
+    return encoder.toString();
+  }
+  private static String buildRequest_njdhnr_a0a0b0h_0(SNodeReference ref) {
+    QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + MPSInternalPortManager.PORT + "/node");
+
+    encoder.addParam("ref", PersistenceFacade.getInstance().asString(ref));
 
     return encoder.toString();
   }
