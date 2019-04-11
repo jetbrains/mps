@@ -28,6 +28,11 @@ import jetbrains.mps.ide.platform.actions.core.RefactoringProcessor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
+import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.project.AbstractModule;
+import java.util.Collection;
+import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
 import jetbrains.mps.ide.platform.actions.core.DefaultRefactoringUI;
 import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
@@ -140,6 +145,15 @@ public class MoveModel_Action extends BaseAction {
           return;
         }
 
+        if (newModel instanceof SModelInternal && newModel.getModule() instanceof AbstractModule) {
+          Collection<SModule> exisingModuleDependencies = new GlobalModuleDependenciesManager(newModel.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE);
+          for (SModelReference dependency : CollectionSequence.fromCollection(((SModelInternal) newModel).getModelImports())) {
+            SModule depModule = dependency.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()).getModule();
+            if (!(exisingModuleDependencies.contains(depModule))) {
+              ((AbstractModule) newModel.getModule()).addDependency(depModule.getModuleReference(), false);
+            }
+          }
+        }
         UpdateDependentModelsRefactoringParticipant.updateUsages(newModel, modelReference, newModel.getReference());
         DeleteModelHelper.delete(((SModel) MapSequence.fromMap(_params).get("model")).getModule(), ((SModel) MapSequence.fromMap(_params).get("model")), true);
       }
