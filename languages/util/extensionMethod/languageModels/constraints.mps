@@ -61,6 +61,7 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
+      <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -658,6 +659,19 @@
         <node concept="3cpWs6" id="147CB3QsVcQ" role="3cqZAp">
           <node concept="3clFbT" id="147CB3QsVcR" role="3cqZAk">
             <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="9S07l" id="7MG5rjqXt1V" role="9Vyp8">
+      <node concept="3clFbS" id="7MG5rjqXt1W" role="2VODD2">
+        <node concept="3clFbF" id="7MG5rjqXyCD" role="3cqZAp">
+          <node concept="17R0WA" id="7MG5rjqXz84" role="3clFbG">
+            <node concept="359W_D" id="7MG5rjqXzup" role="3uHU7w">
+              <ref role="359W_E" to="uigu:6XkcKt_ivkp" resolve="BaseExtensionMethodContainer" />
+              <ref role="359W_F" to="uigu:6XkcKt_ivkr" resolve="methods" />
+            </node>
+            <node concept="2DA6wF" id="7MG5rjqXyCC" role="3uHU7B" />
           </node>
         </node>
       </node>
