@@ -68,7 +68,7 @@ public final class ModuleLoader {
     myBuildProject = buildProject;
     myBuildContext = (genContext != null ? Context.defaultContext(genContext) : Context.defaultContext());
     myPathConverter = new PathConverter(myBuildContext, buildProject);
-    myVisibleModules = new VisibleModules(buildProject);
+    myVisibleModules = new VisibleModules(buildProject, msgHandler);
     myVisibleModules.collect();
     myMsgHandler = msgHandler;
     // TODO enforce outer code to specify FS to avoid singleton access 
@@ -169,6 +169,7 @@ public final class ModuleLoader {
     return new ModuleChecker(module, myVisibleModules, myPathConverter, file, md, myMsgHandler, myRepository);
   }
 
+
   private static class Repo extends SRepositoryBase implements SRepositoryExt {
     private final ModelAccess myModelAccess;
     private final Map<SModuleId, SModule> myModules;
@@ -181,7 +182,7 @@ public final class ModuleLoader {
     public <T extends SModule> T registerModule(@NotNull T module, @NotNull MPSModuleOwner owner) {
       SModule existing = myModules.putIfAbsent(module.getModuleId(), module);
       if (existing != null) {
-        throw new IllegalStateException();
+        throw new IllegalStateException("Duplicate modules with id '" + module.getModuleId() + "'");
       }
       if (module instanceof AbstractModule) {
         ((AbstractModule) module).attach(this);
@@ -205,29 +206,35 @@ public final class ModuleLoader {
       // as we ignore MPSModuleOwner when registering a module, there's no way to return a proper value 
       // OTOH, UnsupportedOperationException, though technically right, is no appropriate as there's generic code 
       // that expects this method not to throw an exception (i.e. Language unregistering its Generators) 
-      return Collections.emptySet();
+      return Collections.<MPSModuleOwner>emptySet();
     }
 
 
     @Override
     public Set<SModule> getModules(MPSModuleOwner owner) {
       // see getOwners(), above, for reasone why empty collection, not exception 
-      return Collections.emptySet();
+      return Collections.<SModule>emptySet();
     }
 
     @Nullable
+    @Override
     public SModule getModule(@NotNull SModuleId mid) {
       return myModules.get(mid);
     }
+
+    @Override
     public void saveAll() {
       throw new UnsupportedOperationException();
     }
+
     @NotNull
+    @Override
     public Iterable<SModule> getModules() {
       return new ArrayList<SModule>(myModules.values());
     }
 
     @NotNull
+    @Override
     public ModelAccess getModelAccess() {
       return myModelAccess;
     }
@@ -237,30 +244,39 @@ public final class ModuleLoader {
     public boolean canRead() {
       return true;
     }
+
     public boolean canWrite() {
       return true;
     }
+
     public void runReadAction(Runnable p0) {
       throw new UnsupportedOperationException();
     }
+
     public void runReadInEDT(Runnable p0) {
       throw new UnsupportedOperationException();
     }
+
     public void runWriteAction(Runnable p0) {
       throw new UnsupportedOperationException();
     }
+
     public void runWriteInEDT(Runnable p0) {
       throw new UnsupportedOperationException();
     }
+
     public void executeCommand(Runnable p0) {
       throw new UnsupportedOperationException();
     }
+
     public void executeCommandInEDT(Runnable p0) {
       throw new UnsupportedOperationException();
     }
+
     public void executeUndoTransparentCommand(Runnable p0) {
       throw new UnsupportedOperationException();
     }
+
     public boolean isCommandAction() {
       return false;
     }
