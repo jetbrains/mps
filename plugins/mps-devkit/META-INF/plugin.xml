@@ -72,12 +72,7 @@
   </extensions>
   <actions>
     <group id="MPSWelcomeDocumentationMenu">
-      <action id="MPSTutorial"
-              class="jetbrains.mps.ide.devkit.help.ShowTutorialAction"
-              text="Tutorial"
-              description="You can read a tutorial on how to create a simple language with MPS"/>
       <reference id="OnlineDocAction"/>
-
       <add-to-group group-id="WelcomeScreen.Documentation" anchor="first"/>
     </group>
     <group id="MPSHelpMenu">

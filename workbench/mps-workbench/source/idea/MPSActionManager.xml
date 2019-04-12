@@ -10,11 +10,16 @@
               class="jetbrains.mps.workbench.actions.NewMPSProjectAction"
               text="Create New Project"
               description="You can create a new project with this action"/>
-
       <action id="OpenExistingProjectAction"
               class="jetbrains.mps.workbench.actions.OpenMPSProjectAction"
               text="Open Project"
               description="You can open existing project with this action"/>
+      <action id="MPSTutorial"
+                class="jetbrains.mps.workbench.actions.ShowTutorialAction"
+                text="Show Tutorial"
+                description="You can read a tutorial on how to create a simple language with MPS">
+        <keyboard-shortcut first-keystroke="alt shift T" keymap="$default"/>
+      </action>
       <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
     </group>
   </actions>

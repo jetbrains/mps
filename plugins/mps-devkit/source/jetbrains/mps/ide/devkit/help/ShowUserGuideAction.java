@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.devkit.help;
 
 import jetbrains.mps.workbench.DocumentationHelper;
+import jetbrains.mps.workbench.actions.ShowSiteAction;
 
 public class ShowUserGuideAction extends ShowSiteAction {
   public ShowUserGuideAction() {

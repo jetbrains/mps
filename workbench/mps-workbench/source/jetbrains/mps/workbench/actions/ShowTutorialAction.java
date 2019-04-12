@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.ide.devkit.help;
+package jetbrains.mps.workbench.actions;
 
+import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.openapi.application.ApplicationInfo;
 
 public class ShowTutorialAction extends ShowSiteAction {
@@ -30,7 +31,8 @@ public class ShowTutorialAction extends ShowSiteAction {
       );
 
   public ShowTutorialAction() {
-    super("Tutorial");
+    super("Show Tutorial");
+    getTemplatePresentation().setIcon(Nodes.PpWeb);
   }
 
   @Override

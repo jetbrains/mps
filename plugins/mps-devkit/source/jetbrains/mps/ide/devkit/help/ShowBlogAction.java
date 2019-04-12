@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.ide.devkit.help;
 
+import jetbrains.mps.workbench.actions.ShowSiteAction;
+
 public class ShowBlogAction extends ShowSiteAction {
   public ShowBlogAction() {
     super("Blog");
