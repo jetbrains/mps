@@ -62,7 +62,10 @@
     <classNode extendsClassName="com.intellij.openapi.components.PersistentStateComponent" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.MergeDriverPackerImpl">
+    <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptor" />
+    <classNode dependClassName="com.intellij.ide.plugins.PluginManager" />
     <classNode dependClassName="com.intellij.openapi.application.PathManager" />
+    <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />

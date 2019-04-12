@@ -52,6 +52,7 @@
     <import index="yt4f" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff(MPS.IDEA/)" />
     <import index="tcg7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.fileTypes(MPS.Platform/)" />
     <import index="iwsx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor(MPS.IDEA/)" />
+    <import index="ctgy" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.plugins(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2901,7 +2902,7 @@
                   <node concept="3cpWs3" id="6kmsk4KDJ3d" role="3uHU7B">
                     <node concept="3cpWs3" id="6kmsk4KDJ1G" role="3uHU7B">
                       <node concept="1rXfSq" id="4hiugqyz8vf" role="3uHU7B">
-                        <ref role="37wK5l" to="80f9:7cEItjJE$3d" resolve="getVCSCorePluginPath" />
+                        <ref role="37wK5l" node="3w733MjdnQq" resolve="getVCSCorePluginPath" />
                       </node>
                       <node concept="37vLTw" id="19ElvrpZnoB" role="3uHU7w">
                         <ref role="3cqZAo" node="19ElvrpZnoe" resolve="fsep" />
@@ -2927,6 +2928,58 @@
         <node concept="3clFbH" id="7cEItjJEHj6" role="3cqZAp" />
       </node>
       <node concept="2AHcQZ" id="3tYsUK_S5M$" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="3w733MjdnQq" role="jymVt">
+      <property role="TrG5h" value="getVCSCorePluginPath" />
+      <node concept="17QB3L" id="3w733MjdnQr" role="3clF45" />
+      <node concept="3Tmbuc" id="3w733MjdnQt" role="1B3o_S" />
+      <node concept="3clFbS" id="3w733MjdnQu" role="3clF47">
+        <node concept="3cpWs8" id="5drFrG61MpO" role="3cqZAp">
+          <node concept="3cpWsn" id="5drFrG61MpP" role="3cpWs9">
+            <property role="TrG5h" value="vcsCorePlugin" />
+            <node concept="3uibUv" id="5drFrG61MpQ" role="1tU5fm">
+              <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptor" resolve="IdeaPluginDescriptor" />
+            </node>
+            <node concept="2YIFZM" id="5drFrG61MpR" role="33vP2m">
+              <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
+              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId):com.intellij.ide.plugins.IdeaPluginDescriptor" resolve="getPlugin" />
+              <node concept="2YIFZM" id="5drFrG61MpS" role="37wK5m">
+                <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String):com.intellij.openapi.extensions.PluginId" resolve="getId" />
+                <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
+                <node concept="Xl_RD" id="5drFrG61MpT" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.vcs" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1gVbGN" id="5drFrG61MpU" role="3cqZAp">
+          <node concept="3y3z36" id="5drFrG61MpV" role="1gVkn0">
+            <node concept="10Nm6u" id="5drFrG61MpW" role="3uHU7w" />
+            <node concept="37vLTw" id="3GM_nagTB6h" role="3uHU7B">
+              <ref role="3cqZAo" node="5drFrG61MpP" resolve="vcsCorePlugin" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5drFrG61MpY" role="3cqZAp">
+          <node concept="2OqwBi" id="6kmsk4KDIXG" role="3cqZAk">
+            <node concept="2OqwBi" id="5drFrG61Mq4" role="2Oq$k0">
+              <node concept="37vLTw" id="3GM_nagTyHb" role="2Oq$k0">
+                <ref role="3cqZAo" node="5drFrG61MpP" resolve="vcsCorePlugin" />
+              </node>
+              <node concept="liA8E" id="5drFrG61Mq6" role="2OqNvi">
+                <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getPath():java.io.File" resolve="getPath" />
+              </node>
+            </node>
+            <node concept="liA8E" id="6kmsk4KDIXW" role="2OqNvi">
+              <ref role="37wK5l" to="guwi:~File.getPath():java.lang.String" resolve="getPath" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3w733MjdnQv" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

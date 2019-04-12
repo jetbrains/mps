@@ -12,6 +12,9 @@ import java.io.File;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Arrays;
+import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.ide.plugins.PluginManager;
+import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -54,6 +57,12 @@ public class MergeDriverPackerImpl extends MergeDriverPacker implements Applicat
     SetSequence.fromSet(classpathItems).addElement(getVCSCorePluginPath() + fsep + "lib" + fsep + getVCSCoreFileName());
     return classpathItems;
 
+  }
+  @Override
+  protected String getVCSCorePluginPath() {
+    IdeaPluginDescriptor vcsCorePlugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
+    assert vcsCorePlugin != null;
+    return vcsCorePlugin.getPath().getPath();
   }
   @Override
   public void initComponent() {
