@@ -35,7 +35,6 @@
               class="jetbrains.mps.workbench.actions.welcomeScreen.OpenSampleProjectAction"
               text="Open Sample Project"
               description="Choose one of the MPS sample project files"/>
-      <add-to-group group-id="WelcomeScreen.Documentation" anchor="last"/>
       <add-to-group group-id="MPSWelcomeGettingStartedMenu" anchor="after" relative-to-action="OpenExistingProjectAction"/>
     </group>
   </actions>
