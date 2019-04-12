@@ -25,9 +25,6 @@ import org.apache.log4j.Level;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.plugins.PluginManager;
-import com.intellij.openapi.extensions.PluginId;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
@@ -133,11 +130,7 @@ public abstract class MergeDriverPacker {
       FileUtil.write(new File(tmpDir, "dummy.txt"), new byte[0]);
     }
   }
-  protected String getVCSCorePluginPath() {
-    IdeaPluginDescriptor vcsCorePlugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
-    assert vcsCorePlugin != null;
-    return vcsCorePlugin.getPath().getPath();
-  }
+  protected abstract String getVCSCorePluginPath();
   protected abstract String getMPSCorePath();
   protected abstract Set<String> getClasspathInternal();
   protected abstract String getVCSCoreFileName();
