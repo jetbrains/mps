@@ -53,8 +53,13 @@ public abstract class ReportingTypecheckingContext<
     reportEquationError(this, info, node -> new EquationErrorReporterNew(node, state, before, left, between, right, after, info));
   }
   private static void reportEquationError(TypeCheckingContext context, @NotNull EquationInfo equationInfo, Function<SNode, EquationErrorReporterNew> defaultReporterForNode) {
-     if (equationInfo.getNodeWithError() == null) {
-       StringBuilder message = new StringBuilder("Typing equation did not provide node to report.");
+     if (equationInfo.getNodeWithError() == null || equationInfo.getNodeWithError().getModel() == null) {
+       StringBuilder message = new StringBuilder();
+       if (equationInfo.getNodeWithError() == null) {
+         message.append("Typing equation did not provide node to report. Error will be ignored.");
+       } else {
+         message.append("Typing equation provides node to report which doesn't belong to a model. Error will be ignored.");
+       }
        if (equationInfo.getRuleNode() != null) {
          message.append(" Equation ")
                 .append(equationInfo.getRuleNode().getNodeId())
@@ -109,10 +114,10 @@ public abstract class ReportingTypecheckingContext<
   @Nullable
   public SimpleErrorReporter createErrorReporter(SNode nodeWithError, String errorString, String ruleModel, String ruleId, QuickFixProvider intentionProvider, MessageTarget errorTarget, MessageStatus severity) {
     if (nodeWithError == null) {
-      LOG.error("Node used to report an error is null. Error was not added. Reported from model " + ruleModel + " by rule " + ruleId + ".", new Throwable());
+      LOG.error("Node used to report an error is null. Error will be ignored. Reported from model " + ruleModel + " by rule " + ruleId + ".", new Throwable());
       return null;
     } else if (nodeWithError.getModel() == null) {
-      LOG.error("Node used to report an error is not in a model. Error was not added. Node=" + SNodeOperations.getDebugText(nodeWithError) + ". Reported from model " + ruleModel + " by rule " + ruleId + ".", new Throwable());
+      LOG.error("Node used to report an error is not in a model. Error will be ignored. Node=" + SNodeOperations.getDebugText(nodeWithError) + ". Reported from model " + ruleModel + " by rule " + ruleId + ".", new Throwable());
       return null;
     }
     SimpleErrorReporter reporter = new SimpleErrorReporter(nodeWithError, errorString, ruleModel, ruleId, severity, errorTarget);

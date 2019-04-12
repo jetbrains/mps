@@ -53,8 +53,15 @@ public class MergeDriverPackerImpl extends MergeDriverPacker implements Applicat
   }
 
   @Override
+  protected String getVCSCorePluginPath() {
+    IdeaPluginDescriptor vcsCorePlugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.idea.vcs"));
+    assert vcsCorePlugin != null;
+    return vcsCorePlugin.getPath().getPath();
+  }
+
+  @Override
   protected String getVCSCoreFileName() {
-    return "mps-vcs-core.jar";
+    return "vcs-core.jar";
   }
 
   @Override
