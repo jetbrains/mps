@@ -14,7 +14,7 @@ import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.NopInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
@@ -33,7 +33,7 @@ public class InlineMethodModel {
     myMethodPresentation = ((String) BHReflection.invoke0(myMethod, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
     myIsContainsSelfCalls = isContainsSelfCalls();
   }
-  public boolean isRecusive() {
+  public boolean isRecursive() {
     return myIsContainsSelfCalls;
   }
   public String getMethodPresentation() {
@@ -49,7 +49,7 @@ public class InlineMethodModel {
     if ((SLinkOperations.getTarget(getMethod(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(getMethod(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList"))) {
       return "No sources attached";
     }
-    if (myCall == null && isRecusive()) {
+    if (myCall == null && isRecursive()) {
       return "Method is recursive";
     }
     if (isReturnBreaksExecitionFlow()) {
@@ -73,7 +73,7 @@ public class InlineMethodModel {
       if (instruction instanceof RetInstruction) {
         Instruction next = program.get(instruction.getIndex() + 1);
         while (!(next.equals(program.getEnd()))) {
-          if (next instanceof NopInstruction) {
+          if (!(next instanceof JumpInstruction)) {
             return true;
           }
           Set<Instruction> succ = next.succ();
