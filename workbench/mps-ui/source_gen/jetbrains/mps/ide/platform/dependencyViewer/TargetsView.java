@@ -122,7 +122,7 @@ public class TargetsView extends UsagesView {
     }
     @Override
     public String getResultsText(TextOptions options) {
-      String presentation = myParent.getCurrentScope().getPresentation();
+      String presentation = check_w7qo2b_a0a0f5(myParent.getCurrentScope());
       if ((presentation == null || presentation.length() == 0)) {
         presentation = "the left tree scope selection";
       }
@@ -140,6 +140,12 @@ public class TargetsView extends UsagesView {
     @Override
     public void write(Element element, jetbrains.mps.project.Project project) throws CantSaveSomethingException {
     }
+  }
+  private static String check_w7qo2b_a0a0f5(DependencyViewerScope checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getPresentation();
+    }
+    return null;
   }
   private static <T> T as_w7qo2b_a0a0a2a3(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

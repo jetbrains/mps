@@ -85,28 +85,30 @@ public class DependenciesPanel extends JPanel {
   public void updateTargetsView(final DependencyViewerScope sourceScope) {
     myScope = sourceScope;
     final Wrappers._T<SearchResults<SNode>> results = new Wrappers._T<SearchResults<SNode>>(new SearchResults<SNode>());
-    ProgressManager.getInstance().run(new Task.Modal(myProject, "Analyzing dependencies", true) {
-      @Override
-      public void run(@NotNull final ProgressIndicator indicator) {
-        myMPSProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
-            mySourceNodes = sourceScope.getNodes();
-            try {
-              if (myIsMeta) {
-                monitor.start("computing used languages", Sequence.fromIterable(mySourceNodes).count());
-                results.value = myReferencesFinder.getUsedConcepts(mySourceNodes, sourceScope, monitor);
-              } else {
-                monitor.start("computing references' targets", Sequence.fromIterable(mySourceNodes).count());
-                results.value = myReferencesFinder.findRefsFromScopeToOuter(mySourceNodes, sourceScope, monitor);
+    if (sourceScope != null) {
+      ProgressManager.getInstance().run(new Task.Modal(myProject, "Analyzing dependencies", true) {
+        @Override
+        public void run(@NotNull final ProgressIndicator indicator) {
+          myMPSProject.getRepository().getModelAccess().runReadAction(new Runnable() {
+            public void run() {
+              ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
+              mySourceNodes = sourceScope.getNodes();
+              try {
+                if (myIsMeta) {
+                  monitor.start("computing used languages", Sequence.fromIterable(mySourceNodes).count());
+                  results.value = myReferencesFinder.getUsedConcepts(mySourceNodes, sourceScope, monitor);
+                } else {
+                  monitor.start("computing references' targets", Sequence.fromIterable(mySourceNodes).count());
+                  results.value = myReferencesFinder.findRefsFromScopeToOuter(mySourceNodes, sourceScope, monitor);
+                }
+              } finally {
+                monitor.done();
               }
-            } finally {
-              monitor.done();
             }
-          }
-        });
-      }
-    });
+          });
+        }
+      });
+    }
     myTargetsView.setContents(results.value);
     updateReferencesView(null);
   }
