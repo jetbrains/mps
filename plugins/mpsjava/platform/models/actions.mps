@@ -141,6 +141,19 @@
         <reference id="1204992316090" name="point" index="2f8Tey" />
         <reference id="1203092736097" name="modifiedGroup" index="tU$_T" />
       </concept>
+      <concept id="3205778618063718746" name="jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml" flags="ng" index="yhzZL">
+        <child id="3205778618063718748" name="actions" index="yhzZR" />
+      </concept>
+      <concept id="331224023792855166" name="jetbrains.mps.lang.plugin.structure.KeymapRef" flags="ng" index="2zDLo0">
+        <reference id="331224023792855167" name="keymap" index="2zDLo1" />
+      </concept>
+      <concept id="331224023792854814" name="jetbrains.mps.lang.plugin.structure.IdeaActionsDescriptor" flags="lg" index="2zDL_w">
+        <child id="331224023792855168" name="keymapsRef" index="2zDLrY" />
+        <child id="331224023792854818" name="actionGroups" index="2zDL_s" />
+      </concept>
+      <concept id="331224023792854815" name="jetbrains.mps.lang.plugin.structure.ActionGroupRef" flags="ng" index="2zDL_x">
+        <reference id="331224023792854816" name="group" index="2zDL_u" />
+      </concept>
       <concept id="1205679047295" name="jetbrains.mps.lang.plugin.structure.ActionParameterDeclaration" flags="ig" index="2S4$dB" />
       <concept id="1205681243813" name="jetbrains.mps.lang.plugin.structure.IsApplicableBlock" flags="in" index="2ScWuX" />
       <concept id="1562714432501166198" name="jetbrains.mps.lang.plugin.structure.SimpleShortcutChange" flags="lg" index="Zd509">
@@ -26085,6 +26098,44 @@
     </node>
     <node concept="tT9cl" id="7ixvpurf9$5" role="2f5YQi">
       <ref role="tU$_T" to="ekwn:1xsN4xJX8VI" resolve="EditorPopup" />
+    </node>
+  </node>
+  <node concept="yhzZL" id="3CM_lYH0ef1">
+    <property role="TrG5h" value="JavaActions" />
+    <node concept="2zDL_w" id="3CM_lYH0f01" role="yhzZR">
+      <node concept="2zDLo0" id="4LlSeg0P5z" role="2zDLrY">
+        <ref role="2zDLo1" node="cvGLnZnSxc" resolve="Default" />
+      </node>
+      <node concept="2zDLo0" id="4LlSeg0P5_" role="2zDLrY">
+        <ref role="2zDLo1" node="__m$GJJjC5" resolve="Mac_10_5" />
+      </node>
+      <node concept="2zDL_x" id="3CM_lYH0f08" role="2zDL_s">
+        <ref role="2zDL_u" node="cvGLnZnRqZ" resolve="RefactoringAdditions" />
+      </node>
+      <node concept="2zDL_x" id="3CM_lYH0f0a" role="2zDL_s">
+        <ref role="2zDL_u" node="2vs9_ygEfaI" resolve="ModelActions" />
+      </node>
+      <node concept="2zDL_x" id="2rUHgdX2Vo$" role="2zDL_s">
+        <ref role="2zDL_u" node="2rUHgdX2ELT" resolve="EditorPopup" />
+      </node>
+      <node concept="2zDL_x" id="5iafRE2b0rY" role="2zDL_s">
+        <ref role="2zDL_u" node="7ixvpurf9zZ" resolve="ShowMembersInMenu" />
+      </node>
+      <node concept="2zDL_x" id="3CM_lYH0fmD" role="2zDL_s">
+        <ref role="2zDL_u" node="2vs9_ygEfaN" resolve="EditorPopup_paste" />
+      </node>
+      <node concept="2zDL_x" id="6aMABdhBuRH" role="2zDL_s">
+        <ref role="2zDL_u" node="6aMABdhBdKg" resolve="GenerateActions" />
+      </node>
+      <node concept="2zDL_x" id="7ECFGRPAHNV" role="2zDL_s">
+        <ref role="2zDL_u" node="7ECFGRPAHNO" resolve="CodeOverrideImplementMenu" />
+      </node>
+      <node concept="2zDL_x" id="5wICCZJ11jh" role="2zDL_s">
+        <ref role="2zDL_u" node="5wICCZJ10z2" resolve="CodeCommentMenu" />
+      </node>
+      <node concept="2zDL_x" id="7ECFGRPALb9" role="2zDL_s">
+        <ref role="2zDL_u" node="7ECFGRPAL9v" resolve="ShowAsIntentions" />
+      </node>
     </node>
   </node>
 </model>
