@@ -13,9 +13,12 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.LanguageAspect;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -27,7 +30,7 @@ public class GoToEditorDeclaration_Action extends BaseAction {
   public GoToEditorDeclaration_Action() {
     super("Editor Declaration", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setExecuteOutsideCommand(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -65,29 +68,34 @@ public class GoToEditorDeclaration_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.editorDeclaration");
-    final SNode editorNode = GoToEditorDeclaration_Action.this.findNodeEditorDeclaration(((SNode) MapSequence.fromMap(_params).get("node")), _params);
+    final SNodeReference editorNode = GoToEditorDeclaration_Action.this.findNodeEditorDeclaration(((SNode) MapSequence.fromMap(_params).get("node")), _params);
     if (editorNode == null) {
       return;
     }
-    boolean select = editorNode.getParent() != null;
-    NavigationSupport.getInstance().openNode(((MPSProject) MapSequence.fromMap(_params).get("project")), editorNode, true, select);
+    new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(editorNode);
   }
-  /*package*/ SNode findNodeEditorDeclaration(SNode forNode, final Map<String, Object> _params) {
-    SNodeReference sn = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("node"))).getSourceNode();
+  /*package*/ SNodeReference findNodeEditorDeclaration(SNode forNode, final Map<String, Object> _params) {
+    final SNodeReference sn = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("node"))).getSourceNode();
     if (sn == null) {
       return null;
     }
-    SNode conceptNode = sn.resolve(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
-    if (!(SNodeOperations.isInstanceOf(conceptNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
-      return null;
-    }
-    if (!(LanguageAspect.STRUCTURE.is(SNodeOperations.getModel(conceptNode)))) {
-      return null;
-    }
-    SModel editorModel = LanguageAspect.EDITOR.get(((Language) SNodeOperations.getModel(conceptNode).getModule()));
-    if (editorModel == null) {
-      return null;
-    }
-    return GoToEditorDeclarationHelper.findEditorDeclaration(editorModel, conceptNode);
+    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
+    return new ModelAccessHelper(repo).runReadAction(new Computable<SNodeReference>() {
+      public SNodeReference compute() {
+        SNode conceptNode = sn.resolve(repo);
+        if (!(SNodeOperations.isInstanceOf(conceptNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
+          return null;
+        }
+        if (!(LanguageAspect.STRUCTURE.is(SNodeOperations.getModel(conceptNode)))) {
+          return null;
+        }
+        SModel editorModel = LanguageAspect.EDITOR.get(((Language) SNodeOperations.getModel(conceptNode).getModule()));
+        if (editorModel == null) {
+          return null;
+        }
+        SNode editorDecl = GoToEditorDeclarationHelper.findEditorDeclaration(editorModel, conceptNode);
+        return (editorDecl == null ? null : SNodeOperations.getPointer(editorDecl));
+      }
+    });
   }
 }

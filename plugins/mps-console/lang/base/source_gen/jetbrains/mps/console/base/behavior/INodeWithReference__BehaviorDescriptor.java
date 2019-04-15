@@ -19,10 +19,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -49,14 +49,7 @@ public final class INodeWithReference__BehaviorDescriptor extends BaseBHDescript
     final SNodeReference targetNode = SLinkOperations.getPointer(__thisNode__, MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target"));
     return new Runnable() {
       public void run() {
-        project.getRepository().getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            SNode nodeToNavigate = targetNode.resolve(project.getRepository());
-            if (nodeToNavigate != null) {
-              NavigationSupport.getInstance().openNode(project, nodeToNavigate, true, (SNodeOperations.getParent(nodeToNavigate) != null));
-            }
-          }
-        });
+        new EditorNavigator(project).shallFocus(true).selectIfChild().open(targetNode);
       }
     };
   }

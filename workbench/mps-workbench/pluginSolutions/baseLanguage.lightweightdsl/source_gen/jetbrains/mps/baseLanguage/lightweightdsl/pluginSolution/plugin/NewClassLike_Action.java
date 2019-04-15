@@ -24,7 +24,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.lightweightdsl.intentions.ClassLikeInitHelper;
 import jetbrains.mps.ide.projectPane.NewRootNodeAction;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 
@@ -90,9 +91,9 @@ public class NewClassLike_Action extends BaseAction {
       newClass = SNodeOperations.cast(SNodeFactoryOperations.createNewRootNode(event.getData(MPSCommonDataKeys.MODEL), c, null), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
     }
     if (!(NewRootNodeAction.trySelectInCurrentPane(event.getData(MPSCommonDataKeys.MPS_PROJECT), newClass))) {
-      NavigationSupport.getInstance().selectInTree(event.getData(MPSCommonDataKeys.MPS_PROJECT), newClass, false);
+      new ProjectPaneNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).select(newClass.getReference());
     }
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), newClass, true, false);
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).open(newClass.getReference());
   }
   @NotNull
   public String getActionId() {

@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.script.plugin.RunMigrationScriptsDialog;
 import java.awt.Component;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 public class RunMigrationScripts_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -119,8 +119,8 @@ public class RunMigrationScripts_Action extends BaseAction {
             }
           }).toListSequence(), scope.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
         } else if (dialog.isOpenSelected()) {
-          SNode selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).first().resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository());
-          NavigationSupport.getInstance().openNode(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), selectedScript, true, true);
+          SNodeReference selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).first();
+          new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).shallFocus(true).shallSelect(true).open(selectedScript);
         }
       }
     });

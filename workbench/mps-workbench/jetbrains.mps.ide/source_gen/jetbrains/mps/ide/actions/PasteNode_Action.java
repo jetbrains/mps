@@ -27,7 +27,8 @@ import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.nodeEditor.datatransfer.NodePaster;
 import jetbrains.mps.datatransfer.PasteEnv;
 import jetbrains.mps.resolve.ResolverComponent;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -131,15 +132,10 @@ public class PasteNode_Action extends BaseAction {
         ResolverComponent.getInstance().resolveScopesOnly(refsToResolve, ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
         // make sure editor will be open 
         if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) == null) {
-          final SNode root = pasteNodes.get(0).getContainingRoot();
+          SNode root = pasteNodes.get(0).getContainingRoot();
           assert root != null;
-          ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runWriteInEDT(new Runnable() {
-            public void run() {
-              NavigationSupport.getInstance().openNode(((MPSProject) MapSequence.fromMap(_params).get("project")), root, true, true);
-              NavigationSupport.getInstance().selectInTree(((MPSProject) MapSequence.fromMap(_params).get("project")), root, false);
-            }
-          });
-
+          new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).shallSelect(true).open(root.getReference());
+          new ProjectPaneNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).select(root.getReference());
         }
       }
     });

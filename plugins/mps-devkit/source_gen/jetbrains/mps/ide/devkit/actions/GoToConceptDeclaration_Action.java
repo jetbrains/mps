@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.featureStatistics.FeatureUsageTracker;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 public class GoToConceptDeclaration_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Structure;
@@ -22,7 +22,7 @@ public class GoToConceptDeclaration_Action extends BaseAction {
   public GoToConceptDeclaration_Action() {
     super("Concept Declaration", "", ICON);
     this.setIsAlwaysVisible(true);
-    this.setExecuteOutsideCommand(false);
+    this.setExecuteOutsideCommand(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -59,15 +59,8 @@ public class GoToConceptDeclaration_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.concept");
+    // concept access doesn't require model read 
     SNodeReference sourceNode = SNodeOperations.getConcept(event.getData(MPSCommonDataKeys.NODE)).getSourceNode();
-    if (sourceNode == null) {
-      return;
-    }
-    SNode resolve = sourceNode.resolve(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository());
-    if (resolve == null) {
-      return;
-    }
-    boolean select = resolve.getParent() != null;
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), resolve, true, select);
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).selectIfChild().open(sourceNode);
   }
 }

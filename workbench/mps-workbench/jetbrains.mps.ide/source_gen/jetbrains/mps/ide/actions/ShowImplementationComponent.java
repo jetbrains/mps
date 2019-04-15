@@ -45,7 +45,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 
 public class ShowImplementationComponent extends JPanel {
   private ComboBox myNodeChooser;
@@ -221,24 +222,19 @@ public class ShowImplementationComponent extends JPanel {
     }
     @Override
     public void actionPerformed(AnActionEvent e) {
-      myProject.getModelAccess().runWriteInEDT(new Runnable() {
-        @Override
-        public void run() {
-          int selectedIndex = myNodeChooser.getSelectedIndex();
-          if (selectedIndex < 0) {
-            return;
-          }
-          SNode selectedNode = myImplNodes.get(selectedIndex).myOriginalNodePointer.resolve(myProject.getRepository());
-          if (selectedNode == null) {
-            return;
-          }
-          NavigationSupport.getInstance().openNode(myProject, selectedNode, true, true);
-          NavigationSupport.getInstance().selectInTree(myProject, selectedNode, false);
-          if (myClosePopup) {
-            myPopup.cancel();
-          }
-        }
-      });
+      int selectedIndex = myNodeChooser.getSelectedIndex();
+      if (selectedIndex < 0) {
+        return;
+      }
+      SNodeReference selectedNode = myImplNodes.get(selectedIndex).myOriginalNodePointer;
+      if (selectedNode == null) {
+        return;
+      }
+      new EditorNavigator(myProject).shallFocus(true).shallSelect(true).open(selectedNode);
+      new ProjectPaneNavigator(myProject).select(selectedNode);
+      if (myClosePopup) {
+        myPopup.cancel();
+      }
     }
   }
 }

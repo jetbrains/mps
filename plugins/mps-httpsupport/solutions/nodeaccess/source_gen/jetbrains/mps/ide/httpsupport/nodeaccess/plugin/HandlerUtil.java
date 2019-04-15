@@ -5,12 +5,13 @@ package jetbrains.mps.ide.httpsupport.nodeaccess.plugin;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.ide.impl.ProjectUtil;
-import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.JComponent;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.IdeFrame;
@@ -41,24 +42,23 @@ public class HandlerUtil {
     if (nodeReference == null) {
       return null;
     }
-    final Wrappers._T<SNode> resolvedNode = new Wrappers._T<SNode>();
+
     final SRepository repository = project.getRepository();
 
-    repository.getModelAccess().runWriteAction(new Runnable() {
+    new EditorNavigator(project).shallFocus(true).shallSelect(true).open(nodeReference);
+
+    // XXX it's requestFocus() responsibility to ensure proper thread, if needed. Just need to refactor other calls to the method. 
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
-        resolvedNode.value = nodeReference.resolve(repository);
+        requestFocus(project);
       }
     });
 
-    if (resolvedNode.value != null) {
-      repository.getModelAccess().runWriteInEDT(new Runnable() {
-        public void run() {
-          NavigationSupport.getInstance().openNode(project, resolvedNode.value, true, true);
-          requestFocus(project);
-        }
-      });
-    }
-    return resolvedNode.value;
+    return new ModelAccessHelper(repository).runReadAction(new Computable<SNode>() {
+      public SNode compute() {
+        return nodeReference.resolve(repository);
+      }
+    });
   }
 
   public static void requestFocus(Project project) {
@@ -83,7 +83,7 @@ public class HandlerUtil {
   public static void showNodeNotFoundPopup(final Project project, final SNodeReference ref) {
     final MPSProject mpsProject = as_qa1yjq_a0a0a52(project, MPSProject.class);
     final com.intellij.openapi.project.Project ideaProject = mpsProject.getProject();
-    project.getModelAccess().runReadInEDT(new Runnable() {
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         JComponent component = WindowManager.getInstance().getStatusBar(ideaProject).getComponent();
         createPopupAndShow(HEADER + getNodeNotFoundText(ref), component);
