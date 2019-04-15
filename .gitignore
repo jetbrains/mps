@@ -39,7 +39,7 @@ teamcity-info.xml
 /plugins/debugger-api/lib
 /plugins/debugger-java/lib
 /plugins/mps-vcs/lib/
-/plugins/mpsjava/lib/
+/plugins/mps-java/lib/
 /plugins/mps-java-workbench/lib/
 /plugins/execution-languages/lib
 /plugins/execution-configurations/lib
