@@ -18,17 +18,13 @@ package jetbrains.mps.idea.java.psi.structureView;
 
 import com.intellij.ide.structureView.StructureView;
 import com.intellij.ide.structureView.StructureViewBuilder;
-import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.newStructureView.StructureViewComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiFile;
 import jetbrains.mps.ide.editor.NodeStructureViewProvider;
 import jetbrains.mps.ide.java.actions.MemberContainerStructureModel;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import org.jetbrains.annotations.NotNull;

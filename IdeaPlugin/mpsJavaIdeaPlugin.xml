@@ -58,8 +58,8 @@
       </module>
     </echoxml>
     <jar destfile="${build.layout}/mps-idea-java/languages/jetbrains.mps.ide.java.basePlatform.jar" duplicate="preserve">
-      <zipfileset file="${mps_home}/plugins/mpsjava/basePlatform/jetbrains.mps.ide.java.basePlatform.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/plugins/mpsjava/basePlatform" includes="icons/**, resources/**" prefix="module" />
+      <zipfileset file="//jetbrains.mps.ide.java.basePlatform.msd" prefix="module" />
+      <zipfileset dir="/" includes="icons/**, resources/**" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.java.basePlatform.jar" />
     </jar>
     <mkdir dir="${build.layout}/mps-idea-java/languages" />
@@ -72,8 +72,8 @@
       </module>
     </echoxml>
     <jar destfile="${build.layout}/mps-idea-java/languages/jetbrains.mps.ide.java.platform.jar" duplicate="preserve">
-      <zipfileset file="${mps_home}/plugins/mpsjava/platform/jetbrains.mps.ide.java.platform.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/plugins/mpsjava/platform" includes="icons/**, resources/**" prefix="module" />
+      <zipfileset file="/plugins/mps-java/platform/modules/platform/jetbrains.mps.ide.java.platform.msd" prefix="module" />
+      <zipfileset dir="/plugins/mps-java/platform/modules/platform" includes="icons/**, resources/**" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.java.platform.jar" />
     </jar>
     <mkdir dir="${build.layout}/mps-idea-java/META-INF" />

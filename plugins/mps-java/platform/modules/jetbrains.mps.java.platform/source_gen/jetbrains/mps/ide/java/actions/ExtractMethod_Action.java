@@ -41,7 +41,8 @@ public class ExtractMethod_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return !(ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).select(new ISelector<SNode, EditorCell>() {
+    return !(ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get(
+        "nodes"))).select(new ISelector<SNode, EditorCell>() {
       public EditorCell select(SNode it) {
         return (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it);
       }

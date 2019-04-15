@@ -1462,7 +1462,6 @@
     <orderEntry type="module" module-name="smodelquery-runtime" />
     <orderEntry type="module" module-name="execution-api" />
     <orderEntry type="module" module-name="refactoring" />
-    <orderEntry type="module" module-name="mps-java-platform-base" />
     <orderEntry type="module" module-name="mps-httpsupport" />
     <orderEntry type="module" module-name="migration-platform" />
     <orderEntry type="module" module-name="model" />
@@ -1470,4 +1469,3 @@
     <orderEntry type="module" module-name="project-check" />
   </component>
 </module>
-
