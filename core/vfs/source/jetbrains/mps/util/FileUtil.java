@@ -568,6 +568,9 @@ public class FileUtil {
       if (path.endsWith(Path.ARCHIVE_SEPARATOR)) {
         break;
       }
+      if (PathUtil.isRoot(path)) {
+        break;
+      }
       path = path.substring(0, path.length() - 1);
     }
     return path;

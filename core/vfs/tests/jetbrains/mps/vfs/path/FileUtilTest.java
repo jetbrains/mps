@@ -45,6 +45,10 @@ public class FileUtilTest {
     Assert.assertEquals("c:/", normalized);
     normalized = FileUtil.resolveParentDirs("/a/..");
     Assert.assertEquals("/", normalized);
+    normalized = FileUtil.resolveParentDirs("c:/");
+    Assert.assertEquals("c:/", normalized);
+    normalized = FileUtil.resolveParentDirs("/");
+    Assert.assertEquals("/", normalized);
   }
 
 //  @Test
