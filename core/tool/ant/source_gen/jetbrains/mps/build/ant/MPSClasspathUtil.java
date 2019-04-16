@@ -173,6 +173,7 @@ public class MPSClasspathUtil {
     String ideaHome = project.getProperty("artifacts.IDEA");
     String mpsCoreHome = project.getProperty("artifacts.mpsBootstrapCore");
     String mpsWorkbenchHome = project.getProperty("artifacts.mpsWorkbench");
+    final String mpsStandaloneHome = project.getProperty("artifacts.mpsStandalone");
 
     if ((mpsHome != null && mpsHome.length() > 0)) {
       // we've got regular MPS installation and everything we need is under its "lib/" folder, both IDEA platform and MPS stuff (including lib/ext) 
@@ -191,7 +192,7 @@ public class MPSClasspathUtil {
         roots.add(new File(project.resolveFile(mpsWorkbenchHome).getPath(), "lib"));
       }
     } else if ((ideaHome != null && ideaHome.length() > 0) && "mpsBootstrapCore".equals(project.getName())) {
-      // bootstrap hack. mpsBootstrapCore uses ant tasks defines in the jars it is about to compile/assemble. 
+      // bootstrap hack. mpsBootstrapCore uses ant tasks defined in the jars it is about to compile/assemble. 
       // In particular, it's copyModels in <assemble> task that needs to start MPS in-process at PERSISTENCE level. 
       roots.add(new File(project.resolveFile(ideaHome).getPath(), "lib"));
       // FIXME here, we assume weave_Tasks jars respective core classes under antTasks/ as it used to do. However, 
@@ -199,6 +200,9 @@ public class MPSClasspathUtil {
       // FWIW, the only assumption this code has about jars weave_Tasks generate for this case is that there's mps-core.jar somewhere up 3 
       //       directories from ant-mps.jar (the one holding MPSClasspathUtil.class), see #getAntJARRelativeHome 
       roots.add(getAntJARRelativeHome());
+    } else if ((mpsStandaloneHome != null && mpsStandaloneHome.length() > 0)) {
+      // pretty much identical to artifacts.mps, reduced set of modules for standalone applications 
+      roots.add(new File(project.resolveFile(mpsStandaloneHome).getPath(), "lib"));
     }
 
     return roots;
