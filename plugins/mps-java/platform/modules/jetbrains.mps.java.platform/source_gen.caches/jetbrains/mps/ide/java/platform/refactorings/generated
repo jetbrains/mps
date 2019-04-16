@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9e356r6jbvy3v548rgsb1nld2jr8ugk">
-  <files names="AskDialog.java:ChooseNodeDialog.java:DuplicatesProcessor.java:ExtractMethodDialog.java:IconResourceBundle_ExtractMethodIcons.java:InlineMethodDialog.java:InlineMethodRefactoringAnalyzer.java:IntroduceConstantDialog.java:IntroduceFieldDialog.java:IntroduceVariableDialog.java:LocalVariableIntroducer.java:MethodDuplicatesProcessor.java:ParameterTypeCellEditor.java:ParametersPanel.java:ParametersTableModel.java:ProblemsDialog.java:VariableDuplicatesProcessor.java:VisibilityPanel.java" />
-</product>
-
