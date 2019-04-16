@@ -16486,7 +16486,7 @@
                                                     <ref role="3cqZAo" node="1nIaFUJ3nM5" resolve="ruleNavigatable" />
                                                   </node>
                                                   <node concept="liA8E" id="1nIaFUJ4vor" role="2OqNvi">
-                                                    <ref role="37wK5l" to="kx0u:~BaseNavigatable.navigate(boolean)" resolve="navigate" />
+                                                    <ref role="37wK5l" to="kx0u:~NodeNavigatable.navigate(boolean)" resolve="navigate" />
                                                     <node concept="3clFbT" id="1nIaFUJ4vYN" role="37wK5m">
                                                       <property role="3clFbU" value="true" />
                                                     </node>

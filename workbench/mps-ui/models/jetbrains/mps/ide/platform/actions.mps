@@ -695,7 +695,7 @@
             <node concept="3clFbF" id="cAZ8XC9QOj" role="3cqZAp">
               <node concept="2YIFZM" id="7V0LQUAyWO1" role="3clFbG">
                 <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
-                <ref role="37wK5l" to="jkm4:#Messages.showWarningDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String):void" resolve="showWarningDialog" />
+                <ref role="37wK5l" to="jkm4:~Messages.showWarningDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String)" resolve="showWarningDialog" />
                 <node concept="2OqwBi" id="7V0LQUAyWO2" role="37wK5m">
                   <node concept="2WthIp" id="7V0LQUAyWO3" role="2Oq$k0" />
                   <node concept="1DTwFV" id="7V0LQUAyXDR" role="2OqNvi">
@@ -703,7 +703,7 @@
                   </node>
                 </node>
                 <node concept="2YIFZM" id="5DQLGimLHG2" role="37wK5m">
-                  <ref role="37wK5l" to="wyt6:#String.format(java.lang.String,java.lang.Object...):java.lang.String" resolve="format" />
+                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                   <node concept="Xl_RD" id="7V0LQUAyWO7" role="37wK5m">
                     <property role="Xl_RC" value="Can't find node with id '%s'" />
@@ -742,21 +742,21 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="1GFZonKzYiu" role="2OqNvi">
-                  <ref role="37wK5l" to="kz9k:#EditorNavigator.shallFocus(boolean):jetbrains.mps.openapi.navigation.EditorNavigator" resolve="shallFocus" />
+                  <ref role="37wK5l" to="kz9k:~EditorNavigator.shallFocus(boolean)" resolve="shallFocus" />
                   <node concept="3clFbT" id="1GFZonKzYv0" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="1GFZonKzYUJ" role="2OqNvi">
-                <ref role="37wK5l" to="kz9k:#EditorNavigator.shallSelect(boolean):jetbrains.mps.openapi.navigation.EditorNavigator" resolve="shallSelect" />
+                <ref role="37wK5l" to="kz9k:~EditorNavigator.shallSelect(boolean)" resolve="shallSelect" />
                 <node concept="3clFbT" id="1GFZonKzZ4W" role="37wK5m">
                   <property role="3clFbU" value="true" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="1GFZonKzZtR" role="2OqNvi">
-              <ref role="37wK5l" to="kz9k:#EditorNavigator.open(org.jetbrains.mps.openapi.model.SNodeReference):void" resolve="open" />
+              <ref role="37wK5l" to="kz9k:~EditorNavigator.open(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="open" />
               <node concept="37vLTw" id="1GFZonKzZES" role="37wK5m">
                 <ref role="3cqZAo" node="1W$PCympJUO" resolve="nodeRef" />
               </node>
@@ -2719,7 +2719,7 @@
                                 <node concept="3clFbF" id="6YbpJJxhtRq" role="3cqZAp">
                                   <node concept="2OqwBi" id="6YbpJJxhtRr" role="3clFbG">
                                     <node concept="liA8E" id="6YbpJJxhtRs" role="2OqNvi">
-                                      <ref role="37wK5l" to="kx0u:~BaseNavigatable.navigate(boolean)" resolve="navigate" />
+                                      <ref role="37wK5l" to="kx0u:~NodeNavigatable.navigate(boolean)" resolve="navigate" />
                                       <node concept="3clFbT" id="6YbpJJxhtRt" role="37wK5m">
                                         <property role="3clFbU" value="true" />
                                       </node>
