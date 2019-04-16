@@ -91,6 +91,7 @@
         <reference id="1203092736097" name="modifiedGroup" index="tU$_T" />
       </concept>
       <concept id="3205778618063718746" name="jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml" flags="ng" index="yhzZL">
+        <property id="1004145947012803941" name="outputPath" index="BHXKe" />
         <child id="3205778618063718748" name="actions" index="yhzZR" />
       </concept>
       <concept id="331224023792855166" name="jetbrains.mps.lang.plugin.structure.KeymapRef" flags="ng" index="2zDLo0">
@@ -3351,6 +3352,7 @@
   </node>
   <node concept="yhzZL" id="5U9rQri5Gkz">
     <property role="TrG5h" value="JavaWorkbenchActions" />
+    <property role="BHXKe" value="${module}/../../../META-INF/" />
     <node concept="2zDL_w" id="5U9rQri5Gk$" role="yhzZR">
       <node concept="2zDL_x" id="21ry4cCGngx" role="2zDL_s">
         <ref role="2zDL_u" node="2Y91NYHrHot" resolve="AnalyzeJavaActions" />
