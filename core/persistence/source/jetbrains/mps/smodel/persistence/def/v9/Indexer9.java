@@ -93,7 +93,7 @@ public class Indexer9 implements Indexer{
   }
 
   public static char[] getChars(@NotNull Reader input) throws IOException {
-    char buf[] = new char[8196];
+    char[] buf = new char[8196];
     CharArrayWriter w = new CharArrayWriter(buf.length * 10);
     int x;
     while ((x = input.read(buf, 0, buf.length)) != -1) {
