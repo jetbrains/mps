@@ -210,7 +210,8 @@ public class FileUtil {
           continue next_occ;
         }
       }
-      assert false : "Unexpected path: can't get parent: " + path;
+      currentPath = currentPath.replaceFirst("/\\.\\./", "/");
+      LOG.warn("Unexpected path: can't get parent: " + path);
     }
 
     if (currentPath.endsWith("/") && !PathUtil.isRoot(currentPath)) {
