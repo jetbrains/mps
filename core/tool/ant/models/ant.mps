@@ -19,7 +19,6 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
-    <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -7148,6 +7147,24 @@
             <node concept="17QB3L" id="4Vsuddjh$ao" role="1tU5fm" />
           </node>
         </node>
+        <node concept="3cpWs8" id="48JX3sa3Wg_" role="3cqZAp">
+          <node concept="3cpWsn" id="48JX3sa3WgA" role="3cpWs9">
+            <property role="TrG5h" value="mpsStandaloneHome" />
+            <property role="3TUv4t" value="true" />
+            <node concept="2OqwBi" id="48JX3sa3WgB" role="33vP2m">
+              <node concept="37vLTw" id="48JX3sa3WgC" role="2Oq$k0">
+                <ref role="3cqZAo" node="vAjk0TI0RQ" resolve="project" />
+              </node>
+              <node concept="liA8E" id="48JX3sa3WgD" role="2OqNvi">
+                <ref role="37wK5l" to="gola:~Project.getProperty(java.lang.String)" resolve="getProperty" />
+                <node concept="Xl_RD" id="48JX3sa3WgE" role="37wK5m">
+                  <property role="Xl_RC" value="artifacts.mpsStandalone" />
+                </node>
+              </node>
+            </node>
+            <node concept="17QB3L" id="48JX3sa3WgF" role="1tU5fm" />
+          </node>
+        </node>
         <node concept="3clFbH" id="4Vsuddjh5lQ" role="3cqZAp" />
         <node concept="3clFbJ" id="4Vsuddjh5lR" role="3cqZAp">
           <node concept="3clFbS" id="4Vsuddjh5lS" role="3clFbx">
@@ -7461,7 +7478,7 @@
             <node concept="3clFbS" id="gQDJKN9j0R" role="3eOfB_">
               <node concept="3SKdUt" id="gQDJKN9mgt" role="3cqZAp">
                 <node concept="3SKdUq" id="gQDJKN9mgu" role="3SKWNk">
-                  <property role="3SKdUp" value="bootstrap hack. mpsBootstrapCore uses ant tasks defines in the jars it is about to compile/assemble." />
+                  <property role="3SKdUp" value="bootstrap hack. mpsBootstrapCore uses ant tasks defined in the jars it is about to compile/assemble." />
                 </node>
               </node>
               <node concept="3SKdUt" id="gQDJKN9mhn" role="3cqZAp">
@@ -7533,6 +7550,55 @@
                     <node concept="1rXfSq" id="gQDJKN9nSb" role="37wK5m">
                       <ref role="37wK5l" node="3t7WP23QUGx" resolve="getAntJARRelativeHome" />
                     </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3eNFk2" id="48JX3sa3X5k" role="3eNLev">
+            <node concept="2OqwBi" id="48JX3sa3XEB" role="3eO9$A">
+              <node concept="37vLTw" id="48JX3sa3Xx8" role="2Oq$k0">
+                <ref role="3cqZAo" node="48JX3sa3WgA" resolve="mpsStandaloneHome" />
+              </node>
+              <node concept="17RvpY" id="48JX3sa3XTo" role="2OqNvi" />
+            </node>
+            <node concept="3clFbS" id="48JX3sa3X5m" role="3eOfB_">
+              <node concept="3SKdUt" id="48JX3sa3XTQ" role="3cqZAp">
+                <node concept="3SKdUq" id="48JX3sa3XTR" role="3SKWNk">
+                  <property role="3SKdUp" value="pretty much identical to artifacts.mps, reduced set of modules for standalone applications" />
+                </node>
+              </node>
+              <node concept="3clFbF" id="48JX3sa3XTS" role="3cqZAp">
+                <node concept="2OqwBi" id="48JX3sa3XTT" role="3clFbG">
+                  <node concept="liA8E" id="48JX3sa3XTU" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
+                    <node concept="2ShNRf" id="48JX3sa3XTV" role="37wK5m">
+                      <node concept="1pGfFk" id="48JX3sa3XTW" role="2ShVmc">
+                        <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
+                        <node concept="2OqwBi" id="48JX3sa3XTX" role="37wK5m">
+                          <node concept="liA8E" id="48JX3sa3XTY" role="2OqNvi">
+                            <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
+                          </node>
+                          <node concept="2OqwBi" id="48JX3sa3XTZ" role="2Oq$k0">
+                            <node concept="liA8E" id="48JX3sa3XU0" role="2OqNvi">
+                              <ref role="37wK5l" to="gola:~Project.resolveFile(java.lang.String)" resolve="resolveFile" />
+                              <node concept="37vLTw" id="48JX3sa3Yqr" role="37wK5m">
+                                <ref role="3cqZAo" node="48JX3sa3WgA" resolve="mpsStandaloneHome" />
+                              </node>
+                            </node>
+                            <node concept="37vLTw" id="48JX3sa3XU2" role="2Oq$k0">
+                              <ref role="3cqZAo" node="vAjk0TI0RQ" resolve="project" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="48JX3sa3XU3" role="37wK5m">
+                          <property role="Xl_RC" value="lib" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="48JX3sa3XU4" role="2Oq$k0">
+                    <ref role="3cqZAo" node="vAjk0TVJhP" resolve="roots" />
                   </node>
                 </node>
               </node>
