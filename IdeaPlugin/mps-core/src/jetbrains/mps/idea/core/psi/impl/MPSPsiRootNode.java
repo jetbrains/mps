@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package jetbrains.mps.idea.core.psi.impl;
 
 import com.intellij.lang.FileASTNode;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -41,7 +40,7 @@ import jetbrains.mps.idea.core.projectView.edit.SNodeDeleteProvider;
 import jetbrains.mps.idea.core.psi.MPSNodeFileViewProvider;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NonNls;
@@ -216,16 +215,8 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, PsiBinary
 
   @Override
   public void navigate(final boolean requestFocus) {
-    final SRepository repository = getProjectRepository();
-    repository.getModelAccess().runWriteInEDT(() -> {
-      SModel model = myModel.getSModelReference().resolve(repository);
-      if (model == null) return;
-
-      SNode node = model.getNode(myNodeId);
-      if (node == null) return;
-
-      NavigationSupport.getInstance().openNode(ProjectHelper.fromIdeaProject(getProject()), node, requestFocus, false);
-    });
+    // XXX not clear why we keep node id and use myModel.getSModelReference when there's SNodeReference in cons
+    new EditorNavigator(ProjectHelper.fromIdeaProject(getProject())).shallFocus(requestFocus).open(new SNodePointer(myModel.getSModelReference(), myNodeId));
   }
 
   @Override

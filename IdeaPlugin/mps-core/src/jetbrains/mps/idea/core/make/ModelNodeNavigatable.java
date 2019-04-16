@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,13 @@ import com.intellij.pom.Navigatable;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
@@ -36,13 +39,13 @@ import java.util.regex.Pattern;
 public class ModelNodeNavigatable implements Navigatable {
 
   private final String modelName;
-  private final String nodeId;
+  private final SNodeId nodeId;
   private final Project project;
   private final Module module;
 
   public ModelNodeNavigatable(String modelName, String nodeId, Project project, Module module) {
     this.modelName = modelName;
-    this.nodeId = nodeId;
+    this.nodeId = PersistenceFacade.getInstance().createNodeId(nodeId);
     this.project = project;
     this.module = module;
   }
@@ -50,18 +53,13 @@ public class ModelNodeNavigatable implements Navigatable {
   @Override
   public void navigate(final boolean requestFocus) {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
-    mpsProject.getModelAccess().runWriteInEDT(() -> {
+    final SModelReference mr = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
       SModel model = lookupModel();
-      if (model == null) return;
-      SNode node = model.getNode(PersistenceFacade.getInstance().createNodeId(nodeId));
-      if (node != null) {
-        Project prj = project;
-        if (prj == null) {
-          prj = module.getProject();
-        }
-        NavigationSupport.getInstance().openNode(mpsProject, node, requestFocus, true);
-      }
+      return (model == null) ? null : model.getReference();
     });
+    if (mr != null) {
+      new EditorNavigator(mpsProject).shallFocus(requestFocus).shallSelect(true).open(new SNodePointer(mr, nodeId));
+    }
   }
 
   /**

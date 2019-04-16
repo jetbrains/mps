@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,9 @@
  */
 package jetbrains.mps.ide.navigation;
 
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.Project;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Objects;
@@ -37,24 +34,8 @@ public class NodeNavigatable extends BaseNavigatable {
   }
 
   @Override
-  public void doNavigate(final boolean focus) {
-    SNode node = resolveNode();
-    if (node == null) {
-      return;
-    }
-
-    boolean select = !(node.getModel() != null && node.getParent() == null);
-    NavigationSupport.getInstance().openNode(myProject, node, focus, select);
-  }
-
-  @Nullable
-  private SNode resolveNode() {
-    SNode node = myNodePointer.resolve(myProject.getRepository());
-    if (node == null) {
-      LogManager.getLogger(NodeNavigatable.class).info("The clicked node " + myNodePointer + " was deleted");
-      return null;
-    }
-    return node;
+  public void navigate(boolean focus) {
+    new EditorNavigator(myProject).shallFocus(focus).selectIfChild().open(myNodePointer);
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,11 +66,11 @@ public class MPSEditorOpener {
   }
 
   /**
-   * Requires: model write, EDT.
+   * Requires: model read, EDT.
    */
   public Editor openNode(@NotNull final SNode node, final boolean focus, final boolean select) {
     ThreadUtils.assertEDT();
-    myProject.getModelAccess().checkWriteAccess();
+    myProject.getModelAccess().checkReadAccess();
 
     myProject.getComponent(IdeDocumentHistory.class).includeCurrentCommandAsNavigation();
     /* TODO use SNodeReference instead of SNode */

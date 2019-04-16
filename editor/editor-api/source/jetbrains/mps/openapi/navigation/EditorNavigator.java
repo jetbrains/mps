@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ public final class EditorNavigator {
 
 
   public void open(@NotNull final SNodeReference node) {
-    myProject.getModelAccess().runWriteInEDT(() -> {
+    myProject.getModelAccess().runReadInEDT(() -> {
       SNode target = node.resolve(myProject.getRepository());
       if (target != null) {
         NavigationSupport.getInstance().openNode(myProject, target, needFocus(target), needSelection(target));
