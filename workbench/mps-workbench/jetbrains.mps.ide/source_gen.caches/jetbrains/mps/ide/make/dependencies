@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.ide.make.MakeServiceConfiguration">
+    <classNode dependClassName="com.intellij.openapi.components.ServiceManager" />
+    <classNode dependClassName="com.intellij.openapi.components.State" />
+    <classNode dependClassName="com.intellij.openapi.components.Storage" />
+    <classNode dependClassName="com.intellij.openapi.components.StoragePathMacros" />
+    <classNode dependClassName="com.intellij.openapi.progress.PerformInBackgroundOption" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode extendsClassName="com.intellij.openapi.components.PersistentStateComponent" />
+  </dependency>
   <dependency className="jetbrains.mps.ide.make.MakeTask">
     <classNode dependClassName="com.intellij.openapi.progress.PerformInBackgroundOption" />
     <classNode dependClassName="com.intellij.openapi.progress.ProgressIndicator" />
@@ -101,6 +113,7 @@
     <classNode dependClassName="jetbrains.mps.generator.GenerationSettingsProvider" />
     <classNode dependClassName="jetbrains.mps.generator.IModifiableGenerationSettings" />
     <classNode dependClassName="jetbrains.mps.ide.MPSCoreComponents" />
+    <classNode dependClassName="jetbrains.mps.ide.make.MakeServiceConfiguration" />
     <classNode dependClassName="jetbrains.mps.ide.make.MakeTask" />
     <classNode dependClassName="jetbrains.mps.ide.make.UIQueryRelayStrategy" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />

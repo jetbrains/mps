@@ -68,9 +68,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
         <child id="1153952416686" name="body" index="2GV8ay" />
@@ -120,6 +125,7 @@
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
+      <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -149,6 +155,7 @@
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
+        <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -4629,6 +4636,26 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="7kKMI7ohWqC" role="3cqZAp">
+          <node concept="3cpWsn" id="7kKMI7ohWqD" role="3cpWs9">
+            <property role="TrG5h" value="bg" />
+            <node concept="3uibUv" id="7kKMI7ohWdy" role="1tU5fm">
+              <ref role="3uigEE" to="xygl:~PerformInBackgroundOption" resolve="PerformInBackgroundOption" />
+            </node>
+            <node concept="2OqwBi" id="7kKMI7oiUyt" role="33vP2m">
+              <node concept="2YIFZM" id="7kKMI7oiJVz" role="2Oq$k0">
+                <ref role="37wK5l" node="2UA$I15WtCC" resolve="getInstance" />
+                <ref role="1Pybhc" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+                <node concept="37vLTw" id="7kKMI7oiP1u" role="37wK5m">
+                  <ref role="3cqZAo" node="41innpApNZl" resolve="ideaPrj" />
+                </node>
+              </node>
+              <node concept="liA8E" id="7kKMI7oj0bb" role="2OqNvi">
+                <ref role="37wK5l" node="2UA$I15WCcN" resolve="getMakeInBackgroundOption" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="41innpAoSui" role="3cqZAp">
           <node concept="3cpWsn" id="41innpAoSuj" role="3cpWs9">
             <property role="TrG5h" value="task" />
@@ -4665,9 +4692,8 @@
                   <node concept="37vLTw" id="41innpAoSuD" role="37wK5m">
                     <ref role="3cqZAo" node="9D0Ba05vjI" resolve="mh" />
                   </node>
-                  <node concept="10M0yZ" id="41innpAoSuE" role="37wK5m">
-                    <ref role="1PxDUh" to="xygl:~PerformInBackgroundOption" resolve="PerformInBackgroundOption" />
-                    <ref role="3cqZAo" to="xygl:~PerformInBackgroundOption.DEAF" resolve="DEAF" />
+                  <node concept="37vLTw" id="7kKMI7ohWqF" role="37wK5m">
+                    <ref role="3cqZAo" node="7kKMI7ohWqD" resolve="bg" />
                   </node>
                   <node concept="3Tm1VV" id="41innpAoSuF" role="1B3o_S" />
                   <node concept="3clFb_" id="41innpAoSuG" role="jymVt">
@@ -5876,6 +5902,220 @@
               <node concept="37vLTw" id="5Pnc_qQuvhz" role="37vLTx">
                 <ref role="3cqZAo" node="9D0Ba05v2a" resolve="confMon" />
               </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="2UA$I15WhPI">
+    <property role="TrG5h" value="MakeServiceConfiguration" />
+    <property role="1EXbeo" value="true" />
+    <node concept="312cEg" id="2UA$I15WzsL" role="jymVt">
+      <property role="TrG5h" value="myMakeInBackground" />
+      <node concept="3Tm6S6" id="2UA$I15WzgJ" role="1B3o_S" />
+      <node concept="10P_77" id="2UA$I15Wznd" role="1tU5fm" />
+      <node concept="3clFbT" id="2UA$I15WzzT" role="33vP2m" />
+    </node>
+    <node concept="2YIFZL" id="2UA$I15WtCC" role="jymVt">
+      <property role="TrG5h" value="getInstance" />
+      <node concept="3clFbS" id="2UA$I15WtBw" role="3clF47">
+        <node concept="3SKdUt" id="2UA$I15Wx62" role="3cqZAp">
+          <node concept="3SKdUq" id="2UA$I15Wx64" role="3SKWNk">
+            <property role="3SKdUp" value="implementation inspired by c.i.openapi.vcs.VcsConfiguration" />
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2UA$I15WuZc" role="3cqZAp">
+          <node concept="2YIFZM" id="2UA$I15Wv2R" role="3cqZAk">
+            <ref role="1Pybhc" to="1m72:~ServiceManager" resolve="ServiceManager" />
+            <ref role="37wK5l" to="1m72:~ServiceManager.getService(com.intellij.openapi.project.Project,java.lang.Class)" resolve="getService" />
+            <node concept="37vLTw" id="2UA$I15Wv54" role="37wK5m">
+              <ref role="3cqZAo" node="2UA$I15WuW4" resolve="project" />
+            </node>
+            <node concept="3VsKOn" id="2UA$I15Wvaf" role="37wK5m">
+              <ref role="3VsUkX" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="2UA$I15WtEh" role="3clF45">
+        <ref role="3uigEE" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+      </node>
+      <node concept="3Tm1VV" id="2UA$I15WtBv" role="1B3o_S" />
+      <node concept="37vLTG" id="2UA$I15WuW4" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="2UA$I15WuW3" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2UA$I15Wvjd" role="jymVt" />
+    <node concept="3clFb_" id="2UA$I15Wvlx" role="jymVt">
+      <property role="TrG5h" value="getState" />
+      <node concept="3Tm1VV" id="2UA$I15Wvly" role="1B3o_S" />
+      <node concept="2AHcQZ" id="2UA$I15Wvl$" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="3uibUv" id="2UA$I15WvlA" role="3clF45">
+        <ref role="3uigEE" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+      </node>
+      <node concept="3clFbS" id="2UA$I15WvlB" role="3clF47">
+        <node concept="3cpWs6" id="2UA$I15Wvu8" role="3cqZAp">
+          <node concept="Xjq3P" id="2UA$I15Wv$w" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2UA$I15WvlC" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="2UA$I15WvlD" role="jymVt">
+      <property role="TrG5h" value="loadState" />
+      <node concept="3Tm1VV" id="2UA$I15WvlE" role="1B3o_S" />
+      <node concept="3cqZAl" id="2UA$I15WvlG" role="3clF45" />
+      <node concept="37vLTG" id="2UA$I15WvlH" role="3clF46">
+        <property role="TrG5h" value="configuration" />
+        <node concept="3uibUv" id="2UA$I15WvlK" role="1tU5fm">
+          <ref role="3uigEE" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+        </node>
+        <node concept="2AHcQZ" id="2UA$I15WvlJ" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="2UA$I15WvlL" role="3clF47">
+        <node concept="3clFbF" id="2UA$I15WzHb" role="3cqZAp">
+          <node concept="37vLTI" id="2UA$I15WzYW" role="3clFbG">
+            <node concept="2OqwBi" id="2UA$I15W$th" role="37vLTx">
+              <node concept="37vLTw" id="2UA$I15W$cd" role="2Oq$k0">
+                <ref role="3cqZAo" node="2UA$I15WvlH" resolve="configuration" />
+              </node>
+              <node concept="2OwXpG" id="2UA$I15W$Lw" role="2OqNvi">
+                <ref role="2Oxat5" node="2UA$I15WzsL" resolve="myMakeInBackground" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="2UA$I15WzHa" role="37vLTJ">
+              <ref role="3cqZAo" node="2UA$I15WzsL" resolve="myMakeInBackground" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2UA$I15WvlM" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2UA$I15W_4w" role="jymVt" />
+    <node concept="3clFb_" id="2UA$I15W_rA" role="jymVt">
+      <property role="TrG5h" value="isMakeInBackground" />
+      <node concept="3clFbS" id="2UA$I15W_rD" role="3clF47">
+        <node concept="3cpWs6" id="2UA$I15W_$x" role="3cqZAp">
+          <node concept="37vLTw" id="2UA$I15W_Hq" role="3cqZAk">
+            <ref role="3cqZAo" node="2UA$I15WzsL" resolve="myMakeInBackground" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2UA$I15W_cX" role="1B3o_S" />
+      <node concept="10P_77" id="2UA$I15W_kO" role="3clF45" />
+    </node>
+    <node concept="3clFb_" id="2UA$I15W_Z7" role="jymVt">
+      <property role="TrG5h" value="setMakeInBackground" />
+      <node concept="3cqZAl" id="2UA$I15W_Z9" role="3clF45" />
+      <node concept="3Tm1VV" id="2UA$I15W_Za" role="1B3o_S" />
+      <node concept="3clFbS" id="2UA$I15W_Zb" role="3clF47">
+        <node concept="3clFbF" id="2UA$I15WB06" role="3cqZAp">
+          <node concept="37vLTI" id="2UA$I15WBqY" role="3clFbG">
+            <node concept="37vLTw" id="2UA$I15WBt0" role="37vLTx">
+              <ref role="3cqZAo" node="2UA$I15WAuC" resolve="value" />
+            </node>
+            <node concept="37vLTw" id="2UA$I15WB03" role="37vLTJ">
+              <ref role="3cqZAo" node="2UA$I15WzsL" resolve="myMakeInBackground" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="2UA$I15WAuC" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="10P_77" id="2UA$I15WAuB" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2UA$I15WBMh" role="jymVt" />
+    <node concept="3clFb_" id="2UA$I15WCcN" role="jymVt">
+      <property role="TrG5h" value="getMakeInBackgroundOption" />
+      <node concept="3clFbS" id="2UA$I15WCcQ" role="3clF47">
+        <node concept="3cpWs6" id="2UA$I15WCn7" role="3cqZAp">
+          <node concept="2ShNRf" id="2UA$I15WCBt" role="3cqZAk">
+            <node concept="YeOm9" id="2UA$I15X9lm" role="2ShVmc">
+              <node concept="1Y3b0j" id="2UA$I15X9lp" role="YeSDq">
+                <property role="2bfB8j" value="true" />
+                <ref role="1Y3XeK" to="xygl:~PerformInBackgroundOption" resolve="PerformInBackgroundOption" />
+                <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                <node concept="3Tm1VV" id="2UA$I15X9lq" role="1B3o_S" />
+                <node concept="3clFb_" id="2UA$I15X9lv" role="jymVt">
+                  <property role="TrG5h" value="shouldStartInBackground" />
+                  <node concept="3Tm1VV" id="2UA$I15X9lw" role="1B3o_S" />
+                  <node concept="10P_77" id="2UA$I15X9ly" role="3clF45" />
+                  <node concept="3clFbS" id="2UA$I15X9lz" role="3clF47">
+                    <node concept="3cpWs6" id="2UA$I15Xa1r" role="3cqZAp">
+                      <node concept="1rXfSq" id="2UA$I15Xa$b" role="3cqZAk">
+                        <ref role="37wK5l" node="2UA$I15W_rA" resolve="isMakeInBackground" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2AHcQZ" id="2UA$I15X9l_" role="2AJF6D">
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                  </node>
+                </node>
+                <node concept="2tJIrI" id="2UA$I15X9_C" role="jymVt" />
+                <node concept="3clFb_" id="2UA$I15XaXF" role="jymVt">
+                  <property role="TrG5h" value="processSentToBackground" />
+                  <node concept="3Tm1VV" id="2UA$I15XaXH" role="1B3o_S" />
+                  <node concept="3cqZAl" id="2UA$I15XaXJ" role="3clF45" />
+                  <node concept="3clFbS" id="2UA$I15XaXL" role="3clF47">
+                    <node concept="3clFbF" id="2UA$I15Xbnl" role="3cqZAp">
+                      <node concept="1rXfSq" id="2UA$I15Xbni" role="3clFbG">
+                        <ref role="37wK5l" node="2UA$I15W_Z7" resolve="setMakeInBackground" />
+                        <node concept="3clFbT" id="2UA$I15Xb_y" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2AHcQZ" id="2UA$I15XaXM" role="2AJF6D">
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2UA$I15WBVW" role="1B3o_S" />
+      <node concept="3uibUv" id="2UA$I15WC5a" role="3clF45">
+        <ref role="3uigEE" to="xygl:~PerformInBackgroundOption" resolve="PerformInBackgroundOption" />
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="2UA$I15WhPJ" role="1B3o_S" />
+    <node concept="3uibUv" id="2UA$I15Wt$u" role="EKbjA">
+      <ref role="3uigEE" to="1m72:~PersistentStateComponent" resolve="PersistentStateComponent" />
+      <node concept="3uibUv" id="2UA$I15Wt_i" role="11_B2D">
+        <ref role="3uigEE" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="2UA$I15WvWy" role="2AJF6D">
+      <ref role="2AI5Lk" to="1m72:~State" resolve="State" />
+      <node concept="2B6LJw" id="2UA$I15Ww7I" role="2B76xF">
+        <ref role="2B6OnR" to="1m72:~State.name()" resolve="name" />
+        <node concept="Xl_RD" id="2UA$I15WxNP" role="2B70Vg">
+          <property role="Xl_RC" value="mpsMakeService" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="16awQSIaojf" role="2B76xF">
+        <ref role="2B6OnR" to="1m72:~State.storages()" resolve="storages" />
+        <node concept="2AHcQZ" id="16awQSIaAIh" role="2B70Vg">
+          <ref role="2AI5Lk" to="1m72:~Storage" resolve="Storage" />
+          <node concept="2B6LJw" id="16awQSIaAVm" role="2B76xF">
+            <ref role="2B6OnR" to="1m72:~Storage.value()" resolve="value" />
+            <node concept="10M0yZ" id="16awQSIaCpp" role="2B70Vg">
+              <ref role="3cqZAo" to="1m72:~StoragePathMacros.WORKSPACE_FILE" resolve="WORKSPACE_FILE" />
+              <ref role="1PxDUh" to="1m72:~StoragePathMacros" resolve="StoragePathMacros" />
             </node>
           </node>
         </node>

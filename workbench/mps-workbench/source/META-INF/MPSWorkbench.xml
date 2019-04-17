@@ -24,4 +24,10 @@
       <implementation-class>jetbrains.mps.ide.actions.refactoring.MoveModelExtensionComponent</implementation-class>
     </component>
   </application-components>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceInterface="jetbrains.mps.ide.make.MakeServiceConfiguration"
+                  serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
+  </extensions>
+
 </components>

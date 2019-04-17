@@ -32,29 +32,36 @@ import com.intellij.ui.IdeBorderFactory;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import javax.swing.AbstractListModel;
 import java.util.List;
+import jetbrains.mps.ide.make.MakeServiceConfiguration;
+import javax.swing.JCheckBox;
+import javax.swing.border.TitledBorder;
+import javax.swing.BoxLayout;
 
 public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   private final StandaloneMPSProject myProject;
   private final ProjectProperties myProperties = new ProjectProperties();
   private final ProjectPrefsExtraPanel[] myExtraPanels;
+  private final ProjectPropertiesComponent.MakeServiceGroup myMakeGroup;
 
   public ProjectPropertiesComponent(Project project, ProjectPrefsExtraPanel[] extraPanels) {
     super(true);
     myProject = (StandaloneMPSProject) project.getComponent(MPSProject.class);
     myExtraPanels = (extraPanels != null ? extraPanels : new ProjectPrefsExtraPanel[0]);
     myProperties.loadFrom(myProject);
+    myMakeGroup = new ProjectPropertiesComponent.MakeServiceGroup(project);
     init();
   }
   public ProjectPropertiesComponent(Project project) {
     this(project, Extensions.getExtensions(ProjectPrefsExtraPanel.EP_NAME, project));
   }
 
-  private Object getGridConstraints(int row, boolean fill) {
+  private static Object getGridConstraints(int row, boolean fill) {
     if (fill) {
       return new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_CAN_SHRINK, GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_CAN_SHRINK, null, null, null);
     }
     return new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_CAN_SHRINK, GridConstraints.SIZEPOLICY_FIXED, null, null, null);
   }
+
   private JComponent createProjectModulesList() {
     final JBList list = new JBList(new ProjectPropertiesComponent.PathsListModel());
 
@@ -111,6 +118,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
     this.setLayout(new GridLayoutManager(rowCount, 1));
     this.setAutoscrolls(false);
     this.add(createProjectModulesList(), getGridConstraints(rowIndex++, true));
+    add(myMakeGroup.createComponent(), getGridConstraints(rowIndex++, false));
     for (ProjectPrefsExtraPanel extraPanel : myExtraPanels) {
       this.add(extraPanel.getComponent(), getGridConstraints(rowIndex++, false));
     }
@@ -121,7 +129,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
       public boolean accept(ProjectPrefsExtraPanel ep) {
         return ep.isModified();
       }
-    });
+    }) || myMakeGroup.isModified();
   }
   @Override
   public void apply() {
@@ -131,16 +139,20 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
         myProperties.saveTo(myProject);
       }
     });
+    myMakeGroup.apply();
     for (ProjectPrefsExtraPanel ep : myExtraPanels) {
       ep.apply();
     }
   }
   public void reset() {
+    myMakeGroup.reset();
     myProperties.loadFrom(myProject);
     for (ProjectPrefsExtraPanel ep : myExtraPanels) {
       ep.reset();
     }
   }
+
+
 
   private class PathsListModel extends AbstractListModel {
     public PathsListModel() {
@@ -165,5 +177,37 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
       int i = myProperties.remove((ModulePath) path);
       fireIntervalRemoved(this, i, i);
     }
+  }
+
+  private static class MakeServiceGroup {
+    private final MakeServiceConfiguration myMakeConfig;
+    private JCheckBox myMakeInBackground;
+
+    private MakeServiceGroup(Project project) {
+      myMakeConfig = MakeServiceConfiguration.getInstance(project);
+    }
+
+    /*package*/ boolean isModified() {
+      return myMakeConfig.isMakeInBackground() != myMakeInBackground.isSelected();
+    }
+
+    /*package*/ void apply() {
+      myMakeConfig.setMakeInBackground(myMakeInBackground.isSelected());
+    }
+
+    /*package*/ void reset() {
+      myMakeInBackground.setSelected(myMakeConfig.isMakeInBackground());
+    }
+
+    /*package*/ JComponent createComponent() {
+      JPanel p = new JPanel();
+      p.setBorder(new TitledBorder("Make"));
+      p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+      myMakeInBackground = new JCheckBox("Perform in background");
+      myMakeInBackground.setSelected(myMakeConfig.isMakeInBackground());
+      p.add(myMakeInBackground);
+      return p;
+    }
+
   }
 }
