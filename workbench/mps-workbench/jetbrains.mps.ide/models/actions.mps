@@ -30368,8 +30368,8 @@
     <property role="TrG5h" value="JavaModelActions" />
     <property role="3GE5qa" value="Menu.ProjectPane.JavaBootstrap" />
     <node concept="tT9cl" id="2vs9_ygEfaM" role="2f5YQi">
-      <ref role="2f8Tey" node="2vs9_ygEfaF" resolve="paste" />
       <ref role="tU$_T" node="hyf4Hgq" resolve="ModelActions" />
+      <ref role="2f8Tey" node="2vs9_ygEfaF" resolve="paste" />
     </node>
     <node concept="Xl_RD" id="3CM_lYH0nME" role="3mKD$K">
       <property role="Xl_RC" value="jetbrains.mps.java.platform.actions.ModelActions_ActionGroup" />
