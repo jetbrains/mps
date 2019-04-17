@@ -33,7 +33,7 @@ public class IfStatementUnwrap5_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6412722656403846196", "6304437847245033477");
+      initEditorComponent("6412722656403846196", "4258541826866030798");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");

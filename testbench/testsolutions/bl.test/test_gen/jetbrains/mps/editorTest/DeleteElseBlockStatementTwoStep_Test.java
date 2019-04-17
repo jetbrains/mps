@@ -35,7 +35,7 @@ public class DeleteElseBlockStatementTwoStep_Test extends BaseTransformationTest
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("8979250711594096887", "8979250711594096899");
+      initEditorComponent("8979250711594096887", "4258541826860759096");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
