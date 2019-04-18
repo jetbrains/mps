@@ -7,6 +7,7 @@
   <imports />
   <registry>
     <language id="3e00419d-4801-4bad-bf2a-50479218fb53" name="testmaterial.moveConcept.SourceLanguage">
+      <concept id="4662087456932171631" name="testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_CompletionTest" flags="ng" index="uz02S" />
       <concept id="6006982468244407213" name="testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_A" flags="ng" index="GU1kn">
         <property id="6006982468244994111" name="prop" index="GSeU5" />
       </concept>
@@ -33,6 +34,9 @@
   <node concept="3Vqgce" id="roGsVXLtFl">
     <property role="3VqgdK" value="someText" />
     <property role="TrG5h" value="MoveProperty_Instance" />
+  </node>
+  <node concept="uz02S" id="42N3XtufMYZ">
+    <property role="TrG5h" value="testCompletionInstance" />
   </node>
 </model>
 

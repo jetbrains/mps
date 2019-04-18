@@ -11,6 +11,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_MoveConcept_A;
   private ConceptPresentation props_MoveConcept_B;
+  private ConceptPresentation props_MoveConcept_CompletionSuperconcept;
+  private ConceptPresentation props_MoveConcept_CompletionTest;
   private ConceptPresentation props_MovePropertyContainer;
   private ConceptPresentation props_MovePropertyInstance;
   private ConceptPresentation props_MovePropertySupercontainer;
@@ -34,6 +36,19 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_MoveConcept_B = cpb.create();
         }
         return props_MoveConcept_B;
+      case LanguageConceptSwitch.MoveConcept_CompletionSuperconcept:
+        if (props_MoveConcept_CompletionSuperconcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_MoveConcept_CompletionSuperconcept = cpb.create();
+        }
+        return props_MoveConcept_CompletionSuperconcept;
+      case LanguageConceptSwitch.MoveConcept_CompletionTest:
+        if (props_MoveConcept_CompletionTest == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_MoveConcept_CompletionTest = cpb.create();
+        }
+        return props_MoveConcept_CompletionTest;
       case LanguageConceptSwitch.MovePropertyContainer:
         if (props_MovePropertyContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

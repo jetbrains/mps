@@ -56,6 +56,7 @@
   <dependency className="jetbrains.mps.refactoring.test.test.MoveConceptRefactoring_Test">
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
+    <classNode dependClassName="java.awt.event.KeyEvent" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Runnable" />
@@ -72,6 +73,7 @@
     <classNode dependClassName="jetbrains.mps.errors.item.ReportItem" />
     <classNode dependClassName="jetbrains.mps.ide.MPSCoreComponents" />
     <classNode dependClassName="jetbrains.mps.ide.ThreadUtils" />
+    <classNode dependClassName="jetbrains.mps.ide.editor.MPSFileNodeEditor" />
     <classNode dependClassName="jetbrains.mps.ide.migration.AntTaskExecutionUtil" />
     <classNode dependClassName="jetbrains.mps.ide.platform.actions.core.MoveNodesUtil" />
     <classNode dependClassName="jetbrains.mps.ide.platform.refactoring.NodeLocation" />
@@ -94,6 +96,11 @@
     <classNode dependClassName="jetbrains.mps.lang.structure.pluginSolution.plugin.MoveAspectsParticipant" />
     <classNode dependClassName="jetbrains.mps.lang.structure.pluginSolution.plugin.WriteSubconceptMigrationParticipant" />
     <classNode dependClassName="jetbrains.mps.model.ModelDeleteHelper" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.NodeEditorComponent" />
+    <classNode dependClassName="jetbrains.mps.nodefs.MPSNodeVirtualFile" />
+    <classNode dependClassName="jetbrains.mps.nodefs.NodeVirtualFileSystem" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.Editor" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.project.validation.StructureChecker" />
     <classNode dependClassName="jetbrains.mps.project.validation.ValidationUtil" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringParticipant" />
