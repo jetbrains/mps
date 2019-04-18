@@ -1153,6 +1153,25 @@
       </node>
       <node concept="3Tm1VV" id="3ofMfJ500dW" role="1B3o_S" />
     </node>
+    <node concept="312cEg" id="6KB5CHbDB2d" role="jymVt">
+      <property role="TrG5h" value="myPropertyValues" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="6KB5CHbDyu3" role="1B3o_S" />
+      <node concept="3uibUv" id="6KB5CHbD$J$" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
+        <node concept="3uibUv" id="6KB5CHbDAh4" role="11_B2D">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="6KB5CHbDBMR" role="33vP2m">
+        <node concept="1pGfFk" id="6KB5CHbDFVH" role="2ShVmc">
+          <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+          <node concept="3uibUv" id="6KB5CHbDH$B" role="1pMfVU">
+            <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3clFb_" id="3ofMfJ500dX" role="jymVt">
       <property role="TrG5h" value="instances" />
       <property role="DiZV1" value="false" />
@@ -1292,6 +1311,45 @@
       </node>
       <node concept="3Tm1VV" id="3ofMfJ500eB" role="1B3o_S" />
       <node concept="3cqZAl" id="3ofMfJ500eC" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="6KB5CHbDuzk" role="jymVt" />
+    <node concept="3clFb_" id="6KB5CHbDvhv" role="jymVt">
+      <property role="TrG5h" value="propertyValue" />
+      <node concept="3Tm1VV" id="6KB5CHbDvhx" role="1B3o_S" />
+      <node concept="3cqZAl" id="6KB5CHbDvhz" role="3clF45" />
+      <node concept="37vLTG" id="6KB5CHbDvh$" role="3clF46">
+        <property role="TrG5h" value="node" />
+        <node concept="3uibUv" id="6KB5CHbDvh_" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
+        </node>
+        <node concept="2AHcQZ" id="6KB5CHbDvhA" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6KB5CHbDvhB" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="3uibUv" id="6KB5CHbDvhC" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6KB5CHbDvhD" role="3clF47">
+        <node concept="3clFbF" id="6KB5CHbDLt4" role="3cqZAp">
+          <node concept="2OqwBi" id="6KB5CHbDNuI" role="3clFbG">
+            <node concept="37vLTw" id="6KB5CHbDLt2" role="2Oq$k0">
+              <ref role="3cqZAo" node="6KB5CHbDB2d" resolve="myPropertyValues" />
+            </node>
+            <node concept="liA8E" id="6KB5CHbDRdJ" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="6KB5CHbDRe7" role="37wK5m">
+                <ref role="3cqZAo" node="6KB5CHbDvhB" resolve="value" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6KB5CHbDvhE" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
   </node>
   <node concept="2UguNb" id="2cKUqfNXsQu">
@@ -3784,6 +3842,24 @@
                 <node concept="liA8E" id="3ofMfJ50Ozh" role="2OqNvi">
                   <ref role="37wK5l" to="mhbf:~SNodeReference.getNodeId()" resolve="getNodeId" />
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3vwNmj" id="6KB5CHbEHcA" role="3cqZAp">
+          <node concept="2OqwBi" id="6KB5CHbFlqA" role="3vwVQn">
+            <node concept="2OqwBi" id="6KB5CHbEVce" role="2Oq$k0">
+              <node concept="37vLTw" id="6KB5CHbEPbu" role="2Oq$k0">
+                <ref role="3cqZAo" node="3ofMfJ4W$gC" resolve="c" />
+              </node>
+              <node concept="2OwXpG" id="6KB5CHbFdbf" role="2OqNvi">
+                <ref role="2Oxat5" node="6KB5CHbDB2d" resolve="myPropertyValues" />
+              </node>
+            </node>
+            <node concept="liA8E" id="6KB5CHbF_Dx" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
+              <node concept="Xl_RD" id="6KB5CHbFFDC" role="37wK5m">
+                <property role="Xl_RC" value="instance of ClassConcept" />
               </node>
             </node>
           </node>

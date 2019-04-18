@@ -92,6 +92,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       Assert.assertTrue(c.myImports.contains(new JavaPackageNameStub("java.io").asModelReference(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"))));
       Assert.assertTrue(c.myExtRefs.contains(new SNodeId.Foreign("~System")));
       Assert.assertTrue(c.myLocalRefs.contains(new SNodePointer("r:b44bed60-e0f0-4d48-bb29-e0fdb2041a66(tests.testPersistence.testModel)", "3895553186365322355").getNodeId()));
+      Assert.assertTrue(c.myPropertyValues.contains("instance of ClassConcept"));
     }
     public void test_testPersistenceReadWrite() throws Exception {
       // tests write and read in each supported persistence, check that model is not changed after write/read cycle 
