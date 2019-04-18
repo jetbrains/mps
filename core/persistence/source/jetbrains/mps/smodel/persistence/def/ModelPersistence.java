@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -343,7 +343,7 @@ public class ModelPersistence {
       parseAndHandleExceptions(source, new HeaderOnlyHandler(header));
       IModelPersistence mp = getPersistence(header.getPersistenceVersion());
       if (!(mp instanceof XMLPersistence)) {
-        LOG.error("Can't index old persistence. Please update persistence of old models.\n" +
+        LOG.warn("Can't index old persistence. Please update persistence of old models.\n" +
             "Persistence version: " + header.getPersistenceVersion() + "\n" +
             "Model: " + header.getModelReference().getModelName());
         return;
