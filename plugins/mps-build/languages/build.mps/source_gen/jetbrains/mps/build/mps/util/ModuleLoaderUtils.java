@@ -10,6 +10,8 @@ import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
@@ -43,7 +45,9 @@ public class ModuleLoaderUtils {
 
       if (moduleSourceDir != null && path.startsWith(MacrosFactory.MODULE)) {
         String relPath = path.substring(path.indexOf('}') + 1);
-        return IFileUtil.getCanonicalPath(moduleSourceDir.getDescendant(relPath));
+        // after migration to new FS, protocol should be passed here and the corresponding FS should do path simplification 
+        String fullPath = moduleSourceDir.getPath() + IFileSystem.SEPARATOR + relPath;
+        return FileUtil.resolveParentDirs(IFileUtil.getCanonicalPath(fullPath));
       }
       if (path.startsWith("${")) {
         int index = path.indexOf("}");
@@ -74,7 +78,9 @@ public class ModuleLoaderUtils {
         }
 
         String relPath = path.substring(index + 1);
-        return IFileUtil.getCanonicalPath(moduleSourceDir.getFileSystem().getFile(localPath).getDescendant(relPath));
+        String fullPath = localPath + IFileSystem.SEPARATOR + relPath;
+        // after migration to new FS, protocol should be passed here and the corresponding FS should do path simplification 
+        return FileUtil.resolveParentDirs(IFileUtil.getCanonicalPath(fullPath));
       }
       return path;
     }

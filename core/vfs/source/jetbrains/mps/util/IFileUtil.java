@@ -142,6 +142,10 @@ public class IFileUtil {
       return null;
     }
     final String absolutePath = file.getPath();
+    return getCanonicalPath(absolutePath);
+  }
+
+  public static String getCanonicalPath(String absolutePath) {
     final int index = absolutePath.indexOf(Path.ARCHIVE_SEPARATOR);
     if (index == -1) {
       return FileUtil.getCanonicalPath(absolutePath);
