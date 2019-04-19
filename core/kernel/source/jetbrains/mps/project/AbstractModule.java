@@ -556,13 +556,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       final String newDescriptorName = newModuleName + MPSExtentions.DOT + FileUtil.getExtension(descriptorFile.getName());
 
         //noinspection ConstantConditions
-        if (descriptorFile.getParent().getDescendant(newDescriptorName).exists()) {
+        if (descriptorFile.getParent().findChild(newDescriptorName).exists()) {
           throw new DescriptorTargetFileAlreadyExistsException(descriptorFile, newDescriptorName);
         }
         String newNameWithExt = newModuleName + "." + FileUtil.getExtension(descriptorFile.getName());
         descriptorFile.rename(newNameWithExt);
         // update descriptor since IFile is immutable like java.io.File
-        myDescriptorFile = descriptorFile.getParent().getDescendant(newNameWithExt);
+        myDescriptorFile = descriptorFile.getParent().findChild(newNameWithExt);
     }
 
     if (descriptor != null) {

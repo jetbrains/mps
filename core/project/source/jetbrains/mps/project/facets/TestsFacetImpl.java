@@ -43,14 +43,14 @@ public class TestsFacetImpl extends ModuleFacetBase implements TestsFacet {
   @Override
   public IFile getTestsOutputPath() {
     if (myModuleHome == null) return null;
-    return myModuleHome.getDescendant("test_gen");
+    return myModuleHome.findChild("test_gen");
   }
 
   @Nullable
   public static IFile getTestsOutputPath(ModuleDescriptor descriptor, @NotNull IFile moduleDescriptorFile) {
     if (descriptor instanceof LanguageDescriptor || descriptor instanceof SolutionDescriptor) {
       // XXX tests facet shall record value in the descriptor and use it instead of hardcoded value
-      return moduleDescriptorFile.getParent().getDescendant("test_gen");
+      return moduleDescriptorFile.getParent().findChild("test_gen");
     } else {
       return null;
     }

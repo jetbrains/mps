@@ -63,7 +63,7 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
         }
 
         if (classesGen.getParent() != null) {
-          IFile classesDir = classesGen.getParent().getDescendant(AbstractModule.CLASSES);
+          IFile classesDir = classesGen.getParent().findChild(AbstractModule.CLASSES);
           VirtualFile classesVF = VirtualFileUtils.getProjectVirtualFile(classesDir);
           if (classesVF != null) {
             roots.add(classesVF);

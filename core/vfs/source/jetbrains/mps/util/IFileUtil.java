@@ -66,7 +66,7 @@ public class IFileUtil {
     boolean result = true;
     for (IFile oldChild : oldDirectory.getChildren()) {
       String name = oldChild.getName();
-      IFile newChild = newDirectory.getDescendant(name);
+      IFile newChild = newDirectory.findChild(name);
       if (oldChild.isDirectory()) {
         result &= copyDirectoryContent(oldChild, newChild);
       } else {
@@ -125,11 +125,11 @@ public class IFileUtil {
     tmpHome = FileSystem.getInstance().getFile(getCanonicalPath(tmpHome));
     int i = 1;
     String prefix = "mps-" + new SimpleDateFormat("yyyy-MM-dd-").format(new Date());
-    while (tmpHome.getDescendant(prefix + i).exists()) {
+    while (tmpHome.findChild(prefix + i).exists()) {
       i++;
     }
 
-    IFile result = tmpHome.getDescendant(prefix + i);
+    IFile result = tmpHome.findChild(prefix + i);
     result.mkdirs();
     return result;
   }

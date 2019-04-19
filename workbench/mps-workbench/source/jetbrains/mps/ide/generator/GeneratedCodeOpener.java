@@ -77,6 +77,6 @@ public final class GeneratedCodeOpener {
     if (modelDir == null) {
       return null;
     }
-    return modelDir.getDescendant(position.getFileName());
+    return modelDir.findChild(position.getFileName());
   }
 }

@@ -36,7 +36,7 @@ public final class DescriptorTargetFileAlreadyExistsException extends IOExceptio
   @Override
   public String getMessage() {
     @SuppressWarnings("ConstantConditions")
-    IFile target = myDescriptorFile.getParent().getDescendant(myNewDescriptorName);
+    IFile target = myDescriptorFile.getParent().findChild(myNewDescriptorName);
     return String.format("'%s' descriptor file could not be renamed to the '%s' since the target '%s' already exists on disk", myDescriptorFile, myNewDescriptorName, target);
   }
 }

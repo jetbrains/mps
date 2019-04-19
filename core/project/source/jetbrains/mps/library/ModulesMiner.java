@@ -209,12 +209,12 @@ public final class ModulesMiner {
       // don't expect nested module collections or deployed modules nested into another module
       //
       // folder/modules/module-folder-x
-      if (tryReadFromModulesDir(folder, folder.getDescendant(MODULES_DIR))) {
+      if (tryReadFromModulesDir(folder, folder.findChild(MODULES_DIR))) {
         // no need to process nested jars or folders
         return;
       }
       // folder/META-INF/module.xml
-      if (tryModuleFromDeploymentDescriptor(folder, folder.getDescendant(META_INF).getDescendant(MODULE_XML))) {
+      if (tryModuleFromDeploymentDescriptor(folder, folder.findChild(META_INF).findChild(MODULE_XML))) {
         // no need to process nested jars or folders
         return;
       }
@@ -255,10 +255,10 @@ public final class ModulesMiner {
     assert IFileUtil.isJarFile(jarFile);
     IFile jarFileRoot = IFileUtil.stepIntoJar(jarFile);
 
-    if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.getDescendant(META_INF).getDescendant(MODULE_XML))) {
+    if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.findChild(META_INF).findChild(MODULE_XML))) {
       return;
     }
-    tryReadFromModulesDir(jarFile, jarFileRoot.getDescendant(MODULES_DIR));
+    tryReadFromModulesDir(jarFile, jarFileRoot.findChild(MODULES_DIR));
   }
 
   /**
@@ -617,18 +617,18 @@ public final class ModulesMiner {
       // is at the same level as source_gen
       // Proper solution would be to use default {module}/test_gen in ModuleDeploymentPersistence for Tests Facet, let it resolve to FS location
       // and use the value here much like we did for getGeneratorOutputPath(MD) above.
-      excludeGeneratedSourcesDir(genOutputFile.getParent().getDescendant("test_gen"));
+      excludeGeneratedSourcesDir(genOutputFile.getParent().findChild("test_gen"));
       //
       // excludeIdeaClassesGen(descriptorFile, descriptor);
       // Again, no reason to expect ProjectPathUtil.getClassesFolder(arbitraryFile) to yield any more meaningful result than 'sibling classes/'.
-      myExcludes.add(genOutputFile.getParent().getDescendant("classes"));
+      myExcludes.add(genOutputFile.getParent().findChild("classes"));
       //
       // excludeClassesGen(descriptorFile, descriptor);
       // Yet one more, ProjectPathUtil.getClassesGenFolder(descriptorFile, descriptor instanceof GeneratorDescriptor) replaced with
       // 'sibling classes_gen/' as ProjectPathUtil.getGeneratorOutputPath(descriptor) (together with MDPersistence code) gives us proper FS location
       // of generator's source_gen, and no reason for md.IsInstanceOf(GeneratorMD) -> getDescendant("generator") magic
       // XXX Would be great to reuse constant from JavaModuleFacetImpl#getClassesGen
-      myExcludes.add(genOutputFile.getParent().getDescendant("classes_gen"));
+      myExcludes.add(genOutputFile.getParent().findChild("classes_gen"));
 
       // and as for jars (-src.jar and -generator.jar) that used to be excluded if descriptorFile.isReadOnly(),
       // check readModuleDescriptorsFromFolder(IFile) - it reads jar only if there's META-INF/module.xml or modules/, neither of this happens to
@@ -698,7 +698,7 @@ public final class ModulesMiner {
     // other jar, and process with original/source descriptor from the same as the one of META-INF/module.xml.
     if (sourcesJarPath.isEmpty() || sourcesJarPath.equals(".")) {
       // META-INF/module.xml/../../
-      return deploymentFile.getParent().getParent().getDescendant(SOURCES_MODULE_DIR).getDescendant(deploymentDescriptor.getDescriptorFile());
+      return deploymentFile.getParent().getParent().findChild(SOURCES_MODULE_DIR).getDescendant(deploymentDescriptor.getDescriptorFile());
     } else {
       // FIXME any idea why the code below mangles path instead of going up/down with regular FS getParent/getDescendant operations?
       //       I suspect it's just incomplete refactoring in 4c5b44bc9e1242d4e4399dc816e5caa01855dc00, right?

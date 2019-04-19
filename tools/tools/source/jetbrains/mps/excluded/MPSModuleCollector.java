@@ -97,7 +97,7 @@ class MPSModuleCollector {
 
       IFile moduleDir = moduleIFile.getParent();
       // todo: rewrite this code using ProjectPathUtil
-      IFile classesGenDir = moduleDir.getDescendant(AbstractModule.CLASSES_GEN);
+      IFile classesGenDir = moduleDir.findChild(AbstractModule.CLASSES_GEN);
       DescriptorEntry de = new DescriptorEntry(moduleDir);
       if (md instanceof SolutionDescriptor) {
         SolutionDescriptor sd = ((SolutionDescriptor) md);
@@ -124,7 +124,7 @@ class MPSModuleCollector {
           de.addSourcePath(getCanonicalPath(generatorSrcPath));
           // FIXME need a proper mechanism to discover classesGen folder of a module.
           // Next code comes from JavaModuleFacetImpl.getClassesGen(), would be great to reuse one rather than copy
-          de.addClassGenPath(myFileSystem.getFile(generatorSrcPath).getParent().getDescendant(AbstractModule.CLASSES_GEN));
+          de.addClassGenPath(myFileSystem.getFile(generatorSrcPath).getParent().findChild(AbstractModule.CLASSES_GEN));
         }
       }
     }

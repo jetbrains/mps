@@ -59,7 +59,7 @@ public final class Renamer {
         if (moduleFolder.getName().equals(oldModuleName)) {
           moduleFolder.rename(newModuleName);
           assert moduleFolder.getParent() != null;
-          moduleFolder = moduleFolder.getParent().getDescendant(newModuleName);
+          moduleFolder = moduleFolder.getParent().findChild(newModuleName);
         }
 
         ModulesMiner modulesMiner = new ModulesMiner();

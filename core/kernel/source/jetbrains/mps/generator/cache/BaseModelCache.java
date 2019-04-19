@@ -49,7 +49,7 @@ public abstract class BaseModelCache<T> {
       return null;
     }
 
-    final IFile descendant = cachesDir.getDescendant(getCacheFileName());
+    final IFile descendant = cachesDir.findChild(getCacheFileName());
     return descendant.isDirectory() ? null : descendant;
   }
 

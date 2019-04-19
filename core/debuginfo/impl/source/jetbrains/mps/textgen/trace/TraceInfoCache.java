@@ -156,7 +156,7 @@ public final class TraceInfoCache {
     if (outputLocation == null) {
       return null;
     }
-    IFile traceInfoFile = outputLocation.getDescendant(TRACE_FILE_NAME);
+    IFile traceInfoFile = outputLocation.findChild(TRACE_FILE_NAME);
     return traceInfoFile.exists() ? traceInfoFile : null;
   }
 
