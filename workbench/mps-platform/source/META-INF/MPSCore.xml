@@ -111,6 +111,7 @@
 
     <fileBasedIndex implementation="jetbrains.mps.workbench.findusages.MPSModelsIndexer"/>
     <fileBasedIndex implementation="jetbrains.mps.workbench.index.RootNodeNameIndex"/>
+    <fileBasedIndex implementation="jetbrains.mps.workbench.index.PropertyValueIndex"/>
     <editorTabTitleProvider implementation="jetbrains.mps.fileTypes.MPSEditorTabTitleProvider"/>
   </extensions>
 </components>

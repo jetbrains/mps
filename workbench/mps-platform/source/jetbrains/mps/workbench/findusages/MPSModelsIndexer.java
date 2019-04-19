@@ -20,6 +20,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.Consumer;
 import com.intellij.util.indexing.DataIndexer;
+import com.intellij.util.indexing.DefaultFileTypeSpecificInputFilter;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.FileBasedIndex.FileTypeSpecificInputFilter;
 import com.intellij.util.indexing.FileBasedIndex.InputFilter;
@@ -108,7 +109,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   @NotNull
   @Override
   public InputFilter getInputFilter() {
-    return new MyFilter();
+    return new DefaultFileTypeSpecificInputFilter(myIndexAwareFileTypes.keySet().toArray(new FileType[0]));
   }
 
   @Override
@@ -146,23 +147,6 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
     @Override
     public void localNodeRef(@NotNull SNodeId node) {
       myResult.put(new NodeUse(node), null);
-    }
-  }
-
-  private class MyFilter implements FileTypeSpecificInputFilter {
-
-    @Override
-    public void registerFileTypesUsedForIndexing(@NotNull Consumer<FileType> fileTypeSink) {
-      for (FileType ft : myIndexAwareFileTypes.keySet()) {
-        fileTypeSink.consume(ft);
-      }
-    }
-
-    @Override
-    public boolean acceptInput(@NotNull VirtualFile file) {
-      // AFAIU, FileBasedIndex does filtering according to file types supplied in #registerFileTypesUsedForIndexing
-      // unfortunately, it doesn't state it clearly in the javadoc.
-      return true;
     }
   }
 
