@@ -44,11 +44,10 @@ public class NodeUsageFinder {
     myOutcomeConsumer = outcomeConsumer;
   }
 
-
   public void collectUsages(SModel model, ProgressMonitor monitor) {
     for (SNode node : SNodeUtil.getDescendants(model)) {
       if (monitor.isCanceled()) {
-        break;
+        return;
       }
       collectUsages(node);
     }

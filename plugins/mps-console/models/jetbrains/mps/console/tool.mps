@@ -6800,7 +6800,7 @@
                                                 <ref role="3cqZAo" node="6ysF3v1j_wR" resolve="trf" />
                                               </node>
                                               <node concept="liA8E" id="6ysF3v1j_wF" role="2OqNvi">
-                                                <ref role="37wK5l" to="kt01:~Transferable.getTransferData(java.awt.datatransfer.DataFlavor):java.lang.Object" resolve="getTransferData" />
+                                                <ref role="37wK5l" to="kt01:~Transferable.getTransferData(java.awt.datatransfer.DataFlavor)" resolve="getTransferData" />
                                                 <node concept="10M0yZ" id="6ysF3v1j_wG" role="37wK5m">
                                                   <ref role="3cqZAo" to="dp1x:7gnNafF6hJ_" resolve="sNodeReference" />
                                                   <ref role="1PxDUh" to="dp1x:5tGs5KqKiwp" resolve="SModelDataFlavor" />
@@ -6826,7 +6826,7 @@
                                           <ref role="3cqZAo" node="6ysF3v1j_wR" resolve="trf" />
                                         </node>
                                         <node concept="liA8E" id="6ysF3v1j_wO" role="2OqNvi">
-                                          <ref role="37wK5l" to="kt01:~Transferable.isDataFlavorSupported(java.awt.datatransfer.DataFlavor):boolean" resolve="isDataFlavorSupported" />
+                                          <ref role="37wK5l" to="kt01:~Transferable.isDataFlavorSupported(java.awt.datatransfer.DataFlavor)" resolve="isDataFlavorSupported" />
                                           <node concept="10M0yZ" id="6ysF3v1j_wP" role="37wK5m">
                                             <ref role="1PxDUh" to="dp1x:5tGs5KqKiwp" resolve="SModelDataFlavor" />
                                             <ref role="3cqZAo" to="dp1x:7gnNafF6hJ_" resolve="sNodeReference" />
@@ -6845,11 +6845,11 @@
                                 </node>
                                 <node concept="2OqwBi" id="6ysF3v1j_wT" role="1DdaDG">
                                   <node concept="2YIFZM" id="6ysF3v1j_wU" role="2Oq$k0">
-                                    <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx():com.intellij.ide.CopyPasteManagerEx" resolve="getInstanceEx" />
+                                    <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx()" resolve="getInstanceEx" />
                                     <ref role="1Pybhc" to="ddhc:~CopyPasteManagerEx" resolve="CopyPasteManagerEx" />
                                   </node>
                                   <node concept="liA8E" id="6ysF3v1j_wV" role="2OqNvi">
-                                    <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getAllContents():java.awt.datatransfer.Transferable[]" resolve="getAllContents" />
+                                    <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getAllContents()" resolve="getAllContents" />
                                   </node>
                                 </node>
                               </node>
@@ -6884,7 +6884,7 @@
                                   <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
                                 </node>
                                 <node concept="liA8E" id="6ysF3v1j_x9" role="2OqNvi">
-                                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell():jetbrains.mps.openapi.editor.cells.EditorCell" resolve="getSelectedCell" />
+                                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedCell()" resolve="getSelectedCell" />
                                 </node>
                               </node>
                             </node>
@@ -6898,13 +6898,13 @@
                                   <ref role="3cqZAo" node="6ysF3v1j_ws" resolve="pastingNodeReference" />
                                 </node>
                                 <node concept="liA8E" id="6ysF3v1j_xf" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository):org.jetbrains.mps.openapi.model.SNode" resolve="resolve" />
+                                  <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
                                   <node concept="2OqwBi" id="758rrhN2FCa" role="37wK5m">
                                     <node concept="37vLTw" id="758rrhN2FCb" role="2Oq$k0">
                                       <ref role="3cqZAo" node="758rrhN1tVs" resolve="myProject" />
                                     </node>
                                     <node concept="liA8E" id="758rrhN2FCc" role="2OqNvi">
-                                      <ref role="37wK5l" to="z1c3:~Project.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                                      <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
                                     </node>
                                   </node>
                                 </node>
@@ -6974,7 +6974,7 @@
                                         <ref role="3cqZAo" node="6ysF3v1j_xx" resolve="paster" />
                                       </node>
                                       <node concept="liA8E" id="6ysF3v1j_xI" role="2OqNvi">
-                                        <ref role="37wK5l" to="1i7y:~NodePaster.paste(jetbrains.mps.openapi.editor.cells.EditorCell):void" resolve="paste" />
+                                        <ref role="37wK5l" to="1i7y:~NodePaster.paste(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="paste" />
                                         <node concept="37vLTw" id="6ysF3v1j_xJ" role="37wK5m">
                                           <ref role="3cqZAo" node="6ysF3v1j_x5" resolve="currentCell" />
                                         </node>
@@ -6987,7 +6987,7 @@
                                     <ref role="3cqZAo" node="6ysF3v1j_xx" resolve="paster" />
                                   </node>
                                   <node concept="liA8E" id="6ysF3v1j_xM" role="2OqNvi">
-                                    <ref role="37wK5l" to="1i7y:~NodePaster.canPaste(jetbrains.mps.openapi.editor.cells.EditorCell):boolean" resolve="canPaste" />
+                                    <ref role="37wK5l" to="1i7y:~NodePaster.canPaste(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="canPaste" />
                                     <node concept="37vLTw" id="6ysF3v1j_xN" role="37wK5m">
                                       <ref role="3cqZAo" node="6ysF3v1j_x5" resolve="currentCell" />
                                     </node>
@@ -6999,13 +6999,13 @@
                                       <ref role="3cqZAo" node="6ysF3v1j_xx" resolve="paster" />
                                     </node>
                                     <node concept="liA8E" id="6ysF3v1j_xR" role="2OqNvi">
-                                      <ref role="37wK5l" to="1i7y:~NodePaster.canPasteWithRemove(java.util.List):boolean" resolve="canPasteWithRemove" />
+                                      <ref role="37wK5l" to="1i7y:~NodePaster.canPasteWithRemove(java.util.List)" resolve="canPasteWithRemove" />
                                       <node concept="2OqwBi" id="6ysF3v1j_xS" role="37wK5m">
                                         <node concept="37vLTw" id="6ysF3v1j_xT" role="2Oq$k0">
                                           <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
                                         </node>
                                         <node concept="liA8E" id="6ysF3v1j_xU" role="2OqNvi">
-                                          <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedNodes():java.util.List" resolve="getSelectedNodes" />
+                                          <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedNodes()" resolve="getSelectedNodes" />
                                         </node>
                                       </node>
                                     </node>
@@ -7017,13 +7017,13 @@
                                           <ref role="3cqZAo" node="6ysF3v1j_xx" resolve="paster" />
                                         </node>
                                         <node concept="liA8E" id="6ysF3v1j_xZ" role="2OqNvi">
-                                          <ref role="37wK5l" to="1i7y:~NodePaster.pasteWithRemove(java.util.List):void" resolve="pasteWithRemove" />
+                                          <ref role="37wK5l" to="1i7y:~NodePaster.pasteWithRemove(java.util.List)" resolve="pasteWithRemove" />
                                           <node concept="2OqwBi" id="6ysF3v1j_y0" role="37wK5m">
                                             <node concept="37vLTw" id="6ysF3v1j_y1" role="2Oq$k0">
                                               <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
                                             </node>
                                             <node concept="liA8E" id="6ysF3v1j_y2" role="2OqNvi">
-                                              <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedNodes():java.util.List" resolve="getSelectedNodes" />
+                                              <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedNodes()" resolve="getSelectedNodes" />
                                             </node>
                                           </node>
                                         </node>
@@ -7035,11 +7035,11 @@
                               <node concept="3clFbF" id="6ysF3v1j_y3" role="3cqZAp">
                                 <node concept="2OqwBi" id="6ysF3v1j_y4" role="3clFbG">
                                   <node concept="2YIFZM" id="6ysF3v1j_y5" role="2Oq$k0">
-                                    <ref role="37wK5l" to="tqvn:~TemporaryModels.getInstance():jetbrains.mps.smodel.tempmodel.TemporaryModels" resolve="getInstance" />
+                                    <ref role="37wK5l" to="tqvn:~TemporaryModels.getInstance()" resolve="getInstance" />
                                     <ref role="1Pybhc" to="tqvn:~TemporaryModels" resolve="TemporaryModels" />
                                   </node>
                                   <node concept="liA8E" id="6ysF3v1j_y6" role="2OqNvi">
-                                    <ref role="37wK5l" to="tqvn:~TemporaryModels.addMissingImports(org.jetbrains.mps.openapi.model.SModel):void" resolve="addMissingImports" />
+                                    <ref role="37wK5l" to="tqvn:~TemporaryModels.addMissingImports(org.jetbrains.mps.openapi.model.SModel)" resolve="addMissingImports" />
                                     <node concept="37vLTw" id="6ysF3v1j_y7" role="37wK5m">
                                       <ref role="3cqZAo" node="6ysF3v1j_8r" resolve="myModel" />
                                     </node>
@@ -7053,11 +7053,11 @@
                                       <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
                                     </node>
                                     <node concept="liA8E" id="b3HA6Pmxtw" role="2OqNvi">
-                                      <ref role="37wK5l" to="exr9:~EditorComponent.getUpdater():jetbrains.mps.openapi.editor.update.Updater" resolve="getUpdater" />
+                                      <ref role="37wK5l" to="exr9:~EditorComponent.getUpdater()" resolve="getUpdater" />
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="b3HA6Pmy_2" role="2OqNvi">
-                                    <ref role="37wK5l" to="22ra:~Updater.flushModelEvents():void" resolve="flushModelEvents" />
+                                    <ref role="37wK5l" to="22ra:~Updater.flushModelEvents()" resolve="flushModelEvents" />
                                   </node>
                                 </node>
                               </node>
@@ -7072,7 +7072,7 @@
                                         <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
                                       </node>
                                       <node concept="liA8E" id="b3HA6PmK95" role="2OqNvi">
-                                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext():jetbrains.mps.nodeEditor.EditorContext" resolve="getEditorContext" />
+                                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                                       </node>
                                     </node>
                                     <node concept="2B6iha" id="b3HA6PmKMs" role="lGT1i">
@@ -7107,11 +7107,11 @@
                                       <ref role="3cqZAo" node="6ysF3v1j_ws" resolve="pastingNodeReference" />
                                     </node>
                                     <node concept="liA8E" id="6ysF3v1j_yk" role="2OqNvi">
-                                      <ref role="37wK5l" to="mhbf:~SNodeReference.getModelReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getModelReference" />
+                                      <ref role="37wK5l" to="mhbf:~SNodeReference.getModelReference()" resolve="getModelReference" />
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="6ysF3v1j_yl" role="2OqNvi">
-                                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                                    <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                                     <node concept="2OqwBi" id="3XR0QgVCjt7" role="37wK5m">
                                       <node concept="37vLTw" id="3XR0QgVCjt6" role="2Oq$k0">
                                         <ref role="3cqZAo" node="6ysF3v1j_8r" resolve="myModel" />
@@ -7130,7 +7130,7 @@
                                       <ref role="3cqZAo" node="6ysF3v1j_w0" resolve="myDefaultPasteProvider" />
                                     </node>
                                     <node concept="liA8E" id="6ysF3v1j_yv" role="2OqNvi">
-                                      <ref role="37wK5l" to="ddhc:~PasteProvider.performPaste(com.intellij.openapi.actionSystem.DataContext):void" resolve="performPaste" />
+                                      <ref role="37wK5l" to="ddhc:~PasteProvider.performPaste(com.intellij.openapi.actionSystem.DataContext)" resolve="performPaste" />
                                       <node concept="37vLTw" id="6ysF3v1j_yw" role="37wK5m">
                                         <ref role="3cqZAo" node="6ysF3v1j_wk" resolve="context" />
                                       </node>

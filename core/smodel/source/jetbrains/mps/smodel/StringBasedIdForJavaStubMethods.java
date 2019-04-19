@@ -64,7 +64,7 @@ import java.util.Objects;
  * Furthermore, we created a special {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} in the JavaClassStubModelDescriptor
  * which essentially for each stub java method node creates two different mappings: for a string id with return type and for a string id without return type.
  *
- * State 2: (191.eap8). [WE ARE HERE]
+ * State 2: (191.eap8).
  * stub models have foreign* id (persisted to :~println()).
  *
  * ref a has a foreign with-ret id, ver<=191.eap8;
@@ -73,6 +73,41 @@ import java.util.Objects;
  * ref d has a foreign* with-ret id, ver>=191.eap8;
  * all resolve fine, see the {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} javadoc.
  *
+ * The next problem was that find usages stopped working since the node access is not done via the model but via the node id directly.
+ * The problem evolves only after we migrate all the java stub method references.
+ * It appeared that the second approach (hacking the INodeToNodeMap) fails for some API clients, who do not access SNode by requesting it
+ * from SModel#getNode(SNodeId).
+ *
+ * Consider the contract below.
+ * <code>
+ *   SModel someModel; // some stub model which contains a node with the following id
+ *   SNodeIdWithReturn anId = createFromString("~PrintStream:println(String):void");
+ *   Assert.assertTrue(anId.equals(someModel.getNode(anId).getNodeId()));
+ * </code>
+ * The problem was that it starts failing after we run the migration (191.eap8).
+ * It fails just because the method node in the java stub model possesses with-ret id, and after the migration all the references
+ * consists of no-ret ids.
+ * Before the migration the contract holds.
+ * The following change was performed in order to make it vice versa: the contract is broken before we run the migration and holds
+ * after.
+ *
+ * Change 3: we changed the foreign* id #getId, #hashcode and #equals methods in such a way that the foreign* id instance
+ * is associated solely with no-ret string.
+ * The map {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} in the JavaClassStubModelDescriptor did not change its contents.
+ *
+ * State 3: (191.1). [WE ARE HERE]
+ * stub models have foreign* id (persisted to :~println()).
+ *
+ * Again,
+ * ref a has a foreign with-ret id, ver<=191.eap8;
+ * ref b has a foreign without-ret id, ver>=191.eap8; (after the migration)
+ * ref c has a foreign* with-ret id, ver=191.eap7;
+ * ref d has a foreign* with-ret id, ver>=191.eap8;
+ * all resolve fine, see the {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} javadoc.
+ * If accessed via SModel, with-ret and without-ret ids resolve fine because of the hack in the node id map;
+ * otherwise _before the migration_ with-ret node ids are not present in the model, so some places will fail to find the nodes by the with-ret id
+ * (like find usages with index which tracks back the references to the java stub methods), however _after the migration_ such places must work as
+ * expected.
  *
  * BACKWARD PERSISTENCE COMPATIBILITY:
  * State 0 (191.eap6 build or earlier):
@@ -96,7 +131,7 @@ import java.util.Objects;
  * using the MPS ver<=191.eap6.
  *
  * FUTURE:
- * (201 release) Change 3: removing this class and the migrating map, all java stub method are resolved by no-return-signatures now.
+ * (2xx release) Change 4: removing this class and the migrating map, all java stub method are resolved by no-return-signatures now.
  */
 @ToRemove(version = 201)
 @Internal
@@ -111,38 +146,44 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
   public static final String ID_PREFIX = "#";
   private static final String SEPARATOR = ":";
 
-  /**
-   * does not contain ID_PREFIX
-   */
   @NotNull
-  private final String myStubMethodIdWithReturnType;
+  private final String myStubMethodIdWithReturnTypeNoPrefix;
+
+  @NotNull
+  private final String myStubMethodIdWithoutReturnTypeNoPrefix;
 
   /**
    * @param idWithReturnType starts with ID_PREFIX (only to not differ from the other implementations); always a long id (with return type)
    */
   public StringBasedIdForJavaStubMethods(@NotNull String idWithReturnType) {
     checkStartsWithPrefix(idWithReturnType);
-    myStubMethodIdWithReturnType = InternUtil.intern(idWithReturnType.substring(1));
+    myStubMethodIdWithReturnTypeNoPrefix = InternUtil.intern(idWithReturnType.substring(1));
+    myStubMethodIdWithoutReturnTypeNoPrefix = calcWithoutRetType(myStubMethodIdWithReturnTypeNoPrefix);
   }
 
   private void checkStartsWithPrefix(@NotNull String idWithReturnType) {
     if (!idWithReturnType.startsWith(ID_PREFIX)) {
-      throw new IncorrectNodeIdFormatException(String.format("Node id must begin with '%s' or '%s'", ID_PREFIX, Foreign.ID_PREFIX), null);
+      throw new IncorrectNodeIdFormatException(String.format("Node id must begin with '%s'", ID_PREFIX), null);
     }
   }
 
   @NotNull
   public String getIdWithReturnTypeNoPrefix() {
-    return myStubMethodIdWithReturnType;
+    return myStubMethodIdWithReturnTypeNoPrefix;
   }
 
   @NotNull
   public String getIdWithoutReturnTypeNoPrefix() {
-    int lastIndex = myStubMethodIdWithReturnType.lastIndexOf(SEPARATOR);
+    return myStubMethodIdWithoutReturnTypeNoPrefix;
+  }
+
+  @NotNull
+  private static String calcWithoutRetType(@NotNull String stubMethodIdWithReturnTypeNoPrefix) {
+    int lastIndex = stubMethodIdWithReturnTypeNoPrefix.lastIndexOf(SEPARATOR);
     if (lastIndex < 0) {
-      LOG.error("The string id '" + myStubMethodIdWithReturnType + "' does not contain the separator '" + SEPARATOR + "'");
+      LOG.error("The string id '" + stubMethodIdWithReturnTypeNoPrefix + "' does not contain the separator '" + SEPARATOR + "'");
     }
-    return myStubMethodIdWithReturnType.substring(0, lastIndex);
+    return stubMethodIdWithReturnTypeNoPrefix.substring(0, lastIndex);
   }
 
   @Override
@@ -153,19 +194,19 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
     }
     if (o instanceof StringBasedIdForJavaStubMethods) {
       StringBasedIdForJavaStubMethods otherId = (StringBasedIdForJavaStubMethods) o;
-      return Objects.equals(myStubMethodIdWithReturnType, otherId.myStubMethodIdWithReturnType);
+      return Objects.equals(myStubMethodIdWithoutReturnTypeNoPrefix, otherId.myStubMethodIdWithoutReturnTypeNoPrefix);
     }
     if (o instanceof Foreign) {
       Foreign foreign = (Foreign) o;
       String idNoPrefix = foreign.getIdNoPrefix();
-      return idNoPrefix.equals(getIdWithReturnTypeNoPrefix());
+      return idNoPrefix.equals(getIdWithoutReturnTypeNoPrefix());
     }
     return false;
   }
 
   @Override
   public int hashCode() {
-    return myStubMethodIdWithReturnType.hashCode();
+    return myStubMethodIdWithoutReturnTypeNoPrefix.hashCode();
   }
 
   /**
@@ -179,7 +220,7 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
   @NotNull
   @Override
   public String getId() {
-    return myStubMethodIdWithReturnType;
+    return myStubMethodIdWithoutReturnTypeNoPrefix;
   }
 
   @NotNull

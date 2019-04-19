@@ -181,19 +181,19 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
     int separatorIndex = referenceTarget.indexOf(REF_TARGET_IMPORT_SEPARATOR);
     assert separatorIndex >= 0;
     final SModelReference modelRef = separatorIndex == 0 ? null : imports.getModelReference(referenceTarget.substring(0, separatorIndex));
-    SNodeId nodeId = parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1, referenceTarget.length()));
+    SNodeId nodeId = parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1));
     return new Pair<>(modelRef, nodeId);
   }
 
   /**
-   * Dedicated alternative of the {@link #parseExternalNodeReference(String)} that cares about target node id only, for indexing purposes,
+   * Dedicated alternative of the {@link #parseExternalNodeReference(ImportsHelper, String)} that cares about target node id only, for indexing purposes,
    * see {@link jetbrains.mps.smodel.persistence.def.v9.Indexer9}
    */
   @Nullable
   SNodeId parseExternalNodeReference(String referenceTarget) {
     int separatorIndex = referenceTarget.indexOf(REF_TARGET_IMPORT_SEPARATOR);
     assert separatorIndex >= 0;
-    return parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1, referenceTarget.length()));
+    return parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1));
   }
 
 

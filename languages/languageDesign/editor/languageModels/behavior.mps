@@ -25553,7 +25553,7 @@
       <node concept="3clFbS" id="ETPn3v9Krh" role="3clF47">
         <node concept="3clFbF" id="ETPn3v9KMH" role="3cqZAp">
           <node concept="2YIFZM" id="ETPn3v9KNK" role="3clFbG">
-            <ref role="37wK5l" to="33ny:~Collections.emptyList():java.util.List" resolve="emptyList" />
+            <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="3bZ5Sz" id="ETPn3v9O63" role="3PaCim">
               <ref role="3bZ5Sy" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />

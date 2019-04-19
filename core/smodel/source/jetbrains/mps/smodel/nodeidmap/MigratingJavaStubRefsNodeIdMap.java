@@ -80,7 +80,7 @@ public final class MigratingJavaStubRefsNodeIdMap implements INodeIdToNodeMap {
   public SNode put(SNodeId key, SNode value) {
     if (key instanceof StringBasedIdForJavaStubMethods) {
       StringBasedIdForJavaStubMethods stubId = (StringBasedIdForJavaStubMethods) key;
-      myFallbackForJavaStubMethodRefsMap.put(stubId.getId(), value);
+      myFallbackForJavaStubMethodRefsMap.put(stubId.getIdWithReturnTypeNoPrefix(), value);
       return myStringBasedIds.put(stubId.getIdWithoutReturnTypeNoPrefix(), value);
     } else if (key instanceof StringBasedId) {
       return myStringBasedIds.put(((StringBasedId) key).getId(), value);
@@ -102,7 +102,7 @@ public final class MigratingJavaStubRefsNodeIdMap implements INodeIdToNodeMap {
   public SNode remove(SNodeId key) {
     if (key instanceof StringBasedIdForJavaStubMethods) {
       StringBasedIdForJavaStubMethods stubId = (StringBasedIdForJavaStubMethods) key;
-      myFallbackForJavaStubMethodRefsMap.remove(stubId.getId());
+      myFallbackForJavaStubMethodRefsMap.remove(stubId.getIdWithReturnTypeNoPrefix());
       return myStringBasedIds.remove(stubId.getIdWithoutReturnTypeNoPrefix());
     } else if (key instanceof StringBasedId) {
       return myStringBasedIds.remove(((StringBasedId) key).getId());

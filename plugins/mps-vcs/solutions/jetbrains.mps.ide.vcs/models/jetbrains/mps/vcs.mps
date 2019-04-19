@@ -2645,9 +2645,9 @@
             </node>
             <node concept="2YIFZM" id="5drFrG61MpR" role="33vP2m">
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId):com.intellij.ide.plugins.IdeaPluginDescriptor" resolve="getPlugin" />
+              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
               <node concept="2YIFZM" id="5drFrG61MpS" role="37wK5m">
-                <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String):com.intellij.openapi.extensions.PluginId" resolve="getId" />
+                <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                 <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
                 <node concept="Xl_RD" id="5drFrG61MpT" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.vcs" />
@@ -2671,11 +2671,11 @@
                 <ref role="3cqZAo" node="5drFrG61MpP" resolve="vcsCorePlugin" />
               </node>
               <node concept="liA8E" id="5drFrG61Mq6" role="2OqNvi">
-                <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getPath():java.io.File" resolve="getPath" />
+                <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getPath()" resolve="getPath" />
               </node>
             </node>
             <node concept="liA8E" id="6kmsk4KDIXW" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~File.getPath():java.lang.String" resolve="getPath" />
+              <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
             </node>
           </node>
         </node>
