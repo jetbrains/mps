@@ -1334,7 +1334,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("name", 0x7c3f2da20e92b66L).type(PrimitiveTypeId.STRING).origin("559557797393017702").done();
     b.property("stereotype", 0x7c3f2da20e93b6fL).type(PrimitiveTypeId.STRING).origin("559557797393021807").done();
-    b.property("fqName", 0x7c3f2da20e98892L).type(PrimitiveTypeId.STRING).origin("559557797393041554").done();
     b.aggregate("repo", 0x13bfe1ec0ddbc5f8L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1423104411233404408").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("model");

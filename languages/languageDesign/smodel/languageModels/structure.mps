@@ -2029,15 +2029,6 @@
       <property role="IQ2nx" value="559557797393021807" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node concept="1TJgyi" id="v3WHCwUoyi" role="1TKVEl">
-      <property role="TrG5h" value="fqName" />
-      <property role="IQ2nx" value="559557797393041554" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-      <node concept="asaX9" id="7K4mn_Bfj93" role="lGtFl">
-        <property role="YLQ7P" value="use getFQName() behavior method" />
-        <property role="YLPcu" value="MPS 3.2" />
-      </node>
-    </node>
   </node>
   <node concept="1TIwiD" id="59YAasRsvgM">
     <property role="TrG5h" value="SubconceptCase" />
