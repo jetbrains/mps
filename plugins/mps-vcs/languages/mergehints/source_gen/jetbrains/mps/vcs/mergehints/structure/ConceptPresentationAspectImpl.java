@@ -12,7 +12,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConceptVCSDescriptor;
   private ConceptPresentation props_FeatureVCSDescriptor;
   private ConceptPresentation props_LinkVCSDescriptor;
-  private ConceptPresentation props_MergeHint;
   private ConceptPresentation props_MergeStrategy;
   private ConceptPresentation props_OursStrategy;
   private ConceptPresentation props_PropertyVCSDescriptor;
@@ -44,14 +43,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LinkVCSDescriptor = cpb.create();
         }
         return props_LinkVCSDescriptor;
-      case LanguageConceptSwitch.MergeHint:
-        if (props_MergeHint == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("MergeHint");
-          props_MergeHint = cpb.create();
-        }
-        return props_MergeHint;
       case LanguageConceptSwitch.MergeStrategy:
         if (props_MergeStrategy == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

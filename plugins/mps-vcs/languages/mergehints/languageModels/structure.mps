@@ -11,32 +11,12 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118929411" name="build" index="YLPcu" />
-        <property id="1225118933224" name="comment" index="YLQ7P" />
-      </concept>
-      <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
-        <reference id="6054523464627965081" name="concept" index="trN6q" />
-      </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration" flags="ng" index="AxPO7">
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
-      </concept>
-      <concept id="2992811758677295509" name="jetbrains.mps.lang.structure.structure.AttributeInfo" flags="ng" index="M6xJ_">
-        <property id="7588428831955550663" name="role" index="Hh88m" />
-        <child id="7588428831947959310" name="attributed" index="EQaZv" />
-      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765956807" name="final" index="R5$K2" />
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
-        <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
       <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
@@ -49,10 +29,6 @@
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
         <child id="1169129564478" name="implements" index="PzmwI" />
-      </concept>
-      <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
-        <property id="241647608299431129" name="propertyId" index="IQ2nx" />
-        <reference id="1082985295845" name="dataType" index="AX2Wp" />
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
@@ -71,45 +47,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="1TIwiD" id="6lZ2aXXUNcq">
-    <property role="TrG5h" value="MergeHint" />
-    <property role="EcuMT" value="7313573869697839898" />
-    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
-    <node concept="1TJgyi" id="7n1vgxszwQU" role="1TKVEl">
-      <property role="TrG5h" value="hint" />
-      <property role="IQ2nx" value="8485200647808748986" />
-      <ref role="AX2Wp" node="7n1vgxszwQh" resolve="Strategy" />
-    </node>
-    <node concept="M6xJ_" id="6lZ2aXXUN_V" role="lGtFl">
-      <property role="Hh88m" value="mergeHint" />
-      <node concept="trNpa" id="6lZ2aXXUSo9" role="EQaZv">
-        <ref role="trN6q" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-      </node>
-      <node concept="trNpa" id="6lZ2aXXVjKI" role="EQaZv">
-        <ref role="trN6q" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
-      </node>
-      <node concept="trNpa" id="6lZ2aXXVjKQ" role="EQaZv">
-        <ref role="trN6q" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
-      </node>
-    </node>
-    <node concept="asaX9" id="3_Ojf_lL$zN" role="lGtFl">
-      <property role="YLPcu" value="2018.2" />
-      <property role="YLQ7P" value="use VCS aspect instead" />
-    </node>
-  </node>
-  <node concept="AxPO7" id="7n1vgxszwQh">
-    <property role="TrG5h" value="Strategy" />
-    <ref role="M4eZT" to="tpck:fKAQMTA" resolve="integer" />
-    <node concept="M4N5e" id="7n1vgxszwQL" role="M5hS2">
-      <property role="1uS6qv" value="1" />
-      <property role="1uS6qo" value="ours" />
-    </node>
-    <node concept="M4N5e" id="7n1vgxszwQR" role="M5hS2">
-      <property role="1uS6qo" value="theirs" />
-      <property role="1uS6qv" value="2" />
-    </node>
-    <node concept="asaX9" id="4WGKd_KDsrY" role="lGtFl" />
-  </node>
   <node concept="1TIwiD" id="3_Ojf_lL$zT">
     <property role="EcuMT" value="4140018591229954297" />
     <property role="19KtqR" value="true" />

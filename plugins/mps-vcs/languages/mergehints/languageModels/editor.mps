@@ -21,16 +21,10 @@
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
-      <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
       <concept id="1239814640496" name="jetbrains.mps.lang.editor.structure.CellLayout_VerticalGrid" flags="nn" index="2EHx9g" />
-      <concept id="1149850725784" name="jetbrains.mps.lang.editor.structure.CellModel_AttributedNodeCell" flags="ng" index="2SsqMj" />
-      <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
-        <property id="1186403713874" name="color" index="Vb096" />
-      </concept>
-      <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
@@ -65,28 +59,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="24kQdi" id="6$Ws1PhOlGj">
-    <ref role="1XX52x" to="6p:6lZ2aXXUNcq" resolve="MergeHint" />
-    <node concept="3EZMnI" id="6$Ws1PhOPiH" role="2wV5jI">
-      <node concept="3EZMnI" id="7n1vgxszwRb" role="3EZMnx">
-        <node concept="l2Vlx" id="7n1vgxszwS0" role="2iSdaV" />
-        <node concept="3F0ifn" id="6$Ws1PhOQzT" role="3EZMnx">
-          <property role="3F0ifm" value="@mergeHint:" />
-          <node concept="VechU" id="6ziFOS4QTfy" role="3F10Kt">
-            <property role="Vb096" value="gray" />
-          </node>
-        </node>
-        <node concept="3F0A7n" id="7n1vgxszxwH" role="3EZMnx">
-          <ref role="1NtTu8" to="6p:7n1vgxszwQU" resolve="hint" />
-          <node concept="VechU" id="6ziFOS4QTgz" role="3F10Kt">
-            <property role="Vb096" value="gray" />
-          </node>
-        </node>
-      </node>
-      <node concept="2SsqMj" id="6$Ws1PhOQzZ" role="3EZMnx" />
-      <node concept="2iRkQZ" id="6$Ws1PhOPiK" role="2iSdaV" />
-    </node>
-  </node>
   <node concept="24kQdi" id="3_Ojf_lL$$m">
     <ref role="1XX52x" to="6p:3_Ojf_lL$zT" resolve="VCSHints" />
     <node concept="b$f91" id="66ZZ2RilY6f" role="2wV5jI">

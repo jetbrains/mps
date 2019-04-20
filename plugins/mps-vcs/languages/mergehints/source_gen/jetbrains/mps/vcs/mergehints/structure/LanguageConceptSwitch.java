@@ -12,19 +12,17 @@ public final class LanguageConceptSwitch {
   public static final int ConceptVCSDescriptor = 0;
   public static final int FeatureVCSDescriptor = 1;
   public static final int LinkVCSDescriptor = 2;
-  public static final int MergeHint = 3;
-  public static final int MergeStrategy = 4;
-  public static final int OursStrategy = 5;
-  public static final int PropertyVCSDescriptor = 6;
-  public static final int TheirsStrategy = 7;
-  public static final int VCSHints = 8;
+  public static final int MergeStrategy = 3;
+  public static final int OursStrategy = 4;
+  public static final int PropertyVCSDescriptor = 5;
+  public static final int TheirsStrategy = 6;
+  public static final int VCSHints = 7;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x37e03aa1728949bcL, 0x826930de5eceec76L);
     builder.put(0x39744cf955c648fcL, ConceptVCSDescriptor);
     builder.put(0x4f2cc0d970a4f875L, FeatureVCSDescriptor);
     builder.put(0x4f2cc0d970a4f9ceL, LinkVCSDescriptor);
-    builder.put(0x657f08af7deb331aL, MergeHint);
     builder.put(0x4f2cc0d970a5c6fdL, MergeStrategy);
     builder.put(0x4f2cc0d970a5c700L, OursStrategy);
     builder.put(0x4f2cc0d970a4f9d0L, PropertyVCSDescriptor);

@@ -4,7 +4,6 @@ package jetbrains.mps.vcs.mergehints.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
-import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
@@ -12,19 +11,16 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptConceptVCSDescriptor = createDescriptorForConceptVCSDescriptor();
   /*package*/ final ConceptDescriptor myConceptFeatureVCSDescriptor = createDescriptorForFeatureVCSDescriptor();
   /*package*/ final ConceptDescriptor myConceptLinkVCSDescriptor = createDescriptorForLinkVCSDescriptor();
-  /*package*/ final ConceptDescriptor myConceptMergeHint = createDescriptorForMergeHint();
   /*package*/ final ConceptDescriptor myConceptMergeStrategy = createDescriptorForMergeStrategy();
   /*package*/ final ConceptDescriptor myConceptOursStrategy = createDescriptorForOursStrategy();
   /*package*/ final ConceptDescriptor myConceptPropertyVCSDescriptor = createDescriptorForPropertyVCSDescriptor();
   /*package*/ final ConceptDescriptor myConceptTheirsStrategy = createDescriptorForTheirsStrategy();
   /*package*/ final ConceptDescriptor myConceptVCSHints = createDescriptorForVCSHints();
-  /*package*/ final EnumerationDescriptor myEnumerationStrategy = new EnumerationDescriptor_Strategy();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -39,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptConceptVCSDescriptor, myConceptFeatureVCSDescriptor, myConceptLinkVCSDescriptor, myConceptMergeHint, myConceptMergeStrategy, myConceptOursStrategy, myConceptPropertyVCSDescriptor, myConceptTheirsStrategy, myConceptVCSHints);
+    return Arrays.asList(myConceptConceptVCSDescriptor, myConceptFeatureVCSDescriptor, myConceptLinkVCSDescriptor, myConceptMergeStrategy, myConceptOursStrategy, myConceptPropertyVCSDescriptor, myConceptTheirsStrategy, myConceptVCSHints);
   }
 
   @Override
@@ -52,8 +48,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptFeatureVCSDescriptor;
       case LanguageConceptSwitch.LinkVCSDescriptor:
         return myConceptLinkVCSDescriptor;
-      case LanguageConceptSwitch.MergeHint:
-        return myConceptMergeHint;
       case LanguageConceptSwitch.MergeStrategy:
         return myConceptMergeStrategy;
       case LanguageConceptSwitch.OursStrategy:
@@ -71,7 +65,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationStrategy);
+    return Arrays.asList();
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -105,15 +99,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.associate("lnk", 0x4f2cc0d970a4f877L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL).optional(false).origin("5705146868101871735").done();
     b.alias("link");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForMergeHint() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.vcs.mergehints", "MergeHint", 0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x657f08af7deb331aL);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
-    b.origin("r:134c8eea-8ea6-4b50-ba87-7cf1b28ce5ba(jetbrains.mps.vcs.mergehints.structure)/7313573869697839898");
-    b.version(2);
-    b.property("hint", 0x75c17d085c8e0dbaL).type(MetaIdFactory.dataTypeId(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x75c17d085c8e0d91L)).origin("8485200647808748986").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMergeStrategy() {
