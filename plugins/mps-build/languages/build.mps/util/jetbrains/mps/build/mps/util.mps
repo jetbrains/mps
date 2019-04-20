@@ -43,7 +43,6 @@
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
-    <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -12239,19 +12238,45 @@
                   </node>
                 </node>
               </node>
-              <node concept="3cpWs6" id="7AaordoBmat" role="3cqZAp">
-                <node concept="2YIFZM" id="7AaordoBmaL" role="3cqZAk">
-                  <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                  <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(jetbrains.mps.vfs.IFile)" resolve="getCanonicalPath" />
-                  <node concept="2OqwBi" id="7AaordoBmbM" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxeuyJe" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7AaordoBmal" resolve="moduleSourceDir" />
+              <node concept="3SKdUt" id="33n7u4mNoaR" role="3cqZAp">
+                <node concept="3SKdUq" id="33n7u4mNoaT" role="3SKWNk">
+                  <property role="3SKdUp" value="after migration to new FS, protocol should be passed here and the corresponding FS should do path simplification" />
+                </node>
+              </node>
+              <node concept="3cpWs8" id="33n7u4mNQvm" role="3cqZAp">
+                <node concept="3cpWsn" id="33n7u4mNQvn" role="3cpWs9">
+                  <property role="TrG5h" value="fullPath" />
+                  <node concept="17QB3L" id="33n7u4mNQvh" role="1tU5fm" />
+                  <node concept="3cpWs3" id="33n7u4mNQvo" role="33vP2m">
+                    <node concept="37vLTw" id="33n7u4mNQvp" role="3uHU7w">
+                      <ref role="3cqZAo" node="7AaordoBmci" resolve="relPath" />
                     </node>
-                    <node concept="liA8E" id="7AaordoBmbW" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
-                      <node concept="37vLTw" id="3GM_nagTsxW" role="37wK5m">
-                        <ref role="3cqZAo" node="7AaordoBmci" resolve="relPath" />
+                    <node concept="3cpWs3" id="33n7u4mNQvq" role="3uHU7B">
+                      <node concept="2OqwBi" id="33n7u4mNQvr" role="3uHU7B">
+                        <node concept="37vLTw" id="33n7u4mNQvs" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7AaordoBmal" resolve="moduleSourceDir" />
+                        </node>
+                        <node concept="liA8E" id="33n7u4mNQvt" role="2OqNvi">
+                          <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                        </node>
                       </node>
+                      <node concept="10M0yZ" id="33n7u4mNQvu" role="3uHU7w">
+                        <ref role="3cqZAo" to="3ju5:~IFileSystem.SEPARATOR" resolve="SEPARATOR" />
+                        <ref role="1PxDUh" to="3ju5:~IFileSystem" resolve="IFileSystem" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="33n7u4mNc$q" role="3cqZAp">
+                <node concept="2YIFZM" id="33n7u4mNlfz" role="3cqZAk">
+                  <ref role="37wK5l" to="18ew:~FileUtil.resolveParentDirs(java.lang.String)" resolve="resolveParentDirs" />
+                  <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                  <node concept="2YIFZM" id="7AaordoBmaL" role="37wK5m">
+                    <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
+                    <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
+                    <node concept="37vLTw" id="33n7u4mNQvv" role="37wK5m">
+                      <ref role="3cqZAo" node="33n7u4mNQvn" resolve="fullPath" />
                     </node>
                   </node>
                 </node>
@@ -12608,40 +12633,48 @@
                   </node>
                 </node>
               </node>
-              <node concept="3cpWs6" id="7AaordoBmAN" role="3cqZAp">
-                <node concept="2YIFZM" id="7AaordoBmAO" role="3cqZAk">
-                  <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
-                  <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(jetbrains.mps.vfs.IFile)" resolve="getCanonicalPath" />
-                  <node concept="2OqwBi" id="7AaordoBmAP" role="37wK5m">
-                    <node concept="2OqwBi" id="7AaordoBnOX" role="2Oq$k0">
-                      <node concept="liA8E" id="7AaordoBnP7" role="2OqNvi">
-                        <ref role="37wK5l" to="w827:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
-                        <node concept="37vLTw" id="3GM_nagTupX" role="37wK5m">
-                          <ref role="3cqZAo" node="7AaordoBmA8" resolve="localPath" />
-                        </node>
+              <node concept="3cpWs8" id="3isdVh$yH4c" role="3cqZAp">
+                <node concept="3cpWsn" id="3isdVh$yH4d" role="3cpWs9">
+                  <property role="TrG5h" value="fullPath" />
+                  <node concept="17QB3L" id="3isdVh$yH4e" role="1tU5fm" />
+                  <node concept="3cpWs3" id="3isdVh$yH4f" role="33vP2m">
+                    <node concept="37vLTw" id="3isdVh$yH4g" role="3uHU7w">
+                      <ref role="3cqZAo" node="7AaordoBmAC" resolve="relPath" />
+                    </node>
+                    <node concept="3cpWs3" id="3isdVh$yH4h" role="3uHU7B">
+                      <node concept="37vLTw" id="3isdVh$yMIp" role="3uHU7B">
+                        <ref role="3cqZAo" node="7AaordoBmA8" resolve="localPath" />
                       </node>
-                      <node concept="2OqwBi" id="6cqWk79OFPI" role="2Oq$k0">
-                        <node concept="37vLTw" id="6cqWk79OF6y" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7AaordoBmal" resolve="moduleSourceDir" />
-                        </node>
-                        <node concept="liA8E" id="6cqWk79OH4e" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~IFile.getFileSystem()" resolve="getFileSystem" />
-                        </node>
+                      <node concept="10M0yZ" id="3isdVh$yH4l" role="3uHU7w">
+                        <ref role="3cqZAo" to="3ju5:~IFileSystem.SEPARATOR" resolve="SEPARATOR" />
+                        <ref role="1PxDUh" to="3ju5:~IFileSystem" resolve="IFileSystem" />
                       </node>
                     </node>
-                    <node concept="liA8E" id="7AaordoBmAT" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
-                      <node concept="37vLTw" id="3GM_nagTxAs" role="37wK5m">
-                        <ref role="3cqZAo" node="7AaordoBmAC" resolve="relPath" />
-                      </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3SKdUt" id="2ToPq3ffkof" role="3cqZAp">
+                <node concept="3SKdUq" id="2ToPq3ffkog" role="3SKWNk">
+                  <property role="3SKdUp" value="after migration to new FS, protocol should be passed here and the corresponding FS should do path simplification" />
+                </node>
+              </node>
+              <node concept="3cpWs6" id="3isdVh$yMP1" role="3cqZAp">
+                <node concept="2YIFZM" id="3isdVh$yMP2" role="3cqZAk">
+                  <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                  <ref role="37wK5l" to="18ew:~FileUtil.resolveParentDirs(java.lang.String)" resolve="resolveParentDirs" />
+                  <node concept="2YIFZM" id="3isdVh$yMP3" role="37wK5m">
+                    <ref role="37wK5l" to="18ew:~IFileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
+                    <ref role="1Pybhc" to="18ew:~IFileUtil" resolve="IFileUtil" />
+                    <node concept="37vLTw" id="3isdVh$yMP4" role="37wK5m">
+                      <ref role="3cqZAo" node="3isdVh$yH4d" resolve="fullPath" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="7AaordoBmfv" role="3cqZAp">
-            <node concept="37vLTw" id="2BHiRxghiFU" role="3clFbG">
+          <node concept="3cpWs6" id="3isdVh$yDUy" role="3cqZAp">
+            <node concept="37vLTw" id="3isdVh$yDUz" role="3cqZAk">
               <ref role="3cqZAo" node="7AaordoBkQD" resolve="path" />
             </node>
           </node>

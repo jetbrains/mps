@@ -99,7 +99,10 @@ public class IFileUtil {
    */
   public static IFile getDescendant(@NotNull IFile file, String relativePath) {
     //that's because at least we don't know the type of the archive
-    assert !relativePath.contains("!") : "getDescendant() can't step into an archive. File= " + file.getPath() + ", relativePath=" + relativePath;
+    if (relativePath.contains("!")){
+      LOG.error("getDescendant() can't step into an archive. File= " + file.getPath() + ", relativePath=" + relativePath+". Using a fallback solution. Support for '!' will soon be completely removed", new Throwable());
+      return file.getFileSystem().getFile(file.getPath()+"/"+relativePath);
+    }
     new PathAssert(relativePath).osIndependentPath();
     for (String part : relativePath.split(IFileSystem.SEPARATOR)) {
       if (part.isEmpty() || part.equals(".")) {
@@ -139,6 +142,10 @@ public class IFileUtil {
       return null;
     }
     final String absolutePath = file.getPath();
+    return getCanonicalPath(absolutePath);
+  }
+
+  public static String getCanonicalPath(String absolutePath) {
     final int index = absolutePath.indexOf(Path.ARCHIVE_SEPARATOR);
     if (index == -1) {
       return FileUtil.getCanonicalPath(absolutePath);
