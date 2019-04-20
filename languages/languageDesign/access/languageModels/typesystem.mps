@@ -36,9 +36,6 @@
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
-      <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
-        <reference id="1107535924139" name="classifier" index="3uigEE" />
-      </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
         <child id="1144226360166" name="iterable" index="1DdaDG" />
       </concept>
@@ -47,9 +44,6 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
-        <child id="1196350785114" name="quotedNode" index="2c44tc" />
-      </concept>
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
       </concept>
@@ -193,37 +187,6 @@
     <node concept="1YaCAy" id="7Mb2akafE9q" role="1YuTPh">
       <property role="TrG5h" value="commandClosureLiteral" />
       <ref role="1YaFvo" to="qff7:7Mb2akafE8d" resolve="CommandClosureLiteral" />
-    </node>
-  </node>
-  <node concept="1YbPZF" id="7Mb2akafE9r">
-    <property role="TrG5h" value="typeof_ExecuteCommandInEDTStatement" />
-    <property role="3GE5qa" value="Command" />
-    <node concept="3clFbS" id="7Mb2akafE9s" role="18ibNy">
-      <node concept="1ZobV4" id="7Mb2akafE9t" role="3cqZAp">
-        <node concept="mw_s8" id="7Mb2akafE9u" role="1ZfhKB">
-          <node concept="2c44tf" id="7Mb2akafE9v" role="mwGJk">
-            <node concept="3uibUv" id="7Mb2akafE9w" role="2c44tc">
-              <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
-            </node>
-          </node>
-        </node>
-        <node concept="mw_s8" id="7Mb2akafE9x" role="1ZfhK$">
-          <node concept="1Z2H0r" id="7Mb2akafE9y" role="mwGJk">
-            <node concept="2OqwBi" id="7Mb2akafE9z" role="1Z2MuG">
-              <node concept="1YBJjd" id="7Mb2akafE9$" role="2Oq$k0">
-                <ref role="1YBMHb" node="7Mb2akafE9A" resolve="comminEDT" />
-              </node>
-              <node concept="3TrEf2" id="7Mb2akafE9_" role="2OqNvi">
-                <ref role="3Tt5mk" to="qff7:7Mb2akafE8f" resolve="project" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="7Mb2akafE9A" role="1YuTPh">
-      <property role="TrG5h" value="comminEDT" />
-      <ref role="1YaFvo" to="qff7:7Mb2akafE8e" resolve="ExecuteCommandInEDTStatement" />
     </node>
   </node>
   <node concept="1YbPZF" id="1eZSuKdVol_">

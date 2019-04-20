@@ -117,7 +117,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.access.structure.BaseExecuteCommandStatement", 0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL);
     b.origin("r:2ba2e307-a81d-4a21-9e0b-de3624e2fb83(jetbrains.mps.lang.access.structure)/8974276187400348174");
     b.version(2);
-    b.aggregate("project", 0x7c8b08a50a3ea20fL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("8974276187400348175").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("execute command in EDT");
     return b.create();

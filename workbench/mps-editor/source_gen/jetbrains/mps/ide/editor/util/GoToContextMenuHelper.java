@@ -32,7 +32,7 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
    * @deprecated use the new method instead
    */
   @Deprecated
-  @ToRemove(version = 183)
+  @ToRemove(version = 2018.3)
   public static void showMenu(Project project, String title, List<SNodeReference> nodes, final BaseRenderer renderer, RelativePoint point) {
     if (ListSequence.fromList(nodes).isEmpty()) {
       return;
@@ -54,7 +54,7 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
     openTargets(point, navigatables, title, renderer);
   }
 
-  @ToRemove(version = 183)
+  @ToRemove(version = 2018.3)
   @Deprecated
   private static void openTargets(RelativePoint p, List<NodeNavigatable> targets, String title, ListCellRenderer listRenderer) {
     assert !(GoToContextMenuHelper.class.getClassLoader() instanceof ModuleClassLoader) : "if this class is loaded by a reloadable classloader, this will cause memleaks. See MPS-13481";

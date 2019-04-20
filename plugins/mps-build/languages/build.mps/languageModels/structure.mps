@@ -1189,8 +1189,8 @@
       <property role="IQ2ns" value="4034578608468929327" />
       <ref role="20lvS9" node="3vXGXT8byGB" resolve="BuildMps_IdeaPluginGroupCustomModule" />
       <node concept="asaX9" id="36cV00Cx3ap" role="lGtFl">
-        <property role="YLPcu" value="183" />
         <property role="YLQ7P" value="please choose the packaging type in the BuildMpsLayout_Plugin construction instead" />
+        <property role="YLPcu" value="2018.3" />
       </node>
     </node>
     <node concept="1TJgyj" id="5HVSRHdUL82" role="1TKVEi">

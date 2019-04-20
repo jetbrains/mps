@@ -48,8 +48,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_CommandClosureLiteral;
       case LanguageConceptSwitch.ExecuteCommandInEDTStatement:
         if (props_ExecuteCommandInEDTStatement == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20eL);
-          cpb.deprecateAggregation(0x7c8b08a50a3ea20fL, "project");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("Schedule command to run from EDT asynchronously");
           cpb.rawPresentation("execute command in EDT");
           props_ExecuteCommandInEDTStatement = cpb.create();
