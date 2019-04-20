@@ -23,6 +23,7 @@ import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
@@ -45,7 +46,7 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * It's unlikely you need to instantiate this class directly, instead, {@link TraceInfo} might serve better starting point.
- *
+ * <p>
  * The reason [generator] needs [debuginfo-api], which is otherwise textgen-specific (moreover, BL-textgen)
  */
 public final class TraceInfoCache {
@@ -67,13 +68,14 @@ public final class TraceInfoCache {
       return null;
     }
     DebugInfo existing = myCache.putIfAbsent(mr, cache);
-    return  existing != null ? existing : cache;
+    return existing != null ? existing : cache;
   }
 
   /**
    * Invoke to set new cached value
    */
-  /*package*/ final void update(SModel model, DebugInfo cache) {
+  /*package*/
+  final void update(SModel model, DebugInfo cache) {
     final SModelReference mr = model.getReference();
     myCache.put(mr, cache);
   }
@@ -82,7 +84,7 @@ public final class TraceInfoCache {
   private DebugInfo readCache(final SModel sm) {
     // First, try to find deployed trace, as it's the one to match deployed classes best.
     URL url = getDeployedLocation(sm);
-    if (url != null){
+    if (url != null) {
       DebugInfo result = new ParseFacility<>(getClass(), new CacheParser()).input(url).parseSilently();
       if (result != null) {
         return result;
@@ -119,12 +121,12 @@ public final class TraceInfoCache {
     //       If trace.info has to be under sources, then the whole idea of classloader.getResource() is wrong, and we shall rely on
     //       GenerationTargetFacet.getOutputLocation() instead.
     final SModule module = sm.getModule();
-    String resourceName = traceInfoResourceName(sm);
+    String resourcePath = traceInfoResourcePath(sm);
     URL url = null;
     if (module instanceof ReloadableModule) {
       // FIXME would be handy to have getOwnResource() right in the ReloadableModule
       ClassLoader moduleClassLoader = ((ReloadableModule) module).getClassLoader();
-      url = moduleClassLoader == null ? null : moduleClassLoader.getResource(resourceName);
+      url = moduleClassLoader == null ? null : moduleClassLoader.getResource(resourcePath);
     }
     // Modules in IDEA with MPS Plugin installed, do not have a classloader, instead, there's a hack to supply
     // location of generated classes via custom JavaModuleFacet implementation (see SolutionIdea#setupFacet())
@@ -134,7 +136,7 @@ public final class TraceInfoCache {
       IFile classesGen = javaModuleFacet == null ? null : javaModuleFacet.getClassesGen();
       if (classesGen != null) {
         try {
-          url = classesGen.getDescendant(resourceName).getUrl();
+          url = IFileUtil.getDescendant(classesGen, resourcePath).getUrl();
         } catch (MalformedURLException ex) {
           String msg = "Failed to look up trace.info location for module %s";
           Logger.getLogger(getClass()).debug(String.format(msg, module.getModuleName()), ex);
@@ -144,7 +146,7 @@ public final class TraceInfoCache {
     return url;
   }
 
-  private String traceInfoResourceName(SModel sm) {
+  private String traceInfoResourcePath(SModel sm) {
     String longName = sm.getName().getLongName();
     return longName.replace('.', '/') + '/' + TRACE_FILE_NAME;
   }
@@ -165,9 +167,9 @@ public final class TraceInfoCache {
   }
 
   /**
-   * @deprecated instead, create a new instance for a series of trace.info access. We don't track these files any more, it's up to caller to decide
-   *             lifespan of the cache.
    * @return new instance for each call
+   * @deprecated instead, create a new instance for a series of trace.info access. We don't track these files any more, it's up to caller to decide
+   * lifespan of the cache.
    */
   @Deprecated
   @ToRemove(version = 2017.2)

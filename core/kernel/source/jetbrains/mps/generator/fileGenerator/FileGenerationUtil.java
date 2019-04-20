@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.generator.fileGenerator;
 
+import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -55,14 +57,7 @@ public class FileGenerationUtil {
    */
   public static IFile getDefaultOutputDir(SModelReference reference, @NotNull IFile outputRootDir) {
     String packageName = reference.getName().getLongName();
-    String packagePath;
-    if (outputRootDir.isInArchive()) {
-      // in fact, we shall not care about *output* dir in archives. However, the same code is likely used for any source path, e.g. to access
-      // generated source files from deployed modules.
-      packagePath = packageName.replace('.', '/');
-    } else {
-      packagePath = packageName.replace('.', File.separatorChar);
-    }
-    return outputRootDir.getDescendant(packagePath);
+    String packagePath = packageName.replace('.', IFileSystem.SEPARATOR_CHAR);
+    return IFileUtil.getDescendant(outputRootDir, packagePath);
   }
 }

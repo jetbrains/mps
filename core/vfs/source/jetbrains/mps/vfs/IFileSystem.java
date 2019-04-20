@@ -18,6 +18,7 @@ package jetbrains.mps.vfs;
 import org.jetbrains.annotations.NotNull;
 
 public interface IFileSystem {
+  char SEPARATOR_CHAR = '/';
   String SEPARATOR = "/";
 
   @NotNull

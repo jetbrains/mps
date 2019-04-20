@@ -23,6 +23,7 @@ import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -100,7 +101,7 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
                                          IFile sourceModelFile) {
     String relPath = FileBasedModelRoot.relativize(sourceModelFile.getPath(), sourceRoot.getAbsolutePath());
     relPath = convertNameConsideringModule(relPath);
-    return targetSourceRoot.getAbsolutePath().getDescendant(relPath);
+    return IFileUtil.getDescendant(targetSourceRoot.getAbsolutePath(), relPath);
   }
 
   /**

@@ -96,7 +96,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   }
 
   public IFile getFile(String streamName) {
-    return myFolder.getDescendant(streamName);
+    return myFolder.findChild(streamName);
   }
 
   @NotNull

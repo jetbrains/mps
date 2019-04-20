@@ -71,19 +71,6 @@ public abstract class DataMPSFixtureTestCase extends AbstractMPSFixtureTestCase 
     copyResource(resName, fromPath, targetFile);
   }
 
-  protected IFile copyResource(String toDir, String toName, String resName, String fromPath) throws IOException {
-    IFile targetDir = FileSystem.getInstance().getFile(getMpsFixture().getModule().getModuleFilePath()).getParent();
-    if (toDir != null) {
-      targetDir = targetDir.getDescendant(toDir);
-      if (!targetDir.exists()) {
-        targetDir.mkdirs();
-      }
-    }
-    IFile targetFile = targetDir.getDescendant(toName);
-    copyResource(resName, fromPath, targetFile);
-    return targetFile;
-  }
-
   private void copyResource(String resName, String fromPath, IFile targetFile) throws IOException {
     IFile sourceFile = targetFile.getFileSystem().getFile(PathManager.getPluginsPath() + fromPath);
     if (sourceFile.exists()) {
