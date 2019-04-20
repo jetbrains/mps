@@ -3916,7 +3916,7 @@
                     <ref role="3cqZAo" node="7vnu9rGLBVm" resolve="modelFactory" />
                   </node>
                   <node concept="liA8E" id="1vtkyQdj1Zr" role="2OqNvi">
-                    <ref role="37wK5l" to="dush:~ModelFactory.load(org.jetbrains.mps.openapi.persistence.DataSource,org.jetbrains.mps.openapi.persistence.ModelLoadingOption...):org.jetbrains.mps.openapi.model.SModel" resolve="load" />
+                    <ref role="37wK5l" to="dush:~ModelFactory.load(org.jetbrains.mps.openapi.persistence.DataSource,org.jetbrains.mps.openapi.persistence.ModelLoadingOption...)" resolve="load" />
                     <node concept="37vLTw" id="1vtkyQdj1Zs" role="37wK5m">
                       <ref role="3cqZAo" node="7vnu9rGL_QL" resolve="content" />
                     </node>

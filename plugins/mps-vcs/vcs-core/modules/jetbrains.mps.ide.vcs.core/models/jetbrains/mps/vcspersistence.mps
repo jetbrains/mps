@@ -2909,7 +2909,7 @@
               <ref role="3cqZAo" node="1vtkyQdhYdY" resolve="model" />
             </node>
             <node concept="liA8E" id="1JWxj3cJO4l" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.load():void" resolve="load" />
+              <ref role="37wK5l" to="mhbf:~SModel.load()" resolve="load" />
             </node>
           </node>
         </node>
@@ -2920,7 +2920,7 @@
                 <ref role="3cqZAo" node="1vtkyQdhYdY" resolve="model" />
               </node>
               <node concept="liA8E" id="1vtkyQdi3mR" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.isLoaded():boolean" resolve="isLoaded" />
+                <ref role="37wK5l" to="mhbf:~SModel.isLoaded()" resolve="isLoaded" />
               </node>
             </node>
             <node concept="3fqX7Q" id="1vtkyQdi4kM" role="3uHU7w">
@@ -2932,15 +2932,15 @@
                         <ref role="3cqZAo" node="1vtkyQdhYdY" resolve="model" />
                       </node>
                       <node concept="liA8E" id="1vtkyQdi4kS" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SModel.getProblems():java.lang.Iterable" resolve="getProblems" />
+                        <ref role="37wK5l" to="mhbf:~SModel.getProblems()" resolve="getProblems" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1vtkyQdi4kT" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Iterable.iterator():java.util.Iterator" resolve="iterator" />
+                      <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
                     </node>
                   </node>
                   <node concept="liA8E" id="1vtkyQdi4kU" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Iterator.hasNext():boolean" resolve="hasNext" />
+                    <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
                   </node>
                 </node>
               </node>

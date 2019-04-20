@@ -146,7 +146,7 @@
     <node concept="3clFbS" id="2ZnZLV$gto8" role="LjaKd">
       <node concept="3clFbF" id="14TMHtIcQGI" role="3cqZAp">
         <node concept="2YIFZM" id="14TMHtIcQGJ" role="3clFbG">
-          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorUtil" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
           <ref role="37wK5l" to="tp6m:14TMHtHs1EN" resolve="runWithTwoStepDeletion" />
           <node concept="1bVj0M" id="14TMHtIcQGK" role="37wK5m">
             <node concept="3clFbS" id="14TMHtIcQGL" role="1bW5cS">
@@ -210,7 +210,7 @@
     <node concept="3clFbS" id="2ZnZLV$gtoo" role="LjaKd">
       <node concept="3clFbF" id="14TMHtIcU1b" role="3cqZAp">
         <node concept="2YIFZM" id="14TMHtIcU1c" role="3clFbG">
-          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorUtil" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
           <ref role="37wK5l" to="tp6m:14TMHtHs1EN" resolve="runWithTwoStepDeletion" />
           <node concept="1bVj0M" id="14TMHtIcU1d" role="37wK5m">
             <node concept="3clFbS" id="14TMHtIcU1e" role="1bW5cS">
@@ -319,7 +319,7 @@
       </node>
       <node concept="3clFbF" id="14TMHtIcU5I" role="3cqZAp">
         <node concept="2YIFZM" id="14TMHtIcU5J" role="3clFbG">
-          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorUtil" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
           <ref role="37wK5l" to="tp6m:14TMHtHs1EN" resolve="runWithTwoStepDeletion" />
           <node concept="1bVj0M" id="14TMHtIcU5K" role="37wK5m">
             <node concept="3clFbS" id="14TMHtIcU5L" role="1bW5cS">

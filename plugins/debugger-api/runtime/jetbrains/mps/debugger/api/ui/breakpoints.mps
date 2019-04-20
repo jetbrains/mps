@@ -10816,7 +10816,7 @@
                               <ref role="1HBi2w" node="3SnNvqCbxaJ" resolve="GroupedTree.GroupTreeNode" />
                             </node>
                             <node concept="liA8E" id="1XYQ_eicaEK" role="2OqNvi">
-                              <ref role="37wK5l" to="7e8u:~MPSTreeNode.getIcon():javax.swing.Icon" resolve="getIcon" />
+                              <ref role="37wK5l" to="7e8u:~MPSTreeNode.getIcon()" resolve="getIcon" />
                             </node>
                           </node>
                         </node>

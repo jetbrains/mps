@@ -137,7 +137,7 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
       else if (o instanceof StringBasedIdForJavaStubMethods) {
         StringBasedIdForJavaStubMethods otherId = (StringBasedIdForJavaStubMethods) o;
         String idNoPrefix = getIdNoPrefix();
-        return idNoPrefix.equals(otherId.getIdWithReturnTypeNoPrefix());
+        return idNoPrefix.equals(otherId.getIdWithoutReturnTypeNoPrefix());
       }
       if (getClass() != o.getClass()) return false;
 

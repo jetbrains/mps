@@ -714,7 +714,7 @@
                     <node concept="2OqwBi" id="UwyhPpHLUn" role="37wK5m">
                       <node concept="1Q80Hx" id="UwyhPpHLMT" role="2Oq$k0" />
                       <node concept="liA8E" id="UwyhPpHMhp" role="2OqNvi">
-                        <ref role="37wK5l" to="cj4x:~EditorContext.getRepository():org.jetbrains.mps.openapi.module.SRepository" resolve="getRepository" />
+                        <ref role="37wK5l" to="cj4x:~EditorContext.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
                   </node>

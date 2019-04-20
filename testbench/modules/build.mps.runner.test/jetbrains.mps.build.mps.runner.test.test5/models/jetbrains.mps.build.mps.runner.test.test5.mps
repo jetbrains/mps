@@ -108,10 +108,10 @@
               <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptor" resolve="IdeaPluginDescriptor" />
             </node>
             <node concept="2YIFZM" id="2R_g56b_TVB" role="33vP2m">
-              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId):com.intellij.ide.plugins.IdeaPluginDescriptor" resolve="getPlugin" />
+              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
               <node concept="2YIFZM" id="2R_g56b_TVC" role="37wK5m">
-                <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String):com.intellij.openapi.extensions.PluginId" resolve="getId" />
+                <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                 <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
                 <node concept="Xl_RD" id="2R_g56b_TVD" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.console" />
@@ -129,7 +129,7 @@
                   <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
                 </node>
                 <node concept="liA8E" id="2R_g56b_Ix0" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
                   <node concept="Xl_RD" id="2R_g56b_sjR" role="37wK5m">
                     <property role="Xl_RC" value="console plugin should be enabled" />
                   </node>
@@ -144,7 +144,7 @@
                   <ref role="3cqZAo" node="2R_g56b_TVA" resolve="plugin" />
                 </node>
                 <node concept="liA8E" id="2R_g56bGyV$" role="2OqNvi">
-                  <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.isEnabled():boolean" resolve="isEnabled" />
+                  <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.isEnabled()" resolve="isEnabled" />
                 </node>
               </node>
             </node>
@@ -164,7 +164,7 @@
                     <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                   </node>
                   <node concept="liA8E" id="4X5j05vNw5f" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                    <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
                     <node concept="Xl_RD" id="4X5j05vNw65" role="37wK5m">
                       <property role="Xl_RC" value="calling test1.MainClass.mpsMain()" />
                     </node>

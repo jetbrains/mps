@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3mxwrl5ace9hhsrumxv3y1eineg94kw">
+<product version="3" modelHash="dlpegvp2z5b10c1uhsawcn8jdid79zl">
   <files names="AnalyzeDependenciesViewTool.java:AnalyzeDependencies_Action.java:DependenciesUtil.java:GoToNodeById_Action.java:MPSStackTraceFilter.java:PlatformActions.xml:_Adapters.java" />
 </product>
 
