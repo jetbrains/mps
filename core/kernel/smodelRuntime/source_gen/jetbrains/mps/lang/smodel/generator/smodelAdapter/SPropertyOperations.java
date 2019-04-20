@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.language.SType;
 import jetbrains.mps.util.InternUtil;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.EqualUtil;
 import org.jetbrains.mps.openapi.language.SDataType;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
@@ -124,60 +123,6 @@ public class SPropertyOperations {
     return false;
   }
 
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static String getString_def(SNode node, SProperty property, String defaultValue) {
-    if (node != null) {
-      String value = SNodeAccessUtil.getProperty(node, property);
-      if (value != null) {
-        return InternUtil.intern(value);
-      }
-    }
-    if (defaultValue != null) {
-      return InternUtil.intern(defaultValue);
-    }
-    return null;
-  }
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static int getInteger_def(SNode node, SProperty propertyName, String defaultValue) {
-    if (node != null) {
-      String value = SNodeAccessUtil.getProperty(node, propertyName);
-      try {
-        return Integer.parseInt(value);
-      } catch (Exception e) {
-      }
-    }
-    if (defaultValue != null) {
-      try {
-        return Integer.parseInt(defaultValue);
-      } catch (Exception e) {
-      }
-    }
-    return 0;
-  }
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static boolean getBoolean_def(SNode node, SProperty property, String defaultValue) {
-    if (node != null) {
-      String value = SNodeAccessUtil.getProperty(node, property);
-      if (value != null) {
-        if ("true".equals(value)) {
-          return true;
-        }
-        if ("false".equals(value)) {
-          return false;
-        }
-      }
-    }
-    if (defaultValue != null) {
-      try {
-        return Boolean.parseBoolean(defaultValue);
-      } catch (Exception e) {
-      }
-    }
-    return false;
-  }
   public static boolean hasValue(SNode node, SProperty property, String propertyValue, String defaultValue) {
     if (node != null) {
       String value = SNodeAccessUtil.getProperty(node, property);

@@ -236,7 +236,6 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Object" />
@@ -248,7 +247,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes" />
     <classNode dependClassName="jetbrains.mps.util.EqualUtil" />
     <classNode dependClassName="jetbrains.mps.util.InternUtil" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SDataType" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SEnumerationLiteral" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
