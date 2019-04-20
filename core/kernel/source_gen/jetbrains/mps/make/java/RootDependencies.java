@@ -9,7 +9,6 @@ import org.jdom.Element;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Collection;
-import jetbrains.mps.util.annotation.ToRemove;
 
 public class RootDependencies implements Comparable<RootDependencies> {
   private static final String CLASS_NAME = "className";
@@ -97,15 +96,6 @@ public class RootDependencies implements Comparable<RootDependencies> {
     this.myClassName = InternUtil.intern(className);
   }
   public String getClassName() {
-    return myClassName;
-  }
-  /**
-   * 
-   * @deprecated this class is about java dependencies, why would I care to keep a file name here?
-   */
-  @Deprecated
-  @ToRemove(version = 0)
-  public String getFileName() {
     return myClassName;
   }
   @Override

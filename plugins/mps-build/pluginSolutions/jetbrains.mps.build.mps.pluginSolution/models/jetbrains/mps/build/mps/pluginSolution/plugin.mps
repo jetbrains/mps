@@ -4550,39 +4550,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="1eG7s_euDUC" role="jymVt" />
-    <node concept="3clFb_" id="2VYZCm$OiBK" role="jymVt">
-      <property role="TrG5h" value="getImageText" />
-      <node concept="3Tm1VV" id="2VYZCm$OiBM" role="1B3o_S" />
-      <node concept="3clFbS" id="2VYZCm$OiBN" role="3clF47">
-        <node concept="3SKdUt" id="1eG7s_ex2gx" role="3cqZAp">
-          <node concept="3SKdUq" id="1eG7s_ex2gz" role="3SKWNk">
-            <property role="3SKdUp" value="Not used any more" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="2VYZCm$OiCv" role="3cqZAp">
-          <node concept="Xl_RD" id="2VYZCm$OiCw" role="3clFbG">
-            <property role="Xl_RC" value="" />
-          </node>
-        </node>
-      </node>
-      <node concept="17QB3L" id="2VYZCm$OiCg" role="3clF45" />
-      <node concept="2AHcQZ" id="2VYZCm$OiCJ" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="1eG7s_ewK$n" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="1eG7s_ewMjQ" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="1eG7s_ewScN" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="1eG7s_ewStN" role="2B70Vg">
-            <property role="$nhwW" value="2017.1" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="1eG7s_euEAX" role="jymVt" />
     <node concept="3clFb_" id="7Wf3okNe8S7" role="jymVt">
       <property role="TrG5h" value="doLimitStepPanelHeight" />
       <node concept="3Tmbuc" id="7Wf3okNe8Ts" role="1B3o_S" />

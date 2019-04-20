@@ -926,17 +926,6 @@
     <property role="34LRSv" value="rootsIncludingImported" />
     <property role="EcuMT" value="1176109685393" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
-    <node concept="1TJgyj" id="h7lAGzz" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="scope" />
-      <property role="20lbJX" value="0..1" />
-      <property role="IQ2ns" value="1176109762787" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-      <node concept="asaX9" id="6cG5ul0unaM" role="lGtFl">
-        <property role="YLPcu" value="3.1" />
-        <property role="YLQ7P" value="rudimental, remove after 3.1" />
-      </node>
-    </node>
     <node concept="1TJgyj" id="h7lApEi" role="1TKVEi">
       <property role="20kJfa" value="concept" />
       <property role="20lbJX" value="0..1" />
@@ -1118,17 +1107,6 @@
     <property role="34LRSv" value="nodesIncludingImported" />
     <property role="EcuMT" value="1182511038748" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
-    <node concept="1TJgyj" id="hdj9C4t" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="scope" />
-      <property role="20lbJX" value="0..1" />
-      <property role="IQ2ns" value="1182511038749" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-      <node concept="asaX9" id="4IaJlxHj$ni" role="lGtFl">
-        <property role="YLPcu" value="3.1" />
-        <property role="YLQ7P" value="rudimental, remove after 3.1" />
-      </node>
-    </node>
     <node concept="1TJgyj" id="hdj9C4u" role="1TKVEi">
       <property role="20kJfa" value="concept" />
       <property role="20lbJX" value="0..1" />

@@ -775,8 +775,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_Model_GetModule;
       case LanguageConceptSwitch.Model_NodesIncludingImportedOperation:
         if (props_Model_NodesIncludingImportedOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1135326811cL);
-          cpb.deprecateAggregation(0x1135326811dL, "scope");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("nodesIncludingImported");
           props_Model_NodesIncludingImportedOperation = cpb.create();
         }
@@ -799,8 +798,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_Model_PointerOperation;
       case LanguageConceptSwitch.Model_RootsIncludingImportedOperation:
         if (props_Model_RootsIncludingImportedOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x111d5999a91L);
-          cpb.deprecateAggregation(0x111d59ac8e3L, "scope");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("rootsIncludingImported");
           props_Model_RootsIncludingImportedOperation = cpb.create();
         }

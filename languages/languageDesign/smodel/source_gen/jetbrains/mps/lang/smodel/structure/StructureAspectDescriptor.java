@@ -1404,7 +1404,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)/1182511038748");
     b.version(2);
     b.associate("concept", 0x1135326811eL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(true).origin("1182511038750").done();
-    b.aggregate("scope", 0x1135326811dL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1182511038749").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("nodesIncludingImported");
     return b.create();
@@ -1437,7 +1436,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)/1176109685393");
     b.version(2);
     b.associate("concept", 0x111d5999a92L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(true).origin("1176109685394").done();
-    b.aggregate("scope", 0x111d59ac8e3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1176109762787").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("rootsIncludingImported");
     return b.create();
