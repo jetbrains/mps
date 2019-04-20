@@ -60,6 +60,6 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
   }
 
   private static boolean isValidSolutionDir(IFile baseDirFile) {
-    return !(baseDirFile.getDescendant(Solution.SOLUTION_MODELS).exists()) || baseDirFile.getDescendant(Solution.SOLUTION_MODELS).getChildren().isEmpty();
+    return !(baseDirFile.findChild(Solution.SOLUTION_MODELS).exists()) || baseDirFile.findChild(Solution.SOLUTION_MODELS).getChildren().isEmpty();
   }
 }

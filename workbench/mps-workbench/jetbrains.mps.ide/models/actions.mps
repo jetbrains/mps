@@ -34351,7 +34351,7 @@
                           <property role="TrG5h" value="newFile" />
                           <node concept="2OqwBi" id="63zBYr2Am55" role="33vP2m">
                             <node concept="liA8E" id="63zBYr2AmlE" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                              <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                               <node concept="3cpWs3" id="63zBYr2AqF1" role="37wK5m">
                                 <node concept="3cpWs3" id="63zBYr2Aqfj" role="3uHU7B">
                                   <node concept="2YIFZM" id="63zBYr2AnG9" role="3uHU7B">

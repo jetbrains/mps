@@ -87,7 +87,7 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
     IFile sourceFile = outputDir.getFileSystem().getFile(source);
-    IFile toFile = outputDir.getDescendant(sourceFile.getName());
+    IFile toFile = outputDir.findChild(sourceFile.getName());
 
     if (!(sourceFile.exists())) {
       return null;

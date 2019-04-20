@@ -99,7 +99,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                         @Override
                         public boolean acceptWritten(IFile file) {
                           if (file.getName().equals(TraceInfoCache.TRACE_FILE_NAME)) {
-                            IFile copy = destination.getDescendant(file.getName());
+                            IFile copy = destination.findChild(file.getName());
                             ListSequence.fromList(toCopy).addElement(MultiTuple.<IFile,IFile>from(file, copy));
                           }
                           return true;

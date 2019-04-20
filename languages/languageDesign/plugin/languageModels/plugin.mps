@@ -374,7 +374,7 @@
                                     <ref role="3cqZAo" node="Ik4DRK775U" resolve="destDir" />
                                   </node>
                                   <node concept="liA8E" id="1t1utOFshjd" role="2OqNvi">
-                                    <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                                     <node concept="Xl_RD" id="1t1utOFshje" role="37wK5m">
                                       <property role="Xl_RC" value="META-INF" />
                                     </node>
@@ -587,7 +587,7 @@
                                                             <ref role="3cqZAo" node="1t1utOFshj9" resolve="metaInf" />
                                                           </node>
                                                           <node concept="liA8E" id="1t1utOFshnE" role="2OqNvi">
-                                                            <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                                                            <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                                                             <node concept="2OqwBi" id="1t1utOFshoq" role="37wK5m">
                                                               <node concept="AH0OO" id="1t1utOFsho3" role="2Oq$k0">
                                                                 <node concept="3cmrfG" id="1t1utOFsho4" role="AHEQo">

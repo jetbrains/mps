@@ -81,43 +81,43 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkFile(this.testsLocation().getDescendant("singleFiles/selfref"), SNodeOperations.cast(getNodeById("4795297196607521155"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new Utils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("selfref"), SNodeOperations.cast(getNodeById("4795297196607521155"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
     }
     public void test_ClassWInnerInterace() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkFile(this.testsLocation().getDescendant("singleFiles/classwiface"), SNodeOperations.cast(getNodeById("1218582063869484741"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new Utils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("classwiface"), SNodeOperations.cast(getNodeById("1218582063869484741"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
     }
     public void test_Imports1() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().getDescendant("testDir1"), PersistenceFacade.getInstance().createModelReference("r:ef4b52fd-dbf4-4fce-b7bb-1854f38cfc7e(jetbrains.mps.ide.java.testMaterial.testModel1)"), PersistenceFacade.getInstance().createModelReference("r:4bf8b65f-f792-4142-b0d6-29e233d89bf9(jetbrains.mps.ide.java.testMaterial.testModel1.sub)"));
+      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().findChild("testDir1"), PersistenceFacade.getInstance().createModelReference("r:ef4b52fd-dbf4-4fce-b7bb-1854f38cfc7e(jetbrains.mps.ide.java.testMaterial.testModel1)"), PersistenceFacade.getInstance().createModelReference("r:4bf8b65f-f792-4142-b0d6-29e233d89bf9(jetbrains.mps.ide.java.testMaterial.testModel1.sub)"));
     }
     public void test_Imports2() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().getDescendant("testDir2"), PersistenceFacade.getInstance().createModelReference("r:d45660ba-136e-450b-8238-fb2cceb7481c(jetbrains.mps.ide.java.testMaterial.testModel2)"), PersistenceFacade.getInstance().createModelReference("r:ebf0924b-b6b1-4927-b5b5-45c50b516a21(jetbrains.mps.ide.java.testMaterial.testModel2.sub)"));
+      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().findChild("testDir2"), PersistenceFacade.getInstance().createModelReference("r:d45660ba-136e-450b-8238-fb2cceb7481c(jetbrains.mps.ide.java.testMaterial.testModel2)"), PersistenceFacade.getInstance().createModelReference("r:ebf0924b-b6b1-4927-b5b5-45c50b516a21(jetbrains.mps.ide.java.testMaterial.testModel2.sub)"));
     }
     public void test_Imports3() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().getDescendant("testDir3"), PersistenceFacade.getInstance().createModelReference("r:d8a04b41-593b-40ad-8fa1-52c3ccb0b7ef(jetbrains.mps.ide.java.testMaterial.testModel3)"), PersistenceFacade.getInstance().createModelReference("r:8b9c3824-e139-4993-893a-476446730917(jetbrains.mps.ide.java.testMaterial.testModel3.sub)"));
+      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().findChild("testDir3"), PersistenceFacade.getInstance().createModelReference("r:d8a04b41-593b-40ad-8fa1-52c3ccb0b7ef(jetbrains.mps.ide.java.testMaterial.testModel3)"), PersistenceFacade.getInstance().createModelReference("r:8b9c3824-e139-4993-893a-476446730917(jetbrains.mps.ide.java.testMaterial.testModel3.sub)"));
     }
     public void test_Annotations() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().getDescendant("testDirAnnotations"), PersistenceFacade.getInstance().createModelReference("r:34fd912a-e1ab-4cd8-b902-62b5e223065f(jetbrains.mps.ide.java.testMaterial.annotations)"), PersistenceFacade.getInstance().createModelReference("r:acd963df-05cb-4d3c-ae72-bfc5c052a222(jetbrains.mps.ide.java.testMaterial.annotations.user)"));
+      new Utils(myProject.getRepository()).checkStubModels(this.testsLocation().findChild("testDirAnnotations"), PersistenceFacade.getInstance().createModelReference("r:34fd912a-e1ab-4cd8-b902-62b5e223065f(jetbrains.mps.ide.java.testMaterial.annotations)"), PersistenceFacade.getInstance().createModelReference("r:acd963df-05cb-4d3c-ae72-bfc5c052a222(jetbrains.mps.ide.java.testMaterial.annotations.user)"));
     }
     public void test_ClassNesting() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkFile(this.testsLocation().getDescendant("singleFiles/nestcontainer"), SNodeOperations.cast(getNodeById("8083368042256419834"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new Utils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("nestcontainer"), SNodeOperations.cast(getNodeById("8083368042256419834"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
     }
     public void test_FullSource() throws Exception {
       addNodeById("4795297196607520929");
@@ -128,7 +128,7 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new Utils(myProject.getRepository()).checkSourceModel(this.testsLocation().getDescendant("singleFiles/statements"), PersistenceFacade.getInstance().createModelReference("r:2527791c-6ce6-4422-9215-ce9af0862613(jetbrains.mps.ide.java.testMaterial.singleFiles)"));
+      new Utils(myProject.getRepository()).checkSourceModel(this.testsLocation().findChild("singleFiles").findChild("statements"), PersistenceFacade.getInstance().createModelReference("r:2527791c-6ce6-4422-9215-ce9af0862613(jetbrains.mps.ide.java.testMaterial.singleFiles)"));
     }
     public void test_ByteCodeVsSourceStubs() throws Exception {
       addNodeById("4795297196607520929");

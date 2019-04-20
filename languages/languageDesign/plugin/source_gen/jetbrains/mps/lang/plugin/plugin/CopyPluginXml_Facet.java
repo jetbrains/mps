@@ -78,7 +78,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
                   if (dest != null) {
                     final IFile destDir = FileSystem.getInstance().getFile(MacrosFactory.forModule(tres.module()).expandPath(dest));
                     if (destDir.exists() && destDir.isDirectory()) {
-                      final IFile metaInf = destDir.getDescendant("META-INF");
+                      final IFile metaInf = destDir.findChild("META-INF");
                       if (!(metaInf.exists()) || metaInf.isDirectory()) {
                         final IFile[] pluginXml = new IFile[1];
                         new DeltaReconciler(tres.delta()).visitAll(new FilesDelta.Visitor() {
@@ -99,7 +99,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
                               if (!(metaInf.exists())) {
                                 metaInf.mkdirs();
                               }
-                              IFileUtil.copyFileContent(pluginXml[0], metaInf.getDescendant(pluginXml[0].getName()));
+                              IFileUtil.copyFileContent(pluginXml[0], metaInf.findChild(pluginXml[0].getName()));
                             }
                           });
                         }

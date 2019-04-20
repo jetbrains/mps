@@ -2895,7 +2895,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2Nc5YhPCcH9" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="3cpWs3" id="2Nc5YhPCiu2" role="37wK5m">
                   <node concept="1rXfSq" id="2Nc5YhPCiui" role="3uHU7w">
                     <ref role="37wK5l" node="6CFNGGphPi1" resolve="getExtension" />

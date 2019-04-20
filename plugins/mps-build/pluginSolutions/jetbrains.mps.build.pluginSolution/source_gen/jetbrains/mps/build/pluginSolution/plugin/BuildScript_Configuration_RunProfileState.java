@@ -73,7 +73,7 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
           // XXX in fact, don't need IFile here, especially the one from project's FS. Script could get generated anywhere, io.File would be better 
           file.value = mpsProject.getFileSystem().getFile(scriptsPath);
           // todo 
-          file.value = file.value.getDescendant(BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(projectNode));
+          file.value = file.value.findChild(BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(projectNode));
           // todo select task 
           // here used to be odd code that took name of the first BwfTask under 'common' node in presets, which happen to be 'assemble' 
           // It dated back to initial revision, and I see no reason to keep it, assume default target is better. 

@@ -1520,7 +1520,7 @@
                 <ref role="3cqZAo" node="j$XAJDK0FE" resolve="file" />
               </node>
               <node concept="liA8E" id="1KUoCipsWjC" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="3cpWs3" id="1KUoCipsWjD" role="37wK5m">
                   <node concept="Xl_RD" id="1KUoCipsWjE" role="3uHU7w">
                     <property role="Xl_RC" value=".xml" />

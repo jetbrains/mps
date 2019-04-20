@@ -525,7 +525,7 @@
                                                           <ref role="3cqZAo" node="Ik4DRK6NfI" resolve="destination" />
                                                         </node>
                                                         <node concept="liA8E" id="Ik4DRK6PQu" role="2OqNvi">
-                                                          <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                                                          <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                                                           <node concept="2OqwBi" id="Ik4DRK6PQv" role="37wK5m">
                                                             <node concept="37vLTw" id="2BHiRxgm93v" role="2Oq$k0">
                                                               <ref role="3cqZAo" node="1sKpG65mEjT" resolve="file" />

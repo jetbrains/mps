@@ -2927,14 +2927,14 @@
                                             <ref role="3cqZAo" node="LiJMKzcNhN" resolve="moduleDir" />
                                           </node>
                                           <node concept="liA8E" id="LiJMKzeoRO" role="2OqNvi">
-                                            <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                                            <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                                             <node concept="Xl_RD" id="LiJMKzeoRP" role="37wK5m">
                                               <property role="Xl_RC" value="icons" />
                                             </node>
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="LiJMKzeoRQ" role="2OqNvi">
-                                          <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                                          <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                                           <node concept="2OqwBi" id="LiJMKzeoRR" role="37wK5m">
                                             <node concept="37vLTw" id="LiJMKzeoRS" role="2Oq$k0">
                                               <ref role="3cqZAo" node="LiJMKzcpC$" resolve="chosenFile" />

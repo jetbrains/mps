@@ -10214,7 +10214,7 @@
                                 <ref role="3cqZAo" node="1q4WFGK3qG6" resolve="baseDir" />
                               </node>
                               <node concept="liA8E" id="1q4WFGK3qGB" role="2OqNvi">
-                                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                                 <node concept="10M0yZ" id="1q4WFGK3qGC" role="37wK5m">
                                   <ref role="1PxDUh" node="7$e6lgA3BiM" resolve="BuildGeneratorImpl" />
                                   <ref role="3cqZAo" node="1q4WFGK33dT" resolve="ICONS" />
@@ -10528,7 +10528,7 @@
                     <ref role="3cqZAo" node="6Ti13it31jK" resolve="targetDir" />
                   </node>
                   <node concept="liA8E" id="6Ti13it31k6" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                     <node concept="37vLTw" id="2BHiRxgm4yH" role="37wK5m">
                       <ref role="3cqZAo" node="6Ti13it31jL" resolve="targetName" />
                     </node>
@@ -10947,14 +10947,14 @@
                           <ref role="3cqZAo" node="7$e6lgA3BpA" resolve="projectBaseDir" />
                         </node>
                         <node concept="liA8E" id="7S35ELNTYnI" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                          <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                           <node concept="Xl_RD" id="7$e6lgA3Bq0" role="37wK5m">
                             <property role="Xl_RC" value="solutions" />
                           </node>
                         </node>
                       </node>
                       <node concept="liA8E" id="7S35ELNTYo9" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                        <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                         <node concept="37vLTw" id="3GM_nagTvT0" role="37wK5m">
                           <ref role="3cqZAo" node="7$e6lgA3BpK" resolve="solutionName" />
                         </node>
@@ -15882,7 +15882,7 @@
                     <ref role="3cqZAo" node="7S35ELNTYai" resolve="baseDirFile" />
                   </node>
                   <node concept="liA8E" id="7S35ELNTYc4" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                     <node concept="10M0yZ" id="7S35ELNTYc5" role="37wK5m">
                       <ref role="1PxDUh" to="z1c3:~Solution" resolve="Solution" />
                       <ref role="3cqZAo" to="z1c3:~Solution.SOLUTION_MODELS" resolve="SOLUTION_MODELS" />
@@ -15901,7 +15901,7 @@
                     <ref role="3cqZAo" node="7S35ELNTYai" resolve="baseDirFile" />
                   </node>
                   <node concept="liA8E" id="7S35ELNTYcc" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                     <node concept="10M0yZ" id="7S35ELNTYcd" role="37wK5m">
                       <ref role="1PxDUh" to="z1c3:~Solution" resolve="Solution" />
                       <ref role="3cqZAo" to="z1c3:~Solution.SOLUTION_MODELS" resolve="SOLUTION_MODELS" />

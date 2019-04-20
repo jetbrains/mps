@@ -3217,7 +3217,7 @@
                         <ref role="3cqZAo" node="3Eq_PkM8mfJ" resolve="parent" />
                       </node>
                       <node concept="liA8E" id="3Eq_PkM8uhn" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                        <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                         <node concept="3cpWs3" id="3Eq_PkM8uho" role="37wK5m">
                           <node concept="Xl_RD" id="3Eq_PkM8uhp" role="3uHU7w">
                             <property role="Xl_RC" value=".class" />

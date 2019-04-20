@@ -123,7 +123,7 @@ public class DeployScript {
     private final SModuleFacet myJavaModuleFacet;
 
     private TemporalModuleWithDescriptorFile(@NotNull String baseDir) {
-      super(IoFileSystem.INSTANCE.getFile(baseDir).getDescendant("module.msd"));
+      super(IoFileSystem.INSTANCE.getFile(baseDir).findChild("module.msd"));
       setModuleReference(new ModuleReference("Temp module for assembling plugins", ModuleId.regular()));
       myJavaModuleFacet = new NaiveJavaModuleFacet(this, "MODULE_SOURCE_GEN", "MODULE_CLASSES_GEN");
     }

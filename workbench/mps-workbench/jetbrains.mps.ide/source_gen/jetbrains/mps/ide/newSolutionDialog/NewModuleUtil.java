@@ -116,8 +116,8 @@ public class NewModuleUtil {
     }
     LanguageDescriptor languageDescriptor = createNewLanguageDescriptor(namespace, descriptorFile);
 
-    IFile generatorLocation = descriptorFile.getParent().getDescendant("generator");
-    IFile templateModelsLocation = generatorLocation.getDescendant("template");
+    IFile generatorLocation = descriptorFile.getParent().findChild("generator");
+    IFile templateModelsLocation = generatorLocation.findChild("template");
     templateModelsLocation.mkdirs();
 
     //  it's the first and only generator in the language, no need to generate some unique long value 
@@ -210,7 +210,7 @@ public class NewModuleUtil {
     IFile moduleDir = getModuleFile(namespace, rootPath, extension).getParent();
     // FIXME it's suspicious to check existence of a model directory to tell existence of a module 
     // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring 
-    if (moduleDir.getDescendant(Language.LANGUAGE_MODELS).exists() || moduleDir.getDescendant(Language.LEGACY_LANGUAGE_MODELS).exists() || moduleDir.getDescendant(Solution.SOLUTION_MODELS).exists()) {
+    if (moduleDir.findChild(Language.LANGUAGE_MODELS).exists() || moduleDir.findChild(Language.LEGACY_LANGUAGE_MODELS).exists() || moduleDir.findChild(Solution.SOLUTION_MODELS).exists()) {
       return "Module already exists in this folder";
     }
 
@@ -259,11 +259,11 @@ public class NewModuleUtil {
     generatorDescriptor.setNamespace(namespace);
     // unlike other modules, in outburst of pure antagonism, namespace in generator used to mean alias. Now, it's the way it has to be. 
     generatorDescriptor.setAlias("main");
-    IFile modelsDir = (templateModelsLocation == null ? generatorModuleLocation.getDescendant("template") : templateModelsLocation);
+    IFile modelsDir = (templateModelsLocation == null ? generatorModuleLocation.findChild("template") : templateModelsLocation);
     // there used to be 2 approaches, contentRoot = moduleRoot + sourceRoot descendant, and the one with both pointing to the same location 
     // no idea how to reason to pick one, go ahead and change if you're brave to prove. 
     generatorDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(modelsDir));
-    ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.getDescendant("source_gen").getPath());
+    ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.findChild("source_gen").getPath());
     return generatorDescriptor;
   }
 
@@ -277,7 +277,7 @@ public class NewModuleUtil {
     descriptor.setNamespace(namespace);
     descriptor.setId(ModuleId.regular());
     IFile moduleLocation = descriptorFile.getParent();
-    final IFile modelsDir = moduleLocation.getDescendant(Solution.SOLUTION_MODELS);
+    final IFile modelsDir = moduleLocation.findChild(Solution.SOLUTION_MODELS);
     if (modelsDir.exists() && modelsDir.getChildren().size() != 0) {
       throw new IllegalStateException("Trying to create a solution in an existing solution's directory: " + moduleLocation);
     } else {
@@ -286,7 +286,7 @@ public class NewModuleUtil {
     }
 
     descriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(modelsDir.getParent(), modelsDir));
-    ProjectPathUtil.setGeneratorOutputPath(descriptor, moduleLocation.getDescendant("source_gen").getPath());
+    ProjectPathUtil.setGeneratorOutputPath(descriptor, moduleLocation.findChild("source_gen").getPath());
     return descriptor;
   }
 
@@ -295,12 +295,12 @@ public class NewModuleUtil {
     languageDescriptor.setNamespace(languageNamespace);
     languageDescriptor.setId(ModuleId.regular());
     IFile moduleLocation = descriptorFile.getParent();
-    IFile languageModels = moduleLocation.getDescendant(Language.LANGUAGE_MODELS);
+    IFile languageModels = moduleLocation.findChild(Language.LANGUAGE_MODELS);
     if (languageModels.exists()) {
       throw new IllegalStateException("Trying to create a language in an existing language's directory " + languageModels);
     }
     languageDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(languageModels.getParent(), languageModels));
-    ProjectPathUtil.setGeneratorOutputPath(languageDescriptor, moduleLocation.getDescendant("source_gen").getPath());
+    ProjectPathUtil.setGeneratorOutputPath(languageDescriptor, moduleLocation.findChild("source_gen").getPath());
     return languageDescriptor;
   }
 

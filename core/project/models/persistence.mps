@@ -9397,14 +9397,14 @@
                       <ref role="3cqZAo" node="15VbAzME8ww" resolve="projectFile" />
                     </node>
                     <node concept="liA8E" id="15VbAzME8xW" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                      <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                       <node concept="37vLTw" id="15VbAzME8wI" role="37wK5m">
                         <ref role="3cqZAo" node="15VbAzMDOY4" resolve="MPS_DOT_FOLDER" />
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="15VbAzME8wJ" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                     <node concept="37vLTw" id="15VbAzME8wK" role="37wK5m">
                       <ref role="3cqZAo" node="15VbAzMDPzt" resolve="MODULES_XML_LOCATION" />
                     </node>

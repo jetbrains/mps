@@ -112,7 +112,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       @Override
       public void run() {
         IFile baseDir = FileSystem.getInstance().getFile(getBasePath());
-        IFile iconsDir = baseDir.getDescendant(BuildGeneratorImpl.ICONS);
+        IFile iconsDir = baseDir.findChild(BuildGeneratorImpl.ICONS);
         iconsDir.mkdirs();
 
         ApplicationInfoEx instanceEx = ApplicationInfoEx.getInstanceEx();
@@ -142,7 +142,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   private void copyIcon(InputStream sourceStream, IFile targetDir, String targetName) {
     OutputStream out = null;
     try {
-      IFile descendant = targetDir.getDescendant(targetName);
+      IFile descendant = targetDir.findChild(targetName);
       if (descendant.exists()) {
         // do not overwrite existing icons 
         return;
@@ -186,7 +186,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
         IFile projectBaseDir = FileSystem.getInstance().getFile(getBasePath());
         //  get solution 
         String solutionName = getNewSolutionName();
-        IFile solutionBaseDir = projectBaseDir.getDescendant("solutions").getDescendant(solutionName);
+        IFile solutionBaseDir = projectBaseDir.findChild("solutions").findChild(solutionName);
         indicator.setText("Creating Solution...");
         solution = BuildGeneratorUtil.createSolution(myProject, solutionName, solutionBaseDir);
       } else {

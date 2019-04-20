@@ -1011,7 +1011,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="6Hfjuo1zkgD" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="Xl_RD" id="6Hfjuo1zkgE" role="37wK5m">
                   <property role="Xl_RC" value="generator" />
                 </node>
@@ -1030,7 +1030,7 @@
                 <ref role="3cqZAo" node="6Hfjuo1zkgz" resolve="generatorLocation" />
               </node>
               <node concept="liA8E" id="6Hfjuo1zkgK" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="Xl_RD" id="6Hfjuo1zkgL" role="37wK5m">
                   <property role="Xl_RC" value="template" />
                 </node>
@@ -1953,7 +1953,7 @@
                     <ref role="3cqZAo" node="5AqjJyeyix3" resolve="moduleDir" />
                   </node>
                   <node concept="liA8E" id="5AqjJyeyix1" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                     <node concept="10M0yZ" id="5AqjJyeyixc" role="37wK5m">
                       <ref role="1PxDUh" to="w1kc:~Language" resolve="Language" />
                       <ref role="3cqZAo" to="w1kc:~Language.LANGUAGE_MODELS" resolve="LANGUAGE_MODELS" />
@@ -1970,7 +1970,7 @@
                     <ref role="3cqZAo" node="5AqjJyeyix3" resolve="moduleDir" />
                   </node>
                   <node concept="liA8E" id="3r5LMLzk3Av" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                     <node concept="10M0yZ" id="3r5LMLzk3Aw" role="37wK5m">
                       <ref role="1PxDUh" to="w1kc:~Language" resolve="Language" />
                       <ref role="3cqZAo" to="w1kc:~Language.LEGACY_LANGUAGE_MODELS" resolve="LEGACY_LANGUAGE_MODELS" />
@@ -1988,7 +1988,7 @@
                   <ref role="3cqZAo" node="5AqjJyeyix3" resolve="moduleDir" />
                 </node>
                 <node concept="liA8E" id="5AqjJyeyiJW" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                   <node concept="10M0yZ" id="5AqjJyeyiJX" role="37wK5m">
                     <ref role="1PxDUh" to="z1c3:~Solution" resolve="Solution" />
                     <ref role="3cqZAo" to="z1c3:~Solution.SOLUTION_MODELS" resolve="SOLUTION_MODELS" />
@@ -2433,7 +2433,7 @@
                   <ref role="3cqZAo" node="eb0uW_hR5U" resolve="generatorModuleLocation" />
                 </node>
                 <node concept="liA8E" id="eb0uW_hUbR" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                   <node concept="Xl_RD" id="eb0uW_hUbS" role="37wK5m">
                     <property role="Xl_RC" value="template" />
                   </node>
@@ -2487,7 +2487,7 @@
                   <ref role="3cqZAo" node="eb0uW_hR5U" resolve="generatorModuleLocation" />
                 </node>
                 <node concept="liA8E" id="eb0uW_pUZy" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                   <node concept="Xl_RD" id="eb0uW_pV2Q" role="37wK5m">
                     <property role="Xl_RC" value="source_gen" />
                   </node>
@@ -2720,7 +2720,7 @@
                 <ref role="3cqZAo" node="eb0uW_pWVL" resolve="moduleLocation" />
               </node>
               <node concept="liA8E" id="1Yd98ZZnqG$" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="10M0yZ" id="1Yd98ZZnqG_" role="37wK5m">
                   <ref role="1PxDUh" to="z1c3:~Solution" resolve="Solution" />
                   <ref role="3cqZAo" to="z1c3:~Solution.SOLUTION_MODELS" resolve="SOLUTION_MODELS" />
@@ -2839,7 +2839,7 @@
                   <ref role="3cqZAo" node="eb0uW_pWVL" resolve="moduleLocation" />
                 </node>
                 <node concept="liA8E" id="eb0uW_pZ0G" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                   <node concept="Xl_RD" id="eb0uW_pZ4u" role="37wK5m">
                     <property role="Xl_RC" value="source_gen" />
                   </node>
@@ -2948,7 +2948,7 @@
                 <ref role="3cqZAo" node="eb0uW_q0tW" resolve="moduleLocation" />
               </node>
               <node concept="liA8E" id="1Yd98ZZnqIm" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="10M0yZ" id="1Yd98ZZnqIn" role="37wK5m">
                   <ref role="1PxDUh" to="w1kc:~Language" resolve="Language" />
                   <ref role="3cqZAo" to="w1kc:~Language.LANGUAGE_MODELS" resolve="LANGUAGE_MODELS" />
@@ -3027,7 +3027,7 @@
                   <ref role="3cqZAo" node="eb0uW_q0tW" resolve="moduleLocation" />
                 </node>
                 <node concept="liA8E" id="eb0uW_q2oD" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                   <node concept="Xl_RD" id="eb0uW_q2sr" role="37wK5m">
                     <property role="Xl_RC" value="source_gen" />
                   </node>

@@ -1411,7 +1411,7 @@
                         <ref role="3cqZAo" node="2_jX3OnHZgc" resolve="clonedModulesDirectory" />
                       </node>
                       <node concept="liA8E" id="1rpDfGKrKPN" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                        <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                         <node concept="3cpWs3" id="1rpDfGKrKPO" role="37wK5m">
                           <node concept="37vLTw" id="1rpDfGKrKPP" role="3uHU7B">
                             <ref role="3cqZAo" node="1rpDfGKrKPA" resolve="clonedModuleName" />

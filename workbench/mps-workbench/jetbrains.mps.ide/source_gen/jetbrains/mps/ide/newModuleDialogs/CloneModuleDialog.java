@@ -44,7 +44,7 @@ public final class CloneModuleDialog extends AbstractModuleCreationDialog {
 
   @Override
   protected void runCreation() {
-    IFile moduleLocationFile = myModuleOriginal.getFileSystem().getFile(mySettings.getModuleLocation()).getDescendant(mySettings.getModuleName() + getExtension());
+    IFile moduleLocationFile = myModuleOriginal.getFileSystem().getFile(mySettings.getModuleLocation()).findChild(mySettings.getModuleName() + getExtension());
     CopyModuleHelper helper = new CopyModuleHelper(myProject, myModuleOriginal, mySettings.getModuleName(), moduleLocationFile, myVirtualFolder);
     try {
       myResult = helper.copy();

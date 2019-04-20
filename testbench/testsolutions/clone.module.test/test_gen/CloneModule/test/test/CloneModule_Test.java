@@ -175,7 +175,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
 
         String clonedModuleName = originalModule.getModuleName() + SUFFIX;
 
-        IFile copyLocation = clonedModulesDirectory.getDescendant(clonedModuleName + moduleFileNameExtension);
+        IFile copyLocation = clonedModulesDirectory.findChild(clonedModuleName + moduleFileNameExtension);
         CopyModuleHelper helper = new CopyModuleHelper(project, originalModule, clonedModuleName, copyLocation, "");
         try {
           clonedModule.value = helper.copy();

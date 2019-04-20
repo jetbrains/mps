@@ -644,7 +644,7 @@
                 <ref role="3cqZAo" node="34SjXUxB1BR" resolve="outputDir" />
               </node>
               <node concept="liA8E" id="34SjXUxB1AS" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="2OqwBi" id="34SjXUxB1AT" role="37wK5m">
                   <node concept="37vLTw" id="34SjXUxB1AU" role="2Oq$k0">
                     <ref role="3cqZAo" node="34SjXUxB1AH" resolve="sourceFile" />

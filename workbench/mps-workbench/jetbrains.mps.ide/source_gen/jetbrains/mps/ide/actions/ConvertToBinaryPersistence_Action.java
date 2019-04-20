@@ -118,7 +118,7 @@ public class ConvertToBinaryPersistence_Action extends BaseAction {
             continue;
           }
 
-          IFile newFile = oldFile.getParent().getDescendant(FileUtil.getNameWithoutExtension(oldFile.getName()) + "." + MPSExtentions.MODEL_BINARY);
+          IFile newFile = oldFile.getParent().findChild(FileUtil.getNameWithoutExtension(oldFile.getName()) + "." + MPSExtentions.MODEL_BINARY);
           SModule module = smodel.getModule();
           try {
             binaryFactory.save(newModel, new FileDataSource(newFile));

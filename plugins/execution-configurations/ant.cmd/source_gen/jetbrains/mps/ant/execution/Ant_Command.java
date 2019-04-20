@@ -149,7 +149,7 @@ public class Ant_Command {
     SModel model = SNodeOperations.getModel(project);
     // XXX note, build scripts are copied/deployed to a different location with CopyGeneratedScripts, here we use origin, not the 'deployed' script location. 
     file = model.getModule().getFacet(JavaModuleFacet.class).getOutputLocation(model);
-    file = file.getDescendant(SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ".xml");
+    file = file.findChild(SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ".xml");
     return file.getPath();
   }
 

@@ -10441,7 +10441,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="13efIFyDsKN" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getDescendant(java.lang.String)" resolve="getDescendant" />
+                <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
                 <node concept="Xl_RD" id="13efIFyDsZu" role="37wK5m">
                   <property role="Xl_RC" value="module.msd" />
                 </node>

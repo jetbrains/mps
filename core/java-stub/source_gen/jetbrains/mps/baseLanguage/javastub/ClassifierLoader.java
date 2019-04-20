@@ -146,7 +146,7 @@ public class ClassifierLoader {
         name = name.substring(index + 1);
       }
 
-      ClassifierLoader inner = new ClassifierLoader(parent.getDescendant(name + ".class"), this, cn);
+      ClassifierLoader inner = new ClassifierLoader(parent.findChild(name + ".class"), this, cn);
       rv.add(inner);
     }
     return rv;

@@ -130,7 +130,7 @@ public class EditorUtil {
           final Wrappers._boolean success = new Wrappers._boolean(true);
           context.getRepository().getModelAccess().runWriteAction(new Runnable() {
             public void run() {
-              IFile copiedFile = moduleDir.value.getDescendant("icons").getDescendant(chosenFile.getName());
+              IFile copiedFile = moduleDir.value.findChild("icons").findChild(chosenFile.getName());
               if (copiedFile.exists()) {
                 int rewriteAnswer = Messages.showYesNoDialog("File alread exists.\nRewrite?", "Error", Messages.getWarningIcon());
                 if (rewriteAnswer != Messages.YES) {

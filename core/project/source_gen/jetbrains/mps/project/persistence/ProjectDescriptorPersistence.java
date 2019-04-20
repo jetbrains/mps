@@ -112,7 +112,7 @@ public class ProjectDescriptorPersistence {
       throw new IllegalArgumentException("Path " + path + " does not exist");
     }
     if (projectFile.isDirectory()) {
-      projectFile = projectFile.getDescendant(MPS_DOT_FOLDER).getDescendant(MODULES_XML_LOCATION);
+      projectFile = projectFile.findChild(MPS_DOT_FOLDER).findChild(MODULES_XML_LOCATION);
     }
     if (!(projectFile.getName().equals(MODULES_XML_LOCATION))) {
       LOG.warn("Supposed to be the 'modules.xml' file: '" + projectFile + "'");

@@ -26,7 +26,7 @@ public class FlatFilePropertiesIO implements IPropertiesIO {
       return null;
     }
     IFile dir = descFile.getParent();
-    IFile pf = dir.getDescendant("make.properties");
+    IFile pf = dir.findChild("make.properties");
     if (!(pf.exists())) {
       return null;
     }
