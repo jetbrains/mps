@@ -128,7 +128,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Node_GetPrevSiblingsOperation;
   private ConceptPresentation props_Node_GetReferenceOperation;
   private ConceptPresentation props_Node_GetReferencesOperation;
-  private ConceptPresentation props_Node_GetReferentSearchScopeOperation;
   private ConceptPresentation props_Node_GetSConceptOperation;
   private ConceptPresentation props_Node_InsertNewNextSiblingOperation;
   private ConceptPresentation props_Node_InsertNewPrevSiblingOperation;
@@ -1077,15 +1076,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Node_GetReferencesOperation = cpb.create();
         }
         return props_Node_GetReferencesOperation;
-      case LanguageConceptSwitch.Node_GetReferentSearchScopeOperation:
-        if (props_Node_GetReferentSearchScopeOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("obtain referent search scope");
-          cpb.rawPresentation("search scope");
-          props_Node_GetReferentSearchScopeOperation = cpb.create();
-        }
-        return props_Node_GetReferentSearchScopeOperation;
       case LanguageConceptSwitch.Node_GetSConceptOperation:
         if (props_Node_GetSConceptOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

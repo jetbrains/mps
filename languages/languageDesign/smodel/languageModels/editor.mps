@@ -2821,41 +2821,6 @@
       <node concept="l2Vlx" id="i0NEeLv" role="2iSdaV" />
     </node>
   </node>
-  <node concept="24kQdi" id="hd5nkjZ">
-    <property role="3GE5qa" value="operation.node" />
-    <ref role="1XX52x" to="tp25:hLj1KqM" resolve="Node_GetReferentSearchScopeOperation" />
-    <node concept="3EZMnI" id="hd5nx6Y" role="2wV5jI">
-      <node concept="PMmxH" id="hzCaNnu" role="3EZMnx">
-        <ref role="PMmxG" node="hzBPeWP" resolve="ReplaceableAlias_Comp" />
-      </node>
-      <node concept="3F0ifn" id="hzCaNnv" role="3EZMnx">
-        <property role="3F0ifm" value="(" />
-        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
-      </node>
-      <node concept="1iCGBv" id="hLj4HQ9" role="3EZMnx">
-        <property role="1$x2rV" value="&lt;no reference role&gt;" />
-        <ref role="1NtTu8" to="tp25:hLj3hlO" resolve="referenceLink" />
-        <ref role="1k5W1q" to="tpd3:hLjqlx3" resolve="ReferenceOnConceptualFeature" />
-        <node concept="1sVBvm" id="hLj4HQa" role="1sWHZn">
-          <node concept="3F0A7n" id="hLj4KpL" role="2wV5jI">
-            <property role="1Intyy" value="true" />
-            <ref role="1NtTu8" to="tpce:fA0kJcN" resolve="role" />
-          </node>
-        </node>
-      </node>
-      <node concept="3F0ifn" id="hLj5sSI" role="3EZMnx">
-        <property role="3F0ifm" value="," />
-      </node>
-      <node concept="3F1sOY" id="hLjadbR" role="3EZMnx">
-        <ref role="1NtTu8" to="tp25:hLj2ZkY" resolve="operationContext" />
-      </node>
-      <node concept="3F0ifn" id="hzCaNn_" role="3EZMnx">
-        <property role="3F0ifm" value=")" />
-        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
-      </node>
-      <node concept="l2Vlx" id="i0NEeMj" role="2iSdaV" />
-    </node>
-  </node>
   <node concept="24kQdi" id="hdj9MnH">
     <property role="3GE5qa" value="operation.model" />
     <ref role="1XX52x" to="tp25:hdj9C4s" resolve="Model_NodesIncludingImportedOperation" />

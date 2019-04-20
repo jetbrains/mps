@@ -4697,42 +4697,6 @@
       </node>
     </node>
   </node>
-  <node concept="13h7C7" id="1653mnvANAw">
-    <ref role="13h7C2" to="tp25:hLj1KqM" resolve="Node_GetReferentSearchScopeOperation" />
-    <node concept="13hLZK" id="1653mnvANAx" role="13h7CW">
-      <node concept="3clFbS" id="1653mnvANAy" role="2VODD2" />
-    </node>
-    <node concept="13i0hz" id="1653mnvANAr" role="13h7CS">
-      <property role="2Ki8OM" value="true" />
-      <property role="TrG5h" value="applicableToNode" />
-      <property role="13i0it" value="false" />
-      <ref role="13i0hy" node="1653mnvAgrs" resolve="applicableToNode" />
-      <node concept="3Tm1VV" id="1653mnvANAs" role="1B3o_S" />
-      <node concept="10P_77" id="1653mnvANAq" role="3clF45" />
-      <node concept="3clFbS" id="1653mnvANAt" role="3clF47">
-        <node concept="3cpWs6" id="1653mnvANAu" role="3cqZAp">
-          <node concept="3clFbT" id="1653mnvANAv" role="3cqZAk">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="1653mnvB6fd" role="13h7CS">
-      <property role="2Ki8OM" value="true" />
-      <property role="TrG5h" value="applicableToLink" />
-      <property role="13i0it" value="false" />
-      <ref role="13i0hy" node="1653mnvAgvK" resolve="applicableToLink" />
-      <node concept="3Tm1VV" id="1653mnvB6fe" role="1B3o_S" />
-      <node concept="10P_77" id="1653mnvB6fc" role="3clF45" />
-      <node concept="3clFbS" id="1653mnvB6ff" role="3clF47">
-        <node concept="3cpWs6" id="1653mnvB6fg" role="3cqZAp">
-          <node concept="3clFbT" id="1653mnvB6fh" role="3cqZAk">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="13h7C7" id="1653mnvANBy">
     <ref role="13h7C2" to="tp25:hRYRAV0" resolve="Node_DetachOperation" />
     <node concept="13hLZK" id="1653mnvANBz" role="13h7CW">

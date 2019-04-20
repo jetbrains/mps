@@ -790,75 +790,70 @@
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469655891">
     <file name="AbstractStep.java">
-      <node id="8722937377469655892" at="21,0,22,0" concept="5" trace="myMainPanel" />
-      <node id="8722937377469655899" at="27,23,28,27" concept="4" />
-      <node id="8722937377469655906" at="31,63,32,52" concept="10" />
-      <node id="8722937377469655911" at="32,52,33,43" concept="4" />
-      <node id="8722937377469655917" at="33,43,34,16" concept="4" />
-      <node id="8722937377469655923" at="34,16,35,18" concept="4" />
-      <node id="8722937377469655929" at="35,18,36,18" concept="4" />
-      <node id="8722937377469655935" at="36,18,37,19" concept="4" />
-      <node id="8722937377469655941" at="37,19,38,38" concept="4" />
-      <node id="8722937377469655952" at="38,38,39,13" concept="11" />
-      <node id="8722937377469655959" at="42,0,43,0" concept="9" trace="createMainComponent#()Ljavax/swing/JComponent;" />
-      <node id="8722937377469655963" at="44,0,45,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
-      <node id="8722937377469655970" at="47,36,48,27" concept="4" />
-      <node id="8722937377469655974" at="48,27,49,28" concept="11" />
-      <node id="1417540733157548907" at="53,30,54,38" concept="4" />
-      <node id="9155551433208663663" at="55,37,56,129" concept="4" />
-      <node id="8722937377469656064" at="58,5,59,27" concept="4" />
-      <node id="1417540733157778465" at="65,32,66,25" concept="12" />
-      <node id="3386423819778468383" at="66,25,67,14" concept="11" />
-      <node id="9155551433208663618" at="70,46,71,17" concept="11" />
-      <node id="3386423819778500161" at="74,38,75,55" concept="10" />
-      <node id="3386423819778500167" at="75,55,76,53" concept="10" />
-      <node id="3386423819778500174" at="76,53,77,50" concept="4" />
-      <node id="3386423819778500184" at="77,50,78,63" concept="4" />
-      <node id="3386423819778500191" at="78,63,79,58" concept="10" />
-      <node id="3386423819778500196" at="79,58,80,97" concept="4" />
-      <node id="3386423819778500210" at="80,97,81,71" concept="4" />
-      <node id="3386423819778500217" at="81,71,82,70" concept="4" />
-      <node id="3386423819778500310" at="82,70,83,21" concept="11" />
-      <node id="8722937377469655986" at="23,0,25,0" concept="2" trace="AbstractStep#()V" />
-      <node id="9155551433208663639" at="54,38,57,7" concept="8" />
-      <node id="9155551433208663559" at="70,0,73,0" concept="9" trace="doLimitStepPanelHeight#()Z" />
-      <node id="8722937377469655895" at="26,0,30,0" concept="9" trace="_init#()V" />
-      <node id="8722937377469655967" at="46,0,51,0" concept="9" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="8722937377469655995" at="52,36,58,5" concept="8" />
-      <node id="3386423819778468336" at="62,0,69,0" concept="9" trace="getImageText#()Ljava/lang/String;" />
-      <node id="8722937377469655991" at="52,0,61,0" concept="9" trace="createComponent#()V" />
-      <node id="8722937377469655903" at="31,0,41,0" concept="9" trace="createConstraint#(II)Ljava/awt/GridBagConstraints;" />
-      <node id="3386423819778500157" at="74,0,85,0" concept="9" trace="createStepPanel#()Ljavax/swing/JPanel;" />
-      <scope id="8722937377469655989" at="23,25,23,25" />
-      <scope id="8722937377469655898" at="27,23,28,27" />
-      <scope id="8722937377469655959" at="42,0,43,0" />
-      <scope id="8722937377469655963" at="44,0,45,0" />
-      <scope id="9155551433208663640" at="55,37,56,129" />
-      <scope id="9155551433208663562" at="70,46,71,17" />
-      <scope id="8722937377469655986" at="23,0,25,0" />
-      <scope id="8722937377469655969" at="47,36,49,28" />
-      <scope id="3386423819778468339" at="65,32,67,14" />
-      <scope id="9155551433208663559" at="70,0,73,0" />
-      <scope id="8722937377469655895" at="26,0,30,0" />
-      <scope id="8722937377469656001" at="53,30,57,7" />
-      <scope id="8722937377469655967" at="46,0,51,0" />
-      <scope id="8722937377469655994" at="52,36,59,27" />
-      <scope id="3386423819778468336" at="62,0,69,0" />
-      <scope id="8722937377469655905" at="31,63,39,13">
+      <node id="8722937377469655892" at="19,0,20,0" concept="5" trace="myMainPanel" />
+      <node id="8722937377469655899" at="25,23,26,27" concept="4" />
+      <node id="8722937377469655906" at="29,63,30,52" concept="10" />
+      <node id="8722937377469655911" at="30,52,31,43" concept="4" />
+      <node id="8722937377469655917" at="31,43,32,16" concept="4" />
+      <node id="8722937377469655923" at="32,16,33,18" concept="4" />
+      <node id="8722937377469655929" at="33,18,34,18" concept="4" />
+      <node id="8722937377469655935" at="34,18,35,19" concept="4" />
+      <node id="8722937377469655941" at="35,19,36,38" concept="4" />
+      <node id="8722937377469655952" at="36,38,37,13" concept="11" />
+      <node id="8722937377469655959" at="40,0,41,0" concept="9" trace="createMainComponent#()Ljavax/swing/JComponent;" />
+      <node id="8722937377469655963" at="42,0,43,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
+      <node id="8722937377469655970" at="45,36,46,27" concept="4" />
+      <node id="8722937377469655974" at="46,27,47,28" concept="11" />
+      <node id="1417540733157548907" at="51,30,52,38" concept="4" />
+      <node id="9155551433208663663" at="53,37,54,129" concept="4" />
+      <node id="8722937377469656064" at="56,5,57,27" concept="4" />
+      <node id="9155551433208663618" at="60,46,61,17" concept="11" />
+      <node id="3386423819778500161" at="64,38,65,55" concept="10" />
+      <node id="3386423819778500167" at="65,55,66,53" concept="10" />
+      <node id="3386423819778500174" at="66,53,67,50" concept="4" />
+      <node id="3386423819778500184" at="67,50,68,63" concept="4" />
+      <node id="3386423819778500191" at="68,63,69,58" concept="10" />
+      <node id="3386423819778500196" at="69,58,70,97" concept="4" />
+      <node id="3386423819778500210" at="70,97,71,71" concept="4" />
+      <node id="3386423819778500217" at="71,71,72,70" concept="4" />
+      <node id="3386423819778500310" at="72,70,73,21" concept="11" />
+      <node id="8722937377469655986" at="21,0,23,0" concept="2" trace="AbstractStep#()V" />
+      <node id="9155551433208663639" at="52,38,55,7" concept="8" />
+      <node id="9155551433208663559" at="60,0,63,0" concept="9" trace="doLimitStepPanelHeight#()Z" />
+      <node id="8722937377469655895" at="24,0,28,0" concept="9" trace="_init#()V" />
+      <node id="8722937377469655967" at="44,0,49,0" concept="9" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="8722937377469655995" at="50,36,56,5" concept="8" />
+      <node id="8722937377469655991" at="50,0,59,0" concept="9" trace="createComponent#()V" />
+      <node id="8722937377469655903" at="29,0,39,0" concept="9" trace="createConstraint#(II)Ljava/awt/GridBagConstraints;" />
+      <node id="3386423819778500157" at="64,0,75,0" concept="9" trace="createStepPanel#()Ljavax/swing/JPanel;" />
+      <scope id="8722937377469655989" at="21,25,21,25" />
+      <scope id="8722937377469655898" at="25,23,26,27" />
+      <scope id="8722937377469655959" at="40,0,41,0" />
+      <scope id="8722937377469655963" at="42,0,43,0" />
+      <scope id="9155551433208663640" at="53,37,54,129" />
+      <scope id="9155551433208663562" at="60,46,61,17" />
+      <scope id="8722937377469655986" at="21,0,23,0" />
+      <scope id="8722937377469655969" at="45,36,47,28" />
+      <scope id="9155551433208663559" at="60,0,63,0" />
+      <scope id="8722937377469655895" at="24,0,28,0" />
+      <scope id="8722937377469656001" at="51,30,55,7" />
+      <scope id="8722937377469655967" at="44,0,49,0" />
+      <scope id="8722937377469655994" at="50,36,57,27" />
+      <scope id="8722937377469655905" at="29,63,37,13">
         <var name="c" id="8722937377469655907" />
       </scope>
-      <scope id="8722937377469655991" at="52,0,61,0" />
-      <scope id="3386423819778500160" at="74,38,83,21">
+      <scope id="8722937377469655991" at="50,0,59,0" />
+      <scope id="3386423819778500160" at="64,38,73,21">
         <var name="label" id="3386423819778500154" />
         <var name="mainComponent" id="3386423819778500156" />
         <var name="stepPanel" id="3386423819778500155" />
       </scope>
-      <scope id="8722937377469655903" at="31,0,41,0">
+      <scope id="8722937377469655903" at="29,0,39,0">
         <var name="row" id="8722937377469655955" />
         <var name="wy" id="8722937377469655957" />
       </scope>
-      <scope id="3386423819778500157" at="74,0,85,0" />
-      <unit id="8722937377469655891" at="20,0,86,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.AbstractStep" />
+      <scope id="3386423819778500157" at="64,0,75,0" />
+      <unit id="8722937377469655891" at="18,0,76,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.AbstractStep" />
     </file>
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469656070">

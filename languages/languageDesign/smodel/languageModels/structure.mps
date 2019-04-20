@@ -1251,35 +1251,6 @@
     <property role="EcuMT" value="1221161909218" />
     <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
   </node>
-  <node concept="1TIwiD" id="hLj1KqM">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="R4oN_" value="obtain referent search scope" />
-    <property role="TrG5h" value="Node_GetReferentSearchScopeOperation" />
-    <property role="2_RsDV" value="none" />
-    <property role="3GE5qa" value="operation.node" />
-    <property role="34LRSv" value="search scope" />
-    <property role="EcuMT" value="1221163681458" />
-    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
-    <node concept="1TJgyj" id="hLj2ZkY" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="operationContext" />
-      <property role="20lbJX" value="1" />
-      <property role="IQ2ns" value="1221164004670" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="1TJgyj" id="hLj3hlO" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
-      <property role="20kJfa" value="referenceLink" />
-      <property role="20lbJX" value="1" />
-      <property role="IQ2ns" value="1221164078452" />
-      <ref role="20lvS9" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
-    </node>
-    <node concept="asaX9" id="6n80HowITfb" role="lGtFl">
-      <property role="YLQ7P" value="Implementation method in SNodeOperations has been deprecated for 3 years, and the last uses of the operation are history now" />
-      <property role="YLPcu" value="3.3" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="hLjrik3">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
