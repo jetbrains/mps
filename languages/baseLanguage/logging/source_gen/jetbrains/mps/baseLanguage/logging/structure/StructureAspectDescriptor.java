@@ -13,14 +13,12 @@ import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
-import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIMessage = createDescriptorForIMessage();
   /*package*/ final ConceptDescriptor myConceptLogLowLevelStatement = createDescriptorForLogLowLevelStatement();
-  /*package*/ final ConceptDescriptor myConceptLogStatement = createDescriptorForLogStatement();
   /*package*/ final ConceptDescriptor myConceptMsgStatement = createDescriptorForMsgStatement();
   /*package*/ final ConceptDescriptor myConceptPrintStatement = createDescriptorForPrintStatement();
   /*package*/ final EnumerationDescriptor myEnumerationSeverity = new EnumerationDescriptor_Severity();
@@ -39,7 +37,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptIMessage, myConceptLogLowLevelStatement, myConceptLogStatement, myConceptMsgStatement, myConceptPrintStatement);
+    return Arrays.asList(myConceptIMessage, myConceptLogLowLevelStatement, myConceptMsgStatement, myConceptPrintStatement);
   }
 
   @Override
@@ -50,8 +48,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIMessage;
       case LanguageConceptSwitch.LogLowLevelStatement:
         return myConceptLogLowLevelStatement;
-      case LanguageConceptSwitch.LogStatement:
-        return myConceptLogStatement;
       case LanguageConceptSwitch.MsgStatement:
         return myConceptMsgStatement;
       case LanguageConceptSwitch.PrintStatement:
@@ -88,21 +84,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("message", 0x1c3d779b2be2f1b9L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("2034914114981261753").done();
     b.aggregate("throwable", 0x1c3d779b2be2f1bbL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("2034914114981261755").done();
     b.alias("log");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForLogStatement() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.logging", "LogStatement", 0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc428b1dfL);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
-    b.parent(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5eeb6L);
-    b.origin("r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/1167227138527");
-    b.version(2);
-    b.property("hasException", 0x10fc43f6f0fL).type(PrimitiveTypeId.BOOLEAN).origin("1167228628751").done();
-    b.property("severity", 0x10fc541df63L).type(MetaIdFactory.dataTypeId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L)).origin("1167245565795").done();
-    b.aggregate("logExpression", 0x10fc42da590L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1167227463056").done();
-    b.aggregate("exception", 0x10fc42f25e9L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1167227561449").done();
-    b.aggregate("project", 0x1c3d779b2be74bcfL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("2034914114981546959").done();
-    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMsgStatement() {

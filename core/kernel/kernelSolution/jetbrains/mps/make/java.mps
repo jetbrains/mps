@@ -32,14 +32,9 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -1677,39 +1672,6 @@
         </node>
       </node>
       <node concept="17QB3L" id="E2BH9lAYn5" role="3clF45" />
-    </node>
-    <node concept="3clFb_" id="E2BH9lAYna" role="jymVt">
-      <property role="TrG5h" value="getFileName" />
-      <node concept="17QB3L" id="E2BH9lAYnb" role="3clF45" />
-      <node concept="3Tm1VV" id="E2BH9lAYnc" role="1B3o_S" />
-      <node concept="3clFbS" id="E2BH9lAYnd" role="3clF47">
-        <node concept="3cpWs6" id="E2BH9lAYne" role="3cqZAp">
-          <node concept="37vLTw" id="7dvIw0CTXy3" role="3cqZAk">
-            <ref role="3cqZAo" node="E2BH9lAYkP" resolve="myClassName" />
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="7dvIw0CTKWA" role="lGtFl">
-        <node concept="TZ5HI" id="7dvIw0CTKWB" role="3nqlJM">
-          <node concept="TZ5HA" id="7dvIw0CTKWC" role="3HnX3l">
-            <node concept="1dT_AC" id="7dvIw0CTVIX" role="1dT_Ay">
-              <property role="1dT_AB" value="this class is about java dependencies, why would I care to keep a file name here?" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="7dvIw0CTKWD" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="7dvIw0CTN4X" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="7dvIw0CTVAx" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3cmrfG" id="7dvIw0CTVBA" role="2B70Vg">
-            <property role="3cmrfH" value="0" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="3clFb_" id="E2BH9lAYnl" role="jymVt">
       <property role="TrG5h" value="compareTo" />

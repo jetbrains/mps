@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_IMessage;
   private ConceptPresentation props_LogLowLevelStatement;
-  private ConceptPresentation props_LogStatement;
   private ConceptPresentation props_MsgStatement;
   private ConceptPresentation props_PrintStatement;
 
@@ -33,14 +32,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LogLowLevelStatement = cpb.create();
         }
         return props_LogLowLevelStatement;
-      case LanguageConceptSwitch.LogStatement:
-        if (props_LogStatement == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("LogStatement");
-          props_LogStatement = cpb.create();
-        }
-        return props_LogStatement;
       case LanguageConceptSwitch.MsgStatement:
         if (props_MsgStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

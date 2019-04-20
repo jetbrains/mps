@@ -10,10 +10,7 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118929411" name="build" index="YLPcu" />
-        <property id="1225118933224" name="comment" index="YLQ7P" />
-      </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -64,51 +61,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="1TIwiD" id="gZ4ab7v">
-    <property role="TrG5h" value="LogStatement" />
-    <property role="2_RsDV" value="none" />
-    <property role="EcuMT" value="1167227138527" />
-    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
-    <node concept="1TJgyj" id="gZ4bqmg" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="logExpression" />
-      <property role="20lbJX" value="1" />
-      <property role="IQ2ns" value="1167227463056" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="1TJgyj" id="gZ4bMnD" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="exception" />
-      <property role="IQ2ns" value="1167227561449" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="1TJgyj" id="1KXtTGFTOJf" role="1TKVEi">
-      <property role="IQ2ns" value="2034914114981546959" />
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="project" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="1TJgyi" id="gZ4fQWf" role="1TKVEl">
-      <property role="TrG5h" value="hasException" />
-      <property role="IQ2nx" value="1167228628751" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="1TJgyi" id="gZ5gtXz" role="1TKVEl">
-      <property role="TrG5h" value="severity" />
-      <property role="IQ2nx" value="1167245565795" />
-      <ref role="AX2Wp" node="gZ5eI4j" resolve="Severity" />
-    </node>
-    <node concept="t5JxF" id="1KXtTGFSJ6M" role="lGtFl">
-      <property role="t5JxN" value="prints message to the MessagesView and logs to log4j apache. It is going to be removed in 2017.3" />
-    </node>
-    <node concept="asaX9" id="5vyNLjQPqrZ" role="lGtFl">
-      <property role="YLQ7P" value="Deprecated because it prints both to apache log4j and to messages view; please consider using ApacheStatement and LogToMessagesViewStatement" />
-      <property role="YLPcu" value="171.1" />
-    </node>
-    <node concept="PrWs8" id="4XBaoL6c9Dp" role="PzmwI">
-      <ref role="PrY4T" node="5vyNLjQPuUQ" resolve="IMessage" />
-    </node>
-  </node>
   <node concept="AxPO7" id="gZ5eI4j">
     <property role="TrG5h" value="Severity" />
     <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
