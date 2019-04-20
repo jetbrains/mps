@@ -27,7 +27,7 @@ import java.util.List;
 public class ForeignIdReferenceCacheTest extends DataMPSFixtureTestCase {
   @Override
   protected void preConfigureSourceRoot(IFile sourceRoot) throws IOException {
-    copyResource(sourceRoot.getDescendant("/psiTest.mps"), "psiTest.mps", "/tests/psiProject/models/jetbrains/mps/psiTest.mps");
+    copyResource(sourceRoot.findChild("psiTest.mps"), "psiTest.mps", "/tests/psiProject/models/jetbrains/mps/psiTest.mps");
   }
 
   @Override

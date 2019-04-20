@@ -240,7 +240,7 @@ public class ProjectCreationTest implements EnvironmentAware {
       ProjectOptions options = new ProjectOptions();
 
       options.setProjectName(PROJECT_NAME);
-      options.setProjectPath(containingDir.getDescendant(PROJECT_NAME).getPath());
+      options.setProjectPath(containingDir.findChild(PROJECT_NAME).getPath());
       options.setStorageScheme(myDefaultScheme);
 
       options.setCreateNewLanguage(false);
@@ -260,7 +260,7 @@ public class ProjectCreationTest implements EnvironmentAware {
 
     @Override
     public ProjectOptions getProjectOptions(IFile containingFile) {
-      IFile projectDir = containingFile.getDescendant(PROJECT_NAME);
+      IFile projectDir = containingFile.findChild(PROJECT_NAME);
 
       ProjectOptions options = new ProjectOptions();
       options.setProjectName(PROJECT_NAME);
@@ -269,11 +269,11 @@ public class ProjectCreationTest implements EnvironmentAware {
 
       options.setCreateNewLanguage(true);
       options.setLanguageNamespace(LANGUAGE_NAMESPACE);
-      options.setLanguagePath(projectDir.getDescendant(LANGUAGES_ROOT).getDescendant(LANGUAGE_NAMESPACE).getPath());
+      options.setLanguagePath(projectDir.findChild(LANGUAGES_ROOT).findChild(LANGUAGE_NAMESPACE).getPath());
 
       options.setCreateNewSolution(true);
       options.setSolutionNamespace(SOLUTION_NAMESPACE);
-      options.setSolutionPath(projectDir.getDescendant(SOLUTIONS_ROOT).getDescendant(SOLUTION_NAMESPACE).getPath());
+      options.setSolutionPath(projectDir.findChild(SOLUTIONS_ROOT).findChild(SOLUTION_NAMESPACE).getPath());
       options.setCreateModel(true);
 
       return options;

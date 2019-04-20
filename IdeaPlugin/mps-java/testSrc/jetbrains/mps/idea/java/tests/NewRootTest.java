@@ -63,7 +63,7 @@ public class NewRootTest extends DataMPSFixtureTestCase {
 
   @Override
   protected void preConfigureSourceRoot(IFile sourceRoot) throws IOException {
-    copyResource(sourceRoot.getDescendant("/otherPsiTest.mps"), "otherPsiTest.mps", "/tests/psiProject/models/jetbrains/mps/otherPsiTest.mps");
+    copyResource(sourceRoot.findChild("otherPsiTest.mps"), "otherPsiTest.mps", "/tests/psiProject/models/jetbrains/mps/otherPsiTest.mps");
   }
 
   public void testCreateBLClass() {

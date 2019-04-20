@@ -81,7 +81,7 @@ public class JpsSolutionIdea extends Solution {
         p = FileUtil.toCanonicalPath(p);
         map.put(p, m);
       } else if(source instanceof FilePerRootDataSource) {
-        String p = ((FilePerRootDataSource) source).getFolder().getDescendant(".model").getPath();
+        String p = ((FilePerRootDataSource) source).getFolder().findChild(".model").getPath();
         p = FileUtil.toCanonicalPath(p);
         map.put(p, m);
       }

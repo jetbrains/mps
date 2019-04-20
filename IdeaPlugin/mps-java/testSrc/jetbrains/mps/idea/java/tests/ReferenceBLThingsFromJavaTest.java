@@ -54,15 +54,14 @@ public class ReferenceBLThingsFromJavaTest extends DataMPSFixtureTestCase {
 
   @Override
   protected void preConfigureSourceRoot(IFile sourceRoot) throws IOException {
-    copyResource(sourceRoot.getDescendant("/blModel.mps"), "blModel.mps", "/tests/blProject/models/blModel.mps");
-    copyResource(sourceRoot.getDescendant("/src/bl/perRootModel/.model"), "perRootModelHeader", "/tests/blProject/src/bl/perRootModel/.model");
-    copyResource(sourceRoot.getDescendant("/src/bl/perRootModel/BLClassRoot.mpsr"), "BLClassRoot.mpsr", "/tests/blProject/src/bl/perRootModel/BLClassRoot.mpsr");
-
+    copyResource(sourceRoot.findChild("blModel.mps"), "blModel.mps", "/tests/blProject/models/blModel.mps");
+    copyResource(sourceRoot.findChild("src").findChild("bl").findChild("perRootModel").findChild(".model"), "perRootModelHeader", "/tests/blProject/src/bl/perRootModel/.model");
+    copyResource(sourceRoot.findChild("src").findChild("bl").findChild("perRootModel").findChild("BLClassRoot.mpsr"), "BLClassRoot.mpsr", "/tests/blProject/src/bl/perRootModel/BLClassRoot.mpsr");
   }
 
   @Override
   protected void postConfigureSourceRoot(IFile sourceRoot) throws IOException {
-    copyResource(javafile = sourceRoot.getDescendant("/bl/test/Claz.java"), "Claz.java", "/tests/blProject/src/bl/test/Claz.java");
+    copyResource(javafile = sourceRoot.findChild("bl").findChild("test").findChild("Claz.java"), "Claz.java", "/tests/blProject/src/bl/test/Claz.java");
     copyResource(sourceRoot.getFileSystem().getFile(myTempDirTestFixture.createFile("/Claz.after.java").getPath()), "Claz.after.java", "/tests/blProject/src/bl/test/Claz.after.java");
     copyResource(sourceRoot.getFileSystem().getFile(myTempDirTestFixture.createFile("/ClazWithPerRootImport.after.java").getPath()), "ClazWithPerRootImport.after.java", "/tests/blProject/src/bl/test/ClazWithPerRootImport.after.java");
     getMpsFixture().getCodeInsightTestFixture().setTestDataPath(myTempDirTestFixture.getTempDirPath());

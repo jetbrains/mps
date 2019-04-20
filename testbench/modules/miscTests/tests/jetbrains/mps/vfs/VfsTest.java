@@ -45,7 +45,6 @@ import static org.junit.Assert.fail;
  * @author Evgeny Gerashchenko
  */
 public class VfsTest implements EnvironmentAware {
-  private static final String SUBSUBDIR = "subdir" + File.separator + "subsubdir";
   private static final int FILE_SIZE = 20000;
 
   private static final String JAR_NAME = "testjar.zip";
@@ -108,13 +107,13 @@ public class VfsTest implements EnvironmentAware {
     assertFalse("Could create file with the same name as the directory", tmpDir.createNewFile());
     assertTrue("Created temp directory is not empty", tmpDir.getChildren().isEmpty());
 
-    IFile subSubDir = tmpDir.getDescendant(SUBSUBDIR);
+    IFile subSubDir = tmpDir.findChild("subdir").findChild("subsubdir");
     assertTrue(subSubDir.mkdirs());
 
     assertTrue(subSubDir.isDirectory());
     assertTrue(subSubDir.exists());
 
-    IFile file1 = tmpDir.getDescendant(SUBSUBDIR + File.separator + "file1");
+    IFile file1 = subSubDir.findChild("file1");
     assertFalse(file1.exists());
     assertTrue(file1.getParent().equals(subSubDir));
     try {
@@ -144,14 +143,14 @@ public class VfsTest implements EnvironmentAware {
 
     assertTrue(file1.rename("file111"));
     assertTrue(file1.getName().equals("file1"));
-    assertTrue(!file1.getParent().getDescendant("file111").equals(file1));
-    assertTrue(file1.getParent().getDescendant("file1").equals(file1));
+    assertTrue(!file1.getParent().findChild("file111").equals(file1));
+    assertTrue(file1.getParent().findChild("file1").equals(file1));
     assertFalse(file1.exists());
 
-    file1 =  file1.getParent().getDescendant("file111");
+    file1 =  file1.getParent().findChild("file111");
     assertTrue(file1.rename("file1"));
     String path1Original = file1.getPath();
-    file1 = file1.getParent().getDescendant("file1");
+    file1 = file1.getParent().findChild("file1");
     assertTrue(file1.move(tmpDir));
     assertFalse(file1.getPath().equals(path1Original));
     assertFalse(FileSystemExtPoint.getFS().getFile(path1Original).exists());
@@ -167,7 +166,7 @@ public class VfsTest implements EnvironmentAware {
     assertTrue(jarRoot.isDirectory());
     assertTrue(jarRoot.isReadOnly());
     assertTrue(jarRoot.isPackaged());
-    IFile readmeFile = jarRoot.getDescendant("README");
+    IFile readmeFile = jarRoot.findChild("README");
     assertFalse(readmeFile.isDirectory());
     try {
       assertEquals("this is a test file\n", new String(ReadUtil.read(readmeFile.openInputStream())));
@@ -186,7 +185,7 @@ public class VfsTest implements EnvironmentAware {
       // ok
     }
 
-    IFile file1 = jarRoot.getDescendant("dir1").getDescendant("subdir").getDescendant("file1");
+    IFile file1 = jarRoot.findChild("dir1").findChild("subdir").findChild("file1");
 
     try {
       assertEquals("file1\n", new String(ReadUtil.read(file1.openInputStream())));
