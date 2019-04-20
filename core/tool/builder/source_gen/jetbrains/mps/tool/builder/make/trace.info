@@ -105,62 +105,6 @@
       <unit id="1169333190355797179" at="28,0,85,0" name="jetbrains.mps.tool.builder.make.ReducedMakeFacetConfiguration" />
     </file>
   </root>
-  <root nodeRef="r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/2546981710034407607">
-    <file name="ConsoleMessageFormat.java">
-      <node id="2546981710034407621" at="18,73,19,19" concept="11" />
-      <node id="2546981710034407631" at="22,61,23,19" concept="11" />
-      <node id="2546981710034407638" at="26,37,27,48" concept="11" />
-      <node id="2546981710034407649" at="30,59,31,39" concept="11" />
-      <node id="2546981710034407661" at="34,60,35,40" concept="11" />
-      <node id="2546981710034407679" at="38,123,39,86" concept="11" />
-      <node id="2546981710034407699" at="42,70,43,17" concept="11" />
-      <node id="2546981710034407709" at="46,55,47,13" concept="11" />
-      <node id="2546981710034407610" at="14,0,17,0" concept="2" trace="ConsoleMessageFormat#()V" />
-      <node id="2546981710034407614" at="17,0,21,0" concept="9" trace="escapeBuildMessage#(Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;" />
-      <node id="2546981710034407624" at="21,0,25,0" concept="9" trace="escapeBuildMessage#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="2546981710034407634" at="25,0,29,0" concept="9" trace="getLinesSeparator#()Ljava/lang/String;" />
-      <node id="2546981710034407642" at="29,0,33,0" concept="9" trace="formatTestStart#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="2546981710034407654" at="33,0,37,0" concept="9" trace="formatTestFinish#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="2546981710034407666" at="37,0,41,0" concept="9" trace="formatTestFailure#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;" />
-      <node id="2546981710034407692" at="41,0,45,0" concept="9" trace="isBuildServerMessage#(Ljava/lang/CharSequence;)Z" />
-      <node id="2546981710034407702" at="45,0,49,0" concept="9" trace="hasContinuation#(Ljava/lang/String;)I" />
-      <scope id="2546981710034407613" at="15,33,15,33" />
-      <scope id="2546981710034407620" at="18,73,19,19" />
-      <scope id="2546981710034407630" at="22,61,23,19" />
-      <scope id="2546981710034407637" at="26,37,27,48" />
-      <scope id="2546981710034407648" at="30,59,31,39" />
-      <scope id="2546981710034407660" at="34,60,35,40" />
-      <scope id="2546981710034407678" at="38,123,39,86" />
-      <scope id="2546981710034407698" at="42,70,43,17" />
-      <scope id="2546981710034407708" at="46,55,47,13" />
-      <scope id="2546981710034407610" at="14,0,17,0" />
-      <scope id="2546981710034407614" at="17,0,21,0">
-        <var name="message" id="2546981710034407617" />
-      </scope>
-      <scope id="2546981710034407624" at="21,0,25,0">
-        <var name="message" id="2546981710034407627" />
-      </scope>
-      <scope id="2546981710034407634" at="25,0,29,0" />
-      <scope id="2546981710034407642" at="29,0,33,0">
-        <var name="testName" id="2546981710034407645" />
-      </scope>
-      <scope id="2546981710034407654" at="33,0,37,0">
-        <var name="testName" id="2546981710034407657" />
-      </scope>
-      <scope id="2546981710034407666" at="37,0,41,0">
-        <var name="details" id="2546981710034407675" />
-        <var name="message" id="2546981710034407672" />
-        <var name="testName" id="2546981710034407669" />
-      </scope>
-      <scope id="2546981710034407692" at="41,0,45,0">
-        <var name="message" id="2546981710034407695" />
-      </scope>
-      <scope id="2546981710034407702" at="45,0,49,0">
-        <var name="message" id="2546981710034407705" />
-      </scope>
-      <unit id="2546981710034407607" at="12,0,50,0" name="jetbrains.mps.tool.builder.make.ConsoleMessageFormat" />
-    </file>
-  </root>
   <root nodeRef="r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/4263887295358465244">
     <file name="GeneratorWorker.java">
       <node id="4263887295358465647" at="20,43,21,20" concept="15" />
