@@ -177,15 +177,6 @@
   <node concept="PlHQZ" id="7Mb2akaesra">
     <property role="TrG5h" value="Resource" />
     <property role="EcuMT" value="8974276187400029898" />
-    <node concept="1TJgyi" id="7Mb2akaesrb" role="1TKVEl">
-      <property role="TrG5h" value="path" />
-      <property role="IQ2nx" value="8974276187400029899" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-      <node concept="asaX9" id="2p1v3tOadsY" role="lGtFl">
-        <property role="YLPcu" value="3.4" />
-        <property role="YLQ7P" value="use getResourceId() in case of icon resource or create your own field otherwise" />
-      </node>
-    </node>
   </node>
   <node concept="1TIwiD" id="5bVxHVEuklu">
     <property role="EcuMT" value="5979521222239143262" />

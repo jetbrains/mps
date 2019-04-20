@@ -323,7 +323,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/8974276187400029898");
     b.version(2);
-    b.property("path", 0x7c8b08a50a39c6cbL).type(PrimitiveTypeId.STRING).origin("8974276187400029899").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForText() {

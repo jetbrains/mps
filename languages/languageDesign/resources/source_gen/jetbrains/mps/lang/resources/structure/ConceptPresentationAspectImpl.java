@@ -181,8 +181,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_Rect;
       case LanguageConceptSwitch.Resource:
         if (props_Resource == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL);
-          cpb.deprecateProperty(0x7c8b08a50a39c6cbL, "path");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_Resource = cpb.create();
         }
         return props_Resource;
