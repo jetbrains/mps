@@ -5961,42 +5961,6 @@
       </node>
     </node>
   </node>
-  <node concept="13h7C7" id="1653mnvB5Xr">
-    <ref role="13h7C2" to="tp25:536fMNl52qn" resolve="Node_GetContainingLinkOperation" />
-    <node concept="13hLZK" id="1653mnvB5Xs" role="13h7CW">
-      <node concept="3clFbS" id="1653mnvB5Xt" role="2VODD2" />
-    </node>
-    <node concept="13i0hz" id="1653mnvB5Xm" role="13h7CS">
-      <property role="2Ki8OM" value="true" />
-      <property role="TrG5h" value="applicableToLink" />
-      <property role="13i0it" value="false" />
-      <ref role="13i0hy" node="1653mnvAgvK" resolve="applicableToLink" />
-      <node concept="3Tm1VV" id="1653mnvB5Xn" role="1B3o_S" />
-      <node concept="10P_77" id="1653mnvB5Xl" role="3clF45" />
-      <node concept="3clFbS" id="1653mnvB5Xo" role="3clF47">
-        <node concept="3cpWs6" id="1653mnvB5Xp" role="3cqZAp">
-          <node concept="3clFbT" id="1653mnvB5Xq" role="3cqZAk">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="1653mnvB6D3" role="13h7CS">
-      <property role="2Ki8OM" value="true" />
-      <property role="TrG5h" value="applicableToNode" />
-      <property role="13i0it" value="false" />
-      <ref role="13i0hy" node="1653mnvAgrs" resolve="applicableToNode" />
-      <node concept="3Tm1VV" id="1653mnvB6D4" role="1B3o_S" />
-      <node concept="10P_77" id="1653mnvB6D2" role="3clF45" />
-      <node concept="3clFbS" id="1653mnvB6D5" role="3clF47">
-        <node concept="3cpWs6" id="1653mnvB6D6" role="3cqZAp">
-          <node concept="3clFbT" id="1653mnvB6D7" role="3cqZAk">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="13h7C7" id="1653mnvB5YW">
     <ref role="13h7C2" to="tp25:gFt7uOF" resolve="Property_HasValue_Enum" />
     <node concept="13hLZK" id="1653mnvB5YX" role="13h7CW">

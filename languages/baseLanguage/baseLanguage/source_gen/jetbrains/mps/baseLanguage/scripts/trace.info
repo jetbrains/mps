@@ -12,12 +12,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ScriptsDescriptor.java">
-      <unit at="11,0,34,0" name="jetbrains.mps.baseLanguage.scripts.ScriptsDescriptor" />
+      <unit at="11,0,33,0" name="jetbrains.mps.baseLanguage.scripts.ScriptsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c9(jetbrains.mps.baseLanguage.scripts)/1240068519431">
     <file name="ScriptsDescriptor.java">
-      <node id="1240068519431" at="15,53,16,75" concept="1" />
+      <node id="1240068519431" at="15,52,16,75" concept="1" />
     </file>
     <file name="ShowJavaUtilReferences_MigrationScript.java">
       <node id="1240068519431" at="16,51,17,41" concept="9" />
@@ -607,87 +607,6 @@
       <scope id="481464699838541779" at="19,0,50,0" />
       <unit id="481464699838546380" at="21,28,48,5" name="jetbrains.mps.baseLanguage.scripts.UpdateCastExpressionParens_MigrationScript$1" />
       <unit id="481464699838541779" at="18,0,57,0" name="jetbrains.mps.baseLanguage.scripts.UpdateCastExpressionParens_MigrationScript" />
-    </file>
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902c9(jetbrains.mps.baseLanguage.scripts)/6369157954015654607">
-    <file name="MigrateCanBeCoerced_MigrationScript.java">
-      <node id="6369157954015654607" at="25,48,26,41" concept="9" />
-      <node id="6369157954015654608" at="29,31,30,45" concept="6" />
-      <node id="6369157954015654608" at="33,41,34,45" concept="6" />
-      <node id="6369157954015654608" at="37,54,38,169" concept="6" />
-      <node id="6369157954015654716" at="41,59,42,299" concept="6" />
-      <node id="6369157954015654619" at="45,58,46,292" concept="1" />
-      <node id="6369157954016375479" at="48,43,49,1034" concept="6" />
-      <node id="6369157954015923512" at="52,39,53,715" concept="1" />
-      <node id="6369157954016837592" at="53,715,54,358" concept="5" />
-      <node id="6369157954016844442" at="54,358,55,293" concept="1" />
-      <node id="6369157954016131637" at="55,293,56,217" concept="5" />
-      <node id="6369157954016059074" at="56,217,57,548" concept="1" />
-      <node id="6369157954015654608" at="62,42,63,20" concept="6" />
-      <node id="6369157954015654607" at="70,41,71,161" concept="6" />
-      <node id="6369157954015936622" at="73,85,74,63" concept="5" />
-      <node id="6369157954015936622" at="74,63,75,30" concept="5" />
-      <node id="6369157954015936622" at="75,30,76,264" concept="1" />
-      <node id="6369157954015936622" at="76,264,77,217" concept="1" />
-      <node id="6369157954015936622" at="77,217,78,24" concept="6" />
-      <node id="6369157954015814316" at="48,0,51,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6369157954015654608" at="28,0,32,0" concept="4" trace="getName#()Ljava/lang/String;" />
-      <node id="6369157954015654608" at="32,0,36,0" concept="4" trace="getAdditionalInfo#()Ljava/lang/String;" />
-      <node id="6369157954015654608" at="36,0,40,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6369157954015654608" at="40,0,44,0" concept="4" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6369157954015654608" at="61,0,65,0" concept="4" trace="isShowAsIntention#()Z" />
-      <node id="6369157954015654607" at="68,0,73,0" concept="4" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6369157954015788888" at="52,0,59,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="6369157954015936622" at="73,0,80,0" concept="8" trace="_quotation_createNode_3djts0_a0a0a0a1a0a#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6369157954015788877" at="46,292,59,11" concept="1" />
-      <node id="6369157954015654608" at="44,0,61,0" concept="4" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="6369157954015654608" at="26,41,65,7" concept="1" />
-      <node id="6369157954015654607" at="25,0,67,0" concept="0" trace="MigrateCanBeCoerced_MigrationScript#()V" />
-      <scope id="6369157954015654608" at="29,31,30,45" />
-      <scope id="6369157954015654608" at="33,41,34,45" />
-      <scope id="6369157954015654608" at="37,54,38,169" />
-      <scope id="6369157954015654715" at="41,59,42,299" />
-      <scope id="6369157954015814317" at="48,43,49,1034" />
-      <scope id="6369157954015654608" at="62,42,63,20" />
-      <scope id="6369157954015654607" at="70,41,71,161" />
-      <scope id="6369157954015814316" at="48,0,51,0">
-        <var name="it" id="6369157954015814316" />
-      </scope>
-      <scope id="6369157954015654608" at="28,0,32,0" />
-      <scope id="6369157954015654608" at="32,0,36,0" />
-      <scope id="6369157954015654608" at="36,0,40,0" />
-      <scope id="6369157954015654608" at="40,0,44,0">
-        <var name="node" id="6369157954015654608" />
-      </scope>
-      <scope id="6369157954015654608" at="61,0,65,0" />
-      <scope id="6369157954015788889" at="52,39,57,548">
-        <var name="arg" id="6369157954016131638" />
-        <var name="mc" id="6369157954016837593" />
-      </scope>
-      <scope id="6369157954015654607" at="68,0,73,0" />
-      <scope id="6369157954015936622" at="73,85,78,24">
-        <var name="facade" id="6369157954015936622" />
-        <var name="quotedNode_2" id="6369157954015936622" />
-      </scope>
-      <scope id="6369157954015788888" at="52,0,59,0">
-        <var name="it" id="6369157954015788888" />
-      </scope>
-      <scope id="6369157954015936622" at="73,0,80,0">
-        <var name="parameter_1" id="6369157954015936622" />
-      </scope>
-      <scope id="6369157954015654610" at="45,58,59,11" />
-      <scope id="6369157954015654608" at="44,0,61,0">
-        <var name="node" id="6369157954015654608" />
-      </scope>
-      <scope id="6369157954015654607" at="25,48,65,7" />
-      <scope id="6369157954015654607" at="25,0,67,0" />
-      <unit id="6369157954015814316" at="47,404,51,9" name="jetbrains.mps.baseLanguage.scripts.MigrateCanBeCoerced_MigrationScript$1$1" />
-      <unit id="6369157954015788888" at="51,24,59,9" name="jetbrains.mps.baseLanguage.scripts.MigrateCanBeCoerced_MigrationScript$1$2" />
-      <unit id="6369157954015654608" at="27,28,65,5" name="jetbrains.mps.baseLanguage.scripts.MigrateCanBeCoerced_MigrationScript$1" />
-      <unit id="6369157954015654607" at="24,0,81,0" name="jetbrains.mps.baseLanguage.scripts.MigrateCanBeCoerced_MigrationScript" />
-    </file>
-    <file name="ScriptsDescriptor.java">
-      <node id="6369157954015654607" at="24,74,25,72" concept="1" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c9(jetbrains.mps.baseLanguage.scripts)/818296778609449086">

@@ -97,10 +97,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_ConceptFqNameRefExpression_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
       InferenceRule_Runtime inferenceRule = new typeof_ConceptIdRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -166,10 +162,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_LinkIdRefExpression_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_LinkNameRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -266,10 +258,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_Node_GetConceptOperation_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_Node_GetContainingLinkOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -402,10 +390,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_PropertyIdRefExpression_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_PropertyNameRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
