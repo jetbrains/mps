@@ -46,15 +46,12 @@
     <classNode extendsClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
   </dependency>
   <dependency className="jetbrains.mps.lang.editor.table.runtime.HierarchycalTableModel">
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.editor.table.runtime.Utils" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.action.SNodeFactoryOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
@@ -62,15 +59,12 @@
     <classNode extendsClassName="jetbrains.mps.lang.editor.table.runtime.AbstractTableModel" />
   </dependency>
   <dependency className="jetbrains.mps.lang.editor.table.runtime.HierarchycalTableModelWithHeader">
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.editor.table.runtime.Utils" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.action.SNodeFactoryOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
@@ -132,7 +126,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.lang.editor.table.runtime.XYCTableModel">
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
@@ -145,8 +138,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.action.DefaultSChildSetter" />
     <classNode dependClassName="jetbrains.mps.smodel.action.ModelActions" />
     <classNode dependClassName="jetbrains.mps.smodel.action.SNodeFactoryOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
