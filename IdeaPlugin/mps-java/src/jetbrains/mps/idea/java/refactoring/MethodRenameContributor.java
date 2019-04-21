@@ -41,7 +41,7 @@ public class MethodRenameContributor implements RenameRefactoringContributor {
     String oldName = node.getName();
     final RenameMethodDialog d = new RenameMethodDialog(project, oldName);
     d.show();
-    final String newName = d.getName();
+    final String newName = d.getResultValue();
     if (newName == null) {
       return;
     }

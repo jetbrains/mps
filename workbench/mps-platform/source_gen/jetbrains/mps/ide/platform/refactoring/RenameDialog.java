@@ -5,7 +5,6 @@ package jetbrains.mps.ide.platform.refactoring;
 import com.intellij.refactoring.RefactoringBundle;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.util.annotation.ToRemove;
 
 public class RenameDialog extends StringChooserDialog {
   private static String REFACTORING_NAME = RefactoringBundle.message("rename.title");
@@ -13,17 +12,6 @@ public class RenameDialog extends StringChooserDialog {
   public RenameDialog(@NotNull Project project, String oldName, String nodeType) {
     super(project, REFACTORING_NAME, RefactoringBundle.message("rename.0.and.its.usages.to", String.format("%s '%s'", nodeType, oldName)), oldName);
   }
-
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.ide.platform.refactoring.StringChooserDialog#getResultValue() } instead
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public String getName() {
-    return getResultValue();
-  }
-
 
   public static String getNewName(Project project, String oldName, String node) {
     RenameDialog dialog = new RenameDialog(project, oldName, node);

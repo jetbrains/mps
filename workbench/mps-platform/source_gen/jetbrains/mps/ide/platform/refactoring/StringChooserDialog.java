@@ -16,7 +16,6 @@ import java.awt.GridBagConstraints;
 import com.intellij.util.ui.JBUI;
 import com.intellij.ui.DocumentAdapter;
 import javax.swing.event.DocumentEvent;
-import jetbrains.mps.util.annotation.ToRemove;
 
 public class StringChooserDialog extends RefactoringDialog {
   protected JPanel myPanel;
@@ -136,16 +135,6 @@ public class StringChooserDialog extends RefactoringDialog {
   @Nullable
   protected String checkValue() {
     return null;
-  }
-
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.ide.platform.refactoring.StringChooserDialog#getResultValue() } instead
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public String getResultString() {
-    return getResultValue();
   }
 
   public String getResultValue() {
