@@ -1170,8 +1170,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("5475888311765592551", new QueriesGenerated.RTQ(0, null));
-    rtqMethods.put("3754890006475713382", new QueriesGenerated.RTQ(1, null));
-    rtqMethods.put("3754890006475713405", new QueriesGenerated.RTQ(2, null));
+    rtqMethods.put("3754890006475713382", new QueriesGenerated.RTQ(1, "Object"));
+    rtqMethods.put("3754890006475713405", new QueriesGenerated.RTQ(2, "Object"));
     rtqMethods.put("666608846720191989", new QueriesGenerated.RTQ(3, "ExecutorRunProfileState_Template"));
     rtqMethods.put("1735048880741920084", new QueriesGenerated.RTQ(4, "RunConfigurationTemplateWeave"));
     rtqMethods.put("1735048880741931625", new QueriesGenerated.RTQ(5, "RunConfigurationTemplateWeave"));

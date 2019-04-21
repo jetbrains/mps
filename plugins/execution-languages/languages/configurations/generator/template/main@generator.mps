@@ -1509,7 +1509,7 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
       <node concept="3uibUv" id="3gs394eDyH_" role="1tU5fm">
-        <ref role="3uigEE" node="7WkE0gr9Ci" resolve="RunConfigurationTemplate" />
+        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
         <node concept="1ZhdrF" id="3gs394eDyHA" role="lGtFl">
           <property role="2qtEX8" value="classifier" />
           <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
@@ -1574,7 +1574,7 @@
       <node concept="37vLTG" id="3gs394eDxex" role="3clF46">
         <property role="TrG5h" value="configuration" />
         <node concept="3uibUv" id="3gs394eDxez" role="1tU5fm">
-          <ref role="3uigEE" node="7WkE0gr9Ci" resolve="RunConfigurationTemplate" />
+          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
           <node concept="1ZhdrF" id="3gs394eDyHX" role="lGtFl">
             <property role="2qtEX8" value="classifier" />
             <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
