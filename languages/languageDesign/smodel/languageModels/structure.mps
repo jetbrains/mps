@@ -329,27 +329,6 @@
     <node concept="t5JxF" id="2k7p7sTvW9p" role="lGtFl">
       <property role="t5JxN" value="Casts node to the given type. 'asCast' property is true &lt;=&gt; the operation is null-safe (null if the provided type is incompatible)" />
     </node>
-    <node concept="1TJgyj" id="g_PxMaO" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="leftExpression_old" />
-      <property role="20lbJX" value="0..1" />
-      <property role="IQ2ns" value="1140138123956" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-      <node concept="asaX9" id="5PLE6SbpWOr" role="lGtFl">
-        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression&quot;" />
-        <property role="YLPcu" value="3.5" />
-      </node>
-    </node>
-    <node concept="1TJgyj" id="g_PxNly" role="1TKVEi">
-      <property role="20kJfa" value="concept_old" />
-      <property role="20lbJX" value="0..1" />
-      <property role="IQ2ns" value="1140138128738" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-      <node concept="asaX9" id="5PLE6SbpWSc" role="lGtFl">
-        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression&quot;" />
-        <property role="YLPcu" value="3.5" />
-      </node>
-    </node>
     <node concept="1TJgyi" id="i1BlNJ7" role="1TKVEl">
       <property role="TrG5h" value="asCast" />
       <property role="IQ2nx" value="1238684351431" />
