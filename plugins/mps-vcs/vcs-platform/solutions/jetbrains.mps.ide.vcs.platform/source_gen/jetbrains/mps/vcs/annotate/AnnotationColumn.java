@@ -60,6 +60,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
@@ -359,7 +360,7 @@ __switch__:
     }
     Iterable<EditorCell> nonTrivialCells = Sequence.fromIterable(EditorUtils.getCellDescendants(editor.getRootCell())).where(new IWhereFilter<EditorCell>() {
       public boolean accept(EditorCell cell) {
-        return cell.getWidth() * cell.getHeight() != 0;
+        return !((cell instanceof EditorCell_Collection)) && cell.getWidth() * cell.getHeight() != 0;
       }
     });
     Set<Integer> yCoordinatesSet = SetSequence.fromSetWithValues(new HashSet<Integer>(), Sequence.fromIterable(nonTrivialCells).select(new ISelector<EditorCell, Integer>() {
