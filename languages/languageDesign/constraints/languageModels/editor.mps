@@ -1353,9 +1353,6 @@
   <node concept="3p36aQ" id="1wEcoXjJMAi">
     <ref role="aqKnT" to="tp1t:5Q2IUnK$7k9" resolve="ConstraintFunctionParameter_childNode" />
   </node>
-  <node concept="3p36aQ" id="1wEcoXjJMAj">
-    <ref role="aqKnT" to="tp1t:hwotxKp" resolve="ConstraintFunctionParameter_childConceptNode" />
-  </node>
   <node concept="3p36aQ" id="1wEcoXjJMAk">
     <ref role="aqKnT" to="tp1t:42wXlt$sC5U" resolve="ConstraintFunctionParameter_contextRole" />
   </node>
@@ -1370,9 +1367,6 @@
   </node>
   <node concept="3p36aQ" id="1wEcoXjJMAo">
     <ref role="aqKnT" to="tp1t:3YPB4zZiSNX" resolve="ConstraintFunctionParameter_inEditor" />
-  </node>
-  <node concept="3p36aQ" id="1wEcoXjJMAp">
-    <ref role="aqKnT" to="tp1t:hwoXsFk" resolve="ConstraintFunctionParameter_linkNode" />
   </node>
   <node concept="3p36aQ" id="1wEcoXjJMAq">
     <ref role="aqKnT" to="tp1t:gGEsrNs" resolve="ConstraintsFunctionParameter_node" />

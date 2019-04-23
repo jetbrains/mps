@@ -308,36 +308,6 @@
     <property role="EcuMT" value="1202989658459" />
     <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
   </node>
-  <node concept="1TIwiD" id="hwotxKp">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="ConstraintFunctionParameter_childConceptNode" />
-    <property role="2_RsDV" value="none" />
-    <property role="3GE5qa" value="Parameters" />
-    <property role="34LRSv" value="childConcept" />
-    <property role="R4oN_" value="the concept of the child/descendant node to test against" />
-    <property role="EcuMT" value="1203001236505" />
-    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
-    <node concept="asaX9" id="3ISr2Yi73tz" role="lGtFl">
-      <property role="YLPcu" value="3.5" />
-      <property role="YLQ7P" value="use ConstraintFunctionParameter_childConcept instead" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="hwoXsFk">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="ConstraintFunctionParameter_linkNode" />
-    <property role="2_RsDV" value="none" />
-    <property role="3GE5qa" value="Parameters" />
-    <property role="34LRSv" value="link" />
-    <property role="R4oN_" value="the containment link in question between the parent and the (potential or existing) child" />
-    <property role="EcuMT" value="1203009604308" />
-    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
-    <node concept="asaX9" id="3ISr2Yi80g2" role="lGtFl">
-      <property role="YLPcu" value="3.5" />
-      <property role="YLQ7P" value="use ConstraintFunctionParameter_link instead" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="hyXa2tv">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />

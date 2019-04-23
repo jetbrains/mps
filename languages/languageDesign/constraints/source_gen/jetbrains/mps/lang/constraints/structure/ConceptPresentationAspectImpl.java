@@ -13,7 +13,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConceptParameter_ReferentSearchScope_enclosingNode;
   private ConceptPresentation props_ConstraintFunctionParameter_checkedNode;
   private ConceptPresentation props_ConstraintFunctionParameter_childConcept;
-  private ConceptPresentation props_ConstraintFunctionParameter_childConceptNode;
   private ConceptPresentation props_ConstraintFunctionParameter_childNode;
   private ConceptPresentation props_ConstraintFunctionParameter_containingLink;
   private ConceptPresentation props_ConstraintFunctionParameter_containmentLink;
@@ -22,7 +21,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConstraintFunctionParameter_exists;
   private ConceptPresentation props_ConstraintFunctionParameter_inEditor;
   private ConceptPresentation props_ConstraintFunctionParameter_link;
-  private ConceptPresentation props_ConstraintFunctionParameter_linkNode;
   private ConceptPresentation props_ConstraintFunctionParameter_linkTarget;
   private ConceptPresentation props_ConstraintFunctionParameter_linkTargetNode;
   private ConceptPresentation props_ConstraintFunctionParameter_newReferentNode;
@@ -68,7 +66,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL);
           cpb.deprecateAggregation(0x341b038f9307e5d8L, "alternativeIcon");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a0b0xb);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a0b0vb);
           props_ConceptConstraints = cpb.create();
         }
         return props_ConceptConstraints;
@@ -97,15 +95,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintFunctionParameter_childConcept = cpb.create();
         }
         return props_ConstraintFunctionParameter_childConcept;
-      case LanguageConceptSwitch.ConstraintFunctionParameter_childConceptNode:
-        if (props_ConstraintFunctionParameter_childConceptNode == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("the concept of the child/descendant node to test against");
-          cpb.rawPresentation("childConcept");
-          props_ConstraintFunctionParameter_childConceptNode = cpb.create();
-        }
-        return props_ConstraintFunctionParameter_childConceptNode;
       case LanguageConceptSwitch.ConstraintFunctionParameter_childNode:
         if (props_ConstraintFunctionParameter_childNode == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -172,15 +161,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConstraintFunctionParameter_link = cpb.create();
         }
         return props_ConstraintFunctionParameter_link;
-      case LanguageConceptSwitch.ConstraintFunctionParameter_linkNode:
-        if (props_ConstraintFunctionParameter_linkNode == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("the containment link in question between the parent and the (potential or existing) child");
-          cpb.rawPresentation("link");
-          props_ConstraintFunctionParameter_linkNode = cpb.create();
-        }
-        return props_ConstraintFunctionParameter_linkNode;
       case LanguageConceptSwitch.ConstraintFunctionParameter_linkTarget:
         if (props_ConstraintFunctionParameter_linkTarget == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
