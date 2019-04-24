@@ -126,10 +126,16 @@ public class constants extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
+        try {
+          Integer.parseInt(pattern);
+        } catch (NumberFormatException e) {
+          return false;
+        }
+
         if (strictly) {
-          return REGEXP_w0ulk7_a0a0a0a21c5.matcher(pattern).matches();
+          return REGEXP_w0ulk7_a0a0a2a21c5.matcher(pattern).matches();
         } else {
-          return REGEXP_w0ulk7_a0a0a0a0m2f.matcher(pattern).matches();
+          return REGEXP_w0ulk7_a0a0a0c0m2f.matcher(pattern).matches();
         }
       }
     }
@@ -537,8 +543,8 @@ public class constants extends SubstituteMenuBase {
       }, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, "jetbrains.mps.baseLanguage.structure.ArrayLiteral")));
     }
   }
-  private static Pattern REGEXP_w0ulk7_a0a0a0a21c5 = Pattern.compile("-?\\d+", 0);
-  private static Pattern REGEXP_w0ulk7_a0a0a0a0m2f = Pattern.compile("-?\\d*", 0);
+  private static Pattern REGEXP_w0ulk7_a0a0a2a21c5 = Pattern.compile("-?\\d+", 0);
+  private static Pattern REGEXP_w0ulk7_a0a0a0c0m2f = Pattern.compile("-?\\d*", 0);
   private static Pattern REGEXP_w0ulk7_a0a0a21c6 = Pattern.compile("-?\\d+(?:l|L)", 0);
   private static Pattern REGEXP_w0ulk7_a0a0a21c8 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[dD]?", 0);
   private static Pattern REGEXP_w0ulk7_a0a0a21c9 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[fF]", 0);
