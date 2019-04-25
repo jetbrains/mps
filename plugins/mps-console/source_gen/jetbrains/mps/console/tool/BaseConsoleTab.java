@@ -78,18 +78,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
-import java.util.Scanner;
-import com.intellij.openapi.application.ApplicationManager;
-import java.io.StringWriter;
-import java.io.PrintWriter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.console.actions.ClosureHoldingNodeUtil;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.smodel.SModelUtil_new;
 
 public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Disposable {
   private static final Logger LOG = LogManager.getLogger(BaseConsoleTab.class);
@@ -465,74 +456,6 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     };
   }
 
-  public ConsoleStream getConsoleStream() {
-    return new ConsoleStream() {
-      public void addText(String text) {
-        Scanner scanner = new Scanner(text);
-        while (scanner.hasNextLine()) {
-          String line = scanner.nextLine();
-          if ((line != null && line.length() > 0)) {
-            addResponse(createTextResponseItem_6q36mf_a0a0b0b0a0a0a0oc(line));
-          }
-          if (scanner.hasNextLine() || text.charAt(text.length() - 1) == '\n') {
-            addResponse(createNewLineResponseItem_6q36mf_a0a0c0b0a0a0a0oc());
-          }
-        }
-      }
-      private void addResponse(final SNode response) {
-        // here we call invokeLater() to separate changes for undo purposes 
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            // we are not in command here 
-            myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
-              public void doExecute() {
-                addNodeImports(response);
-                ListSequence.fromList(SLinkOperations.getChildren(getLastReponse(), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item"))).addElement(response);
-              }
-            });
-          }
-        });
-      }
-      public void addNode(final SNode node) {
-        addResponse(createNodeResponseItem_6q36mf_a0a0c0a0a0oc(node));
-      }
-      public void addNodeRef(SNode target) {
-        SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bbb600cL, "jetbrains.mps.console.base.structure.NodeReferencePresentation"));
-        SLinkOperations.setTarget(node, MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target"), target);
-        addNode(node);
-      }
-      public void addException(Throwable t) {
-        StringWriter writer = new StringWriter();
-        t.printStackTrace(new PrintWriter(writer));
-        SNode exceptionHolder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, "jetbrains.mps.console.base.structure.ExceptionHolder"));
-        SPropertyOperations.set(exceptionHolder, MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, 0x5b02f032bc9cb8a9L, "stackTrace"), writer.toString());
-        SPropertyOperations.set(exceptionHolder, MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text"), t.getClass().getName());
-        addNode(exceptionHolder);
-      }
-      public void addClosure(Runnable closure, String text) {
-        SNode nodeWithClosure = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xf6d4d958ec2f2c6L, "jetbrains.mps.console.base.structure.NodeWithClosure"));
-        SPropertyOperations.assign(nodeWithClosure, MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text"), text);
-        ClosureHoldingNodeUtil.getInstance().register(nodeWithClosure, closure);
-        addNode(nodeWithClosure);
-      }
-      public void addSequence(final Project project, final _FunctionTypes._return_P0_E0<? extends SearchResults> results, int resultsCount, String resultDescription) {
-        if (resultsCount == 0) {
-          addText("empty sequence");
-        } else {
-          addClosure(new Runnable() {
-            public void run() {
-              project.getRepository().getModelAccess().runReadAction(new Runnable() {
-                public void run() {
-                  ConsoleUtil.show(project, results);
-                }
-              });
-            }
-          }, resultsCount + " " + resultDescription);
-        }
-      }
-    };
-  }
-
   protected SNode getLastReponse() {
     SNode last = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history")), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xa835f28c1aa02beL, 0x63da33792b5df49aL, "item"))).last(), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, "jetbrains.mps.console.base.structure.Response"));
     if (last != null) {
@@ -554,7 +477,8 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
         }
       }
     });
-    BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder")), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command")), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command"), SMethodTrimmedId.create("execute", null, "5WvH$QO9bva"), getConsoleContext(), getConsoleStream(), new Runnable() {
+    ConsoleStream consoleStream = new ConsoleStreamImpl(this);
+    BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder")), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command")), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command"), SMethodTrimmedId.create("execute", null, "5WvH$QO9bva"), getConsoleContext(), consoleStream, new Runnable() {
       public void run() {
         if (myProject.getModelAccess().canWrite()) {
           // non-undoable actions should not affect project files 
@@ -565,7 +489,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
             ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history")), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xa835f28c1aa02beL, 0x63da33792b5df49aL, "item"))).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"))));
             SLinkOperations.setNewChild(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder"));
             SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x7d401fa40806ebe7L, "cursor")), MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, 0x4fe9275cea077232L, "target"), SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder")));
-            check_6q36mf_a3a0a0a0a1a0a0c0a3a07(executeBefore);
+            check_6q36mf_a3a0a0a0a1a0a0c0a4a86(executeBefore);
           }
         });
       }
@@ -579,7 +503,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
             } else {
               SLinkOperations.setTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"), typedCommand[0]);
             }
-            check_6q36mf_a1a0a0a0a3a0d0sc(executeAfter);
+            check_6q36mf_a1a0a0a0a3a0e0qc(executeAfter);
           }
         });
       }
@@ -616,32 +540,13 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static SNode createTextResponseItem_6q36mf_a0a0b0b0a0a0a0oc(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, "jetbrains.mps.console.base.structure.TextResponseItem"), null, null, false);
-    n1.setProperty(MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, 0x4e3b035171b35d11L, "text"), p0 + "");
-    return n1;
-  }
-  private static SNode createNewLineResponseItem_6q36mf_a0a0c0b0a0a0a0oc() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35d30L, "jetbrains.mps.console.base.structure.NewLineResponseItem"), null, null, false);
-    return n1;
-  }
-  private static SNode createNodeResponseItem_6q36mf_a0a0c0a0a0oc(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, "jetbrains.mps.console.base.structure.NodeResponseItem"), null, null, false);
-    if (node0 != null) {
-      n1.addChild(MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, 0x4e3b035171b35c15L, "node"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"))));
-    }
-    return n1;
-  }
-  private static void check_6q36mf_a3a0a0a0a1a0a0c0a3a07(Runnable checkedDotOperand) {
+  private static void check_6q36mf_a3a0a0a0a1a0a0c0a4a86(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }
 
   }
-  private static void check_6q36mf_a1a0a0a0a3a0d0sc(Runnable checkedDotOperand) {
+  private static void check_6q36mf_a1a0a0a0a3a0e0qc(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }
