@@ -7307,8 +7307,8 @@
             <node concept="37vLTw" id="2BHiRxeudgy" role="2Oq$k0">
               <ref role="3cqZAo" node="3UdhnxHuoLR" resolve="myModel" />
             </node>
-            <node concept="liA8E" id="3UdhnxHuoNp" role="2OqNvi">
-              <ref role="37wK5l" to="89o2:3JD6rrJwcYd" resolve="isRecusive" />
+            <node concept="liA8E" id="42N3Xtu8aOm" role="2OqNvi">
+              <ref role="37wK5l" to="89o2:3JD6rrJwcYd" resolve="isRecursive" />
             </node>
           </node>
         </node>
@@ -8365,8 +8365,8 @@
                                 <node concept="37vLTw" id="2BHiRxgm6R_" role="2Oq$k0">
                                   <ref role="3cqZAo" node="3JD6rrJwk8L" resolve="usages" />
                                 </node>
-                                <node concept="liA8E" id="1KUoCiqb6Mq" role="2OqNvi">
-                                  <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults()" resolve="getSearchResults" />
+                                <node concept="liA8E" id="3UJn25zMZKu" role="2OqNvi">
+                                  <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults2()" resolve="getSearchResults2" />
                                 </node>
                               </node>
                               <node concept="3clFbS" id="1KUoCiqb6Ms" role="2LFqv$">

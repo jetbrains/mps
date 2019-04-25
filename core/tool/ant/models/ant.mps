@@ -4658,30 +4658,50 @@
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="gQDJKN6Qj_" role="3cqZAp">
-          <node concept="2OqwBi" id="gQDJKN6QjA" role="3clFbw">
-            <node concept="liA8E" id="gQDJKN6QjB" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
-            </node>
-            <node concept="37vLTw" id="gQDJKN6QjC" role="2Oq$k0">
-              <ref role="3cqZAo" node="gQDJKN6Qjw" resolve="classPathRoots" />
-            </node>
-          </node>
-          <node concept="3clFbS" id="gQDJKN6QjD" role="3clFbx">
-            <node concept="YS8fn" id="gQDJKN6QjE" role="3cqZAp">
-              <node concept="2ShNRf" id="gQDJKN6QjF" role="YScLw">
-                <node concept="1pGfFk" id="gQDJKN6QjG" role="2ShVmc">
-                  <ref role="37wK5l" to="gola:~BuildException.&lt;init&gt;(java.lang.String)" resolve="BuildException" />
-                  <node concept="Xl_RD" id="gQDJKN6QjH" role="37wK5m">
-                    <property role="Xl_RC" value="Dependency on MPS build scripts is required to generate MPS modules." />
+              <node concept="3clFbJ" id="gQDJKN6Qj_" role="3cqZAp">
+                <node concept="2OqwBi" id="gQDJKN6QjA" role="3clFbw">
+                  <node concept="liA8E" id="gQDJKN6QjB" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
+                  </node>
+                  <node concept="37vLTw" id="gQDJKN6QjC" role="2Oq$k0">
+                    <ref role="3cqZAo" node="gQDJKN6Qjw" resolve="classPathRoots" />
+                  </node>
+                </node>
+                <node concept="3clFbS" id="gQDJKN6QjD" role="3clFbx">
+                  <node concept="3cpWs8" id="7Ronifnpy2r" role="3cqZAp">
+                    <node concept="3cpWsn" id="7Ronifnpy2s" role="3cpWs9">
+                      <property role="TrG5h" value="m" />
+                      <node concept="17QB3L" id="7Ronifnpy2q" role="1tU5fm" />
+                      <node concept="Xl_RD" id="7Ronifnpy2t" role="33vP2m">
+                        <property role="Xl_RC" value="Dependency on MPS build scripts (e.g. 'mps', 'mpsWorkbench' or 'mpsPlugin' is required to generate MPS modules in project %s." />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="YS8fn" id="gQDJKN6QjE" role="3cqZAp">
+                    <node concept="2ShNRf" id="gQDJKN6QjF" role="YScLw">
+                      <node concept="1pGfFk" id="gQDJKN6QjG" role="2ShVmc">
+                        <ref role="37wK5l" to="gola:~BuildException.&lt;init&gt;(java.lang.String)" resolve="BuildException" />
+                        <node concept="2YIFZM" id="7Ronifnp$hh" role="37wK5m">
+                          <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                          <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                          <node concept="37vLTw" id="7RonifnpA62" role="37wK5m">
+                            <ref role="3cqZAo" node="7Ronifnpy2s" resolve="m" />
+                          </node>
+                          <node concept="2OqwBi" id="7RonifnpBVN" role="37wK5m">
+                            <node concept="1rXfSq" id="7RonifnpB54" role="2Oq$k0">
+                              <ref role="37wK5l" to="gola:~ProjectComponent.getProject()" resolve="getProject" />
+                            </node>
+                            <node concept="liA8E" id="7RonifnpC$t" role="2OqNvi">
+                              <ref role="37wK5l" to="gola:~Project.getName()" resolve="getName" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbH" id="gQDJKN6QjI" role="3cqZAp" />
           </node>
         </node>
         <node concept="3cpWs8" id="gQDJKN6QjJ" role="3cqZAp">

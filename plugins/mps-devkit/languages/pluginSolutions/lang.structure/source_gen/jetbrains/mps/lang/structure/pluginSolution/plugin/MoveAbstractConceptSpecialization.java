@@ -96,8 +96,9 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
       }).toListSequence();
       CommentUtil.commentOutAll(parts);
     } else {
-      SModelOperations.addRootNode(editorModel, createSubstituteMenu_Default_c4c66o_a0a0a0b0c(from));
+      existingSubstituteMenu = SModelOperations.addRootNode(editorModel, createSubstituteMenu_Default_c4c66o_a0a0a0a1a2(from));
     }
+    ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).addElement(_quotation_createNode_c4c66o_a0a2a2());
   }
   public Collection<SNode> findInstances(final SAbstractConcept concept, SearchScope searchScope) {
     {
@@ -141,10 +142,16 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     }
     return n1;
   }
-  private static SNode createSubstituteMenu_Default_c4c66o_a0a0a0b0c(SNode node0) {
+  private static SNode createSubstituteMenu_Default_c4c66o_a0a0a0a1a2(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default"), null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"), node0);
     return n1;
+  }
+  private static SNode _quotation_createNode_c4c66o_a0a2a2() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x88a6ffdb3b4f8c6L, "SubstituteMenuPart_Subconcepts"), null, null, false);
+    return quotedNode_1;
   }
 }

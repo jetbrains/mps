@@ -79,7 +79,7 @@ public class InlineMethodDialog extends RefactoringDialog {
     JRadioButton button1 = this.createButton(group, checkboxesPanel, false, "Inline this invocation only and keep the method");
     JRadioButton button2 = this.createButton(group, checkboxesPanel, true, "Inline all invocations and remove the method");
 
-    if (myModel.isRecusive()) {
+    if (myModel.isRecursive()) {
       button2.setEnabled(false);
     }
     if (myModel.getMethodCall() != null) {
@@ -203,7 +203,7 @@ public class InlineMethodDialog extends RefactoringDialog {
     myEditorRepo.getModelAccess().executeCommand(new EditorCommand(myEditorContext) {
       protected void doExecute() {
         if (usages != null) {
-          for (SearchResult<SNode> res : ListSequence.fromList(usages.getSearchResults())) {
+          for (SearchResult<SNode> res : ListSequence.fromList(usages.getSearchResults2())) {
             InlineMethodRefactoring ref = new InlineMethodRefactoring(res.getObject());
             ref.doRefactor();
           }

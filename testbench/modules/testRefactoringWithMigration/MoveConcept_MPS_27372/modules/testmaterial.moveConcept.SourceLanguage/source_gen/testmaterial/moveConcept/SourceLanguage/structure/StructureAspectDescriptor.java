@@ -16,6 +16,8 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptMoveConcept_A = createDescriptorForMoveConcept_A();
   /*package*/ final ConceptDescriptor myConceptMoveConcept_B = createDescriptorForMoveConcept_B();
+  /*package*/ final ConceptDescriptor myConceptMoveConcept_CompletionSuperconcept = createDescriptorForMoveConcept_CompletionSuperconcept();
+  /*package*/ final ConceptDescriptor myConceptMoveConcept_CompletionTest = createDescriptorForMoveConcept_CompletionTest();
   /*package*/ final ConceptDescriptor myConceptMovePropertyContainer = createDescriptorForMovePropertyContainer();
   /*package*/ final ConceptDescriptor myConceptMovePropertyInstance = createDescriptorForMovePropertyInstance();
   /*package*/ final ConceptDescriptor myConceptMovePropertySupercontainer = createDescriptorForMovePropertySupercontainer();
@@ -33,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptMoveConcept_A, myConceptMoveConcept_B, myConceptMovePropertyContainer, myConceptMovePropertyInstance, myConceptMovePropertySupercontainer);
+    return Arrays.asList(myConceptMoveConcept_A, myConceptMoveConcept_B, myConceptMoveConcept_CompletionSuperconcept, myConceptMoveConcept_CompletionTest, myConceptMovePropertyContainer, myConceptMovePropertyInstance, myConceptMovePropertySupercontainer);
   }
 
   @Override
@@ -44,6 +46,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptMoveConcept_A;
       case LanguageConceptSwitch.MoveConcept_B:
         return myConceptMoveConcept_B;
+      case LanguageConceptSwitch.MoveConcept_CompletionSuperconcept:
+        return myConceptMoveConcept_CompletionSuperconcept;
+      case LanguageConceptSwitch.MoveConcept_CompletionTest:
+        return myConceptMoveConcept_CompletionTest;
       case LanguageConceptSwitch.MovePropertyContainer:
         return myConceptMovePropertyContainer;
       case LanguageConceptSwitch.MovePropertyInstance:
@@ -80,6 +86,25 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/1204068184860841");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForMoveConcept_CompletionSuperconcept() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testmaterial.moveConcept.SourceLanguage", "MoveConcept_CompletionSuperconcept", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x993386ec95b6ac4L);
+    b.class_(false, true, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/689957216393587396");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForMoveConcept_CompletionTest() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testmaterial.moveConcept.SourceLanguage", "MoveConcept_CompletionTest", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x40b30fd75e3f0f6fL);
+    b.class_(false, false, true);
+    b.super_("testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_CompletionSuperconcept", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x993386ec95b6ac4L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/4662087456932171631");
+    b.version(2);
+    b.aggregate("child", 0x40b30fd75e3f0f70L).target(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x993386ec95b6ac4L).optional(true).ordered(true).multiple(true).origin("4662087456932171632").done();
+    b.alias("concept239");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMovePropertyContainer() {
