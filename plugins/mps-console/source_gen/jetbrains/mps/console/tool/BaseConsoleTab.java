@@ -496,16 +496,16 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       }
     }, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
+        consoleStream.commitResult();
         myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
           public void run() {
-            consoleStream.commitResult();
             if (SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x7d401fa40806ebe7L, "cursor")), MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, 0x4fe9275cea077232L, "target")) == SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"))) {
               SLinkOperations.setTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"), typedCommand[0]);
               SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x7d401fa40806ebe7L, "cursor")), MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, 0x4fe9275cea077232L, "target"), SLinkOperations.getTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder")));
             } else {
               SLinkOperations.setTarget(myRoot, MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"), typedCommand[0]);
             }
-            check_6q36mf_a2a0a0d0a4a86(executeAfter);
+            check_6q36mf_a1a0b0d0a4a86(executeAfter);
           }
         });
       }
@@ -548,7 +548,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static void check_6q36mf_a2a0a0d0a4a86(Runnable checkedDotOperand) {
+  private static void check_6q36mf_a1a0b0d0a4a86(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }

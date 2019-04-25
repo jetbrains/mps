@@ -135,7 +135,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.console.tool.ConsoleStreamImpl">
-    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="java.io.PrintWriter" />
     <classNode dependClassName="java.io.StringWriter" />
     <classNode dependClassName="java.lang.Object" />
@@ -143,6 +142,8 @@
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Scanner" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.console.actions.ClosureHoldingNodeUtil" />
@@ -159,6 +160,7 @@
     <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.console.tool.ConsoleStream" />
   </dependency>
