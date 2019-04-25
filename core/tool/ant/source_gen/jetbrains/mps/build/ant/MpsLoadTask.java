@@ -413,10 +413,10 @@ public class MpsLoadTask extends Task {
       classPathRoots = Collections.singletonList(new File(myMpsHome, "lib/"));
     } else {
       classPathRoots = MPSClasspathUtil.getClassPathRootsFromDependencies(getProject());
-    }
-    if (classPathRoots.isEmpty()) {
-      throw new BuildException("Dependency on MPS build scripts is required to generate MPS modules.");
-
+      if (classPathRoots.isEmpty()) {
+        String m = "Dependency on MPS build scripts (e.g. 'mps', 'mpsWorkbench' or 'mpsPlugin' is required to generate MPS modules in project %s.";
+        throw new BuildException(String.format(m, getProject().getName()));
+      }
     }
     Set<File> classPath = new LinkedHashSet<File>();
     for (File file : classPathRoots) {
