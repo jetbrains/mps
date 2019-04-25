@@ -14,4 +14,5 @@ public interface ConsoleStream {
   void addException(Throwable t);
   void addClosure(Runnable closure, String text);
   void addSequence(Project project, _FunctionTypes._return_P0_E0<? extends SearchResults> results, int resultsCount, String resultDescription);
+  void commitResult();
 }

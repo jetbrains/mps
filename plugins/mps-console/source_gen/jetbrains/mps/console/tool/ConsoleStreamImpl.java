@@ -91,6 +91,9 @@ public class ConsoleStreamImpl implements ConsoleStream {
       }, resultsCount + " " + resultDescription);
     }
   }
+  @Override
+  public void commitResult() {
+  }
   private static SNode createTextResponseItem_kp3e3v_a0a0b0b0e(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, "jetbrains.mps.console.base.structure.TextResponseItem"), null, null, false);
