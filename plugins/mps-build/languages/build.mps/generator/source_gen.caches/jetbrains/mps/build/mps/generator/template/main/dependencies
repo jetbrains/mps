@@ -35,6 +35,7 @@
     <classNode dependClassName="jetbrains.mps.build.mps.util.ModuleFinder" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.ModuleLoader" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.ModulePlugins" />
+    <classNode dependClassName="jetbrains.mps.build.mps.util.RuntimeDependencies" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.VisibleModules" />
     <classNode dependClassName="jetbrains.mps.build.util.Context" />
     <classNode dependClassName="jetbrains.mps.build.util.DependenciesHelper" />

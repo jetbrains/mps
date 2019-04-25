@@ -60,6 +60,9 @@
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
+      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -2597,38 +2600,49 @@
                     <node concept="3clFbS" id="41K1b4v5Z$f" role="2VODD2">
                       <node concept="3clFbJ" id="7Kvxa_ns$MP" role="3cqZAp">
                         <node concept="3clFbS" id="7Kvxa_ns$MR" role="3clFbx">
+                          <node concept="3cpWs8" id="76sgnDpkzJJ" role="3cqZAp">
+                            <node concept="3cpWsn" id="76sgnDpkzJK" role="3cpWs9">
+                              <property role="TrG5h" value="rtDeps" />
+                              <node concept="3uibUv" id="76sgnDpkfEh" role="1tU5fm">
+                                <ref role="3uigEE" to="tken:76sgnDoh9Jv" resolve="RuntimeDependencies" />
+                              </node>
+                              <node concept="2ShNRf" id="76sgnDpkzJL" role="33vP2m">
+                                <node concept="HV5vD" id="76sgnDpkzJM" role="2ShVmc">
+                                  <ref role="HV5vE" to="tken:76sgnDoh9Jv" resolve="RuntimeDependencies" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbF" id="76sgnDpjMKo" role="3cqZAp">
+                            <node concept="2OqwBi" id="76sgnDpkfm3" role="3clFbG">
+                              <node concept="37vLTw" id="76sgnDpkzJN" role="2Oq$k0">
+                                <ref role="3cqZAo" node="76sgnDpkzJK" resolve="rtDeps" />
+                              </node>
+                              <node concept="liA8E" id="76sgnDpkoW3" role="2OqNvi">
+                                <ref role="37wK5l" to="tken:76sgnDoh9MC" resolve="collectFor" />
+                                <node concept="1PxgMI" id="7Kvxa_nsFKZ" role="37wK5m">
+                                  <property role="1BlNFB" value="true" />
+                                  <node concept="chp4Y" id="7Kvxa_nsGiR" role="3oSUPX">
+                                    <ref role="cht4Q" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
+                                  </node>
+                                  <node concept="2OqwBi" id="41K1b4v5Z$1" role="1m5AlR">
+                                    <node concept="30H73N" id="41K1b4v5ZzI" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="41K1b4v5Z$7" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="kdzh:6CY5wCYZA9P" resolve="module" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
                           <node concept="3cpWs6" id="7Kvxa_nsLy5" role="3cqZAp">
                             <node concept="2OqwBi" id="47iBkDRSIdX" role="3cqZAk">
                               <node concept="2OqwBi" id="47iBkDRSId$" role="2Oq$k0">
-                                <node concept="2OqwBi" id="41K1b4v5ZzE" role="2Oq$k0">
-                                  <node concept="2ShNRf" id="41K1b4v5ZzF" role="2Oq$k0">
-                                    <node concept="1pGfFk" id="41K1b4v5ZzG" role="2ShVmc">
-                                      <ref role="37wK5l" to="tken:1jjYQYSjidB" resolve="MPSModulesClosure" />
-                                      <node concept="1PxgMI" id="7Kvxa_nsFKZ" role="37wK5m">
-                                        <property role="1BlNFB" value="true" />
-                                        <node concept="chp4Y" id="7Kvxa_nsGiR" role="3oSUPX">
-                                          <ref role="cht4Q" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
-                                        </node>
-                                        <node concept="2OqwBi" id="41K1b4v5Z$1" role="1m5AlR">
-                                          <node concept="30H73N" id="41K1b4v5ZzI" role="2Oq$k0" />
-                                          <node concept="3TrEf2" id="41K1b4v5Z$7" role="2OqNvi">
-                                            <ref role="3Tt5mk" to="kdzh:6CY5wCYZA9P" resolve="module" />
-                                          </node>
-                                        </node>
-                                      </node>
-                                      <node concept="2ShNRf" id="7QNcMbqvmYp" role="37wK5m">
-                                        <node concept="1pGfFk" id="1bDPmBfbpsv" role="2ShVmc">
-                                          <ref role="37wK5l" to="tken:1BCLQMpCXII" resolve="MPSModulesClosure.ModuleDependenciesOptions" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="liA8E" id="41K1b4v5ZzJ" role="2OqNvi">
-                                    <ref role="37wK5l" to="tken:41K1b4v5Z_a" resolve="runtimeDependencies" />
-                                  </node>
+                                <node concept="liA8E" id="76sgnDpnv5p" role="2OqNvi">
+                                  <ref role="37wK5l" to="tken:76sgnDpbyjc" resolve="languageRuntimes" />
                                 </node>
-                                <node concept="liA8E" id="47iBkDRSIdE" role="2OqNvi">
-                                  <ref role="37wK5l" to="tken:6xJrZo0GWb0" resolve="getModules" />
+                                <node concept="37vLTw" id="76sgnDpmmUp" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="76sgnDpkzJK" resolve="rtDeps" />
                                 </node>
                               </node>
                               <node concept="2S7cBI" id="47iBkDRShrN" role="2OqNvi">
