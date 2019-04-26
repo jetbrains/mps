@@ -15,7 +15,6 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
-    <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -27,6 +26,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -1510,11 +1510,13 @@
     </node>
     <node concept="312cEg" id="5sv3blr07ZT" role="jymVt">
       <property role="TrG5h" value="myNodeRef" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="7yauBUdD41q" role="1tU5fm">
         <ref role="3uigEE" to="mhbf:~SNodeReference" resolve="SNodeReference" />
       </node>
       <node concept="3Tm6S6" id="5sv3blr07ZU" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="1iU9OXuDIGs" role="jymVt" />
     <node concept="3clFbW" id="5sv3blr07ZW" role="jymVt">
       <node concept="3cqZAl" id="5sv3blr07ZX" role="3clF45" />
       <node concept="3Tmbuc" id="5sv3blr080c" role="1B3o_S" />
@@ -1590,18 +1592,11 @@
               </node>
             </node>
             <node concept="2OqwBi" id="5sv3blr080E" role="3uHU7w">
-              <node concept="1eOMI4" id="2q2JH_NuTTF" role="2Oq$k0">
-                <node concept="10QFUN" id="2q2JH_NuTTG" role="1eOMHV">
-                  <node concept="3uibUv" id="2q2JH_NuTTH" role="10QFUM">
-                    <ref role="3uigEE" to="w1kc:~SNodePointer" resolve="SNodePointer" />
-                  </node>
-                  <node concept="37vLTw" id="2BHiRxeuOy4" role="10QFUP">
-                    <ref role="3cqZAo" node="5sv3blr07ZT" resolve="myNodeRef" />
-                  </node>
-                </node>
+              <node concept="37vLTw" id="2BHiRxeuOy4" role="2Oq$k0">
+                <ref role="3cqZAo" node="5sv3blr07ZT" resolve="myNodeRef" />
               </node>
               <node concept="liA8E" id="5sv3blr080I" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~SNodePointer.equals(java.lang.Object)" resolve="equals" />
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
                 <node concept="2OqwBi" id="5sv3blr080Q" role="37wK5m">
                   <node concept="1eOMI4" id="5sv3blr080L" role="2Oq$k0">
                     <node concept="10QFUN" id="5sv3blr080M" role="1eOMHV">

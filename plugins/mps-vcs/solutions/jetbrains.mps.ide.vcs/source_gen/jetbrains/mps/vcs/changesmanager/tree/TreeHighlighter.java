@@ -106,9 +106,12 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
     getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
+        // FIXME likely IEDT is needed to walk myTree safely, but model read is questionable. 
+        // if myFeatureExtractor needs model read, perhaps, it shall grab one itself? OTOH, too many small model reads may get poor. 
         MPSTreeNode rootNode = myTree.getRootNode();
         if (rootNode != null) {
-          registerNodeRecursively(rootNode);
+          recordNodeRecursively(rootNode);
+          rehighlightAllFeaturesLater();
         }
       }
     });
@@ -133,19 +136,29 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     return ProjectHelper.getProjectRepository(myRegistry.getProject());
   }
 
-  private void registerNodeRecursively(@NotNull MPSTreeNode node) {
-    registerNode(node);
+  private void recordNodeRecursively(@NotNull MPSTreeNode node) {
+    recordFeature(node);
     for (MPSTreeNode child : ListSequence.fromList(node.getChildren())) {
-      registerNodeRecursively(child);
+      recordNodeRecursively(child);
     }
   }
 
-  private void registerNode(@NotNull final MPSTreeNode node) {
-    final Feature feature = myFeatureExtractor.getFeature(node);
+  private Feature recordFeature(MPSTreeNode node) {
+    Feature feature = myFeatureExtractor.getFeature(node);
     if (feature != null) {
       synchronized (myFeaturesHolder) {
         myFeaturesHolder.putNodeWithFeature(feature, node);
       }
+    }
+    return feature;
+  }
+
+  private void registerNode(@NotNull final MPSTreeNode node) {
+    final Feature feature = recordFeature(node);
+    if (feature != null) {
+      // FIXME why do we need some command queue to schedule rehighlightNode() call, while there's also myQueue for 'all feature' re-highlight? 
+      // FIXME this is the only place we care to use myCommandQueue! 
+      // TODO replace with Update(node) into myQueue, and change rehighlightAllFeaturesUpdate.canEat to consume single node update 
       myCommandQueue.runTask(new Runnable() {
         public void run() {
           final boolean featureIsStillThere;
@@ -184,13 +197,13 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   }
 
   /**
+   * FIXME DOES THIS METHOD NEED EDT OR NOT?
+   * 
    * This method runs with model read lock, and shall own lock on myFeatureHolder as it might lead 
    * to a deadlock (MPSTree rebuilds itself in a model read, thus treeNodeAdded and registerNode keep model read + myFeatureHolder, and if this method
    * is invoked with myFeatureHolder lock, then we get opposite order of the locks)
    */
   private void rehighlightNode(@NotNull MPSTreeNode node, @NotNull final Feature feature) {
-    unhighlightNode(node);
-
     AbstractComputeRunnable<TreeMessage> cr = new AbstractComputeRunnable<TreeMessage>() {
       protected TreeMessage compute() {
         SModel model = feature.getModelReference().resolve(getProjectRepository());
@@ -216,10 +229,14 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         return null;
       }
     };
+    boolean hadMessages = !(node.removeTreeMessages(this).isEmpty());
+
     getProjectRepository().getModelAccess().runReadAction(cr);
     TreeMessage message = cr.getResult();
     if (message != null) {
       node.addTreeMessage(message);
+    }
+    if (message != null || hadMessages) {
       updatePresentation(node);
     }
   }
@@ -298,6 +315,8 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   }
 
   private void rehighlightAllFeaturesNow() {
+    //  FIXME it's not apparent whether this method needs EDT or not - guess, there's no guarantee about EDT in listeners 
+    //        that invoke rehighlightFeatureAndDescendants() as well. If not, shall not use MergingUpdateQueue with EDT==true 
     List<Feature> toUpdate = new ArrayList<Feature>();
     synchronized (myFeaturesHolder) {
       toUpdate.addAll(myFeaturesHolder.getAllModelFeatures());

@@ -2738,6 +2738,16 @@
               <ref role="37wK5l" to="lui2:~ModelAccess.runReadInEDT(java.lang.Runnable)" resolve="runReadInEDT" />
               <node concept="1bVj0M" id="42ljTcHmp7i" role="37wK5m">
                 <node concept="3clFbS" id="42ljTcHmp7j" role="1bW5cS">
+                  <node concept="3SKdUt" id="1iU9OXuN8Dc" role="3cqZAp">
+                    <node concept="3SKdUq" id="1iU9OXuN8De" role="3SKWNk">
+                      <property role="3SKdUp" value="FIXME likely IEDT is needed to walk myTree safely, but model read is questionable." />
+                    </node>
+                  </node>
+                  <node concept="3SKdUt" id="1iU9OXuOxcD" role="3cqZAp">
+                    <node concept="3SKdUq" id="1iU9OXuOxcF" role="3SKWNk">
+                      <property role="3SKdUp" value="if myFeatureExtractor needs model read, perhaps, it shall grab one itself? OTOH, too many small model reads may get poor." />
+                    </node>
+                  </node>
                   <node concept="3cpWs8" id="2dPl3A21Kp0" role="3cqZAp">
                     <node concept="3cpWsn" id="2dPl3A21Kp1" role="3cpWs9">
                       <property role="TrG5h" value="rootNode" />
@@ -2758,10 +2768,15 @@
                     <node concept="3clFbS" id="2dPl3A21L3g" role="3clFbx">
                       <node concept="3clFbF" id="42ljTcHmp7k" role="3cqZAp">
                         <node concept="1rXfSq" id="4hiugqyz8XC" role="3clFbG">
-                          <ref role="37wK5l" node="42ljTcHmp6B" resolve="registerNodeRecursively" />
+                          <ref role="37wK5l" node="42ljTcHmp6B" resolve="recordNodeRecursively" />
                           <node concept="37vLTw" id="2dPl3A21Kp6" role="37wK5m">
                             <ref role="3cqZAo" node="2dPl3A21Kp1" resolve="rootNode" />
                           </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbF" id="1iU9OXuMEwp" role="3cqZAp">
+                        <node concept="1rXfSq" id="1iU9OXuMEwn" role="3clFbG">
+                          <ref role="37wK5l" node="1_HLebvhIoD" resolve="rehighlightAllFeaturesLater" />
                         </node>
                       </node>
                     </node>
@@ -2925,13 +2940,13 @@
     </node>
     <node concept="2tJIrI" id="6PFPFsw4nm1" role="jymVt" />
     <node concept="3clFb_" id="42ljTcHmp6B" role="jymVt">
-      <property role="TrG5h" value="registerNodeRecursively" />
+      <property role="TrG5h" value="recordNodeRecursively" />
       <node concept="3cqZAl" id="42ljTcHmp6C" role="3clF45" />
       <node concept="3Tm6S6" id="42ljTcHmp6F" role="1B3o_S" />
       <node concept="3clFbS" id="42ljTcHmp6E" role="3clF47">
         <node concept="3clFbF" id="42ljTcHmp6I" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyzeQf" role="3clFbG">
-            <ref role="37wK5l" node="42ljTcHmicm" resolve="registerNode" />
+            <ref role="37wK5l" node="1iU9OXuHHE8" resolve="recordFeature" />
             <node concept="37vLTw" id="2BHiRxglJRr" role="37wK5m">
               <ref role="3cqZAo" node="42ljTcHmp6G" resolve="node" />
             </node>
@@ -2952,7 +2967,7 @@
           <node concept="3clFbS" id="42ljTcHmp6P" role="2LFqv$">
             <node concept="3clFbF" id="42ljTcHmp6R" role="3cqZAp">
               <node concept="1rXfSq" id="4hiugqyyIjE" role="3clFbG">
-                <ref role="37wK5l" node="42ljTcHmp6B" resolve="registerNodeRecursively" />
+                <ref role="37wK5l" node="42ljTcHmp6B" resolve="recordNodeRecursively" />
                 <node concept="2GrUjf" id="42ljTcHmp6T" role="37wK5m">
                   <ref role="2Gs0qQ" node="42ljTcHmp6N" resolve="child" />
                 </node>
@@ -2969,6 +2984,79 @@
         <node concept="2AHcQZ" id="42ljTcHm$eX" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1iU9OXuHwMW" role="jymVt" />
+    <node concept="3clFb_" id="1iU9OXuHHE8" role="jymVt">
+      <property role="TrG5h" value="recordFeature" />
+      <node concept="37vLTG" id="1iU9OXuHNx1" role="3clF46">
+        <property role="TrG5h" value="node" />
+        <node concept="3uibUv" id="1iU9OXuHNx2" role="1tU5fm">
+          <ref role="3uigEE" to="7e8u:~MPSTreeNode" resolve="MPSTreeNode" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="1iU9OXuHHEb" role="3clF47">
+        <node concept="3cpWs8" id="1iU9OXuHYdV" role="3cqZAp">
+          <node concept="3cpWsn" id="1iU9OXuHYdW" role="3cpWs9">
+            <property role="TrG5h" value="feature" />
+            <node concept="3uibUv" id="1iU9OXuHYdX" role="1tU5fm">
+              <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
+            </node>
+            <node concept="2OqwBi" id="1iU9OXuHYdY" role="33vP2m">
+              <node concept="37vLTw" id="1iU9OXuHYdZ" role="2Oq$k0">
+                <ref role="3cqZAo" node="7YINie3rdNZ" resolve="myFeatureExtractor" />
+              </node>
+              <node concept="liA8E" id="1iU9OXuHYe0" role="2OqNvi">
+                <ref role="37wK5l" node="4oT3Lbm4_1$" resolve="getFeature" />
+                <node concept="37vLTw" id="1iU9OXuHYe1" role="37wK5m">
+                  <ref role="3cqZAo" node="1iU9OXuHNx1" resolve="node" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1iU9OXuI8GJ" role="3cqZAp">
+          <node concept="3clFbS" id="1iU9OXuI8GL" role="3clFbx">
+            <node concept="1HWtB8" id="1iU9OXuItZ7" role="3cqZAp">
+              <node concept="37vLTw" id="1iU9OXuItZ8" role="1HWFw0">
+                <ref role="3cqZAo" node="7TQDMXakHwV" resolve="myFeaturesHolder" />
+              </node>
+              <node concept="3clFbS" id="1iU9OXuItZ9" role="1HWHxc">
+                <node concept="3clFbF" id="1iU9OXuItZa" role="3cqZAp">
+                  <node concept="2OqwBi" id="1iU9OXuItZb" role="3clFbG">
+                    <node concept="37vLTw" id="1iU9OXuItZc" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7TQDMXakHwV" resolve="myFeaturesHolder" />
+                    </node>
+                    <node concept="liA8E" id="1iU9OXuItZd" role="2OqNvi">
+                      <ref role="37wK5l" node="7TQDMXakHxh" resolve="putNodeWithFeature" />
+                      <node concept="37vLTw" id="1iU9OXuItZe" role="37wK5m">
+                        <ref role="3cqZAo" node="1iU9OXuHYdW" resolve="feature" />
+                      </node>
+                      <node concept="37vLTw" id="1iU9OXuItZf" role="37wK5m">
+                        <ref role="3cqZAo" node="1iU9OXuHNx1" resolve="node" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="1iU9OXuIj0F" role="3clFbw">
+            <node concept="10Nm6u" id="1iU9OXuIojC" role="3uHU7w" />
+            <node concept="37vLTw" id="1iU9OXuIbQq" role="3uHU7B">
+              <ref role="3cqZAo" node="1iU9OXuHYdW" resolve="feature" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1iU9OXuIFQ6" role="3cqZAp">
+          <node concept="37vLTw" id="1iU9OXuIN3v" role="3cqZAk">
+            <ref role="3cqZAo" node="1iU9OXuHYdW" resolve="feature" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="1iU9OXuH$Gp" role="1B3o_S" />
+      <node concept="3uibUv" id="1iU9OXuHCCa" role="3clF45">
+        <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
       </node>
     </node>
     <node concept="2tJIrI" id="15yHJj8mrSB" role="jymVt" />
@@ -2992,42 +3080,29 @@
             <node concept="3uibUv" id="42ljTcHmj5m" role="1tU5fm">
               <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
             </node>
-            <node concept="2OqwBi" id="42ljTcHmj5n" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeudez" role="2Oq$k0">
-                <ref role="3cqZAo" node="7YINie3rdNZ" resolve="myFeatureExtractor" />
-              </node>
-              <node concept="liA8E" id="42ljTcHmj5p" role="2OqNvi">
-                <ref role="37wK5l" node="4oT3Lbm4_1$" resolve="getFeature" />
-                <node concept="37vLTw" id="2BHiRxglJSA" role="37wK5m">
-                  <ref role="3cqZAo" node="42ljTcHmicr" resolve="node" />
-                </node>
+            <node concept="1rXfSq" id="1iU9OXuIXBu" role="33vP2m">
+              <ref role="37wK5l" node="1iU9OXuHHE8" resolve="recordFeature" />
+              <node concept="37vLTw" id="1iU9OXuJ1EL" role="37wK5m">
+                <ref role="3cqZAo" node="42ljTcHmicr" resolve="node" />
               </node>
             </node>
           </node>
         </node>
         <node concept="3clFbJ" id="42ljTcHmj5t" role="3cqZAp">
           <node concept="3clFbS" id="42ljTcHmj5u" role="3clFbx">
-            <node concept="1HWtB8" id="4m2W_bdmxCX" role="3cqZAp">
-              <node concept="37vLTw" id="2BHiRxeujRT" role="1HWFw0">
-                <ref role="3cqZAo" node="7TQDMXakHwV" resolve="myFeaturesHolder" />
+            <node concept="3SKdUt" id="1iU9OXuJeFa" role="3cqZAp">
+              <node concept="3SKdUq" id="1iU9OXuJeFc" role="3SKWNk">
+                <property role="3SKdUp" value="FIXME why do we need some command queue to schedule rehighlightNode() call, while there's also myQueue for 'all feature' re-highlight?" />
               </node>
-              <node concept="3clFbS" id="4m2W_bdmxCZ" role="1HWHxc">
-                <node concept="3clFbF" id="42ljTcHmj5A" role="3cqZAp">
-                  <node concept="2OqwBi" id="42ljTcHmj5C" role="3clFbG">
-                    <node concept="37vLTw" id="2BHiRxeuxRE" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7TQDMXakHwV" resolve="myFeaturesHolder" />
-                    </node>
-                    <node concept="liA8E" id="42ljTcHmj5G" role="2OqNvi">
-                      <ref role="37wK5l" node="7TQDMXakHxh" resolve="putNodeWithFeature" />
-                      <node concept="37vLTw" id="3GM_nagTB0G" role="37wK5m">
-                        <ref role="3cqZAo" node="42ljTcHmj5l" resolve="feature" />
-                      </node>
-                      <node concept="37vLTw" id="2BHiRxgm93B" role="37wK5m">
-                        <ref role="3cqZAo" node="42ljTcHmicr" resolve="node" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
+            </node>
+            <node concept="3SKdUt" id="1iU9OXuLKwH" role="3cqZAp">
+              <node concept="3SKdUq" id="1iU9OXuLKwJ" role="3SKWNk">
+                <property role="3SKdUp" value="FIXME this is the only place we care to use myCommandQueue!" />
+              </node>
+            </node>
+            <node concept="3SKdUt" id="1iU9OXuQhTS" role="3cqZAp">
+              <node concept="3SKdUq" id="1iU9OXuQhTU" role="3SKWNk">
+                <property role="3SKdUp" value="TODO replace with Update(node) into myQueue, and change rehighlightAllFeaturesUpdate.canEat to consume single node update" />
               </node>
             </node>
             <node concept="3clFbF" id="42ljTcHmz6b" role="3cqZAp">
@@ -3322,15 +3397,6 @@
       <node concept="3cqZAl" id="42ljTcHmtGJ" role="3clF45" />
       <node concept="3Tm6S6" id="42ljTcHmtGM" role="1B3o_S" />
       <node concept="3clFbS" id="42ljTcHmtGL" role="3clF47">
-        <node concept="3clFbF" id="42ljTcHmtGR" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyzkk3" role="3clFbG">
-            <ref role="37wK5l" node="42ljTcHmtGr" resolve="unhighlightNode" />
-            <node concept="37vLTw" id="2BHiRxgm2rZ" role="37wK5m">
-              <ref role="3cqZAo" node="42ljTcHmtGN" resolve="node" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="42ljTcHm$fg" role="3cqZAp" />
         <node concept="3cpWs8" id="4Ji_XZ8evom" role="3cqZAp">
           <node concept="3cpWsn" id="4Ji_XZ8evon" role="3cpWs9">
             <property role="TrG5h" value="cr" />
@@ -3573,6 +3639,29 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="1iU9OXuSoNI" role="3cqZAp">
+          <node concept="3cpWsn" id="1iU9OXuSoNJ" role="3cpWs9">
+            <property role="TrG5h" value="hadMessages" />
+            <node concept="10P_77" id="1iU9OXuSoM0" role="1tU5fm" />
+            <node concept="3fqX7Q" id="1iU9OXuT3VU" role="33vP2m">
+              <node concept="2OqwBi" id="1iU9OXuT3VW" role="3fr31v">
+                <node concept="2OqwBi" id="1iU9OXuT3VX" role="2Oq$k0">
+                  <node concept="37vLTw" id="1iU9OXuT3VY" role="2Oq$k0">
+                    <ref role="3cqZAo" node="42ljTcHmtGN" resolve="node" />
+                  </node>
+                  <node concept="liA8E" id="1iU9OXuT3VZ" role="2OqNvi">
+                    <ref role="37wK5l" to="7e8u:~MPSTreeNode.removeTreeMessages(jetbrains.mps.ide.ui.tree.TreeMessageOwner)" resolve="removeTreeMessages" />
+                    <node concept="Xjq3P" id="1iU9OXuT3W0" role="37wK5m" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1iU9OXuT3W1" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Set.isEmpty()" resolve="isEmpty" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="1iU9OXuSiA_" role="3cqZAp" />
         <node concept="3clFbF" id="4Ji_XZ8f10U" role="3cqZAp">
           <node concept="2OqwBi" id="4Ji_XZ8f2on" role="3clFbG">
             <node concept="2OqwBi" id="6PFPFsw5o1A" role="2Oq$k0">
@@ -3622,6 +3711,16 @@
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="3y3z36" id="4Ji_XZ8eVIv" role="3clFbw">
+            <node concept="10Nm6u" id="4Ji_XZ8eVIw" role="3uHU7w" />
+            <node concept="37vLTw" id="4Ji_XZ8f31V" role="3uHU7B">
+              <ref role="3cqZAo" node="4Ji_XZ8eZ1c" resolve="message" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1iU9OXuTqK4" role="3cqZAp">
+          <node concept="3clFbS" id="1iU9OXuTqK6" role="3clFbx">
             <node concept="3clFbF" id="4Ji_XZ8eVIs" role="3cqZAp">
               <node concept="1rXfSq" id="4Ji_XZ8eVIt" role="3clFbG">
                 <ref role="37wK5l" node="4Ji_XZ8cN4c" resolve="updatePresentation" />
@@ -3631,10 +3730,15 @@
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="4Ji_XZ8eVIv" role="3clFbw">
-            <node concept="10Nm6u" id="4Ji_XZ8eVIw" role="3uHU7w" />
-            <node concept="37vLTw" id="4Ji_XZ8f31V" role="3uHU7B">
-              <ref role="3cqZAo" node="4Ji_XZ8eZ1c" resolve="message" />
+          <node concept="22lmx$" id="1iU9OXuTEt1" role="3clFbw">
+            <node concept="37vLTw" id="1iU9OXuTIEP" role="3uHU7w">
+              <ref role="3cqZAo" node="1iU9OXuSoNJ" resolve="hadMessages" />
+            </node>
+            <node concept="3y3z36" id="1iU9OXuTzCT" role="3uHU7B">
+              <node concept="37vLTw" id="1iU9OXuTvT2" role="3uHU7B">
+                <ref role="3cqZAo" node="4Ji_XZ8eZ1c" resolve="message" />
+              </node>
+              <node concept="10Nm6u" id="1iU9OXuTARf" role="3uHU7w" />
             </node>
           </node>
         </node>
@@ -3642,6 +3746,16 @@
       <node concept="P$JXv" id="4XIdPZ5LLob" role="lGtFl">
         <node concept="TZ5HA" id="4XIdPZ5LLoc" role="TZ5H$">
           <node concept="1dT_AC" id="4XIdPZ5LLod" role="1dT_Ay">
+            <property role="1dT_AB" value="FIXME DOES THIS METHOD NEED EDT OR NOT?" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1iU9OXuRQre" role="TZ5H$">
+          <node concept="1dT_AC" id="1iU9OXuRQrf" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1iU9OXuRyyg" role="TZ5H$">
+          <node concept="1dT_AC" id="1iU9OXuRyyh" role="1dT_Ay">
             <property role="1dT_AB" value="This method runs with model read lock, and shall own lock on myFeatureHolder as it might lead " />
           </node>
         </node>
@@ -4199,6 +4313,16 @@
       <node concept="3Tm6S6" id="5c44EO9cxyj" role="1B3o_S" />
       <node concept="3cqZAl" id="1_HLebvi3xB" role="3clF45" />
       <node concept="3clFbS" id="1_HLebvi3xD" role="3clF47">
+        <node concept="3SKdUt" id="1iU9OXuEa2K" role="3cqZAp">
+          <node concept="3SKdUq" id="1iU9OXuEa2M" role="3SKWNk">
+            <property role="3SKdUp" value=" FIXME it's not apparent whether this method needs EDT or not - guess, there's no guarantee about EDT in listeners" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1iU9OXuG1gr" role="3cqZAp">
+          <node concept="3SKdUq" id="1iU9OXuG1gt" role="3SKWNk">
+            <property role="3SKdUp" value="       that invoke rehighlightFeatureAndDescendants() as well. If not, shall not use MergingUpdateQueue with EDT==true" />
+          </node>
+        </node>
         <node concept="3cpWs8" id="4XIdPZ5MlsZ" role="3cqZAp">
           <node concept="3cpWsn" id="4XIdPZ5Mlt0" role="3cpWs9">
             <property role="TrG5h" value="toUpdate" />
