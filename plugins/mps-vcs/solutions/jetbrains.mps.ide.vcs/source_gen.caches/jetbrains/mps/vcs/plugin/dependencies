@@ -92,7 +92,7 @@
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
     <classNode dependClassName="jetbrains.mps.ide.generator.GenerationCheckHelper" />
     <classNode dependClassName="jetbrains.mps.ide.make.DefaultMakeMessageHandler" />
-    <classNode dependClassName="jetbrains.mps.ide.vfs.VirtualFileUtils" />
+    <classNode dependClassName="jetbrains.mps.ide.vfs.IdeaFileSystem" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -108,6 +108,7 @@
     <classNode dependClassName="jetbrains.mps.smodel.resources.ModelsToResources" />
     <classNode dependClassName="jetbrains.mps.util.Computable" />
     <classNode dependClassName="jetbrains.mps.util.NameUtil" />
+    <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />

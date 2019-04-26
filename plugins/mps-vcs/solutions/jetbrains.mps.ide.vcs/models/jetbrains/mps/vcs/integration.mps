@@ -1271,12 +1271,21 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="2tkR5cH5dnE" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModelFileTracker.findModel(jetbrains.mps.vfs.IFile)" resolve="findModel" />
-                    <node concept="2YIFZM" id="4jj2N358GwO" role="37wK5m">
-                      <ref role="37wK5l" to="4hrd:~VirtualFileUtils.toIFile(com.intellij.openapi.vfs.VirtualFile)" resolve="toIFile" />
-                      <ref role="1Pybhc" to="4hrd:~VirtualFileUtils" resolve="VirtualFileUtils" />
-                      <node concept="37vLTw" id="3GM_nagTwHs" role="37wK5m">
-                        <ref role="3cqZAo" node="4jj2N358GwW" resolve="file" />
+                    <ref role="37wK5l" to="w1kc:~SModelFileTracker.modelFor(jetbrains.mps.vfs.IFile)" resolve="modelFor" />
+                    <node concept="2OqwBi" id="V2e5CGXk8y" role="37wK5m">
+                      <node concept="2OqwBi" id="V2e5CGXj9U" role="2Oq$k0">
+                        <node concept="37vLTw" id="V2e5CGXha5" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6y_kxB1UVmN" resolve="myMpsProject" />
+                        </node>
+                        <node concept="liA8E" id="V2e5CGXjW_" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="V2e5CGXkQe" role="2OqNvi">
+                        <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
+                        <node concept="37vLTw" id="V2e5CGXlxb" role="37wK5m">
+                          <ref role="3cqZAo" node="4jj2N358GwW" resolve="file" />
+                        </node>
                       </node>
                     </node>
                   </node>

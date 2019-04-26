@@ -3731,6 +3731,11 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="V2e5CGTimt" role="3cqZAp">
+          <node concept="3SKdUq" id="V2e5CGTimv" role="3SKWNk">
+            <property role="3SKdUp" value="FWIW, tree message manipulation doesn't require EDT" />
+          </node>
+        </node>
         <node concept="3cpWs8" id="1iU9OXuSoNI" role="3cqZAp">
           <node concept="3cpWsn" id="1iU9OXuSoNJ" role="3cpWs9">
             <property role="TrG5h" value="hadMessages" />
@@ -5209,7 +5214,7 @@
         <node concept="3clFbS" id="X3XwAyvA5" role="3clF47">
           <node concept="3SKdUt" id="1iU9OXv2d6Y" role="3cqZAp">
             <node concept="3SKdUq" id="1iU9OXv2d70" role="3SKWNk">
-              <property role="3SKdUp" value="this event comes in EDT (if I read IDEA's FileStatusManagerImpl.fileStatusChanged() right)" />
+              <property role="3SKdUp" value="this event comes in EDT (see IDEA's FileStatusManagerImpl.fileStatusChanged())" />
             </node>
           </node>
           <node concept="3cpWs8" id="X3XwAyvKp" role="3cqZAp">
@@ -5244,8 +5249,8 @@
           <node concept="3cpWs8" id="X3XwAyvKA" role="3cqZAp">
             <node concept="3cpWsn" id="X3XwAyvKB" role="3cpWs9">
               <property role="TrG5h" value="emd" />
-              <node concept="3uibUv" id="2tkR5cH5dvp" role="1tU5fm">
-                <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+              <node concept="3uibUv" id="V2e5CGSJFy" role="1tU5fm">
+                <ref role="3uigEE" to="mhbf:~SModelReference" resolve="SModelReference" />
               </node>
               <node concept="2OqwBi" id="X3XwAyvKD" role="33vP2m">
                 <node concept="2YIFZM" id="2tkR5cH5duP" role="2Oq$k0">
@@ -5256,7 +5261,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="X3XwAyvKF" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~SModelFileTracker.findModel(jetbrains.mps.vfs.IFile)" resolve="findModel" />
+                  <ref role="37wK5l" to="w1kc:~SModelFileTracker.modelFor(jetbrains.mps.vfs.IFile)" resolve="modelFor" />
                   <node concept="37vLTw" id="3GM_nagTr1v" role="37wK5m">
                     <ref role="3cqZAo" node="X3XwAyvKq" resolve="ifile" />
                   </node>
@@ -5272,13 +5277,8 @@
                   <node concept="2ShNRf" id="X3XwAyvL1" role="37wK5m">
                     <node concept="1pGfFk" id="X3XwAyvL5" role="2ShVmc">
                       <ref role="37wK5l" to="gwd2:2LHDMAS8jbK" resolve="ModelFeature" />
-                      <node concept="2OqwBi" id="791rit5f5LL" role="37wK5m">
-                        <node concept="liA8E" id="791rit5f5LM" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
-                        </node>
-                        <node concept="37vLTw" id="3GM_nagTwUn" role="2Oq$k0">
-                          <ref role="3cqZAo" node="X3XwAyvKB" resolve="emd" />
-                        </node>
+                      <node concept="37vLTw" id="3GM_nagTwUn" role="37wK5m">
+                        <ref role="3cqZAo" node="X3XwAyvKB" resolve="emd" />
                       </node>
                     </node>
                   </node>

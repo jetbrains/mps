@@ -13,7 +13,6 @@ import com.intellij.openapi.vfs.VirtualFileEvent;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import com.intellij.openapi.vcs.merge.MergeProvider;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vfs.VirtualFileAdapter;
@@ -44,7 +43,7 @@ public class GeneratedFileConflictResolving extends AbstractProjectComponent {
   private void resolveIfNeeded(VirtualFileEvent e) {
     if (e.getRequestor() instanceof IdeaFileSystem) {
       VirtualFile file = e.getFile();
-      if (SModelFileTracker.getInstance(myMpsProject.getRepository()).findModel(VirtualFileUtils.toIFile(file)) != null) {
+      if (SModelFileTracker.getInstance(myMpsProject.getRepository()).modelFor(myMpsProject.getFileSystem().fromVirtualFile(file)) != null) {
         return;
       }
 

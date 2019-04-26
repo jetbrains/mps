@@ -228,6 +228,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         return null;
       }
     };
+    // FWIW, tree message manipulation doesn't require EDT 
     boolean hadMessages = !(node.removeTreeMessages(this).isEmpty());
 
     getProjectRepository().getModelAccess().runReadAction(cr);
@@ -415,11 +416,11 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     }
     @Override
     public void fileStatusChanged(@NotNull VirtualFile file) {
-      // this event comes in EDT (if I read IDEA's FileStatusManagerImpl.fileStatusChanged() right) 
+      // this event comes in EDT (see IDEA's FileStatusManagerImpl.fileStatusChanged()) 
       IFile ifile = myRegistry.getMPSProject().getFileSystem().fromVirtualFile(file);
-      SModel emd = SModelFileTracker.getInstance(getProjectRepository()).findModel(ifile);
+      SModelReference emd = SModelFileTracker.getInstance(getProjectRepository()).modelFor(ifile);
       if (emd != null) {
-        rehighlightFeatureAndDescendants(new ModelFeature(emd.getReference()));
+        rehighlightFeatureAndDescendants(new ModelFeature(emd));
       }
     }
     @Override

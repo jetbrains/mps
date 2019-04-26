@@ -100,6 +100,7 @@ public class CurrentDifferenceRegistry extends AbstractProjectComponent {
     if (modelDescriptor == null || !(modelDescriptor.isLoaded())) {
       return;
     }
+    //  FIXME updateModel and CurrentDifference shall use SModelReference 
     updateModel(modelDescriptor);
   }
 

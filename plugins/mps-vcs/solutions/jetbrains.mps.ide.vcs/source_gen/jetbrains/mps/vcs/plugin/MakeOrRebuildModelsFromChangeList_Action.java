@@ -29,9 +29,10 @@ import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.smodel.SModelFileTracker;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.generator.GenerationFacade;
 
 public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
@@ -124,13 +125,18 @@ public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
   private List<SModel> getModels2Build(VirtualFile[] virtualFiles, final AnActionEvent event) {
     if (virtualFiles != null) {
       final SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository());
+      final IdeaFileSystem fs = event.getData(MPSCommonDataKeys.MPS_PROJECT).getFileSystem();
       return Sequence.fromIterable(Sequence.fromArray(virtualFiles)).where(new IWhereFilter<VirtualFile>() {
         public boolean accept(VirtualFile vf) {
           return vf.isInLocalFileSystem() && vf.exists() && !(vf.isDirectory());
         }
-      }).select(new ISelector<VirtualFile, SModel>() {
-        public SModel select(VirtualFile vf) {
-          return modelFileTracker.findModel(VirtualFileUtils.toIFile(vf));
+      }).select(new ISelector<VirtualFile, IFile>() {
+        public IFile select(VirtualFile vf) {
+          return fs.fromVirtualFile(vf);
+        }
+      }).select(new ISelector<IFile, SModel>() {
+        public SModel select(IFile f) {
+          return modelFileTracker.findModel(f);
         }
       }).where(new IWhereFilter<SModel>() {
         public boolean accept(SModel m) {

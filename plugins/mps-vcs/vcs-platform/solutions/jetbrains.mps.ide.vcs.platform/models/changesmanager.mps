@@ -3566,6 +3566,11 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="V2e5CGUp0T" role="3cqZAp">
+          <node concept="3SKdUq" id="V2e5CGUp0V" role="3SKWNk">
+            <property role="3SKdUp" value=" FIXME updateModel and CurrentDifference shall use SModelReference" />
+          </node>
+        </node>
         <node concept="3clFbF" id="2JwSLRbyYSo" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyzkiV" role="3clFbG">
             <ref role="37wK5l" node="2JwSLRbyYXJ" resolve="updateModel" />
