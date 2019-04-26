@@ -1416,34 +1416,9 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="2mS0QzS0yFv" role="jymVt">
-      <property role="TrG5h" value="myChangeToFeaturesMap" />
-      <node concept="3Tm6S6" id="2mS0QzS0yFw" role="1B3o_S" />
-      <node concept="3rvAFt" id="2mS0QzS0yFy" role="1tU5fm">
-        <node concept="3uibUv" id="2mS0QzS0yF_" role="3rvQeY">
-          <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
-        </node>
-        <node concept="10Q1$e" id="2mS0QzS0yFF" role="3rvSg0">
-          <node concept="3uibUv" id="2mS0QzS0yFE" role="10Q1$1">
-            <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
-          </node>
-        </node>
-      </node>
-      <node concept="2ShNRf" id="2mS0QzS0yFR" role="33vP2m">
-        <node concept="3rGOSV" id="2mS0QzS0yFS" role="2ShVmc">
-          <node concept="3uibUv" id="2mS0QzS0yFT" role="3rHrn6">
-            <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
-          </node>
-          <node concept="10Q1$e" id="2mS0QzS0yFU" role="3rHtpV">
-            <node concept="3uibUv" id="2mS0QzS0yFV" role="10Q1$1">
-              <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="312cEg" id="4oT3Lbm4Jkh" role="jymVt">
       <property role="TrG5h" value="myCurrentDifferenceRegistry" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="4oT3Lbm4Jki" role="1B3o_S" />
       <node concept="3uibUv" id="4oT3Lbm4Jkk" role="1tU5fm">
         <ref role="3uigEE" to="lcr:2JwSLRbyYN6" resolve="CurrentDifferenceRegistry" />
@@ -1451,16 +1426,13 @@
     </node>
     <node concept="312cEg" id="4oT3Lbm4LOC" role="jymVt">
       <property role="TrG5h" value="myListener" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="4oT3Lbm4LOD" role="1B3o_S" />
       <node concept="3uibUv" id="4oT3Lbm4LOF" role="1tU5fm">
         <ref role="3uigEE" node="4oT3Lbm4Jk4" resolve="FeatureForestMapSupport.MyListener" />
       </node>
-      <node concept="2ShNRf" id="4oT3Lbm4LOH" role="33vP2m">
-        <node concept="1pGfFk" id="4oT3Lbm4LOI" role="2ShVmc">
-          <ref role="37wK5l" node="4oT3Lbm4Jk6" resolve="FeatureForestMapSupport.MyListener" />
-        </node>
-      </node>
     </node>
+    <node concept="2tJIrI" id="1iU9OXuWIHj" role="jymVt" />
     <node concept="3clFbW" id="3ghtVL8Toqu" role="jymVt">
       <node concept="37vLTG" id="4oT3Lbm4LSv" role="3clF46">
         <property role="TrG5h" value="project" />
@@ -1489,6 +1461,16 @@
             <ref role="3cqZAo" node="4oT3Lbm4LSv" resolve="project" />
           </node>
         </node>
+        <node concept="3clFbF" id="4oT3Lbm4Jkm" role="3cqZAp">
+          <node concept="37vLTI" id="4oT3Lbm4Jko" role="3clFbG">
+            <node concept="37vLTw" id="2BHiRxgm_nZ" role="37vLTx">
+              <ref role="3cqZAo" node="3ghtVL8Toqy" resolve="currentDifferenceRegistry" />
+            </node>
+            <node concept="37vLTw" id="2BHiRxeukrb" role="37vLTJ">
+              <ref role="3cqZAo" node="4oT3Lbm4Jkh" resolve="myCurrentDifferenceRegistry" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2OoyE6VWm4i" role="3cqZAp">
           <node concept="37vLTI" id="2OoyE6VWmlS" role="3clFbG">
             <node concept="37vLTw" id="2OoyE6VWm4g" role="37vLTJ">
@@ -1512,13 +1494,26 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4oT3Lbm4Jkm" role="3cqZAp">
-          <node concept="37vLTI" id="4oT3Lbm4Jko" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxgm_nZ" role="37vLTx">
-              <ref role="3cqZAo" node="3ghtVL8Toqy" resolve="currentDifferenceRegistry" />
+        <node concept="3clFbF" id="1iU9OXuWwbO" role="3cqZAp">
+          <node concept="37vLTI" id="1iU9OXuWwbP" role="3clFbG">
+            <node concept="2ShNRf" id="1iU9OXuWwbQ" role="37vLTx">
+              <node concept="1pGfFk" id="1iU9OXuWwbR" role="2ShVmc">
+                <ref role="37wK5l" node="4oT3Lbm4Jk6" resolve="FeatureForestMapSupport.MyListener" />
+                <node concept="2OqwBi" id="1iU9OXuX38z" role="37wK5m">
+                  <node concept="37vLTw" id="1iU9OXuX38$" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2OoyE6VWkv5" resolve="mpsProject" />
+                  </node>
+                  <node concept="liA8E" id="1iU9OXuX38_" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~Project.getRepository()" resolve="getRepository" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="1iU9OXv1GUm" role="37wK5m">
+                  <ref role="3cqZAo" node="3ghtVL8TsNL" resolve="myMap" />
+                </node>
+              </node>
             </node>
-            <node concept="37vLTw" id="2BHiRxeukrb" role="37vLTJ">
-              <ref role="3cqZAo" node="4oT3Lbm4Jkh" resolve="myCurrentDifferenceRegistry" />
+            <node concept="37vLTw" id="1iU9OXuWBTS" role="37vLTJ">
+              <ref role="3cqZAo" node="4oT3Lbm4LOC" resolve="myListener" />
             </node>
           </node>
         </node>
@@ -1531,6 +1526,11 @@
       <node concept="3Tm1VV" id="4oT3Lbm4LSF" role="1B3o_S" />
       <node concept="3cqZAl" id="4oT3Lbm4LSG" role="3clF45" />
       <node concept="3clFbS" id="4oT3Lbm4LSH" role="3clF47">
+        <node concept="3SKdUt" id="1iU9OXuX6Nw" role="3cqZAp">
+          <node concept="3SKdUq" id="1iU9OXuX6Ny" role="3SKWNk">
+            <property role="3SKdUp" value="FIXME why project component listens to global differences?" />
+          </node>
+        </node>
         <node concept="3clFbF" id="4oT3Lbm4LIA" role="3cqZAp">
           <node concept="2OqwBi" id="4oT3Lbm4LIC" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeusx5" role="2Oq$k0">
@@ -1594,6 +1594,7 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
+    <node concept="2tJIrI" id="1iU9OXuXpCb" role="jymVt" />
     <node concept="2YIFZL" id="3ghtVL8TsOh" role="jymVt">
       <property role="TrG5h" value="getFeaturesForChange" />
       <node concept="37vLTG" id="3ghtVL8TsOv" role="3clF46">
@@ -2084,7 +2085,53 @@
     </node>
     <node concept="312cEu" id="4oT3Lbm4Jk4" role="jymVt">
       <property role="TrG5h" value="MyListener" />
-      <property role="2bfB8j" value="true" />
+      <node concept="312cEg" id="2mS0QzS0yFv" role="jymVt">
+        <property role="TrG5h" value="myChangeToFeaturesMap" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tm6S6" id="2mS0QzS0yFw" role="1B3o_S" />
+        <node concept="3rvAFt" id="2mS0QzS0yFy" role="1tU5fm">
+          <node concept="3uibUv" id="2mS0QzS0yF_" role="3rvQeY">
+            <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
+          </node>
+          <node concept="10Q1$e" id="2mS0QzS0yFF" role="3rvSg0">
+            <node concept="3uibUv" id="2mS0QzS0yFE" role="10Q1$1">
+              <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
+            </node>
+          </node>
+        </node>
+        <node concept="2ShNRf" id="2mS0QzS0yFR" role="33vP2m">
+          <node concept="3rGOSV" id="2mS0QzS0yFS" role="2ShVmc">
+            <node concept="3uibUv" id="2mS0QzS0yFT" role="3rHrn6">
+              <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
+            </node>
+            <node concept="10Q1$e" id="2mS0QzS0yFU" role="3rHtpV">
+              <node concept="3uibUv" id="2mS0QzS0yFV" role="10Q1$1">
+                <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="312cEg" id="1iU9OXuWWin" role="jymVt">
+        <property role="TrG5h" value="myProjectRepo" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tm6S6" id="1iU9OXuWWio" role="1B3o_S" />
+        <node concept="3uibUv" id="1iU9OXuWWiq" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+        </node>
+      </node>
+      <node concept="312cEg" id="1iU9OXv1RQM" role="jymVt">
+        <property role="TrG5h" value="myMap" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tm6S6" id="1iU9OXv1RQN" role="1B3o_S" />
+        <node concept="3uibUv" id="1iU9OXv1RQP" role="1tU5fm">
+          <ref role="3uigEE" node="3ghtVL8Tof7" resolve="FeatureForestMap" />
+          <node concept="3uibUv" id="1iU9OXv1RQQ" role="11_B2D">
+            <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
+          </node>
+        </node>
+      </node>
+      <node concept="2tJIrI" id="1iU9OXuWPCm" role="jymVt" />
       <node concept="3Tm6S6" id="7YINie3rltF" role="1B3o_S" />
       <node concept="3uibUv" id="4oT3Lbm4Jka" role="1zkMxy">
         <ref role="3uigEE" to="lcr:5R2TaPUKrqT" resolve="CurrentDifferenceAdapter" />
@@ -2092,7 +2139,46 @@
       <node concept="3clFbW" id="4oT3Lbm4Jk6" role="jymVt">
         <node concept="3cqZAl" id="4oT3Lbm4Jk7" role="3clF45" />
         <node concept="3Tm1VV" id="4oT3Lbm4Jk8" role="1B3o_S" />
-        <node concept="3clFbS" id="4oT3Lbm4Jk9" role="3clF47" />
+        <node concept="3clFbS" id="4oT3Lbm4Jk9" role="3clF47">
+          <node concept="3clFbF" id="1iU9OXuWWir" role="3cqZAp">
+            <node concept="37vLTI" id="1iU9OXuWWit" role="3clFbG">
+              <node concept="37vLTw" id="1iU9OXuWWiw" role="37vLTJ">
+                <ref role="3cqZAo" node="1iU9OXuWWin" resolve="myProjectRepo" />
+              </node>
+              <node concept="37vLTw" id="1iU9OXuWWix" role="37vLTx">
+                <ref role="3cqZAo" node="1iU9OXuWS7o" resolve="projectRepo" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="1iU9OXv1RQR" role="3cqZAp">
+            <node concept="37vLTI" id="1iU9OXv1RQT" role="3clFbG">
+              <node concept="37vLTw" id="1iU9OXv1RQW" role="37vLTJ">
+                <ref role="3cqZAo" node="1iU9OXv1RQM" resolve="myMap" />
+              </node>
+              <node concept="37vLTw" id="1iU9OXv1RQX" role="37vLTx">
+                <ref role="3cqZAo" node="1iU9OXv1MW9" resolve="map" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="37vLTG" id="1iU9OXuWS7o" role="3clF46">
+          <property role="TrG5h" value="projectRepo" />
+          <node concept="3uibUv" id="1iU9OXuWS7n" role="1tU5fm">
+            <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+          </node>
+          <node concept="2AHcQZ" id="1iU9OXuWZHU" role="2AJF6D">
+            <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="1iU9OXv1MW9" role="3clF46">
+          <property role="TrG5h" value="map" />
+          <node concept="3uibUv" id="1iU9OXv1Oym" role="1tU5fm">
+            <ref role="3uigEE" node="3ghtVL8Tof7" resolve="FeatureForestMap" />
+            <node concept="3uibUv" id="1iU9OXv1Oyn" role="11_B2D">
+              <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3clFb_" id="3ghtVL8TsO2" role="jymVt">
         <property role="1EzhhJ" value="false" />
@@ -2115,6 +2201,11 @@
                 <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                 <node concept="1bVj0M" id="1KUoCipv$Qg" role="37wK5m">
                   <node concept="3clFbS" id="1KUoCipv$Qh" role="1bW5cS">
+                    <node concept="3SKdUt" id="1iU9OXuXCzM" role="3cqZAp">
+                      <node concept="3SKdUq" id="1iU9OXuXCzO" role="3SKWNk">
+                        <property role="3SKdUp" value="FIXME does getFeaturesForChange need model read?" />
+                      </node>
+                    </node>
                     <node concept="3cpWs8" id="1KUoCipv$Qi" role="3cqZAp">
                       <node concept="3cpWsn" id="1KUoCipv$Qj" role="3cpWs9">
                         <property role="TrG5h" value="features" />
@@ -2155,7 +2246,7 @@
                         <node concept="3clFbF" id="1KUoCipv$Qx" role="3cqZAp">
                           <node concept="2OqwBi" id="1KUoCipv$Qy" role="3clFbG">
                             <node concept="37vLTw" id="2BHiRxeuvql" role="2Oq$k0">
-                              <ref role="3cqZAo" node="3ghtVL8TsNL" resolve="myMap" />
+                              <ref role="3cqZAo" node="1iU9OXv1RQM" resolve="myMap" />
                             </node>
                             <node concept="liA8E" id="1KUoCipv$Q$" role="2OqNvi">
                               <ref role="37wK5l" node="3ghtVL8TofT" resolve="put" />
@@ -2181,11 +2272,12 @@
                   </node>
                 </node>
               </node>
-              <node concept="2YIFZM" id="CdpzC2NTFk" role="2Oq$k0">
-                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                <ref role="37wK5l" to="alof:~ProjectHelper.getModelAccess(com.intellij.openapi.project.Project)" resolve="getModelAccess" />
-                <node concept="37vLTw" id="CdpzC2NTLX" role="37wK5m">
-                  <ref role="3cqZAo" to="1m72:~AbstractProjectComponent.myProject" resolve="myProject" />
+              <node concept="2OqwBi" id="1iU9OXuXvga" role="2Oq$k0">
+                <node concept="37vLTw" id="1iU9OXuXt_j" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1iU9OXuWWin" resolve="myProjectRepo" />
+                </node>
+                <node concept="liA8E" id="1iU9OXuXwiv" role="2OqNvi">
+                  <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                 </node>
               </node>
             </node>
@@ -2229,7 +2321,7 @@
                     <node concept="3clFbF" id="2mS0QzS0yHb" role="3cqZAp">
                       <node concept="2OqwBi" id="2mS0QzS0yHc" role="3clFbG">
                         <node concept="37vLTw" id="2BHiRxeut1z" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3ghtVL8TsNL" resolve="myMap" />
+                          <ref role="3cqZAo" node="1iU9OXv1RQM" resolve="myMap" />
                         </node>
                         <node concept="liA8E" id="2mS0QzS0yHe" role="2OqNvi">
                           <ref role="37wK5l" node="3ghtVL8Toiu" resolve="removeKey" />
@@ -5063,6 +5155,16 @@
         <node concept="3cqZAl" id="42ljTcHm$vA" role="3clF45" />
         <node concept="3Tm1VV" id="42ljTcHm$vB" role="1B3o_S" />
         <node concept="3clFbS" id="42ljTcHm$vC" role="3clF47">
+          <node concept="3SKdUt" id="1iU9OXuYrB1" role="3cqZAp">
+            <node concept="3SKdUq" id="1iU9OXuYrB3" role="3SKWNk">
+              <property role="3SKdUp" value="TODO AFAIK, this notification comes from the same thread CurrentDifferenceBroadcaster fires event from" />
+            </node>
+          </node>
+          <node concept="3SKdUt" id="1iU9OXv066e" role="3cqZAp">
+            <node concept="3SKdUq" id="1iU9OXv066g" role="3SKWNk">
+              <property role="3SKdUp" value="     which is *NOT* EDT, but rather a 'command' thread started from SimpleCommandQueue" />
+            </node>
+          </node>
           <node concept="3clFbF" id="42ljTcHm$vD" role="3cqZAp">
             <node concept="1rXfSq" id="4hiugqyyYfE" role="3clFbG">
               <ref role="37wK5l" node="7del55aioUB" resolve="rehighlightFeatureAndDescendants" />
@@ -5105,17 +5207,36 @@
           </node>
         </node>
         <node concept="3clFbS" id="X3XwAyvA5" role="3clF47">
+          <node concept="3SKdUt" id="1iU9OXv2d6Y" role="3cqZAp">
+            <node concept="3SKdUq" id="1iU9OXv2d70" role="3SKWNk">
+              <property role="3SKdUp" value="this event comes in EDT (if I read IDEA's FileStatusManagerImpl.fileStatusChanged() right)" />
+            </node>
+          </node>
           <node concept="3cpWs8" id="X3XwAyvKp" role="3cqZAp">
             <node concept="3cpWsn" id="X3XwAyvKq" role="3cpWs9">
               <property role="TrG5h" value="ifile" />
               <node concept="3uibUv" id="X3XwAyvKr" role="1tU5fm">
                 <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
               </node>
-              <node concept="2YIFZM" id="X3XwAyvKs" role="33vP2m">
-                <ref role="37wK5l" to="4hrd:~VirtualFileUtils.toIFile(com.intellij.openapi.vfs.VirtualFile)" resolve="toIFile" />
-                <ref role="1Pybhc" to="4hrd:~VirtualFileUtils" resolve="VirtualFileUtils" />
-                <node concept="37vLTw" id="2BHiRxgmeYa" role="37wK5m">
-                  <ref role="3cqZAo" node="X3XwAyvA2" resolve="file" />
+              <node concept="2OqwBi" id="1iU9OXv6htn" role="33vP2m">
+                <node concept="2OqwBi" id="1iU9OXv68y4" role="2Oq$k0">
+                  <node concept="2OqwBi" id="1iU9OXv5Z86" role="2Oq$k0">
+                    <node concept="37vLTw" id="1iU9OXv5Umh" role="2Oq$k0">
+                      <ref role="3cqZAo" node="42ljTcHm$er" resolve="myRegistry" />
+                    </node>
+                    <node concept="liA8E" id="1iU9OXv657k" role="2OqNvi">
+                      <ref role="37wK5l" to="lcr:1iU9OXv4MY9" resolve="getMPSProject" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1iU9OXv6e4d" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1iU9OXv6mEA" role="2OqNvi">
+                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
+                  <node concept="37vLTw" id="1iU9OXv6rLR" role="37wK5m">
+                    <ref role="3cqZAo" node="X3XwAyvA2" resolve="file" />
+                  </node>
                 </node>
               </node>
             </node>

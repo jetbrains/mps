@@ -51,7 +51,6 @@ import jetbrains.mps.ide.vfs.IdeaFile;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeListener;
 import com.intellij.openapi.vcs.FileStatusListener;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.smodel.SModelFileTracker;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -406,6 +405,8 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     }
     @Override
     public void featureStateChanged(Feature feature) {
+      // TODO AFAIK, this notification comes from the same thread CurrentDifferenceBroadcaster fires event from 
+      //      which is *NOT* EDT, but rather a 'command' thread started from SimpleCommandQueue 
       rehighlightFeatureAndDescendants(feature);
     }
   }
@@ -414,7 +415,8 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     }
     @Override
     public void fileStatusChanged(@NotNull VirtualFile file) {
-      IFile ifile = VirtualFileUtils.toIFile(file);
+      // this event comes in EDT (if I read IDEA's FileStatusManagerImpl.fileStatusChanged() right) 
+      IFile ifile = myRegistry.getMPSProject().getFileSystem().fromVirtualFile(file);
       SModel emd = SModelFileTracker.getInstance(getProjectRepository()).findModel(ifile);
       if (emd != null) {
         rehighlightFeatureAndDescendants(new ModelFeature(emd.getReference()));

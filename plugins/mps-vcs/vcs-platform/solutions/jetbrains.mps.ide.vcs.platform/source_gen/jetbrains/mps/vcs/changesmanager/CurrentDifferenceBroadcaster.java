@@ -4,46 +4,37 @@ package jetbrains.mps.vcs.changesmanager;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.apache.log4j.Level;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 
 /*package*/ class CurrentDifferenceBroadcaster implements CurrentDifferenceListener {
   private static final Logger LOG = LogManager.getLogger(CurrentDifferenceBroadcaster.class);
-  private List<CurrentDifferenceListener> myListeners = ListSequence.fromList(new ArrayList<CurrentDifferenceListener>());
-  private SimpleCommandQueue myCommandQueue;
+  private final CopyOnWriteArrayList<CurrentDifferenceListener> myListeners = new CopyOnWriteArrayList<CurrentDifferenceListener>();
+  private final SimpleCommandQueue myCommandQueue;
+
   public CurrentDifferenceBroadcaster(SimpleCommandQueue commandQueue) {
     myCommandQueue = commandQueue;
   }
   public void addDifferenceListener(@NotNull CurrentDifferenceListener listener) {
-    synchronized (myListeners) {
-      ListSequence.fromList(myListeners).addElement(listener);
-    }
+    myListeners.add(listener);
   }
   public void removeDifferenceListener(@NotNull CurrentDifferenceListener listener) {
-    synchronized (myListeners) {
-      ListSequence.fromList(myListeners).removeElement(listener);
-    }
+    myListeners.remove(listener);
   }
-  @NotNull
-  private List<CurrentDifferenceListener> copyListeners() {
-    synchronized (myListeners) {
-      return ListSequence.fromListWithValues(new ArrayList<CurrentDifferenceListener>(), myListeners);
-    }
-  }
+
   private void fireEvent(String name, _FunctionTypes._void_P1_E0<? super CurrentDifferenceListener> task) {
     myCommandQueue.assertSoftlyIsCommandThread();
-    for (CurrentDifferenceListener listener : ListSequence.fromList(copyListeners())) {
+    for (CurrentDifferenceListener listener : ListSequence.fromList(myListeners)) {
       try {
         task.invoke(listener);
       } catch (Throwable t) {
         myCommandQueue.setHadExceptions(true);
         if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("Exception on firing " + name + " event", t);
+          LOG.error(String.format("Exception on firing '%s' event", name), t);
         }
       }
     }

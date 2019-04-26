@@ -52,6 +52,7 @@
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -421,7 +422,6 @@
       <concept id="1235566554328" name="jetbrains.mps.baseLanguage.collections.structure.AnyOperation" flags="nn" index="2HwmR7" />
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
-        <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
       <concept id="1227022210526" name="jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation" flags="nn" index="2Kehj3" />
       <concept id="1201306600024" name="jetbrains.mps.baseLanguage.collections.structure.ContainsKeyOperation" flags="nn" index="2Nt0df">
@@ -2484,15 +2484,18 @@
     </node>
     <node concept="312cEg" id="7sg$kIGEM2f" role="jymVt">
       <property role="TrG5h" value="myListeners" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7sg$kIGEM2g" role="1B3o_S" />
-      <node concept="_YKpA" id="7sg$kIGEM2h" role="1tU5fm">
-        <node concept="3uibUv" id="7sg$kIGEM2i" role="_ZDj9">
+      <node concept="3uibUv" id="1iU9OXuUMIl" role="1tU5fm">
+        <ref role="3uigEE" to="5zyv:~CopyOnWriteArrayList" resolve="CopyOnWriteArrayList" />
+        <node concept="3uibUv" id="1iU9OXuV7VW" role="11_B2D">
           <ref role="3uigEE" node="5R2TaPUK2uk" resolve="CurrentDifferenceListener" />
         </node>
       </node>
       <node concept="2ShNRf" id="7sg$kIGEM2j" role="33vP2m">
-        <node concept="Tc6Ow" id="7sg$kIGEM2k" role="2ShVmc">
-          <node concept="3uibUv" id="7sg$kIGEM2l" role="HW$YZ">
+        <node concept="1pGfFk" id="1iU9OXuV3uJ" role="2ShVmc">
+          <ref role="37wK5l" to="5zyv:~CopyOnWriteArrayList.&lt;init&gt;()" resolve="CopyOnWriteArrayList" />
+          <node concept="3uibUv" id="1iU9OXuVc1Z" role="1pMfVU">
             <ref role="3uigEE" node="5R2TaPUK2uk" resolve="CurrentDifferenceListener" />
           </node>
         </node>
@@ -2500,11 +2503,13 @@
     </node>
     <node concept="312cEg" id="7sg$kIGEM4D" role="jymVt">
       <property role="TrG5h" value="myCommandQueue" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7sg$kIGEM4E" role="1B3o_S" />
       <node concept="3uibUv" id="7sg$kIGEM4G" role="1tU5fm">
         <ref role="3uigEE" node="3eE6dTgTyYL" resolve="SimpleCommandQueue" />
       </node>
     </node>
+    <node concept="2tJIrI" id="1iU9OXuVU7t" role="jymVt" />
     <node concept="3clFbW" id="7sg$kIGEM4K" role="jymVt">
       <node concept="3cqZAl" id="7sg$kIGEM4L" role="3clF45" />
       <node concept="3Tm1VV" id="7sg$kIGEM4M" role="1B3o_S" />
@@ -2533,23 +2538,17 @@
       <node concept="3cqZAl" id="7sg$kIGEM2n" role="3clF45" />
       <node concept="3Tm1VV" id="7sg$kIGEM2o" role="1B3o_S" />
       <node concept="3clFbS" id="7sg$kIGEM2p" role="3clF47">
-        <node concept="1HWtB8" id="7sg$kIGEM2q" role="3cqZAp">
-          <node concept="3clFbS" id="7sg$kIGEM2r" role="1HWHxc">
-            <node concept="3clFbF" id="7sg$kIGEM2s" role="3cqZAp">
-              <node concept="2OqwBi" id="7sg$kIGEM2t" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeuWSQ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
-                </node>
-                <node concept="TSZUe" id="7sg$kIGEM2v" role="2OqNvi">
-                  <node concept="37vLTw" id="2BHiRxgkZYz" role="25WWJ7">
-                    <ref role="3cqZAo" node="7sg$kIGEM2y" resolve="listener" />
-                  </node>
-                </node>
+        <node concept="3clFbF" id="1iU9OXuVikM" role="3cqZAp">
+          <node concept="2OqwBi" id="1iU9OXuVm$k" role="3clFbG">
+            <node concept="37vLTw" id="1iU9OXuVikK" role="2Oq$k0">
+              <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
+            </node>
+            <node concept="liA8E" id="1iU9OXuVpzY" role="2OqNvi">
+              <ref role="37wK5l" to="5zyv:~CopyOnWriteArrayList.add(java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="1iU9OXuVrTw" role="37wK5m">
+                <ref role="3cqZAo" node="7sg$kIGEM2y" resolve="listener" />
               </node>
             </node>
-          </node>
-          <node concept="37vLTw" id="2BHiRxeuoJH" role="1HWFw0">
-            <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
           </node>
         </node>
       </node>
@@ -2569,21 +2568,15 @@
       <node concept="3cqZAl" id="7sg$kIGEM2A" role="3clF45" />
       <node concept="3Tm1VV" id="7sg$kIGEM2B" role="1B3o_S" />
       <node concept="3clFbS" id="7sg$kIGEM2C" role="3clF47">
-        <node concept="1HWtB8" id="7sg$kIGEM2D" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeufSC" role="1HWFw0">
-            <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
-          </node>
-          <node concept="3clFbS" id="7sg$kIGEM2F" role="1HWHxc">
-            <node concept="3clFbF" id="7sg$kIGEM2G" role="3cqZAp">
-              <node concept="2OqwBi" id="7sg$kIGEM2H" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeug5D" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
-                </node>
-                <node concept="3dhRuq" id="7sg$kIGEM2J" role="2OqNvi">
-                  <node concept="37vLTw" id="2BHiRxgmE7H" role="25WWJ7">
-                    <ref role="3cqZAo" node="7sg$kIGEM2L" resolve="listener" />
-                  </node>
-                </node>
+        <node concept="3clFbF" id="1iU9OXuVy6p" role="3cqZAp">
+          <node concept="2OqwBi" id="1iU9OXuV_8L" role="3clFbG">
+            <node concept="37vLTw" id="1iU9OXuVy6n" role="2Oq$k0">
+              <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
+            </node>
+            <node concept="liA8E" id="1iU9OXuVBYZ" role="2OqNvi">
+              <ref role="37wK5l" to="5zyv:~CopyOnWriteArrayList.remove(java.lang.Object)" resolve="remove" />
+              <node concept="37vLTw" id="1iU9OXuVE4t" role="37wK5m">
+                <ref role="3cqZAo" node="7sg$kIGEM2L" resolve="listener" />
               </node>
             </node>
           </node>
@@ -2599,39 +2592,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="7sg$kIGEM2O" role="jymVt">
-      <property role="TrG5h" value="copyListeners" />
-      <node concept="_YKpA" id="7sg$kIGEM2P" role="3clF45">
-        <node concept="3uibUv" id="7sg$kIGEM2Q" role="_ZDj9">
-          <ref role="3uigEE" node="5R2TaPUK2uk" resolve="CurrentDifferenceListener" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="7sg$kIGEM2R" role="1B3o_S" />
-      <node concept="3clFbS" id="7sg$kIGEM2S" role="3clF47">
-        <node concept="1HWtB8" id="7sg$kIGEM2T" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeusmU" role="1HWFw0">
-            <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
-          </node>
-          <node concept="3clFbS" id="7sg$kIGEM2V" role="1HWHxc">
-            <node concept="3cpWs6" id="7sg$kIGEM2W" role="3cqZAp">
-              <node concept="2ShNRf" id="7sg$kIGEM2X" role="3cqZAk">
-                <node concept="Tc6Ow" id="7sg$kIGEM2Y" role="2ShVmc">
-                  <node concept="3uibUv" id="7sg$kIGEM2Z" role="HW$YZ">
-                    <ref role="3uigEE" node="5R2TaPUK2uk" resolve="CurrentDifferenceListener" />
-                  </node>
-                  <node concept="37vLTw" id="2BHiRxeul3U" role="I$8f6">
-                    <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="7sg$kIGEM31" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="1iU9OXuVIxN" role="jymVt" />
     <node concept="3clFb_" id="7sg$kIGEM32" role="jymVt">
       <property role="TrG5h" value="fireEvent" />
       <node concept="3cqZAl" id="7sg$kIGEM33" role="3clF45" />
@@ -2688,29 +2649,26 @@
                   </node>
                   <node concept="RRSsy" id="3jYQuSB35qd" role="3cqZAp">
                     <property role="RRSoG" value="error" />
-                    <node concept="3cpWs3" id="7sg$kIGEM3o" role="RRSoy">
-                      <node concept="Xl_RD" id="7sg$kIGEM3p" role="3uHU7w">
-                        <property role="Xl_RC" value=" event" />
-                      </node>
-                      <node concept="3cpWs3" id="7sg$kIGEM3q" role="3uHU7B">
-                        <node concept="Xl_RD" id="7sg$kIGEM3r" role="3uHU7B">
-                          <property role="Xl_RC" value="Exception on firing " />
-                        </node>
-                        <node concept="37vLTw" id="2BHiRxgm8Bg" role="3uHU7w">
-                          <ref role="3cqZAo" node="7sg$kIGEM3v" resolve="name" />
-                        </node>
-                      </node>
-                    </node>
                     <node concept="37vLTw" id="3GM_nagTwGR" role="RRSow">
                       <ref role="3cqZAo" node="7sg$kIGEM3k" resolve="t" />
+                    </node>
+                    <node concept="2YIFZM" id="1iU9OXuVM7U" role="RRSoy">
+                      <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                      <node concept="Xl_RD" id="7sg$kIGEM3r" role="37wK5m">
+                        <property role="Xl_RC" value="Exception on firing '%s' event" />
+                      </node>
+                      <node concept="37vLTw" id="1iU9OXuVTro" role="37wK5m">
+                        <ref role="3cqZAo" node="7sg$kIGEM3v" resolve="name" />
+                      </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="1rXfSq" id="4hiugqyyIt0" role="2GsD0m">
-            <ref role="37wK5l" node="7sg$kIGEM2O" resolve="copyListeners" />
+          <node concept="37vLTw" id="1iU9OXuVJIS" role="2GsD0m">
+            <ref role="3cqZAo" node="7sg$kIGEM2f" resolve="myListeners" />
           </node>
         </node>
       </node>
@@ -3388,6 +3346,21 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="1iU9OXv4Drl" role="jymVt" />
+    <node concept="3clFb_" id="1iU9OXv4MY9" role="jymVt">
+      <property role="TrG5h" value="getMPSProject" />
+      <node concept="3clFbS" id="1iU9OXv4MYc" role="3clF47">
+        <node concept="3cpWs6" id="1iU9OXv4RFe" role="3cqZAp">
+          <node concept="37vLTw" id="1iU9OXv4UU0" role="3cqZAk">
+            <ref role="3cqZAo" node="6y_kxB1UvQg" resolve="myMpsProject" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="1iU9OXv4GF0" role="1B3o_S" />
+      <node concept="3uibUv" id="1iU9OXv4K1X" role="3clF45">
+        <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="1nctWZUZfFR" role="jymVt" />
     <node concept="3clFb_" id="2JwSLRbyYXJ" role="jymVt">
       <property role="TrG5h" value="updateModel" />
@@ -3524,23 +3497,21 @@
             <node concept="3uibUv" id="2JwSLRbyYRW" role="1tU5fm">
               <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
             </node>
-            <node concept="2YIFZM" id="2JwSLRbyYRX" role="33vP2m">
-              <ref role="37wK5l" to="4hrd:~VirtualFileUtils.toIFile(com.intellij.openapi.vfs.VirtualFile)" resolve="toIFile" />
-              <ref role="1Pybhc" to="4hrd:~VirtualFileUtils" resolve="VirtualFileUtils" />
-              <node concept="37vLTw" id="2BHiRxgmvJY" role="37wK5m">
-                <ref role="3cqZAo" node="2JwSLRbyYSs" resolve="file" />
+            <node concept="2OqwBi" id="1iU9OXv3SO2" role="33vP2m">
+              <node concept="2OqwBi" id="1iU9OXv3N9I" role="2Oq$k0">
+                <node concept="37vLTw" id="1iU9OXv3I5$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6y_kxB1UvQg" resolve="myMpsProject" />
+                </node>
+                <node concept="liA8E" id="1iU9OXv3QD9" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="2JwSLRbyYRZ" role="3cqZAp">
-          <node concept="3clFbS" id="2JwSLRbyYS0" role="3clFbx">
-            <node concept="3cpWs6" id="2JwSLRbyYS1" role="3cqZAp" />
-          </node>
-          <node concept="3clFbC" id="2JwSLRbyYS2" role="3clFbw">
-            <node concept="10Nm6u" id="2JwSLRbyYS3" role="3uHU7w" />
-            <node concept="37vLTw" id="3GM_nagT_Sb" role="3uHU7B">
-              <ref role="3cqZAo" node="2JwSLRbyYRV" resolve="iFile" />
+              <node concept="liA8E" id="1iU9OXv3VPa" role="2OqNvi">
+                <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
+                <node concept="37vLTw" id="1iU9OXv3YP3" role="37wK5m">
+                  <ref role="3cqZAo" node="2JwSLRbyYSs" resolve="file" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

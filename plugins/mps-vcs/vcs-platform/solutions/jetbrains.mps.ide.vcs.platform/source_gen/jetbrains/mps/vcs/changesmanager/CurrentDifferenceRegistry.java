@@ -20,7 +20,6 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -76,6 +75,10 @@ public class CurrentDifferenceRegistry extends AbstractProjectComponent {
     return myProject;
   }
 
+  public MPSProject getMPSProject() {
+    return myMpsProject;
+  }
+
   /*package*/ void updateModel(@NotNull SModel model) {
     synchronized (myCurrentDifferences) {
       SModelReference modelRef = model.getReference();
@@ -92,10 +95,7 @@ public class CurrentDifferenceRegistry extends AbstractProjectComponent {
     if (file == null) {
       return;
     }
-    IFile iFile = VirtualFileUtils.toIFile(file);
-    if (iFile == null) {
-      return;
-    }
+    IFile iFile = myMpsProject.getFileSystem().fromVirtualFile(file);
     SModel modelDescriptor = SModelFileTracker.getInstance(myMpsProject.getRepository()).findModel(iFile);
     if (modelDescriptor == null || !(modelDescriptor.isLoaded())) {
       return;

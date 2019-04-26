@@ -43,7 +43,6 @@
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
@@ -68,6 +67,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode extendsClassName="com.intellij.openapi.components.AbstractProjectComponent" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.tree.HierarchyFeatureExtractor">
@@ -132,7 +132,6 @@
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.MPSTreeNodeListener" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.TreeMessage" />
     <classNode dependClassName="jetbrains.mps.ide.vfs.IdeaFile" />
-    <classNode dependClassName="jetbrains.mps.ide.vfs.VirtualFileUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />

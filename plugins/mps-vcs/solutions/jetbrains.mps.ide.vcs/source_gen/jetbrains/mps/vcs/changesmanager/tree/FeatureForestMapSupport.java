@@ -4,14 +4,11 @@ package jetbrains.mps.vcs.changesmanager.tree;
 
 import com.intellij.openapi.components.AbstractProjectComponent;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
-import java.util.Map;
-import jetbrains.mps.vcs.changesmanager.tree.features.Feature;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.vcs.changesmanager.tree.features.Feature;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -29,22 +26,27 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.vcs.changesmanager.tree.features.DeletedChildFeature;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
-import jetbrains.mps.ide.project.ProjectHelper;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 public class FeatureForestMapSupport extends AbstractProjectComponent {
   private final FeatureForestMap<ModelChange> myMap;
-  private Map<ModelChange, Feature[]> myChangeToFeaturesMap = MapSequence.fromMap(new HashMap<ModelChange, Feature[]>());
-  private CurrentDifferenceRegistry myCurrentDifferenceRegistry;
-  private FeatureForestMapSupport.MyListener myListener = new FeatureForestMapSupport.MyListener();
+  private final CurrentDifferenceRegistry myCurrentDifferenceRegistry;
+  private final FeatureForestMapSupport.MyListener myListener;
+
   public FeatureForestMapSupport(Project project, MPSProject mpsProject, CurrentDifferenceRegistry currentDifferenceRegistry) {
     super(project);
-    myMap = new FeatureForestMap<ModelChange>(mpsProject.getRepository());
     myCurrentDifferenceRegistry = currentDifferenceRegistry;
+    myMap = new FeatureForestMap<ModelChange>(mpsProject.getRepository());
+    myListener = new FeatureForestMapSupport.MyListener(mpsProject.getRepository(), myMap);
   }
   @Override
   public void initComponent() {
+    // FIXME why project component listens to global differences? 
     myCurrentDifferenceRegistry.addGlobalDifferenceListener(myListener);
   }
   @Override
@@ -55,6 +57,7 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
   public FeatureForestMap<ModelChange> getMap() {
     return myMap;
   }
+
   /*package*/ static Feature[] getFeaturesForChange(@NotNull ModelChange change) {
     List<Feature> result = ListSequence.fromList(new ArrayList<Feature>());
     SModelReference modelReference = SModelOperations.getPointer(change.getChangeSet().getNewModel());
@@ -85,13 +88,20 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
     }
     return ListSequence.fromList(result).toGenericArray(Feature.class);
   }
-  private class MyListener extends CurrentDifferenceAdapter {
-    public MyListener() {
+  private static class MyListener extends CurrentDifferenceAdapter {
+    private final Map<ModelChange, Feature[]> myChangeToFeaturesMap = MapSequence.fromMap(new HashMap<ModelChange, Feature[]>());
+    private final SRepository myProjectRepo;
+    private final FeatureForestMap<ModelChange> myMap;
+
+    public MyListener(@NotNull SRepository projectRepo, FeatureForestMap<ModelChange> map) {
+      myProjectRepo = projectRepo;
+      myMap = map;
     }
     @Override
     public void changeAdded(@NotNull final ModelChange change) {
-      ProjectHelper.getModelAccess(myProject).runReadAction(new Runnable() {
+      myProjectRepo.getModelAccess().runReadAction(new Runnable() {
         public void run() {
+          // FIXME does getFeaturesForChange need model read? 
           Feature[] features = FeatureForestMapSupport.getFeaturesForChange(change);
           MapSequence.fromMap(myChangeToFeaturesMap).put(change, features);
           for (Feature f : MapSequence.fromMap(myChangeToFeaturesMap).get(change)) {
