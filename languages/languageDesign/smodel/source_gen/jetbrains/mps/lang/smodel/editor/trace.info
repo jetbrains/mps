@@ -26709,11 +26709,10 @@
       <node id="6407023681583066464" at="239,34,240,91" concept="2" />
       <node id="6407023681583066465" at="240,91,241,61" concept="2" />
       <node id="6407023681583066466" at="241,61,242,54" concept="2" />
-      <node id="6407023681583066467" at="242,54,243,55" concept="2" />
-      <node id="6407023681583066468" at="243,55,244,59" concept="2" />
-      <node id="6407023681583066464" at="244,59,245,40" concept="2" />
-      <node id="6407023681583066464" at="245,40,246,34" concept="2" />
-      <node id="6407023681583066464" at="246,34,247,22" concept="8" />
+      <node id="6407023681583066468" at="242,54,243,59" concept="2" />
+      <node id="6407023681583066464" at="243,59,244,40" concept="2" />
+      <node id="6407023681583066464" at="244,40,245,34" concept="2" />
+      <node id="6407023681583066464" at="245,34,246,22" concept="8" />
       <node id="6407023681583066451" at="53,0,55,0" concept="3" trace="myNode" />
       <node id="6407023681583066455" at="126,0,128,0" concept="3" trace="myNode" />
       <node id="6407023681583066451" at="153,0,155,0" concept="1" trace="LinkAttributeQualifier_attributeConcept_cellMenu_mg3hvm_a0a0#()V" />
@@ -26746,7 +26745,7 @@
       <node id="6407023681583066451" at="85,0,96,0" concept="6" trace="createReferenceCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6407023681583066451" at="207,0,218,0" concept="6" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="6407023681583066458" at="166,0,178,0" concept="6" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6407023681583066464" at="236,0,249,0" concept="6" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="6407023681583066464" at="236,0,248,0" concept="6" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6407023681583066451" at="218,0,232,0" concept="6" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6407023681583066451" at="83,181,103,6" concept="7" />
       <node id="6407023681583066451" at="82,0,125,0" concept="6" trace="createRefCell_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -26834,6 +26833,10 @@
         <var name="editorCell" id="6407023681583066458" />
         <var name="style" id="6407023681583066458" />
       </scope>
+      <scope id="6407023681583066464" at="236,41,246,22">
+        <var name="editorCell" id="6407023681583066464" />
+        <var name="style" id="6407023681583066464" />
+      </scope>
       <scope id="6407023681583066451" at="71,0,82,0" />
       <scope id="6407023681583066451" at="85,0,96,0">
         <var name="targetNode" id="6407023681583066451" />
@@ -26844,12 +26847,8 @@
         <var name="isEmpty" id="6407023681583066451" />
       </scope>
       <scope id="6407023681583066451" at="219,44,230,7" />
-      <scope id="6407023681583066464" at="236,41,247,22">
-        <var name="editorCell" id="6407023681583066464" />
-        <var name="style" id="6407023681583066464" />
-      </scope>
       <scope id="6407023681583066458" at="166,0,178,0" />
-      <scope id="6407023681583066464" at="236,0,249,0" />
+      <scope id="6407023681583066464" at="236,0,248,0" />
       <scope id="6407023681583066451" at="218,0,232,0" />
       <scope id="6407023681583066451" at="82,40,123,22">
         <var name="currentReferenceAttributes" id="6407023681583066451" />
@@ -26865,7 +26864,7 @@
       <unit id="6407023681583066451" at="84,42,103,5" name="jetbrains.mps.lang.smodel.editor.LinkAttributeQualifier_EditorBuilder_a$1" />
       <unit id="6407023681583066455" at="125,0,152,0" name="jetbrains.mps.lang.smodel.editor.LinkAttributeQualifier_EditorBuilder_a$Inline_Builder0" />
       <unit id="6407023681583066451" at="182,0,236,0" name="jetbrains.mps.lang.smodel.editor.LinkAttributeQualifier_EditorBuilder_a$linkQualifierSingleRoleHandler_mg3hvm_c0" />
-      <unit id="6407023681583066451" at="52,0,250,0" name="jetbrains.mps.lang.smodel.editor.LinkAttributeQualifier_EditorBuilder_a" />
+      <unit id="6407023681583066451" at="52,0,249,0" name="jetbrains.mps.lang.smodel.editor.LinkAttributeQualifier_EditorBuilder_a" />
     </file>
     <file name="PresentationProviders.java">
       <node id="5434726885493125988" at="21,89,22,76" concept="8" />
@@ -26988,11 +26987,10 @@
       <node id="6407023681583066482" at="239,34,240,91" concept="2" />
       <node id="6407023681583066483" at="240,91,241,61" concept="2" />
       <node id="5897605856269491788" at="241,61,242,54" concept="2" />
-      <node id="5897605856269491790" at="242,54,243,55" concept="2" />
-      <node id="5897605856269491792" at="243,55,244,59" concept="2" />
-      <node id="6407023681583066482" at="244,59,245,40" concept="2" />
-      <node id="6407023681583066482" at="245,40,246,34" concept="2" />
-      <node id="6407023681583066482" at="246,34,247,22" concept="8" />
+      <node id="5897605856269491792" at="242,54,243,59" concept="2" />
+      <node id="6407023681583066482" at="243,59,244,40" concept="2" />
+      <node id="6407023681583066482" at="244,40,245,34" concept="2" />
+      <node id="6407023681583066482" at="245,34,246,22" concept="8" />
       <node id="6407023681583066470" at="53,0,55,0" concept="3" trace="myNode" />
       <node id="6407023681583066474" at="129,0,131,0" concept="3" trace="myNode" />
       <node id="6407023681583066470" at="156,0,158,0" concept="1" trace="PropertyAttributeQualifier_attributeConcept_cellMenu_wc9pc4_a0a0#()V" />
@@ -27025,7 +27023,7 @@
       <node id="6407023681583066470" at="71,0,82,0" concept="6" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6407023681583066470" at="85,0,96,0" concept="6" trace="createReferenceCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6407023681583066478" at="169,0,181,0" concept="6" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6407023681583066482" at="236,0,249,0" concept="6" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="6407023681583066482" at="236,0,248,0" concept="6" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6407023681583066470" at="218,0,232,0" concept="6" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6407023681583066470" at="83,181,103,6" concept="7" />
       <node id="6407023681583066470" at="82,0,128,0" concept="6" trace="createRefCell_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -27116,17 +27114,17 @@
         <var name="editorCell" id="6407023681583066478" />
         <var name="style" id="6407023681583066478" />
       </scope>
+      <scope id="6407023681583066482" at="236,41,246,22">
+        <var name="editorCell" id="6407023681583066482" />
+        <var name="style" id="6407023681583066482" />
+      </scope>
       <scope id="6407023681583066470" at="71,0,82,0" />
       <scope id="6407023681583066470" at="85,0,96,0">
         <var name="targetNode" id="6407023681583066470" />
       </scope>
       <scope id="6407023681583066470" at="219,44,230,7" />
-      <scope id="6407023681583066482" at="236,41,247,22">
-        <var name="editorCell" id="6407023681583066482" />
-        <var name="style" id="6407023681583066482" />
-      </scope>
       <scope id="6407023681583066478" at="169,0,181,0" />
-      <scope id="6407023681583066482" at="236,0,249,0" />
+      <scope id="6407023681583066482" at="236,0,248,0" />
       <scope id="6407023681583066470" at="218,0,232,0" />
       <scope id="6407023681583066470" at="82,40,126,22">
         <var name="currentReferenceAttributes" id="6407023681583066470" />
@@ -27143,7 +27141,7 @@
       <unit id="6407023681583066470" at="84,42,103,5" name="jetbrains.mps.lang.smodel.editor.PropertyAttributeQualifier_EditorBuilder_a$1" />
       <unit id="6407023681583066474" at="128,0,155,0" name="jetbrains.mps.lang.smodel.editor.PropertyAttributeQualifier_EditorBuilder_a$Inline_Builder0" />
       <unit id="6407023681583066470" at="185,0,236,0" name="jetbrains.mps.lang.smodel.editor.PropertyAttributeQualifier_EditorBuilder_a$propertyQualifierSingleRoleHandler_wc9pc4_c0" />
-      <unit id="6407023681583066470" at="52,0,250,0" name="jetbrains.mps.lang.smodel.editor.PropertyAttributeQualifier_EditorBuilder_a" />
+      <unit id="6407023681583066470" at="52,0,249,0" name="jetbrains.mps.lang.smodel.editor.PropertyAttributeQualifier_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/6407023681583066486">

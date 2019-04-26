@@ -240,7 +240,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     new BaseAngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.FIRST_POSITION_ALLOWED, false);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.LAST_POSITION_ALLOWED, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

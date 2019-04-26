@@ -3951,9 +3951,6 @@
         <node concept="11L4FC" id="5zEkxuKhyPy" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="11LMrY" id="5zEkxuKhyPz" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
         <node concept="3CIbrd" id="5zEkxuKhyP$" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
@@ -4006,9 +4003,6 @@
         <ref role="1k5W1q" to="tpen:i18cmFm" resolve="BaseAngleBracket" />
         <node concept="3CHQLq" id="5zEkxuKhyPN" role="3F10Kt" />
         <node concept="11L4FC" id="57owku8ddTc" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="11LMrY" id="57owku8ddTe" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
         <node concept="3CIbrd" id="57owku8ddTg" role="3F10Kt">
