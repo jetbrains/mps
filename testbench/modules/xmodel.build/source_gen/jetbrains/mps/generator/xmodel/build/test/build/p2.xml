@@ -31,7 +31,13 @@
     <mkdir dir="${build.tmp}/default/jetbrains.mps.generator.xmodel.test2.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.generator.xmodel.test2.jar/META-INF/module.xml">
       <module namespace="jetbrains.mps.generator.xmodel.test2" type="solution" uuid="d8256d18-f5f5-4d78-8999-0bf716e43a91">
-        <dependencies />
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="519e5d27-6128-4ba6-8758-43a055b1222d(jetbrains.mps.generator.xmodel.test)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:b2d9d19b-9a47-47a4-93f4-0c9390001bf2:jetbrains.mps.generator.test.xmodel.lang1" />
+        </uses>
         <classpath>
           <entry path="." />
         </classpath>
