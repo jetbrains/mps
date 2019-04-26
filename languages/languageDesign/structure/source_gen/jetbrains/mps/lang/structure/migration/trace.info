@@ -1062,41 +1062,54 @@
   </root>
   <root nodeRef="r:33eabb60-7192-4d12-ba46-11dacf966b3e(jetbrains.mps.lang.structure.migration)/2309416876628396524">
     <file name="EnumUsagesMigration.java">
-      <node id="2309416876627496526" at="12,90,13,236" concept="6" />
-      <node id="2309416876627618099" at="14,244,15,273" concept="6" />
-      <node id="2309416876627558790" at="15,273,16,64" concept="2" />
-      <node id="2309416876627637353" at="16,64,17,31" concept="7" />
-      <node id="2309416876627638946" at="18,5,19,16" concept="7" />
-      <node id="2309416876628397162" at="22,86,23,248" concept="6" />
-      <node id="2309416876628397174" at="24,239,25,288" concept="6" />
-      <node id="2309416876628397184" at="25,288,26,67" concept="2" />
-      <node id="2309416876628397191" at="26,67,27,34" concept="7" />
-      <node id="2309416876628397199" at="28,5,29,16" concept="7" />
-      <node id="2309416876627501445" at="13,236,18,5" concept="4" />
-      <node id="2309416876628397172" at="23,248,28,5" concept="4" />
-      <node id="2309416876627494546" at="12,0,21,0" concept="11" trace="migratePropertyReference#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="2309416876628397160" at="22,0,31,0" concept="11" trace="migrateEnumReference#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="2309416876627501447" at="14,244,17,31">
+      <node id="2309416876627496526" at="14,90,15,236" concept="6" />
+      <node id="2309416876627618099" at="16,244,17,273" concept="6" />
+      <node id="2309416876627558790" at="17,273,18,64" concept="2" />
+      <node id="2309416876627637353" at="18,64,19,31" concept="7" />
+      <node id="2309416876627638946" at="20,5,21,16" concept="7" />
+      <node id="2309416876628397162" at="24,86,25,248" concept="6" />
+      <node id="2309416876628397174" at="26,239,27,288" concept="6" />
+      <node id="2309416876628397184" at="27,288,28,67" concept="2" />
+      <node id="2309416876628397191" at="28,67,29,34" concept="7" />
+      <node id="2309416876628397199" at="30,5,31,16" concept="7" />
+      <node id="1189424455255157394" at="34,77,35,128" concept="6" />
+      <node id="1189424455255198004" at="36,188,37,195" concept="2" />
+      <node id="1189424455255203965" at="37,195,38,114" concept="7" />
+      <node id="1189424455255208250" at="39,5,40,16" concept="7" />
+      <node id="1189424455255162073" at="35,128,39,5" concept="4" />
+      <node id="2309416876627501445" at="15,236,20,5" concept="4" />
+      <node id="2309416876628397172" at="25,248,30,5" concept="4" />
+      <node id="1189424455255138757" at="34,0,42,0" concept="11" trace="migrateEnumPropertyAttribute#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2309416876627494546" at="14,0,23,0" concept="11" trace="migratePropertyReference#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2309416876628397160" at="24,0,33,0" concept="11" trace="migrateEnumReference#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1189424455255162075" at="36,188,38,114" />
+      <scope id="2309416876627501447" at="16,244,19,31">
         <var name="newTargetProperty" id="2309416876627618100" />
       </scope>
-      <scope id="2309416876628397173" at="24,239,27,34">
+      <scope id="2309416876628397173" at="26,239,29,34">
         <var name="newTargetEnumeration" id="2309416876628397175" />
       </scope>
-      <scope id="2309416876627494549" at="12,90,19,16">
+      <scope id="1189424455255138758" at="34,77,40,16">
+        <var name="targetProperty" id="1189424455255157397" />
+      </scope>
+      <scope id="2309416876627494549" at="14,90,21,16">
         <var name="targetProperty" id="2309416876627496529" />
       </scope>
-      <scope id="2309416876628397161" at="22,86,29,16">
+      <scope id="2309416876628397161" at="24,86,31,16">
         <var name="targetEnumeration" id="2309416876628397163" />
       </scope>
-      <scope id="2309416876627494546" at="12,0,21,0">
+      <scope id="1189424455255138757" at="34,0,42,0">
+        <var name="propertyAttribute" id="1189424455255138800" />
+      </scope>
+      <scope id="2309416876627494546" at="14,0,23,0">
         <var name="link" id="2309416876627555065" />
         <var name="referenceNode" id="2309416876627554680" />
       </scope>
-      <scope id="2309416876628397160" at="22,0,31,0">
+      <scope id="2309416876628397160" at="24,0,33,0">
         <var name="link" id="2309416876628397205" />
         <var name="referenceNode" id="2309416876628397203" />
       </scope>
-      <unit id="2309416876628396524" at="10,0,33,0" name="jetbrains.mps.lang.structure.migration.EnumUsagesMigration" />
+      <unit id="2309416876628396524" at="12,0,44,0" name="jetbrains.mps.lang.structure.migration.EnumUsagesMigration" />
     </file>
   </root>
   <root nodeRef="r:33eabb60-7192-4d12-ba46-11dacf966b3e(jetbrains.mps.lang.structure.migration)/2367072595509371506">

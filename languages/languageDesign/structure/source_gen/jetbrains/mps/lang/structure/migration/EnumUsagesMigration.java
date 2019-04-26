@@ -6,6 +6,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class EnumUsagesMigration {
 
@@ -25,6 +27,15 @@ public class EnumUsagesMigration {
       SNode newTargetEnumeration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(targetEnumeration)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
       referenceNode.setReferenceTarget(link, newTargetEnumeration);
       return newTargetEnumeration;
+    }
+    return null;
+  }
+
+  public static SNode migrateEnumPropertyAttribute(SNode propertyAttribute) {
+    SNode targetProperty = PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propertyAttribute);
+    if (SNodeOperations.hasRole(targetProperty, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty"))) {
+      SPropertyOperations.assign(propertyAttribute, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated"), true);
+      return PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propertyAttribute);
     }
     return null;
   }

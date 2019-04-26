@@ -413,6 +413,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("name_DebugInfo", 0x18649a5c82123515L).type(PrimitiveTypeId.STRING).origin("1757699476691236117").done();
     b.property("propertyId", 0x129f3f61278d556dL).type(PrimitiveTypeId.STRING).origin("1341860900487648621").done();
+    b.property("enumUsageMigrated", 0x1081af3d7e9d6a2fL).type(PrimitiveTypeId.BOOLEAN).origin("1189424455254633007").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForReviewMigration() {
