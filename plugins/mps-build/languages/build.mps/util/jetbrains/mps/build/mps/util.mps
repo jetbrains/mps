@@ -378,6 +378,9 @@
       <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
         <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
+      <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
+        <reference id="2217234381367530213" name="classifier" index="VXe09" />
+      </concept>
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
@@ -7009,7 +7012,7 @@
       <node concept="P$JXv" id="5RIkdF7qLzN" role="lGtFl">
         <node concept="TZ5HA" id="5RIkdF7qLzO" role="TZ5H$">
           <node concept="1dT_AC" id="5RIkdF7qLzP" role="1dT_Ay">
-            <property role="1dT_AB" value="The dependendencies one needs to run the generated sources of the initial modules" />
+            <property role="1dT_AB" value="The dependencies one needs to run the generated sources of the initial modules" />
           </node>
         </node>
         <node concept="TZ5HA" id="1BCLQMpX11f" role="TZ5H$">
@@ -7056,6 +7059,26 @@
           </node>
           <node concept="1dT_AC" id="5RIkdF7uBMe" role="1dT_Ay">
             <property role="1dT_AB" value=" shall collect module's dependencies (collectDependencies(false)) instead" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1bDwrinvEKn" role="TZ5H$">
+          <node concept="1dT_AC" id="1bDwrinvEKo" role="1dT_Ay">
+            <property role="1dT_AB" value="XXX There's " />
+          </node>
+          <node concept="1dT_AA" id="1bDwrinxR1B" role="1dT_Ay">
+            <node concept="92FcH" id="1bDwrinyFE3" role="qph3F">
+              <node concept="TZ5HA" id="1bDwrinyFE5" role="2XjZqd">
+                <node concept="1dT_AC" id="1bDwrin$mom" role="1dT_Ay">
+                  <property role="1dT_AB" value="" />
+                </node>
+              </node>
+              <node concept="VXe08" id="1bDwrinzygI" role="92FcQ">
+                <ref role="VXe09" node="76sgnDoh9Jv" resolve="RuntimeDependencies" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="1bDwrinxR1A" role="1dT_Ay">
+            <property role="1dT_AB" value=" that builds a set of dependencies we record in deployment MD (extracted from this class), perhaps, could refactor both classes to reuse knowledge?" />
           </node>
         </node>
       </node>
@@ -23633,20 +23656,17 @@
             </node>
             <node concept="2OqwBi" id="76sgnDpzlfb" role="33vP2m">
               <node concept="2OqwBi" id="76sgnDphAVZ" role="2Oq$k0">
-                <node concept="1rXfSq" id="76sgnDphAW0" role="2Oq$k0">
-                  <ref role="37wK5l" node="76sgnDpdJkr" resolve="includingExtendedLanguages" />
-                  <node concept="2OqwBi" id="76sgnDphAW1" role="37wK5m">
-                    <node concept="37vLTw" id="76sgnDphAW2" role="2Oq$k0">
-                      <ref role="3cqZAo" node="76sgnDoOk6c" resolve="ul" />
-                    </node>
-                    <node concept="3QWeyG" id="76sgnDphAW3" role="2OqNvi">
-                      <node concept="37vLTw" id="76sgnDphAW4" role="576Qk">
-                        <ref role="3cqZAo" node="76sgnDpaF9V" resolve="devkitLanguages" />
-                      </node>
+                <node concept="1KnU$U" id="76sgnDpziG_" role="2OqNvi" />
+                <node concept="2OqwBi" id="76sgnDphAW1" role="2Oq$k0">
+                  <node concept="37vLTw" id="76sgnDphAW2" role="2Oq$k0">
+                    <ref role="3cqZAo" node="76sgnDoOk6c" resolve="ul" />
+                  </node>
+                  <node concept="3QWeyG" id="76sgnDphAW3" role="2OqNvi">
+                    <node concept="37vLTw" id="76sgnDphAW4" role="576Qk">
+                      <ref role="3cqZAo" node="76sgnDpaF9V" resolve="devkitLanguages" />
                     </node>
                   </node>
                 </node>
-                <node concept="1KnU$U" id="76sgnDpziG_" role="2OqNvi" />
               </node>
               <node concept="ANE8D" id="76sgnDpznEO" role="2OqNvi" />
             </node>
@@ -23663,6 +23683,16 @@
                 <ref role="3cqZAo" node="76sgnDphAVY" resolve="allUsedLang" />
               </node>
             </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1bDwrio3vbD" role="3cqZAp">
+          <node concept="3SKdUq" id="1bDwrio3vbF" role="3SKWNk">
+            <property role="3SKdUp" value="Don't want to find out RTs of extended languages at execution time, record them at once." />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1bDwrio4a1a" role="3cqZAp">
+          <node concept="3SKdUq" id="1bDwrio4a1c" role="3SKWNk">
+            <property role="3SKdUp" value="Besides, we care about RTs state the moment code was generated, if newer language version decides to change RT, deployed module won't get affected." />
           </node>
         </node>
         <node concept="2Gpval" id="76sgnDoS1xc" role="3cqZAp">
@@ -23688,8 +23718,11 @@
             <node concept="2OqwBi" id="76sgnDoRSCk" role="2Oq$k0">
               <node concept="2OqwBi" id="76sgnDoRSCl" role="2Oq$k0">
                 <node concept="2OqwBi" id="76sgnDoRSCm" role="2Oq$k0">
-                  <node concept="37vLTw" id="76sgnDpzfml" role="2Oq$k0">
-                    <ref role="3cqZAo" node="76sgnDphAVY" resolve="allUsedLang" />
+                  <node concept="1rXfSq" id="1bDwrio3fbG" role="2Oq$k0">
+                    <ref role="37wK5l" node="76sgnDpdJkr" resolve="includingExtendedLanguages" />
+                    <node concept="37vLTw" id="1bDwrio3hdk" role="37wK5m">
+                      <ref role="3cqZAo" node="76sgnDphAVY" resolve="allUsedLang" />
+                    </node>
                   </node>
                   <node concept="13MTOL" id="76sgnDoRSCo" role="2OqNvi">
                     <ref role="13MTZf" to="kdzh:2L4pT56gVS$" resolve="runtime" />
@@ -23708,27 +23741,72 @@
             <node concept="1KnU$U" id="76sgnDpzteo" role="2OqNvi" />
           </node>
         </node>
-        <node concept="2Gpval" id="76sgnDpehcx" role="3cqZAp">
-          <node concept="2GrKxI" id="76sgnDpehcz" role="2Gsz3X">
+        <node concept="2Gpval" id="1bDwrinXNM4" role="3cqZAp">
+          <node concept="2GrKxI" id="1bDwrinXNM6" role="2Gsz3X">
             <property role="TrG5h" value="s" />
           </node>
-          <node concept="37vLTw" id="76sgnDpeq4A" role="2GsD0m">
-            <ref role="3cqZAo" node="76sgnDpaPzv" resolve="devkitSolutions" />
+          <node concept="2OqwBi" id="1bDwrio89x6" role="2GsD0m">
+            <node concept="37vLTw" id="1bDwrinXT6E" role="2Oq$k0">
+              <ref role="3cqZAo" node="76sgnDpaPzv" resolve="devkitSolutions" />
+            </node>
+            <node concept="1KnU$U" id="1bDwrio8ch$" role="2OqNvi" />
           </node>
-          <node concept="3clFbS" id="76sgnDpehcB" role="2LFqv$">
-            <node concept="3clFbF" id="76sgnDpecwA" role="3cqZAp">
-              <node concept="2OqwBi" id="76sgnDpevsF" role="3clFbG">
-                <node concept="37vLTw" id="76sgnDpecw$" role="2Oq$k0">
+          <node concept="3clFbS" id="1bDwrinXNMa" role="2LFqv$">
+            <node concept="3clFbF" id="1bDwrinXV49" role="3cqZAp">
+              <node concept="2OqwBi" id="1bDwrinXYna" role="3clFbG">
+                <node concept="37vLTw" id="1bDwrinXV48" role="2Oq$k0">
                   <ref role="3cqZAo" node="76sgnDoKsTg" resolve="myCompileDeps" />
                 </node>
-                <node concept="liA8E" id="76sgnDpez0S" role="2OqNvi">
+                <node concept="liA8E" id="1bDwrinY1T0" role="2OqNvi">
                   <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
-                  <node concept="2GrUjf" id="76sgnDpfa8e" role="37wK5m">
-                    <ref role="2Gs0qQ" node="76sgnDpehcz" resolve="s" />
+                  <node concept="2GrUjf" id="1bDwrinY429" role="37wK5m">
+                    <ref role="2Gs0qQ" node="1bDwrinXNM6" resolve="s" />
                   </node>
                 </node>
               </node>
             </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="1bDwrio8eo5" role="3cqZAp" />
+        <node concept="2Gpval" id="1bDwrio8zT1" role="3cqZAp">
+          <node concept="2GrKxI" id="1bDwrio8zT3" role="2Gsz3X">
+            <property role="TrG5h" value="m" />
+          </node>
+          <node concept="3clFbS" id="1bDwrio8zT7" role="2LFqv$">
+            <node concept="3clFbF" id="1bDwrio8IBK" role="3cqZAp">
+              <node concept="2OqwBi" id="1bDwrio8M4V" role="3clFbG">
+                <node concept="37vLTw" id="1bDwrio8IBJ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="76sgnDoKsTg" resolve="myCompileDeps" />
+                </node>
+                <node concept="liA8E" id="1bDwrio8Pqs" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                  <node concept="2GrUjf" id="1bDwrio8RMp" role="37wK5m">
+                    <ref role="2Gs0qQ" node="1bDwrio8zT3" resolve="m" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="1bDwrio8tjp" role="2GsD0m">
+            <node concept="2OqwBi" id="1bDwrio8oJc" role="2Oq$k0">
+              <node concept="2OqwBi" id="1bDwrio8hco" role="2Oq$k0">
+                <node concept="1rXfSq" id="1bDwrio6aZw" role="2Oq$k0">
+                  <ref role="37wK5l" node="76sgnDokrX3" resolve="declaredDependencies" />
+                  <node concept="37vLTw" id="1bDwrio6d2V" role="37wK5m">
+                    <ref role="3cqZAo" node="76sgnDoh9Nv" resolve="module" />
+                  </node>
+                </node>
+                <node concept="v3k3i" id="1bDwrio8jUC" role="2OqNvi">
+                  <node concept="chp4Y" id="1bDwrio8muv" role="v3oSu">
+                    <ref role="cht4Q" to="kdzh:4zCbl23db4q" resolve="BuildMps_ModuleDependencyOnModule" />
+                  </node>
+                </node>
+              </node>
+              <node concept="13MTOL" id="1bDwrio8rtB" role="2OqNvi">
+                <ref role="13MTZf" to="kdzh:4zCbl23d1MT" resolve="module" />
+              </node>
+            </node>
+            <node concept="1KnU$U" id="1bDwrio8wa1" role="2OqNvi" />
           </node>
         </node>
       </node>
@@ -23738,6 +23816,51 @@
         <property role="TrG5h" value="module" />
         <node concept="3Tqbb2" id="76sgnDoh9Nu" role="1tU5fm">
           <ref role="ehGHo" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="1bDwrio6ifD" role="lGtFl">
+        <node concept="TZ5HA" id="1bDwrio6ifE" role="TZ5H$">
+          <node concept="1dT_AC" id="1bDwrio6ifF" role="1dT_Ay">
+            <property role="1dT_AB" value="Calculates and  aggregates dependencies of the module. " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="1bDwrio7Hfq" role="TZ5H$">
+          <node concept="1dT_AC" id="1bDwrio7Hfr" role="1dT_Ay">
+            <property role="1dT_AB" value="Access collected values using " />
+          </node>
+          <node concept="1dT_AA" id="1bDwrio6PEt" role="1dT_Ay">
+            <node concept="92FcH" id="1bDwrio6Rx_" role="qph3F">
+              <node concept="TZ5HA" id="1bDwrio6RxB" role="2XjZqd" />
+              <node concept="VXe0Z" id="1bDwrio71O3" role="92FcQ">
+                <ref role="VXe0S" node="76sgnDpbkx_" resolve="usedLanguages" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="1bDwrio6PEs" role="1dT_Ay">
+            <property role="1dT_AB" value=", " />
+          </node>
+          <node concept="1dT_AA" id="1bDwrio78rv" role="1dT_Ay">
+            <node concept="92FcH" id="1bDwrio7apn" role="qph3F">
+              <node concept="TZ5HA" id="1bDwrio7app" role="2XjZqd" />
+              <node concept="VXe0Z" id="1bDwrio7kFP" role="92FcQ">
+                <ref role="VXe0S" node="76sgnDpbyjc" resolve="languageRuntimes" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="1bDwrio78ru" role="1dT_Ay">
+            <property role="1dT_AB" value=" and " />
+          </node>
+          <node concept="1dT_AA" id="1bDwrio7rOh" role="1dT_Ay">
+            <node concept="92FcH" id="1bDwrio7tMe" role="qph3F">
+              <node concept="TZ5HA" id="1bDwrio7tMg" role="2XjZqd" />
+              <node concept="VXe0Z" id="1bDwrio7C4G" role="92FcQ">
+                <ref role="VXe0S" node="76sgnDpbEbJ" resolve="deploymentDependencies" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="1bDwrio7rOg" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
         </node>
       </node>
     </node>
@@ -23954,72 +24077,88 @@
     <node concept="2YIFZL" id="76sgnDpdJkr" role="jymVt">
       <property role="TrG5h" value="includingExtendedLanguages" />
       <node concept="3clFbS" id="76sgnDpdJky" role="3clF47">
-        <node concept="3clFbF" id="76sgnDpdJkz" role="3cqZAp">
-          <node concept="2ShNRf" id="76sgnDpdJk$" role="3clFbG">
-            <node concept="YeOm9" id="76sgnDpdJk_" role="2ShVmc">
-              <node concept="1Y3b0j" id="76sgnDpdJkA" role="YeSDq">
-                <property role="2bfB8j" value="true" />
-                <ref role="1Y3XeK" to="h87c:~RecursiveIterator" resolve="RecursiveIterator" />
-                <ref role="37wK5l" to="h87c:~RecursiveIterator.&lt;init&gt;(java.lang.Iterable,boolean)" resolve="RecursiveIterator" />
-                <node concept="3clFb_" id="76sgnDpdJkB" role="jymVt">
-                  <property role="IEkAT" value="false" />
-                  <property role="1EzhhJ" value="false" />
-                  <property role="TrG5h" value="children" />
-                  <property role="DiZV1" value="false" />
-                  <node concept="3uibUv" id="76sgnDpdJkC" role="3clF45">
-                    <ref role="3uigEE" to="33ny:~Iterator" resolve="Iterator" />
-                    <node concept="3Tqbb2" id="76sgnDpdJkD" role="11_B2D">
-                      <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
-                    </node>
-                  </node>
-                  <node concept="3clFbS" id="76sgnDpdJkE" role="3clF47">
-                    <node concept="3clFbF" id="76sgnDpdJkF" role="3cqZAp">
-                      <node concept="2OqwBi" id="76sgnDpdZ4E" role="3clFbG">
-                        <node concept="2OqwBi" id="76sgnDpdJkH" role="2Oq$k0">
-                          <node concept="13MTOL" id="76sgnDpdT7M" role="2OqNvi">
-                            <ref role="13MTZf" to="kdzh:3HwLahs6gcK" resolve="language" />
-                          </node>
-                          <node concept="2OqwBi" id="76sgnDpdJkR" role="2Oq$k0">
-                            <node concept="1rXfSq" id="76sgnDpdJkS" role="2Oq$k0">
-                              <ref role="37wK5l" node="76sgnDokrX3" resolve="declaredDependencies" />
-                              <node concept="37vLTw" id="76sgnDpdJkT" role="37wK5m">
-                                <ref role="3cqZAo" node="76sgnDpdJkX" resolve="node" />
-                              </node>
-                            </node>
-                            <node concept="v3k3i" id="76sgnDpdJkU" role="2OqNvi">
-                              <node concept="chp4Y" id="76sgnDpdJkV" role="v3oSu">
-                                <ref role="cht4Q" to="kdzh:3HwLahs6gcI" resolve="BuildMps_ModuleDependencyExtendLanguage" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="uNJiE" id="76sgnDpe15Z" role="2OqNvi" />
+        <node concept="3cpWs8" id="1bDwrio7UM0" role="3cqZAp">
+          <node concept="3cpWsn" id="1bDwrio7UM1" role="3cpWs9">
+            <property role="TrG5h" value="rv" />
+            <node concept="A3Dl8" id="1bDwrio7Yst" role="1tU5fm">
+              <node concept="3Tqbb2" id="1bDwrio7Ysv" role="A3Ik2">
+                <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="1bDwrio7UM2" role="33vP2m">
+              <node concept="YeOm9" id="1bDwrio7UM3" role="2ShVmc">
+                <node concept="1Y3b0j" id="1bDwrio7UM4" role="YeSDq">
+                  <property role="2bfB8j" value="true" />
+                  <ref role="1Y3XeK" to="h87c:~RecursiveIterator" resolve="RecursiveIterator" />
+                  <ref role="37wK5l" to="h87c:~RecursiveIterator.&lt;init&gt;(java.lang.Iterable,boolean)" resolve="RecursiveIterator" />
+                  <node concept="3clFb_" id="1bDwrio7UM5" role="jymVt">
+                    <property role="IEkAT" value="false" />
+                    <property role="1EzhhJ" value="false" />
+                    <property role="TrG5h" value="children" />
+                    <property role="DiZV1" value="false" />
+                    <node concept="3uibUv" id="1bDwrio7UM6" role="3clF45">
+                      <ref role="3uigEE" to="33ny:~Iterator" resolve="Iterator" />
+                      <node concept="3Tqbb2" id="1bDwrio7UM7" role="11_B2D">
+                        <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
                       </node>
                     </node>
-                  </node>
-                  <node concept="37vLTG" id="76sgnDpdJkX" role="3clF46">
-                    <property role="TrG5h" value="node" />
-                    <node concept="3Tqbb2" id="76sgnDpdJkY" role="1tU5fm">
-                      <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
+                    <node concept="3clFbS" id="1bDwrio7UM8" role="3clF47">
+                      <node concept="3clFbF" id="1bDwrio7UM9" role="3cqZAp">
+                        <node concept="2OqwBi" id="1bDwrio7UMa" role="3clFbG">
+                          <node concept="2OqwBi" id="1bDwrio7UMb" role="2Oq$k0">
+                            <node concept="13MTOL" id="1bDwrio7UMc" role="2OqNvi">
+                              <ref role="13MTZf" to="kdzh:3HwLahs6gcK" resolve="language" />
+                            </node>
+                            <node concept="2OqwBi" id="1bDwrio7UMd" role="2Oq$k0">
+                              <node concept="1rXfSq" id="1bDwrio7UMe" role="2Oq$k0">
+                                <ref role="37wK5l" node="76sgnDokrX3" resolve="declaredDependencies" />
+                                <node concept="37vLTw" id="1bDwrio7UMf" role="37wK5m">
+                                  <ref role="3cqZAo" node="1bDwrio7UMj" resolve="node" />
+                                </node>
+                              </node>
+                              <node concept="v3k3i" id="1bDwrio7UMg" role="2OqNvi">
+                                <node concept="chp4Y" id="1bDwrio7UMh" role="v3oSu">
+                                  <ref role="cht4Q" to="kdzh:3HwLahs6gcI" resolve="BuildMps_ModuleDependencyExtendLanguage" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="uNJiE" id="1bDwrio7UMi" role="2OqNvi" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="37vLTG" id="1bDwrio7UMj" role="3clF46">
+                      <property role="TrG5h" value="node" />
+                      <node concept="3Tqbb2" id="1bDwrio7UMk" role="1tU5fm">
+                        <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
+                      </node>
+                    </node>
+                    <node concept="3Tmbuc" id="1bDwrio7UMl" role="1B3o_S" />
+                    <node concept="2AHcQZ" id="1bDwrio7UMm" role="2AJF6D">
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                     </node>
                   </node>
-                  <node concept="3Tmbuc" id="76sgnDpdJkZ" role="1B3o_S" />
-                  <node concept="2AHcQZ" id="76sgnDpdJl0" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                  <node concept="3Tm1VV" id="1bDwrio7UMn" role="1B3o_S" />
+                  <node concept="3Tqbb2" id="1bDwrio7UMo" role="2Ghqu4">
+                    <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
                   </node>
-                </node>
-                <node concept="3Tm1VV" id="76sgnDpdJl1" role="1B3o_S" />
-                <node concept="3Tqbb2" id="76sgnDpdJl2" role="2Ghqu4">
-                  <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
-                </node>
-                <node concept="37vLTw" id="76sgnDpdJl3" role="37wK5m">
-                  <ref role="3cqZAo" node="76sgnDpdJkv" resolve="langs" />
-                </node>
-                <node concept="3clFbT" id="76sgnDpdJl4" role="37wK5m">
-                  <property role="3clFbU" value="false" />
+                  <node concept="37vLTw" id="1bDwrio7UMp" role="37wK5m">
+                    <ref role="3cqZAo" node="76sgnDpdJkv" resolve="langs" />
+                  </node>
+                  <node concept="3clFbT" id="1bDwrio7UMq" role="37wK5m">
+                    <property role="3clFbU" value="false" />
+                  </node>
                 </node>
               </node>
             </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="76sgnDpdJkz" role="3cqZAp">
+          <node concept="2OqwBi" id="1bDwrio84jC" role="3clFbG">
+            <node concept="37vLTw" id="1bDwrio7UMr" role="2Oq$k0">
+              <ref role="3cqZAo" node="1bDwrio7UM1" resolve="rv" />
+            </node>
+            <node concept="1KnU$U" id="1bDwrio86v7" role="2OqNvi" />
           </node>
         </node>
       </node>
@@ -24040,6 +24179,98 @@
     </node>
     <node concept="2tJIrI" id="76sgnDpd_2M" role="jymVt" />
     <node concept="3Tm1VV" id="76sgnDoh9Jw" role="1B3o_S" />
+    <node concept="3UR2Jj" id="1bDwrinrR1k" role="lGtFl">
+      <node concept="TZ5HA" id="1bDwrinrR1l" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinrR1m" role="1dT_Ay">
+          <property role="1dT_AB" value="Collect dependencies we would like to record in a deployment MD." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinsfYh" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinsfYi" role="1dT_Ay">
+          <property role="1dT_AB" value="There, we need to specify modules that have to be present so that generated code of the deployed module could get executed." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinsZH5" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinsZH6" role="1dT_Ay">
+          <property role="1dT_AB" value="These dependencies include runtime solutions of used languages and regular (aka 'default') module dependencies to facilitate classloading." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrio0pCI" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrio0pCJ" role="1dT_Ay">
+          <property role="1dT_AB" value="One of the reasons this code got extracted from MPSModulesClosure is that we don't need to build a closure here for any subset of collected modules." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrio0Uh0" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrio0Uh1" role="1dT_Ay">
+          <property role="1dT_AB" value="Indeed, we collect all language runtimes, but we do not collect their dependencies." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrins0ez" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrins0e$" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinTsre" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinTsrf" role="1dT_Ay">
+          <property role="1dT_AB" value="There are few questionable decisions made here:" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinTi_h" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinTi_i" role="1dT_Ay">
+          <property role="1dT_AB" value="1) Runtime solutions are collected not only for languages directly in use, but also for languages they extend, due to historical reasons. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrio5eUl" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrio5eUm" role="1dT_Ay">
+          <property role="1dT_AB" value="   I don't know if it's justified and need to investigate this further. The reason might be to get a snapshot of RT dependencies the moment code was generated, so that" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrio5wCn" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrio5wCo" role="1dT_Ay">
+          <property role="1dT_AB" value="   any later change to language's RTs do not affect deployed modules" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinUWOA" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinUWOB" role="1dT_Ay">
+          <property role="1dT_AB" value="2) *All* languages from used devkits (including extended devkits!) are reported as 'used'. Perhaps, there's nothing wrong with that, especially if we manage to get rid of 'used languages' in deployed modules altogether." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrio1FSn" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrio1FSo" role="1dT_Ay">
+          <property role="1dT_AB" value="3) However, we don't collect extended languages of those used (except for purposes of RT collection, see (1), above), as it much more effective to build closure of extended languages in" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrio2NJH" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrio2NJI" role="1dT_Ay">
+          <property role="1dT_AB" value="   runtime (compiled classes report relations b/w modules), rather than at this moment." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinWh2x" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinWh2y" role="1dT_Ay">
+          <property role="1dT_AB" value="4) Solutions exported from devkits (again, including extended devkits) are reported as deployment/classloading dependencies, though they are not necessarily essential for classloading." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinX9F8" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinX9F9" role="1dT_Ay">
+          <property role="1dT_AB" value="   These are exposed in AM.getDeclaredDependencies() as 'default' dependency, thus making them valid reference targets and potential CL dep. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinYJXA" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinYJXB" role="1dT_Ay">
+          <property role="1dT_AB" value="   However, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall consitute 'design' time dependencies with " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrinZoVq" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrinZoVr" role="1dT_Ay">
+          <property role="1dT_AB" value="   reference targets but bo CL dep. OTOH, there's no mechanism to specify 'depends' other than with explicit module reference, and it would be odd to require users to specify these" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1bDwrio08xN" role="TZ5H$">
+        <node concept="1dT_AC" id="1bDwrio08xO" role="1dT_Ay">
+          <property role="1dT_AB" value="   in addition to 'used' devkit." />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

@@ -281,7 +281,7 @@ public class MPSModulesClosure {
   }
 
   /**
-   * The dependendencies one needs to run the generated sources of the initial modules
+   * The dependencies one needs to run the generated sources of the initial modules
    * To start, module needs all its dependencies plus RTs of languages it uses.
    * However, its use in mps.build.mps generator is dubious, as it merely adds rt dependencies of specific module
    * to the list of external (for the current project) modules.
@@ -289,6 +289,7 @@ public class MPSModulesClosure {
    * Its use in MPSModulesPartitioner is another way of saying "if I generate a model and there's a language, which has runtime coming from another build script, add it to dependencies"
    * Although it's not clear why would one need language runtime during generation.
    * XXX Perhaps, {@link jetbrains.mps.build.mps.util.MPSModulesClosure#generationDependenciesClosure() } shall collect module's dependencies (collectDependencies(false)) instead
+   * XXX There's {@link jetbrains.mps.build.mps.util.RuntimeDependencies } that builds a set of dependencies we record in deployment MD (extracted from this class), perhaps, could refactor both classes to reuse knowledge?
    */
   public MPSModulesClosure runtimeClosure() {
     SetSequence.fromSet(myModules).addSequence(Sequence.fromIterable(myInitialModules));

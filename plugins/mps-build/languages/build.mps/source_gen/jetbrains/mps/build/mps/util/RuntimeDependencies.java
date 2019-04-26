@@ -16,23 +16,53 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.iterable.RecursiveIterator;
 import java.util.Iterator;
 
+/**
+ * Collect dependencies we would like to record in a deployment MD.
+ * There, we need to specify modules that have to be present so that generated code of the deployed module could get executed.
+ * These dependencies include runtime solutions of used languages and regular (aka 'default') module dependencies to facilitate classloading.
+ * One of the reasons this code got extracted from MPSModulesClosure is that we don't need to build a closure here for any subset of collected modules.
+ * Indeed, we collect all language runtimes, but we do not collect their dependencies.
+ * 
+ * There are few questionable decisions made here:
+ * 1) Runtime solutions are collected not only for languages directly in use, but also for languages they extend, due to historical reasons. 
+ *    I don't know if it's justified and need to investigate this further. The reason might be to get a snapshot of RT dependencies the moment code was generated, so that
+ *    any later change to language's RTs do not affect deployed modules
+ * 2) *All* languages from used devkits (including extended devkits!) are reported as 'used'. Perhaps, there's nothing wrong with that, especially if we manage to get rid of 'used languages' in deployed modules altogether.
+ * 3) However, we don't collect extended languages of those used (except for purposes of RT collection, see (1), above), as it much more effective to build closure of extended languages in
+ *    runtime (compiled classes report relations b/w modules), rather than at this moment.
+ * 4) Solutions exported from devkits (again, including extended devkits) are reported as deployment/classloading dependencies, though they are not necessarily essential for classloading.
+ *    These are exposed in AM.getDeclaredDependencies() as 'default' dependency, thus making them valid reference targets and potential CL dep. 
+ *    However, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall consitute 'design' time dependencies with 
+ *    reference targets but bo CL dep. OTOH, there's no mechanism to specify 'depends' other than with explicit module reference, and it would be odd to require users to specify these
+ *    in addition to 'used' devkit.
+ */
 public final class RuntimeDependencies {
   private Set<SNode> myUsedLanguages = new THashSet<SNode>();
   private Set<SNode> myLangRuntimes = new THashSet<SNode>();
   private Set<SNode> myCompileDeps = new THashSet<SNode>();
 
+  /**
+   * Calculates and  aggregates dependencies of the module. 
+   * Access collected values using {@link jetbrains.mps.build.mps.util.RuntimeDependencies#usedLanguages() }, {@link jetbrains.mps.build.mps.util.RuntimeDependencies#languageRuntimes() } and {@link jetbrains.mps.build.mps.util.RuntimeDependencies#deploymentDependencies() }
+   */
   public void collectFor(SNode module) {
     Iterable<SNode> ul = SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language"));
     List<SNode> devkits = Sequence.fromIterable(includingExtended(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnDevKit")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit")))).toListSequence();
     Iterable<SNode> devkitLanguages = SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(devkits, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportLanguage")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language"));
     Iterable<SNode> devkitSolutions = SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(devkits, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportSolution")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, 0x4780308f5d29d7bL, "solution"));
-    List<SNode> allUsedLang = Sequence.fromIterable(includingExtendedLanguages(Sequence.fromIterable(ul).concat(Sequence.fromIterable(devkitLanguages)))).where(new NotNullWhereFilter<SNode>()).toListSequence();
+    List<SNode> allUsedLang = Sequence.fromIterable(ul).concat(Sequence.fromIterable(devkitLanguages)).where(new NotNullWhereFilter<SNode>()).toListSequence();
     myUsedLanguages.addAll(allUsedLang);
-    for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(allUsedLang, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSolutionRuntime")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution"))).where(new NotNullWhereFilter<SNode>())) {
+    // Don't want to find out RTs of extended languages at execution time, record them at once. 
+    // Besides, we care about RTs state the moment code was generated, if newer language version decides to change RT, deployed module won't get affected. 
+    for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(includingExtendedLanguages(allUsedLang), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSolutionRuntime")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution"))).where(new NotNullWhereFilter<SNode>())) {
       myLangRuntimes.add(rts);
     }
-    for (SNode s : Sequence.fromIterable(devkitSolutions)) {
+    for (SNode s : Sequence.fromIterable(devkitSolutions).where(new NotNullWhereFilter<SNode>())) {
       myCompileDeps.add(s);
+    }
+
+    for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module"))).where(new NotNullWhereFilter<SNode>())) {
+      myCompileDeps.add(m);
     }
   }
 
@@ -67,12 +97,13 @@ public final class RuntimeDependencies {
   }
 
   private static Iterable<SNode> includingExtendedLanguages(Iterable<SNode> langs) {
-    return new RecursiveIterator<SNode>(langs, false) {
+    Iterable<SNode> rv = new RecursiveIterator<SNode>(langs, false) {
       @Override
       protected Iterator<SNode> children(SNode node) {
         return Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(node), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyExtendLanguage")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language"))).iterator();
       }
     };
+    return Sequence.fromIterable(rv).where(new NotNullWhereFilter<SNode>());
   }
 
 }
