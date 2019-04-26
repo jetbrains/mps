@@ -592,7 +592,7 @@
     </node>
     <node concept="3tYpXE" id="7lDe6cU8ijV" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate Enum Property Usages" />
+      <property role="3tYpXF" value="Migrate enumeration property usages" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="7lDe6cU8ijX" role="1B3o_S" />
       <node concept="17QB3L" id="7lDe6cU8ijY" role="1tU5fm" />
@@ -617,7 +617,7 @@
                 <node concept="3clFbF" id="7lDe6cU2VSY" role="3cqZAp">
                   <node concept="2YIFZM" id="7lDe6cU2VUk" role="3clFbG">
                     <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
-                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigrationHelper" />
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
                     <node concept="2GrUjf" id="7lDe6cU2Wc2" role="37wK5m">
                       <ref role="2Gs0qQ" node="7lDe6cU2W20" resolve="propMessageTarget" />
                     </node>

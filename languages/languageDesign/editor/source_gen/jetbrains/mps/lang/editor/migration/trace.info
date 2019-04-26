@@ -1768,7 +1768,7 @@
   </root>
   <root nodeRef="r:85a46d2f-efef-4783-8e02-3976663ecd73(jetbrains.mps.lang.editor.migration)/8267787266002295635">
     <file name="MigrateEnumPropertyUsages.java">
-      <node id="8267787266002295635" at="24,30,25,42" concept="9" />
+      <node id="8267787266002295635" at="24,30,25,49" concept="9" />
       <node id="8267787266002295635" at="28,33,29,16" concept="9" />
       <node id="8267787266002295635" at="31,41,32,17" concept="3" />
       <node id="8267787266002295635" at="32,17,33,16" concept="9" />
@@ -1786,7 +1786,7 @@
       <node id="10950666310573653" at="63,449,64,76" concept="3" />
       <node id="10950666310612788" at="66,449,67,76" concept="3" />
       <node id="10950666310622308" at="70,5,71,41" concept="3" />
-      <node id="8267787266002295635" at="73,60,74,360" concept="9" />
+      <node id="8267787266002295635" at="73,60,74,223" concept="9" />
       <node id="8267787266002295635" at="76,51,77,147" concept="9" />
       <node id="8267787266002295635" at="24,0,27,0" concept="7" trace="getCaption#()Ljava/lang/String;" />
       <node id="8267787266002308032" at="40,0,43,0" concept="7" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
@@ -1805,7 +1805,7 @@
       <node id="8267787266002341807" at="58,7,69,7" concept="5" />
       <node id="8267787266002308032" at="35,42,70,5" concept="0" />
       <node id="8267787266002295635" at="35,0,73,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <scope id="8267787266002295635" at="24,30,25,42" />
+      <scope id="8267787266002295635" at="24,30,25,49" />
       <scope id="8267787266002295635" at="28,33,29,16" />
       <scope id="8267787266002308032" at="40,52,41,36" />
       <scope id="8267787266002308872" at="44,292,45,193" />
@@ -1815,7 +1815,7 @@
       <scope id="8267787266002339035" at="56,295,57,203" />
       <scope id="10950666310540522" at="63,449,64,76" />
       <scope id="10950666310612787" at="66,449,67,76" />
-      <scope id="8267787266002295635" at="73,60,74,360" />
+      <scope id="8267787266002295635" at="73,60,74,223" />
       <scope id="8267787266002295635" at="76,51,77,147" />
       <scope id="8267787266002295635" at="31,41,33,16" />
       <scope id="8267787266002295635" at="24,0,27,0" />

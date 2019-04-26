@@ -125,7 +125,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.NotMigratedNode" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.constraints.migration.MigrateEnumPropConstraints">
+  <dependency className="jetbrains.mps.lang.constraints.migration.MigrateEnumPropertyUsages">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
@@ -153,7 +153,7 @@
     <classNode dependClassName="jetbrains.mps.lang.constraints.migration.AnnotateRefPresentationQueriesAsMigrated" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.migration.ConstraintCanBeFunctions_NodeToConcept" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.migration.ConstraintScopeFactory_NodeToConcept" />
-    <classNode dependClassName="jetbrains.mps.lang.constraints.migration.MigrateEnumPropConstraints" />
+    <classNode dependClassName="jetbrains.mps.lang.constraints.migration.MigrateEnumPropertyUsages" />
     <classNode dependClassName="jetbrains.mps.lang.constraints.migration.UseDevkit" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationScript" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor" />

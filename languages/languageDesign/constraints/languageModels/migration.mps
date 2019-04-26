@@ -3325,7 +3325,7 @@
   </node>
   <node concept="3SyAh_" id="20cGABpPM99">
     <property role="qMTe8" value="4" />
-    <property role="TrG5h" value="MigrateEnumPropConstraints" />
+    <property role="TrG5h" value="MigrateEnumPropertyUsages" />
     <node concept="3Tm1VV" id="20cGABpPM9a" role="1B3o_S" />
     <node concept="3tTeZs" id="20cGABpPM9b" role="jymVt">
       <property role="3tTeZt" value="&lt;no execute after&gt;" />
@@ -3349,7 +3349,7 @@
     </node>
     <node concept="3tYpXE" id="20cGABpPMbl" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate constraints for enum properties" />
+      <property role="3tYpXF" value="Migrate enumeration property usages" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="20cGABpPMbn" role="1B3o_S" />
       <node concept="17QB3L" id="20cGABpPMbo" role="1tU5fm" />

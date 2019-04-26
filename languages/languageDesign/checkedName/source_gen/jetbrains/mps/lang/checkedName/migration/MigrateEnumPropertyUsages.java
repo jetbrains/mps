@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   public String getCaption() {
-    return "Migrate enumeration properties";
+    return "Migrate enumeration property usages";
   }
   @Override
   public boolean isRerunnable() {

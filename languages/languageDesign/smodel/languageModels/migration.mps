@@ -11224,9 +11224,10 @@
     <property role="qMTe8" value="14" />
     <property role="TrG5h" value="MigrateEnumPropertyUsages" />
     <node concept="3Tm1VV" id="7lDe6cU2UZI" role="1B3o_S" />
-    <node concept="3tTeZs" id="7lDe6cU2UZJ" role="jymVt">
-      <property role="3tTeZt" value="&lt;no execute after&gt;" />
-      <ref role="3tTeZr" to="slm6:7ay_HjIMt1a" resolve="execute after" />
+    <node concept="1QxfsK" id="7aX5bqW$clX" role="jymVt">
+      <node concept="1QyHxe" id="7aX5bqW$cEX" role="1QyHIp">
+        <ref role="1QyHxf" to="yf86:5CkWgdpyhAg" resolve="MigrateEnumProperties" />
+      </node>
     </node>
     <node concept="3tTeZs" id="7lDe6cU2UZK" role="jymVt">
       <property role="3tTeZt" value="&lt;no required data&gt;" />
@@ -11246,7 +11247,7 @@
     </node>
     <node concept="3tYpXE" id="7lDe6cU2VqB" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate Enum Property Usages" />
+      <property role="3tYpXF" value="Migrate enumeration property usages" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="7lDe6cU2VqD" role="1B3o_S" />
       <node concept="17QB3L" id="7lDe6cU2VqE" role="1tU5fm" />

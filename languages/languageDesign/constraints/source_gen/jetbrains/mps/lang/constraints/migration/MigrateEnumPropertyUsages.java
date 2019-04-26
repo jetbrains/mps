@@ -19,9 +19,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
-public class MigrateEnumPropConstraints extends MigrationScriptBase {
+public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   public String getCaption() {
-    return "Migrate constraints for enum properties";
+    return "Migrate enumeration property usages";
   }
   @Override
   public boolean isRerunnable() {
@@ -33,11 +33,11 @@ public class MigrateEnumPropConstraints extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_j34npf_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_j34npf_a0d_0 = new EditableFilteringScope(scope_j34npf_a0d);
+      SearchScope scope_32rjqx_a0d = CommandUtil.createScope(m);
+      final SearchScope scope_32rjqx_a0d_0 = new EditableFilteringScope(scope_32rjqx_a0d);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_j34npf_a0d_0;
+          return scope_32rjqx_a0d_0;
         }
       };
       for (SNode propertyConstraint : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, "jetbrains.mps.lang.constraints.structure.NodePropertyConstraint"), false))) {

@@ -159,7 +159,7 @@
     </node>
     <node concept="3tYpXE" id="7aX5bqWzQSj" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate enumeration properties" />
+      <property role="3tYpXF" value="Migrate enumeration property usages" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="7aX5bqWzQSl" role="1B3o_S" />
       <node concept="17QB3L" id="7aX5bqWzQSm" role="1tU5fm" />
@@ -184,7 +184,7 @@
                 <node concept="3clFbF" id="7aX5bqW$1Un" role="3cqZAp">
                   <node concept="2YIFZM" id="7aX5bqW$26s" role="3clFbG">
                     <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
-                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigrationHelper" />
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
                     <node concept="2GrUjf" id="7aX5bqW$27c" role="37wK5m">
                       <ref role="2Gs0qQ" node="7aX5bqW$21S" resolve="node" />
                     </node>
@@ -214,12 +214,12 @@
         <ref role="1QQUv3" node="7aX5bqWzQut" resolve="execute" />
       </node>
     </node>
+    <node concept="3uibUv" id="7aX5bqWzQuA" role="1zkMxy">
+      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
+    </node>
     <node concept="3tTeZs" id="7aX5bqWzQu_" role="jymVt">
       <property role="3tTeZt" value="&lt;no result checking&gt;" />
       <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
-    </node>
-    <node concept="3uibUv" id="7aX5bqWzQuA" role="1zkMxy">
-      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
     </node>
   </node>
 </model>

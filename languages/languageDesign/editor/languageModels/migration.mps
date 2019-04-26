@@ -5949,9 +5949,6 @@
       <node concept="1QyHxe" id="7aX5bqW$cEX" role="1QyHIp">
         <ref role="1QyHxf" to="yf86:5CkWgdpyhAg" resolve="MigrateEnumProperties" />
       </node>
-      <node concept="1QyHxe" id="7aX5bqW$cFm" role="1QyHIp">
-        <ref role="1QyHxf" to="oie:5CkWgdpSCGf" resolve="MigrateEnumPropertyAccess" />
-      </node>
     </node>
     <node concept="3tTeZs" id="7aX5bqW$9Hm" role="jymVt">
       <property role="3tTeZt" value="&lt;no required data&gt;" />
@@ -5971,7 +5968,7 @@
     </node>
     <node concept="3tYpXE" id="7aX5bqW$ckt" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Migrate enum property usages" />
+      <property role="3tYpXF" value="Migrate enumeration property usages" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="7aX5bqW$ckv" role="1B3o_S" />
       <node concept="17QB3L" id="7aX5bqW$ckw" role="1tU5fm" />
@@ -6261,12 +6258,12 @@
         <ref role="1QQUv3" node="7aX5bqW$9Ht" resolve="execute" />
       </node>
     </node>
+    <node concept="3uibUv" id="7aX5bqW$9HA" role="1zkMxy">
+      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
+    </node>
     <node concept="3tTeZs" id="7aX5bqW$9H_" role="jymVt">
       <property role="3tTeZt" value="&lt;no result checking&gt;" />
       <ref role="3tTeZr" to="slm6:1JWcQ2VeXpD" resolve="check" />
-    </node>
-    <node concept="3uibUv" id="7aX5bqW$9HA" role="1zkMxy">
-      <ref role="3uigEE" to="slm6:5TUCQr2ybBO" resolve="HasMigrationScriptReference" />
     </node>
   </node>
 </model>

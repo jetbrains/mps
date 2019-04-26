@@ -98,8 +98,8 @@
     </file>
   </root>
   <root nodeRef="r:749f16ef-f594-4d61-8683-63fbf8fdef8a(jetbrains.mps.lang.constraints.migration)/2309416876630286921">
-    <file name="MigrateEnumPropConstraints.java">
-      <node id="2309416876630286921" at="23,30,24,53" concept="9" />
+    <file name="MigrateEnumPropertyUsages.java">
+      <node id="2309416876630286921" at="23,30,24,49" concept="9" />
       <node id="2309416876630286921" at="27,33,28,16" concept="9" />
       <node id="2309416876630286921" at="30,41,31,17" concept="3" />
       <node id="2309416876630286921" at="31,17,32,16" concept="9" />
@@ -124,7 +124,7 @@
       <node id="2309416876630301843" at="42,8,53,7" concept="5" />
       <node id="2309416876630300527" at="34,42,54,5" concept="0" />
       <node id="2309416876630286921" at="34,0,57,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <scope id="2309416876630286921" at="23,30,24,53" />
+      <scope id="2309416876630286921" at="23,30,24,49" />
       <scope id="2309416876630286921" at="27,33,28,16" />
       <scope id="2309416876630300527" at="39,52,40,36" />
       <scope id="10950666310512465" at="49,326,50,85" />
@@ -151,15 +151,15 @@
       </scope>
       <scope id="2309416876630300527" at="35,5,53,7">
         <var name="context" id="2309416876630300527" />
-        <var name="scope_j34npf_a0d" id="2309416876630300527" />
-        <var name="scope_j34npf_a0d_0" id="2309416876630300527" />
+        <var name="scope_32rjqx_a0d" id="2309416876630300527" />
+        <var name="scope_32rjqx_a0d_0" id="2309416876630300527" />
       </scope>
       <scope id="2309416876630286921" at="34,42,55,41" />
       <scope id="2309416876630286921" at="34,0,57,0">
         <var name="m" id="2309416876630286921" />
       </scope>
-      <unit id="2309416876630300527" at="38,42,42,7" name="jetbrains.mps.lang.constraints.migration.MigrateEnumPropConstraints$1" />
-      <unit id="2309416876630286921" at="22,0,62,0" name="jetbrains.mps.lang.constraints.migration.MigrateEnumPropConstraints" />
+      <unit id="2309416876630300527" at="38,42,42,7" name="jetbrains.mps.lang.constraints.migration.MigrateEnumPropertyUsages$1" />
+      <unit id="2309416876630286921" at="22,0,62,0" name="jetbrains.mps.lang.constraints.migration.MigrateEnumPropertyUsages" />
     </file>
   </root>
   <root nodeRef="r:749f16ef-f594-4d61-8683-63fbf8fdef8a(jetbrains.mps.lang.constraints.migration)/6358186717179175665">
