@@ -68,9 +68,9 @@ public abstract class ReportingTypecheckingContext<
        }
        for (SNodeReference rule : equationInfo.getAdditionalRulesIds()) {
          message.append(" Additional equation ")
-                .append(equationInfo.getRuleNode().getNodeId())
+                .append(rule.getNodeId())
                 .append(" from model ")
-                .append(equationInfo.getRuleNode().getModelReference());
+                .append(rule.getModelReference());
        }
        if (equationInfo.getErrorString() != null) {
          message.append(" Error message: ").append(equationInfo.getErrorString());
