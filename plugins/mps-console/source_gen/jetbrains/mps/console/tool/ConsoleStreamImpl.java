@@ -96,11 +96,9 @@ public class ConsoleStreamImpl implements ConsoleStream {
     assert !(modelAccess.isCommandAction()) : "must be executed outsid command";
     modelAccess.executeCommand(new EditorCommand(myTab.getEditorComponent()) {
       public void doExecute() {
-        // !!!DO NOT MOVE the following line. This is for performance reasons (adding 100K children to a specific role takes around 10 min currently) 
-        List<SNode> item = SLinkOperations.getChildren(myTab.getLastReponse(), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item"));
         for (SNode r : ListSequence.fromList(myResponse)) {
           myTab.addNodeImports(r);
-          ListSequence.fromList(item).addElement(r);
+          ListSequence.fromList(SLinkOperations.getChildren(myTab.getLastReponse(), MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item"))).addElement(r);
         }
       }
     });

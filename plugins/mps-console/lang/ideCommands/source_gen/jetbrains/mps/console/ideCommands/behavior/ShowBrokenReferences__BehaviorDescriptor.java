@@ -24,8 +24,16 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.ide.findusages.view.UsagesViewTool;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.findusages.model.SearchResult;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.ide.findusages.model.SearchResults;
+import java.util.Collections;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -41,8 +49,8 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
-    Iterable<SReference> brokenReferences = Sequence.fromIterable(INodeSetReference__BehaviorDescriptor.getNodes_id4x3U0fq41hN.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, 0x1cf75b72b0ac828dL, "target")), context)).translate(new ITranslator2<SNode, SReference>() {
+  /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, final ConsoleContext context, ConsoleStream console) {
+    final List<SReference> brokenReferences = Sequence.fromIterable(INodeSetReference__BehaviorDescriptor.getNodes_id4x3U0fq41hN.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, 0x1cf75b72b0ac828dL, "target")), context)).translate(new ITranslator2<SNode, SReference>() {
       public Iterable<SReference> translate(SNode it) {
         return SNodeOperations.getReferences(it);
       }
@@ -50,19 +58,34 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
       public boolean accept(SReference it) {
         return jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(it) == null;
       }
-    });
-    for (SReference ref : Sequence.fromIterable(brokenReferences)) {
-      console.addText("model id = " + ref.getTargetSModelReference());
-      console.addText("\n");
-      console.addText("node  id = " + ref.getTargetNodeId());
-      SNode targetNode = ref.getSourceNode();
-      console.addText("\n");
-      SNode clickableNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53ba81265L, "jetbrains.mps.console.base.structure.NodeReferenceString"));
-      SPropertyOperations.set(clickableNode, MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e75e1c4L, "referencePresentation"), "Go to enclosing node");
-      SLinkOperations.setTarget(clickableNode, MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target"), targetNode);
-      console.addNode(clickableNode);
-      console.addText("\n");
-      console.addText("\n");
+    }).toListSequence();
+    if (ListSequence.fromList(brokenReferences).count() == 0) {
+      console.addText("no broken references");
+    } else {
+      console.addClosure(new Runnable() {
+        public void run() {
+          Project project = context.getProject();
+          final UsagesViewTool tool = check_5hdxhn_a0b0a0a0a0b0a(ProjectHelper.toIdeaProject(project));
+          assert tool != null;
+          project.getRepository().getModelAccess().runReadAction(new Runnable() {
+            public void run() {
+              final List<SearchResult> res = ListSequence.fromList(new ArrayList<SearchResult>());
+              ListSequence.fromList(brokenReferences).visitAll(new IVisitor<SReference>() {
+                public void visit(SReference it) {
+                  ListSequence.fromList(res).addElement(new SearchResult<SReference>(it, it.getSourceNode()));
+                }
+              });
+              SearchResults sr = new SearchResults(Collections.emptyList(), res);
+              tool.show(sr, "No results to show", new NodeRepresentatorBase<SReference>() {
+                @Override
+                public String getAdditionalInfo(SReference r) {
+                  return "model id = " + r.getTargetSModelReference() + "; node  id = " + r.getTargetNodeId();
+                }
+              });
+            }
+          });
+        }
+      }, ListSequence.fromList(brokenReferences).count() + " broken references");
     }
   }
 
@@ -112,5 +135,11 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static UsagesViewTool check_5hdxhn_a0b0a0a0a0b0a(com.intellij.openapi.project.Project checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getComponent(UsagesViewTool.class);
+    }
+    return null;
   }
 }

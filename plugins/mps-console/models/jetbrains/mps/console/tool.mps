@@ -9663,6 +9663,7 @@
                 <node concept="1rXfSq" id="1ycrhFMNugc" role="3clFbG">
                   <ref role="37wK5l" node="3ZgZ1njWV6Q" resolve="addClosure" />
                   <node concept="1bVj0M" id="igjXyur9Iz" role="37wK5m">
+                    <property role="3yWfEV" value="true" />
                     <node concept="3clFbS" id="igjXyur9I_" role="1bW5cS">
                       <node concept="1QHqEK" id="2NHNvU76v24" role="3cqZAp">
                         <node concept="1QHqEC" id="2NHNvU76v26" role="1QHqEI">
