@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.editor.EditorState;
@@ -32,6 +31,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -61,7 +61,7 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
     }
 
     SRepository repository = mpsProject.getRepository();
-    NodeFileComputable nodeFileComputable = new NodeFileComputable(repository, file);
+    NodeFileComputable nodeFileComputable = new NodeFileComputable(repository, mpsProject.getFileSystem().fromVirtualFile(file));
     MPSNodeVirtualFile mpsNodeVirtualFile = new ModelAccessHelper(repository).runReadAction(nodeFileComputable);
     return mpsNodeVirtualFile != null ? new MPSFileNodeEditor(mpsProject, mpsNodeVirtualFile) :
            new MPSFileNodeEditor(mpsProject, repository, nodeFileComputable);
@@ -126,10 +126,10 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
     private final IFile myFile;
     private final String myNameToMatch;
 
-    NodeFileComputable(SRepository repository, VirtualFile file) {
+    NodeFileComputable(SRepository repository, IFile file) {
       myRepository = repository;
-      myFile = VirtualFileUtils.toIFile(file.getParent());
-      myNameToMatch = file.getNameWithoutExtension();
+      myFile = file;
+      myNameToMatch = FileUtil.getNameWithoutExtension(file.getName());
     }
 
     @Override

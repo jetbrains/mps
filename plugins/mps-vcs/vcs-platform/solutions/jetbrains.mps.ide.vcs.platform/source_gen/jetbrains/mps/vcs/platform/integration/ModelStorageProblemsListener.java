@@ -277,7 +277,7 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
       if (modelFile.exists()) {
         com.intellij.openapi.util.io.FileUtil.copy(new File(modelFile.getPath()), new File(tmp.getAbsolutePath(), modelFile.getName() + "." + ModelStorageProblemsListener.DiskMemoryConflictVersion.FILE_SYSTEM.getSuffix()));
       }
-      File zipfile = MergeBackupUtil.chooseZipFileForModelFile(modelFile);
+      File zipfile = MergeBackupUtil.chooseZipFileForModelFile(modelFile.getName());
       zipfile.getParentFile().mkdirs();
       FileUtil.zip(tmp, zipfile);
       FileUtil.delete(tmp);

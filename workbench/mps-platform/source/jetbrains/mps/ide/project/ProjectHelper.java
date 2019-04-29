@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ public class ProjectHelper {
    * is not configured as loadForDefaultProject in its plugin descriptor file.
    */
   @Nullable
-  public static MPSProject fromIdeaProject(com.intellij.openapi.project.Project p) {
+  public static MPSProject fromIdeaProject(@Nullable com.intellij.openapi.project.Project p) {
     if (p != null) {
       return p.getComponent(MPSProject.class);
     }

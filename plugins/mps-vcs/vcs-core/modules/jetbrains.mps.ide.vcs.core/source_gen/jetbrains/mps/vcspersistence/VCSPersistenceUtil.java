@@ -60,7 +60,7 @@ public class VCSPersistenceUtil {
     try {
       input = file.openInputStream();
       byte[] bytes = ReadUtil.read(input);
-      return loadModel(bytes, file.getName().substring(file.getName().lastIndexOf(".")));
+      return loadModel(bytes, file.getName().substring(file.getName().lastIndexOf('.')));
     } catch (IOException e) {
       return null;
     } finally {

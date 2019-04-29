@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.data;
 
 import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -44,14 +41,15 @@ public class ModelsDataRule implements GetDataRule {
       return null;
     }
 
-    final Project project = CommonDataKeys.PROJECT.getData(dataProvider);
+    final MPSProject project = ProjectHelper.fromIdeaProject(CommonDataKeys.PROJECT.getData(dataProvider));
     if (project == null) {
       return null;
     }
 
-    List<SModel> result = new ArrayList<SModel>();
+    List<SModel> result = new ArrayList<>();
+    final SModelFileTracker ft = SModelFileTracker.getInstance(project.getRepository());
     for (VirtualFile f : virtualFiles) {
-      final SModel model = SModelFileTracker.getInstance(ProjectHelper.getProjectRepository(project)).findModel(FileSystem.getInstance().getFile(f.getPath()));
+      final SModel model = ft.findModel(project.getFileSystem().fromVirtualFile(f));
       if (model != null) {
         result.add(model);
       }

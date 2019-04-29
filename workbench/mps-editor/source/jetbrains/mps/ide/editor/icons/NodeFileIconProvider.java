@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.ide.editor.icons;
 
 import com.intellij.ide.FileIconProvider;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.NamedComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.DefaultIconDeferrer;
@@ -25,15 +25,15 @@ import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.editor.MPSEditorUtil;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ModelComputeRunnable;
-import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import javax.swing.Icon;
@@ -41,8 +41,7 @@ import javax.swing.Icon;
 /**
  * evgeny, 12/25/11
  */
-public class NodeFileIconProvider implements FileIconProvider, ApplicationComponent {
-
+public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
   private final GlobalIconManager myIconManager;
 
   public NodeFileIconProvider(GlobalIconManager iconManager) {
@@ -50,28 +49,13 @@ public class NodeFileIconProvider implements FileIconProvider, ApplicationCompon
   }
 
   @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Node File Icon Provider";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @Override
   @Nullable
   public Icon getIcon(@NotNull final VirtualFile file, int flags, final Project project) {
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+    if (mpsProject == null) {
+      return null;
+    }
     if (file instanceof MPSNodeVirtualFile) {
-      final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
-      if (mpsProject == null) {
-        return null;
-      }
       final MPSNodeVirtualFile nodeFile = (MPSNodeVirtualFile) file;
       return new ModelComputeRunnable<>(() -> {
         if (IconDeferrer.getInstance() instanceof DefaultIconDeferrer) {
@@ -88,16 +72,16 @@ public class NodeFileIconProvider implements FileIconProvider, ApplicationCompon
         return null;
       }).runRead(mpsProject.getModelAccess());
     } else if(file.getFileType().equals(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE)) {
-      final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(project);
-      if (mpsProject == null) {
+      final IFile f = mpsProject.getFileSystem().fromVirtualFile(file.getParent());
+      final SModelReference modelRef = SModelFileTracker.getInstance(mpsProject.getRepository()).modelFor(f);
+      if (modelRef == null) {
         return null;
       }
       return new ModelComputeRunnable<>(() -> {
-        SModel descr = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(VirtualFileUtils.toIFile(file.getParent()));
+        SModel descr = modelRef.resolve(mpsProject.getRepository());
         if (descr == null) {
           return null;
         }
-
         String nameWithoutExtension = file.getNameWithoutExtension();
         for (SNode node : descr.getRootNodes()) {
           if (nameWithoutExtension.equals(node.getName())) {

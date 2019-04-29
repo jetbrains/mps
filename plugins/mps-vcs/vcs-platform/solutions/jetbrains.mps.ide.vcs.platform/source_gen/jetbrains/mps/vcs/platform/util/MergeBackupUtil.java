@@ -11,7 +11,6 @@ import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vcs.util.MergeDriverBackupUtil;
 import jetbrains.mps.vcs.util.MergeConstants;
 import jetbrains.mps.vcs.util.MergeVersion;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import com.intellij.util.io.ZipUtil;
 import com.intellij.openapi.application.PathManager;
 import java.io.FilenameFilter;
@@ -23,7 +22,6 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
-import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 
@@ -36,7 +34,7 @@ public class MergeBackupUtil {
     MergeDriverBackupUtil.writeContentsToFile(contents[MergeConstants.ORIGINAL], file.getName(), tmpDir, MergeVersion.BASE.getSuffix());
     MergeDriverBackupUtil.writeContentsToFile(contents[MergeConstants.CURRENT], file.getName(), tmpDir, MergeVersion.MINE.getSuffix());
     MergeDriverBackupUtil.writeContentsToFile(contents[MergeConstants.LAST_REVISION], file.getName(), tmpDir, MergeVersion.REPOSITORY.getSuffix());
-    File zipfile = chooseZipFileForModelFile(VirtualFileUtils.toIFile(file));
+    File zipfile = chooseZipFileForModelFile(file.getName());
     zipfile.getParentFile().mkdirs();
     FileUtil.zip(tmpDir, zipfile);
     FileUtil.delete(tmpDir);
@@ -110,11 +108,12 @@ public class MergeBackupUtil {
     }
     return models;
   }
-  public static File chooseZipFileForModelFile(IFile file) {
+  public static File chooseZipFileForModelFile(String defaultFileName) {
     // FIXME Please, please! Year 2015, two static classes, one set static fields of another?! 
+    // FIXME Oh, no, wait! It's year 2019 already, and the code is still there!? 
     MergeDriverBackupUtil.setMergeBackupDirPath(getMergeBackupDirPath());
     // What was the reason to alter name of the backup file with model name? 
-    return MergeDriverBackupUtil.chooseZipFileForModelLongName(file.getName(), null);
+    return MergeDriverBackupUtil.chooseZipFileForModelLongName(defaultFileName, null);
   }
   public static Iterable<File> findZipFilesForModelFile(final String modelFileName) {
     File[] files = new File(MergeBackupUtil.getMergeBackupDirPath()).listFiles(new FilenameFilter() {

@@ -1201,11 +1201,12 @@
             </node>
             <node concept="1rXfSq" id="4qk_0lIsKD0" role="33vP2m">
               <ref role="37wK5l" node="nQhvklQRWa" resolve="chooseZipFileForModelFile" />
-              <node concept="2YIFZM" id="4qk_0lIsKD1" role="37wK5m">
-                <ref role="37wK5l" to="4hrd:~VirtualFileUtils.toIFile(com.intellij.openapi.vfs.VirtualFile)" resolve="toIFile" />
-                <ref role="1Pybhc" to="4hrd:~VirtualFileUtils" resolve="VirtualFileUtils" />
-                <node concept="37vLTw" id="4qk_0lIsKD2" role="37wK5m">
+              <node concept="2OqwBi" id="HUlZWKbuT5" role="37wK5m">
+                <node concept="37vLTw" id="HUlZWKbtzB" role="2Oq$k0">
                   <ref role="3cqZAo" node="4qk_0lIsKC7" resolve="file" />
+                </node>
+                <node concept="liA8E" id="HUlZWKbxrZ" role="2OqNvi">
+                  <ref role="37wK5l" to="jlff:~VirtualFile.getName()" resolve="getName" />
                 </node>
               </node>
             </node>
@@ -2019,16 +2020,21 @@
         <ref role="3uigEE" to="guwi:~File" resolve="File" />
       </node>
       <node concept="37vLTG" id="nQhvklQRWd" role="3clF46">
-        <property role="TrG5h" value="file" />
+        <property role="TrG5h" value="defaultFileName" />
         <property role="3TUv4t" value="false" />
-        <node concept="3uibUv" id="nQhvklQRWe" role="1tU5fm">
-          <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+        <node concept="3uibUv" id="HUlZWKaXUq" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
       <node concept="3clFbS" id="nQhvklQRWf" role="3clF47">
         <node concept="3SKdUt" id="6y_kxB21e6r" role="3cqZAp">
           <node concept="3SKdUq" id="6y_kxB21ekw" role="3SKWNk">
             <property role="3SKdUp" value="FIXME Please, please! Year 2015, two static classes, one set static fields of another?!" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="HUlZWK9l4F" role="3cqZAp">
+          <node concept="3SKdUq" id="HUlZWK9oCG" role="3SKWNk">
+            <property role="3SKdUp" value="FIXME Oh, no, wait! It's year 2019 already, and the code is still there!?" />
           </node>
         </node>
         <node concept="3clFbF" id="nQhvklQS2$" role="3cqZAp">
@@ -2049,13 +2055,8 @@
           <node concept="2YIFZM" id="nQhvklQRWh" role="3cqZAk">
             <ref role="37wK5l" to="ur19:341WClvYwi7" resolve="chooseZipFileForModelLongName" />
             <ref role="1Pybhc" to="ur19:341WClvYweB" resolve="MergeDriverBackupUtil" />
-            <node concept="2OqwBi" id="nQhvklQRWi" role="37wK5m">
-              <node concept="37vLTw" id="2BHiRxglI7_" role="2Oq$k0">
-                <ref role="3cqZAo" node="nQhvklQRWd" resolve="file" />
-              </node>
-              <node concept="liA8E" id="nQhvklQRWk" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getName()" resolve="getName" />
-              </node>
+            <node concept="37vLTw" id="2BHiRxglI7_" role="37wK5m">
+              <ref role="3cqZAo" node="nQhvklQRWd" resolve="defaultFileName" />
             </node>
             <node concept="10Nm6u" id="6y_kxB21dsL" role="37wK5m" />
           </node>

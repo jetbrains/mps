@@ -54,7 +54,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
   private Editor myNodeEditor;
   private final JPanel myComponent = new MPSFileNodeEditorComponent();
-  private final MPSProject myProject;
+  protected final MPSProject myProject;
   private MPSNodeVirtualFile myFile;
   private boolean myDisposed = false;
   // See: https://youtrack.jetbrains.com/issue/MPS-24409
