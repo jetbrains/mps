@@ -51,6 +51,7 @@ import jetbrains.mps.ide.findusages.view.UsagesView.RebuildAction;
 import jetbrains.mps.ide.findusages.view.UsagesView.RerunAction;
 import jetbrains.mps.ide.findusages.view.UsagesView.SearchTaskImpl;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
@@ -158,17 +159,23 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
 
       @Override
       public void onSuccess() {
-        showResults(searchTask, searchResults, options);
+        showResults(searchTask, searchResults, options, null);
       }
     }.queue());
   }
 
   public void show(SearchResults results, String notFoundMsg) {
     ThreadUtils.assertEDT();
-    showResults(null, results, new UsageToolOptions().navigateIfSingle(false).forceNewTab(true).allowRunAgain(false).notFoundMessage(notFoundMsg));
+    showResults(null, results, new UsageToolOptions().navigateIfSingle(false).forceNewTab(true).allowRunAgain(false).notFoundMessage(notFoundMsg), null);
   }
 
-  private void showResults(SearchTaskImpl searchTask, final SearchResults<?> searchResults, UsageToolOptions options) {
+  public void show(SearchResults results, String notFoundMsg, @Nullable INodeRepresentator representator) {
+    ThreadUtils.assertEDT();
+    showResults(null, results, new UsageToolOptions().navigateIfSingle(false).forceNewTab(true).allowRunAgain(false).notFoundMessage(notFoundMsg), representator);
+  }
+
+  @Nullable
+  private void showResults(SearchTaskImpl searchTask, final SearchResults<?> searchResults, UsageToolOptions options, @Nullable INodeRepresentator representator) {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
     int resCount = searchResults.getSearchResults().size();
     if (resCount == 0) {
@@ -186,6 +193,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     }
     int index = getCurrentTabIndex();
     UsagesView usagesView = createUsageView(options.myRunAgain ? searchTask : null);
+    usagesView.setCustomNodeRepresentator(representator);
     UsageViewData usageViewData = new UsageViewData(usagesView, options.myRunAgain ? searchTask : null);
     usageViewData.setTransientView(options.myTransientView);
     register(usageViewData);
