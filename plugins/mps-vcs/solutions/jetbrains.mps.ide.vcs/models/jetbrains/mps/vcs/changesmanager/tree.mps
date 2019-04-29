@@ -46,6 +46,7 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="j936" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.ui(MPS.IDEA/)" />
+    <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
   </imports>
@@ -2550,34 +2551,16 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="1_HLebvhvzm" role="jymVt">
+    <node concept="312cEg" id="1IDyV7MsOGI" role="jymVt">
       <property role="TrG5h" value="myQueue" />
       <property role="3TUv4t" value="true" />
-      <node concept="2ShNRf" id="1_HLebvhzjE" role="33vP2m">
-        <node concept="1pGfFk" id="1_HLebvhFYT" role="2ShVmc">
-          <ref role="37wK5l" to="t335:~MergingUpdateQueue.&lt;init&gt;(java.lang.String,int,boolean,javax.swing.JComponent,com.intellij.openapi.Disposable,javax.swing.JComponent,boolean)" resolve="MergingUpdateQueue" />
-          <node concept="Xl_RD" id="1_HLebvhFZg" role="37wK5m">
-            <property role="Xl_RC" value="MPS Changes Manager RehighlightAll Watcher Queue" />
-          </node>
-          <node concept="3cmrfG" id="1_HLebvhG90" role="37wK5m">
-            <property role="3cmrfH" value="500" />
-          </node>
-          <node concept="3clFbT" id="1_HLebvhGah" role="37wK5m">
-            <property role="3clFbU" value="true" />
-          </node>
-          <node concept="10Nm6u" id="1_HLebvhGmo" role="37wK5m" />
-          <node concept="10Nm6u" id="7JS4_fB3EEn" role="37wK5m" />
-          <node concept="10Nm6u" id="7JS4_fB3HWW" role="37wK5m" />
-          <node concept="3clFbT" id="7JS4_fB3LaF" role="37wK5m" />
-        </node>
-      </node>
-      <node concept="3uibUv" id="1_HLebvhyaE" role="1tU5fm">
+      <node concept="3Tm6S6" id="1IDyV7MsH1p" role="1B3o_S" />
+      <node concept="3uibUv" id="1IDyV7MsKQV" role="1tU5fm">
         <ref role="3uigEE" to="t335:~MergingUpdateQueue" resolve="MergingUpdateQueue" />
       </node>
-      <node concept="3Tm6S6" id="1_HLebvhvzn" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="3KFSf9tVBOB" role="jymVt">
-      <property role="TrG5h" value="rehighlightAllFeaturesUpdate" />
+      <property role="TrG5h" value="myHighlightAllFeaturesUpdate" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="3KFSf9tVBO_" role="1B3o_S" />
       <node concept="3uibUv" id="3KFSf9tVBOA" role="1tU5fm">
@@ -2658,24 +2641,13 @@
             <ref role="3cqZAo" node="1OS8OtPz6xU" resolve="removeNodesOnModelDisposal" />
           </node>
         </node>
-        <node concept="3SKdUt" id="63ipUBXx1Do" role="3cqZAp">
-          <node concept="3SKdUq" id="63ipUBXx1Dq" role="3SKWNk">
-            <property role="3SKdUp" value="given cycle queue(Update), update.run-&gt; queue(Update), it's vital not to allow pass-through model of MergingUpdateQueue," />
-          </node>
-        </node>
-        <node concept="3SKdUt" id="63ipUBXx2ct" role="3cqZAp">
-          <node concept="3SKdUq" id="63ipUBXx2cv" role="3SKWNk">
-            <property role="3SKdUp" value="otherwise we risk StackOverflowException, see MPS-29973" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="63ipUBXwZUG" role="3cqZAp">
-          <node concept="2OqwBi" id="63ipUBXx0mr" role="3clFbG">
-            <node concept="37vLTw" id="63ipUBXwZUE" role="2Oq$k0">
-              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+        <node concept="3clFbF" id="1IDyV7MsUVj" role="3cqZAp">
+          <node concept="37vLTI" id="1IDyV7Mt7aa" role="3clFbG">
+            <node concept="37vLTw" id="1IDyV7MtbtC" role="37vLTx">
+              <ref role="3cqZAo" node="1IDyV7MqZ_6" resolve="queue" />
             </node>
-            <node concept="liA8E" id="63ipUBXx0GX" role="2OqNvi">
-              <ref role="37wK5l" to="t335:~MergingUpdateQueue.setPassThrough(boolean)" resolve="setPassThrough" />
-              <node concept="3clFbT" id="63ipUBXx0JQ" role="37wK5m" />
+            <node concept="37vLTw" id="1IDyV7MsUVh" role="37vLTJ">
+              <ref role="3cqZAo" node="1IDyV7MsOGI" resolve="myQueue" />
             </node>
           </node>
         </node>
@@ -2719,6 +2691,15 @@
       <node concept="37vLTG" id="1OS8OtPz6xU" role="3clF46">
         <property role="TrG5h" value="removeNodesOnModelDisposal" />
         <node concept="10P_77" id="1OS8OtPz6xW" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="1IDyV7MqZ_6" role="3clF46">
+        <property role="TrG5h" value="queue" />
+        <node concept="3uibUv" id="1IDyV7Mr4HU" role="1tU5fm">
+          <ref role="3uigEE" to="t335:~MergingUpdateQueue" resolve="MergingUpdateQueue" />
+        </node>
+        <node concept="2AHcQZ" id="1IDyV7MroRt" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="15yHJj8mrS_" role="jymVt" />
@@ -2840,7 +2821,7 @@
                 <node concept="3clFbS" id="42ljTcHmp7j" role="1bW5cS">
                   <node concept="3SKdUt" id="1iU9OXuN8Dc" role="3cqZAp">
                     <node concept="3SKdUq" id="1iU9OXuN8De" role="3SKWNk">
-                      <property role="3SKdUp" value="FIXME likely IEDT is needed to walk myTree safely, but model read is questionable." />
+                      <property role="3SKdUp" value="FIXME likely EDT is needed to walk myTree safely, but model read is questionable." />
                     </node>
                   </node>
                   <node concept="3SKdUt" id="1iU9OXuOxcD" role="3cqZAp">
@@ -2995,26 +2976,6 @@
               <node concept="37vLTw" id="2BHiRxeuSt8" role="37wK5m">
                 <ref role="3cqZAo" node="7YINie3rlvq" resolve="myFeatureListener" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7JS4_fB$FtV" role="3cqZAp">
-          <node concept="2OqwBi" id="7JS4_fB$G65" role="3clFbG">
-            <node concept="37vLTw" id="7JS4_fB$FtT" role="2Oq$k0">
-              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
-            </node>
-            <node concept="liA8E" id="7JS4_fB$M_8" role="2OqNvi">
-              <ref role="37wK5l" to="t335:~MergingUpdateQueue.cancelAllUpdates()" resolve="cancelAllUpdates" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7QF6FU0TLzA" role="3cqZAp">
-          <node concept="2OqwBi" id="7QF6FU0TZs5" role="3clFbG">
-            <node concept="37vLTw" id="7QF6FU0TLqz" role="2Oq$k0">
-              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
-            </node>
-            <node concept="liA8E" id="7QF6FU0UnoE" role="2OqNvi">
-              <ref role="37wK5l" to="t335:~MergingUpdateQueue.dispose()" resolve="dispose" />
             </node>
           </node>
         </node>
@@ -3218,8 +3179,8 @@
             </node>
             <node concept="3clFbF" id="7JS4_fB4_5n" role="3cqZAp">
               <node concept="2OqwBi" id="7JS4_fB4D9p" role="3clFbG">
-                <node concept="37vLTw" id="7JS4_fB4_5l" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+                <node concept="37vLTw" id="1IDyV7Mu1HW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1IDyV7MsOGI" resolve="myQueue" />
                 </node>
                 <node concept="liA8E" id="7JS4_fB4IFZ" role="2OqNvi">
                   <ref role="37wK5l" to="t335:~MergingUpdateQueue.queue(com.intellij.util.ui.update.Update)" resolve="queue" />
@@ -3391,8 +3352,8 @@
           <node concept="3clFbS" id="4Ji_XZ8djlk" role="3clFbx">
             <node concept="3clFbF" id="4Ji_XZ8djdj" role="3cqZAp">
               <node concept="2OqwBi" id="7JS4_fBwBfx" role="3clFbG">
-                <node concept="37vLTw" id="7JS4_fBwygx" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+                <node concept="37vLTw" id="1IDyV7Mu7AB" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1IDyV7MsOGI" resolve="myQueue" />
                 </node>
                 <node concept="liA8E" id="7JS4_fBwHpT" role="2OqNvi">
                   <ref role="37wK5l" to="t335:~MergingUpdateQueue.queue(com.intellij.util.ui.update.Update)" resolve="queue" />
@@ -3793,8 +3754,8 @@
           <node concept="3clFbS" id="1iU9OXuTqK6" role="3clFbx">
             <node concept="3clFbF" id="4Ji_XZ8eVIs" role="3cqZAp">
               <node concept="2OqwBi" id="7JS4_fBxava" role="3clFbG">
-                <node concept="37vLTw" id="7JS4_fBx47r" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+                <node concept="37vLTw" id="1IDyV7Mv9q5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1IDyV7MsOGI" resolve="myQueue" />
                 </node>
                 <node concept="liA8E" id="7JS4_fBxgw2" role="2OqNvi">
                   <ref role="37wK5l" to="t335:~MergingUpdateQueue.queue(com.intellij.util.ui.update.Update)" resolve="queue" />
@@ -4263,6 +4224,9 @@
                 <node concept="3uibUv" id="7JS4_fBb_nm" role="3g7fb8">
                   <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                 </node>
+                <node concept="Xjq3P" id="1IDyV7Mv_3O" role="3g7hyw">
+                  <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
+                </node>
                 <node concept="Xl_RD" id="7JS4_fBbLrC" role="3g7hyw">
                   <property role="Xl_RC" value="Highlight" />
                 </node>
@@ -4287,6 +4251,16 @@
           <node concept="3SKdUt" id="7JS4_fBgtS3" role="3cqZAp">
             <node concept="3SKdUq" id="7JS4_fBgtS5" role="3SKWNk">
               <property role="3SKdUp" value="thus changing my assumption here that all I care about is identity matching (sufficient for the purposes of this update). However, as long as I keep references to the node anyway" />
+            </node>
+          </node>
+          <node concept="3SKdUt" id="1IDyV7MzbPu" role="3cqZAp">
+            <node concept="3SKdUq" id="1IDyV7MzbPw" role="3SKWNk">
+              <property role="3SKdUp" value="Important: use enclosing instance in the equality key as MUQ instance is shared between all TreeHighlighters, have to prevent update queued from one" />
+            </node>
+          </node>
+          <node concept="3SKdUt" id="1IDyV7MAbch" role="3cqZAp">
+            <node concept="3SKdUq" id="1IDyV7MAbcj" role="3SKWNk">
+              <property role="3SKdUp" value="           TH to replace (due to equals) some other update from another TH." />
             </node>
           </node>
           <node concept="3clFbF" id="7JS4_fBeaT2" role="3cqZAp">
@@ -4337,14 +4311,21 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbC" id="7JS4_fBiPtE" role="3clFbw">
-              <node concept="10Nm6u" id="7JS4_fBiTsT" role="3uHU7w" />
-              <node concept="2OqwBi" id="7JS4_fBiy3_" role="3uHU7B">
-                <node concept="37vLTw" id="7JS4_fBitZt" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7JS4_fBdrjf" resolve="myTreeNode" />
+            <node concept="22lmx$" id="1IDyV7MuzkG" role="3clFbw">
+              <node concept="3fqX7Q" id="1IDyV7MuDoO" role="3uHU7B">
+                <node concept="37vLTw" id="1IDyV7MuGXT" role="3fr31v">
+                  <ref role="3cqZAo" node="7YINie3rltq" resolve="myInitialized" />
                 </node>
-                <node concept="liA8E" id="7JS4_fBiCbw" role="2OqNvi">
-                  <ref role="37wK5l" to="7e8u:~MPSTreeNode.getTree()" resolve="getTree" />
+              </node>
+              <node concept="3clFbC" id="7JS4_fBiPtE" role="3uHU7w">
+                <node concept="10Nm6u" id="7JS4_fBiTsT" role="3uHU7w" />
+                <node concept="2OqwBi" id="7JS4_fBiy3_" role="3uHU7B">
+                  <node concept="37vLTw" id="7JS4_fBitZt" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7JS4_fBdrjf" resolve="myTreeNode" />
+                  </node>
+                  <node concept="liA8E" id="7JS4_fBiCbw" role="2OqNvi">
+                    <ref role="37wK5l" to="7e8u:~MPSTreeNode.getTree()" resolve="getTree" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -4428,6 +4409,34 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="1IDyV7MvGZd" role="jymVt" />
+      <node concept="3clFb_" id="1IDyV7MvKIB" role="jymVt">
+        <property role="TrG5h" value="isSameHighlighter" />
+        <node concept="10P_77" id="1IDyV7MvTrr" role="3clF45" />
+        <node concept="3clFbS" id="1IDyV7MvKIF" role="3clF47">
+          <node concept="3SKdUt" id="1IDyV7Mx_i8" role="3cqZAp">
+            <node concept="3SKdUq" id="1IDyV7Mx_ia" role="3SKWNk">
+              <property role="3SKdUp" value="Few TreeHighlighter share same MergingUpdateQueue, need to make sure update of one of them doesn't 'eat' updates from others" />
+            </node>
+          </node>
+          <node concept="3cpWs6" id="1IDyV7Mx2zj" role="3cqZAp">
+            <node concept="3clFbC" id="1IDyV7MxkKp" role="3cqZAk">
+              <node concept="37vLTw" id="1IDyV7MxoQF" role="3uHU7w">
+                <ref role="3cqZAo" node="1IDyV7MwVOT" resolve="th" />
+              </node>
+              <node concept="Xjq3P" id="1IDyV7Mxg0u" role="3uHU7B">
+                <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="37vLTG" id="1IDyV7MwVOT" role="3clF46">
+          <property role="TrG5h" value="th" />
+          <node concept="3uibUv" id="1IDyV7MwVOS" role="1tU5fm">
+            <ref role="3uigEE" node="7YINie3rdNP" resolve="TreeHighlighter" />
+          </node>
+        </node>
+      </node>
       <node concept="3Tm6S6" id="7JS4_fB9i$Z" role="1B3o_S" />
       <node concept="3uibUv" id="7JS4_fB9SPo" role="1zkMxy">
         <ref role="3uigEE" to="t335:~Update" resolve="Update" />
@@ -4455,6 +4464,9 @@
               <node concept="3g6Rrh" id="7JS4_fBqARq" role="2ShVmc">
                 <node concept="3uibUv" id="7JS4_fBqwKU" role="3g7fb8">
                   <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+                </node>
+                <node concept="Xjq3P" id="1IDyV7MvoFl" role="3g7hyw">
+                  <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
                 </node>
                 <node concept="Xl_RD" id="7JS4_fBqGMM" role="3g7hyw">
                   <property role="Xl_RC" value="presentation" />
@@ -4556,6 +4568,34 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="1IDyV7MB9y$" role="jymVt" />
+      <node concept="3clFb_" id="1IDyV7MB3eB" role="jymVt">
+        <property role="TrG5h" value="isSameHighlighter" />
+        <node concept="10P_77" id="1IDyV7MB3eC" role="3clF45" />
+        <node concept="3clFbS" id="1IDyV7MB3eD" role="3clF47">
+          <node concept="3SKdUt" id="1IDyV7MB3eE" role="3cqZAp">
+            <node concept="3SKdUq" id="1IDyV7MB3eF" role="3SKWNk">
+              <property role="3SKdUp" value="see HighlightNodeAndFeature#isSameHighlighter, above, for details" />
+            </node>
+          </node>
+          <node concept="3cpWs6" id="1IDyV7MB3eG" role="3cqZAp">
+            <node concept="3clFbC" id="1IDyV7MB3eH" role="3cqZAk">
+              <node concept="37vLTw" id="1IDyV7MB3eI" role="3uHU7w">
+                <ref role="3cqZAo" node="1IDyV7MB3eK" resolve="th" />
+              </node>
+              <node concept="Xjq3P" id="1IDyV7MB3eJ" role="3uHU7B">
+                <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="37vLTG" id="1IDyV7MB3eK" role="3clF46">
+          <property role="TrG5h" value="th" />
+          <node concept="3uibUv" id="1IDyV7MB3eL" role="1tU5fm">
+            <ref role="3uigEE" node="7YINie3rdNP" resolve="TreeHighlighter" />
+          </node>
+        </node>
+      </node>
       <node concept="3Tm6S6" id="7JS4_fBkFqn" role="1B3o_S" />
       <node concept="3uibUv" id="7JS4_fBltDz" role="1zkMxy">
         <ref role="3uigEE" to="t335:~Update" resolve="Update" />
@@ -4620,7 +4660,6 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="7JS4_fB7O1G" role="jymVt" />
       <node concept="2tJIrI" id="7JS4_fB8Z9_" role="jymVt" />
       <node concept="3clFb_" id="7JS4_fB94TW" role="jymVt">
         <property role="TrG5h" value="canEat" />
@@ -4638,25 +4677,72 @@
               <property role="3SKdUp" value="this one would re-highlight all, why bother with a single request" />
             </node>
           </node>
-          <node concept="3cpWs6" id="7JS4_fBj1qM" role="3cqZAp">
-            <node concept="22lmx$" id="7JS4_fBuogE" role="3cqZAk">
-              <node concept="2ZW3vV" id="7JS4_fBu_BX" role="3uHU7w">
-                <node concept="3uibUv" id="7JS4_fBuFMN" role="2ZW6by">
-                  <ref role="3uigEE" node="7JS4_fBkKUM" resolve="TreeHighlighter.UpdatePresentation" />
-                </node>
-                <node concept="37vLTw" id="7JS4_fButW$" role="2ZW6bz">
-                  <ref role="3cqZAo" node="7JS4_fB94U0" resolve="update" />
-                </node>
-              </node>
-              <node concept="2ZW3vV" id="7JS4_fBjfWn" role="3uHU7B">
-                <node concept="3uibUv" id="7JS4_fBj_eY" role="2ZW6by">
-                  <ref role="3uigEE" node="7JS4_fB9nHJ" resolve="TreeHighlighter.HighlightNodeAndFeature" />
-                </node>
-                <node concept="37vLTw" id="7JS4_fBjbkM" role="2ZW6bz">
-                  <ref role="3cqZAo" node="7JS4_fB94U0" resolve="update" />
+          <node concept="3clFbJ" id="1IDyV7MBOEl" role="3cqZAp">
+            <node concept="3clFbS" id="1IDyV7MBOEn" role="3clFbx">
+              <node concept="3cpWs6" id="1IDyV7MC0HN" role="3cqZAp">
+                <node concept="2OqwBi" id="1IDyV7MCdvq" role="3cqZAk">
+                  <node concept="1eOMI4" id="1IDyV7MC6Ld" role="2Oq$k0">
+                    <node concept="10QFUN" id="1IDyV7MC6La" role="1eOMHV">
+                      <node concept="3uibUv" id="1IDyV7MC6Lf" role="10QFUM">
+                        <ref role="3uigEE" node="7JS4_fB9nHJ" resolve="TreeHighlighter.HighlightNodeAndFeature" />
+                      </node>
+                      <node concept="37vLTw" id="1IDyV7MC6Lg" role="10QFUP">
+                        <ref role="3cqZAo" node="7JS4_fB94U0" resolve="update" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1IDyV7MCjJY" role="2OqNvi">
+                    <ref role="37wK5l" node="1IDyV7MvKIB" resolve="isSameHighlighter" />
+                    <node concept="Xjq3P" id="1IDyV7MCttn" role="37wK5m">
+                      <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
+            <node concept="2ZW3vV" id="7JS4_fBjfWn" role="3clFbw">
+              <node concept="3uibUv" id="7JS4_fBj_eY" role="2ZW6by">
+                <ref role="3uigEE" node="7JS4_fB9nHJ" resolve="TreeHighlighter.HighlightNodeAndFeature" />
+              </node>
+              <node concept="37vLTw" id="7JS4_fBjbkM" role="2ZW6bz">
+                <ref role="3cqZAo" node="7JS4_fB94U0" resolve="update" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="1IDyV7MCB3V" role="3cqZAp">
+            <node concept="3clFbS" id="1IDyV7MCB3X" role="3clFbx">
+              <node concept="3clFbF" id="1IDyV7MCRY6" role="3cqZAp">
+                <node concept="2OqwBi" id="1IDyV7MD3Xy" role="3clFbG">
+                  <node concept="1eOMI4" id="1IDyV7MCRY3" role="2Oq$k0">
+                    <node concept="10QFUN" id="1IDyV7MCRY0" role="1eOMHV">
+                      <node concept="3uibUv" id="1IDyV7MCRY5" role="10QFUM">
+                        <ref role="3uigEE" node="7JS4_fBkKUM" resolve="TreeHighlighter.UpdatePresentation" />
+                      </node>
+                      <node concept="37vLTw" id="1IDyV7MCY8a" role="10QFUP">
+                        <ref role="3cqZAo" node="7JS4_fB94U0" resolve="update" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1IDyV7MDamh" role="2OqNvi">
+                    <ref role="37wK5l" node="1IDyV7MB3eB" resolve="isSameHighlighter" />
+                    <node concept="Xjq3P" id="1IDyV7MDgjr" role="37wK5m">
+                      <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2ZW3vV" id="7JS4_fBu_BX" role="3clFbw">
+              <node concept="3uibUv" id="7JS4_fBuFMN" role="2ZW6by">
+                <ref role="3uigEE" node="7JS4_fBkKUM" resolve="TreeHighlighter.UpdatePresentation" />
+              </node>
+              <node concept="37vLTw" id="7JS4_fButW$" role="2ZW6bz">
+                <ref role="3cqZAo" node="7JS4_fB94U0" resolve="update" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="7JS4_fBj1qM" role="3cqZAp">
+            <node concept="3clFbT" id="1IDyV7MDm0a" role="3cqZAk" />
           </node>
         </node>
         <node concept="2AHcQZ" id="7JS4_fB94U3" role="2AJF6D">
@@ -4744,8 +4830,8 @@
         <node concept="1gVbGN" id="63ipUBXwXyL" role="3cqZAp">
           <node concept="3fqX7Q" id="63ipUBXwXBp" role="1gVkn0">
             <node concept="2OqwBi" id="63ipUBXwY45" role="3fr31v">
-              <node concept="37vLTw" id="63ipUBXwXGX" role="2Oq$k0">
-                <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+              <node concept="37vLTw" id="1IDyV7MuXbF" role="2Oq$k0">
+                <ref role="3cqZAo" node="1IDyV7MsOGI" resolve="myQueue" />
               </node>
               <node concept="liA8E" id="63ipUBXwYqv" role="2OqNvi">
                 <ref role="37wK5l" to="t335:~MergingUpdateQueue.isPassThrough()" resolve="isPassThrough" />
@@ -4761,11 +4847,11 @@
             <node concept="liA8E" id="1_HLebviFTi" role="2OqNvi">
               <ref role="37wK5l" to="t335:~MergingUpdateQueue.queue(com.intellij.util.ui.update.Update)" resolve="queue" />
               <node concept="37vLTw" id="3KFSf9tVXQ6" role="37wK5m">
-                <ref role="3cqZAo" node="3KFSf9tVBOB" resolve="rehighlightAllFeaturesUpdate" />
+                <ref role="3cqZAo" node="3KFSf9tVBOB" resolve="myHighlightAllFeaturesUpdate" />
               </node>
             </node>
-            <node concept="37vLTw" id="1_HLebviCIu" role="2Oq$k0">
-              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+            <node concept="37vLTw" id="1IDyV7Mv3sq" role="2Oq$k0">
+              <ref role="3cqZAo" node="1IDyV7MsOGI" resolve="myQueue" />
             </node>
           </node>
         </node>
@@ -6815,6 +6901,32 @@
         <ref role="3uigEE" node="3ghtVL8Toqs" resolve="FeatureForestMapSupport" />
       </node>
     </node>
+    <node concept="312cEg" id="1_HLebvhvzm" role="jymVt">
+      <property role="TrG5h" value="myQueue" />
+      <property role="3TUv4t" value="true" />
+      <node concept="2ShNRf" id="1_HLebvhzjE" role="33vP2m">
+        <node concept="1pGfFk" id="1_HLebvhFYT" role="2ShVmc">
+          <ref role="37wK5l" to="t335:~MergingUpdateQueue.&lt;init&gt;(java.lang.String,int,boolean,javax.swing.JComponent,com.intellij.openapi.Disposable,javax.swing.JComponent,boolean)" resolve="MergingUpdateQueue" />
+          <node concept="Xl_RD" id="1_HLebvhFZg" role="37wK5m">
+            <property role="Xl_RC" value="MPS Changes Manager RehighlightAll Watcher Queue" />
+          </node>
+          <node concept="3cmrfG" id="1_HLebvhG90" role="37wK5m">
+            <property role="3cmrfH" value="500" />
+          </node>
+          <node concept="3clFbT" id="1_HLebvhGah" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+          <node concept="10Nm6u" id="1_HLebvhGmo" role="37wK5m" />
+          <node concept="10Nm6u" id="7JS4_fB3EEn" role="37wK5m" />
+          <node concept="10Nm6u" id="7JS4_fB3HWW" role="37wK5m" />
+          <node concept="3clFbT" id="7JS4_fB3LaF" role="37wK5m" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="1_HLebvhyaE" role="1tU5fm">
+        <ref role="3uigEE" to="t335:~MergingUpdateQueue" resolve="MergingUpdateQueue" />
+      </node>
+      <node concept="3Tm6S6" id="1_HLebvhvzn" role="1B3o_S" />
+    </node>
     <node concept="2tJIrI" id="63ipUBXvJDk" role="jymVt" />
     <node concept="3clFbW" id="3zYHoP1k4BR" role="jymVt">
       <node concept="37vLTG" id="3zYHoP1k4BW" role="3clF46">
@@ -6867,6 +6979,73 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="63ipUBXx1Do" role="3cqZAp">
+          <node concept="3SKdUq" id="63ipUBXx1Dq" role="3SKWNk">
+            <property role="3SKdUp" value="given cycle in TreeHighlighter (queue(myHighlightAllFeaturesUpdate), myHighlightAllFeaturesUpdate.run-&gt; queue(myHighlightAllFeaturesUpdate)), " />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1IDyV7MskPD" role="3cqZAp">
+          <node concept="3SKdUq" id="1IDyV7MskPE" role="3SKWNk">
+            <property role="3SKdUp" value="it's vital not to allow pass-through model of MergingUpdateQueue, otherwise we risk StackOverflowException, see MPS-29973" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="63ipUBXwZUG" role="3cqZAp">
+          <node concept="2OqwBi" id="63ipUBXx0mr" role="3clFbG">
+            <node concept="37vLTw" id="63ipUBXwZUE" role="2Oq$k0">
+              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+            </node>
+            <node concept="liA8E" id="63ipUBXx0GX" role="2OqNvi">
+              <ref role="37wK5l" to="t335:~MergingUpdateQueue.setPassThrough(boolean)" resolve="setPassThrough" />
+              <node concept="3clFbT" id="63ipUBXx0JQ" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1IDyV7MBmg2" role="3cqZAp">
+          <node concept="3SKdUq" id="1IDyV7MBmg4" role="3SKWNk">
+            <property role="3SKdUp" value="MUQ used to be per-TH, which lead to memory leaks as not all MPSTree instances get properly disposed (e.g usage views from AnalyzeDependenciesViewTool)" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1IDyV7MBt1P" role="3cqZAp">
+          <node concept="3SKdUq" id="1IDyV7MBt1R" role="3SKWNk">
+            <property role="3SKdUp" value="leaving MUQ instances not disposed (didn't show up unless MUQ ceased to be EDT, see Alarm.create logic)" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1IDyV7MsnSQ" role="jymVt" />
+    <node concept="2tJIrI" id="1IDyV7Mso83" role="jymVt" />
+    <node concept="3clFb_" id="1IDyV7Msonw" role="jymVt">
+      <property role="TrG5h" value="projectClosed" />
+      <node concept="3Tm1VV" id="1IDyV7Msony" role="1B3o_S" />
+      <node concept="3cqZAl" id="1IDyV7Mson$" role="3clF45" />
+      <node concept="3clFbS" id="1IDyV7Mson_" role="3clF47">
+        <node concept="3clFbF" id="7JS4_fB$FtV" role="3cqZAp">
+          <node concept="2OqwBi" id="7JS4_fB$G65" role="3clFbG">
+            <node concept="37vLTw" id="7JS4_fB$FtT" role="2Oq$k0">
+              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+            </node>
+            <node concept="liA8E" id="7JS4_fB$M_8" role="2OqNvi">
+              <ref role="37wK5l" to="t335:~MergingUpdateQueue.cancelAllUpdates()" resolve="cancelAllUpdates" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="5iENRSfJot8" role="3cqZAp">
+          <node concept="3SKdUq" id="5iENRSfJota" role="3SKWNk">
+            <property role="3SKdUp" value="for non-edt queue, queue itself is parent disposable for alarm pool, and have to be disposed properly to avoid mem leaks." />
+          </node>
+        </node>
+        <node concept="3clFbF" id="5iENRSfIVI9" role="3cqZAp">
+          <node concept="2YIFZM" id="5iENRSfJ4Zd" role="3clFbG">
+            <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
+            <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+            <node concept="37vLTw" id="5iENRSfJ9dv" role="37wK5m">
+              <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1IDyV7MsonA" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="63ipUBXvLnN" role="jymVt" />
@@ -6916,6 +7095,9 @@
                     <node concept="3clFbT" id="lHz8tP4Pxb" role="37wK5m">
                       <property role="3clFbU" value="true" />
                     </node>
+                    <node concept="37vLTw" id="1IDyV7Msmj5" role="37wK5m">
+                      <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+                    </node>
                   </node>
                 </node>
                 <node concept="37vLTw" id="3GM_nagTrKp" role="37vLTJ">
@@ -6954,6 +7136,9 @@
                         </node>
                       </node>
                       <node concept="3clFbT" id="fQV$h4hdtu" role="37wK5m" />
+                      <node concept="37vLTw" id="1IDyV7MsmW9" role="37wK5m">
+                        <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+                      </node>
                     </node>
                   </node>
                   <node concept="37vLTw" id="3GM_nagTrWL" role="37vLTJ">
@@ -6993,6 +7178,9 @@
                         </node>
                       </node>
                       <node concept="3clFbT" id="5$KqLV$yTTf" role="37wK5m" />
+                      <node concept="37vLTw" id="1IDyV7Msnxz" role="37wK5m">
+                        <ref role="3cqZAo" node="1_HLebvhvzm" resolve="myQueue" />
+                      </node>
                     </node>
                   </node>
                   <node concept="37vLTw" id="3GM_nagTzMx" role="37vLTJ">

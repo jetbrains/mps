@@ -4,8 +4,10 @@ package jetbrains.mps.vcs.changesmanager.tree;
 
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
+import com.intellij.util.ui.update.MergingUpdateQueue;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree;
@@ -14,20 +16,34 @@ import jetbrains.mps.ide.hierarchy.AbstractHierarchyTree;
 public class TreeHighlighterFactory implements ProjectComponent {
   private final CurrentDifferenceRegistry myRegistry;
   private final FeatureForestMapSupport myFeatureForestMapSupport;
+  private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null, null, null, false);
 
   public TreeHighlighterFactory(@NotNull Project project, @NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport) {
     myRegistry = registry;
     myFeatureForestMapSupport = featureForestMapSupport;
+    // given cycle in TreeHighlighter (queue(myHighlightAllFeaturesUpdate), myHighlightAllFeaturesUpdate.run-> queue(myHighlightAllFeaturesUpdate)),  
+    // it's vital not to allow pass-through model of MergingUpdateQueue, otherwise we risk StackOverflowException, see MPS-29973 
+    myQueue.setPassThrough(false);
+    // MUQ used to be per-TH, which lead to memory leaks as not all MPSTree instances get properly disposed (e.g usage views from AnalyzeDependenciesViewTool) 
+    // leaving MUQ instances not disposed (didn't show up unless MUQ ceased to be EDT, see Alarm.create logic) 
+  }
+
+
+  @Override
+  public void projectClosed() {
+    myQueue.cancelAllUpdates();
+    // for non-edt queue, queue itself is parent disposable for alarm pool, and have to be disposed properly to avoid mem leaks. 
+    Disposer.dispose(myQueue);
   }
 
   public void highlightTreeIfNeeded(MPSTree tree) {
     TreeHighlighter highlighter = null;
     if (tree instanceof ProjectTree) {
-      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new ProjectTreeFeatureExtractor(), true);
+      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new ProjectTreeFeatureExtractor(), true, myQueue);
     } else if (tree instanceof UsagesTree) {
-      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new UsagesTreeFeatureExtractor(), false);
+      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new UsagesTreeFeatureExtractor(), false, myQueue);
     } else if (tree instanceof AbstractHierarchyTree) {
-      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new HierarchyFeatureExtractor(), false);
+      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new HierarchyFeatureExtractor(), false, myQueue);
     }
     if (highlighter != null) {
       highlighter.init();

@@ -71,10 +71,10 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private final TreeHighlighter.MyFileStatusListener myFileStatusListener = new TreeHighlighter.MyFileStatusListener();
   private TreeHighlighter.MyModelDisposeListener myGlobalModelListener;
   private final TreeHighlighter.FeaturesHolder myFeaturesHolder = new TreeHighlighter.FeaturesHolder();
-  private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null, null, null, false);
-  private final Update rehighlightAllFeaturesUpdate = new TreeHighlighter.HighlightAll();
+  private final MergingUpdateQueue myQueue;
+  private final Update myHighlightAllFeaturesUpdate = new TreeHighlighter.HighlightAll();
 
-  public TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal) {
+  public TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal, @NotNull MergingUpdateQueue queue) {
     myRegistry = registry;
     myMap = featureForestMapSupport.getMap();
     myTree = tree;
@@ -82,9 +82,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     if (removeNodesOnModelDisposal) {
       myGlobalModelListener = new TreeHighlighter.MyModelDisposeListener();
     }
-    // given cycle queue(Update), update.run-> queue(Update), it's vital not to allow pass-through model of MergingUpdateQueue, 
-    // otherwise we risk StackOverflowException, see MPS-29973 
-    myQueue.setPassThrough(false);
+    myQueue = queue;
   }
 
   public synchronized void init() {
@@ -102,7 +100,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
     getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
-        // FIXME likely IEDT is needed to walk myTree safely, but model read is questionable. 
+        // FIXME likely EDT is needed to walk myTree safely, but model read is questionable. 
         // if myFeatureExtractor needs model read, perhaps, it shall grab one itself? OTOH, too many small model reads may get poor. 
         MPSTreeNode rootNode = myTree.getRootNode();
         if (rootNode != null) {
@@ -125,8 +123,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     FileStatusManager.getInstance(myRegistry.getProject()).removeFileStatusListener(myFileStatusListener);
     myTree.removeTreeNodeListener(myTreeNodeListener);
     myMap.removeListener(myFeatureListener);
-    myQueue.cancelAllUpdates();
-    myQueue.dispose();
   }
 
   private SRepository getProjectRepository() {
@@ -283,16 +279,18 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     private final Feature myFeature;
 
     /*package*/ HighlightNodeAndFeature(MPSTreeNode node, Feature feature) {
-      super(new Object[]{"Highlight", node, feature}, false, HIGHLIGHT_PRIO);
+      super(new Object[]{TreeHighlighter.this, "Highlight", node, feature}, false, HIGHLIGHT_PRIO);
       // perhaps, shall use hashCode/identityHashCode of node/feature instead of object references in super() call, to avoid scenarios when MPSTreeNode or Feature start implementing hashCode/equals 
       // thus changing my assumption here that all I care about is identity matching (sufficient for the purposes of this update). However, as long as I keep references to the node anyway 
+      // Important: use enclosing instance in the equality key as MUQ instance is shared between all TreeHighlighters, have to prevent update queued from one 
+      //            TH to replace (due to equals) some other update from another TH. 
       myTreeNode = node;
       myFeature = feature;
     }
 
     @Override
     public boolean isExpired() {
-      if (myTreeNode.getTree() == null) {
+      if (!(myInitialized) || myTreeNode.getTree() == null) {
         return true;
       }
       final boolean featureIsStillThere;
@@ -307,6 +305,11 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     public void run() {
       rehighlightNode(myTreeNode, myFeature);
     }
+
+    /*package*/ boolean isSameHighlighter(TreeHighlighter th) {
+      // Few TreeHighlighter share same MergingUpdateQueue, need to make sure update of one of them doesn't 'eat' updates from others 
+      return TreeHighlighter.this == th;
+    }
   }
 
   /**
@@ -316,7 +319,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     private final MPSTreeNode myTreeNode;
 
     /*package*/ UpdatePresentation(MPSTreeNode treeNode) {
-      super(new Object[]{"presentation", treeNode}, false, REFRESH_UI_PRIO);
+      super(new Object[]{TreeHighlighter.this, "presentation", treeNode}, false, REFRESH_UI_PRIO);
       myTreeNode = treeNode;
     }
 
@@ -334,6 +337,11 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         }
       });
     }
+
+    /*package*/ boolean isSameHighlighter(TreeHighlighter th) {
+      // see HighlightNodeAndFeature#isSameHighlighter, above, for details 
+      return TreeHighlighter.this == th;
+    }
   }
 
   private class HighlightAll extends Update {
@@ -346,11 +354,16 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       return myRegistry.getProject().isDisposed();
     }
 
-
     @Override
     public boolean canEat(Update update) {
       // this one would re-highlight all, why bother with a single request 
-      return update instanceof TreeHighlighter.HighlightNodeAndFeature || update instanceof TreeHighlighter.UpdatePresentation;
+      if (update instanceof TreeHighlighter.HighlightNodeAndFeature) {
+        return ((TreeHighlighter.HighlightNodeAndFeature) update).isSameHighlighter(TreeHighlighter.this);
+      }
+      if (update instanceof TreeHighlighter.UpdatePresentation) {
+        ((TreeHighlighter.UpdatePresentation) update).isSameHighlighter(TreeHighlighter.this);
+      }
+      return false;
     }
 
     @Override
@@ -368,7 +381,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
   private void rehighlightAllFeaturesLater() {
     assert !(myQueue.isPassThrough()) : "You are about to face StackOverflowException";
-    myQueue.queue(rehighlightAllFeaturesUpdate);
+    myQueue.queue(myHighlightAllFeaturesUpdate);
   }
 
   private void rehighlightAllFeaturesNow() {
