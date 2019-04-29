@@ -12,16 +12,15 @@ import jetbrains.mps.ide.ui.tree.TreeMessage;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
-import jetbrains.mps.vcs.changesmanager.SimpleCommandQueue;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import com.intellij.util.ui.update.MergingUpdateQueue;
+import com.intellij.util.ui.update.Update;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.changesmanager.tree.features.Feature;
 import org.apache.log4j.Level;
@@ -35,7 +34,6 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import com.intellij.util.ui.update.Update;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
@@ -64,7 +62,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private static final Logger LOG = LogManager.getLogger(TreeHighlighter.class);
   private final Map<FileStatus, TreeMessage> myTreeMessages = MapSequence.fromMap(new HashMap<FileStatus, TreeMessage>());
   private final CurrentDifferenceRegistry myRegistry;
-  private final SimpleCommandQueue myCommandQueue;
   private final FeatureForestMap<ModelChange> myMap;
   private final MPSTree myTree;
   private final TreeNodeFeatureExtractor myFeatureExtractor;
@@ -74,11 +71,11 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private final TreeHighlighter.MyFileStatusListener myFileStatusListener = new TreeHighlighter.MyFileStatusListener();
   private TreeHighlighter.MyModelDisposeListener myGlobalModelListener;
   private final TreeHighlighter.FeaturesHolder myFeaturesHolder = new TreeHighlighter.FeaturesHolder();
-  private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null);
+  private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null, null, null, false);
+  private final Update rehighlightAllFeaturesUpdate = new TreeHighlighter.HighlightAll();
 
   public TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal) {
     myRegistry = registry;
-    myCommandQueue = registry.getCommandQueue();
     myMap = featureForestMapSupport.getMap();
     myTree = tree;
     myFeatureExtractor = featureExtractor;
@@ -128,11 +125,12 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     FileStatusManager.getInstance(myRegistry.getProject()).removeFileStatusListener(myFileStatusListener);
     myTree.removeTreeNodeListener(myTreeNodeListener);
     myMap.removeListener(myFeatureListener);
+    myQueue.cancelAllUpdates();
     myQueue.dispose();
   }
 
   private SRepository getProjectRepository() {
-    return ProjectHelper.getProjectRepository(myRegistry.getProject());
+    return myRegistry.getMPSProject().getRepository();
   }
 
   private void recordNodeRecursively(@NotNull MPSTreeNode node) {
@@ -152,24 +150,13 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     return feature;
   }
 
-  private void registerNode(@NotNull final MPSTreeNode node) {
-    final Feature feature = recordFeature(node);
+  private void registerNode(@NotNull MPSTreeNode node) {
+    Feature feature = recordFeature(node);
     if (feature != null) {
       // FIXME why do we need some command queue to schedule rehighlightNode() call, while there's also myQueue for 'all feature' re-highlight? 
       // FIXME this is the only place we care to use myCommandQueue! 
       // TODO replace with Update(node) into myQueue, and change rehighlightAllFeaturesUpdate.canEat to consume single node update 
-      myCommandQueue.runTask(new Runnable() {
-        public void run() {
-          final boolean featureIsStillThere;
-          synchronized (myFeaturesHolder) {
-            // check if node isn't already removed from tree 
-            featureIsStillThere = myFeaturesHolder.getNodesByFeature(feature).contains(node);
-          }
-          if (featureIsStillThere) {
-            rehighlightNode(node, feature);
-          }
-        }
-      });
+      myQueue.queue(new TreeHighlighter.HighlightNodeAndFeature(node, feature));
     }
   }
 
@@ -191,12 +178,13 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
   private void unhighlightNode(@NotNull MPSTreeNode node) {
     if (!(node.removeTreeMessages(this).isEmpty())) {
-      updatePresentation(node);
+      myQueue.queue(new TreeHighlighter.UpdatePresentation(node));
     }
   }
 
   /**
-   * FIXME DOES THIS METHOD NEED EDT OR NOT?
+   * Given that this method is invoked through rehighlightFeatureAndDescendants which is part of few listeners that are not necessarily 
+   * get dispatched in EDT (e.g. FeatureForestMapListener comes from registry's command thread), I assume this method doesn't need EDT.
    * 
    * This method runs with model read lock, and shall own lock on myFeatureHolder as it might lead 
    * to a deadlock (MPSTree rebuilds itself in a model read, thus treeNodeAdded and registerNode keep model read + myFeatureHolder, and if this method
@@ -237,17 +225,8 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       node.addTreeMessage(message);
     }
     if (message != null || hadMessages) {
-      updatePresentation(node);
+      myQueue.queue(new TreeHighlighter.UpdatePresentation(node));
     }
-  }
-
-  private void updatePresentation(final MPSTreeNode treeNode) {
-    // schedules node update to run in correct thread 
-    getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        treeNode.renewPresentation();
-      }
-    });
   }
 
   private void rehighlightFeature(@NotNull Feature feature) {
@@ -293,14 +272,90 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     }
   }
 
-  private final Update rehighlightAllFeaturesUpdate = new Update(this) {
+  /**
+   * let highlight all/single node requests run at higher priority than UI refreshes
+   */
+  private static final int HIGHLIGHT_PRIO = Update.LOW_PRIORITY - 100;
+  private static final int REFRESH_UI_PRIO = Update.LOW_PRIORITY;
+
+  private class HighlightNodeAndFeature extends Update {
+    private final MPSTreeNode myTreeNode;
+    private final Feature myFeature;
+
+    /*package*/ HighlightNodeAndFeature(MPSTreeNode node, Feature feature) {
+      super(new Object[]{"Highlight", node, feature}, false, HIGHLIGHT_PRIO);
+      // perhaps, shall use hashCode/identityHashCode of node/feature instead of object references in super() call, to avoid scenarios when MPSTreeNode or Feature start implementing hashCode/equals 
+      // thus changing my assumption here that all I care about is identity matching (sufficient for the purposes of this update). However, as long as I keep references to the node anyway 
+      myTreeNode = node;
+      myFeature = feature;
+    }
+
+    @Override
+    public boolean isExpired() {
+      if (myTreeNode.getTree() == null) {
+        return true;
+      }
+      final boolean featureIsStillThere;
+      synchronized (myFeaturesHolder) {
+        // check if node isn't already removed from tree 
+        featureIsStillThere = myFeaturesHolder.getNodesByFeature(myFeature).contains(myTreeNode);
+      }
+      return !(featureIsStillThere);
+    }
+
     @Override
     public void run() {
-      if (myRegistry.getProject().isDisposed()) {
-        return;
-      }
+      rehighlightNode(myTreeNode, myFeature);
+    }
+  }
 
-      MPSProject mpsProject = ProjectHelper.fromIdeaProject(myRegistry.getProject());
+  /**
+   * Refresh presentation of a single node. Matches any other similar request to refresh only once per node, and can be consumed by {@link jetbrains.mps.vcs.changesmanager.tree.TreeHighlighter.HighlightAll }
+   */
+  private class UpdatePresentation extends Update {
+    private final MPSTreeNode myTreeNode;
+
+    /*package*/ UpdatePresentation(MPSTreeNode treeNode) {
+      super(new Object[]{"presentation", treeNode}, false, REFRESH_UI_PRIO);
+      myTreeNode = treeNode;
+    }
+
+    @Override
+    public boolean isExpired() {
+      return myTreeNode.getTree() == null;
+    }
+
+    @Override
+    public void run() {
+      // schedules node update to run in correct thread 
+      getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
+        public void run() {
+          myTreeNode.renewPresentation();
+        }
+      });
+    }
+  }
+
+  private class HighlightAll extends Update {
+    /*package*/ HighlightAll() {
+      super(TreeHighlighter.this);
+    }
+
+    @Override
+    public boolean isExpired() {
+      return myRegistry.getProject().isDisposed();
+    }
+
+
+    @Override
+    public boolean canEat(Update update) {
+      // this one would re-highlight all, why bother with a single request 
+      return update instanceof TreeHighlighter.HighlightNodeAndFeature || update instanceof TreeHighlighter.UpdatePresentation;
+    }
+
+    @Override
+    public void run() {
+      MPSProject mpsProject = myRegistry.getMPSProject();
       if (mpsProject.getComponent(MakeServiceComponent.class).isSessionActive()) {
         // re-queue, it will be executed in next batch after delay 
         rehighlightAllFeaturesLater();
@@ -308,7 +363,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         rehighlightAllFeaturesNow();
       }
     }
-  };
+  }
+
+
   private void rehighlightAllFeaturesLater() {
     assert !(myQueue.isPassThrough()) : "You are about to face StackOverflowException";
     myQueue.queue(rehighlightAllFeaturesUpdate);
@@ -341,7 +398,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         if (modelChange instanceof AddRootChange) {
           Project project = myRegistry.getProject();
           FileStatus modelStatus = getModelFileStatus(modelDescriptor, project);
-          if (BaseVersionUtil.isAddedFileStatus(modelStatus)) {
+          if (modelStatus != null && BaseVersionUtil.isAddedFileStatus(modelStatus)) {
             return getMessage(modelStatus);
           } else if (ConflictsUtil.isModelOrModuleConflicting(modelDescriptor, project)) {
             return getMessage(FileStatus.MERGED_WITH_CONFLICTS);
