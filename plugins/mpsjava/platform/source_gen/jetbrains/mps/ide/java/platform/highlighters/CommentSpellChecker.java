@@ -24,8 +24,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import com.intellij.ui.JBColor;
-import java.awt.Graphics;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import java.awt.Graphics;
+import jetbrains.mps.nodeEditor.cells.TextLine;
+import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
+import java.awt.FontMetrics;
 import jetbrains.mps.ide.editor.checkers.ModelProblemMessage;
 
 public class CommentSpellChecker extends BaseEditorChecker {
@@ -36,7 +40,11 @@ public class CommentSpellChecker extends BaseEditorChecker {
   private boolean myUpdateNeeded;
   private Boolean myEnabled;
   private final Project myProject;
-  private final Pattern myWordSplit = Pattern.compile("[\\s\\p{Punct}]");
+
+  /**
+   * \s for whitespace, rest is almost identical to \{Punct} class, except for single/double quotation marks
+   */
+  private final Pattern myWordSplit = Pattern.compile("[\\s!#$%&()*+,-\\./:;<=>?@\\^\\[\\]\\\\`_{|}~]");
 
 
   public CommentSpellChecker(Project project) {
@@ -114,8 +122,54 @@ public class CommentSpellChecker extends BaseEditorChecker {
 
     ArrayList<String> mistakes = null;
     for (String w : myWordSplit.split(text, 0)) {
-      if (w.isEmpty() || !(spcm.hasProblem(w))) {
+      if (w.length() < 2 || !(spcm.hasProblem(w))) {
         continue;
+      }
+      int s = 0;
+      int e = w.length() - 1;
+      while (s < e) {
+        // main purpose is to strip off quotation marks around words, but do not touch apostrophes (e.g. "isn't") 
+        final char c1 = w.charAt(s);
+        final char c2 = w.charAt(e);
+        final int t1 = Character.getType(c1);
+        final int t2 = Character.getType(c2);
+        if (t1 == Character.OTHER_PUNCTUATION && c1 == c2) {
+          s++;
+          e--;
+          continue;
+        }
+        if (t1 == Character.INITIAL_QUOTE_PUNCTUATION && t2 == Character.FINAL_QUOTE_PUNCTUATION) {
+          // e.g. « and » 
+          s++;
+          e--;
+          continue;
+        }
+        boolean found = false;
+        if (t1 == Character.START_PUNCTUATION) {
+          s++;
+          found = true;
+          // fallthrough 
+        }
+        if (t2 == Character.END_PUNCTUATION) {
+          e--;
+          found = true;
+          // fall through 
+        }
+        if (!(found)) {
+          break;
+        }
+      }
+      if (s >= e) {
+        // s==e is legitimate 1-letter case, but I don't care to check it. 
+        continue;
+      }
+      if (s > 0 || e < w.length() - 1) {
+        // we stripped off some heading/trailing chars 
+        w = w.substring(s, e + 1);
+        if (!(spcm.hasProblem(w))) {
+          continue;
+        }
+        // otherwise, fall through 
       }
       if (!(isRegularWord(w))) {
         // not sure whether 'word' check is faster than dictionary presence check, assume latter is faster, hence comes first. 
@@ -129,15 +183,7 @@ public class CommentSpellChecker extends BaseEditorChecker {
     if (mistakes == null) {
       return;
     }
-    String message;
-    if (mistakes.size() == 1) {
-      message = String.format("Typo in word '%s'", mistakes.get(0));
-    } else if (mistakes.size() == 2) {
-      message = String.format("Typo in words '%s' and '%s'", mistakes.get(0), mistakes.get(1));
-    } else {
-      message = String.format("Typo in words '%s', '%s',...", mistakes.get(0), mistakes.get(1));
-    }
-    messages.add(new CommentSpellChecker.M(message, n, this));
+    messages.add(new CommentSpellChecker.M(mistakes, n, this));
   }
 
   private boolean isRegularWord(String w) {
@@ -155,13 +201,54 @@ public class CommentSpellChecker extends BaseEditorChecker {
   }
 
   /*package*/ static class M extends DefaultEditorMessage {
-    /*package*/ M(String message, SNode n, EditorMessageOwner owner) {
-      super(n, JBColor.GRAY, message, owner);
+    private final String[] myWords;
+    /*package*/ M(List<String> mistakes, SNode n, EditorMessageOwner owner) {
+      super(n, JBColor.GRAY, msg(mistakes), owner);
+      myWords = new String[mistakes.size()];
+      mistakes.toArray(myWords);
+    }
+
+    private static String msg(List<String> mistakes) {
+      if (mistakes.size() == 1) {
+        return String.format("Typo in word '%s'", mistakes.get(0));
+      } else if (mistakes.size() == 2) {
+        return String.format("Typo in words '%s' and '%s'", mistakes.get(0), mistakes.get(1));
+      } else {
+        return String.format("Typo in words '%s', '%s',...", mistakes.get(0), mistakes.get(1));
+      }
+    }
+
+
+    @Override
+    public boolean acceptCell(EditorCell cell, EditorComponent editor) {
+      return cell instanceof EditorCell_Label && editor.isValid(cell);
     }
 
     @Override
     public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
-      ModelProblemMessage.drawWaveUnderCell(g, getColor(), cell);
+      if (cell instanceof EditorCell_Label) {
+        TextLine tl = ((EditorCell_Label) cell).getRenderedTextLine();
+        final int y = cell.getY() + cell.getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT;
+        FontMetrics fm = tl.getFontMetrics();
+        final String renderedText = tl.getText();
+        final char[] renderedChars = renderedText.toCharArray();
+        g.setColor(getColor());
+        int s = 0;
+        // highlight each word only once (just for simplicity now, perhaps, shall highlight all entries. just need to be careful about  
+        // word boundaries to avoid sub-matches) 
+        // assume mistakes are reported in the order they are encountered in the text (though not a big deal not to care about order) 
+        for (String w : myWords) {
+          int i = renderedText.indexOf(w, s);
+          if (i >= s) {
+            int x1 = fm.charsWidth(renderedChars, 0, i);
+            int x2 = fm.charsWidth(renderedChars, 0, i + w.length());
+            ColorAndGraphicsUtil.drawWave(g, cell.getX() + x1, cell.getX() + x2, y);
+            s = i + w.length();
+          }
+        }
+      } else {
+        ModelProblemMessage.drawWaveUnderCell(g, getColor(), cell);
+      }
     }
   }
 }
