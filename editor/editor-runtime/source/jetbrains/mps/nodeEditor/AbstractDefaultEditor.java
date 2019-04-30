@@ -389,7 +389,8 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
 
   public static AbstractDefaultEditor createEditor(SNode node) {
     SConcept concept = node.getConcept();
-    return concept.isValid() ? new DefaultEditor(concept) : new ReadOnlyDefaultEditor(concept);
+    boolean reflectiveEditorReadonly = EditorSettings.getInstance().isReflectiveEditorReadonly();
+    return concept.isValid() && !reflectiveEditorReadonly ? new DefaultEditor(concept) : new ReadOnlyDefaultEditor(concept);
   }
 
   protected SConcept getConcept() {

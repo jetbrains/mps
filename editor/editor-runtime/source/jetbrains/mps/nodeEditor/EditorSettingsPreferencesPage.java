@@ -26,6 +26,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Basic;
 import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
 
 import javax.swing.ButtonGroup;
@@ -67,6 +68,7 @@ class EditorSettingsPreferencesPage implements Disposable {
   private final JCheckBox myUseBraces;
   private final JCheckBox myUseTwoStepDeletion;
   private final JCheckBox myShowContextAssistant;
+  private final JCheckBox myReflectiveEditorReadonly;
   private final JSpinner myCaretBlinkPeriod;
   private final JBRadioButton myDontShow;
   private final JBRadioButton myTabPerAspect;
@@ -163,6 +165,9 @@ class EditorSettingsPreferencesPage implements Disposable {
     myUseTwoStepDeletion = new JCheckBox(EditorSettingsBundle.message("checkbox.use.two.step.deletion"));
     checkboxes.add(myUseTwoStepDeletion);
 
+    myReflectiveEditorReadonly = new JCheckBox(EditorSettingsBundle.message("checkbox.reflective.readonly"));
+    checkboxes.add(myReflectiveEditorReadonly);
+
     panel.add(checkboxes,
               new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
                                   GridConstraints.SIZEPOLICY_FIXED, null, null, null));
@@ -220,6 +225,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     mySettings.setUseBraces(myUseBraces.isSelected());
     mySettings.setShowContextAssistant(myShowContextAssistant.isSelected());
     mySettings.setUseTwoStepDeletion(myUseTwoStepDeletion.isSelected());
+    mySettings.setReflectiveEditorReadonly(myReflectiveEditorReadonly.isSelected());
 
     mySettings.setPowerSaveMode(myPowerSaveModeCheckBox.isSelected());
     mySettings.setAutoQuickFix(myAutoQuickFixCheckBox.isSelected());
@@ -256,6 +262,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     boolean sameAntialiasing = myAntialiasingCheckBox.isSelected() == mySettings.isUseAntialiasing();
     boolean sameUseBraces = myUseBraces.isSelected() == mySettings.useBraces();
     boolean sameTwoStepBackspace = myUseTwoStepDeletion.isSelected() == mySettings.isUseTwoStepDeletion();
+    boolean sameReflectiveEditorReadonly = myReflectiveEditorReadonly.isSelected() == mySettings.isReflectiveEditorReadonly();
     boolean samePowerSaveMode = myPowerSaveModeCheckBox.isSelected() == mySettings.isPowerSaveMode();
     boolean sameAutoQuickFix = myAutoQuickFixCheckBox.isSelected() == mySettings.isAutoQuickFix();
     boolean sameCompletionStyling = myCompletionStylingCheckBox.isSelected() == mySettings.isCompletionStyling();
@@ -266,7 +273,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     boolean sameTabs = myFirstSelection.isSelected();
     boolean sameUseContextAssistant = myShowContextAssistant.isSelected() == mySettings.isShowContextAssistant();
 
-    return !(sameTextWidth && sameIndentSize && sameAntialiasing && sameUseBraces && samePowerSaveMode && sameTwoStepBackspace
+    return !(sameTextWidth && sameIndentSize && sameAntialiasing && sameUseBraces && samePowerSaveMode && sameTwoStepBackspace && sameReflectiveEditorReadonly
              && sameAutoQuickFix && sameCompletionStyling && sameFontSize && sameFontFamily && sameLineSpacing && sameBlinkingRate && sameTabs && sameUseContextAssistant);
   }
 
@@ -288,6 +295,8 @@ class EditorSettingsPreferencesPage implements Disposable {
     myCompletionStylingCheckBox.setSelected(mySettings.isCompletionStyling());
 
     myShowContextAssistant.setSelected(mySettings.isShowContextAssistant());
+
+    myReflectiveEditorReadonly.setSelected(mySettings.isReflectiveEditorReadonly());
 
     myFontSizesComboBox.setSelectedItem(Integer.toString(mySettings.getSpecifiedFontSize()));
 
