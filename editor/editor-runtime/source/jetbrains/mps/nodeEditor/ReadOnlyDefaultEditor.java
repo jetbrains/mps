@@ -20,7 +20,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.EqualUtil;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +34,34 @@ import org.jetbrains.mps.openapi.model.SReference;
 public class ReadOnlyDefaultEditor extends AbstractDefaultEditor {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(ReadOnlyDefaultEditor.class));
 
-  public ReadOnlyDefaultEditor(@NotNull SConcept concept) {
-    super(concept);
+  public ReadOnlyDefaultEditor(@NotNull SConcept concept, boolean reflectiveRoot) {
+    super(concept, reflectiveRoot);
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    for (SProperty sProperty : getNode().getProperties()) {
+      if (sProperty.getOwner().equals(SNodeUtil.concept_BaseConcept)) {
+        addProperty(sProperty);
+      }
+    }
+
+    for (SReference sReference : getNode().getReferences()) {
+      SReferenceLink link = sReference.getLink();
+      assert link != null : "Null meta-link from node: " + getNode() + ", role: " + sReference.getRole();
+      if (link.getOwner().equals(SNodeUtil.concept_BaseConcept)) {
+        addReferenceLink(link);
+      }
+    }
+
+    for (SNode child : getNode().getChildren()) {
+      SContainmentLink containmentLink = child.getContainmentLink();
+      assert containmentLink != null : "Null meta-containmentLink returned for the child of node: " + getNode() + ", child: " + child;
+      if (containmentLink.getOwner().equals(SNodeUtil.concept_BaseConcept)) {
+        addContainmentLink(containmentLink);
+      }
+    }
   }
 
   @Override
@@ -58,7 +84,6 @@ public class ReadOnlyDefaultEditor extends AbstractDefaultEditor {
   }
 
   @Override
-
   protected void addChildCell(SContainmentLink link) {
     for (SNode child : getNode().getChildren(link)) {
       EditorCell nodeCell = getUpdateSession().updateChildNodeCell(child);

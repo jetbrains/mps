@@ -37,8 +37,6 @@ import jetbrains.mps.util.EqualUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SDataType;
-import org.jetbrains.mps.openapi.language.SPrimitiveDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -64,6 +62,8 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
   private SConcept myConcept;
   private EditorContext myEditorContext;
 
+  private final boolean myReflectiveRoot;
+
   private Deque<EditorCell_Collection> collectionStack = new LinkedList<>();
   private int currentCollectionIdNumber = 0;
   private int currentConstantIdNumber = 0;
@@ -73,8 +73,9 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
   private Collection<SContainmentLink> myContainmentLinks = new LinkedHashSet<>();
 
 
-  public AbstractDefaultEditor(@NotNull SConcept concept) {
+  public AbstractDefaultEditor(@NotNull SConcept concept, boolean reflectiveRoot) {
     myConcept = concept;
+    myReflectiveRoot = reflectiveRoot;
   }
 
   @Override
@@ -182,7 +183,9 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     addLabel("");
     addNewLine();
     addChildren();
-    addAttributedEntity();
+    if (myReflectiveRoot) {
+      addAttributedEntity();
+    }
     popCollection();
     addLabel("}");
     addStyle(StyleAttributes.MATCHING_LABEL, "body-brace");
@@ -245,6 +248,7 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     addNewLine();
     EditorCell editorCell = myEditorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getAttributedCell(attributeKind, mySNode);
     addCell(editorCell);
+    setIndent(editorCell);
     addNewLine();
   }
 
@@ -387,10 +391,10 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     addStyle(cell, attribute, true);
   }
 
-  public static AbstractDefaultEditor createEditor(SNode node) {
+  public static AbstractDefaultEditor createEditor(SNode node, boolean reflectiveRoot) {
     SConcept concept = node.getConcept();
     boolean reflectiveEditorReadonly = EditorSettings.getInstance().isReflectiveEditorReadonly();
-    return concept.isValid() && !reflectiveEditorReadonly ? new DefaultEditor(concept) : new ReadOnlyDefaultEditor(concept);
+    return concept.isValid() && !reflectiveEditorReadonly ? new DefaultEditor(concept, reflectiveRoot) : new ReadOnlyDefaultEditor(concept, reflectiveRoot);
   }
 
   protected SConcept getConcept() {

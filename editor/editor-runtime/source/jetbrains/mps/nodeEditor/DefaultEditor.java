@@ -68,8 +68,8 @@ import org.jetbrains.mps.openapi.model.SReference;
  */
 public class DefaultEditor extends AbstractDefaultEditor {
 
-  public DefaultEditor(@NotNull SConcept concept) {
-    super(concept);
+  public DefaultEditor(@NotNull SConcept concept, boolean reflectiveRoot) {
+    super(concept, reflectiveRoot);
   }
 
   protected void init() {
