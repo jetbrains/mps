@@ -26,7 +26,9 @@ import java.util.List;
 public interface INodeRepresentator<N> extends IExternalizeable {
   String getPresentation(N node);
 
-  String getAdditionalInfo(N node);
+  default String getAdditionalInfo(N node){
+    return null;
+  }
 
   String getResultsText(TextOptions options);
 
