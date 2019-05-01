@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import jetbrains.mps.plugins.tool.BaseGeneratedTool;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.project.MPSProject;
@@ -46,6 +45,7 @@ public class TodoViewer extends JPanel {
   private UsagesView myUsagesView;
   private Project myProject;
   private TodoViewer_Tool myTool;
+
   public TodoViewer(final Project project, TodoViewer_Tool tool) {
     this.myTool = tool;
     myProject = project;
@@ -61,17 +61,21 @@ public class TodoViewer extends JPanel {
       }
     });
   }
+
   public void dispose() {
     if (myUsagesView != null) {
       myUsagesView.dispose();
     }
   }
-  private BaseGeneratedTool getTool() {
+
+  private TodoViewer_Tool getTool() {
     return this.myTool;
   }
+
   private Project getProject() {
     return myProject;
   }
+
   private void refresh() {
     ThreadUtils.assertEDT();
     removeAll();

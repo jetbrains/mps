@@ -17,15 +17,16 @@ package jetbrains.mps.plugins.tool;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import jetbrains.mps.ide.tools.BaseTool;
 
 import javax.swing.Icon;
 import javax.swing.KeyStroke;
 import java.util.Map;
 
-public abstract class GeneratedTool extends BaseGeneratedTool {
+public abstract class GeneratedTool extends BaseTool {
 
   protected GeneratedTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon, ToolWindowAnchor anchor, boolean canCloseContent) {
-    super(project, id, shortcutsByKeymap, icon, anchor, canCloseContent);
+    super(project, id, shortcutsByKeymap, icon, anchor, false, canCloseContent);
   }
 
   @Override

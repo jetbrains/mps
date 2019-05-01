@@ -341,8 +341,8 @@
       <node id="2247201315540920227" at="31,60,32,63" concept="6" />
       <node id="2247201315540920227" at="32,63,33,30" concept="6" />
       <node id="2247201315540920227" at="33,30,34,252" concept="3" />
-      <node id="2247201315540920227" at="34,252,35,472" concept="3" />
-      <node id="2247201315540920227" at="35,472,36,24" concept="7" />
+      <node id="2247201315540920227" at="34,252,35,460" concept="3" />
+      <node id="2247201315540920227" at="35,460,36,24" concept="7" />
       <node id="1208529625341" at="17,0,19,0" concept="2" trace="Typeof_ToolType_Instanceof_BaseTool_SubtypingRule#()V" />
       <node id="1208529625341" at="19,0,22,0" concept="5" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1208529625341" at="22,0,25,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
