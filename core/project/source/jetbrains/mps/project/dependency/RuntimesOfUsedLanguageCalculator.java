@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
@@ -101,8 +102,9 @@ class RuntimesOfUsedLanguageCalculator {
       }
       Collection<Dependency> dependencies = descriptor.getDependencies();
       for (Dependency dependency : dependencies) {
-        SModuleReference runtimeRef = dependency.getModuleRef();
-        result.add(runtimeRef);
+        if (SDependencyScope.RUNTIME.equals(dependency.getScope())) {
+          result.add(dependency.getModuleRef());
+        }
       }
       return result;
     }
