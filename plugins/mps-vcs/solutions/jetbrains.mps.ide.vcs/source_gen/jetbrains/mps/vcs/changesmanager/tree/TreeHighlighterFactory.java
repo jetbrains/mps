@@ -39,14 +39,21 @@ public class TreeHighlighterFactory implements ProjectComponent {
   public void highlightTreeIfNeeded(MPSTree tree) {
     TreeHighlighter highlighter = null;
     if (tree instanceof ProjectTree) {
-      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new ProjectTreeFeatureExtractor(), true, myQueue);
+      highlighter = instantiateHighlighter(tree, new ProjectTreeFeatureExtractor());
     } else if (tree instanceof UsagesTree) {
-      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new UsagesTreeFeatureExtractor(), false, myQueue);
+      highlighter = instantiateHighlighter(tree, new UsagesTreeFeatureExtractor());
     } else if (tree instanceof AbstractHierarchyTree) {
-      highlighter = new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, new HierarchyFeatureExtractor(), false, myQueue);
+      highlighter = instantiateHighlighter(tree, new HierarchyFeatureExtractor());
     }
     if (highlighter != null) {
       highlighter.init();
     }
+  }
+
+  /**
+   * Factory method to use values known to this class, with those relevant to external clients (mbeddr's own tree) being exposed
+   */
+  public TreeHighlighter instantiateHighlighter(MPSTree tree, TreeNodeFeatureExtractor featureExtractor) {
+    return new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, featureExtractor, false, myQueue);
   }
 }

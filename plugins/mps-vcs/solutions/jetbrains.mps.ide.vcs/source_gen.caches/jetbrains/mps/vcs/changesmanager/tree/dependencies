@@ -118,6 +118,7 @@
     <classNode dependClassName="com.intellij.util.containers.MultiMap" />
     <classNode dependClassName="com.intellij.util.ui.update.MergingUpdateQueue" />
     <classNode dependClassName="com.intellij.util.ui.update.Update" />
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
@@ -186,6 +187,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.HierarchyFeatureExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.ProjectTreeFeatureExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighter" />
+    <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.TreeNodeFeatureExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.UsagesTreeFeatureExtractor" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
