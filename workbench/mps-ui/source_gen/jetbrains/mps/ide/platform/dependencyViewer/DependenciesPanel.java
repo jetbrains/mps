@@ -4,16 +4,12 @@ package jetbrains.mps.ide.platform.dependencyViewer;
 
 import javax.swing.JPanel;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.ide.tools.BaseTool;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.tools.BaseTool;
 import java.awt.BorderLayout;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.openapi.ui.Splitter;
-import jetbrains.mps.ide.findusages.view.UsagesView;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
@@ -23,6 +19,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -38,10 +35,9 @@ public class DependenciesPanel extends JPanel {
   private TargetsView myTargetsView;
   private ReferencesView myReferencesView;
   private final Project myProject;
-  private final jetbrains.mps.project.Project myMPSProject;
-  private DependencyViewerScope myScope;
+  private final MPSProject myMPSProject;
+  private DependencyViewerScope myActiveScope;
   private DependencyViewerScope myInitialScope;
-  private Iterable<SNode> mySourceNodes = ListSequence.fromList(new ArrayList<SNode>());
   private BaseTool myTool;
   private ReferencesFinder myReferencesFinder = null;
   private boolean myIsMeta;
@@ -49,10 +45,9 @@ public class DependenciesPanel extends JPanel {
     super(new BorderLayout());
     myTool = tool;
     myIsMeta = false;
-    // FIXME pass project right into DependencyTree instead of setContent(scope, myMPSProject) later in resetContent(), below. 
-    myInitTree = new DependencyTree(this);
     myProject = project.getProject();
     myMPSProject = project;
+    myInitTree = new DependencyTree(this);
     myTargetsView = new TargetsView(myProject, this);
     myReferencesView = new ReferencesView(myProject, this);
     JBScrollPane leftPane = new JBScrollPane(myInitTree);
@@ -67,24 +62,40 @@ public class DependenciesPanel extends JPanel {
     add(splitter, BorderLayout.CENTER);
     add(createToolbar(), BorderLayout.NORTH);
   }
-  public void resetContent(DependencyViewerScope scope, boolean isMeta) {
+
+  public void resetContent(@Nullable DependencyViewerScope scope, boolean isMeta) {
+    // preserve TargetsView limitation, if any 
+    resetContent(scope, myTargetsView.limitedTo(), isMeta);
+  }
+
+  public void resetContent(@Nullable DependencyViewerScope scope, @Nullable DependencyViewerScope limitTargets, boolean isMeta) {
     myIsMeta = isMeta;
-    myReferencesFinder = new ReferencesFinder();
+    myReferencesFinder = new ReferencesFinder(scope);
     setVisible(true);
-    myInitTree.setContent(scope, myMPSProject);
+    myInitTree.setContent(scope);
     myInitialScope = scope;
     updateTargetsView(scope);
-    repaint();
+    revalidate();
   }
-  public UsagesView getReferencesViewComponent() {
-    return myReferencesView;
+
+  /*package*/ MPSProject getProject() {
+    return myMPSProject;
   }
-  public DependencyViewerScope getCurrentScope() {
-    return myScope;
+
+  /*package*/ DependencyViewerScope getInitialScope() {
+    return myInitialScope;
   }
+
+  /**
+   * corresponds to active selection in DependencyTree, same as {@link jetbrains.mps.ide.platform.dependencyViewer.DependenciesPanel#getInitialScope() } if none selected
+   */
+  /*package*/ DependencyViewerScope getCurrentScope() {
+    return myActiveScope;
+  }
+
   public void updateTargetsView(final DependencyViewerScope sourceScope) {
-    myScope = sourceScope;
-    final Wrappers._T<SearchResults<SNode>> results = new Wrappers._T<SearchResults<SNode>>(new SearchResults<SNode>());
+    myActiveScope = sourceScope;
+    final SearchResults[] results = new SearchResults[1];
     if (sourceScope != null) {
       ProgressManager.getInstance().run(new Task.Modal(myProject, "Analyzing dependencies", true) {
         @Override
@@ -92,14 +103,11 @@ public class DependenciesPanel extends JPanel {
           myMPSProject.getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
               ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
-              mySourceNodes = sourceScope.getNodes();
               try {
                 if (myIsMeta) {
-                  monitor.start("computing used languages", Sequence.fromIterable(mySourceNodes).count());
-                  results.value = myReferencesFinder.getUsedConcepts(mySourceNodes, sourceScope, monitor);
+                  results[0] = myReferencesFinder.getUsedConcepts(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), monitor);
                 } else {
-                  monitor.start("computing references' targets", Sequence.fromIterable(mySourceNodes).count());
-                  results.value = myReferencesFinder.findRefsFromScopeToOuter(mySourceNodes, sourceScope, monitor);
+                  results[0] = myReferencesFinder.findRefsFromScopeToOuter(myActiveScope, myTargetsView.limitedTo(), monitor);
                 }
               } finally {
                 monitor.done();
@@ -109,17 +117,18 @@ public class DependenciesPanel extends JPanel {
         }
       });
     }
-    myTargetsView.setContents(results.value);
+    myTargetsView.setContents((results[0] == null ? SearchResults.empty() : results[0]));
     updateReferencesView(null);
   }
+
   public void selectInTargetsView(SModule module) {
     myTargetsView.selectModule(module);
   }
-  public SearchResults updateReferencesView(final DependencyViewerScope targetScope) {
-    final SearchResults[] results = new SearchResults[1];
+
+  public void updateReferencesView(final DependencyViewerScope targetScope) {
     if (targetScope == null) {
       myReferencesView.setContents(new SearchResults());
-      return results[0];
+      return;
     }
     ProgressManager.getInstance().run(new Task.Modal(myProject, "Analyzing dependencies", true) {
       @Override
@@ -130,26 +139,24 @@ public class DependenciesPanel extends JPanel {
           public void run() {
             try {
               if (myIsMeta) {
-                monitor.start("filtering nodes", Sequence.fromIterable(mySourceNodes).count());
-                result.value = myReferencesFinder.getLanguageUsagesSearchResults(mySourceNodes, myScope, targetScope, monitor);
+                result.value = myReferencesFinder.getLanguageUsagesSearchResults(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), targetScope, monitor);
               } else {
-                monitor.start("filtering references", Sequence.fromIterable(mySourceNodes).count());
-                result.value = myReferencesFinder.getRefsBetweenScopes(mySourceNodes, myScope, targetScope, monitor);
+                result.value = myReferencesFinder.getRefsBetweenScopes(myActiveScope, targetScope, monitor);
               }
             } finally {
               monitor.done();
             }
           }
         });
-        results[0] = result.value;
         myReferencesView.setContents(result.value);
       }
     });
-    return results[0];
   }
+
   public void close() {
     myTool.close();
   }
+
   private JComponent createToolbar() {
     DefaultActionGroup group = new DefaultActionGroup();
     group.add(new DependenciesPanel.CloseAction());
@@ -157,9 +164,11 @@ public class DependenciesPanel extends JPanel {
     group.add(new DependenciesPanel.ToggleUsedLanguages());
     return ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true).getComponent();
   }
+
   public boolean isMeta() {
     return myIsMeta;
   }
+
   private class CloseAction extends AnAction {
     public CloseAction() {
       super("Close", "Close dependencies viewer", AllIcons.Actions.Cancel);
@@ -169,16 +178,18 @@ public class DependenciesPanel extends JPanel {
       myTool.setAvailable(false);
     }
   }
+
   private class RerunAction extends AnAction {
     public RerunAction() {
       super("Rerun", "Rerun dependencies viewer", AllIcons.Actions.Refresh);
     }
     @Override
     public void actionPerformed(AnActionEvent event) {
-      resetContent(myInitialScope, myIsMeta);
+      resetContent(getInitialScope(), isMeta());
     }
   }
-  public class ToggleUsedLanguages extends ToggleAction {
+
+  private class ToggleUsedLanguages extends ToggleAction {
     public ToggleUsedLanguages() {
       super("Show used languages", "Show used languages", MPSIcons.Nodes.Language);
     }
@@ -188,7 +199,7 @@ public class DependenciesPanel extends JPanel {
     }
     @Override
     public void setSelected(AnActionEvent event, boolean b) {
-      resetContent(myInitialScope, b);
+      resetContent(getInitialScope(), b);
     }
   }
 }

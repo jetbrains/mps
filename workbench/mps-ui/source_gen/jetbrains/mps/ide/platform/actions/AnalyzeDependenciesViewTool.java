@@ -9,6 +9,9 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.platform.dependencyViewer.DependencyViewerScope;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 
 public class AnalyzeDependenciesViewTool extends BaseProjectTool {
@@ -21,12 +24,27 @@ public class AnalyzeDependenciesViewTool extends BaseProjectTool {
 
   @Override
   protected void createTool() {
+    // FIXME construct UI lazily, on demand 
     myDependenciesPanel = new DependenciesPanel(this, ProjectHelper.fromIdeaProject(getProject()));
   }
 
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.ide.platform.actions.AnalyzeDependenciesViewTool#setContent(DependencyViewerScope, DependencyViewerScope, boolean) } instead (second scope == null, meta == false)
+   */
+  @Deprecated
+  @ToRemove(version = 2019.1)
   public void setContent(DependencyViewerScope scope) {
-    myDependenciesPanel.resetContent(scope, false);
-    myDependenciesPanel.revalidate();
+    mainPanelLazy().resetContent(scope, false);
+  }
+
+  public void setContent(@NotNull DependencyViewerScope from, @Nullable DependencyViewerScope limitTo, boolean meta) {
+    mainPanelLazy().resetContent(from, limitTo, meta);
+  }
+
+  private DependenciesPanel mainPanelLazy() {
+    // FIXME refactor along with getComponent() to construct UI on demand 
+    return myDependenciesPanel;
   }
 
   @Override

@@ -6,6 +6,7 @@ import jetbrains.mps.ide.findusages.view.UsagesView;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -32,27 +33,45 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
 public class TargetsView extends UsagesView {
-  private DependenciesPanel myParent;
+  private final DependenciesPanel myParent;
+  private DependencyViewerScope myLimitedTo;
+
   public TargetsView(Project project, DependenciesPanel parent) {
     super(project, new ViewOptions(true, true, false, false, false, false));
+    myParent = parent;
     UsagesTree usagesTree = getTreeComponent().getTree();
     usagesTree.addTreeSelectionListener(new TargetsView.MyTreeSelectionListener(usagesTree, parent));
-    myParent = parent;
     setCustomNodeRepresentator(new TargetsView.MyNodeRepresentator());
     usagesTree.setSelectionRow(0);
     usagesTree.setShowPopupMenu(false);
   }
+
+  /**
+   * Usually, all reference targets external to initial nodes are represented in this view. However, in certain scenarios
+   * we are interested in specific targets only, and therefore here's the scope to limit nodes of this view. 
+   * \Generally null, which means all external reference targets.
+   */
+  /*package*/ void limitTo(@Nullable DependencyViewerScope scope) {
+    myLimitedTo = scope;
+  }
+
+  @Nullable
+  /*package*/ DependencyViewerScope limitedTo() {
+    return myLimitedTo;
+  }
+
   public void selectModule(SModule module) {
     MPSTreeNode node = findModule(module.getModuleReference());
     if (node != null) {
       getTreeComponent().getTree().selectNode(node);
     }
   }
+
   private MPSTreeNode findModule(SModuleReference module) {
     UsagesTree usagesTree = getTreeComponent().getTree();
     Enumeration nodes = usagesTree.getRootNode().breadthFirstEnumeration();
     while (nodes.hasMoreElements()) {
-      MPSTreeNode treeNode = as_w7qo2b_a0a0a2a3(nodes.nextElement(), MPSTreeNode.class);
+      MPSTreeNode treeNode = as_w7qo2b_a0a0a2a11(nodes.nextElement(), MPSTreeNode.class);
       if (treeNode == null) {
         continue;
       }
@@ -68,6 +87,7 @@ public class TargetsView extends UsagesView {
     }
     return null;
   }
+
   public class MyTreeSelectionListener implements TreeSelectionListener {
     private UsagesTree myTree;
     private DependenciesPanel myDependenciesComponent;
@@ -122,7 +142,7 @@ public class TargetsView extends UsagesView {
     }
     @Override
     public String getResultsText(TextOptions options) {
-      String presentation = check_w7qo2b_a0a0f5(myParent.getCurrentScope());
+      String presentation = check_w7qo2b_a0a0f41(myParent.getCurrentScope());
       if ((presentation == null || presentation.length() == 0)) {
         presentation = "the left tree scope selection";
       }
@@ -141,13 +161,13 @@ public class TargetsView extends UsagesView {
     public void write(Element element, jetbrains.mps.project.Project project) throws CantSaveSomethingException {
     }
   }
-  private static String check_w7qo2b_a0a0f5(DependencyViewerScope checkedDotOperand) {
+  private static String check_w7qo2b_a0a0f41(DependencyViewerScope checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getPresentation();
     }
     return null;
   }
-  private static <T> T as_w7qo2b_a0a0a2a3(Object o, Class<T> type) {
+  private static <T> T as_w7qo2b_a0a0a2a11(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -75,7 +75,7 @@ public class ShowDependenciesInViewer_Action extends BaseAction {
         if (to == null) {
           return;
         }
-        DependenciesUtil.analyzeDependencies(top, to, ((Project) MapSequence.fromMap(_params).get("project")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), treeNode.isUsedLanguage(), true);
+        DependenciesUtil.openDependenciesTool(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), top, to, treeNode.isUsedLanguage());
       }
     });
   }

@@ -27,7 +27,8 @@ public class ReferencesView extends UsagesView {
     usagesTree.setSelectionRow(0);
     usagesTree.setShowPopupMenu(false);
   }
-  public class MyNodeRepresentator extends NodeRepresentatorBase<SNode> {
+
+  /*package*/ static class MyNodeRepresentator extends NodeRepresentatorBase<SNode> {
     public MyNodeRepresentator() {
     }
     @Override

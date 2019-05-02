@@ -2,7 +2,6 @@
 <dependenciesRoot>
   <dependency className="tests.testDepViewer.test.TestDepViewer_Test">
     <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="jetbrains.mps.MPSLaunch" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResults" />
@@ -15,7 +14,6 @@
     <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
     <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode dependClassName="org.junit.ClassRule" />
     <classNode dependClassName="org.junit.Rule" />

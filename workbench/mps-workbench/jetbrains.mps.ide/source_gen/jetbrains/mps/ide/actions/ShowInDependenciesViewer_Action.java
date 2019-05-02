@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.platform.actions.DependenciesUtil;
 
@@ -71,22 +73,27 @@ public class ShowInDependenciesViewer_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
+    final SRepository projectRepo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
+    projectRepo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         DependencyTreeNode treeNode = (DependencyTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("node"));
-        SModule from = check_nkoo1o_a0b0a0a0a0a0h(as_nkoo1o_a0a0b0a0a0a0a0h(treeNode.getParent(), DependencyTreeNode.class));
-        SModule to = treeNode.getModule();
-        DependenciesUtil.analyzeDependencies(from, to, ((Project) MapSequence.fromMap(_params).get("project")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), treeNode.getLink().linktype == DependencyUtil.LinkType.UsesLanguage, true);
+        SModuleReference fromRef = check_nkoo1o_a0b0a0a0a0b0h(as_nkoo1o_a0a0b0a0a0a0b0h(treeNode.getParent(), DependencyTreeNode.class));
+        SModule from = (fromRef == null ? null : fromRef.resolve(projectRepo));
+        if (from == null) {
+          return;
+        }
+        SModule to = treeNode.getModuleReference().resolve(projectRepo);
+        DependenciesUtil.openDependenciesTool(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), from, to, treeNode.getLink().linktype == DependencyUtil.LinkType.UsesLanguage);
       }
     });
   }
-  private static SModule check_nkoo1o_a0b0a0a0a0a0h(DependencyTreeNode checkedDotOperand) {
+  private static SModuleReference check_nkoo1o_a0b0a0a0a0b0h(DependencyTreeNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
+      return checkedDotOperand.getModuleReference();
     }
     return null;
   }
-  private static <T> T as_nkoo1o_a0a0b0a0a0a0a0h(Object o, Class<T> type) {
+  private static <T> T as_nkoo1o_a0a0b0a0a0a0b0h(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

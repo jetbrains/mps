@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -29,7 +29,7 @@ public class DependencyViewerScope {
   public DependencyViewerScope(SRepository contextRepo) {
     // This class assumes clients are responsible to obtain proper model read access 
     // (they pass/obtain model/node/module, so that they need access anyway). 
-    // Scope doesn't keep model/node instances to to hog/retain too much, and resolve them as needed 
+    // Scope doesn't keep model/node instances not to hog/retain too much, and resolve them as needed 
     // with the repository supplied 
     myModules = CollectionSequence.fromCollection(new LinkedHashSet<SModuleReference>());
     myModels = CollectionSequence.fromCollection(new LinkedHashSet<SModelReference>());
@@ -104,33 +104,21 @@ public class DependencyViewerScope {
       public SModel select(SModelReference it) {
         return it.resolve(myRepo);
       }
-    }).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return it != null;
-      }
-    }).toListSequence();
+    }).where(new NotNullWhereFilter<SModel>()).toListSequence();
   }
   public Collection<SModule> getModules() {
     return CollectionSequence.fromCollection(myModules).select(new ISelector<SModuleReference, SModule>() {
       public SModule select(SModuleReference it) {
         return it.resolve(myRepo);
       }
-    }).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it != null;
-      }
-    }).toListSequence();
+    }).where(new NotNullWhereFilter<SModule>()).toListSequence();
   }
   public Collection<SNode> getRoots() {
     return CollectionSequence.fromCollection(myRoots).select(new ISelector<SNodeReference, SNode>() {
       public SNode select(SNodeReference it) {
         return it.resolve(myRepo);
       }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != null;
-      }
-    }).select(new ISelector<SNode, SNode>() {
+    }).where(new NotNullWhereFilter<SNode>()).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return it.getContainingRoot();
       }
