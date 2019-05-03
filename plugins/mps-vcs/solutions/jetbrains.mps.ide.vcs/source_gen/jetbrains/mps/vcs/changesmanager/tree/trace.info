@@ -22,45 +22,36 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <root nodeRef="r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/285677603355151499">
     <file name="UsagesTreeFeatureExtractor.java">
-      <node id="285677603355202462" at="25,56,26,107" concept="9" />
-      <node id="285677603355205544" at="27,46,28,76" concept="9" />
-      <node id="285677603355205565" at="29,25,30,38" concept="10" />
-      <node id="285677603355205606" at="32,52,33,71" concept="9" />
-      <node id="285677603355205626" at="34,25,35,37" concept="10" />
-      <node id="285677603355202476" at="38,5,39,16" concept="10" />
-      <node id="285677603355202465" at="42,36,43,41" concept="10" />
-      <node id="285677603355202465" at="44,5,45,16" concept="10" />
-      <node id="285677603355151501" at="20,0,22,0" concept="2" trace="UsagesTreeFeatureExtractor#()V" />
-      <node id="285677603355205555" at="28,76,31,9" concept="7" />
-      <node id="285677603355205617" at="33,71,36,9" concept="7" />
-      <node id="285677603355202465" at="41,80,44,5" concept="7" />
-      <node id="285677603355202465" at="41,0,47,0" concept="14" trace="check_f7pfq7_a0a0a0b#(Ljetbrains/mps/ide/findusages/view/treeholder/tree/DataNode;)Ljetbrains/mps/ide/findusages/view/treeholder/tree/nodedatatypes/BaseNodeData;" />
-      <node id="285677603355202482" at="26,107,37,7" concept="7" />
-      <node id="285677603355153483" at="24,60,38,5" concept="7" />
-      <node id="285677603355153473" at="22,0,41,0" concept="8" trace="getFeature#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;)Ljetbrains/mps/vcs/changesmanager/tree/features/Feature;" />
-      <scope id="285677603355151504" at="20,39,20,39" />
-      <scope id="285677603355205556" at="29,25,30,38" />
-      <scope id="285677603355205618" at="34,25,35,37" />
-      <scope id="285677603355202465" at="42,36,43,41" />
-      <scope id="285677603355151501" at="20,0,22,0" />
-      <scope id="285677603355202483" at="27,46,31,9">
+      <node id="285677603355202462" at="24,56,25,84" concept="9" />
+      <node id="285677603355205544" at="26,46,27,76" concept="9" />
+      <node id="285677603355205565" at="28,25,29,38" concept="10" />
+      <node id="285677603355205606" at="31,52,32,71" concept="9" />
+      <node id="285677603355205626" at="33,25,34,37" concept="10" />
+      <node id="285677603355202476" at="37,5,38,16" concept="10" />
+      <node id="285677603355151501" at="19,0,21,0" concept="2" trace="UsagesTreeFeatureExtractor#()V" />
+      <node id="285677603355205555" at="27,76,30,9" concept="7" />
+      <node id="285677603355205617" at="32,71,35,9" concept="7" />
+      <node id="285677603355202482" at="25,84,36,7" concept="7" />
+      <node id="285677603355153483" at="23,60,37,5" concept="7" />
+      <node id="285677603355153473" at="21,0,40,0" concept="8" trace="getFeature#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;)Ljetbrains/mps/vcs/changesmanager/tree/features/Feature;" />
+      <scope id="285677603355151504" at="19,39,19,39" />
+      <scope id="285677603355205556" at="28,25,29,38" />
+      <scope id="285677603355205618" at="33,25,34,37" />
+      <scope id="285677603355151501" at="19,0,21,0" />
+      <scope id="285677603355202483" at="26,46,30,9">
         <var name="mr" id="285677603355205545" />
       </scope>
-      <scope id="285677603355205573" at="32,52,36,9">
+      <scope id="285677603355205573" at="31,52,35,9">
         <var name="np" id="285677603355205607" />
       </scope>
-      <scope id="285677603355202465" at="41,80,45,16" />
-      <scope id="285677603355202465" at="41,0,47,0">
-        <var name="checkedDotOperand" id="285677603355202465" />
-      </scope>
-      <scope id="285677603355153485" at="25,56,37,7">
+      <scope id="285677603355153485" at="24,56,36,7">
         <var name="nodeData" id="285677603355202463" />
       </scope>
-      <scope id="285677603355153480" at="24,60,39,16" />
-      <scope id="285677603355153473" at="22,0,41,0">
+      <scope id="285677603355153480" at="23,60,38,16" />
+      <scope id="285677603355153473" at="21,0,40,0">
         <var name="treeNode" id="285677603355153474" />
       </scope>
-      <unit id="285677603355151499" at="19,0,48,0" name="jetbrains.mps.vcs.changesmanager.tree.UsagesTreeFeatureExtractor" />
+      <unit id="285677603355151499" at="18,0,41,0" name="jetbrains.mps.vcs.changesmanager.tree.UsagesTreeFeatureExtractor" />
     </file>
   </root>
   <root nodeRef="r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/3751911615136891847">

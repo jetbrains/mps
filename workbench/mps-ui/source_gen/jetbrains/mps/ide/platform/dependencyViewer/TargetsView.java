@@ -9,14 +9,15 @@ import jetbrains.mps.ide.findusages.view.UsagesTree;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.Enumeration;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.DataNode;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.TreePath;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.DataNode;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
@@ -27,7 +28,6 @@ import java.util.Collections;
 import javax.swing.Icon;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.icons.IdeIcons;
-import org.jetbrains.annotations.NotNull;
 import org.jdom.Element;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
@@ -67,21 +67,18 @@ public class TargetsView extends UsagesView {
     }
   }
 
-  private MPSTreeNode findModule(SModuleReference module) {
+  private MPSTreeNode findModule(@NotNull SModuleReference module) {
     UsagesTree usagesTree = getTreeComponent().getTree();
     Enumeration nodes = usagesTree.getRootNode().breadthFirstEnumeration();
     while (nodes.hasMoreElements()) {
-      MPSTreeNode treeNode = as_w7qo2b_a0a0a2a11(nodes.nextElement(), MPSTreeNode.class);
+      UsagesTree.UsagesTreeNode treeNode = as_w7qo2b_a0a0a2a11(nodes.nextElement(), UsagesTree.UsagesTreeNode.class);
       if (treeNode == null) {
         continue;
       }
-      Object userObject = treeNode.getUserObject();
-      if (userObject instanceof DataNode) {
-        BaseNodeData data = ((DataNode) userObject).getData();
-        if (data instanceof ModuleNodeData) {
-          if (module.equals(((ModuleNodeData) data).getModuleReference())) {
-            return treeNode;
-          }
+      BaseNodeData data = treeNode.getUsageData();
+      if (data instanceof ModuleNodeData) {
+        if (module.equals(((ModuleNodeData) data).getModuleReference())) {
+          return treeNode;
         }
       }
     }

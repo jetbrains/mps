@@ -34,6 +34,7 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.util.ComputeRunnable;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
@@ -237,7 +238,7 @@ public class UsagesTree extends MPSTree {
     children.sort(new Comparator<UsagesTreeNode>() {
       private boolean isIgnored(UsagesTreeNode node) {
         // need to keep order of non-root nodes as they seen in an editor (see MPS-6113)
-        BaseNodeData data = node.getUserObject().getData();
+        BaseNodeData data = node.getUsageData();
         return (data instanceof NodeNodeData) && !((NodeNodeData) data).isRootNode();
       }
 
@@ -248,8 +249,8 @@ public class UsagesTree extends MPSTree {
         if (i1 || i2) {
           return i1 ? (i2 ? 0 : -1) : 1;
         }
-        String s1 = o1.getUserObject().getData().getPlainText();
-        String s2 = o2.getUserObject().getData().getPlainText();
+        String s1 = o1.getUsageData().getPlainText();
+        String s2 = o2.getUsageData().getPlainText();
         return s1.compareTo(s2);
       }
     });
@@ -285,7 +286,7 @@ public class UsagesTree extends MPSTree {
 
     root.setSubresultsCount(num);
 
-    if (root.getUserObject().getData().isResultNode()) {
+    if (root.getUsageData().isResultNode()) {
       num++;
     }
 
@@ -297,7 +298,7 @@ public class UsagesTree extends MPSTree {
 
     Map<Object, UsagesTreeNode> childMap = new LinkedHashMap<>();
     for (UsagesTreeNode child : children) {
-      Object additionID = child.getUserObject().getData().getIdObject();
+      Object additionID = child.getUsageData().getIdObject();
       if (additionID == null) {
         //we don't know what to do in the case of deleted nodes, so we won't merge them
         mergedChildren.add(child);
@@ -324,7 +325,8 @@ public class UsagesTree extends MPSTree {
   }
 
   private void setUIProperties(UsagesTreeNode root) {
-    BaseNodeData data = root.getUserObject().getData();
+    // FIXME why do we need to do it here, why not in UsageTreeNode rendering code?
+    BaseNodeData data = root.getUsageData();
 
     Icon icon = data.getIcon(() -> myProject.getRepository());
     if (data.isResultNode()) {
@@ -382,8 +384,7 @@ public class UsagesTree extends MPSTree {
   }
 
   /*package*/ void setCurrentNodesOnlyExclusion() {
-    // FIXME why new hashset?
-    myContents.setExcluded(new HashSet<>(Arrays.asList(myContents.getTreeRoot())), true);
+    myContents.setExcluded(Collections.singleton(myContents.getTreeRoot()), true);
     setCurrentNodesExclusion(false);
   }
 
@@ -432,7 +433,7 @@ public class UsagesTree extends MPSTree {
     // BaseNodeData would cease and the code shall be different (no instanceof + cast).
     if (treeNode instanceof UsagesTreeNode && treeNode.getChildCount() == 0 && treeNode.getUserObject() != null) {
       UsagesTreeNode usageNode = (UsagesTreeNode) treeNode;
-      final BaseNodeData data = usageNode.getUserObject().getData();
+      final BaseNodeData data = usageNode.getUsageData();
       return toNavigatable(data);
     }
     return null;
@@ -498,7 +499,7 @@ public class UsagesTree extends MPSTree {
     }
 
     private boolean isPathTail() {
-      return getUserObject() != null && getUserObject().getData().isPathTail();
+      return getUsageData() != null && getUsageData().isPathTail();
     }
 
     @Override
@@ -509,10 +510,15 @@ public class UsagesTree extends MPSTree {
     }
 
     /*package*/ void goByNodeLink(boolean inProjectIfPossible, boolean focus) {
-      BaseNodeData data = getUserObject().getData();
+      BaseNodeData data = getUsageData();
       if (data instanceof AbstractResultNodeData) {
         ((AbstractResultNodeData) data).navigate(myProject, inProjectIfPossible, focus);
       }
+    }
+
+    @Nullable
+    public BaseNodeData getUsageData() {
+      return super.getUserObject() instanceof DataNode ? ((DataNode) super.getUserObject()).getData() : null;
     }
 
     public int getSubresultsCount() {
@@ -523,7 +529,12 @@ public class UsagesTree extends MPSTree {
       mySubresultsCount = subresultsCount;
     }
 
+    /**
+     * @deprecated use {@link #getUsageData()} instead. No reason to expose our failure to build proper API and data structures (yes, DataNode hierarchy was a mistake)
+     */
     @Override
+    @Deprecated
+    @ToRemove(version = 2019.2)
     public DataNode getUserObject() {
       return (DataNode) super.getUserObject();
     }

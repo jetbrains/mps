@@ -14,7 +14,6 @@ import jetbrains.mps.vcs.changesmanager.tree.features.ModelFeature;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.vcs.changesmanager.tree.features.NodeFeature;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.DataNode;
 
 public class UsagesTreeFeatureExtractor implements TreeNodeFeatureExtractor {
   public UsagesTreeFeatureExtractor() {
@@ -23,7 +22,7 @@ public class UsagesTreeFeatureExtractor implements TreeNodeFeatureExtractor {
   @Override
   public Feature getFeature(@NotNull MPSTreeNode treeNode) {
     if (treeNode instanceof UsagesTree.UsagesTreeNode) {
-      BaseNodeData nodeData = check_f7pfq7_a0a0a0b(((UsagesTree.UsagesTreeNode) treeNode).getUserObject());
+      BaseNodeData nodeData = ((UsagesTree.UsagesTreeNode) treeNode).getUsageData();
       if (nodeData instanceof ModelNodeData) {
         SModelReference mr = ((ModelNodeData) nodeData).getModelReference();
         if (mr != null) {
@@ -35,12 +34,6 @@ public class UsagesTreeFeatureExtractor implements TreeNodeFeatureExtractor {
           return new NodeFeature(np);
         }
       }
-    }
-    return null;
-  }
-  private static BaseNodeData check_f7pfq7_a0a0a0b(DataNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getData();
     }
     return null;
   }

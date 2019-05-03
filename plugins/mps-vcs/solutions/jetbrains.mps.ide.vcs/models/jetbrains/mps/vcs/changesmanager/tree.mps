@@ -35,7 +35,6 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="xr52" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree.smodel(MPS.Platform/)" />
-    <import index="gkle" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view.treeholder.tree(MPS.Platform/)" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
     <import index="cx5i" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui.smodel(MPS.Workbench/)" />
     <import index="rgfa" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.tree(JDK/)" />
@@ -7468,24 +7467,19 @@
                 <node concept="3uibUv" id="fQV$h4hpew" role="1tU5fm">
                   <ref role="3uigEE" to="qoip:~BaseNodeData" resolve="BaseNodeData" />
                 </node>
-                <node concept="2EnYce" id="fQV$h4hpex" role="33vP2m">
-                  <node concept="2OqwBi" id="fQV$h4hpey" role="2Oq$k0">
-                    <node concept="1eOMI4" id="fQV$h4hpez" role="2Oq$k0">
-                      <node concept="10QFUN" id="fQV$h4hpe$" role="1eOMHV">
-                        <node concept="37vLTw" id="2BHiRxgm6xf" role="10QFUP">
-                          <ref role="3cqZAo" node="fQV$h4hdh2" resolve="treeNode" />
-                        </node>
-                        <node concept="3uibUv" id="fQV$h4hpeA" role="10QFUM">
-                          <ref role="3uigEE" to="ngmm:~UsagesTree$UsagesTreeNode" resolve="UsagesTree.UsagesTreeNode" />
-                        </node>
+                <node concept="2OqwBi" id="fQV$h4hpey" role="33vP2m">
+                  <node concept="1eOMI4" id="fQV$h4hpez" role="2Oq$k0">
+                    <node concept="10QFUN" id="fQV$h4hpe$" role="1eOMHV">
+                      <node concept="37vLTw" id="2BHiRxgm6xf" role="10QFUP">
+                        <ref role="3cqZAo" node="fQV$h4hdh2" resolve="treeNode" />
+                      </node>
+                      <node concept="3uibUv" id="fQV$h4hpeA" role="10QFUM">
+                        <ref role="3uigEE" to="ngmm:~UsagesTree$UsagesTreeNode" resolve="UsagesTree.UsagesTreeNode" />
                       </node>
                     </node>
-                    <node concept="liA8E" id="fQV$h4hpeB" role="2OqNvi">
-                      <ref role="37wK5l" to="ngmm:~UsagesTree$UsagesTreeNode.getUserObject()" resolve="getUserObject" />
-                    </node>
                   </node>
-                  <node concept="liA8E" id="fQV$h4hpeC" role="2OqNvi">
-                    <ref role="37wK5l" to="gkle:~DataNode.getData()" resolve="getData" />
+                  <node concept="liA8E" id="1fQI4Zg5DBA" role="2OqNvi">
+                    <ref role="37wK5l" to="ngmm:~UsagesTree$UsagesTreeNode.getUsageData()" resolve="getUsageData" />
                   </node>
                 </node>
               </node>
