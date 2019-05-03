@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,25 +19,15 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.IExternalizeable;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
 import jetbrains.mps.project.Project;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Stream;
 
 public class DataNode implements IExternalizeable {
@@ -67,32 +57,9 @@ public class DataNode implements IExternalizeable {
     return getNodeDataStream().anyMatch(dataClass::isInstance);
   }
 
-  //-------DATA QUERY--------
-
   // flatten elements associated with the node and its children, recursively.
   /*package*/ Stream<BaseNodeData> getNodeDataStream() {
     return Stream.concat(Stream.of(myData), myChildren.stream().flatMap(DataNode::getNodeDataStream));
-  }
-
-  private static Set<SModel> resolve(Stream<SModelReference> models, SRepository repo) {
-    return new HashSet<>(Arrays.asList(models.map(modelReference -> modelReference.resolve(repo)).filter(Objects::nonNull).toArray(SModel[]::new)));
-  }
-
-  public Set<SModel> getIncludedModels(SRepository repo) {
-    return resolve(getNodeDataStream().filter(nd -> nd instanceof ModelNodeData && !nd.isInvalid() && !nd.isExcluded()).map(
-        nd -> ((ModelNodeData) nd).getModelReference()), repo);
-  }
-
-  public Set<SModel> getAllModels(SRepository repo) {
-    return resolve(getNodeDataStream().filter(nd -> nd instanceof ModelNodeData).map(nd -> ((ModelNodeData) nd).getModelReference()), repo);
-  }
-
-  public List<SNodeReference> getIncludedResultNodes() {
-    return Arrays.asList(getNodeDataStream().filter(nd -> nd instanceof NodeNodeData && !nd.isInvalid() && !nd.isExcluded() && nd.isResultNode()).map(nd -> ((NodeNodeData) nd).getNodePointer()).toArray(SNodeReference[]::new));
-  }
-
-  public List<SNodeReference> getAllResultNodes() {
-    return Arrays.asList(getNodeDataStream().filter(nd -> nd instanceof NodeNodeData && nd.isResultNode()).map(nd -> ((NodeNodeData) nd).getNodePointer()).toArray(SNodeReference[]::new));
   }
 
   //-------CHILD MANIPULATION--------

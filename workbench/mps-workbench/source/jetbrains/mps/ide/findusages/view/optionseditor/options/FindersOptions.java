@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.findusages.view.optionseditor.options;
 
-import jetbrains.mps.ide.findusages.CantLoadSomethingException;
+import gnu.trove.THashSet;
 import jetbrains.mps.ide.findusages.FindersManager;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
@@ -43,7 +43,7 @@ public final class FindersOptions extends BaseOptions {
   }
 
   public FindersOptions(String... findersClassNames) {
-    myFindersClassNames = new ArrayList(Arrays.asList(findersClassNames));
+    myFindersClassNames.addAll(Arrays.asList(findersClassNames));
   }
 
   @Override
@@ -64,7 +64,11 @@ public final class FindersOptions extends BaseOptions {
   public FindersOptions cloneWithDefaultForNode(@NotNull SNode node) {
     FindersOptions rv = clone();
     Set<IInterfacedFinder> availableFinders = FindersManager.getInstance().getAvailableFinders(node);
-    availableFinders.stream().filter(f -> f.isUsedByDefault(node)).forEach(f -> rv.myFindersClassNames.add(f.getClass().getName()));
+    final Set<String> findersByDefault = new THashSet<>();
+    availableFinders.stream().filter(f -> f.isUsedByDefault(node)).map(f -> f.getClass().getName()).forEach(findersByDefault::add);
+    // remove duplicates, if any
+    findersByDefault.removeAll(rv.myFindersClassNames);
+    myFindersClassNames.addAll(findersByDefault);
     return rv;
   }
 

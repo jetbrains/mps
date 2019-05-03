@@ -49,6 +49,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class UsagesTree extends MPSTree {
   private DataTree myContents;
@@ -61,6 +64,7 @@ public class UsagesTree extends MPSTree {
   private int myIsAdjusting = 0;
   private boolean myAutoscroll = false;
   private Project myProject;
+  private UsagesTreeNode myResultsSubtree;
 
   public UsagesTree(Project project) {
     myProject = project;
@@ -179,6 +183,7 @@ public class UsagesTree extends MPSTree {
 
   @Override
   protected UsagesTreeNode rebuild() {
+    myResultsSubtree = null;
     UsagesTreeNode root = new UsagesTreeNode();
     if (myContents == null || myContents.getTreeRoot().getChildren().isEmpty()) {
       // FIXME refactor UsagesTree construction so that it doesn't try to show tree before any content supplied.
@@ -206,9 +211,17 @@ public class UsagesTree extends MPSTree {
       }
       root.add(buildTree(searchedNodesRoot, searchedNodesPathProvider));
     }
-    root.add(buildTree(myContents.getTreeRoot().getChildren().get(1), myResultPathProvider));
+    myResultsSubtree = buildTree(myContents.getTreeRoot().getChildren().get(1), myResultPathProvider);
+    root.add(myResultsSubtree);
 
     return root;
+  }
+
+  public <T extends BaseNodeData> Stream<T> streamResults(Class<T> nodeDataKind, Predicate<? super T> condition) {
+    if (myResultsSubtree == null) {
+      return Stream.empty();
+    }
+    return myResultsSubtree.getNodeDataStream().filter(nodeDataKind::isInstance).map(nodeDataKind::cast).filter(condition);
   }
 
   //this is not recursive
@@ -532,5 +545,12 @@ public class UsagesTree extends MPSTree {
     public DataNode getUserObject() {
       return (DataNode) super.getUserObject();
     }
+
+
+    // flatten elements associated with the node and its children, recursively.
+    /*package*/ Stream<BaseNodeData> getNodeDataStream() {
+      return Stream.concat(Stream.of(getUsageData()), getChildren().stream().flatMap(UsagesTreeNode::getNodeDataStream));
+    }
+
   }
 }

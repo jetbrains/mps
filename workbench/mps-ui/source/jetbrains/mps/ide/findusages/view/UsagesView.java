@@ -65,7 +65,9 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.resources.ModelsToResources;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.workbench.ActionPlace;
+import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -224,16 +226,28 @@ public class UsagesView implements IExternalizeable {
     return myTreeComponent.getIncludedModels();
   }
 
+  /**
+   * @deprecated use {@link #getIncludedModels()} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2019.2)
   public Set<SModel> getAllModels() {
-    return myTreeComponent.getAllModels();
+    Logger.getLogger(getClass()).error("This method is deprecated, use getIncludedModels() instead", new Throwable());
+    return getIncludedModels();
   }
 
   public List<SNodeReference> getIncludedResultNodes() {
     return myTreeComponent.getIncludedResultNodes();
   }
 
+  /**
+   * @deprecated use {@link #getIncludedResultNodes()} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2019.2)
   public List<SNodeReference> getAllResultNodes() {
-    return myTreeComponent.getAllResultNodes();
+    Logger.getLogger(getClass()).error("This method is deprecated, use getIncludedResultNodes() instead", new Throwable());
+    return getIncludedResultNodes();
   }
 
   @Nullable

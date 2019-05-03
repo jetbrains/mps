@@ -31,6 +31,9 @@ import jetbrains.mps.ide.findusages.view.icons.Icons;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTree;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.IChangeListener;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
@@ -50,7 +53,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 // could be package local, except for the fact it's exposed from UsagesView.getTreeComponent()
 public class UsagesTreeComponent extends JPanel implements IChangeListener {
@@ -171,19 +178,17 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
   }
 
   public Set<SModel> getIncludedModels() {
-    return myContents.getIncludedModels(myProject.getRepository());
-  }
-
-  public Set<SModel> getAllModels() {
-    return myContents.getAllModels(myProject.getRepository());
+    final Predicate<BaseNodeData> isExcluded = BaseNodeData::isExcluded;
+    final Predicate<BaseNodeData> validAndIncluded = isExcluded.negate().and(BaseNodeData::isInvalid).negate();
+    final Stream<ModelNodeData> models = myTree.streamResults(ModelNodeData.class, validAndIncluded);
+    return models.map(nd -> nd.getModelReference().resolve(myProject.getRepository())).filter(Objects::nonNull).collect(Collectors.toSet());
   }
 
   public List<SNodeReference> getIncludedResultNodes() {
-    return myContents.getIncludedResultNodes();
-  }
-
-  public List<SNodeReference> getAllResultNodes() {
-    return myContents.getAllResultNodes();
+    final Predicate<BaseNodeData> isExcluded = BaseNodeData::isExcluded;
+    final Predicate<BaseNodeData> validAndIncluded = isExcluded.negate().and(BaseNodeData::isInvalid).negate();
+    final Stream<NodeNodeData> nodes = myTree.streamResults(NodeNodeData.class, validAndIncluded);
+    return nodes.map(NodeNodeData::getNodePointer).collect(Collectors.toList());
   }
 
   public ActionGroup getViewToolbar() {

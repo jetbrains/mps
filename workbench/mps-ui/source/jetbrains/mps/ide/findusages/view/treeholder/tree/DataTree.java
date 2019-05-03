@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,13 +43,11 @@ import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
 import java.util.ArrayList;
@@ -116,28 +114,6 @@ public class DataTree implements IExternalizeable, IChangeListener {
       allChildrenExcluded = allChildrenExcluded && child.getData().isExcluded();
     }
     node.getData().setExcluded(allChildrenExcluded);
-  }
-
-  //----DATA QUERY----
-
-  public Set<SModel> getIncludedModels(SRepository repository) {
-    return getResultsNode().getIncludedModels(repository);
-  }
-
-  public Set<SModel> getAllModels(SRepository repository) {
-    return getResultsNode().getAllModels(repository);
-  }
-
-  public List<SNodeReference> getIncludedResultNodes() {
-    return getResultsNode().getIncludedResultNodes();
-  }
-
-  public List<SNodeReference> getAllResultNodes() {
-    return getResultsNode().getAllResultNodes();
-  }
-
-  private DataNode getResultsNode() {
-    return myTreeRoot.getChildren().get(1);
   }
 
   //----CONTENT MANAGEMENT----
