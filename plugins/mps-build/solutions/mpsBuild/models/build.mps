@@ -28960,9 +28960,6 @@
             </node>
           </node>
         </node>
-        <node concept="1bldCd" id="2ucthr8YHK9" role="39821P">
-          <ref role="3$exzV" node="5xwbQ0eEV3B" resolve="jetbrains.mps.java.platform" />
-        </node>
         <node concept="3_J27D" id="2ucthr8W$Sk" role="Nbhlr">
           <node concept="3Mxwew" id="2ucthr8W$T1" role="3MwsjC">
             <property role="3MwjfP" value="modules" />
