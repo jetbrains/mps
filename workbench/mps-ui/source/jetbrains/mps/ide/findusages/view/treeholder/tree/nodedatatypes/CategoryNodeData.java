@@ -17,12 +17,12 @@ package jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes;
 
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
+import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.project.Project;
 import org.jdom.Element;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 
@@ -31,39 +31,29 @@ public class CategoryNodeData extends BaseNodeData {
   private static final String CATEGORY_KIND = "category_kind";
 
   private String myCategoryKindName = "";
+  private final Icon myIcon;
   private String myCategory = "";
-  private INodeRepresentator myNodeRepresentator;
 
-  public CategoryNodeData(PathItemRole role, String categoryKindName, String category, boolean resultsSection,
-                          INodeRepresentator nodeRepresentator) {
+  public CategoryNodeData(PathItemRole role, CategoryKind categoryKind, String category, @Nullable Icon icon, boolean resultsSection) {
     super(role, category, "", true, false, resultsSection);
-    myCategoryKindName = categoryKindName;
+    myIcon = icon;
     myCategory = category;
-    myNodeRepresentator = nodeRepresentator;
+    myCategoryKindName = categoryKind.getName();
   }
 
   public CategoryNodeData(Element element, Project project) throws CantLoadSomethingException {
     read(element, project);
+    myIcon = null;
   }
 
   @Override
   public Icon getIcon(PresentationContext presentationContext) {
-    if (myNodeRepresentator != null) {
-      Icon res = myNodeRepresentator.getCategoryIcon(myCategory);
-      if (res != null) {
-        return res;
-      }
-    }
-    return IdeIcons.CLOSED_FOLDER;
+    return myIcon != null ? myIcon :IdeIcons.CLOSED_FOLDER;
   }
 
   @Override
   public Object getIdObject() {
     return myCategory + "!!!" + myCategoryKindName;
-  }
-
-  public String getCategoryKindName() {
-    return myCategoryKindName;
   }
 
   @Override
@@ -80,16 +70,5 @@ public class CategoryNodeData extends BaseNodeData {
     super.read(element, project);
     myCategory = element.getAttributeValue(CATEGORY);
     myCategoryKindName = element.getAttributeValue(CATEGORY_KIND);
-  }
-
-  @Override
-  public String getText(TextOptions options) {
-    if (myNodeRepresentator != null) {
-      String res = myNodeRepresentator.getCategoryText(options, myCategory, isResultsSection());
-      if (res != null) {
-        return res;
-      }
-    }
-    return super.getText(options);
   }
 }

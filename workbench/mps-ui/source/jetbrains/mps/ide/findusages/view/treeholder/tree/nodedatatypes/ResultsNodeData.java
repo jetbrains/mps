@@ -18,55 +18,35 @@ package jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
-import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.util.NameUtil;
 import org.jdom.Element;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 
 public class ResultsNodeData extends BaseNodeData {
-  private static final String CATEGORY_NAME = "results";
-  private INodeRepresentator myNodeRepresentator;
+  private final Icon myIcon;
 
-  public ResultsNodeData(PathItemRole role) {
-    super(role, CATEGORY_NAME, "", true, false, false);
-  }
-
-  public ResultsNodeData(PathItemRole role, INodeRepresentator nodeRepresentator) {
-    super(role, CATEGORY_NAME, "", true, false, false);
-    myNodeRepresentator = nodeRepresentator;
+  public ResultsNodeData(PathItemRole role, @Nullable Icon icon, @NotNull String text) {
+    super(role, text, "", true, false, false);
+    myIcon = icon;
   }
 
   public ResultsNodeData(Element element, Project project) throws CantLoadSomethingException {
     read(element, project);
+    myIcon = null;
   }
 
   @Override
   public Object getIdObject() {
-    return CATEGORY_NAME;
+    return getClass().getName();
   }
 
   @Override
   public Icon getIcon(PresentationContext presentationContext) {
-    if (myNodeRepresentator != null) {
-      Icon res = myNodeRepresentator.getResultsIcon();
-      if (res != null) {
-        return res;
-      }
-    }
-    return Nodes.UsagesFinder;
-  }
-
-  @Override
-  public String getText(TextOptions options) {
-    if (myNodeRepresentator != null) {
-      String res = myNodeRepresentator.getResultsText(options);
-      if (res != null) {
-        return res;
-      }
-    }
-    return NameUtil.formatNumericalString(options.mySubresultsCount, "usage") + " found";
+    return myIcon == null ? Nodes.UsagesFinder : myIcon;
   }
 }

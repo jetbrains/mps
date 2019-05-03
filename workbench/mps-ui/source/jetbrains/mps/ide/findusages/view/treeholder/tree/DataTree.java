@@ -38,6 +38,7 @@ import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathProvider;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -175,8 +176,18 @@ public class DataTree implements IExternalizeable, IChangeListener {
     }
     root.add(nodesRoot);
 
-    DataNode resultsRoot = new DataNode(new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, nodeRepresentator));
-    for (SearchResult<?> result : results.getNotNullResults()) {
+    final List<? extends SearchResult<?>> notNullResults = results.getNotNullResults();
+    final Icon i;
+    final String c;
+    if (nodeRepresentator == null) {
+      i = null; // use default
+      c = NameUtil.formatNumericalString(notNullResults.size(), "usage") + " found";
+    } else {
+      i = nodeRepresentator.getResultsIcon();
+      c = nodeRepresentator.getResultsText(new TextOptions(true, false, notNullResults.size()));
+    }
+    DataNode resultsRoot = new DataNode(new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, i, c));
+    for (SearchResult<?> result : notNullResults) {
       addResultWithPresentation(resultsRoot, result, nodeRepresentator);
     }
     root.add(resultsRoot);
@@ -257,7 +268,16 @@ public class DataTree implements IExternalizeable, IChangeListener {
           };
         } else if (currentIdObject instanceof Pair) {
           Pair<CategoryKind, String> category = (Pair<CategoryKind, String>) currentIdObject;
-          data = new CategoryNodeData(creator, category.o1.getName(), category.o2, results, nodeRepresentator);
+          Icon i;
+          String c;
+          if (nodeRepresentator != null) {
+            i = nodeRepresentator.getCategoryIcon(category.o2);
+            c = nodeRepresentator.getCategoryText(new TextOptions(true, false, 0), category.o2, results);
+          } else {
+            i = category.o1.getIcon(); // FIXME is it safe to assume CategoryKind != null?
+            c = category.o2;
+          }
+          data = new CategoryNodeData(creator, category.o1, c, i, results);
         }
 
         assert data != null : currentIdObject;
