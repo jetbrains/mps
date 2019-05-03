@@ -33,7 +33,6 @@ import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelReadRunnable;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,7 +41,6 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -181,40 +179,36 @@ public class UsagesTree extends MPSTree {
 
   @Override
   protected UsagesTreeNode rebuild() {
-    ComputeRunnable<UsagesTreeNode> cr = new ComputeRunnable<>(() -> {
-        UsagesTreeNode root = new UsagesTreeNode();
-        if (myContents == null || myContents.getTreeRoot().getChildren().isEmpty()) {
-          // FIXME refactor UsagesTree construction so that it doesn't try to show tree before any content supplied.
-          // Now the tree is rebuilt on view options change (UsagesTreeComponent#setComponentsViewOptions())
-          return root;
-        }
-        if (myShowSearchedNodes) {
-        HashSet<PathItemRole> searchedNodesPathProvider = new HashSet<>();
-          searchedNodesPathProvider.add(PathItemRole.ROLE_MAIN_SEARCHED_NODES);
+    UsagesTreeNode root = new UsagesTreeNode();
+    if (myContents == null || myContents.getTreeRoot().getChildren().isEmpty()) {
+      // FIXME refactor UsagesTree construction so that it doesn't try to show tree before any content supplied.
+      // Now the tree is rebuilt on view options change (UsagesTreeComponent#setComponentsViewOptions())
+      return root;
+    }
+    if (myShowSearchedNodes) {
+      HashSet<PathItemRole> searchedNodesPathProvider = new HashSet<>();
+      searchedNodesPathProvider.add(PathItemRole.ROLE_MAIN_SEARCHED_NODES);
 
-          DataNode searchedNodesRoot = myContents.getTreeRoot().getChildren().get(0);
-          if (searchedNodesRoot.containsNodes(NodeNodeData.class)) {
-            if (myGroupSearchedNodes) {
-              searchedNodesPathProvider.add(PathItemRole.ROLE_ROOT);
-              searchedNodesPathProvider.add(PathItemRole.ROLE_ROOT_TO_TARGET_NODE);
-            }
-            searchedNodesPathProvider.add(PathItemRole.ROLE_TARGET_NODE);
-          } else if (searchedNodesRoot.containsNodes(ModelNodeData.class)) {
-            if (myGroupSearchedNodes) {
-              searchedNodesPathProvider.add(PathItemRole.ROLE_MODULE);
-            }
-            searchedNodesPathProvider.add(PathItemRole.ROLE_MODEL);
-          } else {
-            searchedNodesPathProvider.add(PathItemRole.ROLE_MODULE);
-          }
-          root.add(buildTree(searchedNodesRoot, searchedNodesPathProvider));
+      DataNode searchedNodesRoot = myContents.getTreeRoot().getChildren().get(0);
+      if (searchedNodesRoot.containsNodes(NodeNodeData.class)) {
+        if (myGroupSearchedNodes) {
+          searchedNodesPathProvider.add(PathItemRole.ROLE_ROOT);
+          searchedNodesPathProvider.add(PathItemRole.ROLE_ROOT_TO_TARGET_NODE);
         }
-        root.add(buildTree(myContents.getTreeRoot().getChildren().get(1), myResultPathProvider));
+        searchedNodesPathProvider.add(PathItemRole.ROLE_TARGET_NODE);
+      } else if (searchedNodesRoot.containsNodes(ModelNodeData.class)) {
+        if (myGroupSearchedNodes) {
+          searchedNodesPathProvider.add(PathItemRole.ROLE_MODULE);
+        }
+        searchedNodesPathProvider.add(PathItemRole.ROLE_MODEL);
+      } else {
+        searchedNodesPathProvider.add(PathItemRole.ROLE_MODULE);
+      }
+      root.add(buildTree(searchedNodesRoot, searchedNodesPathProvider));
+    }
+    root.add(buildTree(myContents.getTreeRoot().getChildren().get(1), myResultPathProvider));
 
-        return root;
-    });
-    myProject.getModelAccess().runReadAction(cr);
-    return cr.getResult();
+    return root;
   }
 
   //this is not recursive
