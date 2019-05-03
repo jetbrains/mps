@@ -101,12 +101,14 @@
       <file file="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/META-INF/JavaPlatform.xml"/>
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-java/META-INF/platform">
-      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/META-INF/platform">
+      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/META-INF">
         <include name="**/*.xml"/>
       </fileset>
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-java/lib">
-      <file file="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/lib/mps-java-platform.jar"/>
+      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/lib">
+        <include name="**/*.jar"/>
+      </fileset>
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-vcs/META-INF">
       <file file="${base_dir}/IdeaPlugin/build/artifacts/mpsIdeaVcs/mps-vcs/META-INF/MPSVcs.xml"/>
