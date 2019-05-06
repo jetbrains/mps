@@ -173,6 +173,8 @@
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-editor-runtime.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-plugin.jar" />
         <fileset file="${artifacts.mpsJavaIdeaPlugin}/mps-idea-java/lib/mps-java-idea.jar" />
+        <fileset file="${artifacts.mpsJavaPlatform}/lib/java-core.jar" />
+        <fileset file="${artifacts.mpsJavaPlatform}/lib/java-platform.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-tool.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-project-check.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />

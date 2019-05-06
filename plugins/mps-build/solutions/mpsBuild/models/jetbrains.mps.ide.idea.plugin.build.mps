@@ -1397,11 +1397,14 @@
       <node concept="nCB5N" id="390SM3InTmX" role="nCB5Z">
         <ref role="nCB5Y" node="7XQqoCTn3zd" resolve="mps-java-idea" />
       </node>
+      <node concept="nCB5N" id="342lyMsQK4c" role="nCB5Z">
+        <ref role="nCB5Y" to="ffeo:2xKmvAPr964" resolve="mps-java-platform" />
+      </node>
+      <node concept="nCB5N" id="342lyMsQK4j" role="nCB5Z">
+        <ref role="nCB5Y" to="ffeo:2xKmvAPr90j" resolve="mps-java-core" />
+      </node>
       <node concept="nCB5N" id="63lu3g6D$3K" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:1FaKCGJSzMQ" resolve="mps-tool" />
-      </node>
-      <node concept="nCB5N" id="3ZROizBYYvl" role="nCB5Z">
-        <ref role="nCB5Y" to="ffeo:57J5fkcylG8" resolve="mps-java-platform" />
       </node>
       <node concept="nCB5N" id="21XsCNMQUyz" role="nCB5Z">
         <ref role="nCB5Y" to="ffeo:6UWbfHq6Ys7" resolve="mps-project-check" />
