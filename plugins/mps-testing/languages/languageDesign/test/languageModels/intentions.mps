@@ -1664,8 +1664,7 @@
                 <ref role="1Pybhc" to="tqvn:~TemporaryModels" resolve="TemporaryModels" />
               </node>
               <node concept="liA8E" id="7KUdrkECSWe" role="2OqNvi">
-                <ref role="37wK5l" to="tqvn:~TemporaryModels.create(boolean,boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="create" />
-                <node concept="3clFbT" id="7KUdrkECSWf" role="37wK5m" />
+                <ref role="37wK5l" to="tqvn:~TemporaryModels.createEditable(boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="createEditable" />
                 <node concept="3clFbT" id="7KUdrkEIHbv" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>

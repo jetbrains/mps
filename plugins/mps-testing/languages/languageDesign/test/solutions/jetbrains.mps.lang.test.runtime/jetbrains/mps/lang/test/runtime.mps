@@ -9608,9 +9608,9 @@
                                           </node>
                                           <node concept="2OqwBi" id="BMoFi_uakm" role="33vP2m">
                                             <node concept="liA8E" id="BMoFi_uakn" role="2OqNvi">
-                                              <ref role="37wK5l" to="tqvn:~TemporaryModels.create(boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="create" />
-                                              <node concept="3clFbT" id="BMoFi_uako" role="37wK5m">
-                                                <property role="3clFbU" value="false" />
+                                              <ref role="37wK5l" to="tqvn:~TemporaryModels.createEditable(boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="createEditable" />
+                                              <node concept="3clFbT" id="6ogOzzXaWis" role="37wK5m">
+                                                <property role="3clFbU" value="true" />
                                               </node>
                                               <node concept="2YIFZM" id="BMoFi_uakp" role="37wK5m">
                                                 <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
@@ -11969,8 +11969,7 @@
                 <ref role="37wK5l" to="tqvn:~TemporaryModels.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="4K12N3pL6PQ" role="2OqNvi">
-                <ref role="37wK5l" to="tqvn:~TemporaryModels.create(boolean,boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="create" />
-                <node concept="3clFbT" id="4K12N3pL6PR" role="37wK5m" />
+                <ref role="37wK5l" to="tqvn:~TemporaryModels.createEditable(boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="createEditable" />
                 <node concept="3clFbT" id="4K12N3pL6PS" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>

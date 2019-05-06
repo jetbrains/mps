@@ -244,8 +244,7 @@
                 <ref role="37wK5l" to="tqvn:~TemporaryModels.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="4K12N3pL6PQ" role="2OqNvi">
-                <ref role="37wK5l" to="tqvn:~TemporaryModels.create(boolean,boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="create" />
-                <node concept="3clFbT" id="4K12N3pL6PR" role="37wK5m" />
+                <ref role="37wK5l" to="tqvn:~TemporaryModels.createEditable(boolean,jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="createEditable" />
                 <node concept="3clFbT" id="4K12N3pL6PS" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>

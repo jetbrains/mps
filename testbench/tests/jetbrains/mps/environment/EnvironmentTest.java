@@ -61,11 +61,10 @@ public abstract class EnvironmentTest {
         dummyProject.getModelAccess().executeCommand(new Runnable() {
           @Override
           public void run() {
-            SModel sModel = TemporaryModels.getInstance().create(false, TempModuleOptions.forDefaultModuleWithSourceAndClassesGen());
+            SModel sModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModuleWithSourceAndClassesGen());
             assert sModel.getRepository() != null;
-            SConcept concept = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L,
-                "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
-            SConcept templateDeclarationConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
+            SConcept templateDeclarationConcept = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L,
+                                                                                "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
             SNodeFactoryOperations.createNewRootNode(sModel, templateDeclarationConcept, null);
           }
         });

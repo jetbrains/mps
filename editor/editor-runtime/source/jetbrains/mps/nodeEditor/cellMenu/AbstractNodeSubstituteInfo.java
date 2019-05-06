@@ -110,7 +110,7 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
   @Override
   public List<SubstituteAction> getSmartMatchingActions(final String pattern, final boolean strictMatching, EditorCell contextCell) {
     // TODO make this thread local maybe?
-    ourModelForTypechecking = TemporaryModels.getInstance().create(false, false, TempModuleOptions.nonReloadableModule());
+    ourModelForTypechecking = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
     final ModelDependencyResolver mdr = new ModelDependencyResolver(LanguageRegistry.getInstance(), getEditorContext().getRepository());
     final ModelImports mi = new ModelImports(ourModelForTypechecking);
     mdr.usedLanguages(getEditorContext().getModel()).forEach(mi::addUsedLanguage);
