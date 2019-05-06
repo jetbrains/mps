@@ -32819,15 +32819,6 @@
         <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="2ucthr8W$$t" resolve="jetbrains.mps.java.workbench" />
       </node>
-      <node concept="m$_yB" id="2ucthr8WQjz" role="m$_yh">
-        <ref role="m$_yA" node="2ucthr8W_1x" resolve="jetbrains.mps.java.core" />
-      </node>
-      <node concept="m$_yB" id="2ucthr8WQjS" role="m$_yh">
-        <ref role="m$_yA" node="5xwbQ0eEV3B" resolve="jetbrains.mps.java.platform" />
-      </node>
-      <node concept="m$_yB" id="2ucthr8WQjf" role="m$_yh">
-        <ref role="m$_yA" node="2ucthr8W$$t" resolve="jetbrains.mps.java.workbench" />
-      </node>
       <node concept="m$_yC" id="2pZ8abj57t4" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="1s1fr9vx3hb4dn1l5qkefbn4k9s4ya6">
+<product version="3" modelHash="6x7tckqruwvboy5nc5ari7phxx6gurf">
   <files names="Info.plist.xml:installer.nsi:jetpad.xml:mps.bat:mps.sh:mps.vmoptions:mps.xml:mps64.vmoptions:mpsBootstrapCore.xml:mpsBuild.xml:mpsBuildUI.xml:mpsConnectorPlugin.xml:mpsConsolePlugin.xml:mpsContextActionsTool.xml:mpsCore.xml:mpsDebuggerPlugin.xml:mpsDevKit.xml:mpsDiagramEditor.xml:mpsDistribution.xml:mpsExecutionPlugin.xml:mpsHttpSupportPlugin.xml:mpsJava.xml:mpsJavaCore.xml:mpsJavaCorePre.xml:mpsJavaPlatform.xml:mpsJavaPlatformPre.xml:mpsJavaPre.xml:mpsMakePlugin.xml:mpsMaven.xml:mpsMigration.xml:mpsMigrationCore.xml:mpsPlugins.xml:mpsStandalone.xml:mpsTesting.xml:mpsTroveCollections.xml:mpsVcs.xml:mpsVcsPlatform.xml:mpsVcsPlatformPre.xml:mpsVcsStandaloneJar.xml:mpsWorkbench.xml" />
 </product>
 
