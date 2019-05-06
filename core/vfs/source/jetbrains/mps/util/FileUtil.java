@@ -534,12 +534,6 @@ public class FileUtil {
   }
 
   @NotNull
-  public static String unquote(@NotNull String urlString) {
-    urlString = urlString.replace('/', File.separatorChar);
-    return URLUtil.unescapePercentSequences(urlString);
-  }
-
-  @NotNull
   public static String getNameWithoutExtension(@NotNull String name) {
     int i = name.lastIndexOf(DOT);
     if (i != -1) {
