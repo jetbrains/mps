@@ -31,8 +31,8 @@ class TempModel extends EditableModelDescriptor implements EditableSModel {
   private final boolean myReadOnly;
   private final boolean myTrackUndo;
 
-  protected TempModel(boolean readOnly, boolean trackUndo, SModuleReference moduleReference) {
-    super(createModelRef("TempModel_" + System.nanoTime(), moduleReference), new NullDataSource());
+  protected TempModel(boolean readOnly, boolean trackUndo, @NotNull String namePrefix, SModuleReference moduleReference) {
+    super(createModelRef(namePrefix + "_" + System.nanoTime(), moduleReference), new NullDataSource());
     myReadOnly = readOnly;
     myTrackUndo = trackUndo;
   }

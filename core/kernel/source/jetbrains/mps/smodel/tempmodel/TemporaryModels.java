@@ -20,6 +20,7 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -50,15 +51,32 @@ public class TemporaryModels {
 
   private Map<TempModel, TempModuleOptions> myCreatedModels = new THashMap<>();
 
-  //todo convert possible parameter sets to "sensivity" enum: read-only (no read-events), read-only (with events), editable, editable with events, editable with undo tracked
+  @Deprecated
   public SModel create(boolean readOnly, @NotNull TempModuleOptions mp) {
     return create(readOnly, true, mp);
   }
 
+  @Deprecated
   public SModel create(boolean readOnly, boolean trackUndo, @NotNull TempModuleOptions mp) {
+    return create(readOnly, trackUndo, null, mp);
+  }
+
+  public SModel createReadOnly(@NotNull TempModuleOptions mp) {
+    return create(true, false, null, mp);
+  }
+
+  public SModel createEditable(boolean trackUndo, @NotNull TempModuleOptions mp) {
+    return create(false, trackUndo,null, mp);
+  }
+
+  public SModel createLongTerm(String namePrefix, @NotNull TempModuleOptions mp) {
+    return create(false, true, namePrefix, mp);
+  }
+
+  public SModel create(boolean readOnly, boolean trackUndo, @Nullable String namePrefix, @NotNull TempModuleOptions mp) {
     SModuleBase module = (SModuleBase) mp.createModule();
 
-    TempModel model = new TempModel(readOnly, trackUndo, module.getModuleReference());
+    TempModel model = new TempModel(readOnly, trackUndo, namePrefix == null ? "TempModel" : namePrefix, module.getModuleReference());
     myCreatedModels.put(model, mp);
     module.registerModel(model);
     return model;
