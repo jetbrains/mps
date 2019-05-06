@@ -16,17 +16,22 @@
 package jetbrains.mps.vfs;
 
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.FileSystemExtPoint;
-import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.Locale;
 
 @Deprecated
 @ToRemove(version = 2019.1)
 //this should go away since we will operate only path-urls
 public final class Files {
+  private static final Logger LOG = LogManager.getLogger(Files.class);
+
   private Files() {
   }
 
@@ -42,6 +47,12 @@ public final class Files {
   @NotNull
   public static IFile fromURL(@NotNull URL url) {
     String path = url.getPath();
+    try {
+      path = URLDecoder.decode(path, Charset.defaultCharset().name());
+    } catch (UnsupportedEncodingException e) {
+      LOG.error("Exception when trying to convert url to path: ", e);
+      return null;
+    }
     if (!path.startsWith("/")) { //strangely not absolute
       if ("jar".equals(url.getProtocol())) {
         if (path.startsWith("file:")) {
