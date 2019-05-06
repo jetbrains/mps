@@ -25,9 +25,12 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTree;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.AbstractResultNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.CategoryNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ResultsNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
@@ -41,6 +44,7 @@ import javax.swing.Icon;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -66,6 +70,7 @@ public class UsagesTree extends MPSTree {
   private boolean myAutoscroll = false;
   private Project myProject;
   private UsagesTreeNode myResultsSubtree;
+  private INodeRepresentator<?> myPresentationProvider;
 
   public UsagesTree(Project project) {
     myProject = project;
@@ -81,7 +86,17 @@ public class UsagesTree extends MPSTree {
         openNewlySelectedNodeLink(e, false, false);
       }
     });
-    setCellRenderer(new UsagesCellRenderer());
+    setCellRenderer(new UsagesCellRenderer(this));
+  }
+
+  // XXX don't make this method public, INodeRepresentator is awful and needs refactoring, leave it as our implementation detail for now
+  /*package*/ void setPresentationProvider(INodeRepresentator<?> presentationProvider) {
+    myPresentationProvider = presentationProvider;
+  }
+
+  // XXX don't make this method public, INodeRepresentator is awful and needs refactoring, leave it as our implementation detail for now
+  /*package*/ INodeRepresentator<?> getPresentationProvider() {
+    return myPresentationProvider;
   }
 
   @Override
@@ -237,7 +252,12 @@ public class UsagesTree extends MPSTree {
     mergeChildren(children);
     buildCounters(child);
     sortByCaption(children);
-    setUIProperties(child);
+    if (getPresentationProvider() != null) {
+      // XXX INodeRepresentation may override text for certain elements, let's give it a chance
+      // though this is not something I'd like to do, just can not refactor every piece of this mess at once
+      // we need to keep this as long as DataTree.build() can not evaluate proper text at construction time
+      setUIProperties(child);
+    }
 
     return child;
   }
@@ -276,6 +296,16 @@ public class UsagesTree extends MPSTree {
     BaseNodeData data = root.getData();
     if (nodeCategories.contains(data.getRole()) || data.isPathTail()) {
       UsagesTreeNode node = new UsagesTreeNode(root, data);
+      Icon icon = data.getIcon(() -> myProject.getRepository());
+      if (data.isResultNode()) {
+        final LayeredIcon result = new LayeredIcon(2);
+        result.setIcon(icon, 0);
+        result.setIcon(Nodes.UsagesResultOverlay, 1);
+        node.setIcon(result);
+      } else {
+        node.setIcon(icon);
+      }
+
 
       for (UsagesTreeNode child : children) {
         node.add(child);
@@ -332,12 +362,36 @@ public class UsagesTree extends MPSTree {
     children.addAll(mergedChildren);
   }
 
+  // XXX makes sense only when myPresentationProvider != null;
   private void setUIProperties(UsagesTreeNode root) {
     // FIXME why do we need to do it here, why not in UsageTreeNode rendering code?
     //       we show counters if UsagesTreeNode has children, it's sort of information we can not get at construction time
     //       XXX what about renewPresentation/doUpdatePresentation() - perhaps, could utilize onAdd() event if subtree is built completely
     //       before adding to MPSTree(UsagesTree). I don't want to use renewPresentation() here as it sends out event for each node, which is too much
-    root.updateText();
+    if (root.getUsageData() instanceof CategoryNodeData) {
+      // TextOptions arguments are from original setUIProperties()
+      TextOptions to = new TextOptions(myAdditionalInfoNeeded, !root.isLeaf(), root.getSubresultsCount());
+      // used to be in CategoryNodeData.getText
+      // CategoryNodeData.myCategory == BaseNodeData.caption, hence getPlainText
+      final String text = myPresentationProvider.getCategoryText(to, root.getUsageData().getPlainText(), root.getUsageData().isResultsSection());
+      if (text != null) {
+        root.setText(text);
+        // assume INodeRepresentator could use count in caption, if needed
+        root.showCounter(false);
+        // not every INodeRepresentator.getResultsText uses <strong>, but I don't care
+        root.setFontStyle(Font.BOLD);
+      }
+    } else if (root.getUsageData() instanceof ResultsNodeData) {
+      // used to be in ResultsNodeData.getText
+      final String text = myPresentationProvider.getResultsText(new TextOptions(myAdditionalInfoNeeded, !root.isLeaf(), root.getSubresultsCount()));
+      if (text != null) {
+        root.setText(text);
+        // assume INodeRepresentator could use count in caption, if needed
+        root.showCounter(false);
+        // not every INodeRepresentator.getResultsText uses <strong>, but I don't care
+        root.setFontStyle(Font.BOLD);
+      }
+    }
 
     for (UsagesTreeNode tn : root.getChildren()) {
       setUIProperties(tn);
@@ -470,8 +524,9 @@ public class UsagesTree extends MPSTree {
 
 
 
-  public final class UsagesTreeNode extends MPSTreeNode {
+  public static final class UsagesTreeNode extends MPSTreeNode {
     private int mySubresultsCount = 0;
+    private boolean myShowCounter;
 
     public UsagesTreeNode() {
       setNodeIdentifier("");
@@ -480,25 +535,8 @@ public class UsagesTree extends MPSTree {
     public UsagesTreeNode(DataNode userObj, BaseNodeData data) {
       super(userObj);
       setNodeIdentifier(data.getPlainText());
-      // XXX UsagesTreeNode may become static once myProject access gone!
-      Icon icon = data.getIcon(() -> myProject.getRepository());
-      if (data.isResultNode()) {
-        final LayeredIcon result = new LayeredIcon(2);
-        result.setIcon(icon, 0);
-        result.setIcon(Nodes.UsagesResultOverlay, 1);
-        icon = result;
-      }
-      setIcon(icon);
       setToggleClickCount(data.isPathTail() ? -1 : 2);
-    }
-
-    /*package*/ void updateText() {
-      BaseNodeData data = getUsageData();
-      if (data == null) {
-        return;
-      }
-      String caption = data.getText(new TextOptions(myAdditionalInfoNeeded, false /*counter handled in UsagesCellRenderer*/, 0));
-      setText(caption);
+      showCounter(data.isResultsSection());
     }
 
     @Override
@@ -540,5 +578,12 @@ public class UsagesTree extends MPSTree {
       return Stream.concat(Stream.of(getUsageData()), getChildren().stream().flatMap(UsagesTreeNode::getNodeDataStream));
     }
 
+    // provisional, to mimic legacy behavior, when some NodeData didn't show regular counter but included it into caption
+    /*package*/ boolean showCounter() {
+      return myShowCounter;
+    }
+    /*package*/ void showCounter(boolean b) {
+      myShowCounter = b;
+    }
   }
 }

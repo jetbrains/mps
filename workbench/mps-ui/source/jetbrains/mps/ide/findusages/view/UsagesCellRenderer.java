@@ -21,6 +21,7 @@ import jetbrains.mps.ide.findusages.view.UsagesTree.UsagesTreeNode;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
 import jetbrains.mps.util.NameUtil;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -28,8 +29,8 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.tree.TreeCellRenderer;
-import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.util.Collections;
@@ -39,19 +40,24 @@ import java.util.Collections;
  * @since 2019.2
  */
 final class UsagesCellRenderer implements TreeCellRenderer {
+  private final UsagesTree myTree;
   private final JLabel myPrefixLabel = new JLabel();
   private final JLabel myMainTextLabel = new JLabel();
   private final JLabel myAdditionalTextLabel = new JLabel();
   private final JLabel myCounterLabel = new JLabel();
   private final JPanel myElement;
 
-  UsagesCellRenderer() {
+  UsagesCellRenderer(UsagesTree usagesTree) {
+    // generally, is wrong for cell renderer to depend on particular tree, but this one is very specific to the tree, no need to be shy about that.
+    myTree = usagesTree;
     myElement = new JPanel();
     myElement.setOpaque(false);
     myElement.setLayout(new BoxLayout(myElement, BoxLayout.X_AXIS));
     myElement.add(myPrefixLabel);
+    myElement.add(Box.createRigidArea(new Dimension(5, 0)));
     myElement.add(myMainTextLabel);
     myElement.add(myAdditionalTextLabel);
+    myElement.add(Box.createRigidArea(new Dimension(10, 0)));
     myElement.add(myCounterLabel);
     myPrefixLabel.setForeground(JBColor.RED);
     myAdditionalTextLabel.setForeground(JBColor.GRAY);
@@ -80,10 +86,14 @@ final class UsagesCellRenderer implements TreeCellRenderer {
 
     Font f;
     if (usageData != null && usageData.isExcluded()) {
-      f = tree.getFont();
-    } else {
       f = tree.getFont().deriveFont(Collections.singletonMap(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON));
+    } else {
+      f = tree.getFont();
     }
+    if (usagesTreeNode.getFontStyle() != Font.PLAIN) {
+      f = f.deriveFont(usagesTreeNode.getFontStyle());
+    }
+
     myMainTextLabel.setFont(f);
     myAdditionalTextLabel.setFont(f);
     myCounterLabel.setFont(f);
@@ -91,9 +101,13 @@ final class UsagesCellRenderer implements TreeCellRenderer {
     myMainTextLabel.setIcon(deduceIcon(usagesTreeNode.getIcon(), expanded, leaf));
 
     myMainTextLabel.setText(usagesTreeNode.getText());
-    myAdditionalTextLabel.setText(usagesTreeNode.getAdditionalText());
+    if (myTree.isAdditionalInfoNeeded()) {
+      myAdditionalTextLabel.setText(usagesTreeNode.getAdditionalText());
+    } else {
+      myAdditionalTextLabel.setText(null);
+    }
 
-    if (usagesTreeNode.getChildCount() > 0) {
+    if (!leaf && usagesTreeNode.showCounter()) {
       // XXX !leaf? instead
       myCounterLabel.setText(NameUtil.formatNumericalString(usagesTreeNode.getSubresultsCount(), "usage"));
     } else {

@@ -65,7 +65,6 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
   private static final String VIEW_OPTIONS = "view_options";
 
   private final Project myProject;
-  private INodeRepresentator myNodeRepresentator = null;
 
   private UsagesTree myTree;
   private final DataTree myContents;
@@ -115,7 +114,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
 
   public void setContents(final SearchResults contents) {
     // XXX no idea if there's real need to have read action here, just refactored ModelAccess static out of DataTree here.
-    myProject.getModelAccess().runReadAction(() -> myContents.setContents(contents, myNodeRepresentator));
+    myProject.getModelAccess().runReadAction(() -> myContents.setContents(contents, myTree.getPresentationProvider()));
   }
 
   @Override
@@ -135,7 +134,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
 
   //MUST be called in construction time, introduced for "to do" functionality
   public void setCustomRepresentator(INodeRepresentator nodeRepresentator) {
-    myNodeRepresentator = nodeRepresentator;
+    myTree.setPresentationProvider(nodeRepresentator);
     myViewToolbar.recreateToolbar();
     myViewToolbar.setViewOptions(myViewOptions);
   }
@@ -345,8 +344,8 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
         List<CategoryKind> categoryKinds = Collections.singletonList(
             new CategoryKind(CategoryKind.DEFAULT_CATEGORY_KIND.getName(), General.Filter, CategoryKind.DEFAULT_CATEGORY_KIND.getTooltip())
         );
-        if (myNodeRepresentator != null) {
-          List<CategoryKind> kinds = ((INodeRepresentator<?>) myNodeRepresentator).getCategoryKinds();
+        if (myTree.getPresentationProvider() != null) {
+          List<CategoryKind> kinds = myTree.getPresentationProvider().getCategoryKinds();
           if (kinds != null) {
             categoryKinds = kinds;
           }
