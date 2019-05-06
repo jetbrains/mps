@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,10 @@ public class FinderNode extends BaseLeaf {
   private static final String CLASS_NAME = "class_name";
 
   private IFinder myFinder;
+
+  public FinderNode() {
+    // IMPORTANT: leave default constructor intact, it's in use when IResultProvider is de-serialized, see BaseNode.read()
+  }
 
   public FinderNode(IFinder finder) {
     myFinder = finder;

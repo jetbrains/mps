@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,8 @@ import java.util.List;
  */
 public abstract class BaseNode implements IResultProvider {
   private static final Logger LOG = LogManager.getLogger(BaseNode.class);
-  private static final String CHILDREN = "children";
+  private static final String CHILD = "child";
+  private static final String CHILD_CLASS = "rpn"; // Result Provider Node
   protected BaseNode myParent;
   protected List<BaseNode> myChildren = new ArrayList<>();
 
@@ -137,21 +138,19 @@ public abstract class BaseNode implements IResultProvider {
 
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
-    Element childrenXML = new Element(CHILDREN);
     for (BaseNode child : myChildren) {
-      Element childXML = new Element(child.getClass().getName());
+      Element childXML = new Element(CHILD);
+      childXML.setAttribute(CHILD_CLASS, child.getClass().getName());
       child.write(childXML, project);
-      childrenXML.addContent(childXML);
+      element.addContent(childXML);
     }
-    element.addContent(childrenXML);
   }
 
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
-    Element childrenXML = element.getChild(CHILDREN);
-    for (Element childXML : childrenXML.getChildren()) {
+    for (Element childXML : element.getChildren(CHILD)) {
       try {
-        BaseNode child = (BaseNode) Class.forName(childXML.getName()).newInstance();
+        BaseNode child = (BaseNode) Class.forName(childXML.getAttributeValue(CHILD_CLASS)).newInstance();
         child.read(childXML, project);
         myChildren.add(child);
         child.setParent(this);
