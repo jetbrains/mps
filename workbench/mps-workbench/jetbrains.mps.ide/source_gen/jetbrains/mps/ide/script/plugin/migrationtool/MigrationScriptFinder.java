@@ -23,7 +23,6 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.util.StringUtil;
 import org.apache.log4j.Level;
 
 public class MigrationScriptFinder extends BaseFinder {
@@ -47,6 +46,7 @@ public class MigrationScriptFinder extends BaseFinder {
 
     monitor.start("Searching applicable nodes", myScripts.size());
     try {
+      ArrayList<SearchResult<SNode>> sr = new ArrayList<SearchResult<SNode>>();
       for (RefactoringScript scriptInstance : myScripts) {
         if (monitor.isCanceled()) {
           break;
@@ -61,10 +61,10 @@ public class MigrationScriptFinder extends BaseFinder {
           for (SNode instance : instances) {
             try {
               if (ref.isApplicableInstanceNode(instance)) {
-                String category = StringUtil.escapeXml(scriptInstance.getName()) + " </b>[" + StringUtil.escapeXml(ref.getAdditionalInfo()) + "]<b>";
+                String category = String.format("%s [%s]", scriptInstance.getName(), ref.getAdditionalInfo());
                 SearchResult<SNode> result = new SearchResult<SNode>(instance, category);
                 myMigrationBySearchResult.put(result, ref);
-                myResults.getSearchResults().add(result);
+                sr.add(result);
               }
             } catch (Throwable th) {
               if (LOG.isEnabledFor(Level.ERROR)) {
@@ -75,6 +75,7 @@ public class MigrationScriptFinder extends BaseFinder {
         }
         monitor.advance(1);
       }
+      myResults = new SearchResults<SNode>(Collections.emptySet(), sr);
       fireResultsChanged();
       return myResults;
     } finally {

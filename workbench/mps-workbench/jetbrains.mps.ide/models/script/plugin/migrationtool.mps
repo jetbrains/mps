@@ -2806,6 +2806,31 @@
         </node>
         <node concept="2GUZhq" id="6TUx0SkZOLF" role="3cqZAp">
           <node concept="3clFbS" id="6TUx0SkZOLG" role="2GV8ay">
+            <node concept="3cpWs8" id="OhJifVD6F2" role="3cqZAp">
+              <node concept="3cpWsn" id="OhJifVD6F8" role="3cpWs9">
+                <property role="TrG5h" value="sr" />
+                <node concept="3uibUv" id="OhJifVD6Fa" role="1tU5fm">
+                  <ref role="3uigEE" to="33ny:~ArrayList" resolve="ArrayList" />
+                  <node concept="3uibUv" id="OhJifVDa8Y" role="11_B2D">
+                    <ref role="3uigEE" to="9erk:~SearchResult" resolve="SearchResult" />
+                    <node concept="3uibUv" id="OhJifVDglq" role="11_B2D">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="OhJifVDtdm" role="33vP2m">
+                  <node concept="1pGfFk" id="OhJifVDAhw" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+                    <node concept="3uibUv" id="OhJifVDH6A" role="1pMfVU">
+                      <ref role="3uigEE" to="9erk:~SearchResult" resolve="SearchResult" />
+                      <node concept="3uibUv" id="OhJifVDH6B" role="11_B2D">
+                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="1DcWWT" id="6m98d5YYbIh" role="3cqZAp">
               <node concept="37vLTw" id="4B2IQdOmEvt" role="1DdaDG">
                 <ref role="3cqZAo" node="6m98d5YYbH4" resolve="myScripts" />
@@ -2986,40 +3011,27 @@
                                     <node concept="3uibUv" id="6m98d5YYbJl" role="1tU5fm">
                                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                                     </node>
-                                    <node concept="3cpWs3" id="6m98d5YYbJm" role="33vP2m">
-                                      <node concept="3cpWs3" id="6m98d5YYbJn" role="3uHU7B">
-                                        <node concept="3cpWs3" id="6m98d5YYbJo" role="3uHU7B">
-                                          <node concept="2YIFZM" id="15H8LO1K$BT" role="3uHU7B">
-                                            <ref role="37wK5l" to="18ew:~StringUtil.escapeXml(java.lang.String)" resolve="escapeXml" />
-                                            <ref role="1Pybhc" to="18ew:~StringUtil" resolve="StringUtil" />
-                                            <node concept="2OqwBi" id="15H8LO1K$BU" role="37wK5m">
-                                              <node concept="37vLTw" id="15H8LO1K$BV" role="2Oq$k0">
-                                                <ref role="3cqZAo" node="6m98d5YYbIj" resolve="scriptInstance" />
-                                              </node>
-                                              <node concept="liA8E" id="15H8LO1K$BW" role="2OqNvi">
-                                                <ref role="37wK5l" to="nvof:~RefactoringScript.getName()" resolve="getName" />
-                                              </node>
-                                            </node>
-                                          </node>
-                                          <node concept="Xl_RD" id="6m98d5YYbJt" role="3uHU7w">
-                                            <property role="Xl_RC" value=" &lt;/b&gt;[" />
-                                          </node>
+                                    <node concept="2YIFZM" id="OhJifVEX1m" role="33vP2m">
+                                      <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                                      <node concept="Xl_RD" id="OhJifVEZV0" role="37wK5m">
+                                        <property role="Xl_RC" value="%s [%s]" />
+                                      </node>
+                                      <node concept="2OqwBi" id="15H8LO1K$BU" role="37wK5m">
+                                        <node concept="37vLTw" id="15H8LO1K$BV" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="6m98d5YYbIj" resolve="scriptInstance" />
                                         </node>
-                                        <node concept="2YIFZM" id="15H8LO1K_hd" role="3uHU7w">
-                                          <ref role="37wK5l" to="18ew:~StringUtil.escapeXml(java.lang.String)" resolve="escapeXml" />
-                                          <ref role="1Pybhc" to="18ew:~StringUtil" resolve="StringUtil" />
-                                          <node concept="2OqwBi" id="15H8LO1K_he" role="37wK5m">
-                                            <node concept="37vLTw" id="15H8LO1K_hf" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="6m98d5YYbI_" resolve="ref" />
-                                            </node>
-                                            <node concept="liA8E" id="15H8LO1K_hg" role="2OqNvi">
-                                              <ref role="37wK5l" to="nvof:~AbstractMigrationRefactoring.getAdditionalInfo()" resolve="getAdditionalInfo" />
-                                            </node>
-                                          </node>
+                                        <node concept="liA8E" id="15H8LO1K$BW" role="2OqNvi">
+                                          <ref role="37wK5l" to="nvof:~RefactoringScript.getName()" resolve="getName" />
                                         </node>
                                       </node>
-                                      <node concept="Xl_RD" id="6m98d5YYbJy" role="3uHU7w">
-                                        <property role="Xl_RC" value="]&lt;b&gt;" />
+                                      <node concept="2OqwBi" id="15H8LO1K_he" role="37wK5m">
+                                        <node concept="37vLTw" id="15H8LO1K_hf" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="6m98d5YYbI_" resolve="ref" />
+                                        </node>
+                                        <node concept="liA8E" id="15H8LO1K_hg" role="2OqNvi">
+                                          <ref role="37wK5l" to="nvof:~AbstractMigrationRefactoring.getAdditionalInfo()" resolve="getAdditionalInfo" />
+                                        </node>
                                       </node>
                                     </node>
                                   </node>
@@ -3067,16 +3079,11 @@
                                 </node>
                                 <node concept="3clFbF" id="6m98d5YYbJM" role="3cqZAp">
                                   <node concept="2OqwBi" id="6m98d5YYbJN" role="3clFbG">
-                                    <node concept="2OqwBi" id="6m98d5YYbJO" role="2Oq$k0">
-                                      <node concept="37vLTw" id="2BHiRxeuGzU" role="2Oq$k0">
-                                        <ref role="3cqZAo" node="6m98d5YYbHe" resolve="myResults" />
-                                      </node>
-                                      <node concept="liA8E" id="6m98d5YYbJQ" role="2OqNvi">
-                                        <ref role="37wK5l" to="9erk:~SearchResults.getSearchResults()" resolve="getSearchResults" />
-                                      </node>
+                                    <node concept="37vLTw" id="OhJifVDTs$" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="OhJifVD6F8" resolve="sr" />
                                     </node>
                                     <node concept="liA8E" id="6m98d5YYbJR" role="2OqNvi">
-                                      <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
+                                      <ref role="37wK5l" to="33ny:~ArrayList.add(java.lang.Object)" resolve="add" />
                                       <node concept="37vLTw" id="3GM_nagTzR3" role="37wK5m">
                                         <ref role="3cqZAo" node="6m98d5YYbJ$" resolve="result" />
                                       </node>
@@ -3122,6 +3129,28 @@
                       </node>
                     </node>
                   </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="OhJifVE7sx" role="3cqZAp">
+              <node concept="37vLTI" id="OhJifVEcfe" role="3clFbG">
+                <node concept="2ShNRf" id="OhJifVEfM3" role="37vLTx">
+                  <node concept="1pGfFk" id="OhJifVEkoe" role="2ShVmc">
+                    <ref role="37wK5l" to="9erk:~SearchResults.&lt;init&gt;(java.util.Collection,java.util.List)" resolve="SearchResults" />
+                    <node concept="3uibUv" id="OhJifVEA3f" role="1pMfVU">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2YIFZM" id="OhJifVEGUs" role="37wK5m">
+                      <ref role="37wK5l" to="33ny:~Collections.emptySet()" resolve="emptySet" />
+                      <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                    </node>
+                    <node concept="37vLTw" id="OhJifVEKD9" role="37wK5m">
+                      <ref role="3cqZAo" node="OhJifVD6F8" resolve="sr" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="37vLTw" id="OhJifVE7sv" role="37vLTJ">
+                  <ref role="3cqZAo" node="6m98d5YYbHe" resolve="myResults" />
                 </node>
               </node>
             </node>

@@ -34,7 +34,6 @@
     <classNode dependClassName="jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring" />
     <classNode dependClassName="jetbrains.mps.lang.script.runtime.RefactoringScript" />
     <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
-    <classNode dependClassName="jetbrains.mps.util.StringUtil" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />

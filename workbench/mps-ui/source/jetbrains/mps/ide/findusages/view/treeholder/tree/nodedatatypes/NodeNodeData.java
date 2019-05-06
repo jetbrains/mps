@@ -97,7 +97,6 @@ public class NodeNodeData extends AbstractResultNodeData {
       String presentation = SNodeUtil.getPresentation(node);
       String result = (presentation != null) ? presentation : node.toString();
       LOG.assertLog(result != null, "Node presentation is null.");
-      result = StringUtil.escapeXml(result);
       return result;
     } catch (Throwable t) {
       LOG.error(t);

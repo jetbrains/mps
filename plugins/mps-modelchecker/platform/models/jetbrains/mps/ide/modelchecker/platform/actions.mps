@@ -7052,23 +7052,18 @@
           </node>
           <node concept="3cpWs6" id="3etVqSRRN_g" role="3cqZAp">
             <node concept="3cpWs3" id="3etVqSRRN_h" role="3cqZAk">
-              <node concept="3cpWs3" id="3etVqSRRN_i" role="3uHU7B">
-                <node concept="2YIFZM" id="3etVqSRRN_j" role="3uHU7w">
-                  <ref role="37wK5l" to="18ew:~NameUtil.formatNumericalString(int,java.lang.String)" resolve="formatNumericalString" />
-                  <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <node concept="37vLTw" id="3GM_nagT$fj" role="37wK5m">
-                    <ref role="3cqZAo" node="3etVqSRRN_b" resolve="size" />
-                  </node>
-                  <node concept="Xl_RD" id="3etVqSRRN_l" role="37wK5m">
-                    <property role="Xl_RC" value="issue" />
-                  </node>
+              <node concept="2YIFZM" id="3etVqSRRN_j" role="3uHU7B">
+                <ref role="37wK5l" to="18ew:~NameUtil.formatNumericalString(int,java.lang.String)" resolve="formatNumericalString" />
+                <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+                <node concept="37vLTw" id="3GM_nagT$fj" role="37wK5m">
+                  <ref role="3cqZAo" node="3etVqSRRN_b" resolve="size" />
                 </node>
-                <node concept="Xl_RD" id="3etVqSRRN_m" role="3uHU7B">
-                  <property role="Xl_RC" value="&lt;strong&gt;" />
+                <node concept="Xl_RD" id="3etVqSRRN_l" role="37wK5m">
+                  <property role="Xl_RC" value="issue" />
                 </node>
               </node>
               <node concept="Xl_RD" id="3etVqSRRN_n" role="3uHU7w">
-                <property role="Xl_RC" value=" found&lt;/strong&gt;" />
+                <property role="Xl_RC" value=" found" />
               </node>
             </node>
           </node>
@@ -7165,22 +7160,12 @@
             </node>
           </node>
           <node concept="3cpWs6" id="3etVqSRRN_X" role="3cqZAp">
-            <node concept="3cpWs3" id="3etVqSRRN_Y" role="3cqZAk">
-              <node concept="Xl_RD" id="3etVqSRRN_Z" role="3uHU7w">
-                <property role="Xl_RC" value="&lt;/strong&gt;" />
+            <node concept="3cpWs3" id="3etVqSRRNA0" role="3cqZAk">
+              <node concept="37vLTw" id="2BHiRxghiYy" role="3uHU7B">
+                <ref role="3cqZAo" node="3etVqSRRNA6" resolve="category" />
               </node>
-              <node concept="3cpWs3" id="3etVqSRRNA0" role="3uHU7B">
-                <node concept="3cpWs3" id="3etVqSRRNA1" role="3uHU7B">
-                  <node concept="Xl_RD" id="3etVqSRRNA2" role="3uHU7B">
-                    <property role="Xl_RC" value="&lt;strong&gt;" />
-                  </node>
-                  <node concept="37vLTw" id="2BHiRxghiYy" role="3uHU7w">
-                    <ref role="3cqZAo" node="3etVqSRRNA6" resolve="category" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="3GM_nagTrWX" role="3uHU7w">
-                  <ref role="3cqZAo" node="3etVqSRRN_B" resolve="counter" />
-                </node>
+              <node concept="37vLTw" id="3GM_nagTrWX" role="3uHU7w">
+                <ref role="3cqZAo" node="3etVqSRRN_B" resolve="counter" />
               </node>
             </node>
           </node>
@@ -7303,16 +7288,12 @@
         </node>
         <node concept="3clFbS" id="3etVqSRRNAN" role="3clF47">
           <node concept="3cpWs6" id="3etVqSRRNAO" role="3cqZAp">
-            <node concept="2YIFZM" id="3etVqSRRNAP" role="3cqZAk">
-              <ref role="37wK5l" to="18ew:~StringUtil.escapeXml(java.lang.String)" resolve="escapeXml" />
-              <ref role="1Pybhc" to="18ew:~StringUtil" resolve="StringUtil" />
-              <node concept="2OqwBi" id="3etVqSRRNAQ" role="37wK5m">
-                <node concept="liA8E" id="3etVqSRRNAR" role="2OqNvi">
-                  <ref role="37wK5l" to="d6hs:~ReportItem.getMessage()" resolve="getMessage" />
-                </node>
-                <node concept="37vLTw" id="2BHiRxgmasQ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3etVqSRRNAU" resolve="issue" />
-                </node>
+            <node concept="2OqwBi" id="3etVqSRRNAQ" role="3cqZAk">
+              <node concept="liA8E" id="3etVqSRRNAR" role="2OqNvi">
+                <ref role="37wK5l" to="d6hs:~ReportItem.getMessage()" resolve="getMessage" />
+              </node>
+              <node concept="37vLTw" id="2BHiRxgmasQ" role="2Oq$k0">
+                <ref role="3cqZAo" node="3etVqSRRNAU" resolve="issue" />
               </node>
             </node>
           </node>

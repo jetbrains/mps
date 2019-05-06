@@ -51,7 +51,6 @@ import jetbrains.mps.util.NameUtil;
 import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.messages.Icons;
-import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import java.util.Arrays;
 import org.jdom.Element;
@@ -216,7 +215,7 @@ public class ModelCheckerViewer extends JPanel {
     @Override
     public String getResultsText(TextOptions options) {
       int size = options.mySubresultsCount;
-      return "<strong>" + NameUtil.formatNumericalString(size, "issue") + " found</strong>";
+      return NameUtil.formatNumericalString(size, "issue") + " found";
     }
     @Override
     public Icon getResultsIcon() {
@@ -228,7 +227,7 @@ public class ModelCheckerViewer extends JPanel {
       if (options.myCounters && isResultsSection) {
         counter = " (" + NameUtil.formatNumericalString(options.mySubresultsCount, "issue") + ")";
       }
-      return "<strong>" + category + counter + "</strong>";
+      return category + counter;
     }
     @Override
     public Icon getCategoryIcon(String category) {
@@ -246,7 +245,7 @@ public class ModelCheckerViewer extends JPanel {
     @NotNull
     @Override
     public String getPresentation(IssueKindReportItem issue) {
-      return StringUtil.escapeXml(issue.getMessage());
+      return issue.getMessage();
     }
     @Override
     public List<CategoryKind> getCategoryKinds() {
