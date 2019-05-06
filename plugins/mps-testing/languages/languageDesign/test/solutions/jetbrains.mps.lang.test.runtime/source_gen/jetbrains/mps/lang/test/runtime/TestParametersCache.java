@@ -143,7 +143,7 @@ public final class TestParametersCache implements TestRule {
                 throw new CouldNotFindModelException(String.format("Can't find model %s in supplied repository %s.", myModelRef, repository));
               }
               myTestModel = modelDescriptor;
-              SModel transientModel = TemporaryModels.getInstance().create(false, TempModuleOptions.nonReloadableModule());
+              SModel transientModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.nonReloadableModule());
               new CloneUtil(modelDescriptor, transientModel).cloneModelWithImports();
               new ModelDependencyUpdate(transientModel).updateModuleDependencies(repository);
               myTransientModel = transientModel;

@@ -87,7 +87,7 @@ public class EmbeddableEditor extends JPanel implements DataProvider {
       // node is not in repository 
       if (!(editable)) {
         if (temporaryModel == null) {
-          temporaryModel = TemporaryModels.getInstance().create(true, TempModuleOptions.forDefaultModule());
+          temporaryModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());
         }
         SModelOperations.addRootNode(temporaryModel, node);
         TemporaryModels.getInstance().addMissingImports(temporaryModel);

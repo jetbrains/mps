@@ -108,7 +108,7 @@ public class ShowNodeType_Action extends BaseAction {
 
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
         public void run() {
-          tmpModel.value = TemporaryModels.getInstance().create(true, TempModuleOptions.forDefaultModule());
+          tmpModel.value = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());
           tmpModel.value.addRootNode(type.value);
           TemporaryModels.getInstance().addMissingImports(tmpModel.value);
           dialogTitle.value = String.format("Type Explorer [%s]", ((SNode) MapSequence.fromMap(_params).get("node")));

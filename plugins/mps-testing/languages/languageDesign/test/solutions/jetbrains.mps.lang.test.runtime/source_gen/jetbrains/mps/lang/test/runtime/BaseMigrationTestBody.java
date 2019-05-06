@@ -34,7 +34,7 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
     return CopyUtil.copy(SModelOperations.roots(tempModel, null));
   }
   public void testMethod() {
-    SModel model = TemporaryModels.getInstance().create(false, false, TempModuleOptions.nonReloadableModule());
+    SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
     MigrationScript[] scripts = getMigrationScript();
     List<SNode> roots = runMigration(CollectionSequence.fromCollection(getInputNodes()).toListSequence(), model, scripts);
     List<SNode> outputNodes = CollectionSequence.fromCollection(getOutputNodes()).toListSequence();

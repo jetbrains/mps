@@ -59,7 +59,7 @@ public class EvaluationContainer implements IEvaluationContainer {
     modelAccess.runWriteAction(new Runnable() {
       public void run() {
         SModule containerModule = myContainerModule.resolve(myDebuggerRepository);
-        SModel descriptor = TemporaryModels.getInstance().create(false, TempModuleOptions.forExistingModule(containerModule));
+        SModel descriptor = TemporaryModels.getInstance().createLongTerm("DebuggerModel", TempModuleOptions.forExistingModule(containerModule));
         myContainerModel = descriptor.getReference();
       }
     });

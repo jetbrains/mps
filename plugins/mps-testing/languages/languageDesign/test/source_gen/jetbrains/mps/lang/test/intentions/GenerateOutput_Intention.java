@@ -85,7 +85,7 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SModel tempModel = TemporaryModels.getInstance().create(false, false, TempModuleOptions.nonReloadableModule());
+      SModel tempModel = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
       List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration")), MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration"))).select(new ISelector<SNode, MigrationScript>() {
         public MigrationScript select(SNode it) {
           return check_hr1otd_a0a0a0a0b0c7(check_hr1otd_a0a0a0a0a1a2h(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it);

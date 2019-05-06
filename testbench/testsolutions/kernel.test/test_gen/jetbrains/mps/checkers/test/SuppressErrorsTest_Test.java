@@ -93,7 +93,7 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
 
 
     public List<NodeReportItem> runChecker(IChecker.AbstractRootChecker<? extends NodeReportItem> checker, SNode root) {
-      SModel model = TemporaryModels.getInstance().create(false, false, TempModuleOptions.nonReloadableModule());
+      SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
       SModelOperations.addRootNode(model, SNodeOperations.copyNode(root));
       List<NodeReportItem> result = ListSequence.fromList(new ArrayList<NodeReportItem>());
       checker.check(root, model.getRepository(), new CollectConsumer<NodeReportItem>(result), new EmptyProgressMonitor());

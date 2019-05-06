@@ -62,7 +62,7 @@ public class DeployScript {
     assert projectRepo instanceof SRepositoryExt;
     ((SRepositoryExt) projectRepo).registerModule(myModule, project);
 
-    SModel model = TemporaryModels.getInstance().create(false, TempModuleOptions.forExistingModule(myModule));
+    SModel model = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forExistingModule(myModule));
     SetSequence.fromSet(myModelsToMake).addElement(model);
 
     SNode deployScriptNode = DeployScriptCreator.createDeployScript(myProject, plugins, myModule.getBaseDirectory());

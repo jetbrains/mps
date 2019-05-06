@@ -167,7 +167,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   protected void createConsoleModel() {
-    this.myModel = TemporaryModels.getInstance().create(false, TempModuleOptions.forDefaultModuleWithSourceAndClassesGen());
+    this.myModel = TemporaryModels.getInstance().createLongTerm("ConsoleModel", TempModuleOptions.forDefaultModuleWithSourceAndClassesGen());
     if (myModel == null) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("Error: could not create console model");
