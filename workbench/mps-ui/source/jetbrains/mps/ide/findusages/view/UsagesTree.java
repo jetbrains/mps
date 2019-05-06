@@ -306,6 +306,10 @@ public class UsagesTree extends MPSTree {
         node.setIcon(icon);
       }
 
+      // XXX this code vividly illustrates the issue with BaseNodeData, which duplicates stuff otherwise kept in MPSTreeNode
+      //     alternatively, it shows there's no need in MPSTreeNode, BaseNodeData could serve as tree model.
+      node.setText(data.getCaption());
+      node.setAdditionalText(data.getAdditionalInfo());
 
       for (UsagesTreeNode child : children) {
         node.add(child);

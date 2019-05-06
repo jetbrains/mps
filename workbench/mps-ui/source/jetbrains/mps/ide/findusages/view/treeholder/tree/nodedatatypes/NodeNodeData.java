@@ -108,7 +108,7 @@ public class NodeNodeData extends AbstractResultNodeData {
     if (node.getParent() == null) {
       return "";
     }
-    return String.format("role %s in %s", node.getContainmentLink().getName(), snodeRepresentation(node.getParent()));
+    return String.format("(role: %s in: %s)", node.getContainmentLink().getName(), snodeRepresentation(node.getParent()));
   }
 
   public boolean isRootNode() {

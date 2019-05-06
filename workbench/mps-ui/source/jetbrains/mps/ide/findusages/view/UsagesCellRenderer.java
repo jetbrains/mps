@@ -56,6 +56,7 @@ final class UsagesCellRenderer implements TreeCellRenderer {
     myElement.add(myPrefixLabel);
     myElement.add(Box.createRigidArea(new Dimension(5, 0)));
     myElement.add(myMainTextLabel);
+    myElement.add(Box.createRigidArea(new Dimension(5, 0)));
     myElement.add(myAdditionalTextLabel);
     myElement.add(Box.createRigidArea(new Dimension(10, 0)));
     myElement.add(myCounterLabel);

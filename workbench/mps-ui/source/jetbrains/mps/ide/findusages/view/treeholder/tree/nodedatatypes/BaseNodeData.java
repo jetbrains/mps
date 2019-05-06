@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,10 @@ import jetbrains.mps.ide.findusages.IExternalizeable;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 
@@ -81,12 +83,22 @@ public abstract class BaseNodeData implements IExternalizeable {
     return myRole;
   }
 
+  public String getCaption() {
+    return myCaption;
+  }
+
+  /**
+   * @deprecated use {@link #getCaption()} and {@link #getAdditionalInfo()} instead
+   */
+  @ToRemove(version = 2019.2)
+  @Deprecated
   public String getText(TextOptions options) {
-    String add = "";
-    if (options.myAdditionalInfo && !myAdditionalInfo.isEmpty()) {
-      add = "(" + myAdditionalInfo + ")";
-    }
-    return myCaption + add;
+    return getCaption();
+  }
+
+  @Nullable
+  public String getAdditionalInfo() {
+    return myAdditionalInfo;
   }
 
   public String getPlainText() {
