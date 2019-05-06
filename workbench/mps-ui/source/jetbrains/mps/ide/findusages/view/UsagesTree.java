@@ -18,7 +18,6 @@ package jetbrains.mps.ide.findusages.view;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.pom.Navigatable;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.LayeredIcon;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataNode;
@@ -34,15 +33,14 @@ import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelReadRunnable;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
-import java.awt.font.TextAttribute;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -55,6 +53,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+// XXX is there any reason to subclass MPSTree? What do we gain by that?
 public class UsagesTree extends MPSTree {
   private DataTree myContents;
   private HashSet<PathItemRole> myResultPathProvider = new HashSet<>();
@@ -383,10 +382,7 @@ public class UsagesTree extends MPSTree {
 
   // FIXME please, refactor
   /*package*/ void openCurrentNodeLink(boolean inProjectIfPossible, boolean focus) {
-    UsagesTreeNode treeNode = getCurrentNode();
-    if (treeNode != null) {
-      treeNode.goByNodeLink(inProjectIfPossible, focus);
-    }
+    goByNodeLink(getCurrentNode(), inProjectIfPossible, focus);
   }
 
   private void openNewlySelectedNodeLink(TreeSelectionEvent e, boolean inProjectIfPossible, boolean focus) {
@@ -396,7 +392,7 @@ public class UsagesTree extends MPSTree {
     }
     Object treeNode = path.getLastPathComponent();
     if (treeNode instanceof UsagesTreeNode) {
-      ((UsagesTreeNode) treeNode).goByNodeLink(inProjectIfPossible, focus);
+      goByNodeLink((UsagesTreeNode) treeNode, inProjectIfPossible, focus);
     }
   }
 
@@ -404,13 +400,33 @@ public class UsagesTree extends MPSTree {
     myAutoscroll = autoscroll;
 
     if (getCurrentNode() != null) {
-      getCurrentNode().goByNodeLink(false, false);
+      goByNodeLink(getCurrentNode(), false, false);
     }
   }
 
   public boolean isAutoscroll() {
     return myAutoscroll;
   }
+
+  @Override
+  protected void doubleClick(@NotNull MPSTreeNode nodeToClick) {
+    if (nodeToClick instanceof UsagesTreeNode) {
+      final BaseNodeData ud = ((UsagesTreeNode) nodeToClick).getUsageData();
+      if (ud != null && ud.isPathTail()) {
+        goByNodeLink((UsagesTreeNode) nodeToClick, false, true);
+      }
+
+    } else {
+      super.doubleClick(nodeToClick);
+    }
+  }
+
+  private void goByNodeLink(@Nullable UsagesTreeNode treeNode, boolean inProjectIfPossible, boolean focus) {
+    if (treeNode != null && treeNode.getUsageData() instanceof AbstractResultNodeData) {
+      ((AbstractResultNodeData) treeNode.getUsageData()).navigate(myProject, inProjectIfPossible, focus);
+    }
+  }
+
 
   @Nullable
   public Navigatable toNavigatable(DefaultMutableTreeNode treeNode) {
@@ -464,6 +480,7 @@ public class UsagesTree extends MPSTree {
     public UsagesTreeNode(DataNode userObj, BaseNodeData data) {
       super(userObj);
       setNodeIdentifier(data.getPlainText());
+      // XXX UsagesTreeNode may become static once myProject access gone!
       Icon icon = data.getIcon(() -> myProject.getRepository());
       if (data.isResultNode()) {
         final LayeredIcon result = new LayeredIcon(2);
@@ -472,6 +489,7 @@ public class UsagesTree extends MPSTree {
         icon = result;
       }
       setIcon(icon);
+      setToggleClickCount(data.isPathTail() ? -1 : 2);
     }
 
     /*package*/ void updateText() {
@@ -491,31 +509,6 @@ public class UsagesTree extends MPSTree {
     @Override
     protected void updateErrorState() {
       //disable for
-    }
-
-    @Override
-    public int getToggleClickCount() {
-      // FIXME use setToggleClickCount
-      return isPathTail() ? -1 : 2;
-    }
-
-    private boolean isPathTail() {
-      return getUsageData() != null && getUsageData().isPathTail();
-    }
-
-    @Override
-    public void doubleClick() {
-      // FIXME move to UsagesTree
-      if (isPathTail()) {
-        goByNodeLink(false, true);
-      }
-    }
-
-    /*package*/ void goByNodeLink(boolean inProjectIfPossible, boolean focus) {
-      BaseNodeData data = getUsageData();
-      if (data instanceof AbstractResultNodeData) {
-        ((AbstractResultNodeData) data).navigate(myProject, inProjectIfPossible, focus);
-      }
     }
 
     @Nullable
