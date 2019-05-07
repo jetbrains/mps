@@ -295,27 +295,22 @@
     <file name="typeof_PropertyAntiquotation_InferenceRule.java">
       <node id="1196866840326" at="21,5,22,207" concept="6" />
       <node id="1196866840326" at="22,207,23,199" concept="6" />
-      <node id="1196866840326" at="23,199,24,301" concept="2" />
+      <node id="1196866840326" at="23,199,24,531" concept="2" />
       <node id="1196866827112" at="27,50,28,163" concept="7" />
       <node id="1196866827112" at="30,68,31,102" concept="7" />
       <node id="1196866827112" at="33,30,34,17" concept="7" />
-      <node id="1196866844268" at="36,63,37,63" concept="6" />
-      <node id="1196866844268" at="37,63,38,30" concept="6" />
-      <node id="1196866844268" at="38,30,39,248" concept="2" />
-      <node id="1196866844268" at="39,248,40,24" concept="7" />
       <node id="1196866827112" at="18,0,20,0" concept="1" trace="typeof_PropertyAntiquotation_InferenceRule#()V" />
       <node id="1196866827112" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1196866827112" at="30,0,33,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="1196866827112" at="33,0,36,0" concept="5" trace="overrides#()Z" />
       <node id="1196866840326" at="20,124,25,5" concept="0" />
-      <node id="1196866844268" at="36,0,42,0" concept="8" trace="_quotation_createNode_r9cjy_a1a2a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1196866827112" at="20,0,27,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="1196866827112" at="18,55,18,55" />
       <scope id="1196866827112" at="27,50,28,163" />
       <scope id="1196866827112" at="30,68,31,102" />
       <scope id="1196866827112" at="33,30,34,17" />
       <scope id="1196866827112" at="18,0,20,0" />
-      <scope id="1196866840326" at="21,5,24,301">
+      <scope id="1196866840326" at="21,5,24,531">
         <var name="_info_12389875345" id="1196866840326" />
         <var name="_nodeToCheck_1029348928467" id="1196866840326" />
       </scope>
@@ -324,18 +319,13 @@
         <var name="argument" id="1196866827112" />
       </scope>
       <scope id="1196866827112" at="33,0,36,0" />
-      <scope id="1196866844268" at="36,63,40,24">
-        <var name="facade" id="1196866844268" />
-        <var name="quotedNode_1" id="1196866844268" />
-      </scope>
       <scope id="1196866827113" at="20,124,25,5" />
-      <scope id="1196866844268" at="36,0,42,0" />
       <scope id="1196866827112" at="20,0,27,0">
         <var name="nodeToCheck" id="1196866827112" />
         <var name="status" id="1196866827112" />
         <var name="typeCheckingContext" id="1196866827112" />
       </scope>
-      <unit id="1196866827112" at="17,0,43,0" name="jetbrains.mps.lang.quotation.typesystem.typeof_PropertyAntiquotation_InferenceRule" />
+      <unit id="1196866827112" at="17,0,37,0" name="jetbrains.mps.lang.quotation.typesystem.typeof_PropertyAntiquotation_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/1202840492692">
