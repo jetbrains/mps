@@ -41,6 +41,8 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.project.Project;
 import org.jdom.Element;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -113,8 +115,15 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
   }
 
   public void setContents(final SearchResults contents) {
+    // FIXME Would be great to show some sort of progress indicator here for huge search results (it takes some time to build a tree based on them)
+    //       I tried UiActivity from IDEA to no avail (no visible indication), and there's no documentation to help me figure out what's that and
+    //       how to use it right. Seems that the way to report long-running activity is to fire another background task here to build a tree.
+    // XXX no idea what to pass as type, id into Progress cons here
+    // final Progress p = new Progress("setContents", getClass().getName());
+    // UiActivityMonitor.getInstance().addActivity(ProjectHelper.toIdeaProject(myProject), p);
     // XXX no idea if there's real need to have read action here, just refactored ModelAccess static out of DataTree here.
     myProject.getModelAccess().runReadAction(() -> myContents.setContents(contents, myTree.getPresentationProvider()));
+    // UiActivityMonitor.getInstance().removeActivity(ProjectHelper.toIdeaProject(myProject), p);
   }
 
   @Override
@@ -247,7 +256,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       public ViewOptionsToolbar() {
         myAdditionalInfoNeededButton = new MyBaseToggleAction("Additional node info", "", General.Information) {
           @Override
-          public boolean isSelected(AnActionEvent e) {
+          public boolean isSelected() {
             return myTree.isAdditionalInfoNeeded();
           }
 
@@ -259,14 +268,14 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
 
         myShowSearchedNodesButton = new MyBaseToggleAction("Show searched nodes", "", Actions.SearchedNodes) {
           @Override
-          public boolean isSelected(AnActionEvent e) {
+          public boolean isSelected() {
             return myTree.isShowSearchedNodes();
           }
 
           @Override
           public void doSetSelected(AnActionEvent e, boolean state) {
             myTree.setShowSearchedNodes(state);
-            if (!myTree.isShowSearchedNodes() && myGroupSearchedNodesButton.isSelected(null)) {
+            if (!myTree.isShowSearchedNodes() && myGroupSearchedNodesButton.isSelected()) {
               myGroupSearchedNodesButton.doSetSelected(null, false);
             }
           }
@@ -274,7 +283,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
 
         myGroupSearchedNodesButton = new MyBaseToggleAction("Group searched nodes", "", Actions.GroupSearched) {
           @Override
-          public boolean isSelected(AnActionEvent e) {
+          public boolean isSelected() {
             return myTree.isGroupSearchedNodes();
           }
 
@@ -317,9 +326,9 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
 
       public void getViewOptions(ViewOptions options) {
         options.myCount = true;
-        options.myInfo = myAdditionalInfoNeededButton.isSelected(null);
-        options.myShowSearchedNodes = myShowSearchedNodesButton.isSelected(null);
-        options.myGroupSearchedNodes = myGroupSearchedNodesButton.isSelected(null);
+        options.myInfo = myAdditionalInfoNeededButton.isSelected();
+        options.myShowSearchedNodes = myShowSearchedNodesButton.isSelected();
+        options.myGroupSearchedNodes = myGroupSearchedNodesButton.isSelected();
 
         options.mySearchedNodesButtonsVisible = mySearchedNodesButtonsVisible;
         options.myAdditionalInfoButtonVisible = myAdditionalInfoButtonVisible;
@@ -362,7 +371,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
 
         myRootPathButton = new MyBaseToggleAction("Group by root node", "", Icons.ROOT_ICON) {
           @Override
-          public boolean isSelected(AnActionEvent e) {
+          public boolean isSelected() {
             return myPathProvider.contains(PathItemRole.ROLE_ROOT);
           }
 
@@ -372,7 +381,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
               addPathComponent(PathItemRole.ROLE_ROOT);
             } else {
               myTree.startAdjusting();
-              if (myNamedConceptPathButton.isSelected(null)) {
+              if (myNamedConceptPathButton.isSelected()) {
                 myNamedConceptPathButton.doSetSelected(null, false);
               }
               removePathComponent(PathItemRole.ROLE_ROOT);
@@ -383,7 +392,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
 
         myNamedConceptPathButton = new MyBaseToggleAction("Group by path", "", Icons.PATH_ICON) {
           @Override
-          public boolean isSelected(AnActionEvent e) {
+          public boolean isSelected() {
             return myPathProvider.contains(PathItemRole.ROLE_ROOT_TO_TARGET_NODE);
           }
 
@@ -391,7 +400,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
           public void doSetSelected(AnActionEvent e, boolean state) {
             if (state) {
               myTree.startAdjusting();
-              if (!myRootPathButton.isSelected(null)) {
+              if (!myRootPathButton.isSelected()) {
                 myRootPathButton.doSetSelected(null, true);
               }
               addPathComponent(PathItemRole.ROLE_ROOT_TO_TARGET_NODE);
@@ -427,13 +436,13 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       public void getViewOptions(ViewOptions options) {
         options.myCategories = new boolean[myCategoryPathButtons.size()];
         for (int i = 0; i < myCategoryPathButtons.size(); i++) {
-          options.myCategories[i] = myCategoryPathButtons.get(i).isSelected(null);
+          options.myCategories[i] = myCategoryPathButtons.get(i).isSelected();
         }
 
-        options.myModule = myModulePathButton.isSelected(null);
-        options.myModel = myModelPathButton.isSelected(null);
-        options.myRoot = myRootPathButton.isSelected(null);
-        options.myNamedPath = myNamedConceptPathButton.isSelected(null);
+        options.myModule = myModulePathButton.isSelected();
+        options.myModel = myModelPathButton.isSelected();
+        options.myRoot = myRootPathButton.isSelected();
+        options.myNamedPath = myNamedConceptPathButton.isSelected();
       }
 
       public ActionGroup getActions() {
@@ -450,7 +459,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       }
 
       @Override
-      public boolean isSelected(AnActionEvent e) {
+      public boolean isSelected() {
         return myPathProvider.contains(myPathItemRole);
       }
 
@@ -473,8 +482,15 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
       super(text, description, icon);
     }
 
+    public abstract boolean isSelected();
+
     @Override
-    public final void setSelected(AnActionEvent e, boolean state) {
+    public final boolean isSelected(@NotNull AnActionEvent e) {
+      return isSelected();
+    }
+
+    @Override
+    public final void setSelected(@Nullable AnActionEvent e, boolean state) {
       doSetSelected(e, state);
       myDefaultOptions.setValues(getComponentsViewOptions());
     }
