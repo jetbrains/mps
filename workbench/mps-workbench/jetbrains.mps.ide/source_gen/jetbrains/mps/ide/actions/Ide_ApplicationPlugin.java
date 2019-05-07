@@ -184,11 +184,11 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertInterfaceGroupIntoAnother("LocalHistory", CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_idealocalhistory);
     insertInterfaceGroupIntoAnother("LocalHistory", ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_idealocalhistory);
     insertInterfaceGroupIntoAnother("NavbarPopupMenu", AbstractFileActions_ActionGroup.ID, AbstractFileActions_ActionGroup.LABEL_ID_ideaActions);
-    insertInterfaceGroupIntoAnother("jetbrains.mps.ide.java.actions.SolutionActionsEx_ActionGroup", SolutionActions_ActionGroup.ID, SolutionActions_ActionGroup.LABEL_ID_contents);
-    insertInterfaceGroupIntoAnother("jetbrains.mps.ide.java.workbench.actions.ModelNewActions_ActionGroup", GeneratorNewActions_ActionGroup.ID, GeneratorNewActions_ActionGroup.LABEL_ID_newModel);
-    insertInterfaceGroupIntoAnother("jetbrains.mps.ide.java.workbench.actions.ModelNewActions_ActionGroup", LanguageNewActions_ActionGroup.ID, LanguageNewActions_ActionGroup.LABEL_ID_newModel);
-    insertInterfaceGroupIntoAnother("jetbrains.mps.ide.java.workbench.actions.ModelNewActions_ActionGroup", SolutionNewActions_ActionGroup.ID, SolutionNewActions_ActionGroup.LABEL_ID_newModel);
-    insertInterfaceGroupIntoAnother("jetbrains.mps.ide.java.actions.ModelActions_ActionGroup", ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_paste);
+    insertInterfaceGroupIntoAnother("jetbrains.mps.java.workbench.actions.SolutionActionsEx_ActionGroup", SolutionActions_ActionGroup.ID, SolutionActions_ActionGroup.LABEL_ID_contents);
+    insertInterfaceGroupIntoAnother("jetbrains.mps.java.workbench.actions.ModelNewActions_ActionGroup", GeneratorNewActions_ActionGroup.ID, GeneratorNewActions_ActionGroup.LABEL_ID_newModel);
+    insertInterfaceGroupIntoAnother("jetbrains.mps.java.workbench.actions.ModelNewActions_ActionGroup", LanguageNewActions_ActionGroup.ID, LanguageNewActions_ActionGroup.LABEL_ID_newModel);
+    insertInterfaceGroupIntoAnother("jetbrains.mps.java.workbench.actions.ModelNewActions_ActionGroup", SolutionNewActions_ActionGroup.ID, SolutionNewActions_ActionGroup.LABEL_ID_newModel);
+    insertInterfaceGroupIntoAnother("jetbrains.mps.java.platform.actions.ModelActions_ActionGroup", ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_paste);
     insertInterfaceGroupIntoAnother("RunContextGroup", CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_run);
     insertInterfaceGroupIntoAnother("RunContextGroup", JUnitTestCaseActions_ActionGroup.ID, null);
     insertInterfaceGroupIntoAnother("RunContextGroup", JUnitTestMethodActions_ActionGroup.ID, null);
@@ -196,8 +196,8 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertInterfaceGroupIntoAnother("RunContextGroup", NodeActions_ActionGroup.ID, null);
     insertInterfaceGroupIntoAnother("RunContextGroup", ProjectActions_ActionGroup.ID, ProjectActions_ActionGroup.LABEL_ID_runConfig);
     insertInterfaceGroupIntoAnother("RunContextGroup", "jetbrains.mps.ide.editor.actions.EditorPopup_ActionGroup", null);
-    insertInterfaceGroupIntoAnother("jetbrains.mps.ide.java.workbench.actions.AnalyzeJavaActions_ActionGroup", AnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.LABEL_ID_analyze);
-    insertInterfaceGroupIntoAnother("jetbrains.mps.ide.java.workbench.actions.AnalyzeJavaActions_ActionGroup", DevkitActions_ActionGroup.ID, DevkitActions_ActionGroup.LABEL_ID_analyze);
+    insertInterfaceGroupIntoAnother("jetbrains.mps.java.workbench.actions.AnalyzeJavaActions_ActionGroup", AnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.LABEL_ID_analyze);
+    insertInterfaceGroupIntoAnother("jetbrains.mps.java.workbench.actions.AnalyzeJavaActions_ActionGroup", DevkitActions_ActionGroup.ID, DevkitActions_ActionGroup.LABEL_ID_analyze);
     insertInterfaceGroupIntoAnother("jetbrains.mps.ide.platform.actions.NodeRefactoring_ActionGroup", NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_refactoring);
   }
   public void adjustRegularGroups() {

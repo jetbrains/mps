@@ -3445,25 +3445,6 @@
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
     <property role="3GE5qa" value="checking" />
-    <node concept="Wx3nA" id="4OGppb3igLs" role="jymVt">
-      <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="MIGRATION_PLUGIN" />
-      <node concept="3Tm1VV" id="4OGppb3ihpi" role="1B3o_S" />
-      <node concept="17QB3L" id="4OGppb3igLq" role="1tU5fm" />
-      <node concept="Xl_RD" id="4OGppb3igLr" role="33vP2m">
-        <property role="Xl_RC" value="migration" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="4OGppb3igSh" role="jymVt">
-      <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="MIGRATION_PLUGIN_ID" />
-      <node concept="3Tm1VV" id="4OGppb3ihqi" role="1B3o_S" />
-      <node concept="17QB3L" id="4OGppb3igSf" role="1tU5fm" />
-      <node concept="Xl_RD" id="4OGppb3igSg" role="33vP2m">
-        <property role="Xl_RC" value="jetbrains.mps.ide.migration.workbench" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3WxHuKXmqoV" role="jymVt" />
     <node concept="Wx3nA" id="2SnxzQPEmTF" role="jymVt">
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
