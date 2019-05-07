@@ -285,7 +285,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
         next = new DataNode(data);
         parent.add(next);
-        // XXX beare, currentIdObject != data.getIdObject() at least for CategoryNodeData; use former as it's the one use to query the cache
+        // XXX beware, currentIdObject != data.getIdObject() at least for CategoryNodeData; use former as it's the one use to query the cache
         myRebuildCache.put(new Pair<>(parent, currentIdObject), next);
       } else {
         if (isPathTail) {

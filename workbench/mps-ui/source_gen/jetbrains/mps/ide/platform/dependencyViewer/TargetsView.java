@@ -17,7 +17,6 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNod
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.TreePath;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.DataNode;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
@@ -100,19 +99,18 @@ public class TargetsView extends UsagesView {
       }
       DependencyViewerScope scope = new DependencyViewerScope(getProject().getRepository());
       for (TreePath path : paths) {
-        MPSTreeNode node = (MPSTreeNode) path.getLastPathComponent();
-        Object userObject = node.getUserObject();
-        if (userObject instanceof DataNode) {
-          BaseNodeData data = ((DataNode) userObject).getData();
-          if (data instanceof ModelNodeData) {
-            scope.add(((ModelNodeData) data).getModelReference());
-          }
-          if (data instanceof ModuleNodeData) {
-            scope.add(((ModuleNodeData) data).getModuleReference());
-          }
-          if (data instanceof NodeNodeData) {
-            scope.add(((NodeNodeData) data).getNodePointer());
-          }
+        if (!(path.getLastPathComponent() instanceof UsagesTree.UsagesTreeNode)) {
+          continue;
+        }
+        BaseNodeData data = ((UsagesTree.UsagesTreeNode) path.getLastPathComponent()).getUsageData();
+        if (data instanceof ModelNodeData) {
+          scope.add(((ModelNodeData) data).getModelReference());
+        }
+        if (data instanceof ModuleNodeData) {
+          scope.add(((ModuleNodeData) data).getModuleReference());
+        }
+        if (data instanceof NodeNodeData) {
+          scope.add(((NodeNodeData) data).getNodePointer());
         }
       }
       myDependenciesComponent.updateReferencesView(scope);
