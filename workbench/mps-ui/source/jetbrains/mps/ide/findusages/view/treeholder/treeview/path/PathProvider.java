@@ -17,9 +17,17 @@ package jetbrains.mps.ide.findusages.view.treeholder.treeview.path;
 
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.model.SearchResult;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.CategoryNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.DeployedLanguageNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -27,23 +35,66 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import javax.swing.Icon;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 public class PathProvider {
   private static final Logger LOG = LogManager.getLogger(PathProvider.class);
+  private final PathItem.Factory<SNode> myNodeElementFactory;
+  private final PathItem.Factory<SModelReference> myModelElementFactory;
+  private final PathItem.Factory<SModuleReference> myModuleElementFactory;
+  private final PathItem.Factory<SLanguage> myLanguageElementFactory;
+  private final PathItem.Factory<Pair<CategoryKind, String>> myCategoryElementFactory;
 
-  // FIXME bloody sh!t. Ever try to put anything into SearchResult this code does not expect, and no chance to see it. Besides, there's
-  // FIXME              symmetric code in DataTree.createPath() which needs to be fixed to get the stuff working. Great, yo!
-  // FIXME This code cries for refactoring. Why on earth does it resolve model references?
-  public static List<PathItem> getPathForSearchResult(SearchResult<?> result) {
-    List<PathItem> res = new ArrayList<>();
+  public PathProvider(@Nullable final INodeRepresentator<? super Object> presentationProvider, final boolean resultsSection) {
+    final Function<PathItem<?>, String> caption = o -> {
+      if (presentationProvider != null && o.isTail() && o.getPresentationObject() != null) {
+        return presentationProvider.getPresentation(o.getPresentationObject());
+      }
+      return null;
+    };
+    final Function<PathItem<?>, String> info = o -> {
+        if (presentationProvider != null && o.isTail() && o.getPresentationObject() != null) {
+          return presentationProvider.getAdditionalInfo(o.getPresentationObject());
+        }
+        return null;
+    };
+
+    myNodeElementFactory = c -> new NodeNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
+    myModelElementFactory = c -> new ModelNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
+    myModuleElementFactory = c -> new ModuleNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
+    myLanguageElementFactory = c -> new DeployedLanguageNodeData(c.getRole(), caption.apply(c), info.apply(c), c.getIdObject(), c.isTail(), resultsSection);
+    myCategoryElementFactory = creator -> {
+      Pair<CategoryKind, String> category = creator.getIdObject();
+      Icon i;
+      String c;
+      if (presentationProvider != null) {
+        // FIXME why getCategoryIcon in ModelCheckerViewer (the only place to care about this method) uses 1 category kind and name to distinguish an icon?
+        i = presentationProvider.getCategoryIcon(category.o2);
+        c = presentationProvider.getCategoryText(new TextOptions(true, false, 0), category.o2, resultsSection);
+      } else {
+        i = category.o1.getIcon();
+        c = category.o2;
+      }
+      return new CategoryNodeData(creator.getRole(), category.o1, c, i, resultsSection);
+    };
+  }
+
+  public List<PathItem<?>> getPathForSearchResult(SearchResult<?> result) {
+    List<PathItem<?>> res = new ArrayList<>();
     Object o = result.getPathObject();
+    // makes sense only for tail item, see presentationProvider.getPresentation(), above
+    Object x = result.getObject();
 
     if (o instanceof SNode) {
       SNode node = (SNode) o;
-      res.add(new PathItem(PathItemRole.ROLE_TARGET_NODE, node));
+      // res.isEmpty() is safe way to find out if it's the first time we put anything into res list (which is reversed path,
+      // hence first element to put is its tail).
+      //noinspection ConstantConditions    NOTE keep res.isEmpty just in case anyone adds another instanceof check above
+      res.add(new PathItem<>(PathItemRole.ROLE_TARGET_NODE, node, x, res.isEmpty(), myNodeElementFactory));
 
       if (node.getParent() != null) {
         appendNodePathThroughNamedConcepts(res, node.getParent());
@@ -51,40 +102,50 @@ public class PathProvider {
 
       SNode rootNode = node.getContainingRoot();
       if (node != rootNode) {
-        res.add(new PathItem(PathItemRole.ROLE_ROOT, rootNode));
+        res.add(new PathItem<>(PathItemRole.ROLE_ROOT, rootNode, null, false, myNodeElementFactory));
       }
 
       o = node.getModel();
+      x = null;
     }
 
     if (o instanceof SModel) {
-      res.add(new PathItem(PathItemRole.ROLE_MODEL, ((SModel) o).getReference()));
+      res.add(new PathItem<>(PathItemRole.ROLE_MODEL, ((SModel) o).getReference(), x, res.isEmpty(), myModelElementFactory));
       o = ((SModel) o).getModule();
+      x = null;
     }
 
     if (o instanceof SModelReference) {
       SModelReference model = (SModelReference) o;
-      res.add(new PathItem(PathItemRole.ROLE_MODEL, model));
+      res.add(new PathItem<>(PathItemRole.ROLE_MODEL, model, x, res.isEmpty(), myModelElementFactory));
       o = model.getModuleReference();
+      x = null;
     }
 
     if (o instanceof SModule) {
       SModule module = (SModule) o;
-      res.add(new PathItem(PathItemRole.ROLE_MODULE, module));
+      res.add(new PathItem<>(PathItemRole.ROLE_MODULE, module.getModuleReference(), x, res.isEmpty(), myModuleElementFactory));
+      x = null;
     }
 
     if (o instanceof SModuleReference) {
-      res.add(new PathItem(PathItemRole.ROLE_MODULE, o));
+      res.add(new PathItem<>(PathItemRole.ROLE_MODULE, (SModuleReference) o, x, res.isEmpty(), myModuleElementFactory));
+      x = null;
     }
 
     if (o instanceof SLanguage) {
-      res.add(new PathItem(PathItemRole.ROLE_LANGUAGE, o));
+      res.add(new PathItem<>(PathItemRole.ROLE_LANGUAGE, (SLanguage) o, x, res.isEmpty(), myLanguageElementFactory));
+      x = null;
+    }
+    if (res.isEmpty()) {
+      // see no reason to add categories if there's no actual results
+      return res;
     }
 
     List<Pair<CategoryKind, String>> reversedCategories = new ArrayList<>(result.getCategories());
     Collections.reverse(reversedCategories);
     for (Pair<CategoryKind, String> category : reversedCategories) {
-      res.add(new PathItem(PathItemRole.getCategoryRole(category.o1), category));
+      res.add(new PathItem<>(PathItemRole.getCategoryRole(category.o1), category, null, false, myCategoryElementFactory));
     }
 
     Collections.reverse(res);
@@ -92,7 +153,7 @@ public class PathProvider {
     return res;
   }
 
-  private static void appendNodePathThroughNamedConcepts(List<PathItem> path, SNode node) {
+  private void appendNodePathThroughNamedConcepts(List<PathItem<?>> path, SNode node) {
     String name;
     try {
       name = node.getName();
@@ -102,7 +163,10 @@ public class PathProvider {
     }
     if (name != null) {
       if (node != node.getContainingRoot()) {
-        path.add(new PathItem(PathItemRole.ROLE_ROOT_TO_TARGET_NODE, node));
+        // XXX not clear what to do when some intermediate node becomes a 'tail' for a later result, how do we pass 'presentation' object there?
+        // AFAIK, existing DataTree doesn't care to update presentation of a newly discovered 'tail' node (just updates its status with setIsPathTail_internal
+        //       see the very end of DataTree.createPath()).
+        path.add(new PathItem<>(PathItemRole.ROLE_ROOT_TO_TARGET_NODE, node, null, false, myNodeElementFactory));
       }
     }
 

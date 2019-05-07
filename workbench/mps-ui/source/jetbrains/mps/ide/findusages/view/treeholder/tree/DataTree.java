@@ -15,39 +15,29 @@
  */
 package jetbrains.mps.ide.findusages.view.treeholder.tree;
 
-import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.IExternalizeable;
-import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.AbstractResultNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.CategoryNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.MainNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.PresentationContext;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ResultsNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.SearchedNodesNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItem;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathProvider;
-import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
@@ -169,9 +159,12 @@ public class DataTree implements IExternalizeable, IChangeListener {
     DataNode root = createTreeRoot();
 
     DataNode nodesRoot = new DataNode(new SearchedNodesNodeData(PathItemRole.ROLE_MAIN_SEARCHED_NODES));
+    // XXX null INodeRepresentator in PP, below, is important as we don't want to use custom presentation for look up elements, just for results
+    //     not that I fully understand or approve the idea, it's the way it used to be for years.
+    final PathProvider pp1 = new PathProvider(null, false);
     for (Object node : results.getSearchedObjects().getElements()) {
       if (node != null) {
-        addSearchedNode(nodesRoot, node);
+        createPath(pp1, nodesRoot, new SearchResult<>(node, SearchedNodesNodeData.CATEGORY_NAME));
       }
     }
     root.add(nodesRoot);
@@ -187,8 +180,9 @@ public class DataTree implements IExternalizeable, IChangeListener {
       c = nodeRepresentator.getResultsText(new TextOptions(true, false, notNullResults.size()));
     }
     DataNode resultsRoot = new DataNode(new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, i, c));
+    final PathProvider pp2 = new PathProvider(nodeRepresentator, true);
     for (SearchResult<?> result : notNullResults) {
-      addResultWithPresentation(resultsRoot, result, nodeRepresentator);
+      createPath(pp2, resultsRoot, result);
     }
     root.add(resultsRoot);
 
@@ -196,92 +190,25 @@ public class DataTree implements IExternalizeable, IChangeListener {
     return root;
   }
 
-  private void addSearchedNode(DataNode root, Object node) {
-    List<PathItem> path = PathProvider.getPathForSearchResult(new SearchResult<>(node, SearchedNodesNodeData.CATEGORY_NAME));
-    createPath(path, root, null, false, null);
-  }
-
-  private void addResultWithPresentation(DataNode root, SearchResult result, INodeRepresentator nodeRepresentator) {
-    List<PathItem> path = PathProvider.getPathForSearchResult(result);
-    createPath(path, root, nodeRepresentator, true, result);
-  }
-
   // XXX has to build the tree without duplications, e.g. there could be no duplicated model elements under same path(category).
-  private void createPath(List<PathItem> path, DataNode parent, @Nullable INodeRepresentator<Object> nodeRepresentator,
-                          boolean results, @Nullable SearchResult result) {
+  private void createPath(@NotNull PathProvider pathProvider, @NotNull DataNode parent, @NotNull SearchResult result) {
 
+    final List<PathItem<?>> path = pathProvider.getPathForSearchResult(result);
+
+    // empty path likely means there are search result with path elements we don't recognize
     assert !path.isEmpty();
     final PathItem pathTail = path.get(path.size() - 1);
 
-    final String tailCustomCaption;
-    if (result != null && nodeRepresentator != null) {
-      tailCustomCaption = nodeRepresentator.getPresentation(result.getObject());
-    } else {
-      tailCustomCaption = null;
-    }
-
-    final String tailCustomAdditionalInfo;
-    if (result != null && nodeRepresentator != null) {
-      tailCustomAdditionalInfo = nodeRepresentator.getAdditionalInfo(result.getObject());
-    } else {
-      tailCustomAdditionalInfo = null;
-    }
-
-
     for (PathItem currentPathItem : path) {
       Object currentIdObject = currentPathItem.getIdObject();
+      // FWIW, there's PathItem.isTail() now
       final boolean isPathTail = currentPathItem == pathTail;
 
       DataNode next = myRebuildCache.get(new Pair<>(parent, currentIdObject));
 
       if (next == null) {
-        PathItemRole creator = currentPathItem.getRole();
-        BaseNodeData data = null;
 
-        final String caption = isPathTail ? tailCustomCaption : null;
-        final String info = isPathTail ? tailCustomAdditionalInfo : null;
-
-        if (currentIdObject instanceof SModule) {
-          data = new ModuleNodeData(creator, caption, info, ((SModule) currentIdObject).getModuleReference(), isPathTail, results);
-        } else if (currentIdObject instanceof SModuleReference) {
-          data = new ModuleNodeData(creator, caption, info, (SModuleReference) currentIdObject, isPathTail, results);
-        } else if (currentIdObject instanceof SModelReference) {
-          data = new ModelNodeData(creator, caption, info, (SModelReference) currentIdObject, isPathTail, results);
-        } else if (currentIdObject instanceof SNode) {
-          data = new NodeNodeData(creator, caption, info, (SNode) currentIdObject, isPathTail, results);
-        } else if (currentIdObject instanceof SLanguage) {
-          final SLanguage l = (SLanguage) currentIdObject;
-          data = new AbstractResultNodeData(creator, caption == null ? l.getQualifiedName() : caption, info, isPathTail, results) {
-            @Override
-            protected String createIdObject() {
-              return l.toString();
-            }
-
-            @Override
-            public Icon getIcon(PresentationContext presentationContext) {
-              return MPSIcons.LanguageRuntime;
-            }
-
-            @Override
-            public void navigate(Project mpsProject, boolean useProjectTree, boolean focus) {
-              new ProjectPaneNavigator(mpsProject).shallFocus(focus).select(l);
-            }
-          };
-        } else if (currentIdObject instanceof Pair) {
-          Pair<CategoryKind, String> category = (Pair<CategoryKind, String>) currentIdObject;
-          Icon i;
-          String c;
-          if (nodeRepresentator != null) {
-            i = nodeRepresentator.getCategoryIcon(category.o2);
-            c = nodeRepresentator.getCategoryText(new TextOptions(true, false, 0), category.o2, results);
-          } else {
-            i = category.o1.getIcon(); // FIXME is it safe to assume CategoryKind != null?
-            c = category.o2;
-          }
-          data = new CategoryNodeData(creator, category.o1, c, i, results);
-        }
-
-        assert data != null : currentIdObject;
+        BaseNodeData data = currentPathItem.create();
 
         next = new DataNode(data);
         parent.add(next);
@@ -289,6 +216,8 @@ public class DataTree implements IExternalizeable, IChangeListener {
         myRebuildCache.put(new Pair<>(parent, currentIdObject), next);
       } else {
         if (isPathTail) {
+          // XXX why some flag and not another node to represent the result, with use of
+          // nodeRepresentator.getPresentation(searchResult.getObject()) as it's for other result nodes?
           next.getData().setIsPathTail_internal(true);
         }
       }

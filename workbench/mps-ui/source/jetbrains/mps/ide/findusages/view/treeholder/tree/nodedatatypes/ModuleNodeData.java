@@ -67,7 +67,7 @@ public class ModuleNodeData extends AbstractResultNodeData {
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
     super.write(element, project);
-    element.setAttribute(MODULE_REF, myModuleReference.toString());
+    element.setAttribute(MODULE_REF, PersistenceFacade.getInstance().asString(myModuleReference));
   }
 
   @Override

@@ -15,23 +15,55 @@
  */
 package jetbrains.mps.ide.findusages.view.treeholder.treeview.path;
 
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class PathItem {
-  private Object myIdObject;
-  private PathItemRole myRole;
+public final class PathItem<T> {
+  private final T myIdObject;
+  private final Object myPresentationObject;
+  private final boolean myTail;
+  private final Factory<T> myFactory;
+  private final PathItemRole myRole;
 
-  public PathItem(PathItemRole role, @NotNull Object idObject) {
+  /*package*/ PathItem(PathItemRole role, @NotNull T idObject, @Nullable Object presentationObject,  boolean tail, @NotNull Factory<T> factory) {
     myRole = role;
     myIdObject = idObject;
+    myPresentationObject = presentationObject;
+    myTail = tail;
+    myFactory = factory;
   }
 
+  /**
+   * @return identifies path/location of presentationObject (e.g. different messages on a same node)
+   */
   @NotNull
-  public Object getIdObject() {
+  public T getIdObject() {
     return myIdObject;
   }
 
-  public PathItemRole getRole() {
+  /*package*/ PathItemRole getRole() {
     return myRole;
+  }
+
+  /**
+   * the only reason to keep this is custom presentation for tail elements.
+   * Alternatively, may supply one into create() method, as DataTree.createPath have access to SearchResult.getObject()
+   */
+  /*package*/ Object getPresentationObject() {
+    return myPresentationObject;
+  }
+
+  /*package*/ boolean isTail() {
+    return myTail;
+  }
+
+  @NotNull
+  public BaseNodeData create() {
+    return myFactory.create(this);
+  }
+
+  interface Factory<T>  {
+    BaseNodeData create(PathItem<T> creator);
   }
 }
