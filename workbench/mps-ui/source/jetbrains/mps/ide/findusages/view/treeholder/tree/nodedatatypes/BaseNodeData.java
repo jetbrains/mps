@@ -29,7 +29,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 
 public abstract class BaseNodeData implements IExternalizeable {
-  private static final String EXPANDED = "expanded";
   private static final String CAPTION = "caption";
   private static final String INFO = "info";
   private static final String EXCLUDED = "excluded";
@@ -42,7 +41,6 @@ public abstract class BaseNodeData implements IExternalizeable {
   private String myAdditionalInfo;
   private boolean myResultsSection;
   private boolean myIsExcluded;
-  private boolean myIsExpanded;
   private boolean myIsPathTail;
 
   protected BaseNodeData() {
@@ -53,13 +51,12 @@ public abstract class BaseNodeData implements IExternalizeable {
     read(element, project);
   }
 
-  public BaseNodeData(PathItemRole role, @NotNull String caption, String additionalInfo, boolean isExpanded, boolean isPathTail, boolean resultsSection) {
+  public BaseNodeData(PathItemRole role, @NotNull String caption, @Nullable String additionalInfo, boolean isPathTail, boolean resultsSection) {
     myRole = role;
     myCaption = caption;
     myAdditionalInfo = additionalInfo;
     myResultsSection = resultsSection;
     myIsExcluded = false;
-    myIsExpanded = isExpanded;
     myIsPathTail = isPathTail;
   }
 
@@ -128,7 +125,6 @@ public abstract class BaseNodeData implements IExternalizeable {
     element.setAttribute(CAPTION, myCaption);
     element.setAttribute(INFO, myAdditionalInfo);
     element.setAttribute(EXCLUDED, Boolean.toString(myIsExcluded));
-    element.setAttribute(EXPANDED, Boolean.toString(myIsExpanded));
     element.setAttribute(ISRESULT, Boolean.toString(myIsPathTail));
     element.setAttribute(RESULTS_SECTION, Boolean.toString(myResultsSection));
 
@@ -142,7 +138,6 @@ public abstract class BaseNodeData implements IExternalizeable {
     myCaption = element.getAttributeValue(CAPTION);
     myAdditionalInfo = element.getAttributeValue(INFO);
     myIsExcluded = Boolean.parseBoolean(element.getAttributeValue(EXCLUDED));
-    myIsExpanded = Boolean.parseBoolean(element.getAttributeValue(EXPANDED));
     myIsPathTail = Boolean.parseBoolean(element.getAttributeValue(ISRESULT));
     myResultsSection = Boolean.parseBoolean(element.getAttributeValue(RESULTS_SECTION));
 

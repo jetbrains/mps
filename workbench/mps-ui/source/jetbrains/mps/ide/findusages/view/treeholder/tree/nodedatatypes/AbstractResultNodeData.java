@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.project.Project;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractResultNodeData extends BaseNodeData {
   private String myCachedIdObject = null;
@@ -31,9 +32,8 @@ public abstract class AbstractResultNodeData extends BaseNodeData {
     super(element, project);
   }
 
-  public AbstractResultNodeData(PathItemRole role, @NotNull String caption,
-      @NotNull String additionalInfo, boolean isExpanded, boolean isPathTail, boolean resultsSection) {
-    super(role, caption, additionalInfo, isExpanded, isPathTail, resultsSection);
+  public AbstractResultNodeData(PathItemRole role, @NotNull String caption, @Nullable String additionalInfo, boolean isPathTail, boolean resultsSection) {
+    super(role, caption, additionalInfo, isPathTail, resultsSection);
   }
 
   @Override

@@ -17,7 +17,6 @@ package jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes;
 
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.logging.Logger;
@@ -25,7 +24,6 @@ import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.util.StringUtil;
 import org.apache.log4j.LogManager;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +45,7 @@ public class NodeNodeData extends AbstractResultNodeData {
 
   public NodeNodeData(PathItemRole role, @Nullable String caption, @Nullable String info, @NotNull SNode pathObject, boolean isPathTail,
                       boolean resultsSection) {
-    super(role, caption != null ? caption : snodeRepresentation(pathObject), info != null ? info : nodeAdditionalInfo(pathObject), false, isPathTail,
+    super(role, caption != null ? caption : snodeRepresentation(pathObject), info != null ? info : nodeAdditionalInfo(pathObject), isPathTail,
           resultsSection);
     myNodePointer = pathObject.getReference();
     myIsRootNode = pathObject.getModel() != null && pathObject.getParent() == null;

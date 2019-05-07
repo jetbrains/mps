@@ -35,7 +35,7 @@ public class CategoryNodeData extends BaseNodeData {
   private String myCategory = "";
 
   public CategoryNodeData(PathItemRole role, CategoryKind categoryKind, String category, @Nullable Icon icon, boolean resultsSection) {
-    super(role, category, "", true, false, resultsSection);
+    super(role, category, "", false, resultsSection);
     myIcon = icon;
     myCategory = category;
     myCategoryKindName = categoryKind.getName();

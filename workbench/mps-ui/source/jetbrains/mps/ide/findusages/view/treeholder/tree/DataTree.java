@@ -251,7 +251,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
           data = new NodeNodeData(creator, caption, info, (SNode) currentIdObject, isPathTail, results);
         } else if (currentIdObject instanceof SLanguage) {
           final SLanguage l = (SLanguage) currentIdObject;
-          data = new AbstractResultNodeData(creator, caption == null ? l.getQualifiedName() : caption, info == null ? "" : info, false, isPathTail, results) {
+          data = new AbstractResultNodeData(creator, caption == null ? l.getQualifiedName() : caption, info, isPathTail, results) {
             @Override
             protected String createIdObject() {
               return l.toString();

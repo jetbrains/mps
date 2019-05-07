@@ -17,7 +17,6 @@ package jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes;
 
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
@@ -39,7 +38,7 @@ public class ModelNodeData extends AbstractResultNodeData {
   public SModelReference myModelReference;
 
   public ModelNodeData(PathItemRole role, @Nullable String caption, @Nullable String info, @NotNull SModelReference modelReference, boolean isResult, boolean resultsSection) {
-    super(role, caption != null ? caption : modelReference.getModelName(), info == null ? "" : info, false, isResult, resultsSection);
+    super(role, caption != null ? caption : modelReference.getModelName(), info, isResult, resultsSection);
     myModelReference = modelReference;
   }
 
