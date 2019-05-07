@@ -50,9 +50,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -249,7 +247,6 @@ public class UsagesTree extends MPSTree {
 
     UsagesTreeNode child = children.get(0);
 
-    mergeChildren(children);
     buildCounters(child);
     sortByCaption(children);
     if (getPresentationProvider() != null) {
@@ -333,37 +330,6 @@ public class UsagesTree extends MPSTree {
     }
 
     return num;
-  }
-
-  private void mergeChildren(List<UsagesTreeNode> children) {
-    List<UsagesTreeNode> mergedChildren = new ArrayList<>();
-
-    Map<Object, UsagesTreeNode> childMap = new LinkedHashMap<>();
-    for (UsagesTreeNode child : children) {
-      Object additionID = child.getUsageData().getIdObject();
-      if (additionID == null) {
-        //we don't know what to do in the case of deleted nodes, so we won't merge them
-        mergedChildren.add(child);
-      } else {
-        UsagesTreeNode addToNode = childMap.get(additionID);
-        if (addToNode == null) {
-          childMap.put(additionID, child);
-        } else {
-          List<UsagesTreeNode> addition = new ArrayList<>(child.getChildren());
-          for (UsagesTreeNode additionChild : addition) {
-            addToNode.add(additionChild);
-          }
-        }
-      }
-    }
-    mergedChildren.addAll(childMap.values());
-
-    for (UsagesTreeNode child : mergedChildren) {
-      mergeChildren(child.getChildren());
-    }
-
-    children.clear();
-    children.addAll(mergedChildren);
   }
 
   // XXX makes sense only when myPresentationProvider != null;

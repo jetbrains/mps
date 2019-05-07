@@ -206,6 +206,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
     createPath(path, root, nodeRepresentator, true, result);
   }
 
+  // XXX has to build the tree without duplications, e.g. there could be no duplicated model elements under same path(category).
   private void createPath(List<PathItem> path, DataNode parent, @Nullable INodeRepresentator<Object> nodeRepresentator,
                           boolean results, @Nullable SearchResult result) {
 
@@ -284,7 +285,8 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
         next = new DataNode(data);
         parent.add(next);
-        myRebuildCache.put(new Pair<>(parent, data.getIdObject()), next);
+        // XXX beare, currentIdObject != data.getIdObject() at least for CategoryNodeData; use former as it's the one use to query the cache
+        myRebuildCache.put(new Pair<>(parent, currentIdObject), next);
       } else {
         if (isPathTail) {
           next.getData().setIsPathTail_internal(true);
