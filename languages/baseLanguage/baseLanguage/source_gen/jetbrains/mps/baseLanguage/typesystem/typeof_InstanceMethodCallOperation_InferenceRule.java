@@ -52,7 +52,7 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
       {
         SNode _nodeToCheck_1029348928467 = mcallop;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1204065906120", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(instanceType_typevar_1204064731338), (SNode) _quotation_createNode_ecn83h_a1a2a0a7a1(methodClassifier), true, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(instanceType_typevar_1204064731338), (SNode) _quotation_createNode_ecn83h_a1a0c0a0h0b(methodClassifier), true, false, _info_12389875345);
       }
     }
     // --- following piece of cake is identical for any method call --- 
@@ -208,7 +208,7 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_ecn83h_a1a2a0a7a1(Object parameter_1) {
+  private static SNode _quotation_createNode_ecn83h_a1a0c0a0h0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);

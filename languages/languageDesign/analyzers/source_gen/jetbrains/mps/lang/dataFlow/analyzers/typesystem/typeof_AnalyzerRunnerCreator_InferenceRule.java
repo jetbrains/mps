@@ -28,7 +28,7 @@ public class typeof_AnalyzerRunnerCreator_InferenceRule extends AbstractInferenc
     {
       SNode _nodeToCheck_1029348928467 = analyzerRunnerCreator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "178770917832644953", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "178770917832644950", true), (SNode) _quotation_createNode_tazfkf_a1a2a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(analyzerRunnerCreator, MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x151c4f99e489a17L, "analyzer")), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType"))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "178770917832644950", true), (SNode) _quotation_createNode_tazfkf_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(analyzerRunnerCreator, MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x151c4f99e489a17L, "analyzer")), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType"))), _info_12389875345);
     }
     SNode analyzer = SLinkOperations.getTarget(analyzerRunnerCreator, MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x151c4f99e489a17L, "analyzer"));
     if (ListSequence.fromList(SLinkOperations.getChildren(analyzerRunnerCreator, MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x376a4d52f8d10dc6L, "parameters"))).count() != ListSequence.fromList(SLinkOperations.getChildren(analyzer, MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x376a4d52f8c2e303L, "constructorParameters"))).count()) {
@@ -64,7 +64,7 @@ public class typeof_AnalyzerRunnerCreator_InferenceRule extends AbstractInferenc
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_tazfkf_a1a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_tazfkf_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

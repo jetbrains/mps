@@ -24,7 +24,7 @@ public class typeof_NodePointerExpression_InferenceRule extends AbstractInferenc
     {
       SNode _nodeToCheck_1029348928467 = expr;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7400021826775224134", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7400021826775222158", true), (SNode) createSNodePointerType_xp3gkt_a1a2a1a1(RulesUtil.closestConceptNode(SNodeOperations.getConcept(target))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7400021826775222158", true), (SNode) createSNodePointerType_xp3gkt_a1a0c0b0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(target))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeof_NodePointerExpression_InferenceRule extends AbstractInferenc
   public boolean overrides() {
     return false;
   }
-  private static SNode createSNodePointerType_xp3gkt_a1a2a1a1(SNode node0) {
+  private static SNode createSNodePointerType_xp3gkt_a1a0c0b0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType"), null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept"), node0);

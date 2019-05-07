@@ -21,7 +21,7 @@ public class typeof_MovingAverage_InferenceRule extends AbstractInferenceRule_Ru
     {
       SNode _nodeToCheck_1029348928467 = movingAverage;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:0c486cb8-8265-4e9d-90e8-118f83fd1147(org.jetbrains.mps.samples.Money.typesystem)", "4001135958235924470", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:0c486cb8-8265-4e9d-90e8-118f83fd1147(org.jetbrains.mps.samples.Money.typesystem)", "4001135958235924328", true), (SNode) _quotation_createNode_51zbuj_a1a2a0a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:0c486cb8-8265-4e9d-90e8-118f83fd1147(org.jetbrains.mps.samples.Money.typesystem)", "4001135958235924328", true), (SNode) _quotation_createNode_51zbuj_a1a0c0a0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -33,7 +33,7 @@ public class typeof_MovingAverage_InferenceRule extends AbstractInferenceRule_Ru
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_51zbuj_a1a2a0a1() {
+  private static SNode _quotation_createNode_51zbuj_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

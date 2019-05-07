@@ -20,7 +20,7 @@ public class typeof_ConvertTo_InferenceRule extends AbstractInferenceRule_Runtim
     {
       SNode _nodeToCheck_1029348928467 = conversion;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:0c486cb8-8265-4e9d-90e8-118f83fd1147(org.jetbrains.mps.samples.Money.typesystem)", "654553635094918384", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:0c486cb8-8265-4e9d-90e8-118f83fd1147(org.jetbrains.mps.samples.Money.typesystem)", "654553635094917777", true), (SNode) _quotation_createNode_6ibh7v_a1a2a0a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:0c486cb8-8265-4e9d-90e8-118f83fd1147(org.jetbrains.mps.samples.Money.typesystem)", "654553635094917777", true), (SNode) _quotation_createNode_6ibh7v_a1a0c0a0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -32,7 +32,7 @@ public class typeof_ConvertTo_InferenceRule extends AbstractInferenceRule_Runtim
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_6ibh7v_a1a2a0a1() {
+  private static SNode _quotation_createNode_6ibh7v_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x662a9f2b58024d16L, 0x955872c65c7a681eL, "org.jetbrains.mps.samples.Money"), 0x4b9a2fe55913516aL, "MoneyType"), null, null, false);

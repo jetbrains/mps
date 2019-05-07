@@ -20,7 +20,7 @@ public class typeof_DateLiteral_InferenceRule extends AbstractInferenceRule_Runt
     {
       SNode _nodeToCheck_1029348928467 = dateLiteral;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:68ed5d1f-b4f4-4838-8372-2ea983ca9337(jetbrains.mps.baseLanguage.date.typesystem)", "3825148134790538108", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:68ed5d1f-b4f4-4838-8372-2ea983ca9337(jetbrains.mps.baseLanguage.date.typesystem)", "3825148134790538111", true), (SNode) createDateType_gobu8k_a1a2a0a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:68ed5d1f-b4f4-4838-8372-2ea983ca9337(jetbrains.mps.baseLanguage.date.typesystem)", "3825148134790538111", true), (SNode) createDateType_gobu8k_a1a0c0a0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -32,7 +32,7 @@ public class typeof_DateLiteral_InferenceRule extends AbstractInferenceRule_Runt
   public boolean overrides() {
     return false;
   }
-  private static SNode createDateType_gobu8k_a1a2a0a1() {
+  private static SNode createDateType_gobu8k_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x4b7c56eb93474ed1L, 0xa5d9938a850b9e1dL, 0x3515a7f64b6fe2d2L, "jetbrains.mps.baseLanguage.date.structure.DateType"), null, null, false);
     return n1;

@@ -20,7 +20,7 @@ public class typeof_ReferencesExpression_InferenceRule extends AbstractInference
     {
       SNode _nodeToCheck_1029348928467 = referencesExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "6322385757205641653", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "6322385757205641659", true), (SNode) _quotation_createNode_bx15pu_a1a2a0a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "6322385757205641659", true), (SNode) _quotation_createNode_bx15pu_a1a0c0a0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -32,7 +32,7 @@ public class typeof_ReferencesExpression_InferenceRule extends AbstractInference
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_bx15pu_a1a2a0a1() {
+  private static SNode _quotation_createNode_bx15pu_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

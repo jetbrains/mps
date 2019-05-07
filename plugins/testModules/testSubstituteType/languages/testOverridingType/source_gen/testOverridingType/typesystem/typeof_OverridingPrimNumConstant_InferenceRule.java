@@ -25,7 +25,7 @@ public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInfe
     {
       SNode _nodeToCheck_1029348928467 = overridingPrimNumConstant;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071355994", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071324671", true), (SNode) _quotation_createNode_kl4nnl_a1a2a0a2(SPropertyOperations.getString(overridingPrimNumConstant, MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat"))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071324671", true), (SNode) _quotation_createNode_kl4nnl_a1a0c0a0c(SPropertyOperations.getString(overridingPrimNumConstant, MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat"))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -34,7 +34,7 @@ public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInfe
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-  private static SNode _quotation_createNode_kl4nnl_a1a2a0a2(Object parameter_1) {
+  private static SNode _quotation_createNode_kl4nnl_a1a0c0a0c(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

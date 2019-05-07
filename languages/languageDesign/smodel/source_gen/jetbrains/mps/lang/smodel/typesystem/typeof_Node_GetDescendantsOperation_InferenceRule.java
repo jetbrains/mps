@@ -23,7 +23,7 @@ public class typeof_Node_GetDescendantsOperation_InferenceRule extends AbstractI
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1207353493596", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1207353493598", true), (SNode) _quotation_createNode_iyyi8n_a1a2a2a1(typeCheckingContext.getRepresentative(ConceptFromOpParm_typevar_1207353217271)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1207353493598", true), (SNode) _quotation_createNode_iyyi8n_a1a0c0c0b(typeCheckingContext.getRepresentative(ConceptFromOpParm_typevar_1207353217271)), _info_12389875345);
     }
     // commenting out this workaround for MPS-21199 since it caused solving inequation before whenConcrete triggers 
     // so typeof(op) was simply nlist<> without concept 
@@ -37,7 +37,7 @@ public class typeof_Node_GetDescendantsOperation_InferenceRule extends AbstractI
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_iyyi8n_a1a2a2a1(Object parameter_1) {
+  private static SNode _quotation_createNode_iyyi8n_a1a0c0c0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10aae26be32L, "SNodeListType"), null, null, false);

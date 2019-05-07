@@ -72,11 +72,11 @@
     <file name="typeof_AspectMethodDescriptor_InferenceRule.java">
       <node id="5386558680326206553" at="23,5,24,45" concept="5" />
       <node id="5386558680326206553" at="24,45,25,202" concept="5" />
-      <node id="5386558680326206553" at="25,202,26,442" concept="2" />
+      <node id="5386558680326206553" at="25,202,26,443" concept="2" />
       <node id="5386558680326206395" at="29,50,30,166" concept="6" />
       <node id="5386558680326206395" at="32,68,33,102" concept="6" />
       <node id="5386558680326206395" at="35,30,36,17" concept="6" />
-      <node id="5386558680326206577" at="38,82,39,63" concept="5" />
+      <node id="5386558680326206577" at="38,83,39,63" concept="5" />
       <node id="5386558680326206577" at="39,63,40,30" concept="5" />
       <node id="5386558680326206577" at="40,30,41,30" concept="5" />
       <node id="5386558680326206577" at="41,30,42,30" concept="5" />
@@ -94,13 +94,13 @@
       <node id="5386558680326206395" at="35,0,38,0" concept="4" trace="overrides#()Z" />
       <node id="5386558680326206553" at="22,116,27,5" concept="0" />
       <node id="5386558680326206395" at="22,0,29,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <node id="5386558680326206577" at="38,0,52,0" concept="7" trace="_quotation_createNode_q679gm_a1a2a0a1#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5386558680326206577" at="38,0,52,0" concept="7" trace="_quotation_createNode_q679gm_a1a0c0a0b#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="5386558680326206395" at="20,56,20,56" />
       <scope id="5386558680326206395" at="29,50,30,166" />
       <scope id="5386558680326206395" at="32,68,33,102" />
       <scope id="5386558680326206395" at="35,30,36,17" />
       <scope id="5386558680326206395" at="20,0,22,0" />
-      <scope id="5386558680326206553" at="23,5,26,442">
+      <scope id="5386558680326206553" at="23,5,26,443">
         <var name="_info_12389875345" id="5386558680326206553" />
         <var name="_nodeToCheck_1029348928467" id="5386558680326206553" />
       </scope>
@@ -115,7 +115,7 @@
         <var name="status" id="5386558680326206395" />
         <var name="typeCheckingContext" id="5386558680326206395" />
       </scope>
-      <scope id="5386558680326206577" at="38,82,50,24">
+      <scope id="5386558680326206577" at="38,83,50,24">
         <var name="facade" id="5386558680326206577" />
         <var name="quotedNode_2" id="5386558680326206577" />
         <var name="quotedNode_3" id="5386558680326206577" />

@@ -184,7 +184,7 @@ public class DimensionUtil {
         {
           SNode _nodeToCheck_1029348928467 = node;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6389121991274973498", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6389121991274973494", true), (SNode) _quotation_createNode_48zlf8_a1a2a0a8a0a0(typeCheckingContext.getRepresentative(T_typevar_757772128652074250), "" + SPropertyOperations.getInteger(result, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows"))), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6389121991274973494", true), (SNode) _quotation_createNode_48zlf8_a1a0c0a0i0a0a(typeCheckingContext.getRepresentative(T_typevar_757772128652074250), "" + SPropertyOperations.getInteger(result, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows"))), _info_12389875345);
         }
       } else {
         {
@@ -272,7 +272,7 @@ public class DimensionUtil {
       }
     }
   }
-  private static SNode _quotation_createNode_48zlf8_a1a2a0a8a0a0(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_48zlf8_a1a0c0a0i0a0a(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

@@ -24,7 +24,7 @@ public class typeof_DataDependency_InferenceRule extends AbstractInferenceRule_R
     {
       SNode _nodeToCheck_1029348928467 = dD;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4084841995419799653", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4084841995419799530", true), (SNode) _quotation_createNode_mk6zss_a1a2a0a1(IMigrationUnit__BehaviorDescriptor.getProducedData_id7s$_UJMVDH8.invoke(SLinkOperations.getTarget(dD, MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x44b28148e401c891L, 0x4f6b4ac0cd6d4af5L, "script")))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4084841995419799530", true), (SNode) _quotation_createNode_mk6zss_a1a0c0a0b(IMigrationUnit__BehaviorDescriptor.getProducedData_id7s$_UJMVDH8.invoke(SLinkOperations.getTarget(dD, MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x44b28148e401c891L, 0x4f6b4ac0cd6d4af5L, "script")))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeof_DataDependency_InferenceRule extends AbstractInferenceRule_R
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_mk6zss_a1a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_mk6zss_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

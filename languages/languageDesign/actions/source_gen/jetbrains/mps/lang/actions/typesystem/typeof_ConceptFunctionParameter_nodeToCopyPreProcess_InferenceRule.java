@@ -23,7 +23,7 @@ public class typeof_ConceptFunctionParameter_nodeToCopyPreProcess_InferenceRule 
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902a6(jetbrains.mps.lang.actions.typesystem)", "5948027493682405602", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902a6(jetbrains.mps.lang.actions.typesystem)", "5948027493682405599", true), (SNode) _quotation_createNode_74scda_a1a2a0a1(SLinkOperations.getTarget(ConceptFunctionParameter_nodeToCopyPreProcess__BehaviorDescriptor.getPreProcessor_id5abCRRjcA31.invoke(node), MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3311946L, 0x528ba37dd3317b8dL, "concept"))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902a6(jetbrains.mps.lang.actions.typesystem)", "5948027493682405599", true), (SNode) _quotation_createNode_74scda_a1a0c0a0b(SLinkOperations.getTarget(ConceptFunctionParameter_nodeToCopyPreProcess__BehaviorDescriptor.getPreProcessor_id5abCRRjcA31.invoke(node), MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3311946L, 0x528ba37dd3317b8dL, "concept"))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_ConceptFunctionParameter_nodeToCopyPreProcess_InferenceRule 
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_74scda_a1a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_74scda_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);

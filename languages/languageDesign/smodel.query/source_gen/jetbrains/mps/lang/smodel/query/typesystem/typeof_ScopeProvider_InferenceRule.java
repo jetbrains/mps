@@ -23,7 +23,7 @@ public class typeof_ScopeProvider_InferenceRule extends AbstractInferenceRule_Ru
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(scopeProvider, MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, 0x3ac2ae2c0bcf36b7L, "scope"));
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "4234138103881642865", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "4234138103881614549", true), (SNode) _quotation_createNode_jkxe46_a1a2a0a0a1(), true, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "4234138103881614549", true), (SNode) _quotation_createNode_jkxe46_a1a0c0a0a0b(), true, false, _info_12389875345);
       }
     }
   }
@@ -36,7 +36,7 @@ public class typeof_ScopeProvider_InferenceRule extends AbstractInferenceRule_Ru
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_jkxe46_a1a2a0a0a1() {
+  private static SNode _quotation_createNode_jkxe46_a1a0c0a0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

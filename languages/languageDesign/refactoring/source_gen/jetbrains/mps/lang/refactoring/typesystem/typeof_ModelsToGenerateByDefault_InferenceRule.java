@@ -20,7 +20,7 @@ public class typeof_ModelsToGenerateByDefault_InferenceRule extends AbstractInfe
     {
       SNode _nodeToCheck_1029348928467 = modelsToGenerateByDefault;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "4347648036456861906", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "4347648036456861736", true), (SNode) _quotation_createNode_1xcw2k_a1a2a0a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "4347648036456861736", true), (SNode) _quotation_createNode_1xcw2k_a1a0c0a0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -32,7 +32,7 @@ public class typeof_ModelsToGenerateByDefault_InferenceRule extends AbstractInfe
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_1xcw2k_a1a2a0a1() {
+  private static SNode _quotation_createNode_1xcw2k_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

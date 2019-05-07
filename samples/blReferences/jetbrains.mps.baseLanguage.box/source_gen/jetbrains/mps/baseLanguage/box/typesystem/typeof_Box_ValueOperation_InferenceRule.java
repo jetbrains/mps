@@ -23,7 +23,7 @@ public class typeof_Box_ValueOperation_InferenceRule extends AbstractInferenceRu
     {
       SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(op);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:c0da3a2c-aeaa-4996-99b4-63d12ff9e0ca(jetbrains.mps.baseLanguage.box.typesystem)", "8995237445478617412", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c0da3a2c-aeaa-4996-99b4-63d12ff9e0ca(jetbrains.mps.baseLanguage.box.typesystem)", "8995237445478617429", true), (SNode) _quotation_createNode_v76j6f_a1a2a1a1(typeCheckingContext.getRepresentative(valueType_typevar_8995237445478617382)), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c0da3a2c-aeaa-4996-99b4-63d12ff9e0ca(jetbrains.mps.baseLanguage.box.typesystem)", "8995237445478617429", true), (SNode) _quotation_createNode_v76j6f_a1a0c0b0b(typeCheckingContext.getRepresentative(valueType_typevar_8995237445478617382)), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = op;
@@ -40,7 +40,7 @@ public class typeof_Box_ValueOperation_InferenceRule extends AbstractInferenceRu
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_v76j6f_a1a2a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_v76j6f_a1a0c0b0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

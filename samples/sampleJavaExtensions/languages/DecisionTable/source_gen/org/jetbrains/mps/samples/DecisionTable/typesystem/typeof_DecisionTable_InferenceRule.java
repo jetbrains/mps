@@ -31,7 +31,7 @@ public class typeof_DecisionTable_InferenceRule extends AbstractInferenceRule_Ru
         {
           SNode _nodeToCheck_1029348928467 = e;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015320", 0, null);
-          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015317", true), (SNode) typeCheckingContext.typeOf(_quotation_createNode_ro75ql_a0a1a2a0a0a2a1(), "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015325", true), true, true, _info_12389875345);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015317", true), (SNode) typeCheckingContext.typeOf(_quotation_createNode_ro75ql_a0a1a0c0a0a0c0b(), "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015325", true), true, true, _info_12389875345);
         }
       }
     }
@@ -40,7 +40,7 @@ public class typeof_DecisionTable_InferenceRule extends AbstractInferenceRule_Ru
         {
           SNode _nodeToCheck_1029348928467 = e;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015341", 0, null);
-          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015343", true), (SNode) typeCheckingContext.typeOf(_quotation_createNode_ro75ql_a0a1a2a0a0a3a1(), "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015346", true), true, true, _info_12389875345);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015343", true), (SNode) typeCheckingContext.typeOf(_quotation_createNode_ro75ql_a0a1a0c0a0a0d0b(), "r:f348e313-94f1-424e-9233-5bd41095169e(org.jetbrains.mps.samples.DecisionTable.typesystem)", "1987251859607015346", true), true, true, _info_12389875345);
         }
       }
     }
@@ -71,13 +71,13 @@ public class typeof_DecisionTable_InferenceRule extends AbstractInferenceRule_Ru
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_ro75ql_a0a1a2a0a0a2a1() {
+  private static SNode _quotation_createNode_ro75ql_a0a1a0c0a0a0c0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_ro75ql_a0a1a2a0a0a3a1() {
+  private static SNode _quotation_createNode_ro75ql_a0a1a0c0a0a0d0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);

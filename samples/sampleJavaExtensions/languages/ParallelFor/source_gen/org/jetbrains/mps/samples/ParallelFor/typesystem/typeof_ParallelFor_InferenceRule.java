@@ -23,7 +23,7 @@ public class typeof_ParallelFor_InferenceRule extends AbstractInferenceRule_Runt
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(parallelFor, MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool"));
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4659204813808532920", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4659204813808501251", true), (SNode) _quotation_createNode_68f1fp_a1a2a0a1(), false, false, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4659204813808501251", true), (SNode) _quotation_createNode_68f1fp_a1a0c0a0b(), false, false, _info_12389875345);
     }
     SNode variable = SLinkOperations.getTarget(parallelFor, MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable"));
     SNode inputSequence = SLinkOperations.getTarget(parallelFor, MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence"));
@@ -32,7 +32,7 @@ public class typeof_ParallelFor_InferenceRule extends AbstractInferenceRule_Runt
       {
         SNode _nodeToCheck_1029348928467 = inputSequence;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3261041752321174546", 0, null);
-        typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_68f1fp_a0a2a1a3a1(typeCheckingContext.getRepresentative(elementType_typevar_1184771826645), typeCheckingContext.getRepresentative(elementType_typevar_1184771826645)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3261041752321174570", true), false, true, _info_12389875345);
+        typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_68f1fp_a0a0c0b0d0b(typeCheckingContext.getRepresentative(elementType_typevar_1184771826645), typeCheckingContext.getRepresentative(elementType_typevar_1184771826645)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3261041752321174570", true), false, true, _info_12389875345);
       }
       {
         SNode _nodeToCheck_1029348928467 = variable;
@@ -50,14 +50,14 @@ public class typeof_ParallelFor_InferenceRule extends AbstractInferenceRule_Runt
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_68f1fp_a1a2a0a1() {
+  private static SNode _quotation_createNode_68f1fp_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)"), facade.createNodeId("~ExecutorService")));
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_68f1fp_a0a2a1a3a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_68f1fp_a0a0c0b0d0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

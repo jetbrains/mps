@@ -24,7 +24,7 @@ public class typeof_ConceptFunctionParameter_selectedNode_InferenceRule extends 
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8546225179494125840", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8546225179494125837", true), (SNode) _quotation_createNode_oj94st_a1a2a1a1(conceptDeclaration), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8546225179494125837", true), (SNode) _quotation_createNode_oj94st_a1a0c0b0b(conceptDeclaration), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeof_ConceptFunctionParameter_selectedNode_InferenceRule extends 
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_oj94st_a1a2a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_oj94st_a1a0c0b0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);

@@ -24,7 +24,7 @@ public class typeof_StyleAttributeReferenceExpression_InferenceRule extends Abst
     {
       SNode _nodeToCheck_1029348928467 = styleAttributeReferenceExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6029276237634420328", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6029276237634420184", true), (SNode) _quotation_createNode_mwwp74_a1a2a0a1(StyleAttributeDeclaration__BehaviorDescriptor.getClassifierType_id5eGiGGHenb_.invoke(SLinkOperations.getTarget(styleAttributeReferenceExpression, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x53ac4acb2cb6e9d7L, 0x53ac4acb2cb6ecb2L, "attributeDeclaration")))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6029276237634420184", true), (SNode) _quotation_createNode_mwwp74_a1a0c0a0b(StyleAttributeDeclaration__BehaviorDescriptor.getClassifierType_id5eGiGGHenb_.invoke(SLinkOperations.getTarget(styleAttributeReferenceExpression, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x53ac4acb2cb6e9d7L, 0x53ac4acb2cb6ecb2L, "attributeDeclaration")))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeof_StyleAttributeReferenceExpression_InferenceRule extends Abst
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_mwwp74_a1a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_mwwp74_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

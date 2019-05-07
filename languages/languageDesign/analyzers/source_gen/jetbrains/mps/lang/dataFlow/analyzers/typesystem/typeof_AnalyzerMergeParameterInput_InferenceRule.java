@@ -22,7 +22,7 @@ public class typeof_AnalyzerMergeParameterInput_InferenceRule extends AbstractIn
     {
       SNode _nodeToCheck_1029348928467 = input;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9177062368042359803", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9177062368042359800", true), (SNode) _quotation_createNode_rg9vlp_a1a2a0a1(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(input, MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer"), false, false), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType"))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9177062368042359800", true), (SNode) _quotation_createNode_rg9vlp_a1a0c0a0b(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(input, MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer"), false, false), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType"))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -34,7 +34,7 @@ public class typeof_AnalyzerMergeParameterInput_InferenceRule extends AbstractIn
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_rg9vlp_a1a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_rg9vlp_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

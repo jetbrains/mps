@@ -4220,75 +4220,76 @@
               </node>
             </node>
             <node concept="3clFbF" id="k9" role="3cqZAp">
-              <node concept="1DoJHT" id="kp" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="kq" role="1EOqxR">
-                  <node concept="3uibUv" id="kv" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+              <node concept="2OqwBi" id="kp" role="3clFbG">
+                <node concept="3VmV3z" id="kq" role="2Oq$k0">
+                  <property role="3VnrPo" value="typeCheckingContext" />
+                  <node concept="3uibUv" id="ks" role="3Vn4Tt">
+                    <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
                   </node>
-                  <node concept="2c44tf" id="kw" role="10QFUP">
-                    <node concept="3Tqbb2" id="ky" role="2c44tc">
-                      <node concept="2c44tb" id="k$" role="lGtFl">
-                        <property role="2qtEX8" value="concept" />
-                        <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                        <node concept="37vLTw" id="kA" role="2c44t1">
-                          <ref role="3cqZAo" node="jQ" resolve="applicableConcept" />
+                </node>
+                <node concept="liA8E" id="kr" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="kt" role="37wK5m">
+                    <node concept="3uibUv" id="kw" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2c44tf" id="kx" role="10QFUP">
+                      <node concept="3Tqbb2" id="kz" role="2c44tc">
+                        <node concept="2c44tb" id="k_" role="lGtFl">
+                          <property role="2qtEX8" value="concept" />
+                          <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                          <node concept="37vLTw" id="kB" role="2c44t1">
+                            <ref role="3cqZAo" node="jQ" resolve="applicableConcept" />
+                            <node concept="cd27G" id="kD" role="lGtFl">
+                              <node concept="3u3nmq" id="kE" role="cd27D">
+                                <property role="3u3nmv" value="4265636116363115343" />
+                              </node>
+                            </node>
+                          </node>
                           <node concept="cd27G" id="kC" role="lGtFl">
-                            <node concept="3u3nmq" id="kD" role="cd27D">
-                              <property role="3u3nmv" value="4265636116363115343" />
+                            <node concept="3u3nmq" id="kF" role="cd27D">
+                              <property role="3u3nmv" value="1197310837752" />
                             </node>
                           </node>
                         </node>
-                        <node concept="cd27G" id="kB" role="lGtFl">
-                          <node concept="3u3nmq" id="kE" role="cd27D">
-                            <property role="3u3nmv" value="1197310837752" />
+                        <node concept="cd27G" id="kA" role="lGtFl">
+                          <node concept="3u3nmq" id="kG" role="cd27D">
+                            <property role="3u3nmv" value="1197310837749" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="k_" role="lGtFl">
-                        <node concept="3u3nmq" id="kF" role="cd27D">
-                          <property role="3u3nmv" value="1197310837749" />
+                      <node concept="cd27G" id="k$" role="lGtFl">
+                        <node concept="3u3nmq" id="kH" role="cd27D">
+                          <property role="3u3nmv" value="1197310837748" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="kz" role="lGtFl">
-                      <node concept="3u3nmq" id="kG" role="cd27D">
-                        <property role="3u3nmv" value="1197310837748" />
+                    <node concept="cd27G" id="ky" role="lGtFl">
+                      <node concept="3u3nmq" id="kI" role="cd27D">
+                        <property role="3u3nmv" value="1206286374203" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="kx" role="lGtFl">
-                    <node concept="3u3nmq" id="kH" role="cd27D">
-                      <property role="3u3nmv" value="1206286374203" />
+                  <node concept="10QFUN" id="ku" role="37wK5m">
+                    <node concept="3uibUv" id="kJ" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                     </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="kr" role="1EOqxR">
-                  <node concept="3uibUv" id="kI" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="37vLTw" id="kJ" role="10QFUP">
-                    <ref role="3cqZAo" node="dn" resolve="InputNodeType" />
+                    <node concept="37vLTw" id="kK" role="10QFUP">
+                      <ref role="3cqZAo" node="dn" resolve="InputNodeType" />
+                      <node concept="cd27G" id="kM" role="lGtFl">
+                        <node concept="3u3nmq" id="kN" role="cd27D">
+                          <property role="3u3nmv" value="3021153905151605410" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="cd27G" id="kL" role="lGtFl">
-                      <node concept="3u3nmq" id="kM" role="cd27D">
-                        <property role="3u3nmv" value="3021153905151605410" />
+                      <node concept="3u3nmq" id="kO" role="cd27D">
+                        <property role="3u3nmv" value="1206286379689" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="kK" role="lGtFl">
-                    <node concept="3u3nmq" id="kN" role="cd27D">
-                      <property role="3u3nmv" value="1206286379689" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="ks" role="1EOqxR">
-                  <ref role="3cqZAo" node="kf" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="kt" role="1Ez5kq" />
-                <node concept="3VmV3z" id="ku" role="1EMhIo">
-                  <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="kO" role="3Vn4Tt">
-                    <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  <node concept="37vLTw" id="kv" role="37wK5m">
+                    <ref role="3cqZAo" node="kf" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -5935,58 +5936,59 @@
                   </node>
                 </node>
                 <node concept="3clFbF" id="v6" role="3cqZAp">
-                  <node concept="1DoJHT" id="vm" role="3clFbG">
-                    <property role="1Dpdpm" value="createEquation" />
-                    <node concept="10QFUN" id="vn" role="1EOqxR">
-                      <node concept="3uibUv" id="vs" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="37vLTw" id="vt" role="10QFUP">
-                        <ref role="3cqZAo" node="u$" resolve="TypeToEquate" />
-                        <node concept="cd27G" id="vv" role="lGtFl">
-                          <node concept="3u3nmq" id="vw" role="cd27D">
-                            <property role="3u3nmv" value="3021153905151621358" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="vu" role="lGtFl">
-                        <node concept="3u3nmq" id="vx" role="cd27D">
-                          <property role="3u3nmv" value="1206286245995" />
-                        </node>
+                  <node concept="2OqwBi" id="vm" role="3clFbG">
+                    <node concept="3VmV3z" id="vn" role="2Oq$k0">
+                      <property role="3VnrPo" value="typeCheckingContext" />
+                      <node concept="3uibUv" id="vp" role="3Vn4Tt">
+                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
                       </node>
                     </node>
-                    <node concept="10QFUN" id="vo" role="1EOqxR">
-                      <node concept="3uibUv" id="vy" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="vz" role="10QFUP">
-                        <node concept="3Tqbb2" id="v_" role="2c44tc">
-                          <node concept="cd27G" id="vB" role="lGtFl">
-                            <node concept="3u3nmq" id="vC" role="cd27D">
-                              <property role="3u3nmv" value="1206286255844" />
+                    <node concept="liA8E" id="vo" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                      <node concept="10QFUN" id="vq" role="37wK5m">
+                        <node concept="3uibUv" id="vt" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="37vLTw" id="vu" role="10QFUP">
+                          <ref role="3cqZAo" node="u$" resolve="TypeToEquate" />
+                          <node concept="cd27G" id="vw" role="lGtFl">
+                            <node concept="3u3nmq" id="vx" role="cd27D">
+                              <property role="3u3nmv" value="3021153905151621358" />
                             </node>
                           </node>
                         </node>
-                        <node concept="cd27G" id="vA" role="lGtFl">
-                          <node concept="3u3nmq" id="vD" role="cd27D">
-                            <property role="3u3nmv" value="1206286255843" />
+                        <node concept="cd27G" id="vv" role="lGtFl">
+                          <node concept="3u3nmq" id="vy" role="cd27D">
+                            <property role="3u3nmv" value="1206286245995" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="v$" role="lGtFl">
-                        <node concept="3u3nmq" id="vE" role="cd27D">
-                          <property role="3u3nmv" value="1206286253949" />
+                      <node concept="10QFUN" id="vr" role="37wK5m">
+                        <node concept="3uibUv" id="vz" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="v$" role="10QFUP">
+                          <node concept="3Tqbb2" id="vA" role="2c44tc">
+                            <node concept="cd27G" id="vC" role="lGtFl">
+                              <node concept="3u3nmq" id="vD" role="cd27D">
+                                <property role="3u3nmv" value="1206286255844" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="vB" role="lGtFl">
+                            <node concept="3u3nmq" id="vE" role="cd27D">
+                              <property role="3u3nmv" value="1206286255843" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="v_" role="lGtFl">
+                          <node concept="3u3nmq" id="vF" role="cd27D">
+                            <property role="3u3nmv" value="1206286253949" />
+                          </node>
                         </node>
                       </node>
-                    </node>
-                    <node concept="37vLTw" id="vp" role="1EOqxR">
-                      <ref role="3cqZAo" node="vc" resolve="_info_12389875345" />
-                    </node>
-                    <node concept="3cqZAl" id="vq" role="1Ez5kq" />
-                    <node concept="3VmV3z" id="vr" role="1EMhIo">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="vF" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                      <node concept="37vLTw" id="vs" role="37wK5m">
+                        <ref role="3cqZAo" node="vc" resolve="_info_12389875345" />
                       </node>
                     </node>
                   </node>
@@ -6116,164 +6118,165 @@
               </node>
             </node>
             <node concept="3clFbF" id="w6" role="3cqZAp">
-              <node concept="1DoJHT" id="wn" role="3clFbG">
-                <property role="1Dpdpm" value="createGreaterThanInequality" />
-                <node concept="10QFUN" id="wo" role="1EOqxR">
-                  <node concept="3uibUv" id="wv" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+              <node concept="2OqwBi" id="wn" role="3clFbG">
+                <node concept="3VmV3z" id="wo" role="2Oq$k0">
+                  <property role="3VnrPo" value="typeCheckingContext" />
+                  <node concept="3uibUv" id="wq" role="3Vn4Tt">
+                    <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
                   </node>
-                  <node concept="2c44tf" id="ww" role="10QFUP">
-                    <node concept="2usRSg" id="wy" role="2c44tc">
-                      <node concept="A3Dl8" id="w$" role="2usUpS">
-                        <node concept="3Tqbb2" id="wB" role="A3Ik2">
-                          <node concept="2c44tb" id="wD" role="lGtFl">
+                </node>
+                <node concept="liA8E" id="wp" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createGreaterThanInequality(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,boolean,boolean,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createGreaterThanInequality" />
+                  <node concept="10QFUN" id="wr" role="37wK5m">
+                    <node concept="3uibUv" id="ww" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2c44tf" id="wx" role="10QFUP">
+                      <node concept="2usRSg" id="wz" role="2c44tc">
+                        <node concept="A3Dl8" id="w_" role="2usUpS">
+                          <node concept="3Tqbb2" id="wC" role="A3Ik2">
+                            <node concept="2c44tb" id="wE" role="lGtFl">
+                              <property role="2qtEX8" value="concept" />
+                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                              <node concept="2OqwBi" id="wG" role="2c44t1">
+                                <node concept="3VmV3z" id="wI" role="2Oq$k0">
+                                  <property role="3VnrPo" value="typeCheckingContext" />
+                                  <node concept="3uibUv" id="wL" role="3Vn4Tt">
+                                    <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="wJ" role="2OqNvi">
+                                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.getRepresentative(org.jetbrains.mps.openapi.model.SNode)" resolve="getRepresentative" />
+                                  <node concept="37vLTw" id="wM" role="37wK5m">
+                                    <ref role="3cqZAo" node="vT" resolve="Concept_typevar_1226671834537" />
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="wK" role="lGtFl">
+                                  <node concept="3u3nmq" id="wN" role="cd27D">
+                                    <property role="3u3nmv" value="1226672273466" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="wH" role="lGtFl">
+                                <node concept="3u3nmq" id="wO" role="cd27D">
+                                  <property role="3u3nmv" value="1226672273465" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="wF" role="lGtFl">
+                              <node concept="3u3nmq" id="wP" role="cd27D">
+                                <property role="3u3nmv" value="1226672273464" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="wD" role="lGtFl">
+                            <node concept="3u3nmq" id="wQ" role="cd27D">
+                              <property role="3u3nmv" value="1226672273463" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3Tqbb2" id="wA" role="2usUpS">
+                          <node concept="2c44tb" id="wR" role="lGtFl">
                             <property role="2qtEX8" value="concept" />
                             <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                            <node concept="2OqwBi" id="wF" role="2c44t1">
-                              <node concept="3VmV3z" id="wH" role="2Oq$k0">
+                            <node concept="2OqwBi" id="wT" role="2c44t1">
+                              <node concept="3VmV3z" id="wV" role="2Oq$k0">
                                 <property role="3VnrPo" value="typeCheckingContext" />
-                                <node concept="3uibUv" id="wK" role="3Vn4Tt">
+                                <node concept="3uibUv" id="wY" role="3Vn4Tt">
                                   <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
                                 </node>
                               </node>
-                              <node concept="liA8E" id="wI" role="2OqNvi">
+                              <node concept="liA8E" id="wW" role="2OqNvi">
                                 <ref role="37wK5l" to="u78q:~TypeCheckingContext.getRepresentative(org.jetbrains.mps.openapi.model.SNode)" resolve="getRepresentative" />
-                                <node concept="37vLTw" id="wL" role="37wK5m">
+                                <node concept="37vLTw" id="wZ" role="37wK5m">
                                   <ref role="3cqZAo" node="vT" resolve="Concept_typevar_1226671834537" />
                                 </node>
                               </node>
-                              <node concept="cd27G" id="wJ" role="lGtFl">
-                                <node concept="3u3nmq" id="wM" role="cd27D">
-                                  <property role="3u3nmv" value="1226672273466" />
+                              <node concept="cd27G" id="wX" role="lGtFl">
+                                <node concept="3u3nmq" id="x0" role="cd27D">
+                                  <property role="3u3nmv" value="1226672284380" />
                                 </node>
                               </node>
                             </node>
-                            <node concept="cd27G" id="wG" role="lGtFl">
-                              <node concept="3u3nmq" id="wN" role="cd27D">
-                                <property role="3u3nmv" value="1226672273465" />
+                            <node concept="cd27G" id="wU" role="lGtFl">
+                              <node concept="3u3nmq" id="x1" role="cd27D">
+                                <property role="3u3nmv" value="1226672279937" />
                               </node>
                             </node>
                           </node>
-                          <node concept="cd27G" id="wE" role="lGtFl">
-                            <node concept="3u3nmq" id="wO" role="cd27D">
-                              <property role="3u3nmv" value="1226672273464" />
+                          <node concept="cd27G" id="wS" role="lGtFl">
+                            <node concept="3u3nmq" id="x2" role="cd27D">
+                              <property role="3u3nmv" value="1226672278218" />
                             </node>
                           </node>
                         </node>
-                        <node concept="cd27G" id="wC" role="lGtFl">
-                          <node concept="3u3nmq" id="wP" role="cd27D">
-                            <property role="3u3nmv" value="1226672273463" />
+                        <node concept="cd27G" id="wB" role="lGtFl">
+                          <node concept="3u3nmq" id="x3" role="cd27D">
+                            <property role="3u3nmv" value="1226672269790" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3Tqbb2" id="w_" role="2usUpS">
-                        <node concept="2c44tb" id="wQ" role="lGtFl">
-                          <property role="2qtEX8" value="concept" />
-                          <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                          <node concept="2OqwBi" id="wS" role="2c44t1">
-                            <node concept="3VmV3z" id="wU" role="2Oq$k0">
-                              <property role="3VnrPo" value="typeCheckingContext" />
-                              <node concept="3uibUv" id="wX" role="3Vn4Tt">
-                                <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                              </node>
-                            </node>
-                            <node concept="liA8E" id="wV" role="2OqNvi">
-                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.getRepresentative(org.jetbrains.mps.openapi.model.SNode)" resolve="getRepresentative" />
-                              <node concept="37vLTw" id="wY" role="37wK5m">
-                                <ref role="3cqZAo" node="vT" resolve="Concept_typevar_1226671834537" />
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="wW" role="lGtFl">
-                              <node concept="3u3nmq" id="wZ" role="cd27D">
-                                <property role="3u3nmv" value="1226672284380" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="wT" role="lGtFl">
-                            <node concept="3u3nmq" id="x0" role="cd27D">
-                              <property role="3u3nmv" value="1226672279937" />
-                            </node>
-                          </node>
+                      <node concept="cd27G" id="w$" role="lGtFl">
+                        <node concept="3u3nmq" id="x4" role="cd27D">
+                          <property role="3u3nmv" value="1226671800483" />
                         </node>
-                        <node concept="cd27G" id="wR" role="lGtFl">
-                          <node concept="3u3nmq" id="x1" role="cd27D">
-                            <property role="3u3nmv" value="1226672278218" />
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="wy" role="lGtFl">
+                      <node concept="3u3nmq" id="x5" role="cd27D">
+                        <property role="3u3nmv" value="1226671800482" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="ws" role="37wK5m">
+                    <node concept="3uibUv" id="x6" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="x7" role="10QFUP">
+                      <node concept="3VmV3z" id="x9" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="xd" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="xa" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="xe" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="xi" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                           </node>
                         </node>
+                        <node concept="Xl_RD" id="xf" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="xg" role="37wK5m">
+                          <property role="Xl_RC" value="1226671782084" />
+                        </node>
+                        <node concept="3clFbT" id="xh" role="37wK5m" />
                       </node>
-                      <node concept="cd27G" id="wA" role="lGtFl">
-                        <node concept="3u3nmq" id="x2" role="cd27D">
-                          <property role="3u3nmv" value="1226672269790" />
+                      <node concept="6wLe0" id="xb" role="lGtFl">
+                        <property role="6wLej" value="1226671782084" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="xc" role="lGtFl">
+                        <node concept="3u3nmq" id="xj" role="cd27D">
+                          <property role="3u3nmv" value="1226671782084" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="wz" role="lGtFl">
-                      <node concept="3u3nmq" id="x3" role="cd27D">
-                        <property role="3u3nmv" value="1226671800483" />
+                    <node concept="cd27G" id="x8" role="lGtFl">
+                      <node concept="3u3nmq" id="xk" role="cd27D">
+                        <property role="3u3nmv" value="1226671793012" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="wx" role="lGtFl">
-                    <node concept="3u3nmq" id="x4" role="cd27D">
-                      <property role="3u3nmv" value="1226671800482" />
-                    </node>
+                  <node concept="3clFbT" id="wt" role="37wK5m" />
+                  <node concept="3clFbT" id="wu" role="37wK5m">
+                    <property role="3clFbU" value="true" />
                   </node>
-                </node>
-                <node concept="10QFUN" id="wp" role="1EOqxR">
-                  <node concept="3uibUv" id="x5" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="x6" role="10QFUP">
-                    <node concept="3VmV3z" id="x8" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="xc" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="x9" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="xd" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="xh" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="xe" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="xf" role="37wK5m">
-                        <property role="Xl_RC" value="1226671782084" />
-                      </node>
-                      <node concept="3clFbT" id="xg" role="37wK5m" />
-                    </node>
-                    <node concept="6wLe0" id="xa" role="lGtFl">
-                      <property role="6wLej" value="1226671782084" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="xb" role="lGtFl">
-                      <node concept="3u3nmq" id="xi" role="cd27D">
-                        <property role="3u3nmv" value="1226671782084" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="x7" role="lGtFl">
-                    <node concept="3u3nmq" id="xj" role="cd27D">
-                      <property role="3u3nmv" value="1226671793012" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbT" id="wq" role="1EOqxR" />
-                <node concept="3clFbT" id="wr" role="1EOqxR">
-                  <property role="3clFbU" value="true" />
-                </node>
-                <node concept="37vLTw" id="ws" role="1EOqxR">
-                  <ref role="3cqZAo" node="wd" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="wt" role="1Ez5kq" />
-                <node concept="3VmV3z" id="wu" role="1EMhIo">
-                  <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="xk" role="3Vn4Tt">
-                    <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  <node concept="37vLTw" id="wv" role="37wK5m">
+                    <ref role="3cqZAo" node="wd" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -6334,86 +6337,87 @@
               </node>
             </node>
             <node concept="3clFbF" id="xr" role="3cqZAp">
-              <node concept="1DoJHT" id="xF" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="xG" role="1EOqxR">
-                  <node concept="3uibUv" id="xL" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="37vLTw" id="xM" role="10QFUP">
-                    <ref role="3cqZAo" node="u$" resolve="TypeToEquate" />
-                    <node concept="cd27G" id="xO" role="lGtFl">
-                      <node concept="3u3nmq" id="xP" role="cd27D">
-                        <property role="3u3nmv" value="3021153905151720125" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="xN" role="lGtFl">
-                    <node concept="3u3nmq" id="xQ" role="cd27D">
-                      <property role="3u3nmv" value="1226671862847" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="xH" role="1EOqxR">
-                  <node concept="3uibUv" id="xR" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2c44tf" id="xS" role="10QFUP">
-                    <node concept="3Tqbb2" id="xU" role="2c44tc">
-                      <node concept="2c44tb" id="xW" role="lGtFl">
-                        <property role="2qtEX8" value="concept" />
-                        <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                        <node concept="2OqwBi" id="xY" role="2c44t1">
-                          <node concept="3VmV3z" id="y0" role="2Oq$k0">
-                            <property role="3VnrPo" value="typeCheckingContext" />
-                            <node concept="3uibUv" id="y3" role="3Vn4Tt">
-                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="y1" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.getRepresentative(org.jetbrains.mps.openapi.model.SNode)" resolve="getRepresentative" />
-                            <node concept="37vLTw" id="y4" role="37wK5m">
-                              <ref role="3cqZAo" node="vT" resolve="Concept_typevar_1226671834537" />
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="y2" role="lGtFl">
-                            <node concept="3u3nmq" id="y5" role="cd27D">
-                              <property role="3u3nmv" value="1226671878436" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="xZ" role="lGtFl">
-                          <node concept="3u3nmq" id="y6" role="cd27D">
-                            <property role="3u3nmv" value="1226671875087" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="xX" role="lGtFl">
-                        <node concept="3u3nmq" id="y7" role="cd27D">
-                          <property role="3u3nmv" value="1226671873023" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="cd27G" id="xV" role="lGtFl">
-                      <node concept="3u3nmq" id="y8" role="cd27D">
-                        <property role="3u3nmv" value="1226671867646" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="xT" role="lGtFl">
-                    <node concept="3u3nmq" id="y9" role="cd27D">
-                      <property role="3u3nmv" value="1226671867645" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="xI" role="1EOqxR">
-                  <ref role="3cqZAo" node="xx" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="xJ" role="1Ez5kq" />
-                <node concept="3VmV3z" id="xK" role="1EMhIo">
+              <node concept="2OqwBi" id="xF" role="3clFbG">
+                <node concept="3VmV3z" id="xG" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="ya" role="3Vn4Tt">
+                  <node concept="3uibUv" id="xI" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="xH" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="xJ" role="37wK5m">
+                    <node concept="3uibUv" id="xM" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="37vLTw" id="xN" role="10QFUP">
+                      <ref role="3cqZAo" node="u$" resolve="TypeToEquate" />
+                      <node concept="cd27G" id="xP" role="lGtFl">
+                        <node concept="3u3nmq" id="xQ" role="cd27D">
+                          <property role="3u3nmv" value="3021153905151720125" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="xO" role="lGtFl">
+                      <node concept="3u3nmq" id="xR" role="cd27D">
+                        <property role="3u3nmv" value="1226671862847" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="xK" role="37wK5m">
+                    <node concept="3uibUv" id="xS" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2c44tf" id="xT" role="10QFUP">
+                      <node concept="3Tqbb2" id="xV" role="2c44tc">
+                        <node concept="2c44tb" id="xX" role="lGtFl">
+                          <property role="2qtEX8" value="concept" />
+                          <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                          <node concept="2OqwBi" id="xZ" role="2c44t1">
+                            <node concept="3VmV3z" id="y1" role="2Oq$k0">
+                              <property role="3VnrPo" value="typeCheckingContext" />
+                              <node concept="3uibUv" id="y4" role="3Vn4Tt">
+                                <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="y2" role="2OqNvi">
+                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.getRepresentative(org.jetbrains.mps.openapi.model.SNode)" resolve="getRepresentative" />
+                              <node concept="37vLTw" id="y5" role="37wK5m">
+                                <ref role="3cqZAo" node="vT" resolve="Concept_typevar_1226671834537" />
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="y3" role="lGtFl">
+                              <node concept="3u3nmq" id="y6" role="cd27D">
+                                <property role="3u3nmv" value="1226671878436" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="y0" role="lGtFl">
+                            <node concept="3u3nmq" id="y7" role="cd27D">
+                              <property role="3u3nmv" value="1226671875087" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="xY" role="lGtFl">
+                          <node concept="3u3nmq" id="y8" role="cd27D">
+                            <property role="3u3nmv" value="1226671873023" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="cd27G" id="xW" role="lGtFl">
+                        <node concept="3u3nmq" id="y9" role="cd27D">
+                          <property role="3u3nmv" value="1226671867646" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="xU" role="lGtFl">
+                      <node concept="3u3nmq" id="ya" role="cd27D">
+                        <property role="3u3nmv" value="1226671867645" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="xL" role="37wK5m">
+                    <ref role="3cqZAo" node="xx" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -27815,154 +27819,155 @@
                   </node>
                 </node>
                 <node concept="3clFbF" id="2Cc" role="3cqZAp">
-                  <node concept="1DoJHT" id="2Cv" role="3clFbG">
-                    <property role="1Dpdpm" value="createLessThanInequality" />
-                    <node concept="10QFUN" id="2Cw" role="1EOqxR">
-                      <node concept="3uibUv" id="2CB" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="2CC" role="10QFUP">
-                        <node concept="3Tqbb2" id="2CE" role="2c44tc">
-                          <node concept="2c44tb" id="2CG" role="lGtFl">
-                            <property role="2qtEX8" value="concept" />
-                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                            <node concept="2YIFZM" id="2CI" role="2c44t1">
-                              <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
-                              <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
-                              <node concept="2OqwBi" id="2CK" role="37wK5m">
-                                <node concept="37vLTw" id="2CM" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2Aj" resolve="nodeToCheck" />
-                                  <node concept="cd27G" id="2CP" role="lGtFl">
-                                    <node concept="3u3nmq" id="2CQ" role="cd27D">
-                                      <property role="3u3nmv" value="768255023490575457" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="2qgKlT" id="2CN" role="2OqNvi">
-                                  <ref role="37wK5l" to="tpfh:hEwJbaf" resolve="getTemplateType" />
-                                  <node concept="cd27G" id="2CR" role="lGtFl">
-                                    <node concept="3u3nmq" id="2CS" role="cd27D">
-                                      <property role="3u3nmv" value="768255023490575458" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="2CO" role="lGtFl">
-                                  <node concept="3u3nmq" id="2CT" role="cd27D">
-                                    <property role="3u3nmv" value="768255023490575456" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="cd27G" id="2CL" role="lGtFl">
-                                <node concept="3u3nmq" id="2CU" role="cd27D">
-                                  <property role="3u3nmv" value="768255023490573092" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="2CJ" role="lGtFl">
-                              <node concept="3u3nmq" id="2CV" role="cd27D">
-                                <property role="3u3nmv" value="1200922170680" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="2CH" role="lGtFl">
-                            <node concept="3u3nmq" id="2CW" role="cd27D">
-                              <property role="3u3nmv" value="1200922169147" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="2CF" role="lGtFl">
-                          <node concept="3u3nmq" id="2CX" role="cd27D">
-                            <property role="3u3nmv" value="1200922167817" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="2CD" role="lGtFl">
-                        <node concept="3u3nmq" id="2CY" role="cd27D">
-                          <property role="3u3nmv" value="1200922167816" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="10QFUN" id="2Cx" role="1EOqxR">
-                      <node concept="3uibUv" id="2CZ" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="2D0" role="10QFUP">
-                        <node concept="3Tqbb2" id="2D2" role="2c44tc">
-                          <node concept="2c44tb" id="2D4" role="lGtFl">
-                            <property role="2qtEX8" value="concept" />
-                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                            <node concept="2OqwBi" id="2D6" role="2c44t1">
-                              <node concept="2OqwBi" id="2D8" role="2Oq$k0">
-                                <node concept="37vLTw" id="2Db" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2Aj" resolve="nodeToCheck" />
-                                  <node concept="cd27G" id="2De" role="lGtFl">
-                                    <node concept="3u3nmq" id="2Df" role="cd27D">
-                                      <property role="3u3nmv" value="1200922048150" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="3TrEf2" id="2Dc" role="2OqNvi">
-                                  <ref role="3Tt5mk" to="tpf8:husgKN8" resolve="labelDeclaration" />
-                                  <node concept="cd27G" id="2Dg" role="lGtFl">
-                                    <node concept="3u3nmq" id="2Dh" role="cd27D">
-                                      <property role="3u3nmv" value="1200922155389" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="2Dd" role="lGtFl">
-                                  <node concept="3u3nmq" id="2Di" role="cd27D">
-                                    <property role="3u3nmv" value="1204227884641" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3TrEf2" id="2D9" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpf8:hurZzxA" resolve="targetConcept" />
-                                <node concept="cd27G" id="2Dj" role="lGtFl">
-                                  <node concept="3u3nmq" id="2Dk" role="cd27D">
-                                    <property role="3u3nmv" value="1200922161581" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="cd27G" id="2Da" role="lGtFl">
-                                <node concept="3u3nmq" id="2Dl" role="cd27D">
-                                  <property role="3u3nmv" value="1204227932759" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="2D7" role="lGtFl">
-                              <node concept="3u3nmq" id="2Dm" role="cd27D">
-                                <property role="3u3nmv" value="1200922046710" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="2D5" role="lGtFl">
-                            <node concept="3u3nmq" id="2Dn" role="cd27D">
-                              <property role="3u3nmv" value="1200922045303" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="2D3" role="lGtFl">
-                          <node concept="3u3nmq" id="2Do" role="cd27D">
-                            <property role="3u3nmv" value="1200922044207" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="2D1" role="lGtFl">
-                        <node concept="3u3nmq" id="2Dp" role="cd27D">
-                          <property role="3u3nmv" value="1200922044206" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbT" id="2Cy" role="1EOqxR" />
-                    <node concept="3clFbT" id="2Cz" role="1EOqxR" />
-                    <node concept="37vLTw" id="2C$" role="1EOqxR">
-                      <ref role="3cqZAo" node="2Cl" resolve="_info_12389875345" />
-                    </node>
-                    <node concept="3cqZAl" id="2C_" role="1Ez5kq" />
-                    <node concept="3VmV3z" id="2CA" role="1EMhIo">
+                  <node concept="2OqwBi" id="2Cv" role="3clFbG">
+                    <node concept="3VmV3z" id="2Cw" role="2Oq$k0">
                       <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="2Dq" role="3Vn4Tt">
+                      <node concept="3uibUv" id="2Cy" role="3Vn4Tt">
                         <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2Cx" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.createLessThanInequality(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,boolean,boolean,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createLessThanInequality" />
+                      <node concept="10QFUN" id="2Cz" role="37wK5m">
+                        <node concept="3uibUv" id="2CC" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="2CD" role="10QFUP">
+                          <node concept="3Tqbb2" id="2CF" role="2c44tc">
+                            <node concept="2c44tb" id="2CH" role="lGtFl">
+                              <property role="2qtEX8" value="concept" />
+                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                              <node concept="2YIFZM" id="2CJ" role="2c44t1">
+                                <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                                <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
+                                <node concept="2OqwBi" id="2CL" role="37wK5m">
+                                  <node concept="37vLTw" id="2CN" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2Aj" resolve="nodeToCheck" />
+                                    <node concept="cd27G" id="2CQ" role="lGtFl">
+                                      <node concept="3u3nmq" id="2CR" role="cd27D">
+                                        <property role="3u3nmv" value="768255023490575457" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="2qgKlT" id="2CO" role="2OqNvi">
+                                    <ref role="37wK5l" to="tpfh:hEwJbaf" resolve="getTemplateType" />
+                                    <node concept="cd27G" id="2CS" role="lGtFl">
+                                      <node concept="3u3nmq" id="2CT" role="cd27D">
+                                        <property role="3u3nmv" value="768255023490575458" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="2CP" role="lGtFl">
+                                    <node concept="3u3nmq" id="2CU" role="cd27D">
+                                      <property role="3u3nmv" value="768255023490575456" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="2CM" role="lGtFl">
+                                  <node concept="3u3nmq" id="2CV" role="cd27D">
+                                    <property role="3u3nmv" value="768255023490573092" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="2CK" role="lGtFl">
+                                <node concept="3u3nmq" id="2CW" role="cd27D">
+                                  <property role="3u3nmv" value="1200922170680" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2CI" role="lGtFl">
+                              <node concept="3u3nmq" id="2CX" role="cd27D">
+                                <property role="3u3nmv" value="1200922169147" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="2CG" role="lGtFl">
+                            <node concept="3u3nmq" id="2CY" role="cd27D">
+                              <property role="3u3nmv" value="1200922167817" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="2CE" role="lGtFl">
+                          <node concept="3u3nmq" id="2CZ" role="cd27D">
+                            <property role="3u3nmv" value="1200922167816" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="10QFUN" id="2C$" role="37wK5m">
+                        <node concept="3uibUv" id="2D0" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="2D1" role="10QFUP">
+                          <node concept="3Tqbb2" id="2D3" role="2c44tc">
+                            <node concept="2c44tb" id="2D5" role="lGtFl">
+                              <property role="2qtEX8" value="concept" />
+                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                              <node concept="2OqwBi" id="2D7" role="2c44t1">
+                                <node concept="2OqwBi" id="2D9" role="2Oq$k0">
+                                  <node concept="37vLTw" id="2Dc" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2Aj" resolve="nodeToCheck" />
+                                    <node concept="cd27G" id="2Df" role="lGtFl">
+                                      <node concept="3u3nmq" id="2Dg" role="cd27D">
+                                        <property role="3u3nmv" value="1200922048150" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="3TrEf2" id="2Dd" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tpf8:husgKN8" resolve="labelDeclaration" />
+                                    <node concept="cd27G" id="2Dh" role="lGtFl">
+                                      <node concept="3u3nmq" id="2Di" role="cd27D">
+                                        <property role="3u3nmv" value="1200922155389" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="2De" role="lGtFl">
+                                    <node concept="3u3nmq" id="2Dj" role="cd27D">
+                                      <property role="3u3nmv" value="1204227884641" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3TrEf2" id="2Da" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpf8:hurZzxA" resolve="targetConcept" />
+                                  <node concept="cd27G" id="2Dk" role="lGtFl">
+                                    <node concept="3u3nmq" id="2Dl" role="cd27D">
+                                      <property role="3u3nmv" value="1200922161581" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="2Db" role="lGtFl">
+                                  <node concept="3u3nmq" id="2Dm" role="cd27D">
+                                    <property role="3u3nmv" value="1204227932759" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="2D8" role="lGtFl">
+                                <node concept="3u3nmq" id="2Dn" role="cd27D">
+                                  <property role="3u3nmv" value="1200922046710" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2D6" role="lGtFl">
+                              <node concept="3u3nmq" id="2Do" role="cd27D">
+                                <property role="3u3nmv" value="1200922045303" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="2D4" role="lGtFl">
+                            <node concept="3u3nmq" id="2Dp" role="cd27D">
+                              <property role="3u3nmv" value="1200922044207" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="2D2" role="lGtFl">
+                          <node concept="3u3nmq" id="2Dq" role="cd27D">
+                            <property role="3u3nmv" value="1200922044206" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbT" id="2C_" role="37wK5m" />
+                      <node concept="3clFbT" id="2CA" role="37wK5m" />
+                      <node concept="37vLTw" id="2CB" role="37wK5m">
+                        <ref role="3cqZAo" node="2Cl" resolve="_info_12389875345" />
                       </node>
                     </node>
                   </node>
@@ -28575,168 +28580,169 @@
                   </node>
                 </node>
                 <node concept="3clFbF" id="2GV" role="3cqZAp">
-                  <node concept="1DoJHT" id="2He" role="3clFbG">
-                    <property role="1Dpdpm" value="createLessThanInequality" />
-                    <node concept="10QFUN" id="2Hf" role="1EOqxR">
-                      <node concept="3uibUv" id="2Hm" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="2Hn" role="10QFUP">
-                        <node concept="3Tqbb2" id="2Hp" role="2c44tc">
-                          <node concept="2c44tb" id="2Hr" role="lGtFl">
-                            <property role="2qtEX8" value="concept" />
-                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                            <node concept="2YIFZM" id="2Ht" role="2c44t1">
-                              <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
-                              <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
-                              <node concept="2OqwBi" id="2Hv" role="37wK5m">
-                                <node concept="2OqwBi" id="2Hx" role="2Oq$k0">
-                                  <node concept="37vLTw" id="2H$" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="2Fp" resolve="nodeToCheck" />
-                                    <node concept="cd27G" id="2HB" role="lGtFl">
-                                      <node concept="3u3nmq" id="2HC" role="cd27D">
-                                        <property role="3u3nmv" value="1200923795622" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="3TrEf2" id="2H_" role="2OqNvi">
-                                    <ref role="3Tt5mk" to="tpf8:gYVPold" resolve="templateNode" />
-                                    <node concept="cd27G" id="2HD" role="lGtFl">
-                                      <node concept="3u3nmq" id="2HE" role="cd27D">
-                                        <property role="3u3nmv" value="1200923797579" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="cd27G" id="2HA" role="lGtFl">
-                                    <node concept="3u3nmq" id="2HF" role="cd27D">
-                                      <property role="3u3nmv" value="1204227867957" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="2yIwOk" id="2Hy" role="2OqNvi">
-                                  <node concept="cd27G" id="2HG" role="lGtFl">
-                                    <node concept="3u3nmq" id="2HH" role="cd27D">
-                                      <property role="3u3nmv" value="5495892681291690280" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="2Hz" role="lGtFl">
-                                  <node concept="3u3nmq" id="2HI" role="cd27D">
-                                    <property role="3u3nmv" value="1204227888245" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="cd27G" id="2Hw" role="lGtFl">
-                                <node concept="3u3nmq" id="2HJ" role="cd27D">
-                                  <property role="3u3nmv" value="768255023490560317" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="2Hu" role="lGtFl">
-                              <node concept="3u3nmq" id="2HK" role="cd27D">
-                                <property role="3u3nmv" value="1200923794495" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="2Hs" role="lGtFl">
-                            <node concept="3u3nmq" id="2HL" role="cd27D">
-                              <property role="3u3nmv" value="1200923793681" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="2Hq" role="lGtFl">
-                          <node concept="3u3nmq" id="2HM" role="cd27D">
-                            <property role="3u3nmv" value="1200923779367" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="2Ho" role="lGtFl">
-                        <node concept="3u3nmq" id="2HN" role="cd27D">
-                          <property role="3u3nmv" value="1200923779366" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="10QFUN" id="2Hg" role="1EOqxR">
-                      <node concept="3uibUv" id="2HO" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="2HP" role="10QFUP">
-                        <node concept="3Tqbb2" id="2HR" role="2c44tc">
-                          <node concept="2c44tb" id="2HT" role="lGtFl">
-                            <property role="2qtEX8" value="concept" />
-                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                            <node concept="2OqwBi" id="2HV" role="2c44t1">
-                              <node concept="2OqwBi" id="2HX" role="2Oq$k0">
-                                <node concept="37vLTw" id="2I0" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2Fp" resolve="nodeToCheck" />
-                                  <node concept="cd27G" id="2I3" role="lGtFl">
-                                    <node concept="3u3nmq" id="2I4" role="cd27D">
-                                      <property role="3u3nmv" value="1200923787359" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="3TrEf2" id="2I1" role="2OqNvi">
-                                  <ref role="3Tt5mk" to="tpf8:husBCMG" resolve="label" />
-                                  <node concept="cd27G" id="2I5" role="lGtFl">
-                                    <node concept="3u3nmq" id="2I6" role="cd27D">
-                                      <property role="3u3nmv" value="1200923788395" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="2I2" role="lGtFl">
-                                  <node concept="3u3nmq" id="2I7" role="cd27D">
-                                    <property role="3u3nmv" value="1204227946462" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3TrEf2" id="2HY" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpf8:hurZzxA" resolve="targetConcept" />
-                                <node concept="cd27G" id="2I8" role="lGtFl">
-                                  <node concept="3u3nmq" id="2I9" role="cd27D">
-                                    <property role="3u3nmv" value="1200923791180" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="cd27G" id="2HZ" role="lGtFl">
-                                <node concept="3u3nmq" id="2Ia" role="cd27D">
-                                  <property role="3u3nmv" value="1204227910172" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="2HW" role="lGtFl">
-                              <node concept="3u3nmq" id="2Ib" role="cd27D">
-                                <property role="3u3nmv" value="1200923786514" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="2HU" role="lGtFl">
-                            <node concept="3u3nmq" id="2Ic" role="cd27D">
-                              <property role="3u3nmv" value="1200923784419" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="2HS" role="lGtFl">
-                          <node concept="3u3nmq" id="2Id" role="cd27D">
-                            <property role="3u3nmv" value="1200923779370" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="2HQ" role="lGtFl">
-                        <node concept="3u3nmq" id="2Ie" role="cd27D">
-                          <property role="3u3nmv" value="1200923779369" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbT" id="2Hh" role="1EOqxR" />
-                    <node concept="3clFbT" id="2Hi" role="1EOqxR" />
-                    <node concept="37vLTw" id="2Hj" role="1EOqxR">
-                      <ref role="3cqZAo" node="2H4" resolve="_info_12389875345" />
-                    </node>
-                    <node concept="3cqZAl" id="2Hk" role="1Ez5kq" />
-                    <node concept="3VmV3z" id="2Hl" role="1EMhIo">
+                  <node concept="2OqwBi" id="2He" role="3clFbG">
+                    <node concept="3VmV3z" id="2Hf" role="2Oq$k0">
                       <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="2If" role="3Vn4Tt">
+                      <node concept="3uibUv" id="2Hh" role="3Vn4Tt">
                         <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2Hg" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.createLessThanInequality(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,boolean,boolean,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createLessThanInequality" />
+                      <node concept="10QFUN" id="2Hi" role="37wK5m">
+                        <node concept="3uibUv" id="2Hn" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="2Ho" role="10QFUP">
+                          <node concept="3Tqbb2" id="2Hq" role="2c44tc">
+                            <node concept="2c44tb" id="2Hs" role="lGtFl">
+                              <property role="2qtEX8" value="concept" />
+                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                              <node concept="2YIFZM" id="2Hu" role="2c44t1">
+                                <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                                <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
+                                <node concept="2OqwBi" id="2Hw" role="37wK5m">
+                                  <node concept="2OqwBi" id="2Hy" role="2Oq$k0">
+                                    <node concept="37vLTw" id="2H_" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="2Fp" resolve="nodeToCheck" />
+                                      <node concept="cd27G" id="2HC" role="lGtFl">
+                                        <node concept="3u3nmq" id="2HD" role="cd27D">
+                                          <property role="3u3nmv" value="1200923795622" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="3TrEf2" id="2HA" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tpf8:gYVPold" resolve="templateNode" />
+                                      <node concept="cd27G" id="2HE" role="lGtFl">
+                                        <node concept="3u3nmq" id="2HF" role="cd27D">
+                                          <property role="3u3nmv" value="1200923797579" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="cd27G" id="2HB" role="lGtFl">
+                                      <node concept="3u3nmq" id="2HG" role="cd27D">
+                                        <property role="3u3nmv" value="1204227867957" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="2yIwOk" id="2Hz" role="2OqNvi">
+                                    <node concept="cd27G" id="2HH" role="lGtFl">
+                                      <node concept="3u3nmq" id="2HI" role="cd27D">
+                                        <property role="3u3nmv" value="5495892681291690280" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="2H$" role="lGtFl">
+                                    <node concept="3u3nmq" id="2HJ" role="cd27D">
+                                      <property role="3u3nmv" value="1204227888245" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="2Hx" role="lGtFl">
+                                  <node concept="3u3nmq" id="2HK" role="cd27D">
+                                    <property role="3u3nmv" value="768255023490560317" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="2Hv" role="lGtFl">
+                                <node concept="3u3nmq" id="2HL" role="cd27D">
+                                  <property role="3u3nmv" value="1200923794495" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2Ht" role="lGtFl">
+                              <node concept="3u3nmq" id="2HM" role="cd27D">
+                                <property role="3u3nmv" value="1200923793681" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="2Hr" role="lGtFl">
+                            <node concept="3u3nmq" id="2HN" role="cd27D">
+                              <property role="3u3nmv" value="1200923779367" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="2Hp" role="lGtFl">
+                          <node concept="3u3nmq" id="2HO" role="cd27D">
+                            <property role="3u3nmv" value="1200923779366" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="10QFUN" id="2Hj" role="37wK5m">
+                        <node concept="3uibUv" id="2HP" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="2HQ" role="10QFUP">
+                          <node concept="3Tqbb2" id="2HS" role="2c44tc">
+                            <node concept="2c44tb" id="2HU" role="lGtFl">
+                              <property role="2qtEX8" value="concept" />
+                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                              <node concept="2OqwBi" id="2HW" role="2c44t1">
+                                <node concept="2OqwBi" id="2HY" role="2Oq$k0">
+                                  <node concept="37vLTw" id="2I1" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2Fp" resolve="nodeToCheck" />
+                                    <node concept="cd27G" id="2I4" role="lGtFl">
+                                      <node concept="3u3nmq" id="2I5" role="cd27D">
+                                        <property role="3u3nmv" value="1200923787359" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="3TrEf2" id="2I2" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tpf8:husBCMG" resolve="label" />
+                                    <node concept="cd27G" id="2I6" role="lGtFl">
+                                      <node concept="3u3nmq" id="2I7" role="cd27D">
+                                        <property role="3u3nmv" value="1200923788395" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="2I3" role="lGtFl">
+                                    <node concept="3u3nmq" id="2I8" role="cd27D">
+                                      <property role="3u3nmv" value="1204227946462" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3TrEf2" id="2HZ" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpf8:hurZzxA" resolve="targetConcept" />
+                                  <node concept="cd27G" id="2I9" role="lGtFl">
+                                    <node concept="3u3nmq" id="2Ia" role="cd27D">
+                                      <property role="3u3nmv" value="1200923791180" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="2I0" role="lGtFl">
+                                  <node concept="3u3nmq" id="2Ib" role="cd27D">
+                                    <property role="3u3nmv" value="1204227910172" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="2HX" role="lGtFl">
+                                <node concept="3u3nmq" id="2Ic" role="cd27D">
+                                  <property role="3u3nmv" value="1200923786514" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2HV" role="lGtFl">
+                              <node concept="3u3nmq" id="2Id" role="cd27D">
+                                <property role="3u3nmv" value="1200923784419" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="2HT" role="lGtFl">
+                            <node concept="3u3nmq" id="2Ie" role="cd27D">
+                              <property role="3u3nmv" value="1200923779370" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="2HR" role="lGtFl">
+                          <node concept="3u3nmq" id="2If" role="cd27D">
+                            <property role="3u3nmv" value="1200923779369" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbT" id="2Hk" role="37wK5m" />
+                      <node concept="3clFbT" id="2Hl" role="37wK5m" />
+                      <node concept="37vLTw" id="2Hm" role="37wK5m">
+                        <ref role="3cqZAo" node="2H4" resolve="_info_12389875345" />
                       </node>
                     </node>
                   </node>
@@ -29514,113 +29520,114 @@
                             </node>
                           </node>
                           <node concept="3clFbF" id="2MR" role="3cqZAp">
-                            <node concept="1DoJHT" id="2Ne" role="3clFbG">
-                              <property role="1Dpdpm" value="createLessThanInequality" />
-                              <node concept="10QFUN" id="2Nf" role="1EOqxR">
-                                <node concept="3uibUv" id="2Nm" role="10QFUM">
-                                  <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                                </node>
-                                <node concept="2OqwBi" id="2Nn" role="10QFUP">
-                                  <node concept="3VmV3z" id="2Np" role="2Oq$k0">
-                                    <property role="3VnrPo" value="typeCheckingContext" />
-                                    <node concept="3uibUv" id="2Nt" role="3Vn4Tt">
-                                      <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                                    </node>
-                                  </node>
-                                  <node concept="liA8E" id="2Nq" role="2OqNvi">
-                                    <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                                    <node concept="3VmV3z" id="2Nu" role="37wK5m">
-                                      <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                                      <node concept="3uibUv" id="2Ny" role="3Vn4Tt">
-                                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                                      </node>
-                                    </node>
-                                    <node concept="Xl_RD" id="2Nv" role="37wK5m">
-                                      <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                                    </node>
-                                    <node concept="Xl_RD" id="2Nw" role="37wK5m">
-                                      <property role="Xl_RC" value="4665309944889705399" />
-                                    </node>
-                                    <node concept="3clFbT" id="2Nx" role="37wK5m">
-                                      <property role="3clFbU" value="true" />
-                                    </node>
-                                  </node>
-                                  <node concept="6wLe0" id="2Nr" role="lGtFl">
-                                    <property role="6wLej" value="4665309944889705399" />
-                                    <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                                  </node>
-                                  <node concept="cd27G" id="2Ns" role="lGtFl">
-                                    <node concept="3u3nmq" id="2Nz" role="cd27D">
-                                      <property role="3u3nmv" value="4665309944889705399" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="2No" role="lGtFl">
-                                  <node concept="3u3nmq" id="2N$" role="cd27D">
-                                    <property role="3u3nmv" value="4665309944889675076" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="10QFUN" id="2Ng" role="1EOqxR">
-                                <node concept="3uibUv" id="2N_" role="10QFUM">
-                                  <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                                </node>
-                                <node concept="2OqwBi" id="2NA" role="10QFUP">
-                                  <node concept="1y4W85" id="2NC" role="2Oq$k0">
-                                    <node concept="37vLTw" id="2NF" role="1y58nS">
-                                      <ref role="3cqZAo" node="2Mz" resolve="i" />
-                                      <node concept="cd27G" id="2NI" role="lGtFl">
-                                        <node concept="3u3nmq" id="2NJ" role="cd27D">
-                                          <property role="3u3nmv" value="4265636116363115792" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="37vLTw" id="2NG" role="1y566C">
-                                      <ref role="3cqZAo" node="2L8" resolve="parameterDeclarations" />
-                                      <node concept="cd27G" id="2NK" role="lGtFl">
-                                        <node concept="3u3nmq" id="2NL" role="cd27D">
-                                          <property role="3u3nmv" value="4265636116363075854" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="cd27G" id="2NH" role="lGtFl">
-                                      <node concept="3u3nmq" id="2NM" role="cd27D">
-                                        <property role="3u3nmv" value="4665309944889705419" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="3TrEf2" id="2ND" role="2OqNvi">
-                                    <ref role="3Tt5mk" to="tpf8:1$dcvTE2mFf" resolve="type" />
-                                    <node concept="cd27G" id="2NN" role="lGtFl">
-                                      <node concept="3u3nmq" id="2NO" role="cd27D">
-                                        <property role="3u3nmv" value="4665309944889705426" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="cd27G" id="2NE" role="lGtFl">
-                                    <node concept="3u3nmq" id="2NP" role="cd27D">
-                                      <property role="3u3nmv" value="4665309944889705414" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="2NB" role="lGtFl">
-                                  <node concept="3u3nmq" id="2NQ" role="cd27D">
-                                    <property role="3u3nmv" value="4665309944889705412" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3clFbT" id="2Nh" role="1EOqxR" />
-                              <node concept="3clFbT" id="2Ni" role="1EOqxR">
-                                <property role="3clFbU" value="true" />
-                              </node>
-                              <node concept="37vLTw" id="2Nj" role="1EOqxR">
-                                <ref role="3cqZAo" node="2N4" resolve="_info_12389875345" />
-                              </node>
-                              <node concept="3cqZAl" id="2Nk" role="1Ez5kq" />
-                              <node concept="3VmV3z" id="2Nl" role="1EMhIo">
+                            <node concept="2OqwBi" id="2Ne" role="3clFbG">
+                              <node concept="3VmV3z" id="2Nf" role="2Oq$k0">
                                 <property role="3VnrPo" value="typeCheckingContext" />
-                                <node concept="3uibUv" id="2NR" role="3Vn4Tt">
+                                <node concept="3uibUv" id="2Nh" role="3Vn4Tt">
                                   <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                                </node>
+                              </node>
+                              <node concept="liA8E" id="2Ng" role="2OqNvi">
+                                <ref role="37wK5l" to="u78q:~TypeCheckingContext.createLessThanInequality(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,boolean,boolean,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createLessThanInequality" />
+                                <node concept="10QFUN" id="2Ni" role="37wK5m">
+                                  <node concept="3uibUv" id="2Nn" role="10QFUM">
+                                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                                  </node>
+                                  <node concept="2OqwBi" id="2No" role="10QFUP">
+                                    <node concept="3VmV3z" id="2Nq" role="2Oq$k0">
+                                      <property role="3VnrPo" value="typeCheckingContext" />
+                                      <node concept="3uibUv" id="2Nu" role="3Vn4Tt">
+                                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                                      </node>
+                                    </node>
+                                    <node concept="liA8E" id="2Nr" role="2OqNvi">
+                                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                                      <node concept="3VmV3z" id="2Nv" role="37wK5m">
+                                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                                        <node concept="3uibUv" id="2Nz" role="3Vn4Tt">
+                                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                                        </node>
+                                      </node>
+                                      <node concept="Xl_RD" id="2Nw" role="37wK5m">
+                                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                                      </node>
+                                      <node concept="Xl_RD" id="2Nx" role="37wK5m">
+                                        <property role="Xl_RC" value="4665309944889705399" />
+                                      </node>
+                                      <node concept="3clFbT" id="2Ny" role="37wK5m">
+                                        <property role="3clFbU" value="true" />
+                                      </node>
+                                    </node>
+                                    <node concept="6wLe0" id="2Ns" role="lGtFl">
+                                      <property role="6wLej" value="4665309944889705399" />
+                                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                                    </node>
+                                    <node concept="cd27G" id="2Nt" role="lGtFl">
+                                      <node concept="3u3nmq" id="2N$" role="cd27D">
+                                        <property role="3u3nmv" value="4665309944889705399" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="2Np" role="lGtFl">
+                                    <node concept="3u3nmq" id="2N_" role="cd27D">
+                                      <property role="3u3nmv" value="4665309944889675076" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="10QFUN" id="2Nj" role="37wK5m">
+                                  <node concept="3uibUv" id="2NA" role="10QFUM">
+                                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                                  </node>
+                                  <node concept="2OqwBi" id="2NB" role="10QFUP">
+                                    <node concept="1y4W85" id="2ND" role="2Oq$k0">
+                                      <node concept="37vLTw" id="2NG" role="1y58nS">
+                                        <ref role="3cqZAo" node="2Mz" resolve="i" />
+                                        <node concept="cd27G" id="2NJ" role="lGtFl">
+                                          <node concept="3u3nmq" id="2NK" role="cd27D">
+                                            <property role="3u3nmv" value="4265636116363115792" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                      <node concept="37vLTw" id="2NH" role="1y566C">
+                                        <ref role="3cqZAo" node="2L8" resolve="parameterDeclarations" />
+                                        <node concept="cd27G" id="2NL" role="lGtFl">
+                                          <node concept="3u3nmq" id="2NM" role="cd27D">
+                                            <property role="3u3nmv" value="4265636116363075854" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                      <node concept="cd27G" id="2NI" role="lGtFl">
+                                        <node concept="3u3nmq" id="2NN" role="cd27D">
+                                          <property role="3u3nmv" value="4665309944889705419" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="3TrEf2" id="2NE" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tpf8:1$dcvTE2mFf" resolve="type" />
+                                      <node concept="cd27G" id="2NO" role="lGtFl">
+                                        <node concept="3u3nmq" id="2NP" role="cd27D">
+                                          <property role="3u3nmv" value="4665309944889705426" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="cd27G" id="2NF" role="lGtFl">
+                                      <node concept="3u3nmq" id="2NQ" role="cd27D">
+                                        <property role="3u3nmv" value="4665309944889705414" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="2NC" role="lGtFl">
+                                    <node concept="3u3nmq" id="2NR" role="cd27D">
+                                      <property role="3u3nmv" value="4665309944889705412" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3clFbT" id="2Nk" role="37wK5m" />
+                                <node concept="3clFbT" id="2Nl" role="37wK5m">
+                                  <property role="3clFbU" value="true" />
+                                </node>
+                                <node concept="37vLTw" id="2Nm" role="37wK5m">
+                                  <ref role="3cqZAo" node="2N4" resolve="_info_12389875345" />
                                 </node>
                               </node>
                             </node>
@@ -30452,145 +30459,146 @@
                   </node>
                 </node>
                 <node concept="3clFbF" id="2SC" role="3cqZAp">
-                  <node concept="1DoJHT" id="2SV" role="3clFbG">
-                    <property role="1Dpdpm" value="createLessThanInequality" />
-                    <node concept="10QFUN" id="2SW" role="1EOqxR">
-                      <node concept="3uibUv" id="2T3" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="2T4" role="10QFUP">
-                        <node concept="3Tqbb2" id="2T6" role="2c44tc">
-                          <node concept="2c44tb" id="2T8" role="lGtFl">
-                            <property role="2qtEX8" value="concept" />
-                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                            <node concept="2OqwBi" id="2Ta" role="2c44t1">
-                              <node concept="37vLTw" id="2Tc" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2Qe" resolve="rule" />
-                                <node concept="cd27G" id="2Tf" role="lGtFl">
-                                  <node concept="3u3nmq" id="2Tg" role="cd27D">
-                                    <property role="3u3nmv" value="1805153994417123398" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="2qgKlT" id="2Td" role="2OqNvi">
-                                <ref role="37wK5l" to="tpfh:1$dcvTE731L" resolve="getTemplateType" />
-                                <node concept="cd27G" id="2Th" role="lGtFl">
-                                  <node concept="3u3nmq" id="2Ti" role="cd27D">
-                                    <property role="3u3nmv" value="1805153994417123449" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="cd27G" id="2Te" role="lGtFl">
-                                <node concept="3u3nmq" id="2Tj" role="cd27D">
-                                  <property role="3u3nmv" value="1805153994417064801" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="2Tb" role="lGtFl">
-                              <node concept="3u3nmq" id="2Tk" role="cd27D">
-                                <property role="3u3nmv" value="1805153994417064800" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="2T9" role="lGtFl">
-                            <node concept="3u3nmq" id="2Tl" role="cd27D">
-                              <property role="3u3nmv" value="1805153994417064799" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="2T7" role="lGtFl">
-                          <node concept="3u3nmq" id="2Tm" role="cd27D">
-                            <property role="3u3nmv" value="1805153994417064798" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="2T5" role="lGtFl">
-                        <node concept="3u3nmq" id="2Tn" role="cd27D">
-                          <property role="3u3nmv" value="1805153994417064797" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="10QFUN" id="2SX" role="1EOqxR">
-                      <node concept="3uibUv" id="2To" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="2Tp" role="10QFUP">
-                        <node concept="3Tqbb2" id="2Tr" role="2c44tc">
-                          <node concept="2c44tb" id="2Tt" role="lGtFl">
-                            <property role="2qtEX8" value="concept" />
-                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                            <node concept="2OqwBi" id="2Tv" role="2c44t1">
-                              <node concept="2OqwBi" id="2Tx" role="2Oq$k0">
-                                <node concept="37vLTw" id="2T$" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2Qe" resolve="rule" />
-                                  <node concept="cd27G" id="2TB" role="lGtFl">
-                                    <node concept="3u3nmq" id="2TC" role="cd27D">
-                                      <property role="3u3nmv" value="1805153994417123396" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="3TrEf2" id="2T_" role="2OqNvi">
-                                  <ref role="3Tt5mk" to="tpf8:1$dcvTE4IIU" resolve="labelDeclaration" />
-                                  <node concept="cd27G" id="2TD" role="lGtFl">
-                                    <node concept="3u3nmq" id="2TE" role="cd27D">
-                                      <property role="3u3nmv" value="1805153994417123397" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="2TA" role="lGtFl">
-                                  <node concept="3u3nmq" id="2TF" role="cd27D">
-                                    <property role="3u3nmv" value="1805153994417064809" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3TrEf2" id="2Ty" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpf8:hurZzxA" resolve="targetConcept" />
-                                <node concept="cd27G" id="2TG" role="lGtFl">
-                                  <node concept="3u3nmq" id="2TH" role="cd27D">
-                                    <property role="3u3nmv" value="1805153994417064812" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="cd27G" id="2Tz" role="lGtFl">
-                                <node concept="3u3nmq" id="2TI" role="cd27D">
-                                  <property role="3u3nmv" value="1805153994417064808" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="2Tw" role="lGtFl">
-                              <node concept="3u3nmq" id="2TJ" role="cd27D">
-                                <property role="3u3nmv" value="1805153994417064807" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="2Tu" role="lGtFl">
-                            <node concept="3u3nmq" id="2TK" role="cd27D">
-                              <property role="3u3nmv" value="1805153994417064806" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="2Ts" role="lGtFl">
-                          <node concept="3u3nmq" id="2TL" role="cd27D">
-                            <property role="3u3nmv" value="1805153994417064805" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="2Tq" role="lGtFl">
-                        <node concept="3u3nmq" id="2TM" role="cd27D">
-                          <property role="3u3nmv" value="1805153994417064804" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbT" id="2SY" role="1EOqxR" />
-                    <node concept="3clFbT" id="2SZ" role="1EOqxR" />
-                    <node concept="37vLTw" id="2T0" role="1EOqxR">
-                      <ref role="3cqZAo" node="2SL" resolve="_info_12389875345" />
-                    </node>
-                    <node concept="3cqZAl" id="2T1" role="1Ez5kq" />
-                    <node concept="3VmV3z" id="2T2" role="1EMhIo">
+                  <node concept="2OqwBi" id="2SV" role="3clFbG">
+                    <node concept="3VmV3z" id="2SW" role="2Oq$k0">
                       <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="2TN" role="3Vn4Tt">
+                      <node concept="3uibUv" id="2SY" role="3Vn4Tt">
                         <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2SX" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.createLessThanInequality(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,boolean,boolean,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createLessThanInequality" />
+                      <node concept="10QFUN" id="2SZ" role="37wK5m">
+                        <node concept="3uibUv" id="2T4" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="2T5" role="10QFUP">
+                          <node concept="3Tqbb2" id="2T7" role="2c44tc">
+                            <node concept="2c44tb" id="2T9" role="lGtFl">
+                              <property role="2qtEX8" value="concept" />
+                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                              <node concept="2OqwBi" id="2Tb" role="2c44t1">
+                                <node concept="37vLTw" id="2Td" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="2Qe" resolve="rule" />
+                                  <node concept="cd27G" id="2Tg" role="lGtFl">
+                                    <node concept="3u3nmq" id="2Th" role="cd27D">
+                                      <property role="3u3nmv" value="1805153994417123398" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="2qgKlT" id="2Te" role="2OqNvi">
+                                  <ref role="37wK5l" to="tpfh:1$dcvTE731L" resolve="getTemplateType" />
+                                  <node concept="cd27G" id="2Ti" role="lGtFl">
+                                    <node concept="3u3nmq" id="2Tj" role="cd27D">
+                                      <property role="3u3nmv" value="1805153994417123449" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="2Tf" role="lGtFl">
+                                  <node concept="3u3nmq" id="2Tk" role="cd27D">
+                                    <property role="3u3nmv" value="1805153994417064801" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="2Tc" role="lGtFl">
+                                <node concept="3u3nmq" id="2Tl" role="cd27D">
+                                  <property role="3u3nmv" value="1805153994417064800" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2Ta" role="lGtFl">
+                              <node concept="3u3nmq" id="2Tm" role="cd27D">
+                                <property role="3u3nmv" value="1805153994417064799" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="2T8" role="lGtFl">
+                            <node concept="3u3nmq" id="2Tn" role="cd27D">
+                              <property role="3u3nmv" value="1805153994417064798" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="2T6" role="lGtFl">
+                          <node concept="3u3nmq" id="2To" role="cd27D">
+                            <property role="3u3nmv" value="1805153994417064797" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="10QFUN" id="2T0" role="37wK5m">
+                        <node concept="3uibUv" id="2Tp" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="2Tq" role="10QFUP">
+                          <node concept="3Tqbb2" id="2Ts" role="2c44tc">
+                            <node concept="2c44tb" id="2Tu" role="lGtFl">
+                              <property role="2qtEX8" value="concept" />
+                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                              <node concept="2OqwBi" id="2Tw" role="2c44t1">
+                                <node concept="2OqwBi" id="2Ty" role="2Oq$k0">
+                                  <node concept="37vLTw" id="2T_" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2Qe" resolve="rule" />
+                                    <node concept="cd27G" id="2TC" role="lGtFl">
+                                      <node concept="3u3nmq" id="2TD" role="cd27D">
+                                        <property role="3u3nmv" value="1805153994417123396" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="3TrEf2" id="2TA" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tpf8:1$dcvTE4IIU" resolve="labelDeclaration" />
+                                    <node concept="cd27G" id="2TE" role="lGtFl">
+                                      <node concept="3u3nmq" id="2TF" role="cd27D">
+                                        <property role="3u3nmv" value="1805153994417123397" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="2TB" role="lGtFl">
+                                    <node concept="3u3nmq" id="2TG" role="cd27D">
+                                      <property role="3u3nmv" value="1805153994417064809" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3TrEf2" id="2Tz" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpf8:hurZzxA" resolve="targetConcept" />
+                                  <node concept="cd27G" id="2TH" role="lGtFl">
+                                    <node concept="3u3nmq" id="2TI" role="cd27D">
+                                      <property role="3u3nmv" value="1805153994417064812" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="2T$" role="lGtFl">
+                                  <node concept="3u3nmq" id="2TJ" role="cd27D">
+                                    <property role="3u3nmv" value="1805153994417064808" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="2Tx" role="lGtFl">
+                                <node concept="3u3nmq" id="2TK" role="cd27D">
+                                  <property role="3u3nmv" value="1805153994417064807" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2Tv" role="lGtFl">
+                              <node concept="3u3nmq" id="2TL" role="cd27D">
+                                <property role="3u3nmv" value="1805153994417064806" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="2Tt" role="lGtFl">
+                            <node concept="3u3nmq" id="2TM" role="cd27D">
+                              <property role="3u3nmv" value="1805153994417064805" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="2Tr" role="lGtFl">
+                          <node concept="3u3nmq" id="2TN" role="cd27D">
+                            <property role="3u3nmv" value="1805153994417064804" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbT" id="2T1" role="37wK5m" />
+                      <node concept="3clFbT" id="2T2" role="37wK5m" />
+                      <node concept="37vLTw" id="2T3" role="37wK5m">
+                        <ref role="3cqZAo" node="2SL" resolve="_info_12389875345" />
                       </node>
                     </node>
                   </node>
@@ -31033,123 +31041,124 @@
               </node>
             </node>
             <node concept="3clFbF" id="2Wg" role="3cqZAp">
-              <node concept="1DoJHT" id="2Wx" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="2Wy" role="1EOqxR">
-                  <node concept="3uibUv" id="2WB" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="2WC" role="10QFUP">
-                    <node concept="3VmV3z" id="2WE" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="2WI" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="2WF" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="2WJ" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="2WN" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="2WK" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="2WL" role="37wK5m">
-                        <property role="Xl_RC" value="4816349095291153409" />
-                      </node>
-                      <node concept="3clFbT" id="2WM" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="2WG" role="lGtFl">
-                      <property role="6wLej" value="4816349095291153409" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="2WH" role="lGtFl">
-                      <node concept="3u3nmq" id="2WO" role="cd27D">
-                        <property role="3u3nmv" value="4816349095291153409" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="2WD" role="lGtFl">
-                    <node concept="3u3nmq" id="2WP" role="cd27D">
-                      <property role="3u3nmv" value="4816349095291153415" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="2Wz" role="1EOqxR">
-                  <node concept="3uibUv" id="2WQ" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="2WR" role="10QFUP">
-                    <node concept="3VmV3z" id="2WT" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="2WX" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="2WU" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="2OqwBi" id="2WY" role="37wK5m">
-                        <node concept="37vLTw" id="2X2" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2VM" resolve="templateArgumentLinkPatternRefExpression" />
-                          <node concept="cd27G" id="2X5" role="lGtFl">
-                            <node concept="3u3nmq" id="2X6" role="cd27D">
-                              <property role="3u3nmv" value="4816349095291153419" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="2X3" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpf8:4bn6ZJF6_RE" resolve="patternVar" />
-                          <node concept="cd27G" id="2X7" role="lGtFl">
-                            <node concept="3u3nmq" id="2X8" role="cd27D">
-                              <property role="3u3nmv" value="4816349095291153424" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="2X4" role="lGtFl">
-                          <node concept="3u3nmq" id="2X9" role="cd27D">
-                            <property role="3u3nmv" value="4816349095291153420" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="2WZ" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="2X0" role="37wK5m">
-                        <property role="Xl_RC" value="4816349095291153417" />
-                      </node>
-                      <node concept="3clFbT" id="2X1" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="2WV" role="lGtFl">
-                      <property role="6wLej" value="4816349095291153417" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="2WW" role="lGtFl">
-                      <node concept="3u3nmq" id="2Xa" role="cd27D">
-                        <property role="3u3nmv" value="4816349095291153417" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="2WS" role="lGtFl">
-                    <node concept="3u3nmq" id="2Xb" role="cd27D">
-                      <property role="3u3nmv" value="4816349095291153416" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="2W$" role="1EOqxR">
-                  <ref role="3cqZAo" node="2Wn" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="2W_" role="1Ez5kq" />
-                <node concept="3VmV3z" id="2WA" role="1EMhIo">
+              <node concept="2OqwBi" id="2Wx" role="3clFbG">
+                <node concept="3VmV3z" id="2Wy" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="2Xc" role="3Vn4Tt">
+                  <node concept="3uibUv" id="2W$" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2Wz" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="2W_" role="37wK5m">
+                    <node concept="3uibUv" id="2WC" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="2WD" role="10QFUP">
+                      <node concept="3VmV3z" id="2WF" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="2WJ" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="2WG" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="2WK" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="2WO" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="2WL" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="2WM" role="37wK5m">
+                          <property role="Xl_RC" value="4816349095291153409" />
+                        </node>
+                        <node concept="3clFbT" id="2WN" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="2WH" role="lGtFl">
+                        <property role="6wLej" value="4816349095291153409" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="2WI" role="lGtFl">
+                        <node concept="3u3nmq" id="2WP" role="cd27D">
+                          <property role="3u3nmv" value="4816349095291153409" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="2WE" role="lGtFl">
+                      <node concept="3u3nmq" id="2WQ" role="cd27D">
+                        <property role="3u3nmv" value="4816349095291153415" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="2WA" role="37wK5m">
+                    <node concept="3uibUv" id="2WR" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="2WS" role="10QFUP">
+                      <node concept="3VmV3z" id="2WU" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="2WY" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="2WV" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="2OqwBi" id="2WZ" role="37wK5m">
+                          <node concept="37vLTw" id="2X3" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2VM" resolve="templateArgumentLinkPatternRefExpression" />
+                            <node concept="cd27G" id="2X6" role="lGtFl">
+                              <node concept="3u3nmq" id="2X7" role="cd27D">
+                                <property role="3u3nmv" value="4816349095291153419" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrEf2" id="2X4" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpf8:4bn6ZJF6_RE" resolve="patternVar" />
+                            <node concept="cd27G" id="2X8" role="lGtFl">
+                              <node concept="3u3nmq" id="2X9" role="cd27D">
+                                <property role="3u3nmv" value="4816349095291153424" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="2X5" role="lGtFl">
+                            <node concept="3u3nmq" id="2Xa" role="cd27D">
+                              <property role="3u3nmv" value="4816349095291153420" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="2X0" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="2X1" role="37wK5m">
+                          <property role="Xl_RC" value="4816349095291153417" />
+                        </node>
+                        <node concept="3clFbT" id="2X2" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="2WW" role="lGtFl">
+                        <property role="6wLej" value="4816349095291153417" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="2WX" role="lGtFl">
+                        <node concept="3u3nmq" id="2Xb" role="cd27D">
+                          <property role="3u3nmv" value="4816349095291153417" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="2WT" role="lGtFl">
+                      <node concept="3u3nmq" id="2Xc" role="cd27D">
+                        <property role="3u3nmv" value="4816349095291153416" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="2WB" role="37wK5m">
+                    <ref role="3cqZAo" node="2Wn" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -31581,123 +31590,124 @@
               </node>
             </node>
             <node concept="3clFbF" id="2ZB" role="3cqZAp">
-              <node concept="1DoJHT" id="2ZS" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="2ZT" role="1EOqxR">
-                  <node concept="3uibUv" id="2ZY" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="2ZZ" role="10QFUP">
-                    <node concept="3VmV3z" id="301" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="305" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="302" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="306" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="30a" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="307" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="308" role="37wK5m">
-                        <property role="Xl_RC" value="5005282049925943813" />
-                      </node>
-                      <node concept="3clFbT" id="309" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="303" role="lGtFl">
-                      <property role="6wLej" value="5005282049925943813" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="304" role="lGtFl">
-                      <node concept="3u3nmq" id="30b" role="cd27D">
-                        <property role="3u3nmv" value="5005282049925943813" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="300" role="lGtFl">
-                    <node concept="3u3nmq" id="30c" role="cd27D">
-                      <property role="3u3nmv" value="5005282049925943819" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="2ZU" role="1EOqxR">
-                  <node concept="3uibUv" id="30d" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="30e" role="10QFUP">
-                    <node concept="3VmV3z" id="30g" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="30k" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="30h" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="2OqwBi" id="30l" role="37wK5m">
-                        <node concept="37vLTw" id="30p" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2Z9" resolve="arg" />
-                          <node concept="cd27G" id="30s" role="lGtFl">
-                            <node concept="3u3nmq" id="30t" role="cd27D">
-                              <property role="3u3nmv" value="5659786285834464497" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="30q" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpf8:4lQlo5qukTU" resolve="parameter" />
-                          <node concept="cd27G" id="30u" role="lGtFl">
-                            <node concept="3u3nmq" id="30v" role="cd27D">
-                              <property role="3u3nmv" value="5659786285834495240" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="30r" role="lGtFl">
-                          <node concept="3u3nmq" id="30w" role="cd27D">
-                            <property role="3u3nmv" value="5659786285834464498" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="30m" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="30n" role="37wK5m">
-                        <property role="Xl_RC" value="5659786285834464495" />
-                      </node>
-                      <node concept="3clFbT" id="30o" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="30i" role="lGtFl">
-                      <property role="6wLej" value="5659786285834464495" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="30j" role="lGtFl">
-                      <node concept="3u3nmq" id="30x" role="cd27D">
-                        <property role="3u3nmv" value="5659786285834464495" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="30f" role="lGtFl">
-                    <node concept="3u3nmq" id="30y" role="cd27D">
-                      <property role="3u3nmv" value="5659786285834464494" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="2ZV" role="1EOqxR">
-                  <ref role="3cqZAo" node="2ZI" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="2ZW" role="1Ez5kq" />
-                <node concept="3VmV3z" id="2ZX" role="1EMhIo">
+              <node concept="2OqwBi" id="2ZS" role="3clFbG">
+                <node concept="3VmV3z" id="2ZT" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="30z" role="3Vn4Tt">
+                  <node concept="3uibUv" id="2ZV" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2ZU" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="2ZW" role="37wK5m">
+                    <node concept="3uibUv" id="2ZZ" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="300" role="10QFUP">
+                      <node concept="3VmV3z" id="302" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="306" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="303" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="307" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="30b" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="308" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="309" role="37wK5m">
+                          <property role="Xl_RC" value="5005282049925943813" />
+                        </node>
+                        <node concept="3clFbT" id="30a" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="304" role="lGtFl">
+                        <property role="6wLej" value="5005282049925943813" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="305" role="lGtFl">
+                        <node concept="3u3nmq" id="30c" role="cd27D">
+                          <property role="3u3nmv" value="5005282049925943813" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="301" role="lGtFl">
+                      <node concept="3u3nmq" id="30d" role="cd27D">
+                        <property role="3u3nmv" value="5005282049925943819" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="2ZX" role="37wK5m">
+                    <node concept="3uibUv" id="30e" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="30f" role="10QFUP">
+                      <node concept="3VmV3z" id="30h" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="30l" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="30i" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="2OqwBi" id="30m" role="37wK5m">
+                          <node concept="37vLTw" id="30q" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2Z9" resolve="arg" />
+                            <node concept="cd27G" id="30t" role="lGtFl">
+                              <node concept="3u3nmq" id="30u" role="cd27D">
+                                <property role="3u3nmv" value="5659786285834464497" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrEf2" id="30r" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpf8:4lQlo5qukTU" resolve="parameter" />
+                            <node concept="cd27G" id="30v" role="lGtFl">
+                              <node concept="3u3nmq" id="30w" role="cd27D">
+                                <property role="3u3nmv" value="5659786285834495240" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="30s" role="lGtFl">
+                            <node concept="3u3nmq" id="30x" role="cd27D">
+                              <property role="3u3nmv" value="5659786285834464498" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="30n" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="30o" role="37wK5m">
+                          <property role="Xl_RC" value="5659786285834464495" />
+                        </node>
+                        <node concept="3clFbT" id="30p" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="30j" role="lGtFl">
+                        <property role="6wLej" value="5659786285834464495" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="30k" role="lGtFl">
+                        <node concept="3u3nmq" id="30y" role="cd27D">
+                          <property role="3u3nmv" value="5659786285834464495" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="30g" role="lGtFl">
+                      <node concept="3u3nmq" id="30z" role="cd27D">
+                        <property role="3u3nmv" value="5659786285834464494" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="2ZY" role="37wK5m">
+                    <ref role="3cqZAo" node="2ZI" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -32129,123 +32139,124 @@
               </node>
             </node>
             <node concept="3clFbF" id="32Y" role="3cqZAp">
-              <node concept="1DoJHT" id="33f" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="33g" role="1EOqxR">
-                  <node concept="3uibUv" id="33l" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="33m" role="10QFUP">
-                    <node concept="3VmV3z" id="33o" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="33s" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="33p" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="33t" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="33x" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="33u" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="33v" role="37wK5m">
-                        <property role="Xl_RC" value="4665309944889434868" />
-                      </node>
-                      <node concept="3clFbT" id="33w" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="33q" role="lGtFl">
-                      <property role="6wLej" value="4665309944889434868" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="33r" role="lGtFl">
-                      <node concept="3u3nmq" id="33y" role="cd27D">
-                        <property role="3u3nmv" value="4665309944889434868" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="33n" role="lGtFl">
-                    <node concept="3u3nmq" id="33z" role="cd27D">
-                      <property role="3u3nmv" value="4665309944889434867" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="33h" role="1EOqxR">
-                  <node concept="3uibUv" id="33$" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="33_" role="10QFUP">
-                    <node concept="3VmV3z" id="33B" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="33F" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="33C" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="2OqwBi" id="33G" role="37wK5m">
-                        <node concept="37vLTw" id="33K" role="2Oq$k0">
-                          <ref role="3cqZAo" node="32w" resolve="templateArgumentPatternVarRefExpression" />
-                          <node concept="cd27G" id="33N" role="lGtFl">
-                            <node concept="3u3nmq" id="33O" role="cd27D">
-                              <property role="3u3nmv" value="4665309944889437628" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="33L" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpf8:42YwEPgeNV4" resolve="patternVarDecl" />
-                          <node concept="cd27G" id="33P" role="lGtFl">
-                            <node concept="3u3nmq" id="33Q" role="cd27D">
-                              <property role="3u3nmv" value="4665309944889460249" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="33M" role="lGtFl">
-                          <node concept="3u3nmq" id="33R" role="cd27D">
-                            <property role="3u3nmv" value="4665309944889434864" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="33H" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="33I" role="37wK5m">
-                        <property role="Xl_RC" value="4665309944889434863" />
-                      </node>
-                      <node concept="3clFbT" id="33J" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="33D" role="lGtFl">
-                      <property role="6wLej" value="4665309944889434863" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="33E" role="lGtFl">
-                      <node concept="3u3nmq" id="33S" role="cd27D">
-                        <property role="3u3nmv" value="4665309944889434863" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="33A" role="lGtFl">
-                    <node concept="3u3nmq" id="33T" role="cd27D">
-                      <property role="3u3nmv" value="4665309944889434862" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="33i" role="1EOqxR">
-                  <ref role="3cqZAo" node="335" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="33j" role="1Ez5kq" />
-                <node concept="3VmV3z" id="33k" role="1EMhIo">
+              <node concept="2OqwBi" id="33f" role="3clFbG">
+                <node concept="3VmV3z" id="33g" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="33U" role="3Vn4Tt">
+                  <node concept="3uibUv" id="33i" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="33h" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="33j" role="37wK5m">
+                    <node concept="3uibUv" id="33m" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="33n" role="10QFUP">
+                      <node concept="3VmV3z" id="33p" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="33t" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="33q" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="33u" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="33y" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="33v" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="33w" role="37wK5m">
+                          <property role="Xl_RC" value="4665309944889434868" />
+                        </node>
+                        <node concept="3clFbT" id="33x" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="33r" role="lGtFl">
+                        <property role="6wLej" value="4665309944889434868" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="33s" role="lGtFl">
+                        <node concept="3u3nmq" id="33z" role="cd27D">
+                          <property role="3u3nmv" value="4665309944889434868" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="33o" role="lGtFl">
+                      <node concept="3u3nmq" id="33$" role="cd27D">
+                        <property role="3u3nmv" value="4665309944889434867" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="33k" role="37wK5m">
+                    <node concept="3uibUv" id="33_" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="33A" role="10QFUP">
+                      <node concept="3VmV3z" id="33C" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="33G" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="33D" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="2OqwBi" id="33H" role="37wK5m">
+                          <node concept="37vLTw" id="33L" role="2Oq$k0">
+                            <ref role="3cqZAo" node="32w" resolve="templateArgumentPatternVarRefExpression" />
+                            <node concept="cd27G" id="33O" role="lGtFl">
+                              <node concept="3u3nmq" id="33P" role="cd27D">
+                                <property role="3u3nmv" value="4665309944889437628" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrEf2" id="33M" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpf8:42YwEPgeNV4" resolve="patternVarDecl" />
+                            <node concept="cd27G" id="33Q" role="lGtFl">
+                              <node concept="3u3nmq" id="33R" role="cd27D">
+                                <property role="3u3nmv" value="4665309944889460249" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="33N" role="lGtFl">
+                            <node concept="3u3nmq" id="33S" role="cd27D">
+                              <property role="3u3nmv" value="4665309944889434864" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="33I" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="33J" role="37wK5m">
+                          <property role="Xl_RC" value="4665309944889434863" />
+                        </node>
+                        <node concept="3clFbT" id="33K" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="33E" role="lGtFl">
+                        <property role="6wLej" value="4665309944889434863" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="33F" role="lGtFl">
+                        <node concept="3u3nmq" id="33T" role="cd27D">
+                          <property role="3u3nmv" value="4665309944889434863" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="33B" role="lGtFl">
+                      <node concept="3u3nmq" id="33U" role="cd27D">
+                        <property role="3u3nmv" value="4665309944889434862" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="33l" role="37wK5m">
+                    <ref role="3cqZAo" node="335" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -32676,123 +32687,124 @@
               </node>
             </node>
             <node concept="3clFbF" id="36l" role="3cqZAp">
-              <node concept="1DoJHT" id="36A" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="36B" role="1EOqxR">
-                  <node concept="3uibUv" id="36G" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="36H" role="10QFUP">
-                    <node concept="3VmV3z" id="36J" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="36N" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="36K" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="36O" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="36S" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="36P" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="36Q" role="37wK5m">
-                        <property role="Xl_RC" value="4816349095291152096" />
-                      </node>
-                      <node concept="3clFbT" id="36R" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="36L" role="lGtFl">
-                      <property role="6wLej" value="4816349095291152096" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="36M" role="lGtFl">
-                      <node concept="3u3nmq" id="36T" role="cd27D">
-                        <property role="3u3nmv" value="4816349095291152096" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="36I" role="lGtFl">
-                    <node concept="3u3nmq" id="36U" role="cd27D">
-                      <property role="3u3nmv" value="4816349095291152106" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="36C" role="1EOqxR">
-                  <node concept="3uibUv" id="36V" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="36W" role="10QFUP">
-                    <node concept="3VmV3z" id="36Y" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="372" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="36Z" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="2OqwBi" id="373" role="37wK5m">
-                        <node concept="37vLTw" id="377" role="2Oq$k0">
-                          <ref role="3cqZAo" node="35R" resolve="templateArgumentPropertyPatternRefExpression" />
-                          <node concept="cd27G" id="37a" role="lGtFl">
-                            <node concept="3u3nmq" id="37b" role="cd27D">
-                              <property role="3u3nmv" value="4816349095291152110" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="378" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpf8:4bn6ZJF6_RD" resolve="propertyPattern" />
-                          <node concept="cd27G" id="37c" role="lGtFl">
-                            <node concept="3u3nmq" id="37d" role="cd27D">
-                              <property role="3u3nmv" value="4816349095291153404" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="379" role="lGtFl">
-                          <node concept="3u3nmq" id="37e" role="cd27D">
-                            <property role="3u3nmv" value="4816349095291152111" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="374" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="375" role="37wK5m">
-                        <property role="Xl_RC" value="4816349095291152108" />
-                      </node>
-                      <node concept="3clFbT" id="376" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="370" role="lGtFl">
-                      <property role="6wLej" value="4816349095291152108" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="371" role="lGtFl">
-                      <node concept="3u3nmq" id="37f" role="cd27D">
-                        <property role="3u3nmv" value="4816349095291152108" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="36X" role="lGtFl">
-                    <node concept="3u3nmq" id="37g" role="cd27D">
-                      <property role="3u3nmv" value="4816349095291152107" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="36D" role="1EOqxR">
-                  <ref role="3cqZAo" node="36s" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="36E" role="1Ez5kq" />
-                <node concept="3VmV3z" id="36F" role="1EMhIo">
+              <node concept="2OqwBi" id="36A" role="3clFbG">
+                <node concept="3VmV3z" id="36B" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="37h" role="3Vn4Tt">
+                  <node concept="3uibUv" id="36D" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="36C" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="36E" role="37wK5m">
+                    <node concept="3uibUv" id="36H" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="36I" role="10QFUP">
+                      <node concept="3VmV3z" id="36K" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="36O" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="36L" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="36P" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="36T" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="36Q" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="36R" role="37wK5m">
+                          <property role="Xl_RC" value="4816349095291152096" />
+                        </node>
+                        <node concept="3clFbT" id="36S" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="36M" role="lGtFl">
+                        <property role="6wLej" value="4816349095291152096" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="36N" role="lGtFl">
+                        <node concept="3u3nmq" id="36U" role="cd27D">
+                          <property role="3u3nmv" value="4816349095291152096" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="36J" role="lGtFl">
+                      <node concept="3u3nmq" id="36V" role="cd27D">
+                        <property role="3u3nmv" value="4816349095291152106" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="36F" role="37wK5m">
+                    <node concept="3uibUv" id="36W" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="36X" role="10QFUP">
+                      <node concept="3VmV3z" id="36Z" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="373" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="370" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="2OqwBi" id="374" role="37wK5m">
+                          <node concept="37vLTw" id="378" role="2Oq$k0">
+                            <ref role="3cqZAo" node="35R" resolve="templateArgumentPropertyPatternRefExpression" />
+                            <node concept="cd27G" id="37b" role="lGtFl">
+                              <node concept="3u3nmq" id="37c" role="cd27D">
+                                <property role="3u3nmv" value="4816349095291152110" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrEf2" id="379" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpf8:4bn6ZJF6_RD" resolve="propertyPattern" />
+                            <node concept="cd27G" id="37d" role="lGtFl">
+                              <node concept="3u3nmq" id="37e" role="cd27D">
+                                <property role="3u3nmv" value="4816349095291153404" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="37a" role="lGtFl">
+                            <node concept="3u3nmq" id="37f" role="cd27D">
+                              <property role="3u3nmv" value="4816349095291152111" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="375" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="376" role="37wK5m">
+                          <property role="Xl_RC" value="4816349095291152108" />
+                        </node>
+                        <node concept="3clFbT" id="377" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="371" role="lGtFl">
+                        <property role="6wLej" value="4816349095291152108" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="372" role="lGtFl">
+                        <node concept="3u3nmq" id="37g" role="cd27D">
+                          <property role="3u3nmv" value="4816349095291152108" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="36Y" role="lGtFl">
+                      <node concept="3u3nmq" id="37h" role="cd27D">
+                        <property role="3u3nmv" value="4816349095291152107" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="36G" role="37wK5m">
+                    <ref role="3cqZAo" node="36s" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -33224,123 +33236,124 @@
               </node>
             </node>
             <node concept="3clFbF" id="39G" role="3cqZAp">
-              <node concept="1DoJHT" id="39X" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="39Y" role="1EOqxR">
-                  <node concept="3uibUv" id="3a3" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="3a4" role="10QFUP">
-                    <node concept="3VmV3z" id="3a6" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3aa" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="3a7" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="3ab" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="3af" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="3ac" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="3ad" role="37wK5m">
-                        <property role="Xl_RC" value="1048903277989340275" />
-                      </node>
-                      <node concept="3clFbT" id="3ae" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="3a8" role="lGtFl">
-                      <property role="6wLej" value="1048903277989340275" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="3a9" role="lGtFl">
-                      <node concept="3u3nmq" id="3ag" role="cd27D">
-                        <property role="3u3nmv" value="1048903277989340275" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="3a5" role="lGtFl">
-                    <node concept="3u3nmq" id="3ah" role="cd27D">
-                      <property role="3u3nmv" value="1048903277989341371" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="39Z" role="1EOqxR">
-                  <node concept="3uibUv" id="3ai" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="3aj" role="10QFUP">
-                    <node concept="3VmV3z" id="3al" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3ap" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="3am" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="2OqwBi" id="3aq" role="37wK5m">
-                        <node concept="37vLTw" id="3au" role="2Oq$k0">
-                          <ref role="3cqZAo" node="39e" resolve="arg" />
-                          <node concept="cd27G" id="3ax" role="lGtFl">
-                            <node concept="3u3nmq" id="3ay" role="cd27D">
-                              <property role="3u3nmv" value="1048903277989341405" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="3av" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpf8:UesZ_oiISg" resolve="vardecl" />
-                          <node concept="cd27G" id="3az" role="lGtFl">
-                            <node concept="3u3nmq" id="3a$" role="cd27D">
-                              <property role="3u3nmv" value="1048903277989342614" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="3aw" role="lGtFl">
-                          <node concept="3u3nmq" id="3a_" role="cd27D">
-                            <property role="3u3nmv" value="1048903277989341973" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="3ar" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="3as" role="37wK5m">
-                        <property role="Xl_RC" value="1048903277989341384" />
-                      </node>
-                      <node concept="3clFbT" id="3at" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="3an" role="lGtFl">
-                      <property role="6wLej" value="1048903277989341384" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="3ao" role="lGtFl">
-                      <node concept="3u3nmq" id="3aA" role="cd27D">
-                        <property role="3u3nmv" value="1048903277989341384" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="3ak" role="lGtFl">
-                    <node concept="3u3nmq" id="3aB" role="cd27D">
-                      <property role="3u3nmv" value="1048903277989341388" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="3a0" role="1EOqxR">
-                  <ref role="3cqZAo" node="39N" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="3a1" role="1Ez5kq" />
-                <node concept="3VmV3z" id="3a2" role="1EMhIo">
+              <node concept="2OqwBi" id="39X" role="3clFbG">
+                <node concept="3VmV3z" id="39Y" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="3aC" role="3Vn4Tt">
+                  <node concept="3uibUv" id="3a0" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="39Z" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="3a1" role="37wK5m">
+                    <node concept="3uibUv" id="3a4" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="3a5" role="10QFUP">
+                      <node concept="3VmV3z" id="3a7" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="3ab" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3a8" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="3ac" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="3ag" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="3ad" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="3ae" role="37wK5m">
+                          <property role="Xl_RC" value="1048903277989340275" />
+                        </node>
+                        <node concept="3clFbT" id="3af" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="3a9" role="lGtFl">
+                        <property role="6wLej" value="1048903277989340275" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="3aa" role="lGtFl">
+                        <node concept="3u3nmq" id="3ah" role="cd27D">
+                          <property role="3u3nmv" value="1048903277989340275" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="3a6" role="lGtFl">
+                      <node concept="3u3nmq" id="3ai" role="cd27D">
+                        <property role="3u3nmv" value="1048903277989341371" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="3a2" role="37wK5m">
+                    <node concept="3uibUv" id="3aj" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="3ak" role="10QFUP">
+                      <node concept="3VmV3z" id="3am" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="3aq" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3an" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="2OqwBi" id="3ar" role="37wK5m">
+                          <node concept="37vLTw" id="3av" role="2Oq$k0">
+                            <ref role="3cqZAo" node="39e" resolve="arg" />
+                            <node concept="cd27G" id="3ay" role="lGtFl">
+                              <node concept="3u3nmq" id="3az" role="cd27D">
+                                <property role="3u3nmv" value="1048903277989341405" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrEf2" id="3aw" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpf8:UesZ_oiISg" resolve="vardecl" />
+                            <node concept="cd27G" id="3a$" role="lGtFl">
+                              <node concept="3u3nmq" id="3a_" role="cd27D">
+                                <property role="3u3nmv" value="1048903277989342614" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="3ax" role="lGtFl">
+                            <node concept="3u3nmq" id="3aA" role="cd27D">
+                              <property role="3u3nmv" value="1048903277989341973" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="3as" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="3at" role="37wK5m">
+                          <property role="Xl_RC" value="1048903277989341384" />
+                        </node>
+                        <node concept="3clFbT" id="3au" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="3ao" role="lGtFl">
+                        <property role="6wLej" value="1048903277989341384" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="3ap" role="lGtFl">
+                        <node concept="3u3nmq" id="3aB" role="cd27D">
+                          <property role="3u3nmv" value="1048903277989341384" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="3al" role="lGtFl">
+                      <node concept="3u3nmq" id="3aC" role="cd27D">
+                        <property role="3u3nmv" value="1048903277989341388" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="3a3" role="37wK5m">
+                    <ref role="3cqZAo" node="39N" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -33772,123 +33785,124 @@
               </node>
             </node>
             <node concept="3clFbF" id="3d3" role="3cqZAp">
-              <node concept="1DoJHT" id="3dk" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="3dl" role="1EOqxR">
-                  <node concept="3uibUv" id="3dq" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="3dr" role="10QFUP">
-                    <node concept="3VmV3z" id="3dt" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3dx" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="3du" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="3dy" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="3dA" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="3dz" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="3d$" role="37wK5m">
-                        <property role="Xl_RC" value="4426797670062849231" />
-                      </node>
-                      <node concept="3clFbT" id="3d_" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="3dv" role="lGtFl">
-                      <property role="6wLej" value="4426797670062849231" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="3dw" role="lGtFl">
-                      <node concept="3u3nmq" id="3dB" role="cd27D">
-                        <property role="3u3nmv" value="4426797670062849231" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="3ds" role="lGtFl">
-                    <node concept="3u3nmq" id="3dC" role="cd27D">
-                      <property role="3u3nmv" value="4426797670062849458" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="3dm" role="1EOqxR">
-                  <node concept="3uibUv" id="3dD" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="3dE" role="10QFUP">
-                    <node concept="3VmV3z" id="3dG" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3dK" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="3dH" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="2OqwBi" id="3dL" role="37wK5m">
-                        <node concept="37vLTw" id="3dP" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3c_" resolve="arg" />
-                          <node concept="cd27G" id="3dS" role="lGtFl">
-                            <node concept="3u3nmq" id="3dT" role="cd27D">
-                              <property role="3u3nmv" value="4426797670062849507" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="3dQ" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpf8:2n6lsTIwfRq" resolve="varmacro" />
-                          <node concept="cd27G" id="3dU" role="lGtFl">
-                            <node concept="3u3nmq" id="3dV" role="cd27D">
-                              <property role="3u3nmv" value="4426797670062850256" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="3dR" role="lGtFl">
-                          <node concept="3u3nmq" id="3dW" role="cd27D">
-                            <property role="3u3nmv" value="4426797670062849619" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="3dM" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="3dN" role="37wK5m">
-                        <property role="Xl_RC" value="4426797670062849474" />
-                      </node>
-                      <node concept="3clFbT" id="3dO" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="3dI" role="lGtFl">
-                      <property role="6wLej" value="4426797670062849474" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="3dJ" role="lGtFl">
-                      <node concept="3u3nmq" id="3dX" role="cd27D">
-                        <property role="3u3nmv" value="4426797670062849474" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="3dF" role="lGtFl">
-                    <node concept="3u3nmq" id="3dY" role="cd27D">
-                      <property role="3u3nmv" value="4426797670062849478" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="3dn" role="1EOqxR">
-                  <ref role="3cqZAo" node="3da" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="3do" role="1Ez5kq" />
-                <node concept="3VmV3z" id="3dp" role="1EMhIo">
+              <node concept="2OqwBi" id="3dk" role="3clFbG">
+                <node concept="3VmV3z" id="3dl" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="3dZ" role="3Vn4Tt">
+                  <node concept="3uibUv" id="3dn" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="3dm" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="3do" role="37wK5m">
+                    <node concept="3uibUv" id="3dr" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="3ds" role="10QFUP">
+                      <node concept="3VmV3z" id="3du" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="3dy" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3dv" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="3dz" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="3dB" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="3d$" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="3d_" role="37wK5m">
+                          <property role="Xl_RC" value="4426797670062849231" />
+                        </node>
+                        <node concept="3clFbT" id="3dA" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="3dw" role="lGtFl">
+                        <property role="6wLej" value="4426797670062849231" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="3dx" role="lGtFl">
+                        <node concept="3u3nmq" id="3dC" role="cd27D">
+                          <property role="3u3nmv" value="4426797670062849231" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="3dt" role="lGtFl">
+                      <node concept="3u3nmq" id="3dD" role="cd27D">
+                        <property role="3u3nmv" value="4426797670062849458" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="3dp" role="37wK5m">
+                    <node concept="3uibUv" id="3dE" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="3dF" role="10QFUP">
+                      <node concept="3VmV3z" id="3dH" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="3dL" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3dI" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="2OqwBi" id="3dM" role="37wK5m">
+                          <node concept="37vLTw" id="3dQ" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3c_" resolve="arg" />
+                            <node concept="cd27G" id="3dT" role="lGtFl">
+                              <node concept="3u3nmq" id="3dU" role="cd27D">
+                                <property role="3u3nmv" value="4426797670062849507" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrEf2" id="3dR" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpf8:2n6lsTIwfRq" resolve="varmacro" />
+                            <node concept="cd27G" id="3dV" role="lGtFl">
+                              <node concept="3u3nmq" id="3dW" role="cd27D">
+                                <property role="3u3nmv" value="4426797670062850256" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="3dS" role="lGtFl">
+                            <node concept="3u3nmq" id="3dX" role="cd27D">
+                              <property role="3u3nmv" value="4426797670062849619" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="3dN" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="3dO" role="37wK5m">
+                          <property role="Xl_RC" value="4426797670062849474" />
+                        </node>
+                        <node concept="3clFbT" id="3dP" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="3dJ" role="lGtFl">
+                        <property role="6wLej" value="4426797670062849474" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="3dK" role="lGtFl">
+                        <node concept="3u3nmq" id="3dY" role="cd27D">
+                          <property role="3u3nmv" value="4426797670062849474" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="3dG" role="lGtFl">
+                      <node concept="3u3nmq" id="3dZ" role="cd27D">
+                        <property role="3u3nmv" value="4426797670062849478" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="3dq" role="37wK5m">
+                    <ref role="3cqZAo" node="3da" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -35199,85 +35213,86 @@
                   </node>
                 </node>
                 <node concept="3clFbF" id="3m3" role="3cqZAp">
-                  <node concept="1DoJHT" id="3mk" role="3clFbG">
-                    <property role="1Dpdpm" value="createEquation" />
-                    <node concept="10QFUN" id="3ml" role="1EOqxR">
-                      <node concept="3uibUv" id="3mq" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2OqwBi" id="3mr" role="10QFUP">
-                        <node concept="3VmV3z" id="3mt" role="2Oq$k0">
-                          <property role="3VnrPo" value="typeCheckingContext" />
-                          <node concept="3uibUv" id="3mx" role="3Vn4Tt">
-                            <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="3mu" role="2OqNvi">
-                          <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                          <node concept="3VmV3z" id="3my" role="37wK5m">
-                            <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                            <node concept="3uibUv" id="3mA" role="3Vn4Tt">
-                              <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="3mz" role="37wK5m">
-                            <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                          </node>
-                          <node concept="Xl_RD" id="3m$" role="37wK5m">
-                            <property role="Xl_RC" value="1227099233435" />
-                          </node>
-                          <node concept="3clFbT" id="3m_" role="37wK5m">
-                            <property role="3clFbU" value="true" />
-                          </node>
-                        </node>
-                        <node concept="6wLe0" id="3mv" role="lGtFl">
-                          <property role="6wLej" value="1227099233435" />
-                          <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                        </node>
-                        <node concept="cd27G" id="3mw" role="lGtFl">
-                          <node concept="3u3nmq" id="3mB" role="cd27D">
-                            <property role="3u3nmv" value="1227099233435" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="3ms" role="lGtFl">
-                        <node concept="3u3nmq" id="3mC" role="cd27D">
-                          <property role="3u3nmv" value="1227099240567" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="10QFUN" id="3mm" role="1EOqxR">
-                      <node concept="3uibUv" id="3mD" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2c44tf" id="3mE" role="10QFUP">
-                        <node concept="3Tqbb2" id="3mG" role="2c44tc">
-                          <node concept="cd27G" id="3mI" role="lGtFl">
-                            <node concept="3u3nmq" id="3mJ" role="cd27D">
-                              <property role="3u3nmv" value="1227099247382" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="3mH" role="lGtFl">
-                          <node concept="3u3nmq" id="3mK" role="cd27D">
-                            <property role="3u3nmv" value="1227099244512" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="3mF" role="lGtFl">
-                        <node concept="3u3nmq" id="3mL" role="cd27D">
-                          <property role="3u3nmv" value="1227099244511" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="3mn" role="1EOqxR">
-                      <ref role="3cqZAo" node="3ma" resolve="_info_12389875345" />
-                    </node>
-                    <node concept="3cqZAl" id="3mo" role="1Ez5kq" />
-                    <node concept="3VmV3z" id="3mp" role="1EMhIo">
+                  <node concept="2OqwBi" id="3mk" role="3clFbG">
+                    <node concept="3VmV3z" id="3ml" role="2Oq$k0">
                       <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3mM" role="3Vn4Tt">
+                      <node concept="3uibUv" id="3mn" role="3Vn4Tt">
                         <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="3mm" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                      <node concept="10QFUN" id="3mo" role="37wK5m">
+                        <node concept="3uibUv" id="3mr" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2OqwBi" id="3ms" role="10QFUP">
+                          <node concept="3VmV3z" id="3mu" role="2Oq$k0">
+                            <property role="3VnrPo" value="typeCheckingContext" />
+                            <node concept="3uibUv" id="3my" role="3Vn4Tt">
+                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="3mv" role="2OqNvi">
+                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                            <node concept="3VmV3z" id="3mz" role="37wK5m">
+                              <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                              <node concept="3uibUv" id="3mB" role="3Vn4Tt">
+                                <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                              </node>
+                            </node>
+                            <node concept="Xl_RD" id="3m$" role="37wK5m">
+                              <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                            </node>
+                            <node concept="Xl_RD" id="3m_" role="37wK5m">
+                              <property role="Xl_RC" value="1227099233435" />
+                            </node>
+                            <node concept="3clFbT" id="3mA" role="37wK5m">
+                              <property role="3clFbU" value="true" />
+                            </node>
+                          </node>
+                          <node concept="6wLe0" id="3mw" role="lGtFl">
+                            <property role="6wLej" value="1227099233435" />
+                            <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                          </node>
+                          <node concept="cd27G" id="3mx" role="lGtFl">
+                            <node concept="3u3nmq" id="3mC" role="cd27D">
+                              <property role="3u3nmv" value="1227099233435" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="3mt" role="lGtFl">
+                          <node concept="3u3nmq" id="3mD" role="cd27D">
+                            <property role="3u3nmv" value="1227099240567" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="10QFUN" id="3mp" role="37wK5m">
+                        <node concept="3uibUv" id="3mE" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2c44tf" id="3mF" role="10QFUP">
+                          <node concept="3Tqbb2" id="3mH" role="2c44tc">
+                            <node concept="cd27G" id="3mJ" role="lGtFl">
+                              <node concept="3u3nmq" id="3mK" role="cd27D">
+                                <property role="3u3nmv" value="1227099247382" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="3mI" role="lGtFl">
+                            <node concept="3u3nmq" id="3mL" role="cd27D">
+                              <property role="3u3nmv" value="1227099244512" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="3mG" role="lGtFl">
+                          <node concept="3u3nmq" id="3mM" role="cd27D">
+                            <property role="3u3nmv" value="1227099244511" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="3mq" role="37wK5m">
+                        <ref role="3cqZAo" node="3ma" resolve="_info_12389875345" />
                       </node>
                     </node>
                   </node>
@@ -35610,106 +35625,107 @@
                   </node>
                 </node>
                 <node concept="3clFbF" id="3oy" role="3cqZAp">
-                  <node concept="1DoJHT" id="3oN" role="3clFbG">
-                    <property role="1Dpdpm" value="createEquation" />
-                    <node concept="10QFUN" id="3oO" role="1EOqxR">
-                      <node concept="3uibUv" id="3oT" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2OqwBi" id="3oU" role="10QFUP">
-                        <node concept="3VmV3z" id="3oW" role="2Oq$k0">
-                          <property role="3VnrPo" value="typeCheckingContext" />
-                          <node concept="3uibUv" id="3p0" role="3Vn4Tt">
-                            <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="3oX" role="2OqNvi">
-                          <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                          <node concept="3VmV3z" id="3p1" role="37wK5m">
-                            <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                            <node concept="3uibUv" id="3p5" role="3Vn4Tt">
-                              <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="3p2" role="37wK5m">
-                            <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                          </node>
-                          <node concept="Xl_RD" id="3p3" role="37wK5m">
-                            <property role="Xl_RC" value="1225234901779" />
-                          </node>
-                          <node concept="3clFbT" id="3p4" role="37wK5m">
-                            <property role="3clFbU" value="true" />
-                          </node>
-                        </node>
-                        <node concept="6wLe0" id="3oY" role="lGtFl">
-                          <property role="6wLej" value="1225234901779" />
-                          <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                        </node>
-                        <node concept="cd27G" id="3oZ" role="lGtFl">
-                          <node concept="3u3nmq" id="3p6" role="cd27D">
-                            <property role="3u3nmv" value="1225234901779" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="3oV" role="lGtFl">
-                        <node concept="3u3nmq" id="3p7" role="cd27D">
-                          <property role="3u3nmv" value="1225234911254" />
-                        </node>
+                  <node concept="2OqwBi" id="3oN" role="3clFbG">
+                    <node concept="3VmV3z" id="3oO" role="2Oq$k0">
+                      <property role="3VnrPo" value="typeCheckingContext" />
+                      <node concept="3uibUv" id="3oQ" role="3Vn4Tt">
+                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
                       </node>
                     </node>
-                    <node concept="10QFUN" id="3oP" role="1EOqxR">
-                      <node concept="3uibUv" id="3p8" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2OqwBi" id="3p9" role="10QFUP">
-                        <node concept="3VmV3z" id="3pb" role="2Oq$k0">
-                          <property role="3VnrPo" value="typeCheckingContext" />
-                          <node concept="3uibUv" id="3pf" role="3Vn4Tt">
-                            <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                          </node>
+                    <node concept="liA8E" id="3oP" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                      <node concept="10QFUN" id="3oR" role="37wK5m">
+                        <node concept="3uibUv" id="3oU" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                         </node>
-                        <node concept="liA8E" id="3pc" role="2OqNvi">
-                          <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                          <node concept="37vLTw" id="3pg" role="37wK5m">
-                            <ref role="3cqZAo" node="3n3" resolve="mapperFunc" />
-                            <node concept="cd27G" id="3pk" role="lGtFl">
-                              <node concept="3u3nmq" id="3pl" role="cd27D">
-                                <property role="3u3nmv" value="4265636116363084443" />
+                        <node concept="2OqwBi" id="3oV" role="10QFUP">
+                          <node concept="3VmV3z" id="3oX" role="2Oq$k0">
+                            <property role="3VnrPo" value="typeCheckingContext" />
+                            <node concept="3uibUv" id="3p1" role="3Vn4Tt">
+                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="3oY" role="2OqNvi">
+                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                            <node concept="3VmV3z" id="3p2" role="37wK5m">
+                              <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                              <node concept="3uibUv" id="3p6" role="3Vn4Tt">
+                                <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                               </node>
                             </node>
+                            <node concept="Xl_RD" id="3p3" role="37wK5m">
+                              <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                            </node>
+                            <node concept="Xl_RD" id="3p4" role="37wK5m">
+                              <property role="Xl_RC" value="1225234901779" />
+                            </node>
+                            <node concept="3clFbT" id="3p5" role="37wK5m">
+                              <property role="3clFbU" value="true" />
+                            </node>
                           </node>
-                          <node concept="Xl_RD" id="3ph" role="37wK5m">
-                            <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                          <node concept="6wLe0" id="3oZ" role="lGtFl">
+                            <property role="6wLej" value="1225234901779" />
+                            <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
                           </node>
-                          <node concept="Xl_RD" id="3pi" role="37wK5m">
-                            <property role="Xl_RC" value="1225234918647" />
+                          <node concept="cd27G" id="3p0" role="lGtFl">
+                            <node concept="3u3nmq" id="3p7" role="cd27D">
+                              <property role="3u3nmv" value="1225234901779" />
+                            </node>
                           </node>
-                          <node concept="3clFbT" id="3pj" role="37wK5m" />
                         </node>
-                        <node concept="6wLe0" id="3pd" role="lGtFl">
-                          <property role="6wLej" value="1225234918647" />
-                          <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                        </node>
-                        <node concept="cd27G" id="3pe" role="lGtFl">
-                          <node concept="3u3nmq" id="3pm" role="cd27D">
-                            <property role="3u3nmv" value="1225234918647" />
+                        <node concept="cd27G" id="3oW" role="lGtFl">
+                          <node concept="3u3nmq" id="3p8" role="cd27D">
+                            <property role="3u3nmv" value="1225234911254" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="3pa" role="lGtFl">
-                        <node concept="3u3nmq" id="3pn" role="cd27D">
-                          <property role="3u3nmv" value="1225234918646" />
+                      <node concept="10QFUN" id="3oS" role="37wK5m">
+                        <node concept="3uibUv" id="3p9" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2OqwBi" id="3pa" role="10QFUP">
+                          <node concept="3VmV3z" id="3pc" role="2Oq$k0">
+                            <property role="3VnrPo" value="typeCheckingContext" />
+                            <node concept="3uibUv" id="3pg" role="3Vn4Tt">
+                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="3pd" role="2OqNvi">
+                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                            <node concept="37vLTw" id="3ph" role="37wK5m">
+                              <ref role="3cqZAo" node="3n3" resolve="mapperFunc" />
+                              <node concept="cd27G" id="3pl" role="lGtFl">
+                                <node concept="3u3nmq" id="3pm" role="cd27D">
+                                  <property role="3u3nmv" value="4265636116363084443" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="Xl_RD" id="3pi" role="37wK5m">
+                              <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                            </node>
+                            <node concept="Xl_RD" id="3pj" role="37wK5m">
+                              <property role="Xl_RC" value="1225234918647" />
+                            </node>
+                            <node concept="3clFbT" id="3pk" role="37wK5m" />
+                          </node>
+                          <node concept="6wLe0" id="3pe" role="lGtFl">
+                            <property role="6wLej" value="1225234918647" />
+                            <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                          </node>
+                          <node concept="cd27G" id="3pf" role="lGtFl">
+                            <node concept="3u3nmq" id="3pn" role="cd27D">
+                              <property role="3u3nmv" value="1225234918647" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="3pb" role="lGtFl">
+                          <node concept="3u3nmq" id="3po" role="cd27D">
+                            <property role="3u3nmv" value="1225234918646" />
+                          </node>
                         </node>
                       </node>
-                    </node>
-                    <node concept="37vLTw" id="3oQ" role="1EOqxR">
-                      <ref role="3cqZAo" node="3oD" resolve="_info_12389875345" />
-                    </node>
-                    <node concept="3cqZAl" id="3oR" role="1Ez5kq" />
-                    <node concept="3VmV3z" id="3oS" role="1EMhIo">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3po" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                      <node concept="37vLTw" id="3oT" role="37wK5m">
+                        <ref role="3cqZAo" node="3oD" resolve="_info_12389875345" />
                       </node>
                     </node>
                   </node>
@@ -35820,139 +35836,140 @@
                     </node>
                   </node>
                   <node concept="3clFbF" id="3pM" role="3cqZAp">
-                    <node concept="1DoJHT" id="3q3" role="3clFbG">
-                      <property role="1Dpdpm" value="createEquation" />
-                      <node concept="10QFUN" id="3q4" role="1EOqxR">
-                        <node concept="3uibUv" id="3q9" role="10QFUM">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                        <node concept="2OqwBi" id="3qa" role="10QFUP">
-                          <node concept="3VmV3z" id="3qc" role="2Oq$k0">
-                            <property role="3VnrPo" value="typeCheckingContext" />
-                            <node concept="3uibUv" id="3qg" role="3Vn4Tt">
-                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="3qd" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                            <node concept="3VmV3z" id="3qh" role="37wK5m">
-                              <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                              <node concept="3uibUv" id="3ql" role="3Vn4Tt">
-                                <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                              </node>
-                            </node>
-                            <node concept="Xl_RD" id="3qi" role="37wK5m">
-                              <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                            </node>
-                            <node concept="Xl_RD" id="3qj" role="37wK5m">
-                              <property role="Xl_RC" value="1225234961710" />
-                            </node>
-                            <node concept="3clFbT" id="3qk" role="37wK5m">
-                              <property role="3clFbU" value="true" />
-                            </node>
-                          </node>
-                          <node concept="6wLe0" id="3qe" role="lGtFl">
-                            <property role="6wLej" value="1225234961710" />
-                            <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                          </node>
-                          <node concept="cd27G" id="3qf" role="lGtFl">
-                            <node concept="3u3nmq" id="3qm" role="cd27D">
-                              <property role="3u3nmv" value="1225234961710" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="3qb" role="lGtFl">
-                          <node concept="3u3nmq" id="3qn" role="cd27D">
-                            <property role="3u3nmv" value="1225234961709" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="10QFUN" id="3q5" role="1EOqxR">
-                        <node concept="3uibUv" id="3qo" role="10QFUM">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                        <node concept="2c44tf" id="3qp" role="10QFUP">
-                          <node concept="3Tqbb2" id="3qr" role="2c44tc">
-                            <node concept="2c44tb" id="3qt" role="lGtFl">
-                              <property role="2qtEX8" value="concept" />
-                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                              <node concept="2YIFZM" id="3qv" role="2c44t1">
-                                <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
-                                <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
-                                <node concept="2OqwBi" id="3qx" role="37wK5m">
-                                  <node concept="2OqwBi" id="3qz" role="2Oq$k0">
-                                    <node concept="37vLTw" id="3qA" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="3lr" resolve="parentMacro" />
-                                      <node concept="cd27G" id="3qD" role="lGtFl">
-                                        <node concept="3u3nmq" id="3qE" role="cd27D">
-                                          <property role="3u3nmv" value="4265636116363107182" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="1mfA1w" id="3qB" role="2OqNvi">
-                                      <node concept="cd27G" id="3qF" role="lGtFl">
-                                        <node concept="3u3nmq" id="3qG" role="cd27D">
-                                          <property role="3u3nmv" value="1225234961706" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="cd27G" id="3qC" role="lGtFl">
-                                      <node concept="3u3nmq" id="3qH" role="cd27D">
-                                        <property role="3u3nmv" value="1225234961703" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="2yIwOk" id="3q$" role="2OqNvi">
-                                    <node concept="cd27G" id="3qI" role="lGtFl">
-                                      <node concept="3u3nmq" id="3qJ" role="cd27D">
-                                        <property role="3u3nmv" value="5495892681291698544" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="cd27G" id="3q_" role="lGtFl">
-                                    <node concept="3u3nmq" id="3qK" role="cd27D">
-                                      <property role="3u3nmv" value="1225234961702" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="cd27G" id="3qy" role="lGtFl">
-                                  <node concept="3u3nmq" id="3qL" role="cd27D">
-                                    <property role="3u3nmv" value="768255023490531733" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="cd27G" id="3qw" role="lGtFl">
-                                <node concept="3u3nmq" id="3qM" role="cd27D">
-                                  <property role="3u3nmv" value="1225234961715" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="3qu" role="lGtFl">
-                              <node concept="3u3nmq" id="3qN" role="cd27D">
-                                <property role="3u3nmv" value="1225234961714" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="3qs" role="lGtFl">
-                            <node concept="3u3nmq" id="3qO" role="cd27D">
-                              <property role="3u3nmv" value="1225234961713" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="3qq" role="lGtFl">
-                          <node concept="3u3nmq" id="3qP" role="cd27D">
-                            <property role="3u3nmv" value="1225234961712" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="3q6" role="1EOqxR">
-                        <ref role="3cqZAo" node="3pT" resolve="_info_12389875345" />
-                      </node>
-                      <node concept="3cqZAl" id="3q7" role="1Ez5kq" />
-                      <node concept="3VmV3z" id="3q8" role="1EMhIo">
+                    <node concept="2OqwBi" id="3q3" role="3clFbG">
+                      <node concept="3VmV3z" id="3q4" role="2Oq$k0">
                         <property role="3VnrPo" value="typeCheckingContext" />
-                        <node concept="3uibUv" id="3qQ" role="3Vn4Tt">
+                        <node concept="3uibUv" id="3q6" role="3Vn4Tt">
                           <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3q5" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                        <node concept="10QFUN" id="3q7" role="37wK5m">
+                          <node concept="3uibUv" id="3qa" role="10QFUM">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                          <node concept="2OqwBi" id="3qb" role="10QFUP">
+                            <node concept="3VmV3z" id="3qd" role="2Oq$k0">
+                              <property role="3VnrPo" value="typeCheckingContext" />
+                              <node concept="3uibUv" id="3qh" role="3Vn4Tt">
+                                <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="3qe" role="2OqNvi">
+                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                              <node concept="3VmV3z" id="3qi" role="37wK5m">
+                                <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                                <node concept="3uibUv" id="3qm" role="3Vn4Tt">
+                                  <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                                </node>
+                              </node>
+                              <node concept="Xl_RD" id="3qj" role="37wK5m">
+                                <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                              </node>
+                              <node concept="Xl_RD" id="3qk" role="37wK5m">
+                                <property role="Xl_RC" value="1225234961710" />
+                              </node>
+                              <node concept="3clFbT" id="3ql" role="37wK5m">
+                                <property role="3clFbU" value="true" />
+                              </node>
+                            </node>
+                            <node concept="6wLe0" id="3qf" role="lGtFl">
+                              <property role="6wLej" value="1225234961710" />
+                              <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                            </node>
+                            <node concept="cd27G" id="3qg" role="lGtFl">
+                              <node concept="3u3nmq" id="3qn" role="cd27D">
+                                <property role="3u3nmv" value="1225234961710" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="3qc" role="lGtFl">
+                            <node concept="3u3nmq" id="3qo" role="cd27D">
+                              <property role="3u3nmv" value="1225234961709" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="10QFUN" id="3q8" role="37wK5m">
+                          <node concept="3uibUv" id="3qp" role="10QFUM">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                          <node concept="2c44tf" id="3qq" role="10QFUP">
+                            <node concept="3Tqbb2" id="3qs" role="2c44tc">
+                              <node concept="2c44tb" id="3qu" role="lGtFl">
+                                <property role="2qtEX8" value="concept" />
+                                <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                                <node concept="2YIFZM" id="3qw" role="2c44t1">
+                                  <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                                  <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
+                                  <node concept="2OqwBi" id="3qy" role="37wK5m">
+                                    <node concept="2OqwBi" id="3q$" role="2Oq$k0">
+                                      <node concept="37vLTw" id="3qB" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="3lr" resolve="parentMacro" />
+                                        <node concept="cd27G" id="3qE" role="lGtFl">
+                                          <node concept="3u3nmq" id="3qF" role="cd27D">
+                                            <property role="3u3nmv" value="4265636116363107182" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                      <node concept="1mfA1w" id="3qC" role="2OqNvi">
+                                        <node concept="cd27G" id="3qG" role="lGtFl">
+                                          <node concept="3u3nmq" id="3qH" role="cd27D">
+                                            <property role="3u3nmv" value="1225234961706" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                      <node concept="cd27G" id="3qD" role="lGtFl">
+                                        <node concept="3u3nmq" id="3qI" role="cd27D">
+                                          <property role="3u3nmv" value="1225234961703" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="2yIwOk" id="3q_" role="2OqNvi">
+                                      <node concept="cd27G" id="3qJ" role="lGtFl">
+                                        <node concept="3u3nmq" id="3qK" role="cd27D">
+                                          <property role="3u3nmv" value="5495892681291698544" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="cd27G" id="3qA" role="lGtFl">
+                                      <node concept="3u3nmq" id="3qL" role="cd27D">
+                                        <property role="3u3nmv" value="1225234961702" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="cd27G" id="3qz" role="lGtFl">
+                                    <node concept="3u3nmq" id="3qM" role="cd27D">
+                                      <property role="3u3nmv" value="768255023490531733" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="cd27G" id="3qx" role="lGtFl">
+                                  <node concept="3u3nmq" id="3qN" role="cd27D">
+                                    <property role="3u3nmv" value="1225234961715" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="3qv" role="lGtFl">
+                                <node concept="3u3nmq" id="3qO" role="cd27D">
+                                  <property role="3u3nmv" value="1225234961714" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="3qt" role="lGtFl">
+                              <node concept="3u3nmq" id="3qP" role="cd27D">
+                                <property role="3u3nmv" value="1225234961713" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="3qr" role="lGtFl">
+                            <node concept="3u3nmq" id="3qQ" role="cd27D">
+                              <property role="3u3nmv" value="1225234961712" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="3q9" role="37wK5m">
+                          <ref role="3cqZAo" node="3pT" resolve="_info_12389875345" />
                         </node>
                       </node>
                     </node>
@@ -36836,94 +36853,95 @@
               </node>
             </node>
             <node concept="3clFbF" id="3vZ" role="3cqZAp">
-              <node concept="1DoJHT" id="3wg" role="3clFbG">
-                <property role="1Dpdpm" value="createEquation" />
-                <node concept="10QFUN" id="3wh" role="1EOqxR">
-                  <node concept="3uibUv" id="3wm" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="3wn" role="10QFUP">
-                    <node concept="3VmV3z" id="3wp" role="2Oq$k0">
-                      <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3wt" role="3Vn4Tt">
-                        <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="3wq" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                      <node concept="3VmV3z" id="3wu" role="37wK5m">
-                        <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                        <node concept="3uibUv" id="3wy" role="3Vn4Tt">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="3wv" role="37wK5m">
-                        <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                      </node>
-                      <node concept="Xl_RD" id="3ww" role="37wK5m">
-                        <property role="Xl_RC" value="5659786285834495245" />
-                      </node>
-                      <node concept="3clFbT" id="3wx" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                    <node concept="6wLe0" id="3wr" role="lGtFl">
-                      <property role="6wLej" value="5659786285834495245" />
-                      <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                    </node>
-                    <node concept="cd27G" id="3ws" role="lGtFl">
-                      <node concept="3u3nmq" id="3wz" role="cd27D">
-                        <property role="3u3nmv" value="5659786285834495245" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="3wo" role="lGtFl">
-                    <node concept="3u3nmq" id="3w$" role="cd27D">
-                      <property role="3u3nmv" value="5659786285834507298" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="10QFUN" id="3wi" role="1EOqxR">
-                  <node concept="3uibUv" id="3w_" role="10QFUM">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                  <node concept="2OqwBi" id="3wA" role="10QFUP">
-                    <node concept="37vLTw" id="3wC" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3vx" resolve="tpd" />
-                      <node concept="cd27G" id="3wF" role="lGtFl">
-                        <node concept="3u3nmq" id="3wG" role="cd27D">
-                          <property role="3u3nmv" value="5659786285834507300" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3TrEf2" id="3wD" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tpf8:1$dcvTE2mFf" resolve="type" />
-                      <node concept="cd27G" id="3wH" role="lGtFl">
-                        <node concept="3u3nmq" id="3wI" role="cd27D">
-                          <property role="3u3nmv" value="5659786285834507305" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="cd27G" id="3wE" role="lGtFl">
-                      <node concept="3u3nmq" id="3wJ" role="cd27D">
-                        <property role="3u3nmv" value="5659786285834507301" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="3wB" role="lGtFl">
-                    <node concept="3u3nmq" id="3wK" role="cd27D">
-                      <property role="3u3nmv" value="5659786285834507299" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="3wj" role="1EOqxR">
-                  <ref role="3cqZAo" node="3w6" resolve="_info_12389875345" />
-                </node>
-                <node concept="3cqZAl" id="3wk" role="1Ez5kq" />
-                <node concept="3VmV3z" id="3wl" role="1EMhIo">
+              <node concept="2OqwBi" id="3wg" role="3clFbG">
+                <node concept="3VmV3z" id="3wh" role="2Oq$k0">
                   <property role="3VnrPo" value="typeCheckingContext" />
-                  <node concept="3uibUv" id="3wL" role="3Vn4Tt">
+                  <node concept="3uibUv" id="3wj" role="3Vn4Tt">
                     <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="3wi" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                  <node concept="10QFUN" id="3wk" role="37wK5m">
+                    <node concept="3uibUv" id="3wn" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="3wo" role="10QFUP">
+                      <node concept="3VmV3z" id="3wq" role="2Oq$k0">
+                        <property role="3VnrPo" value="typeCheckingContext" />
+                        <node concept="3uibUv" id="3wu" role="3Vn4Tt">
+                          <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3wr" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                        <node concept="3VmV3z" id="3wv" role="37wK5m">
+                          <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                          <node concept="3uibUv" id="3wz" role="3Vn4Tt">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="3ww" role="37wK5m">
+                          <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                        </node>
+                        <node concept="Xl_RD" id="3wx" role="37wK5m">
+                          <property role="Xl_RC" value="5659786285834495245" />
+                        </node>
+                        <node concept="3clFbT" id="3wy" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                      <node concept="6wLe0" id="3ws" role="lGtFl">
+                        <property role="6wLej" value="5659786285834495245" />
+                        <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                      </node>
+                      <node concept="cd27G" id="3wt" role="lGtFl">
+                        <node concept="3u3nmq" id="3w$" role="cd27D">
+                          <property role="3u3nmv" value="5659786285834495245" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="3wp" role="lGtFl">
+                      <node concept="3u3nmq" id="3w_" role="cd27D">
+                        <property role="3u3nmv" value="5659786285834507298" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10QFUN" id="3wl" role="37wK5m">
+                    <node concept="3uibUv" id="3wA" role="10QFUM">
+                      <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                    </node>
+                    <node concept="2OqwBi" id="3wB" role="10QFUP">
+                      <node concept="37vLTw" id="3wD" role="2Oq$k0">
+                        <ref role="3cqZAo" node="3vx" resolve="tpd" />
+                        <node concept="cd27G" id="3wG" role="lGtFl">
+                          <node concept="3u3nmq" id="3wH" role="cd27D">
+                            <property role="3u3nmv" value="5659786285834507300" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="3wE" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tpf8:1$dcvTE2mFf" resolve="type" />
+                        <node concept="cd27G" id="3wI" role="lGtFl">
+                          <node concept="3u3nmq" id="3wJ" role="cd27D">
+                            <property role="3u3nmv" value="5659786285834507305" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="cd27G" id="3wF" role="lGtFl">
+                        <node concept="3u3nmq" id="3wK" role="cd27D">
+                          <property role="3u3nmv" value="5659786285834507301" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="3wC" role="lGtFl">
+                      <node concept="3u3nmq" id="3wL" role="cd27D">
+                        <property role="3u3nmv" value="5659786285834507299" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="3wm" role="37wK5m">
+                    <ref role="3cqZAo" node="3w6" resolve="_info_12389875345" />
                   </node>
                 </node>
               </node>
@@ -37357,123 +37375,124 @@
                   </node>
                 </node>
                 <node concept="3clFbF" id="3zi" role="3cqZAp">
-                  <node concept="1DoJHT" id="3zz" role="3clFbG">
-                    <property role="1Dpdpm" value="createEquation" />
-                    <node concept="10QFUN" id="3z$" role="1EOqxR">
-                      <node concept="3uibUv" id="3zD" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2OqwBi" id="3zE" role="10QFUP">
-                        <node concept="3VmV3z" id="3zG" role="2Oq$k0">
-                          <property role="3VnrPo" value="typeCheckingContext" />
-                          <node concept="3uibUv" id="3zK" role="3Vn4Tt">
-                            <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="3zH" role="2OqNvi">
-                          <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                          <node concept="3VmV3z" id="3zL" role="37wK5m">
-                            <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                            <node concept="3uibUv" id="3zP" role="3Vn4Tt">
-                              <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="3zM" role="37wK5m">
-                            <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                          </node>
-                          <node concept="Xl_RD" id="3zN" role="37wK5m">
-                            <property role="Xl_RC" value="1048903277990979856" />
-                          </node>
-                          <node concept="3clFbT" id="3zO" role="37wK5m">
-                            <property role="3clFbU" value="true" />
-                          </node>
-                        </node>
-                        <node concept="6wLe0" id="3zI" role="lGtFl">
-                          <property role="6wLej" value="1048903277990979856" />
-                          <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                        </node>
-                        <node concept="cd27G" id="3zJ" role="lGtFl">
-                          <node concept="3u3nmq" id="3zQ" role="cd27D">
-                            <property role="3u3nmv" value="1048903277990979856" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="3zF" role="lGtFl">
-                        <node concept="3u3nmq" id="3zR" role="cd27D">
-                          <property role="3u3nmv" value="1048903277990980910" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="10QFUN" id="3z_" role="1EOqxR">
-                      <node concept="3uibUv" id="3zS" role="10QFUM">
-                        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                      </node>
-                      <node concept="2OqwBi" id="3zT" role="10QFUP">
-                        <node concept="3VmV3z" id="3zV" role="2Oq$k0">
-                          <property role="3VnrPo" value="typeCheckingContext" />
-                          <node concept="3uibUv" id="3zZ" role="3Vn4Tt">
-                            <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="3zW" role="2OqNvi">
-                          <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                          <node concept="2OqwBi" id="3$0" role="37wK5m">
-                            <node concept="37vLTw" id="3$4" role="2Oq$k0">
-                              <ref role="3cqZAo" node="3yI" resolve="varDecl" />
-                              <node concept="cd27G" id="3$7" role="lGtFl">
-                                <node concept="3u3nmq" id="3$8" role="cd27D">
-                                  <property role="3u3nmv" value="1048903277990994234" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="3TrEf2" id="3$5" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tpf8:UesZ_nZ2Ia" resolve="value" />
-                              <node concept="cd27G" id="3$9" role="lGtFl">
-                                <node concept="3u3nmq" id="3$a" role="cd27D">
-                                  <property role="3u3nmv" value="1048903277990995637" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="3$6" role="lGtFl">
-                              <node concept="3u3nmq" id="3$b" role="cd27D">
-                                <property role="3u3nmv" value="1048903277990994760" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="3$1" role="37wK5m">
-                            <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                          </node>
-                          <node concept="Xl_RD" id="3$2" role="37wK5m">
-                            <property role="Xl_RC" value="1048903277990984099" />
-                          </node>
-                          <node concept="3clFbT" id="3$3" role="37wK5m">
-                            <property role="3clFbU" value="true" />
-                          </node>
-                        </node>
-                        <node concept="6wLe0" id="3zX" role="lGtFl">
-                          <property role="6wLej" value="1048903277990984099" />
-                          <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                        </node>
-                        <node concept="cd27G" id="3zY" role="lGtFl">
-                          <node concept="3u3nmq" id="3$c" role="cd27D">
-                            <property role="3u3nmv" value="1048903277990984099" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="cd27G" id="3zU" role="lGtFl">
-                        <node concept="3u3nmq" id="3$d" role="cd27D">
-                          <property role="3u3nmv" value="1048903277990984103" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="3zA" role="1EOqxR">
-                      <ref role="3cqZAo" node="3zp" resolve="_info_12389875345" />
-                    </node>
-                    <node concept="3cqZAl" id="3zB" role="1Ez5kq" />
-                    <node concept="3VmV3z" id="3zC" role="1EMhIo">
+                  <node concept="2OqwBi" id="3zz" role="3clFbG">
+                    <node concept="3VmV3z" id="3z$" role="2Oq$k0">
                       <property role="3VnrPo" value="typeCheckingContext" />
-                      <node concept="3uibUv" id="3$e" role="3Vn4Tt">
+                      <node concept="3uibUv" id="3zA" role="3Vn4Tt">
                         <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="3z_" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                      <node concept="10QFUN" id="3zB" role="37wK5m">
+                        <node concept="3uibUv" id="3zE" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2OqwBi" id="3zF" role="10QFUP">
+                          <node concept="3VmV3z" id="3zH" role="2Oq$k0">
+                            <property role="3VnrPo" value="typeCheckingContext" />
+                            <node concept="3uibUv" id="3zL" role="3Vn4Tt">
+                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="3zI" role="2OqNvi">
+                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                            <node concept="3VmV3z" id="3zM" role="37wK5m">
+                              <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                              <node concept="3uibUv" id="3zQ" role="3Vn4Tt">
+                                <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                              </node>
+                            </node>
+                            <node concept="Xl_RD" id="3zN" role="37wK5m">
+                              <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                            </node>
+                            <node concept="Xl_RD" id="3zO" role="37wK5m">
+                              <property role="Xl_RC" value="1048903277990979856" />
+                            </node>
+                            <node concept="3clFbT" id="3zP" role="37wK5m">
+                              <property role="3clFbU" value="true" />
+                            </node>
+                          </node>
+                          <node concept="6wLe0" id="3zJ" role="lGtFl">
+                            <property role="6wLej" value="1048903277990979856" />
+                            <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                          </node>
+                          <node concept="cd27G" id="3zK" role="lGtFl">
+                            <node concept="3u3nmq" id="3zR" role="cd27D">
+                              <property role="3u3nmv" value="1048903277990979856" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="3zG" role="lGtFl">
+                          <node concept="3u3nmq" id="3zS" role="cd27D">
+                            <property role="3u3nmv" value="1048903277990980910" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="10QFUN" id="3zC" role="37wK5m">
+                        <node concept="3uibUv" id="3zT" role="10QFUM">
+                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                        </node>
+                        <node concept="2OqwBi" id="3zU" role="10QFUP">
+                          <node concept="3VmV3z" id="3zW" role="2Oq$k0">
+                            <property role="3VnrPo" value="typeCheckingContext" />
+                            <node concept="3uibUv" id="3$0" role="3Vn4Tt">
+                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="3zX" role="2OqNvi">
+                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                            <node concept="2OqwBi" id="3$1" role="37wK5m">
+                              <node concept="37vLTw" id="3$5" role="2Oq$k0">
+                                <ref role="3cqZAo" node="3yI" resolve="varDecl" />
+                                <node concept="cd27G" id="3$8" role="lGtFl">
+                                  <node concept="3u3nmq" id="3$9" role="cd27D">
+                                    <property role="3u3nmv" value="1048903277990994234" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3TrEf2" id="3$6" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tpf8:UesZ_nZ2Ia" resolve="value" />
+                                <node concept="cd27G" id="3$a" role="lGtFl">
+                                  <node concept="3u3nmq" id="3$b" role="cd27D">
+                                    <property role="3u3nmv" value="1048903277990995637" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="cd27G" id="3$7" role="lGtFl">
+                                <node concept="3u3nmq" id="3$c" role="cd27D">
+                                  <property role="3u3nmv" value="1048903277990994760" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="Xl_RD" id="3$2" role="37wK5m">
+                              <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                            </node>
+                            <node concept="Xl_RD" id="3$3" role="37wK5m">
+                              <property role="Xl_RC" value="1048903277990984099" />
+                            </node>
+                            <node concept="3clFbT" id="3$4" role="37wK5m">
+                              <property role="3clFbU" value="true" />
+                            </node>
+                          </node>
+                          <node concept="6wLe0" id="3zY" role="lGtFl">
+                            <property role="6wLej" value="1048903277990984099" />
+                            <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                          </node>
+                          <node concept="cd27G" id="3zZ" role="lGtFl">
+                            <node concept="3u3nmq" id="3$d" role="cd27D">
+                              <property role="3u3nmv" value="1048903277990984099" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="cd27G" id="3zV" role="lGtFl">
+                          <node concept="3u3nmq" id="3$e" role="cd27D">
+                            <property role="3u3nmv" value="1048903277990984103" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="3zD" role="37wK5m">
+                        <ref role="3cqZAo" node="3zp" resolve="_info_12389875345" />
                       </node>
                     </node>
                   </node>
@@ -37584,94 +37603,95 @@
                     </node>
                   </node>
                   <node concept="3clFbF" id="3$C" role="3cqZAp">
-                    <node concept="1DoJHT" id="3$T" role="3clFbG">
-                      <property role="1Dpdpm" value="createEquation" />
-                      <node concept="10QFUN" id="3$U" role="1EOqxR">
-                        <node concept="3uibUv" id="3$Z" role="10QFUM">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                        <node concept="2OqwBi" id="3_0" role="10QFUP">
-                          <node concept="3VmV3z" id="3_2" role="2Oq$k0">
-                            <property role="3VnrPo" value="typeCheckingContext" />
-                            <node concept="3uibUv" id="3_6" role="3Vn4Tt">
-                              <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="3_3" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
-                            <node concept="3VmV3z" id="3_7" role="37wK5m">
-                              <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
-                              <node concept="3uibUv" id="3_b" role="3Vn4Tt">
-                                <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                              </node>
-                            </node>
-                            <node concept="Xl_RD" id="3_8" role="37wK5m">
-                              <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                            </node>
-                            <node concept="Xl_RD" id="3_9" role="37wK5m">
-                              <property role="Xl_RC" value="1048903277990996148" />
-                            </node>
-                            <node concept="3clFbT" id="3_a" role="37wK5m">
-                              <property role="3clFbU" value="true" />
-                            </node>
-                          </node>
-                          <node concept="6wLe0" id="3_4" role="lGtFl">
-                            <property role="6wLej" value="1048903277990996148" />
-                            <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
-                          </node>
-                          <node concept="cd27G" id="3_5" role="lGtFl">
-                            <node concept="3u3nmq" id="3_c" role="cd27D">
-                              <property role="3u3nmv" value="1048903277990996148" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="3_1" role="lGtFl">
-                          <node concept="3u3nmq" id="3_d" role="cd27D">
-                            <property role="3u3nmv" value="1048903277990996147" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="10QFUN" id="3$V" role="1EOqxR">
-                        <node concept="3uibUv" id="3_e" role="10QFUM">
-                          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                        </node>
-                        <node concept="2OqwBi" id="3_f" role="10QFUP">
-                          <node concept="37vLTw" id="3_h" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3yI" resolve="varDecl" />
-                            <node concept="cd27G" id="3_k" role="lGtFl">
-                              <node concept="3u3nmq" id="3_l" role="cd27D">
-                                <property role="3u3nmv" value="1048903277990997128" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3TrEf2" id="3_i" role="2OqNvi">
-                            <ref role="3Tt5mk" to="tpf8:UesZ_nZ2I9" resolve="type" />
-                            <node concept="cd27G" id="3_m" role="lGtFl">
-                              <node concept="3u3nmq" id="3_n" role="cd27D">
-                                <property role="3u3nmv" value="1048903277990999241" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="cd27G" id="3_j" role="lGtFl">
-                            <node concept="3u3nmq" id="3_o" role="cd27D">
-                              <property role="3u3nmv" value="1048903277990997653" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="cd27G" id="3_g" role="lGtFl">
-                          <node concept="3u3nmq" id="3_p" role="cd27D">
-                            <property role="3u3nmv" value="1048903277990997132" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="3$W" role="1EOqxR">
-                        <ref role="3cqZAo" node="3$J" resolve="_info_12389875345" />
-                      </node>
-                      <node concept="3cqZAl" id="3$X" role="1Ez5kq" />
-                      <node concept="3VmV3z" id="3$Y" role="1EMhIo">
+                    <node concept="2OqwBi" id="3$T" role="3clFbG">
+                      <node concept="3VmV3z" id="3$U" role="2Oq$k0">
                         <property role="3VnrPo" value="typeCheckingContext" />
-                        <node concept="3uibUv" id="3_q" role="3Vn4Tt">
+                        <node concept="3uibUv" id="3$W" role="3Vn4Tt">
                           <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3$V" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.createEquation(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.typesystem.inference.EquationInfo)" resolve="createEquation" />
+                        <node concept="10QFUN" id="3$X" role="37wK5m">
+                          <node concept="3uibUv" id="3_0" role="10QFUM">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                          <node concept="2OqwBi" id="3_1" role="10QFUP">
+                            <node concept="3VmV3z" id="3_3" role="2Oq$k0">
+                              <property role="3VnrPo" value="typeCheckingContext" />
+                              <node concept="3uibUv" id="3_7" role="3Vn4Tt">
+                                <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="3_4" role="2OqNvi">
+                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.typeOf(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,boolean)" resolve="typeOf" />
+                              <node concept="3VmV3z" id="3_8" role="37wK5m">
+                                <property role="3VnrPo" value="_nodeToCheck_1029348928467" />
+                                <node concept="3uibUv" id="3_c" role="3Vn4Tt">
+                                  <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                                </node>
+                              </node>
+                              <node concept="Xl_RD" id="3_9" role="37wK5m">
+                                <property role="Xl_RC" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                              </node>
+                              <node concept="Xl_RD" id="3_a" role="37wK5m">
+                                <property role="Xl_RC" value="1048903277990996148" />
+                              </node>
+                              <node concept="3clFbT" id="3_b" role="37wK5m">
+                                <property role="3clFbU" value="true" />
+                              </node>
+                            </node>
+                            <node concept="6wLe0" id="3_5" role="lGtFl">
+                              <property role="6wLej" value="1048903277990996148" />
+                              <property role="6wLeW" value="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)" />
+                            </node>
+                            <node concept="cd27G" id="3_6" role="lGtFl">
+                              <node concept="3u3nmq" id="3_d" role="cd27D">
+                                <property role="3u3nmv" value="1048903277990996148" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="3_2" role="lGtFl">
+                            <node concept="3u3nmq" id="3_e" role="cd27D">
+                              <property role="3u3nmv" value="1048903277990996147" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="10QFUN" id="3$Y" role="37wK5m">
+                          <node concept="3uibUv" id="3_f" role="10QFUM">
+                            <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+                          </node>
+                          <node concept="2OqwBi" id="3_g" role="10QFUP">
+                            <node concept="37vLTw" id="3_i" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3yI" resolve="varDecl" />
+                              <node concept="cd27G" id="3_l" role="lGtFl">
+                                <node concept="3u3nmq" id="3_m" role="cd27D">
+                                  <property role="3u3nmv" value="1048903277990997128" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="3TrEf2" id="3_j" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tpf8:UesZ_nZ2I9" resolve="type" />
+                              <node concept="cd27G" id="3_n" role="lGtFl">
+                                <node concept="3u3nmq" id="3_o" role="cd27D">
+                                  <property role="3u3nmv" value="1048903277990999241" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="3_k" role="lGtFl">
+                              <node concept="3u3nmq" id="3_p" role="cd27D">
+                                <property role="3u3nmv" value="1048903277990997653" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="3_h" role="lGtFl">
+                            <node concept="3u3nmq" id="3_q" role="cd27D">
+                              <property role="3u3nmv" value="1048903277990997132" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="3$Z" role="37wK5m">
+                          <ref role="3cqZAo" node="3$J" resolve="_info_12389875345" />
                         </node>
                       </node>
                     </node>

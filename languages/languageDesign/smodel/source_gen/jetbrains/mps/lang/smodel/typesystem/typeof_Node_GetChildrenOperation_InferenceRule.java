@@ -30,13 +30,13 @@ public class typeof_Node_GetChildrenOperation_InferenceRule extends AbstractInfe
       {
         SNode _nodeToCheck_1029348928467 = operation;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3476105411552568257", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3476105411552568259", true), (SNode) _quotation_createNode_fpxkij_a1a2a2a1a1(typeCheckingContext.getRepresentative(qualifierType_typevar_5815925154348901252)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3476105411552568259", true), (SNode) _quotation_createNode_fpxkij_a1a0c0c0b0b(typeCheckingContext.getRepresentative(qualifierType_typevar_5815925154348901252)), _info_12389875345);
       }
     } else {
       {
         SNode _nodeToCheck_1029348928467 = operation;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5815925154348901198", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5815925154348901195", true), (SNode) _quotation_createNode_fpxkij_a1a2a0a0b0b(), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5815925154348901195", true), (SNode) _quotation_createNode_fpxkij_a1a0c0a0a1a1(), _info_12389875345);
       }
     }
   }
@@ -49,7 +49,7 @@ public class typeof_Node_GetChildrenOperation_InferenceRule extends AbstractInfe
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_fpxkij_a1a2a0a0b0b() {
+  private static SNode _quotation_createNode_fpxkij_a1a0c0a0a1a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -58,7 +58,7 @@ public class typeof_Node_GetChildrenOperation_InferenceRule extends AbstractInfe
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_fpxkij_a1a2a2a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_fpxkij_a1a0c0c0b0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

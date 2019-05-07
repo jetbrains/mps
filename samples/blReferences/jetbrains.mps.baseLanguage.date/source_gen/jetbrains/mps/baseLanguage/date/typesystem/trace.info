@@ -24,11 +24,11 @@
     <file name="typeof_DateLiteral_InferenceRule.java">
       <node id="3825148134790538108" at="20,5,21,53" concept="4" />
       <node id="3825148134790538108" at="21,53,22,208" concept="4" />
-      <node id="3825148134790538108" at="22,208,23,281" concept="2" />
+      <node id="3825148134790538108" at="22,208,23,282" concept="2" />
       <node id="3825148134790537984" at="26,50,27,161" concept="5" />
       <node id="3825148134790537984" at="29,68,30,102" concept="5" />
       <node id="3825148134790537984" at="32,30,33,17" concept="5" />
-      <node id="3825148134790538114" at="35,57,36,63" concept="4" />
+      <node id="3825148134790538114" at="35,58,36,63" concept="4" />
       <node id="3825148134790538114" at="36,63,37,227" concept="4" />
       <node id="3825148134790538114" at="37,227,38,14" concept="5" />
       <node id="3825148134790537984" at="17,0,19,0" concept="1" trace="typeof_DateLiteral_InferenceRule#()V" />
@@ -36,14 +36,14 @@
       <node id="3825148134790537984" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3825148134790537984" at="32,0,35,0" concept="3" trace="overrides#()Z" />
       <node id="3825148134790538108" at="19,124,24,5" concept="0" />
-      <node id="3825148134790538114" at="35,0,40,0" concept="6" trace="createDateType_gobu8k_a1a2a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3825148134790538114" at="35,0,40,0" concept="6" trace="createDateType_gobu8k_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3825148134790537984" at="19,0,26,0" concept="3" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="3825148134790537984" at="17,45,17,45" />
       <scope id="3825148134790537984" at="26,50,27,161" />
       <scope id="3825148134790537984" at="29,68,30,102" />
       <scope id="3825148134790537984" at="32,30,33,17" />
       <scope id="3825148134790537984" at="17,0,19,0" />
-      <scope id="3825148134790538108" at="20,5,23,281">
+      <scope id="3825148134790538108" at="20,5,23,282">
         <var name="_info_12389875345" id="3825148134790538108" />
         <var name="_nodeToCheck_1029348928467" id="3825148134790538108" />
       </scope>
@@ -52,7 +52,7 @@
         <var name="argument" id="3825148134790537984" />
       </scope>
       <scope id="3825148134790537984" at="32,0,35,0" />
-      <scope id="3825148134790538114" at="35,57,38,14">
+      <scope id="3825148134790538114" at="35,58,38,14">
         <var name="facade" id="3825148134790538114" />
         <var name="n1" id="3825148134790538114" />
       </scope>

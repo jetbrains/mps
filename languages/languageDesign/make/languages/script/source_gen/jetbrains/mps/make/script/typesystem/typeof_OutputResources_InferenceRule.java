@@ -22,7 +22,7 @@ public class typeof_OutputResources_InferenceRule extends AbstractInferenceRule_
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(or, MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972068L, 0x20c069f80a972071L, "resource"));
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "2360002718792622216", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "2360002718792622208", true), (SNode) _quotation_createNode_rptc1i_a1a2a0a0a1(), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "2360002718792622208", true), (SNode) _quotation_createNode_rptc1i_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
   }
@@ -35,7 +35,7 @@ public class typeof_OutputResources_InferenceRule extends AbstractInferenceRule_
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_rptc1i_a1a2a0a0a1() {
+  private static SNode _quotation_createNode_rptc1i_a1a0c0a0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

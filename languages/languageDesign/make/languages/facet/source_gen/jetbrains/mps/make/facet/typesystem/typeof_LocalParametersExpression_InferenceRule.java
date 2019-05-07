@@ -25,7 +25,7 @@ public class typeof_LocalParametersExpression_InferenceRule extends AbstractInfe
       {
         SNode _nodeToCheck_1029348928467 = lve;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e67eab7b-bc9a-4900-b958-c99ccf24a565(jetbrains.mps.make.facet.typesystem)", "7320828025189375183", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e67eab7b-bc9a-4900-b958-c99ccf24a565(jetbrains.mps.make.facet.typesystem)", "7320828025189375180", true), (SNode) _quotation_createNode_7fmlga_a1a2a0a1a1(vars), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e67eab7b-bc9a-4900-b958-c99ccf24a565(jetbrains.mps.make.facet.typesystem)", "7320828025189375180", true), (SNode) _quotation_createNode_7fmlga_a1a0c0a0b0b(vars), _info_12389875345);
       }
     }
   }
@@ -38,7 +38,7 @@ public class typeof_LocalParametersExpression_InferenceRule extends AbstractInfe
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_7fmlga_a1a2a0a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_7fmlga_a1a0c0a0b0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xa247e09e243545baL, 0xb8d207e93feba96aL, "jetbrains.mps.baseLanguage.tuples"), 0x12099dc1365L, "NamedTupleType"), null, null, false);

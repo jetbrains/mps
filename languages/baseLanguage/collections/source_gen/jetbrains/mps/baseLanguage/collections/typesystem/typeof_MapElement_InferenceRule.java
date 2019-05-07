@@ -24,7 +24,7 @@ public class typeof_MapElement_InferenceRule extends AbstractInferenceRule_Runti
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(mapElement, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map"));
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120486", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_y91lxu_a0a2a2a1(typeCheckingContext.getRepresentative(keyType_typevar_1198083488673), typeCheckingContext.getRepresentative(valueType_typevar_1198083495346)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1198083507709", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_y91lxu_a0a0c0c0b(typeCheckingContext.getRepresentative(keyType_typevar_1198083488673), typeCheckingContext.getRepresentative(valueType_typevar_1198083495346)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1198083507709", true), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = mapElement;
@@ -48,7 +48,7 @@ public class typeof_MapElement_InferenceRule extends AbstractInferenceRule_Runti
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_y91lxu_a0a2a2a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_y91lxu_a0a0c0c0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

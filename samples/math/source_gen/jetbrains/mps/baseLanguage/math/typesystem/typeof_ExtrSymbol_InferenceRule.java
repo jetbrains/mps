@@ -23,7 +23,7 @@ public class typeof_ExtrSymbol_InferenceRule extends AbstractInferenceRule_Runti
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(symbol, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae874L, "expression"));
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1236431731877", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1236431731879", true), (SNode) _quotation_createNode_mykjdy_a1a2a0a0a1(), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1236431731879", true), (SNode) _quotation_createNode_mykjdy_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
     {
@@ -41,7 +41,7 @@ public class typeof_ExtrSymbol_InferenceRule extends AbstractInferenceRule_Runti
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_mykjdy_a1a2a0a0a1() {
+  private static SNode _quotation_createNode_mykjdy_a1a0c0a0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);

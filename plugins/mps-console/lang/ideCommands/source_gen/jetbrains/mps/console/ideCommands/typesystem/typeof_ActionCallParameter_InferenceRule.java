@@ -31,7 +31,7 @@ public class typeof_ActionCallParameter_InferenceRule extends AbstractInferenceR
       {
         SNode _nodeToCheck_1029348928467 = actionCallParameter;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074112", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) type, (SNode) _quotation_createNode_vuymlq_a1a2a0a1a1(), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) type, (SNode) _quotation_createNode_vuymlq_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
     }
     if (SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")) && SLinkOperations.hasPointer(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~DataKey")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))).count() == 1) {
@@ -57,7 +57,7 @@ public class typeof_ActionCallParameter_InferenceRule extends AbstractInferenceR
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_vuymlq_a1a2a0a1a1() {
+  private static SNode _quotation_createNode_vuymlq_a1a0c0a0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);

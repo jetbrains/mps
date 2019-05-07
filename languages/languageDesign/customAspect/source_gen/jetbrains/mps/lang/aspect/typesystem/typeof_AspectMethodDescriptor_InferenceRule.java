@@ -23,7 +23,7 @@ public class typeof_AspectMethodDescriptor_InferenceRule extends AbstractInferen
     {
       SNode _nodeToCheck_1029348928467 = amd;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "5386558680326206553", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "5386558680326206402", true), (SNode) _quotation_createNode_q679gm_a1a2a0a1(SLinkOperations.getTarget(amd, MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x4ac0e6949ea3f2b0L, 0x4ac0e6949ea3f2b9L, "cncpt"))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "5386558680326206402", true), (SNode) _quotation_createNode_q679gm_a1a0c0a0b(SLinkOperations.getTarget(amd, MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x4ac0e6949ea3f2b0L, 0x4ac0e6949ea3f2b9L, "cncpt"))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_AspectMethodDescriptor_InferenceRule extends AbstractInferen
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_q679gm_a1a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_q679gm_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

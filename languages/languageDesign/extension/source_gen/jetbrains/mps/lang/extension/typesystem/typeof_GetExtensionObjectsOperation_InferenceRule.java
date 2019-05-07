@@ -27,7 +27,7 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
       {
         SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(geoo);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577342", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577335", true), (SNode) _quotation_createNode_4o3874_a1a2a0a1a1(typeCheckingContext.getRepresentative(EP_typevar_3999125756866747142)), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577335", true), (SNode) _quotation_createNode_4o3874_a1a0c0a0b0b(typeCheckingContext.getRepresentative(EP_typevar_3999125756866747142)), true, true, _info_12389875345);
       }
     }
 
@@ -46,7 +46,7 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
           {
             SNode _nodeToCheck_1029348928467 = geoo;
             EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577264", 0, null);
-            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577258", true), (SNode) _quotation_createNode_4o3874_a1a2a2a0a0b0a1a3a1(objectType), _info_12389875345);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3175313036448577258", true), (SNode) _quotation_createNode_4o3874_a1a0c0c0a0a1a0b0d0b(objectType), _info_12389875345);
           }
         }
       }, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "3999125756866733643", false, false);
@@ -61,14 +61,14 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_4o3874_a1a2a0a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_4o3874_a1a0c0a0b0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc0080a477e374558L, 0xbee99ae18e690549L, "jetbrains.mps.lang.extension"), 0x2c10fa62142eb538L, "ExtensionPointType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_4o3874_a1a2a2a0a0b0a1a3a1(Object parameter_1) {
+  private static SNode _quotation_createNode_4o3874_a1a0c0c0a0a1a0b0d0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

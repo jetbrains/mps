@@ -24,13 +24,13 @@ public class typeof_TreeSetCreator_InferenceRule extends AbstractInferenceRule_R
       {
         SNode _nodeToCheck_1029348928467 = treeSetCreator;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120590", 0, null);
-        typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_3g5uu_a0a2a1a0a1(typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2261417478149018323", true), false, true, _info_12389875345);
+        typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_3g5uu_a0a0c0b0a0b(typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2261417478149018323", true), false, true, _info_12389875345);
       }
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
           SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(treeSetCreator, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator"));
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2261417478149018298", 0, null);
-          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2261417478149018290", true), (SNode) _quotation_createNode_3g5uu_a1a2a0a2a0a1(typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313), typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313)), true, true, _info_12389875345);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2261417478149018290", true), (SNode) _quotation_createNode_3g5uu_a1a0c0a0c0a0b(typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313), typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313)), true, true, _info_12389875345);
         }
       }
     }
@@ -44,7 +44,7 @@ public class typeof_TreeSetCreator_InferenceRule extends AbstractInferenceRule_R
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_3g5uu_a0a2a1a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_3g5uu_a0a0c0b0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -55,7 +55,7 @@ public class typeof_TreeSetCreator_InferenceRule extends AbstractInferenceRule_R
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_3g5uu_a1a2a0a2a0a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_3g5uu_a1a0c0a0c0a0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

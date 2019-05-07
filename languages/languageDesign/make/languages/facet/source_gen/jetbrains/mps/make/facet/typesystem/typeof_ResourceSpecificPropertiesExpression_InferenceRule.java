@@ -22,7 +22,7 @@ public class typeof_ResourceSpecificPropertiesExpression_InferenceRule extends A
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(rspe, MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1e69fdb2a034c3f6L, 0x1e69fdb2a034c408L, "resource"));
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e67eab7b-bc9a-4900-b958-c99ccf24a565(jetbrains.mps.make.facet.typesystem)", "2191561637326275606", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e67eab7b-bc9a-4900-b958-c99ccf24a565(jetbrains.mps.make.facet.typesystem)", "2191561637326275598", true), (SNode) _quotation_createNode_3fuqx3_a1a2a0a0a1(), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e67eab7b-bc9a-4900-b958-c99ccf24a565(jetbrains.mps.make.facet.typesystem)", "2191561637326275598", true), (SNode) _quotation_createNode_3fuqx3_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
     {
@@ -40,7 +40,7 @@ public class typeof_ResourceSpecificPropertiesExpression_InferenceRule extends A
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_3fuqx3_a1a2a0a0a1() {
+  private static SNode _quotation_createNode_3fuqx3_a1a0c0a0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, "jetbrains.mps.make.script"), 0x20c069f80a947282L, "ResourceType"), null, null, false);

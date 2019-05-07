@@ -33,7 +33,7 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
       {
         SNode _nodeToCheck_1029348928467 = arrayLiteral;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1188221467376", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1188221454647", true), (SNode) _quotation_createNode_8lb61p_a1a2a2a0a1(typeCheckingContext.getRepresentative(elementType_typevar_1188221443596)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1188221454647", true), (SNode) _quotation_createNode_8lb61p_a1a0c0c0a0b(typeCheckingContext.getRepresentative(elementType_typevar_1188221443596)), _info_12389875345);
       }
     } else {
       SNode creator = SNodeOperations.getNodeAncestor(arrayLiteral, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, "jetbrains.mps.baseLanguage.structure.ArrayCreatorWithInitializer"), false, false);
@@ -51,7 +51,7 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
         {
           SNode _nodeToCheck_1029348928467 = arrayLiteral;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3229217637177224286", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3229217637177224289", true), (SNode) _quotation_createNode_8lb61p_a1a2a1a5a0a0b(), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3229217637177224289", true), (SNode) _quotation_createNode_8lb61p_a1a0c0b0f0a0a1(), _info_12389875345);
         }
       }
     }
@@ -65,7 +65,7 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_8lb61p_a1a2a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_8lb61p_a1a0c0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -76,7 +76,7 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_8lb61p_a1a2a1a5a0a0b() {
+  private static SNode _quotation_createNode_8lb61p_a1a0c0b0f0a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

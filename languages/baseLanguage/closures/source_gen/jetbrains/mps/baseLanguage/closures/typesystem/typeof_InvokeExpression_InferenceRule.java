@@ -46,7 +46,7 @@ public class typeof_InvokeExpression_InferenceRule extends AbstractInferenceRule
     {
       SNode _nodeToCheck_1029348928467 = cl;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "7073484723012007695", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "7073484723012007697", true), (SNode) _quotation_createNode_9tk0iy_a1a2a5a1(ptypes, typeCheckingContext.getRepresentative(ret_typevar_1225469708846)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "7073484723012007697", true), (SNode) _quotation_createNode_9tk0iy_a1a0c0f0b(ptypes, typeCheckingContext.getRepresentative(ret_typevar_1225469708846)), _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = invoke;
@@ -63,7 +63,7 @@ public class typeof_InvokeExpression_InferenceRule extends AbstractInferenceRule
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_9tk0iy_a1a2a5a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_9tk0iy_a1a0c0f0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

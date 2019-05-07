@@ -43,7 +43,7 @@ public class typeof_GenerationContextOp_ContextVarRef_InferenceRule extends Abst
     {
       SNode _nodeToCheck_1029348928467 = cvRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "7430509679014375422", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "7430509679014375233", true), (SNode) ((cvd == null || SLinkOperations.getTarget(cvd, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type")) == null ? _quotation_createNode_seatim_a0b0c0e0b() : SLinkOperations.getTarget(cvd, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type")))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "7430509679014375233", true), (SNode) ((cvd == null || SLinkOperations.getTarget(cvd, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type")) == null ? _quotation_createNode_seatim_a0b0a2a4a1() : SLinkOperations.getTarget(cvd, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type")))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -55,7 +55,7 @@ public class typeof_GenerationContextOp_ContextVarRef_InferenceRule extends Abst
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_seatim_a0b0c0e0b() {
+  private static SNode _quotation_createNode_seatim_a0b0a2a4a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);

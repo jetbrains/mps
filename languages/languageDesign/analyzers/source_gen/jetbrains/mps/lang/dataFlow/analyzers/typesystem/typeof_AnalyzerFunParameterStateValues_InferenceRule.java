@@ -25,7 +25,7 @@ public class typeof_AnalyzerFunParameterStateValues_InferenceRule extends Abstra
     {
       SNode _nodeToCheck_1029348928467 = values;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9120988775422995292", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9120988775422995294", true), (SNode) _quotation_createNode_zfr9yd_a1a2a1a1(type), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9120988775422995294", true), (SNode) _quotation_createNode_zfr9yd_a1a0c0b0b(type), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -37,7 +37,7 @@ public class typeof_AnalyzerFunParameterStateValues_InferenceRule extends Abstra
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_zfr9yd_a1a2a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_zfr9yd_a1a0c0b0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

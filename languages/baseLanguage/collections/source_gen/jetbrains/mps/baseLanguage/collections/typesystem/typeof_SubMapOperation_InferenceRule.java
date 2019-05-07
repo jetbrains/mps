@@ -25,7 +25,7 @@ public class typeof_SubMapOperation_InferenceRule extends AbstractInferenceRule_
     {
       SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(operation);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120490", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_85e8rt_a0a2a2a1(typeCheckingContext.getRepresentative(KEY_TYPE_typevar_1240240358091), typeCheckingContext.getRepresentative(VALUE_TYPE_typevar_1240240358092)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240358104", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_85e8rt_a0a0c0c0b(typeCheckingContext.getRepresentative(KEY_TYPE_typevar_1240240358091), typeCheckingContext.getRepresentative(VALUE_TYPE_typevar_1240240358092)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240358104", true), false, true, _info_12389875345);
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
@@ -44,7 +44,7 @@ public class typeof_SubMapOperation_InferenceRule extends AbstractInferenceRule_
     {
       SNode _nodeToCheck_1029348928467 = operation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240358116", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240358118", true), (SNode) _quotation_createNode_85e8rt_a1a2a5a1(typeCheckingContext.getRepresentative(KEY_TYPE_typevar_1240240358091), typeCheckingContext.getRepresentative(VALUE_TYPE_typevar_1240240358092)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240358118", true), (SNode) _quotation_createNode_85e8rt_a1a0c0f0b(typeCheckingContext.getRepresentative(KEY_TYPE_typevar_1240240358091), typeCheckingContext.getRepresentative(VALUE_TYPE_typevar_1240240358092)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -56,7 +56,7 @@ public class typeof_SubMapOperation_InferenceRule extends AbstractInferenceRule_
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_85e8rt_a0a2a2a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_85e8rt_a0a0c0c0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -72,7 +72,7 @@ public class typeof_SubMapOperation_InferenceRule extends AbstractInferenceRule_
     }
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_85e8rt_a1a2a5a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_85e8rt_a1a0c0f0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

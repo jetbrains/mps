@@ -25,19 +25,19 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
       {
         SNode _nodeToCheck_1029348928467 = refactorOperation;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "6561307094040649082", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(paramType_typevar_1225883650310), (SNode) _quotation_createNode_u2w4di_a1a2a0a1a1(), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(paramType_typevar_1225883650310), (SNode) _quotation_createNode_u2w4di_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
     }
     {
       SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(refactorOperation);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2799321329875510980", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_u2w4di_a0a2a2a1(typeCheckingContext.getRepresentative(paramType_typevar_1225883650310)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2799321329875510989", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_u2w4di_a0a0c0c0b(typeCheckingContext.getRepresentative(paramType_typevar_1225883650310)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2799321329875510989", true), false, true, _info_12389875345);
     }
     final SNode refactoringParamType_typevar_1240677567421 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(refactorOperation, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure"));
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2704222862538118755", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_u2w4di_a0a2a4a1(typeCheckingContext.getRepresentative(refactoringParamType_typevar_1240677567421)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2704222862538112956", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_u2w4di_a0a0c0e0b(typeCheckingContext.getRepresentative(refactoringParamType_typevar_1240677567421)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2704222862538112956", true), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = refactorOperation;
@@ -47,7 +47,7 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
     {
       SNode _nodeToCheck_1029348928467 = refactorOperation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "1205842233781", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "1205842235753", true), (SNode) _quotation_createNode_u2w4di_a1a2a6a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "1205842235753", true), (SNode) _quotation_createNode_u2w4di_a1a0c0g0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -59,13 +59,13 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_u2w4di_a1a2a0a1a1() {
+  private static SNode _quotation_createNode_u2w4di_a1a0c0a0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_u2w4di_a0a2a2a1(Object parameter_1) {
+  private static SNode _quotation_createNode_u2w4di_a0a0c0c0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -76,7 +76,7 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_u2w4di_a0a2a4a1(Object parameter_1) {
+  private static SNode _quotation_createNode_u2w4di_a0a0c0e0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -90,7 +90,7 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_4);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_u2w4di_a1a2a6a1() {
+  private static SNode _quotation_createNode_u2w4di_a1a0c0g0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);

@@ -22,7 +22,7 @@ public class typeof_SEnum_MembersOperation_InferenceRule extends AbstractInferen
     {
       SNode _nodeToCheck_1029348928467 = operation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3799973320548266840", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3799973320548266842", true), (SNode) _quotation_createNode_trqwsu_a1a2a0a1(SEnumOperation__BehaviorDescriptor.getEnum_idi3HhkyV.invoke(operation)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3799973320548266842", true), (SNode) _quotation_createNode_trqwsu_a1a0c0a0b(SEnumOperation__BehaviorDescriptor.getEnum_idi3HhkyV.invoke(operation)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -34,7 +34,7 @@ public class typeof_SEnum_MembersOperation_InferenceRule extends AbstractInferen
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_trqwsu_a1a2a0a1(Object parameter_1) {
+  private static SNode _quotation_createNode_trqwsu_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

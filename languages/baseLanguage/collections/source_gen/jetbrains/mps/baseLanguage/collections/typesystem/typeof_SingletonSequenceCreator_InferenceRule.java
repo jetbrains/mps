@@ -30,7 +30,7 @@ public class typeof_SingletonSequenceCreator_InferenceRule extends AbstractInfer
     {
       SNode _nodeToCheck_1029348928467 = creator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235573464921", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235573464929", true), (SNode) _quotation_createNode_kyakf6_a1a2a2a1(elementType), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235573464929", true), (SNode) _quotation_createNode_kyakf6_a1a0c0c0b(elementType), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -42,7 +42,7 @@ public class typeof_SingletonSequenceCreator_InferenceRule extends AbstractInfer
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_kyakf6_a1a2a2a1(Object parameter_1) {
+  private static SNode _quotation_createNode_kyakf6_a1a0c0c0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

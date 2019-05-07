@@ -26,7 +26,7 @@ public class typeof_BinaryOperation_InferenceRule extends AbstractInferenceRule_
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1184848442457", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(sequenceType_typevar_1184848409899), (SNode) _quotation_createNode_nog713_a1a2a4a1(typeCheckingContext.getRepresentative(elementType_typevar_1184848397564)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(sequenceType_typevar_1184848409899), (SNode) _quotation_createNode_nog713_a1a0c0e0b(typeCheckingContext.getRepresentative(elementType_typevar_1184848397564)), _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = lValue;
@@ -53,7 +53,7 @@ public class typeof_BinaryOperation_InferenceRule extends AbstractInferenceRule_
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_nog713_a1a2a4a1(Object parameter_1) {
+  private static SNode _quotation_createNode_nog713_a1a0c0e0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

@@ -24,7 +24,7 @@ public class typeof_FindFirstOperation_InferenceRule extends AbstractInferenceRu
     {
       SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(operation);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120469", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_sw83vu_a0a2a1a1(typeCheckingContext.getRepresentative(elementType_typevar_1225727823542)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727831549", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_sw83vu_a0a0c0b0b(typeCheckingContext.getRepresentative(elementType_typevar_1225727823542)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727831549", true), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = operation;
@@ -35,7 +35,7 @@ public class typeof_FindFirstOperation_InferenceRule extends AbstractInferenceRu
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure"));
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727952016", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727925390", true), (SNode) _quotation_createNode_sw83vu_a1a2a0a3a1(typeCheckingContext.getRepresentative(elementType_typevar_1225727823542)), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727925390", true), (SNode) _quotation_createNode_sw83vu_a1a0c0a0d0b(typeCheckingContext.getRepresentative(elementType_typevar_1225727823542)), true, true, _info_12389875345);
       }
     }
   }
@@ -48,7 +48,7 @@ public class typeof_FindFirstOperation_InferenceRule extends AbstractInferenceRu
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_sw83vu_a0a2a1a1(Object parameter_1) {
+  private static SNode _quotation_createNode_sw83vu_a0a0c0b0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -59,7 +59,7 @@ public class typeof_FindFirstOperation_InferenceRule extends AbstractInferenceRu
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_sw83vu_a1a2a0a3a1(Object parameter_1) {
+  private static SNode _quotation_createNode_sw83vu_a1a0c0a0d0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

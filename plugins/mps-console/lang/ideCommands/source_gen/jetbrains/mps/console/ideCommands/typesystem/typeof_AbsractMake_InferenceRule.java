@@ -23,18 +23,18 @@ public class typeof_AbsractMake_InferenceRule extends AbstractInferenceRule_Runt
     {
       SNode _nodeToCheck_1029348928467 = absractMake;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891845", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891850", true), (SNode) _quotation_createNode_m0ryz8_a1a2a0a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891850", true), (SNode) _quotation_createNode_m0ryz8_a1a0c0a0b(), _info_12389875345);
     }
     final SNode v_typevar_1190968896992143296 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(absractMake, MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x276b371e77c0a29aL, 0x276b371e77c0a2f0L, "argument"));
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891858", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891860", true), (SNode) _quotation_createNode_m0ryz8_a1a2a2a1(typeCheckingContext.getRepresentative(v_typevar_1190968896992143296), typeCheckingContext.getRepresentative(v_typevar_1190968896992143296)), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891860", true), (SNode) _quotation_createNode_m0ryz8_a1a0c0c0b(typeCheckingContext.getRepresentative(v_typevar_1190968896992143296), typeCheckingContext.getRepresentative(v_typevar_1190968896992143296)), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = absractMake;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "1190968896992143863", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(v_typevar_1190968896992143296), (SNode) _quotation_createNode_m0ryz8_a1a2a3a1(), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(v_typevar_1190968896992143296), (SNode) _quotation_createNode_m0ryz8_a1a0c0d0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -46,13 +46,13 @@ public class typeof_AbsractMake_InferenceRule extends AbstractInferenceRule_Runt
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_m0ryz8_a1a2a0a1() {
+  private static SNode _quotation_createNode_m0ryz8_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_m0ryz8_a1a2a2a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_m0ryz8_a1a0c0c0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -71,7 +71,7 @@ public class typeof_AbsractMake_InferenceRule extends AbstractInferenceRule_Runt
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_m0ryz8_a1a2a3a1() {
+  private static SNode _quotation_createNode_m0ryz8_a1a0c0d0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

@@ -20,7 +20,7 @@ public class typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule extend
     {
       SNode _nodeToCheck_1029348928467 = highLevelValue_ConceptFunctionParameter;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)", "43370322128303945", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)", "43370322128303942", true), (SNode) check_vmwfy8_a1a2a0a1(SNodeOperations.getNodeAncestor(highLevelValue_ConceptFunctionParameter, MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer"), false, false)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)", "43370322128303942", true), (SNode) check_vmwfy8_a1a0c0a0b(SNodeOperations.getNodeAncestor(highLevelValue_ConceptFunctionParameter, MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer"), false, false)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -32,7 +32,7 @@ public class typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule extend
   public boolean overrides() {
     return false;
   }
-  private static SNode check_vmwfy8_a1a2a0a1(SNode checkedDotOperand) {
+  private static SNode check_vmwfy8_a1a0c0a0b(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, 0x9a1514043fbc1aL, "valueType"));
     }

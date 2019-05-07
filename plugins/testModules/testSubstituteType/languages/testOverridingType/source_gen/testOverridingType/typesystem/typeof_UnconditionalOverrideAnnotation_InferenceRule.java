@@ -34,7 +34,7 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
       {
         SNode _nodeToCheck_1029348928467 = SNodeOperations.getParent(overrideAnnotation);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456337691", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456337596", true), (SNode) _quotation_createNode_ldhnbc_a1a2a0a0a0c(), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456337596", true), (SNode) _quotation_createNode_ldhnbc_a1a0c0a0a0a2(), _info_12389875345);
       }
     }
   }
@@ -47,7 +47,7 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
   public boolean supercedesAttributed(final SNode overrideAnnotation, IsApplicableStatus status) {
     return true;
   }
-  private static SNode _quotation_createNode_ldhnbc_a1a2a0a0a0c() {
+  private static SNode _quotation_createNode_ldhnbc_a1a0c0a0a0a2() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x394e385732564e8bL, 0x96015abe7ad354d9L, "testOverridingType"), 0x19f3ac4f6f2a7f40L, "ErrorType"), null, null, false);

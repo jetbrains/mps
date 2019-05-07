@@ -23,14 +23,14 @@ public class typeof_ContainsValueOperation_InferenceRule extends AbstractInferen
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1237907234104", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1237907234109", true), (SNode) _quotation_createNode_okpur0_a1a2a0a1(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1237907234109", true), (SNode) _quotation_createNode_okpur0_a1a0c0a0b(), _info_12389875345);
     }
     final SNode KEY_typevar_1237907234111 = typeCheckingContext.createNewRuntimeTypesVariable();
     final SNode VALUE_typevar_1237907234112 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(op);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120480", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_okpur0_a0a2a3a1(typeCheckingContext.getRepresentative(VALUE_typevar_1237907234112), typeCheckingContext.getRepresentative(KEY_typevar_1237907234111)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1237907243817", true), false, false, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_okpur0_a0a0c0d0b(typeCheckingContext.getRepresentative(VALUE_typevar_1237907234112), typeCheckingContext.getRepresentative(KEY_typevar_1237907234111)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1237907243817", true), false, false, _info_12389875345);
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
@@ -49,13 +49,13 @@ public class typeof_ContainsValueOperation_InferenceRule extends AbstractInferen
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_okpur0_a1a2a0a1() {
+  private static SNode _quotation_createNode_okpur0_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_okpur0_a0a2a3a1(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_okpur0_a0a0c0d0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

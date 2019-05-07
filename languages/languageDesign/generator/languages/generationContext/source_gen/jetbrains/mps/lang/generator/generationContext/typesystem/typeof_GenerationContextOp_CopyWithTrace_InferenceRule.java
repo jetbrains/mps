@@ -22,7 +22,7 @@ public class typeof_GenerationContextOp_CopyWithTrace_InferenceRule extends Abst
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x23358d5095e2d082L, 0x23358d5095e3172fL, "nodes"));
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "6530662532175364819", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "6530662532175365109", true), (SNode) _quotation_createNode_9ls339_a1a2a0a0a1(), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "6530662532175365109", true), (SNode) _quotation_createNode_9ls339_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
   }
@@ -35,7 +35,7 @@ public class typeof_GenerationContextOp_CopyWithTrace_InferenceRule extends Abst
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_9ls339_a1a2a0a0a1() {
+  private static SNode _quotation_createNode_9ls339_a1a0c0a0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

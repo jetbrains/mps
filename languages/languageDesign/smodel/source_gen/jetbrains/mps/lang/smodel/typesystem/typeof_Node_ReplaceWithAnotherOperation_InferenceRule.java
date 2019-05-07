@@ -21,7 +21,7 @@ public class typeof_Node_ReplaceWithAnotherOperation_InferenceRule extends Abstr
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975273750L, 0x10975279575L, "replacementNode"));
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206488011466", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206488003353", true), (SNode) _quotation_createNode_wjy3ci_a1a2a0a1(), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206488003353", true), (SNode) _quotation_createNode_wjy3ci_a1a0c0a0b(), false, true, _info_12389875345);
     }
     // op returns node passed in parameter 
     {
@@ -39,7 +39,7 @@ public class typeof_Node_ReplaceWithAnotherOperation_InferenceRule extends Abstr
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_wjy3ci_a1a2a0a1() {
+  private static SNode _quotation_createNode_wjy3ci_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
