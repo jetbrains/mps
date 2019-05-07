@@ -30403,11 +30403,11 @@
     <property role="TrG5h" value="JavaModelActions" />
     <property role="3GE5qa" value="Menu.ProjectPane.JavaBootstrap" />
     <node concept="tT9cl" id="2vs9_ygEfaM" role="2f5YQi">
-      <ref role="2f8Tey" node="2vs9_ygEfaF" resolve="paste" />
       <ref role="tU$_T" node="hyf4Hgq" resolve="ModelActions" />
+      <ref role="2f8Tey" node="2vs9_ygEfaF" resolve="paste" />
     </node>
     <node concept="Xl_RD" id="3CM_lYH0nME" role="3mKD$K">
-      <property role="Xl_RC" value="jetbrains.mps.ide.java.actions.ModelActions_ActionGroup" />
+      <property role="Xl_RC" value="jetbrains.mps.java.platform.actions.ModelActions_ActionGroup" />
     </node>
     <node concept="ftmFs" id="3CM_lYH0jCy" role="ftER_" />
   </node>
@@ -30427,7 +30427,7 @@
       <ref role="2f8Tey" node="1bRM4HyGTmR" resolve="newModel" />
     </node>
     <node concept="Xl_RD" id="3CM_lYH0nMD" role="3mKD$K">
-      <property role="Xl_RC" value="jetbrains.mps.ide.java.workbench.actions.ModelNewActions_ActionGroup" />
+      <property role="Xl_RC" value="jetbrains.mps.java.workbench.actions.ModelNewActions_ActionGroup" />
     </node>
     <node concept="ftmFs" id="3CM_lYH0jCv" role="ftER_" />
   </node>
@@ -30439,7 +30439,7 @@
       <ref role="2f8Tey" node="1bRM4HyGOKI" resolve="contents" />
     </node>
     <node concept="Xl_RD" id="3CM_lYH0nMC" role="3mKD$K">
-      <property role="Xl_RC" value="jetbrains.mps.ide.java.actions.SolutionActionsEx_ActionGroup" />
+      <property role="Xl_RC" value="jetbrains.mps.java.workbench.actions.SolutionActionsEx_ActionGroup" />
     </node>
     <node concept="ftmFs" id="3CM_lYH0jCs" role="ftER_" />
   </node>
@@ -39034,7 +39034,7 @@
     </node>
     <node concept="ftmFs" id="5_Vx0VjPbCw" role="ftER_" />
     <node concept="Xl_RD" id="5_Vx0VjPjxE" role="3mKD$K">
-      <property role="Xl_RC" value="jetbrains.mps.ide.java.workbench.actions.AnalyzeJavaActions_ActionGroup" />
+      <property role="Xl_RC" value="jetbrains.mps.java.workbench.actions.AnalyzeJavaActions_ActionGroup" />
     </node>
   </node>
   <node concept="tC5Ba" id="1wNvKTcoaln">

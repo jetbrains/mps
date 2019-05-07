@@ -131,7 +131,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withJavaPlugin() {
-    return addDistributedPlugin("mps-java-workbench", "jetbrains.mps.ide.java").addDistributedPlugin("mpsjava", "jetbrains.mps.ide.java.platform");
+    return addDistributedPlugin("mps-java", "jetbrains.mps.ide.java");
   }
 
   public EnvironmentConfig withMigrationPlugin() {

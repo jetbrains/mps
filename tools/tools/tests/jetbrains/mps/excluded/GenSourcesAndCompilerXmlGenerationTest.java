@@ -139,7 +139,7 @@ public class GenSourcesAndCompilerXmlGenerationTest {
       }
 
       //test material
-      if (isUnder(cp, "/plugins/mps-java-workbench/tests/jetbrains.mps.ide.java.testMaterial/resources/testData")) continue;
+      if (isUnder(cp, "/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/resources/testData")) continue;
 
       // move to sample's mps project or delete
       if (isUnder(cp, "/samples/agreement/frameworktest/test/")) continue;

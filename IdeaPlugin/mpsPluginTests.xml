@@ -104,6 +104,9 @@
   <target name="buildDependents">
     <ant antfile="build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="IdeaPlugin/mpsPluginCommon.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="IdeaPlugin/mpsJpsIdea.xml" inheritAll="false" useNativeBasedir="true" />
@@ -170,8 +173,9 @@
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-editor-runtime.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-plugin.jar" />
         <fileset file="${artifacts.mpsJavaIdeaPlugin}/mps-idea-java/lib/mps-java-idea.jar" />
+        <fileset file="${artifacts.mpsJavaPlatform}/lib/java-core.jar" />
+        <fileset file="${artifacts.mpsJavaPlatform}/lib/java-platform.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-tool.jar" />
-        <fileset file="${artifacts.mpsJavaPlatform}/lib/mps-java-platform.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-project-check.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />

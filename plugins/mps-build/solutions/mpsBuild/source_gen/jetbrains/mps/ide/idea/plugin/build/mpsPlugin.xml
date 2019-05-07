@@ -71,6 +71,9 @@
     <ant antfile="build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="IdeaPlugin/mpsPluginCommon.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="IdeaPlugin/mpsJpsIdea.xml" inheritAll="false" useNativeBasedir="true" />

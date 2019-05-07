@@ -21,9 +21,6 @@ import org.junit.After;
 
 @RunWith(value = TeamCityParameterizedRunner.class)
 public class BaseProjectsTest {
-  public static final String MIGRATION_PLUGIN = "migration";
-  public static final String MIGRATION_PLUGIN_ID = "jetbrains.mps.ide.migration.workbench";
-
   private static IdeaEnvironment ourEnv;
 
   private String myProjectDir;

@@ -41,7 +41,6 @@
     <orderEntry type="module" module-name="vfs" />
     <orderEntry type="module" module-name="baseLanguage-search" />
     <orderEntry type="module" module-name="mps-ui" />
-    <orderEntry type="module" module-name="mps-java-platform-base" />
     <orderEntry type="module" module-name="debuginfo-api" />
     <orderEntry type="module" module-name="debuginfo-impl" />
     <orderEntry type="module" module-name="migrations-runtime" />
@@ -91,8 +90,6 @@
     <orderEntry type="module" module-name="mps-devkit" />
     <orderEntry type="module" module-name="mps-editor" />
     <orderEntry type="module" module-name="mps-icons" />
-    <orderEntry type="module" module-name="mps-java-platform" />
-    <orderEntry type="module" module-name="mps-java-workbench" />
     <orderEntry type="module" module-name="mps-messaging" />
     <orderEntry type="module" module-name="mps-project-excludes" />
     <orderEntry type="module" module-name="mps-testing" />

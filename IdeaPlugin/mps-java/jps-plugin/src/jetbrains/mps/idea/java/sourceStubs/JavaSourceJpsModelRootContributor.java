@@ -1,6 +1,6 @@
 package jetbrains.mps.idea.java.sourceStubs;
 
-import jetbrains.mps.ide.java.sourceStubs.JavaSourceStubModelRoot;
+import jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
 import org.jetbrains.jps.model.module.JpsModule;
 import org.jetbrains.jps.model.module.JpsModuleSourceRoot;

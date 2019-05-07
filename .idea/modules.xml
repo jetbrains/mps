@@ -58,9 +58,9 @@
       <module fileurl="file://$PROJECT_DIR$/workbench/mps-icons/mps-icons.iml" filepath="$PROJECT_DIR$/workbench/mps-icons/mps-icons.iml" group="workbench" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-idea-integration/MPSPlugin/mps-idea-integration.iml" filepath="$PROJECT_DIR$/plugins/mps-idea-integration/MPSPlugin/mps-idea-integration.iml" group="plugins/ideaIntegration" />
       <module fileurl="file://$PROJECT_DIR$/IdeaPlugin/mps-idea-plugin.iml" filepath="$PROJECT_DIR$/IdeaPlugin/mps-idea-plugin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/plugins/mpsjava/mps-java-platform.iml" filepath="$PROJECT_DIR$/plugins/mpsjava/mps-java-platform.iml" group="plugins" />
-      <module fileurl="file://$PROJECT_DIR$/plugins/mpsjava/basePlatform/mps-java-platform-base.iml" filepath="$PROJECT_DIR$/plugins/mpsjava/basePlatform/mps-java-platform-base.iml" group="plugins" />
-      <module fileurl="file://$PROJECT_DIR$/plugins/mps-java-workbench/mps-java-workbench.iml" filepath="$PROJECT_DIR$/plugins/mps-java-workbench/mps-java-workbench.iml" group="plugins" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/core/mps-java-core.iml" filepath="$PROJECT_DIR$/plugins/mps-java/core/mps-java-core.iml" group="plugins/java" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/platform/mps-java-platform.iml" filepath="$PROJECT_DIR$/plugins/mps-java/platform/mps-java-platform.iml" group="plugins/java" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/workbench/mps-java-workbench.iml" filepath="$PROJECT_DIR$/plugins/mps-java/workbench/mps-java-workbench.iml" group="plugins/java" />
       <module fileurl="file://$PROJECT_DIR$/core/mps-messaging/mps-messaging.iml" filepath="$PROJECT_DIR$/core/mps-messaging/mps-messaging.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-modelchecker/mps-modelchecker.iml" filepath="$PROJECT_DIR$/plugins/mps-modelchecker/mps-modelchecker.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/workbench/mps-platform/mps-platform.iml" filepath="$PROJECT_DIR$/workbench/mps-platform/mps-platform.iml" group="workbench" />
