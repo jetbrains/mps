@@ -18,7 +18,6 @@ import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.build.mps.behavior.BuildMps_AbstractModule__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapter;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.build.util.VisibleArtifacts;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
@@ -200,8 +199,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // FIXME BuildMps_AM.getModuleReference doesn't use PersistenceFacade or anything else but hardcoded knowledge about module reference format  
     //       and the fact it's uuid-based! 
     SLanguage language = MetaAdapterFactory.getLanguage(PersistenceFacade.getInstance().createModuleReference(BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(_context.getNode())));
-    // FIXME cast to SLanguageAdapter to invoke serialize is bad. Introduce appropriate methods into PF 
-    return ((SLanguageAdapter) language).serialize();
+    return PersistenceFacade.getInstance().asString(language);
   }
   public static Object propertyMacro_GetValue_0_10(final PropertyMacroContext _context) {
     if (((Tuples._3<VisibleArtifacts, SNode, SNode>) _context.getVariable("var:files")) == null) {

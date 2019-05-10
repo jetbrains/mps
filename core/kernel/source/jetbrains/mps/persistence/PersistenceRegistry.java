@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,17 +20,21 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.smodel.SModelId.ForeignSModelId;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelId.RegularSModelId;
 import jetbrains.mps.smodel.SModelId.RelativePathSModelId;
 import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
+import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
+import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapter;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -254,6 +258,26 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
     } else {
       myNodeIdFactory.put(type, factory);
     }
+  }
+
+  @Override
+  public String asString(@NotNull SAbstractConcept concept) {
+    return ((SAbstractConceptAdapter) concept).serialize();
+  }
+
+  @Override
+  public SAbstractConcept createConcept(@NotNull String text) {
+    return SAbstractConceptAdapter.deserialize(text);
+  }
+
+  @Override
+  public String asString(@NotNull SLanguage language) {
+    return ((SLanguageAdapter) language).serialize();
+  }
+
+  @Override
+  public SLanguage createLanguage(@NotNull String text) {
+    return SLanguageAdapter.deserialize(text);
   }
 
   @Override

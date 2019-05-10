@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -212,17 +213,18 @@ public final class MPSConfigurationBean {
     result.useModuleSourceFolder = myState.useModuleSourceFolder;
     result.useTransientOutputFolder = myState.useTransientOutputFolder;
     Map<SLanguage, Integer> lVersions = actualDescriptor.getLanguageVersions();
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
     if (!lVersions.isEmpty()) {
-      result.languageVersions = new HashMap<String, Integer>(lVersions.size());
+      result.languageVersions = new HashMap<>(lVersions.size());
       for (Entry<SLanguage, Integer> lver : lVersions.entrySet()) {
-        result.languageVersions.put(((SLanguageAdapter) lver.getKey()).serialize(), lver.getValue());
+        result.languageVersions.put(pf.asString(lver.getKey()), lver.getValue());
       }
     }
     Map<SModuleReference, Integer> dVersions = actualDescriptor.getDependencyVersions();
     if (!dVersions.isEmpty()) {
-      result.dependencyVersions = new HashMap<String, Integer>(dVersions.size());
+      result.dependencyVersions = new HashMap<>(dVersions.size());
       for (Entry<SModuleReference, Integer> dver : dVersions.entrySet()) {
-        result.dependencyVersions.put(dver.getKey().toString(), dver.getValue());
+        result.dependencyVersions.put(pf.asString(dver.getKey()), dver.getValue());
       }
     }
     result.rootDescriptors = toPersistableState(actualDescriptor.getModelRootDescriptors());

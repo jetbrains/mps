@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,9 @@ package org.jetbrains.mps.openapi.persistence;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -234,6 +237,33 @@ public abstract class PersistenceFacade {
    * @param factory The factory to register, null to clear the registration for the given type.
    */
   public abstract void setNodeIdFactory(String type, SNodeIdFactory factory);
+
+  /**
+   * Serialize/deserialize support for {@linkplain SAbstractConcept concept meta-object}
+   * @since 2019.2
+   */
+  public abstract String asString(@NotNull SAbstractConcept concept);
+
+  /**
+   * Serialize/deserialize support for {@linkplain SAbstractConcept concept meta-object}
+   * @throws IllegalArgumentException if text doesn't represent valid serialized identity of a concept
+   * @since 2019.2
+   */
+  public abstract SAbstractConcept createConcept(@NotNull String text);
+
+
+  /**
+   * Serialize/deserialize support for {@linkplain SAbstractConcept deployed language meta-object}
+   * @since 2019.2
+   */
+  public abstract String asString(@NotNull SLanguage language);
+
+  /**
+   * Serialize/deserialize support for {@linkplain SAbstractConcept deployed language meta-object}
+   * @throws IllegalArgumentException if text doesn't represent valid serialized identity of a deployed language
+   * @since 2019.2
+   */
+  public abstract SLanguage createLanguage(@NotNull String text);
 
   /**
    * Find usages participants speed-up usages search by indexing the content.

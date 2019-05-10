@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 package jetbrains.mps.textgen.trace;
 
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,13 +63,14 @@ final class SerializeSupport {
     top.setAttribute(ATTR_VER, CURRENT_VERSION);
 
     DebugInfoRoot[] roots = sortedRoots(debugInfo);
-    TreeSet<SAbstractConcept> allConcepts = new TreeSet<>((o1, o2) -> o1.getQualifiedName().compareTo(o2.getQualifiedName()));
+    TreeSet<SAbstractConcept> allConcepts = new TreeSet<>(Comparator.comparing(SAbstractConcept::getQualifiedName));
     collectAllConcepts(roots, allConcepts);
     int i = 0;
     HashMap<SAbstractConcept, Integer> conceptsOrder = new HashMap<>();
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
     for (SAbstractConcept concept : allConcepts) {
       conceptsOrder.put(concept, i++);
-      top.addContent(new Element(CONCEPT).setAttribute(ATTR_FQN, ((SAbstractConceptAdapter) concept).serialize()));
+      top.addContent(new Element(CONCEPT).setAttribute(ATTR_FQN, pf.asString(concept)));
     }
     for (DebugInfoRoot dr : roots) {
       Element r = new Element(ELEMENT_ROOT);
@@ -95,8 +96,9 @@ final class SerializeSupport {
     DebugInfo rv = new DebugInfo();
     int i = 0;
     HashMap<Integer, SAbstractConcept> conceptsOrder = new HashMap<>();
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
     for (Element c : top.getChildren(CONCEPT)) {
-      conceptsOrder.put(i++, SAbstractConceptAdapter.deserialize(c.getAttributeValue(ATTR_FQN)));
+      conceptsOrder.put(i++, pf.createConcept(c.getAttributeValue(ATTR_FQN)));
     }
     for (Element r : top.getChildren(ELEMENT_ROOT)) {
       String nr = r.getAttributeValue(ATTR_NODE_REF);

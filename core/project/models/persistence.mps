@@ -28,8 +28,6 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
-    <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
-    <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="mcvo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure.language(MPS.Core/)" />
     <import index="amo1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.impl(MPS.Core/)" />
@@ -330,13 +328,6 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
-        <property id="709746936026609031" name="linkId" index="3V$3ak" />
-        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
-      </concept>
-      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
-        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -5257,34 +5248,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="6dUEkwAxcVq" role="3cqZAp" />
-        <node concept="3clFbF" id="7fzmywGWqpf" role="3cqZAp">
-          <node concept="2OqwBi" id="7fzmywGWrtq" role="3clFbG">
-            <node concept="37vLTw" id="7fzmywGWqpd" role="2Oq$k0">
-              <ref role="3cqZAo" node="IMUMWuHQOX" resolve="descriptor" />
-            </node>
-            <node concept="liA8E" id="7fzmywGWssB" role="2OqNvi">
-              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.setHasLanguageVersions(boolean)" resolve="setHasLanguageVersions" />
-              <node concept="3fqX7Q" id="7fzmywGWwUD" role="37wK5m">
-                <node concept="2OqwBi" id="7fzmywGWwUE" role="3fr31v">
-                  <node concept="2OqwBi" id="7fzmywGWwUF" role="2Oq$k0">
-                    <node concept="37vLTw" id="7fzmywGWwUG" role="2Oq$k0">
-                      <ref role="3cqZAo" node="IMUMWuHQOZ" resolve="root" />
-                    </node>
-                    <node concept="liA8E" id="7fzmywGWwUH" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:~Element.getChildren(java.lang.String)" resolve="getChildren" />
-                      <node concept="Xl_RD" id="7fzmywGWwUI" role="37wK5m">
-                        <property role="Xl_RC" value="languageVersions" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="7fzmywGWwUJ" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2N5jZpoNFZK" role="3cqZAp">
           <node concept="2OqwBi" id="6dUEkwAxcWq" role="3clFbG">
             <node concept="2YIFZM" id="7fzmywGWs_z" role="2Oq$k0">
@@ -5307,119 +5270,28 @@
             <node concept="2es0OD" id="2N5jZpoND0r" role="2OqNvi">
               <node concept="1bVj0M" id="2N5jZpoND0t" role="23t8la">
                 <node concept="3clFbS" id="2N5jZpoND0u" role="1bW5cS">
-                  <node concept="3cpWs8" id="3E$$kgyc48V" role="3cqZAp">
-                    <node concept="3cpWsn" id="3E$$kgyc48W" role="3cpWs9">
-                      <property role="TrG5h" value="slang" />
-                      <node concept="3uibUv" id="3E$$kgyc48Q" role="1tU5fm">
-                        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                      </node>
-                      <node concept="2OqwBi" id="3E$$kgyc48X" role="33vP2m">
-                        <node concept="37vLTw" id="3E$$kgyc48Y" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2N5jZpoND0v" resolve="it" />
-                        </node>
-                        <node concept="liA8E" id="3E$$kgyc48Z" role="2OqNvi">
-                          <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
-                          <node concept="Xl_RD" id="3E$$kgyc490" role="37wK5m">
-                            <property role="Xl_RC" value="slang" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
                   <node concept="3cpWs8" id="3E$$kgyc5JO" role="3cqZAp">
                     <node concept="3cpWsn" id="3E$$kgyc5JP" role="3cpWs9">
                       <property role="TrG5h" value="lang" />
                       <node concept="3uibUv" id="3E$$kgyc5JD" role="1tU5fm">
                         <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
                       </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbJ" id="3E$$kgyc1d7" role="3cqZAp">
-                    <node concept="3clFbS" id="3E$$kgyc1d9" role="3clFbx">
-                      <node concept="3clFbF" id="3E$$kgyc8pc" role="3cqZAp">
-                        <node concept="37vLTI" id="3E$$kgyc8GT" role="3clFbG">
-                          <node concept="2YIFZM" id="3E$$kgyc9ao" role="37vLTx">
-                            <ref role="37wK5l" to="mcvo:~SLanguageAdapter.deserialize(java.lang.String)" resolve="deserialize" />
-                            <ref role="1Pybhc" to="mcvo:~SLanguageAdapter" resolve="SLanguageAdapter" />
-                            <node concept="37vLTw" id="3E$$kgyc9p2" role="37wK5m">
-                              <ref role="3cqZAo" node="3E$$kgyc48W" resolve="slang" />
-                            </node>
-                          </node>
-                          <node concept="37vLTw" id="3E$$kgyc8pa" role="37vLTJ">
-                            <ref role="3cqZAo" node="3E$$kgyc5JP" resolve="lang" />
-                          </node>
+                      <node concept="2OqwBi" id="5BCBWAoIqyM" role="33vP2m">
+                        <node concept="2YIFZM" id="5BCBWAoIhX$" role="2Oq$k0">
+                          <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                          <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                         </node>
-                      </node>
-                    </node>
-                    <node concept="3y3z36" id="3E$$kgyc5m3" role="3clFbw">
-                      <node concept="10Nm6u" id="3E$$kgyc5yY" role="3uHU7w" />
-                      <node concept="37vLTw" id="3E$$kgyc53I" role="3uHU7B">
-                        <ref role="3cqZAo" node="3E$$kgyc48W" resolve="slang" />
-                      </node>
-                    </node>
-                    <node concept="9aQIb" id="3E$$kgyc79B" role="9aQIa">
-                      <node concept="3clFbS" id="3E$$kgyc79C" role="9aQI4">
-                        <node concept="3SKdUt" id="3E$$kgyc9Rd" role="3cqZAp">
-                          <node concept="3SKdUq" id="3E$$kgyc9Rf" role="3SKWNk">
-                            <property role="3SKdUp" value="support old format using id+name pair, used before 3.4" />
-                          </node>
-                        </node>
-                        <node concept="3cpWs8" id="2G4N_X5HSrH" role="3cqZAp">
-                          <node concept="3cpWsn" id="2G4N_X5HSrI" role="3cpWs9">
-                            <property role="TrG5h" value="id" />
-                            <node concept="3uibUv" id="2G4N_X5HSr$" role="1tU5fm">
-                              <ref role="3uigEE" to="e8bb:~SLanguageId" resolve="SLanguageId" />
+                        <node concept="liA8E" id="5BCBWAoIz8Y" role="2OqNvi">
+                          <ref role="37wK5l" to="dush:~PersistenceFacade.createLanguage(java.lang.String)" resolve="createLanguage" />
+                          <node concept="2OqwBi" id="3E$$kgyc48X" role="37wK5m">
+                            <node concept="37vLTw" id="3E$$kgyc48Y" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2N5jZpoND0v" resolve="it" />
                             </node>
-                            <node concept="2YIFZM" id="2G4N_X5HSrJ" role="33vP2m">
-                              <ref role="1Pybhc" to="e8bb:~SLanguageId" resolve="SLanguageId" />
-                              <ref role="37wK5l" to="e8bb:~SLanguageId.deserialize(java.lang.String)" resolve="deserialize" />
-                              <node concept="2OqwBi" id="2G4N_X5HSrK" role="37wK5m">
-                                <node concept="37vLTw" id="2G4N_X5HSrL" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2N5jZpoND0v" resolve="it" />
-                                </node>
-                                <node concept="liA8E" id="2G4N_X5HSrM" role="2OqNvi">
-                                  <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
-                                  <node concept="Xl_RD" id="2G4N_X5HSrN" role="37wK5m">
-                                    <property role="Xl_RC" value="id" />
-                                  </node>
-                                </node>
+                            <node concept="liA8E" id="3E$$kgyc48Z" role="2OqNvi">
+                              <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
+                              <node concept="Xl_RD" id="3E$$kgyc490" role="37wK5m">
+                                <property role="Xl_RC" value="slang" />
                               </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3cpWs8" id="2G4N_X5HU5O" role="3cqZAp">
-                          <node concept="3cpWsn" id="2G4N_X5HU5P" role="3cpWs9">
-                            <property role="TrG5h" value="name" />
-                            <node concept="3uibUv" id="2G4N_X5HU5I" role="1tU5fm">
-                              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                            </node>
-                            <node concept="2OqwBi" id="2G4N_X5HU5Q" role="33vP2m">
-                              <node concept="37vLTw" id="2G4N_X5HU5R" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2N5jZpoND0v" resolve="it" />
-                              </node>
-                              <node concept="liA8E" id="2G4N_X5HU5S" role="2OqNvi">
-                                <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
-                                <node concept="Xl_RD" id="2G4N_X5HU5T" role="37wK5m">
-                                  <property role="Xl_RC" value="fqName" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3clFbF" id="3E$$kgyc6Mw" role="3cqZAp">
-                          <node concept="37vLTI" id="3E$$kgyc6My" role="3clFbG">
-                            <node concept="2YIFZM" id="3E$$kgyc5JQ" role="37vLTx">
-                              <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-                              <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(jetbrains.mps.smodel.adapter.ids.SLanguageId,java.lang.String)" resolve="getLanguage" />
-                              <node concept="37vLTw" id="3E$$kgyc5JR" role="37wK5m">
-                                <ref role="3cqZAo" node="2G4N_X5HSrI" resolve="id" />
-                              </node>
-                              <node concept="37vLTw" id="3E$$kgyc5JS" role="37wK5m">
-                                <ref role="3cqZAo" node="2G4N_X5HU5P" resolve="name" />
-                              </node>
-                            </node>
-                            <node concept="37vLTw" id="3E$$kgyc6MA" role="37vLTJ">
-                              <ref role="3cqZAo" node="3E$$kgyc5JP" resolve="lang" />
                             </node>
                           </node>
                         </node>
@@ -5463,34 +5335,6 @@
                 <node concept="Rh6nW" id="2N5jZpoND0v" role="1bW2Oz">
                   <property role="TrG5h" value="it" />
                   <node concept="2jxLKc" id="2N5jZpoND0w" role="1tU5fm" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6oJSkzE7_IA" role="3cqZAp">
-          <node concept="2OqwBi" id="6oJSkzE7_IB" role="3clFbG">
-            <node concept="37vLTw" id="6oJSkzE7_IC" role="2Oq$k0">
-              <ref role="3cqZAo" node="IMUMWuHQOX" resolve="descriptor" />
-            </node>
-            <node concept="liA8E" id="6oJSkzE7_ID" role="2OqNvi">
-              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.setHasDependencyVersions(boolean)" resolve="setHasDependencyVersions" />
-              <node concept="3fqX7Q" id="6oJSkzE7_IE" role="37wK5m">
-                <node concept="2OqwBi" id="6oJSkzE7_IF" role="3fr31v">
-                  <node concept="2OqwBi" id="6oJSkzE7_IG" role="2Oq$k0">
-                    <node concept="37vLTw" id="6oJSkzE7_IH" role="2Oq$k0">
-                      <ref role="3cqZAo" node="IMUMWuHQOZ" resolve="root" />
-                    </node>
-                    <node concept="liA8E" id="6oJSkzE7_II" role="2OqNvi">
-                      <ref role="37wK5l" to="mmaq:~Element.getChildren(java.lang.String)" resolve="getChildren" />
-                      <node concept="Xl_RD" id="6oJSkzE7_IJ" role="37wK5m">
-                        <property role="Xl_RC" value="dependencyVersions" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="6oJSkzE7_IK" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
-                  </node>
                 </node>
               </node>
             </node>
@@ -5920,60 +5764,6 @@
                 </node>
               </node>
             </node>
-            <node concept="1X3_iC" id="3E$$kgybXzU" role="lGtFl">
-              <property role="3V$3am" value="statement" />
-              <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-              <node concept="3clFbF" id="2QDVjDdGnQu" role="8Wnug">
-                <node concept="2OqwBi" id="2QDVjDdGnRQ" role="3clFbG">
-                  <node concept="37vLTw" id="2QDVjDdGnRP" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2QDVjDdGnQp" resolve="languageVersion" />
-                  </node>
-                  <node concept="liA8E" id="2QDVjDdGnRR" role="2OqNvi">
-                    <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
-                    <node concept="Xl_RD" id="2QDVjDdGnRS" role="37wK5m">
-                      <property role="Xl_RC" value="id" />
-                    </node>
-                    <node concept="2OqwBi" id="2Roq$FhgP0v" role="37wK5m">
-                      <node concept="2YIFZM" id="2YFT$wKAPog" role="2Oq$k0">
-                        <ref role="37wK5l" to="e8bb:~MetaIdHelper.getLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="getLanguage" />
-                        <ref role="1Pybhc" to="e8bb:~MetaIdHelper" resolve="MetaIdHelper" />
-                        <node concept="37vLTw" id="2YFT$wKAPoh" role="37wK5m">
-                          <ref role="3cqZAo" node="2N5jZpoKXsU" resolve="l" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="2Roq$FhgP9J" role="2OqNvi">
-                        <ref role="37wK5l" to="e8bb:~SLanguageId.serialize()" resolve="serialize" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="1X3_iC" id="3E$$kgybXzV" role="lGtFl">
-              <property role="3V$3am" value="statement" />
-              <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-              <node concept="3clFbF" id="2Roq$FhgNC3" role="8Wnug">
-                <node concept="2OqwBi" id="2Roq$FhgNC4" role="3clFbG">
-                  <node concept="37vLTw" id="2Roq$FhgNC5" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2QDVjDdGnQp" resolve="languageVersion" />
-                  </node>
-                  <node concept="liA8E" id="2Roq$FhgNC6" role="2OqNvi">
-                    <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
-                    <node concept="Xl_RD" id="2Roq$FhgNC7" role="37wK5m">
-                      <property role="Xl_RC" value="fqName" />
-                    </node>
-                    <node concept="2OqwBi" id="2Roq$FhgNC8" role="37wK5m">
-                      <node concept="37vLTw" id="2Roq$FhgNCa" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2N5jZpoKXsU" resolve="l" />
-                      </node>
-                      <node concept="liA8E" id="2Roq$FhgNCc" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SLanguage.getQualifiedName()" resolve="getQualifiedName" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="3E$$kgybXO0" role="3cqZAp">
               <node concept="2OqwBi" id="3E$$kgybXO2" role="3clFbG">
                 <node concept="37vLTw" id="3E$$kgybXO3" role="2Oq$k0">
@@ -5984,19 +5774,16 @@
                   <node concept="Xl_RD" id="3E$$kgybXO5" role="37wK5m">
                     <property role="Xl_RC" value="slang" />
                   </node>
-                  <node concept="2OqwBi" id="3E$$kgyc0fN" role="37wK5m">
-                    <node concept="1eOMI4" id="3E$$kgyc0JT" role="2Oq$k0">
-                      <node concept="10QFUN" id="3E$$kgyc0JU" role="1eOMHV">
-                        <node concept="37vLTw" id="3E$$kgyc0JS" role="10QFUP">
-                          <ref role="3cqZAo" node="2N5jZpoKXsU" resolve="l" />
-                        </node>
-                        <node concept="3uibUv" id="3E$$kgyc0Qz" role="10QFUM">
-                          <ref role="3uigEE" to="mcvo:~SLanguageAdapter" resolve="SLanguageAdapter" />
-                        </node>
-                      </node>
+                  <node concept="2OqwBi" id="5BCBWAoHZZB" role="37wK5m">
+                    <node concept="2YIFZM" id="5BCBWAoHUAo" role="2Oq$k0">
+                      <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
+                      <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
                     </node>
-                    <node concept="liA8E" id="3E$$kgyc0Vy" role="2OqNvi">
-                      <ref role="37wK5l" to="mcvo:~SLanguageAdapter.serialize()" resolve="serialize" />
+                    <node concept="liA8E" id="5BCBWAoI5v7" role="2OqNvi">
+                      <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.language.SLanguage)" resolve="asString" />
+                      <node concept="37vLTw" id="5BCBWAoIaTE" role="37wK5m">
+                        <ref role="3cqZAo" node="2N5jZpoKXsU" resolve="l" />
+                      </node>
                     </node>
                   </node>
                 </node>

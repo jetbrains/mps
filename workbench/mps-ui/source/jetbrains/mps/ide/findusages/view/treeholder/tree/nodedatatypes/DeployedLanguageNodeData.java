@@ -21,11 +21,11 @@ import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapter;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import javax.swing.Icon;
 
@@ -58,13 +58,12 @@ public final class DeployedLanguageNodeData extends AbstractResultNodeData {
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
     super.write(element, project);
-    // FIXME add PersistenceFacade.getInstance().asString(myLanguage)
-    element.setAttribute("l", ((SLanguageAdapter) myLanguage).serialize());
+    element.setAttribute("l", PersistenceFacade.getInstance().asString(myLanguage));
   }
 
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
     super.read(element, project);
-    myLanguage = SLanguageAdapter.deserialize(element.getAttributeValue("l"));
+    myLanguage = PersistenceFacade.getInstance().createLanguage(element.getAttributeValue("l"));
   }
 }

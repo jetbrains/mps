@@ -2778,25 +2778,17 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="3SKdUt" id="1bDwrin8iIe" role="3cqZAp">
-                            <node concept="3SKdUq" id="1bDwrin8iIg" role="3SKWNk">
-                              <property role="3SKdUp" value="FIXME cast to SLanguageAdapter to invoke serialize is bad. Introduce appropriate methods into PF" />
-                            </node>
-                          </node>
                           <node concept="3clFbF" id="1bDwrin3b8X" role="3cqZAp">
                             <node concept="2OqwBi" id="1bDwrin9pFw" role="3clFbG">
-                              <node concept="1eOMI4" id="1bDwrin9hwZ" role="2Oq$k0">
-                                <node concept="10QFUN" id="1bDwrin8MMS" role="1eOMHV">
-                                  <node concept="3uibUv" id="1bDwrin9789" role="10QFUM">
-                                    <ref role="3uigEE" to="mcvo:~SLanguageAdapter" resolve="SLanguageAdapter" />
-                                  </node>
-                                  <node concept="37vLTw" id="1bDwrin4BZ2" role="10QFUP">
-                                    <ref role="3cqZAo" node="1bDwrin4BYX" resolve="language" />
-                                  </node>
+                              <node concept="liA8E" id="5BCBWAoLFA8" role="2OqNvi">
+                                <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.language.SLanguage)" resolve="asString" />
+                                <node concept="37vLTw" id="5BCBWAoLQG9" role="37wK5m">
+                                  <ref role="3cqZAo" node="1bDwrin4BYX" resolve="language" />
                                 </node>
                               </node>
-                              <node concept="liA8E" id="1bDwrin9$X9" role="2OqNvi">
-                                <ref role="37wK5l" to="mcvo:~SLanguageAdapter.serialize()" resolve="serialize" />
+                              <node concept="2YIFZM" id="5BCBWAoLpND" role="2Oq$k0">
+                                <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                                <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
                               </node>
                             </node>
                           </node>
