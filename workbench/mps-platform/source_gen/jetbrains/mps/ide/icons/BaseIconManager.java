@@ -10,10 +10,11 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import javax.swing.Icon;
+import jetbrains.mps.smodel.language.ConceptRegistry;
+import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -27,7 +28,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.ui.LayeredIcon;
 import com.intellij.util.PlatformIcons;
@@ -38,8 +38,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
-import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapter;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Level;
@@ -48,6 +46,11 @@ public class BaseIconManager {
   private static final Logger LOG = LogManager.getLogger(BaseIconManager.class);
   private Map<SAbstractConcept, IconResource> myConceptToIcon = MapSequence.fromMap(new HashMap<SAbstractConcept, IconResource>());
   private Map<IconResource, Icon> myResToIcon = MapSequence.fromMap(new HashMap<IconResource, Icon>());
+  private final ConceptRegistry myConceptRegistry;
+
+  public BaseIconManager(@NotNull ConceptRegistry conceptRegistry) {
+    myConceptRegistry = conceptRegistry;
+  }
 
   public void invalidate(Set<ReloadableModule> modules) {
     // todo by-module invalidation 
@@ -139,7 +142,7 @@ public class BaseIconManager {
   }
 
   private Icon getIconFromConstraints(final SNode node) {
-    IconResource altIcon = ConceptRegistry.getInstance().getConstraintsDescriptor(SNodeOperations.getConcept(node)).getInstanceIcon(node);
+    IconResource altIcon = myConceptRegistry.getConstraintsDescriptor(SNodeOperations.getConcept(node)).getInstanceIcon(node);
     if (altIcon == null) {
       return null;
     }
@@ -178,19 +181,19 @@ public class BaseIconManager {
   }
 
   private IconResource getIconForConceptNoCache(SAbstractConcept concept) {
-    SAbstractConceptAdapter current = ((SAbstractConceptAdapter) concept);
+    SAbstractConcept current = concept;
     while (current != null) {
       IconResource ir = getIconForExactConcept(current);
       if (ir != null) {
         return ir;
       }
-      current = ((current instanceof SConceptAdapter) ? ((SConceptAdapter) ((SConceptAdapter) current).getSuperConcept()) : null);
+      current = ((current instanceof SConcept) ? ((SConcept) current).getSuperConcept() : null);
     }
     return null;
   }
 
   private IconResource getIconForExactConcept(SAbstractConcept concept) {
-    ConceptPresentation pres = ConceptRegistry.getInstance().getConceptProperties(concept);
+    ConceptPresentation pres = myConceptRegistry.getConceptProperties(concept);
     if (pres == null) {
       return null;
     }

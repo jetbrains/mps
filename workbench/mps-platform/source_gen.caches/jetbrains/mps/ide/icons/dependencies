@@ -25,8 +25,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.Language" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelStereotype" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapter" />
     <classNode dependClassName="jetbrains.mps.smodel.behaviour.BHReflection" />
     <classNode dependClassName="jetbrains.mps.smodel.language.ConceptRegistry" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageAspectDescriptor" />
@@ -54,10 +52,11 @@
     <classNode dependClassName="jetbrains.mps.classloading.DeployListener" />
     <classNode dependClassName="jetbrains.mps.ide.MPSCoreComponents" />
     <classNode dependClassName="jetbrains.mps.module.ReloadableModule" />
+    <classNode dependClassName="jetbrains.mps.smodel.language.ConceptRegistry" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
-    <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
+    <classNode extendsClassName="com.intellij.openapi.components.BaseComponent" />
     <classNode extendsClassName="jetbrains.mps.ide.icons.BaseIconManager" />
   </dependency>
   <dependency className="jetbrains.mps.ide.icons.IconLoadingUtil">

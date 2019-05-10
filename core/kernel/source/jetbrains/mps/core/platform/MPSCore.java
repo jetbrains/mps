@@ -73,6 +73,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
   private PersistenceRegistry myPersistenceFacade;
   private MPSModuleRepository myModuleRepository;
   private LanguageRegistry myLanguageRegistry;
+  private ConceptRegistry myConceptRegistry;
   private SRepositoryRegistry myRepositoryRegistry;
   private FacetsRegistry myModuleFacetsRegistry;
   private PathMacros myPathMacros;
@@ -110,6 +111,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myPersistenceFacade = null;
     myDataSourceService = null;
     myModuleRepository = null;
+    myConceptRegistry = null;
     myLanguageRegistry = null;
     myRepositoryRegistry = null;
     myPathMacros = null;
@@ -147,7 +149,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     //      Note, as long as CLM supports both legacy and new DeployListener, both ER and LR have to use same mechanism to keep the notification order.
     myExtensionRegistry = init(new ExtensionRegistry(myClassLoaderManager));
     myLanguageRegistry = init(new LanguageRegistry(myClassLoaderManager));
-    init(new ConceptRegistry(myLanguageRegistry));
+    myConceptRegistry = init(new ConceptRegistry(myLanguageRegistry));
     init(new ConceptDescendantsCache(myModuleRepository, myLanguageRegistry));
     init(new CachesManager(myClassLoaderManager, myModuleRepository));
     init(new DescriptorModelComponent(myModuleRepository,
@@ -236,6 +238,9 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     }
     if (ExtensionRegistry.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(myExtensionRegistry);
+    }
+    if (ConceptRegistry.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myConceptRegistry);
     }
     if (DataSourceFactoryRuleService.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(myDataSourceService);
