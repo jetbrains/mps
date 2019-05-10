@@ -15,38 +15,23 @@
  */
 package jetbrains.mps.ide.findusages.view.treeholder.tree;
 
-import jetbrains.mps.ide.findusages.CantLoadSomethingException;
-import jetbrains.mps.ide.findusages.CantSaveSomethingException;
-import jetbrains.mps.ide.findusages.IExternalizeable;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
-import jetbrains.mps.project.Project;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.jdom.Element;
+import jetbrains.mps.util.annotation.ToRemove;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 
-public class DataNode implements IExternalizeable {
-  private static final Logger LOG = LogManager.getLogger(DataNode.class);
-
-  private static final String CHILDREN = "children";
-  private static final String CHILD = "child";
-  private static final String DATA = "data";
-  private static final String DATA_CLASS = "data_class";
-
+/**
+ * @deprecated not in use any longer, left just for compile time compatibility with any code that might have accessed UsageTreeNode.userObject
+ *
+ */
+@ToRemove(version = 2019.2)
+@Deprecated
+public class DataNode {
   private BaseNodeData myData;
-  private ArrayList<DataNode> myChildren = new ArrayList<>();
 
   public DataNode(BaseNodeData data) {
     myData = data;
-  }
-
-  public DataNode(Element element, Project project) throws CantLoadSomethingException {
-    read(element, project);
   }
 
   public BaseNodeData getData() {
@@ -54,68 +39,10 @@ public class DataNode implements IExternalizeable {
   }
 
   public boolean containsNodes(Class dataClass) {
-    return getNodeDataStream().anyMatch(dataClass::isInstance);
-  }
-
-  // flatten elements associated with the node and its children, recursively.
-  /*package*/ Stream<BaseNodeData> getNodeDataStream() {
-    return Stream.concat(Stream.of(myData), myChildren.stream().flatMap(DataNode::getNodeDataStream));
-  }
-
-  //-------CHILD MANIPULATION--------
-
-  public void add(DataNode o) {
-    myChildren.add(o);
+    return false;
   }
 
   public List<DataNode> getChildren() {
-    return Collections.unmodifiableList(myChildren);
-  }
-
-  //-------PERSISTENCE--------
-
-  @Override
-  public void read(Element element, Project project) throws CantLoadSomethingException {
-    Element dataXML = element.getChild(DATA);
-    String dataClass = dataXML.getAttributeValue(DATA_CLASS);
-    try {
-      Class<?> cls = Class.forName(dataClass);
-      myData = (BaseNodeData) cls.getConstructor(Element.class, Project.class).newInstance(dataXML, project);
-    } catch (InvocationTargetException e) {
-      if (e.getCause() instanceof CantLoadSomethingException) {
-        throw (CantLoadSomethingException) e.getCause();
-      } else {
-        throwLoadException(e);
-      }
-    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {
-      throwLoadException(e);
-    }
-
-    myChildren.clear();
-    Element childrenXML = element.getChild(CHILDREN);
-    for (Element nodeXML : childrenXML.getChildren(CHILD)) {
-      myChildren.add(new DataNode(nodeXML, project));
-    }
-  }
-
-  @Override
-  public void write(Element element, Project project) throws CantSaveSomethingException {
-    Element dataXML = new Element(DATA);
-    dataXML.setAttribute(DATA_CLASS, myData.getClass().getName());
-    myData.write(dataXML, project);
-    element.addContent(dataXML);
-
-    Element childrenXML = new Element(CHILDREN);
-    for (DataNode node : getChildren()) {
-      Element childXML = new Element(CHILD);
-      node.write(childXML, project);
-      childrenXML.addContent(childXML);
-    }
-    element.addContent(childrenXML);
-  }
-
-  private void throwLoadException(Throwable t) throws CantLoadSomethingException {
-    LOG.warn("can't instantiate node", t);
-    throw new CantLoadSomethingException("can't instantiate node", t);
+    return Collections.emptyList();
   }
 }

@@ -27,6 +27,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Iterator;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public abstract class BaseNodeData implements IExternalizeable {
   private static final String CAPTION = "caption";
@@ -42,6 +47,9 @@ public abstract class BaseNodeData implements IExternalizeable {
   private boolean myResultsSection;
   private boolean myIsExcluded;
   private boolean myIsPathTail;
+
+  private BaseNodeData myHead, myTail;
+  private BaseNodeData myNext;
 
   protected BaseNodeData() {
 
@@ -123,12 +131,50 @@ public abstract class BaseNodeData implements IExternalizeable {
     myIsPathTail = isResult;
   }
 
+  // adds a child to the tail of children list of this node; child expected to have no own children.
+  public void addChild(BaseNodeData child) {
+    assert child != null;
+    assert child.myNext == null; // myTail would need to be updated otherwise
+    if (myHead == null) {
+      myHead = myTail = child;
+    } else {
+      myTail.myNext = child;
+      myTail = child;
+    }
+  }
+
+  public Stream<BaseNodeData> children() {
+    if (myHead == null) {
+      return Stream.empty();
+    }
+    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(new Iterator<BaseNodeData>() {
+      private BaseNodeData myCursor = myHead;
+      @Override
+      public boolean hasNext() {
+        return myCursor != null;
+      }
+
+      @Override
+      public BaseNodeData next() {
+        BaseNodeData rv= myCursor;
+        myCursor = myCursor.myNext;
+        return rv;
+      }
+    }, 0), false);
+  }
+
+  public boolean hasChildren() {
+    return myHead != null;
+  }
+
   //----SAVE/LOAD STUFF----
 
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
     element.setAttribute(CAPTION, myCaption);
-    element.setAttribute(INFO, myAdditionalInfo);
+    if (myAdditionalInfo != null) {
+      element.setAttribute(INFO, myAdditionalInfo);
+    }
     element.setAttribute(EXCLUDED, Boolean.toString(myIsExcluded));
     element.setAttribute(ISRESULT, Boolean.toString(myIsPathTail));
     element.setAttribute(RESULTS_SECTION, Boolean.toString(myResultsSection));
@@ -136,6 +182,15 @@ public abstract class BaseNodeData implements IExternalizeable {
     Element roleXML = new Element(ROLE);
     PathItemRole.write(myRole, roleXML);
     element.addContent(roleXML);
+
+    for (BaseNodeData ch = myHead; ch != null; ch = ch.myNext) {
+      Element childElement = new Element("child");
+      Element ce = new Element("instance");
+      ce.setAttribute("qcn", ch.getClass().getName());
+      childElement.addContent(ce);
+      ch.write(childElement, project);
+      element.addContent(childElement);
+    }
   }
 
   @Override
@@ -148,6 +203,20 @@ public abstract class BaseNodeData implements IExternalizeable {
 
     Element roleXML = element.getChild(ROLE);
     myRole = PathItemRole.read(roleXML);
+    //
+    for (Element childElement : element.getChildren("child")) {
+      final String nodeClassName = childElement.getChild("instance").getAttributeValue("qcn");
+      try {
+        Class<?> cls = Class.forName(nodeClassName);
+        BaseNodeData ch = (BaseNodeData) cls.getConstructor(Element.class, Project.class).newInstance(childElement, project);
+        addChild(ch);
+      } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+        if (e instanceof  InvocationTargetException && e.getCause() instanceof CantLoadSomethingException) {
+          throw (CantLoadSomethingException) e.getCause();
+        }
+        throw new CantLoadSomethingException("can't instantiate node " + nodeClassName, e);
+      }
+    }
   }
 
   //----CONCRETE DATA TYPE STUFF----

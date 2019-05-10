@@ -200,7 +200,7 @@ public class UsagesTree extends MPSTree {
   protected UsagesTreeNode rebuild() {
     myResultsSubtree = null;
     UsagesTreeNode root = new UsagesTreeNode();
-    if (myContents == null || myContents.getTreeRoot().getChildren().isEmpty()) {
+    if (myContents == null || !myContents.getTreeRoot().hasChildren()) {
       // FIXME refactor UsagesTree construction so that it doesn't try to show tree before any content supplied.
       // Now the tree is rebuilt on view options change (UsagesTreeComponent#setComponentsViewOptions())
       return root;
@@ -209,14 +209,14 @@ public class UsagesTree extends MPSTree {
       HashSet<PathItemRole> searchedNodesPathProvider = new HashSet<>();
       searchedNodesPathProvider.add(PathItemRole.ROLE_MAIN_SEARCHED_NODES);
 
-      DataNode searchedNodesRoot = myContents.getTreeRoot().getChildren().get(0);
-      if (searchedNodesRoot.containsNodes(NodeNodeData.class)) {
+      BaseNodeData searchedNodesRoot = myContents.getSearchSubtree();
+      if (DataTree.getNodeDataStream(searchedNodesRoot).anyMatch(NodeNodeData.class::isInstance)) {
         if (myGroupSearchedNodes) {
           searchedNodesPathProvider.add(PathItemRole.ROLE_ROOT);
           searchedNodesPathProvider.add(PathItemRole.ROLE_ROOT_TO_TARGET_NODE);
         }
         searchedNodesPathProvider.add(PathItemRole.ROLE_TARGET_NODE);
-      } else if (searchedNodesRoot.containsNodes(ModelNodeData.class)) {
+      } else if (DataTree.getNodeDataStream(searchedNodesRoot).anyMatch(ModelNodeData.class::isInstance)) {
         if (myGroupSearchedNodes) {
           searchedNodesPathProvider.add(PathItemRole.ROLE_MODULE);
         }
@@ -226,7 +226,7 @@ public class UsagesTree extends MPSTree {
       }
       root.add(buildTree(searchedNodesRoot, searchedNodesPathProvider));
     }
-    myResultsSubtree = buildTree(myContents.getTreeRoot().getChildren().get(1), myResultPathProvider);
+    myResultsSubtree = buildTree(myContents.getResultsSubtree(), myResultPathProvider);
     root.add(myResultsSubtree);
 
     return root;
@@ -241,7 +241,7 @@ public class UsagesTree extends MPSTree {
 
   //this is not recursive
   //use only for top-level nodes
-  private UsagesTreeNode buildTree(DataNode root, HashSet<PathItemRole> nodeCategories) {
+  private UsagesTreeNode buildTree(BaseNodeData root, HashSet<PathItemRole> nodeCategories) {
     List<UsagesTreeNode> children = buildSubtreeStructure(root, nodeCategories);
     assert children.size() == 1;
 
@@ -284,15 +284,13 @@ public class UsagesTree extends MPSTree {
     }
   }
 
-  private List<UsagesTreeNode> buildSubtreeStructure(DataNode root, HashSet<PathItemRole> nodeCategories) {
+  private List<UsagesTreeNode> buildSubtreeStructure(BaseNodeData data, HashSet<PathItemRole> nodeCategories) {
+    // FIXME introduce more effective way to add children in case data isPathTai() == true (add child tree elements right away, w/o intermediate array)
     List<UsagesTreeNode> children = new ArrayList<>();
-    for (DataNode child : root.getChildren()) {
-      children.addAll(buildSubtreeStructure(child, nodeCategories));
-    }
+    data.children().map(child -> buildSubtreeStructure(child, nodeCategories)).forEach(children::addAll);
 
-    BaseNodeData data = root.getData();
     if (nodeCategories.contains(data.getRole()) || data.isPathTail()) {
-      UsagesTreeNode node = new UsagesTreeNode(root, data);
+      UsagesTreeNode node = new UsagesTreeNode(data);
       Icon icon = data.getIcon(() -> myProject.getRepository());
       if (data.isResultNode()) {
         final LayeredIcon result = new LayeredIcon(2);
@@ -378,14 +376,14 @@ public class UsagesTree extends MPSTree {
   }
 
   /*package*/ void setCurrentNodesExclusion(boolean isExcluded) {
-    Set<DataNode> nodes = new HashSet<>();
+    Set<BaseNodeData> nodes = new HashSet<>();
 
     //we need to traverse UI tree nodes here as some child nodes of a UI node can correspond to non-child nodes of its data node
     for (UsagesTreeNode node : getCurrentNodes()) {
       Enumeration e = node.breadthFirstEnumeration();
       while (e.hasMoreElements()) {
         UsagesTreeNode n = ((UsagesTreeNode) e.nextElement());
-        nodes.add(n.getUserObject());
+        nodes.add(n.getUsageData());
       }
     }
     myContents.setExcluded(nodes, isExcluded);
@@ -502,8 +500,8 @@ public class UsagesTree extends MPSTree {
       setNodeIdentifier("");
     }
 
-    public UsagesTreeNode(DataNode userObj, BaseNodeData data) {
-      super(userObj);
+    public UsagesTreeNode(BaseNodeData data) {
+      super(data);
       setNodeIdentifier(data.getIdObject() instanceof String ? (String) data.getIdObject() : data.getCaption());
       setToggleClickCount(data.isPathTail() ? -1 : 2);
       showCounter(data.isResultsSection());
@@ -521,7 +519,7 @@ public class UsagesTree extends MPSTree {
 
     @Nullable
     public BaseNodeData getUsageData() {
-      return super.getUserObject() instanceof DataNode ? ((DataNode) super.getUserObject()).getData() : null;
+      return super.getUserObject() instanceof BaseNodeData ? (BaseNodeData) super.getUserObject() : null;
     }
 
     /*package*/ int getSubresultsCount() {
@@ -539,7 +537,7 @@ public class UsagesTree extends MPSTree {
     @Deprecated
     @ToRemove(version = 2019.2)
     public DataNode getUserObject() {
-      return (DataNode) super.getUserObject();
+      return new DataNode(getUsageData());
     }
 
 

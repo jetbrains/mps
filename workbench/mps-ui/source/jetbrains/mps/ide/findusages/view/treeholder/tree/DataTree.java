@@ -48,29 +48,40 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class DataTree implements IExternalizeable, IChangeListener {
-  private DataNode myTreeRoot = createTreeRoot();
+  private BaseNodeData myTreeRoot = new MainNodeData(PathItemRole.ROLE_MAIN_ROOT);
   private final List<IChangeListener> myListeners = new ArrayList<>(2);
   private final DataTreeChangesNotifier myChangesNotifier;
 
   //this is only used in 3.2 to make rebuild faster in case of many nodes.
   //in 3.3 it will be fixed by introducing path providers
   //this cache is only alive during read action in build() method
-  private Map<Pair<DataNode, Object>, DataNode> myRebuildCache;
+  private Map<Pair<BaseNodeData, Object>, BaseNodeData> myRebuildCache;
 
   public DataTree(@NotNull DataTreeChangesNotifier changeDispatch) {
     myChangesNotifier = changeDispatch;
   }
 
-  public DataNode getTreeRoot() {
+  public BaseNodeData getTreeRoot() {
     return myTreeRoot;
   }
 
+  public BaseNodeData getSearchSubtree() {
+    return myTreeRoot.children().findFirst().orElse(null);
+  }
+
+  public BaseNodeData getResultsSubtree() {
+    return myTreeRoot.children().skip(1).findFirst().orElse(null);
+  }
+
+
   //----EXCLUSION/EXPANSION----
 
-  public void setExcluded(Set<DataNode> nodes, boolean value) {
-    for (DataNode node : nodes) {
+  public void setExcluded(Set<BaseNodeData> nodes, boolean value) {
+    for (BaseNodeData node : nodes) {
       setExcludedRecursively(nodes, node, value);
     }
     checkExcluded();
@@ -78,33 +89,23 @@ public class DataTree implements IExternalizeable, IChangeListener {
   }
 
   //doNotProcess is needed as there might be many pairs of nodes in the list, one of which is a child of another
-  private void setExcludedRecursively(Set<DataNode> doNotProcess, DataNode node, boolean value) {
-    node.getData().setExcluded(value);
-    for (DataNode child : node.getChildren()) {
-      if (doNotProcess.contains(child)) {
-        continue;
-      }
-      setExcludedRecursively(doNotProcess, child, value);
-    }
+  private static void setExcludedRecursively(final Set<BaseNodeData> doNotProcess, BaseNodeData node, final boolean value) {
+    node.setExcluded(value);
+    final Predicate<BaseNodeData> contains = doNotProcess::contains;
+    node.children().filter(contains.negate()).forEach(child -> setExcludedRecursively(doNotProcess, child, value));
   }
 
   private void checkExcluded() {
     checkNodeExcluded(myTreeRoot);
   }
 
-  private void checkNodeExcluded(DataNode node) {
-    if (node.getChildren().size() == 0) {
+  private static void checkNodeExcluded(BaseNodeData node) {
+    if (!node.hasChildren()) {
       return;
     }
-
-    for (DataNode child : node.getChildren()) {
-      checkNodeExcluded(child);
-    }
-    boolean allChildrenExcluded = true;
-    for (DataNode child : node.getChildren()) {
-      allChildrenExcluded = allChildrenExcluded && child.getData().isExcluded();
-    }
-    node.getData().setExcluded(allChildrenExcluded);
+    node.children().forEach(DataTree::checkNodeExcluded);
+    boolean allChildrenExcluded = node.children().allMatch(BaseNodeData::isExcluded);
+    node.setExcluded(allChildrenExcluded);
   }
 
   //----CONTENT MANAGEMENT----
@@ -113,7 +114,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
     setContents(build(results, nodeRepresentator));
   }
 
-  protected void setContents(DataNode root) {
+  protected void setContents(MainNodeData root) {
     myTreeRoot = root;
     stopListening();
     startListening();
@@ -125,17 +126,21 @@ public class DataTree implements IExternalizeable, IChangeListener {
     HashSet<SModelReference> models = new HashSet<>();
     HashSet<SModuleReference> modules = new HashSet<>();
 
-    nodes.addAll(Arrays.asList(myTreeRoot.getNodeDataStream().filter(nd -> nd instanceof NodeNodeData).map(
+    nodes.addAll(Arrays.asList(getNodeDataStream(myTreeRoot).filter(nd -> nd instanceof NodeNodeData).map(
         nd -> ((NodeNodeData) nd).getNodePointer()).toArray(SNodeReference[]::new)));
-    models.addAll(Arrays.asList(myTreeRoot.getNodeDataStream().filter(nd -> nd instanceof ModelNodeData).map(
+    models.addAll(Arrays.asList(getNodeDataStream(myTreeRoot).filter(nd -> nd instanceof ModelNodeData).map(
         nd -> ((ModelNodeData) nd).getModelReference()).toArray(SModelReference[]::new)));
 
-    modules.addAll(Arrays.asList(myTreeRoot.getNodeDataStream().filter(nd -> nd instanceof ModuleNodeData).map(
+    modules.addAll(Arrays.asList(getNodeDataStream(myTreeRoot).filter(nd -> nd instanceof ModuleNodeData).map(
         nd -> ((ModuleNodeData) nd).getModuleReference()).toArray(SModuleReference[]::new)));
 
     myChangesNotifier.trackNodes(this, nodes);
     myChangesNotifier.trackModels(this, models);
     myChangesNotifier.trackModules(this, modules);
+  }
+
+  public static Stream<BaseNodeData> getNodeDataStream(BaseNodeData d) {
+    return Stream.concat(Stream.of(d), d.children().flatMap(DataTree::getNodeDataStream));
   }
 
   private void stopListening() {
@@ -149,16 +154,13 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
   //----TREE BUILD STUFF----
 
-  private static DataNode createTreeRoot() {
-    return new DataNode(new MainNodeData(PathItemRole.ROLE_MAIN_ROOT));
-  }
-
-  private DataNode build(final SearchResults<?> results, final INodeRepresentator nodeRepresentator) {
+  private MainNodeData build(final SearchResults<?> results, final INodeRepresentator nodeRepresentator) {
     myRebuildCache = new HashMap<>();
 
-    DataNode root = createTreeRoot();
+    MainNodeData root = new MainNodeData(PathItemRole.ROLE_MAIN_ROOT);
 
-    DataNode nodesRoot = new DataNode(new SearchedNodesNodeData(PathItemRole.ROLE_MAIN_SEARCHED_NODES));
+    SearchedNodesNodeData nodesRoot = new SearchedNodesNodeData(PathItemRole.ROLE_MAIN_SEARCHED_NODES);
+    root.addChild(nodesRoot);
     // XXX null INodeRepresentator in PP, below, is important as we don't want to use custom presentation for look up elements, just for results
     //     not that I fully understand or approve the idea, it's the way it used to be for years.
     final PathProvider pp1 = new PathProvider(null, false);
@@ -167,7 +169,6 @@ public class DataTree implements IExternalizeable, IChangeListener {
         createPath(pp1, nodesRoot, new SearchResult<>(node, SearchedNodesNodeData.CATEGORY_NAME));
       }
     }
-    root.add(nodesRoot);
 
     final List<? extends SearchResult<?>> notNullResults = results.getNotNullResults();
     final Icon i;
@@ -179,19 +180,19 @@ public class DataTree implements IExternalizeable, IChangeListener {
       i = nodeRepresentator.getResultsIcon();
       c = nodeRepresentator.getResultsText(new TextOptions(true, false, notNullResults.size()));
     }
-    DataNode resultsRoot = new DataNode(new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, i, c));
+    ResultsNodeData resultsRoot = new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, i, c);
+    root.addChild(resultsRoot);
     final PathProvider pp2 = new PathProvider(nodeRepresentator, true);
     for (SearchResult<?> result : notNullResults) {
       createPath(pp2, resultsRoot, result);
     }
-    root.add(resultsRoot);
 
     myRebuildCache = null;
     return root;
   }
 
   // XXX has to build the tree without duplications, e.g. there could be no duplicated model elements under same path(category).
-  private void createPath(@NotNull PathProvider pathProvider, @NotNull DataNode parent, @NotNull SearchResult result) {
+  private void createPath(@NotNull PathProvider pathProvider, @NotNull BaseNodeData parent, @NotNull SearchResult result) {
 
     final List<PathItem<?>> path = pathProvider.getPathForSearchResult(result);
 
@@ -201,27 +202,28 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
     for (PathItem currentPathItem : path) {
       Object currentIdObject = currentPathItem.getIdObject();
-      // FWIW, there's PathItem.isTail() now
-      final boolean isPathTail = currentPathItem == pathTail;
 
-      DataNode next = myRebuildCache.get(new Pair<>(parent, currentIdObject));
+      final Pair<BaseNodeData, Object> key = new Pair<>(parent, currentIdObject);
+      BaseNodeData seen = myRebuildCache.get(key);
 
-      if (next == null) {
+      if (seen == null) {
 
         BaseNodeData data = currentPathItem.create();
 
-        next = new DataNode(data);
-        parent.add(next);
+        parent.addChild(data);
         // XXX beware, currentIdObject != data.getIdObject() at least for CategoryNodeData; use former as it's the one use to query the cache
-        myRebuildCache.put(new Pair<>(parent, currentIdObject), next);
+        myRebuildCache.put(key, data);
+        parent = data;
       } else {
+        // FWIW, there's PathItem.isTail() now
+        final boolean isPathTail = currentPathItem == pathTail;
         if (isPathTail) {
           // XXX why some flag and not another node to represent the result, with use of
           // nodeRepresentator.getPresentation(searchResult.getObject()) as it's for other result nodes?
-          next.getData().setIsPathTail_internal(true);
+          seen.setIsPathTail_internal(true);
         }
+        parent = seen;
       }
-      parent = next;
     }
   }
 
