@@ -11,6 +11,10 @@ import com.intellij.openapi.project.Project;
 import java.lang.reflect.Constructor;
 import org.apache.log4j.Level;
 import com.intellij.execution.configurations.UnknownRunConfiguration;
+import com.intellij.openapi.util.Key;
+import com.intellij.execution.BeforeRunTask;
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Non-reloadable factory for Run Configurations. Instances of this class are safe to operate even once original 
@@ -68,6 +72,20 @@ import com.intellij.execution.configurations.UnknownRunConfiguration;
         LOG.error(String.format("Failed to instantiate run configuration %s of type %s", myDelegateClass.getName(), getId()), ex);
       }
       return new UnknownRunConfiguration(this, project);
+    }
+  }
+
+  @Override
+  public void configureBeforeRunTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
+    try {
+      Method method = myDelegateClass.getMethod("configureBeforeTaskDefaults", Key.class, BeforeRunTask.class);
+      method.invoke(null, providerID, task);
+    } catch (NoSuchMethodException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (InvocationTargetException e) {
+      e.printStackTrace();
     }
   }
 

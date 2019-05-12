@@ -39,6 +39,7 @@
     <import index="mmaq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom(MPS.Core/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="z0rn" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.xmlb.annotations(MPS.IDEA/)" />
+    <import index="eibu" ref="r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1077,6 +1078,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpl" role="jymVt" />
     <node concept="3clFbW" id="5z4Y2AE1aoJ" role="jymVt">
       <node concept="37vLTG" id="5z4Y2AE1aoK" role="3clF46">
         <property role="TrG5h" value="name" />
@@ -1111,6 +1113,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpm" role="jymVt" />
     <node concept="3clFb_" id="4hE$sQ8D5jl" role="jymVt">
       <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="createTaskImpl" />
@@ -1120,6 +1123,7 @@
         <ref role="16sUi3" node="66CJzfk0TLW" resolve="T" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpn" role="jymVt" />
     <node concept="3clFb_" id="1hahyPavQ4f" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getName" />
@@ -1137,6 +1141,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpo" role="jymVt" />
     <node concept="3clFb_" id="66CJzfk0NGe" role="jymVt">
       <property role="TrG5h" value="getDescription" />
       <node concept="3Tm1VV" id="66CJzfk0NGf" role="1B3o_S" />
@@ -1158,6 +1163,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpp" role="jymVt" />
     <node concept="3clFb_" id="66CJzfk0NGw" role="jymVt">
       <property role="TrG5h" value="createTask" />
       <node concept="3Tm1VV" id="66CJzfk0NGx" role="1B3o_S" />
@@ -1194,6 +1200,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpq" role="jymVt" />
     <node concept="3clFb_" id="66CJzfk0NGW" role="jymVt">
       <property role="TrG5h" value="hasExecuteMethod" />
       <node concept="3Tm6S6" id="66CJzfk0NGX" role="1B3o_S" />
@@ -1241,6 +1248,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpr" role="jymVt" />
     <node concept="3clFb_" id="66CJzfk0NHi" role="jymVt">
       <property role="TrG5h" value="executeTask" />
       <node concept="3Tm1VV" id="66CJzfk0NHj" role="1B3o_S" />
@@ -1378,6 +1386,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVps" role="jymVt" />
     <node concept="3clFb_" id="65iXaoVe9oi" role="jymVt">
       <property role="TrG5h" value="configure" />
       <node concept="3Tm6S6" id="65iXaoVe9oj" role="1B3o_S" />
@@ -1595,6 +1604,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpt" role="jymVt" />
     <node concept="3clFb_" id="66CJzfk0NIk" role="jymVt">
       <property role="TrG5h" value="getMethod" />
       <node concept="3Tm6S6" id="66CJzfk0NIl" role="1B3o_S" />
@@ -1634,6 +1644,7 @@
         <ref role="3uigEE" to="wyt6:~NoSuchMethodException" resolve="NoSuchMethodException" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpu" role="jymVt" />
     <node concept="3clFb_" id="66CJzfk0NGp" role="jymVt">
       <property role="TrG5h" value="isConfigurable" />
       <node concept="3Tm1VV" id="66CJzfk0NGq" role="1B3o_S" />
@@ -1647,6 +1658,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpv" role="jymVt" />
     <node concept="3clFb_" id="66CJzfk0NGK" role="jymVt">
       <property role="TrG5h" value="configureTask" />
       <node concept="3Tm1VV" id="66CJzfk0NGL" role="1B3o_S" />
@@ -1677,6 +1689,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpw" role="jymVt" />
     <node concept="3clFb_" id="1hahyPavY9B" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="canExecuteTask" />
@@ -1706,6 +1719,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpx" role="jymVt" />
     <node concept="2YIFZL" id="6PdFQSRJYeR" role="jymVt">
       <property role="TrG5h" value="getCreateMethodName" />
       <node concept="3Tm1VV" id="6PdFQSRJYeT" role="1B3o_S" />
@@ -1743,6 +1757,7 @@
         <node concept="17QB3L" id="6PdFQSRJYeX" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lVpy" role="jymVt" />
     <node concept="2YIFZL" id="2yF9Sz5lss_" role="jymVt">
       <property role="TrG5h" value="getConfigureMethodName" />
       <property role="DiZV1" value="false" />
@@ -1756,6 +1771,7 @@
       </node>
       <node concept="3Tm1VV" id="1QCBcYMQnxj" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="7ArQL0$lWxl" role="jymVt" />
     <node concept="312cEu" id="66CJzfk0Vr2" role="jymVt">
       <property role="TrG5h" value="BaseMpsBeforeRunTask" />
       <property role="2bfB8j" value="false" />
@@ -1805,6 +1821,7 @@
           </node>
         </node>
       </node>
+      <node concept="2tJIrI" id="7ArQL0$lXBP" role="jymVt" />
       <node concept="3clFb_" id="66CJzfk0Vr$" role="jymVt">
         <property role="1EzhhJ" value="true" />
         <property role="TrG5h" value="execute" />
@@ -3908,6 +3925,140 @@
       <node concept="2AHcQZ" id="LPAYBxYuDe" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+    </node>
+    <node concept="2tJIrI" id="7ArQL0$mUat" role="jymVt" />
+    <node concept="3clFb_" id="7ArQL0$mSzs" role="jymVt">
+      <property role="TrG5h" value="configureBeforeRunTaskDefaults" />
+      <node concept="2AHcQZ" id="7ArQL0$mSzt" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="37vLTG" id="7ArQL0$mSzu" role="3clF46">
+        <property role="TrG5h" value="providerID" />
+        <node concept="3uibUv" id="7ArQL0$mSzv" role="1tU5fm">
+          <ref role="3uigEE" to="zn9m:~Key" resolve="Key" />
+          <node concept="3qUE_q" id="7ArQL0$mSzx" role="11_B2D">
+            <node concept="3uibUv" id="7ArQL0$mSzw" role="3qUE_r">
+              <ref role="3uigEE" to="3v5a:~BeforeRunTask" resolve="BeforeRunTask" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="7ArQL0$mSzy" role="3clF46">
+        <property role="TrG5h" value="task" />
+        <node concept="3uibUv" id="7ArQL0$mSzz" role="1tU5fm">
+          <ref role="3uigEE" to="3v5a:~BeforeRunTask" resolve="BeforeRunTask" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7ArQL0$mSz$" role="3clF47">
+        <node concept="SfApY" id="7ArQL0$mS$a" role="3cqZAp">
+          <node concept="TDmWw" id="7ArQL0$mS$b" role="TEbGg">
+            <node concept="3clFbS" id="7ArQL0$mSzZ" role="TDEfX">
+              <node concept="3clFbF" id="7ArQL0$mS$0" role="3cqZAp">
+                <node concept="2OqwBi" id="7ArQL0$mT$f" role="3clFbG">
+                  <node concept="37vLTw" id="7ArQL0$mT$e" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7ArQL0$mSzP" resolve="e" />
+                  </node>
+                  <node concept="liA8E" id="7ArQL0$mT$g" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace()" resolve="printStackTrace" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWsn" id="7ArQL0$mSzP" role="TDEfY">
+              <property role="TrG5h" value="e" />
+              <node concept="3uibUv" id="7ArQL0$mSzR" role="1tU5fm">
+                <ref role="3uigEE" to="wyt6:~NoSuchMethodException" resolve="NoSuchMethodException" />
+              </node>
+            </node>
+          </node>
+          <node concept="TDmWw" id="7ArQL0$mS$c" role="TEbGg">
+            <node concept="3clFbS" id="7ArQL0$mS$3" role="TDEfX">
+              <node concept="3clFbF" id="7ArQL0$mS$4" role="3cqZAp">
+                <node concept="2OqwBi" id="7ArQL0$mTA2" role="3clFbG">
+                  <node concept="37vLTw" id="7ArQL0$mTA1" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7ArQL0$mSzS" resolve="e" />
+                  </node>
+                  <node concept="liA8E" id="7ArQL0$mTA3" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace()" resolve="printStackTrace" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWsn" id="7ArQL0$mSzS" role="TDEfY">
+              <property role="TrG5h" value="e" />
+              <node concept="3uibUv" id="7ArQL0$mSzU" role="1tU5fm">
+                <ref role="3uigEE" to="wyt6:~IllegalAccessException" resolve="IllegalAccessException" />
+              </node>
+            </node>
+          </node>
+          <node concept="TDmWw" id="7ArQL0$mS$d" role="TEbGg">
+            <node concept="3clFbS" id="7ArQL0$mS$7" role="TDEfX">
+              <node concept="3clFbF" id="7ArQL0$mS$8" role="3cqZAp">
+                <node concept="2OqwBi" id="7ArQL0$mTzr" role="3clFbG">
+                  <node concept="37vLTw" id="7ArQL0$mTzq" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7ArQL0$mSzV" resolve="e" />
+                  </node>
+                  <node concept="liA8E" id="7ArQL0$mTzs" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace()" resolve="printStackTrace" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWsn" id="7ArQL0$mSzV" role="TDEfY">
+              <property role="TrG5h" value="e" />
+              <node concept="3uibUv" id="7ArQL0$mSzX" role="1tU5fm">
+                <ref role="3uigEE" to="t6h5:~InvocationTargetException" resolve="InvocationTargetException" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="7ArQL0$mSzA" role="SfCbr">
+            <node concept="3cpWs8" id="7ArQL0$mSzC" role="3cqZAp">
+              <node concept="3cpWsn" id="7ArQL0$mSzB" role="3cpWs9">
+                <property role="TrG5h" value="method" />
+                <node concept="3uibUv" id="7ArQL0$mSzD" role="1tU5fm">
+                  <ref role="3uigEE" to="t6h5:~Method" resolve="Method" />
+                </node>
+                <node concept="2OqwBi" id="7ArQL0$mTAQ" role="33vP2m">
+                  <node concept="37vLTw" id="7ArQL0$mTAP" role="2Oq$k0">
+                    <ref role="3cqZAo" node="LPAYBxZk6X" resolve="myDelegateClass" />
+                  </node>
+                  <node concept="liA8E" id="7ArQL0$mTAR" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Class.getMethod(java.lang.String,java.lang.Class...)" resolve="getMethod" />
+                    <node concept="Xl_RD" id="7ArQL0$mTAS" role="37wK5m">
+                      <property role="Xl_RC" value="configureBeforeTaskDefaults" />
+                    </node>
+                    <node concept="3VsKOn" id="7ArQL0$mTAT" role="37wK5m">
+                      <ref role="3VsUkX" to="zn9m:~Key" resolve="Key" />
+                    </node>
+                    <node concept="3VsKOn" id="7ArQL0$mTAU" role="37wK5m">
+                      <ref role="3VsUkX" to="3v5a:~BeforeRunTask" resolve="BeforeRunTask" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="7ArQL0$mSzK" role="3cqZAp">
+              <node concept="2OqwBi" id="7ArQL0$mT_3" role="3clFbG">
+                <node concept="37vLTw" id="7ArQL0$mT_2" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7ArQL0$mSzB" resolve="method" />
+                </node>
+                <node concept="liA8E" id="7ArQL0$mT_4" role="2OqNvi">
+                  <ref role="37wK5l" to="t6h5:~Method.invoke(java.lang.Object,java.lang.Object...)" resolve="invoke" />
+                  <node concept="10Nm6u" id="7ArQL0$mT_5" role="37wK5m" />
+                  <node concept="37vLTw" id="7ArQL0$mT_6" role="37wK5m">
+                    <ref role="3cqZAo" node="7ArQL0$mSzu" resolve="providerID" />
+                  </node>
+                  <node concept="37vLTw" id="7ArQL0$mT_7" role="37wK5m">
+                    <ref role="3cqZAo" node="7ArQL0$mSzy" resolve="task" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7ArQL0$mS$e" role="1B3o_S" />
+      <node concept="3cqZAl" id="7ArQL0$mS$f" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="LPAYBxYlVv" role="jymVt" />
     <node concept="3clFb_" id="LPAYBxZiit" role="jymVt">

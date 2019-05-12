@@ -32,7 +32,8 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 
 public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> {
-  private static final Key<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask");
+  public static final Key<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask");
+
   public MakeNodePointers_BeforeTask() {
     super("MakeNodePointers", "Make");
   }
