@@ -34,14 +34,14 @@ public abstract class AbstractSequentialIterator<T> implements ListIterator<T> {
    * @param node current next() call will return this node
    * @param index index of "node" parameter
    */
-  protected abstract T getNext(T node, int index);
+  protected abstract T doNext(T node, int index);
 
   /**
    * Must be invoked in, and only in, previous() method
    * @param node current previous() call will return this node
    * @param index index of "node" parameter
    */
-  protected abstract T getPrev(T node, int index);
+  protected abstract T doPrevious(T node, int index);
 
   @Override
   public boolean hasNext() {
@@ -56,7 +56,7 @@ public abstract class AbstractSequentialIterator<T> implements ListIterator<T> {
       return null;
     }
     myPrev = result;
-    myNext = getNext(result, myNextIndex);
+    myNext = doNext(result, myNextIndex);
     myNextIndex++;
     return result;
   }
@@ -75,7 +75,7 @@ public abstract class AbstractSequentialIterator<T> implements ListIterator<T> {
     }
     myNext = result;
     myNextIndex--;
-    T prev = myNextIndex == 0 ? null : getPrev(result, myNextIndex);
+    T prev = myNextIndex == 0 ? null : doPrevious(result, myNextIndex);
     myPrev = prev;
     return result;
   }
