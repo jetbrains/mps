@@ -520,6 +520,7 @@
       <concept id="6550182048787583936" name="jetbrains.mps.execution.configurations.structure.BeforeTaskParameterReference" flags="nn" index="yYjwu" />
       <concept id="6550182048787562516" name="jetbrains.mps.execution.configurations.structure.BeforeTaskParameter" flags="ng" index="yYmJa" />
       <concept id="6550182048787537880" name="jetbrains.mps.execution.configurations.structure.BeforeTaskCall" flags="ng" index="yYvg6">
+        <property id="8762838362354916340" name="disabledByDefault" index="1tNO3$" />
         <reference id="6550182048787537881" name="beforeTask" index="yYvg7" />
         <child id="5475888311765521408" name="parameter" index="1ZwhtC" />
       </concept>
@@ -3094,6 +3095,7 @@
       </node>
     </node>
     <node concept="yYvg6" id="3djbh3BbrSj" role="yYvgT">
+      <property role="1tNO3$" value="true" />
       <ref role="yYvg7" node="3djbh3B5ov9" resolve="ClearSettingsDirectoryBeforeRunTask" />
       <node concept="2OqwBi" id="1tTdFdw7dMq" role="1ZwhtC">
         <node concept="2OqwBi" id="1tTdFdvXDY0" role="2Oq$k0">

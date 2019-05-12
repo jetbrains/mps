@@ -49,6 +49,9 @@ import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
+import com.intellij.openapi.util.Key;
+import com.intellij.execution.BeforeRunTask;
+import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
 
 public class Java_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(Java_Configuration.class);
@@ -209,6 +212,11 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
   @Override
   public boolean canExecute(String executorId) {
     return Java_Configuration_RunProfileState.canExecute(executorId);
+  }
+  public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
+    if (providerID == MakeNodePointers_BeforeTask.KEY) {
+      task.setEnabled(true);
+    }
   }
   public Object[] createMakeNodePointersTask() {
     return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNode().getNode())};

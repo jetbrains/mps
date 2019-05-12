@@ -10,7 +10,8 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import jetbrains.mps.util.FileUtil;
 
 public class ClearSettingsDirectoryBeforeRunTask_BeforeTask extends BaseMpsBeforeTaskProvider<ClearSettingsDirectoryBeforeRunTask_BeforeTask.ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask> {
-  private static final Key<ClearSettingsDirectoryBeforeRunTask_BeforeTask.ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask");
+  public static final Key<ClearSettingsDirectoryBeforeRunTask_BeforeTask.ClearSettingsDirectoryBeforeRunTask_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask");
+
   public ClearSettingsDirectoryBeforeRunTask_BeforeTask() {
     super("ClearSettingsDirectoryBeforeRunTask", "Clear Settings Directory");
   }

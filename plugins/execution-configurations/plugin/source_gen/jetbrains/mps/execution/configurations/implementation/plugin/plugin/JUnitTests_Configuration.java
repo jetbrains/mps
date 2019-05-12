@@ -36,6 +36,9 @@ import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
+import com.intellij.openapi.util.Key;
+import com.intellij.execution.BeforeRunTask;
+import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
 import java.io.File;
 
 public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
@@ -183,6 +186,17 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   @Override
   public boolean canExecute(String executorId) {
     return JUnitTests_Configuration_RunProfileState.canExecute(executorId);
+  }
+  public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
+    if (providerID == MakeNodePointers_BeforeTask.KEY) {
+      task.setEnabled(true);
+    }
+    if (providerID == ClearSettingsDirectoryBeforeRunTask_BeforeTask.KEY) {
+      task.setEnabled(false);
+    }
+    if (providerID == AssemblePluginsBeforeTask_BeforeTask.KEY) {
+      task.setEnabled(true);
+    }
   }
   public Object[] createMakeNodePointersTask() {
     return new Object[]{this.getTestsToMake()};

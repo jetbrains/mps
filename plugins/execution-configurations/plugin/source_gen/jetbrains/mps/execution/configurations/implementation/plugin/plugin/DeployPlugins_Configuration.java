@@ -34,6 +34,8 @@ import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.util.Key;
+import com.intellij.execution.BeforeRunTask;
 
 public class DeployPlugins_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(DeployPlugins_Configuration.class);
@@ -181,6 +183,11 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
   @Override
   public boolean canExecute(String executorId) {
     return DeployPlugins_Configuration_RunProfileState.canExecute(executorId);
+  }
+  public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
+    if (providerID == MakeDeployScripts_BeforeTask.KEY) {
+      task.setEnabled(true);
+    }
   }
   public Object[] createMakedeployscriptsTask() {
     return new Object[]{this.getPluginsSettings().getPluginsListToDeploy()};

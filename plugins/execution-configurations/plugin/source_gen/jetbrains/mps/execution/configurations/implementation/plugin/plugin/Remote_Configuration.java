@@ -28,6 +28,8 @@ import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.util.Key;
+import com.intellij.execution.BeforeRunTask;
 
 public class Remote_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(Remote_Configuration.class);
@@ -120,5 +122,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
   @Override
   public boolean canExecute(String executorId) {
     return Remote_Configuration_RunProfileState.canExecute(executorId);
+  }
+  public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
   }
 }

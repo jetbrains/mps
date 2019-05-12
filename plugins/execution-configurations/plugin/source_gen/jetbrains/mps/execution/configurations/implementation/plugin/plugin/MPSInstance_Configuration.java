@@ -25,6 +25,8 @@ import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.util.Key;
+import com.intellij.execution.BeforeRunTask;
 import java.io.File;
 
 public class MPSInstance_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
@@ -135,6 +137,14 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   @Override
   public boolean canExecute(String executorId) {
     return MPSInstance_Configuration_RunProfileState.canExecute(executorId);
+  }
+  public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
+    if (providerID == ClearSettingsDirectoryBeforeRunTask_BeforeTask.KEY) {
+      task.setEnabled(true);
+    }
+    if (providerID == AssemblePluginsBeforeTask_BeforeTask.KEY) {
+      task.setEnabled(true);
+    }
   }
   public Object[] createClearSettingsDirectoryBeforeRunTaskTask() {
     return new Object[]{false, new File(this.getMpsSettings().getExpandedSettingsPath())};
