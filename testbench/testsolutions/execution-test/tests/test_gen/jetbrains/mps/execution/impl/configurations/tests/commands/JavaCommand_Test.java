@@ -24,14 +24,11 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.Main;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import com.intellij.execution.process.ProcessHandler;
-import com.intellij.execution.process.ProcessEvent;
-import com.intellij.execution.process.ProcessAdapter;
-import com.intellij.openapi.util.Key;
-import com.intellij.execution.process.ProcessOutputTypes;
-import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
-import junit.framework.Assert;
+import jetbrains.mps.baseLanguage.execution.api.Java_Command;
+import jetbrains.mps.execution.impl.configurations.util.ProcessRunnerForConfigurationTests;
+import java.util.Collections;
+import java.util.regex.Pattern;
 
 @MPSLaunch
 public class JavaCommand_Test extends BaseTransformationTest {
@@ -68,40 +65,12 @@ public class JavaCommand_Test extends BaseTransformationTest {
           pointer.value = new SNodePointer(mainNode);
         }
       });
-      this.checkProcess(new Java_Command().createProcess(pointer.value, myProject.getRepository()), Main.MESSAGE + "\n");
+
+      ProcessHandler process = new Java_Command().createProcess(pointer.value, myProject.getRepository());
+      ProcessRunnerForConfigurationTests processRunner = new ProcessRunnerForConfigurationTests.Builder(process).addExpectedPaterns(Collections.singletonList(Pattern.compile(Main.MESSAGE + "\n"))).build();
+      processRunner.startAndCheckProcess();
     }
 
 
-    public void checkProcess(ProcessHandler process, final String expectedSysErr) {
-      final ProcessEvent[] failed = new ProcessEvent[1];
-      final boolean[] printed = new boolean[1];
-      // todo show progress window 
-      process.addProcessListener(new ProcessAdapter() {
-        @Override
-        public void onTextAvailable(ProcessEvent event, Key key) {
-          if (ProcessOutputTypes.STDERR.equals(key)) {
-            if (!(Objects.equals(event.getText(), expectedSysErr))) {
-              failed[0] = event;
-              System.err.print(event.getText());
-            } else {
-              printed[0] = true;
-            }
-          } else if (!(ProcessOutputTypes.SYSTEM.equals(key))) {
-            failed[0] = event;
-            System.err.println("Unknown event " + event.getText());
-          }
-        }
-      });
-      int exitCode = ProcessHandlerBuilder.startAndWait(process);
-      if (failed[0] != null) {
-        Assert.fail(failed[0].getText());
-      }
-      if (!(printed[0])) {
-        Assert.fail("Did not print required message!");
-      }
-      if (exitCode != 0) {
-        Assert.fail("Exit with code " + exitCode);
-      }
-    }
   }
 }

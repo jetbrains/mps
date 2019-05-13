@@ -17,6 +17,7 @@ import jetbrains.mps.execution.impl.configurations.util.TestNodeWrapHelper;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
 import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.ReadingPropertyBTestCase_Test;
+import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.ReadingPropertyWithSpacesBTestCase_Test;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitOutOfProcessStarter;
 import jetbrains.mps.project.MPSProject;
@@ -33,7 +34,6 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
 import com.intellij.openapi.project.Project;
 import java.io.File;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
 import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
 
@@ -61,6 +61,10 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
     new JUnitOutOfProcess_Test.TestBody(this).test_programParametersArePassedToTheTest();
   }
   @Test
+  public void test_programParametersWithSpacesArePassedToTheTest() throws Throwable {
+    new JUnitOutOfProcess_Test.TestBody(this).test_programParametersWithSpacesArePassedToTheTest();
+  }
+  @Test
   public void test_startUsingLangTestCase() throws Throwable {
     new JUnitOutOfProcess_Test.TestBody(this).test_startUsingLangTestCase();
   }
@@ -84,6 +88,13 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
       List<ITestNodeWrapper> testsToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "4414733712821357918"));
       JUnitTests_Configuration junitRC = this.createDefaultJUnitRC();
       String vmParams = "-D" + ReadingPropertyBTestCase_Test.SYS_PROPERTY + "=" + ReadingPropertyBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE;
+      junitRC.getJavaRunParameters().getJavaParameters().setVmOptions(vmParams);
+      this.runTestsWithSettings(junitRC, testsToSucceed, this.emptyList());
+    }
+    public void test_programParametersWithSpacesArePassedToTheTest() throws Exception {
+      List<ITestNodeWrapper> testsToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)", "5101378672992886086"));
+      JUnitTests_Configuration junitRC = this.createDefaultJUnitRC();
+      String vmParams = "-D" + ReadingPropertyWithSpacesBTestCase_Test.SYS_PROPERTY + "=\"" + ReadingPropertyWithSpacesBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE_WITH_SPACES + "\"";
       junitRC.getJavaRunParameters().getJavaParameters().setVmOptions(vmParams);
       this.runTestsWithSettings(junitRC, testsToSucceed, this.emptyList());
     }
@@ -130,7 +141,6 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
       junitParams.setReuseCaches(true);
       junitParams.setOverrideCachesLocation(true);
       junitParams.setCachesPath(new File("./tmpsettings").getAbsolutePath());
-      junitParams.setCachesPath(FileUtil.createTmpDir().getAbsolutePath());
       return junitParams;
     }
     public JavaRunParameters_Configuration createDefaultJavaSettings() {
