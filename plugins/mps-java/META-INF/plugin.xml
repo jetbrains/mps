@@ -22,7 +22,7 @@
   <depends>com.intellij.modules.mps</depends>
 
   <xi:include href="JavaWorkbenchActions.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="JavaPlatformActions.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="JavaPlatform.xml" xpointer="xpointer(/components/*)"/>
 
   <application-components>
     <component>
