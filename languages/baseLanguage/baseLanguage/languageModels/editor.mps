@@ -3239,11 +3239,7 @@
           <ref role="1ERwB7" node="h3$l4aj" resolve="StaticMethodCall_Actions" />
           <ref role="1NtTu8" to="tpee:gDPybl6" resolve="classConcept" />
           <node concept="1sVBvm" id="gDPynXK" role="1sWHZn">
-            <node concept="3F0A7n" id="gDPynXL" role="2wV5jI">
-              <property role="1Intyy" value="true" />
-              <property role="1$x2rV" value="&lt;no name&gt;" />
-              <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-            </node>
+            <node concept="3SHvHV" id="13PzmVttFui" role="2wV5jI" />
           </node>
         </node>
         <node concept="2SqB2G" id="4ZFm$8Tm3tx" role="2SqHTX">
