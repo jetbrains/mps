@@ -61,7 +61,7 @@ public class AbstractLanguageIdentity_Transformation extends TransformationMenuB
       try {
         SAbstractConcept targetConcept = getTargetConcept(context);
         String name = (targetConcept == null ? "" : targetConcept.getName());
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include substitute menu " + "named substitute menu " + "RepositoryLanguages_SubstituteWrapped", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "5769081855528314164")));
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include substitute menu " + "named substitute menu " + "LoadedLanguages_Substitute", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "5503407155930897102")));
         return super.createItems(context);
       } finally {
         context.getEditorMenuTrace().popTraceInfo();
@@ -72,10 +72,10 @@ public class AbstractLanguageIdentity_Transformation extends TransformationMenuB
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
       final EditorContext editorContext = context.getEditorContext();
       SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(context);
-      return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.RepositoryLanguages_SubstituteWrapped");
+      return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.LoadedLanguages_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x500fe561b6da3df1L, "jetbrains.mps.lang.smodel.structure.AbstractLanguageIdentity");
+      return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
     }
   }
 }

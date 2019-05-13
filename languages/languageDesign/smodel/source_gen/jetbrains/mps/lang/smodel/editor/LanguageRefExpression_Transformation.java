@@ -70,7 +70,7 @@ public class LanguageRefExpression_Transformation extends TransformationMenuBase
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "named substitute menu " + "RepositoryLanguages_SubstituteWrapped", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "2469893808088029513")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "named substitute menu " + "LoadedLanguages_Substitute", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "2469893808088029513")));
       try {
         return super.createItems(context);
       } finally {
@@ -83,10 +83,10 @@ public class LanguageRefExpression_Transformation extends TransformationMenuBase
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
       final EditorContext editorContext = _context.getEditorContext();
       SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
-      return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.RepositoryLanguages_SubstituteWrapped");
+      return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.LoadedLanguages_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x500fe561b6da3df1L, "jetbrains.mps.lang.smodel.structure.AbstractLanguageIdentity");
+      return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
     }
 
 
@@ -97,6 +97,7 @@ public class LanguageRefExpression_Transformation extends TransformationMenuBase
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = item.createNode(pattern);
+          // XXX no idea when this menu is in use, if I select whole language// and ask for completion, I don't see anything from this menu, imo. 
           SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, 0x312abca18ab995e2L, "languageId"), createdNode);
         }
 

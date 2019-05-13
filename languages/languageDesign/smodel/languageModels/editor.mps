@@ -8869,18 +8869,18 @@
     <property role="TrG5h" value="AbstractLanguageIdentity_Transformation" />
     <ref role="aqKnT" to="tp25:50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
     <node concept="1Qtc8_" id="4Lw1UpBAEiW" role="IW6Ez">
-      <node concept="1X3_iC" id="50fTm6QYlBW" role="lGtFl">
-        <property role="3V$3am" value="parts" />
-        <property role="3V$3ak" value="18bc6592-03a6-4e29-a83a-7ff23bde13ba/7980428675268276156/7980428675268276159" />
-        <node concept="ulPW2" id="4Lw1UpBADFe" role="8Wnug">
-          <node concept="2kknPI" id="4Lw1UpBAEi4" role="2ks2uz">
-            <ref role="2kkw0f" node="4Lw1UpBAAma" resolve="LoadedLanguages_Substitute" />
-          </node>
+      <node concept="ulPW2" id="4Lw1UpBADFe" role="1Qtc8A">
+        <node concept="2kknPI" id="4Lw1UpBAEi4" role="2ks2uz">
+          <ref role="2kkw0f" node="4Lw1UpBAAma" resolve="LoadedLanguages_Substitute" />
         </node>
       </node>
-      <node concept="ulPW2" id="50fTm6QUEkO" role="1Qtc8A">
-        <node concept="2kknPI" id="50fTm6QUEkP" role="2ks2uz">
-          <ref role="2kkw0f" node="296OPknVe$g" resolve="RepositoryLanguages_SubstituteWrapped" />
+      <node concept="1X3_iC" id="5ZqXG2m_1MJ" role="lGtFl">
+        <property role="3V$3am" value="parts" />
+        <property role="3V$3ak" value="18bc6592-03a6-4e29-a83a-7ff23bde13ba/7980428675268276156/7980428675268276159" />
+        <node concept="ulPW2" id="50fTm6QUEkO" role="8Wnug">
+          <node concept="2kknPI" id="50fTm6QUEkP" role="2ks2uz">
+            <ref role="2kkw0f" node="296OPknVe$g" resolve="RepositoryLanguages_SubstituteWrapped" />
+          </node>
         </node>
       </node>
       <node concept="3eGOoe" id="4Lw1UpBAEj0" role="1Qtc8$" />
@@ -9088,10 +9088,15 @@
     <node concept="1Qtc8_" id="296OPko1x_0" role="IW6Ez">
       <node concept="3c8P5G" id="296OPko1x_9" role="1Qtc8A">
         <node concept="2kknPI" id="296OPko1x_w" role="3c8P5H">
-          <ref role="2kkw0f" node="296OPknVe$g" resolve="RepositoryLanguages_SubstituteWrapped" />
+          <ref role="2kkw0f" node="4Lw1UpBAAma" resolve="LoadedLanguages_Substitute" />
         </node>
         <node concept="3c8PGw" id="296OPko1x_c" role="3c8PHt">
           <node concept="3clFbS" id="296OPko1x_e" role="2VODD2">
+            <node concept="3SKdUt" id="5ZqXG2mGHE5" role="3cqZAp">
+              <node concept="3SKdUq" id="5ZqXG2mGHE7" role="3SKWNk">
+                <property role="3SKdUp" value="XXX no idea when this menu is in use, if I select whole language// and ask for completion, I don't see anything from this menu, imo." />
+              </node>
+            </node>
             <node concept="3clFbF" id="296OPko1x_K" role="3cqZAp">
               <node concept="2OqwBi" id="296OPko1yEu" role="3clFbG">
                 <node concept="2OqwBi" id="296OPko1xHk" role="2Oq$k0">
