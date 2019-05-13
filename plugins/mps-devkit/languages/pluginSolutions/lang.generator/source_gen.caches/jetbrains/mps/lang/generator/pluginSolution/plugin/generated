@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-4cggib7oz7yicvaq1u2b8r0s456eh3u">
+<product version="3" modelHash="1rf3silz878mga8q1msye0d6upb6e2e">
   <files names="AddRootTemplateAnnotation.java:AttachMappingLabelDialog.java:AttachMappingLabel_Action.java:DeriveGenPlanDialog.java:DeriveGenPlanModel_Action.java:GenPlanFunnel.java:GeneratorIDE_AppPluginPart.java:MappingLabelUtil.java:NewCreateRootRule_Action.java:NewRootMappingRule_Action.java:PluginSolution_ApplicationPlugin.java:ShowAsIntentions_Generator_ActionGroup.java" />
 </product>
 

@@ -120,8 +120,8 @@
       <node id="493339661775619862" at="95,59,96,117" concept="8" />
       <node id="493339661775618440" at="96,117,97,0" concept="10" />
       <node id="5605594918996758509" at="102,29,103,77" concept="7" />
-      <node id="5605594918996758549" at="105,51,106,196" concept="8" />
-      <node id="5605594918996758567" at="110,51,111,196" concept="8" />
+      <node id="5605594918996758549" at="105,51,106,170" concept="8" />
+      <node id="5605594918996758567" at="110,51,111,170" concept="8" />
       <node id="5605594918996758450" at="121,71,122,77" concept="2" />
       <node id="5605594918996758455" at="122,77,123,118" concept="2" />
       <node id="5605594918996758460" at="123,118,124,0" concept="10" />
@@ -138,8 +138,8 @@
       <node id="5605594918995974917" at="148,29,149,77" concept="7" />
       <node id="5605594918995974597" at="149,77,150,77" concept="7" />
       <node id="5605594918995975043" at="152,51,153,80" concept="8" />
-      <node id="5605594918995974691" at="157,51,158,196" concept="8" />
-      <node id="5605594918995974593" at="162,51,163,196" concept="8" />
+      <node id="5605594918995974691" at="157,51,158,170" concept="8" />
+      <node id="5605594918995974593" at="162,51,163,170" concept="8" />
       <node id="4441410544847827687" at="171,74,172,124" concept="9" />
       <node id="4441410544847957048" at="172,124,173,63" concept="9" />
       <node id="4441410544847957050" at="173,63,174,68" concept="9" />
@@ -409,11 +409,11 @@
       <node id="5605594918994708571" at="119,0,171,0" concept="6" trace="test_moveConcept_MPS_27701#()V" />
       <node id="4441410544847763563" at="171,0,227,0" concept="6" trace="test_moveConceptWithNotDeployedConcepts#()V" />
       <node id="5605594918995162114" at="409,0,524,0" concept="6" trace="commonTest#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
-      <scope id="5605594918996758548" at="105,51,106,196" />
-      <scope id="5605594918996758566" at="110,51,111,196" />
+      <scope id="5605594918996758548" at="105,51,106,170" />
+      <scope id="5605594918996758566" at="110,51,111,170" />
       <scope id="5605594918995975033" at="152,51,153,80" />
-      <scope id="5605594918995974687" at="157,51,158,196" />
-      <scope id="5605594918995974599" at="162,51,163,196" />
+      <scope id="5605594918995974687" at="157,51,158,170" />
+      <scope id="5605594918995974599" at="162,51,163,170" />
       <scope id="4441410544847957071" at="180,57,181,34" />
       <scope id="4441410544847957080" at="184,40,185,65" />
       <scope id="4441410544847957110" at="190,54,191,89" />

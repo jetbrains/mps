@@ -145,8 +145,9 @@
       <concept id="4497478346159780083" name="jetbrains.mps.lang.smodel.structure.LanguageRefExpression" flags="ng" index="pHN19">
         <child id="3542851458883491298" name="languageId" index="2V$M_3" />
       </concept>
-      <concept id="2469893808086079682" name="jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule" flags="ng" index="PFCIn">
-        <child id="2469893808086079721" name="moduleReference" index="PFCIW" />
+      <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
+        <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
+        <property id="3542851458883439832" name="languageId" index="2V$B1T" />
       </concept>
       <concept id="1678062499342629858" name="jetbrains.mps.lang.smodel.structure.ModuleRefExpression" flags="ng" index="37shsh">
         <child id="1678062499342629861" name="moduleId" index="37shsm" />
@@ -349,11 +350,9 @@
             <node concept="liA8E" id="5$sPwIF2_4e" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~SModelInternal.deleteLanguageId(org.jetbrains.mps.openapi.language.SLanguage)" resolve="deleteLanguageId" />
               <node concept="pHN19" id="5$sPwIF2_cy" role="37wK5m">
-                <node concept="PFCIn" id="5$sPwIF2_lG" role="2V$M_3">
-                  <node concept="20RdaH" id="5$sPwIF2_lF" role="PFCIW">
-                    <property role="20Rdg5" value="b83431fe-5c8f-40bc-8a36-65e25f4dd253" />
-                    <property role="20Rdg7" value="jetbrains.mps.lang.textGen" />
-                  </node>
+                <node concept="2V$Bhx" id="5ZqXG2lwffT" role="2V$M_3">
+                  <property role="2V$B1T" value="b83431fe-5c8f-40bc-8a36-65e25f4dd253" />
+                  <property role="2V$B1Q" value="jetbrains.mps.lang.textGen" />
                 </node>
               </node>
             </node>

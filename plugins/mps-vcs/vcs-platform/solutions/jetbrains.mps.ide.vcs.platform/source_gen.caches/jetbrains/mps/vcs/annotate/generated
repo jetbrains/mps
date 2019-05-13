@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="6p36u7tllyclk0cdtka44cb1k6ixvuo">
+<product version="3" modelHash="9pzhf7jj7bg8z7t84vl64bsf35nes2x">
   <files names="AnnotationAspectSubcolumn.java:AnnotationColumn.java:AnnotationHelper.java:CommitNumberSubcolumn.java:EditorUtils.java:HighlightRevisionSubcolumn.java:ShowAdditionalInfoAction.java:ShowDiffFromAnnotationAction.java:VcsRevisionRange.java:ViewAction.java:ViewActionGroup.java:_Adapters.java" />
 </product>
 

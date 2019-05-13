@@ -268,9 +268,6 @@
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
-      <concept id="2469893808086079682" name="jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule" flags="ng" index="PFCIn">
-        <child id="2469893808086079721" name="moduleReference" index="PFCIW" />
-      </concept>
       <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
         <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
         <property id="3542851458883439832" name="languageId" index="2V$B1T" />
@@ -2199,11 +2196,9 @@
             <node concept="liA8E" id="5GtzFfayqcn" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~SModelInternal.deleteLanguageId(org.jetbrains.mps.openapi.language.SLanguage)" resolve="deleteLanguageId" />
               <node concept="pHN19" id="5GtzFfayqco" role="37wK5m">
-                <node concept="PFCIn" id="5GtzFfayqcp" role="2V$M_3">
-                  <node concept="20RdaH" id="5GtzFfayqcq" role="PFCIW">
-                    <property role="20Rdg5" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
-                    <property role="20Rdg7" value="jetbrains.mps.lang.structure" />
-                  </node>
+                <node concept="2V$Bhx" id="5ZqXG2lwffP" role="2V$M_3">
+                  <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
+                  <property role="2V$B1Q" value="jetbrains.mps.lang.structure" />
                 </node>
               </node>
             </node>
@@ -2217,11 +2212,9 @@
             <node concept="liA8E" id="5GtzFfayqcu" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~SModelInternal.deleteLanguageId(org.jetbrains.mps.openapi.language.SLanguage)" resolve="deleteLanguageId" />
               <node concept="pHN19" id="5GtzFfayqcv" role="37wK5m">
-                <node concept="PFCIn" id="5GtzFfayqcw" role="2V$M_3">
-                  <node concept="20RdaH" id="5GtzFfayqcx" role="PFCIW">
-                    <property role="20Rdg5" value="982eb8df-2c96-4bd7-9963-11712ea622e5" />
-                    <property role="20Rdg7" value="jetbrains.mps.lang.resources" />
-                  </node>
+                <node concept="2V$Bhx" id="5ZqXG2lwffQ" role="2V$M_3">
+                  <property role="2V$B1T" value="982eb8df-2c96-4bd7-9963-11712ea622e5" />
+                  <property role="2V$B1Q" value="jetbrains.mps.lang.resources" />
                 </node>
               </node>
             </node>

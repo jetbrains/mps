@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-blv68ft7o6bl4ad010m4c2fds5b2yug">
+<product version="3" modelHash="bezf8f03o6ofm2txx6pci4o4av8c47d">
   <files names="TypesystemDescriptor.java:typeof_BoxCreator_InferenceRule.java:typeof_Box_ValueOperation_InferenceRule.java" />
 </product>
 

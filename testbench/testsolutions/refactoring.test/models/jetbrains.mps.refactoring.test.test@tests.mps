@@ -6,7 +6,7 @@
     <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="14" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="-1" />
@@ -386,11 +386,12 @@
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
-      <concept id="2469893808086079682" name="jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule" flags="ng" index="PFCIn">
-        <child id="2469893808086079721" name="moduleReference" index="PFCIW" />
-      </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG" />
       <concept id="3648723375513868532" name="jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation" flags="ng" index="Vyspw" />
+      <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
+        <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
+        <property id="3542851458883439832" name="languageId" index="2V$B1T" />
+      </concept>
       <concept id="1171500988903" name="jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation" flags="nn" index="32TBzR" />
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
@@ -3431,11 +3432,9 @@
                                         </node>
                                       </node>
                                       <node concept="pHN19" id="4Rb4I4dyl0s" role="3uHU7w">
-                                        <node concept="PFCIn" id="4Rb4I4dyl0t" role="2V$M_3">
-                                          <node concept="20RdaH" id="4Rb4I4dyl0u" role="PFCIW">
-                                            <property role="20Rdg5" value="3e00419d-4801-4bad-bf2a-50479218fb53" />
-                                            <property role="20Rdg7" value="jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage" />
-                                          </node>
+                                        <node concept="2V$Bhx" id="5ZqXG2lwfgd" role="2V$M_3">
+                                          <property role="2V$B1T" value="3e00419d-4801-4bad-bf2a-50479218fb53" />
+                                          <property role="2V$B1Q" value="testmaterial.moveConcept.SourceLanguage" />
                                         </node>
                                       </node>
                                     </node>
@@ -3473,11 +3472,9 @@
                                         </node>
                                       </node>
                                       <node concept="pHN19" id="4Rb4I4dyl0I" role="3uHU7w">
-                                        <node concept="PFCIn" id="4Rb4I4dyl0J" role="2V$M_3">
-                                          <node concept="20RdaH" id="4Rb4I4dyl0K" role="PFCIW">
-                                            <property role="20Rdg5" value="2f6eb168-4811-48ad-becb-56fd47d21d59" />
-                                            <property role="20Rdg7" value="jetbrains.mps.refactoring.testmaterial.moveConcept.TargetLanguage" />
-                                          </node>
+                                        <node concept="2V$Bhx" id="5ZqXG2lwfge" role="2V$M_3">
+                                          <property role="2V$B1T" value="2f6eb168-4811-48ad-becb-56fd47d21d59" />
+                                          <property role="2V$B1Q" value="testmaterial.moveConcept.TargetLanguage" />
                                         </node>
                                       </node>
                                     </node>
@@ -3783,11 +3780,9 @@
                                         </node>
                                       </node>
                                       <node concept="pHN19" id="4Rb4I4dvlC7" role="3uHU7w">
-                                        <node concept="PFCIn" id="4Rb4I4dvlCb" role="2V$M_3">
-                                          <node concept="20RdaH" id="4Rb4I4dvlBZ" role="PFCIW">
-                                            <property role="20Rdg5" value="3e00419d-4801-4bad-bf2a-50479218fb53" />
-                                            <property role="20Rdg7" value="jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage" />
-                                          </node>
+                                        <node concept="2V$Bhx" id="5ZqXG2lwfgf" role="2V$M_3">
+                                          <property role="2V$B1T" value="3e00419d-4801-4bad-bf2a-50479218fb53" />
+                                          <property role="2V$B1Q" value="testmaterial.moveConcept.SourceLanguage" />
                                         </node>
                                       </node>
                                     </node>
@@ -3825,11 +3820,9 @@
                                         </node>
                                       </node>
                                       <node concept="pHN19" id="4Rb4I4dvlAz" role="3uHU7w">
-                                        <node concept="PFCIn" id="4Rb4I4dvlBv" role="2V$M_3">
-                                          <node concept="20RdaH" id="4Rb4I4dvlBx" role="PFCIW">
-                                            <property role="20Rdg5" value="2f6eb168-4811-48ad-becb-56fd47d21d59" />
-                                            <property role="20Rdg7" value="jetbrains.mps.refactoring.testmaterial.moveConcept.TargetLanguage" />
-                                          </node>
+                                        <node concept="2V$Bhx" id="5ZqXG2lwfgg" role="2V$M_3">
+                                          <property role="2V$B1T" value="2f6eb168-4811-48ad-becb-56fd47d21d59" />
+                                          <property role="2V$B1Q" value="testmaterial.moveConcept.TargetLanguage" />
                                         </node>
                                       </node>
                                     </node>

@@ -103,12 +103,12 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
             Iterable<SProperty> properties1 = getInstanceA().getProperties();
             Assert.assertFalse(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
               public boolean accept(SProperty it) {
-                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage");
+                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "testmaterial.moveConcept.SourceLanguage");
               }
             }));
             Assert.assertTrue(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
               public boolean accept(SProperty it) {
-                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "jetbrains.mps.refactoring.testmaterial.moveConcept.TargetLanguage");
+                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "testmaterial.moveConcept.TargetLanguage");
               }
             }));
           }
@@ -155,12 +155,12 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
             }));
             Assert.assertFalse(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
               public boolean accept(SProperty it) {
-                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage");
+                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x3e00419d48014badL, 0xbf2a50479218fb53L, "testmaterial.moveConcept.SourceLanguage");
               }
             }));
             Assert.assertTrue(Sequence.fromIterable(properties1).any(new IWhereFilter<SProperty>() {
               public boolean accept(SProperty it) {
-                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "jetbrains.mps.refactoring.testmaterial.moveConcept.TargetLanguage");
+                return it.getOwner().getLanguage() == MetaAdapterFactory.getLanguage(0x2f6eb168481148adL, 0xbecb56fd47d21d59L, "testmaterial.moveConcept.TargetLanguage");
               }
             }));
           }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="15yw1851m87iiuevb5i7802hmfx8fw4">
+<product version="3" modelHash="1yi03kyz1bw1odfkaakzynr79u36ic1">
   <files names="AbstractClassifierSpecification__BehaviorDescriptor.java:AbstractMethodSpecification__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:DirectClassifierSpecification__BehaviorDescriptor.java:DirectMethodSpecification__BehaviorDescriptor.java:FQNameClassifierSpecification__BehaviorDescriptor.java:FQNameMethodSpecification__BehaviorDescriptor.java:MigrationScriptPart_Instance_Predicate__BehaviorDescriptor.java:MigrationScriptPart_Instance_Updater__BehaviorDescriptor.java:PullUpMethod__BehaviorDescriptor.java" />
 </product>
 
