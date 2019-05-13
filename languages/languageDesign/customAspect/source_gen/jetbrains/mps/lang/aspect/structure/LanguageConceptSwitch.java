@@ -15,10 +15,8 @@ public final class LanguageConceptSwitch {
   public static final int GenerationDescriptor_Class = 3;
   public static final int IAspectConcept = 4;
   public static final int LanguageAspectDescriptor = 5;
-  public static final int LanguageReference = 6;
-  public static final int OldHelpURL = 7;
-  public static final int SimpleAspectOrderRef = 8;
-  public static final int SimpleLanguageAspectDescriptor = 9;
+  public static final int SimpleAspectOrderRef = 6;
+  public static final int SimpleLanguageAspectDescriptor = 7;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL);
@@ -28,8 +26,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x5c2c36f4ea0d3b2fL, GenerationDescriptor_Class);
     builder.put(0x7bcf8452e0dac0c9L, IAspectConcept);
     builder.put(0x2d72cdccef70b086L, LanguageAspectDescriptor);
-    builder.put(0x2fa4a8cdf0c9c87aL, LanguageReference);
-    builder.put(0x47d8f9811b73d397L, OldHelpURL);
     builder.put(0x26c6e1a7a20d8efL, SimpleAspectOrderRef);
     builder.put(0x2fa4a8cdf0c9b076L, SimpleLanguageAspectDescriptor);
     myIndex = builder.seal();

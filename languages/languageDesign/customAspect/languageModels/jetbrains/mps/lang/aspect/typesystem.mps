@@ -6,8 +6,6 @@
   </languages>
   <imports>
     <import index="tpf8" ref="r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)" />
-    <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
-    <import index="ghfj" ref="r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)" />
     <import index="hfbu" ref="r:2ea71bfd-fe13-4525-9346-023b05757b39(jetbrains.mps.lang.aspect.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
@@ -21,13 +19,6 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
-      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
-        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
-      <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
-      <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
-        <child id="1068580123156" name="expression" index="3clFbG" />
-      </concept>
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
@@ -36,10 +27,6 @@
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
-        <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
-        <child id="1068499141038" name="actualArgument" index="37wK5m" />
-      </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
@@ -107,9 +94,6 @@
       </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
-      </concept>
-      <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
-        <reference id="1138056395725" name="property" index="3TsBF5" />
       </concept>
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
@@ -217,49 +201,6 @@
     <node concept="1YaCAy" id="4F0TDiuCZeY" role="1YuTPh">
       <property role="TrG5h" value="amd" />
       <ref role="1YaFvo" to="hfbu:4F0TDiuCZaK" resolve="AspectMethodDescriptor" />
-    </node>
-  </node>
-  <node concept="18kY7G" id="4voYo4rtbTL">
-    <property role="TrG5h" value="check_URL" />
-    <property role="3GE5qa" value="url" />
-    <node concept="3clFbS" id="4voYo4rtbTM" role="18ibNy">
-      <node concept="3clFbJ" id="7Ift4HgbkWL" role="3cqZAp">
-        <node concept="3clFbS" id="7Ift4HgbkWN" role="3clFbx">
-          <node concept="3cpWs6" id="7Ift4HgbmQK" role="3cqZAp" />
-        </node>
-        <node concept="2OqwBi" id="7Ift4Hgbmnn" role="3clFbw">
-          <node concept="2OqwBi" id="7Ift4Hgble5" role="2Oq$k0">
-            <node concept="1YBJjd" id="7Ift4Hgbl5u" role="2Oq$k0">
-              <ref role="1YBMHb" node="4voYo4rtbTO" resolve="url" />
-            </node>
-            <node concept="3TrcHB" id="7Ift4HgblnY" role="2OqNvi">
-              <ref role="3TsBF5" to="hfbu:4voYo4rsXeo" resolve="url" />
-            </node>
-          </node>
-          <node concept="17RlXB" id="7Ift4HgbmQu" role="2OqNvi" />
-        </node>
-      </node>
-      <node concept="3clFbF" id="46nPloesjJ3" role="3cqZAp">
-        <node concept="2YIFZM" id="46nPloesjS0" role="3clFbG">
-          <ref role="37wK5l" to="ghfj:46nPloeqBPx" resolve="check" />
-          <ref role="1Pybhc" to="ghfj:46nPloeq$wk" resolve="URLCheckUtil" />
-          <node concept="1YBJjd" id="46nPloesjSj" role="37wK5m">
-            <ref role="1YBMHb" node="4voYo4rtbTO" resolve="url" />
-          </node>
-          <node concept="2OqwBi" id="46nPloesk9z" role="37wK5m">
-            <node concept="1YBJjd" id="46nPloesjYF" role="2Oq$k0">
-              <ref role="1YBMHb" node="4voYo4rtbTO" resolve="url" />
-            </node>
-            <node concept="3TrcHB" id="46nPloesklx" role="2OqNvi">
-              <ref role="3TsBF5" to="hfbu:4voYo4rsXeo" resolve="url" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="4voYo4rtbTO" role="1YuTPh">
-      <property role="TrG5h" value="url" />
-      <ref role="1YaFvo" to="hfbu:4voYo4rsXen" resolve="OldHelpURL" />
     </node>
   </node>
 </model>

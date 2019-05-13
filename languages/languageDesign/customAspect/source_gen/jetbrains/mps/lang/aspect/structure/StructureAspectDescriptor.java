@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
-import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAspectMethodDescriptor = createDescriptorForAspectMethodDescriptor();
@@ -22,8 +21,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptGenerationDescriptor_Class = createDescriptorForGenerationDescriptor_Class();
   /*package*/ final ConceptDescriptor myConceptIAspectConcept = createDescriptorForIAspectConcept();
   /*package*/ final ConceptDescriptor myConceptLanguageAspectDescriptor = createDescriptorForLanguageAspectDescriptor();
-  /*package*/ final ConceptDescriptor myConceptLanguageReference = createDescriptorForLanguageReference();
-  /*package*/ final ConceptDescriptor myConceptOldHelpURL = createDescriptorForOldHelpURL();
   /*package*/ final ConceptDescriptor myConceptSimpleAspectOrderRef = createDescriptorForSimpleAspectOrderRef();
   /*package*/ final ConceptDescriptor myConceptSimpleLanguageAspectDescriptor = createDescriptorForSimpleLanguageAspectDescriptor();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -37,7 +34,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    deps.extendedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
     deps.extendedLanguage(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, "jetbrains.mps.lang.util.order");
     deps.aggregatedLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures");
     deps.aggregatedLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
@@ -47,7 +43,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAspectMethodDescriptor, myConceptGenerationDescriptor, myConceptGenerationDescriptor_ByInterface, myConceptGenerationDescriptor_Class, myConceptIAspectConcept, myConceptLanguageAspectDescriptor, myConceptLanguageReference, myConceptOldHelpURL, myConceptSimpleAspectOrderRef, myConceptSimpleLanguageAspectDescriptor);
+    return Arrays.asList(myConceptAspectMethodDescriptor, myConceptGenerationDescriptor, myConceptGenerationDescriptor_ByInterface, myConceptGenerationDescriptor_Class, myConceptIAspectConcept, myConceptLanguageAspectDescriptor, myConceptSimpleAspectOrderRef, myConceptSimpleLanguageAspectDescriptor);
   }
 
   @Override
@@ -66,10 +62,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIAspectConcept;
       case LanguageConceptSwitch.LanguageAspectDescriptor:
         return myConceptLanguageAspectDescriptor;
-      case LanguageConceptSwitch.LanguageReference:
-        return myConceptLanguageReference;
-      case LanguageConceptSwitch.OldHelpURL:
-        return myConceptOldHelpURL;
       case LanguageConceptSwitch.SimpleAspectOrderRef:
         return myConceptSimpleAspectOrderRef;
       case LanguageConceptSwitch.SimpleLanguageAspectDescriptor:
@@ -144,22 +136,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForLanguageReference() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.aspect", "LanguageReference", 0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9c87aL);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.smodel.structure.LanguageRefExpression", 0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L);
-    b.origin("r:2ea71bfd-fe13-4525-9346-023b05757b39(jetbrains.mps.lang.aspect.structure)/3433054418424678522");
-    b.version(2);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForOldHelpURL() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.aspect", "OldHelpURL", 0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x47d8f9811b73d397L);
-    b.class_(false, false, false);
-    b.origin("r:2ea71bfd-fe13-4525-9346-023b05757b39(jetbrains.mps.lang.aspect.structure)/5177162104569058199");
-    b.version(2);
-    b.property("url", 0x47d8f9811b73d398L).type(PrimitiveTypeId.STRING).origin("5177162104569058200").done();
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForSimpleAspectOrderRef() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.aspect", "SimpleAspectOrderRef", 0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x26c6e1a7a20d8efL);
     b.class_(false, false, false);
@@ -175,13 +151,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL);
     b.origin("r:2ea71bfd-fe13-4525-9346-023b05757b39(jetbrains.mps.lang.aspect.structure)/3433054418424672374");
     b.version(2);
-    b.aggregate("oldMainLanguages", 0x2fa4a8cdf0c9b094L).target(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9c87aL).optional(true).ordered(true).multiple(true).origin("3433054418424672404").done();
-    b.aggregate("oldAdditionalLanguages", 0x2fa4a8cdf0c9b096L).target(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9c87aL).optional(true).ordered(true).multiple(true).origin("3433054418424672406").done();
-    b.aggregate("mainLanguages", 0x54be5be5620c1b77L).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x500fe561b6da3df1L).optional(false).ordered(true).multiple(true).origin("6106419185511570295").done();
-    b.aggregate("additionalLanguages", 0x54be5be5620c1b7dL).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x500fe561b6da3df1L).optional(true).ordered(true).multiple(true).origin("6106419185511570301").done();
+    b.aggregate("mainLanguages", 0x54be5be5620c1b77L).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L).optional(false).ordered(true).multiple(true).origin("6106419185511570295").done();
+    b.aggregate("additionalLanguages", 0x54be5be5620c1b7dL).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L).optional(true).ordered(true).multiple(true).origin("6106419185511570301").done();
     b.aggregate("devkit", 0x721adb764b494af2L).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3f4dbeL).optional(true).ordered(true).multiple(false).origin("8222125370833980146").done();
     b.aggregate("icon", 0x2fa4a8cdf0cff495L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL).optional(true).ordered(true).multiple(false).origin("3433054418425083029").done();
-    b.aggregate("oldHelpUrl", 0x47d8f9811b759b89L).target(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x47d8f9811b73d397L).optional(true).ordered(true).multiple(false).origin("5177162104569174921").done();
     b.aggregate("helpUrl", 0x4197d5560e700dfbL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L).optional(true).ordered(true).multiple(false).origin("4726480899534753275").done();
     b.aggregate("order", 0x2085244dcb121e81L).target(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78145L).optional(true).ordered(true).multiple(false).origin("2343319097654255233").done();
     return b.create();

@@ -34,7 +34,6 @@
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
-        <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
       <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
@@ -45,10 +44,6 @@
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
         <child id="6327362524875300597" name="icon" index="rwd14" />
         <child id="1169129564478" name="implements" index="PzmwI" />
-      </concept>
-      <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
-        <property id="241647608299431129" name="propertyId" index="IQ2nx" />
-        <reference id="1082985295845" name="dataType" index="AX2Wp" />
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
@@ -83,28 +78,12 @@
     <property role="19KtqR" value="true" />
     <property role="EcuMT" value="3433054418424672374" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="2Y$EcRKMr2k" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="oldMainLanguages" />
-      <property role="20lbJX" value="0..n" />
-      <property role="IQ2ns" value="3433054418424672404" />
-      <ref role="20lvS9" node="2Y$EcRKMsxU" resolve="LanguageReference" />
-      <node concept="asaX9" id="5iYmYly32nt" role="lGtFl" />
-    </node>
-    <node concept="1TJgyj" id="2Y$EcRKMr2m" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="oldAdditionalLanguages" />
-      <property role="20lbJX" value="0..n" />
-      <property role="IQ2ns" value="3433054418424672406" />
-      <ref role="20lvS9" node="2Y$EcRKMsxU" resolve="LanguageReference" />
-      <node concept="asaX9" id="5iYmYly32nv" role="lGtFl" />
-    </node>
     <node concept="1TJgyj" id="5iYmYly31HR" role="1TKVEi">
       <property role="IQ2ns" value="6106419185511570295" />
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="mainLanguages" />
       <property role="20lbJX" value="1..n" />
-      <ref role="20lvS9" to="tp25:50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+      <ref role="20lvS9" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
       <node concept="asaX9" id="78qQRpbikGe" role="lGtFl">
         <property role="YLPcu" value="2018.1" />
         <property role="YLQ7P" value="use devkit instead" />
@@ -115,7 +94,7 @@
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="additionalLanguages" />
       <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" to="tp25:50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+      <ref role="20lvS9" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
     </node>
     <node concept="1TJgyj" id="78qQRpbikFM" role="1TKVEi">
       <property role="IQ2ns" value="8222125370833980146" />
@@ -132,16 +111,6 @@
       <property role="20kJfa" value="icon" />
       <property role="IQ2ns" value="3433054418425083029" />
       <ref role="20lvS9" to="1oap:7Mb2akaesqV" resolve="FileIcon" />
-    </node>
-    <node concept="1TJgyj" id="4voYo4rtpI9" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="oldHelpUrl" />
-      <property role="IQ2ns" value="5177162104569174921" />
-      <ref role="20lvS9" node="4voYo4rsXen" resolve="OldHelpURL" />
-      <node concept="asaX9" id="46nPloes0RT" role="lGtFl">
-        <property role="YLPcu" value="2017.3" />
-        <property role="YLQ7P" value="use helpUrl" />
-      </node>
     </node>
     <node concept="1TJgyj" id="46nPloes0RV" role="1TKVEi">
       <property role="IQ2ns" value="4726480899534753275" />
@@ -164,13 +133,6 @@
     <node concept="1QGGSu" id="3RsnzA_S3ob" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/aspect.png" />
     </node>
-  </node>
-  <node concept="1TIwiD" id="2Y$EcRKMsxU">
-    <property role="3GE5qa" value="simple" />
-    <property role="TrG5h" value="LanguageReference" />
-    <property role="EcuMT" value="3433054418424678522" />
-    <ref role="1TJDcQ" to="tp25:3TEgbCBRn3N" resolve="LanguageRefExpression" />
-    <node concept="asaX9" id="5HOQcpHJWvi" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="5KGdJjE3jGJ">
     <property role="3GE5qa" value="simple.gen.trivial" />
@@ -247,21 +209,6 @@
   <node concept="PlHQZ" id="7Jfx5bwQG39">
     <property role="TrG5h" value="IAspectConcept" />
     <property role="EcuMT" value="8921494878338859209" />
-  </node>
-  <node concept="1TIwiD" id="4voYo4rsXen">
-    <property role="TrG5h" value="OldHelpURL" />
-    <property role="3GE5qa" value="url" />
-    <property role="EcuMT" value="5177162104569058199" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="4voYo4rsXeo" role="1TKVEl">
-      <property role="TrG5h" value="url" />
-      <property role="IQ2nx" value="5177162104569058200" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-    <node concept="asaX9" id="46nPloeqmpj" role="lGtFl">
-      <property role="YLQ7P" value="use HelpURL from resources language" />
-      <property role="YLPcu" value="2017.3" />
-    </node>
   </node>
   <node concept="1TIwiD" id="9GrxDU8dzJ">
     <property role="EcuMT" value="174635545557784815" />

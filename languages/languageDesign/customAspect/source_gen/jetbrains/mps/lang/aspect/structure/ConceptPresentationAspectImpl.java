@@ -15,8 +15,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GenerationDescriptor_Class;
   private ConceptPresentation props_IAspectConcept;
   private ConceptPresentation props_LanguageAspectDescriptor;
-  private ConceptPresentation props_LanguageReference;
-  private ConceptPresentation props_OldHelpURL;
   private ConceptPresentation props_SimpleAspectOrderRef;
   private ConceptPresentation props_SimpleLanguageAspectDescriptor;
 
@@ -65,22 +63,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LanguageAspectDescriptor = cpb.create();
         }
         return props_LanguageAspectDescriptor;
-      case LanguageConceptSwitch.LanguageReference:
-        if (props_LanguageReference == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("LanguageReference");
-          props_LanguageReference = cpb.create();
-        }
-        return props_LanguageReference;
-      case LanguageConceptSwitch.OldHelpURL:
-        if (props_OldHelpURL == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("OldHelpURL");
-          props_OldHelpURL = cpb.create();
-        }
-        return props_OldHelpURL;
       case LanguageConceptSwitch.SimpleAspectOrderRef:
         if (props_SimpleAspectOrderRef == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -91,12 +73,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.SimpleLanguageAspectDescriptor:
         if (props_SimpleLanguageAspectDescriptor == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L);
-          cpb.deprecateAggregation(0x2fa4a8cdf0c9b094L, "oldMainLanguages");
-          cpb.deprecateAggregation(0x2fa4a8cdf0c9b096L, "oldAdditionalLanguages");
           cpb.deprecateAggregation(0x54be5be5620c1b77L, "mainLanguages");
-          cpb.deprecateAggregation(0x47d8f9811b759b89L, "oldHelpUrl");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a6a0a9b0l);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0j);
           props_SimpleLanguageAspectDescriptor = cpb.create();
         }
         return props_SimpleLanguageAspectDescriptor;
