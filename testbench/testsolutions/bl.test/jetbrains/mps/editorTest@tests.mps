@@ -15560,12 +15560,12 @@
             </node>
           </node>
         </node>
-        <node concept="LIFWc" id="iYIY04ZtoP" role="lGtFl">
+        <node concept="LIFWc" id="13PzmVuBcTx" role="lGtFl">
           <property role="LIFWa" value="0" />
           <property role="OXtK3" value="true" />
           <property role="p6zMq" value="0" />
           <property role="p6zMs" value="0" />
-          <property role="LIFWd" value="property_name" />
+          <property role="LIFWd" value="ReferencePresentation_a4wjjz_a0a0a" />
         </node>
       </node>
     </node>
@@ -54899,12 +54899,12 @@
             <node concept="2YIFZM" id="7mvMFqc9Pj2" role="3clFbG">
               <ref role="37wK5l" node="7mvMFqc9JZV" resolve="method" />
               <ref role="1Pybhc" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
-              <node concept="LIFWc" id="7mvMFqccXwv" role="lGtFl">
+              <node concept="LIFWc" id="13PzmVu_s$Z" role="lGtFl">
                 <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="0" />
                 <property role="p6zMs" value="0" />
-                <property role="LIFWd" value="property_name1" />
+                <property role="LIFWd" value="property_name" />
               </node>
             </node>
           </node>
@@ -54919,11 +54919,11 @@
         <node concept="3cqZAl" id="7mvMFqc9P5y" role="3clF45" />
         <node concept="3Tm1VV" id="7mvMFqc9P5z" role="1B3o_S" />
         <node concept="3clFbS" id="7mvMFqc9P5$" role="3clF47">
-          <node concept="3clFbF" id="7mvMFqc9P5_" role="3cqZAp">
-            <node concept="10M0yZ" id="7mvMFqccXgg" role="3clFbG">
+          <node concept="3clFbF" id="13PzmVu$ON7" role="3cqZAp">
+            <node concept="10M0yZ" id="13PzmVu$PKi" role="3clFbG">
               <ref role="3cqZAo" node="7mvMFqc9X7l" resolve="field" />
               <ref role="1PxDUh" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
-              <node concept="LIFWc" id="7mvMFqccXu6" role="lGtFl">
+              <node concept="LIFWc" id="13PzmVu$QSi" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="5" />
@@ -55041,12 +55041,12 @@
             <node concept="2YIFZM" id="7mvMFqcd6bC" role="3clFbG">
               <ref role="37wK5l" node="7mvMFqc9JZV" resolve="method" />
               <ref role="1Pybhc" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
-              <node concept="LIFWc" id="7mvMFqcd6bD" role="lGtFl">
+              <node concept="LIFWc" id="13PzmVuA0Zu" role="lGtFl">
                 <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="0" />
                 <property role="p6zMs" value="0" />
-                <property role="LIFWd" value="property_name1" />
+                <property role="LIFWd" value="property_name" />
               </node>
             </node>
           </node>
@@ -56399,12 +56399,12 @@
             <node concept="2YIFZM" id="3RD1KQWOGiZ" role="3clFbG">
               <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
               <ref role="37wK5l" to="wyt6:~Math.max(double,double)" resolve="max" />
-              <node concept="LIFWc" id="3RD1KQWOGj0" role="lGtFl">
-                <property role="LIFWa" value="0" />
+              <node concept="LIFWc" id="13PzmVuCRHe" role="lGtFl">
+                <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="0" />
                 <property role="p6zMs" value="4" />
-                <property role="LIFWd" value="property_name" />
+                <property role="LIFWd" value="ReferencePresentation_a4wjjz_a0a0a" />
               </node>
             </node>
           </node>
@@ -56427,12 +56427,12 @@
             <node concept="2YIFZM" id="3RD1KQWOGj9" role="3clFbG">
               <ref role="37wK5l" to="wyt6:~Math.max(double,double)" resolve="max" />
               <ref role="1Pybhc" to="82uw:~Predicate" resolve="Predicate" />
-              <node concept="LIFWc" id="27xKKx7Azi4" role="lGtFl">
+              <node concept="LIFWc" id="13PzmVuCSs9" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="9" />
                 <property role="p6zMs" value="9" />
-                <property role="LIFWd" value="property_name" />
+                <property role="LIFWd" value="ReferencePresentation_a4wjjz_a0a0a" />
               </node>
             </node>
           </node>
@@ -67490,12 +67490,12 @@
             <node concept="2YIFZM" id="4ZFm$8SQMdR" role="3clFbG">
               <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
               <ref role="37wK5l" to="33ny:~Collections.emptySet()" resolve="emptySet" />
-              <node concept="LIFWc" id="4ZFm$8SQMs3" role="lGtFl">
+              <node concept="LIFWc" id="13PzmVuCj$Y" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="11" />
                 <property role="p6zMs" value="11" />
-                <property role="LIFWd" value="property_name" />
+                <property role="LIFWd" value="ReferencePresentation_a4wjjz_a0a0a" />
               </node>
             </node>
           </node>
@@ -68476,12 +68476,12 @@
             <node concept="2YIFZM" id="4ZFm$8ToA3L" role="3clFbG">
               <ref role="37wK5l" node="4ZFm$8ToA2J" resolve="main" />
               <ref role="1Pybhc" node="4ZFm$8SR6zX" resolve="ClazzWithMethod" />
-              <node concept="LIFWc" id="4ZFm$8ToAer" role="lGtFl">
+              <node concept="LIFWc" id="13PzmVuBJ_q" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="15" />
                 <property role="p6zMs" value="15" />
-                <property role="LIFWd" value="property_name" />
+                <property role="LIFWd" value="ReferencePresentation_a4wjjz_a0a0a" />
               </node>
             </node>
           </node>

@@ -12,6 +12,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration__BehaviorDescriptor;
 
 public class PresentationProviders {
+  public static final IReferentPresentationProvider PRESENTATION_a4wjjz_a0a0a0 = new IReferentPresentationProvider() {
+    @NotNull
+    @Override
+    public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
+      return (String) Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(targetNode, sourceNode);
+    }
+  };
   public static final IReferentPresentationProvider PRESENTATION_ji2wba_a0a0a0 = new IReferentPresentationProvider() {
     @NotNull
     @Override
