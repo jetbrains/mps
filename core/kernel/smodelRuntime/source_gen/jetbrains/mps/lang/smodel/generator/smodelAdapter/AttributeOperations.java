@@ -178,23 +178,45 @@ public class AttributeOperations {
   public static boolean hasChildAttributes(SNode node) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"))).isNotEmpty();
   }
-  public static class AttributeList extends AbstractSNodeList {
-    private IAttributeDescriptor myAttributeDescriptor;
+  public static class AttributeList extends AbstractMutableChildrenList {
+    private SNode myNode;
+    private IAttributeDescriptor myDescriptor;
     public AttributeList(SNode attributed, IAttributeDescriptor descriptor) {
-      super(attributed, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), (List) Sequence.fromIterable(AttributeOperations.getAttributes(SNodeOperations.cast(attributed, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept")), descriptor)).toListSequence());
-      myAttributeDescriptor = descriptor;
+      myDescriptor = descriptor;
+      myNode = attributed;
+    }
+
+    @Override
+    protected Iterable<? extends SNode> children() {
+      return AttributeOperations.getAttributes(myNode, myDescriptor);
     }
     @Override
-    protected void insertAfter(SNode node, SNode anchorNode) {
-      AttributeOperations.insertAttribute(myReferenceContainer, (SNode) anchorNode, myAttributeDescriptor, (SNode) node);
+    protected void insertBefore(SNode node, SNode anchor) {
+      SNodeOperations.insertPrevSiblingChild(((SNode) anchor), (SNode) node);
+      myDescriptor.update(node);
     }
+
     @Override
-    protected void doAddReference(SNode node) {
-      AttributeOperations.addAttribute(myReferenceContainer, myAttributeDescriptor, (SNode) node);
+    public boolean add(SNode node) {
+      AttributeOperations.addAttribute(myNode, myDescriptor, (SNode) node);
+      return true;
     }
+
     @Override
-    protected void doRemoveReference(SNode node) {
-      AttributeOperations.deleteAttribute(myReferenceContainer, myAttributeDescriptor, (SNode) node);
+    public boolean remove(Object o) {
+      if (!((o instanceof SNode))) {
+        return false;
+      }
+      SNode n = (SNode) o;
+      if (n.getParent() != myNode) {
+        return false;
+      }
+      if (!((SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute"))))) {
+        return false;
+      }
+
+      AttributeOperations.deleteAttribute(myNode, myDescriptor, (SNode) n);
+      return true;
     }
   }
 }
