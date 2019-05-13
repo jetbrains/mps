@@ -16696,6 +16696,16 @@
         </node>
       </node>
       <node concept="3clFbS" id="5kAj9bZdodc" role="3clF47">
+        <node concept="3SKdUt" id="6kn$gdj4gXK" role="3cqZAp">
+          <node concept="3SKdUq" id="6kn$gdj4gXM" role="3SKWNk">
+            <property role="3SKdUp" value="TODO this is not fair, since there's no guarantee any iterator will work after we remove an element already returned by next()" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="6kn$gdj6jbJ" role="3cqZAp">
+          <node concept="3SKdUq" id="6kn$gdj6jbL" role="3SKWNk">
+            <property role="3SKdUp" value="TODO it's better to somehow provide &quot;remove&quot; method for the result of SNode.getChildren(role), e.g. removing the &quot;non-modifiable&quot; contract" />
+          </node>
+        </node>
         <node concept="3cpWs6" id="6mjt9ZinXgg" role="3cqZAp">
           <node concept="2ShNRf" id="6mjt9Zio1uT" role="3cqZAk">
             <node concept="YeOm9" id="6mjt9ZiodYu" role="2ShVmc">
@@ -17543,40 +17553,6 @@
       <node concept="37vLTG" id="5kAj9bZdoiJ" role="3clF46">
         <property role="TrG5h" value="index" />
         <node concept="10Oyi0" id="5kAj9bZdoiK" role="1tU5fm" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="5kAj9bZdoiL" role="jymVt" />
-    <node concept="3clFb_" id="5kAj9bZdoiM" role="jymVt">
-      <property role="TrG5h" value="subList" />
-      <node concept="2AHcQZ" id="5kAj9bZdoiN" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="5kAj9bZdoiO" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="37vLTG" id="5kAj9bZdoiP" role="3clF46">
-        <property role="TrG5h" value="fromIndex" />
-        <node concept="10Oyi0" id="5kAj9bZdoiQ" role="1tU5fm" />
-      </node>
-      <node concept="37vLTG" id="5kAj9bZdoiR" role="3clF46">
-        <property role="TrG5h" value="toIndex" />
-        <node concept="10Oyi0" id="5kAj9bZdoiS" role="1tU5fm" />
-      </node>
-      <node concept="3clFbS" id="5kAj9bZdoiT" role="3clF47">
-        <node concept="YS8fn" id="5kAj9bZdoiU" role="3cqZAp">
-          <node concept="2ShNRf" id="5kAj9bZdoiV" role="YScLw">
-            <node concept="1pGfFk" id="5kAj9bZdoiW" role="2ShVmc">
-              <ref role="37wK5l" to="wyt6:~UnsupportedOperationException.&lt;init&gt;()" resolve="UnsupportedOperationException" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="5kAj9bZdoiX" role="1B3o_S" />
-      <node concept="3uibUv" id="5kAj9bZdoiY" role="3clF45">
-        <ref role="3uigEE" to="33ny:~List" resolve="List" />
-        <node concept="3uibUv" id="5kAj9bZdoiZ" role="11_B2D">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="5kAj9bZdoj0" role="jymVt" />

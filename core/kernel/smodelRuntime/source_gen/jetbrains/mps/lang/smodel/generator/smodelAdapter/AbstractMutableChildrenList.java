@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import java.util.ListIterator;
-import org.jetbrains.annotations.NotNull;
-import java.util.List;
 
 public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
   @Override
@@ -29,6 +27,8 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
 
   @Override
   public Iterator<SNode> iterator() {
+    // TODO this is not fair, since there's no guarantee any iterator will work after we remove an element already returned by next() 
+    // TODO it's better to somehow provide "remove" method for the result of SNode.getChildren(role), e.g. removing the "non-modifiable" contract 
     return new Iterator<SNode>() {
       private SNode last = null;
       private Iterator<SNode> ci = childrenIterator();
@@ -152,12 +152,6 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
       throw new IndexOutOfBoundsException();
     }
     return new AbstractMutableChildrenList.ForwardOnlyImmutableListIterator(childrenIteratorShifted(index), index);
-  }
-
-  @NotNull
-  @Override
-  public List<SNode> subList(int fromIndex, int toIndex) {
-    throw new UnsupportedOperationException();
   }
 
   private class ForwardOnlyImmutableListIterator implements ListIterator<SNode> {
