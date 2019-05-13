@@ -66,9 +66,13 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       public LanguageAspectGenerator getGenerator() {
         return null;
       }
+      @NotNull
+      public Collection<SLanguage> getAdditionalLanguages() {
+        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, "jetbrains.mps.lang.editor.table"));
+      }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a6a0a0a1;
+        return IconContainer.RESOURCE_a0a7a0a0a1;
       }
       @Nullable
       public String getHelpUrl() {
