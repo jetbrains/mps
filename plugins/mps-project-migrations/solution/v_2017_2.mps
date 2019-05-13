@@ -5,7 +5,7 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="14" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
   </languages>
   <imports>
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
@@ -163,11 +163,13 @@
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
     </language>
-    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="427659576753752243" name="jetbrains.mps.lang.smodel.structure.ModulePointer" flags="ng" index="20RdaH">
-        <property id="427659576753753627" name="moduleId" index="20Rdg5" />
-        <property id="427659576753753625" name="moduleName" index="20Rdg7" />
+    <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
+      <concept id="361130699826193249" name="jetbrains.mps.lang.modelapi.structure.ModulePointer" flags="ng" index="1dCxOk">
+        <property id="1863527487546097500" name="moduleId" index="1XweGW" />
+        <property id="1863527487545993577" name="moduleName" index="1XxBO9" />
       </concept>
+    </language>
+    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="3506770386464365589" name="jetbrains.mps.lang.smodel.structure.Model_PointerOperation" flags="ng" index="aIX43" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
@@ -412,9 +414,9 @@
             </node>
             <node concept="2OqwBi" id="3MU8x$ZVtjK" role="33vP2m">
               <node concept="37shsh" id="3MU8x$ZVtjL" role="2Oq$k0">
-                <node concept="20RdaH" id="3MU8x$ZVtjM" role="37shsm">
-                  <property role="20Rdg5" value="49808fad-9d41-4b96-83fa-9231640f6b2b" />
-                  <property role="20Rdg7" value="JUnit" />
+                <node concept="1dCxOk" id="5ZqXG2n7xKF" role="37shsm">
+                  <property role="1XxBO9" value="JUnit" />
+                  <property role="1XweGW" value="49808fad-9d41-4b96-83fa-9231640f6b2b" />
                 </node>
               </node>
               <node concept="liA8E" id="3MU8x$ZVtjN" role="2OqNvi">
@@ -455,9 +457,9 @@
             </node>
             <node concept="2OqwBi" id="5LaVA51oWqo" role="33vP2m">
               <node concept="37shsh" id="5LaVA51oWqp" role="2Oq$k0">
-                <node concept="20RdaH" id="5LaVA51oYig" role="37shsm">
-                  <property role="20Rdg5" value="1fd846c3-c5f9-4b9e-9ecc-e716f7149f86" />
-                  <property role="20Rdg7" value="Hamcrest" />
+                <node concept="1dCxOk" id="5ZqXG2n7xKG" role="37shsm">
+                  <property role="1XxBO9" value="Hamcrest" />
+                  <property role="1XweGW" value="1fd846c3-c5f9-4b9e-9ecc-e716f7149f86" />
                 </node>
               </node>
               <node concept="liA8E" id="5LaVA51oWqr" role="2OqNvi">
@@ -626,9 +628,9 @@
                   </node>
                   <node concept="2OqwBi" id="5LaVA51n8RZ" role="3uHU7w">
                     <node concept="37shsh" id="5LaVA51n7bi" role="2Oq$k0">
-                      <node concept="20RdaH" id="5LaVA51n7YJ" role="37shsm">
-                        <property role="20Rdg5" value="83f155ff-422c-4b5a-a2f2-b459302dd215" />
-                        <property role="20Rdg7" value="jetbrains.mps.baseLanguage.unitTest.libs" />
+                      <node concept="1dCxOk" id="5ZqXG2n7xKH" role="37shsm">
+                        <property role="1XxBO9" value="jetbrains.mps.baseLanguage.unitTest.libs" />
+                        <property role="1XweGW" value="83f155ff-422c-4b5a-a2f2-b459302dd215" />
                       </node>
                     </node>
                     <node concept="liA8E" id="5LaVA51n9Q_" role="2OqNvi">
@@ -968,9 +970,9 @@
                                     </node>
                                     <node concept="TSZUe" id="5LaVA51pI7A" role="2OqNvi">
                                       <node concept="37shsh" id="5LaVA51pd8G" role="25WWJ7">
-                                        <node concept="20RdaH" id="5LaVA51pd8H" role="37shsm">
-                                          <property role="20Rdg5" value="49808fad-9d41-4b96-83fa-9231640f6b2b" />
-                                          <property role="20Rdg7" value="JUnit" />
+                                        <node concept="1dCxOk" id="5ZqXG2n7xKI" role="37shsm">
+                                          <property role="1XxBO9" value="JUnit" />
+                                          <property role="1XweGW" value="49808fad-9d41-4b96-83fa-9231640f6b2b" />
                                         </node>
                                       </node>
                                     </node>
@@ -1087,9 +1089,9 @@
                                       </node>
                                       <node concept="TSZUe" id="5LaVA51pIy5" role="2OqNvi">
                                         <node concept="37shsh" id="5LaVA51pIy6" role="25WWJ7">
-                                          <node concept="20RdaH" id="5LaVA51pWGA" role="37shsm">
-                                            <property role="20Rdg5" value="1fd846c3-c5f9-4b9e-9ecc-e716f7149f86" />
-                                            <property role="20Rdg7" value="Hamcrest" />
+                                          <node concept="1dCxOk" id="5ZqXG2n7xKJ" role="37shsm">
+                                            <property role="1XxBO9" value="Hamcrest" />
+                                            <property role="1XweGW" value="1fd846c3-c5f9-4b9e-9ecc-e716f7149f86" />
                                           </node>
                                         </node>
                                       </node>

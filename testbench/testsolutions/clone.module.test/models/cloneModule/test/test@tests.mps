@@ -4,7 +4,7 @@
   <languages>
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="14" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="-1" />
   </languages>
@@ -212,6 +212,10 @@
       <concept id="3298469228705179778" name="jetbrains.mps.build.mps.testManifest.structure.TestModuleManifest" flags="ng" index="2UguNb" />
     </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
+      <concept id="361130699826193249" name="jetbrains.mps.lang.modelapi.structure.ModulePointer" flags="ng" index="1dCxOk">
+        <property id="1863527487546097500" name="moduleId" index="1XweGW" />
+        <property id="1863527487545993577" name="moduleName" index="1XxBO9" />
+      </concept>
       <concept id="361130699826193248" name="jetbrains.mps.lang.modelapi.structure.ModelPointer" flags="ng" index="1dCxOl">
         <property id="1863527487546097494" name="modelId" index="1XweGQ" />
         <child id="679099339649067980" name="name" index="1j$8Uc" />
@@ -258,10 +262,6 @@
       <concept id="8243879142738613213" name="jetbrains.mps.baseLanguage.unitTest.structure.AfterTest" flags="in" index="1KhZuU" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="427659576753752243" name="jetbrains.mps.lang.smodel.structure.ModulePointer" flags="ng" index="20RdaH">
-        <property id="427659576753753627" name="moduleId" index="20Rdg5" />
-        <property id="427659576753753625" name="moduleName" index="20Rdg7" />
-      </concept>
       <concept id="1678062499342629858" name="jetbrains.mps.lang.smodel.structure.ModuleRefExpression" flags="ng" index="37shsh">
         <child id="1678062499342629861" name="moduleId" index="37shsm" />
       </concept>
@@ -842,9 +842,9 @@
         <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
       </node>
       <node concept="37shsh" id="2tcv3DWpjth" role="33vP2m">
-        <node concept="20RdaH" id="2tcv3DWpjti" role="37shsm">
-          <property role="20Rdg5" value="04399201-cb79-4edc-8d1a-e2b946892642" />
-          <property role="20Rdg7" value="XML" />
+        <node concept="1dCxOk" id="5ZqXG2n7xKW" role="37shsm">
+          <property role="1XxBO9" value="XML" />
+          <property role="1XweGW" value="04399201-cb79-4edc-8d1a-e2b946892642" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2tcv3DWpjtf" role="1B3o_S" />
@@ -858,9 +858,9 @@
         <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
       </node>
       <node concept="37shsh" id="2tcv3DWpm00" role="33vP2m">
-        <node concept="20RdaH" id="2tcv3DWpm01" role="37shsm">
-          <property role="20Rdg5" value="1b06eede-ff4f-40f3-92e8-3cf27f8127bd" />
-          <property role="20Rdg7" value="PER_ROOT" />
+        <node concept="1dCxOk" id="5ZqXG2n7xKX" role="37shsm">
+          <property role="1XxBO9" value="PER_ROOT" />
+          <property role="1XweGW" value="1b06eede-ff4f-40f3-92e8-3cf27f8127bd" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2tcv3DWplZY" role="1B3o_S" />
@@ -874,9 +874,9 @@
         <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
       </node>
       <node concept="37shsh" id="2tcv3DWpozw" role="33vP2m">
-        <node concept="20RdaH" id="2tcv3DWpozx" role="37shsm">
-          <property role="20Rdg5" value="6c080adc-7c51-4b56-a8e2-17397071f3cc" />
-          <property role="20Rdg7" value="BINARY" />
+        <node concept="1dCxOk" id="5ZqXG2n7xKY" role="37shsm">
+          <property role="1XxBO9" value="BINARY" />
+          <property role="1XweGW" value="6c080adc-7c51-4b56-a8e2-17397071f3cc" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2tcv3DWpozu" role="1B3o_S" />
@@ -891,9 +891,9 @@
         <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
       </node>
       <node concept="37shsh" id="1xOvOib5vkO" role="33vP2m">
-        <node concept="20RdaH" id="1xOvOib5xht" role="37shsm">
-          <property role="20Rdg5" value="7ce8a6e5-ae18-4e78-8ec6-bb6474929f4f" />
-          <property role="20Rdg7" value="FACETS" />
+        <node concept="1dCxOk" id="5ZqXG2n7xKZ" role="37shsm">
+          <property role="1XxBO9" value="FACETS" />
+          <property role="1XweGW" value="7ce8a6e5-ae18-4e78-8ec6-bb6474929f4f" />
         </node>
       </node>
     </node>
@@ -906,9 +906,9 @@
         <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
       </node>
       <node concept="37shsh" id="2tcv3DWpplt" role="33vP2m">
-        <node concept="20RdaH" id="2tcv3DWpplu" role="37shsm">
-          <property role="20Rdg5" value="d1ea9b08-060f-4f7d-83b7-0f97f71cbbf7" />
-          <property role="20Rdg7" value="TestLanguage" />
+        <node concept="1dCxOk" id="5ZqXG2n7xL0" role="37shsm">
+          <property role="1XxBO9" value="TestLanguage" />
+          <property role="1XweGW" value="d1ea9b08-060f-4f7d-83b7-0f97f71cbbf7" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2tcv3DWpplr" role="1B3o_S" />
@@ -922,9 +922,9 @@
         <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
       </node>
       <node concept="37shsh" id="2tcv3DWprSL" role="33vP2m">
-        <node concept="20RdaH" id="2tcv3DWprSM" role="37shsm">
-          <property role="20Rdg5" value="eee56556-94d4-4d71-a8ea-0e2403133b8d" />
-          <property role="20Rdg7" value="TestLanguage_ACCESORIES" />
+        <node concept="1dCxOk" id="5ZqXG2n7xL1" role="37shsm">
+          <property role="1XxBO9" value="TestLanguage_ACCESORIES" />
+          <property role="1XweGW" value="eee56556-94d4-4d71-a8ea-0e2403133b8d" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2tcv3DWprSJ" role="1B3o_S" />

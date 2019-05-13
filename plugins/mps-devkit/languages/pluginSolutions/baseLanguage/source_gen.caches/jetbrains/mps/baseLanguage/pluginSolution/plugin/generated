@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7df8zkr41bo39et7mwig6ndih65zbo">
+<product version="3" modelHash="-5fmj3og4iw3wh7zk6niwuv823km3dsg">
   <files names="AnalyzersActions_ActionGroup.java:CreateMethodDeclaration_Action.java:ExtensionDescriptor.java:PluginSolution_ApplicationPlugin.java:RenameImplementingMethodsParticipant.java:ShowAsIntentions_BL_ActionGroup.java:ShowNullDFA_Action.java:StaticFieldRefactoringParticipant.java:StaticMemberRefactoringParticipant.java:StaticMethodRefactoringParticipant.java" />
 </product>
 

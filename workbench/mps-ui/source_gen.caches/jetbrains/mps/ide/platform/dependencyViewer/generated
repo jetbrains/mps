@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-77fii71t3db1cyck10uh5tirm8mo7kq">
+<product version="3" modelHash="c8ej97xbg69e6cq0qmnp6pb296mhjs3">
   <files names="DependenciesPanel.java:DependencyTree.java:DependencyViewerScope.java:ReferencesFinder.java:ReferencesView.java:TargetsView.java" />
 </product>
 

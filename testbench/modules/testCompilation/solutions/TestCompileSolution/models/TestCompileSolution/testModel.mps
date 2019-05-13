@@ -119,7 +119,7 @@
             <property role="TrG5h" value="staticTestValue" />
             <node concept="10Oyi0" id="4ep0Y$Xs$6o" role="1tU5fm" />
             <node concept="2YIFZM" id="4ep0Y$Xs$6r" role="33vP2m">
-              <ref role="37wK5l" to="487m:~TestInterface.getStaticTestValue():int" resolve="getStaticTestValue" />
+              <ref role="37wK5l" to="487m:~TestInterface.getStaticTestValue()" resolve="getStaticTestValue" />
               <ref role="1Pybhc" to="487m:~TestInterface" resolve="TestInterface" />
             </node>
           </node>
@@ -131,7 +131,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="4ep0Y$XsDjf" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(int):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
               <node concept="2OqwBi" id="4ep0Y$XsDKT" role="37wK5m">
                 <node concept="2ShNRf" id="4ep0Y$XsDmo" role="2Oq$k0">
                   <node concept="HV5vD" id="4ep0Y$XsDJf" role="2ShVmc">
@@ -157,7 +157,7 @@
           <node concept="3cpWs3" id="4ep0Y$XsCal" role="3clFbG">
             <node concept="3WEljn" id="4ep0Y$Xs_Kk" role="3uHU7B">
               <ref role="3WFDBg" to="487m:~TestInterface" resolve="TestInterface" />
-              <ref role="37wK5l" to="487m:~TestInterface.getDefaultTestValue():int" resolve="getDefaultTestValue" />
+              <ref role="37wK5l" to="487m:~TestInterface.getDefaultTestValue()" resolve="getDefaultTestValue" />
             </node>
             <node concept="3cmrfG" id="4ep0Y$XsCCW" role="3uHU7w">
               <property role="3cmrfH" value="1" />

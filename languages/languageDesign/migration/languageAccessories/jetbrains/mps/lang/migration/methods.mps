@@ -195,10 +195,6 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="427659576753752243" name="jetbrains.mps.lang.smodel.structure.ModulePointer" flags="ng" index="20RdaH">
-        <property id="427659576753753627" name="moduleId" index="20Rdg5" />
-        <property id="427659576753753625" name="moduleName" index="20Rdg7" />
-      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -640,9 +636,9 @@
             <node concept="liA8E" id="3qjQ36DCoWg" role="2OqNvi">
               <ref role="37wK5l" to="z1c3:~AbstractModule.addDependency(org.jetbrains.mps.openapi.module.SModuleReference,boolean)" resolve="addDependency" />
               <node concept="37shsh" id="7ESDA_ioxsn" role="37wK5m">
-                <node concept="20RdaH" id="7ESDA_ioxso" role="37shsm">
-                  <property role="20Rdg5" value="8865b7a8-5271-43d3-884c-6fd1d9cfdd34" />
-                  <property role="20Rdg7" value="MPS.OpenAPI" />
+                <node concept="1dCxOk" id="5ZqXG2n7xIS" role="37shsm">
+                  <property role="1XxBO9" value="MPS.OpenAPI" />
+                  <property role="1XweGW" value="8865b7a8-5271-43d3-884c-6fd1d9cfdd34" />
                 </node>
               </node>
               <node concept="3clFbT" id="3qjQ36DCpsF" role="37wK5m">

@@ -8,7 +8,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="14" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
   </languages>
@@ -380,11 +380,13 @@
         <child id="1205770614681" name="actualArgument" index="2XxRq1" />
       </concept>
     </language>
-    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="427659576753752243" name="jetbrains.mps.lang.smodel.structure.ModulePointer" flags="ng" index="20RdaH">
-        <property id="427659576753753627" name="moduleId" index="20Rdg5" />
-        <property id="427659576753753625" name="moduleName" index="20Rdg7" />
+    <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
+      <concept id="361130699826193249" name="jetbrains.mps.lang.modelapi.structure.ModulePointer" flags="ng" index="1dCxOk">
+        <property id="1863527487546097500" name="moduleId" index="1XweGW" />
+        <property id="1863527487545993577" name="moduleName" index="1XxBO9" />
       </concept>
+    </language>
+    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1204834851141" name="jetbrains.mps.lang.smodel.structure.PoundExpression" flags="ng" index="25Kdxt">
         <child id="1204834868751" name="expression" index="25KhWn" />
       </concept>
@@ -2228,9 +2230,9 @@
             </node>
             <node concept="2OqwBi" id="PIFYWx4v05" role="37vLTx">
               <node concept="37shsh" id="7ESDA_ioyED" role="2Oq$k0">
-                <node concept="20RdaH" id="7ESDA_ioyEE" role="37shsm">
-                  <property role="20Rdg5" value="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea" />
-                  <property role="20Rdg7" value="MPS.Core" />
+                <node concept="1dCxOk" id="5ZqXG2n7xKA" role="37shsm">
+                  <property role="1XxBO9" value="MPS.Core" />
+                  <property role="1XweGW" value="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea" />
                 </node>
               </node>
               <node concept="liA8E" id="PIFYWx4v7j" role="2OqNvi">
@@ -2251,9 +2253,9 @@
           <node concept="37vLTI" id="1MEKy$8pRWw" role="3clFbG">
             <node concept="2OqwBi" id="PIFYWx4vOI" role="37vLTx">
               <node concept="37shsh" id="7ESDA_ioyDG" role="2Oq$k0">
-                <node concept="20RdaH" id="7ESDA_ioyDH" role="37shsm">
-                  <property role="20Rdg5" value="1ed103c3-3aa6-49b7-9c21-6765ee11f224" />
-                  <property role="20Rdg7" value="MPS.Editor" />
+                <node concept="1dCxOk" id="5ZqXG2n7xKB" role="37shsm">
+                  <property role="1XxBO9" value="MPS.Editor" />
+                  <property role="1XweGW" value="1ed103c3-3aa6-49b7-9c21-6765ee11f224" />
                 </node>
               </node>
               <node concept="liA8E" id="PIFYWx4vRx" role="2OqNvi">

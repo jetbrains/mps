@@ -218,12 +218,12 @@
       <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
         <reference id="7256306938026143658" name="target" index="2aWVGs" />
       </concept>
+      <concept id="361130699826193249" name="jetbrains.mps.lang.modelapi.structure.ModulePointer" flags="ng" index="1dCxOk">
+        <property id="1863527487546097500" name="moduleId" index="1XweGW" />
+        <property id="1863527487545993577" name="moduleName" index="1XxBO9" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="427659576753752243" name="jetbrains.mps.lang.smodel.structure.ModulePointer" flags="ng" index="20RdaH">
-        <property id="427659576753753627" name="moduleId" index="20Rdg5" />
-        <property id="427659576753753625" name="moduleName" index="20Rdg7" />
-      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -596,9 +596,9 @@
               <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
             </node>
             <node concept="37shsh" id="pQIap99hR8" role="33vP2m">
-              <node concept="20RdaH" id="pQIap99hR9" role="37shsm">
-                <property role="20Rdg5" value="18bc6592-03a6-4e29-a83a-7ff23bde13ba" />
-                <property role="20Rdg7" value="jetbrains.mps.lang.editor" />
+              <node concept="1dCxOk" id="5ZqXG2n7xKE" role="37shsm">
+                <property role="1XxBO9" value="jetbrains.mps.lang.editor" />
+                <property role="1XweGW" value="18bc6592-03a6-4e29-a83a-7ff23bde13ba" />
               </node>
             </node>
           </node>

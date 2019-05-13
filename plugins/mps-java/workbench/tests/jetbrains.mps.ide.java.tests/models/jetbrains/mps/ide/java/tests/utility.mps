@@ -8,7 +8,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="14" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
   </languages>
   <imports>
@@ -288,10 +288,6 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="427659576753752243" name="jetbrains.mps.lang.smodel.structure.ModulePointer" flags="ng" index="20RdaH">
-        <property id="427659576753753627" name="moduleId" index="20Rdg5" />
-        <property id="427659576753753625" name="moduleName" index="20Rdg7" />
-      </concept>
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
@@ -504,9 +500,9 @@
         <node concept="3clFbF" id="7q5dBpSmDFJ" role="3cqZAp">
           <node concept="2OqwBi" id="7q5dBpSmXH8" role="3clFbG">
             <node concept="37shsh" id="7q5dBpSmDFG" role="2Oq$k0">
-              <node concept="20RdaH" id="7q5dBpSmXCI" role="37shsm">
-                <property role="20Rdg5" value="c3786d2b-aba2-45e5-8de0-1124fd14259b" />
-                <property role="20Rdg7" value="jetbrains.mps.ide.java.tests" />
+              <node concept="1dCxOk" id="5ZqXG2n7xKv" role="37shsm">
+                <property role="1XxBO9" value="jetbrains.mps.ide.java.tests" />
+                <property role="1XweGW" value="c3786d2b-aba2-45e5-8de0-1124fd14259b" />
               </node>
             </node>
             <node concept="liA8E" id="7q5dBpSmXUx" role="2OqNvi">
@@ -2142,9 +2138,9 @@
             </node>
             <node concept="2OqwBi" id="7q5dBpSv4jk" role="33vP2m">
               <node concept="37shsh" id="7q5dBpSufUM" role="2Oq$k0">
-                <node concept="20RdaH" id="7q5dBpSuIbr" role="37shsm">
-                  <property role="20Rdg5" value="c3786d2b-aba2-45e5-8de0-1124fd14259b" />
-                  <property role="20Rdg7" value="jetbrains.mps.ide.java.tests" />
+                <node concept="1dCxOk" id="5ZqXG2n7xKw" role="37shsm">
+                  <property role="1XxBO9" value="jetbrains.mps.ide.java.tests" />
+                  <property role="1XweGW" value="c3786d2b-aba2-45e5-8de0-1124fd14259b" />
                 </node>
               </node>
               <node concept="liA8E" id="7q5dBpSv4F1" role="2OqNvi">
@@ -2164,9 +2160,9 @@
             </node>
             <node concept="2OqwBi" id="7q5dBpSvu_P" role="33vP2m">
               <node concept="37shsh" id="7q5dBpSvu_Q" role="2Oq$k0">
-                <node concept="20RdaH" id="7q5dBpSvXOJ" role="37shsm">
-                  <property role="20Rdg5" value="49166c31-952a-46f6-8970-ea45964379d0" />
-                  <property role="20Rdg7" value="jetbrains.mps.ide.java.testMaterial" />
+                <node concept="1dCxOk" id="5ZqXG2n7xKx" role="37shsm">
+                  <property role="1XxBO9" value="jetbrains.mps.ide.java.testMaterial" />
+                  <property role="1XweGW" value="49166c31-952a-46f6-8970-ea45964379d0" />
                 </node>
               </node>
               <node concept="liA8E" id="7q5dBpSvu_S" role="2OqNvi">

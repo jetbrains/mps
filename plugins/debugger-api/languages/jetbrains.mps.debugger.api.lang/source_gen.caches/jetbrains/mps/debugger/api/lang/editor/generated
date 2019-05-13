@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5oc0bccu1codsd66c1ldohaua2xrqe1">
+<product version="3" modelHash="28lmazbzsp80fvr38tybtj5s750japf">
   <files names="BreakpointCreator_Editor.java:BreakpointCreator_EditorBuilder_a.java:BreakpointableNodeItem_Editor.java:BreakpointableNodeItem_EditorBuilder_a.java:ChooseBreakpoint_Contribution.java:ConceptDeclarationReference_Editor.java:ConceptDeclarationReference_EditorBuilder_a.java:ConceptDeclarationReference_SubstituteMenu.java:CreateBreakpointOperation_Editor.java:CreateBreakpointOperation_EditorBuilder_a.java:DebuggerConfiguration_Editor.java:DebuggerConfiguration_EditorBuilder_a.java:DebuggerReference_Editor.java:DebuggerReference_EditorBuilder_a.java:DebuggerReference_SubstituteMenu.java:DebuggerType_Editor.java:DebuggerType_EditorBuilder_a.java:EditorAspectDescriptorImpl.java" />
 </product>
 
