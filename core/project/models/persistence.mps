@@ -29,7 +29,6 @@
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
-    <import index="mcvo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure.language(MPS.Core/)" />
     <import index="amo1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.impl(MPS.Core/)" />
     <import index="eurq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.path(MPS.Core/)" />
   </imports>
@@ -10702,6 +10701,19 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs8" id="67J6_UwC$ds" role="3cqZAp">
+              <node concept="3cpWsn" id="67J6_UwC$dt" role="3cpWs9">
+                <property role="TrG5h" value="pf" />
+                <property role="3TUv4t" value="true" />
+                <node concept="3uibUv" id="67J6_UwC$ab" role="1tU5fm">
+                  <ref role="3uigEE" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                </node>
+                <node concept="2YIFZM" id="67J6_UwC$du" role="33vP2m">
+                  <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                </node>
+              </node>
+            </node>
             <node concept="3clFbH" id="59iL5sJt5Pd" role="3cqZAp" />
             <node concept="3clFbF" id="59iL5sJt5Pe" role="3cqZAp">
               <node concept="37vLTI" id="59iL5sJt5Pf" role="3clFbG">
@@ -10801,9 +10813,8 @@
                                     <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
                                   </node>
                                   <node concept="2OqwBi" id="1bDwrioaYmI" role="33vP2m">
-                                    <node concept="2YIFZM" id="1bDwrioaYmJ" role="2Oq$k0">
-                                      <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
-                                      <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                                    <node concept="37vLTw" id="67J6_UwC$dv" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="67J6_UwC$dt" resolve="pf" />
                                     </node>
                                     <node concept="liA8E" id="1bDwrioaYmK" role="2OqNvi">
                                       <ref role="37wK5l" to="dush:~PersistenceFacade.createModuleReference(java.lang.String)" resolve="createModuleReference" />
@@ -10824,7 +10835,7 @@
                               </node>
                               <node concept="3SKdUt" id="1bDwriobhPH" role="3cqZAp">
                                 <node concept="3SKdUq" id="1bDwriobhPJ" role="3SKWNk">
-                                  <property role="3SKdUp" value="without kind atrtibute, it used to be 'DEFAULT'. Nevertheless, DD dependencies were treated as runtime" />
+                                  <property role="3SKdUp" value="without kind attribute, it used to be 'DEFAULT'. Nevertheless, DD dependencies were treated as runtime " />
                                 </node>
                               </node>
                               <node concept="3SKdUt" id="1bDwriobs7B" role="3cqZAp">
@@ -11018,17 +11029,21 @@
                                   <node concept="3uibUv" id="1bDwrioeL69" role="1tU5fm">
                                     <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
                                   </node>
-                                  <node concept="2YIFZM" id="1bDwrioeKdY" role="33vP2m">
-                                    <ref role="37wK5l" to="mcvo:~SLanguageAdapter.deserialize(java.lang.String)" resolve="deserialize" />
-                                    <ref role="1Pybhc" to="mcvo:~SLanguageAdapter" resolve="SLanguageAdapter" />
-                                    <node concept="2OqwBi" id="1bDwrioeKdZ" role="37wK5m">
-                                      <node concept="2GrUjf" id="1bDwrioeKe0" role="2Oq$k0">
-                                        <ref role="2Gs0qQ" node="1bDwrioe0IN" resolve="lang" />
-                                      </node>
-                                      <node concept="liA8E" id="1bDwrioeKe1" role="2OqNvi">
-                                        <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
-                                        <node concept="Xl_RD" id="1bDwrioeKe2" role="37wK5m">
-                                          <property role="Xl_RC" value="id" />
+                                  <node concept="2OqwBi" id="67J6_UwCGLC" role="33vP2m">
+                                    <node concept="37vLTw" id="67J6_UwCGrZ" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="67J6_UwC$dt" resolve="pf" />
+                                    </node>
+                                    <node concept="liA8E" id="67J6_UwCHDv" role="2OqNvi">
+                                      <ref role="37wK5l" to="dush:~PersistenceFacade.createLanguage(java.lang.String)" resolve="createLanguage" />
+                                      <node concept="2OqwBi" id="1bDwrioeKdZ" role="37wK5m">
+                                        <node concept="2GrUjf" id="1bDwrioeKe0" role="2Oq$k0">
+                                          <ref role="2Gs0qQ" node="1bDwrioe0IN" resolve="lang" />
+                                        </node>
+                                        <node concept="liA8E" id="1bDwrioeKe1" role="2OqNvi">
+                                          <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
+                                          <node concept="Xl_RD" id="1bDwrioeKe2" role="37wK5m">
+                                            <property role="Xl_RC" value="id" />
+                                          </node>
                                         </node>
                                       </node>
                                     </node>

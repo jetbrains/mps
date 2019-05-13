@@ -103,9 +103,10 @@ public final class MPSConfigurationBean {
     sd.setCompileInMPS(false);
     sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
     Map<SLanguage, Integer> languageVersions = sd.getLanguageVersions();
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
     if (myState.languageVersions != null) {
       for (Entry<String, Integer> lv : myState.languageVersions.entrySet()) {
-        languageVersions.put(SLanguageAdapter.deserialize(lv.getKey()), lv.getValue());
+        languageVersions.put(pf.createLanguage(lv.getKey()), lv.getValue());
       }
     } else {
       sd.setHasLanguageVersions(false);

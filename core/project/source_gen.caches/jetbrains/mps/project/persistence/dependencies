@@ -10,7 +10,6 @@
     <classNode dependClassName="jetbrains.mps.project.persistence.ModuleReadException" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.Dependency" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.DeploymentDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapter" />
     <classNode dependClassName="jetbrains.mps.util.JDOMUtil" />
     <classNode dependClassName="jetbrains.mps.util.xml.XmlUtil" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />

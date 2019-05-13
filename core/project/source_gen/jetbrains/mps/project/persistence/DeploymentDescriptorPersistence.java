@@ -7,16 +7,15 @@ import jetbrains.mps.vfs.IFile;
 import org.jdom.Document;
 import jetbrains.mps.util.JDOMUtil;
 import org.jdom.Element;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.xml.XmlUtil;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import jetbrains.mps.project.structure.modules.Dependency;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapter;
 
 public final class DeploymentDescriptorPersistence {
   public DeploymentDescriptorPersistence() {
@@ -29,25 +28,26 @@ public final class DeploymentDescriptorPersistence {
     try {
       Document document = JDOMUtil.loadDocument(file);
       final Element rootElement = document.getRootElement();
+      final PersistenceFacade pf = PersistenceFacade.getInstance();
 
       descriptor = new _FunctionTypes._return_P0_E0<DeploymentDescriptor>() {
         public DeploymentDescriptor invoke() {
-          final DeploymentDescriptor result_wu2j1h_a0a0d0e0b = new DeploymentDescriptor();
-          final String result_wu2j1h_a0a0a0d0e0b = rootElement.getAttributeValue("namespace");
-          result_wu2j1h_a0a0d0e0b.setNamespace(result_wu2j1h_a0a0a0d0e0b);
+          final DeploymentDescriptor result_wu2j1h_a0a0e0e0b = new DeploymentDescriptor();
+          final String result_wu2j1h_a0a0a0e0e0b = rootElement.getAttributeValue("namespace");
+          result_wu2j1h_a0a0e0e0b.setNamespace(result_wu2j1h_a0a0a0e0e0b);
           String uuid = rootElement.getAttributeValue("uuid");
           if (uuid != null) {
-            final ModuleId result_wu2j1h_a0a2a0a0d0e0b = ModuleId.fromString(uuid);
-            result_wu2j1h_a0a0d0e0b.setId(result_wu2j1h_a0a2a0a0d0e0b);
+            final ModuleId result_wu2j1h_a0a2a0a0e0e0b = ModuleId.fromString(uuid);
+            result_wu2j1h_a0a0e0e0b.setId(result_wu2j1h_a0a2a0a0e0e0b);
           }
-          final String result_wu2j1h_a3a0a0d0e0b = rootElement.getAttributeValue("type");
-          result_wu2j1h_a0a0d0e0b.setType(result_wu2j1h_a3a0a0d0e0b);
+          final String result_wu2j1h_a3a0a0e0e0b = rootElement.getAttributeValue("type");
+          result_wu2j1h_a0a0e0e0b.setType(result_wu2j1h_a3a0a0e0e0b);
 
 
           for (Element a : Sequence.fromIterable(XmlUtil.children(rootElement, "dependencies"))) {
             for (Element module : Sequence.fromIterable(XmlUtil.children(a, "module"))) {
-              SModuleReference mr = PersistenceFacade.getInstance().createModuleReference(module.getAttributeValue("ref"));
-              // without kind atrtibute, it used to be 'DEFAULT'. Nevertheless, DD dependencies were treated as runtime 
+              SModuleReference mr = pf.createModuleReference(module.getAttributeValue("ref"));
+              // without kind attribute, it used to be 'DEFAULT'. Nevertheless, DD dependencies were treated as runtime  
               // dependencies, and as long I don't care to support strict backward compatibility (newer MPS doesn't care to read 
               // old deployed modules), and it's only MPS that reads these deps in a controlled scenario, stick to RUNTIME kind. 
               // see RuntimesOfUsedLanguageCalculator.DeploymentStrategy 
@@ -60,36 +60,36 @@ public final class DeploymentDescriptorPersistence {
                   scope = SDependencyScope.DEFAULT;
                 }
               }
-              result_wu2j1h_a0a0d0e0b.getDependencies().add(new Dependency(mr, scope, false));
+              result_wu2j1h_a0a0e0e0b.getDependencies().add(new Dependency(mr, scope, false));
             }
           }
           for (Element a : Sequence.fromIterable(XmlUtil.children(rootElement, "uses"))) {
             for (Element lang : Sequence.fromIterable(XmlUtil.children(a, "language"))) {
-              SLanguage l = SLanguageAdapter.deserialize(lang.getAttributeValue("id"));
-              result_wu2j1h_a0a0d0e0b.getLanguagesInUse().add(l);
+              SLanguage l = pf.createLanguage(lang.getAttributeValue("id"));
+              result_wu2j1h_a0a0e0e0b.getLanguagesInUse().add(l);
             }
           }
 
           for (Element b : Sequence.fromIterable(XmlUtil.children(rootElement, "library"))) {
-            result_wu2j1h_a0a0d0e0b.getLibraries().add(b.getAttributeValue("jar"));
+            result_wu2j1h_a0a0e0e0b.getLibraries().add(b.getAttributeValue("jar"));
           }
 
           Element classpath = XmlUtil.first(rootElement, "classpath");
           if (classpath != null) {
             for (Element e : Sequence.fromIterable(XmlUtil.children(classpath, "entry"))) {
-              result_wu2j1h_a0a0d0e0b.getClasspath().add(e.getAttributeValue("path"));
+              result_wu2j1h_a0a0e0e0b.getClasspath().add(e.getAttributeValue("path"));
             }
           }
 
           Element sources = XmlUtil.first(rootElement, "sources");
           if (sources != null) {
-            final String result_wu2j1h_a0a51a0a0d0e0b = sources.getAttributeValue("jar");
-            result_wu2j1h_a0a0d0e0b.setSourcesJar(result_wu2j1h_a0a51a0a0d0e0b);
-            final String result_wu2j1h_a1a51a0a0d0e0b = sources.getAttributeValue("descriptor");
-            result_wu2j1h_a0a0d0e0b.setDescriptorFile(result_wu2j1h_a1a51a0a0d0e0b);
+            final String result_wu2j1h_a0a51a0a0e0e0b = sources.getAttributeValue("jar");
+            result_wu2j1h_a0a0e0e0b.setSourcesJar(result_wu2j1h_a0a51a0a0e0e0b);
+            final String result_wu2j1h_a1a51a0a0e0e0b = sources.getAttributeValue("descriptor");
+            result_wu2j1h_a0a0e0e0b.setDescriptorFile(result_wu2j1h_a1a51a0a0e0e0b);
           }
 
-          return result_wu2j1h_a0a0d0e0b;
+          return result_wu2j1h_a0a0e0e0b;
         }
       }.invoke();
     } catch (Exception e) {
