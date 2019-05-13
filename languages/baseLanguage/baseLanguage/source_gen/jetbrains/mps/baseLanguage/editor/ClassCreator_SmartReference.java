@@ -19,7 +19,6 @@ import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuIt
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration__BehaviorDescriptor;
 
 public class ClassCreator_SmartReference extends SubstituteMenuBase {
@@ -80,7 +79,7 @@ public class ClassCreator_SmartReference extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        return ConstructorDeclaration__BehaviorDescriptor.getPresentationInContext_idQAyHtBupSt.invoke(referencedNode, _context.getParentNode());
       }
       @Override
       public String getVisibleMatchingText(String pattern) {

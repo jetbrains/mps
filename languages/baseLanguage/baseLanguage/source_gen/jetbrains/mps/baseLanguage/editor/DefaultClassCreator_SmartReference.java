@@ -19,7 +19,10 @@ import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuIt
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 
 public class DefaultClassCreator_SmartReference extends SubstituteMenuBase {
   @NotNull
@@ -79,11 +82,14 @@ public class DefaultClassCreator_SmartReference extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "()";
+        if (!(SNodeOperations.isInstanceOf(referencedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) || Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(referencedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))).isNotEmpty()) {
+          return null;
+        }
+        return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(referencedNode, _context.getParentNode()) + "()";
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
-        return getMatchingText(pattern);
+        return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(referencedNode, _context.getParentNode()) + "()";
       }
 
       @Override
