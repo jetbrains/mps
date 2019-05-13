@@ -50,8 +50,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
-import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 /*package*/ class BeforeTaskCall_EditorBuilder_a extends AbstractEditorBuilder {
@@ -278,8 +276,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     Style style = new StyleImpl();
     style.set(StyleAttributes.DRAW_BRACKETS, true);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, "jetbrains.mps.execution.configurations.structure.BeforeTaskCall"), "jetbrains.mps.execution.configurations.editor.togglingEnabledByDefaultProp"));
-    editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private boolean nodeCondition_5zozkl_a4a() {
