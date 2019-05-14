@@ -12,9 +12,7 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -29,6 +27,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.scope.ListScope;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.SNodePointer;
 
@@ -54,8 +53,7 @@ public class PatternVariableReference_Constraints extends BaseConstraintsDescrip
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x2b7df577ffbb6a85L, 0x2b7df577ffbb6a86L, "variable"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x2b7df577ffbb6a85L, 0x2b7df577ffbb6a86L), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x2b7df577ffbb6a85L, 0x2b7df577ffbb6a86L, "variable"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -66,7 +64,7 @@ public class PatternVariableReference_Constraints extends BaseConstraintsDescrip
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_fw8caj_a0a0a0a0a1a0b0a1a3;
+            return breakingNode_fw8caj_a0a0a0a0a1a0a0a0d;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -80,12 +78,14 @@ public class PatternVariableReference_Constraints extends BaseConstraintsDescrip
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.getNodeAncestor(parentNode, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), false, false) != null;
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "1227128029536562012");
-  private static SNodePointer breakingNode_fw8caj_a0a0a0a0a1a0b0a1a3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "6836281137582794719");
+  private static SNodePointer breakingNode_fw8caj_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "6836281137582794719");
 }

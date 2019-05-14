@@ -7,9 +7,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
@@ -26,6 +24,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.classifiers.behavior.BaseClassifierType__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
+import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
@@ -35,8 +34,7 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,7 +45,7 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_dyvyal_a0a0a0a0a1a0b0a1a2;
+            return breakingNode_dyvyal_a0a0a0a0a1a0a0a0c;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -55,9 +53,9 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
             SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
             List<SNode> applicableMembers = new ArrayList<SNode>();
             {
-              SNode coercedNode_dyvyal_d0b0a0a0b0a1a0b0c = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(operand), MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType"));
-              if (coercedNode_dyvyal_d0b0a0a0b0a1a0b0c != null) {
-                for (SNode member : ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_dyvyal_d0b0a0a0b0a1a0b0c, enclosingNode))) {
+              SNode coercedNode_dyvyal_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(operand), MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType"));
+              if (coercedNode_dyvyal_d0b0a0a0b0a0a0a2 != null) {
+                for (SNode member : ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_dyvyal_d0b0a0a0b0a0a0a2, enclosingNode))) {
                   if (SNodeOperations.isInstanceOf(member, SNodeOperations.asSConcept(_context.getLinkTargetConcept()))) {
                     ListSequence.fromList(applicableMembers).addElement(member);
                   }
@@ -69,8 +67,10 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
-  private static SNodePointer breakingNode_dyvyal_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959036e(jetbrains.mps.baseLanguage.classifiers.constraints)", "6836281137582646442");
+  private static SNodePointer breakingNode_dyvyal_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c8959036e(jetbrains.mps.baseLanguage.classifiers.constraints)", "6836281137582646442");
 }

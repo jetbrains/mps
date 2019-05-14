@@ -86,8 +86,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -98,7 +97,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_guz8cy_a0a0a0a0a1a0b0a1a4;
+            return breakingNode_guz8cy_a0a0a0a0a1a0a0a0e;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -106,7 +105,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
               return new EmptyScope();
             }
 
-            SModel structure = check_guz8cy_a0c0b0a0a0b0a1a0b0e(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
+            SModel structure = check_guz8cy_a0c0b0a0a0b0a0a0a4(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
             if (structure == null) {
               return new EmptyScope();
             }
@@ -115,8 +114,8 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    });
-    references.put(MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a72ce9037L, "defaultConcreteConcept"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a72ce9037L), this) {
+    };
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a72ce9037L, "defaultConcreteConcept"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -127,7 +126,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_guz8cy_a0a0a0a0a1a0b0a2a4;
+            return breakingNode_guz8cy_a0a0a0a0a1a0a0b0e;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -142,19 +141,22 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
+    references.put(d1.getReference(), d1);
     return references;
   }
   private static boolean staticCanBeARoot(SModel model) {
     return SModuleOperations.isAspect(model, "constraints") || SModelStereotype.isGeneratorModel(model);
   }
-  private static SModel check_guz8cy_a0c0b0a0a0b0a1a0b0e(Language checkedDotOperand) {
+  private static SModel check_guz8cy_a0c0b0a0a0b0a0a0a4(Language checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getStructureModelDescriptor();
     }
     return null;
   }
   private static SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590307(jetbrains.mps.lang.constraints.constraints)", "1227089025593");
-  private static SNodePointer breakingNode_guz8cy_a0a0a0a0a1a0b0a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590307(jetbrains.mps.lang.constraints.constraints)", "6836281137582781546");
-  private static SNodePointer breakingNode_guz8cy_a0a0a0a0a1a0b0a2a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590307(jetbrains.mps.lang.constraints.constraints)", "6836281137582781587");
+  private static SNodePointer breakingNode_guz8cy_a0a0a0a0a1a0a0a0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590307(jetbrains.mps.lang.constraints.constraints)", "6836281137582781546");
+  private static SNodePointer breakingNode_guz8cy_a0a0a0a0a1a0a0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590307(jetbrains.mps.lang.constraints.constraints)", "6836281137582781587");
 }

@@ -7,9 +7,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
@@ -24,6 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SNodePointer;
@@ -35,8 +34,7 @@ public class StaticFieldDocReference_Constraints extends BaseConstraintsDescript
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,26 +45,28 @@ public class StaticFieldDocReference_Constraints extends BaseConstraintsDescript
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_9aygvv_a0a0a0a0a1a0b0a1a2;
+            return breakingNode_9aygvv_a0a0a0a0a1a0a0a0c;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"))).removeWhere(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) == _quotation_createNode_9aygvv_a0a0a0a0a0b0a0a0b0a1a0b0c();
+                return SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) == _quotation_createNode_9aygvv_a0a0a0a0a0b0a0a0b0a0a0a2();
               }
             }));
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
-  private static SNode _quotation_createNode_9aygvv_a0a0a0a0a0b0a0a0b0a1a0b0c() {
+  private static SNode _quotation_createNode_9aygvv_a0a0a0a0a0b0a0a0b0a0a0a2() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9586f0cL, "PrivateVisibility"), null, null, false);
     return quotedNode_1;
   }
-  private static SNodePointer breakingNode_9aygvv_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "6836281137582741153");
+  private static SNodePointer breakingNode_9aygvv_a0a0a0a0a1a0a0a0c = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "6836281137582741153");
 }

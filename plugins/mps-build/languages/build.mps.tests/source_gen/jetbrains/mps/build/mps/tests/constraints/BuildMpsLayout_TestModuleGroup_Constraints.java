@@ -12,9 +12,7 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -28,6 +26,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.SNodePointer;
@@ -54,8 +53,7 @@ public class BuildMpsLayout_TestModuleGroup_Constraints extends BaseConstraintsD
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL, "group"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL, "group"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -66,7 +64,7 @@ public class BuildMpsLayout_TestModuleGroup_Constraints extends BaseConstraintsD
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_fhfy8y_a0a0a0a0a1a0b0a1a3;
+            return breakingNode_fhfy8y_a0a0a0a0a1a0a0a0d;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -83,12 +81,14 @@ public class BuildMpsLayout_TestModuleGroup_Constraints extends BaseConstraintsD
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules"));
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "1227128029536566862");
-  private static SNodePointer breakingNode_fhfy8y_a0a0a0a0a1a0b0a1a3 = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "6836281137582839719");
+  private static SNodePointer breakingNode_fhfy8y_a0a0a0a0a1a0a0a0d = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "6836281137582839719");
 }

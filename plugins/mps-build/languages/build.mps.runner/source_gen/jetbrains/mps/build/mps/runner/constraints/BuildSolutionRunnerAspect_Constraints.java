@@ -12,9 +12,7 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -22,6 +20,7 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.EmptyScope;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -53,8 +52,7 @@ public class BuildSolutionRunnerAspect_Constraints extends BaseConstraintsDescri
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -65,7 +63,7 @@ public class BuildSolutionRunnerAspect_Constraints extends BaseConstraintsDescri
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_bt7fcz_a0a0a0a0a1a0b0a1a3;
+            return breakingNode_bt7fcz_a0a0a0a0a1a0a0a0d;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -74,7 +72,9 @@ public class BuildSolutionRunnerAspect_Constraints extends BaseConstraintsDescri
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
@@ -85,5 +85,5 @@ public class BuildSolutionRunnerAspect_Constraints extends BaseConstraintsDescri
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(parentNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins")), MetaAdapterFactory.getConcept(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cbeb5c6L, "jetbrains.mps.build.mps.runner.structure.BuildSolutionRunnerPlugin"))).isNotEmpty();
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:f7dd6374-5397-49db-8c5c-70e362e3e80b(jetbrains.mps.build.mps.runner.constraints)", "1227128029536566447");
-  private static SNodePointer breakingNode_bt7fcz_a0a0a0a0a1a0b0a1a3 = new SNodePointer("r:f7dd6374-5397-49db-8c5c-70e362e3e80b(jetbrains.mps.build.mps.runner.constraints)", "1350734474210764500");
+  private static SNodePointer breakingNode_bt7fcz_a0a0a0a0a1a0a0a0d = new SNodePointer("r:f7dd6374-5397-49db-8c5c-70e362e3e80b(jetbrains.mps.build.mps.runner.constraints)", "1350734474210764500");
 }

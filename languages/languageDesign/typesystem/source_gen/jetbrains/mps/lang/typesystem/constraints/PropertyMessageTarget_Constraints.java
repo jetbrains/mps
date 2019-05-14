@@ -7,9 +7,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
@@ -25,6 +23,7 @@ import java.util.Collections;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor {
@@ -34,8 +33,7 @@ public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -46,7 +44,7 @@ public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_hhynfx_a0a0a0a0a1a0b0a1a2;
+            return breakingNode_hhynfx_a0a0a0a0a1a0a0a0c;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -56,9 +54,9 @@ public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor
             }
             SNode nodetype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e6L, "nodeToReport")));
             {
-              SNode coercedNode_hhynfx_d0b0a0a0b0a1a0b0c = TypecheckingFacade.getFromContext().coerceType(nodetype, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));
-              if (coercedNode_hhynfx_d0b0a0a0b0a1a0b0c != null) {
-                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(coercedNode_hhynfx_d0b0a0a0b0a1a0b0c, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"))));
+              SNode coercedNode_hhynfx_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));
+              if (coercedNode_hhynfx_d0b0a0a0b0a0a0a2 != null) {
+                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(coercedNode_hhynfx_d0b0a0a0b0a0a0a2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"))));
               } else {
                 return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
               }
@@ -66,8 +64,10 @@ public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
-  private static SNodePointer breakingNode_hhynfx_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582807871");
+  private static SNodePointer breakingNode_hhynfx_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582807871");
 }

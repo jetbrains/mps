@@ -7,11 +7,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.HashMap;
 
 public class TestRefConstraints_BaseReference_Handler_Constraints extends BaseConstraintsDescriptor {
   public TestRefConstraints_BaseReference_Handler_Constraints() {
@@ -20,8 +19,7 @@ public class TestRefConstraints_BaseReference_Handler_Constraints extends BaseCo
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"), this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -34,7 +32,9 @@ public class TestRefConstraints_BaseReference_Handler_Constraints extends BaseCo
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         SPropertyOperations.assign(newReferentNode, MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c7bL, "debug"), TestRefConstraints_Constants.BASE_REF_HANDLER);
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
 }

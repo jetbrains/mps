@@ -7,9 +7,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
@@ -22,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.baseLanguage.math.behavior.MathSymbol__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
+import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescriptor {
@@ -31,8 +30,7 @@ public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, 0x11fe0d95bdfL, "indexRef"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, 0x11fe0d95bdfL), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, 0x11fe0d95bdfL, "indexRef"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -43,7 +41,7 @@ public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescrip
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_cdbkmw_a0a0a0a0a1a0b0a1a2;
+            return breakingNode_cdbkmw_a0a0a0a0a1a0a0a0c;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -54,8 +52,10 @@ public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescrip
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
-  private static SNodePointer breakingNode_cdbkmw_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)", "6836281137582848029");
+  private static SNodePointer breakingNode_cdbkmw_a0a0a0a0a1a0a0a0c = new SNodePointer("r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)", "6836281137582848029");
 }

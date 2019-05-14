@@ -7,9 +7,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
@@ -26,6 +24,7 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class CellModel_Checkbox_Constraints extends BaseConstraintsDescriptor {
@@ -35,8 +34,7 @@ public class CellModel_Checkbox_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63d6378L, 0x334adf8cb15f3fdfL, "propertyDeclaration"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63d6378L, 0x334adf8cb15f3fdfL), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63d6378L, 0x334adf8cb15f3fdfL, "propertyDeclaration"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,7 +45,7 @@ public class CellModel_Checkbox_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_glszdl_a0a0a0a0a1a0b0a1a2;
+            return breakingNode_glszdl_a0a0a0a0a1a0a0a0c;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -61,8 +59,10 @@ public class CellModel_Checkbox_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
-  private static SNodePointer breakingNode_glszdl_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:de912216-b4aa-4118-a243-c861c965b4d9(jetbrains.mps.lang.editor.forms.constraints)", "6836281137582841207");
+  private static SNodePointer breakingNode_glszdl_a0a0a0a0a1a0a0a0c = new SNodePointer("r:de912216-b4aa-4118-a243-c861c965b4d9(jetbrains.mps.lang.editor.forms.constraints)", "6836281137582841207");
 }

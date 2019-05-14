@@ -7,9 +7,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
@@ -26,6 +24,7 @@ import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class ReferenceReductionRule_Constraints extends BaseConstraintsDescriptor {
@@ -35,8 +34,7 @@ public class ReferenceReductionRule_Constraints extends BaseConstraintsDescripto
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7786936d61b8dafdL, "link"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7786936d61b8dafdL), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7786936d61b8dafdL, "link"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,7 +45,7 @@ public class ReferenceReductionRule_Constraints extends BaseConstraintsDescripto
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_l1mhrx_a0a0a0a0a1a0b0a1a2;
+            return breakingNode_l1mhrx_a0a0a0a0a1a0a0a0c;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -61,8 +59,8 @@ public class ReferenceReductionRule_Constraints extends BaseConstraintsDescripto
           }
         };
       }
-    });
-    references.put(MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7316e38ce4ecd66L, "applicableConcept"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7316e38ce4ecd66L), this) {
+    };
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7316e38ce4ecd66L, "applicableConcept"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -73,7 +71,7 @@ public class ReferenceReductionRule_Constraints extends BaseConstraintsDescripto
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_l1mhrx_a0a0a0a0a1a0b0a2a2;
+            return breakingNode_l1mhrx_a0a0a0a0a1a0a0b0c;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -91,9 +89,12 @@ public class ReferenceReductionRule_Constraints extends BaseConstraintsDescripto
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
+    references.put(d1.getReference(), d1);
     return references;
   }
-  private static SNodePointer breakingNode_l1mhrx_a0a0a0a0a1a0b0a1a2 = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "8612733435392950230");
-  private static SNodePointer breakingNode_l1mhrx_a0a0a0a0a1a0b0a2a2 = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "518316622382817051");
+  private static SNodePointer breakingNode_l1mhrx_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "8612733435392950230");
+  private static SNodePointer breakingNode_l1mhrx_a0a0a0a0a1a0a0b0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "518316622382817051");
 }

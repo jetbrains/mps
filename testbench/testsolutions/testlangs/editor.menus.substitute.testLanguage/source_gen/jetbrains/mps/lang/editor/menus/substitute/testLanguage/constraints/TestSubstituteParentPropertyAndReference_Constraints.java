@@ -74,8 +74,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16acffeL, "referenceWithScope"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16acffeL), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16acffeL, "referenceWithScope"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -86,7 +85,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_fhl8yz_a0a0a0a0a1a0b0a1a3;
+            return breakingNode_fhl8yz_a0a0a0a0a1a0a0a0d;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -99,8 +98,8 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
           }
         };
       }
-    });
-    references.put(MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16ad029L, "referenceWithSetHandler"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16ad029L), this) {
+    };
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16ad029L, "referenceWithSetHandler"), this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -113,8 +112,11 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         SPropertyOperations.assign(referenceNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "custom reference set handler executed");
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
+    references.put(d1.getReference(), d1);
     return references;
   }
-  private static SNodePointer breakingNode_fhl8yz_a0a0a0a0a1a0b0a1a3 = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787751306");
+  private static SNodePointer breakingNode_fhl8yz_a0a0a0a0a1a0a0a0d = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787751306");
 }

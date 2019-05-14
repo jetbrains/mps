@@ -12,9 +12,7 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import java.util.HashMap;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -30,6 +28,7 @@ import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
 import java.util.Objects;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -60,8 +59,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
-    references.put(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property"), new BaseReferenceConstraintsDescriptor(MetaIdFactory.refId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L), this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property"), this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -72,7 +70,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_pyukpt_a0a0a0a0a1a0b0a1a3;
+            return breakingNode_pyukpt_a0a0a0a0a1a0a0a0d;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -81,7 +79,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
               return new EmptyScope();
             }
             final SNode enclosingProperty = SNodeOperations.getNodeAncestor(_context.getContextNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property"), false, false);
-            SNode classifierType = _quotation_createNode_pyukpt_a0d0b0a0a0b0a1a0b0d(classifier);
+            SNode classifierType = _quotation_createNode_pyukpt_a0d0b0a0a0b0a0a0a3(classifier);
             // XXX Beware, classifier.getMembers() gives members of that classifier only, unlike classifierType.getMembers() that gives inherited members as well 
             return new NamedElementsScope(Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property"))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
@@ -91,7 +89,9 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
           }
         };
       }
-    });
+    };
+    Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
+    references.put(d0.getReference(), d0);
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
@@ -103,7 +103,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
     }
     return true;
   }
-  private static SNode _quotation_createNode_pyukpt_a0d0b0a0a0b0a1a0b0d(Object parameter_1) {
+  private static SNode _quotation_createNode_pyukpt_a0d0b0a0a0b0a0a0a3(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
@@ -111,5 +111,5 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
     return quotedNode_2;
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536558652");
-  private static SNodePointer breakingNode_pyukpt_a0a0a0a0a1a0b0a1a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643668");
+  private static SNodePointer breakingNode_pyukpt_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643668");
 }
