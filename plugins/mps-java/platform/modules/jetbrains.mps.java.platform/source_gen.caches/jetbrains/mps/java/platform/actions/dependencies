@@ -553,6 +553,9 @@
   </dependency>
   <dependency className="jetbrains.mps.java.platform.actions.ImplementMethod_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.ui.MessageType" />
+    <classNode dependClassName="com.intellij.openapi.wm.ToolWindowId" />
+    <classNode dependClassName="com.intellij.openapi.wm.ToolWindowManager" />
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
