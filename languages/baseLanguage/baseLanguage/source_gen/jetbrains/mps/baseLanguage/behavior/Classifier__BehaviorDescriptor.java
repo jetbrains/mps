@@ -163,7 +163,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     }
     callback.onExited(info);
   }
-  /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull SNode __thisNode__) {
+  /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull final SNode __thisNode__) {
     final Map<String, SNode> signatureToDecl = MapSequence.fromMap(new LinkedHashMap<String, SNode>(16, (float) 0.75, false));
     final Map<SNode, SNode> typeByTypeVar = ClassifierScopeUtils.resolveClassifierTypeVars(__thisNode__);
     Classifier__BehaviorDescriptor.traverseClassifierHierarchy_id3rj45ZUtGbP.invoke(__thisNode__, new ClassifierTraversalCallback() {
@@ -210,8 +210,12 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       }
     });
     return Sequence.fromIterable(MapSequence.fromMap(signatureToDecl).values()).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it);
+      public boolean accept(final SNode it) {
+        return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it) && Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(__thisNode__)).all(new IWhereFilter<SNode>() {
+          public boolean accept(SNode method) {
+            return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(method, it));
+          }
+        });
       }
     }).toListSequence();
   }

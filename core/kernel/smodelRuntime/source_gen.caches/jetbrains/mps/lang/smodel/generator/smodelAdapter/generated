@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-4czjsv39iuz4svtxbkmaktpb5k9ls88">
-  <files names="AbstractSNodeList.java:AttributeOperations.java:EmptyList.java:IAttributeDescriptor.java:NodeCastException.java:SConceptOperations.java:SEnumOperations.java:SLinkOperations.java:SModelOperations.java:SModuleOperations.java:SNodeOperations.java:SPointerOperations.java:SPropertyOperations.java" />
+<product version="3" modelHash="-dcvh2n89r7elfmnsn8ktjmtg14nx5jy">
+  <files names="AbstractMutableChildrenList.java:AttributeOperations.java:EmptyList.java:IAttributeDescriptor.java:MutableChildrenList.java:NodeCastException.java:SConceptOperations.java:SEnumOperations.java:SLinkOperations.java:SModelOperations.java:SModuleOperations.java:SNodeOperations.java:SPointerOperations.java:SPropertyOperations.java" />
 </product>
 

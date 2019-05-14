@@ -17,7 +17,6 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
-import jetbrains.mps.util.AbstractSequentialList;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.containers.EmptyIterable;
@@ -823,7 +822,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
       return Collections.emptyList();
     }
 
-    return new ChildrenList(firstChild, role);
+    return new ImmutableChildrenList(firstChild, role);
   }
 
   private int getPropertyIndex(SProperty id) {
@@ -927,92 +926,5 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   @NotNull
   private SProperty convertToProp(String name) {
     return ((ConceptMetaInfoConverter) myConcept).convertProperty(name);
-  }
-
-  private static final class AlreadyConstructedException extends RuntimeException {
-    public AlreadyConstructedException(@NotNull SNode node) {
-      super("The node " + node + " has already been constructed.");
-    }
-  }
-
-  private static class ChildrenList extends AbstractSequentialList<SNode> {
-    @Nullable
-    private final SContainmentLink myRole;
-
-    public ChildrenList(SNode first, @Nullable SContainmentLink role) {
-      super(first);
-      myRole = role;
-    }
-
-    @Override
-    protected AbstractSequentialIterator<SNode> createIterator(SNode first) {
-      return new ChildrenIterator(first, myRole);
-    }
-
-    @NotNull
-    @Override
-    public List<SNode> subList(int fromIndex, int toIndex) {
-      if (fromIndex < toIndex) {
-        return new ChildrenList(get(fromIndex), myRole);
-      } else {
-        return Collections.emptyList();
-      }
-    }
-
-    private class ChildrenIterator extends AbstractSequentialIterator<SNode> {
-      @Nullable
-      private final SContainmentLink myRole;
-
-      public ChildrenIterator(@NotNull SNode first, @Nullable SContainmentLink role) {
-        super(first);
-        myRole = role;
-      }
-
-      @Override
-      protected SNode getNext(SNode node) {
-        node.assertCanRead();
-
-        if (myRole == null) {
-          return node.treeNext();
-        }
-
-        do {
-          node = node.treeNext();
-        } while (node != null && !myRole.equals(node.getContainmentLink()));
-        return node;
-      }
-
-      @Override
-      protected SNode getPrev(SNode node) {
-        node.assertCanRead();
-
-        if (node.treeParent() == null) {
-          return null;
-        }
-        SNode fc = node.treeParent().firstChild();
-
-        if (node == fc) {
-          return null;
-        }
-        if (myRole == null) {
-          return node.treePrevious();
-        }
-
-        do {
-          node = node.treePrevious();
-        } while (node != fc && !myRole.equals(node.getContainmentLink()));
-
-        return myRole.equals(node.getContainmentLink()) ? node : null;
-      }
-
-      @Override
-      public SNode next() {
-        final SNode node = super.next();
-        if (node != null) {
-          node.getNodeOwner().fireNodeRead(node, true);
-        }
-        return node;
-      }
-    }
   }
 }

@@ -122,7 +122,7 @@ public class SLinkOperations {
   }
   public static List<SNode> getChildren(SNode node, SContainmentLink role) {
     if (node != null && role != null) {
-      return new AbstractSNodeList.ChildrenSNodesList(node, role);
+      return new MutableChildrenList(node, role);
     }
     return jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.EMPTY_LIST;
   }

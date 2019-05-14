@@ -190,7 +190,7 @@ public class ModelListenerTest {
     AccessCountListener2 cl2 = new AccessCountListener2();
     AccessCountListener3 cl3 = new AccessCountListener3();
     final SNode r1 = m1f.getRoot(1);
-    // getChildren(role) is the one to check, as ChildrenIterator#getNext(node) calls for node.getContainmentLink(), which triggers another nodeRead
+    // getChildren(role) is the one to check, as ChildrenIterator#doNext(node) calls for node.getContainmentLink(), which triggers another nodeRead
     final Iterator<? extends SNode> childIterator = r1.getChildren(ourRole).iterator();
     m1f.attachAccessListeners(cl1, cl2, cl3);
     final SNode n1 = childIterator.next();
@@ -200,7 +200,7 @@ public class ModelListenerTest {
     Assert.assertNotNull(n1);
     Assert.assertNotNull(n2);
     Assert.assertNotNull(n3);
-    // 3 for each node + 2 for getNext(node) calls
+    // 3 for each node + 2 for doNext(node) calls
     myErrors.checkThat(cl1.myVisitedNodes, equalTo(3));
     myErrors.checkThat(cl2.myVisitedNodes, equalTo(3));
     myErrors.checkThat(cl3.myVisitedNodes, equalTo(3));
