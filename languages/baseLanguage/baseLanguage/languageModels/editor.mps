@@ -1201,6 +1201,7 @@
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435808" name="initValue" index="HW$Y0" />
         <child id="1237721435807" name="elementType" index="HW$YZ" />
+        <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
       <concept id="1227022159410" name="jetbrains.mps.baseLanguage.collections.structure.AddFirstElementOperation" flags="nn" index="2Ke4WJ" />
       <concept id="1227022210526" name="jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation" flags="nn" index="2Kehj3" />
@@ -27422,27 +27423,34 @@
             <node concept="2I9FWS" id="5zY$kuE6aJH" role="1tU5fm">
               <ref role="2I9WkF" to="tpee:fzclF8l" resolve="Statement" />
             </node>
-            <node concept="2OqwBi" id="5zY$kuE6dtT" role="33vP2m">
-              <node concept="2OqwBi" id="5zY$kuE6aJI" role="2Oq$k0">
-                <node concept="1PxgMI" id="5zY$kuE6cVV" role="2Oq$k0">
-                  <node concept="2OqwBi" id="5zY$kuE6chK" role="1m5AlR">
-                    <node concept="37vLTw" id="5zY$kuE6c76" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2VL9V2qCiUX" resolve="ifStatement" />
+            <node concept="2ShNRf" id="5GlBwxnerbC" role="33vP2m">
+              <node concept="Tc6Ow" id="5GlBwxneF2I" role="2ShVmc">
+                <node concept="3Tqbb2" id="5GlBwxneINo" role="HW$YZ">
+                  <ref role="ehGHo" to="tpee:fzclF8l" resolve="Statement" />
+                </node>
+                <node concept="2OqwBi" id="5zY$kuE6dtT" role="I$8f6">
+                  <node concept="2OqwBi" id="5zY$kuE6aJI" role="2Oq$k0">
+                    <node concept="1PxgMI" id="5zY$kuE6cVV" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5zY$kuE6chK" role="1m5AlR">
+                        <node concept="37vLTw" id="5zY$kuE6c76" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2VL9V2qCiUX" resolve="ifStatement" />
+                        </node>
+                        <node concept="3TrEf2" id="5zY$kuE6cDa" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpee:fK9aQHQ" resolve="ifFalseStatement" />
+                        </node>
+                      </node>
+                      <node concept="chp4Y" id="714IaVdH15V" role="3oSUPX">
+                        <ref role="cht4Q" to="tpee:fK9aQHR" resolve="BlockStatement" />
+                      </node>
                     </node>
-                    <node concept="3TrEf2" id="5zY$kuE6cDa" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tpee:fK9aQHQ" resolve="ifFalseStatement" />
+                    <node concept="3TrEf2" id="5zY$kuE6dev" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:fK9aQHS" resolve="statements" />
                     </node>
                   </node>
-                  <node concept="chp4Y" id="714IaVdH15V" role="3oSUPX">
-                    <ref role="cht4Q" to="tpee:fK9aQHR" resolve="BlockStatement" />
+                  <node concept="3Tsc0h" id="5zY$kuE6dTm" role="2OqNvi">
+                    <ref role="3TtcxE" to="tpee:fzcqZ_x" resolve="statement" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="5zY$kuE6dev" role="2OqNvi">
-                  <ref role="3Tt5mk" to="tpee:fK9aQHS" resolve="statements" />
-                </node>
-              </node>
-              <node concept="3Tsc0h" id="5zY$kuE6dTm" role="2OqNvi">
-                <ref role="3TtcxE" to="tpee:fzcqZ_x" resolve="statement" />
               </node>
             </node>
           </node>
