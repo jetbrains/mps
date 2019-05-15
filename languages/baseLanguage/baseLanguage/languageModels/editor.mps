@@ -14215,44 +14215,21 @@
           <property role="Vb096" value="DARK_BLUE" />
         </node>
       </node>
-      <node concept="3EZMnI" id="MTvSFwxo6R" role="3EZMnx">
+      <node concept="l2Vlx" id="i0DyZUs" role="2iSdaV" />
+      <node concept="3EZMnI" id="1EzqTBZIym3" role="3EZMnx">
         <property role="S$Qs1" value="true" />
-        <node concept="ljvvj" id="MTvSFwxQ6s" role="3F10Kt">
+        <node concept="VPM3Z" id="1EzqTBZIym5" role="3F10Kt" />
+        <node concept="ljvvj" id="1EzqTBZALMC" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="l2Vlx" id="MTvSFwxo6S" role="2iSdaV" />
-        <node concept="3F0ifn" id="hF9T$B$" role="3EZMnx">
-          <property role="3F0ifm" value="{" />
-          <ref role="1k5W1q" node="hFD5onb" resolve="LeftBrace" />
-          <node concept="ljvvj" id="i0DyZf4" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-          <node concept="VechU" id="7AB28SOK8ab" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
-          </node>
+        <node concept="PMmxH" id="1EzqTBZALMN" role="3EZMnx">
+          <ref role="PMmxG" node="1EzqTBZALMA" resolve="ConceptFunction_Block" />
         </node>
-        <node concept="3F1sOY" id="hF9T$BB" role="3EZMnx">
-          <property role="1cu_pB" value="2" />
-          <ref role="1NtTu8" to="tpee:gyVODHa" resolve="body" />
-          <node concept="lj46D" id="i0DyZf6" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-          <node concept="ljvvj" id="i0DyZf7" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-        </node>
-        <node concept="3F0ifn" id="hF9T$BD" role="3EZMnx">
-          <property role="3F0ifm" value="}" />
-          <ref role="1k5W1q" node="hFD5_7H" resolve="RightBrace" />
-          <node concept="VechU" id="7AB28SOK8ad" role="3F10Kt">
-            <property role="Vb096" value="DARK_BLUE" />
-          </node>
-        </node>
-        <node concept="PMmxH" id="MTvSFwydNC" role="AHCbl">
+        <node concept="l2Vlx" id="1EzqTBZIym8" role="2iSdaV" />
+        <node concept="PMmxH" id="1EzqTBZLTiP" role="AHCbl">
           <ref role="PMmxG" node="MTvSFwydN_" resolve="ConceptFunction_Folded_Component" />
         </node>
       </node>
-      <node concept="l2Vlx" id="i0DyZUs" role="2iSdaV" />
     </node>
   </node>
   <node concept="24kQdi" id="hqOrVaC">
@@ -15384,30 +15361,21 @@
           <property role="Vb096" value="DARK_BLUE" />
         </node>
       </node>
-      <node concept="3F0ifn" id="hF__cn9" role="3EZMnx">
-        <property role="3F0ifm" value="{" />
-        <ref role="1k5W1q" node="hFD5onb" resolve="LeftBrace" />
-        <node concept="ljvvj" id="i0DyUWr" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F1sOY" id="hF__cnd" role="3EZMnx">
-        <ref role="1NtTu8" to="tpee:gyVODHa" resolve="body" />
-        <node concept="lj46D" id="i0DyUWt" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="ljvvj" id="i0DyUWu" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F0ifn" id="hF__cnf" role="3EZMnx">
-        <property role="3F0ifm" value="}" />
-        <ref role="1k5W1q" node="hFD5_7H" resolve="RightBrace" />
-        <node concept="ljvvj" id="i0DyUWv" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
       <node concept="l2Vlx" id="i0DyWKE" role="2iSdaV" />
+      <node concept="3EZMnI" id="1EzqTBZIwoi" role="3EZMnx">
+        <property role="S$Qs1" value="true" />
+        <node concept="VPM3Z" id="1EzqTBZIwok" role="3F10Kt" />
+        <node concept="ljvvj" id="1EzqTBZANYK" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="PMmxH" id="1EzqTBZANKx" role="3EZMnx">
+          <ref role="PMmxG" node="1EzqTBZALMA" resolve="ConceptFunction_Block" />
+        </node>
+        <node concept="l2Vlx" id="1EzqTBZIwon" role="2iSdaV" />
+        <node concept="PMmxH" id="1EzqTBZLTIB" role="AHCbl">
+          <ref role="PMmxG" node="MTvSFwydN_" resolve="ConceptFunction_Folded_Component" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="1h_SRR" id="hFzuWiw">
@@ -64263,6 +64231,43 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="PKFIW" id="1EzqTBZALMA">
+    <property role="TrG5h" value="ConceptFunction_Block" />
+    <ref role="1XX52x" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+    <node concept="3EZMnI" id="1EzqTBZALMB" role="2wV5jI">
+      <node concept="l2Vlx" id="1EzqTBZALMD" role="2iSdaV" />
+      <node concept="3F0ifn" id="1EzqTBZALME" role="3EZMnx">
+        <property role="3F0ifm" value="{" />
+        <ref role="1k5W1q" node="hFD5onb" resolve="LeftBrace" />
+        <node concept="ljvvj" id="1EzqTBZALMF" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="VechU" id="1EzqTBZALMG" role="3F10Kt">
+          <property role="Vb096" value="DARK_BLUE" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="1EzqTBZALMH" role="3EZMnx">
+        <property role="1cu_pB" value="2" />
+        <ref role="1NtTu8" to="tpee:gyVODHa" resolve="body" />
+        <node concept="lj46D" id="1EzqTBZALMI" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="ljvvj" id="1EzqTBZALMJ" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1EzqTBZALMK" role="3EZMnx">
+        <property role="3F0ifm" value="}" />
+        <ref role="1k5W1q" node="hFD5_7H" resolve="RightBrace" />
+        <node concept="VechU" id="1EzqTBZALML" role="3F10Kt">
+          <property role="Vb096" value="DARK_BLUE" />
+        </node>
+      </node>
+      <node concept="PMmxH" id="1EzqTBZALMM" role="AHCbl">
+        <ref role="PMmxG" node="MTvSFwydN_" resolve="ConceptFunction_Folded_Component" />
       </node>
     </node>
   </node>
