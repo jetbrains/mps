@@ -22,9 +22,9 @@ import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.language.SEnumeration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -62,7 +62,7 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
     if (property.getType() instanceof SEnumeration) {
       if (SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated")) && SNodeOperations.hasRole(propertyDeclaration, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty"))) {
         propertyDeclaration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration"));
-      } else if (!(SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated"))) && SNodeOperations.hasRole(propertyDeclaration, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration"))) {
+      } else if (!(SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated"))) && SNodeOperations.hasRole(propertyDeclaration, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration")) && (AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"))) != null)) {
         propertyDeclaration = SLinkOperations.getTarget(AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"))), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty"));
       }
     }
