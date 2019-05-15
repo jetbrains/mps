@@ -263,51 +263,6 @@
       </node>
     </node>
   </node>
-  <node concept="2S6QgY" id="3vXGXT8byI1">
-    <property role="TrG5h" value="AddCustomPackaging" />
-    <ref role="2ZfgGC" to="kdzh:5HVSRHdUL81" resolve="BuildMps_IdeaPluginGroup" />
-    <node concept="2S6ZIM" id="3vXGXT8byI2" role="2ZfVej">
-      <node concept="3clFbS" id="3vXGXT8byI3" role="2VODD2">
-        <node concept="3clFbF" id="3vXGXT8byI6" role="3cqZAp">
-          <node concept="Xl_RD" id="3vXGXT8byI7" role="3clFbG">
-            <property role="Xl_RC" value="Customize Packaging for Modules (deprecated, Use the Packaging Type in the 'plugin' Construction Instead)" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2Sbjvc" id="3vXGXT8byI4" role="2ZfgGD">
-      <node concept="3clFbS" id="3vXGXT8byI5" role="2VODD2">
-        <node concept="3clFbF" id="3vXGXT8byIF" role="3cqZAp">
-          <node concept="2OqwBi" id="3vXGXT8byJ4" role="3clFbG">
-            <node concept="2OqwBi" id="3vXGXT8byIP" role="2Oq$k0">
-              <node concept="2Sf5sV" id="3vXGXT8byIG" role="2Oq$k0" />
-              <node concept="3Tsc0h" id="3vXGXT8byIU" role="2OqNvi">
-                <ref role="3TtcxE" to="kdzh:3vXGXT8byGJ" resolve="customPackaging" />
-              </node>
-            </node>
-            <node concept="WFELt" id="3vXGXT8byJa" role="2OqNvi" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2SaL7w" id="3vXGXT8byI8" role="2ZfVeh">
-      <node concept="3clFbS" id="3vXGXT8byI9" role="2VODD2">
-        <node concept="3clFbF" id="3vXGXT8byIa" role="3cqZAp">
-          <node concept="2OqwBi" id="3vXGXT8byI_" role="3clFbG">
-            <node concept="2OqwBi" id="3vXGXT8byIk" role="2Oq$k0">
-              <node concept="2Sf5sV" id="3vXGXT8byIb" role="2Oq$k0" />
-              <node concept="3Tsc0h" id="3vXGXT8byIr" role="2OqNvi">
-                <ref role="3TtcxE" to="kdzh:3vXGXT8byGJ" resolve="customPackaging" />
-              </node>
-            </node>
-            <node concept="liA8E" id="3vXGXT8byIE" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="2S6QgY" id="1xmIngrPriD">
     <property role="2ZfUl0" value="true" />
     <property role="TrG5h" value="ReloadModulesFromDisk" />

@@ -40,26 +40,19 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // Concept: BuildMps_IdeaPluginGroup 
-          intentions = new IntentionFactory[1];
-          intentions[0] = new AddCustomPackaging_Intention();
-        }
-        break;
-      case 2:
-        if (true) {
           // Concept: BuildMps_Module 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddDefaultResources_Intention();
         }
         break;
-      case 3:
+      case 2:
         if (true) {
           // Concept: BuildMps_ModuleDependencyJar 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddCustomLocationDependency_Intention();
         }
         break;
-      case 4:
+      case 3:
         if (true) {
           // Concept: BuildProject 
           intentions = new IntentionFactory[1];
@@ -75,13 +68,12 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[5];
+    IntentionFactory[] rv = new IntentionFactory[4];
     rv[0] = new ToggleCompactMpsModule_Intention();
     rv[1] = new AddCustomLocationDependency_Intention();
-    rv[2] = new AddCustomPackaging_Intention();
-    rv[3] = new ReloadModulesFromDisk_Intention();
-    rv[4] = new AddDefaultResources_Intention();
+    rv[2] = new ReloadModulesFromDisk_Intention();
+    rv[3] = new AddDefaultResources_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L), MetaIdFactory.conceptId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L), MetaIdFactory.conceptId(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L)).seal();
 }

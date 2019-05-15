@@ -24,9 +24,9 @@ import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Container__BehaviorDescriptor;
@@ -101,20 +101,6 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
           modules = Sequence.<SNode>singleton(SLinkOperations.getTarget(SNodeOperations.as(ipc, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target")));
         }
         BuildMpsLayout_Plugin__BehaviorDescriptor.unpackPluginModules_id6ZIjmBZXud7.invoke(__thisNode__, modules, helper, baseLocation, groupSuffix);
-      } else if ((SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x318cec002865ade0L, "packagingType")) == null)) {
-        // legacy code, old behavior for the 'custom packaging option', to remove in 19.1 
-        if (SNodeOperations.isInstanceOf(ipc, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup"))) {
-          final SNode group = SNodeOperations.as(ipc, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup"));
-          modules = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(group, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules"))).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return !((boolean) BuildMps_IdeaPluginGroup__BehaviorDescriptor.isCustomPackaging_id7cOEBlPTrI3.invoke(group, it));
-            }
-          });
-          groupSuffix = SPropertyOperations.getString(SLinkOperations.getTarget(group, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + '/';
-        } else if (SNodeOperations.isInstanceOf(ipc, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")) && !(SPropertyOperations.getBoolean(SNodeOperations.as(ipc, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x37fdb3de482cf2dfL, "customPackaging")))) {
-          modules = Sequence.<SNode>singleton(SLinkOperations.getTarget(SNodeOperations.as(ipc, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target")));
-        }
-        BuildMpsLayout_Plugin__BehaviorDescriptor.unpackPluginModules_id6ZIjmBZXud7.invoke(__thisNode__, modules, helper, baseLocation, groupSuffix);
       }
     }
   }
@@ -146,14 +132,6 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
               return null;
             }
             if (SNodeOperations.isInstanceOf(container, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
-              return null;
-            }
-          } else {
-            // to remove in 191 
-            if ((group != null) && (boolean) BuildMps_IdeaPluginGroup__BehaviorDescriptor.isCustomPackaging_id7cOEBlPTrI3.invoke(group, module.value)) {
-              return null;
-            }
-            if (SNodeOperations.isInstanceOf(container, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")) && SPropertyOperations.getBoolean(SNodeOperations.as(container, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x37fdb3de482cf2dfL, "customPackaging"))) {
               return null;
             }
           }
@@ -204,15 +182,8 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
           if (SNodeOperations.isInstanceOf(container, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
             return false;
           }
-        } else {
-          // again legacy stuff, to remove in 19.1 
-          if ((group != null) && (boolean) BuildMps_IdeaPluginGroup__BehaviorDescriptor.isCustomPackaging_id7cOEBlPTrI3.invoke(group, module.value)) {
-            return false;
-          }
-          if (SNodeOperations.isInstanceOf(container, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")) && SPropertyOperations.getBoolean(SNodeOperations.as(container, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x37fdb3de482cf2dfL, "customPackaging"))) {
-            return false;
-          }
         }
+
         return container != null;
       }
     }
