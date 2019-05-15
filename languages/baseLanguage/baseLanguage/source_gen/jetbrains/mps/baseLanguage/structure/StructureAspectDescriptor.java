@@ -324,6 +324,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.aggregatedLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
   }
 
   @Override
@@ -3242,6 +3243,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/6329021646629104954");
     b.version(2);
     b.aggregate("commentPart", 0x57d533a7af16ff73L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL).optional(true).ordered(true).multiple(true).origin("6329021646629175155").done();
+    b.aggregate("text", 0x12bc996bc5882f24L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("1350122676458893092").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("//");
     return b.create();

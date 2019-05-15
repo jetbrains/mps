@@ -46,6 +46,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" />
+    <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
     <import index="356a" ref="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)" implicit="true" />
     <import index="bzl4" ref="r:9d0684e9-039f-4e88-b824-947b454f70f2(jetbrains.mps.baseLanguage.javadoc.behavior)" implicit="true" />
   </imports>
@@ -44024,7 +44025,19 @@
       </node>
     </node>
     <node concept="13hLZK" id="4Gt7ANIVZv5" role="13h7CW">
-      <node concept="3clFbS" id="4Gt7ANIVZv6" role="2VODD2" />
+      <node concept="3clFbS" id="4Gt7ANIVZv6" role="2VODD2">
+        <node concept="3clFbF" id="1aWAmJ5ZApM" role="3cqZAp">
+          <node concept="2OqwBi" id="1aWAmJ5VUuD" role="3clFbG">
+            <node concept="2OqwBi" id="1aWAmJ5VUuE" role="2Oq$k0">
+              <node concept="13iPFW" id="1aWAmJ5VUuF" role="2Oq$k0" />
+              <node concept="3Tsc0h" id="1aWAmJ5VUuG" role="2OqNvi">
+                <ref role="3TtcxE" to="tpee:1aWAmJ5y2W$" resolve="text" />
+              </node>
+            </node>
+            <node concept="2DeJg1" id="1aWAmJ5VUuH" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="3JrbGEZ6KoW">
