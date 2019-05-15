@@ -5,6 +5,10 @@
     <modelRoot contentPath="${module}" type="java_classes">
       <sourceRoot location="classes" />
     </modelRoot>
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
+      <!-- THIS ENTRY IS TO MAKE SURE STUB CLASSES ARE AVAILABLE AT DEPLOYMENT -->
+      <sourceRoot location="mps-references.jar" />
+    </modelRoot>
   </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
