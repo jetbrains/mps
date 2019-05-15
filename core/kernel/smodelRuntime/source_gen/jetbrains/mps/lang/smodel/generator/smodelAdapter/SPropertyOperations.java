@@ -54,9 +54,10 @@ public class SPropertyOperations {
       SNodeAccessUtil.setPropertyValue(node, property, propertyValue);
     }
   }
-  public static void setEnum(SNode node, SProperty property, String enumMemberName) {
+  public static void setEnum(SNode node, SProperty property, long enumMemberId) {
     if (node != null) {
-      SNodeAccessUtil.setPropertyValue(node, property, as_sbyy7e_a0c0a0a0j(property.getType(), SEnumeration.class).getLiteral(enumMemberName));
+      SEnumeration enumeration = as_sbyy7e_a0a0a0a9(property.getType(), SEnumeration.class);
+      SNodeAccessUtil.setPropertyValue(node, property, SEnumOperations.getMember(enumeration, enumMemberId));
     }
   }
 
@@ -243,7 +244,7 @@ public class SPropertyOperations {
     set(node, property, propertyValue);
     return propertyValue;
   }
-  private static <T> T as_sbyy7e_a0c0a0a0j(Object o, Class<T> type) {
+  private static <T> T as_sbyy7e_a0a0a0a9(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

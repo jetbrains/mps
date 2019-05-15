@@ -13443,6 +13443,27 @@
             <node concept="10Nm6u" id="5okb0OxU87t" role="3uHU7w" />
           </node>
           <node concept="3clFbS" id="5okb0OxU87u" role="3clFbx">
+            <node concept="3cpWs8" id="7q4qlnqftT9" role="3cqZAp">
+              <node concept="3cpWsn" id="7q4qlnqftTa" role="3cpWs9">
+                <property role="TrG5h" value="enumeration" />
+                <node concept="3uibUv" id="7q4qlnqftRs" role="1tU5fm">
+                  <ref role="3uigEE" to="c17a:~SEnumeration" resolve="SEnumeration" />
+                </node>
+                <node concept="0kSF2" id="7q4qlnqftTb" role="33vP2m">
+                  <node concept="3uibUv" id="7q4qlnqftTc" role="0kSFW">
+                    <ref role="3uigEE" to="c17a:~SEnumeration" resolve="SEnumeration" />
+                  </node>
+                  <node concept="2OqwBi" id="7q4qlnqftTd" role="0kSFX">
+                    <node concept="37vLTw" id="7q4qlnqftTe" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5okb0OxU87C" resolve="property" />
+                    </node>
+                    <node concept="liA8E" id="7q4qlnqftTf" role="2OqNvi">
+                      <ref role="37wK5l" to="c17a:~SProperty.getType()" resolve="getType" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="5okb0OxU87v" role="3cqZAp">
               <node concept="2YIFZM" id="5okb0OxU87w" role="3clFbG">
                 <ref role="1Pybhc" to="mhbf:~SNodeAccessUtil" resolve="SNodeAccessUtil" />
@@ -13453,25 +13474,14 @@
                 <node concept="37vLTw" id="5okb0OxU87y" role="37wK5m">
                   <ref role="3cqZAo" node="5okb0OxU87C" resolve="property" />
                 </node>
-                <node concept="2OqwBi" id="5okb0OxUihy" role="37wK5m">
-                  <node concept="0kSF2" id="5okb0OxUhpU" role="2Oq$k0">
-                    <node concept="3uibUv" id="5okb0OxUi12" role="0kSFW">
-                      <ref role="3uigEE" to="c17a:~SEnumeration" resolve="SEnumeration" />
-                    </node>
-                    <node concept="2OqwBi" id="5okb0OxUfKq" role="0kSFX">
-                      <node concept="37vLTw" id="5okb0OxUfzi" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5okb0OxU87C" resolve="property" />
-                      </node>
-                      <node concept="liA8E" id="5okb0OxUgsa" role="2OqNvi">
-                        <ref role="37wK5l" to="c17a:~SProperty.getType():org.jetbrains.mps.openapi.language.SDataType" resolve="getType" />
-                      </node>
-                    </node>
+                <node concept="2YIFZM" id="7q4qlnqf_h7" role="37wK5m">
+                  <ref role="37wK5l" node="1eSXJReoP1T" resolve="getMember" />
+                  <ref role="1Pybhc" node="X9k2kW5hL5" resolve="SEnumOperations" />
+                  <node concept="37vLTw" id="7q4qlnqfGXs" role="37wK5m">
+                    <ref role="3cqZAo" node="7q4qlnqftTa" resolve="enumeration" />
                   </node>
-                  <node concept="liA8E" id="5okb0OxUj7w" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SEnumeration.getLiteral(java.lang.String):org.jetbrains.mps.openapi.language.SEnumerationLiteral" resolve="getLiteral" />
-                    <node concept="37vLTw" id="5okb0OxUja2" role="37wK5m">
-                      <ref role="3cqZAo" node="5okb0OxU87E" resolve="enumMemberName" />
-                    </node>
+                  <node concept="37vLTw" id="7q4qlnqfJO_" role="37wK5m">
+                    <ref role="3cqZAo" node="5okb0OxU87E" resolve="enumMemberId" />
                   </node>
                 </node>
               </node>
@@ -13494,10 +13504,8 @@
         </node>
       </node>
       <node concept="37vLTG" id="5okb0OxU87E" role="3clF46">
-        <property role="TrG5h" value="enumMemberName" />
-        <node concept="3uibUv" id="5okb0OxUc8S" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-        </node>
+        <property role="TrG5h" value="enumMemberId" />
+        <node concept="3cpWsb" id="7q4qlnqfB9V" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="5okb0OxU7CU" role="jymVt" />

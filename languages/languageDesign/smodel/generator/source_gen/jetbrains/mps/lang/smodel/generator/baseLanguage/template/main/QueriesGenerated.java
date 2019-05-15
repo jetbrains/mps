@@ -893,9 +893,6 @@ public class QueriesGenerated {
   public static Object propertyMacro_GetValue_138_0(final PropertyMacroContext _context) {
     return "0x" + Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(_context.getNode()).getIdValue()) + 'L';
   }
-  public static Object propertyMacro_GetValue_140_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091d8a1d53L, 0x1091d8c01aaL, "value")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
-  }
   public static Object propertyMacro_GetValue_141_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getDatatypeId(_context.getNode()).getLanguageId().getIdValue().getMostSignificantBits();
     return "0x" + Long.toHexString(msb) + "L";
@@ -2304,6 +2301,9 @@ public class QueriesGenerated {
     SNode operation = SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(_context.getNode());
     SNode op = SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"));
     return SLinkOperations.getTarget(op, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"));
+  }
+  public static SNode sourceNodeQuery_140_2(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091d8a1d53L, 0x1091d8c01aaL, "value")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl"));
   }
   public static Object templateArgumentQuery_108_0(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));

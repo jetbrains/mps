@@ -187,59 +187,59 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     // As first operations have much more usages, we initially trying to migrate them in a sane way,  
     // then care about latter 
 
-    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "by_custom_methods");
-    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_custom_methods");
+    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433d8L);
+    SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640645L);
 
     if (SLinkOperations.hasPointer(oldEnum, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657063"))) {
 
-      SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "boolean");
+      SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433c6L);
 
       if (oldNamesSuite(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_name");
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
       } else if (externalEqualsOldName(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_presentation");
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
       }
 
     } else if (SLinkOperations.hasPointer(oldEnum, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657062"))) {
 
       if (internalValuesAreOrdinal(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "int_ordinal");
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433cbL);
       } else if (internalValuesAreOrdinalPlusOne(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "int_ordinal_plus_one");
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433d1L);
       }
 
       if (oldNamesSuite(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_name");
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
       } else if (externalEqualsOldName(oldEnum)) {
-        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_presentation");
+        SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
       }
 
     } else {
       if (internalEqualsOldName(oldEnum)) {
         if (internalValueSuite(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "string_name");
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_name");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
         } else if (externalEqualsInternal(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "string_presentation");
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_presentation");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
         }
       } else {
         if (internalValueSuite(oldEnum) && externalEqualsOldName(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "string_name");
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_presentation");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
           namingStrategy = BY_INTERNAL_VALUE;
         } else if (oldNamesSuite(oldEnum) && externalEqualsInternal(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "string_presentation");
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_name");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL);
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
         } else if (internalValueSuite(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "string_name");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433beL);
           namingStrategy = BY_INTERNAL_VALUE;
         } else if (externalEqualsInternal(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), "string_presentation");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration"), 0x5a14f103596433bfL);
         } else if (oldNamesSuite(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_name");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640641L);
         } else if (externalEqualsOldName(oldEnum)) {
-          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), "by_presentation");
+          SPropertyOperations.setEnum(migrationInfo, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration"), 0x5a14f10359640642L);
         }
       }
     }
