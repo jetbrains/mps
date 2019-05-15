@@ -10256,10 +10256,6 @@
   
   <target name="declare-mps-tasks" depends="classes">
     <jar destfile="${build.tmp}/antTasks/mps-core.jar">
-      <fileset dir="${build.tmp}/java/out/mps-references" />
-      <fileset dir="${build.tmp}/java/out/mps-closures" />
-      <fileset dir="${build.tmp}/java/out/mps-collections" />
-      <fileset dir="${build.tmp}/java/out/mps-tuples" />
       <fileset dir="${build.tmp}/java/out/mps-openapi" />
       <fileset dir="${build.tmp}/java/out/mps-smodel" />
       <fileset dir="${build.tmp}/java/out/mps-core-components" />
@@ -10281,6 +10277,14 @@
     <jar destfile="${build.tmp}/antTasks/ant/lib/ant-mps.jar">
       <fileset dir="${build.tmp}/java/out/ant-mps" />
     </jar>
+    <copy todir="${build.tmp}/antTasks/">
+      <!--These are hardcoded locations of jars built in the project mpsBootstrapCore depends from-->
+      <!--FIXME need better mechanism to deal with that-->
+      <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
+      <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
+      <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+      <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
+    </copy>
     <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   </target>
   
