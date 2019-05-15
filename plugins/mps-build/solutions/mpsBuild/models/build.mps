@@ -2220,11 +2220,11 @@
         </node>
         <node concept="3981dx" id="LYSlkhF6kY" role="39821P">
           <node concept="Saw0i" id="75RBgxKmGlz" role="39821P">
-            <ref role="Saw0g" node="75RBgxKm6HY" resolve="mps-generator" />
+            <ref role="Saw0g" node="75RBgxKm6HY" />
           </node>
           <node concept="398223" id="LYSlkhF6uJ" role="39821P">
             <node concept="1bldCd" id="1OSlDLmrG9L" role="39821P">
-              <ref role="3$exzV" node="7Kfy9QB6Lfi" resolve="jetbrains.mps.generator" />
+              <ref role="3$exzV" node="7Kfy9QB6Lfi" />
             </node>
             <node concept="3_J27D" id="LYSlkhF6uL" role="Nbhlr">
               <node concept="3Mxwew" id="LYSlkhF6vx" role="3MwsjC">
@@ -2240,7 +2240,7 @@
         </node>
         <node concept="3981dx" id="LYSlkhF66T" role="39821P">
           <node concept="Saw0i" id="6g0vjebAD5g" role="39821P">
-            <ref role="Saw0g" node="6g0vjebAkhc" resolve="mps-textgen" />
+            <ref role="Saw0g" node="6g0vjebAkhc" />
           </node>
           <node concept="3_J27D" id="LYSlkhF66V" role="Nbhlr">
             <node concept="3Mxwew" id="LYSlkhF6bj" role="3MwsjC">
@@ -6628,6 +6628,11 @@
         </node>
         <node concept="2EVzJI" id="6SHOJj4Zp1o" role="2EVzJD">
           <ref role="2EVzJJ" node="mXGwHwhVPj" resolve="JDK" />
+        </node>
+        <node concept="1SiIV0" id="bWXeR901Lu" role="3bR37C">
+          <node concept="3bR9La" id="bWXeR901Lv" role="1SiIV1">
+            <ref role="3bR37D" node="3HV74$ebibC" resolve="jetbrains.mps.lang.text" />
+          </node>
         </node>
       </node>
       <node concept="1E1JtD" id="7Kfy9QB6KZG" role="2G$12L">
