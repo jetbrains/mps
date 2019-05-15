@@ -177,6 +177,11 @@
         <ref role="trN6q" to="tpck:gw2VY9q" resolve="BaseConcept" />
       </node>
     </node>
+    <node concept="1TJgyi" id="1SDkaf46SBG" role="1TKVEl">
+      <property role="IQ2nx" value="2173356959483005420" />
+      <property role="TrG5h" value="stringValueMigrated" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4IP40Bi2Kc_">
     <property role="TrG5h" value="NodeBuilderInitProperty" />

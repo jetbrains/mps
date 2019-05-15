@@ -98,7 +98,9 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT" />
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
@@ -181,6 +183,9 @@
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
+      </concept>
+      <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
+        <reference id="1138056395725" name="property" index="3TsBF5" />
       </concept>
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
@@ -542,7 +547,21 @@
     <property role="3GE5qa" value="quotation" />
     <ref role="13h7C2" to="tp3r:hqEMmm7" resolve="PropertyAntiquotation" />
     <node concept="13hLZK" id="1653mnvB2r$" role="13h7CW">
-      <node concept="3clFbS" id="1653mnvB2r_" role="2VODD2" />
+      <node concept="3clFbS" id="1653mnvB2r_" role="2VODD2">
+        <node concept="3clFbF" id="1SDkaf46SC2" role="3cqZAp">
+          <node concept="37vLTI" id="1SDkaf46TID" role="3clFbG">
+            <node concept="3clFbT" id="1SDkaf46TM6" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="2OqwBi" id="1SDkaf46SMy" role="37vLTJ">
+              <node concept="13iPFW" id="1SDkaf46SC1" role="2Oq$k0" />
+              <node concept="3TrcHB" id="1SDkaf46Thb" role="2OqNvi">
+                <ref role="3TsBF5" to="tp3r:1SDkaf46SBG" resolve="stringValueMigrated" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="1653mnvANLm">

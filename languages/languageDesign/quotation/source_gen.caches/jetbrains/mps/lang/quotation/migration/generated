@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="4h8u3fgywu5hyl8ni9ivfi6zvmew2j2">
-  <files names="MigrateEnumPropertyUsages.java:MigrationDescriptor.java:Pattern_32rjqx_a0b0a3a0d0b0a0k0j.java:Pattern_32rjqx_a0b0a3a0d0b0a0m0j.java:Pattern_32rjqx_a0b0a3a1a0a01a9.java:Pattern_32rjqx_a0b0a3a1a0a21a9.java:Pattern_32rjqx_a0b0b0a0k0j.java:Pattern_32rjqx_a0b0b0a0m0j.java:WrapNullLiteral.java" />
+<product version="3" modelHash="-6fnnavlfyca4hty8kubj5nxtm0closq">
+  <files names="MigrateEnumPropertyUsages.java:MigrationDescriptor.java:Pattern_32rjqx_a0b0a3a0d0b0a0m0j.java:Pattern_32rjqx_a0b0a3a0d0b0a0o0j.java:Pattern_32rjqx_a0b0a3a1a0a21a9.java:Pattern_32rjqx_a0b0a3a1a0a41a9.java:Pattern_32rjqx_a0b0b0a0m0j.java:Pattern_32rjqx_a0b0b0a0o0j.java:WrapNullLiteral.java" />
 </product>
 

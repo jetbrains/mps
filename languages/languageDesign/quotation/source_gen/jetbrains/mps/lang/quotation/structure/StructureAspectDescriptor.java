@@ -255,6 +255,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L);
     b.origin("r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)/1196866233735");
     b.version(2);
+    b.property("stringValueMigrated", 0x1e2950a3c41b89ecL).type(PrimitiveTypeId.BOOLEAN).origin("2173356959483005420").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForQuotation() {
