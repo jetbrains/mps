@@ -20,7 +20,7 @@ public class check_BuildMps_ModuleDependencyJar_NonTypesystemRule extends Abstra
   }
   public void applyRule(final SNode jarEntry, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarEntry, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path")));
-    if (!(relativePath.endsWith("}")) && !(relativePath.endsWith(".jar"))) {
+    if ((relativePath == null || relativePath.length() == 0) || (!(relativePath.endsWith("}")) && !(relativePath.endsWith(".jar")))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(jarEntry, "should end with .jar (or macro)", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "4278635856200826411", null, errorTarget);
