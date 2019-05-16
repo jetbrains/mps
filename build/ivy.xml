@@ -515,8 +515,8 @@
     <!--
     lib
     (Not IDEA platform libs)-->
-    <dependency org="lib" name="diffutils-1.2.1.jar" rev="1.2.1">
-      <artifact name="diffutils-1.2.1.jar" ext="jar"/>
+    <dependency org="com.googlecode.java-diff-utils" name="diffutils" rev="1.2.1">
+      <artifact name="diffutils" ext="jar"/>
     </dependency>
     <dependency org="lib" name="jgoodies-common-1.2.1.jar" rev="1.2.1">
       <artifact name="jgoodies-common-1.2.1.jar" ext="jar"/>
