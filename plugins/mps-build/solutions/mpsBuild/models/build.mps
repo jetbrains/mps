@@ -992,9 +992,6 @@
         <property role="2a2d0E" value="true" />
         <ref role="2sjeV2" node="6S1jmf0xDFH" resolve="trove4j" />
       </node>
-      <node concept="2sjeV3" id="4PRDOPWOvzO" role="nCB5Z">
-        <ref role="2sjeV2" node="4PRDOPWOqXM" resolve="diffutils" />
-      </node>
     </node>
     <node concept="398b33" id="7FonrDkmRHZ" role="3989C9">
       <property role="TrG5h" value="vfs" />

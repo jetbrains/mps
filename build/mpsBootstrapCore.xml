@@ -10413,7 +10413,6 @@
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
         <path refid="path.java.library.trove4j" />
-        <path refid="path.java.library.diffutils" />
         <pathelement path="${build.tmp}/java/out/mps-openapi" />
         <pathelement path="${build.tmp}/java/out/mps-core-components" />
         <pathelement path="${build.tmp}/java/out/mps-logging" />
@@ -10537,7 +10536,6 @@
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
         <path refid="path.java.library.trove4j" />
-        <path refid="path.java.library.diffutils" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
         <path refid="path.jdk.classpath" />
       </classpath>
