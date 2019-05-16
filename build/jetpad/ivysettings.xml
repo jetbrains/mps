@@ -4,7 +4,7 @@
   <caches defaultCacheDir="${mps.ivy.home}/.ivy2/cache"/>
   <resolvers>
     <url name="public" m2compatible="true">
-      <artifact pattern="http://repository.jetbrains.com/repo/[organization]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]" />
+      <artifact pattern="https://repository.jetbrains.com/all/[organization]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]" />
     </url>
   </resolvers>
 </ivy-settings>
