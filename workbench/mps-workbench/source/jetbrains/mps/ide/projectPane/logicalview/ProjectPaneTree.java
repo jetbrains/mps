@@ -332,8 +332,9 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
               StringBuilder basePack = new StringBuilder();
               String firstPart = treeNode.getPackage();
               String secondPart = "";
-              if (nodePack.startsWith(searchedPack + ".")) {
-                secondPart = nodePack.replaceFirst(searchedPack + ".", "");
+              String prefix = searchedPack + ".";
+              if (nodePack.startsWith(prefix)) {
+                secondPart = nodePack.substring(prefix.length());
               }
               basePack.append(firstPart);
               if (!firstPart.isEmpty() && !secondPart.isEmpty()) {
