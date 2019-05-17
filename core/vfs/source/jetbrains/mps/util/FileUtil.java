@@ -230,8 +230,13 @@ public class FileUtil {
     if (path.equals("" + DOT)) {
       return "";
     }
-    // four backslashes are for windows file separator (escaping it twice), and two are escaping the dot
-    path = path.replaceAll("\\\\\\.\\\\", "\\\\").replaceAll("/\\./", "/");
+    String oldPath;
+    //the following cycle is because "/././".replace(<used template>) -> "/./"
+    do {
+      oldPath = path;
+      // four backslashes are for windows file separator (escaping it twice), and two are escaping the dot
+      path = oldPath.replaceAll("\\\\\\.\\\\", "\\\\").replaceAll("/\\./", "/");
+    } while (oldPath.length() != path.length());
     return path;
   }
 
@@ -453,8 +458,8 @@ public class FileUtil {
   }
 
   /**
-   * @deprecated Use of this method is discouraged, as it gives inconsistent results depending on File(basePath) existence, e.g. see MPS-29999
    * @throws PathResolutionException if the paths do not intersect
+   * @deprecated Use of this method is discouraged, as it gives inconsistent results depending on File(basePath) existence, e.g. see MPS-29999
    */
   @Deprecated
   public static String getRelativePath(@NotNull String targetPath, @NotNull String basePath, @NotNull String pathSeparator) {
