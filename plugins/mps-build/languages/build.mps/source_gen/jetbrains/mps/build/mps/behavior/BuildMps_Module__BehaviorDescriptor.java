@@ -56,7 +56,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesClosure closure = new MPSModulesClosure(__thisNode__, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     boolean needsFetch = ((boolean) BuildMps_Module__BehaviorDescriptor.fetchMPSDeps_id3WZD5LHqVGt.invoke(__thisNode__, closure, artifacts, builder));
-    needsFetch &= ((boolean) BuildMps_Module__BehaviorDescriptor.fetchJavaDeps_id3WZD5LHqUHY.invoke(__thisNode__, closure, artifacts, builder));
+    needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.fetchJavaDeps_id3WZD5LHqUHY.invoke(__thisNode__, closure, artifacts, builder));
 
     if (needsFetch) {
       builder.needsFetch(__thisNode__);
@@ -114,7 +114,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static boolean fetchMPSDeps_id3WZD5LHqVGt(@NotNull SNode __thisNode__, MPSModulesClosure closure, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     boolean needsFetch = false;
     for (SNode dependency : Sequence.fromIterable(closure.getModules())) {
-      needsFetch = ((boolean) BuildMps_Module__BehaviorDescriptor.fetchMPSDep_id3WZD5LHqWXL.invoke(__thisNode__.getConcept(), __thisNode__, dependency, artifacts, builder));
+      needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.fetchMPSDep_id3WZD5LHqWXL.invoke(__thisNode__.getConcept(), __thisNode__, dependency, artifacts, builder));
     }
     return needsFetch;
   }
@@ -141,7 +141,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
         }
       } else {
         if (!(((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invoke(__thisConcept__, source, dependency)))) {
-          needsFetch &= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisConcept__, SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path")), artifacts, builder));
+          needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisConcept__, SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path")), artifacts, builder));
         }
       }
     }

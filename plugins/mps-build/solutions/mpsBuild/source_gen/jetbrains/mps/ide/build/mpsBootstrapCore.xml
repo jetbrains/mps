@@ -13743,7 +13743,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.baseLanguage.regexp.runtime">
+  <target name="java.compile.jetbrains.mps.baseLanguage.regexp.runtime" depends="fetchDependencies">
     <mkdir dir="${mps_home}/languages/util/regexp/solutions/jetbrains.mps.baseLanguage.regexp.runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.regexp.runtime" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.regexp.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true">

@@ -182,7 +182,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1214918800624" name="jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression" flags="nn" index="3uNrnE" />
-      <concept id="7024111702304501418" name="jetbrains.mps.baseLanguage.structure.AndAssignmentExpression" flags="nn" index="3vZ8ra" />
+      <concept id="7024111702304501416" name="jetbrains.mps.baseLanguage.structure.OrAssignmentExpression" flags="nn" index="3vZ8r8" />
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -1038,7 +1038,7 @@
       <node concept="P$JXv" id="3WZD5LHqZPc" role="lGtFl">
         <node concept="TZ5HA" id="3WZD5LHqZPd" role="TZ5H$">
           <node concept="1dT_AC" id="3WZD5LHqZPe" role="1dT_Ay">
-            <property role="1dT_AB" value="Looks through all the dependecies and using the given visible artifacts" />
+            <property role="1dT_AB" value="Looks through all the dependencies and using the given visible artifacts" />
           </node>
         </node>
       </node>
@@ -1087,19 +1087,19 @@
           </node>
         </node>
         <node concept="3clFbF" id="3WZD5LHqUIa" role="3cqZAp">
-          <node concept="3vZ8ra" id="3WZD5LHqUXE" role="3clFbG">
-            <node concept="37vLTw" id="3WZD5LHqUXK" role="37vLTJ">
+          <node concept="3vZ8r8" id="6Z_3H2bahlj" role="3clFbG">
+            <node concept="37vLTw" id="6Z_3H2bahll" role="37vLTJ">
               <ref role="3cqZAo" node="1GEzjKC9gpk" resolve="needsFetch" />
             </node>
-            <node concept="BsUDl" id="3WZD5LHqUXG" role="37vLTx">
+            <node concept="BsUDl" id="6Z_3H2bahlm" role="37vLTx">
               <ref role="37wK5l" node="3WZD5LHqUHY" resolve="fetchJavaDeps" />
-              <node concept="37vLTw" id="3WZD5LHqUXH" role="37wK5m">
+              <node concept="37vLTw" id="6Z_3H2bahln" role="37wK5m">
                 <ref role="3cqZAo" node="6xJrZo0GWcm" resolve="closure" />
               </node>
-              <node concept="37vLTw" id="3WZD5LHqUXI" role="37wK5m">
+              <node concept="37vLTw" id="6Z_3H2bahlo" role="37wK5m">
                 <ref role="3cqZAo" node="57YmpYyL8LS" resolve="artifacts" />
               </node>
-              <node concept="37vLTw" id="3WZD5LHqUXJ" role="37wK5m">
+              <node concept="37vLTw" id="6Z_3H2bahlp" role="37wK5m">
                 <ref role="3cqZAo" node="57YmpYyL8LU" resolve="builder" />
               </node>
             </node>
@@ -1682,22 +1682,22 @@
           </node>
           <node concept="3clFbS" id="3WZD5LHqVE$" role="2LFqv$">
             <node concept="3clFbF" id="3WZD5LHqWXZ" role="3cqZAp">
-              <node concept="37vLTI" id="3WZD5LHqWY1" role="3clFbG">
-                <node concept="BsUDl" id="3WZD5LHqWXY" role="37vLTx">
+              <node concept="3vZ8r8" id="6Z_3H2baiZ5" role="3clFbG">
+                <node concept="37vLTw" id="6Z_3H2baiZc" role="37vLTJ">
+                  <ref role="3cqZAo" node="3WZD5LHqVEs" resolve="needsFetch" />
+                </node>
+                <node concept="BsUDl" id="6Z_3H2baiZ7" role="37vLTx">
                   <ref role="37wK5l" node="3WZD5LHqWXL" resolve="fetchMPSDep" />
-                  <node concept="13iPFW" id="3ZROizBQzT$" role="37wK5m" />
-                  <node concept="2GrUjf" id="3WZD5LHqWXV" role="37wK5m">
+                  <node concept="13iPFW" id="6Z_3H2baiZ8" role="37wK5m" />
+                  <node concept="2GrUjf" id="6Z_3H2baiZ9" role="37wK5m">
                     <ref role="2Gs0qQ" node="3WZD5LHqVEw" resolve="dependency" />
                   </node>
-                  <node concept="37vLTw" id="3WZD5LHqWXW" role="37wK5m">
+                  <node concept="37vLTw" id="6Z_3H2baiZa" role="37wK5m">
                     <ref role="3cqZAo" node="3WZD5LHqVGf" resolve="artifacts" />
                   </node>
-                  <node concept="37vLTw" id="3WZD5LHqWXX" role="37wK5m">
+                  <node concept="37vLTw" id="6Z_3H2baiZb" role="37wK5m">
                     <ref role="3cqZAo" node="3WZD5LHqVGh" resolve="builder" />
                   </node>
-                </node>
-                <node concept="37vLTw" id="3WZD5LHqWY0" role="37vLTJ">
-                  <ref role="3cqZAo" node="3WZD5LHqVEs" resolve="needsFetch" />
                 </node>
               </node>
             </node>
@@ -1953,24 +1953,24 @@
                   <node concept="3clFbJ" id="3WZD5LHqWXb" role="3cqZAp">
                     <node concept="3clFbS" id="3WZD5LHqWXc" role="3clFbx">
                       <node concept="3clFbF" id="3WZD5LHqWXd" role="3cqZAp">
-                        <node concept="3vZ8ra" id="3WZD5LHqWXe" role="3clFbG">
-                          <node concept="37vLTw" id="3WZD5LHqWXT" role="37vLTJ">
+                        <node concept="3vZ8r8" id="6Z_3H2basn8" role="3clFbG">
+                          <node concept="37vLTw" id="6Z_3H2basna" role="37vLTJ">
                             <ref role="3cqZAo" node="3WZD5LHqWXP" resolve="needsFetch" />
                           </node>
-                          <node concept="BsUDl" id="3WZD5LHqWXg" role="37vLTx">
+                          <node concept="BsUDl" id="6Z_3H2basnb" role="37vLTx">
                             <ref role="37wK5l" node="3WZD5LHqnU8" resolve="addJarPath" />
-                            <node concept="2OqwBi" id="3WZD5LHqWXh" role="37wK5m">
-                              <node concept="3TrEf2" id="3WZD5LHqWXi" role="2OqNvi">
+                            <node concept="2OqwBi" id="6Z_3H2basnc" role="37wK5m">
+                              <node concept="3TrEf2" id="6Z_3H2basnd" role="2OqNvi">
                                 <ref role="3Tt5mk" to="kdzh:3HwLahs6nSq" resolve="path" />
                               </node>
-                              <node concept="2GrUjf" id="3WZD5LHqWXj" role="2Oq$k0">
+                              <node concept="2GrUjf" id="6Z_3H2basne" role="2Oq$k0">
                                 <ref role="2Gs0qQ" node="3WZD5LHqWWn" resolve="dep" />
                               </node>
                             </node>
-                            <node concept="37vLTw" id="3WZD5LHqWXI" role="37wK5m">
+                            <node concept="37vLTw" id="6Z_3H2basnf" role="37wK5m">
                               <ref role="3cqZAo" node="3WZD5LHqWXv" resolve="artifacts" />
                             </node>
-                            <node concept="37vLTw" id="3WZD5LHqWXB" role="37wK5m">
+                            <node concept="37vLTw" id="6Z_3H2basng" role="37wK5m">
                               <ref role="3cqZAo" node="3WZD5LHqWXx" resolve="builder" />
                             </node>
                           </node>
