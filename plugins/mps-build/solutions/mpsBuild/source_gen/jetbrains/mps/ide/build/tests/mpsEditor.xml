@@ -1272,7 +1272,6 @@
       <library file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
       <library file="${artifacts.mpsBootstrapCore}/lib/mps-stubs.jar" />
       <library file="${artifacts.mpsBootstrapCore}/lib/mps-test.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-tool.jar" />
       <library file="${artifacts.mpsCore}/mps-core/languages/languageDesign/jetbrains.mps.lang.editor.table.jar" />
       <library file="${artifacts.mpsCore}/mps-core/languages/languageDesign/jetbrains.mps.lang.editor.table.runtime.jar" />
       <library file="${artifacts.mpsTesting}/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
@@ -2409,7 +2408,6 @@
       <pathelement location="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
       <pathelement location="${artifacts.mpsBootstrapCore}/lib/mps-stubs.jar" />
       <pathelement location="${artifacts.mpsBootstrapCore}/lib/mps-test.jar" />
-      <pathelement location="${artifacts.mpsBootstrapCore}/lib/mps-tool.jar" />
       <pathelement location="${artifacts.mpsCore}/mps-core/languages/languageDesign/jetbrains.mps.lang.editor.table.runtime.jar" />
       <pathelement location="${artifacts.mpsTesting}/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
       <pathelement location="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />

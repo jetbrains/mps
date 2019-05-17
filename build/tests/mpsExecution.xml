@@ -486,7 +486,6 @@
       <library file="${artifacts.mps}/lib/mps-platform.jar" />
       <library file="${artifacts.mps}/lib/mps-stubs.jar" />
       <library file="${artifacts.mps}/lib/mps-test.jar" />
-      <library file="${artifacts.mps}/lib/mps-tool.jar" />
       <library file="${artifacts.mps}/lib/mps-workbench.jar" />
       <library file="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.jar" />
       <library file="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.mps.jar" />
@@ -601,7 +600,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.testLangWithRT.runtime">
+  <target name="java.compile.testLangWithRT.runtime" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testLangWithRT.runtime" />
     <javac2 destdir="${build.tmp}/java/out/testLangWithRT.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -916,7 +915,6 @@
       <pathelement location="${artifacts.mps}/lib/mps-platform.jar" />
       <pathelement location="${artifacts.mps}/lib/mps-stubs.jar" />
       <pathelement location="${artifacts.mps}/lib/mps-test.jar" />
-      <pathelement location="${artifacts.mps}/lib/mps-tool.jar" />
       <pathelement location="${artifacts.mps}/lib/mps-workbench.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.mps.jar" />

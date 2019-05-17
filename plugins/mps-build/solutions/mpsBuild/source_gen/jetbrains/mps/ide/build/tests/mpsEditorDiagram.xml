@@ -325,7 +325,6 @@
       <library file="${artifacts.mps}/lib/mps-platform.jar" />
       <library file="${artifacts.mps}/lib/mps-stubs.jar" />
       <library file="${artifacts.mps}/lib/mps-test.jar" />
-      <library file="${artifacts.mps}/lib/mps-tool.jar" />
       <library file="${artifacts.mps}/plugins/jetpad/languages/jetpad/jetbrains.jetpad.jar" />
       <library file="${artifacts.mps}/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.diagram.jar" />
       <library file="${artifacts.mps}/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.diagram.runtime.jar" />
@@ -635,7 +634,6 @@
       <pathelement location="${artifacts.mps}/lib/mps-platform.jar" />
       <pathelement location="${artifacts.mps}/lib/mps-stubs.jar" />
       <pathelement location="${artifacts.mps}/lib/mps-test.jar" />
-      <pathelement location="${artifacts.mps}/lib/mps-tool.jar" />
       <pathelement location="${artifacts.mps}/plugins/jetpad/languages/jetpad/jetbrains.jetpad.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.diagram.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.diagram.runtime.jar" />
