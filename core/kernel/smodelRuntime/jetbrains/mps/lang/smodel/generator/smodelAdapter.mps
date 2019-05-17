@@ -60,7 +60,6 @@
       <concept id="1215695189714" name="jetbrains.mps.baseLanguage.structure.PlusAssignmentExpression" flags="nn" index="d57v9" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="7282214966977214052" name="jetbrains.mps.baseLanguage.structure.NestedNewExpression" flags="ng" index="2pIyA9" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
@@ -1407,12 +1406,10 @@
           <node concept="3clFbS" id="fMeCEH9PZ0" role="3clFbx">
             <node concept="3cpWs6" id="7qeGd28R2Sv" role="3cqZAp">
               <node concept="2OqwBi" id="fMeCEH9RUl" role="3cqZAk">
-                <node concept="2pIyA9" id="7qeGd28R2A2" role="2OqNvi">
-                  <node concept="1pGfFk" id="7qeGd28R2GD" role="2ShVmc">
-                    <ref role="37wK5l" to="xx25:~SEnumerationAdapter$SEnumLiteralAdapter.&lt;init&gt;(jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter,long)" resolve="SEnumerationAdapter.SEnumLiteralAdapter" />
-                    <node concept="37vLTw" id="7qeGd28R2Kb" role="37wK5m">
-                      <ref role="3cqZAo" node="1eSXJReoP29" resolve="memberId" />
-                    </node>
+                <node concept="liA8E" id="1m3n$n10Qar" role="2OqNvi">
+                  <ref role="37wK5l" to="xx25:~SEnumerationAdapter.getLiteralById(long)" resolve="getLiteralById" />
+                  <node concept="37vLTw" id="1m3n$n10UAx" role="37wK5m">
+                    <ref role="3cqZAo" node="1eSXJReoP29" resolve="memberId" />
                   </node>
                 </node>
                 <node concept="1eOMI4" id="7qeGd28R2fU" role="2Oq$k0">

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.adapter.structure.types;
 
+import gnu.trove.TLongObjectHashMap;
 import jetbrains.mps.smodel.JavaFriendlyBase64;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
@@ -51,6 +52,8 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
 
   private final SDataTypeId myId;
 
+  private final TLongObjectHashMap<SEnumLiteralAdapter> myLiteralsCache = new TLongObjectHashMap<>();
+
   public SEnumerationAdapter(SDataTypeId id, String fqName) {
     super(fqName);
     myId = id;
@@ -81,7 +84,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     if (memberDescriptor == null) {
       return null;
     }
-    return new SEnumLiteralAdapter(memberDescriptor.getIdValue());
+    return getLiteralById(memberDescriptor.getIdValue());
   }
 
   @Override
@@ -94,7 +97,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     if (memberDescriptor == null) {
       return null;
     }
-    return new SEnumLiteralAdapter(memberDescriptor.getIdValue());
+    return getLiteralById(memberDescriptor.getIdValue());
   }
 
   @NotNull
@@ -126,7 +129,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
       long idValue = deserializeId(string);
       MemberDescriptor md = descriptor.getMember(idValue);
       if (md != null) {
-        return new SEnumLiteralAdapter(md.getIdValue());
+        return getLiteralById(md.getIdValue());
       }
     } catch (IllegalArgumentException e) {
       // serialized value is not id
@@ -197,6 +200,16 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     return MetaAdapterFactory.getLanguage(myId.getLanguageId(), NameUtil.namespaceFromConceptFQName(myFqName));
   }
 
+  public SEnumerationLiteral getLiteralById(long literalId) {
+    SEnumerationLiteral cachedLiteral = myLiteralsCache.get(literalId);
+    if (cachedLiteral != null) {
+      return cachedLiteral;
+    }
+    SEnumLiteralAdapter literal = new SEnumLiteralAdapter(literalId);
+    myLiteralsCache.put(literalId, literal);
+    return literal;
+  }
+
   @Deprecated
   public void migrateEnumProperty(SNode node, SProperty property) {
     EnumMigrationFacilityAdapter migrationFacility = getMigrationFacility();
@@ -227,7 +240,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
   public class SEnumLiteralAdapter implements SEnumerationLiteral {
     private final long myId;
 
-    public SEnumLiteralAdapter(long id) {
+    private SEnumLiteralAdapter(long id) {
       myId = id;
     }
 
@@ -378,7 +391,7 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
 
     @Override
     public SEnumerationLiteral get(int index) {
-      return new SEnumLiteralAdapter(getMembersList().get(index).getIdValue());
+      return getLiteralById(getMembersList().get(index).getIdValue());
     }
 
     @Override
@@ -421,12 +434,12 @@ public final class SEnumerationAdapter extends SNamedElementAdapter implements S
     }
 
     @Nullable
-    SEnumLiteralAdapter getMemberByLegacyRawValue(@Nullable String value) {
+    SEnumerationLiteral getMemberByLegacyRawValue(@Nullable String value) {
       MemberDescriptor md = myMigrationFacility.getMemberByLegacyRawValue(value);
       if (md == null) {
         return null;
       }
-      return new SEnumLiteralAdapter(md.getIdValue());
+      return getLiteralById(md.getIdValue());
     }
   }
 }

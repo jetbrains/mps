@@ -122,7 +122,7 @@ public class SEnumOperations {
   }
   public static SEnumerationLiteral getMember(SEnumeration enumeration, long memberId) {
     if (enumeration instanceof SEnumerationAdapter) {
-      return ((SEnumerationAdapter) enumeration).new SEnumLiteralAdapter(memberId);
+      return ((SEnumerationAdapter) enumeration).getLiteralById(memberId);
     }
     return null;
   }
