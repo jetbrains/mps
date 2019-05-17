@@ -32,7 +32,7 @@ import jetbrains.mps.lang.project.editor.ProjectStructure_StyleSheet.KeyWordStyl
   }
 
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "enum");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "enumeration");
     editorCell.setCellId("Constant_gh7d1r_a");
     editorCell.setBig(true);
     setCellContext(editorCell);

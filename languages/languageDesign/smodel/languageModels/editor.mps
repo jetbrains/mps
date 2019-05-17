@@ -10338,7 +10338,7 @@
     <property role="3GE5qa" value="type" />
     <ref role="1XX52x" to="tp25:50Pb80Hwsgz" resolve="SEnumerationType" />
     <node concept="3F0ifn" id="50Pb80HwsiR" role="2wV5jI">
-      <property role="3F0ifm" value="enum" />
+      <property role="3F0ifm" value="enumeration" />
       <ref role="1k5W1q" to="wr1s:eY0iPzB7gM" resolve="KeyWord" />
     </node>
   </node>

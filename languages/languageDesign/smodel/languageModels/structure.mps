@@ -2953,7 +2953,7 @@
     <property role="EcuMT" value="5779574625830814755" />
     <property role="3GE5qa" value="type" />
     <property role="TrG5h" value="SEnumerationType" />
-    <property role="34LRSv" value="enum" />
+    <property role="34LRSv" value="enumeration" />
     <property role="R4oN_" value="enumeration type" />
     <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
   </node>

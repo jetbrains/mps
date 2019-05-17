@@ -1558,7 +1558,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SEnumerationType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("enumeration type");
-          cpb.rawPresentation("enum");
+          cpb.rawPresentation("enumeration");
           props_SEnumerationType = cpb.create();
         }
         return props_SEnumerationType;

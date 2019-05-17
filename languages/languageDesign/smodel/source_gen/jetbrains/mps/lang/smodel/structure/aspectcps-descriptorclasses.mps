@@ -17347,7 +17347,7 @@
                       <node concept="liA8E" id="1CP" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="1CQ" role="37wK5m">
-                          <property role="Xl_RC" value="enum" />
+                          <property role="Xl_RC" value="enumeration" />
                           <node concept="cd27G" id="1CS" role="lGtFl">
                             <node concept="3u3nmq" id="1CT" role="cd27D">
                               <property role="3u3nmv" value="5779574625830814755" />
@@ -61243,7 +61243,7 @@
             <node concept="liA8E" id="5DA" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="5DB" role="37wK5m">
-                <property role="Xl_RC" value="enum" />
+                <property role="Xl_RC" value="enumeration" />
               </node>
             </node>
           </node>
