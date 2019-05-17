@@ -129,7 +129,7 @@ public final class Renamer {
 
         // Check if submodule name need to be updated with main module name
         final String newSubModuleName = ((subModule.getModuleName().contains(oldModuleName)
-                                          ? subModule.getModuleName().replaceFirst(oldModuleName, newModuleName)
+                                          ? subModule.getModuleName().replace(oldModuleName, newModuleName)
                                           : subModule.getModuleName()));
 
         // Rename even if name stays the same to update module descriptor
