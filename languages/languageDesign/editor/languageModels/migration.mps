@@ -6231,6 +6231,56 @@
                 </node>
               </node>
             </node>
+            <node concept="2Gpval" id="6js6BpQQ1CB" role="3cqZAp">
+              <node concept="2GrKxI" id="6js6BpQQ1CD" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="6js6BpQQ39U" role="2GsD0m">
+                <node concept="chp4Y" id="6js6BpQQ3_7" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:ETPn3uQNdD" resolve="CompletionCustomization_PropertyFeature" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="6js6BpQQ1CH" role="2LFqv$">
+                <node concept="3clFbF" id="6js6BpQQ47A" role="3cqZAp">
+                  <node concept="2YIFZM" id="6js6BpQQ47B" role="3clFbG">
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <node concept="2GrUjf" id="6js6BpQQ47C" role="37wK5m">
+                      <ref role="2Gs0qQ" node="6js6BpQQ1CD" resolve="node" />
+                    </node>
+                    <node concept="359W_D" id="6js6BpQQ47D" role="37wK5m">
+                      <ref role="359W_E" to="tpc2:ETPn3uQNdD" resolve="CompletionCustomization_PropertyFeature" />
+                      <ref role="359W_F" to="tpc2:ETPn3uQNdH" resolve="property" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2Gpval" id="6js6BpQQ6t5" role="3cqZAp">
+              <node concept="2GrKxI" id="6js6BpQQ6t6" role="2Gsz3X">
+                <property role="TrG5h" value="node" />
+              </node>
+              <node concept="qVDSY" id="6js6BpQQ6t7" role="2GsD0m">
+                <node concept="chp4Y" id="6js6BpQQ6XG" role="qVDSX">
+                  <ref role="cht4Q" to="tpc2:2snskYs0Tuc" resolve="TransformationMenuPart_PropertyMenu" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="6js6BpQQ6t9" role="2LFqv$">
+                <node concept="3clFbF" id="6js6BpQQ6ta" role="3cqZAp">
+                  <node concept="2YIFZM" id="6js6BpQQ6tb" role="3clFbG">
+                    <ref role="1Pybhc" to="yf86:20cGABpI$BG" resolve="EnumUsagesMigration" />
+                    <ref role="37wK5l" to="yf86:20cGABpF8qi" resolve="migratePropertyReference" />
+                    <node concept="2GrUjf" id="6js6BpQQ6tc" role="37wK5m">
+                      <ref role="2Gs0qQ" node="6js6BpQQ6t6" resolve="node" />
+                    </node>
+                    <node concept="359W_D" id="6js6BpQQ6td" role="37wK5m">
+                      <ref role="359W_E" to="tpc2:2snskYs0Tuc" resolve="TransformationMenuPart_PropertyMenu" />
+                      <ref role="359W_F" to="tpc2:2snskYs0Tud" resolve="property" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="37vLTw" id="7aX5bqW$cJK" role="L3pyr">
             <ref role="3cqZAo" node="7aX5bqW$9Hz" resolve="m" />

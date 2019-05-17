@@ -36,6 +36,7 @@
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="twe9" ref="r:28e6d713-c3c3-493e-8d97-e9a2c49f28ce(jetbrains.mps.lang.structure.util)" />
+    <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="1oap" ref="r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -315,6 +316,7 @@
       <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
         <reference id="4705942098322467736" name="decl" index="21nZrZ" />
       </concept>
+      <concept id="3506770386464365589" name="jetbrains.mps.lang.smodel.structure.Model_PointerOperation" flags="ng" index="aIX43" />
       <concept id="1179168000618" name="jetbrains.mps.lang.smodel.structure.Node_GetIndexInParentOperation" flags="nn" index="2bSWHS" />
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
@@ -3628,6 +3630,52 @@
           </node>
         </node>
         <node concept="3clFbH" id="LU8F6FUaCa" role="3cqZAp" />
+        <node concept="3cpWs8" id="5znc4hxZzSF" role="3cqZAp">
+          <node concept="3cpWsn" id="5znc4hxZzSG" role="3cpWs9">
+            <property role="TrG5h" value="importer" />
+            <node concept="3uibUv" id="5znc4hxZzK7" role="1tU5fm">
+              <ref role="3uigEE" to="z1c3:~ModelImporter" resolve="ModelImporter" />
+            </node>
+            <node concept="2ShNRf" id="5znc4hxZzSH" role="33vP2m">
+              <node concept="1pGfFk" id="5znc4hxZzSI" role="2ShVmc">
+                <ref role="37wK5l" to="z1c3:~ModelImporter.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelImporter" />
+                <node concept="37vLTw" id="5znc4hxZzSJ" role="37wK5m">
+                  <ref role="3cqZAo" node="LU8F6FUaFL" resolve="behaviorModel" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5znc4hxZ4Gg" role="3cqZAp">
+          <node concept="2OqwBi" id="5znc4hxZtIZ" role="3clFbG">
+            <node concept="37vLTw" id="5znc4hxZzSK" role="2Oq$k0">
+              <ref role="3cqZAo" node="5znc4hxZzSG" resolve="importer" />
+            </node>
+            <node concept="liA8E" id="5znc4hxZE51" role="2OqNvi">
+              <ref role="37wK5l" to="z1c3:~ModelImporter.prepare(org.jetbrains.mps.openapi.model.SModelReference)" resolve="prepare" />
+              <node concept="2OqwBi" id="5znc4hy087e" role="37wK5m">
+                <node concept="2OqwBi" id="5znc4hy17lz" role="2Oq$k0">
+                  <node concept="37vLTw" id="5znc4hy175_" role="2Oq$k0">
+                    <ref role="3cqZAo" node="LU8F6FUaFJ" resolve="enumm" />
+                  </node>
+                  <node concept="I4A8Y" id="5znc4hy1dtE" role="2OqNvi" />
+                </node>
+                <node concept="aIX43" id="5znc4hy0cyB" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5znc4hxY224" role="3cqZAp">
+          <node concept="2OqwBi" id="5znc4hy0u4n" role="3clFbG">
+            <node concept="37vLTw" id="5znc4hy0oa5" role="2Oq$k0">
+              <ref role="3cqZAo" node="5znc4hxZzSG" resolve="importer" />
+            </node>
+            <node concept="liA8E" id="5znc4hy0$cC" role="2OqNvi">
+              <ref role="37wK5l" to="z1c3:~ModelImporter.execute()" resolve="execute" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="5znc4hy0UsU" role="3cqZAp" />
         <node concept="3clFbJ" id="LU8F6FUaCb" role="3cqZAp">
           <node concept="3clFbS" id="LU8F6FUaCc" role="3clFbx">
             <node concept="3clFbH" id="LU8F6FUaCd" role="3cqZAp" />

@@ -67,6 +67,12 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
           EnumExpressionsMigration.downgradeExpressionType(enumm, newValue);
         }
       }
+      for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb3369L, "jetbrains.mps.lang.editor.structure.CompletionCustomization_PropertyFeature"), false))) {
+        EnumUsagesMigration.migratePropertyReference(node, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb3369L, 0xab9d570dedb336dL, "property"));
+      }
+      for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2717714f9c03978cL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_PropertyMenu"), false))) {
+        EnumUsagesMigration.migratePropertyReference(node, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2717714f9c03978cL, 0x2717714f9c03978dL, "property"));
+      }
     }
     EnumExpressionsMigration.optimize(m);
   }
