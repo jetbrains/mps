@@ -6246,13 +6246,13 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/5772383102104979493">
     <file name="PropertySetterReturn_Test.java">
       <node id="5772383102104979493" at="26,38,27,25" concept="8" />
-      <node id="6696611297029671896" at="31,72,32,89" concept="3" />
+      <node id="6401638465588611410" at="31,98,32,115" concept="3" />
       <node id="2857825852305744070" at="35,88,36,105" concept="3" />
       <node id="6696611297029670760" at="39,89,40,106" concept="3" />
       <node id="5772383102105107061" at="43,77,44,94" concept="3" />
       <node id="5772383102104979493" at="49,52,50,19" concept="8" />
-      <node id="6696611297029671896" at="54,74,55,242" concept="6" />
-      <node id="6696611297029671896" at="55,242,56,123" concept="3" />
+      <node id="6401638465588611410" at="54,100,55,242" concept="6" />
+      <node id="6401638465588611410" at="55,242,56,123" concept="3" />
       <node id="2857825852305744070" at="58,90,59,242" concept="6" />
       <node id="2857825852305744070" at="59,242,60,123" concept="3" />
       <node id="6696611297029670760" at="62,91,63,242" concept="6" />
@@ -6263,22 +6263,22 @@
       <node id="5772383102104979493" at="23,0,25,0" concept="4" trace="myWithCommandRule" />
       <node id="5772383102104979493" at="26,0,29,0" concept="2" trace="PropertySetterReturn_Test#()V" />
       <node id="5772383102104979493" at="49,0,52,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6696611297029671896" at="30,0,34,0" concept="5" trace="test_NodenullCheck6696611297029671896#()V" />
+      <node id="6401638465588611410" at="30,0,34,0" concept="5" trace="test_NodeNotLegalStatementTheExpressionCheck6401638465588611410#()V" />
       <node id="2857825852305744070" at="34,0,38,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2857825852305744070#()V" />
       <node id="6696611297029670760" at="38,0,42,0" concept="5" trace="test_NodeNoReturnValueExpectedCheck6696611297029670760#()V" />
       <node id="5772383102105107061" at="42,0,46,0" concept="5" trace="test_ErrorMessagesCheck5772383102105107061#()V" />
-      <node id="6696611297029671896" at="54,0,58,0" concept="5" trace="test_NodenullCheck6696611297029671896#()V" />
+      <node id="6401638465588611410" at="54,0,58,0" concept="5" trace="test_NodeNotLegalStatementTheExpressionCheck6401638465588611410#()V" />
       <node id="2857825852305744070" at="58,0,62,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2857825852305744070#()V" />
       <node id="6696611297029670760" at="62,0,66,0" concept="5" trace="test_NodeNoReturnValueExpectedCheck6696611297029670760#()V" />
       <node id="5772383102105107061" at="66,0,70,0" concept="5" trace="test_ErrorMessagesCheck5772383102105107061#()V" />
       <scope id="5772383102104979493" at="26,38,27,25" />
-      <scope id="6696611297029671896" at="31,72,32,89" />
+      <scope id="6401638465588611410" at="31,98,32,115" />
       <scope id="2857825852305744070" at="35,88,36,105" />
       <scope id="6696611297029670760" at="39,89,40,106" />
       <scope id="5772383102105107061" at="43,77,44,94" />
       <scope id="5772383102104979493" at="49,52,50,19" />
-      <scope id="6696611297029671896" at="54,74,56,123">
-        <var name="operation" id="6696611297029671896" />
+      <scope id="6401638465588611410" at="54,100,56,123">
+        <var name="operation" id="6401638465588611410" />
       </scope>
       <scope id="2857825852305744070" at="58,90,60,123">
         <var name="operation" id="2857825852305744070" />
@@ -6293,11 +6293,11 @@
       <scope id="5772383102104979493" at="49,0,52,0">
         <var name="owner" id="5772383102104979493" />
       </scope>
-      <scope id="6696611297029671896" at="30,0,34,0" />
+      <scope id="6401638465588611410" at="30,0,34,0" />
       <scope id="2857825852305744070" at="34,0,38,0" />
       <scope id="6696611297029670760" at="38,0,42,0" />
       <scope id="5772383102105107061" at="42,0,46,0" />
-      <scope id="6696611297029671896" at="54,0,58,0" />
+      <scope id="6401638465588611410" at="54,0,58,0" />
       <scope id="2857825852305744070" at="58,0,62,0" />
       <scope id="6696611297029670760" at="62,0,66,0" />
       <scope id="5772383102105107061" at="66,0,70,0" />

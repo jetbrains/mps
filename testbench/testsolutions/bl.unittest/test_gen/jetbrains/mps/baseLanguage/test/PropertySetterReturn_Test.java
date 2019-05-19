@@ -28,8 +28,8 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
   }
 
   @Test
-  public void test_NodenullCheck6696611297029671896() throws Throwable {
-    new PropertySetterReturn_Test.TestBody(this).test_NodenullCheck6696611297029671896();
+  public void test_NodeNotLegalStatementTheExpressionCheck6401638465588611410() throws Throwable {
+    new PropertySetterReturn_Test.TestBody(this).test_NodeNotLegalStatementTheExpressionCheck6401638465588611410();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305744070() throws Throwable {
@@ -51,8 +51,8 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
     }
 
 
-    public void test_NodenullCheck6696611297029671896() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6696611297029671896"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
+    public void test_NodeNotLegalStatementTheExpressionCheck6401638465588611410() throws Exception {
+      SNode operation = SNodeOperations.cast(getRealNodeById("6401638465588611410"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
       INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("5772383102105101132"));
     }
     public void test_NodeTheConditionIsAlwaysCheck2857825852305744070() throws Exception {

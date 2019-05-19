@@ -19277,20 +19277,25 @@
           <node concept="3clFbF" id="2nIYwg$6t$Y" role="3cqZAp">
             <node concept="2OqwBi" id="3XR0QgXpz_U" role="3clFbG">
               <node concept="2OqwBi" id="3XR0QgXpz_K" role="2Oq$k0">
-                <node concept="2OqwBi" id="3XR0QgXpz_L" role="2Oq$k0">
-                  <node concept="3TrEf2" id="3XR0QgXpz_M" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
+                <node concept="1PxgMI" id="5znc4hy2tik" role="2Oq$k0">
+                  <node concept="chp4Y" id="5znc4hy2BSi" role="3oSUPX">
+                    <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
                   </node>
-                  <node concept="1UdQGJ" id="3XR0QgXpz_N" role="2Oq$k0">
-                    <node concept="1YaCAy" id="3XR0QgXpz_O" role="1Ub_4A">
-                      <property role="TrG5h" value="var" />
-                      <ref role="1YaFvo" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
+                  <node concept="2OqwBi" id="3XR0QgXpz_L" role="1m5AlR">
+                    <node concept="3TrEf2" id="3XR0QgXpz_M" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
                     </node>
-                    <node concept="2OqwBi" id="3XR0QgXpz_P" role="1Ub_4B">
-                      <node concept="v3LJS" id="3XR0QgXpz_Q" role="2Oq$k0">
-                        <ref role="v3LJV" node="2nIYwg$6wjd" resolve="operand" />
+                    <node concept="1UdQGJ" id="3XR0QgXpz_N" role="2Oq$k0">
+                      <node concept="1YaCAy" id="3XR0QgXpz_O" role="1Ub_4A">
+                        <property role="TrG5h" value="var" />
+                        <ref role="1YaFvo" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
                       </node>
-                      <node concept="3JvlWi" id="3XR0QgXpz_R" role="2OqNvi" />
+                      <node concept="2OqwBi" id="3XR0QgXpz_P" role="1Ub_4B">
+                        <node concept="v3LJS" id="3XR0QgXpz_Q" role="2Oq$k0">
+                          <ref role="v3LJV" node="2nIYwg$6wjd" resolve="operand" />
+                        </node>
+                        <node concept="3JvlWi" id="3XR0QgXpz_R" role="2OqNvi" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -19364,20 +19369,25 @@
           <node concept="3clFbF" id="2nIYwg$6ufN" role="3cqZAp">
             <node concept="2OqwBi" id="3XR0QgXpzAv" role="3clFbG">
               <node concept="2OqwBi" id="3XR0QgXpzAl" role="2Oq$k0">
-                <node concept="2OqwBi" id="3XR0QgXpzAm" role="2Oq$k0">
-                  <node concept="3TrEf2" id="3XR0QgXpzAn" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
+                <node concept="1PxgMI" id="5znc4hy2yqh" role="2Oq$k0">
+                  <node concept="chp4Y" id="5znc4hy2Doo" role="3oSUPX">
+                    <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
                   </node>
-                  <node concept="1UdQGJ" id="3XR0QgXpzAo" role="2Oq$k0">
-                    <node concept="1YaCAy" id="3XR0QgXpzAp" role="1Ub_4A">
-                      <property role="TrG5h" value="var" />
-                      <ref role="1YaFvo" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
+                  <node concept="2OqwBi" id="3XR0QgXpzAm" role="1m5AlR">
+                    <node concept="3TrEf2" id="3XR0QgXpzAn" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
                     </node>
-                    <node concept="2OqwBi" id="3XR0QgXpzAq" role="1Ub_4B">
-                      <node concept="v3LJS" id="3XR0QgXpzAr" role="2Oq$k0">
-                        <ref role="v3LJV" node="2nIYwg$6wjd" resolve="operand" />
+                    <node concept="1UdQGJ" id="3XR0QgXpzAo" role="2Oq$k0">
+                      <node concept="1YaCAy" id="3XR0QgXpzAp" role="1Ub_4A">
+                        <property role="TrG5h" value="var" />
+                        <ref role="1YaFvo" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
                       </node>
-                      <node concept="3JvlWi" id="3XR0QgXpzAs" role="2OqNvi" />
+                      <node concept="2OqwBi" id="3XR0QgXpzAq" role="1Ub_4B">
+                        <node concept="v3LJS" id="3XR0QgXpzAr" role="2Oq$k0">
+                          <ref role="v3LJV" node="2nIYwg$6wjd" resolve="operand" />
+                        </node>
+                        <node concept="3JvlWi" id="3XR0QgXpzAs" role="2OqNvi" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -19403,20 +19413,25 @@
           <node concept="3clFbF" id="2nIYwg$6vge" role="3cqZAp">
             <node concept="2OqwBi" id="3XR0QgXpzB4" role="3clFbG">
               <node concept="2OqwBi" id="3XR0QgXpzAU" role="2Oq$k0">
-                <node concept="2OqwBi" id="3XR0QgXpzAV" role="2Oq$k0">
-                  <node concept="3TrEf2" id="3XR0QgXpzAW" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
+                <node concept="1PxgMI" id="5znc4hy2_a2" role="2Oq$k0">
+                  <node concept="chp4Y" id="5znc4hy2EcD" role="3oSUPX">
+                    <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
                   </node>
-                  <node concept="1UdQGJ" id="3XR0QgXpzAX" role="2Oq$k0">
-                    <node concept="1YaCAy" id="3XR0QgXpzAY" role="1Ub_4A">
-                      <property role="TrG5h" value="var" />
-                      <ref role="1YaFvo" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
+                  <node concept="2OqwBi" id="3XR0QgXpzAV" role="1m5AlR">
+                    <node concept="3TrEf2" id="3XR0QgXpzAW" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tp25:i2ZWj0V" resolve="enum" />
                     </node>
-                    <node concept="2OqwBi" id="3XR0QgXpzAZ" role="1Ub_4B">
-                      <node concept="v3LJS" id="3XR0QgXpzB0" role="2Oq$k0">
-                        <ref role="v3LJV" node="2nIYwg$6wjd" resolve="operand" />
+                    <node concept="1UdQGJ" id="3XR0QgXpzAX" role="2Oq$k0">
+                      <node concept="1YaCAy" id="3XR0QgXpzAY" role="1Ub_4A">
+                        <property role="TrG5h" value="var" />
+                        <ref role="1YaFvo" to="tp25:i2ZThgx" resolve="SEnumerationMemberType" />
                       </node>
-                      <node concept="3JvlWi" id="3XR0QgXpzB1" role="2OqNvi" />
+                      <node concept="2OqwBi" id="3XR0QgXpzAZ" role="1Ub_4B">
+                        <node concept="v3LJS" id="3XR0QgXpzB0" role="2Oq$k0">
+                          <ref role="v3LJV" node="2nIYwg$6wjd" resolve="operand" />
+                        </node>
+                        <node concept="3JvlWi" id="3XR0QgXpzB1" role="2OqNvi" />
+                      </node>
                     </node>
                   </node>
                 </node>
