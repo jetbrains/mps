@@ -324,7 +324,6 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
@@ -370,7 +369,6 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />

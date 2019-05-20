@@ -1470,6 +1470,6 @@
     <orderEntry type="module" module-name="debuginfo-impl" />
     <orderEntry type="module" module-name="project-check" />
     <orderEntry type="module" module-name="typechecking" />
+    <orderEntry type="module" module-name="startup-util" />
   </component>
 </module>
-

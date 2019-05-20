@@ -165,7 +165,6 @@
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-common.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-platform.jar" />
@@ -216,7 +215,6 @@
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-common.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-platform.jar" />

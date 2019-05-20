@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.vfs.path.Path;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Document;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.annotations.Singleton;
@@ -114,7 +112,7 @@ public final class PathManager {
    */
   @Internal
   public static boolean isFromSources() {
-    return !getContainingJar(PathManager.class).endsWith(Path.DOT_JAR);
+    return !getContainingJar(PathManager.class).endsWith(".jar");
   }
 
   private static String getContainingJar(Class aClass) {

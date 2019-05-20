@@ -879,7 +879,6 @@
         <ref role="nCB5Y" node="1s0vtrwUXkd" resolve="mps-messaging" />
       </node>
       <node concept="nCB5N" id="7G$QnBJF_O6" role="nCB5Z">
-        <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="5d$B_bnZPNh" resolve="mps-boot-util" />
       </node>
       <node concept="2sjeV3" id="6NgXkpBjPQ0" role="nCB5Z">
@@ -35049,7 +35048,10 @@
         <ref role="nCB5Y" node="2eDSGe9d1oD" resolve="mps-workbench" />
       </node>
       <node concept="nCB5N" id="6ob18N89Hv6" role="nCB5Z">
-        <ref role="nCB5Y" node="1FaKCGJSzMQ" resolve="mps-tool" />
+        <ref role="nCB5Y" node="1nB28rXacP" resolve="mps-environment" />
+      </node>
+      <node concept="nCB5N" id="1M_KWzLa0Tz" role="nCB5Z">
+        <ref role="nCB5Y" node="5d$B_bnZPNh" resolve="mps-boot-util" />
       </node>
       <node concept="nCB5N" id="6ob18N89Hv7" role="nCB5Z">
         <ref role="nCB5Y" node="1QfYSWzYzGH" resolve="vcs-core" />
