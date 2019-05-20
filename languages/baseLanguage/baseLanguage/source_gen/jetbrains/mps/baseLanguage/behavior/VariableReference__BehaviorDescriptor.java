@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.reloading.ReflectionUtil;
+import jetbrains.mps.baseLanguage.util.ReflectionUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -64,7 +64,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
         SModule m = check_gidzrl_a0d0b0a0c(SNodeOperations.getModel(declaration));
         if (m != null) {
           try {
-            final Object c = ReflectionUtil.getConstant(m, classifier, SPropertyOperations.getString(declaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+            final Object c = ReflectionUtil.getConstantValue(m, classifier, SPropertyOperations.getString(declaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
             if (c != null) {
               return c;
             }
@@ -76,7 +76,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
           return null;
         }
         try {
-          return ReflectionUtil.getConstant(module, classifier, SPropertyOperations.getString(declaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+          return ReflectionUtil.getConstantValue(module, classifier, SPropertyOperations.getString(declaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
         } catch (Throwable t) {
           return null;
         }

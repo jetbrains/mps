@@ -15,6 +15,8 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <root nodeRef="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/1650638035896359074">
     <file name="CodeStyleSettings.java">
       <node id="1650638035896359074" at="9,0,10,0" concept="4" trace="myFieldPrefix" />
@@ -322,6 +324,73 @@
       <unit id="1650638035896359074" at="168,15,175,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$8" />
       <unit id="1650638035896359074" at="189,15,196,5" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings$9" />
       <unit id="1650638035896359074" at="8,0,205,0" name="jetbrains.mps.baseLanguage.util.CodeStyleSettings" />
+    </file>
+  </root>
+  <root nodeRef="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/1870381088643884519">
+    <file name="ReflectionUtil.java">
+      <node id="1870381088643957886" at="22,50,23,91" concept="15" />
+      <node id="1870381088643957888" at="24,5,25,87" concept="8" />
+      <node id="1870381088643957913" at="26,36,27,147" concept="15" />
+      <node id="1870381088646052827" at="28,5,29,27" concept="8" />
+      <node id="1870381088646067058" at="30,207,31,458" concept="3" />
+      <node id="1870381088646255231" at="32,12,33,172" concept="10" />
+      <node id="1870381088646418039" at="33,172,34,170" concept="10" />
+      <node id="1870381088646119603" at="34,170,35,265" concept="3" />
+      <node id="1870381088643957942" at="37,9,38,61" concept="9" />
+      <node id="1870381088643957957" at="39,40,40,36" concept="15" />
+      <node id="1870381088643992682" at="44,119,45,48" concept="8" />
+      <node id="1870381088643992688" at="45,48,46,16" concept="8" />
+      <node id="1870381088643992692" at="47,9,48,44" concept="3" />
+      <node id="1870381088643992708" at="48,44,49,29" concept="9" />
+      <node id="1870381088643992703" at="50,38,51,36" concept="15" />
+      <node id="1870381088643992717" at="52,40,53,36" concept="15" />
+      <node id="1870381088643884725" at="18,0,20,0" concept="1" trace="ReflectionUtil#()V" />
+      <node id="1870381088643957874" at="21,94,24,5" concept="6" />
+      <node id="1870381088643957896" at="25,87,28,5" concept="6" />
+      <node id="1870381088646115085" at="32,10,36,5" concept="0" />
+      <node id="1870381088643957958" at="36,5,41,5" concept="16" />
+      <node id="1870381088645978967" at="29,27,36,5" concept="6" />
+      <node id="1870381088643992704" at="46,16,54,5" concept="16" />
+      <node id="1870381088643903211" at="44,0,56,0" concept="13" trace="getConstantValue#(Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Ljava/lang/Object;" />
+      <node id="1870381088643957178" at="21,0,43,0" concept="13" trace="findClass#(Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Class;" />
+      <scope id="1870381088643884729" at="18,28,18,28" />
+      <scope id="1870381088643957881" at="22,50,23,91" />
+      <scope id="1870381088643957900" at="26,36,27,147" />
+      <scope id="1870381088645978969" at="30,207,31,458" />
+      <scope id="1870381088643957941" at="37,9,38,61" />
+      <scope id="1870381088643957959" at="39,0,40,36">
+        <var name="e" id="1870381088643957950" />
+      </scope>
+      <scope id="1870381088643957954" at="39,40,40,36" />
+      <scope id="1870381088643992705" at="50,0,51,36">
+        <var name="e" id="1870381088643992697" />
+      </scope>
+      <scope id="1870381088643992701" at="50,38,51,36" />
+      <scope id="1870381088643992719" at="52,0,53,36">
+        <var name="e" id="1870381088643992711" />
+      </scope>
+      <scope id="1870381088643992715" at="52,40,53,36" />
+      <scope id="1870381088643884725" at="18,0,20,0" />
+      <scope id="1870381088643992691" at="47,9,49,29" />
+      <scope id="1870381088646115086" at="32,12,35,265" />
+      <scope id="1870381088643903215" at="44,119,54,5">
+        <var name="aClass" id="1870381088643992681" />
+        <var name="field" id="1870381088643992687" />
+      </scope>
+      <scope id="1870381088643903211" at="44,0,56,0">
+        <var name="classNode" id="1870381088643949523" />
+        <var name="constantName" id="1870381088643956831" />
+        <var name="module" id="1870381088643925976" />
+      </scope>
+      <scope id="1870381088643957182" at="21,94,41,5">
+        <var name="className" id="1870381088646052828" />
+        <var name="status" id="1870381088643957887" />
+      </scope>
+      <scope id="1870381088643957178" at="21,0,43,0">
+        <var name="classNode" id="1870381088643957813" />
+        <var name="module" id="1870381088643957811" />
+      </scope>
+      <unit id="1870381088643884519" at="17,0,57,0" name="jetbrains.mps.baseLanguage.util.ReflectionUtil" />
     </file>
   </root>
   <root nodeRef="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/644116965567343729">
