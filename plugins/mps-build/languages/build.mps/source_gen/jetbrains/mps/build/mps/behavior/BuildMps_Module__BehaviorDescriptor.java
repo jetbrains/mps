@@ -27,7 +27,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.util.JavaExportUtil;
-import jetbrains.mps.build.behavior.BuildSource_JavaExternalJarRef__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -43,7 +42,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static final SMethod<Boolean> areLocatedInTheSameRoot_id3ZROizBPX9c = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("areLocatedInTheSameRoot").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3ZROizBPX9c").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> fetchJavaDeps_id3WZD5LHqUHY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("fetchJavaDeps").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqUHY").registry(REGISTRY).build(SMethodBuilder.createJavaParameter(MPSModulesClosure.class, ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
   /*package*/ static final SMethod<Boolean> fetchMPSDeps_id3WZD5LHqVGt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("fetchMPSDeps").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqVGt").registry(REGISTRY).build(SMethodBuilder.createJavaParameter(MPSModulesClosure.class, ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
-  public static final SMethod<Boolean> fetchMPSDep_id3WZD5LHqWXL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("fetchMPSDep").modifiers(SModifiersImpl.create(1, AccessPrivileges.PACKAGE)).concept(CONCEPT).id("3WZD5LHqWXL").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
+  /*package*/ static final SMethod<Boolean> fetchMPSDep_id3WZD5LHqWXL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("fetchMPSDep").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqWXL").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompilable_id6tOCIA6_7jg, fetchDependencies_id57YmpYyL8F1, addJarPath_id3WZD5LHqnU8, getJarDeps_id3WZD5LHqufx, areLocatedInTheSameRoot_id3ZROizBPX9c, fetchJavaDeps_id3WZD5LHqUHY, fetchMPSDeps_id3WZD5LHqVGt, fetchMPSDep_id3WZD5LHqWXL);
 
@@ -114,13 +113,14 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static boolean fetchMPSDeps_id3WZD5LHqVGt(@NotNull SNode __thisNode__, MPSModulesClosure closure, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     boolean needsFetch = false;
     for (SNode dependency : Sequence.fromIterable(closure.getModules())) {
-      needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.fetchMPSDep_id3WZD5LHqWXL.invoke(__thisNode__.getConcept(), __thisNode__, dependency, artifacts, builder));
+      needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.fetchMPSDep_id3WZD5LHqWXL.invoke(__thisNode__, dependency, artifacts, builder));
     }
     return needsFetch;
   }
-  /*package*/ static boolean fetchMPSDep_id3WZD5LHqWXL(@NotNull SAbstractConcept __thisConcept__, SNode source, SNode dependency, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
+  /*package*/ static boolean fetchMPSDep_id3WZD5LHqWXL(@NotNull SNode __thisNode__, SNode dependency, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     boolean needsFetch = false;
-    if (!(((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invoke(__thisConcept__, source, dependency))) && (boolean) BuildMps_Module__BehaviorDescriptor.isCompilable_id6tOCIA6_7jg.invoke(dependency)) {
+    final boolean dependencyComesFromAnotherRoot = !(((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invoke(__thisNode__.getConcept(), __thisNode__, dependency)));
+    if (dependencyComesFromAnotherRoot && (boolean) BuildMps_Module__BehaviorDescriptor.isCompilable_id6tOCIA6_7jg.invoke(dependency)) {
       SNode artifact = SNodeOperations.as(artifacts.findArtifact(dependency), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
       if (artifact != null) {
         builder.add(artifact);
@@ -128,9 +128,15 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
       }
     }
 
-    for (SNode dep : Sequence.fromIterable(BuildMps_Module__BehaviorDescriptor.getJarDeps_id3WZD5LHqufx.invoke(__thisConcept__, dependency))) {
+    for (SNode dep : Sequence.fromIterable(BuildMps_Module__BehaviorDescriptor.getJarDeps_id3WZD5LHqufx.invoke(__thisNode__.getConcept(), dependency))) {
       if ((SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation")) != null)) {
-        Tuples._2<SNode, Boolean> dependencyTarget = BuildSource_JavaExternalJarRef__BehaviorDescriptor.getDependencyTarget_id4RsV8qJGJqY.invoke(SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation")), artifacts);
+        // XXX here used to be dep.customLocation.getDependencyTarget() that didn't work in scenario, when there's module A with 'jar' dependency using external location  
+        //     within the same project, and module B that depends on A. B.fetchDependencies() discovered A's jar, but getDependencyTarget() == null as both A and its external jar 
+        //     live under the same root. Here, however, I need to decide whether I shall fetch anything for either A or its jar, so I don't care about them being in the same root 
+        //     Here it's important to me that the external jar is foreign to the dependant module, so I can not use BuildSource_JavaExternalJarRef.getDependencyTarget, 
+        //     and stick to JavaExportUtil directly 
+        // Truth is I have no idea why there's 'same root' check is in getDependencyTarget(), what's good about it, but am afraid to change it. 
+        Tuples._2<SNode, Boolean> dependencyTarget = JavaExportUtil.requireJar(artifacts, SLinkOperations.getTarget(SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation")), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar")), __thisNode__);
         if (dependencyTarget != null) {
           if ((boolean) dependencyTarget._1()) {
             builder.addWithContent(dependencyTarget._0());
@@ -140,8 +146,10 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
           needsFetch = true;
         }
       } else {
-        if (!(((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invoke(__thisConcept__, source, dependency)))) {
-          needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisConcept__, SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path")), artifacts, builder));
+        if (dependencyComesFromAnotherRoot) {
+          // guess, dependencyComesFromAnotherRoot condition here is sort of assumption that jars referenced from a same-root dependency don't need to get fetched 
+          // and are universally available, yet I don't know if it's true. Why not to check containment root of the jar, rather than that of module dependency? 
+          needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisNode__.getConcept(), SLinkOperations.getTarget(dep, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path")), artifacts, builder));
         }
       }
     }
@@ -173,6 +181,8 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
         return (T) ((Boolean) fetchJavaDeps_id3WZD5LHqUHY(node, (MPSModulesClosure) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
       case 6:
         return (T) ((Boolean) fetchMPSDeps_id3WZD5LHqVGt(node, (MPSModulesClosure) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
+      case 7:
+        return (T) ((Boolean) fetchMPSDep_id3WZD5LHqWXL(node, (SNode) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -191,8 +201,6 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
         return (T) ((Iterable<SNode>) getJarDeps_id3WZD5LHqufx(concept, (SNode) parameters[0]));
       case 4:
         return (T) ((Boolean) areLocatedInTheSameRoot_id3ZROizBPX9c(concept, (SNode) parameters[0], (SNode) parameters[1]));
-      case 7:
-        return (T) ((Boolean) fetchMPSDep_id3WZD5LHqWXL(concept, (SNode) parameters[0], (SNode) parameters[1], (VisibleArtifacts) parameters[2], (RequiredDependenciesBuilder) parameters[3]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

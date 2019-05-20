@@ -162,6 +162,7 @@ public class JavaExportUtil {
   }
   @Nullable
   public static Tuples._2<SNode, Boolean> requireJar(VisibleArtifacts artifacts, SNode jar, SNode contextNode) {
+    // FIXME there's little value in contextNode, perhaps, shall leave the check to outer code (in case it cares at all) 
     if (SNodeOperations.getContainingRoot(jar) == SNodeOperations.getContainingRoot(contextNode)) {
       return null;
     }

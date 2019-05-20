@@ -1688,7 +1688,6 @@
                 </node>
                 <node concept="BsUDl" id="6Z_3H2baiZ7" role="37vLTx">
                   <ref role="37wK5l" node="3WZD5LHqWXL" resolve="fetchMPSDep" />
-                  <node concept="13iPFW" id="6Z_3H2baiZ8" role="37wK5m" />
                   <node concept="2GrUjf" id="6Z_3H2baiZ9" role="37wK5m">
                     <ref role="2Gs0qQ" node="3WZD5LHqVEw" resolve="dependency" />
                   </node>
@@ -1711,13 +1710,9 @@
       </node>
     </node>
     <node concept="13i0hz" id="3WZD5LHqWXL" role="13h7CS">
-      <property role="2Ki8OM" value="true" />
       <property role="TrG5h" value="fetchMPSDep" />
+      <node concept="3Tm6S6" id="6Z_3H2bwmXY" role="1B3o_S" />
       <node concept="10P_77" id="3WZD5LHqWXN" role="3clF45" />
-      <node concept="37vLTG" id="3ZROizBQrAd" role="3clF46">
-        <property role="TrG5h" value="source" />
-        <node concept="3Tqbb2" id="3ZROizBQrAn" role="1tU5fm" />
-      </node>
       <node concept="37vLTG" id="3WZD5LHqWXt" role="3clF46">
         <property role="TrG5h" value="dependency" />
         <node concept="3Tqbb2" id="3WZD5LHqWXu" role="1tU5fm">
@@ -1743,6 +1738,22 @@
             <node concept="10P_77" id="3WZD5LHqWXO" role="1tU5fm" />
             <node concept="3clFbT" id="3WZD5LHqX6_" role="33vP2m">
               <property role="3clFbU" value="false" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="6Z_3H2bwHjB" role="3cqZAp">
+          <node concept="3cpWsn" id="6Z_3H2bwHjC" role="3cpWs9">
+            <property role="TrG5h" value="dependencyComesFromAnotherRoot" />
+            <property role="3TUv4t" value="true" />
+            <node concept="10P_77" id="6Z_3H2bwHeQ" role="1tU5fm" />
+            <node concept="3fqX7Q" id="6Z_3H2bwHjD" role="33vP2m">
+              <node concept="BsUDl" id="6Z_3H2bwHjE" role="3fr31v">
+                <ref role="37wK5l" node="3ZROizBPX9c" resolve="areLocatedInTheSameRoot" />
+                <node concept="13iPFW" id="6Z_3H2bwHjF" role="37wK5m" />
+                <node concept="37vLTw" id="6Z_3H2bwHjG" role="37wK5m">
+                  <ref role="3cqZAo" node="3WZD5LHqWXt" resolve="dependency" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -1808,23 +1819,15 @@
             </node>
           </node>
           <node concept="1Wc70l" id="3WZD5LHqWWe" role="3clFbw">
+            <node concept="37vLTw" id="6Z_3H2bwHjH" role="3uHU7B">
+              <ref role="3cqZAo" node="6Z_3H2bwHjC" resolve="dependencyComesFromAnotherRoot" />
+            </node>
             <node concept="2OqwBi" id="3WZD5LHqWWf" role="3uHU7w">
               <node concept="37vLTw" id="3WZD5LHqWX$" role="2Oq$k0">
                 <ref role="3cqZAo" node="3WZD5LHqWXt" resolve="dependency" />
               </node>
               <node concept="2qgKlT" id="3WZD5LHqWWh" role="2OqNvi">
                 <ref role="37wK5l" node="6tOCIA6_7jg" resolve="isCompilable" />
-              </node>
-            </node>
-            <node concept="3fqX7Q" id="3WZD5LHqWWi" role="3uHU7B">
-              <node concept="BsUDl" id="3WZD5LHqWWj" role="3fr31v">
-                <ref role="37wK5l" node="3ZROizBPX9c" resolve="areLocatedInTheSameRoot" />
-                <node concept="37vLTw" id="3ZROizBQ_ap" role="37wK5m">
-                  <ref role="3cqZAo" node="3ZROizBQrAd" resolve="source" />
-                </node>
-                <node concept="37vLTw" id="3WZD5LHqWXG" role="37wK5m">
-                  <ref role="3cqZAo" node="3WZD5LHqWXt" resolve="dependency" />
-                </node>
               </node>
             </node>
           </node>
@@ -1837,30 +1840,65 @@
           <node concept="3clFbS" id="3WZD5LHqWWo" role="2LFqv$">
             <node concept="3clFbJ" id="3WZD5LHqWWp" role="3cqZAp">
               <node concept="3clFbS" id="3WZD5LHqWWq" role="3clFbx">
+                <node concept="3SKdUt" id="6Z_3H2b$IUy" role="3cqZAp">
+                  <node concept="3SKdUq" id="6Z_3H2b$IU$" role="3SKWNk">
+                    <property role="3SKdUp" value="XXX here used to be dep.customLocation.getDependencyTarget() that didn't work in scenario, when there's module A with 'jar' dependency using external location " />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="6Z_3H2b_e6_" role="3cqZAp">
+                  <node concept="3SKdUq" id="6Z_3H2b_e6A" role="3SKWNk">
+                    <property role="3SKdUp" value="    within the same project, and module B that depends on A. B.fetchDependencies() discovered A's jar, but getDependencyTarget() == null as both A and its external jar" />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="6Z_3H2b_NB8" role="3cqZAp">
+                  <node concept="3SKdUq" id="6Z_3H2b_NBa" role="3SKWNk">
+                    <property role="3SKdUp" value="    live under the same root. Here, however, I need to decide whether I shall fetch anything for either A or its jar, so I don't care about them being in the same root" />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="6Z_3H2bx0u$" role="3cqZAp">
+                  <node concept="3SKdUq" id="6Z_3H2bx0uA" role="3SKWNk">
+                    <property role="3SKdUp" value="    Here it's important to me that the external jar is foreign to the dependant module, so I can not use BuildSource_JavaExternalJarRef.getDependencyTarget," />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="6Z_3H2bAPea" role="3cqZAp">
+                  <node concept="3SKdUq" id="6Z_3H2bAPec" role="3SKWNk">
+                    <property role="3SKdUp" value="    and stick to JavaExportUtil directly" />
+                  </node>
+                </node>
+                <node concept="3SKdUt" id="6Z_3H2byr3T" role="3cqZAp">
+                  <node concept="3SKdUq" id="6Z_3H2byr3U" role="3SKWNk">
+                    <property role="3SKdUp" value="Truth is I have no idea why there's 'same root' check is in getDependencyTarget(), what's good about it, but am afraid to change it." />
+                  </node>
+                </node>
                 <node concept="3cpWs8" id="3WZD5LHqWWr" role="3cqZAp">
                   <node concept="3cpWsn" id="3WZD5LHqWWs" role="3cpWs9">
                     <property role="TrG5h" value="dependencyTarget" />
+                    <node concept="2YIFZM" id="6Z_3H2byPK5" role="33vP2m">
+                      <ref role="37wK5l" to="o3n2:5WtSFRWuQW2" resolve="requireJar" />
+                      <ref role="1Pybhc" to="o3n2:2eDSGe9c50Q" resolve="JavaExportUtil" />
+                      <node concept="37vLTw" id="6Z_3H2byRaD" role="37wK5m">
+                        <ref role="3cqZAo" node="3WZD5LHqWXv" resolve="artifacts" />
+                      </node>
+                      <node concept="2OqwBi" id="6Z_3H2byWEA" role="37wK5m">
+                        <node concept="2OqwBi" id="6Z_3H2byT10" role="2Oq$k0">
+                          <node concept="2GrUjf" id="6Z_3H2bySE9" role="2Oq$k0">
+                            <ref role="2Gs0qQ" node="3WZD5LHqWWn" resolve="dep" />
+                          </node>
+                          <node concept="3TrEf2" id="6Z_3H2byUTq" role="2OqNvi">
+                            <ref role="3Tt5mk" to="kdzh:2rlufiQSRlZ" resolve="customLocation" />
+                          </node>
+                        </node>
+                        <node concept="3TrEf2" id="6Z_3H2byYy9" role="2OqNvi">
+                          <ref role="3Tt5mk" to="3ior:4RsV8qJGJpd" resolve="jar" />
+                        </node>
+                      </node>
+                      <node concept="13iPFW" id="6Z_3H2bz6c5" role="37wK5m" />
+                    </node>
                     <node concept="1LlUBW" id="3WZD5LHqWWt" role="1tU5fm">
                       <node concept="3Tqbb2" id="3WZD5LHqWWu" role="1Lm7xW">
                         <ref role="ehGHo" to="3ior:6qcrfIJF4M5" resolve="BuildLayout_Node" />
                       </node>
                       <node concept="10P_77" id="3WZD5LHqWWv" role="1Lm7xW" />
-                    </node>
-                    <node concept="2OqwBi" id="3WZD5LHqWWw" role="33vP2m">
-                      <node concept="2OqwBi" id="3WZD5LHqWWx" role="2Oq$k0">
-                        <node concept="2GrUjf" id="3WZD5LHqWWy" role="2Oq$k0">
-                          <ref role="2Gs0qQ" node="3WZD5LHqWWn" resolve="dep" />
-                        </node>
-                        <node concept="3TrEf2" id="3WZD5LHqWWz" role="2OqNvi">
-                          <ref role="3Tt5mk" to="kdzh:2rlufiQSRlZ" resolve="customLocation" />
-                        </node>
-                      </node>
-                      <node concept="2qgKlT" id="3WZD5LHqWW$" role="2OqNvi">
-                        <ref role="37wK5l" to="vbkb:4RsV8qJGJqY" resolve="getDependencyTarget" />
-                        <node concept="37vLTw" id="3WZD5LHqWXC" role="37wK5m">
-                          <ref role="3cqZAo" node="3WZD5LHqWXv" resolve="artifacts" />
-                        </node>
-                      </node>
                     </node>
                   </node>
                 </node>
@@ -1951,7 +1989,20 @@
               <node concept="9aQIb" id="3WZD5LHqWX9" role="9aQIa">
                 <node concept="3clFbS" id="3WZD5LHqWXa" role="9aQI4">
                   <node concept="3clFbJ" id="3WZD5LHqWXb" role="3cqZAp">
+                    <node concept="37vLTw" id="6Z_3H2bwHjI" role="3clFbw">
+                      <ref role="3cqZAo" node="6Z_3H2bwHjC" resolve="dependencyComesFromAnotherRoot" />
+                    </node>
                     <node concept="3clFbS" id="3WZD5LHqWXc" role="3clFbx">
+                      <node concept="3SKdUt" id="6Z_3H2bB2qo" role="3cqZAp">
+                        <node concept="3SKdUq" id="6Z_3H2bB2qq" role="3SKWNk">
+                          <property role="3SKdUp" value="guess, dependencyComesFromAnotherRoot condition here is sort of assumption that jars referenced from a same-root dependency don't need to get fetched" />
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="6Z_3H2bBr0X" role="3cqZAp">
+                        <node concept="3SKdUq" id="6Z_3H2bBr0Z" role="3SKWNk">
+                          <property role="3SKdUp" value="and are universally available, yet I don't know if it's true. Why not to check containment root of the jar, rather than that of module dependency?" />
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="3WZD5LHqWXd" role="3cqZAp">
                         <node concept="3vZ8r8" id="6Z_3H2basn8" role="3clFbG">
                           <node concept="37vLTw" id="6Z_3H2basna" role="37vLTJ">
@@ -1974,17 +2025,6 @@
                               <ref role="3cqZAo" node="3WZD5LHqWXx" resolve="builder" />
                             </node>
                           </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3fqX7Q" id="3WZD5LHqWXm" role="3clFbw">
-                      <node concept="BsUDl" id="3WZD5LHqWXn" role="3fr31v">
-                        <ref role="37wK5l" node="3ZROizBPX9c" resolve="areLocatedInTheSameRoot" />
-                        <node concept="37vLTw" id="3ZROizBQ_az" role="37wK5m">
-                          <ref role="3cqZAo" node="3ZROizBQrAd" resolve="source" />
-                        </node>
-                        <node concept="37vLTw" id="3WZD5LHqWX_" role="37wK5m">
-                          <ref role="3cqZAo" node="3WZD5LHqWXt" resolve="dependency" />
                         </node>
                       </node>
                     </node>
