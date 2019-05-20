@@ -46,6 +46,18 @@
     <jar destfile="${build.layout}/ant-mps.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/ant-mps" />
     </jar>
+    <jar destfile="${build.layout}/mps-openapi.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-openapi" />
+    </jar>
+    <jar destfile="${build.layout}/mps-logging.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-logging" />
+    </jar>
+    <jar destfile="${build.layout}/mps-messaging.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-messaging" />
+    </jar>
+    <jar destfile="${build.layout}/mps-boot-util.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-boot-util" />
+    </jar>
   </target>
   
   <target name="buildDependents" />
@@ -59,7 +71,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps" />
+  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util" />
   
   <target name="processResources" />
   
@@ -153,5 +165,71 @@
     <copy todir="${build.tmp}/java/out/ant-mps">
       <fileset dir="${projectHome}/core/tool/ant/resources" />
     </copy>
+  </target>
+  
+  <target name="java.compile.mps-openapi" depends="java.compile.mps-annotations">
+    <mkdir dir="${projectHome}/core/openapi/source" />
+    <mkdir dir="${build.tmp}/java/out/mps-openapi" />
+    <javac destdir="${build.tmp}/java/out/mps-openapi" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${projectHome}/core/openapi/source" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <path refid="path.java.library.annotations-lib" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-logging" depends="java.compile.mps-annotations, java.compile.mps-openapi">
+    <mkdir dir="${projectHome}/core/logging/source" />
+    <mkdir dir="${build.tmp}/java/out/mps-logging" />
+    <javac destdir="${build.tmp}/java/out/mps-logging" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${projectHome}/core/logging/source" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-openapi" />
+        <path refid="path.java.library.log4j-lib" />
+        <path refid="path.java.library.annotations-lib" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-messaging" depends="java.compile.mps-annotations, java.compile.mps-logging">
+    <mkdir dir="${projectHome}/core/mps-messaging/source" />
+    <mkdir dir="${build.tmp}/java/out/mps-messaging" />
+    <javac destdir="${build.tmp}/java/out/mps-messaging" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${projectHome}/core/mps-messaging/source" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="java.compile.mps-boot-util" depends="java.compile.mps-annotations, java.compile.mps-logging">
+    <mkdir dir="${projectHome}/startup/startup-util/source" />
+    <mkdir dir="${build.tmp}/java/out/mps-boot-util" />
+    <javac destdir="${build.tmp}/java/out/mps-boot-util" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${projectHome}/startup/startup-util/source" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/mps-annotations" />
+        <pathelement path="${build.tmp}/java/out/mps-logging" />
+        <path refid="path.java.library.annotations-lib" />
+        <path refid="path.java.library.log4j-lib" />
+      </classpath>
+    </javac>
   </target>
 </project>

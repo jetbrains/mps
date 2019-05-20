@@ -227,8 +227,8 @@
       <library file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
       <library file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
       <library file="${artifacts.mpsBootstrapCore}/lib/mps-environment.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/lib/mps-openapi.jar" />
       <library file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/lib/mps-stubs.jar" />
       <library file="${artifacts.mpsJavaCore}/modules/jetbrains.mps.java.core.jar" />
       <chunk>
         <module file="${mps_home}/plugins/mps-java/platform/modules/jetbrains.mps.java.platform/jetbrains.mps.java.platform.msd" />

@@ -149,8 +149,8 @@
       <library file="${artifacts.mps}/lib/mps-behavior-runtime.jar" />
       <library file="${artifacts.mps}/lib/mps-core.jar" />
       <library file="${artifacts.mps}/lib/mps-editor.jar" />
-      <library file="${artifacts.mps}/lib/mps-openapi.jar" />
       <library file="${artifacts.mps}/lib/mps-platform.jar" />
+      <library file="${artifacts.mps}/lib/mps-stubs.jar" />
       <library file="${artifacts.p1}/devkits/jetbrains.mps.generator.xmodel-sample.jar" />
       <library file="${artifacts.p1}/jetbrains.mps.generator.test.xmodel.lang1.jar" />
       <library file="${artifacts.p1}/jetbrains.mps.generator.xmodel.test.jar" />
@@ -176,7 +176,7 @@
     </ant>
   </target>
   
-  <target name="java.compile.jetbrains.mps.generator.xmodel.test2">
+  <target name="java.compile.jetbrains.mps.generator.xmodel.test2" depends="fetchDependencies">
     <mkdir dir="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.test2/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.generator.xmodel.test2" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.generator.xmodel.test2" fork="true" encoding="utf8" includeantruntime="false" debug="true">

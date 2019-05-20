@@ -283,8 +283,8 @@
       <library file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
-      <library file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
+      <library file="${artifacts.mpsPlugin}/mps-core/lib/mps-stubs.jar" />
       <chunk>
         <module file="${basedir}/languages/jetbrains.mps.samples.notesOrganizer/jetbrains.mps.samples.notesOrganizer.mpl" />
       </chunk>
@@ -313,10 +313,10 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
@@ -359,10 +359,10 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />

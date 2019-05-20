@@ -12212,16 +12212,6 @@
             <node concept="2Vbh7Z" id="5mxyaMf$njU" role="2VaTZU">
               <node concept="2pNNFK" id="5mxyaMf$njV" role="2Vbh7K">
                 <property role="2pNNFO" value="jar" />
-                <node concept="2pNNFK" id="5mxyaMf$tqS" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="5mxyaMf$tqT" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="5mxyaMf$tqU" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-openapi" />
-                    </node>
-                  </node>
-                </node>
                 <node concept="2pNNFK" id="6iFFqpAwPG5" role="3o6s8t">
                   <property role="qg3DV" value="true" />
                   <property role="2pNNFO" value="fileset" />
@@ -12239,26 +12229,6 @@
                     <property role="2pNUuO" value="dir" />
                     <node concept="2pMdtt" id="4LrmwrD9Ptd" role="2pMdts">
                       <property role="2pMdty" value="${build.tmp}/java/out/mps-core-components" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="1s0vtrxeeJu" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="1s0vtrxeeJv" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="1s0vtrxeeJw" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-logging" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="6oLENa6P2iC" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="fileset" />
-                  <node concept="2pNUuL" id="6oLENa6P2iD" role="2pNNFR">
-                    <property role="2pNUuO" value="dir" />
-                    <node concept="2pMdtt" id="6oLENa6P2iE" role="2pMdts">
-                      <property role="2pMdty" value="${build.tmp}/java/out/mps-messaging" />
                     </node>
                   </node>
                 </node>
@@ -12432,6 +12402,46 @@
                     <property role="2pNUuO" value="file" />
                     <node concept="2pMdtt" id="1t0Ry55y1Jh" role="2pMdts">
                       <property role="2pMdty" value="${artifacts.mpsTrueBootstrap}/ant-mps.jar" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2pNNFK" id="5Lo0z0qGdZp" role="3o6s8t">
+                  <property role="2pNNFO" value="fileset" />
+                  <property role="qg3DV" value="true" />
+                  <node concept="2pNUuL" id="5Lo0z0qGdZq" role="2pNNFR">
+                    <property role="2pNUuO" value="file" />
+                    <node concept="2pMdtt" id="5Lo0z0qGdZr" role="2pMdts">
+                      <property role="2pMdty" value="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2pNNFK" id="5Lo0z0qGm9S" role="3o6s8t">
+                  <property role="2pNNFO" value="fileset" />
+                  <property role="qg3DV" value="true" />
+                  <node concept="2pNUuL" id="5Lo0z0qGm9T" role="2pNNFR">
+                    <property role="2pNUuO" value="file" />
+                    <node concept="2pMdtt" id="5Lo0z0qGm9U" role="2pMdts">
+                      <property role="2pMdty" value="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2pNNFK" id="5Lo0z0qHwYv" role="3o6s8t">
+                  <property role="2pNNFO" value="fileset" />
+                  <property role="qg3DV" value="true" />
+                  <node concept="2pNUuL" id="5Lo0z0qHwYw" role="2pNNFR">
+                    <property role="2pNUuO" value="file" />
+                    <node concept="2pMdtt" id="5Lo0z0qHwYx" role="2pMdts">
+                      <property role="2pMdty" value="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2pNNFK" id="5Lo0z0qKoO6" role="3o6s8t">
+                  <property role="2pNNFO" value="fileset" />
+                  <property role="qg3DV" value="true" />
+                  <node concept="2pNUuL" id="5Lo0z0qKoO7" role="2pNNFR">
+                    <property role="2pNUuO" value="file" />
+                    <node concept="2pMdtt" id="5Lo0z0qKoO8" role="2pMdts">
+                      <property role="2pMdty" value="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
                     </node>
                   </node>
                 </node>
