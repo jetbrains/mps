@@ -12,7 +12,7 @@
   </dependencies>
   <languageVersions>
     <language slang="l:b2d9d19b-9a47-47a4-93f4-0c9390001bf2:jetbrains.mps.generator.test.xmodel.lang1" version="0" />
-    <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="1" />
+    <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
   </languageVersions>
   <dependencyVersions>
     <module reference="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" version="0" />
