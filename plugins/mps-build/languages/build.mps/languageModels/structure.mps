@@ -629,6 +629,16 @@
         <property role="t5JxN" value="Location relative to module root, where to load deployed classes from. If empty, module has no classpath. &quot;.&quot; indicates module root itelf (jar, if the module is packed)." />
       </node>
     </node>
+    <node concept="1TJgyj" id="5Lo0z0qk2_R" role="1TKVEi">
+      <property role="IQ2ns" value="6654070855063054711" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="libraryEntries" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="QkG2t1bKw$" resolve="GeneratorInternal_String" />
+      <node concept="t5JxF" id="5Lo0z0qk2A1" role="lGtFl">
+        <property role="t5JxN" value="Locations to for module libraries, relative to module root unless for absolute paths (relative to distribution). May utilize path macro variables MacrosFactory permits. Unlike jarLocations, above, this one is tailored to cover MPS bootstrap scenarios. PROVISIONAL: once we manage to split java compile task from deployment module bundling (think mps-core.jar), we unlikely need this workaround" />
+      </node>
+    </node>
     <node concept="1TJgyj" id="6CY5wCYZA9P" role="1TKVEi">
       <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="module" />

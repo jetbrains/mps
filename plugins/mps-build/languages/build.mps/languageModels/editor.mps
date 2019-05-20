@@ -2374,6 +2374,34 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
+      <node concept="3EZMnI" id="5Lo0z0qk2Da" role="3EZMnx">
+        <node concept="ljvvj" id="5Lo0z0qk2Db" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="2iRfu4" id="5Lo0z0qk2Dc" role="2iSdaV" />
+        <node concept="3F0ifn" id="5Lo0z0qk2Dd" role="3EZMnx">
+          <property role="3F0ifm" value="module libraries:" />
+          <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
+        </node>
+        <node concept="3F0ifn" id="5Lo0z0qk2De" role="3EZMnx">
+          <property role="3F0ifm" value="additional libraries for the module; expert use only" />
+          <ref role="1k5W1q" to="o2va:1zyPPevfOM0" resolve="hint" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="5Lo0z0qk2Df" role="3EZMnx">
+        <ref role="1NtTu8" to="kdzh:5Lo0z0qk2_R" resolve="libraryEntries" />
+        <node concept="l2Vlx" id="5Lo0z0qk2Dg" role="2czzBx" />
+        <node concept="3F0ifn" id="5Lo0z0qk2Dh" role="2czzBI">
+          <property role="ilYzB" value="&lt;&lt; none &gt;&gt;" />
+          <ref role="1k5W1q" to="o2va:7UAfeVQSDww" resolve="comment" />
+        </node>
+        <node concept="pj6Ft" id="5Lo0z0qk2Di" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="5Lo0z0qk2Dj" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
       <node concept="3EZMnI" id="7ndynavQi3l" role="3EZMnx">
         <node concept="ljvvj" id="7ndynavQi3R" role="3F10Kt">
           <property role="VOm3f" value="true" />

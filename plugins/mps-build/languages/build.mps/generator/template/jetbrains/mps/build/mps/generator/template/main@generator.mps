@@ -3214,6 +3214,46 @@
                 </node>
               </node>
             </node>
+            <node concept="2pNNFK" id="5Lo0z0qo2Wd" role="3o6s8t">
+              <property role="qg3DV" value="true" />
+              <property role="2pNNFO" value="library" />
+              <node concept="2pNUuL" id="5Lo0z0qo2We" role="2pNNFR">
+                <property role="2pNUuO" value="jar" />
+                <node concept="2pMdtt" id="5Lo0z0qo2Wf" role="2pMdts">
+                  <property role="2pMdty" value="internalLibEntry.jar" />
+                  <node concept="17Uvod" id="5Lo0z0qpsK3" role="lGtFl">
+                    <property role="2qtEX9" value="text" />
+                    <property role="P4ACc" value="479c7a8c-02f9-43b5-9139-d910cb22f298/6666499814681541919/6666499814681541920" />
+                    <node concept="3zFVjK" id="5Lo0z0qpsK4" role="3zH0cK">
+                      <node concept="3clFbS" id="5Lo0z0qpsK5" role="2VODD2">
+                        <node concept="3clFbF" id="5Lo0z0qpCmn" role="3cqZAp">
+                          <node concept="2OqwBi" id="5Lo0z0qpCyq" role="3clFbG">
+                            <node concept="30H73N" id="5Lo0z0qpCmm" role="2Oq$k0" />
+                            <node concept="3TrcHB" id="5Lo0z0qpMfL" role="2OqNvi">
+                              <ref role="3TsBF5" to="kdzh:QkG2t1bKwB" resolve="path" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1WS0z7" id="5Lo0z0qo2Y6" role="lGtFl">
+                <node concept="3JmXsc" id="5Lo0z0qo2Y7" role="3Jn$fo">
+                  <node concept="3clFbS" id="5Lo0z0qo2Y8" role="2VODD2">
+                    <node concept="3clFbF" id="5Lo0z0qo2Y9" role="3cqZAp">
+                      <node concept="2OqwBi" id="5Lo0z0qp8CZ" role="3clFbG">
+                        <node concept="30H73N" id="5Lo0z0qp0Z7" role="2Oq$k0" />
+                        <node concept="3Tsc0h" id="5Lo0z0qpjFE" role="2OqNvi">
+                          <ref role="3TtcxE" to="kdzh:5Lo0z0qk2_R" resolve="libraryEntries" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="2pNNFK" id="7ndynavPhVs" role="3o6s8t">
               <property role="2pNNFO" value="classpath" />
               <node concept="2pNNFK" id="7ndynavPjL3" role="3o6s8t">
