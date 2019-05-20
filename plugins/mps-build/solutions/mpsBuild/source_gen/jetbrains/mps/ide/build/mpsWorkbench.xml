@@ -794,13 +794,13 @@
         <path location="${mps_home}/startup/src" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${mps_home}/lib/bootstrap.jar" />
         <fileset file="${mps_home}/lib/trove4j.jar" />
         <fileset file="${mps_home}/lib/util.jar" />
         <fileset file="${mps_home}/lib/jdom.jar" />
         <fileset file="${mps_home}/lib/log4j.jar" />
         <fileset file="${mps_home}/lib/extensions.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

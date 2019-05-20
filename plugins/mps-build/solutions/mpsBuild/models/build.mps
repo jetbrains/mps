@@ -15337,10 +15337,8 @@
           </node>
         </node>
       </node>
-      <node concept="2GhqfE" id="5d$B_bo00PZ" role="nCB5Z">
-        <node concept="3yrxFa" id="5d$B_bo00S6" role="3yrxIG">
-          <ref role="3yrxFb" node="5d$B_bnZYWU" resolve="mps-boot-util.jar" />
-        </node>
+      <node concept="nCB5N" id="2oDIdgAHZ8M" role="nCB5Z">
+        <ref role="nCB5Y" node="5d$B_bnZPNh" resolve="mps-boot-util" />
       </node>
     </node>
     <node concept="1E1JtD" id="2eDSGe9d1pJ" role="3989C9">
