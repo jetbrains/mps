@@ -242,16 +242,11 @@
       <zipfileset file="${mps_home}/languages/core/stub/Ant/Ant.msd" prefix="modules/Ant" />
       <zipfileset dir="${mps_home}/languages/core/stub/Ant" includes="icons/**, resources/**" prefix="modules/Ant" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/core-tool-builder-models">
-      <fileset dir="${mps_home}/core/tool/builder/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
-    <jar destfile="${build.layout}/lib/mps-tool.jar" duplicate="preserve">
+    <mkdir dir="${build.layout}/lib/mpsant" />
+    <jar destfile="${build.layout}/lib/mpsant/mps-tool.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-tool" />
-      <zipfileset file="${mps_home}/core/tool/builder/jetbrains.mps.tool.builder.msd" prefix="modules/jetbrains.mps.tool.builder" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-tool-builder-models" prefix="modules/jetbrains.mps.tool.builder/models" />
     </jar>
-    <mkdir dir="${build.layout}/lib/ant-mps" />
-    <jar destfile="${build.layout}/lib/ant-mps/mps-run.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/lib/mpsant/mps-run.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner.runtime" />
     </jar>
     <mkdir dir="${build.layout}/lib/ant/lib" />
@@ -10079,7 +10074,7 @@
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
           <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
         </uses>
-        <library jar="/lib/ant-mps/mps-run.jar" />
+        <library jar="/lib/mpsant/mps-run.jar" />
         <sources jar="." descriptor="jetbrains.mps.build.mps.runner.runtime.msd" />
       </module>
     </echoxml>
@@ -10090,6 +10085,62 @@
       <zipfileset file="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-solutions-jetbrains.mps.build.mps.runner.runtime-models" prefix="module/models" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.build.mps.runner.runtime.jar" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.tool.builder.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.tool.builder.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.tool.builder.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.tool.builder" type="solution" uuid="e6368d5c-b931-4d4d-9941-07b7da7d2e2d">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="23949432-aaff-4c03-b7da-26e4e956ccea(jetbrains.mps.baseLanguage.regexp.runtime)" kind="rt" />
+          <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
+          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="cl" />
+          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
+          <module ref="982eb8df-2c96-4bd7-9963-11712ea622e5(jetbrains.mps.lang.resources)" kind="cl" />
+          <module ref="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" kind="cl" />
+          <module ref="20351dc3-a2df-46f5-b667-fc9adab1f1c9(jetbrains.mps.make)" kind="cl" />
+          <module ref="f8e20673-3f65-44e9-84c0-c4a4b6ede37e(jetbrains.mps.make.facets)" kind="cl" />
+          <module ref="b608bb31-cbf1-4d56-a8e8-8fa2f751be68(jetbrains.mps.make.reduced)" kind="cl" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="cl" />
+          <module ref="5593bf7e-4f21-422d-947c-e60d33010362(jetbrains.mps.project)" kind="cl" />
+          <module ref="df9d410f-2ebb-43f7-893a-483a4f085250(jetbrains.mps.smodel.resources)" kind="cl" />
+          <module ref="d9e6c08a-a7b1-4ef6-8c54-57d93e9e0ce0(jetbrains.mps.tool.common)" kind="cl" />
+          <module ref="3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7(jetbrains.mps.tool.gentest)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:ed6d7656-532c-4bc2-81d1-af945aeb8280:jetbrains.mps.baseLanguage.blTypes" />
+          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+          <language id="l:daafa647-f1f7-4b0b-b096-69cd7c8408c0:jetbrains.mps.baseLanguage.regexp" />
+          <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:63650c59-16c8-498a-99c8-005c7ee9515d:jetbrains.mps.lang.access" />
+          <language id="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" />
+          <language id="l:696c1165-4a59-463b-bc5d-902caab85dd0:jetbrains.mps.make.facet" />
+        </uses>
+        <library jar="/lib/mpsant/mpt-tool.jar" />
+        <sources jar="." descriptor="jetbrains.mps.tool.builder.msd" />
+      </module>
+    </echoxml>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/core-tool-builder-models">
+      <fileset dir="${mps_home}/core/tool/builder/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.layout}/languages/jetbrains.mps.tool.builder.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/core/tool/builder/jetbrains.mps.tool.builder.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-tool-builder-models" prefix="module/models" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.tool.builder.jar" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version=${version}</echo>
   </target>

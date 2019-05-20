@@ -33,7 +33,7 @@
     <mkdir dir="${build.tmp}/deps/mpsBootstrapCore/mps-openapi.jar" />
     <unzip src="${artifacts.mps}/lib/mps-openapi.jar" dest="${build.tmp}/deps/mpsBootstrapCore/mps-openapi.jar" />
     <mkdir dir="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar" />
-    <unzip src="${artifacts.mps}/lib/mps-tool.jar" dest="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar" />
+    <unzip src="${artifacts.mps}/lib/mpsant/mps-tool.jar" dest="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar" />
   </target>
   
   <target name="build" depends="assemble" />
