@@ -7359,6 +7359,7 @@
           <module ref="3a13115c-633c-4c5c-bbcc-75c4219e9555(jetbrains.mps.lang.quotation)" kind="cl" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
+          <module ref="c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)" kind="cl" />
           <module ref="7a5dda62-9140-4668-ab76-d5ed1746f2b2(jetbrains.mps.lang.typesystem)" kind="cl" />
           <module ref="20c6e580-bdc5-4067-8049-d7e3265a86de(jetbrains.mps.typesystemEngine)" kind="cl" />
         </dependencies>
@@ -11737,13 +11738,14 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor.aspects" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.modelapi" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.text" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.project" />
       </classpath>
     </javac>
   </target>
   
-  <target name="java.compile.jetbrains.mps.baseLanguage" depends="java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.mps-core-components, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-project, java.compile.mps-kernel, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-persistence, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.jetbrains.mps.analyzers.runtime, java.compile.idea-platform, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.jetbrains.mps.baseLanguage.blTypes, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.regexp.runtime, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.traceable, java.compile.java.modules.cycle.3, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.baseLanguage" depends="java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.mps-core-components, java.compile.vfs, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-project, java.compile.mps-kernel, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.mps-persistence, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.jetbrains.mps.analyzers.runtime, java.compile.idea-platform, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.jetbrains.mps.baseLanguage.blTypes, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.regexp.runtime, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.traceable, java.compile.java.modules.cycle.3, fetchDependencies">
     <mkdir dir="${mps_home}/languages/baseLanguage/baseLanguage/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -11794,6 +11796,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor.aspects" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.modelapi" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.text" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
