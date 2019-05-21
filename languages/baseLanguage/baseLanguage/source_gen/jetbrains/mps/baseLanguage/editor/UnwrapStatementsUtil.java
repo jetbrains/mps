@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.IContainsStatementList__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.behavior.SingleLineComment__BehaviorDescriptor;
 
 public class UnwrapStatementsUtil {
 
@@ -79,9 +79,7 @@ public class UnwrapStatementsUtil {
   }
   private static void prependComment(SNode toWrap, String text) {
     SNode s = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-    SNode p = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"));
-    SPropertyOperations.assign(p, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text"), text);
-    ListSequence.fromList(SLinkOperations.getChildren(s, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).addElement(p);
+    SingleLineComment__BehaviorDescriptor.parseAndAddWords_id45vN3dBFprj.invoke(s, text);
     SNodeOperations.insertPrevSiblingChild(toWrap, s);
   }
 }
