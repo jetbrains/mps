@@ -16,13 +16,14 @@
 package jetbrains.mps.smodel.behaviour;
 
 import jetbrains.mps.core.aspects.behaviour.api.BHDescriptor;
+import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SMethodId;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -34,6 +35,8 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 @SuppressWarnings("ALL")
 public final class BHReflection {
+  private static BehaviorRegistry ourRegistry;
+
   @NotNull
   public static SNode newNode(@Nullable SModel model, @NotNull SConstructor constructor, Object... parameters) {
     return constructor.newNode(model, parameters);
@@ -126,7 +129,12 @@ public final class BHReflection {
 
   @NotNull
   private static BHDescriptor getBHDescriptor(@NotNull SAbstractConcept concept) {
-    return ConceptRegistry.getInstance().getBehaviorRegistry().getBHDescriptor(concept);
+    return ourRegistry.getBHDescriptor(concept);
+  }
+
+  @Internal
+  /*package*/ static void setRegistry(@NotNull BehaviorRegistry registry) {
+    ourRegistry = registry;
   }
 
   /**

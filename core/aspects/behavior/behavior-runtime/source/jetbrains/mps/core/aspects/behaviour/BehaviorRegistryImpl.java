@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.CachingMethodResolutionOrder;
 import jetbrains.mps.core.aspects.behaviour.api.MethodResolutionOrder;
+import jetbrains.mps.smodel.behaviour.BHReflectionInit;
 import jetbrains.mps.smodel.language.ConceptInLoadingStorage;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -46,6 +47,7 @@ public class BehaviorRegistryImpl implements BehaviorRegistry {
 
   public BehaviorRegistryImpl(LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
+    BHReflectionInit.initBHReflection(this);
   }
 
   @Override
