@@ -234,8 +234,7 @@ public class FileUtil {
     //the following cycle is because "/././".replace(<used template>) -> "/./"
     do {
       oldPath = path;
-      // four backslashes are for windows file separator (escaping it twice), and two are escaping the dot
-      path = oldPath.replaceAll("\\\\\\.\\\\", "\\\\").replaceAll("/\\./", "/");
+      path = oldPath.replace("\\.\\", "\\").replace("/./", "/");
     } while (oldPath.length() != path.length());
     return path;
   }
