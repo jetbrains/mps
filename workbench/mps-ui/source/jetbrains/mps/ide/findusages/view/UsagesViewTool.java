@@ -57,6 +57,7 @@ import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -67,6 +68,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.text.html.HTMLDocument.RunElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -230,6 +232,9 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
         final UsageViewData usageViewData;
         try {
           usageViewData = UsageViewData.read(this, tabXML, project);
+        } catch (RuntimeException ex) {
+          Logger.getLogger(UsagesViewTool.class).info("Failed to restore usages view tab", ex);
+          continue;
         } catch (CantLoadSomethingException e) {
           continue;
         }

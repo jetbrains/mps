@@ -231,6 +231,10 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
+    if (element.getChild("data") != null) {
+      // FIXME drop once 2019.2 is out, no reason to account for pre-2019.2 format
+      return;
+    }
     myTreeRoot.read(element, project);
   }
 

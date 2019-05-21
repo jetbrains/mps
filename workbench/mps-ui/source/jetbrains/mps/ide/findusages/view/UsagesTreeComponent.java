@@ -164,13 +164,16 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
   }
 
   public void read(Element element, Project project) throws CantLoadSomethingException {
-    Element viewOptionsXML = element.getChild(VIEW_OPTIONS);
-    myViewOptions.read(viewOptionsXML, project);
+    try {
+      Element viewOptionsXML = element.getChild(VIEW_OPTIONS);
+      myViewOptions.read(viewOptionsXML, project);
+      Element contentsXML = element.getChild(CONTENTS);
+      myContents.read(contentsXML, project);
+    } catch (RuntimeException ex) {
+      throw new CantLoadSomethingException(ex);
+    }
+
     setComponentsViewOptions(myViewOptions);
-
-    Element contentsXML = element.getChild(CONTENTS);
-    myContents.read(contentsXML, project);
-
     myTree.setContents(myContents, myPathProvider);
   }
 
