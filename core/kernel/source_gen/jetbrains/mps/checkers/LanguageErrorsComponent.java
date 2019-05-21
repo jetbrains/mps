@@ -58,8 +58,8 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
    */
   private DescendantsTreeIterator myFullCheckIterator;
 
-  private class ApprovableError extends CheckingSession.SuppressableError<NodeReportItem> {
-    private ApprovableError(NodeReportItem error, boolean approved) {
+  public static class ApprovableError extends CheckingSession.SuppressableError<NodeReportItem> {
+    public ApprovableError(NodeReportItem error, boolean approved) {
       super(error);
       this.myApproved = approved;
 

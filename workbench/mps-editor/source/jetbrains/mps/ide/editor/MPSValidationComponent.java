@@ -16,8 +16,11 @@
 package jetbrains.mps.ide.editor;
 
 import com.intellij.openapi.components.ProjectComponent;
+import jetbrains.mps.checkers.IChecker;
+import jetbrains.mps.checkers.ICheckingPostprocessor;
 import jetbrains.mps.editor.runtime.LanguageEditorChecker;
 import jetbrains.mps.errors.CheckerRegistry;
+import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.ide.editor.checkers.ModelProblemsChecker;
 import jetbrains.mps.ide.editor.suppresserrors.SuppressErrorsChecker;
 import jetbrains.mps.nodeEditor.Highlighter;
@@ -30,7 +33,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 import typesystemIntegration.languageChecker.AutoResolver;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 /**
  * evgeny, 12/27/11
@@ -68,16 +74,16 @@ public class MPSValidationComponent implements ProjectComponent {
   public void projectOpened() {
     // TODO: create editor-specific "core" component in editor-runtime module and register all common checkers from there
     myProject.getModelAccess().runReadAction(() -> {
-      addChecker(new TypesEditorChecker());
-      addChecker(new NonTypesystemEditorChecker());
-      addChecker(new AutoResolver(myProject));
-      final SRepository repositoryToTrack4Changes = myProject.getRepository();
       final CheckerRegistry checkerRegistry = myProject.getComponent(CheckerRegistry.class);
-      if (checkerRegistry != null) {
-        addChecker(new LanguageEditorChecker(repositoryToTrack4Changes, checkerRegistry.getEditorCheckers()));
-      }
+      List<ICheckingPostprocessor<NodeReportItem>> postprocessors =
+          checkerRegistry.getEditorCheckers().stream().map(IChecker::getPostprocessor).filter(Objects::nonNull).collect(Collectors.toList());
+
+      addChecker(new TypesEditorChecker(myProject.getRepository(), postprocessors));
+      addChecker(new NonTypesystemEditorChecker(myProject.getRepository(), postprocessors));
+      addChecker(new AutoResolver(myProject));
+      addChecker(new LanguageEditorChecker(myProject.getRepository(), checkerRegistry.getEditorCheckers()));
       addChecker(new SuppressErrorsChecker());
-      addChecker(new ModelProblemsChecker(repositoryToTrack4Changes));
+      addChecker(new ModelProblemsChecker(myProject.getRepository()));
     });
   }
 
