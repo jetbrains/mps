@@ -85,9 +85,9 @@ public class JUnit_Command {
     return new Java_Command().setVirtualMachineParameter_String(updatedVmParams).setClassPath_ListString(calculatedCP).setJrePath_String((check_txeh3_a0c0h0a1(javaParams) ? javaParams.jrePath() : null)).setWorkingDirectory_File((workingDir == null ? null : new File(workingDir))).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
   }
   public ProcessHandler createProcess(List<ITestNodeWrapper> tests) throws ExecutionException {
-    //  
+    // 
     // NOT TO BE USED 
-    //  
+    // 
     if (myProject_Project == null) {
       // XXX we tolerate null project for transition period, clients have to supply one always 
       //     we shall fail with exception once legacy usages gone 

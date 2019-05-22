@@ -170,7 +170,7 @@ public class Utils {
     compare(models, expectedModels);
   }
 
-  public void zcheckSourceModel(IFile dirPath, SModelReference expectedRef) {
+  public void checkSourceModel(IFile dirPath, SModelReference expectedRef) {
     try {
       SModule testMaterials;
 
