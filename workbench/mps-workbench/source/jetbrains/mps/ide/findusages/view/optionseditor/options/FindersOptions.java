@@ -68,7 +68,7 @@ public final class FindersOptions extends BaseOptions {
     availableFinders.stream().filter(f -> f.isUsedByDefault(node)).map(f -> f.getClass().getName()).forEach(findersByDefault::add);
     // remove duplicates, if any
     findersByDefault.removeAll(rv.myFindersClassNames);
-    myFindersClassNames.addAll(findersByDefault);
+    rv.myFindersClassNames.addAll(findersByDefault);
     return rv;
   }
 
