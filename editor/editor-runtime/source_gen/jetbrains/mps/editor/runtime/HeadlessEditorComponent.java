@@ -34,7 +34,10 @@ public class HeadlessEditorComponent extends EditorComponent {
   @Override
   protected void assertInEDT() {
     // empty method because we suppose HeadlessEditorComponent should be called from different threads. 
+
     // in the future all EDT-specific stuff should be removed from this class & so this method will 
+
     // present only inside EditorComponent with the UI attached to it. 
+
   }
 }

@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -177,11 +177,8 @@
         <child id="1144231399730" name="condition" index="1Dwp0S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -200,6 +197,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1359,13 +1364,146 @@
           </node>
         </node>
         <node concept="3SKdUt" id="42TXcA3Kj9t" role="3cqZAp">
-          <node concept="3SKdUq" id="42TXcA3Kj9v" role="3SKWNk">
-            <property role="3SKdUp" value="XXX we need model read just to make sure reference could get resolved. Instead, a dedicated operation" />
+          <node concept="1PaTwC" id="ATZLwXobyv" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobyw" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyx" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyy" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyz" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoby$" role="1PaTwD">
+              <property role="3oM_SC" value="read" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoby_" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyA" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyB" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyC" role="1PaTwD">
+              <property role="3oM_SC" value="sure" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyD" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyE" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyF" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyG" role="1PaTwD">
+              <property role="3oM_SC" value="resolved." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyH" role="1PaTwD">
+              <property role="3oM_SC" value="Instead," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyI" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyJ" role="1PaTwD">
+              <property role="3oM_SC" value="dedicated" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyK" role="1PaTwD">
+              <property role="3oM_SC" value="operation" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="42TXcA3KkPy" role="3cqZAp">
-          <node concept="3SKdUq" id="42TXcA3KkP$" role="3SKWNk">
-            <property role="3SKdUp" value="in the SRepository might be worth adding (once this access is over, it's all the same about whether next attempt to resolve the reference would succeed or not)" />
+          <node concept="1PaTwC" id="ATZLwXobyL" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobyM" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyN" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyO" role="1PaTwD">
+              <property role="3oM_SC" value="SRepository" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyP" role="1PaTwD">
+              <property role="3oM_SC" value="might" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyQ" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyR" role="1PaTwD">
+              <property role="3oM_SC" value="worth" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyS" role="1PaTwD">
+              <property role="3oM_SC" value="adding" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyT" role="1PaTwD">
+              <property role="3oM_SC" value="(once" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyU" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyV" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyW" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyX" role="1PaTwD">
+              <property role="3oM_SC" value="over," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyY" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyZ" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz0" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz1" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz2" role="1PaTwD">
+              <property role="3oM_SC" value="about" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz3" role="1PaTwD">
+              <property role="3oM_SC" value="whether" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz4" role="1PaTwD">
+              <property role="3oM_SC" value="next" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz5" role="1PaTwD">
+              <property role="3oM_SC" value="attempt" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz6" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz7" role="1PaTwD">
+              <property role="3oM_SC" value="resolve" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz8" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobz9" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobza" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobzb" role="1PaTwD">
+              <property role="3oM_SC" value="succeed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobzc" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobzd" role="1PaTwD">
+              <property role="3oM_SC" value="not)" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="42TXcA3K3hu" role="3cqZAp">

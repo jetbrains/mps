@@ -18,7 +18,9 @@ public class MenuScopes {
     final Scope allNamedMenus = new ModelPlusImportedScope(SNodeOperations.getModel(contextNode), true, concept);
 
     // Uses the scope of allowed concepts (for default menus) to restrict the set of named menus to those 
-    // that reference allowed concepts. 
+
+    // reference allowed concepts. 
+
     final Scope allowedConcepts = Scope.getScope(contextNode, link, position, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
     if (allowedConcepts == null) {
       return new EmptyScope();

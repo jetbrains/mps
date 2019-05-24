@@ -39,7 +39,9 @@ public final class IBinaryLike__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static boolean canPropagateUnmatchedParenUp_id1wHCnsn58ZA(@NotNull SNode __thisNode__, SNode leaf, boolean rightParen) {
     // Do not climb up into a disconnected parent, e.g. into Ternary from the ifTrue branch 
+
     // Only syntactically left or right children may include their parents in their parent path 
+
     List<SNode> leafAncestors = SNodeOperations.getNodeAncestors(leaf, null, true);
     return ListSequence.fromList(leafAncestors).contains(IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(__thisNode__)) || ListSequence.fromList(leafAncestors).contains(IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(__thisNode__));
   }

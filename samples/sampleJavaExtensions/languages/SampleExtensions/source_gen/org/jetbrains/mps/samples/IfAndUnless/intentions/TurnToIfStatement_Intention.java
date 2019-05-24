@@ -52,6 +52,7 @@ public final class TurnToIfStatement_Intention extends AbstractIntentionDescript
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       // Invert condition 
+
       SNode condition = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL, 0x57547b70f36dc0eL, "condition"));
       if ((condition != null)) {
         if (SNodeOperations.isInstanceOf(condition, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression"))) {

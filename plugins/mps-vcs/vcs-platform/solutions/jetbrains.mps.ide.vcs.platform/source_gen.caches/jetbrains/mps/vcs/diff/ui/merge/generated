@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-by3jxecm80tb4u1n1wsgpu2g40cmwiy">
+<product version="3" modelHash="eaeooypxggr7smmkdpj4rrczdt55b3b">
   <files names="AcceptYoursTheirs.java:ApplyNonConflictsForRoot.java:ISaveMergedModel.java:MergeButtonsPainter.java:MergeConfirmation.java:MergeModelsPanel.java:MergeNonConflictingRoots.java:MergeRootsPane.java:ResetState.java" />
 </product>
 

@@ -107,9 +107,13 @@ public abstract class BaseMpsProducer<T> extends RuntimeConfigurationProducer {
     MPSProject mpsProject = mpsLocation.getMPSProject();
     if (psiElement.isTransientElement()) {
       // Generally, no run configurations for transient elements might be too much - one may desire 
+
       // e.g. to run a main class for a transient model. Perhaps, each producer shall decide itself (in isApplicable) whether 
-      // to ignore tranient models, however, at the moment I decided to prevent any code execution for transient models for  
+
+      // to ignore tranient models, however, at the moment I decided to prevent any code execution for transient models for 
+
       // the sake of change simplicity. 
+
       return null;
     }
     RunConfiguration config = new ModelAccessHelper(mpsProject.getRepository()).runReadAction(new Computable<RunConfiguration>() {

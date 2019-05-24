@@ -84,6 +84,7 @@ public class Makeup_Facet extends IFacet.Stub {
               List<IDelta> deltas = ListSequence.fromList(new ArrayList<IDelta>());
 
               // XXX can I ask e.g. project for its FS? 
+
               final FileSystem localFileSystem = FileSystem.getInstance();
 
               for (TextGenOutcomeResource res : Sequence.fromIterable(input)) {
@@ -98,7 +99,9 @@ public class Makeup_Facet extends IFacet.Stub {
                 }
                 final MacroHelper moduleMacros = MacrosFactory.forModule(res.getModule());
                 //  FIXME would be nice to have output repository in TextGenOutcomeResource, much like for generator outcome 
+
                 // inspired by TextGen facet approach 
+
                 SRepository outputModelRepo = res.getTextGenResult().getModel().getRepository();
                 if (outputModelRepo == null) {
                   outputModelRepo = monitor.getSession().getProject().getRepository();
@@ -113,6 +116,7 @@ public class Makeup_Facet extends IFacet.Stub {
                         continue;
                       }
                       // TODO process macro/property values in the location, but assume it's absolute path for now 
+
                       String destination = SPropertyOperations.getString(annotationCopy, MetaAdapterFactory.getProperty(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, 0x10f9f9812b8fca94L, "location"));
                       if ((destination == null || destination.length() == 0)) {
                         continue;
@@ -123,6 +127,7 @@ public class Makeup_Facet extends IFacet.Stub {
                       monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf(String.format("copy textgen outcome: %s --> %s", tu.getFileName(), destination))));
 
                       // next code could be outside of model read 
+
                       IFile destFile = localFileSystem.getFile(destination);
                       boolean changed = fp.saveContent(destFile, tu.getBytes());
                       if (changed) {

@@ -8,7 +8,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
     <use id="3ecd7c84-cde3-45de-886c-135ecc69b742" name="jetbrains.mps.lang.refactoring" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="9oh" ref="r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)" />
@@ -298,11 +298,8 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -381,6 +378,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -941,8 +946,28 @@
           </node>
         </node>
         <node concept="3SKdUt" id="5U9rQri5GhE" role="3cqZAp">
-          <node concept="3SKdUq" id="5U9rQri5GhF" role="3SKWNk">
-            <property role="3SKdUp" value="TODO: call this constructor inside read action?" />
+          <node concept="1PaTwC" id="ATZLwXoiTM" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoiTN" role="1PaTwD">
+              <property role="3oM_SC" value="TODO:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTO" role="1PaTwD">
+              <property role="3oM_SC" value="call" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTP" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTQ" role="1PaTwD">
+              <property role="3oM_SC" value="constructor" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTR" role="1PaTwD">
+              <property role="3oM_SC" value="inside" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTS" role="1PaTwD">
+              <property role="3oM_SC" value="read" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTT" role="1PaTwD">
+              <property role="3oM_SC" value="action?" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="5wEedBrIwD5" role="3cqZAp">
@@ -2566,13 +2591,77 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6KmL32rd7HA" role="3cqZAp">
-          <node concept="3SKdUq" id="6KmL32rd7HB" role="3SKWNk">
-            <property role="3SKdUp" value="workaround for project pane not rebuilding itself when a model has been added" />
+          <node concept="1PaTwC" id="ATZLwXoiTU" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoiTV" role="1PaTwD">
+              <property role="3oM_SC" value="workaround" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTW" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTX" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTY" role="1PaTwD">
+              <property role="3oM_SC" value="pane" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiTZ" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU0" role="1PaTwD">
+              <property role="3oM_SC" value="rebuilding" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU1" role="1PaTwD">
+              <property role="3oM_SC" value="itself" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU2" role="1PaTwD">
+              <property role="3oM_SC" value="when" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU3" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU4" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU5" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU6" role="1PaTwD">
+              <property role="3oM_SC" value="been" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU7" role="1PaTwD">
+              <property role="3oM_SC" value="added" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="6KmL32rd7HC" role="3cqZAp">
-          <node concept="3SKdUq" id="6KmL32rd7HD" role="3SKWNk">
-            <property role="3SKdUp" value="not in a command but in a write action" />
+          <node concept="1PaTwC" id="ATZLwXoiU8" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoiU9" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUa" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUb" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUc" role="1PaTwD">
+              <property role="3oM_SC" value="command" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUd" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUe" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUf" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUg" role="1PaTwD">
+              <property role="3oM_SC" value="write" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUh" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="6KmL32rd7HE" role="3cqZAp">
@@ -3230,13 +3319,77 @@
           </node>
         </node>
         <node concept="3SKdUt" id="1q2lWg7HlPx" role="3cqZAp">
-          <node concept="3SKdUq" id="1q2lWg7HlPz" role="3SKWNk">
-            <property role="3SKdUp" value="workaround for project pane not rebuilding itself when a model has been added" />
+          <node concept="1PaTwC" id="ATZLwXoiUi" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoiUj" role="1PaTwD">
+              <property role="3oM_SC" value="workaround" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUk" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUl" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUm" role="1PaTwD">
+              <property role="3oM_SC" value="pane" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUn" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUo" role="1PaTwD">
+              <property role="3oM_SC" value="rebuilding" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUp" role="1PaTwD">
+              <property role="3oM_SC" value="itself" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUq" role="1PaTwD">
+              <property role="3oM_SC" value="when" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUr" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUs" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUt" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUu" role="1PaTwD">
+              <property role="3oM_SC" value="been" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUv" role="1PaTwD">
+              <property role="3oM_SC" value="added" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="1q2lWg7HmU4" role="3cqZAp">
-          <node concept="3SKdUq" id="1q2lWg7HmU6" role="3SKWNk">
-            <property role="3SKdUp" value="not in a command but in a write action" />
+          <node concept="1PaTwC" id="ATZLwXoiUw" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoiUx" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUy" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUz" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU$" role="1PaTwD">
+              <property role="3oM_SC" value="command" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiU_" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUA" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUB" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUC" role="1PaTwD">
+              <property role="3oM_SC" value="write" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoiUD" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1q2lWg7H6fV" role="3cqZAp">

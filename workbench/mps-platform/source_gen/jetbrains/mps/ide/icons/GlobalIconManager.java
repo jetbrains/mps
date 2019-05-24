@@ -25,8 +25,11 @@ public class GlobalIconManager extends BaseIconManager implements BaseComponent 
 
   public static GlobalIconManager getInstance() {
     // XXX perhaps, shall be a service rather than an app component. Shall figure out what to do with 
+
     //     init/dispose methods (does ServiceManager invokes them on service access?) and dependencies from other 
+
     //     components (e.g. NodeFileIconProvider extension) 
+
     return ApplicationManager.getApplication().getComponent(GlobalIconManager.class);
   }
 

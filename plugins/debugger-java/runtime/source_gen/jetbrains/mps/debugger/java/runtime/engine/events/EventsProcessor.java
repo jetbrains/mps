@@ -65,6 +65,7 @@ public class EventsProcessor {
     myBreakpointManager = breakpointsManagerComponent;
     myRequestManager = new RequestManager(this);
     // todo? 
+
   }
   public void commitVm(@NotNull VirtualMachine vm) {
     myVirtualMachine = vm;
@@ -124,12 +125,15 @@ public class EventsProcessor {
             myVirtualMachine.exit(-1);
           } else {
             //  some VM's (like IBM VM 1.4.2 bundled with WebSpere) does not 
+
             //  resume threads on dispose() like it should 
+
             myVirtualMachine.resume();
             myVirtualMachine.dispose();
           }
         } else {
           //  todo DebugProcessImpl.stopConnecting 
+
           closeProcess(true);
         }
       }
@@ -171,7 +175,9 @@ public class EventsProcessor {
     ManagerThread.assertIsMangerThread();
     StepRequest stepRequest = myRequestManager.createStepRequest(stepRequestor, stepType, threadReference, suspendPolicy);
     //  TODO request filters should be configured by user 
+
     //  this particular list was taken from idea debugger settings in order to fix MPS-8725 
+
     stepRequest.addClassExclusionFilter("java.*");
     stepRequest.addClassExclusionFilter("javax.*");
     stepRequest.addClassExclusionFilter("org.omg.*");
@@ -179,14 +185,18 @@ public class EventsProcessor {
     stepRequest.addClassExclusionFilter("junit.*");
     stepRequest.addClassExclusionFilter("com.sun.*");
     // TODO also might wanna let user to exclude constructors, classloaders, getters, 
+
     // synthetic methods (whatever synthetic methods are). 
+
     // see idea debugger settings for the full list 
+
     myRequestManager.enableRequest(stepRequest);
   }
   private void processLocatableEvent(final EventContext context, final LocatableEvent event) {
     ManagerThread.assertIsMangerThread();
 
     // if inside evaluation, resume 
+
     final ThreadReference thread = event.thread();
     if (isEvaluated(thread)) {
       myContextManager.voteResume(context);
@@ -196,11 +206,13 @@ public class EventsProcessor {
     final LocatableEventRequestor requestor = (LocatableEventRequestor) myRequestManager.findRequestor(event.request());
 
     // if no requestor or suspend none resume 
+
     if (requestor == null || EventRequest.SUSPEND_NONE == requestor.getSuspendPolicy()) {
       myContextManager.voteResume(context);
     }
 
     // requestor may evaluate something inside, like a condition or an expression to print 
+
     scheduleEvaluation(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
         boolean resume = true;
@@ -213,6 +225,7 @@ public class EventsProcessor {
             try {
               if (requestor instanceof JavaBreakpoint && ((JavaBreakpoint) requestor).isLogMessage()) {
                 // todo move to java breakpoint? 
+
                 myReporter.reportInformation("Breakpoint hit: " + ((JavaBreakpoint) requestor).getPresentation() + " " + event.location().sourceName() + ":" + event.location().lineNumber());
               }
             } catch (AbsentInformationException ignore) {
@@ -317,6 +330,7 @@ public class EventsProcessor {
   }
   public DebugProcessMulticaster getMulticaster() {
     // todo review all this getters, really 
+
     return myMulticaster;
   }
   private synchronized void startEvaluation(@NotNull ThreadReference threadReference) {
@@ -340,6 +354,7 @@ public class EventsProcessor {
   }
   public static boolean isOnPooledThread() {
     // it is sufficient to check for this two 
+
     return !(ManagerThread.isManagerThread()) && !(ApplicationManager.getApplication().isDispatchThread());
   }
   public class EventProcessorRunnable implements Runnable {

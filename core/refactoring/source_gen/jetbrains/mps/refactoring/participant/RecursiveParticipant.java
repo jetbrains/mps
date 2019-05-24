@@ -34,6 +34,7 @@ public interface RecursiveParticipant<InitialDataObject, FinalDataObject, Initia
           }
         })) {
           // todo: checked exception 
+
           throw new IllegalStateException("infinite recursion detected");
         } else {
           return mapNotNull(getInitialStates(), new _FunctionTypes._return_P1_E0<List<List<RefactoringParticipant.Change<I, F>>>, List<I>>() {

@@ -24,6 +24,7 @@ import java.util.LinkedHashSet;
 public class AttributeDesignTimeOperations {
   public static Iterable<SNode> getApplicableAttributes(SNode accessNode, final SNode attributeType) {
     // todo: should be node<ACD> 
+
     final SNode nodeConcept = SLinkOperations.getTarget(AttributeAccess__BehaviorDescriptor.getAttributeContainerType_id62qhzb6UOqI.invoke(accessNode), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"));
     if ((nodeConcept == null)) {
       return null;
@@ -40,6 +41,7 @@ public class AttributeDesignTimeOperations {
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         // todo: why not getAttributeRole? 
+
         return isNotEmptyString(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, "jetbrains.mps.lang.structure.structure.AttributeInfo"))), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d1440b01c7L, "role"))) && Sequence.fromIterable(getApplicableConcepts(it)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(nodeConcept, it);
@@ -82,6 +84,7 @@ public class AttributeDesignTimeOperations {
       }
     } catch (Exception ex) {
       // ignore 
+
     }
     return SPropertyOperations.getString(attributeDeclaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }

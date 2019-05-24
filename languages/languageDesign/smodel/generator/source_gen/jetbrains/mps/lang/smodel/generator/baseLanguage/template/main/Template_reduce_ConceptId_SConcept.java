@@ -79,6 +79,7 @@ public class Template_reduce_ConceptId_SConcept extends TemplateDeclarationBase 
           tnode1.addChild(myAggregationLinks[0], child4);
         }
         // TODO validate child 
+
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
@@ -88,6 +89,7 @@ public class Template_reduce_ConceptId_SConcept extends TemplateDeclarationBase 
         }
         tnode1.addChild(myAggregationLinks[0], tnode5);
         // TODO validate child 
+
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
@@ -97,6 +99,7 @@ public class Template_reduce_ConceptId_SConcept extends TemplateDeclarationBase 
         }
         tnode1.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child 
+
       }
     } finally {
     }

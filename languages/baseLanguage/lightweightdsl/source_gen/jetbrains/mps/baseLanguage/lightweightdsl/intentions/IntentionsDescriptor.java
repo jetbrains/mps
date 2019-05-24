@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: ClassConcept 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new UpdatePlaceholders_Intention();
           intentions[1] = new AddClasslikeAnnotation_Intention();
@@ -41,7 +42,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // Concept: ParameterDescriptor 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new SwitchConditional_Intention();
         }

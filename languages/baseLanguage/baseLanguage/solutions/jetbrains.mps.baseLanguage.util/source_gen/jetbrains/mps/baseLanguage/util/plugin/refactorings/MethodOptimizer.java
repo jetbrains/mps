@@ -52,6 +52,7 @@ public class MethodOptimizer {
       return;
     }
     // what if statement is not on line of size -2? 
+
     SNode beforeLastStatement = ListSequence.fromList(statements).getElement(size - 2);
     if (SNodeOperations.isInstanceOf(beforeLastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))) {
       SNode expressionStatement = SNodeOperations.cast(beforeLastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"));

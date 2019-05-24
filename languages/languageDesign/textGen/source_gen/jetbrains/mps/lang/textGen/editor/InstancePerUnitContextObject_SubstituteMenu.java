@@ -48,6 +48,7 @@ public class InstancePerUnitContextObject_SubstituteMenu extends SubstituteMenuB
 
     public SMP_ReferenceScope_hubniz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1dfcc3c672ea762bL, "jetbrains.mps.lang.textGen.structure.InstancePerUnitContextObject"), MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1dfcc3c672ea762cL, 0x1dfcc3c672ea762dL, "context"));
     }
     @NotNull

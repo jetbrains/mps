@@ -53,6 +53,7 @@ public class BuildSourceMacroRelativePath_SubstituteMenu extends SubstituteMenuB
 
     public SMP_ReferenceScope_whou42_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath"), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro"));
     }
     @NotNull

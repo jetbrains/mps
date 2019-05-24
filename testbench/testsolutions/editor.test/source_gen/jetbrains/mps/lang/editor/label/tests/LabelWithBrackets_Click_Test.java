@@ -36,6 +36,7 @@ public class LabelWithBrackets_Click_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("1070136247797346641", "1070136247797346643");
       // TODO: modify press mouse statement in order to support expressions as x,y prameters 
+
       {
         int x_l63k4n_b0 = 100;
         int y_l63k4n_b0 = 10;

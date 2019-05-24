@@ -41,8 +41,11 @@ public class ShowInLogicalView_Action extends BaseAction {
     }
     ProjectTreeFindHelper treeFinder = new ProjectTreeFindHelper(tree);
     // it's fine if we could navigate to a module. If the module is not part of the project pane, no reason to expect more. 
+
     // If, however, module is present, it's highly likely node's model would be there as well, and the node, too. 
+
     // Just don't want to slow down by ensuring there's model and node in the tree. 
+
     return treeFinder.findMostSuitableModuleTreeNode(module) != null;
   }
   @Override

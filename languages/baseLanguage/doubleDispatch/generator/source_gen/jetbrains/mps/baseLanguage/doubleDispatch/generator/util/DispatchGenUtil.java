@@ -39,7 +39,9 @@ public class DispatchGenUtil {
 
     if (SNodeOperations.isInstanceOf(dispatchMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"))) {
       // if it's a static method declaration then we don't look into ancestors 
+
       // otherwise we scan all the way up 
+
       classesToConsider = Sequence.<SNode>singleton(parentClass);
       methods = new _FunctionTypes._return_P1_E0<Iterable<SNode>, SNode>() {
         public Iterable<SNode> invoke(SNode cls) {
@@ -58,8 +60,10 @@ public class DispatchGenUtil {
     final DispatchGroupDescriptor desc = new DispatchGroupDescriptor(dispatchMethod);
 
     // traversing from the holder to the top of the hierarchy 
+
     for (SNode h : Sequence.fromIterable(classesToConsider)) {
       // all matching methods in this class 
+
       Iterable<SNode> matchingLocalMethods = Sequence.fromIterable(methods.invoke(h)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return DispatchUtil.isReadyMethod(it) && desc.equals(new DispatchGroupDescriptor(it));
@@ -69,23 +73,28 @@ public class DispatchGenUtil {
       for (SNode method : Sequence.fromIterable(matchingLocalMethods)) {
         SNode paramClass = DispatchUtil.getParamClass(method);
         // it's our original method, skip 
+
         if (method == dispatchMethod) {
           continue;
         }
         // already overridden down the hierarchy 
+
         if (MapSequence.fromMap(classesToMethods).containsKey(paramClass) || paramClass == origParamClass) {
           continue;
         }
         // not an ancenstor of our param class, (thus, must be a super class) 
+
         if (!(DispatchUtil.isParent(SNodeOperations.cast(origParamClass, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), SNodeOperations.cast(paramClass, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))))) {
           continue;
         }
         // not overridden in classes down the hierarchy 
+
         MapSequence.fromMap(classesToMethods).put(paramClass, method);
       }
     }
 
     // remove those which correspond not to the nearest ancestor of our parameter class 
+
     Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
 
     for (SNode clas : SetSequence.fromSet(MapSequence.fromMap(classesToMethods).keySet())) {
@@ -94,6 +103,7 @@ public class DispatchGenUtil {
       while (superCls != origParamClass && (superCls != null)) {
         if (MapSequence.fromMap(classesToMethods).containsKey(superCls)) {
           // we only take the nearest ancestors 
+
           SetSequence.fromSet(toRemove).addElement(cls);
           cls = superCls;
         }
@@ -107,6 +117,7 @@ public class DispatchGenUtil {
     });
 
     // take method declarations sorted by their parameter classes names alphabetically 
+
     return MapSequence.fromMap(classesToMethods).sort(new ISelector<IMapping<SNode, SNode>, String>() {
       public String select(IMapping<SNode, SNode> it) {
         return SPropertyOperations.getString(it.key(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));

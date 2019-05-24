@@ -48,6 +48,7 @@ public class BuildMps_DevKitExportSolution_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_to6rpi_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportSolution"), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, 0x4780308f5d29d7bL, "solution"));
     }
     @NotNull

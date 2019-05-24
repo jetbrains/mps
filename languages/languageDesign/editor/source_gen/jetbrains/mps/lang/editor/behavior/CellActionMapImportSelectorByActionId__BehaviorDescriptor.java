@@ -51,6 +51,7 @@ public final class CellActionMapImportSelectorByActionId__BehaviorDescriptor ext
   }
   /*package*/ static SNode getNavigatableNodeWithin_id5Sx2dSLnDj7(@NotNull SNode __thisNode__, SNode actionMap) {
     // navigate to the action item of the matching type 
+
     return Sequence.fromIterable(CellActionMapDeclaration__BehaviorDescriptor.collectItemsOfType_id5Sx2dSLnOI$.invoke(actionMap, CellActionMapImportSelectorByActionId__BehaviorDescriptor.getActionId_id3XXPjz_5Jxc.invoke(__thisNode__))).last();
   }
 

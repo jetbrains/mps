@@ -58,6 +58,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode3);
           // TODO validate child 
+
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
@@ -77,11 +78,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode5.addChild(myAggregationLinks[1], tnode6);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[2], tnode5);
               // TODO validate child 
+
             }
             {
               final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -97,11 +100,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode7.addChild(myAggregationLinks[1], tnode8);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[2], tnode7);
               // TODO validate child 
+
             }
             {
               final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
@@ -117,11 +122,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode9.addChild(myAggregationLinks[1], tnode10);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[2], tnode9);
               // TODO validate child 
+
             }
             {
               final SNode tnode11 = environment.createOutputNode(myConcepts[5]);
@@ -130,6 +137,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode4.addChild(myAggregationLinks[3], tnode11);
               // TODO validate child 
+
             }
             {
               final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
@@ -138,6 +146,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode4.addChild(myAggregationLinks[4], tnode12);
               // TODO validate child 
+
             }
             {
               final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
@@ -156,6 +165,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       }
                       tnode14.addChild(myAggregationLinks[5], tnode15);
                       // TODO validate child 
+
                     }
                     {
                       final SNode tnode16 = environment.createOutputNode(myConcepts[9]);
@@ -165,6 +175,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       }
                       tnode14.addChild(myAggregationLinks[5], tnode16);
                       // TODO validate child 
+
                     }
                     {
                       final SNode tnode17 = environment.createOutputNode(myConcepts[9]);
@@ -174,21 +185,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       }
                       tnode14.addChild(myAggregationLinks[5], tnode17);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode13.addChild(myAggregationLinks[6], tnode14);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[7], tnode13);
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[0], tnode4);
           // TODO validate child 
+
         }
         {
           final SNode tnode18 = environment.createOutputNode(myConcepts[1]);
@@ -197,6 +212,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode18);
           // TODO validate child 
+
         }
         {
           final SNode tnode19 = environment.createOutputNode(myConcepts[10]);
@@ -213,6 +229,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[4], tnode20);
               // TODO validate child 
+
             }
             {
               final SNode tnode21 = environment.createOutputNode(myConcepts[11]);
@@ -222,6 +239,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[8], tnode21);
               // TODO validate child 
+
             }
             {
               final SNode tnode22 = environment.createOutputNode(myConcepts[4]);
@@ -231,6 +249,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[3], tnode22);
               // TODO validate child 
+
             }
             {
               final SNode tnode23 = environment.createOutputNode(myConcepts[7]);
@@ -253,6 +272,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                           }
                           tnode25.addChild(myAggregationLinks[9], tnode26);
                           // TODO validate child 
+
                         }
                         {
                           final SNode tnode27 = environment.createOutputNode(myConcepts[15]);
@@ -267,26 +287,31 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode27.addChild(myAggregationLinks[5], tnode28);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode25.addChild(myAggregationLinks[10], tnode27);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
                       tnode24.addChild(myAggregationLinks[11], tnode25);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode23.addChild(myAggregationLinks[6], tnode24);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode19.addChild(myAggregationLinks[7], tnode23);
               // TODO validate child 
+
             }
             {
               final SNode tnode29 = environment.createOutputNode(myConcepts[11]);
@@ -296,11 +321,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[8], tnode29);
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[0], tnode19);
           // TODO validate child 
+
         }
         {
           final SNode tnode30 = environment.createOutputNode(myConcepts[1]);
@@ -309,6 +336,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode30);
           // TODO validate child 
+
         }
         {
           final SNode tnode31 = environment.createOutputNode(myConcepts[10]);
@@ -325,6 +353,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode31.addChild(myAggregationLinks[4], tnode32);
               // TODO validate child 
+
             }
             {
               final SNode tnode33 = environment.createOutputNode(myConcepts[5]);
@@ -333,6 +362,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode31.addChild(myAggregationLinks[3], tnode33);
               // TODO validate child 
+
             }
             {
               final SNode tnode34 = environment.createOutputNode(myConcepts[3]);
@@ -348,11 +378,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode34.addChild(myAggregationLinks[1], tnode35);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode31.addChild(myAggregationLinks[2], tnode34);
               // TODO validate child 
+
             }
             {
               final SNode tnode36 = environment.createOutputNode(myConcepts[7]);
@@ -381,6 +413,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                             }
                             tnode39.addChild(myAggregationLinks[9], tnode40);
                             // TODO validate child 
+
                           }
                           {
                             final SNode tnode41 = environment.createOutputNode(myConcepts[15]);
@@ -395,6 +428,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                 }
                                 tnode41.addChild(myAggregationLinks[5], tnode42);
                                 // TODO validate child 
+
                               }
                               {
                                 final SNode tnode43 = environment.createOutputNode(myConcepts[19]);
@@ -409,21 +443,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                     }
                                     tnode43.addChild(myAggregationLinks[12], tnode44);
                                     // TODO validate child 
+
                                   }
                                 } finally {
                                 }
                                 tnode41.addChild(myAggregationLinks[5], tnode43);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode39.addChild(myAggregationLinks[10], tnode41);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode38.addChild(myAggregationLinks[13], tnode39);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
@@ -435,11 +473,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     tnode36.addChild(myAggregationLinks[6], child45);
                   }
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode31.addChild(myAggregationLinks[7], tnode36);
               // TODO validate child 
+
             }
             {
               final SNode tnode46 = environment.createOutputNode(myConcepts[11]);
@@ -449,11 +489,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode31.addChild(myAggregationLinks[8], tnode46);
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[0], tnode31);
           // TODO validate child 
+
         }
         {
           final SNode tnode47 = environment.createOutputNode(myConcepts[1]);
@@ -462,6 +504,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode47);
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist48 = null;
@@ -480,6 +523,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode49.addChild(myAggregationLinks[4], tnode50);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode51 = environment.createOutputNode(myConcepts[5]);
@@ -488,6 +532,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode49.addChild(myAggregationLinks[3], tnode51);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode52 = environment.createOutputNode(myConcepts[3]);
@@ -503,11 +548,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     }
                     tnode52.addChild(myAggregationLinks[1], tnode53);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode49.addChild(myAggregationLinks[2], tnode52);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode54 = environment.createOutputNode(myConcepts[7]);
@@ -536,6 +583,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode57.addChild(myAggregationLinks[9], tnode58);
                               // TODO validate child 
+
                             }
                             {
                               final SNode tnode59 = environment.createOutputNode(myConcepts[15]);
@@ -550,16 +598,19 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   }
                                   tnode59.addChild(myAggregationLinks[5], tnode60);
                                   // TODO validate child 
+
                                 }
                               } finally {
                               }
                               tnode57.addChild(myAggregationLinks[10], tnode59);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode56.addChild(myAggregationLinks[13], tnode57);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
@@ -571,6 +622,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       tnode54.addChild(myAggregationLinks[6], child61);
                     }
                     // TODO validate child 
+
                   }
                   {
                     final List<SNode> tlist62 = new ArrayList<SNode>();
@@ -595,6 +647,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode64.addChild(myAggregationLinks[9], tnode65);
                               // TODO validate child 
+
                             }
                             {
                               final SNode tnode66 = environment.createOutputNode(myConcepts[15]);
@@ -609,16 +662,19 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   }
                                   tnode66.addChild(myAggregationLinks[5], tnode67);
                                   // TODO validate child 
+
                                 }
                               } finally {
                               }
                               tnode64.addChild(myAggregationLinks[10], tnode66);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode63.addChild(myAggregationLinks[13], tnode64);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
@@ -630,11 +686,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       tnode54.addChild(myAggregationLinks[6], child68);
                     }
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode49.addChild(myAggregationLinks[7], tnode54);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode69 = environment.createOutputNode(myConcepts[11]);
@@ -644,6 +702,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode49.addChild(myAggregationLinks[8], tnode69);
                 // TODO validate child 
+
               }
             } finally {
             }
@@ -653,6 +712,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
             tnode2.addChild(myAggregationLinks[0], child70);
           }
           // TODO validate child 
+
         }
         {
           final SNode tnode71 = environment.createOutputNode(myConcepts[1]);
@@ -661,6 +721,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode71);
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist72 = null;
@@ -680,6 +741,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode73.addChild(myAggregationLinks[4], tnode74);
               // TODO validate child 
+
             }
             {
               final SNode tnode75 = environment.createOutputNode(myConcepts[4]);
@@ -694,11 +756,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode75.addChild(myAggregationLinks[14], tnode76);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode73.addChild(myAggregationLinks[3], tnode75);
               // TODO validate child 
+
             }
             {
               final SNode tnode77 = environment.createOutputNode(myConcepts[7]);
@@ -726,11 +790,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode80.addChild(myAggregationLinks[15], tnode81);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode79.addChild(myAggregationLinks[1], tnode80);
                           // TODO validate child 
+
                         }
                         {
                           final SNode tnode82 = environment.createOutputNode(myConcepts[24]);
@@ -752,11 +818,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                       }
                                       tnode84.addChild(myAggregationLinks[16], tnode85);
                                       // TODO validate child 
+
                                     }
                                   } finally {
                                   }
                                   tnode83.addChild(myAggregationLinks[17], tnode84);
                                   // TODO validate child 
+
                                 }
                                 {
                                   final SNode tnode86 = environment.createOutputNode(myConcepts[4]);
@@ -766,26 +834,31 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   }
                                   tnode83.addChild(myAggregationLinks[18], tnode86);
                                   // TODO validate child 
+
                                 }
                               } finally {
                               }
                               tnode82.addChild(myAggregationLinks[19], tnode83);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode79.addChild(myAggregationLinks[20], tnode82);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
                       tnode78.addChild(myAggregationLinks[21], tnode79);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode77.addChild(myAggregationLinks[6], tnode78);
                   // TODO validate child 
+
                 }
                 {
                   final List<SNode> tlist87 = new ArrayList<SNode>();
@@ -816,6 +889,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                 }
                                 tnode90.addChild(myAggregationLinks[22], tnode91);
                                 // TODO validate child 
+
                               }
                               {
                                 final SNode tnode92 = environment.createOutputNode(myConcepts[9]);
@@ -825,11 +899,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                 }
                                 tnode90.addChild(myAggregationLinks[23], tnode92);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode89.addChild(myAggregationLinks[24], tnode90);
                             // TODO validate child 
+
                           }
                           {
                             final SNode tnode93 = environment.createOutputNode(myConcepts[30]);
@@ -845,16 +921,19 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   tnode93.addChild(myAggregationLinks[25], tnode94);
                                 }
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode89.addChild(myAggregationLinks[26], tnode93);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode88.addChild(myAggregationLinks[13], tnode89);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
@@ -866,6 +945,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     tnode77.addChild(myAggregationLinks[6], child95);
                   }
                   // TODO validate child 
+
                 }
                 {
                   final SNode tnode96 = environment.createOutputNode(myConcepts[12]);
@@ -885,21 +965,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                           }
                           tnode97.addChild(myAggregationLinks[5], tnode98);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
                       tnode96.addChild(myAggregationLinks[11], tnode97);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode77.addChild(myAggregationLinks[6], tnode96);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode73.addChild(myAggregationLinks[7], tnode77);
               // TODO validate child 
+
             }
             {
               final SNode tnode99 = environment.createOutputNode(myConcepts[11]);
@@ -909,6 +993,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode73.addChild(myAggregationLinks[8], tnode99);
               // TODO validate child 
+
             }
           } finally {
           }
@@ -917,6 +1002,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
             tnode2.addChild(myAggregationLinks[0], child100);
           }
           // TODO validate child 
+
         }
         {
           final SNode tnode101 = environment.createOutputNode(myConcepts[1]);
@@ -925,6 +1011,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode101);
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist102 = null;
@@ -943,6 +1030,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode103.addChild(myAggregationLinks[4], tnode104);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode105 = environment.createOutputNode(myConcepts[4]);
@@ -957,11 +1045,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     }
                     tnode105.addChild(myAggregationLinks[14], tnode106);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode103.addChild(myAggregationLinks[3], tnode105);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode107 = environment.createOutputNode(myConcepts[7]);
@@ -985,21 +1075,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               tnode109.addChild(myAggregationLinks[5], child111);
                             }
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode108.addChild(myAggregationLinks[11], tnode109);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode107.addChild(myAggregationLinks[6], tnode108);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode103.addChild(myAggregationLinks[7], tnode107);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode112 = environment.createOutputNode(myConcepts[11]);
@@ -1009,6 +1103,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode103.addChild(myAggregationLinks[8], tnode112);
                 // TODO validate child 
+
               }
             } finally {
             }
@@ -1018,6 +1113,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
             tnode2.addChild(myAggregationLinks[0], child113);
           }
           // TODO validate child 
+
         }
         {
           final SNode tnode114 = environment.createOutputNode(myConcepts[6]);
@@ -1026,6 +1122,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[4], tnode114);
           // TODO validate child 
+
         }
         {
           final SNode tnode115 = environment.createOutputNode(myConcepts[4]);
@@ -1035,6 +1132,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[27], tnode115);
           // TODO validate child 
+
         }
       } finally {
       }
@@ -1061,6 +1159,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode3);
           // TODO validate child 
+
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
@@ -1080,11 +1179,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode5.addChild(myAggregationLinks[1], tnode6);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[2], tnode5);
               // TODO validate child 
+
             }
             {
               final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -1100,11 +1201,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode7.addChild(myAggregationLinks[1], tnode8);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[2], tnode7);
               // TODO validate child 
+
             }
             {
               final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
@@ -1120,11 +1223,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode9.addChild(myAggregationLinks[1], tnode10);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[2], tnode9);
               // TODO validate child 
+
             }
             {
               final SNode tnode11 = environment.createOutputNode(myConcepts[5]);
@@ -1133,6 +1238,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode4.addChild(myAggregationLinks[3], tnode11);
               // TODO validate child 
+
             }
             {
               final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
@@ -1141,6 +1247,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode4.addChild(myAggregationLinks[4], tnode12);
               // TODO validate child 
+
             }
             {
               final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
@@ -1159,6 +1266,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       }
                       tnode14.addChild(myAggregationLinks[5], tnode15);
                       // TODO validate child 
+
                     }
                     {
                       final SNode tnode16 = environment.createOutputNode(myConcepts[9]);
@@ -1168,6 +1276,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       }
                       tnode14.addChild(myAggregationLinks[5], tnode16);
                       // TODO validate child 
+
                     }
                     {
                       final SNode tnode17 = environment.createOutputNode(myConcepts[9]);
@@ -1177,21 +1286,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       }
                       tnode14.addChild(myAggregationLinks[5], tnode17);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode13.addChild(myAggregationLinks[6], tnode14);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode4.addChild(myAggregationLinks[7], tnode13);
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[0], tnode4);
           // TODO validate child 
+
         }
         {
           final SNode tnode18 = environment.createOutputNode(myConcepts[1]);
@@ -1200,6 +1313,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode18);
           // TODO validate child 
+
         }
         {
           final SNode tnode19 = environment.createOutputNode(myConcepts[10]);
@@ -1216,6 +1330,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[4], tnode20);
               // TODO validate child 
+
             }
             {
               final SNode tnode21 = environment.createOutputNode(myConcepts[11]);
@@ -1225,6 +1340,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[8], tnode21);
               // TODO validate child 
+
             }
             {
               final SNode tnode22 = environment.createOutputNode(myConcepts[4]);
@@ -1234,6 +1350,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[3], tnode22);
               // TODO validate child 
+
             }
             {
               final SNode tnode23 = environment.createOutputNode(myConcepts[7]);
@@ -1256,6 +1373,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                           }
                           tnode25.addChild(myAggregationLinks[9], tnode26);
                           // TODO validate child 
+
                         }
                         {
                           final SNode tnode27 = environment.createOutputNode(myConcepts[15]);
@@ -1270,26 +1388,31 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode27.addChild(myAggregationLinks[5], tnode28);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode25.addChild(myAggregationLinks[10], tnode27);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
                       tnode24.addChild(myAggregationLinks[11], tnode25);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode23.addChild(myAggregationLinks[6], tnode24);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode19.addChild(myAggregationLinks[7], tnode23);
               // TODO validate child 
+
             }
             {
               final SNode tnode29 = environment.createOutputNode(myConcepts[11]);
@@ -1299,11 +1422,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode19.addChild(myAggregationLinks[8], tnode29);
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[0], tnode19);
           // TODO validate child 
+
         }
         {
           final SNode tnode30 = environment.createOutputNode(myConcepts[1]);
@@ -1312,6 +1437,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode30);
           // TODO validate child 
+
         }
         {
           final SNode tnode31 = environment.createOutputNode(myConcepts[10]);
@@ -1328,6 +1454,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode31.addChild(myAggregationLinks[4], tnode32);
               // TODO validate child 
+
             }
             {
               final SNode tnode33 = environment.createOutputNode(myConcepts[5]);
@@ -1336,6 +1463,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode31.addChild(myAggregationLinks[3], tnode33);
               // TODO validate child 
+
             }
             {
               final SNode tnode34 = environment.createOutputNode(myConcepts[3]);
@@ -1351,11 +1479,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode34.addChild(myAggregationLinks[1], tnode35);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode31.addChild(myAggregationLinks[2], tnode34);
               // TODO validate child 
+
             }
             {
               final SNode tnode36 = environment.createOutputNode(myConcepts[7]);
@@ -1384,6 +1514,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                             }
                             tnode39.addChild(myAggregationLinks[9], tnode40);
                             // TODO validate child 
+
                           }
                           {
                             final SNode tnode41 = environment.createOutputNode(myConcepts[15]);
@@ -1398,6 +1529,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                 }
                                 tnode41.addChild(myAggregationLinks[5], tnode42);
                                 // TODO validate child 
+
                               }
                               {
                                 final SNode tnode43 = environment.createOutputNode(myConcepts[19]);
@@ -1412,21 +1544,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                     }
                                     tnode43.addChild(myAggregationLinks[12], tnode44);
                                     // TODO validate child 
+
                                   }
                                 } finally {
                                 }
                                 tnode41.addChild(myAggregationLinks[5], tnode43);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode39.addChild(myAggregationLinks[10], tnode41);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode38.addChild(myAggregationLinks[13], tnode39);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
@@ -1438,11 +1574,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     tnode36.addChild(myAggregationLinks[6], child45);
                   }
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode31.addChild(myAggregationLinks[7], tnode36);
               // TODO validate child 
+
             }
             {
               final SNode tnode46 = environment.createOutputNode(myConcepts[11]);
@@ -1452,11 +1590,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode31.addChild(myAggregationLinks[8], tnode46);
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[0], tnode31);
           // TODO validate child 
+
         }
         {
           final SNode tnode47 = environment.createOutputNode(myConcepts[1]);
@@ -1465,6 +1605,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode47);
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist48 = null;
@@ -1483,6 +1624,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode49.addChild(myAggregationLinks[4], tnode50);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode51 = environment.createOutputNode(myConcepts[5]);
@@ -1491,6 +1633,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode49.addChild(myAggregationLinks[3], tnode51);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode52 = environment.createOutputNode(myConcepts[3]);
@@ -1506,11 +1649,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     }
                     tnode52.addChild(myAggregationLinks[1], tnode53);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode49.addChild(myAggregationLinks[2], tnode52);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode54 = environment.createOutputNode(myConcepts[7]);
@@ -1539,6 +1684,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode57.addChild(myAggregationLinks[9], tnode58);
                               // TODO validate child 
+
                             }
                             {
                               final SNode tnode59 = environment.createOutputNode(myConcepts[15]);
@@ -1553,16 +1699,19 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   }
                                   tnode59.addChild(myAggregationLinks[5], tnode60);
                                   // TODO validate child 
+
                                 }
                               } finally {
                               }
                               tnode57.addChild(myAggregationLinks[10], tnode59);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode56.addChild(myAggregationLinks[13], tnode57);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
@@ -1574,6 +1723,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       tnode54.addChild(myAggregationLinks[6], child61);
                     }
                     // TODO validate child 
+
                   }
                   {
                     final List<SNode> tlist62 = new ArrayList<SNode>();
@@ -1598,6 +1748,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode64.addChild(myAggregationLinks[9], tnode65);
                               // TODO validate child 
+
                             }
                             {
                               final SNode tnode66 = environment.createOutputNode(myConcepts[15]);
@@ -1612,16 +1763,19 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   }
                                   tnode66.addChild(myAggregationLinks[5], tnode67);
                                   // TODO validate child 
+
                                 }
                               } finally {
                               }
                               tnode64.addChild(myAggregationLinks[10], tnode66);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode63.addChild(myAggregationLinks[13], tnode64);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
@@ -1633,11 +1787,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       tnode54.addChild(myAggregationLinks[6], child68);
                     }
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode49.addChild(myAggregationLinks[7], tnode54);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode69 = environment.createOutputNode(myConcepts[11]);
@@ -1647,6 +1803,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode49.addChild(myAggregationLinks[8], tnode69);
                 // TODO validate child 
+
               }
             } finally {
             }
@@ -1656,6 +1813,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
             tnode2.addChild(myAggregationLinks[0], child70);
           }
           // TODO validate child 
+
         }
         {
           final SNode tnode71 = environment.createOutputNode(myConcepts[1]);
@@ -1664,6 +1822,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode71);
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist72 = null;
@@ -1683,6 +1842,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode73.addChild(myAggregationLinks[4], tnode74);
               // TODO validate child 
+
             }
             {
               final SNode tnode75 = environment.createOutputNode(myConcepts[4]);
@@ -1697,11 +1857,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   }
                   tnode75.addChild(myAggregationLinks[14], tnode76);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode73.addChild(myAggregationLinks[3], tnode75);
               // TODO validate child 
+
             }
             {
               final SNode tnode77 = environment.createOutputNode(myConcepts[7]);
@@ -1729,11 +1891,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               }
                               tnode80.addChild(myAggregationLinks[15], tnode81);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode79.addChild(myAggregationLinks[1], tnode80);
                           // TODO validate child 
+
                         }
                         {
                           final SNode tnode82 = environment.createOutputNode(myConcepts[24]);
@@ -1755,11 +1919,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                       }
                                       tnode84.addChild(myAggregationLinks[16], tnode85);
                                       // TODO validate child 
+
                                     }
                                   } finally {
                                   }
                                   tnode83.addChild(myAggregationLinks[17], tnode84);
                                   // TODO validate child 
+
                                 }
                                 {
                                   final SNode tnode86 = environment.createOutputNode(myConcepts[4]);
@@ -1769,26 +1935,31 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   }
                                   tnode83.addChild(myAggregationLinks[18], tnode86);
                                   // TODO validate child 
+
                                 }
                               } finally {
                               }
                               tnode82.addChild(myAggregationLinks[19], tnode83);
                               // TODO validate child 
+
                             }
                           } finally {
                           }
                           tnode79.addChild(myAggregationLinks[20], tnode82);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
                       tnode78.addChild(myAggregationLinks[21], tnode79);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode77.addChild(myAggregationLinks[6], tnode78);
                   // TODO validate child 
+
                 }
                 {
                   final List<SNode> tlist87 = new ArrayList<SNode>();
@@ -1819,6 +1990,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                 }
                                 tnode90.addChild(myAggregationLinks[22], tnode91);
                                 // TODO validate child 
+
                               }
                               {
                                 final SNode tnode92 = environment.createOutputNode(myConcepts[9]);
@@ -1828,11 +2000,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                 }
                                 tnode90.addChild(myAggregationLinks[23], tnode92);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode89.addChild(myAggregationLinks[24], tnode90);
                             // TODO validate child 
+
                           }
                           {
                             final SNode tnode93 = environment.createOutputNode(myConcepts[30]);
@@ -1848,16 +2022,19 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   tnode93.addChild(myAggregationLinks[25], tnode94);
                                 }
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode89.addChild(myAggregationLinks[26], tnode93);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode88.addChild(myAggregationLinks[13], tnode89);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
@@ -1869,6 +2046,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     tnode77.addChild(myAggregationLinks[6], child95);
                   }
                   // TODO validate child 
+
                 }
                 {
                   final SNode tnode96 = environment.createOutputNode(myConcepts[12]);
@@ -1888,21 +2066,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                           }
                           tnode97.addChild(myAggregationLinks[5], tnode98);
                           // TODO validate child 
+
                         }
                       } finally {
                       }
                       tnode96.addChild(myAggregationLinks[11], tnode97);
                       // TODO validate child 
+
                     }
                   } finally {
                   }
                   tnode77.addChild(myAggregationLinks[6], tnode96);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode73.addChild(myAggregationLinks[7], tnode77);
               // TODO validate child 
+
             }
             {
               final SNode tnode99 = environment.createOutputNode(myConcepts[11]);
@@ -1912,6 +2094,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
               }
               tnode73.addChild(myAggregationLinks[8], tnode99);
               // TODO validate child 
+
             }
           } finally {
           }
@@ -1920,6 +2103,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
             tnode2.addChild(myAggregationLinks[0], child100);
           }
           // TODO validate child 
+
         }
         {
           final SNode tnode101 = environment.createOutputNode(myConcepts[1]);
@@ -1928,6 +2112,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[0], tnode101);
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist102 = null;
@@ -1946,6 +2131,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode103.addChild(myAggregationLinks[4], tnode104);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode105 = environment.createOutputNode(myConcepts[4]);
@@ -1960,11 +2146,13 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                     }
                     tnode105.addChild(myAggregationLinks[14], tnode106);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode103.addChild(myAggregationLinks[3], tnode105);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode107 = environment.createOutputNode(myConcepts[7]);
@@ -1988,21 +2176,25 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                               tnode109.addChild(myAggregationLinks[5], child111);
                             }
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode108.addChild(myAggregationLinks[11], tnode109);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode107.addChild(myAggregationLinks[6], tnode108);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode103.addChild(myAggregationLinks[7], tnode107);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode112 = environment.createOutputNode(myConcepts[11]);
@@ -2012,6 +2204,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 }
                 tnode103.addChild(myAggregationLinks[8], tnode112);
                 // TODO validate child 
+
               }
             } finally {
             }
@@ -2021,6 +2214,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
             tnode2.addChild(myAggregationLinks[0], child113);
           }
           // TODO validate child 
+
         }
         {
           final SNode tnode114 = environment.createOutputNode(myConcepts[6]);
@@ -2029,6 +2223,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[4], tnode114);
           // TODO validate child 
+
         }
         {
           final SNode tnode115 = environment.createOutputNode(myConcepts[4]);
@@ -2038,6 +2233,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
           }
           tnode2.addChild(myAggregationLinks[27], tnode115);
           // TODO validate child 
+
         }
       } finally {
       }

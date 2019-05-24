@@ -12,7 +12,7 @@
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
   </languages>
   <imports>
@@ -323,11 +323,8 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -450,6 +447,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
@@ -556,8 +561,40 @@
       <node concept="10P_77" id="1SNZnic05zQ" role="3clF45" />
       <node concept="3clFbS" id="1SNZnic04UN" role="3clF47">
         <node concept="3SKdUt" id="7BBQIYkR5mm" role="3cqZAp">
-          <node concept="3SKdUq" id="7BBQIYkR5mn" role="3SKWNk">
-            <property role="3SKdUp" value="we won't rename nodes, for which there is getter without setter" />
+          <node concept="1PaTwC" id="ATZLwXoqUD" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqUE" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUF" role="1PaTwD">
+              <property role="3oM_SC" value="won't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUG" role="1PaTwD">
+              <property role="3oM_SC" value="rename" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUH" role="1PaTwD">
+              <property role="3oM_SC" value="nodes," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUI" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUJ" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUK" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUL" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUM" role="1PaTwD">
+              <property role="3oM_SC" value="getter" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUN" role="1PaTwD">
+              <property role="3oM_SC" value="without" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUO" role="1PaTwD">
+              <property role="3oM_SC" value="setter" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="2do2zVkn2RA" role="3cqZAp">
@@ -4422,8 +4459,16 @@
       <node concept="3Tm1VV" id="FLkVtyBoF6" role="1B3o_S" />
       <node concept="3clFbS" id="FLkVtyBoF7" role="3clF47">
         <node concept="3SKdUt" id="5$FcEFMZW_l" role="3cqZAp">
-          <node concept="3SKdUq" id="5$FcEFMZW_n" role="3SKWNk">
-            <property role="3SKdUp" value="todo: unused method" />
+          <node concept="1PaTwC" id="ATZLwXoqUP" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqUQ" role="1PaTwD">
+              <property role="3oM_SC" value="todo:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUR" role="1PaTwD">
+              <property role="3oM_SC" value="unused" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUS" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="FLkVtyBq4L" role="3cqZAp">
@@ -5110,8 +5155,13 @@
                     <node concept="3cqZAl" id="23EHyRfsgbV" role="3clF45" />
                     <node concept="3clFbS" id="23EHyRfsgc2" role="3clF47">
                       <node concept="3SKdUt" id="23EHyRfsiiZ" role="3cqZAp">
-                        <node concept="3SKdUq" id="23EHyRfsij0" role="3SKWNk">
-                          <property role="3SKdUp" value="do nothing" />
+                        <node concept="1PaTwC" id="ATZLwXoqUT" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXoqUU" role="1PaTwD">
+                            <property role="3oM_SC" value="do" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqUV" role="1PaTwD">
+                            <property role="3oM_SC" value="nothing" />
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -7066,8 +7116,13 @@
       <node concept="3cqZAl" id="23EHyRfskrt" role="3clF45" />
       <node concept="3clFbS" id="23EHyRfskrx" role="3clF47">
         <node concept="3SKdUt" id="23EHyRfsmSq" role="3cqZAp">
-          <node concept="3SKdUq" id="23EHyRfsmSr" role="3SKWNk">
-            <property role="3SKdUp" value="do nothing" />
+          <node concept="1PaTwC" id="ATZLwXoqUW" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqUX" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqUY" role="1PaTwD">
+              <property role="3oM_SC" value="nothing" />
+            </node>
           </node>
         </node>
       </node>
@@ -7197,8 +7252,13 @@
       <node concept="3Tm1VV" id="3ly2gVlmzP8" role="1B3o_S" />
       <node concept="3clFbS" id="3ly2gVlmzPh" role="3clF47">
         <node concept="3SKdUt" id="3ly2gVlo63g" role="3cqZAp">
-          <node concept="3SKdUq" id="3ly2gVlo63h" role="3SKWNk">
-            <property role="3SKdUp" value="do nothing" />
+          <node concept="1PaTwC" id="ATZLwXoqUZ" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqV0" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqV1" role="1PaTwD">
+              <property role="3oM_SC" value="nothing" />
+            </node>
           </node>
         </node>
       </node>

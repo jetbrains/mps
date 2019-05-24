@@ -31,6 +31,7 @@ public class AspectMethodsFinder extends BaseFinder implements Finder {
   @Override
   public void find(SearchQuery query, @NotNull IFinder.FindCallback callback, ProgressMonitor monitor) {
     // I've got no idea what aspect methods it looks for. MPS Integration plugin in Idea takes PsiMethod and pass here package statement and method name 
+
     final AspectMethodsFinder.AspectMethodQueryData data = (AspectMethodsFinder.AspectMethodQueryData) query.getObjectHolder().getObject();
     final List<SModel> applicableModelDescriptors = new ArrayList<SModel>();
     for (SModel model : query.getScope().getModels()) {

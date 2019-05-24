@@ -29,6 +29,7 @@ public class ModuleFinder {
     return Sequence.fromIterable(modules).select(new ISelector<SNode, String>() {
       public String select(SNode module) {
         // similar code is in BuildMps_Module.fetchDependencies() behavior (at least). 
+
         SNode layoutNode = helper.getArtifact(module);
         if (layoutNode == null) {
           genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " was not found in the layout of `" + SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'");

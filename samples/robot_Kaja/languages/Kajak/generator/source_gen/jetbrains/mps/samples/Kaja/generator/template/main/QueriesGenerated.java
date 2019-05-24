@@ -59,9 +59,6 @@ public class QueriesGenerated {
       throw new IllegalArgumentException("The routine " + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " seems to have no parent script nor library");
     }
   }
-  public static Object propertyMacro_GetValue_22_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713fa2b43L, 0x58e59ea713fa2b45L, "text"));
-  }
   public static Object propertyMacro_GetValue_25_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2c8eb033a8375aeeL, 0x2c8eb033a8375aefL, "message"));
   }

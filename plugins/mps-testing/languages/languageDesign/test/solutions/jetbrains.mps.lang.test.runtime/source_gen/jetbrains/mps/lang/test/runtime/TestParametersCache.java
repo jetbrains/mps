@@ -42,7 +42,9 @@ public final class TestParametersCache implements TestRule {
 
   public TestParametersCache(Class<?> owner, String projectPath, String modelRef, boolean reOpenProject) {
     // FIXME can refactor this class to be responsible just for project/models initialization and cleanup, and keep BaseTransformatioTest-related 
+
     //       stuff in BTT iteself. Facilitates reuse of this cache for other tests. 
+
     myOwner = owner;
     myProjectPath = projectPath;
     myModelRef = modelRef;
@@ -55,7 +57,9 @@ public final class TestParametersCache implements TestRule {
       public void evaluate() throws Throwable {
         statement.evaluate();
         //  NOTE, with in-process execution, TestParametersCache instance kept in a static field would be re-used, hence clean shall 
+
         // leave a state we can re-initialize in once again. 
+
         clean();
       }
     };
@@ -63,6 +67,7 @@ public final class TestParametersCache implements TestRule {
 
   public void initializeOnce(Object ownerInstance, Environment environment) throws Exception {
     // both arguments are non null 
+
     assert ownerInstance.getClass() == myOwner;
 
     if (myInitialized) {
@@ -104,8 +109,11 @@ public final class TestParametersCache implements TestRule {
 
   private void initCachedValues(Environment environment) throws Exception {
     // MPS's in-process, out-of-process and ant script executors 
-    // supply Environment through EnvironmentAware and custom RunnerBuilder  
+
+    // supply Environment through EnvironmentAware and custom RunnerBuilder 
+
     // namely, PushEnvironmentRunnerBuilder. IDEA MPS plugin and IDEA test configurations use this RunnerBuilder, too. 
+
     if (environment == null) {
       throw new EnvironmentIsNullException(this.getClass().getName(), myProjectPath);
     }
@@ -117,6 +125,7 @@ public final class TestParametersCache implements TestRule {
       throw new ProjectPathIsNullException();
     }
     // FIXME can access MacrosFactory through environment.getPlatform, if necessary. 
+
     String expandedProjectPath = MacrosFactory.getGlobal().expandPath(myProjectPath);
     if ((expandedProjectPath == null || expandedProjectPath.length() == 0)) {
       throw new ExpandedProjectPathIsNullException(myProjectPath);
@@ -132,6 +141,7 @@ public final class TestParametersCache implements TestRule {
     Exception exception = ThreadUtils.runInUIThreadAndWait(new Runnable() {
       public void run() {
         // FIXME drop command, needed for transient/temp model initialization only 
+
         repository.getModelAccess().executeCommand(new Runnable() {
           @Override
           public void run() {

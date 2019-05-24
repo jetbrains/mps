@@ -23,6 +23,7 @@ public class customContainers_extension extends Extension.Default<_FunctionTypes
     return new _FunctionTypes._return_P1_E0<List<SNode>, SRepository>() {
       public List<SNode> invoke(SRepository repo) {
         // Find the model(s) with custom container declarations 
+
         SModel mdl = PersistenceFacade.getInstance().createModelReference("r:9e8bdb89-2777-4a48-887c-0edd1d0b1863(jetbrains.mps.baseLanguage.collections.trove.containers)").resolve(repo);
         return SModelOperations.nodes(mdl, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c84cL, "jetbrains.mps.baseLanguage.collections.structure.CustomContainers"));
       }

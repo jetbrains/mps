@@ -57,6 +57,7 @@ public class YetUnknownResolver {
    */
   public void tryResolveUnknowns(ProgressMonitor progress, IncrementalModelAccess modelAccess) {
     // make room for this many passes, and just don't advance the progress afterwards 
+
     final int PASSES_TO_SHOW_UNDER_PROGRESS = 5;
     progress.start("", PASSES_TO_SHOW_UNDER_PROGRESS + 1);
     int k = 0;

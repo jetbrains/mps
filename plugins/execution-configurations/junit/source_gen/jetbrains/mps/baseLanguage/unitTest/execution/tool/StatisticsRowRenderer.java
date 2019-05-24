@@ -42,6 +42,7 @@ public class StatisticsRowRenderer implements TableCellRenderer {
 
     // container states 
 
+
     mySuccess = new JLabel("", SwingConstants.RIGHT);
     Font font = mySuccess.getFont();
     Font boldFont = new Font(font.getName(), Font.BOLD, font.getSize());
@@ -62,6 +63,7 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     myStatePanel.add(myError, BorderLayout.EAST);
 
     // single test states 
+
 
     myAloneSuccess = new JLabel("Passed", SwingConstants.RIGHT);
     myAloneSuccess.setForeground(new Color(0, 127, 0));
@@ -88,6 +90,7 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     switch (column) {
       case 0:
         // Test 
+
         String text = rowValue.getText();
         if (!(container)) {
           text = INDENT + text;
@@ -104,26 +107,31 @@ public class StatisticsRowRenderer implements TableCellRenderer {
         break;
       case 1:
         // Time elapsed 
+
         result = setTime(rowValue.getElapsedTime());
         adjustFont = result;
         break;
       case 2:
         // Usage Delta 
+
         result = setMemoryUsage(rowValue.getUsageDelta());
         adjustFont = result;
         break;
       case 3:
         // Usage Before 
+
         result = setMemoryUsage(rowValue.getUsageBefore());
         adjustFont = result;
         break;
       case 4:
         // Usage After 
+
         result = setMemoryUsage(rowValue.getUsageAfter());
         adjustFont = result;
         break;
       case 5:
         // Results 
+
         int s = rowValue.getSuccessful();
         int f = rowValue.getFailed();
         int e = rowValue.getErrored();

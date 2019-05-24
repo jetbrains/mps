@@ -36,6 +36,7 @@ public class ClassifierTypeUtil {
   }
   public static SNode getTypeCoercedToClassifierType(SNode type) {
     // cast is such to avoid exception if MeetType 
+
     SNode purified = (SNode) type;
     if (SNodeOperations.isInstanceOf(purified, MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL, "jetbrains.mps.baseLanguageInternal.structure.InternalClassifierType"))) {
       return purified;
@@ -259,6 +260,7 @@ with_meet:
       cType = TypecheckingFacade.getFromContext().coerceType(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
     }
     // avoid coercing if the classifier type is not the immediate supertype 
+
     if ((cType != null)) {
       for (Object imsup : TypeChecker.getInstance().getSubtypingManager().collectImmediateSupertypes(type, true)) {
         if (SLinkOperations.getTarget(SNodeOperations.as(((SNode) imsup), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")) == SLinkOperations.getTarget(cType, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"))) {

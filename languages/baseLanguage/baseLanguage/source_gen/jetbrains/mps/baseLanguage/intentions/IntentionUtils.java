@@ -104,6 +104,7 @@ public class IntentionUtils {
       return false;
     }
     // todo: i don't think that this code is true 
+
     SContainmentLink l = diff._0().getContainmentLink();
     return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")), SNodeOperations.asSConcept(l.getTargetConcept()));
   }
@@ -115,6 +116,7 @@ public class IntentionUtils {
     SAbstractConcept concept = SNodeOperations.getConcept(node1);
 
     // todo: use ConceptRegistry/SConcept when it will possible 
+
     for (SProperty p : CollectionSequence.fromCollection(concept.getProperties())) {
       if (!(Objects.equals(node1.getProperty(p), node2.getProperty(p)))) {
         return MultiTuple.<SNode,SNode>from(node1, node2);

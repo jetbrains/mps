@@ -10,7 +10,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
   </languages>
   <imports>
@@ -170,11 +170,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -346,6 +343,14 @@
         <child id="278471160714141638" name="child_0_n" index="2lkWJd" />
       </concept>
       <concept id="278471160714141636" name="jetbrains.mps.lang.smodelTests.structure.GrandChild" flags="ng" index="2lkWJf" />
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
@@ -3478,13 +3483,83 @@
         </node>
         <node concept="3clFbH" id="ldKUue6cuS" role="3cqZAp" />
         <node concept="3SKdUt" id="ldKUue6cuT" role="3cqZAp">
-          <node concept="3SKdUq" id="ldKUue6cuU" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME Are we sure that this is right behavior? Or we should return null like others do." />
+          <node concept="1PaTwC" id="ATZLwXokd7" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokd8" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokd9" role="1PaTwD">
+              <property role="3oM_SC" value="Are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokda" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdb" role="1PaTwD">
+              <property role="3oM_SC" value="sure" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdc" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdd" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokde" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdf" role="1PaTwD">
+              <property role="3oM_SC" value="right" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdg" role="1PaTwD">
+              <property role="3oM_SC" value="behavior?" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdh" role="1PaTwD">
+              <property role="3oM_SC" value="Or" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdi" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdj" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdk" role="1PaTwD">
+              <property role="3oM_SC" value="return" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdl" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdm" role="1PaTwD">
+              <property role="3oM_SC" value="like" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdn" role="1PaTwD">
+              <property role="3oM_SC" value="others" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdo" role="1PaTwD">
+              <property role="3oM_SC" value="do." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="ldKUue6cuV" role="3cqZAp">
-          <node concept="3SKdUq" id="ldKUue6cuW" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME This behavior is dictated with SEnumOperations#getMemberForValue" />
+          <node concept="1PaTwC" id="ATZLwXokdp" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokdq" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdr" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokds" role="1PaTwD">
+              <property role="3oM_SC" value="behavior" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdt" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdu" role="1PaTwD">
+              <property role="3oM_SC" value="dictated" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdv" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdw" role="1PaTwD">
+              <property role="3oM_SC" value="SEnumOperations#getMemberForValue" />
+            </node>
           </node>
         </node>
         <node concept="3vlDli" id="ldKUue6cuX" role="3cqZAp">
@@ -3593,13 +3668,83 @@
         </node>
         <node concept="3clFbH" id="1ecMxSk0DR2" role="3cqZAp" />
         <node concept="3SKdUt" id="ldKUue5Opd" role="3cqZAp">
-          <node concept="3SKdUq" id="ldKUue5Opf" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME Are we sure that this is right behavior? Or we should return null like others do." />
+          <node concept="1PaTwC" id="ATZLwXokdx" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokdy" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdz" role="1PaTwD">
+              <property role="3oM_SC" value="Are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokd$" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokd_" role="1PaTwD">
+              <property role="3oM_SC" value="sure" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdA" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdB" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdC" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdD" role="1PaTwD">
+              <property role="3oM_SC" value="right" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdE" role="1PaTwD">
+              <property role="3oM_SC" value="behavior?" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdF" role="1PaTwD">
+              <property role="3oM_SC" value="Or" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdG" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdH" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdI" role="1PaTwD">
+              <property role="3oM_SC" value="return" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdJ" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdK" role="1PaTwD">
+              <property role="3oM_SC" value="like" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdL" role="1PaTwD">
+              <property role="3oM_SC" value="others" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdM" role="1PaTwD">
+              <property role="3oM_SC" value="do." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="ldKUue5P$K" role="3cqZAp">
-          <node concept="3SKdUq" id="ldKUue5P$M" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME This behavior is dictated with SEnumOperations#getMemberForValue" />
+          <node concept="1PaTwC" id="ATZLwXokdN" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokdO" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdP" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdQ" role="1PaTwD">
+              <property role="3oM_SC" value="behavior" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdR" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdS" role="1PaTwD">
+              <property role="3oM_SC" value="dictated" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdT" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdU" role="1PaTwD">
+              <property role="3oM_SC" value="SEnumOperations#getMemberForValue" />
+            </node>
           </node>
         </node>
         <node concept="3vlDli" id="1ecMxSk0DR3" role="3cqZAp">
@@ -4182,8 +4327,22 @@
         </node>
         <node concept="3clFbH" id="tJEuhpTT26" role="3cqZAp" />
         <node concept="3SKdUt" id="tJEuhpSmDk" role="3cqZAp">
-          <node concept="3SKdUq" id="tJEuhpSmDm" role="3SKWNk">
-            <property role="3SKdUp" value="eliminate warnings from dataflow checks" />
+          <node concept="1PaTwC" id="ATZLwXokdV" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokdW" role="1PaTwD">
+              <property role="3oM_SC" value="eliminate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdX" role="1PaTwD">
+              <property role="3oM_SC" value="warnings" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdY" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokdZ" role="1PaTwD">
+              <property role="3oM_SC" value="dataflow" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoke0" role="1PaTwD">
+              <property role="3oM_SC" value="checks" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="tJEuhpRUOy" role="3cqZAp">

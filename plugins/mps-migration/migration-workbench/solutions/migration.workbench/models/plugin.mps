@@ -8,7 +8,7 @@
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="0" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="3" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
   </languages>
@@ -355,11 +355,8 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -420,6 +417,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query">
@@ -1042,8 +1047,10 @@
           </node>
         </node>
         <node concept="3SKdUt" id="Z87mvmiiNk" role="3cqZAp">
-          <node concept="3SKdUq" id="Z87mvmiiNm" role="3SKWNk">
-            <property role="3SKdUp" value="todo" />
+          <node concept="1PaTwC" id="ATZLwXojH0" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXojH1" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="5pUhUVGDvuC" role="3cqZAp">
@@ -2260,8 +2267,13 @@
           <node concept="3Tm1VV" id="5pUhUVGKrL8" role="1B3o_S" />
           <node concept="3clFbS" id="5pUhUVGKrLa" role="3clF47">
             <node concept="3SKdUt" id="6lgfg0ggoqC" role="3cqZAp">
-              <node concept="3SKdUq" id="6lgfg0ggoqE" role="3SKWNk">
-                <property role="3SKdUp" value="todo cleanup" />
+              <node concept="1PaTwC" id="ATZLwXojH2" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXojH3" role="1PaTwD">
+                  <property role="3oM_SC" value="todo" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXojH4" role="1PaTwD">
+                  <property role="3oM_SC" value="cleanup" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="5pUhUVGKrLe" role="3cqZAp">
@@ -6616,8 +6628,10 @@
               <node concept="3Tm1VV" id="4biA4YBv2ep" role="1B3o_S" />
               <node concept="3clFbS" id="4biA4YBv2eq" role="3clF47">
                 <node concept="3SKdUt" id="4biA4YBv2er" role="3cqZAp">
-                  <node concept="3SKdUq" id="4biA4YBv2es" role="3SKWNk">
-                    <property role="3SKdUp" value="todo" />
+                  <node concept="1PaTwC" id="ATZLwXojH5" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXojH6" role="1PaTwD">
+                      <property role="3oM_SC" value="todo" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -6792,8 +6806,10 @@
               <node concept="3Tm1VV" id="4biA4YBv2f1" role="1B3o_S" />
               <node concept="3clFbS" id="4biA4YBv2f2" role="3clF47">
                 <node concept="3SKdUt" id="4biA4YBv2f3" role="3cqZAp">
-                  <node concept="3SKdUq" id="4biA4YBv2f4" role="3SKWNk">
-                    <property role="3SKdUp" value="todo " />
+                  <node concept="1PaTwC" id="ATZLwXojH7" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXojH8" role="1PaTwD">
+                      <property role="3oM_SC" value="todo" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -8235,13 +8251,44 @@
         <node concept="3Tm1VV" id="1aQVcc3RZl_" role="1B3o_S" />
         <node concept="3clFbS" id="1aQVcc3RZlB" role="3clF47">
           <node concept="3SKdUt" id="37v3KD3_UqB" role="3cqZAp">
-            <node concept="3SKdUq" id="37v3KD3_UqD" role="3SKWNk">
-              <property role="3SKdUp" value="todo this is suspicious" />
+            <node concept="1PaTwC" id="ATZLwXojH9" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXojHa" role="1PaTwD">
+                <property role="3oM_SC" value="todo" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHb" role="1PaTwD">
+                <property role="3oM_SC" value="this" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHc" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHd" role="1PaTwD">
+                <property role="3oM_SC" value="suspicious" />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="3ysxrKNLQjX" role="3cqZAp">
-            <node concept="3SKdUq" id="3ysxrKNLQjZ" role="3SKWNk">
-              <property role="3SKdUp" value="todo name is used as id here" />
+            <node concept="1PaTwC" id="ATZLwXojHe" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXojHf" role="1PaTwD">
+                <property role="3oM_SC" value="todo" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHg" role="1PaTwD">
+                <property role="3oM_SC" value="name" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHh" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHi" role="1PaTwD">
+                <property role="3oM_SC" value="used" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHj" role="1PaTwD">
+                <property role="3oM_SC" value="as" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHk" role="1PaTwD">
+                <property role="3oM_SC" value="id" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXojHl" role="1PaTwD">
+                <property role="3oM_SC" value="here" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="4MctmYOcvcl" role="3cqZAp">
@@ -9130,8 +9177,28 @@
       <property role="od$2w" value="false" />
       <node concept="3clFbS" id="75sEHjoPBa0" role="3clF47">
         <node concept="3SKdUt" id="1ge7XhXvjhV" role="3cqZAp">
-          <node concept="3SKdUq" id="1ge7XhXvjhX" role="3SKWNk">
-            <property role="3SKdUp" value="todo support category kinds, uncomment following code" />
+          <node concept="1PaTwC" id="ATZLwXojHm" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXojHn" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXojHo" role="1PaTwD">
+              <property role="3oM_SC" value="support" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXojHp" role="1PaTwD">
+              <property role="3oM_SC" value="category" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXojHq" role="1PaTwD">
+              <property role="3oM_SC" value="kinds," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXojHr" role="1PaTwD">
+              <property role="3oM_SC" value="uncomment" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXojHs" role="1PaTwD">
+              <property role="3oM_SC" value="following" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXojHt" role="1PaTwD">
+              <property role="3oM_SC" value="code" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="75sEHjoQy0u" role="3cqZAp">

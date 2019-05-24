@@ -8,7 +8,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
@@ -147,11 +147,8 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -227,6 +224,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages">
@@ -553,8 +558,19 @@
                     <node concept="3clFbJ" id="htY7_IV" role="3cqZAp">
                       <node concept="3clFbS" id="htY7_IW" role="3clFbx">
                         <node concept="3SKdUt" id="6pumIWoCG6J" role="3cqZAp">
-                          <node concept="3SKdUq" id="6pumIWoCG6K" role="3SKWNk">
-                            <property role="3SKdUp" value="class implements interface case" />
+                          <node concept="1PaTwC" id="ATZLwXnPCD" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXnPCE" role="1PaTwD">
+                              <property role="3oM_SC" value="class" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnPCF" role="1PaTwD">
+                              <property role="3oM_SC" value="implements" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnPCG" role="1PaTwD">
+                              <property role="3oM_SC" value="interface" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnPCH" role="1PaTwD">
+                              <property role="3oM_SC" value="case" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3clFbJ" id="htY7_IX" role="3cqZAp">
@@ -620,8 +636,16 @@
                       <node concept="3eNFk2" id="3fUxpI1wKf0" role="3eNLev">
                         <node concept="3clFbS" id="3fUxpI1wKf2" role="3eOfB_">
                           <node concept="3SKdUt" id="6pumIWoCFPj" role="3cqZAp">
-                            <node concept="3SKdUq" id="6pumIWoCFPk" role="3SKWNk">
-                              <property role="3SKdUp" value="anonymous class case" />
+                            <node concept="1PaTwC" id="ATZLwXnPCI" role="3ndbpf">
+                              <node concept="3oM_SD" id="ATZLwXnPCJ" role="1PaTwD">
+                                <property role="3oM_SC" value="anonymous" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXnPCK" role="1PaTwD">
+                                <property role="3oM_SC" value="class" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXnPCL" role="1PaTwD">
+                                <property role="3oM_SC" value="case" />
+                              </node>
                             </node>
                           </node>
                           <node concept="1O1abz" id="3fUxpI1wKf7" role="3cqZAp">
@@ -2507,13 +2531,83 @@
     <node concept="2PqlIu" id="hxrdzYu" role="3gKxsI">
       <node concept="3clFbS" id="hxrdzYv" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCFZz" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCFZ$" role="3SKWNk">
-            <property role="3SKdUp" value="search for straight usages &amp; search for SUPER calls" />
+          <node concept="1PaTwC" id="ATZLwXnPCM" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnPCN" role="1PaTwD">
+              <property role="3oM_SC" value="search" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCO" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCP" role="1PaTwD">
+              <property role="3oM_SC" value="straight" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCQ" role="1PaTwD">
+              <property role="3oM_SC" value="usages" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCR" role="1PaTwD">
+              <property role="3oM_SC" value="&amp;" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCS" role="1PaTwD">
+              <property role="3oM_SC" value="search" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCT" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCU" role="1PaTwD">
+              <property role="3oM_SC" value="SUPER" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCV" role="1PaTwD">
+              <property role="3oM_SC" value="calls" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="6pumIWoCFS3" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCFS4" role="3SKWNk">
-            <property role="3SKdUp" value="BUG IN BASE LANGUAGE -- AT THE TIME THIS THING DOES NOT FIND SUPER() CALLS" />
+          <node concept="1PaTwC" id="ATZLwXnPCW" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnPCX" role="1PaTwD">
+              <property role="3oM_SC" value="BUG" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCY" role="1PaTwD">
+              <property role="3oM_SC" value="IN" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPCZ" role="1PaTwD">
+              <property role="3oM_SC" value="BASE" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD0" role="1PaTwD">
+              <property role="3oM_SC" value="LANGUAGE" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD1" role="1PaTwD">
+              <property role="3oM_SC" value="--" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD2" role="1PaTwD">
+              <property role="3oM_SC" value="AT" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD3" role="1PaTwD">
+              <property role="3oM_SC" value="THE" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD4" role="1PaTwD">
+              <property role="3oM_SC" value="TIME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD5" role="1PaTwD">
+              <property role="3oM_SC" value="THIS" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD6" role="1PaTwD">
+              <property role="3oM_SC" value="THING" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD7" role="1PaTwD">
+              <property role="3oM_SC" value="DOES" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD8" role="1PaTwD">
+              <property role="3oM_SC" value="NOT" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPD9" role="1PaTwD">
+              <property role="3oM_SC" value="FIND" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDa" role="1PaTwD">
+              <property role="3oM_SC" value="SUPER()" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDb" role="1PaTwD">
+              <property role="3oM_SC" value="CALLS" />
+            </node>
           </node>
         </node>
         <node concept="2Gpval" id="hxreVrO" role="3cqZAp">
@@ -2533,8 +2627,22 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6pumIWoCFUV" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCFUW" role="3SKWNk">
-            <property role="3SKdUp" value="WORKAROUND - FIND SUPER() CALLS" />
+          <node concept="1PaTwC" id="ATZLwXnPDc" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnPDd" role="1PaTwD">
+              <property role="3oM_SC" value="WORKAROUND" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDe" role="1PaTwD">
+              <property role="3oM_SC" value="-" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDf" role="1PaTwD">
+              <property role="3oM_SC" value="FIND" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDg" role="1PaTwD">
+              <property role="3oM_SC" value="SUPER()" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDh" role="1PaTwD">
+              <property role="3oM_SC" value="CALLS" />
+            </node>
           </node>
         </node>
         <node concept="2Gpval" id="hxr$8jy" role="3cqZAp">
@@ -2784,8 +2892,22 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6pumIWoCFPH" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCFPI" role="3SKWNk">
-            <property role="3SKdUp" value="search for enum constants creation" />
+          <node concept="1PaTwC" id="ATZLwXnPDi" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnPDj" role="1PaTwD">
+              <property role="3oM_SC" value="search" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDk" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDl" role="1PaTwD">
+              <property role="3oM_SC" value="enum" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDm" role="1PaTwD">
+              <property role="3oM_SC" value="constants" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPDn" role="1PaTwD">
+              <property role="3oM_SC" value="creation" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="hxrvTxE" role="3cqZAp">

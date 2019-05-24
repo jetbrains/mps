@@ -79,6 +79,7 @@ import com.intellij.openapi.vcs.VcsException;
             return;
           }
           // the way RevisionChangesProvider is built and != null pair means both values there are set 
+
           assert pair.getFirst() != null;
           assert pair.getSecond() != null;
           List<Change> changes = Sequence.fromIterable(((Iterable<Change>) pair.getFirst().getChanges())).sort(new ISelector<Change, String>() {
@@ -136,6 +137,7 @@ import com.intellij.openapi.vcs.VcsException;
             List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), (before == null ? "<no revision>" : before.getRevisionNumber().asString()), after.getRevisionNumber().asString());
             final DiffRequest request = new SimpleDiffRequest(rootName.value, contents, titles);
             // put hint to show only one root 
+
             request.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, rootId.value);
             ApplicationManager.getApplication().invokeLater(new Runnable() {
               public void run() {

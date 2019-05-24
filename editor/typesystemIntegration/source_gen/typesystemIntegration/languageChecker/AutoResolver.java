@@ -61,6 +61,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
 
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     // TODO: use same settings as in LanguageEditorChecker 
+
     AutoResolver.BadReferences badReferences = collectBadReferences(rootNode);
     for (SReference ref : SetSequence.fromSet(badReferences.brokenReferences())) {
       NodeReportItem reportItem = new UnresolvedReferenceReportItem(ref, null);
@@ -106,9 +107,11 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
             }
             EditorComponentState state = editorContext.getEditorComponentState();
 
-            // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context  
+            // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context 
+
             boolean doRecheckEditor = false;
             // Trying to resolve all broken references using scope and then using substitute actions. 
+
             for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
               boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorContext.getRepository());
 
@@ -136,10 +139,12 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
                 }
               }
               // excluding reference cell which was substituted from the set of error cells 
+
               SetSequence.fromSet(errorCells).removeElement(cellWithRole);
             }
 
             // Trying to substitute all other error cells by using substitute actions. 
+
             for (EditorCell errorCell : SetSequence.fromSet(errorCells)) {
               if (!(errorCell instanceof EditorCell_Label)) {
                 continue;
@@ -157,10 +162,12 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
 
             if (doRecheckEditor) {
               // Something has changed in the editor, restore the previous state to avoid selection jump if possible 
+
               editorContext.restoreEditorComponentState(state);
 
               if (wasForceAutofix) {
                 // re-running next checker in force autofix mode 
+
                 myForceAutofix = true;
               }
             }

@@ -82,7 +82,9 @@ import java.io.FileOutputStream;
   private Manifest createManifest() {
     Manifest m = new Manifest();
     // Manfest-Version is a mandatory attribute, though I didn't find this in the jar/manifest documentation 
+
     // I believe it's a defect in Attributes.writeMain, which doesn't save anything unless version has been specified. 
+
     m.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
     m.getMainAttributes().put(Attributes.Name.MAIN_CLASS, myMainClass);
     m.getMainAttributes().put(Attributes.Name.CLASS_PATH, IterableUtils.join(ListSequence.fromList(myClassPath).select(new ISelector<URI, String>() {

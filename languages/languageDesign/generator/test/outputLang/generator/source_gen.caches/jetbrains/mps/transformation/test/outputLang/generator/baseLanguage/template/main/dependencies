@@ -49,6 +49,26 @@
     <classNode extendsClassName="jetbrains.mps.generator.runtime.MapConfigBase" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateMappingConfiguration" />
   </dependency>
+  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0db">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0eb">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0fb">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0gb">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0hb">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
@@ -69,28 +89,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
-  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0lb">
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
-  </dependency>
-  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0mb">
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
-  </dependency>
-  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0nb">
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
-  </dependency>
-  <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0ob">
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
-  </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.QueriesGenerated">
-    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Object" />
@@ -116,14 +115,14 @@
     <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
     <classNode dependClassName="jetbrains.mps.smodel.SReference" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0db" />
+    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0eb" />
+    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0fb" />
+    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0gb" />
     <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0hb" />
     <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0ib" />
     <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0jb" />
     <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0kb" />
-    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0lb" />
-    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0mb" />
-    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0nb" />
-    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Pattern_x583g4_a0a0ob" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
@@ -370,11 +369,8 @@
     <classNode dependClassName="jetbrains.mps.generator.runtime.NodeWeaveFacility" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateContext" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateExecutionEnvironment" />
-    <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateUtil" />
-    <classNode dependClassName="jetbrains.mps.generator.template.PropertyMacroContext" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.QueriesGenerated" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />

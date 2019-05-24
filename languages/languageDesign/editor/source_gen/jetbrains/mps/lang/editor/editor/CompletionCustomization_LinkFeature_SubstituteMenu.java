@@ -48,6 +48,7 @@ public class CompletionCustomization_LinkFeature_SubstituteMenu extends Substitu
 
     public SMP_ReferenceScope_b6s376_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, "jetbrains.mps.lang.editor.structure.CompletionCustomization_LinkFeature"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, 0xab9d570dedb336fL, "link"));
     }
     @NotNull

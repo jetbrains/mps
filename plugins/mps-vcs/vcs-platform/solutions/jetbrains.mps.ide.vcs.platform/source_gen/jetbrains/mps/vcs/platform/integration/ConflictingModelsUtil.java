@@ -102,6 +102,7 @@ public class ConflictingModelsUtil {
         continue;
       }
       // read action: 
+
       final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>();
       ProjectHelper.getModelAccess(project).runReadAction(new Runnable() {
         public void run() {
@@ -146,6 +147,7 @@ public class ConflictingModelsUtil {
     }
     public List<VirtualFile> getUnresolvedFiles() {
       // list of old files with possible errors because of 8th persistence merge 
+
       return myUnresolvedModelFiles;
     }
 
@@ -183,6 +185,7 @@ public class ConflictingModelsUtil {
 
           final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>(null);
           // read action: 
+
           ma.runReadAction(new Runnable() {
             public void run() {
               mergeSession.value = MergeSession.createMergeSession(baseModel.value, mineModel.value, repoModel.value);
@@ -225,6 +228,7 @@ public class ConflictingModelsUtil {
                   }
                 } catch (Throwable error) {
                   // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge 
+
                   if (baseModel.value instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel.value).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
                     ListSequence.fromList(myUnresolvedModelFiles).addElement(file);
                   } else {

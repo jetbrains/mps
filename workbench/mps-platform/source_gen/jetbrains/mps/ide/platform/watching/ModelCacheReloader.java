@@ -28,7 +28,9 @@ public class ModelCacheReloader implements ApplicationComponent {
 
   public ModelCacheReloader(VirtualFileManager virtualFileManager, MPSCoreComponents coreComponents) {
     // TODO rewrite using FileSystem.getInstance().addListener(..) 
+
     //      once there's a mechanism to attach a listener to any fs event (now it's specific file only) 
+
     myVirtualFileManager = virtualFileManager;
     myMPS = coreComponents;
   }

@@ -22,12 +22,15 @@ public class ModelMergeTool implements MergeTool {
 
   public boolean canShow(@NotNull MergeContext context, @NotNull MergeRequest request) {
     // all SUPPORTED_TYPES are text files, so we can work with text requests ony. 
+
     // this will also allow us to fallback to default text merge tool 
+
     if (!((request instanceof TextMergeRequest))) {
       return false;
     }
     TextMergeRequest textRequest = (TextMergeRequest) request;
     // required to save model 
+
     if (!((textRequest.getOutputContent() instanceof FileContent))) {
       return false;
     }
@@ -48,6 +51,7 @@ public class ModelMergeTool implements MergeTool {
       return viewer;
     } else if (TextMergeTool.INSTANCE.canShow(context, request)) {
       // fallback to text merge 
+
       return TextMergeTool.INSTANCE.createComponent(context, request);
     } else {
       throw new IllegalArgumentException("Can't show merge");

@@ -36,6 +36,7 @@ public class PathConverter {
     String workingDir = BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(project, ctx);
     this.workingDirectory = new RelativePathHelper(workingDir);
     // model argument is merely a factory of new path nodes and doesn't need to be 'original' one 
+
     myPathBuilder = new PathBuilder(SNodeOperations.getModel(project));
 
     final List<Tuples._2<String, SNode>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, SNode>>());
@@ -75,7 +76,9 @@ public class PathConverter {
     for (Tuples._2<String, SNode> m : Sequence.fromIterable(macros)) {
       String mdir = (startsWithMacroPrefix ? "${" + SPropertyOperations.getString(m._1(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "}/" : m._0());
       // XXX what's the check path.length < mdir.length supposed to do? If the path is shorter 
+
       // than macro path, it would never match? 
+
       String currPath = (path.length() < mdir.length() ? withSlash : path);
 
       if (currPath.startsWith(mdir)) {
@@ -108,7 +111,9 @@ public class PathConverter {
 
   private static String normalizePath(String path, boolean addSlash) {
     // FIXME much similar to RelativePathHelper.normalize, except that this one resorts to full path when there's no macro variable (which is generally not the case 
+
     // provided PathConverter is used to populate build project from module descriptor (where BP macros are not available) 
+
     if (path == null || (path == null || path.length() == 0)) {
       return null;
     }
@@ -117,6 +122,7 @@ public class PathConverter {
       path = path.replace("\\", "/");
     } catch (IOException ignore) {
       // ignore 
+
     }
     if (addSlash && !(path.endsWith("/"))) {
       path = path + "/";

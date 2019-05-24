@@ -9,13 +9,13 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,58,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.IntentionsDescriptor" />
+      <unit at="18,0,59,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:0637bc33-0253-4dba-988b-464018c42f84(jetbrains.mps.baseLanguage.jdk8.intentions)/4838165336397280137">
     <file name="IntentionsDescriptor.java">
-      <node id="4838165336397280137" at="37,47,38,60" concept="1" />
-      <node id="4838165336397280137" at="51,52,52,46" concept="1" />
+      <node id="4838165336397280137" at="38,47,39,60" concept="1" />
+      <node id="4838165336397280137" at="52,52,53,46" concept="1" />
     </file>
     <file name="MakeMethodDefault_Intention.java">
       <node id="4838165336397280137" at="23,0,24,0" concept="2" trace="myCachedExecutable" />
@@ -92,8 +92,8 @@
   </root>
   <root nodeRef="r:0637bc33-0253-4dba-988b-464018c42f84(jetbrains.mps.baseLanguage.jdk8.intentions)/4838165336397374656">
     <file name="IntentionsDescriptor.java">
-      <node id="4838165336397374656" at="38,60,39,63" concept="1" />
-      <node id="4838165336397374656" at="52,46,53,49" concept="1" />
+      <node id="4838165336397374656" at="39,60,40,63" concept="1" />
+      <node id="4838165336397374656" at="53,46,54,49" concept="1" />
     </file>
     <file name="MakeMethodNotDefault_Intention.java">
       <node id="4838165336397374656" at="24,0,25,0" concept="2" trace="myCachedExecutable" />

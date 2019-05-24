@@ -36,6 +36,7 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
   public AbstractTestWrapper(@NotNull N node, boolean runsInProcess, boolean needsMPS) {
     myNodePointer = new SNodePointer(node);
     // FIXME there's no need to keep myRepo once last use of getNode() or withNode() gone 
+
     myRepo = SNodeOperations.getModel(node).getRepository();
     myRunsInProcess = runsInProcess;
     myNeedsMPS = needsMPS;
@@ -146,11 +147,14 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
         return true;
       }
       // check java stub target only to avoid dependency from j.m.testbench module which is not part of MPS build (only via Testbench stub solution) 
+
       if (SNodeOperations.is(clazz, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench(Testbench/)", "~EnvironmentAwareTestCase"))) {
         return true;
       }
       // check both java stub and regular node for EnvironmentAware as  j.m.tool.environment is part of MPS build (unlike j.m.testbench) 
+
       // IMPORTANT! there are TWO checks is(EnvironmentAware). Please make sure one points to java stub while another points to regular node! 
+
       if (ListSequence.fromList(SLinkOperations.getChildren(clazz, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface"))).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SLinkOperations.hasPointer(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)", "~EnvironmentAware")) || SLinkOperations.hasPointer(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)", "8946405811982722281"));
@@ -164,6 +168,7 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
   }
   /*package*/ static boolean isAnnotatedToLaunch(SNode withAnnotation) {
     // MPSLaunch lives in j.m.testbench which is not part of MPS build, therefore check here for java stub only 
+
     return ListSequence.fromList(SLinkOperations.getChildren(withAnnotation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.hasPointer(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"), new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)", "~MPSLaunch"));

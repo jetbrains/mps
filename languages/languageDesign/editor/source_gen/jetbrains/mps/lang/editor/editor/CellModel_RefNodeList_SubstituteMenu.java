@@ -53,6 +53,7 @@ public class CellModel_RefNodeList_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_t0nhu6_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
     }
     @NotNull

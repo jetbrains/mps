@@ -128,6 +128,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
       // Resolving references by accessing .target node: 
+
       ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).visitAll(new IVisitor<SReference>() {
         public void visit(SReference it) {
           SLinkOperations.getTargetNode(it);
@@ -150,10 +151,12 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
       // Adding one unspecified reference and checking if it was added properly 
+
       int initialSize = ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count();
       String unspecifiedReferenceName = this.addUnspecifiedReference(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), SNodeOperations.cast(getNodeById("2906110183022219849"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x3dd540b968e9fc4L, "GrandChild"))));
       Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count());
       // Checking if unspecified reference is working properly 
+
       Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).where(new IWhereFilter<SReference>() {
         public boolean accept(SReference it) {
           return (SLinkOperations.findLinkDeclaration(it) == null);

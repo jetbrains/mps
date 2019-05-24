@@ -56,11 +56,8 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -106,14 +103,57 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
   </registry>
   <node concept="1M2fIO" id="6VhyYlfJDgV">
     <ref role="1M2myG" to="lur:uLQNrGWd1n" resolve="TransformationMatchAssertion" />
     <node concept="9SLcT" id="6VhyYlfJDgW" role="9SGkU">
       <node concept="3clFbS" id="6VhyYlfJDgX" role="2VODD2">
         <node concept="3SKdUt" id="6VhyYlfJR8t" role="3cqZAp">
-          <node concept="3SKdUq" id="6VhyYlfJR8v" role="3SKWNk">
-            <property role="3SKdUp" value="this assertion is allowed to reference arguments that point to model only." />
+          <node concept="1PaTwC" id="ATZLwXo4tR" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4tS" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4tT" role="1PaTwD">
+              <property role="3oM_SC" value="assertion" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4tU" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4tV" role="1PaTwD">
+              <property role="3oM_SC" value="allowed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4tW" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4tX" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4tY" role="1PaTwD">
+              <property role="3oM_SC" value="arguments" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4tZ" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4u0" role="1PaTwD">
+              <property role="3oM_SC" value="point" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4u1" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4u2" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4u3" role="1PaTwD">
+              <property role="3oM_SC" value="only." />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="6VhyYlfJFOa" role="3cqZAp">
@@ -200,8 +240,13 @@
               </node>
             </node>
             <node concept="3SKdUt" id="5wiIlPAvU4Z" role="3cqZAp">
-              <node concept="3SKdUq" id="5wiIlPAvU51" role="3SKWNk">
-                <property role="3SKdUp" value="fall through" />
+              <node concept="1PaTwC" id="ATZLwXo4u4" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo4u5" role="1PaTwD">
+                  <property role="3oM_SC" value="fall" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4u6" role="1PaTwD">
+                  <property role="3oM_SC" value="through" />
+                </node>
               </node>
             </node>
           </node>
@@ -233,13 +278,98 @@
     <node concept="9SLcT" id="5wiIlPAvMD7" role="9SGkU">
       <node concept="3clFbS" id="5wiIlPAvMD8" role="2VODD2">
         <node concept="3SKdUt" id="5wiIlPAvMKq" role="3cqZAp">
-          <node concept="3SKdUq" id="5wiIlPAvMKr" role="3SKWNk">
-            <property role="3SKdUp" value="this assertion is allowed to reference arguments that point to model only." />
+          <node concept="1PaTwC" id="ATZLwXo4u7" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4u8" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4u9" role="1PaTwD">
+              <property role="3oM_SC" value="assertion" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ua" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ub" role="1PaTwD">
+              <property role="3oM_SC" value="allowed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uc" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ud" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ue" role="1PaTwD">
+              <property role="3oM_SC" value="arguments" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uf" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ug" role="1PaTwD">
+              <property role="3oM_SC" value="point" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uh" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ui" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uj" role="1PaTwD">
+              <property role="3oM_SC" value="only." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="5wiIlPAvNsa" role="3cqZAp">
-          <node concept="3SKdUq" id="5wiIlPAvNsc" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME introduce an argument kind to hold collection of models and allow to reference it from referenceModels" />
+          <node concept="1PaTwC" id="ATZLwXo4uk" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4ul" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4um" role="1PaTwD">
+              <property role="3oM_SC" value="introduce" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4un" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uo" role="1PaTwD">
+              <property role="3oM_SC" value="argument" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4up" role="1PaTwD">
+              <property role="3oM_SC" value="kind" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uq" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ur" role="1PaTwD">
+              <property role="3oM_SC" value="hold" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4us" role="1PaTwD">
+              <property role="3oM_SC" value="collection" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ut" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uu" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uv" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uw" role="1PaTwD">
+              <property role="3oM_SC" value="allow" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4ux" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uy" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4uz" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4u$" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4u_" role="1PaTwD">
+              <property role="3oM_SC" value="referenceModels" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="5wiIlPAvMKs" role="3cqZAp">

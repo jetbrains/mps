@@ -48,6 +48,7 @@ public class KeymapRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_evuyo1_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef"), MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, 0x498be7ea73fa87fL, "keymap"));
     }
     @NotNull

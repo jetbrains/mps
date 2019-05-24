@@ -21,6 +21,7 @@ public class SNodeFactory {
   }
   private static SConcept toConcept(String conceptQualifiedName) {
     // this usage of by-name is reviewed 
+
     return MetaAdapterFactoryByName.getConcept(InternUtil.intern(conceptQualifiedName));
   }
 }

@@ -109,19 +109,26 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
               for (final GResource res : Sequence.fromIterable(input)) {
                 final SModel outcomeModel = res.status().getOutputModel();
                 // The code below was copied from TransformingGenerationHandler 
+
                 final Wrappers._T<SNode> evaluator = new Wrappers._T<SNode>();
                 if (outcomeModel != null) {
                   // XXX would be better to create new module rather than expect output model to belong to transient module, but not sure if 
+
                   //     there's any hidden assumption regarding Evaluator location (dependencies, module name, etc.) 
+
                   final TransientModelsModule module = (TransientModelsModule) outcomeModel.getModule();
                   SModelName newModelName = res.model().getName().withStereotype("evaluate");
                   final SModel newModel = module.createTransientModel(PersistenceFacade.getInstance().createModelReference(module.getModuleReference(), SModelId.generate(), newModelName.getValue()));
                   Target_configure.vars(pa.global()).transientModelsProvider().getRepository().getModelAccess().runWriteAction(new Runnable() {
                     public void run() {
                       // evaluator node belongs to a model already in the repository, and AttachedNodeOwner allows to change attached nodes 
+
                       // from within a command only. Here we are in a thread different from EDT, and have no chance to execute a command. 
+
                       // Nor do I want to relax ANO's requirement for the command now (I failed to figure out a reason for it). 
+
                       // That's why we make a copy of generator output model here, modify the copy, publish it and expose as a final outcome. 
+
                       CloneUtil cu = new CloneUtil(outcomeModel, newModel);
                       cu.cloneModelWithImports();
                       evaluator.value = SModelOperations.getRootByName(newModel, Properties.EVALUATOR_NAME);
@@ -135,8 +142,11 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                           });
                           TransformatorBuilder.getInstance().build(evaluateMethod, true).transformEvaluator();
                           // TextGen would use model's repository to obtain read lock, and if model is not registered, there'd be no lock 
+
                           // which is fine for the transient model itself, but once there's reference outside of the model, e.g. to a java stub elsewhere, 
+
                           // there would be a lock violation exception 
+
                           module.addModelToKeep(newModel.getReference(), true);
                           Target_configure.vars(pa.global()).transientModelsProvider().publishAll();
                           res.status(new GenerationStatus(res.status().getInputModel(), newModel, null, res.status().isError()));
@@ -219,12 +229,19 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
               String evaluatorClassQualifiedName = null;
               for (TextGenOutcomeResource tgRes : Sequence.fromIterable(input).ofType(TextGenOutcomeResource.class)) {
                 // XXX in fact, likely need original module as there might be troubles deducing CP from a transient module which is likely to be in TGOR. 
+
                 //     Besides, it's impossible to calculate runtime modules of languages used during generation 
+
                 // FIXME To deal with that, we pass evaluationClasspathModule from outside, the module which is populated with all possible dependencies. 
-                //       It's a hack, indeed, and un ugly one (the code that populates properties pool makes me cry). Alternative approach I don't find  
-                //       enough mental powers to try to is to find original input resource (likely, need to use 'transform IResource' as resource policy then,  
-                //       although not sure I can get access to the original input resource sequence, as Make has some magic to prepare input for a task based on  
+
+                //       It's a hack, indeed, and un ugly one (the code that populates properties pool makes me cry). Alternative approach I don't find 
+
+                //       enough mental powers to try to is to find original input resource (likely, need to use 'transform IResource' as resource policy then, 
+
+                //       although not sure I can get access to the original input resource sequence, as Make has some magic to prepare input for a task based on 
+
                 //       an output of a predecessor). 
+
                 modules.add(tgRes.getModule());
                 String packageName = JavaNameUtil.packageName(tgRes.getModel());
                 for (TextUnit tu : tgRes.getTextGenResult().getUnits()) {
@@ -238,6 +255,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                     if (evaluatorClassQualifiedName != null) {
                       monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(String.format("Duplicating evaluator classes: %s and %s", evaluatorClassQualifiedName, unitQualifiedName))));
                       // fall-through, use the last one discovered. 
+
                     }
                     evaluatorClassQualifiedName = unitQualifiedName;
                     if (LOG.isDebugEnabled()) {
@@ -271,7 +289,9 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
               Project mpsProject = monitor.getSession().getProject();
               JavaCompilerOptions options = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(mpsProject);
               // FIXME In fact, I'd rather have a NameEnvironment implementation that can construct IBinaryType from regular Class<> objects loaded 
+
               //       through regular module classloader instead of a bunch of filesystem paths and ClassFileReader to parse them again. But it's a huge change. 
+
               Set<String> cp = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<Set<String>>() {
                 public Set<String> compute() {
                   return JavaModuleOperations.collectCompileClasspath(modules, false);

@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="q2nv" ref="r:0874afb3-3c36-4193-9ba6-eed3bcd5ae08(jetbrains.mps.build.mps.runner.test.test1)" />
@@ -113,11 +113,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -157,6 +154,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -432,8 +437,16 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7viJmryW1Ne" role="3cqZAp">
-          <node concept="3SKdUq" id="7viJmryW2gF" role="3SKWNk">
-            <property role="3SKdUp" value="check model content" />
+          <node concept="1PaTwC" id="ATZLwXopc2" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXopc3" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopc4" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopc5" role="1PaTwD">
+              <property role="3oM_SC" value="content" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="7viJmryW0Sl" role="3cqZAp">
@@ -516,8 +529,16 @@
         </node>
         <node concept="3clFbH" id="1CZB82Av7w2" role="3cqZAp" />
         <node concept="3SKdUt" id="1CZB82Av$Ic" role="3cqZAp">
-          <node concept="3SKdUq" id="1CZB82Av_ew" role="3SKWNk">
-            <property role="3SKdUp" value="test write access" />
+          <node concept="1PaTwC" id="ATZLwXopc6" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXopc7" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopc8" role="1PaTwD">
+              <property role="3oM_SC" value="write" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopc9" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="7viJmryWdP7" role="3cqZAp">
@@ -639,8 +660,31 @@
         </node>
         <node concept="3clFbH" id="1CZB82AvzHt" role="3cqZAp" />
         <node concept="3SKdUt" id="1ZVcZhrQxCc" role="3cqZAp">
-          <node concept="3SKdUq" id="1ZVcZhrQxCZ" role="3SKWNk">
-            <property role="3SKdUp" value="create resulting file to signal everything is OK" />
+          <node concept="1PaTwC" id="ATZLwXopca" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXopcb" role="1PaTwD">
+              <property role="3oM_SC" value="create" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopcc" role="1PaTwD">
+              <property role="3oM_SC" value="resulting" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopcd" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopce" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopcf" role="1PaTwD">
+              <property role="3oM_SC" value="signal" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopcg" role="1PaTwD">
+              <property role="3oM_SC" value="everything" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopch" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopci" role="1PaTwD">
+              <property role="3oM_SC" value="OK" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1ZVcZhrQx_P" role="3cqZAp">

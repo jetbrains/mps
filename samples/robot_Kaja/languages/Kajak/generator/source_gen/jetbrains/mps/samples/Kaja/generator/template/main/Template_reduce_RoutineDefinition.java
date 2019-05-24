@@ -51,6 +51,7 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase i
         }
         tnode2.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
@@ -59,6 +60,7 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase i
         }
         tnode2.addChild(myAggregationLinks[1], tnode4);
         // TODO validate child 
+
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
@@ -72,11 +74,13 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase i
               tnode5.addChild(myAggregationLinks[2], child7);
             }
             // TODO validate child 
+
           }
         } finally {
         }
         tnode2.addChild(myAggregationLinks[3], tnode5);
         // TODO validate child 
+
       }
     } finally {
     }

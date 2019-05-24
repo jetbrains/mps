@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9hrze3yfv326kzf909u59fptld270p6">
+<product version="3" modelHash="e8gcjxt3cs33bqa901mj56f6jkd2dc3">
   <files names="BehaviorAspectDescriptor.java:IndexedTupleLiteral__BehaviorDescriptor.java:IndexedTupleMemberAccessExpression__BehaviorDescriptor.java:IndexedTupleType__BehaviorDescriptor.java:NamedTupleComponentAccessOperation__BehaviorDescriptor.java:NamedTupleComponentDeclaration__BehaviorDescriptor.java:NamedTupleDeclaration__BehaviorDescriptor.java:NamedTupleLiteral__BehaviorDescriptor.java:NamedTupleType__BehaviorDescriptor.java" />
 </product>
 

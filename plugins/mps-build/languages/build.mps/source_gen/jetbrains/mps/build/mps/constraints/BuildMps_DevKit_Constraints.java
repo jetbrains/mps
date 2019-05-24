@@ -45,9 +45,11 @@ public class BuildMps_DevKit_Constraints extends BaseConstraintsDescriptor {
     SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
     if ((buildProject != null)) {
       // limit use of this concept in a project with MPS plugin 
+
       return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin"))).isNotEmpty();
     }
     // XXX I'm not sure there's solid reason to preven reuse of this node, but failed to find reason for that, therefore, left as is. 
+
     return false;
   }
   private static SNodePointer canBeChildBreakingPoint = new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "1227128029536567137");

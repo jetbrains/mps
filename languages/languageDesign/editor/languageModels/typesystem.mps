@@ -171,11 +171,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -380,6 +377,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2401,8 +2406,25 @@
             </node>
           </node>
           <node concept="3SKdUt" id="59ZEGVRgveq" role="3cqZAp">
-            <node concept="3SKdUq" id="59ZEGVRgwOI" role="3SKWNk">
-              <property role="3SKdUp" value="TODO: check extending languages as well" />
+            <node concept="1PaTwC" id="ATZLwXnUuU" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnUuV" role="1PaTwD">
+                <property role="3oM_SC" value="TODO:" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUuW" role="1PaTwD">
+                <property role="3oM_SC" value="check" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUuX" role="1PaTwD">
+                <property role="3oM_SC" value="extending" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUuY" role="1PaTwD">
+                <property role="3oM_SC" value="languages" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUuZ" role="1PaTwD">
+                <property role="3oM_SC" value="as" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUv0" role="1PaTwD">
+                <property role="3oM_SC" value="well" />
+              </node>
             </node>
           </node>
           <node concept="2Gpval" id="5qKdWqI2HE0" role="3cqZAp">
@@ -6099,8 +6121,25 @@
       <node concept="3clFbJ" id="7Wb_DAxeBrs" role="3cqZAp">
         <node concept="3clFbS" id="7Wb_DAxeBrt" role="3clFbx">
           <node concept="3SKdUt" id="7Wb_DAxeBru" role="3cqZAp">
-            <node concept="3SKdUq" id="7Wb_DAxeBrv" role="3SKWNk">
-              <property role="3SKdUp" value="we are in inline cell menu" />
+            <node concept="1PaTwC" id="ATZLwXnUv1" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnUv2" role="1PaTwD">
+                <property role="3oM_SC" value="we" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUv3" role="1PaTwD">
+                <property role="3oM_SC" value="are" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUv4" role="1PaTwD">
+                <property role="3oM_SC" value="in" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUv5" role="1PaTwD">
+                <property role="3oM_SC" value="inline" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUv6" role="1PaTwD">
+                <property role="3oM_SC" value="cell" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUv7" role="1PaTwD">
+                <property role="3oM_SC" value="menu" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="7Wb_DAxeBrw" role="3cqZAp">
@@ -6140,8 +6179,25 @@
         <node concept="9aQIb" id="7Wb_DAxeBrH" role="9aQIa">
           <node concept="3clFbS" id="7Wb_DAxeBrI" role="9aQI4">
             <node concept="3SKdUt" id="7Wb_DAxeBrJ" role="3cqZAp">
-              <node concept="3SKdUq" id="7Wb_DAxeBrK" role="3SKWNk">
-                <property role="3SKdUp" value="we are in 'ref. presentation' cell" />
+              <node concept="1PaTwC" id="ATZLwXnUv8" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnUv9" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUva" role="1PaTwD">
+                  <property role="3oM_SC" value="are" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUvb" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUvc" role="1PaTwD">
+                  <property role="3oM_SC" value="'ref." />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUvd" role="1PaTwD">
+                  <property role="3oM_SC" value="presentation'" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUve" role="1PaTwD">
+                  <property role="3oM_SC" value="cell" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="7Wb_DAxeBrL" role="3cqZAp">

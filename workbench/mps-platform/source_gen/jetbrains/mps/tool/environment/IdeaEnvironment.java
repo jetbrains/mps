@@ -94,10 +94,14 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
    */
   @Hack
   private void addRequiredPlugins(EnvironmentConfig config) {
-    // [MM]: looks like a hack, should we regenerate it to a regular plugin specification?  
+    // [MM]: looks like a hack, should we regenerate it to a regular plugin specification? 
+
     // Probably, with plugin-set-ref to ensure the same plugin set is used 
+
     // typically, this property is set by generated ant scripts before running tests 
+
     // otherwise, we set it from config 
+
     if (isNotEmptyString(System.getProperty(PLUGIN_PATH))) {
       return;
     }
@@ -108,13 +112,19 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
   @Hack
   private void setPluginPathProperty() {
     // [MM]: why do we set ids from config, while path is not config-related? 
+
     StringJoiner pluginPathResult = new StringJoiner(File.pathSeparator);
     if (myUnitTestMode) {
       // it is comfortable for us to mimic the behavior in the non-test mode when we load by default all the plugins 
+
       // from the app_dir/plugins folder. 
+
       // In order to avoid duplication plugin problem (we have IDEA loading plugins from cp, from plugin.path property, 
+
       // from preinstalled plugins folder (non-test-mode only) 
+
       // and from user settings plugins folder) we use filtering below which makes it totally 4 places to look after. 
+
       File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
       if (pluginDir.exists()) {
         for (File pluginFolder : pluginDir.listFiles()) {
@@ -128,8 +138,11 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
       }
     }
     // IMPORTANT! "plugin.path" doesn't tell plugin's classpath, it points to location where to read plugin.xml from 
+
     // I.e. for unit test mode, complete plugin's classpath has to be in global CP already, 
-    // and therefore would be loaded by PluginManagerCore.loadDescriptorsFromClassPath.  
+
+    // PluginManagerCore.loadDescriptorsFromClassPath. 
+
     System.setProperty(PLUGIN_PATH, pluginPathResult.toString());
   }
 
@@ -184,7 +197,9 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
 
   private CommandLineApplication createCommandLineApplication0() {
     // copied from IdeaTestApplication.getInstance(String) 
+
     // next line is shorthand for PlatformTestCase.doAutodetectPlatformPrefix() 
+
     System.setProperty(PlatformUtils.PLATFORM_PREFIX_KEY, PlatformUtils.IDEA_CE_PREFIX);
     CommandLineApplication rv = new CommandLineApplication(true, false, true) {};
     PluginManagerCore.getPlugins();
@@ -203,6 +218,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
         }
       };
       // for ant tests we run with the flag, which disables the checks 
+
       VfsRootAccess.allowRootAccess(disposable0, projectFile.getAbsolutePath());
     }
     MPSProject openedProject = openProjectInIdeaEnvironment(projectFile);
@@ -233,9 +249,13 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
         for (final Project project : openedProjects) {
           if (project instanceof MPSProject) {
             // MPSProject need to be disposed outside writeAction to prevent exception: 
-            // java.lang.IllegalStateException: Must not call closeProject() from under write action  
+
+            // java.lang.IllegalStateException: Must not call closeProject() from under write action 
+
             // because fireProjectClosing() listeners must have a chance to do something useful 
+
             // TODO: find way to put MPSProject#dispose() under writeAction 
+
             project.dispose();
           } else {
             ApplicationManager.getApplication().runWriteAction(new Runnable() {
@@ -252,6 +272,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
               ((IdeaTestApplication) myIdeaApplication).dispose();
             } else {
               // that's what IdeaTestApplication.dispose() does 
+
               Disposer.dispose(application);
             }
             myIdeaApplication = null;
@@ -269,6 +290,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
       libInitializer.load(Collections.singletonList(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader())));
     }
     // modules from IDEA plugins are loaded with regular plafrom component mechanism (ext points, PluginLibraryContributor and RepositoryInitializingComponent) 
+
   }
 
   private File createDummyProjectFile() {
@@ -325,7 +347,9 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
 
   private void refreshProjectDir(@NotNull com.intellij.openapi.project.Project project) {
     // calling sync refresh for FS in order to update all modules/models loaded from the project 
+
     // if unit-test is executed with the "reuse caches" option. 
+
     String basePath = project.getBasePath();
     if (basePath != null) {
       CachingFileSystem fs = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
@@ -355,6 +379,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
       }
     }, ModalityState.NON_MODAL);
     // There's no evidence invokeAndWait() above won't pump all the pending model events, why do it again? 
+
   }
 
   @Override

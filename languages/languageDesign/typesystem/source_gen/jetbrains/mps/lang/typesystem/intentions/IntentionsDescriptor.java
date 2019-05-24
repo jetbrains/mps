@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: AbstractInequationStatement 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new FlipInequality_Intention();
           intentions[1] = new MakeInequalityCheckOnly_Intention();
@@ -41,7 +42,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // Concept: MessageStatement 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateTypesystemIntention_Intention();
         }

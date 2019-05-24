@@ -23,6 +23,7 @@ public class check_CopySrcListMacro_NonTypesystemRule extends AbstractNonTypesys
     SNode attributedNode = SNodeOperations.getParent(macro);
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(attributedNode), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x110138ccc4bL, "jetbrains.mps.lang.generator.structure.RuleConsequence"))) {
       // e.g. COPY_SRCL under ELSE in $IF$, or as inline template consequence of a rule - can't figure out containing link easily 
+
       return;
     }
     SContainmentLink l = SNodeOperations.getContainingLink(attributedNode);

@@ -8,7 +8,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
   </languages>
@@ -284,11 +284,8 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -422,6 +419,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -810,13 +815,107 @@
                     </node>
                   </node>
                   <node concept="3SKdUt" id="4MQktoK0Oiv" role="3cqZAp">
-                    <node concept="3SKdUq" id="4MQktoK0Oix" role="3SKWNk">
-                      <property role="3SKdUp" value="chances are there are @tests models with test concepts that doesn't extend odd ITestCase (e.g. GeneratorTest), doesn't hurt to" />
+                    <node concept="1PaTwC" id="ATZLwXoetq" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXoetr" role="1PaTwD">
+                        <property role="3oM_SC" value="chances" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoets" role="1PaTwD">
+                        <property role="3oM_SC" value="are" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoett" role="1PaTwD">
+                        <property role="3oM_SC" value="there" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetu" role="1PaTwD">
+                        <property role="3oM_SC" value="are" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetv" role="1PaTwD">
+                        <property role="3oM_SC" value="@tests" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetw" role="1PaTwD">
+                        <property role="3oM_SC" value="models" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetx" role="1PaTwD">
+                        <property role="3oM_SC" value="with" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoety" role="1PaTwD">
+                        <property role="3oM_SC" value="test" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetz" role="1PaTwD">
+                        <property role="3oM_SC" value="concepts" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoet$" role="1PaTwD">
+                        <property role="3oM_SC" value="that" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoet_" role="1PaTwD">
+                        <property role="3oM_SC" value="doesn't" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetA" role="1PaTwD">
+                        <property role="3oM_SC" value="extend" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetB" role="1PaTwD">
+                        <property role="3oM_SC" value="odd" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetC" role="1PaTwD">
+                        <property role="3oM_SC" value="ITestCase" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetD" role="1PaTwD">
+                        <property role="3oM_SC" value="(e.g." />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetE" role="1PaTwD">
+                        <property role="3oM_SC" value="GeneratorTest)," />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetF" role="1PaTwD">
+                        <property role="3oM_SC" value="doesn't" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetG" role="1PaTwD">
+                        <property role="3oM_SC" value="hurt" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetH" role="1PaTwD">
+                        <property role="3oM_SC" value="to" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3SKdUt" id="4MQktoK1gqN" role="3cqZAp">
-                    <node concept="3SKdUq" id="4MQktoK1gqP" role="3SKWNk">
-                      <property role="3SKdUp" value="list all @tests model (after all, why would anyone use that stereotype then?)" />
+                    <node concept="1PaTwC" id="ATZLwXoetI" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXoetJ" role="1PaTwD">
+                        <property role="3oM_SC" value="list" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetK" role="1PaTwD">
+                        <property role="3oM_SC" value="all" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetL" role="1PaTwD">
+                        <property role="3oM_SC" value="@tests" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetM" role="1PaTwD">
+                        <property role="3oM_SC" value="model" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetN" role="1PaTwD">
+                        <property role="3oM_SC" value="(after" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetO" role="1PaTwD">
+                        <property role="3oM_SC" value="all," />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetP" role="1PaTwD">
+                        <property role="3oM_SC" value="why" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetQ" role="1PaTwD">
+                        <property role="3oM_SC" value="would" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetR" role="1PaTwD">
+                        <property role="3oM_SC" value="anyone" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetS" role="1PaTwD">
+                        <property role="3oM_SC" value="use" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetT" role="1PaTwD">
+                        <property role="3oM_SC" value="that" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetU" role="1PaTwD">
+                        <property role="3oM_SC" value="stereotype" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXoetV" role="1PaTwD">
+                        <property role="3oM_SC" value="then?)" />
+                      </node>
                     </node>
                   </node>
                   <node concept="1DcWWT" id="4MQktoK0fo0" role="3cqZAp">
@@ -1104,8 +1203,40 @@
       </node>
       <node concept="3clFbS" id="4zlCqr6Nx8u" role="3clF47">
         <node concept="3SKdUt" id="4MQktoK2nI2" role="3cqZAp">
-          <node concept="3SKdUq" id="4MQktoK2nI3" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME unfortunately, FindUsagesFacade is not CoreComponent, therefore have to use FindUsagesManager" />
+          <node concept="1PaTwC" id="ATZLwXoetW" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoetX" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoetY" role="1PaTwD">
+              <property role="3oM_SC" value="unfortunately," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoetZ" role="1PaTwD">
+              <property role="3oM_SC" value="FindUsagesFacade" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu0" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu1" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu2" role="1PaTwD">
+              <property role="3oM_SC" value="CoreComponent," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu3" role="1PaTwD">
+              <property role="3oM_SC" value="therefore" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu4" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu5" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu6" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu7" role="1PaTwD">
+              <property role="3oM_SC" value="FindUsagesManager" />
+            </node>
           </node>
         </node>
         <node concept="1gVbGN" id="4zlCqr6O37$" role="3cqZAp">
@@ -1484,8 +1615,22 @@
       <node concept="17QB3L" id="29IGCqr_4sV" role="3clF45" />
       <node concept="3clFbS" id="29IGCqr_3C$" role="3clF47">
         <node concept="3SKdUt" id="5s9qK0EVPFi" role="3cqZAp">
-          <node concept="3SKdUq" id="5s9qK0EVPFk" role="3SKWNk">
-            <property role="3SKdUp" value="must be called only once!" />
+          <node concept="1PaTwC" id="ATZLwXoeu8" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoeu9" role="1PaTwD">
+              <property role="3oM_SC" value="must" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeua" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeub" role="1PaTwD">
+              <property role="3oM_SC" value="called" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuc" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeud" role="1PaTwD">
+              <property role="3oM_SC" value="once!" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="4eCVXiE0tFx" role="3cqZAp">
@@ -2267,13 +2412,89 @@
           </node>
         </node>
         <node concept="3SKdUt" id="5gyVhZ1bmdg" role="3cqZAp">
-          <node concept="3SKdUq" id="5gyVhZ1bmdh" role="3SKWNk">
-            <property role="3SKdUp" value="We do not validate, only check if there is something to test, since validating everything be very slow" />
+          <node concept="1PaTwC" id="ATZLwXoeue" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoeuf" role="1PaTwD">
+              <property role="3oM_SC" value="We" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeug" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuh" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeui" role="1PaTwD">
+              <property role="3oM_SC" value="validate," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuj" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuk" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeul" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeum" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeun" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuo" role="1PaTwD">
+              <property role="3oM_SC" value="something" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeup" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuq" role="1PaTwD">
+              <property role="3oM_SC" value="test," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeur" role="1PaTwD">
+              <property role="3oM_SC" value="since" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeus" role="1PaTwD">
+              <property role="3oM_SC" value="validating" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeut" role="1PaTwD">
+              <property role="3oM_SC" value="everything" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuu" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuv" role="1PaTwD">
+              <property role="3oM_SC" value="very" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuw" role="1PaTwD">
+              <property role="3oM_SC" value="slow" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="5gyVhZ1bmdi" role="3cqZAp">
-          <node concept="3SKdUq" id="5gyVhZ1bmdj" role="3SKWNk">
-            <property role="3SKdUp" value="see MPS-8781 JUnit run configuration check method performance." />
+          <node concept="1PaTwC" id="ATZLwXoeux" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoeuy" role="1PaTwD">
+              <property role="3oM_SC" value="see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuz" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-8781" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu$" role="1PaTwD">
+              <property role="3oM_SC" value="JUnit" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeu_" role="1PaTwD">
+              <property role="3oM_SC" value="run" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuA" role="1PaTwD">
+              <property role="3oM_SC" value="configuration" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuB" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuC" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoeuD" role="1PaTwD">
+              <property role="3oM_SC" value="performance." />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="388mrjd53Ru" role="3cqZAp">
@@ -2949,13 +3170,32 @@
         <node concept="17QB3L" id="5gyVhZ1bmqK" role="3clF45" />
         <node concept="3clFbS" id="5gyVhZ1bmqL" role="3clF47">
           <node concept="3SKdUt" id="3vnmwWFBne4" role="3cqZAp">
-            <node concept="3SKdUq" id="3vnmwWFBngo" role="3SKWNk">
-              <property role="3SKdUp" value="#check is used nowhere" />
+            <node concept="1PaTwC" id="ATZLwXoeuE" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXoeuF" role="1PaTwD">
+                <property role="3oM_SC" value="#check" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoeuG" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoeuH" role="1PaTwD">
+                <property role="3oM_SC" value="used" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoeuI" role="1PaTwD">
+                <property role="3oM_SC" value="nowhere" />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="3vnmwWFBniz" role="3cqZAp">
-            <node concept="3SKdUq" id="3vnmwWFBnkT" role="3SKWNk">
-              <property role="3SKdUp" value="TODO: use it" />
+            <node concept="1PaTwC" id="ATZLwXoeuJ" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXoeuK" role="1PaTwD">
+                <property role="3oM_SC" value="TODO:" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoeuL" role="1PaTwD">
+                <property role="3oM_SC" value="use" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoeuM" role="1PaTwD">
+                <property role="3oM_SC" value="it" />
+              </node>
             </node>
           </node>
           <node concept="3clFbJ" id="5gyVhZ1bmqT" role="3cqZAp">

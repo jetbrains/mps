@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="rk9m" ref="r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)" />
@@ -213,11 +213,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -258,6 +255,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -441,8 +446,82 @@
       <node concept="3Tm6S6" id="TfU9m6pvtN" role="1B3o_S" />
       <node concept="3clFbS" id="2Yo3Fsi8xtm" role="3clF47">
         <node concept="3SKdUt" id="TfU9m6twMb" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6twMd" role="3SKWNk">
-            <property role="3SKdUp" value="keep graph with dependencies, with vertexes for modules being clusterized only (i.e. no vertex for a module that is among dependencies but not being built)" />
+          <node concept="1PaTwC" id="ATZLwXo77f" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo77g" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77h" role="1PaTwD">
+              <property role="3oM_SC" value="graph" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77i" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77j" role="1PaTwD">
+              <property role="3oM_SC" value="dependencies," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77k" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77l" role="1PaTwD">
+              <property role="3oM_SC" value="vertexes" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77m" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77n" role="1PaTwD">
+              <property role="3oM_SC" value="modules" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77o" role="1PaTwD">
+              <property role="3oM_SC" value="being" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77p" role="1PaTwD">
+              <property role="3oM_SC" value="clusterized" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77q" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77r" role="1PaTwD">
+              <property role="3oM_SC" value="(i.e." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77s" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77t" role="1PaTwD">
+              <property role="3oM_SC" value="vertex" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77u" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77v" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77w" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77x" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77y" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77z" role="1PaTwD">
+              <property role="3oM_SC" value="among" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77$" role="1PaTwD">
+              <property role="3oM_SC" value="dependencies" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77_" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77A" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77B" role="1PaTwD">
+              <property role="3oM_SC" value="being" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77C" role="1PaTwD">
+              <property role="3oM_SC" value="built)" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="TfU9m6kzQ7" role="3cqZAp">
@@ -454,8 +533,67 @@
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6tx6m" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6tx6o" role="3SKWNk">
-            <property role="3SKdUp" value="keep track of a module that results in a deployed language; these need to be build prior to their uses" />
+          <node concept="1PaTwC" id="ATZLwXo77D" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo77E" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77F" role="1PaTwD">
+              <property role="3oM_SC" value="track" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77G" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77H" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77I" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77J" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77K" role="1PaTwD">
+              <property role="3oM_SC" value="results" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77L" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77M" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77N" role="1PaTwD">
+              <property role="3oM_SC" value="deployed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77O" role="1PaTwD">
+              <property role="3oM_SC" value="language;" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77P" role="1PaTwD">
+              <property role="3oM_SC" value="these" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77Q" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77R" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77S" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77T" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77U" role="1PaTwD">
+              <property role="3oM_SC" value="prior" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77V" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77W" role="1PaTwD">
+              <property role="3oM_SC" value="their" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo77X" role="1PaTwD">
+              <property role="3oM_SC" value="uses" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="TfU9m6luSM" role="3cqZAp">
@@ -467,8 +605,37 @@
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6kO6O" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6kO6Q" role="3SKWNk">
-            <property role="3SKdUp" value="ensure we've got all the vertexes of our graph ready" />
+          <node concept="1PaTwC" id="ATZLwXo77Y" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo77Z" role="1PaTwD">
+              <property role="3oM_SC" value="ensure" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo780" role="1PaTwD">
+              <property role="3oM_SC" value="we've" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo781" role="1PaTwD">
+              <property role="3oM_SC" value="got" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo782" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo783" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo784" role="1PaTwD">
+              <property role="3oM_SC" value="vertexes" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo785" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo786" role="1PaTwD">
+              <property role="3oM_SC" value="our" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo787" role="1PaTwD">
+              <property role="3oM_SC" value="graph" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo788" role="1PaTwD">
+              <property role="3oM_SC" value="ready" />
+            </node>
           </node>
         </node>
         <node concept="2Gpval" id="TfU9m6k_lS" role="3cqZAp">
@@ -723,13 +890,131 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="3bdlBcZw9tu" role="3clF47">
         <node concept="3SKdUt" id="3bdlBcZxhkv" role="3cqZAp">
-          <node concept="3SKdUq" id="3bdlBcZxhkx" role="3SKWNk">
-            <property role="3SKdUp" value="we need used languages to determine build order (in case language/generator module is among those being built)" />
+          <node concept="1PaTwC" id="ATZLwXo789" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo78a" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78b" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78c" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78d" role="1PaTwD">
+              <property role="3oM_SC" value="languages" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78e" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78f" role="1PaTwD">
+              <property role="3oM_SC" value="determine" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78g" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78h" role="1PaTwD">
+              <property role="3oM_SC" value="order" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78i" role="1PaTwD">
+              <property role="3oM_SC" value="(in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78j" role="1PaTwD">
+              <property role="3oM_SC" value="case" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78k" role="1PaTwD">
+              <property role="3oM_SC" value="language/generator" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78l" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78m" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78n" role="1PaTwD">
+              <property role="3oM_SC" value="among" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78o" role="1PaTwD">
+              <property role="3oM_SC" value="those" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78p" role="1PaTwD">
+              <property role="3oM_SC" value="being" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78q" role="1PaTwD">
+              <property role="3oM_SC" value="built)" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="3bdlBcZxhEX" role="3cqZAp">
-          <node concept="3SKdUq" id="3bdlBcZxhEZ" role="3SKWNk">
-            <property role="3SKdUp" value="and also we need these languages to detect facets to activate in build script. Not to build this set twice, re-use once computed" />
+          <node concept="1PaTwC" id="ATZLwXo78r" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo78s" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78t" role="1PaTwD">
+              <property role="3oM_SC" value="also" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78u" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78v" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78w" role="1PaTwD">
+              <property role="3oM_SC" value="these" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78x" role="1PaTwD">
+              <property role="3oM_SC" value="languages" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78y" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78z" role="1PaTwD">
+              <property role="3oM_SC" value="detect" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78$" role="1PaTwD">
+              <property role="3oM_SC" value="facets" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78_" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78A" role="1PaTwD">
+              <property role="3oM_SC" value="activate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78B" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78C" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78D" role="1PaTwD">
+              <property role="3oM_SC" value="script." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78E" role="1PaTwD">
+              <property role="3oM_SC" value="Not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78F" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78G" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78H" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78I" role="1PaTwD">
+              <property role="3oM_SC" value="set" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78J" role="1PaTwD">
+              <property role="3oM_SC" value="twice," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78K" role="1PaTwD">
+              <property role="3oM_SC" value="re-use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78L" role="1PaTwD">
+              <property role="3oM_SC" value="once" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78M" role="1PaTwD">
+              <property role="3oM_SC" value="computed" />
+            </node>
           </node>
         </node>
         <node concept="1gVbGN" id="3bdlBcZwmAH" role="3cqZAp">
@@ -806,8 +1091,97 @@
       </node>
       <node concept="3clFbS" id="6TPAzrVfe_2" role="3clF47">
         <node concept="3SKdUt" id="TfU9m6Alpf" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6Alph" role="3SKWNk">
-            <property role="3SKdUp" value="XXX what's the point of this code, what do we 'compact' here? Do we merge cycles so that they are built together and later has a chance to load ok?" />
+          <node concept="1PaTwC" id="ATZLwXo78N" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo78O" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78P" role="1PaTwD">
+              <property role="3oM_SC" value="what's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78Q" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78R" role="1PaTwD">
+              <property role="3oM_SC" value="point" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78S" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78T" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78U" role="1PaTwD">
+              <property role="3oM_SC" value="code," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78V" role="1PaTwD">
+              <property role="3oM_SC" value="what" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78W" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78X" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78Y" role="1PaTwD">
+              <property role="3oM_SC" value="'compact'" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo78Z" role="1PaTwD">
+              <property role="3oM_SC" value="here?" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo790" role="1PaTwD">
+              <property role="3oM_SC" value="Do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo791" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo792" role="1PaTwD">
+              <property role="3oM_SC" value="merge" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo793" role="1PaTwD">
+              <property role="3oM_SC" value="cycles" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo794" role="1PaTwD">
+              <property role="3oM_SC" value="so" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo795" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo796" role="1PaTwD">
+              <property role="3oM_SC" value="they" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo797" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo798" role="1PaTwD">
+              <property role="3oM_SC" value="built" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo799" role="1PaTwD">
+              <property role="3oM_SC" value="together" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79a" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79b" role="1PaTwD">
+              <property role="3oM_SC" value="later" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79c" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79d" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79e" role="1PaTwD">
+              <property role="3oM_SC" value="chance" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79f" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79g" role="1PaTwD">
+              <property role="3oM_SC" value="load" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79h" role="1PaTwD">
+              <property role="3oM_SC" value="ok?" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="6TPAzrVfe_3" role="3cqZAp">
@@ -1041,8 +1415,46 @@
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6yi2n" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6yi2p" role="3SKWNk">
-            <property role="3SKdUp" value="get a set of modules we are going to build transitive dependencies for" />
+          <node concept="1PaTwC" id="ATZLwXo79i" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo79j" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79k" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79l" role="1PaTwD">
+              <property role="3oM_SC" value="set" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79m" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79n" role="1PaTwD">
+              <property role="3oM_SC" value="modules" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79o" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79p" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79q" role="1PaTwD">
+              <property role="3oM_SC" value="going" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79r" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79s" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79t" role="1PaTwD">
+              <property role="3oM_SC" value="transitive" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79u" role="1PaTwD">
+              <property role="3oM_SC" value="dependencies" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79v" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="TfU9m6vNaK" role="3cqZAp">
@@ -1089,8 +1501,22 @@
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6$0j_" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6$0jB" role="3SKWNk">
-            <property role="3SKdUp" value="inv: reference existing vertexes only" />
+          <node concept="1PaTwC" id="ATZLwXo79w" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo79x" role="1PaTwD">
+              <property role="3oM_SC" value="inv:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79y" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79z" role="1PaTwD">
+              <property role="3oM_SC" value="existing" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79$" role="1PaTwD">
+              <property role="3oM_SC" value="vertexes" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo79_" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="6QF8nMT33GB" role="3cqZAp">
@@ -1129,8 +1555,61 @@
               </node>
             </node>
             <node concept="3SKdUt" id="3bdlBcZrNna" role="3cqZAp">
-              <node concept="3SKdUq" id="3bdlBcZrNnc" role="3SKWNk">
-                <property role="3SKdUp" value="Unfortunately, GMDM doesn't recognize generator's source language as COMPILE or VISIBLE dependency, therefore have to add it here" />
+              <node concept="1PaTwC" id="ATZLwXo79A" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo79B" role="1PaTwD">
+                  <property role="3oM_SC" value="Unfortunately," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79C" role="1PaTwD">
+                  <property role="3oM_SC" value="GMDM" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79D" role="1PaTwD">
+                  <property role="3oM_SC" value="doesn't" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79E" role="1PaTwD">
+                  <property role="3oM_SC" value="recognize" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79F" role="1PaTwD">
+                  <property role="3oM_SC" value="generator's" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79G" role="1PaTwD">
+                  <property role="3oM_SC" value="source" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79H" role="1PaTwD">
+                  <property role="3oM_SC" value="language" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79I" role="1PaTwD">
+                  <property role="3oM_SC" value="as" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79J" role="1PaTwD">
+                  <property role="3oM_SC" value="COMPILE" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79K" role="1PaTwD">
+                  <property role="3oM_SC" value="or" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79L" role="1PaTwD">
+                  <property role="3oM_SC" value="VISIBLE" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79M" role="1PaTwD">
+                  <property role="3oM_SC" value="dependency," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79N" role="1PaTwD">
+                  <property role="3oM_SC" value="therefore" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79O" role="1PaTwD">
+                  <property role="3oM_SC" value="have" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79P" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79Q" role="1PaTwD">
+                  <property role="3oM_SC" value="add" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79R" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo79S" role="1PaTwD">
+                  <property role="3oM_SC" value="here" />
+                </node>
               </node>
             </node>
             <node concept="1gVbGN" id="7t$FcA4tLSm" role="3cqZAp">
@@ -1183,18 +1662,150 @@
             <node concept="3clFbJ" id="7t$FcA4tF2a" role="3cqZAp">
               <node concept="3clFbS" id="7t$FcA4tF2c" role="3clFbx">
                 <node concept="3SKdUt" id="7t$FcA4tImA" role="3cqZAp">
-                  <node concept="3SKdUq" id="7t$FcA4tImC" role="3SKWNk">
-                    <property role="3SKdUp" value="perhaps, we could use slanguage.sourceModuleReference only (right into reqs if among vertexes), i.e. no resolve, but this would" />
+                  <node concept="1PaTwC" id="ATZLwXo79T" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXo79U" role="1PaTwD">
+                      <property role="3oM_SC" value="perhaps," />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo79V" role="1PaTwD">
+                      <property role="3oM_SC" value="we" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo79W" role="1PaTwD">
+                      <property role="3oM_SC" value="could" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo79X" role="1PaTwD">
+                      <property role="3oM_SC" value="use" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo79Y" role="1PaTwD">
+                      <property role="3oM_SC" value="slanguage.sourceModuleReference" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo79Z" role="1PaTwD">
+                      <property role="3oM_SC" value="only" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a0" role="1PaTwD">
+                      <property role="3oM_SC" value="(right" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a1" role="1PaTwD">
+                      <property role="3oM_SC" value="into" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a2" role="1PaTwD">
+                      <property role="3oM_SC" value="reqs" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a3" role="1PaTwD">
+                      <property role="3oM_SC" value="if" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a4" role="1PaTwD">
+                      <property role="3oM_SC" value="among" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a5" role="1PaTwD">
+                      <property role="3oM_SC" value="vertexes)," />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a6" role="1PaTwD">
+                      <property role="3oM_SC" value="i.e." />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a7" role="1PaTwD">
+                      <property role="3oM_SC" value="no" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a8" role="1PaTwD">
+                      <property role="3oM_SC" value="resolve," />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7a9" role="1PaTwD">
+                      <property role="3oM_SC" value="but" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7aa" role="1PaTwD">
+                      <property role="3oM_SC" value="this" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ab" role="1PaTwD">
+                      <property role="3oM_SC" value="would" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3SKdUt" id="7t$FcA4tOPg" role="3cqZAp">
-                  <node concept="3SKdUq" id="7t$FcA4tOPi" role="3SKWNk">
-                    <property role="3SKdUp" value="affect transitive dependencies, and it's unlikely what I need here. It's seems better to collect more than to get unpleasant compile errors due " />
+                  <node concept="1PaTwC" id="ATZLwXo7ac" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXo7ad" role="1PaTwD">
+                      <property role="3oM_SC" value="affect" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ae" role="1PaTwD">
+                      <property role="3oM_SC" value="transitive" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7af" role="1PaTwD">
+                      <property role="3oM_SC" value="dependencies," />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ag" role="1PaTwD">
+                      <property role="3oM_SC" value="and" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ah" role="1PaTwD">
+                      <property role="3oM_SC" value="it's" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ai" role="1PaTwD">
+                      <property role="3oM_SC" value="unlikely" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7aj" role="1PaTwD">
+                      <property role="3oM_SC" value="what" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ak" role="1PaTwD">
+                      <property role="3oM_SC" value="I" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7al" role="1PaTwD">
+                      <property role="3oM_SC" value="need" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7am" role="1PaTwD">
+                      <property role="3oM_SC" value="here." />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7an" role="1PaTwD">
+                      <property role="3oM_SC" value="It's" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ao" role="1PaTwD">
+                      <property role="3oM_SC" value="seems" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ap" role="1PaTwD">
+                      <property role="3oM_SC" value="better" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7aq" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ar" role="1PaTwD">
+                      <property role="3oM_SC" value="collect" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7as" role="1PaTwD">
+                      <property role="3oM_SC" value="more" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7at" role="1PaTwD">
+                      <property role="3oM_SC" value="than" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7au" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7av" role="1PaTwD">
+                      <property role="3oM_SC" value="get" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7aw" role="1PaTwD">
+                      <property role="3oM_SC" value="unpleasant" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ax" role="1PaTwD">
+                      <property role="3oM_SC" value="compile" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7ay" role="1PaTwD">
+                      <property role="3oM_SC" value="errors" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7az" role="1PaTwD">
+                      <property role="3oM_SC" value="due" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3SKdUt" id="7t$FcA4tOW3" role="3cqZAp">
-                  <node concept="3SKdUq" id="7t$FcA4tOW4" role="3SKWNk">
-                    <property role="3SKdUp" value="to improper make order." />
+                  <node concept="1PaTwC" id="ATZLwXo7a$" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXo7a_" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7aA" role="1PaTwD">
+                      <property role="3oM_SC" value="improper" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7aB" role="1PaTwD">
+                      <property role="3oM_SC" value="make" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo7aC" role="1PaTwD">
+                      <property role="3oM_SC" value="order." />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="TfU9m6z3VS" role="3cqZAp">
@@ -1219,13 +1830,155 @@
               </node>
             </node>
             <node concept="3SKdUt" id="TfU9m6q31G" role="3cqZAp">
-              <node concept="3SKdUq" id="TfU9m6q31I" role="3SKWNk">
-                <property role="3SKdUp" value="XXX though it looks suspicious that we require source language module to build a generator, the reason to have it there" />
+              <node concept="1PaTwC" id="ATZLwXo7aD" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo7aE" role="1PaTwD">
+                  <property role="3oM_SC" value="XXX" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aF" role="1PaTwD">
+                  <property role="3oM_SC" value="though" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aG" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aH" role="1PaTwD">
+                  <property role="3oM_SC" value="looks" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aI" role="1PaTwD">
+                  <property role="3oM_SC" value="suspicious" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aJ" role="1PaTwD">
+                  <property role="3oM_SC" value="that" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aK" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aL" role="1PaTwD">
+                  <property role="3oM_SC" value="require" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aM" role="1PaTwD">
+                  <property role="3oM_SC" value="source" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aN" role="1PaTwD">
+                  <property role="3oM_SC" value="language" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aO" role="1PaTwD">
+                  <property role="3oM_SC" value="module" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aP" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aQ" role="1PaTwD">
+                  <property role="3oM_SC" value="build" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aR" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aS" role="1PaTwD">
+                  <property role="3oM_SC" value="generator," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aT" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aU" role="1PaTwD">
+                  <property role="3oM_SC" value="reason" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aV" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aW" role="1PaTwD">
+                  <property role="3oM_SC" value="have" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aX" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7aY" role="1PaTwD">
+                  <property role="3oM_SC" value="there" />
+                </node>
               </node>
             </node>
             <node concept="3SKdUt" id="TfU9m6q68d" role="3cqZAp">
-              <node concept="3SKdUq" id="TfU9m6q68f" role="3SKWNk">
-                <property role="3SKdUp" value="    is likely the need to satisfy module load dependency (not the need to have language available the moment generator module is being generated/textgen'ed)" />
+              <node concept="1PaTwC" id="ATZLwXo7aZ" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo7b0" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b1" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b2" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b3" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b4" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b5" role="1PaTwD">
+                  <property role="3oM_SC" value="likely" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b6" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b7" role="1PaTwD">
+                  <property role="3oM_SC" value="need" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b8" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7b9" role="1PaTwD">
+                  <property role="3oM_SC" value="satisfy" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7ba" role="1PaTwD">
+                  <property role="3oM_SC" value="module" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bb" role="1PaTwD">
+                  <property role="3oM_SC" value="load" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bc" role="1PaTwD">
+                  <property role="3oM_SC" value="dependency" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bd" role="1PaTwD">
+                  <property role="3oM_SC" value="(not" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7be" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bf" role="1PaTwD">
+                  <property role="3oM_SC" value="need" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bg" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bh" role="1PaTwD">
+                  <property role="3oM_SC" value="have" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bi" role="1PaTwD">
+                  <property role="3oM_SC" value="language" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bj" role="1PaTwD">
+                  <property role="3oM_SC" value="available" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bk" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bl" role="1PaTwD">
+                  <property role="3oM_SC" value="moment" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bm" role="1PaTwD">
+                  <property role="3oM_SC" value="generator" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bn" role="1PaTwD">
+                  <property role="3oM_SC" value="module" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bo" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bp" role="1PaTwD">
+                  <property role="3oM_SC" value="being" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7bq" role="1PaTwD">
+                  <property role="3oM_SC" value="generated/textgen'ed)" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="3bdlBcZqgVn" role="3cqZAp">
@@ -1303,13 +2056,143 @@
                 </node>
               </node>
               <node concept="3SKdUt" id="3bdlBcZqLWa" role="3cqZAp">
-                <node concept="3SKdUq" id="3bdlBcZqLWc" role="3SKWNk">
-                  <property role="3SKdUp" value="XXX ModelContentUtil adds auto-imported and engaged on generation lagnuages as well, shall I use it here, too?" />
+                <node concept="1PaTwC" id="ATZLwXo7br" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXo7bs" role="1PaTwD">
+                    <property role="3oM_SC" value="XXX" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bt" role="1PaTwD">
+                    <property role="3oM_SC" value="ModelContentUtil" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bu" role="1PaTwD">
+                    <property role="3oM_SC" value="adds" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bv" role="1PaTwD">
+                    <property role="3oM_SC" value="auto-imported" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bw" role="1PaTwD">
+                    <property role="3oM_SC" value="and" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bx" role="1PaTwD">
+                    <property role="3oM_SC" value="engaged" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7by" role="1PaTwD">
+                    <property role="3oM_SC" value="on" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bz" role="1PaTwD">
+                    <property role="3oM_SC" value="generation" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7b$" role="1PaTwD">
+                    <property role="3oM_SC" value="lagnuages" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7b_" role="1PaTwD">
+                    <property role="3oM_SC" value="as" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bA" role="1PaTwD">
+                    <property role="3oM_SC" value="well," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bB" role="1PaTwD">
+                    <property role="3oM_SC" value="shall" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bC" role="1PaTwD">
+                    <property role="3oM_SC" value="I" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bD" role="1PaTwD">
+                    <property role="3oM_SC" value="use" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bE" role="1PaTwD">
+                    <property role="3oM_SC" value="it" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bF" role="1PaTwD">
+                    <property role="3oM_SC" value="here," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bG" role="1PaTwD">
+                    <property role="3oM_SC" value="too?" />
+                  </node>
                 </node>
               </node>
               <node concept="3SKdUt" id="3bdlBcZqMP6" role="3cqZAp">
-                <node concept="3SKdUq" id="3bdlBcZqMP8" role="3SKWNk">
-                  <property role="3SKdUp" value="    I didn't add them as previous version relied on SModule.getUsedLanguages() collection, which does not include engaged nor auto-imports, and is working for years" />
+                <node concept="1PaTwC" id="ATZLwXo7bH" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXo7bI" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bJ" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bK" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bL" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bM" role="1PaTwD">
+                    <property role="3oM_SC" value="I" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bN" role="1PaTwD">
+                    <property role="3oM_SC" value="didn't" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bO" role="1PaTwD">
+                    <property role="3oM_SC" value="add" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bP" role="1PaTwD">
+                    <property role="3oM_SC" value="them" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bQ" role="1PaTwD">
+                    <property role="3oM_SC" value="as" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bR" role="1PaTwD">
+                    <property role="3oM_SC" value="previous" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bS" role="1PaTwD">
+                    <property role="3oM_SC" value="version" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bT" role="1PaTwD">
+                    <property role="3oM_SC" value="relied" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bU" role="1PaTwD">
+                    <property role="3oM_SC" value="on" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bV" role="1PaTwD">
+                    <property role="3oM_SC" value="SModule.getUsedLanguages()" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bW" role="1PaTwD">
+                    <property role="3oM_SC" value="collection," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bX" role="1PaTwD">
+                    <property role="3oM_SC" value="which" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bY" role="1PaTwD">
+                    <property role="3oM_SC" value="does" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7bZ" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c0" role="1PaTwD">
+                    <property role="3oM_SC" value="include" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c1" role="1PaTwD">
+                    <property role="3oM_SC" value="engaged" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c2" role="1PaTwD">
+                    <property role="3oM_SC" value="nor" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c3" role="1PaTwD">
+                    <property role="3oM_SC" value="auto-imports," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c4" role="1PaTwD">
+                    <property role="3oM_SC" value="and" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c5" role="1PaTwD">
+                    <property role="3oM_SC" value="is" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c6" role="1PaTwD">
+                    <property role="3oM_SC" value="working" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c7" role="1PaTwD">
+                    <property role="3oM_SC" value="for" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7c8" role="1PaTwD">
+                    <property role="3oM_SC" value="years" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbH" id="3bdlBcZqYrS" role="3cqZAp" />
@@ -1361,18 +2244,225 @@
         </node>
         <node concept="3clFbH" id="TfU9m6y5WW" role="3cqZAp" />
         <node concept="3SKdUt" id="3bdlBcZsCPY" role="3cqZAp">
-          <node concept="3SKdUq" id="3bdlBcZsCQ0" role="3SKWNk">
-            <property role="3SKdUp" value="if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators..." />
+          <node concept="1PaTwC" id="ATZLwXo7c9" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7ca" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cb" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cc" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cd" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ce" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cf" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cg" role="1PaTwD">
+              <property role="3oM_SC" value="language" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ch" role="1PaTwD">
+              <property role="3oM_SC" value="happens" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ci" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cj" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ck" role="1PaTwD">
+              <property role="3oM_SC" value="among" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cl" role="1PaTwD">
+              <property role="3oM_SC" value="modules" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cm" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cn" role="1PaTwD">
+              <property role="3oM_SC" value="build," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7co" role="1PaTwD">
+              <property role="3oM_SC" value="ensure" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cp" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cq" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cr" role="1PaTwD">
+              <property role="3oM_SC" value="first," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cs" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ct" role="1PaTwD">
+              <property role="3oM_SC" value="well" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cu" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cv" role="1PaTwD">
+              <property role="3oM_SC" value="their" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cw" role="1PaTwD">
+              <property role="3oM_SC" value="generators..." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6_Wau" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6_Waw" role="3SKWNk">
-            <property role="3SKdUp" value="Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged," />
+          <node concept="1PaTwC" id="ATZLwXo7cx" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7cy" role="1PaTwD">
+              <property role="3oM_SC" value="Note" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cz" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7c$" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7c_" role="1PaTwD">
+              <property role="3oM_SC" value="approach" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cA" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cB" role="1PaTwD">
+              <property role="3oM_SC" value="ignore" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cC" role="1PaTwD">
+              <property role="3oM_SC" value="workspace" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cD" role="1PaTwD">
+              <property role="3oM_SC" value="dependencies" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cE" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cF" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cG" role="1PaTwD">
+              <property role="3oM_SC" value="deployed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cH" role="1PaTwD">
+              <property role="3oM_SC" value="language." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cI" role="1PaTwD">
+              <property role="3oM_SC" value="E.g." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cJ" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cK" role="1PaTwD">
+              <property role="3oM_SC" value="there's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cL" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cM" role="1PaTwD">
+              <property role="3oM_SC" value="changed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cN" role="1PaTwD">
+              <property role="3oM_SC" value="RT" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cO" role="1PaTwD">
+              <property role="3oM_SC" value="solution," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cP" role="1PaTwD">
+              <property role="3oM_SC" value="its" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cQ" role="1PaTwD">
+              <property role="3oM_SC" value="language" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cR" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cS" role="1PaTwD">
+              <property role="3oM_SC" value="unchanged," />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6A98P" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6A98R" role="3SKWNk">
-            <property role="3SKdUp" value="and we mak RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first" />
+          <node concept="1PaTwC" id="ATZLwXo7cT" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7cU" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cV" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cW" role="1PaTwD">
+              <property role="3oM_SC" value="mak" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cX" role="1PaTwD">
+              <property role="3oM_SC" value="RT" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cY" role="1PaTwD">
+              <property role="3oM_SC" value="solution" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7cZ" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d0" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d1" role="1PaTwD">
+              <property role="3oM_SC" value="one" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d2" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d3" role="1PaTwD">
+              <property role="3oM_SC" value="uses" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d4" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d5" role="1PaTwD">
+              <property role="3oM_SC" value="language," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d6" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d7" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d8" role="1PaTwD">
+              <property role="3oM_SC" value="miss" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7d9" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7da" role="1PaTwD">
+              <property role="3oM_SC" value="dependency" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7db" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dc" role="1PaTwD">
+              <property role="3oM_SC" value="RT" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dd" role="1PaTwD">
+              <property role="3oM_SC" value="needs" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7de" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7df" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dg" role="1PaTwD">
+              <property role="3oM_SC" value="'Make'" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dh" role="1PaTwD">
+              <property role="3oM_SC" value="first" />
+            </node>
           </node>
         </node>
         <node concept="2Gpval" id="TfU9m6s1gj" role="3cqZAp">
@@ -1381,8 +2471,73 @@
           </node>
           <node concept="3clFbS" id="TfU9m6s1gp" role="2LFqv$">
             <node concept="3SKdUt" id="TfU9m6xKkr" role="3cqZAp">
-              <node concept="3SKdUq" id="TfU9m6xKkt" role="3SKWNk">
-                <property role="3SKdUp" value=" there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call" />
+              <node concept="1PaTwC" id="ATZLwXo7di" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo7dj" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dk" role="1PaTwD">
+                  <property role="3oM_SC" value="there's" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dl" role="1PaTwD">
+                  <property role="3oM_SC" value="vertex" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dm" role="1PaTwD">
+                  <property role="3oM_SC" value="for" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dn" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7do" role="1PaTwD">
+                  <property role="3oM_SC" value="language" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dp" role="1PaTwD">
+                  <property role="3oM_SC" value="module," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dq" role="1PaTwD">
+                  <property role="3oM_SC" value="don't" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dr" role="1PaTwD">
+                  <property role="3oM_SC" value="care" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7ds" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dt" role="1PaTwD">
+                  <property role="3oM_SC" value="calculate" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7du" role="1PaTwD">
+                  <property role="3oM_SC" value="its" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dv" role="1PaTwD">
+                  <property role="3oM_SC" value="dependencies," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dw" role="1PaTwD">
+                  <property role="3oM_SC" value="will" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dx" role="1PaTwD">
+                  <property role="3oM_SC" value="get" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dy" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dz" role="1PaTwD">
+                  <property role="3oM_SC" value="that" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7d$" role="1PaTwD">
+                  <property role="3oM_SC" value="anyway" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7d_" role="1PaTwD">
+                  <property role="3oM_SC" value="at" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dA" role="1PaTwD">
+                  <property role="3oM_SC" value="respective" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dB" role="1PaTwD">
+                  <property role="3oM_SC" value="fillEdges" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo7dC" role="1PaTwD">
+                  <property role="3oM_SC" value="call" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="TfU9m6sgCh" role="3cqZAp">
@@ -1453,8 +2608,52 @@
                   <node concept="9aQIb" id="TfU9m6tKxR" role="9aQIa">
                     <node concept="3clFbS" id="TfU9m6tKxS" role="9aQI4">
                       <node concept="3SKdUt" id="TfU9m6tLTF" role="3cqZAp">
-                        <node concept="3SKdUq" id="TfU9m6tLTG" role="3SKWNk">
-                          <property role="3SKdUp" value="we aren't going to cluserize required generator, but perhaps we do some of its dependencies" />
+                        <node concept="1PaTwC" id="ATZLwXo7dD" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXo7dE" role="1PaTwD">
+                            <property role="3oM_SC" value="we" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dF" role="1PaTwD">
+                            <property role="3oM_SC" value="aren't" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dG" role="1PaTwD">
+                            <property role="3oM_SC" value="going" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dH" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dI" role="1PaTwD">
+                            <property role="3oM_SC" value="cluserize" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dJ" role="1PaTwD">
+                            <property role="3oM_SC" value="required" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dK" role="1PaTwD">
+                            <property role="3oM_SC" value="generator," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dL" role="1PaTwD">
+                            <property role="3oM_SC" value="but" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dM" role="1PaTwD">
+                            <property role="3oM_SC" value="perhaps" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dN" role="1PaTwD">
+                            <property role="3oM_SC" value="we" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dO" role="1PaTwD">
+                            <property role="3oM_SC" value="do" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dP" role="1PaTwD">
+                            <property role="3oM_SC" value="some" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dQ" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dR" role="1PaTwD">
+                            <property role="3oM_SC" value="its" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo7dS" role="1PaTwD">
+                            <property role="3oM_SC" value="dependencies" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="TfU9m6xOlp" role="3cqZAp">
@@ -1537,8 +2736,115 @@
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6vm2J" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6vm2L" role="3SKWNk">
-            <property role="3SKdUp" value="XXX in fact, don't need to build complete set of dependencies, more effective is to follow one by one to see if it's vertex in the graph or it's known not to give any new dependency" />
+          <node concept="1PaTwC" id="ATZLwXo7dT" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7dU" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dV" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dW" role="1PaTwD">
+              <property role="3oM_SC" value="fact," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dX" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dY" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7dZ" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e0" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e1" role="1PaTwD">
+              <property role="3oM_SC" value="complete" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e2" role="1PaTwD">
+              <property role="3oM_SC" value="set" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e3" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e4" role="1PaTwD">
+              <property role="3oM_SC" value="dependencies," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e5" role="1PaTwD">
+              <property role="3oM_SC" value="more" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e6" role="1PaTwD">
+              <property role="3oM_SC" value="effective" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e7" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e8" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e9" role="1PaTwD">
+              <property role="3oM_SC" value="follow" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ea" role="1PaTwD">
+              <property role="3oM_SC" value="one" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eb" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ec" role="1PaTwD">
+              <property role="3oM_SC" value="one" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ed" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ee" role="1PaTwD">
+              <property role="3oM_SC" value="see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ef" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eg" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eh" role="1PaTwD">
+              <property role="3oM_SC" value="vertex" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ei" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ej" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ek" role="1PaTwD">
+              <property role="3oM_SC" value="graph" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7el" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7em" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7en" role="1PaTwD">
+              <property role="3oM_SC" value="known" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eo" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ep" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eq" role="1PaTwD">
+              <property role="3oM_SC" value="give" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7er" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7es" role="1PaTwD">
+              <property role="3oM_SC" value="new" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7et" role="1PaTwD">
+              <property role="3oM_SC" value="dependency" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="13dUOCgvrC9" role="3cqZAp">
@@ -1617,8 +2923,25 @@
           </node>
         </node>
         <node concept="3SKdUt" id="TfU9m6uDp8" role="3cqZAp">
-          <node concept="3SKdUq" id="TfU9m6uDpa" role="3SKWNk">
-            <property role="3SKdUp" value="record edges only to existing vertexes" />
+          <node concept="1PaTwC" id="ATZLwXo7eu" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7ev" role="1PaTwD">
+              <property role="3oM_SC" value="record" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ew" role="1PaTwD">
+              <property role="3oM_SC" value="edges" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ex" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ey" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ez" role="1PaTwD">
+              <property role="3oM_SC" value="existing" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7e$" role="1PaTwD">
+              <property role="3oM_SC" value="vertexes" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="TfU9m6yRn4" role="3cqZAp">
@@ -1682,13 +3005,113 @@
         <node concept="3clFbH" id="TfU9m6xqPF" role="3cqZAp" />
         <node concept="3clFbH" id="TfU9m6rQ3H" role="3cqZAp" />
         <node concept="3SKdUt" id="3bdlBcZsRyR" role="3cqZAp">
-          <node concept="3SKdUq" id="3bdlBcZsRyT" role="3SKWNk">
-            <property role="3SKdUp" value="XXX perhaps, we shall respect target languages of used languages as well, as they may appear while generating this module. " />
+          <node concept="1PaTwC" id="ATZLwXo7e_" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7eA" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eB" role="1PaTwD">
+              <property role="3oM_SC" value="perhaps," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eC" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eD" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eE" role="1PaTwD">
+              <property role="3oM_SC" value="respect" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eF" role="1PaTwD">
+              <property role="3oM_SC" value="target" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eG" role="1PaTwD">
+              <property role="3oM_SC" value="languages" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eH" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eI" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eJ" role="1PaTwD">
+              <property role="3oM_SC" value="languages" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eK" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eL" role="1PaTwD">
+              <property role="3oM_SC" value="well," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eM" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eN" role="1PaTwD">
+              <property role="3oM_SC" value="they" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eO" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eP" role="1PaTwD">
+              <property role="3oM_SC" value="appear" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eQ" role="1PaTwD">
+              <property role="3oM_SC" value="while" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eR" role="1PaTwD">
+              <property role="3oM_SC" value="generating" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eS" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eT" role="1PaTwD">
+              <property role="3oM_SC" value="module." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="3bdlBcZyvol" role="3cqZAp">
-          <node concept="3SKdUq" id="3bdlBcZyvom" role="3SKWNk">
-            <property role="3SKdUp" value="    We need them anyway to build required facets in ModulesClusterizer.allLanguagesToActivateFacets" />
+          <node concept="1PaTwC" id="ATZLwXo7eU" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7eV" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eW" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eX" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eY" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7eZ" role="1PaTwD">
+              <property role="3oM_SC" value="We" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f0" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f1" role="1PaTwD">
+              <property role="3oM_SC" value="them" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f2" role="1PaTwD">
+              <property role="3oM_SC" value="anyway" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f3" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f4" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f5" role="1PaTwD">
+              <property role="3oM_SC" value="required" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f6" role="1PaTwD">
+              <property role="3oM_SC" value="facets" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f7" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7f8" role="1PaTwD">
+              <property role="3oM_SC" value="ModulesClusterizer.allLanguagesToActivateFacets" />
+            </node>
           </node>
         </node>
         <node concept="3clFbH" id="3bdlBcZr0N8" role="3cqZAp" />
@@ -2219,8 +3642,37 @@
           </node>
         </node>
         <node concept="3SKdUt" id="49ElRPVTO5p" role="3cqZAp">
-          <node concept="3SKdUq" id="49ElRPVTO5r" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME use ProgressMonitor as graph ordering may take some time" />
+          <node concept="1PaTwC" id="ATZLwXo7f9" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7fa" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fb" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fc" role="1PaTwD">
+              <property role="3oM_SC" value="ProgressMonitor" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fd" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fe" role="1PaTwD">
+              <property role="3oM_SC" value="graph" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ff" role="1PaTwD">
+              <property role="3oM_SC" value="ordering" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fg" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fh" role="1PaTwD">
+              <property role="3oM_SC" value="take" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fi" role="1PaTwD">
+              <property role="3oM_SC" value="some" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fj" role="1PaTwD">
+              <property role="3oM_SC" value="time" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="3$29j12TKgK" role="3cqZAp">
@@ -2530,13 +3982,107 @@
           </node>
         </node>
         <node concept="3SKdUt" id="3bdlBcZxeCo" role="3cqZAp">
-          <node concept="3SKdUq" id="3bdlBcZxeCp" role="3SKWNk">
-            <property role="3SKdUp" value="We need to care about used languages of employed generators as we need to respect" />
+          <node concept="1PaTwC" id="ATZLwXo7fk" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7fl" role="1PaTwD">
+              <property role="3oM_SC" value="We" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fm" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fn" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fo" role="1PaTwD">
+              <property role="3oM_SC" value="care" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fp" role="1PaTwD">
+              <property role="3oM_SC" value="about" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fq" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fr" role="1PaTwD">
+              <property role="3oM_SC" value="languages" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fs" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7ft" role="1PaTwD">
+              <property role="3oM_SC" value="employed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fu" role="1PaTwD">
+              <property role="3oM_SC" value="generators" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fv" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fw" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fx" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fy" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fz" role="1PaTwD">
+              <property role="3oM_SC" value="respect" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="3bdlBcZxeCq" role="3cqZAp">
-          <node concept="3SKdUq" id="3bdlBcZxeCr" role="3SKWNk">
-            <property role="3SKdUp" value="all facets of all languages that may appear during generation of a model/module in the make script" />
+          <node concept="1PaTwC" id="ATZLwXo7f$" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7f_" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fA" role="1PaTwD">
+              <property role="3oM_SC" value="facets" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fB" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fC" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fD" role="1PaTwD">
+              <property role="3oM_SC" value="languages" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fE" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fF" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fG" role="1PaTwD">
+              <property role="3oM_SC" value="appear" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fH" role="1PaTwD">
+              <property role="3oM_SC" value="during" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fI" role="1PaTwD">
+              <property role="3oM_SC" value="generation" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fJ" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fK" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fL" role="1PaTwD">
+              <property role="3oM_SC" value="model/module" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fM" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fN" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fO" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fP" role="1PaTwD">
+              <property role="3oM_SC" value="script" />
+            </node>
           </node>
         </node>
         <node concept="2$JKZl" id="3bdlBcZxeCs" role="3cqZAp">
@@ -3464,8 +5010,55 @@
       <node concept="3Tm1VV" id="41innpAgune" role="1B3o_S" />
       <node concept="3clFbS" id="41innpAgunf" role="3clF47">
         <node concept="3SKdUt" id="41innpAjpS9" role="3cqZAp">
-          <node concept="3SKdUq" id="41innpAjpSt" role="3SKWNk">
-            <property role="3SKdUp" value="iterator accepts script and resources to be processed by the script, and returns false to stop" />
+          <node concept="1PaTwC" id="ATZLwXo7fQ" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo7fR" role="1PaTwD">
+              <property role="3oM_SC" value="iterator" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fS" role="1PaTwD">
+              <property role="3oM_SC" value="accepts" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fT" role="1PaTwD">
+              <property role="3oM_SC" value="script" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fU" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fV" role="1PaTwD">
+              <property role="3oM_SC" value="resources" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fW" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fX" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fY" role="1PaTwD">
+              <property role="3oM_SC" value="processed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7fZ" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7g0" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7g1" role="1PaTwD">
+              <property role="3oM_SC" value="script," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7g2" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7g3" role="1PaTwD">
+              <property role="3oM_SC" value="returns" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7g4" role="1PaTwD">
+              <property role="3oM_SC" value="false" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7g5" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo7g6" role="1PaTwD">
+              <property role="3oM_SC" value="stop" />
+            </node>
           </node>
         </node>
         <node concept="1DcWWT" id="41innpAjn_N" role="3cqZAp">

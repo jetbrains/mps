@@ -48,6 +48,7 @@ public class BwfJavaModuleReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_w9a1py_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"), MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, 0x41fde5e4adce38c5L, "target"));
     }
     @NotNull

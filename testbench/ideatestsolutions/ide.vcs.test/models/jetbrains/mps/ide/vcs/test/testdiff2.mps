@@ -2,7 +2,7 @@
 <model ref="r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)" doNotGenerate="true">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -117,11 +117,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -161,6 +158,14 @@
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
   </registry>
   <node concept="312cEu" id="1TLFXya91R3">
     <property role="TrG5h" value="Test3" />
@@ -172,8 +177,16 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91R5" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91R6" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91R7" role="3SKWNk">
-            <property role="3SKdUp" value="test property change" />
+          <node concept="1PaTwC" id="ATZLwXoo$0" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$1" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$2" role="1PaTwD">
+              <property role="3oM_SC" value="property" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$3" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
           </node>
         </node>
       </node>
@@ -188,8 +201,19 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyaabJz" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyaabLR" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyaabLS" role="3SKWNk">
-            <property role="3SKdUp" value="test boolean property change" />
+          <node concept="1PaTwC" id="ATZLwXoo$4" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$5" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$6" role="1PaTwD">
+              <property role="3oM_SC" value="boolean" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$7" role="1PaTwD">
+              <property role="3oM_SC" value="property" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$8" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
           </node>
         </node>
       </node>
@@ -204,8 +228,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91Rb" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91Rc" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91Rd" role="3SKWNk">
-            <property role="3SKdUp" value="test single role child replace" />
+          <node concept="1PaTwC" id="ATZLwXoo$9" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$a" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$b" role="1PaTwD">
+              <property role="3oM_SC" value="single" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$c" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$d" role="1PaTwD">
+              <property role="3oM_SC" value="child" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$e" role="1PaTwD">
+              <property role="3oM_SC" value="replace" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXyaaaFJ" role="3cqZAp">
@@ -227,8 +265,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91Rh" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91Ri" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91Rj" role="3SKWNk">
-            <property role="3SKdUp" value="test single role child delete" />
+          <node concept="1PaTwC" id="ATZLwXoo$f" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$g" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$h" role="1PaTwD">
+              <property role="3oM_SC" value="single" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$i" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$j" role="1PaTwD">
+              <property role="3oM_SC" value="child" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$k" role="1PaTwD">
+              <property role="3oM_SC" value="delete" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="1TLFXyadzvk" role="3cqZAp">
@@ -249,8 +301,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91Rn" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91Ro" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91Rp" role="3SKWNk">
-            <property role="3SKdUp" value="test single role child add" />
+          <node concept="1PaTwC" id="ATZLwXoo$l" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$m" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$n" role="1PaTwD">
+              <property role="3oM_SC" value="single" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$o" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$p" role="1PaTwD">
+              <property role="3oM_SC" value="child" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$q" role="1PaTwD">
+              <property role="3oM_SC" value="add" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="1TLFXyafrCW" role="3cqZAp">
@@ -291,8 +357,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91Rs" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91Rt" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91Ru" role="3SKWNk">
-            <property role="3SKdUp" value="test multiple role child delete" />
+          <node concept="1PaTwC" id="ATZLwXoo$r" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$s" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$t" role="1PaTwD">
+              <property role="3oM_SC" value="multiple" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$u" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$v" role="1PaTwD">
+              <property role="3oM_SC" value="child" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$w" role="1PaTwD">
+              <property role="3oM_SC" value="delete" />
+            </node>
           </node>
         </node>
       </node>
@@ -319,8 +399,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91RE" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91RF" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91RG" role="3SKWNk">
-            <property role="3SKdUp" value="test multiple role children delete" />
+          <node concept="1PaTwC" id="ATZLwXoo$x" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$y" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$z" role="1PaTwD">
+              <property role="3oM_SC" value="multiple" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$$" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$_" role="1PaTwD">
+              <property role="3oM_SC" value="children" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$A" role="1PaTwD">
+              <property role="3oM_SC" value="delete" />
+            </node>
           </node>
         </node>
       </node>
@@ -347,8 +441,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91RU" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91RV" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91RW" role="3SKWNk">
-            <property role="3SKdUp" value="test multiple role child add" />
+          <node concept="1PaTwC" id="ATZLwXoo$B" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$C" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$D" role="1PaTwD">
+              <property role="3oM_SC" value="multiple" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$E" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$F" role="1PaTwD">
+              <property role="3oM_SC" value="child" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$G" role="1PaTwD">
+              <property role="3oM_SC" value="add" />
+            </node>
           </node>
         </node>
       </node>
@@ -399,8 +507,22 @@
       </node>
       <node concept="3clFbS" id="1TLFXya91Sa" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91Sb" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91Sc" role="3SKWNk">
-            <property role="3SKdUp" value="test multiple role children add" />
+          <node concept="1PaTwC" id="ATZLwXoo$H" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$I" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$J" role="1PaTwD">
+              <property role="3oM_SC" value="multiple" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$K" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$L" role="1PaTwD">
+              <property role="3oM_SC" value="children" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$M" role="1PaTwD">
+              <property role="3oM_SC" value="add" />
+            </node>
           </node>
         </node>
       </node>
@@ -415,8 +537,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91Sg" role="3clF47">
         <node concept="3SKdUt" id="1TLFXya91Sh" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXya91Si" role="3SKWNk">
-            <property role="3SKdUp" value="test multiple role children replace" />
+          <node concept="1PaTwC" id="ATZLwXoo$N" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$O" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$P" role="1PaTwD">
+              <property role="3oM_SC" value="multiple" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$Q" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$R" role="1PaTwD">
+              <property role="3oM_SC" value="children" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$S" role="1PaTwD">
+              <property role="3oM_SC" value="replace" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="1TLFXya91Sj" role="3cqZAp">
@@ -481,8 +617,16 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXya91SA" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyakP99" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyakP9a" role="3SKWNk">
-            <property role="3SKdUp" value="test reference change" />
+          <node concept="1PaTwC" id="ATZLwXoo$T" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$U" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$V" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$W" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXya91SB" role="3cqZAp">
@@ -515,8 +659,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyau_AX" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyau_AY" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyau_AZ" role="3SKWNk">
-            <property role="3SKdUp" value="test same reference to parent" />
+          <node concept="1PaTwC" id="ATZLwXoo$X" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo$Y" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo$Z" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_0" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_1" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_2" role="1PaTwD">
+              <property role="3oM_SC" value="parent" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXyau_B0" role="3cqZAp">
@@ -536,8 +694,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyanya5" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyarfCI" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyarfCJ" role="3SKWNk">
-            <property role="3SKdUp" value="test outside reference in model" />
+          <node concept="1PaTwC" id="ATZLwXoo_3" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_4" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_5" role="1PaTwD">
+              <property role="3oM_SC" value="outside" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_6" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_7" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_8" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXyanya8" role="3cqZAp">
@@ -562,8 +734,22 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyarfQ6" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyarfQ7" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyarfQ8" role="3SKWNk">
-            <property role="3SKdUp" value="test same references outside model" />
+          <node concept="1PaTwC" id="ATZLwXoo_9" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_a" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_b" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_c" role="1PaTwD">
+              <property role="3oM_SC" value="references" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_d" role="1PaTwD">
+              <property role="3oM_SC" value="outside" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_e" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXyarfQ9" role="3cqZAp">
@@ -592,8 +778,25 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyarY0W" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyarUYM" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyauME4" role="3SKWNk">
-            <property role="3SKdUp" value="todo: test same reference to descendant" />
+          <node concept="1PaTwC" id="ATZLwXoo_f" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_g" role="1PaTwD">
+              <property role="3oM_SC" value="todo:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_h" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_i" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_j" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_k" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_l" role="1PaTwD">
+              <property role="3oM_SC" value="descendant" />
+            </node>
           </node>
         </node>
       </node>
@@ -608,8 +811,25 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyaEINW" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyaEINX" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyaEINY" role="3SKWNk">
-            <property role="3SKdUp" value="test same references inside the node" />
+          <node concept="1PaTwC" id="ATZLwXoo_m" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_n" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_o" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_p" role="1PaTwD">
+              <property role="3oM_SC" value="references" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_q" role="1PaTwD">
+              <property role="3oM_SC" value="inside" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_r" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_s" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="1TLFXyaEINZ" role="3cqZAp">
@@ -623,8 +843,28 @@
           </node>
         </node>
         <node concept="3SKdUt" id="1TLFXyaEIO3" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyaEIO4" role="3SKWNk">
-            <property role="3SKdUp" value="in previous sibling and other role brother" />
+          <node concept="1PaTwC" id="ATZLwXoo_t" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_u" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_v" role="1PaTwD">
+              <property role="3oM_SC" value="previous" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_w" role="1PaTwD">
+              <property role="3oM_SC" value="sibling" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_x" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_y" role="1PaTwD">
+              <property role="3oM_SC" value="other" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_z" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_$" role="1PaTwD">
+              <property role="3oM_SC" value="brother" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXyaEIO5" role="3cqZAp">
@@ -663,8 +903,16 @@
                     <property role="2aFKle" value="false" />
                     <node concept="3clFbS" id="1TLFXyaEIOj" role="3clF47">
                       <node concept="3SKdUt" id="1TLFXyaEIOk" role="3cqZAp">
-                        <node concept="3SKdUq" id="1TLFXyaEIOl" role="3SKWNk">
-                          <property role="3SKdUp" value="in next sibling" />
+                        <node concept="1PaTwC" id="ATZLwXoo__" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXoo_A" role="1PaTwD">
+                            <property role="3oM_SC" value="in" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoo_B" role="1PaTwD">
+                            <property role="3oM_SC" value="next" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoo_C" role="1PaTwD">
+                            <property role="3oM_SC" value="sibling" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="1TLFXyaEIOm" role="3cqZAp">
@@ -714,8 +962,31 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyauM0V" role="3clF47">
         <node concept="3SKdUt" id="1TLFXyauM0W" role="3cqZAp">
-          <node concept="3SKdUq" id="1TLFXyauM0X" role="3SKWNk">
-            <property role="3SKdUp" value="test maximum common sequence finding for children role" />
+          <node concept="1PaTwC" id="ATZLwXoo_D" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_E" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_F" role="1PaTwD">
+              <property role="3oM_SC" value="maximum" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_G" role="1PaTwD">
+              <property role="3oM_SC" value="common" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_H" role="1PaTwD">
+              <property role="3oM_SC" value="sequence" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_I" role="1PaTwD">
+              <property role="3oM_SC" value="finding" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_J" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_K" role="1PaTwD">
+              <property role="3oM_SC" value="children" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_L" role="1PaTwD">
+              <property role="3oM_SC" value="role" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXyauM0Y" role="3cqZAp">
@@ -787,8 +1058,28 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1TLFXyaFiio" role="3clF47">
         <node concept="3SKdUt" id="5utEaKWoEhE" role="3cqZAp">
-          <node concept="3SKdUq" id="5utEaKWoEhF" role="3SKWNk">
-            <property role="3SKdUp" value="test reference to object in first model" />
+          <node concept="1PaTwC" id="ATZLwXoo_M" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_N" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_O" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_P" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_Q" role="1PaTwD">
+              <property role="3oM_SC" value="object" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_R" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_S" role="1PaTwD">
+              <property role="3oM_SC" value="first" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_T" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1TLFXyaFiDY" role="3cqZAp">
@@ -810,8 +1101,25 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="3X9CJzplW0o" role="3clF47">
         <node concept="3SKdUt" id="3X9CJzplWoH" role="3cqZAp">
-          <node concept="3SKdUq" id="3X9CJzplWoI" role="3SKWNk">
-            <property role="3SKdUp" value="test similar nodes (same concept) matching" />
+          <node concept="1PaTwC" id="ATZLwXoo_U" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoo_V" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_W" role="1PaTwD">
+              <property role="3oM_SC" value="similar" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_X" role="1PaTwD">
+              <property role="3oM_SC" value="nodes" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_Y" role="1PaTwD">
+              <property role="3oM_SC" value="(same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoo_Z" role="1PaTwD">
+              <property role="3oM_SC" value="concept)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXooA0" role="1PaTwD">
+              <property role="3oM_SC" value="matching" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="3X9CJzplW0r" role="3cqZAp">

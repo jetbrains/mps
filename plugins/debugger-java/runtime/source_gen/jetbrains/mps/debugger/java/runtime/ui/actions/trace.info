@@ -21,8 +21,8 @@
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/4225554808929802673">
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="4225554808929802673" at="24,57,25,45" concept="2" />
-      <node id="4225554808930022146" at="29,37,30,103" concept="2" />
+      <node id="4225554808929802673" at="26,57,27,45" concept="2" />
+      <node id="4225554808930022146" at="31,37,32,103" concept="2" />
     </file>
     <file name="ViewAs_Group_ActionGroup.java">
       <node id="4225554808929802673" at="28,0,29,0" concept="11" trace="ID" />
@@ -187,8 +187,8 @@
       <unit id="4613144939628065112" at="7,0,17,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.JavaWatchableNodeActions_ActionGroup" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="4613144939628065112" at="23,14,24,57" concept="2" />
-      <node id="4613144939628065116" at="30,103,31,175" concept="2" />
+      <node id="4613144939628065112" at="25,0,26,57" concept="2" />
+      <node id="4613144939628065116" at="32,103,33,175" concept="2" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/4893181994832024376">
@@ -232,33 +232,33 @@
       <unit id="4893181994832024376" at="15,0,44,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.CopyStackTraceToClipboard_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="4893181994832024376" at="18,43,19,54" concept="2" />
+      <node id="4893181994832024376" at="19,43,20,54" concept="2" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/7162597690968011948">
     <file name="Runtime_ApplicationPlugin.java">
       <node id="7162597690968011948" at="10,0,11,0" concept="3" trace="myId" />
       <node id="7162597690968011948" at="13,27,14,16" concept="8" />
-      <node id="7162597690968011948" at="16,30,17,30" concept="9" />
-      <node id="7162597690968011948" at="22,46,23,14" concept="9" />
       <node id="7162597690968011948" at="11,0,13,0" concept="1" trace="Runtime_ApplicationPlugin#()V" />
+      <node id="7162597690968011948" at="16,30,18,0" concept="9" />
+      <node id="7162597690968011948" at="23,46,25,0" concept="9" />
       <node id="7162597690968011948" at="13,0,16,0" concept="6" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7162597690968011948" at="29,0,33,0" concept="6" trace="adjustRegularGroups#()V" />
-      <node id="7162597690968011948" at="16,0,29,0" concept="6" trace="createGroups#()V" />
+      <node id="7162597690968011948" at="31,0,35,0" concept="6" trace="adjustRegularGroups#()V" />
+      <node id="7162597690968011948" at="16,0,31,0" concept="6" trace="createGroups#()V" />
       <scope id="7162597690968011948" at="11,38,11,38" />
       <scope id="7162597690968011948" at="13,27,14,16" />
       <scope id="7162597690968011948" at="11,0,13,0" />
-      <scope id="7162597690968011948" at="29,37,31,175" />
+      <scope id="7162597690968011948" at="31,37,33,175" />
       <scope id="7162597690968011948" at="13,0,16,0" />
-      <scope id="7162597690968011948" at="29,0,33,0" />
-      <scope id="7162597690968011948" at="16,30,27,51" />
-      <scope id="7162597690968011948" at="16,0,29,0" />
-      <unit id="7162597690968011948" at="9,0,34,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.Runtime_ApplicationPlugin" />
+      <scope id="7162597690968011948" at="31,0,35,0" />
+      <scope id="7162597690968011948" at="16,30,29,51" />
+      <scope id="7162597690968011948" at="16,0,31,0" />
+      <unit id="7162597690968011948" at="9,0,36,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.Runtime_ApplicationPlugin" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8643693251546861612">
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="8643693251546861612" at="26,54,27,51" concept="2" />
+      <node id="8643693251546861612" at="28,54,29,51" concept="2" />
     </file>
     <file name="WatchesTreeActions_ActionGroup.java">
       <node id="8643693251546861612" at="8,0,9,0" concept="11" trace="ID" />
@@ -309,7 +309,7 @@
       <unit id="8643693251546861633" at="15,0,39,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.AddWatchAction_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="8643693251546861633" at="17,30,18,43" concept="2" />
+      <node id="8643693251546861633" at="18,0,19,43" concept="2" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8643693251546861699">
@@ -349,7 +349,7 @@
       <unit id="8643693251546861699" at="17,0,42,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.RemoveWatchAction_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="8643693251546861699" at="21,44,22,46" concept="2" />
+      <node id="8643693251546861699" at="22,44,23,46" concept="2" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8643693251546861757">
@@ -409,7 +409,7 @@
       <unit id="8643693251546861757" at="17,0,57,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.EditWatchAction_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="8643693251546861757" at="20,44,21,44" concept="2" />
+      <node id="8643693251546861757" at="21,44,22,44" concept="2" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8894158296385402494">
@@ -493,12 +493,12 @@
       <unit id="8894158296385402494" at="23,0,80,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.CopyValueAction_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="8894158296385402494" at="19,54,20,44" concept="2" />
+      <node id="8894158296385402494" at="20,54,21,44" concept="2" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/9133858534420786537">
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="9133858534420786537" at="25,45,26,54" concept="2" />
+      <node id="9133858534420786537" at="27,45,28,54" concept="2" />
     </file>
     <file name="WatchesToolbarActions_ActionGroup.java">
       <node id="9133858534420786537" at="8,0,9,0" concept="11" trace="ID" />

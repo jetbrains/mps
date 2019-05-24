@@ -43,6 +43,7 @@ public class NodeRefExpression_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // roots only 
+
             return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
           }
         };

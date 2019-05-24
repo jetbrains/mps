@@ -67,6 +67,7 @@ public interface IScriptController {
       myMakeSession = makeSession;
       myPoolInitializers = poolInitializers;
       // FIXME identical to AbstractMakeService.DefaultMonitor, but can't re-use here due to dependency direction. Refactor 
+
       myMonitor = new IConfigMonitor.Stub(myMakeSession) {
         @Override
         public void reportFeedback(IFeedback fdbk) {

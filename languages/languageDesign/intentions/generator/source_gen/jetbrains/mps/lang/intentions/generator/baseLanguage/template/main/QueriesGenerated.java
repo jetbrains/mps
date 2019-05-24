@@ -9,16 +9,16 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.intentions.IntentionsManager;
 import jetbrains.mps.lang.intentions.behavior.BaseIntentionDeclaration__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -60,34 +60,33 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
+
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "intentions");
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
+
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "intentions");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
-  }
-  public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:i1"))).count() + Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:i2"))).count();
   }
-  public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
     return ((Integer) _context.getVariable("cv:i"));
   }
-  public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
     return ((Integer) _context.getVariable("cv:i")) + Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:i1"))).count();
   }
-  public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, "jetbrains.mps.lang.intentions.structure.BaseIntentionDeclaration"))).count() + ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, "jetbrains.mps.lang.intentions.structure.Intention"))).count();
   }
-  public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
     return ((Integer) _context.getVariable("cv:k"));
   }
-  public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
     return ((Integer) _context.getVariable("cv:k")) + ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, "jetbrains.mps.lang.intentions.structure.BaseIntentionDeclaration"))).count();
   }
-  public static Object propertyMacro_GetValue_1_7(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
     SModule module = _context.getOriginalInputModel().getModule();
     assert module instanceof Language;
     return IntentionsManager.getDescriptorClassName(module.getModuleReference());
@@ -161,6 +160,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output IntentionsDescriptorCons for model model; 
+
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".IntentionsDescriptor";
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
@@ -210,6 +210,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
     //  XXX kind of odd way to check != null, provided priority is declared as ErrorIntentionPriority[0..1] 
+
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x59427edd75744671L, "priority")), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x59427edd75744615L, "jetbrains.mps.lang.intentions.structure.ErrorIntentionPriority"));
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
@@ -497,7 +498,6 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("1889794043260133525", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text"), "concept"));
     pvqMethods.put("1889794043260246446", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "0"));
     pvqMethods.put("1889794043260295755", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "0"));
     pvqMethods.put("1889794043260300863", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "0"));
@@ -548,24 +548,22 @@ public class QueriesGenerated extends QueryProviderBase {
         case 6:
           return QueriesGenerated.propertyMacro_GetValue_1_6(ctx);
         case 7:
-          return QueriesGenerated.propertyMacro_GetValue_1_7(ctx);
-        case 8:
           return QueriesGenerated.propertyMacro_GetValue_2_0(ctx);
-        case 9:
+        case 8:
           return QueriesGenerated.propertyMacro_GetValue_2_1(ctx);
-        case 10:
+        case 9:
           return QueriesGenerated.propertyMacro_GetValue_2_2(ctx);
-        case 11:
+        case 10:
           return QueriesGenerated.propertyMacro_GetValue_2_3(ctx);
-        case 12:
+        case 11:
           return QueriesGenerated.propertyMacro_GetValue_2_4(ctx);
-        case 13:
+        case 12:
           return QueriesGenerated.propertyMacro_GetValue_2_5(ctx);
-        case 14:
+        case 13:
           return QueriesGenerated.propertyMacro_GetValue_4_0(ctx);
-        case 15:
+        case 14:
           return QueriesGenerated.propertyMacro_GetValue_4_1(ctx);
-        case 16:
+        case 15:
           return QueriesGenerated.propertyMacro_GetValue_4_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

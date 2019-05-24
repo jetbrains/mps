@@ -122,6 +122,7 @@ public class List_Test extends Util_Test {
   }
   public void test_toArrayArray() throws Exception {
     // MPS-22673 
+
     List<byte[]> loab = ListSequence.fromList(new ArrayList<byte[]>());
     ListSequence.fromList(loab).addElement(new byte[]{0, 1, 2});
     byte[][] array = ListSequence.fromList(loab).toGenericArray(byte[].class);
@@ -367,6 +368,7 @@ __switch__:
       Assert.fail();
     } catch (UnsupportedOperationException e) {
       // expected exception 
+
     }
     ListSequence.fromList(ls).removeElement("a");
     Assert.assertEquals("c d", IterableUtils.join(ListSequence.fromList(uls), " "));
@@ -375,6 +377,7 @@ __switch__:
       Assert.fail();
     } catch (UnsupportedOperationException e) {
       // expected exception 
+
     }
   }
   public void test_primitiveValues() throws Exception {

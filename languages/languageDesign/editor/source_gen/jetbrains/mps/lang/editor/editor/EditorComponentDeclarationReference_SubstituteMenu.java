@@ -48,6 +48,7 @@ public class EditorComponentDeclarationReference_SubstituteMenu extends Substitu
 
     public SMP_ReferenceScope_1i5xcr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclarationReference"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent"));
     }
     @NotNull

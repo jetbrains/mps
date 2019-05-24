@@ -208,7 +208,9 @@ public abstract class AbstractHierarchyTree extends MPSTree {
 
   /*package*/ HierarchyTreeNode getActiveTreeNode() {
     // I've got no idea what's the need behind this, and 'active' is just a quess here. 
+
     // I merely moved this field from HierarchyView, where it's read, here, where it's modified. 
+
     return myTreeNode;
   }
 

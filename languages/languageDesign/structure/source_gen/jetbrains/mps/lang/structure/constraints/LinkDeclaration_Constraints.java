@@ -121,6 +121,7 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // links declared in hierarchy of enclosing concept. 
+
             if (_context.getReferenceNode() == null) {
               return null;
             }

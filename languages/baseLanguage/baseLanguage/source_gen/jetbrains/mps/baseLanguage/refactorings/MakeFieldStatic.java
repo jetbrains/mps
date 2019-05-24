@@ -41,8 +41,11 @@ public class MakeFieldStatic extends BaseRefactoring {
           refactoringContext.setParameter("declaration", SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getReferences(node)).first().getTargetNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")));
         }
         // XXX perhaps, we shall use refactoringContext.mpsProject.getScope() instead of refactoringContext.scope 
-        //     as we might be interested in any usage. However, it's not clear what rc.scope is and as since it's  
+
+        //     as we might be interested in any usage. However, it's not clear what rc.scope is and as since it's 
+
         //     technically the same now, I decided to go with just rc.scope. 
+
         refactoringContext.setParameter("usages", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("declaration")), refactoringContext.getCurrentScope(), "jetbrains.mps.baseLanguage.findUsages.FieldUsages_Finder"));
         refactoringContext.setParameter("hasExternalUsages", false);
         for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {

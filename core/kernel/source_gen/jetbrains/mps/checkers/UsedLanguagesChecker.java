@@ -42,19 +42,27 @@ public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements
 
     final Set<SLanguage> importedLanguages = new HashSet<SLanguage>();
     // FIXME pass LR/ComponentHost at checker construction time! 
+
     LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repository);
     Collection<SLanguage> modelUsedLanguages = new ModelDependencyResolver(languageRegistry, repository).usedLanguages(SNodeOperations.getModel(node));
     SLanguageHierarchy hierarchy = new SLanguageHierarchy(languageRegistry, modelUsedLanguages);
     importedLanguages.addAll(hierarchy.getExtended());
     // Here we address MPS-28205 scenario, when a model with import of Lang1 has instance of a concept with child from an aggregated Lang2. 
+
     // XXX I see two possible approaches here: either assume model imports shall explicitly reflect aggregated languages as well 
+
     // e.g. by adding them automatically when an appropriate child is created, and 'implicit' import of aggregated languages, when we keep 
-    // model imports to user to control, and 'guess' (deduce) the rest based on available metainfo. I feel former would get model imports  
+
+    // model imports to user to control, and 'guess' (deduce) the rest based on available metainfo. I feel former would get model imports 
+
     // way too cluttered, and lean towards the latter approach, hence treat aggergated languages as imported here. 
+
     importedLanguages.addAll(hierarchy.getAggregated());
 
     // need to recurse the tree, to report missing language once per sub-tree (starting from the first node with missing language encountered) 
+
     // Iterative alternative would be more complicated, hence inglorious recursion 
+
     findMissing(errorsCollector, Collections.singleton(node), Collections.<SLanguage>emptySet(), importedLanguages);
   }
 

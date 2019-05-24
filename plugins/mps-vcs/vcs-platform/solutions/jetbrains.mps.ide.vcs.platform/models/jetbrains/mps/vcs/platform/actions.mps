@@ -9,7 +9,7 @@
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="lsse" ref="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)" />
@@ -289,11 +289,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -346,6 +343,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1457,8 +1462,34 @@
               </node>
             </node>
             <node concept="3SKdUt" id="6gKvA3DxdCt" role="3cqZAp">
-              <node concept="3SKdUq" id="6gKvA3DxdCv" role="3SKWNk">
-                <property role="3SKdUp" value="put hint to show only one root and navigate" />
+              <node concept="1PaTwC" id="ATZLwXomkX" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXomkY" role="1PaTwD">
+                  <property role="3oM_SC" value="put" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXomkZ" role="1PaTwD">
+                  <property role="3oM_SC" value="hint" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoml0" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoml1" role="1PaTwD">
+                  <property role="3oM_SC" value="show" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoml2" role="1PaTwD">
+                  <property role="3oM_SC" value="only" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoml3" role="1PaTwD">
+                  <property role="3oM_SC" value="one" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoml4" role="1PaTwD">
+                  <property role="3oM_SC" value="root" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoml5" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoml6" role="1PaTwD">
+                  <property role="3oM_SC" value="navigate" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="3bsyx4MT56H" role="3cqZAp">
@@ -2205,8 +2236,19 @@
         </node>
         <node concept="3clFbH" id="341WClvYTXX" role="3cqZAp" />
         <node concept="3SKdUt" id="341WClvYTXY" role="3cqZAp">
-          <node concept="3SKdUq" id="341WClvYTXZ" role="3SKWNk">
-            <property role="3SKdUp" value="Select merge-backup to attach" />
+          <node concept="1PaTwC" id="ATZLwXoml7" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoml8" role="1PaTwD">
+              <property role="3oM_SC" value="Select" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoml9" role="1PaTwD">
+              <property role="3oM_SC" value="merge-backup" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomla" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomlb" role="1PaTwD">
+              <property role="3oM_SC" value="attach" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="341WClvYTY0" role="3cqZAp">
@@ -2746,8 +2788,19 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7yFo2Ea0RmV" role="3cqZAp">
-          <node concept="3SKdUq" id="7yFo2Ea0S5w" role="3SKWNk">
-            <property role="3SKdUp" value="merge with git provider" />
+          <node concept="1PaTwC" id="ATZLwXomlc" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXomld" role="1PaTwD">
+              <property role="3oM_SC" value="merge" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomle" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomlf" role="1PaTwD">
+              <property role="3oM_SC" value="git" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomlg" role="1PaTwD">
+              <property role="3oM_SC" value="provider" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="7yFo2Ea1dCW" role="3cqZAp">

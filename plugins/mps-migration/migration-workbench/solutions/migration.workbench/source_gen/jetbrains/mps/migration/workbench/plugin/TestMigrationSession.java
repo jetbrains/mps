@@ -71,6 +71,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     }
     public void checkLibs(ProgressMonitor m, Processor<Pair<SModule, SModule>> processor) {
       // todo 
+
     }
     @Override
     public void checkProject(ProgressMonitor m, Processor<IssueKindReportItem> processor) {
@@ -101,7 +102,8 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     }
     @Override
     public void findNotMigrated(ProgressMonitor m, Iterable<ScriptApplied> toCheck, Processor<Problem> processor) {
-      // todo  
+      // todo 
+
     }
   };
   private MigrationExecutor myExecutor = new MigrationExecutor() {
@@ -281,7 +283,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     }
     public MigrationScriptReference getReference() {
       // todo this is suspicious 
+
       // todo name is used as id here 
+
       final TestMigrationSession.MyModuleMigration _this = this;
       return new MigrationScriptReference(myLang, 0) {
         @Override

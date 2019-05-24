@@ -28,9 +28,11 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
     SNode link;
     if (SNodeOperations.isInstanceOf(functionParent, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract"))) {
       // we are in inline cell menu 
+
       link = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke((SNodeOperations.as(functionParent, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract"))));
     } else {
       // we are in 'ref. presentation' cell 
+
       link = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(functionParent, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell"), false, false), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
     }
     {

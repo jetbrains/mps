@@ -26,10 +26,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     contextClassifiers = new ContextClassifiersInRoot(rootNode);
 
     // init nested class bindings 
+
     bindings = new HashMap<String, String>();
 
     // init package simple names (i.e. name of classes from the same package) 
+
     // indeed, there could be other models that generate into this package, and we could have a conflict with a 'java.lang' class then if the name matches. 
+
     packageSimpleNames = new HashSet<String>();
     for (SNode classifier : SModelOperations.roots(SNodeOperations.getModel(rootNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
       String fqName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classifier);
@@ -41,6 +44,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
   /*package*/ ImportEntry getClassifierRefText(String packageName, String fqName, SNode contextNode) {
     // main invariant: use always nested names, import only root classifiers 
+
     String nestedName = JavaNameUtil.nestedClassName(packageName, fqName);
 
     int dotIndex = nestedName.indexOf('.');
@@ -66,6 +70,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     Map<String, String> nestedClassifiersBinding = contextClassifiers.getContextClassifiers(contextNode);
 
     // 1) check nested classes context 
+
     if (nestedClassifiersBinding.containsKey(className)) {
       if (fqName.equals(nestedClassifiersBinding.get(className))) {
         return new ImportEntry(className);
@@ -75,6 +80,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     }
 
     // 2) check current binding 
+
     if (bindings.containsKey(className)) {
       if (fqName.equals(bindings.get(className))) {
         return new ImportEntry(className);
@@ -84,6 +90,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     }
 
     // 3) add binding, question is: add explicit import or not? 
+
     bindings.put(className, fqName);
     boolean shouldBeImported;
 
@@ -91,9 +98,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
       shouldBeImported = false;
     } else if (packageName.equals("java.lang")) {
       // java.lang model: generate without explicit import if context package doesn't contains same simple name 
+
       shouldBeImported = packageSimpleNames.contains(className);
     } else {
       // in other cases: generate explicit import 
+
       shouldBeImported = true;
     }
     return new ImportEntry((shouldBeImported ? fqName : null), className);

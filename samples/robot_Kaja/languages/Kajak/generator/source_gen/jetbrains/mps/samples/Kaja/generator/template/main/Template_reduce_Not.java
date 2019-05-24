@@ -46,6 +46,7 @@ public class Template_reduce_Not extends TemplateDeclarationBase implements Temp
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
     } finally {
     }

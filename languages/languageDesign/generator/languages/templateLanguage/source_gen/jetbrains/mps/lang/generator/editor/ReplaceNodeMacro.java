@@ -106,7 +106,9 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
           SNode createdNode = item.createNode(pattern);
           SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
           // this condition is to prevent inspector from opening for VarMacro2 nodes, with nothing valueable in 
+
           // inspector (I believe original motivation behind selection code was to get cursor in a macro's query) 
+
           if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(createdNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"))).isNotEmpty()) {
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_CELL, 1);
             _context.getEditorContext().openInspector();

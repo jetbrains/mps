@@ -74,11 +74,8 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
@@ -138,6 +135,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
@@ -157,8 +162,16 @@
     <property role="TrG5h" value="check_StringSwitchCase" />
     <node concept="3clFbS" id="mfnC6nPryg" role="18ibNy">
       <node concept="3SKdUt" id="mfnC6nPrzP" role="3cqZAp">
-        <node concept="3SKdUq" id="mfnC6nPrzQ" role="3SKWNk">
-          <property role="3SKdUp" value="checking case elements" />
+        <node concept="1PaTwC" id="ATZLwXnSY_" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnSYA" role="1PaTwD">
+            <property role="3oM_SC" value="checking" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnSYB" role="1PaTwD">
+            <property role="3oM_SC" value="case" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnSYC" role="1PaTwD">
+            <property role="3oM_SC" value="elements" />
+          </node>
         </node>
       </node>
       <node concept="3cpWs8" id="kfgQ7MCgcO" role="3cqZAp">

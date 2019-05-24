@@ -53,9 +53,11 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
           }
           if (i < ListSequence.fromList(SLinkOperations.getChildren(clt, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))).count()) {
             // substitute the typevar ref with the existing type from the original CT 
+
             SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(clt, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))).getElement(i)));
           } else {
             // this is a (partially) raw class 
+
             typeParam.delete();
           }
         }

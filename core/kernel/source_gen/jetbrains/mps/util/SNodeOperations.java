@@ -283,6 +283,7 @@ public class SNodeOperations {
   @Deprecated
   public static String getModelLongName(SModel model) {
     // replaced NameUtil.getModelLongName didn't expect null and returned a qualified name w/o stereotype 
+
     return model.getName().getLongName();
   }
 
@@ -317,6 +318,7 @@ public class SNodeOperations {
   @Deprecated
   public static boolean isGeneratable(SModel model) {
     // I wonder why this method doesn't reside in SModelOperations 
+
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
   }
 }

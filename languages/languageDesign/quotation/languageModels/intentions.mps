@@ -161,11 +161,8 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -343,6 +340,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2154,13 +2159,83 @@
               </node>
               <node concept="3clFbS" id="3v7fNhWfNZK" role="1prKM_">
                 <node concept="3SKdUt" id="3v7fNhWfNZL" role="3cqZAp">
-                  <node concept="3SKdUq" id="3v7fNhWfNZM" role="3SKWNk">
-                    <property role="3SKdUp" value="in potential situations where emuneration has baseLanguage type that differs from int/boolean/string" />
+                  <node concept="1PaTwC" id="ATZLwXnXNP" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXnXNQ" role="1PaTwD">
+                      <property role="3oM_SC" value="in" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNR" role="1PaTwD">
+                      <property role="3oM_SC" value="potential" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNS" role="1PaTwD">
+                      <property role="3oM_SC" value="situations" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNT" role="1PaTwD">
+                      <property role="3oM_SC" value="where" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNU" role="1PaTwD">
+                      <property role="3oM_SC" value="emuneration" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNV" role="1PaTwD">
+                      <property role="3oM_SC" value="has" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNW" role="1PaTwD">
+                      <property role="3oM_SC" value="baseLanguage" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNX" role="1PaTwD">
+                      <property role="3oM_SC" value="type" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNY" role="1PaTwD">
+                      <property role="3oM_SC" value="that" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXNZ" role="1PaTwD">
+                      <property role="3oM_SC" value="differs" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO0" role="1PaTwD">
+                      <property role="3oM_SC" value="from" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO1" role="1PaTwD">
+                      <property role="3oM_SC" value="int/boolean/string" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3SKdUt" id="3v7fNhWfNZN" role="3cqZAp">
-                  <node concept="3SKdUq" id="3v7fNhWfNZO" role="3SKWNk">
-                    <property role="3SKdUp" value="the following will not work until fromString() returns well-typed object for enumerations" />
+                  <node concept="1PaTwC" id="ATZLwXnXO2" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXnXO3" role="1PaTwD">
+                      <property role="3oM_SC" value="the" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO4" role="1PaTwD">
+                      <property role="3oM_SC" value="following" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO5" role="1PaTwD">
+                      <property role="3oM_SC" value="will" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO6" role="1PaTwD">
+                      <property role="3oM_SC" value="not" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO7" role="1PaTwD">
+                      <property role="3oM_SC" value="work" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO8" role="1PaTwD">
+                      <property role="3oM_SC" value="until" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXO9" role="1PaTwD">
+                      <property role="3oM_SC" value="fromString()" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXOa" role="1PaTwD">
+                      <property role="3oM_SC" value="returns" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXOb" role="1PaTwD">
+                      <property role="3oM_SC" value="well-typed" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXOc" role="1PaTwD">
+                      <property role="3oM_SC" value="object" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXOd" role="1PaTwD">
+                      <property role="3oM_SC" value="for" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnXOe" role="1PaTwD">
+                      <property role="3oM_SC" value="enumerations" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="3v7fNhWfNZP" role="3cqZAp">
@@ -2367,13 +2442,83 @@
                 </node>
                 <node concept="3clFbS" id="3v7fNhWfO15" role="1prKM_">
                   <node concept="3SKdUt" id="3v7fNhWfO16" role="3cqZAp">
-                    <node concept="3SKdUq" id="3v7fNhWfO17" role="3SKWNk">
-                      <property role="3SKdUp" value="in potential situations where emuneration has baseLanguage type that differs from int/boolean/string" />
+                    <node concept="1PaTwC" id="ATZLwXnXOf" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnXOg" role="1PaTwD">
+                        <property role="3oM_SC" value="in" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOh" role="1PaTwD">
+                        <property role="3oM_SC" value="potential" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOi" role="1PaTwD">
+                        <property role="3oM_SC" value="situations" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOj" role="1PaTwD">
+                        <property role="3oM_SC" value="where" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOk" role="1PaTwD">
+                        <property role="3oM_SC" value="emuneration" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOl" role="1PaTwD">
+                        <property role="3oM_SC" value="has" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOm" role="1PaTwD">
+                        <property role="3oM_SC" value="baseLanguage" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOn" role="1PaTwD">
+                        <property role="3oM_SC" value="type" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOo" role="1PaTwD">
+                        <property role="3oM_SC" value="that" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOp" role="1PaTwD">
+                        <property role="3oM_SC" value="differs" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOq" role="1PaTwD">
+                        <property role="3oM_SC" value="from" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOr" role="1PaTwD">
+                        <property role="3oM_SC" value="int/boolean/string" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3SKdUt" id="3v7fNhWfO18" role="3cqZAp">
-                    <node concept="3SKdUq" id="3v7fNhWfO19" role="3SKWNk">
-                      <property role="3SKdUp" value="the following will not work until fromString() returns well-typed object for enumerations" />
+                    <node concept="1PaTwC" id="ATZLwXnXOs" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnXOt" role="1PaTwD">
+                        <property role="3oM_SC" value="the" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOu" role="1PaTwD">
+                        <property role="3oM_SC" value="following" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOv" role="1PaTwD">
+                        <property role="3oM_SC" value="will" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOw" role="1PaTwD">
+                        <property role="3oM_SC" value="not" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOx" role="1PaTwD">
+                        <property role="3oM_SC" value="work" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOy" role="1PaTwD">
+                        <property role="3oM_SC" value="until" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOz" role="1PaTwD">
+                        <property role="3oM_SC" value="fromString()" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXO$" role="1PaTwD">
+                        <property role="3oM_SC" value="returns" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXO_" role="1PaTwD">
+                        <property role="3oM_SC" value="well-typed" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOA" role="1PaTwD">
+                        <property role="3oM_SC" value="object" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOB" role="1PaTwD">
+                        <property role="3oM_SC" value="for" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXOC" role="1PaTwD">
+                        <property role="3oM_SC" value="enumerations" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3clFbF" id="3v7fNhWfO1a" role="3cqZAp">

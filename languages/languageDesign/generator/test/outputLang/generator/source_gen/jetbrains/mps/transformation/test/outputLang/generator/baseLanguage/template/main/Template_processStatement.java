@@ -56,70 +56,78 @@ public class Template_processStatement extends TemplateDeclarationBase implement
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
                 try {
-                  SNodeAccessUtil.setProperty(tnode4, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context3, "aa", propertyMacro_iblz6q_c0a0c0a0b0b0b0b0b0b0c0h))));
+                  TemplateContext context4 = context3.subContext();
+                  {
+                    final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
+                    try {
+                      SNodeAccessUtil.setProperty(tnode5, myProperties[0], "ss");
+                    } finally {
+                    }
+                    tnode4.addChild(myAggregationLinks[0], tnode5);
+                    // TODO validate child 
+
+                  }
                 } finally {
                 }
-                tnode3.addChild(myAggregationLinks[0], tnode4);
+                tnode3.addChild(myAggregationLinks[1], tnode4);
                 // TODO validate child 
-              }
-              {
-                final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
-                try {
-                  SNodeAccessUtil.setProperty(tnode5, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_3_1(new PropertyMacroContext(context3, "ss", propertyMacro_iblz6q_c0a0c0a0b0c0b0b0b0b0c0h))));
-                } finally {
-                }
-                tnode3.addChild(myAggregationLinks[0], tnode5);
-                // TODO validate child 
+
               }
             } finally {
             }
-            tnode2.addChild(myAggregationLinks[1], tnode3);
+            tnode2.addChild(myAggregationLinks[2], tnode3);
             // TODO validate child 
+
           }
           {
-            final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
+            final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
             try {
-              TemplateContext context4 = context2.subContext();
+              TemplateContext context5 = context2.subContext();
               {
-                final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
+                final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
                 try {
-                  SNodeAccessUtil.setProperty(tnode7, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_3_2(new PropertyMacroContext(context4, "nvar", propertyMacro_iblz6q_c0a0c0a0b0b0b0c0b0b0c0h))));
-                  TemplateContext context5 = context4.subContext();
+                  SNodeAccessUtil.setProperty(tnode7, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context5, "nvar", propertyMacro_iblz6q_c0a0c0a0b0b0b0c0b0b0c0h))));
+                  TemplateContext context6 = context5.subContext();
                   {
-                    final SNode tnode8 = environment.createOutputNode(myConcepts[6]);
+                    final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
                     try {
                     } finally {
                     }
-                    tnode7.addChild(myAggregationLinks[2], tnode8);
+                    tnode7.addChild(myAggregationLinks[3], tnode8);
                     // TODO validate child 
+
                   }
                   {
                     Collection<SNode> tlist9 = null;
-                    final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_3_0(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h));
-                    tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288695053", context5);
+                    final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_3_0(new SourceSubstituteMacroNodeContext(context6, copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h));
+                    tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288695053", context6);
                     for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
-                      tnode7.addChild(myAggregationLinks[3], child10);
+                      tnode7.addChild(myAggregationLinks[4], child10);
                     }
                     // TODO validate child 
+
                   }
                 } finally {
                 }
-                tnode6.addChild(myAggregationLinks[4], tnode7);
+                tnode6.addChild(myAggregationLinks[5], tnode7);
                 // TODO validate child 
+
               }
             } finally {
             }
-            tnode2.addChild(myAggregationLinks[1], tnode6);
+            tnode2.addChild(myAggregationLinks[2], tnode6);
             // TODO validate child 
+
           }
         } finally {
         }
-        tnode1.addChild(myAggregationLinks[5], tnode2);
+        tnode1.addChild(myAggregationLinks[6], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }
-    FragmentResult rv = nodeFragment(1, tnode1);
+    FragmentResult rv = nodeFragment(2, tnode1);
     return rv;
   }
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
@@ -132,77 +140,85 @@ public class Template_processStatement extends TemplateDeclarationBase implement
         try {
           TemplateContext context2 = context1.subContext();
           {
-            final SNode tnode3 = environment.createOutputNode(myConcepts[4]);
+            final SNode tnode3 = environment.createOutputNode(myConcepts[5]);
             try {
               TemplateContext context3 = context2.subContext();
               {
-                final SNode tnode4 = environment.createOutputNode(myConcepts[5]);
+                final SNode tnode4 = environment.createOutputNode(myConcepts[6]);
                 try {
                   environment.nodeCopied(context3, tnode4, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980649133");
                   SNodeAccessUtil.setProperty(tnode4, myProperties[1], "e");
                   TemplateContext context4 = context3.subContext();
                   {
-                    final SNode tnode5 = environment.createOutputNode(myConcepts[6]);
+                    final SNode tnode5 = environment.createOutputNode(myConcepts[7]);
                     try {
                     } finally {
                     }
-                    tnode4.addChild(myAggregationLinks[2], tnode5);
+                    tnode4.addChild(myAggregationLinks[3], tnode5);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
-                tnode3.addChild(myAggregationLinks[4], tnode4);
+                tnode3.addChild(myAggregationLinks[5], tnode4);
                 // TODO validate child 
+
               }
             } finally {
             }
-            tnode2.addChild(myAggregationLinks[1], tnode3);
+            tnode2.addChild(myAggregationLinks[2], tnode3);
             // TODO validate child 
+
           }
           {
-            final SNode tnode6 = environment.createOutputNode(myConcepts[7]);
+            final SNode tnode6 = environment.createOutputNode(myConcepts[8]);
             try {
               TemplateContext context5 = context2.subContext();
               {
-                final SNode tnode7 = environment.createOutputNode(myConcepts[8]);
+                final SNode tnode7 = environment.createOutputNode(myConcepts[9]);
                 try {
                   TemplateContext context6 = context5.subContext();
                   {
-                    final SNode tnode8 = environment.createOutputNode(myConcepts[9]);
+                    final SNode tnode8 = environment.createOutputNode(myConcepts[10]);
                     try {
                       environment.resolveInTemplateLater(tnode8, myAssociationLinks[0], templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980649133", "e", context6);
                     } finally {
                     }
-                    tnode7.addChild(myAggregationLinks[6], tnode8);
+                    tnode7.addChild(myAggregationLinks[7], tnode8);
                     // TODO validate child 
+
                   }
                   {
-                    final SNode tnode9 = environment.createOutputNode(myConcepts[10]);
+                    final SNode tnode9 = environment.createOutputNode(myConcepts[11]);
                     try {
                       SNodeAccessUtil.setProperty(tnode9, myProperties[2], "5");
                     } finally {
                     }
-                    tnode7.addChild(myAggregationLinks[7], tnode9);
+                    tnode7.addChild(myAggregationLinks[8], tnode9);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
-                tnode6.addChild(myAggregationLinks[8], tnode7);
+                tnode6.addChild(myAggregationLinks[9], tnode7);
                 // TODO validate child 
+
               }
             } finally {
             }
-            tnode2.addChild(myAggregationLinks[1], tnode6);
+            tnode2.addChild(myAggregationLinks[2], tnode6);
             // TODO validate child 
+
           }
         } finally {
         }
-        tnode1.addChild(myAggregationLinks[5], tnode2);
+        tnode1.addChild(myAggregationLinks[6], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }
-    FragmentResult rv = nodeFragment(1, tnode1);
+    FragmentResult rv = nodeFragment(2, tnode1);
     return rv;
   }
   protected FragmentResult applyPart2(@NotNull final TemplateContext context) throws GenerationException {
@@ -211,7 +227,7 @@ public class Template_processStatement extends TemplateDeclarationBase implement
     TemplateContext context1;
     context1 = context.withVariable("nnnn", ((SNode) context.getVariable("expr")));
     tlist1 = new Template_aaaaa().apply(environment, context1);
-    FragmentResult rv = listFragment(1, tlist1);
+    FragmentResult rv = listFragment(2, tlist1);
     return rv;
   }
   @Override
@@ -233,24 +249,25 @@ public class Template_processStatement extends TemplateDeclarationBase implement
   }
   @Override
   protected SConcept[] initConcepts() {
-    SConcept[] rv = new SConcept[11];
+    SConcept[] rv = new SConcept[12];
     rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfc092b6b77L, "BlockStatement");
     rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList");
     rv[2] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x57d533a7af15ed3aL, "SingleLineComment");
-    rv[3] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x57d533a7af15ed3dL, "TextCommentPart");
-    rv[4] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7f0L, "LocalVariableDeclarationStatement");
-    rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration");
-    rv[6] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType");
-    rv[7] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement");
-    rv[8] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e96L, "AssignmentExpression");
-    rv[9] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference");
-    rv[10] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant");
+    rv[3] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x2331694e561af166L, "Line");
+    rv[4] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x229012ddae35f04L, "Word");
+    rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7f0L, "LocalVariableDeclarationStatement");
+    rv[6] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration");
+    rv[7] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType");
+    rv[8] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement");
+    rv[9] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e96L, "AssignmentExpression");
+    rv[10] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference");
+    rv[11] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant");
     return rv;
   }
   @Override
   protected SProperty[] initProperties() {
     SProperty[] rv = new SProperty[3];
-    rv[0] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    rv[0] = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
     rv[1] = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     rv[2] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
     return rv;
@@ -263,20 +280,19 @@ public class Template_processStatement extends TemplateDeclarationBase implement
   }
   @Override
   protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[9];
-    rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
-    rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    rv[7] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    rv[8] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    SContainmentLink[] rv = new SContainmentLink[10];
+    rv[0] = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    rv[7] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    rv[8] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    rv[9] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer propertyMacro_iblz6q_c0a0c0a0b0b0b0b0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695069");
-  private static SNodePointer propertyMacro_iblz6q_c0a0c0a0b0c0b0b0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2163819695913280743");
   private static SNodePointer propertyMacro_iblz6q_c0a0c0a0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695039");
   private static SNodePointer copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695055");
   private static SNodePointer templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363100026");

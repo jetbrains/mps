@@ -38,6 +38,7 @@ public class DelUsualInvalidReference_Test extends BaseTransformationTest {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
           // going to the reference 
+
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");

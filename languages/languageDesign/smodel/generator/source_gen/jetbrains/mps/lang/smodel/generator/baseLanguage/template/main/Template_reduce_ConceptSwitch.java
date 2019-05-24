@@ -64,6 +64,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
             }
             tnode3.addChild(myAggregationLinks[0], tnode4);
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist5 = null;
@@ -73,6 +74,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
               tnode3.addChild(myAggregationLinks[1], child6);
             }
             // TODO validate child 
+
           }
         } finally {
         }
@@ -82,6 +84,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
           tnode1.addChild(myAggregationLinks[2], child7);
         }
         // TODO validate child 
+
       }
     } finally {
     }
@@ -106,11 +109,13 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
                 tnode3.addChild(myAggregationLinks[3], child5);
               }
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[4], tnode3);
           // TODO validate child 
+
         }
         {
           final List<SNode> tlist6 = new ArrayList<SNode>();
@@ -133,6 +138,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
                 }
                 tnode7.addChild(myAggregationLinks[5], tnode8);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[4]);
@@ -153,11 +159,13 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
                       tnode9.addChild(myAggregationLinks[3], child13);
                     }
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode7.addChild(myAggregationLinks[6], tnode9);
                 // TODO validate child 
+
               }
             } finally {
             }
@@ -169,6 +177,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
             tnode2.addChild(myAggregationLinks[7], child14);
           }
           // TODO validate child 
+
         }
         {
           final SNode tnode15 = environment.createOutputNode(myConcepts[7]);
@@ -187,11 +196,13 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
                   }
                   tnode16.addChild(myAggregationLinks[8], tnode17);
                   // TODO validate child 
+
                 }
               } finally {
               }
               tnode15.addChild(myAggregationLinks[9], tnode16);
               // TODO validate child 
+
             }
             {
               final SNode tnode18 = environment.createOutputNode(myConcepts[9]);
@@ -206,11 +217,13 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase imple
               }
               tnode15.addChild(myAggregationLinks[10], tnode18);
               // TODO validate child 
+
             }
           } finally {
           }
           tnode2.addChild(myAggregationLinks[11], tnode15);
           // TODO validate child 
+
         }
       } finally {
       }

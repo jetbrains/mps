@@ -34,6 +34,7 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
     SNode expectedRetType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(getAccessor);
 
     // should return subtypes of the 'expected type' 
+
     for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
       if ((SLinkOperations.getTarget(returnStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression")) == null)) {
         {
@@ -52,6 +53,7 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
       }
     }
     // last expression statement can serve as return statement 
+
     SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(getAccessor);
     if (SNodeOperations.isInstanceOf(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))) {
       SNode returnType = typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression")), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582401", true);

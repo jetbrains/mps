@@ -82,6 +82,7 @@ public class Mps_Command {
       return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), new PropertyCommandPart(PathManager.PROPERTY_CONFIG_PATH, configPath), new PropertyCommandPart(PathManager.PROPERTY_SYSTEM_PATH, systemPath), new PropertyCommandPart(PathManager.PROPERTY_PLUGINS_PATH, pluginsPath), new PropertyCommandPart(PathManager.PROPERTY_LOG_PATH, logPath), virtualMachineParameters));
     } else {
       // actually we must fail here and settingsPath must be NotNull 
+
       return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), virtualMachineParameters));
     }
   }

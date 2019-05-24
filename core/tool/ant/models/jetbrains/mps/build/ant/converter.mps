@@ -2,7 +2,7 @@
 <model ref="r:a5ddf2e2-82ac-4496-924f-5c515b082a89(jetbrains.mps.build.ant.converter)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="gola" ref="847a3235-09f9-403c-b6a9-1c294a212e92/java:org.apache.tools.ant(Ant/)" />
@@ -156,11 +156,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -175,6 +172,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -484,8 +489,64 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7Z_17SWX6kt" role="3cqZAp">
-          <node concept="3SKdUq" id="7Z_17SWX7O_" role="3SKWNk">
-            <property role="3SKdUp" value="create output dir in any case, dest dir used in src packaging and fails if models dir not exists" />
+          <node concept="1PaTwC" id="ATZLwXo8jb" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo8jc" role="1PaTwD">
+              <property role="3oM_SC" value="create" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jd" role="1PaTwD">
+              <property role="3oM_SC" value="output" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8je" role="1PaTwD">
+              <property role="3oM_SC" value="dir" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jf" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jg" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jh" role="1PaTwD">
+              <property role="3oM_SC" value="case," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8ji" role="1PaTwD">
+              <property role="3oM_SC" value="dest" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jj" role="1PaTwD">
+              <property role="3oM_SC" value="dir" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jk" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jl" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jm" role="1PaTwD">
+              <property role="3oM_SC" value="src" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jn" role="1PaTwD">
+              <property role="3oM_SC" value="packaging" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jo" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jp" role="1PaTwD">
+              <property role="3oM_SC" value="fails" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jq" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jr" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8js" role="1PaTwD">
+              <property role="3oM_SC" value="dir" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jt" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8ju" role="1PaTwD">
+              <property role="3oM_SC" value="exists" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="7Z_17SWWLo8" role="3cqZAp">

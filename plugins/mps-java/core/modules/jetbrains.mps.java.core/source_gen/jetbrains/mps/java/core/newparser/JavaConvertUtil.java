@@ -31,6 +31,7 @@ public class JavaConvertUtil {
 
   private static boolean accept(IFile file) {
     // called only for files, not dirs 
+
     return file.getName().endsWith(".java");
   }
 

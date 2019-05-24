@@ -44,6 +44,7 @@ public class Template_outputRoot extends TemplateDeclarationBase implements Temp
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }

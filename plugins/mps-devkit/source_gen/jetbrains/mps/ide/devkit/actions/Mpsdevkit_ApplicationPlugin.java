@@ -32,6 +32,7 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
+
     addAction(new AddAccessoryModel_Action());
     addAction(new CellProperties_Action());
     addAction(new CreateDefaultEditor_Action());
@@ -63,6 +64,7 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowStructure_Action());
     addAction(new ShowTypeSystemTrace_Action());
     // groups 
+
     addGroup(new AccessoriesGroupActions_ActionGroup());
     addGroup(new BehaviorCodeOverrideImplementMenuGroup_ActionGroup());
     addGroup(new ContributeModuleUsage_ActionGroup());

@@ -35,8 +35,10 @@ public class check_AnonymousClassWithNoConstructorInheritsDefaultConstructor_Non
         }
       }
     }
-    // MethodCallsFixer_Rule and check_AnonymousClassHasConstructorDeclaration  
+    // MethodCallsFixer_Rule and check_AnonymousClassHasConstructorDeclaration 
+
     // take care of null in constructorDeclaration 
+
   }
   public SAbstractConcept getApplicableConcept() {
     return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");

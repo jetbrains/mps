@@ -118,11 +118,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -234,6 +231,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -848,8 +853,70 @@
     <property role="3GE5qa" value="attributes" />
     <node concept="3clFbS" id="4Fsfm22PmWT" role="18ibNy">
       <node concept="3SKdUt" id="5j9sOBs2KQE" role="3cqZAp">
-        <node concept="3SKdUq" id="5j9sOBs2KQG" role="3SKWNk">
-          <property role="3SKdUp" value="todo: why we allow using attributes outside smodelAttribute role? It doesn't look quite sound such usage in quotations and generator templates" />
+        <node concept="1PaTwC" id="ATZLwXnTqO" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnTqP" role="1PaTwD">
+            <property role="3oM_SC" value="todo:" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqQ" role="1PaTwD">
+            <property role="3oM_SC" value="why" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqR" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqS" role="1PaTwD">
+            <property role="3oM_SC" value="allow" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqT" role="1PaTwD">
+            <property role="3oM_SC" value="using" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqU" role="1PaTwD">
+            <property role="3oM_SC" value="attributes" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqV" role="1PaTwD">
+            <property role="3oM_SC" value="outside" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqW" role="1PaTwD">
+            <property role="3oM_SC" value="smodelAttribute" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqX" role="1PaTwD">
+            <property role="3oM_SC" value="role?" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqY" role="1PaTwD">
+            <property role="3oM_SC" value="It" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTqZ" role="1PaTwD">
+            <property role="3oM_SC" value="doesn't" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr0" role="1PaTwD">
+            <property role="3oM_SC" value="look" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr1" role="1PaTwD">
+            <property role="3oM_SC" value="quite" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr2" role="1PaTwD">
+            <property role="3oM_SC" value="sound" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr3" role="1PaTwD">
+            <property role="3oM_SC" value="such" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr4" role="1PaTwD">
+            <property role="3oM_SC" value="usage" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr5" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr6" role="1PaTwD">
+            <property role="3oM_SC" value="quotations" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr7" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr8" role="1PaTwD">
+            <property role="3oM_SC" value="generator" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTr9" role="1PaTwD">
+            <property role="3oM_SC" value="templates" />
+          </node>
         </node>
       </node>
       <node concept="3clFbJ" id="7oTPGL5OtLF" role="3cqZAp">
@@ -1814,8 +1881,37 @@
         </node>
       </node>
       <node concept="3SKdUt" id="WCbGpchVPg" role="3cqZAp">
-        <node concept="3SKdUq" id="WCbGpchVPi" role="3SKWNk">
-          <property role="3SKdUp" value="todo: message should be not empty, add migration if necessary" />
+        <node concept="1PaTwC" id="ATZLwXnTra" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnTrb" role="1PaTwD">
+            <property role="3oM_SC" value="todo:" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTrc" role="1PaTwD">
+            <property role="3oM_SC" value="message" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTrd" role="1PaTwD">
+            <property role="3oM_SC" value="should" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTre" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTrf" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTrg" role="1PaTwD">
+            <property role="3oM_SC" value="empty," />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTrh" role="1PaTwD">
+            <property role="3oM_SC" value="add" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTri" role="1PaTwD">
+            <property role="3oM_SC" value="migration" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTrj" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnTrk" role="1PaTwD">
+            <property role="3oM_SC" value="necessary" />
+          </node>
         </node>
       </node>
       <node concept="1X3_iC" id="WCbGpchVnV" role="lGtFl">

@@ -4,7 +4,7 @@
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
@@ -152,11 +152,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -212,6 +209,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1254,13 +1259,68 @@
               <node concept="3clFbJ" id="2k7p7sTBenj" role="3cqZAp">
                 <node concept="3clFbS" id="2k7p7sTBenk" role="3clFbx">
                   <node concept="3SKdUt" id="6LeUth2_rR0" role="3cqZAp">
-                    <node concept="3SKdUq" id="6LeUth2_rR2" role="3SKWNk">
-                      <property role="3SKdUp" value="if there is no implementation in the provided concept we will fail on runtime" />
+                    <node concept="1PaTwC" id="ATZLwXnYyJ" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnYyK" role="1PaTwD">
+                        <property role="3oM_SC" value="if" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyL" role="1PaTwD">
+                        <property role="3oM_SC" value="there" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyM" role="1PaTwD">
+                        <property role="3oM_SC" value="is" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyN" role="1PaTwD">
+                        <property role="3oM_SC" value="no" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyO" role="1PaTwD">
+                        <property role="3oM_SC" value="implementation" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyP" role="1PaTwD">
+                        <property role="3oM_SC" value="in" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyQ" role="1PaTwD">
+                        <property role="3oM_SC" value="the" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyR" role="1PaTwD">
+                        <property role="3oM_SC" value="provided" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyS" role="1PaTwD">
+                        <property role="3oM_SC" value="concept" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyT" role="1PaTwD">
+                        <property role="3oM_SC" value="we" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyU" role="1PaTwD">
+                        <property role="3oM_SC" value="will" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyV" role="1PaTwD">
+                        <property role="3oM_SC" value="fail" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyW" role="1PaTwD">
+                        <property role="3oM_SC" value="on" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYyX" role="1PaTwD">
+                        <property role="3oM_SC" value="runtime" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3SKdUt" id="6LeUth2_rR_" role="3cqZAp">
-                    <node concept="3SKdUq" id="6LeUth2_rRB" role="3SKWNk">
-                      <property role="3SKdUp" value="fixme quickfix for this case" />
+                    <node concept="1PaTwC" id="ATZLwXnYyY" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnYyZ" role="1PaTwD">
+                        <property role="3oM_SC" value="fixme" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYz0" role="1PaTwD">
+                        <property role="3oM_SC" value="quickfix" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYz1" role="1PaTwD">
+                        <property role="3oM_SC" value="for" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYz2" role="1PaTwD">
+                        <property role="3oM_SC" value="this" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnYz3" role="1PaTwD">
+                        <property role="3oM_SC" value="case" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3cpWs6" id="2k7p7sTBenq" role="3cqZAp">

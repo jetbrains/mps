@@ -77,6 +77,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
     public boolean execute(Project project, ExecutionEnvironment environment) {
       if (myDummy) {
         // dummy mode is needed for in-process tests; probably the configurations must be separated 
+
         return true;
       }
       if (ListSequence.fromList(myPlugins).isEmpty()) {
@@ -117,6 +118,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
       final Wrappers._T<ProcessHandler> process = new Wrappers._T<ProcessHandler>();
       try {
         // targets in the mps build lang? 
+
         process.value = new Ant_Command().setTargetName_String("buildDependents build").createProcess(assembleScriptLocation);
         console[0].attachToProcess(process.value);
       } catch (ExecutionException e) {
@@ -127,6 +129,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
         return false;
       }
       // fixme use modern api instead 
+
       ApplicationManager.getApplication().invokeAndWait(new Runnable() {
         public void run() {
           Executor executor = DefaultRunExecutor.getRunExecutorInstance();

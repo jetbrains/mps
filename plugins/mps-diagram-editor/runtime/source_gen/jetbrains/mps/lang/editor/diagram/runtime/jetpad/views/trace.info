@@ -99,294 +99,294 @@
       <node id="1897569136988749785" at="26,0,27,0" concept="5" trace="myCornerResizeHandlePositions" />
       <node id="1897569136990748031" at="27,0,28,0" concept="5" trace="mySideResizeHandlePositions" />
       <node id="1897569136986861119" at="32,93,33,51" concept="4" />
-      <node id="4046741574151796389" at="33,51,34,42" concept="11" />
-      <node id="1897569136988902900" at="36,29,37,85" concept="4" />
-      <node id="1897569136988928638" at="41,29,42,85" concept="4" />
-      <node id="4046741574151871400" at="44,12,45,40" concept="11" />
-      <node id="1897569136991171584" at="47,29,48,106" concept="4" />
-      <node id="1897569136990985437" at="52,29,53,106" concept="4" />
-      <node id="1897569136991029404" at="57,29,58,106" concept="4" />
-      <node id="4046741574152553494" at="60,12,61,0" concept="12" />
-      <node id="1897569136987499314" at="66,101,67,59" concept="4" />
-      <node id="1897569136993846774" at="67,59,68,87" concept="4" />
-      <node id="1897569136988261653" at="68,87,69,97" concept="4" />
-      <node id="1897569136987503189" at="69,97,70,107" concept="4" />
-      <node id="1897569136990081572" at="70,107,71,104" concept="4" />
-      <node id="4046741574152680622" at="75,12,76,0" concept="12" />
-      <node id="4046741574152039677" at="76,0,77,33" concept="11" />
-      <node id="4046741574155743360" at="79,101,80,72" concept="9" />
-      <node id="4046741574155550187" at="82,21,83,209" concept="10" />
-      <node id="4046741574155947535" at="84,21,85,210" concept="10" />
-      <node id="4046741574155948452" at="86,21,87,211" concept="10" />
-      <node id="4046741574155949298" at="88,21,89,210" concept="10" />
-      <node id="4046741574155875572" at="90,22,91,60" concept="0" />
-      <node id="4046741574155964324" at="92,13,93,24" concept="10" />
-      <node id="4046741574152165998" at="95,12,96,31" concept="11" />
-      <node id="4046741574156064627" at="98,101,99,70" concept="9" />
-      <node id="4046741574156064637" at="101,21,102,147" concept="10" />
-      <node id="4046741574156064652" at="103,21,104,147" concept="10" />
-      <node id="4046741574156064668" at="105,21,106,148" concept="10" />
-      <node id="4046741574156064683" at="107,21,108,146" concept="10" />
-      <node id="4046741574156064697" at="109,22,110,60" concept="0" />
-      <node id="4046741574156064702" at="111,13,112,24" concept="10" />
-      <node id="1897569136988939270" at="119,23,120,44" concept="4" />
-      <node id="1897569136988952590" at="120,44,121,13" concept="10" />
-      <node id="1897569136988992227" at="122,5,123,81" concept="9" />
-      <node id="1897569136989014300" at="125,31,126,38" concept="9" />
-      <node id="1897569136989037673" at="127,37,128,19" concept="3" />
-      <node id="1897569136989018752" at="129,9,130,26" concept="4" />
-      <node id="1897569136989034298" at="131,7,132,30" concept="4" />
-      <node id="1897569136991216317" at="136,37,137,42" concept="4" />
-      <node id="1897569136991225355" at="137,42,138,13" concept="10" />
-      <node id="1897569136991374512" at="141,75,142,44" concept="4" />
-      <node id="1897569136991386727" at="142,44,143,15" concept="10" />
-      <node id="1897569136991262177" at="145,5,146,0" concept="12" />
-      <node id="1897569136991230919" at="146,0,147,79" concept="9" />
-      <node id="1897569136991746086" at="148,62,149,94" concept="9" />
-      <node id="1897569136991230930" at="150,31,151,38" concept="9" />
-      <node id="1897569136991230938" at="152,37,153,19" concept="3" />
-      <node id="1897569136991230943" at="154,9,155,26" concept="4" />
-      <node id="1897569136991230950" at="156,7,157,30" concept="4" />
-      <node id="4046741574155640016" at="161,0,162,0" concept="5" trace="myDragHandler" />
-      <node id="4046741574155381715" at="162,106,163,54" concept="15" />
-      <node id="4046741574155680536" at="163,54,164,101" concept="4" />
-      <node id="4046741574155382290" at="167,91,168,49" concept="4" />
-      <node id="4046741574155383511" at="168,49,169,77" concept="4" />
-      <node id="4046741574155383520" at="169,77,170,97" concept="4" />
-      <node id="4046741574155424914" at="170,97,171,91" concept="4" />
-      <node id="1585775323802209578" at="174,0,175,0" concept="5" trace="myOriginalBounds" />
-      <node id="3873095776498352128" at="175,0,176,0" concept="5" trace="myDragStartposition" />
-      <node id="4046741574154405660" at="176,0,177,0" concept="5" trace="myUpdaters" />
-      <node id="4046741574154441507" at="178,89,179,30" concept="4" />
-      <node id="1585775323802216477" at="181,48,182,49" concept="4" />
-      <node id="3873095776498362541" at="182,49,183,39" concept="4" />
-      <node id="1585775323793390716" at="183,39,184,33" concept="4" />
-      <node id="4046741574153279349" at="186,51,187,44" concept="9" />
-      <node id="3873095776498382074" at="187,44,188,61" concept="9" />
-      <node id="4046741574154566331" at="189,81,190,57" concept="4" />
-      <node id="4046741574154574879" at="191,9,192,36" concept="4" />
-      <node id="1585775323802242116" at="194,48,195,54" concept="9" />
-      <node id="1585775323802257950" at="195,54,196,77" concept="9" />
-      <node id="1585775323802264549" at="196,77,197,86" concept="9" />
-      <node id="1585775323794261262" at="197,86,198,68" concept="4" />
-      <node id="1585775323802228039" at="198,68,199,32" concept="4" />
-      <node id="3873095776498368594" at="199,32,200,35" concept="4" />
-      <node id="4046741574154091421" at="205,0,206,0" concept="5" trace="myOrigin" />
-      <node id="4046741574154091498" at="206,0,207,0" concept="5" trace="myX" />
-      <node id="4046741574154094507" at="208,57,209,24" concept="4" />
-      <node id="4046741574154095283" at="209,24,210,14" concept="4" />
-      <node id="4046741574154102184" at="212,72,213,39" concept="9" />
-      <node id="4046741574154103512" at="213,39,214,45" concept="9" />
-      <node id="3873095776498441446" at="214,45,215,67" concept="9" />
-      <node id="3873095776498405256" at="216,21,217,44" concept="4" />
-      <node id="3873095776498414827" at="217,44,218,59" concept="4" />
-      <node id="3873095776498426820" at="219,14,220,50" concept="4" />
-      <node id="4046741574154206089" at="221,7,222,46" concept="10" />
-      <node id="4046741574154140244" at="224,64,225,87" concept="10" />
-      <node id="4046741574154194640" at="219,12,221,7" concept="1" />
-      <node id="1897569136988728380" at="36,0,39,0" concept="8" trace="run#()V" />
-      <node id="1897569136988840756" at="41,0,44,0" concept="8" trace="run#()V" />
-      <node id="1897569136991171582" at="47,0,50,0" concept="8" trace="run#()V" />
-      <node id="1897569136990983766" at="52,0,55,0" concept="8" trace="run#()V" />
-      <node id="1897569136991029402" at="57,0,60,0" concept="8" trace="run#()V" />
-      <node id="1897569136989014529" at="126,38,129,9" concept="7" />
-      <node id="1897569136991230936" at="151,38,154,9" concept="7" />
-      <node id="4046741574153252800" at="178,0,181,0" concept="2" trace="DragHandlerImpl#(null)V" />
-      <node id="4046741574154558324" at="188,61,191,9" concept="6" />
-      <node id="4046741574154108568" at="224,0,227,0" concept="8" trace="updateVector#(Ljetbrains/jetpad/geometry/Vector;Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/geometry/Vector;" />
-      <node id="1897569136988933806" at="118,90,122,5" concept="7" />
-      <node id="1897569136991072919" at="135,105,139,5" concept="7" />
-      <node id="1897569136991293622" at="140,62,144,7" concept="7" />
-      <node id="4046741574155377938" at="162,0,166,0" concept="2" trace="ResizeHandleMapper#(Ljetbrains/jetpad/geometry/Vector;null)V" />
-      <node id="4046741574154088137" at="208,0,212,0" concept="2" trace="RectangleUpdater#(ZZ)V" />
-      <node id="1897569136988651893" at="34,42,39,12" concept="4" />
-      <node id="1897569136988706229" at="39,12,44,12" concept="4" />
-      <node id="1897569136991171576" at="45,40,50,12" concept="4" />
-      <node id="1897569136990824539" at="50,12,55,12" concept="4" />
-      <node id="1897569136991029396" at="55,12,60,12" concept="4" />
-      <node id="1585775323792995351" at="181,0,186,0" concept="8" trace="dragStarted#(Ljetbrains/jetpad/geometry/Vector;)V" />
-      <node id="1897569136991264897" at="139,5,145,5" concept="6" />
-      <node id="4046741574154194373" at="215,67,221,7" concept="7" />
-      <node id="1897569136989011363" at="124,57,131,7" concept="7" />
-      <node id="1897569136991230928" at="149,94,156,7" concept="7" />
-      <node id="4046741574155382280" at="166,0,173,0" concept="8" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
-      <node id="1897569136987499301" at="65,0,73,0" concept="8" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
-      <node id="1585775323792995358" at="186,0,194,0" concept="8" trace="updatePosition#(Ljetbrains/jetpad/geometry/Vector;)V" />
-      <node id="1585775323792995365" at="194,0,202,0" concept="8" trace="dragStopped#(Ljetbrains/jetpad/geometry/Vector;)V" />
-      <node id="1897569136987117364" at="63,150,73,14" concept="10" />
-      <node id="1897569136988999221" at="123,81,133,5" concept="6" />
-      <node id="1897569136991230926" at="147,79,158,5" concept="6" />
-      <node id="1897569136987093616" at="63,0,75,0" concept="8" trace="createMapper#(Ljetbrains/mps/lang/editor/diagram/runtime/jetpad/views/ResizableSelectionFrameView;)Ljetbrains/jetpad/mapper/Mapper;" />
-      <node id="4046741574155840293" at="80,72,92,13" concept="16" />
-      <node id="4046741574156064634" at="99,70,111,13" concept="16" />
-      <node id="4046741574154081370" at="212,0,224,0" concept="8" trace="updateRect#(Ljetbrains/jetpad/geometry/Rectangle;Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/geometry/Rectangle;" />
-      <node id="1897569136987080063" at="61,0,75,12" concept="4" />
-      <node id="1897569136989235707" at="79,0,95,0" concept="8" trace="createMapper#(Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/mapper/Mapper;" />
-      <node id="1897569136991625576" at="98,0,114,0" concept="8" trace="createMapper#(Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/mapper/Mapper;" />
-      <node id="1897569136988866659" at="118,0,135,0" concept="8" trace="updateCornerResizeHandlePositions#(ZLjetbrains/jetpad/geometry/Rectangle;)V" />
-      <node id="1897569136989191667" at="77,33,95,12" concept="4" />
-      <node id="1897569136991570850" at="96,31,114,12" concept="4" />
-      <node id="1897569136990921889" at="135,0,160,0" concept="8" trace="updateSideResizeHandlePositions#(ZZLjetbrains/jetpad/geometry/Rectangle;)V" />
-      <node id="1897569136986861106" at="31,0,116,0" concept="8" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
-      <node id="1897569136986852980" at="29,40,116,19" concept="4" />
-      <node id="1897569136986834770" at="29,0,118,0" concept="2" trace="ResizableSelectionFrameView#()V" />
-      <scope id="1897569136988728382" at="36,29,37,85" />
-      <scope id="1897569136988840758" at="41,29,42,85" />
-      <scope id="1897569136991171583" at="47,29,48,106" />
-      <scope id="1897569136990983768" at="52,29,53,106" />
-      <scope id="1897569136991029403" at="57,29,58,106" />
-      <scope id="4046741574155851639" at="82,21,83,209" />
-      <scope id="4046741574155857828" at="84,21,85,210" />
-      <scope id="4046741574155863864" at="86,21,87,211" />
-      <scope id="4046741574155869677" at="88,21,89,210" />
-      <scope id="4046741574155840297" at="90,22,91,60" />
-      <scope id="4046741574156064636" at="101,21,102,147" />
-      <scope id="4046741574156064651" at="103,21,104,147" />
-      <scope id="4046741574156064667" at="105,21,106,148" />
-      <scope id="4046741574156064682" at="107,21,108,146" />
-      <scope id="4046741574156064696" at="109,22,110,60" />
-      <scope id="1897569136989014532" at="127,37,128,19" />
-      <scope id="1897569136991230937" at="152,37,153,19" />
-      <scope id="4046741574153252804" at="178,89,179,30" />
-      <scope id="4046741574154558327" at="189,81,190,57" />
-      <scope id="4046741574154194641" at="219,14,220,50" />
-      <scope id="4046741574154108571" at="224,64,225,87" />
-      <scope id="1897569136988933807" at="119,23,121,13" />
-      <scope id="1897569136991072920" at="136,37,138,13" />
-      <scope id="1897569136991293623" at="141,75,143,15" />
-      <scope id="4046741574155377942" at="162,106,164,101" />
-      <scope id="4046741574154088141" at="208,57,210,14" />
-      <scope id="4046741574154194376" at="216,21,218,59" />
-      <scope id="1897569136988728380" at="36,0,39,0" />
-      <scope id="1897569136988840756" at="41,0,44,0" />
-      <scope id="1897569136991171582" at="47,0,50,0" />
-      <scope id="1897569136990983766" at="52,0,55,0" />
-      <scope id="1897569136991029402" at="57,0,60,0" />
-      <scope id="4046741574153252800" at="178,0,181,0">
+      <node id="1897569136988902900" at="37,29,38,85" concept="4" />
+      <node id="1897569136988928638" at="42,29,43,85" concept="4" />
+      <node id="1897569136991171584" at="49,29,50,106" concept="4" />
+      <node id="1897569136990985437" at="54,29,55,106" concept="4" />
+      <node id="1897569136991029404" at="59,29,60,106" concept="4" />
+      <node id="4046741574152553494" at="62,12,63,0" concept="12" />
+      <node id="1897569136987499314" at="68,101,69,59" concept="4" />
+      <node id="1897569136993846774" at="69,59,70,87" concept="4" />
+      <node id="1897569136988261653" at="70,87,71,97" concept="4" />
+      <node id="1897569136987503189" at="71,97,72,107" concept="4" />
+      <node id="1897569136990081572" at="72,107,73,104" concept="4" />
+      <node id="4046741574152680622" at="77,12,78,0" concept="12" />
+      <node id="4046741574155743360" at="82,101,83,72" concept="9" />
+      <node id="4046741574155550187" at="85,21,86,209" concept="10" />
+      <node id="4046741574155947535" at="87,21,88,210" concept="10" />
+      <node id="4046741574155948452" at="89,21,90,211" concept="10" />
+      <node id="4046741574155949298" at="91,21,92,210" concept="10" />
+      <node id="4046741574155875572" at="93,22,94,60" concept="0" />
+      <node id="4046741574155964324" at="95,13,96,24" concept="10" />
+      <node id="4046741574156064627" at="102,101,103,70" concept="9" />
+      <node id="4046741574156064637" at="105,21,106,147" concept="10" />
+      <node id="4046741574156064652" at="107,21,108,147" concept="10" />
+      <node id="4046741574156064668" at="109,21,110,148" concept="10" />
+      <node id="4046741574156064683" at="111,21,112,146" concept="10" />
+      <node id="4046741574156064697" at="113,22,114,60" concept="0" />
+      <node id="4046741574156064702" at="115,13,116,24" concept="10" />
+      <node id="1897569136988939270" at="123,23,124,44" concept="4" />
+      <node id="1897569136988952590" at="124,44,125,13" concept="10" />
+      <node id="1897569136988992227" at="126,5,127,81" concept="9" />
+      <node id="1897569136989014300" at="129,31,130,38" concept="9" />
+      <node id="1897569136989037673" at="131,37,132,19" concept="3" />
+      <node id="1897569136989018752" at="133,9,134,26" concept="4" />
+      <node id="1897569136989034298" at="135,7,136,30" concept="4" />
+      <node id="1897569136991216317" at="140,37,141,42" concept="4" />
+      <node id="1897569136991225355" at="141,42,142,13" concept="10" />
+      <node id="1897569136991374512" at="145,75,146,44" concept="4" />
+      <node id="1897569136991386727" at="146,44,147,15" concept="10" />
+      <node id="1897569136991262177" at="149,5,150,0" concept="12" />
+      <node id="1897569136991230919" at="150,0,151,79" concept="9" />
+      <node id="1897569136991746086" at="152,62,153,94" concept="9" />
+      <node id="1897569136991230930" at="154,31,155,38" concept="9" />
+      <node id="1897569136991230938" at="156,37,157,19" concept="3" />
+      <node id="1897569136991230943" at="158,9,159,26" concept="4" />
+      <node id="1897569136991230950" at="160,7,161,30" concept="4" />
+      <node id="4046741574155640016" at="165,0,166,0" concept="5" trace="myDragHandler" />
+      <node id="4046741574155381715" at="166,106,167,54" concept="15" />
+      <node id="4046741574155680536" at="167,54,168,101" concept="4" />
+      <node id="4046741574155382290" at="171,91,172,49" concept="4" />
+      <node id="4046741574155383511" at="172,49,173,77" concept="4" />
+      <node id="4046741574155383520" at="173,77,174,97" concept="4" />
+      <node id="4046741574155424914" at="174,97,175,91" concept="4" />
+      <node id="1585775323802209578" at="178,0,179,0" concept="5" trace="myOriginalBounds" />
+      <node id="3873095776498352128" at="179,0,180,0" concept="5" trace="myDragStartposition" />
+      <node id="4046741574154405660" at="180,0,181,0" concept="5" trace="myUpdaters" />
+      <node id="4046741574154441507" at="182,89,183,30" concept="4" />
+      <node id="1585775323802216477" at="185,48,186,49" concept="4" />
+      <node id="3873095776498362541" at="186,49,187,39" concept="4" />
+      <node id="1585775323793390716" at="187,39,188,33" concept="4" />
+      <node id="4046741574153279349" at="190,51,191,44" concept="9" />
+      <node id="3873095776498382074" at="191,44,192,61" concept="9" />
+      <node id="4046741574154566331" at="193,81,194,57" concept="4" />
+      <node id="4046741574154574879" at="195,9,196,36" concept="4" />
+      <node id="1585775323802242116" at="198,48,199,54" concept="9" />
+      <node id="1585775323802257950" at="199,54,200,77" concept="9" />
+      <node id="1585775323802264549" at="200,77,201,86" concept="9" />
+      <node id="1585775323794261262" at="201,86,202,68" concept="4" />
+      <node id="1585775323802228039" at="202,68,203,32" concept="4" />
+      <node id="3873095776498368594" at="203,32,204,35" concept="4" />
+      <node id="4046741574154091421" at="209,0,210,0" concept="5" trace="myOrigin" />
+      <node id="4046741574154091498" at="210,0,211,0" concept="5" trace="myX" />
+      <node id="4046741574154094507" at="212,57,213,24" concept="4" />
+      <node id="4046741574154095283" at="213,24,214,14" concept="4" />
+      <node id="4046741574154102184" at="216,72,217,39" concept="9" />
+      <node id="4046741574154103512" at="217,39,218,45" concept="9" />
+      <node id="3873095776498441446" at="218,45,219,67" concept="9" />
+      <node id="3873095776498405256" at="220,21,221,44" concept="4" />
+      <node id="3873095776498414827" at="221,44,222,59" concept="4" />
+      <node id="3873095776498426820" at="223,14,224,50" concept="4" />
+      <node id="4046741574154206089" at="225,7,226,46" concept="10" />
+      <node id="4046741574154140244" at="228,64,229,87" concept="10" />
+      <node id="4046741574151796389" at="33,51,35,0" concept="11" />
+      <node id="4046741574151871400" at="45,12,47,0" concept="11" />
+      <node id="4046741574152039677" at="78,0,80,0" concept="11" />
+      <node id="4046741574152165998" at="98,12,100,0" concept="11" />
+      <node id="4046741574154194640" at="223,12,225,7" concept="1" />
+      <node id="1897569136988728380" at="37,0,40,0" concept="8" trace="run#()V" />
+      <node id="1897569136988840756" at="42,0,45,0" concept="8" trace="run#()V" />
+      <node id="1897569136991171582" at="49,0,52,0" concept="8" trace="run#()V" />
+      <node id="1897569136990983766" at="54,0,57,0" concept="8" trace="run#()V" />
+      <node id="1897569136991029402" at="59,0,62,0" concept="8" trace="run#()V" />
+      <node id="1897569136989014529" at="130,38,133,9" concept="7" />
+      <node id="1897569136991230936" at="155,38,158,9" concept="7" />
+      <node id="4046741574153252800" at="182,0,185,0" concept="2" trace="DragHandlerImpl#(null)V" />
+      <node id="4046741574154558324" at="192,61,195,9" concept="6" />
+      <node id="4046741574154108568" at="228,0,231,0" concept="8" trace="updateVector#(Ljetbrains/jetpad/geometry/Vector;Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/geometry/Vector;" />
+      <node id="1897569136988933806" at="122,90,126,5" concept="7" />
+      <node id="1897569136991072919" at="139,105,143,5" concept="7" />
+      <node id="1897569136991293622" at="144,62,148,7" concept="7" />
+      <node id="4046741574155377938" at="166,0,170,0" concept="2" trace="ResizeHandleMapper#(Ljetbrains/jetpad/geometry/Vector;null)V" />
+      <node id="4046741574154088137" at="212,0,216,0" concept="2" trace="RectangleUpdater#(ZZ)V" />
+      <node id="1897569136988651893" at="35,0,40,12" concept="4" />
+      <node id="1897569136988706229" at="40,12,45,12" concept="4" />
+      <node id="1897569136991171576" at="47,0,52,12" concept="4" />
+      <node id="1897569136990824539" at="52,12,57,12" concept="4" />
+      <node id="1897569136991029396" at="57,12,62,12" concept="4" />
+      <node id="1585775323792995351" at="185,0,190,0" concept="8" trace="dragStarted#(Ljetbrains/jetpad/geometry/Vector;)V" />
+      <node id="1897569136991264897" at="143,5,149,5" concept="6" />
+      <node id="4046741574154194373" at="219,67,225,7" concept="7" />
+      <node id="1897569136989011363" at="128,57,135,7" concept="7" />
+      <node id="1897569136991230928" at="153,94,160,7" concept="7" />
+      <node id="4046741574155382280" at="170,0,177,0" concept="8" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
+      <node id="1897569136987499301" at="67,0,75,0" concept="8" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
+      <node id="1585775323792995358" at="190,0,198,0" concept="8" trace="updatePosition#(Ljetbrains/jetpad/geometry/Vector;)V" />
+      <node id="1585775323792995365" at="198,0,206,0" concept="8" trace="dragStopped#(Ljetbrains/jetpad/geometry/Vector;)V" />
+      <node id="1897569136987117364" at="65,150,75,14" concept="10" />
+      <node id="1897569136988999221" at="127,81,137,5" concept="6" />
+      <node id="1897569136991230926" at="151,79,162,5" concept="6" />
+      <node id="1897569136987093616" at="65,0,77,0" concept="8" trace="createMapper#(Ljetbrains/mps/lang/editor/diagram/runtime/jetpad/views/ResizableSelectionFrameView;)Ljetbrains/jetpad/mapper/Mapper;" />
+      <node id="4046741574155840293" at="83,72,95,13" concept="16" />
+      <node id="4046741574156064634" at="103,70,115,13" concept="16" />
+      <node id="4046741574154081370" at="216,0,228,0" concept="8" trace="updateRect#(Ljetbrains/jetpad/geometry/Rectangle;Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/geometry/Rectangle;" />
+      <node id="1897569136987080063" at="63,0,77,12" concept="4" />
+      <node id="1897569136989235707" at="82,0,98,0" concept="8" trace="createMapper#(Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/mapper/Mapper;" />
+      <node id="1897569136991625576" at="102,0,118,0" concept="8" trace="createMapper#(Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/mapper/Mapper;" />
+      <node id="1897569136988866659" at="122,0,139,0" concept="8" trace="updateCornerResizeHandlePositions#(ZLjetbrains/jetpad/geometry/Rectangle;)V" />
+      <node id="1897569136989191667" at="80,0,98,12" concept="4" />
+      <node id="1897569136991570850" at="100,0,118,12" concept="4" />
+      <node id="1897569136990921889" at="139,0,164,0" concept="8" trace="updateSideResizeHandlePositions#(ZZLjetbrains/jetpad/geometry/Rectangle;)V" />
+      <node id="1897569136986861106" at="31,0,120,0" concept="8" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
+      <node id="1897569136986852980" at="29,40,120,19" concept="4" />
+      <node id="1897569136986834770" at="29,0,122,0" concept="2" trace="ResizableSelectionFrameView#()V" />
+      <scope id="1897569136988728382" at="37,29,38,85" />
+      <scope id="1897569136988840758" at="42,29,43,85" />
+      <scope id="1897569136991171583" at="49,29,50,106" />
+      <scope id="1897569136990983768" at="54,29,55,106" />
+      <scope id="1897569136991029403" at="59,29,60,106" />
+      <scope id="4046741574155851639" at="85,21,86,209" />
+      <scope id="4046741574155857828" at="87,21,88,210" />
+      <scope id="4046741574155863864" at="89,21,90,211" />
+      <scope id="4046741574155869677" at="91,21,92,210" />
+      <scope id="4046741574155840297" at="93,22,94,60" />
+      <scope id="4046741574156064636" at="105,21,106,147" />
+      <scope id="4046741574156064651" at="107,21,108,147" />
+      <scope id="4046741574156064667" at="109,21,110,148" />
+      <scope id="4046741574156064682" at="111,21,112,146" />
+      <scope id="4046741574156064696" at="113,22,114,60" />
+      <scope id="1897569136989014532" at="131,37,132,19" />
+      <scope id="1897569136991230937" at="156,37,157,19" />
+      <scope id="4046741574153252804" at="182,89,183,30" />
+      <scope id="4046741574154558327" at="193,81,194,57" />
+      <scope id="4046741574154194641" at="223,14,224,50" />
+      <scope id="4046741574154108571" at="228,64,229,87" />
+      <scope id="1897569136988933807" at="123,23,125,13" />
+      <scope id="1897569136991072920" at="140,37,142,13" />
+      <scope id="1897569136991293623" at="145,75,147,15" />
+      <scope id="4046741574155377942" at="166,106,168,101" />
+      <scope id="4046741574154088141" at="212,57,214,14" />
+      <scope id="4046741574154194376" at="220,21,222,59" />
+      <scope id="1897569136988728380" at="37,0,40,0" />
+      <scope id="1897569136988840756" at="42,0,45,0" />
+      <scope id="1897569136991171582" at="49,0,52,0" />
+      <scope id="1897569136990983766" at="54,0,57,0" />
+      <scope id="1897569136991029402" at="59,0,62,0" />
+      <scope id="4046741574153252800" at="182,0,185,0">
         <var name="updaters" id="4046741574154237414" />
       </scope>
-      <scope id="1585775323792995357" at="181,48,184,33" />
-      <scope id="4046741574154558324" at="188,61,191,9">
+      <scope id="1585775323792995357" at="185,48,188,33" />
+      <scope id="4046741574154558324" at="192,61,195,9">
         <var name="updater" id="4046741574154558330" />
       </scope>
-      <scope id="4046741574154108568" at="224,0,227,0">
+      <scope id="4046741574154108568" at="228,0,231,0">
         <var name="newValue" id="4046741574154110729" />
         <var name="value" id="4046741574154109792" />
       </scope>
-      <scope id="1897569136991264900" at="140,62,144,7" />
-      <scope id="4046741574155377938" at="162,0,166,0">
+      <scope id="1897569136991264900" at="144,62,148,7" />
+      <scope id="4046741574155377938" at="166,0,170,0">
         <var name="position" id="4046741574155380994" />
         <var name="updater" id="4046741574155449428" />
       </scope>
-      <scope id="4046741574155382286" at="167,91,171,91" />
-      <scope id="4046741574154088137" at="208,0,212,0">
+      <scope id="4046741574155382286" at="171,91,175,91" />
+      <scope id="4046741574154088137" at="212,0,216,0">
         <var name="origin" id="4046741574154088166" />
         <var name="x" id="4046741574154088274" />
       </scope>
-      <scope id="1897569136987499310" at="66,101,71,104" />
-      <scope id="1897569136989011364" at="125,31,130,26">
+      <scope id="1897569136987499310" at="68,101,73,104" />
+      <scope id="1897569136989011364" at="129,31,134,26">
         <var name="next" id="1897569136989014301" />
       </scope>
-      <scope id="1897569136991230929" at="150,31,155,26">
+      <scope id="1897569136991230929" at="154,31,159,26">
         <var name="next" id="1897569136991230931" />
       </scope>
-      <scope id="1585775323792995351" at="181,0,186,0">
+      <scope id="1585775323792995351" at="185,0,190,0">
         <var name="position" id="1585775323792995355" />
       </scope>
-      <scope id="1897569136991264897" at="139,5,145,5">
+      <scope id="1897569136991264897" at="143,5,149,5">
         <var name="nextSegment" id="1897569136991264903" />
       </scope>
-      <scope id="1585775323792995364" at="186,51,192,36">
+      <scope id="1585775323792995364" at="190,51,196,36">
         <var name="bounds" id="4046741574153279350" />
         <var name="dragDelta" id="3873095776498382075" />
       </scope>
-      <scope id="1585775323792995371" at="194,48,200,35">
+      <scope id="1585775323792995371" at="198,48,204,35">
         <var name="dimensionDelta" id="1585775323802264550" />
         <var name="finalBounds" id="1585775323802242117" />
         <var name="originDelta" id="1585775323802257951" />
       </scope>
-      <scope id="4046741574155382280" at="166,0,173,0">
+      <scope id="4046741574155382280" at="170,0,177,0">
         <var name="configuration" id="4046741574155382284" />
       </scope>
-      <scope id="1897569136987499301" at="65,0,73,0">
+      <scope id="1897569136987499301" at="67,0,75,0">
         <var name="configuration" id="1897569136987499305" />
       </scope>
-      <scope id="1897569136988999224" at="124,57,132,30" />
-      <scope id="1585775323792995358" at="186,0,194,0">
+      <scope id="1897569136988999224" at="128,57,136,30" />
+      <scope id="1585775323792995358" at="190,0,198,0">
         <var name="position" id="1585775323792995362" />
       </scope>
-      <scope id="1585775323792995365" at="194,0,202,0">
+      <scope id="1585775323792995365" at="198,0,206,0">
         <var name="position" id="1585775323792995369" />
       </scope>
-      <scope id="1897569136991230927" at="148,62,157,30">
+      <scope id="1897569136991230927" at="152,62,161,30">
         <var name="nextPoint" id="1897569136991746087" />
       </scope>
-      <scope id="1897569136987093626" at="63,150,73,14" />
-      <scope id="1897569136988999221" at="123,81,133,5">
+      <scope id="1897569136987093626" at="65,150,75,14" />
+      <scope id="1897569136988999221" at="127,81,137,5">
         <var name="nextPoint" id="1897569136988999227" />
       </scope>
-      <scope id="4046741574154081374" at="212,72,222,46">
+      <scope id="4046741574154081374" at="216,72,226,46">
         <var name="dimension" id="4046741574154103513" />
         <var name="effectiveDelta" id="3873095776498441447" />
         <var name="origin" id="4046741574154102185" />
       </scope>
-      <scope id="1897569136991230926" at="147,79,158,5">
+      <scope id="1897569136991230926" at="151,79,162,5">
         <var name="nextSegment" id="1897569136991230955" />
       </scope>
-      <scope id="1897569136987093616" at="63,0,75,0">
+      <scope id="1897569136987093616" at="65,0,77,0">
         <var name="decoratorView" id="1897569136987093624" />
       </scope>
-      <scope id="4046741574154081370" at="212,0,224,0">
+      <scope id="4046741574154081370" at="216,0,228,0">
         <var name="moveDelta" id="4046741574154087410" />
         <var name="rectangle" id="4046741574154098809" />
       </scope>
-      <scope id="1897569136989235717" at="79,101,93,24">
+      <scope id="1897569136989235717" at="82,101,96,24">
         <var name="index" id="4046741574155743361" />
       </scope>
-      <scope id="1897569136991625586" at="98,101,112,24">
+      <scope id="1897569136991625586" at="102,101,116,24">
         <var name="index" id="4046741574156064628" />
       </scope>
-      <scope id="1897569136988866662" at="118,90,133,5">
+      <scope id="1897569136988866662" at="122,90,137,5">
         <var name="iterator" id="1897569136988992228" />
       </scope>
-      <scope id="1897569136989235707" at="79,0,95,0">
+      <scope id="1897569136989235707" at="82,0,98,0">
         <var name="position" id="1897569136989235715" />
       </scope>
-      <scope id="1897569136991625576" at="98,0,114,0">
+      <scope id="1897569136991625576" at="102,0,118,0">
         <var name="position" id="1897569136991625584" />
       </scope>
-      <scope id="1897569136988866659" at="118,0,135,0">
+      <scope id="1897569136988866659" at="122,0,139,0">
         <var name="rectangle" id="1897569136988890067" />
         <var name="resizable" id="1897569136988879586" />
       </scope>
-      <scope id="1897569136990921892" at="135,105,158,5">
+      <scope id="1897569136990921892" at="139,105,162,5">
         <var name="iterator" id="1897569136991230920" />
       </scope>
-      <scope id="1897569136990921889" at="135,0,160,0">
+      <scope id="1897569136990921889" at="139,0,164,0">
         <var name="rectangle" id="1897569136990960948" />
         <var name="resizable" id="1897569136991093239" />
         <var name="visible" id="1897569136990942685" />
       </scope>
-      <scope id="1897569136986861115" at="32,93,114,12" />
-      <scope id="1897569136986861106" at="31,0,116,0">
+      <scope id="1897569136986861115" at="32,93,118,12" />
+      <scope id="1897569136986861106" at="31,0,120,0">
         <var name="configuration" id="1897569136986861110" />
       </scope>
-      <scope id="1897569136986834774" at="29,40,116,19" />
-      <scope id="1897569136986834770" at="29,0,118,0" />
-      <unit id="1897569136988728380" at="35,67,39,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$1" />
-      <unit id="1897569136988840756" at="40,72,44,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$2" />
-      <unit id="1897569136991171582" at="46,67,50,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$3" />
-      <unit id="1897569136990983766" at="51,73,55,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$4" />
-      <unit id="1897569136991029402" at="56,72,60,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$5" />
-      <unit id="1897569136987122072" at="64,23,73,13" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$6$1" />
-      <unit id="1897569136987093614" at="62,116,75,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$6" />
-      <unit id="1897569136989235705" at="78,115,95,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$7" />
-      <unit id="1897569136991625574" at="97,113,114,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$8" />
-      <unit id="4046741574154039079" at="204,0,228,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$RectangleUpdater" />
-      <unit id="4046741574153209148" at="173,0,203,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$ResizeHandleMapper$DragHandlerImpl" />
-      <unit id="4046741574155336268" at="160,0,204,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$ResizeHandleMapper" />
-      <unit id="1897569136986853762" at="30,8,116,5" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1" />
-      <unit id="1897569136986818246" at="18,0,229,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView" />
+      <scope id="1897569136986834774" at="29,40,120,19" />
+      <scope id="1897569136986834770" at="29,0,122,0" />
+      <unit id="1897569136988728380" at="36,67,40,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$1" />
+      <unit id="1897569136988840756" at="41,72,45,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$2" />
+      <unit id="1897569136991171582" at="48,67,52,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$3" />
+      <unit id="1897569136990983766" at="53,73,57,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$4" />
+      <unit id="1897569136991029402" at="58,72,62,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$5" />
+      <unit id="1897569136987122072" at="66,23,75,13" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$6$1" />
+      <unit id="1897569136987093614" at="64,116,77,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$6" />
+      <unit id="1897569136989235705" at="81,115,98,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$7" />
+      <unit id="1897569136991625574" at="101,113,118,9" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1$8" />
+      <unit id="4046741574154039079" at="208,0,232,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$RectangleUpdater" />
+      <unit id="4046741574153209148" at="177,0,207,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$ResizeHandleMapper$DragHandlerImpl" />
+      <unit id="4046741574155336268" at="164,0,208,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$ResizeHandleMapper" />
+      <unit id="1897569136986853762" at="30,8,120,5" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView$1" />
+      <unit id="1897569136986818246" at="18,0,233,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableSelectionFrameView" />
     </file>
   </root>
   <root nodeRef="r:05147575-afa1-4d0f-b2e0-f20b32ad3e33(jetbrains.mps.lang.editor.diagram.runtime.jetpad.views)/3129755042157254705">

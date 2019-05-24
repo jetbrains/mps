@@ -46,11 +46,14 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
     monitor.start(getDescription(), 2);
     try {
       // search for straight usages & search for SUPER calls 
+
       // BUG IN BASE LANGUAGE -- AT THE TIME THIS THING DOES NOT FIND SUPER() CALLS 
+
       for (SNode nodeUsage : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder", node, scope, monitor.subTask(1)))) {
         callback.onUsageFound(createSingleResult(nodeUsage));
       }
       // WORKAROUND - FIND SUPER() CALLS 
+
       for (SNode subclassResult : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.StraightDerivedClasses_Finder", SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false), scope, monitor.subTask(1)))) {
         for (SNode constructorNode : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(subclassResult, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))))) {
           for (SNode invocation : ListSequence.fromList(SNodeOperations.getNodeDescendants(constructorNode, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
@@ -76,6 +79,7 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
         }
       }
       // search for enum constants creation 
+
       SNode enumNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"), false, false), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"));
       if (enumNode != null) {
         for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(enumNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant")))) {

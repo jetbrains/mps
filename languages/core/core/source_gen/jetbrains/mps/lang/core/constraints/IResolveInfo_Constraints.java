@@ -38,6 +38,7 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
       public void setValue(SNode node, String propertyValue) {
         String propertyName = "resolveInfo";
         // nothing - resolveInfo is read-only 
+
       }
     });
     return properties;

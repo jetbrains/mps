@@ -35,6 +35,7 @@ public class typeof_SortOperation_InferenceRule extends AbstractInferenceRule_Ru
       }
     }
     // todo: unmeet closure 
+
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
         SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(so, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118b81cc8f6L, 0x118b81e3c02L, "ascending"));

@@ -11,7 +11,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,80,0" name="jetbrains.mps.baseLanguage.math.intentions.IntentionsDescriptor" />
+      <unit at="18,0,84,0" name="jetbrains.mps.baseLanguage.math.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:57529505-426f-4f87-bbc0-2843f12bd318(jetbrains.mps.baseLanguage.math.intentions)/1237104496404">
@@ -96,8 +96,8 @@
       <unit id="1237104496404" at="22,0,78,0" name="jetbrains.mps.baseLanguage.math.intentions.DivExpressionFractionToDiv_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1237104496404" at="51,47,52,69" concept="1" />
-      <node id="1237104496404" at="71,52,72,55" concept="1" />
+      <node id="1237104496404" at="54,47,55,69" concept="1" />
+      <node id="1237104496404" at="75,52,76,55" concept="1" />
     </file>
   </root>
   <root nodeRef="r:57529505-426f-4f87-bbc0-2843f12bd318(jetbrains.mps.baseLanguage.math.intentions)/1237104500799">
@@ -182,14 +182,14 @@
       <unit id="1237104500799" at="22,0,78,0" name="jetbrains.mps.baseLanguage.math.intentions.DivExpressionDivToFraction_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1237104500799" at="44,47,45,69" concept="1" />
-      <node id="1237104500799" at="72,55,73,55" concept="1" />
+      <node id="1237104500799" at="46,47,47,69" concept="1" />
+      <node id="1237104500799" at="76,55,77,55" concept="1" />
     </file>
   </root>
   <root nodeRef="r:57529505-426f-4f87-bbc0-2843f12bd318(jetbrains.mps.baseLanguage.math.intentions)/1238402928175">
     <file name="IntentionsDescriptor.java">
-      <node id="1238402928175" at="58,47,59,61" concept="1" />
-      <node id="1238402928175" at="73,55,74,47" concept="1" />
+      <node id="1238402928175" at="62,47,63,61" concept="1" />
+      <node id="1238402928175" at="77,55,78,47" concept="1" />
     </file>
     <file name="SpecifyMathContext_Intention.java">
       <node id="1238402928175" at="21,0,22,0" concept="2" trace="myCachedExecutable" />
@@ -314,8 +314,8 @@
       <unit id="1238942880468" at="19,0,59,0" name="jetbrains.mps.baseLanguage.math.intentions.DeleteMathContext_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1238942880468" at="37,47,38,60" concept="1" />
-      <node id="1238942880468" at="74,47,75,46" concept="1" />
+      <node id="1238942880468" at="38,47,39,60" concept="1" />
+      <node id="1238942880468" at="78,47,79,46" concept="1" />
     </file>
   </root>
 </debug-info>

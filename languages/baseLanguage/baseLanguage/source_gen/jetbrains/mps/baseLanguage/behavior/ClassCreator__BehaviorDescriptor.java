@@ -68,6 +68,7 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // special logic for java stubs 
+
     SReference cRef = SNodeOperations.getReference(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     if (cRef == null) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
@@ -80,7 +81,9 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
     SNodeId targetId = cRef.getTargetNodeId();
     if (targetModel.getName().hasStereotype(SModelStereotype.getStubStereotypeForId(LanguageID.JAVA)) && targetId != null) {
       // FIXME MPS dark arts, what a magic around constructor id! 
+
       //       AFAIU, constructor node id is ClassShortName.<init>, see ASMNodeId.createId 
+
       PersistenceFacade pf = PersistenceFacade.getInstance();
       String constructorId = pf.asString(targetId);
       String classId = constructorId.substring(0, constructorId.indexOf('.'));

@@ -54,6 +54,7 @@ public class Template_reduce_GetAncestor_noConceptList_SameML extends TemplateDe
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
       {
         Collection<SNode> tlist4 = null;
@@ -62,6 +63,7 @@ public class Template_reduce_GetAncestor_noConceptList_SameML extends TemplateDe
           tnode1.addChild(myAggregationLinks[0], child5);
         }
         // TODO validate child 
+
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -71,6 +73,7 @@ public class Template_reduce_GetAncestor_noConceptList_SameML extends TemplateDe
         }
         tnode1.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child 
+
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
@@ -80,6 +83,7 @@ public class Template_reduce_GetAncestor_noConceptList_SameML extends TemplateDe
         }
         tnode1.addChild(myAggregationLinks[0], tnode7);
         // TODO validate child 
+
       }
       {
         final SNode tnode8 = environment.createOutputNode(myConcepts[1]);
@@ -89,6 +93,7 @@ public class Template_reduce_GetAncestor_noConceptList_SameML extends TemplateDe
         }
         tnode1.addChild(myAggregationLinks[0], tnode8);
         // TODO validate child 
+
       }
     } finally {
     }

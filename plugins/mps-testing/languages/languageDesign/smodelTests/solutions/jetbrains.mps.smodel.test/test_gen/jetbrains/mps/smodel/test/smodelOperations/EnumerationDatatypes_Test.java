@@ -129,7 +129,9 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
       Assert.assertEquals("memberForName(\"not-a-name\")", null, SEnumOperations.getMemberForName("not-a-name", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x54dc3a78e18a047L, "TestEnum_FirstMemberDefaultValue"));
 
       // FIXME Are we sure that this is right behavior? Or we should return null like others do. 
+
       // FIXME This behavior is dictated with SEnumOperations#getMemberForValue 
+
       Assert.assertEquals("memberForValue(null)", SEnumOperations.getMember(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x54dc3a78e18a047L, "TestEnum_FirstMemberDefaultValue", 0x54dc3a78e18a048L, "a"), SEnumOperations.getMemberForValue(null, 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x54dc3a78e18a047L, "TestEnum_FirstMemberDefaultValue"));
 
       Assert.assertEquals("memberForValue(\"\")", null, SEnumOperations.getMemberForValue("", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x54dc3a78e18a047L, "TestEnum_FirstMemberDefaultValue"));
@@ -141,7 +143,9 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
       Assert.assertEquals("memberForName(\"not-a-name\")", null, SEnumOperations.getMemberForName("not-a-name", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x138cca1e1401934bL, "TestEnum_CustomDefaultValue"));
 
       // FIXME Are we sure that this is right behavior? Or we should return null like others do. 
+
       // FIXME This behavior is dictated with SEnumOperations#getMemberForValue 
+
       Assert.assertEquals("memberForValue(null)", SEnumOperations.getMember(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x138cca1e1401934bL, "TestEnum_CustomDefaultValue", 0x138cca1e1401934dL, "b"), SEnumOperations.getMemberForValue(null, 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x138cca1e1401934bL, "TestEnum_CustomDefaultValue"));
 
       Assert.assertEquals("memberForValue(\"\")", null, SEnumOperations.getMemberForValue("", 0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests", 0x138cca1e1401934bL, "TestEnum_CustomDefaultValue"));

@@ -47,6 +47,7 @@ public class TestSubstituteExceptionReferenceVisibleMatchingTextChild_Substitute
 
     public SMP_ReferenceScope_smhjc8_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582b4edL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceVisibleMatchingTextChild"), MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582b4edL, 0x63457d5cb582b4eeL, "reference"));
     }
     @NotNull

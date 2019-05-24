@@ -62,6 +62,7 @@ __switch__:
     Assert.assertTrue(ListSequence.fromList(intL).contains(10));
     Assert.assertFalse(ListSequence.fromList(intL).contains(15));
     // null test 
+
     intL = null;
     Assert.assertFalse(ListSequence.fromList(intL).contains(15));
   }

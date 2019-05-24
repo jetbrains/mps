@@ -40,10 +40,12 @@ public class check_UnqualifiedStaticFieldReference_NonTypesystemRule extends Abs
     Scope varScope = Scope.getScope(varRef, null, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
     if (varScope.contains(target)) {
       // it's ok, no need to worry 
+
       return;
     }
 
     // out of scope, let's make this reference non-local, but qualified 
+
     SNode thatClass = SNodeOperations.getNodeAncestor(target, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
     SNode sfr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
     SLinkOperations.setTarget(sfr, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), thatClass);

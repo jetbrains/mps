@@ -22,6 +22,7 @@ public class ObjectArraySupertypes_SubtypingRule extends SubtypingRule_Runtime i
   }
   public List<SNode> getSubOrSuperTypes(SNode objectArrayType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // see JLS 3.0 
+
     return Arrays.asList(_quotation_createNode_gqfgxi_a0b0c(), _quotation_createNode_gqfgxi_b0b0c(), _quotation_createNode_gqfgxi_c0b0c());
   }
   public SAbstractConcept getApplicableConcept() {

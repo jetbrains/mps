@@ -14,6 +14,7 @@ import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor
 public class Members {
   private Members() {
     // todo: extension methods? 
+
   }
   public static Iterable<SNode> visibleInstanceFields(SNode classifierType, SNode contextNode) {
     return visible(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), classifierType, contextNode);

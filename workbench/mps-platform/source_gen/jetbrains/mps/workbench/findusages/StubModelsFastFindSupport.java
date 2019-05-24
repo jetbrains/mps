@@ -151,6 +151,7 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
     }
 
     // get all files in scope 
+
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<SModel, VirtualFile>();
 
     Set<FolderSetDataSource> sources = new THashSet<FolderSetDataSource>();
@@ -182,8 +183,10 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
         }
       }
       for (VirtualFile vf : vFiles) {
-        // do not enter any directories but one at the top level.  Java package (corresponds to model) is just a list of files under single folder,  
+        // do not enter any directories but one at the top level.  Java package (corresponds to model) is just a list of files under single folder, 
+
         // nested folder corresponds to another package 
+
         if (vf.isDirectory()) {
           continue;
         }
@@ -191,7 +194,9 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
       }
       if (!(vFiles.isEmpty())) {
         // for stub models not backed by IDEA's VF, we shall not tell we've processed them. 
+
         // Let another find participant (e.g. the slowest default that walks model) to look up usages. 
+
         processedConsumer.consume(sm);
       }
     }
@@ -199,6 +204,7 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
     for (T elem : elems) {
       String nodeId = (id == null ? elem.toString() : id.apply(elem));
       // filter files with usages 
+
       ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(scopeFiles.getSecond());
 
       Collection<VirtualFile> matchingFiles;
@@ -209,6 +215,7 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
       }
 
       // back-transform 
+
       for (VirtualFile file : matchingFiles) {
         for (SModel m : scopeFiles.getBySecond(file)) {
           result.putValue(m, elem);

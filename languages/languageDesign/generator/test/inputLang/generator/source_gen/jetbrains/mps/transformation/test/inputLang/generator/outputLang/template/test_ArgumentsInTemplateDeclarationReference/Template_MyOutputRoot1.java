@@ -45,6 +45,7 @@ public class Template_MyOutputRoot1 extends TemplateDeclarationBase implements T
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
     } finally {
     }

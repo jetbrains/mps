@@ -115,10 +115,15 @@ public class VmCreator extends AbstractDebugSessionCreator {
   private void fixStopBugUnderLinux(final ProcessHandler processHandler, final DebugSession session) {
     if (!((processHandler instanceof RemoteProcessHandler))) {
       //  add listener only to non-remote process handler: 
+
       //  on Unix systems destroying process does not cause VMDeathEvent to be generated, 
+
       //  so we need to call debugProcess.stop() explicitly for graceful termination. 
+
       //  RemoteProcessHandler on the other hand will call debugProcess.stop() as a part of destroyProcess() and detachProcess() implementation, 
+
       //  so we shouldn't add the listener to avoid calling stop() twice 
+
       processHandler.addProcessListener(new ProcessAdapter() {
         @Override
         public void processWillTerminate(ProcessEvent event, boolean willBeDestroyed) {
@@ -126,13 +131,20 @@ public class VmCreator extends AbstractDebugSessionCreator {
             return;
           }
           //  if current thread is a "debugger manager thread", stop will execute synchronously 
+
           session.getEventsProcessor().stop(willBeDestroyed);
           //  wait at most 10 seconds: the problem is that debugProcess.stop() can hang if there are troubles in the debuggee 
+
           //  if processWillTerminate() is called from AWT thread debugProcess.waitFor() will block it and the whole app will hang 
+
           //             if (!DebuggerManagerThread.isManagerThread()) { 
+
           //               session.getEventsProcessor().waitFor(10000); 
+
           //             } 
+
           //  TODO we do not have waitFor(int) method 
+
         }
       });
     }
@@ -149,6 +161,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
   private void createVirtualMachine() {
     final Semaphore semaphore = new Semaphore();
     // semaphore - maybe not to call this method multiple times when a VM is not ready 
+
     semaphore.down();
     final DebugProcessMulticaster processMulticaster = myEventsProcessor.getMulticaster();
     processMulticaster.addListener(new DebugProcessAdapter() {
@@ -223,8 +236,10 @@ public class VmCreator extends AbstractDebugSessionCreator {
               connector.stopListening(myArguments);
             } catch (IllegalArgumentException e) {
               //  ignored 
+
             } catch (IllegalConnectorArgumentsException e) {
               //  ignored 
+
             }
           }
         }
@@ -255,6 +270,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
     }
 
     //  negative port number means the caller leaves to debugger to decide at which hport to listen 
+
     Connector.Argument portArg = (myConnectionSettings.isUseSockets() ? myArguments.get("port") : myArguments.get("name"));
     if (portArg != null) {
       portArg.setValue(Integer.toString(myConnectionSettings.getPort()));
@@ -264,6 +280,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
     if (timeoutArg != null) {
       timeoutArg.setValue("0");
       //  wait forever 
+
     }
 
     Connector.Argument hostArgument = myArguments.get("hostname");

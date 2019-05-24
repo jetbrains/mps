@@ -62,6 +62,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getCounterVarName_id5KmckUrI7Lz(@NotNull SNode __thisNode__) {
     // name of counter as available in TemplateContext, similar to VarMacro.getName() 
+
     return "cv:" + SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x671e792f3d97a344L, "counterVarName"));
   }
   /*package*/ static List<SNode> contextVariables_id6suuiWX_oN7(@NotNull SNode __thisNode__) {
@@ -77,6 +78,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     // child is not under any other macro except this one 
+
     return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, "jetbrains.mps.lang.generator.structure.LoopMacro"), child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(it, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, "jetbrains.mps.lang.generator.structure.AbstractMacro"))).isNotEmpty();

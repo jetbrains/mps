@@ -20,13 +20,21 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
   }
   public void applyRule(final SNode persistentPropertyDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // unfortunately, can't use superclass of all primitives, PrimitiveType, 
+
     // as there's no 'supertype' relation between specific primitive type (e.g. IntegerType) and PrimitiveType 
+
     // There's indeed such relation with blTypes.PrimitiveTypeDescriptor (which in fact was in use here initially), 
+
     // however, PrimitiveTypeDescriptor is not an IType (required by JoinType.argument), and I don't want neither 
+
     // to push incompatible value into model (could do using smodel lang, as light quotation force cast and fails at exec), 
+
     // nor to make PrimitiveTypeDescriptor to implement IType (which it should, but it would yield another dependency cycle I 
+
     // can't afford dealing with right now. 
+
     // Thus, I've just listed all subtypes of PrimitiveType deemed reasonable at the moment. 
+
     {
       SNode _nodeToCheck_1029348928467 = persistentPropertyDeclaration;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477761", 0, null);

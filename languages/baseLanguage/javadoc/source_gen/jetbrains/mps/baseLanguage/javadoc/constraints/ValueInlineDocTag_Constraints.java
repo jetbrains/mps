@@ -36,6 +36,7 @@ public class ValueInlineDocTag_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     //  TODO check for constant 
+
     return true;
   }
   private static SNodePointer canBeParentBreakingPoint = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "1227128029536560344");

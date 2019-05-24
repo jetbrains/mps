@@ -41,6 +41,7 @@ public abstract class EnvironmentBase implements Environment {
   public EnvironmentBase(@NotNull EnvironmentConfig config) {
     if (!(RuntimeFlags.isTestMode())) {
       // XXX it is odd to enfore test mode for any use of Environment, isn't it? 
+
       RuntimeFlags.setTestMode(TestMode.USUAL);
     }
     myConfig = config;
@@ -75,6 +76,7 @@ public abstract class EnvironmentBase implements Environment {
     for (String macroName : macros.keySet()) {
       String macroValue = MapSequence.fromMap(macros).get(macroName);
       // XXX anyone knows why we care that much about 'canonical' directory path for a macro value? I see no reason to enforce this at all 
+
       CanonicalPath path = new CanonicalPath(macroValue);
       if (path.isValidDirectory()) {
         realMacros.put(macroName, path.getValue());
@@ -98,12 +100,19 @@ public abstract class EnvironmentBase implements Environment {
   @Nullable
   protected ClassLoader createRootClassLoader() {
     // with idea plugins in actual (global, shared) classpath (both for Mps and Idea env), 
+
     // we don't need yet another CL 
-    // however, it doesn't look right to use same CL for DumbIdeaPluginFacet  
+
+    // however, it doesn't look right to use same CL for DumbIdeaPluginFacet 
+
     // (supposed to load classes from any idea plugin) 
+
     // and for languages/solutions referenced from <library> tag 
-    //  (these shall not get CP with idea plugins). With a single  
+
+    //  (these shall not get CP with idea plugins). With a single 
+
     // global CP we have at the moment, it's hard to make a distinction, though. 
+
     return LibraryInitializer.class.getClassLoader();
   }
 

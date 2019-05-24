@@ -34,15 +34,15 @@
       <node id="2002276751247922714" at="77,9,78,43" concept="1" />
       <node id="2002276751247922716" at="78,43,79,106" concept="1" />
       <node id="2002276751247944717" at="79,106,80,440" concept="1" />
-      <node id="8970160220945068146" at="84,23,85,113" concept="8" />
-      <node id="8970160220945058335" at="85,113,86,93" concept="1" />
-      <node id="1000993208133080057" at="88,48,89,154" concept="7" />
-      <node id="1000993208133072633" at="88,0,91,0" concept="5" trace="testPackagedLanguageModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="8970160220945058335" at="86,0,87,93" concept="1" />
+      <node id="1000993208133080057" at="89,48,90,154" concept="7" />
+      <node id="8970160220945068146" at="84,23,86,0" concept="8" />
+      <node id="1000993208133072633" at="89,0,92,0" concept="5" trace="testPackagedLanguageModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
       <node id="2002276751247819642" at="72,67,76,11" concept="4" />
-      <node id="8258351465735794199" at="84,0,88,0" concept="5" trace="setUp#()V" />
       <node id="2961837941531615398" at="30,0,35,0" concept="5" trace="run#()V" />
       <node id="2961837941531615573" at="39,0,44,0" concept="5" trace="run#()V" />
       <node id="2961837941531615919" at="48,0,53,0" concept="5" trace="run#()V" />
+      <node id="8258351465735794199" at="84,0,89,0" concept="5" trace="setUp#()V" />
       <node id="2002276751247819639" at="71,64,77,9" concept="3" />
       <node id="2961837941531615396" at="28,59,35,7" concept="1" />
       <node id="2961837941531615571" at="37,58,44,7" concept="1" />
@@ -56,9 +56,8 @@
       <node id="2961837941531616817" at="69,0,82,0" concept="5" trace="run#()V" />
       <node id="2961837941531616815" at="67,49,82,7" concept="1" />
       <node id="2249764655697855353" at="67,0,84,0" concept="5" trace="test_testStubs#()V" />
-      <scope id="1000993208133072637" at="88,48,89,154" />
+      <scope id="1000993208133072637" at="89,48,90,154" />
       <scope id="2002276751247819648" at="73,45,75,18" />
-      <scope id="8970160220945047643" at="84,23,86,93" />
       <scope id="2961837941531615400" at="30,25,33,56">
         <var name="language" id="2002276751247846874" />
       </scope>
@@ -68,12 +67,13 @@
       <scope id="2961837941531615921" at="48,25,51,100">
         <var name="editor" id="2002276751247847451" />
       </scope>
-      <scope id="1000993208133072633" at="88,0,91,0" />
+      <scope id="8970160220945047643" at="84,23,87,93" />
+      <scope id="1000993208133072633" at="89,0,92,0" />
       <scope id="2002276751247819641" at="72,67,76,11" />
-      <scope id="8258351465735794199" at="84,0,88,0" />
       <scope id="2961837941531615398" at="30,0,35,0" />
       <scope id="2961837941531615573" at="39,0,44,0" />
       <scope id="2961837941531615919" at="48,0,53,0" />
+      <scope id="8258351465735794199" at="84,0,89,0" />
       <scope id="2961837941531616257" at="57,25,63,54">
         <var name="icon" id="2002276751247880081" />
         <var name="iconManager" id="1000993208133261892" />
@@ -102,7 +102,7 @@
       <unit id="2961837941531615919" at="47,57,53,5" name="testPackagedLanguage.test.TestPackagedLanguage_Test$3" />
       <unit id="2961837941531616255" at="56,57,65,5" name="testPackagedLanguage.test.TestPackagedLanguage_Test$4" />
       <unit id="2961837941531616817" at="68,57,82,5" name="testPackagedLanguage.test.TestPackagedLanguage_Test$5" />
-      <unit id="8258351465735794199" at="25,0,92,0" name="testPackagedLanguage.test.TestPackagedLanguage_Test" />
+      <unit id="8258351465735794199" at="25,0,93,0" name="testPackagedLanguage.test.TestPackagedLanguage_Test" />
     </file>
   </root>
 </debug-info>

@@ -124,6 +124,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_4_0(final BaseMappingRuleContext _context) {
     // Reduce skip statement to break statement 
+
     SNode cl = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"));
     if (cl == null) {
       return false;
@@ -139,6 +140,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_4_1(final BaseMappingRuleContext _context) {
     // Reduce stop statement to break statement 
+
     SNode cl = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"));
     if (cl == null) {
       return false;
@@ -1348,7 +1350,9 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     if ((dType != null)) {
       // although Values.CREATOR is set in all legitimate cases, it's not extracted to shared 
+
       // code to keep dType clear of any flag in case neither expected if is hit 
+
       if ((SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom")) != null)) {
         if ((TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom"))), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType")) != null)) {
           Values.CREATOR.set(dType, _context.getNode());
@@ -1361,6 +1365,7 @@ public class QueriesGenerated extends QueryProviderBase {
         }
       } else {
         // copyFrom == null 
+
         Values.CREATOR.set(dType, _context.getNode());
         if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue"))).isNotEmpty()) {
           Values.CREATOR_INIT_VALUES.set(dType, Boolean.TRUE);

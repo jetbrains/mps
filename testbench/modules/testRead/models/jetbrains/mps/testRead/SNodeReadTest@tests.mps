@@ -6,7 +6,7 @@
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
@@ -213,11 +213,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -275,6 +272,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -1038,8 +1043,34 @@
       <node concept="10P_77" id="2XBD9EoisOc" role="3clF45" />
       <node concept="3clFbS" id="2XBD9EoisOa" role="3clF47">
         <node concept="3SKdUt" id="2XBD9EoisPW" role="3cqZAp">
-          <node concept="3SKdUq" id="2XBD9EoisPX" role="3SKWNk">
-            <property role="3SKdUp" value="just check that reads doesn't appear or disappear quietly" />
+          <node concept="1PaTwC" id="ATZLwXopw0" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXopw1" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw2" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw3" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw4" role="1PaTwD">
+              <property role="3oM_SC" value="reads" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw5" role="1PaTwD">
+              <property role="3oM_SC" value="doesn't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw6" role="1PaTwD">
+              <property role="3oM_SC" value="appear" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw7" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw8" role="1PaTwD">
+              <property role="3oM_SC" value="disappear" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopw9" role="1PaTwD">
+              <property role="3oM_SC" value="quietly" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="2XBD9EoisOi" role="3cqZAp">
@@ -2561,8 +2592,25 @@
           </node>
         </node>
         <node concept="3SKdUt" id="75pjTT1AV8C" role="3cqZAp">
-          <node concept="3SKdUq" id="75pjTT1AV8F" role="3SKWNk">
-            <property role="3SKdUp" value="'delete' must be last checked method" />
+          <node concept="1PaTwC" id="ATZLwXopwa" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXopwb" role="1PaTwD">
+              <property role="3oM_SC" value="'delete'" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopwc" role="1PaTwD">
+              <property role="3oM_SC" value="must" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopwd" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopwe" role="1PaTwD">
+              <property role="3oM_SC" value="last" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopwf" role="1PaTwD">
+              <property role="3oM_SC" value="checked" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopwg" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
           </node>
         </node>
         <node concept="1Dw8fO" id="7fYT0$t2C9J" role="3cqZAp">

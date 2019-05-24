@@ -32,6 +32,7 @@ public class ProjectTest {
 
   public ProjectTest(SModule module, ModuleGenerationHolder generationHolder) {
     // module argument only for test name 
+
     this.generationHolder = generationHolder;
   }
 
@@ -79,6 +80,7 @@ public class ProjectTest {
       List<String> warns = generationHolder.buildWarns();
       Assert.assertTrue("Build warnings:\n" + IterableUtils.join(warns, "\n"), warns.isEmpty());
       //  sanity, if build fails without messages 
+
       Assert.fail(String.format("Make failed with %d errors and %d warnings", errors.size(), warns.size()));
     }
   }

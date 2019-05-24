@@ -2,7 +2,7 @@
 <model ref="r:035b816f-5496-4daa-904b-836c78191509(jetbrains.mps.lang.editor.forms.runtime)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -122,11 +122,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -153,6 +150,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -212,8 +217,43 @@
         <node concept="3clFbJ" id="19qhldhK20G" role="3cqZAp">
           <node concept="3clFbS" id="19qhldhK20H" role="3clFbx">
             <node concept="3SKdUt" id="19qhldhK20I" role="3cqZAp">
-              <node concept="3SKdUq" id="19qhldhK20J" role="3SKWNk">
-                <property role="3SKdUp" value="No need to save selection, it will be restored by normal means" />
+              <node concept="1PaTwC" id="ATZLwXogka" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXogkb" role="1PaTwD">
+                  <property role="3oM_SC" value="No" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkc" role="1PaTwD">
+                  <property role="3oM_SC" value="need" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkd" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogke" role="1PaTwD">
+                  <property role="3oM_SC" value="save" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkf" role="1PaTwD">
+                  <property role="3oM_SC" value="selection," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkg" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkh" role="1PaTwD">
+                  <property role="3oM_SC" value="will" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogki" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkj" role="1PaTwD">
+                  <property role="3oM_SC" value="restored" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkk" role="1PaTwD">
+                  <property role="3oM_SC" value="by" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkl" role="1PaTwD">
+                  <property role="3oM_SC" value="normal" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkm" role="1PaTwD">
+                  <property role="3oM_SC" value="means" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="19qhldhK20K" role="3cqZAp">
@@ -257,8 +297,43 @@
         <node concept="3clFbJ" id="783I1NXtYL7" role="3cqZAp">
           <node concept="3clFbS" id="783I1NXtYL9" role="3clFbx">
             <node concept="3SKdUt" id="783I1NXtZUo" role="3cqZAp">
-              <node concept="3SKdUq" id="783I1NXtZUp" role="3SKWNk">
-                <property role="3SKdUp" value="No need to save selection, it will be restored by normal means" />
+              <node concept="1PaTwC" id="ATZLwXogkn" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXogko" role="1PaTwD">
+                  <property role="3oM_SC" value="No" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkp" role="1PaTwD">
+                  <property role="3oM_SC" value="need" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkq" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkr" role="1PaTwD">
+                  <property role="3oM_SC" value="save" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogks" role="1PaTwD">
+                  <property role="3oM_SC" value="selection," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkt" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogku" role="1PaTwD">
+                  <property role="3oM_SC" value="will" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkv" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkw" role="1PaTwD">
+                  <property role="3oM_SC" value="restored" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkx" role="1PaTwD">
+                  <property role="3oM_SC" value="by" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogky" role="1PaTwD">
+                  <property role="3oM_SC" value="normal" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkz" role="1PaTwD">
+                  <property role="3oM_SC" value="means" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="783I1NXtZDl" role="3cqZAp">
@@ -484,8 +559,43 @@
         <node concept="3clFbJ" id="43TOVRWQd00" role="3cqZAp">
           <node concept="3clFbS" id="43TOVRWQd01" role="3clFbx">
             <node concept="3SKdUt" id="43TOVRWQd02" role="3cqZAp">
-              <node concept="3SKdUq" id="43TOVRWQd03" role="3SKWNk">
-                <property role="3SKdUp" value="No need to save selection, it will be restored by normal means" />
+              <node concept="1PaTwC" id="ATZLwXogk$" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXogk_" role="1PaTwD">
+                  <property role="3oM_SC" value="No" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkA" role="1PaTwD">
+                  <property role="3oM_SC" value="need" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkB" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkC" role="1PaTwD">
+                  <property role="3oM_SC" value="save" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkD" role="1PaTwD">
+                  <property role="3oM_SC" value="selection," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkE" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkF" role="1PaTwD">
+                  <property role="3oM_SC" value="will" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkG" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkH" role="1PaTwD">
+                  <property role="3oM_SC" value="restored" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkI" role="1PaTwD">
+                  <property role="3oM_SC" value="by" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkJ" role="1PaTwD">
+                  <property role="3oM_SC" value="normal" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkK" role="1PaTwD">
+                  <property role="3oM_SC" value="means" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="43TOVRWQd04" role="3cqZAp">
@@ -529,8 +639,43 @@
         <node concept="3clFbJ" id="43TOVRWQazQ" role="3cqZAp">
           <node concept="3clFbS" id="43TOVRWQazR" role="3clFbx">
             <node concept="3SKdUt" id="43TOVRWQazS" role="3cqZAp">
-              <node concept="3SKdUq" id="43TOVRWQazT" role="3SKWNk">
-                <property role="3SKdUp" value="No need to save selection, it will be restored by normal means" />
+              <node concept="1PaTwC" id="ATZLwXogkL" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXogkM" role="1PaTwD">
+                  <property role="3oM_SC" value="No" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkN" role="1PaTwD">
+                  <property role="3oM_SC" value="need" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkO" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkP" role="1PaTwD">
+                  <property role="3oM_SC" value="save" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkQ" role="1PaTwD">
+                  <property role="3oM_SC" value="selection," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkR" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkS" role="1PaTwD">
+                  <property role="3oM_SC" value="will" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkT" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkU" role="1PaTwD">
+                  <property role="3oM_SC" value="restored" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkV" role="1PaTwD">
+                  <property role="3oM_SC" value="by" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkW" role="1PaTwD">
+                  <property role="3oM_SC" value="normal" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXogkX" role="1PaTwD">
+                  <property role="3oM_SC" value="means" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="43TOVRWQazU" role="3cqZAp">

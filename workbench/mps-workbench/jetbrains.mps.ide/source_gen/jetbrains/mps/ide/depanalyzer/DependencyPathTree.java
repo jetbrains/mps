@@ -42,6 +42,7 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
   private void buildTree(DepLink depNode, Map<Dependency, DependencyPathTree.LinkFrom> visited) {
     List<DepLink> dependencyPath = ListSequence.fromList(new LinkedList<DepLink>());
     // unwind up to source of depdendency path, effectively reversing it, top (source of dep) -> bottom (target of dep) 
+
     while (depNode != null) {
       ListSequence.fromList(dependencyPath).insertElement(0, depNode);
       depNode = depNode.parent();
@@ -54,6 +55,7 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
       DependencyPathTree.LinkFrom e = MapSequence.fromMap(visited).get(key);
       if (e == null || e.parent != parent) {
         // we didn't yet see that dep link anywhere, or have seen it under another branch 
+
         DependencyPathTree.LinkFrom f = new DependencyPathTree.LinkFrom(n, parent, myProject);
         MapSequence.fromMap(visited).put(key, f);
         parent = f;
@@ -63,6 +65,7 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
     }
     if (parent != null) {
       // parent is the bottom (leaf) node, holding the module we initially selected (revealDependencies()) 
+
       parent.node.setDepLeaf();
     }
   }
@@ -71,10 +74,12 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
     MPSTreeNode result = new TextTreeNode((ListSequence.fromList(myAllDependencies).isEmpty() ? "No Dependencies Selected" : "Found Dependencies:"));
     Map<Dependency, DependencyPathTree.LinkFrom> deps = MapSequence.fromMap(new HashMap<Dependency, DependencyPathTree.LinkFrom>());
     // merge dependency paths by role and module 
+
     for (DepLink dep : ListSequence.fromList(myAllDependencies)) {
       buildTree(dep, deps);
     }
     // attach roots of merged paths to top node 
+
     for (DependencyPathTree.LinkFrom lf : Sequence.fromIterable(MapSequence.fromMap(deps).values())) {
       if (lf.parent == null) {
         result.add(lf.node);

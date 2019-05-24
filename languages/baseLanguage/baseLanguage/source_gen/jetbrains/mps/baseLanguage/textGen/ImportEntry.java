@@ -16,6 +16,7 @@ public final class ImportEntry {
   }
   /*package*/ ImportEntry(String name2import, String name2use) {
     // name2import == null indicates no import needed 
+
     myNameToImport = name2import;
     myNameToUse = name2use;
   }

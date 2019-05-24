@@ -56,6 +56,7 @@ public class CopyIconsToResources extends MigrationScriptBase {
       }).toListSequence().visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           // we re-shrink paths to convert ${language_descriptoe} to ${module} at the same time 
+
           MacroHelper macros = MacrosFactory.forModule(m);
           String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x5bdb7aaec13745e9L, 0x3cfdbd635b5afe8dL, "iconPath"))));
           SPropertyOperations.assign(SLinkOperations.setNewChild(it, MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x5bdb7aaec13745e9L, 0x57cf4eb14c4f9ef5L, "icon"), MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon")), MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file"), newPath);

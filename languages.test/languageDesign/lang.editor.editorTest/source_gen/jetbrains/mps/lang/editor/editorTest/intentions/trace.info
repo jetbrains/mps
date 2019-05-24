@@ -12,13 +12,13 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,80,0" name="jetbrains.mps.lang.editor.editorTest.intentions.IntentionsDescriptor" />
+      <unit at="18,0,84,0" name="jetbrains.mps.lang.editor.editorTest.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:aaff0f7f-e57d-4430-aea6-ff86ed5c75ae(jetbrains.mps.lang.editor.editorTest.intentions)/2420730201804955281">
     <file name="IntentionsDescriptor.java">
-      <node id="2420730201804955281" at="58,47,59,81" concept="2" />
-      <node id="2420730201804955281" at="73,55,74,67" concept="2" />
+      <node id="2420730201804955281" at="62,47,63,81" concept="2" />
+      <node id="2420730201804955281" at="77,55,78,67" concept="2" />
     </file>
     <file name="TwoStepDeleteDefaultChild_AddAttribute_Intention.java">
       <node id="2420730201804955281" at="21,0,22,0" concept="3" trace="myCachedExecutable" />
@@ -153,8 +153,8 @@
       <unit id="3766420342434505259" at="21,0,69,0" name="jetbrains.mps.lang.editor.editorTest.intentions.AddPlaceholderChildAttribute_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3766420342434505259" at="44,47,45,71" concept="2" />
-      <node id="3766420342434505259" at="74,67,75,57" concept="2" />
+      <node id="3766420342434505259" at="46,47,47,71" concept="2" />
+      <node id="3766420342434505259" at="78,67,79,57" concept="2" />
     </file>
   </root>
   <root nodeRef="r:aaff0f7f-e57d-4430-aea6-ff86ed5c75ae(jetbrains.mps.lang.editor.editorTest.intentions)/5527270534710867991">
@@ -214,8 +214,8 @@
       <unit id="5527270534710867991" at="21,0,61,0" name="jetbrains.mps.lang.editor.editorTest.intentions.AddSimplePropertyAttribute_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="5527270534710867991" at="51,47,52,69" concept="2" />
-      <node id="5527270534710867991" at="72,55,73,55" concept="2" />
+      <node id="5527270534710867991" at="54,47,55,69" concept="2" />
+      <node id="5527270534710867991" at="76,55,77,55" concept="2" />
     </file>
   </root>
   <root nodeRef="r:aaff0f7f-e57d-4430-aea6-ff86ed5c75ae(jetbrains.mps.lang.editor.editorTest.intentions)/7658393498702987309">
@@ -312,8 +312,8 @@
       <unit id="7658393498702987309" at="26,0,90,0" name="jetbrains.mps.lang.editor.editorTest.intentions.AddTestReferenceAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="7658393498702987309" at="37,47,38,69" concept="2" />
-      <node id="7658393498702987309" at="71,52,72,55" concept="2" />
+      <node id="7658393498702987309" at="38,47,39,69" concept="2" />
+      <node id="7658393498702987309" at="75,52,76,55" concept="2" />
     </file>
   </root>
 </debug-info>

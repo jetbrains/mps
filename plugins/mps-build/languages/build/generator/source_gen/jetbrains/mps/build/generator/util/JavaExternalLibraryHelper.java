@@ -79,6 +79,7 @@ public class JavaExternalLibraryHelper {
           }
         } else {
           // unknown child, reset to library reexport 
+
           ListSequence.fromList(artifacts).clear();
           ListSequence.fromList(jarContainers).clear();
           break;
@@ -87,6 +88,7 @@ public class JavaExternalLibraryHelper {
     }
 
     // export as java library 
+
     if (ListSequence.fromList(artifacts).isEmpty() && ListSequence.fromList(jarContainers).isEmpty()) {
       SNode layoutNode = helper.getArtifact(library);
       if (layoutNode == null) {

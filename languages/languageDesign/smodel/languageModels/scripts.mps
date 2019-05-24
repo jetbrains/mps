@@ -7,7 +7,7 @@
     <use id="0eddeefa-c2d6-4437-bc2c-de50fd4ce470" name="jetbrains.mps.lang.script" version="1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
@@ -148,11 +148,8 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -325,6 +322,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7" />
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
@@ -1942,8 +1947,43 @@
           </node>
         </node>
         <node concept="3SKdUt" id="2KtaGVsDnUU" role="3cqZAp">
-          <node concept="3SKdUq" id="2KtaGVsDnUW" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME Error suppressed. Fix typing rules for `reference&lt; &gt;` operation. See MPS-27616" />
+          <node concept="1PaTwC" id="ATZLwXnY7A" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnY7B" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7C" role="1PaTwD">
+              <property role="3oM_SC" value="Error" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7D" role="1PaTwD">
+              <property role="3oM_SC" value="suppressed." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7E" role="1PaTwD">
+              <property role="3oM_SC" value="Fix" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7F" role="1PaTwD">
+              <property role="3oM_SC" value="typing" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7G" role="1PaTwD">
+              <property role="3oM_SC" value="rules" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7H" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7I" role="1PaTwD">
+              <property role="3oM_SC" value="`reference&lt;" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7J" role="1PaTwD">
+              <property role="3oM_SC" value="&gt;`" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7K" role="1PaTwD">
+              <property role="3oM_SC" value="operation." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7L" role="1PaTwD">
+              <property role="3oM_SC" value="See" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY7M" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-27616" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="2KtaGVt72Wf" role="3cqZAp">

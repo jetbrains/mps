@@ -50,6 +50,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
     this.myProject = project;
     this.myDeclaration = node;
     // TODO: call this constructor inside read action? 
+
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         ChangeMethodSignatureDialog.this.myParameters = new ChangeMethodSignatureParameters(myDeclaration);

@@ -52,6 +52,7 @@ public class PrivateFieldReferenceOperation_Constraints extends BaseConstraintsD
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
+
             if (!(SNodeOperations.isInstanceOf(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")))) {
               return new EmptyScope();
             }

@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
@@ -707,11 +707,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -991,6 +988,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -16235,8 +16240,43 @@
               </node>
             </node>
             <node concept="3SKdUt" id="4aTAL7cBNb5" role="3cqZAp">
-              <node concept="3SKdUq" id="4aTAL7cBNb7" role="3SKWNk">
-                <property role="3SKdUp" value="Do not suggest creation of #alias# cell if concept has name property" />
+              <node concept="1PaTwC" id="ATZLwXnUsH" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnUsI" role="1PaTwD">
+                  <property role="3oM_SC" value="Do" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsJ" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsK" role="1PaTwD">
+                  <property role="3oM_SC" value="suggest" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsL" role="1PaTwD">
+                  <property role="3oM_SC" value="creation" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsM" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsN" role="1PaTwD">
+                  <property role="3oM_SC" value="#alias#" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsO" role="1PaTwD">
+                  <property role="3oM_SC" value="cell" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsP" role="1PaTwD">
+                  <property role="3oM_SC" value="if" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsQ" role="1PaTwD">
+                  <property role="3oM_SC" value="concept" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsR" role="1PaTwD">
+                  <property role="3oM_SC" value="has" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsS" role="1PaTwD">
+                  <property role="3oM_SC" value="name" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsT" role="1PaTwD">
+                  <property role="3oM_SC" value="property" />
+                </node>
               </node>
             </node>
             <node concept="3clFbJ" id="4aTAL7cBKY5" role="3cqZAp">
@@ -18292,8 +18332,58 @@
               </node>
             </node>
             <node concept="3SKdUt" id="4aTAL7d8EVV" role="3cqZAp">
-              <node concept="3SKdUq" id="4aTAL7d8EVX" role="3SKWNk">
-                <property role="3SKdUp" value="TODO: add another binary operation action recognizing YouTrack Workflow-like binary operations (with the link to a kind)" />
+              <node concept="1PaTwC" id="ATZLwXnUsU" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnUsV" role="1PaTwD">
+                  <property role="3oM_SC" value="TODO:" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsW" role="1PaTwD">
+                  <property role="3oM_SC" value="add" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsX" role="1PaTwD">
+                  <property role="3oM_SC" value="another" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsY" role="1PaTwD">
+                  <property role="3oM_SC" value="binary" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUsZ" role="1PaTwD">
+                  <property role="3oM_SC" value="operation" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt0" role="1PaTwD">
+                  <property role="3oM_SC" value="action" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt1" role="1PaTwD">
+                  <property role="3oM_SC" value="recognizing" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt2" role="1PaTwD">
+                  <property role="3oM_SC" value="YouTrack" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt3" role="1PaTwD">
+                  <property role="3oM_SC" value="Workflow-like" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt4" role="1PaTwD">
+                  <property role="3oM_SC" value="binary" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt5" role="1PaTwD">
+                  <property role="3oM_SC" value="operations" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt6" role="1PaTwD">
+                  <property role="3oM_SC" value="(with" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt7" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt8" role="1PaTwD">
+                  <property role="3oM_SC" value="link" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUt9" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUta" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnUtb" role="1PaTwD">
+                  <property role="3oM_SC" value="kind)" />
+                </node>
               </node>
             </node>
           </node>
@@ -23587,8 +23677,22 @@
       <node concept="2$S_p_" id="1wEcoXjJtAX" role="2$S_pT">
         <node concept="3clFbS" id="1wEcoXjJtAY" role="2VODD2">
           <node concept="3SKdUt" id="1wEcoXjJtAZ" role="3cqZAp">
-            <node concept="3SKdUq" id="1wEcoXjJtB0" role="3SKWNk">
-              <property role="3SKdUp" value="TODO: Use link scopes here" />
+            <node concept="1PaTwC" id="ATZLwXnUtc" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnUtd" role="1PaTwD">
+                <property role="3oM_SC" value="TODO:" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUte" role="1PaTwD">
+                <property role="3oM_SC" value="Use" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUtf" role="1PaTwD">
+                <property role="3oM_SC" value="link" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUtg" role="1PaTwD">
+                <property role="3oM_SC" value="scopes" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnUth" role="1PaTwD">
+                <property role="3oM_SC" value="here" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="1wEcoXjJtB1" role="3cqZAp">

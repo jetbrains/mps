@@ -33,6 +33,7 @@ public final class RunWithCommand implements TestRule {
           }
         };
         // FIXME shall replace project's model access with MA to BaseTestBody.myModel (initialized with #getTransientModelDescriptor() value) as it's the model we deal with 
+
         ThreadUtils.runInUIThreadAndWait(new Runnable() {
           public void run() {
             myOwner.getProject().getModelAccess().executeCommand(r);

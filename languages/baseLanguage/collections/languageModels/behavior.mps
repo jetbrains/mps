@@ -204,11 +204,8 @@
         <child id="1163670677455" name="expression" index="3Kbmr1" />
         <child id="1163670683720" name="body" index="3Kbo56" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -334,6 +331,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -4415,8 +4420,22 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6pumIWoCFTp" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCFTq" role="3SKWNk">
-            <property role="3SKdUp" value=" workaround an SModel's dumbness" />
+          <node concept="1PaTwC" id="ATZLwXnSvk" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnSvl" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvm" role="1PaTwD">
+              <property role="3oM_SC" value="workaround" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvn" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvo" role="1PaTwD">
+              <property role="3oM_SC" value="SModel's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvp" role="1PaTwD">
+              <property role="3oM_SC" value="dumbness" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="4wdNO7sUw14" role="3cqZAp">
@@ -5114,8 +5133,22 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6kPvRVlkhmv" role="3cqZAp">
-          <node concept="3SKdUq" id="6kPvRVlkhmw" role="3SKWNk">
-            <property role="3SKdUp" value=" workaround an SModel's dumbness" />
+          <node concept="1PaTwC" id="ATZLwXnSvq" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnSvr" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvs" role="1PaTwD">
+              <property role="3oM_SC" value="workaround" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvt" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvu" role="1PaTwD">
+              <property role="3oM_SC" value="SModel's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvv" role="1PaTwD">
+              <property role="3oM_SC" value="dumbness" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="1ny5gPbZY$N" role="3cqZAp">
@@ -6256,18 +6289,138 @@
         </node>
         <node concept="3clFbH" id="6ALWH9g0b$0" role="3cqZAp" />
         <node concept="3SKdUt" id="6ALWH9g1dpx" role="3cqZAp">
-          <node concept="3SKdUq" id="6ALWH9g1dpz" role="3SKWNk">
-            <property role="3SKdUp" value="[MM] I don't understand this code and have just wrote an equivalent to the previous version w/o conceptNodes" />
+          <node concept="1PaTwC" id="ATZLwXnSvw" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnSvx" role="1PaTwD">
+              <property role="3oM_SC" value="[MM]" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvy" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvz" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSv$" role="1PaTwD">
+              <property role="3oM_SC" value="understand" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSv_" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvA" role="1PaTwD">
+              <property role="3oM_SC" value="code" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvB" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvC" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvD" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvE" role="1PaTwD">
+              <property role="3oM_SC" value="wrote" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvF" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvG" role="1PaTwD">
+              <property role="3oM_SC" value="equivalent" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvH" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvI" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvJ" role="1PaTwD">
+              <property role="3oM_SC" value="previous" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvK" role="1PaTwD">
+              <property role="3oM_SC" value="version" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvL" role="1PaTwD">
+              <property role="3oM_SC" value="w/o" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvM" role="1PaTwD">
+              <property role="3oM_SC" value="conceptNodes" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="6ALWH9g1gCs" role="3cqZAp">
-          <node concept="3SKdUq" id="6ALWH9g1gCu" role="3SKWNk">
-            <property role="3SKdUp" value="[MM] I suppose what's meant here is concept.hierarchy.subconcepts(IApplicableToNothing).selectMany(it-&gt;it.getApplicableTypes())" />
+          <node concept="1PaTwC" id="ATZLwXnSvN" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnSvO" role="1PaTwD">
+              <property role="3oM_SC" value="[MM]" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvP" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvQ" role="1PaTwD">
+              <property role="3oM_SC" value="suppose" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvR" role="1PaTwD">
+              <property role="3oM_SC" value="what's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvS" role="1PaTwD">
+              <property role="3oM_SC" value="meant" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvT" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvU" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvV" role="1PaTwD">
+              <property role="3oM_SC" value="concept.hierarchy.subconcepts(IApplicableToNothing).selectMany(it-&gt;it.getApplicableTypes())" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="6ALWH9g1iit" role="3cqZAp">
-          <node concept="3SKdUq" id="6ALWH9g1iiv" role="3SKWNk">
-            <property role="3SKdUp" value="[MM] this differs much from the current code: getAT() is only called for direct super-interfaces" />
+          <node concept="1PaTwC" id="ATZLwXnSvW" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnSvX" role="1PaTwD">
+              <property role="3oM_SC" value="[MM]" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvY" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSvZ" role="1PaTwD">
+              <property role="3oM_SC" value="differs" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw0" role="1PaTwD">
+              <property role="3oM_SC" value="much" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw1" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw2" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw3" role="1PaTwD">
+              <property role="3oM_SC" value="current" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw4" role="1PaTwD">
+              <property role="3oM_SC" value="code:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw5" role="1PaTwD">
+              <property role="3oM_SC" value="getAT()" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw6" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw7" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw8" role="1PaTwD">
+              <property role="3oM_SC" value="called" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSw9" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSwa" role="1PaTwD">
+              <property role="3oM_SC" value="direct" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSwb" role="1PaTwD">
+              <property role="3oM_SC" value="super-interfaces" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="6ALWH9fZiq0" role="3cqZAp">

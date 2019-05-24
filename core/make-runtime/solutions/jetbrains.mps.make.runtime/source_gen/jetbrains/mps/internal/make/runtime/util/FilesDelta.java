@@ -39,6 +39,7 @@ public class FilesDelta implements IDelta {
 
   public boolean isEmpty() {
     // tell if there's any information has been recorded with this delta object 
+
     return MapSequence.fromMap(files).isEmpty();
   }
 
@@ -117,13 +118,16 @@ public class FilesDelta implements IDelta {
 
   private FilesDelta copy(FilesDelta that) {
     // provided there's this.contains(that) call before copy() 
+
     // DirUtil.startsWith(that, this) == true 
+
     if (!(key.contains(that.key))) {
       throw new IllegalArgumentException();
     }
 
     Set<IFile> newlyTouchedDirs = SetSequence.fromSet(new HashSet<IFile>());
     // copy all but stale values, stale entries shall not override explicitly set 
+
     for (IFile file : MapSequence.fromMap(that.files).keySet()) {
       FilesDelta.Status newStatus = MapSequence.fromMap(that.files).get(file);
       if (newStatus == FilesDelta.Status.STALE && MapSequence.fromMap(files).containsKey(file)) {
@@ -134,11 +138,13 @@ public class FilesDelta implements IDelta {
       SetSequence.fromSet(newlyTouchedDirs).addElement((file.isDirectory() ? file : file.getParent()));
     }
     // in case we've got stale directory, check if any updates from that didn't touch it 
+
     for (IFile file : MapSequence.fromMap(files).keySet()) {
       if (MapSequence.fromMap(files).get(file) == FilesDelta.Status.STALE && file.isDirectory()) {
         String staleDir = DirUtil.normalizeAsDir(file.getPath());
         for (IFile touchDir : newlyTouchedDirs) {
           // if staleDir is parent of any newly touched directories, it's not stale any more 
+
           if (DirUtil.startsWith(DirUtil.normalizeAsDir(touchDir.getPath()), staleDir)) {
             MapSequence.fromMap(files).put(file, FilesDelta.Status.KEPT);
             break;

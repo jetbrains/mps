@@ -122,6 +122,7 @@ public class CoreMakeTask {
 
       long currentTime = 0;
       // XXX if we don't need this stats for our users, may condition output with isInternalMode() 
+
       for (IMapping<ITarget.Name, Long> stat : MapSequence.fromMap(timeStatistic).sort(new ISelector<IMapping<ITarget.Name, Long>, Long>() {
         public Long select(IMapping<ITarget.Name, Long> it) {
           return it.value();

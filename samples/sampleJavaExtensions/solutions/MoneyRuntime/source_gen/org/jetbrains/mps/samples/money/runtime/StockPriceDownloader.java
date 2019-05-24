@@ -63,9 +63,11 @@ public final class StockPriceDownloader {
 
               } catch (ParseException e) {
                 // date parsing error 
+
                 return null;
               } catch (IndexOutOfBoundsException e) {
                 // line parsing error 
+
                 return null;
               }
             } else {

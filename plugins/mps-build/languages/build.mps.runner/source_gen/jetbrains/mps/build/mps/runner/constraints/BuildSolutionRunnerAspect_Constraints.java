@@ -80,6 +80,7 @@ public class BuildSolutionRunnerAspect_Constraints extends BaseConstraintsDescri
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if ((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(parentNode)) {
       // anything in generator 
+
       return true;
     }
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(parentNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins")), MetaAdapterFactory.getConcept(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cbeb5c6L, "jetbrains.mps.build.mps.runner.structure.BuildSolutionRunnerPlugin"))).isNotEmpty();

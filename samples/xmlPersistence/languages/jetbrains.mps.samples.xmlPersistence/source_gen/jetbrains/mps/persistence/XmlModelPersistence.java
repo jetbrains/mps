@@ -145,6 +145,7 @@ public class XmlModelPersistence implements ModelFactory {
           BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
           streamReader.readLine();
           // skip the header 
+
           InputSource inputSource = new InputSource(streamReader);
           Document document = JDOMUtil.loadDocument(inputSource);
           SNode xmlFile = XmlConverter.convertDocument(name, document);
@@ -169,6 +170,7 @@ public class XmlModelPersistence implements ModelFactory {
         throw new ModelSaveException("cannot save empty model", Collections.<SModel.Problem>singletonList(new PersistenceProblem(SModel.Problem.Kind.Save, "cannot save empty model", null, true)));
       }
       // TODO check concepts 
+
       if (IterableUtil.copyToList(modelData.getRootNodes()).size() > 1) {
         throw new ModelSaveException("cannot save more than one root into .xml file", Collections.<SModel.Problem>singletonList(new PersistenceProblem(SModel.Problem.Kind.Save, "cannot save more than one root into .xml file", null, true, -1, -1, root)));
       }
@@ -274,6 +276,7 @@ public class XmlModelPersistence implements ModelFactory {
       throw new UnsupportedDataSourceException(dataSource);
     }
     // here the client of #save is responsible of providing the correct model 
+
     SModelSimpleHeader newHeader = new SModelSimpleHeader(model.getReference());
     jetbrains.mps.smodel.SModel modelData = ((SModelBase) model).getSModel();
     XmlModelPersistence.XmlCustomPersistenceLoadFacility auxFacility = new XmlModelPersistence.XmlCustomPersistenceLoadFacility((StreamDataSource) dataSource, this);

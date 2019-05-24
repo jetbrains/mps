@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: PatternExpression 
+          // concept 
+
           intentions = new IntentionFactory[7];
           intentions[0] = new CreatePatternVariable_Intention();
           intentions[1] = new CreatePropertyPatternVariable_Intention();

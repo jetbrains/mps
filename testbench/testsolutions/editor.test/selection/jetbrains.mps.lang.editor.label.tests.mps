@@ -62,11 +62,8 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -80,6 +77,14 @@
     <language id="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7" name="jetbrains.mps.lang.editor.editorTest">
       <concept id="1848195745380699686" name="jetbrains.mps.lang.editor.editorTest.structure.LabelConceptWithProperty" flags="ng" index="3Bq18q">
         <property id="1848195745380841147" name="myProperty" index="3BtyE7" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -246,8 +251,46 @@
     </node>
     <node concept="3clFbS" id="VpSNXveJ5l" role="LjaKd">
       <node concept="3SKdUt" id="VpSNXvfgGQ" role="3cqZAp">
-        <node concept="3SKdUq" id="VpSNXvfgGS" role="3SKWNk">
-          <property role="3SKdUp" value="TODO: modify press mouse statement in order to support expressions as x,y prameters" />
+        <node concept="1PaTwC" id="ATZLwXoq77" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq78" role="1PaTwD">
+            <property role="3oM_SC" value="TODO:" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq79" role="1PaTwD">
+            <property role="3oM_SC" value="modify" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7a" role="1PaTwD">
+            <property role="3oM_SC" value="press" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7b" role="1PaTwD">
+            <property role="3oM_SC" value="mouse" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7c" role="1PaTwD">
+            <property role="3oM_SC" value="statement" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7d" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7e" role="1PaTwD">
+            <property role="3oM_SC" value="order" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7f" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7g" role="1PaTwD">
+            <property role="3oM_SC" value="support" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7h" role="1PaTwD">
+            <property role="3oM_SC" value="expressions" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7i" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7j" role="1PaTwD">
+            <property role="3oM_SC" value="x,y" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq7k" role="1PaTwD">
+            <property role="3oM_SC" value="prameters" />
+          </node>
         </node>
       </node>
       <node concept="37Q87h" id="VpSNXveJeG" role="3cqZAp">

@@ -22,6 +22,7 @@ public class ExtendedDefaultVcsRootPolicy extends BasicDefaultVcsRootPolicy {
   @Override
   public Collection<VirtualFile> getDirtyRoots() {
     // TODO is it needed? 
+
     ProjectLevelVcsManager manager = ProjectLevelVcsManager.getInstance(myProject);
     return Sequence.fromIterable(Sequence.fromArray(manager.getAllVcsRoots())).select(new ISelector<VcsRoot, VirtualFile>() {
       public VirtualFile select(VcsRoot it) {

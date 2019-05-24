@@ -28,13 +28,16 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode func, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // function is expected to return value of any type 
+
     final SNode expectedRetType = (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType")) ? null : ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func));
     boolean noReturnExpected = ((expectedRetType == null) || TypecheckingFacade.getFromContext().isSubtype(expectedRetType, _quotation_createNode_bbraw4_b0a0a0c0b()));
     if (!(noReturnExpected)) {
       final SNode LCS_typevar_1186052624152 = typeCheckingContext.createNewRuntimeTypesVariable();
       Iterable<SNode> returnStatements = RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(func, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")));
       // should return subtypes of the 'expected type' 
+
       // if 'expected type' is null - should still return some value (of any type) 
+
       for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
         if ((SLinkOperations.getTarget(returnStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression")) == null)) {
           {
@@ -59,6 +62,7 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
         }
       }
       // last expression statement can serve as return statement 
+
       SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(func);
       if (SNodeOperations.isInstanceOf(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))) {
         final SNode expression = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"));

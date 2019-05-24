@@ -44,6 +44,7 @@ public class ModelFocusSynchronizer implements ApplicationComponent {
         final Set<IFile> files = SetSequence.fromSet(new HashSet<IFile>());
         for (Project project : ProjectManager.getInstance().getOpenProjects()) {
           // XXX could use MPS's ProjectManager, but it's complicated to get IDEA project out of regular mps's Project. 
+
           MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
           if (mpsProject == null) {
             continue;
@@ -57,6 +58,7 @@ public class ModelFocusSynchronizer implements ApplicationComponent {
               for (VirtualFile vf : FileEditorManager.getInstance(project).getSelectedFiles()) {
                 if (vf instanceof MPSNodeVirtualFile) {
                   // XXX as long as we update VFS files, why do we care to find actual edited node? Why vf.getNode() is not sufficient? 
+
                   MPSNodeVirtualFile nvf = ((MPSNodeVirtualFile) vf);
                   SNode node = MPSEditorUtil.getCurrentEditedNode(project, nvf);
                   if (node == null) {
@@ -77,9 +79,13 @@ public class ModelFocusSynchronizer implements ApplicationComponent {
           });
         }
         //  the sole reason for invokeLater here is to run after all runReadInEDT. IOW, we implicitly 
+
         // synchronize file collection task with refresh task by using EDT thread. Just don't want to bother with 
+
         // explicit sync (e.g. semaphore incremented before runReadInEDT, decremented in the end and RefreshQueue waiting for 
+
         // semaphore == 0. 
+
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
             if (!(SetSequence.fromSet(files).isEmpty())) {

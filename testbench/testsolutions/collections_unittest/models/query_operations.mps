@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="urs3" ref="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)" />
@@ -136,11 +136,8 @@
         <child id="1144231399730" name="condition" index="1Dwp0S" />
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -179,6 +176,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -764,28 +769,80 @@
             </node>
           </node>
           <node concept="3SKdUt" id="6pumIWoCFVh" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCFVi" role="3SKWNk">
-              <property role="3SKdUp" value="from infinite sequence take first 10 numbers," />
+            <node concept="1PaTwC" id="ATZLwXopYO" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopYP" role="1PaTwD">
+                <property role="3oM_SC" value="from" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYQ" role="1PaTwD">
+                <property role="3oM_SC" value="infinite" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYR" role="1PaTwD">
+                <property role="3oM_SC" value="sequence" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYS" role="1PaTwD">
+                <property role="3oM_SC" value="take" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYT" role="1PaTwD">
+                <property role="3oM_SC" value="first" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYU" role="1PaTwD">
+                <property role="3oM_SC" value="10" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYV" role="1PaTwD">
+                <property role="3oM_SC" value="numbers," />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="6pumIWoCFP1" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCFP2" role="3SKWNk">
-              <property role="3SKdUp" value="ignore odd numbers," />
+            <node concept="1PaTwC" id="ATZLwXopYW" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopYX" role="1PaTwD">
+                <property role="3oM_SC" value="ignore" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYY" role="1PaTwD">
+                <property role="3oM_SC" value="odd" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopYZ" role="1PaTwD">
+                <property role="3oM_SC" value="numbers," />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="6pumIWoCFZl" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCFZm" role="3SKWNk">
-              <property role="3SKdUp" value="map each even number to two strings:" />
+            <node concept="1PaTwC" id="ATZLwXopZ0" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopZ1" role="1PaTwD">
+                <property role="3oM_SC" value="map" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZ2" role="1PaTwD">
+                <property role="3oM_SC" value="each" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZ3" role="1PaTwD">
+                <property role="3oM_SC" value="even" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZ4" role="1PaTwD">
+                <property role="3oM_SC" value="number" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZ5" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZ6" role="1PaTwD">
+                <property role="3oM_SC" value="two" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZ7" role="1PaTwD">
+                <property role="3oM_SC" value="strings:" />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="6pumIWoCFVJ" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCFVK" role="3SKWNk">
-              <property role="3SKdUp" value="&quot;num:&lt;n&gt;&quot;" />
+            <node concept="1PaTwC" id="ATZLwXopZ8" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopZ9" role="1PaTwD">
+                <property role="3oM_SC" value="&quot;num:&lt;n&gt;&quot;" />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="6pumIWoCG2N" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCG2O" role="3SKWNk">
-              <property role="3SKdUp" value="&quot;num:&lt;n*100&gt;&quot;" />
+            <node concept="1PaTwC" id="ATZLwXopZa" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopZb" role="1PaTwD">
+                <property role="3oM_SC" value="&quot;num:&lt;n*100&gt;&quot;" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="1ngiNkTyw2C" role="3cqZAp">
@@ -1300,13 +1357,50 @@
             </node>
           </node>
           <node concept="3SKdUt" id="6pumIWoCFNN" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCFNO" role="3SKWNk">
-              <property role="3SKdUp" value="from sequence of 10 numbers" />
+            <node concept="1PaTwC" id="ATZLwXopZc" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopZd" role="1PaTwD">
+                <property role="3oM_SC" value="from" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZe" role="1PaTwD">
+                <property role="3oM_SC" value="sequence" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZf" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZg" role="1PaTwD">
+                <property role="3oM_SC" value="10" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZh" role="1PaTwD">
+                <property role="3oM_SC" value="numbers" />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="6pumIWoCG2R" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCG2S" role="3SKWNk">
-              <property role="3SKdUp" value="take each even number and produce string: &quot;num:&lt;n&gt;&quot;" />
+            <node concept="1PaTwC" id="ATZLwXopZi" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopZj" role="1PaTwD">
+                <property role="3oM_SC" value="take" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZk" role="1PaTwD">
+                <property role="3oM_SC" value="each" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZl" role="1PaTwD">
+                <property role="3oM_SC" value="even" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZm" role="1PaTwD">
+                <property role="3oM_SC" value="number" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZn" role="1PaTwD">
+                <property role="3oM_SC" value="and" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZo" role="1PaTwD">
+                <property role="3oM_SC" value="produce" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZp" role="1PaTwD">
+                <property role="3oM_SC" value="string:" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZq" role="1PaTwD">
+                <property role="3oM_SC" value="&quot;num:&lt;n&gt;&quot;" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="1ngiNkTzM3o" role="3cqZAp">
@@ -1476,8 +1570,25 @@
         <node concept="3cqZAl" id="1ngiNkTzM4r" role="3clF45" />
         <node concept="3clFbS" id="1ngiNkTzM4s" role="3clF47">
           <node concept="3SKdUt" id="6pumIWoCG2p" role="3cqZAp">
-            <node concept="3SKdUq" id="6pumIWoCG2q" role="3SKWNk">
-              <property role="3SKdUp" value="'where' and 'select' tolerate 'null' operand " />
+            <node concept="1PaTwC" id="ATZLwXopZr" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopZs" role="1PaTwD">
+                <property role="3oM_SC" value="'where'" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZt" role="1PaTwD">
+                <property role="3oM_SC" value="and" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZu" role="1PaTwD">
+                <property role="3oM_SC" value="'select'" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZv" role="1PaTwD">
+                <property role="3oM_SC" value="tolerate" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZw" role="1PaTwD">
+                <property role="3oM_SC" value="'null'" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopZx" role="1PaTwD">
+                <property role="3oM_SC" value="operand" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="1ngiNkTzM4u" role="3cqZAp">
@@ -1588,8 +1699,19 @@
           <node concept="3clFbJ" id="1ngiNkTzTn8" role="3cqZAp">
             <node concept="3clFbS" id="1ngiNkTzTn9" role="3clFbx">
               <node concept="3SKdUt" id="6pumIWoCFUX" role="3cqZAp">
-                <node concept="3SKdUq" id="6pumIWoCFUY" role="3SKWNk">
-                  <property role="3SKdUp" value="'select' skips all 'null'-s" />
+                <node concept="1PaTwC" id="ATZLwXopZy" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXopZz" role="1PaTwD">
+                    <property role="3oM_SC" value="'select'" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXopZ$" role="1PaTwD">
+                    <property role="3oM_SC" value="skips" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXopZ_" role="1PaTwD">
+                    <property role="3oM_SC" value="all" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXopZA" role="1PaTwD">
+                    <property role="3oM_SC" value="'null'-s" />
+                  </node>
                 </node>
               </node>
               <node concept="3cpWs8" id="1ngiNkTzM5d" role="3cqZAp">

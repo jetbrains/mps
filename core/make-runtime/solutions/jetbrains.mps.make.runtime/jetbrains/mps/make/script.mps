@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="ud0o" ref="r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)" />
@@ -214,11 +214,8 @@
         <child id="1163670677455" name="expression" index="3Kbmr1" />
         <child id="1163670683720" name="body" index="3Kbo56" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -294,6 +291,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2591,8 +2596,46 @@
             </node>
           </node>
           <node concept="3SKdUt" id="3rCIVT6GeQN" role="3cqZAp">
-            <node concept="3SKdUq" id="3rCIVT6GeQP" role="3SKWNk">
-              <property role="3SKdUp" value="FIXME identical to AbstractMakeService.DefaultMonitor, but can't re-use here due to dependency direction. Refactor" />
+            <node concept="1PaTwC" id="ATZLwXo6Vq" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXo6Vr" role="1PaTwD">
+                <property role="3oM_SC" value="FIXME" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vs" role="1PaTwD">
+                <property role="3oM_SC" value="identical" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vt" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vu" role="1PaTwD">
+                <property role="3oM_SC" value="AbstractMakeService.DefaultMonitor," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vv" role="1PaTwD">
+                <property role="3oM_SC" value="but" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vw" role="1PaTwD">
+                <property role="3oM_SC" value="can't" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vx" role="1PaTwD">
+                <property role="3oM_SC" value="re-use" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vy" role="1PaTwD">
+                <property role="3oM_SC" value="here" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6Vz" role="1PaTwD">
+                <property role="3oM_SC" value="due" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6V$" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6V_" role="1PaTwD">
+                <property role="3oM_SC" value="dependency" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6VA" role="1PaTwD">
+                <property role="3oM_SC" value="direction." />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo6VB" role="1PaTwD">
+                <property role="3oM_SC" value="Refactor" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="3rCIVT6GcjI" role="3cqZAp">

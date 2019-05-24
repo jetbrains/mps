@@ -87,6 +87,7 @@ public class PausedJavaUiState extends JavaUiStateImpl {
 
     for (ThreadReference t : threads) {
       //  TODO this is a hack to filter out system threads 
+
       if (!(t.threadGroup().name().equals("system"))) {
         return threads.indexOf(t);
       }
@@ -137,6 +138,7 @@ public class PausedJavaUiState extends JavaUiStateImpl {
     }
     assert myThreadIndex >= 0;
     //  if we have a frame then we have a thread 
+
     return (JavaStackFrame) ListSequence.fromList(myThreads).getElement(myThreadIndex).getFrames().get(myStackFrameIndex);
   }
   @Override
@@ -152,6 +154,7 @@ public class PausedJavaUiState extends JavaUiStateImpl {
     List<IWatchable> watchables = new ArrayList<IWatchable>();
     if (myContext != null && myContext instanceof EventContext) {
       // todo move out 
+
       EventSet eventSet = ((EventContext) myContext).getEventSet();
       ThreadReference threadReference = check_vzg6vq_a0c0b0o(getThread(), this);
       if (threadReference == null) {

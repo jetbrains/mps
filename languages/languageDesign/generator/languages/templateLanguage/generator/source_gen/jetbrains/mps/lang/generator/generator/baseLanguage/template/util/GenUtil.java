@@ -30,10 +30,12 @@ public class GenUtil {
   }
   public static String saveListVar(TemplateQueryContext context, SNode node, int varIndex) {
     // Don't want "tlist" and "tnode" scattered around 
+
     return saveVar(context, node, "tlist" + varIndex);
   }
   public static String saveNodeVar(TemplateQueryContext context, SNode node, int varIndex, boolean canBeNull) {
     // Don't want "tlist" and "tnode" scattered around 
+
     String varName = saveVar(context, node, "tnode" + varIndex);
     node.putUserObject("GenUtil:NotNull", Boolean.valueOf(!(canBeNull)));
     return varName;
@@ -42,6 +44,7 @@ public class GenUtil {
     SNode original = (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro")) ? SNodeOperations.getParent(node) : node);
     if (context.getTransientObject(original) == null) {
       // guess, it's a mechanism to access variable name without knowledge of skipMacro value 
+
       context.putTransientObject(original, var);
     }
     context.putTransientObject(MultiTuple.<String,SNode>from(KEY, node), var);
@@ -49,12 +52,14 @@ public class GenUtil {
   }
   public static String getVarHack(TemplateQueryContext context, SNode node) {
     // see saveVar above 
+
     Object obj = context.getTransientObject(node);
     return (obj instanceof String ? (String) obj : null);
   }
 
   public static boolean isCollectionVariable(TemplateQueryContext context, SNode node) {
     // or !startsWith("tnode")? 
+
     String n = getVarHack(context, node);
     return n != null && n.startsWith("tlist");
   }
@@ -116,7 +121,9 @@ public class GenUtil {
         sb.append(c);
       } else {
         // replace all non-identifier characters with underscore 
+
         //  I realize that may lead to name clashes, but odds are too low and do not justify e.g. _x0020 in the name with spaces 
+
         sb.append('_');
       }
     }
@@ -130,6 +137,7 @@ public class GenUtil {
    */
   public static void markHasIncomingRefs(SNode n) {
     //  just care about the fact there are references, not their number nor nature 
+
     n.putUserObject("hasIncomingRefs", Boolean.TRUE);
   }
   /**

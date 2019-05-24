@@ -119,13 +119,18 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode operationType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")));
     if (SNodeOperations.isInstanceOf(operationType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType"))) {
       // I don't want void return type to become java.lang.Void, nor do I need extra boxing for boolean/int values 
+
       // I don't do the same for method arguments, however, as expect a lot of primitives as operand or variable references. 
+
       return operationType;
     }
     if (SNodeOperations.isInstanceOf(operationType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"))) {
       // coerce(AnAction[] as ClassifierType) gives Serializable. 
+
       // This gonna fail once we face array of smth that is not ClassifierType (e.g. concept<>[]) 
+
       // and our only hope is that proper generator shows up afterwards. 
+
       return operationType;
     }
     return TypecheckingFacade.getFromContext().coerceType(operationType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
@@ -134,6 +139,7 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand")));
     if (SNodeOperations.isInstanceOf(operandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"))) {
       //  see similar code and corresponding comment of return value 
+
       return operandType;
     }
     SNode result = TypecheckingFacade.getFromContext().coerceType(operandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
@@ -146,6 +152,7 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode nodeType = TypecheckingFacade.getFromContext().getTypeOf(_context.getNode());
     if (SNodeOperations.isInstanceOf(nodeType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"))) {
       //  see similar code and corresponding comment of return value 
+
       return nodeType;
     }
     return TypecheckingFacade.getFromContext().coerceType(nodeType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));

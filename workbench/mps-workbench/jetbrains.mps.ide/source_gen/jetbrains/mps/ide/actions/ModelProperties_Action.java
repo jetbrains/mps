@@ -86,6 +86,7 @@ public class ModelProperties_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // see ModuleProperties_Action for reason to save all models prior to property change 
+
     new SaveRepositoryCommand(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository()).execute();
     MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurable(((SModel) MapSequence.fromMap(_params).get("model")), ((MPSProject) MapSequence.fromMap(_params).get("project")));
     final SingleConfigurableEditor configurableEditor = new SingleConfigurableEditor(((Project) MapSequence.fromMap(_params).get("ideaProject")), configurable, "#MPSPropertiesConfigurable");

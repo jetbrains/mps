@@ -5,7 +5,7 @@
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="tpf3" ref="r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)" />
@@ -88,11 +88,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -187,6 +184,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
   </registry>
   <node concept="bUwia" id="hHiDaBy">
     <property role="TrG5h" value="mc_generationContext" />
@@ -209,8 +214,13 @@
             <node concept="3$xsQk" id="hHiDaBE" role="3$ytzL">
               <node concept="3clFbS" id="hHiDaBF" role="2VODD2">
                 <node concept="3SKdUt" id="6pumIWoCFOl" role="3cqZAp">
-                  <node concept="3SKdUq" id="6pumIWoCFOm" role="3SKWNk">
-                    <property role="3SKdUp" value="method parameter" />
+                  <node concept="1PaTwC" id="ATZLwXnVof" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXnVog" role="1PaTwD">
+                      <property role="3oM_SC" value="method" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnVoh" role="1PaTwD">
+                      <property role="3oM_SC" value="parameter" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="hHiDaBH" role="3cqZAp">
@@ -233,8 +243,19 @@
             <node concept="3NFfHV" id="hHiDaBN" role="3NFExx">
               <node concept="3clFbS" id="hHiDaBO" role="2VODD2">
                 <node concept="3SKdUt" id="6pumIWoCFUp" role="3cqZAp">
-                  <node concept="3SKdUq" id="6pumIWoCFUq" role="3SKWNk">
-                    <property role="3SKdUp" value="delegate reduction to operation" />
+                  <node concept="1PaTwC" id="ATZLwXnVoi" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXnVoj" role="1PaTwD">
+                      <property role="3oM_SC" value="delegate" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnVok" role="1PaTwD">
+                      <property role="3oM_SC" value="reduction" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnVol" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnVom" role="1PaTwD">
+                      <property role="3oM_SC" value="operation" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="hHiDaBQ" role="3cqZAp">
@@ -316,8 +337,34 @@
                     <node concept="3clFbJ" id="hHF4J6B" role="3cqZAp">
                       <node concept="3clFbS" id="hHF4J6C" role="3clFbx">
                         <node concept="3SKdUt" id="6pumIWoCFTP" role="3cqZAp">
-                          <node concept="3SKdUq" id="6pumIWoCFTQ" role="3SKWNk">
-                            <property role="3SKdUp" value="operation has been preprocessed by mapping script in TLBase" />
+                          <node concept="1PaTwC" id="ATZLwXnVon" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXnVoo" role="1PaTwD">
+                              <property role="3oM_SC" value="operation" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVop" role="1PaTwD">
+                              <property role="3oM_SC" value="has" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoq" role="1PaTwD">
+                              <property role="3oM_SC" value="been" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVor" role="1PaTwD">
+                              <property role="3oM_SC" value="preprocessed" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVos" role="1PaTwD">
+                              <property role="3oM_SC" value="by" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVot" role="1PaTwD">
+                              <property role="3oM_SC" value="mapping" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVou" role="1PaTwD">
+                              <property role="3oM_SC" value="script" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVov" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVow" role="1PaTwD">
+                              <property role="3oM_SC" value="TLBase" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3cpWs6" id="hHF4MZQ" role="3cqZAp">
@@ -466,8 +513,34 @@
                     <node concept="3clFbJ" id="hHF53Ff" role="3cqZAp">
                       <node concept="3clFbS" id="hHF53Fg" role="3clFbx">
                         <node concept="3SKdUt" id="6pumIWoCFUd" role="3cqZAp">
-                          <node concept="3SKdUq" id="6pumIWoCFUe" role="3SKWNk">
-                            <property role="3SKdUp" value="operation has been preprocessed by mapping script in TLBase" />
+                          <node concept="1PaTwC" id="ATZLwXnVox" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXnVoy" role="1PaTwD">
+                              <property role="3oM_SC" value="operation" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoz" role="1PaTwD">
+                              <property role="3oM_SC" value="has" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVo$" role="1PaTwD">
+                              <property role="3oM_SC" value="been" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVo_" role="1PaTwD">
+                              <property role="3oM_SC" value="preprocessed" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoA" role="1PaTwD">
+                              <property role="3oM_SC" value="by" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoB" role="1PaTwD">
+                              <property role="3oM_SC" value="mapping" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoC" role="1PaTwD">
+                              <property role="3oM_SC" value="script" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoD" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoE" role="1PaTwD">
+                              <property role="3oM_SC" value="TLBase" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3cpWs6" id="hHF53Fi" role="3cqZAp">
@@ -572,8 +645,34 @@
                     <node concept="3clFbJ" id="hLiFTpX" role="3cqZAp">
                       <node concept="3clFbS" id="hLiFTpY" role="3clFbx">
                         <node concept="3SKdUt" id="6pumIWoCFWp" role="3cqZAp">
-                          <node concept="3SKdUq" id="6pumIWoCFWq" role="3SKWNk">
-                            <property role="3SKdUp" value="operation has been preprocessed by mapping script in TLBase" />
+                          <node concept="1PaTwC" id="ATZLwXnVoF" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXnVoG" role="1PaTwD">
+                              <property role="3oM_SC" value="operation" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoH" role="1PaTwD">
+                              <property role="3oM_SC" value="has" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoI" role="1PaTwD">
+                              <property role="3oM_SC" value="been" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoJ" role="1PaTwD">
+                              <property role="3oM_SC" value="preprocessed" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoK" role="1PaTwD">
+                              <property role="3oM_SC" value="by" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoL" role="1PaTwD">
+                              <property role="3oM_SC" value="mapping" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoM" role="1PaTwD">
+                              <property role="3oM_SC" value="script" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoN" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoO" role="1PaTwD">
+                              <property role="3oM_SC" value="TLBase" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3cpWs6" id="hLiFTq0" role="3cqZAp">
@@ -678,8 +777,34 @@
                     <node concept="3clFbJ" id="hLmowqy" role="3cqZAp">
                       <node concept="3clFbS" id="hLmowqz" role="3clFbx">
                         <node concept="3SKdUt" id="6pumIWoCFY1" role="3cqZAp">
-                          <node concept="3SKdUq" id="6pumIWoCFY2" role="3SKWNk">
-                            <property role="3SKdUp" value="operation has been preprocessed by mapping script in TLBase" />
+                          <node concept="1PaTwC" id="ATZLwXnVoP" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXnVoQ" role="1PaTwD">
+                              <property role="3oM_SC" value="operation" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoR" role="1PaTwD">
+                              <property role="3oM_SC" value="has" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoS" role="1PaTwD">
+                              <property role="3oM_SC" value="been" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoT" role="1PaTwD">
+                              <property role="3oM_SC" value="preprocessed" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoU" role="1PaTwD">
+                              <property role="3oM_SC" value="by" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoV" role="1PaTwD">
+                              <property role="3oM_SC" value="mapping" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoW" role="1PaTwD">
+                              <property role="3oM_SC" value="script" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoX" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVoY" role="1PaTwD">
+                              <property role="3oM_SC" value="TLBase" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3cpWs6" id="hLmowq_" role="3cqZAp">
@@ -768,8 +893,34 @@
                     <node concept="3clFbJ" id="hIfskBK" role="3cqZAp">
                       <node concept="3clFbS" id="hIfskBL" role="3clFbx">
                         <node concept="3SKdUt" id="6pumIWoCFT1" role="3cqZAp">
-                          <node concept="3SKdUq" id="6pumIWoCFT2" role="3SKWNk">
-                            <property role="3SKdUp" value="operation has been preprocessed by mapping script in TLBase" />
+                          <node concept="1PaTwC" id="ATZLwXnVoZ" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXnVp0" role="1PaTwD">
+                              <property role="3oM_SC" value="operation" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp1" role="1PaTwD">
+                              <property role="3oM_SC" value="has" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp2" role="1PaTwD">
+                              <property role="3oM_SC" value="been" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp3" role="1PaTwD">
+                              <property role="3oM_SC" value="preprocessed" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp4" role="1PaTwD">
+                              <property role="3oM_SC" value="by" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp5" role="1PaTwD">
+                              <property role="3oM_SC" value="mapping" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp6" role="1PaTwD">
+                              <property role="3oM_SC" value="script" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp7" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXnVp8" role="1PaTwD">
+                              <property role="3oM_SC" value="TLBase" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3cpWs6" id="hIfskBN" role="3cqZAp">
@@ -1292,8 +1443,37 @@
                 <node concept="3NFfHV" id="UesZ_o1S$V" role="3NFExx">
                   <node concept="3clFbS" id="UesZ_o1S$W" role="2VODD2">
                     <node concept="3SKdUt" id="4si$02b0cU5" role="3cqZAp">
-                      <node concept="3SKdUq" id="4si$02b0cUa" role="3SKWNk">
-                        <property role="3SKdUp" value="there's TypeHitExpression container node that wraps original DotExpression, hence de.parent.type" />
+                      <node concept="1PaTwC" id="ATZLwXnVp9" role="3ndbpf">
+                        <node concept="3oM_SD" id="ATZLwXnVpa" role="1PaTwD">
+                          <property role="3oM_SC" value="there's" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpb" role="1PaTwD">
+                          <property role="3oM_SC" value="TypeHitExpression" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpc" role="1PaTwD">
+                          <property role="3oM_SC" value="container" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpd" role="1PaTwD">
+                          <property role="3oM_SC" value="node" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpe" role="1PaTwD">
+                          <property role="3oM_SC" value="that" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpf" role="1PaTwD">
+                          <property role="3oM_SC" value="wraps" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpg" role="1PaTwD">
+                          <property role="3oM_SC" value="original" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVph" role="1PaTwD">
+                          <property role="3oM_SC" value="DotExpression," />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpi" role="1PaTwD">
+                          <property role="3oM_SC" value="hence" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnVpj" role="1PaTwD">
+                          <property role="3oM_SC" value="de.parent.type" />
+                        </node>
                       </node>
                     </node>
                     <node concept="3clFbF" id="UesZ_o1S$X" role="3cqZAp">
@@ -2282,8 +2462,19 @@
             <node concept="3NFfHV" id="hIg0c3o" role="3NFExx">
               <node concept="3clFbS" id="hIg0c3p" role="2VODD2">
                 <node concept="3SKdUt" id="6pumIWoCFWh" role="3cqZAp">
-                  <node concept="3SKdUq" id="6pumIWoCFWi" role="3SKWNk">
-                    <property role="3SKdUp" value="delegate reduction to operation" />
+                  <node concept="1PaTwC" id="ATZLwXnVpk" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXnVpl" role="1PaTwD">
+                      <property role="3oM_SC" value="delegate" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnVpm" role="1PaTwD">
+                      <property role="3oM_SC" value="reduction" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnVpn" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnVpo" role="1PaTwD">
+                      <property role="3oM_SC" value="operation" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="hIg0PFZ" role="3cqZAp">

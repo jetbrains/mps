@@ -58,6 +58,7 @@ public class Template_reduce_GenericNewExpression_with_SNodeCreator extends Temp
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
     } finally {
     }

@@ -162,6 +162,7 @@ public class DeprecatedUtil {
         }
       };
       // --------concepts 
+
       Iterable<SNode> dc = DeprecatedUtil.depConcepts(depScope);
 
       final Wrappers._T<String> cat = new Wrappers._T<String>("Deprecated Concept Instance");
@@ -189,6 +190,7 @@ public class DeprecatedUtil {
       });
 
       // --------properties 
+
       Iterable<SNode> dp = DeprecatedUtil.depProps(depScope);
 
       cat.value = "Deprecated Property Instances";
@@ -220,6 +222,7 @@ public class DeprecatedUtil {
       });
 
       // --------links 
+
       Iterable<SNode> dl = DeprecatedUtil.depLinks(depScope);
 
       cat.value = "Deprecated Link Instances";

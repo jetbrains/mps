@@ -118,41 +118,41 @@
       <node id="5294483648489412104" at="24,50,25,45" concept="7" />
       <node id="5294483648489412111" at="25,45,26,50" concept="7" />
       <node id="5294483648489412131" at="27,37,28,29" concept="8" />
-      <node id="5294483648489412204" at="29,5,30,21" concept="9" />
-      <node id="5294483648489412147" at="32,50,33,18" concept="8" />
-      <node id="5294483648489412159" at="35,50,36,17" concept="8" />
-      <node id="5294483648489412168" at="38,5,39,0" concept="10" />
-      <node id="5294483648489412177" at="39,0,40,89" concept="15" />
+      <node id="5294483648489412147" at="33,50,34,18" concept="8" />
+      <node id="5294483648489412159" at="36,50,37,17" concept="8" />
+      <node id="5294483648489412168" at="39,5,40,0" concept="10" />
+      <node id="5294483648489412177" at="40,0,41,89" concept="15" />
       <node id="5294483648489412044" at="13,0,15,0" concept="1" trace="OrderComparator#()V" />
+      <node id="5294483648489412204" at="29,5,31,0" concept="9" />
       <node id="5294483648489412055" at="16,52,19,5" concept="5" />
       <node id="5294483648489412074" at="19,5,22,5" concept="5" />
       <node id="5294483648489412121" at="26,50,29,5" concept="5" />
-      <node id="5294483648489412150" at="34,12,37,7" concept="5" />
-      <node id="5294483648489412138" at="31,52,37,7" concept="5" />
-      <node id="5294483648489412135" at="30,21,38,5" concept="4" />
-      <node id="5294483648489412048" at="15,0,42,0" concept="6" trace="compare#(Lorg/junit/runner/Description;Lorg/junit/runner/Description;)I" />
+      <node id="5294483648489412150" at="35,12,38,7" concept="5" />
+      <node id="5294483648489412138" at="32,52,38,7" concept="5" />
+      <node id="5294483648489412135" at="31,0,39,5" concept="4" />
+      <node id="5294483648489412048" at="15,0,43,0" concept="6" trace="compare#(Lorg/junit/runner/Description;Lorg/junit/runner/Description;)I" />
       <scope id="5294483648489412046" at="13,28,13,28" />
       <scope id="5294483648489412062" at="17,47,18,78" />
       <scope id="5294483648489412082" at="20,54,21,15" />
       <scope id="5294483648489412130" at="27,37,28,29" />
-      <scope id="5294483648489412146" at="32,50,33,18" />
-      <scope id="5294483648489412158" at="35,50,36,17" />
+      <scope id="5294483648489412146" at="33,50,34,18" />
+      <scope id="5294483648489412158" at="36,50,37,17" />
       <scope id="5294483648489412044" at="13,0,15,0" />
-      <scope id="5294483648489412137" at="31,52,37,7" />
-      <scope id="5294483648489412135" at="30,21,38,5">
+      <scope id="5294483648489412137" at="32,52,38,7" />
+      <scope id="5294483648489412135" at="31,0,39,5">
         <var name="m" id="5294483648489412161" />
       </scope>
-      <scope id="5294483648489412054" at="16,52,40,89">
+      <scope id="5294483648489412054" at="16,52,41,89">
         <var name="oaa" id="5294483648489412085" />
         <var name="oab" id="5294483648489412103" />
         <var name="orderA" id="5294483648489412092" />
         <var name="orderB" id="5294483648489412110" />
       </scope>
-      <scope id="5294483648489412048" at="15,0,42,0">
+      <scope id="5294483648489412048" at="15,0,43,0">
         <var name="a" id="5294483648489412050" />
         <var name="b" id="5294483648489412052" />
       </scope>
-      <unit id="5294483648489412039" at="12,0,43,0" name="jetbrains.mps.testbench.junit.OrderComparator" />
+      <unit id="5294483648489412039" at="12,0,44,0" name="jetbrains.mps.testbench.junit.OrderComparator" />
     </file>
   </root>
   <root nodeRef="r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)/5294483648489412205">

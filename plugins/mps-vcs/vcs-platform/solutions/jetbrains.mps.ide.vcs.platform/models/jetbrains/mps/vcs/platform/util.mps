@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
@@ -221,11 +221,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -250,6 +247,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1310,8 +1315,19 @@
               </node>
             </node>
             <node concept="3SKdUt" id="341WClvYwjZ" role="3cqZAp">
-              <node concept="3SKdUq" id="341WClvYwk0" role="3SKWNk">
-                <property role="3SKdUp" value=" copy merge result" />
+              <node concept="1PaTwC" id="ATZLwXomu$" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXomu_" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXomuA" role="1PaTwD">
+                  <property role="3oM_SC" value="copy" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXomuB" role="1PaTwD">
+                  <property role="3oM_SC" value="merge" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXomuC" role="1PaTwD">
+                  <property role="3oM_SC" value="result" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="341WClvYwk1" role="3cqZAp">
@@ -1348,8 +1364,16 @@
               </node>
             </node>
             <node concept="3SKdUt" id="341WClvYwkd" role="3cqZAp">
-              <node concept="3SKdUq" id="341WClvYwke" role="3SKWNk">
-                <property role="3SKdUp" value=" copy logfiles" />
+              <node concept="1PaTwC" id="ATZLwXomuD" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXomuE" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXomuF" role="1PaTwD">
+                  <property role="3oM_SC" value="copy" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXomuG" role="1PaTwD">
+                  <property role="3oM_SC" value="logfiles" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs8" id="341WClvYwkf" role="3cqZAp">
@@ -2028,13 +2052,95 @@
       </node>
       <node concept="3clFbS" id="nQhvklQRWf" role="3clF47">
         <node concept="3SKdUt" id="6y_kxB21e6r" role="3cqZAp">
-          <node concept="3SKdUq" id="6y_kxB21ekw" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME Please, please! Year 2015, two static classes, one set static fields of another?!" />
+          <node concept="1PaTwC" id="ATZLwXomuH" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXomuI" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuJ" role="1PaTwD">
+              <property role="3oM_SC" value="Please," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuK" role="1PaTwD">
+              <property role="3oM_SC" value="please!" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuL" role="1PaTwD">
+              <property role="3oM_SC" value="Year" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuM" role="1PaTwD">
+              <property role="3oM_SC" value="2015," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuN" role="1PaTwD">
+              <property role="3oM_SC" value="two" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuO" role="1PaTwD">
+              <property role="3oM_SC" value="static" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuP" role="1PaTwD">
+              <property role="3oM_SC" value="classes," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuQ" role="1PaTwD">
+              <property role="3oM_SC" value="one" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuR" role="1PaTwD">
+              <property role="3oM_SC" value="set" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuS" role="1PaTwD">
+              <property role="3oM_SC" value="static" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuT" role="1PaTwD">
+              <property role="3oM_SC" value="fields" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuU" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuV" role="1PaTwD">
+              <property role="3oM_SC" value="another?!" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="HUlZWK9l4F" role="3cqZAp">
-          <node concept="3SKdUq" id="HUlZWK9oCG" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME Oh, no, wait! It's year 2019 already, and the code is still there!?" />
+          <node concept="1PaTwC" id="ATZLwXomuW" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXomuX" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuY" role="1PaTwD">
+              <property role="3oM_SC" value="Oh," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomuZ" role="1PaTwD">
+              <property role="3oM_SC" value="no," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv0" role="1PaTwD">
+              <property role="3oM_SC" value="wait!" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv1" role="1PaTwD">
+              <property role="3oM_SC" value="It's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv2" role="1PaTwD">
+              <property role="3oM_SC" value="year" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv3" role="1PaTwD">
+              <property role="3oM_SC" value="2019" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv4" role="1PaTwD">
+              <property role="3oM_SC" value="already," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv5" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv6" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv7" role="1PaTwD">
+              <property role="3oM_SC" value="code" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv8" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomv9" role="1PaTwD">
+              <property role="3oM_SC" value="still" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomva" role="1PaTwD">
+              <property role="3oM_SC" value="there!?" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="nQhvklQS2$" role="3cqZAp">
@@ -2047,8 +2153,49 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6y_kxB21cM7" role="3cqZAp">
-          <node concept="3SKdUq" id="6y_kxB21dEJ" role="3SKWNk">
-            <property role="3SKdUp" value="What was the reason to alter name of the backup file with model name?" />
+          <node concept="1PaTwC" id="ATZLwXomvb" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXomvc" role="1PaTwD">
+              <property role="3oM_SC" value="What" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvd" role="1PaTwD">
+              <property role="3oM_SC" value="was" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomve" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvf" role="1PaTwD">
+              <property role="3oM_SC" value="reason" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvg" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvh" role="1PaTwD">
+              <property role="3oM_SC" value="alter" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvi" role="1PaTwD">
+              <property role="3oM_SC" value="name" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvj" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvk" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvl" role="1PaTwD">
+              <property role="3oM_SC" value="backup" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvm" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvn" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvo" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXomvp" role="1PaTwD">
+              <property role="3oM_SC" value="name?" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="nQhvklQRWg" role="3cqZAp">

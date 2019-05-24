@@ -39,16 +39,19 @@ public class SubstituteSmartInvalidReference_CaretInCenter_Test extends BaseTran
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           // replace node with the other node 
+
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
           typeString("smartOtherNode");
 
           // go to the reference 
+
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
 
           // put caret in after the sma| 
+
           invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");

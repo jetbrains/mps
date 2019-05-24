@@ -84,6 +84,7 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
   @Override
   public void setEnvironment(@NotNull Environment env) {
     //  needs IdeaEnvironment with VCS plugin enabled. 
+
     myEnv = env;
   }
 
@@ -221,6 +222,7 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
 
   private String processFieldNameInFile(final String nameToWrite) {
     //  File stuff 
+
     if (!(DiskMemoryConflictsTest.MODEL_FILE.exists())) {
       return null;
     }
@@ -319,6 +321,7 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
 
   private void refreshVfs() {
     // AP: simple IFile#refresh will do, won't it? 
+
     VirtualFile vf = LocalFileSystem.getInstance().findFileByIoFile(DiskMemoryConflictsTest.MODEL_FILE);
     if (vf == null || !(vf.exists())) {
       vf = LocalFileSystem.getInstance().findFileByIoFile(DiskMemoryConflictsTest.MODEL_FILE.getParentFile());
@@ -333,6 +336,7 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
   private void restoreModel() {
     final Reference<Throwable> refThrowable = new Reference<Throwable>();
     //  Restore model 
+
     myModelAccess.executeCommandInEDT(new Runnable() {
       @Override
       public void run() {

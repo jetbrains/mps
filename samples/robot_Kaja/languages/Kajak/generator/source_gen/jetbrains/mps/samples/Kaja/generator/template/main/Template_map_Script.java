@@ -49,6 +49,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -58,6 +59,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
         }
         tnode1.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -71,6 +73,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
             }
             tnode4.addChild(myAggregationLinks[2], tnode5);
             // TODO validate child 
+
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -79,6 +82,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
             }
             tnode4.addChild(myAggregationLinks[0], tnode6);
             // TODO validate child 
+
           }
           {
             final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
@@ -87,11 +91,13 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
             }
             tnode4.addChild(myAggregationLinks[3], tnode7);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode4);
         // TODO validate child 
+
       }
       {
         final SNode tnode8 = environment.createOutputNode(myConcepts[6]);
@@ -106,6 +112,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
             }
             tnode8.addChild(myAggregationLinks[2], tnode9);
             // TODO validate child 
+
           }
           {
             final SNode tnode10 = environment.createOutputNode(myConcepts[7]);
@@ -114,6 +121,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
             }
             tnode8.addChild(myAggregationLinks[0], tnode10);
             // TODO validate child 
+
           }
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[5]);
@@ -138,16 +146,19 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                   tnode11.addChild(myAggregationLinks[5], child14);
                 }
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode8.addChild(myAggregationLinks[3], tnode11);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode8);
         // TODO validate child 
+
       }
       {
         final List<SNode> tlist15 = new ArrayList<SNode>();
@@ -168,6 +179,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
           tnode1.addChild(myAggregationLinks[4], child17);
         }
         // TODO validate child 
+
       }
       {
         final List<SNode> tlist18 = new ArrayList<SNode>();
@@ -188,6 +200,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
           tnode1.addChild(myAggregationLinks[4], child20);
         }
         // TODO validate child 
+
       }
       {
         final SNode tnode21 = environment.createOutputNode(myConcepts[8]);
@@ -201,6 +214,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
             }
             tnode21.addChild(myAggregationLinks[2], tnode22);
             // TODO validate child 
+
           }
           {
             final SNode tnode23 = environment.createOutputNode(myConcepts[1]);
@@ -209,6 +223,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
             }
             tnode21.addChild(myAggregationLinks[0], tnode23);
             // TODO validate child 
+
           }
           {
             final SNode tnode24 = environment.createOutputNode(myConcepts[5]);
@@ -232,6 +247,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                         }
                         tnode26.addChild(myAggregationLinks[6], tnode27);
                         // TODO validate child 
+
                       }
                       {
                         final SNode tnode28 = environment.createOutputNode(myConcepts[11]);
@@ -245,21 +261,25 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                             }
                             tnode28.addChild(myAggregationLinks[7], tnode29);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode26.addChild(myAggregationLinks[8], tnode28);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode25.addChild(myAggregationLinks[9], tnode26);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode24.addChild(myAggregationLinks[5], tnode25);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode30 = environment.createOutputNode(myConcepts[13]);
@@ -277,6 +297,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                         }
                         tnode31.addChild(myAggregationLinks[10], tnode32);
                         // TODO validate child 
+
                       }
                       {
                         final SNode tnode33 = environment.createOutputNode(myConcepts[16]);
@@ -286,16 +307,19 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                         }
                         tnode31.addChild(myAggregationLinks[11], tnode33);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode30.addChild(myAggregationLinks[12], tnode31);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode24.addChild(myAggregationLinks[5], tnode30);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode34 = environment.createOutputNode(myConcepts[13]);
@@ -313,6 +337,7 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                         }
                         tnode35.addChild(myAggregationLinks[10], tnode36);
                         // TODO validate child 
+
                       }
                       {
                         final SNode tnode37 = environment.createOutputNode(myConcepts[16]);
@@ -322,21 +347,25 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                         }
                         tnode35.addChild(myAggregationLinks[11], tnode37);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode34.addChild(myAggregationLinks[12], tnode35);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode24.addChild(myAggregationLinks[5], tnode34);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode21.addChild(myAggregationLinks[3], tnode24);
             // TODO validate child 
+
           }
           {
             final SNode tnode38 = environment.createOutputNode(myConcepts[17]);
@@ -354,21 +383,25 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
                     }
                     tnode39.addChild(myAggregationLinks[13], tnode40);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode38.addChild(myAggregationLinks[6], tnode39);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode21.addChild(myAggregationLinks[14], tnode38);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode21);
         // TODO validate child 
+
       }
     } finally {
     }

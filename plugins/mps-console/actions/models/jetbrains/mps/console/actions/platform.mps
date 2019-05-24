@@ -12,7 +12,7 @@
     <use id="de1ad86d-6e50-4a02-b306-d4d17f64c375" name="jetbrains.mps.console.base" version="-1" />
     <use id="a5e4de53-46a3-44da-aab3-68fdf1c34ed0" name="jetbrains.mps.console.ideCommands" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f26691d2-0def-4c06-aec6-2cb90c4af0a4" name="jetbrains.mps.console.scripts" version="-1" />
   </languages>
   <imports>
@@ -160,11 +160,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
@@ -247,6 +244,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query">
       <concept id="2362304834939062179" name="jetbrains.mps.lang.smodel.query.structure.QueryParameterScope" flags="ng" index="psT0o">
         <child id="2362304834939062180" name="value" index="psT0v" />
@@ -287,18 +292,114 @@
     <node concept="2ScWuX" id="5eawdd7YKlg" role="tmbBb">
       <node concept="3clFbS" id="5eawdd7YKlh" role="2VODD2">
         <node concept="3SKdUt" id="7vhSOKo1P38" role="3cqZAp">
-          <node concept="3SKdUq" id="7vhSOKo1P3j" role="3SKWNk">
-            <property role="3SKdUp" value="I'd love to update presentation to reflect alternative action with keyboard modifier, but IDEA" />
+          <node concept="1PaTwC" id="ATZLwXogdb" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXogdc" role="1PaTwD">
+              <property role="3oM_SC" value="I'd" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdd" role="1PaTwD">
+              <property role="3oM_SC" value="love" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogde" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdf" role="1PaTwD">
+              <property role="3oM_SC" value="update" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdg" role="1PaTwD">
+              <property role="3oM_SC" value="presentation" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdh" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdi" role="1PaTwD">
+              <property role="3oM_SC" value="reflect" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdj" role="1PaTwD">
+              <property role="3oM_SC" value="alternative" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdk" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdl" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdm" role="1PaTwD">
+              <property role="3oM_SC" value="keyboard" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdn" role="1PaTwD">
+              <property role="3oM_SC" value="modifier," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdo" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdp" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="7vhSOKo1Pe1" role="3cqZAp">
-          <node concept="3SKdUq" id="7vhSOKo1Pf4" role="3SKWNk">
-            <property role="3SKdUp" value="doesn't update action on key pressed once menu is visible, and doesn't pass initial modifiers," />
+          <node concept="1PaTwC" id="ATZLwXogdq" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXogdr" role="1PaTwD">
+              <property role="3oM_SC" value="doesn't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogds" role="1PaTwD">
+              <property role="3oM_SC" value="update" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdt" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdu" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdv" role="1PaTwD">
+              <property role="3oM_SC" value="key" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdw" role="1PaTwD">
+              <property role="3oM_SC" value="pressed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdx" role="1PaTwD">
+              <property role="3oM_SC" value="once" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdy" role="1PaTwD">
+              <property role="3oM_SC" value="menu" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdz" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogd$" role="1PaTwD">
+              <property role="3oM_SC" value="visible," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogd_" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdA" role="1PaTwD">
+              <property role="3oM_SC" value="doesn't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdB" role="1PaTwD">
+              <property role="3oM_SC" value="pass" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdC" role="1PaTwD">
+              <property role="3oM_SC" value="initial" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdD" role="1PaTwD">
+              <property role="3oM_SC" value="modifiers," />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="7vhSOKo1PpG" role="3cqZAp">
-          <node concept="3SKdUq" id="7vhSOKo1PqL" role="3SKWNk">
-            <property role="3SKdUp" value="see com.intellij.openapi.actionSystem.impl.Util#expandActionGroup:135 (always 0)." />
+          <node concept="1PaTwC" id="ATZLwXogdE" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXogdF" role="1PaTwD">
+              <property role="3oM_SC" value="see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdG" role="1PaTwD">
+              <property role="3oM_SC" value="com.intellij.openapi.actionSystem.impl.Util#expandActionGroup:135" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdH" role="1PaTwD">
+              <property role="3oM_SC" value="(always" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogdI" role="1PaTwD">
+              <property role="3oM_SC" value="0)." />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="5eawdd7Z1XQ" role="3cqZAp">

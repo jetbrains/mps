@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
@@ -321,11 +321,8 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -364,6 +361,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -466,13 +471,134 @@
         <node concept="mvVNg" id="3jNcCGJ$l4d" role="mvV$0">
           <node concept="3clFbS" id="3jNcCGJ$l4e" role="2VODD2">
             <node concept="3SKdUt" id="3jNcCGJ$Nxw" role="3cqZAp">
-              <node concept="3SKdUq" id="3jNcCGJ$Nxy" role="3SKWNk">
-                <property role="3SKdUp" value="this is sort of hack to let parent/owner control context menu for ModelName, which itself has no idea what it could get transformed into" />
+              <node concept="1PaTwC" id="ATZLwXnXdX" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnXdY" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXdZ" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe0" role="1PaTwD">
+                  <property role="3oM_SC" value="sort" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe1" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe2" role="1PaTwD">
+                  <property role="3oM_SC" value="hack" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe3" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe4" role="1PaTwD">
+                  <property role="3oM_SC" value="let" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe5" role="1PaTwD">
+                  <property role="3oM_SC" value="parent/owner" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe6" role="1PaTwD">
+                  <property role="3oM_SC" value="control" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe7" role="1PaTwD">
+                  <property role="3oM_SC" value="context" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe8" role="1PaTwD">
+                  <property role="3oM_SC" value="menu" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe9" role="1PaTwD">
+                  <property role="3oM_SC" value="for" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXea" role="1PaTwD">
+                  <property role="3oM_SC" value="ModelName," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeb" role="1PaTwD">
+                  <property role="3oM_SC" value="which" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXec" role="1PaTwD">
+                  <property role="3oM_SC" value="itself" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXed" role="1PaTwD">
+                  <property role="3oM_SC" value="has" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXee" role="1PaTwD">
+                  <property role="3oM_SC" value="no" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXef" role="1PaTwD">
+                  <property role="3oM_SC" value="idea" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeg" role="1PaTwD">
+                  <property role="3oM_SC" value="what" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeh" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXei" role="1PaTwD">
+                  <property role="3oM_SC" value="could" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXej" role="1PaTwD">
+                  <property role="3oM_SC" value="get" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXek" role="1PaTwD">
+                  <property role="3oM_SC" value="transformed" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXel" role="1PaTwD">
+                  <property role="3oM_SC" value="into" />
+                </node>
               </node>
             </node>
             <node concept="3SKdUt" id="3jNcCGJ$NKx" role="3cqZAp">
-              <node concept="3SKdUq" id="3jNcCGJ$NKz" role="3SKWNk">
-                <property role="3SKdUp" value="We need this hack until MPS-27202 is fixed and we can override transform menu with parent's editor" />
+              <node concept="1PaTwC" id="ATZLwXnXem" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnXen" role="1PaTwD">
+                  <property role="3oM_SC" value="We" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeo" role="1PaTwD">
+                  <property role="3oM_SC" value="need" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXep" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeq" role="1PaTwD">
+                  <property role="3oM_SC" value="hack" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXer" role="1PaTwD">
+                  <property role="3oM_SC" value="until" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXes" role="1PaTwD">
+                  <property role="3oM_SC" value="MPS-27202" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXet" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeu" role="1PaTwD">
+                  <property role="3oM_SC" value="fixed" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXev" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXew" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXex" role="1PaTwD">
+                  <property role="3oM_SC" value="can" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXey" role="1PaTwD">
+                  <property role="3oM_SC" value="override" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXez" role="1PaTwD">
+                  <property role="3oM_SC" value="transform" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe$" role="1PaTwD">
+                  <property role="3oM_SC" value="menu" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXe_" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeA" role="1PaTwD">
+                  <property role="3oM_SC" value="parent's" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXeB" role="1PaTwD">
+                  <property role="3oM_SC" value="editor" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="3jNcCGJ$l7z" role="3cqZAp">
@@ -951,8 +1077,31 @@
           <node concept="16Na2f" id="5ZqXG2mKBNL" role="16NL3A">
             <node concept="3clFbS" id="5ZqXG2mKBNN" role="2VODD2">
               <node concept="3SKdUt" id="5ZqXG2mKFca" role="3cqZAp">
-                <node concept="3SKdUq" id="5ZqXG2mKFcc" role="3SKWNk">
-                  <property role="3SKdUp" value="copied from lang.smodel.editor.RepositoryModules_Substitute, not sure what it does" />
+                <node concept="1PaTwC" id="ATZLwXnXeC" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXeD" role="1PaTwD">
+                    <property role="3oM_SC" value="copied" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXeE" role="1PaTwD">
+                    <property role="3oM_SC" value="from" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXeF" role="1PaTwD">
+                    <property role="3oM_SC" value="lang.smodel.editor.RepositoryModules_Substitute," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXeG" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXeH" role="1PaTwD">
+                    <property role="3oM_SC" value="sure" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXeI" role="1PaTwD">
+                    <property role="3oM_SC" value="what" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXeJ" role="1PaTwD">
+                    <property role="3oM_SC" value="it" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXeK" role="1PaTwD">
+                    <property role="3oM_SC" value="does" />
+                  </node>
                 </node>
               </node>
               <node concept="3cpWs8" id="78K1$5EdVMm" role="3cqZAp">

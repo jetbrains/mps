@@ -2,7 +2,7 @@
 <model ref="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
@@ -178,11 +178,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -199,6 +196,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -2215,13 +2220,86 @@
                     </node>
                     <node concept="3clFbS" id="5sHC7TuRXRe" role="3clF47">
                       <node concept="3SKdUt" id="30uKrivZdeN" role="3cqZAp">
-                        <node concept="3SKdUq" id="30uKrivZdeQ" role="3SKWNk">
-                          <property role="3SKdUp" value="masking mouse events to prevent tooltip from hiding using default IDEA tooltips logic" />
+                        <node concept="1PaTwC" id="ATZLwXoqXf" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXoqXg" role="1PaTwD">
+                            <property role="3oM_SC" value="masking" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXh" role="1PaTwD">
+                            <property role="3oM_SC" value="mouse" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXi" role="1PaTwD">
+                            <property role="3oM_SC" value="events" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXj" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXk" role="1PaTwD">
+                            <property role="3oM_SC" value="prevent" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXl" role="1PaTwD">
+                            <property role="3oM_SC" value="tooltip" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXm" role="1PaTwD">
+                            <property role="3oM_SC" value="from" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXn" role="1PaTwD">
+                            <property role="3oM_SC" value="hiding" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXo" role="1PaTwD">
+                            <property role="3oM_SC" value="using" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXp" role="1PaTwD">
+                            <property role="3oM_SC" value="default" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXq" role="1PaTwD">
+                            <property role="3oM_SC" value="IDEA" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXr" role="1PaTwD">
+                            <property role="3oM_SC" value="tooltips" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXs" role="1PaTwD">
+                            <property role="3oM_SC" value="logic" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3SKdUt" id="30uKrivZdeP" role="3cqZAp">
-                        <node concept="3SKdUq" id="30uKrivZdeR" role="3SKWNk">
-                          <property role="3SKdUp" value="event will be hidden as a result of notification received by myMouseListener" />
+                        <node concept="1PaTwC" id="ATZLwXoqXt" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXoqXu" role="1PaTwD">
+                            <property role="3oM_SC" value="event" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXv" role="1PaTwD">
+                            <property role="3oM_SC" value="will" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXw" role="1PaTwD">
+                            <property role="3oM_SC" value="be" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXx" role="1PaTwD">
+                            <property role="3oM_SC" value="hidden" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXy" role="1PaTwD">
+                            <property role="3oM_SC" value="as" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXz" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqX$" role="1PaTwD">
+                            <property role="3oM_SC" value="result" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqX_" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXA" role="1PaTwD">
+                            <property role="3oM_SC" value="notification" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXB" role="1PaTwD">
+                            <property role="3oM_SC" value="received" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXC" role="1PaTwD">
+                            <property role="3oM_SC" value="by" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoqXD" role="1PaTwD">
+                            <property role="3oM_SC" value="myMouseListener" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbJ" id="30uKrivZden" role="3cqZAp">

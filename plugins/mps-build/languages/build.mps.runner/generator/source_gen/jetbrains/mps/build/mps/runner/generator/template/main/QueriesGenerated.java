@@ -66,10 +66,12 @@ public class QueriesGenerated extends QueryProviderBase {
 
     int heapSize;
     // 0 as default value and 0 as heap size should be distinguished 
+
     if ((mpsAspect != null) && (isNotEmptyString(mpsAspect.getProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb"))))) {
       heapSize = SPropertyOperations.getInteger(mpsAspect, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb"));
     } else {
       // default size 
+
       heapSize = 512;
     }
 

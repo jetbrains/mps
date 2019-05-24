@@ -47,6 +47,7 @@ public class ChildAttributeQualifier_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_82wwvv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, "jetbrains.mps.lang.smodel.structure.ChildAttributeQualifier"), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, 0x9d98713f24a0e5dL, "attributeConcept"));
     }
     @NotNull

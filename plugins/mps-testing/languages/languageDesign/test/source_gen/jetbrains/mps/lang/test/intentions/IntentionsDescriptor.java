@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: BaseConcept 
+          // concept 
+
           intentions = new IntentionFactory[8];
           intentions[0] = new AddTestAnnotation_Intention();
           intentions[1] = new AddOperationsAnnotation_Intention();
@@ -47,21 +48,24 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // Concept: MessageStatement 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddMessageAnnotation_Intention();
         }
         break;
       case 2:
         if (true) {
-          // Concept: MigrationTestCase 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new GenerateOutput_Intention();
         }
         break;
       case 3:
         if (true) {
-          // Concept: ScopesTest 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddScopeExpectedNodes_Intention();
         }

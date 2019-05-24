@@ -13,6 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 public class ForStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     // todo hack 
+
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable")));
     for (SNode additionalVar : SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar"))) {
       _context.getBuilder().build((SNode) additionalVar);

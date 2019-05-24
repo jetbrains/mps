@@ -48,6 +48,7 @@ public class CellIdReferenceSelector_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_onagb9_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3c0028bb8556f621L, "jetbrains.mps.lang.editor.structure.CellIdReferenceSelector"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3c0028bb8556f621L, 0x3c0028bb85570028L, "id"));
     }
     @NotNull

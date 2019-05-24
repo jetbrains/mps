@@ -37,6 +37,7 @@ public class Complete_Statement_CellInDecisionTable_Test extends BaseTransformat
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       // unless there's another language than BL in the import (e.g. lang.smodel with IfInstanceOfStatement), 'if' is completed automatically. 
 
+
     }
   }
 }

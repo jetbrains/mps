@@ -22,6 +22,7 @@ public class CheckExcessTypeCasts_NonTypesystemRule extends AbstractNonTypesyste
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"))), SLinkOperations.getTarget(expr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type")))) {
       // TODO: typecase may not be superfluous in a type inference context (MPS-15011) 
+
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(expr, "Typecast expression is superfluous", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3637195266923171603", null, errorTarget);

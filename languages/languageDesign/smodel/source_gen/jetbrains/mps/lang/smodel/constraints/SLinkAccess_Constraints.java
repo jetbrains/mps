@@ -51,6 +51,7 @@ public class SLinkAccess_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // links with cardinality 1 or 0..1 
+
             SNode enclosingDot = SNodeOperations.getNodeAncestor(_context.getContextNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), true, false);
             if (enclosingDot == null) {
               return new EmptyScope();

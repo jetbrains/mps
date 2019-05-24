@@ -41,12 +41,14 @@ public class MPSDebugRunner extends GenericProgramRunner {
   @Override
   protected RunContentDescriptor doExecute(final Project project, final RunProfileState state, final RunContentDescriptor contentToReuse, final ExecutionEnvironment env) throws ExecutionException {
     //  FileDocumentManager.getInstance().saveAllDocuments(); 
+
     return createContentDescriptor(project, env.getExecutor(), state, contentToReuse, env);
   }
   @Nullable
   protected RunContentDescriptor createContentDescriptor(Project project, Executor executor, RunProfileState state, RunContentDescriptor contentToReuse, ExecutionEnvironment env) throws ExecutionException {
     IDebugger debugger;
     // todo get connection settings 
+
     if (state instanceof DebuggerRunProfileState) {
       debugger = ((DebuggerRunProfileState) state).getDebuggerConfiguration().getDebugger();
     } else {

@@ -63,6 +63,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     // TODO extract! (it is a copy of Folder behavior) 
+
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
     String folderLocation = parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4def2c96L, "containerName")), helper.getMacroHelper());
@@ -72,6 +73,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
       SNode node = SNodeOperations.as(SLinkOperations.getTarget(ic, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target")), MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement"));
       if ((node != null)) {
         // note: if node is imported directly - do not override its original location 
+
         if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node")) && helper.getLocation(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"))) == null) {
           helper.putLocation(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node")), folderLocation);
         }
@@ -81,13 +83,21 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
       }
     }
     // Next is a solution not to calculate location paths for modules exposed from this plugin at 
+
     // a later step through location() call. fetchDependencies() and unpack run at a given transformation 
+
     // step, while location() is queried few steps later. SNode, used as artifactId, comes from the latter step, 
+
     // and this.plugin.content.first(it.exports(artifactId)) fails to match as 'this' artifact was recorded (and retrieved from DH) 
+
     // with the value of the former step (e.g. plugin@2_0.location(module@4_1)) 
+
     // Here we collect all modules known at this time, and record their location to avoid its calculation later at location() method. 
+
     // As long as modules are not artifacts (this concept, plugin layout node is), we use dedicated DH methods to record locations. 
+
     // In fact, this is the same code as location() below (if SNode branch), done at once. 
+
     final String baseLocation = folderLocation + "/languages/";
     for (SNode ipc : SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content"))) {
       Iterable<SNode> modules = null;
@@ -109,11 +119,13 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
       SNode node = (SNode) artifactId;
       if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule"))) {
         // try pre-calculated location 
+
         String layoutRelativePath = helper.getLayoutRelativePath(__thisNode__, node);
         if ((layoutRelativePath != null && layoutRelativePath.length() > 0)) {
           return layoutRelativePath;
         }
         // fallback to default path calculation 
+
         final Wrappers._T<SNode> module = new Wrappers._T<SNode>(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule")));
         boolean isGenerator = SNodeOperations.isInstanceOf(module.value, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"));
         if (isGenerator) {
@@ -126,6 +138,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         });
         if ((container != null)) {
           // todo: seems to be rather messy 
+
           SNode group = SNodeOperations.as(container, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup"));
           if ((SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x318cec002865ade0L, "packagingType")) != null)) {
             if ((group != null) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
@@ -152,6 +165,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     // TODO extract! (it is a copy of Folder behavior) 
+
     if (artifactId instanceof SNode) {
       final SNode node = (SNode) artifactId;
       if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin"))) {
@@ -219,6 +233,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     for (SNode m : Sequence.fromIterable(modules)) {
       if (SNodeOperations.isInstanceOf(m, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"))) {
         // j.m.build.mps, loadMods moves generator modules out of their languages, expect them to be among group.modules 
+
         helper.putLayoutRelativePath(__thisNode__, m, baseLocation + groupSuffix + SPropertyOperations.getString(BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(m, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "-generator.jar");
       } else {
         helper.putLayoutRelativePath(__thisNode__, m, baseLocation + groupSuffix + SPropertyOperations.getString(m, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ".jar");

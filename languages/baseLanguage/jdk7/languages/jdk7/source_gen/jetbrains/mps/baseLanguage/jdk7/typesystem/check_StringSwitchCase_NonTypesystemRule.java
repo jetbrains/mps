@@ -24,6 +24,7 @@ public class check_StringSwitchCase_NonTypesystemRule extends AbstractNonTypesys
   }
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // checking case elements 
+
     Set<String> caseElements = SetSequence.fromSet(new HashSet<String>());
     for (SNode caseElement : SLinkOperations.getChildren(switchStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case"))) {
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(caseElement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral")))) {

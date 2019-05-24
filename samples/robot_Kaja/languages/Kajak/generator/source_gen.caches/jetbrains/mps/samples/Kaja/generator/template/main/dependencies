@@ -241,9 +241,6 @@
     <classNode dependClassName="jetbrains.mps.generator.runtime.NodeWeaveFacility" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateContext" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateExecutionEnvironment" />
-    <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateUtil" />
-    <classNode dependClassName="jetbrains.mps.generator.template.PropertyMacroContext" />
-    <classNode dependClassName="jetbrains.mps.samples.Kaja.generator.template.main.QueriesGenerated" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

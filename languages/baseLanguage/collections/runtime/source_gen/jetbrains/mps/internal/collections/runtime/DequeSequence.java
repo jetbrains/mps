@@ -149,6 +149,7 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
 
   public static <U> IDequeSequence<U> fromDeque(Deque<U> deque) {
     //  change tempaltes to invoke this method and drop fromDequeNew 
+
     return fromDequeNew(deque);
   }
 
@@ -191,6 +192,7 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
 
   public static <U> IDequeSequence<U> fromDequeAndArray(Deque<U> deque, U... array) {
     //  change templates to invoke this method and remove fromDequeAndArrayNew 
+
     return fromDequeAndArrayNew(deque, array);
   }
 
@@ -232,6 +234,7 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
 
   public static <U> IDequeSequence<U> fromDequeWithValues(Deque<U> deque, Iterable<? extends U> it) {
     // change generators to use this method and drop fromDequeWithValuesNew 
+
     return fromDequeWithValuesNew(deque, it);
   }
   public static <U> IDequeSequence<U> fromDequeWithValuesNew(Deque<U> deque, Iterable<? extends U> it) {

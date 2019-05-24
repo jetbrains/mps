@@ -45,6 +45,7 @@ public final class ProjectProperties {
     myModule.clear();
     myModule.addAll(projectDescriptor.getModulePaths());
     // FIXME WHY DO WE CARE TO SORT WITH VALIDITY CHECK???? 
+
     Collections.sort(myModule, PATH_VALID_COMPARATOR);
   }
   public void saveTo(StandaloneMPSProject project) {

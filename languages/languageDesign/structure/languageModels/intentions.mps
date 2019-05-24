@@ -9,7 +9,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -182,11 +182,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -281,6 +278,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -783,8 +788,22 @@
     <node concept="2SaL7w" id="7RPG7RvQs2Z" role="2ZfVeh">
       <node concept="3clFbS" id="7RPG7RvQs30" role="2VODD2">
         <node concept="3SKdUt" id="7RPG7RvQtjE" role="3cqZAp">
-          <node concept="3SKdUq" id="7RPG7RvQtwP" role="3SKWNk">
-            <property role="3SKdUp" value="todo: temporary disabled, see MPS-18470" />
+          <node concept="1PaTwC" id="ATZLwXnYOi" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnYOj" role="1PaTwD">
+              <property role="3oM_SC" value="todo:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOk" role="1PaTwD">
+              <property role="3oM_SC" value="temporary" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOl" role="1PaTwD">
+              <property role="3oM_SC" value="disabled," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOm" role="1PaTwD">
+              <property role="3oM_SC" value="see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOn" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-18470" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7RPG7RvQsTm" role="3cqZAp">
@@ -957,8 +976,34 @@
       <node concept="3Tm1VV" id="73kiaCI7Sw9" role="1B3o_S" />
       <node concept="3clFbS" id="73kiaCI7Swa" role="3clF47">
         <node concept="3SKdUt" id="1q0v2XHzoZd" role="3cqZAp">
-          <node concept="3SKdUq" id="1q0v2XHzoZf" role="3SKWNk">
-            <property role="3SKdUp" value="make it not less than 80 in each color" />
+          <node concept="1PaTwC" id="ATZLwXnYOo" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnYOp" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOq" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOr" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOs" role="1PaTwD">
+              <property role="3oM_SC" value="less" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOt" role="1PaTwD">
+              <property role="3oM_SC" value="than" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOu" role="1PaTwD">
+              <property role="3oM_SC" value="80" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOv" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOw" role="1PaTwD">
+              <property role="3oM_SC" value="each" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnYOx" role="1PaTwD">
+              <property role="3oM_SC" value="color" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="73kiaCI9uQh" role="3cqZAp">

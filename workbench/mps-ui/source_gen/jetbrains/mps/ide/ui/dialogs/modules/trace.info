@@ -52,88 +52,88 @@
       <node id="289384041347650547" at="94,41,95,45" concept="2" />
       <node id="289384041347650552" at="95,45,96,40" concept="2" />
       <node id="289384041347650556" at="96,40,97,18" concept="2" />
-      <node id="289384041347843829" at="100,50,101,41" concept="8" />
-      <node id="289384041347843833" at="102,69,103,13" concept="7" />
-      <node id="289384041347843842" at="104,5,105,0" concept="9" />
-      <node id="289384041347843843" at="105,0,106,48" concept="6" />
-      <node id="289384041347843847" at="106,48,107,32" concept="2" />
-      <node id="289384041347843853" at="108,121,109,91" concept="2" />
-      <node id="289384041347843874" at="110,12,111,73" concept="2" />
-      <node id="289384041347843877" at="112,5,113,18" concept="2" />
-      <node id="289384041347843888" at="116,99,117,26" concept="2" />
-      <node id="289384041347843898" at="121,29,122,27" concept="2" />
-      <node id="289384041347843911" at="126,23,127,42" concept="2" />
-      <node id="289384041347843916" at="128,32,129,73" concept="2" />
-      <node id="1095323978616353663" at="130,5,131,0" concept="9" />
-      <node id="289384041347843949" at="134,52,135,24" concept="7" />
-      <node id="289384041347916169" at="138,0,139,0" concept="5" trace="getDefaultModuleName#()Ljava/lang/String;" />
-      <node id="289384041347843922" at="139,0,140,0" concept="5" trace="getDefaultModulePath#()Ljava/lang/String;" />
-      <node id="289384041347834412" at="143,0,144,0" concept="5" trace="changed#()V" />
-      <node id="8463916965373894169" at="146,65,147,85" concept="7" />
-      <node id="2093632264608749635" at="150,70,151,55" concept="2" />
-      <node id="2093632264608784328" at="154,85,155,142" concept="2" />
-      <node id="289384041347843872" at="110,10,112,5" concept="0" />
+      <node id="289384041347843833" at="103,69,104,13" concept="7" />
+      <node id="289384041347843842" at="105,5,106,0" concept="9" />
+      <node id="289384041347843843" at="106,0,107,48" concept="6" />
+      <node id="289384041347843847" at="107,48,108,32" concept="2" />
+      <node id="289384041347843853" at="109,121,110,91" concept="2" />
+      <node id="289384041347843874" at="111,12,112,73" concept="2" />
+      <node id="289384041347843877" at="113,5,114,18" concept="2" />
+      <node id="289384041347843888" at="117,99,118,26" concept="2" />
+      <node id="289384041347843898" at="122,29,123,27" concept="2" />
+      <node id="289384041347843911" at="127,23,128,42" concept="2" />
+      <node id="289384041347843916" at="129,32,130,73" concept="2" />
+      <node id="1095323978616353663" at="131,5,132,0" concept="9" />
+      <node id="289384041347843949" at="135,52,136,24" concept="7" />
+      <node id="289384041347916169" at="139,0,140,0" concept="5" trace="getDefaultModuleName#()Ljava/lang/String;" />
+      <node id="289384041347843922" at="140,0,141,0" concept="5" trace="getDefaultModulePath#()Ljava/lang/String;" />
+      <node id="289384041347834412" at="144,0,145,0" concept="5" trace="changed#()V" />
+      <node id="8463916965373894169" at="147,65,148,85" concept="7" />
+      <node id="2093632264608749635" at="151,70,152,55" concept="2" />
+      <node id="2093632264608784328" at="155,85,156,142" concept="2" />
+      <node id="289384041347843829" at="100,50,102,0" concept="8" />
+      <node id="289384041347843872" at="111,10,113,5" concept="0" />
       <node id="289384041347543346" at="48,54,51,11" concept="4" />
       <node id="289384041347543357" at="51,11,54,11" concept="4" />
       <node id="289384041347543404" at="66,52,69,9" concept="4" />
       <node id="289384041347650508" at="80,0,83,0" concept="5" trace="getModuleName#()Ljava/lang/String;" />
       <node id="289384041347650531" at="89,0,92,0" concept="5" trace="getModuleLocation#()Ljava/lang/String;" />
-      <node id="289384041347843831" at="101,41,104,5" concept="4" />
-      <node id="289384041347843884" at="116,0,119,0" concept="5" trace="setListener#(Ljetbrains/mps/ide/ui/dialogs/modules/AbstractModuleCreationSettings/ModuleCreationSettingsListener;)V" />
-      <node id="289384041347843896" at="120,30,123,5" concept="4" />
-      <node id="289384041347843914" at="127,42,130,5" concept="4" />
-      <node id="289384041347843947" at="134,0,137,0" concept="5" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
-      <node id="8463916965373860674" at="146,0,149,0" concept="5" trace="getModuleRootPath#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="2093632264608499381" at="150,0,153,0" concept="5" trace="add#(Ljava/awt/Component;ID)V" />
-      <node id="2093632264608584380" at="154,0,157,0" concept="5" trace="add#(Ljava/awt/Component;IDLjava/awt/Insets;)V" />
+      <node id="289384041347843831" at="102,0,105,5" concept="4" />
+      <node id="289384041347843884" at="117,0,120,0" concept="5" trace="setListener#(Ljetbrains/mps/ide/ui/dialogs/modules/AbstractModuleCreationSettings/ModuleCreationSettingsListener;)V" />
+      <node id="289384041347843896" at="121,30,124,5" concept="4" />
+      <node id="289384041347843914" at="128,42,131,5" concept="4" />
+      <node id="289384041347843947" at="135,0,138,0" concept="5" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
+      <node id="8463916965373860674" at="147,0,150,0" concept="5" trace="getModuleRootPath#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="2093632264608499381" at="151,0,154,0" concept="5" trace="add#(Ljava/awt/Component;ID)V" />
+      <node id="2093632264608584380" at="155,0,158,0" concept="5" trace="add#(Ljava/awt/Component;IDLjava/awt/Insets;)V" />
       <node id="289384041347650518" at="84,0,88,0" concept="5" trace="setModuleName#(Ljava/lang/String;)V" />
       <node id="289384041347543398" at="66,0,71,0" concept="5" trace="textChanged#(Ljavax/swing/event/DocumentEvent;)V" />
-      <node id="289384041347843851" at="107,32,112,5" concept="4" />
-      <node id="289384041347843894" at="120,0,125,0" concept="5" trace="fireChanged#()V" />
+      <node id="289384041347843851" at="108,32,113,5" concept="4" />
+      <node id="289384041347843894" at="121,0,126,0" concept="5" trace="fireChanged#()V" />
       <node id="289384041347650541" at="93,0,99,0" concept="5" trace="setModuleLocation#(Ljava/lang/String;)V" />
       <node id="289384041347543388" at="64,37,71,7" concept="2" />
-      <node id="289384041347843907" at="126,0,133,0" concept="5" trace="reset#()V" />
+      <node id="289384041347843907" at="127,0,134,0" concept="5" trace="reset#()V" />
       <node id="289384041347543326" at="45,52,55,9" concept="4" />
       <node id="289384041347543320" at="45,0,58,0" concept="5" trace="textChanged#(Ljavax/swing/event/DocumentEvent;)V" />
       <node id="289384041347543310" at="43,33,58,7" concept="2" />
-      <node id="289384041347843827" at="100,0,115,0" concept="5" trace="setProjectPath#(Ljava/lang/String;)V" />
+      <node id="289384041347843827" at="100,0,116,0" concept="5" trace="setProjectPath#(Ljava/lang/String;)V" />
       <node id="289384041347500710" at="37,0,79,0" concept="1" trace="AbstractModuleCreationSettings#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" />
       <scope id="289384041347543352" at="49,60,50,33" />
       <scope id="289384041347543360" at="52,43,53,36" />
       <scope id="289384041347543406" at="67,43,68,41" />
       <scope id="289384041347650509" at="80,33,81,41" />
       <scope id="289384041347650532" at="89,37,90,45" />
-      <scope id="289384041347843832" at="102,69,103,13" />
-      <scope id="289384041347843852" at="108,121,109,91" />
-      <scope id="289384041347843873" at="110,12,111,73" />
-      <scope id="289384041347843887" at="116,99,117,26" />
-      <scope id="289384041347843897" at="121,29,122,27" />
-      <scope id="289384041347843915" at="128,32,129,73" />
-      <scope id="289384041347843948" at="134,52,135,24" />
-      <scope id="289384041347916169" at="138,0,139,0" />
-      <scope id="289384041347843922" at="139,0,140,0" />
-      <scope id="289384041347834412" at="143,0,144,0" />
-      <scope id="8463916965373860677" at="146,65,147,85" />
-      <scope id="2093632264608499384" at="150,70,151,55" />
-      <scope id="2093632264608584383" at="154,85,155,142" />
+      <scope id="289384041347843832" at="103,69,104,13" />
+      <scope id="289384041347843852" at="109,121,110,91" />
+      <scope id="289384041347843873" at="111,12,112,73" />
+      <scope id="289384041347843887" at="117,99,118,26" />
+      <scope id="289384041347843897" at="122,29,123,27" />
+      <scope id="289384041347843915" at="129,32,130,73" />
+      <scope id="289384041347843948" at="135,52,136,24" />
+      <scope id="289384041347916169" at="139,0,140,0" />
+      <scope id="289384041347843922" at="140,0,141,0" />
+      <scope id="289384041347834412" at="144,0,145,0" />
+      <scope id="8463916965373860677" at="147,65,148,85" />
+      <scope id="2093632264608499384" at="151,70,152,55" />
+      <scope id="2093632264608584383" at="155,85,156,142" />
       <scope id="289384041347650519" at="84,48,86,18" />
       <scope id="289384041347543403" at="66,52,69,9" />
       <scope id="289384041347650508" at="80,0,83,0" />
       <scope id="289384041347650531" at="89,0,92,0" />
-      <scope id="289384041347843884" at="116,0,119,0">
+      <scope id="289384041347843884" at="117,0,120,0">
         <var name="listener" id="289384041347843892" />
       </scope>
-      <scope id="289384041347843895" at="120,30,123,5" />
-      <scope id="289384041347843947" at="134,0,137,0" />
-      <scope id="8463916965373860674" at="146,0,149,0">
+      <scope id="289384041347843895" at="121,30,124,5" />
+      <scope id="289384041347843947" at="135,0,138,0" />
+      <scope id="8463916965373860674" at="147,0,150,0">
         <var name="moduleRootLocation" id="8463916965373869304" />
       </scope>
-      <scope id="2093632264608499381" at="150,0,153,0">
+      <scope id="2093632264608499381" at="151,0,154,0">
         <var name="component" id="2093632264608561484" />
         <var name="row" id="2093632264608504811" />
         <var name="rowWeight" id="2093632264608509095" />
       </scope>
-      <scope id="2093632264608584380" at="154,0,157,0">
+      <scope id="2093632264608584380" at="155,0,158,0">
         <var name="component" id="2093632264608590606" />
         <var name="insets" id="2093632264608610751" />
         <var name="row" id="2093632264608596218" />
@@ -146,12 +146,12 @@
       <scope id="289384041347543398" at="66,0,71,0">
         <var name="p0" id="289384041347543401" />
       </scope>
-      <scope id="289384041347843894" at="120,0,125,0" />
-      <scope id="289384041347843910" at="126,23,131,0" />
+      <scope id="289384041347843894" at="121,0,126,0" />
+      <scope id="289384041347843910" at="127,23,132,0" />
       <scope id="289384041347650541" at="93,0,99,0">
         <var name="moduleLocation" id="289384041347650560" />
       </scope>
-      <scope id="289384041347843907" at="126,0,133,0" />
+      <scope id="289384041347843907" at="127,0,134,0" />
       <scope id="289384041347543327" at="46,72,54,11">
         <var name="path" id="289384041347543333" />
         <var name="solutionName" id="289384041347543343" />
@@ -160,10 +160,10 @@
       <scope id="289384041347543320" at="45,0,58,0">
         <var name="p0" id="289384041347543323" />
       </scope>
-      <scope id="289384041347843828" at="100,50,113,18">
+      <scope id="289384041347843828" at="100,50,114,18">
         <var name="oldProjectPath" id="289384041347843844" />
       </scope>
-      <scope id="289384041347843827" at="100,0,115,0">
+      <scope id="289384041347843827" at="100,0,116,0">
         <var name="projectPath" id="289384041347843881" />
       </scope>
       <scope id="289384041347500713" at="37,122,77,55">
@@ -176,10 +176,10 @@
         <var name="moduleNameLabel" id="289384041347510379" />
         <var name="projectPath" id="289384041347501441" />
       </scope>
-      <unit id="289384041347829064" at="142,0,145,0" name="jetbrains.mps.ide.ui.dialogs.modules.AbstractModuleCreationSettings$ModuleCreationSettingsListener" />
+      <unit id="289384041347829064" at="143,0,146,0" name="jetbrains.mps.ide.ui.dialogs.modules.AbstractModuleCreationSettings$ModuleCreationSettingsListener" />
       <unit id="289384041347543396" at="65,59,71,5" name="jetbrains.mps.ide.ui.dialogs.modules.AbstractModuleCreationSettings$2" />
       <unit id="289384041347543318" at="44,55,58,5" name="jetbrains.mps.ide.ui.dialogs.modules.AbstractModuleCreationSettings$1" />
-      <unit id="289384041347491301" at="25,0,158,0" name="jetbrains.mps.ide.ui.dialogs.modules.AbstractModuleCreationSettings" />
+      <unit id="289384041347491301" at="25,0,159,0" name="jetbrains.mps.ide.ui.dialogs.modules.AbstractModuleCreationSettings" />
     </file>
   </root>
   <root nodeRef="r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)/3951829814942483652">

@@ -51,6 +51,7 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
       {
         Collection<SNode> tlist4 = null;
@@ -64,6 +65,7 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
           tnode1.addChild(myAggregationLinks[0], child5);
         }
         // TODO validate child 
+
       }
       {
         Collection<SNode> tlist6 = null;
@@ -73,6 +75,7 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
           tnode1.addChild(myAggregationLinks[0], child7);
         }
         // TODO validate child 
+
       }
     } finally {
     }

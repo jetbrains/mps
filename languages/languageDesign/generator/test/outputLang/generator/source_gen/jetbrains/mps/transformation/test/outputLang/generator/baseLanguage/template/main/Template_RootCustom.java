@@ -46,6 +46,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -60,6 +61,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
             }
             tnode3.addChild(myAggregationLinks[0], tnode4);
             // TODO validate child 
+
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
@@ -68,11 +70,13 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
             }
             tnode3.addChild(myAggregationLinks[1], tnode5);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode3);
         // TODO validate child 
+
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
@@ -85,6 +89,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
             }
             tnode6.addChild(myAggregationLinks[3], tnode7);
             // TODO validate child 
+
           }
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[1]);
@@ -93,6 +98,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
             }
             tnode6.addChild(myAggregationLinks[0], tnode8);
             // TODO validate child 
+
           }
           {
             final SNode tnode9 = environment.createOutputNode(myConcepts[7]);
@@ -118,6 +124,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
                         }
                         tnode12.addChild(myAggregationLinks[1], tnode13);
                         // TODO validate child 
+
                       }
                       {
                         final SNode tnode14 = environment.createOutputNode(myConcepts[10]);
@@ -127,6 +134,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
                         }
                         tnode12.addChild(myAggregationLinks[4], tnode14);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
@@ -135,11 +143,13 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
                       tnode10.addChild(myAggregationLinks[5], child15);
                     }
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode9.addChild(myAggregationLinks[6], tnode10);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode16 = environment.createOutputNode(myConcepts[11]);
@@ -157,6 +167,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
                         }
                         tnode17.addChild(myAggregationLinks[7], tnode18);
                         // TODO validate child 
+
                       }
                       {
                         final SNode tnode19 = environment.createOutputNode(myConcepts[13]);
@@ -166,26 +177,31 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
                         }
                         tnode17.addChild(myAggregationLinks[8], tnode19);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode16.addChild(myAggregationLinks[9], tnode17);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode9.addChild(myAggregationLinks[6], tnode16);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode6.addChild(myAggregationLinks[10], tnode9);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode6);
         // TODO validate child 
+
       }
       {
         final SNode tnode20 = environment.createOutputNode(myConcepts[14]);
@@ -199,6 +215,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
             }
             tnode20.addChild(myAggregationLinks[3], tnode21);
             // TODO validate child 
+
           }
           {
             final SNode tnode22 = environment.createOutputNode(myConcepts[1]);
@@ -207,6 +224,7 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
             }
             tnode20.addChild(myAggregationLinks[0], tnode22);
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist23 = null;
@@ -216,11 +234,13 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
               tnode20.addChild(myAggregationLinks[10], child24);
             }
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode20);
         // TODO validate child 
+
       }
     } finally {
     }

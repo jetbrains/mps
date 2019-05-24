@@ -34,6 +34,7 @@ public final class CommentedStatement__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     // doing nothing 
+
   }
 
   /*package*/ CommentedStatement__BehaviorDescriptor() {

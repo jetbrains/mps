@@ -42,6 +42,7 @@ public class TestSubstituteSmartRef_Interface_SubstituteMenu extends SubstituteM
 
     public SMP_ReferenceScope_l5co44_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getInterfaceConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7dd7af941a6edd1bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSmartRef_Interface"), MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7dd7af941a6edd1bL, 0x7dd7af941a6edd1eL, "childToReference"));
     }
     @NotNull

@@ -50,6 +50,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
     result.add(top);
     while (!(frontier.isEmpty())) {
       // AbstractConceptDeclaration 
+
       for (SNode cd : frontier) {
         if (SNodeUtil.isInstanceOfInterfaceConceptDeclaration(cd)) {
           for (SNode interfaceDeclaration : SNodeUtil.getInterfaceConceptDeclaration_Extends(cd)) {
@@ -101,6 +102,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
       result.add(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
       myConcepts = result.toArray(new SNode[result.size()]);
       //  depends on concepts and implemented interface references 
+
       myDependsOnNodes = new HashSet<SNode>(myConcepts.length * 2);
       for (SNode concept : myConcepts) {
         myDependsOnNodes.add(concept);
@@ -125,8 +127,10 @@ import jetbrains.mps.kernel.model.SModelUtil;
     @Override
     public void childAdded(SModelChildEvent event) {
       //  event handling 
+
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
         //  don't process adding of smth. to concept unless it is extended/implemented interface-concept 
+
         if (isExtendsImplementsRole(event)) {
           super.childAdded(event);
         }
@@ -136,6 +140,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
     public void childRemoved(SModelChildEvent event) {
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
         //  don't process removing of smth. from concept unless it is extended/implemented interface-concept 
+
         if (isExtendsImplementsRole(event)) {
           super.childRemoved(event);
         }
@@ -174,6 +179,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
       myProperties = null;
       SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
       //  iterate bottom-up 
+
       for (int i = concepts.length - 1; i >= 0; i--) {
         Iterable<SNode> props = SNodeUtil.getConcept_PropertyDeclarations(concepts[i]);
         for (SNode prop : props) {
@@ -184,6 +190,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
           }
           if (myPropertyByName != null && myPropertyByName.containsKey(name)) {
             //  properties can not be "overridden" 
+
             continue;
           }
           if (myProperties == null) {
@@ -197,6 +204,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
         }
       }
       //  depends on concepts and link declarations 
+
       myDependsOnNodes = new HashSet<SNode>();
       myDependsOnNodes.addAll(Arrays.asList(concepts));
       for (SNode prop : allProperties) {
@@ -206,8 +214,10 @@ import jetbrains.mps.kernel.model.SModelUtil;
     @Override
     public void childAdded(SModelChildEvent event) {
       // ------event handling 
+
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
         //  don't process adding of smth. to concept unless it is property-declaration 
+
         if (isPropertyDeclarationRole(event)) {
           super.childAdded(event);
         }
@@ -217,6 +227,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
     public void childRemoved(SModelChildEvent event) {
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
         //  don't process removing of smth. from concept unless it is property-declaration 
+
         if (isPropertyDeclarationRole(event)) {
           super.childRemoved(event);
         }
@@ -229,6 +240,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is property name 
+
       if (SNodeUtil.isInstanceOfPropertyDeclaration(event.getNode())) {
         super.propertyChanged(event);
       }
@@ -316,6 +328,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
         }
       }
       //  depends on concepts and link declarations 
+
       myDependsOnNodes = new HashSet<SNode>();
       myDependsOnNodes.addAll(Arrays.asList(concepts));
       for (SNode link : allLinks) {
@@ -325,8 +338,10 @@ import jetbrains.mps.kernel.model.SModelUtil;
     @Override
     public void childAdded(SModelChildEvent event) {
       //  event handling 
+
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
         //  don't process adding of smth. to concept unless it is link-declaration 
+
         if (isLinkDeclarationRole(event)) {
           super.childAdded(event);
         }
@@ -336,6 +351,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
     public void childRemoved(SModelChildEvent event) {
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
         //  don't process removing of smth. from concept unless it is link-declaration 
+
         if (isLinkDeclarationRole(event)) {
           super.childRemoved(event);
         }
@@ -348,6 +364,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is link's role 
+
       if (!(SNodeUtil.property_LinkDeclaration_role.getName().equals(event.getPropertyName())) || !(SNodeUtil.isInstanceOfLinkDeclaration(event.getNode()))) {
         return;
       }

@@ -48,6 +48,7 @@ public class MappingScriptReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_co4dbn_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, "jetbrains.mps.lang.generator.structure.MappingScriptReference"), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript"));
     }
     @NotNull

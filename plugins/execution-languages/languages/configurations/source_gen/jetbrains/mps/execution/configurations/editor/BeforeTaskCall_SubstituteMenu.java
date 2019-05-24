@@ -48,6 +48,7 @@ public class BeforeTaskCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_tv94kr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, "jetbrains.mps.execution.configurations.structure.BeforeTaskCall"), MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x5ae6ebde781f1fd9L, "beforeTask"));
     }
     @NotNull

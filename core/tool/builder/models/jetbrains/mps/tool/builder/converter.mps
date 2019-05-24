@@ -2,7 +2,7 @@
 <model ref="r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
@@ -158,11 +158,8 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -170,6 +167,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -410,8 +415,55 @@
         <node concept="3clFbJ" id="QTAzJ3Mh7a" role="3cqZAp">
           <node concept="3clFbS" id="QTAzJ3Mh7d" role="3clFbx">
             <node concept="3SKdUt" id="QTAzJ3MjYL" role="3cqZAp">
-              <node concept="3SKdUq" id="QTAzJ3Mk6c" role="3SKWNk">
-                <property role="3SKdUp" value="assuming user knows what he's doing and supplied us with a model file, try default factory." />
+              <node concept="1PaTwC" id="ATZLwXo8IF" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo8IG" role="1PaTwD">
+                  <property role="3oM_SC" value="assuming" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IH" role="1PaTwD">
+                  <property role="3oM_SC" value="user" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8II" role="1PaTwD">
+                  <property role="3oM_SC" value="knows" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IJ" role="1PaTwD">
+                  <property role="3oM_SC" value="what" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IK" role="1PaTwD">
+                  <property role="3oM_SC" value="he's" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IL" role="1PaTwD">
+                  <property role="3oM_SC" value="doing" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IM" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IN" role="1PaTwD">
+                  <property role="3oM_SC" value="supplied" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IO" role="1PaTwD">
+                  <property role="3oM_SC" value="us" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IP" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IQ" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IR" role="1PaTwD">
+                  <property role="3oM_SC" value="model" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IS" role="1PaTwD">
+                  <property role="3oM_SC" value="file," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IT" role="1PaTwD">
+                  <property role="3oM_SC" value="try" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IU" role="1PaTwD">
+                  <property role="3oM_SC" value="default" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo8IV" role="1PaTwD">
+                  <property role="3oM_SC" value="factory." />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="QTAzJ3MhZY" role="3cqZAp">
@@ -823,8 +875,76 @@
         <node concept="10P_77" id="1XAHtgEJ4t6" role="3clF45" />
         <node concept="3clFbS" id="1XAHtgEJ4t7" role="3clF47">
           <node concept="3SKdUt" id="1XAHtgEJ5ax" role="3cqZAp">
-            <node concept="3SKdUq" id="1XAHtgEJ5az" role="3SKWNk">
-              <property role="3SKdUp" value="we are not going to write into sourceFile anyway, and have to write into destFile, therefore no reason to bother with actual state" />
+            <node concept="1PaTwC" id="ATZLwXo8IW" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXo8IX" role="1PaTwD">
+                <property role="3oM_SC" value="we" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8IY" role="1PaTwD">
+                <property role="3oM_SC" value="are" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8IZ" role="1PaTwD">
+                <property role="3oM_SC" value="not" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J0" role="1PaTwD">
+                <property role="3oM_SC" value="going" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J1" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J2" role="1PaTwD">
+                <property role="3oM_SC" value="write" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J3" role="1PaTwD">
+                <property role="3oM_SC" value="into" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J4" role="1PaTwD">
+                <property role="3oM_SC" value="sourceFile" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J5" role="1PaTwD">
+                <property role="3oM_SC" value="anyway," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J6" role="1PaTwD">
+                <property role="3oM_SC" value="and" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J7" role="1PaTwD">
+                <property role="3oM_SC" value="have" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J8" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8J9" role="1PaTwD">
+                <property role="3oM_SC" value="write" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Ja" role="1PaTwD">
+                <property role="3oM_SC" value="into" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Jb" role="1PaTwD">
+                <property role="3oM_SC" value="destFile," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Jc" role="1PaTwD">
+                <property role="3oM_SC" value="therefore" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Jd" role="1PaTwD">
+                <property role="3oM_SC" value="no" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Je" role="1PaTwD">
+                <property role="3oM_SC" value="reason" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Jf" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Jg" role="1PaTwD">
+                <property role="3oM_SC" value="bother" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Jh" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Ji" role="1PaTwD">
+                <property role="3oM_SC" value="actual" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXo8Jj" role="1PaTwD">
+                <property role="3oM_SC" value="state" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1XAHtgEJ4ta" role="3cqZAp">

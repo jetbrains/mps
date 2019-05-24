@@ -48,6 +48,7 @@ public class Template_reduce_ConceptMethodCallReflectiveCommon extends TemplateD
             tnode2.addChild(myAggregationLinks[0], child4);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist5 = null;
@@ -57,6 +58,7 @@ public class Template_reduce_ConceptMethodCallReflectiveCommon extends TemplateD
             tnode2.addChild(myAggregationLinks[1], child6);
           }
           // TODO validate child 
+
         }
       } finally {
       }

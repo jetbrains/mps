@@ -52,6 +52,7 @@ public class Template_reduce_GetChildrenOperation_whereLinkQualifier extends Tem
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
       {
         Collection<SNode> tlist4 = null;
@@ -78,6 +79,7 @@ public class Template_reduce_GetChildrenOperation_whereLinkQualifier extends Tem
           tnode1.addChild(myAggregationLinks[0], child6);
         }
         // TODO validate child 
+
       }
     } finally {
     }

@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -172,11 +172,8 @@
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615">
         <child id="1107797138135" name="extendedInterface" index="3HQHJm" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -212,6 +209,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -770,18 +775,198 @@
       <node concept="3cqZAl" id="1PwNLcbNHC_" role="3clF45" />
       <node concept="3clFbS" id="1PwNLcbNHCB" role="3clF47">
         <node concept="3SKdUt" id="DgErZvQLHA" role="3cqZAp">
-          <node concept="3SKdUq" id="DgErZvQLHC" role="3SKWNk">
-            <property role="3SKdUp" value="1. languageRegistry could be null to facilitate unit tests." />
+          <node concept="1PaTwC" id="ATZLwXo6Uk" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo6Ul" role="1PaTwD">
+              <property role="3oM_SC" value="1." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Um" role="1PaTwD">
+              <property role="3oM_SC" value="languageRegistry" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Un" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Uo" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Up" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Uq" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Ur" role="1PaTwD">
+              <property role="3oM_SC" value="facilitate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Us" role="1PaTwD">
+              <property role="3oM_SC" value="unit" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Ut" role="1PaTwD">
+              <property role="3oM_SC" value="tests." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="1PwNLcbO3pO" role="3cqZAp">
-          <node concept="3SKdUq" id="1PwNLcbO3pQ" role="3SKWNk">
-            <property role="3SKdUp" value="2. technically, package-local visibility would suffice, however, MPS could not guess it's the same package for two models with same qualified name." />
+          <node concept="1PaTwC" id="ATZLwXo6Uu" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo6Uv" role="1PaTwD">
+              <property role="3oM_SC" value="2." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Uw" role="1PaTwD">
+              <property role="3oM_SC" value="technically," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Ux" role="1PaTwD">
+              <property role="3oM_SC" value="package-local" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Uy" role="1PaTwD">
+              <property role="3oM_SC" value="visibility" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Uz" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6U$" role="1PaTwD">
+              <property role="3oM_SC" value="suffice," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6U_" role="1PaTwD">
+              <property role="3oM_SC" value="however," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UA" role="1PaTwD">
+              <property role="3oM_SC" value="MPS" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UB" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UC" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UD" role="1PaTwD">
+              <property role="3oM_SC" value="guess" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UE" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UF" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UG" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UH" role="1PaTwD">
+              <property role="3oM_SC" value="package" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UI" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UJ" role="1PaTwD">
+              <property role="3oM_SC" value="two" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UK" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UL" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UM" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UN" role="1PaTwD">
+              <property role="3oM_SC" value="qualified" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UO" role="1PaTwD">
+              <property role="3oM_SC" value="name." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="DgErZvSPy$" role="3cqZAp">
-          <node concept="3SKdUq" id="DgErZvSPyA" role="3SKWNk">
-            <property role="3SKdUp" value="3. FIXME In fact, there's not too much reason to pass LanguageRegistry here, we use it to go from namespace in IFacet.Name to SLanguage. IFacet.Name could give SLanguage right away." />
+          <node concept="1PaTwC" id="ATZLwXo6UP" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo6UQ" role="1PaTwD">
+              <property role="3oM_SC" value="3." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UR" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6US" role="1PaTwD">
+              <property role="3oM_SC" value="In" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UT" role="1PaTwD">
+              <property role="3oM_SC" value="fact," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UU" role="1PaTwD">
+              <property role="3oM_SC" value="there's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UV" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UW" role="1PaTwD">
+              <property role="3oM_SC" value="too" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UX" role="1PaTwD">
+              <property role="3oM_SC" value="much" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UY" role="1PaTwD">
+              <property role="3oM_SC" value="reason" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6UZ" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V0" role="1PaTwD">
+              <property role="3oM_SC" value="pass" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V1" role="1PaTwD">
+              <property role="3oM_SC" value="LanguageRegistry" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V2" role="1PaTwD">
+              <property role="3oM_SC" value="here," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V3" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V4" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V5" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V6" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V7" role="1PaTwD">
+              <property role="3oM_SC" value="go" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V8" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6V9" role="1PaTwD">
+              <property role="3oM_SC" value="namespace" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Va" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vb" role="1PaTwD">
+              <property role="3oM_SC" value="IFacet.Name" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vc" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vd" role="1PaTwD">
+              <property role="3oM_SC" value="SLanguage." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Ve" role="1PaTwD">
+              <property role="3oM_SC" value="IFacet.Name" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vf" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vg" role="1PaTwD">
+              <property role="3oM_SC" value="give" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vh" role="1PaTwD">
+              <property role="3oM_SC" value="SLanguage" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vi" role="1PaTwD">
+              <property role="3oM_SC" value="right" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vj" role="1PaTwD">
+              <property role="3oM_SC" value="away." />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1PwNLcbNINj" role="3cqZAp">
@@ -1190,8 +1375,22 @@
           </node>
         </node>
         <node concept="3SKdUt" id="4tDYbgl3ctH" role="3cqZAp">
-          <node concept="3SKdUq" id="4tDYbgl3ctI" role="3SKWNk">
-            <property role="3SKdUp" value="fallback to the &quot;old&quot; mechanism" />
+          <node concept="1PaTwC" id="ATZLwXo6Vk" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo6Vl" role="1PaTwD">
+              <property role="3oM_SC" value="fallback" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vm" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vn" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vo" role="1PaTwD">
+              <property role="3oM_SC" value="&quot;old&quot;" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo6Vp" role="1PaTwD">
+              <property role="3oM_SC" value="mechanism" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="4tDYbgl3ctL" role="3cqZAp">

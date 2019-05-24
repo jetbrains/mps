@@ -59,6 +59,7 @@ public interface ClassifierTraversalCallback {
 
     /*package*/ static ClassifierTraversalCallback.TraversalInfo create(SNode classifier, ClassifierTraversalCallback.TraversalController controller) {
       // no copy (sic) 
+
       ClassifierTraversalCallback.TraversalInfo info = new ClassifierTraversalCallback.TraversalInfo();
       info.setCurrentClassifier(classifier);
       info.setController(controller);

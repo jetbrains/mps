@@ -107,7 +107,9 @@ public class LanguageImportFinder extends BaseFinder implements IFinder {
   private void collectUsagesInModels(SLanguage searchedLanguage, SModule owner, @NotNull IFinder.FindCallback callback) {
     for (SModel model : owner.getModels()) {
       // FIXME rest of the class relies on plain (no unwraped devkits and extended languages) imports, 
+
       // perhaps, shall revert to SModel.getUsedLanguages() here as well? 
+
       if (SModelOperations.getAllLanguageImports(model).contains(searchedLanguage)) {
         callback.onUsageFound(new SearchResult<SModel>(model, MODELS_WRITTEN_IN_LANGUAGE));
       }

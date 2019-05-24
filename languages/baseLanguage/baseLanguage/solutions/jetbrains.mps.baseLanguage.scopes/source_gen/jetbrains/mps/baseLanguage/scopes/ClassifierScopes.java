@@ -39,6 +39,7 @@ public class ClassifierScopes {
       public boolean isExcluded(SNode node) {
         if ((node == null)) {
           // todo: ? 
+
           return true;
         }
         if (!(VisibilityUtil.isVisible(contextNode, SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible"))))) {
@@ -90,14 +91,21 @@ public class ClassifierScopes {
         });
         if (noArgCons != null) {
           // Treat no-arg cons the same way as implicit default cons. 
+
           // First of all, it's the way JLS tells us 'new' expression should look like (see 15.9 Class Instance Creation Expressions) 
+
           // Second, it's much more handy to have single ML in templates for a class with no-arg cons, and use it to restore references in a declaration like: 
+
           //         ->[MyClass] x = new ->[MyClass](); 
+
           //         Use of ClassCreator there instead of DefaultClassCreator requires extra ML for the cons. 
+
           return !((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(noArgCons, clazz, contextNode));
         }
         // note: http://docs.oracle.com/javase/specs/jls/se5.0/html/classes.html#8.8.9 
+
         // visibility of default constructor not implies by visibility of class 
+
         return !(DefaultConstructorUtils.hasDefaultConstructor(clazz));
       }
     };
@@ -124,6 +132,7 @@ public class ClassifierScopes {
       @Override
       public boolean isExcluded(SNode node) {
         // check extended classes only as Throwable is class 
+
         SNode cc = SNodeOperations.as(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
         while (cc != null) {
           if (SNodeOperations.is(cc, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
@@ -141,6 +150,7 @@ public class ClassifierScopes {
   public static Scope getClassesForExtends(@NotNull SNode contextNode) {
     SNode clas = SNodeOperations.getNodeAncestor(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false);
     // not final ClassConcepts 
+
     return new FilteringScope(ClassifierScopes.filterWithClassExpressionClassifiers(new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))) {
       @Override
       public boolean isExcluded(SNode node) {
@@ -166,10 +176,15 @@ public class ClassifierScopes {
 
         List<SNode> ancestors = SNodeOperations.getNodeAncestors(classifier, null, true);
         // Filtering out Classifiers located in third-party containers (not Classifiers) 
+
         // and having no common Classifier container with enclosing node. 
+
         // Useful for Classifiers contained in EditorTestCases 
+
         // ("result" should not be able to access classifiers from "nodeToEdit")... 
+
         // todo: VOODOO PEOPLE MAGIC PEOPLE 
+
         return ListSequence.fromList(ancestors).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));

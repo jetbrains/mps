@@ -45,8 +45,10 @@ public class MergeBackupUtil {
       File tmp = FileUtil.createTmpDir();
       ZipUtil.extract(file, tmp, null);
       //  copy merge result 
+
       FileUtil.writeFile(new File(tmp + File.separator + fileName + ".result"), resultContent);
       //  copy logfiles 
+
       File logsDir = new File(PathManager.getLogPath());
       File[] logfiles = logsDir.listFiles(new FilenameFilter() {
         @Override
@@ -110,9 +112,12 @@ public class MergeBackupUtil {
   }
   public static File chooseZipFileForModelFile(String defaultFileName) {
     // FIXME Please, please! Year 2015, two static classes, one set static fields of another?! 
+
     // FIXME Oh, no, wait! It's year 2019 already, and the code is still there!? 
+
     MergeDriverBackupUtil.setMergeBackupDirPath(getMergeBackupDirPath());
     // What was the reason to alter name of the backup file with model name? 
+
     return MergeDriverBackupUtil.chooseZipFileForModelLongName(defaultFileName, null);
   }
   public static Iterable<File> findZipFilesForModelFile(final String modelFileName) {

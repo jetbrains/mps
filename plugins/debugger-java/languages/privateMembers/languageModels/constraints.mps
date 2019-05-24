@@ -73,11 +73,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints">
@@ -139,6 +136,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
@@ -177,8 +182,55 @@
             </node>
           </node>
           <node concept="3SKdUt" id="5Vvmn_QkX8B" role="3cqZAp">
-            <node concept="3SKdUq" id="5Vvmn_QkX8C" role="3SKWNk">
-              <property role="3SKdUp" value="fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type" />
+            <node concept="1PaTwC" id="ATZLwXnZYo" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnZYp" role="1PaTwD">
+                <property role="3oM_SC" value="fields" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYq" role="1PaTwD">
+                <property role="3oM_SC" value="declared" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYr" role="1PaTwD">
+                <property role="3oM_SC" value="in" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYs" role="1PaTwD">
+                <property role="3oM_SC" value="hierarhy" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYt" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYu" role="1PaTwD">
+                <property role="3oM_SC" value="class" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYv" role="1PaTwD">
+                <property role="3oM_SC" value="specified" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYw" role="1PaTwD">
+                <property role="3oM_SC" value="by" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYx" role="1PaTwD">
+                <property role="3oM_SC" value="left" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYy" role="1PaTwD">
+                <property role="3oM_SC" value="expression." />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYz" role="1PaTwD">
+                <property role="3oM_SC" value="only" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZY$" role="1PaTwD">
+                <property role="3oM_SC" value="applicable" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZY_" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYA" role="1PaTwD">
+                <property role="3oM_SC" value="expressions" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYB" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnZYC" role="1PaTwD">
+                <property role="3oM_SC" value="classifier-type" />
+              </node>
             </node>
           </node>
           <node concept="3clFbJ" id="5Vvmn_QkX8D" role="3cqZAp">

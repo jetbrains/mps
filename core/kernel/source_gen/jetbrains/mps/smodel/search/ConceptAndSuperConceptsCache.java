@@ -37,7 +37,9 @@ public class ConceptAndSuperConceptsCache extends AbstractCache {
     Set<SModel> dependsOnModel = new HashSet<SModel>();
     for (SNode concept : getConcepts()) {
       //  http://youtrack.jetbrains.net/issue/MPS-8362 
+
       //  http://youtrack.jetbrains.net/issue/MPS-8556 
+
       SModel descriptor = concept.getModel();
       assert descriptor != null;
       dependsOnModel.add(descriptor);

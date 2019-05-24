@@ -67,6 +67,7 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                     }
                     tnode4.addChild(myAggregationLinks[0], tnode5);
                     // TODO validate child 
+
                   }
                   {
                     Collection<SNode> tlist6 = null;
@@ -76,16 +77,19 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                       tnode4.addChild(myAggregationLinks[1], child7);
                     }
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[2], tnode4);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[3], tnode3);
             // TODO validate child 
+
           }
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
@@ -105,6 +109,7 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                     }
                     tnode9.addChild(myAggregationLinks[4], tnode10);
                     // TODO validate child 
+
                   }
                   {
                     Collection<SNode> tlist11 = null;
@@ -118,11 +123,13 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                       tnode9.addChild(myAggregationLinks[4], child12);
                     }
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode8.addChild(myAggregationLinks[5], tnode9);
                 // TODO validate child 
+
               }
               {
                 Collection<SNode> tlist13 = null;
@@ -132,16 +139,19 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                   tnode8.addChild(myAggregationLinks[6], child14);
                 }
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[3], tnode8);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[7], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }

@@ -48,6 +48,7 @@ public class AbstractClassifierReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_47lpm0_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier"));
     }
     @NotNull

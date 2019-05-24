@@ -130,6 +130,7 @@ public class MigrationStep extends BaseStep {
   @Override
   public boolean isComplete() {
     // finished or is waiting for user response after error 
+
     return myTask.isComplete() || mySession.getError() != null;
   }
 
@@ -158,6 +159,7 @@ public class MigrationStep extends BaseStep {
       myErrorPanel.setVisible(false);
     }
     // the "next" action will invoke _init(), which will continue running the task 
+
   }
 
   @Override

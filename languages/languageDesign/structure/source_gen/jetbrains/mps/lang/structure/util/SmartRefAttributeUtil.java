@@ -30,6 +30,7 @@ public final class SmartRefAttributeUtil {
       return attr;
     }
     // check for implicit smart reference 
+
     SNode ref = getImplicitCharacteristicLinkDeclaration(concept);
     if (ref != null) {
       return createSmartReferenceAttribute_9k4hui_a0a5a4(ref);

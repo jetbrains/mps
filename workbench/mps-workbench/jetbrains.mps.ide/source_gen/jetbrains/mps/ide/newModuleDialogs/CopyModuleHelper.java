@@ -47,6 +47,7 @@ public final class CopyModuleHelper {
   public AbstractModule copy() throws CopyNotSupportedException {
     if (myOriginal.isPackaged()) {
       // Do not handle this case since packaged module may not contain it sources 
+
       throw new CopyNotSupportedException("Cloning has not supported for packaged modules");
     }
     ModuleDescriptor moduleDescriptor = myOriginal.getModuleDescriptor();
@@ -135,6 +136,7 @@ public final class CopyModuleHelper {
         ((ModelRootBase) targetModelRoot).setModule(target);
       }
       // noinspection unchecked 
+
       ((CopyableModelRoot) sourceModelRoot).copyTo((CopyableModelRoot) targetModelRoot);
       targetModelRoots.add(targetModelRoot);
     }
@@ -157,5 +159,6 @@ public final class CopyModuleHelper {
    */
   public static void copyFacets(AbstractModule source, AbstractModule target) throws CopyNotSupportedException {
     // nop 
+
   }
 }

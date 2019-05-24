@@ -29,8 +29,11 @@ public class SearchQuery implements IExternalizeable {
   public SearchQuery(Element element, Project project) throws CantLoadSomethingException {
     read(element, project);
     // intentionally not null. Null would default to CompatibilityResolver and issues like https://youtrack.jetbrains.com/issue/MPS-25530 
+
     // would arise after reload of externalized query (e.g. project restart). It's not nice to use whole project as search object scope, but 
+
     // given present 'externalization' mechanism I don't have much to choose from. 
+
     myObjectResolver = new SearchObjectResolver.BasicResolver(project.getRepository());
   }
 
@@ -38,6 +41,7 @@ public class SearchQuery implements IExternalizeable {
     myScope = scope;
     myObjectHolder = objectHolder;
     // null is legal field value, see getSearchObjectResolver() impl, but I don't want to allow null in the cons API 
+
     myObjectResolver = null;
   }
 

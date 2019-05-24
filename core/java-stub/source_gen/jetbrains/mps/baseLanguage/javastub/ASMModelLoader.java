@@ -46,6 +46,7 @@ public final class ASMModelLoader {
 
   public void populateRoots(SModelData modelData) {
     // XXX may pass openapi.SModel in addition to SModelData so that ClassifierLoader may use model as factory 
+
     for (IFile classfile : getTopClassFiles()) {
       ClassifierLoader loader = new ClassifierLoader(classfile, myOnlyPublic, mySkipPrivate);
       SNode c = loader.createClassifier();

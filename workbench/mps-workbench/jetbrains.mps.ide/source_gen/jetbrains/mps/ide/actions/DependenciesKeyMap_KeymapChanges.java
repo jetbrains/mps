@@ -10,9 +10,12 @@ import javax.swing.KeyStroke;
 public class DependenciesKeyMap_KeymapChanges extends BaseKeymapChanges {
   public DependenciesKeyMap_KeymapChanges() {
     // simple 
+
     addSimpleShortcut("jetbrains.mps.ide.actions.SafeDeleteModuleDependency_Action", getShortcut("ctrl DELETE"));
     // simple parameterized 
+
     // complex 
+
   }
   public String getScheme() {
     return "$default";

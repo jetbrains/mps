@@ -43,6 +43,7 @@ public class ConceptEditorHelper {
   }
   public static List<SConcept> getAvailableConceptAspects(LanguageAspect aspect, SNode node) {
     // [MM] this LanguageAspect usage is reviewed 
+
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
     for (SLanguage slang : CollectionSequence.fromCollection(aspect.getMainLanguages())) {
       ListSequence.fromList(result).addSequence(ListSequence.fromList(getAvailableConceptAspects(slang, node)));

@@ -98,11 +98,14 @@ public class ClassifierLoader {
 
     if (myInnerClassDescriptor != null) {
       // static, protected, private are accessible from inner class structure only, 
+
       // JLS 4.7.6, table 4.8 
+
       boolean isStatic = (myInnerClassDescriptor.access & Opcodes.ACC_STATIC) != 0;
       boolean isProtected = (myInnerClassDescriptor.access & Opcodes.ACC_PROTECTED) != 0;
       boolean isPrivate = (myInnerClassDescriptor.access & Opcodes.ACC_PRIVATE) != 0;
       // public, final, abstract are taken from the class, JLS 4.1, table 4.1 
+
       SPropertyOperations.assign(rv, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic"), !(isStatic));
       if (isProtected) {
         SLinkOperations.setTarget(rv, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), createProtectedVisibility_eoyrbu_a0a0h0l0o());
@@ -122,10 +125,12 @@ public class ClassifierLoader {
       String name = cn.name;
       if (name == null) {
         // I doubt this could ever happen 
+
         continue;
       }
       if (cn.innerName == null) {
         // JVM spec, 4.7.6, inner_name_index - anonymous classes have no inner name 
+
         continue;
       }
       if ((cn.access & Opcodes.ACC_SYNTHETIC) != 0) {

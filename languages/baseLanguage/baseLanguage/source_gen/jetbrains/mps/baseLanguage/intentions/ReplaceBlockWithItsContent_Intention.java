@@ -52,6 +52,7 @@ public final class ReplaceBlockWithItsContent_Intention extends AbstractIntentio
           break;
         default:
           // statementsCount > 1 
+
           applicable = containmentLink.isMultiple();
       }
     }

@@ -27,6 +27,7 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
   }
   public void applyRule(final SNode jarLoc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // if a CustomJarLocation points maps a file module has no dependency to, report a warning. Such a mapping would get ignored when generating module.xml 
+
     SNode module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module"));
     if (module == null) {
       module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x6a3e160a3efe6275L, "module"));
@@ -36,6 +37,7 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
     }
     final String expectedPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarLoc, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3c765492deb1a384L, 0x3c765492deb1a385L, "path")));
     // This logic is from BuildMpsLayout_ModuleXml template in main MC to create <library> elements 
+
     List<SNode> moduleDeps = SLinkOperations.getChildren(SNodeOperations.as(module, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies"));
     if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, "jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency"))).union(ListSequence.fromList(moduleDeps)), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyJar")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path"))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {

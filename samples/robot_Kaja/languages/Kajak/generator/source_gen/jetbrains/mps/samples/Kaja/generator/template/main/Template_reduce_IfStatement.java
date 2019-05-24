@@ -46,6 +46,7 @@ public class Template_reduce_IfStatement extends TemplateDeclarationBase impleme
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -59,11 +60,13 @@ public class Template_reduce_IfStatement extends TemplateDeclarationBase impleme
               tnode4.addChild(myAggregationLinks[1], child6);
             }
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode4);
         // TODO validate child 
+
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
@@ -81,16 +84,19 @@ public class Template_reduce_IfStatement extends TemplateDeclarationBase impleme
                   tnode8.addChild(myAggregationLinks[1], child10);
                 }
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode7.addChild(myAggregationLinks[3], tnode8);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode7);
         // TODO validate child 
+
       }
     } finally {
     }

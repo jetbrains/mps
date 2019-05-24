@@ -48,6 +48,7 @@ public class TypesystemIntention_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8drpfu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, "jetbrains.mps.lang.typesystem.structure.TypesystemIntention"), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix"));
     }
     @NotNull

@@ -30,8 +30,11 @@ public class FacetRegistry implements CoreComponent {
 
   public FacetRegistry(LanguageRegistry languageRegistry) {
     // 1. languageRegistry could be null to facilitate unit tests. 
+
     // 2. technically, package-local visibility would suffice, however, MPS could not guess it's the same package for two models with same qualified name. 
+
     // 3. FIXME In fact, there's not too much reason to pass LanguageRegistry here, we use it to go from namespace in IFacet.Name to SLanguage. IFacet.Name could give SLanguage right away. 
+
     myLanguageRegistry = languageRegistry;
   }
 
@@ -80,6 +83,7 @@ public class FacetRegistry implements CoreComponent {
       }
     }
     // fallback to the "old" mechanism 
+
     LOG.debug("facet not found, loading using deprecated mechanism " + fn);
     return MapSequence.fromMap(facetMap).get(fn);
   }

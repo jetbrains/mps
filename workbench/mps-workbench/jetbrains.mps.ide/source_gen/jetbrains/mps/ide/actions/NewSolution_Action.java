@@ -64,6 +64,7 @@ public class NewSolution_Action extends BaseAction {
     }
 
     // TODO: Sync ProjectPane.rebuildTree() with NewSolution, CloneModule actions 
+
     ProjectPane projectPane = ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject")));
     projectPane.selectModule(s, false);
   }

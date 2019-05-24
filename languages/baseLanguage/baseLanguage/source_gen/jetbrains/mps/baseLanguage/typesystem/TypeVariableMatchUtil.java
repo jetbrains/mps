@@ -55,6 +55,7 @@ public class TypeVariableMatchUtil {
     }
 
     // extract typeof's of arguments outside the when_concrete block 
+
     final List<SNode> argTypes = new ArrayList<SNode>();
     for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument")))) {
       ListSequence.fromList(argTypes).addElement(typeCheckingContext.typeOf(a, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510612", true));
@@ -62,9 +63,11 @@ public class TypeVariableMatchUtil {
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     // check the inference context 
+
     if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(staticMethodCall))) {
       for (SNode tvd : ListSequence.fromList(BaseMethodDeclaration__BehaviorDescriptor.getInferrableTypeVars_id5W9RYt5baxk.invoke(mdecl))) {
         // assume all unbound type vars outside an inference context are Object or its bound 
+
         MapSequence.fromMap(subs).put(tvd, ((SLinkOperations.getTarget(tvd, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound")) == null) ? _quotation_createNode_hh0s94_a0a1a0a9a2() : SNodeOperations.copyNode(SLinkOperations.getTarget(tvd, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound")))));
       }
     }

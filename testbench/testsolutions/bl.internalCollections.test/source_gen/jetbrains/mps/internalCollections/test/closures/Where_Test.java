@@ -65,6 +65,7 @@ public class Where_Test extends Util_Test {
       Assert.fail();
     } catch (NoSuchElementException e) {
       // expected exception 
+
     }
   }
   public void test_whereAdvancesTooEarly() throws Exception {

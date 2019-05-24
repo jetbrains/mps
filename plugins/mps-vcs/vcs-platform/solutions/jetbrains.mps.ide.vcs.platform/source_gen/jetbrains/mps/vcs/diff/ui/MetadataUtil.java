@@ -40,7 +40,9 @@ public class MetadataUtil {
     new MetadataUtil(metadataModel).createModelRoot(model);
     DiffModelUtil.renameModelAndRegister(metadataModel, version);
     // XXX it looks isChanged used as indication whether there's anything in the model to apply. 
+
     // If yes, why not use dedicated flag in MergeTemporaryModel, and cease being EditableSModel? 
+
     metadataModel.setChanged(false);
     return metadataModel;
   }
@@ -74,17 +76,24 @@ public class MetadataUtil {
   }
 
   private SNode createLanguageNode(SLanguage lang) {
-    // Though it's possible to reduce mps.ide.vcs.modelmetadata language to no concepts but Model,  
+    // Though it's possible to reduce mps.ide.vcs.modelmetadata language to no concepts but Model, 
+
     // and re-use various *Identity concepts from lang.modelapi/lang.smodel, I leave these custom wrappers for string properties 
+
     // to keep the language simple and isolated 
+
     // 
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     final String langIdentity = pf.asString(lang);
     // IMPORTANT! model.new node set custom node id. See createModuleRefNode, below, for explanation why we need custom id 
+
     SNode rv = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + langIdentity), MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, "jetbrains.mps.ide.vcs.modelmetadata.structure.LanguageDependency"));
     // XXX it's bad to cast to implementation class, but it's MPS internal code and this is fastest approach 
+
     // (although the right way is to extract part of smodel language related to metadata handling, like LanguageIdentity 
-    // into separate language and re-use it here).  
+
+    // into separate language and re-use it here). 
+
     SPropertyOperations.assign(rv, MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, 0x660570953ee5dadfL, "value"), langIdentity);
     return rv;
   }
@@ -96,9 +105,12 @@ public class MetadataUtil {
   private SNode createModuleRefNode(SModuleReference module) {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     String moduleIdentity = pf.asString(module);
-    // The purpose of custom node id here is to have identical IDs for the same imports in different models  
+    // The purpose of custom node id here is to have identical IDs for the same imports in different models 
+
     // That's why don't we rely on automatic node id. This doesn't help, however, in case of duplicated imports! 
+
     // SNodeId.Foreign.ID_PREFIX dependency is not mandatory, in fact. There's code, above, that uses hardcoded values anyway ("~root") 
+
     SNode node = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + moduleIdentity), MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L, "jetbrains.mps.ide.vcs.modelmetadata.structure.ModuleReference"));
     SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L, 0x39c8ca3b79aaafe2L, "stringValue"), moduleIdentity);
     return node;

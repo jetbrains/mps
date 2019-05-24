@@ -176,11 +176,8 @@
         <child id="1163670677455" name="expression" index="3Kbmr1" />
         <child id="1163670683720" name="body" index="3Kbo56" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -403,6 +400,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
@@ -457,8 +462,13 @@
       <node concept="2VP$b9" id="52UGxk5rm6P" role="2VPoh3">
         <node concept="3clFbS" id="52UGxk5rm6Q" role="2VODD2">
           <node concept="3SKdUt" id="6hfjOhYipeU" role="3cqZAp">
-            <node concept="3SKdUq" id="6hfjOhYipeV" role="3SKWNk">
-              <property role="3SKdUp" value="see MPS-24613" />
+            <node concept="1PaTwC" id="ATZLwXnU1l" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnU1m" role="1PaTwD">
+                <property role="3oM_SC" value="see" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU1n" role="1PaTwD">
+                <property role="3oM_SC" value="MPS-24613" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="21KZIice8KN" role="3cqZAp">
@@ -919,8 +929,22 @@
           <node concept="3NFfHV" id="4w5s_OW_ST" role="3NFExx">
             <node concept="3clFbS" id="4w5s_OW_SU" role="2VODD2">
               <node concept="3SKdUt" id="4w5s_OW_SV" role="3cqZAp">
-                <node concept="3SKdUq" id="4w5s_OW_SW" role="3SKWNk">
-                  <property role="3SKdUp" value="&lt;expr-to-copy&gt; . linklist-access . add-new-child-op" />
+                <node concept="1PaTwC" id="ATZLwXnU1o" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnU1p" role="1PaTwD">
+                    <property role="3oM_SC" value="&lt;expr-to-copy&gt;" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1q" role="1PaTwD">
+                    <property role="3oM_SC" value="." />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1r" role="1PaTwD">
+                    <property role="3oM_SC" value="linklist-access" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1s" role="1PaTwD">
+                    <property role="3oM_SC" value="." />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1t" role="1PaTwD">
+                    <property role="3oM_SC" value="add-new-child-op" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbF" id="4w5s_OW_SX" role="3cqZAp">
@@ -1021,8 +1045,22 @@
                 <node concept="3NFfHV" id="4w5s_OWAyC" role="3NFExx">
                   <node concept="3clFbS" id="4w5s_OWAyD" role="2VODD2">
                     <node concept="3SKdUt" id="4w5s_OWAyE" role="3cqZAp">
-                      <node concept="3SKdUq" id="4w5s_OWAyF" role="3SKWNk">
-                        <property role="3SKdUp" value="&lt;expr-to-copy&gt; . link-access . set-new-child-op" />
+                      <node concept="1PaTwC" id="ATZLwXnU1u" role="3ndbpf">
+                        <node concept="3oM_SD" id="ATZLwXnU1v" role="1PaTwD">
+                          <property role="3oM_SC" value="&lt;expr-to-copy&gt;" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1w" role="1PaTwD">
+                          <property role="3oM_SC" value="." />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1x" role="1PaTwD">
+                          <property role="3oM_SC" value="link-access" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1y" role="1PaTwD">
+                          <property role="3oM_SC" value="." />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1z" role="1PaTwD">
+                          <property role="3oM_SC" value="set-new-child-op" />
+                        </node>
                       </node>
                     </node>
                     <node concept="3clFbF" id="4w5s_OWAyG" role="3cqZAp">
@@ -1152,8 +1190,22 @@
           <node concept="3NFfHV" id="4w5s_OWFP_" role="3NFExx">
             <node concept="3clFbS" id="4w5s_OWFPA" role="2VODD2">
               <node concept="3SKdUt" id="4w5s_OWFPB" role="3cqZAp">
-                <node concept="3SKdUq" id="4w5s_OWFPC" role="3SKWNk">
-                  <property role="3SKdUp" value="&lt;expr-to-copy&gt; . link-access . set-new-child-op" />
+                <node concept="1PaTwC" id="ATZLwXnU1$" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnU1_" role="1PaTwD">
+                    <property role="3oM_SC" value="&lt;expr-to-copy&gt;" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1A" role="1PaTwD">
+                    <property role="3oM_SC" value="." />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1B" role="1PaTwD">
+                    <property role="3oM_SC" value="link-access" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1C" role="1PaTwD">
+                    <property role="3oM_SC" value="." />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnU1D" role="1PaTwD">
+                    <property role="3oM_SC" value="set-new-child-op" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbF" id="4w5s_OWFPD" role="3cqZAp">
@@ -1254,8 +1306,22 @@
                 <node concept="3NFfHV" id="4w5s_OWFQz" role="3NFExx">
                   <node concept="3clFbS" id="4w5s_OWFQ$" role="2VODD2">
                     <node concept="3SKdUt" id="4w5s_OWFQ_" role="3cqZAp">
-                      <node concept="3SKdUq" id="4w5s_OWFQA" role="3SKWNk">
-                        <property role="3SKdUp" value="&lt;expr-to-copy&gt; . link-access . set-new-child-op" />
+                      <node concept="1PaTwC" id="ATZLwXnU1E" role="3ndbpf">
+                        <node concept="3oM_SD" id="ATZLwXnU1F" role="1PaTwD">
+                          <property role="3oM_SC" value="&lt;expr-to-copy&gt;" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1G" role="1PaTwD">
+                          <property role="3oM_SC" value="." />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1H" role="1PaTwD">
+                          <property role="3oM_SC" value="link-access" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1I" role="1PaTwD">
+                          <property role="3oM_SC" value="." />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnU1J" role="1PaTwD">
+                          <property role="3oM_SC" value="set-new-child-op" />
+                        </node>
                       </node>
                     </node>
                     <node concept="3clFbF" id="4w5s_OWFQB" role="3cqZAp">
@@ -2496,8 +2562,13 @@
       <node concept="30G5F_" id="1na$wSWf3eX" role="30HLyM">
         <node concept="3clFbS" id="1na$wSWf3eY" role="2VODD2">
           <node concept="3SKdUt" id="6hfjOhYi4$u" role="3cqZAp">
-            <node concept="3SKdUq" id="6hfjOhYi4$w" role="3SKWNk">
-              <property role="3SKdUp" value="see MPS-24613" />
+            <node concept="1PaTwC" id="ATZLwXnU1K" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnU1L" role="1PaTwD">
+                <property role="3oM_SC" value="see" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU1M" role="1PaTwD">
+                <property role="3oM_SC" value="MPS-24613" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1KHvivZKB6b" role="3cqZAp">
@@ -2557,8 +2628,28 @@
                             <node concept="3$xsQk" id="71FvR51gmQC" role="3$ytzL">
                               <node concept="3clFbS" id="71FvR51gmQD" role="2VODD2">
                                 <node concept="3SKdUt" id="71FvR51fVek" role="3cqZAp">
-                                  <node concept="3SKdUq" id="71FvR51fVem" role="3SKWNk">
-                                    <property role="3SKdUp" value="TODO genContext.get output ActionAspectDescriptorClass for model model;" />
+                                  <node concept="1PaTwC" id="ATZLwXnU1N" role="3ndbpf">
+                                    <node concept="3oM_SD" id="ATZLwXnU1O" role="1PaTwD">
+                                      <property role="3oM_SC" value="TODO" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnU1P" role="1PaTwD">
+                                      <property role="3oM_SC" value="genContext.get" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnU1Q" role="1PaTwD">
+                                      <property role="3oM_SC" value="output" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnU1R" role="1PaTwD">
+                                      <property role="3oM_SC" value="ActionAspectDescriptorClass" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnU1S" role="1PaTwD">
+                                      <property role="3oM_SC" value="for" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnU1T" role="1PaTwD">
+                                      <property role="3oM_SC" value="model" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnU1U" role="1PaTwD">
+                                      <property role="3oM_SC" value="model;" />
+                                    </node>
                                   </node>
                                 </node>
                                 <node concept="3cpWs6" id="71FvR51faQV" role="3cqZAp">

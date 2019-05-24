@@ -48,6 +48,7 @@ public class CustomContainerCreator_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_ob9joe_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator"), MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, 0x127be81db92655b4L, "containerDeclaration"));
     }
     @NotNull

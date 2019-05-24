@@ -49,12 +49,15 @@ public class ShowModelChecker_Action extends BaseAction {
     ModelCheckerTool tool = ModelCheckerTool.getInstance(event.getData(CommonDataKeys.PROJECT));
     if (!(tool.isAvailable()) || !(tool.toolIsOpened())) {
       // Not visible: open 
+
       tool.openToolLater(true);
     } else if (tool.getToolWindow().isActive()) {
       // Visible and active: hide 
+
       tool.getToolWindow().hide(null);
     } else {
       // Visible and not active: activate 
+
       tool.getToolWindow().activate(null);
     }
   }

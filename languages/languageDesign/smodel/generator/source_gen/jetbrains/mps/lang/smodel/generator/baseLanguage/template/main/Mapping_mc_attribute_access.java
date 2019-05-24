@@ -60,6 +60,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), tnode2);
           // TODO validate child 
+
         }
       } finally {
       }
@@ -93,11 +94,13 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
               }
               // TODO validate child 
+
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), tnode2);
           // TODO validate child 
+
         }
       } finally {
       }
@@ -131,6 +134,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
               }
               // TODO validate child 
+
             }
             {
               Collection<SNode> tlist5 = null;
@@ -157,11 +161,13 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
               }
               // TODO validate child 
+
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), tnode2);
           // TODO validate child 
+
         }
       } finally {
       }
@@ -195,6 +201,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
               }
               // TODO validate child 
+
             }
             {
               Collection<SNode> tlist5 = null;
@@ -221,11 +228,13 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
               }
               // TODO validate child 
+
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), tnode2);
           // TODO validate child 
+
         }
       } finally {
       }
@@ -259,6 +268,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
               }
               // TODO validate child 
+
             }
             {
               Collection<SNode> tlist5 = null;
@@ -285,11 +295,13 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
               }
               // TODO validate child 
+
             }
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), tnode2);
           // TODO validate child 
+
         }
       } finally {
       }
@@ -318,6 +330,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
             }
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist5 = null;
@@ -327,6 +340,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
             }
             // TODO validate child 
+
           }
         } finally {
         }
@@ -345,6 +359,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child9);
             }
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist10 = null;
@@ -354,6 +369,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child11);
             }
             // TODO validate child 
+
           }
         } finally {
         }
@@ -386,6 +402,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist4 = null;
@@ -395,6 +412,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist6 = null;
@@ -404,6 +422,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -434,6 +453,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist4 = null;
@@ -443,6 +463,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist6 = null;
@@ -452,6 +473,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -482,6 +504,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist4 = null;
@@ -491,6 +514,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist6 = null;
@@ -504,6 +528,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -534,6 +559,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist4 = null;
@@ -543,6 +569,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist6 = null;
@@ -556,6 +583,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child7);
           }
           // TODO validate child 
+
         }
       } finally {
       }

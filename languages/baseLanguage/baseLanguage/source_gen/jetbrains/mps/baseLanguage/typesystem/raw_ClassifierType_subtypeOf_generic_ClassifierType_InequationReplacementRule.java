@@ -26,9 +26,12 @@ public class raw_ClassifierType_subtypeOf_generic_ClassifierType_InequationRepla
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // normally this is an unchecked cast warning 
+
     // TODO look for Suppress("unchecked") annotation 
+
     if (SNodeOperations.getModel(subtype) != null) {
       // it's strange to report an error for typesystem node as it will be never shown 
+
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(subtype, "Unchecked conversion", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2796241438627654736", null, errorTarget);
@@ -39,10 +42,14 @@ public class raw_ClassifierType_subtypeOf_generic_ClassifierType_InequationRepla
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
     // normally this is an unchecked cast warning 
+
     // TODO look for Suppress("unchecked") annotation 
+
     if (SNodeOperations.getModel(subtype) != null) {
       // it's strange to report an error for typesystem node as it will be never shown 
+
       // generated from warning statement 
+
     }
     return result_14532009;
   }

@@ -39,7 +39,7 @@ public class Template_weave_Statement extends TemplateDeclarationBase implements
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_8_1(new PropertyMacroContext(context, "statementX", propertyMacro_6c7ipi_c0a0c0a0c0g))));
+      SNodeAccessUtil.setProperty(tnode1, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_8_0(new PropertyMacroContext(context, "statementX", propertyMacro_6c7ipi_c0a0c0a0c0g))));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -48,6 +48,7 @@ public class Template_weave_Statement extends TemplateDeclarationBase implements
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -56,6 +57,7 @@ public class Template_weave_Statement extends TemplateDeclarationBase implements
         }
         tnode1.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -68,25 +70,38 @@ public class Template_weave_Statement extends TemplateDeclarationBase implements
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
                 try {
-                  SNodeAccessUtil.setProperty(tnode6, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_8_0(new PropertyMacroContext(context3, "a", propertyMacro_6c7ipi_c0a0c0a0b0b0b0b0b0e0c0g))));
+                  TemplateContext context4 = context3.subContext();
+                  {
+                    final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
+                    try {
+                      SNodeAccessUtil.setProperty(tnode7, myProperties[1], "a");
+                    } finally {
+                    }
+                    tnode6.addChild(myAggregationLinks[2], tnode7);
+                    // TODO validate child 
+
+                  }
                 } finally {
                 }
-                tnode5.addChild(myAggregationLinks[2], tnode6);
+                tnode5.addChild(myAggregationLinks[3], tnode6);
                 // TODO validate child 
+
               }
             } finally {
             }
-            tnode4.addChild(myAggregationLinks[3], tnode5);
+            tnode4.addChild(myAggregationLinks[4], tnode5);
             // TODO validate child 
+
           }
         } finally {
         }
-        tnode1.addChild(myAggregationLinks[4], tnode4);
+        tnode1.addChild(myAggregationLinks[5], tnode4);
         // TODO validate child 
+
       }
     } finally {
     }
-    FragmentResult rv = nodeFragment(5, tnode1);
+    FragmentResult rv = nodeFragment(6, tnode1);
     return rv;
   }
   @Override
@@ -104,33 +119,34 @@ public class Template_weave_Statement extends TemplateDeclarationBase implements
   }
   @Override
   protected SConcept[] initConcepts() {
-    SConcept[] rv = new SConcept[6];
+    SConcept[] rv = new SConcept[7];
     rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf0aL, "StaticMethodDeclaration");
     rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType");
     rv[2] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility");
     rv[3] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList");
     rv[4] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x57d533a7af15ed3aL, "SingleLineComment");
-    rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x57d533a7af15ed3dL, "TextCommentPart");
+    rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x2331694e561af166L, "Line");
+    rv[6] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x229012ddae35f04L, "Word");
     return rv;
   }
   @Override
   protected SProperty[] initProperties() {
     SProperty[] rv = new SProperty[2];
     rv[0] = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    rv[1] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    rv[1] = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
     return rv;
   }
   @Override
   protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[6];
+    SContainmentLink[] rv = new SContainmentLink[7];
     rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
-    rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    rv[2] = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
     return rv;
   }
   private static SNodePointer propertyMacro_6c7ipi_c0a0c0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009934893");
-  private static SNodePointer propertyMacro_6c7ipi_c0a0c0a0b0b0b0b0b0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009937376");
 }

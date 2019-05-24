@@ -39,6 +39,7 @@ public class WeaveEachConsequence extends MigrationScriptBase {
         SLinkOperations.setNewChild(werc, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall"), null);
         SLinkOperations.setTarget(SLinkOperations.getTarget(werc, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall")), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template"), SLinkOperations.getTarget(werc, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fcbaec2L, "template")));
         // leave actual arguments empty, it was not possible to invoke template with args 
+
         SLinkOperations.setTarget(werc, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fcbaec2L, "template"), null);
       }
     }

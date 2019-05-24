@@ -141,6 +141,7 @@ __switch__:
       public byte[] invoke() {
         return bytes.value = new byte[3];
         //  no return value 
+
       }
     }.invoke();
     Assert.assertSame(3, bytes.value.length);

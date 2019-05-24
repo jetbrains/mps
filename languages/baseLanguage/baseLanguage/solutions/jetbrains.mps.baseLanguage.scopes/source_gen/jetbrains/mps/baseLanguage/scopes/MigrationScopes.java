@@ -41,6 +41,7 @@ public class MigrationScopes {
     private final SAbstractConcept myConcept;
     public FilterByConceptScope(@NotNull Scope innerScope, @NotNull SAbstractConcept concept) {
       // todo: move this scope to mps.core? 
+
       super(innerScope);
       this.myConcept = concept;
     }

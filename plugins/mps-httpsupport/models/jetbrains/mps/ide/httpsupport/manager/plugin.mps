@@ -2,7 +2,7 @@
 <model ref="r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
@@ -194,11 +194,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -228,6 +225,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7" />
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
@@ -298,18 +303,129 @@
       </node>
       <node concept="3clFbS" id="2Zv85d0AOpX" role="3clF47">
         <node concept="3SKdUt" id="4rrGGGbgFDr" role="3cqZAp">
-          <node concept="3SKdUq" id="4rrGGGbgFDt" role="3SKWNk">
-            <property role="3SKdUp" value="Do same things that super.isAccessible(request) does except that this definition " />
+          <node concept="1PaTwC" id="ATZLwXoh1H" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoh1I" role="1PaTwD">
+              <property role="3oM_SC" value="Do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1J" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1K" role="1PaTwD">
+              <property role="3oM_SC" value="things" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1L" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1M" role="1PaTwD">
+              <property role="3oM_SC" value="super.isAccessible(request)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1N" role="1PaTwD">
+              <property role="3oM_SC" value="does" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1O" role="1PaTwD">
+              <property role="3oM_SC" value="except" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1P" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1Q" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1R" role="1PaTwD">
+              <property role="3oM_SC" value="definition" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4rrGGGbgGPd" role="3cqZAp">
-          <node concept="3SKdUq" id="4rrGGGbgGPe" role="3SKWNk">
-            <property role="3SKdUp" value="also accepts local requests that triggered by trusted hosts (not only by user directly)" />
+          <node concept="1PaTwC" id="ATZLwXoh1S" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoh1T" role="1PaTwD">
+              <property role="3oM_SC" value="also" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1U" role="1PaTwD">
+              <property role="3oM_SC" value="accepts" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1V" role="1PaTwD">
+              <property role="3oM_SC" value="local" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1W" role="1PaTwD">
+              <property role="3oM_SC" value="requests" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1X" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1Y" role="1PaTwD">
+              <property role="3oM_SC" value="triggered" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh1Z" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh20" role="1PaTwD">
+              <property role="3oM_SC" value="trusted" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh21" role="1PaTwD">
+              <property role="3oM_SC" value="hosts" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh22" role="1PaTwD">
+              <property role="3oM_SC" value="(not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh23" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh24" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh25" role="1PaTwD">
+              <property role="3oM_SC" value="user" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh26" role="1PaTwD">
+              <property role="3oM_SC" value="directly)" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4rrGGGbgIyK" role="3cqZAp">
-          <node concept="3SKdUq" id="4rrGGGbgIyM" role="3SKWNk">
-            <property role="3SKdUp" value="TODO At current stage user can not define their own trusted hosts (see MPS-27006)" />
+          <node concept="1PaTwC" id="ATZLwXoh27" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoh28" role="1PaTwD">
+              <property role="3oM_SC" value="TODO" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh29" role="1PaTwD">
+              <property role="3oM_SC" value="At" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2a" role="1PaTwD">
+              <property role="3oM_SC" value="current" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2b" role="1PaTwD">
+              <property role="3oM_SC" value="stage" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2c" role="1PaTwD">
+              <property role="3oM_SC" value="user" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2d" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2e" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2f" role="1PaTwD">
+              <property role="3oM_SC" value="define" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2g" role="1PaTwD">
+              <property role="3oM_SC" value="their" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2h" role="1PaTwD">
+              <property role="3oM_SC" value="own" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2i" role="1PaTwD">
+              <property role="3oM_SC" value="trusted" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2j" role="1PaTwD">
+              <property role="3oM_SC" value="hosts" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2k" role="1PaTwD">
+              <property role="3oM_SC" value="(see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoh2l" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-27006)" />
+            </node>
           </node>
         </node>
         <node concept="3clFbH" id="4rrGGGbgFgb" role="3cqZAp" />
@@ -402,8 +518,19 @@
         <node concept="3clFbJ" id="2Zv85d0B46m" role="3cqZAp">
           <node concept="3clFbS" id="2Zv85d0B46o" role="3clFbx">
             <node concept="3SKdUt" id="kMpyBaRj74" role="3cqZAp">
-              <node concept="3SKdUq" id="kMpyBaRj76" role="3SKWNk">
-                <property role="3SKdUp" value="refferer is local host" />
+              <node concept="1PaTwC" id="ATZLwXoh2m" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXoh2n" role="1PaTwD">
+                  <property role="3oM_SC" value="refferer" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoh2o" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoh2p" role="1PaTwD">
+                  <property role="3oM_SC" value="local" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXoh2q" role="1PaTwD">
+                  <property role="3oM_SC" value="host" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="2Zv85d0B4L9" role="3cqZAp">

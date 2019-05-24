@@ -23,7 +23,9 @@ public class PluginUtils {
   }
   public static void checkPluginModelName(TemplateQueryContext genContext, SNode node) {
     // likely, it's assumed there's plugin.xml that controls instantiation of corresponding app/project components. 
+
     // however, it's not always the case, as we might want to generate plugin.xml ourselves and copy it into proper location 
+
     if (ListSequence.fromList(SModelOperations.roots(genContext.getInputModel(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x45b64b294c2b3514L, "jetbrains.mps.lang.plugin.structure.IdeaInitializerDescriptor"))).isNotEmpty()) {
       return;
     }
@@ -35,8 +37,11 @@ public class PluginUtils {
 
     if (SPropertyOperations.getBoolean(SModelOperations.getModuleStub(genContext.getOriginalInputModel()), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS")) && SPropertyOperations.getBoolean(node, MetaAdapterFactory.getProperty(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x685ef16bc1750e9cL, 0x5f3b7568ba8feb0fL, "needInitConfig"))) {
       // it's an MPS module that would get loaded with PluginLoaderRegistry and contribute 
+
       // its app/project component parts through ModulePluginContributor's mechanism, which respects startup.properties file. 
+
       // Unfortunately, have no other way but resort to originalModel to find out 'compileInMPS' setting - node.model is transient and bears no reasonable value 
+
       return;
     }
 

@@ -28,6 +28,7 @@ public class OrderComparator implements Comparator<Description> {
       return orderA - orderB;
     }
     // default order 
+
     for (Method m : a.getTestClass().getMethods()) {
       if (m.getName().equals(a.getMethodName())) {
         return -1;

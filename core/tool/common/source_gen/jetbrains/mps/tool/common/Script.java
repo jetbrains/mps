@@ -274,6 +274,7 @@ public class Script {
       e.printStackTrace();
     } finally {
       // XXX why on earth do we remove the file here 
+
       if (!(file.delete())) {
         throw new RuntimeException("File " + file + " was not deleted.");
       }

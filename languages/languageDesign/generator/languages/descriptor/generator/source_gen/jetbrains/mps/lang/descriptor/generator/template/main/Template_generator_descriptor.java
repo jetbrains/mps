@@ -46,6 +46,7 @@ public class Template_generator_descriptor extends TemplateDeclarationBase imple
           tnode1.addChild(myAggregationLinks[0], tnode2);
         }
         // TODO validate child 
+
       }
     } finally {
     }

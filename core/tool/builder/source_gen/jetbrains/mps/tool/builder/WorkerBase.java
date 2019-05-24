@@ -77,6 +77,7 @@ public abstract class WorkerBase {
     if (repo != null) {
       config = config.withBootstrapLibraries().withWorkbenchPath();
       // todo make this code more typed 
+
       for (String folder : repo.folders) {
         if (!(new File(folder).exists())) {
           warning("Modules folder does not exist: " + folder);
@@ -106,8 +107,11 @@ public abstract class WorkerBase {
       config.addLib(jar);
     }
     // let Environment know which idea plugins are expected to be loaded. 
+
     // Note, this doesn't address plugin classpath, as it's up to respective Task to decide whether respective plugins and their classes/libraries 
+
     // are in a global classpath or plugin classes are loaded in any other way. 
+
     for (PluginData pd : ListSequence.fromList(whatToDo.getPlugins())) {
       config.addPlugin(pd.path, pd.id);
     }
@@ -192,9 +196,12 @@ public abstract class WorkerBase {
    */
   protected Set<SModule> collectFromModuleFiles(SRepository repo) {
     // XXX don't want to have ordering here but used to be that way in GenTestWorker and might be helpful 
+
     // to reproduce errors/get predictable behavior. 
+
     Set<SModule> modules = new LinkedHashSet<SModule>();
     // FIXME GenTestWorker/GenTestTask still use module files as configuration argument (from Java code perspective, need to check actual tasks in scripts and generator thereof) 
+
     for (File moduleFile : myWhatToDo.getModules()) {
       processModuleFile(repo, moduleFile, modules);
     }
@@ -212,7 +219,9 @@ public abstract class WorkerBase {
    */
   protected void processModuleFile(SRepository repo, final File moduleSourceDescriptorFile, final Set<SModule> modules) {
     // XXX need a way to figure which FS to use here. Techically, it should come from a project as we are going to 
+
     // use these modules as part of the project. 
+
     final FileSystem fs = FileSystem.getInstance();
     IFile descriptorFile = fs.getFile(moduleSourceDescriptorFile.getPath());
     DescriptorIOFacade descriptorIOFacade = myEnvironment.getPlatform().findComponent(DescriptorIOFacade.class);
@@ -223,6 +232,7 @@ public abstract class WorkerBase {
     ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(repo);
     for (ModulesMiner.ModuleHandle moduleHandle : new ModulesMiner(myEnvironment.getPlatform()).collectModules(descriptorFile).getCollectedModules()) {
       //  seems reasonable just to instantiate a module here and leave its registration to caller 
+
       SModule module = mrf.instantiateModule(moduleHandle, myOwner);
       info("Loaded module " + module);
       modules.add(module);

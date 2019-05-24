@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
@@ -70,11 +70,8 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -137,6 +134,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
@@ -174,13 +179,140 @@
     <node concept="2Sbjvc" id="4AYHTJVOxK$" role="2ZfgGD">
       <node concept="3clFbS" id="4AYHTJVOxK_" role="2VODD2">
         <node concept="3SKdUt" id="4EgNAFjDBDB" role="3cqZAp">
-          <node concept="3SKdUq" id="4EgNAFjDBDD" role="3SKWNk">
-            <property role="3SKdUp" value="Unfortunately, to migrate GenerationContextOp_VarRef, could not keep intention in j.m.lang.generator. However, as long as generationContext is imported into any template model," />
+          <node concept="1PaTwC" id="ATZLwXnVhQ" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnVhR" role="1PaTwD">
+              <property role="3oM_SC" value="Unfortunately," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhS" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhT" role="1PaTwD">
+              <property role="3oM_SC" value="migrate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhU" role="1PaTwD">
+              <property role="3oM_SC" value="GenerationContextOp_VarRef," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhV" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhW" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhX" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhY" role="1PaTwD">
+              <property role="3oM_SC" value="intention" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVhZ" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi0" role="1PaTwD">
+              <property role="3oM_SC" value="j.m.lang.generator." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi1" role="1PaTwD">
+              <property role="3oM_SC" value="However," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi2" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi3" role="1PaTwD">
+              <property role="3oM_SC" value="long" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi4" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi5" role="1PaTwD">
+              <property role="3oM_SC" value="generationContext" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi6" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi7" role="1PaTwD">
+              <property role="3oM_SC" value="imported" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi8" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVi9" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVia" role="1PaTwD">
+              <property role="3oM_SC" value="template" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVib" role="1PaTwD">
+              <property role="3oM_SC" value="model," />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4EgNAFjDD5D" role="3cqZAp">
-          <node concept="3SKdUq" id="4EgNAFjDD5F" role="3SKWNk">
-            <property role="3SKdUp" value="there's no drawback in keeping the intention here. Once we remove legacy VarMacro, there'd be no need in this intention as well." />
+          <node concept="1PaTwC" id="ATZLwXnVic" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnVid" role="1PaTwD">
+              <property role="3oM_SC" value="there's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVie" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVif" role="1PaTwD">
+              <property role="3oM_SC" value="drawback" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVig" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVih" role="1PaTwD">
+              <property role="3oM_SC" value="keeping" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVii" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVij" role="1PaTwD">
+              <property role="3oM_SC" value="intention" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVik" role="1PaTwD">
+              <property role="3oM_SC" value="here." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVil" role="1PaTwD">
+              <property role="3oM_SC" value="Once" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVim" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVin" role="1PaTwD">
+              <property role="3oM_SC" value="remove" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVio" role="1PaTwD">
+              <property role="3oM_SC" value="legacy" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVip" role="1PaTwD">
+              <property role="3oM_SC" value="VarMacro," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnViq" role="1PaTwD">
+              <property role="3oM_SC" value="there'd" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVir" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVis" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVit" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnViu" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnViv" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnViw" role="1PaTwD">
+              <property role="3oM_SC" value="intention" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVix" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnViy" role="1PaTwD">
+              <property role="3oM_SC" value="well." />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="4AYHTJVQDxG" role="3cqZAp">

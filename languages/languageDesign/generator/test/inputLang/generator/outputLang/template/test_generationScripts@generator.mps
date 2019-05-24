@@ -7,7 +7,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="tpm0" ref="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)" />
@@ -95,11 +95,8 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
@@ -230,6 +227,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -489,8 +494,13 @@
     <node concept="1pplIY" id="hppTM8I" role="1pqMTA">
       <node concept="3clFbS" id="hppTM8J" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCG0Z" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCG10" role="3SKWNk">
-            <property role="3SKdUp" value="test1 only" />
+          <node concept="1PaTwC" id="ATZLwXnX4t" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnX4u" role="1PaTwD">
+              <property role="3oM_SC" value="test1" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnX4v" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="hvFrI$P" role="3cqZAp">
@@ -601,8 +611,13 @@
     <node concept="1pplIY" id="hppYcz_" role="1pqMTA">
       <node concept="3clFbS" id="hppYczA" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCG5f" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCG5g" role="3SKWNk">
-            <property role="3SKdUp" value="test1 only" />
+          <node concept="1PaTwC" id="ATZLwXnX4w" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnX4x" role="1PaTwD">
+              <property role="3oM_SC" value="test1" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnX4y" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="hzBI3vv" role="3cqZAp">

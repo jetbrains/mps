@@ -157,6 +157,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
 
     SetSequence.fromSet(visited).addElement(__thisNode__);
     // todo: not only superclass 
+
     return (boolean) Classifier__BehaviorDescriptor.checkLoops_id3sXyOQUqKq5.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), visited);
   }
   /*package*/ static SNode getMainMethod_idhEwIClG(@NotNull SNode __thisNode__) {
@@ -217,6 +218,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // todo: remove this code from getMembers to getScope? 
+
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x216400b63b3173a4L, "jetbrains.mps.baseLanguage.structure.ThisConstructorKind"))) {
       return new NamedElementsScope(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(__thisNode__));
     }
@@ -259,17 +261,20 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
     // populate own members 
+
     for (SNode member : SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb113eL, "jetbrains.mps.baseLanguage.structure.IClassifierMember"))) {
       IClassifierMember__BehaviorDescriptor.populateMember_id6r77ob2UW9O.invoke(member, context, classifierType);
     }
 
     // populate super class members 
+
     SNode superClass = ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(__thisNode__);
     if ((superClass != null)) {
       IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(superClass, context, classifierType);
     }
 
-    // populate implemented interfaces members  
+    // populate implemented interfaces members 
+
     for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface"))).where(new NotNullWhereFilter<SNode>())) {
       IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(implementedInterface, context, classifierType);
     }
@@ -285,6 +290,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SNode> staticMethods_id4_LVZ3pCeXr(@NotNull SNode __thisNode__) {
     // todo do we need this for compatibility? 
+
     return ((Iterable<SNode>) Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invokeSpecial(__thisNode__));
   }
   /*package*/ static Iterable<SNode> constructors_id4_LVZ3pCvsd(@NotNull SNode __thisNode__) {

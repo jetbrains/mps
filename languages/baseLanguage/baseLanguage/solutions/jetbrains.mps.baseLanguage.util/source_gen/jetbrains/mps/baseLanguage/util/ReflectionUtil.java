@@ -31,7 +31,9 @@ public final class ReflectionUtil {
       className = ((String) BHReflection.invoke0(SNodeOperations.cast(classNode, MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept")), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept"), SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR")));
     } else {
       // XXX in fact, shall account for nested classes, take classNode.getNestedName() and replace '.' with '$' there, if any, and to use relevant part of getFqName() then 
+
       //     to respect possible packageName override. However, I expect all regular cases to get into UnitConcept alternative, and leave this placeholder as a reminder. 
+
       className = ((String) BHReflection.invoke0(classNode, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
     }
     try {

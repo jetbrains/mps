@@ -48,6 +48,7 @@ public class TransformationMenu_Test_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_36xwx3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x259f3121f598017fL, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationMenu_Test"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"));
     }
     @NotNull

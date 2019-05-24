@@ -80,6 +80,7 @@ public class ScriptBuilder_Test extends MockTestCase {
   @Test
   public void test_noFacets() throws Exception {
     // Test empty script (no languages/make facets involved) 
+
     ScriptBuilder scb = new ScriptBuilder();
     scb.withFinalTarget(new ITarget.Name("none"));
     IScript sc = scb.toScript();
@@ -88,6 +89,7 @@ public class ScriptBuilder_Test extends MockTestCase {
     Assert.assertTrue(Sequence.fromIterable(sc.validationErrors()).count() == 1);
     Assert.assertTrue(Sequence.fromIterable(sc.validationErrors()).first().toString().contains("nothing to make"));
     // Fake ScriptBuilder invocation, to satisfy mock expectations of setUp/tearDown 
+
     scb = new ScriptBuilder();
     scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
       public IFacet.Name select(IFacet f) {
@@ -141,6 +143,7 @@ public class ScriptBuilder_Test extends MockTestCase {
     });
     myFacetRegistry = new FacetRegistry(null);
     // foe now, need to make instance available through FR.getInstance() 
+
     myFacetRegistry.init();
     myFacetRegistry.register(fmake);
     myFacetRegistry.register(fgen);

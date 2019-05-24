@@ -52,6 +52,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
             cell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ClassLikeMemberPlaceholderMenu()}));
 
             // this is a dirty hack. TODO remove this code when MPS-22216 is fixed 
+
             Placeholder2RealObject.setCellActions(cell, myNode, context);
             return cell;
           }

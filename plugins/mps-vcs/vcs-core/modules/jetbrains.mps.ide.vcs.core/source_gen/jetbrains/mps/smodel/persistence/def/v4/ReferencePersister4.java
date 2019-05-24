@@ -138,6 +138,7 @@ public class ReferencePersister4 implements IReferencePersister {
   @Override
   public void saveReference(Element parentElement, SReference reference, boolean useUIDs, VisibleModelElements visibleModelElements) {
     // no-op, we do not support serialization in old formats 
+
   }
   @Override
   public int getImportIndex() {

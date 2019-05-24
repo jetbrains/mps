@@ -61,6 +61,7 @@ public class MoveNodesUtil {
   @NotNull
   public static SNode resolveNode(SNodeReference nodeReference, Project project) {
     // todo: unused method 
+
     SNode node = nodeReference.resolve(project.getRepository());
     if (node == null) {
       throw new IllegalArgumentException("Node " + nodeReference + " doesn't exist in current project.");
@@ -141,6 +142,7 @@ public class MoveNodesUtil {
       @Override
       public void prepareRefactoring() {
         // do nothing 
+
       }
       @Override
       public void doRefactor(final Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, SNode, SNode, SNode>> participantStates, RefactoringSession refactoringSession) {

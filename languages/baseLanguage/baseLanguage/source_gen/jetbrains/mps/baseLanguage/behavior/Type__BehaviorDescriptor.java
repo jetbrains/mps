@@ -71,6 +71,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     for (String s : NameUtil.splitByCamels(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__))) {
       // strip trailing underscores 
+
       String validIdentifier = NameUtil.toValidIdentifier(s);
       while (validIdentifier.length() > 1 && validIdentifier.endsWith("_")) {
         validIdentifier = NameUtil.stripQuotes(validIdentifier, "", "_");
@@ -94,6 +95,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getErasure_idB1mAlA38Mq(@NotNull SNode __thisNode__) {
     // all 'JavaType's should have getErasure() implemented 
+
     SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(__thisNode__);
     return ((javaType == null) ? null : Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(javaType));
   }
@@ -181,6 +183,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean canBeCoerced_id476YRQvP9l3(@NotNull SNode __thisNode__, SAbstractConcept c) {
     // todo remove body after 3.5 
+
     return ((boolean) Type__BehaviorDescriptor.canBeCoerced_id5uUZ$FUUb6B.invoke(__thisNode__, c.getQualifiedName()));
   }
 

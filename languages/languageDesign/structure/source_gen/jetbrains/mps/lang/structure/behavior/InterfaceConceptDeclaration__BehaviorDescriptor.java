@@ -62,6 +62,7 @@ public final class InterfaceConceptDeclaration__BehaviorDescriptor extends BaseB
     ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0ykew.invoke(__thisNode__, LanguageAspect.BEHAVIOR), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior")), MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method"))));
     for (SNode extendsInterface : SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc"))) {
       // todo: equal methods in different interfaces check! 
+
       InterfaceConceptDeclaration__BehaviorDescriptor.collectAllMethodsInPriorityOrder_id3waV7Ya5fRc.invoke(extendsInterface, methods, concepts);
     }
   }

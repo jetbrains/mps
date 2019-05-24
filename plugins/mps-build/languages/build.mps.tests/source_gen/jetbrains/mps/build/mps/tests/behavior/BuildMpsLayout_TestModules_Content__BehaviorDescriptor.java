@@ -40,6 +40,7 @@ public final class BuildMpsLayout_TestModules_Content__BehaviorDescriptor extend
   }
   /*package*/ static Iterable<SNode> getModules_id3X9rC2XzJij(@NotNull SNode __thisNode__) {
     // for the editor abstract instances 
+
     return ListSequence.fromList(new ArrayList<SNode>());
   }
 

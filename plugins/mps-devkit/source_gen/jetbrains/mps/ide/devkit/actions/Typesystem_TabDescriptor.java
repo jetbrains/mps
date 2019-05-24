@@ -56,6 +56,7 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
         boolean bConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(b, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference"));
 
         // rules with concept references go first 
+
         if (aConceptRef && !(bConceptRef)) {
           return 1;
         }
@@ -64,6 +65,7 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
         }
 
         // rules with concept references - more specific goes first 
+
         if (aConceptRef && bConceptRef) {
           SNode aConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference")), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept"));
           SNode bConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(b, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference")), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept"));

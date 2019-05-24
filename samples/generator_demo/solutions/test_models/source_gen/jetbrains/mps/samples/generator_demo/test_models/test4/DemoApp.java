@@ -47,6 +47,7 @@ public class DemoApp {
     component.setOpaque(true);
     component.setBackground(Color.white);
     //  add children 
+
     component.add(createComponent_a0());
     component.add(createComponent_b0());
     return component;

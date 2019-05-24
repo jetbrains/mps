@@ -56,11 +56,13 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase implem
             }
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[1], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }

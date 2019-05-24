@@ -54,6 +54,7 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // copy 
+
     String source = Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__);
     if (source == null) {
       return null;
@@ -62,6 +63,7 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
     byte[] iconData = IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
       public void consume(IconCreationUtil.DrawContext dc) {
         // todo copy layered icon into core 
+
         LayeredIcon res = new LayeredIcon(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers"))).count());
         for (SNode layer : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers")))) {
           res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers"))).indexOf(layer));

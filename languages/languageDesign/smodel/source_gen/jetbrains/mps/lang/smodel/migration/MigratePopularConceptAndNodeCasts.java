@@ -54,6 +54,7 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     // conceptNode<> 
+
     {
       final GeneratedMatchingPattern pattern = new Pattern_qvpvui_a1a6(_quotation_createNode_qvpvui_a0a1a6());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
@@ -178,6 +179,7 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
       });
     }
     // asNode 
+
     {
       final GeneratedMatchingPattern pattern = new Pattern_qvpvui_a5a6(_quotation_createNode_qvpvui_a0a5a6());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
@@ -564,6 +566,7 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
       });
     }
     // same for conceptNode 
+
     {
       final GeneratedMatchingPattern pattern = new Pattern_qvpvui_a51a6(_quotation_createNode_qvpvui_a0a51a6());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
@@ -682,7 +685,8 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
       });
     }
 
-    // conceptNode  
+    // conceptNode 
+
     {
       final GeneratedMatchingPattern pattern = new Pattern_qvpvui_a02a6(_quotation_createNode_qvpvui_a0a02a6());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {

@@ -116,6 +116,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
     }
 
     // Properties validation 
+
     Iterable<SProperty> props = nodeConcept.getProperties();
     for (final SProperty property : Sequence.fromIterable(props)) {
       final Object value = SNodeAccessUtil.getPropertyValue(node, property);
@@ -126,6 +127,7 @@ public class ConstraintsChecker extends AbstractNodeCheckerInEditor implements I
       });
       if (!(canSetValue)) {
         // todo find a rule 
+
         errorsCollector.addError(new ConstraintsReportItem.PropertyConstraintReportItem(node, property));
       }
     }

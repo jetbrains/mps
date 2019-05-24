@@ -63,6 +63,7 @@ public class InitialStep extends BaseStep {
   @Override
   protected void doCreateComponent(JComponent mainPanel) {
     // Set preferred size to avoid trim of Help button (if no icon presented) 
+
     mainPanel.setPreferredSize(new Dimension(600, 400));
     mainPanel.setLayout(new BorderLayout());
 
@@ -119,6 +120,7 @@ public class InitialStep extends BaseStep {
   private JComponent createMigrationsInfo() {
     final Project project = mySession.getProject();
     // root 
+
     final DefaultMutableTreeNode root = new DefaultMutableTreeNode("empty");
 
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -127,6 +129,7 @@ public class InitialStep extends BaseStep {
         final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript"));
 
         // module resave 
+
         if (mySession.getRequiredSteps().contains(MigrationSession.MigrationStepKind.RESAVE)) {
           DefaultMutableTreeNode uroot = new DefaultMutableTreeNode("Update Module Descriptors");
           DefaultMutableTreeNode umig = new InitialStep.MyTreeNode("Update Versions in Descriptors", migrationIcon);
@@ -135,6 +138,7 @@ public class InitialStep extends BaseStep {
         }
 
         // project migrations 
+
         final DefaultMutableTreeNode croot = new DefaultMutableTreeNode("Cleanups");
         final DefaultMutableTreeNode proot = new DefaultMutableTreeNode("Project Migrations");
         CollectionSequence.fromCollection(manager.getProjectMigrations()).visitAll(new IVisitor<ProjectMigration>() {
@@ -162,6 +166,7 @@ public class InitialStep extends BaseStep {
         }).distinct();
 
         // language migrations 
+
         final Map<SLanguage, DefaultMutableTreeNode> l2n = MapSequence.fromMap(new HashMap<SLanguage, DefaultMutableTreeNode>());
         Sequence.fromIterable(scripts).ofType(MigrationScriptReference.class).select(new ISelector<MigrationScriptReference, SLanguage>() {
           public SLanguage select(MigrationScriptReference it) {
@@ -199,6 +204,7 @@ public class InitialStep extends BaseStep {
         }
 
         // module migrations 
+
         final Map<SModule, DefaultMutableTreeNode> m2n = MapSequence.fromMap(new HashMap<SModule, DefaultMutableTreeNode>());
         Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).select(new ISelector<RefactoringScriptReference, SModule>() {
           public SModule select(RefactoringScriptReference it) {

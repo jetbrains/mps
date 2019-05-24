@@ -52,6 +52,7 @@ public final class wrappers_PasteWrapper_12 implements PasteWrapper {
     });
     // [MM] how about supers? 
 
+
     AttributeOperations.setAttribute(method, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment")), AttributeOperations.getAttribute(sourceNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment"))));
     return SNodeOperations.cast(method, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"));
   }

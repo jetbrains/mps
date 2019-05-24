@@ -33,14 +33,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: AbstractMacro 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new DeleteTemplateMacro_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: BaseConcept 
+          // concept 
+
           intentions = new IntentionFactory[12];
           intentions[0] = new AddNodeMacro_Intention();
           intentions[1] = new AddPropertyMacro_Intention();
@@ -58,42 +60,48 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 2:
         if (true) {
-          // Concept: ClassConcept 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertClassConceptToExtract_Intention();
         }
         break;
       case 3:
         if (true) {
-          // Concept: CreateRootRule 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInCreateRootRule_Intention();
         }
         break;
       case 4:
         if (true) {
-          // Concept: IncludeMacro 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceIncludeWithCall_Intention();
         }
         break;
       case 5:
         if (true) {
-          // Concept: InlineSwitch_Case 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInInlineSwitchCase_Intention();
         }
         break;
       case 6:
         if (true) {
-          // Concept: InlineSwitch_RuleConsequence 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInInlineSwitchDefault_Intention();
         }
         break;
       case 7:
         if (true) {
-          // Concept: InlineTemplate_RuleConsequence 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new ConvertInlineTemplateToTemplateFragment_Intention();
           intentions[1] = new AddContext_Intention();
@@ -101,28 +109,32 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 8:
         if (true) {
-          // Concept: InternalPartialInstanceMethodCall 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertToReferenceCall_Intention();
         }
         break;
       case 9:
         if (true) {
-          // Concept: LoopMacro 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertLoopWithCopySrc_Intention();
         }
         break;
       case 10:
         if (true) {
-          // Concept: MappingScriptReference 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateScript_Intention();
         }
         break;
       case 11:
         if (true) {
-          // Concept: Reduction_MappingRule 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new NewTemplateInReductionRule_Intention();
           intentions[1] = new NewTemplateInSwitchCase_Intention();
@@ -130,42 +142,48 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 12:
         if (true) {
-          // Concept: Root_MappingRule 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInRootMappingRule_Intention();
         }
         break;
       case 13:
         if (true) {
-          // Concept: TemplateArgumentQueryExpression 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new UnwrapQueryExpression_Intention();
         }
         break;
       case 14:
         if (true) {
-          // Concept: TemplateDeclarationReference 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertTemplateDeclRefToInlineTemplate_Intention();
         }
         break;
       case 15:
         if (true) {
-          // Concept: TemplateSwitch 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInSwitchDefault_Intention();
         }
         break;
       case 16:
         if (true) {
-          // Concept: WeaveEach_RuleConsequence 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInWeaveEach_Intention();
         }
         break;
       case 17:
         if (true) {
-          // Concept: Weaving_MappingRule 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new NewTemplateInWeavingRule_Intention();
         }

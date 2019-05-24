@@ -49,18 +49,22 @@ public class DispatchGroup {
     if (ListSequence.fromList(myGroupsByClass).count() == 1) {
       // this group is local to our class, doesn't span to superclasses 
 
+
       if (SetSequence.fromSet(roots).count() == 1) {
         return null;
       }
 
       // more than one root 
+
       Iterable<SNode> methodsForRoots = thisClassGroup.methodsByDispatchTypes(roots);
       return new DispatchGroup.Error("Dispatch parameter type hierarchy must have a single root", methodsForRoots);
     }
 
     // The group spans to super-classes. 
 
+
     // dispatch param classes that are not handled in superclasses 
+
     Set<SNode> badRoots = SetSequence.fromSet(new HashSet<SNode>());
     for (final SNode root : SetSequence.fromSet(roots)) {
       if (!(Sequence.fromIterable(superClassesGroups).any(new IWhereFilter<DispatchGroup.ClassMethodGroup>() {
@@ -81,6 +85,7 @@ public class DispatchGroup {
     if (SetSequence.fromSet(badRoots).count() == 1) {
       // check if the class is the superclass for any other dispatch param classes in group 
 
+
       final SNode cls = SetSequence.fromSet(badRoots).first();
       boolean isGlobalRoot = Sequence.fromIterable(superClassesGroups).all(new IWhereFilter<DispatchGroup.ClassMethodGroup>() {
         public boolean accept(DispatchGroup.ClassMethodGroup it) {
@@ -98,10 +103,12 @@ public class DispatchGroup {
 
     } else {
       // there are bad roots 
+
       return new DispatchGroup.Error("Dispatch type not present in super classes", methodsForBadRoots);
     }
 
     // no errors 
+
     return null;
   }
   public class ClassMethodGroup {

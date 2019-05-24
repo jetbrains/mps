@@ -55,6 +55,7 @@ import java.util.Arrays;
       if (myReusedChecked.add(l.getReused())) {
         debug(l, "(reused)");
         // reused is identical to the referencing node, don't check key equality to avoid false cycles 
+
         nextPathLevel(l.getReused());
       } else {
         debug(l, "(reused, already checked, ignored)");
@@ -71,6 +72,7 @@ import java.util.Arrays;
       if (myCurrent.seen(ch)) {
         if (Objects.equals(ch.getRoleModuleKey(), myTargetKey)) {
           // cycle found 
+
           myCurrent.push(ch);
           myCycles.add(new DepPath(myCurrent));
           myCurrent.pop();

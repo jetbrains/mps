@@ -79,6 +79,7 @@ public class AddAccessoryModel_Action extends BaseAction {
     modelAccess.runReadAction(new Runnable() {
       public void run() {
         // XXX perhaps, shall use scope based on project's repository 
+
         Iterable<SModel> descriptors = new FilteredGlobalScope().getModels();
         ListSequence.fromList(models).addSequence(Sequence.fromIterable(descriptors).select(new ISelector<SModel, SModelReference>() {
           public SModelReference select(SModel it) {
@@ -109,6 +110,7 @@ public class AddAccessoryModel_Action extends BaseAction {
     modelAccess.executeCommand(new Runnable() {
       public void run() {
         // see MPS-18743 
+
         repository.saveAll();
         LanguageDescriptor descriptor;
         descriptor = language.getModuleDescriptor();

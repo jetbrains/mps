@@ -68,6 +68,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child4);
             }
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist5 = null;
@@ -81,6 +82,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
             }
             // TODO validate child 
+
           }
         } finally {
         }
@@ -99,6 +101,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
               tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child9);
             }
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist10 = null;
@@ -112,6 +115,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
               tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child11);
             }
             // TODO validate child 
+
           }
         } finally {
         }
@@ -130,6 +134,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
               tnode12.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child14);
             }
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist15 = null;
@@ -143,6 +148,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
               tnode12.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child16);
             }
             // TODO validate child 
+
           }
         } finally {
         }

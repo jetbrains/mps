@@ -59,6 +59,7 @@ public class XmlSignature {
         add(SNodeOperations.cast(content, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement")));
       } else if (SNodeOperations.isInstanceOf(content, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText")) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(content, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText")), MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value")))) {
         // ignore 
+
       } else {
         hasErrors = true;
       }
@@ -83,6 +84,7 @@ public class XmlSignature {
         sb.append(";");
       } else if (SNodeOperations.isInstanceOf(val, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf085050020e3cL, "jetbrains.mps.core.xml.structure.XmlNoSpaceValue"))) {
         // ignore 
+
       } else if (SNodeOperations.isInstanceOf(val, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue"))) {
         SNode tv = SNodeOperations.cast(val, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue"));
         if ((boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(tv)) {

@@ -43,6 +43,7 @@ public class MigrationWizard extends AbstractWizardEx {
   protected void updateButtons() {
     super.updateButtons();
     // our steps can provide different next/prev button texts 
+
     getCancelButton().setEnabled((getStep()).canBeCancelled());
 
     String nextLabel = (getStep()).nextButtonLabel();
@@ -59,6 +60,7 @@ public class MigrationWizard extends AbstractWizardEx {
   protected void doNextAction() {
     getStep().nextButtonAction();
     // it's important to call step's listener first not to affect state in which it's called 
+
     super.doNextAction();
   }
 
@@ -66,6 +68,7 @@ public class MigrationWizard extends AbstractWizardEx {
   public void doCancelAction() {
     getStep().cancelButtonAction();
     // it's important to call step's listener first not to affect state in which it's called 
+
     super.doCancelAction();
   }
 

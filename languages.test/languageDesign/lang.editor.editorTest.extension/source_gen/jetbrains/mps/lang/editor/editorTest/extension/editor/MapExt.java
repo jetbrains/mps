@@ -18,10 +18,13 @@ public class MapExt {
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
     // set actions that were actually defined 
+
     setDefinedCellActions(editorCell, node, context);
 
     // If we set a DELETE action but no BACKSPACE action, 
+
     // use the DELETE action for BACKSPACE as well. 
+
     CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
     CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
     if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
@@ -32,19 +35,23 @@ public class MapExt {
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
 
     // set cell actions from all imported action maps 
+
     ActionMap1.setDefinedCellActionsOfType(editorCell, node, context, CellActionType.DELETE);
 
     // set cell actions defined directly in this action map 
+
 
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
     // set cell action(s) of the given type from imported action maps 
+
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       ActionMap1.setDefinedCellActionsOfType(editorCell, node, context, CellActionType.DELETE);
     }
 
     // set cell action of the given type defined directly in this action map 
+
   }
 }

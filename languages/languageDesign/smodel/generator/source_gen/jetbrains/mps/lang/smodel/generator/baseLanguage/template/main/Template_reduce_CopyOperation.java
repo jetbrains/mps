@@ -51,6 +51,7 @@ public class Template_reduce_CopyOperation extends TemplateDeclarationBase imple
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
     } finally {
     }

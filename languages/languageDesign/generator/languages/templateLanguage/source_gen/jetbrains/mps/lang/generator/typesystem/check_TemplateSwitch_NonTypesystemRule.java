@@ -29,7 +29,9 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       return;
     }
     // allow to modify/extend switches that accept exactly same parameters only, not superset therof. 
+
     // the reason is sub-switch may be invoked directly, while the rules of its parent would expect more parameters than there're actually 
+
     SNode modified = SLinkOperations.getTarget(templateSwitch, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch"));
     if (ListSequence.fromList(SLinkOperations.getChildren(modified, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"))).count() != ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"))).count()) {
       {
@@ -48,6 +50,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       SNode p2 = ListSequence.fromList(SLinkOperations.getChildren(modified, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"))).getElement(i);
       if (!(Objects.equals(SPropertyOperations.getString(p1, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(p2, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))))) {
         // names shall be identical as we identify them with strings in TemplateContext 
+
         {
           MessageTarget errorTarget = new NodeMessageTarget();
           errorTarget = new PropertyMessageTarget("name");
@@ -59,7 +62,9 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
         }
       }
       // extending switch may declare more generic parameter types (basically, it tells it supports wider set of parameters than the switch it modifies) 
+
       // It's perfectly ok when invoked directly, and when invoked as extension of modified switch, it's guaranteed to receive only subtype of expected parameter type. 
+
       if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(p2, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type")), SLinkOperations.getTarget(p1, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type"))))) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();

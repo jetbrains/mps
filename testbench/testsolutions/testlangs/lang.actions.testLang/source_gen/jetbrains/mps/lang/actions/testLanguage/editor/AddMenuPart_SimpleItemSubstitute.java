@@ -67,6 +67,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
       firstMatchingText = new Computable<StringHolder>() {
         public StringHolder compute() {
           // additional compilation test for all passed parameters 
+
           boolean tmpVar = _context.getParentNode() != null;
           tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
           tmpVar = tmpVar && _context.getLink() != null;
@@ -137,6 +138,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           // compilation test for all passed parameters 
+
           boolean tmpVar = pattern != null;
           tmpVar = tmpVar && _context.getParentNode() != null;
           tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
@@ -156,6 +158,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         @Override
         public String getMatchingText(@NotNull String pattern) {
           // compilation test for all passed parameters 
+
           boolean tmpVar = pattern != null;
           tmpVar = tmpVar && _context.getParentNode() != null;
           tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
@@ -168,6 +171,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         @Override
         public String getDescriptionText(@NotNull String pattern) {
           // compilation test for all passed parameters 
+
           boolean tmpVar = pattern != null;
           tmpVar = tmpVar && _context.getParentNode() != null;
           tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
@@ -180,6 +184,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         @Override
         public SNode getType(@NotNull String pattern) {
           // compilation test for all passed parameters 
+
           boolean tmpVar = pattern != null;
           tmpVar = tmpVar && _context.getParentNode() != null;
           tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
@@ -192,6 +197,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         @Override
         public IconResource getIcon(@NotNull String pattern) {
           // compilation test for all passed parameters 
+
           boolean tmpVar = pattern != null;
           tmpVar = tmpVar && _context.getParentNode() != null;
           tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
@@ -210,6 +216,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         }
         public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
           // compilation test for all passed parameters 
+
           boolean tmpVar = pattern != null;
           tmpVar = tmpVar && strictly;
           tmpVar = tmpVar && _context.getParentNode() != null;
@@ -222,6 +229,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
           // returning node to select 
+
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(createdNode, MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, 0x7f805f0c2dd46343L, "child1"))).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
       }
@@ -354,6 +362,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
           // compilation test for all passed parameters 
+
           boolean tmpVar = pattern != null;
           tmpVar = tmpVar && _context.getParentNode() != null;
           tmpVar = tmpVar && createdNode != null;
@@ -362,6 +371,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
           tmpVar = tmpVar && _context.getEditorContext() != null;
 
           // selecting a custom cell 
+
           _context.getEditorContext().flushEvents();
           EditorCell createdNodeCell = _context.getEditorContext().getEditorComponent().findNodeCell(createdNode);
           if (createdNodeCell != null) {

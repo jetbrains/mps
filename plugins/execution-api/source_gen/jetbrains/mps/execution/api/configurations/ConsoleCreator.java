@@ -13,6 +13,7 @@ public final class ConsoleCreator {
     ConsoleViewImpl result = new ConsoleViewImpl(project, viewer);
     result.setHelpId("reference.dialogs.debugview.consoletab");
     // next method inits editor in order to fix MPS-11721 
+
     result.getComponent();
     return result;
   }

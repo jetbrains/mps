@@ -33,28 +33,32 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: ClassConcept 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRemoveFigureAttribute_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: FieldDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRemoveFigureParameterAttributeField_Intention();
         }
         break;
       case 2:
         if (true) {
-          // Concept: InstanceMethodDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRemoveFigureParameterAttributeMethod_Intention();
         }
         break;
       case 3:
         if (true) {
-          // Concept: StaticFieldDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRemoveFigureParameterAttributePropertySpecification_Intention();
         }

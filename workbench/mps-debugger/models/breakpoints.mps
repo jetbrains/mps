@@ -5,7 +5,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="5ajx" ref="r:ca31409d-862d-455e-85ee-8d510a57013f(jetbrains.mps.debugger.core)" />
@@ -207,11 +207,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -253,6 +250,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1458,8 +1463,34 @@
                             </node>
                           </node>
                           <node concept="3SKdUt" id="3SnNvqCbzt2" role="3cqZAp">
-                            <node concept="3SKdUq" id="3SnNvqCbzt3" role="3SKWNk">
-                              <property role="3SKdUp" value=" todo do we need to know about ui?" />
+                            <node concept="1PaTwC" id="ATZLwXoqHa" role="3ndbpf">
+                              <node concept="3oM_SD" id="ATZLwXoqHb" role="1PaTwD">
+                                <property role="3oM_SC" value="" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHc" role="1PaTwD">
+                                <property role="3oM_SC" value="todo" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHd" role="1PaTwD">
+                                <property role="3oM_SC" value="do" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHe" role="1PaTwD">
+                                <property role="3oM_SC" value="we" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHf" role="1PaTwD">
+                                <property role="3oM_SC" value="need" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHg" role="1PaTwD">
+                                <property role="3oM_SC" value="to" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHh" role="1PaTwD">
+                                <property role="3oM_SC" value="know" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHi" role="1PaTwD">
+                                <property role="3oM_SC" value="about" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHj" role="1PaTwD">
+                                <property role="3oM_SC" value="ui?" />
+                              </node>
                             </node>
                           </node>
                           <node concept="3cpWs8" id="3SnNvqCbyYA" role="3cqZAp">
@@ -1492,13 +1523,80 @@
                             </node>
                           </node>
                           <node concept="3SKdUt" id="3SnNvqCbzt4" role="3cqZAp">
-                            <node concept="3SKdUq" id="3SnNvqCbzt5" role="3SKWNk">
-                              <property role="3SKdUp" value=" ignoring mouse clicks to any other rows except one containing &quot;BreakpointIconAnchorCell&quot;" />
+                            <node concept="1PaTwC" id="ATZLwXoqHk" role="3ndbpf">
+                              <node concept="3oM_SD" id="ATZLwXoqHl" role="1PaTwD">
+                                <property role="3oM_SC" value="" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHm" role="1PaTwD">
+                                <property role="3oM_SC" value="ignoring" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHn" role="1PaTwD">
+                                <property role="3oM_SC" value="mouse" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHo" role="1PaTwD">
+                                <property role="3oM_SC" value="clicks" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHp" role="1PaTwD">
+                                <property role="3oM_SC" value="to" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHq" role="1PaTwD">
+                                <property role="3oM_SC" value="any" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHr" role="1PaTwD">
+                                <property role="3oM_SC" value="other" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHs" role="1PaTwD">
+                                <property role="3oM_SC" value="rows" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHt" role="1PaTwD">
+                                <property role="3oM_SC" value="except" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHu" role="1PaTwD">
+                                <property role="3oM_SC" value="one" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHv" role="1PaTwD">
+                                <property role="3oM_SC" value="containing" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHw" role="1PaTwD">
+                                <property role="3oM_SC" value="&quot;BreakpointIconAnchorCell&quot;" />
+                              </node>
                             </node>
                           </node>
                           <node concept="3SKdUt" id="3SnNvqCbzt6" role="3cqZAp">
-                            <node concept="3SKdUq" id="3SnNvqCbzt7" role="3SKWNk">
-                              <property role="3SKdUp" value=" (this cell will be marked with breakpoint icon in LeftEditorHighlighter)" />
+                            <node concept="1PaTwC" id="ATZLwXoqHx" role="3ndbpf">
+                              <node concept="3oM_SD" id="ATZLwXoqHy" role="1PaTwD">
+                                <property role="3oM_SC" value="" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHz" role="1PaTwD">
+                                <property role="3oM_SC" value="(this" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqH$" role="1PaTwD">
+                                <property role="3oM_SC" value="cell" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqH_" role="1PaTwD">
+                                <property role="3oM_SC" value="will" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHA" role="1PaTwD">
+                                <property role="3oM_SC" value="be" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHB" role="1PaTwD">
+                                <property role="3oM_SC" value="marked" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHC" role="1PaTwD">
+                                <property role="3oM_SC" value="with" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHD" role="1PaTwD">
+                                <property role="3oM_SC" value="breakpoint" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHE" role="1PaTwD">
+                                <property role="3oM_SC" value="icon" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHF" role="1PaTwD">
+                                <property role="3oM_SC" value="in" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXoqHG" role="1PaTwD">
+                                <property role="3oM_SC" value="LeftEditorHighlighter)" />
+                              </node>
                             </node>
                           </node>
                           <node concept="3cpWs6" id="3SnNvqCbyYK" role="3cqZAp">
@@ -1888,13 +1986,122 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6Wt48gGDma0" role="3cqZAp">
-          <node concept="3SKdUq" id="6Wt48gGDma2" role="3SKWNk">
-            <property role="3SKdUp" value="stale renderers may persist in myBreakpointRenderer, I have no means to identify EditorComponents to use them as additional key along with breakpoint itself" />
+          <node concept="1PaTwC" id="ATZLwXoqHH" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqHI" role="1PaTwD">
+              <property role="3oM_SC" value="stale" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHJ" role="1PaTwD">
+              <property role="3oM_SC" value="renderers" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHK" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHL" role="1PaTwD">
+              <property role="3oM_SC" value="persist" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHM" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHN" role="1PaTwD">
+              <property role="3oM_SC" value="myBreakpointRenderer," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHO" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHP" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHQ" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHR" role="1PaTwD">
+              <property role="3oM_SC" value="means" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHS" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHT" role="1PaTwD">
+              <property role="3oM_SC" value="identify" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHU" role="1PaTwD">
+              <property role="3oM_SC" value="EditorComponents" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHV" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHW" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHX" role="1PaTwD">
+              <property role="3oM_SC" value="them" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHY" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqHZ" role="1PaTwD">
+              <property role="3oM_SC" value="additional" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI0" role="1PaTwD">
+              <property role="3oM_SC" value="key" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI1" role="1PaTwD">
+              <property role="3oM_SC" value="along" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI2" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI3" role="1PaTwD">
+              <property role="3oM_SC" value="breakpoint" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI4" role="1PaTwD">
+              <property role="3oM_SC" value="itself" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="6Wt48gGDmLr" role="3cqZAp">
-          <node concept="3SKdUq" id="6Wt48gGDmLt" role="3SKWNk">
-            <property role="3SKdUp" value="I don't care as these stale renders are only for equals() match in removeAllIconsRenderers()." />
+          <node concept="1PaTwC" id="ATZLwXoqI5" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqI6" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI7" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI8" role="1PaTwD">
+              <property role="3oM_SC" value="care" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqI9" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIa" role="1PaTwD">
+              <property role="3oM_SC" value="these" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIb" role="1PaTwD">
+              <property role="3oM_SC" value="stale" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIc" role="1PaTwD">
+              <property role="3oM_SC" value="renders" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqId" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIe" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIf" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIg" role="1PaTwD">
+              <property role="3oM_SC" value="equals()" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIh" role="1PaTwD">
+              <property role="3oM_SC" value="match" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIi" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqIj" role="1PaTwD">
+              <property role="3oM_SC" value="removeAllIconsRenderers()." />
+            </node>
           </node>
         </node>
       </node>

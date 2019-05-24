@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: TransformationMenuTestConcept 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new ApplicableIntention_Intention();
           intentions[1] = new InapplicableIntention_Intention();

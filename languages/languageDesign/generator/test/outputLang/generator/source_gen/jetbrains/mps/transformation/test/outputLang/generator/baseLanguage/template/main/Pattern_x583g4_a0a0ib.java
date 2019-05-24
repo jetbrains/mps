@@ -11,8 +11,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     super(patternNode, false);
 
 
-    myTopMatcher.child(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")).at(0).capture("left");
-    myTopMatcher.child(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")).at(0).capture("right");
+    myTopMatcher.association(MetaAdapterFactory.getReferenceLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1e076e8c8ce9211aL, 0x1e076e8c8ce92801L, "myStatement"), "ref");
   }
 
 }

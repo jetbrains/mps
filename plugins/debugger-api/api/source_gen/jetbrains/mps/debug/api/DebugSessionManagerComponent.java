@@ -167,6 +167,7 @@ public class DebugSessionManagerComponent implements ProjectComponent {
 
     public void contentRemoved(@Nullable RunContentDescriptor descriptor, @NotNull Executor executor) {
       // todo maybe do something 
+
     }
   }
 }

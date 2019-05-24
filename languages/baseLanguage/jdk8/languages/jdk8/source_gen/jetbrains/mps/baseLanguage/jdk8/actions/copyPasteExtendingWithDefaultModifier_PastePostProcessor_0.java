@@ -18,7 +18,9 @@ public final class copyPasteExtendingWithDefaultModifier_PastePostProcessor_0 im
   @Override
   public void postProcessNode(SNode pastedNode) {
     // transforming the default modifier existence into the isAbstract flag 
+
     // copy never has modifiers 
+
     SNode methodParent = SNodeOperations.getParent(pastedNode);
     if (SNodeOperations.isInstanceOf(methodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
       if (SNodeOperations.isInstanceOf(methodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
@@ -27,6 +29,7 @@ public final class copyPasteExtendingWithDefaultModifier_PastePostProcessor_0 im
         }
         SPropertyOperations.assign(pastedNode, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), false);
         // i have always non-abstract methods in interfaces 
+
       }
     }
   }

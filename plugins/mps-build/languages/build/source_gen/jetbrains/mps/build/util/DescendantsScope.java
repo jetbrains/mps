@@ -80,6 +80,7 @@ public abstract class DescendantsScope extends Scope {
       String name = getName(n);
       if (name.equals(result)) {
         // ambiguity 
+
         return null;
       }
     }

@@ -48,6 +48,7 @@ public class GenerationContextOp_NodePatternRef_SubstituteMenu extends Substitut
 
     public SMP_ReferenceScope_k9cp1y_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_NodePatternRef"), MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, 0x3fb2d847d55fdcd5L, "patternVarDecl"));
     }
     @NotNull

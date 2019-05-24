@@ -50,6 +50,7 @@ public class MergeConflictsBuilder {
   /*package*/ Map<ModelChange, List<ModelChange>> mySymmetricChanges = MapSequence.fromMap(new HashMap<ModelChange, List<ModelChange>>());
   public MergeConflictsBuilder(SModel base, SModel mine, SModel repository) {
     // should be invoked from read action 
+
     myBaseModel = base;
     myMyModel = mine;
 
@@ -225,11 +226,14 @@ public class MergeConflictsBuilder {
       List<NodeGroupChange> mine = MapSequence.fromMap(mineGroupChanges).get(nodeRole);
       List<NodeGroupChange> repository = MapSequence.fromMap(repositoryGroupChanges).get(nodeRole);
       // This is a quadratic algorithm, it can be optimized to linear, 
+
       // but it is left for simplicity 
+
       for (NodeGroupChange m : ListSequence.fromList(mine)) {
         for (NodeGroupChange r : ListSequence.fromList(repository)) {
           if (m.getEnd() < r.getBegin() || m.getBegin() > r.getEnd()) {
             // ok 
+
           } else {
             if (nodeGroupChangesSymmetric(m, r)) {
               addSymmetric(m, r);

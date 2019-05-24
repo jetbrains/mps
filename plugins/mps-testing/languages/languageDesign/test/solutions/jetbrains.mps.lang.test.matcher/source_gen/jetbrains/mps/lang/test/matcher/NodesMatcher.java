@@ -43,6 +43,7 @@ public final class NodesMatcher {
     myFirst = Collections.emptyList();
     mySecond = Collections.emptyList();
     // FIXME refactor to use instances instead of static method 
+
   }
 
   /**
@@ -68,9 +69,13 @@ public final class NodesMatcher {
 
   public Map<SNode, SNode> getMap() {
     // I don't quite understand what's the map we either populate and use, or just use. 
+
     // why matchNodes(node,node) goes through matchNodes(list,list), creates and populates map, 
+
     // while matchNodes(node,node,map) does not populate the map 
+
     // Once I understand what map is, I can give method better name 
+
     return myMap;
   }
 
@@ -106,6 +111,7 @@ public final class NodesMatcher {
     }
     for (DifferenceItem di : mi.myDifferences) {
       // we can't get anything but NodeDifference elements after mi.match() execution as it replaces any DI item created with an ND 
+
       assert di instanceof NodeDifference;
       if (di instanceof NodeDifference) {
         ret.add((NodeDifference) di);
@@ -223,6 +229,7 @@ public final class NodesMatcher {
         assert after > before;
         NodeDifference nd = new NodeDifference(a.getPresentation(), new ArrayList<DifferenceItem>(myDifferences.subList(before, after)));
         // i>before, not >=, as we replace element @before with nd afterwards 
+
         for (int i = after - 1; i > before; i--) {
           myDifferences.remove(i);
         }

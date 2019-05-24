@@ -29,7 +29,9 @@ public class check_TemplateDeclaration_NonTypesystemRule extends AbstractNonType
       }
     }
     // FIXME copy-paste of identical code from InlineTemplateWithContext_RuleConsequence 
+
     // see TemplateContainer#checkAdjacentFragments 
+
     SNode commonParent = null;
     SContainmentLink commonAggregationLink = null;
     for (SNode tf : SNodeOperations.getNodeDescendants(td, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"), false, new SAbstractConcept[]{})) {
@@ -37,6 +39,7 @@ public class check_TemplateDeclaration_NonTypesystemRule extends AbstractNonType
       SContainmentLink containmentLink = fragmentParent.getContainmentLink();
       if (commonParent == null) {
         // first fragment - remember its parent and role to use as reference value 
+
         commonParent = SNodeOperations.getParent(fragmentParent);
         commonAggregationLink = containmentLink;
       } else {

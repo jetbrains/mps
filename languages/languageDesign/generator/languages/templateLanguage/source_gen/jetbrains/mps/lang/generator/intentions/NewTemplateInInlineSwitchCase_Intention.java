@@ -79,6 +79,7 @@ public final class NewTemplateInInlineSwitchCase_Intention extends AbstractInten
       SLinkOperations.setTarget(t, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept"), applicableConcept);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
       // make reference 
+
       SNode tr = SNodeFactoryOperations.setNewChild(node, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L, 0x11645018abcL, "caseConsequence"), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference"));
       SLinkOperations.setTarget(tr, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template"), t);
       SelectionUtil.selectCell(editorContext, tr, SelectionManager.FIRST_EDITABLE_CELL);

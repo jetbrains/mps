@@ -79,11 +79,16 @@ public class EvaluationContainer implements IEvaluationContainer {
   @Override
   public Class generateClass() throws EvaluationException {
     // XXX this method is invoked from EvaluationUi, from a thread without any model access. 
+
     SModel containerModel = myContainerModel.resolve(myDebuggerRepository);
     // FIXME in fact, I'm pretty sure we can accomplish the same with regular dependency to j.m.d.java.api from EvaluationModule 
+
     //       Then, classpath built for EvaluationModule would include everything we try to push here with an extra CL. However, 
-    //       don't want to dive too deep into this mess now, shall refactor make facet to get rid of CResource use anyway, and  
+
+    //       don't want to dive too deep into this mess now, shall refactor make facet to get rid of CResource use anyway, and 
+
     //       refresh the whole idea of EvaluationModule and its temp models, and how are they handled/processed. Then, this code is likely to fade away. 
+
     ClassLoader extraCL = new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<MPSModuleClassLoader>() {
       public MPSModuleClassLoader compute() {
         SModule extraClasspath = PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)").resolve(myDebuggerRepository);
@@ -142,9 +147,11 @@ public class EvaluationContainer implements IEvaluationContainer {
     myNode = SNodeOperations.getPointer(evaluatorNode);
 
     // todo: variables 
+
     new EvaluationContainer.MyBaseLanguagesImportHelper().tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, MetaAdapterFactory.getInterfaceConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7f4a99699cea367bL, "jetbrains.mps.debugger.java.evaluation.structure.IEvaluatorConcept"), SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))), nodesToImport);
 
     // XXX likely, don't need a repo in updateImportedModels() here, as it's not vital to import accessories implicitly 
+
     new ModelDependencyUpdate(containerModel).updateUsedLanguages().updateImportedModels(myDebuggerRepository).updateModuleDependencies(myDebuggerRepository);
     ModelImports modelImports = new ModelImports(containerModel);
     modelImports.addUsedLanguage(MetaAdapterFactory.getLanguage(0x7da4580f9d754603L, 0x816251a896d78375L, "jetbrains.mps.debugger.java.evaluation"));

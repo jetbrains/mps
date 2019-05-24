@@ -10,10 +10,13 @@ import javax.swing.KeyStroke;
 public class TraceActions_KeymapChanges extends BaseKeymapChanges {
   public TraceActions_KeymapChanges() {
     // simple 
+
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToNode_Action", getShortcut(" F3"));
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToRule_Action", getShortcut(" F4"));
     // simple parameterized 
+
     // complex 
+
   }
   public String getScheme() {
     return "$default";

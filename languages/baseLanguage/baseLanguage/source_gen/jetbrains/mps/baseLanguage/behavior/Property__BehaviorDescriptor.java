@@ -112,20 +112,24 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isSetterVisible_id5WTl5xSBxvj(@NotNull SNode __thisNode__, final SNode contextClassifier, SNode contextNode) {
     SNode setterVisibility = Property__BehaviorDescriptor.getSetterVisibility_idhEwIJ0k.invoke(__thisNode__);
     // public 
+
     if (SNodeOperations.isInstanceOf(setterVisibility, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"))) {
       return true;
     }
     // private 
+
     if (SNodeOperations.isInstanceOf(setterVisibility, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).last() == ListSequence.fromList(SNodeOperations.getNodeAncestors(contextClassifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).last();
     }
     // default 
+
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
     String contextClassifierPackage = VisibilityUtil.packageName(contextClassifier);
     if ((setterVisibility == null)) {
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
     // protected 
+
     if (SNodeOperations.isInstanceOf(setterVisibility, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility"))) {
       String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), __thisNode__));
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
@@ -133,6 +137,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
       }
 
       // two cases: 1) from class 2) from dot expression 
+
       Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(contextClassifier);
@@ -140,9 +145,11 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
       });
       if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")))) {
         // 1 
+
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
       } else {
         // 2 
+
         SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
         return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
@@ -163,6 +170,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
     // todo: just populate for now, make it right! 
+
     context.exposeMember(__thisNode__, null);
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {

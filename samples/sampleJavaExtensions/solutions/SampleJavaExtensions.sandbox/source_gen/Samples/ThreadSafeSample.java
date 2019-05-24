@@ -15,13 +15,18 @@ public class ThreadSafeSample {
   }
   public static void main(String[] args) throws InterruptedException {
     // This sample shows that classes marked thread-safe will not be reported 
+
     //  as inproperly used from within parallel for loops 
 
+
     // This is a thread safe class to exchange a single value between a producer and a consumer 
+
     // Open the DropBox class definition and notice the "@thread safe" annotation for the class 
+
     final DropBox<String> box = new DropBox<String>();
 
     // A consumer thread reading and printing values exchanged through the drop box 
+
     Thread thread = new Thread(new Runnable() {
       @Override
       public void run() {
@@ -51,9 +56,12 @@ public class ThreadSafeSample {
             try {
               try {
                 // Notice no warning nor error reported 
+
                 box.store(localA);
                 // If the DropBox class was annotated as "@non thread safe", we would get an error reported 
+
                 // No annotation on the class would result in a warning 
+
               } catch (InterruptedException e) {
                 throw new RuntimeException(e);
               }
@@ -80,8 +88,11 @@ public class ThreadSafeSample {
     }
 
     // By annotating a local variable, field or parameter declaration as thread safe you indicate that calling methods 
+
     // on the object is thread-safe 
+
     // Alt + Enter on variable declarations will let you mark and unmark them as thread-safe 
+
     final String fixedValue = " fixed value ";
 
     {

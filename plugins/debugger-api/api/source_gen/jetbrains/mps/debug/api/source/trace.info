@@ -217,64 +217,64 @@
       <node id="7048882195103545961" at="34,23,35,42" concept="8" />
       <node id="7048882195103545969" at="36,5,37,16" concept="8" />
       <node id="4664028035454842426" at="41,124,42,66" concept="7" />
-      <node id="4664028035454939741" at="42,66,43,109" concept="9" />
-      <node id="4664028035454946658" at="43,109,44,167" concept="9" />
-      <node id="4664028035454723828" at="47,159,48,37" concept="7" />
-      <node id="4664028035454848582" at="48,37,49,120" concept="7" />
-      <node id="4664028035454915842" at="51,48,52,29" concept="8" />
-      <node id="4664028035454927515" at="55,9,56,20" concept="8" />
-      <node id="7576820355142672876" at="62,56,63,16" concept="8" />
+      <node id="4664028035454723828" at="49,159,50,37" concept="7" />
+      <node id="4664028035454848582" at="50,37,51,120" concept="7" />
+      <node id="4664028035454915842" at="53,48,54,29" concept="8" />
+      <node id="4664028035454927515" at="57,9,58,20" concept="8" />
+      <node id="7576820355142672876" at="64,56,65,16" concept="8" />
+      <node id="4664028035454939741" at="42,66,44,0" concept="9" />
+      <node id="4664028035454946658" at="44,0,46,0" concept="9" />
       <node id="7048882195103545924" at="23,0,26,0" concept="0" trace="NodePositionProvider#(Ljetbrains/mps/project/MPSProject;)V" />
       <node id="7048882195103545943" at="29,110,32,5" concept="5" />
       <node id="7048882195103545959" at="33,61,36,5" concept="5" />
-      <node id="4664028035454847194" at="50,48,53,13" concept="5" />
-      <node id="7576820355142672867" at="61,0,65,0" concept="6" trace="accepts#(Ljetbrains/mps/debug/api/AbstractDebugSession;)Z" />
-      <node id="4664028035454827038" at="49,120,54,11" concept="4" />
-      <node id="4664028035454707633" at="46,39,55,9" concept="3" />
+      <node id="4664028035454847194" at="52,48,55,13" concept="5" />
+      <node id="7576820355142672867" at="63,0,67,0" concept="6" trace="accepts#(Ljetbrains/mps/debug/api/AbstractDebugSession;)Z" />
+      <node id="4664028035454827038" at="51,120,56,11" concept="4" />
+      <node id="4664028035454707633" at="48,39,57,9" concept="3" />
       <node id="4664028035454318804" at="28,0,39,0" concept="6" trace="getPosition#(Ljetbrains/mps/debug/api/programState/ILocation;Ljetbrains/mps/debug/api/AbstractDebugSession;)Ljetbrains/mps/debug/api/source/NodeSourcePosition;" />
-      <node id="4664028035454890854" at="46,0,58,0" concept="6" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="4664028035454874718" at="44,167,58,7" concept="8" />
-      <node id="4664028035454346317" at="40,0,60,0" concept="6" trace="getSNodePointer#(Ljetbrains/mps/debug/api/programState/ILocation;Ljetbrains/mps/debug/api/AbstractDebugSession;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4664028035454890854" at="48,0,60,0" concept="6" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4664028035454874718" at="46,0,60,7" concept="8" />
+      <node id="4664028035454346317" at="40,0,62,0" concept="6" trace="getSNodePointer#(Ljetbrains/mps/debug/api/programState/ILocation;Ljetbrains/mps/debug/api/AbstractDebugSession;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <scope id="7048882195103545927" at="23,54,24,27" />
       <scope id="7048882195103545951" at="30,63,31,18" />
       <scope id="7048882195103545960" at="34,23,35,42" />
-      <scope id="4664028035454847196" at="51,48,52,29" />
-      <scope id="7576820355142672872" at="62,56,63,16" />
+      <scope id="4664028035454847196" at="53,48,54,29" />
+      <scope id="7576820355142672872" at="64,56,65,16" />
       <scope id="7048882195103545924" at="23,0,26,0">
         <var name="mpsProject" id="4847853483689657351" />
       </scope>
-      <scope id="4664028035454827041" at="50,48,53,13" />
-      <scope id="7576820355142672867" at="61,0,65,0">
+      <scope id="4664028035454827041" at="52,48,55,13" />
+      <scope id="7576820355142672867" at="63,0,67,0">
         <var name="session" id="7576820355142672868" />
       </scope>
-      <scope id="4664028035454827038" at="49,120,54,11">
+      <scope id="4664028035454827038" at="51,120,56,11">
         <var name="nodeRef" id="4664028035454827042" />
       </scope>
-      <scope id="4664028035454707635" at="47,159,54,11">
+      <scope id="4664028035454707635" at="49,159,56,11">
         <var name="next" id="4664028035454723829" />
         <var name="nodes" id="4664028035454848583" />
       </scope>
       <scope id="4664028035454318815" at="29,110,37,16">
         <var name="node" id="7048882195103545955" />
       </scope>
-      <scope id="4664028035454707633" at="46,39,55,9">
+      <scope id="4664028035454707633" at="48,39,57,9">
         <var name="it" id="4664028035454703902" />
       </scope>
-      <scope id="4664028035454890855" at="46,39,56,20" />
+      <scope id="4664028035454890855" at="48,39,58,20" />
       <scope id="4664028035454318804" at="28,0,39,0">
         <var name="location" id="4664028035454318808" />
         <var name="session" id="4664028035454318811" />
       </scope>
-      <scope id="4664028035454890854" at="46,0,58,0" />
-      <scope id="4664028035454346321" at="41,124,58,7">
+      <scope id="4664028035454890854" at="48,0,60,0" />
+      <scope id="4664028035454346321" at="41,124,60,7">
         <var name="repo" id="4664028035454842427" />
       </scope>
-      <scope id="4664028035454346317" at="40,0,60,0">
+      <scope id="4664028035454346317" at="40,0,62,0">
         <var name="location" id="4664028035454357910" />
         <var name="session" id="4664028035454364567" />
       </scope>
-      <unit id="4664028035454890854" at="45,57,58,5" name="jetbrains.mps.debug.api.source.NodePositionProvider$1" />
-      <unit id="7048882195103545922" at="20,0,66,0" name="jetbrains.mps.debug.api.source.NodePositionProvider" />
+      <unit id="4664028035454890854" at="47,57,60,5" name="jetbrains.mps.debug.api.source.NodePositionProvider$1" />
+      <unit id="7048882195103545922" at="20,0,68,0" name="jetbrains.mps.debug.api.source.NodePositionProvider" />
     </file>
   </root>
   <root nodeRef="r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/7048882195103546169">

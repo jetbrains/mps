@@ -63,6 +63,7 @@ public class LanguageHierarchy_Action extends BaseAction {
     FileEditorManager editorManager = FileEditorManager.getInstance(event.getData(CommonDataKeys.PROJECT));
     FileEditor[] res = editorManager.openFile(file, true, true);
     // no idea why explicit requestFocus when openFile() already asked for one. 
+
     res[0].getComponent().requestFocus();
   }
 }

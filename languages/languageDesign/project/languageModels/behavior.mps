@@ -126,11 +126,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -179,6 +176,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -845,13 +850,68 @@
       </node>
       <node concept="3clFbS" id="2BHFktfnkjI" role="3clF47">
         <node concept="3SKdUt" id="2BHFktfn$QX" role="3cqZAp">
-          <node concept="3SKdUq" id="2BHFktfn$QZ" role="3SKWNk">
-            <property role="3SKdUp" value=" FIXME consider deprecating ModuleReference in favor of lang.smodel.ModuleIdentity/ModulePointer." />
+          <node concept="1PaTwC" id="ATZLwXnXMS" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXMT" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXMU" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXMV" role="1PaTwD">
+              <property role="3oM_SC" value="consider" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXMW" role="1PaTwD">
+              <property role="3oM_SC" value="deprecating" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXMX" role="1PaTwD">
+              <property role="3oM_SC" value="ModuleReference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXMY" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXMZ" role="1PaTwD">
+              <property role="3oM_SC" value="favor" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN0" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN1" role="1PaTwD">
+              <property role="3oM_SC" value="lang.smodel.ModuleIdentity/ModulePointer." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="2BHFktfn$TE" role="3cqZAp">
-          <node concept="3SKdUq" id="2BHFktfn$TG" role="3SKWNk">
-            <property role="3SKdUp" value="Why does not lang.project use lang.smodel is unclear to me" />
+          <node concept="1PaTwC" id="ATZLwXnXN2" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXN3" role="1PaTwD">
+              <property role="3oM_SC" value="Why" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN4" role="1PaTwD">
+              <property role="3oM_SC" value="does" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN5" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN6" role="1PaTwD">
+              <property role="3oM_SC" value="lang.project" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN7" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN8" role="1PaTwD">
+              <property role="3oM_SC" value="lang.smodel" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXN9" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXNa" role="1PaTwD">
+              <property role="3oM_SC" value="unclear" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXNb" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXNc" role="1PaTwD">
+              <property role="3oM_SC" value="me" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="2BHFktfnksD" role="3cqZAp">

@@ -20,7 +20,9 @@ import git4idea.GitLocalBranch;
 public class MPSSourceRevision extends SourceRevision {
   public MPSSourceRevision() {
     // This class is put in mergedriver module just to avoid creating new module for only one class. 
+
     // It cannot be put to vcs module, because the latter should not depend on git4idea plugin. 
+
   }
   @Nullable
   @Override

@@ -40,6 +40,7 @@ public class DefaultTestExecutor extends JUnitTestExecutor {
   @Override
   protected RunListener createListener(Iterable<Request> iterable) {
     // don't quite buy the reason why default implemenation could not be used and what's this magic about system out in init() 
+
     return new DefaultRunListener(myOutStream);
   }
 
@@ -78,6 +79,7 @@ public class DefaultTestExecutor extends JUnitTestExecutor {
       System.exit(EXIT_CODE_FOR_EXCEPTION);
     } else {
       // we don't expect test cancellation requests here 
+
       System.exit(getFailureCount());
     }
   }

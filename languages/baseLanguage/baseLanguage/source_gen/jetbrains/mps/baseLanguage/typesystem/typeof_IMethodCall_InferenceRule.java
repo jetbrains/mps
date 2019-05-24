@@ -38,9 +38,11 @@ public class typeof_IMethodCall_InferenceRule extends AbstractInferenceRule_Runt
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     // check the inference context 
+
     if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(mcall))) {
       for (SNode tvd : ListSequence.fromList(BaseMethodDeclaration__BehaviorDescriptor.getInferrableTypeVars_id5W9RYt5baxk.invoke(mdecl))) {
         // assume all unbound type vars outside an inference context are Object 
+
         MapSequence.fromMap(subs).put(tvd, _quotation_createNode_2u2uyg_a0b0a0f0b());
       }
     }

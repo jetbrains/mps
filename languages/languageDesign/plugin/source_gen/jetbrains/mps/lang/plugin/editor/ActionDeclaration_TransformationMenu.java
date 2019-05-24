@@ -101,6 +101,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
       @Override
       public String getLabelText(String pattern) {
         // Adds shortcut to Default keymap (creates keymap if it doesn't exists) 
+
         return "Add default shortcut";
       }
 
@@ -130,6 +131,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
         }
 
         // Only if there is no any shortcut for this action 
+
         return (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(keymapDefault, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb077L, "shortcutChange")), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange"))).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, 0x55f30a5d1e096c76L, "action")) == _context.getNode();
@@ -181,6 +183,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
       @Override
       public String getLabelText(String pattern) {
         // Adds shortcut to Mac, Mac 10.5+ and Gnome keymaps (creates each keymap) 
+
         return "Add OS-specific shortcuts";
       }
 
@@ -202,6 +205,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
       @Override
       public boolean canExecute(@NotNull String pattern) {
         // Use only in case there is not any KeymapChangesDeclaration other than Default 
+
         return !(ListSequence.fromList(SModelOperations.roots(_context.getModel(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"))).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SPropertyOperations.hasEnumValue(it, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap"), "$default"));

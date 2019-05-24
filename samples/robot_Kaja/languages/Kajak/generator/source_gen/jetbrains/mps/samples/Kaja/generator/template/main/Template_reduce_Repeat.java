@@ -55,6 +55,7 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase implements T
             }
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
+
           }
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -64,11 +65,13 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase implements T
             }
             tnode2.addChild(myAggregationLinks[1], tnode4);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
         // TODO validate child 
+
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
@@ -82,11 +85,13 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase implements T
               tnode5.addChild(myAggregationLinks[3], child7);
             }
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode5);
         // TODO validate child 
+
       }
       {
         final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
@@ -100,6 +105,7 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase implements T
             }
             tnode8.addChild(myAggregationLinks[5], tnode9);
             // TODO validate child 
+
           }
           {
             final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
@@ -109,11 +115,13 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase implements T
             }
             tnode8.addChild(myAggregationLinks[6], tnode10);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[7], tnode8);
         // TODO validate child 
+
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[7]);
@@ -127,11 +135,13 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase implements T
             }
             tnode11.addChild(myAggregationLinks[8], tnode12);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[9], tnode11);
         // TODO validate child 
+
       }
     } finally {
     }

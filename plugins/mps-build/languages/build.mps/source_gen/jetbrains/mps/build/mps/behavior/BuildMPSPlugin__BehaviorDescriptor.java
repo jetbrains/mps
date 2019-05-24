@@ -71,9 +71,11 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     SNode project = artifacts.getProject();
 
     // fetch generation deps 
+
     BuildMPSPlugin__BehaviorDescriptor.fetchGenerationDeps_id3WZD5LHqDLU.invoke(__thisNode__, artifacts, builder);
 
     // fetch stuff for ant task classpath 
+
     DependenciesHelper helper = new DependenciesHelper(builder.getGenContext(), project);
     SNode originalProject = project;
     SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(originalProject, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, "jetbrains.mps.build.structure.BuildSource_JavaModule"), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"), ((int) 0)).resolve(originalProject, "ant-mps"), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, "jetbrains.mps.build.structure.BuildSource_JavaModule"));
@@ -84,8 +86,10 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
         builder.add(antMpsJar);
       }
     }
-    // FIXME consider JavaExternalLibraryHelper re-use  
+    // FIXME consider JavaExternalLibraryHelper re-use 
+
     // XXX isn't it odd to populate DependenciesHelper here, and not in unpack? 
+
     SNode jdomLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary"), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"), ((int) 0)).resolve(project, "jdom-lib"), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary"));
     if (jdomLib != null) {
       SNode jdomJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(jdomLib, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, 0x540febaa6144e311L, "elements")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, "jetbrains.mps.build.structure.BuildSource_JavaLibraryCP"))).first(), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, "jetbrains.mps.build.structure.BuildSource_JavaLibraryExternalJar")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, 0x4ddcec86afb50da8L, "extJar"));
@@ -106,6 +110,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // fetch gentest language 
+
     VisibleModules visibleModules = new VisibleModules(artifacts.getProject());
     visibleModules.collect();
     SNode gentest = SNodeOperations.cast(visibleModules.resolve("jetbrains.mps.tool.gentest", "3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7"), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module"));
@@ -119,6 +124,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
           SNode depLayoutNode = SNodeOperations.as(artifacts.findArtifact(gentestDep), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
           if (depLayoutNode != null) {
             // FIXME what's the purpose of uuid string to node mapping here? I didn't find any use 
+
             builder.add(depLayoutNode);
           }
         }

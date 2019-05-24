@@ -99,139 +99,139 @@
       <node id="2299671068831407570" at="40,0,41,0" concept="2" trace="myLanguageRegistry" />
       <node id="2299671068831409841" at="42,67,43,92" concept="1" />
       <node id="2299671068831477200" at="46,67,47,57" concept="6" />
-      <node id="2299671068831482493" at="48,79,49,149" concept="8" />
-      <node id="2299671068831482833" at="49,149,50,49" concept="6" />
-      <node id="2299671068831485012" at="51,33,52,47" concept="7" />
-      <node id="2299671068831641744" at="53,7,54,83" concept="6" />
-      <node id="2299671068831649039" at="55,36,56,47" concept="7" />
-      <node id="2299671068831491736" at="57,7,58,116" concept="1" />
-      <node id="1182113674817469680" at="59,5,60,69" concept="7" />
-      <node id="2299671068831416422" at="64,31,65,55" concept="1" />
-      <node id="2299671068831421299" at="69,34,70,58" concept="1" />
-      <node id="1182113674817469703" at="76,36,77,37" concept="7" />
-      <node id="1182113674817469725" at="80,30,81,54" concept="1" />
-      <node id="1182113674817469735" at="84,101,85,89" concept="6" />
-      <node id="1182113674817540134" at="85,89,86,88" concept="6" />
-      <node id="2299671068831528367" at="87,30,88,45" concept="7" />
-      <node id="2299671068831593770" at="89,5,90,216" concept="6" />
-      <node id="2299671068831628291" at="91,56,92,45" concept="7" />
-      <node id="1182113674817538823" at="93,5,94,74" concept="6" />
-      <node id="1182113674817469792" at="96,11,97,362" concept="6" />
-      <node id="1182113674817469803" at="97,362,98,50" concept="6" />
-      <node id="1182113674817540166" at="99,48,100,60" concept="1" />
-      <node id="3818729150937330257" at="103,43,104,55" concept="1" />
-      <node id="3818729150937330265" at="107,44,108,55" concept="1" />
-      <node id="3818729150937330273" at="111,44,112,55" concept="1" />
-      <node id="2299671068831523307" at="115,5,116,98" concept="7" />
-      <node id="2299671068831457090" at="119,66,120,68" concept="1" />
-      <node id="1182113674817469639" at="123,54,124,90" concept="7" />
-      <node id="2299671068831751694" at="135,43,136,38" concept="1" />
-      <node id="1182113674817469570" at="128,0,130,0" concept="0" trace="LanguageLoadListener#()V" />
+      <node id="2299671068831482833" at="50,0,51,49" concept="6" />
+      <node id="2299671068831485012" at="52,33,53,47" concept="7" />
+      <node id="2299671068831641744" at="54,7,55,83" concept="6" />
+      <node id="2299671068831649039" at="56,36,57,47" concept="7" />
+      <node id="2299671068831491736" at="58,7,59,116" concept="1" />
+      <node id="1182113674817469680" at="60,5,61,69" concept="7" />
+      <node id="2299671068831416422" at="65,31,66,55" concept="1" />
+      <node id="2299671068831421299" at="70,34,71,58" concept="1" />
+      <node id="1182113674817469703" at="77,36,78,37" concept="7" />
+      <node id="1182113674817469725" at="81,30,82,54" concept="1" />
+      <node id="1182113674817469735" at="85,101,86,89" concept="6" />
+      <node id="1182113674817540134" at="86,89,87,88" concept="6" />
+      <node id="2299671068831528367" at="88,30,89,45" concept="7" />
+      <node id="2299671068831593770" at="90,5,91,216" concept="6" />
+      <node id="2299671068831628291" at="92,56,93,45" concept="7" />
+      <node id="1182113674817538823" at="94,5,95,74" concept="6" />
+      <node id="1182113674817469792" at="97,11,98,362" concept="6" />
+      <node id="1182113674817469803" at="98,362,99,50" concept="6" />
+      <node id="1182113674817540166" at="100,48,101,60" concept="1" />
+      <node id="3818729150937330257" at="104,43,105,55" concept="1" />
+      <node id="3818729150937330265" at="108,44,109,55" concept="1" />
+      <node id="3818729150937330273" at="112,44,113,55" concept="1" />
+      <node id="2299671068831523307" at="116,5,117,98" concept="7" />
+      <node id="2299671068831457090" at="120,66,121,68" concept="1" />
+      <node id="1182113674817469639" at="124,54,125,90" concept="7" />
+      <node id="2299671068831751694" at="136,43,137,38" concept="1" />
+      <node id="2299671068831482493" at="48,79,50,0" concept="8" />
+      <node id="1182113674817469570" at="129,0,131,0" concept="0" trace="LanguageLoadListener#()V" />
       <node id="1182113674817469644" at="42,0,45,0" concept="0" trace="LanguagesKeymapManager#(Ljetbrains/mps/ide/MPSCoreComponents;)V" />
-      <node id="2299671068831483667" at="50,49,53,7" concept="4" />
-      <node id="2299671068831646387" at="54,83,57,7" concept="4" />
-      <node id="1182113674817469721" at="80,0,83,0" concept="5" trace="clearCaches#()V" />
-      <node id="1182113674817469756" at="86,88,89,5" concept="4" />
-      <node id="2299671068831601378" at="90,216,93,5" concept="4" />
-      <node id="1182113674817469809" at="98,50,101,9" concept="4" />
-      <node id="3818729150937330257" at="102,43,105,9" concept="4" />
-      <node id="3818729150937330265" at="106,42,109,9" concept="4" />
-      <node id="3818729150937330273" at="110,42,113,9" concept="4" />
-      <node id="1182113674817469882" at="119,0,122,0" concept="5" trace="unregisterLanguageKeyMaps#(Ljetbrains/mps/smodel/language/LanguageRuntime;)V" />
-      <node id="1182113674817469635" at="123,0,126,0" concept="10" trace="getInstance#()Ljetbrains/mps/editor/runtime/impl/LanguagesKeymapManager;" />
-      <node id="2299671068831446360" at="130,0,133,0" concept="5" trace="afterLanguagesLoaded#(Ljava/lang/Iterable;)V" />
-      <node id="2299671068831461841" at="134,77,137,7" concept="3" />
-      <node id="1182113674817469685" at="63,0,67,0" concept="5" trace="initComponent#()V" />
-      <node id="1182113674817469707" at="68,0,72,0" concept="5" trace="disposeComponent#()V" />
-      <node id="1182113674817469699" at="73,0,79,0" concept="5" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="2299671068831446369" at="133,0,139,0" concept="5" trace="beforeLanguagesUnloaded#(Ljava/lang/Iterable;)V" />
-      <node id="1182113674817469670" at="47,57,59,5" concept="4" />
-      <node id="1182113674817469662" at="46,0,62,0" concept="5" trace="getKeyMapsForLanguage#(Lorg/jetbrains/mps/openapi/language/SLanguage;)Ljava/util/List;" />
-      <node id="3689217605463202338" at="95,73,114,7" concept="11" />
-      <node id="1182113674817540157" at="94,74,115,5" concept="3" />
-      <node id="1182113674817469729" at="84,0,118,0" concept="5" trace="loadLanguageKeyMaps#(Ljetbrains/mps/smodel/language/LanguageRuntime;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/util/List;" />
-      <scope id="1182113674817469573" at="128,40,128,40" />
-      <scope id="2299671068831446367" at="131,74,131,74" />
+      <node id="2299671068831483667" at="51,49,54,7" concept="4" />
+      <node id="2299671068831646387" at="55,83,58,7" concept="4" />
+      <node id="1182113674817469721" at="81,0,84,0" concept="5" trace="clearCaches#()V" />
+      <node id="1182113674817469756" at="87,88,90,5" concept="4" />
+      <node id="2299671068831601378" at="91,216,94,5" concept="4" />
+      <node id="1182113674817469809" at="99,50,102,9" concept="4" />
+      <node id="3818729150937330257" at="103,43,106,9" concept="4" />
+      <node id="3818729150937330265" at="107,42,110,9" concept="4" />
+      <node id="3818729150937330273" at="111,42,114,9" concept="4" />
+      <node id="1182113674817469882" at="120,0,123,0" concept="5" trace="unregisterLanguageKeyMaps#(Ljetbrains/mps/smodel/language/LanguageRuntime;)V" />
+      <node id="1182113674817469635" at="124,0,127,0" concept="10" trace="getInstance#()Ljetbrains/mps/editor/runtime/impl/LanguagesKeymapManager;" />
+      <node id="2299671068831446360" at="131,0,134,0" concept="5" trace="afterLanguagesLoaded#(Ljava/lang/Iterable;)V" />
+      <node id="2299671068831461841" at="135,77,138,7" concept="3" />
+      <node id="1182113674817469685" at="64,0,68,0" concept="5" trace="initComponent#()V" />
+      <node id="1182113674817469707" at="69,0,73,0" concept="5" trace="disposeComponent#()V" />
+      <node id="1182113674817469699" at="74,0,80,0" concept="5" trace="getComponentName#()Ljava/lang/String;" />
+      <node id="2299671068831446369" at="134,0,140,0" concept="5" trace="beforeLanguagesUnloaded#(Ljava/lang/Iterable;)V" />
+      <node id="1182113674817469670" at="47,57,60,5" concept="4" />
+      <node id="1182113674817469662" at="46,0,63,0" concept="5" trace="getKeyMapsForLanguage#(Lorg/jetbrains/mps/openapi/language/SLanguage;)Ljava/util/List;" />
+      <node id="3689217605463202338" at="96,73,115,7" concept="11" />
+      <node id="1182113674817540157" at="95,74,116,5" concept="3" />
+      <node id="1182113674817469729" at="85,0,119,0" concept="5" trace="loadLanguageKeyMaps#(Ljetbrains/mps/smodel/language/LanguageRuntime;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/util/List;" />
+      <scope id="1182113674817469573" at="129,40,129,40" />
+      <scope id="2299671068831446367" at="132,74,132,74" />
       <scope id="1182113674817469653" at="42,67,43,92" />
-      <scope id="2299671068831483669" at="51,33,52,47" />
-      <scope id="2299671068831646389" at="55,36,56,47" />
-      <scope id="1182113674817469688" at="64,31,65,55" />
-      <scope id="1182113674817469710" at="69,34,70,58" />
-      <scope id="1182113674817469702" at="76,36,77,37" />
-      <scope id="1182113674817469724" at="80,30,81,54" />
-      <scope id="1182113674817469766" at="87,30,88,45" />
-      <scope id="2299671068831601380" at="91,56,92,45" />
-      <scope id="1182113674817469813" at="99,48,100,60" />
-      <scope id="3818729150937330257" at="103,43,104,55" />
-      <scope id="3818729150937330265" at="107,44,108,55" />
-      <scope id="3818729150937330273" at="111,44,112,55" />
-      <scope id="1182113674817469887" at="119,66,120,68" />
-      <scope id="1182113674817469638" at="123,54,124,90" />
-      <scope id="2299671068831461844" at="135,43,136,38" />
-      <scope id="1182113674817469570" at="128,0,130,0" />
+      <scope id="2299671068831483669" at="52,33,53,47" />
+      <scope id="2299671068831646389" at="56,36,57,47" />
+      <scope id="1182113674817469688" at="65,31,66,55" />
+      <scope id="1182113674817469710" at="70,34,71,58" />
+      <scope id="1182113674817469702" at="77,36,78,37" />
+      <scope id="1182113674817469724" at="81,30,82,54" />
+      <scope id="1182113674817469766" at="88,30,89,45" />
+      <scope id="2299671068831601380" at="92,56,93,45" />
+      <scope id="1182113674817469813" at="100,48,101,60" />
+      <scope id="3818729150937330257" at="104,43,105,55" />
+      <scope id="3818729150937330265" at="108,44,109,55" />
+      <scope id="3818729150937330273" at="112,44,113,55" />
+      <scope id="1182113674817469887" at="120,66,121,68" />
+      <scope id="1182113674817469638" at="124,54,125,90" />
+      <scope id="2299671068831461844" at="136,43,137,38" />
+      <scope id="1182113674817469570" at="129,0,131,0" />
       <scope id="1182113674817469644" at="42,0,45,0">
         <var name="coreComponents" id="2481791643076261667" />
       </scope>
-      <scope id="1182113674817469721" at="80,0,83,0" />
-      <scope id="2299671068831697386" at="102,0,105,9">
+      <scope id="1182113674817469721" at="81,0,84,0" />
+      <scope id="2299671068831697386" at="103,0,106,9">
         <var name="ex" id="2299671068831697387" />
       </scope>
-      <scope id="2299671068831697389" at="102,43,105,9" />
-      <scope id="3689217605463202330" at="106,0,109,9">
+      <scope id="2299671068831697389" at="103,43,106,9" />
+      <scope id="3689217605463202330" at="107,0,110,9">
         <var name="e" id="3689217605463202332" />
       </scope>
-      <scope id="3689217605463202331" at="106,42,109,9" />
-      <scope id="3689217605463202334" at="110,0,113,9">
+      <scope id="3689217605463202331" at="107,42,110,9" />
+      <scope id="3689217605463202334" at="111,0,114,9">
         <var name="e" id="3689217605463202336" />
       </scope>
-      <scope id="3689217605463202335" at="110,42,113,9" />
-      <scope id="1182113674817469882" at="119,0,122,0">
+      <scope id="3689217605463202335" at="111,42,114,9" />
+      <scope id="1182113674817469882" at="120,0,123,0">
         <var name="lr" id="1182113674817469885" />
       </scope>
-      <scope id="1182113674817469635" at="123,0,126,0" />
-      <scope id="2299671068831446360" at="130,0,133,0">
+      <scope id="1182113674817469635" at="124,0,127,0" />
+      <scope id="2299671068831446360" at="131,0,134,0">
         <var name="iterable" id="2299671068831446364" />
       </scope>
-      <scope id="2299671068831446376" at="134,77,137,7" />
-      <scope id="2299671068831461841" at="134,77,137,7">
+      <scope id="2299671068831446376" at="135,77,138,7" />
+      <scope id="2299671068831461841" at="135,77,138,7">
         <var name="lr" id="2299671068831461845" />
       </scope>
-      <scope id="1182113674817469685" at="63,0,67,0" />
-      <scope id="1182113674817469707" at="68,0,72,0" />
-      <scope id="3689217605463202339" at="96,11,101,9">
+      <scope id="1182113674817469685" at="64,0,68,0" />
+      <scope id="1182113674817469707" at="69,0,73,0" />
+      <scope id="3689217605463202339" at="97,11,102,9">
         <var name="keyMap" id="1182113674817469804" />
         <var name="keyMapClass" id="1182113674817469793" />
       </scope>
-      <scope id="1182113674817469699" at="73,0,79,0" />
-      <scope id="2299671068831446369" at="133,0,139,0">
+      <scope id="1182113674817469699" at="74,0,80,0" />
+      <scope id="2299671068831446369" at="134,0,140,0">
         <var name="iterable" id="2299671068831446373" />
       </scope>
-      <scope id="1182113674817469676" at="48,79,58,116">
+      <scope id="1182113674817469676" at="48,79,59,116">
         <var name="languageRuntime" id="2299671068831641745" />
         <var name="sourceModule" id="2299671068831482834" />
       </scope>
-      <scope id="1182113674817469669" at="46,67,60,69">
+      <scope id="1182113674817469669" at="46,67,61,69">
         <var name="languageId" id="2299671068831477201" />
       </scope>
-      <scope id="1182113674817469662" at="46,0,62,0">
+      <scope id="1182113674817469662" at="46,0,63,0">
         <var name="l" id="1182113674817469666" />
       </scope>
-      <scope id="1182113674817540160" at="95,73,114,7" />
-      <scope id="1182113674817540157" at="94,74,115,5">
+      <scope id="1182113674817540160" at="96,73,115,7" />
+      <scope id="1182113674817540157" at="95,74,116,5">
         <var name="keyMapDeclaration" id="1182113674817540158" />
       </scope>
-      <scope id="1182113674817469734" at="84,101,116,98">
+      <scope id="1182113674817469734" at="85,101,117,98">
         <var name="declarations" id="2299671068831593771" />
         <var name="editorModel" id="1182113674817540135" />
         <var name="editorModelDescriptor" id="1182113674817469736" />
         <var name="keyMaps" id="1182113674817538824" />
       </scope>
-      <scope id="1182113674817469729" at="84,0,118,0">
+      <scope id="1182113674817469729" at="85,0,119,0">
         <var name="languageRuntime" id="2299671068831631823" />
         <var name="languageSource" id="1182113674817469732" />
       </scope>
-      <unit id="1182113674817469567" at="127,0,140,0" name="jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager$LanguageLoadListener" />
-      <unit id="1182113674817469564" at="36,0,141,0" name="jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager" />
+      <unit id="1182113674817469567" at="128,0,141,0" name="jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager$LanguageLoadListener" />
+      <unit id="1182113674817469564" at="36,0,142,0" name="jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager" />
     </file>
   </root>
 </debug-info>

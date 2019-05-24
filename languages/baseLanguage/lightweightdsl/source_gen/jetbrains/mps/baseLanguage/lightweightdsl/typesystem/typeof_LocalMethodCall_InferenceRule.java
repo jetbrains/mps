@@ -19,6 +19,7 @@ public class typeof_LocalMethodCall_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode localMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // This is a hack made for convenience while trying to decrease number of DependentTypeInstance occurences 
+
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(localMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeInstance"))) {
       {
         SNode _nodeToCheck_1029348928467 = localMethodCall;

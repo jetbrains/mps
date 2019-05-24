@@ -132,11 +132,8 @@
       <concept id="5497648299878491908" name="jetbrains.mps.baseLanguage.structure.BaseVariableReference" flags="nn" index="1M0zk4">
         <reference id="5497648299878491909" name="baseVariableDeclaration" index="1M0zk5" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -253,6 +250,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages">
@@ -754,18 +759,156 @@
                     </node>
                   </node>
                   <node concept="3SKdUt" id="MRN5EIeqNx" role="3cqZAp">
-                    <node concept="3SKdUq" id="MRN5EIeqNz" role="3SKWNk">
-                      <property role="3SKdUp" value="XXX perhaps, we shall use refactoringContext.mpsProject.getScope() instead of refactoringContext.scope" />
+                    <node concept="1PaTwC" id="ATZLwXnPG_" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnPGA" role="1PaTwD">
+                        <property role="3oM_SC" value="XXX" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGB" role="1PaTwD">
+                        <property role="3oM_SC" value="perhaps," />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGC" role="1PaTwD">
+                        <property role="3oM_SC" value="we" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGD" role="1PaTwD">
+                        <property role="3oM_SC" value="shall" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGE" role="1PaTwD">
+                        <property role="3oM_SC" value="use" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGF" role="1PaTwD">
+                        <property role="3oM_SC" value="refactoringContext.mpsProject.getScope()" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGG" role="1PaTwD">
+                        <property role="3oM_SC" value="instead" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGH" role="1PaTwD">
+                        <property role="3oM_SC" value="of" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGI" role="1PaTwD">
+                        <property role="3oM_SC" value="refactoringContext.scope" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3SKdUt" id="MRN5EIeI$2" role="3cqZAp">
-                    <node concept="3SKdUq" id="MRN5EIeI$4" role="3SKWNk">
-                      <property role="3SKdUp" value="    as we might be interested in any usage. However, it's not clear what rc.scope is and as since it's " />
+                    <node concept="1PaTwC" id="ATZLwXnPGJ" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnPGK" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGL" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGM" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGN" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGO" role="1PaTwD">
+                        <property role="3oM_SC" value="as" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGP" role="1PaTwD">
+                        <property role="3oM_SC" value="we" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGQ" role="1PaTwD">
+                        <property role="3oM_SC" value="might" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGR" role="1PaTwD">
+                        <property role="3oM_SC" value="be" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGS" role="1PaTwD">
+                        <property role="3oM_SC" value="interested" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGT" role="1PaTwD">
+                        <property role="3oM_SC" value="in" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGU" role="1PaTwD">
+                        <property role="3oM_SC" value="any" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGV" role="1PaTwD">
+                        <property role="3oM_SC" value="usage." />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGW" role="1PaTwD">
+                        <property role="3oM_SC" value="However," />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGX" role="1PaTwD">
+                        <property role="3oM_SC" value="it's" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGY" role="1PaTwD">
+                        <property role="3oM_SC" value="not" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPGZ" role="1PaTwD">
+                        <property role="3oM_SC" value="clear" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH0" role="1PaTwD">
+                        <property role="3oM_SC" value="what" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH1" role="1PaTwD">
+                        <property role="3oM_SC" value="rc.scope" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH2" role="1PaTwD">
+                        <property role="3oM_SC" value="is" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH3" role="1PaTwD">
+                        <property role="3oM_SC" value="and" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH4" role="1PaTwD">
+                        <property role="3oM_SC" value="as" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH5" role="1PaTwD">
+                        <property role="3oM_SC" value="since" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH6" role="1PaTwD">
+                        <property role="3oM_SC" value="it's" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3SKdUt" id="MRN5EIfrJM" role="3cqZAp">
-                    <node concept="3SKdUq" id="MRN5EIfrJN" role="3SKWNk">
-                      <property role="3SKdUp" value="    technically the same now, I decided to go with just rc.scope." />
+                    <node concept="1PaTwC" id="ATZLwXnPH7" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnPH8" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPH9" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHa" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHb" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHc" role="1PaTwD">
+                        <property role="3oM_SC" value="technically" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHd" role="1PaTwD">
+                        <property role="3oM_SC" value="the" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHe" role="1PaTwD">
+                        <property role="3oM_SC" value="same" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHf" role="1PaTwD">
+                        <property role="3oM_SC" value="now," />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHg" role="1PaTwD">
+                        <property role="3oM_SC" value="I" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHh" role="1PaTwD">
+                        <property role="3oM_SC" value="decided" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHi" role="1PaTwD">
+                        <property role="3oM_SC" value="to" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHj" role="1PaTwD">
+                        <property role="3oM_SC" value="go" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHk" role="1PaTwD">
+                        <property role="3oM_SC" value="with" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHl" role="1PaTwD">
+                        <property role="3oM_SC" value="just" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnPHm" role="1PaTwD">
+                        <property role="3oM_SC" value="rc.scope." />
+                      </node>
                     </node>
                   </node>
                   <node concept="3clFbF" id="7UcKRu2PUFF" role="3cqZAp">

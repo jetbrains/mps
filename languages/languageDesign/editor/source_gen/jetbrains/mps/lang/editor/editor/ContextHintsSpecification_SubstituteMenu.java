@@ -91,6 +91,7 @@ public class ContextHintsSpecification_SubstituteMenu extends SubstituteMenuBase
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
       // TODO: Use link scopes here 
+
       List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
       Set<SModel> allVisibleModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), (List<SModel>) SModelOperations.allImportedModels(_context.getModel()));
       SetSequence.fromSet(allVisibleModels).addElement(_context.getModel());

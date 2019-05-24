@@ -13,6 +13,7 @@ public class replaceNode_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     // FIXME split into specific quick fixes 
+
     SNodeOperations.replaceWithAnother(node, ((SNode) replaceNode_QuickFix.this.getField("newNode")[0]));
   }
 }

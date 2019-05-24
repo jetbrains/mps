@@ -92,11 +92,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -234,6 +231,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
@@ -246,8 +251,22 @@
     <property role="TrG5h" value="check_GenerationContextOp_Base" />
     <node concept="3clFbS" id="hHi$4jh" role="18ibNy">
       <node concept="3SKdUt" id="6pumIWoCG2T" role="3cqZAp">
-        <node concept="3SKdUq" id="6pumIWoCG2U" role="3SKWNk">
-          <property role="3SKdUp" value=" only applicable to 'genctx'" />
+        <node concept="1PaTwC" id="ATZLwXnViD" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnViE" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViF" role="1PaTwD">
+            <property role="3oM_SC" value="only" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViG" role="1PaTwD">
+            <property role="3oM_SC" value="applicable" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViH" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViI" role="1PaTwD">
+            <property role="3oM_SC" value="'genctx'" />
+          </node>
         </node>
       </node>
       <node concept="3cpWs8" id="hOYX4i5" role="3cqZAp">
@@ -487,8 +506,25 @@
     <property role="TrG5h" value="typeof_GenerationContextOp_GetCopiedOutputByInput" />
     <node concept="3clFbS" id="hIfAnd$" role="18ibNy">
       <node concept="3SKdUt" id="6pumIWoCFW7" role="3cqZAp">
-        <node concept="3SKdUq" id="6pumIWoCFW8" role="3SKWNk">
-          <property role="3SKdUp" value="type the same as input ?" />
+        <node concept="1PaTwC" id="ATZLwXnViJ" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnViK" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViL" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViM" role="1PaTwD">
+            <property role="3oM_SC" value="same" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViN" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViO" role="1PaTwD">
+            <property role="3oM_SC" value="input" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViP" role="1PaTwD">
+            <property role="3oM_SC" value="?" />
+          </node>
         </node>
       </node>
       <node concept="1Z5TYs" id="hIfA$nJ" role="3cqZAp">
@@ -738,8 +774,19 @@
     <property role="TrG5h" value="typeof_GenerationContextOp_ShowMessageBase" />
     <node concept="3clFbS" id="1D5gQ4cyHAa" role="18ibNy">
       <node concept="3SKdUt" id="6pumIWoCFXX" role="3cqZAp">
-        <node concept="3SKdUq" id="6pumIWoCFXY" role="3SKWNk">
-          <property role="3SKdUp" value=" parameters: string, node" />
+        <node concept="1PaTwC" id="ATZLwXnViQ" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnViR" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViS" role="1PaTwD">
+            <property role="3oM_SC" value="parameters:" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViT" role="1PaTwD">
+            <property role="3oM_SC" value="string," />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViU" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
         </node>
       </node>
       <node concept="1Z5TYs" id="$lsh0EhD9c" role="3cqZAp">
@@ -1593,8 +1640,73 @@
         </node>
       </node>
       <node concept="3SKdUt" id="5Wn7$dQZMBG" role="3cqZAp">
-        <node concept="3SKdUq" id="5Wn7$dQZMBI" role="3SKWNk">
-          <property role="3SKdUp" value="I'm confused whether to use inference rule with check only == true or checking rule to ensure proper type of child expression" />
+        <node concept="1PaTwC" id="ATZLwXnViV" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnViW" role="1PaTwD">
+            <property role="3oM_SC" value="I'm" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViX" role="1PaTwD">
+            <property role="3oM_SC" value="confused" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViY" role="1PaTwD">
+            <property role="3oM_SC" value="whether" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnViZ" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj0" role="1PaTwD">
+            <property role="3oM_SC" value="use" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj1" role="1PaTwD">
+            <property role="3oM_SC" value="inference" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj2" role="1PaTwD">
+            <property role="3oM_SC" value="rule" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj3" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj4" role="1PaTwD">
+            <property role="3oM_SC" value="check" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj5" role="1PaTwD">
+            <property role="3oM_SC" value="only" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj6" role="1PaTwD">
+            <property role="3oM_SC" value="==" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj7" role="1PaTwD">
+            <property role="3oM_SC" value="true" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj8" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVj9" role="1PaTwD">
+            <property role="3oM_SC" value="checking" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVja" role="1PaTwD">
+            <property role="3oM_SC" value="rule" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVjb" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVjc" role="1PaTwD">
+            <property role="3oM_SC" value="ensure" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVjd" role="1PaTwD">
+            <property role="3oM_SC" value="proper" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVje" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVjf" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVjg" role="1PaTwD">
+            <property role="3oM_SC" value="child" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnVjh" role="1PaTwD">
+            <property role="3oM_SC" value="expression" />
+          </node>
         </node>
       </node>
       <node concept="3cpWs8" id="5Wn7$dQZbUa" role="3cqZAp">

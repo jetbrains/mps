@@ -4,7 +4,7 @@
   <languages>
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
@@ -274,11 +274,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -336,6 +333,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1216,13 +1221,107 @@
       <node concept="3ft6gW" id="1wEcoXjJG7X" role="3ft5RY">
         <node concept="3clFbS" id="1wEcoXjJG7Y" role="2VODD2">
           <node concept="3SKdUt" id="1WdgwrLapoA" role="3cqZAp">
-            <node concept="3SKdUq" id="1WdgwrLapoC" role="3SKWNk">
-              <property role="3SKdUp" value="Allow use of genContext expression inside template calls without need to wrap them with ConceptFunction instance" />
+            <node concept="1PaTwC" id="ATZLwXnVhk" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnVhl" role="1PaTwD">
+                <property role="3oM_SC" value="Allow" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhm" role="1PaTwD">
+                <property role="3oM_SC" value="use" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhn" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVho" role="1PaTwD">
+                <property role="3oM_SC" value="genContext" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhp" role="1PaTwD">
+                <property role="3oM_SC" value="expression" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhq" role="1PaTwD">
+                <property role="3oM_SC" value="inside" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhr" role="1PaTwD">
+                <property role="3oM_SC" value="template" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhs" role="1PaTwD">
+                <property role="3oM_SC" value="calls" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVht" role="1PaTwD">
+                <property role="3oM_SC" value="without" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhu" role="1PaTwD">
+                <property role="3oM_SC" value="need" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhv" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhw" role="1PaTwD">
+                <property role="3oM_SC" value="wrap" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhx" role="1PaTwD">
+                <property role="3oM_SC" value="them" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhy" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhz" role="1PaTwD">
+                <property role="3oM_SC" value="ConceptFunction" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVh$" role="1PaTwD">
+                <property role="3oM_SC" value="instance" />
+              </node>
             </node>
           </node>
           <node concept="3SKdUt" id="1c6WnGgeMYu" role="3cqZAp">
-            <node concept="3SKdUq" id="1c6WnGgeMYw" role="3SKWNk">
-              <property role="3SKdUp" value="but don't show it twice inside a CF, where CFPs get contributed by dedicated menu contributor" />
+            <node concept="1PaTwC" id="ATZLwXnVh_" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnVhA" role="1PaTwD">
+                <property role="3oM_SC" value="but" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhB" role="1PaTwD">
+                <property role="3oM_SC" value="don't" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhC" role="1PaTwD">
+                <property role="3oM_SC" value="show" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhD" role="1PaTwD">
+                <property role="3oM_SC" value="it" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhE" role="1PaTwD">
+                <property role="3oM_SC" value="twice" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhF" role="1PaTwD">
+                <property role="3oM_SC" value="inside" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhG" role="1PaTwD">
+                <property role="3oM_SC" value="a" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhH" role="1PaTwD">
+                <property role="3oM_SC" value="CF," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhI" role="1PaTwD">
+                <property role="3oM_SC" value="where" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhJ" role="1PaTwD">
+                <property role="3oM_SC" value="CFPs" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhK" role="1PaTwD">
+                <property role="3oM_SC" value="get" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhL" role="1PaTwD">
+                <property role="3oM_SC" value="contributed" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhM" role="1PaTwD">
+                <property role="3oM_SC" value="by" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhN" role="1PaTwD">
+                <property role="3oM_SC" value="dedicated" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhO" role="1PaTwD">
+                <property role="3oM_SC" value="menu" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVhP" role="1PaTwD">
+                <property role="3oM_SC" value="contributor" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1wEcoXjJG7Z" role="3cqZAp">

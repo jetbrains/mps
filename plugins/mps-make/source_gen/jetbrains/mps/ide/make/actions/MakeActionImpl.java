@@ -37,6 +37,7 @@ public class MakeActionImpl {
       throw new IllegalStateException("should be called outside of command");
     }
     // save all before launching make 
+
     new SaveRepositoryCommand(project.getRepository()).execute();
 
 
@@ -44,11 +45,16 @@ public class MakeActionImpl {
     final IMakeService makeService = project.getComponent(MakeServiceComponent.class).get();
     if (makeService.openNewSession(session)) {
       // empty collection is fine, it's up to make service to report there's nothing to do (odd, but fine for now. Action could have do that instead) 
+
       // 
-      // ModelValidatorAdapter needs to be refactored not to mix model checking code with UI, which might request  
+      // ModelValidatorAdapter needs to be refactored not to mix model checking code with UI, which might request 
+
       // write access e.g. on focus lost and eventually lead to 'write from read' issue like 
+
       // FIXME https://youtrack.jetbrains.com/issue/MPS-24020. Proper fix is to split model check into read, and results reporting into EDT. 
+
       // For 3.4 RC, we decided to go with a hack and let SModel instances cross model read boundary 
+
       List<IResource> inputRes = null;
       final ArrayList<SModel> models = new ArrayList<SModel>();
       try {
@@ -66,6 +72,7 @@ public class MakeActionImpl {
         if (!(new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models))) {
           inputRes = null;
           // fall-through to close make session 
+
         }
 
 

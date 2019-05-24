@@ -24528,19 +24528,19 @@
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/897648160457000153">
     <file name="ReflectiveEditorActionsUtil.java">
       <node id="897648160457132183" at="10,154,11,95" concept="2" />
-      <node id="897648160457020991" at="14,25,15,22" concept="7" />
-      <node id="897648160457020988" at="13,0,17,0" concept="5" trace="run#()V" />
-      <node id="897648160457020983" at="11,95,17,7" concept="2" />
-      <node id="897648160457006536" at="10,0,19,0" concept="10" trace="runReadInEDTAndWait#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljava/lang/Runnable;)V" />
-      <scope id="897648160457020990" at="14,25,15,22" />
-      <scope id="897648160457020988" at="13,0,17,0" />
-      <scope id="897648160457006539" at="10,154,17,7" />
-      <scope id="897648160457006536" at="10,0,19,0">
+      <node id="897648160457020991" at="14,25,16,0" concept="7" />
+      <node id="897648160457020988" at="13,0,18,0" concept="5" trace="run#()V" />
+      <node id="897648160457020983" at="11,95,18,7" concept="2" />
+      <node id="897648160457006536" at="10,0,20,0" concept="10" trace="runReadInEDTAndWait#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljava/lang/Runnable;)V" />
+      <scope id="897648160457020990" at="14,25,16,0" />
+      <scope id="897648160457020988" at="13,0,18,0" />
+      <scope id="897648160457006539" at="10,154,18,7" />
+      <scope id="897648160457006536" at="10,0,20,0">
         <var name="editorComponent" id="897648160457048020" />
         <var name="runnable" id="897648160457020960" />
       </scope>
-      <unit id="897648160457020987" at="12,37,17,5" name="jetbrains.mps.editorTest.ReflectiveEditorActionsUtil$1" />
-      <unit id="897648160457000153" at="9,0,20,0" name="jetbrains.mps.editorTest.ReflectiveEditorActionsUtil" />
+      <unit id="897648160457020987" at="12,37,18,5" name="jetbrains.mps.editorTest.ReflectiveEditorActionsUtil$1" />
+      <unit id="897648160457000153" at="9,0,21,0" name="jetbrains.mps.editorTest.ReflectiveEditorActionsUtil" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/897648160460478551">

@@ -84,6 +84,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
 
   public boolean importVersionsUpdateRequired(Iterable<SModule> modules) {
     // not to check once for every module later 
+
     for (SModule module : ListSequence.fromList(myMpsProject.getProjectModulesWithGenerators())) {
       if (!(new VersionFixer(myMpsProject, module, true).areDepsSatisfied())) {
         return false;
@@ -150,6 +151,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
       public boolean accept(ProjectMigration it) {
         boolean isCleanup = it instanceof CleanupProjectMigration;
         // this is xor, which is absent in bl 
+
         return (cleanup ? isCleanup : !(isCleanup));
       }
     }).toListSequence();
@@ -160,6 +162,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
 
     if (ListSequence.fromList(mig).indexOf(current) < 0) {
       // was: cleanup, now: not cleanup 
+
       current = null;
     }
     if (current == null) {
@@ -179,6 +182,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
     myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         // .toList is important here, makes it not to perform calculation many times 
+
         Project p = ProjectHelper.toMPSProject(myProject);
         Iterable<SModule> modules = MigrationModuleUtil.getMigrateableModulesFromProject(p);
         if (preferredId == null) {
@@ -236,10 +240,12 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
           }
         } else {
           // todo get rid of explicit class mention 
+
           throw new IllegalArgumentException();
         }
 
         // no applicable found by id 
+
         result.value = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
           public Iterable<ScriptApplied> translate(SModule module) {
             return getAllSteps(module, true);
@@ -257,6 +263,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
 
   private boolean canBeExecutedImmediately(ScriptApplied script) {
     // todo remove explicit class mention 
+
 
     AbstractModule moduleToMigrate = (AbstractModule) script.getModule();
     if (script.getScriptReference() instanceof MigrationScriptReference) {

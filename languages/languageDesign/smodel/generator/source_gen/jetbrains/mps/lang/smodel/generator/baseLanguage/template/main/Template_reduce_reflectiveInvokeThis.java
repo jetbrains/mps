@@ -61,6 +61,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -75,6 +76,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
         }
         tnode1.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child 
+
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[0]);
@@ -90,6 +92,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
             }
             tnode5.addChild(myAggregationLinks[0], tnode6);
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist7 = null;
@@ -116,6 +119,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
               tnode5.addChild(myAggregationLinks[0], child10);
             }
             // TODO validate child 
+
           }
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[2]);
@@ -125,11 +129,13 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
             }
             tnode5.addChild(myAggregationLinks[0], tnode11);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode5);
         // TODO validate child 
+
       }
       {
         Collection<SNode> tlist12 = null;
@@ -140,6 +146,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
           tnode1.addChild(myAggregationLinks[0], child13);
         }
         // TODO validate child 
+
       }
     } finally {
     }

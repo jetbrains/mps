@@ -12,8 +12,10 @@ import java.util.ArrayList;
 public class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
   public Mac_10_5_KeymapChanges() {
     // simple 
+
     addSimpleShortcut("jetbrains.mps.ide.actions.NewElement_Action", getShortcut("meta N"), getShortcut("ctrl ENTER"));
     // simple with remove/replace 
+
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToModel_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("meta shift O"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToModule_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("meta alt O"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.NewElement_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt INSERT"), true, false), new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl alt INSERT"), true, false));
@@ -22,9 +24,11 @@ public class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl H"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowNodeInfo_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl Q"), false, true));
     // simple parameterized 
+
     addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl 0")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToRootNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("meta O")));
     // complex 
+
     addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new Mac_10_5_KeymapChanges.GoToBookmark_ShortcutChange_yfpb4i_g());
   }
   public String getScheme() {

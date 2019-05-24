@@ -396,11 +396,8 @@
       </concept>
       <concept id="1214918800624" name="jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression" flags="nn" index="3uNrnE" />
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -4950,8 +4947,43 @@
         <node concept="ucgPf" id="7mBovHgdig4" role="3aKz83">
           <node concept="3clFbS" id="7mBovHgdig6" role="2VODD2">
             <node concept="3SKdUt" id="7mBovHgdlOV" role="3cqZAp">
-              <node concept="3SKdUq" id="7mBovHgdlOX" role="3SKWNk">
-                <property role="3SKdUp" value="Check that we can use parameterObject of a primitive type without errors" />
+              <node concept="1PaTwC" id="ATZLwXo4Z$" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo4Z_" role="1PaTwD">
+                  <property role="3oM_SC" value="Check" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZA" role="1PaTwD">
+                  <property role="3oM_SC" value="that" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZB" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZC" role="1PaTwD">
+                  <property role="3oM_SC" value="can" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZD" role="1PaTwD">
+                  <property role="3oM_SC" value="use" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZE" role="1PaTwD">
+                  <property role="3oM_SC" value="parameterObject" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZF" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZG" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZH" role="1PaTwD">
+                  <property role="3oM_SC" value="primitive" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZI" role="1PaTwD">
+                  <property role="3oM_SC" value="type" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZJ" role="1PaTwD">
+                  <property role="3oM_SC" value="without" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ZK" role="1PaTwD">
+                  <property role="3oM_SC" value="errors" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs8" id="7mBovHgdi_l" role="3cqZAp">

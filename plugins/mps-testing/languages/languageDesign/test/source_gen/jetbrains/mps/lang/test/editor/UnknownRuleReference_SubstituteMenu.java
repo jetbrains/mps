@@ -48,6 +48,7 @@ public class UnknownRuleReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_duyow9_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4af0d67L, "jetbrains.mps.lang.test.structure.UnknownRuleReference"), MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration"));
     }
     @NotNull

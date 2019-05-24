@@ -267,7 +267,7 @@
       <unit id="5487985028841967992" at="50,0,215,0" name="jetbrains.mps.testbench.suite.pluginSolution.plugin.CollectTests_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841967992" at="17,30,18,41" concept="3" />
+      <node id="5487985028841967992" at="18,0,19,41" concept="3" />
     </file>
   </root>
   <root nodeRef="r:2697625c-4713-4f72-ac5a-260e305311d8(jetbrains.mps.testbench.suite.pluginSolution.plugin)/5487985028841968445">
@@ -283,8 +283,8 @@
       <unit id="5487985028841968445" at="7,0,16,0" name="jetbrains.mps.testbench.suite.pluginSolution.plugin.CollectTestsGroup_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841968445" at="19,14,20,50" concept="3" />
-      <node id="5487985028841968446" at="22,37,23,133" concept="3" />
+      <node id="5487985028841968445" at="21,0,22,50" concept="3" />
+      <node id="5487985028841968446" at="24,37,25,133" concept="3" />
     </file>
   </root>
   <root nodeRef="r:2697625c-4713-4f72-ac5a-260e305311d8(jetbrains.mps.testbench.suite.pluginSolution.plugin)/5487985028841968449">
@@ -524,21 +524,21 @@
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690968188474" at="10,0,11,0" concept="4" trace="myId" />
       <node id="7162597690968188474" at="13,27,14,16" concept="9" />
-      <node id="7162597690968188474" at="16,30,17,30" concept="10" />
-      <node id="7162597690968188474" at="18,41,19,14" concept="10" />
       <node id="7162597690968188474" at="11,0,13,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
+      <node id="7162597690968188474" at="16,30,18,0" concept="10" />
+      <node id="7162597690968188474" at="19,41,21,0" concept="10" />
       <node id="7162597690968188474" at="13,0,16,0" concept="7" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7162597690968188474" at="22,0,25,0" concept="7" trace="adjustRegularGroups#()V" />
-      <node id="7162597690968188474" at="16,0,22,0" concept="7" trace="createGroups#()V" />
+      <node id="7162597690968188474" at="24,0,27,0" concept="7" trace="adjustRegularGroups#()V" />
+      <node id="7162597690968188474" at="16,0,24,0" concept="7" trace="createGroups#()V" />
       <scope id="7162597690968188474" at="11,45,11,45" />
       <scope id="7162597690968188474" at="13,27,14,16" />
-      <scope id="7162597690968188474" at="22,37,23,133" />
+      <scope id="7162597690968188474" at="24,37,25,133" />
       <scope id="7162597690968188474" at="11,0,13,0" />
       <scope id="7162597690968188474" at="13,0,16,0" />
-      <scope id="7162597690968188474" at="22,0,25,0" />
-      <scope id="7162597690968188474" at="16,30,20,50" />
-      <scope id="7162597690968188474" at="16,0,22,0" />
-      <unit id="7162597690968188474" at="9,0,26,0" name="jetbrains.mps.testbench.suite.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
+      <scope id="7162597690968188474" at="24,0,27,0" />
+      <scope id="7162597690968188474" at="16,30,22,50" />
+      <scope id="7162597690968188474" at="16,0,24,0" />
+      <unit id="7162597690968188474" at="9,0,28,0" name="jetbrains.mps.testbench.suite.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
     </file>
   </root>
 </debug-info>

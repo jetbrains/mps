@@ -52,6 +52,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // apply rule if at least one Plan exists in input model 
+
     List<SNode> plans = SModelOperations.roots(_context.getInputModel(), MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe79bfeL, "jetbrains.mps.samples.agreementLanguage.structure.Plan"));
     return ListSequence.fromList(plans).isNotEmpty();
   }
@@ -184,6 +185,7 @@ public class QueriesGenerated extends QueryProviderBase {
       return new SNodePointer("r:54cc1fc5-5f96-4560-9408-18b968230021(postingrules)", "6531435794299654335");
     }
     // error 
+
     return null;
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {

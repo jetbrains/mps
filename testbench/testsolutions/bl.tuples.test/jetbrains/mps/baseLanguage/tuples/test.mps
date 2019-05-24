@@ -7,7 +7,7 @@
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="digr" ref="r:f52cb0e4-0aa9-419b-85cb-0e6e9e8071aa(jetbrains.mps.baseLanguage.tuples.util)" />
@@ -224,11 +224,8 @@
         <child id="1170075736412" name="block" index="1HWHxc" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
@@ -299,6 +296,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -486,8 +491,43 @@
             <property role="3V$3am" value="statement" />
             <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
             <node concept="3SKdUt" id="54rs_YZ6fzr" role="8Wnug">
-              <node concept="3SKdUq" id="54rs_YZ6fzt" role="3SKWNk">
-                <property role="3SKdUp" value="This use case no longer supported (yeah, that's right, just like that!)" />
+              <node concept="1PaTwC" id="ATZLwXopOY" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXopOZ" role="1PaTwD">
+                  <property role="3oM_SC" value="This" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP0" role="1PaTwD">
+                  <property role="3oM_SC" value="use" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP1" role="1PaTwD">
+                  <property role="3oM_SC" value="case" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP2" role="1PaTwD">
+                  <property role="3oM_SC" value="no" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP3" role="1PaTwD">
+                  <property role="3oM_SC" value="longer" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP4" role="1PaTwD">
+                  <property role="3oM_SC" value="supported" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP5" role="1PaTwD">
+                  <property role="3oM_SC" value="(yeah," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP6" role="1PaTwD">
+                  <property role="3oM_SC" value="that's" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP7" role="1PaTwD">
+                  <property role="3oM_SC" value="right," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP8" role="1PaTwD">
+                  <property role="3oM_SC" value="just" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopP9" role="1PaTwD">
+                  <property role="3oM_SC" value="like" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXopPa" role="1PaTwD">
+                  <property role="3oM_SC" value="that!)" />
+                </node>
               </node>
             </node>
           </node>
@@ -2264,8 +2304,22 @@
         <node concept="3cqZAl" id="i2$YH5u" role="3clF45" />
         <node concept="3clFbS" id="i2$YH5v" role="3clF47">
           <node concept="3SKdUt" id="5sxI3tuoEc7" role="3cqZAp">
-            <node concept="3SKdUq" id="5sxI3tuoEc8" role="3SKWNk">
-              <property role="3SKdUp" value="this test no longer applies" />
+            <node concept="1PaTwC" id="ATZLwXopPb" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXopPc" role="1PaTwD">
+                <property role="3oM_SC" value="this" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopPd" role="1PaTwD">
+                <property role="3oM_SC" value="test" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopPe" role="1PaTwD">
+                <property role="3oM_SC" value="no" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopPf" role="1PaTwD">
+                <property role="3oM_SC" value="longer" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXopPg" role="1PaTwD">
+                <property role="3oM_SC" value="applies" />
+              </node>
             </node>
           </node>
           <node concept="3clFbJ" id="5sxI3tuoEc0" role="3cqZAp">

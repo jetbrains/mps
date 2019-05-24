@@ -9,7 +9,7 @@
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="2" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="1" />
     <use id="95f8a3e6-f994-4ca0-a65e-763c9bae2d3b" name="jetbrains.mps.make.script" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <devkit ref="e073aac8-8c71-4c23-be71-86bf7a6df0a2(jetbrains.mps.devkit.bootstrap-languages)" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -206,11 +206,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -463,6 +460,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
@@ -514,8 +519,13 @@
       <node concept="2VP$b9" id="_iTMAGGJ7t" role="2VPoh3">
         <node concept="3clFbS" id="_iTMAGGJ7u" role="2VODD2">
           <node concept="3SKdUt" id="6hfjOhYiefR" role="3cqZAp">
-            <node concept="3SKdUq" id="6hfjOhYiefS" role="3SKWNk">
-              <property role="3SKdUp" value="see MPS-24613" />
+            <node concept="1PaTwC" id="ATZLwXnX9l" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnX9m" role="1PaTwD">
+                <property role="3oM_SC" value="see" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnX9n" role="1PaTwD">
+                <property role="3oM_SC" value="MPS-24613" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="_iTMAGGN9b" role="3cqZAp">
@@ -540,8 +550,13 @@
       <node concept="2VP$b9" id="2sMVRqVjO5F" role="2VPoh3">
         <node concept="3clFbS" id="2sMVRqVjO5G" role="2VODD2">
           <node concept="3SKdUt" id="6hfjOhYieCf" role="3cqZAp">
-            <node concept="3SKdUq" id="6hfjOhYieCg" role="3SKWNk">
-              <property role="3SKdUp" value="see MPS-24613" />
+            <node concept="1PaTwC" id="ATZLwXnX9o" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnX9p" role="1PaTwD">
+                <property role="3oM_SC" value="see" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnX9q" role="1PaTwD">
+                <property role="3oM_SC" value="MPS-24613" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="6hfjOhYhAoO" role="3cqZAp">
@@ -1762,8 +1777,28 @@
           <node concept="3zFVjK" id="4qoCMhQwpcz" role="3zH0cK">
             <node concept="3clFbS" id="4qoCMhQwpc$" role="2VODD2">
               <node concept="3SKdUt" id="5cTNP_RQDef" role="3cqZAp">
-                <node concept="3SKdUq" id="5cTNP_RQDeg" role="3SKWNk">
-                  <property role="3SKdUp" value="node.classifierName() should be nested class of node.facetDeclaration().classifierName" />
+                <node concept="1PaTwC" id="ATZLwXnX9r" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnX9s" role="1PaTwD">
+                    <property role="3oM_SC" value="node.classifierName()" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnX9t" role="1PaTwD">
+                    <property role="3oM_SC" value="should" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnX9u" role="1PaTwD">
+                    <property role="3oM_SC" value="be" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnX9v" role="1PaTwD">
+                    <property role="3oM_SC" value="nested" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnX9w" role="1PaTwD">
+                    <property role="3oM_SC" value="class" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnX9x" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnX9y" role="1PaTwD">
+                    <property role="3oM_SC" value="node.facetDeclaration().classifierName" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbF" id="5cTNP_RQDei" role="3cqZAp">
@@ -4345,8 +4380,13 @@
       <node concept="30G5F_" id="1na$wSWf3eX" role="30HLyM">
         <node concept="3clFbS" id="1na$wSWf3eY" role="2VODD2">
           <node concept="3SKdUt" id="6hfjOhYi4$u" role="3cqZAp">
-            <node concept="3SKdUq" id="6hfjOhYi4$w" role="3SKWNk">
-              <property role="3SKdUp" value="see MPS-24613" />
+            <node concept="1PaTwC" id="ATZLwXnX9z" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnX9$" role="1PaTwD">
+                <property role="3oM_SC" value="see" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnX9_" role="1PaTwD">
+                <property role="3oM_SC" value="MPS-24613" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1KHvivZKB6b" role="3cqZAp">
@@ -4419,8 +4459,28 @@
                             <node concept="3$xsQk" id="3AguOYZ6ht8" role="3$ytzL">
                               <node concept="3clFbS" id="3AguOYZ6ht9" role="2VODD2">
                                 <node concept="3SKdUt" id="71FvR51fVek" role="3cqZAp">
-                                  <node concept="3SKdUq" id="71FvR51fVem" role="3SKWNk">
-                                    <property role="3SKdUp" value="TODO genContext.get output FacetAspectDescriptorCons for model model;" />
+                                  <node concept="1PaTwC" id="ATZLwXnX9A" role="3ndbpf">
+                                    <node concept="3oM_SD" id="ATZLwXnX9B" role="1PaTwD">
+                                      <property role="3oM_SC" value="TODO" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnX9C" role="1PaTwD">
+                                      <property role="3oM_SC" value="genContext.get" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnX9D" role="1PaTwD">
+                                      <property role="3oM_SC" value="output" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnX9E" role="1PaTwD">
+                                      <property role="3oM_SC" value="FacetAspectDescriptorCons" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnX9F" role="1PaTwD">
+                                      <property role="3oM_SC" value="for" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnX9G" role="1PaTwD">
+                                      <property role="3oM_SC" value="model" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnX9H" role="1PaTwD">
+                                      <property role="3oM_SC" value="model;" />
+                                    </node>
                                   </node>
                                 </node>
                                 <node concept="3cpWs6" id="71FvR51faQV" role="3cqZAp">

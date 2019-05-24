@@ -102,6 +102,7 @@ public class AttributeOperations {
   }
   private static SNode insertAttribute(SNode node, SNode anchor, IAttributeDescriptor descriptor, SNode value) {
     // shall insert value *after* anchor 
+
     if (anchor == null || !(ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).contains(anchor))) {
       addAttribute(node, descriptor, value);
     } else {

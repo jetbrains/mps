@@ -22,7 +22,9 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
   }
   public void applyRule(final SNode consequence, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME there's identical code in check_TemplateDeclaration 
+
     // see TemplateContainer#checkAdjacentFragments 
+
     SNode commonParent = null;
     SContainmentLink commonAggregationLink = null;
     for (SNode tf : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(consequence, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"), false, new SAbstractConcept[]{})) {
@@ -30,6 +32,7 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
       SContainmentLink containmentLink = fragmentParent.getContainmentLink();
       if (commonParent == null) {
         // first fragment - remember its parent and role to use as reference value 
+
         commonParent = SNodeOperations.getParent(fragmentParent);
         commonAggregationLink = containmentLink;
       } else {

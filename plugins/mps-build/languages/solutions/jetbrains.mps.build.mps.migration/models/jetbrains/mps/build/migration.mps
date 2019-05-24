@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
   </languages>
   <imports>
@@ -163,11 +163,8 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -193,6 +190,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -328,8 +333,40 @@
       <node concept="3cqZAl" id="KL8Aqll4qW" role="3clF45" />
       <node concept="3clFbS" id="KL8Aqll4qX" role="3clF47">
         <node concept="3SKdUt" id="5QqlCZXsrVK" role="3cqZAp">
-          <node concept="3SKdUq" id="5QqlCZXsrVM" role="3SKWNk">
-            <property role="3SKdUp" value="todo the following line is needed until we introduce layered migration" />
+          <node concept="1PaTwC" id="ATZLwXofFK" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXofFL" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFM" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFN" role="1PaTwD">
+              <property role="3oM_SC" value="following" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFO" role="1PaTwD">
+              <property role="3oM_SC" value="line" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFP" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFQ" role="1PaTwD">
+              <property role="3oM_SC" value="needed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFR" role="1PaTwD">
+              <property role="3oM_SC" value="until" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFS" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFT" role="1PaTwD">
+              <property role="3oM_SC" value="introduce" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFU" role="1PaTwD">
+              <property role="3oM_SC" value="layered" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXofFV" role="1PaTwD">
+              <property role="3oM_SC" value="migration" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="5QqlCZXto7c" role="3cqZAp">
@@ -539,13 +576,98 @@
                       <node concept="SfApY" id="75eqTYkoETW" role="3cqZAp">
                         <node concept="3clFbS" id="75eqTYkoETX" role="SfCbr">
                           <node concept="3SKdUt" id="4142FbgXXRu" role="3cqZAp">
-                            <node concept="3SKdUq" id="4142FbgXXRw" role="3SKWNk">
-                              <property role="3SKdUp" value="XXX instead of explicit IDEA's PluginManager, we could use CL of &quot;j.m.migration.component&quot; MPS module to load desired class" />
+                            <node concept="1PaTwC" id="ATZLwXofFW" role="3ndbpf">
+                              <node concept="3oM_SD" id="ATZLwXofFX" role="1PaTwD">
+                                <property role="3oM_SC" value="XXX" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofFY" role="1PaTwD">
+                                <property role="3oM_SC" value="instead" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofFZ" role="1PaTwD">
+                                <property role="3oM_SC" value="of" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG0" role="1PaTwD">
+                                <property role="3oM_SC" value="explicit" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG1" role="1PaTwD">
+                                <property role="3oM_SC" value="IDEA's" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG2" role="1PaTwD">
+                                <property role="3oM_SC" value="PluginManager," />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG3" role="1PaTwD">
+                                <property role="3oM_SC" value="we" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG4" role="1PaTwD">
+                                <property role="3oM_SC" value="could" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG5" role="1PaTwD">
+                                <property role="3oM_SC" value="use" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG6" role="1PaTwD">
+                                <property role="3oM_SC" value="CL" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG7" role="1PaTwD">
+                                <property role="3oM_SC" value="of" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG8" role="1PaTwD">
+                                <property role="3oM_SC" value="&quot;j.m.migration.component&quot;" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofG9" role="1PaTwD">
+                                <property role="3oM_SC" value="MPS" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGa" role="1PaTwD">
+                                <property role="3oM_SC" value="module" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGb" role="1PaTwD">
+                                <property role="3oM_SC" value="to" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGc" role="1PaTwD">
+                                <property role="3oM_SC" value="load" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGd" role="1PaTwD">
+                                <property role="3oM_SC" value="desired" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGe" role="1PaTwD">
+                                <property role="3oM_SC" value="class" />
+                              </node>
                             </node>
                           </node>
                           <node concept="3SKdUt" id="4142FbgYjiG" role="3cqZAp">
-                            <node concept="3SKdUq" id="4142FbgYjiI" role="3SKWNk">
-                              <property role="3SKdUp" value="MPS would resort to proper plugin CL to perform the task." />
+                            <node concept="1PaTwC" id="ATZLwXofGf" role="3ndbpf">
+                              <node concept="3oM_SD" id="ATZLwXofGg" role="1PaTwD">
+                                <property role="3oM_SC" value="MPS" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGh" role="1PaTwD">
+                                <property role="3oM_SC" value="would" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGi" role="1PaTwD">
+                                <property role="3oM_SC" value="resort" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGj" role="1PaTwD">
+                                <property role="3oM_SC" value="to" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGk" role="1PaTwD">
+                                <property role="3oM_SC" value="proper" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGl" role="1PaTwD">
+                                <property role="3oM_SC" value="plugin" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGm" role="1PaTwD">
+                                <property role="3oM_SC" value="CL" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGn" role="1PaTwD">
+                                <property role="3oM_SC" value="to" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGo" role="1PaTwD">
+                                <property role="3oM_SC" value="perform" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGp" role="1PaTwD">
+                                <property role="3oM_SC" value="the" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXofGq" role="1PaTwD">
+                                <property role="3oM_SC" value="task." />
+                              </node>
                             </node>
                           </node>
                           <node concept="3cpWs8" id="75eqTYkqhQX" role="3cqZAp">

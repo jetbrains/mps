@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: TestSubstituteChildWithAttibute 
+          // concept 
+
           intentions = new IntentionFactory[3];
           intentions[0] = new AddOrRemoveRegularAttribute_Intention();
           intentions[1] = new AddOrRemoveTransientAttribute_Intention();

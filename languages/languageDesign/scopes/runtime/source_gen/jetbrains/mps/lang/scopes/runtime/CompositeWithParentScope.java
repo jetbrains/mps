@@ -10,6 +10,7 @@ import jetbrains.mps.scope.CompositeScope;
 public class CompositeWithParentScope {
   public static Scope from(Scope original, SNode node, SAbstractConcept kind) {
     // todo: from? 
+
     Scope nextScope = ScopeUtils.parentScope(node, kind);
     return (nextScope == null ? original : new CompositeScope(original, nextScope));
   }

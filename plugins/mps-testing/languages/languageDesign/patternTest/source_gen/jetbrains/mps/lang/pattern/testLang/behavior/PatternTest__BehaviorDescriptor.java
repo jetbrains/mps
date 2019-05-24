@@ -71,6 +71,7 @@ public final class PatternTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     // any child under nodeToMatch is of no interest for us 
+
     return (SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x78d6da5e3799eb08L, 0x78d6da5e3799eb09L, "nodeToMatch")) != null) && ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x78d6da5e3799eb08L, 0x78d6da5e3799eb09L, "nodeToMatch")));
   }
 

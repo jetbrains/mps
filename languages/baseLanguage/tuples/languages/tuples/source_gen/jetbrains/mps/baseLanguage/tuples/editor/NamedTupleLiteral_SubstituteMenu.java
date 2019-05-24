@@ -53,6 +53,7 @@ public class NamedTupleLiteral_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_k8v7cc_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleLiteral"), MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b88b156L, "tupleDeclaration"));
     }
     @NotNull

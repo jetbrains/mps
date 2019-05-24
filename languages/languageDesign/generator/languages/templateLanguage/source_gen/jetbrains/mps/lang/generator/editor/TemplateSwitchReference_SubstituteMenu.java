@@ -48,6 +48,7 @@ public class TemplateSwitchReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_ncgjod_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, "jetbrains.mps.lang.generator.structure.TemplateSwitchReference"), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, 0x1031eb352ffL, "templateSwitch"));
     }
     @NotNull

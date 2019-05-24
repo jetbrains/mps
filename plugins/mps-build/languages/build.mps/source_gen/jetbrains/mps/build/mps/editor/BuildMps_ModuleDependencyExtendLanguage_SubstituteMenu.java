@@ -53,6 +53,7 @@ public class BuildMps_ModuleDependencyExtendLanguage_SubstituteMenu extends Subs
 
     public SMP_ReferenceScope_pjk97t_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyExtendLanguage"), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language"));
     }
     @NotNull

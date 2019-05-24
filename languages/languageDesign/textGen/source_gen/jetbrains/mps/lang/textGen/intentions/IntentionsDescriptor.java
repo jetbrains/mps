@@ -33,14 +33,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: AbstractAppendPart 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new SetWithIndent_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: CollectionAppendPart 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRemoveSeparator_Intention();
         }

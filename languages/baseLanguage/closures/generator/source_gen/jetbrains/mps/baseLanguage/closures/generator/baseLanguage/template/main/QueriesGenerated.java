@@ -1491,7 +1491,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_14(final MappingScriptContext _context) {
     if (Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE) {
       //  FunctionUtil.prepAdaptations has the same constant check inside 
+
       // so the idea is to filter out irrelevant nodes asap 
+
       for (SNode cl : SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"))) {
         if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(cl), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c78301acL, "jetbrains.mps.baseLanguage.structure.BaseMethodCall"))) || !(SNodeOperations.hasRole(cl, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument")))) {
           continue;
@@ -1512,6 +1514,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     } else {
       //  original code 
+
       List<SNode> bmcs = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c78301acL, "jetbrains.mps.baseLanguage.structure.BaseMethodCall"));
       for (SNode bmc : bmcs) {
         List<SNode> args = SLinkOperations.getChildren(bmc, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"));
@@ -1541,6 +1544,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     } else {
       //  original code 
+
       List<SNode> aes = SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"));
       for (SNode ae : aes) {
         FunctionTypeUtil.prepAdaptations(_context, TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ae, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"))), SLinkOperations.getTarget(ae, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue")));
@@ -1567,6 +1571,7 @@ public class QueriesGenerated extends QueryProviderBase {
       for (SNode cl : SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"))) {
         if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(cl), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"))) || !(SNodeOperations.hasRole(cl, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument")))) {
           // TODO in case there's method call with more than one closure arg, we'll process it again, guard against this 
+
           continue;
         }
         SNode imco = SNodeOperations.cast(SNodeOperations.getParent(cl), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
@@ -1599,6 +1604,7 @@ public class QueriesGenerated extends QueryProviderBase {
     } else {
       for (SNode de : SModelOperations.nodes(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"))) {
         //  why IMCO only from DotExpression? 
+
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(de, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"))) {
           SNode imco = SNodeOperations.cast(SLinkOperations.getTarget(de, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
           List<SNode> args = SLinkOperations.getChildren(imco, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"));
@@ -1612,7 +1618,9 @@ public class QueriesGenerated extends QueryProviderBase {
               SNode arg = argsItr.next();
               if (Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE) {
                 //  TEMP HACK: proceed only if the "right" expression is a ClosureLiteral, balk otherwise 
+
                 //  This may cause unexpected results, so please disable in case of difficulties generating some code 
+
                 if (!(SNodeOperations.isInstanceOf(arg, MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral")))) {
                   continue;
                 }
@@ -1819,6 +1827,7 @@ public class QueriesGenerated extends QueryProviderBase {
       return t;
     }
     // null will end up in Switch's null handler, seems to be fine. 
+
     return TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();

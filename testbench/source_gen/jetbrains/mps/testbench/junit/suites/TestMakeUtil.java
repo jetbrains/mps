@@ -22,6 +22,7 @@ public final class TestMakeUtil {
 
   public void make(@NotNull final Project p) {
     // Apparently, derived from MpsWorker.make() 
+
     final Wrappers._T<MPSCompilationResult> mpsCompilationResult = new Wrappers._T<MPSCompilationResult>();
     p.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {

@@ -67,6 +67,7 @@ public class ModelsScope extends Scope {
           result = node;
         } else {
           // ambiguity 
+
           return null;
         }
       }

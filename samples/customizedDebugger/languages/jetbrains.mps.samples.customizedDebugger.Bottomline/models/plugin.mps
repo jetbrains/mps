@@ -134,11 +134,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
@@ -226,6 +223,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -440,8 +445,64 @@
               </node>
             </node>
             <node concept="3SKdUt" id="3D3uKT_P_e5" role="3cqZAp">
-              <node concept="3SKdUq" id="3D3uKT_P_e7" role="3SKWNk">
-                <property role="3SKdUp" value="XXX in fact, shall lock repository of a module from TResource, which is not necessarily the same as project's" />
+              <node concept="1PaTwC" id="ATZLwXo4Mv" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo4Mw" role="1PaTwD">
+                  <property role="3oM_SC" value="XXX" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4Mx" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4My" role="1PaTwD">
+                  <property role="3oM_SC" value="fact," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4Mz" role="1PaTwD">
+                  <property role="3oM_SC" value="shall" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4M$" role="1PaTwD">
+                  <property role="3oM_SC" value="lock" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4M_" role="1PaTwD">
+                  <property role="3oM_SC" value="repository" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MA" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MB" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MC" role="1PaTwD">
+                  <property role="3oM_SC" value="module" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MD" role="1PaTwD">
+                  <property role="3oM_SC" value="from" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ME" role="1PaTwD">
+                  <property role="3oM_SC" value="TResource," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MF" role="1PaTwD">
+                  <property role="3oM_SC" value="which" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MG" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MH" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MI" role="1PaTwD">
+                  <property role="3oM_SC" value="necessarily" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MJ" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MK" role="1PaTwD">
+                  <property role="3oM_SC" value="same" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4ML" role="1PaTwD">
+                  <property role="3oM_SC" value="as" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MM" role="1PaTwD">
+                  <property role="3oM_SC" value="project's" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs8" id="5L5h3brvDQT" role="3cqZAp">
@@ -800,8 +861,19 @@
             </node>
             <node concept="3clFbH" id="4g8ToP4t8yu" role="3cqZAp" />
             <node concept="3SKdUt" id="61Cu8BBxKvp" role="3cqZAp">
-              <node concept="3SKdUq" id="61Cu8BBxLcM" role="3SKWNk">
-                <property role="3SKdUp" value="collect modules to compile" />
+              <node concept="1PaTwC" id="ATZLwXo4MN" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo4MO" role="1PaTwD">
+                  <property role="3oM_SC" value="collect" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MP" role="1PaTwD">
+                  <property role="3oM_SC" value="modules" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MQ" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MR" role="1PaTwD">
+                  <property role="3oM_SC" value="compile" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs8" id="61Cu8BBDRYO" role="3cqZAp">
@@ -843,8 +915,13 @@
             </node>
             <node concept="3clFbH" id="61Cu8BBEMrD" role="3cqZAp" />
             <node concept="3SKdUt" id="61Cu8BBB0NV" role="3cqZAp">
-              <node concept="3SKdUq" id="61Cu8BBB1sx" role="3SKWNk">
-                <property role="3SKdUp" value="compile modules" />
+              <node concept="1PaTwC" id="ATZLwXo4MS" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo4MT" role="1PaTwD">
+                  <property role="3oM_SC" value="compile" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo4MU" role="1PaTwD">
+                  <property role="3oM_SC" value="modules" />
+                </node>
               </node>
             </node>
             <node concept="3clFbJ" id="61Cu8BBB2wB" role="3cqZAp">

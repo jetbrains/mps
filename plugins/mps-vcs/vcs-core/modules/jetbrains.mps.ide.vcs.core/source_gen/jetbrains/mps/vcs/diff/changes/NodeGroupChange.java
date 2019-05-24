@@ -80,7 +80,8 @@ public class NodeGroupChange extends ModelChange {
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel  
+    // get "nonconflicting" attribute in metamodel 
+
     SNode n = getParent(false);
     MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(myRole);
     if (hint != null) {
@@ -112,8 +113,10 @@ public class NodeGroupChange extends ModelChange {
   @Override
   public void apply(@NotNull final SModel model, @NotNull final NodeCopier nodeCopier) {
     // delete old nodes 
+
     prepare();
     // some nodes can be already deleted in editor (if editing is allowed) 
+
     ListSequence.fromList(myPreparedIdsToDelete).visitAll(new IVisitor<SNodeId>() {
       public void visit(SNodeId id) {
         check_yjf6x2_a0a0a0d0z(model.getNode(id));
@@ -122,6 +125,7 @@ public class NodeGroupChange extends ModelChange {
     myPreparedIdsToDelete = null;
 
     // copy nodes to insert 
+
     Iterable<SNode> nodesToAdd = ListSequence.fromList(getChangedCollection(true)).page(myResultBegin, myResultEnd).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode child) {
         return nodeCopier.copyNode(child);
@@ -129,6 +133,7 @@ public class NodeGroupChange extends ModelChange {
     });
 
     // insert new nodes 
+
     SNode beforeAnchor = (myBeforeAnchorId == null ? null : model.getNode(myBeforeAnchorId));
     SNode parent = model.getNode(myParentNodeId);
     for (SNode newNode : Sequence.fromIterable(nodesToAdd)) {
@@ -186,6 +191,7 @@ public class NodeGroupChange extends ModelChange {
     String oldStuff = (myEnd - myBegin == 1 ? role : NameUtil.formatNumericalString(myEnd - myBegin, role));
     String newStuff = (myResultEnd - myResultBegin == 1 ? role : NameUtil.formatNumericalString(myResultEnd - myResultBegin, role));
     // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
+
     if (Objects.equals(newStuff, role) && Objects.equals(oldStuff, role)) {
       newStuff = "another";
     } else if (myEnd != myBegin) {

@@ -21,6 +21,7 @@ public class RepositoryDataType extends DataType {
   @Deprecated
   public void addConfiguredAllMpsModules(AllModulesDataType value) {
     // deprecated 
+
   }
   public void addConfiguredModules(ModulesDataType folder) {
     myDescriptor.folders.add(folder.getDir().getAbsolutePath());

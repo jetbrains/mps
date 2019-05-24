@@ -7,7 +7,7 @@
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
@@ -260,11 +260,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -334,6 +331,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -528,18 +533,108 @@
       <property role="TrG5h" value="getCommonLengths" />
       <node concept="3clFbS" id="4k3fuHGtmo8" role="3clF47">
         <node concept="3SKdUt" id="4k3fuHGtmoc" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmod" role="3SKWNk">
-            <property role="3SKdUp" value="This method finds lengths of longest common subsequence for each" />
+          <node concept="1PaTwC" id="ATZLwXo61r" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo61s" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61t" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61u" role="1PaTwD">
+              <property role="3oM_SC" value="finds" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61v" role="1PaTwD">
+              <property role="3oM_SC" value="lengths" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61w" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61x" role="1PaTwD">
+              <property role="3oM_SC" value="longest" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61y" role="1PaTwD">
+              <property role="3oM_SC" value="common" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61z" role="1PaTwD">
+              <property role="3oM_SC" value="subsequence" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61$" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61_" role="1PaTwD">
+              <property role="3oM_SC" value="each" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4k3fuHGtmoe" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmof" role="3SKWNk">
-            <property role="3SKdUp" value="i first elements of a and j first elements of b. This lengths are in result" />
+          <node concept="1PaTwC" id="ATZLwXo61A" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo61B" role="1PaTwD">
+              <property role="3oM_SC" value="i" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61C" role="1PaTwD">
+              <property role="3oM_SC" value="first" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61D" role="1PaTwD">
+              <property role="3oM_SC" value="elements" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61E" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61F" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61G" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61H" role="1PaTwD">
+              <property role="3oM_SC" value="j" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61I" role="1PaTwD">
+              <property role="3oM_SC" value="first" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61J" role="1PaTwD">
+              <property role="3oM_SC" value="elements" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61K" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61L" role="1PaTwD">
+              <property role="3oM_SC" value="b." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61M" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61N" role="1PaTwD">
+              <property role="3oM_SC" value="lengths" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61O" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61P" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61Q" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4k3fuHGtmog" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmoh" role="3SKWNk">
-            <property role="3SKdUp" value="two-dimensional array at [i][j] position" />
+          <node concept="1PaTwC" id="ATZLwXo61R" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo61S" role="1PaTwD">
+              <property role="3oM_SC" value="two-dimensional" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61T" role="1PaTwD">
+              <property role="3oM_SC" value="array" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61U" role="1PaTwD">
+              <property role="3oM_SC" value="at" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61V" role="1PaTwD">
+              <property role="3oM_SC" value="[i][j]" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61W" role="1PaTwD">
+              <property role="3oM_SC" value="position" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="4k3fuHGtmpY" role="3cqZAp">
@@ -816,13 +911,65 @@
       <node concept="3Tm1VV" id="4k3fuHGtmsg" role="1B3o_S" />
       <node concept="3clFbS" id="4k3fuHGtmsh" role="3clF47">
         <node concept="3SKdUt" id="4k3fuHGtmsm" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmsn" role="3SKWNk">
-            <property role="3SKdUp" value="This method finds pairs of indices in a and b lists which are" />
+          <node concept="1PaTwC" id="ATZLwXo61X" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo61Y" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo61Z" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo620" role="1PaTwD">
+              <property role="3oM_SC" value="finds" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo621" role="1PaTwD">
+              <property role="3oM_SC" value="pairs" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo622" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo623" role="1PaTwD">
+              <property role="3oM_SC" value="indices" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo624" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo625" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo626" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo627" role="1PaTwD">
+              <property role="3oM_SC" value="b" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo628" role="1PaTwD">
+              <property role="3oM_SC" value="lists" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo629" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62a" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4k3fuHGtmso" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmsp" role="3SKWNk">
-            <property role="3SKdUp" value="elements of longest common subsequence" />
+          <node concept="1PaTwC" id="ATZLwXo62b" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo62c" role="1PaTwD">
+              <property role="3oM_SC" value="elements" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62d" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62e" role="1PaTwD">
+              <property role="3oM_SC" value="longest" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62f" role="1PaTwD">
+              <property role="3oM_SC" value="common" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62g" role="1PaTwD">
+              <property role="3oM_SC" value="subsequence" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="4k3fuHGtmsr" role="3cqZAp">
@@ -1088,13 +1235,74 @@
       </node>
       <node concept="3clFbS" id="4k3fuHGtmw0" role="3clF47">
         <node concept="3SKdUt" id="4k3fuHGtmwl" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmwm" role="3SKWNk">
-            <property role="3SKdUp" value="This methods finds pairs of begin-end pairs of original lists a and b" />
+          <node concept="1PaTwC" id="ATZLwXo62h" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo62i" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62j" role="1PaTwD">
+              <property role="3oM_SC" value="methods" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62k" role="1PaTwD">
+              <property role="3oM_SC" value="finds" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62l" role="1PaTwD">
+              <property role="3oM_SC" value="pairs" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62m" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62n" role="1PaTwD">
+              <property role="3oM_SC" value="begin-end" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62o" role="1PaTwD">
+              <property role="3oM_SC" value="pairs" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62p" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62q" role="1PaTwD">
+              <property role="3oM_SC" value="original" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62r" role="1PaTwD">
+              <property role="3oM_SC" value="lists" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62s" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62t" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62u" role="1PaTwD">
+              <property role="3oM_SC" value="b" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4k3fuHGtmwn" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmwo" role="3SKWNk">
-            <property role="3SKdUp" value="which are not included into longest common subsequence" />
+          <node concept="1PaTwC" id="ATZLwXo62v" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo62w" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62x" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62y" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62z" role="1PaTwD">
+              <property role="3oM_SC" value="included" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62$" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62_" role="1PaTwD">
+              <property role="3oM_SC" value="longest" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62A" role="1PaTwD">
+              <property role="3oM_SC" value="common" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62B" role="1PaTwD">
+              <property role="3oM_SC" value="subsequence" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="4k3fuHGtmwr" role="3cqZAp">
@@ -1323,13 +1531,71 @@
       <node concept="3Tm1VV" id="4k3fuHGtmy_" role="1B3o_S" />
       <node concept="3clFbS" id="4k3fuHGtmyA" role="3clF47">
         <node concept="3SKdUt" id="4k3fuHGtmyT" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmyU" role="3SKWNk">
-            <property role="3SKdUp" value="This methods finds pairs of subsequences of original lists a and b" />
+          <node concept="1PaTwC" id="ATZLwXo62C" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo62D" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62E" role="1PaTwD">
+              <property role="3oM_SC" value="methods" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62F" role="1PaTwD">
+              <property role="3oM_SC" value="finds" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62G" role="1PaTwD">
+              <property role="3oM_SC" value="pairs" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62H" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62I" role="1PaTwD">
+              <property role="3oM_SC" value="subsequences" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62J" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62K" role="1PaTwD">
+              <property role="3oM_SC" value="original" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62L" role="1PaTwD">
+              <property role="3oM_SC" value="lists" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62M" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62N" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62O" role="1PaTwD">
+              <property role="3oM_SC" value="b" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4k3fuHGtmyV" role="3cqZAp">
-          <node concept="3SKdUq" id="4k3fuHGtmyW" role="3SKWNk">
-            <property role="3SKdUp" value="which are not included into longest common subsequence" />
+          <node concept="1PaTwC" id="ATZLwXo62P" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo62Q" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62R" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62S" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62T" role="1PaTwD">
+              <property role="3oM_SC" value="included" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62U" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62V" role="1PaTwD">
+              <property role="3oM_SC" value="longest" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62W" role="1PaTwD">
+              <property role="3oM_SC" value="common" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo62X" role="1PaTwD">
+              <property role="3oM_SC" value="subsequence" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="4k3fuHGtmyY" role="3cqZAp">
@@ -1786,8 +2052,19 @@
               </node>
               <node concept="3clFbS" id="Zy7uuH6KQK" role="3clFbx">
                 <node concept="3SKdUt" id="Zy7uuH6KSp" role="3cqZAp">
-                  <node concept="3SKdUq" id="Zy7uuH6KSq" role="3SKWNk">
-                    <property role="3SKdUp" value="cannot be both null" />
+                  <node concept="1PaTwC" id="ATZLwXo62Y" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXo62Z" role="1PaTwD">
+                      <property role="3oM_SC" value="cannot" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo630" role="1PaTwD">
+                      <property role="3oM_SC" value="be" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo631" role="1PaTwD">
+                      <property role="3oM_SC" value="both" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo632" role="1PaTwD">
+                      <property role="3oM_SC" value="null" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3cpWs6" id="Zy7uuH6KSl" role="3cqZAp">
@@ -1888,8 +2165,13 @@
               <node concept="9aQIb" id="5_CsANpWF_N" role="9aQIa">
                 <node concept="3clFbS" id="5_CsANpWF_O" role="9aQI4">
                   <node concept="3SKdUt" id="5_CsANpWF_R" role="3cqZAp">
-                    <node concept="3SKdUq" id="5_CsANpWF_S" role="3SKWNk">
-                      <property role="3SKdUp" value="both static" />
+                    <node concept="1PaTwC" id="ATZLwXo633" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXo634" role="1PaTwD">
+                        <property role="3oM_SC" value="both" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXo635" role="1PaTwD">
+                        <property role="3oM_SC" value="static" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3clFbJ" id="6kZNNdikoBY" role="3cqZAp">
@@ -1925,16 +2207,32 @@
                 <node concept="3clFbJ" id="5_CsANpWF_q" role="3cqZAp">
                   <node concept="3clFbS" id="5_CsANpWF_r" role="3clFbx">
                     <node concept="3SKdUt" id="5_CsANpWF_G" role="3cqZAp">
-                      <node concept="3SKdUq" id="5_CsANpWF_P" role="3SKWNk">
-                        <property role="3SKdUp" value="both dynamic, ok" />
+                      <node concept="1PaTwC" id="ATZLwXo636" role="3ndbpf">
+                        <node concept="3oM_SD" id="ATZLwXo637" role="1PaTwD">
+                          <property role="3oM_SC" value="both" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXo638" role="1PaTwD">
+                          <property role="3oM_SC" value="dynamic," />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXo639" role="1PaTwD">
+                          <property role="3oM_SC" value="ok" />
+                        </node>
                       </node>
                     </node>
                   </node>
                   <node concept="9aQIb" id="5_CsANpWF_I" role="9aQIa">
                     <node concept="3clFbS" id="5_CsANpWF_J" role="9aQI4">
                       <node concept="3SKdUt" id="5_CsANpWF_V" role="3cqZAp">
-                        <node concept="3SKdUq" id="5_CsANpWF_W" role="3SKWNk">
-                          <property role="3SKdUp" value="dynamic and static" />
+                        <node concept="1PaTwC" id="ATZLwXo63a" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXo63b" role="1PaTwD">
+                            <property role="3oM_SC" value="dynamic" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo63c" role="1PaTwD">
+                            <property role="3oM_SC" value="and" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXo63d" role="1PaTwD">
+                            <property role="3oM_SC" value="static" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3cpWs6" id="5_CsANpWF_K" role="3cqZAp">
@@ -5168,8 +5466,43 @@
       </node>
       <node concept="3clFbS" id="7WvVJ3rORmw" role="3clF47">
         <node concept="3SKdUt" id="4PEU_EzCK_" role="3cqZAp">
-          <node concept="3SKdUq" id="4PEU_EzCKB" role="3SKWNk">
-            <property role="3SKdUp" value="replaced NameUtil.getModelLongName didn't expect null and returned a qualified name w/o stereotype" />
+          <node concept="1PaTwC" id="ATZLwXo63e" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo63f" role="1PaTwD">
+              <property role="3oM_SC" value="replaced" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63g" role="1PaTwD">
+              <property role="3oM_SC" value="NameUtil.getModelLongName" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63h" role="1PaTwD">
+              <property role="3oM_SC" value="didn't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63i" role="1PaTwD">
+              <property role="3oM_SC" value="expect" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63j" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63k" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63l" role="1PaTwD">
+              <property role="3oM_SC" value="returned" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63m" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63n" role="1PaTwD">
+              <property role="3oM_SC" value="qualified" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63o" role="1PaTwD">
+              <property role="3oM_SC" value="name" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63p" role="1PaTwD">
+              <property role="3oM_SC" value="w/o" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63q" role="1PaTwD">
+              <property role="3oM_SC" value="stereotype" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="4PEU_EzD2W" role="3cqZAp">
@@ -5345,8 +5678,34 @@
       </node>
       <node concept="3clFbS" id="54ElNE$imKt" role="3clF47">
         <node concept="3SKdUt" id="4PyfkrjcuPs" role="3cqZAp">
-          <node concept="3SKdUq" id="4PyfkrjcuPE" role="3SKWNk">
-            <property role="3SKdUp" value="I wonder why this method doesn't reside in SModelOperations" />
+          <node concept="1PaTwC" id="ATZLwXo63r" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo63s" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63t" role="1PaTwD">
+              <property role="3oM_SC" value="wonder" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63u" role="1PaTwD">
+              <property role="3oM_SC" value="why" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63v" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63w" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63x" role="1PaTwD">
+              <property role="3oM_SC" value="doesn't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63y" role="1PaTwD">
+              <property role="3oM_SC" value="reside" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63z" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo63$" role="1PaTwD">
+              <property role="3oM_SC" value="SModelOperations" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="54ElNE$iodD" role="3cqZAp">
@@ -5569,8 +5928,37 @@
                   </node>
                 </node>
                 <node concept="3SKdUt" id="6TtJ6IUlxT5" role="3cqZAp">
-                  <node concept="3SKdUq" id="6TtJ6IUlxT4" role="3SKWNk">
-                    <property role="3SKdUp" value="Set a flag to indicate that the write was successful" />
+                  <node concept="1PaTwC" id="ATZLwXo63_" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXo63A" role="1PaTwD">
+                      <property role="3oM_SC" value="Set" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63B" role="1PaTwD">
+                      <property role="3oM_SC" value="a" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63C" role="1PaTwD">
+                      <property role="3oM_SC" value="flag" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63D" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63E" role="1PaTwD">
+                      <property role="3oM_SC" value="indicate" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63F" role="1PaTwD">
+                      <property role="3oM_SC" value="that" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63G" role="1PaTwD">
+                      <property role="3oM_SC" value="the" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63H" role="1PaTwD">
+                      <property role="3oM_SC" value="write" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63I" role="1PaTwD">
+                      <property role="3oM_SC" value="was" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXo63J" role="1PaTwD">
+                      <property role="3oM_SC" value="successful" />
+                    </node>
                   </node>
                 </node>
               </node>

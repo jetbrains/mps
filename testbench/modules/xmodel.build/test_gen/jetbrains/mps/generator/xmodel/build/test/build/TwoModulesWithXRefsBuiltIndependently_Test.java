@@ -52,6 +52,7 @@ public class TwoModulesWithXRefsBuiltIndependently_Test extends EnvironmentAware
         public void onTextAvailable(ProcessEvent event, Key key) {
           if (ProcessOutputTypes.STDERR.equals(key)) {
             // print errors 
+
             System.err.print(event.getText());
           } else {
             System.out.print(event.getText());
@@ -59,6 +60,7 @@ public class TwoModulesWithXRefsBuiltIndependently_Test extends EnvironmentAware
         }
       };
       // macroToDefine is needed in binaries, the property is from IDE on sources 
+
       String mpsHomePath = System.getProperty("mps.home.path");
       String options = (mpsHomePath != null ? "-D" + MacrosFactory.MPS_HOME_MACRO_NAME + "=" + mpsHomePath : "");
       ProcessHandler process1 = new Ant_Command().setTargetName_String("generate assemble").setOptions_String(options).setMacroToDefine_ListString(Sequence.fromIterable(Sequence.<String>singleton(MacrosFactory.MPS_HOME_MACRO_NAME)).toListSequence()).createProcess("testbench/modules/xmodel.build/p1.xml");
@@ -81,6 +83,7 @@ public class TwoModulesWithXRefsBuiltIndependently_Test extends EnvironmentAware
   }
   public void setUp() {
     // Need IdeaEnvironment here because ant command uses IDEA's PathMacros, not that of MPS core. 
+
     assert myEnvironment instanceof IdeaEnvironment;
   }
 }

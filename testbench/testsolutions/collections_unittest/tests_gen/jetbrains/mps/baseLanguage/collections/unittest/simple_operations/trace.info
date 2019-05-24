@@ -291,10 +291,10 @@
       <node id="1172267741016" at="60,45,61,93" concept="9" />
       <node id="1172267782804" at="61,93,62,64" concept="4" />
       <node id="1172268431597" at="62,64,63,65" concept="4" />
-      <node id="7376433222636453905" at="63,65,64,17" concept="11" />
-      <node id="1205787985087" at="64,17,65,16" concept="4" />
-      <node id="1205787995891" at="65,16,66,65" concept="4" />
-      <node id="1172267731982" at="60,0,68,0" concept="8" trace="test_test2#()V" />
+      <node id="1205787985087" at="65,0,66,16" concept="4" />
+      <node id="1205787995891" at="66,16,67,65" concept="4" />
+      <node id="7376433222636453905" at="63,65,65,0" concept="11" />
+      <node id="1172267731982" at="60,0,69,0" concept="8" trace="test_test2#()V" />
       <node id="1224596675028" at="25,20,48,19" concept="14" />
       <node id="1224596675028" at="23,46,49,31" concept="3" />
       <node id="1224596675028" at="23,0,52,0" concept="8" trace="moveToNext#()Z" />
@@ -310,10 +310,10 @@
       <scope id="1224596679610" at="31,27,34,34" />
       <scope id="1224596679971" at="35,27,38,34" />
       <scope id="1224596680312" at="39,27,42,34" />
-      <scope id="1172267731983" at="60,45,66,65">
+      <scope id="1172267731983" at="60,45,67,65">
         <var name="intL" id="1172267741017" />
       </scope>
-      <scope id="1172267731982" at="60,0,68,0" />
+      <scope id="1172267731982" at="60,0,69,0" />
       <scope id="1224596675028" at="25,20,48,19" />
       <scope id="1224596675028" at="23,46,50,29" />
       <scope id="1224596675028" at="23,0,52,0" />
@@ -328,7 +328,7 @@
       <unit id="1224596675028" at="21,23,52,13" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Contains_Test$1$1$1" />
       <unit id="1224596675028" at="19,19,54,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Contains_Test$1$1" />
       <unit id="1224596675028" at="17,54,56,5" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Contains_Test$1" />
-      <unit id="1172256754301" at="15,0,69,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Contains_Test" />
+      <unit id="1172256754301" at="15,0,70,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Contains_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903c2(jetbrains.mps.baseLanguage.collections.unittest.simple_operations)/1176938643518">
@@ -367,19 +367,19 @@
       <node id="1224596674538" at="86,31,87,29" concept="10" />
       <node id="1176938902284" at="93,7,94,86" concept="9" />
       <node id="1176939104250" at="94,86,95,60" concept="4" />
-      <node id="7376433222636453941" at="95,60,96,32" concept="11" />
-      <node id="1176942485915" at="96,32,97,61" concept="4" />
-      <node id="1176942511728" at="97,61,98,61" concept="4" />
-      <node id="1176942516488" at="98,61,99,61" concept="4" />
-      <node id="1176942526092" at="99,61,100,61" concept="4" />
-      <node id="7376433222636453125" at="100,61,101,17" concept="11" />
-      <node id="1205788920584" at="101,17,102,14" concept="4" />
-      <node id="1205788949900" at="102,14,103,87" concept="9" />
-      <node id="1205788965347" at="103,87,104,63" concept="4" />
-      <node id="1205788996169" at="104,63,105,67" concept="9" />
-      <node id="1205789000428" at="105,67,106,64" concept="4" />
-      <node id="1205789128065" at="106,64,107,65" concept="9" />
-      <node id="1205789148356" at="107,65,108,57" concept="4" />
+      <node id="1176942485915" at="97,0,98,61" concept="4" />
+      <node id="1176942511728" at="98,61,99,61" concept="4" />
+      <node id="1176942516488" at="99,61,100,61" concept="4" />
+      <node id="1176942526092" at="100,61,101,61" concept="4" />
+      <node id="1205788920584" at="103,0,104,14" concept="4" />
+      <node id="1205788949900" at="104,14,105,87" concept="9" />
+      <node id="1205788965347" at="105,87,106,63" concept="4" />
+      <node id="1205788996169" at="106,63,107,67" concept="9" />
+      <node id="1205789000428" at="107,67,108,64" concept="4" />
+      <node id="1205789128065" at="108,64,109,65" concept="9" />
+      <node id="1205789148356" at="109,65,110,57" concept="4" />
+      <node id="7376433222636453941" at="95,60,97,0" concept="11" />
+      <node id="7376433222636453125" at="101,61,103,0" concept="11" />
       <node id="1224596674916" at="22,20,45,19" concept="14" />
       <node id="1224596674538" at="62,20,85,19" concept="14" />
       <node id="1224596674916" at="20,46,46,31" concept="3" />
@@ -396,7 +396,7 @@
       <node id="1224596674538" at="55,0,93,0" concept="8" trace="iterable#()Ljava/lang/Iterable;" />
       <node id="1176938703546" at="13,46,53,7" concept="9" />
       <node id="1176938768117" at="53,7,93,7" concept="9" />
-      <node id="1176938681926" at="13,0,110,0" concept="8" trace="test_union1#()V" />
+      <node id="1176938681926" at="13,0,112,0" concept="8" trace="test_union1#()V" />
       <scope id="1224596674916" at="43,28,44,37" />
       <scope id="1224596674538" at="83,28,84,37" />
       <scope id="1224596674916" at="25,28,27,35" />
@@ -423,7 +423,7 @@
       <scope id="1224596674538" at="55,43,91,10" />
       <scope id="1224596674916" at="15,0,53,0" />
       <scope id="1224596674538" at="55,0,93,0" />
-      <scope id="1176938681927" at="13,46,108,57">
+      <scope id="1176938681927" at="13,46,110,57">
         <var name="s1" id="1176938703547" />
         <var name="s2" id="1176938768118" />
         <var name="s2_" id="1205788949901" />
@@ -431,14 +431,14 @@
         <var name="s3" id="1176938902285" />
         <var name="s4" id="1205789128066" />
       </scope>
-      <scope id="1176938681926" at="13,0,110,0" />
+      <scope id="1176938681926" at="13,0,112,0" />
       <unit id="1224596674916" at="18,23,49,13" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test$1$1$1" />
       <unit id="1224596674538" at="58,23,89,13" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test$2$1$1" />
       <unit id="1224596674916" at="16,19,51,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test$1$1" />
       <unit id="1224596674538" at="56,19,91,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test$2$1" />
       <unit id="1224596674916" at="14,52,53,5" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test$1" />
       <unit id="1224596674538" at="54,52,93,5" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test$2" />
-      <unit id="1176938643518" at="12,0,111,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test" />
+      <unit id="1176938643518" at="12,0,113,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Union_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903c2(jetbrains.mps.baseLanguage.collections.unittest.simple_operations)/1178898648960">
@@ -1269,12 +1269,12 @@
       <node id="1181074108487" at="99,78,100,78" concept="4" />
       <node id="1181074109161" at="100,78,101,78" concept="4" />
       <node id="1181074109993" at="101,78,102,78" concept="4" />
-      <node id="7376433222636454469" at="102,78,103,17" concept="11" />
-      <node id="1205787723039" at="103,17,104,14" concept="4" />
-      <node id="1205787759883" at="104,14,105,88" concept="9" />
-      <node id="1205787774080" at="105,88,106,63" concept="4" />
-      <node id="1205787891988" at="106,63,107,68" concept="9" />
-      <node id="1205787896043" at="107,68,108,64" concept="4" />
+      <node id="1205787723039" at="104,0,105,14" concept="4" />
+      <node id="1205787759883" at="105,14,106,88" concept="9" />
+      <node id="1205787774080" at="106,88,107,63" concept="4" />
+      <node id="1205787891988" at="107,63,108,68" concept="9" />
+      <node id="1205787896043" at="108,68,109,64" concept="4" />
+      <node id="7376433222636454469" at="102,78,104,0" concept="11" />
       <node id="1224596674996" at="24,20,47,19" concept="14" />
       <node id="1224596674277" at="64,20,87,19" concept="14" />
       <node id="1224596674996" at="22,46,48,31" concept="3" />
@@ -1291,7 +1291,7 @@
       <node id="1224596674277" at="57,0,95,0" concept="8" trace="iterable#()Ljava/lang/Iterable;" />
       <node id="1181072909472" at="15,45,55,7" concept="9" />
       <node id="1181072938780" at="55,7,95,7" concept="9" />
-      <node id="1181072889623" at="15,0,110,0" concept="8" trace="test_test1#()V" />
+      <node id="1181072889623" at="15,0,111,0" concept="8" trace="test_test1#()V" />
       <scope id="1224596674996" at="45,28,46,37" />
       <scope id="1224596674277" at="85,28,86,37" />
       <scope id="1224596674996" at="27,28,29,35" />
@@ -1318,21 +1318,21 @@
       <scope id="1224596674277" at="57,43,93,10" />
       <scope id="1224596674996" at="17,0,55,0" />
       <scope id="1224596674277" at="57,0,95,0" />
-      <scope id="1181072889625" at="15,45,108,64">
+      <scope id="1181072889625" at="15,45,109,64">
         <var name="s1" id="1181072909473" />
         <var name="s2" id="1181072938781" />
         <var name="s2_" id="1205787759884" />
         <var name="s2__" id="1205787891989" />
         <var name="s3" id="1181072957067" />
       </scope>
-      <scope id="1181072889623" at="15,0,110,0" />
+      <scope id="1181072889623" at="15,0,111,0" />
       <unit id="1224596674996" at="20,23,51,13" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$1$1$1" />
       <unit id="1224596674277" at="60,23,91,13" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$2$1$1" />
       <unit id="1224596674996" at="18,19,53,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$1$1" />
       <unit id="1224596674277" at="58,19,93,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$2$1" />
       <unit id="1224596674996" at="16,52,55,5" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$1" />
       <unit id="1224596674277" at="56,52,95,5" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$2" />
-      <unit id="1181072883581" at="14,0,111,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test" />
+      <unit id="1181072883581" at="14,0,112,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903c2(jetbrains.mps.baseLanguage.collections.unittest.simple_operations)/1197927649975">

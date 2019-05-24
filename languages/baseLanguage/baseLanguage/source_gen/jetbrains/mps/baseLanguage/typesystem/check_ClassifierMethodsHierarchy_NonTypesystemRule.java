@@ -24,7 +24,9 @@ public class check_ClassifierMethodsHierarchy_NonTypesystemRule extends Abstract
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // [node to check + node to report to] -- hack to work with enum constant declarations 
+
     // I think that it must be solved if we pull up all the traversing code to IMemberContainer (or smth like this) 
+
     List<Pair<SNode, SNode>> toCheck = ListSequence.fromList(new ArrayList<Pair<SNode, SNode>>());
     if (SNodeOperations.isInstanceOf(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant"))).isNotEmpty()) {
       ListSequence.fromList(toCheck).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant"))).select(new ISelector<SNode, Pair<SNode, SNode>>() {

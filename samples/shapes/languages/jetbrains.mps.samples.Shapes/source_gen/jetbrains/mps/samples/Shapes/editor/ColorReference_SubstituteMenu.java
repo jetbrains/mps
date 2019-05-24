@@ -48,6 +48,7 @@ public class ColorReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_j87eyw_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, "jetbrains.mps.samples.Shapes.structure.ColorReference"), MetaAdapterFactory.getReferenceLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, 0x3a2b0182df22029aL, "target"));
     }
     @NotNull

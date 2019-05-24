@@ -77,7 +77,9 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
 
     // override what action maps we are able to import from 
+
     // based on compatibility of applicable concepts 
+
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration")) && ScopeUtils.comeFrom(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x765abcb2949869d3L, "imports"), __thisNode__, child)) {
       return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), false, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration"))) {
         @Override
@@ -101,6 +103,7 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
 
     if (Objects.equals(SLinkOperations.getTarget(next, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap")), __thisNode__)) {
       // `next` import completes a cycle starting in this action map 
+
       ListSequence.fromList(accumulator).addElement(new ImportCycle(Sequence.fromIterable(_traceback.value).concat(ListSequence.fromList(Collections.singletonList(next)))));
       return;
     }
@@ -111,7 +114,9 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
       }
     })) {
       // Found a cycle which, however, doesn't contain this action map. 
+
       // Ignore here, it is detected from a different starting point. 
+
       return;
     }
 
@@ -129,12 +134,14 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
     final Wrappers._T<Iterable<SNode>> _visited = new Wrappers._T<Iterable<SNode>>(visited);
     if (Sequence.fromIterable(_visited.value).contains(__thisNode__)) {
       // cycle in imports detected, ignore this action map 
+
       return;
     }
 
     _visited.value = Sequence.fromIterable(_visited.value).concat(Sequence.fromIterable(Sequence.<SNode>singleton(__thisNode__)));
 
     // first handle imports 
+
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x765abcb2949869d3L, "imports"))).visitAll(new IVisitor<SNode>() {
       public void visit(SNode imp) {
         if ((boolean) CellActionMapImportSelector__BehaviorDescriptor.selectsActionId_id3XXPjz_pJfc.invoke(SLinkOperations.getTarget(imp, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x4f883d04113872dbL, "selector")), actionId)) {
@@ -145,6 +152,7 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
 
 
     // then handle actions defined directly in this action map 
+
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d01L, "item"))).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         if (Objects.equals(CellActionMapItem__BehaviorDescriptor.getActionId_idJCy0JrvU0M.invoke(it), actionId)) {

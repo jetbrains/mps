@@ -48,6 +48,7 @@ public class RequiredPlugin_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_cpu6qr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, "jetbrains.mps.build.mps.runner.structure.RequiredPlugin"), MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin"));
     }
     @NotNull

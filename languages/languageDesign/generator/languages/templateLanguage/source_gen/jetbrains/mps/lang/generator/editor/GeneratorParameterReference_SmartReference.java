@@ -48,6 +48,7 @@ public class GeneratorParameterReference_SmartReference extends SubstituteMenuBa
 
     public SMP_ReferenceScope_zgxupi_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283cbf8aL, "jetbrains.mps.lang.generator.structure.GeneratorParameterReference"), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283cbf8aL, 0x90726ff283cbf8cL, "declaration"));
     }
     @NotNull

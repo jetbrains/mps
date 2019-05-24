@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="rk9m" ref="r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)" />
@@ -227,11 +227,8 @@
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
         <child id="1221737317278" name="statementList" index="1Pe0a2" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="2580416627845338977" name="jetbrains.mps.baseLanguage.structure.ImplicitAnnotationInstanceValue" flags="ng" index="1SXeKx" />
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -293,6 +290,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2976,8 +2981,28 @@
         <node concept="3Tm1VV" id="4O1dS63TR43" role="1B3o_S" />
         <node concept="3clFbS" id="4O1dS63TR44" role="3clF47">
           <node concept="3SKdUt" id="54Z1$RHmZEn" role="3cqZAp">
-            <node concept="3SKdUq" id="54Z1$RHmZMz" role="3SKWNk">
-              <property role="3SKdUp" value="Test empty script (no languages/make facets involved)" />
+            <node concept="1PaTwC" id="ATZLwXoqjz" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXoqj$" role="1PaTwD">
+                <property role="3oM_SC" value="Test" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqj_" role="1PaTwD">
+                <property role="3oM_SC" value="empty" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjA" role="1PaTwD">
+                <property role="3oM_SC" value="script" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjB" role="1PaTwD">
+                <property role="3oM_SC" value="(no" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjC" role="1PaTwD">
+                <property role="3oM_SC" value="languages/make" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjD" role="1PaTwD">
+                <property role="3oM_SC" value="facets" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjE" role="1PaTwD">
+                <property role="3oM_SC" value="involved)" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="4O1dS63TRrV" role="3cqZAp">
@@ -3087,8 +3112,34 @@
             </node>
           </node>
           <node concept="3SKdUt" id="54Z1$RHn0eE" role="3cqZAp">
-            <node concept="3SKdUq" id="54Z1$RHn6Rf" role="3SKWNk">
-              <property role="3SKdUp" value="Fake ScriptBuilder invocation, to satisfy mock expectations of setUp/tearDown" />
+            <node concept="1PaTwC" id="ATZLwXoqjF" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXoqjG" role="1PaTwD">
+                <property role="3oM_SC" value="Fake" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjH" role="1PaTwD">
+                <property role="3oM_SC" value="ScriptBuilder" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjI" role="1PaTwD">
+                <property role="3oM_SC" value="invocation," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjJ" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjK" role="1PaTwD">
+                <property role="3oM_SC" value="satisfy" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjL" role="1PaTwD">
+                <property role="3oM_SC" value="mock" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjM" role="1PaTwD">
+                <property role="3oM_SC" value="expectations" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjN" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoqjO" role="1PaTwD">
+                <property role="3oM_SC" value="setUp/tearDown" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="54Z1$RHn2oi" role="3cqZAp">
@@ -3827,8 +3878,34 @@
           </node>
         </node>
         <node concept="3SKdUt" id="DgErZvRp3W" role="3cqZAp">
-          <node concept="3SKdUq" id="DgErZvRp3Y" role="3SKWNk">
-            <property role="3SKdUp" value="foe now, need to make instance available through FR.getInstance()" />
+          <node concept="1PaTwC" id="ATZLwXoqjP" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqjQ" role="1PaTwD">
+              <property role="3oM_SC" value="foe" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjR" role="1PaTwD">
+              <property role="3oM_SC" value="now," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjS" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjT" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjU" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjV" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjW" role="1PaTwD">
+              <property role="3oM_SC" value="available" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjX" role="1PaTwD">
+              <property role="3oM_SC" value="through" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqjY" role="1PaTwD">
+              <property role="3oM_SC" value="FR.getInstance()" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="DgErZvRmij" role="3cqZAp">

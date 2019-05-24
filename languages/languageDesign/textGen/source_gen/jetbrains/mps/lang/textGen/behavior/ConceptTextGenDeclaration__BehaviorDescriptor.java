@@ -62,6 +62,7 @@ public final class ConceptTextGenDeclaration__BehaviorDescriptor extends BaseBHD
   }
   /*package*/ static boolean shallProduceOutputUnit_id3fG6dkhfrk3(@NotNull SNode __thisNode__) {
     // keep the knowledge which concepts we deem as TextUnit origin in a single place 
+
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, 0x11f3c7a3d4dL, "conceptDeclaration")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")) && SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, 0x11f3c7a3d4dL, "conceptDeclaration")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable"));
   }
   /*package*/ static boolean needsUnitConfigure_id1SvnOIGt_fM(@NotNull SNode __thisNode__) {

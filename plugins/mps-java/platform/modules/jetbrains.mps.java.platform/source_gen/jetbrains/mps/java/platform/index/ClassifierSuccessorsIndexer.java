@@ -121,6 +121,7 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
       try {
         SModelData modelData = RootNodeNameIndex.doModelParsing(myPlatform, inputData);
         // e.g. model with merge conflict 
+
         if (modelData == null) {
           return Collections.emptyMap();
         }
@@ -170,6 +171,7 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
         MapSequence.fromMap(result).put(key, successors);
       }
       // being careful with node.pointer because node is not in a model 
+
       successors.add(new SNodeEntry(modelReference, node.getNodeId()));
     }
   }

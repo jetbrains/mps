@@ -35,105 +35,105 @@
     <file name="MPSRequestManager.java">
       <node id="4060668212259736923" at="27,0,28,0" concept="11" trace="LOG" />
       <node id="3449511381527584111" at="29,0,30,0" concept="11" trace="TRUSTED" />
-      <node id="5105871187691616859" at="32,61,33,89" concept="9" />
-      <node id="5105871187691621709" at="33,89,34,95" concept="9" />
-      <node id="5105871187691628720" at="34,95,35,89" concept="9" />
-      <node id="5105871187691615243" at="35,89,36,0" concept="10" />
-      <node id="5105871187691474312" at="36,0,37,43" concept="7" />
-      <node id="5105871187691484515" at="38,104,39,19" concept="8" />
-      <node id="5105871187691490548" at="40,5,41,0" concept="10" />
-      <node id="3449511381527425416" at="41,0,42,49" concept="7" />
-      <node id="3449511381527431541" at="43,55,44,46" concept="2" />
-      <node id="374474048708358596" at="46,55,47,32" concept="9" />
-      <node id="3449511381527448649" at="47,32,48,18" concept="8" />
-      <node id="5105871187691469791" at="49,5,50,0" concept="10" />
-      <node id="5105871187691460195" at="51,9,52,56" concept="7" />
-      <node id="3449511381527620602" at="52,56,53,149" concept="8" />
-      <node id="3449511381527439887" at="54,36,55,19" concept="8" />
-      <node id="4060668212259749396" at="60,64,61,46" concept="8" />
-      <node id="2381582261425143467" at="65,156,66,74" concept="7" />
-      <node id="6550075386186721668" at="67,9,68,119" concept="2" />
-      <node id="6550075386186717399" at="69,44,70,19" concept="8" />
-      <node id="7389529162527891230" at="71,5,72,0" concept="10" />
-      <node id="4207974313407617832" at="73,192,74,72" concept="7" />
-      <node id="8905019541642958152" at="76,13,77,27" concept="2" />
-      <node id="7640059822549424701" at="78,31,79,59" concept="2" />
-      <node id="1195932619121073998" at="80,19,81,22" concept="8" />
-      <node id="8905019541642977752" at="84,5,85,17" concept="8" />
-      <node id="7640059822549412874" at="88,146,89,95" concept="7" />
-      <node id="7640059822549412884" at="89,95,90,0" concept="10" />
-      <node id="7640059822549412885" at="90,0,91,88" concept="2" />
-      <node id="3818729150937330383" at="92,40,93,32" concept="2" />
-      <node id="5105871187691478099" at="37,43,40,5" concept="5" />
-      <node id="3449511381527426318" at="42,49,45,5" concept="5" />
-      <node id="3818729150937330383" at="91,88,94,5" concept="5" />
-      <node id="3449511381527445910" at="45,5,49,5" concept="5" />
-      <node id="4060668212259748934" at="59,0,63,0" concept="6" trace="isSupported#(Lio/netty/handler/codec/http/FullHttpRequest;)Z" />
-      <node id="6550075386186710096" at="66,74,71,5" concept="13" />
-      <node id="3449511381527434518" at="50,0,56,5" concept="13" />
-      <node id="1195932619121082889" at="75,32,82,9" concept="14" />
-      <node id="7640059822549417868" at="88,0,96,0" concept="6" trace="handleException#(Ljava/lang/Throwable;Ljetbrains/mps/ide/httpsupport/manager/plugin/IHttpRequestHandlerFactory;Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
-      <node id="7389529162527888740" at="74,72,83,7" concept="5" />
-      <node id="8905019541642929951" at="72,0,84,5" concept="4" />
-      <node id="4060668212259753571" at="64,0,87,0" concept="6" trace="process#(Lio/netty/handler/codec/http/QueryStringDecoder;Lio/netty/handler/codec/http/FullHttpRequest;Lio/netty/channel/ChannelHandlerContext;)Z" />
-      <node id="3449511381527381622" at="31,0,58,0" concept="6" trace="isAccessible#(Lio/netty/handler/codec/http/HttpRequest;)Z" />
-      <scope id="5105871187691478101" at="38,104,39,19" />
-      <scope id="3449511381527426320" at="43,55,44,46" />
-      <scope id="3449511381527434521" at="54,0,55,19">
+      <node id="5105871187691615243" at="38,0,39,0" concept="10" />
+      <node id="5105871187691474312" at="39,0,40,43" concept="7" />
+      <node id="5105871187691484515" at="41,104,42,19" concept="8" />
+      <node id="5105871187691490548" at="43,5,44,0" concept="10" />
+      <node id="3449511381527425416" at="44,0,45,49" concept="7" />
+      <node id="3449511381527431541" at="46,55,47,46" concept="2" />
+      <node id="3449511381527448649" at="51,0,52,18" concept="8" />
+      <node id="5105871187691469791" at="53,5,54,0" concept="10" />
+      <node id="5105871187691460195" at="55,9,56,56" concept="7" />
+      <node id="3449511381527620602" at="56,56,57,149" concept="8" />
+      <node id="3449511381527439887" at="58,36,59,19" concept="8" />
+      <node id="4060668212259749396" at="64,64,65,46" concept="8" />
+      <node id="2381582261425143467" at="69,156,70,74" concept="7" />
+      <node id="6550075386186721668" at="71,9,72,119" concept="2" />
+      <node id="6550075386186717399" at="73,44,74,19" concept="8" />
+      <node id="7389529162527891230" at="75,5,76,0" concept="10" />
+      <node id="4207974313407617832" at="77,192,78,72" concept="7" />
+      <node id="8905019541642958152" at="80,13,81,27" concept="2" />
+      <node id="7640059822549424701" at="82,31,83,59" concept="2" />
+      <node id="1195932619121073998" at="84,19,85,22" concept="8" />
+      <node id="8905019541642977752" at="88,5,89,17" concept="8" />
+      <node id="7640059822549412874" at="92,146,93,95" concept="7" />
+      <node id="7640059822549412884" at="93,95,94,0" concept="10" />
+      <node id="7640059822549412885" at="94,0,95,88" concept="2" />
+      <node id="3818729150937330383" at="96,40,97,32" concept="2" />
+      <node id="5105871187691616859" at="32,61,34,0" concept="9" />
+      <node id="5105871187691621709" at="34,0,36,0" concept="9" />
+      <node id="5105871187691628720" at="36,0,38,0" concept="9" />
+      <node id="374474048708358596" at="49,55,51,0" concept="9" />
+      <node id="5105871187691478099" at="40,43,43,5" concept="5" />
+      <node id="3449511381527426318" at="45,49,48,5" concept="5" />
+      <node id="3818729150937330383" at="95,88,98,5" concept="5" />
+      <node id="4060668212259748934" at="63,0,67,0" concept="6" trace="isSupported#(Lio/netty/handler/codec/http/FullHttpRequest;)Z" />
+      <node id="3449511381527445910" at="48,5,53,5" concept="5" />
+      <node id="6550075386186710096" at="70,74,75,5" concept="13" />
+      <node id="3449511381527434518" at="54,0,60,5" concept="13" />
+      <node id="1195932619121082889" at="79,32,86,9" concept="14" />
+      <node id="7640059822549417868" at="92,0,100,0" concept="6" trace="handleException#(Ljava/lang/Throwable;Ljetbrains/mps/ide/httpsupport/manager/plugin/IHttpRequestHandlerFactory;Ljetbrains/mps/ide/httpsupport/manager/plugin/HttpRequest;)V" />
+      <node id="7389529162527888740" at="78,72,87,7" concept="5" />
+      <node id="8905019541642929951" at="76,0,88,5" concept="4" />
+      <node id="4060668212259753571" at="68,0,91,0" concept="6" trace="process#(Lio/netty/handler/codec/http/QueryStringDecoder;Lio/netty/handler/codec/http/FullHttpRequest;Lio/netty/channel/ChannelHandlerContext;)Z" />
+      <node id="3449511381527381622" at="31,0,62,0" concept="6" trace="isAccessible#(Lio/netty/handler/codec/http/HttpRequest;)Z" />
+      <scope id="5105871187691478101" at="41,104,42,19" />
+      <scope id="3449511381527426320" at="46,55,47,46" />
+      <scope id="3449511381527434521" at="58,0,59,19">
         <var name="e" id="3449511381527434523" />
       </scope>
-      <scope id="3449511381527434527" at="54,36,55,19" />
-      <scope id="4060668212259748941" at="60,64,61,46" />
-      <scope id="6550075386186710098" at="67,9,68,119" />
-      <scope id="6550075386186710099" at="69,0,70,19">
+      <scope id="3449511381527434527" at="58,36,59,19" />
+      <scope id="4060668212259748941" at="64,64,65,46" />
+      <scope id="6550075386186710098" at="71,9,72,119" />
+      <scope id="6550075386186710099" at="73,0,74,19">
         <var name="exception" id="6550075386186710101" />
       </scope>
-      <scope id="6550075386186710105" at="69,44,70,19" />
-      <scope id="8905019541642956278" at="76,13,77,27" />
-      <scope id="8905019541642956279" at="78,0,79,59">
+      <scope id="6550075386186710105" at="73,44,74,19" />
+      <scope id="8905019541642956278" at="80,13,81,27" />
+      <scope id="8905019541642956279" at="82,0,83,59">
         <var name="e" id="8905019541642956281" />
       </scope>
-      <scope id="8905019541642956285" at="78,31,79,59" />
-      <scope id="1195932619121082892" at="80,19,81,22" />
-      <scope id="3818729150937330383" at="92,40,93,32" />
-      <scope id="3449511381527445912" at="46,55,48,18" />
-      <scope id="3449511381527434520" at="51,9,53,149">
+      <scope id="8905019541642956285" at="82,31,83,59" />
+      <scope id="1195932619121082892" at="84,19,85,22" />
+      <scope id="3818729150937330383" at="96,40,97,32" />
+      <scope id="3449511381527434520" at="55,9,57,149">
         <var name="referrerHost" id="5105871187691460196" />
       </scope>
-      <scope id="4060668212259748934" at="59,0,63,0">
+      <scope id="3449511381527445912" at="49,55,52,18" />
+      <scope id="4060668212259748934" at="63,0,67,0">
         <var name="request" id="4060668212259748938" />
       </scope>
-      <scope id="7640059822549417871" at="88,146,94,5">
+      <scope id="7640059822549417871" at="92,146,98,5">
         <var name="errorHeader" id="7640059822549412875" />
       </scope>
-      <scope id="7389529162527888742" at="75,32,82,9" />
-      <scope id="7640059822549417868" at="88,0,96,0">
+      <scope id="7389529162527888742" at="79,32,86,9" />
+      <scope id="7640059822549417868" at="92,0,100,0">
         <var name="e" id="7640059822549418349" />
         <var name="factory" id="7640059822549418709" />
         <var name="request" id="7640059822549423265" />
       </scope>
-      <scope id="8905019541642929957" at="73,192,83,7">
+      <scope id="8905019541642929957" at="77,192,87,7">
         <var name="handler" id="4207974313407617833" />
       </scope>
-      <scope id="8905019541642929951" at="72,0,84,5">
+      <scope id="8905019541642929951" at="76,0,88,5">
         <var name="handlerFactory" id="8905019541642929953" />
       </scope>
-      <scope id="4060668212259753585" at="65,156,85,17">
+      <scope id="4060668212259753585" at="69,156,89,17">
         <var name="boxedRequest" id="2381582261425143468" />
       </scope>
-      <scope id="4060668212259753571" at="64,0,87,0">
+      <scope id="4060668212259753571" at="68,0,91,0">
         <var name="context" id="4060668212259753581" />
         <var name="decoder" id="4060668212259753575" />
         <var name="request" id="4060668212259753578" />
       </scope>
-      <scope id="3449511381527381629" at="32,61,56,5">
+      <scope id="3449511381527381629" at="32,61,60,5">
         <var name="host" id="5105871187691474313" />
         <var name="referrer" id="3449511381527425419" />
       </scope>
-      <scope id="3449511381527381622" at="31,0,58,0">
+      <scope id="3449511381527381622" at="31,0,62,0">
         <var name="request" id="3449511381527381626" />
       </scope>
-      <unit id="4060668212259736923" at="26,0,97,0" name="jetbrains.mps.ide.httpsupport.manager.plugin.MPSRequestManager" />
+      <unit id="4060668212259736923" at="26,0,101,0" name="jetbrains.mps.ide.httpsupport.manager.plugin.MPSRequestManager" />
     </file>
   </root>
   <root nodeRef="r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/4207974313407535367">

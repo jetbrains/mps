@@ -5,7 +5,7 @@
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
     <use id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp" version="0" />
@@ -384,11 +384,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -540,6 +537,14 @@
       </concept>
       <concept id="1174653354106" name="jetbrains.mps.baseLanguage.regexp.structure.RegexpUsingConstruction" flags="ng" index="1YMW5F">
         <child id="1174653387388" name="regexp" index="1YN4dH" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2347,13 +2352,44 @@
                 </node>
               </node>
               <node concept="3SKdUt" id="6pumIWoCG7R" role="3cqZAp">
-                <node concept="3SKdUq" id="6pumIWoCG7S" role="3SKWNk">
-                  <property role="3SKdUp" value="we need this because of smart input" />
+                <node concept="1PaTwC" id="ATZLwXnXCU" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXCV" role="1PaTwD">
+                    <property role="3oM_SC" value="we" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXCW" role="1PaTwD">
+                    <property role="3oM_SC" value="need" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXCX" role="1PaTwD">
+                    <property role="3oM_SC" value="this" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXCY" role="1PaTwD">
+                    <property role="3oM_SC" value="because" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXCZ" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXD0" role="1PaTwD">
+                    <property role="3oM_SC" value="smart" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXD1" role="1PaTwD">
+                    <property role="3oM_SC" value="input" />
+                  </node>
                 </node>
               </node>
               <node concept="3SKdUt" id="6pumIWoCG7J" role="3cqZAp">
-                <node concept="3SKdUq" id="6pumIWoCG7K" role="3SKWNk">
-                  <property role="3SKdUp" value="DO NOT REMOVE IT" />
+                <node concept="1PaTwC" id="ATZLwXnXD2" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXD3" role="1PaTwD">
+                    <property role="3oM_SC" value="DO" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXD4" role="1PaTwD">
+                    <property role="3oM_SC" value="NOT" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXD5" role="1PaTwD">
+                    <property role="3oM_SC" value="REMOVE" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXD6" role="1PaTwD">
+                    <property role="3oM_SC" value="IT" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbJ" id="112RIkggjzl" role="3cqZAp">
@@ -5321,8 +5357,34 @@
               </node>
             </node>
             <node concept="3SKdUt" id="YPCycQzbVH" role="3cqZAp">
-              <node concept="3SKdUq" id="YPCycQzbVJ" role="3SKWNk">
-                <property role="3SKdUp" value="Use simple replacement here instead of VK_F([1-9]) -&gt; VK_$1" />
+              <node concept="1PaTwC" id="ATZLwXnXD7" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnXD8" role="1PaTwD">
+                  <property role="3oM_SC" value="Use" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXD9" role="1PaTwD">
+                  <property role="3oM_SC" value="simple" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDa" role="1PaTwD">
+                  <property role="3oM_SC" value="replacement" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDb" role="1PaTwD">
+                  <property role="3oM_SC" value="here" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDc" role="1PaTwD">
+                  <property role="3oM_SC" value="instead" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDd" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDe" role="1PaTwD">
+                  <property role="3oM_SC" value="VK_F([1-9])" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDf" role="1PaTwD">
+                  <property role="3oM_SC" value="-&gt;" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDg" role="1PaTwD">
+                  <property role="3oM_SC" value="VK_$1" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="YPCycQz5Zn" role="3cqZAp">
@@ -5781,8 +5843,40 @@
         <node concept="1hCUdq" id="1jOVTpt7ctq" role="1hCUd6">
           <node concept="3clFbS" id="1jOVTpt7ctr" role="2VODD2">
             <node concept="3SKdUt" id="22mwDBT2Aj8" role="3cqZAp">
-              <node concept="3SKdUq" id="22mwDBT2Aj9" role="3SKWNk">
-                <property role="3SKdUp" value="Adds shortcut to Default keymap (creates keymap if it doesn't exists)" />
+              <node concept="1PaTwC" id="ATZLwXnXDh" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnXDi" role="1PaTwD">
+                  <property role="3oM_SC" value="Adds" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDj" role="1PaTwD">
+                  <property role="3oM_SC" value="shortcut" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDk" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDl" role="1PaTwD">
+                  <property role="3oM_SC" value="Default" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDm" role="1PaTwD">
+                  <property role="3oM_SC" value="keymap" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDn" role="1PaTwD">
+                  <property role="3oM_SC" value="(creates" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDo" role="1PaTwD">
+                  <property role="3oM_SC" value="keymap" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDp" role="1PaTwD">
+                  <property role="3oM_SC" value="if" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDq" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDr" role="1PaTwD">
+                  <property role="3oM_SC" value="doesn't" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDs" role="1PaTwD">
+                  <property role="3oM_SC" value="exists)" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="1jOVTpt7cA5" role="3cqZAp">
@@ -5969,8 +6063,37 @@
             </node>
             <node concept="3clFbH" id="1jOVTpt87mD" role="3cqZAp" />
             <node concept="3SKdUt" id="22mwDBT2AZa" role="3cqZAp">
-              <node concept="3SKdUq" id="22mwDBT2AZb" role="3SKWNk">
-                <property role="3SKdUp" value="Only if there is no any shortcut for this action" />
+              <node concept="1PaTwC" id="ATZLwXnXDt" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnXDu" role="1PaTwD">
+                  <property role="3oM_SC" value="Only" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDv" role="1PaTwD">
+                  <property role="3oM_SC" value="if" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDw" role="1PaTwD">
+                  <property role="3oM_SC" value="there" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDx" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDy" role="1PaTwD">
+                  <property role="3oM_SC" value="no" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDz" role="1PaTwD">
+                  <property role="3oM_SC" value="any" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXD$" role="1PaTwD">
+                  <property role="3oM_SC" value="shortcut" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXD_" role="1PaTwD">
+                  <property role="3oM_SC" value="for" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDA" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDB" role="1PaTwD">
+                  <property role="3oM_SC" value="action" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="1jOVTpt87YH" role="3cqZAp">
@@ -6028,8 +6151,43 @@
         <node concept="1hCUdq" id="1jOVTpt7fMf" role="1hCUd6">
           <node concept="3clFbS" id="1jOVTpt7fMg" role="2VODD2">
             <node concept="3SKdUt" id="22mwDBT2Bvd" role="3cqZAp">
-              <node concept="3SKdUq" id="22mwDBT2Bve" role="3SKWNk">
-                <property role="3SKdUp" value="Adds shortcut to Mac, Mac 10.5+ and Gnome keymaps (creates each keymap)" />
+              <node concept="1PaTwC" id="ATZLwXnXDC" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnXDD" role="1PaTwD">
+                  <property role="3oM_SC" value="Adds" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDE" role="1PaTwD">
+                  <property role="3oM_SC" value="shortcut" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDF" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDG" role="1PaTwD">
+                  <property role="3oM_SC" value="Mac," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDH" role="1PaTwD">
+                  <property role="3oM_SC" value="Mac" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDI" role="1PaTwD">
+                  <property role="3oM_SC" value="10.5+" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDJ" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDK" role="1PaTwD">
+                  <property role="3oM_SC" value="Gnome" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDL" role="1PaTwD">
+                  <property role="3oM_SC" value="keymaps" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDM" role="1PaTwD">
+                  <property role="3oM_SC" value="(creates" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDN" role="1PaTwD">
+                  <property role="3oM_SC" value="each" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDO" role="1PaTwD">
+                  <property role="3oM_SC" value="keymap)" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="1jOVTpt7fUU" role="3cqZAp">
@@ -6192,8 +6350,43 @@
         <node concept="27VH4U" id="5xcTfn_HLzX" role="2jiSrf">
           <node concept="3clFbS" id="5xcTfn_HLzY" role="2VODD2">
             <node concept="3SKdUt" id="LKa9XK5vo0" role="3cqZAp">
-              <node concept="3SKdUq" id="LKa9XK5vo2" role="3SKWNk">
-                <property role="3SKdUp" value="Use only in case there is not any KeymapChangesDeclaration other than Default" />
+              <node concept="1PaTwC" id="ATZLwXnXDP" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnXDQ" role="1PaTwD">
+                  <property role="3oM_SC" value="Use" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDR" role="1PaTwD">
+                  <property role="3oM_SC" value="only" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDS" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDT" role="1PaTwD">
+                  <property role="3oM_SC" value="case" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDU" role="1PaTwD">
+                  <property role="3oM_SC" value="there" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDV" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDW" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDX" role="1PaTwD">
+                  <property role="3oM_SC" value="any" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDY" role="1PaTwD">
+                  <property role="3oM_SC" value="KeymapChangesDeclaration" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXDZ" role="1PaTwD">
+                  <property role="3oM_SC" value="other" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXE0" role="1PaTwD">
+                  <property role="3oM_SC" value="than" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnXE1" role="1PaTwD">
+                  <property role="3oM_SC" value="Default" />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="5xcTfn_HLFi" role="3cqZAp">

@@ -42,6 +42,7 @@ public class AnnotationInstanceValue_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_lyrsmi_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key"));
     }
     @NotNull

@@ -56,6 +56,7 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
           tnode1.addChild(myAggregationLinks[0], child3);
         }
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -73,6 +74,7 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                 }
                 tnode5.addChild(myAggregationLinks[1], tnode6);
                 // TODO validate child 
+
               }
               {
                 final List<SNode> tlist7 = new ArrayList<SNode>();
@@ -97,16 +99,19 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                   tnode5.addChild(myAggregationLinks[2], child9);
                 }
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode4.addChild(myAggregationLinks[3], tnode5);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child 
+
       }
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
@@ -116,6 +121,7 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
         }
         tnode1.addChild(myAggregationLinks[0], tnode10);
         // TODO validate child 
+
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[1]);
@@ -133,6 +139,7 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                 }
                 tnode12.addChild(myAggregationLinks[1], tnode13);
                 // TODO validate child 
+
               }
               {
                 final List<SNode> tlist14 = new ArrayList<SNode>();
@@ -157,16 +164,19 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                   tnode12.addChild(myAggregationLinks[2], child16);
                 }
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode11.addChild(myAggregationLinks[3], tnode12);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode11);
         // TODO validate child 
+
       }
     } finally {
     }

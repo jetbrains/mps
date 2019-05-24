@@ -41,6 +41,7 @@ public class ModelDependencies {
   }
   public static ModelDependencies fromXml(Element root) {
     // FIXME duplicates parsing logic of BLDependencies sax parser! 
+
     ModelDependencies result = new ModelDependencies();
     for (Element e : ((List<Element>) root.getChildren(DEPENDENCY))) {
       result.addDependencies(new RootDependencies(e));

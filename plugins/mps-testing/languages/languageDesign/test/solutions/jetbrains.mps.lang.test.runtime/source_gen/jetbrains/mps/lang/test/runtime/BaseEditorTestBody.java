@@ -147,6 +147,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     final Wrappers._T<Throwable> throwable = new Wrappers._T<Throwable>(null);
     flushEvents();
     // FIXME why do we need model write here? 
+
     ThreadUtils.runInUIThreadAndWait(new Runnable() {
       public void run() {
         myProject.getModelAccess().runWriteAction(new Runnable() {
@@ -324,21 +325,28 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   private void flushEDTEvents() throws InvocationTargetException, InterruptedException {
     // wait for all events currently in EDT queue 
+
     SwingUtilities.invokeAndWait(new Runnable() {
       @Override
       public void run() {
         // empty task 
+
       }
     });
     // flushing model events 
+
     flushEvents();
   }
 
   private void flushEvents() {
     // XXX MA.flushEventQueue has been commented out intentionally, don't bring it back unless you've got a bullet-proof justification 
+
     //     There's no flushEventQueue() in openapi.MA and I don't want to introduce one unless utterly necessary. 
+
     //     It it comes to a point we need to flush model events AND empty EDT cmd of flushEDTEvents is not sufficient, we may 
+
     //     consider doing smth like myProject.getModelAccess().runWriteInEDT() here, with some synchronization primitive. 
+
   }
 
   protected void switchToInspector() throws InvocationTargetException, InterruptedException {
@@ -397,6 +405,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     }
     flushEDTEvents();
     // some actions (Copy/Paste) are running one more command later 
+
     flushEDTEvents();
     undoManager.setEditorProvider(oldEditorProvider);
   }

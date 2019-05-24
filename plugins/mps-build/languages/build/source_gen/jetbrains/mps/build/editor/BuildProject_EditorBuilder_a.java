@@ -301,6 +301,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     final RelativePathHelper rph = RelativePathHelper.forModule(SNodeOperations.getModel(myNode).getModule());
     if (rph == null) {
       // never happens, see show if condition on outer cell 
+
       return null;
     }
     return EditorUtil.createSelectImageButton(myNode, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory"), getEditorContext(), new _FunctionTypes._return_P1_E0<String, String>() {

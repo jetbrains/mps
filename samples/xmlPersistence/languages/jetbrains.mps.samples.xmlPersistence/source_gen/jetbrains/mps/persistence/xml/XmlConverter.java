@@ -31,6 +31,7 @@ public class XmlConverter {
 
   public static SNode convertDocument(String name, Document document) {
     // TODO replace dom-based implementation with a good XML parser 
+
     SNode file = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, "jetbrains.mps.core.xml.structure.XmlFile"));
     SPropertyOperations.assign(file, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), name);
     SLinkOperations.setNewChild(file, MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x5c842a42c54c94c1L, "document"), null);

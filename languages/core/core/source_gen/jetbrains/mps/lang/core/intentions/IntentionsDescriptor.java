@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: ICanSuppressErrors 
+          // concept 
+
           intentions = new IntentionFactory[5];
           intentions[0] = new SuppressAllTypesystemError_Intention();
           intentions[1] = new SuppressSpecificInspection_Intention();

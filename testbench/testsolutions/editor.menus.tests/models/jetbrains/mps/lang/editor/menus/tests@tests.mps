@@ -6,7 +6,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="4eb772b0-4df3-414a-b894-63abeb912f56" name="jetbrains.mps.lang.editor.menus.testLanguage" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="9b3af7e0-9a52-4741-a75d-becf7e1d5117" name="jetbrains.mps.lang.editor.menus.testExtendingLanguage" version="-1" />
     <use id="69068b7c-ba1f-47fb-a486-4981f42606e9" name="jetbrains.mps.lang.editor.menus.testMetaLanguage" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
@@ -375,11 +375,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -482,6 +479,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2118,13 +2123,83 @@
     </node>
     <node concept="3clFbS" id="5XkRVC1EtMB" role="LjaKd">
       <node concept="3SKdUt" id="5XkRVC1ERs1" role="3cqZAp">
-        <node concept="3SKdUq" id="5XkRVC1ERs3" role="3SKWNk">
-          <property role="3SKdUp" value="Can't put cell annotation directly on the red &quot;missing concept&quot; cell since it has no ID, so move to it from" />
+        <node concept="1PaTwC" id="ATZLwXoq2B" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq2C" role="1PaTwD">
+            <property role="3oM_SC" value="Can't" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2D" role="1PaTwD">
+            <property role="3oM_SC" value="put" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2E" role="1PaTwD">
+            <property role="3oM_SC" value="cell" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2F" role="1PaTwD">
+            <property role="3oM_SC" value="annotation" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2G" role="1PaTwD">
+            <property role="3oM_SC" value="directly" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2H" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2I" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2J" role="1PaTwD">
+            <property role="3oM_SC" value="red" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2K" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;missing" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2L" role="1PaTwD">
+            <property role="3oM_SC" value="concept&quot;" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2M" role="1PaTwD">
+            <property role="3oM_SC" value="cell" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2N" role="1PaTwD">
+            <property role="3oM_SC" value="since" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2O" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2P" role="1PaTwD">
+            <property role="3oM_SC" value="has" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2Q" role="1PaTwD">
+            <property role="3oM_SC" value="no" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2R" role="1PaTwD">
+            <property role="3oM_SC" value="ID," />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2S" role="1PaTwD">
+            <property role="3oM_SC" value="so" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2T" role="1PaTwD">
+            <property role="3oM_SC" value="move" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2U" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2V" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2W" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
         </node>
       </node>
       <node concept="3SKdUt" id="5XkRVC1EUtW" role="3cqZAp">
-        <node concept="3SKdUq" id="5XkRVC1EUtY" role="3SKWNk">
-          <property role="3SKdUp" value="a neighboring cell." />
+        <node concept="1PaTwC" id="ATZLwXoq2X" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq2Y" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq2Z" role="1PaTwD">
+            <property role="3oM_SC" value="neighboring" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq30" role="1PaTwD">
+            <property role="3oM_SC" value="cell." />
+          </node>
         </node>
       </node>
       <node concept="2HxZob" id="5XkRVC1EOqy" role="3cqZAp">

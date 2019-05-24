@@ -2,7 +2,7 @@
 <model ref="r:765a7482-f7b3-484f-81d9-84d92ba135ef(jetbrains.mps.baseLanguage.box.runtime)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8" version="0" />
   </languages>
   <imports>

@@ -49,10 +49,12 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
           dc.g.fillOval(x, y, d, d);
         } else {
           // outer 
+
           dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor")))));
           dc.g.fillOval(x, y, d, d);
 
           // inner 
+
           int border = 2;
           dc.g.setColor(fillColor);
           dc.g.fillOval(x + border, y + border, d - border * 2, d - border * 2);

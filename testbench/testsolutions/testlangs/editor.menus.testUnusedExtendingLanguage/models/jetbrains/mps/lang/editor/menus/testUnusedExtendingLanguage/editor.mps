@@ -52,16 +52,21 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -73,13 +78,74 @@
         <node concept="1hCUdq" id="33LYnHO_tE4" role="1hCUd6">
           <node concept="3clFbS" id="33LYnHO_tE6" role="2VODD2">
             <node concept="3SKdUt" id="33LYnHO_z2b" role="3cqZAp">
-              <node concept="3SKdUq" id="33LYnHO_z2d" role="3SKWNk">
-                <property role="3SKdUp" value="Action from an extending language that is not used by the tests. It should not appear in the menu" />
+              <node concept="1PaTwC" id="ATZLwXo51m" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo51n" role="1PaTwD">
+                  <property role="3oM_SC" value="Action" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51o" role="1PaTwD">
+                  <property role="3oM_SC" value="from" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51p" role="1PaTwD">
+                  <property role="3oM_SC" value="an" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51q" role="1PaTwD">
+                  <property role="3oM_SC" value="extending" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51r" role="1PaTwD">
+                  <property role="3oM_SC" value="language" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51s" role="1PaTwD">
+                  <property role="3oM_SC" value="that" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51t" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51u" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51v" role="1PaTwD">
+                  <property role="3oM_SC" value="used" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51w" role="1PaTwD">
+                  <property role="3oM_SC" value="by" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51x" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51y" role="1PaTwD">
+                  <property role="3oM_SC" value="tests." />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51z" role="1PaTwD">
+                  <property role="3oM_SC" value="It" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51$" role="1PaTwD">
+                  <property role="3oM_SC" value="should" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51_" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51A" role="1PaTwD">
+                  <property role="3oM_SC" value="appear" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51B" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51C" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51D" role="1PaTwD">
+                  <property role="3oM_SC" value="menu" />
+                </node>
               </node>
             </node>
             <node concept="3SKdUt" id="33LYnHO_zh$" role="3cqZAp">
-              <node concept="3SKdUq" id="33LYnHO_zh_" role="3SKWNk">
-                <property role="3SKdUp" value="at runtime." />
+              <node concept="1PaTwC" id="ATZLwXo51E" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo51F" role="1PaTwD">
+                  <property role="3oM_SC" value="at" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo51G" role="1PaTwD">
+                  <property role="3oM_SC" value="runtime." />
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="33LYnHO_tMJ" role="3cqZAp">

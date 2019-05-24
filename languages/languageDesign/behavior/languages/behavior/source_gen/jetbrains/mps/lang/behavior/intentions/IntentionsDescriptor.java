@@ -33,14 +33,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: ConceptBehavior 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ToggleConceptAbstract_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: ConceptMethodDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[4];
           intentions[0] = new ToggleConceptMethodAbstract_Intention();
           intentions[1] = new ToggleConceptMethodVirtual_Intention();

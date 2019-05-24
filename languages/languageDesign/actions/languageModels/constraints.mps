@@ -84,11 +84,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
@@ -136,6 +133,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -213,8 +218,19 @@
       <node concept="3dgokm" id="5Vvmn_QkMEk" role="1N6uqs">
         <node concept="3clFbS" id="5Vvmn_QkMEl" role="2VODD2">
           <node concept="3SKdUt" id="5Vvmn_QkMEm" role="3cqZAp">
-            <node concept="3SKdUq" id="5Vvmn_QkMEn" role="3SKWNk">
-              <property role="3SKdUp" value="concepts from this language" />
+            <node concept="1PaTwC" id="ATZLwXnU0$" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnU0_" role="1PaTwD">
+                <property role="3oM_SC" value="concepts" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0A" role="1PaTwD">
+                <property role="3oM_SC" value="from" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0B" role="1PaTwD">
+                <property role="3oM_SC" value="this" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0C" role="1PaTwD">
+                <property role="3oM_SC" value="language" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="5Vvmn_QkMEo" role="3cqZAp">
@@ -250,8 +266,40 @@
             </node>
           </node>
           <node concept="3SKdUt" id="oIXu13Htmc" role="3cqZAp">
-            <node concept="3SKdUq" id="oIXu13Htme" role="3SKWNk">
-              <property role="3SKdUp" value="XXX in fact, shall include concepts from extended languages as well" />
+            <node concept="1PaTwC" id="ATZLwXnU0D" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnU0E" role="1PaTwD">
+                <property role="3oM_SC" value="XXX" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0F" role="1PaTwD">
+                <property role="3oM_SC" value="in" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0G" role="1PaTwD">
+                <property role="3oM_SC" value="fact," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0H" role="1PaTwD">
+                <property role="3oM_SC" value="shall" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0I" role="1PaTwD">
+                <property role="3oM_SC" value="include" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0J" role="1PaTwD">
+                <property role="3oM_SC" value="concepts" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0K" role="1PaTwD">
+                <property role="3oM_SC" value="from" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0L" role="1PaTwD">
+                <property role="3oM_SC" value="extended" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0M" role="1PaTwD">
+                <property role="3oM_SC" value="languages" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0N" role="1PaTwD">
+                <property role="3oM_SC" value="as" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnU0O" role="1PaTwD">
+                <property role="3oM_SC" value="well" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="oIXu13Honu" role="3cqZAp">

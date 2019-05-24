@@ -6,7 +6,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
   </languages>
@@ -175,11 +175,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -210,6 +207,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -828,13 +833,98 @@
                         </node>
                         <node concept="3clFbH" id="6c0jH7RCTfH" role="3cqZAp" />
                         <node concept="3SKdUt" id="6c0jH7RCUo8" role="3cqZAp">
-                          <node concept="3SKdUq" id="6c0jH7RCUoa" role="3SKWNk">
-                            <property role="3SKdUp" value="todo the following is copied from MakeActionImpl, it's better to make MAI to be compilied in Idea " />
+                          <node concept="1PaTwC" id="ATZLwXojGr" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXojGs" role="1PaTwD">
+                              <property role="3oM_SC" value="todo" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGt" role="1PaTwD">
+                              <property role="3oM_SC" value="the" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGu" role="1PaTwD">
+                              <property role="3oM_SC" value="following" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGv" role="1PaTwD">
+                              <property role="3oM_SC" value="is" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGw" role="1PaTwD">
+                              <property role="3oM_SC" value="copied" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGx" role="1PaTwD">
+                              <property role="3oM_SC" value="from" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGy" role="1PaTwD">
+                              <property role="3oM_SC" value="MakeActionImpl," />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGz" role="1PaTwD">
+                              <property role="3oM_SC" value="it's" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojG$" role="1PaTwD">
+                              <property role="3oM_SC" value="better" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojG_" role="1PaTwD">
+                              <property role="3oM_SC" value="to" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGA" role="1PaTwD">
+                              <property role="3oM_SC" value="make" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGB" role="1PaTwD">
+                              <property role="3oM_SC" value="MAI" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGC" role="1PaTwD">
+                              <property role="3oM_SC" value="to" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGD" role="1PaTwD">
+                              <property role="3oM_SC" value="be" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGE" role="1PaTwD">
+                              <property role="3oM_SC" value="compilied" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGF" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGG" role="1PaTwD">
+                              <property role="3oM_SC" value="Idea" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3SKdUt" id="6c0jH7RDvfD" role="3cqZAp">
-                          <node concept="3SKdUq" id="6c0jH7RDvfE" role="3SKWNk">
-                            <property role="3SKdUp" value="todo (and contributed by xml); this code should use idea-compiled class then" />
+                          <node concept="1PaTwC" id="ATZLwXojGH" role="3ndbpf">
+                            <node concept="3oM_SD" id="ATZLwXojGI" role="1PaTwD">
+                              <property role="3oM_SC" value="todo" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGJ" role="1PaTwD">
+                              <property role="3oM_SC" value="(and" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGK" role="1PaTwD">
+                              <property role="3oM_SC" value="contributed" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGL" role="1PaTwD">
+                              <property role="3oM_SC" value="by" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGM" role="1PaTwD">
+                              <property role="3oM_SC" value="xml);" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGN" role="1PaTwD">
+                              <property role="3oM_SC" value="this" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGO" role="1PaTwD">
+                              <property role="3oM_SC" value="code" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGP" role="1PaTwD">
+                              <property role="3oM_SC" value="should" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGQ" role="1PaTwD">
+                              <property role="3oM_SC" value="use" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGR" role="1PaTwD">
+                              <property role="3oM_SC" value="idea-compiled" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGS" role="1PaTwD">
+                              <property role="3oM_SC" value="class" />
+                            </node>
+                            <node concept="3oM_SD" id="ATZLwXojGT" role="1PaTwD">
+                              <property role="3oM_SC" value="then" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3clFbF" id="1Y18t$8XNfE" role="3cqZAp">
@@ -845,8 +935,22 @@
                               <property role="3yWfEV" value="true" />
                               <node concept="3clFbS" id="1Y18t$8XOPN" role="1bW5cS">
                                 <node concept="3SKdUt" id="11SQcnY$viq" role="3cqZAp">
-                                  <node concept="3SKdUq" id="11SQcnY$vir" role="3SKWNk">
-                                    <property role="3SKdUp" value="save all before launching make" />
+                                  <node concept="1PaTwC" id="ATZLwXojGU" role="3ndbpf">
+                                    <node concept="3oM_SD" id="ATZLwXojGV" role="1PaTwD">
+                                      <property role="3oM_SC" value="save" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXojGW" role="1PaTwD">
+                                      <property role="3oM_SC" value="all" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXojGX" role="1PaTwD">
+                                      <property role="3oM_SC" value="before" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXojGY" role="1PaTwD">
+                                      <property role="3oM_SC" value="launching" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXojGZ" role="1PaTwD">
+                                      <property role="3oM_SC" value="make" />
+                                    </node>
                                   </node>
                                 </node>
                                 <node concept="3clFbF" id="236SrjKnNdH" role="3cqZAp">

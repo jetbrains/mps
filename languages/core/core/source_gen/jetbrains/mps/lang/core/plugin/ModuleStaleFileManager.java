@@ -52,13 +52,17 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
   /*package*/ boolean hasGenerationTarget(SModel inputModel) {
     // tells if we got an idea where we'd like to generate a model to 
+
     // generic alternative to SModelOperations.getOutputLocation() != null check 
+
     return getGenerationTargetFacet(inputModel) != null;
   }
 
   private GenerationTargetFacet getGenerationTargetFacet(SModel model) {
     // For a model, we need to find source_gen, test_gen location and relative model/qualified/name under respective output root 
+
     // FIXME module facets and their output location management story is not complete, here is a hack to ensure test models are kept where they used to be 
+
     if (SModelStereotype.isTestModel(model)) {
       TestsFacet testsFacet = myModule.getFacet(TestsFacet.class);
       if (testsFacet != null) {
@@ -66,16 +70,19 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
       }
     }
     //  SModuleOperations.getOutputRoots respected TestsFacet and JavaModuleFacet, therefore keep JMF with higher priority than any other GTF 
+
     JavaModuleFacet jmf = myModule.getFacet(JavaModuleFacet.class);
     if (jmf != null) {
       return jmf;
     }
     // resort to any other 
+
     return myModule.getFacet(GenerationTargetFacet.class);
   }
 
   /*package*/ void collectRetainedFiles(Iterable<SModel> retainedModels) {
     // each file we know as generated from a retained model reported as kept 
+
     final FilesDelta fd = new FilesDelta(new DeltaKey(myModule));
     Consumer<IFile> f = new Consumer<IFile>() {
       public void accept(IFile f) {
@@ -84,11 +91,14 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     };
     for (SModel m : Sequence.fromIterable(retainedModels)) {
       // I'm fine with retained delta as module-wide, known clients that utilize TResource care about fresh files 
+
       visitGeneratedFiles(m, f);
     }
     ListSequence.fromList(myRetainedFilesDelta).addElement(fd);
     // It's important to keep user files, and I'd rather say extra keep rather than deal with user files gone 
+
     // FIXME remove this code after 2018.3 
+
     Iterable<IDelta> retainedFilesDelta = RetainedUtil.retainedDeltas(myModule, retainedModels, myPath2File);
     ListSequence.fromList(myRetainedFilesDelta).addSequence(Sequence.fromIterable(retainedFilesDelta));
   }
@@ -99,7 +109,9 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
       return;
     }
     // COMPATIBILITY: for 'generated' without file name information (we could detect here by GD's version), no file would be reported 
+
     // both for retained and changed models. As long as no files would be marked as stale, I don't expect any unchaned file to be deleted then. 
+
     final GenerationTargetFacet gtf = getGenerationTargetFacet(m);
     if (gtf == null) {
       return;
@@ -124,8 +136,11 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
    */
   /*package*/ void collectGeneratedFiles(SModel generatedInputModel) {
     // each file of generated model reported as stale 
-    // alternatively, collect files of generatedModels (recorded in 'generated'), then update with delta of generated files (i.e. substract),  
+
+    // alternatively, collect files of generatedModels (recorded in 'generated'), then update with delta of generated files (i.e. substract), 
+
     // and those that left report as 'stale' (not to merge stale delta with written/touched) 
+
     final FilesDelta fd = new FilesDelta(new DeltaKey(myModule, generatedInputModel));
     visitGeneratedFiles(generatedInputModel, new Consumer<IFile>() {
       public void accept(IFile f) {
@@ -144,8 +159,10 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
       return;
     }
     final IFile outputRoot = gtf.getOutputRoot(generatedInputModel);
-    // XXX what if model ceased to have output, here we don't recognize scenario when model used to be generated somewhere.  
+    // XXX what if model ceased to have output, here we don't recognize scenario when model used to be generated somewhere. 
+
     // Seems we are not capable to report these files as generated/stale here 
+
     if (outputRoot == null) {
       return;
     }
@@ -171,6 +188,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
   private static void visitFilesDeep(IFile startDir, Consumer<IFile> visitor) {
     // reports files only, not directories 
+
     assert startDir != null;
     if (!(startDir.exists())) {
       return;
@@ -193,15 +211,20 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
    */
   /*package*/ FileDeltaCollector getPrimaryStreamHandler(SModel generatedInputModel) {
     // stream handler to write files inside a standard model location by default 
+
     // it seems that StreamHandler API needs are redesign - its use of IFile is just to produce descendant from filename. In fact, it may keep 
+
     // arbitrary file. 
+
     GenerationTargetFacet gtf = getGenerationTargetFacet(generatedInputModel);
     if (gtf == null) {
       throw new IllegalStateException();
     }
     IFile outputDir = gtf.getOutputLocation(generatedInputModel);
     // In fact, we are not obliged to cache FDC per output dir, it' just handy to keep them here to perform batched delta update later. 
+
     // Could be new FDC() right in the facet code and then feed this manager with fdc.getDelta() result 
+
     FileDeltaCollector rv = myModelLocationStreams.get(outputDir);
     if (rv == null) {
       rv = newStreamHandler(generatedInputModel, outputDir);
@@ -226,6 +249,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
   /*package*/ FileDeltaCollector getCacheStreamHandler(SModel generatedInputModel) {
     // almost identical to getPrimaryStreamHandler(), above, uses getOutputCacheLocation() 
+
     GenerationTargetFacet gtf = getGenerationTargetFacet(generatedInputModel);
     if (gtf == null) {
       throw new IllegalStateException();
@@ -241,7 +265,9 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
   /*package*/ List<IDelta> completeDelta() {
     // pretty much the same code is in getModuleWideStaleFiles, the difference is that this method is to work in conjunction 
+
     // with getStreamHandler(), so that updateWith(newStreamHandler()) is not necessary (it's what foreach below does). 
+
     List<IDelta> rv = ListSequence.fromList(new ArrayList<IDelta>());
     for (FileDeltaCollector fdc : CollectionSequence.fromCollection(myModelLocationStreams.values())) {
       ListSequence.fromList(rv).addElement(fdc.getDelta());
@@ -254,6 +280,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
   private FileDeltaCollector newStreamHandler(SModel model, IFile outputDir) {
     DeltaKey dk = new DeltaKey(model.getModule(), model);
     // FDC needs actual path as it creates IFile from filename string at that location 
+
     return new FileDeltaCollector(new FilesDelta(dk), myPath2File.invoke(outputDir.getPath()), myFileStorage);
   }
 

@@ -36,6 +36,7 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
   protected void doInit() {
     try {
       //  FIXME we still use cached SNode instance here, as tree node's user object 
+
       SNode node = (SNode) getUserObject();
       updateIcon(node);
       List<SNode> descendants = new ArrayList<SNode>(myHierarchyTree.getAbstractChildren(node, myVisited));
@@ -67,7 +68,9 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
   private void updateIcon(SNode node) {
     if (this.myHierarchyTree.getActiveTreeNode() != null && node.getReference().equals(this.myHierarchyTree.getActiveTreeNode().getNodeReference())) {
       // Use same approach as in platform for indicate searched node 
+
       // see com.intellij.ide.hierarchy.HierarchyNodeDescriptor#installIcon(javax.swing.Icon, boolean) 
+
       LayeredIcon icon = new LayeredIcon(2);
       icon.setIcon(GlobalIconManager.getInstance().getIconFor(node), 0);
       icon.setIcon(AllIcons.Actions.Forward, 1, -AllIcons.Actions.Forward.getIconWidth() / 2, 0);

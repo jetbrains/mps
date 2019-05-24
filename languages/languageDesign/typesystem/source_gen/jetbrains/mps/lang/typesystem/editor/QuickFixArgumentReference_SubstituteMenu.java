@@ -48,6 +48,7 @@ public class QuickFixArgumentReference_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_2byk7t_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, "jetbrains.mps.lang.typesystem.structure.QuickFixArgumentReference"), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, 0x11b3683c00aL, "quickFixArgument"));
     }
     @NotNull

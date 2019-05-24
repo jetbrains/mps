@@ -47,6 +47,7 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
   @Override
   public void initComponent() {
     // FIXME why project component listens to global differences? 
+
     myCurrentDifferenceRegistry.addGlobalDifferenceListener(myListener);
   }
   @Override
@@ -102,6 +103,7 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
       myProjectRepo.getModelAccess().runReadAction(new Runnable() {
         public void run() {
           // FIXME does getFeaturesForChange need model read? 
+
           Feature[] features = FeatureForestMapSupport.getFeaturesForChange(change);
           MapSequence.fromMap(myChangeToFeaturesMap).put(change, features);
           for (Feature f : MapSequence.fromMap(myChangeToFeaturesMap).get(change)) {

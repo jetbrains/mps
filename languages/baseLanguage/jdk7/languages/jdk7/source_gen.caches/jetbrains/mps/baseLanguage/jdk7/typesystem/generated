@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="8gqdsdvmkvdnkfswgizesecmyqb16kv">
+<product version="3" modelHash="-52b24r0emjm53yr42y4rjbnfqaiubwm">
   <files names="TypesystemDescriptor.java:check_StringSwitchCase_NonTypesystemRule.java:check_StringSwitchStatement_NonTypesystemRule.java" />
 </product>
 

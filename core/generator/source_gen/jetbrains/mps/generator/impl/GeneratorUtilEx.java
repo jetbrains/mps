@@ -44,6 +44,7 @@ public final class GeneratorUtilEx {
     while (!(queue.isEmpty())) {
       SNode subnode = queue.removeFirst();
       // do not look for TemplateFragments in subnode's children as TFs couldn't be nested 
+
       boolean tfFound = false;
       for (SNode attr : SLinkOperations.getChildren(subnode, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))) {
         if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(attr)), SNodeOperations.asSConcept(conceptTemplateFragment))) {
@@ -71,13 +72,19 @@ public final class GeneratorUtilEx {
   public static boolean shallGenerateFunctionToEvaluate(SNode expr) {
     if (SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, "jetbrains.mps.baseLanguageInternal.structure.TypeHintExpression"))) {
       // Some Expressions (e.g. genContext.variable) get wrapped with TypeHintExpression at startup (see AddTypeHints script), 
+
       // therefore, we shall look into original expression, instead. 
+
       // Indeed, at the moment we don't handle here any of expressions that are replaced with TypeHintExpression (i.e. GenerationContextOp operations) 
+
       //  nevertheless, I feel important to prevent future errors, i.e. when this function report different result during codegen (with TypeHintExpr) and at runtime (no TypeHintExpr). 
+
       expr = SLinkOperations.getTarget(SNodeOperations.as(expr, MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, "jetbrains.mps.baseLanguageInternal.structure.TypeHintExpression")), MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x117637931bcL, "expression"));
     }
     // For generated templates, assumptions here shall match switch_Argument, 
+
     // for interpreted, TemplateCall#toExpressionRuntime 
+
     if (SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L, "jetbrains.mps.lang.generator.structure.TemplateArgumentQueryExpression"))) {
       return true;
     }
@@ -86,7 +93,9 @@ public final class GeneratorUtilEx {
     customProcessing |= SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression"));
     customProcessing |= SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2"));
     // XXX generated templates are fine with genContext operations, however, there's no support for these in TemplateCall#toExpressionRuntime() yet. 
+
     // I'd need a switch by GenerationContextOp_Base subconcepts that get translated into respective TemplateContext call. 
+
     if (customProcessing) {
       return false;
     }
@@ -135,6 +144,7 @@ public final class GeneratorUtilEx {
   public static DismissTopMappingRuleException.MessageType getGeneratorMessage_kind(SNode generatorMessage) {
     if (generatorMessage == null) {
       // this is how it used to be, although to me default to warn/info might be better 
+
       return null;
     }
     if (SPropertyOperations.hasEnumValue(generatorMessage, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType"), "error")) {

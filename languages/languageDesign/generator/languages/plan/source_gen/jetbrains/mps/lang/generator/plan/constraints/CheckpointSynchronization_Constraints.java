@@ -38,6 +38,7 @@ public class CheckpointSynchronization_Constraints extends BaseConstraintsDescri
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     // do not allow synchronize with a checkpoint that references another one, always use original CP declaration 
+
     if (link.equals(MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint"))) {
       return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, "jetbrains.mps.lang.generator.plan.structure.DeclaredCheckpointSpec")) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec"));
     }

@@ -44,6 +44,7 @@ public class ConflictingModelsWarnings implements EditorWarningsProvider {
       assert type != null;
       if (ListSequence.fromList(modelFiles).isNotEmpty()) {
         // conflicting model and module 
+
         return new WarningPanel(this, String.format("You are viewing model which is not merged yet. It is owned by %s, which is merged neither." + " You need to merge %s and model (this order is important).", type, type), String.format("Merge %s and Model", NameUtil.capitalize(type)), new Runnable() {
           public void run() {
             AbstractVcsHelper.getInstance(project).showMergeDialog(ListSequence.fromList(moduleFiles).addSequence(ListSequence.fromList(modelFiles)));
@@ -51,6 +52,7 @@ public class ConflictingModelsWarnings implements EditorWarningsProvider {
         });
       } else {
         // conflicting module 
+
         return new WarningPanel(this, String.format("You are viewing model owned by %s which is not merged yet. You need to merge it before editing.", type), "Merge " + NameUtil.capitalize(type), new Runnable() {
           public void run() {
             AbstractVcsHelper.getInstance(project).showMergeDialog(moduleFiles);
@@ -60,6 +62,7 @@ public class ConflictingModelsWarnings implements EditorWarningsProvider {
     } else {
       if (ListSequence.fromList(modelFiles).isNotEmpty()) {
         // conflicting model 
+
         return new WarningPanel(this, "You are viewing model which is not merged yet. You may see very old version of it." + " You need to merge it before editing, otherwise your changes will be lost.", "Merge Model", new Runnable() {
           public void run() {
             AbstractVcsHelper.getInstance(project).showMergeDialog(modelFiles);

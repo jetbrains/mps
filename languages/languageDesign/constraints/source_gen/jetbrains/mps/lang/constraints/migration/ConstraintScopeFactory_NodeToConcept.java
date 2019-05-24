@@ -33,6 +33,7 @@ public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     // Migrated in 2017.1 
+
   }
   @Override
   public Iterable<Problem> check(SModule m) {

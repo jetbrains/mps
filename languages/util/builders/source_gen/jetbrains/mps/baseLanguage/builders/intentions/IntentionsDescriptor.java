@@ -33,14 +33,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: ClassCreator 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertToBeanBuilder_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: SimpleBuilderDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[3];
           intentions[0] = new ChangeRoot_Intention();
           intentions[1] = new ChangeLeaf_Intention();

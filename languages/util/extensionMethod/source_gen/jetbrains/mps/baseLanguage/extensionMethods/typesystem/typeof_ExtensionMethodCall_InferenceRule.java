@@ -41,6 +41,7 @@ public class typeof_ExtensionMethodCall_InferenceRule extends AbstractInferenceR
     }
 
     // --- 
+
     final SNode instanceType_typevar_5744862332973319659 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(emcall);

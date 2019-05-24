@@ -50,6 +50,7 @@ public class Template_reduce_Or extends TemplateDeclarationBase implements Templ
               tnode2.addChild(myAggregationLinks[0], child4);
             }
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist5 = null;
@@ -59,11 +60,13 @@ public class Template_reduce_Or extends TemplateDeclarationBase implements Templ
               tnode2.addChild(myAggregationLinks[1], child6);
             }
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }

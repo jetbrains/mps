@@ -50,6 +50,7 @@ public class CellModel_RefCell_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // singular links declared in concept hierarchy and not overridden 
+
             SNode editorComponent = SNodeOperations.getNodeAncestor(_context.getContextNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent"), true, false);
             SNode editedConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent);
             List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(editedConcept);

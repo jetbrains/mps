@@ -20,6 +20,7 @@ public class check_ComeFromExpression_NonTypesystemRule extends AbstractNonTypes
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // todo: do right stuff! =( 
+
     if (!(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), false, false), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals("getScope"))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();

@@ -48,6 +48,7 @@ public class GeneratorInternal_BuildSource_JavaJar_SubstituteMenu extends Substi
 
     public SMP_ReferenceScope_1wkndu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0de4L, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_JavaJar"), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0de4L, 0x44e5dd192e7c0de5L, "targetJar"));
     }
     @NotNull

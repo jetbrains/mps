@@ -40,6 +40,7 @@ public class PartitioningHelper {
 
   public void show(ModelGenerationPlan plan) {
     // print all rules 
+
     messageViewDelimiter();
     for (TemplateModule generator : plan.getGenerators()) {
       Collection<TemplateMappingPriorityRule> rules = generator.getPriorities();
@@ -60,6 +61,7 @@ public class PartitioningHelper {
       }
     }
     // show partitioning 
+
     console.addText("---------------------  mappings partitioning  -----------------------------------\n\n");
     int stepCount = 1;
     for (ModelGenerationPlan.Step step : plan.getSteps()) {
@@ -103,6 +105,7 @@ public class PartitioningHelper {
 
   public void printConnectedComponents(Iterable<SModel> models) {
     // other 
+
     List<SNode> roots = new ArrayList<SNode>();
     for (SModel md : models) {
       for (SNode root : md.getRootNodes()) {
@@ -113,27 +116,49 @@ public class PartitioningHelper {
     console.addText(ccp.toString());
 
     // viewTool.append("---------- conflicts ------------\n"); 
-    //   
+
+    //  
+
     // Map<String, String> existing = new HashMap<String, String>(); 
+
     // MPSModuleRepository repo = MPSModuleRepository.getInstance(); 
+
     // for(Generator g : repo.getAllGenerators()) { 
+
     //  List<SModel> templateModels = g.getOwnTemplateModels(); 
+
     //  for (SModel templateModel : templateModels) { 
+
     //    SModel m = templateModel; 
+
     //    for(SNode root : m.getRoots()) { 
+
     //      for(SNode node : root.getDescendants(new IsInstanceCondition(MappingLabelDeclaration.concept))){ 
+
     //        MappingLabelDeclaration label = (MappingLabelDeclaration) node.getAdapter(); 
+
     //        String name = label.getName(); 
+
     //        String descr = "model = " + m.toString() + ", root =" + root.toString(); 
+
     //        if(existing.containsKey(name)) { 
+
     //          viewTool.append("conflict: name = " + name + ", " + descr + ": with + " + existing.get(name) + "\n"); 
+
     //        } else { 
+
     //          existing.put(name, descr); 
+
     //        } 
+
     //      } 
+
     //    } 
+
     //  } 
+
     // } 
+
   }
 
   public void printLanguages(Collection<SLanguage> languagesInUse) {

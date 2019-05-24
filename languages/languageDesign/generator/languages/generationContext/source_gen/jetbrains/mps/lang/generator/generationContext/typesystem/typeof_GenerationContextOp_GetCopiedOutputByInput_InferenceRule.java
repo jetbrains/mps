@@ -17,6 +17,7 @@ public class typeof_GenerationContextOp_GetCopiedOutputByInput_InferenceRule ext
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // type the same as input ? 
+
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1217884997103", 0, null);

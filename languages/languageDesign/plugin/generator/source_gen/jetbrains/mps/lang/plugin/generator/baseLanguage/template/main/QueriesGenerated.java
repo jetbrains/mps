@@ -184,6 +184,7 @@ public class QueriesGenerated extends QueryProviderBase {
       return true;
     }
     // next is taken from switch_actionParameterType as is, and I'm not sure it's reasonable 
+
     SNode pdType = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"));
     return SNodeOperations.isInstanceOf(pdType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")) && SLinkOperations.hasPointer(SNodeOperations.cast(pdType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModel"));
   }
@@ -246,6 +247,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
     // todo this is a workaround for IDEA bug with using names in schemes instead of IDs 
+
     return (SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f1dd933L, "caption")) != null ? SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f1dd933L, "caption")) : SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
@@ -941,6 +943,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
     // todo compatibility code to be removed after 3.4 
+
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x7c92abce86abbd8fL, "icon")), MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon")), MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression"));
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
@@ -1068,6 +1071,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_44_1(final SourceSubstituteMacroNodeContext _context) {
     // todo compatibility code to be removed after 3.4 
+
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5e40e1c309ae6459L, "toolIcon")), MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon")), MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression"));
   }
   public static SNode sourceNodeQuery_44_2(final SourceSubstituteMacroNodeContext _context) {
@@ -1105,6 +1109,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_52_1(final SourceSubstituteMacroNodeContext _context) {
     // todo compatibility code to be removed after 3.4 
+
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, 0x211dc111c026b6c2L, "icon")), MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon")), MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression"));
   }
   public static SNode sourceNodeQuery_52_2(final SourceSubstituteMacroNodeContext _context) {
@@ -1384,6 +1389,7 @@ public class QueriesGenerated extends QueryProviderBase {
             ListSequence.fromList(actions).addElement(action);
           } else if (SNodeOperations.isInstanceOf(el, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1188a1ecd8aL, "jetbrains.mps.lang.plugin.structure.Separator")) || SNodeOperations.isInstanceOf(el, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11840f36089L, "jetbrains.mps.lang.plugin.structure.GroupAnchor"))) {
             // ok 
+
           } else {
             _context.showErrorMessage(it, "group with unknown content found");
           }
@@ -1449,6 +1455,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_63_6(final SourceSubstituteMacroNodesContext _context) {
     // TODO fix if group is not declared yet 
+
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f17ec8aL, "modifier"));
   }
   public static Iterable<SNode> sourceNodesQuery_63_7(final SourceSubstituteMacroNodesContext _context) {
@@ -1468,6 +1475,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_63_8(final SourceSubstituteMacroNodesContext _context) {
     // TODO fix if group is not declared yet 
+
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f17ec8aL, "modifier"));
   }
   public static Iterable<SNode> sourceNodesQuery_64_0(final SourceSubstituteMacroNodesContext _context) {
@@ -1505,6 +1513,7 @@ public class QueriesGenerated extends QueryProviderBase {
       for (SNode mc : ListSequence.fromList(SNodeOperations.getNodeDescendants(action, MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation"), false, new SAbstractConcept[]{}))) {
         if (SNodeOperations.getParent(SLinkOperations.getTarget(mc, MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member"))) != action) {
           // is it a call for the method declared in the same action? 
+
           continue;
         }
         if (needActionContextCopy) {

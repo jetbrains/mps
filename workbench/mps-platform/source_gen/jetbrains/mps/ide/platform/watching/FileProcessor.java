@@ -55,6 +55,7 @@ import java.util.Arrays;
     long updateStartTime = System.currentTimeMillis();
     try {
       // sorted according to #getListenerDependencies 
+
       Iterable<FileSystemListener> sortedListeners = sortedListeners();
       for (FileSystemListener listener : Sequence.fromIterable(sortedListeners)) {
         FileProcessor.ListenerData data = MapSequence.fromMap(myListener2Data).get(listener);
@@ -204,6 +205,7 @@ import java.util.Arrays;
   private static boolean acceptDescendant(String eventPath, FileSystemListener listenerToChildFile, FileProcessor.EventKind kind) {
     IFile childFile = listenerToChildFile.getFileToListen();
     // contract to comment out later 
+
     assert FileUtil.startsWith(childFile.getPath(), eventPath) : "Contract is broken: " + childFile.getPath() + " does not start with " + eventPath;
     if (kind == FileProcessor.EventKind.CREATED && listenerToChildFile.listeningPreferences().notifyOnParentCreation) {
       return true;
@@ -218,6 +220,7 @@ import java.util.Arrays;
   private static boolean acceptAncestor(String eventPath, FileSystemListener listenerToParentFile, FileProcessor.EventKind kind) {
     IFile parentFile = listenerToParentFile.getFileToListen();
     // contract to comment out later 
+
     assert FileUtil.startsWith(eventPath, parentFile.getPath()) : "Contract is broken: " + eventPath + " does not start with " + parentFile.getPath();
     if (kind == FileProcessor.EventKind.CREATED && listenerToParentFile.listeningPreferences().notifyOnChildCreation) {
       return true;
@@ -231,6 +234,7 @@ import java.util.Arrays;
 
   private void printStat(String name, long beginTime) {
     // todo: ideal for AOP in MPS! 
+
     if (InternalFlag.isInternalMode()) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("FileProcessor: " + name + " -> " + (System.currentTimeMillis() - beginTime) / 1000.0 + "s");

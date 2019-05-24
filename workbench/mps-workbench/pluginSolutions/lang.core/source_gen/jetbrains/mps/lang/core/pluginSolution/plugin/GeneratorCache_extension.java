@@ -20,6 +20,7 @@ public class GeneratorCache_extension extends Extension.Default<GenerationCacheC
     }
     if (ApplicationManager.getApplication().isDisposed()) {
       // todo: hack for next scenario: create IdeaEnvironment, dispose IdeaEnvironment, create MpsEnvironment, generate 
+
       return null;
     }
     return GeneratorCacheComponent.getInstance().getCache();

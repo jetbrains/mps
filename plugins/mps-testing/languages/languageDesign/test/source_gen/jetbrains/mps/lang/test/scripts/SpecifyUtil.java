@@ -29,12 +29,16 @@ public class SpecifyUtil {
 
   public static Iterable<NodeReportItem> getErrorReporters(SNode node) {
     // FIXME ugly performance hack to avoid recalculation of node errors to replace another ugly hack with global command listener in TestsErrorsChecker 
+
     // Would be great to have TestsErrorsChecker cached right inside SpecifyRuleReferences intention, but it's not possible to have custom field there. 
+
     SNode containingRoot = SNodeOperations.getContainingRoot(node);
     Iterable<NodeReportItem> errors;
     TestsErrorsChecker checker = (ourLastCheck == null ? null : ourLastCheck.get());
     // I assume that user can't change a node in 5 seconds %-/ 
+
     //  it's mostly for isApplicable/execute pair in SpecifyRuleReferences intention 
+
     if (checker == null || checker.getRoot() != containingRoot || ourLastTimestamp + 5000 < System.currentTimeMillis()) {
       checker = new TestsErrorsChecker(containingRoot);
       errors = checker.getErrors(node);

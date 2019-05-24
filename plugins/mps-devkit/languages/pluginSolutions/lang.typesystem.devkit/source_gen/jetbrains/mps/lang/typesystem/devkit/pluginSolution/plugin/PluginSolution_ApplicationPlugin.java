@@ -20,11 +20,13 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
+
     addAction(new GoToTypeErrorRule_Action());
     addAction(new ShowExpectedType_Action());
     addAction(new ShowInferredNodeType_Action());
     addAction(new ShowRulesWhichAffectNodeType_Action());
     // groups 
+
     addGroup(new GoToTypeErrorGroup_ActionGroup());
     addGroup(new InternalTypeSystemActions_ActionGroup());
     addGroup(new TypesystemActions_Devkit_ActionGroup());

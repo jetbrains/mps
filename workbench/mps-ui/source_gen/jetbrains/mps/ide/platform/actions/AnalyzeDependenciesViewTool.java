@@ -35,6 +35,7 @@ public class AnalyzeDependenciesViewTool extends BaseProjectTool {
   @Override
   protected void createTool() {
     // FIXME construct UI lazily, on demand 
+
     myDependenciesPanel = new DependenciesPanel(this, ProjectHelper.fromIdeaProject(getProject()));
   }
 
@@ -54,6 +55,7 @@ public class AnalyzeDependenciesViewTool extends BaseProjectTool {
 
   private DependenciesPanel mainPanelLazy() {
     // FIXME refactor along with getComponent() to construct UI on demand 
+
     return myDependenciesPanel;
   }
 

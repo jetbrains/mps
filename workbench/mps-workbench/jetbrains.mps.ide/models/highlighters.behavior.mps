@@ -2,7 +2,7 @@
 <model ref="r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
@@ -203,11 +203,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -278,6 +275,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages">
@@ -1335,8 +1340,58 @@
       </node>
       <node concept="3clFbS" id="7k6J8c3ti$7" role="3clF47">
         <node concept="3SKdUt" id="1dN09JzVs3B" role="3cqZAp">
-          <node concept="3SKdUq" id="1dN09JzVs3C" role="3SKWNk">
-            <property role="3SKdUp" value="that is right: the method overrides (implements) smth. and we can navigate to the overridden methods (ancestors)" />
+          <node concept="1PaTwC" id="ATZLwXos7j" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXos7k" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7l" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7m" role="1PaTwD">
+              <property role="3oM_SC" value="right:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7n" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7o" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7p" role="1PaTwD">
+              <property role="3oM_SC" value="overrides" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7q" role="1PaTwD">
+              <property role="3oM_SC" value="(implements)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7r" role="1PaTwD">
+              <property role="3oM_SC" value="smth." />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7s" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7t" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7u" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7v" role="1PaTwD">
+              <property role="3oM_SC" value="navigate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7w" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7x" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7y" role="1PaTwD">
+              <property role="3oM_SC" value="overridden" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7z" role="1PaTwD">
+              <property role="3oM_SC" value="methods" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7$" role="1PaTwD">
+              <property role="3oM_SC" value="(ancestors)" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7k6J8c3ti$8" role="3cqZAp">
@@ -2581,8 +2636,25 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="6xaYinJONZD" role="3clF47">
         <node concept="3SKdUt" id="7U9kZDym$vc" role="3cqZAp">
-          <node concept="3SKdUq" id="7U9kZDym$ve" role="3SKWNk">
-            <property role="3SKdUp" value="fixme html reference to the concept" />
+          <node concept="1PaTwC" id="ATZLwXos7_" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXos7A" role="1PaTwD">
+              <property role="3oM_SC" value="fixme" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7B" role="1PaTwD">
+              <property role="3oM_SC" value="html" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7C" role="1PaTwD">
+              <property role="3oM_SC" value="reference" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7D" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7E" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7F" role="1PaTwD">
+              <property role="3oM_SC" value="concept" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="6xaYinJONZE" role="3cqZAp">
@@ -2850,8 +2922,58 @@
       </node>
       <node concept="3clFbS" id="6xaYinJOO1k" role="3clF47">
         <node concept="3SKdUt" id="6xaYinJOO1l" role="3cqZAp">
-          <node concept="3SKdUq" id="6xaYinJOO1m" role="3SKWNk">
-            <property role="3SKdUp" value="that is right: the method is overridden (implemented) and we can navigate to the implemeting methods (descendant)" />
+          <node concept="1PaTwC" id="ATZLwXos7G" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXos7H" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7I" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7J" role="1PaTwD">
+              <property role="3oM_SC" value="right:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7K" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7L" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7M" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7N" role="1PaTwD">
+              <property role="3oM_SC" value="overridden" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7O" role="1PaTwD">
+              <property role="3oM_SC" value="(implemented)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7P" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7Q" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7R" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7S" role="1PaTwD">
+              <property role="3oM_SC" value="navigate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7T" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7U" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7V" role="1PaTwD">
+              <property role="3oM_SC" value="implemeting" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7W" role="1PaTwD">
+              <property role="3oM_SC" value="methods" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXos7X" role="1PaTwD">
+              <property role="3oM_SC" value="(descendant)" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="6xaYinJOO1n" role="3cqZAp">

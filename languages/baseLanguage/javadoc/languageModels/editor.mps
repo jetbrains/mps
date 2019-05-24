@@ -423,11 +423,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
@@ -519,6 +516,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -4536,8 +4541,31 @@
               <node concept="3clFbJ" id="5IuEtu_ln7O" role="3cqZAp">
                 <node concept="3clFbS" id="5IuEtu_ln7P" role="3clFbx">
                   <node concept="3SKdUt" id="5IuEtu_ln7Q" role="3cqZAp">
-                    <node concept="3SKdUq" id="5IuEtu_ln7R" role="3SKWNk">
-                      <property role="3SKdUp" value=" This is beginning of comment lines container" />
+                    <node concept="1PaTwC" id="ATZLwXnSSr" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnSSs" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnSSt" role="1PaTwD">
+                        <property role="3oM_SC" value="This" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnSSu" role="1PaTwD">
+                        <property role="3oM_SC" value="is" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnSSv" role="1PaTwD">
+                        <property role="3oM_SC" value="beginning" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnSSw" role="1PaTwD">
+                        <property role="3oM_SC" value="of" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnSSx" role="1PaTwD">
+                        <property role="3oM_SC" value="comment" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnSSy" role="1PaTwD">
+                        <property role="3oM_SC" value="lines" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnSSz" role="1PaTwD">
+                        <property role="3oM_SC" value="container" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3clFbJ" id="5IuEtu_ln7S" role="3cqZAp">
@@ -4693,8 +4721,28 @@
                 <node concept="9aQIb" id="5IuEtu_ln8N" role="9aQIa">
                   <node concept="3clFbS" id="5IuEtu_ln8O" role="9aQI4">
                     <node concept="3SKdUt" id="5IuEtu_ln8P" role="3cqZAp">
-                      <node concept="3SKdUq" id="5IuEtu_ln8Q" role="3SKWNk">
-                        <property role="3SKdUp" value=" This is the beginning of line" />
+                      <node concept="1PaTwC" id="ATZLwXnSS$" role="3ndbpf">
+                        <node concept="3oM_SD" id="ATZLwXnSS_" role="1PaTwD">
+                          <property role="3oM_SC" value="" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSA" role="1PaTwD">
+                          <property role="3oM_SC" value="This" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSB" role="1PaTwD">
+                          <property role="3oM_SC" value="is" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSC" role="1PaTwD">
+                          <property role="3oM_SC" value="the" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSD" role="1PaTwD">
+                          <property role="3oM_SC" value="beginning" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSE" role="1PaTwD">
+                          <property role="3oM_SC" value="of" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSF" role="1PaTwD">
+                          <property role="3oM_SC" value="line" />
+                        </node>
                       </node>
                     </node>
                     <node concept="3cpWs8" id="5IuEtu_ln8R" role="3cqZAp">
@@ -4932,8 +4980,43 @@
             <node concept="9aQIb" id="5IuEtu_lnam" role="9aQIa">
               <node concept="3clFbS" id="5IuEtu_lnan" role="9aQI4">
                 <node concept="3SKdUt" id="5IuEtu_lnao" role="3cqZAp">
-                  <node concept="3SKdUq" id="5IuEtu_lnap" role="3SKWNk">
-                    <property role="3SKdUp" value=" Caret is at the beginning of text part inside comment line" />
+                  <node concept="1PaTwC" id="ATZLwXnSSG" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXnSSH" role="1PaTwD">
+                      <property role="3oM_SC" value="" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSI" role="1PaTwD">
+                      <property role="3oM_SC" value="Caret" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSJ" role="1PaTwD">
+                      <property role="3oM_SC" value="is" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSK" role="1PaTwD">
+                      <property role="3oM_SC" value="at" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSL" role="1PaTwD">
+                      <property role="3oM_SC" value="the" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSM" role="1PaTwD">
+                      <property role="3oM_SC" value="beginning" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSN" role="1PaTwD">
+                      <property role="3oM_SC" value="of" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSO" role="1PaTwD">
+                      <property role="3oM_SC" value="text" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSP" role="1PaTwD">
+                      <property role="3oM_SC" value="part" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSQ" role="1PaTwD">
+                      <property role="3oM_SC" value="inside" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSR" role="1PaTwD">
+                      <property role="3oM_SC" value="comment" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXnSSS" role="1PaTwD">
+                      <property role="3oM_SC" value="line" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbJ" id="5IuEtu_lnaq" role="3cqZAp">
@@ -5987,8 +6070,31 @@
                   <node concept="3eNFk2" id="4C0k$GnsLH5" role="3eNLev">
                     <node concept="3clFbS" id="4C0k$GnsLH6" role="3eOfB_">
                       <node concept="3SKdUt" id="4C0k$GnsLH7" role="3cqZAp">
-                        <node concept="3SKdUq" id="4C0k$GnsLH8" role="3SKWNk">
-                          <property role="3SKdUp" value=" Caret is at the end of part" />
+                        <node concept="1PaTwC" id="ATZLwXnSST" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXnSSU" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnSSV" role="1PaTwD">
+                            <property role="3oM_SC" value="Caret" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnSSW" role="1PaTwD">
+                            <property role="3oM_SC" value="is" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnSSX" role="1PaTwD">
+                            <property role="3oM_SC" value="at" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnSSY" role="1PaTwD">
+                            <property role="3oM_SC" value="the" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnSSZ" role="1PaTwD">
+                            <property role="3oM_SC" value="end" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnST0" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnST1" role="1PaTwD">
+                            <property role="3oM_SC" value="part" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3cpWs8" id="4C0k$GnsLH9" role="3cqZAp">
@@ -6058,15 +6164,52 @@
                           <node concept="3clFbJ" id="4C0k$GnsLHB" role="3cqZAp">
                             <node concept="3clFbS" id="4C0k$GnsLHC" role="3clFbx">
                               <node concept="3SKdUt" id="4C0k$GnsLHD" role="3cqZAp">
-                                <node concept="3SKdUq" id="4C0k$GnsLHE" role="3SKWNk">
-                                  <property role="3SKdUp" value=" This is end of comment lines container" />
+                                <node concept="1PaTwC" id="ATZLwXnST2" role="3ndbpf">
+                                  <node concept="3oM_SD" id="ATZLwXnST3" role="1PaTwD">
+                                    <property role="3oM_SC" value="" />
+                                  </node>
+                                  <node concept="3oM_SD" id="ATZLwXnST4" role="1PaTwD">
+                                    <property role="3oM_SC" value="This" />
+                                  </node>
+                                  <node concept="3oM_SD" id="ATZLwXnST5" role="1PaTwD">
+                                    <property role="3oM_SC" value="is" />
+                                  </node>
+                                  <node concept="3oM_SD" id="ATZLwXnST6" role="1PaTwD">
+                                    <property role="3oM_SC" value="end" />
+                                  </node>
+                                  <node concept="3oM_SD" id="ATZLwXnST7" role="1PaTwD">
+                                    <property role="3oM_SC" value="of" />
+                                  </node>
+                                  <node concept="3oM_SD" id="ATZLwXnST8" role="1PaTwD">
+                                    <property role="3oM_SC" value="comment" />
+                                  </node>
+                                  <node concept="3oM_SD" id="ATZLwXnST9" role="1PaTwD">
+                                    <property role="3oM_SC" value="lines" />
+                                  </node>
+                                  <node concept="3oM_SD" id="ATZLwXnSTa" role="1PaTwD">
+                                    <property role="3oM_SC" value="container" />
+                                  </node>
                                 </node>
                               </node>
                               <node concept="3clFbJ" id="4C0k$GnsLHF" role="3cqZAp">
                                 <node concept="3clFbS" id="4C0k$GnsLHG" role="3clFbx">
                                   <node concept="3SKdUt" id="4C0k$GnsLHH" role="3cqZAp">
-                                    <node concept="3SKdUq" id="4C0k$GnsLHI" role="3SKWNk">
-                                      <property role="3SKdUp" value=" Shouldn't delete documentation comment" />
+                                    <node concept="1PaTwC" id="ATZLwXnSTb" role="3ndbpf">
+                                      <node concept="3oM_SD" id="ATZLwXnSTc" role="1PaTwD">
+                                        <property role="3oM_SC" value="" />
+                                      </node>
+                                      <node concept="3oM_SD" id="ATZLwXnSTd" role="1PaTwD">
+                                        <property role="3oM_SC" value="Shouldn't" />
+                                      </node>
+                                      <node concept="3oM_SD" id="ATZLwXnSTe" role="1PaTwD">
+                                        <property role="3oM_SC" value="delete" />
+                                      </node>
+                                      <node concept="3oM_SD" id="ATZLwXnSTf" role="1PaTwD">
+                                        <property role="3oM_SC" value="documentation" />
+                                      </node>
+                                      <node concept="3oM_SD" id="ATZLwXnSTg" role="1PaTwD">
+                                        <property role="3oM_SC" value="comment" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -6189,8 +6332,28 @@
                             <node concept="9aQIb" id="4C0k$GnsLIy" role="9aQIa">
                               <node concept="3clFbS" id="4C0k$GnsLIz" role="9aQI4">
                                 <node concept="3SKdUt" id="4C0k$GnsLI$" role="3cqZAp">
-                                  <node concept="3SKdUq" id="4C0k$GnsLI_" role="3SKWNk">
-                                    <property role="3SKdUp" value=" This is the end of line" />
+                                  <node concept="1PaTwC" id="ATZLwXnSTh" role="3ndbpf">
+                                    <node concept="3oM_SD" id="ATZLwXnSTi" role="1PaTwD">
+                                      <property role="3oM_SC" value="" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnSTj" role="1PaTwD">
+                                      <property role="3oM_SC" value="This" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnSTk" role="1PaTwD">
+                                      <property role="3oM_SC" value="is" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnSTl" role="1PaTwD">
+                                      <property role="3oM_SC" value="the" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnSTm" role="1PaTwD">
+                                      <property role="3oM_SC" value="end" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnSTn" role="1PaTwD">
+                                      <property role="3oM_SC" value="of" />
+                                    </node>
+                                    <node concept="3oM_SD" id="ATZLwXnSTo" role="1PaTwD">
+                                      <property role="3oM_SC" value="line" />
+                                    </node>
                                   </node>
                                 </node>
                                 <node concept="3cpWs8" id="4C0k$GnsLID" role="3cqZAp">
@@ -6418,8 +6581,43 @@
                         <node concept="9aQIb" id="4C0k$GnsLK4" role="9aQIa">
                           <node concept="3clFbS" id="4C0k$GnsLK5" role="9aQI4">
                             <node concept="3SKdUt" id="4C0k$GnsLK6" role="3cqZAp">
-                              <node concept="3SKdUq" id="4C0k$GnsLK7" role="3SKWNk">
-                                <property role="3SKdUp" value=" Caret is at the end of text part inside comment line" />
+                              <node concept="1PaTwC" id="ATZLwXnSTp" role="3ndbpf">
+                                <node concept="3oM_SD" id="ATZLwXnSTq" role="1PaTwD">
+                                  <property role="3oM_SC" value="" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTr" role="1PaTwD">
+                                  <property role="3oM_SC" value="Caret" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTs" role="1PaTwD">
+                                  <property role="3oM_SC" value="is" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTt" role="1PaTwD">
+                                  <property role="3oM_SC" value="at" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTu" role="1PaTwD">
+                                  <property role="3oM_SC" value="the" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTv" role="1PaTwD">
+                                  <property role="3oM_SC" value="end" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTw" role="1PaTwD">
+                                  <property role="3oM_SC" value="of" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTx" role="1PaTwD">
+                                  <property role="3oM_SC" value="text" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTy" role="1PaTwD">
+                                  <property role="3oM_SC" value="part" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnSTz" role="1PaTwD">
+                                  <property role="3oM_SC" value="inside" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnST$" role="1PaTwD">
+                                  <property role="3oM_SC" value="comment" />
+                                </node>
+                                <node concept="3oM_SD" id="ATZLwXnST_" role="1PaTwD">
+                                  <property role="3oM_SC" value="line" />
+                                </node>
                               </node>
                             </node>
                             <node concept="3clFbJ" id="4C0k$GnsLK8" role="3cqZAp">

@@ -65,11 +65,13 @@ public class Template_reduce_Step extends TemplateDeclarationBase implements Tem
                         }
                         tnode5.addChild(myAggregationLinks[0], tnode6);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[1], tnode5);
                     // TODO validate child 
+
                   }
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -83,16 +85,19 @@ public class Template_reduce_Step extends TemplateDeclarationBase implements Tem
                         }
                         tnode7.addChild(myAggregationLinks[0], tnode8);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[1], tnode7);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[2], tnode4);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[4]);
@@ -102,6 +107,7 @@ public class Template_reduce_Step extends TemplateDeclarationBase implements Tem
                 }
                 tnode3.addChild(myAggregationLinks[3], tnode9);
                 // TODO validate child 
+
               }
               {
                 final SNode tnode10 = environment.createOutputNode(myConcepts[0]);
@@ -128,36 +134,43 @@ public class Template_reduce_Step extends TemplateDeclarationBase implements Tem
                                 }
                                 tnode13.addChild(myAggregationLinks[4], tnode14);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode12.addChild(myAggregationLinks[0], tnode13);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode11.addChild(myAggregationLinks[1], tnode12);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode10.addChild(myAggregationLinks[5], tnode11);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode3.addChild(myAggregationLinks[6], tnode10);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode2.addChild(myAggregationLinks[1], tnode3);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }

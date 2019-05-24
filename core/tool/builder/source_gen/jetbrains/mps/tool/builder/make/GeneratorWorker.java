@@ -54,7 +54,9 @@ public class GeneratorWorker extends BaseGeneratorWorker {
     }
 
     // Disposing "project" modules first 
+
     // XXX OTOH, processModuleFile didn't register the modules right into the project, but here we sort of assume we did. 
+
     final ModuleRepositoryFacade repositoryFacade = new ModuleRepositoryFacade(project);
     project.getModelAccess().runWriteAction(new Runnable() {
       public void run() {

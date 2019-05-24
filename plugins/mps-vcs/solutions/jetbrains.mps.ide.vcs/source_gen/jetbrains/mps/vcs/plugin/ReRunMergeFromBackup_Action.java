@@ -105,10 +105,15 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final SModelReference modelReference = ((SModel) MapSequence.fromMap(_params).get("model")).getReference();
     // this.model came from repo, so it must be supported by ModelPersistence 
+
     // XXX ^^^ WHY? 
+
     // FIXME prefer ModelFactory.save(openapi.SModel, in-memory stream data source); perhaps PersVersAware.getModelFactory()? 
+
     // In fact, we need to use actual model persistence format, as strings in the zip are likely plain text from VCS, which, 
+
     // for the same model, usually means same persistence as current (unless persistence has been changed). 
+
     String modelData = new ModelAccessHelper(((SModel) MapSequence.fromMap(_params).get("model")).getRepository()).runReadAction(new Computable<String>() {
       public String compute() {
         return PersistenceUtil.saveModel(((SModel) MapSequence.fromMap(_params).get("model")), MPSExtentions.MODEL);
@@ -143,6 +148,7 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
           LOG.warn("", e);
         }
         // Skip this backup 
+
         continue;
       } catch (InvalidDiffRequestException e) {
         if (LOG.isEnabledFor(Level.ERROR)) {

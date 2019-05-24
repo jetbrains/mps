@@ -2,7 +2,7 @@
 <model ref="r:2a614e43-21e7-49b5-9503-c8251b638b89(jetbrains.mps.debugger.api.runner)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="5ths" ref="r:0cf7389f-e174-4742-a3d2-15c79317838a(jetbrains.mps.debug.api.run)" />
@@ -140,11 +140,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
@@ -153,6 +150,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -277,8 +282,13 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCbznq" role="3clF47">
         <node concept="3SKdUt" id="3SnNvqCbzti" role="3cqZAp">
-          <node concept="3SKdUq" id="3SnNvqCbztj" role="3SKWNk">
-            <property role="3SKdUp" value=" FileDocumentManager.getInstance().saveAllDocuments();" />
+          <node concept="1PaTwC" id="ATZLwXobBd" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobBe" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobBf" role="1PaTwD">
+              <property role="3oM_SC" value="FileDocumentManager.getInstance().saveAllDocuments();" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="3SnNvqCbznr" role="3cqZAp">
@@ -364,8 +374,19 @@
           </node>
         </node>
         <node concept="3SKdUt" id="3SnNvqCbztk" role="3cqZAp">
-          <node concept="3SKdUq" id="3SnNvqCbztl" role="3SKWNk">
-            <property role="3SKdUp" value="todo get connection settings" />
+          <node concept="1PaTwC" id="ATZLwXobBg" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobBh" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobBi" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobBj" role="1PaTwD">
+              <property role="3oM_SC" value="connection" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobBk" role="1PaTwD">
+              <property role="3oM_SC" value="settings" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="3SnNvqCbznO" role="3cqZAp">

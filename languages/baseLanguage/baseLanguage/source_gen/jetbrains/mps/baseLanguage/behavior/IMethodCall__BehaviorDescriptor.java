@@ -66,6 +66,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
     // is 'experssion' an actual argument in this method call? 
+
     if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))) {
       SNode method = SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
       int i = SNodeOperations.getIndexInParent(expression);
@@ -142,11 +143,13 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean useScopesForMethodDeclarationFixer_id3EWPnx1lHq(@NotNull SNode __thisNode__) {
     // todo: use something better here. check usages of getAvailableMethodDeclarations in charisma etc 
+
     return false;
   }
   @Deprecated
   /*package*/ static Tuples._2<SNode, Boolean> resolveMethod_id28$D10lLyGj(@NotNull SNode __thisNode__) {
     // todo: this method can be deleted as soon as MethodCallsFixer will be removed 
+
     return MethodResolveUtil.resolveMethod(__thisNode__);
   }
 

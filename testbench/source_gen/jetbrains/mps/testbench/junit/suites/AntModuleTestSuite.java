@@ -15,6 +15,7 @@ import jetbrains.mps.tool.environment.IdeaEnvironment;
 public class AntModuleTestSuite {
   static {
     // old behavior 
+
     System.setProperty(IdeaEnvironment.CREATE_PLUGIN_CLASSLOADERS, Boolean.FALSE.toString());
   }
 }

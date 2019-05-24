@@ -48,6 +48,7 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
 
     public SMP_ReferenceScope_f29tzs_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference"), MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, 0x7a6a3ef59ad69e4aL, "reference"));
     }
     @NotNull

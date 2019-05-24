@@ -291,7 +291,9 @@ public class MethodResolveUtil {
 
   private static Map<SNode, SNode> getTypeByTypeVar(SNode methodCall) {
     // FIXME in fact, returned map doesn't depend on IMethodCall itself, rather its getInstanceType():ClassifierType, 
+
     // which we likely can use here to cache information to avoid rebuilding it for each method call from within a class. 
+
     return IMethodCall__BehaviorDescriptor.getTypesByTypeVars_idJfLh5LDMrj.invoke(methodCall);
   }
 

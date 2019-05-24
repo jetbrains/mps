@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
-import jetbrains.mps.generator.template.PropertyMacroContext;
 import java.util.Collection;
 import java.util.ArrayList;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
@@ -43,15 +41,56 @@ public class Template_reduce_CommentLine extends TemplateDeclarationBase impleme
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         try {
-          SNodeAccessUtil.setProperty(tnode2, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_22_0(new PropertyMacroContext(context1, "this is a comment", propertyMacro_h26r33_c0a0c0a0b0b0c0g))));
+          TemplateContext context2 = context1.subContext();
+          {
+            final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
+            try {
+              SNodeAccessUtil.setProperty(tnode3, myProperties[0], "this");
+            } finally {
+            }
+            tnode2.addChild(myAggregationLinks[0], tnode3);
+            // TODO validate child 
+
+          }
+          {
+            final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
+            try {
+              SNodeAccessUtil.setProperty(tnode4, myProperties[0], "is");
+            } finally {
+            }
+            tnode2.addChild(myAggregationLinks[0], tnode4);
+            // TODO validate child 
+
+          }
+          {
+            final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
+            try {
+              SNodeAccessUtil.setProperty(tnode5, myProperties[0], "a");
+            } finally {
+            }
+            tnode2.addChild(myAggregationLinks[0], tnode5);
+            // TODO validate child 
+
+          }
+          {
+            final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
+            try {
+              SNodeAccessUtil.setProperty(tnode6, myProperties[0], "comment");
+            } finally {
+            }
+            tnode2.addChild(myAggregationLinks[0], tnode6);
+            // TODO validate child 
+
+          }
         } finally {
         }
-        tnode1.addChild(myAggregationLinks[0], tnode2);
+        tnode1.addChild(myAggregationLinks[1], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }
-    FragmentResult rv = nodeFragment(1, tnode1);
+    FragmentResult rv = nodeFragment(2, tnode1);
     return rv;
   }
   @Override
@@ -69,23 +108,24 @@ public class Template_reduce_CommentLine extends TemplateDeclarationBase impleme
   }
   @Override
   protected SConcept[] initConcepts() {
-    SConcept[] rv = new SConcept[2];
+    SConcept[] rv = new SConcept[3];
     rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x57d533a7af15ed3aL, "SingleLineComment");
-    rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x57d533a7af15ed3dL, "TextCommentPart");
+    rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x2331694e561af166L, "Line");
+    rv[2] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x229012ddae35f04L, "Word");
     return rv;
   }
   @Override
   protected SProperty[] initProperties() {
     SProperty[] rv = new SProperty[1];
-    rv[0] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    rv[0] = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
     return rv;
   }
   @Override
   protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[2];
-    rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
-    rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    SContainmentLink[] rv = new SContainmentLink[3];
+    rv[0] = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     return rv;
   }
-  private static SNodePointer propertyMacro_h26r33_c0a0c0a0b0b0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "6405700485436287838");
 }

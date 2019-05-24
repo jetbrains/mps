@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-4a6q7k0q4a2as6zv4djrso3cstad4vi">
+<product version="3" modelHash="8fn82rasru6h31znw7zrecqhx147x0b">
   <files names="AbstractAppendPart__BehaviorDescriptor.java:AbstractTextGenDeclaration__BehaviorDescriptor.java:AbstractTextGenParameter__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:CollectionAppendPart__BehaviorDescriptor.java:ConceptTextGenDeclaration__BehaviorDescriptor.java:ConstantStringAppendPart__BehaviorDescriptor.java:EncodingDeclaration__BehaviorDescriptor.java:ExtensionDeclaration__BehaviorDescriptor.java:FilePathQuery__BehaviorDescriptor.java:FilenameFunction__BehaviorDescriptor.java:GenerateTextDeclaration__BehaviorDescriptor.java:LanguageTextGenDeclaration__BehaviorDescriptor.java:NodeAppendPart__BehaviorDescriptor.java:NodeParameter__BehaviorDescriptor.java:OperationDeclaration__BehaviorDescriptor.java:StubOperationDeclaration__BehaviorDescriptor.java:UtilityMethodCall__BehaviorDescriptor.java:WithIndentOperation__BehaviorDescriptor.java" />
 </product>
 

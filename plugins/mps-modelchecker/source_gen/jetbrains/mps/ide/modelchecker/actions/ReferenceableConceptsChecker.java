@@ -91,6 +91,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
         break;
       }
       // Check for unresolved references 
+
       for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
         if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro"), ref.getLink())) != null)) {
           continue;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5wsdpq8e78l4y5qamqwtjsdffm23x9g">
+<product version="3" modelHash="a9fhvverxgiq9xrgka5n9xokroxmq3c">
   <files names="AbstractNodeCheckerInEditor.java:AggregatingChecker.java:CatchingChecker.java:CategoryShowingChecker.java:ConstraintsChecker.java:ErrorReportUtil.java:FilteringChecker.java:IAbstractChecker.java:IChecker.java:IteratingChecker.java:LanguageErrorsCollector.java:LanguageErrorsComponent.java:ModelCheckerBuilder.java:ModuleImportQuickFix.java:RefScopeChecker.java:SkippingChecker.java:TargetConceptChecker.java:UsedLanguagesChecker.java" />
 </product>
 

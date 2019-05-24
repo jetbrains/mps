@@ -40,6 +40,7 @@ public class ClearSettingsDirectoryBeforeRunTask_BeforeTask extends BaseMpsBefor
 
     public boolean execute(Project project, ExecutionEnvironment environment) {
       // no way to separate here in-process/out-of-process execution 
+
       if (myDummy) {
         return true;
       }

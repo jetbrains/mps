@@ -40,6 +40,7 @@ public final class TemplateFunctionParameter_generationContext__BehaviorDescript
   }
   /*package*/ static boolean needConceptFunction_idhZKliUO(@NotNull SNode __thisNode__) {
     // we could use this cf parameter in ITemplateCall argument expressions without need to wrap with query 
+
     return (SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall"), false, false) == null);
   }
 

@@ -48,6 +48,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_369k9v_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassCreator"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     }
     @NotNull

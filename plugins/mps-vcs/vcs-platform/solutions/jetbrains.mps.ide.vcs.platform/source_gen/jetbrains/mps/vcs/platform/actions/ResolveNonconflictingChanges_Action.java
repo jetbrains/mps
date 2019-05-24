@@ -49,6 +49,7 @@ public class ResolveNonconflictingChanges_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     List<VirtualFile> conflictedModelFiles = ConflictingModelsUtil.getConflictingModelFiles(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject());
     // merge with git provider 
+
     MergeProvider provider = GitVcs.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getMergeProvider();
     boolean hasResolvableConflicts = ConflictingModelsUtil.hasResolvableConflicts(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), provider, conflictedModelFiles);
     if (!(hasResolvableConflicts)) {

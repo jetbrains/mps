@@ -37,6 +37,7 @@ public final class SimpleCommandQueue {
 
   public void addTask(@NotNull Runnable task, Object key) {
     // removes task with the same key if any 
+
     synchronized (myQueue) {
       SimpleCommandQueue.QueueElem elem = new SimpleCommandQueue.QueueElem(task, key);
       if (key != null) {

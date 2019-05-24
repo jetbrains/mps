@@ -8,7 +8,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="3ior" ref="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" />
@@ -153,11 +153,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -274,6 +271,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7" />
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
@@ -2159,8 +2164,16 @@
           </node>
           <node concept="3clFbH" id="1AfwOXhIK0N" role="3cqZAp" />
           <node concept="3SKdUt" id="1AfwOXhIKUg" role="3cqZAp">
-            <node concept="3SKdUq" id="1AfwOXhIKUh" role="3SKWNk">
-              <property role="3SKdUp" value="1 go up" />
+            <node concept="1PaTwC" id="ATZLwXofPY" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofPZ" role="1PaTwD">
+                <property role="3oM_SC" value="1" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQ0" role="1PaTwD">
+                <property role="3oM_SC" value="go" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQ1" role="1PaTwD">
+                <property role="3oM_SC" value="up" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="1AfwOXhII7X" role="3cqZAp">
@@ -2231,8 +2244,10 @@
           </node>
           <node concept="3clFbH" id="1AfwOXhIKU8" role="3cqZAp" />
           <node concept="3SKdUt" id="1AfwOXhIKUj" role="3cqZAp">
-            <node concept="3SKdUq" id="1AfwOXhJ6l5" role="3SKWNk">
-              <property role="3SKdUp" value="back" />
+            <node concept="1PaTwC" id="ATZLwXofQ2" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofQ3" role="1PaTwD">
+                <property role="3oM_SC" value="back" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1AfwOXhIKUl" role="3cqZAp">
@@ -2309,8 +2324,16 @@
           </node>
           <node concept="3clFbH" id="1AfwOXhJ6kS" role="3cqZAp" />
           <node concept="3SKdUt" id="1AfwOXhJ6kY" role="3cqZAp">
-            <node concept="3SKdUq" id="1AfwOXhJ6l4" role="3SKWNk">
-              <property role="3SKdUp" value="2 same folder" />
+            <node concept="1PaTwC" id="ATZLwXofQ4" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofQ5" role="1PaTwD">
+                <property role="3oM_SC" value="2" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQ6" role="1PaTwD">
+                <property role="3oM_SC" value="same" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQ7" role="1PaTwD">
+                <property role="3oM_SC" value="folder" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1AfwOXhJ6lb" role="3cqZAp">
@@ -2338,8 +2361,10 @@
           </node>
           <node concept="3clFbH" id="1AfwOXhJ6l6" role="3cqZAp" />
           <node concept="3SKdUt" id="1AfwOXhJ6me" role="3cqZAp">
-            <node concept="3SKdUq" id="1AfwOXhJ6mo" role="3SKWNk">
-              <property role="3SKdUp" value="back" />
+            <node concept="1PaTwC" id="ATZLwXofQ8" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofQ9" role="1PaTwD">
+                <property role="3oM_SC" value="back" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1AfwOXhJ6lO" role="3cqZAp">
@@ -2374,8 +2399,19 @@
           </node>
           <node concept="3clFbH" id="1AfwOXhJ6lH" role="3cqZAp" />
           <node concept="3SKdUt" id="1AfwOXhJ6H6" role="3cqZAp">
-            <node concept="3SKdUq" id="1AfwOXhJ6Hg" role="3SKWNk">
-              <property role="3SKdUp" value="3 one level up" />
+            <node concept="1PaTwC" id="ATZLwXofQa" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofQb" role="1PaTwD">
+                <property role="3oM_SC" value="3" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQc" role="1PaTwD">
+                <property role="3oM_SC" value="one" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQd" role="1PaTwD">
+                <property role="3oM_SC" value="level" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQe" role="1PaTwD">
+                <property role="3oM_SC" value="up" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="1AfwOXhJ6K3" role="3cqZAp">
@@ -2426,8 +2462,10 @@
           </node>
           <node concept="3clFbH" id="1AfwOXhJ6Jk" role="3cqZAp" />
           <node concept="3SKdUt" id="1AfwOXhJ6Jw" role="3cqZAp">
-            <node concept="3SKdUq" id="1AfwOXhJ6Jx" role="3SKWNk">
-              <property role="3SKdUp" value="back" />
+            <node concept="1PaTwC" id="ATZLwXofQf" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofQg" role="1PaTwD">
+                <property role="3oM_SC" value="back" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="1AfwOXhJ6Jy" role="3cqZAp">
@@ -2510,8 +2548,34 @@
         <node concept="3Tm1VV" id="3pfvS1wcYCy" role="1B3o_S" />
         <node concept="3clFbS" id="3pfvS1wcYCz" role="3clF47">
           <node concept="3SKdUt" id="3pfvS1wdzBD" role="3cqZAp">
-            <node concept="3SKdUq" id="3pfvS1wdzBF" role="3SKWNk">
-              <property role="3SKdUp" value="rph assumes its initial path is directory, i.e. &quot;someFolder/&quot;" />
+            <node concept="1PaTwC" id="ATZLwXofQh" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofQi" role="1PaTwD">
+                <property role="3oM_SC" value="rph" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQj" role="1PaTwD">
+                <property role="3oM_SC" value="assumes" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQk" role="1PaTwD">
+                <property role="3oM_SC" value="its" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQl" role="1PaTwD">
+                <property role="3oM_SC" value="initial" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQm" role="1PaTwD">
+                <property role="3oM_SC" value="path" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQn" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQo" role="1PaTwD">
+                <property role="3oM_SC" value="directory," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQp" role="1PaTwD">
+                <property role="3oM_SC" value="i.e." />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQq" role="1PaTwD">
+                <property role="3oM_SC" value="&quot;someFolder/&quot;" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="3pfvS1wd8px" role="3cqZAp">
@@ -2531,8 +2595,49 @@
             </node>
           </node>
           <node concept="3SKdUt" id="3pfvS1wdNRk" role="3cqZAp">
-            <node concept="3SKdUq" id="3pfvS1wdNRm" role="3SKWNk">
-              <property role="3SKdUp" value="makeRelative doesn's assume whether it's file or directory, and shall keep result the same" />
+            <node concept="1PaTwC" id="ATZLwXofQr" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXofQs" role="1PaTwD">
+                <property role="3oM_SC" value="makeRelative" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQt" role="1PaTwD">
+                <property role="3oM_SC" value="doesn's" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQu" role="1PaTwD">
+                <property role="3oM_SC" value="assume" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQv" role="1PaTwD">
+                <property role="3oM_SC" value="whether" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQw" role="1PaTwD">
+                <property role="3oM_SC" value="it's" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQx" role="1PaTwD">
+                <property role="3oM_SC" value="file" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQy" role="1PaTwD">
+                <property role="3oM_SC" value="or" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQz" role="1PaTwD">
+                <property role="3oM_SC" value="directory," />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQ$" role="1PaTwD">
+                <property role="3oM_SC" value="and" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQ_" role="1PaTwD">
+                <property role="3oM_SC" value="shall" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQA" role="1PaTwD">
+                <property role="3oM_SC" value="keep" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQB" role="1PaTwD">
+                <property role="3oM_SC" value="result" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQC" role="1PaTwD">
+                <property role="3oM_SC" value="the" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXofQD" role="1PaTwD">
+                <property role="3oM_SC" value="same" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="3pfvS1wdgpa" role="3cqZAp">

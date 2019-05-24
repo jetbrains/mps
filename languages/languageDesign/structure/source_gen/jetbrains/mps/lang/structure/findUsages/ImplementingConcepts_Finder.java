@@ -51,6 +51,7 @@ public class ImplementingConcepts_Finder extends GeneratedFinder {
                       SNode conceptNode = SNodeOperations.getParent(interfaceNode);
                       if (SNodeOperations.isInstanceOf(conceptNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
                         // concept implements interface case 
+
                         if (SNodeOperations.hasRole(interfaceNode, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements"))) {
                           callback.onUsageFound(createSingleResult(conceptNode));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {

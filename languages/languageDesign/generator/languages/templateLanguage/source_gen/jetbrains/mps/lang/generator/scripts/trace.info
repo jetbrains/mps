@@ -31,18 +31,18 @@
       <node id="8102310632648243074" at="65,52,66,216" concept="4" />
       <node id="8102310632648176466" at="66,216,67,150" concept="1" />
       <node id="8102310632648176463" at="70,42,71,20" concept="5" />
-      <node id="8102310632648176440" at="73,7,74,18" concept="6" />
-      <node id="8102310632648167264" at="79,41,80,163" concept="5" />
-      <node id="8102310632648175509" at="82,80,83,63" concept="4" />
-      <node id="8102310632648175509" at="83,63,84,234" concept="4" />
-      <node id="8102310632648175509" at="85,24,86,366" concept="1" />
-      <node id="8102310632648175509" at="87,5,88,14" concept="5" />
-      <node id="8102310632648176470" at="90,80,91,63" concept="4" />
-      <node id="8102310632648176470" at="91,63,92,234" concept="4" />
-      <node id="8102310632648176470" at="93,24,94,366" concept="1" />
-      <node id="8102310632648176470" at="95,5,96,14" concept="5" />
-      <node id="8102310632648175509" at="84,234,87,5" concept="2" />
-      <node id="8102310632648176470" at="92,234,95,5" concept="2" />
+      <node id="8102310632648167264" at="80,41,81,163" concept="5" />
+      <node id="8102310632648175509" at="83,80,84,63" concept="4" />
+      <node id="8102310632648175509" at="84,63,85,234" concept="4" />
+      <node id="8102310632648175509" at="86,24,87,366" concept="1" />
+      <node id="8102310632648175509" at="88,5,89,14" concept="5" />
+      <node id="8102310632648176470" at="91,80,92,63" concept="4" />
+      <node id="8102310632648176470" at="92,63,93,234" concept="4" />
+      <node id="8102310632648176470" at="94,24,95,366" concept="1" />
+      <node id="8102310632648176470" at="96,5,97,14" concept="5" />
+      <node id="8102310632648176440" at="73,7,75,0" concept="6" />
+      <node id="8102310632648175509" at="85,234,88,5" concept="2" />
+      <node id="8102310632648176470" at="93,234,96,5" concept="2" />
       <node id="8102310632648167403" at="21,0,25,0" concept="3" trace="getName#()Ljava/lang/String;" />
       <node id="8102310632648167403" at="25,0,29,0" concept="3" trace="getAdditionalInfo#()Ljava/lang/String;" />
       <node id="8102310632648167403" at="29,0,33,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -55,12 +55,12 @@
       <node id="8102310632648176463" at="69,0,73,0" concept="3" trace="isShowAsIntention#()Z" />
       <node id="8102310632648176463" at="59,0,64,0" concept="3" trace="isApplicableInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8102310632648176463" at="64,0,69,0" concept="3" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8102310632648167264" at="77,0,82,0" concept="3" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="8102310632648175509" at="82,0,90,0" concept="7" trace="createNodePointerExpression_vfdyfl_a0a0a0a#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8102310632648176470" at="90,0,98,0" concept="7" trace="createNodePointerExpression_vfdyfl_a0a1a0b#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8102310632648167264" at="78,0,83,0" concept="3" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="8102310632648175509" at="83,0,91,0" concept="7" trace="createNodePointerExpression_vfdyfl_a0a0a0a#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8102310632648176470" at="91,0,99,0" concept="7" trace="createNodePointerExpression_vfdyfl_a0a1a0b#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8102310632648167403" at="19,58,45,7" concept="1" />
       <node id="8102310632648176463" at="45,7,73,7" concept="1" />
-      <node id="8102310632648167264" at="18,0,76,0" concept="0" trace="NodePointersInReferenceMacorQueries_MigrationScript#()V" />
+      <node id="8102310632648167264" at="18,0,77,0" concept="0" trace="NodePointersInReferenceMacorQueries_MigrationScript#()V" />
       <scope id="8102310632648167403" at="22,31,23,62" />
       <scope id="8102310632648167403" at="26,41,27,62" />
       <scope id="8102310632648167403" at="30,54,31,173" />
@@ -71,9 +71,9 @@
       <scope id="8102310632648176463" at="52,41,53,58" />
       <scope id="8102310632648176463" at="56,54,57,155" />
       <scope id="8102310632648176463" at="70,42,71,20" />
-      <scope id="8102310632648167264" at="79,41,80,163" />
-      <scope id="8102310632648175509" at="85,24,86,366" />
-      <scope id="8102310632648176470" at="93,24,94,366" />
+      <scope id="8102310632648167264" at="80,41,81,163" />
+      <scope id="8102310632648175509" at="86,24,87,366" />
+      <scope id="8102310632648176470" at="94,24,95,366" />
       <scope id="8102310632648176477" at="60,59,62,520">
         <var name="parent" id="8102310632648180382" />
       </scope>
@@ -100,26 +100,26 @@
       <scope id="8102310632648176463" at="64,0,69,0">
         <var name="node" id="8102310632648176463" />
       </scope>
-      <scope id="8102310632648167264" at="77,0,82,0" />
-      <scope id="8102310632648175509" at="82,80,88,14">
+      <scope id="8102310632648167264" at="78,0,83,0" />
+      <scope id="8102310632648175509" at="83,80,89,14">
         <var name="facade" id="8102310632648175509" />
         <var name="n1" id="8102310632648175509" />
       </scope>
-      <scope id="8102310632648176470" at="90,80,96,14">
+      <scope id="8102310632648176470" at="91,80,97,14">
         <var name="facade" id="8102310632648176470" />
         <var name="n1" id="8102310632648176470" />
       </scope>
-      <scope id="8102310632648175509" at="82,0,90,0">
+      <scope id="8102310632648175509" at="83,0,91,0">
         <var name="node0" id="8102310632648175509" />
       </scope>
-      <scope id="8102310632648176470" at="90,0,98,0">
+      <scope id="8102310632648176470" at="91,0,99,0">
         <var name="node0" id="8102310632648176470" />
       </scope>
-      <scope id="8102310632648167264" at="18,64,74,18" />
-      <scope id="8102310632648167264" at="18,0,76,0" />
+      <scope id="8102310632648167264" at="18,64,75,0" />
+      <scope id="8102310632648167264" at="18,0,77,0" />
       <unit id="8102310632648167403" at="20,28,45,5" name="jetbrains.mps.lang.generator.scripts.NodePointersInReferenceMacorQueries_MigrationScript$1" />
       <unit id="8102310632648176463" at="46,28,73,5" name="jetbrains.mps.lang.generator.scripts.NodePointersInReferenceMacorQueries_MigrationScript$2" />
-      <unit id="8102310632648167264" at="17,0,99,0" name="jetbrains.mps.lang.generator.scripts.NodePointersInReferenceMacorQueries_MigrationScript" />
+      <unit id="8102310632648167264" at="17,0,100,0" name="jetbrains.mps.lang.generator.scripts.NodePointersInReferenceMacorQueries_MigrationScript" />
     </file>
     <file name="ScriptsDescriptor.java">
       <node id="8102310632648167264" at="15,52,16,88" concept="1" />

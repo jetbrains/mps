@@ -48,6 +48,7 @@ public class ExtendsFacetReference_Constraints extends BaseConstraintsDescriptor
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // todo: rewrite using filtering scope on facets scope! 
+
             return ListScope.forResolvableElements(Sequence.fromIterable(new FacetsScope(_context.getContextNode()).getAvailableElements(null)).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 return SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration"));

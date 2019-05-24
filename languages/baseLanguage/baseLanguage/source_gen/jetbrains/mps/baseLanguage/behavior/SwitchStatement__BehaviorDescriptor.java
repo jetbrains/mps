@@ -84,6 +84,7 @@ public final class SwitchStatement__BehaviorDescriptor extends BaseBHDescriptor 
       nodesInScope[nodesInScope.length - 1] = SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock"));
 
       // todo: how to generialize? 
+
       if (Arrays.asList(nodesInScope).contains(child)) {
         return Scopes.forLoopLabels(parameter, ScopeUtils.lazyParentScope(__thisNode__, kind));
       }

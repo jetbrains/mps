@@ -90,6 +90,7 @@ public final class VcsActionsUtil {
       List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), revisionNumber.asString() + " (Read-Only)", "Your Version");
       DiffRequest request = new SimpleDiffRequest(myContainingRootName, contents, titles);
       // put hint to show only one root and navigate 
+
       request.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, id);
       request.putUserData(ModelDiffViewer.DIFF_NAVIGATE_TO, bounds);
       DiffManager.getInstance().showDiff(ideaProject, request);

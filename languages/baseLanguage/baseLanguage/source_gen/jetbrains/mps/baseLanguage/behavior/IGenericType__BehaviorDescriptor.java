@@ -46,6 +46,7 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
     // do nothing by default 
+
   }
   /*package*/ static SNode expandGenerics_id3zZky3wFPhu(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
     return ((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(__thisNode__, substitutions, new ArrayList<SNode>()));

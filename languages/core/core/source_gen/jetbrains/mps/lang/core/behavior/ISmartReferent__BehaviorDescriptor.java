@@ -41,6 +41,7 @@ public final class ISmartReferent__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getMatchingText_id69Qfsw3InJX(@NotNull SNode __thisNode__, SNode reference) {
     // IResolveInfo now uses to distinct matchingText and visibleMatchingText 
+
     if (SNodeOperations.isInstanceOf(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo"))) {
       return SPropertyOperations.getString((SNodeOperations.cast(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo"));
     }

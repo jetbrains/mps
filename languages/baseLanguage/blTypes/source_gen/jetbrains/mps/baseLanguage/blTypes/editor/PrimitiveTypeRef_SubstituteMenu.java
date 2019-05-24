@@ -48,6 +48,7 @@ public class PrimitiveTypeRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_i3rfjn_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeRef"), MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"));
     }
     @NotNull

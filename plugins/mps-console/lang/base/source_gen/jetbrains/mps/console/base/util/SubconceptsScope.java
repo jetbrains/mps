@@ -96,6 +96,7 @@ public abstract class SubconceptsScope extends Scope {
       String name = getName(n);
       if (name.equals(result)) {
         // ambiguity 
+
         return null;
       }
     }

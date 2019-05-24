@@ -87,11 +87,8 @@
         <child id="1144231399730" name="condition" index="1Dwp0S" />
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -177,6 +174,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -973,8 +978,67 @@
     <node concept="11bSqf" id="3veQ_zQyFo5" role="11c4hB">
       <node concept="3clFbS" id="3veQ_zQyFo6" role="2VODD2">
         <node concept="3SKdUt" id="6BkpuGOIxhM" role="3cqZAp">
-          <node concept="3SKdUq" id="6BkpuGOIxiU" role="3SKWNk">
-            <property role="3SKdUp" value="first line in tags needs to stay on the same line with the tag, DocComments prepend a new line explicitly" />
+          <node concept="1PaTwC" id="ATZLwXnSTU" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnSTV" role="1PaTwD">
+              <property role="3oM_SC" value="first" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSTW" role="1PaTwD">
+              <property role="3oM_SC" value="line" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSTX" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSTY" role="1PaTwD">
+              <property role="3oM_SC" value="tags" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSTZ" role="1PaTwD">
+              <property role="3oM_SC" value="needs" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU0" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU1" role="1PaTwD">
+              <property role="3oM_SC" value="stay" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU2" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU3" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU4" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU5" role="1PaTwD">
+              <property role="3oM_SC" value="line" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU6" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU7" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU8" role="1PaTwD">
+              <property role="3oM_SC" value="tag," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSU9" role="1PaTwD">
+              <property role="3oM_SC" value="DocComments" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUa" role="1PaTwD">
+              <property role="3oM_SC" value="prepend" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUb" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUc" role="1PaTwD">
+              <property role="3oM_SC" value="new" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUd" role="1PaTwD">
+              <property role="3oM_SC" value="line" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUe" role="1PaTwD">
+              <property role="3oM_SC" value="explicitly" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="1OzlC1cRljY" role="3cqZAp">
@@ -1069,8 +1133,25 @@
         </node>
         <node concept="3clFbH" id="1Jj8OtqUc9i" role="3cqZAp" />
         <node concept="3SKdUt" id="6BkpuGOHdES" role="3cqZAp">
-          <node concept="3SKdUq" id="6BkpuGOHdH_" role="3SKWNk">
-            <property role="3SKdUp" value="A separator between text and tags" />
+          <node concept="1PaTwC" id="ATZLwXnSUf" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnSUg" role="1PaTwD">
+              <property role="3oM_SC" value="A" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUh" role="1PaTwD">
+              <property role="3oM_SC" value="separator" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUi" role="1PaTwD">
+              <property role="3oM_SC" value="between" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUj" role="1PaTwD">
+              <property role="3oM_SC" value="text" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUk" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnSUl" role="1PaTwD">
+              <property role="3oM_SC" value="tags" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="1Jj8OtqUc9j" role="3cqZAp">

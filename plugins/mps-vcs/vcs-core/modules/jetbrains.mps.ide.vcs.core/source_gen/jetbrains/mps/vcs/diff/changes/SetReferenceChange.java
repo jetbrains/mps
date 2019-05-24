@@ -31,10 +31,12 @@ public class SetReferenceChange extends NodeChange {
     myRole = role;
     myTargetModelReference = targetModelReference;
     // if target node id is null and resolve info is not-null it's dynamic reference 
+
     myTargetNodeId = targetNodeId;
     myResolveInfo = resolveInfo;
 
     // check if only resolve info for static reference changed - then it cannot conflict with other changes 
+
     SReference oldRef = check_mgdhcs_a0i0f(changeSet.getOldModel().getNode(getAffectedNodeId(false)), myRole, this);
     myResolveInfoOnly = Objects.equals(check_mgdhcs_a0a0a9a5(oldRef), targetModelReference) && Objects.equals(check_mgdhcs_a0a0a9a5_0(oldRef), targetNodeId) && targetNodeId != null;
   }
@@ -82,7 +84,8 @@ public class SetReferenceChange extends NodeChange {
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel  
+    // get "nonconflicting" attribute in metamodel 
+
     SNode n = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
     MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(myRole);
     if (hint != null) {
@@ -102,6 +105,7 @@ public class SetReferenceChange extends NodeChange {
   @Override
   public String getDescription() {
     // TODO consider dynamic references 
+
     SReference oldRef = getChangeSet().getOldModel().getNode(getAffectedNodeId(false)).getReference(myRole);
     SReference newRef = getChangeSet().getNewModel().getNode(getAffectedNodeId(true)).getReference(myRole);
     if (oldRef == null) {
@@ -147,6 +151,7 @@ public class SetReferenceChange extends NodeChange {
     SModelReference targetModel = check_mgdhcs_a0d0r(ref);
     if (Objects.equals(SModelOperations.getPointer(getChangeSet().getOldModel()), targetModel)) {
       // This is internal reference 
+
       targetModel = null;
     }
 

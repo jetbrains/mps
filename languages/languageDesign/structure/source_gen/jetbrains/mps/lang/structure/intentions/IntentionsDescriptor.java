@@ -33,14 +33,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: AbstractConceptDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ForbidIncomingReferencesInSubconcepts_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: ConceptDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[5];
           intentions[0] = new MakeRootable_Intention();
           intentions[1] = new MakeFinal_Intention();
@@ -51,21 +53,24 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 2:
         if (true) {
-          // Concept: DocumentationObjective 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AnnotateToDocument_Intention();
         }
         break;
       case 3:
         if (true) {
-          // Concept: DocumentedNodeAnnotation 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddSeeAlso_Intention();
         }
         break;
       case 4:
         if (true) {
-          // Concept: IStructureDeprecatable 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddDeprecatedAnnotation_Intention();
         }

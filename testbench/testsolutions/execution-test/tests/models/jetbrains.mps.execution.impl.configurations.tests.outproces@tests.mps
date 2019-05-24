@@ -11,6 +11,7 @@
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
@@ -179,11 +180,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
@@ -252,6 +250,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -884,7 +890,7 @@
             <node concept="2OqwBi" id="iwb5mFtywk" role="33vP2m">
               <node concept="2WthIp" id="iwb5mFtywl" role="2Oq$k0" />
               <node concept="2XshWL" id="iwb5mFtywm" role="2OqNvi">
-                <ref role="2WH_rO" node="1T5iP2az4YC" />
+                <ref role="2WH_rO" node="1T5iP2az4YC" resolve="createDefaultJUnitRC" />
               </node>
             </node>
           </node>
@@ -947,7 +953,7 @@
           <node concept="2OqwBi" id="iwb5mFtvXz" role="3clFbG">
             <node concept="2WthIp" id="iwb5mFtvX$" role="2Oq$k0" />
             <node concept="2XshWL" id="iwb5mFtvX_" role="2OqNvi">
-              <ref role="2WH_rO" node="6bfDvj8bCm1" />
+              <ref role="2WH_rO" node="6bfDvj8bCm1" resolve="runTestsWithSettings" />
               <node concept="37vLTw" id="iwb5mFtvXA" role="2XxRq1">
                 <ref role="3cqZAo" node="iwb5mFtywi" resolve="junitRC" />
               </node>
@@ -957,7 +963,7 @@
               <node concept="2OqwBi" id="iwb5mFtvXC" role="2XxRq1">
                 <node concept="2WthIp" id="iwb5mFtvXD" role="2Oq$k0" />
                 <node concept="2XshWL" id="iwb5mFtvXE" role="2OqNvi">
-                  <ref role="2WH_rO" node="4rbJdZOvqgo" />
+                  <ref role="2WH_rO" node="4rbJdZOvqgo" resolve="emptyList" />
                 </node>
               </node>
             </node>
@@ -1377,28 +1383,233 @@
       <node concept="3cqZAl" id="384sIIhGbwL" role="3clF45" />
       <node concept="3clFbS" id="384sIIhGbwM" role="3clF47">
         <node concept="3SKdUt" id="9n1CQGpy43" role="3cqZAp">
-          <node concept="3SKdUq" id="9n1CQGpy44" role="3SKWNk">
-            <property role="3SKdUp" value="[NOTE] not to be run out of process from sources since " />
+          <node concept="1PaTwC" id="ATZLwXoq9S" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoq9T" role="1PaTwD">
+              <property role="3oM_SC" value="[NOTE]" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoq9U" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoq9V" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoq9W" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoq9X" role="1PaTwD">
+              <property role="3oM_SC" value="run" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoq9Y" role="1PaTwD">
+              <property role="3oM_SC" value="out" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoq9Z" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa0" role="1PaTwD">
+              <property role="3oM_SC" value="process" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa1" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa2" role="1PaTwD">
+              <property role="3oM_SC" value="sources" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa3" role="1PaTwD">
+              <property role="3oM_SC" value="since" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="9n1CQGpy45" role="3cqZAp">
-          <node concept="3SKdUq" id="9n1CQGpy46" role="3SKWNk">
-            <property role="3SKdUp" value="classpath is not very well-built for mps command being build from testmode MPS from sources" />
+          <node concept="1PaTwC" id="ATZLwXoqa4" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqa5" role="1PaTwD">
+              <property role="3oM_SC" value="classpath" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa6" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa7" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa8" role="1PaTwD">
+              <property role="3oM_SC" value="very" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa9" role="1PaTwD">
+              <property role="3oM_SC" value="well-built" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaa" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqab" role="1PaTwD">
+              <property role="3oM_SC" value="mps" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqac" role="1PaTwD">
+              <property role="3oM_SC" value="command" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqad" role="1PaTwD">
+              <property role="3oM_SC" value="being" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqae" role="1PaTwD">
+              <property role="3oM_SC" value="build" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaf" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqag" role="1PaTwD">
+              <property role="3oM_SC" value="testmode" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqah" role="1PaTwD">
+              <property role="3oM_SC" value="MPS" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqai" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaj" role="1PaTwD">
+              <property role="3oM_SC" value="sources" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="9n1CQGpy47" role="3cqZAp">
-          <node concept="3SKdUq" id="9n1CQGpy48" role="3SKWNk">
-            <property role="3SKdUp" value="in this test we expect the run configruation MPSInstance to start" />
+          <node concept="1PaTwC" id="ATZLwXoqak" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqal" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqam" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqan" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqao" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqap" role="1PaTwD">
+              <property role="3oM_SC" value="expect" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaq" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqar" role="1PaTwD">
+              <property role="3oM_SC" value="run" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqas" role="1PaTwD">
+              <property role="3oM_SC" value="configruation" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqat" role="1PaTwD">
+              <property role="3oM_SC" value="MPSInstance" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqau" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqav" role="1PaTwD">
+              <property role="3oM_SC" value="start" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="9n1CQGp$$g" role="3cqZAp">
-          <node concept="3SKdUq" id="9n1CQGp$$i" role="3SKWNk">
-            <property role="3SKdUp" value="as for 191 we just pass headless flag to the system, which is not tolerated by IDEA platform, so" />
+          <node concept="1PaTwC" id="ATZLwXoqaw" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqax" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqay" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaz" role="1PaTwD">
+              <property role="3oM_SC" value="191" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa$" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqa_" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaA" role="1PaTwD">
+              <property role="3oM_SC" value="pass" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaB" role="1PaTwD">
+              <property role="3oM_SC" value="headless" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaC" role="1PaTwD">
+              <property role="3oM_SC" value="flag" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaD" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaE" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaF" role="1PaTwD">
+              <property role="3oM_SC" value="system," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaG" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaH" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaI" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaJ" role="1PaTwD">
+              <property role="3oM_SC" value="tolerated" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaK" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaL" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaM" role="1PaTwD">
+              <property role="3oM_SC" value="platform," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaN" role="1PaTwD">
+              <property role="3oM_SC" value="so" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="9n1CQGp_v4" role="3cqZAp">
-          <node concept="3SKdUq" id="9n1CQGp_v5" role="3SKWNk">
-            <property role="3SKdUp" value="the launch of MPS Instance rc is actually all we test here (for now)" />
+          <node concept="1PaTwC" id="ATZLwXoqaO" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqaP" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaQ" role="1PaTwD">
+              <property role="3oM_SC" value="launch" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaR" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaS" role="1PaTwD">
+              <property role="3oM_SC" value="MPS" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaT" role="1PaTwD">
+              <property role="3oM_SC" value="Instance" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaU" role="1PaTwD">
+              <property role="3oM_SC" value="rc" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaV" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaW" role="1PaTwD">
+              <property role="3oM_SC" value="actually" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaX" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaY" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqaZ" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb0" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb1" role="1PaTwD">
+              <property role="3oM_SC" value="(for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb2" role="1PaTwD">
+              <property role="3oM_SC" value="now)" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="9n1CQGpy49" role="3cqZAp">
@@ -1446,8 +1657,49 @@
         </node>
         <node concept="3clFbH" id="9n1CQGpy4s" role="3cqZAp" />
         <node concept="3SKdUt" id="9n1CQGpy4t" role="3cqZAp">
-          <node concept="3SKdUq" id="9n1CQGpy4u" role="3SKWNk">
-            <property role="3SKdUp" value="fixme filter BindException (the only exception in std-err which stops us from filtering errors)" />
+          <node concept="1PaTwC" id="ATZLwXoqb3" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqb4" role="1PaTwD">
+              <property role="3oM_SC" value="fixme" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb5" role="1PaTwD">
+              <property role="3oM_SC" value="filter" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb6" role="1PaTwD">
+              <property role="3oM_SC" value="BindException" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb7" role="1PaTwD">
+              <property role="3oM_SC" value="(the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb8" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqb9" role="1PaTwD">
+              <property role="3oM_SC" value="exception" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqba" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqbb" role="1PaTwD">
+              <property role="3oM_SC" value="std-err" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqbc" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqbd" role="1PaTwD">
+              <property role="3oM_SC" value="stops" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqbe" role="1PaTwD">
+              <property role="3oM_SC" value="us" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqbf" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqbg" role="1PaTwD">
+              <property role="3oM_SC" value="filtering" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqbh" role="1PaTwD">
+              <property role="3oM_SC" value="errors)" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="9n1CQGpy4v" role="3cqZAp">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="857pm0yqao34vws3iu74x29ddoa0ffo">
+<product version="3" modelHash="eemlkzo95il1yhuse0e3y8xlpqdt0ho">
   <files names="ExtendingNullableAnalyzer_Test.java:TestAnalyzerWithConstructorParameters_Test.java:TestAnalyzerWithModeSpecified_Test.java:TestProgramWithModeSpecified_Test.java:TestProgramWithMoreSpecificMode_Test.java" />
 </product>
 

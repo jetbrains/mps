@@ -73,6 +73,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase implements Te
               }
               tnode5.addChild(myAggregationLinks[0], tnode6);
               // TODO validate child 
+
             }
             {
               Collection<SNode> tlist7 = null;
@@ -88,6 +89,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase implements Te
                 tnode5.addChild(myAggregationLinks[0], child9);
               }
               // TODO validate child 
+
             }
             {
               final SNode tnode10 = environment.createOutputNode(myConcepts[0]);
@@ -97,6 +99,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase implements Te
               }
               tnode5.addChild(myAggregationLinks[0], tnode10);
               // TODO validate child 
+
             }
           } finally {
           }
@@ -146,6 +149,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase implements Te
           tnode1.addChild(myAggregationLinks[1], child3);
         }
         // TODO validate child 
+
       }
     } finally {
     }

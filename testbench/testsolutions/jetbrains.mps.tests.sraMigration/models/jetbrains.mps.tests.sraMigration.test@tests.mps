@@ -7,6 +7,7 @@
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="12" />
     <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="7" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
@@ -177,11 +178,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -277,6 +275,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -3068,18 +3074,204 @@
     <node concept="1KhYhu" id="6jMl7XILu80" role="1KhZu4">
       <node concept="3clFbS" id="6jMl7XILu81" role="2VODD2">
         <node concept="3SKdUt" id="nUYGvARotK" role="3cqZAp">
-          <node concept="3SKdUq" id="nUYGvARotM" role="3SKWNk">
-            <property role="3SKdUp" value="I don't care to close the project (a) can do it on per-test basis in BTestCase (no BeforeClass), (b) there are too many tests in this class " />
+          <node concept="1PaTwC" id="ATZLwXoqgk" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqgl" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgm" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgn" role="1PaTwD">
+              <property role="3oM_SC" value="care" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgo" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgp" role="1PaTwD">
+              <property role="3oM_SC" value="close" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgq" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgr" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgs" role="1PaTwD">
+              <property role="3oM_SC" value="(a)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgt" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgu" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgv" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgw" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgx" role="1PaTwD">
+              <property role="3oM_SC" value="per-test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgy" role="1PaTwD">
+              <property role="3oM_SC" value="basis" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgz" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqg$" role="1PaTwD">
+              <property role="3oM_SC" value="BTestCase" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqg_" role="1PaTwD">
+              <property role="3oM_SC" value="(no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgA" role="1PaTwD">
+              <property role="3oM_SC" value="BeforeClass)," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgB" role="1PaTwD">
+              <property role="3oM_SC" value="(b)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgC" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgD" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgE" role="1PaTwD">
+              <property role="3oM_SC" value="too" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgF" role="1PaTwD">
+              <property role="3oM_SC" value="many" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgG" role="1PaTwD">
+              <property role="3oM_SC" value="tests" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgH" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgI" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgJ" role="1PaTwD">
+              <property role="3oM_SC" value="class" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="nUYGvARGUI" role="3cqZAp">
-          <node concept="3SKdUq" id="nUYGvARGUJ" role="3SKWNk">
-            <property role="3SKdUp" value="  (c) PushEnvironmentRunnerBuilder is not yet capable to invoke static setEnvironment (so that we could have static project field" />
+          <node concept="1PaTwC" id="ATZLwXoqgK" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwX$ixf" role="1PaTwD">
+              <property role="3oM_SC" value="(c)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgO" role="1PaTwD">
+              <property role="3oM_SC" value="PushEnvironmentRunnerBuilder" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgP" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgQ" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgR" role="1PaTwD">
+              <property role="3oM_SC" value="yet" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgS" role="1PaTwD">
+              <property role="3oM_SC" value="capable" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgT" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgU" role="1PaTwD">
+              <property role="3oM_SC" value="invoke" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgV" role="1PaTwD">
+              <property role="3oM_SC" value="static" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgW" role="1PaTwD">
+              <property role="3oM_SC" value="setEnvironment" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgX" role="1PaTwD">
+              <property role="3oM_SC" value="(so" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgY" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqgZ" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqh0" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqh1" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqh2" role="1PaTwD">
+              <property role="3oM_SC" value="static" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqh3" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqh4" role="1PaTwD">
+              <property role="3oM_SC" value="field" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="nUYGvAS5v7" role="3cqZAp">
-          <node concept="3SKdUq" id="nUYGvAS5v9" role="3SKWNk">
-            <property role="3SKdUp" value="  (d) this test is executed from separate process (mpsSmartRefAttrMigration.xml) and nobody gets affected with the project left open." />
+          <node concept="1PaTwC" id="ATZLwXoqh5" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwX$mpl" role="1PaTwD">
+              <property role="3oM_SC" value="(d)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqh9" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqha" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhb" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhc" role="1PaTwD">
+              <property role="3oM_SC" value="executed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhd" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhe" role="1PaTwD">
+              <property role="3oM_SC" value="separate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhf" role="1PaTwD">
+              <property role="3oM_SC" value="process" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhg" role="1PaTwD">
+              <property role="3oM_SC" value="(mpsSmartRefAttrMigration.xml)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhh" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhi" role="1PaTwD">
+              <property role="3oM_SC" value="nobody" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhj" role="1PaTwD">
+              <property role="3oM_SC" value="gets" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhk" role="1PaTwD">
+              <property role="3oM_SC" value="affected" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhl" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhm" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhn" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqho" role="1PaTwD">
+              <property role="3oM_SC" value="left" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqhp" role="1PaTwD">
+              <property role="3oM_SC" value="open." />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="4uPaNIY9iOs" role="3cqZAp">

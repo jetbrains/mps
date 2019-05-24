@@ -5,7 +5,7 @@
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
@@ -81,11 +81,8 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest">
@@ -122,6 +119,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -193,8 +198,46 @@
           </node>
         </node>
         <node concept="3SKdUt" id="4AFHf7tIca6" role="3cqZAp">
-          <node concept="3SKdUq" id="4AFHf7tIca8" role="3SKWNk">
-            <property role="3SKdUp" value=" there's suspicious code in SConceptAdapter.getSuperInterfaces, make sure it didn't get out elsewhere" />
+          <node concept="1PaTwC" id="ATZLwXokbB" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokbC" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbD" role="1PaTwD">
+              <property role="3oM_SC" value="there's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbE" role="1PaTwD">
+              <property role="3oM_SC" value="suspicious" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbF" role="1PaTwD">
+              <property role="3oM_SC" value="code" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbG" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbH" role="1PaTwD">
+              <property role="3oM_SC" value="SConceptAdapter.getSuperInterfaces," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbI" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbJ" role="1PaTwD">
+              <property role="3oM_SC" value="sure" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbK" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbL" role="1PaTwD">
+              <property role="3oM_SC" value="didn't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbM" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbN" role="1PaTwD">
+              <property role="3oM_SC" value="out" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbO" role="1PaTwD">
+              <property role="3oM_SC" value="elsewhere" />
+            </node>
           </node>
         </node>
         <node concept="3vwNmj" id="4AFHf7tHAD4" role="3cqZAp">
@@ -232,13 +275,80 @@
       <node concept="3cqZAl" id="4AFHf7tIfB5" role="3clF45" />
       <node concept="3clFbS" id="4AFHf7tIfB9" role="3clF47">
         <node concept="3SKdUt" id="4AFHf7tIFRT" role="3cqZAp">
-          <node concept="3SKdUq" id="4AFHf7tIFRV" role="3SKWNk">
-            <property role="3SKdUp" value="state the fact we do not report BaseConcept as its own super-concept" />
+          <node concept="1PaTwC" id="ATZLwXokbP" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokbQ" role="1PaTwD">
+              <property role="3oM_SC" value="state" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbR" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbS" role="1PaTwD">
+              <property role="3oM_SC" value="fact" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbT" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbU" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbV" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbW" role="1PaTwD">
+              <property role="3oM_SC" value="report" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbX" role="1PaTwD">
+              <property role="3oM_SC" value="BaseConcept" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbY" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokbZ" role="1PaTwD">
+              <property role="3oM_SC" value="its" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc0" role="1PaTwD">
+              <property role="3oM_SC" value="own" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc1" role="1PaTwD">
+              <property role="3oM_SC" value="super-concept" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="4AFHf7tIYV4" role="3cqZAp">
-          <node concept="3SKdUq" id="4AFHf7tIYV6" role="3SKWNk">
-            <property role="3SKdUp" value="it's questionable, as it makes BC the only concept without superconcept." />
+          <node concept="1PaTwC" id="ATZLwXokc2" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokc3" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc4" role="1PaTwD">
+              <property role="3oM_SC" value="questionable," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc5" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc6" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc7" role="1PaTwD">
+              <property role="3oM_SC" value="makes" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc8" role="1PaTwD">
+              <property role="3oM_SC" value="BC" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokc9" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokca" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcb" role="1PaTwD">
+              <property role="3oM_SC" value="concept" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcc" role="1PaTwD">
+              <property role="3oM_SC" value="without" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcd" role="1PaTwD">
+              <property role="3oM_SC" value="superconcept." />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="4AFHf7tIh_t" role="3cqZAp">
@@ -364,8 +474,52 @@
           </node>
         </node>
         <node concept="3SKdUt" id="4AFHf7tJ4Wf" role="3cqZAp">
-          <node concept="3SKdUq" id="4AFHf7tJ4Wh" role="3SKWNk">
-            <property role="3SKdUp" value="next two checks are questionable, as it puzzles users (see mbeddr slack Sep 17, 2016)" />
+          <node concept="1PaTwC" id="ATZLwXokce" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXokcf" role="1PaTwD">
+              <property role="3oM_SC" value="next" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcg" role="1PaTwD">
+              <property role="3oM_SC" value="two" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokch" role="1PaTwD">
+              <property role="3oM_SC" value="checks" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokci" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcj" role="1PaTwD">
+              <property role="3oM_SC" value="questionable," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokck" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcl" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcm" role="1PaTwD">
+              <property role="3oM_SC" value="puzzles" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcn" role="1PaTwD">
+              <property role="3oM_SC" value="users" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokco" role="1PaTwD">
+              <property role="3oM_SC" value="(see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcp" role="1PaTwD">
+              <property role="3oM_SC" value="mbeddr" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcq" role="1PaTwD">
+              <property role="3oM_SC" value="slack" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcr" role="1PaTwD">
+              <property role="3oM_SC" value="Sep" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokcs" role="1PaTwD">
+              <property role="3oM_SC" value="17," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXokct" role="1PaTwD">
+              <property role="3oM_SC" value="2016)" />
+            </node>
           </node>
         </node>
         <node concept="3vFxKo" id="jWvgfwghxj" role="3cqZAp">

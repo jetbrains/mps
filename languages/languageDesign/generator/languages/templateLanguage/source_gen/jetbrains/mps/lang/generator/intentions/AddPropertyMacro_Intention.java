@@ -60,6 +60,7 @@ public final class AddPropertyMacro_Intention extends AbstractIntentionDescripto
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode propertyMacro = EditingUtil.addPropertyMacro(node, editorContext.getSelectedCell());
       // set caret 
+
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, propertyMacro, SelectionManager.FIRST_CELL, 0);
       editorContext.openInspector();
     }

@@ -47,6 +47,7 @@ public class templateCallArguments_Contribution extends SubstituteMenuBase {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       // under template call but not under a CF. There's a contribution for CFP that adds all CFP of a CF if there's one, avoid menu item duplication. 
+
       return (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall"), true, false) != null) && (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"), true, false) == null);
     }
     @NotNull

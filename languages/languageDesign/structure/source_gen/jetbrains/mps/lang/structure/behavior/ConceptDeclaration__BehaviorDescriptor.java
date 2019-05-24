@@ -58,6 +58,7 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
     List<SNode> methods = ListSequence.fromList(new ArrayList<SNode>());
 
     // collect methods from extended concepts 
+
     Set<SNode> extendedConcepts = SetSequence.fromSet(new HashSet<SNode>());
     SNode concept = __thisNode__;
     while ((concept != null) && !(SetSequence.fromSet(extendedConcepts).contains(concept))) {
@@ -67,6 +68,7 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
     }
 
     // collect methods from implemented interfaces 
+
     for (SNode interfaceConcept : SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc"))) {
       ListSequence.fromList(methods).addSequence(ListSequence.fromList(InterfaceConceptDeclaration__BehaviorDescriptor.getAllMethodsInPriorityOrder_id7TwdR6lloGH.invoke(interfaceConcept)));
     }

@@ -78,6 +78,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       // do not hang <TF> on other attributes 
+
       SNode applyToNode = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(SNodeOperations.isAttribute(it));
@@ -123,6 +124,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode nodeMacro = EditingUtil.addNodeMacro(node);
       // set caret 
+
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, nodeMacro, SelectionManager.FIRST_CELL, 1);
     }
     public String getKeyStroke() {
@@ -163,6 +165,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode propertyMacro = EditingUtil.addPropertyMacro(node, editorContext.getSelectedCell());
       // set caret 
+
       SelectionUtil.selectCell(editorContext, propertyMacro, SelectionManager.FIRST_CELL);
       EditorInspector inspector = editorContext.getInspector();
       assert inspector != null;
@@ -206,6 +209,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode referenceMacro = EditingUtil.addReferenceMacro(node, editorContext.getSelectedCell());
       // set caret 
+
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, referenceMacro, SelectionManager.FIRST_CELL, 2);
       EditorInspector inspector = editorContext.getInspector();
       assert inspector != null;

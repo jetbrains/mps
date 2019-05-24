@@ -59,13 +59,16 @@ public class MergeTest extends ChangesTestBase {
   public void init() {
     super.init();
     // it's only test model we need read access for, then, we deal with a detached model and shall not care about model access any longer. 
+
     getProject().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         myBaseModel = MergeTemporaryModel.readonlyCloneOf(getTestModel());
       }
     });
     // FIXME is there real need to go through String when we can use MTM.writeableCloneOf()? 
+
     //       I left strings for now just to make sure persistance of a detached model doesn't need model access! 
+
     String baseString = PersistenceUtil.saveModel(myBaseModel, getDefaultExt());
     myMineModel = PersistenceUtil.loadModel(baseString);
     myTheirsModel = PersistenceUtil.loadModel(baseString);

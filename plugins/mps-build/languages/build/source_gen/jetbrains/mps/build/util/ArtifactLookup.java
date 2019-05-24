@@ -68,6 +68,7 @@ public class ArtifactLookup {
           return null;
         }
         // try with original node 
+
         return doFind(originalId);
       }
     }

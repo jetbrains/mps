@@ -51,22 +51,27 @@ public class AttachMappingLabel_Action extends BaseAction {
       return false;
     }
     //  not an element from generator language 
+
     if (SNodeOperations.getConcept(node).getLanguage().equals(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"))) {
       return false;
     }
     //  not inside macro 
+
     if (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, "jetbrains.mps.lang.generator.structure.AbstractMacro"), false, false) != null) {
       return false;
     }
     //  in root template - ok 
+
     if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) != null) {
       return true;
     }
     //  in in-line template - ok 
+
     if (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence"), false, false) != null) {
       return true;
     }
     //  in in-line template with context 
+
     if (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence"), false, false) != null) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -75,6 +80,7 @@ public class AttachMappingLabel_Action extends BaseAction {
       }) != null;
     }
     //  in template fragment - ok 
+
     if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration"))) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {

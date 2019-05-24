@@ -222,11 +222,8 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -399,6 +396,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1220,8 +1225,13 @@
     <node concept="3__wT9" id="hzAPKt7" role="3_A6iZ">
       <node concept="3clFbS" id="hzAPKt8" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCFOn" role="3cqZAp">
-          <node concept="3SKdUq" id="6pumIWoCFOo" role="3SKWNk">
-            <property role="3SKdUp" value="todo hack" />
+          <node concept="1PaTwC" id="ATZLwXnPzK" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnPzL" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPzM" role="1PaTwD">
+              <property role="3oM_SC" value="hack" />
+            </node>
           </node>
         </node>
         <node concept="3AgYrR" id="h$64VvP" role="3cqZAp">
@@ -7451,15 +7461,52 @@
       <node concept="3clFbJ" id="6FvvGn2gR5i" role="3cqZAp">
         <node concept="3clFbS" id="6FvvGn2gR5k" role="3clFbx">
           <node concept="3SKdUt" id="6FvvGn2gRFA" role="3cqZAp">
-            <node concept="3SKdUq" id="6FvvGn2gRFC" role="3SKWNk">
-              <property role="3SKdUp" value="instanceof match branch" />
+            <node concept="1PaTwC" id="ATZLwXnPzN" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXnPzO" role="1PaTwD">
+                <property role="3oM_SC" value="instanceof" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnPzP" role="1PaTwD">
+                <property role="3oM_SC" value="match" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnPzQ" role="1PaTwD">
+                <property role="3oM_SC" value="branch" />
+              </node>
             </node>
           </node>
           <node concept="3clFbJ" id="6FvvGn2gSh0" role="3cqZAp">
             <node concept="3clFbS" id="6FvvGn2gSh2" role="3clFbx">
               <node concept="3SKdUt" id="6FvvGn2gSGd" role="3cqZAp">
-                <node concept="3SKdUq" id="6FvvGn2gSGg" role="3SKWNk">
-                  <property role="3SKdUp" value="XXX no idea what willJump means, just copied from RuleNotEqualsExpression" />
+                <node concept="1PaTwC" id="ATZLwXnPzR" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnPzS" role="1PaTwD">
+                    <property role="3oM_SC" value="XXX" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPzT" role="1PaTwD">
+                    <property role="3oM_SC" value="no" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPzU" role="1PaTwD">
+                    <property role="3oM_SC" value="idea" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPzV" role="1PaTwD">
+                    <property role="3oM_SC" value="what" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPzW" role="1PaTwD">
+                    <property role="3oM_SC" value="willJump" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPzX" role="1PaTwD">
+                    <property role="3oM_SC" value="means," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPzY" role="1PaTwD">
+                    <property role="3oM_SC" value="just" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPzZ" role="1PaTwD">
+                    <property role="3oM_SC" value="copied" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnP$0" role="1PaTwD">
+                    <property role="3oM_SC" value="from" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnP$1" role="1PaTwD">
+                    <property role="3oM_SC" value="RuleNotEqualsExpression" />
+                  </node>
                 </node>
               </node>
               <node concept="2qeTo9" id="6FvvGn2gUJK" role="3cqZAp">
@@ -7524,8 +7571,43 @@
         </node>
       </node>
       <node concept="3SKdUt" id="6FvvGn2gRXD" role="3cqZAp">
-        <node concept="3SKdUq" id="6FvvGn2gRXF" role="3SKWNk">
-          <property role="3SKdUp" value="If instanceof didn't match, no idea whether leftExpression is nullable or not." />
+        <node concept="1PaTwC" id="ATZLwXnP$2" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXnP$3" role="1PaTwD">
+            <property role="3oM_SC" value="If" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$4" role="1PaTwD">
+            <property role="3oM_SC" value="instanceof" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$5" role="1PaTwD">
+            <property role="3oM_SC" value="didn't" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$6" role="1PaTwD">
+            <property role="3oM_SC" value="match," />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$7" role="1PaTwD">
+            <property role="3oM_SC" value="no" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$8" role="1PaTwD">
+            <property role="3oM_SC" value="idea" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$9" role="1PaTwD">
+            <property role="3oM_SC" value="whether" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$a" role="1PaTwD">
+            <property role="3oM_SC" value="leftExpression" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$b" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$c" role="1PaTwD">
+            <property role="3oM_SC" value="nullable" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$d" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXnP$e" role="1PaTwD">
+            <property role="3oM_SC" value="not." />
+          </node>
         </node>
       </node>
     </node>

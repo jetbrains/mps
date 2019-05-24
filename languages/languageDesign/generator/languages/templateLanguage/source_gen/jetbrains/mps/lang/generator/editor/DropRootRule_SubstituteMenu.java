@@ -48,6 +48,7 @@ public class DropRootRule_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_tkfh39_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11c0acf58efL, "jetbrains.mps.lang.generator.structure.DropRootRule"), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11c0acf58efL, 0x11c0ad36598L, "applicableConcept"));
     }
     @NotNull

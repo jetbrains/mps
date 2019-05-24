@@ -75,8 +75,11 @@ __switch__:
                       break;
                     case 7:
                       // todo it may be worthwhile to also detect other unicode chars from keyCode and supply them into keyChar 
+
                       // There is currently no good complete cross-platform code to char conversion utility, it seems 
+
                       // KEY_PRESSED events may or may not contain a concrete keyChar. Its presence is definitely not a problem 
+
                       _5_keyChar = (char) _4_keyCode;
                       this.__CP__ = 8;
                       break;
@@ -142,11 +145,13 @@ __switch__:
     EditorCell selectedCell = editorComponent.getSelectedCell();
     if (selectedCell == null) {
       // TODO: return editorComponent here 
+
       return null;
     }
     Component eventTarget = EditorTestUtil.getEventTargetComponent(selectedCell, editorComponent);
     if (eventTarget == editorComponent) {
       // TODO: return editorComponent here 
+
       return null;
     }
     while ((eventTarget instanceof JComponent) && ((JComponent) eventTarget).getComponentCount() > 0) {

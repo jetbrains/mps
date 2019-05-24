@@ -17,28 +17,28 @@
       <node id="2756621024541449830" at="16,33,17,16" concept="4" />
       <node id="2756621024541449830" at="19,41,20,17" concept="1" />
       <node id="2756621024541449830" at="20,17,21,16" concept="4" />
-      <node id="2061039933217017744" at="23,42,24,44" concept="5" />
-      <node id="2756621024541449830" at="26,51,27,149" concept="4" />
+      <node id="2756621024541449830" at="27,51,28,149" concept="4" />
+      <node id="2061039933217017744" at="23,42,25,0" concept="5" />
       <node id="2756621024541449830" at="12,0,15,0" concept="2" trace="getCaption#()Ljava/lang/String;" />
-      <node id="2756621024541449830" at="23,0,26,0" concept="2" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="2756621024541449830" at="26,0,29,0" concept="2" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="2756621024541449830" at="27,0,30,0" concept="2" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="2756621024541449830" at="15,0,19,0" concept="2" trace="isRerunnable#()Z" />
       <node id="2756621024541449830" at="19,0,23,0" concept="2" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2756621024541449830" at="23,0,27,0" concept="2" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <scope id="2756621024541449830" at="12,30,13,58" />
       <scope id="2756621024541449830" at="16,33,17,16" />
-      <scope id="2756621024541449830" at="23,42,24,44" />
-      <scope id="2756621024541449830" at="26,51,27,149" />
+      <scope id="2756621024541449830" at="27,51,28,149" />
       <scope id="2756621024541449830" at="19,41,21,16" />
+      <scope id="2756621024541449830" at="23,42,25,0" />
       <scope id="2756621024541449830" at="12,0,15,0" />
-      <scope id="2756621024541449830" at="23,0,26,0">
-        <var name="m" id="2756621024541449830" />
-      </scope>
-      <scope id="2756621024541449830" at="26,0,29,0" />
+      <scope id="2756621024541449830" at="27,0,30,0" />
       <scope id="2756621024541449830" at="15,0,19,0" />
       <scope id="2756621024541449830" at="19,0,23,0">
         <var name="m" id="2756621024541449830" />
       </scope>
-      <unit id="2756621024541449830" at="11,0,31,0" name="jetbrains.mps.lang.resources.migration.MoveResourcePathToIconFile" />
+      <scope id="2756621024541449830" at="23,0,27,0">
+        <var name="m" id="2756621024541449830" />
+      </scope>
+      <unit id="2756621024541449830" at="11,0,32,0" name="jetbrains.mps.lang.resources.migration.MoveResourcePathToIconFile" />
     </file>
   </root>
   <root nodeRef="r:0efaab76-46b5-4548-8068-24bfd24d0952(jetbrains.mps.lang.resources.migration)/5148573020831035378">

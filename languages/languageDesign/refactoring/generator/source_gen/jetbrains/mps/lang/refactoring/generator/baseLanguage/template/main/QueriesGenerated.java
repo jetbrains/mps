@@ -48,6 +48,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_7_0(final CreateRootRuleContext _context) {
     // MPS-24613 
+
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "refactorings");
   }
   public static boolean rule_Condition_7_0(final BaseMappingRuleContext _context) {
@@ -143,6 +144,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_26_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output RefactoringAspectDescriptor for model model; 
+
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".RefactoringAspectDescriptor";
   }
   public static boolean ifMacro_Condition_6_0(final IfMacroContext _context) {

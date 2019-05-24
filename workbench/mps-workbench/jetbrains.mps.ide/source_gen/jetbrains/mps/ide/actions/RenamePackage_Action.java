@@ -91,6 +91,7 @@ public class RenamePackage_Action extends BaseAction {
         final Collection<SModel> modelsToConsider;
         if (LanguageAspectSupport.isAspectModel(model)) {
           // the idea is to change package name in all aspect models simultaneously if we rename a package in an aspect model 
+
           modelsToConsider = LanguageAspectSupport.getAspectModels(model.getModule());
         } else {
           modelsToConsider = Collections.singleton(model);

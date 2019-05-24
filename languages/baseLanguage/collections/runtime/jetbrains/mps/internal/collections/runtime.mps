@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8" version="0" />
   </languages>
   <imports>
@@ -255,11 +255,8 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -292,6 +289,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -1207,8 +1212,37 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUwI6" role="3clF47">
         <node concept="3SKdUt" id="Z_z4A2b8Jg" role="3cqZAp">
-          <node concept="3SKdUq" id="Z_z4A2b8Ji" role="3SKWNk">
-            <property role="3SKdUp" value=" change tempaltes to invoke this method and drop fromDequeNew" />
+          <node concept="1PaTwC" id="ATZLwXobkN" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobkO" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkP" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkQ" role="1PaTwD">
+              <property role="3oM_SC" value="tempaltes" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkR" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkS" role="1PaTwD">
+              <property role="3oM_SC" value="invoke" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkT" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkU" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkV" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkW" role="1PaTwD">
+              <property role="3oM_SC" value="drop" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobkX" role="1PaTwD">
+              <property role="3oM_SC" value="fromDequeNew" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="3YSSV6TzY7H" role="3cqZAp">
@@ -1553,8 +1587,37 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUwK0" role="3clF47">
         <node concept="3SKdUt" id="Z_z4A2aF1y" role="3cqZAp">
-          <node concept="3SKdUq" id="Z_z4A2aF1$" role="3SKWNk">
-            <property role="3SKdUp" value=" change templates to invoke this method and remove fromDequeAndArrayNew" />
+          <node concept="1PaTwC" id="ATZLwXobkY" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobkZ" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl0" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl1" role="1PaTwD">
+              <property role="3oM_SC" value="templates" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl2" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl3" role="1PaTwD">
+              <property role="3oM_SC" value="invoke" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl4" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl5" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl6" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl7" role="1PaTwD">
+              <property role="3oM_SC" value="remove" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl8" role="1PaTwD">
+              <property role="3oM_SC" value="fromDequeAndArrayNew" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="3YSSV6T$n48" role="3cqZAp">
@@ -1896,8 +1959,34 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUwLR" role="3clF47">
         <node concept="3SKdUt" id="Z_z4A2c$k7" role="3cqZAp">
-          <node concept="3SKdUq" id="Z_z4A2c$k9" role="3SKWNk">
-            <property role="3SKdUp" value="change generators to use this method and drop fromDequeWithValuesNew" />
+          <node concept="1PaTwC" id="ATZLwXobl9" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobla" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblb" role="1PaTwD">
+              <property role="3oM_SC" value="generators" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblc" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobld" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoble" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblf" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblg" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblh" role="1PaTwD">
+              <property role="3oM_SC" value="drop" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobli" role="1PaTwD">
+              <property role="3oM_SC" value="fromDequeWithValuesNew" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="3YSSV6T$G4h" role="3cqZAp">
@@ -11596,8 +11685,43 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUyzM" role="3clF47">
         <node concept="3SKdUt" id="Z_z4A29zYb" role="3cqZAp">
-          <node concept="3SKdUq" id="Z_z4A29zYd" role="3SKWNk">
-            <property role="3SKdUp" value="shall update templates to generate fromLinkedList() again, and then can remove fromLinkedListNew" />
+          <node concept="1PaTwC" id="ATZLwXoblj" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoblk" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobll" role="1PaTwD">
+              <property role="3oM_SC" value="update" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblm" role="1PaTwD">
+              <property role="3oM_SC" value="templates" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobln" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblo" role="1PaTwD">
+              <property role="3oM_SC" value="generate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblp" role="1PaTwD">
+              <property role="3oM_SC" value="fromLinkedList()" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblq" role="1PaTwD">
+              <property role="3oM_SC" value="again," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblr" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobls" role="1PaTwD">
+              <property role="3oM_SC" value="then" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblt" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblu" role="1PaTwD">
+              <property role="3oM_SC" value="remove" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblv" role="1PaTwD">
+              <property role="3oM_SC" value="fromLinkedListNew" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="3YSSV6TCmpj" role="3cqZAp">
@@ -11972,8 +12096,34 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUy_T" role="3clF47">
         <node concept="3SKdUt" id="Z_z4A2dDlf" role="3cqZAp">
-          <node concept="3SKdUq" id="Z_z4A2dDlh" role="3SKWNk">
-            <property role="3SKdUp" value="change templates to invoke this method and drop fromListAndArrayNew" />
+          <node concept="1PaTwC" id="ATZLwXoblw" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoblx" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobly" role="1PaTwD">
+              <property role="3oM_SC" value="templates" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblz" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl$" role="1PaTwD">
+              <property role="3oM_SC" value="invoke" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobl_" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblA" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblB" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblC" role="1PaTwD">
+              <property role="3oM_SC" value="drop" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblD" role="1PaTwD">
+              <property role="3oM_SC" value="fromListAndArrayNew" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="6gPw0iB1qrr" role="3cqZAp">
@@ -12316,8 +12466,43 @@
       </node>
       <node concept="3clFbS" id="5Ffu4tBUyBM" role="3clF47">
         <node concept="3SKdUt" id="Z_z4A2eJLS" role="3cqZAp">
-          <node concept="3SKdUq" id="Z_z4A2eJLT" role="3SKWNk">
-            <property role="3SKdUp" value="shall update templates to generate fromLinkedList() again, and then can remove fromListWithValuesNew" />
+          <node concept="1PaTwC" id="ATZLwXoblE" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoblF" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblG" role="1PaTwD">
+              <property role="3oM_SC" value="update" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblH" role="1PaTwD">
+              <property role="3oM_SC" value="templates" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblI" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblJ" role="1PaTwD">
+              <property role="3oM_SC" value="generate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblK" role="1PaTwD">
+              <property role="3oM_SC" value="fromLinkedList()" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblL" role="1PaTwD">
+              <property role="3oM_SC" value="again," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblM" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblN" role="1PaTwD">
+              <property role="3oM_SC" value="then" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblO" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblP" role="1PaTwD">
+              <property role="3oM_SC" value="remove" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoblQ" role="1PaTwD">
+              <property role="3oM_SC" value="fromListWithValuesNew" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="6gPw0iB3Ddb" role="3cqZAp">

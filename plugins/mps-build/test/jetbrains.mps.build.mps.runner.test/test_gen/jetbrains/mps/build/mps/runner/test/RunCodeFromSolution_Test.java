@@ -48,6 +48,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     File okFile = new File(scriptPath, "ok.log");
 
     // remove ok.log file if any 
+
     if (okFile.exists() && !(okFile.delete())) {
       Assert.fail("Cannot delete " + okFile.getAbsolutePath());
     }
@@ -66,6 +67,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
       public void onTextAvailable(ProcessEvent event, Key key) {
         if (ProcessOutputTypes.STDERR.equals(key)) {
           // print errors 
+
           System.err.print("test>>> " + event.getText());
         } else {
           System.out.print("test>>> " + event.getText());
@@ -78,6 +80,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     }
 
     // check and delete ok.log file 
+
     if (!(okFile.exists())) {
       Assert.fail("Test failed: the file was not created");
     }

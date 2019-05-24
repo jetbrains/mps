@@ -54,6 +54,7 @@ public final class ModuleSuite__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
     // if repository of this node<ModuleSuite> doesn't match your needs, pass proper SRepository here. There ain't no such thing as global repository 
+
     return moduleReference.resolve(SNodeOperations.getModel(__thisNode__).getRepository());
   }
   /*package*/ static Iterable<SNode> getNotMutedTests_id7tF7F0nXrAX(@NotNull SNode __thisNode__) {

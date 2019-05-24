@@ -116,12 +116,14 @@ public class GoToNodeById_Action extends BaseAction {
       id = PersistenceFacade.getInstance().createNodeId(inputString);
     } catch (IllegalArgumentException ex) {
       // fine, value is not of default or any recognizable node id format 
+
       id = null;
       error = "Wrong node ID format";
     }
 
     if (id == null) {
       // try new nodeId presentation format 
+
       try {
         id = new IdEncoder().parseNodeId(inputString);
         error = null;

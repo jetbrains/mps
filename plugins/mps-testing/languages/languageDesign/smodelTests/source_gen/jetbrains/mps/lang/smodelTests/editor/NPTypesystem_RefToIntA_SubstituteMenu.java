@@ -48,6 +48,7 @@ public class NPTypesystem_RefToIntA_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_mqf312_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x76fa9e459e19e64L, "jetbrains.mps.lang.smodelTests.structure.NPTypesystem_RefToIntA"), MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x76fa9e459e19e64L, 0x76fa9e459e19e65L, "ref"));
     }
     @NotNull

@@ -53,6 +53,7 @@ public class ActionAccessOperation_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_39i5ol_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d0060cL, "jetbrains.mps.lang.plugin.structure.ActionAccessOperation"), MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d0060cL, 0x2c7cd89ac8d14570L, "action"));
     }
     @NotNull

@@ -15,9 +15,11 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
+
     addAction(new GeneratePluginSolution_Action());
     addAction(new SortKeymapMembers_Action());
     // groups 
+
     addGroup(new ProjectPaneProjectAddition_ActionGroup());
     addGroup(new RefactoringAdditions_ActionGroup());
   }

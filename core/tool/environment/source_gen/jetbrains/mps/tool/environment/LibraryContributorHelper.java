@@ -38,7 +38,9 @@ import jetbrains.mps.core.tool.environment.util.SetLibraryContributor;
     for (PlatformPlugins.Descriptor descriptor : pp.found()) {
       final ClassLoader pluginCL = descriptor.classLoader();
       // XXX next code assumes that for each .jar under lib/ there are MPS modules bundled inside (!/modules). 
+
       //     Would like to find out if it's still relevant, as it looks like a bad idea to mix lib/ classpath with module locations 
+
       for (File cpf : descriptor.cp) {
         if (cpf.getName().endsWith(".jar")) {
           paths.add(new LibDescriptor(fs.getFile(cpf.getAbsolutePath() + MODULES_PREFIX), pluginCL));

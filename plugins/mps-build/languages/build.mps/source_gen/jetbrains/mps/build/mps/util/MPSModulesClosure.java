@@ -70,6 +70,7 @@ public class MPSModulesClosure {
     });
 
     // add extended langs 
+
     dependencies = Sequence.fromIterable(dependencies).concat(Sequence.fromIterable(SNodeOperations.ofConcept(dependencies(module), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyExtendLanguage"))).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language"));
@@ -94,6 +95,7 @@ public class MPSModulesClosure {
       }
     });
     // "core" language is added in loadModules pre-script 
+
     Iterable<SNode> distinct = IterableUtil.distinct(IterableUtil.merge(dependencies, solutionsFromDevkits));
     return Sequence.fromIterable(distinct).where(new NotNullWhereFilter<SNode>());
   }
@@ -119,6 +121,7 @@ public class MPSModulesClosure {
     });
 
     // use "core" language is added in loadModules pre-script 
+
     return Sequence.fromIterable(includingExtendedLanguages(IterableUtil.merge(usedLangs, languagesFromDevkits))).where(new NotNullWhereFilter<SNode>());
   }
 
@@ -225,6 +228,7 @@ public class MPSModulesClosure {
       SetSequence.fromSet(visitedLanguages).addElement(nextLang);
 
       // MPS-25255, modules of language's accessory models, if not hosted by language itself 
+
       SetSequence.fromSet(extraModules).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(nextLang, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6e2dd2f4c4c3e91dL, "accessory")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, 0x6e2dd2f4c4c3e91bL, "module"))));
 
       SNode g = SLinkOperations.getTarget(nextLang, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator"));
@@ -235,16 +239,21 @@ public class MPSModulesClosure {
       Iterable<SNode> usedLangs = SLinkOperations.collect(SNodeOperations.ofConcept(dependencies(g), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language"));
 
       // I'm not quite sure it's possible to depend directly from generator module. 
+
       // Instead introduce a dependency from generator's source language 
+
       ListSequence.fromList(queue).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(deps, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"))).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
           return (SNode) BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(it);
         }
       }).where(new NotNullWhereFilter<SNode>()));
       ListSequence.fromList(queue).addSequence(Sequence.fromIterable(usedLangs));
-      // If a generator depends on any language module, it doesn't mean it's 'used language', it's merely a module dependency, therefore we don't pit it into queue and do not process  
-      // any further but as a regular module dependency. In fact, it seems reasonable just to have addAll(deps) here, without filtering languages and solutions (just need to make clear  
+      // If a generator depends on any language module, it doesn't mean it's 'used language', it's merely a module dependency, therefore we don't pit it into queue and do not process 
+
+      // any further but as a regular module dependency. In fact, it seems reasonable just to have addAll(deps) here, without filtering languages and solutions (just need to make clear 
+
       // what could possibly dependencies to devkit and generator modules mean) 
+
       SetSequence.fromSet(extraModules).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(deps, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"))));
       SetSequence.fromSet(extraModules).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(deps, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"))));
     }
@@ -261,6 +270,7 @@ public class MPSModulesClosure {
    */
   public MPSModulesClosure closure() {
     // get all direct dependencies abd runtimes, plus re-exported dependencies thereof. 
+
     Set<SNode> langs = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> langsWithOddRT = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> solutions = SetSequence.fromSet(new HashSet<SNode>());
@@ -308,10 +318,12 @@ public class MPSModulesClosure {
    */
   public MPSModulesClosure designtimeClosure() {
     // rt deps -- direct and indirect dependencies of the modules, used languages and their runtimes 
+
     MPSModulesClosure rtClosure = new MPSModulesClosure(myInitialModules, new MPSModulesClosure.ModuleDependenciesOptions(myOptions).setIncludeInitial()).runtimeClosure();
     mergeIntoMe(rtClosure);
 
     // used languages must be deployable 
+
     List<SNode> copyOfMyModules = ListSequence.fromListWithValues(new ArrayList<SNode>(), myModules);
     for (SNode module : ListSequence.fromList(copyOfMyModules)) {
       Iterable<SNode> usedLanguages = getUsedLanguagesWithExtended(module);
@@ -345,6 +357,7 @@ public class MPSModulesClosure {
    */
   public MPSModulesClosure generationDependenciesClosure() {
     // direct and indirect dependencies of used languages and their runtimes; source languages of generators involved 
+
     Set<SNode> usedLanguages = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> langsWithOddRT = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> solutions = SetSequence.fromSet(new HashSet<SNode>());
@@ -352,14 +365,19 @@ public class MPSModulesClosure {
       fillUsedLanguageRuntimes(m, usedLanguages, langsWithOddRT, solutions);
     }
     // need module of a used language AND anything this module would require to load 
+
     collectDependencies((Iterable<SNode>) usedLanguages, false);
     collectAllUsedLanguageRuntimesAndTheirDeps((Iterable<SNode>) usedLanguages);
     // code, generated with a used language, might require runtime of the language, and anything this RT solution 
+
     // re-exports. However, without all dependencies (including non-reexported), solution won't load, hence include all. 
+
     collectDependencies((Iterable<SNode>) solutions, false);
     // RT solutions might be generated with other set of languages with own set of RT dependencies, collect these, too. 
+
     collectAllUsedLanguageRuntimesAndTheirDeps((Iterable<SNode>) solutions);
     // for employed languages, look at their generators and include their dependencies, too 
+
     collectGeneratorsDependendencies(usedLanguages);
     SetSequence.fromSet(myModules).addSequence(SetSequence.fromSet(usedLanguages));
     SetSequence.fromSet(myLanguagesWithOddRuntime).addSequence(SetSequence.fromSet(langsWithOddRT));

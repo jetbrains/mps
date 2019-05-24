@@ -124,6 +124,7 @@ public class TextPreviewModel_Action extends BaseAction {
                 ArrayList<TextPreviewFile> rv = new ArrayList<TextPreviewFile>();
                 for (TextGenOutcomeResource tgr : Sequence.fromIterable(result.output()).ofType(TextGenOutcomeResource.class)) {
                   // XXX don't see too much value in modelName, shall drop? 
+
                   String modelName = NameUtil.compactNamespace(tgr.getModel().getModelName());
                   final SRepository repo = mpsProject.getRepository();
                   SNode cn = (contextNode == null ? null : contextNode.resolve(repo));
@@ -173,6 +174,7 @@ public class TextPreviewModel_Action extends BaseAction {
               }
             });
             // to update tree to reveal transient models. is it still necessary? 
+
             ProjectPane pane = ProjectPane.getInstance(mpsProject);
             if (pane != null) {
               pane.rebuild();

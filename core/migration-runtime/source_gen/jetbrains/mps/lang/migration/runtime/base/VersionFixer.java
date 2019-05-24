@@ -70,7 +70,9 @@ public class VersionFixer {
 
     if (myRemoveOddImports) {
       // myRemoveOddImports is used on language+sandbox_solution creation since laguage is not valid yet 
+
       // in other cases, we do not allow to update import versions (since broken deps may lead to incorrectly optimization) 
+
       assert areDepsSatisfied(myModule) : "Not all dependencies of module " + myModule.getModuleName() + " are satisfied";
     }
 
@@ -132,6 +134,7 @@ public class VersionFixer {
     }
 
     // TODO move this check somewhere else 
+
     checkModelVersionsAreValid(myModule, newLangVersions);
 
     if (changed.value && !(dryRun)) {
@@ -146,6 +149,7 @@ public class VersionFixer {
 
   private boolean areDepsSatisfied(SModule module) {
     // [MM] beter to move this logic to AbstractModule and its inheritors 
+
     Set<SLanguage> usedLanguages = module.getUsedLanguages();
     if (SetSequence.fromSet(usedLanguages).any(new IWhereFilter<SLanguage>() {
       public boolean accept(SLanguage it) {
@@ -166,6 +170,7 @@ public class VersionFixer {
 
     if (module instanceof AbstractModule) {
       // todo this should be removed when there's API for accessing devkit "references" 
+
       Set<SModuleReference> devkits = ((AbstractModule) module).collectLanguagesAndDevkits().devkits;
       if (SetSequence.fromSet(devkits).any(new IWhereFilter<SModuleReference>() {
         public boolean accept(SModuleReference it) {
@@ -262,7 +267,8 @@ public class VersionFixer {
   }
 
   private void checkModelVersionsAreValid(SModule myModule, Map<SLanguage, Integer> langVersions) {
-    // TODO [MM] get rid of this method, check on model load etc.  
+    // TODO [MM] get rid of this method, check on model load etc. 
+
     myModule.getRepository().getModelAccess().checkReadAccess();
     for (SModel m : myModule.getModels()) {
       SModelInternal modelInternal = (SModelInternal) m;

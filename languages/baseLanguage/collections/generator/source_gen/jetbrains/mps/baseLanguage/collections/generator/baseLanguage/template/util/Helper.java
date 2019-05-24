@@ -12,8 +12,11 @@ public class Helper {
     if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"))) {
       SNode dotExpr = SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
       // of course, there's more than a .size operation that doesn't consistute sequence element access, 
-      // but at the moment I cover only most wide-spread case - there seems to be no simple way to tell  
+
+      // but at the moment I cover only most wide-spread case - there seems to be no simple way to tell 
+
       // true element access operations from other. 
+
       return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L, "jetbrains.mps.baseLanguage.collections.structure.SequenceOperation")) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10ec4627e6fL, "jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation")));
     }
     if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement"))) {

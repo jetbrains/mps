@@ -48,6 +48,7 @@ public class TemplateArgumentVarRefExpression2_SubstituteMenu extends Substitute
 
     public SMP_ReferenceScope_u3ihao_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2"), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl"));
     }
     @NotNull

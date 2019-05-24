@@ -46,6 +46,7 @@ public final class LambdaAbstraction__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static List<SNode> getAllVariables_id4pfsEnSNEj7(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
     // Is it OK to create lists recursively? 
+
     ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2db9L, "variable"))));
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2dc5L, "body")), MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaAbstraction"))) {
       ListSequence.fromList(result).addSequence(ListSequence.fromList(LambdaAbstraction__BehaviorDescriptor.getAllVariables_id4pfsEnSNEj7.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2dc5L, "body")), MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaAbstraction")))));

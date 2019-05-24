@@ -7,7 +7,7 @@
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="0" />
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="ximz" ref="r:d3378a35-13da-49cb-8ad1-afbd30e88ad8(jetbrains.mps.ant.execution)" />
@@ -174,11 +174,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -213,6 +210,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -296,8 +301,22 @@
         </node>
         <node concept="3clFbH" id="1ZVcZhrXDXc" role="3cqZAp" />
         <node concept="3SKdUt" id="1ZVcZhrXDXm" role="3cqZAp">
-          <node concept="3SKdUq" id="1ZVcZhrXDXn" role="3SKWNk">
-            <property role="3SKdUp" value="remove ok.log file if any" />
+          <node concept="1PaTwC" id="ATZLwXogcx" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXogcy" role="1PaTwD">
+              <property role="3oM_SC" value="remove" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogcz" role="1PaTwD">
+              <property role="3oM_SC" value="ok.log" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogc$" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogc_" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogcA" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="1ZVcZhrXDXv" role="3cqZAp">
@@ -530,8 +549,13 @@
                         </node>
                         <node concept="3clFbS" id="1ZVcZhrXDYy" role="3clFbx">
                           <node concept="3SKdUt" id="1ZVcZhrXDYz" role="3cqZAp">
-                            <node concept="3SKdUq" id="1ZVcZhrXDY$" role="3SKWNk">
-                              <property role="3SKdUp" value="print errors" />
+                            <node concept="1PaTwC" id="ATZLwXogcB" role="3ndbpf">
+                              <node concept="3oM_SD" id="ATZLwXogcC" role="1PaTwD">
+                                <property role="3oM_SC" value="print" />
+                              </node>
+                              <node concept="3oM_SD" id="ATZLwXogcD" role="1PaTwD">
+                                <property role="3oM_SC" value="errors" />
+                              </node>
                             </node>
                           </node>
                           <node concept="3clFbF" id="1ZVcZhrXDY_" role="3cqZAp">
@@ -623,8 +647,22 @@
         </node>
         <node concept="3clFbH" id="1ZVcZhrXDZ2" role="3cqZAp" />
         <node concept="3SKdUt" id="1ZVcZhrXDZ3" role="3cqZAp">
-          <node concept="3SKdUq" id="1ZVcZhrXDZ4" role="3SKWNk">
-            <property role="3SKdUp" value="check and delete ok.log file" />
+          <node concept="1PaTwC" id="ATZLwXogcE" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXogcF" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogcG" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogcH" role="1PaTwD">
+              <property role="3oM_SC" value="delete" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogcI" role="1PaTwD">
+              <property role="3oM_SC" value="ok.log" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXogcJ" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="1ZVcZhrXDZa" role="3cqZAp">

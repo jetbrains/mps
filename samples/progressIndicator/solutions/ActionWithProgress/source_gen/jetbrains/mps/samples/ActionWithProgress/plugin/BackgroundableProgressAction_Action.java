@@ -53,19 +53,29 @@ public class BackgroundableProgressAction_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // Indicates whether the progress dialog has the'Cancel' option 
+
     boolean canBeCanceled = true;
 
     // Will be  sent to the background with the flag PerformInBackgroundOption.ALWAYS_BACKGROUND 
+
     PerformInBackgroundOption showProgress = PerformInBackgroundOption.DEAF;
 
-    // This is a backgroundable task. It can be sent to the background and canceled  
+    // This is a backgroundable task. It can be sent to the background and canceled 
+
     // The PerformInBackgroundOption flag specifies if the progress is shown to the user 
-    // or if should be in the background from the start  
-    // ALWAYS_BACKGROUND is probably the best solution for quick background tasks -   
+
+    // or if should be in the background from the start 
+
+    // ALWAYS_BACKGROUND is probably the best solution for quick background tasks - 
+
     // the user will not get a blinking, hardly noticable progress bar visible for only a few fractions of a second 
-    // Important thing - you need to implement the onCacel() method  
-    // Your code needs to frequently check if the process has been canceled (between every calculation steps)  
+
+    // Important thing - you need to implement the onCacel() method 
+
+    // Your code needs to frequently check if the process has been canceled (between every calculation steps) 
+
     // and handle yourself all steps to revert the action 
+
 
     final Task.Backgroundable backgroundable = new Task.Backgroundable(event.getData(CommonDataKeys.PROJECT), "Backgroundable cancelable task", canBeCanceled, showProgress) {
       @Override
@@ -77,15 +87,18 @@ public class BackgroundableProgressAction_Action extends BaseAction {
         int stepValue = 1;
 
         // a normal step 
+
         adapter.step("Do simple work...");
         BackgroundableProgressAction_Action.this.doWork(event);
         adapter.advance(stepValue);
         // Check if the progress is canceled after each step 
+
         if (adapter.isCanceled()) {
           return;
         }
 
         // ReadAction in step is ok 
+
         repository.getModelAccess().runReadAction(new Runnable() {
           public void run() {
             adapter.step("Do some work with Read Lock...");
@@ -98,6 +111,7 @@ public class BackgroundableProgressAction_Action extends BaseAction {
         }
 
         // WriteAction in step is ok 
+
         repository.getModelAccess().runWriteAction(new Runnable() {
           public void run() {
             adapter.step("Do some work with Write Lock...");
@@ -123,11 +137,15 @@ public class BackgroundableProgressAction_Action extends BaseAction {
       public void onCancel() {
         super.onCancel();
         // Needs to handle reverting changes for all the finished steps 
+
         // This method does not interrupt the steps - steps must be either short or have such interruption capability 
+
       }
     };
     // The execute() method of actions must be very quick 
+
     // so every long calculation must be invoked outside of this method like this: 
+
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         ProgressManager.getInstance().run(backgroundable);
@@ -136,10 +154,12 @@ public class BackgroundableProgressAction_Action extends BaseAction {
   }
   private void doWork(final AnActionEvent event) {
     // 42 because it is ultimate answer to everything =) 
+
     BackgroundableProgressAction_Action.this.fib(44, event);
   }
   private int fib(int n, final AnActionEvent event) {
     // Very ineffective implementation with exponential time complexity 
+
     if (n < 1) {
       throw new IllegalArgumentException();
     }

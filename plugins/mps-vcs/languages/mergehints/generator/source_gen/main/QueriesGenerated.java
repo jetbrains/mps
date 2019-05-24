@@ -8,13 +8,11 @@ import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.structure.behavior.PropertyDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.generator.template.IfMacroContext;
@@ -26,6 +24,7 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Map;
@@ -42,8 +41,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.generator.impl.query.PropertyValueQuery;
-import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 
@@ -54,14 +51,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
+
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "vcs");
   }
   public static boolean rule_Condition_2_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
+
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "vcs");
-  }
-  public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return (SNode) PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop")));
@@ -86,6 +82,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
     // TODO genContext.get output VCSDescriptorCons for model model; 
+
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".VCSDescriptor";
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
@@ -107,6 +104,7 @@ public class QueriesGenerated extends QueryProviderBase {
     Iterable<SNode> props = SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x4f2cc0d970a4f8c9L, "features")), MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, "jetbrains.mps.vcs.mergehints.structure.PropertyVCSDescriptor"));
 
     // check for duplicates 
+
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(props).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -126,6 +124,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
 
     // check for duplicates 
+
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(children).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -145,6 +144,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
 
     // check for duplicates 
+
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -164,6 +164,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
 
     // check for duplicates 
+
     final Set<SNode> used = new HashSet<SNode>();
     Sequence.fromIterable(concepts).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -304,36 +305,6 @@ public class QueriesGenerated extends QueryProviderBase {
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_2(ctx));
         case 3:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_3(ctx));
-        default:
-          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
-      }
-    }
-  }
-  private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
-  {
-    int i = 0;
-    pvqMethods.put("1889794043260133525", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text"), "concept"));
-  }
-  @NotNull
-  @Override
-  public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
-  }
-  private static class PVQ extends PropertyValueQuery.Base {
-    private final int methodKey;
-    /*package*/ PVQ(int methodKey, SProperty property, String templateValue) {
-      super(property, templateValue);
-      this.methodKey = methodKey;
-    }
-    @Nullable
-    public Object evaluate(@NotNull PropertyMacroContext ctx) throws GenerationFailureException {
-      switch (methodKey) {
-        case 0:
-          return QueriesGenerated.propertyMacro_GetValue_1_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

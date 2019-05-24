@@ -34,6 +34,7 @@ public class QueriesUtil {
     if (enclosingMacro != null) {
       if (SNodeOperations.isInstanceOf(enclosingMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, "jetbrains.mps.lang.generator.structure.MapSrcNodeMacro"))) {
         // inside mapper func or post-mapper function? 
+
         if ((SNodeOperations.getNodeAncestorWhereConceptInList(contextNode, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11094af4e18L, "jetbrains.mps.lang.generator.structure.MapSrcMacro_MapperFunction"), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11d455674bfL, "jetbrains.mps.lang.generator.structure.MapSrcMacro_PostMapperFunction")}, true, false) != null)) {
           SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, "jetbrains.mps.lang.generator.structure.MapSrcNodeMacro")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11003064fa9L, "sourceNodeQuery"));
           if (query != null) {
@@ -44,6 +45,7 @@ public class QueriesUtil {
       }
       if (SNodeOperations.isInstanceOf(enclosingMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, "jetbrains.mps.lang.generator.structure.MapSrcListMacro"))) {
         // inside mapper func or post-mapper function? 
+
         if ((SNodeOperations.getNodeAncestorWhereConceptInList(contextNode, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11094af4e18L, "jetbrains.mps.lang.generator.structure.MapSrcMacro_MapperFunction"), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11d455674bfL, "jetbrains.mps.lang.generator.structure.MapSrcMacro_PostMapperFunction")}, true, false) != null)) {
           SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, "jetbrains.mps.lang.generator.structure.MapSrcListMacro")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x11003977640L, "sourceNodesQuery"));
           if (query != null) {
@@ -62,6 +64,7 @@ public class QueriesUtil {
       }
     }
     // =============== 
+
     SNode applicableConcept = jetbrains.mps.lang.generator.helper.QueriesUtil.getApplicableConcept_fromEnvironment(contextNode);
     {
       SNode _nodeToCheck_1029348928467 = null;
@@ -81,6 +84,7 @@ public class QueriesUtil {
       SNode ifMacro = SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, "jetbrains.mps.lang.generator.structure.IfMacro"));
       if (SLinkOperations.getTarget(ifMacro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x1163aea5803L, "alternativeConsequence")) == node) {
         //  if we inside a macro under ELSE, start looking for enclosing macro from IF 
+
         currMacroNode = ifMacro;
         node = SNodeOperations.getParent(ifMacro);
       } else {
@@ -94,6 +98,7 @@ public class QueriesUtil {
           return false;
         }
         // macros can change source, skip those that do not change it due to missing optional query 
+
         if (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, "jetbrains.mps.lang.generator.structure.MapSrcNodeMacro")) && (SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, "jetbrains.mps.lang.generator.structure.MapSrcNodeMacro")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11003064fa9L, "sourceNodeQuery")) == null)) {
           return false;
         }
@@ -104,6 +109,7 @@ public class QueriesUtil {
       }
     }).last(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef52f5efL, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro"));
     // ======== 
+
     if (prevMacro != null) {
       return prevMacro;
     }
@@ -111,6 +117,7 @@ public class QueriesUtil {
   }
   public static SNode getEnclosing_TemplateFragment(SNode node) {
     //  find first ancestor (inclusive) which has a template fragment attribute 
+
     Iterable<SNode> TFs = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(final SNode it) {
         return new Iterable<SNode>() {

@@ -39,6 +39,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
       return;
     }
     // Find possible NPE 
+
     CustomAnalyzerRunner<Map<SNode, NullableState>> nullableRunner = new NullableAnalyzerRunner(iMethodLike);
     AnalysisResult<Map<SNode, NullableState>> result = nullableRunner.analyze();
     Program program = nullableRunner.getProgram();
@@ -82,6 +83,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
       }
 
       // Test equals and not equals is always true or false 
+
       checkingResult = NullableUtil.isAlwaysTrueOrFalse(instruction, parent, source, varState);
       if (checkingResult != null) {
         warning = checkingResult._0();
@@ -95,6 +97,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
 
 
       // Find Nullable assignements to NotNull variables 
+
       if (instruction instanceof WriteInstruction) {
         checkingResult = NullableUtil.checkNullableAssignment(((WriteInstruction) instruction), result);
         if (checkingResult != null) {
@@ -110,6 +113,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
 
     }
     // Find Nullable returns of NotNull methods 
+
     if (SNodeOperations.isInstanceOf(iMethodLike, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
       SNode method = SNodeOperations.cast(iMethodLike, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
       if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"))).any(new IWhereFilter<SNode>() {

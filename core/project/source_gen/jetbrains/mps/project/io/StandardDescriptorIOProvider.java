@@ -77,6 +77,7 @@ import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
     public void writeToFile(SolutionDescriptor sd, IFile file) {
       if (file.isReadOnly()) {
         // XXX why on earth do we check for read-only here? why not in a caller code, where one could have reacted reasonably? 
+
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error("Can't save " + file.getPath());
         }
@@ -145,6 +146,7 @@ import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
         Document doc = new Document(element);
         JDOMUtil.writeDocument(doc, file);
         // XXX is it always a need to refresh timestamp in the descriptor? What if serialize it into a copy file 
+
         ModuleDescriptorPersistence.setTimestamp(ld, file);
       } catch (IOException ex) {
         if (LOG.isEnabledFor(Level.ERROR)) {

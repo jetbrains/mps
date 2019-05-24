@@ -94,7 +94,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_11_0(final ReferenceMacroContext _context) {
     // To destinguish generated isEmpty of the same session in different classes, need an object we've replaced 
+
     // with extract statement. With it, can get output by label and input 
+
     SNode firstOp = (SNode) _context.getSessionObject(((String) _context.getVariable("var:methodNameKey")));
     return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(firstOp, "IsEmptyExtractExpr"), MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac6L, "method"));
   }
@@ -210,8 +212,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_11_0(final TemplateVarContext _context) {
     // ExtractStaticMethodExpression looks for first non static class 
+
     // and as long as there's no alternative to ESME, this code shall 
+
     // respect the way ContextUtil.getContextForMethod works 
+
     return SPropertyOperations.getString(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);

@@ -54,6 +54,7 @@ public abstract class AbstractJetpadCell extends EditorCell_Collection implement
   @Override
   public void paintCell(Graphics graphics, ParentSettings settings) {
     // just blocking child cell painting here 
+
     paintChildCells(graphics, settings);
   }
 
@@ -87,6 +88,7 @@ public abstract class AbstractJetpadCell extends EditorCell_Collection implement
   }
   protected AbstractJetpadCell getDirectChildCell(SNode node) {
     // TODO: use more effitient way of getting port cell (by ID) 
+
     for (EditorCell nextCell : Sequence.fromIterable(getContentCells())) {
       if (nextCell.getSNode() == node) {
         return (AbstractJetpadCell) nextCell;
@@ -124,6 +126,7 @@ public abstract class AbstractJetpadCell extends EditorCell_Collection implement
     view.prop(RootTrait.DELETE_HANDLER).set(new DeleteHandler() {
       public boolean canDelete() {
         // TODO: do we need it? it always return true.. 
+
         return canDelete.invoke();
       }
       public void delete() {

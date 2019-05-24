@@ -52,12 +52,14 @@ public class BaseVersionUtil {
   @Nullable
   public static Object getBaseVersionContent(@NotNull VirtualFile file, @NotNull Project project) {
     // returns the same content if file is not in changelist 
+
     try {
       ChangeListManager manager = ChangeListManager.getInstance(project);
       Change change = manager.getChange(file);
 
       if (change == null) {
         // no changes, use current file content 
+
         try {
           return file.contentsToByteArray();
         } catch (IOException ex) {
@@ -133,6 +135,7 @@ public class BaseVersionUtil {
       if (MapSequence.fromMap(content).containsKey(MPSExtentions.DOT_MODEL_HEADER)) {
         final ComponentHost mpsPlatform = ProjectHelper.fromIdeaProject(project).getPlatform();
         // no base version for ".model" file means there was no model 
+
         return loadPerRootModel(mpsPlatform, content);
       }
     }

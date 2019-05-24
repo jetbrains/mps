@@ -72,6 +72,7 @@ import com.sun.jdi.StringReference;
   }
   protected IValueProxy invoke(String name, String jniSignature, ClassType classType, final int options, final ThreadReference threadReference, Object[] args) throws EvaluationException {
     // TODO merge with Evaluator methods invocation 
+
     final Method method = classType.concreteMethodByName(name, jniSignature);
     if (method == null) {
       throw new InvalidEvaluatedExpressionException("Concrete method " + name + " with signature " + jniSignature + " not found in " + classType + ".");

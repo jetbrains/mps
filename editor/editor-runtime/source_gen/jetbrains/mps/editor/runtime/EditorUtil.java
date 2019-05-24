@@ -51,6 +51,7 @@ public class EditorUtil {
   @ToRemove(version = 2018.1)
   public static JComponent createSelectIconButton(final SNode node, final SProperty property, final EditorContext context, boolean copy) {
     // was used in mbeddr at the moment of 2017.3 
+
     return createSelectImageButton(node, property, context);
   }
 

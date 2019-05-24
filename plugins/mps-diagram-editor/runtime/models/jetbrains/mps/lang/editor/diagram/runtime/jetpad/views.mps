@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="d7722d50-4b93-4c3a-ae06-1903d05f95a7" name="jetbrains.mps.lang.editor.figures" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="jqfx" ref="67b3c41d-58b3-4756-b971-30bf8a9d63e6/java:jetbrains.jetpad.projectional.view(jetbrains.jetpad/)" />
@@ -237,11 +237,8 @@
         <child id="1163670683720" name="body" index="3Kbo56" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -267,6 +264,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -6125,8 +6130,19 @@
                         </node>
                       </node>
                       <node concept="3SKdUt" id="3wCUwlD7Rq_" role="3cqZAp">
-                        <node concept="3SKdUq" id="3wCUwlD7X_y" role="3SKWNk">
-                          <property role="3SKdUp" value="corner resize handle positions" />
+                        <node concept="1PaTwC" id="ATZLwXogLR" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXogLS" role="1PaTwD">
+                            <property role="3oM_SC" value="corner" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogLT" role="1PaTwD">
+                            <property role="3oM_SC" value="resize" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogLU" role="1PaTwD">
+                            <property role="3oM_SC" value="handle" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogLV" role="1PaTwD">
+                            <property role="3oM_SC" value="positions" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="1DlxheaX05P" role="3cqZAp">
@@ -6214,8 +6230,19 @@
                         </node>
                       </node>
                       <node concept="3SKdUt" id="3wCUwlD89IC" role="3cqZAp">
-                        <node concept="3SKdUq" id="3wCUwlD89ID" role="3SKWNk">
-                          <property role="3SKdUp" value="side resize handle positions" />
+                        <node concept="1PaTwC" id="ATZLwXogLW" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXogLX" role="1PaTwD">
+                            <property role="3oM_SC" value="side" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogLY" role="1PaTwD">
+                            <property role="3oM_SC" value="resize" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogLZ" role="1PaTwD">
+                            <property role="3oM_SC" value="handle" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogM0" role="1PaTwD">
+                            <property role="3oM_SC" value="positions" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="1Dlxheb6BfS" role="3cqZAp">
@@ -6587,8 +6614,16 @@
                       </node>
                       <node concept="3clFbH" id="3wCUwlDbfiI" role="3cqZAp" />
                       <node concept="3SKdUt" id="3wCUwlD8MNX" role="3cqZAp">
-                        <node concept="3SKdUq" id="3wCUwlD8MNY" role="3SKWNk">
-                          <property role="3SKdUp" value="corner resize handles" />
+                        <node concept="1PaTwC" id="ATZLwXogM1" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXogM2" role="1PaTwD">
+                            <property role="3oM_SC" value="corner" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogM3" role="1PaTwD">
+                            <property role="3oM_SC" value="resize" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogM4" role="1PaTwD">
+                            <property role="3oM_SC" value="handles" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="1DlxheaZ3RN" role="3cqZAp">
@@ -6834,8 +6869,16 @@
                         </node>
                       </node>
                       <node concept="3SKdUt" id="3wCUwlD9hDI" role="3cqZAp">
-                        <node concept="3SKdUq" id="3wCUwlD9hDJ" role="3SKWNk">
-                          <property role="3SKdUp" value="side resize handles" />
+                        <node concept="1PaTwC" id="ATZLwXogM5" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXogM6" role="1PaTwD">
+                            <property role="3oM_SC" value="side" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogM7" role="1PaTwD">
+                            <property role="3oM_SC" value="resize" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXogM8" role="1PaTwD">
+                            <property role="3oM_SC" value="handles" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="1Dlxheb88Iy" role="3cqZAp">

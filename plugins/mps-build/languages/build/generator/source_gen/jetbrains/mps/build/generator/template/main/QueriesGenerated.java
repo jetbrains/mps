@@ -560,7 +560,9 @@ public class QueriesGenerated extends QueryProviderBase {
         relative += "/";
       }
       // XXX 'build' here traces back to import of common library, which 
+
       // defines location macro build.dir = build. I don't like this sort of implicit knowledge. 
+
       return relative + "build/artifacts/" + SPropertyOperations.getString(script, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     } catch (RelativePathHelper.PathException ex) {
       _context.showErrorMessage(_context.getNode(), "cannot calculate relative path: " + ex.getMessage());
@@ -727,9 +729,13 @@ public class QueriesGenerated extends QueryProviderBase {
       return "???";
     }
     // it's the only use of helper.getOriginalNode outside of j.m.build.util package, and is somewhat legal, 
+
     // as we still expect artifactId to come from original model 
+
     // (though do the translation ourselves in DH.getArtifact()) 
+
     // Just don't want to deal with this code right now, need to return to artifactId concept anyway. 
+
     String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, helper.getOriginalNode(((SNode) _context.getVariable("dependency"))));
     if (val == null) {
       _context.showErrorMessage(_context.getNode(), "no location found for the java module dependency '" + SPropertyOperations.getString(((SNode) _context.getVariable("dependency")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'");
@@ -761,7 +767,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_9_0(final PropertyMacroContext _context) {
     // XXX in fact, targetFile is not necessarily BuildSource_SingleFile. It could be 
+
     // BuildLayout_Copy at generation time due to syntax sugar(?) processing in aliases MC. 
+
     SNode targetFile = ((SNode) _context.getVariable("jar"));
     SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
     if (project == null) {
@@ -1260,6 +1268,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_16_1(final IfMacroContext _context) {
     //  rest of templates use node.parent, but as long as BSARP is part of BL_Copy, parent 
+
     SNode blContainer = SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, "jetbrains.mps.build.structure.BuildLayout_Container"), false, false);
     return SNodeOperations.isInstanceOf(blContainer, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, "jetbrains.mps.build.structure.BuildLayout_Container")) && BuildLayout_Container__BehaviorDescriptor.getPrepareSubTaskId_id450ejGzh8bD.invoke(SNodeOperations.cast(blContainer, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, "jetbrains.mps.build.structure.BuildLayout_Container"))) != null;
   }
@@ -1700,13 +1709,20 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static void mapSrcMacro_post_12_0(final MapSrcMacroPostProcContext _context) {
-    // HACK. At the moment, DependenciesHelper is populated with locations, with  
+    // HACK. At the moment, DependenciesHelper is populated with locations, with 
+
     // inputNode (BuildLayout_File) serving as a key. Here, the file gets replaced with 
-    // BuildLayout_Copy, and incoming references (like BuildLayout_Import in another project)  
+
+    // BuildLayout_Copy, and incoming references (like BuildLayout_Import in another project) 
+
     // get re-routed to this node. However, once that import is processed, there's nothing in DH.locations() 
+
     // that match its target (it's outputNode, BL_Copy at the time). To workaround, I record original location 
+
     // key here with the new target node, and use it from main.BuildLayout_Import template. 
+
     // Prior to the removal of transient models this used to work as every lookup was done using origin node. 
+
     new DependenciesHelper(_context, SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false)).preserveLocations(_context.getNode(), _context.getOutputNode());
   }
   public static SNode weavingRule_ContextQuery_0_0(final WeavingMappingRuleContext _context) {

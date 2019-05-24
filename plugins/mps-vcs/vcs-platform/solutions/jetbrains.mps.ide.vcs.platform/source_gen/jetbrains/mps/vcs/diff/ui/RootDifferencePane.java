@@ -165,7 +165,9 @@ public class RootDifferencePane implements IHighlighter {
 
   private void linkEditors(boolean inspector) {
     // create change group builder, trapecium strip and merge buttons painter 
+
     // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
+
     ChangeGroupLayout layout = new DiffChangeGroupLayout(null, myChangeSet, myOldEditor, myNewEditor, inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);

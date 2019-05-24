@@ -70,6 +70,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
             }
           } catch (Throwable t) {
             // do nothing 
+
           }
         }
         if (module == null) {
@@ -102,6 +103,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static boolean isParameterOfThisMethod_idi3dhek3(@NotNull SNode __thisNode__) {
     // todo: method from ParameterReference. Remove. 
+
     if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration")))) {
       throw new IllegalArgumentException();
     }
@@ -114,6 +116,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static boolean isVariableDefinedInThisMethod_idhPiSGi6(@NotNull SNode __thisNode__) {
     // todo: method from LocalVariableReference. Remove 
+
     if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")))) {
       throw new IllegalArgumentException();
     }
@@ -130,6 +133,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static SNode getDeclaration_id2P5W1FWMYZ5(@NotNull SNode __thisNode__) {
     // todo: method from LocalVariableReference. Remove 
+
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"))) {
       return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
     } else {

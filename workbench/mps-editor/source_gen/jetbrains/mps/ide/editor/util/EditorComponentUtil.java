@@ -42,7 +42,9 @@ public class EditorComponentUtil {
         if (cell != null) {
           if (currentTargetNode != node) {
             //  so we are probably in inspector... 
+
             //  we need to select to find a node in inspector 
+
             component.changeSelection(cell);
             searchInInspector = true;
           }

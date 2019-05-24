@@ -50,6 +50,7 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
     protected Collection getConcepts(SubstituteMenuContext _context) {
       List<SNode> functions = SNodeOperations.getNodeAncestors(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"), false);
       // skip Closure 
+
       SNode parentFunction = ListSequence.fromList(functions).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure")));

@@ -230,6 +230,7 @@ __switch__:
   private void executeTargets(final IScriptController ctl, final Iterable<ITarget> toExecute, final Iterable<? extends IResource> scriptInput, final Script.ParametersPool pool, final CompositeResult results, final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
     // add time statistic result first - in composite result output() is the last one 
+
     results.addResult(TIME_STATISTIC_RESULT_NAME, new IResult.SUCCESS(Sequence.<IResource>singleton(new TimeStatisticResource(timeStatistic))));
 
     ctl.runJobWithMonitor(new _FunctionTypes._void_P1_E0<IJobMonitor>() {
@@ -299,6 +300,7 @@ with_targets:
               }
               if (!(trg.producesOutput())) {
                 // ignore the output 
+
                 jr = new Script.SubsOutputResult(jr, (trg.requiresInput() ? Sequence.fromIterable(rawInput).subtract(Sequence.fromIterable(input)) : rawInput));
               }
               results.addResult(trg.getName(), jr);
@@ -377,6 +379,7 @@ with_targets:
               orig = cls.cast(available);
             } catch (ClassCastException cce) {
               // ignore, just assume the original value is null 
+
               Script.LOG.debug("can't cast original parameters to required class [" + cls.getName() + "]");
               Script.LOG.debug("requested class's classloader " + cls.getClassLoader() + "@" + System.identityHashCode(cls.getClassLoader()));
               Script.LOG.debug("original object's classloader " + available.getClass().getClassLoader() + "@" + System.identityHashCode(available.getClass().getClassLoader()));

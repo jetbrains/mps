@@ -16,12 +16,14 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
+
     addAction(new CreateReferenceConcept_Action());
     addAction(new ShowDefaultHelp_Action());
     addAction(new ShowHelpForAspect_Action());
     addAction(new ShowHelpForNode_Action());
     addAction(new ShowHelpForRoot_Action());
     // groups 
+
     addGroup(new ShowAsIntentions_LangStructure_ActionGroup());
     addGroup(new ShowHelp_ActionGroup());
     addGroup(new Structure_ActionGroup());

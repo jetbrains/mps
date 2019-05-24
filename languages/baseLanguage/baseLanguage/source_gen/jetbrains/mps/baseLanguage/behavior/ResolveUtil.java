@@ -145,6 +145,7 @@ public class ResolveUtil {
     for (SNode typeToModify : types) {
       for (SNode varRef : SNodeOperations.getNodeDescendants(typeToModify, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"), true, new SAbstractConcept[]{})) {
         // maybe a var from method 
+
         SNode typeVariableDeclaration = SLinkOperations.getTarget(varRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration"));
         if (SNodeOperations.getParent(typeVariableDeclaration) != result) {
           int index = SNodeOperations.getIndexInParent(typeVariableDeclaration);
@@ -176,14 +177,17 @@ public class ResolveUtil {
 
         if (parameterType == varArgType) {
           // vararg reached 
+
           if (argument == null) {
             // zero varargs 
+
             return true;
           }
           SNode mayBeLastArgumentType = TypecheckingFacade.getFromContext().getTypeOf(argument);
           SNode varArgComponentType = SLinkOperations.getTarget(varArgType, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType"));
           if ((lastArgument == argument) && SNodeOperations.isInstanceOf(mayBeLastArgumentType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType")) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SNodeOperations.cast(mayBeLastArgumentType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType")), varArgComponentType)) {
             // array type as vararg 
+
             return true;
           } else {
             while (argument != null) {

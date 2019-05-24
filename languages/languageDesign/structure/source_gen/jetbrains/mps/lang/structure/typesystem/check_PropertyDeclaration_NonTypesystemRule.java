@@ -25,6 +25,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   }
   public void applyRule(final SNode prop, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // property overriding is banned 
+
     if (SPropertyOperations.getString(prop, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) == null) {
       return;
     }
@@ -38,6 +39,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
       return;
     }
     // check constant names generated in adapters 
+
     final String name = NameUtil.toConstantName(SPropertyOperations.getString(prop, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     SNode node = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {

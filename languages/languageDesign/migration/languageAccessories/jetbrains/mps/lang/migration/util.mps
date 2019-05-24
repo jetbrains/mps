@@ -158,11 +158,8 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1225892208569" name="jetbrains.mps.baseLanguage.structure.ShiftLeftExpression" flags="nn" index="1GRDU$" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -243,6 +240,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -765,8 +770,34 @@
       </node>
       <node concept="3clFbS" id="3WpkgLwxAbk" role="3clF47">
         <node concept="3SKdUt" id="1IkLLL1oMrh" role="3cqZAp">
-          <node concept="3SKdUq" id="1IkLLL1oOtP" role="3SKWNk">
-            <property role="3SKdUp" value="check whether scripts are really migrations for some language" />
+          <node concept="1PaTwC" id="ATZLwXnXaM" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXaN" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaO" role="1PaTwD">
+              <property role="3oM_SC" value="whether" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaP" role="1PaTwD">
+              <property role="3oM_SC" value="scripts" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaQ" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaR" role="1PaTwD">
+              <property role="3oM_SC" value="really" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaS" role="1PaTwD">
+              <property role="3oM_SC" value="migrations" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaT" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaU" role="1PaTwD">
+              <property role="3oM_SC" value="some" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaV" role="1PaTwD">
+              <property role="3oM_SC" value="language" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="3WpkgLwzM4k" role="3cqZAp">
@@ -859,8 +890,22 @@
         </node>
         <node concept="3clFbH" id="2wHIaxpu0oL" role="3cqZAp" />
         <node concept="3SKdUt" id="1IkLLL1oE0s" role="3cqZAp">
-          <node concept="3SKdUq" id="1IkLLL1oG2L" role="3SKWNk">
-            <property role="3SKdUp" value="scripts with no versions set" />
+          <node concept="1PaTwC" id="ATZLwXnXaW" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXaX" role="1PaTwD">
+              <property role="3oM_SC" value="scripts" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaY" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaZ" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXb0" role="1PaTwD">
+              <property role="3oM_SC" value="versions" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXb1" role="1PaTwD">
+              <property role="3oM_SC" value="set" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="2wHIaxpu6zY" role="3cqZAp">
@@ -971,8 +1016,19 @@
         </node>
         <node concept="3clFbH" id="1IkLLL1oxKm" role="3cqZAp" />
         <node concept="3SKdUt" id="1IkLLL1o_y2" role="3cqZAp">
-          <node concept="3SKdUq" id="1IkLLL1oB$l" role="3SKWNk">
-            <property role="3SKdUp" value="no scripts with versions?" />
+          <node concept="1PaTwC" id="ATZLwXnXb2" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXb3" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXb4" role="1PaTwD">
+              <property role="3oM_SC" value="scripts" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXb5" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXb6" role="1PaTwD">
+              <property role="3oM_SC" value="versions?" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="1IkLLL1nGvp" role="3cqZAp">
@@ -1241,8 +1297,28 @@
         </node>
         <node concept="3clFbH" id="1IkLLL1ovCl" role="3cqZAp" />
         <node concept="3SKdUt" id="1IkLLL1pmy5" role="3cqZAp">
-          <node concept="3SKdUq" id="1IkLLL1po_y" role="3SKWNk">
-            <property role="3SKdUp" value="last version+1 == version of a language?" />
+          <node concept="1PaTwC" id="ATZLwXnXb7" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXb8" role="1PaTwD">
+              <property role="3oM_SC" value="last" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXb9" role="1PaTwD">
+              <property role="3oM_SC" value="version+1" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXba" role="1PaTwD">
+              <property role="3oM_SC" value="==" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXbb" role="1PaTwD">
+              <property role="3oM_SC" value="version" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXbc" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXbd" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXbe" role="1PaTwD">
+              <property role="3oM_SC" value="language?" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="1IkLLL1oQNB" role="3cqZAp">
@@ -1371,8 +1447,22 @@
               <node concept="1bVj0M" id="1IkLLL1mOVW" role="23t8la">
                 <node concept="3clFbS" id="1IkLLL1mOVX" role="1bW5cS">
                   <node concept="3SKdUt" id="1IkLLL1pr3t" role="3cqZAp">
-                    <node concept="3SKdUq" id="1IkLLL1pt6W" role="3SKWNk">
-                      <property role="3SKdUp" value="multiple scripts for one version?" />
+                    <node concept="1PaTwC" id="ATZLwXnXbf" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnXbg" role="1PaTwD">
+                        <property role="3oM_SC" value="multiple" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbh" role="1PaTwD">
+                        <property role="3oM_SC" value="scripts" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbi" role="1PaTwD">
+                        <property role="3oM_SC" value="for" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbj" role="1PaTwD">
+                        <property role="3oM_SC" value="one" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbk" role="1PaTwD">
+                        <property role="3oM_SC" value="version?" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3clFbJ" id="1IkLLL1mY6s" role="3cqZAp">
@@ -1442,8 +1532,25 @@
                   </node>
                   <node concept="3clFbH" id="1IkLLL1pwXN" role="3cqZAp" />
                   <node concept="3SKdUt" id="1IkLLL1py0L" role="3cqZAp">
-                    <node concept="3SKdUq" id="1IkLLL1pyxJ" role="3SKWNk">
-                      <property role="3SKdUp" value="version with no scripts for it?" />
+                    <node concept="1PaTwC" id="ATZLwXnXbl" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXnXbm" role="1PaTwD">
+                        <property role="3oM_SC" value="version" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbn" role="1PaTwD">
+                        <property role="3oM_SC" value="with" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbo" role="1PaTwD">
+                        <property role="3oM_SC" value="no" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbp" role="1PaTwD">
+                        <property role="3oM_SC" value="scripts" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbq" role="1PaTwD">
+                        <property role="3oM_SC" value="for" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXnXbr" role="1PaTwD">
+                        <property role="3oM_SC" value="it?" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3clFbJ" id="1IkLLL1onh9" role="3cqZAp">

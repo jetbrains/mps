@@ -134,56 +134,56 @@
       <node id="3187167456722650336" at="34,43,35,41" concept="6" />
       <node id="3187167456722650343" at="38,28,39,19" concept="6" />
       <node id="3187167456722650351" at="42,37,43,35" concept="6" />
-      <node id="3187167456722650358" at="48,41,49,30" concept="7" />
-      <node id="3187167456722650360" at="49,30,50,16" concept="6" />
-      <node id="3243898559544084245" at="54,0,55,0" concept="2" trace="myPresentation" />
-      <node id="3243898559544084262" at="55,31,56,79" concept="1" />
-      <node id="3187167456722650257" at="59,42,60,28" concept="6" />
-      <node id="3187167456722650274" at="63,39,64,37" concept="6" />
-      <node id="3187167456722650281" at="67,34,68,19" concept="6" />
-      <node id="3187167456722650289" at="74,44,75,37" concept="6" />
-      <node id="3187167456722650249" at="55,0,58,0" concept="0" trace="JavaMethodValue#()V" />
-      <node id="948222233231488963" at="70,0,73,0" concept="4" trace="initSubvalues#()V" />
+      <node id="3187167456722650360" at="50,0,51,16" concept="6" />
+      <node id="3243898559544084245" at="55,0,56,0" concept="2" trace="myPresentation" />
+      <node id="3243898559544084262" at="56,31,57,79" concept="1" />
+      <node id="3187167456722650257" at="60,42,61,28" concept="6" />
+      <node id="3187167456722650274" at="64,39,65,37" concept="6" />
+      <node id="3187167456722650281" at="68,34,69,19" concept="6" />
+      <node id="3187167456722650289" at="75,44,76,37" concept="6" />
+      <node id="3187167456722650358" at="48,41,50,0" concept="7" />
+      <node id="3187167456722650249" at="56,0,59,0" concept="0" trace="JavaMethodValue#()V" />
+      <node id="948222233231488963" at="71,0,74,0" concept="4" trace="initSubvalues#()V" />
       <node id="3187167456722650321" at="29,0,33,0" concept="4" trace="getName#()Ljava/lang/String;" />
       <node id="3187167456722650332" at="33,0,37,0" concept="4" trace="getCategory#()Ljetbrains/mps/debug/api/programState/WatchablesCategory;" />
       <node id="3187167456722650339" at="37,0,41,0" concept="4" trace="getValue#()Ljetbrains/mps/debug/api/programState/IValue;" />
       <node id="3187167456722650347" at="41,0,45,0" concept="4" trace="getPresentationIcon#()Ljavax/swing/Icon;" />
-      <node id="3187167456722650253" at="58,0,62,0" concept="4" trace="getValuePresentation#()Ljava/lang/String;" />
-      <node id="3187167456722650270" at="62,0,66,0" concept="4" trace="getPresentationIcon#()Ljavax/swing/Icon;" />
-      <node id="3187167456722650277" at="66,0,70,0" concept="4" trace="isStructure#()Z" />
-      <node id="3187167456722650284" at="73,0,77,0" concept="4" trace="getSubvalues#()Ljava/util/List;" />
+      <node id="3187167456722650253" at="59,0,63,0" concept="4" trace="getValuePresentation#()Ljava/lang/String;" />
+      <node id="3187167456722650270" at="63,0,67,0" concept="4" trace="getPresentationIcon#()Ljavax/swing/Icon;" />
+      <node id="3187167456722650277" at="67,0,71,0" concept="4" trace="isStructure#()Z" />
+      <node id="3187167456722650284" at="74,0,78,0" concept="4" trace="getSubvalues#()Ljava/util/List;" />
       <node id="3187167456722650298" at="23,0,29,0" concept="0" trace="JavaMethodWatchable#(Lcom/sun/jdi/Method;ZLcom/sun/jdi/ThreadReference;)V" />
-      <node id="7279139148253021909" at="46,0,52,0" concept="4" trace="getSourceNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <scope id="948222233231488967" at="71,33,71,33" />
+      <node id="7279139148253021909" at="46,0,53,0" concept="4" trace="getSourceNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <scope id="948222233231488967" at="72,33,72,33" />
       <scope id="3187167456722650324" at="30,27,31,62" />
       <scope id="3187167456722650335" at="34,43,35,41" />
       <scope id="3187167456722650342" at="38,28,39,19" />
       <scope id="3187167456722650350" at="42,37,43,35" />
-      <scope id="3187167456722650252" at="55,31,56,79" />
-      <scope id="3187167456722650256" at="59,42,60,28" />
-      <scope id="3187167456722650273" at="63,39,64,37" />
-      <scope id="3187167456722650280" at="67,34,68,19" />
-      <scope id="3187167456722650288" at="74,44,75,37" />
-      <scope id="7279139148253021917" at="48,41,50,16" />
-      <scope id="3187167456722650249" at="55,0,58,0" />
-      <scope id="948222233231488963" at="70,0,73,0" />
+      <scope id="3187167456722650252" at="56,31,57,79" />
+      <scope id="3187167456722650256" at="60,42,61,28" />
+      <scope id="3187167456722650273" at="64,39,65,37" />
+      <scope id="3187167456722650280" at="68,34,69,19" />
+      <scope id="3187167456722650288" at="75,44,76,37" />
+      <scope id="7279139148253021917" at="48,41,51,16" />
+      <scope id="3187167456722650249" at="56,0,59,0" />
+      <scope id="948222233231488963" at="71,0,74,0" />
       <scope id="3187167456722650309" at="23,93,27,56" />
       <scope id="3187167456722650321" at="29,0,33,0" />
       <scope id="3187167456722650332" at="33,0,37,0" />
       <scope id="3187167456722650339" at="37,0,41,0" />
       <scope id="3187167456722650347" at="41,0,45,0" />
-      <scope id="3187167456722650253" at="58,0,62,0" />
-      <scope id="3187167456722650270" at="62,0,66,0" />
-      <scope id="3187167456722650277" at="66,0,70,0" />
-      <scope id="3187167456722650284" at="73,0,77,0" />
+      <scope id="3187167456722650253" at="59,0,63,0" />
+      <scope id="3187167456722650270" at="63,0,67,0" />
+      <scope id="3187167456722650277" at="67,0,71,0" />
+      <scope id="3187167456722650284" at="74,0,78,0" />
       <scope id="3187167456722650298" at="23,0,29,0">
         <var name="enter" id="3187167456722650303" />
         <var name="method" id="3187167456722650301" />
         <var name="threadReference" id="3187167456722650307" />
       </scope>
-      <scope id="7279139148253021909" at="46,0,52,0" />
-      <unit id="3187167456722650246" at="53,0,78,0" name="jetbrains.mps.debugger.java.runtime.state.watchables.JavaMethodWatchable$JavaMethodValue" />
-      <unit id="3187167456722650243" at="19,0,79,0" name="jetbrains.mps.debugger.java.runtime.state.watchables.JavaMethodWatchable" />
+      <scope id="7279139148253021909" at="46,0,53,0" />
+      <unit id="3187167456722650246" at="54,0,79,0" name="jetbrains.mps.debugger.java.runtime.state.watchables.JavaMethodWatchable$JavaMethodValue" />
+      <unit id="3187167456722650243" at="19,0,80,0" name="jetbrains.mps.debugger.java.runtime.state.watchables.JavaMethodWatchable" />
     </file>
   </root>
   <root nodeRef="r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)/3187167456722650363">

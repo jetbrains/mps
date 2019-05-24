@@ -4,7 +4,7 @@
   <languages>
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="0" />
   </languages>
   <imports>
@@ -142,11 +142,8 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
@@ -179,6 +176,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport">
@@ -1095,8 +1100,52 @@
         </node>
         <node concept="3clFbH" id="6WBmrsjE2by" role="3cqZAp" />
         <node concept="3SKdUt" id="6WBmrsjE2d0" role="3cqZAp">
-          <node concept="3SKdUq" id="6WBmrsjE2d2" role="3SKWNk">
-            <property role="3SKdUp" value="If request handlers conflict with each other, only one of them should handle incoming request" />
+          <node concept="1PaTwC" id="ATZLwXoqf_" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXoqfA" role="1PaTwD">
+              <property role="3oM_SC" value="If" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfB" role="1PaTwD">
+              <property role="3oM_SC" value="request" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfC" role="1PaTwD">
+              <property role="3oM_SC" value="handlers" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfD" role="1PaTwD">
+              <property role="3oM_SC" value="conflict" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfE" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfF" role="1PaTwD">
+              <property role="3oM_SC" value="each" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfG" role="1PaTwD">
+              <property role="3oM_SC" value="other," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfH" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfI" role="1PaTwD">
+              <property role="3oM_SC" value="one" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfJ" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfK" role="1PaTwD">
+              <property role="3oM_SC" value="them" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfL" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfM" role="1PaTwD">
+              <property role="3oM_SC" value="handle" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfN" role="1PaTwD">
+              <property role="3oM_SC" value="incoming" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXoqfO" role="1PaTwD">
+              <property role="3oM_SC" value="request" />
+            </node>
           </node>
         </node>
         <node concept="3vlDli" id="6WBmrsjE0KE" role="3cqZAp">

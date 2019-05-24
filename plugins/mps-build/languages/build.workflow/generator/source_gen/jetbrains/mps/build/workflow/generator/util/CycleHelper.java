@@ -103,6 +103,7 @@ public class CycleHelper {
       SPropertyOperations.assign(cycleX, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbeeL, "noWarnings"), true);
 
       // build cycle sources & dependencies; trying to avoid duplication (which is not critical) 
+
       Set<String> seenSources = new HashSet<String>();
       List<SNode> sources = new ArrayList<SNode>();
       Set<String> seenDependencies = new HashSet<String>();

@@ -113,11 +113,14 @@ public class ProjectDependency {
     SModel targetScriptModel = SNodeOperations.getModel(SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script")));
     if (targetScriptModel == null || SNodeOperations.getModel(myProject) == null) {
       // "local" doesn't make sense unless there's location (i.e. my BP's model) to check againts 
+
       return false;
     }
     if (targetScriptModel == SNodeOperations.getModel(myProject)) {
       // XXX what if we introduce per-root transformation, when one root (BuildProject) comes from transient model, while 
+
       // target comes from source? Guess, would need to rely on module.isPackaged check below 
+
       return true;
     }
     SModule targetScriptModule = targetScriptModel.getModule();
@@ -125,6 +128,7 @@ public class ProjectDependency {
       return true;
     }
     // FIXME add an option Module.isPackaged (to access it like node.model.module.isPackaged) 
+
     return !(targetScriptModule.isPackaged());
   }
 }

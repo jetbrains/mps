@@ -32,6 +32,7 @@ public class NewLanguageDialog extends AbstractModuleCreationDialog<Language> {
   protected void runCreation() {
     // TODO: reuse runnable in DefaultLanguageProjectTemplate 
 
+
     Language language = NewModuleUtil.createLanguage(mySettings.getModuleName(), mySettings.getModuleLocation(), (MPSProject) myProject, false);
     ((StandaloneMPSProject) myProject).setFolderFor(language, myVirtualFolder);
 
@@ -52,6 +53,7 @@ public class NewLanguageDialog extends AbstractModuleCreationDialog<Language> {
       }
     } catch (IOException e) {
       // todo: ! 
+
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("Cannot create runtime / sandbox module", e);
       }

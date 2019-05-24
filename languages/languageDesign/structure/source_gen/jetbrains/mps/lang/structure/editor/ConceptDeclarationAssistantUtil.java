@@ -37,6 +37,7 @@ public class ConceptDeclarationAssistantUtil {
         ListSequence.fromList(result).addElement(acd);
       }
       // continue concept hierarchy traversal only if acd contains all properties/link of the current concept 
+
       QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(acd)));
     }
     return result;

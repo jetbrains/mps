@@ -4,7 +4,7 @@
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
@@ -215,11 +215,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -282,6 +279,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2490,8 +2495,22 @@
                 </node>
               </node>
               <node concept="3SKdUt" id="5Ue3IAz39dp" role="3cqZAp">
-                <node concept="3SKdUq" id="5Ue3IAz39gf" role="3SKWNk">
-                  <property role="3SKdUp" value="e.g. model with merge conflict" />
+                <node concept="1PaTwC" id="ATZLwXoiF8" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXoiF9" role="1PaTwD">
+                    <property role="3oM_SC" value="e.g." />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXoiFa" role="1PaTwD">
+                    <property role="3oM_SC" value="model" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXoiFb" role="1PaTwD">
+                    <property role="3oM_SC" value="with" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXoiFc" role="1PaTwD">
+                    <property role="3oM_SC" value="merge" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXoiFd" role="1PaTwD">
+                    <property role="3oM_SC" value="conflict" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbJ" id="5Ue3IAz2RDa" role="3cqZAp">
@@ -3102,8 +3121,40 @@
             </node>
           </node>
           <node concept="3SKdUt" id="21GaM5PRQHH" role="3cqZAp">
-            <node concept="3SKdUq" id="21GaM5PRQHJ" role="3SKWNk">
-              <property role="3SKdUp" value="being careful with node.pointer because node is not in a model" />
+            <node concept="1PaTwC" id="ATZLwXoiFe" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXoiFf" role="1PaTwD">
+                <property role="3oM_SC" value="being" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFg" role="1PaTwD">
+                <property role="3oM_SC" value="careful" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFh" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFi" role="1PaTwD">
+                <property role="3oM_SC" value="node.pointer" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFj" role="1PaTwD">
+                <property role="3oM_SC" value="because" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFk" role="1PaTwD">
+                <property role="3oM_SC" value="node" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFl" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFm" role="1PaTwD">
+                <property role="3oM_SC" value="not" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFn" role="1PaTwD">
+                <property role="3oM_SC" value="in" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFo" role="1PaTwD">
+                <property role="3oM_SC" value="a" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXoiFp" role="1PaTwD">
+                <property role="3oM_SC" value="model" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="3Cep5Ce5gTZ" role="3cqZAp">

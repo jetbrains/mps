@@ -73,6 +73,7 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
       SLinkOperations.setTarget(t, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept"), applicableConcept);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
       //  initialize 'content node' 
+
       SNode ownerRule = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule"), false, false);
       SNode contextNodeType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(ownerRule, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, 0x113d0a12fc5L, "contextNodeQuery")));
       if (SNodeOperations.isInstanceOf(contextNodeType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"))) {
@@ -84,6 +85,7 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
         }
       }
       //  make reference 
+
       SLinkOperations.setNewChild(node, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall"), null);
       SLinkOperations.setTarget(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall")), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template"), t);
       SelectionUtil.selectCell(editorContext, node, "templateName");

@@ -30,6 +30,7 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
     }
 
     // metaclass 
+
     if (!(Objects.equals(SPropertyOperations.getString(specializedLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), SPropertyOperations.getString(link, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"))))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
@@ -38,6 +39,7 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
     }
 
     // specialized must be a super-concept of specializing 
+
     if ((SLinkOperations.getTarget(link, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")) != null) && (SLinkOperations.getTarget(specializedLink, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")) != null)) {
       if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(link, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")), SLinkOperations.getTarget(specializedLink, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target"))))) {
         {
@@ -49,6 +51,7 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
     }
 
     // cardinality 
+
     if ((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(specializedLink) && !((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(link))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();

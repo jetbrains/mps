@@ -28,6 +28,7 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
   }
   public void applyRule(final SNode switchCase, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with MultipleFilesParser 
+
     SNode caseExp = SLinkOperations.getTarget(switchCase, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression"));
     if (!(SNodeOperations.isInstanceOf(caseExp, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")))) {
       return;

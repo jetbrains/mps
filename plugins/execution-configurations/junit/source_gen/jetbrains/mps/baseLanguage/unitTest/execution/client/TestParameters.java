@@ -72,6 +72,7 @@ public final class TestParameters {
     if (other.getExecutorClass().isAssignableFrom(getExecutorClass())) {
       if (!(myNeedsMPS) && other.myNeedsMPS) {
         // tests that don't need MPS can run from within MPS instance, but not other way round. 
+
         return false;
       }
       if (ListSequence.fromList(myClassPath).containsSequence(ListSequence.fromList(other.getClassPath()))) {

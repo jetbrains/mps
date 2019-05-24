@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="e8tgugr1ecgwm4bs9py2ff96lju2ddm">
+<product version="3" modelHash="l828ce8u8omlcghsk96m2buu806rc7">
   <files names="AbstractEvent.java:Command.java:CommandChannel.java:Controller.java:Event.java:Notification.java:State.java:StateMachine.java:StateMachineFactory.java:StateMachineTest.java" />
 </product>
 

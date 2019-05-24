@@ -11,7 +11,7 @@
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="oubp" ref="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:7cc2086d-c7d0-49c7-811c-ebbaf40d9195(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.structure)" />
@@ -289,11 +289,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -410,6 +407,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -1047,8 +1052,16 @@
           </node>
           <node concept="3clFbS" id="5vfjF5cdRSx" role="3clFbx">
             <node concept="3SKdUt" id="5vfjF5cdUbP" role="3cqZAp">
-              <node concept="3SKdUq" id="5vfjF5cdUbR" role="3SKWNk">
-                <property role="3SKdUp" value="viva la interpretation!" />
+              <node concept="1PaTwC" id="ATZLwXotjH" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXotjI" role="1PaTwD">
+                  <property role="3oM_SC" value="viva" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXotjJ" role="1PaTwD">
+                  <property role="3oM_SC" value="la" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXotjK" role="1PaTwD">
+                  <property role="3oM_SC" value="interpretation!" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs8" id="7eHFHBMjIbO" role="3cqZAp">
@@ -1615,13 +1628,71 @@
     <node concept="2uRRBj" id="41oOO0Gfe_6" role="2uRRBE">
       <node concept="3clFbS" id="41oOO0Gfe_7" role="2VODD2">
         <node concept="3SKdUt" id="7ShNiS0OGvc" role="3cqZAp">
-          <node concept="3SKdUq" id="7ShNiS0OGw6" role="3SKWNk">
-            <property role="3SKdUp" value="todo actually this whole thing should be replaced by a custom concept aspect, so that " />
+          <node concept="1PaTwC" id="ATZLwXotjL" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXotjM" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjN" role="1PaTwD">
+              <property role="3oM_SC" value="actually" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjO" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjP" role="1PaTwD">
+              <property role="3oM_SC" value="whole" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjQ" role="1PaTwD">
+              <property role="3oM_SC" value="thing" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjR" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjS" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjT" role="1PaTwD">
+              <property role="3oM_SC" value="replaced" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjU" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjV" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjW" role="1PaTwD">
+              <property role="3oM_SC" value="custom" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjX" role="1PaTwD">
+              <property role="3oM_SC" value="concept" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjY" role="1PaTwD">
+              <property role="3oM_SC" value="aspect," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotjZ" role="1PaTwD">
+              <property role="3oM_SC" value="so" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotk0" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="7ShNiS0OGBn" role="3cqZAp">
-          <node concept="3SKdUq" id="7ShNiS0OGCp" role="3SKWNk">
-            <property role="3SKdUp" value="the filter is like SAbstractConcept.getAspect(ClassLike).isClassLike()" />
+          <node concept="1PaTwC" id="ATZLwXotk1" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXotk2" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotk3" role="1PaTwD">
+              <property role="3oM_SC" value="filter" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotk4" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotk5" role="1PaTwD">
+              <property role="3oM_SC" value="like" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotk6" role="1PaTwD">
+              <property role="3oM_SC" value="SAbstractConcept.getAspect(ClassLike).isClassLike()" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="rOSS6tNCyH" role="3cqZAp">
@@ -2131,8 +2202,34 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6ETkb2gORp1" role="3cqZAp">
-          <node concept="3SKdUq" id="6ETkb2gORp3" role="3SKWNk">
-            <property role="3SKdUp" value="XXX we don't need node here, node-ptr would suffice" />
+          <node concept="1PaTwC" id="ATZLwXotk7" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXotk8" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotk9" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotka" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotkb" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotkc" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotkd" role="1PaTwD">
+              <property role="3oM_SC" value="here," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotke" role="1PaTwD">
+              <property role="3oM_SC" value="node-ptr" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotkf" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXotkg" role="1PaTwD">
+              <property role="3oM_SC" value="suffice" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="6ETkb2gOmet" role="3cqZAp">

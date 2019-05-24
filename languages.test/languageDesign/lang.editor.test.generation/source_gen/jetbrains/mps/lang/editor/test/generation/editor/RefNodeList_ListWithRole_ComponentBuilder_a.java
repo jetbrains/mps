@@ -402,6 +402,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public boolean isReferentPresentation() {
@@ -536,6 +537,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public String getMatchingText() {
@@ -884,6 +886,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public boolean isReferentPresentation() {
@@ -1018,6 +1021,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public String getMatchingText() {
@@ -1415,6 +1419,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public boolean isReferentPresentation() {
@@ -1549,6 +1554,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public String getMatchingText() {
@@ -1944,6 +1950,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public boolean isReferentPresentation() {
@@ -2078,6 +2085,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public String getMatchingText() {
@@ -2528,6 +2536,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public boolean isReferentPresentation() {
@@ -2662,6 +2671,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public String getMatchingText() {
@@ -3202,6 +3212,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public boolean isReferentPresentation() {
@@ -3399,6 +3410,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         boolean var = node != null || model != null || editorContext != null || operationContext != null;
         if (var) {
           // just usage of var 
+
         }
       }
       public String getMatchingText() {

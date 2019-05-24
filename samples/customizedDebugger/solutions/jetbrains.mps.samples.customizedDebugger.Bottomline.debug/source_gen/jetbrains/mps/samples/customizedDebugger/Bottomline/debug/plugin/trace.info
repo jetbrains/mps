@@ -40,88 +40,88 @@
       <node id="567241428660124408" at="37,5,38,80" concept="7" />
       <node id="567241428660124408" at="39,26,40,13" concept="8" />
       <node id="567241428660124408" at="41,5,42,0" concept="10" />
-      <node id="567241428660124408" at="42,0,43,90" concept="9" />
-      <node id="567241428660124408" at="43,90,44,58" concept="9" />
-      <node id="567241428660124409" at="47,5,48,68" concept="7" />
-      <node id="567241428660124838" at="51,259,52,24" concept="8" />
-      <node id="567241428660124409" at="53,11,54,23" concept="8" />
-      <node id="567241428660124409" at="54,23,55,0" concept="10" />
-      <node id="567241428660168780" at="60,15,61,139" concept="8" />
-      <node id="567241428660124409" at="63,47,64,91" concept="2" />
-      <node id="567241428660124409" at="65,13,66,24" concept="8" />
-      <node id="567241428660124409" at="69,9,70,0" concept="10" />
-      <node id="567241428660124409" at="70,0,71,95" concept="2" />
-      <node id="567241428660124409" at="71,95,72,34" concept="2" />
-      <node id="567241428660124408" at="76,25,77,118" concept="7" />
-      <node id="567241428660124408" at="78,33,79,13" concept="8" />
-      <node id="567241428660124408" at="80,5,81,80" concept="7" />
-      <node id="567241428660124408" at="82,26,83,13" concept="8" />
-      <node id="567241428660124408" at="85,108,86,37" concept="2" />
-      <node id="567241428660124408" at="87,5,88,81" concept="2" />
+      <node id="567241428660124409" at="49,5,50,68" concept="7" />
+      <node id="567241428660124838" at="53,259,54,24" concept="8" />
+      <node id="567241428660124409" at="55,11,56,23" concept="8" />
+      <node id="567241428660124409" at="56,23,57,0" concept="10" />
+      <node id="567241428660168780" at="62,15,63,139" concept="8" />
+      <node id="567241428660124409" at="65,47,66,91" concept="2" />
+      <node id="567241428660124409" at="67,13,68,24" concept="8" />
+      <node id="567241428660124409" at="71,9,72,0" concept="10" />
+      <node id="567241428660124409" at="72,0,73,95" concept="2" />
+      <node id="567241428660124409" at="73,95,74,34" concept="2" />
+      <node id="567241428660124408" at="78,25,79,118" concept="7" />
+      <node id="567241428660124408" at="80,33,81,13" concept="8" />
+      <node id="567241428660124408" at="82,5,83,80" concept="7" />
+      <node id="567241428660124408" at="84,26,85,13" concept="8" />
+      <node id="567241428660124408" at="87,108,88,37" concept="2" />
+      <node id="567241428660124408" at="89,5,90,81" concept="2" />
       <node id="567241428660124408" at="30,0,32,0" concept="1" trace="DebugInfoProvider_AppPluginPart#()V" />
-      <node id="567241428660124408" at="44,58,46,5" concept="4" />
+      <node id="567241428660124408" at="42,0,44,0" concept="9" />
+      <node id="567241428660124408" at="44,0,46,0" concept="9" />
+      <node id="567241428660124408" at="46,0,48,5" concept="4" />
       <node id="567241428660124408" at="34,118,37,5" concept="5" />
       <node id="567241428660124408" at="38,80,41,5" concept="5" />
-      <node id="567241428660124838" at="50,79,53,11" concept="5" />
-      <node id="567241428660124409" at="62,51,65,13" concept="5" />
-      <node id="567241428660124408" at="77,118,80,5" concept="5" />
-      <node id="567241428660124408" at="81,80,84,5" concept="5" />
-      <node id="567241428660124408" at="84,5,87,5" concept="4" />
-      <node id="567241428660124409" at="50,0,57,0" concept="6" trace="invoke#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
-      <node id="567241428660124409" at="59,82,67,11" concept="12" />
-      <node id="567241428660124409" at="48,68,57,9" concept="2" />
-      <node id="567241428660124409" at="59,0,69,0" concept="6" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/debug/api/breakpoints/ILocationBreakpoint;" />
-      <node id="567241428660124409" at="57,9,69,9" concept="2" />
-      <node id="567241428660124408" at="75,0,90,0" concept="6" trace="dispose#()V" />
-      <node id="567241428660124409" at="46,5,73,5" concept="0" />
-      <node id="567241428660124408" at="32,0,75,0" concept="6" trace="init#()V" />
+      <node id="567241428660124838" at="52,79,55,11" concept="5" />
+      <node id="567241428660124409" at="64,51,67,13" concept="5" />
+      <node id="567241428660124408" at="79,118,82,5" concept="5" />
+      <node id="567241428660124408" at="83,80,86,5" concept="5" />
+      <node id="567241428660124408" at="86,5,89,5" concept="4" />
+      <node id="567241428660124409" at="52,0,59,0" concept="6" trace="invoke#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
+      <node id="567241428660124409" at="61,82,69,11" concept="12" />
+      <node id="567241428660124409" at="50,68,59,9" concept="2" />
+      <node id="567241428660124409" at="61,0,71,0" concept="6" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/debug/api/breakpoints/ILocationBreakpoint;" />
+      <node id="567241428660124409" at="59,9,71,9" concept="2" />
+      <node id="567241428660124408" at="77,0,92,0" concept="6" trace="dispose#()V" />
+      <node id="567241428660124409" at="48,5,75,5" concept="0" />
+      <node id="567241428660124408" at="32,0,77,0" concept="6" trace="init#()V" />
       <scope id="567241428660124408" at="30,44,30,44" />
-      <scope id="567241428660124408" at="45,108,45,108" />
+      <scope id="567241428660124408" at="47,108,47,108" />
       <scope id="567241428660124408" at="35,33,36,13" />
       <scope id="567241428660124408" at="39,26,40,13" />
-      <scope id="567241428660124838" at="51,259,52,24" />
-      <scope id="567241428660124411" at="60,15,61,139" />
-      <scope id="567241428660124409" at="63,47,64,91" />
-      <scope id="567241428660124408" at="78,33,79,13" />
-      <scope id="567241428660124408" at="82,26,83,13" />
-      <scope id="567241428660124408" at="85,108,86,37" />
+      <scope id="567241428660124838" at="53,259,54,24" />
+      <scope id="567241428660124411" at="62,15,63,139" />
+      <scope id="567241428660124409" at="65,47,66,91" />
+      <scope id="567241428660124408" at="80,33,81,13" />
+      <scope id="567241428660124408" at="84,26,85,13" />
+      <scope id="567241428660124408" at="87,108,88,37" />
       <scope id="567241428660124408" at="30,0,32,0" />
-      <scope id="567241428660124408" at="44,58,46,5">
+      <scope id="567241428660124408" at="46,0,48,5">
         <var name="creator" id="567241428660124408" />
       </scope>
-      <scope id="567241428660124408" at="84,5,87,5">
+      <scope id="567241428660124408" at="86,5,89,5">
         <var name="creator" id="567241428660124408" />
       </scope>
-      <scope id="567241428660124409" at="62,0,66,24">
+      <scope id="567241428660124409" at="64,0,68,24">
         <var name="e" id="567241428660124409" />
       </scope>
-      <scope id="567241428660124409" at="62,51,66,24" />
-      <scope id="567241428660124409" at="50,79,55,0" />
-      <scope id="567241428660124409" at="50,0,57,0">
+      <scope id="567241428660124409" at="64,51,68,24" />
+      <scope id="567241428660124409" at="52,79,57,0" />
+      <scope id="567241428660124409" at="52,0,59,0">
         <var name="concept" id="567241428660124409" />
         <var name="debuggableNode" id="567241428660124409" />
       </scope>
-      <scope id="567241428660124409" at="59,82,67,11" />
-      <scope id="567241428660124409" at="59,0,69,0">
+      <scope id="567241428660124409" at="61,82,69,11" />
+      <scope id="567241428660124409" at="61,0,71,0">
         <var name="debuggableNode" id="567241428660124409" />
         <var name="project" id="567241428660124409" />
       </scope>
-      <scope id="567241428660124408" at="76,25,88,81">
+      <scope id="567241428660124408" at="78,25,90,81">
         <var name="debuggerPlugin" id="567241428660124408" />
         <var name="manager" id="567241428660124408" />
       </scope>
-      <scope id="567241428660124408" at="75,0,90,0" />
-      <scope id="567241428660124409" at="47,5,72,34">
+      <scope id="567241428660124408" at="77,0,92,0" />
+      <scope id="567241428660124409" at="49,5,74,34">
         <var name="creator" id="567241428660124409" />
       </scope>
-      <scope id="567241428660124408" at="33,22,73,5">
+      <scope id="567241428660124408" at="33,22,75,5">
         <var name="debuggerPlugin" id="567241428660124408" />
         <var name="manager" id="567241428660124408" />
       </scope>
-      <scope id="567241428660124408" at="32,0,75,0" />
-      <unit id="567241428660124409" at="49,28,57,7" name="jetbrains.mps.samples.customizedDebugger.Bottomline.debug.plugin.DebugInfoProvider_AppPluginPart$1" />
-      <unit id="567241428660124409" at="58,25,69,7" name="jetbrains.mps.samples.customizedDebugger.Bottomline.debug.plugin.DebugInfoProvider_AppPluginPart$2" />
-      <unit id="567241428660124408" at="27,0,91,0" name="jetbrains.mps.samples.customizedDebugger.Bottomline.debug.plugin.DebugInfoProvider_AppPluginPart" />
+      <scope id="567241428660124408" at="32,0,77,0" />
+      <unit id="567241428660124409" at="51,28,59,7" name="jetbrains.mps.samples.customizedDebugger.Bottomline.debug.plugin.DebugInfoProvider_AppPluginPart$1" />
+      <unit id="567241428660124409" at="60,25,71,7" name="jetbrains.mps.samples.customizedDebugger.Bottomline.debug.plugin.DebugInfoProvider_AppPluginPart$2" />
+      <unit id="567241428660124408" at="27,0,93,0" name="jetbrains.mps.samples.customizedDebugger.Bottomline.debug.plugin.DebugInfoProvider_AppPluginPart" />
     </file>
     <file name="Debug_ApplicationPlugin.java">
       <node id="567241428660124408" at="18,66,19,53" concept="2" />

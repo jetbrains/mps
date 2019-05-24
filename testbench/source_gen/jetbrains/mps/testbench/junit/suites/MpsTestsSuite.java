@@ -56,6 +56,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
   public MpsTestsSuite(Class<?> klass, RunnerBuilder builder) throws InitializationError {
     super(klass, Collections.<Runner>emptyList());
     // todo: read config from annotations before start (project / ?) 
+
     myEnvironment = initIdeaEnvironment();
     myContextProject = myEnvironment.createProject(new FromModulesListProjectStrategy());
     RunnerBuilder mpsEnvAwareBuilder = new PushEnvironmentRunnerBuilder(myEnvironment, builder);
@@ -90,9 +91,12 @@ public class MpsTestsSuite extends BaseMpsSuite {
       }
       SetSequence.fromSet(result).addElement(lib);
       // XXX next is a copy of a workaround from GenerateTask.addConfiguredLibrary to make sure jars with generator modules are reported to LibraryInitializer 
+
       // and no attempt to load generators though their source modules (see MPS-29650) 
+
       if (libFile.isFile() && lib.endsWith(".jar")) {
         // perhaps, it's a language.jar, register corresponding generator.jar, if any. 
+
         String fname = libFile.getName();
         File generatorJar = new File(libFile.getParent(), fname.substring(0, fname.length() - 4) + "-generator.jar");
         if (generatorJar.isFile()) {

@@ -132,6 +132,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
         MapSequence.fromMap(myAuthorsToColors).put(author, color);
       }
       //  XXX can use FA.getCurrentFileRevisionProvider() 
+
       MapSequence.fromMap(myRevisionNumberToRevision).put(revision.getRevisionNumber(), revision);
     }
     myViewActionGroup = new ViewActionGroup(this, myAspectSubcolumns);
@@ -216,6 +217,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
       AnnotationColumn.LineRevisionRecord record = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
       if (record == null) {
         // XXX is it possible to face this? Previous code didn't account for myPseudoLinesToFileLines[pseudoLine] == -1 
+
         continue;
       }
 
@@ -287,6 +289,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
 
     if (content instanceof NodeLineContent) {
       // FIXME treat node annotations so that they don't grab chnages of the annotated node just because they are 'big' cells 
+
       return bigCellForNode;
     } else if (content instanceof PropertyLineContent) {
       PropertyLineContent plc = (PropertyLineContent) content;
@@ -313,8 +316,11 @@ public class AnnotationColumn extends AbstractLeftColumn {
   }
   private Iterable<Integer> getPseudoLinesForContent(@Nullable LineContent content) {
     // XXX what makes me feel uneasy is that findCellForContent gives whole node cell in case respective cell for Property/Reference LineContent have not been found 
+
     //     On one hand, the change is indeed there and we might want to reflect the fact node has been changed. OTOH, it might be technical/private property not reflected in the editor and 
+
     //     there's no reason to tell it's a change for complete node. 
+
     EditorCell cell = findCellForContent(content);
     if (cell == null) {
       return Sequence.fromIterable(Collections.<Integer>emptyList());
@@ -404,42 +410,59 @@ __switch__:
     editor.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         // It seems the reason for model read is getPseudoLinedForContent->findCellForContent that deals with model of edited node 
+
         for (int fileLine = 0; fileLine < ListSequence.fromList(myFileLineToContent).count(); fileLine++) {
           LineContent lineContent = ListSequence.fromList(myFileLineToContent).getElement(fileLine);
           final VcsFileRevision fileLineRev = fileRevForLine(fileLine);
           if (fileLineRev == null) {
             // though it's odd, it happens that FileAnnotation.getLineRevisionNumber gives VcsRevisionNumber 
+
             // that has not been reported from FA.getRevisions().getRevisionNumber(), and the mapping is null 
+
             // FIXME figure out why is that and what one can do not to get empty lines in annotate 
+
             continue;
           }
           for (int pseudoLine : getPseudoLinesForContent(lineContent)) {
             final AnnotationColumn.LineRevisionRecord lr = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
             if (lr == null) {
               // XXX we might want to share same LRR instance for the group of editor lines, but then need to be careful 
+
               // when updating its actual revision 
+
               ListSequence.fromList(myEditorLineRecords).setElement(pseudoLine, new AnnotationColumn.LineRevisionRecord(lineContent.getNodeId(), fileLineRev, fileLine));
             } else {
               // we've got info for the editor line already, and it's attributed to some node and a revision 
+
               if (lr.nodeId.equals(lineContent.getNodeId())) {
                 // same node is reported, but different revision, perhaps? Update if newer, keep previous otherwise 
+
                 if (lr.rev.getRevisionDate().before(fileLineRev.getRevisionDate())) {
                   lr.rev = fileLineRev;
                   lr.fileLine = fileLine;
                 }
               } else {
                 // new node is reported for the line 
+
                 // XXX it might be child of the original and therefore needs to take precedence over parent 
+
                 //     or it might be parent again after child put its record earlier, replacing parent record 
+
                 //     (keep in mind nested and closing tags <node parent><node child/></node parent>) 
+
                 if (!(lr.isAmongPrevious(lineContent.getNodeId()))) {
                   // treat actual LineContent as more relevant and overwrite editor line record, yet keep knowledge about nodeid of the original record 
+
                   ListSequence.fromList(myEditorLineRecords).setElement(pseudoLine, new AnnotationColumn.LineRevisionRecord(lineContent.getNodeId(), fileLineRev, fileLine, lr));
                 }
                 // else this editor line has been recorded for the node of actual lineContent and later overwritten with another node 
+
                 // assume that other node is more relevant (e.g. actual LineContent represents closing </node> tag of a parent node 
-                // indeed, it's not necessarily true (we'd better record 'technical' lines like closing tag right in LineContent), but this heuristic is still better  
+
+                // indeed, it's not necessarily true (we'd better record 'technical' lines like closing tag right in LineContent), but this heuristic is still better 
+
                 // than 'just take the latest' approach 
+
               }
             }
           }

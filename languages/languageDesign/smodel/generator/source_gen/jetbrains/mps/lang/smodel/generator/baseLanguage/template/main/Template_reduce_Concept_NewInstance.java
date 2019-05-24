@@ -57,11 +57,13 @@ public class Template_reduce_Concept_NewInstance extends TemplateDeclarationBase
               tnode2.addChild(myAggregationLinks[0], child4);
             }
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }

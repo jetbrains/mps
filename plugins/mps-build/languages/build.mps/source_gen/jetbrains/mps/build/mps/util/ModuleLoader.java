@@ -72,8 +72,10 @@ public final class ModuleLoader {
     myVisibleModules.collect();
     myMsgHandler = msgHandler;
     // TODO enforce outer code to specify FS to avoid singleton access 
+
     myFS = FileSystem.getInstance();
     // TODO need access to plafrom to obtain DescriptorIOFacade instance, or supply from caller. 
+
     myDescriptorIO = DescriptorIOFacade.getInstance();
   }
 
@@ -104,15 +106,22 @@ public final class ModuleLoader {
     });
 
     // XXX would be great to unregister all modules here, to dispose them explicitly, but as long as its our private repo, does it matter? 
+
     // We have to dispose modules as their models/datasources attach e.g. file listeners that get notified long time after generation of a build project is over. 
+
     // BEWARE, don't ever try to do myRepository.dispose(). MRF is CoreComponent AND singleton, dispose just makes subsequent MRF.getInstance() (yes, there are still few out there) to fail with NPE 
+
     if (myRepository != null) {
       // MRF has distinction between 'true' repo and a global one it looks into at certain moments, beware to use proper one 
+
       List<SModule> modules = IterableUtil.copyToList(myRepository.getRepository().getModules());
       for (SModule m : ListSequence.fromList(modules)) {
         // would be great to myRepository.unregisterModule(m) here, but there are 2 obstacles: 
+
         // first, MRF doesn't use true repo; second, we need to know module owner which is internal class in ModuleChecker now 
+
         // As I'm about to throw myRepository away, I don't care that much it is to hold information about disposed modules 
+
         if (m instanceof SModuleBase) {
           ((SModuleBase) m).dispose();
         }
@@ -132,6 +141,7 @@ public final class ModuleLoader {
       moduleFilePath = new File(moduleFilePath).getCanonicalPath();
     } catch (IOException ex) {
       // ignore 
+
     }
 
     IFile file = myFS.getFile(moduleFilePath);
@@ -157,8 +167,11 @@ public final class ModuleLoader {
 
     if (md instanceof LanguageDescriptor && SNodeOperations.isInstanceOf(module, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"))) {
       // A hack to support multiple generator modules per language (BuildMps_Language limits generator to [0..1]. 
+
       // An idea here is to utilize BuildMps_Generator as project part, referencing its language mpl file. Though technically MPS hides 
+
       // module path for BuildMps_Generator, it's possible to edit it using reflective editor. 
+
       for (GeneratorDescriptor gd : ((LanguageDescriptor) md).getGenerators()) {
         if (Objects.equals(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")), gd.getId().toString())) {
           md = gd;
@@ -204,8 +217,11 @@ public final class ModuleLoader {
     @Override
     public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
       // as we ignore MPSModuleOwner when registering a module, there's no way to return a proper value 
+
       // OTOH, UnsupportedOperationException, though technically right, is no appropriate as there's generic code 
+
       // that expects this method not to throw an exception (i.e. Language unregistering its Generators) 
+
       return Collections.<MPSModuleOwner>emptySet();
     }
 
@@ -213,6 +229,7 @@ public final class ModuleLoader {
     @Override
     public Set<SModule> getModules(MPSModuleOwner owner) {
       // see getOwners(), above, for reasone why empty collection, not exception 
+
       return Collections.<SModule>emptySet();
     }
 

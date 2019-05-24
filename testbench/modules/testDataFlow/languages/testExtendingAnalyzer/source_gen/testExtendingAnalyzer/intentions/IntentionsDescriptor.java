@@ -33,7 +33,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: DotExpression 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new SwitchToNullUnsafe_Intention();
           intentions[1] = new SwitchToNullSafe_Intention();

@@ -48,6 +48,7 @@ public class CustomOperator_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_blqzzl_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d60237L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperator"), MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d60237L, 0x2764eda929d60239L, "declaration"));
     }
     @NotNull

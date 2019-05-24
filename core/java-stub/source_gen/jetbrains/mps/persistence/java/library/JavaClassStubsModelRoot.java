@@ -42,6 +42,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   @Override
   public SModel getModel(@NotNull SModelId id) {
     // todo implement 
+
     return null;
   }
 
@@ -49,6 +50,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   public void load(@NotNull Memento memento) {
     super.load(memento);
     // Perhaps, shall support multiple scope configurations per root 
+
     Memento packScope = memento.getChild("PackageScope");
     if (packScope != null) {
       myPackageScope = new PackageScopeControl();
@@ -82,7 +84,9 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       collectJarFiles(file, excludedFiles, jarsToLoad);
 
       // we suppose here that each path can be either a jar-file or a classes directory or a jar directory, 
+
       // but does not contain both jar-fils and class-files 
+
       if (SetSequence.fromSet(jarsToLoad).isNotEmpty()) {
         continue;
       }
@@ -165,6 +169,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
         final SModelReference modelReference = new JavaPackageNameStub(pack).asModelReference(module.getModuleReference());
         JavaClassStubModelDescriptor smd;
         // FIXME: hack, see comment below 
+
         SModel modelDescriptor = getModelAlreadyRegistered(module, modelReference);
         if (modelDescriptor != null) {
           assert modelDescriptor instanceof JavaClassStubModelDescriptor;

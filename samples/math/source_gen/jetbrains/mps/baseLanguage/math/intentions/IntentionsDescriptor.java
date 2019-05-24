@@ -33,28 +33,32 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: DecimalBinaryOperation 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new DeleteMathContext_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: DivExpression 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new DivExpressionDivToFraction_Intention();
         }
         break;
       case 2:
         if (true) {
-          // Concept: DivExpressionFraction 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new DivExpressionFractionToDiv_Intention();
         }
         break;
       case 3:
         if (true) {
-          // Concept: Expression 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new SpecifyMathContext_Intention();
         }

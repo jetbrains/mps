@@ -2,7 +2,7 @@
 <model ref="r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
@@ -183,11 +183,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -232,6 +229,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -1271,8 +1276,73 @@
           <node concept="3clFbJ" id="IMUMWuHR7r" role="3cqZAp">
             <node concept="3clFbS" id="IMUMWuHR7s" role="3clFbx">
               <node concept="3SKdUt" id="33oJVYhgLWw" role="3cqZAp">
-                <node concept="3SKdUq" id="33oJVYhgLWy" role="3SKWNk">
-                  <property role="3SKdUp" value="XXX why on earth do we check for read-only here? why not in a caller code, where one could have reacted reasonably?" />
+                <node concept="1PaTwC" id="ATZLwXo7FN" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXo7FO" role="1PaTwD">
+                    <property role="3oM_SC" value="XXX" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FP" role="1PaTwD">
+                    <property role="3oM_SC" value="why" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FQ" role="1PaTwD">
+                    <property role="3oM_SC" value="on" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FR" role="1PaTwD">
+                    <property role="3oM_SC" value="earth" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FS" role="1PaTwD">
+                    <property role="3oM_SC" value="do" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FT" role="1PaTwD">
+                    <property role="3oM_SC" value="we" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FU" role="1PaTwD">
+                    <property role="3oM_SC" value="check" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FV" role="1PaTwD">
+                    <property role="3oM_SC" value="for" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FW" role="1PaTwD">
+                    <property role="3oM_SC" value="read-only" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FX" role="1PaTwD">
+                    <property role="3oM_SC" value="here?" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FY" role="1PaTwD">
+                    <property role="3oM_SC" value="why" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7FZ" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G0" role="1PaTwD">
+                    <property role="3oM_SC" value="in" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G1" role="1PaTwD">
+                    <property role="3oM_SC" value="a" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G2" role="1PaTwD">
+                    <property role="3oM_SC" value="caller" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G3" role="1PaTwD">
+                    <property role="3oM_SC" value="code," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G4" role="1PaTwD">
+                    <property role="3oM_SC" value="where" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G5" role="1PaTwD">
+                    <property role="3oM_SC" value="one" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G6" role="1PaTwD">
+                    <property role="3oM_SC" value="could" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G7" role="1PaTwD">
+                    <property role="3oM_SC" value="have" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G8" role="1PaTwD">
+                    <property role="3oM_SC" value="reacted" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7G9" role="1PaTwD">
+                    <property role="3oM_SC" value="reasonably?" />
+                  </node>
                 </node>
               </node>
               <node concept="RRSsy" id="3jYQuSB389T" role="3cqZAp">
@@ -1825,8 +1895,67 @@
                 </node>
               </node>
               <node concept="3SKdUt" id="6Hfjuo1A1Rq" role="3cqZAp">
-                <node concept="3SKdUq" id="6Hfjuo1A1Rs" role="3SKWNk">
-                  <property role="3SKdUp" value="XXX is it always a need to refresh timestamp in the descriptor? What if serialize it into a copy file" />
+                <node concept="1PaTwC" id="ATZLwXo7Ga" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXo7Gb" role="1PaTwD">
+                    <property role="3oM_SC" value="XXX" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gc" role="1PaTwD">
+                    <property role="3oM_SC" value="is" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gd" role="1PaTwD">
+                    <property role="3oM_SC" value="it" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Ge" role="1PaTwD">
+                    <property role="3oM_SC" value="always" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gf" role="1PaTwD">
+                    <property role="3oM_SC" value="a" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gg" role="1PaTwD">
+                    <property role="3oM_SC" value="need" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gh" role="1PaTwD">
+                    <property role="3oM_SC" value="to" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gi" role="1PaTwD">
+                    <property role="3oM_SC" value="refresh" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gj" role="1PaTwD">
+                    <property role="3oM_SC" value="timestamp" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gk" role="1PaTwD">
+                    <property role="3oM_SC" value="in" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gl" role="1PaTwD">
+                    <property role="3oM_SC" value="the" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gm" role="1PaTwD">
+                    <property role="3oM_SC" value="descriptor?" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gn" role="1PaTwD">
+                    <property role="3oM_SC" value="What" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Go" role="1PaTwD">
+                    <property role="3oM_SC" value="if" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gp" role="1PaTwD">
+                    <property role="3oM_SC" value="serialize" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gq" role="1PaTwD">
+                    <property role="3oM_SC" value="it" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gr" role="1PaTwD">
+                    <property role="3oM_SC" value="into" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gs" role="1PaTwD">
+                    <property role="3oM_SC" value="a" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gt" role="1PaTwD">
+                    <property role="3oM_SC" value="copy" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo7Gu" role="1PaTwD">
+                    <property role="3oM_SC" value="file" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbF" id="6wmUrITx7Yc" role="3cqZAp">

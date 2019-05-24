@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 /*package*/ class MappingRuleTemplateNodeSearchScope extends ModelsScope {
   public MappingRuleTemplateNodeSearchScope(SModel model) {
     // any named node (restriction of rule target link) inside a visible generator model 
+
     super(Sequence.fromIterable(((Iterable<SModel>) SModelOperations.allImportedModels(model))).union(Sequence.fromIterable(Sequence.<SModel>singleton(model))).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {
         return SModelStereotype.isGeneratorModel(it);

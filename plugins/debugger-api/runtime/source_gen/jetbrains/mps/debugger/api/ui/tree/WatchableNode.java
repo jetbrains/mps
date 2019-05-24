@@ -63,6 +63,7 @@ public class WatchableNode extends AbstractWatchableNode {
   protected void doInit() {
     if (isLeaf()) {
       //  no subvalues - drop placeholders created to restore expanded/selected path, if any. 
+
       boolean affected = false;
       for (int i = getChildCount() - 1; i >= 0; i--) {
         TreeNode childAt = getChildAt(i);
@@ -73,12 +74,15 @@ public class WatchableNode extends AbstractWatchableNode {
       }
       if (affected) {
         // Fire tree structure change event, for now go with total change, although could do 
+
         // getTree().getModel().nodesWereRemoved() instead. Just lazy to find out whether total change does any harm. 
+
         nodeChanged();
       }
       return;
     }
     // ok, we might get subvalues, schedule their calculation and update children later 
+
     add(myEvaluateInProgress);
     myState.invokeEvaluation(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -102,16 +106,19 @@ public class WatchableNode extends AbstractWatchableNode {
             for (IWatchable watchable : ListSequence.fromList(getValue().getSubvalues())) {
               WatchableNode newNode = new WatchableNode(watchable, myState);
               // see PlaceholderTreeNode comment for details why we escape identifier prior to match 
+
               PlaceholderTreeNode placeholder = placeholders.remove(newNode.getNodeIdentifier().replaceAll(MPSTree.TREE_PATH_SEPARATOR, "-"));
               if (placeholder != null) {
                 boolean placeholderWithChildren = placeholder.getChildCount() > 0;
                 // placeholder's chilren shall become children of a node that replaces it 
+
                 for (MPSTreeNode ch : placeholder.getChildren()) {
                   newNode.add(ch);
                 }
                 add(newNode);
                 if (placeholderWithChildren) {
                   // likely, there are nested expanded/selected placeholders, need to update tree presentation to get them replaced with actual values 
+
                   newNode.init();
                 }
               } else {

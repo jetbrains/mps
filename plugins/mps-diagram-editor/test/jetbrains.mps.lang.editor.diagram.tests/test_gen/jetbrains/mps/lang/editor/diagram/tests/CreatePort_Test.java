@@ -43,8 +43,10 @@ public class CreatePort_Test extends BaseTransformationTest {
           SNodeFactoryOperations.addNewChild(SNodeOperations.cast(getNodeById("2278461409093572746"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0x4ce40ecaf41f71d1L, "NodeWithPorts"))), MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f71d1L, 0x4ce40ecaf41f7252L, "outputs"), null);
         }
       });
-      // Here used to be MA.flushEventQueue, which seems useless here, press mouse would post its own events to EDT, so that  
+      // Here used to be MA.flushEventQueue, which seems useless here, press mouse would post its own events to EDT, so that 
+
       // by the time events are processed, the command to add a new node is over for sure. 
+
       {
         int x_rszpwe_d0 = 87;
         int y_rszpwe_d0 = 42;

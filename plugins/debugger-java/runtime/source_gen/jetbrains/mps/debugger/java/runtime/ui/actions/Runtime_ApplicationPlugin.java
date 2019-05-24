@@ -15,12 +15,14 @@ public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
+
     addAction(new AddWatchAction_Action());
     addAction(new CopyStackTraceToClipboard_Action());
     addAction(new CopyValueAction_Action());
     addAction(new EditWatchAction_Action());
     addAction(new RemoveWatchAction_Action());
     // groups 
+
     addGroup(new JavaWatchableNodeActions_ActionGroup());
     addGroup(new ViewAs_Group_ActionGroup());
     addGroup(new WatchesToolbarActions_ActionGroup());

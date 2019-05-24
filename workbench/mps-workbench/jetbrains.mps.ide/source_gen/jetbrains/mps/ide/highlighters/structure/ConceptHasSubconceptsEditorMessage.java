@@ -47,6 +47,7 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
   }
   private static String tooltipText(SNode node, @Nullable List<SNode> overrides) {
     // fixme html reference to the concept 
+
     if (overrides == null) {
       return (isOverridden(node) ? MPSCodeInsightBundle.message("concept.is.subclassed.too.many") : MPSCodeInsightBundle.message("interface.is.implemented.too.many"));
     }

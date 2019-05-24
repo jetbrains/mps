@@ -102,6 +102,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getUnitName_id4pl5GY7LKmR(@NotNull SNode __thisNode__) {
     // same as in ClassConcept 
+
     SNode ancestorClass = SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
     if (ancestorClass == null) {
       return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__);
@@ -129,13 +130,15 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
     // populate own members 
+
     for (SNode member : SNodeOperations.getChildren(__thisNode__)) {
       if (SNodeOperations.isInstanceOf(member, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb113eL, "jetbrains.mps.baseLanguage.structure.IClassifierMember"))) {
         IClassifierMember__BehaviorDescriptor.populateMember_id6r77ob2UW9O.invoke(SNodeOperations.cast(member, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb113eL, "jetbrains.mps.baseLanguage.structure.IClassifierMember")), context, classifierType);
       }
     }
 
-    // populate extended interfaces members  
+    // populate extended interfaces members 
+
     for (SNode extendedInterface : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (it != null);
@@ -145,6 +148,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // populate Object members in case of classifierType.getClassifier() == this classifier 
+
     if (IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType) == __thisNode__) {
       if ((SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") != null)) {
         IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")), context, classifierType);

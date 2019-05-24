@@ -194,6 +194,7 @@ import jetbrains.mps.ide.messages.Icons;
     public void rebuild(MPSTreeNode rootTreeNode, IEvaluationContainer model) {
       rootTreeNode.add(new EvaluationTree.InitialTreeNode(model));
       // todo? 
+
     }
   }
   private static class EvaluationInProgressState extends EvaluationTree.EvaluationState {

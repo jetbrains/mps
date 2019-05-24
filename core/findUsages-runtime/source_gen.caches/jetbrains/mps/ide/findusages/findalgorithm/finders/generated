@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cnmtc6mcz78j5fd6bvtx2unw5f9dxgt">
+<product version="3" modelHash="-3m3nxilnbc8g9r69mrohzbmo8mh0pws">
   <files names="BaseFinder.java:CollectingCallback.java:Finder.java:GeneratedFinder.java:IFinder.java:IInterfacedFinder.java:ReloadableFinder.java:SearchedObjects.java" />
 </product>
 

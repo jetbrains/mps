@@ -67,6 +67,7 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
   }
   public void assertEvaluating() {
     // todo real check 
+
     LOG.assertLog(!(ApplicationManager.getApplication().isDispatchThread()), "Evaluation should be invoked in evaluation command rather than in edt.");
   }
   @Override
@@ -95,6 +96,7 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
   }
   private Value invokeConstructorInternal(String className, String jniSignature, @NotNull final ThreadReference threadReference, Object... args) throws EvaluationException {
     // TODO duplication in code 
+
     assertEvaluating();
     final ClassType referenceType = (ClassType) findClassType(className, threadReference.virtualMachine());
     final Method constructor = findConstructor(referenceType, jniSignature);
@@ -165,7 +167,9 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
   public ReferenceType findClassTypeSilently(String className, VirtualMachine virtualMachine) throws InvalidEvaluatedExpressionException {
     assertEvaluating();
     // apparently, classesByName works for both dot and slash (ie for java.lang.String and for java/lang/String) 
+
     // even for java.lang/String 
+
     List<ReferenceType> classes = virtualMachine.classesByName(className);
     if (classes.size() == 0) {
       return null;
@@ -206,7 +210,9 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
     assertEvaluating();
     if (jniSignature.equals(EvaluationUtils.JAVA_LANG_OBJECT)) {
       // o_O 
+
       // this is kinda not true when what is of primitive type 
+
       return true;
     }
     if (what.signature().equals(jniSignature)) {
@@ -317,6 +323,7 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
     assertEvaluating();
     if (args == null) {
       // array of one element -- null 
+
       return createArrayProxy(className, machine, 1);
     } else {
       IArrayValueProxy array = createArrayProxy(className, machine, args.length);

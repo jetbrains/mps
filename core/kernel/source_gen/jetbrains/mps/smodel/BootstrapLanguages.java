@@ -40,7 +40,9 @@ public class BootstrapLanguages {
   }
   public static SModuleReference getGeneratorTemplatesDevKit() {
     // unless we introduce anything like SLanguage for DevKit runtime, SModuleReference is the way 
+
     // we identify devkit at RT. 
+
     return PersistenceFacade.getInstance().createModuleReference("a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)");
   }
   public static SModuleReference getStructureAspectDevKit() {

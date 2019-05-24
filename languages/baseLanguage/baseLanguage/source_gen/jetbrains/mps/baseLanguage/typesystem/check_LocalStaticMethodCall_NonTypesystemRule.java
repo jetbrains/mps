@@ -38,6 +38,7 @@ public class check_LocalStaticMethodCall_NonTypesystemRule extends AbstractNonTy
     }
     if (!(SetSequence.fromSet(containersAndParentClasses).contains(SNodeOperations.getParent(SLinkOperations.getTarget(localMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")))))) {
       // todo: should be disabled? 
+
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localMethodCall, "This method can't be called from the current context", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1228992682236", null, errorTarget);

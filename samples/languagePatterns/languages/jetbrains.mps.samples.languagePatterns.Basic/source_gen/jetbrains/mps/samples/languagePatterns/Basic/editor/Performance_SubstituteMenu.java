@@ -48,6 +48,7 @@ public class Performance_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_lxph9g_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, "jetbrains.mps.samples.languagePatterns.Basic.structure.Performance"), MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, 0x34c8853ae7895ce2L, "singer"));
     }
     @NotNull

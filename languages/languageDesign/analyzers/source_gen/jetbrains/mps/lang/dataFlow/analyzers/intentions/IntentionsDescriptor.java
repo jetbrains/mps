@@ -33,14 +33,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: AnalyzerRunnerCreator 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddModeToAnalyzerRunnerCreator_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: Rule 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddModeToRule_Intention();
         }

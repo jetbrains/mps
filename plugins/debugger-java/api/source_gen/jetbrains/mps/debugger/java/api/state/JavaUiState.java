@@ -33,7 +33,9 @@ public abstract class JavaUiState extends AbstractUiState {
   public static String modelNameFromLocation(JavaLocation location) {
     String unitName = location.getUnitName();
     // XXX no idea why we don't expect nested unit names, like com.package.A.B here. 
+
     // just kept the way it was in TraceInfoUtil.modelFqNameFromUnitName 
+
     int lastDot = unitName.lastIndexOf('.');
     return (lastDot == -1 ? "" : unitName.substring(0, lastDot));
   }

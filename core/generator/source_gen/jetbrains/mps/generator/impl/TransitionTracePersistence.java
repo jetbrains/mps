@@ -29,6 +29,7 @@ public final class TransitionTracePersistence {
 
   public void save(TransitionTrace originTrace) {
     // myCheckpointModel.nodes() gives a list! 
+
     for (SNode n : SNodeUtil.getDescendants(myCheckpointModel)) {
       if (!(originTrace.hasOrigin(n))) {
         continue;

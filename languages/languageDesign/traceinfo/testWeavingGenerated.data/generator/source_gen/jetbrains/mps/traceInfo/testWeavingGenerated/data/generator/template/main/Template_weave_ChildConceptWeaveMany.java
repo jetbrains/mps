@@ -51,6 +51,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -59,6 +60,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
         }
         tnode1.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -81,6 +83,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                     }
                     tnode6.addChild(myAggregationLinks[2], tnode7);
                     // TODO validate child 
+
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -103,6 +106,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 }
                                 tnode10.addChild(myAggregationLinks[3], tnode11);
                                 // TODO validate child 
+
                               }
                               {
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
@@ -112,11 +116,13 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 }
                                 tnode10.addChild(myAggregationLinks[4], tnode12);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode10);
                             // TODO validate child 
+
                           }
                           {
                             final SNode tnode13 = environment.createOutputNode(myConcepts[9]);
@@ -126,31 +132,37 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                             }
                             tnode9.addChild(myAggregationLinks[4], tnode13);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode8.addChild(myAggregationLinks[5], tnode9);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode6.addChild(myAggregationLinks[6], tnode8);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode5.addChild(myAggregationLinks[7], tnode6);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode4.addChild(myAggregationLinks[8], tnode5);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[9], tnode4);
         // TODO validate child 
+
       }
     } finally {
     }
@@ -170,6 +182,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -178,6 +191,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
         }
         tnode1.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -200,6 +214,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                     }
                     tnode6.addChild(myAggregationLinks[2], tnode7);
                     // TODO validate child 
+
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -218,6 +233,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                             }
                             tnode9.addChild(myAggregationLinks[4], tnode10);
                             // TODO validate child 
+
                           }
                           {
                             final SNode tnode11 = environment.createOutputNode(myConcepts[8]);
@@ -231,6 +247,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 }
                                 tnode11.addChild(myAggregationLinks[3], tnode12);
                                 // TODO validate child 
+
                               }
                               {
                                 final SNode tnode13 = environment.createOutputNode(myConcepts[9]);
@@ -240,36 +257,43 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 }
                                 tnode11.addChild(myAggregationLinks[4], tnode13);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode11);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode8.addChild(myAggregationLinks[5], tnode9);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode6.addChild(myAggregationLinks[6], tnode8);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode5.addChild(myAggregationLinks[7], tnode6);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode4.addChild(myAggregationLinks[8], tnode5);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[9], tnode4);
         // TODO validate child 
+
       }
     } finally {
     }
@@ -289,6 +313,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -297,6 +322,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
         }
         tnode1.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
+
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -319,6 +345,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                     }
                     tnode6.addChild(myAggregationLinks[2], tnode7);
                     // TODO validate child 
+
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -341,6 +368,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 }
                                 tnode10.addChild(myAggregationLinks[3], tnode11);
                                 // TODO validate child 
+
                               }
                               {
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
@@ -350,11 +378,13 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 }
                                 tnode10.addChild(myAggregationLinks[4], tnode12);
                                 // TODO validate child 
+
                               }
                             } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode10);
                             // TODO validate child 
+
                           }
                           {
                             final SNode tnode13 = environment.createOutputNode(myConcepts[9]);
@@ -364,31 +394,37 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                             }
                             tnode9.addChild(myAggregationLinks[4], tnode13);
                             // TODO validate child 
+
                           }
                         } finally {
                         }
                         tnode8.addChild(myAggregationLinks[5], tnode9);
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode6.addChild(myAggregationLinks[6], tnode8);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode5.addChild(myAggregationLinks[7], tnode6);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode4.addChild(myAggregationLinks[8], tnode5);
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[9], tnode4);
         // TODO validate child 
+
       }
     } finally {
     }

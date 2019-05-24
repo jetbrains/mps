@@ -38,11 +38,8 @@
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints">
@@ -80,6 +77,14 @@
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -97,8 +102,16 @@
         <node concept="3clFbJ" id="147CB3QsVML" role="3cqZAp">
           <node concept="3clFbS" id="147CB3QsVMM" role="3clFbx">
             <node concept="3SKdUt" id="147CB3QsVMN" role="3cqZAp">
-              <node concept="3SKdUq" id="147CB3QsVMO" role="3SKWNk">
-                <property role="3SKdUp" value="anything in generator" />
+              <node concept="1PaTwC" id="ATZLwXo0if" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo0ig" role="1PaTwD">
+                  <property role="3oM_SC" value="anything" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0ih" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0ii" role="1PaTwD">
+                  <property role="3oM_SC" value="generator" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="147CB3QsVMP" role="3cqZAp">

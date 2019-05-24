@@ -33,28 +33,32 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: BuildMps_AbstractModule 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ToggleCompactMpsModule_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: BuildMps_Module 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddDefaultResources_Intention();
         }
         break;
       case 2:
         if (true) {
-          // Concept: BuildMps_ModuleDependencyJar 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddCustomLocationDependency_Intention();
         }
         break;
       case 3:
         if (true) {
-          // Concept: BuildProject 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ReloadModulesFromDisk_Intention();
         }

@@ -10,14 +10,18 @@ import javax.swing.KeyStroke;
 public class GnomeActionsKeymap_KeymapChanges extends BaseKeymapChanges {
   public GnomeActionsKeymap_KeymapChanges() {
     // simple 
+
     // simple with remove/replace 
+
     addSimpleShortcut("jetbrains.mps.ide.actions.FastFindNodeUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 7"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.FindConceptInstances_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 6"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.FindModelUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 7"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.FindSpecificNodeUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl alt shift 7"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowInLogicalView_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 2"), false, true));
     // simple parameterized 
+
     // complex 
+
   }
   public String getScheme() {
     return "Default for GNOME";

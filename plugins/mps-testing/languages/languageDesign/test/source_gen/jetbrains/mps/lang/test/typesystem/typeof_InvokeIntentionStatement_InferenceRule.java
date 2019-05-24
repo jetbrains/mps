@@ -49,6 +49,7 @@ public class typeof_InvokeIntentionStatement_InferenceRule extends AbstractInfer
       }
     } else {
       // Not a parameterized intention - should not have a parameter 
+
       if ((SLinkOperations.getTarget(statement, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d72af5892L, 0x7bf9131d2468ca92L, "parameter")) != null)) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();

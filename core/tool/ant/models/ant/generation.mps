@@ -2,7 +2,7 @@
 <model ref="r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="644x" ref="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)" />
@@ -120,11 +120,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -132,6 +129,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -892,8 +897,76 @@
           </node>
         </node>
         <node concept="3SKdUt" id="2UtmqyaFdC7" role="3cqZAp">
-          <node concept="3SKdUq" id="2UtmqyaFdC9" role="3SKWNk">
-            <property role="3SKdUp" value="XXX JFTR, here we don't care about worker classpath, j.m.build.mps.runner.runtime solution, as it's part of j.m.core IDEA plugin (see mpsCore import of mpsBootstrap/ant)" />
+          <node concept="1PaTwC" id="ATZLwXo8jv" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo8jw" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jx" role="1PaTwD">
+              <property role="3oM_SC" value="JFTR," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jy" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jz" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8j$" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8j_" role="1PaTwD">
+              <property role="3oM_SC" value="care" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jA" role="1PaTwD">
+              <property role="3oM_SC" value="about" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jB" role="1PaTwD">
+              <property role="3oM_SC" value="worker" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jC" role="1PaTwD">
+              <property role="3oM_SC" value="classpath," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jD" role="1PaTwD">
+              <property role="3oM_SC" value="j.m.build.mps.runner.runtime" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jE" role="1PaTwD">
+              <property role="3oM_SC" value="solution," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jF" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jG" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jH" role="1PaTwD">
+              <property role="3oM_SC" value="part" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jI" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jJ" role="1PaTwD">
+              <property role="3oM_SC" value="j.m.core" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jK" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jL" role="1PaTwD">
+              <property role="3oM_SC" value="plugin" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jM" role="1PaTwD">
+              <property role="3oM_SC" value="(see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jN" role="1PaTwD">
+              <property role="3oM_SC" value="mpsCore" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jO" role="1PaTwD">
+              <property role="3oM_SC" value="import" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jP" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo8jQ" role="1PaTwD">
+              <property role="3oM_SC" value="mpsBootstrap/ant)" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1Vi5mb_opYR" role="3cqZAp">

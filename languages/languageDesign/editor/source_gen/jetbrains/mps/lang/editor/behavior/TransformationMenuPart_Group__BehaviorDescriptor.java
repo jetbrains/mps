@@ -42,7 +42,9 @@ public final class TransformationMenuPart_Group__BehaviorDescriptor extends Base
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11266742db0L, "jetbrains.mps.lang.editor.structure.TransformationMenuVariableDeclaration"))) {
       // For simplicity this does not take into account the position of the child, so variables declared earlier may 
+
       // (incorrectly) reference variables declared later. 
+
       return new HidingByNameScope(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11266742db0L, "jetbrains.mps.lang.editor.structure.TransformationMenuVariableDeclaration"), kind, new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x671b36136d224047L, 0x6a3d2fa8211d204dL, "variables"))), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider"), kind, child);

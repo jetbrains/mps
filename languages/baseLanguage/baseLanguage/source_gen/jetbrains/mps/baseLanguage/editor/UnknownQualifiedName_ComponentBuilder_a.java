@@ -140,6 +140,7 @@ import jetbrains.mps.smodel.SNodePointer;
         }).isNotEmpty()) {
 
           // found 
+
           SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens"), className + "." + remaining);
           return;
         }

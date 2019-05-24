@@ -34,6 +34,7 @@ public class MigrationTask extends MpsLoadTask {
   @Override
   public void execute() throws BuildException {
     // this line is here until we generate migration task and the list of needed modules for it 
+
     addMpsModules();
 
     super.execute();
@@ -69,12 +70,18 @@ public class MigrationTask extends MpsLoadTask {
     File mpsHome = getMpsHome_Checked();
 
     // j.m.build.migration.jar hosts MigrationWorker 
+
     addClassPath(classPath, mpsHome, "/plugins/mps-build/languages/build/jetbrains.mps.build.migration.jar");
     // note, unlike migration and modelchecker plugins, I intentionally do not add mps-build as a plugin to myWhatToDo 
+
     // as the only purpose of the jar in classpath is to load MigrationWorker class. Indeed, with "all plugins in global classpath" 
+
     // approach, adding it as a plugin would work, but, for one, I intend to change this approach, and, for two, I don't think complete 
+
     // mps-build plugin is always necessary. Last but not least, j.m.build.migration module presents itself as a regular ModuleClassLoader-backed module 
+
     // although in fact it's pure java "get me in global cp" class. 
+
 
     return classPath;
   }

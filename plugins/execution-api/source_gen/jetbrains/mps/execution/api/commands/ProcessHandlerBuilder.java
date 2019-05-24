@@ -117,6 +117,7 @@ public class ProcessHandlerBuilder {
       }
       if (currentChar == ' ' && !(insideQuotes)) {
         // word ended 
+
         if (sb.length() > 0) {
           ListSequence.fromList(result).addElement(sb.toString());
           sb = new StringBuilder();
@@ -126,6 +127,7 @@ public class ProcessHandlerBuilder {
         continue;
       } else {
         // inside word 
+
         sb.append(currentChar);
       }
       escaped = false;

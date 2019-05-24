@@ -33,14 +33,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: DataFlowBuilderDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddModeToDataFlowBuilder_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: EmitStatement 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new RemoveMayBeUnreachable_Intention();
           intentions[1] = new AddMayBeUnreachable_Intention();

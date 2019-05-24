@@ -163,6 +163,7 @@ __switch__:
         @Override
         public String getLabelText(String pattern) {
           // Check that we can use parameterObject of a primitive type without errors 
+
           int param = myParameterObject;
           if (myParameterObject > 3) {
             param++;
@@ -173,6 +174,7 @@ __switch__:
         @Override
         public void execute(@NotNull String pattern) {
           // Check that we can use parameterObject of a primitive type without errors 
+
           int param = myParameterObject;
           if (myParameterObject < 3) {
             param++;

@@ -193,6 +193,7 @@ public abstract class AbstractHierarchyView extends BaseProjectTool {
 
   public void showItemInHierarchy(SNode node) {
     // FIXME ShowConceptInHierarchy could use nodePointer, as well as local popup action, only ShowClassInHierarchy needs attention 
+
     showItemInHierarchy(SNodeOperations.getPointer(node));
   }
 

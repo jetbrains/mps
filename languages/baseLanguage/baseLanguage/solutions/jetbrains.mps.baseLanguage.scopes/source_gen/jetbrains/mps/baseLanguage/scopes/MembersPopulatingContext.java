@@ -32,6 +32,7 @@ public class MembersPopulatingContext {
 
   public MembersPopulatingContext() {
     // java collections for speed 
+
   }
 
   /**
@@ -49,8 +50,11 @@ public class MembersPopulatingContext {
     SNode contextClassifier = foundSignatures2Classifier.get(signature);
     if (contextClassifier == null || contextClassifier == getCurrentClassifier()) {
       // exposing all members using following condition: 
+
       // 1. member was not "masked" by a member from sub-classifier 
+
       // 2. showing all members with same signatures if they are defined in the same classifier 
+
       members.add(member);
     }
   }
@@ -65,13 +69,16 @@ public class MembersPopulatingContext {
     SNode classifier = IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType);
 
     // prevent recursion and duplicated members for same classifiers accessed via different paths 
+
     // e.g. same interface implemented directly and though some superclass 
+
     if (!(visited.add(classifier))) {
       return false;
     }
     classifiers.add(classifier);
 
     // set types variables 
+
     Iterable<SNode> typeParams = IClassifierType__BehaviorDescriptor.getTypeParameters_id6r77ob2URYe.invoke(classifierType);
     if (Sequence.fromIterable(typeParams).isNotEmpty()) {
       Iterator<SNode> typeVars = Sequence.fromIterable(IClassifier__BehaviorDescriptor.getTypeVariables_id6r77ob2URXZ.invoke(classifier)).iterator();
@@ -85,6 +92,7 @@ public class MembersPopulatingContext {
     }
 
     // recalc is package protected available 
+
     isPackageProtectedAvailable = true;
     String contextClassifierPackage = retrievePackageName(SNodeOperations.getModel(classifiers.get(0)));
     for (SNode inheritedClassifier : classifiers) {

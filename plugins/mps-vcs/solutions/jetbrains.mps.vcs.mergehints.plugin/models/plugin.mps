@@ -6,7 +6,7 @@
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
   </languages>
   <imports>
@@ -157,11 +157,8 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -216,6 +213,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -316,8 +321,31 @@
         </node>
         <node concept="3clFbH" id="74j1j8ZM7XY" role="3cqZAp" />
         <node concept="3SKdUt" id="4qACXZlUd3t" role="3cqZAp">
-          <node concept="3SKdUq" id="4qACXZlUd3v" role="3SKWNk">
-            <property role="3SKdUp" value="todo [MM] use aspectModel// expression here when possible" />
+          <node concept="1PaTwC" id="ATZLwXolg5" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXolg6" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXolg7" role="1PaTwD">
+              <property role="3oM_SC" value="[MM]" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXolg8" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXolg9" role="1PaTwD">
+              <property role="3oM_SC" value="aspectModel//" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXolga" role="1PaTwD">
+              <property role="3oM_SC" value="expression" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXolgb" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXolgc" role="1PaTwD">
+              <property role="3oM_SC" value="when" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXolgd" role="1PaTwD">
+              <property role="3oM_SC" value="possible" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="4qACXZlU21Q" role="3cqZAp">
@@ -520,8 +548,31 @@
           </node>
           <node concept="3clFbH" id="4qACXZlV5dA" role="3cqZAp" />
           <node concept="3SKdUt" id="4qACXZlV0CB" role="3cqZAp">
-            <node concept="3SKdUq" id="4qACXZlV0CC" role="3SKWNk">
-              <property role="3SKdUp" value="todo [MM] use aspectModel// expression here when possible" />
+            <node concept="1PaTwC" id="ATZLwXolge" role="3ndbpf">
+              <node concept="3oM_SD" id="ATZLwXolgf" role="1PaTwD">
+                <property role="3oM_SC" value="todo" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXolgg" role="1PaTwD">
+                <property role="3oM_SC" value="[MM]" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXolgh" role="1PaTwD">
+                <property role="3oM_SC" value="use" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXolgi" role="1PaTwD">
+                <property role="3oM_SC" value="aspectModel//" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXolgj" role="1PaTwD">
+                <property role="3oM_SC" value="expression" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXolgk" role="1PaTwD">
+                <property role="3oM_SC" value="here" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXolgl" role="1PaTwD">
+                <property role="3oM_SC" value="when" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXolgm" role="1PaTwD">
+                <property role="3oM_SC" value="possible" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="4qACXZlV0CD" role="3cqZAp">

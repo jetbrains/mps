@@ -65,6 +65,7 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
               }
               tnode3.addChild(myAggregationLinks[0], tnode4);
               // TODO validate child 
+
             }
             {
               Collection<SNode> tlist5 = null;
@@ -74,6 +75,7 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
                 tnode3.addChild(myAggregationLinks[1], child6);
               }
               // TODO validate child 
+
             }
           } finally {
           }
@@ -85,6 +87,7 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
           tnode1.addChild(myAggregationLinks[2], child7);
         }
         // TODO validate child 
+
       }
       {
         Collection<SNode> tlist8 = null;
@@ -94,6 +97,7 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
           tnode1.addChild(myAggregationLinks[3], child9);
         }
         // TODO validate child 
+
       }
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[3]);
@@ -122,6 +126,7 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
                         }
                         tnode13.addChild(myAggregationLinks[4], tnode14);
                         // TODO validate child 
+
                       }
                       {
                         Collection<SNode> tlist15 = null;
@@ -131,21 +136,25 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
                           tnode13.addChild(myAggregationLinks[5], child16);
                         }
                         // TODO validate child 
+
                       }
                     } finally {
                     }
                     tnode12.addChild(myAggregationLinks[6], tnode13);
                     // TODO validate child 
+
                   }
                 } finally {
                 }
                 tnode11.addChild(myAggregationLinks[7], tnode12);
                 // TODO validate child 
+
               }
             } finally {
             }
             tnode10.addChild(myAggregationLinks[8], tnode11);
             // TODO validate child 
+
           }
           {
             Collection<SNode> tlist17 = null;
@@ -155,11 +164,13 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
               tnode10.addChild(myAggregationLinks[8], child18);
             }
             // TODO validate child 
+
           }
         } finally {
         }
         tnode1.addChild(myAggregationLinks[9], tnode10);
         // TODO validate child 
+
       }
     } finally {
     }

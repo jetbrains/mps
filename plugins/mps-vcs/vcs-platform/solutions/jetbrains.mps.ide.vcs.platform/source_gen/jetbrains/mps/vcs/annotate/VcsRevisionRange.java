@@ -88,8 +88,11 @@ public class VcsRevisionRange extends BaseGroup {
       } else {
         int compareResult = revision.getRevisionDate().compareTo(myRevision.getRevisionDate());
         // XXX not clear what VcsRevisionNumber.timestamp means (that's what VcsFileRevision.getRevisionDate() looks at) 
+
         // and why it's the same for few (or even all?) file revisions. It seems it does not reflect actual commit moment either, 
+
         // though I didn't investigate this thoroughly 
+
         if (compareResult == 0 && revision instanceof VcsFileRevisionEx && myRevision instanceof VcsFileRevisionEx) {
           Date d1 = ((VcsFileRevisionEx) revision).getAuthorDate();
           Date d2 = ((VcsFileRevisionEx) myRevision).getAuthorDate();

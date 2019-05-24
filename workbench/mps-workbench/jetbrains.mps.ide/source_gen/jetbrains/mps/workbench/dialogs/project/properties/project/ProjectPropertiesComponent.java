@@ -76,6 +76,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
           private String[] EXTENTIONS = new String[]{MPSExtentions.LANGUAGE, MPSExtentions.SOLUTION, MPSExtentions.DEVKIT, "lib"};
           public boolean value(final VirtualFile file) {
             // TODO: create some method to get all extetions by object type (project, module, model) 
+
             return Sequence.fromIterable(Sequence.fromArray(EXTENTIONS)).any(new IWhereFilter<String>() {
               public boolean accept(String it) {
                 return it.equalsIgnoreCase(file.getExtension());

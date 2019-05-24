@@ -111,6 +111,7 @@ public class ShowParameters_Action extends BaseAction {
   }
   private <T> Component createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {
     // TODO: make IDEA like 
+
     JPanel panel = new JPanel(new GridBagLayout());
     panel.setBackground(ToolTip.BACKGROUND_COLOR);
     panel.setBorder(new EmptyBorder(0, 4, 0, 4));

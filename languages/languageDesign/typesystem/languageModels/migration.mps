@@ -96,11 +96,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -167,6 +164,14 @@
     <language id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration">
       <concept id="8352104482584315555" name="jetbrains.mps.lang.migration.structure.MigrationScript" flags="ig" index="3SyAh_">
         <property id="5820409521797704727" name="fromVersion" index="qMTe8" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -295,8 +300,55 @@
         <node concept="3clFbJ" id="25MX$RJHnV4" role="3cqZAp">
           <node concept="3clFbS" id="25MX$RJHnV6" role="3clFbx">
             <node concept="3SKdUt" id="25MX$RJHoLm" role="3cqZAp">
-              <node concept="3SKdUq" id="25MX$RJHoLo" role="3SKWNk">
-                <property role="3SKdUp" value="Transition code, in case aspect uses custom extensions, do not turn GP on for it yet." />
+              <node concept="1PaTwC" id="ATZLwXnZwH" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXnZwI" role="1PaTwD">
+                  <property role="3oM_SC" value="Transition" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwJ" role="1PaTwD">
+                  <property role="3oM_SC" value="code," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwK" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwL" role="1PaTwD">
+                  <property role="3oM_SC" value="case" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwM" role="1PaTwD">
+                  <property role="3oM_SC" value="aspect" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwN" role="1PaTwD">
+                  <property role="3oM_SC" value="uses" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwO" role="1PaTwD">
+                  <property role="3oM_SC" value="custom" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwP" role="1PaTwD">
+                  <property role="3oM_SC" value="extensions," />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwQ" role="1PaTwD">
+                  <property role="3oM_SC" value="do" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwR" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwS" role="1PaTwD">
+                  <property role="3oM_SC" value="turn" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwT" role="1PaTwD">
+                  <property role="3oM_SC" value="GP" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwU" role="1PaTwD">
+                  <property role="3oM_SC" value="on" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwV" role="1PaTwD">
+                  <property role="3oM_SC" value="for" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwW" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXnZwX" role="1PaTwD">
+                  <property role="3oM_SC" value="yet." />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="25MX$RJHo6y" role="3cqZAp" />

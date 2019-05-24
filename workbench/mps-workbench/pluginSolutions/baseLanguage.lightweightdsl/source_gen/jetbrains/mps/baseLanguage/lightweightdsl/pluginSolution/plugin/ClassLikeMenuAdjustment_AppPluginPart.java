@@ -96,8 +96,10 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
   }
   @Override
   public void init() {
-    // todo actually this whole thing should be replaced by a custom concept aspect, so that  
+    // todo actually this whole thing should be replaced by a custom concept aspect, so that 
+
     // the filter is like SAbstractConcept.getAspect(ClassLike).isClassLike() 
+
     ClassLikeMenuAdjustment_AppPluginPart.this.myLangRegistry = getPlatform().findComponent(LanguageRegistry.class);
     ClassLikeMenuAdjustment_AppPluginPart.this.myLangRegistry.addRegistryListener(ClassLikeMenuAdjustment_AppPluginPart.this.myReloadListener);
     ClassLikeMenuAdjustment_AppPluginPart.this.myDeploymentRepo = getPlatform().findComponent(MPSModuleRepository.class);

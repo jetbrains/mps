@@ -32,6 +32,7 @@ public class SingleLineCommentActions {
           selectedPart = SNodeOperations.cast(selectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"));
         } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(selectedNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"))) {
           //  commented statement comes in selection 
+
           selectedPart = SNodeOperations.cast(SNodeOperations.getParent(selectedNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"));
         } else {
           return;
@@ -56,10 +57,13 @@ public class SingleLineCommentActions {
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
     // set actions that were actually defined 
+
     setDefinedCellActions(editorCell, node, context);
 
     // If we set a DELETE action but no BACKSPACE action, 
+
     // use the DELETE action for BACKSPACE as well. 
+
     CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
     CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
     if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
@@ -71,7 +75,9 @@ public class SingleLineCommentActions {
 
     // set cell actions from all imported action maps 
 
+
     // set cell actions defined directly in this action map 
+
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
 
   }
@@ -80,7 +86,9 @@ public class SingleLineCommentActions {
 
     // set cell action(s) of the given type from imported action maps 
 
+
     // set cell action of the given type defined directly in this action map 
+
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
     }

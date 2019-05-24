@@ -47,6 +47,7 @@ public class QueriesGenerated {
   }
   public static void mappingScript_CodeBlock_3(final MappingScriptContext _context) {
     // test1 only 
+
     if (!(QueriesUtil.isTest1(_context.getModel()))) {
       return;
     }
@@ -58,6 +59,7 @@ public class QueriesGenerated {
   }
   public static void mappingScript_CodeBlock_4(final MappingScriptContext _context) {
     // test1 only 
+
     Object object = _context.getStepObject("run post-processing");
     if (object == null) {
       return;

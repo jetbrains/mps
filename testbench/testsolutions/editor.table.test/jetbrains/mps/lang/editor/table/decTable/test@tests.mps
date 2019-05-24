@@ -4,7 +4,7 @@
   <languages>
     <use id="df8799e7-254a-406f-bd67-f4cc27337152" name="jetbrains.mps.lang.editor.tableTests" version="0" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
   </languages>
   <imports>
@@ -101,11 +101,8 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -129,6 +126,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -818,28 +823,122 @@
     </node>
     <node concept="3clFbS" id="35rzLHPxr9y" role="LjaKd">
       <node concept="3SKdUt" id="6pumIWoCG5J" role="3cqZAp">
-        <node concept="3SKdUq" id="6pumIWoCG5K" role="3SKWNk">
-          <property role="3SKdUp" value="===================================================================" />
+        <node concept="1PaTwC" id="ATZLwXoq3N" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq3O" role="1PaTwD">
+            <property role="3oM_SC" value="===================================================================" />
+          </node>
         </node>
       </node>
       <node concept="3SKdUt" id="35rzLHP$6YB" role="3cqZAp">
-        <node concept="3SKdUq" id="35rzLHP$6YI" role="3SKWNk">
-          <property role="3SKdUp" value="FIXME" />
+        <node concept="1PaTwC" id="ATZLwXoq3P" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq3Q" role="1PaTwD">
+            <property role="3oM_SC" value="FIXME" />
+          </node>
         </node>
       </node>
       <node concept="3SKdUt" id="35rzLHP$6YS" role="3cqZAp">
-        <node concept="3SKdUq" id="35rzLHP$6Z1" role="3SKWNk">
-          <property role="3SKdUp" value="This test is a draft, it is not testing any actual functionality." />
+        <node concept="1PaTwC" id="ATZLwXoq3R" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq3S" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq3T" role="1PaTwD">
+            <property role="3oM_SC" value="test" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq3U" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq3V" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq3W" role="1PaTwD">
+            <property role="3oM_SC" value="draft," />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq3X" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq3Y" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq3Z" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq40" role="1PaTwD">
+            <property role="3oM_SC" value="testing" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq41" role="1PaTwD">
+            <property role="3oM_SC" value="any" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq42" role="1PaTwD">
+            <property role="3oM_SC" value="actual" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq43" role="1PaTwD">
+            <property role="3oM_SC" value="functionality." />
+          </node>
         </node>
       </node>
       <node concept="3SKdUt" id="35rzLHP$78g" role="3cqZAp">
-        <node concept="3SKdUq" id="35rzLHP$78r" role="3SKWNk">
-          <property role="3SKdUp" value="The editor annotations need to be equipped with height/width specification, after that such a test can be written" />
+        <node concept="1PaTwC" id="ATZLwXoq44" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq45" role="1PaTwD">
+            <property role="3oM_SC" value="The" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq46" role="1PaTwD">
+            <property role="3oM_SC" value="editor" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq47" role="1PaTwD">
+            <property role="3oM_SC" value="annotations" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq48" role="1PaTwD">
+            <property role="3oM_SC" value="need" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq49" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4a" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4b" role="1PaTwD">
+            <property role="3oM_SC" value="equipped" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4c" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4d" role="1PaTwD">
+            <property role="3oM_SC" value="height/width" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4e" role="1PaTwD">
+            <property role="3oM_SC" value="specification," />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4f" role="1PaTwD">
+            <property role="3oM_SC" value="after" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4g" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4h" role="1PaTwD">
+            <property role="3oM_SC" value="such" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4i" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4j" role="1PaTwD">
+            <property role="3oM_SC" value="test" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4k" role="1PaTwD">
+            <property role="3oM_SC" value="can" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4l" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4m" role="1PaTwD">
+            <property role="3oM_SC" value="written" />
+          </node>
         </node>
       </node>
       <node concept="3SKdUt" id="6pumIWoCG8l" role="3cqZAp">
-        <node concept="3SKdUq" id="6pumIWoCFPa" role="3SKWNk">
-          <property role="3SKdUp" value="===================================================================" />
+        <node concept="1PaTwC" id="ATZLwXoq4n" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq4o" role="1PaTwD">
+            <property role="3oM_SC" value="===================================================================" />
+          </node>
         </node>
       </node>
     </node>
@@ -912,8 +1011,58 @@
         </node>
       </node>
       <node concept="3SKdUt" id="2Ft10KpTowW" role="3cqZAp">
-        <node concept="3SKdUq" id="2Ft10KpTowY" role="3SKWNk">
-          <property role="3SKdUp" value="unless there's another language than BL in the import (e.g. lang.smodel with IfInstanceOfStatement), 'if' is completed automatically." />
+        <node concept="1PaTwC" id="ATZLwXoq4p" role="3ndbpf">
+          <node concept="3oM_SD" id="ATZLwXoq4q" role="1PaTwD">
+            <property role="3oM_SC" value="unless" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4r" role="1PaTwD">
+            <property role="3oM_SC" value="there's" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4s" role="1PaTwD">
+            <property role="3oM_SC" value="another" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4t" role="1PaTwD">
+            <property role="3oM_SC" value="language" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4u" role="1PaTwD">
+            <property role="3oM_SC" value="than" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4v" role="1PaTwD">
+            <property role="3oM_SC" value="BL" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4w" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4x" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4y" role="1PaTwD">
+            <property role="3oM_SC" value="import" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4z" role="1PaTwD">
+            <property role="3oM_SC" value="(e.g." />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4$" role="1PaTwD">
+            <property role="3oM_SC" value="lang.smodel" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4_" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4A" role="1PaTwD">
+            <property role="3oM_SC" value="IfInstanceOfStatement)," />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4B" role="1PaTwD">
+            <property role="3oM_SC" value="'if'" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4C" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4D" role="1PaTwD">
+            <property role="3oM_SC" value="completed" />
+          </node>
+          <node concept="3oM_SD" id="ATZLwXoq4E" role="1PaTwD">
+            <property role="3oM_SC" value="automatically." />
+          </node>
         </node>
       </node>
       <node concept="1X3_iC" id="2Ft10KpTosu" role="lGtFl">

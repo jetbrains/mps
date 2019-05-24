@@ -99,11 +99,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -175,6 +172,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -350,8 +355,16 @@
         <node concept="3clFbJ" id="7jvA3$ZKkU_" role="3cqZAp">
           <node concept="3clFbS" id="7jvA3$ZKkUA" role="3clFbx">
             <node concept="3SKdUt" id="147CB3QsVS4" role="3cqZAp">
-              <node concept="3SKdUq" id="147CB3QsVS5" role="3SKWNk">
-                <property role="3SKdUp" value="anything in generator" />
+              <node concept="1PaTwC" id="ATZLwXo0jW" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo0jX" role="1PaTwD">
+                  <property role="3oM_SC" value="anything" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0jY" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0jZ" role="1PaTwD">
+                  <property role="3oM_SC" value="generator" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="7jvA3$ZKkUB" role="3cqZAp">
@@ -389,8 +402,40 @@
         <node concept="3clFbJ" id="7jvA3$ZKkUP" role="3cqZAp">
           <node concept="3clFbS" id="7jvA3$ZKkUQ" role="3clFbx">
             <node concept="3SKdUt" id="7jvA3$ZKkUR" role="3cqZAp">
-              <node concept="3SKdUq" id="7jvA3$ZKkUS" role="3SKWNk">
-                <property role="3SKdUp" value="limit use of this concept in a project with MPS plugin" />
+              <node concept="1PaTwC" id="ATZLwXo0k0" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXo0k1" role="1PaTwD">
+                  <property role="3oM_SC" value="limit" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k2" role="1PaTwD">
+                  <property role="3oM_SC" value="use" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k3" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k4" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k5" role="1PaTwD">
+                  <property role="3oM_SC" value="concept" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k6" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k7" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k8" role="1PaTwD">
+                  <property role="3oM_SC" value="project" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0k9" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0ka" role="1PaTwD">
+                  <property role="3oM_SC" value="MPS" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXo0kb" role="1PaTwD">
+                  <property role="3oM_SC" value="plugin" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="7jvA3$ZKkUT" role="3cqZAp">
@@ -422,8 +467,61 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7jvA3$ZKAIl" role="3cqZAp">
-          <node concept="3SKdUq" id="7jvA3$ZKAIn" role="3SKWNk">
-            <property role="3SKdUp" value="XXX here used to be a check project.getVisibleProjects(false).findFirst(name == &quot;mps&quot;), but I see no justification to keep that" />
+          <node concept="1PaTwC" id="ATZLwXo0kc" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo0kd" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0ke" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kf" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kg" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kh" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0ki" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kj" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kk" role="1PaTwD">
+              <property role="3oM_SC" value="project.getVisibleProjects(false).findFirst(name" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kl" role="1PaTwD">
+              <property role="3oM_SC" value="==" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0km" role="1PaTwD">
+              <property role="3oM_SC" value="&quot;mps&quot;)," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kn" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0ko" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kp" role="1PaTwD">
+              <property role="3oM_SC" value="see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kq" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kr" role="1PaTwD">
+              <property role="3oM_SC" value="justification" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0ks" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0kt" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo0ku" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="147CB3QsVTc" role="3cqZAp">

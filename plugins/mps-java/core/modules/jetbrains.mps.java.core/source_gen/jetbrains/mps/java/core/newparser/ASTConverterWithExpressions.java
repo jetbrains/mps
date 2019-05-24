@@ -88,8 +88,10 @@ public class ASTConverterWithExpressions extends ASTConverter {
       return ((ParameterizedSingleTypeReference) typeRef).typeArguments;
     } else if (typeRef instanceof ParameterizedQualifiedTypeReference) {
       // ignoring type arguments in not last components, e.g. Class1<T>.Class2 
+
       TypeReference[][] allArgs = ((ParameterizedQualifiedTypeReference) typeRef).typeArguments;
       // return only type arguments of the last component 
+
       return allArgs[allArgs.length - 1];
     } else {
       return new TypeReference[0];
@@ -398,9 +400,12 @@ public class ASTConverterWithExpressions extends ASTConverter {
     SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"), convertExpressionWrap(x.expression));
 
     // x.type is expression, not type reference 
+
     // we're making TypeReference out of NameReference 
 
+
     // in idea 12's eclipse parser seems to give us type reference right away 
+
     if (!(x.type instanceof TypeReference)) {
       LOG.error("Class in class cast expession is not a type reference. Class name: " + x.type.toString());
       return null;
@@ -462,8 +467,11 @@ public class ASTConverterWithExpressions extends ASTConverter {
 
   /*package*/ SNode convertExpression(MessageSend x) throws JavaParseException {
     // it's a method call 
+
     //  results in either LocalStaticMethodCall, LocalInstanceMethodCall, StaticMethodCall 
+
     //  or DotExpression with MethodCallOperation 
+
 
     String methodName = new String(x.selector);
     SNode result = null;
@@ -471,6 +479,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
 
     if (x.receiver instanceof ThisReference && ((ThisReference) x.receiver).isImplicitThis()) {
       // it's a local call, f() 
+
 
 
       SNode lmc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
@@ -482,13 +491,17 @@ public class ASTConverterWithExpressions extends ASTConverter {
 
     } else {
       // it's something.method(...) 
+
       // let's see if 'something' is SingleNameRef or QualifiedNameRef; if yes let's see if it's a class 
+
       // if either it's not a name ref or not a class then handle it just as some random expression 
+
 
       Expression receiver = x.receiver;
 
       if (receiver instanceof NameReference) {
         // handle this special case 
+
 
         SNode unkDotCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc7b5L, "jetbrains.mps.baseLanguage.structure.UnknownDotCall"));
         SPropertyOperations.assign(unkDotCall, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc7b5L, 0x439f6403036ad2f4L, "callee"), methodName);
@@ -508,6 +521,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
 
         } else {
           // TODO report error 
+
           return null;
         }
 
@@ -533,6 +547,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
 
       } else {
         // we can already know that it should be an InstanceMethodCall 
+
 
         SNode dotExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
         SLinkOperations.setTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), convertExpressionWrap(x.receiver));
@@ -680,6 +695,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
       addTypeArgs(typeArguments(x.type), SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter")));
     } else {
       // TODO what is enclosing instance? handle it 
+
       if (x.enclosingInstance() == null) {
         return convertExpression((AllocationExpression) x);
       }
@@ -701,6 +717,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"));
       } else {
         // import token as string constant even if it was an error in literal 
+
         return _quotation_createNode_do26wr_a1a0c0qb(NameUtil.escapeString(new String(((Literal) x).source())));
       }
     }

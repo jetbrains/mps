@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="26hv2vqkgqri2dc5vo23iemos3dsqbh">
+<product version="3" modelHash="8jx0m1mss8732fijpkuqq8g0q1o5wxq">
   <files names="AbstractDecoratorView.java:AbstractExternalFrameView.java:ConnectorDecoratorView.java:CrossView.java:DiagramDecoratorView.java:DragHandler.java:MovableContentView.java:NodeDecoratorView.java:NonFocusableLineView.java:NonFocusablePolyLineView.java:PortDecoratorView.java:RectDecoratorView.java:ResizableContentView.java:ResizableSelectionFrameView.java:ResizeHandleView.java:SelectionFrameView.java" />
 </product>
 

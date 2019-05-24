@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="1l1h" ref="r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)" />
@@ -186,11 +186,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -222,6 +219,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -1569,8 +1574,28 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCaK2A" role="3clF47">
         <node concept="3SKdUt" id="3SnNvqCaKdz" role="3cqZAp">
-          <node concept="3SKdUq" id="3SnNvqCaKd$" role="3SKWNk">
-            <property role="3SKdUp" value=" todo come up with better name" />
+          <node concept="1PaTwC" id="ATZLwXobyf" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobyg" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyh" role="1PaTwD">
+              <property role="3oM_SC" value="todo" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyi" role="1PaTwD">
+              <property role="3oM_SC" value="come" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyj" role="1PaTwD">
+              <property role="3oM_SC" value="up" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyk" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyl" role="1PaTwD">
+              <property role="3oM_SC" value="better" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobym" role="1PaTwD">
+              <property role="3oM_SC" value="name" />
+            </node>
           </node>
         </node>
         <node concept="1DcWWT" id="3SnNvqCaK2B" role="3cqZAp">
@@ -1899,8 +1924,28 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCaK5c" role="3clF47">
         <node concept="3SKdUt" id="3SnNvqCaKd_" role="3cqZAp">
-          <node concept="3SKdUq" id="3SnNvqCaKdA" role="3SKWNk">
-            <property role="3SKdUp" value=" I just love generics in java" />
+          <node concept="1PaTwC" id="ATZLwXobyn" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXobyo" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyp" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyq" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyr" role="1PaTwD">
+              <property role="3oM_SC" value="love" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobys" role="1PaTwD">
+              <property role="3oM_SC" value="generics" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyt" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXobyu" role="1PaTwD">
+              <property role="3oM_SC" value="java" />
+            </node>
           </node>
         </node>
         <node concept="1DcWWT" id="3SnNvqCaK5d" role="3cqZAp">

@@ -33,7 +33,8 @@ public class Maze extends KajaFrame {
       reportError("Oops, There's a wall in front of me. I can't make a step forward.");
     }
     sniffAround_routine();
-    // Definitions 
+    // this is a comment 
+
   }
   public void findDoor_routine() {
     while (isWall()) {

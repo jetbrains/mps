@@ -37,8 +37,10 @@ public class RelativePathHelper {
     if (normalized.startsWith(myBasePath)) {
       return normalized.substring(myBasePath.length());
       // XXX should I check for myBasePath == fullPath + '/'? 
+
     }
     // The purpose of the code below is to keep this class purely string/Path-based, without need to access FS or care about file existence. 
+
     try {
       String[] base = myBasePath.split("/");
       String[] target = normalized.split("/");
@@ -47,12 +49,15 @@ public class RelativePathHelper {
         commonLength++;
       }
       // XXX why not return normalized, but exception? 
+
       if (commonLength == 0) {
         throw new RelativePathHelper.PathException(String.format("No common path element found for '%s' and '%s'", myBasePath, normalized));
       }
       if (base.length == target.length && target.length == commonLength) {
-        // though there's a check, above, that covers equal paths scenario, we may face normalizedPath that is the same as base path but technically not  
+        // though there's a check, above, that covers equal paths scenario, we may face normalizedPath that is the same as base path but technically not 
+
         // equal due to trailing slash, e.g. RPH("base/").makeRelative("base") 
+
         return "";
       }
 
@@ -66,6 +71,7 @@ public class RelativePathHelper {
         relative.append(target[i]).append('/');
       }
       // if original requested path didn't end with slash, keep relative without slash as well 
+
       if (normalized.charAt(normalized.length() - 1) != '/' && relative.charAt(relative.length() - 1) == '/') {
         relative.setLength(relative.length() - 1);
       }

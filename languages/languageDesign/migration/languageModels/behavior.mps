@@ -153,11 +153,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -275,6 +272,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2683,8 +2688,52 @@
       <node concept="10P_77" id="4SwrQttL7ET" role="3clF45" />
       <node concept="3clFbS" id="4SwrQttKYC3" role="3clF47">
         <node concept="3SKdUt" id="4SwrQttL7GD" role="3cqZAp">
-          <node concept="3SKdUq" id="4SwrQttL7GF" role="3SKWNk">
-            <property role="3SKdUp" value="when quotation is embedded into transform statement via QuotationConsequoence, antiquotations detach nodes passed to them" />
+          <node concept="1PaTwC" id="ATZLwXnXar" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXas" role="1PaTwD">
+              <property role="3oM_SC" value="when" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXat" role="1PaTwD">
+              <property role="3oM_SC" value="quotation" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXau" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXav" role="1PaTwD">
+              <property role="3oM_SC" value="embedded" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaw" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXax" role="1PaTwD">
+              <property role="3oM_SC" value="transform" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXay" role="1PaTwD">
+              <property role="3oM_SC" value="statement" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaz" role="1PaTwD">
+              <property role="3oM_SC" value="via" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXa$" role="1PaTwD">
+              <property role="3oM_SC" value="QuotationConsequoence," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXa_" role="1PaTwD">
+              <property role="3oM_SC" value="antiquotations" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaA" role="1PaTwD">
+              <property role="3oM_SC" value="detach" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaB" role="1PaTwD">
+              <property role="3oM_SC" value="nodes" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaC" role="1PaTwD">
+              <property role="3oM_SC" value="passed" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaD" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXaE" role="1PaTwD">
+              <property role="3oM_SC" value="them" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="4SwrQttLdFf" role="3cqZAp">

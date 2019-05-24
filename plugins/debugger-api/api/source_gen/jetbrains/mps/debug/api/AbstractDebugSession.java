@@ -40,6 +40,7 @@ public abstract class AbstractDebugSession<State extends AbstractUiState> {
   protected void setState(State oldState, @NotNull State newState, boolean fireEvents) {
     while (!(myUiState.compareAndSet(oldState, newState))) {
       //  TODO we do not care here if user selected something, we just replace old state. But we might do something more clever, like remember what user selected. 
+
       oldState = getUiState();
     }
     if (fireEvents) {
@@ -100,6 +101,7 @@ public abstract class AbstractDebugSession<State extends AbstractUiState> {
   }
   public void trySetState(State oldState, State newState) {
     // use from AbstractUiState only 
+
     if (myUiState.compareAndSet(oldState, newState)) {
       fireStateChanged();
     }

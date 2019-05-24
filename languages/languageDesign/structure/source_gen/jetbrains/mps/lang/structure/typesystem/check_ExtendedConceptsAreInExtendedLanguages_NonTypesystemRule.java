@@ -39,9 +39,13 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
     if (SNodeOperations.isInstanceOf(cd, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
       ListSequence.fromList(superConcepts).addElement(SLinkOperations.getTarget(SNodeOperations.as(cd, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends")));
       // for implemented interfaces, we do not require extends between languages. 
+
       // I'm not quite sure we shall demand extends between languages even for super-concepts, but it's just too much to lift this restriction now ;) 
+
       // Generally, however, it seems reasonable to demand extends in super-concepts case, as it means re-use of functionality, and absence of this 
+
       // constraint would encourage people to have bad design and extend concepts they shall not extend. OTOH, each language extending lang.core look odd. 
+
     } else if (SNodeOperations.isInstanceOf(cd, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"))) {
       ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration")), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc"))));
     }

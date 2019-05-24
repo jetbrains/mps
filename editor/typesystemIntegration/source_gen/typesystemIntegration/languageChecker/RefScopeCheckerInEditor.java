@@ -137,6 +137,7 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
     @Override
     public void execute(SRepository repository) {
       // this quickfix should be exucuted only inside editor 
+
       throw new UnsupportedOperationException();
     }
   }

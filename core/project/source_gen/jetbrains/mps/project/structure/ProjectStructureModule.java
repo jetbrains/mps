@@ -119,8 +119,11 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
   @Nullable
   public static ProjectStructureModule getInstance(@NotNull SRepository repo) {
     // FIXME likely, shall do it with myModuleRef.resolve(mpsProject.getRepository) 
+
     // Generally, I'd prefer plain SModule as return value, however exact instance of the class are needed to access #getModelByModule. 
+
     // The only reason to have a helper access method here is to hide module reference we use (so that client code shall not keep MODULE_REF). 
+
     return getInstance();
   }
 
@@ -134,7 +137,9 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
     assertCanChange();
     if (module instanceof Generator) {
       // workaround for https://youtrack.jetbrains.com/issue/MPS-28974 
+
       // Instead, shall cease being a global module, construct node<Module> on demand and don't bother with update 
+
       module = ((Generator) module).getSourceLanguage();
     }
 
@@ -185,6 +190,7 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
   @Override
   public void dispose() {
     // it is disposed as CoreComponent 
+
     if (INSTANCE == null) {
       return;
     }
@@ -251,6 +257,7 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
   @Override
   protected void collectMandatoryFacetTypes(Set<String> set) {
     // none 
+
   }
 
   public class ProjectStructureSModelDescriptor extends RegularModelDescriptor {
@@ -270,6 +277,7 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
           SNode langNode = new ProjectStructureBuilder((AbstractModule) myModule, this).convertLanguage();
           ArrayList<Generator> generators = new ArrayList<Generator>(((Language) myModule).getOwnedGenerators());
           // I'd like to have predictable order in project model iteration, as well as generated code, that's why I sort here, not in templates. 
+
           Collections.sort(generators, new SModuleNameComparator());
           for (Generator g : generators) {
             ListSequence.fromList(SLinkOperations.getChildren(langNode, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x5869770da61dfe37L, "generator"))).addElement(new ProjectStructureBuilder(g, this).convertGenerator());
@@ -288,8 +296,11 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
         return;
       }
       // since we know the module is still there (just has been changed), tell those not caring about unload 
+
       // that the content of the model is new (instead of a MLResult with null, could pass createModel() but see no reason 
+
       // to read module file unless needed) 
+
       replace(new ModelLoadResult<jetbrains.mps.smodel.SModel>(null, ModelLoadingState.NOT_LOADED));
     }
   }

@@ -22,6 +22,7 @@ public class typeof_SetAccessor_InferenceRule extends AbstractInferenceRule_Runt
     Iterable<SNode> returnStatements = RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(setAccessor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList")));
 
     // shouldn't return any values 
+
     for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
       if ((SLinkOperations.getTarget(returnStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression")) != null)) {
         {

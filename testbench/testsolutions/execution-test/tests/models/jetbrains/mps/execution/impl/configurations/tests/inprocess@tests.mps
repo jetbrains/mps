@@ -9,7 +9,7 @@
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="22e72e4c-0f69-46ce-8403-6750153aa615" name="jetbrains.mps.execution.configurations" version="-1" />
   </languages>
   <imports>
@@ -184,11 +184,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -272,6 +269,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -439,18 +444,120 @@
                   <node concept="1bVj0M" id="5vTxdEzyTZc" role="37wK5m">
                     <node concept="3clFbS" id="5vTxdEzyTZd" role="1bW5cS">
                       <node concept="3SKdUt" id="31Rnc32e5Sh" role="3cqZAp">
-                        <node concept="3SKdUq" id="31Rnc32e5Sj" role="3SKWNk">
-                          <property role="3SKdUp" value="CheckTestStateListener collects names from ITestNodeWrapper, which generally needs to access a model," />
+                        <node concept="1PaTwC" id="ATZLwXoq9i" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXoq9j" role="1PaTwD">
+                            <property role="3oM_SC" value="CheckTestStateListener" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9k" role="1PaTwD">
+                            <property role="3oM_SC" value="collects" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9l" role="1PaTwD">
+                            <property role="3oM_SC" value="names" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9m" role="1PaTwD">
+                            <property role="3oM_SC" value="from" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9n" role="1PaTwD">
+                            <property role="3oM_SC" value="ITestNodeWrapper," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9o" role="1PaTwD">
+                            <property role="3oM_SC" value="which" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9p" role="1PaTwD">
+                            <property role="3oM_SC" value="generally" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9q" role="1PaTwD">
+                            <property role="3oM_SC" value="needs" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9r" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9s" role="1PaTwD">
+                            <property role="3oM_SC" value="access" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9t" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9u" role="1PaTwD">
+                            <property role="3oM_SC" value="model," />
+                          </node>
                         </node>
                       </node>
                       <node concept="3SKdUt" id="31Rnc32ebpl" role="3cqZAp">
-                        <node concept="3SKdUq" id="31Rnc32ebpn" role="3SKWNk">
-                          <property role="3SKdUp" value="therefore, here's read action. Unlike JUnitCommand test, which is exectuted inside a command, this test" />
+                        <node concept="1PaTwC" id="ATZLwXoq9v" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXoq9w" role="1PaTwD">
+                            <property role="3oM_SC" value="therefore," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9x" role="1PaTwD">
+                            <property role="3oM_SC" value="here's" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9y" role="1PaTwD">
+                            <property role="3oM_SC" value="read" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9z" role="1PaTwD">
+                            <property role="3oM_SC" value="action." />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9$" role="1PaTwD">
+                            <property role="3oM_SC" value="Unlike" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9_" role="1PaTwD">
+                            <property role="3oM_SC" value="JUnitCommand" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9A" role="1PaTwD">
+                            <property role="3oM_SC" value="test," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9B" role="1PaTwD">
+                            <property role="3oM_SC" value="which" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9C" role="1PaTwD">
+                            <property role="3oM_SC" value="is" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9D" role="1PaTwD">
+                            <property role="3oM_SC" value="exectuted" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9E" role="1PaTwD">
+                            <property role="3oM_SC" value="inside" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9F" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9G" role="1PaTwD">
+                            <property role="3oM_SC" value="command," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9H" role="1PaTwD">
+                            <property role="3oM_SC" value="this" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9I" role="1PaTwD">
+                            <property role="3oM_SC" value="test" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3SKdUt" id="31Rnc32eiZo" role="3cqZAp">
-                        <node concept="3SKdUq" id="31Rnc32eiZq" role="3SKWNk">
-                          <property role="3SKdUp" value="states it doesn't need write action to run." />
+                        <node concept="1PaTwC" id="ATZLwXoq9J" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXoq9K" role="1PaTwD">
+                            <property role="3oM_SC" value="states" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9L" role="1PaTwD">
+                            <property role="3oM_SC" value="it" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9M" role="1PaTwD">
+                            <property role="3oM_SC" value="doesn't" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9N" role="1PaTwD">
+                            <property role="3oM_SC" value="need" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9O" role="1PaTwD">
+                            <property role="3oM_SC" value="write" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9P" role="1PaTwD">
+                            <property role="3oM_SC" value="action" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9Q" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXoq9R" role="1PaTwD">
+                            <property role="3oM_SC" value="run." />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="5vTxdEzyTZe" role="3cqZAp">

@@ -96,19 +96,19 @@
       <node id="2977221198762589350" at="125,5,126,18" concept="2" />
       <node id="8917462567969353820" at="126,18,127,36" concept="6" />
       <node id="6281853519869717704" at="127,36,128,27" concept="2" />
-      <node id="3467421744644281267" at="131,59,132,97" concept="8" />
-      <node id="3467421744644281269" at="132,97,133,88" concept="8" />
-      <node id="3467421744644281263" at="134,58,135,23" concept="7" />
-      <node id="6281853519869763028" at="136,9,137,49" concept="7" />
-      <node id="8917462567969266672" at="139,6,140,61" concept="2" />
-      <node id="5943684961278747702" at="143,28,144,23" concept="2" />
-      <node id="5943684961278747708" at="144,23,145,23" concept="2" />
-      <node id="6281853519869763043" at="147,31,148,26" concept="2" />
-      <node id="6281853519869763051" at="148,26,149,26" concept="2" />
-      <node id="2977221198762589357" at="150,5,151,18" concept="2" />
-      <node id="1657638272963450899" at="153,49,154,140" concept="7" />
+      <node id="3467421744644281263" at="136,58,137,23" concept="7" />
+      <node id="6281853519869763028" at="138,9,139,49" concept="7" />
+      <node id="8917462567969266672" at="141,6,142,61" concept="2" />
+      <node id="5943684961278747702" at="145,28,146,23" concept="2" />
+      <node id="5943684961278747708" at="146,23,147,23" concept="2" />
+      <node id="6281853519869763043" at="149,31,150,26" concept="2" />
+      <node id="6281853519869763051" at="150,26,151,26" concept="2" />
+      <node id="2977221198762589357" at="152,5,153,18" concept="2" />
+      <node id="1657638272963450899" at="155,49,156,140" concept="7" />
       <node id="1657638272963439185" at="34,0,36,0" concept="1" trace="MPSToolTipManager#()V" />
       <node id="5943684961278746336" at="88,10,90,5" concept="0" />
+      <node id="3467421744644281267" at="131,59,133,0" concept="8" />
+      <node id="3467421744644281269" at="133,0,135,0" concept="8" />
       <node id="1657638272963439200" at="42,0,45,0" concept="5" trace="disposeComponent#()V" />
       <node id="1657638272963439204" at="45,0,48,0" concept="5" trace="initComponent#()V" />
       <node id="3564103493663142590" at="76,39,79,5" concept="4" />
@@ -120,16 +120,16 @@
       <node id="8917462567969266682" at="116,98,119,5" concept="4" />
       <node id="7105003223552462263" at="119,5,122,5" concept="4" />
       <node id="2977221198762589339" at="122,5,125,5" concept="4" />
-      <node id="3467421744644281239" at="133,88,136,9" concept="4" />
-      <node id="1657638272963439215" at="153,0,156,0" concept="11" trace="getInstance#()Ljetbrains/mps/ide/tooltips/MPSToolTipManager;" />
+      <node id="3467421744644281239" at="135,0,138,9" concept="4" />
+      <node id="1657638272963439215" at="155,0,158,0" concept="11" trace="getInstance#()Ljetbrains/mps/ide/tooltips/MPSToolTipManager;" />
       <node id="7530108077312637985" at="25,0,29,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
       <node id="1657638272963450913" at="48,0,52,0" concept="5" trace="registerComponent#(Ljava/awt/Component;)V" />
       <node id="6596378777518990186" at="52,0,56,0" concept="5" trace="unregisterComponent#(Ljava/awt/Component;)V" />
       <node id="1142165476403803419" at="56,0,60,0" concept="5" trace="registerComponentRightAligned#(Ljava/awt/Component;)V" />
       <node id="6596378777519002553" at="60,0,64,0" concept="5" trace="unregisterComponentRightAligned#(Ljava/awt/Component;)V" />
       <node id="1142165476403803482" at="67,0,71,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="5943684961278747695" at="142,29,146,5" concept="4" />
-      <node id="6281853519869763034" at="146,5,150,5" concept="4" />
+      <node id="5943684961278747695" at="144,29,148,5" concept="4" />
+      <node id="6281853519869763034" at="148,5,152,5" concept="4" />
       <node id="5943684961278746292" at="85,74,90,5" concept="4" />
       <node id="7530108077312637934" at="24,0,30,0" concept="3" trace="myMouseListener" />
       <node id="1657638272963439194" at="36,0,42,0" concept="5" trace="getComponentName#()Ljava/lang/String;" />
@@ -137,13 +137,13 @@
       <node id="6462432499626686448" at="92,0,98,0" concept="5" trace="getContainingFrame#(Ljava/awt/Component;)Ljava/awt/Frame;" />
       <node id="1228803144333909134" at="101,103,107,5" concept="4" />
       <node id="1142165476403803454" at="64,55,72,5" concept="4" />
-      <node id="6281853519869763015" at="130,0,139,0" concept="5" trace="canAutohideOn#(Lcom/intellij/ide/TooltipEvent;)Z" />
       <node id="1142165476403803442" at="64,0,75,0" concept="5" trace="getRightAlignedMouseListener#()Ljava/awt/event/MouseAdapter;" />
-      <node id="6281853519869717693" at="128,27,139,6" concept="2" />
-      <node id="5943684961278747691" at="142,0,153,0" concept="5" trace="hideToolTip#()V" />
+      <node id="6281853519869763015" at="130,0,141,0" concept="5" trace="canAutohideOn#(Lcom/intellij/ide/TooltipEvent;)Z" />
+      <node id="5943684961278747691" at="144,0,155,0" concept="5" trace="hideToolTip#()V" />
       <node id="1228803144333909124" at="101,0,113,0" concept="5" trace="showToolTip#(Ljetbrains/mps/ide/tooltips/ToolTipData;Ljavax/swing/JComponent;Ljava/awt/Point;Z)V" />
+      <node id="6281853519869717693" at="128,27,141,6" concept="2" />
       <node id="6543815770065587500" at="75,0,92,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;Z)V" />
-      <node id="78827631726060875" at="116,0,142,0" concept="5" trace="showToolTip#(Ljava/lang/String;Ljavax/swing/JComponent;Ljava/awt/Point;Z)V" />
+      <node id="78827631726060875" at="116,0,144,0" concept="5" trace="showToolTip#(Ljava/lang/String;Ljavax/swing/JComponent;Ljava/awt/Point;Z)V" />
       <scope id="1657638272963439188" at="34,30,34,30" />
       <scope id="1657638272963439203" at="43,34,43,34" />
       <scope id="1657638272963439207" at="46,31,46,31" />
@@ -161,15 +161,15 @@
       <scope id="8917462567969266683" at="117,23,118,13" />
       <scope id="7105003223552462264" at="120,30,121,70" />
       <scope id="2977221198762589340" at="123,39,124,13" />
-      <scope id="3467421744644281240" at="134,58,135,23" />
-      <scope id="1657638272963439218" at="153,49,154,140" />
+      <scope id="3467421744644281240" at="136,58,137,23" />
+      <scope id="1657638272963439218" at="155,49,156,140" />
       <scope id="1657638272963439185" at="34,0,36,0" />
       <scope id="1657638272963450909" at="48,54,50,54" />
       <scope id="6596378777518990189" at="52,56,54,57" />
       <scope id="1142165476403803422" at="56,66,58,69" />
       <scope id="6596378777519002556" at="60,68,62,72" />
-      <scope id="5943684961278747701" at="143,28,145,23" />
-      <scope id="6281853519869763035" at="147,31,149,26" />
+      <scope id="5943684961278747701" at="145,28,147,23" />
+      <scope id="6281853519869763035" at="149,31,151,26" />
       <scope id="1657638272963439200" at="42,0,45,0" />
       <scope id="1657638272963439204" at="45,0,48,0" />
       <scope id="1142165476403807379" at="98,0,101,0">
@@ -182,7 +182,7 @@
         <var name="point" id="1142165476403807413" />
         <var name="text" id="1142165476403807409" />
       </scope>
-      <scope id="1657638272963439215" at="153,0,156,0" />
+      <scope id="1657638272963439215" at="155,0,158,0" />
       <scope id="7530108077312637985" at="25,0,29,0">
         <var name="p0" id="7530108077312637988" />
       </scope>
@@ -208,17 +208,17 @@
       <scope id="6462432499626686448" at="92,0,98,0">
         <var name="component" id="6462432499626687729" />
       </scope>
-      <scope id="6281853519869763022" at="131,59,137,49" />
+      <scope id="6281853519869763022" at="131,59,139,49" />
       <scope id="1142165476403803445" at="64,55,73,39" />
-      <scope id="6281853519869763015" at="130,0,139,0">
-        <var name="event" id="6281853519869763018" />
-      </scope>
-      <scope id="5943684961278747694" at="142,29,151,18" />
+      <scope id="5943684961278747694" at="144,29,153,18" />
       <scope id="1228803144333909133" at="101,103,111,39">
         <var name="frame" id="1228803144333909163" />
       </scope>
       <scope id="1142165476403803442" at="64,0,75,0" />
-      <scope id="5943684961278747691" at="142,0,153,0" />
+      <scope id="6281853519869763015" at="130,0,141,0">
+        <var name="event" id="6281853519869763018" />
+      </scope>
+      <scope id="5943684961278747691" at="144,0,155,0" />
       <scope id="1228803144333909124" at="101,0,113,0">
         <var name="component" id="1228803144333909129" />
         <var name="data" id="1228803144333909127" />
@@ -235,10 +235,10 @@
         <var name="event" id="6543815770065587506" />
         <var name="rightAlined" id="1142165476403803507" />
       </scope>
-      <scope id="78827631726060884" at="116,98,140,61">
+      <scope id="78827631726060884" at="116,98,142,61">
         <var name="label" id="8917462567969353821" />
       </scope>
-      <scope id="78827631726060875" at="116,0,142,0">
+      <scope id="78827631726060875" at="116,0,144,0">
         <var name="component" id="78827631726060880" />
         <var name="point" id="78827631726060882" />
         <var name="rightAligned" id="1142165476403803523" />
@@ -246,8 +246,8 @@
       </scope>
       <unit id="7530108077312637939" at="24,45,29,3" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$1" />
       <unit id="1142165476403803480" at="66,40,71,7" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$2" />
-      <unit id="6281853519869761381" at="129,23,139,5" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$3" />
-      <unit id="1657638272963439183" at="23,0,157,0" name="jetbrains.mps.ide.tooltips.MPSToolTipManager" />
+      <unit id="6281853519869761381" at="129,23,141,5" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$3" />
+      <unit id="1657638272963439183" at="23,0,159,0" name="jetbrains.mps.ide.tooltips.MPSToolTipManager" />
     </file>
   </root>
   <root nodeRef="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)/3564103493663133593">

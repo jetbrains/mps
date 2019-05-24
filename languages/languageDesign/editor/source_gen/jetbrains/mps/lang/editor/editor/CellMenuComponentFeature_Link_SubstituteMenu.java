@@ -48,6 +48,7 @@ public class CellMenuComponentFeature_Link_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_hic4wc_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d86ed9bL, "jetbrains.mps.lang.editor.structure.CellMenuComponentFeature_Link"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d762adcL, 0x10f7e408e08L, "relationDeclaration"));
     }
     @NotNull

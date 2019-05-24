@@ -46,6 +46,7 @@ public class Template_language_descriptor extends TemplateDeclarationBase implem
           tnode1.addChild(myAggregationLinks[0], tnode2);
         }
         // TODO validate child 
+
       }
     } finally {
     }

@@ -48,6 +48,7 @@ public class CellActionMapImport_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_krpj2f_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, "jetbrains.mps.lang.editor.structure.CellActionMapImport"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap"));
     }
     @NotNull

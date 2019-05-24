@@ -92,6 +92,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase implements Te
                     tnode5.addChild(myAggregationLinks[0], child7);
                   }
                   // TODO validate child 
+
                 }
                 {
                   final List<SNode> tlist8 = new ArrayList<SNode>();
@@ -111,6 +112,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase implements Te
                     tnode5.addChild(myAggregationLinks[0], child9);
                   }
                   // TODO validate child 
+
                 }
                 {
                   final List<SNode> tlist10 = new ArrayList<SNode>();
@@ -134,6 +136,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase implements Te
                     tnode5.addChild(myAggregationLinks[0], child11);
                   }
                   // TODO validate child 
+
                 }
               } finally {
               }
@@ -155,6 +158,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase implements Te
           tnode1.addChild(myAggregationLinks[1], child12);
         }
         // TODO validate child 
+
       }
     } finally {
     }

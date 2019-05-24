@@ -56,10 +56,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     // see MPS-24613 
+
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "constraints");
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
     // see MPS-24613 
+
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "constraints");
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
@@ -146,6 +148,7 @@ public class QueriesGenerated extends QueryProviderBase {
       return descriptorClass;
     }
     // fallback, for backward compatibility 
+
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".ConstraintsAspectDescriptor";
   }
   public static Object referenceMacro_GetReferent_8_0(final ReferenceMacroContext _context) {

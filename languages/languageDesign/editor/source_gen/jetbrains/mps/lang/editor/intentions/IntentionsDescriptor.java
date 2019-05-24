@@ -33,21 +33,24 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: BooleanStyleSheetItem 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new BooleanQuery_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: CellModel_Alternation 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ChangeOrientationAlternation_Intention();
         }
         break;
       case 2:
         if (true) {
-          // Concept: CellModel_Collection 
+          // concept 
+
           intentions = new IntentionFactory[3];
           intentions[0] = new ChangeOrientationCollection_Intention();
           intentions[1] = new UseIndentLayoutInCollection_Intention();
@@ -56,7 +59,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 3:
         if (true) {
-          // Concept: CellModel_Constant 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new SplitConstantCellIntoWords_Intention();
           intentions[1] = new TrimConstantCell_Intention();
@@ -64,21 +68,24 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 4:
         if (true) {
-          // Concept: CellModel_ListWithRole 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ChangeOrientationList_Intention();
         }
         break;
       case 5:
         if (true) {
-          // Concept: CellModel_NonEmptyProperty 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ChangeNonEmptyProperty_Intention();
         }
         break;
       case 6:
         if (true) {
-          // Concept: CellModel_Property 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new ChangeProperty_Intention();
           intentions[1] = new ChangePropertyWithNonEmpty_Intention();
@@ -86,28 +93,32 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 7:
         if (true) {
-          // Concept: CellModel_RefNodeList 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new UseIndentLayoutInRefNodeList_Intention();
         }
         break;
       case 8:
         if (true) {
-          // Concept: CellModel_TransactionalProperty 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ChangeTransactionalProperty_Intention();
         }
         break;
       case 9:
         if (true) {
-          // Concept: ColorStyleClassItem 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ColorQuery_Intention();
         }
         break;
       case 10:
         if (true) {
-          // Concept: ConceptEditorDeclaration 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new GenerateMultiLineDefaultEditor_Intention();
           intentions[1] = new GenerateSingleLineDefaultEditor_Intention();
@@ -115,7 +126,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 11:
         if (true) {
-          // Concept: EditorCellModel 
+          // concept 
+
           intentions = new IntentionFactory[10];
           intentions[0] = new SurroundWithVerticalCollection_Intention();
           intentions[1] = new SurroundWithHorizontalCollection_Intention();
@@ -131,42 +143,48 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 12:
         if (true) {
-          // Concept: FontStyleStyleClassItem 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new FontStyleQuery_Intention();
         }
         break;
       case 13:
         if (true) {
-          // Concept: ISubstituteMenu 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertSubstituteMenu_Intention();
         }
         break;
       case 14:
         if (true) {
-          // Concept: ITransformationMenu 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertTransformationMenu_Intention();
         }
         break;
       case 15:
         if (true) {
-          // Concept: StyleClass 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new AddDominance_Intention();
         }
         break;
       case 16:
         if (true) {
-          // Concept: TransformationMenuPart_Action 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new SpecifyOutputConcept_Intention();
         }
         break;
       case 17:
         if (true) {
-          // Concept: TransformationMenuPart_IncludeMenu 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new SpecifyLocation_Intention();
         }

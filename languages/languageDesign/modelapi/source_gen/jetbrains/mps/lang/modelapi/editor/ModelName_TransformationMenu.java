@@ -67,7 +67,9 @@ public class ModelName_TransformationMenu extends TransformationMenuBase {
     @Override
     protected SNode getNode(TransformationMenuContext _context) {
       // this is sort of hack to let parent/owner control context menu for ModelName, which itself has no idea what it could get transformed into 
+
       // We need this hack until MPS-27202 is fixed and we can override transform menu with parent's editor 
+
       return SNodeOperations.getParent(_context.getNode());
     }
 

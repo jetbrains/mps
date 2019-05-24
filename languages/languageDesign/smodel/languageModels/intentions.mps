@@ -7,7 +7,7 @@
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="1" />
   </languages>
   <imports>
@@ -105,11 +105,8 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -220,6 +217,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2388,8 +2393,37 @@
           </node>
         </node>
         <node concept="3SKdUt" id="R$fwjLmcze" role="3cqZAp">
-          <node concept="3SKdUq" id="R$fwjLmczg" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME need an operation to set link target using nodePointer" />
+          <node concept="1PaTwC" id="ATZLwXnY6M" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnY6N" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6O" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6P" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6Q" role="1PaTwD">
+              <property role="3oM_SC" value="operation" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6R" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6S" role="1PaTwD">
+              <property role="3oM_SC" value="set" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6T" role="1PaTwD">
+              <property role="3oM_SC" value="link" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6U" role="1PaTwD">
+              <property role="3oM_SC" value="target" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6V" role="1PaTwD">
+              <property role="3oM_SC" value="using" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6W" role="1PaTwD">
+              <property role="3oM_SC" value="nodePointer" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="R$fwjLm063" role="3cqZAp">
@@ -2415,8 +2449,19 @@
           </node>
         </node>
         <node concept="3SKdUt" id="R$fwjLmkXG" role="3cqZAp">
-          <node concept="3SKdUq" id="R$fwjLmkXI" role="3SKWNk">
-            <property role="3SKdUp" value="blank arg for SRepo" />
+          <node concept="1PaTwC" id="ATZLwXnY6X" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnY6Y" role="1PaTwD">
+              <property role="3oM_SC" value="blank" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY6Z" role="1PaTwD">
+              <property role="3oM_SC" value="arg" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY70" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnY71" role="1PaTwD">
+              <property role="3oM_SC" value="SRepo" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="R$fwjLm6Wi" role="3cqZAp">

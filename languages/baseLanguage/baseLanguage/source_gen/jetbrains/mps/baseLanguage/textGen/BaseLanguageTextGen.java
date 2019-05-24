@@ -220,10 +220,12 @@ public abstract class BaseLanguageTextGen {
     if (reference instanceof DynamicReference) {
       shortName = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
       // hack, todo: remove! 
+
       if (shortName.startsWith("[")) {
         return MultiTuple.<String,String>from(shortName.substring(1, shortName.lastIndexOf("]")).trim(), shortName.substring(shortName.lastIndexOf("]") + 1).trim());
       } else {
         // todo: remove! 
+
         final SModelReference modelReference = reference.getTargetSModelReference();
         if (modelReference != null) {
           packageName = modelReference.getName().getLongName();
@@ -254,6 +256,7 @@ public abstract class BaseLanguageTextGen {
         shortName = SPropertyOperations.getString(SNodeOperations.cast(targetNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName"));
       } else if (SNodeOperations.isInstanceOf(targetNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"))) {
         //  don't ask me why classifierRef ever points to ConstructorDeclaration. Check ClassCreator_TextGen. 
+
         SNode classifier = SNodeOperations.getNodeAncestor(targetNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
         packageName = BaseLanguageTextGen.getPackageName(classifier, ctx);
         shortName = SPropertyOperations.getString(classifier, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName"));

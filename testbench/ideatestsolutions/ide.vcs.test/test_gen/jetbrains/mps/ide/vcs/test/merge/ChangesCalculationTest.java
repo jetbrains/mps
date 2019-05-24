@@ -71,9 +71,12 @@ public class ChangesCalculationTest extends ChangesTestBase {
       public SModel compute() {
         SModel testModel = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)"), repo);
         // make an identical clone of original model, and keep it detached from a repository to avoid model access control 
+
         SModel detachedCopy = PersistenceUtil.loadModelFromXml(PersistenceUtil.saveModelToXml(testModel));
         // XXX can't save/load myTestModel out of this model read as there'd be no information about stub concepts (saveModelToXml needs to write that) 
+
         //     We can try to deal with that using MetaInfoLoadingOption.KEEP_READ option, but it's not easy to pass one into PersistenceUtil 
+
         myReferenceModel = PersistenceUtil.loadModelFromXml(PersistenceUtil.saveModelToXml(testModel));
         return detachedCopy;
       }
@@ -234,6 +237,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   @Test
   public void moveChild() {
     // todo? 
+
   }
 
   private ChangeSetImpl createFakeChangeSet() {
@@ -254,10 +258,14 @@ public class ChangesCalculationTest extends ChangesTestBase {
     return new ModelAccessHelper(ourProject.getRepository()).runReadAction(new Computable<List<ModelChange>>() {
       public List<ModelChange> compute() {
         // the reason we have to modify detached model inside a model read is that some tests touch references, and our Root sample 
+
         // has references pointing outside. We'd rather fix this sample to be self-contained 
+
         todo.run();
         // FIXME the only reason buildChangeSet is wrapped into model read is that SProperty.getType() still goes 
+
         //     into getDeclarationNode(). Drop once there's generated support for property types. 
+
         ModelChangeSet diff = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel);
         return diff.getModelChanges();
       }

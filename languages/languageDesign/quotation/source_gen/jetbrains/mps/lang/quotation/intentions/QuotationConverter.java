@@ -111,7 +111,9 @@ public class QuotationConverter {
           break;
         default:
           // in potential situations where emuneration has baseLanguage type that differs from int/boolean/string 
+
           // the following will not work until fromString() returns well-typed object for enumerations 
+
           SLinkOperations.setTarget(pval, MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression"), _quotation_createNode_aytayy_a0c0a0d0f(PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(SLinkOperations.getTarget(pval, MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property"))), SLinkOperations.getTarget(pval, MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property")), SLinkOperations.getTarget(attribute, MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression")), DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(pval, MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")))));
       }
     } else {
@@ -134,7 +136,9 @@ public class QuotationConverter {
           break;
         default:
           // in potential situations where emuneration has baseLanguage type that differs from int/boolean/string 
+
           // the following will not work until fromString() returns well-typed object for enumerations 
+
           SLinkOperations.setTarget(pval, MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression"), _quotation_createNode_aytayy_a0c0a0a3a5(PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(SLinkOperations.getTarget(pval, MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property"))), SLinkOperations.getTarget(pval, MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property")), NameUtil.escapeString(value), DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(pval, MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")))));
       }
     }

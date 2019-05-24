@@ -84,11 +84,16 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_11_0(final BaseMappingRuleContext _context) {
     if (PluginUtils.needAppPlugin(_context.getInputModel()) || PluginUtils.needProjectPlugin(_context.getInputModel())) {
       SNode optionalStandaloneMarker = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x685ef16bc1750e9cL, "jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor"))).first();
-      // if compileInMPS && needInitConfig, it's MPS module with plugin, managed by ModulePluginContributor, therefore  
+      // if compileInMPS && needInitConfig, it's MPS module with plugin, managed by ModulePluginContributor, therefore 
+
       // extension is not needed. 
+
       // see PluginUtils for reasons why have to resort to originalModel here 
-      //  Perhaps, needInitConfig is a bit way too much here (parts loaded by ".plugin." convention don't need  
+
+      //  Perhaps, needInitConfig is a bit way too much here (parts loaded by ".plugin." convention don't need 
+
       // extension as well, I'd like to move forward gradually. 
+
       return !((SPropertyOperations.getBoolean(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS")) && SPropertyOperations.getBoolean(optionalStandaloneMarker, MetaAdapterFactory.getProperty(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x685ef16bc1750e9cL, 0x5f3b7568ba8feb0fL, "needInitConfig"))));
     }
     return false;

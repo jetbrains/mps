@@ -60,6 +60,7 @@ public class NewRootMappingRule_Action extends BaseAction {
       }
     });
     //  not used in rule yet? 
+
     return usage == null;
   }
   @Override
@@ -103,12 +104,15 @@ public class NewRootMappingRule_Action extends BaseAction {
     }
     if (ListSequence.fromList(configs).count() > 1) {
       // TODO: let user to choose mapping config? 
+
     }
     //  add new rule 
+
     SNode rule = SNodeFactoryOperations.addNewChild(ListSequence.fromList(configs).first(), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fd54c33e7L, "rootMappingRule"), null);
     SLinkOperations.setTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept"), SLinkOperations.getTarget(AttributeOperations.getAttribute(event.getData(MPSCommonDataKeys.NODE), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept")));
     SLinkOperations.setTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template"), event.getData(MPSCommonDataKeys.NODE));
     //  open in editor 
+
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), rule, true, true);
   }
 }

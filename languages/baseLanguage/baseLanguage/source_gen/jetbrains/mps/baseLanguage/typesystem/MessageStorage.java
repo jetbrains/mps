@@ -17,6 +17,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
     Pair newPair = new Pair(nodeToReport, type);
     if (!(MapSequence.fromMap(myHostPlusType2Msg).containsKey(newPair))) {
       // not posting two errors for the same type twice 
+
       MapSequence.fromMap(myHostPlusType2Msg).put(newPair, item);
     }
   }

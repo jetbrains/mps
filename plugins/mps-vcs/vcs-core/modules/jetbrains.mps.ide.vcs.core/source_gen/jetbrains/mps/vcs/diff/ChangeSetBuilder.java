@@ -84,6 +84,7 @@ public class ChangeSetBuilder {
     Object newValue = type.fromString(newPropValue);
     if (oldValue == SType.NOT_A_VALUE || newValue == SType.NOT_A_VALUE) {
       // If there is no language available (e.g. in merge driver) then we compare raw property values 
+
       oldValue = oldPropValue;
       newValue = newPropValue;
     }
@@ -119,6 +120,7 @@ public class ChangeSetBuilder {
     }
     if (Objects.equals(oldTargetId, newTargetId) && Objects.equals(oldTargetModel, newTargetModel) && Objects.equals(check_nbyrtw_a0a8a51(((jetbrains.mps.smodel.SReference) oldReference)), check_nbyrtw_a0a8a51_0(((jetbrains.mps.smodel.SReference) newReference)))) {
       // same references 
+
     } else {
       SModelReference targetModel = check_nbyrtw_a0a0a8a51(newReference);
       ListSequence.fromList(myNewChanges).addElement(new SetReferenceChange(myChangeSet, oldNode.getNodeId(), role, targetModel, newTargetId, check_nbyrtw_f0a0a1a0i0p(((jetbrains.mps.smodel.SReference) newReference))));
@@ -184,6 +186,7 @@ public class ChangeSetBuilder {
     LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(oldIds, newIds);
 
     // Finding insertings, deletings and replacings 
+
     List<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>> differentIndices = finder.getDifferentIndices();
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(differentIndices)) {
       Tuples._2<Integer, Integer> oldIndices = indices._0();
@@ -192,6 +195,7 @@ public class ChangeSetBuilder {
     }
 
     // Finding changes for children 
+
     List<Tuples._2<Integer, Integer>> commonIndices = finder.getCommonIndices();
     ListSequence.fromList(commonIndices).select(new ISelector<Tuples._2<Integer, Integer>, SNode>() {
       public SNode select(Tuples._2<Integer, Integer> in) {

@@ -96,8 +96,11 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
 
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       // todo: this is quite a hackish stuff but we need it 
+
       // todo: but we need it since we can't enable/disable 
+
       // todo: menu items by condition 
+
       SNode ifStatement = ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(node);
       List<String> result = ListSequence.fromList(new ArrayList<String>());
       if ((SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement")) == null)) {

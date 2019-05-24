@@ -51,6 +51,7 @@ public class Template_reduce_RoutineCall extends TemplateDeclarationBase impleme
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
+
       }
     } finally {
     }

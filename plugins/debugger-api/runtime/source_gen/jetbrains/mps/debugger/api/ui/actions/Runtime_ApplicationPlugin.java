@@ -18,6 +18,7 @@ public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void createGroups() {
     // actions w/o parameters 
+
     addAction(new DeleteBreakpointAction_Action());
     addAction(new EvaluateExpression_Action());
     addAction(new ExportThreads_Action());
@@ -32,6 +33,7 @@ public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ViewBreakpointSourceAction_Action());
     addAction(new ViewBreakpoints_Action());
     // groups 
+
     addGroup(new AbstractWatchableNodeActions_ActionGroup());
     addGroup(new DebugRunMenu_ActionGroup());
     addGroup(new DebugStepsMenu_ActionGroup());

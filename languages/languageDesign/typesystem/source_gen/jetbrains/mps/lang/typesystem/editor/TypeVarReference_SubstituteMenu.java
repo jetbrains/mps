@@ -48,6 +48,7 @@ public class TypeVarReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_jib0yl_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL, "jetbrains.mps.lang.typesystem.structure.TypeVarReference"), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL, 0x1117f90eda3L, "typeVarDeclaration"));
     }
     @NotNull

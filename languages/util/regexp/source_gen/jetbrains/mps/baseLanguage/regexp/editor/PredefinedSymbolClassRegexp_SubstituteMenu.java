@@ -48,6 +48,7 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_lmi5ai_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp"), MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass"));
     }
     @NotNull

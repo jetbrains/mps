@@ -87,6 +87,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
     });
 
     // Select merge-backup to attach 
+
     File backupDir = new File(MergeBackupUtil.getMergeBackupDirPath());
     File[] listFiles = backupDir.listFiles(new FilenameFilter() {
       public boolean accept(File dir, String name) {

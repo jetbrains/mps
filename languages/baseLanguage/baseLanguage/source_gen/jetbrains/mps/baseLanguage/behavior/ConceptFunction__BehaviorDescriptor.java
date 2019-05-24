@@ -64,7 +64,9 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static boolean supportsCheckedExceptions_id7orZYjMoFMH(@NotNull SNode __thisNode__) {
     // afaik, tells RulesFunction_BaseLanguage that it's not possible to augment list of checked exceptions 
+
     // thrown from this function 
+
     return false;
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
@@ -95,8 +97,11 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static String getHeader_id2v69eKc6GlE(@NotNull SNode __thisNode__) {
     StringBuilder result = new StringBuilder();
     // by default 'alias' is not shown. 
+
     // if you need presentation like alias(...)->.. 
+
     // then use the ConceptFunctionAliased_Component 
+
     if ((boolean) ConceptFunction__BehaviorDescriptor.showName_id1653mnvAgry.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)))) {
       result.append(ConceptFunction__BehaviorDescriptor.getName_idhGVcmek.invoke(__thisNode__));
     }
@@ -139,6 +144,7 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     // todo: rewrite using filtering scope 
+
     SAbstractConcept cncpt = kind;
     boolean noneMatched = true;
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"))) {

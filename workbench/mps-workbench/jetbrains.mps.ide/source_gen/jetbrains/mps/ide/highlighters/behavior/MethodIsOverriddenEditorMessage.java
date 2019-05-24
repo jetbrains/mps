@@ -41,6 +41,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
 
   private static String tooltipText(SNode method, @Nullable List<SNode> overrides) {
     // fixme html reference to the concept 
+
     if (overrides == null) {
       return (isOverridden(method) ? MPSCodeInsightBundle.message("method.is.overridden.too.many") : MPSCodeInsightBundle.message("method.is.implemented.too.many"));
     }
@@ -74,6 +75,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   @Override
   public AnAction getClickAction() {
     // that is right: the method is overridden (implemented) and we can navigate to the implemeting methods (descendant) 
+
     return ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.ide.actions.GoToImplementationBehaviorMethod_Action"));
   }
 }

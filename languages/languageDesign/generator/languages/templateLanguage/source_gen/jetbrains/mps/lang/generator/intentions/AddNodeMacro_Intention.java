@@ -60,6 +60,7 @@ public final class AddNodeMacro_Intention extends AbstractIntentionDescriptor im
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode nodeMacro = EditingUtil.addNodeMacro(node);
       // set caret 
+
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, nodeMacro, SelectionManager.FIRST_CELL, 1);
     }
     @Override

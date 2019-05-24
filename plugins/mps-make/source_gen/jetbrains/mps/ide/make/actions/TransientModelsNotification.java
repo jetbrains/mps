@@ -21,6 +21,7 @@ public class TransientModelsNotification {
   private final IModifiableGenerationSettings.Listener mySettingsListener = new IModifiableGenerationSettings.Listener() {
     public void settingsChanged() {
       // notification not necessarily comes in EDT 
+
       updateWidgetLater();
     }
   };

@@ -33,6 +33,7 @@ public abstract class DocCommentTextGen {
     }
 
     // A separator between text and tags 
+
     if (!((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invoke(node)) || (boolean) BaseDocComment__BehaviorDescriptor.hasTags_id4iGwz$GSfd_.invoke(node)) {
       tgs.newLine();
       DocCommentTextGen.javadocIndent(ctx);

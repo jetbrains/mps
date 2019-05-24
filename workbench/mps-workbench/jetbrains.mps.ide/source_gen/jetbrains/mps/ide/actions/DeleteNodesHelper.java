@@ -134,6 +134,7 @@ public class DeleteNodesHelper {
         myRepository.getModelAccess().runReadAction(new Runnable() {
           public void run() {
             // XXX in fact, do we care to update uses in non-project modules? Perhaps, ProjectScope is sufficient? 
+
             final SearchScope scope = new GlobalScope(DeleteNodesHelper.this.myProject);
             ListSequence.fromList(myNodesToDelete).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {

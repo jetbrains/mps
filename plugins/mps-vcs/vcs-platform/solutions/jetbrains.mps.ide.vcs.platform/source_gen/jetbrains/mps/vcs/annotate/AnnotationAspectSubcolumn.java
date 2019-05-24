@@ -20,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
     myAnnotationColumn = annotationColumn;
     myAnnotationAspect = annotationAspect;
     // FIXME getId is overridden in subclasses, bad pattern! 
+
     myEnabled = VcsUtil.isAspectAvailableByDefault(getId());
   }
 

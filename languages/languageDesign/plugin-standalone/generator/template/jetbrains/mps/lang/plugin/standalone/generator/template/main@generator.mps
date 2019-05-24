@@ -163,11 +163,8 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -359,6 +356,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="0edf22a4-42bc-4e5d-954f-06aaaf51df00" name="jetbrains.mps.lang.makeup">
@@ -1223,8 +1228,16 @@
       <node concept="3Tm1VV" id="hFNxLEm" role="1B3o_S" />
       <node concept="3clFbS" id="hIolKK3" role="3clF47">
         <node concept="3SKdUt" id="5tfnuC2UhLE" role="3cqZAp">
-          <node concept="3SKdUq" id="5tfnuC2UhLG" role="3SKWNk">
-            <property role="3SKdUp" value="actions w/o parameters" />
+          <node concept="1PaTwC" id="ATZLwXnXxn" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXxo" role="1PaTwD">
+              <property role="3oM_SC" value="actions" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXxp" role="1PaTwD">
+              <property role="3oM_SC" value="w/o" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnXxq" role="1PaTwD">
+              <property role="3oM_SC" value="parameters" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7q6IbYPyT5e" role="3cqZAp">
@@ -1322,8 +1335,10 @@
           </node>
         </node>
         <node concept="3SKdUt" id="5tfnuC2UgTQ" role="3cqZAp">
-          <node concept="3SKdUq" id="5tfnuC2UgTS" role="3SKWNk">
-            <property role="3SKdUp" value="groups" />
+          <node concept="1PaTwC" id="ATZLwXnXxr" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXnXxs" role="1PaTwD">
+              <property role="3oM_SC" value="groups" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7q6IbYPyT5Z" role="3cqZAp">
@@ -3226,28 +3241,185 @@
                 </node>
               </node>
               <node concept="3SKdUt" id="1VgYAgmtsjV" role="3cqZAp">
-                <node concept="3SKdUq" id="1VgYAgmtsjX" role="3SKWNk">
-                  <property role="3SKdUp" value="if compileInMPS &amp;&amp; needInitConfig, it's MPS module with plugin, managed by ModulePluginContributor, therefore " />
+                <node concept="1PaTwC" id="ATZLwXnXxt" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXxu" role="1PaTwD">
+                    <property role="3oM_SC" value="if" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxv" role="1PaTwD">
+                    <property role="3oM_SC" value="compileInMPS" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxw" role="1PaTwD">
+                    <property role="3oM_SC" value="&amp;&amp;" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxx" role="1PaTwD">
+                    <property role="3oM_SC" value="needInitConfig," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxy" role="1PaTwD">
+                    <property role="3oM_SC" value="it's" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxz" role="1PaTwD">
+                    <property role="3oM_SC" value="MPS" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXx$" role="1PaTwD">
+                    <property role="3oM_SC" value="module" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXx_" role="1PaTwD">
+                    <property role="3oM_SC" value="with" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxA" role="1PaTwD">
+                    <property role="3oM_SC" value="plugin," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxB" role="1PaTwD">
+                    <property role="3oM_SC" value="managed" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxC" role="1PaTwD">
+                    <property role="3oM_SC" value="by" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxD" role="1PaTwD">
+                    <property role="3oM_SC" value="ModulePluginContributor," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxE" role="1PaTwD">
+                    <property role="3oM_SC" value="therefore" />
+                  </node>
                 </node>
               </node>
               <node concept="3SKdUt" id="1VgYAgmtuWY" role="3cqZAp">
-                <node concept="3SKdUq" id="1VgYAgmtuWZ" role="3SKWNk">
-                  <property role="3SKdUp" value="extension is not needed." />
+                <node concept="1PaTwC" id="ATZLwXnXxF" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXxG" role="1PaTwD">
+                    <property role="3oM_SC" value="extension" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxH" role="1PaTwD">
+                    <property role="3oM_SC" value="is" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxI" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxJ" role="1PaTwD">
+                    <property role="3oM_SC" value="needed." />
+                  </node>
                 </node>
               </node>
               <node concept="3SKdUt" id="1VgYAgmw190" role="3cqZAp">
-                <node concept="3SKdUq" id="1VgYAgmw192" role="3SKWNk">
-                  <property role="3SKdUp" value="see PluginUtils for reasons why have to resort to originalModel here" />
+                <node concept="1PaTwC" id="ATZLwXnXxK" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXxL" role="1PaTwD">
+                    <property role="3oM_SC" value="see" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxM" role="1PaTwD">
+                    <property role="3oM_SC" value="PluginUtils" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxN" role="1PaTwD">
+                    <property role="3oM_SC" value="for" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxO" role="1PaTwD">
+                    <property role="3oM_SC" value="reasons" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxP" role="1PaTwD">
+                    <property role="3oM_SC" value="why" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxQ" role="1PaTwD">
+                    <property role="3oM_SC" value="have" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxR" role="1PaTwD">
+                    <property role="3oM_SC" value="to" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxS" role="1PaTwD">
+                    <property role="3oM_SC" value="resort" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxT" role="1PaTwD">
+                    <property role="3oM_SC" value="to" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxU" role="1PaTwD">
+                    <property role="3oM_SC" value="originalModel" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxV" role="1PaTwD">
+                    <property role="3oM_SC" value="here" />
+                  </node>
                 </node>
               </node>
               <node concept="3SKdUt" id="1VgYAgmxeN8" role="3cqZAp">
-                <node concept="3SKdUq" id="1VgYAgmxeNa" role="3SKWNk">
-                  <property role="3SKdUp" value=" Perhaps, needInitConfig is a bit way too much here (parts loaded by &quot;.plugin.&quot; convention don't need " />
+                <node concept="1PaTwC" id="ATZLwXnXxW" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXxX" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxY" role="1PaTwD">
+                    <property role="3oM_SC" value="Perhaps," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXxZ" role="1PaTwD">
+                    <property role="3oM_SC" value="needInitConfig" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy0" role="1PaTwD">
+                    <property role="3oM_SC" value="is" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy1" role="1PaTwD">
+                    <property role="3oM_SC" value="a" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy2" role="1PaTwD">
+                    <property role="3oM_SC" value="bit" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy3" role="1PaTwD">
+                    <property role="3oM_SC" value="way" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy4" role="1PaTwD">
+                    <property role="3oM_SC" value="too" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy5" role="1PaTwD">
+                    <property role="3oM_SC" value="much" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy6" role="1PaTwD">
+                    <property role="3oM_SC" value="here" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy7" role="1PaTwD">
+                    <property role="3oM_SC" value="(parts" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy8" role="1PaTwD">
+                    <property role="3oM_SC" value="loaded" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXy9" role="1PaTwD">
+                    <property role="3oM_SC" value="by" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXya" role="1PaTwD">
+                    <property role="3oM_SC" value="&quot;.plugin.&quot;" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyb" role="1PaTwD">
+                    <property role="3oM_SC" value="convention" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyc" role="1PaTwD">
+                    <property role="3oM_SC" value="don't" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyd" role="1PaTwD">
+                    <property role="3oM_SC" value="need" />
+                  </node>
                 </node>
               </node>
               <node concept="3SKdUt" id="1VgYAgmxf8z" role="3cqZAp">
-                <node concept="3SKdUq" id="1VgYAgmxf8$" role="3SKWNk">
-                  <property role="3SKdUp" value="extension as well, I'd like to move forward gradually." />
+                <node concept="1PaTwC" id="ATZLwXnXye" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnXyf" role="1PaTwD">
+                    <property role="3oM_SC" value="extension" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyg" role="1PaTwD">
+                    <property role="3oM_SC" value="as" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyh" role="1PaTwD">
+                    <property role="3oM_SC" value="well," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyi" role="1PaTwD">
+                    <property role="3oM_SC" value="I'd" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyj" role="1PaTwD">
+                    <property role="3oM_SC" value="like" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyk" role="1PaTwD">
+                    <property role="3oM_SC" value="to" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyl" role="1PaTwD">
+                    <property role="3oM_SC" value="move" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXym" role="1PaTwD">
+                    <property role="3oM_SC" value="forward" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnXyn" role="1PaTwD">
+                    <property role="3oM_SC" value="gradually." />
+                  </node>
                 </node>
               </node>
               <node concept="3cpWs6" id="1VgYAgmtb2A" role="3cqZAp">

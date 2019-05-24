@@ -165,6 +165,7 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
     Project project = ProjectHelper.getProject(repository);
     if (project == null) {
       // Note: the following code can be removed after proper implementation of project repositories 
+
       List<Project> openProjects = ProjectManager.getInstance().getOpenedProjects();
       if (openProjects.size() == 1) {
         project = openProjects.get(0);
@@ -185,6 +186,7 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         // do nothing if conflict was already resolved and model was saved or reloaded or unregistered 
+
         if (!(model.isChanged()) || model.getRepository() == null) {
           backupFile.delete();
           return;
@@ -203,12 +205,19 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
         });
         if (needSave) {
           // FIXME it used to be executeCommand (that replaced runWriteActionInCommand) here. 
+
           //       as long as our modules are always loaded into global repository, model.getRepository().getModelAccess() gives 
-          //       GlobalModelAccess of MPSModuleRepository, which doesn't support commands.  
+
+          //       GlobalModelAccess of MPSModuleRepository, which doesn't support commands. 
+
           //       Earlier code went fine with runWriteActionInCommand() which looked up active project from UI. 
+
           //       MSPL, however, listens to all repositories, and it's odd to execute a command in a project for a model that may belong to a completely different one. 
+
           //       Therefore, it's better to stick to model's native repository. What we lack with runWriteAction instead of executeCommand is undo capability, perhaps. 
+
           //       Is it something so vital anyone would complain of? 
+
           model.getRepository().getModelAccess().runWriteAction(new Runnable() {
             public void run() {
               model.updateTimestamp();
@@ -250,13 +259,16 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
       switch (result) {
         case 0:
           // disk version 
+
           return false;
         case 1:
           // memory version 
+
           return true;
         case 2:
         default:
           // diff dialog or cancel 
+
           openDiffDialog(modelFile, inMemory);
       }
     }
@@ -265,9 +277,13 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
     try {
       File tmp = FileUtil.createTmpDir();
       // as the model is already in repo, we can assume it's in supported persistence 
+
       // XXX though not apparent why it's necessarily default xml persistence 
+
       // XXX and why we don't use ModelFactory.save(openapi.SModel) here, with properly created FileDataSource at temp location. 
+
       // XXX We still assume text-backed persistence. Perhaps, could use PersistenceVersionAware.getModelFactory() and its save() directly? 
+
       String modelData = new ModelAccessHelper(inMemory.getRepository()).runReadAction(new Computable<String>() {
         public String compute() {
           return PersistenceUtil.saveModel(inMemory, FileUtil.getExtension(modelFile.getName()));

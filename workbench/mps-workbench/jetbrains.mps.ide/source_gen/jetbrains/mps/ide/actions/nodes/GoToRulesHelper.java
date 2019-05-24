@@ -66,6 +66,7 @@ public final class GoToRulesHelper {
     }
 
     // todo: populate rules from other typesystem models! 
+
     List<SNode> rules = ListSequence.fromList(SModelOperations.roots(typesystem, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, "jetbrains.mps.lang.typesystem.structure.AbstractRule"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode node) {
         return isApplicable(node, concept, exactConcept);

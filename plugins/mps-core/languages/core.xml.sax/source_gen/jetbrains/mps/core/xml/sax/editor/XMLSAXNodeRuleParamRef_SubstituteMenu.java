@@ -48,6 +48,7 @@ public class XMLSAXNodeRuleParamRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_rfbwj4_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRuleParamRef"), MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, 0x4180d2369b1f17e0L, "param"));
     }
     @NotNull

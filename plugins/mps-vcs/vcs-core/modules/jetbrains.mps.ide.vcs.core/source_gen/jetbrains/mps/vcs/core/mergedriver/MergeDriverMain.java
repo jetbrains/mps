@@ -80,6 +80,7 @@ public class MergeDriverMain {
   }
   public static boolean hasCRLF(File f) {
     // getting directlry from the file, but can get from git core.autcrlf + core.eol 
+
     Reader r = null;
     try {
       r = new BufferedReader(new FileReader(f));

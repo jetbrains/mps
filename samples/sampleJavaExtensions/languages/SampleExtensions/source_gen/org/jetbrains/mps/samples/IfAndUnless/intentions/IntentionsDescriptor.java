@@ -33,21 +33,24 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // Concept: MyIfStatement 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertMyIfToIf_Intention();
         }
         break;
       case 1:
         if (true) {
-          // Concept: Statement 
+          // concept 
+
           intentions = new IntentionFactory[1];
           intentions[0] = new SurroundWithUnless_Intention();
         }
         break;
       case 2:
         if (true) {
-          // Concept: UnlessStatement 
+          // concept 
+
           intentions = new IntentionFactory[2];
           intentions[0] = new UnwrapUnlessBlock_Intention();
           intentions[1] = new TurnToIfStatement_Intention();

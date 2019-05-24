@@ -640,15 +640,15 @@
     </file>
     <file name="XmlNoSpaceValue_TextGen.java">
       <node id="3080189811177517772" at="11,54,12,55" concept="6" />
-      <node id="3080189811177517775" at="12,55,13,13" concept="8" />
-      <node id="3080189811177517772" at="10,0,15,0" concept="5" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="3080189811177517772" at="11,54,13,13">
+      <node id="3080189811177517775" at="12,55,14,0" concept="8" />
+      <node id="3080189811177517772" at="10,0,16,0" concept="5" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="3080189811177517772" at="11,54,14,0">
         <var name="tgs" id="3080189811177517772" />
       </scope>
-      <scope id="3080189811177517772" at="10,0,15,0">
+      <scope id="3080189811177517772" at="10,0,16,0">
         <var name="ctx" id="3080189811177517772" />
       </scope>
-      <unit id="3080189811177517772" at="9,0,16,0" name="jetbrains.mps.core.xml.textGen.XmlNoSpaceValue_TextGen" />
+      <unit id="3080189811177517772" at="9,0,17,0" name="jetbrains.mps.core.xml.textGen.XmlNoSpaceValue_TextGen" />
     </file>
   </root>
 </debug-info>

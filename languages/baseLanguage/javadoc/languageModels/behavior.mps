@@ -5,7 +5,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -133,11 +133,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -196,6 +193,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -977,8 +982,19 @@
           <node concept="9aQIb" id="ooaTF_3Gjf" role="9aQIa">
             <node concept="3clFbS" id="ooaTF_3Gjg" role="9aQI4">
               <node concept="3SKdUt" id="6pumIWoCFWR" role="3cqZAp">
-                <node concept="3SKdUq" id="6pumIWoCFWS" role="3SKWNk">
-                  <property role="3SKdUp" value=" Merging first line" />
+                <node concept="1PaTwC" id="ATZLwXnSS5" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnSS6" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnSS7" role="1PaTwD">
+                    <property role="3oM_SC" value="Merging" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnSS8" role="1PaTwD">
+                    <property role="3oM_SC" value="first" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnSS9" role="1PaTwD">
+                    <property role="3oM_SC" value="line" />
+                  </node>
                 </node>
               </node>
               <node concept="2Gpval" id="39FuRsD2A4_" role="3cqZAp">
@@ -1118,8 +1134,19 @@
               </node>
               <node concept="3clFbH" id="39FuRsD2A4o" role="3cqZAp" />
               <node concept="3SKdUt" id="6pumIWoCFO1" role="3cqZAp">
-                <node concept="3SKdUq" id="6pumIWoCFO2" role="3SKWNk">
-                  <property role="3SKdUp" value=" Merging other lines" />
+                <node concept="1PaTwC" id="ATZLwXnSSa" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXnSSb" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnSSc" role="1PaTwD">
+                    <property role="3oM_SC" value="Merging" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnSSd" role="1PaTwD">
+                    <property role="3oM_SC" value="other" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnSSe" role="1PaTwD">
+                    <property role="3oM_SC" value="lines" />
+                  </node>
                 </node>
               </node>
               <node concept="3cpWs8" id="39FuRsD1DZu" role="3cqZAp">
@@ -1289,8 +1316,22 @@
                 <node concept="9aQIb" id="39FuRsD2YQK" role="9aQIa">
                   <node concept="3clFbS" id="39FuRsD2YQL" role="9aQI4">
                     <node concept="3SKdUt" id="6pumIWoCG09" role="3cqZAp">
-                      <node concept="3SKdUq" id="6pumIWoCG0a" role="3SKWNk">
-                        <property role="3SKdUp" value=" Merging last line parts" />
+                      <node concept="1PaTwC" id="ATZLwXnSSf" role="3ndbpf">
+                        <node concept="3oM_SD" id="ATZLwXnSSg" role="1PaTwD">
+                          <property role="3oM_SC" value="" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSh" role="1PaTwD">
+                          <property role="3oM_SC" value="Merging" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSi" role="1PaTwD">
+                          <property role="3oM_SC" value="last" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSj" role="1PaTwD">
+                          <property role="3oM_SC" value="line" />
+                        </node>
+                        <node concept="3oM_SD" id="ATZLwXnSSk" role="1PaTwD">
+                          <property role="3oM_SC" value="parts" />
+                        </node>
                       </node>
                     </node>
                     <node concept="3clFbF" id="39FuRsD2YQN" role="3cqZAp">

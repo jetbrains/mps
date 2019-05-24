@@ -158,6 +158,7 @@ public class Utils {
     }
 
     // normalizing 
+
     List<SModel> expectedModels = ListSequence.fromList(new ArrayList<SModel>());
     for (SModelReference expmr : expected) {
       SModel m = expmr.resolve(myRepo);
@@ -186,19 +187,29 @@ public class Utils {
       ModelRootDescriptor mrDesc = new ModelRootDescriptor(PersistenceRegistry.DEFAULT_MODEL_ROOT, mem);
 
       // DirParser uses API to create models through ModelRoot, therefore we've got root descriptor here 
-      // OTOH, it seems Utils is the only client of DirParser now, and we don't need to keep it generic,  
+
+      // OTOH, it seems Utils is the only client of DirParser now, and we don't need to keep it generic, 
+
       //       and could use whatever we like for model creation, e.g. explicit new RegularModelDescriptor 
+
       //       along with SModuleBase.registerModel(). 
+
       TempModuleOptions tempModOpts = TempModuleOptions.forNewModule(Collections.singleton(mrDesc));
       testMaterials = tempModOpts.createModule();
 
-      // It looks like dirParser and its use of YetUnknownResolver needs a model from a module attached to a  
-      // repository (to get references resolved). The best we can do here is to have own repository for the  
+      // It looks like dirParser and its use of YetUnknownResolver needs a model from a module attached to a 
+
+      // repository (to get references resolved). The best we can do here is to have own repository for the 
+
       // testMaterials module which is capable to delegate to another (one supplied at construction). 
+
       DirParser dirParser = new DirParser(testMaterials, myRepo.getModelAccess(), dirPath);
       // XXX the use of model access in DirParser looks odd. Here, we are inside a command already (test setting), 
-      // and DirParser assumes it can execute command, so we can not be in model read here. As long as it's the  
+
+      // and DirParser assumes it can execute command, so we can not be in model read here. As long as it's the 
+
       // only use of DirParser, perhaps, we shall not use ModelAccess at all, as we ensure we're inside command. 
+
 
       dirParser.parseDirs();
 
@@ -228,6 +239,7 @@ public class Utils {
     JavaSourceStubModelRoot src2 = new JavaSourceStubModelRoot();
 
     // just 2 distinct modules 
+
     SModule mod1 = PersistenceFacade.getInstance().createModuleReference("c3786d2b-aba2-45e5-8de0-1124fd14259b(jetbrains.mps.ide.java.tests)").resolve(myRepo);
     SModule mod2 = PersistenceFacade.getInstance().createModuleReference("49166c31-952a-46f6-8970-ea45964379d0(jetbrains.mps.ide.java.testMaterial)").resolve(myRepo);
 
@@ -250,6 +262,7 @@ public class Utils {
         NodePatcher.sortNestedClass(SNodeOperations.cast(binRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
 
         // FIXME should be fixed in java source stubs 
+
         NodePatcher.removeStatements(binRoot);
       }
     }
@@ -293,6 +306,7 @@ public class Utils {
     Assert.assertTrue(SetSequence.fromSet(MapSequence.fromMap(leftModelMap).keySet()).containsSequence(SetSequence.fromSet(MapSequence.fromMap(rightModelMap).keySet())) && SetSequence.fromSet(MapSequence.fromMap(rightModelMap).keySet()).containsSequence(SetSequence.fromSet(MapSequence.fromMap(leftModelMap).keySet())));
 
     // constructing the map of corresponding nodes 
+
     Map<SNode, SNode> classMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (String name : MapSequence.fromMap(leftModelMap).keySet()) {
       SModel binModel = MapSequence.fromMap(leftModelMap).get(name);
@@ -356,6 +370,7 @@ public class Utils {
 
   public static void buildClassifierNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
     // handling this class and nested classes 
+
     Map<String, SNode> rightNestedIndex = MapSequence.fromMap(new HashMap<String, SNode>());
     for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(right, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, new SAbstractConcept[]{}))) {
       MapSequence.fromMap(rightNestedIndex).put(SPropertyOperations.getString(cl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), cl);
@@ -406,9 +421,11 @@ public class Utils {
   public static void buildMethodBodyNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
 
     //  type vars 
+
     buildJustNodeMap(SLinkOperations.getChildren(left, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration")), SLinkOperations.getChildren(right, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration")), nodeMap);
 
     // local vars and params 
+
     List<SNode> leftVars = new ArrayList<SNode>();
     ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(left, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))));
     ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(left, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")})));
@@ -420,6 +437,7 @@ public class Utils {
     buildJustNodeMap(leftVars, rightVars, nodeMap);
 
     // anonymous classes and their insides 
+
   }
 
   public static void buildJustNodeMap(List<SNode> left, List<SNode> right, Map<SNode, SNode> nodeMap) {

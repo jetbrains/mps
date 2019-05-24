@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="el542f2duefp9yy0b6w69uvgmm07e5z">
+<product version="3" modelHash="-574w74my9s14fje1a58qray9m3gmlrx">
   <files names="BaseMpsRunner.java:FromDirWithModulesProjectStrategy.java:FromModulesListProjectStrategy.java:FromProjectPathProjectStrategy.java:MPSCompositeProjectStrategy.java:ModuleSymbolicSuite.java:PushEnvironmentRunnerBuilder.java:TeamCityParameterizedRunner.java:TestRootAccessInsight.java:misc.xml" />
 </product>
 

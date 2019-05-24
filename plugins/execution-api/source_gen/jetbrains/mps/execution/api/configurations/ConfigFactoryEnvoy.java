@@ -42,15 +42,19 @@ import java.lang.reflect.InvocationTargetException;
    */
   /*package*/ void invalidate() {
     // package-local, perhaps, with ConfigType.invalidateFactory(Class<RunConfiguration>) 
+
     myIsIvalid = true;
     //  perhaps, shall nullify myDelegateClass to release any reference to stale class? 
+
   }
 
   @NotNull
   @Override
   public String getId() {
     // though javadoc in superclass suggests to use getType().getId(), it doesn't allow to distinguish multiple factories for the same type 
+
     // However, would be better to distinguish id from user-friendly name 
+
     return myName;
   }
 
@@ -65,6 +69,7 @@ import java.lang.reflect.InvocationTargetException;
   public RunConfiguration createTemplateConfiguration(@NotNull Project project) {
     try {
       // Constructor signature to match one in weave_RunConfigurationConstructor 
+
       Constructor<? extends BaseMpsRunConfiguration> c = myDelegateClass.getConstructor(Project.class, ConfigurationFactory.class, String.class);
       return c.newInstance(project, this, "");
     } catch (Exception ex) {

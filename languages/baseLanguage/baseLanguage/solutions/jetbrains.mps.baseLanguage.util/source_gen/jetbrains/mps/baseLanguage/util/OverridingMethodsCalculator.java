@@ -113,6 +113,7 @@ public final class OverridingMethodsCalculator {
     for (final SNode superClassifierMethod : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superClassifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), SMethodTrimmedId.create("methods", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         // not very comprehensible condition (it is a dummy anonymous stub for enum constant) AP 
+
         boolean enumConstant = SNodeOperations.isInstanceOf(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")) && SNodeOperations.getModel(classifier) == null;
         return canBeOverridden(it) && ((SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) != null) || enumConstant || packagesAreTheSame(superClassifier, classifier));
       }

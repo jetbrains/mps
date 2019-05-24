@@ -55,7 +55,9 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
         continue;
       }
       // don't check unresolved and broken references, they should already have an error message 
+
       // do we need all these additional dependencies? mb. it's better to use .runcheckingAction() instead? 
+
       errorsCollector.addDependency(target);
       errorsCollector.addDependency(SNodeOperations.getParent(node));
       for (SNode c : SNodeOperations.getChildren(node)) {

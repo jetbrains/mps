@@ -101,8 +101,11 @@ public class RequestManager implements IRequestManager {
         final Requestor targetRequestor = (Requestor) request.getProperty(REQUESTOR);
         if (targetRequestor != requestor) {
           //  the same request may be assigned to more than one requestor, but 
+
           //  there is only one 'targetRequestor' for each request, so if target requestor and requestor being processed are different, 
+
           //  should clear also the mapping targetRequestor->request 
+
           final Set<EventRequest> allTargetRequestorRequests = myRequestorToBelongedRequests.get(targetRequestor);
           if (allTargetRequestorRequests != null) {
             allTargetRequestorRequests.remove(request);
@@ -114,6 +117,7 @@ public class RequestManager implements IRequestManager {
         myEventRequestManager.deleteEventRequest(request);
       } catch (InvalidRequestStateException ignored) {
         //  request is already deleted 
+
       } catch (InternalException e) {
         LOG.error(e);
       }
@@ -121,6 +125,7 @@ public class RequestManager implements IRequestManager {
   }
   public BreakpointRequest createBreakpointRequest(JavaBreakpoint requestor, Location location) {
     // ------------------- requests creation 
+
     ManagerThread.assertIsMangerThread();
     BreakpointRequest request = myEventRequestManager.createBreakpointRequest(location);
     initRequest(requestor, request);
@@ -164,23 +169,27 @@ public class RequestManager implements IRequestManager {
       suspendPolicy = EventRequest.SUSPEND_ALL;
     }
     //  we suspend all, do smth and then resume 
+
     req.setSuspendPolicy(suspendPolicy);
     registerRequestInternal(requestor, req);
   }
   public void deleteStepRequests() {
     ManagerThread.assertIsMangerThread();
     // todo what are these step requests to delete? 
+
     List<StepRequest> stepRequests = myEventRequestManager.stepRequests();
     if (stepRequests.size() > 0) {
       List<StepRequest> toDelete = new ArrayList<StepRequest>(stepRequests.size());
       for (StepRequest request : stepRequests) {
         ThreadReference threadReference = request.thread();
         //  on attempt to delete a request assigned to a thread with unknown status, a JDWP error occures 
+
         if (threadReference.status() != ThreadReference.THREAD_STATUS_UNKNOWN) {
           toDelete.add(request);
         }
       }
       //  removing from requestor maps 
+
       for (StepRequest stepRequest : toDelete) {
         Requestor requestor = findRequestor(stepRequest);
         if (requestor != null) {
@@ -203,8 +212,11 @@ public class RequestManager implements IRequestManager {
   }
   public void callbackOnPrepareClasses(ClassPrepareRequestor requestor, String classOrPatternToBeLoaded) {
     // todo: some other types of requests; later 
+
     // ------------------- ~requests creation 
+
     // by classname 
+
     ManagerThread.assertIsMangerThread();
     ClassPrepareRequest classPrepareRequest = createClassPrepareRequest(requestor, classOrPatternToBeLoaded);
     classPrepareRequest.enable();
@@ -219,6 +231,7 @@ public class RequestManager implements IRequestManager {
   }
   public void enableRequest(EventRequest request) {
     // currently does no much more than request.enable() 
+
     ManagerThread.assertIsMangerThread();
     LOG.assertLog(findRequestor(request) != null, "Assertion failed.");
     request.enable();
@@ -285,6 +298,7 @@ public class RequestManager implements IRequestManager {
     public void processAttached(@NotNull EventsProcessor process) {
       myEventRequestManager = myDebugEventsProcessor.getVirtualMachine().eventRequestManager();
       //  invoke later, so that requests are for sure created only _after_ 'processAttached()' methods of other listeneres are executed 
+
       process.schedule(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           BreakpointManagerComponent breakpointManager = myDebugEventsProcessor.getBreakpointManager();

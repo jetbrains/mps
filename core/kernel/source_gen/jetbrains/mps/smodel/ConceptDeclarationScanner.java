@@ -48,6 +48,7 @@ public class ConceptDeclarationScanner {
     for (SNode cd : SNodeOperations.ofConcept(roots, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
       SNode ex = SLinkOperations.getTarget(cd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends"));
       // ex could be null if no explicit BaseConcept in super 
+
       if (ex != null && SNodeOperations.getModel(ex) != m) {
         myExternalConcepts.add(ex);
       }
@@ -68,13 +69,17 @@ public class ConceptDeclarationScanner {
       myExtendedModels.add(SNodeOperations.getModel(cd));
     }
     // XXX for the time being, consider implements of a CD as 'extends' relation between the languages, although this needs extra consideration 
+
     // perhaps, shall not treat CD.implements (but still ICD.extends) as mandatory for 'extends' between languages, as it's common to see marker interfaces 
+
     // (like IMainClass) that bring (sometimes huge) dependency hierarchy for no added value. 
+
     for (SNode cd : myExternalIfaces) {
       myExtendedModels.add(SNodeOperations.getModel(cd));
     }
     if (myExcludeLangCore) {
       // here comes an odd way to deal with missing model-reference expression 
+
       final SModelReference langCoreStructureModelRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626").getModelReference();
 
       myExtendedModels.removeIf(new Predicate<SModel>() {

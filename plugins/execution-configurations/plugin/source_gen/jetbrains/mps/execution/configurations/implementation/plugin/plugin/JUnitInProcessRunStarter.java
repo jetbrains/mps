@@ -51,7 +51,9 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
     final JUnitTestExecutor executor = new JUnitTestExecutor(myTestsContributor);
     final Future<?> future = doExecute(executor);
     // can use TestInProcessRunState instead of both process and future parameter, isDone == TERMINATED, startNotify() == INITIALIZED -> READYTOEXECUTE 
+
     // Alternatively, FakeProcess.init may do INITIALIZED -> READYTOEXECUTE, and rely on default ProcessHandler.isProcessTerminated implementation instead of Future.isDone 
+
     final FakeProcessHandler process = new FakeProcessHandler(myFakeProcess, future) {
       @Override
       public void startNotify() {
@@ -62,14 +64,18 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
       @Override
       protected void requestTerminate() {
         // XXX why not isRunning() or at least !isTerminating && !isTerminated(); do we care to request stop few times? 
+
         if (!(myTestRunState.isTerminated())) {
           myTestRunState.advance(RunStateEnum.RUNNING, RunStateEnum.TERMINATING);
           executor.stopRun();
         }
         // once test execution is over, the runnable at thread pool get control, myFakeProcess receives exit code and is destroyed. 
+
         // Eventually, BaseOSProcessHandler dispaches notification that the process has been terminated. 
 
+
         // XXX Perhaps, we shall leave implementation of this method to BaseOSProcessHandler (which does Process.destroy()), and handle process destroy request instead? 
+
       }
     };
     return process;
@@ -81,7 +87,9 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
       public void run() {
         TestMode oldTestMode = RuntimeFlags.getTestMode();
         // Though there's dedicated JUnit runner in NodeWrappersTestsContributor that provides proper in-process TestRunner runner for BaseTransformationTest instances, 
+
         // it doesn't hurt to have this flag set anyway, just in case anyone asks if we are TestMode.isInsideTestEnvironment 
+
         RuntimeFlags.setTestMode(TestMode.IN_PROCESS);
         try {
           executor.init();
@@ -96,6 +104,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
           myTestRunState.advance(RunStateEnum.READYTOEXECUTE, RunStateEnum.RUNNING);
           executor.execute();
           // regular test execution ends in RUNNING state. If we are in TERMINATING state here already, it means PH.requestTerminate triggered execution stop. 
+
           boolean cancelled = myTestRunState.isTerminating();
           myTestRunState.advance(RunStateEnum.RUNNING, RunStateEnum.TERMINATING);
           if (executor.getExecutionError() != null) {
@@ -106,12 +115,15 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
             myFakeProcess.setExitCode(executor.getFailureCount());
           }
           // copied from TestInProcessExecutor#terminateProcess(int), though not sure I see the point in TestEventsDispatcher use 
+
           String terminateMessage = "in-process test execution finished with exit code " + myFakeProcess.exitValue();
           if (LOG.isInfoEnabled()) {
             LOG.info(terminateMessage);
           }
-          // once this Future is completed (isDone() == true), FakeProcessHandler terminates and process listeners  
+          // once this Future is completed (isDone() == true), FakeProcessHandler terminates and process listeners 
+
           // have a change to notify others (e.g. TestRunState though UnitTestProcessListener with TestEventsDispatcher) 
+
         } finally {
           RuntimeFlags.setTestMode(oldTestMode);
           executor.dispose();
@@ -128,6 +140,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
 
   /*package*/ void waitUnlessProcessIsReady() {
     // pooled thread waits for IDEA to fire off execution via ProcessHandler.startNotify 
+
     new WaitFor(MSECS_TO_WAIT_FOR_START) {
       @Override
       protected boolean condition() {
@@ -141,6 +154,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
 
   private void dispose() {
     // BaseOSProcessHandler waits for the process to be destroyed (FakeProcess.waitFor), and then dispatches ProcessHandler.notifyProcessTerminated 
+
     myFakeProcess.destroy();
     myTestRunState.reset();
   }
@@ -148,10 +162,12 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   private class EmptyProcessHandler extends ProcessHandler {
     protected void destroyProcessImpl() {
       //  shall never get here as the process is terminated from the very start 
+
     }
 
     protected void detachProcessImpl() {
       //  shall never get here as the process is terminated from the very start 
+
     }
 
     public boolean detachIsDefault() {

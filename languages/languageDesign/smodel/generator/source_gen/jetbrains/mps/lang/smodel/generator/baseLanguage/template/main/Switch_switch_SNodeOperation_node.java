@@ -67,6 +67,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -306,6 +307,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist4 = null;
@@ -332,6 +334,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -479,6 +482,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -505,6 +509,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -597,6 +602,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -623,6 +629,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -649,6 +656,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist4 = null;
@@ -675,6 +683,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -701,6 +710,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -727,6 +737,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -757,6 +768,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
       } finally {
       }
@@ -787,6 +799,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
           }
           // TODO validate child 
+
         }
         {
           Collection<SNode> tlist4 = null;
@@ -800,6 +813,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
           }
           // TODO validate child 
+
         }
       } finally {
       }

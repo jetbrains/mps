@@ -54,6 +54,7 @@ public class BaseIconManager {
 
   public void invalidate(Set<ReloadableModule> modules) {
     // todo by-module invalidation 
+
     MapSequence.fromMap(myConceptToIcon).clear();
     MapSequence.fromMap(myResToIcon).clear();
   }

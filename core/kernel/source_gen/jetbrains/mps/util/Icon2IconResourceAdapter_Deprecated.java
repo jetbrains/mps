@@ -38,6 +38,7 @@ public class Icon2IconResourceAdapter_Deprecated extends IconResource {
       try {
         ImageIO.write(image, "png", ios);
         // Set a flag to indicate that the write was successful 
+
       } finally {
         ios.close();
       }

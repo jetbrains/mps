@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="fyhk" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps(MPS.Workbench/)" />
@@ -152,11 +152,8 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -176,6 +173,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -484,8 +489,52 @@
               <node concept="9aQIb" id="3EnpNH2_HxI" role="9aQIa">
                 <node concept="3clFbS" id="3EnpNH2_HxJ" role="9aQI4">
                   <node concept="3SKdUt" id="785kb9uAy2" role="3cqZAp">
-                    <node concept="3SKdUq" id="785kb9uAy4" role="3SKWNk">
-                      <property role="3SKdUp" value="this seems to be an odd way to construct file path from &quot;qualified.ClassName&quot; and &quot;ClassName.java&quot;" />
+                    <node concept="1PaTwC" id="ATZLwXorU7" role="3ndbpf">
+                      <node concept="3oM_SD" id="ATZLwXorU8" role="1PaTwD">
+                        <property role="3oM_SC" value="this" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorU9" role="1PaTwD">
+                        <property role="3oM_SC" value="seems" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUa" role="1PaTwD">
+                        <property role="3oM_SC" value="to" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUb" role="1PaTwD">
+                        <property role="3oM_SC" value="be" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUc" role="1PaTwD">
+                        <property role="3oM_SC" value="an" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUd" role="1PaTwD">
+                        <property role="3oM_SC" value="odd" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUe" role="1PaTwD">
+                        <property role="3oM_SC" value="way" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUf" role="1PaTwD">
+                        <property role="3oM_SC" value="to" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUg" role="1PaTwD">
+                        <property role="3oM_SC" value="construct" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUh" role="1PaTwD">
+                        <property role="3oM_SC" value="file" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUi" role="1PaTwD">
+                        <property role="3oM_SC" value="path" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUj" role="1PaTwD">
+                        <property role="3oM_SC" value="from" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUk" role="1PaTwD">
+                        <property role="3oM_SC" value="&quot;qualified.ClassName&quot;" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUl" role="1PaTwD">
+                        <property role="3oM_SC" value="and" />
+                      </node>
+                      <node concept="3oM_SD" id="ATZLwXorUm" role="1PaTwD">
+                        <property role="3oM_SC" value="&quot;ClassName.java&quot;" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3clFbF" id="3EnpNH2_HxK" role="3cqZAp">
@@ -650,8 +699,37 @@
             </node>
             <node concept="3clFbS" id="785kb9uCfE" role="TDEfX">
               <node concept="3SKdUt" id="785kb9uEop" role="3cqZAp">
-                <node concept="3SKdUq" id="785kb9uEoq" role="3SKWNk">
-                  <property role="3SKdUp" value=" ignore, can not report anything,pretend we didn't find any" />
+                <node concept="1PaTwC" id="ATZLwXorUn" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXorUo" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUp" role="1PaTwD">
+                    <property role="3oM_SC" value="ignore," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUq" role="1PaTwD">
+                    <property role="3oM_SC" value="can" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUr" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUs" role="1PaTwD">
+                    <property role="3oM_SC" value="report" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUt" role="1PaTwD">
+                    <property role="3oM_SC" value="anything,pretend" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUu" role="1PaTwD">
+                    <property role="3oM_SC" value="we" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUv" role="1PaTwD">
+                    <property role="3oM_SC" value="didn't" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUw" role="1PaTwD">
+                    <property role="3oM_SC" value="find" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXorUx" role="1PaTwD">
+                    <property role="3oM_SC" value="any" />
+                  </node>
                 </node>
               </node>
               <node concept="3cpWs6" id="785kb9uEq5" role="3cqZAp">

@@ -213,6 +213,7 @@ public final class TestRunState {
       return result;
     } else {
       // test case node cannot get in the list without all the containing methods 
+
       return 1;
     }
   }
@@ -275,6 +276,7 @@ public final class TestRunState {
     log("tests terminated : " + terminatingOnException);
     myInnerData.myTerminatedCorrectly = !(terminatingOnException);
     // these are the tests which have not been executed yet 
+
     List<TestMethodNodeKey> testsNotRunDueToError = myInnerData.myTestMethodsLeftToRun;
     final TerminationTestEvent event = new TerminationTestEvent(myInnerData.myCurrentTestNode, testsNotRunDueToError, !(terminatingOnException));
     ListSequence.fromList(myListeners).visitAll(new IVisitor<TestStateListener>() {

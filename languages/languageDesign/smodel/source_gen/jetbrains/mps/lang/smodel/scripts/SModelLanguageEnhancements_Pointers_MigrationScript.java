@@ -20,7 +20,9 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
   public SModelLanguageEnhancements_Pointers_MigrationScript() {
     super("SModel Lanugage Enhancements (node-ptr<> and model-ptr)");
     // whitespace 
+
     // whitespace 
+
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -287,7 +289,9 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
     });
     // whitespace 
+
     // whitespace 
+
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -398,6 +402,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
     });
     // whitespace 
+
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -451,6 +456,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
     });
     // whitespace 
+
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -504,6 +510,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
     });
     // whitespace 
+
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -557,8 +564,11 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
     });
     // whitespace 
+
     // whitespace 
+
     // whitespace 
+
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -612,7 +622,9 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
     });
     // whitespace 
+
     // whitespace 
+
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -666,6 +678,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
     });
     // whitespace 
+
   }
 
   @Nullable

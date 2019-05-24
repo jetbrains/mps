@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-l25n94baqfpyk4e2v41c43w9x6vfb7">
+<product version="3" modelHash="c8txktx1x4glyggth14n9ejfq4sv0tt">
   <files names="AbstractIntentionMenuPart.java:PluginActionMenuItemBase.java:PluginActionMenuPartBase.java:RefactoringMenuItemBase.java:RefactoringMenuPartBase.java" />
 </product>
 

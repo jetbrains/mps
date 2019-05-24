@@ -97,6 +97,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
       }
     });
     // whitespace 
+
   }
 
   @Nullable

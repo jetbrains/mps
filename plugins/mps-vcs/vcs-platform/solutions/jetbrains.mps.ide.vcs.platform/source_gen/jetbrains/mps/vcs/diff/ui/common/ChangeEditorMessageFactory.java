@@ -53,7 +53,9 @@ public class ChangeEditorMessageFactory {
       int changeEnd = (isOldEditor ? chng.getEnd() : chng.getResultEnd());
 
       // We need to check change models because current edited model can have different indices 
+
       // (for instance, when some changes are already applied) 
+
       SNodeId beginId = (changeBegin < ListSequence.fromList(changeChildren).count() ? ListSequence.fromList(changeChildren).getElement(changeBegin).getNodeId() : null);
       SNodeId endId = (changeEnd < ListSequence.fromList(changeChildren).count() ? ListSequence.fromList(changeChildren).getElement(changeEnd).getNodeId() : null);
 
@@ -68,6 +70,7 @@ public class ChangeEditorMessageFactory {
       }
       if (beginIndex == endIndex) {
         // delete nodes 
+
         return ListSequence.fromListAndArray(new LinkedList<ChangeEditorMessage>(), new ChangeEditorMessage(editedModel.getNode(parentId), new DeletedNodeMessageTarget(roleLink.getName(), beginIndex), owner, change, conflictChecker, highlighted));
       } else {
         List<ChangeEditorMessage> msgs = ListSequence.fromList(new LinkedList<ChangeEditorMessage>());

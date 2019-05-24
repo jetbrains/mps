@@ -57,21 +57,27 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static boolean isVisible_id70J2WaK_oVl(@NotNull SNode __thisNode__, SNode contextClassifier, SNode contextNode) {
     final Wrappers._T<SNode> _contextClassifier = new Wrappers._T<SNode>(contextClassifier);
     // FIXME this code duplicates VisibilityUtil.isVisible(contextNode, this), isn't it? 
+
     //       E.g. check_ClassCreatorConstructorVisibility uses VisibilityUtil, while DefaultConstructorUtils resorts to this method. 
+
     if (SNodeOperations.isInstanceOf(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x427c475b3d6201deL, "jetbrains.mps.baseLanguage.structure.StaticKind"))) {
       // todo: read specification! 
+
       _contextClassifier.value = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), __thisNode__);
     }
 
     // public 
+
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"))) {
       return true;
     }
     // private 
+
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
       return VisibilityUtil.topClassifier(contextNode) == VisibilityUtil.topClassifier(_contextClassifier.value);
     }
     // default 
+
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
     String contextClassifierPackage = VisibilityUtil.packageName(_contextClassifier.value);
     String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), __thisNode__));
@@ -79,12 +85,14 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
     // protected 
+
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility"))) {
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
         return true;
       }
 
       // two cases: 1) from class 2) from dot expression 
+
       Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(_contextClassifier.value);
@@ -92,9 +100,11 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
       });
       if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")))) {
         // 1 
+
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
       } else {
         // 2 
+
         SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
         return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
@@ -109,6 +119,7 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
     // do nothing by default 
+
   }
   /*package*/ static boolean isVisible_id5laDzmpBPv8(@NotNull SNode __thisNode__, SNode contextClassifierType, SNode contextNode) {
     return ((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(__thisNode__, SNodeOperations.cast(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(contextClassifierType), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), contextNode));

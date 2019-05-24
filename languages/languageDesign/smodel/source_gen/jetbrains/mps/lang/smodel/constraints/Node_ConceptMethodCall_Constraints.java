@@ -56,12 +56,14 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
             SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
 
             // any concept is AbstractConceptDeclaration, not mere BaseConcept 
+
             SNode defaultConceptTypeValue = SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1169125787135");
             SNode defaultNodeTypeValue = SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626");
 
             SNode conceptNode = null;
             final Wrappers._boolean isStatic = new Wrappers._boolean(true);
             //  when there's a concept type, there's no node to invoke instance method on. 
+
             SNode conceptType = TypecheckingFacade.getFromContext().strongCoerceType(leftType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType"));
             if ((conceptType != null)) {
               SNode decl = SLinkOperations.getTarget(conceptType, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton"));
@@ -102,8 +104,10 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
             }).toListSequence();
 
             // to remove? (ap) 
+
             if (SNodeOperations.isInstanceOf(leftType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, "jetbrains.mps.lang.smodel.structure.ConceptNodeType"))) {
               // conceptNode<> is subtype of node<AbstractConceptDeclaration>, why can't I invoke methods of the latter (used to workaround with node.conceptNode.asNode.methodCall, which is stupid) 
+
               methods = Sequence.fromIterable(methods).concat(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(defaultConceptTypeValue, enclosingNode)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return SPropertyOperations.getBoolean(it, MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic")) == false;

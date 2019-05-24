@@ -8,7 +8,7 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="oh7r" ref="r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)" />
@@ -280,11 +280,8 @@
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
         <child id="1221737317278" name="statementList" index="1Pe0a2" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="2580416627845338977" name="jetbrains.mps.baseLanguage.structure.ImplicitAnnotationInstanceValue" flags="ng" index="1SXeKx" />
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -355,6 +352,14 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
@@ -402,8 +407,13 @@
     <node concept="1Pe0a1" id="12CYGR0YO0B" role="jymVt">
       <node concept="3clFbS" id="12CYGR0YO0D" role="1Pe0a2">
         <node concept="3SKdUt" id="12CYGR0ZgLp" role="3cqZAp">
-          <node concept="3SKdUq" id="12CYGR0ZgLr" role="3SKWNk">
-            <property role="3SKdUp" value="old behavior" />
+          <node concept="1PaTwC" id="ATZLwXop$W" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXop$X" role="1PaTwD">
+              <property role="3oM_SC" value="old" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop$Y" role="1PaTwD">
+              <property role="3oM_SC" value="behavior" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="12CYGR0YO1c" role="3cqZAp">
@@ -541,8 +551,43 @@
       </node>
       <node concept="3clFbS" id="7X3$Ctw3Ytu" role="3clF47">
         <node concept="3SKdUt" id="7X3$Ctw3Yw5" role="3cqZAp">
-          <node concept="3SKdUq" id="7X3$Ctw3Yw4" role="3SKWNk">
-            <property role="3SKdUp" value="load excluded modules from system property, can be specified by MpsTestConfiguration annotation?" />
+          <node concept="1PaTwC" id="ATZLwXop$Z" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXop_0" role="1PaTwD">
+              <property role="3oM_SC" value="load" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_1" role="1PaTwD">
+              <property role="3oM_SC" value="excluded" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_2" role="1PaTwD">
+              <property role="3oM_SC" value="modules" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_3" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_4" role="1PaTwD">
+              <property role="3oM_SC" value="system" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_5" role="1PaTwD">
+              <property role="3oM_SC" value="property," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_6" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_7" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_8" role="1PaTwD">
+              <property role="3oM_SC" value="specified" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_9" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_a" role="1PaTwD">
+              <property role="3oM_SC" value="MpsTestConfiguration" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_b" role="1PaTwD">
+              <property role="3oM_SC" value="annotation?" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="6pV9atESEx" role="3cqZAp">
@@ -2245,8 +2290,37 @@
           </node>
         </node>
         <node concept="3SKdUt" id="1CBc8rDqTqk" role="3cqZAp">
-          <node concept="3SKdUq" id="1CBc8rDqTqR" role="3SKWNk">
-            <property role="3SKdUp" value="todo: read config from annotations before start (project / ?)" />
+          <node concept="1PaTwC" id="ATZLwXop_c" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXop_d" role="1PaTwD">
+              <property role="3oM_SC" value="todo:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_e" role="1PaTwD">
+              <property role="3oM_SC" value="read" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_f" role="1PaTwD">
+              <property role="3oM_SC" value="config" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_g" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_h" role="1PaTwD">
+              <property role="3oM_SC" value="annotations" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_i" role="1PaTwD">
+              <property role="3oM_SC" value="before" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_j" role="1PaTwD">
+              <property role="3oM_SC" value="start" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_k" role="1PaTwD">
+              <property role="3oM_SC" value="(project" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_l" role="1PaTwD">
+              <property role="3oM_SC" value="/" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXop_m" role="1PaTwD">
+              <property role="3oM_SC" value="?)" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="1CBc8rDs12Z" role="3cqZAp">
@@ -2572,20 +2646,143 @@
               </node>
             </node>
             <node concept="3SKdUt" id="jVJrchbH0K" role="3cqZAp">
-              <node concept="3SKdUq" id="jVJrchbH0M" role="3SKWNk">
-                <property role="3SKdUp" value="XXX next is a copy of a workaround from GenerateTask.addConfiguredLibrary to make sure jars with generator modules are reported to LibraryInitializer" />
+              <node concept="1PaTwC" id="ATZLwXop_n" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXop_o" role="1PaTwD">
+                  <property role="3oM_SC" value="XXX" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_p" role="1PaTwD">
+                  <property role="3oM_SC" value="next" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_q" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_r" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_s" role="1PaTwD">
+                  <property role="3oM_SC" value="copy" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_t" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_u" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_v" role="1PaTwD">
+                  <property role="3oM_SC" value="workaround" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_w" role="1PaTwD">
+                  <property role="3oM_SC" value="from" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_x" role="1PaTwD">
+                  <property role="3oM_SC" value="GenerateTask.addConfiguredLibrary" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_y" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_z" role="1PaTwD">
+                  <property role="3oM_SC" value="make" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_$" role="1PaTwD">
+                  <property role="3oM_SC" value="sure" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop__" role="1PaTwD">
+                  <property role="3oM_SC" value="jars" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_A" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_B" role="1PaTwD">
+                  <property role="3oM_SC" value="generator" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_C" role="1PaTwD">
+                  <property role="3oM_SC" value="modules" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_D" role="1PaTwD">
+                  <property role="3oM_SC" value="are" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_E" role="1PaTwD">
+                  <property role="3oM_SC" value="reported" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_F" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_G" role="1PaTwD">
+                  <property role="3oM_SC" value="LibraryInitializer" />
+                </node>
               </node>
             </node>
             <node concept="3SKdUt" id="jVJrchbOb3" role="3cqZAp">
-              <node concept="3SKdUq" id="jVJrchbOb5" role="3SKWNk">
-                <property role="3SKdUp" value="and no attempt to load generators though their source modules (see MPS-29650)" />
+              <node concept="1PaTwC" id="ATZLwXop_H" role="3ndbpf">
+                <node concept="3oM_SD" id="ATZLwXop_I" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_J" role="1PaTwD">
+                  <property role="3oM_SC" value="no" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_K" role="1PaTwD">
+                  <property role="3oM_SC" value="attempt" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_L" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_M" role="1PaTwD">
+                  <property role="3oM_SC" value="load" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_N" role="1PaTwD">
+                  <property role="3oM_SC" value="generators" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_O" role="1PaTwD">
+                  <property role="3oM_SC" value="though" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_P" role="1PaTwD">
+                  <property role="3oM_SC" value="their" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_Q" role="1PaTwD">
+                  <property role="3oM_SC" value="source" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_R" role="1PaTwD">
+                  <property role="3oM_SC" value="modules" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_S" role="1PaTwD">
+                  <property role="3oM_SC" value="(see" />
+                </node>
+                <node concept="3oM_SD" id="ATZLwXop_T" role="1PaTwD">
+                  <property role="3oM_SC" value="MPS-29650)" />
+                </node>
               </node>
             </node>
             <node concept="3clFbJ" id="jVJrchbGvH" role="3cqZAp">
               <node concept="3clFbS" id="jVJrchbGvJ" role="3clFbx">
                 <node concept="3SKdUt" id="4Y7Caw8v_vM" role="3cqZAp">
-                  <node concept="3SKdUq" id="4Y7Caw8v_vO" role="3SKWNk">
-                    <property role="3SKdUp" value="perhaps, it's a language.jar, register corresponding generator.jar, if any." />
+                  <node concept="1PaTwC" id="ATZLwXop_U" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXop_V" role="1PaTwD">
+                      <property role="3oM_SC" value="perhaps," />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXop_W" role="1PaTwD">
+                      <property role="3oM_SC" value="it's" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXop_X" role="1PaTwD">
+                      <property role="3oM_SC" value="a" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXop_Y" role="1PaTwD">
+                      <property role="3oM_SC" value="language.jar," />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXop_Z" role="1PaTwD">
+                      <property role="3oM_SC" value="register" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXopA0" role="1PaTwD">
+                      <property role="3oM_SC" value="corresponding" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXopA1" role="1PaTwD">
+                      <property role="3oM_SC" value="generator.jar," />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXopA2" role="1PaTwD">
+                      <property role="3oM_SC" value="if" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXopA3" role="1PaTwD">
+                      <property role="3oM_SC" value="any." />
+                    </node>
                   </node>
                 </node>
                 <node concept="3cpWs8" id="jVJrcheuZc" role="3cqZAp">
@@ -3671,8 +3868,19 @@
                   </node>
                 </node>
                 <node concept="3SKdUt" id="2SnxzQPE1bo" role="3cqZAp">
-                  <node concept="3SKdUq" id="2SnxzQPE1bq" role="3SKWNk">
-                    <property role="3SKdUp" value="is a project dir?" />
+                  <node concept="1PaTwC" id="ATZLwXopA4" role="3ndbpf">
+                    <node concept="3oM_SD" id="ATZLwXopA5" role="1PaTwD">
+                      <property role="3oM_SC" value="is" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXopA6" role="1PaTwD">
+                      <property role="3oM_SC" value="a" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXopA7" role="1PaTwD">
+                      <property role="3oM_SC" value="project" />
+                    </node>
+                    <node concept="3oM_SD" id="ATZLwXopA8" role="1PaTwD">
+                      <property role="3oM_SC" value="dir?" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbJ" id="2SnxzQPE1QO" role="3cqZAp">
@@ -3919,8 +4127,19 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="U3XrcI_MXA" role="3clF47">
         <node concept="3SKdUt" id="U3XrcI_MXB" role="3cqZAp">
-          <node concept="3SKdUq" id="U3XrcI_MXC" role="3SKWNk">
-            <property role="3SKdUp" value="Apparently, derived from MpsWorker.make()" />
+          <node concept="1PaTwC" id="ATZLwXopA9" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXopAa" role="1PaTwD">
+              <property role="3oM_SC" value="Apparently," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAb" role="1PaTwD">
+              <property role="3oM_SC" value="derived" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAc" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAd" role="1PaTwD">
+              <property role="3oM_SC" value="MpsWorker.make()" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="U3XrcI_MXD" role="3cqZAp">
@@ -4158,8 +4377,31 @@
       <node concept="3cqZAl" id="3612de$oGhS" role="3clF45" />
       <node concept="3clFbS" id="3612de$oGf8" role="3clF47">
         <node concept="3SKdUt" id="7iyvL_jjRm3" role="3cqZAp">
-          <node concept="3SKdUq" id="7iyvL_jjRm4" role="3SKWNk">
-            <property role="3SKdUp" value="do not exclude modules here, use error suppressing" />
+          <node concept="1PaTwC" id="ATZLwXopAe" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXopAf" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAg" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAh" role="1PaTwD">
+              <property role="3oM_SC" value="exclude" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAi" role="1PaTwD">
+              <property role="3oM_SC" value="modules" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAj" role="1PaTwD">
+              <property role="3oM_SC" value="here," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAk" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAl" role="1PaTwD">
+              <property role="3oM_SC" value="error" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXopAm" role="1PaTwD">
+              <property role="3oM_SC" value="suppressing" />
+            </node>
           </node>
         </node>
       </node>

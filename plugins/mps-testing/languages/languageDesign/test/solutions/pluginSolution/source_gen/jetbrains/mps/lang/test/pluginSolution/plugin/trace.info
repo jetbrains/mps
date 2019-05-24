@@ -39,29 +39,29 @@
       <unit id="5487985028841906241" at="7,0,15,0" name="jetbrains.mps.lang.test.pluginSolution.plugin.EditorInternalAddition_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841906241" at="18,14,19,55" concept="2" />
-      <node id="5487985028841906242" at="21,37,22,137" concept="2" />
+      <node id="5487985028841906241" at="20,0,21,55" concept="2" />
+      <node id="5487985028841906242" at="23,37,24,137" concept="2" />
     </file>
   </root>
   <root nodeRef="r:f259e14f-253f-462e-a3ef-037f01ed5523(jetbrains.mps.lang.test.pluginSolution.plugin)/7162597690967702202">
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690967702202" at="10,0,11,0" concept="3" trace="myId" />
       <node id="7162597690967702202" at="13,27,14,16" concept="5" />
-      <node id="7162597690967702202" at="16,30,17,30" concept="6" />
-      <node id="7162597690967702202" at="17,30,18,14" concept="6" />
       <node id="7162597690967702202" at="11,0,13,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
+      <node id="7162597690967702202" at="16,30,18,0" concept="6" />
+      <node id="7162597690967702202" at="18,0,20,0" concept="6" />
       <node id="7162597690967702202" at="13,0,16,0" concept="4" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7162597690967702202" at="21,0,24,0" concept="4" trace="adjustRegularGroups#()V" />
-      <node id="7162597690967702202" at="16,0,21,0" concept="4" trace="createGroups#()V" />
+      <node id="7162597690967702202" at="23,0,26,0" concept="4" trace="adjustRegularGroups#()V" />
+      <node id="7162597690967702202" at="16,0,23,0" concept="4" trace="createGroups#()V" />
       <scope id="7162597690967702202" at="11,45,11,45" />
       <scope id="7162597690967702202" at="13,27,14,16" />
-      <scope id="7162597690967702202" at="21,37,22,137" />
+      <scope id="7162597690967702202" at="23,37,24,137" />
       <scope id="7162597690967702202" at="11,0,13,0" />
       <scope id="7162597690967702202" at="13,0,16,0" />
-      <scope id="7162597690967702202" at="16,30,19,55" />
-      <scope id="7162597690967702202" at="21,0,24,0" />
-      <scope id="7162597690967702202" at="16,0,21,0" />
-      <unit id="7162597690967702202" at="9,0,25,0" name="jetbrains.mps.lang.test.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
+      <scope id="7162597690967702202" at="23,0,26,0" />
+      <scope id="7162597690967702202" at="16,30,21,55" />
+      <scope id="7162597690967702202" at="16,0,23,0" />
+      <unit id="7162597690967702202" at="9,0,27,0" name="jetbrains.mps.lang.test.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
     </file>
   </root>
 </debug-info>

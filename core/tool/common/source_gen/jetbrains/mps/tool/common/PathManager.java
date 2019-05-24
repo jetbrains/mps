@@ -69,8 +69,11 @@ public class PathManager {
       PathManager.ourHomePath = FileUtil.getAbsolutePath(System.getProperty(PathManager.PROPERTY_HOME_PATH));
     } else {
       // FIXME if this PathManager class is loaded through ant cp (lib/ant/lib/ant-mps.jar), home folder would be wrong! 
+
       //       This means use of this method and related makes sense for the case when this PathManager is loaded through e.g. core.tool.environment 
+
       //       or tool.builder classloaders (mps-tool.jar or mps-environment.jar). 
+
       final Class aClass = PathManager.class;
       String rootPath = PathManager.getResourceRoot(aClass, "/" + aClass.getName().replace('.', '/') + ".class");
       if (rootPath != null) {
@@ -83,6 +86,7 @@ public class PathManager {
           assert parent != null : "No parent found for " + root + "; " + PathManager.BIN_FOLDER + " folder with " + "idea.properties" + " file not found";
           root = new File(parent).getAbsoluteFile();
           //  one step back to get folder 
+
         } while (root != null && !(PathManager.isMpsDir(root)));
         PathManager.ourHomePath = (root != null ? root.getAbsolutePath() : null);
       }
@@ -93,6 +97,7 @@ public class PathManager {
       }
     } catch (IOException e) {
       //  ignore 
+
     }
     return PathManager.ourHomePath;
   }
@@ -170,6 +175,7 @@ public class PathManager {
   private static String extractRoot(URL resourceURL, String resourcePath) {
     if (!((StringUtil.startsWithChar(resourcePath, '/') || StringUtil.startsWithChar(resourcePath, '\\')))) {
       // noinspection HardCodedStringLiteral 
+
       System.err.println("precondition failed: " + resourcePath);
       return null;
     }
@@ -195,6 +201,7 @@ public class PathManager {
     }
     if (resultPath == null) {
       // noinspection HardCodedStringLiteral 
+
       System.err.println("cannot extract: " + resultPath + " from " + resourceURL);
       return null;
     }

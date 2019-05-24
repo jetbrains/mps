@@ -33,7 +33,9 @@ import jetbrains.mps.project.structure.modules.ModuleReference;
 public class VCSPersistenceUtil {
   public static SModel loadModel(final byte[] content, String extension) {
     // returns null if an error occured, as its predcessor in PersistenceUtil. 
+
     // [MM] not sure this is correct, just left it unchanged 
+
 
     SModel oldModel = loadFromOldMPSPersistence(content);
     if (oldModel != null) {
@@ -69,12 +71,14 @@ public class VCSPersistenceUtil {
           input.close();
         } catch (IOException e) {
           // do nothing 
+
         }
       }
     }
   }
   public static boolean isModelFullyLoaded(@Nullable SModel model) {
     //  call after loadModel to fully load model and check for errors 
+
     if (model == null) {
       return false;
     }
@@ -132,6 +136,7 @@ public class VCSPersistenceUtil {
     SModuleReference moduleRef = (moduleId != null || moduleName != null ? new ModuleReference(moduleName, moduleId) : null);
     if (moduleRef == null && !((modelId.isGloballyUnique()))) {
       // make globally unique anyway to avoid exception for old models without modules 
+
       modelId = new VCSPersistenceUtil.SModelIdProxy(modelId);
     }
     return new jetbrains.mps.smodel.SModelReference(moduleRef, modelId, modelName);

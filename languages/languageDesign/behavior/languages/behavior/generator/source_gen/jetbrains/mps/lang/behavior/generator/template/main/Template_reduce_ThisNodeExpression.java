@@ -57,6 +57,7 @@ public class Template_reduce_ThisNodeExpression extends TemplateDeclarationBase 
           }
           tnode2.addChild(myAggregationLinks[0], tnode3);
           // TODO validate child 
+
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
@@ -66,6 +67,7 @@ public class Template_reduce_ThisNodeExpression extends TemplateDeclarationBase 
           }
           tnode2.addChild(myAggregationLinks[1], tnode4);
           // TODO validate child 
+
         }
       } finally {
       }

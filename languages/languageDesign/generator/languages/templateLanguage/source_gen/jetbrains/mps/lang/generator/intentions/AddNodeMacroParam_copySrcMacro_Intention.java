@@ -88,6 +88,7 @@ public final class AddNodeMacroParam_copySrcMacro_Intention extends AbstractInte
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).addElement(expressionStatement);
       SLinkOperations.setTarget(copySrcMacro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10389b50fefL, 0x10ff3aea96eL, "sourceNodeQuery"), referentValue);
       // set caret 
+
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, copySrcMacro, SelectionManager.FIRST_CELL, 1);
     }
     @Override

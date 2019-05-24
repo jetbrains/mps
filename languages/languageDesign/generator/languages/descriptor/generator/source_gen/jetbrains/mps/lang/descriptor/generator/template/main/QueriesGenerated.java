@@ -76,6 +76,7 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     // TODO 
+
     return new ModuleReference(SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator")), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName")), ModuleId.fromString(SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator")), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210dL, "uuid")))).toString();
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
@@ -89,7 +90,9 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_6_0(final PropertyMacroContext _context) {
     // mimics Generator#getAlias() XXX why not in ProjectStructureBuilder? 
+
     // FIXME sort out generator alias and #suffix thing, why do I need both? 
+
     String ns = SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace"));
     int sharp = ns.indexOf('#');
     return ((sharp == -1 ? ns : ns.substring(0, sharp))) + '/' + ((isEmptyString(SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x2cf7cb696461a282L, "generatorAlias"))) ? "<no name>" : SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x2cf7cb696461a282L, "generatorAlias"))));
@@ -153,7 +156,9 @@ public class QueriesGenerated {
   }
   public static boolean ifMacro_Condition_6_3(final IfMacroContext _context) {
     // FIXME module name contains '#' is a hack to filter out dependencies to non-generator modules quickly. 
+
     // node.dependencies include both generators we depend from, as well as other modules (languages and solutions) 
+
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators"))).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2cL, "dependencies"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef")), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName")).contains("#");
@@ -162,10 +167,14 @@ public class QueriesGenerated {
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
     // XXX COPIED FROM GeneratorRuntime template. 
+
     // XXX Yes, I don't like it. 
 
+
     // FIXME module name contains '#' is a hack to filter out dependencies to non-generator modules quickly. 
+
     // node.dependencies include both generators we depend from, as well as other modules (languages and solutions) 
+
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators"))).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2cL, "dependencies"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef")), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName")).contains("#");
@@ -247,13 +256,16 @@ public class QueriesGenerated {
   }
   public static Iterable<SNode> sourceNodesQuery_6_4(final SourceSubstituteMacroNodesContext _context) {
     // Unfortunately, we duplicate 'extended' dependency between generators in regular module dependencies and in node<Generator>.depGenerators 
+
     // Therefore, we have to exclude 'extended' (they are already processed) when iterating over general module dependencies. 
+
     final List<SModuleReference> extendedGenerators = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators"))).select(new ISelector<SNode, SModuleReference>() {
       public SModuleReference select(SNode it) {
         return (SModuleReference) ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(it);
       }
     }).toListSequence();
     // XXX see $IF$ for "#" reason 
+
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2cL, "dependencies"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef")), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName")).contains("#") && !(ListSequence.fromList(extendedGenerators).contains(ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef")))));
@@ -272,13 +284,16 @@ public class QueriesGenerated {
   }
   public static Iterable<SNode> sourceNodesQuery_7_2(final SourceSubstituteMacroNodesContext _context) {
     // Unfortunately, we duplicate 'extended' dependency between generators in regular module dependencies and in node<Generator>.depGenerators 
+
     // Therefore, we have to exclude 'extended' (they are already processed) when iterating over general module dependencies. 
+
     final List<SModuleReference> extendedGenerators = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators"))).select(new ISelector<SNode, SModuleReference>() {
       public SModuleReference select(SNode it) {
         return (SModuleReference) ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(it);
       }
     }).toListSequence();
     // XXX see $IF$ for "#" reason 
+
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2cL, "dependencies"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef")), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName")).contains("#") && !(ListSequence.fromList(extendedGenerators).contains(ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef")))));
@@ -293,10 +308,12 @@ public class QueriesGenerated {
   }
   public static boolean mc_Condition_1(final TemplateQueryContext _context) {
     //  can't use genContext.inputModel as it has lost stereotype (it's transient model) 
+
     return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
   }
   public static boolean mc_Condition_4(final TemplateQueryContext _context) {
     //  can't use genContext.inputModel as it has lost stereotype (it's transient model) 
+
     return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language"));
   }
   public static SNode insertMacro_Query_2_0(final InsertMacroContext _context) {
@@ -339,6 +356,7 @@ public class QueriesGenerated {
     SModule generatorModule = generatorModuleRef.resolve(repo);
     ModelScanner ms = new ModelScanner();
     // don't want to cast to smodel.Generator, mimic its getOwnTemplateModels() 
+
     for (SModel m : generatorModule.getModels()) {
       if (SModelStereotype.isGeneratorModel(m)) {
         ms.scan(m);
@@ -359,12 +377,15 @@ public class QueriesGenerated {
   }
   public static Object varMacro_Value_7_0(final TemplateVarContext _context) {
     // XXX COPIED FROM GeneratorRuntime template. 
+
     // XXX Yes, I don't like it. 
+
     SRepository repo = _context.getOriginalInputModel().getRepository();
     SModuleReference generatorModuleRef = PersistenceFacade.getInstance().createModuleReference(Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(_context.getNode()));
     SModule generatorModule = generatorModuleRef.resolve(repo);
     ModelScanner ms = new ModelScanner();
     // don't want to cast to smodel.Generator, mimic its getOwnTemplateModels() 
+
     for (SModel m : generatorModule.getModels()) {
       if (SModelStereotype.isGeneratorModel(m)) {
         ms.scan(m);

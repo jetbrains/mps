@@ -95,6 +95,7 @@ public class EditorHighlighter implements EditorMessageOwner {
                     myStripsPainter = new ChangeStripsPainter(EditorHighlighter.this);
                     myEditorComponent.getLeftEditorHighlighter().addFoldingAreaPainter(myStripsPainter);
                     // .relayout() is called as a part of .addFoldingAreaPainter() method execution 
+
                   }
                 });
                 myCurrentDifference.addDifferenceListener(myListener);

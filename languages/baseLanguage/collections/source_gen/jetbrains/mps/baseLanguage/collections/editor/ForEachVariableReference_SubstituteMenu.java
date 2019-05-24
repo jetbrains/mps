@@ -48,6 +48,7 @@ public class ForEachVariableReference_SubstituteMenu extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_h2opg9_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+
       super((SAbstractConcept) MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference"), MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable"));
     }
     @NotNull

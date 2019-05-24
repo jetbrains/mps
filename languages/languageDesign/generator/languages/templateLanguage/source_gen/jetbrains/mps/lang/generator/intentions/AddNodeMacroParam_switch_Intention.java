@@ -79,6 +79,7 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
       SNodeOperations.replaceWithAnother(nodeMacro, switchMacro);
       SLinkOperations.setTarget(switchMacro, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template"), myParameter);
       // set caret 
+
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, switchMacro, SelectionManager.FIRST_CELL, 1);
     }
     @Override

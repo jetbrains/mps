@@ -5,7 +5,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="0eddeefa-c2d6-4437-bc2c-de50fd4ce470" name="jetbrains.mps.lang.script" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="15" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
   <imports>
     <import index="iwwu" ref="r:2c4d9270-b6d6-44af-aecd-e01a223680db(jetbrains.mps.kernel.model)" />
@@ -142,11 +142,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -194,6 +191,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -302,13 +307,134 @@
       </node>
       <node concept="3clFbS" id="6KNTF2XLrC1" role="3clF47">
         <node concept="3SKdUt" id="1CWvv8TgOZu" role="3cqZAp">
-          <node concept="3SKdUq" id="1CWvv8TgOZw" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME ugly performance hack to avoid recalculation of node errors to replace another ugly hack with global command listener in TestsErrorsChecker" />
+          <node concept="1PaTwC" id="ATZLwXo4AL" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4AM" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AN" role="1PaTwD">
+              <property role="3oM_SC" value="ugly" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AO" role="1PaTwD">
+              <property role="3oM_SC" value="performance" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AP" role="1PaTwD">
+              <property role="3oM_SC" value="hack" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AQ" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AR" role="1PaTwD">
+              <property role="3oM_SC" value="avoid" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AS" role="1PaTwD">
+              <property role="3oM_SC" value="recalculation" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AT" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AU" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AV" role="1PaTwD">
+              <property role="3oM_SC" value="errors" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AW" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AX" role="1PaTwD">
+              <property role="3oM_SC" value="replace" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AY" role="1PaTwD">
+              <property role="3oM_SC" value="another" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4AZ" role="1PaTwD">
+              <property role="3oM_SC" value="ugly" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B0" role="1PaTwD">
+              <property role="3oM_SC" value="hack" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B1" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B2" role="1PaTwD">
+              <property role="3oM_SC" value="global" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B3" role="1PaTwD">
+              <property role="3oM_SC" value="command" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B4" role="1PaTwD">
+              <property role="3oM_SC" value="listener" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B5" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B6" role="1PaTwD">
+              <property role="3oM_SC" value="TestsErrorsChecker" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="1CWvv8ThtYs" role="3cqZAp">
-          <node concept="3SKdUq" id="1CWvv8ThtYu" role="3SKWNk">
-            <property role="3SKdUp" value="Would be great to have TestsErrorsChecker cached right inside SpecifyRuleReferences intention, but it's not possible to have custom field there." />
+          <node concept="1PaTwC" id="ATZLwXo4B7" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4B8" role="1PaTwD">
+              <property role="3oM_SC" value="Would" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B9" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Ba" role="1PaTwD">
+              <property role="3oM_SC" value="great" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bb" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bc" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bd" role="1PaTwD">
+              <property role="3oM_SC" value="TestsErrorsChecker" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Be" role="1PaTwD">
+              <property role="3oM_SC" value="cached" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bf" role="1PaTwD">
+              <property role="3oM_SC" value="right" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bg" role="1PaTwD">
+              <property role="3oM_SC" value="inside" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bh" role="1PaTwD">
+              <property role="3oM_SC" value="SpecifyRuleReferences" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bi" role="1PaTwD">
+              <property role="3oM_SC" value="intention," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bj" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bk" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bl" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bm" role="1PaTwD">
+              <property role="3oM_SC" value="possible" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bn" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bo" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bp" role="1PaTwD">
+              <property role="3oM_SC" value="custom" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bq" role="1PaTwD">
+              <property role="3oM_SC" value="field" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Br" role="1PaTwD">
+              <property role="3oM_SC" value="there." />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="1CWvv8TgLMW" role="3cqZAp">
@@ -359,13 +485,74 @@
           </node>
         </node>
         <node concept="3SKdUt" id="1CWvv8Th4bf" role="3cqZAp">
-          <node concept="3SKdUq" id="1CWvv8Th4bh" role="3SKWNk">
-            <property role="3SKdUp" value="I assume that user can't change a node in 5 seconds %-/" />
+          <node concept="1PaTwC" id="ATZLwXo4Bs" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4Bt" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bu" role="1PaTwD">
+              <property role="3oM_SC" value="assume" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bv" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bw" role="1PaTwD">
+              <property role="3oM_SC" value="user" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bx" role="1PaTwD">
+              <property role="3oM_SC" value="can't" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4By" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4Bz" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B$" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4B_" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BA" role="1PaTwD">
+              <property role="3oM_SC" value="5" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BB" role="1PaTwD">
+              <property role="3oM_SC" value="seconds" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BC" role="1PaTwD">
+              <property role="3oM_SC" value="%-/" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="1CWvv8Th5LD" role="3cqZAp">
-          <node concept="3SKdUq" id="1CWvv8Th5LF" role="3SKWNk">
-            <property role="3SKdUp" value=" it's mostly for isApplicable/execute pair in SpecifyRuleReferences intention" />
+          <node concept="1PaTwC" id="ATZLwXo4BD" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4BE" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BF" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BG" role="1PaTwD">
+              <property role="3oM_SC" value="mostly" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BH" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BI" role="1PaTwD">
+              <property role="3oM_SC" value="isApplicable/execute" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BJ" role="1PaTwD">
+              <property role="3oM_SC" value="pair" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BK" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BL" role="1PaTwD">
+              <property role="3oM_SC" value="SpecifyRuleReferences" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4BM" role="1PaTwD">
+              <property role="3oM_SC" value="intention" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="1CWvv8TgL2A" role="3cqZAp">

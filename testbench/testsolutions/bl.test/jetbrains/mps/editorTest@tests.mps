@@ -19,7 +19,7 @@
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
   </languages>
   <imports>
@@ -483,12 +483,8 @@
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
         <child id="1221737317278" name="statementList" index="1Pe0a2" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -72720,8 +72716,13 @@
                     <node concept="3Tm1VV" id="LP5zVTkHoX" role="1B3o_S" />
                     <node concept="3clFbS" id="LP5zVTkHoY" role="3clF47">
                       <node concept="3SKdUt" id="LP5zVTkHoZ" role="3cqZAp">
-                        <node concept="3SKdUq" id="LP5zVTkHp0" role="3SKWNk">
-                          <property role="3SKdUp" value="empty task" />
+                        <node concept="1PaTwC" id="ATZLwXopOQ" role="3ndbpf">
+                          <node concept="3oM_SD" id="ATZLwXopOR" role="1PaTwD">
+                            <property role="3oM_SC" value="empty" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXopOS" role="1PaTwD">
+                            <property role="3oM_SC" value="task" />
+                          </node>
                         </node>
                       </node>
                     </node>

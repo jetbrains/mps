@@ -128,6 +128,7 @@ public class FeatureForestMap<V> {
       } catch (Throwable t) {
         if (t instanceof InterruptedException || check_tcy57o_a0a0a0a0a0ab(t) instanceof InterruptedException) {
           // ignore 
+
         } else {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Exception on firing featureStateChanged event", t);

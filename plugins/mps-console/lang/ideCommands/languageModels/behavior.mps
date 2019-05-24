@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
@@ -222,11 +222,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -294,6 +291,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -2126,13 +2131,80 @@
         </node>
         <node concept="3clFbH" id="1BaWVumQ$Kt" role="3cqZAp" />
         <node concept="3SKdUt" id="2DNBjvGm2O" role="3cqZAp">
-          <node concept="3SKdUq" id="2DNBjvGmbQ" role="3SKWNk">
-            <property role="3SKdUp" value="by default, show generation plan as Make/Generate would see it." />
+          <node concept="1PaTwC" id="ATZLwXo4bC" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4bD" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bE" role="1PaTwD">
+              <property role="3oM_SC" value="default," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bF" role="1PaTwD">
+              <property role="3oM_SC" value="show" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bG" role="1PaTwD">
+              <property role="3oM_SC" value="generation" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bH" role="1PaTwD">
+              <property role="3oM_SC" value="plan" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bI" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bJ" role="1PaTwD">
+              <property role="3oM_SC" value="Make/Generate" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bK" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bL" role="1PaTwD">
+              <property role="3oM_SC" value="see" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bM" role="1PaTwD">
+              <property role="3oM_SC" value="it." />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="2DNBjvGmQ2" role="3cqZAp">
-          <node concept="3SKdUq" id="2DNBjvGmZ8" role="3SKWNk">
-            <property role="3SKdUp" value="If forced, however, may ignore context and show default (model content based) plan." />
+          <node concept="1PaTwC" id="ATZLwXo4bN" role="3ndbpf">
+            <node concept="3oM_SD" id="ATZLwXo4bO" role="1PaTwD">
+              <property role="3oM_SC" value="If" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bP" role="1PaTwD">
+              <property role="3oM_SC" value="forced," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bQ" role="1PaTwD">
+              <property role="3oM_SC" value="however," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bR" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bS" role="1PaTwD">
+              <property role="3oM_SC" value="ignore" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bT" role="1PaTwD">
+              <property role="3oM_SC" value="context" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bU" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bV" role="1PaTwD">
+              <property role="3oM_SC" value="show" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bW" role="1PaTwD">
+              <property role="3oM_SC" value="default" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bX" role="1PaTwD">
+              <property role="3oM_SC" value="(model" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bY" role="1PaTwD">
+              <property role="3oM_SC" value="content" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4bZ" role="1PaTwD">
+              <property role="3oM_SC" value="based)" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXo4c0" role="1PaTwD">
+              <property role="3oM_SC" value="plan." />
+            </node>
           </node>
         </node>
         <node concept="3clFbH" id="2DNBjvGmio" role="3cqZAp" />
@@ -2305,8 +2377,37 @@
           <node concept="9aQIb" id="2DNBjvGkT7" role="9aQIa">
             <node concept="3clFbS" id="2DNBjvGkT8" role="9aQI4">
               <node concept="3SKdUt" id="2DNBjvGleo" role="3cqZAp">
-                <node concept="3SKdUq" id="2DNBjvGleT" role="3SKWNk">
-                  <property role="3SKdUp" value="regular sequence, do not ignore external plan, but there's none" />
+                <node concept="1PaTwC" id="ATZLwXo4c1" role="3ndbpf">
+                  <node concept="3oM_SD" id="ATZLwXo4c2" role="1PaTwD">
+                    <property role="3oM_SC" value="regular" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4c3" role="1PaTwD">
+                    <property role="3oM_SC" value="sequence," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4c4" role="1PaTwD">
+                    <property role="3oM_SC" value="do" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4c5" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4c6" role="1PaTwD">
+                    <property role="3oM_SC" value="ignore" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4c7" role="1PaTwD">
+                    <property role="3oM_SC" value="external" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4c8" role="1PaTwD">
+                    <property role="3oM_SC" value="plan," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4c9" role="1PaTwD">
+                    <property role="3oM_SC" value="but" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4ca" role="1PaTwD">
+                    <property role="3oM_SC" value="there's" />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXo4cb" role="1PaTwD">
+                    <property role="3oM_SC" value="none" />
+                  </node>
                 </node>
               </node>
               <node concept="3clFbF" id="2DNBjvGlhX" role="3cqZAp">
