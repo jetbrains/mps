@@ -123,13 +123,13 @@ public final class CommonPaths {
 
   private static void addIdeaJars(Collection<QualifiedPath> result) {
     addRepackedIdeaJars(result);
-    addIfExists(result, "lib/netty-buffer-4.1.32.Final.jar");
-    addIfExists(result, "lib/netty-codec-4.1.32.Final.jar");
-    addIfExists(result, "lib/netty-codec-http-4.1.32.Final.jar");
-    addIfExists(result, "lib/netty-common-4.1.32.Final.jar");
-    addIfExists(result, "lib/netty-handler-4.1.32.Final.jar");
-    addIfExists(result, "lib/netty-resolver-4.1.32.Final.jar");
-    addIfExists(result, "lib/netty-transport-4.1.32.Final.jar");
+    addIfExists(result, "lib/netty-buffer-4.1.34.Final.jar");
+    addIfExists(result, "lib/netty-codec-4.1.34.Final.jar");
+    addIfExists(result, "lib/netty-codec-http-4.1.34.Final.jar");
+    addIfExists(result, "lib/netty-common-4.1.34.Final.jar");
+    addIfExists(result, "lib/netty-handler-4.1.34.Final.jar");
+    addIfExists(result, "lib/netty-resolver-4.1.34.Final.jar");
+    addIfExists(result, "lib/netty-transport-4.1.34.Final.jar");
     addIfExists(result, "lib/commons-imaging-1.0-RC.jar");
     addIfExists(result, "lib/util.jar");
     addIfExists(result, "lib/extensions.jar");

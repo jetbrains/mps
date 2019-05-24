@@ -8,7 +8,7 @@
       <root url="jar://$PROJECT_DIR$/lib/guava-25.1-jre.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/common-image-3.4.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/common-lang-3.4.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.12.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-compress-1.18.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-imaging-1.0-RC-1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/imageio-core-3.4.1.jar!/" />

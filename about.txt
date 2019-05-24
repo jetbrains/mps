@@ -120,9 +120,6 @@ http://nekohtml.sourceforge.net
 Netty project
 http://netty.io/index.html
 
-Objenesis
-http://objenesis.org
-
 NanoContainer Organization
 http://www.picocontainer.org/
 Copyright (c) 2003
