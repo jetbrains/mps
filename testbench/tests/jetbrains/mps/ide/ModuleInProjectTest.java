@@ -15,14 +15,12 @@
  */
 package jetbrains.mps.ide;
 
-import com.intellij.configurationStore.StoreAwareProjectManager;
+import com.intellij.configurationStore.StoreReloadManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.PlatformTestUtil;
-import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.tool.environment.Environment;
@@ -88,7 +86,8 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
     IdeaFile projectFile = myProject.getFileSystem().getFile(myProject.getProjectFile().toString());
     projectFile.refresh(new DefaultCachingContext(true, true));
     ApplicationManager.getApplication().invokeAndWait(() -> {
-      ((StoreAwareProjectManager) ProjectManager.getInstance()).flushChangedProjectFileAlarm(); // needed to trigger refresh on the project folder components in test environment
+      // needed to trigger refresh on the project folder components in test environment
+      StoreReloadManager.getInstance().flushChangedProjectFileAlarm();
     }, ModalityState.NON_MODAL);
   }
 

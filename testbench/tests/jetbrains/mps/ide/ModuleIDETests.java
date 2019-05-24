@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide;
 
-import com.intellij.configurationStore.StoreAwareProjectManager;
+import com.intellij.configurationStore.StoreReloadManager;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.module.ModuleDeleteHelper;
@@ -55,7 +55,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Note: several {@link #invokeInCommand(Runnable)} calls
  * are needed because of the absent undo realisation for the 'create module' actions.
  *
- * Also {@link StoreAwareProjectManager#flushChangedProjectFileAlarm()} requires zero-level command
+ * Also {@link StoreReloadManager#flushChangedProjectFileAlarm()} requires zero-level command
  */
 public class ModuleIDETests extends ModuleInProjectTest {
 
