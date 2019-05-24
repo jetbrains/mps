@@ -34,9 +34,8 @@ import org.jetbrains.annotations.NotNull;
 )
 public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectViewImpl {
 
-  public ProjectViewImpl(@NotNull Project project,
-      FileEditorManager fileEditorManager, ToolWindowManagerEx toolWindowManager) {
-    super(project, fileEditorManager, toolWindowManager);
+  public ProjectViewImpl(@NotNull Project project) {
+    super(project);
   }
 
   @Override
