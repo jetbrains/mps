@@ -57,7 +57,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static com.intellij.util.ui.JBUI.ScaleType.OBJ_SCALE;
+import static com.intellij.util.ui.JBUIScale.ScaleType.OBJ_SCALE;
 import static java.lang.Math.ceil;
 
 /* TODO: think of reusing com.intellij.ide.bookmarks.Bookmark:
@@ -65,8 +65,8 @@ import static java.lang.Math.ceil;
  * 2. UI is the same only underlying editor is different
  * */
 @State(
-  name = "MPSBookmarkManager",
-  storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
+    name = "MPSBookmarkManager",
+    storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
 public class BookmarkManager implements ProjectComponent, PersistentStateComponent<MyState> {
   private static final Logger LOG = LogManager.getLogger(BookmarkManager.class);
@@ -119,7 +119,9 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
    * assumes model read access
    */
   public List<Pair<SNode, Integer>> getBookmarks(SNode root) {
-    if (root == null) return Collections.emptyList();
+    if (root == null) {
+      return Collections.emptyList();
+    }
     List<Pair<SNode, Integer>> result = new ArrayList<>();
     for (int i = 0; i <= 9; i++) {
       SNodeReference nodePointer = myBookmarks[i];
@@ -270,7 +272,9 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
   }
 
   public void navigateToBookmark(int number) {
-    if (number < 0 || number > 9) return;
+    if (number < 0 || number > 9) {
+      return;
+    }
     SNodeReference pointer = myBookmarks[number];
     if (pointer == null) {
       return;
@@ -373,20 +377,27 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
     //for serialization/deserialization
     @SuppressWarnings("UnusedDeclaration")
     public String getNodeRef() {
-      if (myNodeRef == null) return "";
+      if (myNodeRef == null) {
+        return "";
+      }
       return jetbrains.mps.smodel.SNodePointer.serialize(myNodeRef);
     }
 
     //for serialization/deserialization
     @SuppressWarnings("UnusedDeclaration")
     public void setNodeRef(String nodeRef) {
-      if (nodeRef.isEmpty()) return;
+      if (nodeRef.isEmpty()) {
+        return;
+      }
       myNodeRef = jetbrains.mps.smodel.SNodePointer.deserialize(nodeRef);
     }
   }
 
   // TODO: remove copy/paste see todo on class
-  /** Partly copy/paste of {@link Bookmark.MnemonicIcon} */
+
+  /**
+   * Partly copy/paste of {@link Bookmark.MnemonicIcon}
+   */
   private final static class MnemonicIcon extends JBUI.CachingScalableJBIcon<MnemonicIcon> {
     private static final MnemonicIcon[] CACHE = new MnemonicIcon[]{
         new MnemonicIcon('0'), new MnemonicIcon('1'),
@@ -431,44 +442,51 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
 
       float startingFontSize = 40f;  // large font for smaller rounding error
       Font font = Bookmark.getBookmarkFont().deriveFont(startingFontSize);
-      FontRenderContext fontRenderContext = ((Graphics2D)g).getFontRenderContext();
+      FontRenderContext fontRenderContext = ((Graphics2D) g).getFontRenderContext();
       double height40 = font.createGlyphVector(fontRenderContext, new char[]{'A'}).getVisualBounds().getHeight();
-      font = font.deriveFont((float)(startingFontSize * height / height40 * 0.7));
+      font = font.deriveFont((float) (startingFontSize * height / height40 * 0.7));
 
       GlyphVector gv = font.createGlyphVector(fontRenderContext, new char[]{myMnemonic});
       Rectangle2D bounds = gv.getVisualBounds();
-      ((Graphics2D)g).drawGlyphVector(gv, (float)(x + (width - bounds.getWidth())/2 - bounds.getX()),
-                                      (float)(y + (height - bounds.getHeight())/2 - bounds.getY()));
+      ((Graphics2D) g).drawGlyphVector(gv, (float) (x + (width - bounds.getWidth()) / 2 - bounds.getX()),
+                                       (float) (y + (height - bounds.getHeight()) / 2 - bounds.getY()));
     }
 
     @Override
     public int getIconWidth() {
-      return (int)ceil(scaleVal(BookmarkManager.DEFAULT_ICON.getIconWidth(), OBJ_SCALE));
+      return (int) ceil(scaleVal(BookmarkManager.DEFAULT_ICON.getIconWidth(), OBJ_SCALE));
     }
 
     @Override
     public int getIconHeight() {
-      return (int)ceil(scaleVal(BookmarkManager.DEFAULT_ICON.getIconHeight(), OBJ_SCALE));
+      return (int) ceil(scaleVal(BookmarkManager.DEFAULT_ICON.getIconHeight(), OBJ_SCALE));
     }
 
     @Override
     public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
 
-      MnemonicIcon that = (MnemonicIcon)o;
+      MnemonicIcon that = (MnemonicIcon) o;
 
       return myMnemonic == that.myMnemonic;
     }
 
     @Override
     public int hashCode() {
-      return (int)myMnemonic;
+      return (int) myMnemonic;
     }
   }
 
   // TODO: remove copy/paste see todo on class
-  /** Copy/paste of {@link Bookmark.MyCheckedIcon} */
+
+  /**
+   * Copy/paste of {@link Bookmark.MyCheckedIcon}
+   */
   private static class MyCheckedIcon extends JBUI.CachingScalableJBIcon<MyCheckedIcon> implements RetrievableIcon {
     @Nullable
     @Override
@@ -487,7 +505,7 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
     }
 
     private int scale(int width) {
-      return (int)Math.ceil(scaleVal(width, JBUI.ScaleType.OBJ_SCALE));
+      return (int) Math.ceil(scaleVal(width, OBJ_SCALE));
     }
 
     @Override
