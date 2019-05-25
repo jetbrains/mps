@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="PER_ROOT.a.b.c.Referee" file="Referee.java">
+  <dependency className="PER_ROOT.a.b.c.Referee">
     <classNode dependClassName="PER_ROOT.a.b.d.Referent" />
   </dependency>
 </dependenciesRoot>

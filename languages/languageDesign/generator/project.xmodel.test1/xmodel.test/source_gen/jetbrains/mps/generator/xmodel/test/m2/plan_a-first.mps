@@ -47,6 +47,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
+      <concept id="7980339663309897032" name="jetbrains.mps.lang.generator.structure.OriginTrace" flags="ng" index="cd27G">
+        <child id="7980339663309897037" name="origin" index="cd27D" />
+      </concept>
       <concept id="9032177546941580387" name="jetbrains.mps.lang.generator.structure.TrivialNodeId" flags="nn" index="2$VJBW">
         <property id="9032177546941580392" name="nodeId" index="2$VJBR" />
         <child id="8557539026538618631" name="cncpt" index="3iCydw" />
@@ -70,12 +73,14 @@
       <concept id="3864140621129713362" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef" flags="nn" index="39e2AT">
         <reference id="3864140621129713363" name="node" index="39e2AS" />
       </concept>
+      <concept id="3637169702552512264" name="jetbrains.mps.lang.generator.structure.ElementaryNodeId" flags="ng" index="3u3nmq">
+        <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="6911370362349121511" name="jetbrains.mps.lang.smodel.structure.ConceptId" flags="nn" index="2x4n5u">
         <property id="6911370362349122519" name="conceptName" index="2x4mPI" />
         <property id="6911370362349121516" name="conceptId" index="2x4n5l" />
-        <property id="6911370362349133804" name="isInterface" index="2x4o5l" />
         <child id="6911370362349121514" name="languageIdentity" index="2x4n5j" />
       </concept>
       <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
@@ -84,6 +89,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -92,47 +100,72 @@
   <node concept="312cEu" id="0">
     <property role="TrG5h" value="Bean2" />
     <node concept="1Pe0a1" id="1" role="jymVt">
-      <node concept="3clFbS" id="3" role="1Pe0a2">
-        <node concept="3clFbF" id="4" role="3cqZAp">
-          <node concept="2OqwBi" id="5" role="3clFbG">
-            <node concept="2ShNRf" id="6" role="2Oq$k0">
-              <node concept="HV5vD" id="8" role="2ShVmc">
+      <node concept="3clFbS" id="4" role="1Pe0a2">
+        <node concept="3clFbF" id="6" role="3cqZAp">
+          <node concept="2OqwBi" id="8" role="3clFbG">
+            <node concept="2ShNRf" id="a" role="2Oq$k0">
+              <node concept="HV5vD" id="c" role="2ShVmc">
                 <ref role="HV5vE" to="xtg5:0" resolve="Bean1" />
               </node>
             </node>
-            <node concept="liA8E" id="7" role="2OqNvi">
+            <node concept="liA8E" id="b" role="2OqNvi">
               <ref role="37wK5l" to="xtg5:3" resolve="setprop1" />
-              <node concept="Xl_RD" id="9" role="37wK5m">
+              <node concept="Xl_RD" id="d" role="37wK5m">
                 <property role="Xl_RC" value="42" />
               </node>
             </node>
           </node>
+          <node concept="cd27G" id="9" role="lGtFl">
+            <node concept="3u3nmq" id="e" role="cd27D">
+              <property role="3u3nmv" value="7618674748894160328" />
+            </node>
+          </node>
+        </node>
+        <node concept="cd27G" id="7" role="lGtFl">
+          <node concept="3u3nmq" id="f" role="cd27D">
+            <property role="3u3nmv" value="7618674748894158863" />
+          </node>
+        </node>
+      </node>
+      <node concept="cd27G" id="5" role="lGtFl">
+        <node concept="3u3nmq" id="g" role="cd27D">
+          <property role="3u3nmv" value="7618674748894158863" />
         </node>
       </node>
     </node>
-    <node concept="3Tm1VV" id="2" role="1B3o_S" />
+    <node concept="3Tm1VV" id="2" role="1B3o_S">
+      <node concept="cd27G" id="h" role="lGtFl">
+        <node concept="3u3nmq" id="i" role="cd27D">
+          <property role="3u3nmv" value="7618674748894158863" />
+        </node>
+      </node>
+    </node>
+    <node concept="cd27G" id="3" role="lGtFl">
+      <node concept="3u3nmq" id="j" role="cd27D">
+        <property role="3u3nmv" value="7618674748894158863" />
+      </node>
+    </node>
   </node>
-  <node concept="39dXUE" id="a">
-    <node concept="39e2AJ" id="b" role="39e2AI">
+  <node concept="39dXUE" id="k">
+    <node concept="39e2AJ" id="l" role="39e2AI">
       <property role="39e3Y2" value="Bean2Class" />
-      <node concept="39e2AG" id="c" role="39e3Y0">
+      <node concept="39e2AG" id="m" role="39e3Y0">
         <ref role="39e2AK" to="gcog:6AUY56j4M0f" resolve="Bean2" />
-        <node concept="385nmt" id="d" role="385vvn">
+        <node concept="385nmt" id="n" role="385vvn">
           <property role="385vuF" value="Bean2" />
-          <node concept="2$VJBW" id="f" role="385v07">
+          <node concept="2$VJBW" id="p" role="385v07">
             <property role="2$VJBR" value="7618674748894158863" />
-            <node concept="2x4n5u" id="g" role="3iCydw">
+            <node concept="2x4n5u" id="q" role="3iCydw">
               <property role="2x4mPI" value="Bean" />
-              <property role="2x4o5l" value="false" />
               <property role="2x4n5l" value="1lvsistzmsoy3" />
-              <node concept="2V$Bhx" id="h" role="2x4n5j">
+              <node concept="2V$Bhx" id="r" role="2x4n5j">
                 <property role="2V$B1T" value="b2d9d19b-9a47-47a4-93f4-0c9390001bf2" />
                 <property role="2V$B1Q" value="jetbrains.mps.generator.test.xmodel.lang1" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="39e2AT" id="e" role="39e2AY">
+        <node concept="39e2AT" id="o" role="39e2AY">
           <ref role="39e2AS" node="0" resolve="Bean2" />
         </node>
       </node>
